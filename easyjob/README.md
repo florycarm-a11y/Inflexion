@@ -1,280 +1,368 @@
-# 🎓 EasyJob - Job Service TBS Education
+# ✨ EasyJob - Job Service TBS Education
 
-Site web professionnel du job service de TBS Education, connectant étudiants et entreprises pour des opportunités d'emploi.
+**Design System "Connexions"** — Minimaliste • Épuré • Premium
+
+Site web du job service de TBS Education, connectant étudiants et entreprises avec une interface radicalement épurée et professionnelle.
+
+---
 
 ## 📋 À Propos
 
 EasyJob est le job service officiel de **TBS Education** qui facilite la mise en relation entre :
 - **Entreprises** : Recherche de talents pour petits boulots, CDD, stages et CDI
-- **Étudiants TBS** : Accès à des opportunités professionnelles adaptées à leur profil
+- **Étudiants TBS** : Accès à des opportunités professionnelles exclusives
 
-**Note importante** : EasyJob n'est PAS une Junior Entreprise. C'est un service dédié exclusivement au recrutement et à la mise en relation employeurs-étudiants.
+**Philosophie Design** : Moins c'est plus. Interface minimaliste où chaque élément a sa raison d'être. Rose TBS utilisé avec parcimonie pour un impact maximal.
 
-## ✨ Fonctionnalités
+---
 
-### Pour les Entreprises
-- ✅ Dépôt d'offres simplifié via formulaire
-- ✅ Accès à un vivier de talents qualifiés de TBS
-- ✅ Process de recrutement accompagné
-- ✅ Tous types de contrats acceptés
+## 🎨 Design System "Connexions"
 
-### Pour les Étudiants
-- ✅ Catalogue d'offres exclusives TBS
-- ✅ Filtres par type de contrat
-- ✅ Accompagnement CV et candidature
-- ✅ Horaires compatibles avec les études
+### Concept
 
-### Fonctionnalités Techniques
-- 📊 Statistiques en temps réel (500+ étudiants, 120+ entreprises)
-- 🎨 Interface moderne et responsive
-- 📱 Mobile-first design
-- ⚡ Navigation fluide avec smooth scroll
-- 🔍 Système de filtrage des offres
-- 📝 Formulaire de dépôt d'offres validé
+Le design "Connexions" s'inspire de l'idée de mise en relation avec une esthétique minimaliste très épurée. Lignes fines, espaces négatifs assumés, typographie contrastée. Inspiré du design suisse et du Bauhaus moderne.
+
+### Palette de Couleurs
+
+```
+Monochromes (90% de l'interface)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Noir principal    #0A0A0A
+Gris foncé        #3A3A3A
+Gris moyen        #7A7A7A
+Gris clair        #D4D4D4
+Blanc cassé       #FAFAFA
+Blanc pur         #FFFFFF
+
+Accents (10% de l'interface)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Rose TBS          #EA5256  ← CTAs, compteurs
+Violet rare       #8b5cf6  ← Badges stage uniquement
+```
+
+### Typographie
+
+```
+Famille : Inter (Google Fonts)
+Monospace : JetBrains Mono (pour compteurs)
+
+Hiérarchie
+━━━━━━━━━━━━━━
+Hero titre        64px / 300 light
+Section titre     48px / 300 light
+Card titre        24px / 300 light
+Corps de texte    16px / 400 regular
+CTAs              14px / 600 semibold uppercase
+
+Tracking
+━━━━━━━━
+Titres      -0.02em (serré)
+CTAs        +0.05em (large)
+```
+
+### Principes de Design
+
+1. **Espaces négatifs extrêmes** : Padding 48-96px, marges latérales 10%
+2. **Bordures ultra-fines** : 0.5px partout, jamais plus
+3. **Radius uniforme** : 12px sur tous les composants
+4. **Grille stricte 8px** : Baseline grid respectée au pixel près
+5. **Monochrome + accent** : 90% noir/blanc/gris, 10% rose TBS
+6. **Typographie contrastée** : Poids 300 (light) vs 600 (semibold)
+
+---
+
+## ⚡ Fonctionnalités
+
+### Interface
+- ✅ Navigation sticky minimaliste avec détection scroll
+- ✅ Compteurs animés (count-up effect) en JetBrains Mono
+- ✅ Lignes connecteurs animées (SVG stroke-dasharray)
+- ✅ Scroll reveal sur les cards (stagger 80ms)
+- ✅ Hover states subtils (2px lift, border noir)
+- ✅ Menu hamburger responsive
+
+### Contenu
+- 📊 Statistiques en temps réel (347 offres, 892 étudiants, 45 entreprises)
+- 💼 6 offres d'emploi exemples (Airbus, Capgemini, BNP Paribas, etc.)
+- 🎯 Section "Le processus" en 3 étapes
+- 🤝 CTA recruteurs avec card épurée
+
+---
 
 ## 🚀 Utilisation
 
 ### Lancement Local
 
 ```bash
-# Cloner le projet
 cd easyjob
 
-# Option 1 : Ouvrir directement dans le navigateur
+# Option 1 : Ouvrir directement
 open index.html  # macOS
 xdg-open index.html  # Linux
 start index.html  # Windows
 
-# Option 2 : Serveur local simple
+# Option 2 : Serveur local
 python3 -m http.server 8000
 # Puis ouvrir http://localhost:8000
 ```
 
-### Structure du Projet
+### Structure
 
 ```
 easyjob/
-├── index.html       # Structure HTML complète
-├── styles.css       # Design responsive et animations
-├── app.js           # Interactions et logique métier
-└── README.md        # Cette documentation
+├── index.html       # Structure HTML épurée
+├── styles.css       # Design system complet
+├── app.js           # Interactions & animations
+├── README.md        # Cette documentation
+└── CLAUDE.MD        # Contexte technique AI
 ```
 
-## 🎨 Design & Branding
-
-### Palette de Couleurs (TBS Toulouse - Rose & Violette)
-
-```css
-Primaire:    #ec4899 (Rose TBS)
-Secondaire:  #f43f5e (Rouge doux)
-Accent:      #8b5cf6 (Violet violette de Toulouse)
-Succès:      #10b981 (Vert)
-Danger:      #ef4444 (Rouge)
-```
-
-### Typographie
-- **Police** : Inter (Google Fonts)
-- **Hiérarchie** : 8 tailles (XS à 5XL)
-- **Poids** : 300-800 pour flexibilité
-
-### Responsive Breakpoints
-- **Desktop** : > 1024px
-- **Tablet** : 768px - 1024px
-- **Mobile** : < 768px
+---
 
 ## 🏗️ Architecture Technique
 
 ### Technologies
-- **HTML5** : Structure sémantique
-- **CSS3** : Variables CSS, Grid, Flexbox, Animations
-- **JavaScript Vanilla** : Aucune dépendance externe
-- **Google Fonts** : Inter font family
 
-### Sections du Site
+- **HTML5** : Structure sémantique minimaliste
+- **CSS3** : Variables CSS, Grid, Flexbox, SVG animations
+- **JavaScript Vanilla** : Intersection Observer, count-up, scroll reveal
+- **Fonts** : Inter (300, 400, 500, 600) + JetBrains Mono
+- **Aucune dépendance externe**
 
-1. **Hero** - Proposition de valeur + CTA dual (Je recrute / Je cherche)
-2. **Entreprises** - Avantages du recrutement TBS + CTA partenariat
-3. **Étudiants** - Catégories d'offres + témoignage
-4. **Offres** - Grille filtrable avec 9 offres exemples
-5. **Partenaires** - Logos entreprises (Airbus, Decathlon, etc.)
-6. **Contact** - Coordonnées + formulaire de dépôt d'offre
+### Tokens CSS
 
-### Fonctionnalités JavaScript
+Tous les tokens sont définis dans `:root` :
 
-```javascript
-// Navigation active avec Intersection Observer
-initNavigation()
+```css
+/* Espacements (grille 8px) */
+--space-1: 8px
+--space-12: 96px
 
-// Animation des statistiques au scroll
-initStatsAnimation()
+/* Typographie */
+--text-xs: 12px
+--text-4xl: 64px
 
-// Affichage et filtrage des offres
-displayJobs(jobsDatabase)
-filterJobs('stage')
+/* Couleurs */
+--noir: #0A0A0A
+--rose-tbs: #EA5256
 
-// Validation formulaire
-handleFormSubmit(event)
+/* Bordures */
+--border-thin: 0.5px solid var(--gris-clair)
+--radius: 12px
+
+/* Ombres */
+--shadow-subtle: 0 2px 8px rgba(10, 10, 10, 0.04)
 ```
 
-## 📊 Base de Données des Offres
+### Composants Clés
 
-Les offres sont actuellement stockées dans `app.js` sous forme de tableau :
+**Bouton Primaire**
+- Fond rose TBS, texte blanc
+- Padding 18px 48px, radius 12px
+- Hover : lift -2px, shadow forte
+- Uppercase 14px, tracking +0.05em
+
+**Card Offre**
+- Fond blanc, border 0.5px gris clair
+- Padding 32px, radius 12px
+- Hover : border noir, lift -4px
+- Scroll reveal avec stagger
+
+**Point de Connexion**
+- Cercle plein 4px rose TBS
+- Outline 12px border 1px
+- Utilisé comme marqueur visuel
+
+**Ligne Connecteur**
+- SVG 1px, stroke rose 20% opacité
+- Animation stroke-dasharray 600ms
+- Angle 30-60°, jamais horizontal/vertical
+
+---
+
+## 📱 Responsive
+
+### Desktop (> 1024px)
+- Grille 3 colonnes pour cards
+- Marges latérales 10% (140px sur 1400px)
+- Hero titre 64px
+- Navigation horizontale
+
+### Tablet (768px - 1024px)
+- Grille 2 colonnes
+- Marges latérales adaptées
+- Hero titre 48px
+- Process en 1 colonne
+
+### Mobile (< 768px)
+- Grille 1 colonne
+- Marges latérales 5%
+- Hero titre 32px
+- Menu hamburger
+- Boutons pleine largeur
+
+---
+
+## 🎯 Personnalisation
+
+### Ajouter une Offre
+
+Éditer `app.js` :
 
 ```javascript
 const jobsDatabase = [
     {
-        id: 1,
-        company: "Airbus",
-        title: "Stage Ingénieur Aéronautique",
-        type: "stage",
-        description: "...",
-        location: "Toulouse",
-        posted: "Il y a 2h",
-        badge: "stage"
-    },
-    // ... 9 offres au total
-]
-```
-
-**Types d'offres** : `stage`, `cdd`, `cdi`, `petit-boulot`
-
-## 🔧 Personnalisation
-
-### Ajouter une Offre
-
-Éditez `app.js` et ajoutez dans `jobsDatabase` :
-
-```javascript
-{
-    id: 10,
-    company: "Votre Entreprise",
-    title: "Intitulé du poste",
-    type: "stage|cdd|cdi|petit-boulot",
-    description: "Description complète...",
-    location: "Ville",
-    posted: "Il y a Xh",
-    badge: "type"
-}
+        id: 7,
+        company: "Votre Entreprise",
+        title: "Titre du Poste",
+        type: "stage",  // ou "cdd", "cdi", "petit-boulot"
+        description: "Description courte et impactante.",
+        location: "Ville",
+        posted: "Il y a Xh"
+    }
+];
 ```
 
 ### Modifier les Couleurs
 
-Éditez les variables CSS dans `styles.css` :
+Éditer les tokens dans `styles.css` :
 
 ```css
 :root {
-    --primary-color: #ec4899;  /* Rose TBS */
-    --secondary-color: #f43f5e; /* Rouge doux */
+    --rose-tbs: #EA5256;  /* Rose TBS */
+    --noir: #0A0A0A;      /* Noir principal */
 }
 ```
 
+⚠️ **Important** : Le design "Connexions" repose sur la parcimonie. Ne pas ajouter plus de 2-3 couleurs accent.
+
 ### Changer les Statistiques
 
-Éditez les `data-target` dans `index.html` :
+Éditer les attributs `data-target` dans `index.html` :
 
 ```html
 <div class="stat-number" data-target="500">0</div>
 ```
 
-## 📱 Responsive Design
+---
 
-Le site s'adapte automatiquement à tous les écrans :
+## 🎬 Animations
 
-- **Desktop** : Grilles multi-colonnes, navigation horizontale
-- **Tablet** : Adaptation des grilles 2 colonnes
-- **Mobile** : Navigation hamburger, colonnes uniques
+### Compteurs
+- Trigger : Intersection Observer (50% visible)
+- Duration : 1200ms
+- Easing : Ease-out
+- Font : JetBrains Mono
 
-## 🎯 Objectifs & Vision
+### Lignes Connecteurs
+- SVG stroke-dasharray animation
+- Duration : 600ms hero, 800ms process
+- Delay : 200ms (process)
 
-### Court Terme (Version 1.0) ✅
-- [x] Site vitrine professionnel
-- [x] Formulaire de dépôt d'offres
-- [x] Catalogue d'offres filtrable
-- [x] Design responsive
+### Cards Reveal
+- Opacity 0 → 1, translateY 24px → 0
+- Duration : 300ms ease-out
+- Stagger : 80ms entre chaque card
 
-### Moyen Terme (Version 2.0)
-- [ ] Backend API (Node.js/Express)
-- [ ] Base de données (MongoDB/PostgreSQL)
-- [ ] Authentification entreprises/étudiants
-- [ ] Système de candidature en ligne
-- [ ] Dashboard entreprises
-- [ ] Notifications email
+### Hovers
+- Duration : 200ms ease-out
+- Cards : lift -4px + border noir
+- Boutons : lift -2px + shadow forte
 
-### Long Terme (Version 3.0)
-- [ ] Matching intelligent IA
-- [ ] Application mobile (React Native)
-- [ ] Intégration calendrier événements
-- [ ] Analytics avancés
-- [ ] Export CV automatique
+---
+
+## 📐 Grille & Espacements
+
+### Baseline Grid 8px
+
+Tous les espacements sont multiples de 8px :
+- 8px (space-1) : gaps internes
+- 16px (space-2) : spacing éléments proches
+- 32px (space-4) : padding cards
+- 96px (space-12) : padding sections
+
+### Conteneurs
+
+```css
+Max-width : 1400px
+Padding latéral : 10% de la viewport
+Sections : padding vertical 96px
+Gap entre sections : 80px
+```
+
+---
 
 ## 🚢 Déploiement
 
 ### GitHub Pages
 
+Le site est prêt pour être déployé :
 ```bash
-# Le site est prêt pour GitHub Pages
-# Settings → Pages → Source: main branch → /easyjob
+# Settings → Pages → Source: main branch
+# URL : https://username.github.io/easyjob
 ```
 
-### Netlify
+### Netlify / Vercel
 
-```bash
-# Base directory: easyjob
-# Build command: (aucune)
-# Publish directory: .
-```
-
-### Serveur Web Classique
-
-```bash
-# Copier tous les fichiers dans votre répertoire web
-cp -r easyjob/* /var/www/html/easyjob/
-```
-
-## 👥 Équipe de Développement
-
-- **Responsable Communication** : [Votre nom]
-- **Design & Développement** : Claude AI Assistant
-- **École** : TBS Education, Toulouse
-
-## 📧 Contact
-
-**EasyJob - TBS Education**
-- 📍 20 Boulevard Lascrosses, 31000 Toulouse
-- 📧 contact@easyjob-tbs.fr
-- 📞 05 61 29 49 49
-- 🔗 LinkedIn : [À créer]
-- 📸 Instagram : [À créer]
-
-## 📝 Licence
-
-Ce projet est développé pour TBS Education. Tous droits réservés.
-
-## 🤝 Contribution
-
-Pour toute amélioration ou suggestion :
-1. Contactez l'équipe EasyJob
-2. Proposez vos modifications
-3. Testez sur tous les appareils
-
-## ⚠️ Notes Importantes
-
-- Les données actuelles (offres, statistiques) sont des **exemples**
-- Le formulaire n'envoie pas réellement d'emails (simulation)
-- En production, vous devrez :
-  - Implémenter un backend
-  - Configurer un service d'envoi d'emails
-  - Sécuriser les formulaires (CSRF, validation)
-  - Ajouter un RGPD compliance
-  - Héberger sur un domaine sécurisé (HTTPS)
-
-## 🎓 Ressources
-
-- [Documentation TBS Education](https://www.tbs-education.fr)
-- [Google Fonts - Inter](https://fonts.google.com/specimen/Inter)
-- [CSS Grid Guide](https://css-tricks.com/snippets/css/complete-guide-grid/)
-- [JavaScript ES6+](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+Déploiement automatique à chaque push :
+- Base directory : `easyjob`
+- Build command : (aucune)
+- Publish directory : `.`
 
 ---
 
-**Développé avec ❤️ pour les étudiants et entreprises de TBS Education**
+## 🎓 Philosophie "Connexions"
+
+> **"Connecter talents et opportunités"**
+
+Le design "Connexions" traduit visuellement l'essence du job service :
+- **Lignes connecteurs** : Symbolisent les liens créés entre étudiants et entreprises
+- **Points de connexion** : Marquent les moments clés du parcours utilisateur
+- **Espaces négatifs** : Donnent de l'air, mettent en valeur le contenu essentiel
+- **Monochrome** : Projette professionnalisme et sérieux (important pour B2B)
+- **Rose TBS** : Utilisé avec parcimonie pour guider l'œil vers les actions clés
+
+---
+
+## ⚠️ Contraintes & Limites
+
+### Actuellement
+- Données statiques (offres hardcodées dans JS)
+- Pas de backend (formulaire non fonctionnel)
+- Pas d'authentification utilisateur
+- Pas de système de candidature
+
+### Pour Production
+- [ ] Backend API (Node.js/Express)
+- [ ] Base de données (PostgreSQL)
+- [ ] Envoi d'emails automatisés
+- [ ] Système de candidature en ligne
+- [ ] Dashboard entreprises
+- [ ] Analytics et tracking
+
+---
+
+## 📚 Ressources
+
+- [Inter Font](https://fonts.google.com/specimen/Inter)
+- [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono)
+- [CSS Grid Guide](https://css-tricks.com/snippets/css/complete-guide-grid/)
+- [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+
+---
+
+## 👥 Équipe
+
+- **Design System** : "Connexions" (Minimaliste Épuré)
+- **École** : TBS Education, Toulouse
+- **Contact** : contact@easyjob-tbs.fr
+
+---
+
+## 📝 Licence
+
+© 2026 EasyJob — TBS Education. Tous droits réservés.
+
+---
+
+**Développé avec une obsession du détail pour les étudiants et entreprises de TBS Education**

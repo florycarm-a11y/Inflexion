@@ -1,6 +1,11 @@
-// ===========================
-// Configuration & Data
-// ===========================
+// ═══════════════════════════════════════════════════
+// EASYJOB - Design System "Connexions"
+// JavaScript Interactions & Animations
+// ═══════════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════════
+// BASE DE DONNÉES OFFRES
+// ═══════════════════════════════════════════════════
 
 const jobsDatabase = [
     {
@@ -8,113 +13,90 @@ const jobsDatabase = [
         company: "Airbus",
         title: "Stage Ingénieur Aéronautique",
         type: "stage",
-        description: "Rejoignez notre équipe d'ingénierie pour travailler sur les programmes A320 et A350. Formation en analyse structurelle et aérodynamique.",
+        description: "Rejoignez notre équipe d'ingénierie pour travailler sur les programmes A320 et A350. Formation en analyse structurelle.",
         location: "Toulouse",
-        posted: "Il y a 2h",
-        badge: "stage"
+        posted: "Il y a 2h"
     },
     {
         id: 2,
-        company: "Decathlon",
-        title: "Vendeur Sportif - Temps Partiel",
-        type: "petit-boulot",
-        description: "Passionné de sport ? Rejoignez notre équipe pour conseiller nos clients. Horaires flexibles compatibles avec les études.",
-        location: "Toulouse",
-        posted: "Il y a 5h",
-        badge: "petit-boulot"
-    },
-    {
-        id: 3,
         company: "Capgemini",
         title: "Consultant Junior Data Analytics",
         type: "cdi",
-        description: "Intégrez notre practice Data & AI. Formation assurée aux outils Microsoft Power BI et Python. Déplacements clients occasionnels.",
+        description: "Intégrez notre practice Data & AI. Formation aux outils Microsoft Power BI et Python. Projets clients innovants.",
         location: "Toulouse",
-        posted: "Il y a 1j",
-        badge: "cdi"
+        posted: "Il y a 4h"
+    },
+    {
+        id: 3,
+        company: "BNP Paribas",
+        title: "Chargé de Clientèle",
+        type: "cdd",
+        description: "Accompagnez nos clients particuliers dans leurs projets financiers. Formation bancaire assurée. CDD 6 mois.",
+        location: "Toulouse",
+        posted: "Il y a 1j"
     },
     {
         id: 4,
-        company: "BNP Paribas",
-        title: "Chargé de Clientèle - CDD 6 mois",
-        type: "cdd",
-        description: "Accompagnez nos clients particuliers dans leurs projets financiers. Formation bancaire assurée. CDD avec possibilité de CDI.",
-        location: "Toulouse",
-        posted: "Il y a 1j",
-        badge: "cdd"
-    },
-    {
-        id: 5,
         company: "L'Oréal",
         title: "Stage Marketing Digital",
         type: "stage",
         description: "Participez au lancement de nos campagnes digitales. Création de contenu, analyse de performance, réseaux sociaux.",
         location: "Paris",
-        posted: "Il y a 2j",
-        badge: "stage"
+        posted: "Il y a 1j"
     },
     {
-        id: 6,
-        company: "Carrefour",
-        title: "Hôte de Caisse - Week-ends",
-        type: "petit-boulot",
-        description: "Travail uniquement les samedis et dimanches. Horaires compatibles avec vos études. Équipe dynamique.",
-        location: "Toulouse",
-        posted: "Il y a 2j",
-        badge: "petit-boulot"
-    },
-    {
-        id: 7,
-        company: "Sopra Steria",
-        title: "Développeur Full Stack Junior",
-        type: "cdi",
-        description: "React, Node.js, MongoDB. Projets innovants pour grands comptes. Télétravail 2j/semaine. Ambiance startup.",
-        location: "Toulouse",
-        posted: "Il y a 3j",
-        badge: "cdi"
-    },
-    {
-        id: 8,
-        company: "Orange",
-        title: "Conseiller Client - CDD 3 mois",
-        type: "cdd",
-        description: "Support technique et commercial en boutique. Formation produits assurée. Prime sur objectifs.",
-        location: "Toulouse",
-        posted: "Il y a 3j",
-        badge: "cdd"
-    },
-    {
-        id: 9,
+        id: 5,
         company: "Deloitte",
-        title: "Auditeur Junior - Stage",
+        title: "Auditeur Junior",
         type: "stage",
         description: "Missions d'audit financier chez nos clients grands comptes. Formation aux normes IFRS. Stage pré-embauche.",
         location: "Toulouse",
-        posted: "Il y a 4j",
-        badge: "stage"
+        posted: "Il y a 2j"
+    },
+    {
+        id: 6,
+        company: "Decathlon",
+        title: "Vendeur Sportif",
+        type: "petit-boulot",
+        description: "Passionné de sport ? Rejoignez notre équipe pour conseiller nos clients. Horaires flexibles compatibles études.",
+        location: "Toulouse",
+        posted: "Il y a 3j"
     }
 ];
 
-// ===========================
-// Navigation & Scroll
-// ===========================
+// ═══════════════════════════════════════════════════
+// INITIALISATION
+// ═══════════════════════════════════════════════════
 
 document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initMobileMenu();
-    initSmoothScroll();
-    initStatsAnimation();
+    initCounters();
+    initLineAnimations();
     initJobsDisplay();
-    initFilters();
-    initForm();
-    initScrollEffects();
+    initScrollReveal();
 });
 
-function initNavigation() {
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('.section, .hero');
+// ═══════════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════════
 
-    // Observer pour détecter les sections visibles
+function initNavigation() {
+    const nav = document.getElementById('nav');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Effet scrolled sur la nav
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+
+    // Active state sur scroll
+    const sections = document.querySelectorAll('.section');
+
     const observerOptions = {
         root: null,
         rootMargin: '-50% 0px -50% 0px',
@@ -142,64 +124,34 @@ function initNavigation() {
     });
 }
 
-function initMobileMenu() {
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const navMenu = document.getElementById('navMenu');
+// ═══════════════════════════════════════════════════
+// MENU MOBILE
+// ═══════════════════════════════════════════════════
 
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            mobileMenuBtn.classList.toggle('active');
+function initMobileMenu() {
+    const toggle = document.getElementById('navMobileToggle');
+    const menu = document.getElementById('navMenu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    if (toggle) {
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
         });
 
         // Fermer le menu au clic sur un lien
-        document.querySelectorAll('.nav-link').forEach(link => {
+        navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                mobileMenuBtn.classList.remove('active');
+                menu.classList.remove('active');
             });
         });
     }
 }
 
-function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                const offsetTop = target.offsetTop - 80;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-}
+// ═══════════════════════════════════════════════════
+// COMPTEURS ANIMÉS
+// ═══════════════════════════════════════════════════
 
-function initScrollEffects() {
-    const navbar = document.getElementById('navbar');
-    let lastScroll = 0;
-
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-
-        if (currentScroll > 100) {
-            navbar.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
-        } else {
-            navbar.style.boxShadow = 'none';
-        }
-
-        lastScroll = currentScroll;
-    });
-}
-
-// ===========================
-// Stats Animation
-// ===========================
-
-function initStatsAnimation() {
+function initCounters() {
     const statNumbers = document.querySelectorAll('.stat-number');
 
     const observerOptions = {
@@ -210,9 +162,10 @@ function initStatsAnimation() {
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                entry.target.classList.add('animated');
-                animateValue(entry.target, 0, parseInt(entry.target.getAttribute('data-target')), 2000);
+            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                entry.target.classList.add('counted');
+                const target = parseInt(entry.target.getAttribute('data-target'));
+                animateCounter(entry.target, 0, target, 1200);
             }
         });
     }, observerOptions);
@@ -220,7 +173,7 @@ function initStatsAnimation() {
     statNumbers.forEach(stat => observer.observe(stat));
 }
 
-function animateValue(element, start, end, duration) {
+function animateCounter(element, start, end, duration) {
     const range = end - start;
     const increment = range / (duration / 16);
     let current = start;
@@ -228,31 +181,52 @@ function animateValue(element, start, end, duration) {
     const timer = setInterval(() => {
         current += increment;
         if (current >= end) {
-            element.textContent = end.toLocaleString();
+            element.textContent = end;
             clearInterval(timer);
         } else {
-            element.textContent = Math.floor(current).toLocaleString();
+            element.textContent = Math.floor(current);
         }
     }, 16);
 }
 
-// ===========================
-// Jobs Display & Filters
-// ===========================
+// ═══════════════════════════════════════════════════
+// LIGNES CONNECTEURS
+// ═══════════════════════════════════════════════════
 
-function initJobsDisplay() {
-    displayJobs(jobsDatabase);
+function initLineAnimations() {
+    const connectorLine = document.querySelector('.connector-line');
+    const processConnector = document.querySelector('.process-connector');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.3
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                entry.target.classList.add('animated');
+            }
+        });
+    }, observerOptions);
+
+    if (connectorLine) observer.observe(connectorLine);
+    if (processConnector) observer.observe(processConnector);
 }
 
-function displayJobs(jobs) {
+// ═══════════════════════════════════════════════════
+// AFFICHAGE DES OFFRES
+// ═══════════════════════════════════════════════════
+
+function initJobsDisplay() {
     const jobsGrid = document.getElementById('jobsGrid');
     if (!jobsGrid) return;
 
     jobsGrid.innerHTML = '';
 
-    jobs.forEach((job, index) => {
+    jobsDatabase.forEach(job => {
         const jobCard = createJobCard(job);
-        jobCard.style.animationDelay = `${index * 0.1}s`;
         jobsGrid.appendChild(jobCard);
     });
 }
@@ -260,20 +234,17 @@ function displayJobs(jobs) {
 function createJobCard(job) {
     const card = document.createElement('div');
     card.className = 'job-card';
-    card.setAttribute('data-type', job.type);
 
     card.innerHTML = `
-        <div class="job-header">
-            <div>
-                <div class="job-company">${job.company}</div>
-                <h3 class="job-title">${job.title}</h3>
-            </div>
-            <span class="job-badge">${job.badge}</span>
+        <div class="job-card-header">
+            <div class="job-company">${job.company}</div>
+            <span class="job-badge ${job.type}">${getBadgeText(job.type)}</span>
         </div>
+        <h3 class="job-title">${job.title}</h3>
         <p class="job-description">${job.description}</p>
-        <div class="job-footer">
+        <div class="job-card-footer">
             <span class="job-location">📍 ${job.location}</span>
-            <span class="job-time">🕐 ${job.posted}</span>
+            <span class="job-time">${job.posted}</span>
         </div>
     `;
 
@@ -284,174 +255,73 @@ function createJobCard(job) {
     return card;
 }
 
+function getBadgeText(type) {
+    const badges = {
+        'stage': 'Stage',
+        'cdd': 'CDD',
+        'cdi': 'CDI',
+        'petit-boulot': 'Job'
+    };
+    return badges[type] || type;
+}
+
 function showJobDetails(job) {
-    // Ici, vous pouvez implémenter une modal pour afficher les détails
-    alert(`Détails du poste:\n\n${job.title}\n${job.company}\n\n${job.description}\n\nPour postuler, contactez: contact@easyjob-tbs.fr`);
+    // Simulation de modal ou navigation vers page détail
+    alert(`${job.title}\n\n${job.company}\n${job.location}\n\n${job.description}\n\nPour postuler : contact@easyjob-tbs.fr`);
 }
 
-function initFilters() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
+// ═══════════════════════════════════════════════════
+// SCROLL REVEAL
+// ═══════════════════════════════════════════════════
 
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Retirer la classe active de tous les boutons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Ajouter la classe active au bouton cliqué
-            button.classList.add('active');
+function initScrollReveal() {
+    const jobCards = document.querySelectorAll('.job-card');
 
-            const filter = button.getAttribute('data-filter');
-            filterJobs(filter);
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+            }
         });
+    }, observerOptions);
+
+    jobCards.forEach(card => {
+        observer.observe(card);
     });
 }
 
-function filterJobs(filter) {
-    if (filter === 'all') {
-        displayJobs(jobsDatabase);
-    } else {
-        const filteredJobs = jobsDatabase.filter(job => job.type === filter);
-        displayJobs(filteredJobs);
-    }
-}
+// ═══════════════════════════════════════════════════
+// SMOOTH SCROLL
+// ═══════════════════════════════════════════════════
 
-// ===========================
-// Form Handling
-// ===========================
-
-function initForm() {
-    const contactForm = document.querySelector('.contact-form');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', handleFormSubmit);
-    }
-}
-
-function handleFormSubmit(e) {
-    e.preventDefault();
-
-    const formData = {
-        company: document.getElementById('company').value,
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        jobTitle: document.getElementById('job-title').value,
-        contractType: document.getElementById('contract-type').value,
-        description: document.getElementById('description').value
-    };
-
-    // Validation basique
-    if (!formData.company || !formData.name || !formData.email || !formData.jobTitle || !formData.contractType || !formData.description) {
-        showNotification('Veuillez remplir tous les champs requis.', 'error');
-        return;
-    }
-
-    // Validation email
-    if (!isValidEmail(formData.email)) {
-        showNotification('Veuillez entrer une adresse email valide.', 'error');
-        return;
-    }
-
-    // Simulation d'envoi
-    showNotification('Votre offre a été envoyée avec succès ! Notre équipe vous contactera sous 24h.', 'success');
-
-    // Réinitialiser le formulaire
-    e.target.reset();
-
-    // En production, vous enverriez ces données à votre backend
-    console.log('Données du formulaire:', formData);
-}
-
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-function showNotification(message, type = 'info') {
-    // Créer la notification
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.textContent = message;
-
-    // Styles inline pour la notification
-    Object.assign(notification.style, {
-        position: 'fixed',
-        top: '100px',
-        right: '20px',
-        padding: '1rem 1.5rem',
-        borderRadius: '0.5rem',
-        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-        zIndex: '9999',
-        maxWidth: '400px',
-        fontSize: '0.875rem',
-        fontWeight: '500',
-        animation: 'slideIn 0.3s ease',
-        backgroundColor: type === 'success' ? '#10b981' : '#ef4444',
-        color: '#ffffff'
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const offsetTop = target.offsetTop - 80;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
     });
+});
 
-    document.body.appendChild(notification);
-
-    // Retirer après 5 secondes
-    setTimeout(() => {
-        notification.style.animation = 'slideOut 0.3s ease';
-        setTimeout(() => {
-            notification.remove();
-        }, 300);
-    }, 5000);
-}
-
-// Ajouter les animations CSS pour les notifications
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from {
-            transform: translateX(400px);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-
-    @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(400px);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(style);
-
-// ===========================
-// Utility Functions
-// ===========================
-
-// Debounce function pour optimiser les performances
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// ===========================
-// Export pour utilisation externe
-// ===========================
+// ═══════════════════════════════════════════════════
+// EXPORT
+// ═══════════════════════════════════════════════════
 
 window.EasyJobApp = {
-    displayJobs,
-    filterJobs,
-    showJobDetails,
-    jobsDatabase
+    jobsDatabase,
+    createJobCard,
+    showJobDetails
 };
 
-console.log('🚀 EasyJob App initialized successfully!');
+console.log('✨ EasyJob "Connexions" initialized');
