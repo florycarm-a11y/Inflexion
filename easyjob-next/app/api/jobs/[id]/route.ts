@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { getCurrentUser } from '@/lib/supabase'
 
 // GET /api/jobs/[id] - Détail d'une offre
 export async function GET(
@@ -50,7 +51,37 @@ export async function PATCH(
   { params }: { params: { id: string } }
 ) {
   try {
-    // TODO: Vérifier authentification et ownership
+    // Vérifier authentification
+    const user = await getCurrentUser()
+
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
+    if (user.role !== 'RECRUITER' && user.role !== 'ADMIN') {
+      return NextResponse.json(
+        { error: 'Forbidden - Recruiter access only' },
+        { status: 403 }
+      )
+    }
+
+    // Vérifier ownership
+    const existingJob = await prisma.job.findUnique({
+      where: { id: params.id },
+      include: { company: true },
+    })
+
+    if (!existingJob) {
+      return NextResponse.json({ error: 'Job not found' }, { status: 404 })
+    }
+
+    if (existingJob.company.createdById !== user.id && user.role !== 'ADMIN') {
+      return NextResponse.json(
+        { error: 'Access denied - Not your job' },
+        { status: 403 }
+      )
+    }
+
     const body = await request.json()
 
     const job = await prisma.job.update({
@@ -82,7 +113,37 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    // TODO: Vérifier authentification et ownership
+    // Vérifier authentification
+    const user = await getCurrentUser()
+
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
+    if (user.role !== 'RECRUITER' && user.role !== 'ADMIN') {
+      return NextResponse.json(
+        { error: 'Forbidden - Recruiter access only' },
+        { status: 403 }
+      )
+    }
+
+    // Vérifier ownership
+    const existingJob = await prisma.job.findUnique({
+      where: { id: params.id },
+      include: { company: true },
+    })
+
+    if (!existingJob) {
+      return NextResponse.json({ error: 'Job not found' }, { status: 404 })
+    }
+
+    if (existingJob.company.createdById !== user.id && user.role !== 'ADMIN') {
+      return NextResponse.json(
+        { error: 'Access denied - Not your job' },
+        { status: 403 }
+      )
+    }
+
     await prisma.job.delete({
       where: { id: params.id },
     })

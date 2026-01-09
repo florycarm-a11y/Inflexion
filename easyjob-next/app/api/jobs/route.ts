@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { getCurrentUser } from '@/lib/supabase'
 import { z } from 'zod'
 
 // GET /api/jobs - Liste des offres avec filtres
@@ -80,14 +81,37 @@ const createJobSchema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
-    // TODO: Vérifier authentification et rôle recruteur
-    // const session = await getSession(request)
-    // if (!session || session.user.role !== 'RECRUITER') {
-    //   return NextResponse.json({ error: 'Unauthorized' }, { status: 403 })
-    // }
+    // Vérifier authentification et rôle recruteur
+    const user = await getCurrentUser()
+
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
+    if (user.role !== 'RECRUITER' && user.role !== 'ADMIN') {
+      return NextResponse.json(
+        { error: 'Forbidden - Recruiter access only' },
+        { status: 403 }
+      )
+    }
 
     const body = await request.json()
     const validatedData = createJobSchema.parse(body)
+
+    // Vérifier que le recruteur possède bien l'entreprise
+    const company = await prisma.company.findFirst({
+      where: {
+        id: validatedData.companyId,
+        createdById: user.id,
+      },
+    })
+
+    if (!company) {
+      return NextResponse.json(
+        { error: 'Company not found or access denied' },
+        { status: 403 }
+      )
+    }
 
     const job = await prisma.job.create({
       data: {

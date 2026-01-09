@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { getCurrentUser } from '@/lib/supabase'
 import { z } from 'zod'
 
 const applySchema = z.object({
@@ -13,14 +14,19 @@ export async function POST(
   { params }: { params: { id: string } }
 ) {
   try {
-    // TODO: Récupérer l'utilisateur authentifié
-    // const session = await getSession(request)
-    // if (!session || session.user.role !== 'STUDENT') {
-    //   return NextResponse.json({ error: 'Unauthorized' }, { status: 403 })
-    // }
+    // Vérifier authentification
+    const user = await getCurrentUser()
 
-    // Pour la démo, on utilise un userId fictif
-    const userId = 'demo-user-id'
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    }
+
+    if (user.role !== 'STUDENT') {
+      return NextResponse.json(
+        { error: 'Forbidden - Students only' },
+        { status: 403 }
+      )
+    }
 
     const body = await request.json()
     const validatedData = applySchema.parse(body)
@@ -62,7 +68,7 @@ export async function POST(
       where: {
         jobId_userId: {
           jobId: params.id,
-          userId,
+          userId: user.id,
         },
       },
     })
@@ -78,7 +84,7 @@ export async function POST(
     const application = await prisma.application.create({
       data: {
         jobId: params.id,
-        userId,
+        userId: user.id,
         coverLetter: validatedData.coverLetter,
         cvUrl: validatedData.cvUrl,
         status: 'PENDING',
