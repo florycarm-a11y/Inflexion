@@ -1,259 +1,190 @@
-// ============================================
-// GéoFinance — Multi-page Application
+// GéoFinance — v3.0 — Optimized, real URLs, trader-grade content
 // Updated: 4 février 2026
-// ============================================
 
-// --- News Database (enriched, current) ---
+const categoryTrends = {
+    geopolitics: 'Le risk-off domine. Les tarifs Groenland ont déclenché le pire sell-off depuis octobre sur le S&P 500 (−2,1%). Le TACO pattern (Trump Always Chickens Out) se confirme avec la pause du 22 janvier, mais le taux effectif moyen des tarifs US atteint 10,1% — plus haut depuis 1946. La nomination de Warsh à la Fed ajoute une couche d\'incertitude monétaire. Le WEF classe la confrontation géoéconomique comme risque #1 mondial. Positionnement : long gold, short duration, sous-pondération Europe.',
+    markets: 'Régime de volatilité élevée. Le VIX repasse au-dessus de 20. Le S&P 500 a effacé ses gains 2026 en une séance sur les tarifs Groenland avant de rebondir +1,2% sur le framework deal. La nomination Warsh est lue hawkish par le marché : le dollar et les yields courts montent, les anticipations de cuts reculent. Nvidia ($57Mds de CA au Q3, +62% YoY) reste le seul pilier haussier crédible. Le consensus voit un marché range-bound tant que le risque tarifaire persiste.',
+    crypto: 'Crypto winter confirmé. Le BTC a touché $72 884 le 3 février, −40% depuis le pic d\'octobre 2025 à $126 000. Liquidations de $2,56Mds en 24h (top 10 historique). Les ETF BTC spot enregistrent $1,7Md de sorties en deux semaines (CoinShares). Le CIO de Bitwise compare la situation aux bear markets de 2018 et 2022. Pendant ce temps, l\'or pulvérise $5 100/oz. La thèse du « digital gold » ne tient plus — le BTC reste un actif risk-on à fort bêta, corrélé au Nasdaq.',
+    commodities: 'L\'or est en régime parabolique : $5 136/oz, +64% sur un an, meilleure performance depuis 1979. Les banques centrales achètent 585 tonnes/trimestre (J.P. Morgan). Goldman Sachs relève son objectif à $5 400, UBS vise $6 200. L\'argent franchit $100/oz pour la première fois. Le pétrole WTI tient au-dessus de $78 sur la prime géopolitique Venezuela/Iran. Seul le gaz naturel et les céréales sont en repli. Biais : long métaux précieux, neutre énergie.',
+    etf: 'Rotation massive des flux. Les ETF or (GLD, IAU) captent leurs plus gros flux depuis 2020. À l\'inverse, les ETF BTC spot (IBIT, FBTC) subissent $1,7Md de sorties nettes. Les ETF obligataires court terme (SHY) profitent du flight-to-quality. Les ETF IA (BOTZ, SMH) surperforment malgré la volatilité ambiante, portés par Nvidia et Broadcom. Le SPY résiste mieux que le QQQ — la rotation value/growth s\'accentue.'
+};
+
 const newsDatabase = {
     geopolitics: [
-        { source: 'NBC News', sourceUrl: 'https://www.nbcnews.com', title: 'Tarifs sur le Groenland : Trump menace l\'UE et le Royaume-Uni de sanctions commerciales', description: 'Le président américain exige le soutien européen pour ses ambitions sur le Groenland, déclenchant un plongeon des marchés avec 1 200 milliards de capitalisation effacés en une séance.', tags: ['geopolitics', 'trade'], time: '2 h', impact: 'high' },
-        { source: 'Reuters', sourceUrl: 'https://www.reuters.com', title: 'Cour suprême US : la légalité des tarifs IEEPA en question', description: 'La Cour suprême examine le fondement juridique des tarifs imposés par Trump. Un arrêt défavorable pourrait forcer le remboursement des droits déjà perçus.', tags: ['geopolitics', 'politics'], time: '3 h', impact: 'high' },
-        { source: 'Bloomberg', sourceUrl: 'https://www.bloomberg.com', title: 'USA : stockpile stratégique de 12 milliards pour contrer la Chine sur les minéraux', description: 'Washington lance un programme de 12 milliards de dollars pour constituer des réserves de minéraux critiques, réduisant sa dépendance vis-à-vis de Pékin.', tags: ['geopolitics', 'trade'], time: '4 h', impact: 'high' },
-        { source: 'Financial Times', sourceUrl: 'https://www.ft.com', title: 'Inde : accords commerciaux successifs avec l\'UE et les USA', description: 'New Delhi signe coup sur coup des accords commerciaux avec Bruxelles et Washington, se positionnant comme pivot stratégique dans la guerre économique sino-américaine.', tags: ['geopolitics', 'trade'], time: '5 h', impact: 'medium' },
-        { source: 'Al Jazeera', sourceUrl: 'https://www.aljazeera.com', title: 'Venezuela : implications géopolitiques de l\'opération militaire américaine', description: 'La capture du président Maduro par les forces spéciales américaines redéfinit l\'équilibre géopolitique en Amérique latine. Les marchés du pétrole réagissent.', tags: ['geopolitics', 'conflicts'], time: '6 h', impact: 'high' },
-        { source: 'BBC News', sourceUrl: 'https://www.bbc.com/news', title: 'Royaume-Uni : 400 millions de livres de contrats en Éthiopie liés à la migration', description: 'Londres déploie des accords énergétiques en Éthiopie dans le cadre d\'une stratégie diplomatique combinant développement et politique migratoire.', tags: ['geopolitics', 'politics'], time: '7 h', impact: 'medium' },
-        { source: 'Le Monde', sourceUrl: 'https://www.lemonde.fr', title: 'WEF 2026 : la confrontation géoéconomique, premier risque mondial', description: 'Le Global Risks Report 2026 du Forum économique mondial classe la confrontation géoéconomique comme le risque numéro un, en hausse de huit positions.', tags: ['geopolitics', 'politics'], time: '8 h', impact: 'high' },
-        { source: 'Foreign Affairs', sourceUrl: 'https://www.foreignaffairs.com', title: 'Fragmentation de l\'ordre mondial : analyse structurelle des blocs émergents', description: 'La compétition USA-Chine, le rôle pivot de l\'Inde, et la montée des puissances moyennes redessinent l\'architecture des relations internationales.', tags: ['geopolitics', 'politics'], time: '10 h', impact: 'medium' },
-        { source: 'CNBC', sourceUrl: 'https://www.cnbc.com', title: 'Le TACO trade : quand Trump recule, les marchés rebondissent', description: 'Le pattern "Trump Always Chickens Out" se confirme : menace maximale, volatilité, puis désescalade. Les traders exploitent ce cycle à leur avantage.', tags: ['geopolitics', 'trade'], time: '12 h', impact: 'medium' },
-        { source: 'The Economist', sourceUrl: 'https://www.economist.com', title: 'Tarifs pharmaceutiques : la prochaine bombe à 200 % de droits de douane', description: 'L\'administration Trump signale des tarifs potentiels allant jusqu\'à 200 % sur les produits pharmaceutiques importés d\'ici fin 2026.', tags: ['geopolitics', 'trade'], time: '14 h', impact: 'high' }
+        { source: 'NBC News', url: 'https://www.nbcnews.com/business/economy/trump-denmark-european-tariffs-greenland-deal-rcna254551', title: 'Tarifs Groenland : Trump impose 10% sur 8 pays européens, escalade à 25% en juin', description: 'Tarifs conditionnés au soutien européen pour l\'acquisition du Groenland. Danemark, France, Allemagne, UK, Norvège, Suède, Pays-Bas et Finlande visés. Le Dow lâche 870 points, le S&P efface ses gains 2026.', tags: ['geopolitics', 'trade'], time: '17 jan.', impact: 'high' },
+        { source: 'Bloomberg', url: 'https://www.bloomberg.com/news/articles/2026-01-20/wall-street-s-calm-shattered-by-greenland-and-japan-shocks', title: 'Wall Street : le calme brisé par le choc Groenland — S&P 500 −2,1%', description: 'Pire séance depuis octobre. Futures S&P −1,1%, Nasdaq 100 −1,4%. Euro Stoxx 600 au plus bas en 2 mois. Gold franchit $4 660/oz dans la foulée. Le risque tarifaire redevient le driver dominant.', tags: ['geopolitics', 'markets'], time: '20 jan.', impact: 'high' },
+        { source: 'NBC News', url: 'https://www.nbcnews.com/business/economy/eu-trade-deal-trump-greenland-tariff-rcna255199', title: 'L\'UE suspend l\'accord commercial avec Washington en représailles', description: 'Le Parlement européen gèle la ratification de l\'accord commercial été 2025. Un paquet de rétorsions de $110Mds est à l\'étude. Bernd Lange : « Nous n\'avons plus d\'alternative. »', tags: ['geopolitics', 'trade'], time: '21 jan.', impact: 'high' },
+        { source: 'Bloomberg', url: 'https://www.bloomberg.com/news/articles/2026-01-30/trump-picks-a-reinvented-kevin-warsh-to-lead-the-federal-reserve', title: 'Trump nomme Kevin Warsh à la Fed : lecture hawkish, dollar et yields en hausse', description: 'Warsh promet un « changement de régime » : réduction du bilan, focus inflation, productivité IA. Le marché lit hawkish. Treasury yields en hausse, short-dated rallye. Le sénateur Tillis menace de bloquer la confirmation.', tags: ['geopolitics', 'politics'], time: '30 jan.', impact: 'high' },
+        { source: 'NBC News', url: 'https://www.nbcnews.com/business/economy/trump-pauses-greenland-tariffs-rcna255270', title: 'Trump suspend les tarifs Groenland — le TACO trade se confirme', description: 'Pause sur les droits de douane après un « framework deal » avec l\'OTAN. S&P rebondit +1,2%, meilleure séance depuis novembre. Pattern récurrent : menace max → volatilité → recul → rally de soulagement.', tags: ['geopolitics', 'trade'], time: '22 jan.', impact: 'high' }
     ],
     markets: [
-        { source: 'Bloomberg', sourceUrl: 'https://www.bloomberg.com', title: 'Wall Street : le S&P 500 perd 1 200 milliards en une séance sur les tarifs Groenland', description: 'Le S&P 500 chute de 2,1 %, le Nasdaq de 2,4 %, le Dow Jones de 870 points. Pire séance depuis octobre sur fond de menaces tarifaires.', tags: ['markets'], time: '1 h', impact: 'high' },
-        { source: 'CNBC', sourceUrl: 'https://www.cnbc.com', title: 'Kevin Warsh nommé à la Fed : repricing immédiat des anticipations dollar', description: 'La nomination surprise de Kevin Warsh à la présidence de la Réserve fédérale provoque un ajustement des positions sur le dollar et les taux.', tags: ['markets'], time: '3 h', impact: 'high' },
-        { source: 'Wall Street Journal', sourceUrl: 'https://www.wsj.com', title: 'Manufacturing rebound : les PMI remontent à mesure que les craintes tarifaires s\'apaisent', description: 'Les indices manufacturiers rebondissent dans les économies clés. Signal positif tempéré par l\'incertitude persistante de la politique commerciale.', tags: ['markets'], time: '4 h', impact: 'medium' },
-        { source: 'Les Échos', sourceUrl: 'https://www.lesechos.fr', title: 'Euro Stoxx 50 : l\'automobile allemande sous pression des tarifs américains', description: 'Goldman Sachs estime qu\'un tarif de 10 % réduirait le PIB réel allemand de 0,2 %. BMW, Mercedes et Volkswagen en première ligne.', tags: ['markets'], time: '5 h', impact: 'medium' },
-        { source: 'Financial Times', sourceUrl: 'https://www.ft.com', title: 'Inflation collante : le risque d\'un pivot hawkish de la Fed', description: 'Si la pression inflationniste persiste, un resserrement rapide des conditions financières menacerait les actifs risqués. J.P. Morgan appelle à l\'agilité.', tags: ['markets'], time: '6 h', impact: 'high' },
-        { source: 'MarketWatch', sourceUrl: 'https://www.marketwatch.com', title: 'VIX en hausse : la volatilité reprend ses droits après la trêve de janvier', description: 'L\'indice de la peur repasse au-dessus de 20. Les options de couverture sur indices enregistrent des volumes records.', tags: ['markets'], time: '7 h', impact: 'medium' },
-        { source: 'Reuters', sourceUrl: 'https://www.reuters.com', title: 'Dollar index : affaiblissement sur fond d\'incertitude politique', description: 'Le DXY recule face à l\'euro et au yen. Les marchés anticipent une politique monétaire moins prévisible sous la nouvelle direction de la Fed.', tags: ['markets'], time: '8 h', impact: 'medium' },
-        { source: 'Barron\'s', sourceUrl: 'https://www.barrons.com', title: 'Midterms 2026 : comment les marchés se positionnent', description: 'Historiquement, les marchés gagnent en moyenne 15 % dans les 12 mois suivant les midterms. Mais le contexte géopolitique actuel brouille les repères.', tags: ['markets'], time: '10 h', impact: 'medium' }
+        { source: 'Bloomberg', url: 'https://www.bloomberg.com/news/articles/2026-01-20/asian-stocks-set-to-fall-as-global-selloff-deepens-markets-wrap', title: 'Sell-off global : le S&P 500 efface ses gains 2026, VIX au plus haut depuis novembre', description: 'Les tarifs Groenland déclenchent une vague de ventes coordonnée sur toutes les classes d\'actifs risqués. Le VIX passe au-dessus de 20. Les flux se dirigent vers l\'or (+2,2%), les Treasuries et le yen.', tags: ['markets'], time: '20 jan.', impact: 'high' },
+        { source: 'Bloomberg', url: 'https://www.bloomberg.com/news/articles/2026-01-30/trump-picks-kevin-warsh-as-fed-chair-wall-street-reacts', title: 'Wall Street réagit à Warsh : choix hawkish, dollar fort, courbe qui se pentifie', description: 'Le consensus sell-side lit la nomination comme une résistance à l\'expansion du bilan et un soutien au dollar. Les anticipations de cuts reculent. Les yields courts rallient sur le soulagement — Trump n\'a pas choisi un dovish extrême.', tags: ['markets'], time: '30 jan.', impact: 'high' },
+        { source: 'Bloomberg', url: 'https://www.bloomberg.com/news/articles/2026-01-18/trump-tariff-threat-to-weigh-on-risk-sentiment-european-stocks', title: 'Tarifs Trump : l\'automobile allemande en première ligne, Euro Stoxx sous pression', description: 'Goldman estime qu\'un tarif de 10% réduirait le PIB allemand de 0,2%. BMW, Mercedes, VW directement exposés. Le DAX sous-performe le CAC 40. Les credit spreads européens s\'écartent.', tags: ['markets'], time: '18 jan.', impact: 'medium' },
+        { source: 'CNBC', url: 'https://www.cnbc.com/2025/11/19/nvidia-nvda-earnings-report-q3-2026.html', title: 'Nvidia Q3 : $57Mds de CA (+62% YoY), guidance Q4 à $65Mds — le seul pilier du marché', description: 'EPS $1,30 vs $1,25 attendu. Data center : $43Mds en compute, $8,2Mds en networking. Backlog de $500Mds sur Blackwell/Rubin. Le titre monte de 4% en after-hours. L\'IA reste le dernier rempart haussier des indices.', tags: ['markets'], time: '19 nov. 2025', impact: 'high' }
     ],
     crypto: [
-        { source: 'CoinDesk', sourceUrl: 'https://www.coindesk.com', title: 'Bitcoin sous 73 000 $ : plus bas de 16 mois dans un sell-off massif', description: 'Le BTC touche 72 884 $, en chute de 6 % sur la journée et de 40 % depuis son pic 2025. Liquidations de 2,56 milliards de dollars en 24 heures.', tags: ['crypto'], time: '1 h', impact: 'high' },
-        { source: 'Bloomberg', sourceUrl: 'https://www.bloomberg.com', title: 'Bitcoin sous 80 000 $ : crise de confiance chez les institutionnels', description: 'La cassure du seuil psychologique des 80 000 $ marque un tournant. Bloomberg parle d\'une "nouvelle crise de confiance" dans l\'écosystème crypto.', tags: ['crypto'], time: '2 h', impact: 'high' },
-        { source: 'CoinDesk', sourceUrl: 'https://www.coindesk.com', title: 'Bitcoin vs Or : le BTC échoue à rebondir pendant que les métaux précieux explosent', description: 'L\'or frôle les 5 000 $ l\'once pendant que le bitcoin retombe sous 77 000 $. La thèse du "digital gold" mise à mal.', tags: ['crypto'], time: '3 h', impact: 'high' },
-        { source: 'CNBC', sourceUrl: 'https://www.cnbc.com', title: 'ETF Bitcoin spot : 1,7 milliard de dollars de sorties en deux semaines', description: 'Deuxième semaine consécutive de flux sortants pour les ETF Bitcoin selon CoinShares. Les institutionnels réduisent leur exposition.', tags: ['crypto'], time: '4 h', impact: 'high' },
-        { source: 'Cointelegraph', sourceUrl: 'https://cointelegraph.com', title: 'Bitwise CIO : "Nous sommes en crypto winter depuis janvier 2025"', description: 'Matt Hougan compare la situation actuelle aux bear markets de 2018 et 2022. Il estime que le creux pourrait être atteint dans les prochaines semaines.', tags: ['crypto'], time: '5 h', impact: 'medium' },
-        { source: 'The Block', sourceUrl: 'https://www.theblock.co', title: 'Ethereum à 2 200 $, Solana sous 100 $ : contagion baissière généralisée', description: 'L\'ensemble de l\'écosystème crypto souffre. ETH perd 6,5 %, SOL 5,5 %. Les altcoins subissent des corrections à deux chiffres.', tags: ['crypto'], time: '6 h', impact: 'medium' },
-        { source: 'Decrypt', sourceUrl: 'https://decrypt.co', title: 'MSTR, COIN, GLXY : les actions crypto en chute libre', description: 'Strategy (MSTR) continue de creuser ses plus bas. Coinbase (COIN) perd 2 %, Galaxy Digital (GLXY) chute de 12 % après des résultats Q4 décevants.', tags: ['crypto'], time: '7 h', impact: 'medium' },
-        { source: 'CoinShares', sourceUrl: 'https://coinshares.com', title: 'Standard Chartered revoit son objectif BTC à 150 000 $ (contre 300 000 $ initialement)', description: 'La banque d\'investissement réduit ses prévisions de moitié. La fourchette de volatilité attendue est de 75 000 $ à 150 000 $ pour 2026.', tags: ['crypto'], time: '8 h', impact: 'medium' },
-        { source: 'Reuters', sourceUrl: 'https://www.reuters.com', title: 'Stablecoins et tokenisation : les fondamentaux restent solides malgré le bear market', description: 'Malgré la correction, Dragonfly Capital note que les stablecoins et la tokenisation d\'actifs réels continuent de progresser chez les institutionnels.', tags: ['crypto'], time: '10 h', impact: 'low' }
+        { source: 'CNBC', url: 'https://www.cnbc.com/2026/02/03/bitcoin-price-today.html', title: 'Bitcoin casse $73 000 — plus bas de 16 mois, −40% depuis le pic octobre', description: 'BTC touche $72 884, −6% sur la journée, −16% YTD. Rotation massive hors des actifs risk-on. Les données macro US retardées par le shutdown partiel ajoutent à l\'incertitude. Le BTC sort du top 10 des actifs mondiaux par capitalisation.', tags: ['crypto'], time: '3 fév.', impact: 'high' },
+        { source: 'CoinDesk', url: 'https://www.coindesk.com/markets/2026/02/01/this-is-absolutely-insane-bitcoin-s-weekend-crash-exposes-the-cracks-beneath-crypto-s-latest-boom', title: 'Crash du weekend : $800Mds de valeur effacés, $2,56Mds de liquidations en 24h', description: 'BTC plonge à $75 700 en thin weekend liquidity. 10e plus gros événement de liquidation de l\'histoire. Tensions Iran, nomination Warsh et dollar fort amplifient le sell-off. ETH −6,5% à $2 200, SOL sous $100.', tags: ['crypto'], time: '1 fév.', impact: 'high' },
+        { source: 'CoinShares', url: 'https://coinshares.com/us/insights/research-data/fund-flows-02-02-26/', title: 'Flux ETF crypto : $1,7Md de sorties en deux semaines, sentiment en capitulation', description: 'BTC : −$1,32Md. ETH : −$308M. XRP et SOL aussi en sorties. Les flux YTD basculent en négatif à −$1Md. AuM en recul de $73Mds depuis les highs d\'octobre. Short BTC : +$14,5M d\'inflows — le hedge bearish s\'installe.', tags: ['crypto'], time: '2 fév.', impact: 'high' },
+        { source: 'CoinDesk', url: 'https://www.coindesk.com/markets/2026/02/03/bitcoin-bounce-fails-with-price-falling-back-below-usd77-000-while-precious-metals-renew-surge', title: 'Or vs Bitcoin : la divergence s\'accentue — le BTC n\'est pas une valeur refuge', description: 'Le rebond BTC échoue à $77 000 pendant que l\'or reprend sa marche vers $5 000. Les métaux précieux absorbent les flux safe-haven que le BTC ne capte pas. La corrélation BTC-Nasdaq reste élevée, celle avec l\'or est nulle.', tags: ['crypto'], time: '3 fév.', impact: 'medium' }
     ],
     commodities: [
-        { source: 'CNBC', sourceUrl: 'https://www.cnbc.com', title: 'Or : record historique au-delà de 5 100 $ l\'once', description: 'L\'or spot atteint 5 136 $ l\'once, porté par les achats des banques centrales et la fuite vers les valeurs refuges. +64 % sur un an.', tags: ['commodities'], time: '1 h', impact: 'high' },
-        { source: 'Bloomberg', sourceUrl: 'https://www.bloomberg.com', title: 'Or et Groenland : la menace tarifaire propulse le métal jaune au-delà de 4 800 $', description: 'Les tensions USA-Europe sur le Groenland alimentent un rush vers les valeurs refuges. HSBC voit l\'or à 5 000 $ au premier semestre.', tags: ['commodities'], time: '2 h', impact: 'high' },
-        { source: 'Kitco News', sourceUrl: 'https://www.kitco.com', title: 'Argent : le métal blanc suit l\'or dans un rally généralisé des métaux précieux', description: 'L\'argent bénéficie du double attrait de valeur refuge et de demande industrielle (photovoltaïque). Les analystes visent 35 $ l\'once.', tags: ['commodities'], time: '3 h', impact: 'medium' },
-        { source: 'Reuters', sourceUrl: 'https://www.reuters.com', title: 'Pétrole : l\'opération Venezuela et les tensions iraniennes soutiennent les cours', description: 'Le brut WTI se maintient au-dessus de 78 $ le baril. Les actions militaires américaines ajoutent une prime de risque géopolitique.', tags: ['commodities'], time: '4 h', impact: 'high' },
-        { source: 'Financial Times', sourceUrl: 'https://www.ft.com', title: 'Cuivre : la demande de transition énergétique compense le ralentissement chinois', description: 'Le métal rouge reste soutenu par les investissements massifs dans les renouvelables et les véhicules électriques malgré le freinage économique chinois.', tags: ['commodities'], time: '6 h', impact: 'medium' },
-        { source: 'S&P Global', sourceUrl: 'https://www.spglobal.com', title: 'Lithium : stabilisation des prix après la correction de 2025', description: 'Le marché du lithium retrouve un équilibre. La demande des fabricants de batteries reste soutenue, mais l\'offre a rattrapé.', tags: ['commodities'], time: '7 h', impact: 'medium' },
-        { source: 'J.P. Morgan', sourceUrl: 'https://www.jpmorgan.com', title: 'Prévisions or 2026 : J.P. Morgan vise 5 055 $ en moyenne au Q4', description: 'La banque prévoit un prix moyen de 5 055 $/oz au dernier trimestre 2026, montant vers 5 400 $ fin 2027. Demande des banques centrales : 585 tonnes/trimestre.', tags: ['commodities'], time: '8 h', impact: 'medium' }
+        { source: 'CNBC', url: 'https://www.cnbc.com/2026/01/26/gold-races-to-5100-record-peak-on-safe-haven-demand.html', title: 'Or : record absolu à $5 110/oz — +64% sur un an, meilleure performance depuis 1979', description: 'Spot gold +2,2% à $5 094 après un pic à $5 110. Goldman relève son objectif à $5 400 (dec. 2026). Achats banques centrales : 60 tonnes/mois vs 17 tonnes pré-2022. UBS vise $6 200 sur les 3 premiers trimestres.', tags: ['commodities'], time: '26 jan.', impact: 'high' },
+        { source: 'CNBC', url: 'https://www.cnbc.com/2026/01/12/gold-record-haven-powell-venezuela-iran.html', title: 'Or à $4 600 : enquête Powell + Venezuela + Iran = triple catalyseur safe-haven', description: 'Le métal jaune franchit $4 600 sur la convergence de trois flashpoints. L\'enquête contre le président de la Fed, l\'opération militaire au Venezuela et les tensions iraniennes créent une tempête parfaite pour les métaux précieux.', tags: ['commodities'], time: '12 jan.', impact: 'high' },
+        { source: 'CNBC', url: 'https://www.cnbc.com/2026/01/23/gold-prices-ease-on-profit-taking-after-nearing-5000-mark.html', title: 'Argent au-dessus de $100/oz pour la première fois — le métal blanc entre en territoire historique', description: 'L\'argent profite du double moteur refuge + demande industrielle (photovoltaïque, électronique). Le ratio or/argent se compresse. Les analystes visent $120/oz si la dynamique des métaux précieux se maintient.', tags: ['commodities'], time: '23 jan.', impact: 'high' },
+        { source: 'CNBC', url: 'https://www.cnbc.com/2026/01/27/gold-silver-rise-to-near-record-highs-on-safe-haven-demand.html', title: 'Métaux précieux : +18% YTD en janvier, la meilleure ouverture d\'année depuis 2008', description: 'L\'or et l\'argent enregistrent leur meilleur mois de janvier depuis la crise financière. Les ETF or captent des flux records. MKS PAMP : « L\'or est un trade séculaire, pas un blow-off top. »', tags: ['commodities'], time: '27 jan.', impact: 'medium' }
     ],
     etf: [
-        { source: 'CoinShares', sourceUrl: 'https://coinshares.com', title: 'ETF Bitcoin spot : deux semaines de sorties consécutives, 1,7 milliard de flux négatifs', description: 'Les ETF Bitcoin spot subissent une hémorragie. Les investisseurs institutionnels réduisent leur exposition au risque crypto.', tags: ['etf'], time: '1 h', impact: 'high' },
-        { source: 'Bloomberg', sourceUrl: 'https://www.bloomberg.com', title: 'ETF Or (GLD/IAU) : afflux records sur fond de crise géopolitique', description: 'Les ETF adossés à l\'or enregistrent leurs plus gros flux entrants depuis 2020. L\'or physique reste le refuge numéro un des institutionnels.', tags: ['etf'], time: '2 h', impact: 'high' },
-        { source: 'Morningstar', sourceUrl: 'https://www.morningstar.com', title: 'ETF obligataires court terme : la stratégie défensive qui attire les capitaux', description: 'Les ETF obligataires à duration courte captent des flux records. Les investisseurs cherchent du rendement avec un risque de taux limité.', tags: ['etf'], time: '3 h', impact: 'medium' },
-        { source: 'ETF.com', sourceUrl: 'https://www.etf.com', title: 'ETF IA : Nvidia pousse les fonds tech malgré la volatilité ambiante', description: 'Les ETF exposés à l\'intelligence artificielle surperforment le marché. NVDA, AMD, AVGO représentent les principales positions.', tags: ['etf'], time: '4 h', impact: 'medium' },
-        { source: 'Financial Times', sourceUrl: 'https://www.ft.com', title: 'ETF ESG : flux en hausse en Europe malgré le backlash américain', description: 'Les fonds ESG européens continuent de croître alors que le mouvement anti-ESG prend de l\'ampleur aux États-Unis. Divergence transatlantique.', tags: ['etf'], time: '5 h', impact: 'medium' },
-        { source: 'Seeking Alpha', sourceUrl: 'https://seekingalpha.com', title: 'ETF marchés émergents : l\'Inde et le Vietnam en tête des convictions', description: 'Les accords commerciaux de l\'Inde avec l\'UE et les USA renforcent l\'attractivité des ETF émergents. Valorisations attractives.', tags: ['etf'], time: '6 h', impact: 'medium' },
-        { source: 'Les Échos', sourceUrl: 'https://www.lesechos.fr', title: 'SPY vs QQQ : la divergence value/growth s\'accentue', description: 'Le SPY (S&P 500) résiste mieux que le QQQ (Nasdaq 100) dans l\'environnement de hausse des taux. La rotation sectorielle se confirme.', tags: ['etf'], time: '8 h', impact: 'medium' }
+        { source: 'CoinShares', url: 'https://coinshares.com/us/insights/research-data/fund-flows-02-02-26/', title: 'ETF crypto : $1,7Md de sorties nettes — IBIT et FBTC en tête des rachats', description: 'Deuxième semaine de flux négatifs. Les ETF BTC spot US perdent $1,65Md. Les short BTC ETF captent $14,5M. AuM total en recul de $73Mds depuis octobre. Seuls les ETF tokenized precious metals résistent.', tags: ['etf'], time: '2 fév.', impact: 'high' },
+        { source: 'CNBC', url: 'https://www.cnbc.com/2026/01/26/gold-races-to-5100-record-peak-on-safe-haven-demand.html', title: 'ETF Or (GLD, IAU) : afflux records — le flight-to-quality en action', description: 'Les ETF adossés à l\'or physique enregistrent leurs plus gros flux entrants depuis mars 2020. Goldman note que les achats institutionnels sont devenus « sticky » — les positions ne sont plus tactiques mais structurelles.', tags: ['etf'], time: '26 jan.', impact: 'high' },
+        { source: 'CNBC', url: 'https://www.cnbc.com/2025/11/19/nvidia-nvda-earnings-report-q3-2026.html', title: 'ETF IA (BOTZ, SMH) : Nvidia tire les fonds tech malgré la volatilité', description: 'Les ETF exposés aux semi-conducteurs et à l\'IA surperforment le marché. NVDA ($57Mds Q3), AMD et AVGO constituent le moteur. Le SMH gagne 8% sur un mois vs −2% pour le SPY.', tags: ['etf'], time: '20 nov. 2025', impact: 'medium' },
+        { source: 'Bloomberg', url: 'https://www.bloomberg.com/news/articles/2026-01-30/trump-picks-kevin-warsh-as-fed-chair-wall-street-reacts', title: 'ETF obligataires (SHY, BIL) : la duration courte capte le flight-to-quality', description: 'La nomination Warsh et l\'incertitude tarifaire poussent les capitaux vers les Treasuries court terme. Les ETF SHY et BIL enregistrent des flux entrants records. Le positionnement reflète un marché qui se couvre sans prendre de risque directionnel.', tags: ['etf'], time: '30 jan.', impact: 'medium' }
     ]
 };
 
-// Market data (updated Feb 2026)
 const marketData = [
-    { name: 'Bitcoin', symbol: 'BTC', price: 75420, change: -5.82 },
-    { name: 'Ethereum', symbol: 'ETH', price: 2198, change: -6.50 },
-    { name: 'Or', symbol: 'XAU', price: 5136, change: 2.30 },
-    { name: 'Argent', symbol: 'XAG', price: 32.45, change: 1.85 },
-    { name: 'Pétrole WTI', symbol: 'WTI', price: 78.32, change: 1.20 },
-    { name: 'S&P 500', symbol: 'SPX', price: 5842, change: -2.10 },
-    { name: 'Nasdaq 100', symbol: 'NDX', price: 20456, change: -2.40 },
-    { name: 'Dollar Index', symbol: 'DXY', price: 103.45, change: -0.68 }
+    { name: 'S&P 500', price: 5842, change: -2.10 },
+    { name: 'Nasdaq 100', price: 20456, change: -2.40 },
+    { name: 'Or (XAU)', price: 5136, change: 2.30 },
+    { name: 'Bitcoin', price: 75420, change: -5.82 },
+    { name: 'Pétrole WTI', price: 78.32, change: 1.20 },
+    { name: 'Dollar Index', price: 103.45, change: -0.68 }
 ];
 
 const commodityData = [
-    { name: 'Or', price: '$5 136', change: '+2.3%', positive: true },
-    { name: 'Argent', price: '$32.45', change: '+1.9%', positive: true },
-    { name: 'Pétrole WTI', price: '$78.32', change: '+1.2%', positive: true },
-    { name: 'Pétrole Brent', price: '$82.10', change: '+0.9%', positive: true },
-    { name: 'Gaz naturel', price: '$3.12', change: '-1.8%', positive: false },
-    { name: 'Cuivre', price: '$4.15', change: '+0.7%', positive: true },
-    { name: 'Lithium', price: '$14 800', change: '+0.3%', positive: true },
-    { name: 'Blé', price: '$645', change: '-0.5%', positive: false }
+    { name: 'Or', price: '$5 136', change: '+2.3%', up: true },
+    { name: 'Argent', price: '$102.40', change: '+1.9%', up: true },
+    { name: 'Pétrole WTI', price: '$78.32', change: '+1.2%', up: true },
+    { name: 'Pétrole Brent', price: '$82.10', change: '+0.9%', up: true },
+    { name: 'Gaz naturel', price: '$3.12', change: '-1.8%', up: false },
+    { name: 'Cuivre', price: '$4.15', change: '+0.7%', up: true },
+    { name: 'Blé', price: '$645', change: '-0.5%', up: false }
 ];
 
 const etfTableData = [
     { ticker: 'GLD', name: 'SPDR Gold Trust', provider: 'SPDR', flow: '+$2.8B' },
-    { ticker: 'SPY', name: 'S&P 500 ETF', provider: 'SPDR', flow: '+$1.9B' },
-    { ticker: 'QQQ', name: 'NASDAQ 100 ETF', provider: 'Invesco', flow: '-$420M' },
     { ticker: 'IBIT', name: 'iShares Bitcoin ETF', provider: 'BlackRock', flow: '-$850M' },
-    { ticker: 'SHY', name: 'iShares 1-3 Year Treasury', provider: 'iShares', flow: '+$1.2B' },
-    { ticker: 'BOTZ', name: 'Global Robotics & AI ETF', provider: 'Global X', flow: '+$680M' }
+    { ticker: 'SHY', name: 'iShares 1-3Y Treasury', provider: 'iShares', flow: '+$1.2B' },
+    { ticker: 'SMH', name: 'VanEck Semiconductor', provider: 'VanEck', flow: '+$680M' },
+    { ticker: 'SPY', name: 'S&P 500 ETF', provider: 'SPDR', flow: '+$1.9B' },
+    { ticker: 'QQQ', name: 'NASDAQ 100 ETF', provider: 'Invesco', flow: '-$420M' }
 ];
 
 const breakingNews = [
-    'Or au-dessus de 5 100 $/oz -- Record historique absolu',
-    'Bitcoin chute sous 73 000 $, plus bas depuis novembre 2024',
-    'Tarifs Trump Groenland : 1 200 milliards effaces du S&P 500',
-    'Kevin Warsh nomme a la tete de la Fed',
-    'USA : stockpile strategique de 12 milliards de mineraux contre la Chine',
-    'Nvidia Q3 2026 : 57 milliards de revenus, +62% sur un an',
-    'Inde signe des accords commerciaux avec l\'UE et les USA',
-    'WEF 2026 : confrontation geoeconomique, premier risque mondial'
+    'Or : record absolu a $5 110/oz sur fond de crise geopolitique',
+    'Bitcoin sous $73 000, plus bas depuis novembre 2024',
+    'Tarifs Groenland : S&P 500 -2,1% en une seance',
+    'Kevin Warsh nomme a la Fed -- lecture hawkish du marche',
+    'Nvidia Q3 : $57Mds de CA, le seul pilier haussier',
+    'ETF BTC : $1,7Md de sorties en deux semaines'
 ];
 
-// ============================================
-// Common
-// ============================================
+// --- Core functions ---
 
 function setCurrentDate() {
     var el = document.getElementById('current-date');
-    if (!el) return;
-    var now = new Date();
-    el.textContent = now.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    if (el) el.textContent = new Date().toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 }
 
 function initTicker() {
     var el = document.getElementById('ticker-content');
     if (!el) return;
-    var html = breakingNews.map(function(t) { return '<span class="ticker-item">' + t + '</span>'; }).join('<span class="ticker-separator">|</span>');
-    el.innerHTML = html + html;
+    var h = breakingNews.map(function(t) { return '<span class="ticker-item">' + t + '</span>'; }).join('<span class="ticker-separator">|</span>');
+    el.innerHTML = h + h;
 }
 
 function initSearch() {
-    var form = document.getElementById('search-form');
-    if (!form) return;
-    form.addEventListener('submit', function(e) {
+    var f = document.getElementById('search-form');
+    if (!f) return;
+    f.addEventListener('submit', function(e) {
         e.preventDefault();
-        var query = document.getElementById('search-input').value.trim().toLowerCase();
-        if (!query) return;
-        var results = [];
-        Object.keys(newsDatabase).forEach(function(cat) {
-            newsDatabase[cat].forEach(function(article) {
-                if (article.title.toLowerCase().indexOf(query) !== -1 || article.description.toLowerCase().indexOf(query) !== -1) {
-                    results.push(article);
-                }
+        var q = document.getElementById('search-input').value.trim().toLowerCase();
+        if (!q) return;
+        var r = [];
+        Object.keys(newsDatabase).forEach(function(k) {
+            newsDatabase[k].forEach(function(a) {
+                if (a.title.toLowerCase().indexOf(q) !== -1 || a.description.toLowerCase().indexOf(q) !== -1) r.push(a);
             });
         });
-        displaySearchResults(results, query);
+        showSearchResults(r, q);
     });
 }
 
-function displaySearchResults(results, query) {
-    var container = document.getElementById('search-results');
-    if (!container) {
-        container = document.createElement('div');
-        container.id = 'search-results';
-        var main = document.querySelector('.main-content .container');
-        if (main) main.insertBefore(container, main.firstChild);
-    }
-    if (results.length === 0) {
-        container.innerHTML = '<div class="search-results-header"><h2>Aucun résultat pour « ' + query + ' »</h2><button class="close-search" onclick="this.parentElement.parentElement.remove()">Fermer</button></div>';
-        return;
-    }
-    var html = '<div class="search-results-header"><h2>' + results.length + ' résultat' + (results.length > 1 ? 's' : '') + ' pour « ' + query + ' »</h2><button class="close-search" onclick="this.parentElement.parentElement.remove()">Fermer</button></div><div class="news-grid">';
-    results.forEach(function(n) { html += createNewsCardHTML(n); });
-    html += '</div>';
-    container.innerHTML = html;
-    container.scrollIntoView({ behavior: 'smooth' });
+function showSearchResults(results, query) {
+    var c = document.getElementById('search-results');
+    if (!c) { c = document.createElement('div'); c.id = 'search-results'; var m = document.querySelector('.main-content .container'); if (m) m.insertBefore(c, m.firstChild); }
+    if (!results.length) { c.innerHTML = '<div class="search-results-header"><h2>Aucun résultat pour « ' + query + ' »</h2><button class="close-search" onclick="this.parentElement.parentElement.remove()">Fermer</button></div>'; return; }
+    c.innerHTML = '<div class="search-results-header"><h2>' + results.length + ' résultat' + (results.length > 1 ? 's' : '') + ' pour « ' + query + ' »</h2><button class="close-search" onclick="this.parentElement.parentElement.remove()">Fermer</button></div><div class="news-grid">' + results.map(cardHTML).join('') + '</div>';
+    c.scrollIntoView({ behavior: 'smooth' });
 }
 
-function createNewsCardHTML(news) {
-    var tagLabels = { geopolitics: 'Géopolitique', markets: 'Marchés', crypto: 'Crypto', commodities: 'Mat. Premières', etf: 'ETF', conflicts: 'Conflits', trade: 'Commerce', politics: 'Politique' };
-    var tags = (news.tags || []).map(function(t) { return '<span class="tag ' + t + '">' + (tagLabels[t] || t) + '</span>'; }).join('');
-    return '<article class="news-card"><div class="news-source"><a href="' + news.sourceUrl + '" target="_blank" class="source-name">' + news.source + '</a><span class="news-time">' + news.time + '</span>' + (news.impact === 'high' ? '<span class="impact-dot"></span>' : '') + '</div><h3 class="news-title">' + news.title + '</h3><p class="news-description">' + news.description + '</p><div class="news-footer"><div class="news-tags">' + tags + '</div><a href="' + news.sourceUrl + '" target="_blank" class="news-link">Lire</a></div></article>';
+var tagLabels = { geopolitics: 'Géopolitique', markets: 'Marchés', crypto: 'Crypto', commodities: 'Mat. Premières', etf: 'ETF', conflicts: 'Conflits', trade: 'Commerce', politics: 'Politique' };
+
+function cardHTML(n) {
+    var tags = (n.tags || []).map(function(t) { return '<span class="tag ' + t + '">' + (tagLabels[t] || t) + '</span>'; }).join('');
+    var dot = n.impact === 'high' ? '<span class="impact-dot"></span>' : '';
+    return '<article class="news-card"><div class="news-source"><a href="' + n.url + '" target="_blank" rel="noopener" class="source-name">' + n.source + '</a><span class="news-time">' + n.time + '</span>' + dot + '</div><h3 class="news-title"><a href="' + n.url + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">' + n.title + '</a></h3><p class="news-description">' + n.description + '</p><div class="news-footer"><div class="news-tags">' + tags + '</div><a href="' + n.url + '" target="_blank" rel="noopener" class="news-link">Lire</a></div></article>';
 }
 
-function initCommon() {
-    setCurrentDate();
-    initTicker();
-    initSearch();
-}
+function initCommon() { setCurrentDate(); initTicker(); initSearch(); }
 
-// ============================================
-// Home Page
-// ============================================
+// --- Home ---
 
 function initHomePage() {
     initCommon();
-
-    var topStories = document.getElementById('top-stories');
-    if (topStories) {
-        var featured = [newsDatabase.geopolitics[0], newsDatabase.crypto[0], newsDatabase.commodities[0]];
-        topStories.innerHTML = '<div class="top-stories-grid">' + featured.map(function(n, i) {
-            return '<article class="top-story' + (i === 0 ? ' top-story-main' : '') + '"><a href="' + n.sourceUrl + '" target="_blank" class="source-name">' + n.source + '</a><h3>' + n.title + '</h3><p>' + n.description + '</p><span class="news-time">' + n.time + '</span></article>';
+    var ts = document.getElementById('top-stories');
+    if (ts) {
+        var f = [newsDatabase.geopolitics[0], newsDatabase.crypto[0], newsDatabase.commodities[0]];
+        ts.innerHTML = '<div class="top-stories-grid">' + f.map(function(n, i) {
+            return '<article class="top-story' + (i === 0 ? ' top-story-main' : '') + '"><a href="' + n.url + '" target="_blank" rel="noopener" class="source-name">' + n.source + '</a><h3><a href="' + n.url + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">' + n.title + '</a></h3><p>' + n.description + '</p><span class="news-time">' + n.time + '</span></article>';
         }).join('') + '</div>';
     }
-
-    var latestNews = document.getElementById('latest-news');
-    if (latestNews) {
+    var ln = document.getElementById('latest-news');
+    if (ln) {
         var all = [];
         Object.keys(newsDatabase).forEach(function(k) { all = all.concat(newsDatabase[k]); });
-        // Sort by impact first (high > medium > low), then show top 12
-        var impactOrder = { high: 0, medium: 1, low: 2 };
-        all.sort(function(a, b) { return (impactOrder[a.impact] || 2) - (impactOrder[b.impact] || 2); });
-        all = all.slice(0, 12);
-        latestNews.innerHTML = all.map(function(n) {
-            return '<article class="news-list-item"><div class="news-list-source"><a href="' + n.sourceUrl + '" target="_blank" class="source-name">' + n.source + '</a><span class="news-time">' + n.time + '</span>' + (n.impact === 'high' ? '<span class="impact-dot"></span>' : '') + '</div><h3><a href="' + n.sourceUrl + '" target="_blank">' + n.title + '</a></h3><p>' + n.description + '</p></article>';
+        all.sort(function(a, b) { return (a.impact === 'high' ? 0 : 1) - (b.impact === 'high' ? 0 : 1); });
+        ln.innerHTML = all.slice(0, 10).map(function(n) {
+            var dot = n.impact === 'high' ? '<span class="impact-dot"></span>' : '';
+            return '<article class="news-list-item"><div class="news-list-source"><a href="' + n.url + '" target="_blank" rel="noopener" class="source-name">' + n.source + '</a><span class="news-time">' + n.time + '</span>' + dot + '</div><h3><a href="' + n.url + '" target="_blank" rel="noopener">' + n.title + '</a></h3><p>' + n.description + '</p></article>';
         }).join('');
     }
-
-    renderMarketTable();
-}
-
-function renderMarketTable() {
-    var table = document.getElementById('market-table');
-    if (!table) return;
-    table.innerHTML = marketData.map(function(m) {
-        return '<div class="market-row"><span class="market-row-name">' + m.name + '</span><span class="market-row-price">$' + m.price.toLocaleString('fr-FR') + '</span><span class="market-row-change ' + (m.change > 0 ? 'positive' : 'negative') + '">' + (m.change > 0 ? '+' : '') + m.change.toFixed(2) + '%</span></div>';
+    var mt = document.getElementById('market-table');
+    if (mt) mt.innerHTML = marketData.map(function(m) {
+        var cls = m.change > 0 ? 'positive' : 'negative';
+        return '<div class="market-row"><span class="market-row-name">' + m.name + '</span><span class="market-row-price">$' + m.price.toLocaleString('fr-FR') + '</span><span class="market-row-change ' + cls + '">' + (m.change > 0 ? '+' : '') + m.change.toFixed(2) + '%</span></div>';
     }).join('');
 }
 
-// ============================================
-// Category Pages
-// ============================================
+// --- Category pages ---
 
-function initCategoryPage(category) {
+function initCategoryPage(cat) {
     initCommon();
-    var container = document.getElementById('page-news');
-    if (!container) return;
-    var articles = newsDatabase[category] || [];
-    container.innerHTML = articles.map(function(n) { return createNewsCardHTML(n); }).join('');
-    initFilters(container, articles);
-    if (category === 'commodities') renderCommodityTable();
-    if (category === 'etf') renderETFTable();
-}
-
-function initFilters(container, articles) {
-    var btns = document.querySelectorAll('.filter-btn');
-    if (!btns.length) return;
-    btns.forEach(function(btn) {
+    // Render trend paragraph
+    var th = document.getElementById('category-trend');
+    if (th && categoryTrends[cat]) th.innerHTML = '<p class="analysis-excerpt" style="margin-bottom:2rem;padding:1.25rem;background:var(--bg-secondary);border-left:4px solid var(--pink);border-radius:0 4px 4px 0">' + categoryTrends[cat] + '</p>';
+    // Render news
+    var c = document.getElementById('page-news');
+    if (!c) return;
+    var articles = newsDatabase[cat] || [];
+    c.innerHTML = articles.map(cardHTML).join('');
+    // Filters
+    document.querySelectorAll('.filter-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
-            btns.forEach(function(b) { b.classList.remove('active'); });
+            document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
             btn.classList.add('active');
-            var filter = btn.getAttribute('data-filter');
-            if (filter === 'all') {
-                container.innerHTML = articles.map(function(n) { return createNewsCardHTML(n); }).join('');
-            } else {
-                var filtered = articles.filter(function(n) { return n.tags.indexOf(filter) !== -1; });
-                container.innerHTML = filtered.length ? filtered.map(function(n) { return createNewsCardHTML(n); }).join('') : '<p class="no-results">Aucun article dans cette catégorie.</p>';
-            }
+            var f = btn.getAttribute('data-filter');
+            var list = f === 'all' ? articles : articles.filter(function(a) { return a.tags.indexOf(f) !== -1; });
+            c.innerHTML = list.length ? list.map(cardHTML).join('') : '<p class="no-results">Aucun article dans cette catégorie.</p>';
         });
     });
+    if (cat === 'commodities') renderTable('commodity-table', ['Matière première', 'Prix', 'Variation'], commodityData, function(r) { return '<td>' + r.name + '</td><td>' + r.price + '</td><td class="' + (r.up ? 'positive' : 'negative') + '">' + r.change + '</td>'; });
+    if (cat === 'etf') renderTable('etf-table', ['Ticker', 'Nom', 'Fournisseur', 'Flux'], etfTableData, function(r) { return '<td><strong>' + r.ticker + '</strong></td><td>' + r.name + '</td><td>' + r.provider + '</td><td class="' + (r.flow[0] === '+' ? 'positive' : 'negative') + '">' + r.flow + '</td>'; });
 }
 
-function renderCommodityTable() {
-    var table = document.getElementById('commodity-table');
-    if (!table) return;
-    table.innerHTML = '<table class="data-table"><thead><tr><th>Matière première</th><th>Prix</th><th>Variation</th></tr></thead><tbody>' + commodityData.map(function(c) {
-        return '<tr><td>' + c.name + '</td><td>' + c.price + '</td><td class="' + (c.positive ? 'positive' : 'negative') + '">' + c.change + '</td></tr>';
-    }).join('') + '</tbody></table>';
-}
-
-function renderETFTable() {
-    var table = document.getElementById('etf-table');
-    if (!table) return;
-    table.innerHTML = '<table class="data-table"><thead><tr><th>Ticker</th><th>Nom</th><th>Fournisseur</th><th>Flux</th></tr></thead><tbody>' + etfTableData.map(function(e) {
-        var isPositive = e.flow.indexOf('+') === 0;
-        return '<tr><td><strong>' + e.ticker + '</strong></td><td>' + e.name + '</td><td>' + e.provider + '</td><td class="' + (isPositive ? 'positive' : 'negative') + '">' + e.flow + '</td></tr>';
-    }).join('') + '</tbody></table>';
+function renderTable(id, headers, data, rowFn) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.innerHTML = '<table class="data-table"><thead><tr>' + headers.map(function(h) { return '<th>' + h + '</th>'; }).join('') + '</tr></thead><tbody>' + data.map(function(r) { return '<tr>' + rowFn(r) + '</tr>'; }).join('') + '</tbody></table>';
 }
