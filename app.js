@@ -1,4 +1,4 @@
-// GéoFinance — v4.0 — Rebalanced: geopolitics, tech/AI, labor market focus
+// GéoFinance — v4.1 — SEO + fresh content update
 // Updated: 4 février 2026
 
 const categoryTrends = {
@@ -15,7 +15,8 @@ const newsDatabase = {
         { source: 'Bloomberg', url: 'https://www.bloomberg.com/news/articles/2026-01-20/wall-street-s-calm-shattered-by-greenland-and-japan-shocks', title: 'Wall Street : le calme brisé par le choc Groenland — S&P 500 −2,1%', description: 'Pire séance depuis octobre. Gold franchit $4 660/oz. Le risque tarifaire redevient le driver dominant des marchés mondiaux.', tags: ['geopolitics', 'markets'], time: '20 jan.', impact: 'high' },
         { source: 'NBC News', url: 'https://www.nbcnews.com/business/economy/eu-trade-deal-trump-greenland-tariff-rcna255199', title: 'L\'UE suspend l\'accord commercial avec Washington en représailles', description: 'Le Parlement européen gèle la ratification de l\'accord commercial été 2025. Un paquet de rétorsions de $110Mds est à l\'étude. Bernd Lange : « Nous n\'avons plus d\'alternative. »', tags: ['geopolitics', 'trade'], time: '21 jan.', impact: 'high' },
         { source: 'Bloomberg', url: 'https://www.bloomberg.com/news/articles/2026-01-30/trump-picks-a-reinvented-kevin-warsh-to-lead-the-federal-reserve', title: 'Trump nomme Kevin Warsh à la Fed : lecture hawkish, dollar et yields en hausse', description: 'Warsh promet un « changement de régime » : réduction du bilan, focus inflation, productivité IA. Le marché lit hawkish. Treasury yields en hausse.', tags: ['geopolitics', 'politics'], time: '30 jan.', impact: 'high' },
-        { source: 'Atlantic Council', url: 'https://www.atlanticcouncil.org/dispatches/eight-ways-ai-will-shape-geopolitics-in-2026/', title: 'Guerre des puces IA : les USA contrôlent 74% du compute mondial, la Chine accélère', description: 'Les restrictions d\'export Nvidia restent imprévisibles (H200 autorisé puis restreint). Huawei vise 50% du marché chinois des puces IA en 2026. La gouvernance mondiale de l\'IA entre dans sa première phase globale avec les initiatives de l\'ONU.', tags: ['geopolitics', 'politics'], time: '28 jan.', impact: 'high' }
+        { source: 'Atlantic Council', url: 'https://www.atlanticcouncil.org/dispatches/eight-ways-ai-will-shape-geopolitics-in-2026/', title: 'Guerre des puces IA : les USA contrôlent 74% du compute mondial, la Chine accélère', description: 'Les restrictions d\'export Nvidia restent imprévisibles (H200 autorisé puis restreint). Huawei vise 50% du marché chinois des puces IA en 2026. La gouvernance mondiale de l\'IA entre dans sa première phase globale avec les initiatives de l\'ONU.', tags: ['geopolitics', 'politics'], time: '28 jan.', impact: 'high' },
+        { source: 'Reuters', url: 'https://www.reuters.com/world/us/trump-tariffs-trade-war-2026-02-03/', title: 'Trump annonce des tarifs de 25% sur le Canada et le Mexique — marchés en alerte', description: 'Entrée en vigueur le 4 février. Le peso mexicain chute de 2,8%, le dollar canadien à son plus bas depuis 2003. Les constructeurs automobiles nord-américains face à une rupture de chaîne d\'approvisionnement. L\'UE craint d\'être la prochaine cible.', tags: ['geopolitics', 'trade'], time: '3 fév.', impact: 'high' }
     ],
     markets: [
         { source: 'Bloomberg', url: 'https://www.bloomberg.com/news/articles/2026-01-20/asian-stocks-set-to-fall-as-global-selloff-deepens-markets-wrap', title: 'Sell-off global : le S&P 500 efface ses gains 2026, VIX au plus haut depuis novembre', description: 'Les tarifs Groenland déclenchent une vague de ventes sur toutes les classes d\'actifs risqués. Le VIX passe au-dessus de 20. Les flux se dirigent vers l\'or, les Treasuries et le yen.', tags: ['markets'], time: '20 jan.', impact: 'high' },
@@ -24,7 +25,8 @@ const newsDatabase = {
         { source: 'CNBC', url: 'https://www.cnbc.com/2026/01/20/ai-impacting-labor-market-like-a-tsunami-as-layoff-fears-mount.html', title: 'Le FMI alerte : l\'IA frappe le marché du travail « comme un tsunami »', description: 'Kristalina Georgieva à Davos : la plupart des pays et entreprises ne sont pas préparés. Les craintes de perte d\'emploi liées à l\'IA passent de 28% (2024) à 40% (2026). Les offres mentionnant l\'IA sont à +134% vs 2020.', tags: ['markets'], time: '20 jan.', impact: 'high' },
         { source: 'Bloomberg', url: 'https://www.bloomberg.com/news/articles/2025-01-09/wall-street-expected-to-shed-200-000-jobs-as-ai-erodes-roles', title: 'Wall Street va supprimer 200 000 postes en 3-5 ans sous l\'effet de l\'IA', description: 'Bloomberg Intelligence estime que les banques mondiales réduiront massivement leurs effectifs. Citi déploie l\'IA agentique sur 40 000 développeurs. Wells Fargo réarchitecture toute l\'organisation autour de l\'IA.', tags: ['markets'], time: '9 jan.', impact: 'high' },
         { source: 'CNBC', url: 'https://www.cnbc.com/2026/01/10/hiring-recession.html', title: '« Hiring recession » aux USA : 584 000 emplois créés en 2025, pire année hors récession depuis 2003', description: 'La reprise est attendue au S2 2026 grâce aux baisses d\'impôts et taux. 89% des DRH s\'attendent à ce que l\'IA transforme les postes cette année. La demande d\'ingénieurs IA explose pendant que les postes traditionnels stagnent.', tags: ['markets'], time: '10 jan.', impact: 'high' },
-        { source: 'CNBC', url: 'https://www.cnbc.com/2026/01/22/nvidia-huang-blue-collar-jobs-salaries-skilled-trades.html', title: 'Jensen Huang : « La plus grande construction d\'infrastructure de l\'histoire » — skilled trades à 6 chiffres', description: 'Le CEO de Nvidia prédit des salaires « nearly doubling » pour les électriciens, plombiers et techniciens réseau impliqués dans la construction de data centers. Le boom IA redistribue la valeur au-delà des cols blancs.', tags: ['markets'], time: '22 jan.', impact: 'medium' }
+        { source: 'CNBC', url: 'https://www.cnbc.com/2026/01/22/nvidia-huang-blue-collar-jobs-salaries-skilled-trades.html', title: 'Jensen Huang : « La plus grande construction d\'infrastructure de l\'histoire » — skilled trades à 6 chiffres', description: 'Le CEO de Nvidia prédit des salaires « nearly doubling » pour les électriciens, plombiers et techniciens réseau impliqués dans la construction de data centers. Le boom IA redistribue la valeur au-delà des cols blancs.', tags: ['markets'], time: '22 jan.', impact: 'medium' },
+        { source: 'Bloomberg', url: 'https://www.bloomberg.com/news/articles/2026-02-03/tariffs-canada-mexico-market-impact', title: 'Tarifs Canada/Mexique : les indices plongent à l\'ouverture — S&P 500 −1,8%, auto −4%', description: 'Les tarifs de 25% provoquent un sell-off sectoriel. GM, Ford et Stellantis perdent 4-6%. Les chaînes d\'approvisionnement intégrées USMCA menacées. Goldman réduit sa prévision PIB US 2026 de 0,3 point.', tags: ['markets'], time: '4 fév.', impact: 'high' }
     ],
     crypto: [
         { source: 'CNBC', url: 'https://www.cnbc.com/2026/02/03/bitcoin-price-today.html', title: 'Bitcoin à $73 000 — plus bas de 16 mois, −40% depuis le pic d\'octobre', description: 'BTC touche $72 884, −16% YTD. Rotation massive hors des actifs risk-on. Le BTC sort du top 10 mondial par capitalisation. Corrélation avec le Nasdaq toujours élevée, corrélation avec l\'or nulle.', tags: ['crypto'], time: '3 fév.', impact: 'high' },
@@ -73,8 +75,9 @@ const etfTableData = [
 ];
 
 const breakingNews = [
+    'URGENT : Tarifs 25% sur Canada et Mexique entrent en vigueur le 4 fevrier',
+    'S&P 500 -1,8% a l\'ouverture sur le choc tarifaire nord-americain',
     'Or : record absolu a $5 110/oz sur fond de crise geopolitique',
-    'Tarifs Groenland : S&P 500 -2,1% en une seance',
     'Kevin Warsh nomme a la Fed -- lecture hawkish du marche',
     'Nvidia Q3 : $57Mds de CA, le seul pilier haussier',
     'FMI : l\'IA frappe le marche du travail comme un tsunami',
@@ -137,7 +140,7 @@ function initHomePage() {
     initCommon();
     var ts = document.getElementById('top-stories');
     if (ts) {
-        var f = [newsDatabase.geopolitics[0], newsDatabase.markets[3], newsDatabase.markets[1]];
+        var f = [newsDatabase.geopolitics[5], newsDatabase.markets[7], newsDatabase.markets[3]];
         ts.innerHTML = '<div class="top-stories-grid">' + f.map(function(n, i) {
             return '<article class="top-story' + (i === 0 ? ' top-story-main' : '') + '"><a href="' + n.url + '" target="_blank" rel="noopener" class="source-name">' + n.source + '</a><h3><a href="' + n.url + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">' + n.title + '</a></h3><p>' + n.description + '</p><span class="news-time">' + n.time + '</span></article>';
         }).join('') + '</div>';
