@@ -3,114 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GéoFinance - Géopolitique & Marchés Financiers en Temps Réel</title>
-    <meta name="description" content="Analyses en temps réel des événements géopolitiques mondiaux et leur impact sur Bitcoin, matières premières, ETF et marchés financiers.">
+    <title>GéoFinance — Géopolitique & Marchés Financiers</title>
+    <meta name="description" content="Analyses en temps réel des événements géopolitiques mondiaux et leur impact sur les marchés financiers.">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <div class="header-content">
-                <a href="#" class="logo">
-                    <span class="logo-icon">🌍</span>
-                    <span class="logo-text">GéoFinance</span>
-                </a>
-                <nav class="nav" id="main-nav">
-                    <a href="#markets-overview" class="nav-link">Marchés</a>
-                    <a href="#geopolitics" class="nav-link">Géopolitique</a>
-                    <a href="#crypto" class="nav-link">Crypto</a>
-                    <a href="#commodities" class="nav-link">Matières Premières</a>
-                    <a href="#etf" class="nav-link">ETF</a>
-                    <a href="#analysis" class="nav-link">Analyses</a>
-                    <a href="#sources" class="nav-link">Sources</a>
-                </nav>
-                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+            <div class="header-top">
+                <span class="header-date" id="current-date"></span>
+                <a href="index.html" class="logo">GéoFinance</a>
+                <div class="header-search">
+                    <form class="search-form" id="search-form">
+                        <input type="text" class="search-input" id="search-input" placeholder="Rechercher...">
+                        <button type="submit" class="search-btn">Rechercher</button>
+                    </form>
+                </div>
             </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link active">Accueil</a>
+                <a href="geopolitics.html" class="nav-link">Géopolitique</a>
+                <a href="markets.html" class="nav-link">Marchés</a>
+                <a href="crypto.html" class="nav-link">Crypto</a>
+                <a href="commodities.html" class="nav-link">Matières Premières</a>
+                <a href="etf.html" class="nav-link">ETF</a>
+                <a href="analysis.html" class="nav-link">Analyses</a>
+            </nav>
         </div>
     </header>
 
     <!-- Breaking News Ticker -->
     <div class="news-ticker">
-        <div class="ticker-label">🔴 BREAKING</div>
-        <div class="ticker-content" id="ticker-content">
-            <span class="ticker-item">📈 Bitcoin dépasse les $100,000 - Adoption institutionnelle en hausse</span>
-            <span class="ticker-separator">|</span>
-            <span class="ticker-item">🛢️ Pétrole: tensions au Moyen-Orient impactent les cours</span>
-            <span class="ticker-separator">|</span>
-            <span class="ticker-item">💹 Fed: pause dans le cycle de hausse des taux</span>
-            <span class="ticker-separator">|</span>
-            <span class="ticker-item">🥇 Or: valeur refuge en période d'incertitude géopolitique</span>
-            <span class="ticker-separator">|</span>
-            <span class="ticker-item">📊 ETF Bitcoin: flux record de $1.5 milliard cette semaine</span>
-        </div>
+        <div class="ticker-label">ALERTE</div>
+        <div class="ticker-content" id="ticker-content"></div>
     </div>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <div class="hero-badge">
-                <span class="pulse"></span>
-                Données en temps réel
-            </div>
-            <h1 class="hero-title">L'Intelligence Géopolitique<br>au Service de Vos Investissements</h1>
-            <p class="hero-subtitle">Analyses exclusives des événements mondiaux et leur impact immédiat sur Bitcoin, matières premières, ETF et tous les marchés financiers. Sources vérifiées de 25+ médias internationaux.</p>
-            <div class="hero-stats">
-                <div class="stat-card">
-                    <span class="stat-icon">📰</span>
-                    <div class="stat-content">
-                        <div class="stat-value" id="news-count">0</div>
-                        <div class="stat-label">Actualités</div>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-icon">💹</span>
-                    <div class="stat-content">
-                        <div class="stat-value" id="market-updates">0</div>
-                        <div class="stat-label">Mises à jour</div>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-icon">🌐</span>
-                    <div class="stat-content">
-                        <div class="stat-value">25+</div>
-                        <div class="stat-label">Sources Médias</div>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-icon">🔄</span>
-                    <div class="stat-content">
-                        <div class="stat-value">24/7</div>
-                        <div class="stat-label">Couverture</div>
-                    </div>
-                </div>
-            </div>
+            <p class="hero-eyebrow">Données en temps réel — 25+ sources internationales</p>
+            <h1 class="hero-title">L'intelligence géopolitique<br>au service de vos investissements</h1>
+            <p class="hero-subtitle">Analyses des événements mondiaux et leur impact sur Bitcoin, matières premières, ETF et marchés financiers.</p>
         </div>
     </section>
 
-    <!-- Main Content -->
     <main class="main-content">
         <div class="container">
 
-            <!-- Market Overview with TradingView Widgets -->
-            <section class="section" id="markets-overview">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        <span class="title-icon">📊</span>
-                        Marchés en Temps Réel
-                    </h2>
-                    <span class="section-badge live">LIVE</span>
-                </div>
-
-                <!-- TradingView Ticker Tape Widget -->
+            <!-- Market Ticker TradingView -->
+            <section class="section">
                 <div class="tradingview-widget-container market-ticker-widget">
                     <div class="tradingview-widget-container__widget"></div>
                     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
@@ -123,469 +68,69 @@
                             {"proName": "FOREXCOM:SPXUSD", "title": "S&P 500"},
                             {"proName": "NASDAQ:NDX", "title": "NASDAQ 100"},
                             {"proName": "TVC:DXY", "title": "Dollar Index"},
-                            {"proName": "FOREXCOM:EURUSD", "title": "EUR/USD"},
-                            {"proName": "FOREXCOM:XAGUSD", "title": "Argent"}
+                            {"proName": "FOREXCOM:EURUSD", "title": "EUR/USD"}
                         ],
                         "showSymbolLogo": true,
-                        "colorTheme": "dark",
+                        "colorTheme": "light",
                         "isTransparent": true,
                         "displayMode": "adaptive",
                         "locale": "fr"
                     }
                     </script>
                 </div>
-
-                <!-- Market Cards Grid -->
-                <div class="market-grid">
-                    <div class="market-card featured" id="bitcoin-card">
-                        <div class="market-header">
-                            <div class="market-icon btc">₿</div>
-                            <div>
-                                <h3>Bitcoin</h3>
-                                <span class="market-symbol">BTC/USD</span>
-                            </div>
-                        </div>
-                        <div class="market-price" id="btc-price">$102,456.78</div>
-                        <div class="market-change positive" id="btc-change">+3.24%</div>
-                        <div class="market-chart" id="btc-chart"></div>
-                        <div class="market-meta">
-                            <span>Vol 24h: $45.2B</span>
-                            <span>Cap: $2.01T</span>
-                        </div>
-                    </div>
-                    <div class="market-card" id="gold-card">
-                        <div class="market-header">
-                            <div class="market-icon gold">🥇</div>
-                            <div>
-                                <h3>Or</h3>
-                                <span class="market-symbol">XAU/USD</span>
-                            </div>
-                        </div>
-                        <div class="market-price" id="gold-price">$2,087.43</div>
-                        <div class="market-change positive" id="gold-change">+0.67%</div>
-                        <div class="market-meta">
-                            <span>Valeur refuge</span>
-                            <span>Physique & ETF</span>
-                        </div>
-                    </div>
-                    <div class="market-card" id="oil-card">
-                        <div class="market-header">
-                            <div class="market-icon oil">🛢️</div>
-                            <div>
-                                <h3>Pétrole Brent</h3>
-                                <span class="market-symbol">BRN/USD</span>
-                            </div>
-                        </div>
-                        <div class="market-price" id="oil-price">$77.82</div>
-                        <div class="market-change positive" id="oil-change">+1.23%</div>
-                        <div class="market-meta">
-                            <span>OPEC+ Watch</span>
-                            <span>Géopolitique</span>
-                        </div>
-                    </div>
-                    <div class="market-card" id="sp500-card">
-                        <div class="market-header">
-                            <div class="market-icon index">📈</div>
-                            <div>
-                                <h3>S&P 500</h3>
-                                <span class="market-symbol">SPX</span>
-                            </div>
-                        </div>
-                        <div class="market-price" id="sp500-price">$4,783.23</div>
-                        <div class="market-change positive" id="sp500-change">+0.89%</div>
-                        <div class="market-meta">
-                            <span>US Markets</span>
-                            <span>Wall Street</span>
-                        </div>
-                    </div>
-                    <div class="market-card" id="eth-card">
-                        <div class="market-header">
-                            <div class="market-icon eth">⟠</div>
-                            <div>
-                                <h3>Ethereum</h3>
-                                <span class="market-symbol">ETH/USD</span>
-                            </div>
-                        </div>
-                        <div class="market-price" id="eth-price">$3,456.12</div>
-                        <div class="market-change positive" id="eth-change">+2.15%</div>
-                        <div class="market-meta">
-                            <span>Smart Contracts</span>
-                            <span>DeFi Leader</span>
-                        </div>
-                    </div>
-                    <div class="market-card" id="silver-card">
-                        <div class="market-header">
-                            <div class="market-icon silver">🥈</div>
-                            <div>
-                                <h3>Argent</h3>
-                                <span class="market-symbol">XAG/USD</span>
-                            </div>
-                        </div>
-                        <div class="market-price" id="silver-price">$24.56</div>
-                        <div class="market-change negative" id="silver-change">-0.34%</div>
-                        <div class="market-meta">
-                            <span>Industriel</span>
-                            <span>Précieux</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TradingView Market Overview Widget -->
-                <div class="tradingview-widget-container market-overview-widget">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-                    {
-                        "colorTheme": "dark",
-                        "dateRange": "12M",
-                        "showChart": true,
-                        "locale": "fr",
-                        "width": "100%",
-                        "height": "500",
-                        "largeChartUrl": "",
-                        "isTransparent": true,
-                        "showSymbolLogo": true,
-                        "showFloatingTooltip": true,
-                        "tabs": [
-                            {
-                                "title": "Crypto",
-                                "symbols": [
-                                    {"s": "BITSTAMP:BTCUSD", "d": "Bitcoin"},
-                                    {"s": "BITSTAMP:ETHUSD", "d": "Ethereum"},
-                                    {"s": "BINANCE:SOLUSDT", "d": "Solana"},
-                                    {"s": "BINANCE:ADAUSDT", "d": "Cardano"}
-                                ]
-                            },
-                            {
-                                "title": "Matières Premières",
-                                "symbols": [
-                                    {"s": "FOREXCOM:XAUUSD", "d": "Or"},
-                                    {"s": "FOREXCOM:XAGUSD", "d": "Argent"},
-                                    {"s": "TVC:USOIL", "d": "Pétrole WTI"},
-                                    {"s": "NYMEX:NG1!", "d": "Gaz Naturel"}
-                                ]
-                            },
-                            {
-                                "title": "Indices",
-                                "symbols": [
-                                    {"s": "FOREXCOM:SPXUSD", "d": "S&P 500"},
-                                    {"s": "NASDAQ:NDX", "d": "NASDAQ 100"},
-                                    {"s": "INDEX:CAC40", "d": "CAC 40"},
-                                    {"s": "INDEX:DEU40", "d": "DAX 40"}
-                                ]
-                            },
-                            {
-                                "title": "Devises",
-                                "symbols": [
-                                    {"s": "FOREXCOM:EURUSD", "d": "EUR/USD"},
-                                    {"s": "FOREXCOM:GBPUSD", "d": "GBP/USD"},
-                                    {"s": "TVC:DXY", "d": "Dollar Index"},
-                                    {"s": "FOREXCOM:USDJPY", "d": "USD/JPY"}
-                                ]
-                            }
-                        ]
-                    }
-                    </script>
-                </div>
             </section>
 
-            <!-- Geopolitics News -->
-            <section class="section" id="geopolitics">
+            <!-- Top Stories -->
+            <section class="section">
                 <div class="section-header">
-                    <h2 class="section-title">
-                        <span class="title-icon">🌍</span>
-                        Actualités Géopolitiques
-                    </h2>
-                    <div class="section-filters">
-                        <button class="filter-btn active" data-filter="all">Tous</button>
-                        <button class="filter-btn" data-filter="conflicts">Conflits</button>
-                        <button class="filter-btn" data-filter="trade">Commerce</button>
-                        <button class="filter-btn" data-filter="politics">Politique</button>
-                    </div>
+                    <h2 class="section-title">À la une</h2>
                 </div>
-                <div class="news-grid" id="geopolitics-news">
-                    <div class="loading">
-                        <div class="loading-spinner"></div>
-                        <span>Chargement des actualités...</span>
-                    </div>
+                <div class="top-stories" id="top-stories">
+                    <div class="loading"><div class="loading-spinner"></div></div>
                 </div>
             </section>
 
-            <!-- Market Impact -->
-            <section class="section" id="markets">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        <span class="title-icon">💹</span>
-                        Impact sur les Marchés
-                    </h2>
-                    <span class="section-badge">Analyse</span>
-                </div>
-                <div class="news-grid" id="markets-news">
-                    <div class="loading">
-                        <div class="loading-spinner"></div>
-                        <span>Chargement des analyses...</span>
+            <!-- Two Column Layout -->
+            <div class="two-col">
+                <!-- Left: Latest News -->
+                <section class="section col-main">
+                    <div class="section-header">
+                        <h2 class="section-title">Dernières actualités</h2>
                     </div>
-                </div>
-            </section>
+                    <div class="news-list" id="latest-news">
+                        <div class="loading"><div class="loading-spinner"></div></div>
+                    </div>
+                </section>
 
-            <!-- Cryptocurrency -->
-            <section class="section" id="crypto">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        <span class="title-icon">₿</span>
-                        Crypto & Blockchain
-                    </h2>
-                    <span class="section-badge crypto-badge">HOT</span>
-                </div>
+                <!-- Right: Sidebar -->
+                <aside class="col-side">
+                    <!-- Markets -->
+                    <div class="sidebar-block">
+                        <h3 class="sidebar-title">Marchés</h3>
+                        <div class="market-table" id="market-table"></div>
+                        <a href="markets.html" class="sidebar-more">Voir tous les marchés</a>
+                    </div>
 
-                <!-- TradingView Crypto Mini Chart -->
-                <div class="tradingview-widget-container crypto-chart-widget">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-                    {
-                        "symbols": [
-                            ["Bitcoin", "BITSTAMP:BTCUSD|12M"],
-                            ["Ethereum", "BITSTAMP:ETHUSD|12M"]
-                        ],
-                        "chartOnly": false,
-                        "width": "100%",
-                        "height": 400,
-                        "locale": "fr",
-                        "colorTheme": "dark",
-                        "autosize": true,
-                        "showVolume": true,
-                        "showMA": true,
-                        "hideDateRanges": false,
-                        "hideMarketStatus": false,
-                        "hideSymbolLogo": false,
-                        "scalePosition": "right",
-                        "scaleMode": "Normal",
-                        "fontFamily": "Inter, sans-serif",
-                        "fontSize": "10",
-                        "noTimeScale": false,
-                        "valuesTracking": "1",
-                        "changeMode": "price-and-percent",
-                        "chartType": "area",
-                        "maLineColor": "#2962FF",
-                        "maLineWidth": 1,
-                        "maLength": 9,
-                        "lineWidth": 2,
-                        "lineType": 0,
-                        "dateRanges": ["1d|1", "1m|30", "3m|60", "12m|1D", "60m|1W", "all|1M"]
-                    }
-                    </script>
-                </div>
+                    <!-- Sections -->
+                    <div class="sidebar-block">
+                        <h3 class="sidebar-title">Rubriques</h3>
+                        <ul class="sidebar-nav">
+                            <li><a href="geopolitics.html">Géopolitique</a></li>
+                            <li><a href="markets.html">Marchés financiers</a></li>
+                            <li><a href="crypto.html">Crypto &amp; Blockchain</a></li>
+                            <li><a href="commodities.html">Matières premières</a></li>
+                            <li><a href="etf.html">ETF &amp; Fonds</a></li>
+                            <li><a href="analysis.html">Analyses</a></li>
+                        </ul>
+                    </div>
 
-                <div class="news-grid" id="crypto-news">
-                    <div class="loading">
-                        <div class="loading-spinner"></div>
-                        <span>Chargement des actualités crypto...</span>
+                    <!-- Sources -->
+                    <div class="sidebar-block">
+                        <h3 class="sidebar-title">Sources</h3>
+                        <p class="sidebar-text">Reuters, Bloomberg, Financial Times, BBC, Le Monde, Les Échos, CoinDesk, CNBC, Al Jazeera et 16 autres médias.</p>
                     </div>
-                </div>
-            </section>
-
-            <!-- Commodities -->
-            <section class="section" id="commodities">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        <span class="title-icon">🛢️</span>
-                        Matières Premières
-                    </h2>
-                    <span class="section-badge commodities-badge">STRATEGIC</span>
-                </div>
-                <div class="commodities-overview">
-                    <div class="commodity-item">
-                        <span class="commodity-icon">🛢️</span>
-                        <span class="commodity-name">Pétrole WTI</span>
-                        <span class="commodity-price" id="wti-price">$72.45</span>
-                        <span class="commodity-change positive">+1.8%</span>
-                    </div>
-                    <div class="commodity-item">
-                        <span class="commodity-icon">⛽</span>
-                        <span class="commodity-name">Gaz Naturel</span>
-                        <span class="commodity-price" id="natgas-price">$2.89</span>
-                        <span class="commodity-change negative">-2.3%</span>
-                    </div>
-                    <div class="commodity-item">
-                        <span class="commodity-icon">🥇</span>
-                        <span class="commodity-name">Or</span>
-                        <span class="commodity-price" id="gold2-price">$2,087</span>
-                        <span class="commodity-change positive">+0.5%</span>
-                    </div>
-                    <div class="commodity-item">
-                        <span class="commodity-icon">🥈</span>
-                        <span class="commodity-name">Argent</span>
-                        <span class="commodity-price" id="silver2-price">$24.56</span>
-                        <span class="commodity-change negative">-0.3%</span>
-                    </div>
-                    <div class="commodity-item">
-                        <span class="commodity-icon">🔶</span>
-                        <span class="commodity-name">Cuivre</span>
-                        <span class="commodity-price" id="copper-price">$3.89</span>
-                        <span class="commodity-change positive">+1.2%</span>
-                    </div>
-                    <div class="commodity-item">
-                        <span class="commodity-icon">🌾</span>
-                        <span class="commodity-name">Blé</span>
-                        <span class="commodity-price" id="wheat-price">$612</span>
-                        <span class="commodity-change positive">+0.8%</span>
-                    </div>
-                </div>
-                <div class="news-grid" id="commodities-news">
-                    <div class="loading">
-                        <div class="loading-spinner"></div>
-                        <span>Chargement des actualités matières premières...</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ETF -->
-            <section class="section" id="etf">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        <span class="title-icon">📈</span>
-                        ETF & Fonds
-                    </h2>
-                    <span class="section-badge etf-badge">INVEST</span>
-                </div>
-                <div class="etf-highlights">
-                    <div class="etf-card">
-                        <div class="etf-header">
-                            <span class="etf-ticker">IBIT</span>
-                            <span class="etf-provider">iShares</span>
-                        </div>
-                        <div class="etf-name">Bitcoin ETF</div>
-                        <div class="etf-flow positive">+$1.2B flux</div>
-                    </div>
-                    <div class="etf-card">
-                        <div class="etf-header">
-                            <span class="etf-ticker">GLD</span>
-                            <span class="etf-provider">SPDR</span>
-                        </div>
-                        <div class="etf-name">Gold Trust</div>
-                        <div class="etf-flow positive">+$890M flux</div>
-                    </div>
-                    <div class="etf-card">
-                        <div class="etf-header">
-                            <span class="etf-ticker">SPY</span>
-                            <span class="etf-provider">SPDR</span>
-                        </div>
-                        <div class="etf-name">S&P 500 ETF</div>
-                        <div class="etf-flow positive">+$2.1B flux</div>
-                    </div>
-                    <div class="etf-card">
-                        <div class="etf-header">
-                            <span class="etf-ticker">QQQ</span>
-                            <span class="etf-provider">Invesco</span>
-                        </div>
-                        <div class="etf-name">NASDAQ 100</div>
-                        <div class="etf-flow positive">+$1.5B flux</div>
-                    </div>
-                </div>
-                <div class="news-grid" id="etf-news">
-                    <div class="loading">
-                        <div class="loading-spinner"></div>
-                        <span>Chargement des actualités ETF...</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Analysis Section -->
-            <section class="section" id="analysis">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        <span class="title-icon">🔬</span>
-                        Analyses & Perspectives
-                    </h2>
-                </div>
-                <div class="analysis-grid">
-                    <div class="analysis-card featured-analysis">
-                        <div class="analysis-badge">Analyse Exclusive</div>
-                        <h3>Impact des tensions géopolitiques sur les marchés en 2026</h3>
-                        <p>Décryptage complet des risques et opportunités pour les investisseurs face aux évolutions géopolitiques mondiales.</p>
-                        <div class="analysis-meta">
-                            <span class="analysis-date">5 janvier 2026</span>
-                            <span class="analysis-read">15 min de lecture</span>
-                        </div>
-                    </div>
-                    <div class="analysis-card">
-                        <h3>Bitcoin: corrélation avec les crises mondiales</h3>
-                        <p>Analyse de la performance du BTC lors des événements géopolitiques majeurs.</p>
-                        <div class="analysis-meta">
-                            <span class="analysis-date">4 janvier 2026</span>
-                            <span class="analysis-read">8 min</span>
-                        </div>
-                    </div>
-                    <div class="analysis-card">
-                        <h3>Or vs Bitcoin: quelle valeur refuge en 2026?</h3>
-                        <p>Comparaison des performances et de la volatilité des deux actifs refuges.</p>
-                        <div class="analysis-meta">
-                            <span class="analysis-date">3 janvier 2026</span>
-                            <span class="analysis-read">10 min</span>
-                        </div>
-                    </div>
-                    <div class="analysis-card">
-                        <h3>ETF thématiques: les tendances à surveiller</h3>
-                        <p>Intelligence artificielle, cybersécurité, énergie verte: quels secteurs privilégier?</p>
-                        <div class="analysis-meta">
-                            <span class="analysis-date">2 janvier 2026</span>
-                            <span class="analysis-read">12 min</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Sources Section -->
-            <section class="section" id="sources">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        <span class="title-icon">📡</span>
-                        Nos Sources Médias
-                    </h2>
-                </div>
-                <div class="sources-grid">
-                    <div class="source-category">
-                        <h3>🌐 Médias Internationaux</h3>
-                        <div class="source-list-grid">
-                            <a href="https://www.reuters.com" target="_blank" class="source-item">Reuters</a>
-                            <a href="https://www.bloomberg.com" target="_blank" class="source-item">Bloomberg</a>
-                            <a href="https://www.ft.com" target="_blank" class="source-item">Financial Times</a>
-                            <a href="https://www.bbc.com/news" target="_blank" class="source-item">BBC News</a>
-                            <a href="https://www.aljazeera.com" target="_blank" class="source-item">Al Jazeera</a>
-                            <a href="https://www.cnbc.com" target="_blank" class="source-item">CNBC</a>
-                            <a href="https://www.wsj.com" target="_blank" class="source-item">Wall Street Journal</a>
-                            <a href="https://www.nytimes.com" target="_blank" class="source-item">New York Times</a>
-                            <a href="https://www.theguardian.com" target="_blank" class="source-item">The Guardian</a>
-                            <a href="https://www.economist.com" target="_blank" class="source-item">The Economist</a>
-                        </div>
-                    </div>
-                    <div class="source-category">
-                        <h3>🇫🇷 Médias Francophones</h3>
-                        <div class="source-list-grid">
-                            <a href="https://www.lemonde.fr" target="_blank" class="source-item">Le Monde</a>
-                            <a href="https://www.lesechos.fr" target="_blank" class="source-item">Les Échos</a>
-                            <a href="https://www.lefigaro.fr" target="_blank" class="source-item">Le Figaro</a>
-                            <a href="https://www.france24.com/fr" target="_blank" class="source-item">France 24</a>
-                            <a href="https://www.rfi.fr" target="_blank" class="source-item">RFI</a>
-                            <a href="https://www.latribune.fr" target="_blank" class="source-item">La Tribune</a>
-                            <a href="https://bfrmbusiness.bfmtv.com" target="_blank" class="source-item">BFM Business</a>
-                            <a href="https://www.capital.fr" target="_blank" class="source-item">Capital</a>
-                        </div>
-                    </div>
-                    <div class="source-category">
-                        <h3>₿ Médias Crypto & Finance</h3>
-                        <div class="source-list-grid">
-                            <a href="https://www.coindesk.com" target="_blank" class="source-item">CoinDesk</a>
-                            <a href="https://cointelegraph.com" target="_blank" class="source-item">Cointelegraph</a>
-                            <a href="https://www.theblock.co" target="_blank" class="source-item">The Block</a>
-                            <a href="https://decrypt.co" target="_blank" class="source-item">Decrypt</a>
-                            <a href="https://www.marketwatch.com" target="_blank" class="source-item">MarketWatch</a>
-                            <a href="https://www.morningstar.com" target="_blank" class="source-item">Morningstar</a>
-                            <a href="https://www.etf.com" target="_blank" class="source-item">ETF.com</a>
-                            <a href="https://seekingalpha.com" target="_blank" class="source-item">Seeking Alpha</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                </aside>
+            </div>
 
         </div>
     </main>
@@ -594,61 +139,41 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section footer-brand">
-                    <div class="footer-logo">
-                        <span class="logo-icon">🌍</span>
-                        <span>GéoFinance</span>
-                    </div>
-                    <p class="footer-description">
-                        Plateforme d'intelligence financière combinant analyses géopolitiques et données de marché en temps réel pour des décisions d'investissement éclairées.
-                    </p>
-                    <div class="footer-social">
-                        <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
-                        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
-                        <a href="#" class="social-link" aria-label="Telegram">✈</a>
-                    </div>
+                <div class="footer-section">
+                    <strong>GéoFinance</strong>
+                    <p>Plateforme d'intelligence financière combinant analyses géopolitiques et données de marché en temps réel.</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Catégories</h3>
+                    <strong>Rubriques</strong>
                     <ul class="footer-links">
-                        <li><a href="#geopolitics">Géopolitique</a></li>
-                        <li><a href="#markets">Marchés Financiers</a></li>
-                        <li><a href="#crypto">Cryptomonnaies</a></li>
-                        <li><a href="#commodities">Matières Premières</a></li>
-                        <li><a href="#etf">ETF & Indices</a></li>
-                        <li><a href="#analysis">Analyses</a></li>
+                        <li><a href="geopolitics.html">Géopolitique</a></li>
+                        <li><a href="markets.html">Marchés</a></li>
+                        <li><a href="crypto.html">Crypto</a></li>
+                        <li><a href="commodities.html">Matières Premières</a></li>
+                        <li><a href="etf.html">ETF</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Ressources</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Glossaire</a></li>
-                        <li><a href="#">Guide d'investissement</a></li>
-                        <li><a href="#">Calendrier économique</a></li>
-                        <li><a href="#">API Données</a></li>
-                        <li><a href="#">Newsletter</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Légal</h3>
+                    <strong>Légal</strong>
                     <ul class="footer-links">
                         <li><a href="#">Mentions légales</a></li>
                         <li><a href="#">Confidentialité</a></li>
                         <li><a href="#">CGU</a></li>
-                        <li><a href="#">Cookies</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-disclaimer">
-                <strong>⚠️ Avertissement:</strong> Les informations présentées sur ce site sont fournies à titre informatif uniquement et ne constituent en aucun cas des conseils en investissement. Les performances passées ne garantissent pas les performances futures. Tout investissement comporte des risques de perte en capital.
+                Les informations présentées sont fournies à titre informatif uniquement et ne constituent pas des conseils en investissement.
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 GéoFinance. Toutes les données proviennent de sources publiques vérifiées.</p>
-                <p>Dernière mise à jour: <span id="last-update">--</span></p>
+                &copy; 2026 GéoFinance. Données issues de sources publiques vérifiées.
             </div>
         </div>
     </footer>
 
     <script src="app.js"></script>
+    <script>
+        if (typeof initHomePage === 'function') initHomePage();
+    </script>
 </body>
 </html>

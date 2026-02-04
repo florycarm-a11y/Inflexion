@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto — GéoFinance</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <span class="header-date" id="current-date"></span>
+                <a href="index.html" class="logo">GéoFinance</a>
+                <div class="header-search">
+                    <form class="search-form" id="search-form">
+                        <input type="text" class="search-input" id="search-input" placeholder="Rechercher...">
+                        <button type="submit" class="search-btn">Rechercher</button>
+                    </form>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Accueil</a>
+                <a href="geopolitics.html" class="nav-link">Géopolitique</a>
+                <a href="markets.html" class="nav-link">Marchés</a>
+                <a href="crypto.html" class="nav-link active">Crypto</a>
+                <a href="commodities.html" class="nav-link">Matières Premières</a>
+                <a href="etf.html" class="nav-link">ETF</a>
+                <a href="analysis.html" class="nav-link">Analyses</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Crypto & Blockchain</h1>
+                <p class="page-subtitle">Bitcoin, Ethereum, DeFi, régulations et adoption institutionnelle</p>
+            </div>
+
+            <!-- TradingView Crypto Chart -->
+            <div class="tradingview-widget-container crypto-chart-widget">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                {
+                    "symbols": [
+                        ["Bitcoin", "BITSTAMP:BTCUSD|12M"],
+                        ["Ethereum", "BITSTAMP:ETHUSD|12M"]
+                    ],
+                    "chartOnly": false,
+                    "width": "100%",
+                    "height": 400,
+                    "locale": "fr",
+                    "colorTheme": "light",
+                    "autosize": true,
+                    "showVolume": true,
+                    "showMA": true,
+                    "hideDateRanges": false,
+                    "hideMarketStatus": false,
+                    "scalePosition": "right",
+                    "scaleMode": "Normal",
+                    "fontFamily": "Inter, sans-serif",
+                    "fontSize": "10",
+                    "noTimeScale": false,
+                    "valuesTracking": "1",
+                    "changeMode": "price-and-percent",
+                    "chartType": "area",
+                    "lineWidth": 2,
+                    "dateRanges": ["1d|1", "1m|30", "3m|60", "12m|1D", "60m|1W", "all|1M"]
+                }
+                </script>
+            </div>
+
+            <div class="news-grid" id="page-news">
+                <div class="loading"><div class="loading-spinner"></div></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">&copy; 2026 GéoFinance. Données issues de sources publiques vérifiées.</div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>if (typeof initCategoryPage === 'function') initCategoryPage('crypto');</script>
+</body>
+</html>

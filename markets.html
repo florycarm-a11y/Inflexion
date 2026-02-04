@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marchés — GéoFinance</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <span class="header-date" id="current-date"></span>
+                <a href="index.html" class="logo">GéoFinance</a>
+                <div class="header-search">
+                    <form class="search-form" id="search-form">
+                        <input type="text" class="search-input" id="search-input" placeholder="Rechercher...">
+                        <button type="submit" class="search-btn">Rechercher</button>
+                    </form>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Accueil</a>
+                <a href="geopolitics.html" class="nav-link">Géopolitique</a>
+                <a href="markets.html" class="nav-link active">Marchés</a>
+                <a href="crypto.html" class="nav-link">Crypto</a>
+                <a href="commodities.html" class="nav-link">Matières Premières</a>
+                <a href="etf.html" class="nav-link">ETF</a>
+                <a href="analysis.html" class="nav-link">Analyses</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Marchés financiers</h1>
+                <p class="page-subtitle">Analyses boursières, politique monétaire et tendances mondiales</p>
+            </div>
+
+            <!-- TradingView Market Overview -->
+            <div class="tradingview-widget-container market-overview-widget">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                {
+                    "colorTheme": "light",
+                    "dateRange": "12M",
+                    "showChart": true,
+                    "locale": "fr",
+                    "width": "100%",
+                    "height": "500",
+                    "isTransparent": true,
+                    "showSymbolLogo": true,
+                    "showFloatingTooltip": true,
+                    "tabs": [
+                        {
+                            "title": "Indices",
+                            "symbols": [
+                                {"s": "FOREXCOM:SPXUSD", "d": "S&P 500"},
+                                {"s": "NASDAQ:NDX", "d": "NASDAQ 100"},
+                                {"s": "INDEX:CAC40", "d": "CAC 40"},
+                                {"s": "INDEX:DEU40", "d": "DAX 40"}
+                            ]
+                        },
+                        {
+                            "title": "Devises",
+                            "symbols": [
+                                {"s": "FOREXCOM:EURUSD", "d": "EUR/USD"},
+                                {"s": "FOREXCOM:GBPUSD", "d": "GBP/USD"},
+                                {"s": "TVC:DXY", "d": "Dollar Index"},
+                                {"s": "FOREXCOM:USDJPY", "d": "USD/JPY"}
+                            ]
+                        }
+                    ]
+                }
+                </script>
+            </div>
+
+            <div class="news-grid" id="page-news">
+                <div class="loading"><div class="loading-spinner"></div></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">&copy; 2026 GéoFinance. Données issues de sources publiques vérifiées.</div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>if (typeof initCategoryPage === 'function') initCategoryPage('markets');</script>
+</body>
+</html>

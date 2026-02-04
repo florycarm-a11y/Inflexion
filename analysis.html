@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyses — GéoFinance</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <span class="header-date" id="current-date"></span>
+                <a href="index.html" class="logo">GéoFinance</a>
+                <div class="header-search">
+                    <form class="search-form" id="search-form">
+                        <input type="text" class="search-input" id="search-input" placeholder="Rechercher...">
+                        <button type="submit" class="search-btn">Rechercher</button>
+                    </form>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Accueil</a>
+                <a href="geopolitics.html" class="nav-link">Géopolitique</a>
+                <a href="markets.html" class="nav-link">Marchés</a>
+                <a href="crypto.html" class="nav-link">Crypto</a>
+                <a href="commodities.html" class="nav-link">Matières Premières</a>
+                <a href="etf.html" class="nav-link">ETF</a>
+                <a href="analysis.html" class="nav-link active">Analyses</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Analyses & Perspectives</h1>
+                <p class="page-subtitle">Décryptages approfondis des tendances géopolitiques et financières</p>
+            </div>
+
+            <div class="analysis-list" id="analysis-list">
+                <article class="analysis-full">
+                    <span class="analysis-label">Analyse exclusive</span>
+                    <h2>Impact des tensions géopolitiques sur les marchés en 2026</h2>
+                    <p class="analysis-excerpt">Décryptage complet des risques et opportunités pour les investisseurs face aux évolutions géopolitiques mondiales. L'année 2026 s'annonce marquée par la reconfiguration des alliances commerciales et une volatilité accrue sur les matières premières stratégiques.</p>
+                    <div class="analysis-meta">5 janvier 2026 — 15 min de lecture</div>
+                </article>
+                <article class="analysis-full">
+                    <h2>Bitcoin : corrélation avec les crises mondiales</h2>
+                    <p class="analysis-excerpt">Analyse de la performance du BTC lors des événements géopolitiques majeurs. Le bitcoin se positionne-t-il réellement comme une valeur refuge ou reste-t-il un actif spéculatif ?</p>
+                    <div class="analysis-meta">4 janvier 2026 — 8 min de lecture</div>
+                </article>
+                <article class="analysis-full">
+                    <h2>Or vs Bitcoin : quelle valeur refuge en 2026 ?</h2>
+                    <p class="analysis-excerpt">Comparaison des performances et de la volatilité des deux actifs refuges. Historique, corrélations et perspectives pour les investisseurs en quête de protection.</p>
+                    <div class="analysis-meta">3 janvier 2026 — 10 min de lecture</div>
+                </article>
+                <article class="analysis-full">
+                    <h2>ETF thématiques : les tendances à surveiller</h2>
+                    <p class="analysis-excerpt">Intelligence artificielle, cybersécurité, énergie verte : quels secteurs privilégier ? Revue des fonds les plus performants et des opportunités émergentes.</p>
+                    <div class="analysis-meta">2 janvier 2026 — 12 min de lecture</div>
+                </article>
+                <article class="analysis-full">
+                    <h2>Transition énergétique : impact sur les matières premières</h2>
+                    <p class="analysis-excerpt">Le cuivre, le lithium et les terres rares sont au coeur de la transition. Analyse des dynamiques d'offre et de demande pour les métaux stratégiques.</p>
+                    <div class="analysis-meta">1 janvier 2026 — 11 min de lecture</div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">&copy; 2026 GéoFinance. Données issues de sources publiques vérifiées.</div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>if (typeof initCommon === 'function') initCommon();</script>
+</body>
+</html>
