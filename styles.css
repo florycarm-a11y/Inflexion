@@ -221,23 +221,6 @@ a {
     font-weight: 700;
 }
 
-/* Mobile Menu */
-.mobile-menu-btn {
-    display: none;
-    flex-direction: column;
-    gap: 4px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-}
-
-.mobile-menu-btn span {
-    width: 20px;
-    height: 2px;
-    background: var(--text-primary);
-    transition: 0.2s ease;
-}
 
 /* ============================================
    News Ticker — Gradient Band
@@ -1545,31 +1528,23 @@ a {
 
 @media (max-width: 768px) {
     .nav {
-        position: fixed;
-        top: 80px;
-        left: 0;
-        right: 0;
-        background: var(--bg-primary);
-        flex-direction: column;
-        padding: 1rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
         gap: 0;
-        border-bottom: 4px solid;
-        border-image: var(--gradient-main) 1;
-        transform: translateY(-120%);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        z-index: 100;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
 
-    .nav.active {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
+    .nav::-webkit-scrollbar {
+        display: none;
     }
 
-    .mobile-menu-btn {
-        display: flex;
+    .nav-link {
+        flex-shrink: 0;
+        font-size: 0.7rem;
+        padding: 0.75rem 0.85rem;
+        white-space: nowrap;
     }
 
     .hero-title {
@@ -1624,18 +1599,51 @@ a {
         display: none;
     }
 
+    .header-search {
+        order: 3;
+        width: 100%;
+    }
+
     .search-input {
-        width: 140px;
+        width: 100%;
+        flex: 1;
+    }
+
+    .logo {
+        font-size: 1.6rem;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .analysis-full h2 {
+        font-size: 1.15rem;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 0 15px;
+        padding: 0 12px;
+    }
+
+    .hero {
+        padding: 2rem 0;
     }
 
     .hero-title {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
+        letter-spacing: -0.5px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .nav-link {
+        font-size: 0.65rem;
+        padding: 0.65rem 0.7rem;
+        letter-spacing: 0.3px;
     }
 
     .market-grid,
@@ -1649,7 +1657,15 @@ a {
     }
 
     .page-title {
-        font-size: 1.75rem;
+        font-size: 1.35rem;
+    }
+
+    .top-story-main h3 {
+        font-size: 1.15rem;
+    }
+
+    .top-story h3 {
+        font-size: 0.95rem;
     }
 }
 
