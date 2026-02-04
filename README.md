@@ -1,10 +1,10 @@
-# GéoFinance - Géopolitique & Marchés Financiers
+# Inflexion - Géopolitique & Marchés Financiers
 
 Plateforme d'intelligence financière combinant analyses géopolitiques et données de marché en temps réel pour des décisions d'investissement éclairées.
 
 ## Aperçu
 
-GéoFinance est une application web qui agrège et présente les actualités géopolitiques mondiales et leur impact sur les marchés financiers, incluant:
+Inflexion est une application web qui agrège et présente les actualités géopolitiques mondiales et leur impact sur les marchés financiers, incluant:
 
 - **Bitcoin & Cryptomonnaies** - Suivi en temps réel des principales cryptos
 - **Matières Premières** - Or, pétrole, gaz, métaux industriels

@@ -1,4 +1,4 @@
-// GéoFinance — v4.1 — SEO + fresh content update
+// Inflexion — v4.1 — SEO + fresh content update
 // Updated: 4 février 2026
 
 const categoryTrends = {
