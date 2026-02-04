@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analyses — GéoFinance</title>
+    <title>Analyses & Perspectives — GéoFinance</title>
+    <meta name="description" content="Analyses approfondies des dynamiques géopolitiques et financières mondiales.">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,49 +37,148 @@
 
     <main class="main-content">
         <div class="container">
-            <div class="page-header">
+            <div class="page-header" data-category="analysis">
                 <h1 class="page-title">Analyses & Perspectives</h1>
-                <p class="page-subtitle">Décryptages approfondis des tendances géopolitiques et financières</p>
+                <p class="page-subtitle">Décryptages approfondis des tendances géopolitiques, financières et technologiques</p>
             </div>
 
             <div class="analysis-list" id="analysis-list">
+
+                <!-- ARTICLE 1 -->
                 <article class="analysis-full">
-                    <span class="analysis-label">Analyse exclusive</span>
-                    <h2>Impact des tensions géopolitiques sur les marchés en 2026</h2>
-                    <p class="analysis-excerpt">Décryptage complet des risques et opportunités pour les investisseurs face aux évolutions géopolitiques mondiales. L'année 2026 s'annonce marquée par la reconfiguration des alliances commerciales et une volatilité accrue sur les matières premières stratégiques.</p>
-                    <div class="analysis-meta">5 janvier 2026 — 15 min de lecture</div>
+                    <span class="analysis-label">Analyse de la semaine</span>
+                    <h2>Tarifs Trump sur le Groenland : quand la géopolitique efface 1 200 milliards de Wall Street en une séance</h2>
+                    <p class="analysis-excerpt">Le président américain a relancé la guerre commerciale contre l'Union européenne en conditionnant la levée de nouveaux tarifs au soutien européen de ses ambitions sur le Groenland. En une séance, le S&P 500 a perdu 2,1 %, le Nasdaq 2,4 %, et le Dow Jones 870 points. Décryptage d'un choc systémique.</p>
+                    <div class="analysis-meta">4 février 2026 — 12 min de lecture</div>
+                    <button class="article-toggle" onclick="toggleArticle(this)">Lire l'analyse complète</button>
+                    <div class="article-content">
+                        <div class="article-body">
+                            <p>Les marchés financiers ont brutalement rappelé, en ce début de février 2026, que la géopolitique reste le facteur de risque le plus sous-estimé des portefeuilles institutionnels. L'annonce par Donald Trump de tarifs douaniers punitifs contre sept pays de l'Union européenne et le Royaume-Uni — conditionnés à leur soutien dans la prise de contrôle américaine du Groenland — a provoqué un séisme sur les places financières mondiales.</p>
+
+                            <h3>Un choc de 1 200 milliards de dollars</h3>
+                            <p>En une seule séance, plus de <span class="data-highlight">1 200 milliards de dollars</span> de capitalisation ont été effacés du S&P 500. Le Nasdaq Composite a plongé de plus de 2,4 %, mené par les valeurs technologiques exposées aux chaînes d'approvisionnement européennes. Le Dow Jones Industrial Average a cédé environ 870 points.</p>
+                            <p>Ce qui frappe les analystes, c'est la rapidité de la contagion. Les marchés européens ont suivi dans la foulée : l'Euro Stoxx 50 a perdu 1,8 %, avec une pression particulièrement forte sur le secteur automobile allemand. Selon les économistes de Goldman Sachs, un tarif de 10 % réduirait le PIB réel de 0,1 % à 0,2 % dans les pays touchés, l'Allemagne étant la plus exposée.</p>
+
+                            <h3>Le syndrome TACO</h3>
+                            <p>Toutefois, les marchés ont rebondi quelques jours plus tard quand Trump a reculé sur ses menaces les plus agressives. Ce schéma a été baptisé le « <span class="data-highlight">TACO trade</span> » par les traders — acronyme de « Trump Always Chickens Out ». Le concept reflète un pattern récurrent : menace maximale, volatilité extrême, puis désescalade et rally de soulagement.</p>
+
+                            <blockquote>« Une escalade Groenland-driven dans la guerre commerciale USA-Europe pourrait effacer la majeure partie de la croissance des bénéfices européens en 2026, déclenchant potentiellement une correction de 5 à 8 %. » — Laurent Douillet, Bloomberg Intelligence</blockquote>
+
+                            <h3>Implications pour les portefeuilles</h3>
+                            <p>Pour les investisseurs, le signal est clair : le taux effectif moyen des tarifs américains a atteint <span class="data-highlight">10,1 %</span>, le plus haut depuis 1946. Selon la Tax Foundation, cela représente la plus grande hausse d'impôts en pourcentage du PIB (<span class="data-highlight">0,55 % du PIB pour 2026</span>) depuis 1993. Par ménage américain, la charge supplémentaire est estimée à 1 300 dollars en 2026.</p>
+                            <p>Les stratégies de couverture se sont ajustées. Les positions longues sur le dollar ont été réduites, tandis que l'or — qui a franchi les 5 100 dollars l'once — absorbe massivement les flux de capitaux cherchant refuge. Les ETF obligataires à duration courte ont enregistré des flux entrants records.</p>
+                            <p>L'autre risque majeur : la Cour suprême américaine examine actuellement la légalité des tarifs imposés sous l'IEEPA. Un arrêt défavorable à l'administration Trump pourrait forcer le remboursement des droits déjà perçus — créant un nouveau choc, cette fois positif, pour les marchés.</p>
+
+                            <h3>Que surveiller</h3>
+                            <p>Les tarifs pharmaceutiques, qui pourraient atteindre 200 % d'ici la fin 2026, constituent le prochain front. Les midterms américains ajoutent une couche d'incertitude politique. Rabobank prévient : « Quiconque s'attend à une année 2026 calme après les turbulences de 2025 sera probablement déçu. »</p>
+                        </div>
+                        <div class="article-sources">
+                            Sources : <a href="https://www.nbcnews.com" target="_blank">NBC News</a>, <a href="https://www.cnbc.com" target="_blank">CNBC</a>, <a href="https://www.bloomberg.com" target="_blank">Bloomberg Intelligence</a>, <a href="https://taxfoundation.org" target="_blank">Tax Foundation</a>, <a href="https://www.rabobank.com" target="_blank">Rabobank</a>
+                        </div>
+                    </div>
                 </article>
+
+                <!-- ARTICLE 2 -->
                 <article class="analysis-full">
-                    <h2>Bitcoin : corrélation avec les crises mondiales</h2>
-                    <p class="analysis-excerpt">Analyse de la performance du BTC lors des événements géopolitiques majeurs. Le bitcoin se positionne-t-il réellement comme une valeur refuge ou reste-t-il un actif spéculatif ?</p>
-                    <div class="analysis-meta">4 janvier 2026 — 8 min de lecture</div>
+                    <span class="analysis-label">Analyse macro</span>
+                    <h2>Or à 5 100 $, Bitcoin à 73 000 $ : la grande divergence des valeurs refuges</h2>
+                    <p class="analysis-excerpt">Pendant que l'or pulvérise ses records historiques au-delà de 5 100 dollars l'once, le bitcoin s'effondre sous les 73 000 dollars, son plus bas depuis novembre 2024. Cette divergence inédite remet en question le narratif du BTC comme « or numérique » et redéfinit la notion même de valeur refuge.</p>
+                    <div class="analysis-meta">3 février 2026 — 10 min de lecture</div>
+                    <button class="article-toggle" onclick="toggleArticle(this)">Lire l'analyse complète</button>
+                    <div class="article-content">
+                        <div class="article-body">
+                            <p>Les premiers jours de février 2026 offrent un cas d'école pour les analystes financiers : deux actifs présentés comme des « valeurs refuges » évoluent dans des directions diamétralement opposées. L'or spot a atteint <span class="data-highlight">5 136 dollars l'once</span>, soit une progression de plus de 64 % sur un an. Dans le même temps, le bitcoin a brièvement cassé les 73 000 dollars, touchant son plus bas niveau en 16 mois.</p>
+
+                            <h3>L'or : le refuge incontesté</h3>
+                            <p>La trajectoire de l'or en 2026 est spectaculaire. Après une hausse de 64,4 % en 2025 — sa meilleure performance annuelle depuis 1979 — le métal jaune a continué sur sa lancée. Plusieurs catalyseurs se cumulent :</p>
+                            <p>D'abord, les achats massifs des banques centrales. J.P. Morgan estime que la demande institutionnelle atteindra <span class="data-highlight">585 tonnes par trimestre</span> en 2026, les banques centrales diversifiant leurs réserves loin du dollar. Ensuite, l'instabilité géopolitique : opérations militaires américaines au Venezuela, pressions sur le Groenland, tensions persistantes avec l'Iran — chaque flashpoint alimente la demande de valeur refuge.</p>
+                            <p>Nicky Shiels, responsable de la stratégie métaux chez MKS PAMP, voit l'or atteindre <span class="data-highlight">5 400 dollars</span> cette année. « L'or est un trade séculaire, pas un sommet spéculatif de matière première », affirme-t-elle.</p>
+
+                            <h3>Bitcoin : « crypto winter » confirmé</h3>
+                            <p>Le tableau est radicalement différent pour le bitcoin. La principale cryptomonnaie a chuté de 40 % depuis son pic de 2025. Les liquidations sur une seule journée (samedi 1er février) ont atteint <span class="data-highlight">2,56 milliards de dollars</span>, le 10e plus gros événement de liquidation de l'histoire crypto.</p>
+                            <p>Matt Hougan, directeur des investissements chez Bitwise, est catégorique : « Le marché crypto est en hiver complet depuis janvier 2025, comparable aux bear markets de 2018 et 2022. Ce n'est pas une correction dans un marché haussier. » Les ETF Bitcoin spot ont enregistré leur deuxième semaine consécutive de sorties, avec <span class="data-highlight">1,7 milliard de dollars</span> de flux négatifs selon CoinShares.</p>
+                            <p>Ethereum a suivi, perdant 6,5 % pour tomber près de 2 200 dollars. Solana a glissé sous les 100 dollars. Les actions liées à la crypto — Strategy (MSTR), Coinbase (COIN), Galaxy Digital (GLXY) — enregistrent des baisses à deux chiffres.</p>
+
+                            <blockquote>« L'or se comporte comme un refuge quand la géopolitique se tend. Pour le pétrole, le même stress ne compte que s'il retire des barils du marché. Le bitcoin, lui, se comporte encore comme un actif risk-on. » — Analyse J.P. Morgan</blockquote>
+
+                            <h3>La thèse du « digital gold » en question</h3>
+                            <p>Cette divergence pose un problème fondamental pour le narratif crypto. Pendant des années, les promoteurs du bitcoin l'ont présenté comme un « or numérique » — une couverture contre l'inflation et l'instabilité. Les données de février 2026 contredisent cette thèse. Le bitcoin reste fortement corrélé aux actifs risqués, particulièrement aux valeurs tech du Nasdaq, et décorrélé de l'or.</p>
+                            <p>Pour autant, les fondamentaux structurels restent intacts selon Rob Hadick de Dragonfly Capital : « La baisse du BTC ne semble pas tirée par un seul facteur. Les stablecoins et la tokenisation d'actifs réels continuent de gagner du terrain chez les institutionnels. » Standard Chartered maintient un objectif de 150 000 dollars pour le BTC en 2026, revu à la baisse depuis un précédent objectif de 300 000 dollars.</p>
+
+                            <h3>Stratégie d'allocation</h3>
+                            <p>Pour les gestionnaires de portefeuille, l'enseignement est clair : l'or et le bitcoin ne jouent pas le même rôle. L'or reste la couverture géopolitique par excellence. Le bitcoin est un actif spéculatif à fort bêta, plus proche d'un call option sur l'adoption technologique que d'une véritable valeur refuge. En période de stress systémique, ces deux actifs ne sont pas substituables.</p>
+                        </div>
+                        <div class="article-sources">
+                            Sources : <a href="https://www.cnbc.com" target="_blank">CNBC</a>, <a href="https://www.coindesk.com" target="_blank">CoinDesk</a>, <a href="https://www.bloomberg.com" target="_blank">Bloomberg</a>, <a href="https://www.jpmorgan.com" target="_blank">J.P. Morgan</a>, <a href="https://www.tradingview.com" target="_blank">TradingView</a>
+                        </div>
+                    </div>
                 </article>
+
+                <!-- ARTICLE 3 -->
                 <article class="analysis-full">
-                    <h2>Or vs Bitcoin : quelle valeur refuge en 2026 ?</h2>
-                    <p class="analysis-excerpt">Comparaison des performances et de la volatilité des deux actifs refuges. Historique, corrélations et perspectives pour les investisseurs en quête de protection.</p>
-                    <div class="analysis-meta">3 janvier 2026 — 10 min de lecture</div>
+                    <span class="analysis-label">Analyse sectorielle</span>
+                    <h2>L'IA, dernier rempart des marchés face au chaos géopolitique</h2>
+                    <p class="analysis-excerpt">Dans un environnement macroéconomique dégradé par les tensions commerciales et la fragmentation géopolitique, l'intelligence artificielle reste le seul secteur capable de maintenir la dynamique haussière des indices. Nvidia, avec 57 milliards de revenus trimestriels et l'architecture Rubin en embuscade, incarne cette exception. Mais jusqu'à quand ?</p>
+                    <div class="analysis-meta">1er février 2026 — 14 min de lecture</div>
+                    <button class="article-toggle" onclick="toggleArticle(this)">Lire l'analyse complète</button>
+                    <div class="article-content">
+                        <div class="article-body">
+                            <p>Si les marchés américains n'ont pas déjà basculé en bear market malgré les guerres tarifaires, l'instabilité géopolitique et l'inflation persistante, c'est en grande partie grâce à un seul secteur : l'intelligence artificielle. Les flux d'investissement dans l'infrastructure IA — centres de données, semi-conducteurs, cloud — constituent le dernier pilier de soutien des indices boursiers.</p>
+
+                            <h3>Nvidia : la machine à cash</h3>
+                            <p>Les chiffres sont vertigineux. Au troisième trimestre 2026, Nvidia a publié un chiffre d'affaires de <span class="data-highlight">57 milliards de dollars</span>, en hausse de 62 % sur un an. Les flux de trésorerie opérationnels sur les neuf premiers mois atteignent 66,5 milliards de dollars. La directrice financière Colette Kress a confirmé une « visibilité sur un demi-billion de dollars de revenus Blackwell et Rubin » d'ici fin 2026.</p>
+                            <p>Le prochain catalyseur est l'architecture Vera Rubin, qui combine les CPU Vera et les GPU Rubin. Selon les premières estimations, cette plateforme pourrait réduire les coûts d'inférence d'un facteur 10 et nécessiter quatre fois moins de GPU pour l'entraînement des modèles massifs. TSMC augmente sa capacité de packaging avancé à 130 000 wafers par mois d'ici fin 2026, dont Wedbush estime que Nvidia a sécurisé environ 60 %.</p>
+
+                            <h3>L'IA agentique : la prochaine vague</h3>
+                            <p>Jensen Huang, CEO de Nvidia, a qualifié l'IA agentique de « nouvelle vague » de l'intelligence artificielle. Contrairement aux chatbots traditionnels, les agents IA autonomes peuvent planifier, exécuter des tâches complexes et interagir avec des systèmes externes. Ce marché représente une opportunité de <span class="data-highlight">3 000 milliards de dollars</span> d'ici 2030 selon les estimations de Nvidia.</p>
+                            <p>Cette transition est un catalyseur majeur pour l'ensemble de l'écosystème. Non seulement Nvidia en bénéficie, mais aussi les fournisseurs de cloud (AWS, Azure, Google Cloud), les entreprises de logiciels (Microsoft, Salesforce) et les spécialistes du stockage de données.</p>
+
+                            <h3>Au-delà de Nvidia : le reste du peloton</h3>
+                            <p>Si Nvidia domine, d'autres acteurs gagnent en pertinence. Alphabet mise sur ses processeurs TPU (Tensor Processing Units), une alternative plus économique aux GPU Nvidia pour certains cas d'usage. AMD progresse avec ses GPU de centre de données et prévoit une croissance annuelle composée de plus de 60 % sur cette division. Broadcom détient environ 60 % du marché des ASIC IA pour serveurs.</p>
+                            <p>Le sentiment des investisseurs reste solide : selon le rapport AI Investor Outlook 2026 de Motley Fool, 62 % des sondés s'attendent à ce que les entreprises investissant massivement dans l'IA délivrent de forts rendements à long terme. 9 investisseurs IA sur 10 prévoient de maintenir ou augmenter leur exposition.</p>
+
+                            <blockquote>« Les effets négatifs des tarifs sont actuellement compensés par des niveaux faibles de rétorsion et des niveaux élevés d'investissement dans l'IA. L'optimisme IA porte le marché actions, et la construction de centres de données soutient les investissements. » — Tax Foundation</blockquote>
+
+                            <h3>Le risque de dépendance</h3>
+                            <p>Mais cette concentration sectorielle est aussi un risque systémique. Si les résultats de Nvidia ou les flux d'investissement IA devaient décevoir, les marchés n'auraient plus de filet de sécurité. L'inflation collante constitue un risque clé : si la pression sur les prix persiste et que la Fed change de cap, les conditions financières se resserreraient rapidement, mettant sous pression les actifs risqués — y compris les valeurs IA aux valorisations élevées.</p>
+                            <p>La nomination de Kevin Warsh à la tête de la Fed a déjà provoqué un repricing des anticipations dollar. Les midterms 2026 ajoutent une couche d'incertitude politique. Le World Economic Forum prévient dans son Global Risks Report 2026 que la confrontation géoéconomique est désormais le premier risque mondial à court terme.</p>
+
+                            <h3>Positionnement recommandé</h3>
+                            <p>Wellington conseille de se positionner pour une inflation structurellement plus haute, une croissance plus faible, et des résultats de marché plus différenciés. Bank of America souligne que la géopolitique et la politique gouvernementale « auront une influence majeure sur l'économie et les marchés en 2026 ». Dans ce contexte, l'IA n'est pas un secteur comme les autres — c'est le dernier rempart de la valorisation des indices. Le surveiller de près n'est plus optionnel : c'est une nécessité de gestion de risque.</p>
+                        </div>
+                        <div class="article-sources">
+                            Sources : <a href="https://www.fool.com" target="_blank">Motley Fool</a>, <a href="https://taxfoundation.org" target="_blank">Tax Foundation</a>, <a href="https://www.wellington.com" target="_blank">Wellington</a>, <a href="https://www.weforum.org" target="_blank">WEF</a>, <a href="https://www.privatebank.bankofamerica.com" target="_blank">Bank of America</a>
+                        </div>
+                    </div>
                 </article>
-                <article class="analysis-full">
-                    <h2>ETF thématiques : les tendances à surveiller</h2>
-                    <p class="analysis-excerpt">Intelligence artificielle, cybersécurité, énergie verte : quels secteurs privilégier ? Revue des fonds les plus performants et des opportunités émergentes.</p>
-                    <div class="analysis-meta">2 janvier 2026 — 12 min de lecture</div>
-                </article>
-                <article class="analysis-full">
-                    <h2>Transition énergétique : impact sur les matières premières</h2>
-                    <p class="analysis-excerpt">Le cuivre, le lithium et les terres rares sont au coeur de la transition. Analyse des dynamiques d'offre et de demande pour les métaux stratégiques.</p>
-                    <div class="analysis-meta">1 janvier 2026 — 11 min de lecture</div>
-                </article>
+
             </div>
         </div>
     </main>
 
     <footer class="footer">
         <div class="container">
+            <div class="footer-disclaimer">
+                Les informations présentées sont fournies à titre informatif uniquement et ne constituent pas des conseils en investissement.
+            </div>
             <div class="footer-bottom">&copy; 2026 GéoFinance. Données issues de sources publiques vérifiées.</div>
         </div>
     </footer>
 
     <script src="app.js"></script>
-    <script>if (typeof initCommon === 'function') initCommon();</script>
+    <script>
+        if (typeof initCommon === 'function') initCommon();
+
+        function toggleArticle(btn) {
+            var content = btn.nextElementSibling;
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                btn.textContent = 'Lire l\'analyse complète';
+            } else {
+                content.classList.add('expanded');
+                btn.textContent = 'Réduire';
+            }
+        }
+    </script>
 </body>
 </html>
