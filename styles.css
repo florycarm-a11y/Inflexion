@@ -607,8 +607,8 @@ a {
    ============================================ */
 .top-stories-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
 }
 
 .top-story {
@@ -663,9 +663,8 @@ a {
 }
 
 .top-story-main {
-    grid-row: span 2;
     border-left-width: 4px;
-    padding: 2rem;
+    padding: 1.5rem;
     background: var(--bg-secondary);
     border-left-color: var(--accent);
 }
@@ -675,8 +674,8 @@ a {
 }
 
 .top-story-main h3 {
-    font-size: 1.5rem;
-    letter-spacing: -0.3px;
+    font-size: 1.1rem;
+    letter-spacing: -0.2px;
 }
 
 .top-story-main p {
@@ -1573,9 +1572,6 @@ a {
         grid-template-columns: 1fr;
     }
 
-    .top-story-main {
-        grid-row: span 1;
-    }
 
     .header-top {
         flex-wrap: wrap;
