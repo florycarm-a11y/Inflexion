@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -93,6 +94,30 @@
                     }
                     </script>
                 </div>
+            </section>
+
+            <!-- Data Visualization: Gold vs Bitcoin Divergence -->
+            <section class="section chart-section">
+                <div class="section-header">
+                    <h2 class="section-title">Divergence Or vs Bitcoin — YTD 2026</h2>
+                    <span class="section-subtitle">Performance comparée des actifs refuges</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="divergenceChart"></canvas>
+                </div>
+                <div class="chart-legend">
+                    <div class="legend-item legend-gold">
+                        <span class="legend-color"></span>
+                        <span class="legend-label">Or (XAU/USD)</span>
+                        <span class="legend-value positive">+18.2% YTD</span>
+                    </div>
+                    <div class="legend-item legend-btc">
+                        <span class="legend-color"></span>
+                        <span class="legend-label">Bitcoin (BTC/USD)</span>
+                        <span class="legend-value negative">-16.4% YTD</span>
+                    </div>
+                </div>
+                <p class="chart-insight">Le « digital gold » invalidé : l'or surperforme le BTC de 34 points depuis janvier. Les banques centrales achètent 585 tonnes/trimestre tandis que les ETF crypto enregistrent $1,7Md de sorties.</p>
             </section>
 
             <!-- Top Stories -->

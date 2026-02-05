@@ -1652,6 +1652,124 @@ a {
 }
 
 /* ============================================
+   Chart Section — Data Visualization
+   ============================================ */
+.chart-section {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.section-subtitle {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-left: 1rem;
+}
+
+.chart-container {
+    position: relative;
+    height: 320px;
+    width: 100%;
+    margin: 1.5rem 0;
+    background: var(--bg-primary);
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+}
+
+.legend-color {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+}
+
+.legend-gold .legend-color {
+    background: #f59e0b;
+}
+
+.legend-btc .legend-color {
+    background: #f7931a;
+    background: repeating-linear-gradient(
+        90deg,
+        #f7931a,
+        #f7931a 4px,
+        transparent 4px,
+        transparent 8px
+    );
+    border: 2px solid #f7931a;
+}
+
+.legend-label {
+    color: var(--text-secondary);
+}
+
+.legend-value {
+    font-weight: 600;
+}
+
+.legend-value.positive {
+    color: var(--green);
+}
+
+.legend-value.negative {
+    color: var(--accent);
+}
+
+.chart-insight {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background: var(--bg-primary);
+    padding: 1rem 1.25rem;
+    border-left: 3px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .chart-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .section-subtitle {
+        margin-left: 0;
+    }
+
+    .chart-container {
+        height: 260px;
+    }
+
+    .chart-legend {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+}
+
+/* ============================================
    Print Styles
    ============================================ */
 @media print {

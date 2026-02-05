@@ -175,6 +175,102 @@ function initHomePage() {
         var cls = m.change > 0 ? 'positive' : 'negative';
         return '<div class="market-row"><span class="market-row-name">' + m.name + '</span><span class="market-row-price">$' + m.price.toLocaleString('fr-FR') + '</span><span class="market-row-change ' + cls + '">' + (m.change > 0 ? '+' : '') + m.change.toFixed(2) + '%</span></div>';
     }).join('');
+
+    // Initialize divergence chart
+    initDivergenceChart();
+}
+
+// --- Divergence Chart: Gold vs Bitcoin YTD ---
+
+function initDivergenceChart() {
+    var ctx = document.getElementById('divergenceChart');
+    if (!ctx || typeof Chart === 'undefined') return;
+
+    // YTD 2026 data points (weekly)
+    var labels = ['1 jan', '8 jan', '15 jan', '22 jan', '29 jan', '5 fév'];
+    var goldData = [0, 3.2, 7.8, 12.4, 15.1, 18.2];      // Or: +18.2% YTD
+    var btcData = [0, -2.1, -8.5, -12.3, -14.8, -16.4];  // BTC: -16.4% YTD
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Or (XAU/USD)',
+                    data: goldData,
+                    borderColor: '#f59e0b',
+                    backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.3,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#f59e0b'
+                },
+                {
+                    label: 'Bitcoin (BTC/USD)',
+                    data: btcData,
+                    borderColor: '#f7931a',
+                    backgroundColor: 'rgba(247, 147, 26, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.3,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#f7931a',
+                    borderDash: [5, 5]
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(10, 15, 26, 0.95)',
+                    titleFont: { family: 'Inter', size: 13 },
+                    bodyFont: { family: 'Inter', size: 12 },
+                    padding: 12,
+                    cornerRadius: 6,
+                    callbacks: {
+                        label: function(context) {
+                            var value = context.parsed.y;
+                            return context.dataset.label + ': ' + (value >= 0 ? '+' : '') + value.toFixed(1) + '%';
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: { family: 'Inter', size: 11 },
+                        color: '#64748b'
+                    }
+                },
+                y: {
+                    grid: {
+                        color: 'rgba(100, 116, 139, 0.1)'
+                    },
+                    ticks: {
+                        font: { family: 'Inter', size: 11 },
+                        color: '#64748b',
+                        callback: function(value) {
+                            return (value >= 0 ? '+' : '') + value + '%';
+                        }
+                    }
+                }
+            }
+        }
+    });
 }
 
 // --- Category pages ---
