@@ -1,5 +1,10 @@
 # Inflexion Backend API
 
+![CI/CD](https://github.com/florycarm-a11y/Claude/actions/workflows/ci.yml/badge.svg)
+![Coverage](https://img.shields.io/badge/coverage-70%25-green)
+![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
 Backend Node.js + PostgreSQL pour l'agrégation de 20+ sources institutionnelles.
 
 ## Stack Technique
@@ -193,6 +198,64 @@ backend/
 - **Rate Limiting**: 100 requêtes / 15 min
 - **Compression**: gzip activé
 
+## Tests
+
+### Exécuter les tests
+
+```bash
+# Tous les tests
+npm test
+
+# Avec couverture
+npm run test:coverage
+
+# Mode watch
+npm run test:watch
+
+# CI mode (pour GitHub Actions)
+npm run test:ci
+```
+
+### Structure des tests
+
+```
+tests/
+├── setup.js              # Configuration Jest
+├── mocks/
+│   └── database.js       # Mock PostgreSQL
+├── unit/
+│   └── aggregator.test.js  # Tests unitaires
+└── integration/
+    └── api.test.js       # Tests d'intégration API
+```
+
+### Couverture
+
+| Fichier | Lignes | Fonctions | Branches |
+|---------|--------|-----------|----------|
+| routes/ | >80% | >80% | >70% |
+| services/ | >70% | >70% | >70% |
+| models/ | >70% | >70% | >70% |
+
+## CI/CD
+
+Pipeline GitHub Actions automatisé :
+
+1. **Lint** : ESLint sur le code
+2. **Test** : Jest avec couverture
+3. **Build** : Vérification démarrage serveur
+4. **Security** : npm audit
+5. **Deploy** : Notification (branche main)
+
+```yaml
+# .github/workflows/ci.yml
+on:
+  push:
+    branches: [main, develop, 'feature/*']
+  pull_request:
+    branches: [main]
+```
+
 ## Développement CV
 
 Ce backend démontre les compétences suivantes:
@@ -204,6 +267,9 @@ Ce backend démontre les compétences suivantes:
 - ✅ Scheduler pour tâches asynchrones
 - ✅ Sécurité (rate limiting, CORS, helmet)
 - ✅ Documentation API complète
+- ✅ Tests Jest (unit + integration)
+- ✅ CI/CD GitHub Actions
+- ✅ Coverage reporting
 
 ## Évolutions Futures
 
@@ -211,8 +277,8 @@ Ce backend démontre les compétences suivantes:
 - [ ] WebSockets pour push notifications
 - [ ] Analyse de sentiment NLP
 - [ ] Cache Redis pour performance
-- [ ] Tests Jest avec couverture >80%
-- [ ] Docker + CI/CD
+- [ ] Docker containerization
+- [ ] Kubernetes deployment
 
 ## Licence
 
