@@ -152,7 +152,7 @@ function cardHTML(n) {
     return '<article class="news-card"><div class="news-source"><a href="' + n.url + '" target="_blank" rel="noopener" class="source-name">' + n.source + '</a><span class="news-time">' + n.time + '</span>' + dot + '</div><h3 class="news-title"><a href="' + n.url + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">' + n.title + '</a></h3><p class="news-description">' + n.description + '</p><div class="news-footer"><div class="news-tags">' + tags + '</div><a href="' + n.url + '" target="_blank" rel="noopener" class="news-link">Lire</a></div></article>';
 }
 
-function initCommon() { setCurrentDate(); initTicker(); initSearch(); }
+function initCommon() { initUI(); setCurrentDate(); initTicker(); initSearch(); }
 
 // --- Home ---
 
@@ -305,4 +305,102 @@ function renderTable(id, headers, data, rowFn) {
     var el = document.getElementById(id);
     if (!el) return;
     el.innerHTML = '<table class="data-table"><thead><tr>' + headers.map(function(h) { return '<th>' + h + '</th>'; }).join('') + '</tr></thead><tbody>' + data.map(function(r) { return '<tr>' + rowFn(r) + '</tr>'; }).join('') + '</tbody></table>';
+}
+
+// --- Dark Mode ---
+function initTheme() {
+    var saved = localStorage.getItem('theme');
+    if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+}
+
+function toggleTheme() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+}
+
+// --- Mobile Menu ---
+function initMobileMenu() {
+    var btn = document.querySelector('.mobile-menu-btn');
+    var nav = document.querySelector('.nav');
+    if (!btn || !nav) return;
+    btn.addEventListener('click', function() {
+        btn.classList.toggle('active');
+        nav.classList.toggle('mobile-open');
+    });
+    // Close menu when clicking a link
+    nav.querySelectorAll('.nav-link').forEach(function(link) {
+        link.addEventListener('click', function() {
+            btn.classList.remove('active');
+            nav.classList.remove('mobile-open');
+        });
+    });
+}
+
+// --- Back to Top ---
+function initBackToTop() {
+    var btn = document.querySelector('.back-to-top');
+    if (!btn) return;
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+    btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// --- Market Status ---
+function initMarketStatus() {
+    var el = document.querySelector('.market-status');
+    if (!el) return;
+    updateMarketStatus(el);
+    setInterval(function() { updateMarketStatus(el); }, 60000); // Update every minute
+}
+
+function updateMarketStatus(el) {
+    var now = new Date();
+    var utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+    var nyTime = new Date(utc + (-5 * 3600000)); // EST
+    var day = nyTime.getDay();
+    var hour = nyTime.getHours();
+    var minute = nyTime.getMinutes();
+    var time = hour + minute / 60;
+
+    var status, text;
+    if (day === 0 || day === 6) {
+        status = 'closed';
+        text = 'Fermé (week-end)';
+    } else if (time >= 9.5 && time < 16) {
+        status = 'open';
+        text = 'Marchés ouverts';
+    } else if (time >= 4 && time < 9.5) {
+        status = 'pre-market';
+        text = 'Pré-ouverture';
+    } else if (time >= 16 && time < 20) {
+        status = 'after-hours';
+        text = 'Après-bourse';
+    } else {
+        status = 'closed';
+        text = 'Fermé';
+    }
+
+    el.className = 'market-status ' + status;
+    el.querySelector('.market-status-text').textContent = text;
+}
+
+// Initialize all UI enhancements
+function initUI() {
+    initTheme();
+    initMobileMenu();
+    initBackToTop();
+    initMarketStatus();
 }
