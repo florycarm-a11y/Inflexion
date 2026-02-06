@@ -273,7 +273,7 @@ function initializeMarkets() {
     }, 10000); // Update every 10 seconds
 }
 
-// Update market card
+// Update market card with directional arrow for colorblind accessibility
 function updateMarketCard(id, data) {
     const priceElement = document.getElementById(`${id}-price`);
     const changeElement = document.getElementById(`${id}-change`);
@@ -281,7 +281,8 @@ function updateMarketCard(id, data) {
     if (priceElement && changeElement) {
         priceElement.textContent = `$${data.price.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
-        const changeText = `${data.change > 0 ? '+' : ''}${data.change.toFixed(2)}%`;
+        const arrow = data.change > 0 ? '\u25B2' : '\u25BC';
+        const changeText = `${arrow} ${data.change > 0 ? '+' : ''}${data.change.toFixed(2)}%`;
         changeElement.textContent = changeText;
         changeElement.className = `market-change ${data.change > 0 ? 'positive' : 'negative'}`;
     }
@@ -308,9 +309,9 @@ function simulateMarketUpdates() {
     }
 }
 
-// Create news card
+// Create news card with accessible link context
 function createNewsCard(news) {
-    const card = document.createElement('div');
+    const card = document.createElement('article');
     card.className = 'news-card';
 
     const sourceInitial = news.source.substring(0, 1).toUpperCase();
@@ -321,14 +322,14 @@ function createNewsCard(news) {
 
     card.innerHTML = `
         <div class="news-source">
-            <div class="source-logo">${sourceInitial}</div>
+            <div class="source-logo" aria-hidden="true">${sourceInitial}</div>
             <span class="source-name">${news.source}</span>
-            <span class="news-time">${news.time}</span>
+            <span class="news-time"><span class="sr-only">Publié il y a </span>${news.time}</span>
         </div>
         <h3 class="news-title">${news.title}</h3>
         <p class="news-description">${news.description}</p>
-        <div class="news-tags">${tagsHTML}</div>
-        <a href="${news.url}" class="news-link">Lire l'article</a>
+        <div class="news-tags" aria-label="Tags">${tagsHTML}</div>
+        <a href="${news.url}" class="news-link" aria-label="Lire l'article : ${news.title}">Lire l'article</a>
     `;
 
     return card;
@@ -391,6 +392,29 @@ function startNewsRefresh() {
     }, 60000); // Refresh every minute
 }
 
+// Mobile navigation toggle
+function initializeMobileNav() {
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('main-nav');
+    if (!toggle || !nav) return;
+
+    toggle.addEventListener('click', () => {
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        toggle.setAttribute('aria-label', isOpen ? 'Ouvrir le menu de navigation' : 'Fermer le menu de navigation');
+        nav.classList.toggle('nav-open', !isOpen);
+    });
+
+    // Close nav when a link is clicked on mobile
+    nav.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Ouvrir le menu de navigation');
+            nav.classList.remove('nav-open');
+        });
+    });
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🌍 Géopolitique & Marchés - Initialisation...');
@@ -398,37 +422,34 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeMarkets();
     initializeNews();
     initializeNavigation();
+    initializeMobileNav();
     startNewsRefresh();
 
-    console.log('✅ Application chargée avec succès!');
-    console.log('📊 Données de marché en temps réel activées');
-    console.log('📰 Sources: Reuters, Bloomberg, FT, BBC, Le Monde, Les Échos, et plus...');
-});
+    // Highlight active section based on scroll position
+    const observerOptions = {
+        root: null,
+        rootMargin: '-50% 0px',
+        threshold: 0
+    };
 
-// Add some interactivity - highlight active section
-const observerOptions = {
-    root: null,
-    rootMargin: '-50% 0px',
-    threshold: 0
-};
+    const observerCallback = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    };
 
-const observerCallback = (entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id');
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${id}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    document.querySelectorAll('.section').forEach(section => {
+        observer.observe(section);
     });
-};
 
-const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-// Observe all sections
-document.querySelectorAll('.section').forEach(section => {
-    observer.observe(section);
+    console.log('✅ Application chargée avec succès!');
 });
