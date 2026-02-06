@@ -200,18 +200,20 @@ a {
 
 /* Logo */
 .logo {
-    font-family: var(--font-sans);
-    font-size: 1.8rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
-    color: var(--navy);
     line-height: 1;
-    transition: color 0.2s ease;
+    transition: opacity 0.2s ease;
+}
+
+.logo img {
+    height: 42px;
+    width: auto;
 }
 
 .logo:hover {
-    color: var(--accent);
+    opacity: 0.8;
 }
 
 /* Search */
@@ -1768,8 +1770,8 @@ a {
         flex: 1;
     }
 
-    .logo {
-        font-size: 1.5rem;
+    .logo img {
+        height: 34px;
     }
 
     .page-title {
