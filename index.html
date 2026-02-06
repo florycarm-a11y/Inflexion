@@ -10,15 +10,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Skip to content link for keyboard users -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
     <!-- Header -->
-    <header class="header">
+    <header class="header" role="banner">
         <div class="container">
             <div class="header-content">
                 <h1 class="logo">
-                    <span class="logo-icon">🌍</span>
+                    <span class="logo-icon" aria-hidden="true">🌍</span>
                     Géopolitique & Marchés
                 </h1>
-                <nav class="nav">
+                <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu de navigation">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+                <nav class="nav" id="main-nav" aria-label="Navigation principale">
                     <a href="#geopolitics" class="nav-link">Géopolitique</a>
                     <a href="#markets" class="nav-link">Marchés</a>
                     <a href="#crypto" class="nav-link">Crypto</a>
@@ -30,27 +38,27 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" aria-label="Présentation de la plateforme">
         <div class="container">
             <h2 class="hero-title">L'actualité géopolitique qui impacte vos investissements</h2>
             <p class="hero-subtitle">Analyses en temps réel des événements mondiaux et de leur influence sur les marchés financiers</p>
-            <div class="hero-stats">
+            <div class="hero-stats" role="group" aria-label="Statistiques de la plateforme">
                 <div class="stat-card">
-                    <span class="stat-icon">📰</span>
+                    <span class="stat-icon" aria-hidden="true">📰</span>
                     <div class="stat-content">
                         <div class="stat-value" id="news-count">0</div>
                         <div class="stat-label">Actualités</div>
                     </div>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-icon">💹</span>
+                    <span class="stat-icon" aria-hidden="true">💹</span>
                     <div class="stat-content">
                         <div class="stat-value" id="market-updates">0</div>
                         <div class="stat-label">Mises à jour marchés</div>
                     </div>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-icon">🌐</span>
+                    <span class="stat-icon" aria-hidden="true">🌐</span>
                     <div class="stat-content">
                         <div class="stat-value">15+</div>
                         <div class="stat-label">Sources médias</div>
@@ -61,23 +69,23 @@
     </section>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content" id="main-content">
         <div class="container">
 
             <!-- Market Overview -->
-            <section class="section" id="markets-overview">
+            <section class="section" id="markets-overview" aria-label="Aperçu des marchés financiers">
                 <h2 class="section-title">
-                    <span class="title-icon">📊</span>
+                    <span class="title-icon" aria-hidden="true">📊</span>
                     Aperçu des Marchés
                 </h2>
-                <div class="market-grid">
+                <div class="market-grid" role="region" aria-live="polite" aria-label="Cours des marchés en temps réel">
                     <div class="market-card" id="bitcoin-card">
                         <div class="market-header">
                             <h3>Bitcoin</h3>
                             <span class="market-symbol">BTC/USD</span>
                         </div>
                         <div class="market-price" id="btc-price">--</div>
-                        <div class="market-change" id="btc-change">--</div>
+                        <div class="market-change" id="btc-change" role="status">--</div>
                     </div>
                     <div class="market-card" id="gold-card">
                         <div class="market-header">
@@ -85,7 +93,7 @@
                             <span class="market-symbol">XAU/USD</span>
                         </div>
                         <div class="market-price" id="gold-price">--</div>
-                        <div class="market-change" id="gold-change">--</div>
+                        <div class="market-change" id="gold-change" role="status">--</div>
                     </div>
                     <div class="market-card" id="oil-card">
                         <div class="market-header">
@@ -93,7 +101,7 @@
                             <span class="market-symbol">BRN/USD</span>
                         </div>
                         <div class="market-price" id="oil-price">--</div>
-                        <div class="market-change" id="oil-change">--</div>
+                        <div class="market-change" id="oil-change" role="status">--</div>
                     </div>
                     <div class="market-card" id="sp500-card">
                         <div class="market-header">
@@ -101,7 +109,7 @@
                             <span class="market-symbol">SPX</span>
                         </div>
                         <div class="market-price" id="sp500-price">--</div>
-                        <div class="market-change" id="sp500-change">--</div>
+                        <div class="market-change" id="sp500-change" role="status">--</div>
                     </div>
                 </div>
             </section>
@@ -109,55 +117,55 @@
             <!-- Geopolitics News -->
             <section class="section" id="geopolitics">
                 <h2 class="section-title">
-                    <span class="title-icon">🌍</span>
+                    <span class="title-icon" aria-hidden="true">🌍</span>
                     Actualités Géopolitiques
                 </h2>
-                <div class="news-grid" id="geopolitics-news">
-                    <div class="loading">Chargement des actualités...</div>
+                <div class="news-grid" id="geopolitics-news" aria-live="polite">
+                    <div class="loading" role="status">Chargement des actualités...</div>
                 </div>
             </section>
 
             <!-- Market Impact -->
             <section class="section" id="markets">
                 <h2 class="section-title">
-                    <span class="title-icon">💹</span>
+                    <span class="title-icon" aria-hidden="true">💹</span>
                     Impact sur les Marchés
                 </h2>
-                <div class="news-grid" id="markets-news">
-                    <div class="loading">Chargement des actualités...</div>
+                <div class="news-grid" id="markets-news" aria-live="polite">
+                    <div class="loading" role="status">Chargement des actualités...</div>
                 </div>
             </section>
 
             <!-- Cryptocurrency -->
             <section class="section" id="crypto">
                 <h2 class="section-title">
-                    <span class="title-icon">₿</span>
+                    <span class="title-icon" aria-hidden="true">₿</span>
                     Crypto & Blockchain
                 </h2>
-                <div class="news-grid" id="crypto-news">
-                    <div class="loading">Chargement des actualités...</div>
+                <div class="news-grid" id="crypto-news" aria-live="polite">
+                    <div class="loading" role="status">Chargement des actualités...</div>
                 </div>
             </section>
 
             <!-- Commodities -->
             <section class="section" id="commodities">
                 <h2 class="section-title">
-                    <span class="title-icon">🛢️</span>
+                    <span class="title-icon" aria-hidden="true">🛢️</span>
                     Matières Premières
                 </h2>
-                <div class="news-grid" id="commodities-news">
-                    <div class="loading">Chargement des actualités...</div>
+                <div class="news-grid" id="commodities-news" aria-live="polite">
+                    <div class="loading" role="status">Chargement des actualités...</div>
                 </div>
             </section>
 
             <!-- ETF -->
             <section class="section" id="etf">
                 <h2 class="section-title">
-                    <span class="title-icon">📈</span>
+                    <span class="title-icon" aria-hidden="true">📈</span>
                     ETF & Fonds
                 </h2>
-                <div class="news-grid" id="etf-news">
-                    <div class="loading">Chargement des actualités...</div>
+                <div class="news-grid" id="etf-news" aria-live="polite">
+                    <div class="loading" role="status">Chargement des actualités...</div>
                 </div>
             </section>
 
@@ -165,7 +173,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -195,7 +203,7 @@
                         Plateforme d'analyse en temps réel des événements géopolitiques
                         et de leur impact sur les marchés financiers mondiaux.
                     </p>
-                    <p class="footer-disclaimer">
+                    <p class="footer-disclaimer" role="note">
                         <strong>Avertissement:</strong> Les informations présentées sont à titre informatif uniquement
                         et ne constituent pas des conseils en investissement.
                     </p>
