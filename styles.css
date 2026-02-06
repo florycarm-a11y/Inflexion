@@ -1923,6 +1923,117 @@ a {
 }
 
 /* ============================================
+   Newsletter Section
+   ============================================ */
+.newsletter-section {
+    background: var(--navy);
+    padding: 3rem 0;
+    margin-top: 2rem;
+}
+
+.newsletter-box {
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.newsletter-title {
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.newsletter-text {
+    font-family: var(--font-serif);
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-input-group {
+    display: flex;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 460px;
+    margin: 0 auto 0.75rem;
+}
+
+.newsletter-input {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    border: none;
+    padding: 0.75rem 1rem;
+    flex: 1;
+    outline: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+
+.newsletter-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.newsletter-input:focus {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.newsletter-btn {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.75rem 1.5rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    white-space: nowrap;
+}
+
+.newsletter-btn:hover {
+    background: var(--accent-dark);
+}
+
+.newsletter-disclaimer {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.newsletter-disclaimer a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: underline;
+}
+
+.newsletter-disclaimer a:hover {
+    color: white;
+}
+
+.newsletter-success p {
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    color: #10b981;
+    font-weight: 600;
+}
+
+@media (max-width: 480px) {
+    .newsletter-input-group {
+        flex-direction: column;
+    }
+
+    .newsletter-btn {
+        padding: 0.75rem;
+    }
+}
+
+/* ============================================
    Print Styles
    ============================================ */
 @media print {

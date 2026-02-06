@@ -146,10 +146,24 @@ function showSearchResults(results, query) {
 
 var tagLabels = { geopolitics: 'Géopolitique', markets: 'Marchés', crypto: 'Crypto', commodities: 'Mat. Premières', etf: 'ETF', conflicts: 'Conflits', trade: 'Commerce', politics: 'Politique' };
 
+function parseTimeToDatetime(timeStr) {
+    var months = { 'jan.': '01', 'fév.': '02', 'mars': '03', 'avr.': '04', 'mai': '05', 'juin': '06', 'juil.': '07', 'août': '08', 'sept.': '09', 'oct.': '10', 'nov.': '11', 'déc.': '12' };
+    var parts = timeStr.trim().split(' ');
+    if (parts.length >= 2) {
+        var day = parts[0].replace(/\D/g, '').padStart(2, '0');
+        var monthKey = parts[1].toLowerCase();
+        var year = parts.length >= 3 ? parts[2] : '2026';
+        var month = months[monthKey] || '01';
+        return year + '-' + month + '-' + day;
+    }
+    return '2026-01-01';
+}
+
 function cardHTML(n) {
     var tags = (n.tags || []).map(function(t) { return '<span class="tag ' + t + '">' + (tagLabels[t] || t) + '</span>'; }).join('');
     var dot = n.impact === 'high' ? '<span class="impact-dot"></span>' : '';
-    return '<article class="news-card"><div class="news-source"><a href="' + n.url + '" target="_blank" rel="noopener" class="source-name">' + n.source + '</a><span class="news-time">' + n.time + '</span>' + dot + '</div><h3 class="news-title"><a href="' + n.url + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">' + n.title + '</a></h3><p class="news-description">' + n.description + '</p><div class="news-footer"><div class="news-tags">' + tags + '</div><a href="' + n.url + '" target="_blank" rel="noopener" class="news-link">Lire</a></div></article>';
+    var datetime = parseTimeToDatetime(n.time);
+    return '<article class="news-card"><div class="news-source"><a href="' + n.url + '" target="_blank" rel="noopener" class="source-name">' + n.source + '</a><time class="news-time" datetime="' + datetime + '">' + n.time + '</time>' + dot + '</div><h3 class="news-title"><a href="' + n.url + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">' + n.title + '</a></h3><p class="news-description">' + n.description + '</p><div class="news-footer"><div class="news-tags">' + tags + '</div><a href="' + n.url + '" target="_blank" rel="noopener" class="news-link">Lire</a></div></article>';
 }
 
 function initCommon() { initUI(); initTicker(); initSearch(); }
@@ -210,7 +224,8 @@ function initHomePage() {
     if (ts) {
         var f = [newsDatabase.markets[0], newsDatabase.markets[1], newsDatabase.commodities[0]];
         ts.innerHTML = '<div class="top-stories-grid">' + f.map(function(n, i) {
-            return '<article class="top-story' + (i === 0 ? ' top-story-main' : '') + '"><a href="' + n.url + '" target="_blank" rel="noopener" class="source-name">' + n.source + '</a><h3><a href="' + n.url + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">' + n.title + '</a></h3><p>' + n.description + '</p><span class="news-time">' + n.time + '</span></article>';
+            var dt = parseTimeToDatetime(n.time);
+            return '<article class="top-story' + (i === 0 ? ' top-story-main' : '') + '"><a href="' + n.url + '" target="_blank" rel="noopener" class="source-name">' + n.source + '</a><h3><a href="' + n.url + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">' + n.title + '</a></h3><p>' + n.description + '</p><time class="news-time" datetime="' + dt + '">' + n.time + '</time></article>';
         }).join('') + '</div>';
     }
     var ln = document.getElementById('latest-news');
@@ -220,7 +235,8 @@ function initHomePage() {
         all.sort(function(a, b) { return (a.impact === 'high' ? 0 : 1) - (b.impact === 'high' ? 0 : 1); });
         ln.innerHTML = all.slice(0, 10).map(function(n) {
             var dot = n.impact === 'high' ? '<span class="impact-dot"></span>' : '';
-            return '<article class="news-list-item"><div class="news-list-source"><a href="' + n.url + '" target="_blank" rel="noopener" class="source-name">' + n.source + '</a><span class="news-time">' + n.time + '</span>' + dot + '</div><h3><a href="' + n.url + '" target="_blank" rel="noopener">' + n.title + '</a></h3><p>' + n.description + '</p></article>';
+            var dt = parseTimeToDatetime(n.time);
+            return '<article class="news-list-item"><div class="news-list-source"><a href="' + n.url + '" target="_blank" rel="noopener" class="source-name">' + n.source + '</a><time class="news-time" datetime="' + dt + '">' + n.time + '</time>' + dot + '</div><h3><a href="' + n.url + '" target="_blank" rel="noopener">' + n.title + '</a></h3><p>' + n.description + '</p></article>';
         }).join('');
     }
     var mt = document.getElementById('market-table');
@@ -410,9 +426,30 @@ function updateMarketStatus(el) {
     el.querySelector('.market-status-text').textContent = text;
 }
 
+// --- Newsletter ---
+function initNewsletter() {
+    var form = document.getElementById('newsletter-form');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var email = document.getElementById('newsletter-email');
+        if (!email || !email.value.trim()) return;
+        // Store locally (replace with real endpoint when available)
+        var subscribers = JSON.parse(localStorage.getItem('inflexion_subscribers') || '[]');
+        if (subscribers.indexOf(email.value.trim()) === -1) {
+            subscribers.push(email.value.trim());
+            localStorage.setItem('inflexion_subscribers', JSON.stringify(subscribers));
+        }
+        form.hidden = true;
+        var success = document.getElementById('newsletter-success');
+        if (success) success.hidden = false;
+    });
+}
+
 // Initialize all UI enhancements
 function initUI() {
     initMenuOverlay();
     initBackToTop();
     initMarketStatus();
+    initNewsletter();
 }
