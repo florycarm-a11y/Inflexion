@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120">
+  <!-- Logo 1D: Courbe d'inflexion — version compacte/icône intégrée dans le texte -->
+  <defs>
+    <linearGradient id="g1d" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1A2942"/>
+      <stop offset="100%" stop-color="#2D4A6F"/>
+    </linearGradient>
+  </defs>
+  <!-- Le "I" est remplacé par la courbe -->
+  <!-- Courbe d'inflexion en forme de I stylisé -->
+  <path d="M 38 30 Q 38 55 50 55 Q 62 55 62 80" stroke="#C41E3A" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <circle cx="50" cy="55" r="4" fill="#C41E3A"/>
+  <!-- Empattements du I -->
+  <line x1="28" y1="30" x2="48" y2="30" stroke="#C41E3A" stroke-width="3" stroke-linecap="round"/>
+  <line x1="52" y1="80" x2="72" y2="80" stroke="#C41E3A" stroke-width="3" stroke-linecap="round"/>
+  <!-- "nflexion" -->
+  <text x="78" y="75" font-family="Georgia, 'Times New Roman', serif" font-size="50" font-weight="700" fill="url(#g1d)" letter-spacing="-1">nflexion</text>
+</svg>
