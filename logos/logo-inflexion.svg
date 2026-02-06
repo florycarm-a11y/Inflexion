@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 350">
+  <!-- S-curve (inflection curve) -->
+  <path d="M 40 235 C 100 235, 160 210, 240 175 C 320 140, 380 115, 430 110 C 480 105, 540 60, 660 25"
+        stroke="#C41E3A" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Fill area under curve (light pink) -->
+  <path d="M 40 235 C 100 235, 160 210, 240 175 C 320 140, 380 115, 430 110 C 480 105, 540 60, 660 25
+           L 660 240 L 40 240 Z"
+        fill="#C41E3A" opacity="0.06"/>
+
+  <!-- Inflection point dot -->
+  <circle cx="430" cy="110" r="7" fill="#C41E3A"/>
+
+  <!-- Inflexion text -->
+  <text x="350" y="295"
+        font-family="Georgia, 'Times New Roman', 'Playfair Display', serif"
+        font-size="110" font-weight="bold" fill="#1A2942"
+        text-anchor="middle" letter-spacing="1">Inflexion</text>
+
+  <!-- Decorative line -->
+  <line x1="175" y1="310" x2="525" y2="310"
+        stroke="#C41E3A" stroke-width="1.5" opacity="0.25"/>
+
+  <!-- Tagline ANALYSE & MARCHES -->
+  <text x="350" y="338"
+        font-family="'Helvetica Neue', Arial, sans-serif"
+        font-size="16" fill="#8a9ab0" letter-spacing="7"
+        text-anchor="middle">ANALYSE &amp; MARCHES</text>
+</svg>
