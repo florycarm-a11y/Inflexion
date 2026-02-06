@@ -148,8 +148,8 @@ var tagLabels = { geopolitics: 'Géopolitique', markets: 'Marchés', crypto: 'Cr
 
 function cardHTML(n) {
     var tags = (n.tags || []).map(function(t) { return '<span class="tag ' + t + '">' + (tagLabels[t] || t) + '</span>'; }).join('');
-    var dot = n.impact === 'high' ? '<span class="impact-dot"></span>' : '';
-    return '<article class="news-card"><div class="news-source"><a href="' + n.url + '" target="_blank" rel="noopener" class="source-name">' + n.source + '</a><span class="news-time">' + n.time + '</span>' + dot + '</div><h3 class="news-title"><a href="' + n.url + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">' + n.title + '</a></h3><p class="news-description">' + n.description + '</p><div class="news-footer"><div class="news-tags">' + tags + '</div><a href="' + n.url + '" target="_blank" rel="noopener" class="news-link">Lire</a></div></article>';
+    var dot = n.impact === 'high' ? '<span class="impact-dot" aria-label="Impact élevé" role="img"></span>' : '';
+    return '<article class="news-card"><div class="news-source"><a href="' + n.url + '" target="_blank" rel="noopener" class="source-name">' + n.source + ' <span class="sr-only">(ouvre dans un nouvel onglet)</span></a><span class="news-time">' + n.time + '</span>' + dot + '</div><h3 class="news-title"><a href="' + n.url + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">' + n.title + '</a></h3><p class="news-description">' + n.description + '</p><div class="news-footer"><div class="news-tags">' + tags + '</div><a href="' + n.url + '" target="_blank" rel="noopener" class="news-link" aria-label="Lire : ' + n.title.replace(/"/g, '&quot;') + '">Lire</a></div></article>';
 }
 
 function initCommon() { initUI(); setCurrentDate(); initTicker(); initSearch(); }
@@ -178,7 +178,8 @@ function initHomePage() {
     var mt = document.getElementById('market-table');
     if (mt) mt.innerHTML = marketData.map(function(m) {
         var cls = m.change > 0 ? 'positive' : 'negative';
-        return '<div class="market-row"><span class="market-row-name">' + m.name + '</span><span class="market-row-price">$' + m.price.toLocaleString('fr-FR') + '</span><span class="market-row-change ' + cls + '">' + (m.change > 0 ? '+' : '') + m.change.toFixed(2) + '%</span></div>';
+        var arrow = m.change > 0 ? '\u25B2 ' : '\u25BC ';
+        return '<div class="market-row"><span class="market-row-name">' + m.name + '</span><span class="market-row-price">$' + m.price.toLocaleString('fr-FR') + '</span><span class="market-row-change ' + cls + '">' + arrow + (m.change > 0 ? '+' : '') + m.change.toFixed(2) + '%</span></div>';
     }).join('');
 
     // Initialize divergence chart
@@ -289,9 +290,11 @@ function initCategoryPage(cat) {
     var articles = newsDatabase[cat] || [];
     c.innerHTML = articles.map(cardHTML).join('');
     document.querySelectorAll('.filter-btn').forEach(function(btn) {
+        btn.setAttribute('aria-pressed', btn.classList.contains('active').toString());
         btn.addEventListener('click', function() {
-            document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+            document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
             btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
             var f = btn.getAttribute('data-filter');
             var list = f === 'all' ? articles : articles.filter(function(a) { return a.tags.indexOf(f) !== -1; });
             c.innerHTML = list.length ? list.map(cardHTML).join('') : '<p class="no-results">Aucun article dans cette catégorie.</p>';
@@ -329,15 +332,22 @@ function initMobileMenu() {
     var btn = document.querySelector('.mobile-menu-btn');
     var nav = document.querySelector('.nav');
     if (!btn || !nav) return;
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-controls', 'main-nav');
+    nav.setAttribute('id', 'main-nav');
     btn.addEventListener('click', function() {
-        btn.classList.toggle('active');
+        var isOpen = btn.classList.toggle('active');
         nav.classList.toggle('mobile-open');
+        btn.setAttribute('aria-expanded', isOpen.toString());
+        btn.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Menu');
     });
     // Close menu when clicking a link
     nav.querySelectorAll('.nav-link').forEach(function(link) {
         link.addEventListener('click', function() {
             btn.classList.remove('active');
             nav.classList.remove('mobile-open');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-label', 'Menu');
         });
     });
 }

@@ -20,7 +20,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="header">
+    <!-- Skip to content link -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <header class="header" role="banner">
         <div class="container">
             <div class="header-top">
                 <span class="header-date" id="current-date"></span>
@@ -42,24 +45,24 @@
                 </div>
                 <div class="header-search">
                     <form class="search-form" id="search-form">
-                        <input type="text" class="search-input" id="search-input" placeholder="Rechercher...">
+                        <input type="text" class="search-input" id="search-input" placeholder="Rechercher..." aria-label="Rechercher des articles">
                         <button type="submit" class="search-btn">Rechercher</button>
                     </form>
                 </div>
             </div>
-            <nav class="nav">
+            <nav class="nav" aria-label="Navigation principale">
                 <a href="index.html" class="nav-link">Accueil</a>
                 <a href="geopolitics.html" class="nav-link">Géopolitique</a>
                 <a href="markets.html" class="nav-link">Marchés</a>
                 <a href="crypto.html" class="nav-link">Crypto</a>
                 <a href="commodities.html" class="nav-link">Matières Premières</a>
-                <a href="etf.html" class="nav-link active">ETF</a>
+                <a href="etf.html" class="nav-link active" aria-current="page">ETF</a>
                 <a href="analysis.html" class="nav-link">Analyses</a>
             </nav>
         </div>
     </header>
 
-    <main class="main-content">
+    <main class="main-content" id="main-content">
         <div class="container">
             <div class="page-header" data-category="etf">
                 <h1 class="page-title">ETF & Fonds</h1>
@@ -72,12 +75,12 @@
             <div class="etf-table" id="etf-table"></div>
 
             <div class="news-grid" id="page-news">
-                <div class="loading"><div class="loading-spinner"></div></div>
+                <div class="loading" role="status" aria-label="Chargement"><div class="loading-spinner"></div></div>
             </div>
         </div>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-bottom">&copy; 2026 Inflexion. Données issues de sources publiques vérifiées.</div>
         </div>

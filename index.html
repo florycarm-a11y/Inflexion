@@ -21,8 +21,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <!-- Skip to content link for keyboard users -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
     <!-- Header -->
-    <header class="header">
+    <header class="header" role="banner">
         <div class="container">
             <div class="header-top">
                 <span class="header-date" id="current-date"></span>
@@ -44,13 +47,13 @@
                 </div>
                 <div class="header-search">
                     <form class="search-form" id="search-form">
-                        <input type="text" class="search-input" id="search-input" placeholder="Rechercher...">
+                        <input type="text" class="search-input" id="search-input" placeholder="Rechercher..." aria-label="Rechercher des articles">
                         <button type="submit" class="search-btn">Rechercher</button>
                     </form>
                 </div>
             </div>
-            <nav class="nav">
-                <a href="index.html" class="nav-link active">Accueil</a>
+            <nav class="nav" aria-label="Navigation principale">
+                <a href="index.html" class="nav-link active" aria-current="page">Accueil</a>
                 <a href="geopolitics.html" class="nav-link">Géopolitique</a>
                 <a href="markets.html" class="nav-link">Marchés</a>
                 <a href="crypto.html" class="nav-link">Crypto</a>
@@ -82,7 +85,7 @@
         </div>
     </section>
 
-    <main class="main-content">
+    <main class="main-content" id="main-content">
         <div class="container">
 
             <!-- Market Ticker TradingView -->
@@ -118,7 +121,7 @@
                     <span class="section-subtitle">Performance comparée des valeurs refuges</span>
                 </div>
                 <div class="chart-container">
-                    <canvas id="divergenceChart"></canvas>
+                    <canvas id="divergenceChart" aria-label="Graphique : Divergence Or vs Bitcoin depuis janvier 2026" role="img"></canvas>
                 </div>
                 <div class="chart-legend">
                     <div class="legend-item legend-gold">
@@ -140,8 +143,8 @@
                 <div class="section-header">
                     <h2 class="section-title">À la une</h2>
                 </div>
-                <div class="top-stories" id="top-stories">
-                    <div class="loading"><div class="loading-spinner"></div></div>
+                <div class="top-stories" id="top-stories" aria-live="polite">
+                    <div class="loading" role="status" aria-label="Chargement des articles"><div class="loading-spinner"></div></div>
                 </div>
             </section>
 
@@ -152,8 +155,8 @@
                     <div class="section-header">
                         <h2 class="section-title">Dernières actualités</h2>
                     </div>
-                    <div class="news-list" id="latest-news">
-                        <div class="loading"><div class="loading-spinner"></div></div>
+                    <div class="news-list" id="latest-news" aria-live="polite">
+                        <div class="loading" role="status" aria-label="Chargement des actualités"><div class="loading-spinner"></div></div>
                     </div>
                 </section>
 
@@ -191,7 +194,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">

@@ -9,6 +9,40 @@
     box-sizing: border-box;
 }
 
+/* Skip to content link */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 10000;
+    padding: 0.75rem 1.5rem;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-radius: 0 0 6px 6px;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Screen reader only text */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 :root {
     /* Professional palette — 2 accent colors only */
     --accent: #C41E3A;
@@ -1766,6 +1800,43 @@ a {
         flex-direction: column;
         align-items: center;
         gap: 0.75rem;
+    }
+}
+
+/* ============================================
+   Focus Styles for Keyboard Navigation
+   ============================================ */
+*:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.nav-link:focus-visible,
+.news-link:focus-visible,
+.filter-btn:focus-visible,
+.sidebar-nav a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+.theme-toggle:focus-visible,
+.mobile-menu-btn:focus-visible,
+.back-to-top:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* ============================================
+   Respect Reduced Motion Preference
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }
 
