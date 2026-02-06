@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120">
+  <!-- Logo 5: Globe + pulse — géopolitique mondiale et marchés en temps réel -->
+  <defs>
+    <linearGradient id="g5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A2942"/>
+      <stop offset="100%" stop-color="#2D4A6F"/>
+    </linearGradient>
+    <clipPath id="globeClip">
+      <circle cx="55" cy="55" r="35"/>
+    </clipPath>
+  </defs>
+  <!-- Globe -->
+  <circle cx="55" cy="55" r="35" fill="none" stroke="url(#g5)" stroke-width="2.5"/>
+  <!-- Méridiens du globe -->
+  <ellipse cx="55" cy="55" rx="18" ry="35" fill="none" stroke="#1A2942" stroke-width="1" opacity="0.3"/>
+  <ellipse cx="55" cy="55" rx="35" ry="18" fill="none" stroke="#1A2942" stroke-width="1" opacity="0.3" transform="rotate(-20 55 55)"/>
+  <!-- Ligne de pulse (ECG marché) traversant le globe -->
+  <polyline points="15,58 35,58 42,58 47,38 53,72 59,45 65,58 75,58 95,58"
+    stroke="#C41E3A" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+    clip-path="url(#globeClip)"/>
+  <!-- Queue du pulse hors globe -->
+  <polyline points="75,58 85,58 95,58" stroke="#C41E3A" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.4"/>
+  <!-- Texte -->
+  <text x="110" y="50" font-family="'Helvetica Neue', Arial, sans-serif" font-size="38" font-weight="700" fill="#1A2942" letter-spacing="-0.5">Inflexion</text>
+  <!-- Tagline -->
+  <text x="110" y="72" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#8B9DAF" letter-spacing="2">Géopolitique &amp; Marchés</text>
+</svg>
