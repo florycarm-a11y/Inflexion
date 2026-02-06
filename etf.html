@@ -17,42 +17,54 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
         <div class="container">
             <div class="header-top">
-                <span class="header-date" id="current-date"></span>
-                <a href="index.html" class="logo">Inflexion</a>
+                <div class="header-left">
+                    <button class="menu-trigger" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu de navigation">
+                        <div class="hamburger" aria-hidden="true">
+                            <span class="hamburger-bar"></span>
+                            <span class="hamburger-bar"></span>
+                            <span class="hamburger-bar"></span>
+                        </div>
+                    </button>
+                    <a href="index.html" class="logo">Inflexion</a>
+                </div>
                 <div class="header-controls">
                     <div class="market-status closed">
                         <span class="market-status-dot"></span>
                         <span class="market-status-text">Fermé</span>
                     </div>
-                    <button class="mobile-menu-btn" aria-label="Menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
-                <div class="header-search">
-                    <form class="search-form" id="search-form">
-                        <input type="text" class="search-input" id="search-input" placeholder="Rechercher...">
-                        <button type="submit" class="search-btn">Rechercher</button>
-                    </form>
+                    <div class="header-search">
+                        <form class="search-form" id="search-form">
+                            <input type="text" class="search-input" id="search-input" placeholder="Rechercher...">
+                            <button type="submit" class="search-btn">Rechercher</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <nav class="nav">
-                <a href="index.html" class="nav-link">Accueil</a>
-                <a href="geopolitics.html" class="nav-link">Géopolitique</a>
-                <a href="markets.html" class="nav-link">Marchés</a>
-                <a href="crypto.html" class="nav-link">Crypto</a>
-                <a href="commodities.html" class="nav-link">Matières Premières</a>
-                <a href="etf.html" class="nav-link active">ETF</a>
-                <a href="analysis.html" class="nav-link">Analyses</a>
-            </nav>
         </div>
+        <!-- Navigation Overlay -->
+        <nav class="nav-overlay" id="main-nav" aria-label="Navigation principale">
+            <div class="nav-overlay-content">
+                <div class="nav-overlay-header">
+                    <span class="nav-overlay-title">Rubriques</span>
+                    <button class="nav-close" aria-label="Fermer le menu">&times;</button>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-overlay-link">Accueil</a>
+                    <a href="geopolitics.html" class="nav-overlay-link">Géopolitique</a>
+                    <a href="markets.html" class="nav-overlay-link">Marchés</a>
+                    <a href="crypto.html" class="nav-overlay-link">Crypto</a>
+                    <a href="commodities.html" class="nav-overlay-link">Matières Premières</a>
+                    <a href="etf.html" class="nav-overlay-link">ETF</a>
+                    <a href="analysis.html" class="nav-overlay-link">Analyses</a>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <main class="main-content">

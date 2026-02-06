@@ -152,7 +152,55 @@ function cardHTML(n) {
     return '<article class="news-card"><div class="news-source"><a href="' + n.url + '" target="_blank" rel="noopener" class="source-name">' + n.source + '</a><span class="news-time">' + n.time + '</span>' + dot + '</div><h3 class="news-title"><a href="' + n.url + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">' + n.title + '</a></h3><p class="news-description">' + n.description + '</p><div class="news-footer"><div class="news-tags">' + tags + '</div><a href="' + n.url + '" target="_blank" rel="noopener" class="news-link">Lire</a></div></article>';
 }
 
-function initCommon() { initUI(); setCurrentDate(); initTicker(); initSearch(); }
+function initCommon() { initUI(); initTicker(); initSearch(); }
+
+// --- Menu overlay navigation ---
+function initMenuOverlay() {
+    var menuTrigger = document.querySelector('.menu-trigger');
+    var nav = document.getElementById('main-nav');
+    var navClose = document.querySelector('.nav-close');
+    if (!menuTrigger || !nav) return;
+
+    function openMenu() {
+        menuTrigger.setAttribute('aria-expanded', 'true');
+        menuTrigger.setAttribute('aria-label', 'Fermer le menu de navigation');
+        nav.classList.add('nav-open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+        menuTrigger.setAttribute('aria-expanded', 'false');
+        menuTrigger.setAttribute('aria-label', 'Ouvrir le menu de navigation');
+        nav.classList.remove('nav-open');
+        document.body.style.overflow = '';
+    }
+
+    menuTrigger.addEventListener('click', function() {
+        var isOpen = menuTrigger.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    if (navClose) {
+        navClose.addEventListener('click', closeMenu);
+    }
+
+    // Close nav when a link is clicked
+    nav.querySelectorAll('.nav-overlay-link').forEach(function(link) {
+        link.addEventListener('click', closeMenu);
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && nav.classList.contains('nav-open')) {
+            closeMenu();
+            menuTrigger.focus();
+        }
+    });
+}
 
 // --- Home ---
 
@@ -307,24 +355,6 @@ function renderTable(id, headers, data, rowFn) {
     el.innerHTML = '<table class="data-table"><thead><tr>' + headers.map(function(h) { return '<th>' + h + '</th>'; }).join('') + '</tr></thead><tbody>' + data.map(function(r) { return '<tr>' + rowFn(r) + '</tr>'; }).join('') + '</tbody></table>';
 }
 
-// --- Mobile Menu ---
-function initMobileMenu() {
-    var btn = document.querySelector('.mobile-menu-btn');
-    var nav = document.querySelector('.nav');
-    if (!btn || !nav) return;
-    btn.addEventListener('click', function() {
-        btn.classList.toggle('active');
-        nav.classList.toggle('mobile-open');
-    });
-    // Close menu when clicking a link
-    nav.querySelectorAll('.nav-link').forEach(function(link) {
-        link.addEventListener('click', function() {
-            btn.classList.remove('active');
-            nav.classList.remove('mobile-open');
-        });
-    });
-}
-
 // --- Back to Top ---
 function initBackToTop() {
     var btn = document.querySelector('.back-to-top');
@@ -346,7 +376,7 @@ function initMarketStatus() {
     var el = document.querySelector('.market-status');
     if (!el) return;
     updateMarketStatus(el);
-    setInterval(function() { updateMarketStatus(el); }, 60000); // Update every minute
+    setInterval(function() { updateMarketStatus(el); }, 60000);
 }
 
 function updateMarketStatus(el) {
@@ -382,7 +412,7 @@ function updateMarketStatus(el) {
 
 // Initialize all UI enhancements
 function initUI() {
-    initMobileMenu();
+    initMenuOverlay();
     initBackToTop();
     initMarketStatus();
 }
