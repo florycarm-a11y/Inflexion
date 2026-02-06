@@ -4,7 +4,9 @@
  * Falls back to local data if API unavailable
  */
 const InflexionAPI = (function() {
-    const BASE_URL = 'http://localhost:3001/api';
+    const BASE_URL = (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
+        ? 'http://localhost:3001/api'
+        : '/api';
     let useAPI = false;
     let apiAvailable = false;
 

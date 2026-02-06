@@ -163,7 +163,7 @@ function cardHTML(n) {
     var tags = (n.tags || []).map(function(t) { return '<span class="tag ' + t + '">' + (tagLabels[t] || t) + '</span>'; }).join('');
     var dot = n.impact === 'high' ? '<span class="impact-dot"></span>' : '';
     var datetime = parseTimeToDatetime(n.time);
-    return '<article class="news-card"><div class="news-source"><a href="' + n.url + '" target="_blank" rel="noopener" class="source-name">' + n.source + '</a><time class="news-time" datetime="' + datetime + '">' + n.time + '</time>' + dot + '</div><h3 class="news-title"><a href="' + n.url + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">' + n.title + '</a></h3><p class="news-description">' + n.description + '</p><div class="news-footer"><div class="news-tags">' + tags + '</div><a href="' + n.url + '" target="_blank" rel="noopener" class="news-link">Lire</a></div></article>';
+    return '<article class="news-card"><div class="news-source"><a href="' + n.url + '" target="_blank" rel="noopener noreferrer" class="source-name">' + n.source + '</a><time class="news-time" datetime="' + datetime + '">' + n.time + '</time>' + dot + '</div><h3 class="news-title"><a href="' + n.url + '" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">' + n.title + '</a></h3><p class="news-description">' + n.description + '</p><div class="news-footer"><div class="news-tags">' + tags + '</div><a href="' + n.url + '" target="_blank" rel="noopener noreferrer" class="news-link">Lire</a></div></article>';
 }
 
 function initCommon() { initUI(); initTicker(); initSearch(); }
@@ -225,7 +225,7 @@ function initHomePage() {
         var f = [newsDatabase.markets[0], newsDatabase.markets[1], newsDatabase.commodities[0]];
         ts.innerHTML = '<div class="top-stories-grid">' + f.map(function(n, i) {
             var dt = parseTimeToDatetime(n.time);
-            return '<article class="top-story' + (i === 0 ? ' top-story-main' : '') + '"><a href="' + n.url + '" target="_blank" rel="noopener" class="source-name">' + n.source + '</a><h3><a href="' + n.url + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">' + n.title + '</a></h3><p>' + n.description + '</p><time class="news-time" datetime="' + dt + '">' + n.time + '</time></article>';
+            return '<article class="top-story' + (i === 0 ? ' top-story-main' : '') + '"><a href="' + n.url + '" target="_blank" rel="noopener noreferrer" class="source-name">' + n.source + '</a><h3><a href="' + n.url + '" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">' + n.title + '</a></h3><p>' + n.description + '</p><time class="news-time" datetime="' + dt + '">' + n.time + '</time></article>';
         }).join('') + '</div>';
     }
     var ln = document.getElementById('latest-news');
@@ -236,7 +236,7 @@ function initHomePage() {
         ln.innerHTML = all.slice(0, 10).map(function(n) {
             var dot = n.impact === 'high' ? '<span class="impact-dot"></span>' : '';
             var dt = parseTimeToDatetime(n.time);
-            return '<article class="news-list-item"><div class="news-list-source"><a href="' + n.url + '" target="_blank" rel="noopener" class="source-name">' + n.source + '</a><time class="news-time" datetime="' + dt + '">' + n.time + '</time>' + dot + '</div><h3><a href="' + n.url + '" target="_blank" rel="noopener">' + n.title + '</a></h3><p>' + n.description + '</p></article>';
+            return '<article class="news-list-item"><div class="news-list-source"><a href="' + n.url + '" target="_blank" rel="noopener noreferrer" class="source-name">' + n.source + '</a><time class="news-time" datetime="' + dt + '">' + n.time + '</time>' + dot + '</div><h3><a href="' + n.url + '" target="_blank" rel="noopener noreferrer">' + n.title + '</a></h3><p>' + n.description + '</p></article>';
         }).join('');
     }
     var mt = document.getElementById('market-table');
@@ -434,7 +434,7 @@ function initNewsletter() {
         e.preventDefault();
         var email = document.getElementById('newsletter-email');
         if (!email || !email.value.trim()) return;
-        // Store locally (replace with real endpoint when available)
+        // Demo only: stores email locally in browser — no data is sent to any server
         var subscribers = JSON.parse(localStorage.getItem('inflexion_subscribers') || '[]');
         if (subscribers.indexOf(email.value.trim()) === -1) {
             subscribers.push(email.value.trim());
@@ -442,7 +442,10 @@ function initNewsletter() {
         }
         form.hidden = true;
         var success = document.getElementById('newsletter-success');
-        if (success) success.hidden = false;
+        if (success) {
+            success.hidden = false;
+            success.setAttribute('role', 'status');
+        }
     });
 }
 

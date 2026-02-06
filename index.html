@@ -14,7 +14,12 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Inflexion — Géopolitique & Marchés Financiers">
     <meta name="twitter:description" content="Analyses en temps réel des événements géopolitiques mondiaux et leur impact sur les marchés financiers.">
+    <meta property="og:url" content="https://florycarm-a11y.github.io/Inflexion/">
+    <meta property="og:image" content="https://florycarm-a11y.github.io/Inflexion/og-image.png">
+    <meta name="twitter:image" content="https://florycarm-a11y.github.io/Inflexion/og-image.png">
     <link rel="canonical" href="https://florycarm-a11y.github.io/Inflexion/">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="manifest" href="manifest.json">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -63,11 +68,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <!-- Skip to content link for keyboard users -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
     <!-- Header -->
-    <header class="header">
+    <header class="header" role="banner">
         <div class="container">
             <div class="header-top">
                 <div class="header-left">
@@ -135,7 +142,7 @@
         </div>
     </section>
 
-    <main class="main-content">
+    <main class="main-content" id="main-content">
         <div class="container">
 
             <!-- Market Ticker TradingView -->
@@ -193,9 +200,12 @@
                 <div class="section-header">
                     <h2 class="section-title">À la une</h2>
                 </div>
-                <div class="top-stories" id="top-stories">
-                    <div class="loading"><div class="loading-spinner"></div></div>
+                <div class="top-stories" id="top-stories" aria-live="polite">
+                    <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des articles à la une...</span></div>
                 </div>
+                <noscript>
+                    <p>Activez JavaScript pour afficher les articles à la une. Rubriques disponibles : <a href="geopolitics.html">Géopolitique</a>, <a href="markets.html">Marchés</a>, <a href="crypto.html">Crypto</a>, <a href="commodities.html">Matières Premières</a>, <a href="etf.html">ETF</a>, <a href="analysis.html">Analyses</a>.</p>
+                </noscript>
             </section>
 
             <!-- Two Column Layout -->
@@ -205,9 +215,12 @@
                     <div class="section-header">
                         <h2 class="section-title">Dernières actualités</h2>
                     </div>
-                    <div class="news-list" id="latest-news">
-                        <div class="loading"><div class="loading-spinner"></div></div>
+                    <div class="news-list" id="latest-news" aria-live="polite">
+                        <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des dernières actualités...</span></div>
                     </div>
+                    <noscript>
+                        <p>Activez JavaScript pour afficher les dernières actualités. Consultez nos <a href="analysis.html">analyses approfondies</a> pour du contenu statique.</p>
+                    </noscript>
                 </section>
 
                 <!-- Right: Sidebar -->
@@ -215,7 +228,7 @@
                     <!-- Markets -->
                     <div class="sidebar-block">
                         <h3 class="sidebar-title">Marchés</h3>
-                        <div class="market-table" id="market-table"></div>
+                        <div class="market-table" id="market-table" aria-live="polite" role="region" aria-label="Cours des marchés en temps réel"></div>
                         <a href="markets.html" class="sidebar-more">Voir tous les marchés</a>
                     </div>
 
@@ -266,7 +279,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -306,6 +319,7 @@
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <script src="app.js"></script>
     <script>
         if (typeof initHomePage === 'function') initHomePage();
