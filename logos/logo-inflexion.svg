@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 350">
-  <!-- S-curve (inflection curve) -->
-  <path d="M 40 235 C 100 235, 160 210, 240 175 C 320 140, 380 115, 430 110 C 480 105, 540 60, 660 25"
+  <!-- Logarithmic growth curve -->
+  <path d="M 40 235 C 60 150, 110 75, 200 50 C 290 28, 440 22, 660 20"
         stroke="#C41E3A" stroke-width="3.5" fill="none" stroke-linecap="round"/>
 
   <!-- Fill area under curve (light pink) -->
-  <path d="M 40 235 C 100 235, 160 210, 240 175 C 320 140, 380 115, 430 110 C 480 105, 540 60, 660 25
+  <path d="M 40 235 C 60 150, 110 75, 200 50 C 290 28, 440 22, 660 20
            L 660 240 L 40 240 Z"
         fill="#C41E3A" opacity="0.06"/>
 
   <!-- Inflection point dot -->
-  <circle cx="430" cy="110" r="7" fill="#C41E3A"/>
+  <circle cx="200" cy="50" r="7" fill="#C41E3A"/>
 
   <!-- Inflexion text -->
   <text x="350" y="295"
