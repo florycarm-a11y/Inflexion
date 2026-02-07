@@ -11,12 +11,12 @@ const categoryTrends = {
 
 const newsDatabase = {
     geopolitics: [
-        { source: 'NBC News', url: 'https://www.nbcnews.com/business/economy/trump-denmark-european-tariffs-greenland-deal-rcna254551', title: 'Droits de douane Groenland : Trump impose 10 % sur 8 pays européens, escalade à 25% en juin', description: 'Droits de douane conditionnés au soutien européen pour l\'acquisition du Groenland. Danemark, France, Allemagne, UK, Norvège, Suède, Pays-Bas et Finlande visés. Le Dow lâche 870 points, le S&P efface ses gains 2026.', tags: ['geopolitics', 'trade'], time: '17 jan.', impact: 'high' },
+        { source: 'NBC News', url: 'https://www.nbcnews.com/business/economy/trump-denmark-european-tariffs-greenland-deal-rcna254551', title: 'Droits de douane Groenland : Trump impose 10 % sur 8 pays européens, escalade à 25% en juin', description: 'Droits de douane conditionnés au soutien européen pour l\'acquisition du Groenland. Danemark, France, Allemagne, UK, Norvège, Suède, Pays-Bas et Finlande visés. Le Dow lâche 870 points, le S&P efface ses gains 2026.', tags: ['geopolitics', 'trade', 'conflicts'], time: '17 jan.', impact: 'high' },
         { source: 'Bloomberg', url: 'https://www.bloomberg.com/news/articles/2026-01-20/wall-street-s-calm-shattered-by-greenland-and-japan-shocks', title: 'Wall Street : le calme brisé par le choc Groenland — S&P 500 −2,1 %', description: 'Pire séance depuis octobre. L\'or franchit 4 660 $/oz. Le risque douanier redevient le moteur dominant des marchés mondiaux.', tags: ['geopolitics', 'markets'], time: '20 jan.', impact: 'high' },
-        { source: 'NBC News', url: 'https://www.nbcnews.com/business/economy/eu-trade-deal-trump-greenland-tariff-rcna255199', title: 'L\'UE suspend l\'accord commercial avec Washington en représailles', description: 'Le Parlement européen gèle la ratification de l\'accord commercial été 2025. Un paquet de rétorsions de $110Mds est à l\'étude. Bernd Lange : « Nous n\'avons plus d\'alternative. »', tags: ['geopolitics', 'trade'], time: '21 jan.', impact: 'high' },
+        { source: 'NBC News', url: 'https://www.nbcnews.com/business/economy/eu-trade-deal-trump-greenland-tariff-rcna255199', title: 'L\'UE suspend l\'accord commercial avec Washington en représailles', description: 'Le Parlement européen gèle la ratification de l\'accord commercial été 2025. Un paquet de rétorsions de $110Mds est à l\'étude. Bernd Lange : « Nous n\'avons plus d\'alternative. »', tags: ['geopolitics', 'trade', 'conflicts'], time: '21 jan.', impact: 'high' },
         { source: 'Bloomberg', url: 'https://www.bloomberg.com/news/articles/2026-01-30/trump-picks-a-reinvented-kevin-warsh-to-lead-the-federal-reserve', title: 'Trump nomme Kevin Warsh à la Fed : lecture hawkish, dollar et yields en hausse', description: 'Warsh promet un « changement de régime » : réduction du bilan, focus inflation, productivité IA. Le marché lit hawkish. Treasury yields en hausse.', tags: ['geopolitics', 'politics'], time: '30 jan.', impact: 'high' },
-        { source: 'Atlantic Council', url: 'https://www.atlanticcouncil.org/dispatches/eight-ways-ai-will-shape-geopolitics-in-2026/', title: 'Guerre des puces IA : les USA contrôlent 74% du compute mondial, la Chine accélère', description: 'Les restrictions d\'export Nvidia restent imprévisibles (H200 autorisé puis restreint). Huawei vise 50% du marché chinois des puces IA en 2026. La gouvernance mondiale de l\'IA entre dans sa première phase globale avec les initiatives de l\'ONU.', tags: ['geopolitics', 'politics'], time: '28 jan.', impact: 'high' },
-        { source: 'CNBC', url: 'https://www.cnbc.com/2026/01/24/trump-tariff-canada-china.html', title: 'Trump menace le Canada de droits de douane de 100 % en cas d\'accord avec la Chine', description: 'Le président américain avertit : « Si le Canada signe un accord avec la Chine, il sera immédiatement frappé de droits de douane de 100 %. » Ottawa réaffirme ne pas poursuivre d\'accord de libre-échange avec Pékin, mais les tensions USMCA s\'intensifient avant la révision de juillet 2026.', tags: ['geopolitics', 'trade'], time: '24 jan.', impact: 'high' },
+        { source: 'Atlantic Council', url: 'https://www.atlanticcouncil.org/dispatches/eight-ways-ai-will-shape-geopolitics-in-2026/', title: 'Guerre des puces IA : les USA contrôlent 74% du compute mondial, la Chine accélère', description: 'Les restrictions d\'export Nvidia restent imprévisibles (H200 autorisé puis restreint). Huawei vise 50% du marché chinois des puces IA en 2026. La gouvernance mondiale de l\'IA entre dans sa première phase globale avec les initiatives de l\'ONU.', tags: ['geopolitics', 'politics', 'conflicts'], time: '28 jan.', impact: 'high' },
+        { source: 'CNBC', url: 'https://www.cnbc.com/2026/01/24/trump-tariff-canada-china.html', title: 'Trump menace le Canada de droits de douane de 100 % en cas d\'accord avec la Chine', description: 'Le président américain avertit : « Si le Canada signe un accord avec la Chine, il sera immédiatement frappé de droits de douane de 100 %. » Ottawa réaffirme ne pas poursuivre d\'accord de libre-échange avec Pékin, mais les tensions USMCA s\'intensifient avant la révision de juillet 2026.', tags: ['geopolitics', 'trade', 'conflicts'], time: '24 jan.', impact: 'high' },
         { source: 'Foreign Policy', url: 'https://foreignpolicy.com/2026/01/02/top-10-risks-2026-ukraine-trump/', title: 'Top 10 risques géopolitiques 2026 : Trump, Ukraine et la rébellion Gen Z', description: 'Foreign Policy identifie les dix risques majeurs de l\'année : escalade douanière américaine, confrontation USA-Chine, retrait des institutions multilatérales, fragmentation du commerce mondial. Le retrait de l\'OMS et des Accords de Paris accélère la transformation systémique.', tags: ['geopolitics', 'politics'], time: '2 jan.', impact: 'high' },
         { source: 'CFR', url: 'https://www.cfr.org/articles/visualizing-2026-five-foreign-policy-trends-watch', title: 'Council on Foreign Relations : cinq tendances géopolitiques clés pour 2026', description: 'Le CFR identifie cinq forces qui façonnent 2026 : bipolarité États-Unis–Chine, érosion de l\'ordre multilatéral, instrumentalisation des minéraux critiques, fragmentation des chaînes d\'approvisionnement, et montée des « électro-États » (Chine) face aux « pétro-États » (États-Unis).', tags: ['geopolitics', 'politics'], time: '3 jan.', impact: 'high' }
     ],
@@ -107,9 +107,8 @@ const breakingNews = [
 
 // --- Core functions ---
 
-function setCurrentDate() {
-    var el = document.getElementById('current-date');
-    if (el) el.textContent = new Date().toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+function escapeHTML(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 function initTicker() {
@@ -139,8 +138,8 @@ function initSearch() {
 function showSearchResults(results, query) {
     var c = document.getElementById('search-results');
     if (!c) { c = document.createElement('div'); c.id = 'search-results'; var m = document.querySelector('.main-content .container'); if (m) m.insertBefore(c, m.firstChild); }
-    if (!results.length) { c.innerHTML = '<div class="search-results-header"><h2>Aucun résultat pour « ' + query + ' »</h2><button class="close-search" onclick="this.parentElement.parentElement.remove()">Fermer</button></div>'; return; }
-    c.innerHTML = '<div class="search-results-header"><h2>' + results.length + ' résultat' + (results.length > 1 ? 's' : '') + ' pour « ' + query + ' »</h2><button class="close-search" onclick="this.parentElement.parentElement.remove()">Fermer</button></div><div class="news-grid">' + results.map(cardHTML).join('') + '</div>';
+    if (!results.length) { c.innerHTML = '<div class="search-results-header"><h2>Aucun résultat pour « ' + escapeHTML(query) + ' »</h2><button class="close-search" onclick="this.parentElement.parentElement.remove()">Fermer</button></div>'; return; }
+    c.innerHTML = '<div class="search-results-header"><h2>' + results.length + ' résultat' + (results.length > 1 ? 's' : '') + ' pour « ' + escapeHTML(query) + ' »</h2><button class="close-search" onclick="this.parentElement.parentElement.remove()">Fermer</button></div><div class="news-grid">' + results.map(cardHTML).join('') + '</div>';
     c.scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -303,8 +302,8 @@ function initDivergenceChart() {
                 },
                 tooltip: {
                     backgroundColor: 'rgba(10, 15, 26, 0.95)',
-                    titleFont: { family: 'Inter', size: 13 },
-                    bodyFont: { family: 'Inter', size: 12 },
+                    titleFont: { family: "'Plus Jakarta Sans', sans-serif", size: 13 },
+                    bodyFont: { family: "'Plus Jakarta Sans', sans-serif", size: 12 },
                     padding: 12,
                     cornerRadius: 6,
                     callbacks: {
@@ -321,7 +320,7 @@ function initDivergenceChart() {
                         display: false
                     },
                     ticks: {
-                        font: { family: 'Inter', size: 11 },
+                        font: { family: "'Plus Jakarta Sans', sans-serif", size: 11 },
                         color: '#64748b'
                     }
                 },
@@ -330,7 +329,7 @@ function initDivergenceChart() {
                         color: 'rgba(100, 116, 139, 0.1)'
                     },
                     ticks: {
-                        font: { family: 'Inter', size: 11 },
+                        font: { family: "'Plus Jakarta Sans', sans-serif", size: 11 },
                         color: '#64748b',
                         callback: function(value) {
                             return (value >= 0 ? '+' : '') + value + '%';
@@ -397,8 +396,7 @@ function initMarketStatus() {
 
 function updateMarketStatus(el) {
     var now = new Date();
-    var utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-    var nyTime = new Date(utc + (-5 * 3600000)); // EST
+    var nyTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
     var day = nyTime.getDay();
     var hour = nyTime.getHours();
     var minute = nyTime.getMinutes();

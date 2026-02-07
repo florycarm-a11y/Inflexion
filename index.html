@@ -85,7 +85,7 @@
                             <span class="hamburger-bar"></span>
                         </div>
                     </button>
-                    <a href="index.html" class="logo"><img src="logo-header.svg" alt="Inflexion" width="180" height="50"></a>
+                    <a href="index.html" class="logo"><img src="logo-header.svg" alt="" class="logo-icon" width="48" height="24"><span class="logo-text">Inflexion</span></a>
                 </div>
                 <div class="header-controls">
                     <div class="market-status closed">
@@ -94,6 +94,7 @@
                     </div>
                     <div class="header-search">
                         <form class="search-form" id="search-form">
+                            <label for="search-input" class="sr-only">Rechercher sur Inflexion</label>
                             <input type="text" class="search-input" id="search-input" placeholder="Rechercher...">
                             <button type="submit" class="search-btn">Rechercher</button>
                         </form>
@@ -109,7 +110,7 @@
                     <button class="nav-close" aria-label="Fermer le menu">&times;</button>
                 </div>
                 <div class="nav-links">
-                    <a href="index.html" class="nav-overlay-link">Accueil</a>
+                    <a href="index.html" class="nav-overlay-link" aria-current="page">Accueil</a>
                     <a href="geopolitics.html" class="nav-overlay-link">Géopolitique</a>
                     <a href="markets.html" class="nav-overlay-link">Marchés</a>
                     <a href="crypto.html" class="nav-overlay-link">Crypto</a>
@@ -319,7 +320,7 @@
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="app.js"></script>
     <script>
         if (typeof initHomePage === 'function') initHomePage();

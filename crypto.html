@@ -58,7 +58,7 @@
                             <span class="hamburger-bar"></span>
                         </div>
                     </button>
-                    <a href="index.html" class="logo"><img src="logo-header.svg" alt="Inflexion" width="180" height="50"></a>
+                    <a href="index.html" class="logo"><img src="logo-header.svg" alt="" class="logo-icon" width="48" height="24"><span class="logo-text">Inflexion</span></a>
                 </div>
                 <div class="header-controls">
                     <div class="market-status closed">
@@ -67,6 +67,7 @@
                     </div>
                     <div class="header-search">
                         <form class="search-form" id="search-form">
+                            <label for="search-input" class="sr-only">Rechercher sur Inflexion</label>
                             <input type="text" class="search-input" id="search-input" placeholder="Rechercher...">
                             <button type="submit" class="search-btn">Rechercher</button>
                         </form>
@@ -85,7 +86,7 @@
                     <a href="index.html" class="nav-overlay-link">Accueil</a>
                     <a href="geopolitics.html" class="nav-overlay-link">Géopolitique</a>
                     <a href="markets.html" class="nav-overlay-link">Marchés</a>
-                    <a href="crypto.html" class="nav-overlay-link">Crypto</a>
+                    <a href="crypto.html" class="nav-overlay-link" aria-current="page">Crypto</a>
                     <a href="commodities.html" class="nav-overlay-link">Matières Premières</a>
                     <a href="etf.html" class="nav-overlay-link">ETF</a>
                     <a href="analysis.html" class="nav-overlay-link">Analyses</a>
@@ -137,7 +138,7 @@
             </div>
 
             <div class="news-grid" id="page-news" aria-live="polite">
-                <div class="loading"><div class="loading-spinner"></div></div>
+                <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des articles...</span></div>
             </div>
             <noscript>
                 <p>Activez JavaScript pour afficher les actualités crypto. Consultez nos <a href="analysis.html">analyses approfondies</a>.</p>
@@ -147,7 +148,36 @@
 
     <footer class="footer" role="contentinfo">
         <div class="container">
-            <div class="footer-bottom">&copy; 2026 Inflexion. Données issues de sources publiques vérifiées.</div>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <strong>Inflexion</strong>
+                    <p>Plateforme d'intelligence financière combinant analyses géopolitiques et données de marché en temps réel.</p>
+                </div>
+                <div class="footer-section">
+                    <strong>Rubriques</strong>
+                    <ul class="footer-links">
+                        <li><a href="geopolitics.html">Géopolitique</a></li>
+                        <li><a href="markets.html">Marchés</a></li>
+                        <li><a href="crypto.html">Crypto</a></li>
+                        <li><a href="commodities.html">Matières Premières</a></li>
+                        <li><a href="etf.html">ETF</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <strong>Légal</strong>
+                    <ul class="footer-links">
+                        <li><a href="mentions-legales.html">Mentions légales</a></li>
+                        <li><a href="confidentialite.html">Confidentialité</a></li>
+                        <li><a href="cgu.html">CGU</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-disclaimer">
+                Les informations présentées sont fournies à titre informatif uniquement et ne constituent pas des conseils en investissement.
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Inflexion. Données issues de sources publiques vérifiées.
+            </div>
         </div>
     </footer>
 
