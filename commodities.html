@@ -14,16 +14,31 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Matières Premières — Inflexion">
     <meta name="twitter:description" content="Cours des matières premières et impact géopolitique.">
+    <meta property="og:url" content="https://florycarm-a11y.github.io/Inflexion/commodities.html">
+    <meta property="og:image" content="https://florycarm-a11y.github.io/Inflexion/og-image.png">
+    <meta name="twitter:image" content="https://florycarm-a11y.github.io/Inflexion/og-image.png">
     <link rel="canonical" href="https://florycarm-a11y.github.io/Inflexion/commodities.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="manifest" href="manifest.json">
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        "name": "Matières Premières — Inflexion",
-        "description": "Matières premières : or, argent, pétrole. Cours et analyses géopolitiques.",
-        "publisher": {"@type": "Organization", "name": "Inflexion"},
-        "inLanguage": "fr"
-    }
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Matières Premières — Inflexion",
+            "description": "Matières premières : or, argent, pétrole. Cours et analyses géopolitiques.",
+            "publisher": {"@type": "Organization", "name": "Inflexion"},
+            "inLanguage": "fr"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://florycarm-a11y.github.io/Inflexion/"},
+                {"@type": "ListItem", "position": 2, "name": "Matières Premières", "item": "https://florycarm-a11y.github.io/Inflexion/commodities.html"}
+            ]
+        }
+    ]
     </script>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +46,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="header">
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    <header class="header" role="banner">
         <div class="container">
             <div class="header-top">
                 <div class="header-left">
@@ -42,7 +58,7 @@
                             <span class="hamburger-bar"></span>
                         </div>
                     </button>
-                    <a href="index.html" class="logo"><img src="logos/logo-inflexion.svg" alt="Inflexion — Analyse & Marchés" class="logo-img"></a>
+                    <a href="index.html" class="logo"><img src="logo-header.svg" alt="Inflexion" width="180" height="50"></a>
                 </div>
                 <div class="header-controls">
                     <div class="market-status closed">
@@ -78,7 +94,7 @@
         </nav>
     </header>
 
-    <main class="main-content">
+    <main class="main-content" id="main-content">
         <div class="container">
             <div class="page-header" data-category="commodities">
                 <h1 class="page-title">Matières premières</h1>
@@ -90,13 +106,16 @@
             <!-- Market Table -->
             <div class="commodity-table" id="commodity-table"></div>
 
-            <div class="news-grid" id="page-news">
+            <div class="news-grid" id="page-news" aria-live="polite">
                 <div class="loading"><div class="loading-spinner"></div></div>
             </div>
+            <noscript>
+                <p>Activez JavaScript pour afficher les actualités matières premières. Consultez nos <a href="analysis.html">analyses approfondies</a>.</p>
+            </noscript>
         </div>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-bottom">&copy; 2026 Inflexion. Données issues de sources publiques vérifiées.</div>
         </div>

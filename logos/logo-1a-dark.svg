@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120">
+  <!-- Logo 1A: Courbe d'inflexion — version dark background -->
+  <rect width="400" height="120" rx="8" fill="#1A2942"/>
+  <defs>
+    <linearGradient id="a1a" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C41E3A"/>
+      <stop offset="100%" stop-color="#E63950"/>
+    </linearGradient>
+  </defs>
+  <path d="M 20 85 Q 50 85 70 70 Q 95 50 105 50 Q 115 50 125 30" stroke="url(#a1a)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <circle cx="105" cy="50" r="5" fill="#E63950"/>
+  <text x="145" y="72" font-family="Georgia, 'Times New Roman', serif" font-size="48" font-weight="700" fill="white" letter-spacing="-1">Inflexion</text>
+  <line x1="145" y1="80" x2="390" y2="80" stroke="#C41E3A" stroke-width="1.5" opacity="0.4"/>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120">
+  <!-- Logo 3: Double flèche croisée — hausse/baisse des marchés -->
+  <defs>
+    <linearGradient id="up3" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#1A8B5C"/>
+      <stop offset="100%" stop-color="#22B573"/>
+    </linearGradient>
+    <linearGradient id="down3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#C41E3A"/>
+      <stop offset="100%" stop-color="#E63950"/>
+    </linearGradient>
+  </defs>
+  <!-- Flèche montante (verte) -->
+  <path d="M 25 78 L 55 32" stroke="url(#up3)" stroke-width="4" stroke-linecap="round"/>
+  <polygon points="55,22 62,38 48,38" fill="#22B573"/>
+  <!-- Flèche descendante (rouge) -->
+  <path d="M 65 32 L 95 78" stroke="url(#down3)" stroke-width="4" stroke-linecap="round"/>
+  <polygon points="95,88 88,72 102,72" fill="#C41E3A"/>
+  <!-- Point central (inflexion) -->
+  <circle cx="60" cy="55" r="4" fill="#1A2942"/>
+  <!-- Texte -->
+  <text x="115" y="68" font-family="'Helvetica Neue', Arial, sans-serif" font-size="46" font-weight="800" fill="#1A2942" letter-spacing="-1.5">Inflexion</text>
+  <!-- Barre sous le texte -->
+  <rect x="115" y="76" width="60" height="3" rx="1.5" fill="#C41E3A"/>
+</svg>
