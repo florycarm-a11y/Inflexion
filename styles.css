@@ -28,6 +28,23 @@
     top: 0;
 }
 
+/* Focus-visible for keyboard navigation */
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+.menu-trigger:focus-visible,
+.filter-btn:focus-visible,
+.newsletter-btn:focus-visible,
+.back-to-top:focus-visible,
+.nav-close:focus-visible,
+.search-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
 /* Screen reader only text */
 .sr-only {
     position: absolute;
@@ -72,7 +89,7 @@
     /* Text */
     --text-primary: #1a1a1a;
     --text-secondary: #4a4a4a;
-    --text-muted: #8a8a8a;
+    --text-muted: #6b6b6b;
 
     /* Borders */
     --border-color: #E5E5E5;
@@ -371,6 +388,15 @@ a {
     transform: translateY(-50%) scaleX(1);
 }
 
+.nav-overlay-link[aria-current="page"] {
+    color: white;
+    padding-left: 1rem;
+}
+
+.nav-overlay-link[aria-current="page"]::before {
+    transform: translateY(-50%) scaleX(1);
+}
+
 /* Overlay link entrance animation */
 .nav-overlay.nav-open .nav-overlay-link {
     animation: slideInLink 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
@@ -393,33 +419,6 @@ a {
         opacity: 1;
         transform: translateX(0);
     }
-}
-
-/* Navigation — deprecated, kept for category pages */
-.nav {
-    display: none;
-}
-
-.nav-link {
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 0.85rem 1.1rem;
-    position: relative;
-    transition: color 0.15s ease;
-}
-
-.nav-link:hover {
-    color: var(--text-primary);
-}
-
-.nav-link.active {
-    color: var(--text-primary);
-    font-weight: 700;
 }
 
 /* ============================================
@@ -481,18 +480,13 @@ a {
     border-bottom: 1px solid var(--border-color);
 }
 
-.hero::before,
-.hero::after {
-    display: none;
-}
-
 .hero > * {
     position: relative;
 }
 
 .hero-eyebrow {
     font-family: var(--font-sans);
-    font-size: 0.55rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     color: var(--accent);
@@ -671,19 +665,6 @@ a {
 
 .news-card:hover::before {
     background: var(--accent);
-}
-
-/* Remove rainbow borders */
-.news-card:nth-child(3n+1),
-.news-card:nth-child(3n+2),
-.news-card:nth-child(3n+3) {
-    border-top-color: transparent;
-}
-
-.news-card:nth-child(3n+1):hover,
-.news-card:nth-child(3n+2):hover,
-.news-card:nth-child(3n+3):hover {
-    border-top-color: transparent;
 }
 
 .news-source {
@@ -948,18 +929,6 @@ a {
     background: var(--bg-secondary);
 }
 
-/* Override the per-item rainbow hovers */
-.sidebar-nav li:nth-child(1) a:hover,
-.sidebar-nav li:nth-child(2) a:hover,
-.sidebar-nav li:nth-child(3) a:hover,
-.sidebar-nav li:nth-child(4) a:hover,
-.sidebar-nav li:nth-child(5) a:hover,
-.sidebar-nav li:nth-child(6) a:hover {
-    border-left-color: var(--accent);
-    color: var(--text-primary);
-    background: var(--bg-secondary);
-}
-
 .sidebar-more {
     display: inline-block;
     margin-top: 0.75rem;
@@ -1101,10 +1070,6 @@ a {
     border-bottom: 2px solid var(--text-primary);
 }
 
-.page-header::after {
-    display: none;
-}
-
 .page-title {
     font-family: var(--font-serif);
     font-size: 2.2rem;
@@ -1119,16 +1084,6 @@ a {
     font-size: 1rem;
     color: var(--text-secondary);
     font-style: italic;
-}
-
-/* All page headers same color — professional consistency */
-.page-header[data-category="geopolitics"] .page-title,
-.page-header[data-category="markets"] .page-title,
-.page-header[data-category="crypto"] .page-title,
-.page-header[data-category="commodities"] .page-title,
-.page-header[data-category="etf"] .page-title,
-.page-header[data-category="analysis"] .page-title {
-    color: var(--navy);
 }
 
 /* ============================================
@@ -1297,7 +1252,6 @@ a {
     color: var(--navy);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    font-size: 0.88rem;
 }
 
 .article-body blockquote {
@@ -2262,5 +2216,22 @@ a {
         right: 1.5rem;
         width: 40px;
         height: 40px;
+    }
+}
+
+/* ============================================
+   Reduced Motion — Accessibility
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .ticker-content {
+        animation: none;
+    }
+    .nav-overlay {
+        transition: none;
     }
 }
