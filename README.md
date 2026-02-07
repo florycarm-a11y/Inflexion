@@ -1,207 +1,201 @@
-# 🌍 Géopolitique & Marchés
+# Inflexion - Géopolitique & Marchés Financiers
 
-Plateforme d'analyse en temps réel des événements géopolitiques et de leur impact sur les marchés financiers mondiaux.
+Plateforme d'intelligence financière combinant analyses géopolitiques et données de marché en temps réel pour des décisions d'investissement éclairées.
 
-## 📋 Vue d'ensemble
+## Aperçu
 
-Ce site web agrège et présente les actualités internationales en mettant l'accent sur :
-- **Géopolitique** : Événements mondiaux et tensions internationales
-- **Marchés Financiers** : Impact sur les bourses et indices
-- **Cryptomonnaies** : Bitcoin, Ethereum, et altcoins
-- **Matières Premières** : Or, pétrole, métaux, agriculture
-- **ETF** : Fonds indiciels et investissements
+Inflexion est une application web qui agrège et présente les actualités géopolitiques mondiales et leur impact sur les marchés financiers, incluant:
 
-## ✨ Fonctionnalités
+- **Bitcoin & Cryptomonnaies** - Suivi en temps réel des principales cryptos
+- **Matières Premières** - Or, pétrole, gaz, métaux industriels
+- **ETF & Fonds** - Analyse des flux et performances
+- **Indices Boursiers** - S&P 500, CAC 40, NASDAQ, etc.
 
-### 📊 Données de Marché en Temps Réel
-- Bitcoin (BTC/USD)
-- Or (XAU/USD)
-- Pétrole Brent (BRN/USD)
-- S&P 500 (SPX)
-- Mises à jour automatiques toutes les 10 secondes
+## Fonctionnalités
 
-### 📰 Sources d'Information
-Le site agrège des actualités de sources reconnues :
-- **International** : Reuters, Bloomberg, Financial Times, BBC News, Al Jazeera, CNBC, MarketWatch
-- **France** : Le Monde, Les Échos
-- **Crypto** : CoinDesk, Cointelegraph, The Block
-- **Investissement** : Morningstar, ETF.com
+### Données en Temps Réel
+- Widgets TradingView intégrés pour les cotations live
+- Mise à jour automatique des prix toutes les 10 secondes
+- Ticker d'actualités en continu (breaking news)
+- Indicateurs d'impact sur les marchés
 
-### 🎨 Interface Moderne
-- Design sombre professionnel
-- Responsive (mobile, tablette, desktop)
-- Animations fluides
-- Navigation intuitive
+### Sources Médias (25+)
 
-## 🚀 Installation et Utilisation
+**Internationaux:**
+- Reuters, Bloomberg, Financial Times, BBC News
+- Al Jazeera, CNBC, Wall Street Journal, New York Times
+- The Guardian, The Economist
 
-### Prérequis
-Aucun prérequis ! Il s'agit d'un site web statique HTML/CSS/JavaScript.
+**Francophones:**
+- Le Monde, Les Échos, Le Figaro, France 24
+- RFI, La Tribune, BFM Business, Capital
 
-### Lancement Local
-1. Clonez le repository :
+**Crypto & Finance:**
+- CoinDesk, Cointelegraph, The Block, Decrypt
+- MarketWatch, Morningstar, ETF.com, Seeking Alpha
+
+### Catégories d'Actualités
+
+1. **Géopolitique** - Tensions internationales, sanctions, diplomatie
+2. **Marchés** - Analyses boursières, politique monétaire
+3. **Crypto** - Bitcoin, Ethereum, DeFi, régulations
+4. **Matières Premières** - Énergie, métaux, agriculture
+5. **ETF** - Fonds indiciels, flux de capitaux
+6. **Analyses** - Perspectives et études approfondies
+
+## Technologies
+
+- **HTML5** - Structure sémantique
+- **CSS3** - Design responsive, animations fluides, thème sombre
+- **JavaScript Vanilla** - Aucune dépendance externe
+- **TradingView Widgets** - Graphiques et cotations en temps réel
+- **Google Fonts (Inter)** - Typographie moderne
+
+## Installation
+
+### Option 1: Ouvrir directement
 ```bash
-git clone <repository-url>
-cd Claude
+# Cloner le repo
+git clone https://github.com/votre-repo/geofinance.git
+cd geofinance
+
+# Ouvrir index.html dans un navigateur
+open index.html       # macOS
+xdg-open index.html   # Linux
+start index.html      # Windows
 ```
 
-2. Ouvrez `index.html` dans votre navigateur :
+### Option 2: Serveur local
 ```bash
-# Sur macOS
-open index.html
+# Avec Python 3
+python -m http.server 8000
 
-# Sur Linux
-xdg-open index.html
+# Avec Node.js
+npx serve .
 
-# Ou utilisez un serveur local simple
-python3 -m http.server 8000
-# Puis ouvrez http://localhost:8000
+# Avec PHP
+php -S localhost:8000
 ```
 
-## 📁 Structure du Projet
+Puis accéder à `http://localhost:8000`
+
+## Structure du Projet
 
 ```
-Claude/
-├── index.html      # Structure HTML principale
-├── styles.css      # Styles et design responsive
-├── app.js          # Logique JavaScript et gestion des données
+geofinance/
+├── index.html      # Page principale avec widgets TradingView
+├── styles.css      # Styles, animations et design responsive
+├── app.js          # Logique JavaScript et base de données news
 └── README.md       # Documentation
 ```
 
-## 🔧 Architecture Technique
+## Caractéristiques Techniques
 
-### Technologies Utilisées
-- **HTML5** : Structure sémantique
-- **CSS3** : Styles modernes avec variables CSS, Grid, Flexbox
-- **JavaScript Vanilla** : Aucune dépendance externe
-- **Google Fonts** : Police Inter pour une typographie moderne
+### Performance
+- Chargement asynchrone des widgets TradingView
+- Animations CSS optimisées (transform, opacity)
+- Pas de frameworks JavaScript lourds
+- Temps de chargement minimal
 
-### Fonctionnalités JavaScript
-- Simulation de données de marché en temps réel
-- Agrégation d'actualités par catégorie
-- Navigation fluide avec scroll automatique
-- Observer API pour détecter les sections actives
-- Rafraîchissement périodique des données
+### Design
+- Thème sombre professionnel
+- Glassmorphisme et effets de blur
+- Dégradés et ombres subtiles
+- Indicateurs visuels d'impact (high/medium/low)
 
-## 📱 Responsive Design
+### Accessibilité
+- Navigation au clavier complète
+- Contrastes WCAG conformes
+- Labels ARIA pour les lecteurs d'écran
+- Focus visible sur tous les éléments interactifs
 
-Le site s'adapte à tous les écrans :
-- **Desktop** : Grilles multi-colonnes, navigation complète
-- **Tablette** : Adaptation des grilles, navigation optimisée
-- **Mobile** : Colonne unique, navigation simplifiée
+### Responsive Design
+- Mobile-first approach
+- Breakpoints: 480px, 768px, 1024px
+- Menu hamburger sur mobile
+- Grilles adaptatives
 
-## 🎯 Catégories d'Actualités
+## Personnalisation
 
-### 🌍 Géopolitique
-Événements internationaux affectant les marchés : tensions régionales, sommets économiques, accords commerciaux, OPEC+, etc.
-
-### 💹 Marchés
-Analyses des bourses mondiales : Wall Street, CAC 40, indices asiatiques, secteurs, volatilité.
-
-### ₿ Crypto
-Actualités Bitcoin, Ethereum, DeFi, ETF crypto, régulations, altcoins.
-
-### 🛢️ Matières Premières
-Or, argent, pétrole, gaz naturel, métaux industriels, agriculture.
-
-### 📈 ETF
-Fonds indiciels : Bitcoin ETF, Gold ETF, ESG, technologie, obligataire.
-
-## 🔄 Mises à Jour
-
-### Données de Marché
-- Simulation en temps réel avec variations aléatoires
-- Mise à jour toutes les 10 secondes
-- Affichage des variations en pourcentage
-- Code couleur : vert (hausse), rouge (baisse)
-
-### Actualités
-- Rafraîchissement toutes les 60 secondes
-- Animation d'apparition progressive
-- Horodatage relatif (2h, 4h, etc.)
-- Tags par catégorie
-
-## 🎨 Personnalisation
-
-### Couleurs (dans styles.css)
-Les couleurs sont définies dans les variables CSS :
+### Modifier les couleurs
+Éditez les variables CSS dans `styles.css`:
 ```css
 :root {
-    --primary-color: #2563eb;
+    --primary-color: #3b82f6;
     --success-color: #10b981;
     --danger-color: #ef4444;
     --warning-color: #f59e0b;
+    --dark-bg: #0a0f1a;
     /* ... */
 }
 ```
 
-### Contenu (dans app.js)
-Les actualités sont stockées dans l'objet `newsDatabase`. Vous pouvez ajouter/modifier :
+### Ajouter des sources
+Ajoutez des entrées dans `newsDatabase` dans `app.js`:
 ```javascript
-const newsDatabase = {
-    geopolitics: [ /* vos actualités */ ],
-    markets: [ /* vos actualités */ ],
-    // ...
+{
+    source: 'NouvelleSource',
+    sourceUrl: 'https://example.com',
+    title: 'Titre de l\'article',
+    description: 'Description...',
+    tags: ['geopolitics', 'markets'],
+    time: '1h',
+    impact: 'high'  // high, medium, low
+}
+```
+
+### Modifier les styles de sources
+Personnalisez l'apparence des logos dans `sourceStyles`:
+```javascript
+const sourceStyles = {
+    'NouvelleSource': { color: '#ff0000', initial: 'NS' }
 };
 ```
 
-## 🚀 Déploiement
+## Déploiement
 
 ### GitHub Pages
-1. Push vers GitHub
-2. Settings → Pages
-3. Source : main branch
-4. Le site sera disponible à `https://username.github.io/Claude`
+1. Push vers votre repo GitHub
+2. Settings > Pages > Source: main branch
+3. Accès via `https://username.github.io/repo-name`
 
 ### Netlify / Vercel
-1. Connectez votre repository
+1. Connectez votre repo
 2. Déploiement automatique à chaque commit
+3. SSL gratuit inclus
 
-### Serveur Web
-Copiez tous les fichiers dans votre répertoire web (`/var/www/html`, etc.)
+### Hébergement traditionnel
+Uploadez les 3 fichiers (index.html, styles.css, app.js) sur votre serveur.
 
-## 📊 Évolutions Futures
+## Évolutions Futures
 
-### Version 1.1 (Propositions)
-- [ ] Intégration d'APIs réelles (CoinGecko, Alpha Vantage)
-- [ ] Backend pour proxy API et éviter CORS
-- [ ] Système de favoris utilisateur
+### Propositions v2.0
+- [ ] Intégration d'APIs réelles (CoinGecko, Alpha Vantage, NewsAPI)
+- [ ] Backend pour agrégation de news en temps réel
+- [ ] Système de favoris et alertes utilisateur
 - [ ] Notifications push pour événements majeurs
-- [ ] Graphiques interactifs (Chart.js)
+- [ ] Mode clair/sombre avec toggle
 - [ ] Recherche et filtres avancés
-- [ ] Mode clair/sombre toggle
 - [ ] Export de données (CSV, PDF)
-
-### Version 2.0 (Vision)
-- [ ] Authentification utilisateur
-- [ ] Portefeuille virtuel
-- [ ] Alertes personnalisées
+- [ ] Application mobile (PWA)
 - [ ] Analyses IA des corrélations géopolitique/marchés
-- [ ] Application mobile (React Native)
-- [ ] API publique
 
-## ⚠️ Avertissement
+## Avertissement
 
-**Les informations présentées sont à titre informatif uniquement et ne constituent pas des conseils en investissement.**
+**Les informations présentées sur ce site sont fournies à titre informatif uniquement et ne constituent en aucun cas des conseils en investissement.** Les performances passées ne garantissent pas les performances futures. Tout investissement comporte des risques de perte en capital. Pour des décisions d'investissement, consultez des professionnels qualifiés.
 
-Ce site est un projet de démonstration. Les données de marché sont simulées. Pour des décisions d'investissement, consultez des sources officielles et des professionnels qualifiés.
+## Licence
 
-## 📝 Licence
+MIT License - Libre d'utilisation et de modification.
 
-Ce projet est un exemple éducatif. Utilisez-le librement pour apprendre et vous inspirer.
+## Contributions
 
-## 🤝 Contribution
-
-Les contributions sont les bienvenues ! N'hésitez pas à :
+Les contributions sont les bienvenues! N'hésitez pas à:
 - Signaler des bugs
 - Proposer des améliorations
-- Ajouter de nouvelles sources d'actualités
-- Améliorer le design
-
-## 📧 Contact
-
-Pour toute question ou suggestion, ouvrez une issue sur GitHub.
+- Ajouter de nouvelles sources médias
+- Améliorer les traductions
 
 ---
 
-**Développé avec ❤️ pour suivre l'actualité géopolitique et financière**
+Développé pour les investisseurs et analystes francophones souhaitant suivre l'impact de la géopolitique sur les marchés financiers.

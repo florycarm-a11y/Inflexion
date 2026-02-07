@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matières Premières — Inflexion</title>
+    <meta name="description" content="Matières premières : or, argent, pétrole, gaz naturel. Cours en temps réel, analyses et impact géopolitique sur les commodités.">
+    <meta name="keywords" content="matières premières, or, argent, pétrole, commodités, WTI, Brent, métaux précieux, investissement">
+    <meta property="og:title" content="Matières Premières — Inflexion">
+    <meta property="og:description" content="Matières premières : or, argent, pétrole. Cours en temps réel et analyses géopolitiques.">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Inflexion">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Matières Premières — Inflexion">
+    <meta name="twitter:description" content="Cours des matières premières et impact géopolitique.">
+    <link rel="canonical" href="https://florycarm-a11y.github.io/Inflexion/commodities.html">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Matières Premières — Inflexion",
+        "description": "Matières premières : or, argent, pétrole. Cours et analyses géopolitiques.",
+        "publisher": {"@type": "Organization", "name": "Inflexion"},
+        "inLanguage": "fr"
+    }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="header-left">
+                    <button class="menu-trigger" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu de navigation">
+                        <div class="hamburger" aria-hidden="true">
+                            <span class="hamburger-bar"></span>
+                            <span class="hamburger-bar"></span>
+                            <span class="hamburger-bar"></span>
+                        </div>
+                    </button>
+                    <a href="index.html" class="logo"><img src="logos/logo-inflexion.svg" alt="Inflexion — Analyse & Marchés" class="logo-img"></a>
+                </div>
+                <div class="header-controls">
+                    <div class="market-status closed">
+                        <span class="market-status-dot"></span>
+                        <span class="market-status-text">Fermé</span>
+                    </div>
+                    <div class="header-search">
+                        <form class="search-form" id="search-form">
+                            <input type="text" class="search-input" id="search-input" placeholder="Rechercher...">
+                            <button type="submit" class="search-btn">Rechercher</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navigation Overlay -->
+        <nav class="nav-overlay" id="main-nav" aria-label="Navigation principale">
+            <div class="nav-overlay-content">
+                <div class="nav-overlay-header">
+                    <span class="nav-overlay-title">Rubriques</span>
+                    <button class="nav-close" aria-label="Fermer le menu">&times;</button>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-overlay-link">Accueil</a>
+                    <a href="geopolitics.html" class="nav-overlay-link">Géopolitique</a>
+                    <a href="markets.html" class="nav-overlay-link">Marchés</a>
+                    <a href="crypto.html" class="nav-overlay-link">Crypto</a>
+                    <a href="commodities.html" class="nav-overlay-link">Matières Premières</a>
+                    <a href="etf.html" class="nav-overlay-link">ETF</a>
+                    <a href="analysis.html" class="nav-overlay-link">Analyses</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header" data-category="commodities">
+                <h1 class="page-title">Matières premières</h1>
+                <p class="page-subtitle">Or, pétrole, gaz, métaux industriels et agriculture</p>
+            </div>
+
+            <div id="category-trend"></div>
+
+            <!-- Market Table -->
+            <div class="commodity-table" id="commodity-table"></div>
+
+            <div class="news-grid" id="page-news">
+                <div class="loading"><div class="loading-spinner"></div></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">&copy; 2026 Inflexion. Données issues de sources publiques vérifiées.</div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" aria-label="Retour en haut">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
+    <script src="app.js"></script>
+    <script>if (typeof initCategoryPage === 'function') initCategoryPage('commodities');</script>
+</body>
+</html>
