@@ -125,6 +125,12 @@ function initSearch() {
         e.preventDefault();
         var q = document.getElementById('search-input').value.trim().toLowerCase();
         if (!q) return;
+        // Persist search in URL
+        if (window.history.replaceState) {
+            var url = new URL(window.location);
+            url.searchParams.set('q', q);
+            window.history.replaceState({}, '', url);
+        }
         var r = [];
         Object.keys(newsDatabase).forEach(function(k) {
             newsDatabase[k].forEach(function(a) {
@@ -133,6 +139,13 @@ function initSearch() {
         });
         showSearchResults(r, q);
     });
+    // Restore search from URL on page load
+    var params = new URLSearchParams(window.location.search);
+    var savedQ = params.get('q');
+    if (savedQ) {
+        var input = document.getElementById('search-input');
+        if (input) { input.value = savedQ; f.dispatchEvent(new Event('submit')); }
+    }
 }
 
 function showSearchResults(results, query) {
@@ -367,7 +380,30 @@ function initCategoryPage(cat) {
 function renderTable(id, headers, data, rowFn) {
     var el = document.getElementById(id);
     if (!el) return;
-    el.innerHTML = '<table class="data-table"><thead><tr>' + headers.map(function(h) { return '<th>' + h + '</th>'; }).join('') + '</tr></thead><tbody>' + data.map(function(r) { return '<tr>' + rowFn(r) + '</tr>'; }).join('') + '</tbody></table>';
+    var sortState = { col: -1, asc: true };
+    var keys = Object.keys(data[0] || {});
+    function render(d) {
+        el.innerHTML = '<table class="data-table"><thead><tr>' + headers.map(function(h, i) {
+            var cls = 'sortable';
+            if (i === sortState.col) cls += sortState.asc ? ' sort-asc' : ' sort-desc';
+            return '<th class="' + cls + '" data-col="' + i + '">' + h + '</th>';
+        }).join('') + '</tr></thead><tbody>' + d.map(function(r) { return '<tr>' + rowFn(r) + '</tr>'; }).join('') + '</tbody></table>';
+        el.querySelectorAll('th.sortable').forEach(function(th) {
+            th.addEventListener('click', function() {
+                var col = parseInt(th.getAttribute('data-col'));
+                if (sortState.col === col) { sortState.asc = !sortState.asc; } else { sortState.col = col; sortState.asc = true; }
+                var key = keys[col];
+                var sorted = data.slice().sort(function(a, b) {
+                    var va = (a[key] || '').toString(), vb = (b[key] || '').toString();
+                    var na = parseFloat(va.replace(/[^0-9.\-]/g, '')), nb = parseFloat(vb.replace(/[^0-9.\-]/g, ''));
+                    if (!isNaN(na) && !isNaN(nb)) return sortState.asc ? na - nb : nb - na;
+                    return sortState.asc ? va.localeCompare(vb) : vb.localeCompare(va);
+                });
+                render(sorted);
+            });
+        });
+    }
+    render(data);
 }
 
 // --- Back to Top ---
