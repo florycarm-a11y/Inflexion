@@ -463,6 +463,10 @@ a {
     color: rgba(255,255,255,0.9);
 }
 
+.news-ticker:hover .ticker-content {
+    animation-play-state: paused;
+}
+
 @keyframes ticker {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -882,6 +886,13 @@ a {
     margin-top: 2.5rem;
 }
 
+/* Sidebar — sticky on desktop */
+.col-side {
+    position: sticky;
+    top: 5rem;
+    align-self: start;
+}
+
 /* Sidebar */
 .sidebar-block {
     margin-bottom: 2rem;
@@ -1176,8 +1187,64 @@ a {
     background: var(--bg-secondary);
 }
 
+.data-table thead th.sortable {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    padding-right: 1.5rem;
+}
+
+.data-table thead th.sortable::after {
+    content: '\2195';
+    position: absolute;
+    right: 0.4rem;
+    opacity: 0.3;
+    font-size: 0.7rem;
+}
+
+.data-table thead th.sortable.sort-asc::after {
+    content: '\2191';
+    opacity: 0.8;
+}
+
+.data-table thead th.sortable.sort-desc::after {
+    content: '\2193';
+    opacity: 0.8;
+}
+
 .data-table .positive { color: var(--green); font-weight: 700; }
 .data-table .negative { color: var(--accent); font-weight: 700; }
+
+/* Breadcrumbs */
+.breadcrumb {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+}
+
+.breadcrumb a {
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: var(--accent);
+}
+
+.breadcrumb-sep {
+    color: var(--border-color);
+    user-select: none;
+}
+
+.breadcrumb-current {
+    color: var(--text-primary);
+    font-weight: 600;
+}
 
 /* ============================================
    Analysis Section — Full Articles
@@ -2241,11 +2308,30 @@ a {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
     .ticker-content {
         animation: none;
     }
+    .news-ticker {
+        display: none;
+    }
     .nav-overlay {
         transition: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    .header, .footer, .back-to-top, .news-ticker, .nav-overlay {
+        display: none !important;
+    }
+    .main-content {
+        padding: 0;
+    }
+    a[href]::after {
+        content: ' (' attr(href) ')';
+        font-size: 0.8em;
+        color: #666;
     }
 }
