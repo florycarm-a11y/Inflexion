@@ -225,18 +225,10 @@ a {
     transition: opacity 0.2s ease;
 }
 
-.logo-icon {
-    height: 24px;
+.logo-img {
+    height: 40px;
     width: auto;
     flex-shrink: 0;
-}
-
-.logo-text {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--navy);
-    letter-spacing: 0.5px;
 }
 
 .logo:hover {
@@ -1802,12 +1794,8 @@ a {
         min-width: 0;
     }
 
-    .logo-icon {
-        height: 20px;
-    }
-
-    .logo-text {
-        font-size: 1.25rem;
+    .logo-img {
+        height: 32px;
     }
 
     .page-title {
