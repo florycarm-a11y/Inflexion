@@ -219,16 +219,15 @@ a {
 .logo {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
     text-decoration: none;
     line-height: 1;
     transition: opacity 0.2s ease;
 }
 
 .logo-img {
-    height: 40px;
+    height: 44px;
     width: auto;
-    flex-shrink: 0;
+    display: block;
 }
 
 .logo:hover {
@@ -1795,7 +1794,7 @@ a {
     }
 
     .logo-img {
-        height: 32px;
+        height: 34px;
     }
 
     .page-title {
