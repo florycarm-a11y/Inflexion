@@ -1,0 +1,210 @@
+# Inflexion CI/CD Pipeline
+# Runs tests, linting, and coverage on every push and PR
+
+name: CI/CD
+
+on:
+  push:
+    branches: [main, develop, 'feature/*', 'claude/*']
+  pull_request:
+    branches: [main, develop]
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  # ============================================
+  # Lint & Type Check
+  # ============================================
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ./backend
+        run: npm ci
+
+      - name: Run ESLint
+        working-directory: ./backend
+        run: npm run lint || true  # Don't fail on lint warnings for now
+
+  # ============================================
+  # Unit & Integration Tests
+  # ============================================
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: lint
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ./backend
+        run: npm ci
+
+      - name: Run tests with coverage
+        working-directory: ./backend
+        run: npm run test:ci
+        env:
+          NODE_ENV: test
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          directory: ./backend/coverage
+          files: ./backend/coverage/lcov.info
+          flags: backend
+          fail_ci_if_error: false
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: |
+            backend/coverage/
+            backend/junit.xml
+          retention-days: 7
+
+  # ============================================
+  # Build Check
+  # ============================================
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ./backend
+        run: npm ci --production
+
+      - name: Verify server starts
+        working-directory: ./backend
+        run: |
+          timeout 10 node src/server.js &
+          sleep 5
+          curl -f http://localhost:3001/health || exit 1
+        env:
+          NODE_ENV: production
+          PORT: 3001
+
+  # ============================================
+  # Security Audit
+  # ============================================
+  security:
+    name: Security Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Run npm audit
+        working-directory: ./backend
+        run: npm audit --audit-level=high || true
+
+  # ============================================
+  # Frontend Validation
+  # ============================================
+  frontend:
+    name: Frontend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate HTML
+        run: |
+          echo "Validating HTML files..."
+          for file in *.html; do
+            if [ -f "$file" ]; then
+              echo "Checking $file"
+              # Basic validation - check for doctype and closing tags
+              grep -q "<!DOCTYPE html>" "$file" || echo "Warning: $file missing DOCTYPE"
+            fi
+          done
+
+      - name: Check for broken internal links
+        run: |
+          echo "Checking internal links..."
+          for html in *.html; do
+            if [ -f "$html" ]; then
+              # Extract href values and check if files exist
+              grep -oP 'href="\K[^"]+(?=")' "$html" | while read link; do
+                if [[ "$link" == *.html ]] && [[ ! "$link" == http* ]]; then
+                  if [ ! -f "$link" ]; then
+                    echo "Broken link in $html: $link"
+                  fi
+                fi
+              done
+            fi
+          done
+
+  # ============================================
+  # Deploy (only on main branch)
+  # ============================================
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: [test, build, frontend]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy notification
+        run: |
+          echo "Ready for deployment!"
+          echo "Branch: ${{ github.ref }}"
+          echo "Commit: ${{ github.sha }}"
+          # Add actual deployment steps here (Vercel, Netlify, Railway, etc.)
+
+# ============================================
+# Workflow Summary
+# ============================================
+# This pipeline:
+# 1. Lints the code (ESLint)
+# 2. Runs unit and integration tests with coverage
+# 3. Uploads coverage to Codecov
+# 4. Verifies the server can start
+# 5. Runs security audit
+# 6. Validates frontend HTML
+# 7. Deploys on main branch (placeholder)
