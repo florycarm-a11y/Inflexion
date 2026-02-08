@@ -1,11 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 24">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
+  <!-- Globe + Arrow — Inflexion header icon -->
   <defs>
-    <linearGradient id="hl" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#C41E3A"/>
-      <stop offset="100%" stop-color="#E63950"/>
+    <linearGradient id="ocean" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2196F3"/>
+      <stop offset="100%" stop-color="#1565C0"/>
     </linearGradient>
+    <linearGradient id="globe-edge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A3A6C"/>
+      <stop offset="100%" stop-color="#0D2B52"/>
+    </linearGradient>
+    <clipPath id="gc"><circle cx="18" cy="18" r="14.5"/></clipPath>
   </defs>
-  <path d="M 2 18 Q 10 18 18 14 Q 26 10 32 10 Q 37 10 44 4" stroke="url(#hl)" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <path d="M 2 18 Q 10 18 18 14 Q 26 10 32 10 Q 37 10 44 4 L 44 20 L 2 20 Z" fill="#C41E3A" opacity="0.08"/>
-  <circle cx="32" cy="10" r="2.5" fill="#C41E3A"/>
+  <!-- Globe base -->
+  <circle cx="18" cy="18" r="14.5" fill="url(#ocean)"/>
+  <!-- Continents (simplified Americas) clipped to globe -->
+  <g clip-path="url(#gc)">
+    <!-- North America -->
+    <path d="M 8 8 Q 10 6, 14 7 Q 17 8, 18 10 Q 19 12, 17 14 Q 15 16, 14 17 Q 12 18, 10 16 Q 8 14, 7 12 Q 6 10, 8 8Z" fill="#4CAF50" opacity="0.85"/>
+    <!-- Central America -->
+    <path d="M 14 17 Q 15 18, 15 20 Q 14 21, 13 20Z" fill="#4CAF50" opacity="0.85"/>
+    <!-- South America -->
+    <path d="M 14 21 Q 16 20, 18 22 Q 19 25, 18 28 Q 16 30, 14 29 Q 12 27, 12 24 Q 12 22, 14 21Z" fill="#4CAF50" opacity="0.85"/>
+    <!-- Europe/Africa hint -->
+    <path d="M 22 9 Q 24 8, 25 10 Q 26 12, 25 14 Q 24 15, 23 14 Q 22 12, 22 9Z" fill="#4CAF50" opacity="0.55"/>
+    <path d="M 23 16 Q 25 16, 25 19 Q 25 22, 23 24 Q 22 23, 22 20 Q 22 17, 23 16Z" fill="#4CAF50" opacity="0.55"/>
+  </g>
+  <!-- Globe outline -->
+  <circle cx="18" cy="18" r="14.5" fill="none" stroke="url(#globe-edge)" stroke-width="1.8"/>
+  <!-- Red arrow wrapping around globe -->
+  <path d="M 8 30 Q 3 22, 8 14 Q 13 6, 22 4" stroke="white" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 8 30 Q 3 22, 8 14 Q 13 6, 22 4" stroke="#D32F2F" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Arrowhead -->
+  <polygon points="20,0 28,6 21,7" fill="white"/>
+  <polygon points="20.5,1 27,6 21.5,6.5" fill="#D32F2F"/>
 </svg>
