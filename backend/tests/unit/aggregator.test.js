@@ -3,6 +3,34 @@
  * Tests classification and processing logic
  */
 
+// Mock dependencies that cause issues in CI (cheerio requires File global)
+jest.mock('rss-parser', () => {
+    return jest.fn().mockImplementation(() => ({
+        parseURL: jest.fn()
+    }));
+});
+
+jest.mock('axios');
+
+jest.mock('cheerio', () => ({
+    load: jest.fn(() => () => ({
+        first: () => ({ attr: () => null })
+    }))
+}));
+
+jest.mock('node-cron', () => ({
+    schedule: jest.fn()
+}));
+
+jest.mock('../../src/config/database', () => ({
+    query: jest.fn().mockResolvedValue({ rows: [], rowCount: 0 }),
+    pool: { connect: jest.fn(), end: jest.fn() }
+}));
+
+jest.mock('../../src/models/Article', () => ({
+    create: jest.fn()
+}));
+
 const { classifyCategory, classifyImpact } = require('../../src/services/aggregator');
 
 describe('Aggregator Service', () => {
