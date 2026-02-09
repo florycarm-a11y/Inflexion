@@ -6926,3 +6926,226 @@ a {
     color: var(--text-muted);
     font-variant-numeric: tabular-nums;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   VAGUE 13 — Améliorations visuelles
+   ═══════════════════════════════════════════════════════════════ */
+
+/* --- Sidebar cards (box-shadow + border-radius) --- */
+.sidebar-card {
+    background: white;
+    border-radius: var(--radius-md, 8px);
+    padding: 1.2rem;
+    box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.06));
+    border: 1px solid var(--border-light, #f0f0f0);
+    border-bottom: none;
+    margin-bottom: 1rem;
+    transition: box-shadow var(--transition-fast);
+}
+
+.sidebar-card:hover {
+    box-shadow: var(--shadow-md, 0 4px 12px rgba(0,0,0,0.08));
+}
+
+/* --- SVG sidebar icons --- */
+.sidebar-icon {
+    vertical-align: -2px;
+    margin-right: 4px;
+    stroke: var(--accent);
+    flex-shrink: 0;
+}
+
+/* --- Ticker: fix ALERTE badge overlap + fade edges --- */
+.news-ticker {
+    position: relative;
+}
+
+.ticker-label {
+    position: relative;
+    z-index: 2;
+    border-radius: 2px;
+}
+
+.news-ticker::before,
+.news-ticker::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.news-ticker::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--navy) 0%, transparent 100%);
+}
+
+.news-ticker::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--navy) 0%, transparent 100%);
+}
+
+/* --- Macro grid layout --- */
+.macro-indicators {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    flex-direction: unset;
+}
+
+.macro-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    padding: 0.6rem;
+    border-radius: var(--radius-sm, 6px);
+}
+
+.macro-card-body {
+    gap: 0.15rem;
+}
+
+.macro-card-icon {
+    display: none; /* Remove emoji icons */
+}
+
+/* --- Source typography: small-caps instead of red uppercase --- */
+.sidebar-source {
+    font-variant: small-caps;
+    text-transform: none;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    opacity: 0.6;
+    letter-spacing: 0.02em;
+    margin-top: 0.6rem;
+}
+
+.source-name {
+    font-variant: small-caps;
+    text-transform: none !important;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* --- News list items: subtle card style --- */
+.news-list-item {
+    background: white;
+    border-radius: var(--radius-sm, 4px);
+    padding: 1rem 1.25rem !important;
+    margin-bottom: 0.5rem;
+    border-bottom: none !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    border: 1px solid var(--border-light, #f0f0f0);
+    transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.news-list-item:hover {
+    padding-left: 1.25rem !important;
+    border-left: 1px solid var(--border-light, #f0f0f0) !important;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.07);
+    transform: translateY(-1px);
+}
+
+/* --- Hide empty sections --- */
+.section-empty {
+    display: none !important;
+}
+
+.widget-empty {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* --- Widget fallback message --- */
+.widget-fallback {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-style: italic;
+    text-align: center;
+    padding: 0.8rem 0;
+}
+
+/* --- Sidebar collapsible details --- */
+.sidebar-details {
+    margin-bottom: 1rem;
+}
+
+.sidebar-details-toggle {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.6rem 0;
+    border-bottom: 1px dashed var(--border-color);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color var(--transition-fast);
+}
+
+.sidebar-details-toggle:hover {
+    color: var(--accent);
+}
+
+.sidebar-details-toggle::before {
+    content: '▸';
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+}
+
+.sidebar-details[open] .sidebar-details-toggle::before {
+    transform: rotate(90deg);
+}
+
+.sidebar-details-toggle::-webkit-details-marker {
+    display: none;
+}
+
+/* --- Footer enrichi --- */
+.footer-content {
+    grid-template-columns: 2fr repeat(3, 1fr) !important;
+}
+
+.footer-sources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-top: 0.8rem;
+}
+
+.footer-source-tag {
+    font-size: 0.62rem;
+    font-variant: small-caps;
+    color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.06);
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-full, 9999px);
+    letter-spacing: 0.04em;
+}
+
+/* --- Rubrique filter pills (refinement) --- */
+.rubrique-filter {
+    font-variant: small-caps;
+    letter-spacing: 0.04em;
+}
+
+.rubrique-filter.active {
+    color: white;
+}
+
+/* --- Responsive footer --- */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr !important;
+    }
+    .macro-indicators {
+        grid-template-columns: 1fr !important;
+    }
+}

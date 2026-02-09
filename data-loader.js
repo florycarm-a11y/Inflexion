@@ -128,7 +128,7 @@ const DataLoader = (function () {
         console.log('[DataLoader] Initialisation...');
 
         // Charger tous les fichiers en parallèle
-        const [crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour] = await Promise.all([
+        const [crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour, alphaVantage, defi] = await Promise.all([
             loadJSON(CONFIG.FILES.crypto),
             loadJSON(CONFIG.FILES.markets),
             loadJSON(CONFIG.FILES.news),
@@ -136,10 +136,12 @@ const DataLoader = (function () {
             loadJSON(CONFIG.FILES.fearGreed),
             loadJSON(CONFIG.FILES.chart),
             loadJSON(CONFIG.FILES.meta),
-            loadJSON(CONFIG.FILES.articleDuJour)
+            loadJSON(CONFIG.FILES.articleDuJour),
+            loadJSON(CONFIG.FILES.alphaVantage),
+            loadJSON(CONFIG.FILES.defi)
         ]);
 
-        _cache = { crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour };
+        _cache = { crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour, alphaVantage, defi };
         _initialized = true;
 
         // Déterminer si on utilise des données live
@@ -756,6 +758,53 @@ const DataLoader = (function () {
     }
 
     /**
+     * Remplace un placeholder "Chargement..." par un message fallback
+     */
+    function showFallback(elementId, message) {
+        var el = document.getElementById(elementId);
+        if (!el) return;
+        // Ne remplacer que s'il contient encore un placeholder
+        var placeholder = el.querySelector('[class*="placeholder"], .loading');
+        if (placeholder || el.textContent.includes('Chargement')) {
+            el.innerHTML = '<p class="widget-fallback">' + (message || 'Données non disponibles') + '</p>';
+        }
+    }
+
+    /**
+     * Masque les sections sidebar vides et affiche un fallback pour les widgets sans données
+     */
+    function handleEmptyWidgets() {
+        var widgetChecks = [
+            { data: _cache.crypto?.trending?.length, el: 'trending-coins', section: 'trending-section', msg: 'Aucune tendance disponible' },
+            { data: _cache.markets?.economicCalendar?.length, el: 'economic-calendar', section: 'calendar-section', msg: 'Aucun événement à venir' },
+            { data: _cache.alphaVantage?.forex?.length, el: 'forex-rates', section: 'forex-section', msg: 'Taux indisponibles' },
+            { data: _cache.alphaVantage?.sectors?.length, el: 'sector-performance', section: 'sectors-section', msg: 'Données sectorielles indisponibles' },
+            { data: _cache.alphaVantage?.topMovers, el: 'top-movers', section: 'movers-section', msg: 'Données indisponibles' },
+            { data: _cache.defi?.topProtocols?.length, el: 'defi-protocols', section: 'defi-section', msg: 'Protocoles indisponibles' },
+            { data: _cache.defi?.topYields?.length, el: 'defi-yields', section: 'yields-section', msg: 'Rendements indisponibles' },
+            { data: _cache.macro?.indicators?.length, el: 'macro-indicators', section: 'macro-section', msg: 'Indicateurs indisponibles' },
+            { data: _cache.fearGreed?.current, el: null, section: 'fng-section', msg: null }
+        ];
+
+        widgetChecks.forEach(function(check) {
+            if (!check.data) {
+                if (check.el) showFallback(check.el, check.msg);
+                // Masquer la section entière si pas de données
+                var section = document.getElementById(check.section);
+                if (section && !check.data) {
+                    section.classList.add('widget-empty');
+                }
+            }
+        });
+
+        // Masquer "Article du jour" si pas d'article
+        if (!_cache.articleDuJour?.titre) {
+            var articleSection = document.getElementById('article-du-jour-section');
+            if (articleSection) articleSection.classList.add('section-empty');
+        }
+    }
+
+    /**
      * Applique toutes les mises à jour au DOM
      */
     // ─── Forex & Secteurs (Alpha Vantage) ────────────────────
@@ -904,6 +953,7 @@ const DataLoader = (function () {
         updateArticleDuJour();
         updateLatestNewsWithRubriques();
         initRubriqueFilters();
+        handleEmptyWidgets();
         console.log('[DataLoader] ✓ DOM mis à jour');
     }
 

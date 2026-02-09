@@ -183,7 +183,12 @@ function initHomePage() {
     initCommon();
     var ts = document.getElementById('top-stories');
     if (ts) {
-        var f = [newsDatabase.markets[0], newsDatabase.markets[1], newsDatabase.commodities[0]];
+        var f = [
+            newsDatabase.markets && newsDatabase.markets[0],
+            newsDatabase.markets && newsDatabase.markets[1],
+            newsDatabase.commodities && newsDatabase.commodities[0]
+        ].filter(Boolean);
+        if (f.length === 0) { ts.innerHTML = '<p style="color:var(--text-muted);font-size:0.9rem;">Actualités en cours de chargement...</p>'; return; }
         ts.innerHTML = '<div class="top-stories-grid">' + f.map(function(n, i) {
             var dt = parseTimeToDatetime(n.time);
             return '<article class="top-story' + (i === 0 ? ' top-story-main' : '') + '"><a href="' + n.url + '" target="_blank" rel="noopener noreferrer" class="source-name">' + n.source + '</a><h3><a href="' + n.url + '" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">' + n.title + '</a></h3><p>' + n.description + '</p><time class="news-time" datetime="' + dt + '">' + n.time + '</time></article>';
