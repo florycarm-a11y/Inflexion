@@ -1,0 +1,78 @@
+# Inflexion — Workflow de récupération automatique des données
+# Exécuté toutes les 6h + manuellement + à chaque push sur main
+#
+# APIs :
+#   - CoinGecko (crypto) → fonctionne sans clé
+#   - Finnhub (marchés) → nécessite FINNHUB_API_KEY dans les secrets
+#   - GNews (actualités) → nécessite GNEWS_API_KEY dans les secrets
+#
+# Résultat : fichiers JSON dans /data/ committés et déployés automatiquement
+
+name: "📊 Fetch Market Data"
+
+on:
+  schedule:
+    # Toutes les 6 heures (UTC) : 00h, 06h, 12h, 18h
+    - cron: '0 0,6,12,18 * * *'
+
+  # Exécution manuelle depuis l'onglet Actions
+  workflow_dispatch:
+
+  # Exécuter aussi au push sur main (pour les premiers tests)
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/fetch-data.mjs'
+      - '.github/workflows/fetch-data.yml'
+
+# Permissions nécessaires pour committer les fichiers JSON
+permissions:
+  contents: write
+
+# Une seule exécution à la fois
+concurrency:
+  group: "fetch-data"
+  cancel-in-progress: true
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: "📥 Checkout du repo"
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "🟢 Setup Node.js 20"
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: "📊 Récupération des données"
+        env:
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          GNEWS_API_KEY: ${{ secrets.GNEWS_API_KEY }}
+        run: node scripts/fetch-data.mjs
+
+      - name: "📝 Commit et push des données"
+        run: |
+          git config user.name "Inflexion Bot"
+          git config user.email "bot@inflexionhub.com"
+
+          # Vérifier s'il y a des changements
+          git add data/
+          if git diff --staged --quiet; then
+            echo "Aucun changement dans les données"
+            exit 0
+          fi
+
+          # Commit avec timestamp
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+          git commit -m "📊 Données mises à jour — ${TIMESTAMP}
+
+          Mise à jour automatique des données marché, crypto et actualités.
+          Prochaine mise à jour dans ~6h."
+
+          git push
