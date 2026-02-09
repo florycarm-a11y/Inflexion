@@ -7,6 +7,8 @@
 #   - GNews (actualités) → nécessite GNEWS_API_KEY dans les secrets
 #   - FRED (macro) → nécessite FRED_API_KEY dans les secrets
 #   - Alternative.me (Fear & Greed) → fonctionne sans clé
+#   - Alpha Vantage (forex/secteurs) → ALPHA_VANTAGE_API_KEY (optionnel)
+#   - DefiLlama (DeFi TVL/yields) → fonctionne sans clé
 #
 # Résultat : fichiers JSON dans /data/ committés et déployés automatiquement
 
@@ -57,6 +59,7 @@ jobs:
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
           GNEWS_API_KEY: ${{ secrets.GNEWS_API_KEY }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
         run: node scripts/fetch-data.mjs
 
       - name: "📝 Commit et push des données"

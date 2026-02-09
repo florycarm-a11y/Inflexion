@@ -399,7 +399,7 @@ function formatTavilyContext(results) {
 /**
  * Génère un article de synthèse éditorial à partir des news du jour
  */
-async function generateDailyArticle(newsData, tavilyResults = [], macroData = null, fngData = null, cryptoData = null, marketsData = null) {
+async function generateDailyArticle(newsData, tavilyResults = [], macroData = null, fngData = null, cryptoData = null, marketsData = null, defiData = null, avData = null) {
     console.log('\n✍️  Génération de l\'article du jour...');
 
     const API_KEY = process.env.ANTHROPIC_API_KEY;
@@ -473,6 +473,35 @@ async function generateDailyArticle(newsData, tavilyResults = [], macroData = nu
         }
         context.push('');
         console.log(`  📅 ${marketsData.economicCalendar.length} événements éco injectés dans le contexte`);
+    }
+
+    // Ajouter les données DeFi si disponibles
+    if (defiData?.topProtocols?.length > 0) {
+        context.push('## 🦙 DeFi (DefiLlama)');
+        context.push(`- TVL Total: ${defiData.summary?.total_tvl_formatted || 'N/A'} (${defiData.summary?.total_protocols || 0} protocoles)`);
+        for (const p of defiData.topProtocols.slice(0, 5)) {
+            const tvlStr = p.tvl > 1e9 ? `$${(p.tvl/1e9).toFixed(1)}B` : `$${(p.tvl/1e6).toFixed(0)}M`;
+            const changeStr = p.change_1d != null ? ` (24h: ${p.change_1d > 0 ? '+' : ''}${p.change_1d.toFixed(1)}%)` : '';
+            context.push(`- **${p.name}** — TVL ${tvlStr}${changeStr} [${p.category || ''}]`);
+        }
+        context.push('');
+        console.log(`  🦙 Top 5 DeFi protocoles injectés dans le contexte`);
+    }
+
+    // Ajouter les données Forex si disponibles
+    if (avData?.forex?.length > 0) {
+        context.push('## 💱 Forex (Alpha Vantage)');
+        for (const fx of avData.forex) {
+            context.push(`- **${fx.pair}**: ${fx.rate.toFixed(4)}`);
+        }
+        if (avData.sectors?.length > 0) {
+            context.push('### Secteurs US (temps réel)');
+            for (const s of avData.sectors.slice(0, 5)) {
+                context.push(`- ${s.name}: ${s.realtime >= 0 ? '+' : ''}${s.realtime.toFixed(2)}%`);
+            }
+        }
+        context.push('');
+        console.log(`  💱 Forex + secteurs injectés dans le contexte`);
     }
 
     // Ajouter le contexte Tavily si disponible
@@ -647,6 +676,30 @@ async function main() {
         }
     }
 
+    // Lire les données DeFi (DefiLlama) si disponibles
+    let defiData = null;
+    const defiPath = join(DATA_DIR, 'defi.json');
+    if (existsSync(defiPath)) {
+        try {
+            defiData = JSON.parse(readFileSync(defiPath, 'utf-8'));
+            console.log(`🦙 DeFi: TVL ${defiData.summary?.total_tvl_formatted}, ${defiData.topProtocols?.length || 0} protocoles`);
+        } catch (err) {
+            console.warn(`⚠ Erreur lecture defi.json: ${err.message}`);
+        }
+    }
+
+    // Lire les données Alpha Vantage si disponibles
+    let avData = null;
+    const avPath = join(DATA_DIR, 'alpha-vantage.json');
+    if (existsSync(avPath)) {
+        try {
+            avData = JSON.parse(readFileSync(avPath, 'utf-8'));
+            console.log(`💱 Forex: ${avData.forex?.length || 0} paires, Secteurs: ${avData.sectors?.length || 0}`);
+        } catch (err) {
+            console.warn(`⚠ Erreur lecture alpha-vantage.json: ${err.message}`);
+        }
+    }
+
     const totalArticles = Object.values(newsData.categories)
         .reduce((sum, arr) => sum + arr.length, 0);
     console.log(`\n📰 ${totalArticles} articles trouvés dans news.json`);
@@ -659,8 +712,8 @@ async function main() {
     const topics = extractTopics(newsData);
     const tavilyResults = await searchTavily(topics);
 
-    // 3. Générer l'article du jour (avec contexte Tavily + macro FRED + Fear & Greed + trending + calendrier)
-    const article = await generateDailyArticle(newsData, tavilyResults, macroData, fngData, cryptoData, marketsData);
+    // 3. Générer l'article du jour (avec contexte Tavily + macro + FNG + trending + calendrier + DeFi + forex)
+    const article = await generateDailyArticle(newsData, tavilyResults, macroData, fngData, cryptoData, marketsData, defiData, avData);
     const articleSaved = saveArticle(article);
 
     // Résumé

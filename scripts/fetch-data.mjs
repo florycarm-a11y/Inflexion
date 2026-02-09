@@ -4,11 +4,13 @@
  * Exécuté par GitHub Actions toutes les 6h
  *
  * APIs utilisées :
- * - CoinGecko (gratuit, pas de clé) → crypto
- * - Finnhub (clé gratuite) → indices boursiers
- * - GNews (clé gratuite) → actualités
- * - FRED (clé gratuite) → données macroéconomiques (inflation, taux, PIB, chômage)
+ * - CoinGecko (gratuit, pas de clé) → crypto + trending
+ * - Finnhub (clé gratuite) → indices boursiers + calendrier économique
+ * - GNews (clé gratuite) → actualités multi-catégories
+ * - FRED (clé gratuite) → données macroéconomiques (10 séries)
  * - Alternative.me (gratuit, pas de clé) → Fear & Greed Index crypto
+ * - Alpha Vantage (clé gratuite) → forex, secteurs, top gainers/losers
+ * - DefiLlama (gratuit, pas de clé) → TVL DeFi, protocoles, yields
  *
  * Les données sont écrites en JSON dans /data/
  * Le frontend les lit au chargement de la page
@@ -515,7 +517,204 @@ async function fetchFearGreed() {
     }
 }
 
-// ─── 6. OR vs BITCOIN (pour le graphique) ──────────────────
+// ─── 6. ALPHA VANTAGE (forex, secteurs, gainers/losers — clé gratuite, 25 req/jour) ──
+async function fetchAlphaVantage() {
+    const API_KEY = process.env.ALPHA_VANTAGE_API_KEY;
+    if (!API_KEY) {
+        console.log('\n⚠️  ALPHA_VANTAGE_API_KEY non définie — données AV ignorées');
+        console.log('   → Clé gratuite sur https://www.alphavantage.co/support/#api-key');
+        return false;
+    }
+
+    console.log('\n💱 Récupération Alpha Vantage (forex + secteurs + movers)...');
+    try {
+        // Forex : EUR/USD, GBP/USD, USD/JPY
+        const forexPairs = [
+            { from: 'EUR', to: 'USD' },
+            { from: 'GBP', to: 'USD' },
+            { from: 'USD', to: 'JPY' }
+        ];
+
+        const forex = [];
+        for (const pair of forexPairs) {
+            try {
+                const data = await fetchJSON(
+                    `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${pair.from}&to_currency=${pair.to}&apikey=${API_KEY}`
+                );
+                const rate = data['Realtime Currency Exchange Rate'];
+                if (rate) {
+                    forex.push({
+                        pair: `${pair.from}/${pair.to}`,
+                        rate: parseFloat(rate['5. Exchange Rate']),
+                        bid: parseFloat(rate['8. Bid Price']),
+                        ask: parseFloat(rate['9. Ask Price']),
+                        updated: rate['6. Last Refreshed']
+                    });
+                    console.log(`  ✓ ${pair.from}/${pair.to}: ${rate['5. Exchange Rate']}`);
+                }
+                await new Promise(r => setTimeout(r, 1500)); // 5 req/min max
+            } catch (err) {
+                console.warn(`  ⚠ ${pair.from}/${pair.to}: ${err.message}`);
+            }
+        }
+
+        // Sector Performance (1 appel = performances de tous les secteurs)
+        let sectors = null;
+        try {
+            const sectorData = await fetchJSON(
+                `https://www.alphavantage.co/query?function=SECTOR&apikey=${API_KEY}`
+            );
+            // Extraire les performances temps réel
+            const rtPerf = sectorData['Rank A: Real-Time Performance'] || {};
+            const dayPerf = sectorData['Rank B: 1 Day Performance'] || {};
+            const weekPerf = sectorData['Rank C: 5 Day Performance'] || {};
+            const monthPerf = sectorData['Rank D: 1 Month Performance'] || {};
+
+            sectors = Object.keys(rtPerf).map(sector => ({
+                name: sector,
+                realtime: parseFloat(rtPerf[sector]) || 0,
+                day: parseFloat(dayPerf[sector]) || 0,
+                week: parseFloat(weekPerf[sector]) || 0,
+                month: parseFloat(monthPerf[sector]) || 0
+            })).sort((a, b) => b.realtime - a.realtime);
+
+            console.log(`  ✓ ${sectors.length} secteurs récupérés`);
+            await new Promise(r => setTimeout(r, 1500));
+        } catch (err) {
+            console.warn('  ⚠ Sector Performance:', err.message);
+        }
+
+        // Top Gainers / Losers / Most Active
+        let topMovers = null;
+        try {
+            const moversData = await fetchJSON(
+                `https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=${API_KEY}`
+            );
+            const mapMover = m => ({
+                ticker: m.ticker,
+                price: parseFloat(m.price),
+                change: parseFloat(m.change_amount),
+                changePct: parseFloat(m.change_percentage?.replace('%', '')),
+                volume: parseInt(m.volume)
+            });
+            topMovers = {
+                gainers: (moversData.top_gainers || []).slice(0, 5).map(mapMover),
+                losers: (moversData.top_losers || []).slice(0, 5).map(mapMover),
+                mostActive: (moversData.most_actively_traded || []).slice(0, 5).map(mapMover)
+            };
+            console.log(`  ✓ Top movers: ${topMovers.gainers.length}G / ${topMovers.losers.length}L / ${topMovers.mostActive.length}A`);
+        } catch (err) {
+            console.warn('  ⚠ Top Gainers/Losers:', err.message);
+        }
+
+        const avData = {
+            updated: new Date().toISOString(),
+            source: 'Alpha Vantage',
+            forex,
+            sectors,
+            topMovers
+        };
+
+        writeJSON('alpha-vantage.json', avData);
+        return true;
+    } catch (err) {
+        console.error('✗ Erreur Alpha Vantage:', err.message);
+        return false;
+    }
+}
+
+// ─── 7. DEFI LLAMA (TVL, protocoles, yields — gratuit, pas de clé) ──
+async function fetchDefiLlama() {
+    console.log('\n🦙 Récupération DeFi (DefiLlama)...');
+    try {
+        // Top protocoles par TVL (gros payload, on filtre côté client)
+        const protocols = await fetchJSON('https://api.llama.fi/protocols');
+        const topProtocols = protocols
+            .filter(p => p.tvl > 0)
+            .sort((a, b) => b.tvl - a.tvl)
+            .slice(0, 20)
+            .map(p => ({
+                name: p.name,
+                symbol: p.symbol || null,
+                tvl: p.tvl,
+                change_1d: p.change_1d || null,
+                change_7d: p.change_7d || null,
+                category: p.category,
+                chains: (p.chains || []).slice(0, 5),
+                logo: p.logo || null,
+                url: p.url || null
+            }));
+
+        console.log(`  ✓ ${topProtocols.length} top protocoles DeFi`);
+
+        // TVL par blockchain
+        await new Promise(r => setTimeout(r, 500));
+        const chains = await fetchJSON('https://api.llama.fi/v2/chains');
+        const topChains = chains
+            .sort((a, b) => b.tvl - a.tvl)
+            .slice(0, 15)
+            .map(c => ({
+                name: c.name,
+                gecko_id: c.gecko_id || null,
+                tvl: c.tvl,
+                tokenSymbol: c.tokenSymbol || null
+            }));
+
+        console.log(`  ✓ ${topChains.length} blockchains par TVL`);
+
+        // Top yields (APY) — gros endpoint, on filtre fortement
+        let topYields = [];
+        try {
+            await new Promise(r => setTimeout(r, 500));
+            const yieldsData = await fetchJSON('https://yields.llama.fi/pools');
+            topYields = (yieldsData.data || [])
+                .filter(y => y.tvlUsd > 10_000_000 && y.apy > 0 && y.stablecoin === true)
+                .sort((a, b) => b.tvlUsd - a.tvlUsd)
+                .slice(0, 15)
+                .map(y => ({
+                    pool: y.pool,
+                    project: y.project,
+                    chain: y.chain,
+                    symbol: y.symbol,
+                    tvl: y.tvlUsd,
+                    apy: Math.round(y.apy * 100) / 100,
+                    apyBase: y.apyBase ? Math.round(y.apyBase * 100) / 100 : null,
+                    apyReward: y.apyReward ? Math.round(y.apyReward * 100) / 100 : null,
+                    stablecoin: y.stablecoin
+                }));
+            console.log(`  ✓ ${topYields.length} top yields stablecoins`);
+        } catch (err) {
+            console.warn('  ⚠ Yields:', err.message);
+        }
+
+        // TVL total (somme des protocoles)
+        const totalTVL = protocols.reduce((sum, p) => sum + (p.tvl || 0), 0);
+
+        const defiData = {
+            updated: new Date().toISOString(),
+            source: 'DefiLlama',
+            totalTVL,
+            topProtocols,
+            topChains,
+            topYields,
+            summary: {
+                total_protocols: protocols.length,
+                total_chains: chains.length,
+                total_tvl_formatted: totalTVL > 1e12
+                    ? `${(totalTVL / 1e12).toFixed(2)}T`
+                    : `${(totalTVL / 1e9).toFixed(2)}B`
+            }
+        };
+
+        writeJSON('defi.json', defiData);
+        return true;
+    } catch (err) {
+        console.error('✗ Erreur DefiLlama:', err.message);
+        return false;
+    }
+}
+
+// ─── 8. OR vs BITCOIN (pour le graphique) ──────────────────
 async function fetchGoldBitcoinChart() {
     console.log('\n📉 Récupération données graphique Or vs Bitcoin...');
     try {
@@ -577,6 +776,8 @@ async function main() {
         news: await fetchNews(),
         macro: await fetchFRED(),
         fearGreed: await fetchFearGreed(),
+        alphaVantage: await fetchAlphaVantage(),
+        defi: await fetchDefiLlama(),
         chart: await fetchGoldBitcoinChart()
     };
 

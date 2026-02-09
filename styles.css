@@ -6620,3 +6620,309 @@ a {
     color: var(--text-primary);
     font-weight: 600;
 }
+
+/* ─── Forex Widget (Alpha Vantage) ─── */
+.forex-rates {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.forex-placeholder,
+.sector-placeholder,
+.movers-placeholder,
+.defi-placeholder,
+.yields-placeholder {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.forex-pair {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.45rem 0.6rem;
+    background: var(--bg-secondary, rgba(0,0,0,0.02));
+    border-radius: var(--radius-sm, 6px);
+}
+
+.forex-pair-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.forex-pair-rate {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ─── Sector Performance ─── */
+.sector-performance {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.sector-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0;
+}
+
+.sector-name {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    min-width: 0;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sector-bar-track {
+    width: 50px;
+    height: 4px;
+    background: var(--bg-secondary, rgba(0,0,0,0.05));
+    border-radius: 2px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.sector-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.3s;
+}
+
+.sector-bar-fill.up { background: #16a34a; }
+.sector-bar-fill.down { background: #dc2626; }
+
+.sector-pct {
+    font-size: 0.68rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    min-width: 3.5rem;
+    text-align: right;
+}
+
+.sector-pct.up { color: #16a34a; }
+.sector-pct.down { color: #dc2626; }
+
+/* ─── Top Movers ─── */
+.top-movers { /* container */ }
+
+.movers-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.movers-col-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid var(--bg-secondary, rgba(0,0,0,0.06));
+}
+
+.gainer-title { color: #16a34a; }
+.loser-title { color: #dc2626; }
+
+.mover-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 0;
+    font-size: 0.72rem;
+}
+
+.mover-ticker {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.mover-pct {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.mover-item.gainer .mover-pct { color: #16a34a; }
+.mover-item.loser .mover-pct { color: #dc2626; }
+
+/* ─── DeFi Section (DefiLlama) ─── */
+.defi-summary { margin-bottom: 0.5rem; }
+
+.defi-stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+.defi-stat-chip {
+    font-size: 0.68rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 100px;
+    background: var(--bg-secondary, rgba(0,0,0,0.03));
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.defi-stat-chip strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.defi-protocols {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.defi-protocol-row {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.5rem;
+    background: var(--bg-secondary, rgba(0,0,0,0.02));
+    border-radius: var(--radius-sm, 6px);
+    transition: background var(--transition-fast);
+}
+
+.defi-protocol-row:hover {
+    background: var(--bg-tertiary, rgba(0,0,0,0.05));
+}
+
+.defi-proto-rank {
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    opacity: 0.6;
+    min-width: 1rem;
+    text-align: center;
+}
+
+.defi-proto-logo {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.defi-proto-logo-placeholder {
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    width: 20px;
+    text-align: center;
+}
+
+.defi-proto-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.02rem;
+}
+
+.defi-proto-name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.defi-proto-category {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+}
+
+.defi-proto-tvl {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 0.02rem;
+    flex-shrink: 0;
+}
+
+.defi-proto-value {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.defi-proto-change {
+    font-size: 0.62rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.defi-proto-change.up { color: #16a34a; }
+.defi-proto-change.down { color: #dc2626; }
+
+/* ─── Yields / APY ─── */
+.defi-yields {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.yield-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 0.5rem;
+    background: var(--bg-secondary, rgba(0,0,0,0.02));
+    border-radius: var(--radius-sm, 6px);
+    transition: background var(--transition-fast);
+}
+
+.yield-row:hover {
+    background: var(--bg-tertiary, rgba(0,0,0,0.05));
+}
+
+.yield-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.02rem;
+    min-width: 0;
+    flex: 1;
+}
+
+.yield-project {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.yield-detail {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+}
+
+.yield-data {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 0.02rem;
+    flex-shrink: 0;
+}
+
+.yield-apy {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #16a34a;
+    font-variant-numeric: tabular-nums;
+}
+
+.yield-tvl {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+}

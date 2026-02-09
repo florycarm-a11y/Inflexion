@@ -24,6 +24,8 @@ const DataLoader = (function () {
             macro:   'macro.json',
             fearGreed: 'fear-greed.json',
             chart:   'chart-gold-btc.json',
+            alphaVantage: 'alpha-vantage.json',
+            defi:    'defi.json',
             meta:    '_meta.json',
             articleDuJour: 'article-du-jour.json'
         },
@@ -756,6 +758,135 @@ const DataLoader = (function () {
     /**
      * Applique toutes les mises à jour au DOM
      */
+    // ─── Forex & Secteurs (Alpha Vantage) ────────────────────
+    function updateForexSectors() {
+        const av = _cache.alphaVantage;
+        if (!av) return;
+
+        // Forex rates
+        const forexEl = document.getElementById('forex-rates');
+        if (forexEl && av.forex && av.forex.length > 0) {
+            forexEl.innerHTML = av.forex.map(fx => `
+                <div class="forex-pair">
+                    <span class="forex-pair-name">${fx.pair}</span>
+                    <span class="forex-pair-rate">${fx.rate.toFixed(4)}</span>
+                </div>
+            `).join('');
+        }
+
+        // Sector Performance
+        const sectorEl = document.getElementById('sector-performance');
+        if (sectorEl && av.sectors && av.sectors.length > 0) {
+            sectorEl.innerHTML = av.sectors.map(s => {
+                const pct = s.realtime;
+                const cls = pct >= 0 ? 'up' : 'down';
+                const sign = pct >= 0 ? '+' : '';
+                return `
+                    <div class="sector-bar">
+                        <span class="sector-name">${s.name}</span>
+                        <div class="sector-bar-track">
+                            <div class="sector-bar-fill ${cls}" style="width:${Math.min(Math.abs(pct) * 10, 100)}%"></div>
+                        </div>
+                        <span class="sector-pct ${cls}">${sign}${pct.toFixed(2)}%</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Top Movers
+        const moversEl = document.getElementById('top-movers');
+        if (moversEl && av.topMovers) {
+            const { gainers, losers } = av.topMovers;
+            let html = '<div class="movers-columns">';
+            html += '<div class="movers-col"><h4 class="movers-col-title gainer-title">▲ Hausse</h4>';
+            html += (gainers || []).map(g => `
+                <div class="mover-item gainer">
+                    <span class="mover-ticker">${g.ticker}</span>
+                    <span class="mover-pct">+${g.changePct.toFixed(1)}%</span>
+                </div>
+            `).join('');
+            html += '</div>';
+            html += '<div class="movers-col"><h4 class="movers-col-title loser-title">▼ Baisse</h4>';
+            html += (losers || []).map(l => `
+                <div class="mover-item loser">
+                    <span class="mover-ticker">${l.ticker}</span>
+                    <span class="mover-pct">${l.changePct.toFixed(1)}%</span>
+                </div>
+            `).join('');
+            html += '</div></div>';
+            moversEl.innerHTML = html;
+        }
+    }
+
+    // ─── DeFi (DefiLlama) ──────────────────────────────────
+    function updateDefiSection() {
+        const defi = _cache.defi;
+        if (!defi) return;
+
+        // DeFi Summary
+        const summaryEl = document.getElementById('defi-summary');
+        if (summaryEl && defi.summary) {
+            summaryEl.innerHTML = `
+                <div class="defi-stat-row">
+                    <span class="defi-stat-chip">TVL Total <strong>${defi.summary.total_tvl_formatted}</strong></span>
+                    <span class="defi-stat-chip">${defi.summary.total_protocols} protocoles</span>
+                    <span class="defi-stat-chip">${defi.summary.total_chains} chaînes</span>
+                </div>
+            `;
+        }
+
+        // Top Protocols
+        const protocolsEl = document.getElementById('defi-protocols');
+        if (protocolsEl && defi.topProtocols && defi.topProtocols.length > 0) {
+            protocolsEl.innerHTML = defi.topProtocols.slice(0, 10).map((p, i) => {
+                const tvlStr = p.tvl > 1e9
+                    ? `$${(p.tvl / 1e9).toFixed(2)}B`
+                    : `$${(p.tvl / 1e6).toFixed(0)}M`;
+                const change1d = p.change_1d;
+                const changeCls = change1d > 0 ? 'up' : change1d < 0 ? 'down' : '';
+                const changeStr = change1d != null
+                    ? `<span class="defi-proto-change ${changeCls}">${change1d > 0 ? '+' : ''}${change1d.toFixed(1)}%</span>`
+                    : '';
+                return `
+                    <div class="defi-protocol-row">
+                        <span class="defi-proto-rank">${i + 1}</span>
+                        ${p.logo ? `<img src="${p.logo}" class="defi-proto-logo" alt="${p.name}" onerror="this.style.display='none'">` : '<span class="defi-proto-logo-placeholder">🔷</span>'}
+                        <div class="defi-proto-info">
+                            <span class="defi-proto-name">${p.name}</span>
+                            <span class="defi-proto-category">${p.category || ''}</span>
+                        </div>
+                        <div class="defi-proto-tvl">
+                            <span class="defi-proto-value">${tvlStr}</span>
+                            ${changeStr}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Top Yields (stablecoins)
+        const yieldsEl = document.getElementById('defi-yields');
+        if (yieldsEl && defi.topYields && defi.topYields.length > 0) {
+            yieldsEl.innerHTML = defi.topYields.slice(0, 8).map(y => {
+                const tvlStr = y.tvl > 1e9
+                    ? `$${(y.tvl / 1e9).toFixed(1)}B`
+                    : `$${(y.tvl / 1e6).toFixed(0)}M`;
+                return `
+                    <div class="yield-row">
+                        <div class="yield-info">
+                            <span class="yield-project">${y.project}</span>
+                            <span class="yield-detail">${y.symbol} · ${y.chain}</span>
+                        </div>
+                        <div class="yield-data">
+                            <span class="yield-apy">${y.apy.toFixed(2)}%</span>
+                            <span class="yield-tvl">${tvlStr}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+    }
+
     function updateDOM() {
         if (!_initialized || !_usingLiveData) return;
 
@@ -767,6 +898,8 @@ const DataLoader = (function () {
         updateMacroIndicators();
         updateFearGreedWidget();
         updateEconomicCalendar();
+        updateForexSectors();
+        updateDefiSection();
         updateGoldBitcoinChart();
         updateArticleDuJour();
         updateLatestNewsWithRubriques();
@@ -786,6 +919,8 @@ const DataLoader = (function () {
         getMacro:   () => _cache.macro,
         getFearGreed: () => _cache.fearGreed,
         getChart:   () => _cache.chart,
+        getAlphaVantage: () => _cache.alphaVantage,
+        getDefi:    () => _cache.defi,
         getMeta:    () => _cache.meta,
         getArticleDuJour: () => _cache.articleDuJour,
 
