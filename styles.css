@@ -1,5 +1,5 @@
 /* ============================================
-   Inflexion — Editorial Professional Design
+   Inflexion â Editorial Professional Design
    Inspired by The Economist, FT, McKinsey, HBR
    ============================================ */
 
@@ -59,7 +59,7 @@ button:focus-visible,
 }
 
 :root {
-    /* Professional palette — 2 accent colors only */
+    /* Professional palette â 2 accent colors only */
     --accent: #C41E3A;
     --accent-dark: #9B1B30;
     --accent-light: #FDF2F2;
@@ -99,11 +99,11 @@ button:focus-visible,
     --font-serif: 'Georgia', 'Times New Roman', Times, serif;
     --font-sans: 'Plus Jakarta Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-    /* No gradients — solid accent used everywhere */
+    /* No gradients â solid accent used everywhere */
     --gradient-main: var(--accent);
     --gradient-accent: var(--accent);
 
-    /* ── Typography Scale ── */
+    /* ââ Typography Scale ââ */
     --fs-xs: 0.7rem;
     --fs-sm: 0.82rem;
     --fs-base: 1rem;
@@ -120,7 +120,7 @@ button:focus-visible,
     --lh-normal: 1.5;
     --lh-relaxed: 1.7;
 
-    /* ── Spacing ── */
+    /* ââ Spacing ââ */
     --space-xs: 0.25rem;
     --space-sm: 0.5rem;
     --space-md: 1rem;
@@ -129,25 +129,25 @@ button:focus-visible,
     --space-2xl: 3rem;
     --space-3xl: 4rem;
 
-    /* ── Shadows ── */
+    /* ââ Shadows ââ */
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
     --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
     --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
     --shadow-header: 0 2px 8px rgba(0,0,0,0.1);
 
-    /* ── Border Radius ── */
+    /* ââ Border Radius ââ */
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
     --radius-xl: 16px;
     --radius-full: 9999px;
 
-    /* ── Transitions ── */
+    /* ââ Transitions ââ */
     --transition-fast: 0.15s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
 
-    /* ── Layout ── */
+    /* ââ Layout ââ */
     --header-height: 60px;
     --header-height-scrolled: 48px;
     --content-max-width: 1240px;
@@ -174,7 +174,7 @@ a {
 }
 
 /* ============================================
-   Header — Clean Editorial
+   Header â Clean Editorial
    ============================================ */
 .header {
     background: var(--bg-primary);
@@ -511,7 +511,7 @@ a {
 }
 
 /* ============================================
-   News Ticker — Solid Bar
+   News Ticker â Solid Bar
    ============================================ */
 .news-ticker {
     background: var(--navy);
@@ -564,7 +564,7 @@ a {
 }
 
 /* ============================================
-   Hero Section — Clean, Typographic
+   Hero Section â Clean, Typographic
    ============================================ */
 .hero {
     background: var(--bg-primary);
@@ -641,7 +641,7 @@ a {
 }
 
 /* ============================================
-   Section Headers — Minimal Rule
+   Section Headers â Minimal Rule
    ============================================ */
 .main-content {
     padding: 2.5rem 0;
@@ -734,7 +734,7 @@ a {
 }
 
 /* ============================================
-   News Grid — Clean Cards
+   News Grid â Clean Cards
    ============================================ */
 .news-grid {
     display: grid;
@@ -857,7 +857,7 @@ a {
     border: 1px solid;
 }
 
-/* Muted, professional tags — borders not fills */
+/* Muted, professional tags â borders not fills */
 .tag.geopolitics { color: var(--accent); border-color: var(--accent); background: none; }
 .tag.markets { color: var(--teal); border-color: var(--teal); background: none; }
 .tag.crypto { color: var(--navy-light); border-color: var(--navy-light); background: none; }
@@ -886,7 +886,7 @@ a {
 }
 
 /* ============================================
-   Top Stories — Editorial Layout
+   Top Stories â Editorial Layout
    ============================================ */
 .top-stories-grid {
     display: grid;
@@ -975,7 +975,7 @@ a {
     margin-top: 2.5rem;
 }
 
-/* Sidebar — sticky on desktop */
+/* Sidebar â sticky on desktop */
 .col-side {
     position: sticky;
     top: 5rem;
@@ -1032,7 +1032,7 @@ a {
     font-weight: 500;
 }
 
-/* Single hover style — professional */
+/* Single hover style â professional */
 .sidebar-nav li a:hover {
     border-left-color: var(--accent);
     color: var(--text-primary);
@@ -1336,7 +1336,7 @@ a {
 }
 
 /* ============================================
-   Analysis Section — Full Articles
+   Analysis Section â Full Articles
    ============================================ */
 .analysis-full {
     padding: 2.5rem 0;
@@ -1740,7 +1740,7 @@ a {
 }
 
 /* ============================================
-   Footer — Dark, Clean
+   Footer â Dark, Clean
    ============================================ */
 .footer {
     background: var(--navy);
@@ -1822,7 +1822,7 @@ a {
    ============================================ */
 
 /* ============================================
-   NEW UX COMPONENTS — Feb 2026
+   NEW UX COMPONENTS â Feb 2026
    ============================================ */
 
 /* --- Hero CTA Button --- */
@@ -2084,7 +2084,7 @@ a {
 }
 
 /* ============================================
-   Chart Section — Data Visualization
+   Chart Section â Data Visualization
    ============================================ */
 .chart-section {
     background: var(--bg-secondary);
@@ -2510,7 +2510,7 @@ a {
 }
 
 /* ============================================
-   Reduced Motion — Accessibility
+   Reduced Motion â Accessibility
    ============================================ */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -2547,11 +2547,11 @@ a {
 
 
 /* =============================================
-   VAGUE 1 — ENHANCED MOBILE RESPONSIVE
+   VAGUE 1 â ENHANCED MOBILE RESPONSIVE
    ============================================= */
 
 @media (max-width: 768px) {
-    /* ── Mobile Header ── */
+    /* ââ Mobile Header ââ */
     .header-top {
         padding: 0.4rem 0.75rem;
     }
@@ -2570,7 +2570,7 @@ a {
         padding: 0.3rem 0.6rem;
     }
 
-    /* ── Hero Mobile ── */
+    /* ââ Hero Mobile ââ */
     .hero {
         padding: 2rem 1rem;
         min-height: auto;
@@ -2584,7 +2584,7 @@ a {
         font-size: var(--fs-sm);
     }
 
-    /* ── Top Stories Stack ── */
+    /* ââ Top Stories Stack ââ */
     .top-stories-grid {
         grid-template-columns: 1fr;
     }
@@ -2593,7 +2593,7 @@ a {
         padding: var(--space-md);
     }
 
-    /* ── Chart Container ── */
+    /* ââ Chart Container ââ */
     .chart-container {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -2601,7 +2601,7 @@ a {
         padding: 0 0.5rem;
     }
 
-    /* ── Sidebar collapse ── */
+    /* ââ Sidebar collapse ââ */
     .two-col {
         grid-template-columns: 1fr;
     }
@@ -2610,7 +2610,7 @@ a {
         margin-top: var(--space-xl);
     }
 
-    /* ── Newsletter Mobile ── */
+    /* ââ Newsletter Mobile ââ */
     .newsletter-form {
         flex-direction: column;
         gap: var(--space-sm);
@@ -2620,14 +2620,14 @@ a {
         width: 100%;
     }
 
-    /* ── Footer Mobile ── */
+    /* ââ Footer Mobile ââ */
     .footer .footer-content {
         flex-direction: column;
         gap: var(--space-lg);
         text-align: center;
     }
 
-    /* ── Section spacing ── */
+    /* ââ Section spacing ââ */
     .section-title {
         font-size: var(--fs-lg);
     }
@@ -2637,7 +2637,7 @@ a {
 }
 
 @media (max-width: 480px) {
-    /* ── Extra-small tweaks ── */
+    /* ââ Extra-small tweaks ââ */
     .hero .hero-title {
         font-size: var(--fs-lg);
     }
@@ -2655,4 +2655,125 @@ a {
     .top-story-main h3 {
         font-size: var(--fs-sm);
     }
+}
+
+
+/* ============================================
+   Demandes 13-16 : Cartes A la une redesign
+   ============================================ */
+
+/* #13 — Cards avec bande de couleur degradee, radius 12px, ombre */
+.top-story {
+    border-left: none;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.top-story::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    transition: height var(--transition-normal);
+}
+
+/* Bandes degradees par source */
+.top-story:nth-child(1)::before {
+    background: linear-gradient(to right, #C41E3A, #FF6B6B);
+}
+
+.top-story:nth-child(2)::before {
+    background: linear-gradient(to right, #1E40AF, #3B82F6);
+}
+
+.top-story:nth-child(3)::before {
+    background: linear-gradient(to right, #B45309, #F59E0B);
+}
+
+.top-story-main {
+    border-left: none;
+}
+
+/* #14 — Effet hover : translateY(-6px), ombre intensifiee, bande 6->8px */
+.top-story:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-left: none;
+    background: var(--bg-primary);
+}
+
+.top-story:nth-child(2):hover,
+.top-story:nth-child(3):hover {
+    border-left: none;
+    background: var(--bg-primary);
+}
+
+.top-story:hover::before {
+    height: 8px;
+}
+
+/* #15 — Badge source plus visible avec couleur par source */
+.top-story .source-name {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.8px;
+    margin-bottom: 0.75rem;
+    text-decoration: none;
+}
+
+.top-story:nth-child(1) .source-name {
+    background: #FEE2E2;
+    color: #991B1B;
+}
+
+.top-story:nth-child(2) .source-name {
+    background: #DBEAFE;
+    color: #1E40AF;
+}
+
+.top-story:nth-child(3) .source-name {
+    background: #FEF3C7;
+    color: #92400E;
+}
+
+/* #16 — Footer de carte : date a gauche, lien Lire a droite, border-top */
+.top-story p {
+    flex-grow: 1;
+}
+
+.top-story .news-time {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.top-story .news-time::after {
+    content: 'Lire \2192';
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--navy-light);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color var(--transition-fast);
+}
+
+.top-story:hover .news-time::after {
+    color: var(--accent);
 }
