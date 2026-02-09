@@ -226,6 +226,13 @@ function initMenuOverlay() {
             menuTrigger.focus();
         }
     });
+
+    // Close drawer on backdrop click (desktop)
+    nav.addEventListener('click', function(e) {
+        if (e.target === nav) {
+            closeMenu();
+        }
+    });
 }
 
 // --- Home ---
