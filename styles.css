@@ -2539,7 +2539,7 @@ a {
                 background var(--transition-normal);
 }
 
-.header-top.scrolled {
+.header.scrolled .header-top {
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
     box-shadow: var(--shadow-header);
@@ -2552,16 +2552,16 @@ a {
     transition: height var(--transition-normal);
 }
 
-.header-top.scrolled .logo-img {
+.header.scrolled .logo-img {
     height: 26px;
 }
 
-.header-top.scrolled .desktop-nav-link {
+.header.scrolled .desktop-nav-link {
     font-size: 0.76rem;
     padding: 0.2rem 0.45rem;
 }
 
-.header-top.scrolled .market-status {
+.header.scrolled .market-status {
     font-size: 0.7rem;
     padding: 0.15rem 0.5rem;
 }
