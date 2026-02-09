@@ -1872,9 +1872,7 @@ a {
     .desktop-nav {
         display: flex;
     }
-    .menu-trigger {
-        display: none;
-    }
+    /* .menu-trigger display:none removed — see Demande 39 */
     .header-top {
         gap: 1rem;
     }
@@ -2786,7 +2784,7 @@ a {
 @media (min-width: 769px) {
     /* Afficher le hamburger sur desktop */
     .menu-trigger {
-        display: flex;
+        display: flex !important;
     }
 
     /* Overlay = backdrop semi-transparent sur desktop */
@@ -5591,7 +5589,6 @@ a {
     align-items: center;
     font-size: 0.78rem;
     color: var(--text-muted);
-}
 
 .top-story .news-time::after {
     content: 'Lire \2192';
