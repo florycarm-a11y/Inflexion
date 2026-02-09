@@ -217,8 +217,7 @@ a {
 }
 
 .header.scrolled .logo-img {
-    height: 26px;
-    transition: height var(--transition-normal);
+    height: 32px;
 }
 
 .header.scrolled .desktop-nav-link {
@@ -239,6 +238,7 @@ a {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    margin-left: -8px;
 }
 
 .header-controls {
@@ -312,9 +312,10 @@ a {
 }
 
 .logo-img {
-    height: 44px;
+    height: 54px;
     width: auto;
     display: block;
+    transition: height var(--transition-normal);
 }
 
 .logo:hover {
@@ -947,12 +948,12 @@ a {
 .top-story-main {
     border-left-width: 4px;
     padding: 1.5rem;
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
     border-left-color: var(--accent);
 }
 
 .top-story-main:hover {
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
 }
 
 .top-story-main h3 {
@@ -2015,7 +2016,7 @@ a {
     }
 
     .logo-img {
-        height: 34px;
+        height: 42px;
     }
 
     .page-title {
@@ -2570,11 +2571,11 @@ a {
     }
 
     /* ── Hero Mobile ── */
-    .hero-section {
+    .hero {
         padding: 2rem 1rem;
         min-height: auto;
     }
-    .hero-section h1 {
+    .hero .hero-title {
         font-size: var(--fs-xl);
         line-height: var(--lh-tight);
     }
@@ -2583,17 +2584,12 @@ a {
         font-size: var(--fs-sm);
     }
 
-    /* ── News Cards Stack ── */
-    .story-card {
-        flex-direction: column;
+    /* ── Top Stories Stack ── */
+    .top-stories-grid {
+        grid-template-columns: 1fr;
     }
-    .story-card img,
-    .story-card .story-img {
-        width: 100%;
-        height: 180px;
-        border-radius: var(--radius-md) var(--radius-md) 0 0;
-    }
-    .story-card .story-content {
+    .top-story,
+    .top-story-main {
         padding: var(--space-md);
     }
 
@@ -2606,10 +2602,10 @@ a {
     }
 
     /* ── Sidebar collapse ── */
-    .content-layout {
+    .two-col {
         grid-template-columns: 1fr;
     }
-    .sidebar {
+    .col-side {
         order: 2;
         margin-top: var(--space-xl);
     }
@@ -2625,7 +2621,7 @@ a {
     }
 
     /* ── Footer Mobile ── */
-    .site-footer .footer-content {
+    .footer .footer-content {
         flex-direction: column;
         gap: var(--space-lg);
         text-align: center;
@@ -2635,17 +2631,17 @@ a {
     .section-title {
         font-size: var(--fs-lg);
     }
-    .manifesto-section {
+    .manifesto {
         padding: var(--space-xl) var(--space-md);
     }
 }
 
 @media (max-width: 480px) {
     /* ── Extra-small tweaks ── */
-    .hero-section h1 {
+    .hero .hero-title {
         font-size: var(--fs-lg);
     }
-    .hero-section {
+    .hero {
         padding: 1.5rem 0.75rem;
     }
     .market-status {
@@ -2655,7 +2651,8 @@ a {
     .news-ticker {
         font-size: var(--fs-xs);
     }
-    .story-card .story-content h3 {
+    .top-story h3,
+    .top-story-main h3 {
         font-size: var(--fs-sm);
     }
 }
