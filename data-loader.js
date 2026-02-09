@@ -21,8 +21,10 @@ const DataLoader = (function () {
             crypto:  'crypto.json',
             markets: 'markets.json',
             news:    'news.json',
+            macro:   'macro.json',
             chart:   'chart-gold-btc.json',
-            meta:    '_meta.json'
+            meta:    '_meta.json',
+            articleDuJour: 'article-du-jour.json'
         },
         // Durée max avant de considérer les données comme périmées (12h)
         STALE_THRESHOLD_MS: 12 * 60 * 60 * 1000,
@@ -123,15 +125,17 @@ const DataLoader = (function () {
         console.log('[DataLoader] Initialisation...');
 
         // Charger tous les fichiers en parallèle
-        const [crypto, markets, news, chart, meta] = await Promise.all([
+        const [crypto, markets, news, macro, chart, meta, articleDuJour] = await Promise.all([
             loadJSON(CONFIG.FILES.crypto),
             loadJSON(CONFIG.FILES.markets),
             loadJSON(CONFIG.FILES.news),
+            loadJSON(CONFIG.FILES.macro),
             loadJSON(CONFIG.FILES.chart),
-            loadJSON(CONFIG.FILES.meta)
+            loadJSON(CONFIG.FILES.meta),
+            loadJSON(CONFIG.FILES.articleDuJour)
         ]);
 
-        _cache = { crypto, markets, news, chart, meta };
+        _cache = { crypto, markets, news, macro, chart, meta, articleDuJour };
         _initialized = true;
 
         // Déterminer si on utilise des données live
@@ -306,6 +310,233 @@ const DataLoader = (function () {
         container.appendChild(badge);
     }
 
+    // ─── Indicateurs macroéconomiques (FRED) ──────────────
+
+    /**
+     * Affiche les indicateurs macroéconomiques FRED
+     */
+    function updateMacroIndicators() {
+        if (!_cache.macro?.indicators?.length) return;
+
+        var container = document.getElementById('macro-indicators');
+        if (!container) return;
+
+        var indicators = _cache.macro.indicators;
+
+        // Icônes par série
+        var icons = {
+            'CPIAUCSL': '📊',
+            'DFF':      '🏦',
+            'GDP':      '💰',
+            'UNRATE':   '👷',
+            'DGS10':    '📜',
+            'DTWEXBGS': '💵'
+        };
+
+        container.innerHTML = indicators.map(function(ind) {
+            var icon = icons[ind.id] || '📈';
+            var displayValue;
+
+            // Formater la valeur selon le type
+            if (ind.unit === '%') {
+                displayValue = ind.value.toFixed(2) + '%';
+            } else if (ind.unit === 'Mrd $') {
+                displayValue = '$' + (ind.value / 1000).toFixed(1) + 'T';
+            } else if (ind.unit === 'index') {
+                displayValue = ind.value.toFixed(1);
+            } else {
+                displayValue = ind.value.toFixed(2);
+            }
+
+            // Variation
+            var changeHTML = '';
+            if (ind.change !== null) {
+                var isPositive = ind.change >= 0;
+                var changeSign = isPositive ? '+' : '';
+                var changeLabel = ind.change_type === 'yoy' ? ' a/a' : '';
+
+                // Pour l'inflation et le chômage, une hausse est "négative" (mauvaise)
+                var invertColor = (ind.id === 'CPIAUCSL' || ind.id === 'UNRATE');
+                var colorClass = invertColor
+                    ? (isPositive ? 'macro-change-negative' : 'macro-change-positive')
+                    : (isPositive ? 'macro-change-positive' : 'macro-change-negative');
+
+                changeHTML = '<span class="macro-change ' + colorClass + '">' +
+                    changeSign + ind.change.toFixed(2) +
+                    (ind.change_type === 'yoy' ? '%' : '') +
+                    changeLabel + '</span>';
+            }
+
+            return '<div class="macro-card">' +
+                '<div class="macro-card-icon">' + icon + '</div>' +
+                '<div class="macro-card-body">' +
+                    '<span class="macro-card-label">' + ind.label + '</span>' +
+                    '<span class="macro-card-value">' + displayValue + '</span>' +
+                    changeHTML +
+                '</div>' +
+            '</div>';
+        }).join('');
+
+        // Ajouter indicateur de fraîcheur
+        var macroSection = document.getElementById('macro-section');
+        if (macroSection) {
+            addFreshnessIndicator(macroSection, _cache.macro.updated);
+        }
+    }
+
+    // ─── Article du jour ──────────────────────────────────
+
+    /**
+     * Affiche l'article de synthèse généré par IA
+     */
+    function updateArticleDuJour() {
+        const article = _cache.articleDuJour;
+        const container = document.getElementById('article-du-jour');
+        if (!container) return;
+
+        if (!article || !article.titre) {
+            // Laisser le placeholder
+            return;
+        }
+
+        // Convertir le Markdown basique en HTML
+        let contenuHTML = (article.contenu || '')
+            .replace(/## (.+)/g, '<h3 class="article-section-title">$1</h3>')
+            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\n\n/g, '</p><p>')
+            .replace(/\n/g, '<br>');
+        contenuHTML = '<p>' + contenuHTML + '</p>';
+
+        // Tags
+        const tagsHTML = (article.tags || [])
+            .map(function(t) { return '<span class="article-tag">' + t + '</span>'; })
+            .join('');
+
+        // Points clés
+        const pointsClesHTML = (article.points_cles || [])
+            .map(function(p) { return '<li>' + p + '</li>'; })
+            .join('');
+
+        // Sources (Tavily)
+        var sourcesHTML = '';
+        if (article.sources && article.sources.length > 0) {
+            sourcesHTML = '<div class="article-du-jour-sources"><h4>Sources</h4><ul>' +
+                article.sources.map(function(s) {
+                    return '<li><a href="' + s.url + '" target="_blank" rel="noopener">' +
+                        (s.titre || s.domaine) + '</a> <span class="source-domain">(' + s.domaine + ')</span></li>';
+                }).join('') + '</ul></div>';
+        }
+
+        var sourcesLabel = article.sources && article.sources.length > 0
+            ? 'GNews + Tavily (' + article.sources.length + ' sources)'
+            : 'GNews';
+
+        container.innerHTML = '' +
+            '<div class="article-du-jour-header">' +
+                '<div class="article-du-jour-badge">✍️ Synthèse IA</div>' +
+                '<time class="article-du-jour-date">' + formatArticleDate(article.date) + '</time>' +
+            '</div>' +
+            '<h2 class="article-du-jour-title">' + article.titre + '</h2>' +
+            (article.sous_titre ? '<p class="article-du-jour-subtitle">' + article.sous_titre + '</p>' : '') +
+            (pointsClesHTML ? '<div class="article-du-jour-points-cles"><h4>Points clés</h4><ul>' + pointsClesHTML + '</ul></div>' : '') +
+            '<div class="article-du-jour-content">' + contenuHTML + '</div>' +
+            sourcesHTML +
+            (tagsHTML ? '<div class="article-du-jour-tags">' + tagsHTML + '</div>' : '') +
+            '<div class="article-du-jour-footer">' +
+                '<span class="article-du-jour-model">Généré par Claude (Haiku) · Sources : ' + sourcesLabel + '</span>' +
+            '</div>';
+    }
+
+    function formatArticleDate(dateStr) {
+        if (!dateStr) return '';
+        var d = new Date(dateStr + 'T00:00:00');
+        var months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+                      'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+        return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+    }
+
+    // ─── Filtrage par rubrique ──────────────────────────────
+
+    /**
+     * Initialise les boutons de filtrage par rubrique
+     */
+    function initRubriqueFilters() {
+        var filtersContainer = document.getElementById('rubrique-filters');
+        if (!filtersContainer) return;
+
+        var buttons = filtersContainer.querySelectorAll('.rubrique-filter');
+        buttons.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                // Mettre à jour l'état actif
+                buttons.forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+
+                // Filtrer les articles
+                var rubrique = btn.getAttribute('data-rubrique');
+                filterNewsByRubrique(rubrique);
+            });
+        });
+    }
+
+    /**
+     * Filtre les articles affichés par rubrique
+     */
+    function filterNewsByRubrique(rubrique) {
+        var newsItems = document.querySelectorAll('#latest-news .news-list-item');
+        newsItems.forEach(function(item) {
+            if (rubrique === 'all') {
+                item.style.display = '';
+            } else {
+                var itemRubrique = item.getAttribute('data-rubrique');
+                item.style.display = (itemRubrique === rubrique) ? '' : 'none';
+            }
+        });
+    }
+
+    /**
+     * Met à jour la section "Dernières actualités" avec les données enrichies (rubriques)
+     */
+    function updateLatestNewsWithRubriques() {
+        if (!_cache.news?.categories) return;
+
+        var ln = document.getElementById('latest-news');
+        if (!ln) return;
+
+        // Collecter tous les articles avec leur rubrique
+        var allArticles = [];
+        Object.keys(_cache.news.categories).forEach(function(cat) {
+            var articles = _cache.news.categories[cat];
+            articles.forEach(function(a) {
+                allArticles.push(a);
+            });
+        });
+
+        // Trier par date de publication (plus récent en premier)
+        allArticles.sort(function(a, b) {
+            return new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0);
+        });
+
+        // Générer le HTML
+        ln.innerHTML = allArticles.slice(0, 15).map(function(n) {
+            var rubriqueAttr = n.rubrique || '';
+            var rubriqueLabel = n.rubrique_label || '';
+            var rubriqueEmoji = n.rubrique_emoji || '';
+            var rubriqueTag = rubriqueLabel
+                ? '<span class="rubrique-badge rubrique-' + rubriqueAttr + '">' + rubriqueEmoji + ' ' + rubriqueLabel + '</span>'
+                : '';
+
+            return '<article class="news-list-item" data-rubrique="' + rubriqueAttr + '">' +
+                '<div class="news-list-source">' +
+                    '<a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" class="source-name">' + (n.source || '') + '</a>' +
+                    '<time class="news-time">' + (n.time || '') + '</time>' +
+                    rubriqueTag +
+                '</div>' +
+                '<h3><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer">' + (n.title || '') + '</a></h3>' +
+                '<p>' + (n.description || '') + '</p>' +
+            '</article>';
+        }).join('');
+    }
+
     /**
      * Applique toutes les mises à jour au DOM
      */
@@ -315,7 +546,11 @@ const DataLoader = (function () {
         console.log('[DataLoader] Mise à jour du DOM...');
         updateMarketSidebar();
         updateCryptoSection();
+        updateMacroIndicators();
         updateGoldBitcoinChart();
+        updateArticleDuJour();
+        updateLatestNewsWithRubriques();
+        initRubriqueFilters();
         console.log('[DataLoader] ✓ DOM mis à jour');
     }
 
@@ -328,8 +563,10 @@ const DataLoader = (function () {
         getCrypto:  () => _cache.crypto,
         getMarkets: () => _cache.markets,
         getNews:    () => _cache.news,
+        getMacro:   () => _cache.macro,
         getChart:   () => _cache.chart,
         getMeta:    () => _cache.meta,
+        getArticleDuJour: () => _cache.articleDuJour,
 
         // État
         isInitialized: () => _initialized,

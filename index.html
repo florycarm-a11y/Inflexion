@@ -108,6 +108,17 @@
                             <button type="submit" class="search-btn">Rechercher</button>
                         </form>
                     </div>
+                    <!-- Auth button -->
+                    <div class="header-auth">
+                        <button class="auth-btn" id="auth-btn">Se connecter</button>
+                        <div class="user-menu" id="user-menu" style="display:none;">
+                            <div class="user-dropdown" id="user-dropdown">
+                                <span id="user-name"></span>
+                                <a href="#watchlist-section">Ma Watchlist</a>
+                                <button id="logout-btn">Déconnexion</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -206,6 +217,19 @@
                 <p class="chart-insight">L'« or numérique » invalidé : l'or surperforme le BTC de 34 points depuis janvier. Les banques centrales achètent 585 tonnes par trimestre tandis que les ETF crypto enregistrent 1,7 Md$ de sorties.</p>
             </section>
 
+            <!-- Article du jour (généré par IA) -->
+            <section class="section article-du-jour-section" id="article-du-jour-section">
+                <div class="section-header">
+                    <h2 class="section-title">Article du jour</h2>
+                    <span class="section-subtitle">Synthèse IA — mise à jour quotidienne</span>
+                </div>
+                <article class="article-du-jour" id="article-du-jour" aria-live="polite">
+                    <div class="article-du-jour-placeholder">
+                        <p class="article-du-jour-empty">L'article de synthèse sera disponible prochainement.</p>
+                    </div>
+                </article>
+            </section>
+
             <!-- Top Stories -->
             <section class="section">
                 <div class="section-header">
@@ -226,6 +250,14 @@
                     <div class="section-header">
                         <h2 class="section-title">Dernières actualités</h2>
                     </div>
+                    <!-- Filtrage par rubrique -->
+                    <div class="rubrique-filters" id="rubrique-filters" role="toolbar" aria-label="Filtrer par rubrique">
+                        <button class="rubrique-filter active" data-rubrique="all">Toutes</button>
+                        <button class="rubrique-filter" data-rubrique="geopolitique">🌍 Géopolitique</button>
+                        <button class="rubrique-filter" data-rubrique="marches">📈 Marchés</button>
+                        <button class="rubrique-filter" data-rubrique="crypto">₿ Crypto</button>
+                        <button class="rubrique-filter" data-rubrique="matieres_premieres">⛏️ Mat. Premières</button>
+                    </div>
                     <div class="news-list" id="latest-news" aria-live="polite">
                         <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des dernières actualités...</span></div>
                     </div>
@@ -244,6 +276,15 @@
                         <h3 class="sidebar-title">Marchés</h3>
                         <div class="market-table" id="market-table" aria-live="polite" role="region" aria-label="Cours des marchés en temps réel"></div>
                         <a href="markets.html" class="sidebar-more">Voir tous les marchés</a>
+                    </div>
+
+                    <!-- Macro Indicators (FRED) -->
+                    <div class="sidebar-block" id="macro-section">
+                        <h3 class="sidebar-title">🏛️ Indicateurs Macro</h3>
+                        <div class="macro-indicators" id="macro-indicators">
+                            <p class="macro-placeholder">Données macro en cours de chargement...</p>
+                        </div>
+                        <span class="sidebar-source">Source : FRED (Federal Reserve)</span>
                     </div>
 
                     <!-- Sections -->
@@ -285,6 +326,29 @@
 
         </div>
     </main>
+
+    <!-- Watchlist (visible uniquement si connecté) -->
+    <section class="section watchlist-section" id="watchlist-section" style="display:none;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Ma Watchlist</h2>
+                <span class="section-subtitle">Tes actifs suivis</span>
+            </div>
+            <form class="watchlist-add-form" id="watchlist-add-form">
+                <input type="text" id="watchlist-symbol" placeholder="Symbole (ex: BTC, AAPL, XAU)" required class="watchlist-input">
+                <select id="watchlist-category" class="watchlist-select">
+                    <option value="crypto">Crypto</option>
+                    <option value="stock">Action</option>
+                    <option value="commodity">Matière première</option>
+                    <option value="index">Indice</option>
+                </select>
+                <button type="submit" class="watchlist-add-btn">+ Ajouter</button>
+            </form>
+            <div class="watchlist-items" id="watchlist-items">
+                <p class="watchlist-empty">Aucun actif suivi.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Newsletter -->
     <section class="newsletter-section" id="newsletter">
@@ -349,9 +413,27 @@
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
 
+    <!-- Auth Modal -->
+    <div class="auth-modal-overlay" id="auth-modal">
+        <div class="auth-modal">
+            <button class="auth-modal-close" id="auth-modal-close">&times;</button>
+            <h3 class="auth-modal-title" id="auth-modal-title">Se connecter</h3>
+            <p class="auth-modal-subtitle">Accède à ta watchlist personnalisée</p>
+            <div class="auth-error" id="auth-error" style="display:none;"></div>
+            <form class="auth-form" id="auth-form" data-mode="login">
+                <input type="email" id="auth-email" placeholder="Email" required class="auth-input">
+                <input type="password" id="auth-password" placeholder="Mot de passe" required class="auth-input" minlength="6">
+                <button type="submit" id="auth-submit" class="auth-submit-btn">Connexion</button>
+            </form>
+            <button class="auth-toggle" id="auth-toggle">Pas de compte ? Créer un compte</button>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="app.js"></script>
     <script src="data-loader.js"></script>
+    <script src="supabase-client.js"></script>
     <script>
         if (typeof initHomePage === 'function') initHomePage();
     </script>

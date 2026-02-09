@@ -7,6 +7,7 @@
  * - CoinGecko (gratuit, pas de clé) → crypto
  * - Finnhub (clé gratuite) → indices boursiers
  * - GNews (clé gratuite) → actualités
+ * - FRED (clé gratuite) → données macroéconomiques (inflation, taux, PIB, chômage)
  *
  * Les données sont écrites en JSON dans /data/
  * Le frontend les lit au chargement de la page
@@ -302,7 +303,105 @@ function formatDate(isoDate) {
     return `${d.getDate()} ${months[d.getMonth()]}`;
 }
 
-// ─── 4. OR vs BITCOIN (pour le graphique) ──────────────────
+// ─── 4. DONNÉES MACRO (FRED — clé gratuite, 120 req/min) ───
+async function fetchFRED() {
+    const API_KEY = process.env.FRED_API_KEY;
+    if (!API_KEY) {
+        console.log('\n⚠️  FRED_API_KEY non définie — données macro ignorées');
+        console.log('   → Ajouter le secret dans GitHub: Settings > Secrets > FRED_API_KEY');
+        console.log('   → Clé gratuite sur https://fredaccount.stlouisfed.org/');
+        return false;
+    }
+
+    console.log('\n🏛️  Récupération données macro (FRED)...');
+
+    // Séries à récupérer
+    const series = [
+        { id: 'CPIAUCSL',  label: 'Inflation (CPI)',           unit: 'index',   format: 'yoy' },
+        { id: 'DFF',       label: 'Taux directeur (Fed Funds)', unit: '%',       format: 'last' },
+        { id: 'GDP',       label: 'PIB (trimestriel)',          unit: 'Mrd $',   format: 'last' },
+        { id: 'UNRATE',    label: 'Chômage',                    unit: '%',       format: 'last' },
+        { id: 'DGS10',     label: 'Treasury 10 ans',            unit: '%',       format: 'last' },
+        { id: 'DTWEXBGS',  label: 'Dollar Index (broad)',       unit: 'index',   format: 'last' }
+    ];
+
+    const indicators = [];
+
+    for (const s of series) {
+        try {
+            // Récupérer les 14 dernières observations (pour calculer les variations)
+            const url = `https://api.stlouisfed.org/fred/series/observations?` +
+                new URLSearchParams({
+                    series_id: s.id,
+                    api_key: API_KEY,
+                    file_type: 'json',
+                    sort_order: 'desc',
+                    limit: '14'
+                });
+
+            const data = await fetchJSON(url);
+            const obs = (data.observations || [])
+                .filter(o => o.value !== '.')  // FRED utilise '.' pour les données manquantes
+                .map(o => ({ date: o.date, value: parseFloat(o.value) }));
+
+            if (obs.length === 0) {
+                console.warn(`  ⚠ ${s.id}: aucune donnée`);
+                continue;
+            }
+
+            const latest = obs[0];
+            const previous = obs[1] || null;
+
+            // Calculer la variation
+            let change = null;
+            let changeType = 'abs'; // absolute
+
+            if (s.format === 'yoy' && obs.length >= 13) {
+                // Year-over-Year pour le CPI
+                const yearAgo = obs[12] || obs[obs.length - 1];
+                change = ((latest.value - yearAgo.value) / yearAgo.value * 100);
+                changeType = 'yoy';
+            } else if (previous) {
+                change = latest.value - previous.value;
+            }
+
+            indicators.push({
+                id: s.id,
+                label: s.label,
+                value: latest.value,
+                date: latest.date,
+                unit: s.unit,
+                change: change !== null ? Math.round(change * 100) / 100 : null,
+                change_type: changeType,
+                previous: previous ? { value: previous.value, date: previous.date } : null
+            });
+
+            console.log(`  ✓ ${s.label}: ${latest.value} (${latest.date})`);
+
+            // Rate limit (plan gratuit: 120 req/min)
+            await new Promise(r => setTimeout(r, 600));
+
+        } catch (err) {
+            console.warn(`  ⚠ ${s.id}: ${err.message}`);
+        }
+    }
+
+    if (indicators.length === 0) {
+        console.warn('  ✗ Aucun indicateur macro récupéré');
+        return false;
+    }
+
+    const macroData = {
+        updated: new Date().toISOString(),
+        source: 'FRED (Federal Reserve Economic Data)',
+        indicators
+    };
+
+    writeJSON('macro.json', macroData);
+    return true;
+}
+
+// ─── 5. OR vs BITCOIN (pour le graphique) ──────────────────
 async function fetchGoldBitcoinChart() {
     console.log('\n📉 Récupération données graphique Or vs Bitcoin...');
     try {
@@ -362,6 +461,7 @@ async function main() {
         crypto: await fetchCrypto(),
         markets: await fetchMarkets(),
         news: await fetchNews(),
+        macro: await fetchFRED(),
         chart: await fetchGoldBitcoinChart()
     };
 

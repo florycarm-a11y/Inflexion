@@ -5,6 +5,7 @@
 #   - CoinGecko (crypto) → fonctionne sans clé
 #   - Finnhub (marchés) → nécessite FINNHUB_API_KEY dans les secrets
 #   - GNews (actualités) → nécessite GNEWS_API_KEY dans les secrets
+#   - FRED (macro) → nécessite FRED_API_KEY dans les secrets
 #
 # Résultat : fichiers JSON dans /data/ committés et déployés automatiquement
 
@@ -54,6 +55,7 @@ jobs:
         env:
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
           GNEWS_API_KEY: ${{ secrets.GNEWS_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: node scripts/fetch-data.mjs
 
       - name: "📝 Commit et push des données"
