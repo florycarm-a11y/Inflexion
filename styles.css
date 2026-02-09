@@ -2682,17 +2682,17 @@ a {
     transition: height var(--transition-normal);
 }
 
-/* Bandes degradees par source */
+/* Bandes degradees par source — palette verte premium */
 .top-story:nth-child(1)::before {
-    background: linear-gradient(to right, #C41E3A, #FF6B6B);
+    background: linear-gradient(to right, #052E16, #105E2D);
 }
 
 .top-story:nth-child(2)::before {
-    background: linear-gradient(to right, #1E40AF, #3B82F6);
+    background: linear-gradient(to right, #0A3D1F, #1A7038);
 }
 
 .top-story:nth-child(3)::before {
-    background: linear-gradient(to right, #B45309, #F59E0B);
+    background: linear-gradient(to right, #064E3B, #047857);
 }
 
 .top-story-main {
@@ -2731,18 +2731,18 @@ a {
 }
 
 .top-story:nth-child(1) .source-name {
-    background: #FEE2E2;
-    color: #991B1B;
+    background: #DCFCE7;
+    color: #052E16;
 }
 
 .top-story:nth-child(2) .source-name {
-    background: #DBEAFE;
-    color: #1E40AF;
+    background: #D1FAE5;
+    color: #064E3B;
 }
 
 .top-story:nth-child(3) .source-name {
-    background: #FEF3C7;
-    color: #92400E;
+    background: #ECFDF5;
+    color: #065F46;
 }
 
 /* #16 â Footer de carte : date a gauche, lien Lire a droite, border-top */
@@ -5512,17 +5512,17 @@ a {
     transition: height var(--transition-normal);
 }
 
-/* Bandes degradees par source */
+/* Bandes degradees par source — palette verte premium */
 .top-story:nth-child(1)::before {
-    background: linear-gradient(to right, #C41E3A, #FF6B6B);
+    background: linear-gradient(to right, #052E16, #105E2D);
 }
 
 .top-story:nth-child(2)::before {
-    background: linear-gradient(to right, #1E40AF, #3B82F6);
+    background: linear-gradient(to right, #0A3D1F, #1A7038);
 }
 
 .top-story:nth-child(3)::before {
-    background: linear-gradient(to right, #B45309, #F59E0B);
+    background: linear-gradient(to right, #064E3B, #047857);
 }
 
 .top-story-main {
@@ -5561,18 +5561,18 @@ a {
 }
 
 .top-story:nth-child(1) .source-name {
-    background: #FEE2E2;
-    color: #991B1B;
+    background: #DCFCE7;
+    color: #052E16;
 }
 
 .top-story:nth-child(2) .source-name {
-    background: #DBEAFE;
-    color: #1E40AF;
+    background: #D1FAE5;
+    color: #064E3B;
 }
 
 .top-story:nth-child(3) .source-name {
-    background: #FEF3C7;
-    color: #92400E;
+    background: #ECFDF5;
+    color: #065F46;
 }
 
 /* #16 — Footer de carte : date a gauche, lien Lire a droite, border-top */
