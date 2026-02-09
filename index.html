@@ -84,10 +84,16 @@
                             <span class="hamburger-bar"></span>
                             <span class="hamburger-bar"></span>
                         </div>
-                    </button>
-                    <a href="index.html" class="logo"><img src="logo-header.png" alt="Inflexion — Géopolitique &amp; Marchés" class="logo-img"></a>
-                </div>
-                <div class="header-controls">
+                    <nav class="desktop-nav" aria-label="Navigation principale desktop">
+                        <a href="index.html" class="desktop-nav-link active">Accueil</a>
+                        <a href="geopolitics.html" class="desktop-nav-link">Géopolitique</a>
+                        <a href="markets.html" class="desktop-nav-link">Marchés</a>
+                        <a href="crypto.html" class="desktop-nav-link">Crypto</a>
+                        <a href="commodities.html" class="desktop-nav-link">Mat. Premières</a>
+                        <a href="etf.html" class="desktop-nav-link">ETF</a>
+                        <a href="analysis.html" class="desktop-nav-link">Analyses</a>
+                    </nav>
+                    <div class="header-controls">
                     <div class="market-status closed">
                         <span class="market-status-dot"></span>
                         <span class="market-status-text">Fermé</span>
@@ -133,14 +139,14 @@
         <div class="container">
             <p class="hero-eyebrow">Nos sources spécialisées<br>SOURCES — BLOOMBERG · FMI · CFR · ATLANTIC COUNCIL · J.P. MORGAN · BRI</p>
             <h1 class="hero-title">Géopolitique, marchés, technologie —<br>les frontières ont sauté.</h1>
-            <p class="hero-description">Pendant que l’analyse traditionnelle cloisonne, Inflexion cartographie pour vous les signaux qui comptent. Comprendre avant d’agir. Agir avant de subir.</p>
+                <a href="#newsletter" class="hero-cta">Recevoir les analyses →</a>
         </div>
     </section>
 
     <!-- Editorial Manifesto -->
     <section class="manifesto">
         <div class="container">
-            <p class="manifesto-text">Les règles ont changé. Quand des droits de douane liés au Groenland effacent 1 200 milliards de Wall Street, quand le FMI compare l'IA à un « tsunami » sur l'emploi, quand les banques centrales accumulent de l'or au rythme le plus élevé depuis 1979 — les frontières entre géopolitique, marchés et technologie ont disparu. <strong>Inflexion</strong> est né pour décrypter ce nouveau paradigme. 15 sources institutionnelles vérifiées. Zéro spéculation. Pour les investisseurs, professionnels et décideurs qui veulent comprendre avant d'agir.</p>
+            <p class="manifesto-text">Géopolitique, marchés, technologie — les frontières ont sauté. Pendant que l’analyse traditionnelle cloisonne, <strong>Inflexion</strong> cartographie pour vous les signaux qui comptent. Comprendre avant d’agir. Agir avant de subir.</p>
         </div>
     </section>
 
@@ -220,6 +226,9 @@
                     <div class="news-list" id="latest-news" aria-live="polite">
                         <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des dernières actualités...</span></div>
                     </div>
+                    <div class="load-more-container">
+                        <button class="load-more-btn" id="load-more-news">Voir plus d’actualités</button>
+                    </div>
                     <noscript>
                         <p>Activez JavaScript pour afficher les dernières actualités. Consultez nos <a href="analysis.html">analyses approfondies</a> pour du contenu statique.</p>
                     </noscript>
@@ -250,7 +259,23 @@
                     <!-- Sources -->
                     <div class="sidebar-block">
                         <h3 class="sidebar-title">Sources vérifiées</h3>
-                        <p class="sidebar-text">Bloomberg, CNBC, NBC News, Atlantic Council, FMI, CFR, Foreign Policy, BCG, World Gold Council, J.P. Morgan, ING, CoinShares, CoinDesk, SpaceX, Anthropic.</p>
+                        <div class="source-badges">
+                                <span class="source-badge">Bloomberg</span>
+                                <span class="source-badge">CNBC</span>
+                                <span class="source-badge">NBC News</span>
+                                <span class="source-badge">Atlantic Council</span>
+                                <span class="source-badge">FMI</span>
+                                <span class="source-badge">CFR</span>
+                                <span class="source-badge">Foreign Policy</span>
+                                <span class="source-badge">BCG</span>
+                                <span class="source-badge">World Gold Council</span>
+                                <span class="source-badge">J.P. Morgan</span>
+                                <span class="source-badge">ING</span>
+                                <span class="source-badge">CoinShares</span>
+                                <span class="source-badge">CoinDesk</span>
+                                <span class="source-badge">SpaceX</span>
+                                <span class="source-badge">Anthropic</span>
+                            </div>
                     </div>
                 </aside>
             </div>
