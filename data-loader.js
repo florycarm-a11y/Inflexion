@@ -603,6 +603,156 @@ const DataLoader = (function () {
         }).join('');
     }
 
+    // ─── Trending Coins Widget ──────────────────────────────
+
+    /**
+     * Affiche les cryptos tendance (CoinGecko trending)
+     */
+    function updateTrendingCoins() {
+        if (!_cache.crypto?.trending?.length) return;
+
+        var container = document.getElementById('trending-coins');
+        if (!container) return;
+
+        var coins = _cache.crypto.trending;
+        container.innerHTML = coins.map(function(coin) {
+            var rankBadge = coin.market_cap_rank
+                ? '<span class="trending-rank">#' + coin.market_cap_rank + '</span>'
+                : '';
+            return '<div class="trending-coin">' +
+                (coin.thumb ? '<img src="' + coin.thumb + '" alt="' + coin.symbol + '" class="trending-coin-icon" width="24" height="24" loading="lazy">' : '') +
+                '<div class="trending-coin-info">' +
+                    '<span class="trending-coin-name">' + coin.name + ' <small>' + coin.symbol.toUpperCase() + '</small></span>' +
+                    rankBadge +
+                '</div>' +
+            '</div>';
+        }).join('');
+
+        // Ajouter les données globales enrichies
+        var globalContainer = document.getElementById('crypto-global-stats');
+        if (globalContainer && _cache.crypto.global) {
+            var g = _cache.crypto.global;
+            var statsHTML = '';
+            if (g.eth_dominance) statsHTML += '<span class="global-stat">ETH Dom: ' + g.eth_dominance.toFixed(1) + '%</span>';
+            if (g.markets) statsHTML += '<span class="global-stat">Marchés: ' + g.markets.toLocaleString('fr-FR') + '</span>';
+            if (g.market_cap_change_24h != null) {
+                var isUp = g.market_cap_change_24h >= 0;
+                statsHTML += '<span class="global-stat ' + (isUp ? 'positive' : 'negative') + '">MCap 24h: ' + (isUp ? '+' : '') + g.market_cap_change_24h.toFixed(2) + '%</span>';
+            }
+            if (statsHTML) globalContainer.innerHTML = statsHTML;
+        }
+    }
+
+    // ─── Calendrier Économique ──────────────────────────────
+
+    /**
+     * Affiche les prochains événements économiques (Finnhub)
+     */
+    function updateEconomicCalendar() {
+        if (!_cache.markets?.economicCalendar?.length) return;
+
+        var container = document.getElementById('economic-calendar');
+        if (!container) return;
+
+        var events = _cache.markets.economicCalendar.slice(0, 8);
+        container.innerHTML = events.map(function(evt) {
+            var impactClass = evt.impact === 'high' ? 'impact-high' : 'impact-medium';
+            var impactDot = '<span class="cal-impact ' + impactClass + '"></span>';
+
+            // Formater la date
+            var dateStr = evt.date || '';
+            var timeStr = evt.time || '';
+            var dateDisplay = '';
+            if (dateStr) {
+                var d = new Date(dateStr);
+                var months = ['jan', 'fév', 'mar', 'avr', 'mai', 'jun', 'jul', 'aoû', 'sep', 'oct', 'nov', 'déc'];
+                dateDisplay = d.getDate() + ' ' + months[d.getMonth()];
+                if (timeStr) dateDisplay += ' · ' + timeStr;
+            }
+
+            // Valeurs
+            var valuesHTML = '';
+            if (evt.estimate != null) valuesHTML += '<span class="cal-val">Est: ' + evt.estimate + (evt.unit || '') + '</span>';
+            if (evt.previous != null) valuesHTML += '<span class="cal-val">Préc: ' + evt.previous + (evt.unit || '') + '</span>';
+            if (evt.actual != null) valuesHTML += '<span class="cal-val cal-actual">Act: ' + evt.actual + (evt.unit || '') + '</span>';
+
+            return '<div class="cal-event">' +
+                '<div class="cal-event-header">' +
+                    impactDot +
+                    '<span class="cal-country">' + (evt.country || '') + '</span>' +
+                    '<span class="cal-date">' + dateDisplay + '</span>' +
+                '</div>' +
+                '<div class="cal-event-name">' + (evt.event || '') + '</div>' +
+                (valuesHTML ? '<div class="cal-values">' + valuesHTML + '</div>' : '') +
+            '</div>';
+        }).join('');
+    }
+
+    // ─── Mise à jour des données globales (pour la recherche) ─
+
+    /**
+     * Met à jour les variables globales de app.js avec les données live
+     * pour que la recherche fonctionne avec les données fraîches
+     */
+    function syncGlobalData() {
+        // Mettre à jour newsDatabase globale avec les données live
+        if (_cache.news?.categories && typeof window.newsDatabase !== 'undefined') {
+            var catMapping = {
+                geopolitique: 'geopolitics',
+                marches: 'markets',
+                crypto: 'crypto',
+                matieres_premieres: 'commodities',
+                ai_tech: 'markets' // Fusionner les news IA/tech dans marchés
+            };
+
+            Object.keys(_cache.news.categories).forEach(function(cat) {
+                var targetCat = catMapping[cat] || cat;
+                var articles = _cache.news.categories[cat].map(function(a) {
+                    return {
+                        source: a.source || '',
+                        url: a.url || '#',
+                        title: a.title || '',
+                        description: a.description || '',
+                        tags: [targetCat],
+                        time: a.time || '',
+                        impact: 'high'
+                    };
+                });
+                if (articles.length > 0) {
+                    window.newsDatabase[targetCat] = articles;
+                }
+            });
+        }
+
+        // Mettre à jour marketData globale
+        if (_cache.markets?.quotes && typeof window.marketData !== 'undefined') {
+            _cache.markets.quotes.forEach(function(q) {
+                var entry = window.marketData.find(function(m) {
+                    return m.name === q.name || m.name.includes(q.symbol);
+                });
+                if (entry) {
+                    entry.price = q.price;
+                    entry.change = q.change;
+                }
+            });
+        }
+
+        // Mettre à jour breakingNews à partir des titres live
+        if (_cache.news?.categories && typeof window.breakingNews !== 'undefined') {
+            var headlines = [];
+            Object.values(_cache.news.categories).forEach(function(articles) {
+                articles.slice(0, 2).forEach(function(a) {
+                    if (a.title) headlines.push(a.title + ' (' + (a.source || 'Inflexion') + ')');
+                });
+            });
+            if (headlines.length > 0) {
+                window.breakingNews = headlines.slice(0, 10);
+                // Re-initialiser le ticker avec les nouvelles données
+                if (typeof initTicker === 'function') initTicker();
+            }
+        }
+    }
+
     /**
      * Applique toutes les mises à jour au DOM
      */
@@ -610,10 +760,13 @@ const DataLoader = (function () {
         if (!_initialized || !_usingLiveData) return;
 
         console.log('[DataLoader] Mise à jour du DOM...');
+        syncGlobalData();
         updateMarketSidebar();
         updateCryptoSection();
+        updateTrendingCoins();
         updateMacroIndicators();
         updateFearGreedWidget();
+        updateEconomicCalendar();
         updateGoldBitcoinChart();
         updateArticleDuJour();
         updateLatestNewsWithRubriques();
@@ -649,9 +802,8 @@ const DataLoader = (function () {
 
 // ─── Initialisation automatique au chargement ──────────────
 document.addEventListener('DOMContentLoaded', async function () {
-    // Attendre que app.js ait fini d'initialiser le DOM statique
-    await new Promise(r => setTimeout(r, 500));
-
+    // Pas de délai artificiel — DOMContentLoaded se déclenche après
+    // l'exécution de tous les scripts synchrones (app.js inclus)
     const hasLiveData = await DataLoader.init();
     if (hasLiveData) {
         DataLoader.updateDOM();

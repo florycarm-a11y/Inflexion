@@ -72,6 +72,24 @@ async function fetchCrypto() {
             })
         );
 
+        // Trending coins (top recherches — gratuit, pas de clé)
+        let trending = [];
+        try {
+            const trendData = await fetchJSON('https://api.coingecko.com/api/v3/search/trending');
+            trending = (trendData.coins || []).slice(0, 7).map(t => ({
+                id: t.item.id,
+                name: t.item.name,
+                symbol: t.item.symbol,
+                market_cap_rank: t.item.market_cap_rank,
+                thumb: t.item.thumb,
+                price_btc: t.item.price_btc,
+                score: t.item.score
+            }));
+            console.log(`  ✓ ${trending.length} trending coins récupérées`);
+        } catch (err) {
+            console.warn('  ⚠ Trending coins non disponible:', err.message);
+        }
+
         const cryptoData = {
             updated: new Date().toISOString(),
             prices: prices.map(c => ({
@@ -92,8 +110,12 @@ async function fetchCrypto() {
                 total_market_cap: global.data.total_market_cap?.usd,
                 total_volume: global.data.total_volume?.usd,
                 btc_dominance: global.data.market_cap_percentage?.btc,
-                active_cryptos: global.data.active_cryptocurrencies
+                eth_dominance: global.data.market_cap_percentage?.eth,
+                active_cryptos: global.data.active_cryptocurrencies,
+                markets: global.data.markets,
+                market_cap_change_24h: global.data.market_cap_change_percentage_24h_usd
             },
+            trending,
             stablecoins: stablecoins.map(s => ({
                 name: s.name,
                 symbol: s.symbol.toUpperCase(),
@@ -163,6 +185,34 @@ async function fetchMarkets() {
             }
         }
 
+        // Calendrier économique (7 prochains jours)
+        let economicCalendar = [];
+        try {
+            const from = new Date().toISOString().split('T')[0];
+            const toDate = new Date(Date.now() + 7 * 86400000).toISOString().split('T')[0];
+            const calData = await fetchJSON(
+                `https://finnhub.io/api/v1/calendar/economic?from=${from}&to=${toDate}&token=${API_KEY}`
+            );
+            economicCalendar = (calData.economicCalendar || [])
+                .filter(e => e.impact === 'high' || e.impact === 'medium')
+                .slice(0, 20)
+                .map(e => ({
+                    date: e.date,
+                    time: e.time,
+                    country: e.country,
+                    event: e.event,
+                    impact: e.impact,
+                    actual: e.actual,
+                    estimate: e.estimate,
+                    previous: e.prev,
+                    unit: e.unit
+                }));
+            console.log(`  ✓ ${economicCalendar.length} événements économiques récupérés`);
+            await new Promise(r => setTimeout(r, 250));
+        } catch (err) {
+            console.warn('  ⚠ Calendrier économique:', err.message);
+        }
+
         // Récupérer les indices forex
         const forexPairs = [
             { symbol: 'OANDA:EUR_USD', name: 'EUR/USD' },
@@ -193,9 +243,11 @@ async function fetchMarkets() {
         const marketData = {
             updated: new Date().toISOString(),
             quotes,
+            economicCalendar,
             summary: {
                 total_symbols: quotes.length,
-                market_open: isMarketOpen()
+                market_open: isMarketOpen(),
+                calendar_events: economicCalendar.length
             }
         };
 
@@ -227,27 +279,32 @@ async function fetchNews() {
 
     console.log('\n📰 Récupération actualités (GNews)...');
     try {
-        // Requêtes pour chaque catégorie
+        // Requêtes pour chaque catégorie (optimisées avec mots-clés FR + IA)
         const categories = [
             {
                 key: 'geopolitics',
-                query: 'geopolitics OR tariffs OR trade war OR sanctions',
+                query: 'geopolitics OR tariffs OR trade war OR sanctions OR "foreign policy"',
                 topic: 'world'
             },
             {
                 key: 'markets',
-                query: 'stock market OR S&P 500 OR Wall Street OR Federal Reserve OR Nvidia OR AI',
+                query: 'stock market OR S&P 500 OR Wall Street OR Federal Reserve OR earnings OR IPO',
                 topic: 'business'
             },
             {
                 key: 'crypto',
-                query: 'bitcoin OR ethereum OR cryptocurrency OR stablecoin',
+                query: 'bitcoin OR ethereum OR cryptocurrency OR stablecoin OR "crypto ETF"',
                 topic: 'business'
             },
             {
                 key: 'commodities',
                 query: 'gold price OR oil price OR silver OR commodities OR precious metals',
                 topic: 'business'
+            },
+            {
+                key: 'ai_tech',
+                query: 'artificial intelligence OR Nvidia OR OpenAI OR Anthropic OR "AI model" OR semiconductor',
+                topic: 'technology'
             }
         ];
 
@@ -316,14 +373,19 @@ async function fetchFRED() {
 
     console.log('\n🏛️  Récupération données macro (FRED)...');
 
-    // Séries à récupérer
+    // Séries à récupérer (toutes gratuites, 120 req/min)
     const series = [
-        { id: 'CPIAUCSL',  label: 'Inflation (CPI)',           unit: 'index',   format: 'yoy' },
-        { id: 'DFF',       label: 'Taux directeur (Fed Funds)', unit: '%',       format: 'last' },
-        { id: 'GDP',       label: 'PIB (trimestriel)',          unit: 'Mrd $',   format: 'last' },
-        { id: 'UNRATE',    label: 'Chômage',                    unit: '%',       format: 'last' },
-        { id: 'DGS10',     label: 'Treasury 10 ans',            unit: '%',       format: 'last' },
-        { id: 'DTWEXBGS',  label: 'Dollar Index (broad)',       unit: 'index',   format: 'last' }
+        { id: 'CPIAUCSL',     label: 'Inflation (CPI)',             unit: 'index',   format: 'yoy' },
+        { id: 'DFF',          label: 'Taux directeur (Fed Funds)',   unit: '%',       format: 'last' },
+        { id: 'GDP',          label: 'PIB (trimestriel)',            unit: 'Mrd $',   format: 'last' },
+        { id: 'UNRATE',       label: 'Chômage',                     unit: '%',       format: 'last' },
+        { id: 'DGS10',        label: 'Treasury 10 ans',             unit: '%',       format: 'last' },
+        { id: 'DTWEXBGS',     label: 'Dollar Index (broad)',        unit: 'index',   format: 'last' },
+        // ─── Nouvelles séries (Vague 10.2) ───
+        { id: 'T10Y2Y',       label: 'Spread 10Y-2Y',              unit: '%',       format: 'last' },
+        { id: 'M2SL',         label: 'Masse monétaire M2',         unit: 'Mrd $',   format: 'last' },
+        { id: 'WALCL',        label: 'Bilan Fed (actifs)',          unit: 'M $',     format: 'last' },
+        { id: 'MORTGAGE30US', label: 'Taux hypothécaire 30 ans',   unit: '%',       format: 'last' }
     ];
 
     const indicators = [];

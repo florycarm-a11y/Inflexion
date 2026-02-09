@@ -91,6 +91,22 @@ const RUBRIQUES = {
             'or ', 'pétrole', 'argent', 'matières premières',
             'barrel', 'ounce', 'troy', 'xau', 'commodity'
         ]
+    },
+    ai_tech: {
+        label: 'IA & Tech',
+        emoji: '🤖',
+        keywords: [
+            'artificial intelligence', 'machine learning', 'deep learning',
+            'large language model', 'llm', 'chatgpt', 'openai', 'anthropic',
+            'claude', 'gemini', 'nvidia', 'semiconductor', 'chip', 'gpu',
+            'data center', 'compute', 'inference', 'training', 'ai model',
+            'generative ai', 'foundation model', 'transformer', 'diffusion',
+            'ai regulation', 'ai safety', 'ai governance', 'robotics',
+            'autonomous', 'tsmc', 'intel', 'amd', 'broadcom', 'asml',
+            'huawei', 'ai agent', 'copilot', 'ai startup', 'ai funding',
+            'quantum computing', 'neuromorphic', 'edge ai', 'mlops',
+            'intelligence artificielle', 'puce', 'semi-conducteur'
+        ]
     }
 };
 
@@ -99,7 +115,8 @@ const CATEGORY_MAP = {
     'geopolitics': 'geopolitique',
     'markets': 'marches',
     'crypto': 'crypto',
-    'commodities': 'matieres_premieres'
+    'commodities': 'matieres_premieres',
+    'ai_tech': 'ai_tech'
 };
 
 // ─── Utilitaires ────────────────────────────────────────────
@@ -188,11 +205,12 @@ function classifyByKeywords(title, description) {
  */
 async function classifyWithClaude(title, description) {
     const systemPrompt = `Tu es un classifieur d'articles de presse financière.
-Réponds UNIQUEMENT par l'un de ces 4 mots (sans explication) :
+Réponds UNIQUEMENT par l'un de ces 5 mots (sans explication) :
 - geopolitique
 - marches
 - crypto
-- matieres_premieres`;
+- matieres_premieres
+- ai_tech`;
 
     const userMessage = `Classe cet article dans la rubrique la plus pertinente.
 
@@ -381,7 +399,7 @@ function formatTavilyContext(results) {
 /**
  * Génère un article de synthèse éditorial à partir des news du jour
  */
-async function generateDailyArticle(newsData, tavilyResults = [], macroData = null, fngData = null) {
+async function generateDailyArticle(newsData, tavilyResults = [], macroData = null, fngData = null, cryptoData = null, marketsData = null) {
     console.log('\n✍️  Génération de l\'article du jour...');
 
     const API_KEY = process.env.ANTHROPIC_API_KEY;
@@ -429,6 +447,32 @@ async function generateDailyArticle(newsData, tavilyResults = [], macroData = nu
         }
         context.push('');
         console.log(`  😱 Fear & Greed injecté dans le contexte (${fngData.current.value}/100)`);
+    }
+
+    // Ajouter les trending coins si disponibles
+    if (cryptoData?.trending?.length > 0) {
+        context.push('## 🔥 Crypto Trending (CoinGecko)');
+        for (const coin of cryptoData.trending.slice(0, 5)) {
+            context.push(`- **${coin.name}** (${coin.symbol}) — Rang MCap: #${coin.market_cap_rank || 'N/A'}`);
+        }
+        if (cryptoData.global) {
+            if (cryptoData.global.eth_dominance) context.push(`- Dominance ETH: ${cryptoData.global.eth_dominance.toFixed(1)}%`);
+            if (cryptoData.global.market_cap_change_24h != null) context.push(`- MCap 24h: ${cryptoData.global.market_cap_change_24h >= 0 ? '+' : ''}${cryptoData.global.market_cap_change_24h.toFixed(2)}%`);
+        }
+        context.push('');
+        console.log(`  🔥 ${cryptoData.trending.length} trending coins injectés dans le contexte`);
+    }
+
+    // Ajouter le calendrier économique si disponible
+    if (marketsData?.economicCalendar?.length > 0) {
+        context.push('## 📅 Calendrier économique (Finnhub)');
+        for (const evt of marketsData.economicCalendar.slice(0, 6)) {
+            const valStr = evt.actual != null ? `Réel: ${evt.actual}${evt.unit || ''}` :
+                          evt.estimate != null ? `Est: ${evt.estimate}${evt.unit || ''}` : '';
+            context.push(`- **${evt.event}** (${evt.country}, ${evt.date}) — Impact ${evt.impact} ${valStr ? '— ' + valStr : ''}`);
+        }
+        context.push('');
+        console.log(`  📅 ${marketsData.economicCalendar.length} événements éco injectés dans le contexte`);
     }
 
     // Ajouter le contexte Tavily si disponible
@@ -579,6 +623,30 @@ async function main() {
         }
     }
 
+    // Lire les données crypto (trending coins) si disponibles
+    let cryptoData = null;
+    const cryptoPath = join(DATA_DIR, 'crypto.json');
+    if (existsSync(cryptoPath)) {
+        try {
+            cryptoData = JSON.parse(readFileSync(cryptoPath, 'utf-8'));
+            console.log(`🔥 ${cryptoData.trending?.length || 0} trending coins disponibles`);
+        } catch (err) {
+            console.warn(`⚠ Erreur lecture crypto.json: ${err.message}`);
+        }
+    }
+
+    // Lire les données marchés (calendrier économique) si disponibles
+    let marketsData = null;
+    const marketsPath = join(DATA_DIR, 'markets.json');
+    if (existsSync(marketsPath)) {
+        try {
+            marketsData = JSON.parse(readFileSync(marketsPath, 'utf-8'));
+            console.log(`📅 ${marketsData.economicCalendar?.length || 0} événements éco disponibles`);
+        } catch (err) {
+            console.warn(`⚠ Erreur lecture markets.json: ${err.message}`);
+        }
+    }
+
     const totalArticles = Object.values(newsData.categories)
         .reduce((sum, arr) => sum + arr.length, 0);
     console.log(`\n📰 ${totalArticles} articles trouvés dans news.json`);
@@ -591,8 +659,8 @@ async function main() {
     const topics = extractTopics(newsData);
     const tavilyResults = await searchTavily(topics);
 
-    // 3. Générer l'article du jour (avec contexte Tavily + macro FRED + Fear & Greed)
-    const article = await generateDailyArticle(newsData, tavilyResults, macroData, fngData);
+    // 3. Générer l'article du jour (avec contexte Tavily + macro FRED + Fear & Greed + trending + calendrier)
+    const article = await generateDailyArticle(newsData, tavilyResults, macroData, fngData, cryptoData, marketsData);
     const articleSaved = saveArticle(article);
 
     // Résumé
