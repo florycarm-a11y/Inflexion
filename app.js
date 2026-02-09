@@ -407,6 +407,20 @@ function renderTable(id, headers, data, rowFn) {
 }
 
 // --- Back to Top ---
+
+// --- Sticky Header on Scroll ---
+function initStickyHeader() {
+    var header = document.querySelector('.header');
+    if (!header) return;
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }, { passive: true });
+}
+
 function initBackToTop() {
     var btn = document.querySelector('.back-to-top');
     if (!btn) return;
@@ -486,6 +500,7 @@ function initNewsletter() {
 // Initialize all UI enhancements
 function initUI() {
     initMenuOverlay();
+    initStickyHeader();
     initBackToTop();
     initMarketStatus();
     initNewsletter();
