@@ -1,0 +1,80 @@
+# Inflexion — Vague 8 : Rédaction IA quotidienne & Classification
+# Exécuté 1x/jour à 07h UTC (après la mise à jour des données à 06h)
+#
+# Prérequis :
+#   - ANTHROPIC_API_KEY dans GitHub Secrets (console.anthropic.com)
+#   - TAVILY_API_KEY dans GitHub Secrets (app.tavily.com — optionnel, enrichit les articles)
+#   - PAT_TOKEN dans GitHub Secrets (pour committer)
+#   - data/news.json doit exister (généré par fetch-data.yml)
+
+name: "✍️ Generate Daily Article"
+
+on:
+  schedule:
+    # Tous les jours à 07h UTC (1h après le dernier fetch de données)
+    - cron: '0 7 * * *'
+
+  # Exécution manuelle depuis l'onglet Actions
+  workflow_dispatch:
+
+  # Exécuter aussi au push sur main (pour les premiers tests)
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/generate-article.mjs'
+      - '.github/workflows/generate-article.yml'
+
+# Permissions nécessaires pour committer les fichiers
+permissions:
+  contents: write
+
+# Une seule exécution à la fois
+concurrency:
+  group: "generate-article"
+  cancel-in-progress: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: "📥 Checkout du repo"
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: "🟢 Setup Node.js 20"
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: "✍️ Génération article + classification"
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+        run: node scripts/generate-article.mjs
+
+      - name: "📝 Commit et push"
+        run: |
+          git config user.name "Inflexion Bot"
+          git config user.email "bot@inflexionhub.com"
+
+          # Ajouter les fichiers générés
+          git add data/news.json
+          git add data/article-du-jour.json
+          git add data/articles/
+
+          # Vérifier s'il y a des changements
+          if git diff --staged --quiet; then
+            echo "Aucun changement"
+            exit 0
+          fi
+
+          # Commit avec timestamp
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+          git commit -m "✍️ Article du jour — ${TIMESTAMP}
+
+          Génération automatique de l'article de synthèse et classification des news."
+
+          git push
