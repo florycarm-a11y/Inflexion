@@ -22,6 +22,7 @@ const DataLoader = (function () {
             markets: 'markets.json',
             news:    'news.json',
             macro:   'macro.json',
+            fearGreed: 'fear-greed.json',
             chart:   'chart-gold-btc.json',
             meta:    '_meta.json',
             articleDuJour: 'article-du-jour.json'
@@ -125,17 +126,18 @@ const DataLoader = (function () {
         console.log('[DataLoader] Initialisation...');
 
         // Charger tous les fichiers en parallèle
-        const [crypto, markets, news, macro, chart, meta, articleDuJour] = await Promise.all([
+        const [crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour] = await Promise.all([
             loadJSON(CONFIG.FILES.crypto),
             loadJSON(CONFIG.FILES.markets),
             loadJSON(CONFIG.FILES.news),
             loadJSON(CONFIG.FILES.macro),
+            loadJSON(CONFIG.FILES.fearGreed),
             loadJSON(CONFIG.FILES.chart),
             loadJSON(CONFIG.FILES.meta),
             loadJSON(CONFIG.FILES.articleDuJour)
         ]);
 
-        _cache = { crypto, markets, news, macro, chart, meta, articleDuJour };
+        _cache = { crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour };
         _initialized = true;
 
         // Déterminer si on utilise des données live
@@ -384,6 +386,70 @@ const DataLoader = (function () {
         }
     }
 
+    // ─── Fear & Greed Index ──────────────────────────────
+
+    /**
+     * Affiche le widget Fear & Greed Index avec jauge animée
+     */
+    function updateFearGreedWidget() {
+        if (!_cache.fearGreed?.current) return;
+
+        var fng = _cache.fearGreed;
+        var score = fng.current.value;
+        var label = fng.current.label;
+
+        // Traduire le label en français
+        var labelFR = {
+            'Extreme Fear': 'Peur extrême',
+            'Fear': 'Peur',
+            'Neutral': 'Neutre',
+            'Greed': 'Avidité',
+            'Extreme Greed': 'Avidité extrême'
+        };
+
+        // Mettre à jour le score et le label
+        var scoreEl = document.getElementById('fng-score');
+        var labelEl = document.getElementById('fng-label');
+        if (scoreEl) scoreEl.textContent = score;
+        if (labelEl) {
+            labelEl.textContent = labelFR[label] || label;
+            // Couleur selon la zone
+            if (score <= 25) labelEl.style.color = '#dc2626';
+            else if (score <= 45) labelEl.style.color = '#f97316';
+            else if (score <= 55) labelEl.style.color = '#eab308';
+            else if (score <= 75) labelEl.style.color = '#84cc16';
+            else labelEl.style.color = '#16a34a';
+        }
+
+        // Positionner l'aiguille de la jauge (0-100 → angle -90° à +90°)
+        var needle = document.getElementById('fng-needle');
+        if (needle) {
+            var angle = -90 + (score / 100) * 180; // -90° (gauche) à +90° (droite)
+            needle.setAttribute('transform', 'rotate(' + angle + ', 100, 100)');
+        }
+
+        // Variations 7j et 30j
+        var weekEl = document.getElementById('fng-change-week');
+        var monthEl = document.getElementById('fng-change-month');
+
+        if (weekEl && fng.changes.week !== null) {
+            var w = fng.changes.week;
+            weekEl.textContent = (w >= 0 ? '+' : '') + w + ' pts';
+            weekEl.style.color = w >= 0 ? '#16a34a' : '#dc2626';
+        }
+        if (monthEl && fng.changes.month !== null) {
+            var m = fng.changes.month;
+            monthEl.textContent = (m >= 0 ? '+' : '') + m + ' pts';
+            monthEl.style.color = m >= 0 ? '#16a34a' : '#dc2626';
+        }
+
+        // Ajouter indicateur de fraîcheur
+        var fngSection = document.getElementById('fng-section');
+        if (fngSection) {
+            addFreshnessIndicator(fngSection, fng.updated);
+        }
+    }
+
     // ─── Article du jour ──────────────────────────────────
 
     /**
@@ -547,6 +613,7 @@ const DataLoader = (function () {
         updateMarketSidebar();
         updateCryptoSection();
         updateMacroIndicators();
+        updateFearGreedWidget();
         updateGoldBitcoinChart();
         updateArticleDuJour();
         updateLatestNewsWithRubriques();
@@ -564,6 +631,7 @@ const DataLoader = (function () {
         getMarkets: () => _cache.markets,
         getNews:    () => _cache.news,
         getMacro:   () => _cache.macro,
+        getFearGreed: () => _cache.fearGreed,
         getChart:   () => _cache.chart,
         getMeta:    () => _cache.meta,
         getArticleDuJour: () => _cache.articleDuJour,

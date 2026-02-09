@@ -381,7 +381,7 @@ function formatTavilyContext(results) {
 /**
  * Génère un article de synthèse éditorial à partir des news du jour
  */
-async function generateDailyArticle(newsData, tavilyResults = [], macroData = null) {
+async function generateDailyArticle(newsData, tavilyResults = [], macroData = null, fngData = null) {
     console.log('\n✍️  Génération de l\'article du jour...');
 
     const API_KEY = process.env.ANTHROPIC_API_KEY;
@@ -415,6 +415,20 @@ async function generateDailyArticle(newsData, tavilyResults = [], macroData = nu
         }
         context.push('');
         console.log(`  📊 ${macroData.indicators.length} indicateurs macro injectés dans le contexte`);
+    }
+
+    // Ajouter le Fear & Greed Index si disponible
+    if (fngData?.current) {
+        context.push('## 😱 Sentiment Crypto (Fear & Greed Index)');
+        context.push(`- **Score actuel** : ${fngData.current.value}/100 (${fngData.current.label})`);
+        if (fngData.changes.week !== null) {
+            context.push(`- **Variation 7j** : ${fngData.changes.week >= 0 ? '+' : ''}${fngData.changes.week} points`);
+        }
+        if (fngData.changes.month !== null) {
+            context.push(`- **Variation 30j** : ${fngData.changes.month >= 0 ? '+' : ''}${fngData.changes.month} points`);
+        }
+        context.push('');
+        console.log(`  😱 Fear & Greed injecté dans le contexte (${fngData.current.value}/100)`);
     }
 
     // Ajouter le contexte Tavily si disponible
@@ -553,6 +567,18 @@ async function main() {
         }
     }
 
+    // Lire le Fear & Greed Index si disponible
+    let fngData = null;
+    const fngPath = join(DATA_DIR, 'fear-greed.json');
+    if (existsSync(fngPath)) {
+        try {
+            fngData = JSON.parse(readFileSync(fngPath, 'utf-8'));
+            console.log(`😱 Fear & Greed: ${fngData.current?.value} (${fngData.current?.label})`);
+        } catch (err) {
+            console.warn(`⚠ Erreur lecture fear-greed.json: ${err.message}`);
+        }
+    }
+
     const totalArticles = Object.values(newsData.categories)
         .reduce((sum, arr) => sum + arr.length, 0);
     console.log(`\n📰 ${totalArticles} articles trouvés dans news.json`);
@@ -565,8 +591,8 @@ async function main() {
     const topics = extractTopics(newsData);
     const tavilyResults = await searchTavily(topics);
 
-    // 3. Générer l'article du jour (avec contexte Tavily + macro FRED)
-    const article = await generateDailyArticle(newsData, tavilyResults, macroData);
+    // 3. Générer l'article du jour (avec contexte Tavily + macro FRED + Fear & Greed)
+    const article = await generateDailyArticle(newsData, tavilyResults, macroData, fngData);
     const articleSaved = saveArticle(article);
 
     // Résumé

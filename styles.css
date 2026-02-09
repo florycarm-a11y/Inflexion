@@ -6340,3 +6340,97 @@ a {
     margin-top: 0.5rem;
     text-align: right;
 }
+
+/* ─── Fear & Greed Index Widget ───────────────────────── */
+
+.fng-widget {
+    padding: 0.5rem 0;
+}
+
+.fng-gauge-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.fng-gauge {
+    width: 100%;
+    max-width: 200px;
+}
+
+.fng-gauge-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.fng-value-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    margin-top: -0.5rem;
+}
+
+.fng-score {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.fng-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.fng-changes {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border-light, rgba(0,0,0,0.06));
+}
+
+.fng-change-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+}
+
+.fng-change-period {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+.fng-change-value {
+    font-size: 0.85rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.fng-scale {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.6rem;
+    padding-top: 0.5rem;
+}
+
+.fng-scale-label {
+    font-size: 0.6rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.fng-extreme-fear { color: #dc2626; }
+.fng-neutral { color: #eab308; }
+.fng-extreme-greed { color: #16a34a; }

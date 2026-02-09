@@ -8,6 +8,7 @@
  * - Finnhub (clé gratuite) → indices boursiers
  * - GNews (clé gratuite) → actualités
  * - FRED (clé gratuite) → données macroéconomiques (inflation, taux, PIB, chômage)
+ * - Alternative.me (gratuit, pas de clé) → Fear & Greed Index crypto
  *
  * Les données sont écrites en JSON dans /data/
  * Le frontend les lit au chargement de la page
@@ -401,7 +402,58 @@ async function fetchFRED() {
     return true;
 }
 
-// ─── 5. OR vs BITCOIN (pour le graphique) ──────────────────
+// ─── 5. FEAR & GREED INDEX (alternative.me — gratuit, pas de clé) ──
+async function fetchFearGreed() {
+    console.log('\n😱 Récupération Fear & Greed Index (alternative.me)...');
+    try {
+        // Valeur actuelle + historique 30 jours
+        const data = await fetchJSON(
+            'https://api.alternative.me/fng/?limit=31&format=json'
+        );
+
+        if (!data.data || data.data.length === 0) {
+            console.warn('  ⚠ Aucune donnée Fear & Greed');
+            return false;
+        }
+
+        const current = data.data[0];
+        const history = data.data.map(d => ({
+            value: parseInt(d.value),
+            label: d.value_classification,
+            timestamp: parseInt(d.timestamp),
+            date: new Date(parseInt(d.timestamp) * 1000).toISOString().split('T')[0]
+        }));
+
+        // Calculer la variation sur 7j et 30j
+        const now = parseInt(current.value);
+        const weekAgo = data.data[7] ? parseInt(data.data[7].value) : null;
+        const monthAgo = data.data[30] ? parseInt(data.data[30].value) : null;
+
+        const fngData = {
+            updated: new Date().toISOString(),
+            source: 'Alternative.me Crypto Fear & Greed Index',
+            current: {
+                value: now,
+                label: current.value_classification,
+                timestamp: parseInt(current.timestamp)
+            },
+            changes: {
+                week: weekAgo !== null ? now - weekAgo : null,
+                month: monthAgo !== null ? now - monthAgo : null
+            },
+            history
+        };
+
+        writeJSON('fear-greed.json', fngData);
+        console.log(`  ✓ Fear & Greed: ${now} (${current.value_classification})`);
+        return true;
+    } catch (err) {
+        console.error('✗ Erreur Fear & Greed:', err.message);
+        return false;
+    }
+}
+
+// ─── 6. OR vs BITCOIN (pour le graphique) ──────────────────
 async function fetchGoldBitcoinChart() {
     console.log('\n📉 Récupération données graphique Or vs Bitcoin...');
     try {
@@ -462,6 +514,7 @@ async function main() {
         markets: await fetchMarkets(),
         news: await fetchNews(),
         macro: await fetchFRED(),
+        fearGreed: await fetchFearGreed(),
         chart: await fetchGoldBitcoinChart()
     };
 

@@ -287,6 +287,55 @@
                         <span class="sidebar-source">Source : FRED (Federal Reserve)</span>
                     </div>
 
+                    <!-- Fear & Greed Index -->
+                    <div class="sidebar-block" id="fng-section">
+                        <h3 class="sidebar-title">😱 Fear & Greed Index</h3>
+                        <div class="fng-widget" id="fng-widget">
+                            <div class="fng-gauge-container">
+                                <div class="fng-gauge">
+                                    <svg viewBox="0 0 200 120" class="fng-gauge-svg">
+                                        <!-- Fond de la jauge -->
+                                        <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#e5e7eb" stroke-width="14" stroke-linecap="round"/>
+                                        <!-- Dégradé de couleurs -->
+                                        <defs>
+                                            <linearGradient id="fng-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                <stop offset="0%" style="stop-color:#dc2626"/>
+                                                <stop offset="25%" style="stop-color:#f97316"/>
+                                                <stop offset="50%" style="stop-color:#eab308"/>
+                                                <stop offset="75%" style="stop-color:#84cc16"/>
+                                                <stop offset="100%" style="stop-color:#16a34a"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="url(#fng-gradient)" stroke-width="14" stroke-linecap="round"/>
+                                        <!-- Aiguille (positionnée dynamiquement par JS) -->
+                                        <line id="fng-needle" x1="100" y1="100" x2="100" y2="30" stroke="var(--navy, #0a1628)" stroke-width="2.5" stroke-linecap="round"/>
+                                        <circle cx="100" cy="100" r="5" fill="var(--navy, #0a1628)"/>
+                                    </svg>
+                                </div>
+                                <div class="fng-value-display">
+                                    <span class="fng-score" id="fng-score">--</span>
+                                    <span class="fng-label" id="fng-label">Chargement...</span>
+                                </div>
+                            </div>
+                            <div class="fng-changes" id="fng-changes">
+                                <div class="fng-change-item">
+                                    <span class="fng-change-period">7j</span>
+                                    <span class="fng-change-value" id="fng-change-week">--</span>
+                                </div>
+                                <div class="fng-change-item">
+                                    <span class="fng-change-period">30j</span>
+                                    <span class="fng-change-value" id="fng-change-month">--</span>
+                                </div>
+                            </div>
+                            <div class="fng-scale">
+                                <span class="fng-scale-label fng-extreme-fear">Peur extrême</span>
+                                <span class="fng-scale-label fng-neutral">Neutre</span>
+                                <span class="fng-scale-label fng-extreme-greed">Avidité extrême</span>
+                            </div>
+                        </div>
+                        <span class="sidebar-source">Source : Alternative.me</span>
+                    </div>
+
                     <!-- Sections -->
                     <div class="sidebar-block">
                         <h3 class="sidebar-title">Rubriques</h3>
