@@ -421,6 +421,47 @@ function initStickyHeader() {
     }, { passive: true });
 }
 
+
+// --- Load More News Button ---
+function initLoadMore() {
+    var btn = document.getElementById('load-more-news');
+    if (!btn) return;
+    var container = document.getElementById('latest-news');
+    if (!container) return;
+
+    var VISIBLE_COUNT = 5;
+    var INCREMENT = 5;
+
+    function applyVisibility() {
+        var items = container.querySelectorAll('.news-item');
+        if (items.length === 0) return;
+        var shown = 0;
+        items.forEach(function(item, i) {
+            if (i < VISIBLE_COUNT) {
+                item.style.display = '';
+                shown++;
+            } else {
+                item.style.display = 'none';
+            }
+        });
+        btn.style.display = (shown >= items.length) ? 'none' : '';
+    }
+
+    btn.addEventListener('click', function() {
+        VISIBLE_COUNT += INCREMENT;
+        applyVisibility();
+    });
+
+    // Wait for news items to be loaded (async), then apply
+    var observer = new MutationObserver(function() {
+        var items = container.querySelectorAll('.news-item');
+        if (items.length > 0) {
+            applyVisibility();
+        }
+    });
+    observer.observe(container, { childList: true, subtree: true });
+}
+
 function initBackToTop() {
     var btn = document.querySelector('.back-to-top');
     if (!btn) return;
@@ -504,4 +545,5 @@ function initUI() {
     initBackToTop();
     initMarketStatus();
     initNewsletter();
+    initLoadMore();
 }
