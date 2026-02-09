@@ -1,0 +1,84 @@
+{
+  "updated": "2026-02-09T21:01:35.094Z",
+  "source": "FRED (Federal Reserve Economic Data)",
+  "indicators": [
+    {
+      "id": "CPIAUCSL",
+      "label": "Inflation (CPI)",
+      "value": 326.03,
+      "date": "2025-12-01",
+      "unit": "index",
+      "change": 3.03,
+      "change_type": "yoy",
+      "previous": {
+        "value": 325.031,
+        "date": "2025-11-01"
+      }
+    },
+    {
+      "id": "DFF",
+      "label": "Taux directeur (Fed Funds)",
+      "value": 3.64,
+      "date": "2026-02-05",
+      "unit": "%",
+      "change": 0,
+      "change_type": "abs",
+      "previous": {
+        "value": 3.64,
+        "date": "2026-02-04"
+      }
+    },
+    {
+      "id": "GDP",
+      "label": "PIB (trimestriel)",
+      "value": 31098.027,
+      "date": "2025-07-01",
+      "unit": "Mrd $",
+      "change": 612.3,
+      "change_type": "abs",
+      "previous": {
+        "value": 30485.729,
+        "date": "2025-04-01"
+      }
+    },
+    {
+      "id": "UNRATE",
+      "label": "Chômage",
+      "value": 4.4,
+      "date": "2025-12-01",
+      "unit": "%",
+      "change": -0.1,
+      "change_type": "abs",
+      "previous": {
+        "value": 4.5,
+        "date": "2025-11-01"
+      }
+    },
+    {
+      "id": "DGS10",
+      "label": "Treasury 10 ans",
+      "value": 4.21,
+      "date": "2026-02-05",
+      "unit": "%",
+      "change": -0.08,
+      "change_type": "abs",
+      "previous": {
+        "value": 4.29,
+        "date": "2026-02-04"
+      }
+    },
+    {
+      "id": "DTWEXBGS",
+      "label": "Dollar Index (broad)",
+      "value": 117.8996,
+      "date": "2026-01-30",
+      "unit": "index",
+      "change": 0.46,
+      "change_type": "abs",
+      "previous": {
+        "value": 117.4396,
+        "date": "2026-01-29"
+      }
+    }
+  ]
+}
