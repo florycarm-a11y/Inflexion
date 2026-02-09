@@ -102,6 +102,56 @@ button:focus-visible,
     /* No gradients — solid accent used everywhere */
     --gradient-main: var(--accent);
     --gradient-accent: var(--accent);
+
+    /* ── Typography Scale ── */
+    --fs-xs: 0.7rem;
+    --fs-sm: 0.82rem;
+    --fs-base: 1rem;
+    --fs-md: 1.125rem;
+    --fs-lg: 1.35rem;
+    --fs-xl: 1.75rem;
+    --fs-2xl: 2.25rem;
+    --fs-3xl: 2.75rem;
+    --fw-normal: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+    --lh-tight: 1.2;
+    --lh-normal: 1.5;
+    --lh-relaxed: 1.7;
+
+    /* ── Spacing ── */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+
+    /* ── Shadows ── */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+    --shadow-header: 0 2px 8px rgba(0,0,0,0.1);
+
+    /* ── Border Radius ── */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-full: 9999px;
+
+    /* ── Transitions ── */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /* ── Layout ── */
+    --header-height: 60px;
+    --header-height-scrolled: 48px;
+    --content-max-width: 1240px;
+    --sidebar-width: 320px;
 }
 
 body {
@@ -2475,5 +2525,158 @@ a {
         content: ' (' attr(href) ')';
         font-size: 0.8em;
         color: #666;
+    }
+}
+
+
+/* =============================================
+   VAGUE 1 — HEADER SCROLL EFFECT
+   ============================================= */
+
+.header-top {
+    transition: padding var(--transition-normal),
+                box-shadow var(--transition-normal),
+                background var(--transition-normal);
+}
+
+.header-top.scrolled {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    box-shadow: var(--shadow-header);
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.logo-img {
+    transition: height var(--transition-normal);
+}
+
+.header-top.scrolled .logo-img {
+    height: 26px;
+}
+
+.header-top.scrolled .desktop-nav-link {
+    font-size: 0.76rem;
+    padding: 0.2rem 0.45rem;
+}
+
+.header-top.scrolled .market-status {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+}
+
+/* =============================================
+   VAGUE 1 — ENHANCED MOBILE RESPONSIVE
+   ============================================= */
+
+@media (max-width: 768px) {
+    /* ── Mobile Header ── */
+    .header-top {
+        padding: 0.4rem 0.75rem;
+    }
+    .header-controls {
+        gap: 0.35rem;
+    }
+    .header-search {
+        max-width: 140px;
+    }
+    .header-search input {
+        font-size: var(--fs-xs);
+        padding: 0.3rem 0.5rem;
+    }
+    .search-btn {
+        font-size: var(--fs-xs);
+        padding: 0.3rem 0.6rem;
+    }
+
+    /* ── Hero Mobile ── */
+    .hero-section {
+        padding: 2rem 1rem;
+        min-height: auto;
+    }
+    .hero-section h1 {
+        font-size: var(--fs-xl);
+        line-height: var(--lh-tight);
+    }
+    .hero-cta {
+        padding: 0.6rem 1.3rem;
+        font-size: var(--fs-sm);
+    }
+
+    /* ── News Cards Stack ── */
+    .story-card {
+        flex-direction: column;
+    }
+    .story-card img,
+    .story-card .story-img {
+        width: 100%;
+        height: 180px;
+        border-radius: var(--radius-md) var(--radius-md) 0 0;
+    }
+    .story-card .story-content {
+        padding: var(--space-md);
+    }
+
+    /* ── Chart Container ── */
+    .chart-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 -0.5rem;
+        padding: 0 0.5rem;
+    }
+
+    /* ── Sidebar collapse ── */
+    .content-layout {
+        grid-template-columns: 1fr;
+    }
+    .sidebar {
+        order: 2;
+        margin-top: var(--space-xl);
+    }
+
+    /* ── Newsletter Mobile ── */
+    .newsletter-form {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+    .newsletter-form input,
+    .newsletter-form button {
+        width: 100%;
+    }
+
+    /* ── Footer Mobile ── */
+    .site-footer .footer-content {
+        flex-direction: column;
+        gap: var(--space-lg);
+        text-align: center;
+    }
+
+    /* ── Section spacing ── */
+    .section-title {
+        font-size: var(--fs-lg);
+    }
+    .manifesto-section {
+        padding: var(--space-xl) var(--space-md);
+    }
+}
+
+@media (max-width: 480px) {
+    /* ── Extra-small tweaks ── */
+    .hero-section h1 {
+        font-size: var(--fs-lg);
+    }
+    .hero-section {
+        padding: 1.5rem 0.75rem;
+    }
+    .market-status {
+        font-size: 0.65rem;
+        padding: 0.12rem 0.35rem;
+    }
+    .news-ticker {
+        font-size: var(--fs-xs);
+    }
+    .story-card .story-content h3 {
+        font-size: var(--fs-sm);
     }
 }
