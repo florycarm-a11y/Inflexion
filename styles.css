@@ -783,10 +783,11 @@ a {
 
 .source-name {
     font-family: var(--font-sans);
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-variant: small-caps;
+    text-transform: none;
+    letter-spacing: 0.03em;
     color: var(--accent);
     text-decoration: none;
 }
@@ -1107,14 +1108,19 @@ a {
    News List Items (home page)
    ============================================ */
 .news-list-item {
-    padding: 1.25rem 0;
-    border-bottom: 1px solid var(--border-light);
-    transition: padding-left 0.15s ease;
+    background: white;
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.5rem;
+    border-bottom: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .news-list-item:hover {
-    padding-left: 0.75rem;
-    border-left: 2px solid var(--accent);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+    transform: translateY(-1px);
 }
 
 .news-list-source {
@@ -3615,10 +3621,11 @@ a {
 
 .source-name {
     font-family: var(--font-sans);
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-variant: small-caps;
+    text-transform: none;
+    letter-spacing: 0.03em;
     color: var(--accent);
     text-decoration: none;
 }
@@ -3939,14 +3946,19 @@ a {
    News List Items (home page)
    ============================================ */
 .news-list-item {
-    padding: 1.25rem 0;
-    border-bottom: 1px solid var(--border-light);
-    transition: padding-left 0.15s ease;
+    background: white;
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.5rem;
+    border-bottom: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .news-list-item:hover {
-    padding-left: 0.75rem;
-    border-left: 2px solid var(--accent);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+    transform: translateY(-1px);
 }
 
 .news-list-source {
@@ -7038,23 +7050,23 @@ a {
     letter-spacing: 0.02em;
 }
 
-/* --- News list items: subtle card style --- */
+/* --- News list items: card style (reinforced) --- */
 .news-list-item {
-    background: white;
-    border-radius: var(--radius-sm, 4px);
+    background: white !important;
+    border-radius: 6px !important;
     padding: 1rem 1.25rem !important;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem !important;
     border-bottom: none !important;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-    border: 1px solid var(--border-light, #f0f0f0);
-    transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07) !important;
+    border: 1px solid rgba(0,0,0,0.06) !important;
+    transition: box-shadow 0.2s ease, transform 0.2s ease !important;
 }
 
 .news-list-item:hover {
     padding-left: 1.25rem !important;
-    border-left: 1px solid var(--border-light, #f0f0f0) !important;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.07);
-    transform: translateY(-1px);
+    border-left: 1px solid rgba(0,0,0,0.06) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10) !important;
+    transform: translateY(-1px) !important;
 }
 
 /* --- Hide empty sections --- */
