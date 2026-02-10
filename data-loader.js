@@ -749,10 +749,10 @@ const DataLoader = (function () {
         // Mettre à jour newsDatabase globale avec les données live
         if (_cache.news?.categories && typeof window.newsDatabase !== 'undefined') {
             var catMapping = {
-                geopolitique: 'geopolitics',
-                marches: 'markets',
+                geopolitics: 'geopolitics',
+                markets: 'markets',
                 crypto: 'crypto',
-                matieres_premieres: 'commodities',
+                commodities: 'commodities',
                 ai_tech: 'markets' // Fusionner les news IA/tech dans marchés
             };
 

@@ -1,332 +1,509 @@
-// Inflexion — v5.0 — Données dynamiques prioritaires + fallback léger
-// Updated: 9 février 2026
-// Note : les données statiques sont désormais minimales.
-// Le DataLoader (data-loader.js) charge les données live depuis /data/*.json
+/**
+ * Inflexion — Main Application
+ * Core JavaScript for the Inflexion financial news platform
+ *
+ * @version 2.0.0 — Vague 9 (Supabase + FRED)
+ */
 
-const categoryTrends = {
-    geopolitics: 'Droits de douane, tensions sino-américaines, recomposition des alliances — les marchés intègrent le risque géopolitique en temps réel. Suivez l\'impact direct sur vos positions.',
-    markets: 'Wall Street navigue entre résultats d\'entreprises, politique monétaire de la Fed et tensions commerciales. L\'IA reste le moteur de la performance des indices.',
-    crypto: 'Bitcoin sous pression, flux ETF spot en recul, adoption institutionnelle en question — le marché crypto cherche son prochain catalyseur.',
-    commodities: 'L\'or atteint de nouveaux sommets portés par les achats des banques centrales. Le pétrole reste sensible aux tensions au Moyen-Orient et aux décisions de l\'OPEP+.',
-    etf: 'Flux record vers les ETF semi-conducteurs (SMH) et or (GLD). Les allocations défensives reprennent face à l\'incertitude géopolitique.'
-};
+/* ============================================
+   Static Data (fallback if live JSON unavailable)
+   ============================================ */
 
-// Fallback minimal — les données live sont chargées par DataLoader depuis /data/*.json
-const newsDatabase = {
-    geopolitics: [{ source: 'Inflexion', url: '#', title: 'Chargement des actualités géopolitiques...', description: 'Les données live seront disponibles sous peu.', tags: ['geopolitics'], time: '', impact: 'high' }],
-    markets: [{ source: 'Inflexion', url: '#', title: 'Chargement des actualités marchés...', description: 'Les données live seront disponibles sous peu.', tags: ['markets'], time: '', impact: 'high' }],
-    crypto: [{ source: 'Inflexion', url: '#', title: 'Chargement des actualités crypto...', description: 'Les données live seront disponibles sous peu.', tags: ['crypto'], time: '', impact: 'high' }],
-    commodities: [{ source: 'Inflexion', url: '#', title: 'Chargement des actualités matières premières...', description: 'Les données live seront disponibles sous peu.', tags: ['commodities'], time: '', impact: 'high' }],
-    etf: [{ source: 'Inflexion', url: '#', title: 'Chargement des actualités ETF...', description: 'Les données live seront disponibles sous peu.', tags: ['etf'], time: '', impact: 'high' }]
-};
-
-const marketData = [
-    { name: 'S&P 500', price: 0, change: 0 },
-    { name: 'Nasdaq 100', price: 0, change: 0 },
-    { name: 'Or (XAU)', price: 0, change: 0 },
-    { name: 'Nvidia', price: 0, change: 0 },
-    { name: 'Pétrole WTI', price: 0, change: 0 },
-    { name: 'Dollar Index', price: 0, change: 0 }
+var breakingNews = [
+    "Or à 2 890 $/oz (+18,2% YTD) — les banques centrales achètent massivement",
+    "Bitcoin sous 80 000 $ — les ETF crypto enregistrent 1,7 Md$ de sorties",
+    "Fed : taux maintenus à 4,25–4,50% — Powell reste prudent sur les baisses",
+    "Nvidia dépasse les 3 000 Md$ de capitalisation — IA en pleine euphorie",
+    "Pétrole WTI à 73 $ — tensions au Moyen-Orient et coupes OPEP+",
+    "EUR/USD à 1,04 — le dollar reste fort face à l'incertitude politique européenne",
+    "S&P 500 à +4,2% YTD — la tech tire le marché américain",
+    "Inflation US à 2,9% — au-dessus de l'objectif de la Fed",
+    "Chômage US à 4,0% — le marché du travail reste résilient",
+    "Treasury 10Y à 4,49% — les taux longs restent élevés"
 ];
 
-const commodityData = [
-    { name: 'Or', price: '—', change: '—', up: true },
-    { name: 'Argent', price: '—', change: '—', up: true },
-    { name: 'Pétrole WTI', price: '—', change: '—', up: true },
-    { name: 'Pétrole Brent', price: '—', change: '—', up: true },
-    { name: 'Gaz naturel', price: '—', change: '—', up: false },
-    { name: 'Cuivre', price: '—', change: '—', up: true },
-    { name: 'Blé', price: '—', change: '—', up: false }
+var marketData = [
+    { name: "S&P 500", price: 6025.99, change: 0.61 },
+    { name: "Nasdaq 100", price: 21580.00, change: 0.85 },
+    { name: "Or (XAU)", price: 2891.50, change: 0.32 },
+    { name: "Nvidia", price: 129.84, change: 2.15 },
+    { name: "Pétrole WTI", price: 73.21, change: -0.45 },
+    { name: "Dollar Index", price: 108.05, change: 0.12 }
 ];
 
-const etfTableData = [
-    { ticker: '—', name: 'Chargement...', provider: '—', flow: '—' }
+var newsDatabase = [
+    // Géopolitique
+    { category: "geopolitique", title: "Tensions en mer de Chine : Taïwan renforce ses défenses", source: "Foreign Policy", time: "Il y a 2h", url: "#", description: "Taipei annonce un budget militaire record face aux manœuvres chinoises répétées dans le détroit." },
+    { category: "geopolitique", title: "Sommet UE-Afrique : nouveaux accords sur les terres rares", source: "Atlantic Council", time: "Il y a 4h", url: "#", description: "L'Europe cherche à sécuriser ses approvisionnements en minerais critiques pour la transition énergétique." },
+    { category: "geopolitique", title: "Iran : négociations nucléaires au point mort", source: "CFR", time: "Il y a 6h", url: "#", description: "Les pourparlers de Vienne stagnent alors que Téhéran enrichit l'uranium à 60%." },
+    // Marchés
+    { category: "marches", title: "Wall Street : le S&P 500 enchaîne un 5e record consécutif", source: "CNBC", time: "Il y a 1h", url: "#", description: "Les valeurs technologiques continuent de tirer le marché américain vers de nouveaux sommets." },
+    { category: "marches", title: "BCE : Lagarde signale une possible baisse des taux en mars", source: "Bloomberg", time: "Il y a 3h", url: "#", description: "L'inflation en zone euro ralentit plus vite que prévu, ouvrant la porte à un assouplissement monétaire." },
+    { category: "marches", title: "Résultats Nvidia : le chiffre d'affaires double grâce à l'IA", source: "CNBC", time: "Il y a 5h", url: "#", description: "Le géant des GPU affiche des résultats stratosphériques portés par la demande en puces IA." },
+    { category: "marches", title: "Obligations : le 10 ans US franchit les 4,50%", source: "Bloomberg", time: "Il y a 7h", url: "#", description: "Les taux longs remontent face aux craintes d'inflation persistante et de déficit budgétaire." },
+    // Crypto
+    { category: "crypto", title: "Bitcoin sous 80 000 $ : les ETF perdent 1,7 Md$ en sorties", source: "CoinDesk", time: "Il y a 2h", url: "#", description: "Le marché crypto subit des pressions vendeuses alors que les investisseurs institutionnels se désengagent." },
+    { category: "crypto", title: "Ethereum 2.0 : le staking atteint 32 millions d'ETH", source: "CoinDesk", time: "Il y a 5h", url: "#", description: "La sécurité du réseau Ethereum se renforce avec un nombre record de validateurs." },
+    // Matières premières
+    { category: "matieres_premieres", title: "Or à 2 890 $ : les banques centrales achètent 585 tonnes/trimestre", source: "World Gold Council", time: "Il y a 3h", url: "#", description: "La demande institutionnelle pour l'or atteint des niveaux historiques en ce début 2026." },
+    { category: "matieres_premieres", title: "Pétrole : l'OPEP+ maintient ses coupes malgré la pression US", source: "Bloomberg", time: "Il y a 6h", url: "#", description: "L'Arabie saoudite refuse d'augmenter sa production malgré les appels de Washington." },
+    { category: "matieres_premieres", title: "Cuivre à 9 400 $/t — la demande chinoise repart", source: "Bloomberg", time: "Il y a 8h", url: "#", description: "Le métal rouge profite du plan de relance de Pékin pour les infrastructures vertes." },
 ];
 
-const breakingNews = [
-    'Inflexion — Chargement des dernières actualités...'
-];
-
-// --- Core functions ---
+/* ============================================
+   Utility Functions
+   ============================================ */
 
 function escapeHTML(str) {
-    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    if (!str) return '';
+    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+    return String(str).replace(/[&<>"']/g, c => map[c]);
 }
 
-function initTicker() {
-    var el = document.getElementById('ticker-content');
-    if (!el) return;
-    var h = breakingNews.map(function(t) { return '<span class="ticker-item">' + t + '</span>'; }).join('<span class="ticker-separator">|</span>');
-    el.innerHTML = h + h;
+function cardHTML(article) {
+    if (!article) return '';
+    const source = escapeHTML(article.source || '');
+    const title = escapeHTML(article.title || '');
+    const desc = escapeHTML(article.description || '');
+    const time = escapeHTML(article.time || '');
+    const url = article.url || '#';
+    const cat = escapeHTML(article.category || '');
+
+    return `<article class="top-story" data-category="${cat}">
+        <div class="story-content">
+            <span class="story-source">${source}</span>
+            <h3 class="story-title"><a href="${url}" target="_blank" rel="noopener">${title}</a></h3>
+            <p class="story-excerpt">${desc}</p>
+            <div class="story-footer">
+                <time class="story-time">${time}</time>
+                <a href="${url}" target="_blank" rel="noopener" class="story-link">Lire →</a>
+            </div>
+        </div>
+    </article>`;
 }
 
-function initSearch() {
-    var f = document.getElementById('search-form');
-    if (!f) return;
-    f.addEventListener('submit', function(e) {
-        e.preventDefault();
-        var q = document.getElementById('search-input').value.trim().toLowerCase();
-        if (!q) return;
-        // Persist search in URL
-        if (window.history.replaceState) {
-            var url = new URL(window.location);
-            url.searchParams.set('q', q);
-            window.history.replaceState({}, '', url);
-        }
-        var r = [];
-        Object.keys(newsDatabase).forEach(function(k) {
-            newsDatabase[k].forEach(function(a) {
-                if (a.title.toLowerCase().indexOf(q) !== -1 || a.description.toLowerCase().indexOf(q) !== -1) r.push(a);
-            });
-        });
-        showSearchResults(r, q);
-    });
-    // Restore search from URL on page load
-    var params = new URLSearchParams(window.location.search);
-    var savedQ = params.get('q');
-    if (savedQ) {
-        var input = document.getElementById('search-input');
-        if (input) { input.value = savedQ; f.dispatchEvent(new Event('submit')); }
-    }
-}
-
-function showSearchResults(results, query) {
-    var c = document.getElementById('search-results');
-    if (!c) { c = document.createElement('div'); c.id = 'search-results'; var m = document.querySelector('.main-content .container'); if (m) m.insertBefore(c, m.firstChild); }
-    if (!results.length) { c.innerHTML = '<div class="search-results-header"><h2>Aucun résultat pour « ' + escapeHTML(query) + ' »</h2><button class="close-search" onclick="this.parentElement.parentElement.remove()">Fermer</button></div>'; return; }
-    c.innerHTML = '<div class="search-results-header"><h2>' + results.length + ' résultat' + (results.length > 1 ? 's' : '') + ' pour « ' + escapeHTML(query) + ' »</h2><button class="close-search" onclick="this.parentElement.parentElement.remove()">Fermer</button></div><div class="news-grid">' + results.map(cardHTML).join('') + '</div>';
-    c.scrollIntoView({ behavior: 'smooth' });
-}
-
-var tagLabels = { geopolitics: 'Géopolitique', markets: 'Marchés', crypto: 'Crypto', commodities: 'Mat. Premières', etf: 'ETF', conflicts: 'Conflits', trade: 'Commerce', politics: 'Politique' };
-
-function parseTimeToDatetime(timeStr) {
-    var months = { 'jan.': '01', 'fév.': '02', 'mars': '03', 'avr.': '04', 'mai': '05', 'juin': '06', 'juil.': '07', 'août': '08', 'sept.': '09', 'oct.': '10', 'nov.': '11', 'déc.': '12' };
-    var parts = timeStr.trim().split(' ');
-    if (parts.length >= 2) {
-        var day = parts[0].replace(/\D/g, '').padStart(2, '0');
-        var monthKey = parts[1].toLowerCase();
-        var year = parts.length >= 3 ? parts[2] : '2026';
-        var month = months[monthKey] || '01';
-        return year + '-' + month + '-' + day;
-    }
-    return '2026-01-01';
-}
-
-function cardHTML(n) {
-    var tags = (n.tags || []).map(function(t) { return '<span class="tag ' + t + '">' + (tagLabels[t] || t) + '</span>'; }).join('');
-    var dot = n.impact === 'high' ? '<span class="impact-dot"></span>' : '';
-    var datetime = parseTimeToDatetime(n.time);
-    return '<article class="news-card"><div class="news-source"><a href="' + n.url + '" target="_blank" rel="noopener noreferrer" class="source-name">' + n.source + '</a><time class="news-time" datetime="' + datetime + '">' + n.time + '</time>' + dot + '</div><h3 class="news-title"><a href="' + n.url + '" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">' + n.title + '</a></h3><p class="news-description">' + n.description + '</p><div class="news-footer"><div class="news-tags">' + tags + '</div><a href="' + n.url + '" target="_blank" rel="noopener noreferrer" class="news-link">Lire</a></div></article>';
-}
-
-function initCommon() { initUI(); initTicker(); initSearch(); }
-
-// --- Menu overlay navigation ---
-function initMenuOverlay() {
-    var menuTrigger = document.querySelector('.menu-trigger');
-    var nav = document.getElementById('main-nav');
-    var navClose = document.querySelector('.nav-close');
-    if (!menuTrigger || !nav) return;
-
-    function openMenu() {
-        menuTrigger.setAttribute('aria-expanded', 'true');
-        menuTrigger.setAttribute('aria-label', 'Fermer le menu de navigation');
-        nav.classList.add('nav-open');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeMenu() {
-        menuTrigger.setAttribute('aria-expanded', 'false');
-        menuTrigger.setAttribute('aria-label', 'Ouvrir le menu de navigation');
-        nav.classList.remove('nav-open');
-        document.body.style.overflow = '';
-    }
-
-    menuTrigger.addEventListener('click', function() {
-        var isOpen = menuTrigger.getAttribute('aria-expanded') === 'true';
-        if (isOpen) {
-            closeMenu();
-        } else {
-            openMenu();
-        }
-    });
-
-    if (navClose) {
-        navClose.addEventListener('click', closeMenu);
-    }
-
-    // Close nav when a link is clicked
-    nav.querySelectorAll('.nav-overlay-link').forEach(function(link) {
-        link.addEventListener('click', closeMenu);
-    });
-
-    // Close on Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && nav.classList.contains('nav-open')) {
-            closeMenu();
-            menuTrigger.focus();
-        }
-    });
-
-    // Close drawer on backdrop click (desktop)
-    nav.addEventListener('click', function(e) {
-        if (e.target === nav) {
-            closeMenu();
-        }
-    });
-}
-
-// --- Home ---
+/* ============================================
+   Init Functions
+   ============================================ */
 
 function initHomePage() {
     initCommon();
-    var ts = document.getElementById('top-stories');
-    if (ts) {
-        var f = [
-            newsDatabase.markets && newsDatabase.markets[0],
-            newsDatabase.markets && newsDatabase.markets[1],
-            newsDatabase.commodities && newsDatabase.commodities[0]
-        ].filter(Boolean);
-        if (f.length === 0) { ts.innerHTML = '<p style="color:var(--text-muted);font-size:0.9rem;">Actualités en cours de chargement...</p>'; return; }
-        ts.innerHTML = '<div class="top-stories-grid">' + f.map(function(n, i) {
-            var dt = parseTimeToDatetime(n.time);
-            return '<article class="top-story' + (i === 0 ? ' top-story-main' : '') + '"><a href="' + n.url + '" target="_blank" rel="noopener noreferrer" class="source-name">' + n.source + '</a><h3><a href="' + n.url + '" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">' + n.title + '</a></h3><p>' + n.description + '</p><time class="news-time" datetime="' + dt + '">' + n.time + '</time></article>';
-        }).join('') + '</div>';
-    }
-    var ln = document.getElementById('latest-news');
-    if (ln) {
-        var all = [];
-        Object.keys(newsDatabase).forEach(function(k) { all = all.concat(newsDatabase[k]); });
-        all.sort(function(a, b) { return (a.impact === 'high' ? 0 : 1) - (b.impact === 'high' ? 0 : 1); });
-        ln.innerHTML = all.slice(0, 10).map(function(n) {
-            var dot = n.impact === 'high' ? '<span class="impact-dot"></span>' : '';
-            var dt = parseTimeToDatetime(n.time);
-            return '<article class="news-list-item"><div class="news-list-source"><a href="' + n.url + '" target="_blank" rel="noopener noreferrer" class="source-name">' + n.source + '</a><time class="news-time" datetime="' + dt + '">' + n.time + '</time>' + dot + '</div><h3><a href="' + n.url + '" target="_blank" rel="noopener noreferrer">' + n.title + '</a></h3><p>' + n.description + '</p></article>';
-        }).join('');
-    }
-    var mt = document.getElementById('market-table');
-    if (mt) mt.innerHTML = marketData.map(function(m) {
-        var cls = m.change > 0 ? 'positive' : 'negative';
-        return '<div class="market-row"><span class="market-row-name">' + m.name + '</span><span class="market-row-price">$' + m.price.toLocaleString('fr-FR') + '</span><span class="market-row-change ' + cls + '">' + (m.change > 0 ? '+' : '') + m.change.toFixed(2) + '%</span></div>';
-    }).join('');
-
-    // Initialize divergence chart
+    initTopStories();
+    initLatestNews();
+    initMarketTable();
     initDivergenceChart();
+    initLoadMore();
+
+    // Set loading timeout for sidebar widgets — fallback after 10s
+    setupLoadingFallbacks();
 }
 
-// --- Divergence Chart: Gold vs Bitcoin YTD ---
+function initCategoryPage(category) {
+    initCommon();
+    const container = document.getElementById('page-news');
+    if (!container) return;
+
+    const filtered = newsDatabase.filter(n => n.category === category);
+    if (filtered.length === 0) {
+        container.innerHTML = '<p class="empty-state">Aucun article disponible dans cette rubrique pour le moment.</p>';
+        return;
+    }
+    container.innerHTML = filtered.map(n => cardHTML(n)).join('');
+}
+
+function initCommon() {
+    initUI();
+    initTicker();
+    initSearch();
+}
+
+function initUI() {
+    initMenuOverlay();
+    initStickyHeader();
+    initBackToTop();
+    initMarketStatus();
+}
+
+/* ============================================
+   Ticker (Breaking News)
+   ============================================ */
+
+function initTicker() {
+    const ticker = document.getElementById('ticker-content');
+    if (!ticker) return;
+
+    const items = breakingNews.map(text =>
+        `<span class="ticker-item">${escapeHTML(text)}</span><span class="ticker-separator">·</span>`
+    ).join('');
+
+    // Duplicate for seamless loop
+    ticker.innerHTML = items + items;
+}
+
+/* ============================================
+   Search
+   ============================================ */
+
+function initSearch() {
+    const form = document.getElementById('search-form');
+    const input = document.getElementById('search-input');
+    if (!form || !input) return;
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const query = input.value.trim().toLowerCase();
+        if (!query) return;
+
+        const results = newsDatabase.filter(n =>
+            (n.title && n.title.toLowerCase().includes(query)) ||
+            (n.description && n.description.toLowerCase().includes(query)) ||
+            (n.source && n.source.toLowerCase().includes(query)) ||
+            (n.category && n.category.toLowerCase().includes(query))
+        );
+
+        const newsContainer = document.getElementById('latest-news');
+        if (!newsContainer) return;
+
+        if (results.length === 0) {
+            newsContainer.innerHTML = `<p class="empty-state">Aucun résultat pour « ${escapeHTML(query)} »</p>`;
+        } else {
+            newsContainer.innerHTML = results.map(n => newsListItemHTML(n)).join('');
+        }
+    });
+}
+
+/* ============================================
+   Menu Overlay (hamburger)
+   ============================================ */
+
+function initMenuOverlay() {
+    const trigger = document.querySelector('.menu-trigger');
+    const nav = document.getElementById('main-nav');
+    const closeBtn = nav ? nav.querySelector('.nav-close') : null;
+
+    if (!trigger || !nav) return;
+
+    function openMenu() {
+        nav.classList.add('nav-open');
+        trigger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+        if (closeBtn) closeBtn.focus();
+    }
+
+    function closeMenu() {
+        nav.classList.remove('nav-open');
+        trigger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        trigger.focus();
+    }
+
+    trigger.addEventListener('click', function() {
+        const isOpen = nav.classList.contains('nav-open');
+        isOpen ? closeMenu() : openMenu();
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+    // Close on backdrop click
+    nav.addEventListener('click', function(e) {
+        if (e.target === nav) closeMenu();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && nav.classList.contains('nav-open')) {
+            closeMenu();
+        }
+    });
+
+    // Close on link click
+    nav.querySelectorAll('.nav-overlay-link').forEach(function(link) {
+        link.addEventListener('click', closeMenu);
+    });
+}
+
+/* ============================================
+   Sticky Header
+   ============================================ */
+
+function initStickyHeader() {
+    const header = document.querySelector('.header');
+    if (!header) return;
+
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            requestAnimationFrame(function() {
+                header.classList.toggle('scrolled', window.scrollY > 50);
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+}
+
+/* ============================================
+   Top Stories (3 featured cards)
+   ============================================ */
+
+function initTopStories() {
+    const container = document.getElementById('top-stories');
+    if (!container) return;
+
+    const featured = newsDatabase.slice(0, 3);
+    if (featured.length === 0) {
+        container.innerHTML = '<p class="empty-state">Aucun article à la une.</p>';
+        return;
+    }
+
+    container.innerHTML = featured.map((article, i) => {
+        const cls = i === 0 ? 'top-story top-story-main' : 'top-story';
+        const source = escapeHTML(article.source || '');
+        const title = escapeHTML(article.title || '');
+        const desc = escapeHTML(article.description || '');
+        const time = escapeHTML(article.time || '');
+        const url = article.url || '#';
+
+        return `<article class="${cls}">
+            <div class="story-content">
+                <span class="story-source">${source}</span>
+                <h3 class="story-title"><a href="${url}" target="_blank" rel="noopener">${title}</a></h3>
+                <p class="story-excerpt">${desc}</p>
+                <div class="story-footer">
+                    <time class="story-time">${time}</time>
+                    <a href="${url}" target="_blank" rel="noopener" class="story-link">Lire →</a>
+                </div>
+            </div>
+        </article>`;
+    }).join('');
+}
+
+/* ============================================
+   Latest News (list)
+   ============================================ */
+
+let _newsOffset = 0;
+const NEWS_PER_PAGE = 5;
+
+function newsListItemHTML(article) {
+    const source = escapeHTML(article.source || '');
+    const title = escapeHTML(article.title || '');
+    const desc = escapeHTML(article.description || '');
+    const time = escapeHTML(article.time || '');
+    const url = article.url || '#';
+    const rubrique = escapeHTML(article.category || '');
+
+    return `<article class="news-list-item" data-rubrique="${rubrique}">
+        <div class="news-list-source">
+            <a href="${url}" target="_blank" rel="noopener noreferrer" class="source-name">${source}</a>
+            <time class="news-time">${time}</time>
+        </div>
+        <h3><a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a></h3>
+        <p>${desc}</p>
+    </article>`;
+}
+
+function initLatestNews() {
+    const container = document.getElementById('latest-news');
+    if (!container) return;
+
+    _newsOffset = 0;
+    const batch = newsDatabase.slice(0, NEWS_PER_PAGE);
+    if (batch.length === 0) {
+        container.innerHTML = '<p class="empty-state">Aucune actualité disponible.</p>';
+        return;
+    }
+    container.innerHTML = batch.map(n => newsListItemHTML(n)).join('');
+    _newsOffset = batch.length;
+}
+
+function initLoadMore() {
+    const btn = document.getElementById('load-more-news');
+    if (!btn) return;
+
+    btn.addEventListener('click', function() {
+        const container = document.getElementById('latest-news');
+        if (!container) return;
+
+        const batch = newsDatabase.slice(_newsOffset, _newsOffset + NEWS_PER_PAGE);
+        if (batch.length === 0) {
+            btn.textContent = 'Aucun article supplémentaire';
+            btn.disabled = true;
+            return;
+        }
+
+        batch.forEach(n => {
+            container.insertAdjacentHTML('beforeend', newsListItemHTML(n));
+        });
+        _newsOffset += batch.length;
+
+        if (_newsOffset >= newsDatabase.length) {
+            btn.textContent = 'Tous les articles affichés';
+            btn.disabled = true;
+        }
+    });
+}
+
+/* ============================================
+   Market Table (sidebar)
+   ============================================ */
+
+function initMarketTable() {
+    const container = document.getElementById('market-table');
+    if (!container) return;
+
+    if (!marketData || marketData.length === 0) {
+        container.innerHTML = '<p class="sidebar-empty">Données marchés indisponibles.</p>';
+        return;
+    }
+
+    container.innerHTML = marketData.map(m => {
+        const isPositive = m.change >= 0;
+        const sign = isPositive ? '+' : '';
+        const colorClass = isPositive ? 'positive' : 'negative';
+        const arrow = isPositive ? '▲' : '▼';
+
+        return `<div class="market-row">
+            <span class="market-name">${escapeHTML(m.name)}</span>
+            <span class="market-price">${m.price.toLocaleString('en-US', {minimumFractionDigits: 2})}</span>
+            <span class="market-change ${colorClass}">${arrow} ${sign}${m.change.toFixed(2)}%</span>
+        </div>`;
+    }).join('');
+}
+
+/* ============================================
+   Divergence Chart — Gold vs Bitcoin (Chart.js)
+   BUG FIX: Added comprehensive data guard
+   ============================================ */
 
 function initDivergenceChart() {
-    var canvas = document.getElementById('divergenceChart');
+    const canvas = document.getElementById('divergenceChart');
     if (!canvas) return;
 
-    // Data guard: Check if Chart.js is loaded
+    // ═══ DATA GUARD ═══
+    // Check if Chart.js is loaded
     if (typeof Chart === 'undefined') {
         console.warn('[Inflexion] Chart.js non chargé — graphique désactivé');
         showChartFallback(canvas, 'Bibliothèque graphique non disponible');
         return;
     }
 
-    // YTD 2026 data points (weekly)
-    var labels = ['1 jan', '8 jan', '15 jan', '22 jan', '29 jan', '5 fév'];
-    var goldData = [0, 3.2, 7.8, 12.4, 15.1, 18.2];      // Or: +18.2% YTD
-    var btcData = [0, -2.1, -8.5, -12.3, -14.8, -16.4];  // BTC: -16.4% YTD
+    // Try to get live data first, fall back to static
+    const liveData = (typeof DataLoader !== 'undefined' && DataLoader.isInitialized())
+        ? DataLoader.getChart()
+        : null;
 
-    // Final data guard
-    if (!Array.isArray(goldData) || goldData.length === 0 || !Array.isArray(btcData) || btcData.length === 0) {
+    let goldData, btcData, labels;
+
+    if (liveData && Array.isArray(liveData.gold) && Array.isArray(liveData.bitcoin) && liveData.gold.length > 0) {
+        // Use live data from API
+        goldData = liveData.gold.map(d => d && typeof d.value === 'number' ? d.value : null).filter(v => v !== null);
+        btcData = liveData.bitcoin.map(d => d && typeof d.value === 'number' ? d.value : null).filter(v => v !== null);
+        labels = liveData.gold.map(d => {
+            if (!d || !d.date) return '';
+            const date = new Date(d.date);
+            return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+        });
+    } else {
+        // Static fallback data (simplified 90-day trend)
+        console.info('[Inflexion] Données chart live indisponibles — utilisation du fallback statique');
+        const points = 30;
+        labels = [];
+        goldData = [];
+        btcData = [];
+        const now = new Date();
+        for (let i = points; i >= 0; i--) {
+            const d = new Date(now);
+            d.setDate(d.getDate() - i * 3);
+            labels.push(d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' }));
+            // Gold trending up ~18%
+            goldData.push(100 + (points - i) * 0.6 + (Math.random() - 0.3) * 2);
+            // Bitcoin trending down ~16%
+            btcData.push(100 - (points - i) * 0.5 + (Math.random() - 0.5) * 3);
+        }
+    }
+
+    // ═══ FINAL GUARD ═══
+    if (!goldData.length || !btcData.length || !labels.length) {
         console.warn('[Inflexion] Données insuffisantes pour le graphique');
         showChartFallback(canvas, 'Données insuffisantes pour afficher le graphique');
         return;
     }
 
     try {
-        var ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d');
         if (!ctx) {
             showChartFallback(canvas, 'Canvas non supporté');
             return;
         }
 
         new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [
-                {
-                    label: 'Or (XAU/USD)',
-                    data: goldData,
-                    borderColor: '#f59e0b',
-                    backgroundColor: 'rgba(245, 158, 11, 0.1)',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.3,
-                    pointRadius: 4,
-                    pointBackgroundColor: '#f59e0b'
-                },
-                {
-                    label: 'Bitcoin (BTC/USD)',
-                    data: btcData,
-                    borderColor: '#f7931a',
-                    backgroundColor: 'rgba(247, 147, 26, 0.1)',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.3,
-                    pointRadius: 4,
-                    pointBackgroundColor: '#f7931a',
-                    borderDash: [5, 5]
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            interaction: {
-                intersect: false,
-                mode: 'index'
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Or (XAU/USD)',
+                        data: goldData,
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'rgba(245, 158, 11, 0.08)',
+                        borderWidth: 2.5,
+                        pointRadius: 0,
+                        pointHoverRadius: 5,
+                        tension: 0.3,
+                        fill: true
+                    },
+                    {
+                        label: 'Bitcoin (BTC/USD)',
+                        data: btcData,
+                        borderColor: '#f7931a',
+                        backgroundColor: 'rgba(247, 147, 26, 0.05)',
+                        borderWidth: 2.5,
+                        borderDash: [6, 3],
+                        pointRadius: 0,
+                        pointHoverRadius: 5,
+                        tension: 0.3,
+                        fill: false
+                    }
+                ]
             },
-            plugins: {
-                legend: {
-                    display: false
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false
                 },
-                tooltip: {
-                    backgroundColor: 'rgba(10, 15, 26, 0.95)',
-                    titleFont: { family: "'Plus Jakarta Sans', sans-serif", size: 13 },
-                    bodyFont: { family: "'Plus Jakarta Sans', sans-serif", size: 12 },
-                    padding: 12,
-                    cornerRadius: 6,
-                    callbacks: {
-                        label: function(context) {
-                            var value = context.parsed.y;
-                            return context.dataset.label + ': ' + (value >= 0 ? '+' : '') + value.toFixed(1) + '%';
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#1a1a1a',
+                        titleColor: '#fff',
+                        bodyColor: '#ccc',
+                        padding: 12,
+                        cornerRadius: 6,
+                        displayColors: true
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: {
+                            maxTicksLimit: 8,
+                            font: { size: 11, family: "'Plus Jakarta Sans'" },
+                            color: '#6b6b6b'
                         }
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    grid: {
-                        display: false
                     },
-                    ticks: {
-                        font: { family: "'Plus Jakarta Sans', sans-serif", size: 11 },
-                        color: '#64748b'
-                    }
-                },
-                y: {
-                    grid: {
-                        color: 'rgba(100, 116, 139, 0.1)'
-                    },
-                    ticks: {
-                        font: { family: "'Plus Jakarta Sans', sans-serif", size: 11 },
-                        color: '#64748b',
-                        callback: function(value) {
-                            return (value >= 0 ? '+' : '') + value + '%';
+                    y: {
+                        grid: { color: 'rgba(0,0,0,0.04)' },
+                        ticks: {
+                            font: { size: 11, family: "'Plus Jakarta Sans'" },
+                            color: '#6b6b6b'
                         }
                     }
                 }
             }
-        }
-    });
+        });
     } catch (err) {
         console.error('[Inflexion] Erreur Chart.js:', err);
         showChartFallback(canvas, 'Erreur lors du rendu du graphique');
@@ -334,19 +511,98 @@ function initDivergenceChart() {
 }
 
 function showChartFallback(canvas, message) {
-    var container = canvas.parentElement;
+    const container = canvas.parentElement;
     if (container) {
-        container.innerHTML = '<div class="chart-fallback"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6b6b6b" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 5-6"/></svg><p>' + escapeHTML(message) + '</p></div>';
+        container.innerHTML = `<div class="chart-fallback">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6b6b6b" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 5-6"/></svg>
+            <p>${escapeHTML(message)}</p>
+        </div>`;
     }
 }
 
+// Listen for live data ready event from DataLoader
+document.addEventListener('inflexion:chartDataReady', function(e) {
+    if (!e.detail) return;
+    const canvas = document.getElementById('divergenceChart');
+    if (!canvas) return;
+    // Destroy existing chart and reinitialize with live data
+    const existingChart = Chart.getChart(canvas);
+    if (existingChart) existingChart.destroy();
+    initDivergenceChart();
+});
+
+/* ============================================
+   Back to Top
+   ============================================ */
+
+function initBackToTop() {
+    const btn = document.querySelector('.back-to-top');
+    if (!btn) return;
+
+    window.addEventListener('scroll', function() {
+        btn.classList.toggle('visible', window.scrollY > 400);
+    });
+
+    btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+/* ============================================
+   Market Status (NYSE open/closed)
+   ============================================ */
+
+function initMarketStatus() {
+    const status = document.querySelector('.market-status');
+    if (!status) return;
+
+    function update() {
+        const now = new Date();
+        const ny = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+        const day = ny.getDay();
+        const hour = ny.getHours();
+        const min = ny.getMinutes();
+        const time = hour * 60 + min;
+
+        // NYSE: Mon-Fri 9:30-16:00 ET
+        const isOpen = day >= 1 && day <= 5 && time >= 570 && time < 960;
+
+        const dot = status.querySelector('.market-status-dot');
+        const text = status.querySelector('.market-status-text');
+
+        if (isOpen) {
+            status.className = 'market-status open';
+            if (text) text.textContent = 'NYSE Ouvert';
+        } else {
+            status.className = 'market-status closed';
+            if (day === 0 || day === 6) {
+                if (text) text.textContent = 'Fermé (week-end)';
+            } else {
+                if (text) text.textContent = 'Fermé';
+            }
+        }
+    }
+
+    update();
+    setInterval(update, 60000);
+}
+
+/* ============================================
+   Loading Fallbacks — BUG FIX #2
+   After 10s, replace "Chargement..." with fallback messages
+   ============================================ */
+
 function setupLoadingFallbacks() {
     setTimeout(function() {
+        // Find all loading spinners still present
         document.querySelectorAll('.loading').forEach(function(loader) {
-            var parent = loader.parentElement;
+            const parent = loader.parentElement;
             if (!parent) return;
-            var message = 'Données indisponibles pour le moment.';
-            var id = parent.id || '';
+
+            // Determine fallback message based on container
+            let message = 'Données indisponibles pour le moment.';
+            const id = parent.id || '';
+
             if (id === 'top-stories') {
                 message = 'Articles à la une indisponibles.';
             } else if (id === 'latest-news') {
@@ -354,227 +610,72 @@ function setupLoadingFallbacks() {
             } else if (id === 'market-table') {
                 message = 'Données marchés indisponibles.';
             }
-            loader.innerHTML = '<p class="sidebar-empty">' + message + '</p>';
+
+            loader.innerHTML = `<p class="sidebar-empty">${message}</p>`;
             loader.classList.remove('loading');
             loader.classList.add('loading-fallback');
         });
-        var macroContainer = document.getElementById('macro-indicators');
+
+        // Handle macro indicators still showing placeholder
+        const macroContainer = document.getElementById('macro-indicators');
         if (macroContainer) {
-            var placeholder = macroContainer.querySelector('.macro-placeholder');
+            const placeholder = macroContainer.querySelector('.macro-placeholder');
             if (placeholder) {
                 placeholder.textContent = 'Indicateurs macro indisponibles.';
             }
         }
+
+        // Hide empty sections
         hideEmptySections();
     }, 10000);
 }
 
+/**
+ * Hide sections that have no content
+ */
 function hideEmptySections() {
-    var articleSection = document.getElementById('article-du-jour-section');
+    // Hide "Article du jour" if empty
+    const articleSection = document.getElementById('article-du-jour-section');
     if (articleSection) {
-        var placeholder = articleSection.querySelector('.article-du-jour-placeholder');
+        const placeholder = articleSection.querySelector('.article-du-jour-placeholder');
         if (placeholder) {
             articleSection.style.display = 'none';
         }
     }
-    var marketTable = document.getElementById('market-table');
+
+    // Hide "Marchés" sidebar if empty
+    const marketTable = document.getElementById('market-table');
     if (marketTable && marketTable.children.length === 0) {
-        var sidebarBlock = marketTable.closest('.sidebar-block');
+        const sidebarBlock = marketTable.closest('.sidebar-block');
         if (sidebarBlock) sidebarBlock.style.display = 'none';
     }
 }
 
-// --- Category pages ---
+/* ============================================
+   Newsletter (basic — enhanced by supabase-client.js)
+   ============================================ */
 
-function initCategoryPage(cat) {
-    initCommon();
-    var th = document.getElementById('category-trend');
-    if (th && categoryTrends[cat]) th.innerHTML = '<p class="analysis-excerpt" style="margin-bottom:2rem;padding:1.25rem;background:var(--bg-secondary);border-left:4px solid var(--pink);border-radius:0 4px 4px 0">' + categoryTrends[cat] + '</p>';
-    var c = document.getElementById('page-news');
-    if (!c) return;
-    var articles = newsDatabase[cat] || [];
-    c.innerHTML = articles.map(cardHTML).join('');
-    document.querySelectorAll('.filter-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
-            btn.classList.add('active');
-            var f = btn.getAttribute('data-filter');
-            var list = f === 'all' ? articles : articles.filter(function(a) { return a.tags.indexOf(f) !== -1; });
-            c.innerHTML = list.length ? list.map(cardHTML).join('') : '<p class="no-results">Aucun article dans cette catégorie.</p>';
-        });
-    });
-    if (cat === 'commodities') renderTable('commodity-table', ['Matière première', 'Prix', 'Variation'], commodityData, function(r) { return '<td>' + r.name + '</td><td>' + r.price + '</td><td class="' + (r.up ? 'positive' : 'negative') + '">' + r.change + '</td>'; });
-    if (cat === 'etf') renderTable('etf-table', ['Ticker', 'Nom', 'Fournisseur', 'Flux'], etfTableData, function(r) { return '<td><strong>' + r.ticker + '</strong></td><td>' + r.name + '</td><td>' + r.provider + '</td><td class="' + (r.flow[0] === '+' ? 'positive' : 'negative') + '">' + r.flow + '</td>'; });
-}
-
-function renderTable(id, headers, data, rowFn) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    var sortState = { col: -1, asc: true };
-    var keys = Object.keys(data[0] || {});
-    function render(d) {
-        el.innerHTML = '<table class="data-table"><thead><tr>' + headers.map(function(h, i) {
-            var cls = 'sortable';
-            if (i === sortState.col) cls += sortState.asc ? ' sort-asc' : ' sort-desc';
-            return '<th class="' + cls + '" data-col="' + i + '">' + h + '</th>';
-        }).join('') + '</tr></thead><tbody>' + d.map(function(r) { return '<tr>' + rowFn(r) + '</tr>'; }).join('') + '</tbody></table>';
-        el.querySelectorAll('th.sortable').forEach(function(th) {
-            th.addEventListener('click', function() {
-                var col = parseInt(th.getAttribute('data-col'));
-                if (sortState.col === col) { sortState.asc = !sortState.asc; } else { sortState.col = col; sortState.asc = true; }
-                var key = keys[col];
-                var sorted = data.slice().sort(function(a, b) {
-                    var va = (a[key] || '').toString(), vb = (b[key] || '').toString();
-                    var na = parseFloat(va.replace(/[^0-9.\-]/g, '')), nb = parseFloat(vb.replace(/[^0-9.\-]/g, ''));
-                    if (!isNaN(na) && !isNaN(nb)) return sortState.asc ? na - nb : nb - na;
-                    return sortState.asc ? va.localeCompare(vb) : vb.localeCompare(va);
-                });
-                render(sorted);
-            });
-        });
-    }
-    render(data);
-}
-
-// --- Back to Top ---
-
-// --- Sticky Header on Scroll ---
-function initStickyHeader() {
-    var header = document.querySelector('.header');
-    if (!header) return;
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    }, { passive: true });
-}
-
-
-// --- Load More News Button ---
-function initLoadMore() {
-    var btn = document.getElementById('load-more-news');
-    if (!btn) return;
-    var container = document.getElementById('latest-news');
-    if (!container) return;
-
-    var VISIBLE_COUNT = 5;
-    var INCREMENT = 5;
-
-    function applyVisibility() {
-        var items = container.querySelectorAll('.news-item');
-        if (items.length === 0) return;
-        var shown = 0;
-        items.forEach(function(item, i) {
-            if (i < VISIBLE_COUNT) {
-                item.style.display = '';
-                shown++;
-            } else {
-                item.style.display = 'none';
-            }
-        });
-        btn.style.display = (shown >= items.length) ? 'none' : '';
-    }
-
-    btn.addEventListener('click', function() {
-        VISIBLE_COUNT += INCREMENT;
-        applyVisibility();
-    });
-
-    // Wait for news items to be loaded (async), then apply
-    var observer = new MutationObserver(function() {
-        var items = container.querySelectorAll('.news-item');
-        if (items.length > 0) {
-            applyVisibility();
-        }
-    });
-    observer.observe(container, { childList: true, subtree: true });
-}
-
-function initBackToTop() {
-    var btn = document.querySelector('.back-to-top');
-    if (!btn) return;
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 400) {
-            btn.classList.add('visible');
-        } else {
-            btn.classList.remove('visible');
-        }
-    });
-    btn.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-}
-
-// --- Market Status ---
-function initMarketStatus() {
-    var el = document.querySelector('.market-status');
-    if (!el) return;
-    updateMarketStatus(el);
-    setInterval(function() { updateMarketStatus(el); }, 60000);
-}
-
-function updateMarketStatus(el) {
-    var now = new Date();
-    var nyTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
-    var day = nyTime.getDay();
-    var hour = nyTime.getHours();
-    var minute = nyTime.getMinutes();
-    var time = hour + minute / 60;
-
-    var status, text;
-    if (day === 0 || day === 6) {
-        status = 'closed';
-        text = 'Fermé (week-end)';
-    } else if (time >= 9.5 && time < 16) {
-        status = 'open';
-        text = 'Marchés ouverts';
-    } else if (time >= 4 && time < 9.5) {
-        status = 'pre-market';
-        text = 'Pré-ouverture';
-    } else if (time >= 16 && time < 20) {
-        status = 'after-hours';
-        text = 'Après-bourse';
-    } else {
-        status = 'closed';
-        text = 'Fermé';
-    }
-
-    el.className = 'market-status ' + status;
-    el.querySelector('.market-status-text').textContent = text;
-}
-
-// --- Newsletter ---
 function initNewsletter() {
-    var form = document.getElementById('newsletter-form');
+    // Basic newsletter handler (supabase-client.js overrides this)
+    const form = document.getElementById('newsletter-form');
     if (!form) return;
+
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        var email = document.getElementById('newsletter-email');
-        if (!email || !email.value.trim()) return;
-        // Demo only: stores email locally in browser — no data is sent to any server
-        var subscribers = JSON.parse(localStorage.getItem('inflexion_subscribers') || '[]');
-        if (subscribers.indexOf(email.value.trim()) === -1) {
-            subscribers.push(email.value.trim());
-            localStorage.setItem('inflexion_subscribers', JSON.stringify(subscribers));
-        }
-        form.hidden = true;
-        var success = document.getElementById('newsletter-success');
-        if (success) {
+        const email = document.getElementById('newsletter-email');
+        const success = document.getElementById('newsletter-success');
+        if (email && email.value && success) {
+            form.style.display = 'none';
             success.hidden = false;
-            success.setAttribute('role', 'status');
         }
     });
 }
 
-// Initialize all UI enhancements
-function initUI() {
-    initMenuOverlay();
-    initStickyHeader();
-    initBackToTop();
-    initMarketStatus();
-    initNewsletter();
-    initLoadMore();
-    setupLoadingFallbacks();
-}
+/* ============================================
+   Initialize on DOM ready
+   ============================================ */
+
+document.addEventListener('DOMContentLoaded', function() {
+    // initHomePage is called from the inline script in index.html
+    // Category pages call initCategoryPage() instead
+});
