@@ -4,11 +4,11 @@
 // Le DataLoader (data-loader.js) charge les données live depuis /data/*.json
 
 const categoryTrends = {
-    geopolitics: 'Droits de douane, tensions sino-américaines, recomposition des alliances — les marchés intègrent le risque géopolitique en temps réel. Suivez l'impact direct sur vos positions.',
-    markets: 'Wall Street navigue entre résultats d'entreprises, politique monétaire de la Fed et tensions commerciales. L'IA reste le moteur de la performance des indices.',
+    geopolitics: 'Droits de douane, tensions sino-américaines, recomposition des alliances — les marchés intègrent le risque géopolitique en temps réel. Suivez l\'impact direct sur vos positions.',
+    markets: 'Wall Street navigue entre résultats d\'entreprises, politique monétaire de la Fed et tensions commerciales. L\'IA reste le moteur de la performance des indices.',
     crypto: 'Bitcoin sous pression, flux ETF spot en recul, adoption institutionnelle en question — le marché crypto cherche son prochain catalyseur.',
-    commodities: 'L'or atteint de nouveaux sommets portés par les achats des banques centrales. Le pétrole reste sensible aux tensions au Moyen-Orient et aux décisions de l'OPEP+.',
-    etf: 'Flux record vers les ETF semi-conducteurs (SMH) et or (GLD). Les allocations défensives reprennent face à l'incertitude géopolitique.'
+    commodities: 'L\'or atteint de nouveaux sommets portés par les achats des banques centrales. Le pétrole reste sensible aux tensions au Moyen-Orient et aux décisions de l\'OPEP+.',
+    etf: 'Flux record vers les ETF semi-conducteurs (SMH) et or (GLD). Les allocations défensives reprennent face à l\'incertitude géopolitique.'
 };
 
 // Fallback minimal — les données live sont chargées par DataLoader depuis /data/*.json
