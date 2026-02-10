@@ -733,6 +733,17 @@ a {
     overflow: hidden;
 }
 
+.market-ticker-widget {
+    overflow: visible;
+    border: none;
+    width: 100%;
+    position: relative;
+}
+
+.market-ticker-widget .tradingview-widget-container__widget {
+    width: 100%;
+}
+
 /* ============================================
    News Grid Ã¢ÂÂ Clean Cards
    ============================================ */
@@ -3569,6 +3580,17 @@ a {
     margin-bottom: 1.5rem;
     border: 1px solid var(--border-color);
     overflow: hidden;
+}
+
+.market-ticker-widget {
+    overflow: visible;
+    border: none;
+    width: 100%;
+    position: relative;
+}
+
+.market-ticker-widget .tradingview-widget-container__widget {
+    width: 100%;
 }
 
 /* ============================================
