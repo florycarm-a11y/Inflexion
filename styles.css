@@ -7196,6 +7196,56 @@ a {
     color: white;
 }
 
+/* --- Ticker edge fade --- */
+.news-ticker {
+    position: relative;
+}
+.news-ticker::before,
+.news-ticker::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    z-index: 2;
+    pointer-events: none;
+}
+.news-ticker::before {
+    left: 0;
+    background: linear-gradient(to right, var(--navy) 0%, transparent 100%);
+}
+.news-ticker::after {
+    right: 0;
+    background: linear-gradient(to left, var(--navy) 0%, transparent 100%);
+}
+
+/* --- Sidebar: max 5 widgets visible --- */
+#calendar-section,
+#forex-section,
+#sectors-section,
+#movers-section {
+    display: none !important;
+}
+
+/* --- Auth modal: ensure proper overlay --- */
+.auth-modal-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 9999 !important;
+    display: none !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: rgba(0,0,0,0.7) !important;
+    backdrop-filter: blur(4px) !important;
+}
+.auth-modal-overlay.active {
+    display: flex !important;
+}
+.auth-modal {
+    position: relative !important;
+    z-index: 10000 !important;
+}
+
 /* --- Responsive footer --- */
 @media (max-width: 768px) {
     .footer-content {
