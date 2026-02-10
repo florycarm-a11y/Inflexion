@@ -4714,14 +4714,12 @@ a {
     background: rgba(34, 120, 69, 0.06);
 }
 
-/* Show desktop nav and hide hamburger on large screens */
+/* Show desktop nav on large screens */
 @media (min-width: 769px) {
     .desktop-nav {
         display: flex;
     }
-    .menu-trigger {
-        display: none;
-    }
+    /* .menu-trigger display:none removed — see Demande 39 */
     .header-top {
         gap: 1rem;
     }
