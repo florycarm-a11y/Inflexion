@@ -168,7 +168,8 @@ const DataLoader = (function () {
     function updateMarketSidebar() {
         if (!_cache.markets?.quotes?.length) return;
 
-        const sidebar = document.querySelector('.sidebar-markets') ||
+        const sidebar = document.getElementById('market-table') ||
+                       document.querySelector('.sidebar-markets') ||
                        document.querySelector('.market-data');
         if (!sidebar) return;
 
@@ -208,8 +209,8 @@ const DataLoader = (function () {
         const rows = container.querySelectorAll('.market-row, .market-item, tr');
         for (const row of rows) {
             if (row.textContent.includes(name)) {
-                const priceEl = row.querySelector('.price, .market-price, td:nth-child(2)');
-                const changeEl = row.querySelector('.change, .market-change, td:nth-child(3)');
+                const priceEl = row.querySelector('.price, .market-price, .market-row-price, td:nth-child(2)');
+                const changeEl = row.querySelector('.change, .market-change, .market-row-change, td:nth-child(3)');
 
                 if (priceEl) priceEl.textContent = formatUSD(price);
                 if (changeEl) {
@@ -466,9 +467,13 @@ const DataLoader = (function () {
         if (!container) return;
 
         if (!article || !article.titre) {
-            // Laisser le placeholder
+            // Laisser la section masquée
             return;
         }
+
+        // Afficher la section (masquée par défaut tant que pas de contenu)
+        var section = document.getElementById('article-du-jour-section');
+        if (section) section.classList.remove('section-empty');
 
         // Convertir le Markdown basique en HTML
         let contenuHTML = (article.contenu || '')
@@ -606,6 +611,47 @@ const DataLoader = (function () {
                 '<p>' + (n.description || '') + '</p>' +
             '</article>';
         }).join('');
+    }
+
+    /**
+     * Met à jour la section "À la une" (#top-stories) avec les données live
+     */
+    function updateTopStories() {
+        if (!_cache.news?.categories) return;
+
+        var ts = document.getElementById('top-stories');
+        if (!ts) return;
+
+        // Construire les top stories depuis les données live (marchés + matières premières)
+        var stories = [];
+        var catMapping = {
+            marches: 'markets',
+            matieres_premieres: 'commodities'
+        };
+
+        ['marches', 'matieres_premieres'].forEach(function(cat) {
+            var articles = _cache.news.categories[cat] || [];
+            articles.slice(0, 2).forEach(function(a) {
+                stories.push(a);
+            });
+        });
+
+        // Trier par date (plus récent d'abord) et prendre les 3 premiers
+        stories.sort(function(a, b) {
+            return new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0);
+        });
+        stories = stories.slice(0, 3);
+
+        if (stories.length === 0) return;
+
+        ts.innerHTML = '<div class="top-stories-grid">' + stories.map(function(n, i) {
+            return '<article class="top-story' + (i === 0 ? ' top-story-main' : '') + '">' +
+                '<a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" class="source-name">' + (n.source || '') + '</a>' +
+                '<h3><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">' + (n.title || '') + '</a></h3>' +
+                '<p>' + (n.description || '') + '</p>' +
+                '<time class="news-time">' + (n.time || '') + '</time>' +
+            '</article>';
+        }).join('') + '</div>';
     }
 
     // ─── Trending Coins Widget ──────────────────────────────
@@ -952,6 +998,7 @@ const DataLoader = (function () {
         updateDefiSection();
         updateGoldBitcoinChart();
         updateArticleDuJour();
+        updateTopStories();
         updateLatestNewsWithRubriques();
         initRubriqueFilters();
         handleEmptyWidgets();
