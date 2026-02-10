@@ -467,9 +467,13 @@ const DataLoader = (function () {
         if (!container) return;
 
         if (!article || !article.titre) {
-            // Laisser le placeholder
+            // Laisser la section masquée
             return;
         }
+
+        // Afficher la section (masquée par défaut tant que pas de contenu)
+        var section = document.getElementById('article-du-jour-section');
+        if (section) section.classList.remove('section-empty');
 
         // Convertir le Markdown basique en HTML
         let contenuHTML = (article.contenu || '')
