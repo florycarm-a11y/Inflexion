@@ -29,17 +29,29 @@ jobs:
       - name: Afficher les résultats
         if: always()
         run: |
+          if [ ! -f audit-results.json ]; then
+            echo '{"_info": "Aucun résultat généré"}' > audit-results.json
+          fi
           echo "## Résultats de l'audit linguistique" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          python3 -c "
-          import json
-          with open('audit-results.json') as f:
-              results = json.load(f)
-          for page, report in results.items():
-              print(f'### 📄 {page}')
-              print(report)
-              print()
-          " >> $GITHUB_STEP_SUMMARY
+          python3 << 'PYEOF' >> $GITHUB_STEP_SUMMARY
+          import json, sys
+          try:
+              with open('audit-results.json') as f:
+                  results = json.load(f)
+              if '_info' in results:
+                  print(f"> ⚠️ {results['_info']}")
+                  print()
+                  print("Pour activer l'audit, ajoutez le secret `ANTHROPIC_API_KEY` dans")
+                  print("**Settings → Secrets and variables → Actions**.")
+              else:
+                  for page, report in results.items():
+                      print(f"### 📄 {page}")
+                      print(report)
+                      print()
+          except Exception as e:
+              print(f"Erreur de lecture du rapport : {e}")
+          PYEOF
 
       - name: Sauvegarder le rapport
         if: always()

@@ -216,15 +216,23 @@ def main():
     # Vérifier la clé API
     api_key = os.environ.get('ANTHROPIC_API_KEY')
     if not api_key:
-        print("❌ Variable d'environnement ANTHROPIC_API_KEY non définie.")
-        print("   export ANTHROPIC_API_KEY=sk-ant-...")
-        sys.exit(1)
+        msg = "ANTHROPIC_API_KEY non définie — audit linguistique ignoré."
+        if args.json:
+            print(json.dumps({"_info": msg}, ensure_ascii=False, indent=2))
+        else:
+            print(f"⚠️  {msg}")
+            print("   Pour activer l'audit : export ANTHROPIC_API_KEY=sk-ant-...")
+        sys.exit(0)
 
     try:
         import anthropic
     except ImportError:
-        print("❌ Module anthropic non installé. Exécuter : pip install anthropic")
-        sys.exit(1)
+        msg = "Module anthropic non installé (pip install anthropic) — audit ignoré."
+        if args.json:
+            print(json.dumps({"_info": msg}, ensure_ascii=False, indent=2))
+        else:
+            print(f"⚠️  {msg}")
+        sys.exit(0)
 
     client = anthropic.Anthropic(api_key=api_key)
 

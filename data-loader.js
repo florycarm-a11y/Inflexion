@@ -805,6 +805,48 @@ const DataLoader = (function () {
     }
 
     /**
+     * Met à jour le bloc « tendance » sur les pages catégorie (#category-trend)
+     * avec un résumé des derniers titres live de la rubrique
+     */
+    function updateCategoryTrend() {
+        if (!_cache.news?.categories) return;
+
+        var trendEl = document.getElementById('category-trend');
+        if (!trendEl) return;
+
+        // Détecter la catégorie de la page courante
+        var pageHeader = document.querySelector('[data-category]');
+        if (!pageHeader) return;
+        var pageCat = pageHeader.getAttribute('data-category');
+
+        // Mapping catégorie page → catégorie JSON
+        var catMap = {
+            geopolitics: 'geopolitique',
+            markets: 'marches',
+            crypto: 'crypto',
+            commodities: 'matieres_premieres',
+            etf: 'marches' // Pas de rubrique ETF dans news.json, on utilise marchés
+        };
+
+        var newsCat = catMap[pageCat];
+        if (!newsCat || !_cache.news.categories[newsCat]) return;
+
+        var articles = _cache.news.categories[newsCat].slice(0, 3);
+        if (articles.length === 0) return;
+
+        // Construire le résumé en français
+        var titres = articles.map(function(a) {
+            return '<strong>' + (a.title || '') + '</strong> <span style="color:var(--text-muted)">(' + (a.source || '') + ')</span>';
+        });
+
+        trendEl.innerHTML = '<div class="analysis-excerpt" style="margin-bottom:2rem;padding:1.25rem;background:var(--bg-secondary);border-left:4px solid var(--pink);border-radius:0 4px 4px 0">' +
+            '<strong style="display:block;margin-bottom:0.5rem">Dernières actualités de la rubrique</strong>' +
+            '<ul style="margin:0;padding-left:1.2rem;list-style:disc">' +
+            titres.map(function(t) { return '<li style="margin-bottom:0.3rem">' + t + '</li>'; }).join('') +
+            '</ul></div>';
+    }
+
+    /**
      * Remplace un placeholder "Chargement..." par un message fallback
      */
     function showFallback(elementId, message) {
@@ -999,6 +1041,7 @@ const DataLoader = (function () {
         updateGoldBitcoinChart();
         updateArticleDuJour();
         updateTopStories();
+        updateCategoryTrend();
         updateLatestNewsWithRubriques();
         initRubriqueFilters();
         handleEmptyWidgets();
