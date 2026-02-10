@@ -168,7 +168,8 @@ const DataLoader = (function () {
     function updateMarketSidebar() {
         if (!_cache.markets?.quotes?.length) return;
 
-        const sidebar = document.querySelector('.sidebar-markets') ||
+        const sidebar = document.getElementById('market-table') ||
+                       document.querySelector('.sidebar-markets') ||
                        document.querySelector('.market-data');
         if (!sidebar) return;
 
@@ -208,8 +209,8 @@ const DataLoader = (function () {
         const rows = container.querySelectorAll('.market-row, .market-item, tr');
         for (const row of rows) {
             if (row.textContent.includes(name)) {
-                const priceEl = row.querySelector('.price, .market-price, td:nth-child(2)');
-                const changeEl = row.querySelector('.change, .market-change, td:nth-child(3)');
+                const priceEl = row.querySelector('.price, .market-price, .market-row-price, td:nth-child(2)');
+                const changeEl = row.querySelector('.change, .market-change, .market-row-change, td:nth-child(3)');
 
                 if (priceEl) priceEl.textContent = formatUSD(price);
                 if (changeEl) {
