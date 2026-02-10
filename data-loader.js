@@ -609,6 +609,47 @@ const DataLoader = (function () {
         }).join('');
     }
 
+    /**
+     * Met à jour la section "À la une" (#top-stories) avec les données live
+     */
+    function updateTopStories() {
+        if (!_cache.news?.categories) return;
+
+        var ts = document.getElementById('top-stories');
+        if (!ts) return;
+
+        // Construire les top stories depuis les données live (marchés + matières premières)
+        var stories = [];
+        var catMapping = {
+            marches: 'markets',
+            matieres_premieres: 'commodities'
+        };
+
+        ['marches', 'matieres_premieres'].forEach(function(cat) {
+            var articles = _cache.news.categories[cat] || [];
+            articles.slice(0, 2).forEach(function(a) {
+                stories.push(a);
+            });
+        });
+
+        // Trier par date (plus récent d'abord) et prendre les 3 premiers
+        stories.sort(function(a, b) {
+            return new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0);
+        });
+        stories = stories.slice(0, 3);
+
+        if (stories.length === 0) return;
+
+        ts.innerHTML = '<div class="top-stories-grid">' + stories.map(function(n, i) {
+            return '<article class="top-story' + (i === 0 ? ' top-story-main' : '') + '">' +
+                '<a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" class="source-name">' + (n.source || '') + '</a>' +
+                '<h3><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">' + (n.title || '') + '</a></h3>' +
+                '<p>' + (n.description || '') + '</p>' +
+                '<time class="news-time">' + (n.time || '') + '</time>' +
+            '</article>';
+        }).join('') + '</div>';
+    }
+
     // ─── Trending Coins Widget ──────────────────────────────
 
     /**
@@ -953,6 +994,7 @@ const DataLoader = (function () {
         updateDefiSection();
         updateGoldBitcoinChart();
         updateArticleDuJour();
+        updateTopStories();
         updateLatestNewsWithRubriques();
         initRubriqueFilters();
         handleEmptyWidgets();
