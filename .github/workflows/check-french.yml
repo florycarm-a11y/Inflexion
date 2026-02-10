@@ -1,0 +1,49 @@
+name: Audit linguistique français
+
+on:
+  pull_request:
+    paths:
+      - '*.html'
+      - 'app.js'
+      - 'data-loader.js'
+
+jobs:
+  audit-francais:
+    name: Vérification du français
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Installer les dépendances
+        run: pip install anthropic
+
+      - name: Lancer l'audit linguistique
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/check-french.py --json > audit-results.json
+
+      - name: Afficher les résultats
+        if: always()
+        run: |
+          echo "## Résultats de l'audit linguistique" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          python3 -c "
+          import json
+          with open('audit-results.json') as f:
+              results = json.load(f)
+          for page, report in results.items():
+              print(f'### 📄 {page}')
+              print(report)
+              print()
+          " >> $GITHUB_STEP_SUMMARY
+
+      - name: Sauvegarder le rapport
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-linguistique
+          path: audit-results.json
