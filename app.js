@@ -218,15 +218,36 @@ function initHomePage() {
 // --- Divergence Chart: Gold vs Bitcoin YTD ---
 
 function initDivergenceChart() {
-    var ctx = document.getElementById('divergenceChart');
-    if (!ctx || typeof Chart === 'undefined') return;
+    var canvas = document.getElementById('divergenceChart');
+    if (!canvas) return;
+
+    // Data guard: Check if Chart.js is loaded
+    if (typeof Chart === 'undefined') {
+        console.warn('[Inflexion] Chart.js non chargé — graphique désactivé');
+        showChartFallback(canvas, 'Bibliothèque graphique non disponible');
+        return;
+    }
 
     // YTD 2026 data points (weekly)
     var labels = ['1 jan', '8 jan', '15 jan', '22 jan', '29 jan', '5 fév'];
     var goldData = [0, 3.2, 7.8, 12.4, 15.1, 18.2];      // Or: +18.2% YTD
     var btcData = [0, -2.1, -8.5, -12.3, -14.8, -16.4];  // BTC: -16.4% YTD
 
-    new Chart(ctx, {
+    // Final data guard
+    if (!Array.isArray(goldData) || goldData.length === 0 || !Array.isArray(btcData) || btcData.length === 0) {
+        console.warn('[Inflexion] Données insuffisantes pour le graphique');
+        showChartFallback(canvas, 'Données insuffisantes pour afficher le graphique');
+        return;
+    }
+
+    try {
+        var ctx = canvas.getContext('2d');
+        if (!ctx) {
+            showChartFallback(canvas, 'Canvas non supporté');
+            return;
+        }
+
+        new Chart(ctx, {
         type: 'line',
         data: {
             labels: labels,
@@ -306,6 +327,61 @@ function initDivergenceChart() {
             }
         }
     });
+    } catch (err) {
+        console.error('[Inflexion] Erreur Chart.js:', err);
+        showChartFallback(canvas, 'Erreur lors du rendu du graphique');
+    }
+}
+
+function showChartFallback(canvas, message) {
+    var container = canvas.parentElement;
+    if (container) {
+        container.innerHTML = '<div class="chart-fallback"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6b6b6b" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 5-6"/></svg><p>' + escapeHTML(message) + '</p></div>';
+    }
+}
+
+function setupLoadingFallbacks() {
+    setTimeout(function() {
+        document.querySelectorAll('.loading').forEach(function(loader) {
+            var parent = loader.parentElement;
+            if (!parent) return;
+            var message = 'Données indisponibles pour le moment.';
+            var id = parent.id || '';
+            if (id === 'top-stories') {
+                message = 'Articles à la une indisponibles.';
+            } else if (id === 'latest-news') {
+                message = 'Actualités indisponibles.';
+            } else if (id === 'market-table') {
+                message = 'Données marchés indisponibles.';
+            }
+            loader.innerHTML = '<p class="sidebar-empty">' + message + '</p>';
+            loader.classList.remove('loading');
+            loader.classList.add('loading-fallback');
+        });
+        var macroContainer = document.getElementById('macro-indicators');
+        if (macroContainer) {
+            var placeholder = macroContainer.querySelector('.macro-placeholder');
+            if (placeholder) {
+                placeholder.textContent = 'Indicateurs macro indisponibles.';
+            }
+        }
+        hideEmptySections();
+    }, 10000);
+}
+
+function hideEmptySections() {
+    var articleSection = document.getElementById('article-du-jour-section');
+    if (articleSection) {
+        var placeholder = articleSection.querySelector('.article-du-jour-placeholder');
+        if (placeholder) {
+            articleSection.style.display = 'none';
+        }
+    }
+    var marketTable = document.getElementById('market-table');
+    if (marketTable && marketTable.children.length === 0) {
+        var sidebarBlock = marketTable.closest('.sidebar-block');
+        if (sidebarBlock) sidebarBlock.style.display = 'none';
+    }
 }
 
 // --- Category pages ---
@@ -500,4 +576,5 @@ function initUI() {
     initMarketStatus();
     initNewsletter();
     initLoadMore();
+    setupLoadingFallbacks();
 }
