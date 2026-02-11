@@ -106,6 +106,12 @@ function initHomePage() {
 
 function initCategoryPage(category) {
     initCommon();
+
+    // Initialiser le graphique Or vs Bitcoin si le canvas est présent
+    if (document.getElementById('divergenceChart') && typeof initDivergenceChart === 'function') {
+        initDivergenceChart();
+    }
+
     const container = document.getElementById('page-news');
     if (!container) return;
 
