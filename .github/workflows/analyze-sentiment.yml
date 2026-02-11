@@ -1,0 +1,82 @@
+# Inflexion — Analyse de sentiment & Alertes de marché
+# Exécuté 4x/jour (30 min après chaque fetch-data)
+#
+# Prérequis :
+#   - ANTHROPIC_API_KEY dans GitHub Secrets
+#   - PAT_TOKEN dans GitHub Secrets
+#   - data/news.json doit exister (généré par fetch-data.yml)
+
+name: "📊 Analyze Sentiment & Alerts"
+
+on:
+  schedule:
+    # 30 minutes après chaque fetch-data (0h, 6h, 12h, 18h)
+    - cron: '30 0,6,12,18 * * *'
+
+  # Exécution manuelle depuis l'onglet Actions
+  workflow_dispatch:
+
+  # Exécuter aussi au push sur main (pour les tests)
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/analyze-sentiment.mjs'
+      - 'scripts/generate-alerts.mjs'
+      - 'scripts/lib/claude-api.mjs'
+      - 'scripts/lib/prompts.mjs'
+      - '.github/workflows/analyze-sentiment.yml'
+
+# Permissions nécessaires pour committer les fichiers
+permissions:
+  contents: write
+
+# Une seule exécution à la fois
+concurrency:
+  group: "analyze-sentiment"
+  cancel-in-progress: true
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: "📥 Checkout du repo"
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: "🟢 Setup Node.js 20"
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: "📊 Analyse de sentiment"
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/analyze-sentiment.mjs
+
+      - name: "🚨 Génération des alertes"
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-alerts.mjs
+
+      - name: "📝 Commit et push"
+        run: |
+          git config user.name "Inflexion Bot"
+          git config user.email "bot@inflexionhub.com"
+
+          [ -f data/sentiment.json ] && git add data/sentiment.json || true
+          [ -f data/alerts.json ] && git add data/alerts.json || true
+
+          if git diff --staged --quiet; then
+            echo "Aucun changement"
+            exit 0
+          fi
+
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+          git commit -m "📊 Sentiment & alertes — ${TIMESTAMP}
+
+          Analyse automatique du sentiment de marché et génération des alertes."
+
+          git push

@@ -19,6 +19,8 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { callClaudeJSON, classifyText, getUsageStats } from './lib/claude-api.mjs';
+import { CLASSIFICATION_SYSTEM_PROMPT, ARTICLE_GENERATION_SYSTEM_PROMPT } from './lib/prompts.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, '..', 'data');
@@ -29,11 +31,9 @@ if (!existsSync(ARTICLES_DIR)) mkdirSync(ARTICLES_DIR, { recursive: true });
 
 // ─── Configuration ──────────────────────────────────────────
 
-const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
 const TAVILY_API_URL = 'https://api.tavily.com/search';
 const MODEL = 'claude-haiku-4-5-20251001'; // Haiku : rapide et économique
 const MAX_TOKENS_ARTICLE = 2048;
-const MAX_TOKENS_CLASSIFY = 256;
 
 // ─── Rubriques et mots-clés (classification hybride) ────────
 
@@ -131,38 +131,6 @@ function today() {
     return new Date().toISOString().split('T')[0]; // YYYY-MM-DD
 }
 
-/**
- * Appelle l'API Claude (Messages API)
- */
-async function callClaude(systemPrompt, userMessage, maxTokens = MAX_TOKENS_ARTICLE) {
-    const API_KEY = process.env.ANTHROPIC_API_KEY;
-    if (!API_KEY) throw new Error('ANTHROPIC_API_KEY non définie');
-
-    const response = await fetch(ANTHROPIC_API_URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': API_KEY,
-            'anthropic-version': '2023-06-01'
-        },
-        body: JSON.stringify({
-            model: MODEL,
-            max_tokens: maxTokens,
-            system: systemPrompt,
-            messages: [{ role: 'user', content: userMessage }]
-        }),
-        signal: AbortSignal.timeout(30000)
-    });
-
-    if (!response.ok) {
-        const err = await response.text();
-        throw new Error(`Claude API ${response.status}: ${err}`);
-    }
-
-    const data = await response.json();
-    return data.content[0].text;
-}
-
 // ─── 1. CLASSIFICATION HYBRIDE ──────────────────────────────
 
 /**
@@ -202,37 +170,18 @@ function classifyByKeywords(title, description) {
 
 /**
  * Classifie un article via Claude API (étape 2 — pour les cas ambigus)
+ * Utilise le module centralisé claude-api.mjs avec le prompt amélioré.
  */
 async function classifyWithClaude(title, description) {
-    const systemPrompt = `Tu es un classifieur d'articles de presse financière.
-Réponds UNIQUEMENT par l'un de ces 5 mots (sans explication) :
-- geopolitique
-- marches
-- crypto
-- matieres_premieres
-- ai_tech`;
-
-    const userMessage = `Classe cet article dans la rubrique la plus pertinente.
-
-Titre : ${title}
-Description : ${description}
-
-Rubrique :`;
-
-    try {
-        const result = await callClaude(systemPrompt, userMessage, MAX_TOKENS_CLASSIFY);
-        const rubrique = result.trim().toLowerCase().replace(/[^a-z_]/g, '');
-
-        // Vérifier que la réponse est valide
-        if (RUBRIQUES[rubrique]) return rubrique;
-
-        // Sinon fallback
-        console.warn(`  ⚠ Classification Claude invalide: "${result}" → fallback`);
-        return null;
-    } catch (err) {
-        console.warn(`  ⚠ Classification Claude échouée: ${err.message}`);
-        return null;
-    }
+    const rubrique = await classifyText(
+        `Titre: ${title}\nDescription: ${description}`,
+        Object.keys(RUBRIQUES),
+        {
+            systemPrompt: CLASSIFICATION_SYSTEM_PROMPT,
+            label: 'classification',
+        }
+    );
+    return rubrique;
 }
 
 /**
@@ -254,13 +203,11 @@ async function classifyAllArticles(newsData) {
             if (rubrique) {
                 keywordCount++;
             } else if (hasApiKey) {
-                // Étape 2 : Claude pour les cas ambigus
+                // Étape 2 : Claude pour les cas ambigus (rate limit géré par claude-api.mjs)
                 rubrique = await classifyWithClaude(article.title, article.description || '');
                 if (rubrique) {
                     claudeCount++;
                 }
-                // Rate limit
-                await new Promise(r => setTimeout(r, 200));
             }
 
             // Fallback : utiliser la catégorie GNews d'origine
@@ -513,28 +460,6 @@ async function generateDailyArticle(newsData, tavilyResults = [], macroData = nu
         .slice(0, 5)
         .map(r => ({ titre: r.title, url: r.url, domaine: new URL(r.url).hostname }));
 
-    const systemPrompt = `Tu es le rédacteur en chef d'Inflexion, une plateforme française d'intelligence financière qui analyse les signaux géopolitiques, technologiques et financiers.
-
-Ton style éditorial :
-- Ton analytique et direct, style éditorial financier haut de gamme (Bloomberg, Financial Times)
-- Tu relies toujours les événements entre eux (géopolitique ↔ marchés ↔ tech)
-- Tu donnes des chiffres précis et des analyses concrètes
-- Tu écris en FRANÇAIS
-- Tu ne fais AUCUNE recommandation d'investissement
-- Tu structures ton article avec un titre accrocheur, une introduction percutante, 2-3 sections thématiques, et une conclusion prospective
-- Longueur cible : 400-600 mots
-- Si des sources web complémentaires sont fournies, utilise-les pour approfondir ton analyse et citer des données précises
-
-Format de réponse (JSON strict) :
-{
-  "titre": "Titre accrocheur de l'article",
-  "sous_titre": "Sous-titre contextuel",
-  "contenu": "Le corps de l'article en Markdown (## pour les sections)",
-  "tags": ["tag1", "tag2", "tag3"],
-  "points_cles": ["Point clé 1", "Point clé 2", "Point clé 3"],
-  "sources": [{"titre": "...", "url": "...", "domaine": "..."}]
-}`;
-
     const userMessage = `Voici les actualités du jour (${today()}) collectées par nos sources. Rédige l'article de synthèse quotidien d'Inflexion.
 
 ${context.join('\n')}
@@ -545,20 +470,16 @@ ${sourcesList.length > 0 ? `\nSources disponibles pour citation :\n${sourcesList
 Réponds UNIQUEMENT en JSON valide, sans commentaire avant ou après.`;
 
     try {
-        const result = await callClaude(systemPrompt, userMessage, MAX_TOKENS_ARTICLE);
-
-        // Parser le JSON (Claude peut parfois entourer de ```json```)
-        let jsonStr = result.trim();
-        if (jsonStr.startsWith('```')) {
-            jsonStr = jsonStr.replace(/^```json?\n?/, '').replace(/\n?```$/, '');
-        }
-
-        const article = JSON.parse(jsonStr);
-
-        // Valider la structure
-        if (!article.titre || !article.contenu) {
-            throw new Error('Structure article invalide (manque titre ou contenu)');
-        }
+        const article = await callClaudeJSON({
+            systemPrompt: ARTICLE_GENERATION_SYSTEM_PROMPT,
+            userMessage,
+            maxTokens: MAX_TOKENS_ARTICLE,
+            label: 'article-du-jour',
+            validate: (data) => {
+                if (!data.titre || !data.contenu) return 'Structure article invalide (manque titre ou contenu)';
+                return true;
+            },
+        });
 
         // Ajouter les sources Tavily même si Claude ne les a pas retournées
         if (!article.sources && sourcesList.length > 0) {
@@ -717,11 +638,13 @@ async function main() {
     const articleSaved = saveArticle(article);
 
     // Résumé
+    const stats = getUsageStats();
     console.log('\n═══════════════════════════════════════');
     console.log('  Résumé :');
     console.log(`  ${newsData ? '✅' : '⚠️ '} Classification des articles`);
     console.log(`  ${tavilyResults.length > 0 ? '✅' : '⚠️ '} Enrichissement Tavily (${tavilyResults.length} sources)`);
     console.log(`  ${articleSaved ? '✅' : '⚠️ '} Article du jour`);
+    console.log(`  💰 Claude API : ${stats.totalCalls} appels, ${stats.totalInputTokens}in/${stats.totalOutputTokens}out tokens, ~$${stats.estimatedCostUSD}`);
     console.log('═══════════════════════════════════════\n');
 }
 

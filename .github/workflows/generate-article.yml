@@ -49,6 +49,11 @@ jobs:
         with:
           node-version: '20'
 
+      - name: "🌐 Traduction des articles EN→FR"
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/translate-articles.mjs
+
       - name: "✍️ Génération article + classification"
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
