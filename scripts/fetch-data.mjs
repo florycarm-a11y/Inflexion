@@ -12,6 +12,13 @@
  * - Alpha Vantage (clé gratuite) → forex, secteurs, top gainers/losers
  * - DefiLlama (gratuit, pas de clé) → TVL DeFi, protocoles, yields
  *
+ * Flux RSS (gratuit, pas de clé) :
+ * - Le Figaro (éco, international, tech, conjoncture, flash éco, sociétés)
+ * - Les Echos, BFM Business, Boursorama
+ * - CoinTelegraph FR, Cryptoast
+ * - TLDR newsletters (Tech, AI, Crypto, Fintech)
+ * - CoinDesk, CoinTelegraph EN, OilPrice
+ *
  * Les données sont écrites en JSON dans /data/
  * Le frontend les lit au chargement de la page
  */
@@ -41,6 +48,132 @@ async function fetchJSON(url, options = {}) {
     if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);
     return res.json();
 }
+
+async function fetchText(url) {
+    const res = await fetch(url, {
+        headers: {
+            'User-Agent': 'Inflexion/1.0 (+https://inflexionhub.com)',
+            'Accept': 'application/rss+xml, application/xml, text/xml, */*'
+        },
+        signal: AbortSignal.timeout(12000)
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);
+    return res.text();
+}
+
+// ─── Parsing RSS / Atom ──────────────────────────────────
+function stripHTML(str) {
+    if (!str) return '';
+    return str
+        .replace(/<[^>]+>/g, '')
+        .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function extractRSSFields(block) {
+    const getTag = (tag) => {
+        const m = block.match(new RegExp(`<${tag}[^>]*>\\s*(?:<!\\[CDATA\\[([\\s\\S]*?)\\]\\]>|([\\s\\S]*?))\\s*</${tag}>`, 'i'));
+        return m ? (m[1] || m[2] || '').trim() : null;
+    };
+    const getLink = () => {
+        const m = block.match(/<link[^>]*>(?:<!\[CDATA\[)?\s*(https?:\/\/[^\s<\]]+)/i);
+        return m ? m[1].trim() : null;
+    };
+    const getImage = () => {
+        let m = block.match(/<enclosure[^>]+url=["']([^"']+)["'][^>]*type=["']image/i);
+        if (m) return m[1];
+        m = block.match(/<media:(?:content|thumbnail)[^>]+url=["']([^"']+)["']/i);
+        if (m) return m[1];
+        const desc = getTag('description') || '';
+        m = desc.match(/<img[^>]+src=["']([^"']+)["']/i);
+        if (m) return m[1];
+        return null;
+    };
+    return {
+        title: stripHTML(getTag('title')),
+        description: stripHTML(getTag('description') || getTag('content:encoded') || '').slice(0, 300),
+        link: getLink() || getTag('link'),
+        pubDate: getTag('pubDate') || getTag('dc:date'),
+        image: getImage()
+    };
+}
+
+function extractAtomFields(block) {
+    const getTag = (tag) => {
+        const m = block.match(new RegExp(`<${tag}[^>]*>\\s*(?:<!\\[CDATA\\[([\\s\\S]*?)\\]\\]>|([\\s\\S]*?))\\s*</${tag}>`, 'i'));
+        return m ? (m[1] || m[2] || '').trim() : null;
+    };
+    const getLink = () => {
+        const m = block.match(/<link[^>]*href=["']([^"']+)["']/i);
+        return m ? m[1] : null;
+    };
+    const getImage = () => {
+        const content = getTag('content') || getTag('summary') || '';
+        const m = content.match(/<img[^>]+src=["']([^"']+)["']/i);
+        return m ? m[1] : null;
+    };
+    return {
+        title: stripHTML(getTag('title')),
+        description: stripHTML(getTag('summary') || getTag('content') || '').slice(0, 300),
+        link: getLink(),
+        pubDate: getTag('published') || getTag('updated'),
+        image: getImage()
+    };
+}
+
+function parseRSSItems(xml) {
+    const items = [];
+    // RSS 2.0 <item> elements
+    const itemRegex = /<item[\s>]([\s\S]*?)<\/item>/gi;
+    let match;
+    while ((match = itemRegex.exec(xml)) !== null) {
+        const item = extractRSSFields(match[1]);
+        if (item.title) items.push(item);
+    }
+    // Atom <entry> fallback
+    if (items.length === 0) {
+        const entryRegex = /<entry[\s>]([\s\S]*?)<\/entry>/gi;
+        while ((match = entryRegex.exec(xml)) !== null) {
+            const item = extractAtomFields(match[1]);
+            if (item.title) items.push(item);
+        }
+    }
+    return items;
+}
+
+// ─── Sources RSS (gratuit, pas de clé API) ───────────────
+const RSS_SOURCES = [
+    // 🇫🇷 Presse française — Économie & Finance
+    { url: 'https://www.lefigaro.fr/rss/figaro_economie.xml',           source: 'Le Figaro Éco',       cats: ['markets'] },
+    { url: 'https://www.lefigaro.fr/rss/figaro_conjoncture.xml',        source: 'Le Figaro',            cats: ['markets', 'commodities'] },
+    { url: 'https://www.lefigaro.fr/rss/figaro_societes.xml',           source: 'Le Figaro Sociétés',   cats: ['markets'] },
+    { url: 'https://www.lefigaro.fr/rss/figaro_flash-eco.xml',          source: 'Le Figaro Flash Éco',  cats: ['markets'] },
+    // 🇫🇷 Presse française — International & Géopolitique
+    { url: 'https://www.lefigaro.fr/rss/figaro_international.xml',      source: 'Le Figaro',            cats: ['geopolitics'] },
+    // 🇫🇷 Presse française — Tech & IA
+    { url: 'https://www.lefigaro.fr/rss/figaro_secteur_high-tech.xml',  source: 'Le Figaro Tech',       cats: ['ai_tech'] },
+    // Les Echos
+    { url: 'https://syndication.lesechos.fr/rss/rss_une_titres.xml',    source: 'Les Echos',            cats: ['markets'] },
+    // BFM Business
+    { url: 'https://www.bfmtv.com/rss/economie/',                       source: 'BFM Business',         cats: ['markets'] },
+    // Boursorama
+    { url: 'https://www.boursorama.com/rss/actualites/marches-financiers', source: 'Boursorama',         cats: ['markets'] },
+    // 🪙 Crypto — Sources françaises
+    { url: 'https://fr.cointelegraph.com/rss',                          source: 'CoinTelegraph FR',     cats: ['crypto'] },
+    { url: 'https://cryptoast.fr/feed/',                                 source: 'Cryptoast',            cats: ['crypto'] },
+    // 📧 Newsletters TLDR
+    { url: 'https://tldr.tech/api/rss/tech',                            source: 'TLDR Tech',            cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://tldr.tech/api/rss/ai',                              source: 'TLDR AI',              cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://tldr.tech/api/rss/crypto',                          source: 'TLDR Crypto',          cats: ['crypto'],    lang: 'en' },
+    { url: 'https://tldr.tech/api/rss/fintech',                         source: 'TLDR Fintech',         cats: ['markets'],   lang: 'en' },
+    // 🌍 Sources internationales — Crypto
+    { url: 'https://www.coindesk.com/arc/outboundfeeds/rss/',           source: 'CoinDesk',             cats: ['crypto'],    lang: 'en' },
+    { url: 'https://cointelegraph.com/rss',                             source: 'CoinTelegraph',        cats: ['crypto'],    lang: 'en' },
+    // 🌍 Sources internationales — Matières premières
+    { url: 'https://oilprice.com/rss/main',                             source: 'OilPrice',             cats: ['commodities'], lang: 'en' },
+];
 
 // ─── 1. CRYPTO (CoinGecko — gratuit, pas de clé) ──────────
 async function fetchCrypto() {
@@ -269,48 +402,26 @@ function isMarketOpen() {
     return day >= 1 && day <= 5 && hour >= 9 && hour < 16;
 }
 
-// ─── 3. ACTUALITÉS (GNews — clé gratuite, 100 req/jour) ───
+// ─── 3. ACTUALITÉS (GNews + RSS — multi-sources) ─────────
 async function fetchNews() {
-    const API_KEY = process.env.GNEWS_API_KEY;
-    if (!API_KEY) {
-        console.log('\n⚠️  GNEWS_API_KEY non définie — actualités ignorées');
-        console.log('   → Ajouter le secret dans GitHub: Settings > Secrets > GNEWS_API_KEY');
-        console.log('   → Clé gratuite sur https://gnews.io/register');
-        return false;
-    }
+    console.log('\n📰 Récupération actualités (GNews + RSS)...');
 
-    console.log('\n📰 Récupération actualités (GNews)...');
-    try {
-        // Requêtes pour chaque catégorie (optimisées avec mots-clés FR)
+    const allNews = {};
+    const categoryKeys = ['geopolitics', 'markets', 'crypto', 'commodities', 'ai_tech'];
+    for (const key of categoryKeys) allNews[key] = [];
+
+    // ─── 3a. GNews (clé gratuite, 100 req/jour) ─────────────
+    const GNEWS_KEY = process.env.GNEWS_API_KEY;
+    if (GNEWS_KEY) {
+        console.log('  🔑 GNews API...');
         const categories = [
-            {
-                key: 'geopolitics',
-                query: 'géopolitique OR sanctions OR "guerre commerciale" OR "droits de douane" OR diplomatie OR OTAN',
-                topic: 'world'
-            },
-            {
-                key: 'markets',
-                query: 'bourse OR "marchés financiers" OR "Wall Street" OR "banque centrale" OR "taux directeur" OR résultats',
-                topic: 'business'
-            },
-            {
-                key: 'crypto',
-                query: 'bitcoin OR ethereum OR cryptomonnaie OR stablecoin OR "ETF crypto" OR blockchain',
-                topic: 'business'
-            },
-            {
-                key: 'commodities',
-                query: '"prix de l\'or" OR "cours du pétrole" OR "matières premières" OR "métaux précieux" OR OPEP',
-                topic: 'business'
-            },
-            {
-                key: 'ai_tech',
-                query: '"intelligence artificielle" OR Nvidia OR OpenAI OR Anthropic OR "semi-conducteur" OR "puce IA"',
-                topic: 'technology'
-            }
+            { key: 'geopolitics', query: 'géopolitique OR sanctions OR "guerre commerciale" OR "droits de douane" OR diplomatie OR OTAN', topic: 'world' },
+            { key: 'markets', query: 'bourse OR "marchés financiers" OR "Wall Street" OR "banque centrale" OR "taux directeur" OR résultats', topic: 'business' },
+            { key: 'crypto', query: 'bitcoin OR ethereum OR cryptomonnaie OR stablecoin OR "ETF crypto" OR blockchain', topic: 'business' },
+            { key: 'commodities', query: '"prix de l\'or" OR "cours du pétrole" OR "matières premières" OR "métaux précieux" OR OPEP', topic: 'business' },
+            { key: 'ai_tech', query: '"intelligence artificielle" OR Nvidia OR OpenAI OR Anthropic OR "semi-conducteur" OR "puce IA"', topic: 'technology' }
         ];
 
-        // Fallback anglais si trop peu de résultats FR
         const fallbackQueries = {
             geopolitics: 'geopolitics OR tariffs OR trade war OR sanctions OR "foreign policy"',
             markets: 'stock market OR S&P 500 OR Wall Street OR Federal Reserve OR earnings',
@@ -319,104 +430,148 @@ async function fetchNews() {
             ai_tech: 'artificial intelligence OR Nvidia OR OpenAI OR Anthropic OR "AI model" OR semiconductor'
         };
 
-        const allNews = {};
-
         for (const cat of categories) {
             try {
-                // Appel principal en français
                 const data = await fetchJSON(
                     'https://gnews.io/api/v4/search?' + new URLSearchParams({
-                        q: cat.query,
-                        lang: 'fr',
-                        country: 'fr',
-                        max: '8',
-                        sortby: 'publishedAt',
-                        token: API_KEY
+                        q: cat.query, lang: 'fr', country: 'fr',
+                        max: '8', sortby: 'publishedAt', token: GNEWS_KEY
                     })
                 );
-
                 allNews[cat.key] = (data.articles || []).map(a => ({
-                    title: a.title,
-                    description: a.description,
-                    source: a.source?.name || 'Inconnu',
-                    url: a.url,
-                    image: a.image,
-                    publishedAt: a.publishedAt,
-                    time: formatDate(a.publishedAt)
+                    title: a.title, description: a.description,
+                    source: a.source?.name || 'Inconnu', url: a.url, image: a.image,
+                    publishedAt: a.publishedAt, time: formatDate(a.publishedAt), via: 'gnews'
                 }));
+                console.log(`  ✓ GNews ${cat.key} (FR): ${allNews[cat.key].length} articles`);
 
-                console.log(`  ✓ ${cat.key} (FR): ${allNews[cat.key].length} articles`);
-
-                // Fallback : si moins de 3 résultats FR, compléter avec des résultats EN
+                // Fallback EN si < 3 résultats FR
                 if (allNews[cat.key].length < 3 && fallbackQueries[cat.key]) {
-                    console.log(`  ↻ ${cat.key}: peu de résultats FR, ajout de résultats EN...`);
+                    console.log(`  ↻ ${cat.key}: peu de résultats FR, ajout EN...`);
                     await new Promise(r => setTimeout(r, 1000));
-
                     const enData = await fetchJSON(
                         'https://gnews.io/api/v4/search?' + new URLSearchParams({
-                            q: fallbackQueries[cat.key],
-                            lang: 'en',
-                            country: 'us',
+                            q: fallbackQueries[cat.key], lang: 'en', country: 'us',
                             max: String(8 - allNews[cat.key].length),
-                            sortby: 'publishedAt',
-                            token: API_KEY
+                            sortby: 'publishedAt', token: GNEWS_KEY
                         })
                     );
-
                     const enArticles = (enData.articles || []).map(a => ({
-                        title: a.title,
-                        description: a.description,
-                        source: a.source?.name || 'Unknown',
-                        url: a.url,
-                        image: a.image,
-                        publishedAt: a.publishedAt,
-                        time: formatDate(a.publishedAt),
-                        lang: 'en'
+                        title: a.title, description: a.description,
+                        source: a.source?.name || 'Unknown', url: a.url, image: a.image,
+                        publishedAt: a.publishedAt, time: formatDate(a.publishedAt),
+                        lang: 'en', via: 'gnews'
                     }));
                     allNews[cat.key].push(...enArticles);
-                    console.log(`  ✓ ${cat.key} (EN fallback): +${enArticles.length} articles`);
+                    console.log(`  ✓ GNews ${cat.key} (EN fallback): +${enArticles.length}`);
                 }
-
-                // Rate limit (100 req/jour max — garder de la marge)
                 await new Promise(r => setTimeout(r, 1000));
             } catch (err) {
-                console.warn(`  ⚠ ${cat.key}: ${err.message}`);
-                allNews[cat.key] = [];
+                console.warn(`  ⚠ GNews ${cat.key}: ${err.message}`);
             }
         }
-
-        // Enrichir chaque article avec les champs rubrique pour le frontend
-        const rubriqueMap = {
-            geopolitics: { rubrique: 'geopolitique', rubrique_label: 'Géopolitique', rubrique_emoji: '🌍' },
-            markets:     { rubrique: 'marches', rubrique_label: 'Marchés', rubrique_emoji: '📈' },
-            crypto:      { rubrique: 'crypto', rubrique_label: 'Crypto', rubrique_emoji: '₿' },
-            commodities: { rubrique: 'matieres_premieres', rubrique_label: 'Matières Premières', rubrique_emoji: '⛏️' },
-            ai_tech:     { rubrique: 'ai_tech', rubrique_label: 'IA & Tech', rubrique_emoji: '🤖' }
-        };
-
-        for (const [key, articles] of Object.entries(allNews)) {
-            const meta = rubriqueMap[key];
-            if (meta) {
-                for (const article of articles) {
-                    article.rubrique = meta.rubrique;
-                    article.rubrique_label = meta.rubrique_label;
-                    article.rubrique_emoji = meta.rubrique_emoji;
-                }
-            }
-        }
-
-        const newsData = {
-            updated: new Date().toISOString(),
-            categories: allNews,
-            total_articles: Object.values(allNews).reduce((sum, arr) => sum + arr.length, 0)
-        };
-
-        writeJSON('news.json', newsData);
-        return true;
-    } catch (err) {
-        console.error('✗ Erreur actualités:', err.message);
-        return false;
+    } else {
+        console.log('  ⚠️  GNEWS_API_KEY non définie — GNews ignoré (RSS uniquement)');
     }
+
+    // ─── 3b. Flux RSS (gratuit, pas de clé) ─────────────────
+    console.log('  📡 Flux RSS...');
+    const rssStats = { success: 0, failed: 0, articles: 0 };
+    const rssFeedResults = [];
+
+    for (const feed of RSS_SOURCES) {
+        try {
+            const xml = await fetchText(feed.url);
+            const items = parseRSSItems(xml);
+            const articles = items.slice(0, 5).map(item => {
+                let pubISO;
+                try { pubISO = new Date(item.pubDate).toISOString(); }
+                catch { pubISO = new Date().toISOString(); }
+                return {
+                    title: item.title,
+                    description: item.description || '',
+                    source: feed.source,
+                    url: item.link,
+                    image: item.image,
+                    publishedAt: pubISO,
+                    time: formatDate(pubISO),
+                    ...(feed.lang === 'en' ? { lang: 'en' } : {}),
+                    via: 'rss'
+                };
+            });
+
+            for (const cat of feed.cats) {
+                if (allNews[cat]) allNews[cat].push(...articles);
+            }
+
+            rssFeedResults.push({ source: feed.source, url: feed.url, count: articles.length, ok: true });
+            rssStats.success++;
+            rssStats.articles += articles.length;
+            console.log(`  ✓ RSS ${feed.source}: ${articles.length} articles`);
+
+            await new Promise(r => setTimeout(r, 300));
+        } catch (err) {
+            rssFeedResults.push({ source: feed.source, url: feed.url, count: 0, ok: false, error: err.message });
+            rssStats.failed++;
+            console.warn(`  ⚠ RSS ${feed.source}: ${err.message}`);
+        }
+    }
+
+    console.log(`  📡 RSS bilan: ${rssStats.success} OK, ${rssStats.failed} erreurs, ${rssStats.articles} articles`);
+
+    // ─── 3c. Déduplication + tri par date ────────────────────
+    for (const key of categoryKeys) {
+        const seen = new Set();
+        allNews[key] = allNews[key]
+            .filter(a => {
+                const k = a.title?.toLowerCase().replace(/\s+/g, ' ').trim();
+                if (!k || seen.has(k)) return false;
+                seen.add(k);
+                return true;
+            })
+            .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
+            .slice(0, 20);
+    }
+
+    // ─── 3d. Enrichissement rubrique ─────────────────────────
+    const rubriqueMap = {
+        geopolitics: { rubrique: 'geopolitique', rubrique_label: 'Géopolitique', rubrique_emoji: '🌍' },
+        markets:     { rubrique: 'marches', rubrique_label: 'Marchés', rubrique_emoji: '📈' },
+        crypto:      { rubrique: 'crypto', rubrique_label: 'Crypto', rubrique_emoji: '₿' },
+        commodities: { rubrique: 'matieres_premieres', rubrique_label: 'Matières Premières', rubrique_emoji: '⛏️' },
+        ai_tech:     { rubrique: 'ai_tech', rubrique_label: 'IA & Tech', rubrique_emoji: '🤖' }
+    };
+
+    for (const [key, articles] of Object.entries(allNews)) {
+        const meta = rubriqueMap[key];
+        if (meta) {
+            for (const article of articles) {
+                article.rubrique = meta.rubrique;
+                article.rubrique_label = meta.rubrique_label;
+                article.rubrique_emoji = meta.rubrique_emoji;
+            }
+        }
+    }
+
+    // ─── 3e. Écriture news.json ──────────────────────────────
+    const totalArticles = Object.values(allNews).reduce((sum, arr) => sum + arr.length, 0);
+    const newsData = {
+        updated: new Date().toISOString(),
+        sources: { gnews: !!GNEWS_KEY, rss: rssStats.success },
+        categories: allNews,
+        total_articles: totalArticles
+    };
+    writeJSON('news.json', newsData);
+
+    // ─── 3f. Écriture rss-feeds.json (suivi des sources) ────
+    writeJSON('rss-feeds.json', {
+        updated: new Date().toISOString(),
+        feeds: rssFeedResults,
+        stats: rssStats
+    });
+
+    console.log(`  📰 Total news: ${totalArticles} articles (GNews + RSS combinés)`);
+    return true;
 }
 
 function formatDate(isoDate) {
