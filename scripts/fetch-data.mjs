@@ -281,44 +281,54 @@ async function fetchNews() {
 
     console.log('\n📰 Récupération actualités (GNews)...');
     try {
-        // Requêtes pour chaque catégorie (optimisées avec mots-clés FR + IA)
+        // Requêtes pour chaque catégorie (optimisées avec mots-clés FR)
         const categories = [
             {
                 key: 'geopolitics',
-                query: 'geopolitics OR tariffs OR trade war OR sanctions OR "foreign policy"',
+                query: 'géopolitique OR sanctions OR "guerre commerciale" OR "droits de douane" OR diplomatie OR OTAN',
                 topic: 'world'
             },
             {
                 key: 'markets',
-                query: 'stock market OR S&P 500 OR Wall Street OR Federal Reserve OR earnings OR IPO',
+                query: 'bourse OR "marchés financiers" OR "Wall Street" OR "banque centrale" OR "taux directeur" OR résultats',
                 topic: 'business'
             },
             {
                 key: 'crypto',
-                query: 'bitcoin OR ethereum OR cryptocurrency OR stablecoin OR "crypto ETF"',
+                query: 'bitcoin OR ethereum OR cryptomonnaie OR stablecoin OR "ETF crypto" OR blockchain',
                 topic: 'business'
             },
             {
                 key: 'commodities',
-                query: 'gold price OR oil price OR silver OR commodities OR precious metals',
+                query: '"prix de l\'or" OR "cours du pétrole" OR "matières premières" OR "métaux précieux" OR OPEP',
                 topic: 'business'
             },
             {
                 key: 'ai_tech',
-                query: 'artificial intelligence OR Nvidia OR OpenAI OR Anthropic OR "AI model" OR semiconductor',
+                query: '"intelligence artificielle" OR Nvidia OR OpenAI OR Anthropic OR "semi-conducteur" OR "puce IA"',
                 topic: 'technology'
             }
         ];
+
+        // Fallback anglais si trop peu de résultats FR
+        const fallbackQueries = {
+            geopolitics: 'geopolitics OR tariffs OR trade war OR sanctions OR "foreign policy"',
+            markets: 'stock market OR S&P 500 OR Wall Street OR Federal Reserve OR earnings',
+            crypto: 'bitcoin OR ethereum OR cryptocurrency OR stablecoin OR "crypto ETF"',
+            commodities: 'gold price OR oil price OR silver OR commodities OR precious metals',
+            ai_tech: 'artificial intelligence OR Nvidia OR OpenAI OR Anthropic OR "AI model" OR semiconductor'
+        };
 
         const allNews = {};
 
         for (const cat of categories) {
             try {
+                // Appel principal en français
                 const data = await fetchJSON(
                     'https://gnews.io/api/v4/search?' + new URLSearchParams({
                         q: cat.query,
-                        lang: 'en',
-                        country: 'us',
+                        lang: 'fr',
+                        country: 'fr',
                         max: '8',
                         sortby: 'publishedAt',
                         token: API_KEY
@@ -328,18 +338,70 @@ async function fetchNews() {
                 allNews[cat.key] = (data.articles || []).map(a => ({
                     title: a.title,
                     description: a.description,
-                    source: a.source?.name || 'Unknown',
+                    source: a.source?.name || 'Inconnu',
                     url: a.url,
                     image: a.image,
                     publishedAt: a.publishedAt,
                     time: formatDate(a.publishedAt)
                 }));
 
-                // Rate limit
+                console.log(`  ✓ ${cat.key} (FR): ${allNews[cat.key].length} articles`);
+
+                // Fallback : si moins de 3 résultats FR, compléter avec des résultats EN
+                if (allNews[cat.key].length < 3 && fallbackQueries[cat.key]) {
+                    console.log(`  ↻ ${cat.key}: peu de résultats FR, ajout de résultats EN...`);
+                    await new Promise(r => setTimeout(r, 1000));
+
+                    const enData = await fetchJSON(
+                        'https://gnews.io/api/v4/search?' + new URLSearchParams({
+                            q: fallbackQueries[cat.key],
+                            lang: 'en',
+                            country: 'us',
+                            max: String(8 - allNews[cat.key].length),
+                            sortby: 'publishedAt',
+                            token: API_KEY
+                        })
+                    );
+
+                    const enArticles = (enData.articles || []).map(a => ({
+                        title: a.title,
+                        description: a.description,
+                        source: a.source?.name || 'Unknown',
+                        url: a.url,
+                        image: a.image,
+                        publishedAt: a.publishedAt,
+                        time: formatDate(a.publishedAt),
+                        lang: 'en'
+                    }));
+                    allNews[cat.key].push(...enArticles);
+                    console.log(`  ✓ ${cat.key} (EN fallback): +${enArticles.length} articles`);
+                }
+
+                // Rate limit (100 req/jour max — garder de la marge)
                 await new Promise(r => setTimeout(r, 1000));
             } catch (err) {
                 console.warn(`  ⚠ ${cat.key}: ${err.message}`);
                 allNews[cat.key] = [];
+            }
+        }
+
+        // Enrichir chaque article avec les champs rubrique pour le frontend
+        const rubriqueMap = {
+            geopolitics: { rubrique: 'geopolitique', rubrique_label: 'Géopolitique', rubrique_emoji: '🌍' },
+            markets:     { rubrique: 'marches', rubrique_label: 'Marchés', rubrique_emoji: '📈' },
+            crypto:      { rubrique: 'crypto', rubrique_label: 'Crypto', rubrique_emoji: '₿' },
+            commodities: { rubrique: 'matieres_premieres', rubrique_label: 'Matières Premières', rubrique_emoji: '⛏️' },
+            ai_tech:     { rubrique: 'ai_tech', rubrique_label: 'IA & Tech', rubrique_emoji: '🤖' }
+        };
+
+        for (const [key, articles] of Object.entries(allNews)) {
+            const meta = rubriqueMap[key];
+            if (meta) {
+                for (const article of articles) {
+                    article.rubrique = meta.rubrique;
+                    article.rubrique_label = meta.rubrique_label;
+                    article.rubrique_emoji = meta.rubrique_emoji;
+                }
             }
         }
 

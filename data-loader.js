@@ -118,6 +118,39 @@ const DataLoader = (function () {
         };
     }
 
+    /**
+     * Traduit les catégories DeFi anglaises en français
+     */
+    function translateDefiCategory(category) {
+        var translations = {
+            'Liquid Staking': 'Staking liquide',
+            'Lending': 'Prêt',
+            'Bridge': 'Pont',
+            'Restaking': 'Restaking',
+            'DEX': 'DEX',
+            'CDP': 'CDP',
+            'Yield': 'Rendement',
+            'Derivatives': 'Dérivés',
+            'RWA': 'Actifs réels (RWA)',
+            'Staking': 'Staking',
+            'Services': 'Services',
+            'Algo-Stables': 'Stables algo.',
+            'Insurance': 'Assurance',
+            'Launchpad': 'Lancement',
+            'NFT Marketplace': 'Place de marché NFT',
+            'Prediction Market': 'Marché prédictif',
+            'Privacy': 'Confidentialité',
+            'Synthetics': 'Synthétiques',
+            'Farm': 'Agriculture DeFi',
+            'Yield Aggregator': 'Agrégateur de rendement',
+            'Cross Chain': 'Inter-chaînes',
+            'Options': 'Options',
+            'Indexes': 'Indices',
+            'Leveraged Farming': 'Agriculture à effet de levier'
+        };
+        return translations[category] || category;
+    }
+
     // ─── Chargement des données ────────────────────────────
 
     /**
@@ -624,12 +657,8 @@ const DataLoader = (function () {
 
         // Construire les top stories depuis les données live (marchés + matières premières)
         var stories = [];
-        var catMapping = {
-            marches: 'markets',
-            matieres_premieres: 'commodities'
-        };
 
-        ['marches', 'matieres_premieres'].forEach(function(cat) {
+        ['markets', 'commodities'].forEach(function(cat) {
             var articles = _cache.news.categories[cat] || [];
             articles.slice(0, 2).forEach(function(a) {
                 stories.push(a);
@@ -747,6 +776,7 @@ const DataLoader = (function () {
      */
     function syncGlobalData() {
         // Mettre à jour newsDatabase globale avec les données live
+        // newsDatabase est un Array — on le remplace entièrement
         if (_cache.news?.categories && typeof window.newsDatabase !== 'undefined') {
             var catMapping = {
                 geopolitics: 'geopolitics',
@@ -756,10 +786,12 @@ const DataLoader = (function () {
                 ai_tech: 'markets' // Fusionner les news IA/tech dans marchés
             };
 
+            var allLiveArticles = [];
             Object.keys(_cache.news.categories).forEach(function(cat) {
                 var targetCat = catMapping[cat] || cat;
                 var articles = _cache.news.categories[cat].map(function(a) {
                     return {
+                        category: targetCat,
                         source: a.source || '',
                         url: a.url || '#',
                         title: a.title || '',
@@ -769,10 +801,11 @@ const DataLoader = (function () {
                         impact: 'high'
                     };
                 });
-                if (articles.length > 0) {
-                    window.newsDatabase[targetCat] = articles;
-                }
+                allLiveArticles = allLiveArticles.concat(articles);
             });
+            if (allLiveArticles.length > 0) {
+                window.newsDatabase = allLiveArticles;
+            }
         }
 
         // Mettre à jour marketData globale
@@ -819,13 +852,13 @@ const DataLoader = (function () {
         if (!pageHeader) return;
         var pageCat = pageHeader.getAttribute('data-category');
 
-        // Mapping catégorie page → catégorie JSON
+        // Mapping catégorie page → catégorie JSON (les clés dans news.json sont en anglais)
         var catMap = {
-            geopolitics: 'geopolitique',
-            markets: 'marches',
+            geopolitics: 'geopolitics',
+            markets: 'markets',
             crypto: 'crypto',
-            commodities: 'matieres_premieres',
-            etf: 'marches' // Pas de rubrique ETF dans news.json, on utilise marchés
+            commodities: 'commodities',
+            etf: 'markets' // Pas de rubrique ETF dans news.json, on utilise marchés
         };
 
         var newsCat = catMap[pageCat];
@@ -891,6 +924,74 @@ const DataLoader = (function () {
             var articleSection = document.getElementById('article-du-jour-section');
             if (articleSection) articleSection.classList.add('section-empty');
         }
+    }
+
+    // ─── Pages catégorie (#page-news) ──────────────────────────
+
+    /**
+     * Peuple la grille d'articles sur les pages catégorie (geopolitics.html, markets.html, etc.)
+     * Utilise les données live de news.json pour remplacer le contenu statique
+     */
+    function updateCategoryPageNews() {
+        if (!_cache.news?.categories) return;
+
+        var pageNews = document.getElementById('page-news');
+        if (!pageNews) return;
+
+        // Détecter la catégorie depuis le data-attribute de la page
+        var pageHeader = document.querySelector('[data-category]');
+        if (!pageHeader) return;
+        var pageCat = pageHeader.getAttribute('data-category');
+
+        // Mapping catégorie page → catégorie(s) dans news.json
+        var catMap = {
+            geopolitics: ['geopolitics'],
+            markets: ['markets'],
+            crypto: ['crypto'],
+            commodities: ['commodities'],
+            etf: ['markets', 'ai_tech'] // ETFs couvrent marchés + tech
+        };
+
+        var targetCats = catMap[pageCat];
+        if (!targetCats) return;
+
+        // Collecter les articles des catégories correspondantes
+        var articles = [];
+        targetCats.forEach(function(cat) {
+            var catArticles = _cache.news.categories[cat] || [];
+            catArticles.forEach(function(a) {
+                articles.push(a);
+            });
+        });
+
+        // Trier par date (plus récent d'abord)
+        articles.sort(function(a, b) {
+            return new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0);
+        });
+
+        if (articles.length === 0) {
+            pageNews.innerHTML = '<p class="empty-state">Aucun article disponible dans cette rubrique pour le moment.</p>';
+            return;
+        }
+
+        // Générer le HTML
+        pageNews.innerHTML = articles.map(function(n) {
+            var rubriqueTag = n.rubrique_label
+                ? '<span class="rubrique-badge rubrique-' + (n.rubrique || '') + '">' + (n.rubrique_emoji || '') + ' ' + n.rubrique_label + '</span>'
+                : '';
+
+            return '<article class="top-story" data-rubrique="' + (n.rubrique || '') + '">' +
+                '<div class="story-content">' +
+                    '<div class="news-list-source">' +
+                        '<a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" class="source-name">' + (n.source || '') + '</a>' +
+                        '<time class="news-time">' + (n.time || '') + '</time>' +
+                        rubriqueTag +
+                    '</div>' +
+                    '<h3 class="story-title"><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer">' + (n.title || '') + '</a></h3>' +
+                    '<p class="story-excerpt">' + (n.description || '') + '</p>' +
+                '</div>' +
+            '</article>';
+        }).join('');
     }
 
     /**
@@ -991,7 +1092,7 @@ const DataLoader = (function () {
                         ${p.logo ? `<img src="${p.logo}" class="defi-proto-logo" alt="${p.name}" onerror="this.style.display='none'">` : '<span class="defi-proto-logo-placeholder">🔷</span>'}
                         <div class="defi-proto-info">
                             <span class="defi-proto-name">${p.name}</span>
-                            <span class="defi-proto-category">${p.category || ''}</span>
+                            <span class="defi-proto-category">${translateDefiCategory(p.category || '')}</span>
                         </div>
                         <div class="defi-proto-tvl">
                             <span class="defi-proto-value">${tvlStr}</span>
@@ -1042,6 +1143,7 @@ const DataLoader = (function () {
         updateArticleDuJour();
         updateTopStories();
         updateCategoryTrend();
+        updateCategoryPageNews();
         updateLatestNewsWithRubriques();
         initRubriqueFilters();
         handleEmptyWidgets();
