@@ -634,14 +634,22 @@ const DataLoader = (function () {
                 ? '<span class="rubrique-badge rubrique-' + rubriqueAttr + '">' + rubriqueEmoji + ' ' + rubriqueLabel + '</span>'
                 : '';
 
-            return '<article class="news-list-item" data-rubrique="' + rubriqueAttr + '">' +
-                '<div class="news-list-source">' +
-                    '<a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" class="source-name">' + (n.source || '') + '</a>' +
-                    '<time class="news-time">' + (n.time || '') + '</time>' +
-                    rubriqueTag +
+            var hasThumb = n.image ? ' has-thumb' : '';
+            var thumbHTML = n.image
+                ? '<img src="' + n.image + '" alt="" class="news-list-thumb" loading="lazy" onerror="this.parentElement.classList.remove(\'has-thumb\');this.remove()">'
+                : '';
+
+            return '<article class="news-list-item' + hasThumb + '" data-rubrique="' + rubriqueAttr + '">' +
+                '<div class="news-list-body">' +
+                    '<div class="news-list-source">' +
+                        '<a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" class="source-name">' + (n.source || '') + '</a>' +
+                        '<time class="news-time">' + (n.time || '') + '</time>' +
+                        rubriqueTag +
+                    '</div>' +
+                    '<h3><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer">' + (n.title || '') + '</a></h3>' +
+                    '<p>' + (n.description || '') + '</p>' +
                 '</div>' +
-                '<h3><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer">' + (n.title || '') + '</a></h3>' +
-                '<p>' + (n.description || '') + '</p>' +
+                thumbHTML +
             '</article>';
         }).join('');
     }
@@ -674,7 +682,11 @@ const DataLoader = (function () {
         if (stories.length === 0) return;
 
         ts.innerHTML = '<div class="top-stories-grid">' + stories.map(function(n, i) {
+            var imgHTML = n.image
+                ? '<img src="' + n.image + '" alt="" class="story-image" loading="lazy" onerror="this.remove()">'
+                : '';
             return '<article class="top-story' + (i === 0 ? ' top-story-main' : '') + '">' +
+                imgHTML +
                 '<a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" class="source-name">' + (n.source || '') + '</a>' +
                 '<h3><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">' + (n.title || '') + '</a></h3>' +
                 '<p>' + (n.description || '') + '</p>' +
@@ -980,7 +992,12 @@ const DataLoader = (function () {
                 ? '<span class="rubrique-badge rubrique-' + (n.rubrique || '') + '">' + (n.rubrique_emoji || '') + ' ' + n.rubrique_label + '</span>'
                 : '';
 
+            var imgHTML = n.image
+                ? '<img src="' + n.image + '" alt="" class="story-image" loading="lazy" onerror="this.remove()">'
+                : '';
+
             return '<article class="top-story" data-rubrique="' + (n.rubrique || '') + '">' +
+                imgHTML +
                 '<div class="story-content">' +
                     '<div class="news-list-source">' +
                         '<a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" class="source-name">' + (n.source || '') + '</a>' +

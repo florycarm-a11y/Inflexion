@@ -68,8 +68,14 @@ function cardHTML(article) {
     const time = escapeHTML(article.time || '');
     const url = article.url || '#';
     const cat = escapeHTML(article.category || '');
+    const image = article.image || '';
+
+    const imgHTML = image
+        ? `<img src="${escapeHTML(image)}" alt="" class="story-image" loading="lazy" onerror="this.remove()">`
+        : '';
 
     return `<article class="top-story" data-category="${cat}">
+        ${imgHTML}
         <div class="story-content">
             <span class="story-source">${source}</span>
             <h3 class="story-title"><a href="${url}" target="_blank" rel="noopener">${title}</a></h3>
@@ -269,8 +275,14 @@ function initTopStories() {
         const desc = escapeHTML(article.description || '');
         const time = escapeHTML(article.time || '');
         const url = article.url || '#';
+        const image = article.image || '';
+
+        const imgHTML = image
+            ? `<img src="${escapeHTML(image)}" alt="" class="story-image" loading="lazy" onerror="this.remove()">`
+            : '';
 
         return `<article class="${cls}">
+            ${imgHTML}
             <div class="story-content">
                 <span class="story-source">${source}</span>
                 <h3 class="story-title"><a href="${url}" target="_blank" rel="noopener">${title}</a></h3>
@@ -298,14 +310,23 @@ function newsListItemHTML(article) {
     const time = escapeHTML(article.time || '');
     const url = article.url || '#';
     const rubrique = escapeHTML(article.category || '');
+    const image = article.image || '';
 
-    return `<article class="news-list-item" data-rubrique="${rubrique}">
-        <div class="news-list-source">
-            <a href="${url}" target="_blank" rel="noopener noreferrer" class="source-name">${source}</a>
-            <time class="news-time">${time}</time>
+    const hasThumb = image ? ' has-thumb' : '';
+    const thumbHTML = image
+        ? `<img src="${escapeHTML(image)}" alt="" class="news-list-thumb" loading="lazy" onerror="this.parentElement.classList.remove('has-thumb');this.remove()">`
+        : '';
+
+    return `<article class="news-list-item${hasThumb}" data-rubrique="${rubrique}">
+        <div class="news-list-body">
+            <div class="news-list-source">
+                <a href="${url}" target="_blank" rel="noopener noreferrer" class="source-name">${source}</a>
+                <time class="news-time">${time}</time>
+            </div>
+            <h3><a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a></h3>
+            <p>${desc}</p>
         </div>
-        <h3><a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a></h3>
-        <p>${desc}</p>
+        ${thumbHTML}
     </article>`;
 }
 
