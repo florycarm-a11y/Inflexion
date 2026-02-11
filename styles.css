@@ -5666,6 +5666,64 @@ a {
     color: var(--accent);
 }
 
+/* ─── Images dans les cartes news ─────────────────────────── */
+
+/* Top story card image (à la une + pages catégories) */
+.story-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--radius-lg, 12px) var(--radius-lg, 12px) 0 0;
+    margin: -1.5rem -1.5rem 1rem -1.5rem;
+    width: calc(100% + 3rem);
+}
+
+.top-story-main .story-image {
+    height: 220px;
+}
+
+/* News list item with thumbnail */
+.news-list-item.has-thumb {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.news-list-item.has-thumb .news-list-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.news-list-thumb {
+    flex-shrink: 0;
+    width: 120px;
+    height: 80px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-top: 0.25rem;
+}
+
+/* Category page card image */
+.news-grid .story-image {
+    margin: -1.5rem -1.5rem 1rem -1.5rem;
+    width: calc(100% + 3rem);
+    height: 160px;
+}
+
+@media (max-width: 600px) {
+    .story-image,
+    .top-story-main .story-image,
+    .news-grid .story-image {
+        height: 140px;
+    }
+
+    .news-list-thumb {
+        width: 80px;
+        height: 56px;
+    }
+}
+
 /* ═══════════════════════════════════════════════════════════════
    VAGUE 8 — Article du jour & Rubriques
    ═══════════════════════════════════════════════════════════════ */
