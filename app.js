@@ -33,21 +33,21 @@ var marketData = [
 
 var newsDatabase = [
     // Géopolitique
-    { category: "geopolitique", title: "Tensions en mer de Chine : Taïwan renforce ses défenses", source: "Foreign Policy", time: "Il y a 2h", url: "#", description: "Taipei annonce un budget militaire record face aux manœuvres chinoises répétées dans le détroit." },
-    { category: "geopolitique", title: "Sommet UE-Afrique : nouveaux accords sur les terres rares", source: "Atlantic Council", time: "Il y a 4h", url: "#", description: "L'Europe cherche à sécuriser ses approvisionnements en minerais critiques pour la transition énergétique." },
-    { category: "geopolitique", title: "Iran : négociations nucléaires au point mort", source: "CFR", time: "Il y a 6h", url: "#", description: "Les pourparlers de Vienne stagnent alors que Téhéran enrichit l'uranium à 60%." },
+    { category: "geopolitics", title: "Tensions en mer de Chine : Taïwan renforce ses défenses", source: "Foreign Policy", time: "Il y a 2h", url: "#", description: "Taipei annonce un budget militaire record face aux manœuvres chinoises répétées dans le détroit." },
+    { category: "geopolitics", title: "Sommet UE-Afrique : nouveaux accords sur les terres rares", source: "Atlantic Council", time: "Il y a 4h", url: "#", description: "L'Europe cherche à sécuriser ses approvisionnements en minerais critiques pour la transition énergétique." },
+    { category: "geopolitics", title: "Iran : négociations nucléaires au point mort", source: "CFR", time: "Il y a 6h", url: "#", description: "Les pourparlers de Vienne stagnent alors que Téhéran enrichit l'uranium à 60%." },
     // Marchés
-    { category: "marches", title: "Wall Street : le S&P 500 enchaîne un 5e record consécutif", source: "CNBC", time: "Il y a 1h", url: "#", description: "Les valeurs technologiques continuent de tirer le marché américain vers de nouveaux sommets." },
-    { category: "marches", title: "BCE : Lagarde signale une possible baisse des taux en mars", source: "Bloomberg", time: "Il y a 3h", url: "#", description: "L'inflation en zone euro ralentit plus vite que prévu, ouvrant la porte à un assouplissement monétaire." },
-    { category: "marches", title: "Résultats Nvidia : le chiffre d'affaires double grâce à l'IA", source: "CNBC", time: "Il y a 5h", url: "#", description: "Le géant des GPU affiche des résultats stratosphériques portés par la demande en puces IA." },
-    { category: "marches", title: "Obligations : le 10 ans US franchit les 4,50%", source: "Bloomberg", time: "Il y a 7h", url: "#", description: "Les taux longs remontent face aux craintes d'inflation persistante et de déficit budgétaire." },
+    { category: "markets", title: "Wall Street : le S&P 500 enchaîne un 5e record consécutif", source: "CNBC", time: "Il y a 1h", url: "#", description: "Les valeurs technologiques continuent de tirer le marché américain vers de nouveaux sommets." },
+    { category: "markets", title: "BCE : Lagarde signale une possible baisse des taux en mars", source: "Bloomberg", time: "Il y a 3h", url: "#", description: "L'inflation en zone euro ralentit plus vite que prévu, ouvrant la porte à un assouplissement monétaire." },
+    { category: "markets", title: "Résultats Nvidia : le chiffre d'affaires double grâce à l'IA", source: "CNBC", time: "Il y a 5h", url: "#", description: "Le géant des GPU affiche des résultats stratosphériques portés par la demande en puces IA." },
+    { category: "markets", title: "Obligations : le 10 ans US franchit les 4,50%", source: "Bloomberg", time: "Il y a 7h", url: "#", description: "Les taux longs remontent face aux craintes d'inflation persistante et de déficit budgétaire." },
     // Crypto
     { category: "crypto", title: "Bitcoin sous 80 000 $ : les ETF perdent 1,7 Md$ en sorties", source: "CoinDesk", time: "Il y a 2h", url: "#", description: "Le marché crypto subit des pressions vendeuses alors que les investisseurs institutionnels se désengagent." },
     { category: "crypto", title: "Ethereum 2.0 : le staking atteint 32 millions d'ETH", source: "CoinDesk", time: "Il y a 5h", url: "#", description: "La sécurité du réseau Ethereum se renforce avec un nombre record de validateurs." },
     // Matières premières
-    { category: "matieres_premieres", title: "Or à 2 890 $ : les banques centrales achètent 585 tonnes/trimestre", source: "World Gold Council", time: "Il y a 3h", url: "#", description: "La demande institutionnelle pour l'or atteint des niveaux historiques en ce début 2026." },
-    { category: "matieres_premieres", title: "Pétrole : l'OPEP+ maintient ses coupes malgré la pression US", source: "Bloomberg", time: "Il y a 6h", url: "#", description: "L'Arabie saoudite refuse d'augmenter sa production malgré les appels de Washington." },
-    { category: "matieres_premieres", title: "Cuivre à 9 400 $/t — la demande chinoise repart", source: "Bloomberg", time: "Il y a 8h", url: "#", description: "Le métal rouge profite du plan de relance de Pékin pour les infrastructures vertes." },
+    { category: "commodities", title: "Or à 2 890 $ : les banques centrales achètent 585 tonnes/trimestre", source: "World Gold Council", time: "Il y a 3h", url: "#", description: "La demande institutionnelle pour l'or atteint des niveaux historiques en ce début 2026." },
+    { category: "commodities", title: "Pétrole : l'OPEP+ maintient ses coupes malgré la pression US", source: "Bloomberg", time: "Il y a 6h", url: "#", description: "L'Arabie saoudite refuse d'augmenter sa production malgré les appels de Washington." },
+    { category: "commodities", title: "Cuivre à 9 400 $/t — la demande chinoise repart", source: "Bloomberg", time: "Il y a 8h", url: "#", description: "Le métal rouge profite du plan de relance de Pékin pour les infrastructures vertes." },
 ];
 
 /* ============================================
@@ -103,7 +103,13 @@ function initCategoryPage(category) {
     const container = document.getElementById('page-news');
     if (!container) return;
 
-    const filtered = newsDatabase.filter(n => n.category === category);
+    // Mapping pour les catégories qui peuvent couvrir plusieurs clés
+    const catExpand = {
+        etf: ['markets', 'ai_tech']
+    };
+    const cats = catExpand[category] || [category];
+
+    const filtered = newsDatabase.filter(n => cats.includes(n.category));
     if (filtered.length === 0) {
         container.innerHTML = '<p class="empty-state">Aucun article disponible dans cette rubrique pour le moment.</p>';
         return;
@@ -396,9 +402,14 @@ function initDivergenceChart() {
     let goldData, btcData, labels;
 
     if (liveData && Array.isArray(liveData.gold) && Array.isArray(liveData.bitcoin) && liveData.gold.length > 0) {
-        // Use live data from API
-        goldData = liveData.gold.map(d => d && typeof d.value === 'number' ? d.value : null).filter(v => v !== null);
-        btcData = liveData.bitcoin.map(d => d && typeof d.value === 'number' ? d.value : null).filter(v => v !== null);
+        // Use live data from API (chart-gold-btc.json uses 'price' field)
+        // Normalize to base-100 index for comparable visualization
+        const rawGold = liveData.gold.map(d => d && typeof d.price === 'number' ? d.price : null);
+        const rawBtc = liveData.bitcoin.map(d => d && typeof d.price === 'number' ? d.price : null);
+        const goldBase = rawGold.find(v => v !== null) || 1;
+        const btcBase = rawBtc.find(v => v !== null) || 1;
+        goldData = rawGold.map(v => v !== null ? (v / goldBase) * 100 : null).filter(v => v !== null);
+        btcData = rawBtc.map(v => v !== null ? (v / btcBase) * 100 : null).filter(v => v !== null);
         labels = liveData.gold.map(d => {
             if (!d || !d.date) return '';
             const date = new Date(d.date);

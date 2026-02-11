@@ -60,10 +60,10 @@ jobs:
           git config user.name "Inflexion Bot"
           git config user.email "bot@inflexionhub.com"
 
-          # Ajouter les fichiers générés
-          git add data/news.json
-          git add data/article-du-jour.json
-          git add data/articles/
+          # Ajouter les fichiers générés (|| true si le fichier n'existe pas encore)
+          git add data/news.json || true
+          [ -f data/article-du-jour.json ] && git add data/article-du-jour.json || true
+          [ -d data/articles ] && git add data/articles/ || true
 
           # Vérifier s'il y a des changements
           if git diff --staged --quiet; then
