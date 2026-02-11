@@ -10,6 +10,13 @@
 #   - Alpha Vantage (forex/secteurs) → ALPHA_VANTAGE_API_KEY (optionnel)
 #   - DefiLlama (DeFi TVL/yields) → fonctionne sans clé
 #
+# Flux RSS (gratuit, sans clé) :
+#   - Le Figaro (éco, international, tech, conjoncture, sociétés)
+#   - Les Echos, BFM Business, Boursorama
+#   - CoinTelegraph FR, Cryptoast
+#   - TLDR newsletters (Tech, AI, Crypto, Fintech)
+#   - CoinDesk, CoinTelegraph EN, OilPrice
+#
 # Résultat : fichiers JSON dans /data/ committés et déployés automatiquement
 
 name: "📊 Fetch Market Data"
