@@ -803,11 +803,15 @@ const DataLoader = (function () {
         var ln = document.getElementById('latest-news');
         if (!ln) return;
 
-        // Collecter tous les articles avec leur rubrique
+        // Collecter tous les articles avec leur rubrique (FR uniquement, avec titre)
         var allArticles = [];
         Object.keys(_cache.news.categories).forEach(function(cat) {
             var articles = _cache.news.categories[cat];
             articles.forEach(function(a) {
+                // Exclure articles EN non traduits
+                if (a.lang === 'en' && !a.translated) return;
+                // Exclure articles sans titre
+                if (!a.title || a.title.length < 5) return;
                 allArticles.push(a);
             });
         });
@@ -854,7 +858,21 @@ const DataLoader = (function () {
     }
 
     /**
-     * Met à jour la section "À la une" (#top-stories) avec les données live
+     * Bannières thématiques pour les analyses (couleurs dégradées par rubrique)
+     */
+    var ANALYSIS_BANNERS = {
+        geopolitics: { gradient: 'linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%)', icon: '🌍', label: 'Géopolitique' },
+        marches:     { gradient: 'linear-gradient(135deg, #064e3b 0%, #10b981 100%)', icon: '📈', label: 'Marchés' },
+        markets:     { gradient: 'linear-gradient(135deg, #064e3b 0%, #10b981 100%)', icon: '📈', label: 'Marchés' },
+        crypto:      { gradient: 'linear-gradient(135deg, #78350f 0%, #f59e0b 100%)', icon: '₿', label: 'Crypto' },
+        commodities: { gradient: 'linear-gradient(135deg, #7f1d1d 0%, #ef4444 100%)', icon: '⛏️', label: 'Mat. Premières' },
+        ai_tech:     { gradient: 'linear-gradient(135deg, #4c1d95 0%, #8b5cf6 100%)', icon: '🤖', label: 'IA & Tech' },
+        matieres_premieres: { gradient: 'linear-gradient(135deg, #7f1d1d 0%, #ef4444 100%)', icon: '⛏️', label: 'Mat. Premières' }
+    };
+    var DEFAULT_BANNER = { gradient: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)', icon: '📊', label: 'Analyse' };
+
+    /**
+     * Met à jour la section "Analyses" (#top-stories) avec les articles les plus pertinents (FR uniquement)
      */
     function updateTopStories() {
         if (!_cache.news?.categories) return;
@@ -862,18 +880,25 @@ const DataLoader = (function () {
         var ts = document.getElementById('top-stories');
         if (!ts) return;
 
-        // Prendre le 1er article de chaque rubrique (toutes les rubriques)
+        // Sélectionner 1 article FR par rubrique avec description
         var stories = [];
-        var categoryKeys = ['markets', 'geopolitics', 'crypto', 'commodities', 'ai_tech'];
+        var categoryKeys = ['geopolitics', 'markets', 'crypto', 'commodities', 'ai_tech'];
+        var usedRubriques = [];
 
         categoryKeys.forEach(function(cat) {
             var articles = _cache.news.categories[cat] || [];
-            if (articles.length > 0) {
-                stories.push(articles[0]);
+            for (var j = 0; j < articles.length; j++) {
+                var a = articles[j];
+                // Exclure articles EN non traduits et sans description
+                if (a.lang === 'en' && !a.translated) continue;
+                if (!a.description || a.description.length < 20) continue;
+                stories.push(a);
+                usedRubriques.push(cat);
+                break;
             }
         });
 
-        // Trier par date (plus récent d'abord) et prendre les 3 premiers
+        // Trier par date et prendre les 3 premiers (diversité rubrique)
         stories.sort(function(a, b) {
             return new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0);
         });
@@ -882,15 +907,14 @@ const DataLoader = (function () {
         if (stories.length === 0) return;
 
         ts.innerHTML = '<div class="top-stories-grid">' + stories.map(function(n, i) {
-            var imgHTML = n.image
-                ? '<img src="' + n.image + '" alt="" class="story-image" loading="lazy" onerror="this.remove()">'
-                : '';
             var rubriqueAttr = n.rubrique || '';
-            var rubriqueLabel = n.rubrique_label || '';
-            var rubriqueEmoji = n.rubrique_emoji || '';
-            var rubriqueTag = rubriqueLabel
-                ? '<span class="rubrique-badge rubrique-' + rubriqueAttr + '">' + rubriqueEmoji + ' ' + rubriqueLabel + '</span>'
-                : '';
+            var banner = ANALYSIS_BANNERS[rubriqueAttr] || DEFAULT_BANNER;
+
+            // Bannière thématique générée (remplace l'image source)
+            var bannerHTML = '<div class="analysis-banner" style="background: ' + banner.gradient + ';">' +
+                '<span class="analysis-banner-icon">' + banner.icon + '</span>' +
+                '<span class="analysis-banner-label">' + banner.label + '</span>' +
+            '</div>';
 
             var desc = n.description || '';
             if (desc.length > 150) desc = desc.slice(0, 147) + '...';
@@ -898,13 +922,12 @@ const DataLoader = (function () {
                 ? '<p class="story-summary">' + desc + '</p>'
                 : '';
 
-            return '<article class="top-story' + (i === 0 ? ' top-story-main' : '') + '">' +
-                imgHTML +
+            return '<article class="top-story">' +
+                bannerHTML +
                 '<div class="story-body">' +
                     '<div class="story-meta">' +
                         '<a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" class="source-name">' + (n.source || '') + '</a>' +
                         '<time class="news-time">' + (n.time || '') + '</time>' +
-                        rubriqueTag +
                     '</div>' +
                     '<h3><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer">' + (n.title || '') + '</a></h3>' +
                     summaryHTML +
@@ -1094,7 +1117,9 @@ const DataLoader = (function () {
         var newsCat = catMap[pageCat];
         if (!newsCat || !_cache.news.categories[newsCat]) return;
 
-        var articles = _cache.news.categories[newsCat].slice(0, 3);
+        var articles = _cache.news.categories[newsCat].filter(function(a) {
+            return !(a.lang === 'en' && !a.translated) && a.title && a.title.length >= 5;
+        }).slice(0, 3);
         if (articles.length === 0) return;
 
         // Construire le résumé en français
@@ -1185,11 +1210,15 @@ const DataLoader = (function () {
         var targetCats = catMap[pageCat];
         if (!targetCats) return;
 
-        // Collecter les articles des catégories correspondantes
+        // Collecter les articles des catégories correspondantes (FR uniquement)
         var articles = [];
         targetCats.forEach(function(cat) {
             var catArticles = _cache.news.categories[cat] || [];
             catArticles.forEach(function(a) {
+                // Exclure articles EN non traduits
+                if (a.lang === 'en' && !a.translated) return;
+                // Exclure articles sans titre
+                if (!a.title || a.title.length < 5) return;
                 articles.push(a);
             });
         });
@@ -1214,6 +1243,13 @@ const DataLoader = (function () {
                 ? '<img src="' + n.image + '" alt="" class="story-image" loading="lazy" onerror="this.remove()">'
                 : '';
 
+            // Résumé tronqué (max 150 car.)
+            var desc = n.description || '';
+            if (desc.length > 150) desc = desc.slice(0, 147) + '...';
+            var excerptHTML = desc
+                ? '<p class="story-excerpt">' + desc + '</p>'
+                : '';
+
             return '<article class="top-story" data-rubrique="' + (n.rubrique || '') + '">' +
                 imgHTML +
                 '<div class="story-content">' +
@@ -1223,7 +1259,7 @@ const DataLoader = (function () {
                         rubriqueTag +
                     '</div>' +
                     '<h3 class="story-title"><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer">' + (n.title || '') + '</a></h3>' +
-                    '<p class="story-excerpt">' + (n.description || '') + '</p>' +
+                    excerptHTML +
                 '</div>' +
             '</article>';
         }).join('');
