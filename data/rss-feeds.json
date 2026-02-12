@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-12T10:54:54.580Z",
+  "updated": "2026-02-12T11:53:27.214Z",
   "feeds": [
     {
       "source": "Le Figaro",
@@ -509,11 +509,135 @@
       "url": "https://tldr.tech/api/rss/ai",
       "count": 5,
       "ok": true
+    },
+    {
+      "source": "Le Monde Éco",
+      "url": "https://www.lemonde.fr/economie/rss_full.xml",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Challenges",
+      "url": "https://www.challenges.fr/rss.xml",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "MoneyVox",
+      "url": "https://www.moneyvox.fr/actu/feed/",
+      "count": 0,
+      "ok": true
+    },
+    {
+      "source": "Le Monde Intl",
+      "url": "https://www.lemonde.fr/international/rss_full.xml",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Le Figaro Finances",
+      "url": "https://www.lefigaro.fr/rss/figaro_finances-perso.xml",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "La Tribune Finance",
+      "url": "https://www.latribune.fr/feed/entreprises-finance.xml",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://www.latribune.fr/feed/entreprises-finance.xml"
+    },
+    {
+      "source": "BIS (BRI)",
+      "url": "https://www.bis.org/doclist/rss/speeches.rss",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://www.bis.org/doclist/rss/speeches.rss"
+    },
+    {
+      "source": "IMF Blog",
+      "url": "https://blogs.imf.org/feed/",
+      "count": 0,
+      "ok": true
+    },
+    {
+      "source": "World Economic Forum",
+      "url": "https://www.weforum.org/feed/rss",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.weforum.org/feed/rss"
+    },
+    {
+      "source": "PIIE",
+      "url": "https://www.piie.com/rss.xml",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.piie.com/rss.xml"
+    },
+    {
+      "source": "VoxEU / CEPR",
+      "url": "https://voxeu.org/feed",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://voxeu.org/feed"
+    },
+    {
+      "source": "OECD",
+      "url": "https://www.oecd.org/newsroom/index.xml",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.oecd.org/newsroom/index.xml"
+    },
+    {
+      "source": "IEA",
+      "url": "https://www.iea.org/rss/news.xml",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.iea.org/rss/news.xml"
+    },
+    {
+      "source": "IRENA",
+      "url": "https://www.irena.org/rss",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.irena.org/rss"
+    },
+    {
+      "source": "Carbon Brief",
+      "url": "https://www.carbonbrief.org/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "CleanTechnica",
+      "url": "https://cleantechnica.com/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Reuters Sustainability",
+      "url": "https://www.reuters.com/arc/outboundfeeds/v3/search/section/sustainability/?outputType=xml&size=15",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://www.reuters.com/arc/outboundfeeds/v3/search/section/sustainability/?outputType=xml&size=15"
+    },
+    {
+      "source": "Energy Monitor",
+      "url": "https://www.energymonitor.ai/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "S&P Energy Transition",
+      "url": "https://www.spglobal.com/commodityinsights/en/rss-feed/energy-transition",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.spglobal.com/commodityinsights/en/rss-feed/energy-transition"
     }
   ],
   "stats": {
-    "success": 72,
-    "failed": 11,
-    "articles": 350
+    "success": 81,
+    "failed": 21,
+    "articles": 385
   }
 }
