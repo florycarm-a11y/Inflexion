@@ -1,41 +1,162 @@
 {
-  "updated": "2026-02-11T19:49:07.087Z",
+  "updated": "2026-02-12T10:13:19.256Z",
   "feeds": [
+    {
+      "source": "Le Figaro",
+      "url": "https://www.lefigaro.fr/rss/figaro_international.xml",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.lefigaro.fr/rss/figaro_international.xml"
+    },
+    {
+      "source": "France 24",
+      "url": "https://www.france24.com/fr/rss",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "RFI",
+      "url": "https://www.rfi.fr/fr/rss",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.rfi.fr/fr/rss"
+    },
+    {
+      "source": "Courrier International",
+      "url": "https://www.courrierinternational.com/feed/all/rss.xml",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.courrierinternational.com/feed/all/rss.xml"
+    },
+    {
+      "source": "Le Monde Diplomatique",
+      "url": "https://www.monde-diplomatique.fr/export/rss",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.monde-diplomatique.fr/export/rss"
+    },
+    {
+      "source": "BBC World",
+      "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Al Jazeera",
+      "url": "https://www.aljazeera.com/xml/rss/all.xml",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "The Guardian",
+      "url": "https://www.theguardian.com/world/rss",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.theguardian.com/world/rss"
+    },
+    {
+      "source": "New York Times",
+      "url": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
+    },
+    {
+      "source": "Reuters",
+      "url": "https://feeds.reuters.com/Reuters/worldNews",
+      "count": 0,
+      "ok": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "Politico EU",
+      "url": "https://www.politico.eu/feed/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.politico.eu/feed/"
+    },
+    {
+      "source": "Foreign Policy",
+      "url": "https://foreignpolicy.com/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "CFR",
+      "url": "https://www.cfr.org/rss/all",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://www.cfr.org/rss/all"
+    },
+    {
+      "source": "Brookings",
+      "url": "https://www.brookings.edu/feed/",
+      "count": 0,
+      "ok": true
+    },
+    {
+      "source": "Carnegie",
+      "url": "https://carnegieendowment.org/rss/solr.xml",
+      "count": 0,
+      "ok": true
+    },
+    {
+      "source": "CSIS",
+      "url": "https://www.csis.org/rss.xml",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Responsible Statecraft",
+      "url": "https://responsiblestatecraft.org/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "War on the Rocks",
+      "url": "https://warontherocks.com/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "The Diplomat",
+      "url": "https://thediplomat.com/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Middle East Eye",
+      "url": "https://www.middleeasteye.net/rss",
+      "count": 5,
+      "ok": true
+    },
     {
       "source": "Le Figaro Éco",
       "url": "https://www.lefigaro.fr/rss/figaro_economie.xml",
-      "count": 5,
-      "ok": true
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.lefigaro.fr/rss/figaro_economie.xml"
     },
     {
       "source": "Le Figaro",
       "url": "https://www.lefigaro.fr/rss/figaro_conjoncture.xml",
-      "count": 5,
-      "ok": true
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.lefigaro.fr/rss/figaro_conjoncture.xml"
     },
     {
       "source": "Le Figaro Sociétés",
       "url": "https://www.lefigaro.fr/rss/figaro_societes.xml",
-      "count": 5,
-      "ok": true
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.lefigaro.fr/rss/figaro_societes.xml"
     },
     {
       "source": "Le Figaro Flash Éco",
       "url": "https://www.lefigaro.fr/rss/figaro_flash-eco.xml",
-      "count": 5,
-      "ok": true
-    },
-    {
-      "source": "Le Figaro",
-      "url": "https://www.lefigaro.fr/rss/figaro_international.xml",
-      "count": 5,
-      "ok": true
-    },
-    {
-      "source": "Le Figaro Tech",
-      "url": "https://www.lefigaro.fr/rss/figaro_secteur_high-tech.xml",
-      "count": 5,
-      "ok": true
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.lefigaro.fr/rss/figaro_flash-eco.xml"
     },
     {
       "source": "Les Echos",
@@ -47,25 +168,362 @@
     {
       "source": "BFM Business",
       "url": "https://www.bfmtv.com/rss/economie/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.bfmtv.com/rss/economie/"
+    },
+    {
+      "source": "Zonebourse",
+      "url": "https://www.zonebourse.com/rss/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.zonebourse.com/rss/"
+    },
+    {
+      "source": "La Tribune",
+      "url": "https://www.latribune.fr/feed.xml",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.latribune.fr/feed.xml"
+    },
+    {
+      "source": "Capital",
+      "url": "https://www.capital.fr/feeds",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.capital.fr/feeds"
+    },
+    {
+      "source": "MarketWatch",
+      "url": "https://feeds.content.dowjones.io/public/rss/mw_topstories",
       "count": 5,
       "ok": true
     },
     {
-      "source": "Boursorama",
-      "url": "https://www.boursorama.com/rss/actualites/marches-financiers",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/news/rssindex",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Seeking Alpha",
+      "url": "https://seekingalpha.com/market_currents.xml",
       "count": 0,
       "ok": false,
-      "error": "HTTP 404: https://www.boursorama.com/rss/actualites/marches-financiers"
+      "error": "HTTP 403: https://seekingalpha.com/market_currents.xml"
+    },
+    {
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Investing.com",
+      "url": "https://www.investing.com/rss/news.rss",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.investing.com/rss/news.rss"
+    },
+    {
+      "source": "Wolf Street",
+      "url": "https://wolfstreet.com/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Calculated Risk",
+      "url": "https://www.calculatedriskblog.com/feeds/posts/default?alt=rss",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Naked Capitalism",
+      "url": "https://www.nakedcapitalism.com/feed",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "TLDR Fintech",
+      "url": "https://tldr.tech/api/rss/fintech",
+      "count": 5,
+      "ok": true
     },
     {
       "source": "CoinTelegraph FR",
       "url": "https://fr.cointelegraph.com/rss",
-      "count": 5,
-      "ok": true
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://fr.cointelegraph.com/rss"
     },
     {
       "source": "Cryptoast",
       "url": "https://cryptoast.fr/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Journal du Coin",
+      "url": "https://journalducoin.com/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "CoinDesk",
+      "url": "https://www.coindesk.com/arc/outboundfeeds/rss/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.coindesk.com/arc/outboundfeeds/rss/"
+    },
+    {
+      "source": "CoinTelegraph",
+      "url": "https://cointelegraph.com/rss",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://cointelegraph.com/rss"
+    },
+    {
+      "source": "The Block",
+      "url": "https://www.theblock.co/rss.xml",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.theblock.co/rss.xml"
+    },
+    {
+      "source": "Decrypt",
+      "url": "https://decrypt.co/feed",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://decrypt.co/feed"
+    },
+    {
+      "source": "Blockworks",
+      "url": "https://blockworks.co/feed",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Bitcoin Magazine",
+      "url": "https://bitcoinmagazine.com/.rss/full/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://bitcoinmagazine.com/.rss/full/"
+    },
+    {
+      "source": "The Defiant",
+      "url": "https://www.thedefiant.io/feed",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Unchained",
+      "url": "https://unchainedcrypto.com/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Web3 is Going Great",
+      "url": "https://www.web3isgoinggreat.com/feed.xml",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Chainalysis",
+      "url": "https://blog.chainalysis.com/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "TLDR Crypto",
+      "url": "https://tldr.tech/api/rss/crypto",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "OilPrice",
+      "url": "https://oilprice.com/rss/main",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Rigzone",
+      "url": "https://www.rigzone.com/news/rss/rigzone_latest.aspx",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Reuters Commodities",
+      "url": "https://www.reuters.com/arc/outboundfeeds/v3/search/section/commodities/?outputType=xml&size=20",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.reuters.com/arc/outboundfeeds/v3/search/section/commodities/?outputType=xml&size=20"
+    },
+    {
+      "source": "Natural Gas Intel",
+      "url": "https://www.naturalgasintel.com/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Kitco",
+      "url": "https://www.kitco.com/feed",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://www.kitco.com/feed"
+    },
+    {
+      "source": "Mining.com",
+      "url": "https://www.mining.com/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "MetalMiner",
+      "url": "https://agmetalminer.com/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "S&P Global",
+      "url": "https://www.spglobal.com/commodityinsights/en/rss-feed/platts-top-250",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.spglobal.com/commodityinsights/en/rss-feed/platts-top-250"
+    },
+    {
+      "source": "Agriculture.com",
+      "url": "https://www.agriculture.com/feeds/all",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.agriculture.com/feeds/all"
+    },
+    {
+      "source": "Farms.com",
+      "url": "https://www.farms.com/rss/news.aspx",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://www.farms.com/rss/news.aspx"
+    },
+    {
+      "source": "Hellenic Shipping",
+      "url": "https://www.hellenicshippingnews.com/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Trading Economics",
+      "url": "https://tradingeconomics.com/rss/news.aspx",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://tradingeconomics.com/rss/news.aspx"
+    },
+    {
+      "source": "Le Figaro Tech",
+      "url": "https://www.lefigaro.fr/rss/figaro_secteur_high-tech.xml",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.lefigaro.fr/rss/figaro_secteur_high-tech.xml"
+    },
+    {
+      "source": "01net",
+      "url": "https://www.01net.com/feed/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.01net.com/feed/"
+    },
+    {
+      "source": "Numerama",
+      "url": "https://www.numerama.com/feed/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.numerama.com/feed/"
+    },
+    {
+      "source": "Next INpact",
+      "url": "https://www.nextinpact.com/feed",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "The Verge",
+      "url": "https://www.theverge.com/rss/index.xml",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.theverge.com/rss/index.xml"
+    },
+    {
+      "source": "Ars Technica",
+      "url": "https://feeds.arstechnica.com/arstechnica/technology-lab",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://feeds.arstechnica.com/arstechnica/technology-lab"
+    },
+    {
+      "source": "Wired",
+      "url": "https://www.wired.com/feed/rss",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.wired.com/feed/rss"
+    },
+    {
+      "source": "Hacker News",
+      "url": "https://hnrss.org/frontpage?count=15",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 503: https://hnrss.org/frontpage?count=15"
+    },
+    {
+      "source": "VentureBeat AI",
+      "url": "https://venturebeat.com/category/ai/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "MIT Tech Review",
+      "url": "https://feeds.technologyreview.com/technologyreview/topnews",
+      "count": 0,
+      "ok": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "IEEE Spectrum AI",
+      "url": "https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "MarkTechPost",
+      "url": "https://www.marktechpost.com/feed/",
+      "count": 0,
+      "ok": true
+    },
+    {
+      "source": "The Decoder",
+      "url": "https://the-decoder.com/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Krebs on Security",
+      "url": "https://krebsonsecurity.com/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "BleepingComputer",
+      "url": "https://www.bleepingcomputer.com/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "The Register",
+      "url": "https://www.theregister.com/headlines.atom",
       "count": 5,
       "ok": true
     },
@@ -80,41 +538,11 @@
       "url": "https://tldr.tech/api/rss/ai",
       "count": 5,
       "ok": true
-    },
-    {
-      "source": "TLDR Crypto",
-      "url": "https://tldr.tech/api/rss/crypto",
-      "count": 5,
-      "ok": true
-    },
-    {
-      "source": "TLDR Fintech",
-      "url": "https://tldr.tech/api/rss/fintech",
-      "count": 5,
-      "ok": true
-    },
-    {
-      "source": "CoinDesk",
-      "url": "https://www.coindesk.com/arc/outboundfeeds/rss/",
-      "count": 5,
-      "ok": true
-    },
-    {
-      "source": "CoinTelegraph",
-      "url": "https://cointelegraph.com/rss",
-      "count": 5,
-      "ok": true
-    },
-    {
-      "source": "OilPrice",
-      "url": "https://oilprice.com/rss/main",
-      "count": 5,
-      "ok": true
     }
   ],
   "stats": {
-    "success": 16,
-    "failed": 2,
-    "articles": 80
+    "success": 43,
+    "failed": 40,
+    "articles": 200
   }
 }
