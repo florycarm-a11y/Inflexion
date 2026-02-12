@@ -3927,6 +3927,34 @@ a {
     }
 }
 
+/* --- Analyses grid (page Finances) --- */
+.featured-analyses-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+@media (max-width: 768px) {
+    .featured-analyses-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Finance sections (page Finances) --- */
+.finance-section {
+    margin: 2rem 0;
+}
+
+.finance-section .section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+}
+
 /* --- Responsive --- */
 @media (max-width: 768px) {
     .article-du-jour {

@@ -1093,7 +1093,8 @@ const DataLoader = (function () {
             markets: 'markets',
             crypto: 'crypto',
             commodities: 'commodities',
-            etf: 'markets' // Pas de rubrique ETF dans news.json, on utilise marchés
+            finances: 'markets',
+            etf: 'markets'
         };
 
         var newsCat = catMap[pageCat];
@@ -1186,7 +1187,8 @@ const DataLoader = (function () {
             markets: ['markets'],
             crypto: ['crypto'],
             commodities: ['commodities'],
-            etf: ['markets', 'ai_tech'] // ETFs couvrent marchés + tech
+            finances: ['markets', 'crypto', 'commodities', 'ai_tech'],
+            etf: ['markets', 'ai_tech']
         };
 
         var targetCats = catMap[pageCat];

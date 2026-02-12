@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marchés — Inflexion</title>
-    <meta name="description" content="Suivi des marchés financiers : S&P 500, Nasdaq, Nvidia, volatilité, impact de l'IA sur l'emploi et les stratégies d'investissement.">
-    <meta name="keywords" content="marchés financiers, S&P 500, Nasdaq, Nvidia, VIX, IA emploi, Wall Street, investissement, trading">
-    <meta property="og:title" content="Marchés — Inflexion">
-    <meta property="og:description" content="Suivi des marchés financiers : indices, actions tech, impact de l'IA sur l'emploi et stratégies d'investissement.">
+    <title>Finances — Inflexion</title>
+    <meta name="description" content="Finances : indices, actions, crypto, matières premières, ETF. Cours en temps réel, analyses et données de marché.">
+    <meta name="keywords" content="finances, marchés financiers, crypto, bitcoin, matières premières, ETF, or, pétrole, S&P 500, Nasdaq, investissement">
+    <meta property="og:title" content="Finances — Inflexion">
+    <meta property="og:description" content="Finances : indices, crypto, matières premières, ETF. Cours en temps réel et analyses.">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Inflexion">
     <meta property="og:locale" content="fr_FR">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Marchés — Inflexion">
-    <meta name="twitter:description" content="Suivi des marchés financiers et impact de l'IA sur l'emploi.">
+    <meta name="twitter:title" content="Finances — Inflexion">
+    <meta name="twitter:description" content="Indices, crypto, matières premières, ETF. Cours et analyses.">
     <meta property="og:url" content="https://florycarm-a11y.github.io/Inflexion/markets.html">
     <meta property="og:image" content="https://florycarm-a11y.github.io/Inflexion/og-image.png">
     <meta name="twitter:image" content="https://florycarm-a11y.github.io/Inflexion/og-image.png">
@@ -25,8 +25,8 @@
         {
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            "name": "Marchés — Inflexion",
-            "description": "Suivi des marchés financiers : indices, actions tech, impact de l'IA sur l'emploi.",
+            "name": "Finances — Inflexion",
+            "description": "Finances : indices, crypto, matières premières, ETF. Cours en temps réel et analyses.",
             "publisher": {"@type": "Organization", "name": "Inflexion"},
             "inLanguage": "fr"
         },
@@ -35,7 +35,7 @@
             "@type": "BreadcrumbList",
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://florycarm-a11y.github.io/Inflexion/"},
-                {"@type": "ListItem", "position": 2, "name": "Marchés", "item": "https://florycarm-a11y.github.io/Inflexion/markets.html"}
+                {"@type": "ListItem", "position": 2, "name": "Finances", "item": "https://florycarm-a11y.github.io/Inflexion/markets.html"}
             ]
         }
     ]
@@ -85,10 +85,7 @@
                 <div class="nav-links">
                     <a href="index.html" class="nav-overlay-link">Accueil</a>
                     <a href="geopolitics.html" class="nav-overlay-link">Géopolitique</a>
-                    <a href="markets.html" class="nav-overlay-link" aria-current="page">Marchés</a>
-                    <a href="crypto.html" class="nav-overlay-link">Crypto</a>
-                    <a href="commodities.html" class="nav-overlay-link">Matières Premières</a>
-                    <a href="etf.html" class="nav-overlay-link">ETF</a>
+                    <a href="markets.html" class="nav-overlay-link" aria-current="page">Finances</a>
                     <a href="analysis.html" class="nav-overlay-link">Analyses</a>
                     <a href="premium.html" class="nav-overlay-link nav-premium">Premium</a>
                 </div>
@@ -98,80 +95,174 @@
 
     <main class="main-content" id="main-content">
         <div class="container">
-            <div class="page-header" data-category="markets">
-                <h1 class="page-title">Marchés financiers</h1>
-                <p class="page-subtitle">Analyses boursières, politique monétaire et tendances mondiales</p>
+            <div class="page-header" data-category="finances">
+                <h1 class="page-title">Finances</h1>
+                <p class="page-subtitle">Actions, indices, crypto, matières premières, ETF — cours et analyses</p>
             </div>
 
             <div id="category-trend"></div>
 
-            <!-- Analyse a la une -->
-            <section class="rubrique-featured-analysis">
-                <h2 class="section-title">Analyse a la une</h2>
-                <a href="analyse-ia-rempart-marches.html" class="featured-analysis-card">
-                    <div class="featured-analysis-banner" style="background: linear-gradient(135deg, #0A4420 0%, #105E2D 100%);">
-                        <span class="featured-analysis-label">Analyse sectorielle</span>
-                    </div>
-                    <div class="featured-analysis-body">
-                        <h3>L'IA, dernier rempart des marches face au chaos geopolitique</h3>
-                        <p>Nvidia : 57 Mds $ de revenus trimestriels, backlog de 500 Mds $, architecture Vera Rubin. Mais la concentration des Mag 7 (30 % du S&amp;P 500) est un risque systemique.</p>
-                        <span class="featured-analysis-meta">1er fevrier 2026 — 11 min de lecture</span>
-                    </div>
-                </a>
-            </section>
-
-            <!-- TradingView Market Overview -->
-            <div class="tradingview-widget-container market-overview-widget">
-                <div class="tradingview-widget-container__widget"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-                {
-                    "colorTheme": "light",
-                    "dateRange": "12M",
-                    "showChart": true,
-                    "locale": "fr",
-                    "width": "100%",
-                    "height": "500",
-                    "isTransparent": true,
-                    "showSymbolLogo": true,
-                    "showFloatingTooltip": true,
-                    "tabs": [
-                        {
-                            "title": "Indices",
-                            "symbols": [
-                                {"s": "FOREXCOM:SPXUSD", "d": "S&P 500"},
-                                {"s": "NASDAQ:NDX", "d": "NASDAQ 100"},
-                                {"s": "INDEX:CAC40", "d": "CAC 40"},
-                                {"s": "INDEX:DEU40", "d": "DAX 40"}
-                            ]
-                        },
-                        {
-                            "title": "Devises",
-                            "symbols": [
-                                {"s": "FOREXCOM:EURUSD", "d": "EUR/USD"},
-                                {"s": "FOREXCOM:GBPUSD", "d": "GBP/USD"},
-                                {"s": "TVC:DXY", "d": "Dollar Index"},
-                                {"s": "FOREXCOM:USDJPY", "d": "USD/JPY"}
-                            ]
-                        }
-                    ]
-                }
-                </script>
+            <!-- Filtres sous-catégories -->
+            <div class="section-filters" id="filters">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="markets">Actions & Indices</button>
+                <button class="filter-btn" data-filter="crypto">Crypto</button>
+                <button class="filter-btn" data-filter="commodities">Matières Premières</button>
             </div>
 
+            <!-- Analyses a la une -->
+            <section class="rubrique-featured-analysis" id="featured-analyses">
+                <h2 class="section-title">Analyses a la une</h2>
+                <div class="featured-analyses-grid">
+                    <a href="analyse-ia-rempart-marches.html" class="featured-analysis-card">
+                        <div class="featured-analysis-banner" style="background: linear-gradient(135deg, #0A4420 0%, #105E2D 100%);">
+                            <span class="featured-analysis-label">Analyse sectorielle</span>
+                        </div>
+                        <div class="featured-analysis-body">
+                            <h3>L'IA, dernier rempart des marches face au chaos geopolitique</h3>
+                            <p>Nvidia : 57 Mds $ de revenus trimestriels, backlog de 500 Mds $. Mais la concentration des Mag 7 est un risque systemique.</p>
+                            <span class="featured-analysis-meta">1er fevrier 2026 — 11 min</span>
+                        </div>
+                    </a>
+                    <a href="analyse-or-bitcoin-divergence.html" class="featured-analysis-card">
+                        <div class="featured-analysis-banner" style="background: linear-gradient(135deg, #0A4420 0%, #105E2D 100%);">
+                            <span class="featured-analysis-label">Analyse macro</span>
+                        </div>
+                        <div class="featured-analysis-body">
+                            <h3>Or a 5 100 $, Bitcoin a 73 000 $ : la grande divergence des valeurs refuges</h3>
+                            <p>L'or pulverise ses records (+64 % YTD) pendant que le bitcoin plonge. Le narratif du "digital gold" est mort.</p>
+                            <span class="featured-analysis-meta">3 fevrier 2026 — 9 min</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- TradingView Market Overview — Actions & Indices -->
+            <section class="finance-section" data-section="markets">
+                <div class="tradingview-widget-container market-overview-widget">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                    {
+                        "colorTheme": "light",
+                        "dateRange": "12M",
+                        "showChart": true,
+                        "locale": "fr",
+                        "width": "100%",
+                        "height": "500",
+                        "isTransparent": true,
+                        "showSymbolLogo": true,
+                        "showFloatingTooltip": true,
+                        "tabs": [
+                            {
+                                "title": "Indices",
+                                "symbols": [
+                                    {"s": "FOREXCOM:SPXUSD", "d": "S&P 500"},
+                                    {"s": "NASDAQ:NDX", "d": "NASDAQ 100"},
+                                    {"s": "INDEX:CAC40", "d": "CAC 40"},
+                                    {"s": "INDEX:DEU40", "d": "DAX 40"}
+                                ]
+                            },
+                            {
+                                "title": "Devises",
+                                "symbols": [
+                                    {"s": "FOREXCOM:EURUSD", "d": "EUR/USD"},
+                                    {"s": "FOREXCOM:GBPUSD", "d": "GBP/USD"},
+                                    {"s": "TVC:DXY", "d": "Dollar Index"},
+                                    {"s": "FOREXCOM:USDJPY", "d": "USD/JPY"}
+                                ]
+                            }
+                        ]
+                    }
+                    </script>
+                </div>
+            </section>
+
+            <!-- TradingView Crypto — Bitcoin & Ethereum -->
+            <section class="finance-section" data-section="crypto">
+                <h2 class="section-title">Crypto & Blockchain</h2>
+                <div class="tradingview-widget-container crypto-chart-widget">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                    {
+                        "symbols": [
+                            ["Bitcoin", "BITSTAMP:BTCUSD|12M"],
+                            ["Ethereum", "BITSTAMP:ETHUSD|12M"]
+                        ],
+                        "chartOnly": false,
+                        "width": "100%",
+                        "height": 400,
+                        "locale": "fr",
+                        "colorTheme": "light",
+                        "autosize": true,
+                        "showVolume": true,
+                        "showMA": true,
+                        "hideDateRanges": false,
+                        "hideMarketStatus": false,
+                        "scalePosition": "right",
+                        "scaleMode": "Normal",
+                        "fontFamily": "Inter, sans-serif",
+                        "fontSize": "10",
+                        "noTimeScale": false,
+                        "valuesTracking": "1",
+                        "changeMode": "price-and-percent",
+                        "chartType": "area",
+                        "lineWidth": 2,
+                        "dateRanges": ["1d|1", "1m|30", "3m|60", "12m|1D", "60m|1W", "all|1M"]
+                    }
+                    </script>
+                </div>
+            </section>
+
+            <!-- Matières premières — Tableau -->
+            <section class="finance-section" data-section="commodities">
+                <h2 class="section-title">Matières premières</h2>
+                <div class="commodity-table" id="commodity-table"></div>
+            </section>
+
+            <!-- ETF — Tableau -->
+            <section class="finance-section" data-section="markets">
+                <h2 class="section-title">ETF & Fonds</h2>
+                <div class="etf-table" id="etf-table"></div>
+            </section>
+
+            <!-- Divergence Or vs Bitcoin -->
+            <section class="section chart-section">
+                <div class="section-header">
+                    <h2 class="section-title">Divergence Or vs Bitcoin — depuis janvier 2026</h2>
+                    <span class="section-subtitle">Performance comparée des valeurs refuges</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="divergenceChart"></canvas>
+                </div>
+                <div class="chart-legend">
+                    <div class="legend-item legend-gold">
+                        <span class="legend-color"></span>
+                        <span class="legend-label">Or (XAU/USD)</span>
+                        <span class="legend-value positive">+18,2 % depuis jan.</span>
+                    </div>
+                    <div class="legend-item legend-btc">
+                        <span class="legend-color"></span>
+                        <span class="legend-label">Bitcoin (BTC/USD)</span>
+                        <span class="legend-value negative">−16,4 % depuis jan.</span>
+                    </div>
+                </div>
+                <p class="chart-insight">L'« or numérique » invalidé : l'or surperforme le BTC de 34 points depuis janvier. Les banques centrales achètent 585 tonnes par trimestre tandis que les ETF crypto enregistrent 1,7 Md$ de sorties.</p>
+            </section>
+
+            <!-- News unifié -->
             <div class="two-col">
                 <div class="col-main">
                     <div class="news-grid" id="page-news" aria-live="polite">
                         <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des articles...</span></div>
                     </div>
                     <noscript>
-                        <p>Activez JavaScript pour afficher les actualités marchés. Consultez nos <a href="analysis.html">analyses approfondies</a>.</p>
+                        <p>Activez JavaScript pour afficher les actualités. Consultez nos <a href="analysis.html">analyses approfondies</a>.</p>
                     </noscript>
                 </div>
                 <aside class="col-side">
                     <div class="sidebar-block sidebar-card">
                         <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Marchés</h3>
                         <div class="market-table" id="market-table" aria-live="polite" role="region" aria-label="Cours des marchés en temps réel"></div>
-                        <a href="markets.html" class="sidebar-more">Voir tous les marchés</a>
                     </div>
                 </aside>
             </div>
@@ -209,10 +300,7 @@
                     <strong>Rubriques</strong>
                     <ul class="footer-links">
                         <li><a href="geopolitics.html">Géopolitique</a></li>
-                        <li><a href="markets.html">Marchés</a></li>
-                        <li><a href="crypto.html">Crypto</a></li>
-                        <li><a href="commodities.html">Mat. Premières</a></li>
-                        <li><a href="etf.html">ETF</a></li>
+                        <li><a href="markets.html">Finances</a></li>
                         <li><a href="analysis.html">Analyses</a></li>
                     </ul>
                 </div>
@@ -247,8 +335,9 @@
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="app.js"></script>
     <script src="data-loader.js"></script>
-    <script>if (typeof initCategoryPage === 'function') initCategoryPage('markets');</script>
+    <script>if (typeof initCategoryPage === 'function') initCategoryPage('finances');</script>
 </body>
 </html>

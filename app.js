@@ -118,21 +118,49 @@ function initCategoryPage(category) {
         initDivergenceChart();
     }
 
-    const container = document.getElementById('page-news');
+    var container = document.getElementById('page-news');
     if (!container) return;
 
     // Mapping pour les catégories qui peuvent couvrir plusieurs clés
-    const catExpand = {
+    var catExpand = {
+        finances: ['markets', 'crypto', 'commodities', 'ai_tech'],
         etf: ['markets', 'ai_tech']
     };
-    const cats = catExpand[category] || [category];
+    var cats = catExpand[category] || [category];
 
-    const filtered = newsDatabase.filter(n => cats.includes(n.category));
-    if (filtered.length === 0) {
-        container.innerHTML = '<p class="empty-state">Aucun article disponible dans cette rubrique pour le moment.</p>';
-        return;
+    function renderNews(filterCat) {
+        var activeCats = filterCat === 'all' ? cats : [filterCat];
+        var filtered = newsDatabase.filter(function(n) { return activeCats.indexOf(n.category) !== -1; });
+        if (filtered.length === 0) {
+            container.innerHTML = '<p class="empty-state">Aucun article disponible dans cette rubrique pour le moment.</p>';
+            return;
+        }
+        container.innerHTML = filtered.map(function(n) { return cardHTML(n); }).join('');
     }
-    container.innerHTML = filtered.map(n => cardHTML(n)).join('');
+
+    renderNews('all');
+
+    // Filtres sous-catégories (page Finances)
+    var filterBtns = document.querySelectorAll('#filters .filter-btn');
+    if (filterBtns.length > 0 && (category === 'finances' || category === 'geopolitics')) {
+        filterBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                var filter = btn.getAttribute('data-filter');
+                renderNews(filter);
+                // Afficher/masquer les sections correspondantes (page Finances)
+                var sections = document.querySelectorAll('.finance-section');
+                sections.forEach(function(sec) {
+                    if (filter === 'all') {
+                        sec.style.display = '';
+                    } else {
+                        sec.style.display = sec.getAttribute('data-section') === filter ? '' : 'none';
+                    }
+                });
+            });
+        });
+    }
 }
 
 function initCommon() {
