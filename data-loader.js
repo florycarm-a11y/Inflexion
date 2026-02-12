@@ -30,7 +30,9 @@ const DataLoader = (function () {
             articleDuJour: 'article-du-jour.json',
             sentiment: 'sentiment.json',
             alerts:  'alerts.json',
-            newsletter: 'newsletter.json'
+            newsletter: 'newsletter.json',
+            macroAnalysis: 'macro-analysis.json',
+            marketBriefing: 'market-briefing.json'
         },
         // Durée max avant de considérer les données comme périmées (12h)
         STALE_THRESHOLD_MS: 12 * 60 * 60 * 1000,
@@ -164,7 +166,7 @@ const DataLoader = (function () {
         console.log('[DataLoader] Initialisation...');
 
         // Charger tous les fichiers en parallèle
-        const [crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour, alphaVantage, defi, sentiment, alerts, newsletter] = await Promise.all([
+        const [crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour, alphaVantage, defi, sentiment, alerts, newsletter, macroAnalysis, marketBriefing] = await Promise.all([
             loadJSON(CONFIG.FILES.crypto),
             loadJSON(CONFIG.FILES.markets),
             loadJSON(CONFIG.FILES.news),
@@ -177,10 +179,12 @@ const DataLoader = (function () {
             loadJSON(CONFIG.FILES.defi),
             loadJSON(CONFIG.FILES.sentiment),
             loadJSON(CONFIG.FILES.alerts),
-            loadJSON(CONFIG.FILES.newsletter)
+            loadJSON(CONFIG.FILES.newsletter),
+            loadJSON(CONFIG.FILES.macroAnalysis),
+            loadJSON(CONFIG.FILES.marketBriefing)
         ]);
 
-        _cache = { crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour, alphaVantage, defi, sentiment, alerts, newsletter };
+        _cache = { crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour, alphaVantage, defi, sentiment, alerts, newsletter, macroAnalysis, marketBriefing };
         _initialized = true;
 
         // Déterminer si on utilise des données live
@@ -1263,6 +1267,81 @@ const DataLoader = (function () {
         if (section) section.classList.remove('section-empty');
     }
 
+    // ─── Macro Analysis Widget ────────────────────────────────
+
+    /**
+     * Affiche l'analyse macroéconomique IA
+     */
+    function updateMacroAnalysisWidget() {
+        if (!_cache.macroAnalysis?.titre) return;
+
+        var container = document.getElementById('macro-analysis-widget');
+        if (!container) return;
+
+        var ma = _cache.macroAnalysis;
+        var riskColor = ma.score_risque > 6 ? '#dc2626' : ma.score_risque > 3 ? '#eab308' : '#16a34a';
+
+        var indicateursHTML = '';
+        if (ma.indicateurs_cles?.length) {
+            indicateursHTML = '<div class="macro-analysis-indicators">' +
+                ma.indicateurs_cles.map(function(ind) {
+                    var signalColor = ind.signal === 'haussier' ? '#16a34a' : ind.signal === 'baissier' ? '#dc2626' : '#eab308';
+                    return '<div class="macro-ind">' +
+                        '<span class="macro-ind-name">' + ind.nom + '</span>' +
+                        '<span class="macro-ind-val" style="color:' + signalColor + '">' + ind.valeur + '</span>' +
+                    '</div>';
+                }).join('') + '</div>';
+        }
+
+        container.innerHTML =
+            '<div class="macro-analysis-header">' +
+                '<span class="macro-analysis-risk" style="color:' + riskColor + '">Risque ' + ma.score_risque + '/10</span>' +
+                '<span class="macro-analysis-phase">' + (ma.phase_cycle || '') + '</span>' +
+            '</div>' +
+            '<h4 class="macro-analysis-title">' + ma.titre + '</h4>' +
+            indicateursHTML +
+            (ma.perspectives ? '<p class="macro-analysis-perspectives">' + ma.perspectives + '</p>' : '');
+
+        addFreshnessIndicator(container, ma.updated);
+    }
+
+    // ─── Market Briefing Widget ───────────────────────────────
+
+    /**
+     * Affiche le briefing marché quotidien
+     */
+    function updateMarketBriefingWidget() {
+        if (!_cache.marketBriefing?.titre) return;
+
+        var container = document.getElementById('market-briefing-widget');
+        if (!container) return;
+
+        var mb = _cache.marketBriefing;
+        var sentimentColor = mb.sentiment_global === 'haussier' ? '#16a34a' :
+            mb.sentiment_global === 'baissier' ? '#dc2626' : '#eab308';
+
+        var vigilanceHTML = '';
+        if (mb.vigilance?.length) {
+            vigilanceHTML = '<div class="briefing-vigilance">' +
+                mb.vigilance.map(function(v) {
+                    return '<span class="briefing-vigilance-item">⚠ ' + v + '</span>';
+                }).join('') + '</div>';
+        }
+
+        container.innerHTML =
+            '<div class="briefing-header">' +
+                '<span class="briefing-sentiment" style="color:' + sentimentColor + '">' +
+                    (mb.sentiment_global || 'neutre') +
+                '</span>' +
+                '<span class="briefing-date">' + (mb.date || '') + '</span>' +
+            '</div>' +
+            '<h4 class="briefing-title">' + mb.titre + '</h4>' +
+            '<p class="briefing-resume">' + (mb.resume_executif || '') + '</p>' +
+            vigilanceHTML;
+
+        addFreshnessIndicator(container, mb.updated);
+    }
+
     function updateDOM() {
         if (!_initialized || !_usingLiveData) return;
 
@@ -1285,6 +1364,8 @@ const DataLoader = (function () {
         updateSentimentWidget();
         updateAlertsWidget();
         updateNewsletterSection();
+        updateMacroAnalysisWidget();
+        updateMarketBriefingWidget();
         initRubriqueFilters();
         handleEmptyWidgets();
         console.log('[DataLoader] ✓ DOM mis à jour');

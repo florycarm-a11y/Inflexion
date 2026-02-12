@@ -4710,3 +4710,141 @@ a {
     line-height: 1.6;
     color: var(--text-secondary);
 }
+
+
+/* --- Macro Analysis Widget --- */
+.macro-analysis-widget {
+    padding: 0.5rem 0;
+}
+
+.macro-analysis-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.macro-analysis-risk {
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: var(--font-sans);
+}
+
+.macro-analysis-phase {
+    font-size: var(--fs-xs);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    background: var(--bg-tertiary);
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+}
+
+.macro-analysis-title {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.macro-analysis-indicators {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.25rem 0.6rem;
+    margin-bottom: 0.5rem;
+    padding: 0.4rem 0;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.macro-ind {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--fs-xs);
+}
+
+.macro-ind-name {
+    color: var(--text-muted);
+}
+
+.macro-ind-val {
+    font-weight: 700;
+    font-family: var(--font-sans);
+}
+
+.macro-analysis-perspectives {
+    font-size: var(--fs-xs);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-top: 0.3rem;
+}
+
+.macro-analysis-placeholder {
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+    text-align: center;
+    padding: 1rem 0;
+}
+
+/* --- Market Briefing Widget --- */
+.market-briefing-widget {
+    padding: 0.5rem 0;
+}
+
+.briefing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.4rem;
+}
+
+.briefing-sentiment {
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.briefing-date {
+    font-size: var(--fs-xs);
+    color: var(--text-muted);
+}
+
+.briefing-title {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+}
+
+.briefing-resume {
+    font-size: var(--fs-xs);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 0.4rem;
+}
+
+.briefing-vigilance {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-top: 0.3rem;
+    padding-top: 0.3rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.briefing-vigilance-item {
+    font-size: var(--fs-xs);
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.briefing-placeholder {
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+    text-align: center;
+    padding: 1rem 0;
+}

@@ -1,4 +1,4 @@
-# Inflexion — Analyse de sentiment & Alertes de marché
+# Inflexion — Analyse de sentiment, Alertes, Macro & Briefing
 # Exécuté 4x/jour (30 min après chaque fetch-data)
 #
 # Prérequis :
@@ -6,7 +6,7 @@
 #   - PAT_TOKEN dans GitHub Secrets
 #   - data/news.json doit exister (généré par fetch-data.yml)
 
-name: "📊 Analyze Sentiment & Alerts"
+name: "📊 Analyze Sentiment, Alerts & Briefing"
 
 on:
   schedule:
@@ -22,6 +22,8 @@ on:
     paths:
       - 'scripts/analyze-sentiment.mjs'
       - 'scripts/generate-alerts.mjs'
+      - 'scripts/generate-macro-analysis.mjs'
+      - 'scripts/generate-market-briefing.mjs'
       - 'scripts/lib/claude-api.mjs'
       - 'scripts/lib/prompts.mjs'
       - '.github/workflows/analyze-sentiment.yml'
@@ -61,6 +63,16 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/generate-alerts.mjs
 
+      - name: "🏦 Analyse macroéconomique"
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-macro-analysis.mjs
+
+      - name: "📈 Briefing marché quotidien"
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-market-briefing.mjs
+
       - name: "📝 Commit et push"
         run: |
           git config user.name "Inflexion Bot"
@@ -68,6 +80,8 @@ jobs:
 
           [ -f data/sentiment.json ] && git add data/sentiment.json || true
           [ -f data/alerts.json ] && git add data/alerts.json || true
+          [ -f data/macro-analysis.json ] && git add data/macro-analysis.json || true
+          [ -f data/market-briefing.json ] && git add data/market-briefing.json || true
 
           if git diff --staged --quiet; then
             echo "Aucun changement"
@@ -75,8 +89,8 @@ jobs:
           fi
 
           TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
-          git commit -m "📊 Sentiment & alertes — ${TIMESTAMP}
+          git commit -m "📊 Analyse marché complète — ${TIMESTAMP}
 
-          Analyse automatique du sentiment de marché et génération des alertes."
+          Sentiment, alertes, macro et briefing quotidien via Claude."
 
           git push
