@@ -230,6 +230,50 @@ Navigateur charge index.html
 
 ---
 
+## 6b. Cles API et acces
+
+> **Les cles sont dans `.env` (local, jamais commite).**
+> Voir `.env.example` pour la structure complete.
+
+### Cles requises (scripts GitHub Actions)
+
+| Variable | Service | Utilise par | Ou l'obtenir |
+|----------|---------|-------------|--------------|
+| `ANTHROPIC_API_KEY` | Claude API | sentiment, alertes, articles, newsletter, macro, briefing, traduction | [console.anthropic.com](https://console.anthropic.com/settings/keys) |
+| `FINNHUB_API_KEY` | Finnhub | fetch-data (indices, VIX) | [finnhub.io](https://finnhub.io/dashboard) |
+| `GNEWS_API_KEY` | GNews | fetch-data (actualites) | [gnews.io](https://gnews.io/dashboard) |
+| `FRED_API_KEY` | FRED | fetch-data (macro US) | [fred.stlouisfed.org](https://fred.stlouisfed.org/docs/api/api_key.html) |
+| `ALPHA_VANTAGE_API_KEY` | Alpha Vantage | fetch-data (forex, secteurs) | [alphavantage.co](https://www.alphavantage.co/support/#api-key) |
+
+### Cles optionnelles
+
+| Variable | Service | Utilise par |
+|----------|---------|-------------|
+| `METALS_API_KEY` | metals.dev | fetch-data (metaux) |
+| `ETHERSCAN_API_KEY` | Etherscan | fetch-data (gas ETH) |
+| `TAVILY_API_KEY` | Tavily | generate-article (recherche web enrichie) |
+
+### Secrets GitHub Actions
+
+Les memes cles doivent etre configurees dans **Settings > Secrets and variables > Actions** du repo :
+- `ANTHROPIC_API_KEY`, `FINNHUB_API_KEY`, `GNEWS_API_KEY`, `FRED_API_KEY`, `ALPHA_VANTAGE_API_KEY`
+- `PAT_TOKEN` : GitHub Personal Access Token (pour que les workflows puissent commit + push)
+
+### Supabase (frontend, hardcode dans supabase-client.js)
+
+| Parametre | Valeur |
+|-----------|--------|
+| URL | `https://pizemouhfrwgvgibitox.supabase.co` |
+| Anon Key | dans `supabase-client.js` (publishable, pas secret) |
+| Tables | `watchlist`, `newsletter`, `articles` |
+
+### Acces pour Claude Code en session locale
+- Claude Code lit automatiquement `.env` s'il est present a la racine
+- Les scripts `scripts/*.mjs` chargent les cles via `process.env.NOM_DE_CLE`
+- Si une cle manque, le script concerne echoue silencieusement (les autres continuent)
+
+---
+
 ## 7. Backend optionnel (Express.js)
 
 - Port : 3001
