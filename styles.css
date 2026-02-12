@@ -60,23 +60,23 @@ button:focus-visible,
 
 :root {
     /* Professional palette Ã¢ÂÂ dark green primary identity */
-    --accent: #105E2D;
-    --accent-dark: #0A4420;
-    --accent-light: #EDF5F0;
-    --navy: #0B3D1E;
-    --navy-light: #14713A;
+    --accent: #1E3A8A;
+    --accent-dark: #172554;
+    --accent-light: #EFF6FF;
+    --navy: #0F172A;
+    --navy-light: #2563EB;
 
     /* Backward-compat aliases (used in JS inline styles) */
-    --pink: #105E2D;
-    --pink-light: #8CBF9E;
-    --pink-soft: #EDF5F0;
-    --coral: #105E2D;
+    --pink: #1E3A8A;
+    --pink-light: #93B4D8;
+    --pink-soft: #EFF6FF;
+    --coral: #1E3A8A;
     --orange: #B85C38;
     --sky-deep: #3B6B8A;
-    --teal: #2C5F5A;
-    --teal-light: #EDF3F2;
+    --teal: #1E40AF;
+    --teal-light: #EFF6FF;
     --yellow-soft: #FFF8E7;
-    --magenta: #0A4420;
+    --magenta: #172554;
     --lavender: #6B7394;
     --red: #C41E3A;
     --green: #1B7A3D;
@@ -2721,7 +2721,7 @@ a {
 .newsletter-success p {
     font-family: var(--font-sans);
     font-size: 0.92rem;
-    color: #10b981;
+    color: #3B82F6;
     font-weight: 600;
 }
 
@@ -3109,15 +3109,15 @@ a {
 
 /* Bandes degradees par source — palette verte premium */
 .top-story:nth-child(1)::before {
-    background: linear-gradient(to right, #052E16, #105E2D);
+    background: linear-gradient(to right, #0C1A3D, #1E3A8A);
 }
 
 .top-story:nth-child(2)::before {
-    background: linear-gradient(to right, #0A3D1F, #1A7038);
+    background: linear-gradient(to right, #152B5E, #2563EB);
 }
 
 .top-story:nth-child(3)::before {
-    background: linear-gradient(to right, #064E3B, #047857);
+    background: linear-gradient(to right, #1E3A6B, #1D4ED8);
 }
 
 .top-story-main {
@@ -3156,18 +3156,18 @@ a {
 }
 
 .top-story:nth-child(1) .source-name {
-    background: #DCFCE7;
-    color: #052E16;
+    background: #DBEAFE;
+    color: #1E3A8A;
 }
 
 .top-story:nth-child(2) .source-name {
-    background: #D1FAE5;
-    color: #064E3B;
+    background: #BFDBFE;
+    color: #1E3A6B;
 }
 
 .top-story:nth-child(3) .source-name {
-    background: #ECFDF5;
-    color: #065F46;
+    background: #EFF6FF;
+    color: #1E3A8A;
 }
 
 /* #16 â Footer de carte : date a gauche, lien Lire a droite, border-top */
@@ -3473,7 +3473,7 @@ a {
 
 /* Badge spécifique au briefing (vs l'article classique) */
 .briefing-badge {
-    background: linear-gradient(135deg, #10b981, #059669) !important;
+    background: linear-gradient(135deg, #3B82F6, #2563EB) !important;
     color: #fff !important;
     font-weight: 700;
 }

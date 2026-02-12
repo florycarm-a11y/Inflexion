@@ -277,8 +277,8 @@ const _inflexionAnalyses = [
         url: 'analyse-droits-douane-trump-groenland.html',
         date: '4 fév. 2026',
         gradient: 'linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%)',
-        icon: '🌍',
-        label: 'Géopolitique'
+        icon: '',
+        label: 'Geopolitique'
     },
     {
         titre: 'Or à 5 100 $, Bitcoin à 73 000 $ : la grande divergence des valeurs refuges',
@@ -286,7 +286,7 @@ const _inflexionAnalyses = [
         url: 'analyse-or-bitcoin-divergence.html',
         date: '3 fév. 2026',
         gradient: 'linear-gradient(135deg, #78350f 0%, #f59e0b 100%)',
-        icon: '📊',
+        icon: '',
         label: 'Macro'
     },
     {
@@ -295,7 +295,7 @@ const _inflexionAnalyses = [
         url: 'analyse-ia-rempart-marches.html',
         date: '1er fév. 2026',
         gradient: 'linear-gradient(135deg, #4c1d95 0%, #8b5cf6 100%)',
-        icon: '🤖',
+        icon: '',
         label: 'IA & Tech'
     }
 ];
