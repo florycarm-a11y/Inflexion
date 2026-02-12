@@ -48,10 +48,10 @@ jobs:
         with:
           token: ${{ secrets.PAT_TOKEN }}
 
-      - name: "🟢 Setup Node.js 20"
+      - name: "🟢 Setup Node.js 22"
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: "📊 Analyse de sentiment"
         env:
