@@ -309,13 +309,23 @@ function initTopStories() {
 let _newsOffset = 0;
 const NEWS_PER_PAGE = 5;
 
+// Map English category keys to French rubrique identifiers matching filter buttons
+const _categoryToRubrique = {
+    geopolitics: 'geopolitique',
+    markets: 'marches',
+    crypto: 'crypto',
+    commodities: 'matieres_premieres',
+    ai_tech: 'ai_tech'
+};
+
 function newsListItemHTML(article) {
     const source = escapeHTML(article.source || '');
     const title = escapeHTML(article.title || '');
     const desc = escapeHTML(article.description || '');
     const time = escapeHTML(article.time || '');
     const url = article.url || '#';
-    const rubrique = escapeHTML(article.category || '');
+    const rawCat = article.category || article.rubrique || '';
+    const rubrique = escapeHTML(_categoryToRubrique[rawCat] || rawCat);
     const image = article.image || '';
 
     const hasThumb = image ? ' has-thumb' : '';

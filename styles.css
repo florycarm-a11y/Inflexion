@@ -1118,15 +1118,26 @@ a {
 /* ============================================
    News List Items (home page)
    ============================================ */
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
 .news-list-item {
     background: white;
     border-radius: 6px;
     padding: 1rem 1.25rem;
-    margin-bottom: 0.5rem;
     border-bottom: none;
     box-shadow: 0 2px 6px rgba(0,0,0,0.07);
     border: 1px solid rgba(0,0,0,0.06);
     transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.news-list-item.has-thumb {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
 }
 
 .news-list-item:hover {
@@ -1134,11 +1145,25 @@ a {
     transform: translateY(-1px);
 }
 
+.news-list-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.news-list-thumb {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
 .news-list-source {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     margin-bottom: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .news-list-item h3 {
@@ -1163,6 +1188,11 @@ a {
     font-size: 0.88rem;
     color: var(--text-secondary);
     line-height: 1.6;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 /* Impact Dot */
@@ -3141,6 +3171,11 @@ a {
     color: #ef4444;
 }
 
+.rubrique-badge[data-rubrique="ai_tech"] {
+    background: rgba(139, 92, 246, 0.1);
+    color: #8b5cf6;
+}
+
 /* Hide articles filtered out */
 .news-item[data-rubrique].hidden-rubrique {
     display: none;
@@ -3163,6 +3198,16 @@ a {
     .rubrique-filter {
         font-size: 0.7rem;
         padding: 0.3rem 0.7rem;
+    }
+
+    .news-list-item.has-thumb {
+        flex-direction: column;
+    }
+
+    .news-list-thumb {
+        width: 100%;
+        height: 140px;
+        order: -1;
     }
 }
 
@@ -4283,23 +4328,7 @@ a {
 }
 
 /* --- News list items: card style (reinforced) --- */
-.news-list-item {
-    background: white !important;
-    border-radius: 6px !important;
-    padding: 1rem 1.25rem !important;
-    margin-bottom: 0.5rem !important;
-    border-bottom: none !important;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.07) !important;
-    border: 1px solid rgba(0,0,0,0.06) !important;
-    transition: box-shadow 0.2s ease, transform 0.2s ease !important;
-}
-
-.news-list-item:hover {
-    padding-left: 1.25rem !important;
-    border-left: 1px solid rgba(0,0,0,0.06) !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.10) !important;
-    transform: translateY(-1px) !important;
-}
+/* (consolidated into main .news-list-item definition above) */
 
 /* --- Hide empty sections --- */
 .section-empty {
@@ -4847,4 +4876,196 @@ a {
     font-size: var(--fs-sm);
     text-align: center;
     padding: 1rem 0;
+}
+
+/* ============================================
+   European Markets Widget (Twelve Data)
+   ============================================ */
+.euro-markets-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+}
+
+.euro-markets-header h4 {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.euro-market-status {
+    font-size: var(--fs-xs);
+    font-weight: 500;
+    padding: 0.15rem 0.5rem;
+    border-radius: 50px;
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--text-muted);
+}
+
+.euro-markets-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.euro-market-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: var(--fs-sm);
+}
+
+.euro-market-item:last-child {
+    border-bottom: none;
+}
+
+.euro-market-flag {
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.euro-market-info {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    min-width: 0;
+}
+
+.euro-market-name {
+    color: var(--text-secondary);
+    font-size: var(--fs-xs);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.euro-market-price {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.euro-market-change {
+    font-weight: 600;
+    font-size: var(--fs-xs);
+    min-width: 3.5rem;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   World Bank Widget
+   ============================================ */
+.wb-indicator {
+    margin-bottom: 0.8rem;
+}
+
+.wb-indicator:last-child {
+    margin-bottom: 0;
+}
+
+.wb-indicator-label {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.3rem;
+}
+
+.wb-indicator-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.25rem;
+}
+
+.wb-country-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.3rem;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.wb-country-name {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.wb-country-value {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   Messari Crypto Widget
+   ============================================ */
+.messari-global {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.6rem;
+    font-size: var(--fs-xs);
+    color: var(--text-secondary);
+}
+
+.messari-global span {
+    padding: 0.2rem 0.5rem;
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 4px;
+}
+
+.messari-assets {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.messari-asset-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: var(--fs-sm);
+}
+
+.messari-asset-row:last-child {
+    border-bottom: none;
+}
+
+.messari-symbol {
+    font-weight: 700;
+    color: var(--text-primary);
+    min-width: 3rem;
+    font-size: var(--fs-xs);
+}
+
+.messari-price {
+    flex: 1;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-primary);
+}
+
+.messari-dominance {
+    font-size: var(--fs-xs);
+    color: var(--text-muted);
+    min-width: 2.5rem;
+    text-align: right;
+}
+
+.messari-change {
+    font-weight: 600;
+    font-size: var(--fs-xs);
+    min-width: 3.5rem;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
 }
