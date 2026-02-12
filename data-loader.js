@@ -565,11 +565,7 @@ const DataLoader = (function () {
                     signal.severite === 'attention' ? 'severity-attention' : 'severity-info';
 
                 // Emoji de catégorie
-                var catEmojis = {
-                    geopolitique: '🌍', marches: '📈', crypto: '₿',
-                    matieres_premieres: '⛏️', ai_tech: '🤖', macro: '🏛️'
-                };
-                var catEmoji = catEmojis[signal.categorie] || '📡';
+                var catEmoji = '';
 
                 // Interconnexions (la valeur ajoutée !)
                 var interHTML = '';
@@ -626,7 +622,7 @@ const DataLoader = (function () {
 
                 return '<div class="risk-item ' + severiteClass + '">' +
                     '<div class="risk-header">' +
-                        '<span class="risk-icon">⚠</span>' +
+                        '<span class="risk-icon"></span>' +
                         '<strong class="risk-title">' + risk.risque + '</strong>' +
                         '<span class="risk-severity-badge ' + severiteClass + '">' + risk.severite + '</span>' +
                     '</div>' +
@@ -662,7 +658,7 @@ const DataLoader = (function () {
         // ── Assemblage final ──
         container.innerHTML = '' +
             '<div class="article-du-jour-header">' +
-                '<div class="article-du-jour-badge briefing-badge">🧠 Briefing Stratégique IA</div>' +
+                '<div class="article-du-jour-badge briefing-badge">Briefing Strategique IA</div>' +
                 '<time class="article-du-jour-date">' + formatArticleDate(briefing.date) + '</time>' +
                 '<span class="briefing-sentiment-indicator" style="color:' + sentimentColor + '">' +
                     (briefing.sentiment_global || 'neutre') +
@@ -718,7 +714,7 @@ const DataLoader = (function () {
 
         container.innerHTML = '' +
             '<div class="article-du-jour-header">' +
-                '<div class="article-du-jour-badge">✍️ Synthèse IA</div>' +
+                '<div class="article-du-jour-badge">Synthese IA</div>' +
                 '<time class="article-du-jour-date">' + formatArticleDate(article.date) + '</time>' +
             '</div>' +
             '<h2 class="article-du-jour-title">' + article.titre + '</h2>' +
@@ -868,8 +864,8 @@ const DataLoader = (function () {
             date: '4 fév. 2026',
             categorie: 'geopolitique',
             gradient: 'linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%)',
-            icon: '🌍',
-            label: 'Géopolitique'
+            icon: '',
+            label: 'Geopolitique'
         },
         {
             titre: 'Or à 5 100 $, Bitcoin à 73 000 $ : la grande divergence des valeurs refuges',
@@ -878,7 +874,7 @@ const DataLoader = (function () {
             date: '3 fév. 2026',
             categorie: 'macro',
             gradient: 'linear-gradient(135deg, #78350f 0%, #f59e0b 100%)',
-            icon: '📊',
+            icon: '',
             label: 'Macro'
         },
         {
@@ -888,7 +884,7 @@ const DataLoader = (function () {
             date: '1er fév. 2026',
             categorie: 'sectorielle',
             gradient: 'linear-gradient(135deg, #4c1d95 0%, #8b5cf6 100%)',
-            icon: '🤖',
+            icon: '',
             label: 'IA & Tech'
         }
     ];
@@ -1346,7 +1342,7 @@ const DataLoader = (function () {
                 return `
                     <div class="defi-protocol-row">
                         <span class="defi-proto-rank">${i + 1}</span>
-                        ${p.logo ? `<img src="${p.logo}" class="defi-proto-logo" alt="${p.name}" onerror="this.style.display='none'">` : '<span class="defi-proto-logo-placeholder">🔷</span>'}
+                        ${p.logo ? `<img src="${p.logo}" class="defi-proto-logo" alt="${p.name}" onerror="this.style.display='none'">` : '<span class="defi-proto-logo-placeholder"></span>'}
                         <div class="defi-proto-info">
                             <span class="defi-proto-name">${p.name}</span>
                             <span class="defi-proto-category">${translateDefiCategory(p.category || '')}</span>
@@ -1443,11 +1439,8 @@ const DataLoader = (function () {
         if (!container) return;
 
         var alertes = _cache.alerts.alertes.slice(0, 5);
-        var severityIcon = { urgent: '🔴', attention: '🟡', info: '🔵' };
-
         container.innerHTML = alertes.map(function(a) {
             return '<div class="alert-item alert-' + (a.severite || 'info') + '">' +
-                '<span class="alert-icon">' + (severityIcon[a.severite] || '🔵') + '</span>' +
                 '<div class="alert-content">' +
                     '<strong class="alert-titre">' + (a.titre || '') + '</strong>' +
                     '<p class="alert-texte">' + (a.texte || '') + '</p>' +
@@ -1483,7 +1476,7 @@ const DataLoader = (function () {
 
         container.innerHTML =
             '<div class="newsletter-header">' +
-                '<span class="newsletter-badge">📰 Newsletter</span>' +
+                '<span class="newsletter-badge">Newsletter</span>' +
                 '<span class="newsletter-semaine">' + (nl.semaine || '') + '</span>' +
             '</div>' +
             '<h3 class="newsletter-title">' + nl.titre_semaine + '</h3>' +
@@ -1554,7 +1547,7 @@ const DataLoader = (function () {
         if (mb.vigilance?.length) {
             vigilanceHTML = '<div class="briefing-vigilance">' +
                 mb.vigilance.map(function(v) {
-                    return '<span class="briefing-vigilance-item">⚠ ' + v + '</span>';
+                    return '<span class="briefing-vigilance-item">' + v + '</span>';
                 }).join('') + '</div>';
         }
 
@@ -1610,8 +1603,8 @@ const DataLoader = (function () {
     }
 
     function getFlagEmoji(countryCode) {
-        var flags = { FR: '🇫🇷', DE: '🇩🇪', GB: '🇬🇧', EU: '🇪🇺', ES: '🇪🇸', IT: '🇮🇹' };
-        return flags[countryCode] || '🏳️';
+        var flags = { FR: 'FR', DE: 'DE', GB: 'GB', EU: 'EU', ES: 'ES', IT: 'IT' };
+        return flags[countryCode] || '--';
     }
 
     // ─── Données macro internationales (World Bank) ──────
@@ -1703,11 +1696,11 @@ const DataLoader = (function () {
         var newsapiCats = _cache.newsapi.categories;
 
         var rubriqueMap = {
-            geopolitics: { rubrique: 'geopolitique', rubrique_label: 'Géopolitique', rubrique_emoji: '🌍' },
-            markets:     { rubrique: 'marches', rubrique_label: 'Marchés', rubrique_emoji: '📈' },
-            crypto:      { rubrique: 'crypto', rubrique_label: 'Crypto', rubrique_emoji: '₿' },
-            commodities: { rubrique: 'matieres_premieres', rubrique_label: 'Matières Premières', rubrique_emoji: '⛏️' },
-            ai_tech:     { rubrique: 'ai_tech', rubrique_label: 'IA & Tech', rubrique_emoji: '🤖' }
+            geopolitics: { rubrique: 'geopolitique', rubrique_label: 'Geopolitique', rubrique_emoji: '' },
+            markets:     { rubrique: 'marches', rubrique_label: 'Marches', rubrique_emoji: '' },
+            crypto:      { rubrique: 'crypto', rubrique_label: 'Crypto', rubrique_emoji: '' },
+            commodities: { rubrique: 'matieres_premieres', rubrique_label: 'Matieres Premieres', rubrique_emoji: '' },
+            ai_tech:     { rubrique: 'ai_tech', rubrique_label: 'IA & Tech', rubrique_emoji: '' }
         };
 
         Object.keys(newsapiCats).forEach(function(cat) {

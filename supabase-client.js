@@ -244,10 +244,10 @@
         }
 
         var categoryIcons = {
-            crypto: '₿',
-            stock: '📈',
-            commodity: '⛏️',
-            index: '📊',
+            crypto: 'C',
+            stock: 'S',
+            commodity: 'M',
+            index: 'I',
             other: '•'
         };
 
