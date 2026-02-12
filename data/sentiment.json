@@ -1,0 +1,125 @@
+{
+  "updated": "2026-02-12T13:49:00.485Z",
+  "date": "2026-02-12",
+  "global": {
+    "score": 0.03,
+    "tendance": "mixte",
+    "resume": "Le sentiment global est mixte (+0.03), dominé par la rubrique geopolitique (baissier)."
+  },
+  "categories": {
+    "geopolitique": {
+      "score": -0.62,
+      "confidence": 0.78,
+      "tendance": "baissier",
+      "resume": "La rubrique géopolitique affiche un sentiment globalement négatif dominé par les tensions internationales (OTAN-Iran, Groenland, Ukraine), les crises régionales (Afrique, Moyen-Orient, Syrie) et les controverses politiques internes. Les rares éléments positifs (JO, diplomatie gréco-turque) sont largement éclipsés par les enjeux de sécurité et d'instabilité.",
+      "signaux_cles": [
+        "Tensions militaires accrues : déploiement de porte-avions américain, réunion OTAN sur Groenland/Ukraine",
+        "Instabilité régionale persistante : Libye, Syrie, Afrique du Sud, Nigeria, Centrafrique",
+        "Polarisation politique interne : critiques Trump, débats israélo-britanniques, rhétorique antimigrants",
+        "Crises humanitaires et sanitaires : évacuation camps syriens, crise médicale nigériane",
+        "Érosion de la confiance institutionnelle : Gallup cesse ses sondages présidentiels"
+      ]
+    },
+    "marches": {
+      "score": 0.62,
+      "confidence": 0.78,
+      "tendance": "haussier",
+      "resume": "La rubrique affiche un sentiment globalement positif dominé par des résultats d'entreprises solides et des augmentations de dividendes, bien que tempéré par quelques déceptions et préoccupations sectorielles. Les marchés semblent soutenir une rotation vers certains secteurs (machinerie, IA appliquée) avec des signaux de croissance économique modérée.",
+      "signaux_cles": [
+        "Majorité de beats de résultats (Nvidia partner, Crocs, Zoetis, CBRE, Restaurant Brands) indiquant une santé économique sous-jacente",
+        "Augmentations de dividendes multiples (Great-West Lifeco +10%, Fortis, Brunswick) signalant la confiance des entreprises",
+        "Rotation sectorielle vers la machinerie et l'IA appliquée (molécules/poudres) suggérant une réallocation stratégique",
+        "Quelques déceptions (Tripadvisor miss) et risques géopolitiques (Russie/WhatsApp) créant une volatilité modérée",
+        "Croissance du commerce électronique contrebalancée par des risques fiscaux potentiels sur les ultra fast-fashion"
+      ]
+    },
+    "crypto": {
+      "score": 0.35,
+      "confidence": 0.78,
+      "tendance": "mixte",
+      "resume": "Le marché crypto affiche un sentiment mitigé avec des signaux haussiers technologiques et institutionnels contrebalancés par des avertissements baissiers et des incidents de liquidité. Les innovations (IA, tokenisation, DeFi) attirent les investisseurs malgré une volatilité persistante et des craintes de correction.",
+      "signaux_cles": [
+        "Adoption institutionnelle croissante (BlackRock DeFi, HSBC tokenized bonds, OKX Ventures RWA)",
+        "Innovations technologiques positives (Lightning Labs AI agents, Chainlink partnerships, Espresso network)",
+        "Avertissements baissiers majeurs (Michael Terpin $40k scenario, 'extreme fear' indicator, BlockFills halt)",
+        "Volatilité et retraits de liquidité (UNI spike puis chute, Coinbase CEO ventes massives, BlockFills crisis)",
+        "Intérêt retail en hausse (Gen Z Valentine's crypto, hackathons AI dominants)",
+        "Divergence sentiment: bulls ignorent la peur extrême tandis que certains experts prédisent correction"
+      ]
+    },
+    "matieres_premieres": {
+      "score": -0.35,
+      "confidence": 0.78,
+      "tendance": "baissier",
+      "resume": "Le secteur des matières premières affiche un sentiment globalement baissier, dominé par des préoccupations concernant la surcapacité pétrolière, les réductions d'investissements en énergie et les défis structurels du lithium. Quelques signaux positifs émergent autour des opportunités commerciales et des alternatives énergétiques, mais restent minoritaires.",
+      "signaux_cles": [
+        "Baisse des investissements pétroliers norvégiens et surcapacité mondiale (crude glut)",
+        "Réduction de la capacité de lithium (Albemarle) signalant une contraction du secteur EV",
+        "Tensions géopolitiques (Cuba, Venezuela, Russie) créant de l'incertitude sur les flux d'approvisionnement",
+        "Demande de réduction des prix énergétiques en Europe indiquant une pression baissière",
+        "Opportunités émergentes en Amérique du Sud et diversification des sources LNG (signal haussier mineur)",
+        "Problèmes structurels du secteur maritime (abandon de navires, régulation) affectant les coûts logistiques"
+      ]
+    },
+    "ai_tech": {
+      "score": 0.15,
+      "confidence": 0.72,
+      "tendance": "mixte",
+      "resume": "La rubrique AI_Tech affiche un sentiment mitigé avec des signaux positifs sur l'innovation technologique (IA, robotique, quantique) contrebalancés par des préoccupations réglementaires, de sécurité et de stabilité des marchés crypto. Les articles produits et reviews dominent, suggérant une activité commerciale soutenue malgré les turbulences.",
+      "signaux_cles": [
+        "Critiques internes contre OpenAI (risques réputationnels et réglementaires)",
+        "Krach Bitcoin et blocage des retraits (volatilité crypto, perte de confiance)",
+        "Attaques supply chain et cybercriminalité organisée (risques systémiques)",
+        "Innovation IA positive (Qwen 4B, agents IA) et initiatives spatiales (NASA, ISS)",
+        "Domination duopole smartphones et consolidation technologique",
+        "Forte présence de contenu commercial/reviews (stabilité du secteur consumer tech)"
+      ]
+    }
+  },
+  "historique": [
+    {
+      "date": "2026-02-12",
+      "global": 0.03,
+      "geopolitique": -0.62,
+      "marches": 0.62,
+      "crypto": 0.35,
+      "matieres_premieres": -0.35,
+      "ai_tech": 0.15
+    }
+  ],
+  "model": "claude-haiku-4-5-20251001",
+  "usage": {
+    "totalInputTokens": 4025,
+    "totalOutputTokens": 1652,
+    "totalCalls": 5,
+    "callsByLabel": {
+      "sentiment-geopolitique": {
+        "calls": 1,
+        "inputTokens": 915,
+        "outputTokens": 332
+      },
+      "sentiment-marches": {
+        "calls": 1,
+        "inputTokens": 813,
+        "outputTokens": 354
+      },
+      "sentiment-crypto": {
+        "calls": 1,
+        "inputTokens": 788,
+        "outputTokens": 330
+      },
+      "sentiment-matieres_premieres": {
+        "calls": 1,
+        "inputTokens": 685,
+        "outputTokens": 340
+      },
+      "sentiment-ai_tech": {
+        "calls": 1,
+        "inputTokens": 824,
+        "outputTokens": 296
+      }
+    },
+    "estimatedCostUSD": 0.0098,
+    "model": "claude-haiku-4-5-20251001"
+  }
+}

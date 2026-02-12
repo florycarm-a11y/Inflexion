@@ -1,0 +1,63 @@
+{
+  "titre": "Économie US en expansion modérée, inflation maîtrisée mais risques de divergence transatlantique",
+  "phase_cycle": "expansion",
+  "politique_monetaire": "neutre",
+  "tendance_inflation": "stabilisation",
+  "score_risque": 5,
+  "analyse": "## Cycle économique et croissance\n\nL'économie américaine demeure en phase d'expansion, confirmée par une croissance du PIB de +612,3 Mrd$ en glissement trimestriel (T3 2025). Le marché du travail reste résilient avec un taux de chômage stable à 4,3% (-0,1 pp en janvier 2026), signalant une détente progressive mais contrôlée des tensions. Cette combinaison suggère une économie qui ne surchauffe pas mais ne montre pas non plus de signes de contraction imminente.\n\n## Politique monétaire : la Fed en mode attentiste\n\nLe taux directeur s'établit à 3,64% (inchangé), reflétant une posture neutre de la Fed. Cette stabilité intervient dans un contexte où l'inflation (CPI +3,03% YoY) reste légèrement au-dessus de la cible de 2%, mais en trajectoire de stabilisation. La Fed n'a pas besoin de resserrer davantage : les taux réels (3,64% - 3,03% = 0,61%) restent modérément restrictifs. Le bilan Fed (+18,3 Mrd$ en février) montre une expansion mesurée, compatible avec un maintien de la liquidité sans relance agressif.\n\nLa BCE, avec un taux directeur à 2,15%, demeure plus accommodante que la Fed en termes réels (2,15% - inflation eurozone ~2,2% = légèrement négatif). Cette divergence de 149 pb explique la faiblesse relative de l'EUR/USD à 1,1681 : les investisseurs cherchent des rendements plus élevés aux États-Unis.\n\n## Inflation et taux longs\n\nL'inflation américaine s'est stabilisée à +3,03% YoY, loin des pics de 2022 mais toujours au-dessus de la cible. Le Treasury 10 ans à 4,16% (-0,06 pb) reflète une certaine confiance dans la trajectoire désinflationniste. Le spread 10Y-2Y à +0,66% (en léger recul) reste positif : la courbe n'est pas inversée, éliminant le signal de récession immédiate. Cependant, ce spread s'est resserré, indiquant une attente de taux courts plus élevés à moyen terme ou une croissance plus lente.\n\n## Risques et signaux contradictoires\n\nLe dollar broad index à 118,24 (-0,26) reste très fort, soutenu par les rendements réels américains attractifs. Cette force du dollar pèse sur les exportateurs US et peut freiner la croissance mondiale. La masse monétaire M2 (+88,9 Mrd$) croît modérément, sans excès inflationniste. Le taux hypothécaire 30 ans à 6,11% reste élevé, freinant la demande immobilière résidentielle.\n\nLe score de risque modéré (5/10) reflète l'absence de déséquilibres aigus : pas de surchauffe, pas de récession en vue, mais une vigilance requise sur la persistance de l'inflation et la vulnérabilité des secteurs sensibles aux taux élevés.",
+  "indicateurs_cles": [
+    {
+      "nom": "CPI (inflation)",
+      "valeur": "3.03% YoY",
+      "signal": "neutre",
+      "commentaire": "Stabilisée au-dessus de la cible 2%, mais sans accélération. Cohérent avec une Fed en pause."
+    },
+    {
+      "nom": "Taux directeur Fed",
+      "valeur": "3.64%",
+      "signal": "neutre",
+      "commentaire": "Inchangé. Taux réel ~0,6% = légèrement restrictif mais non agressif. Attentisme justifié."
+    },
+    {
+      "nom": "Chômage",
+      "valeur": "4.3%",
+      "signal": "haussier",
+      "commentaire": "Stable et modéré. Marché du travail en détente progressive, sans effondrement."
+    },
+    {
+      "nom": "Spread 10Y-2Y",
+      "valeur": "0.66%",
+      "signal": "neutre",
+      "commentaire": "Positif mais en recul. Pas d'inversion (pas de signal de récession), mais courbe qui s'aplatit."
+    },
+    {
+      "nom": "Dollar Index (broad)",
+      "valeur": "118.24",
+      "signal": "haussier",
+      "commentaire": "Très fort, soutenu par les rendements réels US vs monde. Pèse sur compétitivité export."
+    },
+    {
+      "nom": "Taux hypothécaire 30 ans",
+      "valeur": "6.11%",
+      "signal": "baissier",
+      "commentaire": "Élevé, freine la demande immobilière. Secteur sensible aux taux longs."
+    },
+    {
+      "nom": "M2 (masse monétaire)",
+      "valeur": "+88.9 Mrd$ (croissance modérée)",
+      "signal": "neutre",
+      "commentaire": "Expansion mesurée, sans excès. Compatible avec stabilité des prix."
+    },
+    {
+      "nom": "Divergence Fed/BCE",
+      "valeur": "149 pb (3.64% vs 2.15%)",
+      "signal": "baissier pour EUR",
+      "commentaire": "Écart de taux explique la faiblesse de l'EUR/USD à 1.1681. Avantage rendement US."
+    }
+  ],
+  "perspectives": "Surveiller les prochaines données d'inflation (CPI février) pour confirmer la stabilisation à ~3%. La Fed devrait rester en pause tant que l'inflation ne redescend pas vers 2,5%. À l'inverse, une accélération de l'inflation ou un choc de croissance pourrait justifier un maintien des taux plus longtemps. La divergence transatlantique (Fed neutre, BCE accommodante) devrait soutenir le dollar et peser sur l'EUR/USD. Enfin, le secteur immobilier résidentiel américain reste vulnérable aux taux hypothécaires élevés : surveiller les mises en chantier et les ventes de maisons existantes.",
+  "updated": "2026-02-12T13:49:19.386Z",
+  "source": "Claude IA + FRED + BCE + commodités",
+  "indicators_count": 10,
+  "extra_sources": 2
+}
