@@ -858,80 +858,66 @@ const DataLoader = (function () {
     }
 
     /**
-     * Bannières thématiques pour les analyses (couleurs dégradées par rubrique)
+     * Analyses Inflexion statiques affichées sur la homepage
      */
-    var ANALYSIS_BANNERS = {
-        geopolitics: { gradient: 'linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%)', icon: '🌍', label: 'Géopolitique' },
-        marches:     { gradient: 'linear-gradient(135deg, #064e3b 0%, #10b981 100%)', icon: '📈', label: 'Marchés' },
-        markets:     { gradient: 'linear-gradient(135deg, #064e3b 0%, #10b981 100%)', icon: '📈', label: 'Marchés' },
-        crypto:      { gradient: 'linear-gradient(135deg, #78350f 0%, #f59e0b 100%)', icon: '₿', label: 'Crypto' },
-        commodities: { gradient: 'linear-gradient(135deg, #7f1d1d 0%, #ef4444 100%)', icon: '⛏️', label: 'Mat. Premières' },
-        ai_tech:     { gradient: 'linear-gradient(135deg, #4c1d95 0%, #8b5cf6 100%)', icon: '🤖', label: 'IA & Tech' },
-        matieres_premieres: { gradient: 'linear-gradient(135deg, #7f1d1d 0%, #ef4444 100%)', icon: '⛏️', label: 'Mat. Premières' }
-    };
-    var DEFAULT_BANNER = { gradient: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)', icon: '📊', label: 'Analyse' };
+    var INFLEXION_ANALYSES = [
+        {
+            titre: 'Droits de douane Trump sur le Groenland : quand la géopolitique efface 1 200 milliards de Wall Street en une séance',
+            resume: 'Le président américain a relancé la guerre commerciale contre l\'UE en conditionnant la levée de droits de douane au soutien européen sur le Groenland. S&P 500 −2,1 %, VIX au-dessus de 20.',
+            url: 'analyse-droits-douane-trump-groenland.html',
+            date: '4 fév. 2026',
+            categorie: 'geopolitique',
+            gradient: 'linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%)',
+            icon: '🌍',
+            label: 'Géopolitique'
+        },
+        {
+            titre: 'Or à 5 100 $, Bitcoin à 73 000 $ : la grande divergence des valeurs refuges',
+            resume: 'L\'or pulvérise ses records (+64 % YTD) pendant que le bitcoin plonge (−40 % depuis octobre). Corrélation or-BTC tombée à zéro. Le narratif du « digital gold » est mort.',
+            url: 'analyse-or-bitcoin-divergence.html',
+            date: '3 fév. 2026',
+            categorie: 'macro',
+            gradient: 'linear-gradient(135deg, #78350f 0%, #f59e0b 100%)',
+            icon: '📊',
+            label: 'Macro'
+        },
+        {
+            titre: 'L\'IA, dernier rempart des marchés face au chaos géopolitique',
+            resume: 'Nvidia : 57 Mds $ de revenus trimestriels, backlog de 500 Mds $, architecture Vera Rubin. Mais la concentration des Mag 7 (30 % du S&P 500) est un risque systémique.',
+            url: 'analyse-ia-rempart-marches.html',
+            date: '1er fév. 2026',
+            categorie: 'sectorielle',
+            gradient: 'linear-gradient(135deg, #4c1d95 0%, #8b5cf6 100%)',
+            icon: '🤖',
+            label: 'IA & Tech'
+        }
+    ];
 
     /**
-     * Met à jour la section "Analyses" (#top-stories) avec les articles les plus pertinents (FR uniquement)
+     * Met à jour la section "Analyses" (#top-stories) avec les analyses Inflexion
      */
     function updateTopStories() {
-        if (!_cache.news?.categories) return;
-
         var ts = document.getElementById('top-stories');
         if (!ts) return;
 
-        // Sélectionner 1 article FR par rubrique avec description
-        var stories = [];
-        var categoryKeys = ['geopolitics', 'markets', 'crypto', 'commodities', 'ai_tech'];
-        var usedRubriques = [];
-
-        categoryKeys.forEach(function(cat) {
-            var articles = _cache.news.categories[cat] || [];
-            for (var j = 0; j < articles.length; j++) {
-                var a = articles[j];
-                // Exclure articles EN non traduits et sans description
-                if (a.lang === 'en' && !a.translated) continue;
-                if (!a.description || a.description.length < 20) continue;
-                stories.push(a);
-                usedRubriques.push(cat);
-                break;
-            }
-        });
-
-        // Trier par date et prendre les 3 premiers (diversité rubrique)
-        stories.sort(function(a, b) {
-            return new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0);
-        });
-        stories = stories.slice(0, 3);
-
-        if (stories.length === 0) return;
-
-        ts.innerHTML = '<div class="top-stories-grid">' + stories.map(function(n, i) {
-            var rubriqueAttr = n.rubrique || '';
-            var banner = ANALYSIS_BANNERS[rubriqueAttr] || DEFAULT_BANNER;
-
-            // Bannière thématique générée (remplace l'image source)
-            var bannerHTML = '<div class="analysis-banner" style="background: ' + banner.gradient + ';">' +
-                '<span class="analysis-banner-icon">' + banner.icon + '</span>' +
-                '<span class="analysis-banner-label">' + banner.label + '</span>' +
+        ts.innerHTML = '<div class="top-stories-grid">' + INFLEXION_ANALYSES.map(function(a) {
+            var bannerHTML = '<div class="analysis-banner" style="background: ' + a.gradient + ';">' +
+                '<span class="analysis-banner-icon">' + a.icon + '</span>' +
+                '<span class="analysis-banner-label">' + a.label + '</span>' +
             '</div>';
 
-            var desc = n.description || '';
-            if (desc.length > 150) desc = desc.slice(0, 147) + '...';
-            var summaryHTML = desc
-                ? '<p class="story-summary">' + desc + '</p>'
-                : '';
-
             return '<article class="top-story">' +
-                bannerHTML +
-                '<div class="story-body">' +
-                    '<div class="story-meta">' +
-                        '<a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" class="source-name">' + (n.source || '') + '</a>' +
-                        '<time class="news-time">' + (n.time || '') + '</time>' +
+                '<a href="' + a.url + '" class="top-story-link">' +
+                    bannerHTML +
+                    '<div class="story-body">' +
+                        '<div class="story-meta">' +
+                            '<span class="source-name">Inflexion</span>' +
+                            '<time class="news-time">' + a.date + '</time>' +
+                        '</div>' +
+                        '<h3>' + a.titre + '</h3>' +
+                        '<p class="story-summary">' + a.resume + '</p>' +
                     '</div>' +
-                    '<h3><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer">' + (n.title || '') + '</a></h3>' +
-                    summaryHTML +
-                '</div>' +
+                '</a>' +
             '</article>';
         }).join('') + '</div>';
     }

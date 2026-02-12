@@ -267,58 +267,59 @@ function initStickyHeader() {
 }
 
 /* ============================================
-   Top Stories (3 featured cards)
+   Analyses Inflexion (3 static cards)
    ============================================ */
 
-const _analysisBanners = {
-    geopolitique: { gradient: 'linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%)', icon: '🌍', label: 'Géopolitique' },
-    marches:      { gradient: 'linear-gradient(135deg, #064e3b 0%, #10b981 100%)', icon: '📈', label: 'Marchés' },
-    crypto:       { gradient: 'linear-gradient(135deg, #78350f 0%, #f59e0b 100%)', icon: '₿', label: 'Crypto' },
-    matieres_premieres: { gradient: 'linear-gradient(135deg, #7f1d1d 0%, #ef4444 100%)', icon: '⛏️', label: 'Mat. Premières' },
-    ai_tech:      { gradient: 'linear-gradient(135deg, #4c1d95 0%, #8b5cf6 100%)', icon: '🤖', label: 'IA & Tech' },
-};
-const _defaultBanner = { gradient: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)', icon: '📊', label: 'Analyse' };
+const _inflexionAnalyses = [
+    {
+        titre: 'Droits de douane Trump sur le Groenland : quand la géopolitique efface 1 200 milliards de Wall Street en une séance',
+        resume: 'Le président américain a relancé la guerre commerciale contre l\'UE en conditionnant la levée de droits de douane au soutien européen sur le Groenland. S&amp;P 500 −2,1 %, VIX au-dessus de 20.',
+        url: 'analyse-droits-douane-trump-groenland.html',
+        date: '4 fév. 2026',
+        gradient: 'linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%)',
+        icon: '🌍',
+        label: 'Géopolitique'
+    },
+    {
+        titre: 'Or à 5 100 $, Bitcoin à 73 000 $ : la grande divergence des valeurs refuges',
+        resume: 'L\'or pulvérise ses records (+64 % YTD) pendant que le bitcoin plonge (−40 % depuis octobre). Corrélation or-BTC tombée à zéro. Le narratif du « digital gold » est mort.',
+        url: 'analyse-or-bitcoin-divergence.html',
+        date: '3 fév. 2026',
+        gradient: 'linear-gradient(135deg, #78350f 0%, #f59e0b 100%)',
+        icon: '📊',
+        label: 'Macro'
+    },
+    {
+        titre: 'L\'IA, dernier rempart des marchés face au chaos géopolitique',
+        resume: 'Nvidia : 57 Mds $ de revenus trimestriels, backlog de 500 Mds $, architecture Vera Rubin. Mais la concentration des Mag 7 (30 % du S&amp;P 500) est un risque systémique.',
+        url: 'analyse-ia-rempart-marches.html',
+        date: '1er fév. 2026',
+        gradient: 'linear-gradient(135deg, #4c1d95 0%, #8b5cf6 100%)',
+        icon: '🤖',
+        label: 'IA & Tech'
+    }
+];
 
 function initTopStories() {
     const container = document.getElementById('top-stories');
     if (!container) return;
 
-    const featured = newsDatabase.filter(a => a.description && a.description.length >= 20).slice(0, 3);
-    if (featured.length === 0) {
-        container.innerHTML = '<p class="empty-state">Aucune analyse disponible.</p>';
-        return;
-    }
-
-    container.innerHTML = '<div class="top-stories-grid">' + featured.map((article) => {
-        const source = escapeHTML(article.source || '');
-        const title = escapeHTML(article.title || '');
-        const time = escapeHTML(article.time || '');
-        const url = article.url || '#';
-        const rawCat = article.category || article.rubrique || '';
-        const rubrique = _categoryToRubrique[rawCat] || rawCat;
-        const banner = _analysisBanners[rubrique] || _defaultBanner;
-
-        let summary = escapeHTML(article.description || '');
-        if (summary.length > 150) summary = summary.slice(0, 147) + '...';
-        const summaryHTML = summary
-            ? `<p class="story-summary">${summary}</p>`
-            : '';
-
-        const bannerHTML = `<div class="analysis-banner" style="background: ${banner.gradient};">
-            <span class="analysis-banner-icon">${banner.icon}</span>
-            <span class="analysis-banner-label">${banner.label}</span>
-        </div>`;
-
+    container.innerHTML = '<div class="top-stories-grid">' + _inflexionAnalyses.map(a => {
         return `<article class="top-story">
-            ${bannerHTML}
-            <div class="story-body">
-                <div class="story-meta">
-                    <a href="${url}" target="_blank" rel="noopener" class="source-name">${source}</a>
-                    <time class="news-time">${time}</time>
+            <a href="${a.url}" class="top-story-link">
+                <div class="analysis-banner" style="background: ${a.gradient};">
+                    <span class="analysis-banner-icon">${a.icon}</span>
+                    <span class="analysis-banner-label">${a.label}</span>
                 </div>
-                <h3><a href="${url}" target="_blank" rel="noopener">${title}</a></h3>
-                ${summaryHTML}
-            </div>
+                <div class="story-body">
+                    <div class="story-meta">
+                        <span class="source-name">Inflexion</span>
+                        <time class="news-time">${a.date}</time>
+                    </div>
+                    <h3>${a.titre}</h3>
+                    <p class="story-summary">${a.resume}</p>
+                </div>
+            </a>
         </article>`;
     }).join('') + '</div>';
 }
