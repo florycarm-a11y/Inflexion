@@ -863,7 +863,7 @@ const DataLoader = (function () {
             url: 'analyse-droits-douane-trump-groenland.html',
             date: '4 fév. 2026',
             categorie: 'geopolitique',
-            gradient: 'linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%)',
+            gradient: 'linear-gradient(135deg, #064E3B 0%, #059669 100%)',
             icon: '',
             label: 'Geopolitique'
         },
@@ -873,7 +873,7 @@ const DataLoader = (function () {
             url: 'analyse-or-bitcoin-divergence.html',
             date: '3 fév. 2026',
             categorie: 'macro',
-            gradient: 'linear-gradient(135deg, #78350f 0%, #f59e0b 100%)',
+            gradient: 'linear-gradient(135deg, #052E16 0%, #10b981 100%)',
             icon: '',
             label: 'Macro'
         },
@@ -883,7 +883,7 @@ const DataLoader = (function () {
             url: 'analyse-ia-rempart-marches.html',
             date: '1er fév. 2026',
             categorie: 'sectorielle',
-            gradient: 'linear-gradient(135deg, #4c1d95 0%, #8b5cf6 100%)',
+            gradient: 'linear-gradient(135deg, #065F46 0%, #34D399 100%)',
             icon: '',
             label: 'IA & Tech'
         }
