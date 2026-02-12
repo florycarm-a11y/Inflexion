@@ -659,29 +659,52 @@ function setupLoadingFallbacks() {
             if (!parent) return;
 
             // Determine fallback message based on container
-            let message = 'Données indisponibles pour le moment.';
-            const id = parent.id || '';
+            var message = 'Données indisponibles — prochaine mise à jour dans quelques heures.';
+            var id = parent.id || '';
 
             if (id === 'top-stories') {
-                message = 'Articles à la une indisponibles.';
+                message = 'Articles à la une en cours de récupération — 122 sources analysées toutes les 6h.';
             } else if (id === 'latest-news') {
-                message = 'Actualités indisponibles.';
+                message = 'Actualités en cours de chargement — nos 15 APIs et 122 flux RSS sont interrogés régulièrement.';
             } else if (id === 'market-table') {
-                message = 'Données marchés indisponibles.';
+                message = 'Données marchés temporairement indisponibles (Finnhub).';
             }
 
-            loader.innerHTML = `<p class="sidebar-empty">${message}</p>`;
+            loader.innerHTML = '<p class="sidebar-empty">' + message + '</p>';
             loader.classList.remove('loading');
             loader.classList.add('loading-fallback');
         });
 
-        // Handle macro indicators still showing placeholder
-        const macroContainer = document.getElementById('macro-indicators');
-        if (macroContainer) {
-            const placeholder = macroContainer.querySelector('.macro-placeholder');
-            if (placeholder) {
-                placeholder.textContent = 'Indicateurs macro indisponibles.';
+        // Handle placeholder widgets with specific fallback messages
+        var fallbackMessages = {
+            'macro-placeholder': 'Indicateurs macro (FRED) — données mises à jour toutes les 6h.',
+            'sentiment-placeholder': 'Analyse de sentiment IA — générée quotidiennement par Claude.',
+            'alerts-placeholder': 'Alertes marché IA — générées quotidiennement par Claude.',
+            'briefing-placeholder': 'Briefing marché IA — synthèse quotidienne en cours de génération.',
+            'macro-analysis-placeholder': 'Analyse macro IA — rapport en cours de génération par Claude.',
+            'euro-markets-placeholder': 'Indices européens (Twelve Data) — données en cours de récupération.',
+            'wb-placeholder': 'Macro internationale (World Bank) — données mises à jour périodiquement.',
+            'messari-placeholder': 'Métriques crypto avancées (Messari) — données en cours de récupération.',
+            'trending-placeholder': 'Crypto & tendances (CoinGecko) — données en cours de récupération.',
+            'defi-placeholder': 'DeFi & yields (DefiLlama) — données en cours de récupération.',
+            'calendar-placeholder': 'Calendrier économique (Finnhub) — données en cours de récupération.',
+            'forex-placeholder': 'Forex (Alpha Vantage) — données en cours de récupération.',
+            'sector-placeholder': 'Secteurs US (Alpha Vantage) — données en cours de récupération.',
+            'movers-placeholder': 'Top movers (Alpha Vantage) — données en cours de récupération.'
+        };
+
+        Object.keys(fallbackMessages).forEach(function(cls) {
+            var el = document.querySelector('.' + cls);
+            if (el && el.textContent === 'Chargement...') {
+                el.textContent = fallbackMessages[cls];
+                el.classList.add('loading-fallback-text');
             }
+        });
+
+        // Handle Fear & Greed label
+        var fngLabel = document.getElementById('fng-label');
+        if (fngLabel && fngLabel.textContent === 'Chargement...') {
+            fngLabel.textContent = 'Indisponible';
         }
 
         // Hide empty sections

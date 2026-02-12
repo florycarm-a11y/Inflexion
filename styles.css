@@ -5078,3 +5078,294 @@ a {
     text-align: right;
     font-variant-numeric: tabular-nums;
 }
+
+/* ============================================
+   Premium Navigation Link
+   ============================================ */
+
+.nav-premium {
+    color: var(--accent) !important;
+    font-weight: 700 !important;
+    position: relative;
+}
+
+.nav-premium::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 1px;
+}
+
+/* ============================================
+   Premium Page Styles
+   ============================================ */
+
+.premium-hero {
+    text-align: center;
+    padding: 3rem 0 2rem;
+}
+
+.premium-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1.25rem;
+}
+
+.premium-hero-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.15;
+    margin: 0 0 0.75rem;
+}
+
+.premium-hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* Value Proposition */
+.premium-value-prop {
+    max-width: 720px;
+    margin: 0 auto 2.5rem;
+    padding: 1.5rem 2rem;
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius-md);
+}
+
+.premium-value-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* Section Title */
+.premium-section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-align: center;
+    margin: 0 0 2rem;
+}
+
+/* Services Grid */
+.premium-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.premium-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    transition: box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.premium-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+}
+
+.premium-card-b2b {
+    background: linear-gradient(135deg, #fafffe 0%, var(--accent-light) 100%);
+    border-color: var(--accent);
+}
+
+.premium-card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-light);
+    border-radius: var(--radius-md);
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+.premium-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem;
+}
+
+.premium-card-frequency {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+}
+
+.premium-card-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0 0 1rem;
+}
+
+.premium-card-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.premium-card-features li {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding: 0.3rem 0 0.3rem 1.25rem;
+    position: relative;
+    line-height: 1.4;
+}
+
+.premium-card-features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+}
+
+/* Sources Section */
+.premium-sources {
+    padding: 2.5rem 0;
+    border-top: 1px solid #e5e7eb;
+    margin-bottom: 2rem;
+}
+
+.premium-sources-intro {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.premium-sources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.premium-source-category h3 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.premium-source-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.premium-source-tags span {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    background: #f3f4f6;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+/* CTA Section */
+.premium-cta {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    background: var(--accent-light);
+    border-radius: var(--radius-lg);
+    margin-bottom: 3rem;
+}
+
+.premium-cta-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.75rem;
+}
+
+.premium-cta-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto 1.25rem;
+    line-height: 1.6;
+}
+
+.premium-cta-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.7rem 1.75rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: background 150ms ease, box-shadow 150ms ease;
+}
+
+.premium-cta-btn:hover {
+    background: var(--accent-dark);
+    box-shadow: 0 4px 12px rgba(16, 94, 45, 0.25);
+}
+
+.premium-cta-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 0.75rem 0 0;
+}
+
+/* Loading fallback text */
+.loading-fallback-text {
+    color: var(--text-muted);
+    font-size: var(--fs-xs);
+    font-style: italic;
+}
+
+/* Premium page responsive */
+@media (max-width: 768px) {
+    .premium-grid {
+        grid-template-columns: 1fr;
+    }
+    .premium-sources-grid {
+        grid-template-columns: 1fr;
+    }
+    .premium-hero {
+        padding: 2rem 0 1.5rem;
+    }
+    .premium-value-prop {
+        padding: 1rem 1.25rem;
+    }
+}

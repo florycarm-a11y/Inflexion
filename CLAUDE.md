@@ -2,7 +2,7 @@
 
 ## 1. Vue d'ensemble
 
-**Inflexion** est une plateforme d'intelligence financiere automatisee combinant analyses geopolitiques et donnees de marche en temps reel. Le systeme agrege **15 APIs**, **97 flux RSS** et utilise **Claude Haiku** pour generer des syntheses IA quotidiennes.
+**Inflexion** est une plateforme d'intelligence financiere automatisee combinant analyses geopolitiques et donnees de marche en temps reel. Le systeme agrege **15 APIs**, **122 flux RSS** et utilise **Claude Haiku** pour generer des syntheses IA quotidiennes.
 
 **URL de production** : https://florycarm-a11y.github.io/Inflexion/
 
@@ -17,6 +17,7 @@ Inflexion/
 ├── etf.html                # Page ETF & fonds
 ├── geopolitics.html        # Page geopolitique
 ├── markets.html            # Page marches & finance
+├── premium.html            # Page services premium (roadmap monetisation)
 ├── styles.css              # CSS complet (design vert, responsive)
 ├── app.js                  # Logique JS principale + donnees statiques fallback
 ├── data-loader.js          # Charge les JSON dynamiques → met a jour le DOM
@@ -262,6 +263,39 @@ python scripts/check-french.py
 - `index.html` : bouton filtre "IA & Tech"
 - `.github/workflows/fetch-data.yml` : ajout step traduction EN→FR apres fetch
 - `scripts/translate-articles.mjs` : ajout traitement newsapi.json
+
+### Session 2026-02-12 (3) — Analyse UX, page Premium, +25 RSS
+
+**Contexte :** Analyse approfondie de l'UX du point de vue du public cible (investisseur francophone actif). Identification des services premium a monetiser et des sources manquantes.
+
+**Nouveaux flux RSS (25) :** 97 → 122 sources
+- *Think tanks geopolitiques FR (4)* : IFRI, IRIS, FRS (Fondation pour la recherche strategique), GRIP (Bruxelles)
+- *Think tanks internationaux (4)* : Chatham House, IISS, Al-Monitor, Middle East Institute
+- *Donnees geopolitiques (2)* : SIPRI (armement), Crisis Group (conflits)
+- *Presse financiere internationale (3)* : Financial Times, Nikkei Asia, L'AGEFI
+- *Banques centrales (2)* : BCE (communiques), Banque de France
+- *Energie/commodites (4)* : OPEC, Wood Mackenzie, Kpler Energy, Argus Media
+- *IA & Tech premium (3)* : Stratechery, The Information, Simon Willison
+
+**Nouvelle page :** `premium.html`
+- Presentation de 6 services premium envisages : briefing IA strategique, alertes contextuelles, dashboard risque geopolitique, rapports thematiques, screener cross-asset, API entreprises
+- Cartographie des 122 sources par categorie
+- CTA vers inscription newsletter (early-adopter)
+
+**Ameliorations UX :**
+- Fallback messages contextualises pour chaque widget IA (au lieu de "Chargement..." generique)
+- Footer source tags elargis : CFR, IFRI, SIPRI, Chatham House, FMI, BCE, FRED, Finnhub, CoinGecko, DefiLlama, Messari, OPEC
+- Hero eyebrow mis a jour : "122 sources · 15 APIs · IA Claude"
+- Lien "Premium" ajoute dans la navigation de toutes les pages
+
+**Fichiers modifies :**
+- `scripts/fetch-data.mjs` : +25 entrees RSS, mise a jour commentaires (97→122)
+- `premium.html` : nouvelle page services premium
+- `styles.css` : +CSS premium page (grid, cards, sources, CTA, responsive)
+- `index.html` : nav premium, footer elargi, hero eyebrow, fallback article du jour
+- `app.js` : fallback messages contextualises par widget
+- `geopolitics.html`, `markets.html`, `crypto.html`, `commodities.html`, `etf.html`, `analysis.html`, `cgu.html`, `mentions-legales.html`, `confidentialite.html` : nav premium + footer sources
+- `CLAUDE.md` : documentation session
 
 ### PRs precedentes
 
