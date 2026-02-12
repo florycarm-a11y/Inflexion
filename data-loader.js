@@ -50,6 +50,97 @@ const DataLoader = (function () {
     let _initialized = false;
     let _usingLiveData = false;
 
+    // ─── Filtre de pertinence (filet de sécurité frontend) ──
+    // Exclut les articles manifestement hors-sujet pour chaque rubrique.
+    // Le filtre principal est côté pipeline (fetch-data.mjs), celui-ci
+    // rattrape les articles hors-sujet dans les données déjà en cache.
+
+    var IRRELEVANT_PATTERNS = {
+        // Patterns à exclure de TOUTES les rubriques (sport, divertissement, etc.)
+        _global: [
+            /\bjo\s+(?:20\d\d|d[eu]|olympi)/i,
+            /\bjeux\s+olympi/i,
+            /\bolympi(?:que|c|cs|ad)/i,
+            /\bcoupe\s+d(?:u|e)\s+mond/i,
+            /\bworld\s+cup\b/i,
+            /\bfootball\b.*\b(?:but|goal|match|victoire|defaite)/i,
+            /\bman\s+utd\b/i, /\bman\s+united\b/i, /\bman\s+city\b/i,
+            /\bchampions\s+league\b/i, /\bpremier\s+league\b/i,
+            /\bligue\s+1\b/i, /\bliga\b/i, /\bserie\s+a\b/i,
+            /\bballon\s+d'or\b/i,
+            /\bmedaille\s+d'or\b/i, /\bgold\s+medal\b/i,
+            /\bpatinage\b/i, /\bice\s+danc/i, /\bskeleto/i, /\bbiathlon\b/i,
+            /\bski\s+(?:alpin|fond|cross)/i, /\bsnowboard/i, /\bbobsleigh/i,
+            /\bmascotte/i, /\bmascot\b/i
+        ],
+        // Patterns spécifiques à exclure par rubrique
+        geopolitics: [
+            /\bnégligence\s+médical/i, /\bmedical\s+negligen/i,
+            /\bhôpital\b.*\bgroupe\s+électrogène/i,
+            /\btest\s+(?:du|de|le)\b/i,
+            /\brecette\b/i, /\bcuisine\b/i
+        ],
+        markets: [
+            /\bon\s+a\s+testé\b/i, /\btest\s+(?:du|de|le)\b.*(?:suv|voiture|auto)/i,
+            /\bshoah\b/i, /\bholocaust\b/i,
+            /\bfast[- ]?fashion\b/i,
+            /\bfilmer\s+ses\s+matinales\b/i
+        ],
+        ai_tech: [
+            /\bpéage\b/i, /\btoll\b.*\bpayment/i, /\bbadge\s+liber/i,
+            /\bpower\s+bank/i, /\bmagsafe\b.*\bpower/i,
+            /\bvoiture\s+électrique/i, /\belectric\s+car/i,
+            /\bcompteur\s+vélo\b/i, /\bcycling\s+gps/i,
+            /\bpass\s+navigo\b/i, /\bcovoiturage\b/i,
+            /\brecovery\s+tech\b.*\bboot/i, /\bjetboots/i,
+            /\bastronaut/i, /\biss\b.*\bstation/i, /\bspace\s+ops/i,
+            /\bnasa\b.*\bswift\b/i,
+            /\bréduction\s+sur\b/i, /\b\d+\s*€\s+de\s+réduction/i,
+            /\bice\s+is\s+pushing\b/i, /\bimmigration\s+raids?\b/i
+        ],
+        commodities: [
+            /\btesla\b.*\b(?:sales?|ventes?|down|up)\b.*\b(?:uk|norway|netherlands)/i,
+            /\bev\s+retreat\b/i, /\blegacy\s+ev\b/i,
+            /\bactions?\s+australien/i, /\baustralian\s+stocks?\b/i,
+            /\bhuman\s+health\s+matter/i
+        ],
+        crypto: [
+            /\bcac\s+40\b/i, /\bbourse\b.*\brecord\b/i,
+            /\bwhatsapp\b.*\bblock/i, /\bsurveillance\s+app/i
+        ]
+    };
+
+    /**
+     * Vérifie si un article est pertinent pour sa rubrique.
+     * @param {Object} article - L'article avec title, description, rubrique
+     * @returns {boolean} true si pertinent (à garder)
+     */
+    function isArticleRelevant(article) {
+        var text = ((article.title || '') + ' ' + (article.description || '')).toLowerCase();
+        // Vérifier les patterns globaux (sport, etc.)
+        for (var i = 0; i < IRRELEVANT_PATTERNS._global.length; i++) {
+            if (IRRELEVANT_PATTERNS._global[i].test(text)) return false;
+        }
+        // Vérifier les patterns spécifiques à la rubrique
+        var catKey = article.rubrique || '';
+        // Mapper rubrique FR → clé interne
+        var rubriqueToKey = {
+            'geopolitique': 'geopolitics',
+            'marches': 'markets',
+            'crypto': 'crypto',
+            'matieres_premieres': 'commodities',
+            'ai_tech': 'ai_tech'
+        };
+        var key = rubriqueToKey[catKey] || catKey;
+        var patterns = IRRELEVANT_PATTERNS[key];
+        if (patterns) {
+            for (var j = 0; j < patterns.length; j++) {
+                if (patterns[j].test(text)) return false;
+            }
+        }
+        return true;
+    }
+
     // ─── Utilitaires ───────────────────────────────────────
 
     /**
@@ -799,7 +890,7 @@ const DataLoader = (function () {
         var ln = document.getElementById('latest-news');
         if (!ln) return;
 
-        // Collecter tous les articles avec leur rubrique (FR uniquement, avec titre)
+        // Collecter tous les articles avec leur rubrique (FR uniquement, avec titre, pertinents)
         var allArticles = [];
         Object.keys(_cache.news.categories).forEach(function(cat) {
             var articles = _cache.news.categories[cat];
@@ -808,6 +899,8 @@ const DataLoader = (function () {
                 if (a.lang === 'en' && !a.translated) return;
                 // Exclure articles sans titre
                 if (!a.title || a.title.length < 5) return;
+                // Exclure articles hors-sujet pour leur rubrique
+                if (!isArticleRelevant(a)) return;
                 allArticles.push(a);
             });
         });
@@ -1192,7 +1285,7 @@ const DataLoader = (function () {
         var targetCats = catMap[pageCat];
         if (!targetCats) return;
 
-        // Collecter les articles des catégories correspondantes (FR uniquement)
+        // Collecter les articles des catégories correspondantes (FR uniquement, pertinents)
         var articles = [];
         targetCats.forEach(function(cat) {
             var catArticles = _cache.news.categories[cat] || [];
@@ -1201,6 +1294,8 @@ const DataLoader = (function () {
                 if (a.lang === 'en' && !a.translated) return;
                 // Exclure articles sans titre
                 if (!a.title || a.title.length < 5) return;
+                // Exclure articles hors-sujet pour leur rubrique
+                if (!isArticleRelevant(a)) return;
                 articles.push(a);
             });
         });
@@ -1718,6 +1813,8 @@ const DataLoader = (function () {
                         a.rubrique_label = meta.rubrique_label;
                         a.rubrique_emoji = meta.rubrique_emoji;
                     }
+                    // Vérifier la pertinence avant d'ajouter
+                    if (!isArticleRelevant(a)) return;
                     categories[cat].push(a);
                     existing.add(key);
                 }
