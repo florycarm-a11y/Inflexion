@@ -22,6 +22,7 @@ import { TRANSLATION_SYSTEM_PROMPT } from './lib/prompts.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, '..', 'data');
+const DRY_RUN = process.argv.includes('--dry-run');
 
 /** Nombre d'articles par lot (batch) envoyé à Claude */
 const BATCH_SIZE = 6;
@@ -70,8 +71,8 @@ async function main() {
     console.log(`  ${new Date().toISOString()}`);
     console.log('═══════════════════════════════════════');
 
-    // Vérifier la clé API
-    if (!process.env.ANTHROPIC_API_KEY) {
+    // Vérifier la clé API (sauf en dry-run)
+    if (!process.env.ANTHROPIC_API_KEY && !DRY_RUN) {
         console.log('⚠ ANTHROPIC_API_KEY non définie — traduction ignorée');
         return;
     }
@@ -116,6 +117,15 @@ async function main() {
 
     console.log(`\n🌐 ${articlesToTranslate.length} articles en anglais à traduire`);
 
+    if (DRY_RUN) {
+        console.log('\n🔍 [DRY-RUN] Articles qui seraient traduits :');
+        for (const a of articlesToTranslate) {
+            console.log(`  [${a.index}] ${a.title.slice(0, 80)}`);
+        }
+        console.log(`\n✓ [DRY-RUN] ${articlesToTranslate.length} article(s) — aucune traduction effectuée`);
+        return;
+    }
+
     // Traduction par lots
     let translatedCount = 0;
     let errorCount = 0;
@@ -154,6 +164,10 @@ async function main() {
             errorCount += batch.length;
         }
     }
+
+    // Backup avant écriture (protection contre corruption)
+    const backupPath = newsPath.replace('.json', '.backup.json');
+    writeJSON(backupPath, JSON.parse(readFileSync(newsPath, 'utf-8')));
 
     // Sauvegarder news.json mis à jour
     writeJSON(newsPath, newsData);

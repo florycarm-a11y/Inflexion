@@ -22,6 +22,7 @@ import { SENTIMENT_SYSTEM_PROMPT } from './lib/prompts.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, '..', 'data');
+const DRY_RUN = process.argv.includes('--dry-run');
 
 /** Max titres envoyés par rubrique à Claude */
 const MAX_TITLES_PER_CATEGORY = 20;
@@ -168,8 +169,8 @@ async function main() {
     console.log(`  ${new Date().toISOString()}`);
     console.log('═══════════════════════════════════════');
 
-    // Vérifier la clé API
-    if (!process.env.ANTHROPIC_API_KEY) {
+    // Vérifier la clé API (sauf en dry-run)
+    if (!process.env.ANTHROPIC_API_KEY && !DRY_RUN) {
         console.log('⚠ ANTHROPIC_API_KEY non définie — analyse ignorée');
         return;
     }
@@ -205,6 +206,15 @@ async function main() {
         if (!rubrique) continue;
         if (!articlesByRubrique[rubrique]) articlesByRubrique[rubrique] = [];
         articlesByRubrique[rubrique].push(...articles);
+    }
+
+    if (DRY_RUN) {
+        console.log('\n🔍 [DRY-RUN] Rubriques qui seraient analysées :');
+        for (const [rubrique, articles] of Object.entries(articlesByRubrique)) {
+            console.log(`  • ${rubrique}: ${articles.length} articles (${articles.slice(0, 3).map(a => a.title.slice(0, 50)).join(', ')}...)`);
+        }
+        console.log(`\n✓ [DRY-RUN] ${Object.keys(articlesByRubrique).length} rubrique(s) — aucun appel API ni fichier écrit`);
+        return;
     }
 
     // Analyser le sentiment par rubrique

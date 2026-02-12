@@ -22,6 +22,7 @@ import { NEWSLETTER_SYSTEM_PROMPT } from './lib/prompts.mjs';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, '..', 'data');
 const ARTICLES_DIR = join(DATA_DIR, 'articles');
+const DRY_RUN = process.argv.includes('--dry-run');
 
 // ─── Utilitaires ─────────────────────────────────────────────
 
@@ -173,15 +174,40 @@ async function main() {
     console.log(`  ${new Date().toISOString()}`);
     console.log('═══════════════════════════════════════');
 
-    // Vérifier la clé API
-    if (!process.env.ANTHROPIC_API_KEY) {
+    // Vérifier la clé API (sauf en dry-run)
+    if (!process.env.ANTHROPIC_API_KEY && !DRY_RUN) {
         console.log('⚠ ANTHROPIC_API_KEY non définie — newsletter ignorée');
         return;
     }
 
     // Charger les articles de la semaine
-    const articles = loadRecentArticles(7);
+    let articles = loadRecentArticles(7);
     console.log(`\n📰 ${articles.length} article(s) quotidien(s) trouvé(s)`);
+
+    // Fallback : utiliser news.json si aucun article quotidien n'existe
+    if (articles.length === 0) {
+        const newsPath = join(DATA_DIR, 'news.json');
+        if (existsSync(newsPath)) {
+            console.log('  ℹ Aucun article quotidien — fallback sur news.json');
+            try {
+                const newsData = JSON.parse(readFileSync(newsPath, 'utf-8'));
+                const todayStr = today();
+                for (const [cat, items] of Object.entries(newsData.categories || {})) {
+                    for (const item of items.slice(0, 5)) {
+                        articles.push({
+                            date: todayStr,
+                            article: {
+                                titre: item.title,
+                                rubrique: item.rubrique || cat,
+                                sous_titre: item.description || '',
+                            },
+                        });
+                    }
+                }
+                console.log(`  📰 ${articles.length} article(s) chargés depuis news.json`);
+            } catch { /* ignorer */ }
+        }
+    }
 
     if (articles.length === 0) {
         console.log('⚠ Aucun article disponible — newsletter impossible');
@@ -201,6 +227,15 @@ async function main() {
 
     // Construire le message
     const userMessage = buildUserMessage(articles, contextData);
+
+    if (DRY_RUN) {
+        console.log('\n🔍 [DRY-RUN] Message qui serait envoyé à Claude :');
+        console.log(`  Longueur : ${userMessage.length} caractères`);
+        console.log(`  Articles : ${articles.length}`);
+        console.log(`  Semaine : ${getISOWeek(new Date())}`);
+        console.log(`\n✓ [DRY-RUN] Aucun appel API ni fichier écrit`);
+        return;
+    }
 
     // Générer la newsletter
     console.log('\n✍️  Génération de la newsletter...');

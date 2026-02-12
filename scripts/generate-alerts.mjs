@@ -21,6 +21,7 @@ import { ALERTS_SYSTEM_PROMPT } from './lib/prompts.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, '..', 'data');
+const DRY_RUN = process.argv.includes('--dry-run');
 
 // ─── Seuils de détection ─────────────────────────────────────
 
@@ -264,20 +265,30 @@ async function main() {
     console.log(`\n🔍 ${allChanges.length} mouvement(s) significatif(s) détecté(s)`);
 
     if (allChanges.length === 0) {
-        // Écrire un fichier vide (aucune alerte)
-        const alertsData = {
-            updated: new Date().toISOString(),
-            alertes: [],
-            stats: { total: 0, urgent: 0, attention: 0, info: 0 },
-        };
-        writeJSON(join(DATA_DIR, 'alerts.json'), alertsData);
         console.log('\n✓ Aucune alerte à générer — marchés calmes');
+        if (!DRY_RUN) {
+            const alertsData = {
+                updated: new Date().toISOString(),
+                alertes: [],
+                stats: { total: 0, urgent: 0, attention: 0, info: 0 },
+            };
+            writeJSON(join(DATA_DIR, 'alerts.json'), alertsData);
+        }
         return;
     }
 
     for (const change of allChanges) {
         const icon = change.severite === 'urgent' ? '🔴' : change.severite === 'attention' ? '🟡' : '🔵';
         console.log(`  ${icon} ${change.description}`);
+    }
+
+    if (DRY_RUN) {
+        console.log('\n🔍 [DRY-RUN] Résumé des alertes qui seraient générées :');
+        for (const c of allChanges) {
+            console.log(`  • [${c.severite}] ${c.categorie}: ${c.description}`);
+        }
+        console.log(`\n✓ [DRY-RUN] ${allChanges.length} alerte(s) — aucun fichier écrit`);
+        return;
     }
 
     // Générer les alertes via Claude
@@ -294,7 +305,7 @@ async function main() {
             texte: c.description,
             categorie: c.categorie,
             severite: c.severite,
-            impact: c.donnees.variation_24h > 0 || c.donnees.variation > 0 ? 'haussier' : 'baissier',
+            impact: (c.donnees.variation_24h ?? c.donnees.variation ?? c.donnees.variation_7j ?? 0) > 0 ? 'haussier' : 'baissier',
             horodatage: new Date().toISOString(),
             donnees: c.donnees,
         }));
