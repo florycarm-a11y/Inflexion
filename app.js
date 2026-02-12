@@ -106,6 +106,7 @@ function initHomePage() {
 
 function initCategoryPage(category) {
     initCommon();
+    initMarketTable();
 
     // Initialiser le graphique Or vs Bitcoin si le canvas est présent
     if (document.getElementById('divergenceChart') && typeof initDivergenceChart === 'function') {

@@ -108,12 +108,23 @@
             <!-- ETF Table -->
             <div class="etf-table" id="etf-table"></div>
 
-            <div class="news-grid" id="page-news" aria-live="polite">
-                <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des articles...</span></div>
+            <div class="two-col">
+                <div class="col-main">
+                    <div class="news-grid" id="page-news" aria-live="polite">
+                        <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des articles...</span></div>
+                    </div>
+                    <noscript>
+                        <p>Activez JavaScript pour afficher les actualités ETF. Consultez nos <a href="analysis.html">analyses approfondies</a>.</p>
+                    </noscript>
+                </div>
+                <aside class="col-side">
+                    <div class="sidebar-block sidebar-card">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Marchés</h3>
+                        <div class="market-table" id="market-table" aria-live="polite" role="region" aria-label="Cours des marchés en temps réel"></div>
+                        <a href="markets.html" class="sidebar-more">Voir tous les marchés</a>
+                    </div>
+                </aside>
             </div>
-            <noscript>
-                <p>Activez JavaScript pour afficher les actualités ETF. Consultez nos <a href="analysis.html">analyses approfondies</a>.</p>
-            </noscript>
         </div>
     </main>
 
