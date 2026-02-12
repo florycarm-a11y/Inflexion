@@ -27,7 +27,12 @@ const DataLoader = (function () {
             alphaVantage: 'alpha-vantage.json',
             defi:    'defi.json',
             meta:    '_meta.json',
-            articleDuJour: 'article-du-jour.json'
+            articleDuJour: 'article-du-jour.json',
+            sentiment: 'sentiment.json',
+            alerts:  'alerts.json',
+            newsletter: 'newsletter.json',
+            macroAnalysis: 'macro-analysis.json',
+            marketBriefing: 'market-briefing.json'
         },
         // Durée max avant de considérer les données comme périmées (12h)
         STALE_THRESHOLD_MS: 12 * 60 * 60 * 1000,
@@ -161,7 +166,7 @@ const DataLoader = (function () {
         console.log('[DataLoader] Initialisation...');
 
         // Charger tous les fichiers en parallèle
-        const [crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour, alphaVantage, defi] = await Promise.all([
+        const [crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour, alphaVantage, defi, sentiment, alerts, newsletter, macroAnalysis, marketBriefing] = await Promise.all([
             loadJSON(CONFIG.FILES.crypto),
             loadJSON(CONFIG.FILES.markets),
             loadJSON(CONFIG.FILES.news),
@@ -171,10 +176,15 @@ const DataLoader = (function () {
             loadJSON(CONFIG.FILES.meta),
             loadJSON(CONFIG.FILES.articleDuJour),
             loadJSON(CONFIG.FILES.alphaVantage),
-            loadJSON(CONFIG.FILES.defi)
+            loadJSON(CONFIG.FILES.defi),
+            loadJSON(CONFIG.FILES.sentiment),
+            loadJSON(CONFIG.FILES.alerts),
+            loadJSON(CONFIG.FILES.newsletter),
+            loadJSON(CONFIG.FILES.macroAnalysis),
+            loadJSON(CONFIG.FILES.marketBriefing)
         ]);
 
-        _cache = { crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour, alphaVantage, defi };
+        _cache = { crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour, alphaVantage, defi, sentiment, alerts, newsletter, macroAnalysis, marketBriefing };
         _initialized = true;
 
         // Déterminer si on utilise des données live
@@ -1143,6 +1153,195 @@ const DataLoader = (function () {
         }
     }
 
+    // ─── Sentiment Widget ──────────────────────────────────────
+
+    /**
+     * Affiche le widget de sentiment global
+     */
+    function updateSentimentWidget() {
+        if (!_cache.sentiment?.global) return;
+
+        var container = document.getElementById('sentiment-widget');
+        if (!container) return;
+
+        var s = _cache.sentiment;
+        var global = s.global;
+        var scoreColor = global.score > 0.2 ? '#16a34a' : global.score < -0.2 ? '#dc2626' : '#eab308';
+        var arrow = global.score > 0 ? '↑' : global.score < 0 ? '↓' : '→';
+        var tendanceLabel = {
+            'haussier': 'Haussier', 'baissier': 'Baissier',
+            'neutre': 'Neutre', 'mixte': 'Mixte'
+        };
+
+        var categoriesHTML = '';
+        if (s.categories) {
+            categoriesHTML = '<div class="sentiment-categories">' +
+                Object.entries(s.categories).map(function(entry) {
+                    var rubrique = entry[0];
+                    var data = entry[1];
+                    var catColor = data.score > 0.2 ? '#16a34a' : data.score < -0.2 ? '#dc2626' : '#eab308';
+                    return '<div class="sentiment-cat">' +
+                        '<span class="sentiment-cat-name">' + rubrique + '</span>' +
+                        '<span class="sentiment-cat-score" style="color:' + catColor + '">' +
+                        (data.score > 0 ? '+' : '') + data.score.toFixed(1) +
+                        '</span></div>';
+                }).join('') + '</div>';
+        }
+
+        container.innerHTML =
+            '<div class="sentiment-header">' +
+                '<span class="sentiment-score" style="color:' + scoreColor + '">' +
+                    arrow + ' ' + (global.score > 0 ? '+' : '') + global.score.toFixed(2) +
+                '</span>' +
+                '<span class="sentiment-label">' + (tendanceLabel[global.tendance] || global.tendance) + '</span>' +
+            '</div>' +
+            '<p class="sentiment-resume">' + (global.resume || '') + '</p>' +
+            categoriesHTML;
+
+        addFreshnessIndicator(container, s.updated);
+    }
+
+    // ─── Alertes Widget ──────────────────────────────────────
+
+    /**
+     * Affiche les alertes de marché actives
+     */
+    function updateAlertsWidget() {
+        if (!_cache.alerts?.alertes?.length) return;
+
+        var container = document.getElementById('alerts-widget');
+        if (!container) return;
+
+        var alertes = _cache.alerts.alertes.slice(0, 5);
+        var severityIcon = { urgent: '🔴', attention: '🟡', info: '🔵' };
+
+        container.innerHTML = alertes.map(function(a) {
+            return '<div class="alert-item alert-' + (a.severite || 'info') + '">' +
+                '<span class="alert-icon">' + (severityIcon[a.severite] || '🔵') + '</span>' +
+                '<div class="alert-content">' +
+                    '<strong class="alert-titre">' + (a.titre || '') + '</strong>' +
+                    '<p class="alert-texte">' + (a.texte || '') + '</p>' +
+                '</div>' +
+            '</div>';
+        }).join('');
+
+        addFreshnessIndicator(container, _cache.alerts.updated);
+    }
+
+    // ─── Newsletter Section ──────────────────────────────────
+
+    /**
+     * Affiche la dernière newsletter hebdomadaire
+     */
+    function updateNewsletterSection() {
+        if (!_cache.newsletter?.titre_semaine) return;
+
+        var container = document.getElementById('newsletter-content');
+        if (!container) return;
+
+        var nl = _cache.newsletter;
+
+        var faitsHTML = (nl.faits_marquants || []).map(function(f) {
+            return '<li><strong>' + f.titre + '</strong> — ' + f.description + '</li>';
+        }).join('');
+
+        var editorialHTML = (nl.editorial || '')
+            .replace(/## (.+)/g, '<h4>$1</h4>')
+            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\n\n/g, '</p><p>')
+            .replace(/\n/g, '<br>');
+
+        container.innerHTML =
+            '<div class="newsletter-header">' +
+                '<span class="newsletter-badge">📰 Newsletter</span>' +
+                '<span class="newsletter-semaine">' + (nl.semaine || '') + '</span>' +
+            '</div>' +
+            '<h3 class="newsletter-title">' + nl.titre_semaine + '</h3>' +
+            (nl.sous_titre ? '<p class="newsletter-subtitle">' + nl.sous_titre + '</p>' : '') +
+            '<div class="newsletter-editorial"><p>' + editorialHTML + '</p></div>' +
+            (faitsHTML ? '<div class="newsletter-faits"><h4>Faits marquants</h4><ul>' + faitsHTML + '</ul></div>' : '') +
+            (nl.perspectives ? '<div class="newsletter-perspectives"><h4>Perspectives</h4><p>' + nl.perspectives + '</p></div>' : '');
+
+        // Afficher la section si masquée
+        var section = document.getElementById('newsletter-section');
+        if (section) section.classList.remove('section-empty');
+    }
+
+    // ─── Macro Analysis Widget ────────────────────────────────
+
+    /**
+     * Affiche l'analyse macroéconomique IA
+     */
+    function updateMacroAnalysisWidget() {
+        if (!_cache.macroAnalysis?.titre) return;
+
+        var container = document.getElementById('macro-analysis-widget');
+        if (!container) return;
+
+        var ma = _cache.macroAnalysis;
+        var riskColor = ma.score_risque > 6 ? '#dc2626' : ma.score_risque > 3 ? '#eab308' : '#16a34a';
+
+        var indicateursHTML = '';
+        if (ma.indicateurs_cles?.length) {
+            indicateursHTML = '<div class="macro-analysis-indicators">' +
+                ma.indicateurs_cles.map(function(ind) {
+                    var signalColor = ind.signal === 'haussier' ? '#16a34a' : ind.signal === 'baissier' ? '#dc2626' : '#eab308';
+                    return '<div class="macro-ind">' +
+                        '<span class="macro-ind-name">' + ind.nom + '</span>' +
+                        '<span class="macro-ind-val" style="color:' + signalColor + '">' + ind.valeur + '</span>' +
+                    '</div>';
+                }).join('') + '</div>';
+        }
+
+        container.innerHTML =
+            '<div class="macro-analysis-header">' +
+                '<span class="macro-analysis-risk" style="color:' + riskColor + '">Risque ' + ma.score_risque + '/10</span>' +
+                '<span class="macro-analysis-phase">' + (ma.phase_cycle || '') + '</span>' +
+            '</div>' +
+            '<h4 class="macro-analysis-title">' + ma.titre + '</h4>' +
+            indicateursHTML +
+            (ma.perspectives ? '<p class="macro-analysis-perspectives">' + ma.perspectives + '</p>' : '');
+
+        addFreshnessIndicator(container, ma.updated);
+    }
+
+    // ─── Market Briefing Widget ───────────────────────────────
+
+    /**
+     * Affiche le briefing marché quotidien
+     */
+    function updateMarketBriefingWidget() {
+        if (!_cache.marketBriefing?.titre) return;
+
+        var container = document.getElementById('market-briefing-widget');
+        if (!container) return;
+
+        var mb = _cache.marketBriefing;
+        var sentimentColor = mb.sentiment_global === 'haussier' ? '#16a34a' :
+            mb.sentiment_global === 'baissier' ? '#dc2626' : '#eab308';
+
+        var vigilanceHTML = '';
+        if (mb.vigilance?.length) {
+            vigilanceHTML = '<div class="briefing-vigilance">' +
+                mb.vigilance.map(function(v) {
+                    return '<span class="briefing-vigilance-item">⚠ ' + v + '</span>';
+                }).join('') + '</div>';
+        }
+
+        container.innerHTML =
+            '<div class="briefing-header">' +
+                '<span class="briefing-sentiment" style="color:' + sentimentColor + '">' +
+                    (mb.sentiment_global || 'neutre') +
+                '</span>' +
+                '<span class="briefing-date">' + (mb.date || '') + '</span>' +
+            '</div>' +
+            '<h4 class="briefing-title">' + mb.titre + '</h4>' +
+            '<p class="briefing-resume">' + (mb.resume_executif || '') + '</p>' +
+            vigilanceHTML;
+
+        addFreshnessIndicator(container, mb.updated);
+    }
+
     function updateDOM() {
         if (!_initialized || !_usingLiveData) return;
 
@@ -1162,6 +1361,11 @@ const DataLoader = (function () {
         updateCategoryTrend();
         updateCategoryPageNews();
         updateLatestNewsWithRubriques();
+        updateSentimentWidget();
+        updateAlertsWidget();
+        updateNewsletterSection();
+        updateMacroAnalysisWidget();
+        updateMarketBriefingWidget();
         initRubriqueFilters();
         handleEmptyWidgets();
         console.log('[DataLoader] ✓ DOM mis à jour');
@@ -1183,6 +1387,9 @@ const DataLoader = (function () {
         getDefi:    () => _cache.defi,
         getMeta:    () => _cache.meta,
         getArticleDuJour: () => _cache.articleDuJour,
+        getSentiment: () => _cache.sentiment,
+        getAlerts:  () => _cache.alerts,
+        getNewsletter: () => _cache.newsletter,
 
         // État
         isInitialized: () => _initialized,

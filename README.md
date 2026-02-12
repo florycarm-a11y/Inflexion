@@ -19,20 +19,53 @@ Inflexion est une application web qui agrège et présente les actualités géop
 - Ticker d'actualités en continu (breaking news)
 - Indicateurs d'impact sur les marchés
 
-### Sources Médias (25+)
+### Sources de Données (89+)
 
-**Internationaux:**
-- Reuters, Bloomberg, Financial Times, BBC News
-- Al Jazeera, CNBC, Wall Street Journal, New York Times
-- The Guardian, The Economist
+**APIs temps réel (11 sources) :**
+- CoinGecko (crypto, trending, stablecoins)
+- Finnhub (indices boursiers, calendrier économique, VIX)
+- FRED (10 indicateurs macroéconomiques US)
+- Alpha Vantage (forex, secteurs, top gainers/losers)
+- DefiLlama (TVL DeFi, protocoles, yields)
+- Alternative.me (Fear & Greed Index crypto)
+- GNews (actualités multi-catégories FR/EN)
+- metals.dev (cours métaux précieux & industriels)
+- Etherscan (ETH gas tracker)
+- Mempool.space (BTC fees, hashrate, difficulté)
+- ECB Data API (taux directeur BCE, EUR/USD fixing)
 
-**Francophones:**
-- Le Monde, Les Échos, Le Figaro, France 24
-- RFI, La Tribune, BFM Business, Capital
+**Flux RSS spécialisés (78 sources) :**
 
-**Crypto & Finance:**
-- CoinDesk, Cointelegraph, The Block, Decrypt
-- MarketWatch, Morningstar, ETF.com, Seeking Alpha
+*Géopolitique (20 sources) :*
+- Presse FR : Le Figaro International, France 24, RFI, Courrier International, Le Monde Diplomatique
+- Presse intl : BBC World, Al Jazeera, The Guardian, New York Times, Reuters, Politico EU
+- Think tanks : Foreign Policy, CFR, Brookings, Carnegie, CSIS, Responsible Statecraft, War on the Rocks
+- Régional : The Diplomat (Asie-Pacifique), Middle East Eye (MENA)
+
+*Marchés & Finance (18 sources) :*
+- Presse FR : Le Figaro (Éco, Conjoncture, Sociétés, Flash Éco), Les Echos, BFM Business, Boursorama, La Tribune, Capital
+- Presse intl : MarketWatch, Yahoo Finance, Seeking Alpha, CNBC, Investing.com
+- Macro spécialisé : Wolf Street, Calculated Risk, Naked Capitalism
+- Newsletter : TLDR Fintech
+
+*Crypto & Blockchain (14 sources) :*
+- FR : CoinTelegraph FR, Cryptoast, Journal du Coin
+- Actualités : CoinDesk, CoinTelegraph EN, The Block, Decrypt, Blockworks, Bitcoin Magazine
+- Spécialisé DeFi/On-chain : DL News, Unchained, Rekt News, Chainalysis
+- Newsletter : TLDR Crypto
+
+*Matières Premières (13 sources) :*
+- Énergie : OilPrice, Rigzone, Natural Gas Intelligence, Reuters Commodities
+- Métaux : Kitco Gold, Kitco Metals, Mining.com, MetalMiner, S&P Global
+- Agriculture : AgWeb, World Grain
+- Transversal : Hellenic Shipping News, Trading Economics
+
+*IA, Tech & Cybersécurité (17 sources) :*
+- FR : Le Figaro Tech, 01net, Numerama, JDN
+- Tech : TechCrunch, The Verge, Ars Technica, Wired, Hacker News
+- IA spécialisé : VentureBeat AI, MIT Tech Review, IEEE Spectrum AI, MarkTechPost, The Decoder
+- Cybersécurité : Krebs on Security, BleepingComputer, The Register
+- Newsletters : TLDR Tech, TLDR AI
 
 ### Catégories d'Actualités
 

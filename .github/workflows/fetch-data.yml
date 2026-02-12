@@ -1,21 +1,21 @@
 # Inflexion — Workflow de récupération automatique des données
 # Exécuté toutes les 6h + manuellement + à chaque push sur main
 #
-# APIs :
-#   - CoinGecko (crypto) → fonctionne sans clé
-#   - Finnhub (marchés) → nécessite FINNHUB_API_KEY dans les secrets
-#   - GNews (actualités) → nécessite GNEWS_API_KEY dans les secrets
-#   - FRED (macro) → nécessite FRED_API_KEY dans les secrets
-#   - Alternative.me (Fear & Greed) → fonctionne sans clé
-#   - Alpha Vantage (forex/secteurs) → ALPHA_VANTAGE_API_KEY (optionnel)
-#   - DefiLlama (DeFi TVL/yields) → fonctionne sans clé
+# APIs (11 sources) :
+#   - CoinGecko (crypto) → sans clé
+#   - Finnhub (marchés, VIX) → FINNHUB_API_KEY
+#   - GNews (actualités) → GNEWS_API_KEY
+#   - FRED (macro US, 10 séries) → FRED_API_KEY
+#   - Alpha Vantage (forex, secteurs) → ALPHA_VANTAGE_API_KEY
+#   - Alternative.me, DefiLlama, ECB, Mempool.space, metals.dev, Etherscan → sans clé
 #
-# Flux RSS (gratuit, sans clé) :
-#   - Le Figaro (éco, international, tech, conjoncture, sociétés)
-#   - Les Echos, BFM Business, Boursorama
-#   - CoinTelegraph FR, Cryptoast
-#   - TLDR newsletters (Tech, AI, Crypto, Fintech)
-#   - CoinDesk, CoinTelegraph EN, OilPrice
+# Flux RSS (78 sources spécialisées, sans clé) :
+#   🌍 Géopolitique (20) : France 24, BBC, Al Jazeera, Brookings, CFR, CSIS, Carnegie,
+#     War on the Rocks, The Diplomat, Middle East Eye...
+#   📈 Marchés (18) : MarketWatch, Yahoo Finance, Wolf Street, Calculated Risk...
+#   ₿ Crypto (14) : Cryptoast, Journal du Coin, Blockworks, Unchained, Chainalysis...
+#   ⛏️ Commodités (12) : OilPrice, Rigzone, Natural Gas Intel, MetalMiner, Mining.com...
+#   🤖 IA & Tech (17) : TechCrunch, IEEE Spectrum, Krebs, BleepingComputer, The Register...
 #
 # Résultat : fichiers JSON dans /data/ committés et déployés automatiquement
 
@@ -56,10 +56,13 @@ jobs:
         with:
           token: ${{ secrets.PAT_TOKEN }}
 
-      - name: "🟢 Setup Node.js 20"
+      - name: "🟢 Setup Node.js 22"
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
+
+      - name: "📦 Installation des dépendances"
+        run: npm ci
 
       - name: "📊 Récupération des données"
         env:

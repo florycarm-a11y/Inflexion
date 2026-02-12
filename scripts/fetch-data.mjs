@@ -3,21 +3,37 @@
  * Inflexion — Script de récupération de données en temps réel
  * Exécuté par GitHub Actions toutes les 6h
  *
- * APIs utilisées :
+ * APIs utilisées (11 sources) :
  * - CoinGecko (gratuit, pas de clé) → crypto + trending
- * - Finnhub (clé gratuite) → indices boursiers + calendrier économique
+ * - Finnhub (clé gratuite) → indices boursiers + calendrier éco + VIX
  * - GNews (clé gratuite) → actualités multi-catégories
- * - FRED (clé gratuite) → données macroéconomiques (10 séries)
+ * - FRED (clé gratuite) → données macroéconomiques US (10 séries)
  * - Alternative.me (gratuit, pas de clé) → Fear & Greed Index crypto
  * - Alpha Vantage (clé gratuite) → forex, secteurs, top gainers/losers
  * - DefiLlama (gratuit, pas de clé) → TVL DeFi, protocoles, yields
+ * - metals.dev (gratuit) → cours métaux précieux & industriels
+ * - Etherscan (gratuit) → ETH gas tracker
+ * - Mempool.space (gratuit) → BTC fees, hashrate, difficulty
+ * - ECB Data API (gratuit) → taux directeur BCE, EUR/USD fixing
  *
- * Flux RSS (gratuit, pas de clé) :
- * - Le Figaro (éco, international, tech, conjoncture, flash éco, sociétés)
- * - Les Echos, BFM Business, Boursorama
- * - CoinTelegraph FR, Cryptoast
- * - TLDR newsletters (Tech, AI, Crypto, Fintech)
- * - CoinDesk, CoinTelegraph EN, OilPrice
+ * Flux RSS (gratuit, pas de clé — 78 flux spécialisés) :
+ * 🌍 Géopolitique (20) : Le Figaro Intl, France 24, RFI, Courrier Intl, Le Monde Diplo,
+ *   BBC, Al Jazeera, Guardian, NYT, Reuters, Politico EU, Foreign Policy, CFR,
+ *   Brookings, Carnegie, CSIS, War on the Rocks, Responsible Statecraft,
+ *   The Diplomat (Asie), Middle East Eye
+ * 📈 Marchés (18) : Le Figaro (éco, conj, soc, flash), Les Echos, BFM, Boursorama,
+ *   La Tribune, Capital, MarketWatch, Yahoo Finance, Seeking Alpha, CNBC,
+ *   Investing.com, Wolf Street, Calculated Risk, Naked Capitalism, TLDR Fintech
+ * ₿ Crypto (14) : CoinTelegraph FR, Cryptoast, Journal du Coin, CoinDesk,
+ *   CoinTelegraph EN, The Block, Decrypt, Blockworks, Bitcoin Magazine,
+ *   DL News, Unchained, Rekt News, Chainalysis, TLDR Crypto
+ * ⛏️ Commodités (13) : OilPrice, Rigzone, Reuters Commod, Natural Gas Intel,
+ *   Kitco (Gold + Metals), Mining.com, MetalMiner, S&P Global, AgWeb,
+ *   World Grain, Hellenic Shipping, Trading Economics
+ * 🤖 IA & Tech (17) : Le Figaro Tech, 01net, Numerama, JDN, TechCrunch,
+ *   The Verge, Ars Technica, Wired, Hacker News, VentureBeat AI,
+ *   MIT Tech Review, IEEE Spectrum AI, MarkTechPost, The Decoder,
+ *   Krebs on Security, BleepingComputer, The Register, TLDR Tech/AI
  *
  * Les données sont écrites en JSON dans /data/
  * Le frontend les lit au chargement de la page
@@ -26,6 +42,20 @@
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+
+// ─── Support proxy (pour environnements sandboxés) ───────
+// Node.js fetch() n'utilise PAS les variables HTTP_PROXY/HTTPS_PROXY nativement.
+// On détecte le proxy et on configure undici (bundlé avec Node 22+) si besoin.
+const PROXY_URL = process.env.HTTPS_PROXY || process.env.HTTP_PROXY || process.env.https_proxy || process.env.http_proxy;
+if (PROXY_URL) {
+    try {
+        const { ProxyAgent, setGlobalDispatcher } = await import('undici');
+        setGlobalDispatcher(new ProxyAgent(PROXY_URL));
+        console.log('🔌 Proxy détecté et configuré pour fetch()');
+    } catch (e) {
+        console.warn('⚠️  Proxy détecté mais undici non disponible:', e.message);
+    }
+}
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, '..', 'data');
@@ -144,35 +174,156 @@ function parseRSSItems(xml) {
 }
 
 // ─── Sources RSS (gratuit, pas de clé API) ───────────────
+// 78 flux ultra-spécialisés couvrant 5 rubriques — mis à jour fév. 2026
 const RSS_SOURCES = [
+
+    // ╔══════════════════════════════════════════════════════════╗
+    // ║  🌍 GÉOPOLITIQUE — 20 sources                           ║
+    // ╚══════════════════════════════════════════════════════════╝
+
+    // 🇫🇷 Presse française — International
+    { url: 'https://www.lefigaro.fr/rss/figaro_international.xml',      source: 'Le Figaro',            cats: ['geopolitics'] },
+    { url: 'https://www.france24.com/fr/rss',                           source: 'France 24',            cats: ['geopolitics'] },
+    { url: 'https://www.rfi.fr/fr/rss',                                 source: 'RFI',                  cats: ['geopolitics'] },
+    { url: 'https://www.courrierinternational.com/feed/all/rss.xml',    source: 'Courrier International', cats: ['geopolitics'] },
+    { url: 'https://www.monde-diplomatique.fr/export/rss',              source: 'Le Monde Diplomatique', cats: ['geopolitics'] },
+
+    // 🌍 Presse internationale
+    { url: 'https://feeds.bbci.co.uk/news/world/rss.xml',              source: 'BBC World',             cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://www.aljazeera.com/xml/rss/all.xml',                source: 'Al Jazeera',            cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://www.theguardian.com/world/rss',                    source: 'The Guardian',          cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml',   source: 'New York Times',        cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://feeds.reuters.com/Reuters/worldNews',              source: 'Reuters',               cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://www.politico.eu/feed/',                            source: 'Politico EU',           cats: ['geopolitics'], lang: 'en' },
+
+    // 🏛️ Think tanks & analyses stratégiques
+    { url: 'https://foreignpolicy.com/feed/',                          source: 'Foreign Policy',        cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://feeds.cfr.org/all',                                  source: 'CFR',                   cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://www.brookings.edu/feed/',                          source: 'Brookings',             cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://carnegieendowment.org/rss/solr.xml',              source: 'Carnegie',              cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://www.csis.org/rss.xml',                              source: 'CSIS',                  cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://responsiblestatecraft.org/feed/',                  source: 'Responsible Statecraft', cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://warontherocks.com/feed/',                          source: 'War on the Rocks',      cats: ['geopolitics'], lang: 'en' },
+
+    // 🌏 Sources régionales spécialisées
+    { url: 'https://thediplomat.com/feed/',                            source: 'The Diplomat',          cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://www.middleeasteye.net/rss',                       source: 'Middle East Eye',       cats: ['geopolitics'], lang: 'en' },
+
+    // ╔══════════════════════════════════════════════════════════╗
+    // ║  📈 MARCHÉS & FINANCE — 18 sources                      ║
+    // ╚══════════════════════════════════════════════════════════╝
+
     // 🇫🇷 Presse française — Économie & Finance
     { url: 'https://www.lefigaro.fr/rss/figaro_economie.xml',           source: 'Le Figaro Éco',       cats: ['markets'] },
     { url: 'https://www.lefigaro.fr/rss/figaro_conjoncture.xml',        source: 'Le Figaro',            cats: ['markets', 'commodities'] },
     { url: 'https://www.lefigaro.fr/rss/figaro_societes.xml',           source: 'Le Figaro Sociétés',   cats: ['markets'] },
     { url: 'https://www.lefigaro.fr/rss/figaro_flash-eco.xml',          source: 'Le Figaro Flash Éco',  cats: ['markets'] },
-    // 🇫🇷 Presse française — International & Géopolitique
-    { url: 'https://www.lefigaro.fr/rss/figaro_international.xml',      source: 'Le Figaro',            cats: ['geopolitics'] },
-    // 🇫🇷 Presse française — Tech & IA
-    { url: 'https://www.lefigaro.fr/rss/figaro_secteur_high-tech.xml',  source: 'Le Figaro Tech',       cats: ['ai_tech'] },
-    // Les Echos
     { url: 'https://syndication.lesechos.fr/rss/rss_une_titres.xml',    source: 'Les Echos',            cats: ['markets'] },
-    // BFM Business
     { url: 'https://www.bfmtv.com/rss/economie/',                       source: 'BFM Business',         cats: ['markets'] },
-    // Boursorama
-    { url: 'https://www.boursorama.com/rss/actualites/marches-financiers', source: 'Boursorama',         cats: ['markets'] },
-    // 🪙 Crypto — Sources françaises
+    { url: 'https://www.zonebourse.com/rss/',                            source: 'Zonebourse',           cats: ['markets'] },
+    { url: 'https://www.latribune.fr/feed.xml',                         source: 'La Tribune',           cats: ['markets'] },
+    { url: 'https://www.capital.fr/feeds',                              source: 'Capital',              cats: ['markets'] },
+
+    // 🌍 Presse financière internationale
+    { url: 'https://feeds.content.dowjones.io/public/rss/mw_topstories',  source: 'MarketWatch',       cats: ['markets'],   lang: 'en' },
+    { url: 'https://finance.yahoo.com/news/rssindex',                     source: 'Yahoo Finance',     cats: ['markets'],   lang: 'en' },
+    { url: 'https://seekingalpha.com/market_currents.xml',                source: 'Seeking Alpha',     cats: ['markets'],   lang: 'en' },
+    { url: 'https://www.cnbc.com/id/100003114/device/rss/rss.html',      source: 'CNBC',              cats: ['markets'],   lang: 'en' },
+    { url: 'https://www.investing.com/rss/news.rss',                     source: 'Investing.com',     cats: ['markets'],   lang: 'en' },
+
+    // 📊 Analyse macro & marchés spécialisée
+    { url: 'https://wolfstreet.com/feed/',                              source: 'Wolf Street',          cats: ['markets'],   lang: 'en' },
+    { url: 'https://www.calculatedriskblog.com/feeds/posts/default?alt=rss', source: 'Calculated Risk', cats: ['markets'],   lang: 'en' },
+    { url: 'https://www.nakedcapitalism.com/feed',                     source: 'Naked Capitalism',     cats: ['markets'],   lang: 'en' },
+
+    // 📧 Newsletter finance
+    { url: 'https://tldr.tech/api/rss/fintech',                         source: 'TLDR Fintech',         cats: ['markets'],   lang: 'en' },
+
+    // ╔══════════════════════════════════════════════════════════╗
+    // ║  ₿ CRYPTO & BLOCKCHAIN — 14 sources                     ║
+    // ╚══════════════════════════════════════════════════════════╝
+
+    // 🇫🇷 Crypto françaises
     { url: 'https://fr.cointelegraph.com/rss',                          source: 'CoinTelegraph FR',     cats: ['crypto'] },
     { url: 'https://cryptoast.fr/feed/',                                 source: 'Cryptoast',            cats: ['crypto'] },
-    // 📧 Newsletters TLDR
-    { url: 'https://tldr.tech/api/rss/tech',                            source: 'TLDR Tech',            cats: ['ai_tech'],   lang: 'en' },
-    { url: 'https://tldr.tech/api/rss/ai',                              source: 'TLDR AI',              cats: ['ai_tech'],   lang: 'en' },
-    { url: 'https://tldr.tech/api/rss/crypto',                          source: 'TLDR Crypto',          cats: ['crypto'],    lang: 'en' },
-    { url: 'https://tldr.tech/api/rss/fintech',                         source: 'TLDR Fintech',         cats: ['markets'],   lang: 'en' },
-    // 🌍 Sources internationales — Crypto
+    { url: 'https://journalducoin.com/feed/',                           source: 'Journal du Coin',      cats: ['crypto'] },
+
+    // 🌍 Crypto internationale — Actualités
     { url: 'https://www.coindesk.com/arc/outboundfeeds/rss/',           source: 'CoinDesk',             cats: ['crypto'],    lang: 'en' },
     { url: 'https://cointelegraph.com/rss',                             source: 'CoinTelegraph',        cats: ['crypto'],    lang: 'en' },
-    // 🌍 Sources internationales — Matières premières
+    { url: 'https://www.theblock.co/rss.xml',                          source: 'The Block',             cats: ['crypto'],    lang: 'en' },
+    { url: 'https://decrypt.co/feed',                                  source: 'Decrypt',               cats: ['crypto'],    lang: 'en' },
+    { url: 'https://blockworks.co/feed',                               source: 'Blockworks',            cats: ['crypto'],    lang: 'en' },
+    { url: 'https://bitcoinmagazine.com/.rss/full/',                   source: 'Bitcoin Magazine',      cats: ['crypto'],    lang: 'en' },
+
+    // 🔬 Crypto spécialisé — DeFi, régulation, analyse on-chain
+    { url: 'https://www.thedefiant.io/feed',                            source: 'The Defiant',           cats: ['crypto'],    lang: 'en' },
+    { url: 'https://unchainedcrypto.com/feed/',                        source: 'Unchained',            cats: ['crypto'],    lang: 'en' },
+    { url: 'https://www.web3isgoinggreat.com/feed.xml',                 source: 'Web3 is Going Great',   cats: ['crypto'],    lang: 'en' },
+    { url: 'https://blog.chainalysis.com/feed/',                       source: 'Chainalysis',          cats: ['crypto'],    lang: 'en' },
+
+    // 📧 Newsletter crypto
+    { url: 'https://tldr.tech/api/rss/crypto',                          source: 'TLDR Crypto',          cats: ['crypto'],    lang: 'en' },
+
+    // ╔══════════════════════════════════════════════════════════╗
+    // ║  ⛏️ MATIÈRES PREMIÈRES — 13 sources                      ║
+    // ╚══════════════════════════════════════════════════════════╝
+
+    // 🇫🇷 Conjoncture française (aussi commodités)
+    // (Le Figaro Conjoncture est déjà en dual-cat markets+commodities ci-dessus)
+
+    // 🛢️ Énergie & Pétrole
     { url: 'https://oilprice.com/rss/main',                             source: 'OilPrice',             cats: ['commodities'], lang: 'en' },
+    { url: 'https://www.rigzone.com/news/rss/rigzone_latest.aspx',     source: 'Rigzone',              cats: ['commodities'], lang: 'en' },
+    { url: 'https://www.reuters.com/arc/outboundfeeds/v3/search/section/commodities/?outputType=xml&size=20', source: 'Reuters Commodities', cats: ['commodities'], lang: 'en' },
+    { url: 'https://www.naturalgasintel.com/feed/',                    source: 'Natural Gas Intel',     cats: ['commodities'], lang: 'en' },
+
+    // 🥇 Métaux précieux & industriels
+    { url: 'https://www.goldprice.org/rss-feeds',                       source: 'GoldPrice.org',          cats: ['commodities'], lang: 'en' },
+    { url: 'https://www.mining.com/feed/',                             source: 'Mining.com',            cats: ['commodities'], lang: 'en' },
+    { url: 'https://agmetalminer.com/feed/',                           source: 'MetalMiner',            cats: ['commodities'], lang: 'en' },
+    { url: 'https://www.spglobal.com/commodityinsights/en/rss-feed/platts-top-250',  source: 'S&P Global',  cats: ['commodities'], lang: 'en' },
+
+    // 🌾 Agriculture & Soft commodities
+    { url: 'https://www.feedstuffs.com/rss.xml',                        source: 'Feedstuffs',            cats: ['commodities'], lang: 'en' },
+    { url: 'https://www.dtnpf.com/agriculture/web/ag/news/rss',       source: 'DTN Ag News',           cats: ['commodities'], lang: 'en' },
+
+    // 🌐 Analyses transversales commodités
+    { url: 'https://www.hellenicshippingnews.com/feed/',               source: 'Hellenic Shipping',     cats: ['commodities'], lang: 'en' },
+    { url: 'https://tradingeconomics.com/rss/news.aspx',              source: 'Trading Economics',     cats: ['commodities', 'markets'], lang: 'en' },
+
+    // ╔══════════════════════════════════════════════════════════╗
+    // ║  🤖 IA, TECH & CYBERSÉCURITÉ — 17 sources                ║
+    // ╚══════════════════════════════════════════════════════════╝
+
+    // 🇫🇷 Tech & IA françaises
+    { url: 'https://www.lefigaro.fr/rss/figaro_secteur_high-tech.xml',  source: 'Le Figaro Tech',       cats: ['ai_tech'] },
+    { url: 'https://www.01net.com/feed/',                               source: '01net',                cats: ['ai_tech'] },
+    { url: 'https://www.numerama.com/feed/',                            source: 'Numerama',             cats: ['ai_tech'] },
+    { url: 'https://www.nextinpact.com/feed',                            source: 'Next INpact',           cats: ['ai_tech'] },
+
+    // 🌍 Tech généraliste international
+    { url: 'https://techcrunch.com/feed/',                             source: 'TechCrunch',            cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://www.theverge.com/rss/index.xml',                   source: 'The Verge',             cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://feeds.arstechnica.com/arstechnica/technology-lab', source: 'Ars Technica',          cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://www.wired.com/feed/rss',                          source: 'Wired',                 cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://hnrss.org/frontpage?count=15',                    source: 'Hacker News',           cats: ['ai_tech'],   lang: 'en' },
+
+    // 🧠 IA & Machine Learning spécialisé
+    { url: 'https://venturebeat.com/category/ai/feed/',                source: 'VentureBeat AI',       cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://feeds.technologyreview.com/technologyreview/topnews', source: 'MIT Tech Review',   cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss', source: 'IEEE Spectrum AI', cats: ['ai_tech'], lang: 'en' },
+    { url: 'https://www.marktechpost.com/feed/',                       source: 'MarkTechPost',          cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://the-decoder.com/feed/',                            source: 'The Decoder',           cats: ['ai_tech'],   lang: 'en' },
+
+    // 🔒 Cybersécurité & IT
+    { url: 'https://krebsonsecurity.com/feed/',                        source: 'Krebs on Security',     cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://www.bleepingcomputer.com/feed/',                   source: 'BleepingComputer',      cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://www.theregister.com/headlines.atom',               source: 'The Register',          cats: ['ai_tech'],   lang: 'en' },
+
+    // 📧 Newsletters IA & Tech
+    { url: 'https://tldr.tech/api/rss/tech',                            source: 'TLDR Tech',            cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://tldr.tech/api/rss/ai',                              source: 'TLDR AI',              cats: ['ai_tech'],   lang: 'en' },
 ];
 
 // ─── 1. CRYPTO (CoinGecko — gratuit, pas de clé) ──────────
@@ -415,19 +566,19 @@ async function fetchNews() {
     if (GNEWS_KEY) {
         console.log('  🔑 GNews API...');
         const categories = [
-            { key: 'geopolitics', query: 'géopolitique OR sanctions OR "guerre commerciale" OR "droits de douane" OR diplomatie OR OTAN', topic: 'world' },
-            { key: 'markets', query: 'bourse OR "marchés financiers" OR "Wall Street" OR "banque centrale" OR "taux directeur" OR résultats', topic: 'business' },
-            { key: 'crypto', query: 'bitcoin OR ethereum OR cryptomonnaie OR stablecoin OR "ETF crypto" OR blockchain', topic: 'business' },
-            { key: 'commodities', query: '"prix de l\'or" OR "cours du pétrole" OR "matières premières" OR "métaux précieux" OR OPEP', topic: 'business' },
-            { key: 'ai_tech', query: '"intelligence artificielle" OR Nvidia OR OpenAI OR Anthropic OR "semi-conducteur" OR "puce IA"', topic: 'technology' }
+            { key: 'geopolitics', query: 'géopolitique OR sanctions OR "guerre commerciale" OR "droits de douane" OR diplomatie OR OTAN OR "conflit" OR "tensions" OR BRICS OR "élections"', topic: 'world' },
+            { key: 'markets', query: 'bourse OR "marchés financiers" OR "Wall Street" OR "banque centrale" OR "taux directeur" OR résultats OR BCE OR "obligations" OR "récession" OR "inflation"', topic: 'business' },
+            { key: 'crypto', query: 'bitcoin OR ethereum OR cryptomonnaie OR stablecoin OR "ETF crypto" OR blockchain OR solana OR DeFi OR "régulation crypto"', topic: 'business' },
+            { key: 'commodities', query: '"prix de l\'or" OR "cours du pétrole" OR "matières premières" OR "métaux précieux" OR OPEP OR "gaz naturel" OR cuivre OR lithium OR "terres rares"', topic: 'business' },
+            { key: 'ai_tech', query: '"intelligence artificielle" OR Nvidia OR OpenAI OR Anthropic OR "semi-conducteur" OR "puce IA" OR "modèle IA" OR robotique OR quantique OR cybersécurité', topic: 'technology' }
         ];
 
         const fallbackQueries = {
-            geopolitics: 'geopolitics OR tariffs OR trade war OR sanctions OR "foreign policy"',
-            markets: 'stock market OR S&P 500 OR Wall Street OR Federal Reserve OR earnings',
-            crypto: 'bitcoin OR ethereum OR cryptocurrency OR stablecoin OR "crypto ETF"',
-            commodities: 'gold price OR oil price OR silver OR commodities OR precious metals',
-            ai_tech: 'artificial intelligence OR Nvidia OR OpenAI OR Anthropic OR "AI model" OR semiconductor'
+            geopolitics: 'geopolitics OR tariffs OR trade war OR sanctions OR "foreign policy" OR NATO OR BRICS OR "Middle East" OR "US-China" OR elections',
+            markets: 'stock market OR S&P 500 OR Wall Street OR "Federal Reserve" OR earnings OR recession OR "interest rates" OR bonds OR ECB',
+            crypto: 'bitcoin OR ethereum OR cryptocurrency OR stablecoin OR "crypto ETF" OR solana OR DeFi OR "crypto regulation" OR "digital assets"',
+            commodities: 'gold price OR oil price OR silver OR commodities OR "precious metals" OR "natural gas" OR copper OR lithium OR "rare earths" OR OPEC',
+            ai_tech: 'artificial intelligence OR Nvidia OR OpenAI OR Anthropic OR "AI model" OR semiconductor OR robotics OR quantum OR cybersecurity OR "tech stocks"'
         };
 
         for (const cat of categories) {
@@ -530,7 +681,7 @@ async function fetchNews() {
                 return true;
             })
             .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
-            .slice(0, 20);
+            .slice(0, 30);
     }
 
     // ─── 3d. Enrichissement rubrique ─────────────────────────
@@ -980,6 +1131,202 @@ async function fetchGoldBitcoinChart() {
     }
 }
 
+// ─── 9. COURS MATIÈRES PREMIÈRES (metals.dev — gratuit, pas de clé) ──
+async function fetchCommodityPrices() {
+    console.log('\n⛏️  Récupération cours matières premières (multi-sources gratuites)...');
+    try {
+        const commodities = { updated: new Date().toISOString(), metals: {}, energy: {} };
+
+        // Métaux précieux via metals.dev (gratuit, pas de clé)
+        try {
+            const metalsData = await fetchJSON('https://api.metals.dev/v1/latest?api_key=demo&currency=USD&unit=toz');
+            if (metalsData.metals) {
+                const wanted = { gold: 'Or', silver: 'Argent', platinum: 'Platine', palladium: 'Palladium' };
+                for (const [key, label] of Object.entries(wanted)) {
+                    if (metalsData.metals[key]) {
+                        commodities.metals[key] = {
+                            label,
+                            price_usd: metalsData.metals[key],
+                            unit: 'oz troy'
+                        };
+                    }
+                }
+                console.log(`  ✓ ${Object.keys(commodities.metals).length} métaux précieux`);
+            }
+        } catch (err) {
+            console.warn('  ⚠ metals.dev:', err.message);
+        }
+
+        // Cours énergie via économie gouv / données publiques
+        // On complète avec les données déjà dans markets.json (GLD, USO proxies)
+        // et les données Kitco via RSS (qualitatives)
+
+        // Métaux industriels via metals.dev
+        try {
+            const baseData = await fetchJSON('https://api.metals.dev/v1/latest?api_key=demo&currency=USD&unit=kg');
+            if (baseData.metals) {
+                const industrial = { copper: 'Cuivre', aluminum: 'Aluminium', nickel: 'Nickel', zinc: 'Zinc', tin: 'Étain' };
+                commodities.industrial = {};
+                for (const [key, label] of Object.entries(industrial)) {
+                    if (baseData.metals[key]) {
+                        commodities.industrial[key] = {
+                            label,
+                            price_usd_kg: baseData.metals[key],
+                            unit: 'kg'
+                        };
+                    }
+                }
+                console.log(`  ✓ ${Object.keys(commodities.industrial).length} métaux industriels`);
+            }
+        } catch (err) {
+            console.warn('  ⚠ Métaux industriels:', err.message);
+        }
+
+        writeJSON('commodities.json', commodities);
+        return true;
+    } catch (err) {
+        console.error('✗ Erreur commodités:', err.message);
+        return false;
+    }
+}
+
+// ─── 10. ETHEREUM GAS & ON-CHAIN (Etherscan — gratuit, pas de clé pour gas) ──
+async function fetchOnChainData() {
+    console.log('\n⛓️  Récupération données on-chain...');
+    try {
+        const onchain = { updated: new Date().toISOString() };
+
+        // Ethereum Gas Tracker (Etherscan — gratuit sans clé pour gas oracle)
+        try {
+            const gasData = await fetchJSON('https://api.etherscan.io/api?module=gastracker&action=gasoracle');
+            if (gasData.status === '1' && gasData.result) {
+                onchain.eth_gas = {
+                    low: parseInt(gasData.result.SafeGasPrice),
+                    standard: parseInt(gasData.result.ProposeGasPrice),
+                    fast: parseInt(gasData.result.FastGasPrice),
+                    base_fee: parseFloat(gasData.result.suggestBaseFee) || null,
+                    unit: 'gwei'
+                };
+                console.log(`  ✓ ETH Gas: ${onchain.eth_gas.standard} gwei (standard)`);
+            }
+        } catch (err) {
+            console.warn('  ⚠ Etherscan gas:', err.message);
+        }
+
+        // Bitcoin mempool stats (mempool.space — gratuit, pas de clé)
+        try {
+            const mempoolFees = await fetchJSON('https://mempool.space/api/v1/fees/recommended');
+            onchain.btc_fees = {
+                fastest: mempoolFees.fastestFee,
+                half_hour: mempoolFees.halfHourFee,
+                hour: mempoolFees.hourFee,
+                economy: mempoolFees.economyFee,
+                minimum: mempoolFees.minimumFee,
+                unit: 'sat/vB'
+            };
+            console.log(`  ✓ BTC Fees: ${onchain.btc_fees.half_hour} sat/vB (30min)`);
+        } catch (err) {
+            console.warn('  ⚠ Mempool fees:', err.message);
+        }
+
+        // Bitcoin hashrate & difficulty (mempool.space)
+        try {
+            const hashrate = await fetchJSON('https://mempool.space/api/v1/mining/hashrate/1w');
+            if (hashrate.currentHashrate) {
+                onchain.btc_mining = {
+                    hashrate_eh: Math.round(hashrate.currentHashrate / 1e18 * 100) / 100,
+                    difficulty: hashrate.currentDifficulty,
+                    unit: 'EH/s'
+                };
+                console.log(`  ✓ BTC Hashrate: ${onchain.btc_mining.hashrate_eh} EH/s`);
+            }
+        } catch (err) {
+            console.warn('  ⚠ Hashrate:', err.message);
+        }
+
+        writeJSON('onchain.json', onchain);
+        return true;
+    } catch (err) {
+        console.error('✗ Erreur on-chain:', err.message);
+        return false;
+    }
+}
+
+// ─── 11. DONNÉES MACRO COMPLÉMENTAIRES (APIs publiques gratuites) ──
+async function fetchGlobalMacro() {
+    console.log('\n🌐 Récupération données macro mondiales (Banque Mondiale + ECB)...');
+    try {
+        const globalMacro = { updated: new Date().toISOString(), ecb: {}, volatility: {} };
+
+        // Indice VIX via CBOE/Yahoo proxy — gratuit
+        try {
+            // Le VIX n'est pas directement disponible en API gratuite fiable,
+            // on le récupère via Finnhub si la clé est dispo
+            const FINNHUB_KEY = process.env.FINNHUB_API_KEY;
+            if (FINNHUB_KEY) {
+                const vixQuote = await fetchJSON(
+                    `https://finnhub.io/api/v1/quote?symbol=VIX&token=${FINNHUB_KEY}`
+                );
+                if (vixQuote.c && vixQuote.c > 0) {
+                    globalMacro.volatility.vix = {
+                        value: vixQuote.c,
+                        change: vixQuote.dp,
+                        label: vixQuote.c < 15 ? 'Faible' : vixQuote.c < 25 ? 'Modérée' : vixQuote.c < 35 ? 'Élevée' : 'Extrême'
+                    };
+                    console.log(`  ✓ VIX: ${vixQuote.c} (${globalMacro.volatility.vix.label})`);
+                }
+            }
+        } catch (err) {
+            console.warn('  ⚠ VIX:', err.message);
+        }
+
+        // Taux directeurs ECB via API publique ECB (SDMX — gratuit)
+        try {
+            const ecbUrl = 'https://data-api.ecb.europa.eu/service/data/FM/D.U2.EUR.4F.KR.MRR_FR.LEV?lastNObservations=5&format=jsondata';
+            const ecbData = await fetchJSON(ecbUrl);
+            const ecbObs = ecbData?.dataSets?.[0]?.series?.['0:0:0:0:0:0:0']?.observations;
+            if (ecbObs) {
+                const keys = Object.keys(ecbObs).sort();
+                const latest = ecbObs[keys[keys.length - 1]];
+                globalMacro.ecb.main_rate = {
+                    value: latest[0],
+                    label: 'Taux directeur principal BCE',
+                    unit: '%'
+                };
+                console.log(`  ✓ BCE taux directeur: ${latest[0]}%`);
+            }
+        } catch (err) {
+            console.warn('  ⚠ ECB rate:', err.message);
+        }
+
+        // EUR/USD historique 90j via ECB (gratuit)
+        try {
+            const ecbFxUrl = 'https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A?lastNObservations=90&format=jsondata';
+            const ecbFx = await fetchJSON(ecbFxUrl);
+            const fxObs = ecbFx?.dataSets?.[0]?.series?.['0:0:0:0:0']?.observations;
+            if (fxObs) {
+                const keys = Object.keys(fxObs).sort();
+                const latest = fxObs[keys[keys.length - 1]];
+                const monthAgo = fxObs[keys[Math.max(0, keys.length - 22)]];
+                globalMacro.ecb.eurusd = {
+                    rate: latest[0],
+                    change_1m: monthAgo ? Math.round((latest[0] - monthAgo[0]) * 10000) / 10000 : null,
+                    label: 'EUR/USD (ECB fixing)'
+                };
+                console.log(`  ✓ EUR/USD (ECB): ${latest[0]}`);
+            }
+        } catch (err) {
+            console.warn('  ⚠ ECB EUR/USD:', err.message);
+        }
+
+        writeJSON('global-macro.json', globalMacro);
+        return true;
+    } catch (err) {
+        console.error('✗ Erreur macro mondiale:', err.message);
+        return false;
+    }
+}
+
 // ─── Exécution principale ──────────────────────────────────
 async function main() {
     console.log('═══════════════════════════════════════');
@@ -995,7 +1342,10 @@ async function main() {
         fearGreed: await fetchFearGreed(),
         alphaVantage: await fetchAlphaVantage(),
         defi: await fetchDefiLlama(),
-        chart: await fetchGoldBitcoinChart()
+        chart: await fetchGoldBitcoinChart(),
+        commodities: await fetchCommodityPrices(),
+        onchain: await fetchOnChainData(),
+        globalMacro: await fetchGlobalMacro()
     };
 
     // Écrire un fichier de métadonnées

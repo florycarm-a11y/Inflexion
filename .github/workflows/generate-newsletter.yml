@@ -1,0 +1,75 @@
+# Inflexion — Newsletter hebdomadaire
+# Exécuté chaque dimanche à 10h UTC
+#
+# Prérequis :
+#   - ANTHROPIC_API_KEY dans GitHub Secrets
+#   - PAT_TOKEN dans GitHub Secrets
+#   - data/articles/ doit contenir les articles quotidiens de la semaine
+
+name: "📰 Generate Weekly Newsletter"
+
+on:
+  schedule:
+    # Chaque dimanche à 10h UTC
+    - cron: '0 10 * * 0'
+
+  # Exécution manuelle depuis l'onglet Actions
+  workflow_dispatch:
+
+  # Exécuter aussi au push sur main (pour les tests)
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/generate-newsletter.mjs'
+      - 'scripts/lib/claude-api.mjs'
+      - 'scripts/lib/prompts.mjs'
+      - '.github/workflows/generate-newsletter.yml'
+
+# Permissions nécessaires pour committer les fichiers
+permissions:
+  contents: write
+
+# Une seule exécution à la fois
+concurrency:
+  group: "generate-newsletter"
+  cancel-in-progress: true
+
+jobs:
+  newsletter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: "📥 Checkout du repo"
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: "🟢 Setup Node.js 22"
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: "📰 Génération newsletter hebdomadaire"
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-newsletter.mjs
+
+      - name: "📝 Commit et push"
+        run: |
+          git config user.name "Inflexion Bot"
+          git config user.email "bot@inflexionhub.com"
+
+          [ -f data/newsletter.json ] && git add data/newsletter.json || true
+
+          if git diff --staged --quiet; then
+            echo "Aucun changement"
+            exit 0
+          fi
+
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+          git commit -m "📰 Newsletter hebdomadaire — ${TIMESTAMP}
+
+          Synthèse automatique de la semaine via Claude."
+
+          git push

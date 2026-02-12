@@ -1,1 +1,11 @@
 Inflexion/
+
+# Secrets — JAMAIS commités
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Dependencies
+node_modules/
