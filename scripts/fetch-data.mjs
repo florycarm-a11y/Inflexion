@@ -16,18 +16,24 @@
  * - Mempool.space (gratuit) → BTC fees, hashrate, difficulty
  * - ECB Data API (gratuit) → taux directeur BCE, EUR/USD fixing
  *
- * Flux RSS (gratuit, pas de clé — 49 flux) :
- * 🇫🇷 France : Le Figaro (éco, intl, tech, conjoncture, flash, sociétés), Les Echos,
- *   BFM Business, Boursorama, La Tribune, Capital, France 24, RFI,
- *   Courrier International, 01net, Numerama, JDN, CoinTelegraph FR,
- *   Cryptoast, Journal du Coin
- * 📧 Newsletters : TLDR (Tech, AI, Crypto, Fintech)
- * 🌍 Géopolitique : BBC World, Al Jazeera, The Guardian, NYT World, Reuters,
- *   Politico EU, Foreign Policy, CFR
- * 📈 Marchés : MarketWatch, Yahoo Finance, Seeking Alpha, CNBC, Investing.com
- * 🪙 Crypto : CoinDesk, CoinTelegraph EN, The Block, Decrypt, Blockworks, Bitcoin Magazine
- * ⛏️ Commodités : OilPrice, Kitco (Gold + Metals), Mining.com, S&P Global, Reuters Commodities
- * 🤖 Tech : TechCrunch, The Verge, Ars Technica, VentureBeat, Wired, MIT Tech Review, Hacker News
+ * Flux RSS (gratuit, pas de clé — 78 flux spécialisés) :
+ * 🌍 Géopolitique (20) : Le Figaro Intl, France 24, RFI, Courrier Intl, Le Monde Diplo,
+ *   BBC, Al Jazeera, Guardian, NYT, Reuters, Politico EU, Foreign Policy, CFR,
+ *   Brookings, Carnegie, CSIS, War on the Rocks, Responsible Statecraft,
+ *   The Diplomat (Asie), Middle East Eye
+ * 📈 Marchés (18) : Le Figaro (éco, conj, soc, flash), Les Echos, BFM, Boursorama,
+ *   La Tribune, Capital, MarketWatch, Yahoo Finance, Seeking Alpha, CNBC,
+ *   Investing.com, Wolf Street, Calculated Risk, Naked Capitalism, TLDR Fintech
+ * ₿ Crypto (14) : CoinTelegraph FR, Cryptoast, Journal du Coin, CoinDesk,
+ *   CoinTelegraph EN, The Block, Decrypt, Blockworks, Bitcoin Magazine,
+ *   DL News, Unchained, Rekt News, Chainalysis, TLDR Crypto
+ * ⛏️ Commodités (13) : OilPrice, Rigzone, Reuters Commod, Natural Gas Intel,
+ *   Kitco (Gold + Metals), Mining.com, MetalMiner, S&P Global, AgWeb,
+ *   World Grain, Hellenic Shipping, Trading Economics
+ * 🤖 IA & Tech (17) : Le Figaro Tech, 01net, Numerama, JDN, TechCrunch,
+ *   The Verge, Ars Technica, Wired, Hacker News, VentureBeat AI,
+ *   MIT Tech Review, IEEE Spectrum AI, MarkTechPost, The Decoder,
+ *   Krebs on Security, BleepingComputer, The Register, TLDR Tech/AI
  *
  * Les données sont écrites en JSON dans /data/
  * Le frontend les lit au chargement de la page
@@ -154,12 +160,46 @@ function parseRSSItems(xml) {
 }
 
 // ─── Sources RSS (gratuit, pas de clé API) ───────────────
-// 49 flux couvrant 5 rubriques — mis à jour fév. 2026
+// 78 flux ultra-spécialisés couvrant 5 rubriques — mis à jour fév. 2026
 const RSS_SOURCES = [
 
-    // ══════════════════════════════════════════════════════════
-    // 🇫🇷 PRESSE FRANÇAISE — Économie & Finance
-    // ══════════════════════════════════════════════════════════
+    // ╔══════════════════════════════════════════════════════════╗
+    // ║  🌍 GÉOPOLITIQUE — 20 sources                           ║
+    // ╚══════════════════════════════════════════════════════════╝
+
+    // 🇫🇷 Presse française — International
+    { url: 'https://www.lefigaro.fr/rss/figaro_international.xml',      source: 'Le Figaro',            cats: ['geopolitics'] },
+    { url: 'https://www.france24.com/fr/rss',                           source: 'France 24',            cats: ['geopolitics'] },
+    { url: 'https://www.rfi.fr/fr/rss',                                 source: 'RFI',                  cats: ['geopolitics'] },
+    { url: 'https://www.courrierinternational.com/feed/all/rss.xml',    source: 'Courrier International', cats: ['geopolitics'] },
+    { url: 'https://www.monde-diplomatique.fr/export/rss',              source: 'Le Monde Diplomatique', cats: ['geopolitics'] },
+
+    // 🌍 Presse internationale
+    { url: 'https://feeds.bbci.co.uk/news/world/rss.xml',              source: 'BBC World',             cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://www.aljazeera.com/xml/rss/all.xml',                source: 'Al Jazeera',            cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://www.theguardian.com/world/rss',                    source: 'The Guardian',          cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml',   source: 'New York Times',        cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://feeds.reuters.com/Reuters/worldNews',              source: 'Reuters',               cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://www.politico.eu/feed/',                            source: 'Politico EU',           cats: ['geopolitics'], lang: 'en' },
+
+    // 🏛️ Think tanks & analyses stratégiques
+    { url: 'https://foreignpolicy.com/feed/',                          source: 'Foreign Policy',        cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://www.cfr.org/rss.xml',                              source: 'CFR',                   cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://www.brookings.edu/feed/',                          source: 'Brookings',             cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://carnegieendowment.org/rss/solr.xml',              source: 'Carnegie',              cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://www.csis.org/analysis/feed',                       source: 'CSIS',                  cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://responsiblestatecraft.org/feed/',                  source: 'Responsible Statecraft', cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://warontherocks.com/feed/',                          source: 'War on the Rocks',      cats: ['geopolitics'], lang: 'en' },
+
+    // 🌏 Sources régionales spécialisées
+    { url: 'https://thediplomat.com/feed/',                            source: 'The Diplomat',          cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://www.middleeasteye.net/rss',                       source: 'Middle East Eye',       cats: ['geopolitics'], lang: 'en' },
+
+    // ╔══════════════════════════════════════════════════════════╗
+    // ║  📈 MARCHÉS & FINANCE — 18 sources                      ║
+    // ╚══════════════════════════════════════════════════════════╝
+
+    // 🇫🇷 Presse française — Économie & Finance
     { url: 'https://www.lefigaro.fr/rss/figaro_economie.xml',           source: 'Le Figaro Éco',       cats: ['markets'] },
     { url: 'https://www.lefigaro.fr/rss/figaro_conjoncture.xml',        source: 'Le Figaro',            cats: ['markets', 'commodities'] },
     { url: 'https://www.lefigaro.fr/rss/figaro_societes.xml',           source: 'Le Figaro Sociétés',   cats: ['markets'] },
@@ -170,61 +210,31 @@ const RSS_SOURCES = [
     { url: 'https://www.latribune.fr/feed.xml',                         source: 'La Tribune',           cats: ['markets'] },
     { url: 'https://www.capital.fr/feeds',                              source: 'Capital',              cats: ['markets'] },
 
-    // ══════════════════════════════════════════════════════════
-    // 🇫🇷 PRESSE FRANÇAISE — International & Géopolitique
-    // ══════════════════════════════════════════════════════════
-    { url: 'https://www.lefigaro.fr/rss/figaro_international.xml',      source: 'Le Figaro',            cats: ['geopolitics'] },
-    { url: 'https://www.france24.com/fr/rss',                           source: 'France 24',            cats: ['geopolitics'] },
-    { url: 'https://www.rfi.fr/fr/rss',                                 source: 'RFI',                  cats: ['geopolitics'] },
-    { url: 'https://www.courrierinternational.com/feed/all/rss.xml',    source: 'Courrier International', cats: ['geopolitics'] },
-
-    // ══════════════════════════════════════════════════════════
-    // 🇫🇷 PRESSE FRANÇAISE — Tech & IA
-    // ══════════════════════════════════════════════════════════
-    { url: 'https://www.lefigaro.fr/rss/figaro_secteur_high-tech.xml',  source: 'Le Figaro Tech',       cats: ['ai_tech'] },
-    { url: 'https://www.01net.com/feed/',                               source: '01net',                cats: ['ai_tech'] },
-    { url: 'https://www.numerama.com/feed/',                            source: 'Numerama',             cats: ['ai_tech'] },
-    { url: 'https://www.journaldunet.com/feed/',                        source: 'JDN',                  cats: ['ai_tech'] },
-
-    // ══════════════════════════════════════════════════════════
-    // 🪙 CRYPTO — Sources françaises
-    // ══════════════════════════════════════════════════════════
-    { url: 'https://fr.cointelegraph.com/rss',                          source: 'CoinTelegraph FR',     cats: ['crypto'] },
-    { url: 'https://cryptoast.fr/feed/',                                 source: 'Cryptoast',            cats: ['crypto'] },
-    { url: 'https://journalducoin.com/feed/',                           source: 'Journal du Coin',      cats: ['crypto'] },
-
-    // ══════════════════════════════════════════════════════════
-    // 📧 NEWSLETTERS TLDR
-    // ══════════════════════════════════════════════════════════
-    { url: 'https://tldr.tech/api/rss/tech',                            source: 'TLDR Tech',            cats: ['ai_tech'],   lang: 'en' },
-    { url: 'https://tldr.tech/api/rss/ai',                              source: 'TLDR AI',              cats: ['ai_tech'],   lang: 'en' },
-    { url: 'https://tldr.tech/api/rss/crypto',                          source: 'TLDR Crypto',          cats: ['crypto'],    lang: 'en' },
-    { url: 'https://tldr.tech/api/rss/fintech',                         source: 'TLDR Fintech',         cats: ['markets'],   lang: 'en' },
-
-    // ══════════════════════════════════════════════════════════
-    // 🌍 INTERNATIONAL — Géopolitique & Monde
-    // ══════════════════════════════════════════════════════════
-    { url: 'https://feeds.bbci.co.uk/news/world/rss.xml',              source: 'BBC World',             cats: ['geopolitics'], lang: 'en' },
-    { url: 'https://www.aljazeera.com/xml/rss/all.xml',                source: 'Al Jazeera',            cats: ['geopolitics'], lang: 'en' },
-    { url: 'https://www.theguardian.com/world/rss',                    source: 'The Guardian',          cats: ['geopolitics'], lang: 'en' },
-    { url: 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml',   source: 'New York Times',        cats: ['geopolitics'], lang: 'en' },
-    { url: 'https://feeds.reuters.com/Reuters/worldNews',              source: 'Reuters',               cats: ['geopolitics'], lang: 'en' },
-    { url: 'https://www.politico.eu/feed/',                            source: 'Politico EU',           cats: ['geopolitics'], lang: 'en' },
-    { url: 'https://foreignpolicy.com/feed/',                          source: 'Foreign Policy',        cats: ['geopolitics'], lang: 'en' },
-    { url: 'https://www.cfr.org/rss.xml',                              source: 'CFR',                   cats: ['geopolitics'], lang: 'en' },
-
-    // ══════════════════════════════════════════════════════════
-    // 📈 INTERNATIONAL — Marchés & Finance
-    // ══════════════════════════════════════════════════════════
+    // 🌍 Presse financière internationale
     { url: 'https://feeds.content.dowjones.io/public/rss/mw_topstories',  source: 'MarketWatch',       cats: ['markets'],   lang: 'en' },
     { url: 'https://finance.yahoo.com/news/rssindex',                     source: 'Yahoo Finance',     cats: ['markets'],   lang: 'en' },
     { url: 'https://seekingalpha.com/market_currents.xml',                source: 'Seeking Alpha',     cats: ['markets'],   lang: 'en' },
     { url: 'https://www.cnbc.com/id/100003114/device/rss/rss.html',      source: 'CNBC',              cats: ['markets'],   lang: 'en' },
     { url: 'https://www.investing.com/rss/news.rss',                     source: 'Investing.com',     cats: ['markets'],   lang: 'en' },
 
-    // ══════════════════════════════════════════════════════════
-    // 🪙 INTERNATIONAL — Crypto & Blockchain
-    // ══════════════════════════════════════════════════════════
+    // 📊 Analyse macro & marchés spécialisée
+    { url: 'https://wolfstreet.com/feed/',                              source: 'Wolf Street',          cats: ['markets'],   lang: 'en' },
+    { url: 'https://www.calculatedriskblog.com/feeds/posts/default?alt=rss', source: 'Calculated Risk', cats: ['markets'],   lang: 'en' },
+    { url: 'https://www.nakedcapitalism.com/feed',                     source: 'Naked Capitalism',     cats: ['markets'],   lang: 'en' },
+
+    // 📧 Newsletter finance
+    { url: 'https://tldr.tech/api/rss/fintech',                         source: 'TLDR Fintech',         cats: ['markets'],   lang: 'en' },
+
+    // ╔══════════════════════════════════════════════════════════╗
+    // ║  ₿ CRYPTO & BLOCKCHAIN — 14 sources                     ║
+    // ╚══════════════════════════════════════════════════════════╝
+
+    // 🇫🇷 Crypto françaises
+    { url: 'https://fr.cointelegraph.com/rss',                          source: 'CoinTelegraph FR',     cats: ['crypto'] },
+    { url: 'https://cryptoast.fr/feed/',                                 source: 'Cryptoast',            cats: ['crypto'] },
+    { url: 'https://journalducoin.com/feed/',                           source: 'Journal du Coin',      cats: ['crypto'] },
+
+    // 🌍 Crypto internationale — Actualités
     { url: 'https://www.coindesk.com/arc/outboundfeeds/rss/',           source: 'CoinDesk',             cats: ['crypto'],    lang: 'en' },
     { url: 'https://cointelegraph.com/rss',                             source: 'CoinTelegraph',        cats: ['crypto'],    lang: 'en' },
     { url: 'https://www.theblock.co/rss.xml',                          source: 'The Block',             cats: ['crypto'],    lang: 'en' },
@@ -232,26 +242,75 @@ const RSS_SOURCES = [
     { url: 'https://blockworks.co/feed',                               source: 'Blockworks',            cats: ['crypto'],    lang: 'en' },
     { url: 'https://bitcoinmagazine.com/.rss/full/',                   source: 'Bitcoin Magazine',      cats: ['crypto'],    lang: 'en' },
 
-    // ══════════════════════════════════════════════════════════
-    // ⛏️ INTERNATIONAL — Matières premières & Énergie
-    // ══════════════════════════════════════════════════════════
+    // 🔬 Crypto spécialisé — DeFi, régulation, analyse on-chain
+    { url: 'https://www.dlnews.com/feed/',                             source: 'DL News',              cats: ['crypto'],    lang: 'en' },
+    { url: 'https://unchainedcrypto.com/feed/',                        source: 'Unchained',            cats: ['crypto'],    lang: 'en' },
+    { url: 'https://rekt.news/feed/',                                  source: 'Rekt News',            cats: ['crypto'],    lang: 'en' },
+    { url: 'https://blog.chainalysis.com/feed/',                       source: 'Chainalysis',          cats: ['crypto'],    lang: 'en' },
+
+    // 📧 Newsletter crypto
+    { url: 'https://tldr.tech/api/rss/crypto',                          source: 'TLDR Crypto',          cats: ['crypto'],    lang: 'en' },
+
+    // ╔══════════════════════════════════════════════════════════╗
+    // ║  ⛏️ MATIÈRES PREMIÈRES — 13 sources                      ║
+    // ╚══════════════════════════════════════════════════════════╝
+
+    // 🇫🇷 Conjoncture française (aussi commodités)
+    // (Le Figaro Conjoncture est déjà en dual-cat markets+commodities ci-dessus)
+
+    // 🛢️ Énergie & Pétrole
     { url: 'https://oilprice.com/rss/main',                             source: 'OilPrice',             cats: ['commodities'], lang: 'en' },
+    { url: 'https://www.rigzone.com/news/rss/rigzone_latest.aspx',     source: 'Rigzone',              cats: ['commodities'], lang: 'en' },
+    { url: 'https://www.reuters.com/arc/outboundfeeds/v3/search/section/commodities/?outputType=xml&size=20', source: 'Reuters Commodities', cats: ['commodities'], lang: 'en' },
+    { url: 'https://www.naturalgasintel.com/feed/',                    source: 'Natural Gas Intel',     cats: ['commodities'], lang: 'en' },
+
+    // 🥇 Métaux précieux & industriels
     { url: 'https://www.kitco.com/rss/gold.xml',                       source: 'Kitco Gold',            cats: ['commodities'], lang: 'en' },
     { url: 'https://www.kitco.com/rss/all-metals.xml',                 source: 'Kitco Metals',          cats: ['commodities'], lang: 'en' },
     { url: 'https://www.mining.com/feed/',                             source: 'Mining.com',            cats: ['commodities'], lang: 'en' },
+    { url: 'https://agmetalminer.com/feed/',                           source: 'MetalMiner',            cats: ['commodities'], lang: 'en' },
     { url: 'https://www.spglobal.com/commodityinsights/en/rss-feed/platts-top-250',  source: 'S&P Global',  cats: ['commodities'], lang: 'en' },
-    { url: 'https://www.reuters.com/arc/outboundfeeds/v3/search/section/commodities/?outputType=xml&size=20', source: 'Reuters Commodities', cats: ['commodities'], lang: 'en' },
 
-    // ══════════════════════════════════════════════════════════
-    // 🤖 INTERNATIONAL — IA, Tech & Innovation
-    // ══════════════════════════════════════════════════════════
+    // 🌾 Agriculture & Soft commodities
+    { url: 'https://www.agweb.com/rss/news',                          source: 'AgWeb',                 cats: ['commodities'], lang: 'en' },
+    { url: 'https://www.world-grain.com/ext/rss',                     source: 'World Grain',           cats: ['commodities'], lang: 'en' },
+
+    // 🌐 Analyses transversales commodités
+    { url: 'https://www.hellenicshippingnews.com/feed/',               source: 'Hellenic Shipping',     cats: ['commodities'], lang: 'en' },
+    { url: 'https://tradingeconomics.com/rss/news.aspx',              source: 'Trading Economics',     cats: ['commodities', 'markets'], lang: 'en' },
+
+    // ╔══════════════════════════════════════════════════════════╗
+    // ║  🤖 IA, TECH & CYBERSÉCURITÉ — 17 sources                ║
+    // ╚══════════════════════════════════════════════════════════╝
+
+    // 🇫🇷 Tech & IA françaises
+    { url: 'https://www.lefigaro.fr/rss/figaro_secteur_high-tech.xml',  source: 'Le Figaro Tech',       cats: ['ai_tech'] },
+    { url: 'https://www.01net.com/feed/',                               source: '01net',                cats: ['ai_tech'] },
+    { url: 'https://www.numerama.com/feed/',                            source: 'Numerama',             cats: ['ai_tech'] },
+    { url: 'https://www.journaldunet.com/feed/',                        source: 'JDN',                  cats: ['ai_tech'] },
+
+    // 🌍 Tech généraliste international
     { url: 'https://techcrunch.com/feed/',                             source: 'TechCrunch',            cats: ['ai_tech'],   lang: 'en' },
     { url: 'https://www.theverge.com/rss/index.xml',                   source: 'The Verge',             cats: ['ai_tech'],   lang: 'en' },
     { url: 'https://feeds.arstechnica.com/arstechnica/technology-lab', source: 'Ars Technica',          cats: ['ai_tech'],   lang: 'en' },
-    { url: 'https://venturebeat.com/feed/',                            source: 'VentureBeat',           cats: ['ai_tech'],   lang: 'en' },
     { url: 'https://www.wired.com/feed/rss',                          source: 'Wired',                 cats: ['ai_tech'],   lang: 'en' },
-    { url: 'https://feeds.technologyreview.com/technologyreview/topnews', source: 'MIT Tech Review',   cats: ['ai_tech'],   lang: 'en' },
     { url: 'https://hnrss.org/frontpage?count=15',                    source: 'Hacker News',           cats: ['ai_tech'],   lang: 'en' },
+
+    // 🧠 IA & Machine Learning spécialisé
+    { url: 'https://venturebeat.com/category/ai/feed/',                source: 'VentureBeat AI',       cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://feeds.technologyreview.com/technologyreview/topnews', source: 'MIT Tech Review',   cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss', source: 'IEEE Spectrum AI', cats: ['ai_tech'], lang: 'en' },
+    { url: 'https://www.marktechpost.com/feed/',                       source: 'MarkTechPost',          cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://the-decoder.com/feed/',                            source: 'The Decoder',           cats: ['ai_tech'],   lang: 'en' },
+
+    // 🔒 Cybersécurité & IT
+    { url: 'https://krebsonsecurity.com/feed/',                        source: 'Krebs on Security',     cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://www.bleepingcomputer.com/feed/',                   source: 'BleepingComputer',      cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://www.theregister.com/headlines.atom',               source: 'The Register',          cats: ['ai_tech'],   lang: 'en' },
+
+    // 📧 Newsletters IA & Tech
+    { url: 'https://tldr.tech/api/rss/tech',                            source: 'TLDR Tech',            cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://tldr.tech/api/rss/ai',                              source: 'TLDR AI',              cats: ['ai_tech'],   lang: 'en' },
 ];
 
 // ─── 1. CRYPTO (CoinGecko — gratuit, pas de clé) ──────────
