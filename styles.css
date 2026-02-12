@@ -71,11 +71,11 @@ button:focus-visible,
     --pink-light: #8CBF9E;
     --pink-soft: #EDF5F0;
     --coral: #105E2D;
-    --orange: #B85C38;
+    --orange: #059669;
     --sky-deep: #3B6B8A;
     --teal: #2C5F5A;
     --teal-light: #EDF3F2;
-    --yellow-soft: #FFF8E7;
+    --yellow-soft: #ECFDF5;
     --magenta: #0A4420;
     --lavender: #6B7394;
     --red: #C41E3A;
@@ -2556,19 +2556,19 @@ a {
 }
 
 .legend-gold .legend-color {
-    background: #f59e0b;
+    background: #047857;
 }
 
 .legend-btc .legend-color {
-    background: #f7931a;
+    background: #34D399;
     background: repeating-linear-gradient(
         90deg,
-        #f7931a,
-        #f7931a 4px,
+        #34D399,
+        #34D399 4px,
         transparent 4px,
         transparent 8px
     );
-    border: 2px solid #f7931a;
+    border: 2px solid #34D399;
 }
 
 .legend-label {
@@ -2899,7 +2899,7 @@ a {
 
 .market-status.pre-market .market-status-dot,
 .market-status.after-hours .market-status-dot {
-    background: #f59e0b;
+    background: #34D399;
 }
 
 @keyframes pulse-status {
@@ -3824,23 +3824,107 @@ a {
 }
 
 .rubrique-badge[data-rubrique="crypto"] {
-    background: rgba(245, 158, 11, 0.1);
-    color: #f59e0b;
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
 }
 
 .rubrique-badge[data-rubrique="matieres_premieres"] {
-    background: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
+    background: rgba(4, 120, 87, 0.1);
+    color: #047857;
 }
 
 .rubrique-badge[data-rubrique="ai_tech"] {
-    background: rgba(139, 92, 246, 0.1);
-    color: #8b5cf6;
+    background: rgba(5, 150, 105, 0.1);
+    color: #059669;
 }
 
 /* Hide articles filtered out */
 .news-item[data-rubrique].hidden-rubrique {
     display: none;
+}
+
+/* --- Featured analysis in rubric pages --- */
+.rubrique-featured-analysis {
+    margin: 1.5rem 0 2rem;
+}
+
+.rubrique-featured-analysis .section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.featured-analysis-card {
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.featured-analysis-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.featured-analysis-banner {
+    min-width: 200px;
+    max-width: 200px;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+}
+
+.featured-analysis-label {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.featured-analysis-body {
+    padding: 1.25rem 1.5rem;
+    flex: 1;
+}
+
+.featured-analysis-body h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary);
+}
+
+.featured-analysis-body p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0 0 0.75rem;
+}
+
+.featured-analysis-meta {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+    .featured-analysis-card {
+        flex-direction: column;
+    }
+
+    .featured-analysis-banner {
+        min-width: 100%;
+        max-width: 100%;
+        min-height: 80px;
+    }
 }
 
 /* --- Responsive --- */
@@ -4524,7 +4608,7 @@ a {
 }
 
 .calendar-event.impact-medium {
-    border-left-color: #f59e0b;
+    border-left-color: #34D399;
 }
 
 .calendar-event.impact-low {
