@@ -20,24 +20,28 @@
  * - World Bank (gratuit, pas de clé) → données macro internationales
  * - NewsAPI (clé gratuite) → complément GNews couverture plus large
  *
- * Flux RSS (gratuit, pas de clé — 97 flux spécialisés) :
- * 🌍 Géopolitique (20) : Le Figaro Intl, France 24, RFI, Courrier Intl, Le Monde Diplo,
+ * Flux RSS (gratuit, pas de clé — 122 flux spécialisés) :
+ * 🌍 Géopolitique (30) : Le Figaro Intl, France 24, RFI, Courrier Intl, Le Monde Diplo,
  *   BBC, Al Jazeera, Guardian, NYT, Reuters, Politico EU, Foreign Policy, CFR,
  *   Brookings, Carnegie, CSIS, War on the Rocks, Responsible Statecraft,
- *   The Diplomat (Asie), Middle East Eye
- * 📈 Marchés (18) : Le Figaro (éco, conj, soc, flash), Les Echos, BFM, Boursorama,
+ *   The Diplomat, Middle East Eye, IFRI, IRIS, FRS, GRIP, Chatham House,
+ *   IISS, Al-Monitor, Middle East Institute, SIPRI, Crisis Group
+ * 📈 Marchés (23) : Le Figaro (éco, conj, soc, flash), Les Echos, BFM, Boursorama,
  *   La Tribune, Capital, MarketWatch, Yahoo Finance, Seeking Alpha, CNBC,
- *   Investing.com, Wolf Street, Calculated Risk, Naked Capitalism, TLDR Fintech
+ *   Investing.com, Wolf Street, Calculated Risk, Naked Capitalism, TLDR Fintech,
+ *   Financial Times, Nikkei Asia, L'AGEFI, BCE, Banque de France
  * ₿ Crypto (14) : CoinTelegraph FR, Cryptoast, Journal du Coin, CoinDesk,
  *   CoinTelegraph EN, The Block, Decrypt, Blockworks, Bitcoin Magazine,
  *   DL News, Unchained, Rekt News, Chainalysis, TLDR Crypto
- * ⛏️ Commodités (13) : OilPrice, Rigzone, Reuters Commod, Natural Gas Intel,
+ * ⛏️ Commodités (17) : OilPrice, Rigzone, Reuters Commod, Natural Gas Intel,
  *   Kitco (Gold + Metals), Mining.com, MetalMiner, S&P Global, AgWeb,
- *   World Grain, Hellenic Shipping, Trading Economics
- * 🤖 IA & Tech (17) : Le Figaro Tech, 01net, Numerama, JDN, TechCrunch,
+ *   World Grain, Hellenic Shipping, Trading Economics, OPEC, Wood Mackenzie,
+ *   Kpler Energy, Argus Media
+ * 🤖 IA & Tech (20) : Le Figaro Tech, 01net, Numerama, JDN, TechCrunch,
  *   The Verge, Ars Technica, Wired, Hacker News, VentureBeat AI,
  *   MIT Tech Review, IEEE Spectrum AI, MarkTechPost, The Decoder,
- *   Krebs on Security, BleepingComputer, The Register, TLDR Tech/AI
+ *   Krebs on Security, BleepingComputer, The Register, TLDR Tech/AI,
+ *   Stratechery, The Information, Simon Willison
  *
  * Les données sont écrites en JSON dans /data/
  * Le frontend les lit au chargement de la page
@@ -178,11 +182,11 @@ function parseRSSItems(xml) {
 }
 
 // ─── Sources RSS (gratuit, pas de clé API) ───────────────
-// 97 flux ultra-spécialisés couvrant 6 rubriques — mis à jour fév. 2026
+// 122 flux ultra-spécialisés couvrant 6 rubriques — mis à jour fév. 2026
 const RSS_SOURCES = [
 
     // ╔══════════════════════════════════════════════════════════╗
-    // ║  🌍 GÉOPOLITIQUE — 20 sources                           ║
+    // ║  🌍 GÉOPOLITIQUE — 30 sources                           ║
     // ╚══════════════════════════════════════════════════════════╝
 
     // 🇫🇷 Presse française — International
@@ -213,8 +217,24 @@ const RSS_SOURCES = [
     { url: 'https://thediplomat.com/feed/',                            source: 'The Diplomat',          cats: ['geopolitics'], lang: 'en' },
     { url: 'https://www.middleeasteye.net/rss',                       source: 'Middle East Eye',       cats: ['geopolitics'], lang: 'en' },
 
+    // 🇫🇷 Think tanks français — Relations internationales
+    { url: 'https://www.ifri.org/fr/rss.xml',                         source: 'IFRI',                  cats: ['geopolitics'] },
+    { url: 'https://www.iris-france.org/feed/',                        source: 'IRIS',                  cats: ['geopolitics'] },
+    { url: 'https://www.frstrategie.org/feed',                        source: 'FRS',                   cats: ['geopolitics'] },
+    { url: 'https://www.grip.org/feed/',                               source: 'GRIP',                  cats: ['geopolitics'] },
+
+    // 🌍 Think tanks internationaux complémentaires
+    { url: 'https://www.chathamhouse.org/rss.xml',                    source: 'Chatham House',         cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://www.iiss.org/rss/',                                source: 'IISS',                  cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://www.al-monitor.com/rss',                          source: 'Al-Monitor',            cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://www.mei.edu/rss.xml',                             source: 'Middle East Institute', cats: ['geopolitics'], lang: 'en' },
+
+    // 🔬 Données & risques géopolitiques
+    { url: 'https://www.sipri.org/rss.xml',                           source: 'SIPRI',                 cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://www.crisisgroup.org/rss.xml',                     source: 'Crisis Group',          cats: ['geopolitics'], lang: 'en' },
+
     // ╔══════════════════════════════════════════════════════════╗
-    // ║  📈 MARCHÉS & FINANCE — 18 sources                      ║
+    // ║  📈 MARCHÉS & FINANCE — 23 sources                      ║
     // ╚══════════════════════════════════════════════════════════╝
 
     // 🇫🇷 Presse française — Économie & Finance
@@ -243,6 +263,15 @@ const RSS_SOURCES = [
     // 📧 Newsletter finance
     { url: 'https://tldr.tech/api/rss/fintech',                         source: 'TLDR Fintech',         cats: ['markets'],   lang: 'en' },
 
+    // 🌍 Presse financière internationale complémentaire
+    { url: 'https://www.ft.com/rss/home',                              source: 'Financial Times',      cats: ['markets', 'geopolitics'], lang: 'en' },
+    { url: 'https://asia.nikkei.com/rss/feed/nar',                     source: 'Nikkei Asia',          cats: ['markets', 'geopolitics'], lang: 'en' },
+    { url: 'https://www.agefi.fr/rss',                                 source: "L'AGEFI",              cats: ['markets'] },
+
+    // 📊 Institutionnel & banques centrales
+    { url: 'https://www.ecb.europa.eu/rss/press.html',                source: 'BCE',                  cats: ['markets'],   lang: 'en' },
+    { url: 'https://www.banque-france.fr/feed',                        source: 'Banque de France',     cats: ['markets'] },
+
     // ╔══════════════════════════════════════════════════════════╗
     // ║  ₿ CRYPTO & BLOCKCHAIN — 14 sources                     ║
     // ╚══════════════════════════════════════════════════════════╝
@@ -270,7 +299,7 @@ const RSS_SOURCES = [
     { url: 'https://tldr.tech/api/rss/crypto',                          source: 'TLDR Crypto',          cats: ['crypto'],    lang: 'en' },
 
     // ╔══════════════════════════════════════════════════════════╗
-    // ║  ⛏️ MATIÈRES PREMIÈRES — 13 sources                      ║
+    // ║  ⛏️ MATIÈRES PREMIÈRES — 17 sources                      ║
     // ╚══════════════════════════════════════════════════════════╝
 
     // 🇫🇷 Conjoncture française (aussi commodités)
@@ -296,8 +325,14 @@ const RSS_SOURCES = [
     { url: 'https://www.hellenicshippingnews.com/feed/',               source: 'Hellenic Shipping',     cats: ['commodities'], lang: 'en' },
     { url: 'https://tradingeconomics.com/rss/news.aspx',              source: 'Trading Economics',     cats: ['commodities', 'markets'], lang: 'en' },
 
+    // 🛢️ OPEC & analyses complémentaires énergie
+    { url: 'https://www.opec.org/opec_web/en/press_room/rss.xml',    source: 'OPEC',                  cats: ['commodities', 'geopolitics'], lang: 'en' },
+    { url: 'https://www.woodmac.com/feed/',                           source: 'Wood Mackenzie',        cats: ['commodities'], lang: 'en' },
+    { url: 'https://kfrq.com/feed/',                                   source: 'Kpler Energy',          cats: ['commodities'], lang: 'en' },
+    { url: 'https://www.argusmedia.com/en/rss-feeds/home',           source: 'Argus Media',           cats: ['commodities'], lang: 'en' },
+
     // ╔══════════════════════════════════════════════════════════╗
-    // ║  🤖 IA, TECH & CYBERSÉCURITÉ — 17 sources                ║
+    // ║  🤖 IA, TECH & CYBERSÉCURITÉ — 20 sources                ║
     // ╚══════════════════════════════════════════════════════════╝
 
     // 🇫🇷 Tech & IA françaises
@@ -328,6 +363,11 @@ const RSS_SOURCES = [
     // 📧 Newsletters IA & Tech
     { url: 'https://tldr.tech/api/rss/tech',                            source: 'TLDR Tech',            cats: ['ai_tech'],   lang: 'en' },
     { url: 'https://tldr.tech/api/rss/ai',                              source: 'TLDR AI',              cats: ['ai_tech'],   lang: 'en' },
+
+    // 🧠 IA & Tech — sources d'analyse premium
+    { url: 'https://stratechery.com/feed/',                             source: 'Stratechery',          cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://www.theinformation.com/feed',                      source: 'The Information',       cats: ['ai_tech'],   lang: 'en' },
+    { url: 'https://simonwillison.net/atom/everything/',               source: 'Simon Willison',       cats: ['ai_tech'],   lang: 'en' },
 
     // ╔══════════════════════════════════════════════════════════╗
     // ║  🇫🇷 SOURCES FRANCOPHONES COMPLÉMENTAIRES — 6 sources    ║
