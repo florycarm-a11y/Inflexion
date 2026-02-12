@@ -43,6 +43,20 @@ import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
+// ─── Support proxy (pour environnements sandboxés) ───────
+// Node.js fetch() n'utilise PAS les variables HTTP_PROXY/HTTPS_PROXY nativement.
+// On détecte le proxy et on configure undici (bundlé avec Node 22+) si besoin.
+const PROXY_URL = process.env.HTTPS_PROXY || process.env.HTTP_PROXY || process.env.https_proxy || process.env.http_proxy;
+if (PROXY_URL) {
+    try {
+        const { ProxyAgent, setGlobalDispatcher } = await import('undici');
+        setGlobalDispatcher(new ProxyAgent(PROXY_URL));
+        console.log('🔌 Proxy détecté et configuré pour fetch()');
+    } catch (e) {
+        console.warn('⚠️  Proxy détecté mais undici non disponible:', e.message);
+    }
+}
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, '..', 'data');
 
@@ -184,10 +198,10 @@ const RSS_SOURCES = [
 
     // 🏛️ Think tanks & analyses stratégiques
     { url: 'https://foreignpolicy.com/feed/',                          source: 'Foreign Policy',        cats: ['geopolitics'], lang: 'en' },
-    { url: 'https://www.cfr.org/rss.xml',                              source: 'CFR',                   cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://feeds.cfr.org/all',                                  source: 'CFR',                   cats: ['geopolitics'], lang: 'en' },
     { url: 'https://www.brookings.edu/feed/',                          source: 'Brookings',             cats: ['geopolitics'], lang: 'en' },
     { url: 'https://carnegieendowment.org/rss/solr.xml',              source: 'Carnegie',              cats: ['geopolitics'], lang: 'en' },
-    { url: 'https://www.csis.org/analysis/feed',                       source: 'CSIS',                  cats: ['geopolitics'], lang: 'en' },
+    { url: 'https://www.csis.org/rss.xml',                              source: 'CSIS',                  cats: ['geopolitics'], lang: 'en' },
     { url: 'https://responsiblestatecraft.org/feed/',                  source: 'Responsible Statecraft', cats: ['geopolitics'], lang: 'en' },
     { url: 'https://warontherocks.com/feed/',                          source: 'War on the Rocks',      cats: ['geopolitics'], lang: 'en' },
 
@@ -206,7 +220,7 @@ const RSS_SOURCES = [
     { url: 'https://www.lefigaro.fr/rss/figaro_flash-eco.xml',          source: 'Le Figaro Flash Éco',  cats: ['markets'] },
     { url: 'https://syndication.lesechos.fr/rss/rss_une_titres.xml',    source: 'Les Echos',            cats: ['markets'] },
     { url: 'https://www.bfmtv.com/rss/economie/',                       source: 'BFM Business',         cats: ['markets'] },
-    { url: 'https://www.boursorama.com/rss/actualites/marches-financiers', source: 'Boursorama',         cats: ['markets'] },
+    { url: 'https://www.zonebourse.com/rss/',                            source: 'Zonebourse',           cats: ['markets'] },
     { url: 'https://www.latribune.fr/feed.xml',                         source: 'La Tribune',           cats: ['markets'] },
     { url: 'https://www.capital.fr/feeds',                              source: 'Capital',              cats: ['markets'] },
 
@@ -243,9 +257,9 @@ const RSS_SOURCES = [
     { url: 'https://bitcoinmagazine.com/.rss/full/',                   source: 'Bitcoin Magazine',      cats: ['crypto'],    lang: 'en' },
 
     // 🔬 Crypto spécialisé — DeFi, régulation, analyse on-chain
-    { url: 'https://www.dlnews.com/feed/',                             source: 'DL News',              cats: ['crypto'],    lang: 'en' },
+    { url: 'https://www.thedefiant.io/feed',                            source: 'The Defiant',           cats: ['crypto'],    lang: 'en' },
     { url: 'https://unchainedcrypto.com/feed/',                        source: 'Unchained',            cats: ['crypto'],    lang: 'en' },
-    { url: 'https://rekt.news/feed/',                                  source: 'Rekt News',            cats: ['crypto'],    lang: 'en' },
+    { url: 'https://www.web3isgoinggreat.com/feed.xml',                 source: 'Web3 is Going Great',   cats: ['crypto'],    lang: 'en' },
     { url: 'https://blog.chainalysis.com/feed/',                       source: 'Chainalysis',          cats: ['crypto'],    lang: 'en' },
 
     // 📧 Newsletter crypto
@@ -265,15 +279,14 @@ const RSS_SOURCES = [
     { url: 'https://www.naturalgasintel.com/feed/',                    source: 'Natural Gas Intel',     cats: ['commodities'], lang: 'en' },
 
     // 🥇 Métaux précieux & industriels
-    { url: 'https://www.kitco.com/rss/gold.xml',                       source: 'Kitco Gold',            cats: ['commodities'], lang: 'en' },
-    { url: 'https://www.kitco.com/rss/all-metals.xml',                 source: 'Kitco Metals',          cats: ['commodities'], lang: 'en' },
+    { url: 'https://www.goldprice.org/rss-feeds',                       source: 'GoldPrice.org',          cats: ['commodities'], lang: 'en' },
     { url: 'https://www.mining.com/feed/',                             source: 'Mining.com',            cats: ['commodities'], lang: 'en' },
     { url: 'https://agmetalminer.com/feed/',                           source: 'MetalMiner',            cats: ['commodities'], lang: 'en' },
     { url: 'https://www.spglobal.com/commodityinsights/en/rss-feed/platts-top-250',  source: 'S&P Global',  cats: ['commodities'], lang: 'en' },
 
     // 🌾 Agriculture & Soft commodities
-    { url: 'https://www.agweb.com/rss/news',                          source: 'AgWeb',                 cats: ['commodities'], lang: 'en' },
-    { url: 'https://www.world-grain.com/ext/rss',                     source: 'World Grain',           cats: ['commodities'], lang: 'en' },
+    { url: 'https://www.feedstuffs.com/rss.xml',                        source: 'Feedstuffs',            cats: ['commodities'], lang: 'en' },
+    { url: 'https://www.dtnpf.com/agriculture/web/ag/news/rss',       source: 'DTN Ag News',           cats: ['commodities'], lang: 'en' },
 
     // 🌐 Analyses transversales commodités
     { url: 'https://www.hellenicshippingnews.com/feed/',               source: 'Hellenic Shipping',     cats: ['commodities'], lang: 'en' },
@@ -287,7 +300,7 @@ const RSS_SOURCES = [
     { url: 'https://www.lefigaro.fr/rss/figaro_secteur_high-tech.xml',  source: 'Le Figaro Tech',       cats: ['ai_tech'] },
     { url: 'https://www.01net.com/feed/',                               source: '01net',                cats: ['ai_tech'] },
     { url: 'https://www.numerama.com/feed/',                            source: 'Numerama',             cats: ['ai_tech'] },
-    { url: 'https://www.journaldunet.com/feed/',                        source: 'JDN',                  cats: ['ai_tech'] },
+    { url: 'https://www.nextinpact.com/feed',                            source: 'Next INpact',           cats: ['ai_tech'] },
 
     // 🌍 Tech généraliste international
     { url: 'https://techcrunch.com/feed/',                             source: 'TechCrunch',            cats: ['ai_tech'],   lang: 'en' },
