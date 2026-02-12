@@ -243,6 +243,26 @@ python scripts/check-french.py
 - `backend/.env.example` : documentation des nouvelles cles API
 - `CLAUDE.md` : creation du fichier (ce document)
 
+### Session 2026-02-12 (2) — Fix affichage news + traduction immediate
+
+**Problemes corriges :**
+- Traduction EN→FR maintenant executee a chaque cycle fetch (toutes les 6h) et non plus 1x/jour
+- `translate-articles.mjs` traite aussi `newsapi.json` (plus seulement `news.json`)
+- Layout articles : photo en haut, titre en dessous, resume bref (150 car. max) sous le titre
+- Filtrage rubriques : mapping `geopolitics→geopolitique`, `markets→marches` dans app.js
+- Ajout bouton filtre "IA & Tech" + badge CSS violet
+- CSS manquants ajoutes : `.news-list`, `.news-list-body`, `.news-list-thumb`, `.has-thumb`, `.news-list-summary`
+- Suppression bloc `.news-list-item !important` duplique
+- Display limits augmentes : homepage 15→30 articles, pagination 5→10
+
+**Fichiers modifies :**
+- `styles.css` : layout cards (photo top, summary bottom), +CSS widgets EU/WB/Messari
+- `app.js` : mapping rubrique, layout photo+resume, NEWS_PER_PAGE 5→10
+- `data-loader.js` : layout articles, slice 15→30, resume 150 car.
+- `index.html` : bouton filtre "IA & Tech"
+- `.github/workflows/fetch-data.yml` : ajout step traduction EN→FR apres fetch
+- `scripts/translate-articles.mjs` : ajout traitement newsapi.json
+
 ### PRs precedentes
 
 **PR #23 (mergee)** : Redesign vert + widgets IA + 78 RSS + automatisation Claude

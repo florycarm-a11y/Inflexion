@@ -92,7 +92,18 @@ async function main() {
         process.exit(1);
     }
 
-    // Collecter les articles en anglais non traduits
+    // Charger aussi newsapi.json si disponible
+    const newsapiPath = join(DATA_DIR, 'newsapi.json');
+    let newsapiData = null;
+    if (existsSync(newsapiPath)) {
+        try {
+            newsapiData = JSON.parse(readFileSync(newsapiPath, 'utf-8'));
+        } catch (err) {
+            console.warn(`  ⚠ Erreur lecture newsapi.json: ${err.message}`);
+        }
+    }
+
+    // Collecter les articles en anglais non traduits (news.json + newsapi.json)
     const articlesToTranslate = [];
     const articleRefs = []; // Références vers les objets originaux pour mise à jour
 
@@ -106,6 +117,23 @@ async function main() {
                     description: article.description || '',
                 });
                 articleRefs.push(article);
+            }
+        }
+    }
+
+    // Ajouter les articles NewsAPI (tous en anglais)
+    if (newsapiData?.categories) {
+        for (const [category, articles] of Object.entries(newsapiData.categories)) {
+            for (const article of articles) {
+                if (!article.translated) {
+                    const index = articlesToTranslate.length;
+                    articlesToTranslate.push({
+                        index,
+                        title: article.title,
+                        description: article.description || '',
+                    });
+                    articleRefs.push(article);
+                }
             }
         }
     }
@@ -171,6 +199,11 @@ async function main() {
 
     // Sauvegarder news.json mis à jour
     writeJSON(newsPath, newsData);
+
+    // Sauvegarder newsapi.json si modifié
+    if (newsapiData) {
+        writeJSON(newsapiPath, newsapiData);
+    }
 
     // Résumé
     const stats = getUsageStats();

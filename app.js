@@ -307,7 +307,7 @@ function initTopStories() {
    ============================================ */
 
 let _newsOffset = 0;
-const NEWS_PER_PAGE = 5;
+const NEWS_PER_PAGE = 10;
 
 // Map English category keys to French rubrique identifiers matching filter buttons
 const _categoryToRubrique = {
@@ -333,16 +333,23 @@ function newsListItemHTML(article) {
         ? `<img src="${escapeHTML(image)}" alt="" class="news-list-thumb" loading="lazy" onerror="this.parentElement.classList.remove('has-thumb');this.remove()">`
         : '';
 
+    // Résumé concret sous la photo (max 150 car.)
+    let summary = desc;
+    if (summary.length > 150) summary = summary.slice(0, 147) + '...';
+    const summaryHTML = summary
+        ? `<p class="news-list-summary">${summary}</p>`
+        : '';
+
     return `<article class="news-list-item${hasThumb}" data-rubrique="${rubrique}">
+        ${thumbHTML}
         <div class="news-list-body">
             <div class="news-list-source">
                 <a href="${url}" target="_blank" rel="noopener noreferrer" class="source-name">${source}</a>
                 <time class="news-time">${time}</time>
             </div>
             <h3><a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a></h3>
-            <p>${desc}</p>
+            ${summaryHTML}
         </div>
-        ${thumbHTML}
     </article>`;
 }
 

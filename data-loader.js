@@ -644,7 +644,7 @@ const DataLoader = (function () {
         });
 
         // Générer le HTML
-        ln.innerHTML = allArticles.slice(0, 15).map(function(n) {
+        ln.innerHTML = allArticles.slice(0, 30).map(function(n) {
             var rubriqueAttr = n.rubrique || '';
             var rubriqueLabel = n.rubrique_label || '';
             var rubriqueEmoji = n.rubrique_emoji || '';
@@ -657,7 +657,15 @@ const DataLoader = (function () {
                 ? '<img src="' + n.image + '" alt="" class="news-list-thumb" loading="lazy" onerror="this.parentElement.classList.remove(\'has-thumb\');this.remove()">'
                 : '';
 
+            // Résumé concret sous la photo (max 150 car.)
+            var desc = n.description || '';
+            if (desc.length > 150) desc = desc.slice(0, 147) + '...';
+            var summaryHTML = desc
+                ? '<p class="news-list-summary">' + desc + '</p>'
+                : '';
+
             return '<article class="news-list-item' + hasThumb + '" data-rubrique="' + rubriqueAttr + '">' +
+                thumbHTML +
                 '<div class="news-list-body">' +
                     '<div class="news-list-source">' +
                         '<a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" class="source-name">' + (n.source || '') + '</a>' +
@@ -665,9 +673,8 @@ const DataLoader = (function () {
                         rubriqueTag +
                     '</div>' +
                     '<h3><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer">' + (n.title || '') + '</a></h3>' +
-                    '<p>' + (n.description || '') + '</p>' +
+                    summaryHTML +
                 '</div>' +
-                thumbHTML +
             '</article>';
         }).join('');
     }

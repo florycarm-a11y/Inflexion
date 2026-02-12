@@ -11,6 +11,7 @@
 #   - Twelve Data (indices européens) → TWELVE_DATA_API_KEY
 #   - NewsAPI (news complémentaires) → NEWSAPI_API_KEY
 #   - World Bank (macro internationale) → sans clé
+#   + Traduction EN→FR (Claude Haiku) → ANTHROPIC_API_KEY (optionnel)
 #   - Alternative.me, DefiLlama, ECB, Mempool.space, metals.dev, Etherscan → sans clé
 #
 # Flux RSS (97 sources spécialisées, sans clé) :
@@ -80,6 +81,16 @@ jobs:
           TWELVE_DATA_API_KEY: ${{ secrets.TWELVE_DATA_API_KEY }}
           NEWSAPI_API_KEY: ${{ secrets.NEWSAPI_API_KEY }}
         run: node scripts/fetch-data.mjs
+
+      - name: "🌐 Traduction immédiate EN→FR"
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -n "$ANTHROPIC_API_KEY" ]; then
+            node scripts/translate-articles.mjs
+          else
+            echo "⚠ ANTHROPIC_API_KEY non définie — traduction différée"
+          fi
 
       - name: "📝 Commit et push des données"
         run: |
