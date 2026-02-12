@@ -19,9 +19,9 @@ Inflexion est une application web qui agrège et présente les actualités géop
 - Ticker d'actualités en continu (breaking news)
 - Indicateurs d'impact sur les marchés
 
-### Sources de Données (89+)
+### Sources de Données (112+)
 
-**APIs temps réel (11 sources) :**
+**APIs temps réel (15 sources) :**
 - CoinGecko (crypto, trending, stablecoins)
 - Finnhub (indices boursiers, calendrier économique, VIX)
 - FRED (10 indicateurs macroéconomiques US)
@@ -33,35 +33,40 @@ Inflexion est une application web qui agrège et présente les actualités géop
 - Etherscan (ETH gas tracker)
 - Mempool.space (BTC fees, hashrate, difficulté)
 - ECB Data API (taux directeur BCE, EUR/USD fixing)
+- Messari (crypto avancé : dominance, volumes, métriques globales)
+- Twelve Data (indices européens : CAC 40, DAX, FTSE 100, Euro Stoxx 50)
+- World Bank (données macro internationales : PIB, inflation, chômage, dette)
+- NewsAPI (actualités complémentaires EN, couverture élargie)
 
-**Flux RSS spécialisés (78 sources) :**
+**Flux RSS spécialisés (97 sources) :**
 
-*Géopolitique (20 sources) :*
-- Presse FR : Le Figaro International, France 24, RFI, Courrier International, Le Monde Diplomatique
+*Géopolitique (21 sources) :*
+- Presse FR : Le Figaro International, France 24, RFI, Courrier International, Le Monde Diplomatique, Le Monde Intl
 - Presse intl : BBC World, Al Jazeera, The Guardian, New York Times, Reuters, Politico EU
 - Think tanks : Foreign Policy, CFR, Brookings, Carnegie, CSIS, Responsible Statecraft, War on the Rocks
 - Régional : The Diplomat (Asie-Pacifique), Middle East Eye (MENA)
 
-*Marchés & Finance (18 sources) :*
-- Presse FR : Le Figaro (Éco, Conjoncture, Sociétés, Flash Éco), Les Echos, BFM Business, Boursorama, La Tribune, Capital
+*Marchés & Finance (25 sources) :*
+- Presse FR : Le Figaro (Éco, Conjoncture, Sociétés, Flash Éco, Finances), Les Echos, BFM Business, Zonebourse, La Tribune (général + finance), Capital, Le Monde Éco, Challenges, MoneyVox
 - Presse intl : MarketWatch, Yahoo Finance, Seeking Alpha, CNBC, Investing.com
-- Macro spécialisé : Wolf Street, Calculated Risk, Naked Capitalism
-- Newsletter : TLDR Fintech
+- Macro spécialisé : Wolf Street, Calculated Risk, Naked Capitalism, TLDR Fintech
+- Think tanks macro : BIS (BRI), IMF Blog, World Economic Forum, PIIE, VoxEU/CEPR, OECD
 
 *Crypto & Blockchain (14 sources) :*
 - FR : CoinTelegraph FR, Cryptoast, Journal du Coin
 - Actualités : CoinDesk, CoinTelegraph EN, The Block, Decrypt, Blockworks, Bitcoin Magazine
-- Spécialisé DeFi/On-chain : DL News, Unchained, Rekt News, Chainalysis
+- Spécialisé DeFi/On-chain : The Defiant, Unchained, Web3 is Going Great, Chainalysis
 - Newsletter : TLDR Crypto
 
-*Matières Premières (13 sources) :*
+*Matières Premières & Énergie (19 sources) :*
 - Énergie : OilPrice, Rigzone, Natural Gas Intelligence, Reuters Commodities
-- Métaux : Kitco Gold, Kitco Metals, Mining.com, MetalMiner, S&P Global
-- Agriculture : AgWeb, World Grain
+- Métaux : GoldPrice.org, Mining.com, MetalMiner, S&P Global
+- Agriculture : Feedstuffs, DTN Ag News
 - Transversal : Hellenic Shipping News, Trading Economics
+- Énergie & climat : IEA, IRENA, Carbon Brief, CleanTechnica, Reuters Sustainability, Energy Monitor, S&P Energy Transition
 
-*IA, Tech & Cybersécurité (17 sources) :*
-- FR : Le Figaro Tech, 01net, Numerama, JDN
+*IA, Tech & Cybersécurité (18 sources) :*
+- FR : Le Figaro Tech, 01net, Numerama, Next INpact
 - Tech : TechCrunch, The Verge, Ars Technica, Wired, Hacker News
 - IA spécialisé : VentureBeat AI, MIT Tech Review, IEEE Spectrum AI, MarkTechPost, The Decoder
 - Cybersécurité : Krebs on Security, BleepingComputer, The Register
