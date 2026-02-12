@@ -87,6 +87,25 @@ jobs:
           retention-days: 7
 
   # ============================================
+  # Scripts Unit Tests (node:test, no dependencies)
+  # ============================================
+  test-scripts:
+    name: Test Scripts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Run scripts unit tests
+        run: node --test scripts/tests/lib/claude-api.test.mjs
+
+  # ============================================
   # Build Check
   # ============================================
   build:
@@ -183,7 +202,7 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    needs: [test, build, frontend]
+    needs: [test, test-scripts, build, frontend]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
     steps:
