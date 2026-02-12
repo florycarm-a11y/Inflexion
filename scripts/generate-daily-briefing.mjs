@@ -557,7 +557,8 @@ Chaque signal doit avoir des interconnexions concrètes et chiffrées.`;
             maxTokens: MAX_TOKENS,
             temperature: 0.3, // Peu de créativité, beaucoup de rigueur
             label: 'daily-briefing',
-            timeoutMs: 60_000, // 60s car Sonnet + long contexte
+            timeoutMs: 120_000, // 120s car Sonnet + long contexte + 4096 tokens
+            retry: { maxAttempts: 4, initialDelayMs: 5_000, maxDelayMs: 60_000, backoffMultiplier: 2, retryableStatusCodes: [429, 500, 502, 503, 529] },
             validate: (data) => {
                 // Valider la structure du briefing
                 if (!data.synthese?.titre) return 'synthese.titre manquant';
