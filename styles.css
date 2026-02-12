@@ -1103,6 +1103,249 @@ a {
     color: rgba(255,255,255,0.9);
 }
 
+/* --- Top Story clickable link wrapper --- */
+.top-story-link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
+
+.top-story-link:hover {
+    color: inherit;
+}
+
+.top-story-link h3 {
+    color: var(--text-primary);
+}
+
+.top-story-link:hover h3 {
+    color: var(--accent);
+}
+
+/* --- Article toggle link on analysis.html --- */
+.article-toggle-link {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 0.5rem 0;
+    margin-right: 1rem;
+}
+
+.article-toggle-link:hover {
+    text-decoration: underline;
+}
+
+/* --- Analysis title links on analysis.html --- */
+.analysis-full h2 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.analysis-full h2 a:hover {
+    color: var(--accent);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PAGES ANALYSE INDIVIDUELLES
+   ═══════════════════════════════════════════════════════════════ */
+
+.analyse-banner-hero {
+    padding: 3rem 0 2.5rem;
+    color: white;
+    position: relative;
+}
+
+.analyse-breadcrumb {
+    font-size: 0.78rem;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.analyse-breadcrumb a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+}
+
+.analyse-breadcrumb a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.analyse-breadcrumb span {
+    margin: 0 0.35rem;
+    opacity: 0.6;
+}
+
+.analyse-category-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 0.35rem 0.8rem;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+}
+
+.analyse-hero-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: 1rem;
+    max-width: 800px;
+}
+
+.analyse-hero-meta {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.82rem;
+    opacity: 0.85;
+    flex-wrap: wrap;
+}
+
+.analyse-hero-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.analyse-author {
+    font-weight: 700;
+}
+
+.analyse-article {
+    max-width: 740px;
+    margin: 2.5rem auto 4rem;
+}
+
+.analyse-lead {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    border-left: 4px solid var(--accent);
+    padding-left: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.analyse-body {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+.analyse-body p {
+    margin-bottom: 1.25rem;
+}
+
+.analyse-body h2 {
+    font-family: var(--font-sans);
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 2.5rem 0 1rem;
+    color: var(--text-primary);
+}
+
+.analyse-body blockquote {
+    border-left: 4px solid var(--accent);
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    border-radius: 0 6px 6px 0;
+}
+
+.analyse-sources {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.analyse-sources h3 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.analyse-sources ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.analyse-sources li a {
+    font-size: 0.82rem;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 0.3rem 0.6rem;
+    background: rgba(16,185,129,0.08);
+    border-radius: 3px;
+}
+
+.analyse-sources li a:hover {
+    background: rgba(16,185,129,0.15);
+    text-decoration: underline;
+}
+
+.analyse-nav-bottom {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.analyse-back-link {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 0.6rem 1.5rem;
+    border: 2px solid var(--accent);
+    border-radius: 6px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.analyse-back-link:hover {
+    background: var(--accent);
+    color: white;
+}
+
+/* Responsive analyse pages */
+@media (max-width: 768px) {
+    .analyse-hero-title {
+        font-size: 1.4rem;
+    }
+
+    .analyse-banner-hero {
+        padding: 2rem 0 1.5rem;
+    }
+
+    .analyse-article {
+        margin: 1.5rem auto 2rem;
+    }
+
+    .analyse-body {
+        font-size: 0.95rem;
+    }
+}
+
 /* ============================================
    Two Column Layout
    ============================================ */
