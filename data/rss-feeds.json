@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-12T11:53:27.214Z",
+  "updated": "2026-02-12T12:26:04.724Z",
   "feeds": [
     {
       "source": "Le Figaro",
@@ -124,6 +124,70 @@
       "ok": true
     },
     {
+      "source": "IFRI",
+      "url": "https://www.ifri.org/fr/rss.xml",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "IRIS",
+      "url": "https://www.iris-france.org/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "FRS",
+      "url": "https://www.frstrategie.org/feed",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://www.frstrategie.org/feed"
+    },
+    {
+      "source": "GRIP",
+      "url": "https://www.grip.org/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Chatham House",
+      "url": "https://www.chathamhouse.org/rss.xml",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.chathamhouse.org/rss.xml"
+    },
+    {
+      "source": "IISS",
+      "url": "https://www.iiss.org/rss/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://www.iiss.org/rss/"
+    },
+    {
+      "source": "Al-Monitor",
+      "url": "https://www.al-monitor.com/rss",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Middle East Institute",
+      "url": "https://www.mei.edu/rss.xml",
+      "count": 0,
+      "ok": true
+    },
+    {
+      "source": "SIPRI",
+      "url": "https://www.sipri.org/rss.xml",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://www.sipri.org/rss.xml"
+    },
+    {
+      "source": "Crisis Group",
+      "url": "https://www.crisisgroup.org/rss.xml",
+      "count": 5,
+      "ok": true
+    },
+    {
       "source": "Le Figaro Éco",
       "url": "https://www.lefigaro.fr/rss/figaro_economie.xml",
       "count": 5,
@@ -233,6 +297,38 @@
       "url": "https://tldr.tech/api/rss/fintech",
       "count": 5,
       "ok": true
+    },
+    {
+      "source": "Financial Times",
+      "url": "https://www.ft.com/rss/home",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Nikkei Asia",
+      "url": "https://asia.nikkei.com/rss/feed/nar",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "L'AGEFI",
+      "url": "https://www.agefi.fr/rss",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://www.agefi.fr/rss"
+    },
+    {
+      "source": "BCE",
+      "url": "https://www.ecb.europa.eu/rss/press.html",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Banque de France",
+      "url": "https://www.banque-france.fr/feed",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://www.banque-france.fr/feed"
     },
     {
       "source": "CoinTelegraph FR",
@@ -396,6 +492,34 @@
       "error": "HTTP 403: https://tradingeconomics.com/rss/news.aspx"
     },
     {
+      "source": "OPEC",
+      "url": "https://www.opec.org/opec_web/en/press_room/rss.xml",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.opec.org/opec_web/en/press_room/rss.xml"
+    },
+    {
+      "source": "Wood Mackenzie",
+      "url": "https://www.woodmac.com/feed/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://www.woodmac.com/feed/"
+    },
+    {
+      "source": "Kpler Energy",
+      "url": "https://kfrq.com/feed/",
+      "count": 0,
+      "ok": false,
+      "error": "fetch failed"
+    },
+    {
+      "source": "Argus Media",
+      "url": "https://www.argusmedia.com/en/rss-feeds/home",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://www.argusmedia.com/en/rss-feeds/home"
+    },
+    {
       "source": "Le Figaro Tech",
       "url": "https://www.lefigaro.fr/rss/figaro_secteur_high-tech.xml",
       "count": 5,
@@ -507,6 +631,25 @@
     {
       "source": "TLDR AI",
       "url": "https://tldr.tech/api/rss/ai",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "Stratechery",
+      "url": "https://stratechery.com/feed/",
+      "count": 5,
+      "ok": true
+    },
+    {
+      "source": "The Information",
+      "url": "https://www.theinformation.com/feed",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.theinformation.com/feed"
+    },
+    {
+      "source": "Simon Willison",
+      "url": "https://simonwillison.net/atom/everything/",
       "count": 5,
       "ok": true
     },
@@ -636,8 +779,8 @@
     }
   ],
   "stats": {
-    "success": 81,
-    "failed": 21,
-    "articles": 385
+    "success": 92,
+    "failed": 32,
+    "articles": 435
   }
 }
