@@ -276,7 +276,7 @@ const _inflexionAnalyses = [
         resume: 'Le président américain a relancé la guerre commerciale contre l\'UE en conditionnant la levée de droits de douane au soutien européen sur le Groenland. S&amp;P 500 −2,1 %, VIX au-dessus de 20.',
         url: 'analyse-droits-douane-trump-groenland.html',
         date: '4 fév. 2026',
-        gradient: 'linear-gradient(135deg, #064E3B 0%, #059669 100%)',
+        gradient: 'linear-gradient(135deg, #0A4420 0%, #105E2D 100%)',
         icon: '',
         label: 'Geopolitique'
     },
@@ -285,7 +285,7 @@ const _inflexionAnalyses = [
         resume: 'L\'or pulvérise ses records (+64 % YTD) pendant que le bitcoin plonge (−40 % depuis octobre). Corrélation or-BTC tombée à zéro. Le narratif du « digital gold » est mort.',
         url: 'analyse-or-bitcoin-divergence.html',
         date: '3 fév. 2026',
-        gradient: 'linear-gradient(135deg, #052E16 0%, #10b981 100%)',
+        gradient: 'linear-gradient(135deg, #0A4420 0%, #105E2D 100%)',
         icon: '',
         label: 'Macro'
     },
@@ -294,7 +294,7 @@ const _inflexionAnalyses = [
         resume: 'Nvidia : 57 Mds $ de revenus trimestriels, backlog de 500 Mds $, architecture Vera Rubin. Mais la concentration des Mag 7 (30 % du S&amp;P 500) est un risque systémique.',
         url: 'analyse-ia-rempart-marches.html',
         date: '1er fév. 2026',
-        gradient: 'linear-gradient(135deg, #065F46 0%, #34D399 100%)',
+        gradient: 'linear-gradient(135deg, #0A4420 0%, #105E2D 100%)',
         icon: '',
         label: 'IA & Tech'
     }
@@ -522,8 +522,8 @@ function initDivergenceChart() {
                     {
                         label: 'Or (XAU/USD)',
                         data: goldData,
-                        borderColor: '#047857',
-                        backgroundColor: 'rgba(4, 120, 87, 0.08)',
+                        borderColor: '#105E2D',
+                        backgroundColor: 'rgba(16, 94, 45, 0.08)',
                         borderWidth: 2.5,
                         pointRadius: 0,
                         pointHoverRadius: 5,
@@ -533,8 +533,8 @@ function initDivergenceChart() {
                     {
                         label: 'Bitcoin (BTC/USD)',
                         data: btcData,
-                        borderColor: '#34D399',
-                        backgroundColor: 'rgba(52, 211, 153, 0.05)',
+                        borderColor: '#0A4420',
+                        backgroundColor: 'rgba(10, 68, 32, 0.05)',
                         borderWidth: 2.5,
                         borderDash: [6, 3],
                         pointRadius: 0,
