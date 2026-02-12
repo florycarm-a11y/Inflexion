@@ -1,44 +1,74 @@
 {
-  "updated": "2026-02-12T13:49:03.204Z",
+  "updated": "2026-02-12T19:32:40.747Z",
   "alertes": [
     {
       "id": "alert-2026-02-12-001",
-      "titre": "Microsoft cède 2,15% à 404,37 USD",
-      "texte": "MSFT enregistre une baisse de 2,15% à 404,37 USD. Ce repli s'inscrit dans un contexte de volatilité accrue sur les valeurs technologiques.",
-      "categorie": "ai_tech",
+      "titre": "Or en baisse de 2.89% à $454.13",
+      "texte": "L'or recule de 2.89% pour s'établir à $454.13 par once, reflétant un affaiblissement de la demande défensive.",
+      "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-12T13:49:03.204Z",
+      "horodatage": "2026-02-12T19:32:40.747Z",
       "donnees": {
-        "symbole": "MSFT",
-        "nom": "Microsoft",
-        "prix": 404.37,
-        "variation": -2.15
+        "symbole": "GLD",
+        "nom": "Or (ETF)",
+        "prix": 454.13,
+        "variation": -2.89
       }
     },
     {
       "id": "alert-2026-02-12-002",
-      "titre": "Alphabet recule de 2,39% à 310,96 USD",
-      "texte": "GOOGL perd 2,39% à 310,96 USD, amplifiant la pression baissière observée sur le secteur technologique.",
-      "categorie": "ai_tech",
+      "titre": "Pétrole brut recule de 3.55% à $76.09",
+      "texte": "Le pétrole enregistre une baisse de 3.55%, passant à $76.09 le baril, dans un contexte de pression vendeuse accrue.",
+      "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-12T13:49:03.204Z",
+      "horodatage": "2026-02-12T19:32:40.747Z",
       "donnees": {
-        "symbole": "GOOGL",
-        "nom": "Alphabet",
-        "prix": 310.96,
-        "variation": -2.39
+        "symbole": "USO",
+        "nom": "Pétrole (ETF)",
+        "prix": 76.09,
+        "variation": -3.55
       }
     },
     {
       "id": "alert-2026-02-12-003",
-      "titre": "Peur extrême : Fear & Greed à 5 points",
-      "texte": "L'indice Fear & Greed chute à 5 points (Extreme Fear), marquant une baisse de 7 points sur 7 jours. Les signaux de panique se généralisent sur les marchés.",
-      "categorie": "macro",
+      "titre": "Apple chute de 4.72% à $262.51",
+      "texte": "Apple perd 4.72% pour atteindre $262.51, affichant une performance nettement négative parmi les valeurs technologiques.",
+      "categorie": "ai_tech",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-02-12T19:32:40.747Z",
+      "donnees": {
+        "symbole": "AAPL",
+        "nom": "Apple",
+        "prix": 262.51,
+        "variation": -4.72
+      }
+    },
+    {
+      "id": "alert-2026-02-12-004",
+      "titre": "Tesla recule de 2.55% à $417.34",
+      "texte": "Tesla cède 2.55% à $417.34 par action, reflétant une correction dans le secteur automobile-électrique.",
+      "categorie": "ai_tech",
+      "severite": "info",
+      "impact": "baissier",
+      "horodatage": "2026-02-12T19:32:40.747Z",
+      "donnees": {
+        "symbole": "TSLA",
+        "nom": "Tesla",
+        "prix": 417.34,
+        "variation": -2.55
+      }
+    },
+    {
+      "id": "alert-2026-02-12-005",
+      "titre": "Fear & Greed Index en panique extrême à 5 points",
+      "texte": "L'indice Fear & Greed chute à 5 points (peur extrême), en recul de 7 points sur 7 jours, signalant une anxiété croissante des investisseurs.",
+      "categorie": "marches",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-02-12T13:49:03.204Z",
+      "horodatage": "2026-02-12T19:32:40.747Z",
       "donnees": {
         "score": 5,
         "label": "Extreme Fear",
@@ -47,10 +77,10 @@
     }
   ],
   "stats": {
-    "total": 3,
+    "total": 5,
     "urgent": 1,
-    "attention": 2,
-    "info": 0
+    "attention": 3,
+    "info": 1
   },
   "model": "claude-haiku-4-5-20251001"
 }
