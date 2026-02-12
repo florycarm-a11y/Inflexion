@@ -64,7 +64,8 @@ function cardHTML(article) {
     if (!article) return '';
     const source = escapeHTML(article.source || '');
     const title = escapeHTML(article.title || '');
-    const desc = escapeHTML(article.description || '');
+    let desc = escapeHTML(article.description || '');
+    if (desc.length > 150) desc = desc.slice(0, 147) + '...';
     const time = escapeHTML(article.time || '');
     const url = article.url || '#';
     const cat = escapeHTML(article.category || '');
@@ -74,12 +75,16 @@ function cardHTML(article) {
         ? `<img src="${escapeHTML(image)}" alt="" class="story-image" loading="lazy" onerror="this.remove()">`
         : '';
 
+    const excerptHTML = desc
+        ? `<p class="story-excerpt">${desc}</p>`
+        : '';
+
     return `<article class="top-story" data-category="${cat}">
         ${imgHTML}
         <div class="story-content">
             <span class="story-source">${source}</span>
             <h3 class="story-title"><a href="${url}" target="_blank" rel="noopener">${title}</a></h3>
-            <p class="story-excerpt">${desc}</p>
+            ${excerptHTML}
             <div class="story-footer">
                 <time class="story-time">${time}</time>
                 <a href="${url}" target="_blank" rel="noopener" class="story-link">Lire →</a>
@@ -265,23 +270,33 @@ function initStickyHeader() {
    Top Stories (3 featured cards)
    ============================================ */
 
+const _analysisBanners = {
+    geopolitique: { gradient: 'linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%)', icon: '🌍', label: 'Géopolitique' },
+    marches:      { gradient: 'linear-gradient(135deg, #064e3b 0%, #10b981 100%)', icon: '📈', label: 'Marchés' },
+    crypto:       { gradient: 'linear-gradient(135deg, #78350f 0%, #f59e0b 100%)', icon: '₿', label: 'Crypto' },
+    matieres_premieres: { gradient: 'linear-gradient(135deg, #7f1d1d 0%, #ef4444 100%)', icon: '⛏️', label: 'Mat. Premières' },
+    ai_tech:      { gradient: 'linear-gradient(135deg, #4c1d95 0%, #8b5cf6 100%)', icon: '🤖', label: 'IA & Tech' },
+};
+const _defaultBanner = { gradient: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)', icon: '📊', label: 'Analyse' };
+
 function initTopStories() {
     const container = document.getElementById('top-stories');
     if (!container) return;
 
-    const featured = newsDatabase.slice(0, 3);
+    const featured = newsDatabase.filter(a => a.description && a.description.length >= 20).slice(0, 3);
     if (featured.length === 0) {
-        container.innerHTML = '<p class="empty-state">Aucun article à la une.</p>';
+        container.innerHTML = '<p class="empty-state">Aucune analyse disponible.</p>';
         return;
     }
 
-    container.innerHTML = '<div class="top-stories-grid">' + featured.map((article, i) => {
-        const cls = i === 0 ? 'top-story top-story-main' : 'top-story';
+    container.innerHTML = '<div class="top-stories-grid">' + featured.map((article) => {
         const source = escapeHTML(article.source || '');
         const title = escapeHTML(article.title || '');
         const time = escapeHTML(article.time || '');
         const url = article.url || '#';
-        const image = article.image || '';
+        const rawCat = article.category || article.rubrique || '';
+        const rubrique = _categoryToRubrique[rawCat] || rawCat;
+        const banner = _analysisBanners[rubrique] || _defaultBanner;
 
         let summary = escapeHTML(article.description || '');
         if (summary.length > 150) summary = summary.slice(0, 147) + '...';
@@ -289,12 +304,13 @@ function initTopStories() {
             ? `<p class="story-summary">${summary}</p>`
             : '';
 
-        const imgHTML = image
-            ? `<img src="${escapeHTML(image)}" alt="" class="story-image" loading="lazy" onerror="this.remove()">`
-            : '';
+        const bannerHTML = `<div class="analysis-banner" style="background: ${banner.gradient};">
+            <span class="analysis-banner-icon">${banner.icon}</span>
+            <span class="analysis-banner-label">${banner.label}</span>
+        </div>`;
 
-        return `<article class="${cls}">
-            ${imgHTML}
+        return `<article class="top-story">
+            ${bannerHTML}
             <div class="story-body">
                 <div class="story-meta">
                     <a href="${url}" target="_blank" rel="noopener" class="source-name">${source}</a>

@@ -753,6 +753,86 @@ a {
     gap: 1.5rem;
 }
 
+/* --- Category page article cards (story-content) --- */
+.news-grid .top-story {
+    display: flex;
+    flex-direction: column;
+}
+
+.story-content {
+    padding: 1rem 1.25rem 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.story-content .news-list-source {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.story-title {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
+}
+
+.story-title a {
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.story-title a:hover {
+    color: var(--accent);
+}
+
+.story-excerpt {
+    font-family: var(--font-serif);
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-top: 0.25rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.story-source {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.story-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.story-link {
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.75rem;
+}
+
+.story-link:hover {
+    text-decoration: underline;
+}
+
 .news-card {
     padding: 1.5rem;
     background: var(--bg-primary);
@@ -924,7 +1004,7 @@ a {
 
 .top-story .story-image {
     width: 100%;
-    height: 120px;
+    height: 60px;
     object-fit: cover;
     display: block;
 }
@@ -990,11 +1070,37 @@ a {
 }
 
 .top-story-main .story-image {
-    height: 150px;
+    height: 75px;
 }
 
 .top-story-main h3 {
     font-size: 1.15rem;
+}
+
+/* --- Analysis Banner (thematic gradient) --- */
+.analysis-banner {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.analysis-banner-icon {
+    font-size: 1.8rem;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.analysis-banner-label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.9);
 }
 
 /* ============================================
@@ -1177,7 +1283,7 @@ a {
 
 .news-list-thumb {
     width: 100%;
-    height: 120px;
+    height: 60px;
     object-fit: cover;
     display: block;
     order: -1;
@@ -3514,7 +3620,7 @@ a {
     }
 
     .news-list-thumb {
-        height: 100px;
+        height: 50px;
     }
 }
 
