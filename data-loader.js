@@ -688,14 +688,15 @@ const DataLoader = (function () {
         var ts = document.getElementById('top-stories');
         if (!ts) return;
 
-        // Construire les top stories depuis les données live (marchés + matières premières)
+        // Prendre le 1er article de chaque rubrique (toutes les rubriques)
         var stories = [];
+        var categoryKeys = ['markets', 'geopolitics', 'crypto', 'commodities', 'ai_tech'];
 
-        ['markets', 'commodities'].forEach(function(cat) {
+        categoryKeys.forEach(function(cat) {
             var articles = _cache.news.categories[cat] || [];
-            articles.slice(0, 2).forEach(function(a) {
-                stories.push(a);
-            });
+            if (articles.length > 0) {
+                stories.push(articles[0]);
+            }
         });
 
         // Trier par date (plus récent d'abord) et prendre les 3 premiers
@@ -710,12 +711,30 @@ const DataLoader = (function () {
             var imgHTML = n.image
                 ? '<img src="' + n.image + '" alt="" class="story-image" loading="lazy" onerror="this.remove()">'
                 : '';
+            var rubriqueAttr = n.rubrique || '';
+            var rubriqueLabel = n.rubrique_label || '';
+            var rubriqueEmoji = n.rubrique_emoji || '';
+            var rubriqueTag = rubriqueLabel
+                ? '<span class="rubrique-badge rubrique-' + rubriqueAttr + '">' + rubriqueEmoji + ' ' + rubriqueLabel + '</span>'
+                : '';
+
+            var desc = n.description || '';
+            if (desc.length > 150) desc = desc.slice(0, 147) + '...';
+            var summaryHTML = desc
+                ? '<p class="story-summary">' + desc + '</p>'
+                : '';
+
             return '<article class="top-story' + (i === 0 ? ' top-story-main' : '') + '">' +
                 imgHTML +
-                '<a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" class="source-name">' + (n.source || '') + '</a>' +
-                '<h3><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">' + (n.title || '') + '</a></h3>' +
-                '<p>' + (n.description || '') + '</p>' +
-                '<time class="news-time">' + (n.time || '') + '</time>' +
+                '<div class="story-body">' +
+                    '<div class="story-meta">' +
+                        '<a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" class="source-name">' + (n.source || '') + '</a>' +
+                        '<time class="news-time">' + (n.time || '') + '</time>' +
+                        rubriqueTag +
+                    '</div>' +
+                    '<h3><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer">' + (n.title || '') + '</a></h3>' +
+                    summaryHTML +
+                '</div>' +
             '</article>';
         }).join('') + '</div>';
     }

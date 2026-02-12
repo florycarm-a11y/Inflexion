@@ -274,14 +274,19 @@ function initTopStories() {
         return;
     }
 
-    container.innerHTML = featured.map((article, i) => {
+    container.innerHTML = '<div class="top-stories-grid">' + featured.map((article, i) => {
         const cls = i === 0 ? 'top-story top-story-main' : 'top-story';
         const source = escapeHTML(article.source || '');
         const title = escapeHTML(article.title || '');
-        const desc = escapeHTML(article.description || '');
         const time = escapeHTML(article.time || '');
         const url = article.url || '#';
         const image = article.image || '';
+
+        let summary = escapeHTML(article.description || '');
+        if (summary.length > 150) summary = summary.slice(0, 147) + '...';
+        const summaryHTML = summary
+            ? `<p class="story-summary">${summary}</p>`
+            : '';
 
         const imgHTML = image
             ? `<img src="${escapeHTML(image)}" alt="" class="story-image" loading="lazy" onerror="this.remove()">`
@@ -289,17 +294,16 @@ function initTopStories() {
 
         return `<article class="${cls}">
             ${imgHTML}
-            <div class="story-content">
-                <span class="story-source">${source}</span>
-                <h3 class="story-title"><a href="${url}" target="_blank" rel="noopener">${title}</a></h3>
-                <p class="story-excerpt">${desc}</p>
-                <div class="story-footer">
-                    <time class="story-time">${time}</time>
-                    <a href="${url}" target="_blank" rel="noopener" class="story-link">Lire →</a>
+            <div class="story-body">
+                <div class="story-meta">
+                    <a href="${url}" target="_blank" rel="noopener" class="source-name">${source}</a>
+                    <time class="news-time">${time}</time>
                 </div>
+                <h3><a href="${url}" target="_blank" rel="noopener">${title}</a></h3>
+                ${summaryHTML}
             </div>
         </article>`;
-    }).join('');
+    }).join('') + '</div>';
 }
 
 /* ============================================
