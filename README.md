@@ -19,20 +19,47 @@ Inflexion est une application web qui agrège et présente les actualités géop
 - Ticker d'actualités en continu (breaking news)
 - Indicateurs d'impact sur les marchés
 
-### Sources Médias (25+)
+### Sources de Données (60+)
 
-**Internationaux:**
-- Reuters, Bloomberg, Financial Times, BBC News
-- Al Jazeera, CNBC, Wall Street Journal, New York Times
-- The Guardian, The Economist
+**APIs temps réel (11 sources) :**
+- CoinGecko (crypto, trending, stablecoins)
+- Finnhub (indices boursiers, calendrier économique, VIX)
+- FRED (10 indicateurs macroéconomiques US)
+- Alpha Vantage (forex, secteurs, top gainers/losers)
+- DefiLlama (TVL DeFi, protocoles, yields)
+- Alternative.me (Fear & Greed Index crypto)
+- GNews (actualités multi-catégories FR/EN)
+- metals.dev (cours métaux précieux & industriels)
+- Etherscan (ETH gas tracker)
+- Mempool.space (BTC fees, hashrate, difficulté)
+- ECB Data API (taux directeur BCE, EUR/USD fixing)
 
-**Francophones:**
-- Le Monde, Les Échos, Le Figaro, France 24
-- RFI, La Tribune, BFM Business, Capital
+**Flux RSS (49 sources) :**
 
-**Crypto & Finance:**
-- CoinDesk, Cointelegraph, The Block, Decrypt
-- MarketWatch, Morningstar, ETF.com, Seeking Alpha
+*Géopolitique (12 sources) :*
+- Le Figaro International, France 24, RFI, Courrier International
+- BBC World, Al Jazeera, The Guardian, New York Times
+- Reuters, Politico EU, Foreign Policy, CFR
+
+*Marchés & Finance (14 sources) :*
+- Le Figaro (Éco, Conjoncture, Sociétés, Flash Éco), Les Echos, BFM Business, Boursorama
+- La Tribune, Capital, MarketWatch, Yahoo Finance
+- Seeking Alpha, CNBC, Investing.com, TLDR Fintech
+
+*Crypto & Blockchain (10 sources) :*
+- CoinTelegraph FR, Cryptoast, Journal du Coin
+- CoinDesk, CoinTelegraph EN, The Block, Decrypt
+- Blockworks, Bitcoin Magazine, TLDR Crypto
+
+*Matières Premières (6 sources) :*
+- OilPrice, Kitco Gold, Kitco Metals, Mining.com
+- S&P Global Commodities, Reuters Commodities
+
+*IA & Tech (11 sources) :*
+- Le Figaro Tech, 01net, Numerama, JDN
+- TechCrunch, The Verge, Ars Technica, VentureBeat
+- Wired, MIT Technology Review, Hacker News
+- TLDR Tech, TLDR AI
 
 ### Catégories d'Actualités
 

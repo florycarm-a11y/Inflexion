@@ -113,6 +113,53 @@ function formatAlphaVantage(data) {
     return text || null;
 }
 
+function formatCommodities(data) {
+    if (!data) return null;
+    let text = '## Matières premières';
+    if (data.metals && Object.keys(data.metals).length) {
+        text += '\n### Métaux précieux\n' + Object.values(data.metals).map(m =>
+            `- ${m.label}: $${m.price_usd}/${m.unit}`
+        ).join('\n');
+    }
+    if (data.industrial && Object.keys(data.industrial).length) {
+        text += '\n### Métaux industriels\n' + Object.values(data.industrial).map(m =>
+            `- ${m.label}: $${m.price_usd_kg}/${m.unit}`
+        ).join('\n');
+    }
+    return text.includes('\n') ? text : null;
+}
+
+function formatOnChain(data) {
+    if (!data) return null;
+    let text = '## Données on-chain';
+    if (data.eth_gas) {
+        text += `\n- ETH Gas: ${data.eth_gas.low}/${data.eth_gas.standard}/${data.eth_gas.fast} gwei (low/std/fast)`;
+        if (data.eth_gas.base_fee) text += ` — base fee: ${data.eth_gas.base_fee} gwei`;
+    }
+    if (data.btc_fees) {
+        text += `\n- BTC Fees: ${data.btc_fees.half_hour} sat/vB (30min), ${data.btc_fees.economy} sat/vB (economy)`;
+    }
+    if (data.btc_mining) {
+        text += `\n- BTC Hashrate: ${data.btc_mining.hashrate_eh} EH/s`;
+    }
+    return text.includes('\n') ? text : null;
+}
+
+function formatGlobalMacro(data) {
+    if (!data) return null;
+    let text = '## Macro mondiale';
+    if (data.volatility?.vix) {
+        text += `\n- VIX: ${data.volatility.vix.value} (${data.volatility.vix.label}, ${data.volatility.vix.change > 0 ? '+' : ''}${data.volatility.vix.change}%)`;
+    }
+    if (data.ecb?.main_rate) {
+        text += `\n- Taux directeur BCE: ${data.ecb.main_rate.value}%`;
+    }
+    if (data.ecb?.eurusd) {
+        text += `\n- EUR/USD (ECB fixing): ${data.ecb.eurusd.rate}`;
+    }
+    return text.includes('\n') ? text : null;
+}
+
 // ─── Script principal ───────────────────────────────────────
 
 async function main() {
@@ -129,10 +176,13 @@ async function main() {
         macro: loadJSON('macro.json'),
         defi: loadJSON('defi.json'),
         alphaVantage: loadJSON('alpha-vantage.json'),
+        commodities: loadJSON('commodities.json'),
+        onchain: loadJSON('onchain.json'),
+        globalMacro: loadJSON('global-macro.json'),
     };
 
     const availableSources = Object.entries(sources).filter(([, v]) => v !== null).map(([k]) => k);
-    console.log(`  📊 Sources chargées : ${availableSources.join(', ')} (${availableSources.length}/6)`);
+    console.log(`  📊 Sources chargées : ${availableSources.join(', ')} (${availableSources.length}/9)`);
 
     if (availableSources.length === 0) {
         console.error('  ❌ Aucune source de données trouvée');
@@ -147,6 +197,9 @@ async function main() {
         formatMacro(sources.macro),
         formatDefi(sources.defi),
         formatAlphaVantage(sources.alphaVantage),
+        formatCommodities(sources.commodities),
+        formatOnChain(sources.onchain),
+        formatGlobalMacro(sources.globalMacro),
     ].filter(Boolean);
 
     const today = new Date().toISOString().split('T')[0];

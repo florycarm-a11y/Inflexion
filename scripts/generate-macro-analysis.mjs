@@ -71,15 +71,44 @@ async function main() {
     console.log(`  📊 ${macroData.indicators.length} indicateurs FRED chargés`);
     console.log(`  📅 Dernière mise à jour : ${macroData.updated}`);
 
+    // 1b. Charger les données complémentaires (BCE, VIX, commodités)
+    const globalMacro = loadJSON('global-macro.json');
+    const commodities = loadJSON('commodities.json');
+
+    let extraSources = 0;
+    if (globalMacro) extraSources++;
+    if (commodities) extraSources++;
+    if (extraSources) console.log(`  📊 +${extraSources} sources complémentaires (BCE/VIX, commodités)`);
+
     // 2. Préparer le message utilisateur
     const indicatorsText = macroData.indicators.map(formatIndicator).join('\n');
+
+    let extraContext = '';
+    if (globalMacro?.ecb?.main_rate) {
+        extraContext += `\n\n## Données BCE (Banque Centrale Européenne)\n- Taux directeur principal: ${globalMacro.ecb.main_rate.value}%`;
+    }
+    if (globalMacro?.ecb?.eurusd) {
+        extraContext += `\n- EUR/USD (fixing ECB): ${globalMacro.ecb.eurusd.rate}`;
+    }
+    if (globalMacro?.volatility?.vix) {
+        extraContext += `\n\n## Volatilité\n- VIX: ${globalMacro.volatility.vix.value} (${globalMacro.volatility.vix.label})`;
+    }
+    if (commodities?.metals) {
+        const metalsList = Object.values(commodities.metals).map(m => `${m.label}: $${m.price_usd}/oz`).join(', ');
+        extraContext += `\n\n## Métaux précieux\n- ${metalsList}`;
+    }
+    if (commodities?.industrial) {
+        const indList = Object.values(commodities.industrial).map(m => `${m.label}: $${m.price_usd_kg}/kg`).join(', ');
+        extraContext += `\n## Métaux industriels (indicateurs avancés)\n- ${indList}`;
+    }
+
     const userMessage = `Voici les derniers indicateurs macroéconomiques US (source: FRED, Federal Reserve Economic Data) :
 
-${indicatorsText}
+${indicatorsText}${extraContext}
 
 Date de mise à jour : ${macroData.updated}
 
-Analyse ces indicateurs et produis un briefing macroéconomique structuré.`;
+Analyse ces indicateurs et produis un briefing macroéconomique structuré avec une perspective transatlantique.`;
 
     console.log('\n  📋 Indicateurs envoyés :');
     console.log(indicatorsText.split('\n').map(l => '    ' + l).join('\n'));
@@ -118,8 +147,9 @@ Analyse ces indicateurs et produis un briefing macroéconomique structuré.`;
         const output = {
             ...analysis,
             updated: new Date().toISOString(),
-            source: 'Claude IA + FRED',
+            source: 'Claude IA + FRED + BCE + commodités',
             indicators_count: macroData.indicators.length,
+            extra_sources: extraSources,
         };
 
         const outputPath = join(DATA_DIR, 'macro-analysis.json');
