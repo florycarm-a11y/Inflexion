@@ -36,7 +36,8 @@ const DataLoader = (function () {
             messari: 'messari.json',
             europeanMarkets: 'european-markets.json',
             worldBank: 'world-bank.json',
-            newsapi: 'newsapi.json'
+            newsapi: 'newsapi.json',
+            dailyBriefing: 'daily-briefing.json'
         },
         // Durée max avant de considérer les données comme périmées (12h)
         STALE_THRESHOLD_MS: 12 * 60 * 60 * 1000,
@@ -170,7 +171,7 @@ const DataLoader = (function () {
         console.log('[DataLoader] Initialisation...');
 
         // Charger tous les fichiers en parallèle
-        const [crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour, alphaVantage, defi, sentiment, alerts, newsletter, macroAnalysis, marketBriefing, messari, europeanMarkets, worldBank, newsapi] = await Promise.all([
+        const [crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour, alphaVantage, defi, sentiment, alerts, newsletter, macroAnalysis, marketBriefing, messari, europeanMarkets, worldBank, newsapi, dailyBriefing] = await Promise.all([
             loadJSON(CONFIG.FILES.crypto),
             loadJSON(CONFIG.FILES.markets),
             loadJSON(CONFIG.FILES.news),
@@ -189,10 +190,11 @@ const DataLoader = (function () {
             loadJSON(CONFIG.FILES.messari),
             loadJSON(CONFIG.FILES.europeanMarkets),
             loadJSON(CONFIG.FILES.worldBank),
-            loadJSON(CONFIG.FILES.newsapi)
+            loadJSON(CONFIG.FILES.newsapi),
+            loadJSON(CONFIG.FILES.dailyBriefing)
         ]);
 
-        _cache = { crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour, alphaVantage, defi, sentiment, alerts, newsletter, macroAnalysis, marketBriefing, messari, europeanMarkets, worldBank, newsapi };
+        _cache = { crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour, alphaVantage, defi, sentiment, alerts, newsletter, macroAnalysis, marketBriefing, messari, europeanMarkets, worldBank, newsapi, dailyBriefing };
         _initialized = true;
 
         // Déterminer si on utilise des données live
@@ -507,44 +509,200 @@ const DataLoader = (function () {
         }
     }
 
-    // ─── Article du jour ──────────────────────────────────
+    // ─── Article du jour / Briefing stratégique ───────────
 
     /**
-     * Affiche l'article de synthèse généré par IA
+     * Affiche le briefing stratégique IA (prioritaire) ou l'article du jour (fallback).
+     *
+     * Le briefing stratégique (daily-briefing.json) est le produit phare d'Inflexion :
+     * il croise signaux géopolitiques et données de marché avec interconnexions.
+     * Si le briefing n'est pas disponible, on affiche l'article classique.
      */
     function updateArticleDuJour() {
-        const article = _cache.articleDuJour;
-        const container = document.getElementById('article-du-jour');
+        var container = document.getElementById('article-du-jour');
         if (!container) return;
 
-        if (!article || !article.titre) {
-            // Laisser la section masquée
+        // Priorité au briefing stratégique (le produit différenciant d'Inflexion)
+        var briefing = _cache.dailyBriefing;
+        if (briefing && briefing.synthese && briefing.synthese.titre) {
+            renderDailyBriefing(container, briefing);
             return;
         }
 
-        // Afficher la section (masquée par défaut tant que pas de contenu)
+        // Fallback : article du jour classique
+        var article = _cache.articleDuJour;
+        if (article && article.titre) {
+            renderClassicArticle(container, article);
+            return;
+        }
+
+        // Aucun contenu disponible — laisser le placeholder
+    }
+
+    /**
+     * Affiche le briefing stratégique avec signaux, interconnexions et risk radar.
+     * C'est LE format qui distingue Inflexion des autres plateformes d'info financière.
+     *
+     * @param {HTMLElement} container - Élément DOM #article-du-jour
+     * @param {Object} briefing - Données de daily-briefing.json
+     */
+    function renderDailyBriefing(container, briefing) {
+        // Révéler la section (masquée par défaut)
         var section = document.getElementById('article-du-jour-section');
         if (section) section.classList.remove('section-empty');
 
-        // Convertir le Markdown basique en HTML
-        let contenuHTML = (article.contenu || '')
-            .replace(/## (.+)/g, '<h3 class="article-section-title">$1</h3>')
-            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-            .replace(/\n\n/g, '</p><p>')
-            .replace(/\n/g, '<br>');
-        contenuHTML = '<p>' + contenuHTML + '</p>';
+        var s = briefing.synthese;
 
-        // Tags
-        const tagsHTML = (article.tags || [])
+        // ── Convertir le Markdown de la synthèse en HTML ──
+        var contenuHTML = markdownToHTML(s.contenu || '');
+
+        // ── Signaux géopolitiques avec interconnexions ──
+        var signauxHTML = '';
+        if (briefing.signaux && briefing.signaux.length > 0) {
+            var signauxCards = briefing.signaux.map(function(signal) {
+                // Badge de sévérité avec couleur
+                var severiteClass = signal.severite === 'urgent' ? 'severity-urgent' :
+                    signal.severite === 'attention' ? 'severity-attention' : 'severity-info';
+
+                // Emoji de catégorie
+                var catEmojis = {
+                    geopolitique: '🌍', marches: '📈', crypto: '₿',
+                    matieres_premieres: '⛏️', ai_tech: '🤖', macro: '🏛️'
+                };
+                var catEmoji = catEmojis[signal.categorie] || '📡';
+
+                // Interconnexions (la valeur ajoutée !)
+                var interHTML = '';
+                if (signal.interconnexions && signal.interconnexions.length > 0) {
+                    interHTML = '<div class="signal-interconnexions">' +
+                        '<span class="inter-label">Interconnexions :</span>' +
+                        signal.interconnexions.map(function(inter) {
+                            return '<div class="inter-item">' +
+                                '<span class="inter-arrow">→</span>' +
+                                '<strong>' + inter.secteur + '</strong> ' +
+                                '<span class="inter-impact">' + inter.impact + '</span>' +
+                                (inter.explication ? '<span class="inter-explication"> — ' + inter.explication + '</span>' : '') +
+                            '</div>';
+                        }).join('') +
+                    '</div>';
+                }
+
+                // Régions impactées
+                var regionsHTML = '';
+                if (signal.regions && signal.regions.length > 0) {
+                    regionsHTML = '<div class="signal-regions">' +
+                        signal.regions.map(function(r) {
+                            return '<span class="region-tag">' + r + '</span>';
+                        }).join('') +
+                    '</div>';
+                }
+
+                return '<div class="signal-card ' + severiteClass + '">' +
+                    '<div class="signal-header">' +
+                        '<span class="signal-emoji">' + catEmoji + '</span>' +
+                        '<h4 class="signal-title">' + signal.titre + '</h4>' +
+                        '<span class="signal-severity-badge ' + severiteClass + '">' + signal.severite + '</span>' +
+                    '</div>' +
+                    '<p class="signal-description">' + signal.description + '</p>' +
+                    interHTML +
+                    regionsHTML +
+                '</div>';
+            }).join('');
+
+            signauxHTML = '<div class="briefing-signaux">' +
+                '<h3 class="briefing-section-title">Signaux clés du jour</h3>' +
+                signauxCards +
+            '</div>';
+        }
+
+        // ── Risk Radar ──
+        var riskHTML = '';
+        if (briefing.risk_radar && briefing.risk_radar.length > 0) {
+            var riskItems = briefing.risk_radar.map(function(risk) {
+                var severiteClass = risk.severite === 'urgent' ? 'severity-urgent' :
+                    risk.severite === 'attention' ? 'severity-attention' : 'severity-info';
+                var probaLabel = risk.probabilite === 'elevee' ? 'Probabilité élevée' :
+                    risk.probabilite === 'moyenne' ? 'Probabilité moyenne' : 'Probabilité faible';
+
+                return '<div class="risk-item ' + severiteClass + '">' +
+                    '<div class="risk-header">' +
+                        '<span class="risk-icon">⚠</span>' +
+                        '<strong class="risk-title">' + risk.risque + '</strong>' +
+                        '<span class="risk-severity-badge ' + severiteClass + '">' + risk.severite + '</span>' +
+                    '</div>' +
+                    '<p class="risk-description">' + risk.description + '</p>' +
+                    '<div class="risk-meta">' +
+                        '<span class="risk-proba">' + probaLabel + '</span>' +
+                        '<span class="risk-impact">Impact : ' + risk.impact_marche + '</span>' +
+                    '</div>' +
+                '</div>';
+            }).join('');
+
+            riskHTML = '<div class="briefing-risk-radar">' +
+                '<h3 class="briefing-section-title">Risk Radar</h3>' +
+                riskItems +
+            '</div>';
+        }
+
+        // ── Tags ──
+        var tagsHTML = '';
+        if (briefing.tags && briefing.tags.length > 0) {
+            tagsHTML = '<div class="article-du-jour-tags">' +
+                briefing.tags.map(function(t) {
+                    return '<span class="article-tag">' + t + '</span>';
+                }).join('') +
+            '</div>';
+        }
+
+        // ── Sentiment global ──
+        var sentimentColor = briefing.sentiment_global === 'haussier' ? '#16a34a' :
+            briefing.sentiment_global === 'baissier' ? '#dc2626' :
+            briefing.sentiment_global === 'mixte' ? '#eab308' : '#94a3b8';
+
+        // ── Assemblage final ──
+        container.innerHTML = '' +
+            '<div class="article-du-jour-header">' +
+                '<div class="article-du-jour-badge briefing-badge">🧠 Briefing Stratégique IA</div>' +
+                '<time class="article-du-jour-date">' + formatArticleDate(briefing.date) + '</time>' +
+                '<span class="briefing-sentiment-indicator" style="color:' + sentimentColor + '">' +
+                    (briefing.sentiment_global || 'neutre') +
+                '</span>' +
+            '</div>' +
+            '<h2 class="article-du-jour-title">' + s.titre + '</h2>' +
+            (s.sous_titre ? '<p class="article-du-jour-subtitle">' + s.sous_titre + '</p>' : '') +
+            '<div class="article-du-jour-content">' + contenuHTML + '</div>' +
+            signauxHTML +
+            riskHTML +
+            tagsHTML +
+            '<div class="article-du-jour-footer">' +
+                '<span class="article-du-jour-model">' +
+                    'Généré par Claude (Sonnet) · ' + (briefing.sources_count || '?') + ' sources analysées · ' +
+                    (briefing.sources_market || '?') + ' sources de marché' +
+                '</span>' +
+            '</div>';
+    }
+
+    /**
+     * Affiche l'article du jour classique (fallback si pas de briefing).
+     * Conservé pour rétro-compatibilité avec article-du-jour.json existant.
+     *
+     * @param {HTMLElement} container - Élément DOM #article-du-jour
+     * @param {Object} article - Données de article-du-jour.json
+     */
+    function renderClassicArticle(container, article) {
+        var section = document.getElementById('article-du-jour-section');
+        if (section) section.classList.remove('section-empty');
+
+        var contenuHTML = markdownToHTML(article.contenu || '');
+
+        var tagsHTML = (article.tags || [])
             .map(function(t) { return '<span class="article-tag">' + t + '</span>'; })
             .join('');
 
-        // Points clés
-        const pointsClesHTML = (article.points_cles || [])
+        var pointsClesHTML = (article.points_cles || [])
             .map(function(p) { return '<li>' + p + '</li>'; })
             .join('');
 
-        // Sources (Tavily)
         var sourcesHTML = '';
         if (article.sources && article.sources.length > 0) {
             sourcesHTML = '<div class="article-du-jour-sources"><h4>Sources</h4><ul>' +
@@ -572,6 +730,22 @@ const DataLoader = (function () {
             '<div class="article-du-jour-footer">' +
                 '<span class="article-du-jour-model">Généré par Claude (Haiku) · Sources : ' + sourcesLabel + '</span>' +
             '</div>';
+    }
+
+    /**
+     * Convertit du Markdown basique en HTML.
+     * Gère : ## titres, **gras**, paragraphes, sauts de ligne.
+     *
+     * @param {string} md - Texte Markdown
+     * @returns {string} HTML
+     */
+    function markdownToHTML(md) {
+        var html = md
+            .replace(/## (.+)/g, '<h3 class="article-section-title">$1</h3>')
+            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\n\n/g, '</p><p>')
+            .replace(/\n/g, '<br>');
+        return '<p>' + html + '</p>';
     }
 
     function formatArticleDate(dateStr) {
@@ -1598,6 +1772,7 @@ const DataLoader = (function () {
         getEuropeanMarkets: () => _cache.europeanMarkets,
         getWorldBank: () => _cache.worldBank,
         getNewsAPI: () => _cache.newsapi,
+        getDailyBriefing: () => _cache.dailyBriefing,
 
         // État
         isInitialized: () => _initialized,

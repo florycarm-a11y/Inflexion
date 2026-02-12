@@ -1,0 +1,80 @@
+# Inflexion — Briefing IA Quotidien Stratégique
+# Exécuté 1x/jour à 08h UTC (après fetch-data à 06h et article à 07h)
+#
+# Ce workflow génère le briefing stratégique qui croise signaux géopolitiques
+# et données de marché — le produit phare d'Inflexion.
+#
+# Prérequis :
+#   - ANTHROPIC_API_KEY dans GitHub Secrets (console.anthropic.com)
+#   - PAT_TOKEN dans GitHub Secrets (pour committer)
+#   - data/news.json + data de marché (générés par fetch-data.yml)
+
+name: "🧠 Generate Daily Briefing"
+
+on:
+  schedule:
+    # Tous les jours à 08h UTC (2h après le fetch, 1h après l'article)
+    - cron: '0 8 * * *'
+
+  # Exécution manuelle depuis l'onglet Actions (utile pour tester)
+  workflow_dispatch:
+
+  # Exécuter aussi au push sur main quand le script change
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/generate-daily-briefing.mjs'
+      - 'scripts/lib/prompts.mjs'
+      - '.github/workflows/generate-daily-briefing.yml'
+
+# Permissions nécessaires pour committer les fichiers
+permissions:
+  contents: write
+
+# Une seule exécution à la fois
+concurrency:
+  group: "generate-daily-briefing"
+  cancel-in-progress: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: "📥 Checkout du repo"
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: "🟢 Setup Node.js 22"
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: "🧠 Génération du briefing stratégique"
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-daily-briefing.mjs
+
+      - name: "📝 Commit et push"
+        run: |
+          git config user.name "Inflexion Bot"
+          git config user.email "bot@inflexionhub.com"
+
+          # Ajouter le briefing généré
+          [ -f data/daily-briefing.json ] && git add data/daily-briefing.json || true
+
+          # Vérifier s'il y a des changements
+          if git diff --staged --quiet; then
+            echo "Aucun changement"
+            exit 0
+          fi
+
+          # Commit avec timestamp
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+          git commit -m "🧠 Briefing IA quotidien — ${TIMESTAMP}
+
+          Briefing stratégique généré par Claude Sonnet (signaux + interconnexions + risk radar)."
+
+          git push

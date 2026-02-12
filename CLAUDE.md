@@ -2,7 +2,7 @@
 
 ## 1. Vue d'ensemble
 
-**Inflexion** est une plateforme d'intelligence financiere automatisee combinant analyses geopolitiques et donnees de marche en temps reel. Le systeme agrege **15 APIs**, **122 flux RSS** et utilise **Claude Haiku** pour generer des syntheses IA quotidiennes.
+**Inflexion** est une plateforme d'intelligence financiere automatisee combinant analyses geopolitiques et donnees de marche en temps reel. Le systeme agrege **15 APIs**, **122 flux RSS** et utilise **Claude Sonnet** (briefing strategique) + **Claude Haiku** (classification, alertes) pour generer des syntheses IA quotidiennes.
 
 **URL de production** : https://florycarm-a11y.github.io/Inflexion/
 
@@ -92,16 +92,17 @@ data-loader.js (frontend)
     └── Fallback vers app.js si JSON indisponibles
 ```
 
-### Flux IA (Claude Haiku)
+### Flux IA (Claude Haiku + Sonnet)
 ```
 GitHub Actions (cron quotidien)
     ↓
-scripts/generate-article.mjs     → data/article-du-jour.json
-scripts/analyze-sentiment.mjs    → data/sentiment.json
-scripts/generate-alerts.mjs      → data/alerts.json
-scripts/generate-newsletter.mjs  → data/newsletter.json
-scripts/generate-macro-analysis.mjs → data/macro-analysis.json
-scripts/generate-market-briefing.mjs → data/market-briefing.json
+scripts/generate-daily-briefing.mjs → data/daily-briefing.json  (Claude Sonnet — briefing strategique)
+scripts/generate-article.mjs     → data/article-du-jour.json    (Claude Haiku — article synthese)
+scripts/analyze-sentiment.mjs    → data/sentiment.json           (Claude Haiku — sentiment)
+scripts/generate-alerts.mjs      → data/alerts.json              (Claude Haiku — alertes)
+scripts/generate-newsletter.mjs  → data/newsletter.json          (Claude Haiku — newsletter)
+scripts/generate-macro-analysis.mjs → data/macro-analysis.json   (Claude Haiku — macro)
+scripts/generate-market-briefing.mjs → data/market-briefing.json (Claude Haiku — briefing marche)
 ```
 
 ## 4. Sources API (15)
@@ -296,6 +297,48 @@ python scripts/check-french.py
 - `app.js` : fallback messages contextualises par widget
 - `geopolitics.html`, `markets.html`, `crypto.html`, `commodities.html`, `etf.html`, `analysis.html`, `cgu.html`, `mentions-legales.html`, `confidentialite.html` : nav premium + footer sources
 - `CLAUDE.md` : documentation session
+
+### Session 2026-02-12 (4) — Briefing IA Quotidien Strategique
+
+**Contexte :** Nouvelle feature phare d'Inflexion — un briefing strategique quotidien qui croise signaux geopolitiques et donnees de marche avec interconnexions et risk radar. Utilise Claude Sonnet (vs Haiku pour les autres taches) pour la qualite d'analyse.
+
+**Nouveau script :** `scripts/generate-daily-briefing.mjs`
+- Charge 12 sources de donnees (news, marches, crypto, macro, commodities, etc.)
+- Selectionne les 20-30 articles les plus importants (diversite par rubrique)
+- Construit un contexte multi-sources en markdown
+- Appelle Claude Sonnet (`claude-sonnet-4-5-20250929`) avec prompt strategique
+- Produit : synthese 300-500 mots, 3-5 signaux avec interconnexions, 3 risques (risk radar)
+- Sortie : `data/daily-briefing.json`
+- Mode `--dry-run` pour valider sans appeler Claude
+
+**Nouveau workflow :** `.github/workflows/generate-daily-briefing.yml`
+- Cron quotidien 08h UTC (apres fetch-data 06h et article 07h)
+- Declenchement manuel (workflow_dispatch)
+- Commit automatique du briefing
+
+**Nouveau prompt :** `DAILY_BRIEFING_SYSTEM_PROMPT` dans `scripts/lib/prompts.mjs`
+- Ton "analyste senior" (Economist/FT/Stratfor)
+- Structure : synthese + signaux + interconnexions + risk radar
+- Regles d'interconnexion : chaque signal DOIT avoir 2+ liens vers d'autres secteurs
+
+**Frontend :** Section "Article du jour" transformee en "Briefing Strategique IA"
+- Priorite au briefing (`daily-briefing.json`) avec fallback vers article classique
+- Cartes de signaux avec badges de severite et interconnexions visuelles
+- Risk radar avec indicateurs de probabilite et impact
+- Tags et sentiment global colore
+- Responsive mobile
+
+**Fichiers modifies :**
+- `scripts/lib/claude-api.mjs` : ajout couts Sonnet dans TOKEN_COSTS
+- `scripts/lib/prompts.mjs` : +1 prompt (DAILY_BRIEFING_SYSTEM_PROMPT)
+- `data-loader.js` : chargement daily-briefing.json, nouveau rendu briefing, getter public
+- `index.html` : section "Briefing Strategique IA" (titre, sous-titre, placeholder)
+- `styles.css` : +CSS briefing (signal-card, interconnexions, risk-radar, severity badges, responsive)
+- `CLAUDE.md` : documentation session
+
+**Fichiers crees :**
+- `scripts/generate-daily-briefing.mjs` : script principal de generation
+- `.github/workflows/generate-daily-briefing.yml` : workflow CI/CD
 
 ### PRs precedentes
 
