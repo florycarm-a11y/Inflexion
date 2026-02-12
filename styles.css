@@ -3120,6 +3120,304 @@ a {
     font-style: italic;
 }
 
+/* ─── Briefing Stratégique IA ─── */
+
+/* Badge spécifique au briefing (vs l'article classique) */
+.briefing-badge {
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    color: #fff !important;
+    font-weight: 700;
+}
+
+/* Indicateur de sentiment global dans le header */
+.briefing-sentiment-indicator {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* ── Titre de section (Signaux / Risk Radar) ── */
+.briefing-section-title {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+}
+
+/* ── Cartes de signaux géopolitiques ── */
+.briefing-signaux {
+    margin-top: 1.5rem;
+}
+
+.signal-card {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--accent);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.signal-card:hover {
+    transform: translateX(4px);
+    box-shadow: 0 2px 12px rgba(16, 185, 129, 0.1);
+}
+
+.signal-card.severity-urgent {
+    border-left-color: #dc2626;
+}
+
+.signal-card.severity-attention {
+    border-left-color: #eab308;
+}
+
+.signal-card.severity-info {
+    border-left-color: #3b82f6;
+}
+
+.signal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.signal-emoji {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.signal-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    flex: 1;
+}
+
+.signal-severity-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+}
+
+.signal-severity-badge.severity-urgent {
+    background: rgba(220, 38, 38, 0.15);
+    color: #ef4444;
+}
+
+.signal-severity-badge.severity-attention {
+    background: rgba(234, 179, 8, 0.15);
+    color: #eab308;
+}
+
+.signal-severity-badge.severity-info {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+}
+
+.signal-description {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0.3rem 0 0.8rem;
+}
+
+/* ── Interconnexions (la valeur ajoutée Inflexion) ── */
+.signal-interconnexions {
+    margin-top: 0.6rem;
+    padding: 0.8rem;
+    background: rgba(16, 185, 129, 0.05);
+    border-radius: var(--radius-sm);
+}
+
+.inter-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.inter-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.35rem;
+    line-height: 1.4;
+    flex-wrap: wrap;
+}
+
+.inter-arrow {
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.inter-impact {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.inter-explication {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+/* ── Régions impactées ── */
+.signal-regions {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.region-tag {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.5rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+}
+
+/* ── Risk Radar ── */
+.briefing-risk-radar {
+    margin-top: 1.5rem;
+}
+
+.risk-item {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.8rem;
+    border-left: 4px solid var(--text-muted);
+}
+
+.risk-item.severity-urgent {
+    border-left-color: #dc2626;
+    background: rgba(220, 38, 38, 0.04);
+}
+
+.risk-item.severity-attention {
+    border-left-color: #eab308;
+}
+
+.risk-item.severity-info {
+    border-left-color: #3b82f6;
+}
+
+.risk-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.risk-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.risk-title {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    flex: 1;
+}
+
+.risk-severity-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+}
+
+.risk-severity-badge.severity-urgent {
+    background: rgba(220, 38, 38, 0.15);
+    color: #ef4444;
+}
+
+.risk-severity-badge.severity-attention {
+    background: rgba(234, 179, 8, 0.15);
+    color: #eab308;
+}
+
+.risk-severity-badge.severity-info {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+}
+
+.risk-description {
+    font-size: 0.83rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0 0 0.5rem;
+}
+
+.risk-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+}
+
+.risk-proba {
+    padding: 0.1rem 0.4rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-sm);
+}
+
+.risk-impact {
+    font-style: italic;
+}
+
+/* ── Responsive briefing (mobile) ── */
+@media (max-width: 768px) {
+    .signal-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+
+    .risk-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+
+    .inter-item {
+        flex-direction: column;
+        gap: 0.1rem;
+    }
+
+    .risk-meta {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+}
+
 /* --- Rubrique Filters --- */
 .rubrique-filters {
     display: flex;

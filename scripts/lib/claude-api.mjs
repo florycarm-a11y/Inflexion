@@ -151,6 +151,7 @@ async function rateLimitDelay(minDelayMs) {
 /** Coûts approximatifs par million de tokens (USD) */
 const TOKEN_COSTS = {
     'claude-haiku-4-5-20251001': { input: 0.80, output: 4.00 },
+    'claude-sonnet-4-5-20250929': { input: 3.00, output: 15.00 },
 };
 
 /** Statistiques d'utilisation cumulées pour la session en cours */
