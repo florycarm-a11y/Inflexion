@@ -1,21 +1,28 @@
 # Inflexion — Workflow de récupération automatique des données
 # Exécuté toutes les 6h + manuellement + à chaque push sur main
 #
-# APIs (11 sources) :
+# APIs (15 sources) :
 #   - CoinGecko (crypto) → sans clé
 #   - Finnhub (marchés, VIX) → FINNHUB_API_KEY
 #   - GNews (actualités) → GNEWS_API_KEY
 #   - FRED (macro US, 10 séries) → FRED_API_KEY
 #   - Alpha Vantage (forex, secteurs) → ALPHA_VANTAGE_API_KEY
+#   - Messari (crypto avancé) → MESSARI_API_KEY
+#   - Twelve Data (indices européens) → TWELVE_DATA_API_KEY
+#   - NewsAPI (news complémentaires) → NEWSAPI_API_KEY
+#   - World Bank (macro internationale) → sans clé
+#   + Traduction EN→FR (Claude Haiku) → ANTHROPIC_API_KEY (optionnel)
 #   - Alternative.me, DefiLlama, ECB, Mempool.space, metals.dev, Etherscan → sans clé
 #
-# Flux RSS (78 sources spécialisées, sans clé) :
-#   🌍 Géopolitique (20) : France 24, BBC, Al Jazeera, Brookings, CFR, CSIS, Carnegie,
-#     War on the Rocks, The Diplomat, Middle East Eye...
-#   📈 Marchés (18) : MarketWatch, Yahoo Finance, Wolf Street, Calculated Risk...
+# Flux RSS (97 sources spécialisées, sans clé) :
+#   🌍 Géopolitique (21) : France 24, BBC, Al Jazeera, Brookings, CFR, CSIS, Carnegie,
+#     War on the Rocks, The Diplomat, Middle East Eye, Le Monde Intl...
+#   📈 Marchés (25) : MarketWatch, Yahoo Finance, Wolf Street, Calculated Risk,
+#     Le Monde Éco, Challenges, BIS, IMF Blog, WEF, PIIE, VoxEU, OECD...
 #   ₿ Crypto (14) : Cryptoast, Journal du Coin, Blockworks, Unchained, Chainalysis...
-#   ⛏️ Commodités (12) : OilPrice, Rigzone, Natural Gas Intel, MetalMiner, Mining.com...
-#   🤖 IA & Tech (17) : TechCrunch, IEEE Spectrum, Krebs, BleepingComputer, The Register...
+#   ⛏️ Commodités (19) : OilPrice, Rigzone, Natural Gas Intel, MetalMiner, Mining.com,
+#     IEA, IRENA, Carbon Brief, CleanTechnica, Energy Monitor...
+#   🤖 IA & Tech (18) : TechCrunch, IEEE Spectrum, Krebs, BleepingComputer, The Register...
 #
 # Résultat : fichiers JSON dans /data/ committés et déployés automatiquement
 
@@ -48,7 +55,7 @@ concurrency:
 jobs:
   fetch:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
       - name: "📥 Checkout du repo"
@@ -70,7 +77,20 @@ jobs:
           GNEWS_API_KEY: ${{ secrets.GNEWS_API_KEY }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
+          MESSARI_API_KEY: ${{ secrets.MESSARI_API_KEY }}
+          TWELVE_DATA_API_KEY: ${{ secrets.TWELVE_DATA_API_KEY }}
+          NEWSAPI_API_KEY: ${{ secrets.NEWSAPI_API_KEY }}
         run: node scripts/fetch-data.mjs
+
+      - name: "🌐 Traduction immédiate EN→FR"
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -n "$ANTHROPIC_API_KEY" ]; then
+            node scripts/translate-articles.mjs
+          else
+            echo "⚠ ANTHROPIC_API_KEY non définie — traduction différée"
+          fi
 
       - name: "📝 Commit et push des données"
         run: |

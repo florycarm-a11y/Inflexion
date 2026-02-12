@@ -32,7 +32,11 @@ const DataLoader = (function () {
             alerts:  'alerts.json',
             newsletter: 'newsletter.json',
             macroAnalysis: 'macro-analysis.json',
-            marketBriefing: 'market-briefing.json'
+            marketBriefing: 'market-briefing.json',
+            messari: 'messari.json',
+            europeanMarkets: 'european-markets.json',
+            worldBank: 'world-bank.json',
+            newsapi: 'newsapi.json'
         },
         // Durée max avant de considérer les données comme périmées (12h)
         STALE_THRESHOLD_MS: 12 * 60 * 60 * 1000,
@@ -166,7 +170,7 @@ const DataLoader = (function () {
         console.log('[DataLoader] Initialisation...');
 
         // Charger tous les fichiers en parallèle
-        const [crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour, alphaVantage, defi, sentiment, alerts, newsletter, macroAnalysis, marketBriefing] = await Promise.all([
+        const [crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour, alphaVantage, defi, sentiment, alerts, newsletter, macroAnalysis, marketBriefing, messari, europeanMarkets, worldBank, newsapi] = await Promise.all([
             loadJSON(CONFIG.FILES.crypto),
             loadJSON(CONFIG.FILES.markets),
             loadJSON(CONFIG.FILES.news),
@@ -181,10 +185,14 @@ const DataLoader = (function () {
             loadJSON(CONFIG.FILES.alerts),
             loadJSON(CONFIG.FILES.newsletter),
             loadJSON(CONFIG.FILES.macroAnalysis),
-            loadJSON(CONFIG.FILES.marketBriefing)
+            loadJSON(CONFIG.FILES.marketBriefing),
+            loadJSON(CONFIG.FILES.messari),
+            loadJSON(CONFIG.FILES.europeanMarkets),
+            loadJSON(CONFIG.FILES.worldBank),
+            loadJSON(CONFIG.FILES.newsapi)
         ]);
 
-        _cache = { crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour, alphaVantage, defi, sentiment, alerts, newsletter, macroAnalysis, marketBriefing };
+        _cache = { crypto, markets, news, macro, fearGreed, chart, meta, articleDuJour, alphaVantage, defi, sentiment, alerts, newsletter, macroAnalysis, marketBriefing, messari, europeanMarkets, worldBank, newsapi };
         _initialized = true;
 
         // Déterminer si on utilise des données live
@@ -636,7 +644,7 @@ const DataLoader = (function () {
         });
 
         // Générer le HTML
-        ln.innerHTML = allArticles.slice(0, 15).map(function(n) {
+        ln.innerHTML = allArticles.slice(0, 30).map(function(n) {
             var rubriqueAttr = n.rubrique || '';
             var rubriqueLabel = n.rubrique_label || '';
             var rubriqueEmoji = n.rubrique_emoji || '';
@@ -649,7 +657,15 @@ const DataLoader = (function () {
                 ? '<img src="' + n.image + '" alt="" class="news-list-thumb" loading="lazy" onerror="this.parentElement.classList.remove(\'has-thumb\');this.remove()">'
                 : '';
 
+            // Résumé concret sous la photo (max 150 car.)
+            var desc = n.description || '';
+            if (desc.length > 150) desc = desc.slice(0, 147) + '...';
+            var summaryHTML = desc
+                ? '<p class="news-list-summary">' + desc + '</p>'
+                : '';
+
             return '<article class="news-list-item' + hasThumb + '" data-rubrique="' + rubriqueAttr + '">' +
+                thumbHTML +
                 '<div class="news-list-body">' +
                     '<div class="news-list-source">' +
                         '<a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" class="source-name">' + (n.source || '') + '</a>' +
@@ -657,9 +673,8 @@ const DataLoader = (function () {
                         rubriqueTag +
                     '</div>' +
                     '<h3><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer">' + (n.title || '') + '</a></h3>' +
-                    '<p>' + (n.description || '') + '</p>' +
+                    summaryHTML +
                 '</div>' +
-                thumbHTML +
             '</article>';
         }).join('');
     }
@@ -1342,6 +1357,172 @@ const DataLoader = (function () {
         addFreshnessIndicator(container, mb.updated);
     }
 
+    // ─── Indices européens (Twelve Data) ──────────────────
+
+    /**
+     * Affiche les indices européens dans le widget dédié
+     */
+    function updateEuropeanMarketsWidget() {
+        if (!_cache.europeanMarkets?.indices?.length) return;
+
+        var container = document.getElementById('european-markets-widget');
+        if (!container) return;
+
+        var indices = _cache.europeanMarkets.indices;
+
+        container.innerHTML =
+            '<div class="euro-markets-header">' +
+                '<h4>Indices Européens</h4>' +
+                '<span class="euro-market-status">' +
+                    (_cache.europeanMarkets.summary?.market_open ? 'Ouvert' : 'Fermé') +
+                '</span>' +
+            '</div>' +
+            '<div class="euro-markets-grid">' +
+            indices.map(function(idx) {
+                var pct = formatPercent(idx.change_pct);
+                return '<div class="euro-market-item">' +
+                    '<span class="euro-market-flag">' + getFlagEmoji(idx.country) + '</span>' +
+                    '<div class="euro-market-info">' +
+                        '<span class="euro-market-name">' + idx.name + '</span>' +
+                        '<span class="euro-market-price">' + (idx.price ? idx.price.toLocaleString('fr-FR', {minimumFractionDigits: 0, maximumFractionDigits: 0}) : 'N/A') + '</span>' +
+                    '</div>' +
+                    '<span class="euro-market-change" style="color:' + (pct.positive ? 'var(--green, #16a34a)' : 'var(--red, #dc2626)') + '">' + pct.text + '</span>' +
+                '</div>';
+            }).join('') +
+            '</div>';
+
+        addFreshnessIndicator(container, _cache.europeanMarkets.updated);
+    }
+
+    function getFlagEmoji(countryCode) {
+        var flags = { FR: '🇫🇷', DE: '🇩🇪', GB: '🇬🇧', EU: '🇪🇺', ES: '🇪🇸', IT: '🇮🇹' };
+        return flags[countryCode] || '🏳️';
+    }
+
+    // ─── Données macro internationales (World Bank) ──────
+
+    /**
+     * Affiche les données macro internationales dans le widget
+     */
+    function updateWorldBankWidget() {
+        if (!_cache.worldBank?.indicators?.length) return;
+
+        var container = document.getElementById('world-bank-widget');
+        if (!container) return;
+
+        var indicators = _cache.worldBank.indicators;
+
+        container.innerHTML =
+            '<h4>Macro Internationale</h4>' +
+            indicators.map(function(ind) {
+                if (!ind.data || ind.data.length === 0) return '';
+                return '<div class="wb-indicator">' +
+                    '<h5 class="wb-indicator-label">' + ind.label + '</h5>' +
+                    '<div class="wb-indicator-grid">' +
+                    ind.data.slice(0, 6).map(function(d) {
+                        var displayVal = ind.id === 'NY.GDP.MKTP.CD'
+                            ? formatUSD(d.value, 0)
+                            : d.value.toFixed(1) + '%';
+                        return '<div class="wb-country-item">' +
+                            '<span class="wb-country-name">' + d.country_code + '</span>' +
+                            '<span class="wb-country-value">' + displayVal + '</span>' +
+                        '</div>';
+                    }).join('') +
+                    '</div>' +
+                '</div>';
+            }).join('');
+
+        addFreshnessIndicator(container, _cache.worldBank.updated);
+    }
+
+    // ─── Crypto avancé (Messari) ─────────────────────────
+
+    /**
+     * Affiche les métriques crypto avancées dans le widget dédié
+     */
+    function updateMessariWidget() {
+        if (!_cache.messari?.assets?.length) return;
+
+        var container = document.getElementById('messari-widget');
+        if (!container) return;
+
+        var gm = _cache.messari.globalMetrics;
+        var assets = _cache.messari.assets;
+
+        var globalHTML = '';
+        if (gm) {
+            globalHTML = '<div class="messari-global">' +
+                (gm.btc_dominance ? '<span>BTC Dom: ' + gm.btc_dominance.toFixed(1) + '%</span>' : '') +
+                (gm.total_market_cap ? '<span>MCap: ' + formatUSD(gm.total_market_cap, 0) + '</span>' : '') +
+                (gm.total_volume_24h ? '<span>Vol 24h: ' + formatUSD(gm.total_volume_24h, 0) + '</span>' : '') +
+            '</div>';
+        }
+
+        container.innerHTML =
+            '<h4>Crypto Avancé (Messari)</h4>' +
+            globalHTML +
+            '<div class="messari-assets">' +
+            assets.slice(0, 10).map(function(a) {
+                var pct = formatPercent(a.percent_change_24h);
+                return '<div class="messari-asset-row">' +
+                    '<span class="messari-symbol">' + (a.symbol || '') + '</span>' +
+                    '<span class="messari-price">' + (a.price ? formatUSD(a.price) : 'N/A') + '</span>' +
+                    '<span class="messari-dominance">' + (a.market_cap_dominance ? a.market_cap_dominance.toFixed(1) + '%' : '') + '</span>' +
+                    '<span class="messari-change" style="color:' + (pct.positive ? 'var(--green, #16a34a)' : 'var(--red, #dc2626)') + '">' + pct.text + '</span>' +
+                '</div>';
+            }).join('') +
+            '</div>';
+
+        addFreshnessIndicator(container, _cache.messari.updated);
+    }
+
+    // ─── Intégration NewsAPI dans le flux news ───────────
+
+    /**
+     * Fusionne les articles NewsAPI dans les news existantes
+     */
+    function mergeNewsAPIArticles() {
+        if (!_cache.newsapi?.categories || !_cache.news?.categories) return;
+
+        var categories = _cache.news.categories;
+        var newsapiCats = _cache.newsapi.categories;
+
+        var rubriqueMap = {
+            geopolitics: { rubrique: 'geopolitique', rubrique_label: 'Géopolitique', rubrique_emoji: '🌍' },
+            markets:     { rubrique: 'marches', rubrique_label: 'Marchés', rubrique_emoji: '📈' },
+            crypto:      { rubrique: 'crypto', rubrique_label: 'Crypto', rubrique_emoji: '₿' },
+            commodities: { rubrique: 'matieres_premieres', rubrique_label: 'Matières Premières', rubrique_emoji: '⛏️' },
+            ai_tech:     { rubrique: 'ai_tech', rubrique_label: 'IA & Tech', rubrique_emoji: '🤖' }
+        };
+
+        Object.keys(newsapiCats).forEach(function(cat) {
+            if (!categories[cat]) return;
+            var existing = new Set(categories[cat].map(function(a) {
+                return a.title?.toLowerCase().replace(/\s+/g, ' ').trim();
+            }));
+
+            var meta = rubriqueMap[cat];
+            newsapiCats[cat].forEach(function(a) {
+                var key = a.title?.toLowerCase().replace(/\s+/g, ' ').trim();
+                if (key && !existing.has(key)) {
+                    if (meta) {
+                        a.rubrique = meta.rubrique;
+                        a.rubrique_label = meta.rubrique_label;
+                        a.rubrique_emoji = meta.rubrique_emoji;
+                    }
+                    categories[cat].push(a);
+                    existing.add(key);
+                }
+            });
+
+            // Re-sort and limit
+            categories[cat].sort(function(a, b) {
+                return new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0);
+            });
+            categories[cat] = categories[cat].slice(0, 40);
+        });
+    }
+
     function updateDOM() {
         if (!_initialized || !_usingLiveData) return;
 
@@ -1366,6 +1547,10 @@ const DataLoader = (function () {
         updateNewsletterSection();
         updateMacroAnalysisWidget();
         updateMarketBriefingWidget();
+        updateEuropeanMarketsWidget();
+        updateWorldBankWidget();
+        updateMessariWidget();
+        mergeNewsAPIArticles();
         initRubriqueFilters();
         handleEmptyWidgets();
         console.log('[DataLoader] ✓ DOM mis à jour');
@@ -1390,6 +1575,10 @@ const DataLoader = (function () {
         getSentiment: () => _cache.sentiment,
         getAlerts:  () => _cache.alerts,
         getNewsletter: () => _cache.newsletter,
+        getMessari: () => _cache.messari,
+        getEuropeanMarkets: () => _cache.europeanMarkets,
+        getWorldBank: () => _cache.worldBank,
+        getNewsAPI: () => _cache.newsapi,
 
         // État
         isInitialized: () => _initialized,

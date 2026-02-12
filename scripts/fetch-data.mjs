@@ -3,7 +3,7 @@
  * Inflexion — Script de récupération de données en temps réel
  * Exécuté par GitHub Actions toutes les 6h
  *
- * APIs utilisées (11 sources) :
+ * APIs utilisées (15 sources) :
  * - CoinGecko (gratuit, pas de clé) → crypto + trending
  * - Finnhub (clé gratuite) → indices boursiers + calendrier éco + VIX
  * - GNews (clé gratuite) → actualités multi-catégories
@@ -15,8 +15,12 @@
  * - Etherscan (gratuit) → ETH gas tracker
  * - Mempool.space (gratuit) → BTC fees, hashrate, difficulty
  * - ECB Data API (gratuit) → taux directeur BCE, EUR/USD fixing
+ * - Messari (clé gratuite) → crypto avancé : dominance, volumes, liquidations
+ * - Twelve Data (clé gratuite) → indices européens : CAC 40, DAX, FTSE
+ * - World Bank (gratuit, pas de clé) → données macro internationales
+ * - NewsAPI (clé gratuite) → complément GNews couverture plus large
  *
- * Flux RSS (gratuit, pas de clé — 78 flux spécialisés) :
+ * Flux RSS (gratuit, pas de clé — 97 flux spécialisés) :
  * 🌍 Géopolitique (20) : Le Figaro Intl, France 24, RFI, Courrier Intl, Le Monde Diplo,
  *   BBC, Al Jazeera, Guardian, NYT, Reuters, Politico EU, Foreign Policy, CFR,
  *   Brookings, Carnegie, CSIS, War on the Rocks, Responsible Statecraft,
@@ -174,7 +178,7 @@ function parseRSSItems(xml) {
 }
 
 // ─── Sources RSS (gratuit, pas de clé API) ───────────────
-// 78 flux ultra-spécialisés couvrant 5 rubriques — mis à jour fév. 2026
+// 97 flux ultra-spécialisés couvrant 6 rubriques — mis à jour fév. 2026
 const RSS_SOURCES = [
 
     // ╔══════════════════════════════════════════════════════════╗
@@ -324,6 +328,40 @@ const RSS_SOURCES = [
     // 📧 Newsletters IA & Tech
     { url: 'https://tldr.tech/api/rss/tech',                            source: 'TLDR Tech',            cats: ['ai_tech'],   lang: 'en' },
     { url: 'https://tldr.tech/api/rss/ai',                              source: 'TLDR AI',              cats: ['ai_tech'],   lang: 'en' },
+
+    // ╔══════════════════════════════════════════════════════════╗
+    // ║  🇫🇷 SOURCES FRANCOPHONES COMPLÉMENTAIRES — 6 sources    ║
+    // ╚══════════════════════════════════════════════════════════╝
+
+    { url: 'https://www.lemonde.fr/economie/rss_full.xml',              source: 'Le Monde Éco',          cats: ['markets'] },
+    { url: 'https://www.challenges.fr/rss.xml',                         source: 'Challenges',            cats: ['markets'] },
+    { url: 'https://www.moneyvox.fr/actu/feed/',                        source: 'MoneyVox',              cats: ['markets'] },
+    { url: 'https://www.lemonde.fr/international/rss_full.xml',         source: 'Le Monde Intl',         cats: ['geopolitics'] },
+    { url: 'https://www.lefigaro.fr/rss/figaro_finances-perso.xml',    source: 'Le Figaro Finances',    cats: ['markets'] },
+    { url: 'https://www.latribune.fr/feed/entreprises-finance.xml',    source: 'La Tribune Finance',    cats: ['markets'] },
+
+    // ╔══════════════════════════════════════════════════════════╗
+    // ║  🏛️ THINK TANKS MACRO — 6 sources                        ║
+    // ╚══════════════════════════════════════════════════════════╝
+
+    { url: 'https://www.bis.org/doclist/rss/speeches.rss',              source: 'BIS (BRI)',             cats: ['markets', 'geopolitics'], lang: 'en' },
+    { url: 'https://blogs.imf.org/feed/',                               source: 'IMF Blog',             cats: ['markets', 'geopolitics'], lang: 'en' },
+    { url: 'https://www.weforum.org/feed/rss',                          source: 'World Economic Forum', cats: ['markets', 'geopolitics'], lang: 'en' },
+    { url: 'https://www.piie.com/rss.xml',                              source: 'PIIE',                 cats: ['markets'],   lang: 'en' },
+    { url: 'https://voxeu.org/feed',                                    source: 'VoxEU / CEPR',         cats: ['markets'],   lang: 'en' },
+    { url: 'https://www.oecd.org/newsroom/index.xml',                   source: 'OECD',                 cats: ['markets', 'geopolitics'], lang: 'en' },
+
+    // ╔══════════════════════════════════════════════════════════╗
+    // ║  ⚡ ÉNERGIE & CLIMAT — 7 sources                         ║
+    // ╚══════════════════════════════════════════════════════════╝
+
+    { url: 'https://www.iea.org/rss/news.xml',                          source: 'IEA',                  cats: ['commodities', 'geopolitics'], lang: 'en' },
+    { url: 'https://www.irena.org/rss',                                 source: 'IRENA',                cats: ['commodities'], lang: 'en' },
+    { url: 'https://www.carbonbrief.org/feed/',                         source: 'Carbon Brief',         cats: ['commodities'], lang: 'en' },
+    { url: 'https://cleantechnica.com/feed/',                           source: 'CleanTechnica',        cats: ['commodities', 'ai_tech'], lang: 'en' },
+    { url: 'https://www.reuters.com/arc/outboundfeeds/v3/search/section/sustainability/?outputType=xml&size=15', source: 'Reuters Sustainability', cats: ['commodities'], lang: 'en' },
+    { url: 'https://www.energymonitor.ai/feed/',                        source: 'Energy Monitor',       cats: ['commodities'], lang: 'en' },
+    { url: 'https://www.spglobal.com/commodityinsights/en/rss-feed/energy-transition', source: 'S&P Energy Transition', cats: ['commodities'], lang: 'en' },
 ];
 
 // ─── 1. CRYPTO (CoinGecko — gratuit, pas de clé) ──────────
@@ -1327,6 +1365,362 @@ async function fetchGlobalMacro() {
     }
 }
 
+// ─── 12. CRYPTO AVANCÉ (Messari — clé gratuite, 20 req/min) ──
+async function fetchMessari() {
+    const API_KEY = process.env.MESSARI_API_KEY;
+    if (!API_KEY) {
+        console.log('\n⚠️  MESSARI_API_KEY non définie — données crypto avancées ignorées');
+        console.log('   → Clé gratuite sur https://messari.io/api');
+        return false;
+    }
+
+    console.log('\n🪙 Récupération crypto avancé (Messari)...');
+    try {
+        const headers = { 'x-messari-api-key': API_KEY };
+
+        // Top assets par market cap avec métriques avancées
+        const assetsData = await fetchJSON(
+            'https://data.messari.io/api/v2/assets?fields=id,slug,symbol,name,metrics/market_data,metrics/marketcap,metrics/supply&limit=20',
+            { headers }
+        );
+
+        const assets = (assetsData.data || []).map(a => ({
+            id: a.id,
+            symbol: a.symbol,
+            name: a.name,
+            price: a.metrics?.market_data?.price_usd,
+            volume_24h: a.metrics?.market_data?.volume_last_24_hours,
+            real_volume_24h: a.metrics?.market_data?.real_volume_last_24_hours,
+            percent_change_24h: a.metrics?.market_data?.percent_change_usd_last_24_hours,
+            market_cap: a.metrics?.marketcap?.current_marketcap_usd,
+            market_cap_dominance: a.metrics?.marketcap?.marketcap_dominance_percent,
+            supply_circulating: a.metrics?.supply?.circulating,
+            supply_max: a.metrics?.supply?.max
+        }));
+
+        console.log(`  ✓ ${assets.length} assets crypto (Messari)`);
+        await new Promise(r => setTimeout(r, 3500));
+
+        // Données globales du marché
+        let globalMetrics = null;
+        try {
+            const globalData = await fetchJSON(
+                'https://data.messari.io/api/v1/global-metrics',
+                { headers }
+            );
+            const gd = globalData.data;
+            globalMetrics = {
+                btc_dominance: gd?.btc_dominance,
+                total_market_cap: gd?.market_cap,
+                total_volume_24h: gd?.volume_24h,
+                altcoin_market_cap: gd?.altcoin_market_cap,
+                defi_market_cap: gd?.defi_market_cap
+            };
+            console.log(`  ✓ Métriques globales crypto (Messari)`);
+        } catch (err) {
+            console.warn('  ⚠ Messari global metrics:', err.message);
+        }
+
+        const messariData = {
+            updated: new Date().toISOString(),
+            source: 'Messari',
+            assets,
+            globalMetrics
+        };
+
+        writeJSON('messari.json', messariData);
+        return true;
+    } catch (err) {
+        console.error('✗ Erreur Messari:', err.message);
+        return false;
+    }
+}
+
+// ─── 13. INDICES EUROPÉENS (Twelve Data — clé gratuite, 800 req/jour) ──
+async function fetchTwelveData() {
+    const API_KEY = process.env.TWELVE_DATA_API_KEY;
+    if (!API_KEY) {
+        console.log('\n⚠️  TWELVE_DATA_API_KEY non définie — indices européens ignorés');
+        console.log('   → Clé gratuite sur https://twelvedata.com/');
+        return false;
+    }
+
+    console.log('\n🇪🇺 Récupération indices européens (Twelve Data)...');
+    try {
+        const indices = [
+            { symbol: 'CAC 40',  name: 'CAC 40 (Paris)',    country: 'FR' },
+            { symbol: 'DAX',     name: 'DAX (Francfort)',   country: 'DE' },
+            { symbol: 'FTSE 100',name: 'FTSE 100 (Londres)', country: 'GB' },
+            { symbol: 'STOXX50', name: 'Euro Stoxx 50',     country: 'EU' },
+            { symbol: 'IBEX 35', name: 'IBEX 35 (Madrid)',  country: 'ES' },
+            { symbol: 'FTSEMIB', name: 'FTSE MIB (Milan)',  country: 'IT' }
+        ];
+
+        const quotes = [];
+        for (const idx of indices) {
+            try {
+                const data = await fetchJSON(
+                    `https://api.twelvedata.com/quote?symbol=${encodeURIComponent(idx.symbol)}&apikey=${API_KEY}`
+                );
+                if (data.close) {
+                    quotes.push({
+                        symbol: idx.symbol,
+                        name: idx.name,
+                        country: idx.country,
+                        price: parseFloat(data.close),
+                        open: parseFloat(data.open) || null,
+                        high: parseFloat(data.high) || null,
+                        low: parseFloat(data.low) || null,
+                        prev_close: parseFloat(data.previous_close) || null,
+                        change: data.change ? parseFloat(data.change) : null,
+                        change_pct: data.percent_change ? parseFloat(data.percent_change) : null,
+                        volume: parseInt(data.volume) || null,
+                        exchange: data.exchange || null,
+                        datetime: data.datetime || null
+                    });
+                    console.log(`  ✓ ${idx.name}: ${data.close}`);
+                }
+                // Rate limit: ~8 req/min for free tier
+                await new Promise(r => setTimeout(r, 8000));
+            } catch (err) {
+                console.warn(`  ⚠ ${idx.name}: ${err.message}`);
+            }
+        }
+
+        // Forex européen
+        const forexPairs = [
+            { symbol: 'EUR/GBP', name: 'EUR/GBP' },
+            { symbol: 'EUR/CHF', name: 'EUR/CHF' }
+        ];
+
+        const forex = [];
+        for (const pair of forexPairs) {
+            try {
+                const data = await fetchJSON(
+                    `https://api.twelvedata.com/quote?symbol=${encodeURIComponent(pair.symbol)}&apikey=${API_KEY}`
+                );
+                if (data.close) {
+                    forex.push({
+                        symbol: pair.symbol,
+                        name: pair.name,
+                        rate: parseFloat(data.close),
+                        change_pct: data.percent_change ? parseFloat(data.percent_change) : null,
+                        datetime: data.datetime || null
+                    });
+                    console.log(`  ✓ ${pair.name}: ${data.close}`);
+                }
+                await new Promise(r => setTimeout(r, 8000));
+            } catch (err) {
+                console.warn(`  ⚠ ${pair.name}: ${err.message}`);
+            }
+        }
+
+        const euroData = {
+            updated: new Date().toISOString(),
+            source: 'Twelve Data',
+            indices: quotes,
+            forex,
+            summary: {
+                total_indices: quotes.length,
+                total_forex: forex.length,
+                market_open: isEuropeanMarketOpen()
+            }
+        };
+
+        writeJSON('european-markets.json', euroData);
+        return true;
+    } catch (err) {
+        console.error('✗ Erreur Twelve Data:', err.message);
+        return false;
+    }
+}
+
+function isEuropeanMarketOpen() {
+    const now = new Date();
+    const parisHour = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Paris' }));
+    const hour = parisHour.getHours();
+    const day = parisHour.getDay();
+    return day >= 1 && day <= 5 && hour >= 9 && hour < 17;
+}
+
+// ─── 14. DONNÉES MACRO INTERNATIONALES (World Bank — gratuit, pas de clé) ──
+async function fetchWorldBank() {
+    console.log('\n🌍 Récupération données macro internationales (World Bank + IMF)...');
+    try {
+        const wbData = { updated: new Date().toISOString(), indicators: [], countries: {} };
+
+        // PIB des principales économies (dernière année disponible)
+        const gdpCountries = ['USA', 'CHN', 'JPN', 'DEU', 'GBR', 'FRA', 'IND', 'BRA', 'CAN', 'KOR'];
+        try {
+            const gdpUrl = `https://api.worldbank.org/v2/country/${gdpCountries.join(';')}/indicator/NY.GDP.MKTP.CD?format=json&per_page=50&date=2022:2024&mrv=1`;
+            const [, gdpResults] = await fetchJSON(gdpUrl);
+            if (gdpResults) {
+                wbData.indicators.push({
+                    id: 'NY.GDP.MKTP.CD',
+                    label: 'PIB nominal (USD)',
+                    data: gdpResults
+                        .filter(r => r.value !== null)
+                        .map(r => ({
+                            country: r.country.value,
+                            country_code: r.countryiso3code,
+                            value: r.value,
+                            year: r.date
+                        }))
+                        .sort((a, b) => b.value - a.value)
+                });
+                console.log(`  ✓ PIB: ${gdpResults.filter(r => r.value).length} pays`);
+            }
+            await new Promise(r => setTimeout(r, 1000));
+        } catch (err) {
+            console.warn('  ⚠ World Bank GDP:', err.message);
+        }
+
+        // Inflation par pays (CPI)
+        try {
+            const cpiUrl = `https://api.worldbank.org/v2/country/${gdpCountries.join(';')}/indicator/FP.CPI.TOTL.ZG?format=json&per_page=50&mrv=1`;
+            const [, cpiResults] = await fetchJSON(cpiUrl);
+            if (cpiResults) {
+                wbData.indicators.push({
+                    id: 'FP.CPI.TOTL.ZG',
+                    label: 'Inflation (CPI, % annuel)',
+                    data: cpiResults
+                        .filter(r => r.value !== null)
+                        .map(r => ({
+                            country: r.country.value,
+                            country_code: r.countryiso3code,
+                            value: Math.round(r.value * 100) / 100,
+                            year: r.date
+                        }))
+                });
+                console.log(`  ✓ Inflation: ${cpiResults.filter(r => r.value).length} pays`);
+            }
+            await new Promise(r => setTimeout(r, 1000));
+        } catch (err) {
+            console.warn('  ⚠ World Bank CPI:', err.message);
+        }
+
+        // Taux de chômage
+        try {
+            const unempUrl = `https://api.worldbank.org/v2/country/${gdpCountries.join(';')}/indicator/SL.UEM.TOTL.ZS?format=json&per_page=50&mrv=1`;
+            const [, unempResults] = await fetchJSON(unempUrl);
+            if (unempResults) {
+                wbData.indicators.push({
+                    id: 'SL.UEM.TOTL.ZS',
+                    label: 'Chômage (% population active)',
+                    data: unempResults
+                        .filter(r => r.value !== null)
+                        .map(r => ({
+                            country: r.country.value,
+                            country_code: r.countryiso3code,
+                            value: Math.round(r.value * 100) / 100,
+                            year: r.date
+                        }))
+                });
+                console.log(`  ✓ Chômage: ${unempResults.filter(r => r.value).length} pays`);
+            }
+            await new Promise(r => setTimeout(r, 1000));
+        } catch (err) {
+            console.warn('  ⚠ World Bank Unemployment:', err.message);
+        }
+
+        // Dette publique (% du PIB)
+        try {
+            const debtUrl = `https://api.worldbank.org/v2/country/${gdpCountries.join(';')}/indicator/GC.DOD.TOTL.GD.ZS?format=json&per_page=50&mrv=1`;
+            const [, debtResults] = await fetchJSON(debtUrl);
+            if (debtResults) {
+                wbData.indicators.push({
+                    id: 'GC.DOD.TOTL.GD.ZS',
+                    label: 'Dette publique (% PIB)',
+                    data: debtResults
+                        .filter(r => r.value !== null)
+                        .map(r => ({
+                            country: r.country.value,
+                            country_code: r.countryiso3code,
+                            value: Math.round(r.value * 100) / 100,
+                            year: r.date
+                        }))
+                });
+                console.log(`  ✓ Dette publique: ${debtResults.filter(r => r.value).length} pays`);
+            }
+        } catch (err) {
+            console.warn('  ⚠ World Bank Debt:', err.message);
+        }
+
+        writeJSON('world-bank.json', wbData);
+        return true;
+    } catch (err) {
+        console.error('✗ Erreur World Bank:', err.message);
+        return false;
+    }
+}
+
+// ─── 15. ACTUALITÉS COMPLÉMENTAIRES (NewsAPI — clé gratuite, 100 req/jour) ──
+async function fetchNewsAPI() {
+    const API_KEY = process.env.NEWSAPI_API_KEY;
+    if (!API_KEY) {
+        console.log('\n⚠️  NEWSAPI_API_KEY non définie — NewsAPI ignoré');
+        console.log('   → Clé gratuite sur https://newsapi.org/register');
+        return false;
+    }
+
+    console.log('\n📰 Récupération actualités complémentaires (NewsAPI)...');
+    try {
+        const queries = [
+            { key: 'geopolitics', q: 'geopolitics OR "trade war" OR sanctions OR NATO OR BRICS', sortBy: 'publishedAt' },
+            { key: 'markets',     q: '"stock market" OR "Wall Street" OR "Federal Reserve" OR ECB OR "interest rates"', sortBy: 'publishedAt' },
+            { key: 'crypto',      q: 'bitcoin OR ethereum OR cryptocurrency OR "crypto regulation"', sortBy: 'publishedAt' },
+            { key: 'commodities', q: '"oil price" OR "gold price" OR commodities OR OPEC OR "natural gas"', sortBy: 'publishedAt' },
+            { key: 'ai_tech',     q: '"artificial intelligence" OR OpenAI OR Nvidia OR semiconductor', sortBy: 'publishedAt' }
+        ];
+
+        const newsapiArticles = {};
+        for (const q of queries) {
+            try {
+                const data = await fetchJSON(
+                    'https://newsapi.org/v2/everything?' + new URLSearchParams({
+                        q: q.q,
+                        language: 'en',
+                        sortBy: q.sortBy,
+                        pageSize: '10',
+                        apiKey: API_KEY
+                    })
+                );
+                newsapiArticles[q.key] = (data.articles || [])
+                    .filter(a => a.title && a.title !== '[Removed]')
+                    .map(a => ({
+                        title: a.title,
+                        description: a.description || '',
+                        source: a.source?.name || 'Unknown',
+                        url: a.url,
+                        image: a.urlToImage,
+                        publishedAt: a.publishedAt,
+                        time: formatDate(a.publishedAt),
+                        lang: 'en',
+                        via: 'newsapi'
+                    }));
+                console.log(`  ✓ NewsAPI ${q.key}: ${newsapiArticles[q.key].length} articles`);
+                await new Promise(r => setTimeout(r, 1200));
+            } catch (err) {
+                console.warn(`  ⚠ NewsAPI ${q.key}: ${err.message}`);
+                newsapiArticles[q.key] = [];
+            }
+        }
+
+        const newsapiData = {
+            updated: new Date().toISOString(),
+            source: 'NewsAPI',
+            categories: newsapiArticles,
+            total: Object.values(newsapiArticles).reduce((s, arr) => s + arr.length, 0)
+        };
+
+        writeJSON('newsapi.json', newsapiData);
+        return true;
+    } catch (err) {
+        console.error('✗ Erreur NewsAPI:', err.message);
+        return false;
+    }
+}
+
 // ─── Exécution principale ──────────────────────────────────
 async function main() {
     console.log('═══════════════════════════════════════');
@@ -1345,7 +1739,11 @@ async function main() {
         chart: await fetchGoldBitcoinChart(),
         commodities: await fetchCommodityPrices(),
         onchain: await fetchOnChainData(),
-        globalMacro: await fetchGlobalMacro()
+        globalMacro: await fetchGlobalMacro(),
+        messari: await fetchMessari(),
+        europeanMarkets: await fetchTwelveData(),
+        worldBank: await fetchWorldBank(),
+        newsapi: await fetchNewsAPI()
     };
 
     // Écrire un fichier de métadonnées
