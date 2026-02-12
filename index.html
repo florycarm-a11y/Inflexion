@@ -300,6 +300,24 @@
                         <span class="sidebar-source">Source : Alternative.me</span>
                     </div>
 
+                    <!-- Sentiment IA -->
+                    <div class="sidebar-block sidebar-card" id="sentiment-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg> Sentiment IA</h3>
+                        <div id="sentiment-widget" class="sentiment-widget">
+                            <p class="sentiment-placeholder">Chargement...</p>
+                        </div>
+                        <span class="sidebar-source">Source : Analyse Claude IA</span>
+                    </div>
+
+                    <!-- Alertes Marché -->
+                    <div class="sidebar-block sidebar-card" id="alerts-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Alertes Marché</h3>
+                        <div id="alerts-widget" class="alerts-widget">
+                            <p class="alerts-placeholder">Chargement...</p>
+                        </div>
+                        <span class="sidebar-source">Source : Analyse Claude IA</span>
+                    </div>
+
                     <!-- 4. Crypto (Trending + Calendrier consolidé) -->
                     <div class="sidebar-block sidebar-card" id="trending-section">
                         <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Crypto & Tendances</h3>
@@ -391,13 +409,14 @@
     </section>
 
     <!-- Newsletter -->
-    <section class="newsletter-section" id="newsletter">
+    <section class="newsletter-section" id="newsletter" data-section="newsletter-section">
         <div class="container">
             <div class="newsletter-box">
                 <div class="newsletter-content">
                     <h2 class="newsletter-title">Restez informé</h2>
                     <p class="newsletter-text">Recevez chaque matin notre synthèse des événements géopolitiques et financiers qui comptent. Gratuit, sans spam.</p>
                 </div>
+                    <div id="newsletter-content" class="newsletter-content-ai"></div>
                 <form class="newsletter-form" id="newsletter-form">
                     <div class="newsletter-input-group">
                         <input type="email" class="newsletter-input" id="newsletter-email" placeholder="votre@email.com" required aria-label="Adresse email pour la newsletter">
