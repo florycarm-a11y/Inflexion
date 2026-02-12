@@ -37,7 +37,7 @@ const DRY_RUN = process.argv.includes('--dry-run');
 
 // Modèle utilisé : Sonnet pour la qualité d'analyse stratégique (1 appel/jour)
 const MODEL = 'claude-sonnet-4-5-20250929';
-const MAX_TOKENS = 4096;
+const MAX_TOKENS = 8192;
 
 // ─── Utilitaires ─────────────────────────────────────────────
 
