@@ -149,7 +149,7 @@ button:focus-visible,
 
     /* Ã¢ÂÂÃ¢ÂÂ Layout Ã¢ÂÂÃ¢ÂÂ */
     --header-height: 60px;
-    --header-height-scrolled: 48px;
+    --header-height-scrolled: 60px;
     --content-max-width: 1240px;
     --sidebar-width: 320px;
 }
@@ -211,27 +211,27 @@ a {
 }
 
 .header.scrolled .header-top {
-    padding: 0.3rem 0;
+    padding: 0.5rem 0;
     height: auto;
-    min-height: var(--header-height-scrolled, 48px);
+    min-height: var(--header-height-scrolled, 60px);
 }
 
 .header.scrolled .logo-img {
-    height: 40px;
+    height: 44px;
 }
 
 .header.scrolled .desktop-nav-link {
-    font-size: 0.76rem;
-    padding: 0.2rem 0.45rem;
+    font-size: 0.82rem;
+    padding: 0.25rem 0.55rem;
 }
 
 .header.scrolled .market-status {
-    font-size: 0.7rem;
-    padding: 0.15rem 0.5rem;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.55rem;
 }
 
 .header.scrolled::after {
-    height: 2px;
+    height: 3px;
 }
 
 .header-left {
