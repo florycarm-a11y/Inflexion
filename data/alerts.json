@@ -1,89 +1,77 @@
 {
-  "updated": "2026-02-13T13:41:05.586Z",
+  "updated": "2026-02-13T19:14:03.681Z",
   "alertes": [
     {
       "id": "alert-2026-02-13-001",
-      "titre": "Nasdaq 100 en baisse de 2,03%",
-      "texte": "L'indice technologique Nasdaq 100 (QQQ) recule à 600,64 USD, reflétant une pression généralisée sur le secteur des grandes capitalisations technologiques.",
-      "categorie": "marches",
+      "titre": "Bitcoin bondit de 5,79% à $69 021",
+      "texte": "Le Bitcoin enregistre une hausse significative de 5,79% sur 24h, atteignant $69 021. Ce mouvement haussier intervient dans un contexte de marché volatil.",
+      "categorie": "crypto",
       "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-02-13T13:41:05.586Z",
+      "impact": "haussier",
+      "horodatage": "2026-02-13T19:14:03.681Z",
       "donnees": {
-        "symbole": "QQQ",
-        "nom": "Nasdaq 100",
-        "prix": 600.64,
-        "variation": -2.03
+        "symbole": "BTC",
+        "nom": "Bitcoin",
+        "prix": 69021,
+        "variation_24h": 5.79,
+        "market_cap": 1380402919772
       }
     },
     {
       "id": "alert-2026-02-13-002",
-      "titre": "Or en déclin de 3,47%",
-      "texte": "L'ETF or (GLD) chute à 451,39 USD, signalant un appétit réduit pour les actifs refuge malgré un contexte de tensions.",
-      "categorie": "matieres_premieres",
+      "titre": "Ethereum progresse de 7,80% à $2 054,60",
+      "texte": "Ethereum affiche une performance de +7,80% sur 24h, cotant à $2 054,60. Cette augmentation dépasse celle du Bitcoin, signalant une rotation sectorielle au sein du marché crypto.",
+      "categorie": "crypto",
       "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-02-13T13:41:05.586Z",
+      "impact": "haussier",
+      "horodatage": "2026-02-13T19:14:03.681Z",
       "donnees": {
-        "symbole": "GLD",
-        "nom": "Or (ETF)",
-        "prix": 451.39,
-        "variation": -3.47
+        "symbole": "ETH",
+        "nom": "Ethereum",
+        "prix": 2054.6,
+        "variation_24h": 7.8,
+        "market_cap": 247891385935
       }
     },
     {
       "id": "alert-2026-02-13-003",
-      "titre": "Pétrole recule de 3,18%",
-      "texte": "L'ETF pétrole (USO) cède à 76,38 USD, reflétant une pression baissière sur les cours de l'énergie.",
-      "categorie": "matieres_premieres",
+      "titre": "Solana surperforme avec +9,15% à $84,57",
+      "texte": "Solana enregistre la plus forte hausse avec +9,15% sur 24h, atteignant $84,57. Cette performance contraste avec l'indice de peur extrême du marché.",
+      "categorie": "crypto",
       "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-02-13T13:41:05.586Z",
+      "impact": "haussier",
+      "horodatage": "2026-02-13T19:14:03.681Z",
       "donnees": {
-        "symbole": "USO",
-        "nom": "Pétrole (ETF)",
-        "prix": 76.38,
-        "variation": -3.18
+        "symbole": "SOL",
+        "nom": "Solana",
+        "prix": 84.57,
+        "variation_24h": 9.15,
+        "market_cap": 48033111754
       }
     },
     {
       "id": "alert-2026-02-13-004",
-      "titre": "Apple plonge de 5,00%",
-      "texte": "Apple (AAPL) recule fortement à 261,73 USD, marquant l'une des plus fortes baisses parmi les mega-capitalisations technologiques.",
-      "categorie": "ai_tech",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-02-13T13:41:05.586Z",
+      "titre": "L'or s'apprécie de 2,33% à $461,92",
+      "texte": "Le GLD (ETF Or) gagne 2,33%, s'établissant à $461,92. Cette progression reflète une demande accrue pour les actifs refuges.",
+      "categorie": "matieres_premieres",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-02-13T19:14:03.681Z",
       "donnees": {
-        "symbole": "AAPL",
-        "nom": "Apple",
-        "prix": 261.73,
-        "variation": -5
+        "symbole": "GLD",
+        "nom": "Or (ETF)",
+        "prix": 461.92,
+        "variation": 2.33
       }
     },
     {
       "id": "alert-2026-02-13-005",
-      "titre": "Tesla cède 2,62%",
-      "texte": "Tesla (TSLA) baisse à 417,07 USD, enregistrant une correction modérée dans un contexte de vente généralisée sur le secteur tech.",
-      "categorie": "ai_tech",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-02-13T13:41:05.586Z",
-      "donnees": {
-        "symbole": "TSLA",
-        "nom": "Tesla",
-        "prix": 417.07,
-        "variation": -2.62
-      }
-    },
-    {
-      "id": "alert-2026-02-13-006",
-      "titre": "Fear & Greed Index à 9 (peur extrême)",
-      "texte": "L'indice Fear & Greed atteint 9, signalant une peur extrême des investisseurs et un climat de marché hautement stressé.",
-      "categorie": "marches",
+      "titre": "Fear & Greed Index plonge à 9 (Extrême peur)",
+      "texte": "L'indice Fear & Greed atteint 9, signalant une situation d'extrême peur sur le marché crypto. Ce niveau contraste paradoxalement avec les gains observés sur BTC, ETH et SOL.",
+      "categorie": "crypto",
       "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-02-13T13:41:05.586Z",
+      "impact": "neutre",
+      "horodatage": "2026-02-13T19:14:03.681Z",
       "donnees": {
         "score": 9,
         "label": "Extreme Fear",
@@ -92,10 +80,10 @@
     }
   ],
   "stats": {
-    "total": 6,
+    "total": 5,
     "urgent": 1,
-    "attention": 5,
-    "info": 0
+    "attention": 3,
+    "info": 1
   },
   "model": "claude-haiku-4-5-20251001"
 }
