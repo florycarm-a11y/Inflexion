@@ -1,29 +1,33 @@
 {
-  "updated": "2026-02-13T06:45:44.531Z",
+  "updated": "2026-02-13T12:31:59.710Z",
   "feeds": [
     {
       "source": "Le Figaro",
       "url": "https://www.lefigaro.fr/rss/figaro_international.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 4
     },
     {
       "source": "France 24",
       "url": "https://www.france24.com/fr/rss",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 2
     },
     {
       "source": "RFI",
       "url": "https://www.rfi.fr/fr/rss",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 3
     },
     {
       "source": "Courrier International",
       "url": "https://www.courrierinternational.com/feed/all/rss.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 3
     },
     {
       "source": "Le Monde Diplomatique",
@@ -36,25 +40,29 @@
       "source": "BBC World",
       "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 4
     },
     {
       "source": "Al Jazeera",
       "url": "https://www.aljazeera.com/xml/rss/all.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "The Guardian",
       "url": "https://www.theguardian.com/world/rss",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 2
     },
     {
       "source": "New York Times",
       "url": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 3
     },
     {
       "source": "Reuters",
@@ -67,73 +75,85 @@
       "source": "Politico EU",
       "url": "https://www.politico.eu/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 4
     },
     {
       "source": "Foreign Policy",
       "url": "https://foreignpolicy.com/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "CFR",
       "url": "https://feeds.cfr.org/all",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Brookings",
       "url": "https://www.brookings.edu/feed/",
       "count": 0,
-      "ok": true
+      "ok": true,
+      "relevant": 0
     },
     {
       "source": "Carnegie",
       "url": "https://carnegieendowment.org/rss/solr.xml",
       "count": 0,
-      "ok": true
+      "ok": true,
+      "relevant": 0
     },
     {
       "source": "CSIS",
       "url": "https://www.csis.org/rss.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Responsible Statecraft",
       "url": "https://responsiblestatecraft.org/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "War on the Rocks",
       "url": "https://warontherocks.com/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "The Diplomat",
       "url": "https://thediplomat.com/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Middle East Eye",
       "url": "https://www.middleeasteye.net/rss",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 4
     },
     {
       "source": "IFRI",
       "url": "https://www.ifri.org/fr/rss.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "IRIS",
       "url": "https://www.iris-france.org/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "FRS",
@@ -145,8 +165,9 @@
     {
       "source": "GRIP",
       "url": "https://www.grip.org/feed/",
-      "count": 5,
-      "ok": true
+      "count": 0,
+      "ok": false,
+      "error": "fetch failed"
     },
     {
       "source": "Chatham House",
@@ -166,50 +187,57 @@
       "source": "Al-Monitor",
       "url": "https://www.al-monitor.com/rss",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Middle East Institute",
       "url": "https://www.mei.edu/rss.xml",
       "count": 0,
-      "ok": true
+      "ok": true,
+      "relevant": 0
     },
     {
       "source": "SIPRI",
       "url": "https://www.sipri.org/rss.xml",
       "count": 0,
       "ok": false,
-      "error": "HTTP 404: https://www.sipri.org/rss.xml"
+      "error": "fetch failed"
     },
     {
       "source": "Crisis Group",
       "url": "https://www.crisisgroup.org/rss.xml",
-      "count": 5,
-      "ok": true
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 415: https://www.crisisgroup.org/rss.xml"
     },
     {
       "source": "Le Figaro Éco",
       "url": "https://www.lefigaro.fr/rss/figaro_economie.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 2
     },
     {
       "source": "Le Figaro",
       "url": "https://www.lefigaro.fr/rss/figaro_conjoncture.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 8
     },
     {
       "source": "Le Figaro Sociétés",
       "url": "https://www.lefigaro.fr/rss/figaro_societes.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 4
     },
     {
       "source": "Le Figaro Flash Éco",
       "url": "https://www.lefigaro.fr/rss/figaro_flash-eco.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 3
     },
     {
       "source": "Les Echos",
@@ -222,7 +250,8 @@
       "source": "BFM Business",
       "url": "https://www.bfmtv.com/rss/economie/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 4
     },
     {
       "source": "Zonebourse",
@@ -235,7 +264,8 @@
       "source": "La Tribune",
       "url": "https://www.latribune.fr/feed.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 3
     },
     {
       "source": "Capital",
@@ -248,67 +278,78 @@
       "source": "MarketWatch",
       "url": "https://feeds.content.dowjones.io/public/rss/mw_topstories",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Yahoo Finance",
       "url": "https://finance.yahoo.com/news/rssindex",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 3
     },
     {
       "source": "Seeking Alpha",
       "url": "https://seekingalpha.com/market_currents.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "CNBC",
       "url": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 3
     },
     {
       "source": "Investing.com",
       "url": "https://www.investing.com/rss/news.rss",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 3
     },
     {
       "source": "Wolf Street",
       "url": "https://wolfstreet.com/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Calculated Risk",
       "url": "https://www.calculatedriskblog.com/feeds/posts/default?alt=rss",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Naked Capitalism",
       "url": "https://www.nakedcapitalism.com/feed",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "TLDR Fintech",
       "url": "https://tldr.tech/api/rss/fintech",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Financial Times",
       "url": "https://www.ft.com/rss/home",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 10
     },
     {
       "source": "Nikkei Asia",
       "url": "https://asia.nikkei.com/rss/feed/nar",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 10
     },
     {
       "source": "L'AGEFI",
@@ -321,7 +362,8 @@
       "source": "BCE",
       "url": "https://www.ecb.europa.eu/rss/press.html",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Banque de France",
@@ -334,97 +376,113 @@
       "source": "CoinTelegraph FR",
       "url": "https://fr.cointelegraph.com/rss",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Cryptoast",
       "url": "https://cryptoast.fr/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Journal du Coin",
       "url": "https://journalducoin.com/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "CoinDesk",
       "url": "https://www.coindesk.com/arc/outboundfeeds/rss/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "CoinTelegraph",
       "url": "https://cointelegraph.com/rss",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "The Block",
       "url": "https://www.theblock.co/rss.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Decrypt",
       "url": "https://decrypt.co/feed",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Blockworks",
       "url": "https://blockworks.co/feed",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Bitcoin Magazine",
       "url": "https://bitcoinmagazine.com/.rss/full/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "The Defiant",
       "url": "https://www.thedefiant.io/feed",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Unchained",
       "url": "https://unchainedcrypto.com/feed/",
-      "count": 5,
-      "ok": true
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 415: https://unchainedcrypto.com/feed/"
     },
     {
       "source": "Web3 is Going Great",
       "url": "https://www.web3isgoinggreat.com/feed.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Chainalysis",
       "url": "https://blog.chainalysis.com/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "TLDR Crypto",
       "url": "https://tldr.tech/api/rss/crypto",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "OilPrice",
       "url": "https://oilprice.com/rss/main",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Rigzone",
       "url": "https://www.rigzone.com/news/rss/rigzone_latest.aspx",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Reuters Commodities",
@@ -437,7 +495,8 @@
       "source": "Natural Gas Intel",
       "url": "https://www.naturalgasintel.com/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "GoldPrice.org",
@@ -450,13 +509,15 @@
       "source": "Mining.com",
       "url": "https://www.mining.com/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "MetalMiner",
       "url": "https://agmetalminer.com/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "S&P Global",
@@ -469,7 +530,8 @@
       "source": "Feedstuffs",
       "url": "https://www.feedstuffs.com/rss.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "DTN Ag News",
@@ -481,8 +543,9 @@
     {
       "source": "Hellenic Shipping",
       "url": "https://www.hellenicshippingnews.com/feed/",
-      "count": 5,
-      "ok": true
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 415: https://www.hellenicshippingnews.com/feed/"
     },
     {
       "source": "Trading Economics",
@@ -523,61 +586,64 @@
       "source": "Le Figaro Tech",
       "url": "https://www.lefigaro.fr/rss/figaro_secteur_high-tech.xml",
       "count": 5,
-      "ok": true
-    },
-    {
-      "source": "01net",
-      "url": "https://www.01net.com/feed/",
-      "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Numerama",
       "url": "https://www.numerama.com/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 2
     },
     {
       "source": "Next INpact",
       "url": "https://www.nextinpact.com/feed",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 3
     },
     {
       "source": "TechCrunch",
       "url": "https://techcrunch.com/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 3
     },
     {
       "source": "The Verge",
       "url": "https://www.theverge.com/rss/index.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 1
     },
     {
       "source": "Ars Technica",
       "url": "https://feeds.arstechnica.com/arstechnica/technology-lab",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Wired",
       "url": "https://www.wired.com/feed/rss",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 2
     },
     {
       "source": "Hacker News",
       "url": "https://hnrss.org/frontpage?count=15",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 2
     },
     {
       "source": "VentureBeat AI",
       "url": "https://venturebeat.com/category/ai/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "MIT Tech Review",
@@ -590,55 +656,64 @@
       "source": "IEEE Spectrum AI",
       "url": "https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "MarkTechPost",
       "url": "https://www.marktechpost.com/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "The Decoder",
       "url": "https://the-decoder.com/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Krebs on Security",
       "url": "https://krebsonsecurity.com/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "BleepingComputer",
       "url": "https://www.bleepingcomputer.com/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "The Register",
       "url": "https://www.theregister.com/headlines.atom",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 4
     },
     {
       "source": "TLDR Tech",
       "url": "https://tldr.tech/api/rss/tech",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "TLDR AI",
       "url": "https://tldr.tech/api/rss/ai",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Stratechery",
       "url": "https://stratechery.com/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "The Information",
@@ -651,37 +726,43 @@
       "source": "Simon Willison",
       "url": "https://simonwillison.net/atom/everything/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Le Monde Éco",
       "url": "https://www.lemonde.fr/economie/rss_full.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 4
     },
     {
       "source": "Challenges",
       "url": "https://www.challenges.fr/rss.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 4
     },
     {
       "source": "MoneyVox",
       "url": "https://www.moneyvox.fr/actu/feed/",
       "count": 0,
-      "ok": true
+      "ok": true,
+      "relevant": 0
     },
     {
       "source": "Le Monde Intl",
       "url": "https://www.lemonde.fr/international/rss_full.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 2
     },
     {
       "source": "Le Figaro Finances",
       "url": "https://www.lefigaro.fr/rss/figaro_finances-perso.xml",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "La Tribune Finance",
@@ -701,7 +782,8 @@
       "source": "IMF Blog",
       "url": "https://blogs.imf.org/feed/",
       "count": 0,
-      "ok": true
+      "ok": true,
+      "relevant": 0
     },
     {
       "source": "World Economic Forum",
@@ -749,13 +831,15 @@
       "source": "Carbon Brief",
       "url": "https://www.carbonbrief.org/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "CleanTechnica",
       "url": "https://cleantechnica.com/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 4
     },
     {
       "source": "Reuters Sustainability",
@@ -768,7 +852,8 @@
       "source": "Energy Monitor",
       "url": "https://www.energymonitor.ai/feed/",
       "count": 5,
-      "ok": true
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "S&P Energy Transition",
@@ -779,8 +864,8 @@
     }
   ],
   "stats": {
-    "success": 92,
-    "failed": 32,
-    "articles": 435
+    "success": 87,
+    "failed": 36,
+    "articles": 368
   }
 }
