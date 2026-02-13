@@ -759,14 +759,7 @@ const DataLoader = (function () {
             (s.sous_titre ? '<p class="article-du-jour-subtitle">' + s.sous_titre + '</p>' : '') +
             '<div class="article-du-jour-content">' + contenuHTML + '</div>' +
             signauxHTML +
-            riskHTML +
-            tagsHTML +
-            '<div class="article-du-jour-footer">' +
-                '<span class="article-du-jour-model">' +
-                    'Généré par Claude (Sonnet) · ' + (briefing.sources_count || '?') + ' sources analysées · ' +
-                    (briefing.sources_market || '?') + ' sources de marché' +
-                '</span>' +
-            '</div>';
+            riskHTML;
     }
 
     /**
@@ -812,11 +805,7 @@ const DataLoader = (function () {
             (article.sous_titre ? '<p class="article-du-jour-subtitle">' + article.sous_titre + '</p>' : '') +
             (pointsClesHTML ? '<div class="article-du-jour-points-cles"><h4>Points clés</h4><ul>' + pointsClesHTML + '</ul></div>' : '') +
             '<div class="article-du-jour-content">' + contenuHTML + '</div>' +
-            sourcesHTML +
-            (tagsHTML ? '<div class="article-du-jour-tags">' + tagsHTML + '</div>' : '') +
-            '<div class="article-du-jour-footer">' +
-                '<span class="article-du-jour-model">Généré par Claude (Haiku) · Sources : ' + sourcesLabel + '</span>' +
-            '</div>';
+            sourcesHTML;
     }
 
     /**
