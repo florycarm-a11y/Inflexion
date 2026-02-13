@@ -3261,7 +3261,7 @@ a {
 }
 
 .article-du-jour {
-    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(0, 210, 120, 0.03) 100%);
+    background: url('assets/briefing-bg.svg') center/cover no-repeat;
     border: 1px solid var(--border-color);
     border-left: 4px solid var(--accent);
     border-radius: var(--radius-lg);
@@ -3273,12 +3273,15 @@ a {
 .article-du-jour::before {
     content: '';
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, rgba(0, 210, 120, 0.06) 0%, transparent 70%);
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(244, 244, 237, 0.88) 100%);
     pointer-events: none;
+    z-index: 0;
+}
+
+.article-du-jour > * {
+    position: relative;
+    z-index: 1;
 }
 
 .article-du-jour-header {
@@ -5024,6 +5027,174 @@ a {
     background: linear-gradient(270deg, var(--navy) 0%, transparent 100%);
 }
 
+/* ============================================
+   Interactive Sidebar Widgets (TACHE 3)
+   ============================================ */
+
+/* Scroll-in animations */
+.sidebar-card {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.4s ease, transform 0.4s ease, box-shadow var(--transition-fast);
+}
+
+.sidebar-card.widget-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered animation delay for adjacent cards */
+.sidebar-card:nth-child(2) { transition-delay: 0.05s; }
+.sidebar-card:nth-child(3) { transition-delay: 0.1s; }
+.sidebar-card:nth-child(4) { transition-delay: 0.15s; }
+
+/* Data row hover effects */
+.market-row:hover,
+.macro-card:hover,
+.wb-country-item:hover,
+.eu-market-row:hover,
+.messari-asset:hover,
+.defi-protocol:hover {
+    background: rgba(16, 94, 45, 0.04);
+    border-radius: 4px;
+    transition: background 0.15s ease;
+}
+
+/* Trend arrows for positive/negative values */
+.trend-arrow {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    gap: 0.15rem;
+}
+
+.trend-arrow-up::before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 5px solid #16a34a;
+}
+
+.trend-arrow-down::before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid #dc2626;
+}
+
+/* Inline sparkline container */
+.sparkline {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 0.3rem;
+}
+
+.sparkline svg {
+    vertical-align: middle;
+}
+
+/* Widget toggle button */
+.widget-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.15rem 0.4rem;
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    font-size: 0.6rem;
+    font-family: inherit;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-left: auto;
+    float: right;
+}
+
+.widget-toggle:hover {
+    background: rgba(16, 94, 45, 0.06);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.widget-toggle.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+/* Sortable column headers */
+.sortable-header {
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.15s;
+}
+
+.sortable-header:hover {
+    color: var(--accent);
+}
+
+.sortable-header::after {
+    content: ' \2195';
+    font-size: 0.6rem;
+    opacity: 0.4;
+}
+
+.sortable-header.sort-asc::after {
+    content: ' \2191';
+    opacity: 1;
+    color: var(--accent);
+}
+
+.sortable-header.sort-desc::after {
+    content: ' \2193';
+    opacity: 1;
+    color: var(--accent);
+}
+
+/* Macro change arrow indicators - enhanced */
+.macro-change-positive::before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-bottom: 4px solid currentColor;
+    margin-right: 0.2rem;
+    vertical-align: middle;
+}
+
+.macro-change-negative::before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 4px solid currentColor;
+    margin-right: 0.2rem;
+    vertical-align: middle;
+}
+
+/* Value highlight on data change */
+@keyframes valueFlash {
+    0% { background: rgba(16, 185, 129, 0.15); }
+    100% { background: transparent; }
+}
+
+.value-updated {
+    animation: valueFlash 1s ease-out;
+    border-radius: 2px;
+}
+
 /* --- Macro grid layout --- */
 .macro-indicators {
     display: grid !important;
@@ -5038,6 +5209,8 @@ a {
     gap: 0.3rem;
     padding: 0.6rem;
     border-radius: var(--radius-sm, 6px);
+    cursor: default;
+    transition: background 0.15s ease;
 }
 
 .macro-card-body {
@@ -5744,6 +5917,29 @@ a {
     font-variant-numeric: tabular-nums;
 }
 
+.wb-more-link {
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px dashed var(--border-color);
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.wb-more-link:hover {
+    background: rgba(16, 94, 45, 0.06);
+    border-color: var(--accent);
+}
+
+.wb-more-link .wb-country-name {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.wb-more-arrow {
+    font-size: 1rem;
+    color: var(--accent);
+    line-height: 1;
+}
+
 /* ============================================
    Messari Crypto Widget
    ============================================ */
@@ -6083,6 +6279,327 @@ a {
     color: var(--text-muted);
     font-size: var(--fs-xs);
     font-style: italic;
+}
+
+/* ============================================
+   Country Page
+   ============================================ */
+
+/* Country Selector Grid */
+.country-selector {
+    margin-bottom: 2rem;
+}
+
+.country-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.country-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 1.5rem 1rem;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.country-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(16, 94, 45, 0.1);
+    transform: translateY(-2px);
+}
+
+.country-card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.country-card-flag {
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.country-card-name {
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.country-card-region {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.country-card-gdp {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    margin-top: 0.2rem;
+}
+
+/* Country Detail */
+.country-detail {
+    animation: fadeIn 0.3s ease;
+}
+
+.country-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.5rem 1rem;
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-size: var(--fs-sm);
+    font-family: inherit;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    transition: all 0.2s;
+}
+
+.country-back-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.country-detail-header {
+    margin-bottom: 2rem;
+}
+
+.country-detail-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.country-detail-flag {
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.country-detail-title h2 {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.country-detail-meta {
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+}
+
+/* Indicator Cards */
+.country-ind-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.country-ind-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 1.2rem;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    transition: box-shadow 0.2s;
+}
+
+.country-ind-card:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.country-ind-card.severity-low {
+    border-left: 3px solid #10b981;
+}
+
+.country-ind-card.severity-medium {
+    border-left: 3px solid #f59e0b;
+}
+
+.country-ind-card.severity-high {
+    border-left: 3px solid #ef4444;
+}
+
+.country-ind-supplemental {
+    border-left: 3px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.01);
+}
+
+.country-ind-icon {
+    flex-shrink: 0;
+    color: var(--accent);
+    opacity: 0.7;
+    margin-top: 0.1rem;
+}
+
+.country-ind-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.country-ind-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.country-ind-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.country-ind-unit {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+}
+
+.country-ind-rank {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+    flex-shrink: 0;
+}
+
+.country-ind-rank-num {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.country-ind-rank-total {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+}
+
+/* Comparison Table */
+.country-comparison {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.country-comparison-title {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.country-comparison-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.country-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--fs-sm);
+}
+
+.country-comparison-table th {
+    text-align: left;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    border-bottom: 2px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.country-comparison-table td {
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid var(--border-light);
+    font-variant-numeric: tabular-nums;
+}
+
+.country-comparison-table tr:hover {
+    background: rgba(16, 94, 45, 0.03);
+}
+
+.country-row-selected {
+    background: rgba(16, 94, 45, 0.06);
+    font-weight: 600;
+}
+
+.country-row-selected td {
+    border-bottom-color: var(--accent);
+}
+
+.country-comp-name {
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.country-comp-val {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.country-sources {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-light);
+}
+
+/* Country page responsive */
+@media (max-width: 768px) {
+    .country-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .country-ind-cards {
+        grid-template-columns: 1fr;
+    }
+    .country-detail-flag {
+        font-size: 2rem;
+    }
+    .country-detail-title h2 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .country-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+    .country-card {
+        padding: 1rem 0.5rem;
+    }
+    .country-card-flag {
+        font-size: 2rem;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Premium page responsive */

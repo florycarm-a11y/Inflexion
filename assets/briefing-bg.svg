@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B3D1E"/>
+      <stop offset="50%" stop-color="#105E2D"/>
+      <stop offset="100%" stop-color="#0A4420"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+    </pattern>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="0.8" fill="rgba(255,255,255,0.06)"/>
+    </pattern>
+    <radialGradient id="spotlight" cx="75%" cy="20%" r="50%">
+      <stop offset="0%" stop-color="rgba(16,185,129,0.12)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+  <!-- Base gradient -->
+  <rect width="1200" height="600" fill="url(#bg)"/>
+  <!-- Grid pattern -->
+  <rect width="1200" height="600" fill="url(#grid)"/>
+  <!-- Dot pattern -->
+  <rect width="1200" height="600" fill="url(#dots)"/>
+  <!-- Spotlight glow -->
+  <rect width="1200" height="600" fill="url(#spotlight)"/>
+  <!-- Abstract data visualization lines -->
+  <g opacity="0.08" stroke="#10b981" fill="none" stroke-width="1.5">
+    <!-- Upward trend line -->
+    <polyline points="0,450 100,430 200,440 300,410 400,380 500,390 600,350 700,320 800,340 900,280 1000,250 1100,220 1200,180"/>
+    <!-- Support line -->
+    <polyline points="0,480 200,470 400,460 600,450 800,440 1000,430 1200,420" stroke-dasharray="4,4"/>
+    <!-- Candlestick hints -->
+    <line x1="150" y1="420" x2="150" y2="450"/>
+    <line x1="350" y1="390" x2="350" y2="420"/>
+    <line x1="550" y1="340" x2="550" y2="370"/>
+    <line x1="750" y1="310" x2="750" y2="340"/>
+    <line x1="950" y1="240" x2="950" y2="270"/>
+  </g>
+  <!-- Decorative circles (data nodes) -->
+  <g opacity="0.06" fill="#10b981">
+    <circle cx="900" cy="280" r="4"/>
+    <circle cx="1000" cy="250" r="3"/>
+    <circle cx="1100" cy="220" r="5"/>
+    <circle cx="700" cy="320" r="3"/>
+    <circle cx="500" cy="390" r="4"/>
+  </g>
+  <!-- Subtle horizontal scan lines -->
+  <g opacity="0.03" stroke="#fff" stroke-width="0.5">
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+  </g>
+</svg>
