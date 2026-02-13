@@ -1,86 +1,116 @@
 {
-  "updated": "2026-02-12T19:32:40.747Z",
+  "updated": "2026-02-13T03:26:47.351Z",
   "alertes": [
     {
-      "id": "alert-2026-02-12-001",
-      "titre": "Or en baisse de 2.89% à $454.13",
-      "texte": "L'or recule de 2.89% pour s'établir à $454.13 par once, reflétant un affaiblissement de la demande défensive.",
+      "id": "alert-2026-02-13-001",
+      "titre": "XRP bondit de 11% en une semaine",
+      "texte": "Le token XRP enregistre une hausse de 10.97% sur 7 jours, reflétant une dynamique positive notable sur le marché des cryptoactifs.",
+      "categorie": "crypto",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-02-13T03:26:47.350Z",
+      "donnees": {
+        "symbole": "XRP",
+        "nom": "XRP",
+        "prix": 1.35,
+        "variation_7d": 10.97
+      }
+    },
+    {
+      "id": "alert-2026-02-13-002",
+      "titre": "Nasdaq 100 recule de 2% à $600.64",
+      "texte": "L'indice Nasdaq 100 (QQQ) perd 2.03%, signalant une correction sur le segment technologique américain.",
+      "categorie": "marches",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-02-13T03:26:47.350Z",
+      "donnees": {
+        "symbole": "QQQ",
+        "nom": "Nasdaq 100",
+        "prix": 600.64,
+        "variation": -2.03
+      }
+    },
+    {
+      "id": "alert-2026-02-13-003",
+      "titre": "Or en baisse de 3.47% à $451.39",
+      "texte": "L'ETF Or (GLD) décline de 3.47%, réduisant l'attrait des actifs refuge traditionnels dans un contexte de marché volatile.",
       "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-12T19:32:40.747Z",
+      "horodatage": "2026-02-13T03:26:47.350Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
-        "prix": 454.13,
-        "variation": -2.89
+        "prix": 451.39,
+        "variation": -3.47
       }
     },
     {
-      "id": "alert-2026-02-12-002",
-      "titre": "Pétrole brut recule de 3.55% à $76.09",
-      "texte": "Le pétrole enregistre une baisse de 3.55%, passant à $76.09 le baril, dans un contexte de pression vendeuse accrue.",
+      "id": "alert-2026-02-13-004",
+      "titre": "Pétrole baisse de 3.18% à $76.38",
+      "texte": "L'ETF Pétrole (USO) perd 3.18%, reflétant une pression baissière sur les énergies fossiles et les préoccupations macroéconomiques.",
       "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-12T19:32:40.747Z",
+      "horodatage": "2026-02-13T03:26:47.350Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
-        "prix": 76.09,
-        "variation": -3.55
+        "prix": 76.38,
+        "variation": -3.18
       }
     },
     {
-      "id": "alert-2026-02-12-003",
-      "titre": "Apple chute de 4.72% à $262.51",
-      "texte": "Apple perd 4.72% pour atteindre $262.51, affichant une performance nettement négative parmi les valeurs technologiques.",
+      "id": "alert-2026-02-13-005",
+      "titre": "Apple chute de 5% à $261.73",
+      "texte": "Apple (AAPL) enregistre une baisse significative de 5.00%, marquant une correction majeure sur le titre phare du secteur technologique.",
       "categorie": "ai_tech",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-12T19:32:40.747Z",
+      "horodatage": "2026-02-13T03:26:47.350Z",
       "donnees": {
         "symbole": "AAPL",
         "nom": "Apple",
-        "prix": 262.51,
-        "variation": -4.72
+        "prix": 261.73,
+        "variation": -5
       }
     },
     {
-      "id": "alert-2026-02-12-004",
-      "titre": "Tesla recule de 2.55% à $417.34",
-      "texte": "Tesla cède 2.55% à $417.34 par action, reflétant une correction dans le secteur automobile-électrique.",
+      "id": "alert-2026-02-13-006",
+      "titre": "Tesla cède 2.62% à $417.07",
+      "texte": "Tesla (TSLA) recule de 2.62%, participant à la correction du secteur technologique et automobile.",
       "categorie": "ai_tech",
       "severite": "info",
       "impact": "baissier",
-      "horodatage": "2026-02-12T19:32:40.747Z",
+      "horodatage": "2026-02-13T03:26:47.350Z",
       "donnees": {
         "symbole": "TSLA",
         "nom": "Tesla",
-        "prix": 417.34,
-        "variation": -2.55
+        "prix": 417.07,
+        "variation": -2.62
       }
     },
     {
-      "id": "alert-2026-02-12-005",
-      "titre": "Fear & Greed Index en panique extrême à 5 points",
-      "texte": "L'indice Fear & Greed chute à 5 points (peur extrême), en recul de 7 points sur 7 jours, signalant une anxiété croissante des investisseurs.",
-      "categorie": "marches",
+      "id": "alert-2026-02-13-007",
+      "titre": "Fear & Greed Index à 9 - Peur extrême",
+      "texte": "L'indice Fear & Greed atteint 9 sur 100 signalant une peur extrême sur les marchés, indicateur de volatilité et de sentiment hautement négatif des investisseurs.",
+      "categorie": "macro",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-02-12T19:32:40.747Z",
+      "horodatage": "2026-02-13T03:26:47.350Z",
       "donnees": {
-        "score": 5,
+        "score": 9,
         "label": "Extreme Fear",
-        "variation_7j": -7
+        "variation_7j": 0
       }
     }
   ],
   "stats": {
-    "total": 5,
+    "total": 7,
     "urgent": 1,
-    "attention": 3,
-    "info": 1
+    "attention": 4,
+    "info": 2
   },
   "model": "claude-haiku-4-5-20251001"
 }
