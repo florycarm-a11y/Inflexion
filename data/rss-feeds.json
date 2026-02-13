@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-13T12:31:59.710Z",
+  "updated": "2026-02-13T18:31:04.984Z",
   "feeds": [
     {
       "source": "Le Figaro",
@@ -13,7 +13,7 @@
       "url": "https://www.france24.com/fr/rss",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 5
     },
     {
       "source": "RFI",
@@ -41,14 +41,14 @@
       "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "Al Jazeera",
       "url": "https://www.aljazeera.com/xml/rss/all.xml",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 3
     },
     {
       "source": "The Guardian",
@@ -165,9 +165,9 @@
     {
       "source": "GRIP",
       "url": "https://www.grip.org/feed/",
-      "count": 0,
-      "ok": false,
-      "error": "fetch failed"
+      "count": 5,
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Chatham House",
@@ -202,35 +202,35 @@
       "url": "https://www.sipri.org/rss.xml",
       "count": 0,
       "ok": false,
-      "error": "fetch failed"
+      "error": "HTTP 404: https://www.sipri.org/rss.xml"
     },
     {
       "source": "Crisis Group",
       "url": "https://www.crisisgroup.org/rss.xml",
-      "count": 0,
-      "ok": false,
-      "error": "HTTP 415: https://www.crisisgroup.org/rss.xml"
+      "count": 5,
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Le Figaro Éco",
       "url": "https://www.lefigaro.fr/rss/figaro_economie.xml",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 4
     },
     {
       "source": "Le Figaro",
       "url": "https://www.lefigaro.fr/rss/figaro_conjoncture.xml",
       "count": 5,
       "ok": true,
-      "relevant": 8
+      "relevant": 9
     },
     {
       "source": "Le Figaro Sociétés",
       "url": "https://www.lefigaro.fr/rss/figaro_societes.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "Le Figaro Flash Éco",
@@ -251,14 +251,14 @@
       "url": "https://www.bfmtv.com/rss/economie/",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "Zonebourse",
       "url": "https://www.zonebourse.com/rss/",
       "count": 0,
       "ok": false,
-      "error": "HTTP 403: https://www.zonebourse.com/rss/"
+      "error": "The operation was aborted due to timeout"
     },
     {
       "source": "La Tribune",
@@ -307,7 +307,7 @@
       "url": "https://www.investing.com/rss/news.rss",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "Wolf Street",
@@ -445,9 +445,9 @@
     {
       "source": "Unchained",
       "url": "https://unchainedcrypto.com/feed/",
-      "count": 0,
-      "ok": false,
-      "error": "HTTP 415: https://unchainedcrypto.com/feed/"
+      "count": 5,
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Web3 is Going Great",
@@ -543,9 +543,9 @@
     {
       "source": "Hellenic Shipping",
       "url": "https://www.hellenicshippingnews.com/feed/",
-      "count": 0,
-      "ok": false,
-      "error": "HTTP 415: https://www.hellenicshippingnews.com/feed/"
+      "count": 5,
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Trading Economics",
@@ -587,21 +587,21 @@
       "url": "https://www.lefigaro.fr/rss/figaro_secteur_high-tech.xml",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 4
     },
     {
       "source": "Numerama",
       "url": "https://www.numerama.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 4
     },
     {
       "source": "Next INpact",
       "url": "https://www.nextinpact.com/feed",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "TechCrunch",
@@ -615,7 +615,7 @@
       "url": "https://www.theverge.com/rss/index.xml",
       "count": 5,
       "ok": true,
-      "relevant": 1
+      "relevant": 0
     },
     {
       "source": "Ars Technica",
@@ -629,14 +629,14 @@
       "url": "https://www.wired.com/feed/rss",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 1
     },
     {
       "source": "Hacker News",
       "url": "https://hnrss.org/frontpage?count=15",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 3
     },
     {
       "source": "VentureBeat AI",
@@ -741,7 +741,7 @@
       "url": "https://www.challenges.fr/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "MoneyVox",
@@ -755,7 +755,7 @@
       "url": "https://www.lemonde.fr/international/rss_full.xml",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 3
     },
     {
       "source": "Le Figaro Finances",
@@ -839,7 +839,7 @@
       "url": "https://cleantechnica.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 7
     },
     {
       "source": "Reuters Sustainability",
@@ -864,8 +864,8 @@
     }
   ],
   "stats": {
-    "success": 87,
-    "failed": 36,
-    "articles": 368
+    "success": 91,
+    "failed": 32,
+    "articles": 394
   }
 }
