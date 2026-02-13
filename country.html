@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macro par Pays — Inflexion</title>
+    <meta name="description" content="Données macroéconomiques détaillées par pays : PIB, inflation, chômage, dette, taux directeurs et projections. Analyse comparative de 10 grandes économies.">
+    <meta name="keywords" content="macroéconomie, PIB, inflation, chômage, dette publique, taux directeurs, World Bank, FMI, données pays">
+    <meta property="og:title" content="Macro par Pays — Inflexion">
+    <meta property="og:description" content="Données macroéconomiques détaillées par pays : PIB, inflation, chômage, dette et projections.">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Inflexion">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Macro par Pays — Inflexion">
+    <meta name="twitter:description" content="Données macroéconomiques détaillées par pays.">
+    <meta property="og:url" content="https://florycarm-a11y.github.io/Inflexion/country.html">
+    <meta property="og:image" content="https://florycarm-a11y.github.io/Inflexion/og-image.png">
+    <meta name="twitter:image" content="https://florycarm-a11y.github.io/Inflexion/og-image.png">
+    <link rel="canonical" href="https://florycarm-a11y.github.io/Inflexion/country.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="manifest" href="manifest.json">
+    <script type="application/ld+json">
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Macro par Pays — Inflexion",
+            "description": "Données macroéconomiques détaillées par pays.",
+            "publisher": {"@type": "Organization", "name": "Inflexion"},
+            "inLanguage": "fr"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://florycarm-a11y.github.io/Inflexion/"},
+                {"@type": "ListItem", "position": 2, "name": "Macro par Pays", "item": "https://florycarm-a11y.github.io/Inflexion/country.html"}
+            ]
+        }
+    ]
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-top">
+                <div class="header-left">
+                    <button class="menu-trigger" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu de navigation">
+                        <div class="hamburger" aria-hidden="true">
+                            <span class="hamburger-bar"></span>
+                            <span class="hamburger-bar"></span>
+                            <span class="hamburger-bar"></span>
+                        </div>
+                    </button>
+                    <a href="index.html" class="logo"><img src="logo-header.png" alt="Inflexion — Géopolitique &amp; Marchés" class="logo-img"></a>
+                </div>
+                <div class="header-controls">
+                    <div class="market-status closed">
+                        <span class="market-status-dot"></span>
+                        <span class="market-status-text">Fermé</span>
+                    </div>
+                    <div class="header-search">
+                        <form class="search-form" id="search-form">
+                            <label for="search-input" class="sr-only">Rechercher sur Inflexion</label>
+                            <input type="text" class="search-input" id="search-input" placeholder="Rechercher...">
+                            <button type="submit" class="search-btn">Rechercher</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navigation Overlay -->
+        <nav class="nav-overlay" id="main-nav" aria-label="Navigation principale">
+            <div class="nav-overlay-content">
+                <div class="nav-overlay-header">
+                    <span class="nav-overlay-title">Rubriques</span>
+                    <button class="nav-close" aria-label="Fermer le menu">&times;</button>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-overlay-link">Accueil</a>
+                    <a href="geopolitics.html" class="nav-overlay-link">Géopolitique</a>
+                    <a href="markets.html" class="nav-overlay-link">Marchés</a>
+                    <a href="crypto.html" class="nav-overlay-link">Crypto</a>
+                    <a href="commodities.html" class="nav-overlay-link">Matières Premières</a>
+                    <a href="etf.html" class="nav-overlay-link">ETF</a>
+                    <a href="analysis.html" class="nav-overlay-link">Analyses</a>
+                    <a href="country.html" class="nav-overlay-link" aria-current="page">Pays</a>
+                    <a href="premium.html" class="nav-overlay-link nav-premium">Premium</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content" id="main-content">
+        <div class="container">
+            <div class="page-header" data-category="macro">
+                <h1 class="page-title">Macro par Pays</h1>
+                <p class="page-subtitle">Données macroéconomiques détaillées : PIB, inflation, chômage, dette publique et indicateurs clés par économie</p>
+            </div>
+
+            <!-- Country selector grid -->
+            <section class="country-selector" id="country-selector">
+                <div class="country-grid" role="list" aria-label="Sélection de pays">
+                    <!-- Populated by JS -->
+                    <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des pays...</span></div>
+                </div>
+            </section>
+
+            <!-- Country detail panel -->
+            <section class="country-detail" id="country-detail" aria-live="polite" hidden>
+                <button class="country-back-btn" id="country-back" aria-label="Retour à la liste des pays">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                    Tous les pays
+                </button>
+                <div class="country-detail-header" id="country-detail-header">
+                    <!-- Populated by JS -->
+                </div>
+                <div class="country-indicators-grid" id="country-indicators">
+                    <!-- Populated by JS -->
+                </div>
+                <div class="country-sources">
+                    <span class="sidebar-source">Sources : World Bank, FRED, ECB, IMF</span>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section footer-about">
+                    <strong>Inflexion</strong>
+                    <p>Plateforme d'intelligence financière combinant analyses géopolitiques, données de marché en temps réel et synthèses IA quotidiennes.</p>
+                    <p class="footer-brand-tagline">Comprendre avant d'agir. Agir avant de subir.</p>
+                    <div class="footer-social">
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" title="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 9 0 11-4s1-6.08 1-6.08a4.5 4.5 0 00 .78-2.221z"/></svg></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+                        <a href="https://github.com/florycarm-a11y/Inflexion" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.6.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                    </div>
+                    <div class="footer-sources">
+                        <span class="footer-source-tag">F.L</span>
+                        <span class="footer-source-tag">15 APIs</span>
+                        <span class="footer-source-tag">122 sources</span>
+                        <span class="footer-source-tag">CFR</span>
+                        <span class="footer-source-tag">IFRI</span>
+                        <span class="footer-source-tag">SIPRI</span>
+                        <span class="footer-source-tag">Chatham House</span>
+                        <span class="footer-source-tag">FMI</span>
+                        <span class="footer-source-tag">BCE</span>
+                        <span class="footer-source-tag">FRED</span>
+                        <span class="footer-source-tag">BIS</span>
+                        <span class="footer-source-tag">IEA</span>
+                        <span class="footer-source-tag">World Bank</span>
+                        <span class="footer-source-tag">OPEC</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <strong>Rubriques</strong>
+                    <ul class="footer-links">
+                        <li><a href="geopolitics.html">Géopolitique</a></li>
+                        <li><a href="markets.html">Marchés</a></li>
+                        <li><a href="crypto.html">Crypto</a></li>
+                        <li><a href="commodities.html">Mat. Premières</a></li>
+                        <li><a href="etf.html">ETF</a></li>
+                        <li><a href="analysis.html">Analyses</a></li>
+                        <li><a href="country.html"><strong>Pays</strong></a></li>
+                        <li><a href="premium.html"><strong>Premium</strong></a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <strong>Légal</strong>
+                    <ul class="footer-links">
+                        <li><a href="mentions-legales.html">Mentions légales</a></li>
+                        <li><a href="confidentialite.html">Confidentialité</a></li>
+                        <li><a href="cgu.html">CGU</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <strong>Projet</strong>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/florycarm-a11y/Inflexion" target="_blank" rel="noopener">GitHub</a></li>
+                        <li><a href="#newsletter">Newsletter</a></li>
+                        <li><a href="analysis.html">Méthodologie</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-disclaimer">
+                Les informations présentées sont fournies à titre informatif uniquement et ne constituent en aucun cas des conseils en investissement. Les performances passées ne préjugent pas des performances futures.
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Inflexion. Données issues de sources publiques vérifiées. Propulsé par Claude (Anthropic).
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Retour en haut">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
+    <script src="app.js"></script>
+    <script src="data-loader.js"></script>
+    <script>
+    (function() {
+        'use strict';
+
+        // Country metadata: flags, names, currencies
+        var COUNTRIES = {
+            USA: { flag: '\u{1F1FA}\u{1F1F8}', name: 'États-Unis', currency: 'USD', region: 'Amérique du Nord' },
+            CHN: { flag: '\u{1F1E8}\u{1F1F3}', name: 'Chine', currency: 'CNY', region: 'Asie' },
+            JPN: { flag: '\u{1F1EF}\u{1F1F5}', name: 'Japon', currency: 'JPY', region: 'Asie' },
+            DEU: { flag: '\u{1F1E9}\u{1F1EA}', name: 'Allemagne', currency: 'EUR', region: 'Europe' },
+            GBR: { flag: '\u{1F1EC}\u{1F1E7}', name: 'Royaume-Uni', currency: 'GBP', region: 'Europe' },
+            FRA: { flag: '\u{1F1EB}\u{1F1F7}', name: 'France', currency: 'EUR', region: 'Europe' },
+            IND: { flag: '\u{1F1EE}\u{1F1F3}', name: 'Inde', currency: 'INR', region: 'Asie' },
+            BRA: { flag: '\u{1F1E7}\u{1F1F7}', name: 'Brésil', currency: 'BRL', region: 'Amérique du Sud' },
+            CAN: { flag: '\u{1F1E8}\u{1F1E6}', name: 'Canada', currency: 'CAD', region: 'Amérique du Nord' },
+            KOR: { flag: '\u{1F1F0}\u{1F1F7}', name: 'Corée du Sud', currency: 'KRW', region: 'Asie' }
+        };
+
+        // World Bank indicator labels
+        var INDICATOR_LABELS = {
+            'NY.GDP.MKTP.CD': { label: 'PIB nominal', unit: 'USD', icon: 'chart-bar', format: 'usd' },
+            'FP.CPI.TOTL.ZG': { label: 'Inflation (CPI)', unit: '% annuel', icon: 'trending-up', format: 'pct' },
+            'SL.UEM.TOTL.ZS': { label: 'Chômage', unit: '% pop. active', icon: 'users', format: 'pct' },
+            'GC.DOD.TOTL.GD.ZS': { label: 'Dette / PIB', unit: '%', icon: 'alert-triangle', format: 'pct' }
+        };
+
+        var selectedCountry = null;
+
+        function init() {
+            // Check for URL parameter
+            var params = new URLSearchParams(window.location.search);
+            var indicatorParam = params.get('indicator');
+
+            // Wait for DataLoader
+            document.addEventListener('DOMContentLoaded', async function() {
+                var hasLiveData = await DataLoader.init();
+                if (hasLiveData) {
+                    renderCountryGrid();
+                    // Auto-select country if coming from widget
+                    if (indicatorParam) {
+                        highlightIndicator(indicatorParam);
+                    }
+                } else {
+                    renderFallback();
+                }
+            });
+        }
+
+        function renderCountryGrid() {
+            var grid = document.querySelector('.country-grid');
+            if (!grid) return;
+
+            var wb = DataLoader.getWorldBank();
+            var countryCodes = Object.keys(COUNTRIES);
+
+            grid.innerHTML = countryCodes.map(function(code) {
+                var meta = COUNTRIES[code];
+                // Get GDP value for ranking display
+                var gdpStr = '';
+                if (wb && wb.indicators) {
+                    var gdpInd = wb.indicators.find(function(i) { return i.id === 'NY.GDP.MKTP.CD'; });
+                    if (gdpInd && gdpInd.data) {
+                        var match = gdpInd.data.find(function(d) { return d.country_code === code; });
+                        if (match) gdpStr = formatLargeUSD(match.value);
+                    }
+                }
+                return '<button class="country-card" role="listitem" data-code="' + code + '" aria-label="' + meta.name + '">' +
+                    '<span class="country-card-flag">' + meta.flag + '</span>' +
+                    '<span class="country-card-name">' + meta.name + '</span>' +
+                    '<span class="country-card-region">' + meta.region + '</span>' +
+                    (gdpStr ? '<span class="country-card-gdp">PIB ' + gdpStr + '</span>' : '') +
+                '</button>';
+            }).join('');
+
+            // Click handlers
+            grid.addEventListener('click', function(e) {
+                var card = e.target.closest('.country-card');
+                if (card) {
+                    selectCountry(card.dataset.code);
+                }
+            });
+
+            // Back button
+            var backBtn = document.getElementById('country-back');
+            if (backBtn) {
+                backBtn.addEventListener('click', function() {
+                    deselectCountry();
+                });
+            }
+        }
+
+        function selectCountry(code) {
+            selectedCountry = code;
+            var meta = COUNTRIES[code];
+            if (!meta) return;
+
+            var selector = document.getElementById('country-selector');
+            var detail = document.getElementById('country-detail');
+            var header = document.getElementById('country-detail-header');
+            var indicators = document.getElementById('country-indicators');
+
+            if (selector) selector.hidden = true;
+            if (detail) detail.hidden = false;
+
+            // Render header
+            if (header) {
+                header.innerHTML =
+                    '<div class="country-detail-title">' +
+                        '<span class="country-detail-flag">' + meta.flag + '</span>' +
+                        '<div>' +
+                            '<h2>' + meta.name + '</h2>' +
+                            '<span class="country-detail-meta">' + meta.region + ' &middot; ' + meta.currency + '</span>' +
+                        '</div>' +
+                    '</div>';
+            }
+
+            // Render indicator cards
+            if (indicators) {
+                renderCountryIndicators(code, indicators);
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Update URL
+            history.pushState(null, '', 'country.html?country=' + code);
+        }
+
+        function deselectCountry() {
+            selectedCountry = null;
+            var selector = document.getElementById('country-selector');
+            var detail = document.getElementById('country-detail');
+
+            if (selector) selector.hidden = false;
+            if (detail) detail.hidden = true;
+
+            history.pushState(null, '', 'country.html');
+        }
+
+        function renderCountryIndicators(code, container) {
+            var wb = DataLoader.getWorldBank();
+            if (!wb || !wb.indicators) {
+                container.innerHTML = '<p class="loading-fallback-text">Données indisponibles pour ce pays.</p>';
+                return;
+            }
+
+            var cards = [];
+
+            // World Bank indicators
+            wb.indicators.forEach(function(ind) {
+                var meta = INDICATOR_LABELS[ind.id];
+                if (!meta || !ind.data) return;
+
+                var match = ind.data.find(function(d) { return d.country_code === code; });
+                if (!match) return;
+
+                var displayVal = meta.format === 'usd'
+                    ? formatLargeUSD(match.value)
+                    : match.value.toFixed(1) + '%';
+
+                // Determine severity class
+                var severity = '';
+                if (ind.id === 'FP.CPI.TOTL.ZG') {
+                    severity = match.value > 5 ? 'high' : match.value > 3 ? 'medium' : 'low';
+                } else if (ind.id === 'SL.UEM.TOTL.ZS') {
+                    severity = match.value > 8 ? 'high' : match.value > 5 ? 'medium' : 'low';
+                } else if (ind.id === 'GC.DOD.TOTL.GD.ZS') {
+                    severity = match.value > 100 ? 'high' : match.value > 60 ? 'medium' : 'low';
+                }
+
+                // Find rank among all countries for this indicator
+                var rank = 1;
+                var total = ind.data.length;
+                var sorted = ind.data.slice().sort(function(a, b) {
+                    if (ind.id === 'NY.GDP.MKTP.CD') return b.value - a.value; // Higher is better
+                    return a.value - b.value; // Lower is better for inflation/unemployment/debt
+                });
+                for (var i = 0; i < sorted.length; i++) {
+                    if (sorted[i].country_code === code) { rank = i + 1; break; }
+                }
+
+                cards.push(
+                    '<div class="country-ind-card' + (severity ? ' severity-' + severity : '') + '">' +
+                        '<div class="country-ind-icon">' + getIndicatorIcon(ind.id) + '</div>' +
+                        '<div class="country-ind-content">' +
+                            '<span class="country-ind-label">' + meta.label + '</span>' +
+                            '<span class="country-ind-value">' + displayVal + '</span>' +
+                            '<span class="country-ind-unit">' + meta.unit + ' (' + (match.year || '2024') + ')</span>' +
+                        '</div>' +
+                        '<div class="country-ind-rank">' +
+                            '<span class="country-ind-rank-num">#' + rank + '</span>' +
+                            '<span class="country-ind-rank-total">/ ' + total + '</span>' +
+                        '</div>' +
+                    '</div>'
+                );
+            });
+
+            // Additional context cards (static supplemental data)
+            var supplemental = getSupplementalData(code);
+            supplemental.forEach(function(item) {
+                cards.push(
+                    '<div class="country-ind-card country-ind-supplemental">' +
+                        '<div class="country-ind-icon">' + item.icon + '</div>' +
+                        '<div class="country-ind-content">' +
+                            '<span class="country-ind-label">' + item.label + '</span>' +
+                            '<span class="country-ind-value">' + item.value + '</span>' +
+                            '<span class="country-ind-unit">' + item.unit + '</span>' +
+                        '</div>' +
+                    '</div>'
+                );
+            });
+
+            // Comparison table with all countries
+            var comparisonHTML = renderComparisonTable(code, wb);
+
+            container.innerHTML = '<div class="country-ind-cards">' + cards.join('') + '</div>' + comparisonHTML;
+        }
+
+        function renderComparisonTable(code, wb) {
+            if (!wb || !wb.indicators) return '';
+
+            var html = '<div class="country-comparison">' +
+                '<h3 class="country-comparison-title">Comparaison internationale</h3>' +
+                '<div class="country-comparison-table-wrapper">' +
+                '<table class="country-comparison-table">' +
+                '<thead><tr>' +
+                    '<th>Pays</th>';
+
+            wb.indicators.forEach(function(ind) {
+                var meta = INDICATOR_LABELS[ind.id];
+                if (meta) html += '<th>' + meta.label + '</th>';
+            });
+
+            html += '</tr></thead><tbody>';
+
+            var countryCodes = Object.keys(COUNTRIES);
+            countryCodes.forEach(function(cc) {
+                var meta = COUNTRIES[cc];
+                var isSelected = cc === code;
+                html += '<tr class="' + (isSelected ? 'country-row-selected' : '') + '">';
+                html += '<td class="country-comp-name">' + meta.flag + ' ' + meta.name + '</td>';
+
+                wb.indicators.forEach(function(ind) {
+                    var indMeta = INDICATOR_LABELS[ind.id];
+                    if (!indMeta) return;
+
+                    var match = ind.data ? ind.data.find(function(d) { return d.country_code === cc; }) : null;
+                    if (match) {
+                        var val = indMeta.format === 'usd'
+                            ? formatLargeUSD(match.value)
+                            : match.value.toFixed(1) + '%';
+                        html += '<td class="country-comp-val">' + val + '</td>';
+                    } else {
+                        html += '<td class="country-comp-val">—</td>';
+                    }
+                });
+
+                html += '</tr>';
+            });
+
+            html += '</tbody></table></div></div>';
+            return html;
+        }
+
+        function getSupplementalData(code) {
+            // Static supplemental data for key countries (reference data)
+            var data = {
+                USA: [
+                    { label: 'Taux directeur (Fed Funds)', value: '5,25 – 5,50%', unit: 'Fourchette cible', icon: getSvgIcon('bank') },
+                    { label: 'Devise de référence', value: 'Dollar Index (DXY)', unit: 'Monnaie de réserve mondiale', icon: getSvgIcon('dollar') },
+                    { label: 'Masse monétaire (M2)', value: '~21 000 Mrd $', unit: 'Estimation', icon: getSvgIcon('layers') },
+                    { label: 'Treasury 10 ans', value: '~4,2%', unit: 'Rendement obligataire', icon: getSvgIcon('file-text') }
+                ],
+                CHN: [
+                    { label: 'Taux directeur (LPR 1 an)', value: '3,10%', unit: 'PBoC', icon: getSvgIcon('bank') },
+                    { label: 'Devise', value: 'CNY (Yuan)', unit: 'Partiellement contrôlé', icon: getSvgIcon('dollar') }
+                ],
+                JPN: [
+                    { label: 'Taux directeur (BoJ)', value: '0,25%', unit: 'Bank of Japan', icon: getSvgIcon('bank') },
+                    { label: 'Devise', value: 'JPY (Yen)', unit: 'Carry trade majeur', icon: getSvgIcon('dollar') }
+                ],
+                DEU: [
+                    { label: 'Taux directeur (BCE)', value: '4,50%', unit: 'Zone euro', icon: getSvgIcon('bank') },
+                    { label: 'Devise', value: 'EUR (Euro)', unit: 'Zone euro', icon: getSvgIcon('dollar') },
+                    { label: 'Bund 10 ans', value: '~2,3%', unit: 'Référence obligataire EU', icon: getSvgIcon('file-text') }
+                ],
+                GBR: [
+                    { label: 'Taux directeur (BoE)', value: '5,25%', unit: 'Bank of England', icon: getSvgIcon('bank') },
+                    { label: 'Devise', value: 'GBP (Livre sterling)', unit: '', icon: getSvgIcon('dollar') },
+                    { label: 'Gilt 10 ans', value: '~4,1%', unit: 'Rendement obligataire', icon: getSvgIcon('file-text') }
+                ],
+                FRA: [
+                    { label: 'Taux directeur (BCE)', value: '4,50%', unit: 'Zone euro', icon: getSvgIcon('bank') },
+                    { label: 'Devise', value: 'EUR (Euro)', unit: 'Zone euro', icon: getSvgIcon('dollar') },
+                    { label: 'OAT 10 ans', value: '~3,0%', unit: 'Rendement obligataire FR', icon: getSvgIcon('file-text') }
+                ],
+                IND: [
+                    { label: 'Taux directeur (RBI)', value: '6,50%', unit: 'Reserve Bank of India', icon: getSvgIcon('bank') },
+                    { label: 'Devise', value: 'INR (Roupie)', unit: '', icon: getSvgIcon('dollar') }
+                ],
+                BRA: [
+                    { label: 'Taux Selic', value: '13,25%', unit: 'Banco Central do Brasil', icon: getSvgIcon('bank') },
+                    { label: 'Devise', value: 'BRL (Real)', unit: '', icon: getSvgIcon('dollar') }
+                ],
+                CAN: [
+                    { label: 'Taux directeur (BoC)', value: '5,00%', unit: 'Bank of Canada', icon: getSvgIcon('bank') },
+                    { label: 'Devise', value: 'CAD (Dollar canadien)', unit: '', icon: getSvgIcon('dollar') }
+                ],
+                KOR: [
+                    { label: 'Taux directeur (BoK)', value: '3,50%', unit: 'Bank of Korea', icon: getSvgIcon('bank') },
+                    { label: 'Devise', value: 'KRW (Won)', unit: '', icon: getSvgIcon('dollar') }
+                ]
+            };
+            return data[code] || [];
+        }
+
+        function getIndicatorIcon(id) {
+            var icons = {
+                'NY.GDP.MKTP.CD': '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>',
+                'FP.CPI.TOTL.ZG': '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
+                'SL.UEM.TOTL.ZS': '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+                'GC.DOD.TOTL.GD.ZS': '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>'
+            };
+            return icons[id] || '';
+        }
+
+        function getSvgIcon(type) {
+            var icons = {
+                'bank': '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>',
+                'dollar': '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+                'layers': '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>',
+                'file-text': '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>'
+            };
+            return icons[type] || '';
+        }
+
+        function formatLargeUSD(value) {
+            if (value >= 1e12) return (value / 1e12).toFixed(1) + ' T$';
+            if (value >= 1e9) return (value / 1e9).toFixed(0) + ' Mrd$';
+            if (value >= 1e6) return (value / 1e6).toFixed(0) + ' M$';
+            return value.toLocaleString('fr-FR') + ' $';
+        }
+
+        function highlightIndicator(indicatorId) {
+            // Visual hint: could scroll to or highlight the relevant indicator
+            // For now, just ensure the page loads correctly with indicator context
+        }
+
+        function renderFallback() {
+            var grid = document.querySelector('.country-grid');
+            if (grid) {
+                grid.innerHTML = '<p class="loading-fallback-text">Les données macroéconomiques ne sont pas disponibles actuellement. Réessayez plus tard.</p>';
+            }
+        }
+
+        // Handle browser back/forward
+        window.addEventListener('popstate', function() {
+            var params = new URLSearchParams(window.location.search);
+            var country = params.get('country');
+            if (country && COUNTRIES[country]) {
+                selectCountry(country);
+            } else {
+                deselectCountry();
+            }
+        });
+
+        init();
+    })();
+    </script>
+</body>
+</html>

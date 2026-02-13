@@ -1711,7 +1711,7 @@ const DataLoader = (function () {
                 return '<div class="wb-indicator">' +
                     '<h5 class="wb-indicator-label">' + ind.label + '</h5>' +
                     '<div class="wb-indicator-grid">' +
-                    ind.data.slice(0, 6).map(function(d) {
+                    ind.data.slice(0, 5).map(function(d) {
                         var displayVal = ind.id === 'NY.GDP.MKTP.CD'
                             ? formatUSD(d.value, 0)
                             : d.value.toFixed(1) + '%';
@@ -1720,6 +1720,10 @@ const DataLoader = (function () {
                             '<span class="wb-country-value">' + displayVal + '</span>' +
                         '</div>';
                     }).join('') +
+                    '<a href="country.html?indicator=' + encodeURIComponent(ind.id) + '" class="wb-country-item wb-more-link" title="Voir tous les pays">' +
+                        '<span class="wb-country-name">Autre</span>' +
+                        '<span class="wb-country-value wb-more-arrow">&rsaquo;</span>' +
+                    '</a>' +
                     '</div>' +
                 '</div>';
             }).join('');
@@ -1817,6 +1821,42 @@ const DataLoader = (function () {
         });
     }
 
+    // ─── Widget Interactivity (TACHE 3) ─────────────────────
+
+    /**
+     * IntersectionObserver pour animer les widgets au scroll
+     */
+    function initWidgetAnimations() {
+        if (typeof IntersectionObserver === 'undefined') {
+            // Fallback: make all widgets visible immediately
+            document.querySelectorAll('.sidebar-card').forEach(function(card) {
+                card.classList.add('widget-visible');
+            });
+            return;
+        }
+
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('widget-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -30px 0px'
+        });
+
+        document.querySelectorAll('.sidebar-card').forEach(function(card) {
+            observer.observe(card);
+        });
+
+        // Also animate article-du-jour and main sections
+        document.querySelectorAll('.article-du-jour-section, .section').forEach(function(section) {
+            observer.observe(section);
+        });
+    }
+
     function updateDOM() {
         if (!_initialized || !_usingLiveData) return;
 
@@ -1847,6 +1887,7 @@ const DataLoader = (function () {
         mergeNewsAPIArticles();
         initRubriqueFilters();
         handleEmptyWidgets();
+        initWidgetAnimations();
         console.log('[DataLoader] ✓ DOM mis à jour');
     }
 
