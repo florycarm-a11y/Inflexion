@@ -1,14 +1,14 @@
 {
-  "updated": "2026-02-13T07:31:20.719Z",
+  "updated": "2026-02-13T13:41:05.586Z",
   "alertes": [
     {
       "id": "alert-2026-02-13-001",
       "titre": "Nasdaq 100 en baisse de 2,03%",
-      "texte": "L'indice technologique Nasdaq 100 recule à $600,64, reflétant une correction des valeurs de croissance dans un contexte de volatilité accrue.",
+      "texte": "L'indice technologique Nasdaq 100 (QQQ) recule à 600,64 USD, reflétant une pression généralisée sur le secteur des grandes capitalisations technologiques.",
       "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-13T07:31:20.719Z",
+      "horodatage": "2026-02-13T13:41:05.586Z",
       "donnees": {
         "symbole": "QQQ",
         "nom": "Nasdaq 100",
@@ -18,12 +18,12 @@
     },
     {
       "id": "alert-2026-02-13-002",
-      "titre": "Or chute de 3,47%",
-      "texte": "L'ETF aurifère GLD enregistre une baisse significative à $451,39, suggérant une réduction des positions défensives face aux mouvements de marché actuels.",
+      "titre": "Or en déclin de 3,47%",
+      "texte": "L'ETF or (GLD) chute à 451,39 USD, signalant un appétit réduit pour les actifs refuge malgré un contexte de tensions.",
       "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-13T07:31:20.719Z",
+      "horodatage": "2026-02-13T13:41:05.586Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
@@ -34,11 +34,11 @@
     {
       "id": "alert-2026-02-13-003",
       "titre": "Pétrole recule de 3,18%",
-      "texte": "L'ETF énergétique USO perd 3,18% à $76,38, reflétant une pression baissière sur les cours des hydrocarbures dans un contexte d'aversion au risque.",
+      "texte": "L'ETF pétrole (USO) cède à 76,38 USD, reflétant une pression baissière sur les cours de l'énergie.",
       "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-13T07:31:20.719Z",
+      "horodatage": "2026-02-13T13:41:05.586Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
@@ -49,11 +49,11 @@
     {
       "id": "alert-2026-02-13-004",
       "titre": "Apple plonge de 5,00%",
-      "texte": "L'action AAPL chute à $261,73, enregistrant une perte de 5%, surpassant les pertes sectorielles et signalant une pression spécifique sur le titre.",
+      "texte": "Apple (AAPL) recule fortement à 261,73 USD, marquant l'une des plus fortes baisses parmi les mega-capitalisations technologiques.",
       "categorie": "ai_tech",
-      "severite": "urgent",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-13T07:31:20.719Z",
+      "horodatage": "2026-02-13T13:41:05.586Z",
       "donnees": {
         "symbole": "AAPL",
         "nom": "Apple",
@@ -63,12 +63,12 @@
     },
     {
       "id": "alert-2026-02-13-005",
-      "titre": "Tesla perd 2,62%",
-      "texte": "Le titre TSLA recule à $417,07 avec une baisse de 2,62%, en ligne avec la volatilité du secteur technologique et des valeurs cycliques.",
+      "titre": "Tesla cède 2,62%",
+      "texte": "Tesla (TSLA) baisse à 417,07 USD, enregistrant une correction modérée dans un contexte de vente généralisée sur le secteur tech.",
       "categorie": "ai_tech",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-13T07:31:20.719Z",
+      "horodatage": "2026-02-13T13:41:05.586Z",
       "donnees": {
         "symbole": "TSLA",
         "nom": "Tesla",
@@ -78,12 +78,12 @@
     },
     {
       "id": "alert-2026-02-13-006",
-      "titre": "Indice Fear & Greed à 9 : Peur extrême",
-      "texte": "L'indice Fear & Greed atteint son niveau de 9 (Peur extrême), signalant une aversion au risque prononcée et un sentiment de marché fortement dégradé.",
+      "titre": "Fear & Greed Index à 9 (peur extrême)",
+      "texte": "L'indice Fear & Greed atteint 9, signalant une peur extrême des investisseurs et un climat de marché hautement stressé.",
       "categorie": "marches",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-02-13T07:31:20.719Z",
+      "horodatage": "2026-02-13T13:41:05.586Z",
       "donnees": {
         "score": 9,
         "label": "Extreme Fear",
@@ -93,8 +93,8 @@
   ],
   "stats": {
     "total": 6,
-    "urgent": 2,
-    "attention": 4,
+    "urgent": 1,
+    "attention": 5,
     "info": 0
   },
   "model": "claude-haiku-4-5-20251001"
