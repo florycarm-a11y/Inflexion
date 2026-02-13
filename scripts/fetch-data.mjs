@@ -20,7 +20,7 @@
  * - World Bank (gratuit, pas de clé) → données macro internationales
  * - NewsAPI (clé gratuite) → complément GNews couverture plus large
  *
- * Flux RSS (gratuit, pas de clé — 122 flux spécialisés) :
+ * Flux RSS (gratuit, pas de clé — 121 flux spécialisés) :
  * 🌍 Géopolitique (30) : Le Figaro Intl, France 24, RFI, Courrier Intl, Le Monde Diplo,
  *   BBC, Al Jazeera, Guardian, NYT, Reuters, Politico EU, Foreign Policy, CFR,
  *   Brookings, Carnegie, CSIS, War on the Rocks, Responsible Statecraft,
@@ -37,7 +37,7 @@
  *   Kitco (Gold + Metals), Mining.com, MetalMiner, S&P Global, AgWeb,
  *   World Grain, Hellenic Shipping, Trading Economics, OPEC, Wood Mackenzie,
  *   Kpler Energy, Argus Media
- * 🤖 IA & Tech (20) : Le Figaro Tech, 01net, Numerama, JDN, TechCrunch,
+ * 🤖 IA & Tech (19) : Le Figaro Tech, Numerama, JDN, TechCrunch,
  *   The Verge, Ars Technica, Wired, Hacker News, VentureBeat AI,
  *   MIT Tech Review, IEEE Spectrum AI, MarkTechPost, The Decoder,
  *   Krebs on Security, BleepingComputer, The Register, TLDR Tech/AI,
@@ -181,8 +181,216 @@ function parseRSSItems(xml) {
     return items;
 }
 
+// ─── Filtre de pertinence par mots-clés ──────────────────
+// Les sources RSS généralistes (France 24, RFI, Al Jazeera, BBC, 01net, Wired...)
+// publient tous types d'articles. Ce filtre vérifie que le titre+description
+// contiennent au moins un mot-clé pertinent pour la rubrique assignée.
+// Les sources spécialisées (think tanks, sites crypto, sites commodities) sont
+// exemptées car leur contenu est intrinsèquement pertinent.
+
+const RELEVANCE_KEYWORDS = {
+    geopolitics: [
+        // FR
+        'géopoliti', 'diplomat', 'sanction', 'conflit', 'guerre', 'militaire', 'armée',
+        'défense', 'otan', 'nato', 'onu', 'g7', 'g20', 'brics', 'union européenne',
+        'sommet', 'traité', 'négociation', 'cessez-le-feu', 'nucléaire', 'missile',
+        'terroris', 'djihadis', 'islamis', 'séparatist', 'souveraineté', 'annexion',
+        'occupation', 'embargo', 'blocus', 'frontière', 'réfugié', 'migra',
+        'élection', 'présidentiel', 'parlement', 'premier ministre', 'président',
+        'ministre', 'gouvernement', 'opposition', 'putsch', 'coup d\'état',
+        'espionnage', 'renseignement', 'cyber attaque', 'cyber guerre',
+        'alliance', 'coalition', 'résolution', 'conseil de sécurité',
+        'impérialis', 'colonialis', 'décolonis', 'indépendance',
+        'droits humains', 'droits de l\'homme', 'crime de guerre', 'génocide',
+        'politique étrangère', 'affaires étrangères', 'relation bilatérale',
+        'tension', 'crise', 'escalade', 'désescalade', 'menace',
+        'trump', 'poutine', 'xi jinping', 'macron', 'biden', 'zelensky',
+        'ukraine', 'russie', 'chine', 'iran', 'gaza', 'israël', 'palestine',
+        'corée du nord', 'taïwan', 'syrie', 'sahel', 'afghanistan',
+        'groenland', 'arctique', 'mer de chine', 'détroit de taïwan',
+        'porte-avions', 'armement', 'drone', 'frappe', 'bombardement',
+        // EN
+        'geopoliti', 'diplomat', 'sanction', 'conflict', 'warfare', 'military',
+        'defense', 'defence', 'nato', 'united nations', 'ceasefire', 'nuclear',
+        'missile', 'terror', 'separatist', 'sovereignty', 'annexation',
+        'occupation', 'embargo', 'blockade', 'border', 'refugee', 'migra',
+        'election', 'presidential', 'parliament', 'prime minister', 'president',
+        'government', 'opposition', 'coup', 'espionage', 'intelligence',
+        'alliance', 'coalition', 'security council', 'foreign policy',
+        'foreign affairs', 'bilateral', 'tension', 'crisis', 'escalat',
+        'threat', 'invasion', 'occupation', 'weapon', 'warfare', 'airstrike',
+        'bombing', 'drone strike', 'arms deal', 'war crime', 'genocide',
+        'human rights', 'assassination', 'insurgent', 'rebel',
+        'ukraine', 'russia', 'china', 'iran', 'gaza', 'israel', 'palestine',
+        'north korea', 'taiwan', 'syria', 'sahel', 'afghanistan',
+        'greenland', 'arctic', 'south china sea'
+    ],
+    markets: [
+        // FR
+        'bourse', 'marché', 'action', 'obligation', 'indice', 'cac 40', 'dax',
+        'wall street', 's&p', 'nasdaq', 'dow jones', 'ftse', 'nikkei',
+        'banque centrale', 'bce', 'fed', 'taux directeur', 'taux d\'intérêt',
+        'inflation', 'déflation', 'récession', 'croissance', 'pib',
+        'chômage', 'emploi', 'salaire', 'pouvoir d\'achat',
+        'résultat', 'bénéfice', 'chiffre d\'affaires', 'dividende',
+        'fusion', 'acquisition', 'opa', 'introduction en bourse', 'ipo',
+        'investisseur', 'investissement', 'placement', 'épargne',
+        'assurance', 'banque', 'crédit', 'prêt', 'hypothèque', 'immobilier',
+        'dette', 'déficit', 'budget', 'fiscal', 'impôt', 'taxe',
+        'euro', 'dollar', 'devise', 'forex', 'change',
+        'hausse', 'baisse', 'krach', 'rally', 'correction', 'volatilité',
+        'rendement', 'spread', 'yield', 'coupon',
+        'commerce', 'export', 'import', 'balance commerciale', 'tarif douanier',
+        'entreprise', 'société', 'capitalisation', 'valorisation',
+        'économie', 'économique', 'conjoncture', 'indicateur',
+        // EN
+        'stock', 'bond', 'equity', 'index', 'market', 'wall street',
+        'central bank', 'ecb', 'federal reserve', 'interest rate',
+        'inflation', 'deflation', 'recession', 'growth', 'gdp',
+        'unemployment', 'employment', 'earning', 'revenue', 'profit',
+        'dividend', 'merger', 'acquisition', 'ipo',
+        'investor', 'investment', 'bank', 'credit', 'mortgage',
+        'debt', 'deficit', 'budget', 'fiscal', 'tax',
+        'euro', 'dollar', 'currency', 'forex', 'exchange rate',
+        'rally', 'crash', 'correction', 'volatility', 'yield', 'spread',
+        'trade', 'tariff', 'export', 'import', 'valuation',
+        'economy', 'economic', 'indicator', 'outlook', 'forecast',
+        'bull', 'bear', 'hedge fund', 'private equity', 'venture capital'
+    ],
+    crypto: [
+        // FR & EN (termes largement identiques)
+        'bitcoin', 'btc', 'ethereum', 'eth', 'crypto', 'blockchain',
+        'stablecoin', 'defi', 'nft', 'token', 'altcoin', 'minage',
+        'mining', 'wallet', 'portefeuille', 'exchange', 'binance',
+        'coinbase', 'solana', 'cardano', 'ripple', 'xrp', 'dogecoin',
+        'shiba', 'memecoin', 'airdrop', 'staking', 'yield farming',
+        'smart contract', 'contrat intelligent', 'dapp', 'web3',
+        'halving', 'proof of', 'consensus', 'layer 2', 'rollup',
+        'lightning network', 'uniswap', 'aave', 'compound',
+        'régulation crypto', 'crypto regulation', 'sec crypto', 'mica',
+        'cbdc', 'monnaie numérique', 'digital currency', 'digital asset',
+        'on-chain', 'off-chain', 'hash rate', 'gas fee',
+        'decentrali', 'décentrali', 'ledger', 'satoshi'
+    ],
+    commodities: [
+        // FR
+        'pétrole', 'brut', 'brent', 'wti', 'opep', 'opec', 'baril',
+        'gaz naturel', 'gnl', 'lng', 'énergie', 'charbon',
+        'or', 'argent', 'platine', 'palladium', 'cuivre', 'aluminium',
+        'nickel', 'zinc', 'lithium', 'cobalt', 'terres rares',
+        'métaux', 'métal', 'minier', 'mine', 'extraction',
+        'blé', 'maïs', 'soja', 'café', 'cacao', 'sucre', 'coton',
+        'céréale', 'agriculture', 'récolte', 'sécheresse',
+        'matière première', 'commodity', 'cours', 'négoce',
+        'raffinerie', 'pipeline', 'oléoduc', 'gazoduc',
+        'nucléaire', 'uranium', 'renouvelable', 'solaire', 'éolien',
+        'hydrogène', 'transition énergétique', 'carbone', 'émission',
+        'shipping', 'fret', 'transport maritime', 'vrac',
+        // EN
+        'oil', 'crude', 'brent', 'wti', 'barrel', 'petroleum',
+        'natural gas', 'lng', 'energy', 'coal', 'power',
+        'gold', 'silver', 'platinum', 'palladium', 'copper', 'aluminum',
+        'nickel', 'zinc', 'lithium', 'cobalt', 'rare earth',
+        'metal', 'mining', 'ore', 'extraction', 'smelting',
+        'wheat', 'corn', 'soybean', 'coffee', 'cocoa', 'sugar', 'cotton',
+        'grain', 'crop', 'harvest', 'drought', 'agriculture',
+        'commodity', 'commodities', 'raw material', 'futures',
+        'refinery', 'pipeline', 'tanker',
+        'nuclear', 'uranium', 'renewable', 'solar', 'wind',
+        'hydrogen', 'energy transition', 'carbon', 'emission',
+        'shipping', 'freight', 'bulk'
+    ],
+    ai_tech: [
+        // FR
+        'intelligence artificielle', 'ia ', ' ia', 'modèle de langage', 'llm',
+        'apprentissage', 'machine learning', 'deep learning', 'réseau de neurones',
+        'chatbot', 'gpt', 'claude', 'gemini', 'openai', 'anthropic', 'nvidia',
+        'semi-conducteur', 'puce', 'processeur', 'gpu', 'cpu',
+        'cybersécurité', 'cyberattaque', 'piratage', 'hacker', 'ransomware',
+        'malware', 'phishing', 'faille', 'vulnérabilité', 'zero-day',
+        'logiciel', 'algorithme', 'programmation', 'développeur', 'code',
+        'cloud', 'data center', 'serveur', 'saas', 'api',
+        'startup', 'licorne', 'levée de fonds', 'série a', 'série b',
+        'robotique', 'robot', 'automation', 'automatisation',
+        'quantique', 'quantum', 'calculateur',
+        'réseau social', 'plateforme', 'régulation tech', 'antitrust',
+        'vie privée', 'données personnelles', 'rgpd', 'gdpr',
+        'open source', 'linux', 'github',
+        'spatial', 'satellite', 'fibre', '5g', '6g', 'réseau',
+        // EN
+        'artificial intelligence', ' ai ', 'language model', 'llm',
+        'machine learning', 'deep learning', 'neural network',
+        'chatbot', 'gpt', 'claude', 'gemini', 'openai', 'anthropic', 'nvidia',
+        'semiconductor', 'chip', 'processor', 'gpu', 'cpu', 'foundry',
+        'cybersecurity', 'cyberattack', 'hacker', 'ransomware',
+        'malware', 'phishing', 'vulnerability', 'zero-day', 'breach',
+        'software', 'algorithm', 'programming', 'developer', 'code',
+        'cloud', 'data center', 'server', 'saas', 'api',
+        'startup', 'unicorn', 'funding', 'series a', 'series b',
+        'robotics', 'robot', 'automation',
+        'quantum', 'computing',
+        'social media', 'platform', 'tech regulation', 'antitrust',
+        'privacy', 'personal data', 'gdpr',
+        'open source', 'linux', 'github',
+        'satellite', 'fiber', '5g', '6g', 'network'
+    ]
+};
+
+// Sources spécialisées dont le contenu est toujours pertinent pour leur catégorie
+// (pas besoin de filtrage par mots-clés)
+const SPECIALIZED_SOURCES = new Set([
+    // Think tanks géopolitiques
+    'Foreign Policy', 'CFR', 'Brookings', 'Carnegie', 'CSIS',
+    'Responsible Statecraft', 'War on the Rocks', 'The Diplomat',
+    'IFRI', 'IRIS', 'FRS', 'GRIP', 'Chatham House', 'IISS',
+    'Al-Monitor', 'Middle East Institute', 'SIPRI', 'Crisis Group',
+    'Le Monde Diplomatique',
+    // Finance spécialisée
+    'Les Echos', 'Zonebourse', 'MarketWatch', 'Seeking Alpha',
+    'Wolf Street', 'Calculated Risk', 'Naked Capitalism',
+    'TLDR Fintech', "L'AGEFI", 'BCE', 'Banque de France',
+    'PIIE', 'VoxEU / CEPR', 'Financial Times', 'Nikkei Asia',
+    // Crypto spécialisée
+    'CoinTelegraph FR', 'Cryptoast', 'Journal du Coin', 'CoinDesk',
+    'CoinTelegraph', 'The Block', 'Decrypt', 'Blockworks',
+    'Bitcoin Magazine', 'The Defiant', 'Unchained',
+    'Web3 is Going Great', 'Chainalysis', 'TLDR Crypto',
+    // Commodities spécialisé
+    'OilPrice', 'Rigzone', 'Reuters Commodities', 'Natural Gas Intel',
+    'GoldPrice.org', 'Mining.com', 'MetalMiner', 'S&P Global',
+    'Feedstuffs', 'DTN Ag News', 'Hellenic Shipping', 'Trading Economics',
+    'OPEC', 'Wood Mackenzie', 'Kpler Energy', 'Argus Media',
+    'IEA', 'IRENA', 'Carbon Brief', 'Energy Monitor',
+    'S&P Energy Transition', 'Reuters Sustainability',
+    // IA & Tech spécialisé
+    'VentureBeat AI', 'MIT Tech Review', 'IEEE Spectrum AI',
+    'MarkTechPost', 'The Decoder', 'Krebs on Security',
+    'BleepingComputer', 'TLDR Tech', 'TLDR AI',
+    'Stratechery', 'The Information', 'Simon Willison',
+    // Think tanks macro
+    'BIS (BRI)', 'IMF Blog', 'World Economic Forum', 'OECD'
+]);
+
+/**
+ * Vérifie si un article est pertinent pour une catégorie donnée.
+ * Retourne true si l'article passe le filtre de pertinence.
+ */
+function isRelevantForCategory(article, categoryKey, sourceName) {
+    // Les sources spécialisées sont toujours pertinentes
+    if (SPECIALIZED_SOURCES.has(sourceName)) return true;
+
+    const keywords = RELEVANCE_KEYWORDS[categoryKey];
+    if (!keywords) return true; // catégorie inconnue → on garde
+
+    // Texte à analyser : titre + description, en minuscules
+    const text = ((article.title || '') + ' ' + (article.description || '')).toLowerCase();
+
+    // Vérifier si au moins un mot-clé est présent
+    return keywords.some(kw => text.includes(kw.toLowerCase()));
+}
+
 // ─── Sources RSS (gratuit, pas de clé API) ───────────────
-// 122 flux ultra-spécialisés couvrant 6 rubriques — mis à jour fév. 2026
+// 121 flux ultra-spécialisés couvrant 6 rubriques — mis à jour fév. 2026
 const RSS_SOURCES = [
 
     // ╔══════════════════════════════════════════════════════════╗
@@ -337,7 +545,7 @@ const RSS_SOURCES = [
 
     // 🇫🇷 Tech & IA françaises
     { url: 'https://www.lefigaro.fr/rss/figaro_secteur_high-tech.xml',  source: 'Le Figaro Tech',       cats: ['ai_tech'] },
-    { url: 'https://www.01net.com/feed/',                               source: '01net',                cats: ['ai_tech'] },
+
     { url: 'https://www.numerama.com/feed/',                            source: 'Numerama',             cats: ['ai_tech'] },
     { url: 'https://www.nextinpact.com/feed',                            source: 'Next INpact',           cats: ['ai_tech'] },
 
@@ -729,14 +937,22 @@ async function fetchNews() {
                 };
             });
 
+            let addedCount = 0;
             for (const cat of feed.cats) {
-                if (allNews[cat]) allNews[cat].push(...articles);
+                if (allNews[cat]) {
+                    const relevant = articles.filter(a => isRelevantForCategory(a, cat, feed.source));
+                    allNews[cat].push(...relevant);
+                    addedCount += relevant.length;
+                    if (relevant.length < articles.length) {
+                        console.log(`    🔍 ${feed.source}→${cat}: ${relevant.length}/${articles.length} pertinents`);
+                    }
+                }
             }
 
-            rssFeedResults.push({ source: feed.source, url: feed.url, count: articles.length, ok: true });
+            rssFeedResults.push({ source: feed.source, url: feed.url, count: articles.length, ok: true, relevant: addedCount });
             rssStats.success++;
-            rssStats.articles += articles.length;
-            console.log(`  ✓ RSS ${feed.source}: ${articles.length} articles`);
+            rssStats.articles += addedCount;
+            console.log(`  ✓ RSS ${feed.source}: ${articles.length} articles (${addedCount} pertinents)`);
 
             await new Promise(r => setTimeout(r, 300));
         } catch (err) {
@@ -750,6 +966,7 @@ async function fetchNews() {
 
     // ─── 3c. Déduplication + tri par date ────────────────────
     for (const key of categoryKeys) {
+        const beforeCount = allNews[key].length;
         const seen = new Set();
         allNews[key] = allNews[key]
             .filter(a => {
@@ -760,6 +977,7 @@ async function fetchNews() {
             })
             .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
             .slice(0, 30);
+        console.log(`  📋 ${key}: ${beforeCount} → ${allNews[key].length} articles (après dédup + tri)`);
     }
 
     // ─── 3d. Enrichissement rubrique ─────────────────────────
