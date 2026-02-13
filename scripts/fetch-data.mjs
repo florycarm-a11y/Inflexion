@@ -20,7 +20,7 @@
  * - World Bank (gratuit, pas de clé) → données macro internationales
  * - NewsAPI (clé gratuite) → complément GNews couverture plus large
  *
- * Flux RSS (gratuit, pas de clé — 122 flux spécialisés) :
+ * Flux RSS (gratuit, pas de clé — 121 flux spécialisés) :
  * 🌍 Géopolitique (30) : Le Figaro Intl, France 24, RFI, Courrier Intl, Le Monde Diplo,
  *   BBC, Al Jazeera, Guardian, NYT, Reuters, Politico EU, Foreign Policy, CFR,
  *   Brookings, Carnegie, CSIS, War on the Rocks, Responsible Statecraft,
@@ -37,7 +37,7 @@
  *   Kitco (Gold + Metals), Mining.com, MetalMiner, S&P Global, AgWeb,
  *   World Grain, Hellenic Shipping, Trading Economics, OPEC, Wood Mackenzie,
  *   Kpler Energy, Argus Media
- * 🤖 IA & Tech (20) : Le Figaro Tech, 01net, Numerama, JDN, TechCrunch,
+ * 🤖 IA & Tech (19) : Le Figaro Tech, Numerama, JDN, TechCrunch,
  *   The Verge, Ars Technica, Wired, Hacker News, VentureBeat AI,
  *   MIT Tech Review, IEEE Spectrum AI, MarkTechPost, The Decoder,
  *   Krebs on Security, BleepingComputer, The Register, TLDR Tech/AI,
@@ -390,7 +390,7 @@ function isRelevantForCategory(article, categoryKey, sourceName) {
 }
 
 // ─── Sources RSS (gratuit, pas de clé API) ───────────────
-// 122 flux ultra-spécialisés couvrant 6 rubriques — mis à jour fév. 2026
+// 121 flux ultra-spécialisés couvrant 6 rubriques — mis à jour fév. 2026
 const RSS_SOURCES = [
 
     // ╔══════════════════════════════════════════════════════════╗
@@ -545,7 +545,7 @@ const RSS_SOURCES = [
 
     // 🇫🇷 Tech & IA françaises
     { url: 'https://www.lefigaro.fr/rss/figaro_secteur_high-tech.xml',  source: 'Le Figaro Tech',       cats: ['ai_tech'] },
-    { url: 'https://www.01net.com/feed/',                               source: '01net',                cats: ['ai_tech'] },
+
     { url: 'https://www.numerama.com/feed/',                            source: 'Numerama',             cats: ['ai_tech'] },
     { url: 'https://www.nextinpact.com/feed',                            source: 'Next INpact',           cats: ['ai_tech'] },
 
