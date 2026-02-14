@@ -1,62 +1,94 @@
 {
-  "updated": "2026-02-14T07:09:18.794Z",
+  "updated": "2026-02-14T13:24:48.097Z",
   "alertes": [
     {
       "id": "alert-2026-02-14-001",
-      "titre": "Ethereum en hausse significative à $2 050,97",
-      "texte": "Ethereum progresse de 6,34% sur 24h, atteignant $2 050,97. Cette appréciation s'inscrit dans un contexte de volatilité accrue du marché crypto.",
+      "titre": "Ethereum bondit de 7% à $2 094",
+      "texte": "Ethereum enregistre une progression de 7.06% en 24h, atteignant $2 094.15. Cette hausse s'inscrit dans un contexte de reprise plus large des cryptomonnaies.",
       "categorie": "crypto",
-      "severite": "attention",
+      "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-02-14T07:09:18.794Z",
+      "horodatage": "2026-02-14T13:24:48.096Z",
       "donnees": {
         "symbole": "ETH",
         "nom": "Ethereum",
-        "prix": 2050.97,
-        "variation_24h": 6.34,
-        "market_cap": 247524772836
+        "prix": 2094.15,
+        "variation_24h": 7.06,
+        "market_cap": 252902364638
       }
     },
     {
       "id": "alert-2026-02-14-002",
-      "titre": "Solana +8,47% à $84,64",
-      "texte": "Solana enregistre une hausse de 8,47% en 24h pour se positionner à $84,64, surperformant le marché crypto global.",
+      "titre": "XRP accélère avec +7.93% à $1.47",
+      "texte": "XRP gagne 7.93% en 24h et atteint $1.47, participant au mouvement haussier du secteur cryptocurrencies.",
       "categorie": "crypto",
-      "severite": "attention",
+      "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-02-14T07:09:18.794Z",
+      "horodatage": "2026-02-14T13:24:48.096Z",
       "donnees": {
-        "symbole": "SOL",
-        "nom": "Solana",
-        "prix": 84.64,
-        "variation_24h": 8.47,
-        "market_cap": 48066860821
+        "symbole": "XRP",
+        "nom": "XRP",
+        "prix": 1.47,
+        "variation_24h": 7.93,
+        "market_cap": 89605037448
       }
     },
     {
       "id": "alert-2026-02-14-003",
-      "titre": "Cardano gagne 5,94% à $0,274",
-      "texte": "Cardano progresse de 5,94% sur 24h avec un cours de $0,274, suivant la dynamique haussière des altcoins.",
+      "titre": "Solana grimpe de 8.91% à $87.07",
+      "texte": "Solana affiche la plus forte progression avec +8.91% en 24h, franchissant $87.07. Cette hausse dépasse la moyenne du secteur crypto.",
       "categorie": "crypto",
-      "severite": "info",
+      "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-02-14T07:09:18.794Z",
+      "horodatage": "2026-02-14T13:24:48.096Z",
       "donnees": {
-        "symbole": "ADA",
-        "nom": "Cardano",
-        "prix": 0.274307,
-        "variation_24h": 5.94,
-        "market_cap": 10093503067
+        "symbole": "SOL",
+        "nom": "Solana",
+        "prix": 87.07,
+        "variation_24h": 8.91,
+        "market_cap": 49478209679
       }
     },
     {
       "id": "alert-2026-02-14-004",
-      "titre": "Or en hausse : GLD +2,49% à $462,62",
-      "texte": "L'ETF Or (GLD) progresse de 2,49% à $462,62, reflétant un intérêt renouvelé pour les actifs refuge en contexte d'incertitude.",
-      "categorie": "matieres_premieres",
-      "severite": "attention",
+      "titre": "Dogecoin en hausse de 7.12% à $0.10",
+      "texte": "Dogecoin gagne 7.12% en 24h et revient à $0.10, suivant le mouvement haussier des altcoins majeurs.",
+      "categorie": "crypto",
+      "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-02-14T07:09:18.794Z",
+      "horodatage": "2026-02-14T13:24:48.096Z",
+      "donnees": {
+        "symbole": "DOGE",
+        "nom": "Dogecoin",
+        "prix": 0.100079,
+        "variation_24h": 7.12,
+        "market_cap": 16917268571
+      }
+    },
+    {
+      "id": "alert-2026-02-14-005",
+      "titre": "Cardano avance de 7.81% à $0.283",
+      "texte": "Cardano progresse de 7.81% en 24h et s'établit à $0.283, en ligne avec la dynamique positive du marché crypto.",
+      "categorie": "crypto",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-02-14T13:24:48.096Z",
+      "donnees": {
+        "symbole": "ADA",
+        "nom": "Cardano",
+        "prix": 0.283114,
+        "variation_24h": 7.81,
+        "market_cap": 10428896214
+      }
+    },
+    {
+      "id": "alert-2026-02-14-006",
+      "titre": "Or en hausse de 2.49% à $462.62",
+      "texte": "L'ETF or (GLD) progresse de 2.49% et atteint $462.62, reflétant une demande accrue pour les actifs refuge.",
+      "categorie": "matieres_premieres",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-02-14T13:24:48.096Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
@@ -65,13 +97,13 @@
       }
     },
     {
-      "id": "alert-2026-02-14-005",
-      "titre": "Nvidia recule de 2,21% à $182,81",
-      "texte": "Nvidia cède 2,21% et se replie à $182,81, marquant une correction après la récente dynamique du secteur technologique.",
+      "id": "alert-2026-02-14-007",
+      "titre": "Nvidia recule de 2.21% à $182.81",
+      "texte": "Nvidia cède 2.21% et revient à $182.81, contrariée par des prises de bénéfices après une forte période.",
       "categorie": "ai_tech",
-      "severite": "attention",
+      "severite": "info",
       "impact": "baissier",
-      "horodatage": "2026-02-14T07:09:18.794Z",
+      "horodatage": "2026-02-14T13:24:48.096Z",
       "donnees": {
         "symbole": "NVDA",
         "nom": "Nvidia",
@@ -80,13 +112,13 @@
       }
     },
     {
-      "id": "alert-2026-02-14-006",
-      "titre": "Apple baisse de 2,27% à $255,78",
-      "texte": "Apple se déprécie de 2,27% à $255,78, participant à la correction du secteur technologique observée en cette journée.",
+      "id": "alert-2026-02-14-008",
+      "titre": "Apple baisse de 2.27% à $255.78",
+      "texte": "Apple recule de 2.27% à $255.78, impacté par une correction du secteur technologique large.",
       "categorie": "marches",
-      "severite": "attention",
+      "severite": "info",
       "impact": "baissier",
-      "horodatage": "2026-02-14T07:09:18.794Z",
+      "horodatage": "2026-02-14T13:24:48.096Z",
       "donnees": {
         "symbole": "AAPL",
         "nom": "Apple",
@@ -95,13 +127,13 @@
       }
     },
     {
-      "id": "alert-2026-02-14-007",
-      "titre": "Fear & Greed Index à 9 : peur extrême",
-      "texte": "L'indice Fear & Greed atteint 9 (peur extrême) avec une hausse de 3 points en 7 jours, signalant un sentiment de marché très négatif.",
+      "id": "alert-2026-02-14-009",
+      "titre": "Fear & Greed Index à 9 : Peur extrême",
+      "texte": "L'indice Fear & Greed reste à un niveau critique de 9 (Peur Extrême) avec une variation hebdomadaire de +3 pts. Les replis observés sur tech contrastent avec la surperformance crypto.",
       "categorie": "macro",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-02-14T07:09:18.794Z",
+      "severite": "attention",
+      "impact": "neutre",
+      "horodatage": "2026-02-14T13:24:48.096Z",
       "donnees": {
         "score": 9,
         "label": "Extreme Fear",
@@ -110,10 +142,10 @@
     }
   ],
   "stats": {
-    "total": 7,
-    "urgent": 1,
-    "attention": 5,
-    "info": 1
+    "total": 9,
+    "urgent": 0,
+    "attention": 2,
+    "info": 7
   },
   "model": "claude-haiku-4-5-20251001"
 }
