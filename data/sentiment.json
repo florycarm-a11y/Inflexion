@@ -1,79 +1,81 @@
 {
-  "updated": "2026-02-14T13:24:41.881Z",
+  "updated": "2026-02-14T18:59:41.412Z",
   "date": "2026-02-14",
   "global": {
-    "score": -0.02,
+    "score": -0.17,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (-0.02), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est mixte (-0.17), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
       "score": -0.35,
       "confidence": 0.82,
       "tendance": "baissier",
-      "resume": "La géopolitique mondiale affiche un sentiment globalement négatif marqué par des tensions diplomatiques croissantes, des divisions transatlantiques et des enjeux de sécurité régionaux aigus. Malgré quelques signaux de réassurance américaine envers l'Europe, les frictions géopolitiques dominent le paysage.",
+      "resume": "La rubrique géopolitique affiche un sentiment globalement négatif dominé par des tensions majeures (assassinat de Navalny, confrontations Iran-États-Unis, tensions coréennes) tempérées par des efforts diplomatiques limités. Les marchés pourraient anticiper une volatilité accrue liée aux risques géopolitiques.",
       "signaux_cles": [
-        "Tensions diplomatiques accrues : déclarations non diplomatiques, critiques franco-nigérianes, divisions UE-Trump",
-        "Fragmentations géopolitiques : ordre mondial contesté, clause de défense européenne renforcée, repositionnement des alliances",
-        "Crises régionales persistantes : occupation israélienne en Syrie, situation à Beyrouth, tensions sino-japonaises",
-        "Instabilité institutionnelle : affaires de corruption (Epstein), remaniements diplomatiques américains",
-        "Signaux mixtes : tentatives de réassurance transatlantique contrebalancées par appels au nouvel ordre mondial",
-        "Émergence de nouveaux acteurs : diplomatie maritime indienne, influence chinoise en Afrique"
+        "Assassinat confirmé de Navalny par la Russie - escalade des tensions Occident-Russie",
+        "Confrontations Iran-États-Unis avec négociations fragiles - risque d'instabilité régionale",
+        "Efforts de rassurance transatlantique de Rubio - crédibilité limitée selon les observateurs européens",
+        "Tensions Corée du Nord/Sud avec survols de drones - risque de conflit régional",
+        "Diplomatie indienne en maturation (Milan-26) - signal positif mineur contrebalancé par crises majeures",
+        "Présence militaire américaine maintenue en Syrie - engagement continu mais contexte instable"
       ]
     },
     "marches": {
-      "score": 0.15,
+      "score": -0.15,
       "confidence": 0.72,
       "tendance": "mixte",
-      "resume": "Le sentiment de marché est mitigé avec des signaux positifs sur l'économie américaine contrebalancés par des préoccupations géopolitiques, des risques de sécurité et des incertitudes économiques régionales. Les titres reflètent une volatilité sous-jacente malgré quelques opportunités d'investissement identifiées.",
+      "resume": "Les marchés affichent un sentiment mitigé avec des signaux positifs sur l'emploi et l'inflation américains contrebalancés par des tensions géoéconomiques, des défis structurels (démographie, dépenses IA) et une volatilité accrue liée aux interventions des banques centrales.",
       "signaux_cles": [
-        "Optimisme modéré sur l'atterrissage en douceur américain (inflation 2% sans récession)",
-        "Tensions géopolitiques et critiques envers les alliés européens par l'administration Trump",
-        "Préoccupations de sécurité croissantes liées aux risques d'attaques par IA",
-        "Instabilité économique régionale (Bangladesh, Thaïlande)",
-        "Débats politiques internes en France sur les conditions d'emploi reflétant des tensions sociales",
-        "Mélange de contenu non-financier réduisant la cohérence de la rubrique marché"
+        "Créations d'emplois et surprises positives sur l'inflation (haussier)",
+        "Tensions géoéconomiques : sanctions contre l'Iran, fragmentation géoéconomique (baissier)",
+        "Interventions BCE élargissant l'accès aux prêts en euros - signal de soutien mais aussi d'inquiétude (neutre/baissier)",
+        "Bénéfices en baisse pour le secteur immobilier du S&P 500 (baissier)",
+        "Incertitudes sur les dépenses massives en IA chez Meta et Nvidia (baissier)",
+        "Défis démographiques mondiaux exemplifiés par le Japon (baissier structurel)",
+        "Procédures judiciaires et changements politiques (Volkswagen, politique vaccinale) créant de l'incertitude (baissier)"
       ]
     },
     "crypto": {
       "score": 0.35,
       "confidence": 0.78,
       "tendance": "mixte",
-      "resume": "Le marché crypto affiche des signaux contradictoires avec une reprise du Bitcoin à 70 000 dollars et des investissements institutionnels positifs (ARK, Trump Media), contrebalancés par des sorties nettes d'ETH, des signaux de capitulation sur les memecoins et des préoccupations réglementaires/sécuritaires.",
+      "resume": "Le marché crypto affiche un sentiment mitigé avec des signaux haussiers institutionnels (ARK, Sui, Galaxy) contrebalancés par des avertissements baissiers et des inquiétudes sur la durabilité du rally. Les développements réglementaires et l'intégration dans les plateformes majeures (X/Musk) créent une dynamique d'optimisme modéré malgré les corrections récentes.",
       "signaux_cles": [
-        "Reprise du Bitcoin à 70 000 dollars après liquidations massives (8,7 Mds $)",
-        "Investissements institutionnels positifs : ARK achète 15M$ Coinbase, Trump Media lance ETF crypto",
-        "Signaux de faiblesse : sorties nettes 242M$ ETF Ether, capitulation sur memecoins détectée",
-        "Préoccupations de sécurité : violation de données Figure, flux criminels crypto (centaines de millions)",
-        "Divergence haussière/baissière : certains analystes déclarent le bullrun terminé en 2026",
-        "Volatilité accrue : liquidations massives, mouvements de prix importants (+33% MANTRA, +17% Solana)"
+        "Accumulation institutionnelle confirmée (ARK 15M$ Coinbase, demande Sui en hausse)",
+        "Volatilité importante : liquidations massives (8,7Mds$) suivies de rebonds à 70k BTC",
+        "Signaux techniques mixtes : indicateur BTC proche d'un signal historique mais marché baissier non confirmé",
+        "Expansion réglementaire positive (ETF Trump Media, X trading crypto) renforçant l'adoption mainstream",
+        "Avertissements baissiers présents (fin du bullrun 2026, capitulation memecoin, données manquantes)",
+        "Risques de sécurité émergents (Figure Technology fuite données) impactant la confiance"
       ]
     },
     "matieres_premieres": {
       "score": -0.35,
       "confidence": 0.78,
       "tendance": "baissier",
-      "resume": "La rubrique matières premières affiche un sentiment globalement baissier, dominée par des pressions à la baisse sur les prix des énergies (pétrole, gaz naturel) et des signaux de faiblesse structurelle. Quelques initiatives positives (nucléaire, véhicules électriques) ne compensent pas les tendances négatives prépondérantes.",
+      "resume": "La rubrique matières premières affiche un sentiment globalement baissier, dominée par des préoccupations réglementaires et des pressions structurelles (démographie, pollution, transition énergétique chaotique). Quelques signaux haussiers isolés (énergies renouvelables, innovations nucléaires) ne compensent pas les headwinds macroéconomiques et géopolitiques.",
       "signaux_cles": [
         "Baisse consécutive des prix du pétrole et du gaz naturel",
-        "Réchauffement printanier affaiblissant la demande énergétique",
-        "Déclin des exportations de minerai de fer brésilien",
-        "Pressions réglementaires et environnementales croissantes",
-        "Initiatives positives en énergie nucléaire et électrification (contrepoids limité)",
-        "Volatilité géopolitique (flotte pétrolière russe, tensions Canada-Alberta)"
+        "Recul des exportations de minerai de fer brésilien",
+        "Attaques politiques contre l'énergie verte créant de l'incertitude réglementaire",
+        "Crises démographiques affectant la demande (Japon)",
+        "Innovations technologiques positives (nucléaire -80% coûts, mobilité électrique) contrebalancées par des obstacles commerciaux",
+        "Pressions environnementales et réglementaires croissantes (pollution, déchets maritimes)",
+        "Instabilité géopolitique (pétroliers russes, séparatisme canadien)"
       ]
     },
     "ai_tech": {
-      "score": 0.15,
+      "score": -0.35,
       "confidence": 0.78,
-      "tendance": "mixte",
-      "resume": "La rubrique IA/Tech affiche un sentiment mitigé avec des avancées technologiques positives (DeepMind, Waymo, intégrations IA) contrebalancées par des préoccupations sécuritaires majeures (vulnérabilités DJI, vol de secrets IA, malveillances) et des tensions compétitives croissantes entre acteurs clés.",
+      "tendance": "baissier",
+      "resume": "La rubrique IA/Tech affiche un sentiment globalement négatif dominé par des préoccupations sécuritaires, des risques de propriété intellectuelle et des enjeux éthiques. Bien que quelques annonces positives (investissements, innovations) soient présentes, elles sont largement éclipsées par des titres alarmistes concernant les attaques, le vol de modèles et les dérives technologiques.",
       "signaux_cles": [
-        "Préoccupations sécuritaires critiques : vulnérabilités matérielles (DJI) et risques de vol de propriété intellectuelle IA",
-        "Tensions géopolitiques et éthiques : utilisation de Claude par les États-Unis, critiques d'OpenAI par Anthropic, attaque Disney contre Seedance",
-        "Innovations positives : modèles bioacoustiques, expansion Waymo, intégrations IA grand public (Airbnb, Fitbit)",
-        "Consolidation et acquisitions : ServiceNow renforce son portefeuille IA",
-        "Menaces émergentes : malveillances ciblant développeurs, clonage de modèles IA"
+        "Préoccupations majeures sur la sécurité : distillation de modèles, attaques RCE, vol de cryptomonnaies, clonage d'IA",
+        "Enjeux éthiques et légaux : refus de protection des droits d'auteur pour l'IA, risques de vie privée, deepfakes malveillants",
+        "Tensions compétitives : critiques du CEO d'Anthropic envers OpenAI, retrait de code généré par LLM",
+        "Signaux positifs minoritaires : investissements en capital-risque (1,1 Mds$), innovations technologiques (modèle bioacoustique DeepMind)",
+        "Ton alarmiste prédominant avec titres sensationnalistes sur les risques et dérives de l'IA"
       ]
     }
   },
@@ -98,47 +100,47 @@
     },
     {
       "date": "2026-02-14",
-      "global": -0.02,
+      "global": -0.17,
       "geopolitique": -0.35,
-      "marches": 0.15,
+      "marches": -0.15,
       "crypto": 0.35,
       "matieres_premieres": -0.35,
-      "ai_tech": 0.15
+      "ai_tech": -0.35
     }
   ],
   "model": "claude-haiku-4-5-20251001",
   "usage": {
-    "totalInputTokens": 4762,
-    "totalOutputTokens": 1591,
+    "totalInputTokens": 4645,
+    "totalOutputTokens": 1740,
     "totalCalls": 5,
     "callsByLabel": {
       "sentiment-geopolitique": {
         "calls": 1,
-        "inputTokens": 877,
-        "outputTokens": 327
+        "inputTokens": 954,
+        "outputTokens": 319
       },
       "sentiment-marches": {
         "calls": 1,
-        "inputTokens": 1050,
-        "outputTokens": 307
+        "inputTokens": 963,
+        "outputTokens": 357
       },
       "sentiment-crypto": {
         "calls": 1,
-        "inputTokens": 940,
-        "outputTokens": 341
+        "inputTokens": 903,
+        "outputTokens": 351
       },
       "sentiment-matieres_premieres": {
         "calls": 1,
-        "inputTokens": 990,
-        "outputTokens": 284
+        "inputTokens": 920,
+        "outputTokens": 335
       },
       "sentiment-ai_tech": {
         "calls": 1,
         "inputTokens": 905,
-        "outputTokens": 332
+        "outputTokens": 378
       }
     },
-    "estimatedCostUSD": 0.0102,
+    "estimatedCostUSD": 0.0107,
     "model": "claude-haiku-4-5-20251001"
   }
 }
