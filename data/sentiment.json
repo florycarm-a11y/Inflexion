@@ -1,74 +1,77 @@
 {
-  "updated": "2026-02-14T03:12:18.183Z",
+  "updated": "2026-02-14T07:09:13.757Z",
   "date": "2026-02-14",
   "global": {
-    "score": -0.07,
+    "score": -0.01,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (-0.07), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est mixte (-0.01), dominé par la rubrique ai_tech (haussier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.62,
-      "confidence": 0.85,
+      "score": -0.35,
+      "confidence": 0.78,
       "tendance": "baissier",
-      "resume": "La rubrique géopolitique affiche un sentiment nettement baissier dominé par les tensions internationales, les conflits non résolus et l'instabilité politique. Les actions unilatérales de l'administration Trump, les crises régionales persistantes et les menaces de confrontation directe créent un environnement d'incertitude géopolitique croissante.",
+      "resume": "La rubrique géopolitique révèle un contexte mondial fragmenté et instable, marqué par des tensions régionales persistantes (Ukraine, Moyen-Orient), des réalignements géopolitiques majeurs et une remise en question de l'ordre mondial établi. Les signaux positifs (accords commerciaux, transitions démocratiques) sont largement surpassés par les enjeux de sécurité et d'incertitude.",
       "signaux_cles": [
-        "Escalade militaire : déploiement de porte-avions américains au Moyen-Orient et tensions Ukraine-Russie persistantes",
-        "Unilatéralisme américain : contournement du Congrès, révocation de protections temporaires, actions judiciaires internes",
-        "Fragmentation géopolitique : compétition Chine-USA (Pérou), restauration d'ordres politiques instables (Thaïlande), crises africaines multiples",
-        "Instabilité institutionnelle : arrêts gouvernementaux, défis judiciaires, campagnes de répression (Iran)",
-        "Absence de résolution diplomatique : statu quo sur Ukraine malgré appels à négociation, tensions non apaisées"
+        "Tensions géopolitiques croissantes : Ukraine, Palestine, Cisjordanie",
+        "Remise en question de l'ordre mondial post-guerre et du leadership américain",
+        "Réalignements stratégiques : Inde-Occident, Europe-États-Unis, Bangladesh",
+        "Instabilité institutionnelle : shutdown américain, transitions politiques",
+        "Signaux positifs limités : contrats de défense (Rafale), diplomatie maritime indienne",
+        "Incertitude sur la fiabilité des alliances traditionnelles (OTAN, relations transatlantiques)"
       ]
     },
     "marches": {
       "score": -0.35,
-      "confidence": 0.78,
-      "tendance": "mixte",
-      "resume": "Le marché affiche un sentiment mitigé avec des signaux contradictoires : certains secteurs (énergie, mines, immobilier) montrent de la croissance et des perspectives positives, tandis que les technologiques (Amazon, IA) et les indices larges (Dow, actions préférées) révèlent des signes d'essoufflement et de volatilité. L'incertitude politique et les préoccupations inflationnistes pèsent sur le sentiment global.",
+      "confidence": 0.72,
+      "tendance": "baissier",
+      "resume": "La rubrique affiche un sentiment mitigé à légèrement baissier. Bien que les déclarations de dividendes stables et les augmentations (Nike) suggèrent une certaine solidité, les titres dominants révèlent des préoccupations macroéconomiques, une volatilité accrue (Amazon, IA) et une incertitude politique qui pèsent sur le sentiment des marchés.",
       "signaux_cles": [
-        "Divergence sectorielle : croissance en énergie/mines vs faiblesse en technologie",
-        "Signaux d'alerte sur l'essoufflement du marché haussier et séries de baisses prolongées",
-        "Incertitude politique (Trump, tarifs) créant de la volatilité",
-        "Inflation des services persistante malgré modération du CPI",
-        "Panique autour de l'IA et reprises de positions chez les géants tech",
-        "Quelques points positifs isolés (Agnico Eagle, Public Storage) insuffisants pour compenser"
+        "Déclarations de dividendes régulières indiquant une stabilité relative des entreprises",
+        "Panique liée à l'IA et volatilité accrue (Amazon pire série en 20 ans)",
+        "Incertitude politique et macroéconomique (Trump, tarifs, réformes françaises)",
+        "Préoccupations inflationnistes et manque d'enthousiasme de Wall Street",
+        "Contenu non-financier dominant (immobilier, politique, exercices militaires) suggérant une dispersion de l'attention du marché"
       ]
     },
     "crypto": {
-      "score": 0.62,
-      "confidence": 0.85,
-      "tendance": "haussier",
-      "resume": "La rubrique crypto affiche un sentiment globalement haussier porté par des développements réglementaires positifs (CLARITY Act), des gains d'actions crypto majeurs (Coinbase +18%, MicroStrategy +10%) et des innovations de produits (ETF, marchés dérivés). Cependant, des signaux d'alerte subsistent avec des violations de données, des sorties importantes d'ETH et une baisse de l'intérêt ouvert.",
+      "score": 0.35,
+      "confidence": 0.78,
+      "tendance": "mixte",
+      "resume": "Le marché crypto affiche des signaux contradictoires : des indicateurs baissiers techniques (sorties d'ETF, intérêt ouvert en baisse, capitulation sur les memecoins) coexistent avec des catalyseurs haussiers institutionnels (approbations réglementaires, soutien politique, lancements de produits). L'incertitude macroéconomique et les préoccupations réglementaires tempèrent l'optimisme.",
       "signaux_cles": [
-        "Soutien réglementaire croissant : CLARITY Act et approbations ETF crypto par la SEC",
-        "Performance boursière forte : Coinbase +18%, MicroStrategy +10%, Solana Company +17%",
-        "Innovations produits : ETF Bitcoin/Ethereum, marchés dérivés 5 min, staking SOL",
-        "Signaux baissiers : violation de données Figure, sorties ETH 242M$, intérêt ouvert ETH au plus bas 3 ans",
-        "Risques de conformité : flux liés à la traite humaine, problèmes de sécurité (SIM-swap)"
+        "Signaux techniques baissiers : capitulation sur memecoins, sorties ETH de 242M$, intérêt ouvert ETH au plus bas en 3 ans",
+        "Catalyseurs haussiers : approbations ETF multiples, soutien politique (Trump, Maison-Blanche), gains d'actions crypto (COIN +18%, MSTR +10%)",
+        "Risques réglementaires et de sécurité : violation de données Figure, flux liés à la traite des êtres humains, volatilité persistante du Bitcoin",
+        "Expansion institutionnelle : nouveaux produits dérivés, staking, marchés de perps, intégration dans Truth Social",
+        "Incertitude macroéconomique : inflation en apaisement testant les détenteurs de Bitcoin, débat sur les rendements des stablecoins"
       ]
     },
     "matieres_premieres": {
       "score": -0.35,
       "confidence": 0.78,
       "tendance": "baissier",
-      "resume": "La rubrique matières premières affiche un sentiment globalement baissier, dominée par des pressions à la baisse sur les prix énergétiques (gaz naturel, pétrole) et des enjeux réglementaires/environnementaux croissants. Quelques signaux haussiers isolés (innovations nucléaires, minéraux critiques) ne compensent pas la tendance générale dépressive.",
+      "resume": "La rubrique matières premières affiche un sentiment globalement baissier dominé par la chute des prix énergétiques (gaz naturel, pétrole) et des incertitudes géopolitiques. Bien que certains secteurs comme les énergies alternatives et l'agriculture montrent des signaux positifs, la pression baissière sur les commodités énergétiques prédomine.",
       "signaux_cles": [
-        "Baisse consécutive des prix du pétrole et effondrement des prix du gaz naturel physique",
-        "Pressions réglementaires et environnementales accrues (pollution, déchets maritimes, sécheresse)",
-        "Réchauffement saisonnier réduisant la demande énergétique",
-        "Volatilité géopolitique (flotte fantôme russe, séparatisme albertain)",
-        "Innovations technologiques positives (Deep Fission, minéraux critiques) contrebalancées par les défis macro"
+        "Effondrement des prix du gaz naturel physique et contrats à terme en baisse",
+        "Pétrole enregistrant sa deuxième baisse hebdomadaire consécutive",
+        "Réchauffement printanier réduisant la demande énergétique",
+        "Tensions géopolitiques (flotte fantôme russe, séparatisme albertain) créant de l'incertitude",
+        "Opportunités dans les énergies alternatives (Deep Fission, électrification automobile) contrebalançant partiellement le pessimisme",
+        "Baisse des exportations de minerai de fer brésilien signalant une faiblesse cyclique"
       ]
     },
     "ai_tech": {
-      "score": 0.35,
+      "score": 0.62,
       "confidence": 0.78,
-      "tendance": "mixte",
-      "resume": "La rubrique IA/Tech affiche un sentiment globalement positif porté par des avancées technologiques majeures (mini-réacteurs, modèles IA plus rapides, intégration IA en production) et des consolidations stratégiques, contrebalancé par des préoccupations sécuritaires croissantes et des tensions internes dans les leaders du secteur.",
+      "tendance": "haussier",
+      "resume": "La rubrique IA/Tech affiche un sentiment globalement positif dominé par les avancées technologiques majeures (Waymo 6e génération, mini-réacteurs, innovations IA) et l'expansion commerciale des acteurs clés. Cependant, des signaux d'alerte (violations de données, suppressions de fonctionnalités de sécurité, malwares) tempèrent l'optimisme.",
       "signaux_cles": [
-        "Signaux haussiers : déploiement IA en production (Airbnb 1/3 du service client), innovations technologiques (Exa Instant, MiniMax M2.5), partenariats stratégiques (Amazon-X-Energy), M&A actif (ServiceNow)",
-        "Signaux baissiers : vagues de sécurité/malware (ClickFix, Figure violation, faux recruteurs), départs de talents clés chez OpenAI/xAI, suppression de modèles (OpenAI 4o), tensions géopolitiques (Chine vs Occident sur les prix IA)",
-        "Volatilité accrue : compétition intense sur les prix IA (MiniMax), débats éthiques/mission (OpenAI/Anthropic), risques de sécurité émergents, consolidation du marché"
+        "Déploiements technologiques majeurs (Waymo autonome, X-Energy, Oxide Zen 5) signalent une accélération de l'innovation",
+        "Intégration IA massive chez Airbnb et ServiceNow indique une monétisation croissante de l'IA générative",
+        "Suppressions de termes 'sécurité' chez OpenAI et violations de données (Figure) révèlent des tensions réglementaires et de confiance",
+        "Expansion retail (Nothing en Inde) et acquisitions stratégiques (ServiceNow) montrent une consolidation du marché",
+        "Menaces de sécurité (malwares dans défis de codage) et incidents de données créent une volatilité de confiance"
       ]
     }
   },
@@ -93,44 +96,44 @@
     },
     {
       "date": "2026-02-14",
-      "global": -0.07,
-      "geopolitique": -0.62,
+      "global": -0.01,
+      "geopolitique": -0.35,
       "marches": -0.35,
-      "crypto": 0.62,
+      "crypto": 0.35,
       "matieres_premieres": -0.35,
-      "ai_tech": 0.35
+      "ai_tech": 0.62
     }
   ],
   "model": "claude-haiku-4-5-20251001",
   "usage": {
-    "totalInputTokens": 4721,
-    "totalOutputTokens": 1661,
+    "totalInputTokens": 4664,
+    "totalOutputTokens": 1671,
     "totalCalls": 5,
     "callsByLabel": {
       "sentiment-geopolitique": {
         "calls": 1,
-        "inputTokens": 875,
-        "outputTokens": 334
+        "inputTokens": 885,
+        "outputTokens": 310
       },
       "sentiment-marches": {
         "calls": 1,
-        "inputTokens": 980,
-        "outputTokens": 327
+        "inputTokens": 976,
+        "outputTokens": 303
       },
       "sentiment-crypto": {
         "calls": 1,
-        "inputTokens": 1011,
-        "outputTokens": 332
+        "inputTokens": 1006,
+        "outputTokens": 383
       },
       "sentiment-matieres_premieres": {
         "calls": 1,
-        "inputTokens": 963,
-        "outputTokens": 302
+        "inputTokens": 942,
+        "outputTokens": 319
       },
       "sentiment-ai_tech": {
         "calls": 1,
-        "inputTokens": 892,
-        "outputTokens": 366
+        "inputTokens": 855,
+        "outputTokens": 356
       }
     },
     "estimatedCostUSD": 0.0104,
