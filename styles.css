@@ -2370,7 +2370,7 @@ a {
 
 @media (max-width: 1024px) {
     .footer-content {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr) !important;
     }
 
     .market-card.featured,
@@ -2402,7 +2402,7 @@ a {
     }
 
     .footer-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
     }
 
     .news-ticker {
@@ -5563,6 +5563,10 @@ a {
 /* --- Newsletter Content (AI-generated) --- */
 .newsletter-content-ai {
     margin-bottom: 1.5rem;
+    text-align: left;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .newsletter-content-ai:empty {
@@ -5587,20 +5591,20 @@ a {
 
 .newsletter-content-ai .newsletter-semaine {
     font-size: var(--fs-sm);
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .newsletter-content-ai .newsletter-title {
     font-size: var(--fs-lg);
     font-weight: 700;
-    color: var(--text-primary);
+    color: white;
     margin-bottom: 0.5rem;
     font-family: var(--font-serif);
 }
 
 .newsletter-content-ai .newsletter-subtitle {
     font-size: var(--fs-base);
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 1rem;
     font-style: italic;
 }
@@ -5608,7 +5612,7 @@ a {
 .newsletter-content-ai .newsletter-editorial {
     font-size: var(--fs-sm);
     line-height: 1.7;
-    color: var(--text-primary);
+    color: rgba(255, 255, 255, 0.85);
     margin-bottom: 1rem;
 }
 
@@ -5639,9 +5643,10 @@ a {
 
 .newsletter-content-ai .newsletter-faits li {
     padding: 0.4rem 0;
-    border-bottom: 1px solid var(--border-light);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     font-size: var(--fs-sm);
     line-height: 1.5;
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .newsletter-content-ai .newsletter-faits li:last-child {
@@ -5651,7 +5656,7 @@ a {
 .newsletter-content-ai .newsletter-perspectives p {
     font-size: var(--fs-sm);
     line-height: 1.6;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 
