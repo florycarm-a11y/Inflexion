@@ -1,103 +1,134 @@
 {
-  "updated": "2026-02-14T18:59:46.324Z",
+  "updated": "2026-02-15T03:26:18.248Z",
   "alertes": [
     {
-      "id": "alert-2026-02-14-001",
-      "titre": "Dogecoin en hausse de 10,29% en 24h",
-      "texte": "Dogecoin progresse de 10,29% à $0,106, affichant une volatilité marquée. Cette augmentation intervient dans un contexte de marché crypto hétérogène.",
+      "id": "alert-2026-02-15-001",
+      "titre": "XRP en hausse de 7,93% en 24 heures",
+      "texte": "XRP enregistre une progression de 7,93% sur 24 heures, atteignant 1,52 USD. Le mouvement intervient dans un contexte de volatilité accrue du marché crypto.",
       "categorie": "crypto",
-      "severite": "info",
+      "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-02-14T18:59:46.323Z",
+      "horodatage": "2026-02-15T03:26:18.248Z",
+      "donnees": {
+        "symbole": "XRP",
+        "nom": "XRP",
+        "prix": 1.52,
+        "variation_24h": 7.93,
+        "market_cap": 92795809181
+      }
+    },
+    {
+      "id": "alert-2026-02-15-002",
+      "titre": "Dogecoin bondit de 15,93% en 24 heures",
+      "texte": "Dogecoin s'apprécie de 15,93% en 24 heures à 0,112 USD, confirmant une dynamique haussière marquée sur la semaine (+14,08% sur 7 jours).",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-02-15T03:26:18.248Z",
       "donnees": {
         "symbole": "DOGE",
         "nom": "Dogecoin",
-        "prix": 0.105918,
-        "variation_24h": 10.29,
-        "market_cap": 17864973540
+        "prix": 0.112117,
+        "variation_24h": 15.93,
+        "market_cap": 18901895205
       }
     },
     {
-      "id": "alert-2026-02-14-002",
-      "titre": "Cardano gagne 6,84% en une journée",
-      "texte": "Cardano (ADA) s'apprécie de 6,84% à $0,29 sur 24h, reflétant une activité positive sur les altcoins majeurs.",
+      "id": "alert-2026-02-15-003",
+      "titre": "Dogecoin progresse de 14,08% sur 7 jours",
+      "texte": "Sur une semaine, Dogecoin affiche une hausse cumulée de 14,08%, reflétant une tendance haussière soutenue sur l'actif.",
       "categorie": "crypto",
-      "severite": "info",
+      "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-02-14T18:59:46.323Z",
+      "horodatage": "2026-02-15T03:26:18.248Z",
+      "donnees": {
+        "symbole": "DOGE",
+        "nom": "Dogecoin",
+        "prix": 0.112117,
+        "variation_7d": 14.08
+      }
+    },
+    {
+      "id": "alert-2026-02-15-004",
+      "titre": "Cardano progresse de 8,31% en 24 heures",
+      "texte": "Cardano gagne 8,31% en 24 heures, s'établissant à 0,297 USD. Le mouvement s'inscrit dans une tendance positive du marché des altcoins.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-02-15T03:26:18.248Z",
       "donnees": {
         "symbole": "ADA",
         "nom": "Cardano",
-        "prix": 0.290047,
-        "variation_24h": 6.84,
-        "market_cap": 10675344842
+        "prix": 0.296915,
+        "variation_24h": 8.31,
+        "market_cap": 10924835410
       }
     },
     {
-      "id": "alert-2026-02-14-003",
-      "titre": "L'or monte de 2,49%, refuge recherché",
-      "texte": "L'ETF or (GLD) progresse de 2,49% à $462,63, confirmant l'attrait des actifs refuge en période d'incertitude.",
+      "id": "alert-2026-02-15-005",
+      "titre": "Or en hausse de 2,49%, à 462,62 USD",
+      "texte": "L'ETF or (GLD) progresse de 2,49%, atteignant 462,62 USD. Cette appréciation reflète une demande accrue pour les actifs refuge.",
       "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-02-14T18:59:46.323Z",
+      "horodatage": "2026-02-15T03:26:18.248Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
-        "prix": 462.63,
+        "prix": 462.62,
         "variation": 2.49
       }
     },
     {
-      "id": "alert-2026-02-14-004",
-      "titre": "Nvidia recule de 2,20% à $182,82",
-      "texte": "Nvidia enregistre une baisse de 2,20% à $182,82, reflétant une correction sur les valeurs technologiques.",
+      "id": "alert-2026-02-15-006",
+      "titre": "Nvidia recule de 2,21%, à 182,81 USD",
+      "texte": "Nvidia enregistre une baisse de 2,21% à 182,81 USD. Le titre technologique suit une tendance baissière sur le secteur.",
       "categorie": "ai_tech",
-      "severite": "info",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-14T18:59:46.323Z",
+      "horodatage": "2026-02-15T03:26:18.248Z",
       "donnees": {
         "symbole": "NVDA",
         "nom": "Nvidia",
-        "prix": 182.82,
-        "variation": -2.2
+        "prix": 182.81,
+        "variation": -2.21
       }
     },
     {
-      "id": "alert-2026-02-14-005",
-      "titre": "Apple perd 2,27%, pression sur Mag7",
-      "texte": "Apple s'affaiblit de 2,27% à $255,79, contribuant au repli observé sur les géants technologiques.",
+      "id": "alert-2026-02-15-007",
+      "titre": "Apple en baisse de 2,27%, à 255,78 USD",
+      "texte": "Apple cède 2,27% à 255,78 USD. Le titre tech enregistre une correction dans un contexte de turbulences sur le secteur technologique.",
       "categorie": "marches",
-      "severite": "info",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-14T18:59:46.323Z",
+      "horodatage": "2026-02-15T03:26:18.248Z",
       "donnees": {
         "symbole": "AAPL",
         "nom": "Apple",
-        "prix": 255.79,
+        "prix": 255.78,
         "variation": -2.27
       }
     },
     {
-      "id": "alert-2026-02-14-006",
-      "titre": "Fear & Greed Index à 9 : peur extrême",
-      "texte": "L'indice Fear & Greed atteint 9 (peur extrême), en hausse de 3 points sur 7 jours, signalant une appréhension significative des investisseurs.",
+      "id": "alert-2026-02-15-008",
+      "titre": "Fear & Greed Index à 8 : extrême peur",
+      "texte": "L'indice Fear & Greed atteint 8/100, signalant une peur extrême sur les marchés. Variation sur 7 jours : +1 point, indiquant une légère amélioration du sentiment.",
       "categorie": "macro",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-02-14T18:59:46.323Z",
+      "horodatage": "2026-02-15T03:26:18.248Z",
       "donnees": {
-        "score": 9,
+        "score": 8,
         "label": "Extreme Fear",
-        "variation_7j": 3
+        "variation_7j": 1
       }
     }
   ],
   "stats": {
-    "total": 6,
+    "total": 8,
     "urgent": 1,
-    "attention": 1,
-    "info": 4
+    "attention": 7,
+    "info": 0
   },
   "model": "claude-haiku-4-5-20251001"
 }
