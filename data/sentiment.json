@@ -1,85 +1,79 @@
 {
-  "updated": "2026-02-15T07:12:08.809Z",
+  "updated": "2026-02-15T13:26:09.545Z",
   "date": "2026-02-15",
   "global": {
-    "score": -0.05,
-    "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (-0.05), dominé par la rubrique geopolitique (baissier)."
+    "score": -0.21,
+    "tendance": "baissier",
+    "resume": "Le sentiment global est baissier (-0.21), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.65,
-      "confidence": 0.85,
+      "score": -0.72,
+      "confidence": 0.88,
       "tendance": "baissier",
-      "resume": "La rubrique géopolitique affiche un sentiment fortement baissier dominé par les tensions internationales, les conflits armés persistants et l'instabilité politique. Les titres reflètent des crises majeures (Gaza, Ukraine, Iran) et des risques géopolitiques croissants qui pèsent négativement sur la confiance des marchés.",
+      "resume": "La rubrique géopolitique affiche un sentiment fortement négatif dominé par les conflits armés (Ukraine, Gaza, Iran), les tensions diplomatiques et l'instabilité politique régionale. Les titres reflètent une accumulation de crises sans résolution visible, générant une incertitude géopolitique majeure impactant les marchés financiers.",
       "signaux_cles": [
-        "Escalade militaire à Gaza avec pertes civiles rapportées",
-        "Incertitude sur la survie de l'Ukraine et menaces existentielles",
-        "Tensions nucléaires iraniennes malgré signaux diplomatiques mitigés",
-        "Instabilité politique en Hongrie et autoritarisme croissant",
-        "Recrutement forcé et exploitation de combattants africains par la Russie",
-        "Répression en Iran avec manifestations massives contre le régime",
-        "Censure numérique en Russie et restrictions aux communications",
-        "Risques d'intervention américaine à Cuba sous Trump",
-        "Quelques signaux positifs limités (diplomatie indienne, football à Gaza, accord nucléaire potentiel)"
+        "Escalade militaire Ukraine-Russie : 200+ combats rapportés, frappes sur infrastructures pétrolières",
+        "Crise humanitaire Gaza : décès civils répétés, tensions israélo-palestiniennes persistantes",
+        "Tensions nucléaires Iran : négociations fragiles, détentions politiques, craintes d'exécutions",
+        "Instabilité politique : polarisation en France, révolution étudiante au Bangladesh, réformes présidentielles controversées aux USA",
+        "Fragmentations diplomatiques : appel à l'unité européenne rejeté, BCE intervenant pour stabiliser les marchés",
+        "Risques de contagion régionale : armement des Balkans, tensions commerciales et géopolitiques interconnectées"
       ]
     },
     "marches": {
       "score": -0.35,
       "confidence": 0.72,
-      "tendance": "mixte",
-      "resume": "La rubrique affiche un sentiment mitigé avec des signaux positifs technologiques et spatiaux contrebalancés par des préoccupations géopolitiques majeures, des risques budgétaires américains et des incertitudes géostratégiques. Les enjeux réglementaires et politiques créent une volatilité sous-jacente.",
+      "tendance": "baissier",
+      "resume": "La rubrique marché affiche un sentiment globalement baissier avec des préoccupations dominantes autour des défis économiques structurels (démographie au Japon, chômage des jeunes au Royaume-Uni), des tensions géopolitiques et des pressions inflationnistes. Quelques signaux positifs isolés ne compensent pas le ton d'inquiétude générale.",
       "signaux_cles": [
-        "Inquiétude budgétaire : vente massive de 701 milliards de dollars de bons du Trésor américain avec déficits explosifs",
-        "Risque géopolitique : survie de l'Ukraine incertaine, tensions diplomatiques transatlantiques",
-        "Signaux positifs technologiques : productivité IA visible, innovations Apple, succès spatial européen",
-        "Volatilité réglementaire : annulation des protections climatiques, enquêtes Epstein, débats sur les stablecoins",
-        "Confiance sectorielle mitigée : gains XRP (+10%) contrastant avec incertitudes macroéconomiques"
+        "Préoccupations démographiques majeures au Japon avec impact économique systémique",
+        "Tensions géopolitiques (attaques de drones en Russie, tensions commerciales US)",
+        "Inflation et volatilité des prix (JO d'hiver, cigarettes en Australie)",
+        "Réductions d'aides gouvernementales et mesures d'austérité (apprentissage, embauche)",
+        "Volatilité attendue sur les marchés (trading de panique, bruit IA)",
+        "Quelques signaux positifs isolés (SBM Monaco, infrastructure numérique)"
       ]
     },
     "crypto": {
       "score": 0.35,
       "confidence": 0.72,
       "tendance": "mixte",
-      "resume": "Le sentiment global est modérément positif avec des signaux haussiers (reprise du Bitcoin, demande institutionnelle forte, innovations de trading) contrebalancés par des risques réglementaires et de sécurité. La rubrique montre une crypto-industrie en expansion mais confrontée à des défis structurels.",
+      "resume": "La rubrique crypto affiche un sentiment globalement mitigé avec des signaux haussiers institutionnels (Wall Street, reprises de prix) contrebalancés par des préoccupations réglementaires et des risques technologiques. La présence d'articles non-pertinents réduit la fiabilité de l'analyse.",
       "signaux_cles": [
-        "Bitcoin reprend 70 000$ après correction - signal haussier technique",
-        "Demande institutionnelle décrite comme « jamais aussi forte » - adoption croissante",
-        "Intégration du trading sur X et plateformes majeures - expansion de l'écosystème",
-        "Réductions d'objectifs de cours (Coinbase -37%) - doutes des analystes",
-        "Préoccupations quantiques et risques de sécurité - incertitude technologique",
-        "Scrutin réglementaire accru (CFIUS, sénateurs) - risque politique",
-        "Incident de sécurité (home jacking) - vulnérabilités persistantes",
-        "Présence de contenu non-pertinent dans la rubrique - qualité éditoriale variable"
+        "Reprise du Bitcoin au-dessus de 70 000 dollars - signal haussier",
+        "Wall Street maintient une position haussière malgré les retraits offshore - confiance institutionnelle",
+        "Préoccupations réglementaires croissantes (enquêtes sénatoriales, CFIUS) - risque politique",
+        "Réduction de 37% de l'objectif de cours Coinbase malgré diversification - sentiment mitigé",
+        "Intérêt des grandes institutions (Mirae Asset, Trump Media) pour les produits crypto - adoption mainstream",
+        "Risques quantiques mentionnés par les VC - incertitude technologique",
+        "Qualité des données compromise par articles non-pertinents (30 articles dont ~7 hors-sujet)"
       ]
     },
     "matieres_premieres": {
-      "score": 0.35,
-      "confidence": 0.78,
-      "tendance": "mixte",
-      "resume": "La rubrique matières premières affiche un sentiment globalement mitigé avec des signaux haussiers autour des énergies renouvelables et de l'électrification, contrebalancés par des préoccupations concernant les politiques énergétiques américaines et les défis structurels. Les transitions énergétiques créent des opportunités mais génèrent aussi de l'incertitude réglementaire.",
-      "signaux_cles": [
-        "Expansion positive de la production de véhicules électriques en Amérique latine (Geely, BYD, Ford, GM)",
-        "Croissance des énergies renouvelables et du stockage d'énergie comme alternatives viables",
-        "Incertitude réglementaire majeure : politiques anti-énergie verte de Trump impactant le secteur manufacturier",
-        "Volatilité des prix du gaz naturel avec tendance baissière (accalmie saisonnière)",
-        "Opportunités émergentes en technologie (biominage spatial, combustible nucléaire recyclé)",
-        "Risques géopolitiques : dépendance énergétique vis-à-vis de la Russie",
-        "Défis démographiques au Japon affectant les chaînes d'approvisionnement mondiales",
-        "Litiges environnementaux et réglementaires dans l'agro-industrie"
-      ]
-    },
-    "ai_tech": {
       "score": 0.15,
       "confidence": 0.72,
       "tendance": "mixte",
-      "resume": "La rubrique IA/Tech affiche un sentiment mitigé avec des avancées technologiques positives (Google WebMCP, modèles IA agentiques) contrebalancées par des préoccupations croissantes sur la sécurité, la concurrence tarifaire agressive et les implications éthiques de l'IA. Les tensions géopolitiques et commerciales dominent.",
+      "resume": "La rubrique matières premières affiche un sentiment mitigé avec des signaux haussiers sur les énergies alternatives et la diversification énergétique, contrebalancés par des pressions baissières sur les hydrocarbures traditionnels et des défis structurels (démographie, réglementation). Les transitions énergétiques offrent des opportunités mais génèrent de l'incertitude.",
       "signaux_cles": [
-        "Pression tarifaire intensifiée : Bytedance Seed2.0 accélère la compression des prix des modèles IA occidentaux",
-        "Préoccupations de sécurité : questions sur xAI, attaques par distillation, vulnérabilités RCE",
-        "Innovation continue : avancées en agents IA, WebMCP, mémoire d'agent auto-organisée",
-        "Risques éthiques et sociaux : impact sur l'emploi (journaliste sans rémunération), dette cognitive, utilisation abusive de données",
-        "Consolidation géopolitique : Geely/BYD sur Nissan/Mercedes, compétition sino-occidentale accrue"
+        "Transition énergétique accélérée : boom du schiste argentin, investissements en énergies renouvelables et stockage d'énergie",
+        "Pression baissière sur les hydrocarbures : baisse consécutive du pétrole, réduction de la dépendance énergétique russe",
+        "Incertitude réglementaire : attaques contre l'énergie verte, décisions judiciaires attendues sur les conclusions environnementales",
+        "Volatilité des prix : chute des prix du gaz naturel, instabilité des marchés agricoles et miniers",
+        "Innovations technologiques : biominage spatial, batteries sans lithium, combustible nucléaire recyclé"
+      ]
+    },
+    "ai_tech": {
+      "score": -0.35,
+      "confidence": 0.82,
+      "tendance": "mixte",
+      "resume": "La rubrique IA/Tech affiche un sentiment mitigé dominé par des préoccupations de sécurité, de concurrence accrue et de pression tarifaire, contrebalancées par des avancées technologiques significatives et des innovations open source. Les tensions géopolitiques et les enjeux éthiques tempèrent l'optimisme technologique.",
+      "signaux_cles": [
+        "Préoccupations de sécurité croissantes (arnaque IA Google, vulnérabilités xAI, distillation de modèles)",
+        "Pression tarifaire intensifiée par les modèles chinois (Bytedance Seed2.0) menaçant la rentabilité des acteurs occidentaux",
+        "Innovations technologiques positives (WebMCP, Kani-TTS-2, systèmes de mémoire d'agent) soutenant les perspectives long terme",
+        "Enjeux éthiques et de propriété intellectuelle aigus (clonage de personnages Disney, données Epstein, travail d'IA)",
+        "Fragmentation du marché avec émergence de solutions open source et alternatives compétitives"
       ]
     }
   },
@@ -113,47 +107,47 @@
     },
     {
       "date": "2026-02-15",
-      "global": -0.05,
-      "geopolitique": -0.65,
+      "global": -0.21,
+      "geopolitique": -0.72,
       "marches": -0.35,
       "crypto": 0.35,
-      "matieres_premieres": 0.35,
-      "ai_tech": 0.15
+      "matieres_premieres": 0.15,
+      "ai_tech": -0.35
     }
   ],
   "model": "claude-haiku-4-5-20251001",
   "usage": {
-    "totalInputTokens": 4673,
-    "totalOutputTokens": 1696,
+    "totalInputTokens": 4738,
+    "totalOutputTokens": 1644,
     "totalCalls": 5,
     "callsByLabel": {
       "sentiment-geopolitique": {
         "calls": 1,
-        "inputTokens": 878,
-        "outputTokens": 332
+        "inputTokens": 896,
+        "outputTokens": 334
       },
       "sentiment-marches": {
         "calls": 1,
-        "inputTokens": 1058,
-        "outputTokens": 309
+        "inputTokens": 1068,
+        "outputTokens": 306
       },
       "sentiment-crypto": {
         "calls": 1,
-        "inputTokens": 939,
-        "outputTokens": 334
+        "inputTokens": 913,
+        "outputTokens": 335
       },
       "sentiment-matieres_premieres": {
         "calls": 1,
-        "inputTokens": 913,
-        "outputTokens": 392
+        "inputTokens": 923,
+        "outputTokens": 334
       },
       "sentiment-ai_tech": {
         "calls": 1,
-        "inputTokens": 885,
-        "outputTokens": 329
+        "inputTokens": 938,
+        "outputTokens": 335
       }
     },
-    "estimatedCostUSD": 0.0105,
+    "estimatedCostUSD": 0.0104,
     "model": "claude-haiku-4-5-20251001"
   }
 }

@@ -1,135 +1,117 @@
 {
-  "updated": "2026-02-15T07:12:14.518Z",
+  "updated": "2026-02-15T13:26:14.716Z",
   "alertes": [
     {
       "id": "alert-2026-02-15-001",
-      "titre": "XRP s'envole de 12% en 24h",
-      "texte": "Ripple atteint $1,58, en hausse de 11,97% sur 24h et 11,59% sur 7 jours. Mouvement haussier soutenu sur la semaine.",
+      "titre": "XRP en hausse de 5,76% en 24 heures",
+      "texte": "Le XRP affiche une progression de 5,76% sur 24 heures, s'établissant à $1,55. Ce mouvement s'inscrit dans un contexte de volatilité accrue du marché crypto.",
       "categorie": "crypto",
-      "severite": "attention",
+      "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-02-15T07:12:14.518Z",
+      "horodatage": "2026-02-15T13:26:14.715Z",
       "donnees": {
         "symbole": "XRP",
         "nom": "XRP",
-        "prix": 1.58,
-        "variation_24h": 11.97,
-        "market_cap": 96348572756
+        "prix": 1.55,
+        "variation_24h": 5.76,
+        "market_cap": 94590662992
       }
     },
     {
       "id": "alert-2026-02-15-002",
-      "titre": "Dogecoin explose de 19% en 24h",
-      "texte": "DOGE monte à $0,115, gagnant 18,76% sur 24h et 18,19% sur 7 jours. Hausse spectaculaire sur la semaine.",
+      "titre": "Dogecoin bondit de 11,85% en 24 heures",
+      "texte": "Le Dogecoin enregistre une hausse de 11,85% en 24 heures, atteignant $0,112. Cette progression s'accompagne d'un gain de 15,80% sur 7 jours.",
       "categorie": "crypto",
       "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-02-15T07:12:14.518Z",
+      "horodatage": "2026-02-15T13:26:14.715Z",
       "donnees": {
-        "symbole": "XRP",
-        "nom": "XRP",
-        "prix": 1.58,
-        "variation_7d": 11.59
+        "symbole": "DOGE",
+        "nom": "Dogecoin",
+        "prix": 0.111939,
+        "variation_24h": 11.85,
+        "market_cap": 18908069428
       }
     },
     {
       "id": "alert-2026-02-15-003",
-      "titre": "Cardano accélère avec +8,6% en 24h",
-      "texte": "ADA progresse à $0,298, en hausse de 8,59% sur 24h et 10,29% sur 7 jours. Dynamique haussière confirmée.",
+      "titre": "Dogecoin : +15,80% sur une semaine",
+      "texte": "Le Dogecoin poursuit sa progression avec un gain de 15,80% sur 7 jours, reflétant un intérêt soutenu des investisseurs pour cet actif.",
       "categorie": "crypto",
       "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-02-15T07:12:14.518Z",
+      "horodatage": "2026-02-15T13:26:14.715Z",
       "donnees": {
-        "symbole": "SOL",
-        "nom": "Solana",
-        "prix": 89.81,
-        "variation_24h": 6.04,
-        "market_cap": 51000809673
+        "symbole": "DOGE",
+        "nom": "Dogecoin",
+        "prix": 0.111939,
+        "variation_7d": 15.8
       }
     },
     {
       "id": "alert-2026-02-15-004",
-      "titre": "Solana gagne 6% en 24h",
-      "texte": "SOL s'apprécie à $89,81, affichant une progression de 6,04% sur 24h. Hausse modérée mais positive.",
-      "categorie": "crypto",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-02-15T07:12:14.518Z",
-      "donnees": {
-        "symbole": "DOGE",
-        "nom": "Dogecoin",
-        "prix": 0.114605,
-        "variation_24h": 18.76,
-        "market_cap": 19334916097
-      }
-    },
-    {
-      "id": "alert-2026-02-15-005",
-      "titre": "Or en hausse de 2,5%",
-      "texte": "L'ETF aurifère GLD progresse à $462,62, gagnant 2,49%. Mouvement modéré de refuge.",
+      "titre": "Or en hausse de 2,49%",
+      "texte": "L'ETF Or (GLD) gagne 2,49%, s'établissant à $462,62. Cette progression reflète une demande accrue pour les actifs refuge face aux tensions de marché.",
       "categorie": "matieres_premieres",
       "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-02-15T07:12:14.518Z",
-      "donnees": {
-        "symbole": "DOGE",
-        "nom": "Dogecoin",
-        "prix": 0.114605,
-        "variation_7d": 18.19
-      }
-    },
-    {
-      "id": "alert-2026-02-15-006",
-      "titre": "Nvidia recule de 2,2%",
-      "texte": "NVDA perd 2,21% à $182,81. Correction mineure sur le géant de l'IA.",
-      "categorie": "ai_tech",
-      "severite": "info",
-      "impact": "baissier",
-      "horodatage": "2026-02-15T07:12:14.518Z",
-      "donnees": {
-        "symbole": "ADA",
-        "nom": "Cardano",
-        "prix": 0.298012,
-        "variation_24h": 8.59,
-        "market_cap": 10966841288
-      }
-    },
-    {
-      "id": "alert-2026-02-15-007",
-      "titre": "Apple cède 2,3% en une séance",
-      "texte": "AAPL baisse de 2,27% à $255,78. Léger repli de la valeur refuge technologique.",
-      "categorie": "ai_tech",
-      "severite": "info",
-      "impact": "baissier",
-      "horodatage": "2026-02-15T07:12:14.518Z",
-      "donnees": {
-        "symbole": "ADA",
-        "nom": "Cardano",
-        "prix": 0.298012,
-        "variation_7d": 10.29
-      }
-    },
-    {
-      "id": "alert-2026-02-15-008",
-      "titre": "Fear & Greed reste en panique extrême",
-      "texte": "L'indice chute à 8 (peur extrême), stable sur 7 jours (+1 pt). Sentiment de marché très négatif.",
-      "categorie": "macro",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-02-15T07:12:14.518Z",
+      "horodatage": "2026-02-15T13:26:14.715Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
         "prix": 462.62,
         "variation": 2.49
       }
+    },
+    {
+      "id": "alert-2026-02-15-005",
+      "titre": "Nvidia cède 2,21% à $182,81",
+      "texte": "L'action Nvidia enregistre une baisse de 2,21%, s'établissant à $182,81. Ce repli intervient dans un contexte de correction du secteur technologique.",
+      "categorie": "ai_tech",
+      "severite": "info",
+      "impact": "baissier",
+      "horodatage": "2026-02-15T13:26:14.715Z",
+      "donnees": {
+        "symbole": "NVDA",
+        "nom": "Nvidia",
+        "prix": 182.81,
+        "variation": -2.21
+      }
+    },
+    {
+      "id": "alert-2026-02-15-006",
+      "titre": "Apple recule de 2,27% à $255,78",
+      "texte": "L'action Apple enregistre une baisse de 2,27%, s'établissant à $255,78. Ce mouvement s'inscrit dans une correction plus large du secteur des valeurs technologiques.",
+      "categorie": "ai_tech",
+      "severite": "info",
+      "impact": "baissier",
+      "horodatage": "2026-02-15T13:26:14.715Z",
+      "donnees": {
+        "symbole": "AAPL",
+        "nom": "Apple",
+        "prix": 255.78,
+        "variation": -2.27
+      }
+    },
+    {
+      "id": "alert-2026-02-15-007",
+      "titre": "Fear & Greed Index en peur extrême à 8",
+      "texte": "L'indice Fear & Greed atteint 8 points (peur extrême) avec une variation de +1 point sur 7 jours. Cette lecture reflète un sentiment de marché fortement dégradé.",
+      "categorie": "macro",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-02-15T13:26:14.715Z",
+      "donnees": {
+        "score": 8,
+        "label": "Extreme Fear",
+        "variation_7j": 1
+      }
     }
   ],
   "stats": {
-    "total": 8,
+    "total": 7,
     "urgent": 1,
-    "attention": 3,
+    "attention": 2,
     "info": 4
   },
   "model": "claude-haiku-4-5-20251001"
