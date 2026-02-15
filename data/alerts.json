@@ -1,106 +1,75 @@
 {
-  "updated": "2026-02-15T13:26:14.716Z",
+  "updated": "2026-02-15T19:01:13.394Z",
   "alertes": [
     {
       "id": "alert-2026-02-15-001",
-      "titre": "XRP en hausse de 5,76% en 24 heures",
-      "texte": "Le XRP affiche une progression de 5,76% sur 24 heures, s'établissant à $1,55. Ce mouvement s'inscrit dans un contexte de volatilité accrue du marché crypto.",
+      "titre": "Ethereum plonge de 5,34% en 24 heures",
+      "texte": "Ethereum enregistre une baisse significative de 5,34% sur 24 heures, s'échangeant à $1 972,17. Cette correction marque une pression vendeuse notable sur la deuxième capitalisation cryptographique.",
       "categorie": "crypto",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-02-15T13:26:14.715Z",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-02-15T19:01:13.394Z",
       "donnees": {
-        "symbole": "XRP",
-        "nom": "XRP",
-        "prix": 1.55,
-        "variation_24h": 5.76,
-        "market_cap": 94590662992
+        "symbole": "ETH",
+        "nom": "Ethereum",
+        "prix": 1972.17,
+        "variation_24h": -5.34,
+        "market_cap": 238266049047
       }
     },
     {
       "id": "alert-2026-02-15-002",
-      "titre": "Dogecoin bondit de 11,85% en 24 heures",
-      "texte": "Le Dogecoin enregistre une hausse de 11,85% en 24 heures, atteignant $0,112. Cette progression s'accompagne d'un gain de 15,80% sur 7 jours.",
-      "categorie": "crypto",
-      "severite": "attention",
-      "impact": "haussier",
-      "horodatage": "2026-02-15T13:26:14.715Z",
-      "donnees": {
-        "symbole": "DOGE",
-        "nom": "Dogecoin",
-        "prix": 0.111939,
-        "variation_24h": 11.85,
-        "market_cap": 18908069428
-      }
-    },
-    {
-      "id": "alert-2026-02-15-003",
-      "titre": "Dogecoin : +15,80% sur une semaine",
-      "texte": "Le Dogecoin poursuit sa progression avec un gain de 15,80% sur 7 jours, reflétant un intérêt soutenu des investisseurs pour cet actif.",
-      "categorie": "crypto",
-      "severite": "attention",
-      "impact": "haussier",
-      "horodatage": "2026-02-15T13:26:14.715Z",
-      "donnees": {
-        "symbole": "DOGE",
-        "nom": "Dogecoin",
-        "prix": 0.111939,
-        "variation_7d": 15.8
-      }
-    },
-    {
-      "id": "alert-2026-02-15-004",
-      "titre": "Or en hausse de 2,49%",
-      "texte": "L'ETF Or (GLD) gagne 2,49%, s'établissant à $462,62. Cette progression reflète une demande accrue pour les actifs refuge face aux tensions de marché.",
+      "titre": "L'or grimpe de 2,49%, refuge face aux incertitudes",
+      "texte": "L'ETF or (GLD) progresse de 2,49% pour atteindre $462,63, reflétant une demande accrue pour les actifs refuges dans un contexte d'aversion au risque.",
       "categorie": "matieres_premieres",
       "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-02-15T13:26:14.715Z",
+      "horodatage": "2026-02-15T19:01:13.394Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
-        "prix": 462.62,
+        "prix": 462.63,
         "variation": 2.49
       }
     },
     {
-      "id": "alert-2026-02-15-005",
-      "titre": "Nvidia cède 2,21% à $182,81",
-      "texte": "L'action Nvidia enregistre une baisse de 2,21%, s'établissant à $182,81. Ce repli intervient dans un contexte de correction du secteur technologique.",
+      "id": "alert-2026-02-15-003",
+      "titre": "Nvidia recule de 2,20%, pression sur le secteur IA",
+      "texte": "Nvidia cède 2,20% à $182,82, illustrant une consolidation du secteur technologique et des valeurs liées à l'intelligence artificielle.",
       "categorie": "ai_tech",
-      "severite": "info",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-15T13:26:14.715Z",
+      "horodatage": "2026-02-15T19:01:13.394Z",
       "donnees": {
         "symbole": "NVDA",
         "nom": "Nvidia",
-        "prix": 182.81,
-        "variation": -2.21
+        "prix": 182.82,
+        "variation": -2.2
       }
     },
     {
-      "id": "alert-2026-02-15-006",
-      "titre": "Apple recule de 2,27% à $255,78",
-      "texte": "L'action Apple enregistre une baisse de 2,27%, s'établissant à $255,78. Ce mouvement s'inscrit dans une correction plus large du secteur des valeurs technologiques.",
-      "categorie": "ai_tech",
-      "severite": "info",
+      "id": "alert-2026-02-15-004",
+      "titre": "Apple baisse de 2,27%, correction des géants tech",
+      "texte": "Apple recule de 2,27% à $255,79, s'inscrivant dans une dynamique de profit-taking affectant les grandes capitalisations technologiques.",
+      "categorie": "marches",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-15T13:26:14.715Z",
+      "horodatage": "2026-02-15T19:01:13.394Z",
       "donnees": {
         "symbole": "AAPL",
         "nom": "Apple",
-        "prix": 255.78,
+        "prix": 255.79,
         "variation": -2.27
       }
     },
     {
-      "id": "alert-2026-02-15-007",
-      "titre": "Fear & Greed Index en peur extrême à 8",
-      "texte": "L'indice Fear & Greed atteint 8 points (peur extrême) avec une variation de +1 point sur 7 jours. Cette lecture reflète un sentiment de marché fortement dégradé.",
+      "id": "alert-2026-02-15-005",
+      "titre": "Indice Fear & Greed à 8 : peur extrême dominante",
+      "texte": "Le Fear & Greed Index atteint 8/100 (Extreme Fear), en augmentation de 1 point sur 7 jours, signalant une aversion au risque généralisée et une panique accrue parmi les investisseurs.",
       "categorie": "macro",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-02-15T13:26:14.715Z",
+      "horodatage": "2026-02-15T19:01:13.394Z",
       "donnees": {
         "score": 8,
         "label": "Extreme Fear",
@@ -109,10 +78,10 @@
     }
   ],
   "stats": {
-    "total": 7,
+    "total": 5,
     "urgent": 1,
-    "attention": 2,
-    "info": 4
+    "attention": 3,
+    "info": 1
   },
   "model": "claude-haiku-4-5-20251001"
 }
