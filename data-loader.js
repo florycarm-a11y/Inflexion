@@ -870,6 +870,38 @@ const DataLoader = (function () {
         });
     }
 
+    // ─── Helpers nettoyage articles ──────────────────────────
+    var MAX_TITLE_LEN = 120;
+
+    /**
+     * Tronque un titre au dernier mot complet avant maxLen
+     */
+    function truncateTitle(title, maxLen) {
+        if (!title || title.length <= maxLen) return title;
+        var cut = title.lastIndexOf(' ', maxLen);
+        if (cut < maxLen * 0.6) cut = maxLen; // pas de mot-frontière raisonnable
+        return title.slice(0, cut) + '\u2026';
+    }
+
+    /**
+     * Détecte si le résumé est redondant avec le titre
+     * (inclusion, ou >60% des mots du titre présents dans le résumé)
+     */
+    function isSummaryRedundant(title, summary) {
+        if (!title || !summary) return false;
+        var t = title.toLowerCase().replace(/[^a-zàâäéèêëïîôùûüÿçœæ0-9 ]/g, '');
+        var s = summary.toLowerCase().replace(/[^a-zàâäéèêëïîôùûüÿçœæ0-9 ]/g, '');
+        // Cas 1 : le résumé commence pareil que le titre
+        if (s.indexOf(t.slice(0, Math.min(50, t.length))) === 0) return true;
+        // Cas 2 : le titre est contenu dans le résumé
+        if (s.indexOf(t) !== -1) return true;
+        // Cas 3 : >60% des mots du titre se retrouvent dans le résumé
+        var titleWords = t.split(/\s+/).filter(function(w) { return w.length > 3; });
+        if (titleWords.length === 0) return false;
+        var matchCount = titleWords.filter(function(w) { return s.indexOf(w) !== -1; }).length;
+        return (matchCount / titleWords.length) > 0.6;
+    }
+
     /**
      * Met à jour la section "Dernières actualités" avec les données enrichies (rubriques)
      */
@@ -913,8 +945,12 @@ const DataLoader = (function () {
                 ? '<img src="' + n.image + '" alt="" class="news-list-thumb" loading="lazy" onerror="this.parentElement.classList.remove(\'has-thumb\');this.remove()">'
                 : '';
 
-            // Résumé concret sous la photo (max 150 car.)
+            // Titre tronqué si trop long
+            var displayTitle = truncateTitle(n.title || '', MAX_TITLE_LEN);
+
+            // Résumé : masquer si redondant avec le titre, sinon tronquer (max 150 car.)
             var desc = n.description || '';
+            if (isSummaryRedundant(n.title || '', desc)) desc = '';
             if (desc.length > 150) desc = desc.slice(0, 147) + '...';
             var summaryHTML = desc
                 ? '<p class="news-list-summary">' + desc + '</p>'
@@ -928,7 +964,7 @@ const DataLoader = (function () {
                         '<time class="news-time">' + (n.time || '') + '</time>' +
                         rubriqueTag +
                     '</div>' +
-                    '<h3><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer">' + (n.title || '') + '</a></h3>' +
+                    '<h3><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer">' + displayTitle + '</a></h3>' +
                     summaryHTML +
                 '</div>' +
             '</article>';
@@ -1309,8 +1345,12 @@ const DataLoader = (function () {
                 ? '<img src="' + n.image + '" alt="" class="story-image" loading="lazy" onerror="this.remove()">'
                 : '';
 
-            // Résumé tronqué (max 150 car.)
+            // Titre tronqué si trop long
+            var displayTitle = truncateTitle(n.title || '', MAX_TITLE_LEN);
+
+            // Résumé : masquer si redondant avec le titre, sinon tronquer (max 150 car.)
             var desc = n.description || '';
+            if (isSummaryRedundant(n.title || '', desc)) desc = '';
             if (desc.length > 150) desc = desc.slice(0, 147) + '...';
             var excerptHTML = desc
                 ? '<p class="story-excerpt">' + desc + '</p>'
@@ -1324,7 +1364,7 @@ const DataLoader = (function () {
                         '<time class="news-time">' + (n.time || '') + '</time>' +
                         rubriqueTag +
                     '</div>' +
-                    '<h3 class="story-title"><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer">' + (n.title || '') + '</a></h3>' +
+                    '<h3 class="story-title"><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer">' + displayTitle + '</a></h3>' +
                     excerptHTML +
                 '</div>' +
             '</article>';
