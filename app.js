@@ -340,10 +340,30 @@ const _categoryToRubrique = {
     ai_tech: 'ai_tech'
 };
 
+const _MAX_TITLE_LEN = 120;
+
+function _truncateTitle(title, maxLen) {
+    if (!title || title.length <= maxLen) return title;
+    const cut = title.lastIndexOf(' ', maxLen);
+    return title.slice(0, cut > maxLen * 0.6 ? cut : maxLen) + '\u2026';
+}
+
+function _isSummaryRedundant(title, summary) {
+    if (!title || !summary) return false;
+    const t = title.toLowerCase().replace(/[^a-zàâäéèêëïîôùûüÿçœæ0-9 ]/g, '');
+    const s = summary.toLowerCase().replace(/[^a-zàâäéèêëïîôùûüÿçœæ0-9 ]/g, '');
+    if (s.startsWith(t.slice(0, Math.min(50, t.length)))) return true;
+    if (s.includes(t)) return true;
+    const words = t.split(/\s+/).filter(w => w.length > 3);
+    if (words.length === 0) return false;
+    return (words.filter(w => s.includes(w)).length / words.length) > 0.6;
+}
+
 function newsListItemHTML(article) {
     const source = escapeHTML(article.source || '');
-    const title = escapeHTML(article.title || '');
-    const desc = escapeHTML(article.description || '');
+    const rawTitle = article.title || '';
+    const title = escapeHTML(_truncateTitle(rawTitle, _MAX_TITLE_LEN));
+    const rawDesc = article.description || '';
     const time = escapeHTML(article.time || '');
     const url = article.url || '#';
     const rawCat = article.category || article.rubrique || '';
@@ -355,8 +375,8 @@ function newsListItemHTML(article) {
         ? `<img src="${escapeHTML(image)}" alt="" class="news-list-thumb" loading="lazy" onerror="this.parentElement.classList.remove('has-thumb');this.remove()">`
         : '';
 
-    // Résumé concret sous la photo (max 150 car.)
-    let summary = desc;
+    // Résumé : masquer si redondant avec le titre, sinon tronquer (max 150 car.)
+    let summary = _isSummaryRedundant(rawTitle, rawDesc) ? '' : escapeHTML(rawDesc);
     if (summary.length > 150) summary = summary.slice(0, 147) + '...';
     const summaryHTML = summary
         ? `<p class="news-list-summary">${summary}</p>`
