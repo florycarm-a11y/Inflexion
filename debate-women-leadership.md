@@ -1,129 +1,38 @@
-# DEBATE PREP — "THBT If Women Ruled the World, It Would Be a Much Better Place"
+# DEBATE — "THBT If Women Ruled the World, It Would Be a Much Better Place"
 
 ## Position : GOUVERNEMENT (Proposition / Pour)
 
-### Temps : 5 minutes par orateur
-
 ---
 
-## STRUCTURE DU DISCOURS (5 min)
+## ARGUMENT UNIQUE (2-5 min) — Pret a livrer
 
-### 1. ACCROCHE (30 sec)
+Madam Speaker, Members of the House,
 
-> "Mesdames, Messieurs, en ce moment meme, les guerres actives dans le monde atteignent un pic historique. Les inegalites se creusent. Le climat se degrade. Et pendant ce temps, les femmes ne representent que 21% des ministres dans le monde et moins de 10% des negociateurs de paix. La question n'est pas de savoir si les femmes feraient mieux — c'est de constater ce que le monde perd en les excluant du pouvoir."
+Let me start with a number. Nine out of ten. That is the proportion of peace negotiation tables around the world that include zero women. Not a minority of women. Not an underrepresentation. Zero.
 
----
+And here is what that costs us. The United Nations' own research shows that when women participate directly in peace negotiations, the probability that an agreement lasts at least two years increases by twenty percent. And the probability that it lasts fifteen years — a generation of peace — increases by thirty-five percent. Meanwhile, more than half of all peace agreements today collapse within five years. So we are failing at peace, and we are simultaneously excluding the very people who, according to the data, make peace last.
 
-### 2. DEFINITION & CADRAGE (30 sec)
+This is not ideology. This is evidence. And it extends far beyond the negotiation table.
 
-> "Quand cette motion dit 'if women ruled the world', il ne s'agit pas d'un fantasme ou les hommes disparaissent. Il s'agit d'un monde ou les femmes accedent equitablement aux postes de decision — politique, economique, diplomatique. Et quand on regarde les donnees, les preuves convergent : davantage de femmes au pouvoir produit des resultats mesurables et superieurs en matiere de paix, de prosperite et de gouvernance."
+The Georgetown Women, Peace and Security Index — published just last year — ranks one hundred and eighty-one countries on women's inclusion, justice, and security. The top five countries are Denmark, Iceland, Sweden, Finland, and Luxembourg. These are not just the best countries for women. They are among the most peaceful, most prosperous, most democratic nations on Earth. The countries at the bottom of that index — where women are most excluded from power — are the most violent, the most unstable, the most fragile. This pattern repeats, year after year, across every dataset. The Council on Foreign Relations confirms it: higher female parliamentary representation is directly associated with a decreased risk of civil war.
 
----
+Now, some might say: "That is correlation, not causation." Fair point. So let us look at causation.
 
-### 3. ARGUMENT 1 — LA PAIX (1 min 15)
+McKinsey and Company found that companies with gender diversity at the top are twenty-one percent more likely to achieve above-average profitability. Harvard Business Review found that moving from zero to thirty percent women in leadership increases net profit margins by fifteen percent. During the COVID-19 pandemic, a study by the University of Reading showed that countries led by women produced — and I quote — "systematically and significantly better outcomes." Why? Because women leaders prioritised lives over short-term economic numbers. They locked down earlier. They acted faster. And in the long run, that turned out to be the smarter economic strategy too.
 
-**Titre : Les femmes construisent une paix plus durable**
+But we do not even need to look at studies. We can look at leaders.
 
-Points cles :
-- **Resolution 1325 de l'ONU** (2000) : premiere resolution reconnaissant le role des femmes dans la paix et la securite.
-- **Statistique centrale** : quand les femmes participent directement aux negociations de paix, la probabilite qu'un accord dure au moins 2 ans augmente de **20%**, et de **35%** pour un accord durant 15 ans.
-- **Contexte** : plus de la moitie des accords de paix echouent dans les 5 premieres annees. L'inclusion des femmes est donc un levier concret d'amelioration.
-- **WPS Index 2025/26** (Georgetown) : les pays les mieux classes pour les femmes (Danemark, Islande, Suede, Finlande) sont aussi parmi les plus pacifiques et stables au monde. Ce n'est pas une coincidence — c'est une correlation documentee.
-- **CFR (Council on Foreign Relations)** : la representation parlementaire des femmes est associee a un risque diminue de guerre civile et a des niveaux plus bas de violations des droits humains par l'Etat.
+Ellen Johnson Sirleaf — first woman elected head of state in Africa. She inherited Liberia after a devastating civil war. She secured the cancellation of nearly four hundred million dollars of debt. She led her country through the Ebola crisis. She won the Nobel Peace Prize. Jacinda Ardern guided New Zealand through a terrorist attack, a volcanic eruption, and a pandemic — with empathy, transparency, and decisiveness. Her party won its biggest electoral victory in fifty years. Angela Merkel governed Europe's largest economy for sixteen years through three major crises. Stability. Competence. Results.
 
-> PHRASE CLE : "Aujourd'hui, 9 tables de negociation sur 10 n'incluent aucune femme. Ce n'est pas un detail — c'est un angle mort strategique."
+These women did not succeed by imitating men. They led differently. And the results speak for themselves.
 
----
+So, Madam Speaker, when the opposition tells you that this motion is naive, or utopian, or essentialist — remind them of this. We are not claiming that women are inherently superior. We are saying that the world has run an experiment for centuries — almost exclusively male leadership — and the results are in. Wars are at a historic peak. Half of peace agreements fail. Trust in institutions is collapsing.
 
-### 4. ARGUMENT 2 — L'ECONOMIE ET LA GOUVERNANCE (1 min 15)
+Maybe — just maybe — it is time to try the other half of humanity.
 
-**Titre : Les femmes au pouvoir, c'est mesurable en performance economique**
+I support this motion.
 
-Points cles :
-- **McKinsey** : les entreprises avec une diversite de genre au sommet sont **21% plus susceptibles** d'avoir une rentabilite superieure a la moyenne.
-- **Harvard Business Review** : passer de 0 a 30% de femmes dans la direction d'une entreprise est associe a une augmentation de **15% de la rentabilite nette**.
-- **Fortune 500 (2025)** : les femmes dirigent 11% des entreprises du Fortune 500. Ces entreprises montrent des tendances de performance et de cours de bourse superieures.
-- **Gestion de crise** : pendant le COVID-19, une etude de l'Universite de Reading a montre que les pays diriges par des femmes ont obtenu des resultats "systematiquement et significativement meilleurs" dans les premieres phases. Les femmes leaders etaient plus averses au risque concernant les vies humaines, tout en prenant des risques economiques plus audacieux (confinements precoces).
-- **Les femmes traversent les lignes partisanes** : au Senat americain, les senatrices travaillent davantage de maniere bipartisane pour faire passer des lois que leurs homologues masculins.
-
-> PHRASE CLE : "Les chiffres ne mentent pas. Quand les femmes dirigent, les entreprises sont plus rentables, les crises sont mieux gerees, et la cooperation politique augmente."
-
----
-
-### 5. ARGUMENT 3 — DES EXEMPLES CONCRETS (1 min)
-
-**Titre : Des leaders qui ont deja prouve que c'est possible**
-
-- **Ellen Johnson Sirleaf** (Liberie, 2006-2018) : premiere femme elue chef d'Etat en Afrique. A herite d'un pays ravage par la guerre civile. A obtenu l'annulation de 391 millions de dollars de dette aupres des USA et 324 millions du G8. A gere la crise Ebola avec transparence. Prix Nobel de la Paix 2011.
-
-- **Jacinda Ardern** (Nouvelle-Zelande, 2017-2023) : a dirige son pays a travers un attentat terroriste, une eruption volcanique et le COVID-19, avec empathie et efficacite. Victoire ecrasante en 2020 — la plus grande victoire du Labour en 50 ans.
-
-- **Angela Merkel** (Allemagne, 2005-2021) : 16 ans au pouvoir. A pilote l'Allemagne a travers la crise financiere mondiale, la crise de la dette europeenne, et la pandemie. Stabilite, rigueur, leadership par la competence.
-
-> PHRASE CLE : "Ces femmes n'ont pas dirige 'comme des hommes'. Elles ont dirige differemment — avec empathie, transparence, collaboration — et les resultats parlent d'eux-memes."
-
----
-
-### 6. REFUTATION ANTICIPEE (30 sec)
-
-L'opposition pourrait dire :
-- **"Margaret Thatcher etait belliciste"** → Thatcher operait dans un systeme concu par et pour les hommes, ou elle devait surcompenser. La motion parle d'un monde ou les femmes gouvernent en nombre, pas d'exceptions isolees dans un systeme patriarcal.
-- **"Correlation n'est pas causalite"** → Vrai, mais quand des dizaines d'etudes independantes (Georgetown, McKinsey, HBR, ONU, Cambridge) convergent vers les memes conclusions, on depasse la simple correlation.
-- **"C'est essentialiste"** → Nous ne disons pas que les femmes sont naturellement superieures. Nous disons que la diversite de genre au pouvoir, et l'experience specifique des femmes dans la societe, produit de meilleurs resultats collectifs.
-
----
-
-### 7. CONCLUSION (30 sec)
-
-> "Mesdames, Messieurs, cette motion ne demande pas de croire en une utopie. Elle demande de regarder les faits. Quand les femmes negocient la paix, les accords durent plus longtemps. Quand les femmes dirigent des entreprises, la rentabilite augmente. Quand les femmes gouvernent, la gouvernance est plus inclusive et plus stable.
-
-> Le monde tel qu'il est — avec ses guerres, ses crises, ses inegalites — est le produit de siecles de pouvoir quasi exclusivement masculin. Ce n'est pas une attaque contre les hommes. C'est un constat : nous n'avons essaye qu'une seule formule, et elle ne fonctionne pas assez bien.
-
-> Il est temps d'essayer l'autre moitie de l'humanite. Je soutiens cette motion."
-
----
-
-## FICHE TECHNIQUE — CHIFFRES CLES A RETENIR
-
-| Donnee | Source |
-|--------|--------|
-| +20% de duree d'un accord de paix avec des femmes signataires (+35% a 15 ans) | ONU / UN Women |
-| 9 tables de negociation sur 10 sans aucune femme | UN Women 2025 |
-| 21% plus de rentabilite dans les entreprises a direction mixte | McKinsey |
-| +15% de marge nette en passant de 0 a 30% de femmes dirigeantes | Harvard Business Review |
-| Les 5 pays les mieux classes au WPS Index = parmi les plus pacifiques | Georgetown 2025/26 |
-| 11% des Fortune 500 dirigees par des femmes (2025) | Fortune |
-| Seulement 21% des ministres dans le monde sont des femmes | ONU |
-| 108 pays ont adopte un Plan d'action national WPS (2025) | Res. 1325 |
-
----
-
-## CONSEILS POUR L'ORAL (5 min)
-
-### Ton & Posture
-- **Autoritaire mais accessible** : tu es membre du gouvernement, tu as la conviction des faits.
-- **Pas militant, mais factuel** : laisse les chiffres parler. L'emotion vient des exemples (Sirleaf, Ardern), pas de la rhetorique.
-- **Contact visuel** : balaye la salle, pas seulement les juges.
-- **Rythme** : ralentis sur les chiffres cles. Accelere sur les exemples narratifs.
-
-### Structure parlementaire
-- **Opening** : capte l'attention avec le contraste (guerres / exclusion des femmes).
-- **Definition** : definis tot pour controler le debat.
-- **Arguments** : 3 piliers clairs (paix, economie, exemples concrets).
-- **Rebuttal** : anticipe 2-3 objections pour montrer que tu as pense a la contradiction.
-- **Closing** : reviens au theme central avec une phrase memorable.
-
-### A FAIRE pendant le discours
-- Commence par regarder l'opposition en disant "Les faits sont la"
-- Utilise tes mains pour compter tes arguments (1er argument, 2e, 3e)
-- Pause avant chaque chiffre cle (laisse le silence creer l'attente)
-- Finis en regardant les juges, pas tes notes
-
-### A EVITER
-- Ne dis jamais "les femmes sont meilleures que les hommes" (trop essentialiste, facile a attaquer)
-- Dis plutot "un monde avec davantage de femmes au pouvoir produit de meilleurs resultats"
-- N'attaque pas personnellement l'opposition
-- Ne lis pas tes notes mot pour mot — utilise des bullet points
+*[sit down]*
 
 ---
 
