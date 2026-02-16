@@ -1,50 +1,62 @@
 {
-  "titre": "Économie US en expansion modérée, inflation maîtrisée, divergence transatlantique accentuée",
+  "titre": "Économie US en expansion modérée, inflation maîtrisée, divergence transatlantique croissante",
   "phase_cycle": "expansion",
   "politique_monetaire": "neutre",
   "tendance_inflation": "deceleration",
   "score_risque": 4,
-  "analyse": "## Cycle économique : expansion stable\n\nLes États-Unis demeurent en phase d'expansion. Le PIB trimestriel atteint 31 098 Mrd $, avec une croissance de +612,3 Mrd $ en glissement (soit ~2% annualisé estimé). Le marché du travail affiche une résilience relative : le chômage à 4,3% (-0,1 pp) reste modéré, sans tension excessive. Cette combinaison suggère une croissance non-inflationniste, typique d'une expansion mature.\n\n## Inflation : désinflation confirmée\n\nLe CPI à +2,83% YoY (index 326,588) marque une poursuite de la désinflation amorcée depuis 2022. Ce niveau approche l'objectif de 2% de la Fed, validant la stratégie de restriction monétaire antérieure. L'inflation ne constitue plus une menace immédiate.\n\n## Politique monétaire : Fed en mode neutre\n\nLe taux directeur à 3,64% reflète une posture neutre : ni restrictive (aurait freiné davantage l'inflation), ni accommodante. La Fed a stabilisé ses taux après le cycle de hausse 2022-2023. Le bilan Fed (+16 473 M$ en février) montre une légère expansion, signalant un assouplissement progressif des conditions financières. Cette trajectoire est cohérente avec une inflation maîtrisée et une croissance modérée.\n\n## Marché obligataire : courbe normalisée, pas de signal de récession\n\nLe spread 10Y-2Y à +0,64% (+0,02 pp) confirme une courbe des taux normalisée et non-inversée. C'est un signal rassurant : l'inversion (qui précède les récessions) n'est pas présente. Le Treasury 10 ans à 4,09% (-0,09 pp) reste stable, reflétant des anticipations d'inflation ancrées.\n\n## Divergence transatlantique marquée\n\nLa BCE maintient son taux directeur à 2,15%, soit 149 pb en dessous de la Fed. Cette divergence s'explique par une inflation européenne plus basse et une croissance plus faible. L'EUR/USD à 1,1607 montre un dollar toujours fort (Dollar Index 118,24, -0,26), pénalisant les exportateurs européens et renforçant les pressions déflationnistes en zone euro.\n\n## Liquidité et conditions financières\n\nM2 à 22 411 Mrd $ (+88,9 Mrd $) progresse modérément, sans excès. Le taux hypothécaire 30 ans à 6,09% reste élevé mais stable, limitant l'accès au crédit immobilier. Les conditions financières restent restrictives pour les ménages, freinant la demande de crédit.\n\n## Risques identifiés\n\nLe score de risque (4/10) reflète une situation stable mais avec des points de vigilance : (1) une récession européenne pourrait impacter les exportations US ; (2) une normalisation trop rapide du bilan Fed pourrait tendre les conditions financières ; (3) le dollar fort pèse sur la compétitivité américaine à l'export.",
+  "analyse": "## Cycle économique : expansion stable\n\nLes États-Unis demeurent en phase d'expansion, confirmée par une croissance du PIB (+612,3 Mrd $ en glissement) et un marché du travail résilient (chômage 4,3%, en amélioration de -0,1 pp). Cependant, la dynamique ralentit : la croissance trimestrielle est modérée, suggérant un passage vers une phase de maturité du cycle plutôt qu'une accélération.\n\n## Inflation : désinflation progressive\n\nLe CPI à +2,83% YoY marque une baisse significative par rapport aux pics de 2022-2023. Cette désinflation est cohérente avec une politique monétaire restrictive maintenue depuis 2023. Le taux directeur à 3,64% reste positif en termes réels (inflation - taux ≈ 0,81%), justifiant le maintien d'une posture neutre à légèrement restrictive de la Fed.\n\n## Politique monétaire : pause et attentisme\n\nLa Fed adopte une position **neutre** : le taux de 3,64% n'est ni accommodant (trop bas) ni restrictif (trop haut). Le bilan s'accroît modérément (+16,5 Mrd $ en février), signalant une stabilisation après les réductions de 2023-2024. Les Treasury 10 ans à 4,09% reflètent des anticipations d'inflation ancrées et une demande de duration stable.\n\n## Marché du travail : détente progressive\n\nLe chômage à 4,3% reste proche du taux naturel (NAIRU ≈ 4,2-4,5%), mais la tendance baissière (-0,1 pp) suggère une légère détente des tensions. Les salaires nominaux devraient modérer, réduisant les pressions inflationnistes.\n\n## Courbe des taux : normalisation en cours\n\nLe spread 10Y-2Y à +0,64% (+0,02 pp) confirme une **courbe normalisée** : plus d'inversion, signal de récession dissipé. Cela valide l'hypothèse d'une expansion durable sans surchauffe immédiate.\n\n## Divergence transatlantique\n\nLa BCE à 2,15% (vs Fed 3,64%) affiche une politique **plus accommodante** : l'écart de 149 pb favorise le dollar. L'EUR/USD à 1,1607 reflète cette divergence. Le dollar broad à 118,24 (-0,26) reste fort mais commence à fléchir, signe d'une stabilisation des écarts de taux.\n\n## Liquidité et risques\n\nM2 à +88,9 Mrd $ (croissance modérée) indique une normalisation post-QE sans excès. Le bilan Fed stable suggère une absence de stress systémique. Le taux hypothécaire 30 ans à 6,09% reste élevé, freinant la demande immobilière mais sans crise.\n\n## Synthèse des risques\n\nLe score de risque **4/10** reflète un environnement maîtrisé : inflation décélérante, emploi stable, taux neutres, courbe normalisée. Les principaux risques sont géopolitiques (non captés ici) ou liés à une accélération inattendue de l'inflation.",
   "indicateurs_cles": [
     {
       "nom": "CPI YoY",
-      "valeur": "2,83%",
+      "valeur": "+2.83%",
       "signal": "baissier",
-      "commentaire": "Désinflation confirmée, approche de la cible 2% de la Fed"
+      "commentaire": "Désinflation confirmée, proche de la cible Fed 2%, justifie la neutralité monétaire"
     },
     {
       "nom": "Taux directeur Fed",
-      "valeur": "3,64%",
+      "valeur": "3.64%",
       "signal": "neutre",
-      "commentaire": "Posture stable, ni restrictive ni accommodante"
+      "commentaire": "Réel positif (~0.81%), ni restrictif ni accommodant, posture d'attentisme"
     },
     {
       "nom": "Chômage",
-      "valeur": "4,3%",
+      "valeur": "4.3%",
       "signal": "neutre",
-      "commentaire": "Marché du travail résilient sans tensions excessives"
+      "commentaire": "Proche du NAIRU, tendance baissière légère, marché du travail en détente progressive"
     },
     {
       "nom": "Spread 10Y-2Y",
-      "valeur": "+0,64%",
+      "valeur": "+0.64%",
       "signal": "haussier",
-      "commentaire": "Courbe normalisée, pas d'inversion récessive"
+      "commentaire": "Courbe normalisée, inversion dissipée, signal de récession écarté"
     },
     {
-      "nom": "Dollar Index",
-      "valeur": "118,24",
-      "signal": "haussier",
-      "commentaire": "Dollar fort, pénalise les exportateurs US et européens"
+      "nom": "Treasury 10 ans",
+      "valeur": "4.09%",
+      "signal": "neutre",
+      "commentaire": "Stable, reflète des anticipations d'inflation ancrées et une demande de duration saine"
     },
     {
-      "nom": "Divergence Fed/BCE",
-      "valeur": "149 pb",
+      "nom": "Dollar Index (broad)",
+      "valeur": "118.24",
+      "signal": "neutre",
+      "commentaire": "Fort mais en léger recul (-0.26), stabilisation après divergence taux US/EUR"
+    },
+    {
+      "nom": "EUR/USD",
+      "valeur": "1.1607",
       "signal": "baissier",
-      "commentaire": "Écart de taux maximal, renforce les déséquilibres transatlantiques"
+      "commentaire": "Reflète écart taux Fed-BCE (149 pb), divergence monétaire transatlantique"
+    },
+    {
+      "nom": "M2",
+      "valeur": "+88.9 Mrd $",
+      "signal": "neutre",
+      "commentaire": "Croissance modérée, normalisation post-QE, absence de stress liquidité"
     }
   ],
-  "perspectives": "Surveiller (1) la trajectoire du CPI en mars-avril : une stabilisation à 2,8-3% validerait la neutralité de la Fed ; (2) les décisions de la BCE en mars : une baisse supplémentaire accentuerait la divergence et le dollar fort ; (3) les données d'emploi US : un ralentissement du marché du travail pourrait justifier une baisse des taux Fed avant fin 2026.",
-  "updated": "2026-02-15T19:01:25.829Z",
+  "perspectives": "Surveiller la trajectoire du CPI en mars-avril : une accélération forcerait la Fed à maintenir les taux plus longtemps, soutenant le dollar. Observer aussi la divergence BCE-Fed : si la BCE baisse davantage (probabilité élevée), l'EUR/USD pourrait tester 1.12-1.13. Enfin, la dynamique du marché du travail reste clé : un chômage montant à 4.5%+ accélérerait les baisses de taux Fed en 2026.",
+  "updated": "2026-02-16T03:24:51.387Z",
   "source": "Claude IA + FRED + BCE + commodités",
   "indicators_count": 10,
   "extra_sources": 2

@@ -1,79 +1,82 @@
 {
-  "updated": "2026-02-15T19:01:08.834Z",
-  "date": "2026-02-15",
+  "updated": "2026-02-16T03:24:31.255Z",
+  "date": "2026-02-16",
   "global": {
-    "score": -0.05,
+    "score": -0.11,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (-0.05), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est mixte (-0.11), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.65,
-      "confidence": 0.85,
+      "score": -0.72,
+      "confidence": 0.88,
       "tendance": "baissier",
-      "resume": "La rubrique géopolitique affiche un sentiment fortement négatif dominé par les tensions militaires (Ukraine, Moyen-Orient, Wagner), les instabilités politiques régionales et les risques d'escalade. Les signaux de détente diplomatique restent marginaux face à la multiplication des foyers de crise.",
+      "resume": "La rubrique géopolitique affiche un sentiment fortement négatif dominé par les conflits armés (Israël-Liban-Palestine), l'instabilité régionale et les tensions géopolitiques majeures. Les enjeux de sécurité, les négociations nucléaires tendues et les crises humanitaires créent un environnement d'incertitude élevée pour les marchés.",
       "signaux_cles": [
-        "Escalade Moyen-Orient : tensions Iran-Israël et soutien américain aux frappes",
-        "Instabilité Ukraine : arrestations de ministres, corruption, guerre persistante",
-        "Menace Wagner : réorientation vers sabotage en Europe, risque d'attaques hybrides",
-        "Tensions géopolitiques multiples : Syrie, Gaza, Bangladesh, Hongrie",
-        "Refuge monétaire : appréciation du franc suisse signalant une aversion au risque",
-        "Tentatives de dialogue limitées : Rubio à Munich et Bratislava sans impact majeur visible"
+        "Escalade militaire Israël-Liban-Syrie avec morts civils répétés",
+        "Conflit israélo-palestinien persistant avec victimes à Gaza",
+        "Tensions nucléaires Iran-États-Unis malgré négociations",
+        "Instabilité régionale croissante (Venezuela, Ukraine, RDC)",
+        "Divergences transatlantiques sur politique étrangère (Trump vs Europe)",
+        "Crises humanitaires massives (Gaza, Ukraine, Liban)",
+        "Recrutement tech (OpenAI) contraste avec contexte géopolitique dégradé"
       ]
     },
     "marches": {
       "score": -0.35,
-      "confidence": 0.72,
+      "confidence": 0.78,
       "tendance": "baissier",
-      "resume": "La rubrique affiche un sentiment globalement baissier avec des préoccupations dominantes concernant les perturbations économiques, l'instabilité géopolitique et les risques de marché. Quelques signaux positifs (services publics, immobilier) sont largement éclipsés par des titres alarmistes sur l'IA, la volatilité boursière et les incertitudes macroéconomiques.",
+      "resume": "La rubrique affiche un sentiment globalement baissier dominé par des préoccupations macroéconomiques (contraction japonaise, déceptions de croissance) et des risques réglementaires/politiques (pressions Trump sur les tech, enjeux démographiques). Quelques signaux positifs (investissements énergétiques, stabilisation immobilière) ne compensent pas le ton alarmiste général.",
       "signaux_cles": [
-        "Inquiétudes croissantes sur les perturbations de l'IA et ses impacts négatifs sur les marchés",
-        "Tensions géopolitiques (Wagner, Israël-Palestine) créant de l'incertitude systémique",
-        "Volatilité accrue : franc suisse refuge, bitcoin en baisse, craintes de correction boursière",
-        "Signaux positifs limités : performance des services publics et questions d'opportunités d'achat",
-        "Risques macroéconomiques structurels : vieillissement démographique, incertitudes tarifaires (Trump)",
-        "Ton alarmiste dominant avec 7 titres explicitement stressants ou négatifs"
+        "Contraction économique japonaise répétée (-0,2% annualisé) : signal baissier fort",
+        "Déceptions de croissance et révisions à la baisse : incertitude macroéconomique",
+        "Pressions réglementaires Trump sur les géants tech (Meta, centres de données) : risque politique",
+        "Crise démographique japonaise : problème structurel long terme",
+        "Investissements énergétiques français (200Mds€) : signal haussier mineur",
+        "Stabilisation immobilière britannique : stabilité relative",
+        "Recrutement OpenAI et gains crypto : signaux mixtes sans impact majeur"
       ]
     },
     "crypto": {
       "score": 0.15,
       "confidence": 0.72,
       "tendance": "mixte",
-      "resume": "La rubrique crypto affiche un sentiment mitigé avec des signaux haussiers institutionnels (BlackRock, Wall Street) contrebalancés par des préoccupations réglementaires, de sécurité et de menaces technologiques. Les titres révèlent une volatilité persistante et des risques émergents qui tempèrent l'optimisme.",
+      "resume": "La rubrique crypto affiche un sentiment mitigé avec des signaux haussiers (adoption institutionnelle, innovations technologiques) contrebalancés par des préoccupations réglementaires, des risques systémiques et des problèmes de sécurité. Les titres reflètent une volatilité persistante et une maturation progressive du marché.",
       "signaux_cles": [
-        "Soutien institutionnel croissant (BlackRock, Wall Street haussier sur Bitcoin)",
-        "Menaces de sécurité majeure : hausse de 85% des cas de traite humaine liée à la crypto",
-        "Risque quantique identifié comme menace existentielle pour Bitcoin",
-        "Volatilité extrême et effet de levier mentionnés comme facteurs de déstabilisation",
-        "Préoccupations réglementaires et politiques (enquête sénatoriale, transparence blockchain)",
-        "Récupération partielle du Bitcoin (70 000$) suggérant une certaine résilience",
-        "Diversification des actifs crypto (XRP surperforme) indiquant une redistribution des risques"
+        "Adoption institutionnelle croissante (Apollo, BlackRock, Michael Saylor)",
+        "Préoccupations réglementaires et de conformité (Hong Kong, débats sur la transparence)",
+        "Risques systémiques identifiés (volatilité de levier, menaces quantiques, fraude)",
+        "Innovations technologiques et débats fondamentaux (marchés de prédiction, confidentialité onchain)",
+        "Problèmes de sécurité et d'éthique (traite humaine +85%, diffamation)",
+        "Performance mixte des actifs (XRP surperforme, débâcle du marché mentionnée)",
+        "Ton équilibré entre optimisme technologique et prudence réglementaire"
       ]
     },
     "matieres_premieres": {
-      "score": 0.35,
+      "score": 0.15,
       "confidence": 0.72,
       "tendance": "mixte",
-      "resume": "La rubrique matières premières affiche un sentiment globalement positif porté par les innovations énergétiques propres et les investissements majeurs, mais tempéré par des signaux baissiers sur Tesla et des préoccupations macroéconomiques structurelles.",
+      "resume": "La rubrique matières premières affiche un sentiment mitigé avec des signaux contradictoires : d'un côté, une transition énergétique en cours (énergies renouvelables, VE, nucléaire) et des investissements majeurs dans les technologies propres ; de l'autre, des défis structurels (baisse des taux de transport maritime, sanctions pétrolières, effondrement des ventes Tesla) et une volatilité accrue du marché pétrolier.",
       "signaux_cles": [
-        "Innovations technologiques haussières : cellules solaires TOPCon, petits réacteurs nucléaires Rolls-Royce, combustible nucléaire recyclé",
-        "Investissements massifs en énergie propre : Altman/Gates, Ford/GM dans le stockage d'énergie",
-        "Signaux baissiers Tesla : chute des ventes en Europe, critiques du PDG, comparaisons négatives",
-        "Diversification énergétique positive : boom du schiste argentin, ruée vers le lithium en Zambie",
-        "Risques macroéconomiques : vieillissement économique français, coût de la vie, dépendances géopolitiques"
+        "Transition énergétique en accélération avec investissements massifs (Altman, Gates, Rolls-Royce)",
+        "Crise du secteur pétrolier traditionnel : sanctions russes, baisse des taux maritimes, relance vénézuélienne incertaine",
+        "Effondrement des ventes Tesla (-55% à -93% selon les régions) contrastant avec la croissance des VE en Norvège (97,5%)",
+        "Volatilité du marché du transport maritime avec stabilisation partielle des Capesize",
+        "Diversification énergétique (GNL, ammoniac, nucléaire) suggérant une réallocation des investissements"
       ]
     },
     "ai_tech": {
       "score": 0.35,
-      "confidence": 0.78,
+      "confidence": 0.72,
       "tendance": "mixte",
-      "resume": "La rubrique IA affiche un sentiment globalement positif dominé par des avancées technologiques majeures (GPT-5, NASA, Glean) et une adoption massive (100M utilisateurs en Inde), mais tempéré par des préoccupations croissantes concernant la sécurité, les arnaques et les risques éthiques liés aux agents IA non contrôlés.",
+      "resume": "La rubrique IA/Tech affiche un sentiment globalement positif porté par des investissements massifs en infrastructures IA et des avancées technologiques, mais tempéré par des préoccupations sécuritaires croissantes et des tensions géopolitiques autour de la technologie.",
       "signaux_cles": [
-        "Croissance exponentielle de l'adoption IA (100M utilisateurs ChatGPT en Inde)",
-        "Avancées technologiques significatives (GPT-5 surpasse juges humains, NASA utilise IA pour rover)",
-        "Montée des risques de sécurité et d'arnaque (malware Lumma Stealer, articles malveillants générés par IA, aperçus Google trompeurs)",
-        "Préoccupations éthiques et de contrôle (agents IA découplés des conséquences, refus d'Anthropic au Pentagone)",
-        "Consolidation de l'écosystème IA d'entreprise (Glean, accélérateurs a16z)"
+        "Investissements majeurs en IA (Blackstone 1,2Mds$, Peak XV) - signal haussier",
+        "Multiplication des failles de sécurité critiques (ClickFix, zero-day, malware Lumma) - signal baissier",
+        "Tensions géopolitiques (vente d'exploits à la Russie, désaccord Anthropic-Pentagone) - signal baissier",
+        "Avancées technologiques (GPT-5, Kimi Claw, Moonshot AI) - signal haussier",
+        "Goulots d'étranglement énergétiques des datacenters IA - signal baissier structurel",
+        "Consolidation du secteur (recrutements OpenAI) - signal neutre à haussier"
       ]
     }
   },
@@ -113,41 +116,50 @@
       "crypto": 0.15,
       "matieres_premieres": 0.35,
       "ai_tech": 0.35
+    },
+    {
+      "date": "2026-02-16",
+      "global": -0.11,
+      "geopolitique": -0.72,
+      "marches": -0.35,
+      "crypto": 0.15,
+      "matieres_premieres": 0.15,
+      "ai_tech": 0.35
     }
   ],
   "model": "claude-haiku-4-5-20251001",
   "usage": {
-    "totalInputTokens": 4571,
-    "totalOutputTokens": 1594,
+    "totalInputTokens": 4483,
+    "totalOutputTokens": 1648,
     "totalCalls": 5,
     "callsByLabel": {
       "sentiment-geopolitique": {
         "calls": 1,
-        "inputTokens": 861,
-        "outputTokens": 289
+        "inputTokens": 844,
+        "outputTokens": 313
       },
       "sentiment-marches": {
         "calls": 1,
-        "inputTokens": 968,
-        "outputTokens": 333
+        "inputTokens": 957,
+        "outputTokens": 327
       },
       "sentiment-crypto": {
         "calls": 1,
-        "inputTokens": 925,
-        "outputTokens": 335
+        "inputTokens": 900,
+        "outputTokens": 328
       },
       "sentiment-matieres_premieres": {
         "calls": 1,
-        "inputTokens": 946,
-        "outputTokens": 296
+        "inputTokens": 948,
+        "outputTokens": 350
       },
       "sentiment-ai_tech": {
         "calls": 1,
-        "inputTokens": 871,
-        "outputTokens": 341
+        "inputTokens": 834,
+        "outputTokens": 330
       }
     },
-    "estimatedCostUSD": 0.01,
+    "estimatedCostUSD": 0.0102,
     "model": "claude-haiku-4-5-20251001"
   }
 }

@@ -1,87 +1,119 @@
 {
-  "updated": "2026-02-15T19:01:13.394Z",
+  "updated": "2026-02-16T03:24:36.132Z",
   "alertes": [
     {
-      "id": "alert-2026-02-15-001",
-      "titre": "Ethereum plonge de 5,34% en 24 heures",
-      "texte": "Ethereum enregistre une baisse significative de 5,34% sur 24 heures, s'échangeant à $1 972,17. Cette correction marque une pression vendeuse notable sur la deuxième capitalisation cryptographique.",
+      "id": "alert-2026-02-16-001",
+      "titre": "Ethereum chute de 5,42% en 24 heures",
+      "texte": "Ethereum recule à $1 968,14, perdant 5,42% sur la journée dans un contexte de volatilité crypto généralisée.",
       "categorie": "crypto",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-15T19:01:13.394Z",
+      "horodatage": "2026-02-16T03:24:36.132Z",
       "donnees": {
         "symbole": "ETH",
         "nom": "Ethereum",
-        "prix": 1972.17,
-        "variation_24h": -5.34,
-        "market_cap": 238266049047
+        "prix": 1968.14,
+        "variation_24h": -5.42,
+        "market_cap": 237532088051
       }
     },
     {
-      "id": "alert-2026-02-15-002",
-      "titre": "L'or grimpe de 2,49%, refuge face aux incertitudes",
-      "texte": "L'ETF or (GLD) progresse de 2,49% pour atteindre $462,63, reflétant une demande accrue pour les actifs refuges dans un contexte d'aversion au risque.",
+      "id": "alert-2026-02-16-002",
+      "titre": "Dogecoin en baisse de 8,02% sur 24h",
+      "texte": "Dogecoin s'affaiblit à $0,102, enregistrant une perte de 8,02% sur 24 heures, témoignant d'une pression accrue sur les altcoins.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-02-16T03:24:36.132Z",
+      "donnees": {
+        "symbole": "DOGE",
+        "nom": "Dogecoin",
+        "prix": 0.102488,
+        "variation_24h": -8.02,
+        "market_cap": 17312691884
+      }
+    },
+    {
+      "id": "alert-2026-02-16-003",
+      "titre": "Cardano perd 5,05% en une journée",
+      "texte": "Cardano recule à $0,282, avec une baisse de 5,05% sur 24h, confirmant la tendance baissière du marché des cryptomonnaies.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-02-16T03:24:36.132Z",
+      "donnees": {
+        "symbole": "ADA",
+        "nom": "Cardano",
+        "prix": 0.281931,
+        "variation_24h": -5.05,
+        "market_cap": 10377474082
+      }
+    },
+    {
+      "id": "alert-2026-02-16-004",
+      "titre": "L'or progresse de 2,49% (GLD)",
+      "texte": "L'ETF sur l'or (GLD) monte à $462,62 avec un gain de 2,49%, illustrant une fuite vers les actifs refuge face aux turbulences du marché.",
       "categorie": "matieres_premieres",
       "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-02-15T19:01:13.394Z",
+      "horodatage": "2026-02-16T03:24:36.132Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
-        "prix": 462.63,
+        "prix": 462.62,
         "variation": 2.49
       }
     },
     {
-      "id": "alert-2026-02-15-003",
-      "titre": "Nvidia recule de 2,20%, pression sur le secteur IA",
-      "texte": "Nvidia cède 2,20% à $182,82, illustrant une consolidation du secteur technologique et des valeurs liées à l'intelligence artificielle.",
+      "id": "alert-2026-02-16-005",
+      "titre": "Nvidia cède 2,21% en bourse",
+      "texte": "Nvidia recule à $182,81 avec une perte de 2,21%, reflétant une consolidation du secteur technologique.",
       "categorie": "ai_tech",
-      "severite": "attention",
+      "severite": "info",
       "impact": "baissier",
-      "horodatage": "2026-02-15T19:01:13.394Z",
+      "horodatage": "2026-02-16T03:24:36.132Z",
       "donnees": {
         "symbole": "NVDA",
         "nom": "Nvidia",
-        "prix": 182.82,
-        "variation": -2.2
+        "prix": 182.81,
+        "variation": -2.21
       }
     },
     {
-      "id": "alert-2026-02-15-004",
-      "titre": "Apple baisse de 2,27%, correction des géants tech",
-      "texte": "Apple recule de 2,27% à $255,79, s'inscrivant dans une dynamique de profit-taking affectant les grandes capitalisations technologiques.",
+      "id": "alert-2026-02-16-006",
+      "titre": "Apple baisse de 2,27%",
+      "texte": "Apple s'affaiblit à $255,78 avec une perte de 2,27%, participant à la correction observable sur les géantes technologiques.",
       "categorie": "marches",
-      "severite": "attention",
+      "severite": "info",
       "impact": "baissier",
-      "horodatage": "2026-02-15T19:01:13.394Z",
+      "horodatage": "2026-02-16T03:24:36.132Z",
       "donnees": {
         "symbole": "AAPL",
         "nom": "Apple",
-        "prix": 255.79,
+        "prix": 255.78,
         "variation": -2.27
       }
     },
     {
-      "id": "alert-2026-02-15-005",
-      "titre": "Indice Fear & Greed à 8 : peur extrême dominante",
-      "texte": "Le Fear & Greed Index atteint 8/100 (Extreme Fear), en augmentation de 1 point sur 7 jours, signalant une aversion au risque généralisée et une panique accrue parmi les investisseurs.",
+      "id": "alert-2026-02-16-007",
+      "titre": "Fear & Greed Index chute à 12 (Peur extrême)",
+      "texte": "L'indice Fear & Greed atteint 12 points (-2 pts sur 7 jours), signalant une peur extrême parmi les investisseurs et une intensification de l'aversion au risque.",
       "categorie": "macro",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-02-15T19:01:13.394Z",
+      "horodatage": "2026-02-16T03:24:36.132Z",
       "donnees": {
-        "score": 8,
+        "score": 12,
         "label": "Extreme Fear",
-        "variation_7j": 1
+        "variation_7j": -2
       }
     }
   ],
   "stats": {
-    "total": 5,
+    "total": 7,
     "urgent": 1,
     "attention": 3,
-    "info": 1
+    "info": 3
   },
   "model": "claude-haiku-4-5-20251001"
 }
