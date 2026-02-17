@@ -1486,11 +1486,11 @@ const DataLoader = (function () {
 
         // Construire le résumé en français
         var titres = articles.map(function(a) {
-            return '<strong>' + (a.title || '') + '</strong> <span style="color:var(--text-muted)">(' + (a.source || '') + ')</span>';
+            return '<strong>' + (a.title || '') + '</strong> <span style="color:rgba(245,240,232,0.5)">(' + (a.source || '') + ')</span>';
         });
 
-        trendEl.innerHTML = '<div class="analysis-excerpt" style="margin-bottom:2rem;padding:1.25rem;background:var(--bg-secondary);border-left:4px solid var(--pink);border-radius:0 4px 4px 0">' +
-            '<strong style="display:block;margin-bottom:0.5rem">Dernières actualités de la rubrique</strong>' +
+        trendEl.innerHTML = '<div style="margin-bottom:2rem;padding:1.25rem;background:var(--navy);border-left:4px solid var(--pink);border-radius:0 4px 4px 0;color:#F5F0E8">' +
+            '<strong style="display:block;margin-bottom:0.5rem;color:#F5F0E8">Dernières actualités de la rubrique</strong>' +
             '<ul style="margin:0;padding-left:1.2rem;list-style:disc">' +
             titres.map(function(t) { return '<li style="margin-bottom:0.3rem">' + t + '</li>'; }).join('') +
             '</ul></div>';
