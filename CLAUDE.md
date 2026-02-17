@@ -381,6 +381,29 @@ python scripts/check-french.py
 - `shared_watchlists` : `id`, `owner_id`, `share_code`, `name`, `is_public`, `created_at`
 - `watchlist_annotations` : `id`, `watchlist_item_id`, `user_id`, `author_name`, `text`, `created_at`
 
+### Session 2026-02-17 (2) — Curation qualitative des articles
+
+**Contexte :** L'affichage "Dernieres actualites" montrait 30 articles bruts tries par date, sans filtrage qualitatif ni distribution equilibree entre rubriques. L'utilisateur souhaitait 8-12 articles/jour de haute qualite, bien repartis entre les 5 thematiques d'Inflexion.
+
+**Nouveau systeme de curation (`data-loader.js`) :**
+- `SOURCE_TIERS` : classification de 70+ sources en 3 niveaux de qualite (think tanks/grandes redactions → presse specialisee → agregateurs)
+- `scoreArticle(article)` : algorithme de scoring 0-100 multi-criteres (autorite source 35pts, qualite titre 20pts, qualite description 20pts, fraicheur 15pts, image 5pts, langue 5pts)
+- `curateArticles(allArticles, targetTotal)` : selection equilibree en 2 phases — garantir 2 articles/rubrique puis completer avec les meilleurs restants (max 3/rubrique)
+- `updateLatestNewsWithRubriques()` : utilise desormais `curateArticles(allArticles, 12)` au lieu de `allArticles.slice(0, 30)`
+
+**Fix ordre DOM :** `mergeNewsAPIArticles()` deplace AVANT le rendu des news (etait appele apres, les articles NewsAPI n'apparaissaient pas dans la selection)
+
+**Modifications UI :**
+- Section "Dernieres actualites" renommee "Selection du jour" avec sous-titre explicatif
+- Bouton "Voir plus d'actualites" remplace par lien "Explorer toutes les rubriques"
+- CSS `.section-subtitle` ajoute
+
+**Fichiers modifies :**
+- `data-loader.js` : +SOURCE_TIERS, +scoreArticle(), +curateArticles(), refacto updateLatestNewsWithRubriques(), fix ordre mergeNewsAPIArticles
+- `index.html` : titre section, sous-titre, bouton → lien
+- `styles.css` : +.section-subtitle
+- `CLAUDE.md` : documentation session
+
 ### PRs precedentes
 
 **PR #23 (mergee)** : Redesign vert + widgets IA + 78 RSS + automatisation Claude
