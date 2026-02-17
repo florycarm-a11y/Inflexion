@@ -509,21 +509,27 @@ async function main() {
 
     console.log(`  ✓ ${marketSections.length} sections de données de marché`);
 
-    // Assembler le message complet
-    const userMessage = `Voici les données du ${today()} pour le briefing stratégique quotidien d'Inflexion.
+    // Assembler le message complet avec structure claire pour faciliter l'analyse
+    const userMessage = `# Briefing stratégique Inflexion — ${today()}
 
-# Actualités du jour (${topArticles.length} articles sélectionnés parmi 122 sources)
+## PARTIE A : Actualités du jour (${topArticles.length} articles sélectionnés parmi 122 sources RSS + 15 APIs)
 
 ${newsContext}
 
-# Données de marché en temps réel
+## PARTIE B : Données de marché en temps réel
 
 ${marketSections.join('\n\n')}
 
 ---
 
-Produis le briefing stratégique quotidien en croisant ces actualités avec les données de marché.
-Chaque signal doit avoir des interconnexions concrètes et chiffrées.`;
+## Consignes de production
+
+Produis le briefing stratégique quotidien en respectant ces priorités :
+1. **Identifier le fait le plus structurant** du jour (pas le plus spectaculaire — le plus significatif pour un investisseur)
+2. **Croiser les actualités (partie A) avec les données chiffrées (partie B)** pour établir des chaînes de causalité concrètes
+3. **Chaque interconnexion doit citer des chiffres** tirés de la partie B comme preuves factuelles
+4. **Signaler les divergences** si des indicateurs envoient des signaux contradictoires
+5. **Ne pas inventer de données** absentes des parties A et B — si une information manque, le mentionner`;
 
     console.log(`  📋 Message total : ${(userMessage.length / 1024).toFixed(1)} Ko`);
 
