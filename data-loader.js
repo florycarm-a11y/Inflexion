@@ -1442,8 +1442,6 @@ const DataLoader = (function () {
             });
             if (headlines.length > 0) {
                 window.breakingNews = headlines.slice(0, 10);
-                // Re-initialiser le ticker avec les nouvelles données
-                if (typeof initTicker === 'function') initTicker();
             }
         }
     }

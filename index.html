@@ -130,12 +130,6 @@
         </div>
     </nav>
 
-    <!-- Breaking News Ticker -->
-    <div class="news-ticker">
-        <div class="ticker-label">ALERTE</div>
-        <div class="ticker-content" id="ticker-content"></div>
-    </div>
-
     <!-- Hero -->
     <section class="hero">
         <div class="container">
@@ -154,32 +148,6 @@
 
     <main class="main-content" id="main-content">
         <div class="container">
-
-            <!-- Market Ticker TradingView -->
-            <section class="section">
-                <div class="tradingview-widget-container market-ticker-widget">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-                    {
-                        "symbols": [
-                            {"proName": "FOREXCOM:SPXUSD", "title": "S&P 500"},
-                            {"proName": "NASDAQ:NDX", "title": "NASDAQ 100"},
-                            {"proName": "NASDAQ:NVDA", "title": "Nvidia"},
-                            {"proName": "FOREXCOM:XAUUSD", "title": "Or"},
-                            {"proName": "TVC:USOIL", "title": "Pétrole WTI"},
-                            {"proName": "TVC:DXY", "title": "Dollar Index"},
-                            {"proName": "FOREXCOM:EURUSD", "title": "EUR/USD"},
-                            {"proName": "BITSTAMP:BTCUSD", "title": "Bitcoin"}
-                        ],
-                        "showSymbolLogo": true,
-                        "colorTheme": "light",
-                        "isTransparent": true,
-                        "displayMode": "adaptive",
-                        "locale": "fr"
-                    }
-                    </script>
-                </div>
-            </section>
 
             <!-- Briefing IA quotidien (généré par Claude Sonnet) -->
             <section class="section article-du-jour-section section-empty" id="article-du-jour-section">
