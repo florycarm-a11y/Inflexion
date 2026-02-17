@@ -618,7 +618,14 @@ Chaque signal doit avoir des interconnexions concrètes et chiffrées.`;
     console.log('\n  ✅ Briefing IA quotidien terminé');
 }
 
-main().catch(err => {
-    console.error('Erreur fatale:', err);
-    process.exit(1);
-});
+// Ne pas lancer main() si importé comme module de test
+const isDirectRun = import.meta.url === `file://${process.argv[1]}`;
+if (isDirectRun) {
+    main().catch(err => { console.error('Erreur fatale:', err); process.exit(1); });
+}
+
+// Export pour tests unitaires
+export { selectTopArticles, formatNewsContext, formatMarkets, formatCrypto,
+         formatFearGreed, formatMacro, formatGlobalMacro, formatCommodities,
+         formatEuropeanMarkets, formatDefi, formatAlphaVantage, formatOnChain,
+         formatSentiment };

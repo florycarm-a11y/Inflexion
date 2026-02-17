@@ -109,6 +109,8 @@ jobs:
           node --test scripts/tests/api-client.test.mjs
           node --test scripts/tests/fetch-data.test.mjs
           node --test scripts/tests/app.test.mjs
+          node --test scripts/tests/supabase-client.test.mjs
+          node --test scripts/tests/generate-daily-briefing.test.mjs
 
   # ============================================
   # Build Check

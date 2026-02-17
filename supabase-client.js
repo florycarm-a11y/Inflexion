@@ -1175,17 +1175,36 @@
         get user() { return currentUser; },
         get isLoggedIn() { return !!currentUser; },
         get watchlistItems() { return _watchlistItems; },
-        get crossAlerts() { return _crossAlerts; }
+        get crossAlerts() { return _crossAlerts; },
+        // Expose internals pour tests unitaires
+        _internals: {
+            generateShareCode: generateShareCode,
+            computeCrossAlerts: computeCrossAlerts,
+            enrichWatchlistWithLiveData: enrichWatchlistWithLiveData,
+            generateReport: generateReport,
+            _setWatchlistItems: function (items) { _watchlistItems = items; },
+            _setCrossAlerts: function (alerts) { _crossAlerts = alerts; },
+            _setCurrentUser: function (user) { currentUser = user; },
+            _getWatchlistItems: function () { return _watchlistItems; },
+            _getCrossAlerts: function () { return _crossAlerts; },
+        }
     };
 
     // Auto-init quand le DOM est prêt
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function () {
+    if (typeof document !== 'undefined' && document.readyState) {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function () {
+                init();
+                bindWatchlistForm();
+            });
+        } else {
             init();
             bindWatchlistForm();
-        });
-    } else {
-        init();
-        bindWatchlistForm();
+        }
+    }
+
+    // Export pour tests unitaires (Node.js)
+    if (typeof module !== 'undefined' && module.exports) {
+        module.exports = window.InflexionAuth;
     }
 })();
