@@ -1,62 +1,56 @@
 {
-  "titre": "Économie US en expansion modérée, inflation maîtrisée, Fed en pause – divergence transatlantique croissante",
+  "titre": "Économie US en expansion modérée, inflation maîtrisée, divergence transatlantique accentuée",
   "phase_cycle": "expansion",
   "politique_monetaire": "neutre",
   "tendance_inflation": "deceleration",
   "score_risque": 4,
-  "analyse": "## Cycle économique et croissance\n\nL'économie américaine demeure en phase d'expansion, avec un PIB trimestriel de 31 098 Mrd $ (+612,3 Mrd $ en glissement). La croissance reste positive mais modérée, sans accélération spectaculaire. Le marché du travail affiche une légère détente : le chômage s'établit à 4,3 % (-0,1 pp), signalant une stabilisation après des tensions antérieures. Cette combinaison suggère une économie en \"soft landing\" – croissance soutenable sans surchauffe.\n\n## Inflation et politique monétaire\n\nL'inflation CPI recule à 2,83 % YoY (index 326,588), marquant une décélération claire depuis les pics de 2022-2023. La Fed Funds rate demeure à 3,64 %, inchangée, confirmant une pause dans le cycle de resserrement. Cette stabilité reflète une posture **neutre** : la Fed n'accommode plus (taux réels positifs ~0,8 %), mais ne resserre pas davantage. L'inflation converge vers la cible de 2 %, réduisant la pression pour des baisses de taux imminentes.\n\n## Courbe des taux et signaux de risque\n\nLe spread 10Y-2Y s'établit à 0,64 % (+0,02 pp), **sortant de la zone d'inversion**. C'est un signal positif : la courbe se normalise, éliminant le signal de récession que l'inversion prolongée avait envoyé. Le Treasury 10 ans à 4,09 % (-0,09 pp) reflète une légère baisse des rendements long terme, cohérente avec une inflation maîtrisée et une croissance modérée. Le taux hypothécaire 30 ans à 6,09 % reste élevé, freinant l'immobilier résidentiel mais sans crise.\n\n## Liquidité et bilan de la Fed\n\nLe bilan Fed s'accroît à 6 622 Mrd $ (+16,5 Mrd $), signalant une légère expansion des actifs. M2 progresse à 22 411 Mrd $ (+88,9 Mrd $), indiquant une liquidité stable. Ces mouvements sont modérés, sans signal d'inflation monétaire imminente ni de contraction abrupte.\n\n## Perspective transatlantique\n\nLe dollar broad index recule légèrement à 118,24 (-0,26), reflétant une stabilisation après des années de force. La BCE maintient son taux directeur à 2,15 %, soit **150 bps sous la Fed** – une divergence qui persiste. L'EUR/USD à 1,1587 indique une parité relativement stable. La Fed reste plus restrictive que la BCE, mais les deux banques centrales convergent vers une pause : la Fed n'a plus de raison de baisser rapidement (inflation > 2,8 %), tandis que la BCE pourrait continuer à réduire ses taux si l'inflation eurozone fléchit.\n\n## Risques\n\nLe score de risque modéré (4/10) reflète l'absence de signaux aigus : pas d'inversion courbe, inflation décélérante, marché du travail stable. Les risques résiduels incluent une remontée inattendue de l'inflation (énergie, géopolitique) ou un choc externe (géopolitique, crédit).",
+  "analyse": "## Cycle économique et activité\n\nL'économie américaine demeure en phase d'expansion, avec un PIB trimestriel de 31 098 Mrd $ (+612,3 Mrd $ en glissement). Le marché du travail affiche une stabilité relative : le chômage à 4,3 % (-0,1 pp) indique une détente progressive des tensions, sans effondrement. Cette trajectoire suggère une croissance modérée et durable, sans surchauffe.\n\n## Inflation et politique monétaire\n\nL'inflation CPI ralentit significativement à +2,83 % YoY (index 326,588), se rapprochant de la cible de 2 % de la Fed. Ce désinflation graduelle justifie le maintien du taux directeur à 3,64 %, position **neutre** : ni restrictive (qui freinerait davantage la croissance), ni accommodante (qui relancerait l'inflation). La Fed a atteint son équilibre de politique monétaire.\n\nLe Treasury 10 ans à 4,09 % (-0,09 pp) reflète cette détente inflationniste et les anticipations d'une stabilité des taux à moyen terme. Le spread 10Y-2Y à +0,64 % (+0,02 pp) demeure **positif et en normalisation**, éliminant le signal de récession que l'inversion aurait signalé. La courbe des taux se redresse graduellement.\n\n## Divergence transatlantique\n\nLa BCE maintient son taux directeur principal à 2,15 %, soit **149 pb en dessous** de la Fed. Cette divergence reflète une économie européenne plus fragile et une inflation moins persistante. L'EUR/USD à 1,1587 montre un dollar encore dominant mais en léger repli (-0,26 sur l'indice broad à 118,24), cohérent avec une Fed moins restrictive que prévu.\n\n## Liquidité et risques\n\nLa masse monétaire M2 à 22 411 Mrd $ (+88,9 Mrd $) et le bilan Fed à 6 622 382 M $ (+16 473 M $) indiquent une **expansion monétaire modérée**. La Fed n'a pas durci drastiquement, maintenant une certaine flexibilité. Le taux hypothécaire 30 ans à 6,09 % (-0,02 pp) reste élevé mais stable, freinant légèrement la demande immobilière sans la paralyser.\n\n## Synthèse des risques\n\nLe score de risque **4/10** reflète une situation équilibrée : inflation maîtrisée, courbe des taux normalisée, marché du travail stable, et politique monétaire neutre. Les principaux risques sont géopolitiques ou externes (chocs pétroliers, tensions commerciales), non endogènes.",
   "indicateurs_cles": [
     {
       "nom": "CPI YoY",
-      "valeur": "2,83 %",
+      "valeur": "+2,83 %",
       "signal": "baissier",
-      "commentaire": "Inflation en décélération claire, convergeant vers la cible de 2 % de la Fed. Réduit la pression pour des baisses de taux agressives."
+      "commentaire": "Désinflation en cours, proche de la cible 2 % de la Fed. Justifie le maintien des taux."
     },
     {
-      "nom": "Fed Funds Rate",
+      "nom": "Taux directeur Fed",
       "valeur": "3,64 %",
       "signal": "neutre",
-      "commentaire": "Inchangé, confirmant une pause. Taux réels positifs (~0,8 %) maintiennent une posture restrictive modérée."
+      "commentaire": "Position d'équilibre : ni restrictive ni accommodante. Pause de la Fed confirmée."
     },
     {
       "nom": "Chômage",
       "valeur": "4,3 %",
       "signal": "neutre",
-      "commentaire": "Stable et légèrement en baisse (-0,1 pp). Marché du travail en détente progressive, sans tensions."
+      "commentaire": "Détente progressive (-0,1 pp), marché du travail en normalisation sans fragilité."
     },
     {
       "nom": "Spread 10Y-2Y",
-      "valeur": "0,64 %",
+      "valeur": "+0,64 %",
       "signal": "haussier",
-      "commentaire": "Sortie de l'inversion. Normalisation de la courbe = signal positif pour la croissance future."
+      "commentaire": "Courbe normalisée et en redressement. Élimine le signal de récession."
     },
     {
       "nom": "Treasury 10 ans",
       "valeur": "4,09 %",
       "signal": "neutre",
-      "commentaire": "Rendements stables, cohérents avec une inflation maîtrisée et une croissance modérée."
+      "commentaire": "Baisse de 9 pb, reflétant la désinflation et l'absence de choc de taux."
     },
     {
       "nom": "Dollar Index (broad)",
       "valeur": "118,24",
       "signal": "neutre",
-      "commentaire": "Léger recul (-0,26). Dollar fort mais stabilisé, reflétant une Fed moins agressive que par le passé."
+      "commentaire": "Léger repli (-0,26), dollar toujours fort mais sans accélération."
     },
     {
-      "nom": "M2",
-      "valeur": "22 411 Mrd $",
-      "signal": "neutre",
-      "commentaire": "Croissance modérée (+88,9 Mrd $). Liquidité stable, sans signal d'inflation monétaire ou de contraction."
-    },
-    {
-      "nom": "Bilan Fed",
-      "valeur": "6 622 Mrd $",
-      "signal": "neutre",
-      "commentaire": "Expansion légère (+16,5 Mrd $). Pas de QE agressif, mais pas de QT accéléré non plus."
+      "nom": "Divergence Fed/BCE",
+      "valeur": "149 pb",
+      "signal": "baissier",
+      "commentaire": "Écart de taux directeur accentue la divergence économique transatlantique."
     }
   ],
-  "perspectives": "Surveiller l'évolution de l'inflation CPI en mars-avril 2026 : une accélération inattendue (chocs énergétiques, géopolitique) pourrait forcer la Fed à maintenir les taux plus longtemps. Observer aussi la courbe des taux : si le spread 10Y-2Y se réinverse, ce serait un signal d'alerte récession. Enfin, suivre la divergence Fed-BCE : si l'inflation eurozone ralentit plus vite, la BCE pourrait baisser davantage, renforçant l'EUR face au USD.",
-  "updated": "2026-02-16T19:08:41.194Z",
+  "perspectives": "Surveiller la trajectoire du CPI en mars-avril 2026 : une accélération inattendue forcerait la Fed à maintenir les taux plus longtemps. Observer aussi la réaction du marché du travail (données d'emploi mensuelles) : une dégradation rapide pourrait justifier une baisse des taux dès le printemps. Enfin, suivre la divergence EUR/USD et les tensions commerciales potentielles, qui pourraient déstabiliser l'équilibre actuel.",
+  "updated": "2026-02-17T03:19:20.249Z",
   "source": "Claude IA + FRED + BCE + commodités",
   "indicators_count": 10,
   "extra_sources": 2
