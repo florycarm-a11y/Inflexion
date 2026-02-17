@@ -779,7 +779,7 @@ a {
 }
 
 .story-title a {
-    color: var(--text-primary);
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -790,7 +790,7 @@ a {
 .story-excerpt {
     font-family: var(--font-serif);
     font-size: 0.82rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.75);
     line-height: 1.5;
     margin-top: 0.25rem;
     overflow: hidden;
@@ -831,11 +831,12 @@ a {
 
 .news-card {
     padding: 1.5rem;
-    background: var(--bg-primary);
-    border: 1px solid var(--border-color);
+    background: var(--navy);
+    border: 1px solid rgba(255,255,255,0.08);
     border-top: none;
     transition: box-shadow 0.2s ease;
     position: relative;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .news-card::before {
@@ -886,7 +887,7 @@ a {
 .news-time {
     font-family: var(--font-sans);
     font-size: 0.68rem;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.55);
     margin-left: auto;
 }
 
@@ -907,7 +908,7 @@ a {
     font-weight: 700;
     line-height: 1.4;
     margin-bottom: 0.6rem;
-    color: var(--text-primary);
+    color: #ffffff;
     transition: color 0.15s ease;
 }
 
@@ -918,7 +919,7 @@ a {
 .news-description {
     font-family: var(--font-serif);
     font-size: 0.9rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.75);
     line-height: 1.65;
     margin-bottom: 1rem;
 }
@@ -973,6 +974,47 @@ a {
     content: ' \2192';
 }
 
+/* Dark card text overrides — ensures readability on var(--navy) background */
+.news-card .news-title,
+.news-card .news-title a,
+.top-story .story-title,
+.top-story .story-title a,
+.market-card .market-name,
+.market-card .market-price,
+.etf-card .etf-ticker {
+    color: #ffffff;
+}
+
+.news-card .news-description,
+.news-card .news-time,
+.top-story .story-excerpt,
+.market-card .market-change,
+.etf-card .etf-name {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.news-card .source-name,
+.top-story .story-source,
+.news-card .news-link,
+.etf-card .etf-provider {
+    color: var(--accent);
+}
+
+.news-card .source-name:hover,
+.news-card .news-link:hover {
+    color: var(--navy-light);
+}
+
+.news-card:hover .news-title,
+.top-story:hover .story-title a {
+    color: var(--accent);
+}
+
+.news-card .tag.etf {
+    color: var(--navy-light);
+    border-color: var(--navy-light);
+}
+
 /* ============================================
    Top Stories Ã¢ÂÂ Editorial Layout
    ============================================ */
@@ -983,14 +1025,15 @@ a {
 }
 
 .top-story {
-    background: var(--bg-primary);
+    background: var(--navy);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    border: 1px solid rgba(255,255,255,0.08);
     transition: box-shadow 0.2s ease, transform 0.2s ease;
     display: flex;
     flex-direction: column;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .top-story:hover {
@@ -1363,7 +1406,7 @@ a {
 .sidebar-block {
     margin-bottom: 2rem;
     padding: 1.25rem;
-    background: var(--accent-dark);
+    background: var(--navy);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.18);
@@ -1502,7 +1545,7 @@ a {
 }
 
 .news-list-item {
-    background: var(--accent-dark);
+    background: var(--navy);
     border-radius: 12px;
     padding: 1rem 1.25rem;
     border-bottom: none;
@@ -1839,7 +1882,7 @@ a {
 .analysis-excerpt {
     font-family: var(--font-serif);
     font-size: 0.98rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.75);
     line-height: 1.75;
     margin-bottom: 0.75rem;
 }
@@ -1847,7 +1890,7 @@ a {
 .analysis-meta {
     font-family: var(--font-sans);
     font-size: 0.72rem;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.55);
     display: flex;
     gap: 1rem;
     letter-spacing: 0.3px;
@@ -1958,18 +2001,21 @@ a {
 }
 
 .market-card {
-    background: var(--bg-primary);
+    background: var(--navy);
     padding: 1.25rem;
     transition: background 0.15s ease;
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-md, 8px);
 }
 
 .market-card:hover {
-    background: var(--bg-secondary);
+    background: var(--accent-dark);
 }
 
 .market-card.featured {
     grid-column: span 2;
-    background: var(--bg-secondary);
+    background: var(--navy);
 }
 
 .market-header {
@@ -2061,11 +2107,11 @@ a {
 .commodity-change.positive { color: var(--green); }
 .commodity-change.negative { color: var(--accent); }
 
-.etf-card { background: var(--bg-primary); padding: 1rem; }
+.etf-card { background: var(--navy); padding: 1rem; color: rgba(255, 255, 255, 0.9); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md, 8px); }
 .etf-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem; }
-.etf-ticker { font-family: var(--font-sans); font-size: 1rem; font-weight: 700; color: var(--text-primary); }
-.etf-provider { font-family: var(--font-sans); font-size: 0.62rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
-.etf-name { font-family: var(--font-sans); font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
+.etf-ticker { font-family: var(--font-sans); font-size: 1rem; font-weight: 700; color: #ffffff; }
+.etf-provider { font-family: var(--font-sans); font-size: 0.62rem; color: rgba(255, 255, 255, 0.55); text-transform: uppercase; letter-spacing: 0.5px; }
+.etf-name { font-family: var(--font-sans); font-size: 0.78rem; color: rgba(255, 255, 255, 0.75); margin-bottom: 0.5rem; }
 .etf-flow { font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600; }
 .etf-flow.positive { color: var(--green); }
 .etf-flow.negative { color: var(--accent); }
@@ -2081,10 +2127,12 @@ a {
 
 .analysis-card {
     padding: 1.5rem;
-    background: var(--bg-primary);
-    border: 1px solid var(--border-color);
+    background: var(--navy);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-md, 8px);
     cursor: pointer;
     transition: box-shadow 0.2s ease;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .analysis-card:hover {
@@ -2097,8 +2145,8 @@ a {
 
 .analysis-card.featured-analysis {
     grid-column: span 2;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
+    background: var(--navy);
+    border: 1px solid rgba(255,255,255,0.08);
 }
 
 .analysis-badge {
@@ -2120,6 +2168,7 @@ a {
     font-size: 1.05rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
+    color: #ffffff;
     line-height: 1.4;
     transition: color 0.15s ease;
 }
@@ -2127,7 +2176,7 @@ a {
 .analysis-card p {
     font-family: var(--font-serif);
     font-size: 0.88rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.75);
     line-height: 1.6;
     margin-bottom: 0.75rem;
 }
@@ -2745,7 +2794,7 @@ a {
 
     .news-card {
         break-inside: avoid;
-        border: 1px solid #ccc;
+        border: 1px solid rgba(255,255,255,0.08);
     }
 }
 
@@ -3172,7 +3221,7 @@ a {
 }
 
 .article-du-jour {
-    background: var(--accent);
+    background: var(--navy);
     border: none;
     border-radius: var(--radius-lg);
     padding: 2rem 2.5rem;
@@ -3185,7 +3234,7 @@ a {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(16, 94, 45, 0.95) 0%, rgba(10, 68, 32, 0.98) 100%);
+    background: linear-gradient(135deg, rgba(11, 61, 30, 0.95) 0%, rgba(11, 61, 30, 0.98) 100%);
     pointer-events: none;
     z-index: 0;
 }
@@ -3422,7 +3471,7 @@ a {
 }
 
 .signal-card {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--navy);
     border-radius: var(--radius-md);
     padding: 1.2rem;
     margin-bottom: 1rem;
@@ -3568,7 +3617,7 @@ a {
 }
 
 .risk-item {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--navy);
     border-radius: var(--radius-md);
     padding: 1rem 1.2rem;
     margin-bottom: 0.8rem;
@@ -5569,7 +5618,7 @@ a {
 
 /* --- Sidebar cards (box-shadow + border-radius) --- */
 .sidebar-card {
-    background: var(--accent-dark);
+    background: var(--navy);
     border-radius: var(--radius-md, 8px);
     padding: 1.2rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.18);
