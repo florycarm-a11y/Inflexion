@@ -3170,20 +3170,20 @@ a {
 }
 
 .article-du-jour {
-    background: url('assets/briefing-bg.svg') center/cover no-repeat;
-    border: 1px solid var(--border-color);
-    border-left: 4px solid var(--accent);
+    background: var(--accent);
+    border: none;
     border-radius: var(--radius-lg);
     padding: 2rem 2.5rem;
     position: relative;
     overflow: hidden;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .article-du-jour::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(244, 244, 237, 0.88) 100%);
+    background: linear-gradient(135deg, rgba(16, 94, 45, 0.95) 0%, rgba(10, 68, 32, 0.98) 100%);
     pointer-events: none;
     z-index: 0;
 }
@@ -3196,15 +3196,15 @@ a {
 .article-du-jour-header {
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .article-du-jour-badge {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    background: rgba(0, 210, 120, 0.1);
-    color: var(--accent);
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
     font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -3216,7 +3216,7 @@ a {
 
 .article-du-jour-date {
     font-size: 0.78rem;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.6);
     margin-bottom: 0.5rem;
 }
 
@@ -3224,21 +3224,21 @@ a {
     font-family: var(--font-serif);
     font-size: 1.6rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #fff;
     line-height: 1.3;
     margin: 0;
 }
 
 .article-du-jour-subtitle {
     font-size: 1rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.75);
     margin-top: 0.5rem;
     font-style: italic;
 }
 
 /* Points clés */
 .article-du-jour-points-cles {
-    background: rgba(0, 210, 120, 0.04);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-md);
     padding: 1.2rem 1.5rem;
     margin-bottom: 1.5rem;
@@ -3249,7 +3249,7 @@ a {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--accent);
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 0.8rem;
 }
 
@@ -3264,7 +3264,7 @@ a {
     padding-left: 1.2rem;
     margin-bottom: 0.5rem;
     font-size: 0.88rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.5;
 }
 
@@ -3272,14 +3272,14 @@ a {
     content: '▸';
     position: absolute;
     left: 0;
-    color: var(--accent);
+    color: rgba(255, 255, 255, 0.5);
     font-weight: 700;
 }
 
 /* Contenu de l'article */
 .article-du-jour-content {
     font-size: 0.92rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.75;
 }
 
@@ -3291,10 +3291,10 @@ a {
     font-family: var(--font-serif);
     font-size: 1.15rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #fff;
     margin: 1.5rem 0 0.8rem;
     padding-left: 0.8rem;
-    border-left: 3px solid var(--accent);
+    border-left: 3px solid rgba(255, 255, 255, 0.4);
 }
 
 /* Tags */
@@ -3304,12 +3304,12 @@ a {
     gap: 0.5rem;
     margin-top: 1.5rem;
     padding-top: 1rem;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .article-tag {
-    background: var(--bg-secondary);
-    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.72rem;
     font-weight: 600;
     padding: 0.25rem 0.7rem;
@@ -3323,16 +3323,16 @@ a {
     align-items: center;
     margin-top: 1rem;
     font-size: 0.75rem;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 /* Sources Tavily */
 .article-du-jour-sources {
     margin-top: 1.5rem;
     padding: 1rem 1.2rem;
-    background: var(--bg-secondary);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-md);
-    border-left: 3px solid var(--text-muted);
+    border-left: 3px solid rgba(255, 255, 255, 0.3);
 }
 
 .article-du-jour-sources h4 {
@@ -3340,7 +3340,7 @@ a {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.6);
     margin-bottom: 0.6rem;
 }
 
@@ -3356,18 +3356,19 @@ a {
 }
 
 .article-du-jour-sources a {
-    color: var(--accent);
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     transition: opacity var(--transition-fast);
 }
 
 .article-du-jour-sources a:hover {
-    opacity: 0.8;
+    opacity: 1;
+    color: #fff;
     text-decoration: underline;
 }
 
 .source-domain {
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.5);
     font-size: 0.7rem;
 }
 
@@ -3377,7 +3378,7 @@ a {
 }
 
 .article-du-jour-empty {
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.6);
     font-style: italic;
 }
 
@@ -3407,10 +3408,10 @@ a {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--accent);
+    color: rgba(255, 255, 255, 0.8);
     margin: 2rem 0 1rem;
     padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--accent);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.25);
 }
 
 /* ── Cartes de signaux géopolitiques ── */
@@ -3419,17 +3420,17 @@ a {
 }
 
 .signal-card {
-    background: var(--bg-secondary);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-md);
     padding: 1.2rem;
     margin-bottom: 1rem;
-    border-left: 4px solid var(--accent);
+    border-left: 4px solid rgba(255, 255, 255, 0.3);
     transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .signal-card:hover {
     transform: translateX(4px);
-    box-shadow: 0 2px 12px rgba(16, 185, 129, 0.1);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 }
 
 .signal-card.severity-urgent {
@@ -3460,7 +3461,7 @@ a {
 .signal-title {
     font-size: 0.95rem;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #fff;
     margin: 0;
     flex: 1;
 }
@@ -3492,7 +3493,7 @@ a {
 
 .signal-description {
     font-size: 0.85rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.8);
     line-height: 1.5;
     margin: 0.3rem 0 0.8rem;
 }
@@ -3501,7 +3502,7 @@ a {
 .signal-interconnexions {
     margin-top: 0.6rem;
     padding: 0.8rem;
-    background: rgba(16, 185, 129, 0.05);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: var(--radius-sm);
 }
 
@@ -3510,7 +3511,7 @@ a {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: var(--accent);
+    color: rgba(255, 255, 255, 0.6);
     display: block;
     margin-bottom: 0.5rem;
 }
@@ -3520,25 +3521,25 @@ a {
     align-items: baseline;
     gap: 0.4rem;
     font-size: 0.82rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 0.35rem;
     line-height: 1.4;
     flex-wrap: wrap;
 }
 
 .inter-arrow {
-    color: var(--accent);
+    color: rgba(255, 255, 255, 0.5);
     font-weight: 700;
     flex-shrink: 0;
 }
 
 .inter-impact {
-    color: var(--accent);
+    color: #fff;
     font-weight: 600;
 }
 
 .inter-explication {
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.55);
     font-size: 0.78rem;
 }
 
@@ -3553,10 +3554,10 @@ a {
 .region-tag {
     font-size: 0.7rem;
     padding: 0.1rem 0.5rem;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: var(--radius-sm);
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 /* ── Risk Radar ── */
@@ -3565,16 +3566,16 @@ a {
 }
 
 .risk-item {
-    background: var(--bg-secondary);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-md);
     padding: 1rem 1.2rem;
     margin-bottom: 0.8rem;
-    border-left: 4px solid var(--text-muted);
+    border-left: 4px solid rgba(255, 255, 255, 0.3);
 }
 
 .risk-item.severity-urgent {
-    border-left-color: #dc2626;
-    background: rgba(220, 38, 38, 0.04);
+    border-left-color: #ef4444;
+    background: rgba(220, 38, 38, 0.15);
 }
 
 .risk-item.severity-attention {
@@ -3600,7 +3601,7 @@ a {
 
 .risk-title {
     font-size: 0.9rem;
-    color: var(--text-primary);
+    color: #fff;
     flex: 1;
 }
 
@@ -3631,7 +3632,7 @@ a {
 
 .risk-description {
     font-size: 0.83rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.8);
     line-height: 1.5;
     margin: 0 0 0.5rem;
 }
@@ -3640,13 +3641,13 @@ a {
     display: flex;
     gap: 1rem;
     font-size: 0.75rem;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.55);
     flex-wrap: wrap;
 }
 
 .risk-proba {
     padding: 0.1rem 0.4rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-sm);
 }
 
