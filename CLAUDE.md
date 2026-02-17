@@ -340,6 +340,47 @@ python scripts/check-french.py
 - `scripts/generate-daily-briefing.mjs` : script principal de generation
 - `.github/workflows/generate-daily-briefing.yml` : workflow CI/CD
 
+### Session 2026-02-17 — Watchlist Avancee (Gratuit)
+
+**Contexte :** Implementation complete des fonctionnalites avancees de la watchlist, initialement prevues en premium, desormais 100% gratuites. Comprend alertes croisees, donnees live, partage, annotations equipe, rapports automatises et API RESTful.
+
+**Nouvelles fonctionnalites :**
+
+1. **Donnees live sur la watchlist** — Enrichissement automatique de chaque actif suivi avec prix et variation 24h en temps reel. Cross-reference entre les sources : CoinGecko, Messari (crypto), Finnhub, Alpha Vantage (actions), Twelve Data (indices EU), etc. Rafraichissement automatique toutes les 5 minutes.
+
+2. **Alertes croisees** — Detection automatique quand une actualite ou une alerte IA mentionne un actif de la watchlist utilisateur. Croisement watchlist x 122 sources RSS x alertes Claude. Badge de notification par actif et panneau d'alertes croisees avec severite (urgent/attention/info).
+
+3. **Watchlists partagees** — Generation de lien de partage unique (code 12 caracteres). Vue lecture seule avec donnees live. Copie en un clic dans sa propre watchlist. Table Supabase `shared_watchlists`.
+
+4. **Annotations equipe** — Notes collaboratives sur chaque actif de la watchlist. Panneau slide-in avec formulaire, auteur, date, suppression. Table Supabase `watchlist_annotations`.
+
+5. **Rapports automatises** — Generation de rapport HTML complet en un clic : resume portfolio (hausse/baisse/tendance), detail de chaque actif (prix, variation, source), alertes croisees, contexte marche (sentiment IA, Fear & Greed). Ouverture dans un nouvel onglet pour impression/PDF.
+
+6. **API RESTful** — 18 endpoints couvrant toutes les donnees Inflexion. Architecture double : backend Node.js si disponible, fallback vers DataLoader (JSON statiques) sur GitHub Pages. Endpoints : articles, marche, crypto, macro, sentiment, alertes, briefing, DeFi, indices EU, prix par symbole, news par symbole, watchlist partagee, recherche, sources, categories, meta.
+
+**Helpers DataLoader :**
+- `getPriceForSymbol(symbol, category)` — Recherche le prix live dans toutes les sources
+- `getNewsForSymbol(symbol, label)` — Recherche les articles mentionnant un actif (avec alias : BTC→bitcoin, NVDA→nvidia, etc.)
+- `getAlertsForSymbol(symbol)` — Recherche les alertes IA mentionnant un actif
+
+**API Publique elargie (`window.InflexionAuth`) :**
+- `addToWatchlist()`, `removeFromWatchlist()`, `shareWatchlist()`, `loadSharedWatchlist()`
+- `generateReport()`
+- `watchlistItems` (getter), `crossAlerts` (getter)
+
+**Fichiers modifies :**
+- `data-loader.js` : +3 helpers (getPriceForSymbol, getNewsForSymbol, getAlertsForSymbol), +3 exports publics
+- `supabase-client.js` : refonte complete — enrichissement live, alertes croisees, partage, annotations, rapports, icones SVG par categorie
+- `index.html` : section watchlist elargie (toolbar, alertes croisees, annotations, watchlist partagee)
+- `styles.css` : refonte CSS watchlist (toolbar, items enrichis, alertes croisees, partage, annotations, responsive 4 breakpoints)
+- `api-client.js` : expansion en API RESTful complete (18 endpoints, fallback DataLoader)
+- `premium.html` : services 2 et 6 marques "Gratuit", CTA mis a jour
+- `CLAUDE.md` : documentation session
+
+**Tables Supabase ajoutees :**
+- `shared_watchlists` : `id`, `owner_id`, `share_code`, `name`, `is_public`, `created_at`
+- `watchlist_annotations` : `id`, `watchlist_item_id`, `user_id`, `author_name`, `text`, `created_at`
+
 ### PRs precedentes
 
 **PR #23 (mergee)** : Redesign vert + widgets IA + 78 RSS + automatisation Claude

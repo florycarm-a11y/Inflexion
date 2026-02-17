@@ -1931,6 +1931,180 @@ const DataLoader = (function () {
         console.log('[DataLoader] ✓ DOM mis à jour');
     }
 
+    // ─── Lookup de prix par symbole (pour enrichir la watchlist) ──
+
+    /**
+     * Recherche le prix live d'un actif par symbole dans toutes les sources de données.
+     * Utilisé par la watchlist pour afficher les données temps réel.
+     *
+     * @param {string} symbol - Symbole de l'actif (ex: BTC, AAPL, XAU)
+     * @param {string} category - Catégorie de l'actif (crypto, stock, commodity, index)
+     * @returns {Object|null} { price, change, source } ou null si introuvable
+     */
+    function getPriceForSymbol(symbol, category) {
+        if (!_initialized) return null;
+        var sym = (symbol || '').toUpperCase();
+
+        // 1. Crypto — CoinGecko + Messari
+        if (category === 'crypto' || !category) {
+            var cryptoMap = {
+                'BTC': 'bitcoin', 'ETH': 'ethereum', 'BNB': 'binancecoin',
+                'SOL': 'solana', 'XRP': 'ripple', 'ADA': 'cardano',
+                'DOGE': 'dogecoin', 'DOT': 'polkadot', 'AVAX': 'avalanche-2',
+                'MATIC': 'matic-network', 'LINK': 'chainlink', 'UNI': 'uniswap',
+                'ATOM': 'cosmos', 'LTC': 'litecoin', 'SHIB': 'shiba-inu'
+            };
+            if (_cache.crypto?.prices) {
+                var cgId = cryptoMap[sym] || sym.toLowerCase();
+                var coin = _cache.crypto.prices.find(function(c) {
+                    return c.id === cgId || (c.symbol && c.symbol.toUpperCase() === sym);
+                });
+                if (coin) return { price: coin.price, change: coin.change_24h, source: 'CoinGecko' };
+            }
+            if (_cache.messari?.assets) {
+                var mAsset = _cache.messari.assets.find(function(a) {
+                    return a.symbol && a.symbol.toUpperCase() === sym;
+                });
+                if (mAsset) return { price: mAsset.price, change: mAsset.percent_change_24h, source: 'Messari' };
+            }
+            if (category === 'crypto') return null;
+        }
+
+        // 2. Actions / Indices US — Finnhub
+        if (category === 'stock' || category === 'index' || !category) {
+            if (_cache.markets?.quotes) {
+                var quote = _cache.markets.quotes.find(function(q) {
+                    return q.symbol === sym || q.name === sym;
+                });
+                if (quote) return { price: quote.price, change: quote.change, source: 'Finnhub' };
+            }
+            // Alpha Vantage top movers
+            if (_cache.alphaVantage?.topMovers) {
+                var allMovers = (_cache.alphaVantage.topMovers.gainers || [])
+                    .concat(_cache.alphaVantage.topMovers.losers || []);
+                var mover = allMovers.find(function(m) { return m.ticker === sym; });
+                if (mover) return { price: mover.price, change: mover.changePct, source: 'Alpha Vantage' };
+            }
+        }
+
+        // 3. Indices européens — Twelve Data
+        if (category === 'index' || !category) {
+            if (_cache.europeanMarkets?.indices) {
+                var euIdx = _cache.europeanMarkets.indices.find(function(idx) {
+                    return idx.symbol === sym || idx.name.toUpperCase().includes(sym);
+                });
+                if (euIdx) return { price: euIdx.price, change: euIdx.change_pct, source: 'Twelve Data' };
+            }
+        }
+
+        // 4. Matières premières — Forex (Alpha Vantage) et or/pétrole dans marchés
+        if (category === 'commodity' || !category) {
+            if (_cache.alphaVantage?.forex) {
+                var fxPair = _cache.alphaVantage.forex.find(function(fx) {
+                    return fx.pair && fx.pair.includes(sym);
+                });
+                if (fxPair) return { price: fxPair.rate, change: null, source: 'Alpha Vantage' };
+            }
+            // Chercher dans les quotes marchés (GLD, USO, etc.)
+            if (_cache.markets?.quotes) {
+                var commQuote = _cache.markets.quotes.find(function(q) {
+                    return q.symbol === sym;
+                });
+                if (commQuote) return { price: commQuote.price, change: commQuote.change, source: 'Finnhub' };
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Recherche les articles d'actualité mentionnant un symbole ou son nom.
+     * Utilisé pour les alertes croisées watchlist × événements.
+     *
+     * @param {string} symbol - Symbole de l'actif (ex: BTC, NVIDIA)
+     * @param {string} label - Nom complet ou label de l'actif
+     * @returns {Array} Articles correspondants (max 5)
+     */
+    function getNewsForSymbol(symbol, label) {
+        if (!_initialized || !_cache.news?.categories) return [];
+
+        var sym = (symbol || '').toUpperCase();
+        var lbl = (label || '').toLowerCase();
+
+        // Mots-clés de recherche étendus
+        var keywords = [sym];
+        if (lbl && lbl !== sym.toLowerCase()) keywords.push(lbl);
+
+        // Mapping symboles → noms alternatifs pour meilleur matching
+        var aliasMap = {
+            'BTC': ['bitcoin', 'btc'],
+            'ETH': ['ethereum', 'eth', 'ether'],
+            'XAU': ['or', 'gold', 'xau'],
+            'XAG': ['argent', 'silver'],
+            'AAPL': ['apple'],
+            'MSFT': ['microsoft'],
+            'NVDA': ['nvidia'],
+            'GOOG': ['google', 'alphabet'],
+            'GOOGL': ['google', 'alphabet'],
+            'AMZN': ['amazon'],
+            'TSLA': ['tesla'],
+            'META': ['meta', 'facebook'],
+            'WTI': ['petrole', 'oil', 'wti', 'crude'],
+            'USO': ['petrole', 'oil'],
+            'GLD': ['or', 'gold'],
+            'SPY': ['s&p 500', 's&p500'],
+            'QQQ': ['nasdaq'],
+            'SOL': ['solana'],
+            'XRP': ['ripple', 'xrp'],
+            'ADA': ['cardano'],
+            'DOT': ['polkadot'],
+            'AVAX': ['avalanche'],
+            'LINK': ['chainlink'],
+            'UNI': ['uniswap']
+        };
+        var aliases = aliasMap[sym] || [];
+        keywords = keywords.concat(aliases);
+
+        var results = [];
+        var seen = new Set();
+
+        Object.values(_cache.news.categories).forEach(function(articles) {
+            articles.forEach(function(a) {
+                if (seen.has(a.url)) return;
+                var text = ((a.title || '') + ' ' + (a.description || '')).toLowerCase();
+                var matched = keywords.some(function(kw) {
+                    return text.includes(kw.toLowerCase());
+                });
+                if (matched) {
+                    seen.add(a.url);
+                    results.push(a);
+                }
+            });
+        });
+
+        // Trier par date récente et limiter
+        results.sort(function(a, b) {
+            return new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0);
+        });
+
+        return results.slice(0, 5);
+    }
+
+    /**
+     * Recherche les alertes IA qui mentionnent un symbole.
+     *
+     * @param {string} symbol - Symbole de l'actif
+     * @returns {Array} Alertes correspondantes
+     */
+    function getAlertsForSymbol(symbol) {
+        if (!_initialized || !_cache.alerts?.alertes) return [];
+        var sym = (symbol || '').toUpperCase();
+        return _cache.alerts.alertes.filter(function(a) {
+            var text = ((a.titre || '') + ' ' + (a.texte || '')).toUpperCase();
+            return text.includes(sym);
+        });
+    }
+
     // ─── API publique ──────────────────────────────────────
     return {
         init,
@@ -1955,6 +2129,11 @@ const DataLoader = (function () {
         getWorldBank: () => _cache.worldBank,
         getNewsAPI: () => _cache.newsapi,
         getDailyBriefing: () => _cache.dailyBriefing,
+
+        // Watchlist data helpers
+        getPriceForSymbol,
+        getNewsForSymbol,
+        getAlertsForSymbol,
 
         // État
         isInitialized: () => _initialized,
