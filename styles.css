@@ -676,6 +676,15 @@ a {
     color: var(--text-primary);
 }
 
+.section-subtitle {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
 .section-badge {
     font-family: var(--font-sans);
     font-size: 0.6rem;

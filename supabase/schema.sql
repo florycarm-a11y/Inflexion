@@ -65,6 +65,36 @@ create table if not exists public.newsletter (
 );
 
 
+-- 5. SHARED WATCHLISTS (partage de watchlists via lien public)
+create table if not exists public.shared_watchlists (
+    id bigint generated always as identity primary key,
+    owner_id uuid references public.profiles(id) on delete cascade not null,
+    share_code text unique not null,   -- code 12 caractères alphanumérique
+    name text not null,                -- nom donné à la watchlist partagée
+    is_public boolean default true,
+    created_at timestamptz default now()
+);
+
+-- Index pour lookup rapide par share_code
+create index if not exists idx_shared_watchlists_code
+    on public.shared_watchlists(share_code);
+
+
+-- 6. WATCHLIST ANNOTATIONS (notes collaboratives sur les actifs)
+create table if not exists public.watchlist_annotations (
+    id bigint generated always as identity primary key,
+    watchlist_item_id bigint references public.watchlist(id) on delete cascade not null,
+    user_id uuid references public.profiles(id) on delete cascade not null,
+    author_name text,                  -- nom affiché (dénormalisé pour performance)
+    text text not null,
+    created_at timestamptz default now()
+);
+
+-- Index pour charger les annotations d'un item rapidement
+create index if not exists idx_annotations_item
+    on public.watchlist_annotations(watchlist_item_id);
+
+
 -- ═══════════════════════════════════════════════════════════════
 -- ROW LEVEL SECURITY (RLS)
 -- ═══════════════════════════════════════════════════════════════
@@ -74,6 +104,8 @@ alter table public.profiles enable row level security;
 alter table public.watchlist enable row level security;
 alter table public.articles enable row level security;
 alter table public.newsletter enable row level security;
+alter table public.shared_watchlists enable row level security;
+alter table public.watchlist_annotations enable row level security;
 
 -- PROFILES : chacun voit/modifie son propre profil
 create policy "Users can view own profile"
@@ -120,4 +152,51 @@ create policy "Subscribers can unsubscribe"
     using (
         auth.uid() is not null
         and email = (auth.jwt()->>'email')
+    );
+
+-- SHARED WATCHLISTS : tout le monde peut voir les watchlists publiques
+create policy "Public shared watchlists are viewable"
+    on public.shared_watchlists for select
+    using (is_public = true);
+
+-- SHARED WATCHLISTS : les propriétaires voient aussi les leurs (publiques ou non)
+create policy "Owners can view own shared watchlists"
+    on public.shared_watchlists for select
+    using (auth.uid() = owner_id);
+
+-- SHARED WATCHLISTS : seul un utilisateur authentifié peut partager sa watchlist
+create policy "Users can share own watchlist"
+    on public.shared_watchlists for insert
+    with check (auth.uid() = owner_id);
+
+-- SHARED WATCHLISTS : le propriétaire peut supprimer son partage
+create policy "Owners can delete own shared watchlists"
+    on public.shared_watchlists for delete
+    using (auth.uid() = owner_id);
+
+-- ANNOTATIONS : visibles par tous (collaboration ouverte)
+create policy "Annotations are viewable by all authenticated users"
+    on public.watchlist_annotations for select
+    using (auth.uid() is not null);
+
+-- ANNOTATIONS : tout utilisateur authentifié peut annoter
+create policy "Authenticated users can add annotations"
+    on public.watchlist_annotations for insert
+    with check (auth.uid() = user_id);
+
+-- ANNOTATIONS : chacun peut supprimer ses propres annotations
+create policy "Users can delete own annotations"
+    on public.watchlist_annotations for delete
+    using (auth.uid() = user_id);
+
+-- WATCHLIST : les propriétaires de shared_watchlists peuvent lire
+-- la watchlist de l'owner (nécessaire pour afficher une watchlist partagée)
+create policy "Shared watchlist items are viewable"
+    on public.watchlist for select
+    using (
+        exists (
+            select 1 from public.shared_watchlists sw
+            where sw.owner_id = watchlist.user_id
+            and sw.is_public = true
+        )
     );

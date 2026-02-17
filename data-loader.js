@@ -870,6 +870,189 @@ const DataLoader = (function () {
         });
     }
 
+    // ─── Curation qualitative des articles ──────────────────
+
+    /**
+     * Tiers de sources : 1 = premium (think tanks, grandes rédactions),
+     * 2 = bonne qualité (presse spécialisée), 3 = standard (agrégateurs, blogs)
+     */
+    var SOURCE_TIERS = {
+        // Tier 1 — Grandes rédactions & think tanks
+        'Reuters': 1, 'Financial Times': 1, 'Bloomberg': 1, 'The Economist': 1,
+        'Le Monde': 1, 'Les Echos': 1, 'Le Figaro': 1, 'France 24': 1,
+        'BBC': 1, 'BBC World': 1, 'The Guardian': 1, 'NYT': 1, 'New York Times': 1,
+        'Wall Street Journal': 1, 'WSJ': 1, 'Politico': 1, 'Politico EU': 1,
+        'Foreign Policy': 1, 'CFR': 1, 'Brookings': 1, 'Carnegie': 1, 'CSIS': 1,
+        'Chatham House': 1, 'IISS': 1, 'IFRI': 1, 'IRIS': 1,
+        'Al Jazeera': 1, 'RFI': 1, 'Courrier International': 1,
+        'FMI': 1, 'IMF Blog': 1, 'BIS': 1, 'BCE': 1, 'ECB': 1, 'OECD': 1,
+        'SIPRI': 1, 'Crisis Group': 1, 'Nikkei Asia': 1, "L'AGEFI": 1,
+        // Tier 2 — Presse spécialisée reconnue
+        'MarketWatch': 2, 'CNBC': 2, 'Seeking Alpha': 2, 'Investing.com': 2,
+        'BFM Business': 2, 'La Tribune': 2, 'Capital': 2, 'Challenges': 2,
+        'Zonebourse': 2, 'MoneyVox': 2,
+        'CoinDesk': 2, 'CoinTelegraph': 2, 'The Block': 2, 'Decrypt': 2,
+        'CoinTelegraph FR': 2, 'Cryptoast': 2, 'Journal du Coin': 2,
+        'TechCrunch': 2, 'The Verge': 2, 'Ars Technica': 2, 'Wired': 2,
+        'MIT Tech Review': 2, 'VentureBeat': 2, 'IEEE Spectrum': 2,
+        'OilPrice': 2, 'Mining.com': 2, 'S&P Global': 2, 'MetalMiner': 2,
+        'IEA': 2, 'IRENA': 2, 'Carbon Brief': 2, 'OPEC': 2,
+        'Wolf Street': 2, 'Calculated Risk': 2, 'Naked Capitalism': 2,
+        'Responsible Statecraft': 2, 'War on the Rocks': 2,
+        'The Diplomat': 2, 'Middle East Eye': 2, 'Al-Monitor': 2,
+        'Krebs on Security': 2, 'BleepingComputer': 2,
+        'Blockworks': 2, 'Bitcoin Magazine': 2, 'The Defiant': 2,
+        // Tier 3 — Tout le reste (agrégateurs, newsletters, etc.)
+        'GNews': 3, 'NewsAPI': 3, 'Yahoo Finance': 3,
+        '01net': 3, 'Numerama': 3, 'Next INpact': 3,
+        'Hacker News': 3, 'The Register': 3,
+        'CleanTechnica': 3, 'Rigzone': 3
+    };
+
+    /**
+     * Score de qualité d'un article (0-100).
+     * Critères : autorité source, qualité titre, qualité description,
+     * fraîcheur, présence image, langue.
+     *
+     * @param {Object} article
+     * @returns {number} Score 0-100
+     */
+    function scoreArticle(article) {
+        var score = 0;
+
+        // 1. Autorité de la source (0-35 pts)
+        var src = (article.source || '').trim();
+        var tier = SOURCE_TIERS[src] || 3;
+        if (tier === 1) score += 35;
+        else if (tier === 2) score += 22;
+        else score += 10;
+
+        // 2. Qualité du titre (0-20 pts)
+        var title = article.title || '';
+        if (title.length >= 30 && title.length <= 120) score += 12;
+        else if (title.length >= 20) score += 6;
+        // Bonus si pas de clickbait patterns
+        var clickbait = /^(BREAKING|URGENT|EXCLU|FLASH|WOW|OMG|\d+\s+raisons?|vous ne|incroyable)/i;
+        if (!clickbait.test(title)) score += 5;
+        // Bonus si contient des chiffres concrets (données, cours)
+        if (/\d+[\.,]?\d*\s*(%|\$|€|Mrd|milliard|billion|trillion)/i.test(title)) score += 3;
+
+        // 3. Qualité de la description (0-20 pts)
+        var desc = article.description || '';
+        if (desc.length >= 80 && !isSummaryRedundant(title, desc)) score += 15;
+        else if (desc.length >= 40) score += 8;
+        else if (desc.length > 0) score += 3;
+        // Bonus si description apporte de l'info complémentaire
+        if (desc.length >= 50 && !isSummaryRedundant(title, desc)) score += 5;
+
+        // 4. Fraîcheur (0-15 pts) — articles des dernières 24h privilégiés
+        if (article.publishedAt) {
+            var ageH = (Date.now() - new Date(article.publishedAt).getTime()) / 3600000;
+            if (ageH <= 6) score += 15;
+            else if (ageH <= 12) score += 12;
+            else if (ageH <= 24) score += 8;
+            else if (ageH <= 48) score += 3;
+        }
+
+        // 5. Présence image (0-5 pts)
+        if (article.image) score += 5;
+
+        // 6. Langue FR privilégiée (0-5 pts)
+        if (article.lang === 'fr' || article.translated) score += 5;
+        else if (!article.lang) score += 3; // Probablement FR
+
+        return Math.min(score, 100);
+    }
+
+    /**
+     * Sélectionne les meilleurs articles avec distribution équilibrée entre rubriques.
+     * Objectif : 10-12 articles, 2-3 par rubrique, score qualité maximal.
+     *
+     * @param {Array} allArticles - Tous les articles filtrés
+     * @param {number} targetTotal - Nombre total d'articles visé (défaut 12)
+     * @returns {Array} Articles curatés et triés
+     */
+    function curateArticles(allArticles, targetTotal) {
+        targetTotal = targetTotal || 12;
+
+        // Regrouper par rubrique
+        var byRubrique = {};
+        var RUBRIQUES = ['geopolitique', 'marches', 'crypto', 'matieres_premieres', 'ai_tech'];
+        RUBRIQUES.forEach(function(r) { byRubrique[r] = []; });
+
+        allArticles.forEach(function(a) {
+            var rub = a.rubrique || 'marches'; // Default
+            if (!byRubrique[rub]) byRubrique[rub] = [];
+            a._qualityScore = scoreArticle(a);
+            byRubrique[rub].push(a);
+        });
+
+        // Trier chaque rubrique par score décroissant
+        RUBRIQUES.forEach(function(r) {
+            byRubrique[r].sort(function(a, b) { return b._qualityScore - a._qualityScore; });
+        });
+
+        // Phase 1 : garantir 2 articles par rubrique (si disponibles)
+        var selected = [];
+        var selectedUrls = new Set();
+        var minPerRubrique = 2;
+
+        RUBRIQUES.forEach(function(r) {
+            var count = 0;
+            for (var i = 0; i < byRubrique[r].length && count < minPerRubrique; i++) {
+                var a = byRubrique[r][i];
+                if (!selectedUrls.has(a.url)) {
+                    selected.push(a);
+                    selectedUrls.add(a.url);
+                    count++;
+                }
+            }
+        });
+
+        // Phase 2 : compléter jusqu'à targetTotal avec les meilleurs restants
+        var remaining = [];
+        RUBRIQUES.forEach(function(r) {
+            byRubrique[r].forEach(function(a) {
+                if (!selectedUrls.has(a.url)) {
+                    remaining.push(a);
+                }
+            });
+        });
+        remaining.sort(function(a, b) { return b._qualityScore - a._qualityScore; });
+
+        // Compléter en limitant à max 3 par rubrique
+        var rubriqueCount = {};
+        selected.forEach(function(a) {
+            var r = a.rubrique || 'marches';
+            rubriqueCount[r] = (rubriqueCount[r] || 0) + 1;
+        });
+
+        for (var i = 0; i < remaining.length && selected.length < targetTotal; i++) {
+            var a = remaining[i];
+            var r = a.rubrique || 'marches';
+            if ((rubriqueCount[r] || 0) < 3) {
+                selected.push(a);
+                selectedUrls.add(a.url);
+                rubriqueCount[r] = (rubriqueCount[r] || 0) + 1;
+            }
+        }
+
+        // Si toujours pas assez, accepter un 4e article des rubriques les plus riches
+        if (selected.length < targetTotal) {
+            for (var j = 0; j < remaining.length && selected.length < targetTotal; j++) {
+                if (!selectedUrls.has(remaining[j].url)) {
+                    selected.push(remaining[j]);
+                    selectedUrls.add(remaining[j].url);
+                }
+            }
+        }
+
+        // Tri final par score décroissant (les meilleurs articles en premier)
+        selected.sort(function(a, b) { return b._qualityScore - a._qualityScore; });
+
+        return selected;
+    }
+
     // ─── Helpers nettoyage articles ──────────────────────────
     var MAX_TITLE_LEN = 120;
 
@@ -903,7 +1086,9 @@ const DataLoader = (function () {
     }
 
     /**
-     * Met à jour la section "Dernières actualités" avec les données enrichies (rubriques)
+     * Met à jour la section "Dernières actualités" avec les articles curatés.
+     * Sélection qualitative : 10-12 articles, distribués entre les 5 rubriques,
+     * triés par score de qualité (source, contenu, fraîcheur).
      */
     function updateLatestNewsWithRubriques() {
         if (!_cache.news?.categories) return;
@@ -926,13 +1111,11 @@ const DataLoader = (function () {
             });
         });
 
-        // Trier par date de publication (plus récent en premier)
-        allArticles.sort(function(a, b) {
-            return new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0);
-        });
+        // Curation qualitative : sélectionner 12 articles de qualité, répartis entre rubriques
+        var curated = curateArticles(allArticles, 12);
 
         // Générer le HTML
-        ln.innerHTML = allArticles.slice(0, 30).map(function(n) {
+        ln.innerHTML = curated.map(function(n) {
             var rubriqueAttr = n.rubrique || '';
             var rubriqueLabel = n.rubrique_label || '';
             var rubriqueEmoji = n.rubrique_emoji || '';
@@ -1902,6 +2085,7 @@ const DataLoader = (function () {
 
         console.log('[DataLoader] Mise à jour du DOM...');
         syncGlobalData();
+        mergeNewsAPIArticles(); // Fusionner NewsAPI AVANT le rendu des news
         updateMarketSidebar();
         updateCryptoSection();
         updateTrendingCoins();
@@ -1924,7 +2108,6 @@ const DataLoader = (function () {
         updateEuropeanMarketsWidget();
         updateWorldBankWidget();
         updateMessariWidget();
-        mergeNewsAPIArticles();
         initRubriqueFilters();
         handleEmptyWidgets();
         initWidgetAnimations();
