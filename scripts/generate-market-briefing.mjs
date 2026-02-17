@@ -203,11 +203,15 @@ async function main() {
     ].filter(Boolean);
 
     const today = new Date().toISOString().split('T')[0];
-    const userMessage = `Snapshot des marchés pour le ${today} :
+    const userMessage = `# Snapshot des marchés — ${today}
 
 ${sections.join('\n\n')}
 
-Produis un briefing marché quotidien complet en croisant toutes ces données.`;
+---
+
+Produis un briefing marché quotidien en identifiant le RÉGIME DE MARCHÉ dominant (risk-on, risk-off, rotation, attentisme).
+Croise systématiquement les classes d'actifs entre elles — ne pas commenter chaque segment isolément.
+Cite les chiffres précis des données ci-dessus comme preuves de tes analyses.`;
 
     console.log(`\n  📋 Message : ${userMessage.length} caractères, ${sections.length} sections`);
 

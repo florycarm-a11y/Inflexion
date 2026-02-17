@@ -1,8 +1,10 @@
-# Inflexion — Briefing IA Quotidien Stratégique
+# Inflexion — Briefing IA Quotidien Stratégique + RAG Indexation
 # Exécuté 1x/jour à 08h UTC (après fetch-data à 06h et article à 07h)
 #
-# Ce workflow génère le briefing stratégique qui croise signaux géopolitiques
-# et données de marché — le produit phare d'Inflexion.
+# Ce workflow :
+# 1. Indexe les articles du jour dans le store RAG (embeddings locaux)
+# 2. Génère le briefing stratégique avec contexte historique RAG
+# 3. Indexe le briefing produit dans le store RAG pour le lendemain
 #
 # Prérequis :
 #   - ANTHROPIC_API_KEY dans GitHub Secrets (console.anthropic.com)
@@ -24,7 +26,10 @@ on:
     branches: [main]
     paths:
       - 'scripts/generate-daily-briefing.mjs'
+      - 'scripts/rag-index.mjs'
       - 'scripts/lib/prompts.mjs'
+      - 'scripts/lib/embeddings.mjs'
+      - 'scripts/lib/rag-store.mjs'
       - '.github/workflows/generate-daily-briefing.yml'
 
 # Permissions nécessaires pour committer les fichiers
@@ -39,7 +44,7 @@ concurrency:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
 
     steps:
       - name: "📥 Checkout du repo"
@@ -52,18 +57,34 @@ jobs:
         with:
           node-version: '22'
 
-      - name: "🧠 Génération du briefing stratégique"
+      - name: "📦 Install dependencies"
+        run: npm ci
+
+      - name: "🔄 Cache modèle transformers.js"
+        uses: actions/cache@v4
+        with:
+          path: .cache/transformers
+          key: transformers-all-MiniLM-L6-v2
+
+      - name: "📚 RAG — Indexation des articles du jour"
+        run: node scripts/rag-index.mjs --articles
+
+      - name: "🧠 Génération du briefing stratégique (avec RAG)"
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/generate-daily-briefing.mjs
+
+      - name: "📋 RAG — Indexation du briefing produit"
+        run: node scripts/rag-index.mjs --briefing
 
       - name: "📝 Commit et push"
         run: |
           git config user.name "Inflexion Bot"
           git config user.email "bot@inflexionhub.com"
 
-          # Ajouter le briefing généré
+          # Ajouter le briefing et les données RAG
           [ -f data/daily-briefing.json ] && git add data/daily-briefing.json || true
+          [ -d data/rag ] && git add data/rag/ || true
 
           # Vérifier s'il y a des changements
           if git diff --staged --quiet; then
@@ -73,8 +94,9 @@ jobs:
 
           # Commit avec timestamp
           TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
-          git commit -m "🧠 Briefing IA quotidien — ${TIMESTAMP}
+          git commit -m "🧠 Briefing IA quotidien + RAG — ${TIMESTAMP}
 
-          Briefing stratégique généré par Claude Sonnet (signaux + interconnexions + risk radar)."
+          Briefing stratégique généré par Claude Sonnet (signaux + interconnexions + risk radar).
+          Articles et briefing indexés dans le store RAG."
 
           git push
