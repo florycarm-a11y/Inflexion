@@ -1,77 +1,78 @@
 {
-  "updated": "2026-02-17T03:19:03.635Z",
+  "updated": "2026-02-17T07:31:53.259Z",
   "date": "2026-02-17",
   "global": {
-    "score": -0.25,
-    "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.25), dominé par la rubrique geopolitique (baissier)."
+    "score": -0.13,
+    "tendance": "mixte",
+    "resume": "Le sentiment global est mixte (-0.13), dominé par la rubrique crypto (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.72,
-      "confidence": 0.88,
+      "score": -0.35,
+      "confidence": 0.78,
       "tendance": "baissier",
-      "resume": "La rubrique géopolitique affiche un sentiment fortement négatif dominé par des tensions militaires croissantes, des conflits armés actifs et une fragmentation diplomatique. Les déploiements militaires américains, l'escalade au Moyen-Orient et en Ukraine, ainsi que les frictions commerciales et territoriales créent un environnement d'incertitude géopolitique élevée.",
+      "resume": "La rubrique géopolitique affiche un sentiment globalement négatif dominé par les tensions internationales (Ukraine, Iran, blocus américain) et les crises humanitaires, tempéré par quelques signaux neutres ou constructifs (négociations, visites diplomatiques). L'incertitude géopolitique prédomine avec des risques d'escalade militaire et économique.",
       "signaux_cles": [
-        "Escalade militaire : déploiements US au Nigeria, exercices iraniens, avancées syriennes en régions kurdes",
-        "Conflits persistants : guerre Ukraine, attaques drones au Soudan, tensions israélo-palestiniennes avec risque d'annexion",
-        "Fragmentation diplomatique : tensions Trump-Orban, frictions saoudienne-turque sur les armements, relations France-Algérie dégradées",
-        "Instabilité régionale : intensification des attaques djihadistes, crises humanitaires (camp syrien), désinformation accrue",
-        "Repositionnement des puissances : affirmation allemande militaire, implication indirecte de Trump dans négociations iraniennes"
+        "Tensions militaires accrues : Ukraine, Iran, menaces de guerre nucléaire",
+        "Pressions diplomatiques intenses : Trump accélère les négociations sous contrainte",
+        "Crises humanitaires et économiques : blocus à Cuba, accumulation de déchets, paralysie des services",
+        "Instabilité politique : changements de gouvernement, interventions américaines, jeux de pouvoir",
+        "Quelques signaux constructifs : ventes d'armements (Rafale), dialogues politiques, négociations en cours"
       ]
     },
     "marches": {
       "score": 0.15,
       "confidence": 0.72,
       "tendance": "mixte",
-      "resume": "La rubrique affiche un sentiment mitigé avec des signaux positifs provenant de la croissance SaaS et des bénéfices d'entreprises technologiques, contrebalancés par des préoccupations macroéconomiques (recul des métaux précieux, ventes technologiques massives) et des scandales d'image (affaire Epstein). Les marchés restent en phase de digestion avec une légère progression des contrats à terme.",
+      "resume": "Les marchés affichent un sentiment mitigé avec des signaux contradictoires : des inquiétudes sur la performance économique européenne et les tensions géopolitiques coexistent avec des opportunités d'investissement et des alliances stratégiques positives. L'incertitude macroéconomique domine malgré quelques points lumineux sectoriels.",
       "signaux_cles": [
-        "Croissance SaaS forte (+50% Kinatico) et bénéfices solides (+30% Qualitas) signalent une vigueur sectorielle",
-        "Recul de l'or et de l'argent avec attention sur les signaux de la Fed indique des préoccupations macroéconomiques et d'inflation",
-        "Vente massive continue du secteur technologique crée une pression baissière malgré la progression légère des futures",
-        "Scandales de gouvernance (Hyatt/Pritzker) et crises d'image affectent la confiance institutionnelle",
-        "Contenu éditorial hétérogène (conseils personnels, politique) dilue le signal d'analyse de marché pur"
+        "Attentes baissières à l'ouverture des marchés européens avec focus sur les résultats",
+        "Tensions géopolitiques (Iran, Russie) créant de la volatilité et de l'incertitude",
+        "Décélération économique européenne confirmée malgré des potentiels de rebond",
+        "Pressions inflationnistes réapparaissent (RBA relève ses taux)",
+        "Acquisitions et alliances stratégiques positives (Danaher-Masimo, Vallourec-Baker Hughes)",
+        "Stabilité relative des résultats d'entreprises (DKSH en hausse malgré turbulences)",
+        "Préoccupations sur la qualité du crédit (défaillances automobiles subprime en hausse)"
       ]
     },
     "crypto": {
-      "score": -0.35,
-      "confidence": 0.78,
-      "tendance": "mixte",
-      "resume": "Le marché crypto affiche un sentiment mitigé avec des signaux baissiers dominants à court terme (Bitcoin en série de pertes, peur record, pertes institutionnelles) contrebalancés par des développements positifs institutionnels et réglementaires (approbations CBDC, intérêt bancaire, innovations tokenisées).",
+      "score": -0.42,
+      "confidence": 0.85,
+      "tendance": "baissier",
+      "resume": "La rubrique crypto affiche un sentiment globalement baissier dominé par des fermetures de protocoles, des pertes massives et des signaux de faiblesse des investisseurs long terme, bien que quelques initiatives institutionnelles et innovations positives (Crypto.com, Maya Bank) offrent des contrepoints limités.",
       "signaux_cles": [
-        "Pression baissière immédiate : Bitcoin incapable de franchir 71 800$, plus longue série de pertes depuis 2018",
-        "Peur extrême : indice Fear & Greed à creux record malgré poussée institutionnelle",
-        "Pertes institutionnelles significatives : Metaplanet -619M$, Harvard réduit Bitcoin de 21%",
-        "Approbations réglementaires positives : Allemagne soutient CBDC/stablecoins, Hong Kong approuve licence crypto",
-        "Repositionnement stratégique : fuite du Bitcoin vers Ether et actifs alternatifs (or tokenisé, DeFi)",
-        "Volatilité accrue : altcoins rebondissent indépendamment, signalant fragmentation du marché"
+        "Fermetures et défaillances : ZeroLend ferme ses portes, Metaplanet perd 619M$, Bitcoin en plus longue série de pertes depuis 2018",
+        "Sentiment extrême de peur : indice Fear & Greed à creux record, sondage BofA sur paris baissiers massifs",
+        "Repositionnement institutionnel : Harvard réduit Bitcoin (-21%) pour augmenter Ethereum, signalant une rotation prudente",
+        "Fraude et arnaque : démantèlement de réseaux de fraude, arnaqueurs ciblant utilisateurs Trezor/Ledger",
+        "Signaux mitigés : quelques initiatives positives (Crypto.com IA, Maya IPO) insuffisantes pour compenser la tendance baissière dominante"
       ]
     },
     "matieres_premieres": {
-      "score": 0.15,
-      "confidence": 0.72,
-      "tendance": "mixte",
-      "resume": "La rubrique matières premières affiche un sentiment mitigé avec des signaux haussiers sur les énergies renouvelables et certains métaux, contrebalancés par des préoccupations géopolitiques, des risques d'approvisionnement énergétique et des incertitudes commerciales. Les tensions géopolitiques et les défis structurels dominent légèrement les perspectives positives.",
+      "score": -0.35,
+      "confidence": 0.78,
+      "tendance": "baissier",
+      "resume": "La rubrique matières premières affiche un sentiment globalement baissier, dominée par des préoccupations géopolitiques, des risques de volatilité énergétique et des incertitudes réglementaires. Bien que certains signaux positifs émergent (énergies renouvelables, commerce), ils sont éclipsés par des menaces structurelles sur les marchés pétroliers, gaziers et miniers.",
       "signaux_cles": [
-        "Risques géopolitiques majeurs : sanctions pétrolières russes, tensions commerciales États-Unis-Taïwan, alertes allemandes sur les réserves de gaz",
-        "Signaux haussiers limités : progression des énergies renouvelables chinoises, indice Baltic Dry en hausse, métaux pour batteries EV à 27 mois de sommet",
-        "Volatilité accrue : stocks de cuivre à 21 ans de haut suggérant une demande faible, découvertes pétrolières contrebalancées par des vents contraires économiques",
-        "Transition énergétique en cours mais lente : charbon persistant, débats sur politique pétrolière, décarbonisation progressive",
-        "Incertitude commerciale : renégociation des accords, restrictions politiques, impact sur les chaînes d'approvisionnement"
+        "Risques géopolitiques majeurs : tensions Russie-Occident, dépendance énergétique européenne critique",
+        "Volatilité énergétique : débats sur politique pétrolière, réserves de gaz allemandes menacées, piège du gaz naturel",
+        "Transition énergétique contrastée : progrès en renouvelables chinois mais charbon persistant, greenwashing dénoncé",
+        "Incertitudes réglementaires : annulation des règles climatiques américaines, débats sur libre-échange",
+        "Signaux positifs limités : accord commercial US-Taïwan, progrès IA autonome, indice Baltic Dry en hausse"
       ]
     },
     "ai_tech": {
-      "score": -0.35,
-      "confidence": 0.82,
+      "score": 0.35,
+      "confidence": 0.78,
       "tendance": "mixte",
-      "resume": "La rubrique IA/Tech affiche un sentiment mitigé dominé par des préoccupations sécuritaires et des incidents majeurs, contrebalancés par des avancées technologiques significatives et des investissements importants. Les problèmes de cybersécurité et les fuites de données créent une atmosphère d'inquiétude malgré l'innovation continue.",
+      "resume": "La rubrique IA/Tech affiche un sentiment globalement positif dominé par les avancées technologiques (modèles multimodaux, agents IA, démonstrations en conditions réelles), mais tempéré par des incidents de sécurité récurrents (ransomware, fuites de données, pannes) et des préoccupations réglementaires croissantes.",
       "signaux_cles": [
-        "Accumulation de violations de données et incidents de cybersécurité (Eurail, Canada Goose, USFS, hôtel Washington, plateforme service public)",
-        "Avancées majeures en IA open-source : Qwen3.5-397B gratuit et modèles compétitifs chinois",
-        "Levées de fonds importantes (Ricursive Intelligence 335M$) signalant confiance investisseurs malgré contexte négatif",
-        "Préoccupations existentielles sur l'IA et l'open source avec ton critique et alarmiste",
-        "Instabilité des services critiques (X/Twitter en panne mondiale, problèmes RCS Apple)",
-        "Crise des puces mémoires s'aggravant avec impacts sur les prix et délais de lancement"
+        "Avancées majeures en IA générative : Qwen3.5 397B, agents multimodaux natifs, recrutement OpenAI",
+        "Déploiement pratique accéléré : démonstrations XPENG, agents Telegram/Manus, outils d'implémentation LangGraph",
+        "Incidents de sécurité répétés : ransomware, fuites Eurail, données policières compromises",
+        "Régulation en progression : approbation caméras algorithmiques, harmonisation ONU véhicules autonomes",
+        "Instabilité infrastructure : panne X/Twitter, problèmes AWS",
+        "Intérêt capital-risque soutenu : a16z recherche licornes européennes IA"
       ]
     }
   },
@@ -123,47 +124,47 @@
     },
     {
       "date": "2026-02-17",
-      "global": -0.25,
-      "geopolitique": -0.72,
+      "global": -0.13,
+      "geopolitique": -0.35,
       "marches": 0.15,
-      "crypto": -0.35,
-      "matieres_premieres": 0.15,
-      "ai_tech": -0.35
+      "crypto": -0.42,
+      "matieres_premieres": -0.35,
+      "ai_tech": 0.35
     }
   ],
   "model": "claude-haiku-4-5-20251001",
   "usage": {
-    "totalInputTokens": 4726,
-    "totalOutputTokens": 1765,
+    "totalInputTokens": 4572,
+    "totalOutputTokens": 1638,
     "totalCalls": 5,
     "callsByLabel": {
       "sentiment-geopolitique": {
         "calls": 1,
-        "inputTokens": 945,
-        "outputTokens": 338
+        "inputTokens": 895,
+        "outputTokens": 285
       },
       "sentiment-marches": {
         "calls": 1,
-        "inputTokens": 983,
-        "outputTokens": 355
+        "inputTokens": 960,
+        "outputTokens": 339
       },
       "sentiment-crypto": {
         "calls": 1,
-        "inputTokens": 956,
-        "outputTokens": 344
+        "inputTokens": 911,
+        "outputTokens": 336
       },
       "sentiment-matieres_premieres": {
         "calls": 1,
-        "inputTokens": 889,
-        "outputTokens": 372
+        "inputTokens": 896,
+        "outputTokens": 340
       },
       "sentiment-ai_tech": {
         "calls": 1,
-        "inputTokens": 953,
-        "outputTokens": 356
+        "inputTokens": 910,
+        "outputTokens": 338
       }
     },
-    "estimatedCostUSD": 0.0108,
+    "estimatedCostUSD": 0.0102,
     "model": "claude-haiku-4-5-20251001"
   }
 }

@@ -1,14 +1,14 @@
 {
-  "updated": "2026-02-17T03:19:07.067Z",
+  "updated": "2026-02-17T07:31:56.837Z",
   "alertes": [
     {
       "id": "alert-2026-02-17-001",
-      "titre": "Or en hausse de 2,49% à $462,62",
-      "texte": "L'ETF or (GLD) gagne 2,49% et s'établit à $462,62, reflétant une demande accrue pour les actifs refuge en période d'incertitude économique.",
+      "titre": "Or en hausse : +2.49% à $462.62",
+      "texte": "L'ETF or (GLD) progresse de 2.49% à $462.62, reflétant une demande accrue pour les valeurs refuge en contexte d'incertitude macroéconomique.",
       "categorie": "matieres_premieres",
-      "severite": "info",
+      "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-02-17T03:19:07.066Z",
+      "horodatage": "2026-02-17T07:31:56.837Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
@@ -18,12 +18,12 @@
     },
     {
       "id": "alert-2026-02-17-002",
-      "titre": "Nvidia recule de 2,21% à $182,81",
-      "texte": "Le titre Nvidia (NVDA) cède 2,21% et s'affiche à $182,81, participant à la correction plus large du secteur technologique.",
+      "titre": "Nvidia recule de 2.21% à $182.81",
+      "texte": "Le titre Nvidia (NVDA) perd 2.21% à $182.81, contribuant à la pression générale sur le secteur technologique.",
       "categorie": "ai_tech",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-17T03:19:07.066Z",
+      "horodatage": "2026-02-17T07:31:56.837Z",
       "donnees": {
         "symbole": "NVDA",
         "nom": "Nvidia",
@@ -33,12 +33,12 @@
     },
     {
       "id": "alert-2026-02-17-003",
-      "titre": "Apple baisse de 2,27% à $255,78",
-      "texte": "Apple (AAPL) recule de 2,27% à $255,78, suivant une dynamique baissière affectant les grandes capitalisations technologiques.",
+      "titre": "Apple chute de 2.27% à $255.78",
+      "texte": "Apple (AAPL) recule de 2.27% à $255.78, s'inscrivant dans une tendance baissière des valeurs technologiques majeures.",
       "categorie": "ai_tech",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-17T03:19:07.066Z",
+      "horodatage": "2026-02-17T07:31:56.837Z",
       "donnees": {
         "symbole": "AAPL",
         "nom": "Apple",
@@ -48,12 +48,12 @@
     },
     {
       "id": "alert-2026-02-17-004",
-      "titre": "Fear & Greed Index à 10 : Extreme Fear",
-      "texte": "L'indice Fear & Greed atteint 10 (Extreme Fear) avec une variation hebdomadaire de +1 point, signalant une panique extrême sur les marchés.",
+      "titre": "Fear & Greed à 10 : Peur Extrême",
+      "texte": "L'indice Fear & Greed atteint 10/100 (Peur Extrême) avec une variation hebdomadaire de +1 point, indiquant un sentiment de marché fortement négatif et une aversion au risque prononcée.",
       "categorie": "marches",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-02-17T03:19:07.066Z",
+      "horodatage": "2026-02-17T07:31:56.837Z",
       "donnees": {
         "score": 10,
         "label": "Extreme Fear",
@@ -64,8 +64,8 @@
   "stats": {
     "total": 4,
     "urgent": 1,
-    "attention": 2,
-    "info": 1
+    "attention": 3,
+    "info": 0
   },
   "model": "claude-haiku-4-5-20251001"
 }
