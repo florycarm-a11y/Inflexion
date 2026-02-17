@@ -644,15 +644,17 @@ function showChartFallback(canvas, message) {
 }
 
 // Listen for live data ready event from DataLoader
-document.addEventListener('inflexion:chartDataReady', function(e) {
-    if (!e.detail) return;
-    const canvas = document.getElementById('divergenceChart');
-    if (!canvas) return;
-    // Destroy existing chart and reinitialize with live data
-    const existingChart = Chart.getChart(canvas);
-    if (existingChart) existingChart.destroy();
-    initDivergenceChart();
-});
+if (typeof document !== 'undefined') {
+    document.addEventListener('inflexion:chartDataReady', function(e) {
+        if (!e.detail) return;
+        const canvas = document.getElementById('divergenceChart');
+        if (!canvas) return;
+        // Destroy existing chart and reinitialize with live data
+        const existingChart = Chart.getChart(canvas);
+        if (existingChart) existingChart.destroy();
+        initDivergenceChart();
+    });
+}
 
 /* ============================================
    Back to Top
@@ -821,7 +823,14 @@ function initNewsletter() {
    Initialize on DOM ready
    ============================================ */
 
-document.addEventListener('DOMContentLoaded', function() {
-    // initHomePage is called from the inline script in index.html
-    // Category pages call initCategoryPage() instead
-});
+if (typeof document !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', function() {
+        // initHomePage is called from the inline script in index.html
+        // Category pages call initCategoryPage() instead
+    });
+}
+
+// Export pour tests unitaires (Node.js)
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { escapeHTML, cardHTML };
+}
