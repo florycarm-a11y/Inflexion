@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marchés — Inflexion</title>
-    <meta name="description" content="Suivi des marchés financiers : S&P 500, Nasdaq, Nvidia, volatilité, impact de l'IA sur l'emploi et les stratégies d'investissement.">
+    <meta name="description" content="Marchés financiers, ETF et matières premières : S&P 500, Nasdaq, CAC 40, or, pétrole, fonds indiciels et stratégies d'investissement.">
     <meta name="keywords" content="marchés financiers, S&P 500, Nasdaq, Nvidia, VIX, IA emploi, Wall Street, investissement, trading">
     <meta property="og:title" content="Marchés — Inflexion">
     <meta property="og:description" content="Suivi des marchés financiers : indices, actions tech, impact de l'IA sur l'emploi et stratégies d'investissement.">
@@ -87,10 +87,7 @@
                     <a href="geopolitics.html" class="nav-overlay-link">Géopolitique</a>
                     <a href="markets.html" class="nav-overlay-link" aria-current="page">Marchés</a>
                     <a href="crypto.html" class="nav-overlay-link">Crypto</a>
-                    <a href="commodities.html" class="nav-overlay-link">Matières Premières</a>
-                    <a href="etf.html" class="nav-overlay-link">ETF</a>
                     <a href="analysis.html" class="nav-overlay-link">Analyses</a>
-                    <a href="country.html" class="nav-overlay-link">Pays</a>
                     <a href="premium.html" class="nav-overlay-link nav-premium">Premium</a>
                 </div>
             </div>
@@ -100,98 +97,183 @@
     <main class="main-content" id="main-content">
         <div class="container">
             <div class="page-header" data-category="markets">
-                <h1 class="page-title">Marchés financiers</h1>
-                <p class="page-subtitle">Analyses boursières, politique monétaire et tendances mondiales</p>
+                <h1 class="page-title">Marchés & Investissement</h1>
+                <p class="page-subtitle">Actions, indices, ETF, matières premières — données et analyses</p>
             </div>
 
             <div id="category-trend"></div>
 
-            <!-- Analyse a la une -->
-            <section class="rubrique-featured-analysis">
-                <h2 class="section-title">Analyse a la une</h2>
-                <a href="analyse-ia-rempart-marches.html" class="featured-analysis-card">
-                    <div class="featured-analysis-banner" style="background: linear-gradient(135deg, #065F46 0%, #34D399 100%);">
-                        <span class="featured-analysis-label">Analyse sectorielle</span>
-                    </div>
-                    <div class="featured-analysis-body">
-                        <h3>L'IA, dernier rempart des marches face au chaos geopolitique</h3>
-                        <p>Nvidia : 57 Mds $ de revenus trimestriels, backlog de 500 Mds $, architecture Vera Rubin. Mais la concentration des Mag 7 (30 % du S&amp;P 500) est un risque systemique.</p>
-                        <span class="featured-analysis-meta">1er fevrier 2026 — 11 min de lecture</span>
-                    </div>
-                </a>
-            </section>
-
-            <!-- TradingView Market Overview -->
-            <div class="tradingview-widget-container market-overview-widget">
-                <div class="tradingview-widget-container__widget"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-                {
-                    "colorTheme": "light",
-                    "dateRange": "12M",
-                    "showChart": true,
-                    "locale": "fr",
-                    "width": "100%",
-                    "height": "500",
-                    "isTransparent": true,
-                    "showSymbolLogo": true,
-                    "showFloatingTooltip": true,
-                    "tabs": [
-                        {
-                            "title": "Indices",
-                            "symbols": [
-                                {"s": "FOREXCOM:SPXUSD", "d": "S&P 500"},
-                                {"s": "NASDAQ:NDX", "d": "NASDAQ 100"},
-                                {"s": "INDEX:CAC40", "d": "CAC 40"},
-                                {"s": "INDEX:DEU40", "d": "DAX 40"}
-                            ]
-                        },
-                        {
-                            "title": "Devises",
-                            "symbols": [
-                                {"s": "FOREXCOM:EURUSD", "d": "EUR/USD"},
-                                {"s": "FOREXCOM:GBPUSD", "d": "GBP/USD"},
-                                {"s": "TVC:DXY", "d": "Dollar Index"},
-                                {"s": "FOREXCOM:USDJPY", "d": "USD/JPY"}
-                            ]
-                        }
-                    ]
-                }
-                </script>
+            <!-- Onglets internes Marchés / ETF / Mat. Premières -->
+            <div class="page-tabs" id="markets-tabs" role="tablist" aria-label="Sous-rubriques Marchés">
+                <button class="page-tab active" role="tab" aria-selected="true" aria-controls="tab-marches" data-tab="marches">Marchés</button>
+                <button class="page-tab" role="tab" aria-selected="false" aria-controls="tab-etf" data-tab="etf">ETF & Fonds</button>
+                <button class="page-tab" role="tab" aria-selected="false" aria-controls="tab-commodities" data-tab="commodities">Matières Premières</button>
             </div>
 
-            <div class="two-col">
-                <div class="col-main">
-                    <div class="news-grid" id="page-news" aria-live="polite">
-                        <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des articles...</span></div>
-                    </div>
-                    <noscript>
-                        <p>Activez JavaScript pour afficher les actualités marchés. Consultez nos <a href="analysis.html">analyses approfondies</a>.</p>
-                    </noscript>
+            <!-- ═══ Tab: Marchés ═══ -->
+            <div class="tab-panel active" id="tab-marches" role="tabpanel">
+                <!-- Analyse a la une -->
+                <section class="rubrique-featured-analysis">
+                    <h2 class="section-title">Analyse à la une</h2>
+                    <a href="analyse-ia-rempart-marches.html" class="featured-analysis-card">
+                        <div class="featured-analysis-banner" style="background: linear-gradient(135deg, #065F46 0%, #34D399 100%);">
+                            <span class="featured-analysis-label">Analyse sectorielle</span>
+                        </div>
+                        <div class="featured-analysis-body">
+                            <h3>L'IA, dernier rempart des marchés face au chaos géopolitique</h3>
+                            <p>Nvidia : 57 Mds $ de revenus trimestriels, backlog de 500 Mds $, architecture Vera Rubin. Mais la concentration des Mag 7 (30 % du S&amp;P 500) est un risque systémique.</p>
+                            <span class="featured-analysis-meta">1er février 2026 — 11 min de lecture</span>
+                        </div>
+                    </a>
+                </section>
+
+                <!-- TradingView Market Overview -->
+                <div class="tradingview-widget-container market-overview-widget">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                    {
+                        "colorTheme": "light",
+                        "dateRange": "12M",
+                        "showChart": true,
+                        "locale": "fr",
+                        "width": "100%",
+                        "height": "500",
+                        "isTransparent": true,
+                        "showSymbolLogo": true,
+                        "showFloatingTooltip": true,
+                        "tabs": [
+                            {
+                                "title": "Indices",
+                                "symbols": [
+                                    {"s": "FOREXCOM:SPXUSD", "d": "S&P 500"},
+                                    {"s": "NASDAQ:NDX", "d": "NASDAQ 100"},
+                                    {"s": "INDEX:CAC40", "d": "CAC 40"},
+                                    {"s": "INDEX:DEU40", "d": "DAX 40"}
+                                ]
+                            },
+                            {
+                                "title": "Devises",
+                                "symbols": [
+                                    {"s": "FOREXCOM:EURUSD", "d": "EUR/USD"},
+                                    {"s": "FOREXCOM:GBPUSD", "d": "GBP/USD"},
+                                    {"s": "TVC:DXY", "d": "Dollar Index"},
+                                    {"s": "FOREXCOM:USDJPY", "d": "USD/JPY"}
+                                ]
+                            }
+                        ]
+                    }
+                    </script>
                 </div>
-                <aside class="col-side">
-                    <div class="sidebar-block sidebar-card">
-                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Marchés</h3>
-                        <div class="market-table" id="market-table" aria-live="polite" role="region" aria-label="Cours des marchés en temps réel"></div>
-                    </div>
 
-                    <!-- Plus fortes variations -->
-                    <div class="sidebar-block sidebar-card" id="movers-section">
-                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Plus fortes variations</h3>
-                        <div id="top-movers" class="top-movers">
-                            <p class="movers-placeholder">Chargement...</p>
+                <div class="two-col">
+                    <div class="col-main">
+                        <div class="news-grid" id="page-news" aria-live="polite">
+                            <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des articles...</span></div>
                         </div>
-                        <span class="sidebar-source">Source : Alpha Vantage</span>
                     </div>
+                    <aside class="col-side">
+                        <div class="sidebar-block sidebar-card">
+                            <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Marchés</h3>
+                            <div class="market-table" id="market-table" aria-live="polite" role="region" aria-label="Cours des marchés en temps réel"></div>
+                        </div>
 
-                    <!-- Secteurs US -->
-                    <div class="sidebar-block sidebar-card" id="sectors-section">
-                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg> Secteurs US</h3>
-                        <div id="sector-performance" class="sector-performance">
-                            <p class="sector-placeholder">Chargement...</p>
+                        <!-- Plus fortes variations -->
+                        <div class="sidebar-block sidebar-card" id="movers-section">
+                            <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Plus fortes variations</h3>
+                            <div id="top-movers" class="top-movers">
+                                <p class="movers-placeholder">Chargement...</p>
+                            </div>
+                            <span class="sidebar-source">Source : Alpha Vantage</span>
                         </div>
-                        <span class="sidebar-source">Source : Alpha Vantage</span>
+
+                        <!-- Secteurs US -->
+                        <div class="sidebar-block sidebar-card" id="sectors-section">
+                            <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg> Secteurs US</h3>
+                            <div id="sector-performance" class="sector-performance">
+                                <p class="sector-placeholder">Chargement...</p>
+                            </div>
+                            <span class="sidebar-source">Source : Alpha Vantage</span>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+            <!-- ═══ Tab: ETF & Fonds ═══ -->
+            <div class="tab-panel" id="tab-etf" role="tabpanel" hidden>
+                <div class="etf-table" id="etf-table"></div>
+
+                <div class="two-col">
+                    <div class="col-main">
+                        <div class="news-grid" id="page-news-etf" aria-live="polite">
+                            <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des articles ETF...</span></div>
+                        </div>
                     </div>
-                </aside>
+                    <aside class="col-side">
+                        <div class="sidebar-block sidebar-card">
+                            <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Marchés</h3>
+                            <div class="market-table" id="market-table-etf" aria-live="polite" role="region" aria-label="Cours des marchés"></div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+            <!-- ═══ Tab: Matières Premières ═══ -->
+            <div class="tab-panel" id="tab-commodities" role="tabpanel" hidden>
+                <!-- Analyse a la une commodities -->
+                <section class="rubrique-featured-analysis">
+                    <h2 class="section-title">Analyse à la une</h2>
+                    <a href="analyse-or-bitcoin-divergence.html" class="featured-analysis-card">
+                        <div class="featured-analysis-banner" style="background: linear-gradient(135deg, #052E16 0%, #10b981 100%);">
+                            <span class="featured-analysis-label">Analyse macro</span>
+                        </div>
+                        <div class="featured-analysis-body">
+                            <h3>Or à 5 100 $, Bitcoin à 73 000 $ : la grande divergence des valeurs refuges</h3>
+                            <p>L'or pulvérise ses records (+64 % YTD) pendant que le bitcoin plonge (-40 % depuis octobre). Corrélation or-BTC tombée à zéro. Le narratif du "digital gold" est mort.</p>
+                            <span class="featured-analysis-meta">3 février 2026 — 9 min de lecture</span>
+                        </div>
+                    </a>
+                </section>
+
+                <!-- Commodity Table -->
+                <div class="commodity-table" id="commodity-table"></div>
+
+                <!-- Divergence Or vs Bitcoin -->
+                <section class="section chart-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Divergence Or vs Bitcoin — depuis janvier 2026</h2>
+                        <span class="section-subtitle">Performance comparée des valeurs refuges</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="divergenceChart"></canvas>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item legend-gold">
+                            <span class="legend-color"></span>
+                            <span class="legend-label">Or (XAU/USD)</span>
+                            <span class="legend-value positive">+18,2 % depuis jan.</span>
+                        </div>
+                        <div class="legend-item legend-btc">
+                            <span class="legend-color"></span>
+                            <span class="legend-label">Bitcoin (BTC/USD)</span>
+                            <span class="legend-value negative">−16,4 % depuis jan.</span>
+                        </div>
+                    </div>
+                    <p class="chart-insight">L'« or numérique » invalidé : l'or surperforme le BTC de 34 points depuis janvier. Les banques centrales achètent 585 tonnes par trimestre tandis que les ETF crypto enregistrent 1,7 Md$ de sorties.</p>
+                </section>
+
+                <div class="two-col">
+                    <div class="col-main">
+                        <div class="news-grid" id="page-news-commodities" aria-live="polite">
+                            <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des articles matières premières...</span></div>
+                        </div>
+                    </div>
+                    <aside class="col-side">
+                        <div class="sidebar-block sidebar-card">
+                            <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Marchés</h3>
+                            <div class="market-table" id="market-table-commodities" aria-live="polite" role="region" aria-label="Cours des marchés"></div>
+                        </div>
+                    </aside>
+                </div>
             </div>
         </div>
     </main>
@@ -231,8 +313,6 @@
                         <li><a href="geopolitics.html">Géopolitique</a></li>
                         <li><a href="markets.html">Marchés</a></li>
                         <li><a href="crypto.html">Crypto</a></li>
-                        <li><a href="commodities.html">Mat. Premières</a></li>
-                        <li><a href="etf.html">ETF</a></li>
                         <li><a href="analysis.html">Analyses</a></li>
                     </ul>
                 </div>
@@ -267,8 +347,65 @@
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="app.js"></script>
     <script src="data-loader.js"></script>
-    <script>if (typeof initCategoryPage === 'function') initCategoryPage('markets');</script>
+    <script>
+    if (typeof initCategoryPage === 'function') initCategoryPage('markets');
+    // Tab switching logic
+    (function() {
+        var tabs = document.querySelectorAll('#markets-tabs .page-tab');
+        var panels = document.querySelectorAll('.tab-panel');
+        var newsLoaded = { marches: true, etf: false, commodities: false };
+
+        tabs.forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                var target = tab.dataset.tab;
+
+                // Update tab states
+                tabs.forEach(function(t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+                tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
+
+                // Show/hide panels
+                panels.forEach(function(p) { p.hidden = true; p.classList.remove('active'); });
+                var panel = document.getElementById('tab-' + target);
+                if (panel) { panel.hidden = false; panel.classList.add('active'); }
+
+                // Lazy-load news for ETF/Commodities tabs
+                if (target === 'etf' && !newsLoaded.etf && typeof initCategoryPage === 'function') {
+                    newsLoaded.etf = true;
+                    var etfContainer = document.getElementById('page-news-etf');
+                    if (etfContainer && typeof newsDatabase !== 'undefined') {
+                        var etfCats = ['markets', 'ai_tech'];
+                        var filtered = newsDatabase.filter(function(n) { return etfCats.indexOf(n.category) !== -1; });
+                        if (filtered.length) etfContainer.innerHTML = filtered.map(function(n) { return cardHTML(n); }).join('');
+                        else etfContainer.innerHTML = '<p class="empty-state">Aucun article ETF disponible.</p>';
+                    }
+                }
+                if (target === 'commodities' && !newsLoaded.commodities && typeof initCategoryPage === 'function') {
+                    newsLoaded.commodities = true;
+                    var commContainer = document.getElementById('page-news-commodities');
+                    if (commContainer && typeof newsDatabase !== 'undefined') {
+                        var filtered = newsDatabase.filter(function(n) { return n.category === 'commodities' || n.category === 'matieres_premieres'; });
+                        if (filtered.length) commContainer.innerHTML = filtered.map(function(n) { return cardHTML(n); }).join('');
+                        else commContainer.innerHTML = '<p class="empty-state">Aucun article matières premières disponible.</p>';
+                    }
+                    // Init divergence chart if present
+                    if (document.getElementById('divergenceChart') && typeof initDivergenceChart === 'function') {
+                        initDivergenceChart();
+                    }
+                }
+            });
+        });
+
+        // Handle URL hash for direct tab linking
+        var hash = window.location.hash.replace('#', '');
+        if (hash === 'etf' || hash === 'commodities') {
+            var targetTab = document.querySelector('[data-tab="' + hash + '"]');
+            if (targetTab) targetTab.click();
+        }
+    })();
+    </script>
 </body>
 </html>

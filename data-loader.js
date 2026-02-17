@@ -787,7 +787,7 @@ const DataLoader = (function () {
         // ── Assemblage final ──
         container.innerHTML = '' +
             '<div class="article-du-jour-header">' +
-                '<div class="article-du-jour-badge briefing-badge">Briefing Strategique IA</div>' +
+                '<div class="article-du-jour-badge briefing-badge">Briefing Stratégique</div>' +
                 '<time class="article-du-jour-date">' + formatArticleDate(briefing.date) + '</time>' +
                 '<span class="briefing-sentiment-indicator" style="color:' + sentimentColor + '">' +
                     (briefing.sentiment_global || 'neutre') +

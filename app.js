@@ -122,7 +122,9 @@ function initCategoryPage(category) {
 
     // Mapping pour les catégories qui peuvent couvrir plusieurs clés
     const catExpand = {
-        etf: ['markets', 'ai_tech']
+        markets: ['markets'],
+        etf: ['markets', 'ai_tech'],
+        commodities: ['commodities', 'matieres_premieres']
     };
     const cats = catExpand[category] || [category];
 

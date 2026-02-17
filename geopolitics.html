@@ -87,10 +87,7 @@
                     <a href="geopolitics.html" class="nav-overlay-link" aria-current="page">Géopolitique</a>
                     <a href="markets.html" class="nav-overlay-link">Marchés</a>
                     <a href="crypto.html" class="nav-overlay-link">Crypto</a>
-                    <a href="commodities.html" class="nav-overlay-link">Matières Premières</a>
-                    <a href="etf.html" class="nav-overlay-link">ETF</a>
                     <a href="analysis.html" class="nav-overlay-link">Analyses</a>
-                    <a href="country.html" class="nav-overlay-link">Pays</a>
                     <a href="premium.html" class="nav-overlay-link nav-premium">Premium</a>
                 </div>
             </div>
@@ -100,50 +97,77 @@
     <main class="main-content" id="main-content">
         <div class="container">
             <div class="page-header" data-category="geopolitics">
-                <h1 class="page-title">Géopolitique</h1>
-                <p class="page-subtitle">Événements internationaux et leur impact sur les marchés mondiaux</p>
+                <h1 class="page-title">Géopolitique & Pays</h1>
+                <p class="page-subtitle">Événements internationaux, données macro par pays et leur impact sur les marchés</p>
             </div>
 
             <div id="category-trend"></div>
 
-            <!-- Analyse a la une -->
-            <section class="rubrique-featured-analysis">
-                <h2 class="section-title">Analyse a la une</h2>
-                <a href="analyse-droits-douane-trump-groenland.html" class="featured-analysis-card">
-                    <div class="featured-analysis-banner" style="background: linear-gradient(135deg, #064E3B 0%, #059669 100%);">
-                        <span class="featured-analysis-label">Analyse de la semaine</span>
-                    </div>
-                    <div class="featured-analysis-body">
-                        <h3>Droits de douane Trump sur le Groenland : quand la geopolitique efface 1 200 milliards de Wall Street en une seance</h3>
-                        <p>Le president americain a relance la guerre commerciale contre l'UE en conditionnant la levee de droits de douane au soutien europeen sur le Groenland. S&amp;P 500 -2,1 %, VIX au-dessus de 20.</p>
-                        <span class="featured-analysis-meta">4 fevrier 2026 — 10 min de lecture</span>
-                    </div>
-                </a>
-            </section>
-
-            <div class="section-filters" id="filters">
-                <button class="filter-btn active" data-filter="all">Tous</button>
-                <button class="filter-btn" data-filter="conflicts">Conflits</button>
-                <button class="filter-btn" data-filter="trade">Commerce</button>
-                <button class="filter-btn" data-filter="politics">Politique</button>
+            <!-- Onglets internes Actualités / Macro par Pays -->
+            <div class="page-tabs" id="geo-tabs" role="tablist" aria-label="Sous-rubriques Géopolitique">
+                <button class="page-tab active" role="tab" aria-selected="true" aria-controls="tab-geo-news" data-tab="geo-news">Actualités</button>
+                <button class="page-tab" role="tab" aria-selected="false" aria-controls="tab-geo-pays" data-tab="geo-pays">Macro par Pays</button>
             </div>
 
-            <div class="two-col">
-                <div class="col-main">
-                    <div class="news-grid" id="page-news" aria-live="polite">
-                        <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des articles...</span></div>
-                    </div>
-                    <noscript>
-                        <p>Activez JavaScript pour afficher les articles géopolitiques. Consultez nos <a href="analysis.html">analyses approfondies</a>.</p>
-                    </noscript>
+            <!-- ═══ Tab: Actualités géopolitiques ═══ -->
+            <div class="tab-panel active" id="tab-geo-news" role="tabpanel">
+                <!-- Analyse a la une -->
+                <section class="rubrique-featured-analysis">
+                    <h2 class="section-title">Analyse à la une</h2>
+                    <a href="analyse-droits-douane-trump-groenland.html" class="featured-analysis-card">
+                        <div class="featured-analysis-banner" style="background: linear-gradient(135deg, #064E3B 0%, #059669 100%);">
+                            <span class="featured-analysis-label">Analyse de la semaine</span>
+                        </div>
+                        <div class="featured-analysis-body">
+                            <h3>Droits de douane Trump sur le Groenland : quand la géopolitique efface 1 200 milliards de Wall Street en une séance</h3>
+                            <p>Le président américain a relancé la guerre commerciale contre l'UE en conditionnant la levée de droits de douane au soutien européen sur le Groenland. S&amp;P 500 -2,1 %, VIX au-dessus de 20.</p>
+                            <span class="featured-analysis-meta">4 février 2026 — 10 min de lecture</span>
+                        </div>
+                    </a>
+                </section>
+
+                <div class="section-filters" id="filters">
+                    <button class="filter-btn active" data-filter="all">Tous</button>
+                    <button class="filter-btn" data-filter="conflicts">Conflits</button>
+                    <button class="filter-btn" data-filter="trade">Commerce</button>
+                    <button class="filter-btn" data-filter="politics">Politique</button>
                 </div>
-                <aside class="col-side">
-                    <div class="sidebar-block sidebar-card">
-                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Marchés</h3>
-                        <div class="market-table" id="market-table" aria-live="polite" role="region" aria-label="Cours des marchés en temps réel"></div>
-                        <a href="markets.html" class="sidebar-more">Voir tous les marchés</a>
+
+                <div class="two-col">
+                    <div class="col-main">
+                        <div class="news-grid" id="page-news" aria-live="polite">
+                            <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des articles...</span></div>
+                        </div>
                     </div>
-                </aside>
+                    <aside class="col-side">
+                        <div class="sidebar-block sidebar-card">
+                            <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Marchés</h3>
+                            <div class="market-table" id="market-table" aria-live="polite" role="region" aria-label="Cours des marchés en temps réel"></div>
+                            <a href="markets.html" class="sidebar-more">Voir tous les marchés</a>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+            <!-- ═══ Tab: Macro par Pays ═══ -->
+            <div class="tab-panel" id="tab-geo-pays" role="tabpanel" hidden>
+                <section class="country-selector" id="country-selector">
+                    <div class="country-grid" role="list" aria-label="Sélection de pays">
+                        <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des pays...</span></div>
+                    </div>
+                </section>
+
+                <section class="country-detail" id="country-detail" aria-live="polite" hidden>
+                    <button class="country-back-btn" id="country-back" aria-label="Retour à la liste des pays">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                        Tous les pays
+                    </button>
+                    <div class="country-detail-header" id="country-detail-header"></div>
+                    <div class="country-indicators-grid" id="country-indicators"></div>
+                    <div class="country-sources">
+                        <span class="sidebar-source">Sources : World Bank, FRED, ECB, IMF</span>
+                    </div>
+                </section>
             </div>
         </div>
     </main>
@@ -183,8 +207,6 @@
                         <li><a href="geopolitics.html">Géopolitique</a></li>
                         <li><a href="markets.html">Marchés</a></li>
                         <li><a href="crypto.html">Crypto</a></li>
-                        <li><a href="commodities.html">Mat. Premières</a></li>
-                        <li><a href="etf.html">ETF</a></li>
                         <li><a href="analysis.html">Analyses</a></li>
                     </ul>
                 </div>
@@ -222,5 +244,182 @@
     <script src="app.js"></script>
     <script src="data-loader.js"></script>
     <script>if (typeof initCategoryPage === 'function') initCategoryPage('geopolitics');</script>
+    <script>
+    // Tab switching + Country macro integration
+    (function() {
+        'use strict';
+
+        // ── Tab switching ──
+        var tabs = document.querySelectorAll('#geo-tabs .page-tab');
+        var panels = document.querySelectorAll('.tab-panel');
+        var countryInitialized = false;
+
+        tabs.forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                var target = tab.dataset.tab;
+                tabs.forEach(function(t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+                tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
+                panels.forEach(function(p) { p.hidden = true; p.classList.remove('active'); });
+                var panel = document.getElementById(target);
+                if (panel) { panel.hidden = false; panel.classList.add('active'); }
+                if (target === 'tab-geo-pays' && !countryInitialized) {
+                    countryInitialized = true;
+                    initCountryData();
+                }
+            });
+        });
+
+        // Handle URL param
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('country') || params.get('tab') === 'pays') {
+            var paysTab = document.querySelector('[data-tab="tab-geo-pays"]');
+            if (paysTab) paysTab.click();
+        }
+
+        // ── Country macro data ──
+        var COUNTRIES = {
+            USA: { flag: '\u{1F1FA}\u{1F1F8}', name: '\u00C9tats-Unis', currency: 'USD', region: 'Am\u00E9rique du Nord' },
+            CHN: { flag: '\u{1F1E8}\u{1F1F3}', name: 'Chine', currency: 'CNY', region: 'Asie' },
+            JPN: { flag: '\u{1F1EF}\u{1F1F5}', name: 'Japon', currency: 'JPY', region: 'Asie' },
+            DEU: { flag: '\u{1F1E9}\u{1F1EA}', name: 'Allemagne', currency: 'EUR', region: 'Europe' },
+            GBR: { flag: '\u{1F1EC}\u{1F1E7}', name: 'Royaume-Uni', currency: 'GBP', region: 'Europe' },
+            FRA: { flag: '\u{1F1EB}\u{1F1F7}', name: 'France', currency: 'EUR', region: 'Europe' },
+            IND: { flag: '\u{1F1EE}\u{1F1F3}', name: 'Inde', currency: 'INR', region: 'Asie' },
+            BRA: { flag: '\u{1F1E7}\u{1F1F7}', name: 'Br\u00E9sil', currency: 'BRL', region: 'Am\u00E9rique du Sud' },
+            CAN: { flag: '\u{1F1E8}\u{1F1E6}', name: 'Canada', currency: 'CAD', region: 'Am\u00E9rique du Nord' },
+            KOR: { flag: '\u{1F1F0}\u{1F1F7}', name: 'Cor\u00E9e du Sud', currency: 'KRW', region: 'Asie' }
+        };
+
+        var INDICATOR_LABELS = {
+            'NY.GDP.MKTP.CD': { label: 'PIB nominal', unit: 'USD', format: 'usd' },
+            'FP.CPI.TOTL.ZG': { label: 'Inflation (CPI)', unit: '% annuel', format: 'pct' },
+            'SL.UEM.TOTL.ZS': { label: 'Ch\u00F4mage', unit: '% pop. active', format: 'pct' },
+            'GC.DOD.TOTL.GD.ZS': { label: 'Dette / PIB', unit: '%', format: 'pct' }
+        };
+
+        var selectedCountry = null;
+
+        function initCountryData() {
+            var wb = typeof DataLoader !== 'undefined' ? DataLoader.getWorldBank() : null;
+            if (wb) renderCountryGrid(wb);
+            else {
+                var grid = document.querySelector('.country-grid');
+                if (grid) grid.innerHTML = '<p class="loading-fallback-text">Donn\u00E9es macro indisponibles.</p>';
+            }
+        }
+
+        function renderCountryGrid(wb) {
+            var grid = document.querySelector('.country-grid');
+            if (!grid) return;
+            grid.innerHTML = Object.keys(COUNTRIES).map(function(code) {
+                var meta = COUNTRIES[code];
+                var gdpStr = '';
+                if (wb && wb.indicators) {
+                    var gdpInd = wb.indicators.find(function(i) { return i.id === 'NY.GDP.MKTP.CD'; });
+                    if (gdpInd && gdpInd.data) {
+                        var match = gdpInd.data.find(function(d) { return d.country_code === code; });
+                        if (match) gdpStr = formatLargeUSD(match.value);
+                    }
+                }
+                return '<button class="country-card" role="listitem" data-code="' + code + '" aria-label="' + meta.name + '">' +
+                    '<span class="country-card-flag">' + meta.flag + '</span>' +
+                    '<span class="country-card-name">' + meta.name + '</span>' +
+                    '<span class="country-card-region">' + meta.region + '</span>' +
+                    (gdpStr ? '<span class="country-card-gdp">PIB ' + gdpStr + '</span>' : '') +
+                '</button>';
+            }).join('');
+
+            grid.addEventListener('click', function(e) {
+                var card = e.target.closest('.country-card');
+                if (card) selectCountry(card.dataset.code);
+            });
+
+            var backBtn = document.getElementById('country-back');
+            if (backBtn) backBtn.addEventListener('click', function() { deselectCountry(); });
+        }
+
+        function selectCountry(code) {
+            selectedCountry = code;
+            var meta = COUNTRIES[code];
+            if (!meta) return;
+            var selector = document.getElementById('country-selector');
+            var detail = document.getElementById('country-detail');
+            var header = document.getElementById('country-detail-header');
+            var indicators = document.getElementById('country-indicators');
+            if (selector) selector.hidden = true;
+            if (detail) detail.hidden = false;
+            if (header) {
+                header.innerHTML = '<div class="country-detail-title"><span class="country-detail-flag">' + meta.flag + '</span><div><h2>' + meta.name + '</h2><span class="country-detail-meta">' + meta.region + ' &middot; ' + meta.currency + '</span></div></div>';
+            }
+            if (indicators) renderCountryIndicators(code, indicators);
+        }
+
+        function deselectCountry() {
+            selectedCountry = null;
+            var selector = document.getElementById('country-selector');
+            var detail = document.getElementById('country-detail');
+            if (selector) selector.hidden = false;
+            if (detail) detail.hidden = true;
+        }
+
+        function renderCountryIndicators(code, container) {
+            var wb = DataLoader.getWorldBank();
+            if (!wb || !wb.indicators) { container.innerHTML = '<p class="loading-fallback-text">Donn\u00E9es indisponibles.</p>'; return; }
+            var cards = [];
+            wb.indicators.forEach(function(ind) {
+                var meta = INDICATOR_LABELS[ind.id];
+                if (!meta || !ind.data) return;
+                var match = ind.data.find(function(d) { return d.country_code === code; });
+                if (!match) return;
+                var displayVal = meta.format === 'usd' ? formatLargeUSD(match.value) : match.value.toFixed(1) + '%';
+                var severity = '';
+                if (ind.id === 'FP.CPI.TOTL.ZG') severity = match.value > 5 ? 'high' : match.value > 3 ? 'medium' : 'low';
+                else if (ind.id === 'SL.UEM.TOTL.ZS') severity = match.value > 8 ? 'high' : match.value > 5 ? 'medium' : 'low';
+                else if (ind.id === 'GC.DOD.TOTL.GD.ZS') severity = match.value > 100 ? 'high' : match.value > 60 ? 'medium' : 'low';
+                var rank = 1;
+                var sorted = ind.data.slice().sort(function(a, b) { return ind.id === 'NY.GDP.MKTP.CD' ? b.value - a.value : a.value - b.value; });
+                for (var i = 0; i < sorted.length; i++) { if (sorted[i].country_code === code) { rank = i + 1; break; } }
+                cards.push(
+                    '<div class="country-ind-card' + (severity ? ' severity-' + severity : '') + '">' +
+                    '<div class="country-ind-content"><span class="country-ind-label">' + meta.label + '</span>' +
+                    '<span class="country-ind-value">' + displayVal + '</span>' +
+                    '<span class="country-ind-unit">' + meta.unit + ' (' + (match.year || '2024') + ')</span></div>' +
+                    '<div class="country-ind-rank"><span class="country-ind-rank-num">#' + rank + '</span><span class="country-ind-rank-total">/ ' + ind.data.length + '</span></div></div>'
+                );
+            });
+            // Comparison table
+            var tableHTML = '<div class="country-comparison"><h3 class="country-comparison-title">Comparaison internationale</h3><div class="country-comparison-table-wrapper"><table class="country-comparison-table"><thead><tr><th>Pays</th>';
+            wb.indicators.forEach(function(ind) { var m = INDICATOR_LABELS[ind.id]; if (m) tableHTML += '<th>' + m.label + '</th>'; });
+            tableHTML += '</tr></thead><tbody>';
+            Object.keys(COUNTRIES).forEach(function(cc) {
+                var m = COUNTRIES[cc];
+                tableHTML += '<tr class="' + (cc === code ? 'country-row-selected' : '') + '"><td class="country-comp-name">' + m.flag + ' ' + m.name + '</td>';
+                wb.indicators.forEach(function(ind) {
+                    var im = INDICATOR_LABELS[ind.id]; if (!im) return;
+                    var match = ind.data ? ind.data.find(function(d) { return d.country_code === cc; }) : null;
+                    tableHTML += '<td class="country-comp-val">' + (match ? (im.format === 'usd' ? formatLargeUSD(match.value) : match.value.toFixed(1) + '%') : '\u2014') + '</td>';
+                });
+                tableHTML += '</tr>';
+            });
+            tableHTML += '</tbody></table></div></div>';
+            container.innerHTML = '<div class="country-ind-cards">' + cards.join('') + '</div>' + tableHTML;
+        }
+
+        function formatLargeUSD(v) {
+            if (v >= 1e12) return (v / 1e12).toFixed(1) + ' T$';
+            if (v >= 1e9) return (v / 1e9).toFixed(0) + ' Mrd$';
+            if (v >= 1e6) return (v / 1e6).toFixed(0) + ' M$';
+            return v.toLocaleString('fr-FR') + ' $';
+        }
+
+        window.addEventListener('popstate', function() {
+            var p = new URLSearchParams(window.location.search);
+            var c = p.get('country');
+            if (c && COUNTRIES[c]) selectCountry(c);
+            else deselectCountry();
+        });
+    })();
+    </script>
 </body>
 </html>

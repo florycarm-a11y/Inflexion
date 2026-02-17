@@ -733,6 +733,61 @@ a {
 }
 
 /* ============================================
+   Page Tabs (onglets internes Marchés, Géopolitique)
+   ============================================ */
+.page-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.page-tab {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0.7rem 1.2rem;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    margin-bottom: -2px;
+}
+
+.page-tab:hover {
+    color: var(--text-primary);
+}
+
+.page-tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active,
+.tab-panel:not([hidden]) {
+    display: block;
+}
+
+@media (max-width: 480px) {
+    .page-tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .page-tab {
+        font-size: 0.75rem;
+        padding: 0.6rem 0.8rem;
+        white-space: nowrap;
+    }
+}
+
+/* ============================================
    TradingView Widgets
    ============================================ */
 .market-ticker-widget,
@@ -1516,12 +1571,12 @@ a {
 }
 
 .news-list-item {
-    background: white;
+    background: var(--accent-dark);
     border-radius: 6px;
     padding: 1rem 1.25rem;
     border-bottom: none;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
-    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    border: 1px solid rgba(255,255,255,0.08);
     transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
@@ -1537,8 +1592,9 @@ a {
 }
 
 .news-list-item:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
-    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    transform: translateY(-2px);
+    background: var(--navy);
 }
 
 .news-list-body {
@@ -1557,7 +1613,7 @@ a {
 .news-list-summary {
     font-family: var(--font-serif);
     font-size: 0.82rem;
-    color: var(--text-secondary);
+    color: rgba(255,255,255,0.7);
     line-height: 1.5;
     margin-top: 0.25rem;
     overflow: hidden;
@@ -1584,15 +1640,33 @@ a {
 }
 
 .news-list-item h3 a {
-    color: var(--text-primary);
+    color: #ffffff;
     text-decoration: none;
 }
 
 .news-list-item h3 a:hover {
-    color: var(--accent);
+    color: var(--accent-light);
 }
 
 /* .news-list-item p — remplacé par .news-list-summary pour les résumés */
+
+/* Couleurs adaptées au fond vert foncé des cartes */
+.news-list-item .source-name {
+    color: rgba(255,255,255,0.85);
+}
+
+.news-list-item .source-name:hover {
+    color: #ffffff;
+}
+
+.news-list-item .news-time {
+    color: rgba(255,255,255,0.5);
+}
+
+.news-list-item .rubrique-badge {
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.9);
+}
 
 /* Impact Dot */
 .impact-dot {
