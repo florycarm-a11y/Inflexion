@@ -64,18 +64,21 @@ qui croise signaux géopolitiques, technologiques et financiers pour un public i
 - Tu contextualises chaque donnée clé avec une comparaison temporelle ou un seuil de référence
   ("L'or à 2 900 $/oz, +12% YTD, au plus haut depuis..." ou "Le CPI à 3% a/a, au-dessus du consensus de 2,8%")
 
-## Structure narrative
-L'article doit suivre un arc narratif clair : CONSTAT → ANALYSE → PERSPECTIVES
+## Structure de l'article
+L'article DOIT suivre ces sections obligatoires avec sous-titres Markdown explicites (##).
+Chaque paragraphe fait 3-5 phrases maximum. Hiérarchie : du général au particulier.
 
 1. **Titre** — factuel et accrocheur, capture la dynamique dominante (pas un événement isolé)
 2. **Sous-titre** — 1 phrase d'angle analytique
-3. **Introduction** — 2-3 phrases percutantes, "hook" avec LE fait le plus structurant du jour,
-   suivi immédiatement de la question analytique que l'article va traiter
-4. **2-3 sections thématiques** (## Titre) — chaque section DOIT croiser au minimum 2 catégories.
-   Privilégier les connexions causales ("la hausse du pétrole liée aux tensions au Moyen-Orient
-   renforce la pression inflationniste, ce qui...") plutôt que la juxtaposition ("le pétrole monte.
-   Par ailleurs, l'inflation...")
-5. **Conclusion prospective** — ce qu'il faut surveiller dans les prochains jours, formulé
+3. **## Contexte** — 2-3 phrases percutantes. "Hook" avec LE fait le plus structurant du jour.
+   Poser le cadre macro : quel est le climat de marché ? Quelle est la toile de fond géopolitique ?
+4. **## Enjeux clés** — 2-3 paragraphes courts (3-5 phrases chacun), un enjeu par paragraphe.
+   Chaque paragraphe DOIT croiser au minimum 2 catégories. Privilégier les connexions causales
+   ("la hausse du pétrole liée aux tensions au Moyen-Orient renforce la pression inflationniste,
+   ce qui...") plutôt que la juxtaposition ("le pétrole monte. Par ailleurs, l'inflation...")
+5. **## Risques** — 1 paragraphe court identifiant les menaces et divergences à surveiller
+6. **## Opportunités** — 1 paragraphe court sur les dynamiques favorables (sans recommandation)
+7. **## Perspectives** — Ce qu'il faut surveiller dans les prochains jours, formulé
    en termes de scénarios conditionnels ("si le VIX franchit les 25, cela confirmerait...")
 
 ## Règles strictes
@@ -340,37 +343,42 @@ Produire une analyse macroéconomique qui DIAGNOSTIQUE l'état du cycle économi
 avec une perspective transatlantique (US + Europe). L'analyse doit être structurée et pédagogique :
 le lecteur doit comprendre la LOGIQUE qui relie les indicateurs entre eux.
 
-## Cadre analytique
+## Structure obligatoire du champ "analyse"
+Le texte Markdown DOIT suivre ces 5 sections avec sous-titres explicites (##).
+Chaque paragraphe fait 3-5 phrases maximum. Hiérarchie : du général au particulier.
 
-### 1. Diagnostic du cycle économique
-- Positionner l'économie dans le cycle : expansion, pic, contraction, creux, transition
+### ## Contexte macroéconomique
+- Poser le cadre général : où en sommes-nous dans le cycle (expansion, pic, contraction, creux, transition) ?
 - Distinguer les indicateurs **avancés** (spread de taux, permis de construire, ISM new orders, cuivre)
   des indicateurs **retardés** (chômage, CPI, PIB) pour évaluer la trajectoire
 - Justifier avec les données : "le spread 10Y-2Y à -0,3% depuis 6 mois combiné à un chômage
   encore bas à 3,7% suggère un pic de cycle"
 
-### 2. Politique monétaire comparée
-- La Fed est-elle restrictive, neutre, accommodante ? Justifier par le taux réel (Fed funds - CPI)
-- La BCE suit-elle le même chemin ou diverge-t-elle ? Implications pour EUR/USD
-- Anticiper le prochain mouvement probable de chaque banque centrale
+### ## Enjeux clés
+- **Politique monétaire comparée** : La Fed est-elle restrictive, neutre, accommodante ?
+  Justifier par le taux réel (Fed funds - CPI). BCE : convergence ou divergence ? Implications EUR/USD.
+  Paragraphe dédié (3-5 phrases).
+- **Dynamique inflationniste** : CPI headline vs core, rythme de désinflation vs cible des 2%,
+  impact sur les anticipations de taux. Paragraphe dédié (3-5 phrases).
 
-### 3. Dynamique inflationniste
-- CPI headline vs core : les composantes volatiles (énergie, alimentaire) masquent-elles la tendance ?
-- Inflation accélère, se stabilise, ou ralentit ? Rythme de désinflation vs cible des 2%
-- Impact sur les anticipations de taux (market pricing vs guidance)
-
-### 4. Signaux de risque
-- Courbe des taux : inversion = signal récessif ? Depuis combien de temps ? Historiquement,
-  quel délai entre inversion et récession ?
-- Dollar fort/faible : implications pour les émergents, les matières premières, les multinationales US
+### ## Risques
+- Courbe des taux : inversion = signal récessif ? Depuis combien de temps ?
+- Dollar fort/faible : implications pour les émergents, matières premières, multinationales US
 - Liquidité : M2 en contraction ou expansion ? Bilan Fed en réduction (QT) ?
 - VIX : niveau de complaisance ou de stress ? Cohérent avec les autres indicateurs ?
-- Métaux comme indicateurs avancés : cuivre (activité industrielle mondiale), or (valeur refuge,
-  anticipation de baisse de taux), ratio or/cuivre (risk appetite)
+- Métaux comme indicateurs avancés : cuivre (activité industrielle), or (valeur refuge), ratio or/cuivre
+- Si des indicateurs divergent (VIX bas + spread inversé), analyser explicitement la contradiction
+- Paragraphe court (3-5 phrases), factuel
 
-### 5. Contradictions à analyser
-Si des indicateurs divergent (ex: VIX bas mais spread inversé, ou chômage bas mais ISM en contraction),
-analyser explicitement cette contradiction — c'est souvent le signal le plus informatif.
+### ## Opportunités
+- Signaux positifs identifiés dans les données (amélioration d'un indicateur avancé, détente d'un spread,
+  rebond d'un secteur) — sans recommandation d'investissement
+- Paragraphe court (3-5 phrases)
+
+### ## Perspectives
+- Anticiper le prochain mouvement probable de chaque banque centrale
+- Ce qu'il faut surveiller dans les 1-2 prochaines semaines (données macro à venir, seuils à observer)
+- 2-3 phrases concrètes
 
 ## Règles
 - Écris en FRANÇAIS
@@ -422,19 +430,25 @@ quel est le régime de marché aujourd'hui (risk-on, risk-off, rotation sectorie
   ratio or/cuivre = risk appetite
 - **Perspective européenne** : toujours inclure l'angle zone euro (taux BCE, indices EU, EUR/USD)
 
-## Structure
-1. **Titre du jour** — capture le régime de marché dominant (pas un événement isolé)
-2. **Résumé exécutif** — 2-3 phrases pour les pressés : tendance, moteur principal, risque clé
-3. **Actions & Indices** — performance US + Europe, moteurs (secteurs, earnings, macro),
-   VIX et ce qu'il signale
-4. **Crypto & DeFi** — BTC, ETH, altcoins majeurs, TVL DeFi, Fear & Greed, on-chain,
-   corrélation éventuelle avec les marchés traditionnels
-5. **Matières premières & Forex** — or, argent, cuivre (indicateur avancé), dollar, EUR/USD,
-   cross-analyse avec la politique monétaire Fed/BCE
-6. **Macro & Sentiment** — FNG, données FRED clés, taux BCE, ce que les corrélations
-   inter-marchés nous disent sur le positionnement des investisseurs
-7. **Point de vigilance** — 2-3 risques ou signaux à surveiller dans les prochaines 48h
-   (événements macro, seuils techniques, divergences non résolues)
+## Structure obligatoire des sections
+Chaque section "contenu" doit avoir des sous-titres Markdown explicites (## ou ###).
+Chaque paragraphe fait 3-5 phrases maximum. Hiérarchie : du général au particulier.
+
+Les sections JSON doivent suivre cet ordre :
+
+1. **Contexte** — Régime de marché dominant (risk-on, risk-off, rotation, attentisme).
+   Vue d'ensemble en 3-5 phrases : quel est le moteur principal aujourd'hui ?
+   Tendance : celle du régime identifié.
+2. **Enjeux clés — Actions & Indices** — Performance US + Europe, moteurs sectoriels, VIX.
+   Paragraphes courts, un sous-thème par paragraphe.
+3. **Enjeux clés — Crypto & DeFi** — BTC, ETH, altcoins majeurs, TVL DeFi, Fear & Greed, on-chain.
+   Corrélation éventuelle avec les marchés traditionnels.
+4. **Enjeux clés — Matières premières & Forex** — Or, argent, cuivre (indicateur avancé), dollar,
+   EUR/USD. Cross-analyse avec la politique monétaire Fed/BCE.
+5. **Risques & Vigilance** — 2-3 menaces concrètes à surveiller dans les prochaines 48h
+   (divergences non résolues, seuils techniques, événements macro).
+6. **Opportunités & Signaux positifs** — Dynamiques favorables identifiées dans les données
+   (sans recommandation d'investissement). Divergences qui pourraient se résoudre positivement.
 
 ## Règles de rédaction
 - Chiffres précis avec variations (% et absolues) tirés des données fournies
@@ -577,12 +591,33 @@ se propage concrètement vers ses positions et ses risques.
 ## Structure attendue
 
 ### 1. Synthèse stratégique (300-500 mots)
+Le contenu de la synthèse DOIT suivre ces 5 sections, dans cet ordre, avec des sous-titres
+Markdown explicites (##). Chaque paragraphe fait 3-5 phrases maximum. Hiérarchie : du général au particulier.
+
+#### ## Contexte
 - Accroche percutante avec LE fait le plus structurant du jour (pas le plus spectaculaire, le plus significatif)
-- 2-3 paragraphes croisant systématiquement au moins 3 catégories différentes
+- Poser le cadre général : quel est le régime de marché aujourd'hui ? Quelle est la dynamique dominante ?
+- 1-2 paragraphes, du macro vers le micro
+
+#### ## Enjeux clés
+- Les 2-3 dynamiques les plus importantes du jour, en croisant systématiquement au moins 3 catégories
 - Chaque donnée chiffrée est contextualisée avec une comparaison temporelle
   ("l'or à 2 900 $/oz, +12% YTD, au plus haut depuis août 2020")
+- Paragraphes courts (3-5 phrases), un enjeu par paragraphe
+
+#### ## Risques
+- Les menaces identifiées (géopolitiques, macro, techniques) avec leur canal de transmission
 - Si les données fournies sont incomplètes ou anciennes, le signaler plutôt qu'extrapoler
-- Conclure par les implications concrètes pour les prochaines 48-72h
+- Paragraphe court, factuel, chiffré
+
+#### ## Opportunités
+- Les signaux positifs ou les divergences qui pourraient créer de la valeur
+- NE PAS donner de recommandation d'investissement — décrire les dynamiques favorables factuellement
+- Paragraphe court
+
+#### ## Perspectives
+- Implications concrètes pour les prochaines 48-72h
+- Scénarios conditionnels ("si X franchit Y, alors...")
 
 ### 2. Signaux clés (3-5)
 Pour chaque signal :
