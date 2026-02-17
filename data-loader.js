@@ -193,16 +193,17 @@ const DataLoader = (function () {
     }
 
     /**
-     * Formate un prix en USD
+     * Formate un prix en USD avec conventions françaises
+     * (virgule décimale, espace séparateur de milliers, symbole $ après le nombre)
      * @param {number} value
      * @param {number} decimals
      * @returns {string}
      */
     function formatUSD(value, decimals = 2) {
-        if (value >= 1e12) return `$${(value / 1e12).toFixed(1)}T`;
-        if (value >= 1e9)  return `$${(value / 1e9).toFixed(1)}B`;
-        if (value >= 1e6)  return `$${(value / 1e6).toFixed(1)}M`;
-        return `$${Number(value).toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}`;
+        if (value >= 1e12) return `${(value / 1e12).toFixed(1).replace('.', ',')} T$`;
+        if (value >= 1e9)  return `${(value / 1e9).toFixed(1).replace('.', ',')} Mrd $`;
+        if (value >= 1e6)  return `${(value / 1e6).toFixed(1).replace('.', ',')} M $`;
+        return `${Number(value).toLocaleString('fr-FR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })} $`;
     }
 
     /**
@@ -214,7 +215,7 @@ const DataLoader = (function () {
         if (pct == null || isNaN(pct)) return { text: 'N/A', positive: false };
         const sign = pct >= 0 ? '+' : '';
         return {
-            text: `${sign}${pct.toFixed(2)}%`,
+            text: `${sign}${pct.toFixed(2).replace('.', ',')}%`,
             positive: pct >= 0
         };
     }
@@ -307,7 +308,8 @@ const DataLoader = (function () {
     // ─── Mise à jour du DOM ────────────────────────────────
 
     /**
-     * Met à jour la sidebar "Marchés" avec les données live
+     * Met à jour la sidebar "Marchés" avec les données live.
+     * Inclut les indices US + européens (Twelve Data) dans un seul widget unifié.
      */
     function updateMarketSidebar() {
         if (!_cache.markets?.quotes?.length) return;
@@ -319,10 +321,6 @@ const DataLoader = (function () {
 
         const quotes = _cache.markets.quotes;
 
-        // Trouver les éléments de marché existants et les mettre à jour
-        const marketRows = sidebar.querySelectorAll('.market-row, .market-item, tr');
-        if (marketRows.length === 0) return;
-
         // Mapping des noms pour correspondre au DOM existant
         const nameMap = {
             'S&P 500': ['SPY', 'S&P 500', 'S&P500'],
@@ -332,15 +330,42 @@ const DataLoader = (function () {
             'Pétrole WTI': ['USO', 'Pétrole (ETF)', 'Oil', 'Pétrole']
         };
 
-        quotes.forEach(q => {
-            // Chercher l'élément DOM correspondant
-            for (const [displayName, aliases] of Object.entries(nameMap)) {
-                if (aliases.includes(q.name) || aliases.includes(q.symbol)) {
-                    updateMarketRow(sidebar, displayName, q.price, q.change);
+        // Construire les lignes du tableau marchés
+        var rows = [];
+
+        // Ajouter les quotes US
+        quotes.forEach(function(q) {
+            for (var displayName in nameMap) {
+                var aliases = nameMap[displayName];
+                if (aliases.indexOf(q.name) !== -1 || aliases.indexOf(q.symbol) !== -1) {
+                    var pct = formatPercent(q.change);
+                    rows.push('<div class="market-row">' +
+                        '<span class="market-row-name">' + displayName + '</span>' +
+                        '<span class="market-row-price">' + formatUSD(q.price) + '</span>' +
+                        '<span class="market-row-change" style="color:' + (pct.positive ? 'var(--green, #16a34a)' : 'var(--red, #dc2626)') + '">' + pct.text + '</span>' +
+                    '</div>');
                     break;
                 }
             }
         });
+
+        // Ajouter les indices européens (Twelve Data) directement dans le widget Marchés
+        if (_cache.europeanMarkets?.indices?.length) {
+            rows.push('<div class="market-row market-row-separator"><span class="market-row-name market-section-label">Indices européens</span></div>');
+            _cache.europeanMarkets.indices.forEach(function(idx) {
+                var pct = formatPercent(idx.change_pct);
+                var priceStr = idx.price ? idx.price.toLocaleString('fr-FR', {minimumFractionDigits: 0, maximumFractionDigits: 0}) : 'N/A';
+                rows.push('<div class="market-row">' +
+                    '<span class="market-row-name">' + idx.name + '</span>' +
+                    '<span class="market-row-price">' + priceStr + '</span>' +
+                    '<span class="market-row-change" style="color:' + (pct.positive ? 'var(--green, #16a34a)' : 'var(--red, #dc2626)') + '">' + pct.text + '</span>' +
+                '</div>');
+            });
+        }
+
+        if (rows.length > 0) {
+            sidebar.innerHTML = rows.join('');
+        }
 
         // Ajouter indicateur de fraîcheur
         addFreshnessIndicator(sidebar, _cache.markets.updated);
@@ -489,15 +514,28 @@ const DataLoader = (function () {
             var icon = icons[ind.id] || defaultIcon;
             var displayValue;
 
-            // Formater la valeur selon le type
+            // Franciser les labels macroéconomiques
+            var labelFR = {
+                'Fed Funds Rate': 'Taux directeur Fed',
+                'Treasury 10 ans': 'Bon du Trésor US 10 ans',
+                'Spread 10Y-2Y': 'Écart de taux 10A-2A',
+                'CPI YoY': 'IPC (glissement annuel)',
+                'Dollar Index (broad)': 'Indice Dollar (large)',
+                'Bilan Fed (actifs)': 'Bilan de la Réserve fédérale',
+                'M2 Money Supply': 'Masse monétaire M2',
+                'Unemployment Rate': 'Taux de chômage'
+            };
+            var displayLabel = labelFR[ind.label] || ind.label;
+
+            // Formater la valeur selon le type (format français)
             if (ind.unit === '%') {
-                displayValue = ind.value.toFixed(2) + '%';
+                displayValue = ind.value.toFixed(2).replace('.', ',') + ' %';
             } else if (ind.unit === 'Mrd $') {
-                displayValue = '$' + (ind.value / 1000).toFixed(1) + 'T';
+                displayValue = (ind.value / 1000).toFixed(1).replace('.', ',') + ' T$';
             } else if (ind.unit === 'index') {
-                displayValue = ind.value.toFixed(1);
+                displayValue = ind.value.toFixed(1).replace('.', ',');
             } else {
-                displayValue = ind.value.toFixed(2);
+                displayValue = ind.value.toFixed(2).replace('.', ',');
             }
 
             // Variation
@@ -514,15 +552,15 @@ const DataLoader = (function () {
                     : (isPositive ? 'macro-change-positive' : 'macro-change-negative');
 
                 changeHTML = '<span class="macro-change ' + colorClass + '">' +
-                    changeSign + ind.change.toFixed(2) +
-                    (ind.change_type === 'yoy' ? '%' : '') +
+                    changeSign + ind.change.toFixed(2).replace('.', ',') +
+                    (ind.change_type === 'yoy' ? ' %' : '') +
                     changeLabel + '</span>';
             }
 
             return '<div class="macro-card">' +
                 '<div class="macro-card-icon">' + icon + '</div>' +
                 '<div class="macro-card-body">' +
-                    '<span class="macro-card-label">' + ind.label + '</span>' +
+                    '<span class="macro-card-label">' + displayLabel + '</span>' +
                     '<span class="macro-card-value">' + displayValue + '</span>' +
                     changeHTML +
                 '</div>' +
@@ -726,7 +764,7 @@ const DataLoader = (function () {
             }).join('');
 
             riskHTML = '<div class="briefing-risk-radar">' +
-                '<h3 class="briefing-section-title">Risk Radar</h3>' +
+                '<h3 class="briefing-section-title">Radar des Risques</h3>' +
                 riskItems +
             '</div>';
         }
@@ -1279,11 +1317,11 @@ const DataLoader = (function () {
         if (globalContainer && _cache.crypto.global) {
             var g = _cache.crypto.global;
             var statsHTML = '';
-            if (g.eth_dominance) statsHTML += '<span class="global-stat">ETH Dom: ' + g.eth_dominance.toFixed(1) + '%</span>';
-            if (g.markets) statsHTML += '<span class="global-stat">Marchés: ' + g.markets.toLocaleString('fr-FR') + '</span>';
+            if (g.eth_dominance) statsHTML += '<span class="global-stat">Dominance ETH : ' + g.eth_dominance.toFixed(1).replace('.', ',') + ' %</span>';
+            if (g.markets) statsHTML += '<span class="global-stat">Marchés : ' + g.markets.toLocaleString('fr-FR') + '</span>';
             if (g.market_cap_change_24h != null) {
                 var isUp = g.market_cap_change_24h >= 0;
-                statsHTML += '<span class="global-stat ' + (isUp ? 'positive' : 'negative') + '">MCap 24h: ' + (isUp ? '+' : '') + g.market_cap_change_24h.toFixed(2) + '%</span>';
+                statsHTML += '<span class="global-stat ' + (isUp ? 'positive' : 'negative') + '">Capitalisation 24h : ' + (isUp ? '+' : '') + g.market_cap_change_24h.toFixed(2).replace('.', ',') + ' %</span>';
             }
             if (statsHTML) globalContainer.innerHTML = statsHTML;
         }
@@ -1295,10 +1333,17 @@ const DataLoader = (function () {
      * Affiche les prochains événements économiques (Finnhub)
      */
     function updateEconomicCalendar() {
-        if (!_cache.markets?.economicCalendar?.length) return;
+        if (!_cache.markets?.economicCalendar?.length) {
+            // Garder le calendrier masqué s'il n'y a pas d'événements
+            return;
+        }
 
         var container = document.getElementById('economic-calendar');
         if (!container) return;
+
+        // Afficher la section calendrier uniquement quand il y a des événements
+        var calendarSection = document.getElementById('calendar-section');
+        if (calendarSection) calendarSection.style.display = '';
 
         var events = _cache.markets.economicCalendar.slice(0, 8);
         container.innerHTML = events.map(function(evt) {
@@ -1466,14 +1511,14 @@ const DataLoader = (function () {
     function handleEmptyWidgets() {
         var widgetChecks = [
             { data: _cache.crypto?.trending?.length, el: 'trending-coins', section: 'trending-section', msg: 'Aucune tendance disponible' },
-            { data: _cache.markets?.economicCalendar?.length, el: 'economic-calendar', section: 'calendar-section', msg: 'Aucun événement à venir' },
             { data: _cache.alphaVantage?.forex?.length, el: 'forex-rates', section: 'forex-section', msg: 'Taux indisponibles' },
             { data: _cache.alphaVantage?.sectors?.length, el: 'sector-performance', section: 'sectors-section', msg: 'Données sectorielles indisponibles' },
             { data: _cache.alphaVantage?.topMovers, el: 'top-movers', section: 'movers-section', msg: 'Données indisponibles' },
             { data: _cache.defi?.topProtocols?.length, el: 'defi-protocols', section: 'defi-section', msg: 'Protocoles indisponibles' },
             { data: _cache.defi?.topYields?.length, el: 'defi-yields', section: 'yields-section', msg: 'Rendements indisponibles' },
             { data: _cache.macro?.indicators?.length, el: 'macro-indicators', section: 'macro-section', msg: 'Indicateurs indisponibles' },
-            { data: _cache.fearGreed?.current, el: null, section: 'fng-section', msg: null }
+            { data: _cache.fearGreed?.current, el: null, section: 'fng-section', msg: null },
+            { data: _cache.messari?.assets?.length, el: 'messari-widget', section: 'messari-section', msg: 'Données crypto avancées indisponibles' }
         ];
 
         widgetChecks.forEach(function(check) {
@@ -1657,7 +1702,7 @@ const DataLoader = (function () {
         if (summaryEl && defi.summary) {
             summaryEl.innerHTML = `
                 <div class="defi-stat-row">
-                    <span class="defi-stat-chip">TVL Total <strong>${defi.summary.total_tvl_formatted}</strong></span>
+                    <span class="defi-stat-chip" title="Valeur totale verrouillée">TVL totale <strong>${defi.summary.total_tvl_formatted}</strong></span>
                     <span class="defi-stat-chip">${defi.summary.total_protocols} protocoles</span>
                     <span class="defi-stat-chip">${defi.summary.total_chains} chaînes</span>
                 </div>
@@ -1669,12 +1714,12 @@ const DataLoader = (function () {
         if (protocolsEl && defi.topProtocols && defi.topProtocols.length > 0) {
             protocolsEl.innerHTML = defi.topProtocols.slice(0, 10).map((p, i) => {
                 const tvlStr = p.tvl > 1e9
-                    ? `$${(p.tvl / 1e9).toFixed(2)}B`
-                    : `$${(p.tvl / 1e6).toFixed(0)}M`;
+                    ? `${(p.tvl / 1e9).toFixed(2).replace('.', ',')} Mrd $`
+                    : `${(p.tvl / 1e6).toFixed(0)} M $`;
                 const change1d = p.change_1d;
                 const changeCls = change1d > 0 ? 'up' : change1d < 0 ? 'down' : '';
                 const changeStr = change1d != null
-                    ? `<span class="defi-proto-change ${changeCls}">${change1d > 0 ? '+' : ''}${change1d.toFixed(1)}%</span>`
+                    ? `<span class="defi-proto-change ${changeCls}">${change1d > 0 ? '+' : ''}${change1d.toFixed(1).replace('.', ',')} %</span>`
                     : '';
                 return `
                     <div class="defi-protocol-row">
@@ -1698,8 +1743,8 @@ const DataLoader = (function () {
         if (yieldsEl && defi.topYields && defi.topYields.length > 0) {
             yieldsEl.innerHTML = defi.topYields.slice(0, 8).map(y => {
                 const tvlStr = y.tvl > 1e9
-                    ? `$${(y.tvl / 1e9).toFixed(1)}B`
-                    : `$${(y.tvl / 1e6).toFixed(0)}M`;
+                    ? `${(y.tvl / 1e9).toFixed(1).replace('.', ',')} Mrd $`
+                    : `${(y.tvl / 1e6).toFixed(0)} M $`;
                 return `
                     <div class="yield-row">
                         <div class="yield-info">
@@ -1707,7 +1752,7 @@ const DataLoader = (function () {
                             <span class="yield-detail">${y.symbol} · ${y.chain}</span>
                         </div>
                         <div class="yield-data">
-                            <span class="yield-apy">${y.apy.toFixed(2)}%</span>
+                            <span class="yield-apy">${y.apy.toFixed(2).replace('.', ',')} %</span>
                             <span class="yield-tvl">${tvlStr}</span>
                         </div>
                     </div>
@@ -1736,6 +1781,18 @@ const DataLoader = (function () {
             'neutre': 'Neutre', 'mixte': 'Mixte'
         };
 
+        // Mapping des noms de rubriques internes → labels français propres
+        var rubriqueLabelMap = {
+            'geopolitique': 'Géopolitique',
+            'marches': 'Marchés',
+            'crypto': 'Crypto',
+            'matieres_premieres': 'Matières premières',
+            'ai_tech': 'IA & Tech',
+            'commodities': 'Matières premières',
+            'geopolitics': 'Géopolitique',
+            'markets': 'Marchés'
+        };
+
         var categoriesHTML = '';
         if (s.categories) {
             categoriesHTML = '<div class="sentiment-categories">' +
@@ -1743,10 +1800,11 @@ const DataLoader = (function () {
                     var rubrique = entry[0];
                     var data = entry[1];
                     var catColor = data.score > 0.2 ? '#16a34a' : data.score < -0.2 ? '#dc2626' : '#eab308';
+                    var displayName = rubriqueLabelMap[rubrique] || rubrique;
                     return '<div class="sentiment-cat">' +
-                        '<span class="sentiment-cat-name">' + rubrique + '</span>' +
+                        '<span class="sentiment-cat-name">' + displayName + '</span>' +
                         '<span class="sentiment-cat-score" style="color:' + catColor + '">' +
-                        (data.score > 0 ? '+' : '') + data.score.toFixed(1) +
+                        (data.score > 0 ? '+' : '') + data.score.toFixed(1).replace('.', ',') +
                         '</span></div>';
                 }).join('') + '</div>';
         }
@@ -1754,7 +1812,7 @@ const DataLoader = (function () {
         container.innerHTML =
             '<div class="sentiment-header">' +
                 '<span class="sentiment-score" style="color:' + scoreColor + '">' +
-                    arrow + ' ' + (global.score > 0 ? '+' : '') + global.score.toFixed(2) +
+                    arrow + ' ' + (global.score > 0 ? '+' : '') + global.score.toFixed(2).replace('.', ',') +
                 '</span>' +
                 '<span class="sentiment-label">' + (tendanceLabel[global.tendance] || global.tendance) + '</span>' +
             '</div>' +
@@ -1958,7 +2016,7 @@ const DataLoader = (function () {
         var indicators = _cache.worldBank.indicators;
 
         container.innerHTML =
-            '<h4>Macro Internationale</h4>' +
+            '<h4>Macro internationale</h4>' +
             indicators.map(function(ind) {
                 if (!ind.data || ind.data.length === 0) return '';
                 return '<div class="wb-indicator">' +
@@ -2001,14 +2059,14 @@ const DataLoader = (function () {
         var globalHTML = '';
         if (gm) {
             globalHTML = '<div class="messari-global">' +
-                (gm.btc_dominance ? '<span>BTC Dom: ' + gm.btc_dominance.toFixed(1) + '%</span>' : '') +
-                (gm.total_market_cap ? '<span>MCap: ' + formatUSD(gm.total_market_cap, 0) + '</span>' : '') +
-                (gm.total_volume_24h ? '<span>Vol 24h: ' + formatUSD(gm.total_volume_24h, 0) + '</span>' : '') +
+                (gm.btc_dominance ? '<span>Dominance BTC : ' + gm.btc_dominance.toFixed(1).replace('.', ',') + ' %</span>' : '') +
+                (gm.total_market_cap ? '<span>Capitalisation : ' + formatUSD(gm.total_market_cap, 0) + '</span>' : '') +
+                (gm.total_volume_24h ? '<span>Volume 24h : ' + formatUSD(gm.total_volume_24h, 0) + '</span>' : '') +
             '</div>';
         }
 
         container.innerHTML =
-            '<h4>Crypto Avancé (Messari)</h4>' +
+            '<h4>Crypto avancé (Messari)</h4>' +
             globalHTML +
             '<div class="messari-assets">' +
             assets.slice(0, 10).map(function(a) {
@@ -2016,7 +2074,7 @@ const DataLoader = (function () {
                 return '<div class="messari-asset-row">' +
                     '<span class="messari-symbol">' + (a.symbol || '') + '</span>' +
                     '<span class="messari-price">' + (a.price ? formatUSD(a.price) : 'N/A') + '</span>' +
-                    '<span class="messari-dominance">' + (a.market_cap_dominance ? a.market_cap_dominance.toFixed(1) + '%' : '') + '</span>' +
+                    '<span class="messari-dominance">' + (a.market_cap_dominance ? a.market_cap_dominance.toFixed(1).replace('.', ',') + ' %' : '') + '</span>' +
                     '<span class="messari-change" style="color:' + (pct.positive ? 'var(--green, #16a34a)' : 'var(--red, #dc2626)') + '">' + pct.text + '</span>' +
                 '</div>';
             }).join('') +
@@ -2135,7 +2193,6 @@ const DataLoader = (function () {
         updateNewsletterSection();
         updateMacroAnalysisWidget();
         updateMarketBriefingWidget();
-        updateEuropeanMarketsWidget();
         updateWorldBankWidget();
         updateMessariWidget();
         initRubriqueFilters();

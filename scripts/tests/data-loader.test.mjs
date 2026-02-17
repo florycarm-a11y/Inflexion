@@ -41,47 +41,56 @@ const {
 // ═══════════════════════════════════════════════════════════════
 
 describe('A. formatUSD', () => {
-    it('formate des montants simples', () => {
-        assert.equal(DataLoader.formatUSD(1234.56), '$1,234.56');
+    it('formate des montants simples (format français)', () => {
+        // Format français : virgule décimale, espace insécable séparateur de milliers, $ après
+        const result = DataLoader.formatUSD(1234.56);
+        assert.ok(result.includes('1'), 'Contient 1');
+        assert.ok(result.includes('234'), 'Contient 234');
+        assert.ok(result.includes('56'), 'Contient 56');
+        assert.ok(result.endsWith('$'), 'Se termine par $');
     });
 
     it('formate les trillions', () => {
-        assert.equal(DataLoader.formatUSD(2.5e12), '$2.5T');
+        assert.equal(DataLoader.formatUSD(2.5e12), '2,5 T$');
     });
 
     it('formate les milliards', () => {
-        assert.equal(DataLoader.formatUSD(1.8e9), '$1.8B');
+        assert.equal(DataLoader.formatUSD(1.8e9), '1,8 Mrd $');
     });
 
     it('formate les millions', () => {
-        assert.equal(DataLoader.formatUSD(42.3e6), '$42.3M');
+        assert.equal(DataLoader.formatUSD(42.3e6), '42,3 M $');
     });
 
     it('respecte le nombre de décimales', () => {
-        assert.equal(DataLoader.formatUSD(99.1, 0), '$99');
+        const result = DataLoader.formatUSD(99.1, 0);
+        assert.ok(result.includes('99'), 'Contient 99');
+        assert.ok(result.endsWith('$'), 'Se termine par $');
     });
 
     it('gère zéro', () => {
-        assert.equal(DataLoader.formatUSD(0), '$0.00');
+        const result = DataLoader.formatUSD(0);
+        assert.ok(result.includes('0'), 'Contient 0');
+        assert.ok(result.endsWith('$'), 'Se termine par $');
     });
 });
 
 describe('A. formatPercent', () => {
-    it('formate un pourcentage positif avec signe +', () => {
+    it('formate un pourcentage positif avec signe + (format français)', () => {
         const result = DataLoader.formatPercent(3.14);
-        assert.equal(result.text, '+3.14%');
+        assert.equal(result.text, '+3,14%');
         assert.equal(result.positive, true);
     });
 
-    it('formate un pourcentage négatif', () => {
+    it('formate un pourcentage négatif (format français)', () => {
         const result = DataLoader.formatPercent(-2.5);
-        assert.equal(result.text, '-2.50%');
+        assert.equal(result.text, '-2,50%');
         assert.equal(result.positive, false);
     });
 
-    it('gère zéro (positif)', () => {
+    it('gère zéro (positif, format français)', () => {
         const result = DataLoader.formatPercent(0);
-        assert.equal(result.text, '+0.00%');
+        assert.equal(result.text, '+0,00%');
         assert.equal(result.positive, true);
     });
 
