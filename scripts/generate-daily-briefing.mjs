@@ -27,8 +27,10 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { callClaudeJSON, getUsageStats } from './lib/claude-api.mjs';
 import { DAILY_BRIEFING_SYSTEM_PROMPT } from './lib/prompts.mjs';
-import { RAGStore } from './lib/rag-store.mjs';
-import { embedText } from './lib/embeddings.mjs';
+
+// RAG imports chargés dynamiquement dans main() pour ne pas bloquer les tests unitaires
+// (les tests n'importent que les fonctions pures et n'ont pas besoin de @xenova/transformers)
+let RAGStore, embedText;
 
 // __dirname n'existe pas en ESM, on le reconstruit
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -434,6 +436,12 @@ async function main() {
     console.log(`║  ${new Date().toISOString()}              ║`);
     console.log('╚══════════════════════════════════════════════════╝');
     if (DRY_RUN) console.log('  🏃 Mode dry-run actif (pas d\'appel API)\n');
+
+    // Charger les modules RAG dynamiquement (évite de bloquer les tests unitaires)
+    const ragMod = await import('./lib/rag-store.mjs');
+    const embMod = await import('./lib/embeddings.mjs');
+    RAGStore = ragMod.RAGStore;
+    embedText = embMod.embedText;
 
     // ── 1. Charger toutes les sources de données ──────────────
     console.log('\n📂 Chargement des sources de données...');
