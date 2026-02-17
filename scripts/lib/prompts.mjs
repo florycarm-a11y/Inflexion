@@ -636,6 +636,17 @@ Les 3 risques à surveiller aujourd'hui, classés du plus probable/impactant au 
 - Impact marché concret : quels actifs, dans quelle direction, avec quelle amplitude estimée
 - Différencier les risques conjoncturels (jours) des risques structurels (mois)
 
+## Utilisation du contexte historique (RAG)
+Si une "PARTIE C : Contexte historique" est fournie, elle contient :
+- Des articles historiques similaires aux sujets du jour (retrouvés par similarité sémantique)
+- Les briefings des jours précédents (titre, sentiment, tags, résumé)
+Exploite ce contexte pour :
+- **Continuité narrative** : signaler les évolutions par rapport aux briefings précédents
+  ("comme signalé hier...", "confirmant la tendance amorcée mardi...")
+- **Mise en perspective** : comparer les niveaux actuels aux niveaux passés
+- **Détection de tendances** : identifier les signaux qui se répètent ou s'inversent
+Si la partie C est absente, ignore cette section et travaille uniquement avec les parties A et B.
+
 ## Règles de rigueur
 - Chaque signal DOIT avoir au minimum 2 interconnexions vers d'autres secteurs/classes d'actifs
 - Utilise les données de marché fournies (indices, crypto, commodities, VIX, taux, on-chain) comme PREUVES

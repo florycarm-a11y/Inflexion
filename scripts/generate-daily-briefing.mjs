@@ -27,6 +27,8 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { callClaudeJSON, getUsageStats } from './lib/claude-api.mjs';
 import { DAILY_BRIEFING_SYSTEM_PROMPT } from './lib/prompts.mjs';
+import { RAGStore } from './lib/rag-store.mjs';
+import { embedText } from './lib/embeddings.mjs';
 
 // __dirname n'existe pas en ESM, on le reconstruit
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -509,6 +511,81 @@ async function main() {
 
     console.log(`  ✓ ${marketSections.length} sections de données de marché`);
 
+    // ── 3b. Récupérer le contexte historique RAG ────────────────
+    let ragContext = '';
+    const RAG_DIR = join(DATA_DIR, 'rag');
+    const store = new RAGStore(RAG_DIR);
+    const ragStats = store.getStats();
+
+    if (ragStats.articlesCount > 0 || ragStats.briefingsCount > 0) {
+        console.log(`\n🧠 RAG : ${ragStats.articlesCount} articles, ${ragStats.briefingsCount} briefings en mémoire`);
+
+        try {
+            // Construire un résumé des sujets du jour pour la recherche sémantique
+            const todayTopics = topArticles.slice(0, 5).map(a => a.title).join('. ');
+            const queryEmbedding = await embedText(todayTopics);
+
+            // Recherche d'articles historiques similaires
+            const similarArticles = store.searchArticles(queryEmbedding, {
+                topK: 5,
+                minScore: 0.35,
+                excludeDate: today(),
+            });
+
+            // Recherche de briefings similaires + briefings récents
+            const similarBriefings = store.searchBriefings(queryEmbedding, {
+                topK: 2,
+                minScore: 0.3,
+                excludeDate: today(),
+            });
+            const recentBriefings = store.getRecentBriefings(2, today());
+
+            // Fusionner briefings similaires et récents (dédupliquer)
+            const seenBriefingIds = new Set();
+            const allBriefings = [];
+            for (const b of [...similarBriefings.map(r => r.entry), ...recentBriefings]) {
+                if (!seenBriefingIds.has(b.id)) {
+                    seenBriefingIds.add(b.id);
+                    allBriefings.push(b);
+                }
+            }
+
+            // Construire le contexte RAG en Markdown
+            const ragParts = [];
+
+            if (similarArticles.length > 0) {
+                ragParts.push('### Articles historiques similaires');
+                for (const { entry, score } of similarArticles) {
+                    const meta = entry.metadata || {};
+                    ragParts.push(`- **${meta.title || '(sans titre)'}** (${meta.source || '?'}, ${entry.date}) — similarité: ${(score * 100).toFixed(0)}%`);
+                }
+            }
+
+            if (allBriefings.length > 0) {
+                ragParts.push('### Briefings précédents (continuité narrative)');
+                for (const b of allBriefings.slice(0, 3)) {
+                    const meta = b.metadata || {};
+                    ragParts.push(`- **${b.date}** : ${meta.titre || '(sans titre)'}`);
+                    if (meta.contenu_preview) {
+                        ragParts.push(`  > ${meta.contenu_preview.slice(0, 200)}...`);
+                    }
+                    if (meta.sentiment) {
+                        ragParts.push(`  Sentiment: ${meta.sentiment}. Tags: ${(meta.tags || []).join(', ')}`);
+                    }
+                }
+            }
+
+            if (ragParts.length > 0) {
+                ragContext = `\n## PARTIE C : Contexte historique (RAG — mémoire Inflexion)\n\n${ragParts.join('\n')}\n`;
+                console.log(`  ✓ RAG: ${similarArticles.length} articles similaires, ${allBriefings.length} briefings récupérés`);
+            }
+        } catch (err) {
+            console.warn(`  ⚠ RAG indisponible: ${err.message}`);
+        }
+    } else {
+        console.log('\n🧠 RAG : store vide (première exécution, le contexte historique sera disponible demain)');
+    }
+
     // Assembler le message complet avec structure claire pour faciliter l'analyse
     const userMessage = `# Briefing stratégique Inflexion — ${today()}
 
@@ -519,7 +596,7 @@ ${newsContext}
 ## PARTIE B : Données de marché en temps réel
 
 ${marketSections.join('\n\n')}
-
+${ragContext}
 ---
 
 ## Consignes de production
@@ -529,7 +606,7 @@ Produis le briefing stratégique quotidien en respectant ces priorités :
 2. **Croiser les actualités (partie A) avec les données chiffrées (partie B)** pour établir des chaînes de causalité concrètes
 3. **Chaque interconnexion doit citer des chiffres** tirés de la partie B comme preuves factuelles
 4. **Signaler les divergences** si des indicateurs envoient des signaux contradictoires
-5. **Ne pas inventer de données** absentes des parties A et B — si une information manque, le mentionner`;
+5. **Ne pas inventer de données** absentes des parties A et B — si une information manque, le mentionner${ragContext ? '\n6. **Exploiter le contexte historique (partie C)** pour la continuité narrative : signaler les évolutions par rapport aux briefings précédents, identifier les tendances qui se confirment ou s\'inversent' : ''}`;
 
     console.log(`  📋 Message total : ${(userMessage.length / 1024).toFixed(1)} Ko`);
 
