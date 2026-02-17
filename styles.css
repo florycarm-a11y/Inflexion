@@ -1494,6 +1494,18 @@ a {
 .market-row-change.positive { color: var(--green); background: none; }
 .market-row-change.negative { color: var(--accent); background: none; }
 
+.market-row-separator {
+    border-bottom: none;
+    padding: 0.6rem 0 0.2rem 0;
+}
+.market-section-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted, #94a3b8);
+    font-weight: 500;
+}
+
 /* ============================================
    News List Items (home page)
    ============================================ */

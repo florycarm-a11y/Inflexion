@@ -482,9 +482,9 @@ function initMarketTable() {
         const arrow = isPositive ? '▲' : '▼';
 
         return `<div class="market-row">
-            <span class="market-name">${escapeHTML(m.name)}</span>
-            <span class="market-price">${m.price.toLocaleString('en-US', {minimumFractionDigits: 2})}</span>
-            <span class="market-change ${colorClass}">${arrow} ${sign}${m.change.toFixed(2)}%</span>
+            <span class="market-row-name">${escapeHTML(m.name)}</span>
+            <span class="market-row-price">${m.price.toLocaleString('fr-FR', {minimumFractionDigits: 2})} $</span>
+            <span class="market-row-change ${colorClass}">${arrow} ${sign}${m.change.toFixed(2).replace('.', ',')} %</span>
         </div>`;
     }).join('');
 }
@@ -748,15 +748,14 @@ function setupLoadingFallbacks() {
             'alerts-placeholder': 'Alertes marché IA — générées quotidiennement par Claude.',
             'briefing-placeholder': 'Briefing marché IA — synthèse quotidienne en cours de génération.',
             'macro-analysis-placeholder': 'Analyse macro IA — rapport en cours de génération par Claude.',
-            'euro-markets-placeholder': 'Indices européens (Twelve Data) — données en cours de récupération.',
-            'wb-placeholder': 'Macro internationale (World Bank) — données mises à jour périodiquement.',
+            'wb-placeholder': 'Macro internationale (Banque mondiale) — données mises à jour périodiquement.',
             'messari-placeholder': 'Métriques crypto avancées (Messari) — données en cours de récupération.',
             'trending-placeholder': 'Crypto & tendances (CoinGecko) — données en cours de récupération.',
-            'defi-placeholder': 'DeFi & yields (DefiLlama) — données en cours de récupération.',
+            'defi-placeholder': 'DeFi & rendements (DefiLlama) — données en cours de récupération.',
             'calendar-placeholder': 'Calendrier économique (Finnhub) — données en cours de récupération.',
             'forex-placeholder': 'Forex (Alpha Vantage) — données en cours de récupération.',
             'sector-placeholder': 'Secteurs US (Alpha Vantage) — données en cours de récupération.',
-            'movers-placeholder': 'Top movers (Alpha Vantage) — données en cours de récupération.'
+            'movers-placeholder': 'Plus fortes variations (Alpha Vantage) — données en cours de récupération.'
         };
 
         Object.keys(fallbackMessages).forEach(function(cls) {

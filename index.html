@@ -255,12 +255,12 @@
                         <div class="macro-indicators" id="macro-indicators">
                             <p class="macro-placeholder">Chargement...</p>
                         </div>
-                        <span class="sidebar-source">Source : Federal Reserve (FRED)</span>
+                        <span class="sidebar-source">Source : Réserve fédérale (FRED)</span>
                     </div>
 
-                    <!-- 3. Fear & Greed Index -->
+                    <!-- 3. Indice Peur & Avidité -->
                     <div class="sidebar-block sidebar-card" id="fng-section">
-                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg> Fear & Greed</h3>
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg> Indice Peur & Avidité</h3>
                         <div class="fng-widget" id="fng-widget">
                             <div class="fng-gauge-container">
                                 <div class="fng-gauge">
@@ -340,31 +340,13 @@
                         <span class="sidebar-source">Source : Claude IA + FRED</span>
                     </div>
 
-                    <!-- Indices Européens (Twelve Data) -->
-                    <div class="sidebar-block sidebar-card" id="european-markets-section">
-                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Indices Européens</h3>
-                        <div id="european-markets-widget" class="european-markets-widget">
-                            <p class="euro-markets-placeholder">Chargement...</p>
-                        </div>
-                        <span class="sidebar-source">Source : Twelve Data</span>
-                    </div>
-
-                    <!-- Macro Internationale (World Bank) -->
+                    <!-- Macro Internationale (Banque mondiale) -->
                     <div class="sidebar-block sidebar-card" id="world-bank-section">
                         <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg> Macro Internationale</h3>
                         <div id="world-bank-widget" class="world-bank-widget">
                             <p class="wb-placeholder">Chargement...</p>
                         </div>
-                        <span class="sidebar-source">Source : World Bank</span>
-                    </div>
-
-                    <!-- Crypto Avancé (Messari) -->
-                    <div class="sidebar-block sidebar-card" id="messari-section">
-                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Crypto Avancé</h3>
-                        <div id="messari-widget" class="messari-widget">
-                            <p class="messari-placeholder">Chargement...</p>
-                        </div>
-                        <span class="sidebar-source">Source : Messari</span>
+                        <span class="sidebar-source">Source : Banque mondiale</span>
                     </div>
 
                     <!-- 4. Crypto (Trending + Calendrier consolidé) -->
@@ -377,23 +359,12 @@
                         <span class="sidebar-source">Source : CoinGecko</span>
                     </div>
 
-                    <!-- 5. DeFi (Protocoles + Yields consolidé) -->
-                    <div class="sidebar-block sidebar-card" id="defi-section">
-                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> DeFi & Yields</h3>
-                        <div id="defi-summary" class="defi-summary"></div>
-                        <div id="defi-protocols" class="defi-protocols">
-                            <p class="defi-placeholder">Chargement...</p>
-                        </div>
-                        <div id="defi-yields" class="defi-yields" style="margin-top:0.8rem;"></div>
-                        <span class="sidebar-source">Source : DefiLlama</span>
-                    </div>
-
                     <!-- Widgets secondaires (masqués par défaut, dépliables) -->
                     <details class="sidebar-details">
                         <summary class="sidebar-details-toggle">Plus de données</summary>
 
-                        <!-- Calendrier Économique -->
-                        <div class="sidebar-block sidebar-card" id="calendar-section">
+                        <!-- Calendrier Économique (masqué si vide) -->
+                        <div class="sidebar-block sidebar-card" id="calendar-section" style="display:none;">
                             <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Calendrier</h3>
                             <div id="economic-calendar" class="economic-calendar">
                                 <p class="calendar-placeholder">Chargement...</p>
@@ -406,24 +377,6 @@
                             <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Forex</h3>
                             <div id="forex-rates" class="forex-rates">
                                 <p class="forex-placeholder">Chargement...</p>
-                            </div>
-                            <span class="sidebar-source">Source : Alpha Vantage</span>
-                        </div>
-
-                        <!-- Secteurs US -->
-                        <div class="sidebar-block sidebar-card" id="sectors-section">
-                            <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg> Secteurs US</h3>
-                            <div id="sector-performance" class="sector-performance">
-                                <p class="sector-placeholder">Chargement...</p>
-                            </div>
-                            <span class="sidebar-source">Source : Alpha Vantage</span>
-                        </div>
-
-                        <!-- Top Movers -->
-                        <div class="sidebar-block sidebar-card" id="movers-section">
-                            <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Top Movers</h3>
-                            <div id="top-movers" class="top-movers">
-                                <p class="movers-placeholder">Chargement...</p>
                             </div>
                             <span class="sidebar-source">Source : Alpha Vantage</span>
                         </div>
@@ -538,7 +491,7 @@
                         <span class="footer-source-tag">FRED</span>
                         <span class="footer-source-tag">BIS</span>
                         <span class="footer-source-tag">IEA</span>
-                        <span class="footer-source-tag">World Bank</span>
+                        <span class="footer-source-tag">Banque mondiale</span>
                         <span class="footer-source-tag">OPEC</span>
                     </div>
                 </div>

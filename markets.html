@@ -172,7 +172,24 @@
                     <div class="sidebar-block sidebar-card">
                         <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Marchés</h3>
                         <div class="market-table" id="market-table" aria-live="polite" role="region" aria-label="Cours des marchés en temps réel"></div>
-                        <a href="markets.html" class="sidebar-more">Voir tous les marchés</a>
+                    </div>
+
+                    <!-- Plus fortes variations -->
+                    <div class="sidebar-block sidebar-card" id="movers-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Plus fortes variations</h3>
+                        <div id="top-movers" class="top-movers">
+                            <p class="movers-placeholder">Chargement...</p>
+                        </div>
+                        <span class="sidebar-source">Source : Alpha Vantage</span>
+                    </div>
+
+                    <!-- Secteurs US -->
+                    <div class="sidebar-block sidebar-card" id="sectors-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg> Secteurs US</h3>
+                        <div id="sector-performance" class="sector-performance">
+                            <p class="sector-placeholder">Chargement...</p>
+                        </div>
+                        <span class="sidebar-source">Source : Alpha Vantage</span>
                     </div>
                 </aside>
             </div>
@@ -204,7 +221,7 @@
                         <span class="footer-source-tag">FRED</span>
                         <span class="footer-source-tag">BIS</span>
                         <span class="footer-source-tag">IEA</span>
-                        <span class="footer-source-tag">World Bank</span>
+                        <span class="footer-source-tag">Banque mondiale</span>
                         <span class="footer-source-tag">OPEC</span>
                     </div>
                 </div>
