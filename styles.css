@@ -286,6 +286,7 @@ a {
 /* Hamburger to X animation when menu is open */
 .menu-trigger[aria-expanded="true"] .hamburger-bar:nth-child(1) {
     transform: translateY(6px) rotate(45deg);
+    background: var(--accent);
 }
 
 .menu-trigger[aria-expanded="true"] .hamburger-bar:nth-child(2) {
@@ -295,6 +296,7 @@ a {
 
 .menu-trigger[aria-expanded="true"] .hamburger-bar:nth-child(3) {
     transform: translateY(-6px) rotate(-45deg);
+    background: var(--accent);
 }
 
 /* Logo */
