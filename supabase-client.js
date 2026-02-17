@@ -145,6 +145,41 @@
         if (logoutBtn) {
             logoutBtn.addEventListener('click', handleLogout);
         }
+
+        // Close auth modal on backdrop click
+        var authModal = document.getElementById('auth-modal');
+        if (authModal) {
+            authModal.addEventListener('click', function (e) {
+                if (e.target === authModal) {
+                    closeAuthModal();
+                }
+            });
+        }
+
+        // Close auth modal on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                var modal = document.getElementById('auth-modal');
+                if (modal && modal.classList.contains('active')) {
+                    closeAuthModal();
+                }
+                var dropdown = document.getElementById('user-dropdown');
+                if (dropdown && dropdown.classList.contains('active')) {
+                    dropdown.classList.remove('active');
+                }
+            }
+        });
+
+        // Close user dropdown on outside click
+        document.addEventListener('click', function (e) {
+            var dropdown = document.getElementById('user-dropdown');
+            var authBtnEl = document.getElementById('auth-btn');
+            if (dropdown && dropdown.classList.contains('active')) {
+                if (!dropdown.contains(e.target) && e.target !== authBtnEl) {
+                    dropdown.classList.remove('active');
+                }
+            }
+        });
     }
 
     function openAuthModal() {
@@ -1132,7 +1167,7 @@
                 if (symbol) {
                     addToWatchlist(symbol, symbol, category);
                     if (symbolInput) symbolInput.value = '';
-                    if (categorySelect) categorySelect.value = 'other';
+                    if (categorySelect) categorySelect.selectedIndex = 0;
                 }
             });
         }

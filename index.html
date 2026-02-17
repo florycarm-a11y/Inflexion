@@ -124,6 +124,8 @@
                 <a href="geopolitics.html" class="nav-overlay-link">Géopolitique</a>
                 <a href="markets.html" class="nav-overlay-link">Marchés</a>
                 <a href="crypto.html" class="nav-overlay-link">Crypto</a>
+                <a href="commodities.html" class="nav-overlay-link">Matières premières</a>
+                <a href="etf.html" class="nav-overlay-link">ETF</a>
                 <a href="analysis.html" class="nav-overlay-link">Analyses</a>
                 <a href="premium.html" class="nav-overlay-link nav-premium">Premium</a>
             </div>
@@ -210,6 +212,122 @@
                         <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Marchés</h3>
                         <div class="market-table" id="market-table" aria-live="polite" role="region" aria-label="Cours des marchés en temps réel"></div>
                         <a href="markets.html" class="sidebar-more">Voir tous les marchés</a>
+                    </div>
+
+                    <!-- Indices européens (Twelve Data) -->
+                    <div class="sidebar-block sidebar-card" id="eu-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Europe</h3>
+                        <div id="european-markets-widget"><p class="eu-placeholder">Chargement...</p></div>
+                    </div>
+
+                    <!-- 2. Indicateurs macro (FRED) -->
+                    <div class="sidebar-block sidebar-card" id="macro-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Macro US</h3>
+                        <div id="macro-indicators"><p class="macro-placeholder">Chargement...</p></div>
+                    </div>
+
+                    <!-- 3. Fear & Greed Index -->
+                    <div class="sidebar-block sidebar-card" id="fng-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg> Fear &amp; Greed</h3>
+                        <div class="fng-widget">
+                            <div class="fng-gauge-container">
+                                <div class="fng-gauge">
+                                    <svg class="fng-gauge-svg" viewBox="0 0 200 120" width="100%" height="auto">
+                                        <path d="M20,100 A80,80 0 0,1 180,100" fill="none" stroke="#e5e7eb" stroke-width="12" stroke-linecap="round"/>
+                                        <path d="M20,100 A80,80 0 0,1 60,35" fill="none" stroke="#dc2626" stroke-width="12" stroke-linecap="round"/>
+                                        <path d="M60,35 A80,80 0 0,1 100,20" fill="none" stroke="#f97316" stroke-width="12" stroke-linecap="round"/>
+                                        <path d="M100,20 A80,80 0 0,1 140,35" fill="none" stroke="#eab308" stroke-width="12" stroke-linecap="round"/>
+                                        <path d="M140,35 A80,80 0 0,1 180,100" fill="none" stroke="#16a34a" stroke-width="12" stroke-linecap="round"/>
+                                        <line id="fng-needle" x1="100" y1="100" x2="100" y2="30" stroke="#ffffff" stroke-width="3" stroke-linecap="round" transform="rotate(0, 100, 100)"/>
+                                        <circle cx="100" cy="100" r="5" fill="#ffffff"/>
+                                    </svg>
+                                </div>
+                                <div class="fng-value-display">
+                                    <span class="fng-score" id="fng-score">--</span>
+                                    <span class="fng-label" id="fng-label">Chargement...</span>
+                                </div>
+                            </div>
+                            <div class="fng-changes">
+                                <span class="fng-change-item"><span class="fng-change-period">7j</span> <span class="fng-change-value" id="fng-change-week">--</span></span>
+                                <span class="fng-change-item"><span class="fng-change-period">30j</span> <span class="fng-change-value" id="fng-change-month">--</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Sentiment IA -->
+                    <div class="sidebar-block sidebar-card" id="sentiment-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Sentiment IA</h3>
+                        <div id="sentiment-widget"><p class="sentiment-placeholder">Chargement...</p></div>
+                    </div>
+
+                    <!-- 5. Alertes marché IA -->
+                    <div class="sidebar-block sidebar-card" id="alerts-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Alertes</h3>
+                        <div id="alerts-widget"><p class="alerts-placeholder">Chargement...</p></div>
+                    </div>
+
+                    <!-- 6. Briefing marché IA -->
+                    <div class="sidebar-block sidebar-card" id="briefing-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Briefing</h3>
+                        <div id="market-briefing-widget"><p class="briefing-placeholder">Chargement...</p></div>
+                    </div>
+
+                    <!-- 7. Analyse macro IA -->
+                    <div class="sidebar-block sidebar-card" id="macro-analysis-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Analyse Macro</h3>
+                        <div id="macro-analysis-widget"><p class="macro-analysis-placeholder">Chargement...</p></div>
+                    </div>
+
+                    <!-- 8. Crypto & tendances -->
+                    <div class="sidebar-block sidebar-card" id="trending-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Crypto tendances</h3>
+                        <div id="trending-coins"><p class="trending-placeholder">Chargement...</p></div>
+                        <div id="crypto-global-stats"></div>
+                        <a href="crypto.html" class="sidebar-more">Voir toutes les cryptos</a>
+                    </div>
+
+                    <!-- 9. Crypto avancé (Messari) -->
+                    <div class="sidebar-block sidebar-card" id="messari-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg> Crypto avancé</h3>
+                        <div id="messari-widget"><p class="messari-placeholder">Chargement...</p></div>
+                    </div>
+
+                    <!-- 10. DeFi & rendements -->
+                    <div class="sidebar-block sidebar-card" id="defi-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg> DeFi</h3>
+                        <div id="defi-summary"></div>
+                        <div id="defi-protocols"><p class="defi-placeholder">Chargement...</p></div>
+                        <div id="defi-yields"></div>
+                    </div>
+
+                    <!-- 11. Calendrier économique -->
+                    <div class="sidebar-block sidebar-card" id="calendar-section" style="display:none;">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Calendrier éco.</h3>
+                        <div id="economic-calendar"><p class="calendar-placeholder">Chargement...</p></div>
+                    </div>
+
+                    <!-- 12. Forex & secteurs -->
+                    <div class="sidebar-block sidebar-card" id="forex-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Forex</h3>
+                        <div id="forex-rates"><p class="forex-placeholder">Chargement...</p></div>
+                    </div>
+
+                    <!-- 13. Secteurs US -->
+                    <div class="sidebar-block sidebar-card" id="sectors-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg> Secteurs US</h3>
+                        <div id="sector-performance"><p class="sector-placeholder">Chargement...</p></div>
+                    </div>
+
+                    <!-- 14. Top movers -->
+                    <div class="sidebar-block sidebar-card" id="movers-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg> Top movers</h3>
+                        <div id="top-movers"><p class="movers-placeholder">Chargement...</p></div>
+                    </div>
+
+                    <!-- 15. Macro internationale (World Bank) -->
+                    <div class="sidebar-block sidebar-card" id="wb-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg> Macro mondiale</h3>
+                        <div id="world-bank-widget"><p class="wb-placeholder">Chargement...</p></div>
                     </div>
 
                 </aside>

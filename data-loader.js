@@ -676,9 +676,12 @@ const DataLoader = (function () {
      * @param {Object} briefing - Données de daily-briefing.json
      */
     function renderDailyBriefing(container, briefing) {
-        // Révéler la section (masquée par défaut)
+        // Révéler la section (masquée par défaut ou par hideEmptySections)
         var section = document.getElementById('article-du-jour-section');
-        if (section) section.classList.remove('section-empty');
+        if (section) {
+            section.classList.remove('section-empty');
+            section.style.display = '';
+        }
 
         var s = briefing.synthese;
 
@@ -809,7 +812,10 @@ const DataLoader = (function () {
      */
     function renderClassicArticle(container, article) {
         var section = document.getElementById('article-du-jour-section');
-        if (section) section.classList.remove('section-empty');
+        if (section) {
+            section.classList.remove('section-empty');
+            section.style.display = '';
+        }
 
         var contenuHTML = markdownToHTML(article.contenu || '');
 
