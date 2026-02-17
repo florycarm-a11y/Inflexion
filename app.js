@@ -745,6 +745,11 @@ function setupLoadingFallbacks() {
             fngLabel.textContent = 'Indisponible';
         }
 
+        // Make sidebar cards visible even without live data (they start at opacity:0)
+        document.querySelectorAll('.sidebar-card').forEach(function(card) {
+            card.classList.add('widget-visible');
+        });
+
         // Hide empty sections
         hideEmptySections();
     }, 10000);
