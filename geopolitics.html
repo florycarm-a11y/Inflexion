@@ -145,6 +145,33 @@
                             <div class="market-table" id="market-table" aria-live="polite" role="region" aria-label="Cours des marchés en temps réel"></div>
                             <a href="markets.html" class="sidebar-more">Voir tous les marchés</a>
                         </div>
+
+                        <!-- Indicateurs Macro (FRED) -->
+                        <div class="sidebar-block sidebar-card" id="macro-section">
+                            <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg> Indicateurs Macro</h3>
+                            <div class="macro-indicators" id="macro-indicators">
+                                <p class="macro-placeholder">Chargement...</p>
+                            </div>
+                            <span class="sidebar-source">Source : Réserve fédérale (FRED)</span>
+                        </div>
+
+                        <!-- Analyse Macro IA -->
+                        <div class="sidebar-block sidebar-card" id="macro-analysis-section">
+                            <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg> Analyse Macro</h3>
+                            <div id="macro-analysis-widget" class="macro-analysis-widget">
+                                <p class="macro-analysis-placeholder">Chargement...</p>
+                            </div>
+                            <span class="sidebar-source">Source : Claude IA + FRED</span>
+                        </div>
+
+                        <!-- Macro Internationale (Banque mondiale) -->
+                        <div class="sidebar-block sidebar-card" id="world-bank-section">
+                            <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg> Macro Internationale</h3>
+                            <div id="world-bank-widget" class="world-bank-widget">
+                                <p class="wb-placeholder">Chargement...</p>
+                            </div>
+                            <span class="sidebar-source">Source : Banque mondiale</span>
+                        </div>
                     </aside>
                 </div>
             </div>

@@ -1432,10 +1432,10 @@ a {
 .sidebar-block {
     margin-bottom: 2rem;
     padding: 1.25rem;
-    background: white;
-    border: 1px solid var(--border-light, #f0f0f0);
+    background: var(--accent-dark);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 8px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
 
 .sidebar-title {
@@ -1448,7 +1448,7 @@ a {
     padding-bottom: 0.5rem;
     position: relative;
     display: inline-block;
-    color: var(--text-primary);
+    color: rgba(255,255,255,0.9);
 }
 
 .sidebar-title::after {
@@ -1458,7 +1458,7 @@ a {
     left: 0;
     width: 100%;
     height: 2px;
-    background: var(--accent);
+    background: rgba(255,255,255,0.2);
 }
 
 .sidebar-nav {
@@ -1493,7 +1493,7 @@ a {
     margin-top: 0.75rem;
     font-family: var(--font-sans);
     font-size: 0.72rem;
-    color: var(--accent);
+    color: rgba(255,255,255,0.6);
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.8px;
@@ -1501,7 +1501,7 @@ a {
 }
 
 .sidebar-more:hover {
-    color: var(--accent-dark);
+    color: #ffffff;
 }
 
 .sidebar-text {
@@ -1517,7 +1517,7 @@ a {
     justify-content: space-between;
     align-items: center;
     padding: 0.55rem 0;
-    border-bottom: 1px solid var(--border-light);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
     font-family: var(--font-sans);
     font-size: 0.82rem;
 }
@@ -1527,7 +1527,7 @@ a {
 }
 
 .market-row-name {
-    color: var(--text-primary);
+    color: rgba(255,255,255,0.9);
     font-weight: 600;
     flex: 1;
 }
@@ -1535,7 +1535,7 @@ a {
 .market-row-price {
     text-align: right;
     margin: 0 0.75rem;
-    color: var(--text-secondary);
+    color: rgba(255,255,255,0.6);
 }
 
 .market-row-change {
@@ -1546,8 +1546,8 @@ a {
     font-size: 0.78rem;
 }
 
-.market-row-change.positive { color: var(--green); background: none; }
-.market-row-change.negative { color: var(--accent); background: none; }
+.market-row-change.positive { color: #34d399; background: none; }
+.market-row-change.negative { color: #f87171; background: none; }
 
 .market-row-separator {
     border-bottom: none;
@@ -1557,7 +1557,7 @@ a {
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: var(--text-muted, #94a3b8);
+    color: rgba(255,255,255,0.5);
     font-weight: 500;
 }
 
@@ -5101,8 +5101,8 @@ a {
 .sidebar-source {
     display: block;
     font-size: 0.65rem;
-    color: var(--text-muted);
-    opacity: 0.7;
+    color: rgba(255,255,255,0.4);
+    opacity: 1;
     margin-top: 0.5rem;
     text-align: right;
 }
@@ -5699,25 +5699,121 @@ a {
 
 /* --- Sidebar cards (box-shadow + border-radius) --- */
 .sidebar-card {
-    background: white;
+    background: var(--accent-dark);
     border-radius: var(--radius-md, 8px);
     padding: 1.2rem;
-    box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.06));
-    border: 1px solid var(--border-light, #f0f0f0);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    border: 1px solid rgba(255,255,255,0.08);
     border-bottom: none;
     margin-bottom: 1rem;
     transition: box-shadow var(--transition-fast);
 }
 
 .sidebar-card:hover {
-    box-shadow: var(--shadow-md, 0 4px 12px rgba(0,0,0,0.08));
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+/* ===== Dark sidebar widget — CSS variable overrides ===== */
+.sidebar-card,
+.sidebar-block {
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255,255,255,0.75);
+    --text-muted: rgba(255,255,255,0.55);
+    --bg-secondary: rgba(255,255,255,0.06);
+    --bg-tertiary: rgba(255,255,255,0.1);
+    --border-color: rgba(255,255,255,0.1);
+    --border-light: rgba(255,255,255,0.08);
+    --accent: #34d399;
+    color: rgba(255,255,255,0.85);
+}
+
+/* Hardcoded background overrides (rgba(0,0,0,…) → rgba(255,255,255,…)) */
+.sidebar-card .crypto-stat-chip,
+.sidebar-card .messari-global span,
+.sidebar-card .defi-stat-chip,
+.sidebar-card .wb-country-item,
+.sidebar-card .trending-coin,
+.sidebar-card .forex-pair,
+.sidebar-card .calendar-event,
+.sidebar-card .defi-protocol-row,
+.sidebar-card .macro-card {
+    background: rgba(255,255,255,0.06);
+}
+
+.sidebar-card .trending-coin:hover,
+.sidebar-card .calendar-event:hover,
+.sidebar-card .defi-protocol-row:hover,
+.sidebar-card .forex-pair:hover,
+.sidebar-card .macro-card:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Green/red change colors — brighter for dark bg */
+.sidebar-card .trending-coin-change.up,
+.sidebar-card .defi-proto-change.up,
+.sidebar-card .mover-pct.gainer {
+    color: #34d399;
+}
+
+.sidebar-card .trending-coin-change.down,
+.sidebar-card .defi-proto-change.down,
+.sidebar-card .mover-pct.loser {
+    color: #f87171;
+}
+
+/* Fear & Greed needle + center dot — white on dark */
+.sidebar-card #fng-needle {
+    stroke: #ffffff !important;
+}
+.sidebar-card .fng-gauge circle {
+    fill: #ffffff !important;
+}
+.sidebar-card .fng-gauge-svg path[stroke="#e5e7eb"] {
+    stroke: rgba(255,255,255,0.15);
+}
+
+/* Briefing signal cards & risk radar on dark bg */
+.sidebar-card .signal-card,
+.sidebar-card .risk-item {
+    background: rgba(255,255,255,0.05);
+}
+.sidebar-card .briefing-sentiment-indicator {
+    background: rgba(255,255,255,0.05);
+}
+
+/* Placeholder text */
+.sidebar-card p[class*="-placeholder"] {
+    color: rgba(255,255,255,0.45);
+}
+
+/* Sidebar details toggle */
+.sidebar-details-toggle {
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    padding: 0.5rem 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+.sidebar-details-toggle:hover {
+    color: #ffffff;
+}
+
+/* European market rows on dark bg */
+.sidebar-card .eu-market-row:hover {
+    background: rgba(255,255,255,0.06);
+}
+
+/* World Bank link on dark bg */
+.sidebar-card .wb-more-link:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: #34d399;
 }
 
 /* --- SVG sidebar icons --- */
 .sidebar-icon {
     vertical-align: -2px;
     margin-right: 4px;
-    stroke: var(--accent);
+    stroke: rgba(255,255,255,0.7);
     flex-shrink: 0;
 }
 
@@ -5952,8 +6048,8 @@ a {
     font-variant: small-caps;
     text-transform: none;
     font-size: 0.7rem;
-    color: var(--text-muted);
-    opacity: 0.6;
+    color: rgba(255,255,255,0.4);
+    opacity: 1;
     letter-spacing: 0.02em;
     margin-top: 0.6rem;
 }
