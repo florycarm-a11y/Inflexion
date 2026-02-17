@@ -2355,19 +2355,35 @@ const DataLoader = (function () {
         // Utilitaires exportés
         formatUSD,
         formatPercent,
-        isFresh
+        isFresh,
+
+        // Internals exposés pour tests unitaires uniquement
+        _internals: {
+            scoreArticle,
+            curateArticles,
+            truncateTitle,
+            isSummaryRedundant,
+            isArticleRelevant,
+            SOURCE_TIERS,
+            IRRELEVANT_PATTERNS,
+            _setCache: function(key, val) { _cache[key] = val; },
+            _setInitialized: function(v) { _initialized = v; },
+            _resetCache: function() { _cache = {}; _initialized = false; }
+        }
     };
 })();
 
 // ─── Initialisation automatique au chargement ──────────────
-document.addEventListener('DOMContentLoaded', async function () {
-    // Pas de délai artificiel — DOMContentLoaded se déclenche après
-    // l'exécution de tous les scripts synchrones (app.js inclus)
-    const hasLiveData = await DataLoader.init();
-    if (hasLiveData) {
-        DataLoader.updateDOM();
-    }
-});
+if (typeof document !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', async function () {
+        // Pas de délai artificiel — DOMContentLoaded se déclenche après
+        // l'exécution de tous les scripts synchrones (app.js inclus)
+        const hasLiveData = await DataLoader.init();
+        if (hasLiveData) {
+            DataLoader.updateDOM();
+        }
+    });
+}
 
 // Export pour module systems
 if (typeof module !== 'undefined' && module.exports) {

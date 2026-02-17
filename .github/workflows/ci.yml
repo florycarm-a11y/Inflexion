@@ -103,7 +103,10 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Run scripts unit tests
-        run: node --test scripts/tests/lib/claude-api.test.mjs
+        run: |
+          node --test scripts/tests/lib/claude-api.test.mjs
+          node --test scripts/tests/data-loader.test.mjs
+          node --test scripts/tests/api-client.test.mjs
 
   # ============================================
   # Build Check
