@@ -107,6 +107,8 @@ jobs:
           node --test scripts/tests/lib/claude-api.test.mjs
           node --test scripts/tests/data-loader.test.mjs
           node --test scripts/tests/api-client.test.mjs
+          node --test scripts/tests/fetch-data.test.mjs
+          node --test scripts/tests/app.test.mjs
 
   # ============================================
   # Build Check

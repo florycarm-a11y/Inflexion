@@ -2019,7 +2019,12 @@ async function main() {
     console.log('═══════════════════════════════════════\n');
 }
 
-main().catch(err => {
-    console.error('Erreur fatale:', err);
-    process.exit(1);
-});
+// Ne pas lancer main() si importé comme module de test
+const isDirectRun = import.meta.url === `file://${process.argv[1]}`;
+if (isDirectRun) {
+    main().catch(err => { console.error('Erreur fatale:', err); process.exit(1); });
+}
+
+// Export pour tests unitaires
+export { stripHTML, extractRSSFields, extractAtomFields, parseRSSItems,
+         isRelevantForCategory, formatDate, isMarketOpen, isEuropeanMarketOpen };
