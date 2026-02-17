@@ -1496,19 +1496,19 @@ a {
    News List Items (home page)
    ============================================ */
 .news-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
 }
 
 .news-list-item {
     background: var(--accent-dark);
-    border-radius: 6px;
+    border-radius: 12px;
     padding: 1rem 1.25rem;
     border-bottom: none;
     box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-    border: 1px solid rgba(255,255,255,0.08);
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
 }
 
 .news-list-item.has-thumb {
@@ -1519,13 +1519,13 @@ a {
 }
 
 .news-list-item.has-thumb .news-list-body {
-    padding: 0.75rem 1.25rem 1rem;
+    padding: 0.85rem 1.1rem 1rem;
 }
 
 .news-list-item:hover {
-    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-    transform: translateY(-2px);
-    background: var(--navy);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    transform: translateY(-3px);
+    border-color: rgba(16, 185, 129, 0.3);
 }
 
 .news-list-body {
@@ -1535,7 +1535,7 @@ a {
 
 .news-list-thumb {
     width: 100%;
-    height: 60px;
+    height: 160px;
     object-fit: cover;
     display: block;
     order: -1;
@@ -1544,9 +1544,9 @@ a {
 .news-list-summary {
     font-family: var(--font-serif);
     font-size: 0.82rem;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.5;
-    margin-top: 0.25rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.55;
+    margin-top: 0.35rem;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -1557,33 +1557,33 @@ a {
 .news-list-source {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.5rem;
+    gap: 0.6rem;
+    margin-bottom: 0.45rem;
     flex-wrap: wrap;
 }
 
 .news-list-item h3 {
     font-family: var(--font-serif);
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 700;
     line-height: 1.4;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.3rem;
 }
 
 .news-list-item h3 a {
     color: #ffffff;
     text-decoration: none;
+    transition: color 0.2s ease;
 }
 
 .news-list-item h3 a:hover {
     color: var(--accent-light);
 }
 
-/* .news-list-item p — remplacé par .news-list-summary pour les résumés */
-
 /* Couleurs adaptées au fond vert foncé des cartes */
 .news-list-item .source-name {
     color: rgba(255,255,255,0.85);
+    font-size: 0.72rem;
 }
 
 .news-list-item .source-name:hover {
@@ -1591,12 +1591,14 @@ a {
 }
 
 .news-list-item .news-time {
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.45);
+    font-size: 0.68rem;
 }
 
 .news-list-item .rubrique-badge {
-    background: rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.1);
     color: rgba(255,255,255,0.9);
+    font-size: 0.68rem;
 }
 
 /* Impact Dot */
@@ -3859,8 +3861,13 @@ a {
         padding: 0.3rem 0.7rem;
     }
 
+    .news-list {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
     .news-list-thumb {
-        height: 50px;
+        height: 140px;
     }
 }
 
