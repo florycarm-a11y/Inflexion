@@ -788,7 +788,7 @@ a {
 }
 
 .story-title a {
-    color: #ffffff;
+    color: #F5F0E8;
     text-decoration: none;
 }
 
@@ -917,7 +917,7 @@ a {
     font-weight: 700;
     line-height: 1.4;
     margin-bottom: 0.6rem;
-    color: #ffffff;
+    color: #F5F0E8;
     transition: color 0.15s ease;
 }
 
@@ -987,7 +987,10 @@ a {
 .news-card .news-title,
 .news-card .news-title a,
 .top-story .story-title,
-.top-story .story-title a,
+.top-story .story-title a {
+    color: #F5F0E8;
+}
+
 .market-card .market-name,
 .market-card .market-price,
 .etf-card .etf-ticker {
@@ -1093,7 +1096,7 @@ a {
 }
 
 .top-story h3 a {
-    color: #ffffff;
+    color: #F5F0E8;
     text-decoration: none;
 }
 
@@ -1165,7 +1168,7 @@ a {
 }
 
 .top-story-link h3 {
-    color: #ffffff;
+    color: #F5F0E8;
 }
 
 .top-story-link:hover h3 {
@@ -1627,7 +1630,7 @@ a {
 }
 
 .news-list-item h3 a {
-    color: #ffffff;
+    color: #F5F0E8;
     text-decoration: none;
     transition: color 0.2s ease;
 }
@@ -2181,7 +2184,7 @@ a {
     font-size: 1.05rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: #ffffff;
+    color: #F5F0E8;
     line-height: 1.4;
     transition: color 0.15s ease;
 }
@@ -3113,13 +3116,11 @@ a {
     transform: translateY(-6px);
     box-shadow: var(--shadow-lg);
     border-left: none;
-    background: var(--bg-primary);
 }
 
 .top-story:nth-child(2):hover,
 .top-story:nth-child(3):hover {
     border-left: none;
-    background: var(--bg-primary);
 }
 
 .top-story:hover::before {
@@ -3839,14 +3840,14 @@ a {
     color: inherit;
     border-radius: 12px;
     overflow: hidden;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
+    background: var(--navy);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .featured-analysis-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 .featured-analysis-banner {
@@ -3878,19 +3879,19 @@ a {
     font-weight: 700;
     line-height: 1.4;
     margin: 0 0 0.5rem;
-    color: var(--text-primary);
+    color: #F5F0E8;
 }
 
 .featured-analysis-body p {
     font-size: 0.85rem;
-    color: var(--text-secondary);
+    color: rgba(245, 240, 232, 0.8);
     line-height: 1.5;
     margin: 0 0 0.75rem;
 }
 
 .featured-analysis-meta {
     font-size: 0.75rem;
-    color: var(--text-muted);
+    color: rgba(245, 240, 232, 0.6);
 }
 
 @media (max-width: 768px) {
