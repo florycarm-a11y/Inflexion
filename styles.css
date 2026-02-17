@@ -505,58 +505,6 @@ a {
     }
 }
 
-/* ============================================
-   News Ticker Ã¢ÂÂ Solid Bar
-   ============================================ */
-.news-ticker {
-    background: var(--navy);
-    padding: 0.6rem 0;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-}
-
-.ticker-label {
-    background: var(--accent);
-    color: white;
-    padding: 0.25rem 0.75rem;
-    font-family: var(--font-sans);
-    font-size: 0.62rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-left: 24px;
-    margin-right: 1.5rem;
-    flex-shrink: 0;
-}
-
-.ticker-content {
-    display: flex;
-    white-space: nowrap;
-    animation: ticker 60s linear infinite;
-    color: rgba(255,255,255,0.9);
-}
-
-.news-ticker:hover .ticker-content {
-    animation-play-state: paused;
-}
-
-@keyframes ticker {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-.ticker-item {
-    font-family: var(--font-sans);
-    font-size: 0.78rem;
-    padding: 0 2rem;
-    font-weight: 400;
-    letter-spacing: 0.2px;
-}
-
-.ticker-separator {
-    opacity: 0.3;
-}
 
 /* ============================================
    Hero Section Ã¢ÂÂ Clean, Typographic
@@ -785,23 +733,11 @@ a {
 /* ============================================
    TradingView Widgets
    ============================================ */
-.market-ticker-widget,
 .market-overview-widget,
 .crypto-chart-widget {
     margin-bottom: 1.5rem;
     border: 1px solid var(--border-color);
     overflow: hidden;
-}
-
-.market-ticker-widget {
-    overflow: visible;
-    border: none;
-    width: 100%;
-    position: relative;
-}
-
-.market-ticker-widget .tradingview-widget-container__widget {
-    width: 100%;
 }
 
 /* ============================================
@@ -2466,10 +2402,6 @@ a {
         grid-template-columns: 1fr !important;
     }
 
-    .news-ticker {
-        display: none;
-    }
-
     .section-header {
         flex-direction: column;
         align-items: flex-start;
@@ -2801,7 +2733,7 @@ a {
    Print Styles
    ============================================ */
 @media print {
-    .header, .news-ticker, .footer {
+    .header, .footer {
         display: none;
     }
 
@@ -2938,12 +2870,6 @@ a {
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
-    .ticker-content {
-        animation: none;
-    }
-    .news-ticker {
-        display: none;
-    }
     .nav-overlay {
         transition: none;
     }
@@ -2951,7 +2877,7 @@ a {
 
 /* Print styles */
 @media print {
-    .header, .footer, .back-to-top, .news-ticker, .nav-overlay {
+    .header, .footer, .back-to-top, .nav-overlay {
         display: none !important;
     }
     .main-content {
@@ -3066,9 +2992,6 @@ a {
     .market-status {
         font-size: 0.65rem;
         padding: 0.12rem 0.35rem;
-    }
-    .news-ticker {
-        font-size: var(--fs-xs);
     }
     .top-story h3,
     .top-story-main h3 {
@@ -5717,38 +5640,6 @@ a {
     flex-shrink: 0;
 }
 
-/* --- Ticker: fix ALERTE badge overlap + fade edges --- */
-.news-ticker {
-    position: relative;
-}
-
-.ticker-label {
-    position: relative;
-    z-index: 2;
-    border-radius: 3px;
-}
-
-.news-ticker::before,
-.news-ticker::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 60px;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.news-ticker::before {
-    left: 0;
-    background: linear-gradient(90deg, var(--navy) 0%, transparent 100%);
-}
-
-.news-ticker::after {
-    right: 0;
-    background: linear-gradient(270deg, var(--navy) 0%, transparent 100%);
-}
-
 /* ============================================
    Interactive Sidebar Widgets (TACHE 3)
    ============================================ */
@@ -6092,28 +5983,6 @@ a {
     color: white;
 }
 
-/* --- Ticker edge fade --- */
-.news-ticker {
-    position: relative;
-}
-.news-ticker::before,
-.news-ticker::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 60px;
-    z-index: 2;
-    pointer-events: none;
-}
-.news-ticker::before {
-    left: 0;
-    background: linear-gradient(to right, var(--navy) 0%, transparent 100%);
-}
-.news-ticker::after {
-    right: 0;
-    background: linear-gradient(to left, var(--navy) 0%, transparent 100%);
-}
 
 /* --- Sidebar: max 5 widgets visible --- */
 #calendar-section,

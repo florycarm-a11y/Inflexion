@@ -9,19 +9,6 @@
    Static Data (fallback if live JSON unavailable)
    ============================================ */
 
-var breakingNews = [
-    "Or à 2 890 $/oz (+18,2% YTD) — les banques centrales achètent massivement",
-    "Bitcoin sous 80 000 $ — les ETF crypto enregistrent 1,7 Md$ de sorties",
-    "Fed : taux maintenus à 4,25–4,50% — Powell reste prudent sur les baisses",
-    "Nvidia dépasse les 3 000 Md$ de capitalisation — IA en pleine euphorie",
-    "Pétrole WTI à 73 $ — tensions au Moyen-Orient et coupes OPEP+",
-    "EUR/USD à 1,04 — le dollar reste fort face à l'incertitude politique européenne",
-    "S&P 500 à +4,2% YTD — la tech tire le marché américain",
-    "Inflation US à 2,9% — au-dessus de l'objectif de la Fed",
-    "Chômage US à 4,0% — le marché du travail reste résilient",
-    "Treasury 10Y à 4,49% — les taux longs restent élevés"
-];
-
 var marketData = [
     { name: "S&P 500", price: 6025.99, change: 0.61 },
     { name: "Nasdaq 100", price: 21580.00, change: 0.85 },
@@ -138,7 +125,6 @@ function initCategoryPage(category) {
 
 function initCommon() {
     initUI();
-    initTicker();
     initSearch();
 }
 
@@ -149,21 +135,6 @@ function initUI() {
     initMarketStatus();
 }
 
-/* ============================================
-   Ticker (Breaking News)
-   ============================================ */
-
-function initTicker() {
-    const ticker = document.getElementById('ticker-content');
-    if (!ticker) return;
-
-    const items = breakingNews.map(text =>
-        `<span class="ticker-item">${escapeHTML(text)}</span><span class="ticker-separator">·</span>`
-    ).join('');
-
-    // Duplicate for seamless loop
-    ticker.innerHTML = items + items;
-}
 
 /* ============================================
    Search
