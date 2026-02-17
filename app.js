@@ -87,7 +87,6 @@ function cardHTML(article) {
             ${excerptHTML}
             <div class="story-footer">
                 <time class="story-time">${time}</time>
-                <a href="${url}" target="_blank" rel="noopener" class="story-link">Lire →</a>
             </div>
         </div>
     </article>`;
@@ -267,7 +266,7 @@ function initStickyHeader() {
 }
 
 /* ============================================
-   Analyses Inflexion (3 static cards)
+   Analyses Inflexion (6 static cards)
    ============================================ */
 
 const _inflexionAnalyses = [
@@ -297,6 +296,33 @@ const _inflexionAnalyses = [
         gradient: 'linear-gradient(135deg, #065F46 0%, #34D399 100%)',
         icon: '',
         label: 'IA & Tech'
+    },
+    {
+        titre: 'SpaceX + xAI : quand Musk crée le premier conglomérat IA-aérospatial à 1 250 milliards',
+        resume: 'La plus grande fusion de l\'histoire crée une entité à 1 250 Mds $. Centres de données orbitaux, constellation de 1 million de satellites, IPO prévue mi-2026.',
+        url: 'analysis.html',
+        date: '5 fév. 2026',
+        gradient: 'linear-gradient(135deg, #1E3A5F 0%, #3B82F6 100%)',
+        icon: '',
+        label: 'Strategie'
+    },
+    {
+        titre: 'Stablecoins : la vraie allocation défensive en crypto (et pourquoi le « digital gold » est mort)',
+        resume: '33 000 Mds $ de transactions en 2025, croissance de 50 %. Les stablecoins sont devenus le seul refuge dans un écosystème où tout baisse avec le BTC.',
+        url: 'analysis.html',
+        date: '5 fév. 2026',
+        gradient: 'linear-gradient(135deg, #312E81 0%, #7C3AED 100%)',
+        icon: '',
+        label: 'Crypto'
+    },
+    {
+        titre: 'Or, argent, pétrole : le supercycle des matières premières face à la dédollarisation',
+        resume: 'Or à 5 100 $, argent au-dessus de 100 $ pour la première fois. Les banques centrales achètent 60 tonnes/mois. L\'OPEC+ maintient ses coupes face à la demande chinoise incertaine.',
+        url: 'analysis.html',
+        date: '6 fév. 2026',
+        gradient: 'linear-gradient(135deg, #78350F 0%, #F59E0B 100%)',
+        icon: '',
+        label: 'Commodities'
     }
 ];
 
