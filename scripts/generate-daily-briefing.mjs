@@ -26,7 +26,7 @@ import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { callClaudeJSON, getUsageStats } from './lib/claude-api.mjs';
-import { DAILY_BRIEFING_SYSTEM_PROMPT } from './lib/prompts.mjs';
+import { DAILY_BRIEFING_SYSTEM_PROMPT, DAILY_BRIEFING_DELTA_SYSTEM_PROMPT } from './lib/prompts.mjs';
 
 // RAG imports chargés dynamiquement dans main() pour ne pas bloquer les tests unitaires
 // (les tests n'importent que les fonctions pures et n'ont pas besoin de @xenova/transformers)
@@ -39,9 +39,69 @@ const DATA_DIR = join(__dirname, '..', 'data');
 // Mode dry-run : valide les données sans appeler Claude (pas de coût API)
 const DRY_RUN = process.argv.includes('--dry-run');
 
-// Modèle utilisé : Sonnet pour la qualité d'analyse stratégique (1 appel/jour)
-const MODEL = 'claude-sonnet-4-5-20250929';
-const MAX_TOKENS = 8500;
+// Cycle hebdomadaire : Sonnet le lundi (briefing complet), Haiku les autres jours (delta)
+const FULL_MODEL = 'claude-sonnet-4-5-20250929';
+const DELTA_MODEL = 'claude-haiku-4-5-20251001';
+const FULL_MAX_TOKENS = 8500;
+const DELTA_MAX_TOKENS = 4000;
+
+/**
+ * Détermine si aujourd'hui est un jour de briefing complet (lundi) ou delta.
+ * @returns {boolean} true si lundi (briefing complet)
+ */
+function isFullBriefingDay() {
+    return new Date().getUTCDay() === 1; // 1 = lundi
+}
+
+/**
+ * Charge le briefing de la veille pour le mode delta.
+ * @returns {Object|null} Briefing précédent ou null
+ */
+function loadPreviousBriefing() {
+    const filepath = join(DATA_DIR, 'daily-briefing.json');
+    if (!existsSync(filepath)) return null;
+    try {
+        const data = JSON.parse(readFileSync(filepath, 'utf-8'));
+        // Vérifier que le briefing n'est pas trop ancien (max 3 jours)
+        if (data.date) {
+            const briefingDate = new Date(data.date);
+            const now = new Date();
+            const diffDays = (now - briefingDate) / (1000 * 60 * 60 * 24);
+            if (diffDays > 3) {
+                console.log(`  ⚠ Briefing précédent trop ancien (${data.date}, ${diffDays.toFixed(0)}j) — mode complet forcé`);
+                return null;
+            }
+        }
+        return data;
+    } catch {
+        return null;
+    }
+}
+
+/**
+ * Formate le briefing précédent en contexte markdown pour le prompt delta.
+ * @param {Object} prev - Briefing précédent
+ * @returns {string} Contexte markdown
+ */
+function formatPreviousBriefing(prev) {
+    const parts = [`## PARTIE D : Briefing de la veille (${prev.date})\n`];
+    if (prev.synthese?.titre) parts.push(`**${prev.synthese.titre}**`);
+    if (prev.synthese?.contenu) parts.push(prev.synthese.contenu.slice(0, 1500));
+    if (prev.signaux?.length) {
+        parts.push('\n### Signaux actifs');
+        for (const s of prev.signaux) {
+            parts.push(`- **${s.titre}** (${s.categorie}, ${s.severite}) : ${s.description?.slice(0, 200) || ''}`);
+        }
+    }
+    if (prev.risk_radar?.length) {
+        parts.push('\n### Risk Radar actif');
+        for (const r of prev.risk_radar) {
+            parts.push(`- **${r.risque}** (${r.severite}, prob: ${r.probabilite}) : ${r.description?.slice(0, 200) || ''}`);
+        }
+    }
+    if (prev.sentiment_global) parts.push(`\nSentiment global : ${prev.sentiment_global}`);
+    return parts.join('\n');
+}
 
 // ─── Utilitaires ─────────────────────────────────────────────
 
@@ -594,8 +654,42 @@ async function main() {
         console.log('\n🧠 RAG : store vide (première exécution, le contexte historique sera disponible demain)');
     }
 
+    // ── 3c. Déterminer le mode : complet (lundi) ou delta (mar-dim) ──
+    const isFullDay = isFullBriefingDay();
+    const previousBriefing = isFullDay ? null : loadPreviousBriefing();
+    // Si pas de briefing précédent un jour delta, forcer le mode complet
+    const useFullMode = isFullDay || !previousBriefing;
+    const MODEL = useFullMode ? FULL_MODEL : DELTA_MODEL;
+    const MAX_TOKENS = useFullMode ? FULL_MAX_TOKENS : DELTA_MAX_TOKENS;
+    const systemPrompt = useFullMode ? DAILY_BRIEFING_SYSTEM_PROMPT : DAILY_BRIEFING_DELTA_SYSTEM_PROMPT;
+
+    console.log(`\n📅 Mode : ${useFullMode ? 'COMPLET (Sonnet)' : 'DELTA (Haiku)'} — ${isFullDay ? 'lundi' : new Date().toLocaleDateString('fr-FR', { weekday: 'long' })}`);
+    if (previousBriefing) {
+        console.log(`  📋 Briefing précédent : ${previousBriefing.date} — "${previousBriefing.synthese?.titre || '?'}"`);
+    }
+
     // Assembler le message complet avec structure claire pour faciliter l'analyse
-    const userMessage = `# Briefing stratégique Inflexion — ${today()}
+    let previousBriefingContext = '';
+    if (previousBriefing && !useFullMode) {
+        previousBriefingContext = `\n${formatPreviousBriefing(previousBriefing)}\n`;
+    }
+
+    const consignes = useFullMode
+        ? `Produis le briefing stratégique quotidien en respectant ces priorités :
+1. **Identifier le fait le plus structurant** du jour (pas le plus spectaculaire — le plus significatif pour un investisseur)
+2. **Croiser les actualités (partie A) avec les données chiffrées (partie B)** pour établir des chaînes de causalité concrètes
+3. **Chaque interconnexion doit citer des chiffres** tirés de la partie B comme preuves factuelles
+4. **Signaler les divergences** si des indicateurs envoient des signaux contradictoires
+5. **Ne pas inventer de données** absentes des parties A et B — si une information manque, le mentionner${ragContext ? '\n6. **Exploiter le contexte historique (partie C)** pour la continuité narrative : signaler les évolutions par rapport aux briefings précédents, identifier les tendances qui se confirment ou s\'inversent' : ''}`
+        : `Produis la MISE À JOUR du briefing en respectant ces priorités :
+1. **Comparer avec le briefing de la veille (partie D)** — qu'est-ce qui a changé ?
+2. **Ne pas répéter** les analyses déjà faites hier — se concentrer sur le NOUVEAU
+3. **Chiffrer les évolutions** vs la veille ("le VIX est passé de X à Y", "le BTC a gagné/perdu X%")
+4. **Signaler les signaux confirmés ou inversés** par rapport à hier
+5. **Mettre à jour le risk radar** — probabilités et sévérités évoluent-elles ?
+6. **Ne pas inventer de données** absentes des parties A, B et D`;
+
+    const userMessage = `# ${useFullMode ? 'Briefing stratégique' : 'Mise à jour quotidienne'} Inflexion — ${today()}
 
 ## PARTIE A : Actualités du jour (${topArticles.length} articles sélectionnés parmi 122 sources RSS + 15 APIs)
 
@@ -604,17 +698,12 @@ ${newsContext}
 ## PARTIE B : Données de marché en temps réel
 
 ${marketSections.join('\n\n')}
-${ragContext}
+${ragContext}${previousBriefingContext}
 ---
 
 ## Consignes de production
 
-Produis le briefing stratégique quotidien en respectant ces priorités :
-1. **Identifier le fait le plus structurant** du jour (pas le plus spectaculaire — le plus significatif pour un investisseur)
-2. **Croiser les actualités (partie A) avec les données chiffrées (partie B)** pour établir des chaînes de causalité concrètes
-3. **Chaque interconnexion doit citer des chiffres** tirés de la partie B comme preuves factuelles
-4. **Signaler les divergences** si des indicateurs envoient des signaux contradictoires
-5. **Ne pas inventer de données** absentes des parties A et B — si une information manque, le mentionner${ragContext ? '\n6. **Exploiter le contexte historique (partie C)** pour la continuité narrative : signaler les évolutions par rapport aux briefings précédents, identifier les tendances qui se confirment ou s\'inversent' : ''}`;
+${consignes}`;
 
     console.log(`  📋 Message total : ${(userMessage.length / 1024).toFixed(1)} Ko`);
 
@@ -624,6 +713,7 @@ Produis le briefing stratégique quotidien en respectant ces priorités :
         console.log(`  📰 ${topArticles.length} articles`);
         console.log(`  📊 ${marketSections.length} sections de données`);
         console.log(`  📋 ${(userMessage.length / 1024).toFixed(1)} Ko de contexte`);
+        console.log(`  📅 Mode : ${useFullMode ? 'complet (Sonnet)' : 'delta (Haiku)'}`);
         return;
     }
 
@@ -635,20 +725,20 @@ Produis le briefing stratégique quotidien en respectant ces priorités :
         process.exit(1);
     }
 
-    // ── 6. Appeler Claude Sonnet pour le briefing ─────────────
-    console.log('\n🤖 Appel Claude Sonnet pour le briefing stratégique...');
+    // ── 6. Appeler Claude pour le briefing ────────────────────
+    console.log(`\n🤖 Appel Claude ${useFullMode ? 'Sonnet (complet)' : 'Haiku (delta)'}...`);
     console.log(`  Modèle : ${MODEL}`);
     console.log(`  Max tokens : ${MAX_TOKENS}`);
 
     try {
         const briefing = await callClaudeJSON({
-            systemPrompt: DAILY_BRIEFING_SYSTEM_PROMPT,
+            systemPrompt,
             userMessage,
             model: MODEL,
             maxTokens: MAX_TOKENS,
-            temperature: 0.3, // Peu de créativité, beaucoup de rigueur
+            temperature: useFullMode ? 0.3 : 0.2,
             label: 'daily-briefing',
-            timeoutMs: 120_000, // 120s car Sonnet + long contexte + 4096 tokens
+            timeoutMs: useFullMode ? 120_000 : 60_000,
             retry: { maxAttempts: 4, initialDelayMs: 5_000, maxDelayMs: 60_000, backoffMultiplier: 2, retryableStatusCodes: [429, 500, 502, 503, 529] },
             validate: (data) => {
                 // Valider la structure du briefing
@@ -656,7 +746,7 @@ Produis le briefing stratégique quotidien en respectant ces priorités :
                 if (!data.synthese?.contenu) return 'synthese.contenu manquant';
                 if (!data.signaux?.length) return 'signaux manquants (tableau vide)';
                 if (!data.risk_radar?.length) return 'risk_radar manquant (tableau vide)';
-                // Vérifier que chaque signal a des interconnexions
+                // Vérifier les interconnexions (obligatoires)
                 for (const s of data.signaux) {
                     if (!s.interconnexions?.length) {
                         return `Signal "${s.titre}" sans interconnexions`;
@@ -670,9 +760,11 @@ Produis le briefing stratégique quotidien en respectant ces priorités :
         const output = {
             date: today(),
             generated_at: new Date().toISOString(),
+            type: useFullMode ? 'full' : 'delta',
             model: MODEL,
             sources_count: topArticles.length,
             sources_market: available.filter(s => s !== 'news' && s !== 'newsapi').length,
+            ...(previousBriefing && !useFullMode ? { reference_date: previousBriefing.date } : {}),
             ...briefing,
         };
 
@@ -682,7 +774,7 @@ Produis le briefing stratégique quotidien en respectant ces priorités :
         // ── 8. Résumé ─────────────────────────────────────────
         const stats = getUsageStats();
         console.log('\n╔══════════════════════════════════════════════════╗');
-        console.log('║  Résumé du briefing                              ║');
+        console.log(`║  Résumé du briefing (${useFullMode ? 'complet' : 'delta'})${' '.repeat(useFullMode ? 21 : 24)}║`);
         console.log('╚══════════════════════════════════════════════════╝');
         console.log(`  📰 Titre : ${briefing.synthese.titre}`);
         console.log(`  🎯 Sentiment : ${briefing.sentiment_global}`);
@@ -719,4 +811,4 @@ if (isDirectRun) {
 export { selectTopArticles, formatNewsContext, formatMarkets, formatCrypto,
          formatFearGreed, formatMacro, formatGlobalMacro, formatCommodities,
          formatEuropeanMarkets, formatDefi, formatAlphaVantage, formatOnChain,
-         formatSentiment };
+         formatSentiment, isFullBriefingDay, loadPreviousBriefing, formatPreviousBriefing };
