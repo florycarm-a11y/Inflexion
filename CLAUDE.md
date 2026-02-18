@@ -404,6 +404,40 @@ python scripts/check-french.py
 - `styles.css` : +.section-subtitle
 - `CLAUDE.md` : documentation session
 
+### Session 2026-02-18 — Fix timeouts API Claude (workflows CI)
+
+**Contexte :** Trois workflows GitHub Actions echouaient systematiquement avec l'erreur "The operation was aborted due to timeout" lors des appels a l'API Claude. Le timeout HTTP par defaut (30s) etait insuffisant pour les completions complexes (4000-6000 tokens), et le workflow `generate-article.yml` avait un timeout global de seulement 5 minutes.
+
+**Probleme racine :** Le module `claude-api.mjs` utilisait un timeout de 30 secondes par requete avec 3 retries (delay 1s → 2s). Pour les scripts generant des reponses longues (macro-analysis, market-briefing, newsletter), l'API Anthropic peut prendre 60+ secondes, causant des echecs en cascade.
+
+**Corrections apportees :**
+
+1. **Client API Claude (`scripts/lib/claude-api.mjs`)** — Augmentation des parametres par defaut :
+   - `timeoutMs` : 30s → 90s
+   - `retry.maxAttempts` : 3 → 4
+   - `retry.initialDelayMs` : 1s → 2s
+   - `retry.maxDelayMs` : 30s → 60s
+
+2. **Scripts lourds — timeout explicite 120s** :
+   - `generate-macro-analysis.mjs` : +`timeoutMs: 120_000` (maxTokens: 4096)
+   - `generate-market-briefing.mjs` : +`timeoutMs: 120_000` (maxTokens: 6000)
+   - `generate-newsletter.mjs` : +`timeoutMs: 120_000` (maxTokens: 6000)
+
+3. **Workflows GitHub Actions — timeout global augmente** :
+   - `generate-article.yml` : 5min → 15min (traduction + classification + generation)
+   - `analyze-sentiment.yml` : 10min → 15min (4 appels Claude sequentiels)
+   - `generate-daily-briefing.yml` : 10min → 15min (Claude Sonnet + RAG)
+
+**Fichiers modifies :**
+- `scripts/lib/claude-api.mjs` : DEFAULT_CONFIG timeout et retry
+- `scripts/generate-macro-analysis.mjs` : +timeoutMs explicite
+- `scripts/generate-market-briefing.mjs` : +timeoutMs explicite
+- `scripts/generate-newsletter.mjs` : +timeoutMs explicite
+- `.github/workflows/generate-article.yml` : timeout 5→15min
+- `.github/workflows/analyze-sentiment.yml` : timeout 10→15min
+- `.github/workflows/generate-daily-briefing.yml` : timeout 10→15min
+- `CLAUDE.md` : documentation session
+
 ### PRs precedentes
 
 **PR #23 (mergee)** : Redesign vert + widgets IA + 78 RSS + automatisation Claude
