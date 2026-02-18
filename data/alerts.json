@@ -1,29 +1,44 @@
 {
-  "updated": "2026-02-18T08:18:48.078Z",
+  "updated": "2026-02-18T13:46:11.580Z",
   "alertes": [
     {
       "id": "alert-2026-02-18-001",
-      "titre": "DOGE : +10,19% sur 7 jours, accélération haussière",
-      "texte": "Dogecoin gagne 10,19% sur une semaine, signalant une reprise après volatilité récente. Ce mouvement haussier intervient dans un contexte de sentiment extrême (Fear & Greed à 8), suggérant une dynamique spéculative. À surveiller : consolidation au-dessus de ce niveau ou retour à la volatilité en cas de correction macro.",
+      "titre": "DOGE : +11,80% sur 7 jours, momentum haussier confirmé",
+      "texte": "Dogecoin gagne 11,80% sur 7 jours, dépassant les gains moyens des altcoins majeurs. Ce mouvement intervient dans un contexte de volatilité accrue du marché crypto (FNG à 8). À surveiller : stabilisation au-dessus des moyennes mobiles 7j/14j pour confirmer la tendance haussière.",
       "categorie": "crypto",
       "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-02-18T08:18:48.078Z",
+      "horodatage": "2026-02-18T13:46:11.580Z",
       "donnees": {
         "symbole": "DOGE",
         "nom": "Dogecoin",
-        "prix": 0.101187,
-        "variation_7d": 10.19
+        "prix": 0.100091,
+        "variation_7d": 11.8
       }
     },
     {
       "id": "alert-2026-02-18-002",
-      "titre": "Or (GLD) : -3,12% à $448,20, rupture de support moyen terme",
-      "texte": "L'ETF or recule de 3,12% à $448,20, traduisant une pression baissière en ligne avec le renforcement du dollar et la hausse des taux réels attendus. Cette baisse s'inscrit dans une tendance de reflux du refuge haussier. Seuil critique : $445 en support technique ; au-delà, risque d'accélération baissière vers $440.",
+      "titre": "ADA : +11,43% sur 7 jours, synchronisation avec rally altcoins",
+      "texte": "Cardano progresse de 11,43% sur 7 jours, parallèlement à Dogecoin, signalant une reprise sectorielle des altcoins. Cette synchronisation suggère une rotation des flux vers les positions de risque intermédiaire. Seuil critique : rupture de la résistance à +15% sur 14j pour valider la poursuite du mouvement.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-02-18T13:46:11.580Z",
+      "donnees": {
+        "symbole": "ADA",
+        "nom": "Cardano",
+        "prix": 0.281717,
+        "variation_7d": 11.43
+      }
+    },
+    {
+      "id": "alert-2026-02-18-003",
+      "titre": "Or (GLD) : -3,12% à $448,20, repli significatif",
+      "texte": "L'or recule de 3,12% à $448,20/oz, reflétant un affaiblissement de la demande défensive dans un environnement de \"Extreme Fear\" (FNG=8). Ce repli contraste avec le comportement historique de l'or en période de panique. Implication : la liquidité prédomine ; surveiller le support psychologique à $445.",
       "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-18T08:18:48.078Z",
+      "horodatage": "2026-02-18T13:46:11.580Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
@@ -32,13 +47,13 @@
       }
     },
     {
-      "id": "alert-2026-02-18-003",
-      "titre": "Apple (AAPL) : +3,17% à $263,88, momentum technologique",
-      "texte": "Apple progresse de 3,17% à $263,88, reflétant une appétence accrue pour les valeurs tech malgré le contexte macro tendu (FNG extrême). Ce gain modéré mais positif contraste avec la faiblesse des matières premières refuge. À surveiller : maintien au-dessus de $260 pour confirmer la dynamique haussière.",
-      "categorie": "ai_tech",
+      "id": "alert-2026-02-18-004",
+      "titre": "AAPL : +3,17% à $263,88, participation aux reprises tech",
+      "texte": "Apple gagne 3,17% à $263,88, montrant une résistance relative malgré le contexte d'Extreme Fear. Ce gain modéré parmi les valeurs défensives suggère un différentiel de confiance envers le secteur tech. Contexte : divergence haussière légère ; surveiller la clôture hebdo au-delà de $265.",
+      "categorie": "marches",
       "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-02-18T08:18:48.078Z",
+      "horodatage": "2026-02-18T13:46:11.580Z",
       "donnees": {
         "symbole": "AAPL",
         "nom": "Apple",
@@ -47,13 +62,13 @@
       }
     },
     {
-      "id": "alert-2026-02-18-004",
-      "titre": "Fear & Greed Index à 8 (Extreme Fear), stabilisation baissière",
-      "texte": "L'indice de sentiment descend à 8 (Extreme Fear) avec une variation de -3 pts sur 7 jours, signalant une aversion au risque croissante mais légèrement stabilisée. Ce niveau extrême (<20) historically précède des rebonds, mais l'absence de panique accélérée (-3 pts seulement) suggère une accumulation progressive. Seuil critique : maintien en dessous de 10 pointera une divergence haussière crypto vs sentiment baissier.",
+      "id": "alert-2026-02-18-005",
+      "titre": "FNG Index à 8 (Extreme Fear), inchangé vs référentiel extrême",
+      "texte": "Le Fear & Greed Index se maintient à 8 (Extreme Fear) avec une variation de -3 pts sur 7j, signalant un sentiment de marché pathologiquement déprimé. À ce niveau, les capitalisations crypto affichent généralement des rebonds tactiques (cf. +11% DOGE/ADA). Surveillance : maintien en-dessous de 20 points indique persistance de la panique ; rupture au-dessus de 30 marquerait inflexion.",
       "categorie": "crypto",
-      "severite": "attention",
+      "severite": "urgent",
       "impact": "neutre",
-      "horodatage": "2026-02-18T08:18:48.078Z",
+      "horodatage": "2026-02-18T13:46:11.580Z",
       "donnees": {
         "score": 8,
         "label": "Extreme Fear",
@@ -62,8 +77,8 @@
     }
   ],
   "stats": {
-    "total": 4,
-    "urgent": 0,
+    "total": 5,
+    "urgent": 1,
     "attention": 3,
     "info": 1
   },

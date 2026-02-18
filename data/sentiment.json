@@ -1,65 +1,65 @@
 {
-  "updated": "2026-02-18T08:18:41.419Z",
+  "updated": "2026-02-18T13:46:02.993Z",
   "date": "2026-02-18",
   "global": {
-    "score": 0.21,
-    "tendance": "haussier",
-    "resume": "Le sentiment global est haussier (+0.21), dominé par la rubrique marches (mixte)."
+    "score": 0.11,
+    "tendance": "mixte",
+    "resume": "Le sentiment global est mixte (+0.11), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": 0.15,
-      "confidence": 0.55,
-      "tendance": "mixte",
-      "resume": "Sentiment géopolitique fragmenté : les initiatives diplomatiques américaines (négociations Ukraine, Board of Peace) génèrent des signaux positifs de désescalade, contrebalancés par des tensions persistantes (escalade Israël-Palestine, instabilité régionale en RDC/Pérou) et une remise en question de l'ordre multilatéral (sanctions contre magistrats de la CPI, tensions avec l'UE). L'impact sur les marchés reste ambigu : potentiel de baisse des primes de risque géopolitique si les négociations aboutissent, mais risque d'accélération des fragmentations commerciales et des tensions transatlantiques.",
+      "score": -0.45,
+      "confidence": 0.62,
+      "tendance": "baissier",
+      "resume": "La géopolitique mondiale affiche un sentiment modérément baissier dominé par des tensions régionales non résolues et des instabilités croissantes. Les conflits au Moyen-Orient (Israël-Palestine, Soudan), les crises institutionnelles (RD Congo, Gabon, Bulgarie) et l'impasse russo-ukrainienne sans avancée concrète créent un environnement d'incertitude géopolitique qui pèse sur les marchés. Quelques signaux positifs (diplomatie indonésienne, négociations ukrainiennes) restent marginaux face à la multiplication des foyers de tension.",
       "signaux_cles": [
-        "Négociations Ukraine-Russie : Witkoff rapporte un « progrès significatif » au jour 2 des pourparlers, signal de désescalade potentielle sur le conflit majeur depuis 2022",
-        "Escalade Israël-Palestine : intensification des attaques et de la prise de territoire en Cisjordanie occupée, maintien de la tension régionale et des risques de débordement",
-        "Remise en question de l'ordre multilatéral : le Vatican refuse de participer au Board of Peace de Trump, sanctions américaines contre un juge de la CPI, tensions diplomatiques avec Bruxelles — signaux de fragmentation des alliances occidentales"
+        "Négociations Russie-Ukraine à Genève sans avancée concrète (19 février 2026) — impasse persistante sur le conflit majeur",
+        "Soudan : 28 morts dans une attaque de drone sur un marché — escalade de la violence humanitaire dans la région",
+        "Israël prolonge les incursions de colons à Al-Aqsa au début du Ramadan — risque d'escalade communautaire pendant période sensible"
       ]
     },
     "marches": {
-      "score": 0.25,
-      "confidence": 0.55,
+      "score": 0.35,
+      "confidence": 0.62,
       "tendance": "mixte",
-      "resume": "Sentiment mitigé dominé par des signaux sectoriels contradictoires : dynamique positive sur les valeurs de croissance (IA, infrastructure, buybacks) et optimisme sélectif (Carrefour, Goldman Sachs upgrade Snam) contrebalancés par des dégradations opérationnelles (SAF-Holland -13% de revenus, stagnation du secteur transport). Absence de catalyseur macro unifié ; marché fragmenté par thématiques.",
+      "resume": "Sentiment modérément haussier porté par des résultats d'entreprises solides (Analog Devices, Moderna, Lilly) et des accords technologiques majeurs (Humain/xAI, Nvidia-Meta), contrebalancé par des signaux baissiers sectoriels (semi-conducteurs fragmentés, tensions réglementaires) et des préoccupations macroéconomiques (endettement des ménages, fiscalité). L'absence de direction claire du marché global suggère une sélectivité accrue par secteur.",
       "signaux_cles": [
-        "Carrefour affiche un plan 2030 de croissance et gains de parts de marché avec hausse des marges, soutenant la confiance sur la valeur française",
-        "SAF-Holland enregistre une baisse de 13% de ses revenus en FY25 due à l'effondrement des dépenses en camions, signalant une faiblesse cyclique du secteur transport",
-        "Goldman Sachs relève la notation de Snam sur la croissance des infrastructures et Mistral AI annonce que 50%+ des logiciels d'entreprise pourraient migrer vers l'IA, reflétant un optimisme sélectif sur les thèmes structurels"
+        "Analog Devices dépasse les estimations T1 avec prévisions T2 au-dessus des attentes — signal haussier pour le secteur semi-conducteurs",
+        "Humain annonce 3 milliards de dollars d'investissement dans xAI avant fusion SpaceX — signal haussier pour l'IA/tech mais crée une fragmentation concurrentielle",
+        "Accord Nvidia-Meta décrit comme potentiellement négatif pour les autres valeurs technologiques — signal de concentration des gains et risque de rotation sectorielle"
       ]
     },
     "crypto": {
-      "score": 0.15,
-      "confidence": 0.55,
+      "score": 0.35,
+      "confidence": 0.62,
       "tendance": "mixte",
-      "resume": "Sentiment contradictoire : accumulation institutionnelle soutenue (achats de 168M$ de BTC, ETF holdings à $1B+) et expansion réglementaire positive (chartes bancaires, ETF prediction markets) contrebalancées par des signaux techniques baissiers (déclin des open interest sur 3 ans, divergence Bitcoin/Nasdaq) et des frictions réglementaires (litiges Kalshi-Nevada, conflits CFTC/États). Le marché crypto reste fragmenté entre adoption mainstream et volatilité structurelle.",
+      "resume": "Sentiment modérément haussier tempéré par des risques systémiques. Les signaux positifs (adoption institutionnelle via BlackRock/Ark, régulation progressive en Californie, stablecoins comme moyen de paiement) sont contrebalancés par des incidents de sécurité DeFi majeurs (Moonwell -1,8M$), des sorties d'ETF Bitcoin (105M$) et des pertes significatives de fonds spécialisés (Brevan Howard -30%). L'implication : marché en phase de consolidation avec divergence claire entre adoption mainstream et fragilités du secteur DeFi.",
       "signaux_cles": [
-        "Accumulation institutionnelle confirmée : Michael Saylor et Strategy achètent 168M$ de BTC supplémentaires ; holdings d'ETF Bitcoin à Abu Dhabi dépassent $1B fin 2025",
-        "Expansion réglementaire mitigée : Bridge (Stripe) obtient approbation conditionnelle OCC pour charte bancaire nationale ; mais conflits CFTC/États sur prediction markets (Nevada vs Kalshi, Federal Appeals Court rejette pause)",
-        "Signaux techniques baissiers : plus grand déclin des open interest Bitcoin en 3 ans ; divergence Bitcoin/Nasdaq qualifiée de 'fire alarm' par Arthur Hayes sur liquidité dollar"
+        "Adoption institutionnelle confirmée : BlackRock accumule ETH pour son ETF staking, Ark Invest achète 6,9M$ d'actions Coinbase après inversion de tendance",
+        "Incidents DeFi critiques : Moonwell perd 1,8M$ de créances douteuses via bug d'oracle, illustrant les risques non-résolus du secteur",
+        "Régulation progressive et flux mixtes : Californie applique licences crypto d'État (DFAL), mais ETF Bitcoin enregistrent 105M$ de sorties simultanément"
       ]
     },
     "matieres_premieres": {
-      "score": 0.25,
+      "score": 0.15,
       "confidence": 0.55,
       "tendance": "mixte",
-      "resume": "Sentiment mitigé dominé par des signaux énergétiques positifs (rebond pétrolier, tensions géopolitiques, hausse des taux de tankers) contrebalancés par une majorité de titres hors-périmètre matières premières (tech, éthique, transport) et l'absence de données macro structurantes. L'implication concrète : volatilité maintenue sur l'énergie, mais pas de direction claire pour l'ensemble de la rubrique.",
+      "resume": "Sentiment contrasté sur les matières premières : tensions géopolitiques croissantes (retrait potentiel des États-Unis de l'AIE, fragmentation énergétique mondiale) et pressions réglementaires (contestation des combustibles fossiles en UE) pèsent sur le secteur, tandis que des signaux de demande soutenue (importations asiatiques record, rebond pétrolier) et des ajustements d'offre (augmentation des réserves chez Woodside) offrent un contrepoids. L'impact net reste neutre à légèrement positif, avec une volatilité accrue attendue.",
       "signaux_cles": [
-        "Rebond des prix pétroliers suite à la réévaluation de l'accord iranien et tensions géopolitiques (Libye, Turquie en Corne de l'Afrique) — facteur haussier pour l'énergie",
-        "Hausse des taux de super-tankers liée aux sanctions et aux réallocations d'approvisionnement stratégique — indicateur de tension sur l'offre pétrolière",
-        "Majorité des 30 titres hors-périmètre matières premières (tech, robotaxi, indices éthiques, agriculture durable) — signal de dilution informationnelle et absence de consensus sur les commodités"
+        "Importations de pétrole brut asiatiques en direction d'un record en février 2026 — soutien de la demande physique malgré les tensions géopolitiques",
+        "États-Unis menacent de quitter l'AIE et fragmentation de la politique énergétique mondiale — risque structurel de désorganisation des marchés énergétiques et volatilité accrue",
+        "Rebond des prix pétroliers suite à la réévaluation de l'accord avec l'Iran — signal de rééquilibrage offre-demande mais dépendant de facteurs géopolitiques instables"
       ]
     },
     "ai_tech": {
-      "score": 0.25,
-      "confidence": 0.55,
+      "score": 0.15,
+      "confidence": 0.45,
       "tendance": "mixte",
-      "resume": "Sentiment mitigé dominé par des avancées technologiques (modèles multilingues, chips AI, amélioration des capacités) contrebalancées par des signaux d'inquiétude sur l'impact réel de l'IA (absence d'impact sur emploi/productivité, doutes du CEO de Palo Alto). Les contentieux légaux et problèmes opérationnels (Tesla, YouTube) ajoutent du bruit sans direction claire.",
+      "resume": "La rubrique AI/Tech affiche un sentiment mitigé dominé par des signaux contradictoires : des investissements et innovations positives (levée de 60M$ pour l'optimisation énergétique, nouveaux modèles IA) côtoient des problèmes de sécurité/conformité sérieux (bug Copilot sur emails confidentiels, dépassements réglementaires chez xAI, manque de garde-fous éthiques chez Anthropic). L'absence de consensus clair limite l'impact directionnel sur les marchés tech.",
       "signaux_cles": [
-        "Anthropic lance Claude Sonnet 4.6 avec amélioration des capacités informatiques — signal haussier sur la progression technologique",
-        "Milliers de PDG admettent que l'IA n'a eu aucun impact sur l'emploi ou la productivité — signal baissier majeur sur la réalisation des promesses commerciales",
-        "Meta signe un accord avec Nvidia pour des millions de puces IA — signal haussier sur l'investissement infrastructure, mais reflète une course aux ressources plutôt qu'une demande métier établie"
+        "DG Matrix lève 60 millions de dollars pour l'optimisation énergétique des data centers — signal haussier sur la rentabilité des infrastructures IA",
+        "Microsoft signale un bug critique causant la synthèse de Copilot sur emails confidentiels — risque de conformité et de réputation pour l'écosystème IA d'entreprise",
+        "xAI continue de dépasser la réglementation environnementale (pollution de l'air) — exposition réglementaire croissante pour les opérateurs de data centers"
       ]
     }
   },
@@ -120,47 +120,47 @@
     },
     {
       "date": "2026-02-18",
-      "global": 0.21,
-      "geopolitique": 0.15,
-      "marches": 0.25,
-      "crypto": 0.15,
-      "matieres_premieres": 0.25,
-      "ai_tech": 0.25
+      "global": 0.11,
+      "geopolitique": -0.45,
+      "marches": 0.35,
+      "crypto": 0.35,
+      "matieres_premieres": 0.15,
+      "ai_tech": 0.15
     }
   ],
   "model": "claude-haiku-4-5-20251001",
   "usage": {
-    "totalInputTokens": 6847,
-    "totalOutputTokens": 1740,
+    "totalInputTokens": 7696,
+    "totalOutputTokens": 1710,
     "totalCalls": 5,
     "callsByLabel": {
       "sentiment-geopolitique": {
         "calls": 1,
-        "inputTokens": 1371,
-        "outputTokens": 389
+        "inputTokens": 1474,
+        "outputTokens": 331
       },
       "sentiment-marches": {
         "calls": 1,
-        "inputTokens": 1504,
-        "outputTokens": 344
+        "inputTokens": 1642,
+        "outputTokens": 330
       },
       "sentiment-crypto": {
         "calls": 1,
-        "inputTokens": 1340,
-        "outputTokens": 353
+        "inputTokens": 1595,
+        "outputTokens": 356
       },
       "sentiment-matieres_premieres": {
         "calls": 1,
-        "inputTokens": 1296,
-        "outputTokens": 343
+        "inputTokens": 1480,
+        "outputTokens": 362
       },
       "sentiment-ai_tech": {
         "calls": 1,
-        "inputTokens": 1336,
-        "outputTokens": 311
+        "inputTokens": 1505,
+        "outputTokens": 331
       }
     },
-    "estimatedCostUSD": 0.0124,
+    "estimatedCostUSD": 0.013,
     "model": "claude-haiku-4-5-20251001"
   }
 }
