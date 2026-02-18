@@ -1,71 +1,71 @@
 {
-  "updated": "2026-02-17T07:31:56.837Z",
+  "updated": "2026-02-18T08:18:48.078Z",
   "alertes": [
     {
-      "id": "alert-2026-02-17-001",
-      "titre": "Or en hausse : +2.49% à $462.62",
-      "texte": "L'ETF or (GLD) progresse de 2.49% à $462.62, reflétant une demande accrue pour les valeurs refuge en contexte d'incertitude macroéconomique.",
-      "categorie": "matieres_premieres",
+      "id": "alert-2026-02-18-001",
+      "titre": "DOGE : +10,19% sur 7 jours, accélération haussière",
+      "texte": "Dogecoin gagne 10,19% sur une semaine, signalant une reprise après volatilité récente. Ce mouvement haussier intervient dans un contexte de sentiment extrême (Fear & Greed à 8), suggérant une dynamique spéculative. À surveiller : consolidation au-dessus de ce niveau ou retour à la volatilité en cas de correction macro.",
+      "categorie": "crypto",
       "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-02-17T07:31:56.837Z",
+      "horodatage": "2026-02-18T08:18:48.078Z",
+      "donnees": {
+        "symbole": "DOGE",
+        "nom": "Dogecoin",
+        "prix": 0.101187,
+        "variation_7d": 10.19
+      }
+    },
+    {
+      "id": "alert-2026-02-18-002",
+      "titre": "Or (GLD) : -3,12% à $448,20, rupture de support moyen terme",
+      "texte": "L'ETF or recule de 3,12% à $448,20, traduisant une pression baissière en ligne avec le renforcement du dollar et la hausse des taux réels attendus. Cette baisse s'inscrit dans une tendance de reflux du refuge haussier. Seuil critique : $445 en support technique ; au-delà, risque d'accélération baissière vers $440.",
+      "categorie": "matieres_premieres",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-02-18T08:18:48.078Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
-        "prix": 462.62,
-        "variation": 2.49
+        "prix": 448.2,
+        "variation": -3.12
       }
     },
     {
-      "id": "alert-2026-02-17-002",
-      "titre": "Nvidia recule de 2.21% à $182.81",
-      "texte": "Le titre Nvidia (NVDA) perd 2.21% à $182.81, contribuant à la pression générale sur le secteur technologique.",
+      "id": "alert-2026-02-18-003",
+      "titre": "Apple (AAPL) : +3,17% à $263,88, momentum technologique",
+      "texte": "Apple progresse de 3,17% à $263,88, reflétant une appétence accrue pour les valeurs tech malgré le contexte macro tendu (FNG extrême). Ce gain modéré mais positif contraste avec la faiblesse des matières premières refuge. À surveiller : maintien au-dessus de $260 pour confirmer la dynamique haussière.",
       "categorie": "ai_tech",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-02-17T07:31:56.837Z",
-      "donnees": {
-        "symbole": "NVDA",
-        "nom": "Nvidia",
-        "prix": 182.81,
-        "variation": -2.21
-      }
-    },
-    {
-      "id": "alert-2026-02-17-003",
-      "titre": "Apple chute de 2.27% à $255.78",
-      "texte": "Apple (AAPL) recule de 2.27% à $255.78, s'inscrivant dans une tendance baissière des valeurs technologiques majeures.",
-      "categorie": "ai_tech",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-02-17T07:31:56.837Z",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-02-18T08:18:48.078Z",
       "donnees": {
         "symbole": "AAPL",
         "nom": "Apple",
-        "prix": 255.78,
-        "variation": -2.27
+        "prix": 263.88,
+        "variation": 3.17
       }
     },
     {
-      "id": "alert-2026-02-17-004",
-      "titre": "Fear & Greed à 10 : Peur Extrême",
-      "texte": "L'indice Fear & Greed atteint 10/100 (Peur Extrême) avec une variation hebdomadaire de +1 point, indiquant un sentiment de marché fortement négatif et une aversion au risque prononcée.",
-      "categorie": "marches",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-02-17T07:31:56.837Z",
+      "id": "alert-2026-02-18-004",
+      "titre": "Fear & Greed Index à 8 (Extreme Fear), stabilisation baissière",
+      "texte": "L'indice de sentiment descend à 8 (Extreme Fear) avec une variation de -3 pts sur 7 jours, signalant une aversion au risque croissante mais légèrement stabilisée. Ce niveau extrême (<20) historically précède des rebonds, mais l'absence de panique accélérée (-3 pts seulement) suggère une accumulation progressive. Seuil critique : maintien en dessous de 10 pointera une divergence haussière crypto vs sentiment baissier.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "neutre",
+      "horodatage": "2026-02-18T08:18:48.078Z",
       "donnees": {
-        "score": 10,
+        "score": 8,
         "label": "Extreme Fear",
-        "variation_7j": 1
+        "variation_7j": -3
       }
     }
   ],
   "stats": {
     "total": 4,
-    "urgent": 1,
+    "urgent": 0,
     "attention": 3,
-    "info": 0
+    "info": 1
   },
   "model": "claude-haiku-4-5-20251001"
 }
