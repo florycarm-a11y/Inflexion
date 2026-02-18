@@ -1,74 +1,74 @@
 {
-  "updated": "2026-02-18T13:46:11.580Z",
+  "updated": "2026-02-18T19:27:29.576Z",
   "alertes": [
     {
       "id": "alert-2026-02-18-001",
-      "titre": "DOGE : +11,80% sur 7 jours, momentum haussier confirmé",
-      "texte": "Dogecoin gagne 11,80% sur 7 jours, dépassant les gains moyens des altcoins majeurs. Ce mouvement intervient dans un contexte de volatilité accrue du marché crypto (FNG à 8). À surveiller : stabilisation au-dessus des moyennes mobiles 7j/14j pour confirmer la tendance haussière.",
+      "titre": "DOGE : +11,40% sur 7 jours, franchise les 0,40 $",
+      "texte": "Dogecoin gagne 11,40% hebdomadaire et consolide au-dessus de 0,40 $, portée par l'intérêt retail et les annonces d'intégration de paiement. Ce momentum contraste avec la domination de la peur générale (FNG à 8). Surveiller la tenue du seuil 0,38 $ en support technique.",
       "categorie": "crypto",
       "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-02-18T13:46:11.580Z",
+      "horodatage": "2026-02-18T19:27:29.576Z",
       "donnees": {
         "symbole": "DOGE",
         "nom": "Dogecoin",
-        "prix": 0.100091,
-        "variation_7d": 11.8
+        "prix": 0.099096,
+        "variation_7d": 11.4
       }
     },
     {
       "id": "alert-2026-02-18-002",
-      "titre": "ADA : +11,43% sur 7 jours, synchronisation avec rally altcoins",
-      "texte": "Cardano progresse de 11,43% sur 7 jours, parallèlement à Dogecoin, signalant une reprise sectorielle des altcoins. Cette synchronisation suggère une rotation des flux vers les positions de risque intermédiaire. Seuil critique : rupture de la résistance à +15% sur 14j pour valider la poursuite du mouvement.",
-      "categorie": "crypto",
-      "severite": "attention",
+      "titre": "Or (GLD) : +2,34%, atteint $458,71",
+      "texte": "L'or avance à $458,71 (+2,34%), reflétant une demande accrue de refuge dans un contexte de peur extrême (FNG=8). Cette progression s'inscrit dans un mouvement de rotation vers les actifs défensifs face à l'aversion au risque. Surveiller la résistance à $465.",
+      "categorie": "matieres_premieres",
+      "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-02-18T13:46:11.580Z",
+      "horodatage": "2026-02-18T19:27:29.576Z",
       "donnees": {
-        "symbole": "ADA",
-        "nom": "Cardano",
-        "prix": 0.281717,
-        "variation_7d": 11.43
+        "symbole": "GLD",
+        "nom": "Or (ETF)",
+        "prix": 458.71,
+        "variation": 2.34
       }
     },
     {
       "id": "alert-2026-02-18-003",
-      "titre": "Or (GLD) : -3,12% à $448,20, repli significatif",
-      "texte": "L'or recule de 3,12% à $448,20/oz, reflétant un affaiblissement de la demande défensive dans un environnement de \"Extreme Fear\" (FNG=8). Ce repli contraste avec le comportement historique de l'or en période de panique. Implication : la liquidité prédomine ; surveiller le support psychologique à $445.",
+      "titre": "Pétrole (USO) : +4,49%, $79,13 par baril",
+      "texte": "Le brut gagne 4,49% à $79,13/baril, signalant une demande physique persistante malgré le contexte de peur. Cette hausse diverge de la faiblesse habituelle des commodities en phase de stress et peut indiquer des tensions d'approvisionnement ou une activité économique sous-jacente résiliente. Surveiller le seuil critique $76.",
       "categorie": "matieres_premieres",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-02-18T13:46:11.580Z",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-02-18T19:27:29.576Z",
       "donnees": {
-        "symbole": "GLD",
-        "nom": "Or (ETF)",
-        "prix": 448.2,
-        "variation": -3.12
+        "symbole": "USO",
+        "nom": "Pétrole (ETF)",
+        "prix": 79.13,
+        "variation": 4.49
       }
     },
     {
       "id": "alert-2026-02-18-004",
-      "titre": "AAPL : +3,17% à $263,88, participation aux reprises tech",
-      "texte": "Apple gagne 3,17% à $263,88, montrant une résistance relative malgré le contexte d'Extreme Fear. Ce gain modéré parmi les valeurs défensives suggère un différentiel de confiance envers le secteur tech. Contexte : divergence haussière légère ; surveiller la clôture hebdo au-delà de $265.",
-      "categorie": "marches",
+      "titre": "Nvidia (NVDA) : +2,14%, $188,92",
+      "texte": "Nvidia progresse de 2,14% à $188,92, démontrant une certaine résilience du secteur IA/technologie face à l'extrême peur (FNG=8). Cette stabilité relative suggère que les investisseurs long-terme maintiennent leur exposition aux leaders de l'IA. Surveiller la tenue du support $185.",
+      "categorie": "ai_tech",
       "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-02-18T13:46:11.580Z",
+      "horodatage": "2026-02-18T19:27:29.576Z",
       "donnees": {
-        "symbole": "AAPL",
-        "nom": "Apple",
-        "prix": 263.88,
-        "variation": 3.17
+        "symbole": "NVDA",
+        "nom": "Nvidia",
+        "prix": 188.92,
+        "variation": 2.14
       }
     },
     {
       "id": "alert-2026-02-18-005",
-      "titre": "FNG Index à 8 (Extreme Fear), inchangé vs référentiel extrême",
-      "texte": "Le Fear & Greed Index se maintient à 8 (Extreme Fear) avec une variation de -3 pts sur 7j, signalant un sentiment de marché pathologiquement déprimé. À ce niveau, les capitalisations crypto affichent généralement des rebonds tactiques (cf. +11% DOGE/ADA). Surveillance : maintien en-dessous de 20 points indique persistance de la panique ; rupture au-dessus de 30 marquerait inflexion.",
-      "categorie": "crypto",
+      "titre": "Fear & Greed Index : 8 (Extrême Peur), -3 pts sur 7j",
+      "texte": "L'indice de peur atteint 8 (extrême peur), très proche de son plus bas absolu (<10). La dégradation de 3 points en 7 jours indique une accélération de l'aversion au risque. Contexte : capitulation généralisée et rotation massive vers les actifs défensifs (or, obligations). Point pivot : un retour au-dessus de 15 signerait un changement de régime.",
+      "categorie": "macro",
       "severite": "urgent",
-      "impact": "neutre",
-      "horodatage": "2026-02-18T13:46:11.580Z",
+      "impact": "baissier",
+      "horodatage": "2026-02-18T19:27:29.576Z",
       "donnees": {
         "score": 8,
         "label": "Extreme Fear",
@@ -79,8 +79,8 @@
   "stats": {
     "total": 5,
     "urgent": 1,
-    "attention": 3,
-    "info": 1
+    "attention": 1,
+    "info": 3
   },
   "model": "claude-haiku-4-5-20251001"
 }
