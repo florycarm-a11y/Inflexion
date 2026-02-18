@@ -67,6 +67,7 @@ jobs:
           key: transformers-all-MiniLM-L6-v2
 
       - name: "📚 RAG — Indexation des articles du jour"
+        continue-on-error: true
         run: node scripts/rag-index.mjs --articles
 
       - name: "🧠 Génération du briefing stratégique (avec RAG)"
@@ -75,6 +76,7 @@ jobs:
         run: node scripts/generate-daily-briefing.mjs
 
       - name: "📋 RAG — Indexation du briefing produit"
+        continue-on-error: true
         run: node scripts/rag-index.mjs --briefing
 
       - name: "📝 Commit et push"
