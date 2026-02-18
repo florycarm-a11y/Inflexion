@@ -244,7 +244,7 @@ async function main() {
         const newsletter = await callClaudeJSON({
             systemPrompt: NEWSLETTER_SYSTEM_PROMPT,
             userMessage,
-            maxTokens: 3000,
+            maxTokens: 6000,
             label: 'newsletter',
             validate: (data) => {
                 if (!data.titre_semaine) return 'Champ "titre_semaine" manquant';

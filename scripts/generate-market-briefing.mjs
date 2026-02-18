@@ -238,7 +238,7 @@ Cite les chiffres précis des données ci-dessus comme preuves de tes analyses.`
         const briefing = await callClaudeJSON({
             systemPrompt: MARKET_BRIEFING_SYSTEM_PROMPT,
             userMessage,
-            maxTokens: 4096,
+            maxTokens: 6000,
             temperature: 0.4,
             label: 'market-briefing',
             validate: (data) => {
