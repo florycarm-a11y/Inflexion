@@ -33,7 +33,7 @@ if (!existsSync(ARTICLES_DIR)) mkdirSync(ARTICLES_DIR, { recursive: true });
 
 const TAVILY_API_URL = 'https://api.tavily.com/search';
 const MODEL = 'claude-haiku-4-5-20251001'; // Haiku : rapide et économique
-const MAX_TOKENS_ARTICLE = 2048;
+const MAX_TOKENS_ARTICLE = 4096;
 
 // ─── Rubriques et mots-clés (classification hybride) ────────
 
