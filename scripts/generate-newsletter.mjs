@@ -245,6 +245,7 @@ async function main() {
             systemPrompt: NEWSLETTER_SYSTEM_PROMPT,
             userMessage,
             maxTokens: 6000,
+            timeoutMs: 120_000,
             label: 'newsletter',
             validate: (data) => {
                 if (!data.titre_semaine) return 'Champ "titre_semaine" manquant';

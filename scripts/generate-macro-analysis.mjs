@@ -133,6 +133,7 @@ Analyse ces indicateurs et produis un briefing macroéconomique structuré avec 
             systemPrompt: MACRO_ANALYSIS_SYSTEM_PROMPT,
             userMessage,
             maxTokens: 4096,
+            timeoutMs: 120_000,
             temperature: 0.3,
             label: 'macro-analysis',
             validate: (data) => {

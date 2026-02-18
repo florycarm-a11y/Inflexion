@@ -239,6 +239,7 @@ Cite les chiffres précis des données ci-dessus comme preuves de tes analyses.`
             systemPrompt: MARKET_BRIEFING_SYSTEM_PROMPT,
             userMessage,
             maxTokens: 6000,
+            timeoutMs: 120_000,
             temperature: 0.4,
             label: 'market-briefing',
             validate: (data) => {
