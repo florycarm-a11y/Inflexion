@@ -1,239 +1,137 @@
-# Inflexion - Géopolitique & Marchés Financiers
+# Inflexion — Géopolitique & Marchés Financiers
 
-Plateforme d'intelligence financière combinant analyses géopolitiques et données de marché en temps réel pour des décisions d'investissement éclairées.
+Plateforme d'intelligence financière automatisée combinant analyses géopolitiques et données de marché en temps réel. Agrège 15 APIs, 122 flux RSS et génère des synthèses IA quotidiennes via Claude pour les investisseurs francophones.
 
-## Aperçu
+**Production** : [florycarm-a11y.github.io/Inflexion](https://florycarm-a11y.github.io/Inflexion/)
 
-Inflexion est une application web qui agrège et présente les actualités géopolitiques mondiales et leur impact sur les marchés financiers, incluant:
+## Architecture & Stack
 
-- **Bitcoin & Cryptomonnaies** - Suivi en temps réel des principales cryptos
-- **Matières Premières** - Or, pétrole, gaz, métaux industriels
-- **ETF & Fonds** - Analyse des flux et performances
-- **Indices Boursiers** - S&P 500, CAC 40, NASDAQ, etc.
+- **Frontend** : HTML5, CSS3, JavaScript Vanilla — déployé via GitHub Pages
+- **Backend** : Supabase (auth, PostgreSQL, RLS) + Express.js API (rate limiting, compression, Helmet)
+- **Automatisation** : 8 workflows GitHub Actions — fetch données (4x/jour), briefing IA quotidien, article quotidien, analyse de sentiment (4x/jour), newsletter hebdomadaire, traduction, RAG indexation, CI/CD
+- **IA** : API Claude (Haiku pour le quotidien, Sonnet pour les briefings complets du lundi) via module centralisé avec retry exponentiel, rate limiting et suivi des coûts
 
-## Fonctionnalités
+## Sources de données
 
-### Données en Temps Réel
-- Widgets TradingView intégrés pour les cotations live
-- Mise à jour automatique des prix toutes les 10 secondes
-- Ticker d'actualités en continu (breaking news)
-- Indicateurs d'impact sur les marchés
-
-### Sources de Données (112+)
-
-**APIs temps réel (15 sources) :**
-- CoinGecko (crypto, trending, stablecoins)
-- Finnhub (indices boursiers, calendrier économique, VIX)
-- FRED (10 indicateurs macroéconomiques US)
+**15 APIs temps réel :**
+- CoinGecko (crypto, trending, stablecoins, historique 90j)
+- Finnhub (indices US, VIX, calendrier économique)
+- FRED (10 séries macroéconomiques US)
 - Alpha Vantage (forex, secteurs, top gainers/losers)
-- DefiLlama (TVL DeFi, protocoles, yields)
-- Alternative.me (Fear & Greed Index crypto)
+- DefiLlama (TVL DeFi, protocoles, yields stablecoins)
+- Alternative.me (Fear & Greed Index crypto, historique 31j)
 - GNews (actualités multi-catégories FR/EN)
-- metals.dev (cours métaux précieux & industriels)
+- metals.dev (métaux précieux & industriels)
 - Etherscan (ETH gas tracker)
 - Mempool.space (BTC fees, hashrate, difficulté)
-- ECB Data API (taux directeur BCE, EUR/USD fixing)
-- Messari (crypto avancé : dominance, volumes, métriques globales)
-- Twelve Data (indices européens : CAC 40, DAX, FTSE 100, Euro Stoxx 50)
-- World Bank (données macro internationales : PIB, inflation, chômage, dette)
-- NewsAPI (actualités complémentaires EN, couverture élargie)
+- ECB Data API (taux directeur BCE, EUR/USD fixing 90j)
+- Messari (crypto avancé : dominance BTC, volumes, métriques globales)
+- Twelve Data (indices européens : CAC 40, DAX, FTSE 100, Euro Stoxx 50, IBEX 35, FTSE MIB)
+- World Bank (PIB, inflation, chômage, dette — 10 économies majeures)
+- NewsAPI (actualités EN complémentaires, 5 catégories)
 
-**Flux RSS spécialisés (97 sources) :**
+**122 flux RSS spécialisés :**
+- Géopolitique (21) : Le Figaro, France 24, BBC World, Al Jazeera, Reuters, CFR, Brookings, Carnegie, CSIS, IFRI, Chatham House, SIPRI, Crisis Group...
+- Marchés & Finance (25) : Les Echos, BFM Business, MarketWatch, CNBC, Wolf Street, BIS, IMF Blog, OECD, L'AGEFI, BCE, Banque de France...
+- Crypto & Blockchain (14) : CoinDesk, CoinTelegraph, The Block, Decrypt, Blockworks, Chainalysis, The Defiant...
+- Matières Premières & Énergie (19) : OilPrice, Mining.com, OPEC, IEA, IRENA, Carbon Brief, S&P Global...
+- IA, Tech & Cybersécurité (18) : TechCrunch, MIT Tech Review, Krebs on Security, Hacker News, VentureBeat AI...
 
-*Géopolitique (21 sources) :*
-- Presse FR : Le Figaro International, France 24, RFI, Courrier International, Le Monde Diplomatique, Le Monde Intl
-- Presse intl : BBC World, Al Jazeera, The Guardian, New York Times, Reuters, Politico EU
-- Think tanks : Foreign Policy, CFR, Brookings, Carnegie, CSIS, Responsible Statecraft, War on the Rocks
-- Régional : The Diplomat (Asie-Pacifique), Middle East Eye (MENA)
+## Automatisations IA
 
-*Marchés & Finance (25 sources) :*
-- Presse FR : Le Figaro (Éco, Conjoncture, Sociétés, Flash Éco, Finances), Les Echos, BFM Business, Zonebourse, La Tribune (général + finance), Capital, Le Monde Éco, Challenges, MoneyVox
-- Presse intl : MarketWatch, Yahoo Finance, Seeking Alpha, CNBC, Investing.com
-- Macro spécialisé : Wolf Street, Calculated Risk, Naked Capitalism, TLDR Fintech
-- Think tanks macro : BIS (BRI), IMF Blog, World Economic Forum, PIIE, VoxEU/CEPR, OECD
+- **Briefing stratégique quotidien** : croisement signaux géopolitiques × données marché via Claude. Cycle hebdomadaire : Sonnet le lundi (briefing complet), Haiku du mardi au dimanche (briefing delta). Enrichi par contexte RAG historique.
+- **Article d'analyse quotidien** : rédaction automatisée avec contextualisation chiffrée, classification par rubrique et traduction EN→FR.
+- **Analyse de sentiment** : scoring par rubrique toutes les 6h, génération d'alertes marché et analyse macro. Historique 30 jours.
+- **Newsletter hebdomadaire** : synthèse automatique chaque dimanche (10h UTC), couvrant les faits marquants de la semaine.
+- **Traduction automatique** EN→FR de tous les articles via Claude Haiku.
+- **Classification d'articles** par rubrique (géopolitique, marchés, crypto, matières premières, IA/tech) via Claude.
 
-*Crypto & Blockchain (14 sources) :*
-- FR : CoinTelegraph FR, Cryptoast, Journal du Coin
-- Actualités : CoinDesk, CoinTelegraph EN, The Block, Decrypt, Blockworks, Bitcoin Magazine
-- Spécialisé DeFi/On-chain : The Defiant, Unchained, Web3 is Going Great, Chainalysis
-- Newsletter : TLDR Crypto
+## RAG (Retrieval-Augmented Generation)
 
-*Matières Premières & Énergie (19 sources) :*
-- Énergie : OilPrice, Rigzone, Natural Gas Intelligence, Reuters Commodities
-- Métaux : GoldPrice.org, Mining.com, MetalMiner, S&P Global
-- Agriculture : Feedstuffs, DTN Ag News
-- Transversal : Hellenic Shipping News, Trading Economics
-- Énergie & climat : IEA, IRENA, Carbon Brief, CleanTechnica, Reuters Sustainability, Energy Monitor, S&P Energy Transition
+- Embeddings locaux avec `all-MiniLM-L6-v2` (transformers.js, 384 dimensions, zéro API externe)
+- Vector store JSON (articles + briefings) avec limite configurable (500 articles, 60 briefings)
+- Recherche par similarité cosinus pour enrichir le contexte des briefings quotidiens
+- Indexation automatique post-fetch et post-briefing via GitHub Actions (workflow `generate-daily-briefing.yml`)
 
-*IA, Tech & Cybersécurité (18 sources) :*
-- FR : Le Figaro Tech, 01net, Numerama, Next INpact
-- Tech : TechCrunch, The Verge, Ars Technica, Wired, Hacker News
-- IA spécialisé : VentureBeat AI, MIT Tech Review, IEEE Spectrum AI, MarkTechPost, The Decoder
-- Cybersécurité : Krebs on Security, BleepingComputer, The Register
-- Newsletters : TLDR Tech, TLDR AI
+## Base de données Supabase
 
-### Catégories d'Actualités
+- **Profils utilisateurs** : auth Supabase + trigger automatique `handle_new_user`
+- **Watchlists personnalisées** : suivi d'actifs avec enrichissement live (prix, variation 24h), alertes croisées (watchlist × 122 sources RSS × alertes Claude), partage via lien public (code 12 caractères)
+- **Annotations collaboratives** sur actifs (auteur, date, texte)
+- **Archive** des articles IA et newsletters
+- **Row Level Security (RLS)** sur toutes les tables : chaque utilisateur ne voit/modifie que ses propres données
 
-1. **Géopolitique** - Tensions internationales, sanctions, diplomatie
-2. **Marchés** - Analyses boursières, politique monétaire
-3. **Crypto** - Bitcoin, Ethereum, DeFi, régulations
-4. **Matières Premières** - Énergie, métaux, agriculture
-5. **ETF** - Fonds indiciels, flux de capitaux
-6. **Analyses** - Perspectives et études approfondies
+Tables : `profiles`, `watchlist`, `articles`, `newsletter`, `shared_watchlists`, `watchlist_annotations`
 
-## Technologies
+## Frontend
 
-- **HTML5** - Structure sémantique
-- **CSS3** - Design responsive, animations fluides, thème sombre
-- **JavaScript Vanilla** - Aucune dépendance externe
-- **TradingView Widgets** - Graphiques et cotations en temps réel
-- **Google Fonts (Inter)** - Typographie moderne
+- **Dashboard temps réel** avec 16+ widgets (indices, macro, crypto, DeFi, sentiment IA, alertes, briefing, Fear & Greed, forex, calendrier économique)
+- **Pages dédiées** : marchés, crypto, commodités, ETF, géopolitique, macro par pays (10 économies)
+- **Pages d'analyse** : droits de douane Trump/Groenland, IA et marchés, divergence or/bitcoin
+- **Curation qualitative** : algorithme de scoring multi-critères (autorité source, qualité titre/description, fraîcheur, langue) — sélection de 12 articles/jour équilibrés entre rubriques
+- **Watchlist avancée** : données live, alertes croisées, partage, annotations, génération de rapports HTML
+- **TradingView widgets** intégrés pour graphiques temps réel
+- **Responsive mobile-first** (breakpoints 480/768/1024px)
+- **Accessibilité** : ARIA labels, navigation clavier, contrastes WCAG
+- **SEO** : sitemap.xml, robots.txt, manifest.json
+- **Pages légales** : CGU, politique de confidentialité, mentions légales
+
+## Tests & CI/CD
+
+**Pipeline CI** (`ci.yml`) : lint ESLint + tests unitaires + tests d'intégration + coverage (Codecov, seuil 70%)
+
+**Tests backend** (Jest + Supertest) :
+- Modèle Article, agrégateur, base de données, API REST
+
+**Tests scripts** (Node.js native test runner) :
+- fetch-data, data-loader, api-client, supabase-client, generate-daily-briefing, app
 
 ## Installation
 
-### Option 1: Ouvrir directement
 ```bash
 # Cloner le repo
-git clone https://github.com/votre-repo/geofinance.git
-cd geofinance
+git clone https://github.com/florycarm-a11y/Inflexion.git
+cd Inflexion
 
-# Ouvrir index.html dans un navigateur
-open index.html       # macOS
-xdg-open index.html   # Linux
-start index.html      # Windows
-```
+# Installer les dépendances
+npm install
+cd backend && npm install && cd ..
 
-### Option 2: Serveur local
-```bash
-# Avec Python 3
-python -m http.server 8000
-
-# Avec Node.js
+# Serveur local
 npx serve .
 
-# Avec PHP
-php -S localhost:8000
+# Lancer les tests
+npm test
+cd backend && npm test
 ```
 
-Puis accéder à `http://localhost:8000`
+### Variables d'environnement
 
-## Structure du Projet
+Les clés API sont configurées dans GitHub Secrets pour les workflows CI/CD :
 
 ```
-geofinance/
-├── index.html      # Page principale avec widgets TradingView
-├── styles.css      # Styles, animations et design responsive
-├── app.js          # Logique JavaScript et base de données news
-└── README.md       # Documentation
+FINNHUB_API_KEY          # Finnhub (indices, VIX)
+GNEWS_API_KEY            # GNews (actualités)
+FRED_API_KEY             # FRED (macro US)
+ALPHA_VANTAGE_API_KEY    # Alpha Vantage (forex, secteurs)
+MESSARI_API_KEY          # Messari (crypto avancé)
+TWELVE_DATA_API_KEY      # Twelve Data (indices européens)
+NEWSAPI_API_KEY          # NewsAPI (news complémentaires)
+ANTHROPIC_API_KEY        # Claude (synthèses IA)
+PAT_TOKEN                # GitHub PAT (commit auto)
 ```
-
-## Caractéristiques Techniques
-
-### Performance
-- Chargement asynchrone des widgets TradingView
-- Animations CSS optimisées (transform, opacity)
-- Pas de frameworks JavaScript lourds
-- Temps de chargement minimal
-
-### Design
-- Thème sombre professionnel
-- Glassmorphisme et effets de blur
-- Dégradés et ombres subtiles
-- Indicateurs visuels d'impact (high/medium/low)
-
-### Accessibilité
-- Navigation au clavier complète
-- Contrastes WCAG conformes
-- Labels ARIA pour les lecteurs d'écran
-- Focus visible sur tous les éléments interactifs
-
-### Responsive Design
-- Mobile-first approach
-- Breakpoints: 480px, 768px, 1024px
-- Menu hamburger sur mobile
-- Grilles adaptatives
-
-## Personnalisation
-
-### Modifier les couleurs
-Éditez les variables CSS dans `styles.css`:
-```css
-:root {
-    --primary-color: #3b82f6;
-    --success-color: #10b981;
-    --danger-color: #ef4444;
-    --warning-color: #f59e0b;
-    --dark-bg: #0a0f1a;
-    /* ... */
-}
-```
-
-### Ajouter des sources
-Ajoutez des entrées dans `newsDatabase` dans `app.js`:
-```javascript
-{
-    source: 'NouvelleSource',
-    sourceUrl: 'https://example.com',
-    title: 'Titre de l\'article',
-    description: 'Description...',
-    tags: ['geopolitics', 'markets'],
-    time: '1h',
-    impact: 'high'  // high, medium, low
-}
-```
-
-### Modifier les styles de sources
-Personnalisez l'apparence des logos dans `sourceStyles`:
-```javascript
-const sourceStyles = {
-    'NouvelleSource': { color: '#ff0000', initial: 'NS' }
-};
-```
-
-## Déploiement
-
-### GitHub Pages
-1. Push vers votre repo GitHub
-2. Settings > Pages > Source: main branch
-3. Accès via `https://username.github.io/repo-name`
-
-### Netlify / Vercel
-1. Connectez votre repo
-2. Déploiement automatique à chaque commit
-3. SSL gratuit inclus
-
-### Hébergement traditionnel
-Uploadez les 3 fichiers (index.html, styles.css, app.js) sur votre serveur.
-
-## Évolutions Futures
-
-### Propositions v2.0
-- [ ] Intégration d'APIs réelles (CoinGecko, Alpha Vantage, NewsAPI)
-- [ ] Backend pour agrégation de news en temps réel
-- [ ] Système de favoris et alertes utilisateur
-- [ ] Notifications push pour événements majeurs
-- [ ] Mode clair/sombre avec toggle
-- [ ] Recherche et filtres avancés
-- [ ] Export de données (CSV, PDF)
-- [ ] Application mobile (PWA)
-- [ ] Analyses IA des corrélations géopolitique/marchés
 
 ## Avertissement
 
-**Les informations présentées sur ce site sont fournies à titre informatif uniquement et ne constituent en aucun cas des conseils en investissement.** Les performances passées ne garantissent pas les performances futures. Tout investissement comporte des risques de perte en capital. Pour des décisions d'investissement, consultez des professionnels qualifiés.
+Les informations présentées sur ce site sont fournies à titre informatif uniquement et ne constituent en aucun cas des conseils en investissement. Les performances passées ne garantissent pas les performances futures. Tout investissement comporte des risques de perte en capital.
 
 ## Licence
 
-MIT License - Libre d'utilisation et de modification.
+MIT License
 
 ## Contributions
 
-Les contributions sont les bienvenues! N'hésitez pas à:
+Les contributions sont les bienvenues :
 - Signaler des bugs
-- Proposer des améliorations
-- Ajouter de nouvelles sources médias
+- Proposer de nouvelles sources
 - Améliorer les traductions
-
----
-
-Développé pour les investisseurs et analystes francophones souhaitant suivre l'impact de la géopolitique sur les marchés financiers.
