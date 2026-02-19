@@ -1,14 +1,14 @@
 {
-  "updated": "2026-02-19T03:21:22.873Z",
+  "updated": "2026-02-19T07:32:00.565Z",
   "alertes": [
     {
       "id": "alert-2026-02-19-001",
-      "titre": "Or : +2,25% à 458,28 $, accélération refuge",
-      "texte": "L'or progresse de 2,25% en séance, confirmant son statut de refuge dans un contexte de volatilité accrue. Cette hausse intervient en parallèle d'un Fear & Greed Index à 9 (extrême panique), signalant une fuite vers les actifs défensifs. À surveiller : consolidation au-dessus de 455 $ ou rupture haussière vers 465 $ en cas de nouvelle accélération du désrisquage.",
+      "titre": "Or (GLD) : +2,25% à 458,28 $, accélération défensive",
+      "texte": "L'or gagne 2,25% en séance, confirmant la dynamique défensive face aux conditions macro incertaines. Ce mouvement s'inscrit dans un contexte de recherche de valeurs refuge, typiquement associé à une volatilité accrue ou des risques géopolitiques. Surveiller le franchissement de 460 $ comme signal de poursuite de la demande défensive.",
       "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-02-19T03:21:22.873Z",
+      "horodatage": "2026-02-19T07:32:00.565Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
@@ -18,12 +18,12 @@
     },
     {
       "id": "alert-2026-02-19-002",
-      "titre": "Pétrole : +4,85% à 79,40 $, rebond technique limité",
-      "texte": "Le pétrole brut (USO) gagne 4,85% en intraday, rebondissant après une accumulation de pressions baissières. Malgré ce rebond, le prix reste contraint à court terme — à surveiller les flux géopolitiques et l'énergie mondiale. Seuil critique : un maintien au-dessus de 78 $ ou une rechute sous 76 $ redéfinirait la dynamique court terme.",
+      "titre": "Pétrole (USO) : +4,85% à 79,40 $, rebond marqué",
+      "texte": "Le pétrole brut bondit de 4,85% en une séance, passant au-dessus de 79 $. Ce mouvement suggère soit une contraction attendue de l'offre, soit une dégradation des conditions géopolitiques affectant la production. Vérifier les annonces OPEP+ et tensions régionales pour confirmer la durabilité de ce rebond.",
       "categorie": "matieres_premieres",
-      "severite": "info",
+      "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-02-19T03:21:22.873Z",
+      "horodatage": "2026-02-19T07:32:00.565Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
@@ -33,12 +33,12 @@
     },
     {
       "id": "alert-2026-02-19-003",
-      "titre": "Fear & Greed Index : 9 (Extrême Panique), pivot critique",
-      "texte": "L'indice de sentiment atteint 9 sur 100, signalant une peur extrême généralisée — niveau rarement observé en dehors des crises majeures. Variation sur 7j : +4 points indique une dégradation rapide du sentiment depuis 72h. Historiquement, ces extrêmes de panique (F&G <15) précèdent des retournements marché. À surveiller : rebond sentimentel ou confirmation d'une capitulation des petits investisseurs.",
+      "titre": "Fear & Greed Index : 9 (Extreme Fear), variation +4 pts/7j",
+      "texte": "L'indice de sentiment atteint 9 (peur extrême), au seuil plancher historique (<10 = zone critique). Bien que stabilisé à +4 pts sur 7 jours, cet extrême signale une capitulation de marché massive, historiquement associée aux inversions de tendance court terme. Surveiller un franchissement au-dessus de 20 comme signal de retour de la confiance.",
       "categorie": "crypto",
       "severite": "urgent",
-      "impact": "neutre",
-      "horodatage": "2026-02-19T03:21:22.873Z",
+      "impact": "baissier",
+      "horodatage": "2026-02-19T07:32:00.565Z",
       "donnees": {
         "score": 9,
         "label": "Extreme Fear",
@@ -49,8 +49,8 @@
   "stats": {
     "total": 3,
     "urgent": 1,
-    "attention": 1,
-    "info": 1
+    "attention": 2,
+    "info": 0
   },
   "model": "claude-haiku-4-5-20251001"
 }

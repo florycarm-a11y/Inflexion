@@ -1,65 +1,65 @@
 {
-  "updated": "2026-02-19T03:21:17.315Z",
+  "updated": "2026-02-19T07:31:55.530Z",
   "date": "2026-02-19",
   "global": {
-    "score": 0.03,
+    "score": -0.06,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (+0.03), dominé par la rubrique marches (mixte)."
+    "resume": "Le sentiment global est mixte (-0.06), dominé par la rubrique ai_tech (mixte)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.45,
-      "confidence": 0.72,
-      "tendance": "baissier",
-      "resume": "La géopolitique mondiale affiche un sentiment modérément baissier dominé par l'escalade militaire (Corée du Nord, Iran), l'instabilité institutionnelle (Corée du Sud, Pologne) et l'absence de progrès dans les négociations de paix majeures (Ukraine, Gaza). Les initiatives diplomatiques américaines (Conseil de la paix, retrait de Syrie) restent fragmentaires et ne compensent pas les signaux d'aggravation des tensions régionales.",
+      "score": -0.35,
+      "confidence": 0.62,
+      "tendance": "mixte",
+      "resume": "La géopolitique affiche un sentiment modérément baissier dominé par des tensions croissantes (Moyen-Orient, Ukraine, Iran) et des instabilités régionales (Pérou, RDC), partiellement contrebalancées par des initiatives diplomatiques (Trump, négociations Russie-États-Unis). Les risques d'escalade l'emportent sur les signaux de résolution.",
       "signaux_cles": [
-        "Corée du Nord dévoile un nouveau lance-missiles nucléaire : escalade directe de la menace militaire face aux États-Unis et à la Corée du Sud",
-        "Négociations russo-ukrainiennes « difficiles » sans avancée : stagnation du conflit majeur après 2 ans, aucune perspective de résolution",
-        "Retrait de 1 000 soldats américains de Syrie : réduction de la présence stabilisatrice américaine au Moyen-Orient, créant un vide géopolitique"
+        "Escalade Moyen-Orient : renforcement militaire américain en Iran, menaces Houthis pendant le Ramadan, Hamas consolidant son contrôle à Gaza malgré plan de paix Trump",
+        "Négociations économiques bilatérales massives Russie-États-Unis en marge des pourparlers de paix ukrainiens — signal d'engagement mais contexte de conflit persistant",
+        "Instabilités institutionnelles multiples : destitution présidentielle au Pérou (José Jeri), tensions frontalières RDC-Burundi, incidents sécuritaires (Australie, Chine) suggérant fragilité régionale"
       ]
     },
     "marches": {
-      "score": 0.52,
-      "confidence": 0.68,
-      "tendance": "mixte",
-      "resume": "Sentiment modérément haussier porté par des signaux sectoriels positifs (tech, énergie, M&A) et des accords commerciaux majeurs, contrebalancés par des prévisions de croissance modérées et des tensions géopolitiques volatiles. Les marchés affichent une reprise de la tech et une hausse du pétrole, mais sans consensus fort sur la direction générale.",
-      "signaux_cles": [
-        "Accord commercial Indonésie-États-Unis de 7 milliards de dollars et hausse du pétrole de 4 mois sur tensions Iran-États-Unis : facteurs de volatilité géopolitique et d'opportunités énergétiques",
-        "Cession d'actifs stratégiques (Etsy vend Depop à eBay pour 1,2 milliard, action Etsy +14%) : recentrage positif des portefeuilles et signal de rationalisation du capital",
-        "Guidance de croissance modérée (TrueBlue 3-9%, Grand Canyon Education simple chiffre, Nextdoor 7%) : attentes prudentes malgré reprise tech et potentiel IA sous-estimé d'Amazon"
-      ]
-    },
-    "crypto": {
       "score": -0.15,
       "confidence": 0.62,
       "tendance": "mixte",
-      "resume": "Sentiment contrasté : des signaux constructifs (investissements institutionnels, innovations technologiques, expansion réglementaire) coexistent avec des pressions baissières (volatilité des prix, liquidations massives, incertitude réglementaire américaine). L'écosystème crypto montre une résilience de constructeur mais fait face à des headwinds macro et politiques qui limitent l'élan haussier.",
+      "resume": "Les marchés affichent un sentiment mitigé : des signaux positifs isolés (Airbus bénéfice record, Accor dynamique, Materialise au-dessus des attentes) sont contrebalancés par des dégradations structurelles majeures (Renault -10,9Mds€, Nestlé -17% de bénéfice, Pernod Ricard en recul). L'absence de direction claire reflète une économie fragmentée où les secteurs cycliques et de luxe pâtissent tandis que certains niches performent, sans consensus directif pour les marchés.",
       "signaux_cles": [
-        "Liquidations massives approchant 200 millions de dollars et baisse de Bitcoin à 66 000 dollars (-2,5%) suite aux minutes de la Fed mentionnant une possible hausse des taux : pression vendeuse immédiate",
-        "Investissements institutionnels significatifs (Hanwha 13M$, Ledn 188M$ d'obligations adossées au Bitcoin, Kraken acquisition Magna) : signal de confiance long terme malgré la volatilité court terme",
-        "Blocages réglementaires américains explicites (lobbying bancaire sur projet de loi, CFTC vs marchés de prédiction, euro numérique préservant banques centrales) : frein structurel à l'adoption mainstream"
+        "Renault enregistre une perte de 10,9 milliards d'euros en 2025 malgré des ventes en hausse — signal baissier majeur d'érosion de rentabilité dans l'automobile",
+        "Airbus affiche un bénéfice record et vise 870 avions livrés en 2026, mais retards de moteurs Pratt & Whitney menacent les objectifs — signal haussier contredit par des risques opérationnels concrets",
+        "Nestlé : bénéfice net en baisse de 17% en 2025, marges comprimées par rappel de lait infantile — signal baissier structurel affectant un poids lourd du CAC40"
+      ]
+    },
+    "crypto": {
+      "score": -0.35,
+      "confidence": 0.62,
+      "tendance": "baissier",
+      "resume": "Sentiment mixte dominé par des signaux baissiers court terme (pression de vente sur altcoins, série de pertes du Bitcoin, tensions géopolitiques) contrebalancés par des catalyseurs structurels positifs (clarté réglementaire attendue en avril, adoption institutionnelle via Coinbase, innovations techniques Ethereum). Le marché manque de momentum haussier malgré l'intérêt TradFi croissant.",
+      "signaux_cles": [
+        "Bitcoin enregistre sa plus longue série de pertes depuis 2022 ; pression de vente sur altcoins à un sommet de 5 ans — indicateurs de faiblesse court terme",
+        "Loi CLARITY américaine attendue « idéalement en avril 2026 » avec soutien bipartisan (sénateur Moreno) — catalyseur réglementaire majeur pour Q2",
+        "Coinbase élargit ses produits de prêt crypto (XRP, ADA, DOGE) et Ledn lève 188M$ en obligations adossées au Bitcoin — institutionnalisation en cours malgré volatilité"
       ]
     },
     "matieres_premieres": {
       "score": 0.15,
-      "confidence": 0.55,
+      "confidence": 0.52,
       "tendance": "mixte",
-      "resume": "Sentiment contrasté sur les matières premières : signaux haussiers sur le pétrole (tensions iraniennes, retour au forage des majors, production irakienne) compensés par des signaux baissiers structurels (transition énergétique, énergies alternatives compétitives, faiblesses du fret maritime). L'absence de direction claire reflète une rubrique en transition entre demande fossile et alternatives énergétiques.",
+      "resume": "Sentiment contrasté sur les matières premières : signaux haussiers sur le pétrole (tensions géopolitiques iraniennes, redirection des redevances vénézuéliennes, reprises de forages) compensés par des pressions baissières structurelles (transition énergétique accélérée, domination croissante des énergies renouvelables, faiblesses du transport maritime). L'équilibre court terme penche légèrement haussier sur le brut, mais les tendances long terme restent défavorables aux hydrocarbures.",
       "signaux_cles": [
-        "Tensions géopolitiques : 'Le pétrole brut s'envole alors que les risques iraniens augmentent' — facteur de volatilité haussière court terme",
-        "Retour à l'investissement pétrolier : 'Les géants pétroliers reviennent au forage après années de rachats d'actions' + 'Rumaila prêt pour relance' — signal de confiance des producteurs mais contradictoire avec transition énergétique",
-        "Pressions structurelles baissières : 'L'énergie solaire basée dans l'espace sera viable d'ici 2040' + 'Contrats gaz naturel orientés à la baisse' + 'Indice Baltic Dry à plus bas niveau' — signaux de demande affaiblie et substitution énergétique"
+        "Pétrole brut en hausse sur fond de risques iraniens croissants et redirection des redevances vénézuéliennes vers le Trésor américain (géopolitique supportive)",
+        "Grandes pétrolières reprennent les forages après années de rachats d'actions, signalant une réallocation du capital vers la production (inversion de tendance court terme)",
+        "Capitalisation boursière de Tesla dépasse celle de 16 constructeurs automobiles réunis, reflétant la domination structurelle de la transition énergétique sur les marchés (-0.3 impact sur demande pétrolière long terme)"
       ]
     },
     "ai_tech": {
-      "score": 0.15,
-      "confidence": 0.45,
+      "score": 0.45,
+      "confidence": 0.62,
       "tendance": "mixte",
-      "resume": "Sentiment mitigé dominé par des signaux technologiques positifs (modèles IA avancés, innovations de stockage) contrebalancés par des préoccupations structurelles critiques : pénurie de RAM menaçant la viabilité des produits, incidents de sécurité récurrents, et litiges réglementaires contre les géants de la tech. Les innovations ne compensent pas les risques opérationnels et légaux croissants pour le secteur.",
+      "resume": "Sentiment modérément haussier porté par des investissements structurels majeurs (OpenAI-Inde, modèles fondationnels avancés) et innovations technologiques, contrebalancé par des signaux de contrainte (pénurie de RAM, tensions géopolitiques, enjeux réglementaires). Le secteur IA/tech affiche une dynamique d'expansion mais avec des frictions croissantes sur l'infrastructure et la conformité.",
       "signaux_cles": [
-        "Pénurie de RAM admise comme menace existentielle par un cadre du secteur — impact direct sur la capacité de production et la rentabilité des entreprises AI/hardware",
-        "Tavus Phoenix-4 : latence < 600ms en vidéo générative et Gemini Music Generator lancé — progression technologique rapide mais sans impact de marché mesurable à court terme",
-        "Trois vagues de crises de sécurité/données : violation Adidas, faille Honeywell CCTV, vol CarGurus (1,7M dossiers), plus litiges réglementaires Meta/Google/réseaux sociaux — érosion de la confiance et risques de compliance croissants"
+        "OpenAI s'associe à Tata pour 100 MW de capacité IA en Inde avec objectif 1 GW : expansion majeure de l'infrastructure cloud IA hors États-Unis, signal d'accélération des déploiements commerciaux",
+        "Pénurie de RAM persistante avec volatilité tarifaire admise par les cadres du secteur : goulot d'étranglement critique pour la production de modèles et serveurs IA, risque de ralentissement des lancements de produits",
+        "Zyphra lance ZUNA (380M paramètres pour BCI/EEG) et Tavus lance Phoenix-4 (vidéo générative temps réel <600ms) : progression des modèles spécialisés et réduction des latences, mais fragmentation du marché en niches plutôt que consolidation"
       ]
     }
   },
@@ -129,47 +129,47 @@
     },
     {
       "date": "2026-02-19",
-      "global": 0.03,
-      "geopolitique": -0.45,
-      "marches": 0.52,
-      "crypto": -0.15,
+      "global": -0.06,
+      "geopolitique": -0.35,
+      "marches": -0.15,
+      "crypto": -0.35,
       "matieres_premieres": 0.15,
-      "ai_tech": 0.15
+      "ai_tech": 0.45
     }
   ],
   "model": "claude-haiku-4-5-20251001",
   "usage": {
-    "totalInputTokens": 7752,
-    "totalOutputTokens": 1725,
+    "totalInputTokens": 7736,
+    "totalOutputTokens": 1781,
     "totalCalls": 5,
     "callsByLabel": {
       "sentiment-geopolitique": {
         "calls": 1,
-        "inputTokens": 1518,
-        "outputTokens": 316
+        "inputTokens": 1498,
+        "outputTokens": 322
       },
       "sentiment-marches": {
         "calls": 1,
-        "inputTokens": 1705,
-        "outputTokens": 344
+        "inputTokens": 1563,
+        "outputTokens": 396
       },
       "sentiment-crypto": {
         "calls": 1,
-        "inputTokens": 1576,
-        "outputTokens": 345
+        "inputTokens": 1554,
+        "outputTokens": 327
       },
       "sentiment-matieres_premieres": {
         "calls": 1,
-        "inputTokens": 1448,
-        "outputTokens": 370
+        "inputTokens": 1564,
+        "outputTokens": 352
       },
       "sentiment-ai_tech": {
         "calls": 1,
-        "inputTokens": 1505,
-        "outputTokens": 350
+        "inputTokens": 1557,
+        "outputTokens": 384
       }
     },
-    "estimatedCostUSD": 0.0131,
+    "estimatedCostUSD": 0.0133,
     "model": "claude-haiku-4-5-20251001"
   }
 }
