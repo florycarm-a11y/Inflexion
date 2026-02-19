@@ -1,86 +1,56 @@
 {
-  "updated": "2026-02-18T19:27:29.576Z",
+  "updated": "2026-02-19T03:21:22.873Z",
   "alertes": [
     {
-      "id": "alert-2026-02-18-001",
-      "titre": "DOGE : +11,40% sur 7 jours, franchise les 0,40 $",
-      "texte": "Dogecoin gagne 11,40% hebdomadaire et consolide au-dessus de 0,40 $, portée par l'intérêt retail et les annonces d'intégration de paiement. Ce momentum contraste avec la domination de la peur générale (FNG à 8). Surveiller la tenue du seuil 0,38 $ en support technique.",
-      "categorie": "crypto",
+      "id": "alert-2026-02-19-001",
+      "titre": "Or : +2,25% à 458,28 $, accélération refuge",
+      "texte": "L'or progresse de 2,25% en séance, confirmant son statut de refuge dans un contexte de volatilité accrue. Cette hausse intervient en parallèle d'un Fear & Greed Index à 9 (extrême panique), signalant une fuite vers les actifs défensifs. À surveiller : consolidation au-dessus de 455 $ ou rupture haussière vers 465 $ en cas de nouvelle accélération du désrisquage.",
+      "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-02-18T19:27:29.576Z",
-      "donnees": {
-        "symbole": "DOGE",
-        "nom": "Dogecoin",
-        "prix": 0.099096,
-        "variation_7d": 11.4
-      }
-    },
-    {
-      "id": "alert-2026-02-18-002",
-      "titre": "Or (GLD) : +2,34%, atteint $458,71",
-      "texte": "L'or avance à $458,71 (+2,34%), reflétant une demande accrue de refuge dans un contexte de peur extrême (FNG=8). Cette progression s'inscrit dans un mouvement de rotation vers les actifs défensifs face à l'aversion au risque. Surveiller la résistance à $465.",
-      "categorie": "matieres_premieres",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-02-18T19:27:29.576Z",
+      "horodatage": "2026-02-19T03:21:22.873Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
-        "prix": 458.71,
-        "variation": 2.34
+        "prix": 458.28,
+        "variation": 2.25
       }
     },
     {
-      "id": "alert-2026-02-18-003",
-      "titre": "Pétrole (USO) : +4,49%, $79,13 par baril",
-      "texte": "Le brut gagne 4,49% à $79,13/baril, signalant une demande physique persistante malgré le contexte de peur. Cette hausse diverge de la faiblesse habituelle des commodities en phase de stress et peut indiquer des tensions d'approvisionnement ou une activité économique sous-jacente résiliente. Surveiller le seuil critique $76.",
+      "id": "alert-2026-02-19-002",
+      "titre": "Pétrole : +4,85% à 79,40 $, rebond technique limité",
+      "texte": "Le pétrole brut (USO) gagne 4,85% en intraday, rebondissant après une accumulation de pressions baissières. Malgré ce rebond, le prix reste contraint à court terme — à surveiller les flux géopolitiques et l'énergie mondiale. Seuil critique : un maintien au-dessus de 78 $ ou une rechute sous 76 $ redéfinirait la dynamique court terme.",
       "categorie": "matieres_premieres",
       "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-02-18T19:27:29.576Z",
+      "horodatage": "2026-02-19T03:21:22.873Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
-        "prix": 79.13,
-        "variation": 4.49
+        "prix": 79.4,
+        "variation": 4.85
       }
     },
     {
-      "id": "alert-2026-02-18-004",
-      "titre": "Nvidia (NVDA) : +2,14%, $188,92",
-      "texte": "Nvidia progresse de 2,14% à $188,92, démontrant une certaine résilience du secteur IA/technologie face à l'extrême peur (FNG=8). Cette stabilité relative suggère que les investisseurs long-terme maintiennent leur exposition aux leaders de l'IA. Surveiller la tenue du support $185.",
-      "categorie": "ai_tech",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-02-18T19:27:29.576Z",
-      "donnees": {
-        "symbole": "NVDA",
-        "nom": "Nvidia",
-        "prix": 188.92,
-        "variation": 2.14
-      }
-    },
-    {
-      "id": "alert-2026-02-18-005",
-      "titre": "Fear & Greed Index : 8 (Extrême Peur), -3 pts sur 7j",
-      "texte": "L'indice de peur atteint 8 (extrême peur), très proche de son plus bas absolu (<10). La dégradation de 3 points en 7 jours indique une accélération de l'aversion au risque. Contexte : capitulation généralisée et rotation massive vers les actifs défensifs (or, obligations). Point pivot : un retour au-dessus de 15 signerait un changement de régime.",
-      "categorie": "macro",
+      "id": "alert-2026-02-19-003",
+      "titre": "Fear & Greed Index : 9 (Extrême Panique), pivot critique",
+      "texte": "L'indice de sentiment atteint 9 sur 100, signalant une peur extrême généralisée — niveau rarement observé en dehors des crises majeures. Variation sur 7j : +4 points indique une dégradation rapide du sentiment depuis 72h. Historiquement, ces extrêmes de panique (F&G <15) précèdent des retournements marché. À surveiller : rebond sentimentel ou confirmation d'une capitulation des petits investisseurs.",
+      "categorie": "crypto",
       "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-02-18T19:27:29.576Z",
+      "impact": "neutre",
+      "horodatage": "2026-02-19T03:21:22.873Z",
       "donnees": {
-        "score": 8,
+        "score": 9,
         "label": "Extreme Fear",
-        "variation_7j": -3
+        "variation_7j": 4
       }
     }
   ],
   "stats": {
-    "total": 5,
+    "total": 3,
     "urgent": 1,
     "attention": 1,
-    "info": 3
+    "info": 1
   },
   "model": "claude-haiku-4-5-20251001"
 }
