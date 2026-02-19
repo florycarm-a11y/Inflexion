@@ -1,93 +1,128 @@
 {
-  "date": "2026-02-18",
-  "generated_at": "2026-02-18T08:35:47.487Z",
+  "date": "2026-02-19",
+  "generated_at": "2026-02-19T08:34:27.689Z",
   "type": "delta",
   "model": "claude-haiku-4-5-20251001",
   "sources_count": 25,
   "sources_market": 11,
   "reference_date": "2026-02-18",
   "synthese": {
-    "titre": "Stagnation persistante — marchés actions figés, crypto toujours en extrême panique",
-    "sous_titre": "Aucune variation significative vs veille ; attentisme dominant avant données macro US",
-    "contenu": "## Évolutions du jour\n\nLes marchés actions américains demeurent strictement identiques à la veille : S&P 500 à **+0,16%**, Dow Jones à **+0,12%**, Nasdaq 100 à **-0,10%** (aucune variation détectable). Apple conserve son gain de **+3,17%** et Nvidia son **+1,18%**, confirmant la concentration des flux sur deux mega-caps. Bitcoin stagne à **67 879 $ (-0,8% sur 24h)**, sans mouvement directionnel. Le Fear & Greed Index crypto reste bloqué à **8/100** (Extreme Fear), identique à la veille, approchant le plus bas historique de mars 2023 (7/100). L'or (GLD) maintient son repli à **-3,12%** (448,2 $), validant la thèse de prise de profit technique. Les frais on-chain Bitcoin restent ultra-bas à **1 sat/vB**, confirmant une activité atone. L'EUR/USD progresse marginalement à **1,1847** (+0,0001).\n\n## Signaux confirmés ou inversés\n\nLa **dissociation actions-crypto s'accentue** : le S&P 500 résiste (+0,16%) tandis que le sentiment crypto s'enfonce davantage (Fear & Greed inchangé à 8/100, -36 points sur 30j). Aucun catalyseur de rebond crypto n'a émergé en 24h. Le signal sur **l'or (repli technique)** se confirme sans rebond : GLD reste à -3,12%, validant la thèse de prise de profit post-rally. Les initiatives géopolitiques (minerais critiques US, sanctions CPI) restent en arrière-plan, sans impact immédiat sur les marchés.\n\n## Perspectives actualisées\n\nL'absence de mouvement significatif vs la veille prolonge l'attentisme. Les marchés actions attendent des catalyseurs macro (données emploi US, inflation) avant de se réorienter. Le crypto reste en capitulation progressive : si Bitcoin casse les **65 000 $**, le Fear & Greed pourrait atteindre son plus bas historique, déclenchant potentiellement une capitulation finale. La concentration mega-caps actions crée une vulnérabilité systémique : une rotation momentum inverse pourrait déclencher une correction rapide."
+    "titre": "Rebond modéré actions, crypto toujours en extrême panique — tensions géopolitiques et inflation persistent",
+    "sous_titre": "Les marchés actions gagnent du terrain (+0,5% S&P 500) tandis que le sentiment crypto demeure catastrophique (Fear & Greed: 9/100). Les tensions Iran-USA et les signaux inflationnistes de la Fed pèsent sur les actifs risqués.",
+    "contenu": "## Évolutions du jour\n\nLes marchés actions américains accélèrent légèrement vs la stagnation d'hier : **S&P 500 à +0,50%** (vs +0,16% hier), **Nasdaq 100 à +0,75%** (vs -0,10% hier), **Dow Jones à +0,23%** (vs +0,12% hier). Cette reprise modérée s'accompagne d'une rotation sectorielle : l'or bondit à **+2,25%** (GLD à 458,28 $, vs 448,2 $ hier, soit +2,3%), tandis que le pétrole explose à **+4,85%** (USO à 79,4 $), reflétant les tensions géopolitiques Iran-USA mentionnées dans les actualités (renforcement militaire américain, possibilité de frappe dès samedi). Bitcoin recule à **67 081 $ (-1,2% sur 24h)**, confirmant la faiblesse crypto. Le Fear & Greed Index progresse marginalement à **9/100** (vs 8/100 hier, +1 point), restant en extrême panique. Les mega-caps restent moteurs : Nvidia **+1,63%**, Microsoft **+0,69%**, Alphabet **+0,43%**.\n\n## Signaux confirmés ou inversés\n\nLa **dissociation actions-crypto s'accentue** : le S&P 500 rebondit (+0,50%) tandis que le sentiment crypto stagne en extrême peur (9/100, quasi-inchangé). Le signal sur **l'or (repli technique)** s'inverse : GLD remonte fortement (+2,25%), validant une fuite vers les valeurs refuge face aux tensions géopolitiques, non une simple prise de profit. Les **tensions géopolitiques Iran-USA** (nouvelles de la veille) commencent à impacter les marchés : pétrole +4,85%, or +2,25%, dollar stable. Les minutes de la Fed (nouvelles du jour) signalent un retour des risques de hausse de taux, contredisant l'attentisme de la veille.\n\n## Perspectives actualisées\n\nLe scénario de court terme se clarifie : les tensions géopolitiques soutiennent les valeurs refuge (or, pétrole) et le dollar, tandis que les signaux inflationnistes de la Fed créent une asymétrie baissière pour les actifs risqués. La crypto reste en capitulation, approchant le seuil critique de 7/100 (plus bas historique mars 2023). Les marchés actions rebondissent mais restent vulnérables à une escalade Iran ou à une confirmation de l'inflation persistante."
   },
   "signaux": [
     {
-      "titre": "Crypto approche du plus bas sentiment historique — risque de capitulation finale",
-      "description": "Le Fear & Greed Index crypto reste bloqué à 8/100 (Extreme Fear) depuis la veille, approchant le plus bas historique de mars 2023 (7/100). Aucun rebond technique n'a émergé malgré 24h supplémentaires. Les frais on-chain Bitcoin à 1 sat/vB confirment une activité atone et une absence de capitulation en volume.",
-      "categorie": "crypto",
+      "titre": "Tensions Iran-USA intensifiées — frappe militaire possible dès samedi, soutien or/pétrole",
+      "description": "La Maison-Blanche affirme qu'il serait « sage » pour l'Iran de conclure un accord, tandis que les médias américains rapportent que Trump a discuté des options d'attaque avec ses conseillers. Cette escalade géopolitique soutient les valeurs refuge : or +2,25% (458,28 $), pétrole +4,85% (79,4 $). Le risque d'une frappe dès samedi crée une asymétrie baissière pour les actifs risqués.",
+      "categorie": "geopolitique",
       "interconnexions": [
         {
-          "secteur": "Altcoins et tokens de petite cap",
-          "impact": "Risque de liquidations en cascade si Bitcoin casse 65 000 $",
-          "explication": "Un franchissement baissier du support clé déclencherait une capitulation finale et des liquidations massives sur les positions long en altcoins"
+          "secteur": "Matières premières",
+          "impact": "Or +2,25%, pétrole +4,85%",
+          "explication": "Fuite vers les valeurs refuge face au risque d'escalade militaire"
         },
         {
-          "secteur": "Marchés actions tech",
-          "impact": "Découplage persistant : S&P 500 +0,16% vs crypto -0,8%",
-          "explication": "Les mega-caps tech (Apple, Nvidia) restent soutenues par les flux institutionnels tandis que le crypto subit une fuite de capital retail"
+          "secteur": "Crypto",
+          "impact": "Bitcoin -1,2% (24h), Fear & Greed 9/100",
+          "explication": "Les actifs risqués se déprécie face aux tensions géopolitiques"
+        },
+        {
+          "secteur": "Forex",
+          "impact": "Dollar stable (117,53)",
+          "explication": "Demande de dollar comme valeur refuge en contexte de tensions"
         }
       ],
       "regions": [
-        "Global",
-        "États-Unis"
+        "Iran",
+        "États-Unis",
+        "Moyen-Orient"
       ],
       "severite": "urgent"
     },
     {
-      "titre": "Concentration mega-caps actions crée vulnérabilité systémique — deux valeurs portent le S&P 500",
-      "description": "Apple (+3,17%) et Nvidia (+1,18%) maintiennent seules la performance du S&P 500 à +0,16%, tandis que le Nasdaq 100 reste négatif à -0,10%. Cette concentration extrême sur deux valeurs crée une asymétrie de risque : une rotation momentum inverse déclencherait une correction rapide.",
-      "categorie": "marches",
+      "titre": "Minutes Fed signalent retour des risques de hausse de taux — désinflation non confirmée",
+      "description": "Les décideurs de la Fed ont déclaré que l'assouplissement monétaire ne serait pas justifié tant qu'il n'y aurait pas une indication claire que les progrès de la désinflation sont fermement rétablis. L'inflation CPI reste à +2,83% a/a (vs objectif 2%), contredisant l'attentisme de la veille. Cette révision des attentes de taux pèse sur les actifs risqués.",
+      "categorie": "macro",
       "interconnexions": [
         {
-          "secteur": "Small-caps et mid-caps US",
-          "impact": "Absence de rotation vers les valeurs cycliques",
-          "explication": "Le Nasdaq 100 négatif malgré les gains des mega-caps indique une absence de diffusion des gains vers les petites capitalisations"
+          "secteur": "Obligations",
+          "impact": "Treasury 10 ans à 4,05% (+0,01%)",
+          "explication": "Hausse des rendements obligataires face aux signaux inflationnistes"
         },
         {
-          "secteur": "Volatilité implicite (VIX)",
-          "impact": "VIX stable mais vulnérable à un choc de rotation",
-          "explication": "Une sortie soudaine des mega-caps déclencherait un pic de volatilité rapide et une correction du S&P 500"
+          "secteur": "Crypto",
+          "impact": "Bitcoin -1,2%, Fear & Greed 9/100",
+          "explication": "Les actifs risqués se déprécie face à la perspective de taux plus élevés"
+        },
+        {
+          "secteur": "Actions tech",
+          "impact": "Nasdaq 100 +0,75% (rebond modéré)",
+          "explication": "Rebond technique malgré les signaux inflationnistes, mais vulnérabilité persiste"
         }
       ],
       "regions": [
         "États-Unis"
       ],
       "severite": "attention"
+    },
+    {
+      "titre": "Fondation Ethereum priorise la « préparation quantique » et les limites de gaz pour 2026",
+      "description": "La Fondation Ethereum a qualifié 2025 d'une de ses « années les plus productives » et inscrit la préparation quantique et les limites de gaz dans ses priorités pour 2026. Cette annonce reflète une accélération du développement technique du réseau, contrastant avec le sentiment crypto en extrême peur.",
+      "categorie": "crypto",
+      "interconnexions": [
+        {
+          "secteur": "Ethereum",
+          "impact": "ETH -1,2% (24h), mais roadmap technique renforcée",
+          "explication": "Les annonces techniques positives ne contrebalancent pas la panique générale du marché"
+        },
+        {
+          "secteur": "DeFi",
+          "impact": "TVL totale -1,14% (24h), Lido -1,3%",
+          "explication": "Les flux DeFi restent négatifs malgré les annonces de développement"
+        }
+      ],
+      "regions": [
+        "Monde"
+      ],
+      "severite": "info"
     }
   ],
   "risk_radar": [
     {
-      "risque": "Capitulation finale crypto si Bitcoin casse les 65 000 $",
+      "risque": "Escalade Iran-USA débouchant sur une frappe militaire — choc pétrolier et fuite vers les valeurs refuge",
       "severite": "urgent",
-      "probabilite": "moyenne",
+      "probabilite": "elevee",
       "horizon": "court_terme",
-      "impact_marche": "Bitcoin : risque de test des 60 000 $ ; altcoins : liquidations en cascade ; Fear & Greed : potentiellement 7/100 (plus bas historique)",
-      "description": "Le Fear & Greed Index reste bloqué à 8/100 (Extreme Fear), approchant le plus bas historique de mars 2023 (7/100). Les frais on-chain à 1 sat/vB confirment une activité atone. **Probabilité inchangée (moyenne)** : aucun catalyseur de rebond n'a émergé en 24h, prolongeant le risque de capitulation finale."
+      "impact_marche": "Pétrole +4,85% (79,4 $), or +2,25% (458,28 $), crypto -1,2%, actions risquées vulnérables",
+      "description": "La Maison-Blanche signale une frappe possible dès samedi. **Probabilité relevée de moyenne à élevée** suite aux déclarations de Trump et au renforcement militaire américain. Impact immédiat visible : pétrole +4,85%, or +2,25%. Horizon court terme (jours)."
     },
     {
-      "risque": "Correction actions mega-caps si rotation momentum s'inverse",
-      "severite": "attention",
-      "probabilite": "moyenne",
+      "risque": "Capitulation finale crypto si Bitcoin casse les 65 000 $ — Fear & Greed approche le plus bas historique",
+      "severite": "urgent",
+      "probabilite": "elevee",
       "horizon": "court_terme",
-      "impact_marche": "S&P 500 : risque de correction de -2% à -4% ; Nasdaq 100 : amplification baissière ; Apple et Nvidia : vulnérables à une prise de profit",
-      "description": "La concentration extrême des gains sur deux valeurs crée une vulnérabilité systémique. Le Nasdaq 100 reste négatif (-0,10%) malgré les performances d'Apple et Nvidia, signe d'une absence de rotation. **Probabilité inchangée (moyenne)** : aucun signal de rotation vers les small-caps n'a émergé en 24h."
+      "impact_marche": "Bitcoin 67 081 $ (-1,2%), Fear & Greed 9/100 (vs 8/100 hier), approchant le seuil critique de 7/100",
+      "description": "Le Fear & Greed Index progresse marginalement à 9/100 (vs 8/100 hier) mais reste en extrême panique, approchant le plus bas historique de mars 2023 (7/100). Bitcoin recule à 67 081 $ (-1,2% sur 24h). **Probabilité maintenue à élevée** : le seuil critique de 65 000 $ reste à proximité. Les tensions géopolitiques et les signaux inflationnistes de la Fed pèsent sur les actifs risqués."
     },
     {
-      "risque": "Escalade sanctions UE-USA sur la CPI et flux d'investissement transatlantique",
+      "risque": "Correction actions mega-caps si rotation momentum s'inverse — concentration extrême sur deux valeurs",
       "severite": "attention",
-      "probabilite": "faible",
+      "probabilite": "moyenne",
       "horizon": "moyen_terme",
-      "impact_marche": "Obligations européennes : hausse des spreads ; EUR/USD : pression baissière ; actions financières EU : volatilité accrue",
-      "description": "Aucune escalade nouvelle signalée en 24h. Le dossier reste en arrière-plan avant le Conseil européen du 20 février. **Probabilité inchangée (faible)**, mais le risque d'escalade reste présent si l'UE durcit sa position sur les sanctions contre les juges de la CPI."
+      "impact_marche": "S&P 500 +0,50%, Nasdaq 100 +0,75%, mais concentration sur Nvidia (+1,63%), Microsoft (+0,69%), Alphabet (+0,43%)",
+      "description": "Le rebond du jour (+0,50% S&P 500, +0,75% Nasdaq 100) reste porté par les mega-caps. **Probabilité inchangée (moyenne)** : la concentration persiste, créant une vulnérabilité systémique. Les signaux inflationnistes de la Fed et les tensions géopolitiques pourraient inverser la rotation si les mega-caps perdent de l'élan."
     }
   ],
-  "sentiment_global": "neutre",
+  "sentiment_global": "mixte",
   "tags": [
-    "stagnation-marchés",
+    "escalade-iran-usa",
+    "tensions-geopolitiques",
+    "inflation-persistante",
     "crypto-extrême-peur",
-    "concentration-mega-caps",
-    "attentisme-macro",
-    "capitulation-finale-risque"
+    "or-refuge",
+    "pétrole-hausse",
+    "fed-signaux-hawkish",
+    "mega-caps-concentration"
   ]
 }
