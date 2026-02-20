@@ -1,65 +1,65 @@
 {
-  "updated": "2026-02-20T03:16:20.617Z",
+  "updated": "2026-02-20T07:29:33.342Z",
   "date": "2026-02-20",
   "global": {
-    "score": 0.15,
+    "score": -0.17,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (+0.15), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est mixte (-0.17), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.55,
+      "score": -0.62,
       "confidence": 0.72,
       "tendance": "baissier",
-      "resume": "La géopolitique mondiale affiche un sentiment baissier dominé par l'escalade des tensions (ultimatum iranien de 15 jours, intensification du conflit ukrainien, arrestations politiques en Turquie et Afrique du Sud) et une fragmentation croissante des alliances (retrait des grandes puissances du Conseil de la paix, rapprochement Russie-Madagascar). Les initiatives de médiation (Gaza, Iran) restent fragiles et conditionnées à des délais courts, créant une atmosphère d'instabilité accrue.",
+      "resume": "La géopolitique mondiale affiche une fragmentation croissante avec trois foyers de tension majeurs : escalade Iran-États-Unis (ultimatum de 10 jours, menaces contre les bases américaines), consolidation militaire russe aux frontières (mines antipersonnel en Pologne, frappes de drones en Ukraine), et instabilité régionale persistante (Gaza sans paix, terrorisme au Nigeria). Ces signaux convergent vers une augmentation des risques géopolitiques systémiques qui pèsent sur les marchés financiers, malgré quelques signaux positifs isolés (réformes en Argentine, initiatives commerciales).",
       "signaux_cles": [
-        "Ultimatum Trump à l'Iran : 15 jours pour conclure un accord ou recours à la force — escalade directe des tensions avec une puissance nucléaire",
-        "Conseil de la paix de Trump sur Gaza : engagement de 7 milliards de dollars mais absence des grandes puissances — médiation unilatérale affaiblissant la légitimité multilatérale",
-        "Intensification du conflit ukrainien : description du Donbass comme 'combat dantesque' et rapprochement Russie-Madagascar — consolidation de l'axe Russie-puissances émergentes contre l'Occident"
+        "Ultimatum Trump à l'Iran : 10 jours pour accepter un accord ou « des choses graves se produiront » + menaces iraniennes contre les bases américaines au Moyen-Orient = escalade rhétorique et militaire directe",
+        "Pologne renforce sa frontière avec la Russie via mines antipersonnel + frappes de drones ukrainiennes continues sur Sébastopol = consolidation du conflit Ukraine sans résolution en vue",
+        "Gaza : trêve sans paix durable, sentiment de désespoir croissant (« les gens ne parlent plus d'avenir ») = instabilité régionale persistante affectant les flux commerciaux et les primes de risque"
       ]
     },
     "marches": {
-      "score": 0.35,
+      "score": -0.35,
       "confidence": 0.62,
       "tendance": "mixte",
-      "resume": "Sentiment modérément haussier porté par des guidance positives de grandes entreprises (Sprouts +4,5-6,5%, Live Nation double chiffre, Ategrity +20%) et des mouvements structurels (Amazon dépasse Walmart), contrebalancé par des risques géopolitiques majeurs (tensions États-Unis-Iran, pétrole +6 mois) et des signaux de correction (Wayfair, repli Asie-Pacifique). Les marchés restent en attente de données macro décisives.",
+      "resume": "Les marchés affichent un sentiment mitigé dominé par des signaux baissiers sectoriels (repli en Chine, tensions géopolitiques États-Unis-Iran, préoccupations de valorisation) contrebalancés par quelques points positifs (accélération manufacturière au Japon, dépassement d'estimations chez Lundin Gold). L'incertitude macro-économique (inflation turque, finances publiques françaises précaires) et les craintes de bulle du crédit privé pèsent sur la confiance des investisseurs.",
       "signaux_cles": [
-        "Guidance 2026 positives convergentes : Sprouts (+4,5-6,5%), Live Nation (BAIIA double chiffre), Ategrity (+20% Q1), World Kinect (BPA 2,20-2,40$) — signal de confiance des dirigeants malgré l'incertitude macro",
-        "Escalade géopolitique : Trump donne 15 jours à l'Iran avec menaces, pétrole brut à +6 mois, repli majoritaire Asie-Pacifique — risque de volatilité accrue et potentiel choc d'offre énergétique",
-        "Réduction Nvidia-OpenAI : accord réduit de 100 à 30 milliards de dollars — signal de rationalisation des investissements IA, tempérant les attentes de croissance exponentielle du secteur"
+        "Sika : baisse de 16 % du bénéfice FY25 avec repli significatif en Chine et arrêt aux États-Unis, signal de ralentissement économique global",
+        "Tensions géopolitiques : conflit États-Unis-Iran profilé avec effondrement des actions asiatiques, bien que le KOSPI sud-coréen atteigne un record (signal contradictoire)",
+        "Secteur manufacturier japonais en accélération en février et Lundin Gold dépassant les estimations, contrebalançant partiellement les signaux baissiers"
       ]
     },
     "crypto": {
-      "score": 0.35,
-      "confidence": 0.62,
-      "tendance": "mixte",
-      "resume": "Sentiment modérément haussier porté par des signaux institutionnels positifs (engagement de la Maison-Blanche sur les stablecoins, croissance du Lightning Network, acquisitions stratégiques) et des données techniques constructives (structure des options Bitcoin, stabilisation des prix). Contrebalancé par des critiques régulatoires fortes (Fed, sénatrice Warren) et des signaux techniques mitigés (pertes mensuelles record, couverture baissière). L'implication concrète : marché en phase de consolidation avec support institutionnel croissant mais volatilité persistante.",
+      "score": -0.35,
+      "confidence": 0.72,
+      "tendance": "baissier",
+      "resume": "Sentiment modérément baissier dominé par des signaux réglementaires négatifs, des critiques institutionnelles de haut niveau et des indicateurs de stress du marché. Les déclarations de la Fed contre la crypto et les révélations sur l'activité illicite des stablecoins contrebalancent partiellement les initiatives positives de la Maison-Blanche et les acquisitions stratégiques. L'implication concrète : volatilité accrue et pression réglementaire croissante sur les stablecoins et les mineurs.",
       "signaux_cles": [
-        "Engagement politique direct : la Maison-Blanche favorise les rendements de stablecoins et demande aux banques d'agir, avec annonces supplémentaires à venir",
-        "Croissance du Lightning Network : dépassement de 1 milliard de dollars de volume mensuel, signal d'adoption Bitcoin en couche 2",
-        "Acquisitions et consolidation : Kraken acquiert Magna, xStocks dépasse 25 milliards de dollars de volume avec 80 000+ détenteurs onchain, Nillion réoriente vers Ethereum"
+        "Kashkari (Fed) déclare la crypto 'totalement inutile' et critique les stablecoins face à Venmo — signal institutionnel fortement baissier d'une autorité monétaire clé",
+        "Activité illicite des stablecoins atteint 141 milliards de dollars en 2025 (sommet de 5 ans) — justifie l'intensification du contrôle réglementaire et crée un risque de restriction",
+        "Bitcoin enregistre son pire début d'année sur 50 jours jamais observé + Bitdeer s'effondre de 17% après offre de dette — indicateurs de stress du marché et fragilité des mineurs face aux coûts de financement"
       ]
     },
     "matieres_premieres": {
-      "score": 0.25,
+      "score": 0.15,
       "confidence": 0.55,
       "tendance": "mixte",
-      "resume": "Sentiment contrasté sur les matières premières : signaux haussiers sur l'énergie (pétrole au plus haut en 6 mois, uranium, hydrogène) et les métaux (mining, transport maritime de minerai), mais contrebalancés par des signaux baissiers sur les transports maritimes (Baltic Dry en baisse 3 jours consécutifs) et des incertitudes politiques majeures (Trump, électrification). L'impact net reste modéré et dépendant de la direction des politiques énergétiques américaines.",
+      "resume": "Sentiment contrasté sur les matières premières : soutien des prix du pétrole (+6 mois) et dynamique positive du transport maritime (Vale, vrac sec) sont contrebalancés par l'incertitude politique (recul des énergies renouvelables sous Trump, hémorragie VE de 65Mds$) et des signaux faibles sur les commodités agricoles. L'impact net reste neutre à légèrement positif pour l'énergie, mais fragile.",
       "signaux_cles": [
-        "Pétrole clôture à son plus haut niveau en 6 mois — signal haussier direct sur l'énergie fossile",
-        "Indice Baltic Dry en baisse pour le 3e jour consécutif — contrebalance les perspectives positives du transport maritime et reflète une demande incertaine",
-        "Inversion de politique de Trump provoque une hémorragie de 65 milliards de dollars dans le secteur des véhicules électriques — crée une volatilité majeure sur la demande de métaux (lithium, cobalt) et remet en question les investissements en énergies renouvelables"
+        "Pétrole au plus haut en 6 mois avec gains hebdomadaires sur tensions Iran — soutien structurel des prix énergétiques",
+        "Hémorragie de 65 milliards de dollars dans les VE et recul des énergies renouvelables sous Trump — réallocation vers hydrocarbures traditionnels",
+        "Vale commande 30 transporteurs de minerai et marché du vrac sec bénéficie de vents porteurs jusqu'en 2026 — dynamique positive du transport maritime et demande minière"
       ]
     },
     "ai_tech": {
       "score": 0.45,
       "confidence": 0.62,
       "tendance": "mixte",
-      "resume": "Sentiment modérément haussier dominé par les avancées technologiques majeures de Google (Gemini 3.1 Pro avec 1M tokens et 77,1% ARC-AGI-2) et l'expansion stratégique de Nvidia en Inde, contrebalancés par des signaux baissiers structurels : montée des menaces de sécurité IA (PromptSpy, RAT), fuite des talents vers l'étranger, et restructurations chez les acteurs clés (Block). L'impact net reste positif pour les géants tech mais révèle des fragilités croissantes dans l'écosystème IA.",
+      "resume": "Sentiment modérément haussier dominé par des avancées technologiques majeures (Gemini 3.1 Pro, modèles 14x plus rapides, investissements massifs en Inde), mais contrebalancé par des préoccupations croissantes en matière de sécurité, de gouvernance et de transparence des agents IA. Les signaux positifs concernent la capacité technologique et l'expansion du marché ; les signaux négatifs portent sur les risques non maîtrisés et les défaillances de contrôle.",
       "signaux_cles": [
-        "Google déploie Gemini 3.1 Pro avec contexte de 1 million de tokens et 77,1% de performance ARC-AGI-2 pour agents IA — avancée majeure en capacités de raisonnement et longueur de contexte",
-        "PromptSpy identifié comme premier malware Android exploitant l'IA générative en temps d'exécution, parallèlement à hausse documentée des attaques de jackpotting (20M$ de pertes) — escalade des risques de sécurité liés à l'IA",
-        "Nvidia approfondit son engagement dans les startups IA en Inde et Google consolide sa position avec Gemini 3.1 Pro, mais fuite des talents scientifiques américains et licenciements chez Block signalent tensions structurelles dans l'attraction/rétention de talents"
+        "Google Gemini 3.1 Pro : contexte de 1 million de tokens et raisonnement ARC-AGI-2 à 77,1% — progression technologique majeure pour les agents IA",
+        "Opérateur télécom indien investit 110 milliards de dollars en IA avec stratégie de domination rapide du marché — expansion géographique et capitaux massifs",
+        "Prolifération d'agents IA sans contraintes ni divulgations de sécurité, malware PromptSpy utilisant l'IA générative, criminels exploitant des faux fournisseurs — risques de sécurité et gouvernance non maîtrisés"
       ]
     }
   },
@@ -138,47 +138,47 @@
     },
     {
       "date": "2026-02-20",
-      "global": 0.15,
-      "geopolitique": -0.55,
-      "marches": 0.35,
-      "crypto": 0.35,
-      "matieres_premieres": 0.25,
+      "global": -0.17,
+      "geopolitique": -0.62,
+      "marches": -0.35,
+      "crypto": -0.35,
+      "matieres_premieres": 0.15,
       "ai_tech": 0.45
     }
   ],
   "model": "claude-haiku-4-5-20251001",
   "usage": {
-    "totalInputTokens": 7761,
-    "totalOutputTokens": 1901,
+    "totalInputTokens": 7551,
+    "totalOutputTokens": 1787,
     "totalCalls": 5,
     "callsByLabel": {
       "sentiment-geopolitique": {
         "calls": 1,
-        "inputTokens": 1518,
-        "outputTokens": 352
+        "inputTokens": 1462,
+        "outputTokens": 384
       },
       "sentiment-marches": {
         "calls": 1,
-        "inputTokens": 1734,
-        "outputTokens": 408
+        "inputTokens": 1555,
+        "outputTokens": 338
       },
       "sentiment-crypto": {
         "calls": 1,
-        "inputTokens": 1547,
-        "outputTokens": 345
+        "inputTokens": 1550,
+        "outputTokens": 381
       },
       "sentiment-matieres_premieres": {
         "calls": 1,
-        "inputTokens": 1461,
-        "outputTokens": 356
+        "inputTokens": 1486,
+        "outputTokens": 317
       },
       "sentiment-ai_tech": {
         "calls": 1,
-        "inputTokens": 1501,
-        "outputTokens": 440
+        "inputTokens": 1498,
+        "outputTokens": 367
       }
     },
-    "estimatedCostUSD": 0.0138,
+    "estimatedCostUSD": 0.0132,
     "model": "claude-haiku-4-5-20251001"
   }
 }

@@ -1,14 +1,14 @@
 {
-  "updated": "2026-02-20T03:16:24.445Z",
+  "updated": "2026-02-20T07:29:37.506Z",
   "alertes": [
     {
       "id": "alert-2026-02-20-001",
-      "titre": "Pétrole (USO) : +2,25% à 81,19 $, accélération haussière",
-      "texte": "Le baril remonte significativement, effaçant une partie des pertes récentes et retrouvant les niveaux de résistance de début février. Cette hausse intervient dans un contexte de tensions géopolitiques persistantes et de révisions à la baisse des stocks américains. Surveiller le franchissement des 82,50 $ et les signaux de l'EIA (inventaires hebdomadaires).",
+      "titre": "USO (Pétrole) : +2,25% à 81,19 $, résistance 82 $ en vue",
+      "texte": "L'ETF pétrolier USO gagne 2,25% à 81,19 $, prolongeant une tendance haussière intraday. Ce mouvement intervient dans un contexte géopolitique tendu et suggère une demande accrue de couverture inflationniste. À surveiller : rupture à la hausse au-dessus de 82 $ ou consolidation sous 80,50 $ en cas de correction.",
       "categorie": "matieres_premieres",
-      "severite": "attention",
+      "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-02-20T03:16:24.445Z",
+      "horodatage": "2026-02-20T07:29:37.506Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
@@ -18,12 +18,12 @@
     },
     {
       "id": "alert-2026-02-20-002",
-      "titre": "Fear & Greed Index : 7/100 (Panique extrême), quasi-stable (-2 pts/7j)",
-      "texte": "L'indice demeure en zone de panique extrême, signalant une aversion au risque intense mais sans accélération nouvelle cette semaine. Ce niveau historiquement bas (<10) coïncide généralement avec des capitulations sectorielles et des opportunités tactiques. Vigilance sur consolidation ou rebond technique imminent si sentiment reste bloqué à ce plancher.",
+      "titre": "Fear & Greed Index chute à 7 : peur extrême généralisée",
+      "texte": "L'indice peur-avidité atteint 7/100 (peur extrême), en baisse de 2 pts sur 7 jours, signalant une détérioration rapide du sentiment de marché. Ce niveau historiquement critique (seuil critique <15) indique une capitulation potentielle, souvent précurseur de rebonds tactiques. Surveiller l'éventuel rattrapage acheteur si l'indice perce sous 5 ou se stabilise 48-72h.",
       "categorie": "marches",
-      "severite": "urgent",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-20T03:16:24.445Z",
+      "horodatage": "2026-02-20T07:29:37.506Z",
       "donnees": {
         "score": 7,
         "label": "Extreme Fear",
@@ -33,9 +33,9 @@
   ],
   "stats": {
     "total": 2,
-    "urgent": 1,
+    "urgent": 0,
     "attention": 1,
-    "info": 0
+    "info": 1
   },
   "model": "claude-haiku-4-5-20251001"
 }
