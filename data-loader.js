@@ -350,15 +350,26 @@ const DataLoader = (function () {
         });
 
         // Ajouter les indices européens (Twelve Data) directement dans le widget Marchés
+        // Seuils de prix réalistes pour valider les données API
+        var EU_INDEX_MIN_PRICE = {
+            'CAC 40': 4000, 'DAX': 10000, 'FTSE 100': 4000,
+            'Euro Stoxx 50': 2500, 'IBEX 35': 5000, 'FTSE MIB': 15000
+        };
         if (_cache.europeanMarkets?.indices?.length) {
-            rows.push('<div class="market-row market-row-separator"><span class="market-row-name market-section-label">Indices européens</span></div>');
+            rows.push('<div class="market-row market-row-separator"><span class="market-row-name market-section-label">Indices europ\u00e9ens</span></div>');
             _cache.europeanMarkets.indices.forEach(function(idx) {
                 var pct = formatPercent(idx.change_pct);
-                var priceStr = idx.price ? idx.price.toLocaleString('fr-FR', {minimumFractionDigits: 0, maximumFractionDigits: 0}) : 'N/A';
+                // Valider le prix : vérifier qu'il est réaliste pour cet indice
+                var minPrice = EU_INDEX_MIN_PRICE[idx.name] || 100;
+                var priceValid = idx.price && idx.price >= minPrice;
+                var priceStr = priceValid
+                    ? idx.price.toLocaleString('fr-FR', {minimumFractionDigits: 0, maximumFractionDigits: 0})
+                    : '\u2014';
+                var changeStr = priceValid ? pct.text : '';
                 rows.push('<div class="market-row">' +
                     '<span class="market-row-name">' + idx.name + '</span>' +
                     '<span class="market-row-price">' + priceStr + '</span>' +
-                    '<span class="market-row-change" style="color:' + (pct.positive ? 'var(--green, #16a34a)' : 'var(--red, #dc2626)') + '">' + pct.text + '</span>' +
+                    '<span class="market-row-change" style="color:' + (pct.positive ? 'var(--green, #16a34a)' : 'var(--red, #dc2626)') + '">' + changeStr + '</span>' +
                 '</div>');
             });
         }
@@ -1161,10 +1172,10 @@ const DataLoader = (function () {
         // Générer le HTML
         ln.innerHTML = curated.map(function(n) {
             var rubriqueAttr = n.rubrique || '';
-            var rubriqueLabel = n.rubrique_label || '';
-            var rubriqueEmoji = n.rubrique_emoji || '';
-            var rubriqueTag = rubriqueLabel
-                ? '<span class="rubrique-badge rubrique-' + rubriqueAttr + '">' + rubriqueEmoji + ' ' + rubriqueLabel + '</span>'
+            // Normaliser le label de rubrique
+            var label = normalizeRubriqueLabel(rubriqueAttr, n.rubrique_label);
+            var rubriqueTag = label
+                ? '<span class="rubrique-badge" data-rubrique="' + rubriqueAttr + '">' + label + '</span>'
                 : '';
 
             var hasThumb = n.image ? ' has-thumb' : '';
@@ -1175,9 +1186,10 @@ const DataLoader = (function () {
             // Titre tronqué si trop long
             var displayTitle = truncateTitle(n.title || '', MAX_TITLE_LEN);
 
-            // Résumé : masquer si redondant avec le titre, sinon tronquer (max 150 car.)
+            // Résumé : masquer si N/A, redondant ou vide
             var desc = n.description || '';
-            if (isSummaryRedundant(n.title || '', desc)) desc = '';
+            if (isDescriptionEmpty(desc)) desc = '';
+            if (desc && isSummaryRedundant(n.title || '', desc)) desc = '';
             if (desc.length > 150) desc = desc.slice(0, 147) + '...';
             var summaryHTML = desc
                 ? '<p class="news-list-summary">' + desc + '</p>'
@@ -1486,13 +1498,13 @@ const DataLoader = (function () {
 
         // Construire le résumé en français
         var titres = articles.map(function(a) {
-            return '<strong>' + (a.title || '') + '</strong> <span style="color:rgba(245,240,232,0.5)">(' + (a.source || '') + ')</span>';
+            return '<strong>' + (a.title || '') + '</strong> <span class="category-trend-source">(' + (a.source || '') + ')</span>';
         });
 
-        trendEl.innerHTML = '<div style="margin-bottom:2rem;padding:1.25rem;background:var(--navy);border-left:4px solid var(--pink);border-radius:0 4px 4px 0;color:#F5F0E8">' +
-            '<strong style="display:block;margin-bottom:0.5rem;color:#F5F0E8">Dernières actualités de la rubrique</strong>' +
-            '<ul style="margin:0;padding-left:1.2rem;list-style:disc">' +
-            titres.map(function(t) { return '<li style="margin-bottom:0.3rem">' + t + '</li>'; }).join('') +
+        trendEl.innerHTML = '<div class="category-trend-banner">' +
+            '<strong class="category-trend-title">Derni\u00e8res actualit\u00e9s</strong>' +
+            '<ul class="category-trend-list">' +
+            titres.map(function(t) { return '<li>' + t + '</li>'; }).join('') +
             '</ul></div>';
     }
 
@@ -1522,16 +1534,16 @@ const DataLoader = (function () {
             { data: _cache.defi?.topYields?.length, el: 'defi-yields', section: 'yields-section', msg: 'Rendements indisponibles' },
             { data: _cache.macro?.indicators?.length, el: 'macro-indicators', section: 'macro-section', msg: 'Indicateurs indisponibles' },
             { data: _cache.fearGreed?.current, el: null, section: 'fng-section', msg: null },
-            { data: _cache.messari?.assets?.length, el: 'messari-widget', section: 'messari-section', msg: 'Données crypto avancées indisponibles' }
+            { data: _cache.messari?.assets?.length, el: 'messari-widget', section: 'messari-section', msg: 'Données crypto avancées indisponibles' },
+            { data: _cache.markets?.economicCalendar?.length, el: 'economic-calendar', section: 'calendar-section', msg: 'Calendrier indisponible' }
         ];
 
         widgetChecks.forEach(function(check) {
             if (!check.data) {
-                if (check.el) showFallback(check.el, check.msg);
-                // Masquer la section entière si pas de données
+                // Retirer la section vide du DOM au lieu de simplement la cacher
                 var section = document.getElementById(check.section);
-                if (section && !check.data) {
-                    section.classList.add('widget-empty');
+                if (section) {
+                    section.remove();
                 }
             }
         });
@@ -1549,6 +1561,204 @@ const DataLoader = (function () {
      * Peuple la grille d'articles sur les pages catégorie (geopolitics.html, markets.html, etc.)
      * Utilise les données live de news.json pour remplacer le contenu statique
      */
+    // Nombre initial d'articles affichés par page catégorie
+    var CATEGORY_PAGE_INITIAL = 12;
+
+    // Normalisation des labels de rubrique (accents + casse correcte)
+    var RUBRIQUE_LABELS = {
+        'geopolitique': 'G\u00e9opolitique',
+        'marches': 'March\u00e9s',
+        'crypto': 'Crypto',
+        'matieres_premieres': 'Mati\u00e8res Premi\u00e8res',
+        'ai_tech': 'IA & Tech'
+    };
+
+    function normalizeRubriqueLabel(rubrique, rawLabel) {
+        return RUBRIQUE_LABELS[rubrique] || rawLabel || '';
+    }
+
+    /**
+     * Vérifie si une description est vide ou sans valeur affichable
+     */
+    function isDescriptionEmpty(desc) {
+        if (!desc) return true;
+        var trimmed = desc.trim();
+        if (trimmed.length === 0) return true;
+        // Filtrer "N/A", "n/a", "NA", "undefined", etc.
+        if (/^(N\/?A|n\/?a|NA|undefined|null|-)$/i.test(trimmed)) return true;
+        // Filtrer les descriptions trop courtes pour être utiles
+        if (trimmed.length < 15) return true;
+        return false;
+    }
+
+    // ─── Sous-catégories marchés ──────────────────────────
+
+    var MARKETS_SUBCATEGORIES = [
+        {
+            key: 'actions_resultats',
+            label: 'Actions & R\u00e9sultats',
+            keywords: [
+                'bpa', 'bénéfice', 'benefice', 'dividende', 'résultats q', 'resultats q',
+                'résultats trimestriel', 'resultats trimestriel', 'earnings',
+                'chiffre d\'affaires', 'relèvement', 'relevement', 'abaissement',
+                'note d\'analyste', 'objectif de cours', 'rachat d\'actions',
+                'introduction en bourse', 'ipo', 'profit', 'perte nette',
+                'marge opérationnelle', 'marge operationnelle', 'prévisions',
+                'previsions', 'guidance', 'buyback', 'action', 'capitalisation',
+                'publication des résultats', 'publication des resultats',
+                'surperformance', 'sous-performance', 'consensus', 'analyste',
+                'recommandation', 'upgrade', 'downgrade', 'quarterly',
+                'trimestriel', 'annuel', 'semestriel', 'revenue'
+            ]
+        },
+        {
+            key: 'geopolitique_marches',
+            label: 'G\u00e9opolitique & March\u00e9s',
+            keywords: [
+                'trump', 'sanctions', 'tarifs', 'tarif douanier', 'droits de douane',
+                'guerre commerciale', 'embargo', 'conflit', 'géopolitique',
+                'geopolitique', 'otan', 'nato', 'ukraine', 'russie', 'chine',
+                'taiwan', 'iran', 'corée du nord', 'coree du nord', 'pétrole',
+                'petrole', 'opep', 'opec', 'sanctions économiques',
+                'sanctions economiques', 'tensions', 'souveraineté',
+                'souverainete', 'protectionnisme', 'relocalisation',
+                'nearshoring', 'friendshoring', 'découplage', 'decouplage',
+                'sécurité nationale', 'securite nationale', 'exportation',
+                'importation', 'blocus', 'représailles', 'represailles'
+            ]
+        },
+        {
+            key: 'finance_personnelle',
+            label: 'Finance personnelle',
+            keywords: [
+                'épargne', 'epargne', 'immobilier', 'retraite', 'assurance vie',
+                'livret a', 'pel', 'investisseur particulier', 'patrimoine',
+                'placement', 'per', 'pea', 'portefeuille personnel',
+                'investissement personnel', 'finances personnelles',
+                'budget', 'impôt', 'impot', 'fiscalité', 'fiscalite',
+                'succession', 'donation', 'scpi', 'crédit immobilier',
+                'credit immobilier', 'prêt', 'pret', 'taux d\'emprunt',
+                'stratégie personnelle', 'strategie personnelle',
+                'diversification', 'gestion de patrimoine', 'défiscalisation',
+                'defiscalisation', 'héritage', 'heritage'
+            ]
+        },
+        {
+            key: 'industrie_secteurs',
+            label: 'Industrie & Secteurs',
+            keywords: [
+                'aéronautique', 'aeronautique', 'défense', 'defense',
+                'automobile', 'pharma', 'pharmaceutique', 'biotech',
+                'luxe', 'retail', 'distribution', 'énergie', 'energie',
+                'renouvelable', 'nucléaire', 'nucleaire', 'semi-conducteur',
+                'chip', 'puces', 'semiconducteur', 'cloud', 'saas',
+                'télécoms', 'telecoms', 'transport', 'logistique',
+                'agroalimentaire', 'agri', 'construction', 'btp',
+                'immobilier commercial', 'hôtellerie', 'hotellerie',
+                'tourisme', 'compagnie aérienne', 'compagnie aerienne',
+                'sidérurgie', 'siderurgie', 'chimie', 'minière', 'miniere',
+                'secteur', 'industrie', 'branche', 'filière', 'filiere',
+                'nvidia', 'apple', 'microsoft', 'tesla', 'google',
+                'amazon', 'meta', 'boeing', 'airbus', 'lvmh'
+            ]
+        },
+        {
+            key: 'macro_conjoncture',
+            label: 'Macro & Conjoncture',
+            keywords: [] // Catégorie par défaut — pas besoin de mots-clés
+        }
+    ];
+
+    var MARKETS_SUBCAT_VISIBLE = 6;
+
+    /**
+     * Classe un article dans une sous-catégorie marchés
+     * en analysant son titre et sa description via mots-clés
+     */
+    function classifyMarketArticle(article) {
+        var text = ((article.title || '') + ' ' + (article.description || '')).toLowerCase();
+
+        // Tester chaque sous-catégorie sauf la dernière (défaut)
+        for (var i = 0; i < MARKETS_SUBCATEGORIES.length - 1; i++) {
+            var subcat = MARKETS_SUBCATEGORIES[i];
+            for (var j = 0; j < subcat.keywords.length; j++) {
+                if (text.indexOf(subcat.keywords[j]) !== -1) {
+                    return subcat.key;
+                }
+            }
+        }
+
+        // Par défaut : Macro & Conjoncture
+        return 'macro_conjoncture';
+    }
+
+    /**
+     * Rend les sous-catégories marchés en sections séparées
+     */
+    function renderMarketsSubcategories(articles) {
+        // Classer chaque article
+        var buckets = {};
+        MARKETS_SUBCATEGORIES.forEach(function(sc) { buckets[sc.key] = []; });
+
+        articles.forEach(function(article) {
+            var key = classifyMarketArticle(article);
+            buckets[key].push(article);
+        });
+
+        var html = '';
+        MARKETS_SUBCATEGORIES.forEach(function(sc) {
+            var items = buckets[sc.key];
+            if (items.length === 0) return;
+
+            var visible = items.slice(0, MARKETS_SUBCAT_VISIBLE);
+            var hasMore = items.length > MARKETS_SUBCAT_VISIBLE;
+
+            html += '<section class="markets-subcategory" data-subcat="' + sc.key + '">';
+            html += '<h3 class="markets-subcat-title">' + sc.label + '</h3>';
+            html += '<div class="news-grid">';
+            html += renderCategoryArticles(visible);
+            html += '</div>';
+
+            if (hasMore) {
+                var hiddenCount = items.length - MARKETS_SUBCAT_VISIBLE;
+                html += '<div class="news-grid markets-subcat-hidden" data-subcat-hidden="' + sc.key + '" style="display:none;">';
+                html += renderCategoryArticles(items.slice(MARKETS_SUBCAT_VISIBLE));
+                html += '</div>';
+                html += '<button class="markets-subcat-toggle" data-subcat-toggle="' + sc.key + '">';
+                html += 'Voir tout (' + items.length + ') \u2192';
+                html += '</button>';
+            }
+
+            html += '</section>';
+        });
+
+        return html;
+    }
+
+    /**
+     * Attache les event listeners des boutons "Voir tout" des sous-catégories
+     */
+    function initSubcatToggles(container) {
+        var toggles = container.querySelectorAll('.markets-subcat-toggle');
+        toggles.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var key = btn.getAttribute('data-subcat-toggle');
+                var hidden = container.querySelector('[data-subcat-hidden="' + key + '"]');
+                if (!hidden) return;
+
+                if (hidden.style.display === 'none') {
+                    hidden.style.display = '';
+                    btn.textContent = 'R\u00e9duire \u2190';
+                } else {
+                    hidden.style.display = 'none';
+                    var section = btn.closest('.markets-subcategory');
+                    var total = (section.querySelectorAll('.top-story').length);
+                    btn.textContent = 'Voir tout (' + total + ') \u2192';
+                }
+            });
+        });
+    }
+
     function updateCategoryPageNews() {
         if (!_cache.news?.categories) return;
 
@@ -1597,28 +1807,73 @@ const DataLoader = (function () {
             return;
         }
 
-        // Générer le HTML
-        pageNews.innerHTML = articles.map(function(n) {
-            var rubriqueTag = n.rubrique_label
-                ? '<span class="rubrique-badge rubrique-' + (n.rubrique || '') + '">' + (n.rubrique_emoji || '') + ' ' + n.rubrique_label + '</span>'
+        // Mettre à jour le compteur dans l'onglet actif
+        updateTabCounts();
+
+        // ─── Mode sous-catégories pour la page Marchés ───
+        if (pageCat === 'markets') {
+            pageNews.innerHTML = renderMarketsSubcategories(articles);
+            initSubcatToggles(pageNews);
+            return;
+        }
+
+        // ─── Mode classique pour les autres pages ───
+        pageNews._allArticles = articles;
+        var totalCount = articles.length;
+
+        // Afficher les premiers articles seulement
+        var visibleArticles = articles.slice(0, CATEGORY_PAGE_INITIAL);
+
+        // Générer le HTML des articles
+        pageNews.innerHTML = renderCategoryArticles(visibleArticles);
+
+        // Ajouter le bouton "Voir plus" si nécessaire
+        if (totalCount > CATEGORY_PAGE_INITIAL) {
+            var remaining = totalCount - CATEGORY_PAGE_INITIAL;
+            var loadMoreHTML = '<div class="load-more-container">' +
+                '<button class="load-more-btn" id="category-load-more">' +
+                    'Voir plus d\u2019articles (' + remaining + ' restants)' +
+                '</button></div>';
+            pageNews.insertAdjacentHTML('afterend', loadMoreHTML);
+
+            var loadMoreBtn = document.getElementById('category-load-more');
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', function() {
+                    var allCards = renderCategoryArticles(articles);
+                    pageNews.innerHTML = allCards;
+                    var container = loadMoreBtn.parentElement;
+                    if (container) container.remove();
+                });
+            }
+        }
+    }
+
+    function renderCategoryArticles(articles) {
+        return articles.map(function(n) {
+            // Normaliser le label de rubrique
+            var label = normalizeRubriqueLabel(n.rubrique, n.rubrique_label);
+            var rubriqueTag = label
+                ? '<span class="rubrique-badge" data-rubrique="' + (n.rubrique || '') + '">' + label + '</span>'
                 : '';
 
-            var imgHTML = n.image
-                ? '<img src="' + n.image + '" alt="" class="story-image" loading="lazy" onerror="this.remove()">'
+            var hasImage = !!n.image;
+            var imgHTML = hasImage
+                ? '<img src="' + n.image + '" alt="" class="story-image" loading="lazy" onerror="this.parentElement.classList.add(\'no-image\')">'
                 : '';
 
             // Titre tronqué si trop long
             var displayTitle = truncateTitle(n.title || '', MAX_TITLE_LEN);
 
-            // Résumé : masquer si redondant avec le titre, sinon tronquer (max 150 car.)
+            // Résumé : masquer si N/A, redondant ou vide
             var desc = n.description || '';
-            if (isSummaryRedundant(n.title || '', desc)) desc = '';
+            if (isDescriptionEmpty(desc)) desc = '';
+            if (desc && isSummaryRedundant(n.title || '', desc)) desc = '';
             if (desc.length > 150) desc = desc.slice(0, 147) + '...';
             var excerptHTML = desc
                 ? '<p class="story-excerpt">' + desc + '</p>'
                 : '';
 
-            return '<article class="top-story" data-rubrique="' + (n.rubrique || '') + '">' +
+            return '<article class="top-story' + (hasImage ? '' : ' no-image') + '" data-rubrique="' + (n.rubrique || '') + '">' +
                 imgHTML +
                 '<div class="story-content">' +
                     '<div class="news-list-source">' +
@@ -1631,6 +1886,52 @@ const DataLoader = (function () {
                 '</div>' +
             '</article>';
         }).join('');
+    }
+
+    /**
+     * Met à jour les compteurs d'articles dans les onglets de la page marchés
+     */
+    function updateTabCounts() {
+        if (!_cache.news?.categories) return;
+        var tabs = document.querySelectorAll('#markets-tabs .page-tab');
+        if (!tabs.length) return;
+
+        var countMap = {
+            marches: 0,
+            etf: 0,
+            commodities: 0
+        };
+
+        // Compter les articles par onglet
+        var marketArticles = (_cache.news.categories['markets'] || []).filter(function(a) {
+            return !(a.lang === 'en' && !a.translated) && a.title && a.title.length >= 5 && isArticleRelevant(a);
+        });
+        countMap.marches = marketArticles.length;
+
+        var etfArticles = ['markets', 'ai_tech'].reduce(function(acc, cat) {
+            return acc.concat((_cache.news.categories[cat] || []).filter(function(a) {
+                return !(a.lang === 'en' && !a.translated) && a.title && a.title.length >= 5 && isArticleRelevant(a);
+            }));
+        }, []);
+        countMap.etf = etfArticles.length;
+
+        var commArticles = ['commodities', 'matieres_premieres'].reduce(function(acc, cat) {
+            return acc.concat((_cache.news.categories[cat] || []).filter(function(a) {
+                return !(a.lang === 'en' && !a.translated) && a.title && a.title.length >= 5 && isArticleRelevant(a);
+            }));
+        }, []);
+        countMap.commodities = commArticles.length;
+
+        tabs.forEach(function(tab) {
+            var tabKey = tab.dataset.tab;
+            var count = countMap[tabKey];
+            if (count !== undefined && count > 0) {
+                // Supprimer un ancien compteur s'il existe
+                var existing = tab.querySelector('.tab-count');
+                if (existing) existing.remove();
+                tab.insertAdjacentHTML('beforeend', ' <span class="tab-count">' + count + '</span>');
+            }
+        });
     }
 
     /**
@@ -2099,10 +2400,10 @@ const DataLoader = (function () {
         var newsapiCats = _cache.newsapi.categories;
 
         var rubriqueMap = {
-            geopolitics: { rubrique: 'geopolitique', rubrique_label: 'Geopolitique', rubrique_emoji: '' },
-            markets:     { rubrique: 'marches', rubrique_label: 'Marches', rubrique_emoji: '' },
+            geopolitics: { rubrique: 'geopolitique', rubrique_label: 'G\u00e9opolitique', rubrique_emoji: '' },
+            markets:     { rubrique: 'marches', rubrique_label: 'March\u00e9s', rubrique_emoji: '' },
             crypto:      { rubrique: 'crypto', rubrique_label: 'Crypto', rubrique_emoji: '' },
-            commodities: { rubrique: 'matieres_premieres', rubrique_label: 'Matieres Premieres', rubrique_emoji: '' },
+            commodities: { rubrique: 'matieres_premieres', rubrique_label: 'Mati\u00e8res Premi\u00e8res', rubrique_emoji: '' },
             ai_tech:     { rubrique: 'ai_tech', rubrique_label: 'IA & Tech', rubrique_emoji: '' }
         };
 
