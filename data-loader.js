@@ -84,7 +84,15 @@ const DataLoader = (function () {
             /\bon\s+a\s+testé\b/i, /\btest\s+(?:du|de|le)\b.*(?:suv|voiture|auto)/i,
             /\bshoah\b/i, /\bholocaust\b/i,
             /\bfast[- ]?fashion\b/i,
-            /\bfilmer\s+ses\s+matinales\b/i
+            /\bfilmer\s+ses\s+matinales\b/i,
+            /\bsonia\s+mabrouk\b/i, /\ble\s+cri\b.*\bbolloré/i,
+            /\bbolloré\b.*\bchrétien/i, /\bchrétien\b.*\bbolloré/i,
+            /\bémission\s+(?:tv|télé)\b/i, /\btv\s+show\b/i,
+            /\bmagazine\s+chrétien/i, /\brecrutement\s+médiatique/i,
+            /\bpensez\s+aux\s+enfants\b/i,
+            /\bliberté\s+d['']internet\b/i,
+            /\bcesu\b.*\bchèque/i, /\bchèque\s+emploi/i,
+            /\bfait\s+divers\b/i, /\bastrolog/i
         ],
         ai_tech: [
             /\bpéage\b/i, /\btoll\b.*\bpayment/i, /\bbadge\s+liber/i,
@@ -311,6 +319,32 @@ const DataLoader = (function () {
      * Met à jour la sidebar "Marchés" avec les données live.
      * Inclut les indices US + européens (Twelve Data) dans un seul widget unifié.
      */
+    // Mapping noms affichés → symboles TradingView
+    var TRADINGVIEW_SYMBOLS = {
+        'S&P 500': 'SPX', 'Nasdaq 100': 'NDX', 'Or (XAU)': 'GOLD',
+        'Nvidia': 'NVDA', 'P\u00e9trole WTI': 'USOIL',
+        'CAC 40': 'CAC40', 'DAX': 'DEU40', 'FTSE 100': 'UKX',
+        'Euro Stoxx 50': 'SX5E', 'IBEX 35': 'IBEX35', 'FTSE MIB': 'FTSEMIB'
+    };
+
+    function makeTradingViewLink(displayName) {
+        var sym = TRADINGVIEW_SYMBOLS[displayName];
+        if (!sym) return null;
+        return 'https://www.tradingview.com/symbols/' + sym + '/';
+    }
+
+    function buildMarketRow(displayName, priceStr, pct) {
+        var link = makeTradingViewLink(displayName);
+        var inner = '<span class="market-row-name">' + displayName + '</span>' +
+            '<span class="market-row-price">' + priceStr + '</span>' +
+            '<span class="market-row-change" style="color:' + (pct.positive ? 'var(--green, #16a34a)' : 'var(--red, #dc2626)') + '">' + pct.text + '</span>';
+
+        if (link) {
+            return '<div class="market-row"><a href="' + link + '" target="_blank" rel="noopener noreferrer" class="market-row-link">' + inner + '</a></div>';
+        }
+        return '<div class="market-row">' + inner + '</div>';
+    }
+
     function updateMarketSidebar() {
         if (!_cache.markets?.quotes?.length) return;
 
@@ -339,18 +373,13 @@ const DataLoader = (function () {
                 var aliases = nameMap[displayName];
                 if (aliases.indexOf(q.name) !== -1 || aliases.indexOf(q.symbol) !== -1) {
                     var pct = formatPercent(q.change);
-                    rows.push('<div class="market-row">' +
-                        '<span class="market-row-name">' + displayName + '</span>' +
-                        '<span class="market-row-price">' + formatUSD(q.price) + '</span>' +
-                        '<span class="market-row-change" style="color:' + (pct.positive ? 'var(--green, #16a34a)' : 'var(--red, #dc2626)') + '">' + pct.text + '</span>' +
-                    '</div>');
+                    rows.push(buildMarketRow(displayName, formatUSD(q.price), pct));
                     break;
                 }
             }
         });
 
         // Ajouter les indices européens (Twelve Data) directement dans le widget Marchés
-        // Seuils de prix réalistes pour valider les données API
         var EU_INDEX_MIN_PRICE = {
             'CAC 40': 4000, 'DAX': 10000, 'FTSE 100': 4000,
             'Euro Stoxx 50': 2500, 'IBEX 35': 5000, 'FTSE MIB': 15000
@@ -359,18 +388,13 @@ const DataLoader = (function () {
             rows.push('<div class="market-row market-row-separator"><span class="market-row-name market-section-label">Indices europ\u00e9ens</span></div>');
             _cache.europeanMarkets.indices.forEach(function(idx) {
                 var pct = formatPercent(idx.change_pct);
-                // Valider le prix : vérifier qu'il est réaliste pour cet indice
                 var minPrice = EU_INDEX_MIN_PRICE[idx.name] || 100;
                 var priceValid = idx.price && idx.price >= minPrice;
                 var priceStr = priceValid
                     ? idx.price.toLocaleString('fr-FR', {minimumFractionDigits: 0, maximumFractionDigits: 0})
                     : '\u2014';
-                var changeStr = priceValid ? pct.text : '';
-                rows.push('<div class="market-row">' +
-                    '<span class="market-row-name">' + idx.name + '</span>' +
-                    '<span class="market-row-price">' + priceStr + '</span>' +
-                    '<span class="market-row-change" style="color:' + (pct.positive ? 'var(--green, #16a34a)' : 'var(--red, #dc2626)') + '">' + changeStr + '</span>' +
-                '</div>');
+                if (!priceValid) pct = { text: '', positive: true };
+                rows.push(buildMarketRow(idx.name, priceStr, pct));
             });
         }
 
@@ -481,6 +505,7 @@ const DataLoader = (function () {
 
         const badge = document.createElement('div');
         badge.className = 'data-freshness';
+        badge.setAttribute('data-updated', updatedISO);
         badge.style.cssText = `
             font-size: 10px;
             color: ${isFresh(updatedISO) ? '#16a34a' : '#d97706'};
@@ -1485,7 +1510,7 @@ const DataLoader = (function () {
             markets: 'markets',
             crypto: 'crypto',
             commodities: 'commodities',
-            etf: 'markets' // Pas de rubrique ETF dans news.json, on utilise marchés
+            etf: 'markets'
         };
 
         var newsCat = catMap[pageCat];
@@ -1493,19 +1518,25 @@ const DataLoader = (function () {
 
         var articles = _cache.news.categories[newsCat].filter(function(a) {
             return !(a.lang === 'en' && !a.translated) && a.title && a.title.length >= 5;
-        }).slice(0, 3);
+        }).slice(0, 6);
         if (articles.length === 0) return;
 
-        // Construire le résumé en français
-        var titres = articles.map(function(a) {
-            return '<strong>' + (a.title || '') + '</strong> <span class="category-trend-source">(' + (a.source || '') + ')</span>';
-        });
+        // Construire les items du ticker
+        var items = articles.map(function(a) {
+            var title = truncateTitle(a.title || '', 80);
+            return '<a class="ticker-item" href="' + (a.url || '#') + '" target="_blank" rel="noopener noreferrer">' +
+                '<span class="ticker-source">' + (a.source || '') + '</span>' +
+                '<span class="ticker-headline">' + title + '</span>' +
+            '</a>' +
+            '<span class="ticker-sep">\u2022</span>';
+        }).join('');
 
-        trendEl.innerHTML = '<div class="category-trend-banner">' +
-            '<strong class="category-trend-title">Derni\u00e8res actualit\u00e9s</strong>' +
-            '<ul class="category-trend-list">' +
-            titres.map(function(t) { return '<li>' + t + '</li>'; }).join('') +
-            '</ul></div>';
+        // Dupliquer le contenu pour boucle infinie CSS
+        trendEl.innerHTML = '<div class="ticker-wrapper">' +
+            '<div class="ticker-track">' +
+                items + items +
+            '</div>' +
+        '</div>';
     }
 
     /**
@@ -1695,12 +1726,74 @@ const DataLoader = (function () {
     /**
      * Rend les sous-catégories marchés en sections séparées
      */
+    /**
+     * Rend un article en carte vedette (featured card) pleine largeur
+     */
+    function renderFeaturedCard(n) {
+        var label = normalizeRubriqueLabel(n.rubrique, n.rubrique_label);
+        var rubriqueTag = label
+            ? '<span class="rubrique-badge" data-rubrique="' + (n.rubrique || '') + '">' + label + '</span>'
+            : '';
+
+        var hasImage = !!n.image;
+        var imgHTML = hasImage
+            ? '<div class="featured-image"><img src="' + n.image + '" alt="" loading="lazy" onerror="this.parentElement.classList.add(\'no-image\')"></div>'
+            : '<div class="featured-image no-image"></div>';
+
+        var displayTitle = truncateTitle(n.title || '', 120);
+
+        var desc = n.description || '';
+        if (isDescriptionEmpty(desc)) desc = '';
+        if (desc && isSummaryRedundant(n.title || '', desc)) desc = '';
+        if (desc.length > 250) desc = desc.slice(0, 247) + '...';
+        var excerptHTML = desc
+            ? '<p class="featured-excerpt">' + desc + '</p>'
+            : '';
+
+        return '<article class="top-story--featured">' +
+            imgHTML +
+            '<div class="featured-content">' +
+                '<div class="news-list-source">' +
+                    '<a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" class="source-name">' + (n.source || '') + '</a>' +
+                    '<time class="news-time">' + (n.time || '') + '</time>' +
+                    rubriqueTag +
+                '</div>' +
+                '<h3 class="featured-title"><a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer">' + displayTitle + '</a></h3>' +
+                excerptHTML +
+            '</div>' +
+        '</article>';
+    }
+
+    /**
+     * Détermine si une source est tier3 (basse qualité / agrégateur)
+     */
+    function isSourceTier3(source) {
+        var src = (source || '').trim();
+        // Si la source est explicitement tier3 dans SOURCE_TIERS
+        if (SOURCE_TIERS[src] === 3) return true;
+        // Sources connues comme agrégateurs de brèves (TheFly, etc.)
+        var lowSrc = src.toLowerCase();
+        if (/thefly|fly\.com|thestreet|benzinga|tipranks/i.test(lowSrc)) return true;
+        return false;
+    }
+
     function renderMarketsSubcategories(articles) {
-        // Classer chaque article
+        // Séparer articles principaux et brèves (tier3)
+        var mainArticles = [];
+        var flashArticles = [];
+        articles.forEach(function(article) {
+            if (isSourceTier3(article.source)) {
+                flashArticles.push(article);
+            } else {
+                mainArticles.push(article);
+            }
+        });
+
+        // Classer les articles principaux en sous-catégories
         var buckets = {};
         MARKETS_SUBCATEGORIES.forEach(function(sc) { buckets[sc.key] = []; });
 
-        articles.forEach(function(article) {
+        mainArticles.forEach(function(article) {
             var key = classifyMarketArticle(article);
             buckets[key].push(article);
         });
@@ -1710,17 +1803,23 @@ const DataLoader = (function () {
             var items = buckets[sc.key];
             if (items.length === 0) return;
 
-            var visible = items.slice(0, MARKETS_SUBCAT_VISIBLE);
-            var hasMore = items.length > MARKETS_SUBCAT_VISIBLE;
-
             html += '<section class="markets-subcategory" data-subcat="' + sc.key + '">';
             html += '<h3 class="markets-subcat-title">' + sc.label + '</h3>';
-            html += '<div class="news-grid">';
-            html += renderCategoryArticles(visible);
-            html += '</div>';
 
+            // Premier article en carte vedette (pleine largeur)
+            var featured = items[0];
+            html += renderFeaturedCard(featured);
+
+            // Articles suivants dans la grille classique
+            var gridItems = items.slice(1, MARKETS_SUBCAT_VISIBLE);
+            if (gridItems.length > 0) {
+                html += '<div class="news-grid">';
+                html += renderCategoryArticles(gridItems);
+                html += '</div>';
+            }
+
+            var hasMore = items.length > MARKETS_SUBCAT_VISIBLE;
             if (hasMore) {
-                var hiddenCount = items.length - MARKETS_SUBCAT_VISIBLE;
                 html += '<div class="news-grid markets-subcat-hidden" data-subcat-hidden="' + sc.key + '" style="display:none;">';
                 html += renderCategoryArticles(items.slice(MARKETS_SUBCAT_VISIBLE));
                 html += '</div>';
@@ -1731,6 +1830,27 @@ const DataLoader = (function () {
 
             html += '</section>';
         });
+
+        // Section "Flash marchés" pour les brèves tier3
+        if (flashArticles.length > 0) {
+            var flashVisible = flashArticles.slice(0, 8);
+            html += '<section class="markets-flash-section">';
+            html += '<h3 class="markets-flash-title"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Flash march\u00e9s</h3>';
+            html += '<ul class="flash-list">';
+            flashVisible.forEach(function(n) {
+                var displayTitle = truncateTitle(n.title || '', 100);
+                html += '<li class="flash-item">';
+                html += '<span class="flash-source">' + (n.source || '') + '</span>';
+                html += '<a href="' + (n.url || '#') + '" target="_blank" rel="noopener noreferrer" class="flash-headline">' + displayTitle + '</a>';
+                html += '<time class="flash-time">' + (n.time || '') + '</time>';
+                html += '</li>';
+            });
+            html += '</ul>';
+            if (flashArticles.length > 8) {
+                html += '<p class="flash-more">' + (flashArticles.length - 8) + ' autres br\u00e8ves non affich\u00e9es</p>';
+            }
+            html += '</section>';
+        }
 
         return html;
     }
@@ -2503,7 +2623,27 @@ const DataLoader = (function () {
         initRubriqueFilters();
         handleEmptyWidgets();
         initWidgetAnimations();
+        startFreshnessRefresh();
         console.log('[DataLoader] ✓ DOM mis à jour');
+    }
+
+    /**
+     * Auto-refresh des indicateurs de fraîcheur toutes les 60s
+     */
+    var _freshnessInterval = null;
+    function startFreshnessRefresh() {
+        if (_freshnessInterval) return; // déjà actif
+        _freshnessInterval = setInterval(function() {
+            document.querySelectorAll('.data-freshness').forEach(function(badge) {
+                var container = badge.parentElement;
+                if (!container) return;
+                // Retrouver l'ISO depuis le data-attribute
+                var iso = badge.getAttribute('data-updated');
+                if (iso) {
+                    addFreshnessIndicator(container, iso);
+                }
+            });
+        }, 60000);
     }
 
     // ─── Lookup de prix par symbole (pour enrichir la watchlist) ──
