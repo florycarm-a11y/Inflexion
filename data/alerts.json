@@ -1,55 +1,40 @@
 {
-  "updated": "2026-02-19T07:32:00.565Z",
+  "updated": "2026-02-20T03:16:24.445Z",
   "alertes": [
     {
-      "id": "alert-2026-02-19-001",
-      "titre": "Or (GLD) : +2,25% à 458,28 $, accélération défensive",
-      "texte": "L'or gagne 2,25% en séance, confirmant la dynamique défensive face aux conditions macro incertaines. Ce mouvement s'inscrit dans un contexte de recherche de valeurs refuge, typiquement associé à une volatilité accrue ou des risques géopolitiques. Surveiller le franchissement de 460 $ comme signal de poursuite de la demande défensive.",
+      "id": "alert-2026-02-20-001",
+      "titre": "Pétrole (USO) : +2,25% à 81,19 $, accélération haussière",
+      "texte": "Le baril remonte significativement, effaçant une partie des pertes récentes et retrouvant les niveaux de résistance de début février. Cette hausse intervient dans un contexte de tensions géopolitiques persistantes et de révisions à la baisse des stocks américains. Surveiller le franchissement des 82,50 $ et les signaux de l'EIA (inventaires hebdomadaires).",
       "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-02-19T07:32:00.565Z",
+      "horodatage": "2026-02-20T03:16:24.445Z",
       "donnees": {
-        "symbole": "GLD",
-        "nom": "Or (ETF)",
-        "prix": 458.28,
+        "symbole": "USO",
+        "nom": "Pétrole (ETF)",
+        "prix": 81.19,
         "variation": 2.25
       }
     },
     {
-      "id": "alert-2026-02-19-002",
-      "titre": "Pétrole (USO) : +4,85% à 79,40 $, rebond marqué",
-      "texte": "Le pétrole brut bondit de 4,85% en une séance, passant au-dessus de 79 $. Ce mouvement suggère soit une contraction attendue de l'offre, soit une dégradation des conditions géopolitiques affectant la production. Vérifier les annonces OPEP+ et tensions régionales pour confirmer la durabilité de ce rebond.",
-      "categorie": "matieres_premieres",
-      "severite": "attention",
-      "impact": "haussier",
-      "horodatage": "2026-02-19T07:32:00.565Z",
-      "donnees": {
-        "symbole": "USO",
-        "nom": "Pétrole (ETF)",
-        "prix": 79.4,
-        "variation": 4.85
-      }
-    },
-    {
-      "id": "alert-2026-02-19-003",
-      "titre": "Fear & Greed Index : 9 (Extreme Fear), variation +4 pts/7j",
-      "texte": "L'indice de sentiment atteint 9 (peur extrême), au seuil plancher historique (<10 = zone critique). Bien que stabilisé à +4 pts sur 7 jours, cet extrême signale une capitulation de marché massive, historiquement associée aux inversions de tendance court terme. Surveiller un franchissement au-dessus de 20 comme signal de retour de la confiance.",
-      "categorie": "crypto",
+      "id": "alert-2026-02-20-002",
+      "titre": "Fear & Greed Index : 7/100 (Panique extrême), quasi-stable (-2 pts/7j)",
+      "texte": "L'indice demeure en zone de panique extrême, signalant une aversion au risque intense mais sans accélération nouvelle cette semaine. Ce niveau historiquement bas (<10) coïncide généralement avec des capitulations sectorielles et des opportunités tactiques. Vigilance sur consolidation ou rebond technique imminent si sentiment reste bloqué à ce plancher.",
+      "categorie": "marches",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-02-19T07:32:00.565Z",
+      "horodatage": "2026-02-20T03:16:24.445Z",
       "donnees": {
-        "score": 9,
+        "score": 7,
         "label": "Extreme Fear",
-        "variation_7j": 4
+        "variation_7j": -2
       }
     }
   ],
   "stats": {
-    "total": 3,
+    "total": 2,
     "urgent": 1,
-    "attention": 2,
+    "attention": 1,
     "info": 0
   },
   "model": "claude-haiku-4-5-20251001"
