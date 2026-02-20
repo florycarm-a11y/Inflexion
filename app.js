@@ -234,16 +234,31 @@ function initStickyHeader() {
     const header = document.querySelector('.header');
     if (!header) return;
 
+    let lastScrollY = 0;
     let ticking = false;
+    let isScrolled = false;
+
+    function updateHeader() {
+        const currentScrollY = window.scrollY;
+        // Hysteresis: seuil différent pour activer vs désactiver
+        // Active "scrolled" à 60px, désactive à 10px — empêche l'oscillation
+        if (!isScrolled && currentScrollY > 60) {
+            header.classList.add('scrolled');
+            isScrolled = true;
+        } else if (isScrolled && currentScrollY < 10) {
+            header.classList.remove('scrolled');
+            isScrolled = false;
+        }
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
+
     window.addEventListener('scroll', function() {
         if (!ticking) {
-            requestAnimationFrame(function() {
-                header.classList.toggle('scrolled', window.scrollY > 50);
-                ticking = false;
-            });
+            requestAnimationFrame(updateHeader);
             ticking = true;
         }
-    });
+    }, { passive: true });
 }
 
 /* ============================================
