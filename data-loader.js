@@ -1591,6 +1591,174 @@ const DataLoader = (function () {
         return false;
     }
 
+    // ─── Sous-catégories marchés ──────────────────────────
+
+    var MARKETS_SUBCATEGORIES = [
+        {
+            key: 'actions_resultats',
+            label: 'Actions & R\u00e9sultats',
+            keywords: [
+                'bpa', 'bénéfice', 'benefice', 'dividende', 'résultats q', 'resultats q',
+                'résultats trimestriel', 'resultats trimestriel', 'earnings',
+                'chiffre d\'affaires', 'relèvement', 'relevement', 'abaissement',
+                'note d\'analyste', 'objectif de cours', 'rachat d\'actions',
+                'introduction en bourse', 'ipo', 'profit', 'perte nette',
+                'marge opérationnelle', 'marge operationnelle', 'prévisions',
+                'previsions', 'guidance', 'buyback', 'action', 'capitalisation',
+                'publication des résultats', 'publication des resultats',
+                'surperformance', 'sous-performance', 'consensus', 'analyste',
+                'recommandation', 'upgrade', 'downgrade', 'quarterly',
+                'trimestriel', 'annuel', 'semestriel', 'revenue'
+            ]
+        },
+        {
+            key: 'geopolitique_marches',
+            label: 'G\u00e9opolitique & March\u00e9s',
+            keywords: [
+                'trump', 'sanctions', 'tarifs', 'tarif douanier', 'droits de douane',
+                'guerre commerciale', 'embargo', 'conflit', 'géopolitique',
+                'geopolitique', 'otan', 'nato', 'ukraine', 'russie', 'chine',
+                'taiwan', 'iran', 'corée du nord', 'coree du nord', 'pétrole',
+                'petrole', 'opep', 'opec', 'sanctions économiques',
+                'sanctions economiques', 'tensions', 'souveraineté',
+                'souverainete', 'protectionnisme', 'relocalisation',
+                'nearshoring', 'friendshoring', 'découplage', 'decouplage',
+                'sécurité nationale', 'securite nationale', 'exportation',
+                'importation', 'blocus', 'représailles', 'represailles'
+            ]
+        },
+        {
+            key: 'finance_personnelle',
+            label: 'Finance personnelle',
+            keywords: [
+                'épargne', 'epargne', 'immobilier', 'retraite', 'assurance vie',
+                'livret a', 'pel', 'investisseur particulier', 'patrimoine',
+                'placement', 'per', 'pea', 'portefeuille personnel',
+                'investissement personnel', 'finances personnelles',
+                'budget', 'impôt', 'impot', 'fiscalité', 'fiscalite',
+                'succession', 'donation', 'scpi', 'crédit immobilier',
+                'credit immobilier', 'prêt', 'pret', 'taux d\'emprunt',
+                'stratégie personnelle', 'strategie personnelle',
+                'diversification', 'gestion de patrimoine', 'défiscalisation',
+                'defiscalisation', 'héritage', 'heritage'
+            ]
+        },
+        {
+            key: 'industrie_secteurs',
+            label: 'Industrie & Secteurs',
+            keywords: [
+                'aéronautique', 'aeronautique', 'défense', 'defense',
+                'automobile', 'pharma', 'pharmaceutique', 'biotech',
+                'luxe', 'retail', 'distribution', 'énergie', 'energie',
+                'renouvelable', 'nucléaire', 'nucleaire', 'semi-conducteur',
+                'chip', 'puces', 'semiconducteur', 'cloud', 'saas',
+                'télécoms', 'telecoms', 'transport', 'logistique',
+                'agroalimentaire', 'agri', 'construction', 'btp',
+                'immobilier commercial', 'hôtellerie', 'hotellerie',
+                'tourisme', 'compagnie aérienne', 'compagnie aerienne',
+                'sidérurgie', 'siderurgie', 'chimie', 'minière', 'miniere',
+                'secteur', 'industrie', 'branche', 'filière', 'filiere',
+                'nvidia', 'apple', 'microsoft', 'tesla', 'google',
+                'amazon', 'meta', 'boeing', 'airbus', 'lvmh'
+            ]
+        },
+        {
+            key: 'macro_conjoncture',
+            label: 'Macro & Conjoncture',
+            keywords: [] // Catégorie par défaut — pas besoin de mots-clés
+        }
+    ];
+
+    var MARKETS_SUBCAT_VISIBLE = 6;
+
+    /**
+     * Classe un article dans une sous-catégorie marchés
+     * en analysant son titre et sa description via mots-clés
+     */
+    function classifyMarketArticle(article) {
+        var text = ((article.title || '') + ' ' + (article.description || '')).toLowerCase();
+
+        // Tester chaque sous-catégorie sauf la dernière (défaut)
+        for (var i = 0; i < MARKETS_SUBCATEGORIES.length - 1; i++) {
+            var subcat = MARKETS_SUBCATEGORIES[i];
+            for (var j = 0; j < subcat.keywords.length; j++) {
+                if (text.indexOf(subcat.keywords[j]) !== -1) {
+                    return subcat.key;
+                }
+            }
+        }
+
+        // Par défaut : Macro & Conjoncture
+        return 'macro_conjoncture';
+    }
+
+    /**
+     * Rend les sous-catégories marchés en sections séparées
+     */
+    function renderMarketsSubcategories(articles) {
+        // Classer chaque article
+        var buckets = {};
+        MARKETS_SUBCATEGORIES.forEach(function(sc) { buckets[sc.key] = []; });
+
+        articles.forEach(function(article) {
+            var key = classifyMarketArticle(article);
+            buckets[key].push(article);
+        });
+
+        var html = '';
+        MARKETS_SUBCATEGORIES.forEach(function(sc) {
+            var items = buckets[sc.key];
+            if (items.length === 0) return;
+
+            var visible = items.slice(0, MARKETS_SUBCAT_VISIBLE);
+            var hasMore = items.length > MARKETS_SUBCAT_VISIBLE;
+
+            html += '<section class="markets-subcategory" data-subcat="' + sc.key + '">';
+            html += '<h3 class="markets-subcat-title">' + sc.label + '</h3>';
+            html += '<div class="news-grid">';
+            html += renderCategoryArticles(visible);
+            html += '</div>';
+
+            if (hasMore) {
+                var hiddenCount = items.length - MARKETS_SUBCAT_VISIBLE;
+                html += '<div class="news-grid markets-subcat-hidden" data-subcat-hidden="' + sc.key + '" style="display:none;">';
+                html += renderCategoryArticles(items.slice(MARKETS_SUBCAT_VISIBLE));
+                html += '</div>';
+                html += '<button class="markets-subcat-toggle" data-subcat-toggle="' + sc.key + '">';
+                html += 'Voir tout (' + items.length + ') \u2192';
+                html += '</button>';
+            }
+
+            html += '</section>';
+        });
+
+        return html;
+    }
+
+    /**
+     * Attache les event listeners des boutons "Voir tout" des sous-catégories
+     */
+    function initSubcatToggles(container) {
+        var toggles = container.querySelectorAll('.markets-subcat-toggle');
+        toggles.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var key = btn.getAttribute('data-subcat-toggle');
+                var hidden = container.querySelector('[data-subcat-hidden="' + key + '"]');
+                if (!hidden) return;
+
+                if (hidden.style.display === 'none') {
+                    hidden.style.display = '';
+                    btn.textContent = 'R\u00e9duire \u2190';
+                } else {
+                    hidden.style.display = 'none';
+                    var section = btn.closest('.markets-subcategory');
+                    var total = (section.querySelectorAll('.top-story').length);
+                    btn.textContent = 'Voir tout (' + total + ') \u2192';
+                }
+            });
+        });
+    }
+
     function updateCategoryPageNews() {
         if (!_cache.news?.categories) return;
 
@@ -1639,15 +1807,22 @@ const DataLoader = (function () {
             return;
         }
 
-        // Stocker les articles pour la pagination
+        // Mettre à jour le compteur dans l'onglet actif
+        updateTabCounts();
+
+        // ─── Mode sous-catégories pour la page Marchés ───
+        if (pageCat === 'markets') {
+            pageNews.innerHTML = renderMarketsSubcategories(articles);
+            initSubcatToggles(pageNews);
+            return;
+        }
+
+        // ─── Mode classique pour les autres pages ───
         pageNews._allArticles = articles;
         var totalCount = articles.length;
 
         // Afficher les premiers articles seulement
         var visibleArticles = articles.slice(0, CATEGORY_PAGE_INITIAL);
-
-        // Mettre à jour le compteur dans l'onglet actif
-        updateTabCounts();
 
         // Générer le HTML des articles
         pageNews.innerHTML = renderCategoryArticles(visibleArticles);

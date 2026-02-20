@@ -123,7 +123,12 @@ function initCategoryPage(category) {
         container.innerHTML = '<p class="empty-state">Aucun article disponible dans cette rubrique pour le moment.</p>';
         return;
     }
-    container.innerHTML = filtered.map(n => cardHTML(n)).join('');
+    // Wrap in news-grid if container doesn't already have it
+    if (container.classList.contains('news-grid')) {
+        container.innerHTML = filtered.map(n => cardHTML(n)).join('');
+    } else {
+        container.innerHTML = '<div class="news-grid">' + filtered.map(n => cardHTML(n)).join('') + '</div>';
+    }
 }
 
 function initCommon() {
