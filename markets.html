@@ -284,10 +284,42 @@
 
             <!-- ═══ Tab: ETF & Fonds ═══ -->
             <div class="tab-panel" id="tab-etf" role="tabpanel" hidden>
-                <div class="etf-table" id="etf-table"></div>
+                <!-- Introduction ETF -->
+                <div class="etf-intro">
+                    <p><strong>Les ETF (Exchange Traded Funds)</strong> sont des fonds indiciels cotés en bourse qui répliquent la performance d'un indice, d'un secteur ou d'une classe d'actifs. Ils offrent diversification instantanée, frais réduits et liquidité quotidienne. <a href="analysis.html">En savoir plus &rarr;</a></p>
+                </div>
+
+                <!-- Tableau comparatif des principaux ETF -->
+                <div class="etf-table-wrapper">
+                    <h3 class="etf-table-title">Principaux ETF mondiaux</h3>
+                    <div class="etf-comparison-table-scroll">
+                        <table class="etf-comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Ticker</th>
+                                    <th>Nom</th>
+                                    <th>Indice / Exposition</th>
+                                    <th>TER</th>
+                                    <th>Encours (Mds$)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>SPY</strong></td><td>SPDR S&P 500</td><td>S&P 500</td><td>0,09%</td><td>~570</td></tr>
+                                <tr><td><strong>QQQ</strong></td><td>Invesco Nasdaq-100</td><td>Nasdaq 100</td><td>0,20%</td><td>~310</td></tr>
+                                <tr><td><strong>VTI</strong></td><td>Vanguard Total Stock Market</td><td>Actions US (large+mid+small)</td><td>0,03%</td><td>~430</td></tr>
+                                <tr><td><strong>VXUS</strong></td><td>Vanguard Total International</td><td>Actions internationales hors US</td><td>0,07%</td><td>~75</td></tr>
+                                <tr><td><strong>BND</strong></td><td>Vanguard Total Bond Market</td><td>Obligations US investment grade</td><td>0,03%</td><td>~115</td></tr>
+                                <tr><td><strong>GLD</strong></td><td>SPDR Gold Shares</td><td>Or physique</td><td>0,40%</td><td>~75</td></tr>
+                                <tr><td><strong>VNQ</strong></td><td>Vanguard Real Estate</td><td>REITs / Immobilier US</td><td>0,12%</td><td>~35</td></tr>
+                                <tr><td><strong>CW8</strong></td><td>Amundi MSCI World (PEA)</td><td>MSCI World</td><td>0,38%</td><td>~4</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
                 <div class="two-col">
                     <div class="col-main">
+                        <h3 class="markets-subcat-title" style="margin-top:1.5rem">Actualités marchés & ETF</h3>
                         <div class="news-grid" id="page-news-etf" aria-live="polite">
                             <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des articles ETF...</span></div>
                         </div>
