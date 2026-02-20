@@ -1,29 +1,29 @@
 {
-  "updated": "2026-02-20T13:38:18.416Z",
+  "updated": "2026-02-20T19:11:28.376Z",
   "alertes": [
     {
       "id": "alert-2026-02-20-001",
-      "titre": "Pétrole (USO) : +2,25% à 81,19 $, accélération haussière",
-      "texte": "Le WTI repasse au-dessus de 81 $ après une hausse de 2,25% en séance, signalant une reprise de la demande ou des tensions d'offre. À surveiller : consolidation au-dessus de 80 $ ou rupture baissière si déception macroéconomique.",
-      "categorie": "matieres_premieres",
+      "titre": "GOOGL : +3,83% à 314,45 $, rebond sur support clé",
+      "texte": "Alphabet gagne 3,83% en séance, revenant à 314,45 $. Ce mouvement intervient dans un contexte de panique de marché (FNG à 7), suggérant un positionnement contrarian ou un débottage technique sur les valeurs de croissance. À surveiller : maintien au-dessus de 310 $ et synchronisation avec la fin de la phase de peur généralisée.",
+      "categorie": "marches",
       "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-02-20T13:38:18.415Z",
+      "horodatage": "2026-02-20T19:11:28.376Z",
       "donnees": {
-        "symbole": "USO",
-        "nom": "Pétrole (ETF)",
-        "prix": 81.19,
-        "variation": 2.25
+        "symbole": "GOOGL",
+        "nom": "Alphabet",
+        "prix": 314.45,
+        "variation": 3.83
       }
     },
     {
       "id": "alert-2026-02-20-002",
-      "titre": "Fear & Greed Index : 7/100 (Extreme Fear), stabilité extrême",
-      "texte": "L'indice reste ancré en zone d'extrême peur avec une variation négligeable de -2 pts sur 7 jours, reflétant une capitulation durable des investisseurs et un sentiment déconnecté de toute récupération technique. Seuil critique historique : rebond structurel possible sous 15 ou maintien du doute si aucun catalyseur positif.",
+      "titre": "Fear & Greed Index : 7 (Extreme Fear), point bas multi-mois",
+      "texte": "L'indice plonge à 7/100 avec recul de 2 pts sur 7 jours, entrant en zone de peur extrême (<15). Ce niveau historiquement bas coïncide avec des reprises tactiques sur mega-caps (GOOGL +3,83%). Signal contrarian classique : phase de capitulation approchant son zénith. Surveiller la remontée au-delà de 15 pts pour confirmer inflexion.",
       "categorie": "marches",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-02-20T13:38:18.415Z",
+      "severite": "attention",
+      "impact": "neutre",
+      "horodatage": "2026-02-20T19:11:28.376Z",
       "donnees": {
         "score": 7,
         "label": "Extreme Fear",
@@ -33,8 +33,8 @@
   ],
   "stats": {
     "total": 2,
-    "urgent": 1,
-    "attention": 0,
+    "urgent": 0,
+    "attention": 1,
     "info": 1
   },
   "model": "claude-haiku-4-5-20251001"

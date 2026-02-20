@@ -1,65 +1,67 @@
 {
-  "updated": "2026-02-20T13:38:14.806Z",
+  "updated": "2026-02-20T19:11:24.542Z",
   "date": "2026-02-20",
   "global": {
-    "score": -0.1,
-    "tendance": "neutre",
-    "resume": "Le sentiment global est neutre (-0.1), dominé par la rubrique geopolitique (baissier)."
+    "score": -0.23,
+    "tendance": "baissier",
+    "resume": "Le sentiment global est baissier (-0.23), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.45,
+      "score": -0.55,
       "confidence": 0.72,
       "tendance": "baissier",
-      "resume": "Sentiment modérément baissier dominé par des tensions géopolitiques croissantes (sanctions US au Soudan, boycott ukrainien, répression en Iran et Ouganda) et des crises de stabilité régionale (Sahel, Venezuela, Somaliland). Les signaux positifs (amnistie vénézuélienne, initiatives de paix) restent marginaux face à l'accumulation de foyers de tension et de violations des droits humains, créant un environnement d'instabilité accrue pour les investisseurs.",
+      "resume": "La géopolitique mondiale affiche un sentiment baissier dominé par l'escalade des tensions régionales (Ukraine, Moyen-Orient, Soudan) et l'instabilité institutionnelle (décisions de Trump contestées, répression accrue). Les signaux haussiers limités (négociations nucléaires saoudiennes, initiatives de paix) sont largement surpassés par les risques de fragmentation géopolitique et de conflits prolongés.",
       "signaux_cles": [
-        "Escalade des sanctions US contre le Soudan ciblant les commandants FSR pour atrocités à El-Fasher, signalant une durcissement de la position américaine sur les conflits régionaux",
-        "Répression systématique en Iran (dizaines de condamnations à mort) et en Ouganda (acharnement post-électoral) reflétant une instabilité politique croissante dans deux régions stratégiques",
-        "Boycott ukrainien des Paralympiques 2026 et redéploiement de troupes norvégiennes au Moyen-Orient indiquant une persistance des tensions militaires et une fragmentation des alliances internationales"
+        "Guerre en Ukraine : déclaration de Zelensky sur l'absence de soutien militaire direct des partenaires occidentaux et conditions humanitaires dégradées (« geler une population jusqu'à la mort »), signalant une escalade sans résolution visible",
+        "Cour suprême américaine invalide les tarifs douaniers de Trump (février 2026), créant une instabilité politique interne et une imprévisibilité des politiques commerciales affectant les alliances géopolitiques",
+        "Trois foyers de crise simultanés : annexion de Cisjordanie par Israël, génocide confirmé au Soudan (rapport ONU), répression à Cuba et en Iran — concentration de conflits régionaux sans mécanisme de résolution multilatéral"
       ]
     },
     "marches": {
-      "score": 0.15,
-      "confidence": 0.52,
-      "tendance": "mixte",
-      "resume": "Sentiment contrasté : quelques signaux positifs sectoriels (Balchem, WillScot, Tandem) compensés par des signaux baissiers structurels (réduction de dividende LyondellBasell, tensions géopolitiques, ralentissement économique russe). L'absence de direction claire sur les marchés larges suggère une consolidation avec opportunités sélectives.",
+      "score": -0.45,
+      "confidence": 0.72,
+      "tendance": "baissier",
+      "resume": "La rubrique est dominée par l'annulation des droits de douane par la Cour suprême, créant une incertitude majeure sur ~175 milliards de dollars de revenus américains potentiellement remboursables. Bien que quelques signaux positifs sectoriels émergent (croissance internationale, objectifs ambitieux), l'impact réglementaire négatif et l'incertitude fiscale prédominent, pesant sur le sentiment général des marchés.",
       "signaux_cles": [
-        "Balchem dépasse les attentes : BPA de 1,31 $ vs consensus 1,28 $, chiffre d'affaires 263,6 M$ vs 259,6 M$ attendus, action +4%",
-        "LyondellBasell réduit son dividende Q1 face au ralentissement du secteur chimique — signal de contraction des marges",
-        "WillScot affiche +17% de commandes modulaires et vise 25-30 M$ d'économies annuelles — momentum positif dans la construction"
+        "Annulation des droits de douane par la Cour suprême affectant 175 milliards de dollars de revenus américains, avec risque de remboursement massif aux entreprises (impact fiscal majeur non encore clarifié)",
+        "Trump qualifie la décision de 'profondément décevante' et promet des 'alternatives', signalant une escalade potentielle des tensions commerciales et une instabilité réglementaire prolongée",
+        "Signaux sectoriels mitigés : PTC Therapeutics annonce +19-36% de croissance 2026 et Balchem rapporte une expansion internationale, contrebalancés par l'échec du test Galleri de Hims au Royaume-Uni et le ralentissement de Medicare Advantage"
       ]
     },
     "crypto": {
-      "score": -0.35,
+      "score": 0.45,
       "confidence": 0.62,
       "tendance": "mixte",
-      "resume": "Sentiment baissier dominant sur Bitcoin et les ETF (sorties massives de 4 milliards sur 5 semaines, pire démarrage annuel), contrebalancé par des signaux techniques positifs (rebond du hashrate, Lightning Network en croissance) et des développements institutionnels mitigés (CME 24h/24, intérêt sélectif en DeFi). La liquidité tendue et la « peur extrême » persistent malgré un redressement technique.",
+      "resume": "Sentiment modérément haussier porté par des catalyseurs réglementaires (annulation des tarifs Trump, avancées législatives crypto à 90% de probabilité d'adoption) et infrastructurels (partenariats Lightspark/Cross River, tokenisation immobilière à Dubaï), contrebalancé par des signaux de friction interne (départ de contributeurs clés chez Aave, tensions de gouvernance) et des préoccupations de sécurité (exposition de 1 milliard de données KYC). L'impact net reste positif mais fragile.",
       "signaux_cles": [
-        "Sorties cumulées des ETF Bitcoin de 4 milliards de dollars sur 5 semaines, avec 166 millions supplémentaires perdus, signalant un désengagement institutionnel massif",
-        "Bitcoin enregistre son pire démarrage annuel de son histoire, restant significativement sous un niveau clé onchain avec liquidité tendue",
-        "Rebond du hashrate Bitcoin de 15% en difficulté de minage (record absolu) et Lightning Network dépassant 1 milliard de dollars de transactions mensuelles, indiquant une résilience technique sous-jacente"
+        "PDG de Ripple anticipe 90% de probabilité d'adoption d'un projet de loi crypto d'ici fin avril 2026 — catalyseur réglementaire majeur",
+        "Cour suprême annule les tarifs douaniers de Trump, Bitcoin progresse : réduction de l'incertitude macro-économique favorable aux actifs risqués",
+        "Dubaï lance plan de tokenisation immobilière de 16 milliards de dollars avec transactions instantanées — adoption institutionnelle croissante",
+        "BGD Labs et contributeur technique clé cessent leur implication chez Aave DAO en raison de tensions de gouvernance — signal de fragilité des protocoles décentralisés",
+        "Exposition de 1 milliard de données personnelles en KYC — risque réputationnel et réglementaire pour l'écosystème"
       ]
     },
     "matieres_premieres": {
-      "score": 0.15,
-      "confidence": 0.55,
-      "tendance": "mixte",
-      "resume": "Sentiment contrasté sur les matières premières : tensions géopolitiques (arrêt Druzhba, sanctions Iran) et demande énergétique soutenue (boom IA, contrats long terme gaz) soutiennent les prix, mais contrebalancées par des signaux de faiblesse (baisse revenus pétroliers, recul stocks, demande consommateurs US déprimée). Implication : volatilité accrue, avec support sur l'énergie mais sans direction claire à court terme.",
+      "score": -0.15,
+      "confidence": 0.62,
+      "tendance": "neutre",
+      "resume": "Sentiment mitigé sur les matières premières : stagnation de l'activité pétrolière américaine et arrêt de production à Atlantic LNG contrebalancés par des accords d'approvisionnement majeurs (Kazatomprom-Inde), une reprise des prix du gaz naturel et une demande manufacturière robuste en zone euro. Les signaux macro restent contradictoires (inflation PCE élevée vs croissance économique décevante), sans direction claire pour les commodités.",
       "signaux_cles": [
-        "Arrêt du pipeline Druzhba force la Hongrie à puiser dans ses réserves stratégiques — réduction structurelle de l'offre pétrolière européenne",
-        "Exportations saoudiennes vers l'Inde au plus haut depuis 2020 et contrat Santos de 10 ans avec Whyalla — demande énergétique mondiale toujours robuste malgré les tensions",
-        "Chiffre d'affaires Valaris en baisse de 10% au Q4 et stocks de fioul lourd en recul à Singapour — signaux de faiblesse dans le transport maritime et la demande pétrolière asiatique"
+        "Forage pétrolier américain en stagnation persistante et arrêt d'urgence à Atlantic LNG (train de production immobilisé) — pression baissière sur l'offre pétrolière",
+        "Accord d'approvisionnement massif Kazatomprom-Inde et contrats futurs gaz naturel sortant du purgatoire — signaux haussiers sur uranium et gaz",
+        "PMI manufacturier zone euro dépassant les prévisions vs croissance économique américaine décevante (promesses Trump non tenues) — demande mitigée pour les commodités"
       ]
     },
     "ai_tech": {
-      "score": 0.15,
-      "confidence": 0.55,
+      "score": -0.35,
+      "confidence": 0.62,
       "tendance": "mixte",
-      "resume": "La rubrique AI/Tech affiche un sentiment mitigé : des avancées technologiques majeures (modèles Claude/Gemini, partenariats d'infrastructure comme G42-Cerebras) coexistent avec des incidents de sécurité critiques (pannes AWS, fuites de données, exploits actifs). Les risques opérationnels et de sécurité commencent à peser sur le momentum haussier des déploiements IA, sans l'inverser.",
+      "resume": "La rubrique AI/Tech affiche un sentiment mitigé dominé par des préoccupations de sécurité et de risques (attaques rançongiciel, fuites de données, vulnérabilités exploitées) qui contrebalancent les annonces de produits et investissements positifs. Les signaux baissiers (cybersécurité, confidentialité, erreurs d'IA) surpassent légèrement les signaux haussiers (financement, partenariats, adoption), créant une tendance légèrement baissière avec volatilité.",
       "signaux_cles": [
-        "G42 + Cerebras déploient 8 exaflops en Inde : signal haussier majeur sur la capacité d'infrastructure IA mondiale et la démocratisation géographique du calcul",
-        "Pannes AWS causées par l'agent IA (13 heures) + bug Dell exploité activement : signaux baissiers sur la fiabilité opérationnelle des systèmes IA en production et la vulnérabilité croissante des chaînes d'approvisionnement",
-        "Claude intégré à PowerPoint + Gemini 3.1 Pro + 17k tokens/sec : accélération de l'adoption grand public et des capacités de raisonnement, mais sans impact quantifiable sur les revenus ou les marges"
+        "Trois incidents de sécurité majeurs documentés : attaque rançongiciel chez Advantest, faille RCE BeyondTrust exploitée activement, fuite de 1,2 million de comptes au registre bancaire français",
+        "Défaillances opérationnelles d'IA en production : Amazon blâme son agent de codage Kiro pour une panne AWS, signal de maturité insuffisante des systèmes autonomes critiques",
+        "Investissements et partenariats positifs : 100 millions USD pour recharge EV en Pennsylvanie, financement Exaion sous conditions, intégration ggml.ai à Hugging Face pour IA locale"
       ]
     }
   },
@@ -138,47 +140,47 @@
     },
     {
       "date": "2026-02-20",
-      "global": -0.1,
-      "geopolitique": -0.45,
-      "marches": 0.15,
-      "crypto": -0.35,
-      "matieres_premieres": 0.15,
-      "ai_tech": 0.15
+      "global": -0.23,
+      "geopolitique": -0.55,
+      "marches": -0.45,
+      "crypto": 0.45,
+      "matieres_premieres": -0.15,
+      "ai_tech": -0.35
     }
   ],
   "model": "claude-haiku-4-5-20251001",
   "usage": {
-    "totalInputTokens": 7667,
-    "totalOutputTokens": 1690,
+    "totalInputTokens": 7583,
+    "totalOutputTokens": 1844,
     "totalCalls": 5,
     "callsByLabel": {
       "sentiment-geopolitique": {
         "calls": 1,
-        "inputTokens": 1489,
-        "outputTokens": 354
+        "inputTokens": 1439,
+        "outputTokens": 359
       },
       "sentiment-marches": {
         "calls": 1,
-        "inputTokens": 1609,
-        "outputTokens": 293
+        "inputTokens": 1670,
+        "outputTokens": 367
       },
       "sentiment-crypto": {
         "calls": 1,
-        "inputTokens": 1504,
-        "outputTokens": 330
+        "inputTokens": 1561,
+        "outputTokens": 418
       },
       "sentiment-matieres_premieres": {
         "calls": 1,
-        "inputTokens": 1518,
-        "outputTokens": 350
+        "inputTokens": 1440,
+        "outputTokens": 328
       },
       "sentiment-ai_tech": {
         "calls": 1,
-        "inputTokens": 1547,
-        "outputTokens": 363
+        "inputTokens": 1473,
+        "outputTokens": 372
       }
     },
-    "estimatedCostUSD": 0.0129,
+    "estimatedCostUSD": 0.0134,
     "model": "claude-haiku-4-5-20251001"
   }
 }
