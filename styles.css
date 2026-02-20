@@ -1123,6 +1123,79 @@ a {
     font-size: 0.65rem;
 }
 
+/* --- Image placeholder for cards without image --- */
+.top-story.no-image {
+    position: relative;
+}
+
+.top-story.no-image::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(135deg, #0a1628 0%, #1a2a40 50%, #0d2818 100%);
+    position: relative;
+}
+
+.top-story.no-image::after {
+    content: '';
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 24px;
+    opacity: 0.25;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F5F0E8' stroke-width='1.5'%3E%3Cpolyline points='22 12 18 12 15 21 9 3 6 12 2 12'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* --- Load more button --- */
+.load-more-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0 1rem;
+}
+
+.load-more-btn {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    background: transparent;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.load-more-btn:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* --- Tab article count badge --- */
+.tab-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    min-width: 1.4em;
+    padding: 0.1em 0.45em;
+    border-radius: 50px;
+    background: rgba(0, 210, 120, 0.12);
+    color: var(--accent);
+    margin-left: 0.3rem;
+    vertical-align: middle;
+}
+
+.page-tab.active .tab-count {
+    background: rgba(0, 210, 120, 0.2);
+}
+
 .top-story-main .story-image {
     height: 75px;
 }
@@ -1679,6 +1752,52 @@ a {
     50% { opacity: 0.3; }
 }
 
+/* --- Category Trend Banner --- */
+.category-trend-banner {
+    margin-bottom: 1.25rem;
+    padding: 1rem 1.25rem;
+    background: var(--navy);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    color: #F5F0E8;
+}
+
+.category-trend-title {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+}
+
+.category-trend-list {
+    margin: 0;
+    padding-left: 1.1rem;
+    list-style: none;
+}
+
+.category-trend-list li {
+    position: relative;
+    padding-left: 0.6rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.85rem;
+    line-height: 1.45;
+}
+
+.category-trend-list li::before {
+    content: '\2022';
+    position: absolute;
+    left: -0.5rem;
+    color: var(--accent);
+}
+
+.category-trend-source {
+    color: rgba(245, 240, 232, 0.45);
+    font-size: 0.78rem;
+}
+
 /* No Results */
 .no-results {
     font-family: var(--font-serif);
@@ -1692,10 +1811,10 @@ a {
    Page Header (category pages)
    ============================================ */
 .page-header {
-    padding: 2.5rem 0;
-    margin-bottom: 2rem;
+    padding: 1.5rem 0;
+    margin-bottom: 1rem;
     position: relative;
-    border-bottom: 2px solid var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .page-title {

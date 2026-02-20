@@ -52,21 +52,24 @@ function cardHTML(article) {
     const source = escapeHTML(article.source || '');
     const title = escapeHTML(article.title || '');
     let desc = escapeHTML(article.description || '');
+    // Filtrer les descriptions N/A, vides ou trop courtes
+    if (/^(N\/?A|n\/?a|NA|undefined|null|-)$/i.test(desc.trim()) || desc.trim().length < 15) desc = '';
     if (desc.length > 150) desc = desc.slice(0, 147) + '...';
     const time = escapeHTML(article.time || '');
     const url = article.url || '#';
     const cat = escapeHTML(article.category || '');
     const image = article.image || '';
+    const hasImage = !!image;
 
-    const imgHTML = image
-        ? `<img src="${escapeHTML(image)}" alt="" class="story-image" loading="lazy" onerror="this.remove()">`
+    const imgHTML = hasImage
+        ? `<img src="${escapeHTML(image)}" alt="" class="story-image" loading="lazy" onerror="this.parentElement.classList.add('no-image')">`
         : '';
 
     const excerptHTML = desc
         ? `<p class="story-excerpt">${desc}</p>`
         : '';
 
-    return `<article class="top-story" data-category="${cat}">
+    return `<article class="top-story${hasImage ? '' : ' no-image'}" data-category="${cat}">
         ${imgHTML}
         <div class="story-content">
             <span class="story-source">${source}</span>
