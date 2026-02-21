@@ -7066,6 +7066,58 @@ body.page-markets .market-status {
 }
 
 /* ============================================
+   European Policy Widget
+   ============================================ */
+.eu-policy-placeholder,
+.eu-policy-empty {
+    font-size: var(--fs-xs);
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.eu-policy-item {
+    display: block;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.eu-policy-item:last-of-type {
+    border-bottom: none;
+}
+
+.eu-policy-item:hover {
+    background: rgba(16, 94, 45, 0.04);
+}
+
+.eu-policy-source {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.15rem;
+}
+
+.eu-policy-title {
+    display: block;
+    font-size: var(--fs-xs);
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.35;
+}
+
+.eu-policy-item:hover .eu-policy-title {
+    color: var(--accent);
+}
+
+#eu-policy-section .sidebar-title svg {
+    color: var(--accent);
+}
+
+/* ============================================
    Messari Crypto Widget
    ============================================ */
 .messari-global {

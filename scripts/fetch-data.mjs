@@ -223,7 +223,16 @@ const RELEVANCE_KEYWORDS = {
         'human rights', 'assassination', 'insurgent', 'rebel',
         'ukraine', 'russia', 'china', 'iran', 'gaza', 'israel', 'palestine',
         'north korea', 'taiwan', 'syria', 'sahel', 'afghanistan',
-        'greenland', 'arctic', 'south china sea'
+        'greenland', 'arctic', 'south china sea',
+        // EU policy & infrastructure
+        'câble sous-marin', 'submarine cable', 'subsea cable', 'souveraineté numérique',
+        'digital sovereignty', 'guerre hybride', 'hybrid warfare', 'minerais critiques',
+        'critical minerals', 'critical raw material', 'constellation satellite',
+        'infrastructure critique', 'critical infrastructure', 'bifurcation technologique',
+        'tech decoupling', 'préférence européenne', 'buy european', 'marché unique',
+        'single market', 'politique industrielle', 'industrial policy',
+        'marchés publics', 'public procurement', 'procurement act',
+        'industrial accelerator', 'enrico letta'
     ],
     markets: [
         // FR
@@ -255,7 +264,14 @@ const RELEVANCE_KEYWORDS = {
         'rally', 'crash', 'correction', 'volatility', 'yield', 'spread',
         'trade', 'tariff', 'export', 'import', 'valuation',
         'economy', 'economic', 'indicator', 'outlook', 'forecast',
-        'bull', 'bear', 'hedge fund', 'private equity', 'venture capital'
+        'bull', 'bear', 'hedge fund', 'private equity', 'venture capital',
+        // EU policy & competitiveness
+        'politique industrielle', 'industrial policy', 'préférence européenne',
+        'buy european', 'marchés publics', 'public procurement', 'marché unique',
+        'single market', 'compétitivité', 'competitiveness', 'productivity gap',
+        'union de l\'épargne', 'savings union', 'investissement productif',
+        'productive investment', 'coût de l\'énergie', 'energy cost',
+        'industrial accelerator'
     ],
     crypto: [
         // FR & EN (termes largement identiques)
@@ -332,7 +348,21 @@ const RELEVANCE_KEYWORDS = {
         'social media', 'platform', 'tech regulation', 'antitrust',
         'privacy', 'personal data', 'gdpr',
         'open source', 'linux', 'github',
-        'satellite', 'fiber', '5g', '6g', 'network'
+        'satellite', 'fiber', '5g', '6g', 'network',
+        // EU digital regulation & ethics
+        'digital fairness', 'dark pattern', 'design addictif', 'addictive design',
+        'protection algorithmique', 'algorithmic protection', 'éthique numérique',
+        'digital ethics', 'digital omnibus', 'dma', 'dsa', 'digital markets act',
+        'digital services act', 'ai act', 'rgpd', 'gdpr', 'cnil',
+        // Biotech & bio-sovereignty
+        'biologie de synthèse', 'synthetic biology', 'biotech', 'biotechnologie',
+        'bio-souveraineté', 'biosovereignty', 'données génomiques', 'genomic data',
+        'biotech act', 'biomanufacturing', 'gene therapy', 'thérapie génique',
+        'crispr', 'séquençage', 'sequencing',
+        // EU competitiveness
+        'productivité', 'productivity gap', 'compétitivité européenne',
+        'european competitiveness', 'union de l\'épargne', 'savings union',
+        'investissement productif', 'productive investment'
     ]
 };
 
@@ -368,7 +398,13 @@ const SPECIALIZED_SOURCES = new Set([
     'BleepingComputer', 'TLDR Tech', 'TLDR AI',
     'Stratechery', 'The Information', 'Simon Willison',
     // Think tanks macro
-    'BIS (BRI)', 'IMF Blog', 'World Economic Forum', 'OECD'
+    'BIS (BRI)', 'IMF Blog', 'World Economic Forum', 'OECD',
+    // Politique européenne & régulation tech
+    'Bruegel', 'CEPS', 'ECFR', 'Euractiv', 'Parlement Européen',
+    'TeleGeography', 'SpaceNews', 'Hinrich Foundation',
+    'AlgorithmWatch', 'EFF', 'CNIL', 'noyb',
+    'EuropaBio', 'SynBioBeta', 'GEN Biotech',
+    'EC Single Market', 'BEI'
 ]);
 
 /**
@@ -390,7 +426,7 @@ function isRelevantForCategory(article, categoryKey, sourceName) {
 }
 
 // ─── Sources RSS (gratuit, pas de clé API) ───────────────
-// 121 flux ultra-spécialisés couvrant 6 rubriques — mis à jour fév. 2026
+// 140 flux ultra-spécialisés couvrant 6 rubriques + politique européenne — mis à jour fév. 2026
 const RSS_SOURCES = [
 
     // ╔══════════════════════════════════════════════════════════╗
@@ -610,6 +646,40 @@ const RSS_SOURCES = [
     { url: 'https://www.reuters.com/arc/outboundfeeds/v3/search/section/sustainability/?outputType=xml&size=15', source: 'Reuters Sustainability', cats: ['commodities'], lang: 'en' },
     { url: 'https://www.energymonitor.ai/feed/',                        source: 'Energy Monitor',       cats: ['commodities'], lang: 'en' },
     { url: 'https://www.spglobal.com/commodityinsights/en/rss-feed/energy-transition', source: 'S&P Energy Transition', cats: ['commodities'], lang: 'en' },
+
+    // ╔══════════════════════════════════════════════════════════╗
+    // ║  🇪🇺 POLITIQUE EUROPÉENNE & RÉGULATION TECH — 18 sources ║
+    // ╚══════════════════════════════════════════════════════════╝
+
+    // 🏛️ Think tanks politiques européens
+    { url: 'https://www.bruegel.org/rss.xml',                          source: 'Bruegel',               cats: ['markets', 'geopolitics'],  lang: 'en' },
+    { url: 'https://www.ceps.eu/feed/',                                source: 'CEPS',                  cats: ['markets', 'geopolitics', 'ai_tech'], lang: 'en' },
+    { url: 'https://ecfr.eu/feed/',                                    source: 'ECFR',                  cats: ['geopolitics'],             lang: 'en' },
+
+    // 📰 Presse européenne & politique
+    { url: 'https://www.euractiv.com/feed/',                           source: 'Euractiv',              cats: ['geopolitics', 'markets', 'ai_tech'], lang: 'en' },
+    { url: 'https://www.europarl.europa.eu/rss/doc/top-stories/en.xml', source: 'Parlement Européen',   cats: ['geopolitics', 'markets'],  lang: 'en' },
+
+    // 🌐 Infrastructures de connexion & souveraineté numérique
+    { url: 'https://blog.telegeography.com/rss.xml',                   source: 'TeleGeography',         cats: ['ai_tech', 'geopolitics'],  lang: 'en' },
+    { url: 'https://spacenews.com/feed/',                              source: 'SpaceNews',             cats: ['ai_tech', 'geopolitics'],  lang: 'en' },
+    { url: 'https://www.hinrichfoundation.com/feed/',                  source: 'Hinrich Foundation',    cats: ['geopolitics', 'markets'],  lang: 'en' },
+
+    // ⚖️ Éthique numérique & régulation digitale
+    { url: 'https://algorithmwatch.org/en/feed/',                      source: 'AlgorithmWatch',        cats: ['ai_tech'],                 lang: 'en' },
+    { url: 'https://www.eff.org/rss/updates.xml',                     source: 'EFF',                   cats: ['ai_tech'],                 lang: 'en' },
+    { url: 'https://www.cnil.fr/fr/rss.xml',                          source: 'CNIL',                  cats: ['ai_tech'] },
+    { url: 'https://noyb.eu/en/rss',                                  source: 'noyb',                  cats: ['ai_tech'],                 lang: 'en' },
+
+    // 🧬 Bio-souveraineté & biologie de synthèse
+    { url: 'https://www.europabio.org/feed/',                          source: 'EuropaBio',             cats: ['ai_tech'],                 lang: 'en' },
+    { url: 'https://synbiobeta.com/feed/',                             source: 'SynBioBeta',            cats: ['ai_tech'],                 lang: 'en' },
+    { url: 'https://www.genengnews.com/feed/',                         source: 'GEN Biotech',           cats: ['ai_tech'],                 lang: 'en' },
+
+    // 🏭 Politique industrielle & compétitivité
+    { url: 'https://single-market-economy.ec.europa.eu/rss_en',       source: 'EC Single Market',      cats: ['markets', 'geopolitics'],  lang: 'en' },
+    { url: 'https://www.eib.org/en/rss',                              source: 'BEI',                   cats: ['markets'],                 lang: 'en' },
+    { url: 'https://vfriedmanlaw.com/feed/',                           source: 'EU Tech Policy',        cats: ['ai_tech', 'geopolitics'],  lang: 'en' },
 ];
 
 // ─── 1. CRYPTO (CoinGecko — gratuit, pas de clé) ──────────

@@ -229,6 +229,19 @@ const DataLoader = (function () {
     }
 
     /**
+     * Formatte un temps relatif (il y a X heures, etc.)
+     */
+    function formatTimeAgo(date) {
+        var diff = Date.now() - date.getTime();
+        var minutes = Math.floor(diff / 60000);
+        if (minutes < 60) return minutes + ' min';
+        var hours = Math.floor(minutes / 60);
+        if (hours < 24) return hours + 'h';
+        var days = Math.floor(hours / 24);
+        return days + 'j';
+    }
+
+    /**
      * Traduit les catégories DeFi anglaises en français
      */
     function translateDefiCategory(category) {
@@ -986,7 +999,13 @@ const DataLoader = (function () {
         'GNews': 3, 'NewsAPI': 3, 'Yahoo Finance': 3,
         '01net': 3, 'Numerama': 3, 'Next INpact': 3,
         'Hacker News': 3, 'The Register': 3,
-        'CleanTechnica': 3, 'Rigzone': 3
+        'CleanTechnica': 3, 'Rigzone': 3,
+        // Politique européenne & régulation tech
+        'Bruegel': 1, 'CEPS': 1, 'ECFR': 1, 'Euractiv': 2,
+        'Parlement Européen': 1, 'EC Single Market': 1, 'BEI': 1,
+        'TeleGeography': 2, 'SpaceNews': 2, 'Hinrich Foundation': 2,
+        'AlgorithmWatch': 2, 'EFF': 2, 'CNIL': 1, 'noyb': 2,
+        'EuropaBio': 2, 'SynBioBeta': 3, 'GEN Biotech': 3
     };
 
     /**
@@ -2467,6 +2486,121 @@ const DataLoader = (function () {
         addFreshnessIndicator(container, _cache.worldBank.updated);
     }
 
+    // ─── Veille politique européenne ──────────────────────
+
+    /**
+     * Sources spécialisées en politique européenne, régulation tech,
+     * infrastructures de connexion, éthique numérique et bio-souveraineté.
+     */
+    var EU_POLICY_SOURCES = [
+        'Bruegel', 'CEPS', 'ECFR', 'Euractiv', 'Parlement Européen',
+        'TeleGeography', 'SpaceNews', 'Hinrich Foundation',
+        'AlgorithmWatch', 'EFF', 'CNIL', 'noyb',
+        'EuropaBio', 'SynBioBeta', 'GEN Biotech',
+        'EC Single Market', 'BEI', 'EU Tech Policy',
+        // Sources existantes couvrant aussi la politique EU
+        'Politico EU', 'BCE', 'Banque de France', 'PIIE', 'OECD',
+        'BIS (BRI)', 'World Economic Forum'
+    ];
+
+    /**
+     * Mots-clés pour filtrer les articles pertinents politique européenne
+     * depuis les sources non-spécialisées
+     */
+    var EU_POLICY_KEYWORDS = [
+        'union européenne', 'european union', 'commission européenne', 'european commission',
+        'parlement européen', 'european parliament', 'marché unique', 'single market',
+        'politique industrielle', 'industrial policy', 'buy european', 'préférence européenne',
+        'digital fairness', 'digital omnibus', 'dma', 'dsa', 'ai act',
+        'digital markets act', 'digital services act', 'dark pattern',
+        'câble sous-marin', 'submarine cable', 'souveraineté numérique', 'digital sovereignty',
+        'biologie de synthèse', 'synthetic biology', 'biotech act', 'europabio',
+        'compétitivité européenne', 'european competitiveness', 'productivity gap',
+        'marchés publics', 'public procurement', 'procurement act',
+        'industrial accelerator', 'minerais critiques', 'critical minerals',
+        'rgpd', 'gdpr', 'cnil', 'protection des données', 'data protection',
+        'éthique numérique', 'digital ethics', 'algorithmique',
+        'bio-souveraineté', 'biosovereignty'
+    ];
+
+    /**
+     * Filtre et affiche les articles liés à la politique tech européenne
+     * dans le widget sidebar dédié.
+     */
+    function updateEuPolicyWidget() {
+        var container = document.getElementById('eu-policy-widget');
+        if (!container) return;
+
+        // Collecter les articles pertinents depuis toutes les rubriques
+        var newsData = _cache.news;
+        if (!newsData || !newsData.categories) {
+            container.innerHTML = '<p class="eu-policy-empty">Veille politique européenne : données en cours de chargement.</p>';
+            return;
+        }
+
+        var euArticles = [];
+        var cats = newsData.categories;
+        var allCatKeys = Object.keys(cats);
+
+        for (var c = 0; c < allCatKeys.length; c++) {
+            var catArticles = cats[allCatKeys[c]] || [];
+            for (var a = 0; a < catArticles.length; a++) {
+                var art = catArticles[a];
+                var src = (art.source || '').trim();
+                var isEuSource = EU_POLICY_SOURCES.indexOf(src) !== -1;
+
+                if (isEuSource) {
+                    euArticles.push(art);
+                } else {
+                    // Vérifier les mots-clés EU dans le titre+description
+                    var text = ((art.title || '') + ' ' + (art.description || '')).toLowerCase();
+                    for (var k = 0; k < EU_POLICY_KEYWORDS.length; k++) {
+                        if (text.indexOf(EU_POLICY_KEYWORDS[k]) !== -1) {
+                            euArticles.push(art);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Dédupliquer par titre
+        var seen = {};
+        var unique = [];
+        for (var i = 0; i < euArticles.length; i++) {
+            var key = (euArticles[i].title || '').toLowerCase().substring(0, 60);
+            if (!seen[key]) {
+                seen[key] = true;
+                unique.push(euArticles[i]);
+            }
+        }
+
+        // Trier par date décroissante
+        unique.sort(function(a, b) {
+            return new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0);
+        });
+
+        var display = unique.slice(0, 5);
+
+        if (display.length === 0) {
+            container.innerHTML = '<p class="eu-policy-empty">Aucun signal politique européen détecté dans les dernières heures.</p>';
+            return;
+        }
+
+        container.innerHTML =
+            display.map(function(art) {
+                var timeAgo = art.publishedAt ? formatTimeAgo(new Date(art.publishedAt)) : '';
+                var title = (art.title || '').length > 90
+                    ? art.title.substring(0, 87) + '...'
+                    : (art.title || 'Sans titre');
+                return '<a href="' + (art.url || '#') + '" target="_blank" rel="noopener" class="eu-policy-item">' +
+                    '<span class="eu-policy-source">' + (art.source || '') + (timeAgo ? ' · ' + timeAgo : '') + '</span>' +
+                    '<span class="eu-policy-title">' + title + '</span>' +
+                '</a>';
+            }).join('') +
+            '<a href="geopolitics.html" class="sidebar-more">Voir la veille complète</a>';
+    }
+
     // ─── Crypto avancé (Messari) ─────────────────────────
 
     /**
@@ -2620,6 +2754,7 @@ const DataLoader = (function () {
         updateMarketBriefingWidget();
         updateWorldBankWidget();
         updateMessariWidget();
+        updateEuPolicyWidget();
         initRubriqueFilters();
         handleEmptyWidgets();
         initWidgetAnimations();
