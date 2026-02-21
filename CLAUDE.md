@@ -438,6 +438,47 @@ python scripts/check-french.py
 - `.github/workflows/generate-daily-briefing.yml` : timeout 10→15min
 - `CLAUDE.md` : documentation session
 
+### Session 2026-02-21 — Consolidation des appels Claude (reduction tokens ~75%)
+
+**Contexte :** La limite de tokens API Anthropic a ete atteinte le 21 fevrier 2026. L'analyse a revele une consommation de ~2.87M tokens/mois, causee par 4 scripts Claude executes separement (8 appels par execution) 4 fois par jour (32 appels/jour). Les principaux consommateurs : `generate-market-briefing` (38%), `generate-macro-analysis` (21%), `analyze-sentiment` (17%), `generate-alerts` (8%).
+
+**Solution : fusion des 4 scripts en 1 script consolide avec 2 appels Claude**
+
+**Nouveau script :** `scripts/generate-market-analysis.mjs`
+- Charge toutes les donnees UNE SEULE FOIS (news, marches, crypto, FNG, macro, commodites, DeFi, forex, on-chain)
+- **Appel 1** : Sentiment multi-rubriques + alertes de marche (1 appel au lieu de 6)
+- **Appel 2** : Analyse macro + briefing marche (1 appel au lieu de 2)
+- Ecrit les 4 fichiers JSON existants (zero impact frontend) : `sentiment.json`, `alerts.json`, `macro-analysis.json`, `market-briefing.json`
+- Mode `--dry-run` pour valider sans appeler Claude
+
+**Nouveaux prompts consolides :** `scripts/lib/prompts.mjs`
+- `CONSOLIDATED_SENTIMENT_ALERTS_PROMPT` : combine sentiment par rubrique + alertes en un seul prompt
+- `CONSOLIDATED_MACRO_BRIEFING_PROMPT` : combine analyse macro + briefing marche en un seul prompt
+
+**Economies realisees :**
+- Appels Claude par execution : 8 → 2 (reduction 75%)
+- Frequence : 4x/jour → 2x/jour (06h30, 18h30 UTC)
+- System prompts repetes : ~4 000 tokens economises par execution
+- Contexte marche duplique : ~6 000 tokens economises par execution
+- **Estimation mensuelle : ~2.87M → ~500K tokens/mois (reduction ~82%)**
+
+| Metrique | Avant | Apres |
+|----------|-------|-------|
+| Appels Claude/jour | 32 | 4 |
+| Tokens/jour | ~95 000 | ~17 000 |
+| Tokens/mois | ~2 870 000 | ~510 000 |
+| Cout estime/mois | ~$12.50 | ~$2.25 |
+
+**Fichiers modifies :**
+- `scripts/lib/prompts.mjs` : +2 prompts consolides (CONSOLIDATED_SENTIMENT_ALERTS_PROMPT, CONSOLIDATED_MACRO_BRIEFING_PROMPT)
+- `.github/workflows/analyze-sentiment.yml` : 1 step consolide au lieu de 4, cron 4x→2x/jour, timeout 15→10min
+- `CLAUDE.md` : documentation session
+
+**Fichiers crees :**
+- `scripts/generate-market-analysis.mjs` : script consolide (remplace les 4 scripts individuels dans le workflow)
+
+**Note :** Les scripts individuels (`analyze-sentiment.mjs`, `generate-alerts.mjs`, `generate-macro-analysis.mjs`, `generate-market-briefing.mjs`) sont conserves pour execution manuelle ou debug individuel.
+
 ### PRs precedentes
 
 **PR #23 (mergee)** : Redesign vert + widgets IA + 78 RSS + automatisation Claude
