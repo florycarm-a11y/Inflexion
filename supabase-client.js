@@ -1059,7 +1059,7 @@
 
         reportHTML +=
             '<div class="footer">' +
-                '<p>Rapport généré automatiquement par Inflexion — Plateforme d'intelligence géopolitique et financière</p>' +
+                '<p>Rapport généré automatiquement par Inflexion — Plateforme d\'intelligence géopolitique et financière</p>' +
                 '<p>15 APIs · 158 sources · IA Claude</p>' +
             '</div>' +
             '</body></html>';
