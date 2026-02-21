@@ -190,6 +190,10 @@ scripts/generate-market-briefing.mjs → data/market-briefing.json (Claude Haiku
 - **TradingView Widgets** : graphiques temps reel integres
 - **data-loader.js** : IIFE `DataLoader` avec cache, fallback gracieux, freshness indicators
 
+### Navigation
+- **Desktop (≥769px)** : barre de navigation horizontale sticky (`desktop-nav`) generee par JS (`initDesktopNav` dans `app.js`), avec indicateur de page active et CTA. Le header scroll hors ecran, la nav bar reste fixee en haut.
+- **Mobile (<769px)** : menu hamburger ouvrant un overlay plein ecran vert avec animations d'entree decalees, groupes "Veille" et "Conseil", et CTA "Reserver un diagnostic".
+
 ### Widgets dynamiques (sidebar index.html)
 1. Marches US (Finnhub)
 2. Indicateurs macro (FRED)
@@ -565,6 +569,40 @@ python scripts/check-french.py
 **Fichiers modifies :**
 - `scripts/fetch-data.mjs` : +18 entrees RSS, +16 SPECIALIZED_SOURCES, +mots-cles defense/OSINT (geopolitics + ai_tech), commentaire 140→158
 - `CLAUDE.md` : +2 sous-sections RSS (Defense & Think tanks non-occidentaux), documentation session
+
+### Session 2026-02-21 (4) — Amelioration UX du menu de navigation
+
+**Contexte :** Le menu du site reposait uniquement sur un hamburger (overlay plein ecran) pour toutes les tailles d'ecran. Sur desktop, cela ajoutait une friction inutile (clic obligatoire pour naviguer). Absence d'indicateur de page active dans le header. expertise.html avait des accents manquants.
+
+**Nouveau composant : Desktop Navigation Bar**
+- Barre de navigation horizontale visible sur desktop (≥769px), masquee sur mobile
+- Generee dynamiquement par `initDesktopNav()` dans `app.js` (zero duplication HTML)
+- 9 liens : Accueil, Geopolitique, Marches, Crypto, Matieres premieres, ETF, Analyses, Services, Expertise
+- Detection automatique de la page active via `window.location.pathname`
+- Indicateur visuel : couleur accent + underline animee sur la page courante
+- CTA "Reserver un diagnostic" positionne a droite
+- Comportement sticky : le header scroll hors ecran, la nav bar reste fixee en haut
+- Hover : underline verte animee via `transform: scaleX()`
+
+**Ameliorations overlay mobile :**
+- Taille des liens reduite (1.75rem → 1.5rem principal, 1.1rem → 1.15rem indent) pour meilleure lisibilite
+- Group labels affines (0.6rem, couleur plus subtile, espacement ameliore)
+- Bouton CTA restyle en semi-transparent avec bordure (differenciation visuelle)
+- Animations d'entree decalees etendues a 14 enfants (etait limite a 9)
+- Hamburger masque sur desktop (la desktop-nav prend le relais)
+- CTA header masque sur mobile (≤768px) pour reduire l'encombrement
+
+**Corrections de coherence :**
+- `expertise.html` : accents francais retablis (Geopolitique → Geopolitique, Marches → Marches, Matieres premieres → Matieres premieres, Reserver → Reserver)
+- Titre overlay "Menu" → "Navigation" sur les 14 pages HTML
+
+**Fichiers modifies :**
+- `styles.css` : +CSS desktop-nav (desktop-nav, desktop-nav-inner, desktop-nav-links, desktop-nav-link, desktop-nav-cta, .active, .scrolled, responsive), refonte overlay (tailles, spacing, animations 14 enfants, group labels, CTA semi-transparent), header desktop position relative
+- `app.js` : +initDesktopNav() (generation dynamique, detection page active), mise a jour initStickyHeader() (ajout classe scrolled sur desktop-nav), initDesktopNav appele dans initUI()
+- `index.html` : overlay titre "Navigation", suppression desktop-nav HTML statique (remplace par JS)
+- `geopolitics.html`, `markets.html`, `crypto.html`, `commodities.html`, `etf.html`, `analysis.html`, `country.html`, `premium.html`, `cgu.html`, `mentions-legales.html`, `confidentialite.html` : overlay titre "Navigation"
+- `expertise.html` : overlay titre "Navigation" + accents francais retablis
+- `CLAUDE.md` : documentation session
 
 **PR #22** : Setup initial RSS feeds
 - Ajout premiers flux RSS (Le Figaro, TLDR, Les Echos, BFM, CoinTelegraph, etc.)
