@@ -790,7 +790,7 @@ a {
 }
 
 .story-title a {
-    color: #F5F0E8;
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -801,7 +801,7 @@ a {
 .story-excerpt {
     font-family: var(--font-serif);
     font-size: 0.82rem;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.9);
     line-height: 1.5;
     margin-top: 0.25rem;
     overflow: hidden;
@@ -1951,7 +1951,7 @@ a {
 .news-list-summary {
     font-family: var(--font-serif);
     font-size: 0.82rem;
-    color: rgba(255,255,255,0.65);
+    color: rgba(255,255,255,0.85);
     line-height: 1.55;
     margin-top: 0.35rem;
     overflow: hidden;
@@ -1978,7 +1978,7 @@ a {
 }
 
 .news-list-item h3 a {
-    color: #F5F0E8;
+    color: #ffffff;
     text-decoration: none;
     transition: color 0.2s ease;
 }
@@ -1989,7 +1989,7 @@ a {
 
 /* Couleurs adaptées au fond vert foncé des cartes */
 .news-list-item .source-name {
-    color: rgba(255,255,255,0.85);
+    color: #ffffff;
     font-size: 0.72rem;
 }
 
@@ -2038,7 +2038,7 @@ a {
     display: flex;
     align-items: center;
     white-space: nowrap;
-    animation: ticker-scroll 45s linear infinite;
+    animation: ticker-scroll 60s linear infinite;
     will-change: transform;
 }
 .ticker-wrapper:hover .ticker-track {
@@ -2052,31 +2052,32 @@ a {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    color: var(--text-primary);
+    color: #ffffff;
     text-decoration: none;
     padding: 0.2rem 0;
     transition: color 0.15s;
 }
 .ticker-item:hover {
-    color: var(--accent);
+    color: var(--accent-light);
 }
 .ticker-source {
     font-size: 0.6rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: var(--accent);
-    opacity: 0.8;
+    color: #34D399;
+    opacity: 0.9;
     flex-shrink: 0;
 }
 .ticker-headline {
     font-size: 0.8rem;
     font-weight: 500;
     line-height: 1;
+    color: #ffffff;
 }
 .ticker-sep {
-    color: var(--accent);
-    opacity: 0.4;
+    color: #34D399;
+    opacity: 0.5;
     margin: 0 0.75rem;
     font-size: 0.7rem;
 }
