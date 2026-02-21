@@ -1,19 +1,19 @@
 {
-  "updated": "2026-02-21T12:23:22.530Z",
+  "updated": "2026-02-21T12:54:25.440Z",
   "feeds": [
     {
       "source": "Le Figaro",
       "url": "https://www.lefigaro.fr/rss/figaro_international.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "France 24",
       "url": "https://www.france24.com/fr/rss",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 2
     },
     {
       "source": "RFI",
@@ -76,7 +76,7 @@
       "url": "https://www.politico.eu/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "Foreign Policy",
@@ -265,7 +265,7 @@
       "url": "https://www.latribune.fr/feed.xml",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 1
     },
     {
       "source": "Capital",
@@ -286,7 +286,7 @@
       "url": "https://finance.yahoo.com/news/rssindex",
       "count": 5,
       "ok": true,
-      "relevant": 1
+      "relevant": 2
     },
     {
       "source": "Seeking Alpha",
@@ -307,7 +307,7 @@
       "url": "https://www.investing.com/rss/news.rss",
       "count": 5,
       "ok": true,
-      "relevant": 1
+      "relevant": 4
     },
     {
       "source": "Wolf Street",
@@ -636,7 +636,7 @@
       "url": "https://hnrss.org/frontpage?count=15",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 1
     },
     {
       "source": "VentureBeat AI",
@@ -916,7 +916,7 @@
       "url": "https://www.hinrichfoundation.com/feed/",
       "count": 0,
       "ok": false,
-      "error": "HTTP 404: https://www.hinrichfoundation.com/feed/"
+      "error": "The operation was aborted due to timeout"
     },
     {
       "source": "AlgorithmWatch",
@@ -987,11 +987,123 @@
       "count": 0,
       "ok": false,
       "error": "fetch failed"
+    },
+    {
+      "source": "RUSI",
+      "url": "https://rusi.org/rss.xml",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://rusi.org/rss.xml"
+    },
+    {
+      "source": "RAND",
+      "url": "https://www.rand.org/blog.xml",
+      "count": 5,
+      "ok": true,
+      "relevant": 10
+    },
+    {
+      "source": "CNAS",
+      "url": "https://www.cnas.org/rss/feed",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://www.cnas.org/rss/feed"
+    },
+    {
+      "source": "Arms Control Assoc.",
+      "url": "https://www.armscontrol.org/rss.xml",
+      "count": 5,
+      "ok": true,
+      "relevant": 5
+    },
+    {
+      "source": "European Leadership",
+      "url": "https://www.europeanleadershipnetwork.org/feed/",
+      "count": 2,
+      "ok": true,
+      "relevant": 2
+    },
+    {
+      "source": "Defense One",
+      "url": "https://www.defenseone.com/rss/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://www.defenseone.com/rss/"
+    },
+    {
+      "source": "Breaking Defense",
+      "url": "https://breakingdefense.com/feed/",
+      "count": 5,
+      "ok": true,
+      "relevant": 5
+    },
+    {
+      "source": "C4ISRNET",
+      "url": "https://www.c4isrnet.com/arc/outboundfeeds/rss/",
+      "count": 5,
+      "ok": true,
+      "relevant": 10
+    },
+    {
+      "source": "Lawfare",
+      "url": "https://www.lawfaremedia.org/rss.xml",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.lawfaremedia.org/rss.xml"
+    },
+    {
+      "source": "Terra Bellum",
+      "url": "https://terrabellum.com/feed/",
+      "count": 0,
+      "ok": true,
+      "relevant": 0
+    },
+    {
+      "source": "Bellingcat",
+      "url": "https://www.bellingcat.com/feed/",
+      "count": 5,
+      "ok": true,
+      "relevant": 5
+    },
+    {
+      "source": "ACLED",
+      "url": "https://acleddata.com/feed/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://acleddata.com/feed/"
+    },
+    {
+      "source": "ORF India",
+      "url": "https://www.orfonline.org/feed/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://www.orfonline.org/feed/"
+    },
+    {
+      "source": "ISS Africa",
+      "url": "https://issafrica.org/feed/",
+      "count": 0,
+      "ok": true,
+      "relevant": 0
+    },
+    {
+      "source": "ISEAS Singapore",
+      "url": "https://www.iseas.edu.sg/feed/",
+      "count": 0,
+      "ok": true,
+      "relevant": 0
+    },
+    {
+      "source": "NTI",
+      "url": "https://www.nti.org/rss/all/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.nti.org/rss/all/"
     }
   ],
   "stats": {
-    "success": 101,
-    "failed": 40,
-    "articles": 432
+    "success": 110,
+    "failed": 47,
+    "articles": 470
   }
 }
