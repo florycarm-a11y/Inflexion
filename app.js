@@ -137,10 +137,58 @@ function initCommon() {
 }
 
 function initUI() {
+    initDesktopNav();
     initMenuOverlay();
     initStickyHeader();
     initBackToTop();
     initMarketStatus();
+}
+
+/* ============================================
+   Desktop Navigation Bar (generated via JS)
+   ============================================ */
+
+function initDesktopNav() {
+    var navLinks = [
+        { href: 'index.html',       label: 'Accueil' },
+        { href: 'geopolitics.html',  label: 'Géopolitique' },
+        { href: 'markets.html',      label: 'Marchés' },
+        { href: 'crypto.html',       label: 'Crypto' },
+        { href: 'commodities.html',  label: 'Matières premières' },
+        { href: 'etf.html',          label: 'ETF' },
+        { href: 'analysis.html',     label: 'Analyses' },
+        { href: 'premium.html',      label: 'Services' },
+        { href: 'expertise.html',    label: 'Expertise' }
+    ];
+
+    // Detect current page from URL
+    var path = window.location.pathname;
+    var currentFile = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+
+    // Build links HTML
+    var linksHTML = navLinks.map(function(item) {
+        var isActive = currentFile === item.href ||
+            (currentFile === '' && item.href === 'index.html') ||
+            (item.href === 'geopolitics.html' && currentFile === 'country.html');
+        return '<a href="' + item.href + '" class="desktop-nav-link' +
+            (isActive ? ' active' : '') + '"' +
+            (isActive ? ' aria-current="page"' : '') +
+            '>' + item.label + '</a>';
+    }).join('');
+
+    var navHTML = '<nav class="desktop-nav" aria-label="Navigation rubriques">' +
+        '<div class="desktop-nav-inner">' +
+        '<div class="desktop-nav-links">' + linksHTML + '</div>' +
+        '<a href="premium.html#contact" class="desktop-nav-cta">Réserver un diagnostic</a>' +
+        '</div></nav>';
+
+    // Insert after the nav-overlay (or after header if no overlay)
+    var navOverlay = document.getElementById('main-nav');
+    var header = document.querySelector('.header');
+    var insertAfter = navOverlay || header;
+    if (insertAfter) {
+        insertAfter.insertAdjacentHTML('afterend', navHTML);
+    }
 }
 
 
@@ -231,25 +279,25 @@ function initMenuOverlay() {
    ============================================ */
 
 function initStickyHeader() {
-    const header = document.querySelector('.header');
+    var header = document.querySelector('.header');
     if (!header) return;
 
-    let lastScrollY = 0;
-    let ticking = false;
-    let isScrolled = false;
+    var ticking = false;
+    var isScrolled = false;
+    var desktopNav = document.querySelector('.desktop-nav');
 
     function updateHeader() {
-        const currentScrollY = window.scrollY;
-        // Hysteresis: seuil différent pour activer vs désactiver
-        // Active "scrolled" à 60px, désactive à 10px — empêche l'oscillation
+        var currentScrollY = window.scrollY;
+        // Hysteresis: activate "scrolled" at 60px, deactivate at 10px
         if (!isScrolled && currentScrollY > 60) {
             header.classList.add('scrolled');
+            if (desktopNav) desktopNav.classList.add('scrolled');
             isScrolled = true;
         } else if (isScrolled && currentScrollY < 10) {
             header.classList.remove('scrolled');
+            if (desktopNav) desktopNav.classList.remove('scrolled');
             isScrolled = false;
         }
-        lastScrollY = currentScrollY;
         ticking = false;
     }
 
