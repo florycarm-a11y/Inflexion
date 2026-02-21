@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud et IA : la dépendance invisible des PME européennes — Inflexion</title>
+<meta name="description" content="610 milliards de dollars d'investissement en 2026, dont 75 % fléchés vers l'IA. Le cloud n'est plus un sujet technique — c'est un risque de direction générale. Analyse Inflexion.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #EDE8DC;
+    --bg-card: #FFFFFF;
+    --bg-alt: #E5DFD1;
+    --bg-highlight: #F5F2EA;
+    --text-primary: #1A1A1A;
+    --text-secondary: #3A3A3A;
+    --text-muted: #6A6A6A;
+    --green-dark: #0B3D1E;
+    --green: #105E2D;
+    --green-light: #1A7A3A;
+    --green-soft: rgba(11, 61, 30, 0.08);
+    --red-alert: #DC2626;
+    --gold: #EAB308;
+    --border: #D4CFC3;
+    --border-light: #E0DBD0;
+    --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--serif);
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .top-bar {
+    background: var(--green-dark);
+    padding: 10px 0;
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    border-bottom: 2px solid var(--green);
+  }
+  .top-bar a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .top-bar a:hover {
+    color: #fff;
+  }
+  .top-bar span { opacity: 0.4; margin: 0 8px; }
+  .hero {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 80px 24px 40px;
+  }
+  .hero-meta {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-meta .tag {
+    background: var(--green-dark);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 2px;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 5vw, 46px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--green-dark);
+    margin-bottom: 8px;
+  }
+  .hero h1 em {
+    color: var(--green);
+    font-style: normal;
+  }
+  .hero .subtitle {
+    font-size: 20px;
+    color: var(--text-secondary);
+    font-weight: 300;
+    line-height: 1.45;
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+  .hero-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--green);
+    margin-bottom: 24px;
+  }
+  .hero-info {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+  }
+  .hero-info strong { color: var(--text-secondary); }
+  .article {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+  .article p {
+    margin-bottom: 20px;
+    font-size: 17px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+  .article strong { color: var(--text-primary); }
+  .article h2 {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-top: 52px;
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+  .article h3 {
+    font-family: var(--sans);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--green);
+    margin-top: 32px;
+    margin-bottom: 12px;
+    letter-spacing: 0.3px;
+  }
+  /* Key figure */
+  .key-figure {
+    background: linear-gradient(135deg, var(--green-dark) 0%, #0D4A24 100%);
+    border-radius: 4px;
+    padding: 40px 36px;
+    margin: 40px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .key-figure::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green), var(--green-light), rgba(255,255,255,0.3));
+  }
+  .key-figure .number {
+    font-family: var(--sans);
+    font-size: 52px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .key-figure .label {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+  }
+  .key-figure .label strong { color: white; }
+  /* Double key figure */
+  .key-figures-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 40px 0;
+  }
+  .key-figure-sm {
+    background: linear-gradient(135deg, var(--green-dark) 0%, #0D4A24 100%);
+    border-radius: 4px;
+    padding: 28px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .key-figure-sm::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green), var(--green-light), rgba(255,255,255,0.3));
+  }
+  .key-figure-sm .number {
+    font-family: var(--sans);
+    font-size: 36px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .key-figure-sm .label {
+    font-family: var(--serif);
+    font-size: 14.5px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.45;
+  }
+  .key-figure-sm .label strong { color: white; }
+  /* Insight box */
+  .insight {
+    border-left: 3px solid var(--green);
+    background: var(--bg-highlight);
+    padding: 20px 24px;
+    margin: 28px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .insight-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .insight p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+    font-style: italic;
+    line-height: 1.65;
+  }
+  /* Alert insight (red) */
+  .insight.alert {
+    border-left-color: var(--red-alert);
+  }
+  .insight.alert .insight-label {
+    color: var(--red-alert);
+  }
+  /* Gold insight */
+  .insight.gold {
+    border-left-color: var(--gold);
+  }
+  .insight.gold .insight-label {
+    color: #9A7506;
+  }
+  /* Pillar cards */
+  .pillar {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px 28px 24px;
+    margin: 24px 0;
+    position: relative;
+    padding-left: 32px;
+  }
+  .pillar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--green-dark);
+    border-radius: 4px 0 0 4px;
+  }
+  .pillar.green-mid::before { background: var(--green); }
+  .pillar.green-light::before { background: var(--green-light); }
+  .pillar h4 {
+    font-family: var(--sans);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    line-height: 1.35;
+  }
+  .pillar p {
+    font-size: 15.5px;
+    line-height: 1.65;
+    margin-bottom: 12px;
+  }
+  .pillar p:last-child { margin-bottom: 0; }
+  .pillar .lever {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--text-secondary);
+    padding: 6px 0 6px 20px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .pillar .lever::before {
+    content: '\2192';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 600;
+  }
+  .section-number {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green-light);
+    margin-bottom: 8px;
+    display: block;
+  }
+  /* Data rows */
+  .data-box {
+    margin: 20px 0 28px;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .data-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-light);
+    font-family: var(--sans);
+    font-size: 14.5px;
+    color: var(--text-secondary);
+  }
+  .data-row:last-child { border-bottom: none; }
+  .data-row .data-label { flex: 1; }
+  .data-row .data-value {
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-left: 16px;
+    white-space: nowrap;
+  }
+  .data-row .data-value.highlight { color: var(--green); }
+  /* Matrice table */
+  .matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0 32px;
+    font-family: var(--sans);
+    font-size: 14px;
+  }
+  .matrix-table thead th {
+    background: var(--green-dark);
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .matrix-table thead th:first-child {
+    border-radius: 4px 0 0 0;
+  }
+  .matrix-table thead th:last-child {
+    border-radius: 0 4px 0 0;
+  }
+  .matrix-table tbody td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+  .matrix-table tbody tr:nth-child(odd) td {
+    background: var(--bg-highlight);
+  }
+  .matrix-table tbody tr:nth-child(even) td {
+    background: var(--bg-card);
+  }
+  .matrix-table tbody tr:last-child td:first-child {
+    border-radius: 0 0 0 4px;
+  }
+  .matrix-table tbody tr:last-child td:last-child {
+    border-radius: 0 0 4px 0;
+  }
+  .matrix-table td strong {
+    color: var(--text-primary);
+  }
+  /* CTA banner */
+  .cta-banner {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px 24px;
+    margin: 40px 0;
+    text-align: center;
+  }
+  .cta-banner p {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+  }
+  .cta-banner strong { color: var(--green-dark); }
+  .closing {
+    text-align: center;
+    padding: 48px 24px;
+    margin-top: 48px;
+    border-top: 2px solid var(--border);
+  }
+  .closing blockquote {
+    font-family: var(--serif);
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--green-dark);
+    line-height: 1.45;
+    max-width: 580px;
+    margin: 0 auto 16px;
+  }
+  .closing .sub {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  .sources {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 32px 24px 60px;
+    border-top: 1px solid var(--border-light);
+  }
+  .sources h4 {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  .sources p {
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .back-nav {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+  }
+  .back-nav a {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: #10b981;
+    text-decoration: none;
+    padding: 10px 24px;
+    border: 2px solid #10b981;
+    border-radius: 6px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .back-nav a:hover {
+    background: #10b981;
+    color: #fff;
+  }
+  @media (max-width: 640px) {
+    .hero { padding: 48px 20px 32px; }
+    .hero h1 { font-size: 30px; }
+    .article { padding: 0 20px 60px; }
+    .key-figure { padding: 28px 20px; }
+    .key-figure .number { font-size: 40px; }
+    .key-figures-row { grid-template-columns: 1fr; }
+    .key-figure-sm .number { font-size: 30px; }
+    .pillar { padding: 20px 20px 20px 24px; }
+    .hero-info { flex-direction: column; gap: 8px; }
+    .data-row { font-size: 13.5px; }
+    .matrix-table { font-size: 13px; }
+    .matrix-table thead th, .matrix-table tbody td { padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="top-bar">
+  <a href="index.html">INFLEXION</a> <span>&bull;</span> Intelligence Strat&eacute;gique
+</div>
+<div class="hero">
+  <div class="hero-meta">
+    <span class="tag">ANALYSE</span>
+    <span>Infrastructure &amp; Souverainet&eacute;</span>
+  </div>
+  <h1>Cloud et IA : la d&eacute;pendance invisible<br>des <em>PME europ&eacute;ennes</em></h1>
+  <p class="subtitle">Le cloud n'est plus un sujet technique. C'est un risque de direction g&eacute;n&eacute;rale. Quand la capacit&eacute; sature, les clients sans contrat sont les premiers sacrifi&eacute;s.</p>
+  <div class="hero-divider"></div>
+  <div class="hero-info">
+    <span><strong>Inflexion Research</strong></span>
+    <span>F&eacute;vrier 2026</span>
+    <span>9 min de lecture</span>
+  </div>
+</div>
+<div class="article">
+  <!-- ============================================================ -->
+  <!-- INTRODUCTION -->
+  <!-- ============================================================ -->
+  <p>Le secteur du cloud entre dans une phase de rationnement structurel. En 2026, les cinq principaux op&eacute;rateurs mondiaux (Amazon, Alphabet, Meta, Microsoft, Apple) investiront collectivement <strong>610 milliards de dollars en infrastructure</strong>. Amazon m&egrave;ne cette course avec un plan record de 200 milliards de dollars pour l'ann&eacute;e 2026 seule. Sur ce total agr&eacute;g&eacute;, environ <strong>450 milliards &mdash; soit 75 % &mdash; sont sp&eacute;cifiquement fl&eacute;ch&eacute;s vers l'infrastructure d'intelligence artificielle</strong> (serveurs, processeurs graphiques, centres de donn&eacute;es).</p>
+  <div class="key-figures-row">
+    <div class="key-figure-sm">
+      <div class="number">610 Mds $</div>
+      <div class="label">D&eacute;penses d'investissement cumul&eacute;es<br><strong>&times;7 en six ans</strong></div>
+    </div>
+    <div class="key-figure-sm">
+      <div class="number">75 %</div>
+      <div class="label">Fl&eacute;ch&eacute;s vers <strong>l'infrastructure IA</strong><br>soit 450 Mds $</div>
+    </div>
+  </div>
+  <p>Malgr&eacute; cette injection massive, la demande exc&egrave;de l'offre : Azure fait face &agrave; des contraintes de capacit&eacute; qui devraient se prolonger jusqu'&agrave; la mi-2026. Le d&eacute;fi pour les PME et ETI europ&eacute;ennes est d&eacute;sormais double : <strong>s&eacute;curiser un acc&egrave;s au calcul dans un march&eacute; satur&eacute;</strong> et <strong>naviguer dans un cadre r&eacute;glementaire en pleine mutation</strong>.</p>
+  <!-- ============================================================ -->
+  <!-- &Eacute;CART CRITIQUE -->
+  <!-- ============================================================ -->
+  <h2>L'&eacute;cart critique : tarif catalogue contre contrat r&eacute;serv&eacute;</h2>
+  <p>L'&eacute;cart entre le tarif catalogue (facturation &agrave; la demande) et un contrat r&eacute;serv&eacute; de trois ans atteint <strong>80 % chez Microsoft Azure</strong>. Ce niveau est atteint en combinant les instances r&eacute;serv&eacute;es et le &laquo; Azure Hybrid Benefit &raquo;.</p>
+  <div class="key-figure">
+    <div class="number">1,4 M&euro;</div>
+    <div class="label">&Eacute;conomie sur trois ans pour une PME &agrave; <strong>50 000 &euro;/mois</strong><br>en passant du tarif catalogue au contrat r&eacute;serv&eacute;</div>
+  </div>
+  <p>Une PME d&eacute;pensant 50 000 &euro;/mois en facturation &agrave; la demande pourrait descendre &agrave; 10 000 &euro;/mois &agrave; engagement &eacute;quivalent. Sur trois ans, l'&eacute;conomie d&eacute;passe 1,4 million d'euros.</p>
+  <div class="insight">
+    <div class="insight-label">La &laquo; taxe sur l'agilit&eacute; &raquo;</div>
+    <p>Ceux qui conservent la flexibilit&eacute; du tarif catalogue subventionnent de fait les remises accord&eacute;es aux clients engag&eacute;s. En 2026, le cloud n'est plus une d&eacute;pense variable, mais un actif strat&eacute;gique dont le co&ucirc;t doit &ecirc;tre verrouill&eacute;.</p>
+  </div>
+  <!-- ============================================================ -->
+  <!-- TROIS ENJEUX -->
+  <!-- ============================================================ -->
+  <h2>Trois enjeux critiques pour les dirigeants</h2>
+  <span class="section-number">Enjeu 01</span>
+  <div class="pillar">
+    <h4>La stratification de l'acc&egrave;s au calcul</h4>
+    <p>Le march&eacute; se scinde en deux. Les <strong>clients prioritaires</strong> &mdash; contrats pluriannuels &mdash; b&eacute;n&eacute;ficient d'une capacit&eacute; garantie, de prix verrouill&eacute;s et d'un acc&egrave;s pr&eacute;f&eacute;rentiel en cas de saturation. Les <strong>clients expos&eacute;s</strong> &mdash; facturation &agrave; la demande, sans engagement &mdash; sont les premiers rationn&eacute;s. Ce risque est av&eacute;r&eacute; : Azure reconna&icirc;t des contraintes de capacit&eacute; prolong&eacute;es jusqu'&agrave; la mi-2026.</p>
+    <p>La contrainte s'&eacute;tend au mat&eacute;riel. NVIDIA confirme que son architecture Blackwell (B200/GB200) est <strong>int&eacute;gralement attribu&eacute;e jusqu'&agrave; la mi-2026</strong>, avec un carnet de commandes d&eacute;passant 3,6 millions d'unit&eacute;s pour les seuls grands fournisseurs de cloud. Pour une PME, rester client expos&eacute; en 2026, c'est accepter un double risque : interruption de service <em>et</em> impossibilit&eacute; de monter en puissance.</p>
+  </div>
+  <div class="insight alert">
+    <div class="insight-label">Signal critique</div>
+    <p>Si le temps de r&eacute;ponse de vos interfaces de programmation augmente de plus de 50 % entre heures creuses et heures de pointe, vous &ecirc;tes d&eacute;j&agrave; en file d'attente parmi les clients expos&eacute;s.</p>
+  </div>
+  <span class="section-number">Enjeu 02</span>
+  <div class="pillar green-mid">
+    <h4>Le r&eacute;veil de la souverainet&eacute; et le cadre CADA</h4>
+    <p>L'Europe entre dans son &laquo; moment d'ind&eacute;pendance &raquo;. Le <strong>Cloud and AI Development Act</strong> (CADA), dont la proposition l&eacute;gislative est attendue au premier trimestre 2026, vise &agrave; harmoniser les architectures cloud et les processus de passation de march&eacute;s publics pour r&eacute;duire la d&eacute;pendance aux technologies non europ&eacute;ennes.</p>
+    <p>En parall&egrave;le, le sommet de novembre 2025 a marqu&eacute; une convergence vers la <strong>&laquo; pr&eacute;f&eacute;rence europ&eacute;enne &raquo;</strong> dans la commande publique, port&eacute;e par la France et l'Allemagne pour soutenir les acteurs locaux. L'alternative existe et se structure : <strong>Scaleway</strong> (infrastructure de pointe, &eacute;nergie 100 % renouvelable, localisation fran&ccedil;aise), <strong>OVHcloud</strong> (certifi&eacute; HDS, SecNumCloud en cours), Genesis Cloud (natif RGPD). Ces acteurs ne rivalisent pas sur la taille &mdash; ils rivalisent sur la conformit&eacute;, la proximit&eacute; et la pr&eacute;visibilit&eacute; contractuelle.</p>
+  </div>
+  <span class="section-number">Enjeu 03</span>
+  <div class="pillar green-light">
+    <h4>La contrainte physique : &eacute;nergie et d&eacute;lais industriels</h4>
+    <p>L'infrastructure IA se heurte &agrave; des limites physiques majeures. En Irlande, le moratoire sur les centres de donn&eacute;es a &eacute;t&eacute; lev&eacute; fin 2025, mais les <strong>nouvelles conditions sont drastiques</strong> : les centres de donn&eacute;es doivent installer une capacit&eacute; d'auto-g&eacute;n&eacute;ration ou de stockage sur site couvrant 100 % de leur demande, et 80 % de leur &eacute;lectricit&eacute; doit provenir de nouveaux projets renouvelables sp&eacute;cifiquement contract&eacute;s.</p>
+    <p>C&ocirc;t&eacute; mat&eacute;riel lourd, les d&eacute;lais de livraison des transformateurs haute tension atteignent d&eacute;sormais <strong>36 &agrave; 60 mois</strong> (contre 6 &agrave; 8 mois avant 2020), figeant toute expansion rapide de capacit&eacute; jusqu'&agrave; la fin de la d&eacute;cennie. La capacit&eacute; de calcul cloud n'est pas extensible &agrave; volont&eacute; : les cr&eacute;neaux se r&eacute;servent des trimestres &agrave; l'avance.</p>
+  </div>
+  <!-- ============================================================ -->
+  <!-- LEVIERS -->
+  <!-- ============================================================ -->
+  <h2>Leviers de r&eacute;duction de la d&eacute;pendance</h2>
+  <span class="section-number">Levier 01</span>
+  <h3>Passer &agrave; la n&eacute;gociation structur&eacute;e</h3>
+  <p>Les trois op&eacute;rateurs majeurs proposent des m&eacute;canismes de r&eacute;servation accessibles sans &ecirc;tre un grand compte :</p>
+  <div class="data-box">
+    <div class="data-row"><span class="data-label">AWS &mdash; &laquo; Savings Plans &raquo; (3 ans)</span><span class="data-value">&minus;66 &agrave; 72 %</span></div>
+    <div class="data-row"><span class="data-label">Azure &mdash; &laquo; Reserved &raquo; + &laquo; Hybrid Benefit &raquo; (3 ans + licences existantes)</span><span class="data-value">&minus;80 %</span></div>
+    <div class="data-row"><span class="data-label">GCP &mdash; &laquo; Committed Use Discounts &raquo; (3 ans)</span><span class="data-value">&minus;70 %</span></div>
+    <div class="data-row"><span class="data-label">GCP &mdash; &laquo; Sustained Use Discounts &raquo; (automatique, sans engagement)</span><span class="data-value highlight">&minus;30 %</span></div>
+  </div>
+  <p>Le point de d&eacute;part : <strong>auditer trois mois d'utilisation r&eacute;elle</strong> avant tout engagement. Le pi&egrave;ge le plus fr&eacute;quent reste le sur-provisionnement &mdash; r&eacute;server plus que ce qu'on consomme.</p>
+  <div class="insight">
+    <div class="insight-label">Levier sp&eacute;cifique PME</div>
+    <p>AWS est le seul op&eacute;rateur &agrave; permettre la revente d'instances r&eacute;serv&eacute;es non utilis&eacute;es sur un march&eacute; secondaire, moyennant une commission de 12 %. C'est une soupape de s&eacute;curit&eacute; qui r&eacute;duit le risque de sur-engagement.</p>
+  </div>
+  <span class="section-number">Levier 02</span>
+  <h3>Rapatrier le calcul via le logiciel libre</h3>
+  <p>L'argument est d&eacute;sormais purement arithm&eacute;tique. Le mod&egrave;le Llama 3.3 70B (Meta) &eacute;gale ou d&eacute;passe GPT-4o sur des tests critiques (86,0 % sur MMLU contre 85,9 %).</p>
+  <div class="data-box">
+    <div class="data-row"><span class="data-label">Co&ucirc;t par million de jetons en entr&eacute;e &mdash; GPT-4o (interface de programmation)</span><span class="data-value">2,50 $</span></div>
+    <div class="data-row"><span class="data-label">Co&ucirc;t par million de jetons en entr&eacute;e &mdash; Llama 3.3 70B</span><span class="data-value highlight">0,10 $</span></div>
+    <div class="data-row"><span class="data-label">Rapport de co&ucirc;t</span><span class="data-value">&times;25 moins cher</span></div>
+  </div>
+  <p>L'&eacute;cart se creuse encore en local. Un Mac Studio M4 Ultra (pr&eacute;vu pour 2026) avec une m&eacute;moire unifi&eacute;e massive permet de faire tourner ces mod&egrave;les en interne. Le co&ucirc;t mat&eacute;riel est <strong>amorti en moins de six mois</strong> face aux facturations d'interface de programmation. Pour la majorit&eacute; des cas d'usage en entreprise &mdash; classification, extraction, recherche augment&eacute;e, synth&egrave;se &mdash; le logiciel libre offre une performance &eacute;quivalente avec un avantage d&eacute;cisif : aucune d&eacute;pendance &agrave; la disponibilit&eacute; d'un tiers.</p>
+  <span class="section-number">Levier 03</span>
+  <h3>Exploiter la fen&ecirc;tre r&eacute;glementaire</h3>
+  <p>La Commission europ&eacute;enne a propos&eacute; en novembre 2025 le <strong>&laquo; Digital Omnibus &raquo;</strong>, qui repousse la mise en conformit&eacute; du r&egrave;glement sur l'IA pour les syst&egrave;mes &agrave; haut risque au <strong>2 d&eacute;cembre 2027</strong>. Ce d&eacute;lai d'un an offre aux PME une fen&ecirc;tre pour structurer leur gouvernance de l'IA sans la pression d'une &eacute;ch&eacute;ance imm&eacute;diate en 2026.</p>
+  <div class="insight gold">
+    <div class="insight-label">Fen&ecirc;tre d'opportunit&eacute;</div>
+    <p>Le report du &laquo; Digital Omnibus &raquo; ne dispense pas de la conformit&eacute; &mdash; il accorde du temps. Les PME qui utilisent cette fen&ecirc;tre pour structurer leur gouvernance IA (documentation des mod&egrave;les, &eacute;valuation des risques, tra&ccedil;abilit&eacute;) seront en position de force quand l'&eacute;ch&eacute;ance de d&eacute;cembre 2027 s'appliquera.</p>
+  </div>
+  <!-- ============================================================ -->
+  <!-- MATRICE -->
+  <!-- ============================================================ -->
+  <h2>Matrice d'action par profil</h2>
+  <table class="matrix-table">
+    <thead>
+      <tr>
+        <th>Profil</th>
+        <th>Priorit&eacute; strat&eacute;gique</th>
+        <th>Action cl&eacute; 2026</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Jeune entreprise IA</strong><br><span style="font-size:12px;color:var(--text-muted);">10 pers., 5-15 k&euro;/mois</span></td>
+        <td>Flexibilit&eacute; maximale</td>
+        <td>Utiliser les remises automatiques de GCP (&minus;30 %) ou Scaleway &agrave; la demande. Mod&egrave;le local (Llama/Mistral) comme filet de s&eacute;curit&eacute;.</td>
+      </tr>
+      <tr>
+        <td><strong>PME &eacute;ditrice de logiciel</strong><br><span style="font-size:12px;color:var(--text-muted);">50 pers., 30-80 k&euro;/mois</span></td>
+        <td>Pr&eacute;visibilit&eacute; des marges</td>
+        <td>Migrer vers AWS &laquo; Savings Plans &raquo; 1 an (&minus;50 % minimum) et hybrider avec Llama 3.3 en local pour les charges r&eacute;currentes.</td>
+      </tr>
+      <tr>
+        <td><strong>ETI europ&eacute;enne</strong><br><span style="font-size:12px;color:var(--text-muted);">200+ pers., 100 k+ &euro;/mois</span></td>
+        <td>Souverainet&eacute; et r&eacute;silience</td>
+        <td>Combiner Azure &laquo; Reserved &raquo; 3 ans (&minus;80 %) avec un fournisseur certifi&eacute; SecNumCloud/HDS pour les donn&eacute;es sensibles. Deuxi&egrave;me fournisseur europ&eacute;en pour la reprise apr&egrave;s sinistre.</td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- ============================================================ -->
+  <!-- CTA -->
+  <!-- ============================================================ -->
+  <div class="cta-banner">
+    <p>Cette analyse est un extrait de <strong>La Carte de l'Infrastructure</strong> &mdash; rapport complet avec tableaux tarifaires d&eacute;taill&eacute;s, notation g&eacute;ographique europ&eacute;enne, analyse de la cha&icirc;ne NVIDIA/TSMC et auto-diagnostic en 10 questions. Disponible sur Inflexion.</p>
+  </div>
+  <!-- ============================================================ -->
+  <!-- CLOSING -->
+  <!-- ============================================================ -->
+  <div class="closing">
+    <blockquote>Le co&ucirc;t de l'inaction se mesure d&eacute;sormais en trimestres. Les contrats sign&eacute;s aujourd'hui s&eacute;curisent la capacit&eacute; de calcul de 2027. Dans une &eacute;conomie de la raret&eacute;, le cloud ne se consomme plus &mdash; il se planifie.</blockquote>
+    <p class="sub">Inflexion Research &mdash; F&eacute;vrier 2026</p>
+  </div>
+</div>
+<div class="sources">
+  <h4>Sources &amp; m&eacute;thodologie</h4>
+  <p>Publications de r&eacute;sultats T4 2025 (Amazon, Alphabet, Microsoft, Meta). Plan d'investissement Amazon 2026 (200 Mds $). Documentation tarifaire officielle AWS, Azure, GCP, OVHcloud, Scaleway. NVIDIA &mdash; carnet de commandes Blackwell B200/GB200. Goldman Sachs et Barclays &mdash; analyses des d&eacute;penses d'investissement des op&eacute;rateurs. Agence internationale de l'&eacute;nergie &mdash; consommation des centres de donn&eacute;es. Commission europ&eacute;enne &mdash; proposition &laquo; Digital Omnibus &raquo; (novembre 2025). Projet de r&egrave;glement CADA &mdash; Cloud and AI Development Act (T1 2026). DatacenterDynamics &mdash; d&eacute;lais des transformateurs haute tension et conditions du moratoire irlandais. Sommet de novembre 2025 &mdash; convergence &laquo; pr&eacute;f&eacute;rence europ&eacute;enne &raquo; (France, Allemagne).</p>
+</div>
+<div class="back-nav">
+  <a href="analysis.html">&larr; Toutes les analyses</a>
+</div>
+</body>
+</html>
