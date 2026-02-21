@@ -2,7 +2,7 @@
 
 ## 1. Vue d'ensemble
 
-**Inflexion** est une plateforme d'intelligence financiere automatisee combinant analyses geopolitiques et donnees de marche en temps reel. Le systeme agrege **15 APIs**, **122 flux RSS** et utilise **Claude Sonnet** (briefing strategique) + **Claude Haiku** (classification, alertes) pour generer des syntheses IA quotidiennes.
+**Inflexion** est une plateforme d'intelligence financiere automatisee combinant analyses geopolitiques et donnees de marche en temps reel. Le systeme agrege **15 APIs**, **140 flux RSS** et utilise **Claude Sonnet** (briefing strategique) + **Claude Haiku** (classification, alertes) pour generer des syntheses IA quotidiennes.
 
 **URL de production** : https://florycarm-a11y.github.io/Inflexion/
 
@@ -130,7 +130,7 @@ scripts/generate-market-briefing.mjs → data/market-briefing.json (Claude Haiku
 | ECB Data API | Taux directeur BCE, EUR/USD fixing 90j |
 | World Bank | PIB, inflation, chomage, dette (10 economies majeures) |
 
-## 5. Sources RSS (97)
+## 5. Sources RSS (140)
 
 ### Geopolitique (21 sources)
 - **FR** : Le Figaro Intl, France 24, RFI, Courrier Intl, Le Monde Diplomatique, Le Monde Intl
@@ -163,6 +163,14 @@ scripts/generate-market-briefing.mjs → data/market-briefing.json (Claude Haiku
 - **Cybersecurite** : Krebs on Security, BleepingComputer, The Register
 - **Newsletters** : TLDR Tech, TLDR AI
 
+### Politique europeenne & Regulation tech (18 sources) — NOUVEAU
+- **Think tanks EU** : Bruegel, CEPS, ECFR
+- **Presse & institutions EU** : Euractiv, Parlement Europeen, EC Single Market, BEI
+- **Infrastructures de connexion** : TeleGeography, SpaceNews, Hinrich Foundation
+- **Ethique numerique** : AlgorithmWatch, EFF, CNIL, noyb
+- **Bio-souverainete** : EuropaBio, SynBioBeta, GEN Biotech
+- **Politique industrielle** : EU Tech Policy
+
 ## 6. Frontend
 
 ### Architecture
@@ -189,6 +197,7 @@ scripts/generate-market-briefing.mjs → data/market-briefing.json (Claude Haiku
 14. Forex & secteurs (Alpha Vantage)
 15. Article du jour (Claude Haiku)
 16. News par rubrique (GNews + RSS + NewsAPI)
+17. **Veille politique EU & Tech (RSS policy sources)** — NOUVEAU
 
 ## 7. Cles API et secrets GitHub
 
@@ -487,6 +496,46 @@ python scripts/check-french.py
 - 49 → 78 flux RSS (+29 sources ultra-specialisees)
 - Pipeline fetch-data.mjs (11 APIs)
 - Tests unitaires (35 tests)
+
+### Session 2026-02-21 (2) — Veille politique technologique europeenne
+
+**Contexte :** Extension de la veille Inflexion a 5 secteurs strategiques complementaires identifies comme dependances critiques de l'economie numerique : (1) geopolitique des infrastructures de connexion (cables sous-marins, satellites, minerais critiques), (2) politique industrielle et "preference europeenne" (Industrial Accelerator Act, marches publics), (3) competitivite economique et productivity gap transatlantique, (4) bio-souverainete et biologie de synthese, (5) ethique numerique et Digital Fairness Act.
+
+**Nouveaux flux RSS (18) :** 122 → 140 sources
+
+- *Think tanks politiques europeens (3)* : Bruegel, CEPS (Centre for European Policy Studies), ECFR (European Council on Foreign Relations)
+- *Presse europeenne & politique (2)* : Euractiv, Parlement Europeen
+- *Infrastructures de connexion & souverainete numerique (3)* : TeleGeography (cables sous-marins), SpaceNews (constellations satellites), Hinrich Foundation (bifurcation technologique US/Chine)
+- *Ethique numerique & regulation digitale (4)* : AlgorithmWatch, EFF (Electronic Frontier Foundation), CNIL, noyb (Max Schrems)
+- *Bio-souverainete & biologie de synthese (3)* : EuropaBio, SynBioBeta, GEN Biotech (Genetic Engineering & Biotech News)
+- *Politique industrielle & competitivite (3)* : EC Single Market (Commission europeenne), BEI (Banque europeenne d'investissement), EU Tech Policy
+
+**Nouveaux mots-cles de pertinence :**
+- `geopolitics` : cable sous-marin, submarine cable, souverainete numerique, digital sovereignty, guerre hybride, hybrid warfare, minerais critiques, critical minerals, preference europeenne, buy european, politique industrielle, industrial policy, marches publics, public procurement
+- `markets` : politique industrielle, preference europeenne, marches publics, competitivite, productivity gap, union de l'epargne, savings union, investissement productif, energy cost, industrial accelerator
+- `ai_tech` : digital fairness, dark pattern, digital omnibus, DMA, DSA, AI Act, ethique numerique, digital ethics, biologie de synthese, synthetic biology, biotech, bio-souverainete, CRISPR, productivite, european competitiveness
+
+**Nouveau widget sidebar :** "Politique EU & Tech"
+- Filtre automatique les articles issus des 18+ sources EU-policy ou contenant des mots-cles politique europeenne
+- Affiche les 5 articles les plus recents avec source, temps relatif et titre
+- Deduplication et tri par fraicheur
+
+**Experts a surveiller (documentes, pas encore automatises) :**
+- *Infrastructures* : Sophia Besch & Jane Munga (Carnegie), Alex Capri (Hinrich Foundation)
+- *Politique industrielle* : Enrico Letta, Benoit Cormier (Teneo), Antonio Grasso (Digital SME Alliance)
+- *Competitivite* : Judith Arnal (CEPS), Martin Borowiecki (OCDE), Fabrizio Campelli (Deutsche Bank)
+- *Bio-souverainete* : Susan Rosser (Univ. Edinburgh), Lord Willetts (Regulatory Innovation Office)
+- *Ethique numerique* : Christine Tresignie (Ipsos), Natali Helberger (Univ. Amsterdam)
+
+**Fichiers modifies :**
+- `scripts/fetch-data.mjs` : +18 entrees RSS, +3 blocs mots-cles pertinence (geopolitics, markets, ai_tech), +17 SPECIALIZED_SOURCES, commentaire 122→140
+- `data-loader.js` : +17 SOURCE_TIERS, +formatTimeAgo(), +EU_POLICY_SOURCES, +EU_POLICY_KEYWORDS, +updateEuPolicyWidget()
+- `index.html` : +widget sidebar "Politique EU & Tech", footer +4 tags (Bruegel, CEPS, ECFR, CNIL), hero 122→140 sources
+- `styles.css` : +CSS European Policy Widget (eu-policy-item, eu-policy-source, eu-policy-title)
+- `premium.html` : +categorie "Politique EU & Regulation Tech" dans la grille sources
+- `geopolitics.html`, `markets.html`, `crypto.html`, `commodities.html`, `etf.html`, `analysis.html`, `country.html` : 122→140 sources
+- `app.js`, `supabase-client.js`, `scripts/generate-daily-briefing.mjs` : 122→140 sources
+- `CLAUDE.md` : documentation session
 
 **PR #22** : Setup initial RSS feeds
 - Ajout premiers flux RSS (Le Figaro, TLDR, Les Echos, BFM, CoinTelegraph, etc.)
