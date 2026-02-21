@@ -1,16 +1,16 @@
 {
-  "updated": "2026-02-20T18:29:56.199Z",
+  "updated": "2026-02-21T00:58:23.505Z",
   "prices": [
     {
       "id": "bitcoin",
       "name": "Bitcoin",
       "symbol": "BTC",
-      "price": 67595,
-      "change_24h": 1.0746,
-      "change_7d": -2.0605924768942274,
-      "change_30d": -23.05045470089777,
-      "market_cap": 1349978668702,
-      "volume_24h": 51777806638,
+      "price": 67807,
+      "change_24h": 0.89737,
+      "change_7d": -1.6300872950322893,
+      "change_30d": -24.15150066619899,
+      "market_cap": 1355635635157,
+      "volume_24h": 52934818024,
       "high_24h": 68226,
       "low_24h": 66585,
       "image": "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"
@@ -19,13 +19,13 @@
       "id": "ethereum",
       "name": "Ethereum",
       "symbol": "ETH",
-      "price": 1966.91,
-      "change_24h": 1.53302,
-      "change_7d": -4.481261033253507,
-      "change_30d": -32.13057210809576,
-      "market_cap": 237119891155,
-      "volume_24h": 21228164367,
-      "high_24h": 1970.45,
+      "price": 1961.82,
+      "change_24h": 0.22004,
+      "change_7d": -4.384371280938755,
+      "change_30d": -34.15740689734,
+      "market_cap": 236776602117,
+      "volume_24h": 21035156582,
+      "high_24h": 1977.74,
       "low_24h": 1927.51,
       "image": "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628"
     },
@@ -33,12 +33,12 @@
       "id": "ripple",
       "name": "XRP",
       "symbol": "XRP",
-      "price": 1.43,
-      "change_24h": 1.46625,
-      "change_7d": 1.0006560589203672,
-      "change_30d": -24.38496778551949,
-      "market_cap": 87168804172,
-      "volume_24h": 2560988040,
+      "price": 1.42,
+      "change_24h": 0.24473,
+      "change_7d": 1.415414291021375,
+      "change_30d": -27.69782312550036,
+      "market_cap": 86730748106,
+      "volume_24h": 2642812834,
       "high_24h": 1.43,
       "low_24h": 1.38,
       "image": "https://coin-images.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1696501442"
@@ -47,26 +47,26 @@
       "id": "solana",
       "name": "Solana",
       "symbol": "SOL",
-      "price": 84.42,
-      "change_24h": 3.9442,
-      "change_7d": 0.07847558874616078,
-      "change_30d": -33.40559371294153,
-      "market_cap": 47940503208,
-      "volume_24h": 4059673091,
-      "high_24h": 84.6,
-      "low_24h": 81.22,
+      "price": 84.35,
+      "change_24h": 1.61556,
+      "change_7d": -0.22738217018773402,
+      "change_30d": -35.41042360449646,
+      "market_cap": 47956984018,
+      "volume_24h": 4052763518,
+      "high_24h": 85.14,
+      "low_24h": 81.88,
       "image": "https://coin-images.coingecko.com/coins/images/4128/large/solana.png?1718769756"
     },
     {
       "id": "dogecoin",
       "name": "Dogecoin",
       "symbol": "DOGE",
-      "price": 0.101035,
-      "change_24h": 3.41803,
-      "change_7d": 4.837611219388014,
-      "change_30d": -17.06535102223984,
-      "market_cap": 17038221267,
-      "volume_24h": 1114911112,
+      "price": 0.099211,
+      "change_24h": 0.54141,
+      "change_7d": 2.320504928584715,
+      "change_30d": -21.525103537874468,
+      "market_cap": 16742245800,
+      "volume_24h": 1152312560,
       "high_24h": 0.101787,
       "low_24h": 0.09603,
       "image": "https://coin-images.coingecko.com/coins/images/5/large/dogecoin.png?1696501409"
@@ -75,53 +75,44 @@
       "id": "cardano",
       "name": "Cardano",
       "symbol": "ADA",
-      "price": 0.283317,
-      "change_24h": 4.19422,
-      "change_7d": 4.142869840740515,
-      "change_30d": -19.127759803793616,
-      "market_cap": 10428574313,
-      "volume_24h": 464490007,
+      "price": 0.28273,
+      "change_24h": 3.04048,
+      "change_7d": 3.8314399090879006,
+      "change_30d": -23.272998973779636,
+      "market_cap": 10406383292,
+      "volume_24h": 498005389,
       "high_24h": 0.292005,
       "low_24h": 0.27088,
       "image": "https://coin-images.coingecko.com/coins/images/975/large/cardano.png?1696502090"
     }
   ],
   "global": {
-    "total_market_cap": 2397199696006.1924,
-    "total_volume": 113243556837.8797,
-    "btc_dominance": 56.34715290254964,
-    "eth_dominance": 9.892487818675555,
-    "active_cryptos": 18866,
+    "total_market_cap": 2401399304961.6655,
+    "total_volume": 115022051051.47711,
+    "btc_dominance": 56.456704848681504,
+    "eth_dominance": 9.863726211067796,
+    "active_cryptos": 18876,
     "markets": 1468,
-    "market_cap_change_24h": 1.1017744967423828
+    "market_cap_change_24h": 0.7468823753972051
   },
   "trending": [
-    {
-      "id": "pudgy-penguins",
-      "name": "Pudgy Penguins",
-      "symbol": "PENGU",
-      "market_cap_rank": 105,
-      "thumb": "https://coin-images.coingecko.com/coins/images/52622/standard/PUDGY_PENGUINS_PENGU_PFP.png?1733809110",
-      "price_btc": 1.0177604420767691e-7,
-      "score": 0
-    },
-    {
-      "id": "ribbita-by-virtuals",
-      "name": "Ribbita by Virtuals",
-      "symbol": "TIBBIR",
-      "market_cap_rank": 197,
-      "thumb": "https://coin-images.coingecko.com/coins/images/54970/standard/Untitled_design.png?1742941268",
-      "price_btc": 0.0000024668306573050563,
-      "score": 1
-    },
     {
       "id": "aztec",
       "name": "Aztec",
       "symbol": "AZTEC",
-      "market_cap_rank": 295,
+      "market_cap_rank": 283,
       "thumb": "https://coin-images.coingecko.com/coins/images/70681/standard/aztec.png?1763091883",
-      "price_btc": 4.5474981320746106e-7,
-      "score": 2
+      "price_btc": 4.911738848609669e-7,
+      "score": 0
+    },
+    {
+      "id": "pudgy-penguins",
+      "name": "Pudgy Penguins",
+      "symbol": "PENGU",
+      "market_cap_rank": 106,
+      "thumb": "https://coin-images.coingecko.com/coins/images/52622/standard/PUDGY_PENGUINS_PENGU_PFP.png?1733809110",
+      "price_btc": 1.0137217004818042e-7,
+      "score": 1
     },
     {
       "id": "bitcoin",
@@ -130,33 +121,42 @@
       "market_cap_rank": 1,
       "thumb": "https://coin-images.coingecko.com/coins/images/1/standard/bitcoin.png?1696501400",
       "price_btc": 1,
-      "score": 3
-    },
-    {
-      "id": "solana",
-      "name": "Solana",
-      "symbol": "SOL",
-      "market_cap_rank": 7,
-      "thumb": "https://coin-images.coingecko.com/coins/images/4128/standard/solana.png?1718769756",
-      "price_btc": 0.0012457704856009074,
-      "score": 4
+      "score": 2
     },
     {
       "id": "optimism",
       "name": "Optimism",
       "symbol": "OP",
-      "market_cap_rank": 144,
+      "market_cap_rank": 146,
       "thumb": "https://coin-images.coingecko.com/coins/images/25244/standard/Optimism.png?1696524385",
-      "price_btc": 0.0000019089553223261972,
+      "price_btc": 0.0000018800639512295965,
+      "score": 3
+    },
+    {
+      "id": "ribbita-by-virtuals",
+      "name": "Ribbita by Virtuals",
+      "symbol": "TIBBIR",
+      "market_cap_rank": 211,
+      "thumb": "https://coin-images.coingecko.com/coins/images/54970/standard/Untitled_design.png?1742941268",
+      "price_btc": 0.0000021778974911523442,
+      "score": 4
+    },
+    {
+      "id": "pi-network",
+      "name": "Pi Network",
+      "symbol": "PI",
+      "market_cap_rank": 51,
+      "thumb": "https://coin-images.coingecko.com/coins/images/54342/standard/pi_network.jpg?1739347576",
+      "price_btc": 0.00000257798271469576,
       "score": 5
     },
     {
-      "id": "morpho",
-      "name": "Morpho",
-      "symbol": "MORPHO",
-      "market_cap_rank": 74,
-      "thumb": "https://coin-images.coingecko.com/coins/images/29837/standard/Morpho-token-icon.png?1726771230",
-      "price_btc": 0.000022408718557671466,
+      "id": "bittensor",
+      "name": "Bittensor",
+      "symbol": "TAO",
+      "market_cap_rank": 46,
+      "thumb": "https://coin-images.coingecko.com/coins/images/28452/standard/ARUsPeNQ_400x400.jpeg?1696527447",
+      "price_btc": 0.002645154919471982,
       "score": 6
     }
   ],
@@ -164,20 +164,20 @@
     {
       "name": "Tether",
       "symbol": "USDT",
-      "market_cap": 183690135050,
-      "price": 0.999695
+      "market_cap": 183671466354,
+      "price": 0.999633
     },
     {
       "name": "USDC",
       "symbol": "USDC",
-      "market_cap": 74348892357,
-      "price": 0.999873
+      "market_cap": 74451197101,
+      "price": 0.999801
     },
     {
       "name": "Dai",
       "symbol": "DAI",
-      "market_cap": 4187328728,
-      "price": 0.999594
+      "market_cap": 4190993014,
+      "price": 0.999778
     }
   ]
 }
