@@ -1,26 +1,26 @@
 {
-  "updated": "2026-02-21T06:29:19.823Z",
+  "updated": "2026-02-21T10:56:03.495Z",
   "feeds": [
     {
       "source": "Le Figaro",
       "url": "https://www.lefigaro.fr/rss/figaro_international.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "France 24",
       "url": "https://www.france24.com/fr/rss",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "RFI",
       "url": "https://www.rfi.fr/fr/rss",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 3
     },
     {
       "source": "Courrier International",
@@ -34,7 +34,7 @@
       "url": "https://www.monde-diplomatique.fr/export/rss",
       "count": 0,
       "ok": false,
-      "error": "HTTP 404: https://www.monde-diplomatique.fr/export/rss"
+      "error": "fetch failed"
     },
     {
       "source": "BBC World",
@@ -76,7 +76,7 @@
       "url": "https://www.politico.eu/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 3
     },
     {
       "source": "Foreign Policy",
@@ -139,7 +139,7 @@
       "url": "https://www.middleeasteye.net/rss",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "IFRI",
@@ -167,7 +167,7 @@
       "url": "https://www.grip.org/feed/",
       "count": 0,
       "ok": false,
-      "error": "HTTP 500: https://www.grip.org/feed/"
+      "error": "fetch failed"
     },
     {
       "source": "Chatham House",
@@ -207,23 +207,23 @@
     {
       "source": "Crisis Group",
       "url": "https://www.crisisgroup.org/rss.xml",
-      "count": 5,
-      "ok": true,
-      "relevant": 5
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 415: https://www.crisisgroup.org/rss.xml"
     },
     {
       "source": "Le Figaro Éco",
       "url": "https://www.lefigaro.fr/rss/figaro_economie.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "Le Figaro",
       "url": "https://www.lefigaro.fr/rss/figaro_conjoncture.xml",
       "count": 5,
       "ok": true,
-      "relevant": 7
+      "relevant": 5
     },
     {
       "source": "Le Figaro Sociétés",
@@ -237,7 +237,7 @@
       "url": "https://www.lefigaro.fr/rss/figaro_flash-eco.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 1
     },
     {
       "source": "Les Echos",
@@ -251,7 +251,7 @@
       "url": "https://www.bfmtv.com/rss/economie/",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 4
     },
     {
       "source": "Zonebourse",
@@ -265,7 +265,7 @@
       "url": "https://www.latribune.fr/feed.xml",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 3
     },
     {
       "source": "Capital",
@@ -286,7 +286,7 @@
       "url": "https://finance.yahoo.com/news/rssindex",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 4
     },
     {
       "source": "Seeking Alpha",
@@ -307,7 +307,7 @@
       "url": "https://www.investing.com/rss/news.rss",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 2
     },
     {
       "source": "Wolf Street",
@@ -445,9 +445,9 @@
     {
       "source": "Unchained",
       "url": "https://unchainedcrypto.com/feed/",
-      "count": 5,
-      "ok": true,
-      "relevant": 5
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 415: https://unchainedcrypto.com/feed/"
     },
     {
       "source": "Web3 is Going Great",
@@ -508,9 +508,9 @@
     {
       "source": "Mining.com",
       "url": "https://www.mining.com/feed/",
-      "count": 0,
-      "ok": false,
-      "error": "The operation was aborted due to timeout"
+      "count": 5,
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "MetalMiner",
@@ -543,9 +543,9 @@
     {
       "source": "Hellenic Shipping",
       "url": "https://www.hellenicshippingnews.com/feed/",
-      "count": 5,
-      "ok": true,
-      "relevant": 5
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 415: https://www.hellenicshippingnews.com/feed/"
     },
     {
       "source": "Trading Economics",
@@ -594,7 +594,7 @@
       "url": "https://www.numerama.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 1
+      "relevant": 2
     },
     {
       "source": "Next INpact",
@@ -615,7 +615,7 @@
       "url": "https://www.theverge.com/rss/index.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 2
     },
     {
       "source": "Ars Technica",
@@ -636,7 +636,7 @@
       "url": "https://hnrss.org/frontpage?count=15",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 1
     },
     {
       "source": "VentureBeat AI",
@@ -692,7 +692,7 @@
       "url": "https://www.theregister.com/headlines.atom",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 4
     },
     {
       "source": "TLDR Tech",
@@ -741,7 +741,7 @@
       "url": "https://www.challenges.fr/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 1
     },
     {
       "source": "MoneyVox",
@@ -861,11 +861,137 @@
       "count": 0,
       "ok": false,
       "error": "HTTP 403: https://www.spglobal.com/commodityinsights/en/rss-feed/energy-transition"
+    },
+    {
+      "source": "Bruegel",
+      "url": "https://www.bruegel.org/rss.xml",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.bruegel.org/rss.xml"
+    },
+    {
+      "source": "CEPS",
+      "url": "https://www.ceps.eu/feed/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 500: https://www.ceps.eu/feed/"
+    },
+    {
+      "source": "ECFR",
+      "url": "https://ecfr.eu/feed/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 415: https://ecfr.eu/feed/"
+    },
+    {
+      "source": "Euractiv",
+      "url": "https://www.euractiv.com/feed/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.euractiv.com/feed/"
+    },
+    {
+      "source": "Parlement Européen",
+      "url": "https://www.europarl.europa.eu/rss/doc/top-stories/en.xml",
+      "count": 5,
+      "ok": true,
+      "relevant": 10
+    },
+    {
+      "source": "TeleGeography",
+      "url": "https://blog.telegeography.com/rss.xml",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://blog.telegeography.com/rss.xml"
+    },
+    {
+      "source": "SpaceNews",
+      "url": "https://spacenews.com/feed/",
+      "count": 5,
+      "ok": true,
+      "relevant": 10
+    },
+    {
+      "source": "Hinrich Foundation",
+      "url": "https://www.hinrichfoundation.com/feed/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://www.hinrichfoundation.com/feed/"
+    },
+    {
+      "source": "AlgorithmWatch",
+      "url": "https://algorithmwatch.org/en/feed/",
+      "count": 5,
+      "ok": true,
+      "relevant": 5
+    },
+    {
+      "source": "EFF",
+      "url": "https://www.eff.org/rss/updates.xml",
+      "count": 5,
+      "ok": true,
+      "relevant": 5
+    },
+    {
+      "source": "CNIL",
+      "url": "https://www.cnil.fr/fr/rss.xml",
+      "count": 5,
+      "ok": true,
+      "relevant": 5
+    },
+    {
+      "source": "noyb",
+      "url": "https://noyb.eu/en/rss",
+      "count": 5,
+      "ok": true,
+      "relevant": 5
+    },
+    {
+      "source": "EuropaBio",
+      "url": "https://www.europabio.org/feed/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 415: https://www.europabio.org/feed/"
+    },
+    {
+      "source": "SynBioBeta",
+      "url": "https://synbiobeta.com/feed/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 404: https://synbiobeta.com/feed/"
+    },
+    {
+      "source": "GEN Biotech",
+      "url": "https://www.genengnews.com/feed/",
+      "count": 5,
+      "ok": true,
+      "relevant": 5
+    },
+    {
+      "source": "EC Single Market",
+      "url": "https://single-market-economy.ec.europa.eu/rss_en",
+      "count": 0,
+      "ok": true,
+      "relevant": 0
+    },
+    {
+      "source": "BEI",
+      "url": "https://www.eib.org/en/rss",
+      "count": 0,
+      "ok": true,
+      "relevant": 0
+    },
+    {
+      "source": "EU Tech Policy",
+      "url": "https://vfriedmanlaw.com/feed/",
+      "count": 0,
+      "ok": false,
+      "error": "fetch failed"
     }
   ],
   "stats": {
-    "success": 89,
-    "failed": 34,
-    "articles": 382
+    "success": 96,
+    "failed": 45,
+    "articles": 408
   }
 }
