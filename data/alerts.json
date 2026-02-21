@@ -1,14 +1,14 @@
 {
-  "updated": "2026-02-21T03:07:13.219Z",
+  "updated": "2026-02-21T07:05:51.812Z",
   "alertes": [
     {
       "id": "alert-2026-02-21-001",
-      "titre": "GOOGL : +4,01% à $314,98, rebond depuis seuil critique",
-      "texte": "Alphabet progresse de 4,01% à $314,98, signalant un rebond depuis les niveaux extrêmement déprimés observés récemment. Cette hausse intervient dans un contexte de peur massive (FNG à 8). À surveiller : consolidation au-dessus de $310 ou retour sous $300 confirmerait une reprise durable vs. un rebond technique de court terme.",
+      "titre": "GOOGL : +4,01% à 314,98 $, rebond contrecyclique en marché paniqué",
+      "texte": "Alphabet bondit de 4% tandis que le Fear & Greed Index s'effondre à 8/100 (Extreme Fear, -1 pt sur 7j), signalant une divergence haussière rare : les investisseurs institutionnels accumulent les grandes caps technologiques en phase de capitulation. À surveiller : consolidation au-dessus de 315 $ ou retour sous 305 $ en cas de nouveau choc macro.",
       "categorie": "marches",
       "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-02-21T03:07:13.219Z",
+      "horodatage": "2026-02-21T07:05:51.812Z",
       "donnees": {
         "symbole": "GOOGL",
         "nom": "Alphabet",
@@ -18,12 +18,12 @@
     },
     {
       "id": "alert-2026-02-21-002",
-      "titre": "Fear & Greed Index : 8 (Extreme Fear), stabilité extrême",
-      "texte": "Le FNG demeure à 8/100 (Extreme Fear absolu) avec une variation de -1 point sur 7 jours, indiquant une peur chronique quasi-stable sans amélioration. Ce niveau reste parmi les 1% les plus bas historiques, reflétant une capitulation généralisée des investisseurs. Seuil critique : reprise au-dessus de 15 marquerait une inflexion des sentiments.",
-      "categorie": "macro",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-02-21T03:07:13.219Z",
+      "titre": "Fear & Greed Index : 8/100 (Extreme Fear), seuil capitulation atteint",
+      "texte": "L'indice de sentiment plonge à 8, niveau extrême historiquement associé aux retournements court terme sur 7-10 jours. La variation hebdomadaire quasi-stable (-1 pt) suggère une peur cristallisée, non accélérante : contexte classique de plancher avant rebond technique. Surveiller si l'indice remonte au-delà de 15 (sortie de capitulation) ou descend sous 5 (nouveau record).",
+      "categorie": "marches",
+      "severite": "attention",
+      "impact": "neutre",
+      "horodatage": "2026-02-21T07:05:51.812Z",
       "donnees": {
         "score": 8,
         "label": "Extreme Fear",
@@ -33,8 +33,8 @@
   ],
   "stats": {
     "total": 2,
-    "urgent": 1,
-    "attention": 1,
+    "urgent": 0,
+    "attention": 2,
     "info": 0
   },
   "model": "claude-haiku-4-5-20251001"

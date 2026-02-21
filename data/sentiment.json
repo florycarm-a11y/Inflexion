@@ -1,65 +1,65 @@
 {
-  "updated": "2026-02-21T03:07:09.362Z",
+  "updated": "2026-02-21T07:05:47.810Z",
   "date": "2026-02-21",
   "global": {
-    "score": 0.1,
+    "score": 0.02,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (+0.1), dominé par la rubrique crypto (haussier)."
+    "resume": "Le sentiment global est mixte (+0.02), dominé par la rubrique crypto (mixte)."
   },
   "categories": {
     "geopolitique": {
       "score": -0.45,
       "confidence": 0.72,
       "tendance": "baissier",
-      "resume": "Sentiment baissier dominant porté par l'escalade des tensions géopolitiques (US-Iran, Moyen-Orient) et l'instabilité politique américaine autour de la politique tarifaire. La Cour suprême bloque les tarifs de Trump (revers majeur), tandis que les signaux militaires s'intensifient (frappes envisagées contre l'Iran, déclarations expansionnistes d'Israël). Ces frictions réduisent la prévisibilité des politiques commerciales et augmentent les risques de conflit armé régional.",
+      "resume": "La géopolitique affiche un sentiment modérément baissier dominé par trois foyers de tension : escalade militaire au Moyen-Orient (Liban, Iran, Gaza), conflit ukrainien persistant, et instabilité politique américaine autour des tarifs douaniers. Ces frictions créent un environnement d'incertitude accrue pour les marchés, sans crise systémique immédiate.",
       "signaux_cles": [
-        "Cour suprême rejette le régime tarifaire mondial de Trump et invalide ses droits de douane — revers politique majeur affaiblissant la crédibilité de sa politique commerciale",
-        "Accumulation militaire US-Iran : Trump envisage une frappe limitée contre l'Iran tandis que les partenaires américains prennent leurs distances et le Pentagone se prépare à des opérations potentielles",
-        "Déclarations expansionnistes d'Israël : l'ambassadeur américain Huckabee déclare qu'Israël a le droit de contrôler « l'ensemble » du Moyen-Orient, signalant une escalade rhétorique et une déstabilisation régionale"
+        "Escalade Moyen-Orient : frappes israéliennes au Liban (12+ morts), craintes d'une guerre américaine contre l'Iran, déploiement marocain à Gaza — risque d'élargissement régional",
+        "Conflit Ukraine inchangé : 1 458e jour de guerre, harcèlement de civils par drones russes — persistance d'une tension chronique sans résolution visible",
+        "Instabilité politique américaine : Cour suprême rejette les tarifs mondiaux de Trump (3 titres), Trump contre-attaque avec 10% de droits de douane — risque de fragmentation du pouvoir exécutif et volatilité commerciale"
       ]
     },
     "marches": {
-      "score": -0.15,
-      "confidence": 0.62,
-      "tendance": "mixte",
-      "resume": "Sentiment mitigé dominé par l'incertitude réglementaire autour des tarifs douaniers. La Cour suprême invalide les mesures de Trump, mais celui-ci annonce immédiatement un nouveau tarif mondial de 10%, créant une volatilité structurelle. Les signaux sectoriels sont contradictoires : détail optimiste, petites entreprises préoccupées, métaux précieux volatiles.",
+      "score": -0.35,
+      "confidence": 0.72,
+      "tendance": "baissier",
+      "resume": "Sentiment modérément baissier dominé par l'incertitude tarifaire et l'inflation persistante. La défaite de Trump à la Cour suprême sur les tarifs crée une volatilité court terme, tandis que l'accélération de l'inflation PCE (2,9-3,0 %) et du déflateur du PIB (3,7 %) soulève des questions sur la trajectoire monétaire de la Fed. Les signaux macro-économiques restent mixtes, limitant la confiance des investisseurs.",
       "signaux_cles": [
-        "Cour suprême invalide le régime tarifaire de Trump (contrôle du pouvoir exécutif) mais Trump riposte avec un tarif mondial de 10% signé par décret — crée une incertitude réglementaire durable",
-        "Secteur du détail salue l'annulation initiale mais l'incertitude persiste ; petites entreprises anticipent des impacts négatifs malgré le revers judiciaire — divergence d'impact par taille d'entreprise",
-        "OpenAI révise ses dépenses à 600 milliards de dollars d'ici 2030 et PacifiCorp (Berkshire) verse 575 millions pour règlement incendies — signaux sectoriels isolés sans lien avec la dynamique tarifaire dominante"
+        "Inflation PCE accélérée à 2,9-3,0 % et déflateur du PIB à 3,7 % : divergence avec l'IPC ralenti (2,4 %), créant une ambiguïté sur la direction monétaire de la Fed",
+        "Cour suprême invalide le régime tarifaire de Trump, mais Trump annonce immédiatement un tarif mondial de 10 % : escalade d'incertitude réglementaire impactant les flux commerciaux et les marges des entreprises",
+        "Ventes d'actions par insiders chez Clean Harbors (CLH) : 1,2 million $ cumulés vendus, signal de manque de confiance des dirigeants dans les perspectives court terme"
       ]
     },
     "crypto": {
-      "score": 0.62,
-      "confidence": 0.72,
-      "tendance": "haussier",
-      "resume": "Sentiment modérément haussier porté par trois catalyseurs structurants : régulation favorable (SEC assouplissant les règles sur les stablecoins), adoption institutionnelle croissante (tokenisation immobilière, pilotes bancaires), et dynamiques techniques positives (accumulation des baleines, liquidations baissières à risque). Cependant, des signaux de faiblesse sous-jacente (ventes massives de baleines, taux de rebond faible des tokens) et des frictions réglementaires (Polymarket aux Pays-Bas) tempèrent l'optimisme.",
+      "score": 0.52,
+      "confidence": 0.68,
+      "tendance": "mixte",
+      "resume": "Sentiment modérément haussier porté par des catalyseurs structurels (adoption institutionnelle, clarification réglementaire, accumulation de baleines) et des rebonds techniques du Bitcoin (~68 000 $), contrebalancé par des signaux de fraude croissante, une pression de vente persistante et une faiblesse des altcoins. L'implication : marché en phase de consolidation avec risque de volatilité accrue.",
       "signaux_cles": [
-        "SEC émet directives favorables sur les exigences de capital en stablecoins pour les courtiers, ouvrant la voie à une adoption institutionnelle accélérée",
-        "ETF ProShares sur stablecoins génère 17 milliards de dollars de volume le premier jour, signalant une demande retail/institutionnelle forte",
-        "Bitcoin approche 68 000 dollars avec accumulation en V des baleines malgré vente massive de 230 000 BTC, indiquant une bataille haussière-baissière équilibrée mais avec avantage haussier"
+        "Accumulation de baleines en V compensant une vente massive de 230 K BTC, avec liquidations baissières de 600 M USD augmentant les chances d'un rebond à 70 000 USD",
+        "Clarification réglementaire majeure : la SEC émet des directives sur les exigences de capital en stablecoins pour les courtiers, et l'ETF ProShares génère 17 milliards de dollars de volume au premier jour",
+        "Adoption institutionnelle croissante (BNP Paribas sur Ethereum, tokenisation immobilière à Dubaï/Maldives, Nakamoto Inc. finalise l'acquisition de BTC Inc.) contrebalancée par fraude accrue et seulement 10 % des lancements de tokens faibles s'étant rétablis en 2025"
       ]
     },
     "matieres_premieres": {
       "score": 0.15,
       "confidence": 0.55,
       "tendance": "mixte",
-      "resume": "Sentiment contrasté sur les matières premières : les signaux positifs (pétrole près de ses plus hauts, rebond du Baltic Dry, demande agricole soutenue) sont contrebalancés par des incertitudes réglementaires majeures (annulation des droits de douane par la Cour suprême affaiblissant la politique commerciale Trump) et des faiblesses sectorielles (gaz naturel en recul, ralentissement des services en Inde). L'implication est une volatilité accrue sans direction claire à court terme.",
+      "resume": "Sentiment contrasté sur les matières premières : les énergies renouvelables gagnent du terrain structurellement (électrique, solaire spatial), tandis que les énergies fossiles subissent des pressions réglementaires et commerciales (annulation des tarifs Trump, baisse des importations de pétrole UE). Les prix des commodités restent volatiles sans direction claire, avec des signaux contradictoires sur l'énergie et l'agriculture.",
       "signaux_cles": [
-        "Annulation des droits de douane par la Cour suprême : déstabilisation majeure de la politique commerciale Trump, impactant les flux commerciaux et les prix des matières premières liées aux échanges",
-        "Pétrole maintenu près de ses plus hauts de six mois et rebond de l'indice Baltic Dry : soutien de la demande de transport et d'énergie malgré les turbulences macroéconomiques",
-        "Gaz naturel en recul avec vente massive à l'Ouest compensant les gains liés au froid : pression baissière sur l'énergie malgré les facteurs saisonniers, signalant une demande modérée"
+        "Annulation des tarifs douaniers par la Cour suprême américaine : remise en question d'un pilier de la politique commerciale Trump, réduisant l'incertitude tarifaire sur les matières premières importées",
+        "Transition énergétique accélérée : l'électrique domine clairement le marché des bus urbains et l'énergie solaire spatiale progresse, tandis que les fossiles font face à des appels à taxation des profits",
+        "Volatilité des prix sans tendance dominante : gaz naturel en recul malgré le froid, pétrole stable près de ses plus hauts de 6 mois, indice Baltic Dry en rebond, mais variations frénétiques des contrats à terme reflètent l'incertitude macro"
       ]
     },
     "ai_tech": {
       "score": 0.35,
       "confidence": 0.62,
       "tendance": "mixte",
-      "resume": "La rubrique IA/Tech affiche un sentiment modérément haussier porté par des avancées technologiques concrètes (NVIDIA DreamDojo, accélération Llama 3.1, outils d'agents IA), mais tempéré par des signaux négatifs structurels : litiges réglementaires (Google/SerpApi), failles de sécurité critiques (PayPal, Starkiller), et questions éthiques croissantes (robotaxis, financement politique). L'absence de consensus clair entre innovations et risques systémiques maintient le sentiment en territoire neutre-positif.",
+      "resume": "Sentiment modérément haussier dominé par des avancées technologiques concrètes (déploiements d'IA, optimisations de performance) et une intensification de la concurrence, contrebalancé par des préoccupations réglementaires et des frictions commerciales (scraping, restrictions d'API). L'écosystème IA progresse mais fait face à des tensions croissantes autour de la monétisation et de la conformité.",
       "signaux_cles": [
-        "NVIDIA DreamDojo : modèle robotique open-source entraîné sur 44 711 heures de vidéos réelles — signal de maturité technologique et d'accélération R&D",
-        "Taalas exécute Llama 3.1 8B à 17 000 tokens/seconde — amélioration significative de la vélocité d'inférence, réduction des coûts opérationnels",
-        "Faille de sécurité PayPal exposant données personnelles et transactions non autorisées + service de phishing Starkiller — escalade des risques de cybersécurité et perte de confiance utilisateur dans l'écosystème IA/fintech"
+        "Taalas déploie Llama 3.1 8B à 17 000 tokens/seconde : amélioration significative de la performance d'inférence, signal de maturité technologique et réduction des coûts d'exploitation",
+        "Sarvam lance l'application de chat Indus en Inde et intensification de la concurrence : expansion géographique des modèles IA et fragmentation du marché par région/langue",
+        "SerpApi accuse Google de mauvaise foi sur le scraping + Anthropic restreint les abonnements Claude : durcissement des conditions commerciales et des frictions réglementaires croissantes entre acteurs"
       ]
     }
   },
@@ -147,10 +147,10 @@
     },
     {
       "date": "2026-02-21",
-      "global": 0.1,
+      "global": 0.02,
       "geopolitique": -0.45,
-      "marches": -0.15,
-      "crypto": 0.62,
+      "marches": -0.35,
+      "crypto": 0.52,
       "matieres_premieres": 0.15,
       "ai_tech": 0.35
     }
@@ -158,36 +158,36 @@
   "model": "claude-haiku-4-5-20251001",
   "usage": {
     "totalInputTokens": 7674,
-    "totalOutputTokens": 1852,
+    "totalOutputTokens": 1787,
     "totalCalls": 5,
     "callsByLabel": {
       "sentiment-geopolitique": {
         "calls": 1,
-        "inputTokens": 1519,
-        "outputTokens": 382
+        "inputTokens": 1531,
+        "outputTokens": 334
       },
       "sentiment-marches": {
         "calls": 1,
-        "inputTokens": 1636,
-        "outputTokens": 358
+        "inputTokens": 1688,
+        "outputTokens": 379
       },
       "sentiment-crypto": {
         "calls": 1,
-        "inputTokens": 1522,
-        "outputTokens": 352
+        "inputTokens": 1558,
+        "outputTokens": 377
       },
       "sentiment-matieres_premieres": {
         "calls": 1,
-        "inputTokens": 1438,
-        "outputTokens": 373
+        "inputTokens": 1445,
+        "outputTokens": 363
       },
       "sentiment-ai_tech": {
         "calls": 1,
-        "inputTokens": 1559,
-        "outputTokens": 387
+        "inputTokens": 1452,
+        "outputTokens": 334
       }
     },
-    "estimatedCostUSD": 0.0135,
+    "estimatedCostUSD": 0.0133,
     "model": "claude-haiku-4-5-20251001"
   }
 }
