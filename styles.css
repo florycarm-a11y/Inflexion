@@ -3743,9 +3743,9 @@ body.page-markets .market-status {
    ============================================ */
 
 @media (min-width: 769px) {
-    /* Hide hamburger on desktop — desktop-nav provides navigation */
+    /* Hamburger reste visible sur desktop pour acceder au menu complet */
     .menu-trigger {
-        display: none !important;
+        display: flex !important;
     }
 
     /* Overlay still works on desktop (accessible via keyboard shortcut or JS) */
