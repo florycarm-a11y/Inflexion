@@ -232,7 +232,22 @@ const RELEVANCE_KEYWORDS = {
         'tech decoupling', 'préférence européenne', 'buy european', 'marché unique',
         'single market', 'politique industrielle', 'industrial policy',
         'marchés publics', 'public procurement', 'procurement act',
-        'industrial accelerator', 'enrico letta'
+        'industrial accelerator', 'enrico letta',
+        // Defense, strategy & OSINT
+        'défense européenne', 'european defence', 'budget défense', 'defense budget',
+        'defense spending', 'dépenses militaires', 'military spending',
+        'arms control', 'contrôle des armements', 'dissuasion', 'deterrence',
+        'guerre cognitive', 'cognitive warfare', 'information warfare',
+        'guerre informationnelle', 'désinformation', 'disinformation',
+        'fonds marins', 'seabed warfare', 'guerre sous-marine', 'undersea',
+        'sécurité maritime', 'maritime security', 'indo-pacifique', 'indo-pacific',
+        'prolifération', 'proliferation', 'non-prolifération', 'nonproliferation',
+        'osint', 'open source intelligence', 'renseignement source ouverte',
+        'lawfare', 'guerre juridique', 'legal warfare',
+        'conflit armé', 'armed conflict', 'peace operations', 'opérations de paix',
+        'insurgency', 'counterinsurgency', 'contre-insurrection',
+        'réarmement', 'rearmament', 'industrie de défense', 'defense industry',
+        'base industrielle', 'industrial base', 'complexe militaro-industriel'
     ],
     markets: [
         // FR
@@ -362,7 +377,14 @@ const RELEVANCE_KEYWORDS = {
         // EU competitiveness
         'productivité', 'productivity gap', 'compétitivité européenne',
         'european competitiveness', 'union de l\'épargne', 'savings union',
-        'investissement productif', 'productive investment'
+        'investissement productif', 'productive investment',
+        // Defense tech & autonomous systems
+        'drone militaire', 'military drone', 'autonomous weapon',
+        'arme autonome', 'systèmes autonomes létaux', 'lethal autonomous',
+        'cyber défense', 'cyber defense', 'cyber command', 'cybercommand',
+        'guerre électronique', 'electronic warfare', 'c4isr',
+        'IA militaire', 'military ai', 'defense ai', 'ia de défense',
+        'dual use', 'double usage', 'technologie duale', 'dual-use technology'
     ]
 };
 

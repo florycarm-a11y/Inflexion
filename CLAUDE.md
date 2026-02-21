@@ -130,7 +130,7 @@ scripts/generate-market-briefing.mjs → data/market-briefing.json (Claude Haiku
 | ECB Data API | Taux directeur BCE, EUR/USD fixing 90j |
 | World Bank | PIB, inflation, chomage, dette (10 economies majeures) |
 
-## 5. Sources RSS (140)
+## 5. Sources RSS (158)
 
 ### Geopolitique (21 sources)
 - **FR** : Le Figaro Intl, France 24, RFI, Courrier Intl, Le Monde Diplomatique, Le Monde Intl
@@ -163,13 +163,23 @@ scripts/generate-market-briefing.mjs → data/market-briefing.json (Claude Haiku
 - **Cybersecurite** : Krebs on Security, BleepingComputer, The Register
 - **Newsletters** : TLDR Tech, TLDR AI
 
-### Politique europeenne & Regulation tech (18 sources) — NOUVEAU
+### Politique europeenne & Regulation tech (18 sources)
 - **Think tanks EU** : Bruegel, CEPS, ECFR
 - **Presse & institutions EU** : Euractiv, Parlement Europeen, EC Single Market, BEI
 - **Infrastructures de connexion** : TeleGeography, SpaceNews, Hinrich Foundation
 - **Ethique numerique** : AlgorithmWatch, EFF, CNIL, noyb
 - **Bio-souverainete** : EuropaBio, SynBioBeta, GEN Biotech
 - **Politique industrielle** : EU Tech Policy
+
+### Defense, Strategie & Renseignement (12 sources) — NOUVEAU
+- **Think tanks defense** : RUSI, RAND, CNAS, Arms Control Association, European Leadership Network
+- **Presse defense & securite** : Defense One, Breaking Defense, C4ISRNET, Lawfare, Terra Bellum
+- **OSINT & investigations** : Bellingcat, ACLED
+
+### Think tanks non-occidentaux (4 sources) — NOUVEAU
+- **Asie** : ORF India, ISEAS Singapore
+- **Afrique** : ISS Africa
+- **Non-proliferation** : NTI (Nuclear Threat Initiative)
 
 ## 6. Frontend
 
@@ -536,6 +546,25 @@ python scripts/check-french.py
 - `geopolitics.html`, `markets.html`, `crypto.html`, `commodities.html`, `etf.html`, `analysis.html`, `country.html` : 122→140 sources
 - `app.js`, `supabase-client.js`, `scripts/generate-daily-briefing.mjs` : 122→140 sources
 - `CLAUDE.md` : documentation session
+
+### Session 2026-02-21 (3) — Defense, strategie & think tanks non-occidentaux
+
+**Contexte :** Extension de la veille geopolitique d'Inflexion aux domaines defense/strategie, OSINT et perspectives non-occidentales. Ajout de 18 nouvelles sources RSS couvrant les think tanks de defense (RUSI, RAND, CNAS), la presse securite/defense (Defense One, Breaking Defense, Lawfare), les investigations OSINT (Bellingcat, ACLED) et les think tanks non-occidentaux (ORF India, ISS Africa, ISEAS Singapore, NTI).
+
+**Nouveaux flux RSS (18) :** 140 → 158 sources
+
+- *Think tanks defense (5)* : RUSI, RAND, CNAS, Arms Control Association, European Leadership Network
+- *Presse defense & securite (5)* : Defense One, Breaking Defense, C4ISRNET, Lawfare, Terra Bellum
+- *OSINT & investigations (2)* : Bellingcat, ACLED
+- *Think tanks non-occidentaux (4)* : ORF India (Inde), ISS Africa (Afrique), ISEAS Singapore (Asie du Sud-Est), NTI (non-proliferation nucleaire)
+
+**Nouveaux mots-cles de pertinence :**
+- `geopolitics` : defense europeenne, budget defense, defense spending, arms control, dissuasion, deterrence, guerre cognitive, cognitive warfare, information warfare, desinformation, fonds marins, seabed warfare, indo-pacifique, proliferation, osint, lawfare, rearmement, industrie de defense
+- `ai_tech` : drone militaire, military drone, autonomous weapon, arme autonome, systemes autonomes letaux, cyber defense, electronic warfare, c4isr, IA militaire, military ai, dual use, technologie duale
+
+**Fichiers modifies :**
+- `scripts/fetch-data.mjs` : +18 entrees RSS, +16 SPECIALIZED_SOURCES, +mots-cles defense/OSINT (geopolitics + ai_tech), commentaire 140→158
+- `CLAUDE.md` : +2 sous-sections RSS (Defense & Think tanks non-occidentaux), documentation session
 
 **PR #22** : Setup initial RSS feeds
 - Ajout premiers flux RSS (Le Figaro, TLDR, Les Echos, BFM, CoinTelegraph, etc.)

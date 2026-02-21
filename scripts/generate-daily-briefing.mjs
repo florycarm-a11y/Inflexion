@@ -691,7 +691,7 @@ async function main() {
 
     const userMessage = `# ${useFullMode ? 'Briefing stratégique' : 'Mise à jour quotidienne'} Inflexion — ${today()}
 
-## PARTIE A : Actualités du jour (${topArticles.length} articles sélectionnés parmi 140 sources RSS + 15 APIs)
+## PARTIE A : Actualités du jour (${topArticles.length} articles sélectionnés parmi 158 sources RSS + 15 APIs)
 
 ${newsContext}
 

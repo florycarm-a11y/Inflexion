@@ -1005,7 +1005,15 @@ const DataLoader = (function () {
         'Parlement Européen': 1, 'EC Single Market': 1, 'BEI': 1,
         'TeleGeography': 2, 'SpaceNews': 2, 'Hinrich Foundation': 2,
         'AlgorithmWatch': 2, 'EFF': 2, 'CNIL': 1, 'noyb': 2,
-        'EuropaBio': 2, 'SynBioBeta': 3, 'GEN Biotech': 3
+        'EuropaBio': 2, 'SynBioBeta': 3, 'GEN Biotech': 3,
+        // Défense, stratégie & OSINT
+        'RUSI': 1, 'RAND': 1, 'CNAS': 1, 'Arms Control Assoc.': 1,
+        'European Leadership': 2,
+        'Defense One': 2, 'Breaking Defense': 2, 'C4ISRNET': 2,
+        'Lawfare': 1, 'Terra Bellum': 3,
+        'Bellingcat': 1, 'ACLED': 1,
+        // Think tanks non-occidentaux
+        'ORF India': 2, 'ISS Africa': 2, 'ISEAS Singapore': 2, 'NTI': 1
     };
 
     /**
