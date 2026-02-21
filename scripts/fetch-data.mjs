@@ -404,7 +404,13 @@ const SPECIALIZED_SOURCES = new Set([
     'TeleGeography', 'SpaceNews', 'Hinrich Foundation',
     'AlgorithmWatch', 'EFF', 'CNIL', 'noyb',
     'EuropaBio', 'SynBioBeta', 'GEN Biotech',
-    'EC Single Market', 'BEI'
+    'EC Single Market', 'BEI',
+    // Défense, stratégie & OSINT
+    'RUSI', 'RAND', 'CNAS', 'Arms Control Assoc.', 'European Leadership',
+    'Defense One', 'Breaking Defense', 'C4ISRNET', 'Lawfare',
+    'Bellingcat', 'ACLED', 'NTI',
+    // Think tanks non-occidentaux
+    'ORF India', 'ISS Africa', 'ISEAS Singapore', 'Terra Bellum'
 ]);
 
 /**
@@ -426,7 +432,7 @@ function isRelevantForCategory(article, categoryKey, sourceName) {
 }
 
 // ─── Sources RSS (gratuit, pas de clé API) ───────────────
-// 140 flux ultra-spécialisés couvrant 6 rubriques + politique européenne — mis à jour fév. 2026
+// 158 flux ultra-spécialisés couvrant 6 rubriques + politique européenne + défense/stratégie — mis à jour fév. 2026
 const RSS_SOURCES = [
 
     // ╔══════════════════════════════════════════════════════════╗
@@ -680,6 +686,37 @@ const RSS_SOURCES = [
     { url: 'https://single-market-economy.ec.europa.eu/rss_en',       source: 'EC Single Market',      cats: ['markets', 'geopolitics'],  lang: 'en' },
     { url: 'https://www.eib.org/en/rss',                              source: 'BEI',                   cats: ['markets'],                 lang: 'en' },
     { url: 'https://vfriedmanlaw.com/feed/',                           source: 'EU Tech Policy',        cats: ['ai_tech', 'geopolitics'],  lang: 'en' },
+
+    // ╔══════════════════════════════════════════════════════════╗
+    // ║  🛡️ DÉFENSE, STRATÉGIE & RENSEIGNEMENT — 12 sources     ║
+    // ╚══════════════════════════════════════════════════════════╝
+
+    // 🏛️ Think tanks défense
+    { url: 'https://rusi.org/rss.xml',                                 source: 'RUSI',                  cats: ['geopolitics'],             lang: 'en' },
+    { url: 'https://www.rand.org/blog.xml',                            source: 'RAND',                  cats: ['geopolitics', 'ai_tech'],  lang: 'en' },
+    { url: 'https://www.cnas.org/rss/feed',                            source: 'CNAS',                  cats: ['geopolitics'],             lang: 'en' },
+    { url: 'https://www.armscontrol.org/rss.xml',                     source: 'Arms Control Assoc.',   cats: ['geopolitics'],             lang: 'en' },
+    { url: 'https://www.europeanleadershipnetwork.org/feed/',         source: 'European Leadership',   cats: ['geopolitics'],             lang: 'en' },
+
+    // 📰 Presse défense & sécurité
+    { url: 'https://www.defenseone.com/rss/',                         source: 'Defense One',           cats: ['geopolitics'],             lang: 'en' },
+    { url: 'https://breakingdefense.com/feed/',                       source: 'Breaking Defense',      cats: ['geopolitics'],             lang: 'en' },
+    { url: 'https://www.c4isrnet.com/arc/outboundfeeds/rss/',        source: 'C4ISRNET',              cats: ['geopolitics', 'ai_tech'],  lang: 'en' },
+    { url: 'https://www.lawfaremedia.org/rss.xml',                    source: 'Lawfare',               cats: ['geopolitics', 'ai_tech'],  lang: 'en' },
+    { url: 'https://terrabellum.com/feed/',                           source: 'Terra Bellum',          cats: ['geopolitics'] },
+
+    // 🔍 OSINT & investigations
+    { url: 'https://www.bellingcat.com/feed/',                        source: 'Bellingcat',            cats: ['geopolitics'],             lang: 'en' },
+    { url: 'https://acleddata.com/feed/',                             source: 'ACLED',                 cats: ['geopolitics'],             lang: 'en' },
+
+    // ╔══════════════════════════════════════════════════════════╗
+    // ║  🌏 THINK TANKS NON-OCCIDENTAUX — 4 sources              ║
+    // ╚══════════════════════════════════════════════════════════╝
+
+    { url: 'https://www.orfonline.org/feed/',                         source: 'ORF India',             cats: ['geopolitics'],             lang: 'en' },
+    { url: 'https://issafrica.org/feed/',                             source: 'ISS Africa',            cats: ['geopolitics'],             lang: 'en' },
+    { url: 'https://www.iseas.edu.sg/feed/',                         source: 'ISEAS Singapore',       cats: ['geopolitics'],             lang: 'en' },
+    { url: 'https://www.nti.org/rss/all/',                           source: 'NTI',                   cats: ['geopolitics'],             lang: 'en' },
 ];
 
 // ─── 1. CRYPTO (CoinGecko — gratuit, pas de clé) ──────────
