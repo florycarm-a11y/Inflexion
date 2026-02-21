@@ -1,41 +1,41 @@
 {
-  "updated": "2026-02-20T19:11:28.376Z",
+  "updated": "2026-02-21T03:07:13.219Z",
   "alertes": [
     {
-      "id": "alert-2026-02-20-001",
-      "titre": "GOOGL : +3,83% à 314,45 $, rebond sur support clé",
-      "texte": "Alphabet gagne 3,83% en séance, revenant à 314,45 $. Ce mouvement intervient dans un contexte de panique de marché (FNG à 7), suggérant un positionnement contrarian ou un débottage technique sur les valeurs de croissance. À surveiller : maintien au-dessus de 310 $ et synchronisation avec la fin de la phase de peur généralisée.",
+      "id": "alert-2026-02-21-001",
+      "titre": "GOOGL : +4,01% à $314,98, rebond depuis seuil critique",
+      "texte": "Alphabet progresse de 4,01% à $314,98, signalant un rebond depuis les niveaux extrêmement déprimés observés récemment. Cette hausse intervient dans un contexte de peur massive (FNG à 8). À surveiller : consolidation au-dessus de $310 ou retour sous $300 confirmerait une reprise durable vs. un rebond technique de court terme.",
       "categorie": "marches",
-      "severite": "info",
+      "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-02-20T19:11:28.376Z",
+      "horodatage": "2026-02-21T03:07:13.219Z",
       "donnees": {
         "symbole": "GOOGL",
         "nom": "Alphabet",
-        "prix": 314.45,
-        "variation": 3.83
+        "prix": 314.98,
+        "variation": 4.01
       }
     },
     {
-      "id": "alert-2026-02-20-002",
-      "titre": "Fear & Greed Index : 7 (Extreme Fear), point bas multi-mois",
-      "texte": "L'indice plonge à 7/100 avec recul de 2 pts sur 7 jours, entrant en zone de peur extrême (<15). Ce niveau historiquement bas coïncide avec des reprises tactiques sur mega-caps (GOOGL +3,83%). Signal contrarian classique : phase de capitulation approchant son zénith. Surveiller la remontée au-delà de 15 pts pour confirmer inflexion.",
-      "categorie": "marches",
-      "severite": "attention",
-      "impact": "neutre",
-      "horodatage": "2026-02-20T19:11:28.376Z",
+      "id": "alert-2026-02-21-002",
+      "titre": "Fear & Greed Index : 8 (Extreme Fear), stabilité extrême",
+      "texte": "Le FNG demeure à 8/100 (Extreme Fear absolu) avec une variation de -1 point sur 7 jours, indiquant une peur chronique quasi-stable sans amélioration. Ce niveau reste parmi les 1% les plus bas historiques, reflétant une capitulation généralisée des investisseurs. Seuil critique : reprise au-dessus de 15 marquerait une inflexion des sentiments.",
+      "categorie": "macro",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-02-21T03:07:13.219Z",
       "donnees": {
-        "score": 7,
+        "score": 8,
         "label": "Extreme Fear",
-        "variation_7j": -2
+        "variation_7j": -1
       }
     }
   ],
   "stats": {
     "total": 2,
-    "urgent": 0,
+    "urgent": 1,
     "attention": 1,
-    "info": 1
+    "info": 0
   },
   "model": "claude-haiku-4-5-20251001"
 }
