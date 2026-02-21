@@ -150,7 +150,7 @@ button:focus-visible,
 
     /* Ã¢ÂÂÃ¢ÂÂ Layout Ã¢ÂÂÃ¢ÂÂ */
     --header-height: 60px;
-    --header-height-scrolled: 48px;
+    --header-height-scrolled: 52px;
     --content-max-width: 1240px;
     --sidebar-width: 320px;
 }
@@ -213,12 +213,11 @@ a {
 
 .header.scrolled .header-top {
     padding: 0.3rem 0;
-    height: auto;
-    min-height: var(--header-height-scrolled, 48px);
+    height: var(--header-height-scrolled, 48px);
 }
 
 .header.scrolled .logo-img {
-    height: 40px;
+    height: 45px;
 }
 
 .header.scrolled .market-status {
@@ -313,7 +312,7 @@ a {
 }
 
 .logo-img {
-    height: 60px;
+    height: 67px;
     width: auto;
     display: block;
     transition: height var(--transition-normal);
@@ -2912,7 +2911,7 @@ a {
     }
 
     .logo-img {
-        height: 48px;
+        height: 54px;
     }
 
     .page-title {
@@ -3274,7 +3273,7 @@ a {
    Market Status Indicator
    ============================================ */
 .market-status {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 0.5rem;
     font-family: var(--font-sans);
@@ -3286,6 +3285,10 @@ a {
     border-radius: 4px;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
+}
+
+body.page-markets .market-status {
+    display: flex;
 }
 
 .market-status-dot {
