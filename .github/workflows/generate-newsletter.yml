@@ -25,9 +25,10 @@ on:
       - 'scripts/lib/prompts.mjs'
       - '.github/workflows/generate-newsletter.yml'
 
-# Permissions nécessaires pour committer les fichiers
+# Permissions nécessaires pour créer une PR
 permissions:
   contents: write
+  pull-requests: write
 
 # Une seule exécution à la fois
 concurrency:
@@ -55,21 +56,25 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/generate-newsletter.mjs
 
-      - name: "📝 Commit et push"
-        run: |
-          git config user.name "Inflexion Bot"
-          git config user.email "bot@inflexionhub.com"
+      - name: "🔀 Créer une PR pour relecture"
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          commit-message: |
+            📰 Newsletter hebdomadaire — ${{ github.run_id }}
 
-          [ -f data/newsletter.json ] && git add data/newsletter.json || true
+            Synthèse automatique de la semaine via Claude.
+          title: "📰 Newsletter hebdomadaire — ${{ github.run_id }}"
+          body: |
+            ## Newsletter générée par IA
 
-          if git diff --staged --quiet; then
-            echo "Aucun changement"
-            exit 0
-          fi
+            Ce PR contient la newsletter hebdomadaire, générée automatiquement par Claude.
 
-          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
-          git commit -m "📰 Newsletter hebdomadaire — ${TIMESTAMP}
+            **Fichier modifié :**
+            - `data/newsletter.json` — synthèse de la semaine
 
-          Synthèse automatique de la semaine via Claude."
-
-          git push
+            > À relire avant merge pour publication sur GitHub Pages.
+          branch: ai/newsletter-hebdo
+          delete-branch: true
+          add-paths: |
+            data/newsletter.json

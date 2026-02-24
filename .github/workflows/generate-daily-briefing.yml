@@ -1,5 +1,5 @@
 # Inflexion — Briefing IA Quotidien Stratégique + RAG Indexation
-# Exécuté 1x/jour à 08h UTC (après fetch-data à 06h et article à 07h)
+# Déclenché automatiquement après le succès de generate-article (chaîne : fetch → article → briefing)
 #
 # Ce workflow :
 # 1. Indexe les articles du jour dans le store RAG (embeddings locaux)
@@ -14,9 +14,10 @@
 name: "🧠 Generate Daily Briefing"
 
 on:
-  schedule:
-    # Tous les jours à 08h UTC (2h après le fetch, 1h après l'article)
-    - cron: '0 8 * * *'
+  # Chaîné à generate-article (qui est lui-même chaîné à fetch-data)
+  workflow_run:
+    workflows: ["✍️ Generate Daily Article"]
+    types: [completed]
 
   # Exécution manuelle depuis l'onglet Actions (utile pour tester)
   workflow_dispatch:
@@ -45,6 +46,8 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    # Ne s'exécuter que si generate-article a réussi (ou si déclenché manuellement/push)
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: "📥 Checkout du repo"
@@ -56,9 +59,24 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'npm'
 
       - name: "📦 Install dependencies"
         run: npm ci
+
+      - name: "🔍 Vérifier la fraîcheur des données"
+        id: check-data
+        run: |
+          LAST_DATA_CHANGE=$(git log -1 --format="%ct" -- data/)
+          NOW=$(date +%s)
+          DIFF=$((NOW - LAST_DATA_CHANGE))
+          if [ $DIFF -gt 1800 ]; then
+            echo "data_changed=false" >> $GITHUB_OUTPUT
+            echo "⏭ Pas de nouvelles données (dernier commit data/ il y a ${DIFF}s)"
+          else
+            echo "data_changed=true" >> $GITHUB_OUTPUT
+            echo "✅ Données fraîches détectées (${DIFF}s)"
+          fi
 
       - name: "🔄 Cache modèle transformers.js"
         uses: actions/cache@v4
@@ -67,19 +85,27 @@ jobs:
           key: transformers-all-MiniLM-L6-v2
 
       - name: "📚 RAG — Indexation des articles du jour"
+        if: steps.check-data.outputs.data_changed == 'true'
         continue-on-error: true
         run: node scripts/rag-index.mjs --articles
 
       - name: "🧠 Génération du briefing stratégique (avec RAG)"
+        if: steps.check-data.outputs.data_changed == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/generate-daily-briefing.mjs
 
       - name: "📋 RAG — Indexation du briefing produit"
+        if: steps.check-data.outputs.data_changed == 'true'
         continue-on-error: true
         run: node scripts/rag-index.mjs --briefing
 
+      - name: "⏭ Génération ignorée — données inchangées"
+        if: steps.check-data.outputs.data_changed != 'true'
+        run: echo "Les données n'ont pas changé depuis la dernière exécution. Briefing ignoré."
+
       - name: "📝 Commit et push"
+        if: steps.check-data.outputs.data_changed == 'true'
         run: |
           git config user.name "Inflexion Bot"
           git config user.email "bot@inflexionhub.com"
