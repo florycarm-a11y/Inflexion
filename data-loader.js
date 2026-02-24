@@ -71,7 +71,9 @@ const DataLoader = (function () {
             /\bmedaille\s+d'or\b/i, /\bgold\s+medal\b/i,
             /\bpatinage\b/i, /\bice\s+danc/i, /\bskeleto/i, /\bbiathlon\b/i,
             /\bski\s+(?:alpin|fond|cross)/i, /\bsnowboard/i, /\bbobsleigh/i,
-            /\bmascotte/i, /\bmascot\b/i
+            /\bmascotte/i, /\bmascot\b/i,
+            // Instruction 9 — exclure articles purement santé/culture sans lien finance
+            /\bhoroscope\b/i
         ],
         // Patterns spécifiques à exclure par rubrique
         geopolitics: [
@@ -110,7 +112,16 @@ const DataLoader = (function () {
             /\btesla\b.*\b(?:sales?|ventes?|down|up)\b.*\b(?:uk|norway|netherlands)/i,
             /\bev\s+retreat\b/i, /\blegacy\s+ev\b/i,
             /\bactions?\s+australien/i, /\baustralian\s+stocks?\b/i,
-            /\bhuman\s+health\s+matter/i
+            /\bhuman\s+health\s+matter/i,
+            // Instruction 9 — exclure santé, culture, faits divers
+            /\balzheimer\b/i, /\bparkinson\b/i, /\bcancer\b.*\b(?:traitement|soins|patient)/i,
+            /\bh[oô]pital\b/i, /\bclinique\b/i, /\bm[eé]decin\b/i,
+            /\bvaccin\b/i, /\bpand[eé]mie\b/i, /\b[eé]pid[eé]mie\b/i,
+            /\bfait\s*divers\b/i, /\bmeurtre\b/i, /\bhomicide\b/i, /\bassassin/i,
+            /\bmus[eé]e\b/i, /\bexposition\b.*\bart\b/i, /\bcin[eé]ma\b/i,
+            /\bfestival\b(?!.*(?:film|tech|fintech))/i,
+            /\bcuisine\b/i, /\brecette\b/i, /\bgastronomie\b/i,
+            /\btourisme\b/i, /\bvacances\b/i
         ],
         crypto: [
             /\bcac\s+40\b/i, /\bbourse\b.*\brecord\b/i,
@@ -380,13 +391,15 @@ const DataLoader = (function () {
         // Construire les lignes du tableau marchés
         var rows = [];
 
-        // Ajouter les quotes US
+        // Ajouter les quotes US avec label ETF pour cohérence sidebar/briefing (INSTRUCTION 5)
+        rows.push('<div class="market-row market-row-separator"><span class="market-row-name market-section-label">March\u00e9s US <span class="etf-proxy-label">(ETF proxies)</span></span></div>');
         quotes.forEach(function(q) {
             for (var displayName in nameMap) {
                 var aliases = nameMap[displayName];
                 if (aliases.indexOf(q.name) !== -1 || aliases.indexOf(q.symbol) !== -1) {
                     var pct = formatPercent(q.change);
-                    rows.push(buildMarketRow(displayName, formatUSD(q.price), pct));
+                    var priceWithETF = formatUSD(q.price) + ' <span class="etf-ticker">' + q.symbol + '</span>';
+                    rows.push(buildMarketRow(displayName, priceWithETF, pct));
                     break;
                 }
             }
@@ -734,6 +747,15 @@ const DataLoader = (function () {
 
         var s = briefing.synthese;
 
+        // ── Signal du jour (INSTRUCTION 12) ──
+        var signalDuJourHTML = '';
+        if (briefing.signal_du_jour) {
+            signalDuJourHTML = '<div class="signal-du-jour">' +
+                '<div class="signal-du-jour-label">Signal du jour</div>' +
+                '<p class="signal-du-jour-text">' + inlineMarkdownToHTML(briefing.signal_du_jour) + '</p>' +
+            '</div>';
+        }
+
         // ── Convertir le Markdown de la synthèse en HTML ──
         var contenuHTML = markdownToHTML(s.contenu || '');
 
@@ -756,9 +778,9 @@ const DataLoader = (function () {
                         signal.interconnexions.map(function(inter) {
                             return '<div class="inter-item">' +
                                 '<span class="inter-arrow">→</span>' +
-                                '<strong>' + inter.secteur + '</strong> ' +
-                                '<span class="inter-impact">' + inter.impact + '</span>' +
-                                (inter.explication ? '<span class="inter-explication"> — ' + inter.explication + '</span>' : '') +
+                                '<strong>' + inlineMarkdownToHTML(inter.secteur) + '</strong> ' +
+                                '<span class="inter-impact">' + inlineMarkdownToHTML(inter.impact) + '</span>' +
+                                (inter.explication ? '<span class="inter-explication"> — ' + inlineMarkdownToHTML(inter.explication) + '</span>' : '') +
                             '</div>';
                         }).join('') +
                     '</div>';
@@ -777,10 +799,10 @@ const DataLoader = (function () {
                 return '<div class="signal-card ' + severiteClass + '">' +
                     '<div class="signal-header">' +
                         '<span class="signal-emoji">' + catEmoji + '</span>' +
-                        '<h4 class="signal-title">' + signal.titre + '</h4>' +
+                        '<h4 class="signal-title">' + inlineMarkdownToHTML(signal.titre) + '</h4>' +
                         '<span class="signal-severity-badge ' + severiteClass + '">' + signal.severite + '</span>' +
                     '</div>' +
-                    '<p class="signal-description">' + signal.description + '</p>' +
+                    '<p class="signal-description">' + inlineMarkdownToHTML(signal.description) + '</p>' +
                     interHTML +
                     regionsHTML +
                 '</div>';
@@ -804,13 +826,13 @@ const DataLoader = (function () {
                 return '<div class="risk-item ' + severiteClass + '">' +
                     '<div class="risk-header">' +
                         '<span class="risk-icon"></span>' +
-                        '<strong class="risk-title">' + risk.risque + '</strong>' +
+                        '<strong class="risk-title">' + inlineMarkdownToHTML(risk.risque) + '</strong>' +
                         '<span class="risk-severity-badge ' + severiteClass + '">' + risk.severite + '</span>' +
                     '</div>' +
-                    '<p class="risk-description">' + risk.description + '</p>' +
+                    '<p class="risk-description">' + inlineMarkdownToHTML(risk.description) + '</p>' +
                     '<div class="risk-meta">' +
                         '<span class="risk-proba">' + probaLabel + '</span>' +
-                        '<span class="risk-impact">Impact : ' + risk.impact_marche + '</span>' +
+                        '<span class="risk-impact">Impact : ' + inlineMarkdownToHTML(risk.impact_marche) + '</span>' +
                     '</div>' +
                 '</div>';
             }).join('');
@@ -836,20 +858,79 @@ const DataLoader = (function () {
             briefing.sentiment_global === 'baissier' ? '#dc2626' :
             briefing.sentiment_global === 'mixte' ? '#eab308' : '#94a3b8';
 
+        // ── Positionnement suggéré (INSTRUCTION 4) ──
+        var positionnementHTML = '';
+        if (briefing.positionnement && briefing.positionnement.length > 0) {
+            var posItems = briefing.positionnement.map(function(pos) {
+                var dirClass = pos.direction === 'surponderer' ? 'pos-long' :
+                    pos.direction === 'sous-ponderer' ? 'pos-short' :
+                    pos.direction === 'hedge' ? 'pos-hedge' : 'pos-neutral';
+                var dirLabel = pos.direction === 'surponderer' ? 'Surpond\u00e9rer' :
+                    pos.direction === 'sous-ponderer' ? 'Sous-pond\u00e9rer' :
+                    pos.direction === 'hedge' ? 'Hedge' : 'Neutre';
+                return '<div class="pos-item ' + dirClass + '">' +
+                    '<div class="pos-header">' +
+                        '<strong class="pos-actif">' + inlineMarkdownToHTML(pos.actif || '') + '</strong>' +
+                        '<span class="pos-direction">' + dirLabel + '</span>' +
+                        (pos.conviction ? '<span class="pos-conviction">Conviction ' + pos.conviction + '</span>' : '') +
+                    '</div>' +
+                    '<p class="pos-details">' + inlineMarkdownToHTML(pos.details || '') + '</p>' +
+                '</div>';
+            }).join('');
+            var disclaimer = briefing.positionnement_disclaimer ||
+                'Ces \u00e9l\u00e9ments sont des pistes de r\u00e9flexion et ne constituent pas un conseil en investissement.';
+            positionnementHTML = '<div class="briefing-positionnement">' +
+                '<h3 class="briefing-section-title">Positionnement sugg\u00e9r\u00e9</h3>' +
+                posItems +
+                '<p class="pos-disclaimer">' + disclaimer + '</p>' +
+            '</div>';
+        }
+
+        // ── Agenda de la semaine (INSTRUCTION 3) ──
+        var agendaHTML = '';
+        if (briefing.agenda && briefing.agenda.length > 0) {
+            var agendaItems = briefing.agenda.map(function(evt) {
+                return '<div class="agenda-item">' +
+                    '<span class="agenda-date">' + (evt.date || '') + '</span>' +
+                    '<span class="agenda-heure">' + (evt.heure || '') + '</span>' +
+                    '<span class="agenda-event">' + inlineMarkdownToHTML(evt.evenement || '') + '</span>' +
+                    '<span class="agenda-impact">' + (evt.impact_attendu || '') + '</span>' +
+                '</div>';
+            }).join('');
+            agendaHTML = '<div class="briefing-agenda">' +
+                '<h3 class="briefing-section-title">Agenda de la semaine</h3>' +
+                agendaItems +
+            '</div>';
+        }
+
+        // ── Horodatage précis (INSTRUCTION 10) ──
+        var tsInfo = formatBriefingTimestamp(briefing.generated_at);
+        var timestampHTML = '';
+        if (tsInfo.timestamp) {
+            timestampHTML = '<div class="briefing-timestamp">' +
+                '<span class="briefing-timestamp-label">Derni\u00e8re mise \u00e0 jour : ' + tsInfo.timestamp + '</span>' +
+                (tsInfo.marketStatus ? '<span class="briefing-market-status">' + tsInfo.marketStatus + '</span>' : '') +
+            '</div>';
+        }
+
         // ── Assemblage final ──
         container.innerHTML = '' +
             '<div class="article-du-jour-header">' +
-                '<div class="article-du-jour-badge briefing-badge">Briefing Stratégique</div>' +
+                '<div class="article-du-jour-badge briefing-badge">Briefing Strat\u00e9gique</div>' +
                 '<time class="article-du-jour-date">' + formatArticleDate(briefing.date) + '</time>' +
                 '<span class="briefing-sentiment-indicator" style="color:' + sentimentColor + '">' +
                     (briefing.sentiment_global || 'neutre') +
                 '</span>' +
             '</div>' +
+            timestampHTML +
+            signalDuJourHTML +
             '<h2 class="article-du-jour-title">' + s.titre + '</h2>' +
             (s.sous_titre ? '<p class="article-du-jour-subtitle">' + s.sous_titre + '</p>' : '') +
             '<div class="article-du-jour-content">' + contenuHTML + '</div>' +
             signauxHTML +
-            riskHTML;
+            riskHTML +
+            positionnementHTML +
+            agendaHTML;
     }
 
     /**
@@ -917,12 +998,72 @@ const DataLoader = (function () {
         return '<p>' + html + '</p>';
     }
 
+    /**
+     * Convertit le Markdown inline en HTML sans ajouter de balises <p>.
+     * Pour les descriptions de signaux, risques et interconnexions.
+     */
+    function inlineMarkdownToHTML(text) {
+        if (!text) return '';
+        return text
+            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.+?)\*/g, '<em>$1</em>')
+            .replace(/\n/g, '<br>');
+    }
+
     function formatArticleDate(dateStr) {
         if (!dateStr) return '';
         var d = new Date(dateStr + 'T00:00:00');
         var months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin',
                       'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
         return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+    }
+
+    /**
+     * Formate un horodatage ISO en "JJ/MM/AAAA à HHhMM CET" et détermine l'état des marchés.
+     * @param {string} isoStr - Horodatage ISO (generated_at du briefing JSON)
+     * @returns {{ timestamp: string, marketStatus: string }}
+     */
+    function formatBriefingTimestamp(isoStr) {
+        if (!isoStr) return { timestamp: '', marketStatus: '' };
+        var d = new Date(isoStr);
+        // Convertir en CET (UTC+1) / CEST (UTC+2)
+        var cetOffset = 1; // CET par défaut
+        // Détection simplifiée CEST : dernier dimanche de mars → dernier dimanche d'octobre
+        var year = d.getUTCFullYear();
+        var marchLast = new Date(Date.UTC(year, 2, 31));
+        marchLast.setUTCDate(31 - marchLast.getUTCDay());
+        var octLast = new Date(Date.UTC(year, 9, 31));
+        octLast.setUTCDate(31 - octLast.getUTCDay());
+        if (d >= marchLast && d < octLast) cetOffset = 2; // CEST
+        var cetMs = d.getTime() + cetOffset * 3600000;
+        var cet = new Date(cetMs);
+        var dd = ('0' + cet.getUTCDate()).slice(-2);
+        var mm = ('0' + (cet.getUTCMonth() + 1)).slice(-2);
+        var yyyy = cet.getUTCFullYear();
+        var hh = ('0' + cet.getUTCHours()).slice(-2);
+        var min = ('0' + cet.getUTCMinutes()).slice(-2);
+        var tzLabel = cetOffset === 2 ? 'CEST' : 'CET';
+        var timestamp = dd + '/' + mm + '/' + yyyy + ' \u00e0 ' + hh + 'h' + min + ' ' + tzLabel;
+
+        // Déterminer l'état des marchés (heure CET)
+        var cetHour = cet.getUTCHours();
+        var cetDay = cet.getUTCDay(); // 0=dim, 6=sam
+        var marketStatus = '';
+        if (cetDay === 0 || cetDay === 6) {
+            marketStatus = 'March\u00e9s ferm\u00e9s (week-end)';
+        } else if (cetHour < 9) {
+            marketStatus = 'Pr\u00e9-ouverture europ\u00e9enne';
+        } else if (cetHour >= 9 && cetHour < 15) {
+            marketStatus = 'March\u00e9s europ\u00e9ens ouverts, pr\u00e9-ouverture US';
+        } else if (cetHour >= 15 && cetHour < 17) {
+            marketStatus = 'March\u00e9s europ\u00e9ens et US ouverts';
+        } else if (cetHour >= 17 && cetHour < 22) {
+            marketStatus = 'March\u00e9s europ\u00e9ens ferm\u00e9s, US ouverts';
+        } else {
+            marketStatus = 'March\u00e9s ferm\u00e9s';
+        }
+
+        return { timestamp: timestamp, marketStatus: marketStatus };
     }
 
     // ─── Filtrage par rubrique ──────────────────────────────
@@ -1071,6 +1212,53 @@ const DataLoader = (function () {
         return Math.min(score, 100);
     }
 
+    // ─── Instruction 9 : validation de catégorie ──────────────
+    // Mots-clés minimaux pour confirmer qu'un article appartient bien à sa rubrique.
+    // Un article qui ne matche AUCUN mot-clé de sa rubrique est reclassé ou écarté.
+    var CATEGORY_KEYWORDS = {
+        matieres_premieres: /\b(?:or|gold|argent|silver|p[eé]trole|oil|brent|wti|cuivre|copper|aluminium|nickel|zinc|platine|palladium|mati[eè]res?\s+premi[eè]res?|commodit|m[eé]taux|metals?|minerai|mining|gaz\s+naturel|natural\s+gas|uranium|lithium|cobalt|bl[eé]|wheat|soja|soybean|cacao|cocoa|caf[eé]|coffee|coton|cotton|sucre|sugar|OPEC|opep|raffinerie|barrel)\b/i,
+        crypto: /\b(?:bitcoin|btc|ethereum|eth|crypto|blockchain|defi|nft|token|stablecoin|altcoin|mining|minage|binance|coinbase|solana|cardano|ripple|xrp|dogecoin|web3)\b/i,
+        geopolitique: /\b(?:g[eé]opoliti|diplomati|sanctions?|conflit|guerre|war|trait[eé]|OTAN|NATO|ONU|UE|EU|union\s+europ|s[eé]curit[eé]\s+(?:national|internation)|terroris|nucl[eé]aire|nuclear|d[eé]fense|fronti[eè]re|border|r[eé]fugi|migrat|souverainet[eé]|territorial|alliance|coalition|embargo|d[eé]stabilisa)\b/i,
+        ai_tech: /\b(?:intelligen\w+\s+artific|IA\b|AI\b|machine\s+learn|deep\s+learn|GPT|LLM|ChatGPT|Claude|neural|cybersecurit|hacker|ransomware|cloud|semiconductor|puce|chip|TSMC|Nvidia|Apple|Google|Microsoft|Meta|Amazon|startup|fintech|robotiq|automat)\b/i,
+        marches: /\b(?:bourse|stock|march[eé]|CAC|DAX|S&P|Nasdaq|indice|index|action|equity|obligation|bond|taux|rate|yield|dividende|IPO|fusion|acquisition|M&A|r[eé]sultat|b[eé]n[eé]fice|chiffre\s+d'affaires|capitalisation|banque|bank|assurance|insurance|investiss|PIB|GDP|inflation|ch[oô]mage|emploi)\b/i
+    };
+
+    /**
+     * Vérifie si un article appartient réellement à sa rubrique (Instruction 9).
+     * Reclasse ou écarte les articles dont la catégorie API est erronée.
+     * Sources connues (Tier 1-2) sont gardées telles quelles.
+     * @param {Object} article
+     * @returns {Object|null} article avec rubrique corrigée, ou null si hors-sujet
+     */
+    function validateCategory(article) {
+        var rub = article.rubrique;
+        if (!rub || rub === 'autre') return null; // Écarter "Autre"
+
+        // Les sources spécialisées Tier 1-2 sont de confiance pour leur catégorie
+        var src = (article.source || '').trim();
+        var tier = SOURCE_TIERS[src];
+        if (tier && tier <= 2) return article;
+
+        var text = ((article.title || '') + ' ' + (article.description || '')).toLowerCase();
+        var kw = CATEGORY_KEYWORDS[rub];
+
+        // Si l'article matche les mots-clés de sa rubrique, OK
+        if (kw && kw.test(text)) return article;
+
+        // Sinon, tenter de reclasser dans une autre rubrique
+        var RUBRIQUES_ORDERED = ['geopolitique', 'marches', 'crypto', 'matieres_premieres', 'ai_tech'];
+        for (var i = 0; i < RUBRIQUES_ORDERED.length; i++) {
+            var alt = RUBRIQUES_ORDERED[i];
+            if (alt !== rub && CATEGORY_KEYWORDS[alt] && CATEGORY_KEYWORDS[alt].test(text)) {
+                article.rubrique = alt;
+                return article;
+            }
+        }
+
+        // Source inconnue et aucune rubrique valide → écarter (article hors-sujet)
+        return null;
+    }
+
     /**
      * Sélectionne les meilleurs articles avec distribution équilibrée entre rubriques.
      * Objectif : 10-12 articles, 2-3 par rubrique, score qualité maximal.
@@ -1082,12 +1270,19 @@ const DataLoader = (function () {
     function curateArticles(allArticles, targetTotal) {
         targetTotal = targetTotal || 12;
 
+        // Instruction 9 : valider/reclasser la catégorie de chaque article
+        var validated = [];
+        allArticles.forEach(function(a) {
+            var v = validateCategory(a);
+            if (v) validated.push(v);
+        });
+
         // Regrouper par rubrique
         var byRubrique = {};
         var RUBRIQUES = ['geopolitique', 'marches', 'crypto', 'matieres_premieres', 'ai_tech'];
         RUBRIQUES.forEach(function(r) { byRubrique[r] = []; });
 
-        allArticles.forEach(function(a) {
+        validated.forEach(function(a) {
             var rub = a.rubrique || 'marches'; // Default
             if (!byRubrique[rub]) byRubrique[rub] = [];
             a._qualityScore = scoreArticle(a);
@@ -3006,11 +3201,13 @@ const DataLoader = (function () {
         _internals: {
             scoreArticle,
             curateArticles,
+            validateCategory,
             truncateTitle,
             isSummaryRedundant,
             isArticleRelevant,
             SOURCE_TIERS,
             IRRELEVANT_PATTERNS,
+            CATEGORY_KEYWORDS,
             _setCache: function(key, val) { _cache[key] = val; },
             _setInitialized: function(v) { _initialized = v; },
             _resetCache: function() { _cache = {}; _initialized = false; }

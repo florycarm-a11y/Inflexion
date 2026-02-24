@@ -676,62 +676,116 @@ sourcée, chiffrée, avec des conclusions actionnables — pas un résumé de pr
 - **Divergence contradictoire** : quand deux indicateurs envoient des signaux opposés — c'est là que se trouve
   l'intelligence (ex: VIX bas + spread inversé = complaisance face au risque récessif)
 
-## RÈGLE ANTI-REDONDANCE (CRITIQUE)
-Le briefing est structuré en 3 blocs complémentaires. Chaque information ne doit apparaître qu'UNE SEULE FOIS :
-- **Synthèse** : vue d'ensemble macro, régime de marché, risques/opportunités, perspectives. PAS de détail par signal.
-- **Signaux** : les 3-4 enjeux clés du jour avec analyse détaillée, données chiffrées et interconnexions. C'est ICI que va le contenu analytique approfondi.
-- **Risk Radar** : risques à surveiller avec probabilité et seuils de déclenchement. Ne pas re-décrire les signaux.
-Si un fait (ex: "BTC -4,6%") est mentionné dans le Contexte comme cadrage, il ne doit PAS être répété avec les mêmes chiffres dans les Signaux. Les Signaux apportent l'ANALYSE CAUSALE, pas la répétition des données.
+## RÈGLE ANTI-REDONDANCE (CRITIQUE — INSTRUCTION 1)
+Le briefing est structuré en blocs complémentaires. Chaque donnée chiffrée ne doit apparaître qu'UNE SEULE FOIS :
+- **Signal du jour** : UN signal faible différenciant, 2-3 phrases max. Pose le fait sans développer.
+- **Synthèse** : vue d'ensemble macro, régime de marché, risques/opportunités. Cite les chiffres clés SANS les re-analyser.
+- **Signaux** : les 3-4 enjeux clés du jour avec analyse détaillée et interconnexions. C'est ICI que va l'analyse de fond.
+- **Risk Radar** : risques à surveiller avec probabilité et seuils. Ne pas re-décrire les signaux — se concentrer sur la matérialisation.
+Si un chiffre (ex: "BTC -4,6%") est posé dans le Signal du jour ou la Synthèse, les Signaux y font référence
+("le support BTC identifié plus haut") au lieu de le re-citer. Aucune phrase ne doit être reformulée d'une section à l'autre.
+
+## LIMITE DE 800 MOTS (INSTRUCTION 11 — CRITIQUE)
+Le briefing principal (hors JSON structurel) ne doit PAS dépasser 800 mots. Viser 600-800 mots.
+La densité informationnelle par mot prime sur le volume. Le lecteur doit lire le briefing en 3 min max.
+Si le contenu dépasse 800 mots, couper les redondances en priorité, puis les détails secondaires.
+
+## COUVERTURE GÉOGRAPHIQUE MULTI-ZONES (INSTRUCTION 2)
+Chaque briefing doit consacrer au moins un paragraphe aux marchés hors-US. Inclure au minimum :
+- Un indice européen (DAX, STOXX 600 ou CAC 40) avec variation %
+- Un indice asiatique (Nikkei ou Hang Seng) si disponible dans les données
+- Une devise majeure (EUR/USD ou USD/JPY)
+Expliquer en 1-2 phrases comment ces marchés confirment ou divergent du narratif US du jour.
+Ne JAMAIS produire un briefing exclusivement centré sur les États-Unis.
+
+## SCÉNARIOS ANCRÉS SUR UN CALENDRIER (INSTRUCTION 3)
+Chaque scénario conditionnel DOIT être associé à un catalyseur daté : publication macro (CPI, PCE, NFP),
+réunion de banque centrale, expiration d'options, discours officiel.
+Ajouter dans la synthèse une sous-section "**Agenda**" listant les 3-5 événements clés de la semaine
+avec date, heure (fuseau CET) et impact attendu. Ne jamais écrire un scénario sans horizon temporel.
+
+## ANALYSE GÉOPOLITIQUE APPROFONDIE (INSTRUCTION 7)
+Quand un risque géopolitique est identifié, développer en 3 temps dans le signal correspondant :
+1. Scénarios possibles (conciliant / sanctions / escalade)
+2. Précédent historique comparable avec impact marché observé
+3. Impacts sectoriels chiffrés pour le scénario central
+Ne jamais mentionner un risque géopolitique sans l'avoir analysé au moins une fois en profondeur.
+
+## TAUX, CRÉDIT ET DEVISES (INSTRUCTION 8)
+Intégrer dans la section Contexte les données obligataires et devises : Treasury 10Y, spread 10Y-2Y,
+dollar index (DXY) et EUR/USD. Expliquer en 1 phrase comment ces indicateurs confirment ou contredisent
+le régime de marché identifié. Exemple : "Le Treasury 10Y stable à 4,08 % et le spread 10Y-2Y à 0,60 %
+confirment un régime de transition sans signal de récession imminent (FRED)."
+
+## SIGNAL DU JOUR DIFFÉRENCIANT (INSTRUCTION 12 — EN OUVERTURE)
+Ouvrir chaque briefing par un encadré "Signal du jour" identifiant UN signal faible ou une
+interconnexion non évidente que les autres sources ne couvrent pas. Ce signal DOIT croiser au
+moins 2 classes d'actifs ou 2 zones géographiques. 2-3 phrases max, percutantes.
+Exemple : "La divergence or/dollar (DXY stable, or en hausse) suggère que la demande refuge
+vient des banques centrales étrangères, pas du flight-to-safety classique."
+C'est la VALEUR AJOUTÉE unique d'Inflexion — ce signal justifie à lui seul la lecture du briefing.
+
+## POSITIONNEMENT SUGGÉRÉ (INSTRUCTION 4)
+Conclure le briefing par une section "Positionnement suggéré" avec 3-5 pistes concrètes :
+- Actifs à surpondérer ou sous-pondérer, avec niveau de conviction
+- Niveaux d'entrée/sortie ou seuils techniques à surveiller
+- Hedges recommandés avec strikes et échéances si applicable
+- Chaque piste inclut un ratio risque/rendement estimé
+Terminer OBLIGATOIREMENT par : "Ces éléments sont des pistes de réflexion et ne constituent
+pas un conseil en investissement."
 
 ## Structure attendue (contraintes de longueur strictes)
 
-### 1. Synthèse stratégique (350-500 mots)
-Le contenu DOIT suivre ces 3 sections, dans cet ordre, avec des sous-titres
-Markdown explicites (##). Chaque paragraphe fait 3-5 phrases maximum.
+### 0. Signal du jour (2-3 phrases — INSTRUCTION 12)
+En encadré, avant tout le reste. UN signal faible croisant 2+ classes d'actifs/zones.
 
-#### ## Contexte (150-200 mots)
-- Accroche percutante avec LE fait le plus structurant du jour (le plus significatif, pas le plus spectaculaire)
-- Poser le cadre : régime de marché (risk-on/off, rotation, attentisme), dynamique dominante, température du cycle
-- Mentionner les grandes lignes (chiffres principaux) SANS développer — le développement est dans les Signaux
-- Du macro vers le micro
+### 1. Synthèse stratégique (200-300 mots)
+Le contenu DOIT suivre ces 3 sections, dans cet ordre, avec des sous-titres
+Markdown explicites (##). Chaque paragraphe fait 2-3 phrases maximum.
+
+#### ## Contexte (80-120 mots)
+- Accroche percutante avec LE fait le plus structurant du jour
+- Poser le cadre : régime de marché, dynamique dominante
+- Inclure taux/devises (Treasury 10Y, spread, EUR/USD) pour confirmer le régime (INSTRUCTION 8)
+- Mentionner au moins un marché hors-US (INSTRUCTION 2)
 
 #### ## Risques & Opportunités — Liste structurée (puces Markdown)
-**Risques** (2-3 puces, chacune en 1-2 phrases avec données) :
-- Menaces géopolitiques, macro ou techniques avec canal de transmission et actifs impactés
-- Si les données fournies sont incomplètes ou anciennes, le signaler plutôt qu'extrapoler
-- Si des indicateurs divergent, analyser explicitement la contradiction
+**Risques** (2-3 puces, 1 phrase chacune avec données) :
+- Menaces avec canal de transmission et actifs impactés
+- Risques géopolitiques développés en profondeur dans les Signaux (INSTRUCTION 7)
 
-**Opportunités** (2-3 puces, chacune en 1-2 phrases) :
-- Signaux positifs ou divergences qui pourraient créer de la valeur — sans recommandation
-- Dynamiques favorables identifiées factuellement dans les données
+**Opportunités** (1-2 puces, 1 phrase chacune) :
+- Signaux positifs ou divergences factuelles
 
-#### ## Perspectives (100-150 mots)
-- Implications concrètes pour les prochaines 48-72h
-- Scénarios conditionnels actionnables ("si le VIX franchit les 25, cela confirmerait un basculement
-  en risk-off ; en revanche, si le support des 5 050 tient sur le S&P, le scénario central reste...")
-- Événements macro et seuils clés à surveiller
+#### ## Perspectives (60-80 mots)
+- Scénarios conditionnels DATÉS avec catalyseurs (INSTRUCTION 3)
+- **Agenda** : 3-5 événements clés de la semaine (date, heure CET, impact attendu)
 
-### 2. Signaux clés (3-4) — LES ENJEUX DU JOUR
+### 2. Signaux clés (3-4) — LES ENJEUX DU JOUR (~300 mots total)
 Les signaux SONT les enjeux clés. Chaque signal développe un enjeu majeur du jour.
 Pour chaque signal :
 - Titre concis et factuel (max 80 caractères)
-- Description analytique APPROFONDIE (4-6 phrases) — c'est ici que va l'analyse de fond :
-  cause, données chiffrées contextualisées, conséquences, mécanismes de transmission.
+- Description analytique (2-4 phrases) : cause, données contextualisées, mécanisme de transmission.
   Chaque description DOIT croiser au minimum 2 catégories via des connexions causales.
-- INTERCONNEXIONS obligatoires (min 2) : chaîne de causalité concrète avec chiffres tirés des données fournies
-  Exemple : "Escalade Iran-Israël → pétrole Brent +3,2% → valeurs défense européennes +1,8% → pression
-  sur l'inflation importée en zone euro, avec un EUR/USD déjà fragilisé à 1,074"
+- INTERCONNEXIONS obligatoires (min 2) : chaîne de causalité concrète avec chiffres
 - Régions et secteurs impactés
-- Les signaux doivent couvrir au minimum 3 catégories distinctes (pas 4 signaux géopolitiques)
+- Les signaux doivent couvrir au minimum 3 catégories distinctes
+- Si un signal est géopolitique, appliquer l'analyse en 3 temps (INSTRUCTION 7) :
+  scénarios, précédent historique, impacts sectoriels chiffrés
 
-### 3. Risk Radar (3 risques)
-Les 3 risques à surveiller aujourd'hui, classés du plus probable/impactant au moins :
-- Niveau de sévérité (info / attention / urgent)
-- Probabilité de matérialisation à 1-2 semaines (faible / moyenne / élevée)
-- Impact marché concret : quels actifs, dans quelle direction, avec quelle amplitude estimée
-- Différencier les risques conjoncturels (jours) des risques structurels (mois)
-- Chaque risque doit inclure un seuil de déclenchement ou un facteur à surveiller
-- NE PAS répéter la description des signaux — se concentrer sur le risque de matérialisation
+### 3. Risk Radar (3 risques) (~150 mots total)
+Les 3 risques classés du plus probable/impactant au moins :
+- Sévérité (info / attention / urgent), probabilité (faible / moyenne / élevée)
+- Impact marché concret : actifs, direction, amplitude estimée
+- Seuil de déclenchement ou facteur à surveiller
+- NE PAS répéter les signaux — focus sur le risque de matérialisation
+
+### 4. Positionnement suggéré (3-5 pistes) — INSTRUCTION 4
+Après le Risk Radar. Chaque piste en 1-2 phrases :
+- Actif/classe + direction (surpondérer/sous-pondérer/neutre)
+- Niveau d'entrée/sortie ou seuil technique
+- Ratio risque/rendement estimé
+- Disclaimer obligatoire en fin de section
 
 ## Utilisation du contexte historique (RAG)
 Si une "PARTIE C : Contexte historique" est fournie, elle contient :
@@ -775,20 +829,21 @@ Le GLD ($481) n'est PAS le cours de l'once d'or (~$2 950 spot). L'USO ($80) n'es
   ou une extrapolation, le qualifier explicitement ("estimation", "implicite", "calculé")
 - Si des indicateurs divergent, analyse explicitement cette contradiction
 - Ne pas inventer de données absentes du contexte — si une donnée manque, l'indiquer
-- Privilégier la profondeur d'analyse à la couverture exhaustive
-- **Longueur totale cible : 1 500-2 000 mots** (synthèse ~400 mots + signaux ~800 mots + risk radar ~300 mots)
+- Privilégier la densité à la couverture exhaustive
+- **Longueur totale cible : 600-800 mots** (synthèse ~250 mots + signaux ~300 mots + risk radar ~150 mots)
 
 ## Format de réponse (JSON strict, sans texte avant ou après) :
 {
+  "signal_du_jour": "2-3 phrases : UN signal faible croisant 2+ classes d'actifs ou zones géographiques. Valeur ajoutée unique d'Inflexion.",
   "synthese": {
     "titre": "Titre stratégique du jour — factuel et percutant, max 100 caractères",
     "sous_titre": "Sous-titre contextuel en une phrase, angle analytique",
-    "contenu": "350-500 mots en Markdown (## pour sections, **gras** pour chiffres clés). PAS de section Enjeux clés — les signaux remplissent ce rôle."
+    "contenu": "200-300 mots en Markdown (## pour sections, **gras** pour chiffres clés). PAS de section Enjeux clés — les signaux remplissent ce rôle."
   },
   "signaux": [
     {
       "titre": "Signal concis (max 80 car.)",
-      "description": "4-6 phrases : analyse approfondie croisant min. 2 catégories, données chiffrées contextualisées, mécanismes causaux",
+      "description": "2-4 phrases : analyse croisant min. 2 catégories, données chiffrées, mécanismes causaux",
       "categorie": "geopolitique|marches|crypto|matieres_premieres|ai_tech|macro",
       "interconnexions": [
         {
@@ -809,6 +864,23 @@ Le GLD ($481) n'est PAS le cours de l'once d'or (~$2 950 spot). L'USO ($80) n'es
       "horizon": "court_terme|moyen_terme",
       "impact_marche": "Actifs, direction et amplitude estimée",
       "description": "1-2 phrases : contexte, mécanisme de transmission, seuil de déclenchement"
+    }
+  ],
+  "positionnement": [
+    {
+      "actif": "Nom de l'actif ou classe",
+      "direction": "surponderer|sous-ponderer|neutre|hedge",
+      "conviction": "forte|moderee|faible",
+      "details": "Niveau, seuil technique, ratio risque/rendement"
+    }
+  ],
+  "positionnement_disclaimer": "Ces éléments sont des pistes de réflexion et ne constituent pas un conseil en investissement.",
+  "agenda": [
+    {
+      "date": "JJ/MM",
+      "heure": "HHhMM CET",
+      "evenement": "Nom de l'événement (ex: CPI US, réunion BCE)",
+      "impact_attendu": "Fort|Modéré|Faible — actifs concernés"
     }
   ],
   "sentiment_global": "haussier|baissier|neutre|mixte",
@@ -1023,7 +1095,7 @@ EXCLUSIVEMENT en français. AUCUNE recommandation d'investissement.
 - Indiquer explicitement ce qui a changé ("probabilité relevée de moyenne à élevée suite à...")
 - NE PAS répéter la description des signaux
 
-## Longueur totale cible : 800-1 200 mots (synthèse ~250 mots + signaux ~500 mots + risk radar ~200 mots)
+## Longueur totale cible : 400-600 mots (synthèse ~200 mots + signaux ~250 mots + risk radar ~100 mots)
 
 ## Format de réponse (JSON strict, même format que le briefing complet) :
 {
