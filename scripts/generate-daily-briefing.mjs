@@ -42,8 +42,8 @@ const DRY_RUN = process.argv.includes('--dry-run');
 // Cycle hebdomadaire : Sonnet le lundi (briefing complet), Haiku les autres jours (delta)
 const FULL_MODEL = 'claude-sonnet-4-5-20250929';
 const DELTA_MODEL = 'claude-haiku-4-5-20251001';
-const FULL_MAX_TOKENS = 8500;
-const DELTA_MAX_TOKENS = 4000;
+const FULL_MAX_TOKENS = 5000;
+const DELTA_MAX_TOKENS = 3000;
 
 /**
  * Détermine si aujourd'hui est un jour de briefing complet (lundi) ou delta.
@@ -261,13 +261,40 @@ function formatNewsContext(articles) {
  * @param {Object} data - Contenu de markets.json
  * @returns {string|null} Section markdown ou null si données absentes
  */
-function formatMarkets(data) {
+function formatMarkets(data, commoditiesData) {
     if (!data?.quotes?.length) return null;
-    const lines = ['## 📊 Indices boursiers (Finnhub)'];
+    // IMPORTANT : Finnhub retourne des ETF proxies (SPY, QQQ, DIA, GLD, USO),
+    // pas les indices eux-mêmes. Le prix est celui de l'ETF en $, pas le niveau
+    // de l'indice en points. On le signale explicitement pour que Claude ne
+    // confonde pas "$682 SPY" avec "5 200 pts S&P 500".
+
+    // Récupérer les prix spot des commodités si disponibles (metals.dev)
+    const spotGold = commoditiesData?.metals?.gold?.price_usd;
+    const spotSilver = commoditiesData?.metals?.silver?.price_usd;
+
+    const lines = ['## 📊 Marchés (Finnhub — ETF proxies, seules les variations % sont exploitables)'];
     for (const q of data.quotes) {
         const sign = q.change > 0 ? '+' : '';
-        lines.push(`- **${q.name}** (${q.symbol}): $${q.price} (${sign}${q.change.toFixed(2)}%)`);
+        const pctStr = `${sign}${q.change.toFixed(2)}%`;
+
+        if (q.symbol === 'GLD') {
+            const spotInfo = spotGold ? ` | spot or : $${Math.round(spotGold)}/oz (metals.dev)` : '';
+            lines.push(`- **Or** — ETF GLD: $${q.price} (${pctStr})${spotInfo}`);
+            if (!spotGold) {
+                lines.push(`  ⚠ Pas de prix spot disponible — utiliser UNIQUEMENT la variation (${pctStr})`);
+            }
+        } else if (q.symbol === 'USO') {
+            lines.push(`- **Pétrole** — ETF USO: $${q.price} (${pctStr}) — PAS le prix du baril`);
+            lines.push(`  ⚠ USO est un ETF structuré, son prix ($${q.price}) ≠ cours du Brent/WTI. Utiliser UNIQUEMENT la variation (${pctStr})`);
+        } else {
+            lines.push(`- **${q.name}** — ETF ${q.symbol}: $${q.price} (${pctStr})`);
+        }
     }
+    lines.push('');
+    lines.push('> RÈGLE : les prix ci-dessus sont des ETF. Dans le briefing :');
+    lines.push('>  - Indices (SPY/QQQ/DIA) → écrire "S&P 500", "Nasdaq 100", "Dow Jones" + variation %');
+    lines.push('>  - Or (GLD) → écrire "l\'or" + variation % ou prix spot si fourni ci-dessus. JAMAIS $481 comme prix de l\'once');
+    lines.push('>  - Pétrole (USO) → écrire "le pétrole" + variation %. JAMAIS $80 comme prix du baril');
     return lines.join('\n');
 }
 
@@ -564,7 +591,7 @@ async function main() {
 
     // Données de marché (les PREUVES chiffrées pour les interconnexions)
     const marketSections = [
-        formatMarkets(sources.markets),
+        formatMarkets(sources.markets, sources.commodities),
         formatEuropeanMarkets(sources.europeanMarkets),
         formatCrypto(sources.crypto),
         formatFearGreed(sources.fearGreed),
@@ -678,16 +705,19 @@ async function main() {
         ? `Produis le briefing stratégique quotidien en respectant ces priorités :
 1. **Identifier le fait le plus structurant** du jour (pas le plus spectaculaire — le plus significatif pour un investisseur)
 2. **Croiser les actualités (partie A) avec les données chiffrées (partie B)** pour établir des chaînes de causalité concrètes
-3. **Chaque interconnexion doit citer des chiffres** tirés de la partie B comme preuves factuelles
-4. **Signaler les divergences** si des indicateurs envoient des signaux contradictoires
-5. **Ne pas inventer de données** absentes des parties A et B — si une information manque, le mentionner${ragContext ? '\n6. **Exploiter le contexte historique (partie C)** pour la continuité narrative : signaler les évolutions par rapport aux briefings précédents, identifier les tendances qui se confirment ou s\'inversent' : ''}`
+3. **ANTI-REDONDANCE** : la synthèse pose le cadre macro (Contexte + Risques/Opportunités + Perspectives), les signaux portent l'analyse détaillée. Ne pas répéter les mêmes données dans les deux.
+4. **Chaque interconnexion doit citer des chiffres** tirés de la partie B comme preuves factuelles
+5. **Signaler les divergences** si des indicateurs envoient des signaux contradictoires
+6. **Ne pas inventer de données** absentes des parties A et B — si une information manque, le mentionner
+7. **Viser 1 500-2 000 mots au total** (synthèse ~400 mots + signaux ~800 mots + risk radar ~300 mots)${ragContext ? '\n8. **Exploiter le contexte historique (partie C)** pour la continuité narrative : signaler les évolutions par rapport aux briefings précédents, identifier les tendances qui se confirment ou s\'inversent' : ''}`
         : `Produis la MISE À JOUR du briefing en respectant ces priorités :
 1. **Comparer avec le briefing de la veille (partie D)** — qu'est-ce qui a changé ?
 2. **Ne pas répéter** les analyses déjà faites hier — se concentrer sur le NOUVEAU
-3. **Chiffrer les évolutions** vs la veille ("le VIX est passé de X à Y", "le BTC a gagné/perdu X%")
-4. **Signaler les signaux confirmés ou inversés** par rapport à hier
+3. **ANTI-REDONDANCE** : la synthèse cadre les évolutions, les signaux analysent en détail. Pas de duplication.
+4. **Chiffrer les évolutions** vs la veille ("le VIX est passé de X à Y", "le BTC a gagné/perdu X%")
 5. **Mettre à jour le risk radar** — probabilités et sévérités évoluent-elles ?
-6. **Ne pas inventer de données** absentes des parties A, B et D`;
+6. **Ne pas inventer de données** absentes des parties A, B et D
+7. **Viser 800-1 200 mots au total**`;
 
     const userMessage = `# ${useFullMode ? 'Briefing stratégique' : 'Mise à jour quotidienne'} Inflexion — ${today()}
 

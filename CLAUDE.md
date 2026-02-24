@@ -604,5 +604,76 @@ python scripts/check-french.py
 - `expertise.html` : overlay titre "Navigation" + accents francais retablis
 - `CLAUDE.md` : documentation session
 
+### Session 2026-02-24 — Reduction redondance briefing strategique (~50% tokens)
+
+**Contexte :** Le briefing strategique quotidien contenait une redondance structurelle majeure : la section "Enjeux cles" dans `synthese.contenu` (3 points × ~100 mots) repetait les memes themes et donnees que le tableau `signaux[]` (3-5 signaux structures avec interconnexions). Le Risk Radar reprenait egalement les memes sujets. Resultat : ~4 000 mots avec triple repetition des memes informations (crypto capitulation, rotation defensive, tensions geopolitiques traitees 3 fois avec des chiffres quasi identiques). Un briefing strategique efficace doit viser 1 500-2 000 mots pour rester un outil de decision rapide.
+
+**Solution : fusion "Enjeux cles" dans les Signaux structures**
+
+La section "## Enjeux cles" est supprimee de `synthese.contenu`. Les signaux deviennent les enjeux cles du jour — ils portent deja l'analyse detaillee, les interconnexions et les donnees chiffrees. Chaque information n'apparait desormais qu'UNE SEULE FOIS dans le briefing.
+
+**Nouvelle architecture editoriale (3 blocs complementaires) :**
+
+| Bloc | Role | Longueur |
+|------|------|----------|
+| **Synthese** (Contexte + Risques/Opportunites + Perspectives) | Vue d'ensemble macro, regime de marche, cadrage | 350-500 mots |
+| **Signaux** (3-4 enjeux cles structures) | Analyse approfondie par enjeu, interconnexions, donnees chiffrees | ~800 mots |
+| **Risk Radar** (3 risques) | Probabilite, seuils de declenchement, impact marche | ~300 mots |
+| **Total** | | **1 500-2 000 mots** (vs ~4 000 avant) |
+
+**Regle anti-redondance ajoutee aux prompts :**
+- Chaque fait (ex: "BTC -4,6%") est mentionne une seule fois
+- La synthese pose le cadre SANS developper — le developpement est dans les Signaux
+- Le Risk Radar se concentre sur les risques de materialisation, sans re-decrire les signaux
+
+**Economies realisees :**
+- `FULL_MAX_TOKENS` : 8 500 → 5 000 (reduction 41%)
+- `DELTA_MAX_TOKENS` : 4 000 → 3 000 (reduction 25%)
+- Longueur briefing complet : ~4 000 → ~1 750 mots (reduction ~56%)
+- Longueur briefing delta : ~1 500 → ~1 000 mots (reduction ~33%)
+- Estimation mensuelle : ~510K → ~280K tokens/mois (reduction ~45%)
+
+**Fichiers modifies :**
+- `scripts/lib/prompts.mjs` : refonte DAILY_BRIEFING_SYSTEM_PROMPT (suppression "## Enjeux cles", ajout regle anti-redondance, signaux enrichis 4-6 phrases, longueur cible 1 500-2 000 mots, attribution obligatoire des sources) + refonte DAILY_BRIEFING_DELTA_SYSTEM_PROMPT (suppression "## Signaux confirmes ou inverses", longueur cible 800-1 200 mots, sourcing)
+- `scripts/generate-daily-briefing.mjs` : FULL_MAX_TOKENS 8500→5000, DELTA_MAX_TOKENS 4000→3000, consignes mises a jour avec regle anti-redondance et cibles de longueur
+- `scripts/fetch-data.mjs` : Le Figaro Conjoncture restreint a markets uniquement (etait markets+commodities), isRelevantForCategory utilise desormais \b (word boundary) pour les mots-cles courts (<=4 car.) au lieu de substring matching
+- `data-loader.js` : titre section "Signaux cles du jour" → "Enjeux cles du jour" (reflete le nouveau role)
+- `CLAUDE.md` : documentation session
+
+### Sourcing obligatoire dans les prompts
+
+**Contexte :** Le briefing presentait des donnees chiffrees sans attribution claire de leur source. Les correlations et flux estimes etaient presentes comme des faits, sans qualification. Un lecteur institutionnel a besoin de tracer chaque donnee vers sa source.
+
+**Regles ajoutees aux prompts (DAILY_BRIEFING_SYSTEM_PROMPT + delta) :**
+- Chaque donnee chiffree porte une attribution entre parentheses : "BTC a 63 099 $ (CoinGecko, 24h: -4,6%)"
+- Sources API identifiees : CoinGecko, Finnhub, FRED, ECB Data, metals.dev, DefiLlama, Alpha Vantage
+- Sources presse attribuees : "selon Al-Monitor", "(Reuters rapporte que...)"
+- Correlations et estimations internes qualifiees de "estimation Inflexion" ou "correlation calculee sur X jours"
+- Regle de tracabilite dans les interconnexions : chiffres issus des donnees API, estimations explicitement qualifiees
+
+### Fix classification RSS (articles hors-sujet)
+
+**Probleme :** Des articles sans rapport avec la finance (Alzheimer, faits divers) apparaissaient dans la rubrique "Matieres Premieres". Deux causes identifiees :
+
+1. **Le Figaro Conjoncture** etait en dual-category `['markets', 'commodities']` alors que c'est un flux macro/conjoncture economique, pas un flux matieres premieres. Les articles de conjoncture passaient le filtre commodities grace aux faux positifs de mots-cles.
+
+2. **Faux positifs de mots-cles courts** : `isRelevantForCategory()` utilisait `text.includes(kw)` (substring matching). Le mot-cle `'or'` (= gold) matchait "Chamfort", "encore", "or" au sens de "however". Idem pour `'mine'`, `'blé'`, etc. Un article "Alain Chamfort... Alzheimer" passait le filtre commodities a cause de "Chamf**or**t".
+
+**Corrections :**
+- `Le Figaro Conjoncture` : `cats: ['markets', 'commodities']` → `cats: ['markets']`
+- `isRelevantForCategory()` : pour les mots-cles <=4 caracteres, utilisation de `\b` (regex word boundary) au lieu de `includes()`. Ainsi `\bor\b` matche "l'or monte" mais pas "Chamfort" ni "encore".
+
+### Fix nomenclature ETF vs indices
+
+**Probleme :** Finnhub retourne les prix d'ETF proxies (SPY $682, QQQ $601, DIA $488, GLD $481, USO $80) et non les niveaux d'indices en points (S&P 500 ~5 200 pts). Le script `formatMarkets` presentait ces donnees comme "S&P 500 (SPY): $682.39", et Claude les interpretait comme des niveaux d'indice. Resultat : "S&P sous 5 050 pts (soit -2% vs 682,39 $ SPY)" — un melange confus.
+
+**Corrections :**
+- `formatMarkets()` dans `generate-daily-briefing.mjs` : clarification que ce sont des ETF proxies (titre, labels, note explicite). Les variations % restent fiables car identiques entre ETF et indice.
+- Nouvelle section "Nomenclature indices vs ETF" dans `DAILY_BRIEFING_SYSTEM_PROMPT` : regle stricte de ne jamais citer un prix ETF en $ comme un niveau d'indice en points. Utiliser les noms d'indices + variations % uniquement.
+
+**Fichiers modifies :**
+- `scripts/generate-daily-briefing.mjs` : refonte `formatMarkets()` avec labels ETF et note explicative
+- `scripts/lib/prompts.mjs` : +section "Nomenclature indices vs ETF" dans DAILY_BRIEFING_SYSTEM_PROMPT
+
 **PR #22** : Setup initial RSS feeds
 - Ajout premiers flux RSS (Le Figaro, TLDR, Les Echos, BFM, CoinTelegraph, etc.)

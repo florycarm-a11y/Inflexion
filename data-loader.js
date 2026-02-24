@@ -787,7 +787,7 @@ const DataLoader = (function () {
             }).join('');
 
             signauxHTML = '<div class="briefing-signaux">' +
-                '<h3 class="briefing-section-title">Signaux clés du jour</h3>' +
+                '<h3 class="briefing-section-title">Enjeux clés du jour</h3>' +
                 signauxCards +
             '</div>';
         }
