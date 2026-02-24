@@ -1,80 +1,64 @@
 {
-  "updated": "2026-02-24T12:46:34.570Z",
+  "updated": "2026-02-24T18:51:04.317Z",
   "alertes": [
     {
       "id": "alert-2026-02-24-001",
-      "titre": "Bitcoin : chute sous 63 000 $, capitulation totale du marché crypto",
-      "texte": "Bitcoin oscille sous 63 000 $ avec liquidations massives. Fear & Greed Index à 8/100 (peur extrême). Seul contrepoids : accumulation de 400 000 BTC entre 60-70 k$ par investisseurs institutionnels.",
+      "titre": "ETH : plonge sous 2 000 $ vers 1 500 $, baisse significative (24 février)",
+      "texte": "Ethereum enregistre une chute majeure, franchissant le seuil de 2 000 $ à la baisse avec trajectoire vers 1 500 $. Mouvement intervient dans contexte d'affaiblissement des signaux de marché crypto.",
       "categorie": "crypto",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-02-24T12:46:34.570Z",
+      "horodatage": "2026-02-24T18:51:04.317Z",
       "donnees": {
-        "symbole": "DOGE",
-        "nom": "Dogecoin",
-        "prix": 0.09128,
-        "variation_24h": -5.51
+        "symbole": "AAPL",
+        "nom": "Apple",
+        "prix": 272.18,
+        "variation": 2.25
       }
     },
     {
       "id": "alert-2026-02-24-002",
-      "titre": "Dogecoin (DOGE) : -5,51% en 24h, pression généralisée sur altcoins",
-      "texte": "DOGE recule à 0,091 $ (-5,51% en 24h). Cardano (ADA) également en baisse de -5,04% à 0,257 $. Contexte de peur extrême sur l'ensemble du marché crypto.",
+      "titre": "BTC : volatilité accrue, oscillation 60 000-64 000 $ avec signaux d'affaiblissement",
+      "texte": "Bitcoin rebondit à 64 000 $ puis glisse à nouveau sous ce niveau. Les signaux du marché s'affaiblissent, traders surveillent les niveaux de support critiques. Contexte de débâcle logiciels IA.",
       "categorie": "crypto",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-24T12:46:34.570Z",
+      "horodatage": "2026-02-24T18:51:04.317Z",
       "donnees": {
-        "symbole": "ADA",
-        "nom": "Cardano",
-        "prix": 0.257489,
-        "variation_24h": -5.04
+        "score": 8,
+        "label": "Extreme Fear",
+        "variation_7j": -2
       }
     },
     {
       "id": "alert-2026-02-24-003",
-      "titre": "Microsoft (MSFT) : -3,21% à 384,47 $, tech sous pression",
-      "texte": "MSFT recule de 3,21% à 384,47 $. Tesla (TSLA) également en baisse de 2,91% à 399,83 $. Volatilité accrue sur les valeurs technologiques malgré accord Meta-AMD.",
+      "titre": "Fear & Greed Index : 8/100 (Extreme Fear), signal de panique extrême",
+      "texte": "L'indice Fear & Greed atteint 8, indiquant une peur extrême sur les marchés. Niveau historiquement bas reflétant la capitulation des investisseurs et conditions de marché hautement volatiles.",
       "categorie": "marches",
-      "severite": "attention",
+      "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-02-24T12:46:34.570Z",
-      "donnees": {
-        "symbole": "GLD",
-        "nom": "Or (ETF)",
-        "prix": 481.28,
-        "variation": 2.7
-      }
+      "horodatage": "2026-02-24T18:51:04.317Z",
+      "donnees": {}
     },
     {
       "id": "alert-2026-02-24-004",
-      "titre": "Or (GLD) : +2,70% à 481,28 $, refuge face aux tensions géopolitiques",
-      "texte": "Or en hausse de 2,70% à 481,28 $. Mouvement de fuite vers actifs refuge en contexte de tensions géopolitiques multiples (Ukraine, Moyen-Orient) et peur extrême sur crypto.",
-      "categorie": "matieres_premieres",
+      "titre": "AAPL : +2,25% à 272,18 $, divergence haussière en contexte de panique",
+      "texte": "Apple gagne 2,25% à 272,18 $ malgré l'indice Fear & Greed extrême, suggérant une recherche de refuge dans les valeurs défensives de qualité. Mouvement contredit la tendance générale baissière.",
+      "categorie": "marches",
       "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-02-24T12:46:34.570Z",
-      "donnees": {
-        "symbole": "MSFT",
-        "nom": "Microsoft",
-        "prix": 384.47,
-        "variation": -3.21
-      }
+      "horodatage": "2026-02-24T18:51:04.317Z",
+      "donnees": {}
     },
     {
       "id": "alert-2026-02-24-005",
-      "titre": "Step Finance : plateforme fermée après piratage de 40 M$ en janvier",
-      "texte": "Step Finance cesse ses opérations suite à exploit de 40 M$ en janvier 2026. Deuxième incident majeur en crypto après liquidations massives, renforçant la peur extrême (Fear & Greed Index 8).",
-      "categorie": "crypto",
-      "severite": "urgent",
+      "titre": "Valeurs financières : pire début d'année en une décennie",
+      "texte": "Le secteur financier enregistre sa pire performance en début d'année depuis 2016. Contexte de volatilité macro et incertitudes réglementaires impactent les valorisations bancaires.",
+      "categorie": "marches",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-24T12:46:34.570Z",
-      "donnees": {
-        "symbole": "TSLA",
-        "nom": "Tesla",
-        "prix": 399.83,
-        "variation": -2.91
-      }
+      "horodatage": "2026-02-24T18:51:04.317Z",
+      "donnees": {}
     }
   ],
   "stats": {

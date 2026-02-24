@@ -1,65 +1,65 @@
 {
-  "updated": "2026-02-24T12:46:34.569Z",
+  "updated": "2026-02-24T18:51:04.317Z",
   "date": "2026-02-24",
   "global": {
-    "score": -0.17,
+    "score": -0.2,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (-0.17), dominé par la rubrique crypto (baissier)."
+    "resume": "Le sentiment global est mixte (-0.2), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
       "score": -0.55,
-      "confidence": 0.75,
+      "confidence": 0.82,
       "tendance": "baissier",
-      "resume": "Tensions géopolitiques multiples : conflit ukrainien à 4 ans, risques de confrontation Iran-États-Unis, instabilité au Moyen-Orient avec avertissements israéliens au Liban, et inquiétudes européennes sur la défense. Contexte d'incertitude accrue pour les marchés.",
+      "resume": "Tensions géopolitiques multiples : saisies de pétroliers iraniens, escalade militaire en Ukraine entrée en cinquième année, exercices iraniens au Golfe, et débats sur l'IA militaire. Les dépenses de défense européennes augmentent à 21% du total mondial.",
       "signaux_cles": [
-        "Ukraine : 4 ans de guerre, mobilisation continue des brigades",
-        "Moyen-Orient : Israël avertit le Liban de frappes si implication du Hezbollah",
-        "Europe : rapport sur déficits majeurs de défense, dirigeants européens mobilisés"
+        "Saisie d'un troisième pétrolier sanctionné dans l'océan Indien par les forces américaines",
+        "Ukraine : guerre entrée en cinquième année avec demandes d'échange de prisonniers refusées",
+        "Europe : dépenses de défense à 21% du total mondial, menées par l'Allemagne"
       ]
     },
     "marches": {
-      "score": 0.15,
-      "confidence": 0.62,
+      "score": -0.35,
+      "confidence": 0.75,
       "tendance": "mixte",
-      "resume": "Résultats d'entreprises mitigés : déceptions (Iovance, baisse d'objectifs), mais aussi surperformances (Home Depot, Keurig Dr Pepper, Constellation Energy). Accord Meta-AMD soutient le secteur tech. Inquiétudes sur perspectives IA dystopiques et risque Trump sur l'économie.",
+      "resume": "Signaux contradictoires : croissance projetée chez Fidelity National (+30%), Xometry (+21%), mais chute de 60% du bénéfice de Bic en 2025. Secteur financier en difficulté avec pire début d'année en décennie. Incertitudes commerciales USA-UE persistent.",
       "signaux_cles": [
-        "Home Depot : croissance des ventes surprise, action en hausse",
-        "Constellation Energy : EPS 2,30$ (+0,05$), chiffre d'affaires 6,07 Md$ (+470 M$)",
-        "Meta-AMD : accord de puces de plusieurs milliards de dollars conclu"
+        "Fidelity National projette +30% de croissance en 2026 via investissements IA et innovation bancaire",
+        "Bic : bénéfice chute de 60% en 2025, année qualifiée de difficile",
+        "Valeurs financières connaissent leur pire début d'année en une décennie"
       ]
     },
     "crypto": {
-      "score": -0.72,
-      "confidence": 0.88,
+      "score": -0.42,
+      "confidence": 0.78,
       "tendance": "baissier",
-      "resume": "Marché crypto en capitulation totale : Bitcoin chute sous 63 000 $, Fear & Greed Index à 8 (peur extrême). Piratages majeurs (Step Finance 40 M$), liquidations massives, ventes d'ETF Bitcoin. Seul signal haussier : 400 000 BTC accumulés entre 60-70 k$.",
+      "resume": "Volatilité accrue : ETH plonge sous 2 000 $ vers 1 500 $, BTC oscille entre 60 000 et 64 000 $ avec affaiblissement des signaux de marché. Cependant, approbations réglementaires positives (SEC pour WisdomTree, Stripe à 159 Mds $) et expansion des marchés de prédiction (3 Mds $ annualisés).",
       "signaux_cles": [
-        "Bitcoin : chute sous 63 000 $, oscillations près de cette zone critique",
-        "Fear & Greed Index : 8/100 (peur extrême), liquidations en cascade",
-        "Accumulation : 400 000 BTC achetés entre 60-70 k$ lors de la baisse"
+        "ETH plonge sous 2 000 $ et file vers 1 500 $ (24 février 2026)",
+        "BTC oscille : reprend 64 000 $ puis glisse sous ce niveau avec signaux d'affaiblissement",
+        "WisdomTree obtient approbation SEC pour règlement instantané et échanges 24h/24 de fonds monétaires tokenisés"
       ]
     },
     "matieres_premieres": {
-      "score": 0.35,
-      "confidence": 0.68,
+      "score": 0.28,
+      "confidence": 0.72,
       "tendance": "neutre",
-      "resume": "Secteur énergétique stable avec investissements majeurs : Enel 63 Md$, TotalEnergies GNL vers Ukraine, Eni projets gaziers. Transports maritimes en rebond (Baltic Dry à 3 semaines de haut). Inquiétudes sur surproduction GNL et dépendance pétrolière de l'Inde (89%).",
+      "resume": "Dynamiques mixtes : gaz naturel sous pression (brûlages en baisse, catalyseurs haussiers insaisissables), mais projets d'expansion majeurs (Permian, pipeline Koweït 7 Mds $). Boom nucléaire lié à l'IA. Nigeria augmente production pétrolière.",
       "signaux_cles": [
-        "Enel : plan d'investissement 63 Md$ Europe-États-Unis",
-        "Baltic Dry Index : plus haut de 3 semaines",
-        "Inde : dépendance aux importations pétrolières à 89%, production stagnante"
+        "Koweït prépare accord pipeline pétrolier de 7 milliards de dollars",
+        "Ero Copper : projet Furnas avec durée de vie 24 ans et VAN de 2 milliards de dollars",
+        "Boom de l'IA alimente renaissance nucléaire ; bus électriques représentent 56% du marché UE en 2025"
       ]
     },
     "ai_tech": {
-      "score": 0.22,
-      "confidence": 0.58,
+      "score": 0.15,
+      "confidence": 0.68,
       "tendance": "mixte",
-      "resume": "Secteur tech fragmenté : innovations spatiales (LambdaVision, Sophia Space 10 M$), investissements IA (Intel-SambaNova 350 M$), mais préoccupations sécurité (piratages Odido, Lazarus). Articles catastrophistes sur IA deviennent viraux, créant volatilité d'opinion.",
+      "resume": "Progrès technologiques contrastés : innovations positives (Microsoft Copilot, AMD-Meta accord 6GW, ProducerAI chez Google) mais préoccupations sécurité (Lazarus, CarGurus 12,4M comptes). COO OpenAI reconnaît que l'IA n'a pas encore pénétré les processus métier des entreprises.",
       "signaux_cles": [
-        "Intel-SambaNova : offre 350 M$ pour défier GPU en inférence IA",
-        "Sophia Space : levée 10 M$ financement d'amorçage",
-        "Sécurité : gang ShinyHunters revendique violation Odido, millions d'utilisateurs affectés"
+        "COO OpenAI : l'IA n'a pas encore vraiment pénétré les processus métier des entreprises",
+        "AMD reproduit accord OpenAI pour Meta : 6 gigawatts et 10% de participation",
+        "Fuite CarGurus expose 12,4 millions de comptes ; groupe Lazarus cible organisations santé"
       ]
     }
   },
@@ -156,12 +156,12 @@
     },
     {
       "date": "2026-02-24",
-      "global": -0.17,
+      "global": -0.2,
       "geopolitique": -0.55,
-      "marches": 0.15,
-      "crypto": -0.72,
-      "matieres_premieres": 0.35,
-      "ai_tech": 0.22
+      "marches": -0.35,
+      "crypto": -0.42,
+      "matieres_premieres": 0.28,
+      "ai_tech": 0.15
     }
   ],
   "model": "claude-haiku-4-5-20251001",
