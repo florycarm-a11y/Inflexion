@@ -1,8 +1,9 @@
 # Inflexion — Briefing IA Quotidien Stratégique + RAG Indexation
-# Déclenché automatiquement après le succès de generate-article (chaîne : fetch → article → briefing)
+# Déclenché automatiquement après le succès de fetch-data (workflow_run)
+# + Ré-indexation RAG quand la PR article est mergée (push sur data/articles/)
 #
 # Ce workflow :
-# 1. Indexe les articles du jour dans le store RAG (embeddings locaux)
+# 1. Indexe les articles disponibles dans le store RAG (embeddings locaux)
 # 2. Génère le briefing stratégique avec contexte historique RAG
 # 3. Indexe le briefing produit dans le store RAG pour le lendemain
 #
@@ -14,18 +15,20 @@
 name: "🧠 Generate Daily Briefing"
 
 on:
-  # Chaîné à generate-article (qui est lui-même chaîné à fetch-data)
+  # Déclenché automatiquement après fetch-data (données marché fraîches)
   workflow_run:
-    workflows: ["✍️ Generate Daily Article"]
+    workflows: ["📊 Fetch Market Data"]
     types: [completed]
 
   # Exécution manuelle depuis l'onglet Actions (utile pour tester)
   workflow_dispatch:
 
-  # Exécuter aussi au push sur main quand le script change
+  # Ré-indexation RAG quand la PR article est mergée + quand le script change
   push:
     branches: [main]
     paths:
+      - 'data/articles/**'
+      - 'data/article-du-jour.json'
       - 'scripts/generate-daily-briefing.mjs'
       - 'scripts/rag-index.mjs'
       - 'scripts/lib/prompts.mjs'
@@ -46,7 +49,7 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    # Ne s'exécuter que si generate-article a réussi (ou si déclenché manuellement/push)
+    # Ne s'exécuter que si fetch-data a réussi (ou si déclenché manuellement/push)
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
 
     steps:
