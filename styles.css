@@ -3929,6 +3929,98 @@ body.page-markets .market-status {
     background: rgba(255, 255, 255, 0.05);
 }
 
+/* ── Signal du jour (INSTRUCTION 12) ── */
+.signal-du-jour {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(16, 185, 129, 0.04));
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-left: 4px solid #10b981;
+    border-radius: var(--radius-sm);
+    padding: 0.8rem 1rem;
+    margin: 0.5rem 0 1rem;
+}
+
+.signal-du-jour-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #10b981;
+    margin-bottom: 0.3rem;
+}
+
+.signal-du-jour-text {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ── Positionnement suggéré (INSTRUCTION 4) ── */
+.briefing-positionnement {
+    margin-top: 1.5rem;
+}
+
+.pos-item {
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 0.5rem;
+    border-radius: var(--radius-sm);
+    border-left: 3px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.pos-item.pos-long { border-left-color: #16a34a; }
+.pos-item.pos-short { border-left-color: #dc2626; }
+.pos-item.pos-hedge { border-left-color: #eab308; }
+.pos-item.pos-neutral { border-left-color: #94a3b8; }
+
+.pos-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.pos-actif {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.pos-direction {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.pos-long .pos-direction { color: #16a34a; }
+.pos-short .pos-direction { color: #dc2626; }
+.pos-hedge .pos-direction { color: #eab308; }
+
+.pos-conviction {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.45);
+    font-style: italic;
+}
+
+.pos-details {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0.3rem 0 0;
+    line-height: 1.4;
+}
+
+.pos-disclaimer {
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.35);
+    font-style: italic;
+    margin-top: 0.8rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 /* ── Horodatage précis du briefing (INSTRUCTION 10) ── */
 .briefing-timestamp {
     display: flex;

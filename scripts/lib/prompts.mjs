@@ -717,7 +717,27 @@ dollar index (DXY) et EUR/USD. Expliquer en 1 phrase comment ces indicateurs con
 le régime de marché identifié. Exemple : "Le Treasury 10Y stable à 4,08 % et le spread 10Y-2Y à 0,60 %
 confirment un régime de transition sans signal de récession imminent (FRED)."
 
+## SIGNAL DU JOUR DIFFÉRENCIANT (INSTRUCTION 12 — EN OUVERTURE)
+Ouvrir chaque briefing par un encadré "Signal du jour" identifiant UN signal faible ou une
+interconnexion non évidente que les autres sources ne couvrent pas. Ce signal DOIT croiser au
+moins 2 classes d'actifs ou 2 zones géographiques. 2-3 phrases max, percutantes.
+Exemple : "La divergence or/dollar (DXY stable, or en hausse) suggère que la demande refuge
+vient des banques centrales étrangères, pas du flight-to-safety classique."
+C'est la VALEUR AJOUTÉE unique d'Inflexion — ce signal justifie à lui seul la lecture du briefing.
+
+## POSITIONNEMENT SUGGÉRÉ (INSTRUCTION 4)
+Conclure le briefing par une section "Positionnement suggéré" avec 3-5 pistes concrètes :
+- Actifs à surpondérer ou sous-pondérer, avec niveau de conviction
+- Niveaux d'entrée/sortie ou seuils techniques à surveiller
+- Hedges recommandés avec strikes et échéances si applicable
+- Chaque piste inclut un ratio risque/rendement estimé
+Terminer OBLIGATOIREMENT par : "Ces éléments sont des pistes de réflexion et ne constituent
+pas un conseil en investissement."
+
 ## Structure attendue (contraintes de longueur strictes)
+
+### 0. Signal du jour (2-3 phrases — INSTRUCTION 12)
+En encadré, avant tout le reste. UN signal faible croisant 2+ classes d'actifs/zones.
 
 ### 1. Synthèse stratégique (200-300 mots)
 Le contenu DOIT suivre ces 3 sections, dans cet ordre, avec des sous-titres
@@ -759,6 +779,13 @@ Les 3 risques classés du plus probable/impactant au moins :
 - Impact marché concret : actifs, direction, amplitude estimée
 - Seuil de déclenchement ou facteur à surveiller
 - NE PAS répéter les signaux — focus sur le risque de matérialisation
+
+### 4. Positionnement suggéré (3-5 pistes) — INSTRUCTION 4
+Après le Risk Radar. Chaque piste en 1-2 phrases :
+- Actif/classe + direction (surpondérer/sous-pondérer/neutre)
+- Niveau d'entrée/sortie ou seuil technique
+- Ratio risque/rendement estimé
+- Disclaimer obligatoire en fin de section
 
 ## Utilisation du contexte historique (RAG)
 Si une "PARTIE C : Contexte historique" est fournie, elle contient :
@@ -807,6 +834,7 @@ Le GLD ($481) n'est PAS le cours de l'once d'or (~$2 950 spot). L'USO ($80) n'es
 
 ## Format de réponse (JSON strict, sans texte avant ou après) :
 {
+  "signal_du_jour": "2-3 phrases : UN signal faible croisant 2+ classes d'actifs ou zones géographiques. Valeur ajoutée unique d'Inflexion.",
   "synthese": {
     "titre": "Titre stratégique du jour — factuel et percutant, max 100 caractères",
     "sous_titre": "Sous-titre contextuel en une phrase, angle analytique",
@@ -838,6 +866,15 @@ Le GLD ($481) n'est PAS le cours de l'once d'or (~$2 950 spot). L'USO ($80) n'es
       "description": "1-2 phrases : contexte, mécanisme de transmission, seuil de déclenchement"
     }
   ],
+  "positionnement": [
+    {
+      "actif": "Nom de l'actif ou classe",
+      "direction": "surponderer|sous-ponderer|neutre|hedge",
+      "conviction": "forte|moderee|faible",
+      "details": "Niveau, seuil technique, ratio risque/rendement"
+    }
+  ],
+  "positionnement_disclaimer": "Ces éléments sont des pistes de réflexion et ne constituent pas un conseil en investissement.",
   "agenda": [
     {
       "date": "JJ/MM",

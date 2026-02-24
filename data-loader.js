@@ -747,6 +747,15 @@ const DataLoader = (function () {
 
         var s = briefing.synthese;
 
+        // ── Signal du jour (INSTRUCTION 12) ──
+        var signalDuJourHTML = '';
+        if (briefing.signal_du_jour) {
+            signalDuJourHTML = '<div class="signal-du-jour">' +
+                '<div class="signal-du-jour-label">Signal du jour</div>' +
+                '<p class="signal-du-jour-text">' + inlineMarkdownToHTML(briefing.signal_du_jour) + '</p>' +
+            '</div>';
+        }
+
         // ── Convertir le Markdown de la synthèse en HTML ──
         var contenuHTML = markdownToHTML(s.contenu || '');
 
@@ -849,6 +858,34 @@ const DataLoader = (function () {
             briefing.sentiment_global === 'baissier' ? '#dc2626' :
             briefing.sentiment_global === 'mixte' ? '#eab308' : '#94a3b8';
 
+        // ── Positionnement suggéré (INSTRUCTION 4) ──
+        var positionnementHTML = '';
+        if (briefing.positionnement && briefing.positionnement.length > 0) {
+            var posItems = briefing.positionnement.map(function(pos) {
+                var dirClass = pos.direction === 'surponderer' ? 'pos-long' :
+                    pos.direction === 'sous-ponderer' ? 'pos-short' :
+                    pos.direction === 'hedge' ? 'pos-hedge' : 'pos-neutral';
+                var dirLabel = pos.direction === 'surponderer' ? 'Surpond\u00e9rer' :
+                    pos.direction === 'sous-ponderer' ? 'Sous-pond\u00e9rer' :
+                    pos.direction === 'hedge' ? 'Hedge' : 'Neutre';
+                return '<div class="pos-item ' + dirClass + '">' +
+                    '<div class="pos-header">' +
+                        '<strong class="pos-actif">' + inlineMarkdownToHTML(pos.actif || '') + '</strong>' +
+                        '<span class="pos-direction">' + dirLabel + '</span>' +
+                        (pos.conviction ? '<span class="pos-conviction">Conviction ' + pos.conviction + '</span>' : '') +
+                    '</div>' +
+                    '<p class="pos-details">' + inlineMarkdownToHTML(pos.details || '') + '</p>' +
+                '</div>';
+            }).join('');
+            var disclaimer = briefing.positionnement_disclaimer ||
+                'Ces \u00e9l\u00e9ments sont des pistes de r\u00e9flexion et ne constituent pas un conseil en investissement.';
+            positionnementHTML = '<div class="briefing-positionnement">' +
+                '<h3 class="briefing-section-title">Positionnement sugg\u00e9r\u00e9</h3>' +
+                posItems +
+                '<p class="pos-disclaimer">' + disclaimer + '</p>' +
+            '</div>';
+        }
+
         // ── Agenda de la semaine (INSTRUCTION 3) ──
         var agendaHTML = '';
         if (briefing.agenda && briefing.agenda.length > 0) {
@@ -886,11 +923,13 @@ const DataLoader = (function () {
                 '</span>' +
             '</div>' +
             timestampHTML +
+            signalDuJourHTML +
             '<h2 class="article-du-jour-title">' + s.titre + '</h2>' +
             (s.sous_titre ? '<p class="article-du-jour-subtitle">' + s.sous_titre + '</p>' : '') +
             '<div class="article-du-jour-content">' + contenuHTML + '</div>' +
             signauxHTML +
             riskHTML +
+            positionnementHTML +
             agendaHTML;
     }
 
