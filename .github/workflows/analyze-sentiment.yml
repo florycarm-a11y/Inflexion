@@ -1,5 +1,5 @@
 # Inflexion — Analyse de marché consolidée (sentiment + alertes + macro + briefing)
-# Exécuté 2x/jour (30 min après fetch-data de 6h et 18h)
+# Déclenché automatiquement après le succès de fetch-data (workflow_run)
 #
 # Utilise le script consolidé generate-market-analysis.mjs qui fusionne
 # 4 scripts en 2 appels Claude (au lieu de 8), réduisant la consommation
@@ -13,9 +13,10 @@
 name: "📊 Analyze Sentiment, Alerts & Briefing"
 
 on:
-  schedule:
-    # 2x/jour au lieu de 4x : après fetch-data de 6h et 18h
-    - cron: '30 6,18 * * *'
+  # Déclenché automatiquement après fetch-data
+  workflow_run:
+    workflows: ["📊 Fetch Market Data"]
+    types: [completed]
 
   # Exécution manuelle depuis l'onglet Actions
   workflow_dispatch:
@@ -42,6 +43,8 @@ jobs:
   analyze:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    # Ne s'exécuter que si fetch-data a réussi (ou si déclenché manuellement/push)
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: "📥 Checkout du repo"
@@ -54,12 +57,32 @@ jobs:
         with:
           node-version: '22'
 
+      - name: "🔍 Vérifier la fraîcheur des données"
+        id: check-data
+        run: |
+          LAST_DATA_CHANGE=$(git log -1 --format="%ct" -- data/)
+          NOW=$(date +%s)
+          DIFF=$((NOW - LAST_DATA_CHANGE))
+          if [ $DIFF -gt 1800 ]; then
+            echo "data_changed=false" >> $GITHUB_OUTPUT
+            echo "⏭ Pas de nouvelles données (dernier commit data/ il y a ${DIFF}s)"
+          else
+            echo "data_changed=true" >> $GITHUB_OUTPUT
+            echo "✅ Données fraîches détectées (${DIFF}s)"
+          fi
+
       - name: "📊 Analyse de marché consolidée"
+        if: steps.check-data.outputs.data_changed == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/generate-market-analysis.mjs
 
+      - name: "⏭ Analyse ignorée — données inchangées"
+        if: steps.check-data.outputs.data_changed != 'true'
+        run: echo "Les données n'ont pas changé depuis la dernière exécution. Analyse ignorée."
+
       - name: "📝 Commit et push"
+        if: steps.check-data.outputs.data_changed == 'true'
         run: |
           git config user.name "Inflexion Bot"
           git config user.email "bot@inflexionhub.com"

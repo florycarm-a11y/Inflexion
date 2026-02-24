@@ -67,6 +67,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'npm'
 
       - name: "📦 Installation des dépendances"
         run: npm ci
@@ -112,3 +113,19 @@ jobs:
           Prochaine mise à jour dans ~6h."
 
           git push
+
+      - name: "🚨 Alerte d'échec"
+        if: failure()
+        run: |
+          echo "::error::Le workflow '${{ github.workflow }}' a échoué!"
+          echo "Branche: ${{ github.ref }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "Logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          # --- Webhook Discord (décommenter et ajouter DISCORD_WEBHOOK_URL dans les secrets) ---
+          # curl -s -H "Content-Type: application/json" \
+          #   -d "{\"content\": \"🚨 **${{ github.workflow }}** a échoué sur \`${{ github.ref_name }}\`\nCommit: ${{ github.sha }}\nLogs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" \
+          #   "${{ secrets.DISCORD_WEBHOOK_URL }}"
+          # --- Webhook Slack (décommenter et ajouter SLACK_WEBHOOK_URL dans les secrets) ---
+          # curl -s -X POST -H "Content-Type: application/json" \
+          #   -d "{\"text\": \"🚨 *${{ github.workflow }}* a échoué sur \`${{ github.ref_name }}\`\nCommit: ${{ github.sha }}\nLogs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" \
+          #   "${{ secrets.SLACK_WEBHOOK_URL }}"

@@ -223,6 +223,33 @@ jobs:
           echo "Commit: ${{ github.sha }}"
           # Add actual deployment steps here (Vercel, Netlify, Railway, etc.)
 
+  # ============================================
+  # Failure Alert
+  # ============================================
+  alert-on-failure:
+    name: Alert on Failure
+    runs-on: ubuntu-latest
+    needs: [lint, test, test-scripts, build, security, frontend]
+    if: failure()
+
+    steps:
+      - name: "🚨 Alerte d'échec CI"
+        run: |
+          echo "::error::Le pipeline CI/CD a échoué!"
+          echo "Branche: ${{ github.ref }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "Auteur: ${{ github.actor }}"
+          echo "Événement: ${{ github.event_name }}"
+          echo "Logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          # --- Webhook Discord (décommenter et ajouter DISCORD_WEBHOOK_URL dans les secrets) ---
+          # curl -s -H "Content-Type: application/json" \
+          #   -d "{\"content\": \"🚨 **CI/CD** a échoué sur \`${{ github.ref_name }}\`\nAuteur: ${{ github.actor }}\nCommit: ${{ github.sha }}\nLogs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" \
+          #   "${{ secrets.DISCORD_WEBHOOK_URL }}"
+          # --- Webhook Slack (décommenter et ajouter SLACK_WEBHOOK_URL dans les secrets) ---
+          # curl -s -X POST -H "Content-Type: application/json" \
+          #   -d "{\"text\": \"🚨 *CI/CD* a échoué sur \`${{ github.ref_name }}\`\nAuteur: ${{ github.actor }}\nCommit: ${{ github.sha }}\nLogs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" \
+          #   "${{ secrets.SLACK_WEBHOOK_URL }}"
+
 # ============================================
 # Workflow Summary
 # ============================================

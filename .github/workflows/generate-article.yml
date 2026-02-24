@@ -1,18 +1,19 @@
-# Inflexion — Vague 8 : Rédaction IA quotidienne & Classification
-# Exécuté 1x/jour à 07h UTC (après la mise à jour des données à 06h)
+# Inflexion — Rédaction IA quotidienne & Classification
+# Déclenché automatiquement après le succès de fetch-data (workflow_run)
 #
 # Prérequis :
 #   - ANTHROPIC_API_KEY dans GitHub Secrets (console.anthropic.com)
 #   - TAVILY_API_KEY dans GitHub Secrets (app.tavily.com — optionnel, enrichit les articles)
-#   - PAT_TOKEN dans GitHub Secrets (pour committer)
+#   - PAT_TOKEN dans GitHub Secrets (pour créer la PR)
 #   - data/news.json doit exister (généré par fetch-data.yml)
 
 name: "✍️ Generate Daily Article"
 
 on:
-  schedule:
-    # Tous les jours à 07h UTC (1h après le dernier fetch de données)
-    - cron: '0 7 * * *'
+  # Déclenché automatiquement après fetch-data
+  workflow_run:
+    workflows: ["📊 Fetch Market Data"]
+    types: [completed]
 
   # Exécution manuelle depuis l'onglet Actions
   workflow_dispatch:
@@ -24,9 +25,10 @@ on:
       - 'scripts/generate-article.mjs'
       - '.github/workflows/generate-article.yml'
 
-# Permissions nécessaires pour committer les fichiers
+# Permissions nécessaires pour créer une PR
 permissions:
   contents: write
+  pull-requests: write
 
 # Une seule exécution à la fois
 concurrency:
@@ -37,6 +39,8 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    # Ne s'exécuter que si fetch-data a réussi (ou si déclenché manuellement/push)
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: "📥 Checkout du repo"
@@ -49,37 +53,61 @@ jobs:
         with:
           node-version: '22'
 
+      - name: "🔍 Vérifier la fraîcheur des données"
+        id: check-data
+        run: |
+          LAST_DATA_CHANGE=$(git log -1 --format="%ct" -- data/)
+          NOW=$(date +%s)
+          DIFF=$((NOW - LAST_DATA_CHANGE))
+          if [ $DIFF -gt 1800 ]; then
+            echo "data_changed=false" >> $GITHUB_OUTPUT
+            echo "⏭ Pas de nouvelles données (dernier commit data/ il y a ${DIFF}s)"
+          else
+            echo "data_changed=true" >> $GITHUB_OUTPUT
+            echo "✅ Données fraîches détectées (${DIFF}s)"
+          fi
+
       - name: "🌐 Traduction des articles EN→FR"
+        if: steps.check-data.outputs.data_changed == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/translate-articles.mjs
 
       - name: "✍️ Génération article + classification"
+        if: steps.check-data.outputs.data_changed == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
         run: node scripts/generate-article.mjs
 
-      - name: "📝 Commit et push"
-        run: |
-          git config user.name "Inflexion Bot"
-          git config user.email "bot@inflexionhub.com"
+      - name: "⏭ Génération ignorée — données inchangées"
+        if: steps.check-data.outputs.data_changed != 'true'
+        run: echo "Les données n'ont pas changé depuis la dernière exécution. Génération ignorée."
 
-          # Ajouter les fichiers générés (|| true si le fichier n'existe pas encore)
-          git add data/news.json || true
-          [ -f data/article-du-jour.json ] && git add data/article-du-jour.json || true
-          [ -d data/articles ] && git add data/articles/ || true
+      - name: "🔀 Créer une PR pour relecture"
+        if: steps.check-data.outputs.data_changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          commit-message: |
+            ✍️ Article du jour — ${{ github.run_id }}
 
-          # Vérifier s'il y a des changements
-          if git diff --staged --quiet; then
-            echo "Aucun changement"
-            exit 0
-          fi
+            Génération automatique de l'article de synthèse et classification des news.
+          title: "✍️ Article du jour — ${{ github.run_id }}"
+          body: |
+            ## Contenu généré par IA
 
-          # Commit avec timestamp
-          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
-          git commit -m "✍️ Article du jour — ${TIMESTAMP}
+            Ce PR contient l'article du jour et la classification des news, générés automatiquement par Claude.
 
-          Génération automatique de l'article de synthèse et classification des news."
+            **Fichiers modifiés :**
+            - `data/news.json` — articles traduits et classifiés
+            - `data/article-du-jour.json` — article de synthèse
+            - `data/articles/` — articles individuels
 
-          git push
+            > À relire avant merge pour publication sur GitHub Pages.
+          branch: ai/article-du-jour
+          delete-branch: true
+          add-paths: |
+            data/news.json
+            data/article-du-jour.json
+            data/articles/
