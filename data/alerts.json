@@ -1,14 +1,14 @@
 {
-  "updated": "2026-02-24T18:51:04.317Z",
+  "updated": "2026-02-24T21:23:52.193Z",
   "alertes": [
     {
       "id": "alert-2026-02-24-001",
-      "titre": "ETH : plonge sous 2 000 $ vers 1 500 $, baisse significative (24 février)",
-      "texte": "Ethereum enregistre une chute majeure, franchissant le seuil de 2 000 $ à la baisse avec trajectoire vers 1 500 $. Mouvement intervient dans contexte d'affaiblissement des signaux de marché crypto.",
+      "titre": "ETH : plonge sous 2 000 $, cible 1 500 $ (24 février)",
+      "texte": "Ethereum franchit à la baisse le seuil psychologique de 2 000 USD avec trajectoire baissière vers 1 500 USD. Contexte de faiblesse crypto généralisée et affaiblissement des signaux de marché.",
       "categorie": "crypto",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-02-24T18:51:04.317Z",
+      "horodatage": "2026-02-24T21:23:52.193Z",
       "donnees": {
         "symbole": "AAPL",
         "nom": "Apple",
@@ -18,12 +18,12 @@
     },
     {
       "id": "alert-2026-02-24-002",
-      "titre": "BTC : volatilité accrue, oscillation 60 000-64 000 $ avec signaux d'affaiblissement",
-      "texte": "Bitcoin rebondit à 64 000 $ puis glisse à nouveau sous ce niveau. Les signaux du marché s'affaiblissent, traders surveillent les niveaux de support critiques. Contexte de débâcle logiciels IA.",
+      "titre": "BTC : oscillation 60 000-64 000 $, signaux affaiblis",
+      "texte": "Bitcoin fluctue entre 60 000 et 64 000 USD avec dégradation des signaux techniques. Traders surveillent les niveaux de support critiques dans un contexte de volatilité accrue.",
       "categorie": "crypto",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-24T18:51:04.317Z",
+      "horodatage": "2026-02-24T21:23:52.193Z",
       "donnees": {
         "score": 8,
         "label": "Extreme Fear",
@@ -32,40 +32,70 @@
     },
     {
       "id": "alert-2026-02-24-003",
-      "titre": "Fear & Greed Index : 8/100 (Extreme Fear), signal de panique extrême",
-      "texte": "L'indice Fear & Greed atteint 8, indiquant une peur extrême sur les marchés. Niveau historiquement bas reflétant la capitulation des investisseurs et conditions de marché hautement volatiles.",
+      "titre": "Fear & Greed Index : 8/100 (Extreme Fear)",
+      "texte": "Indice de sentiment de marché à 8 points (Extreme Fear), signalant une aversion au risque maximale parmi les investisseurs. Niveau extrême non observé depuis crises majeures.",
       "categorie": "marches",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-02-24T18:51:04.317Z",
+      "horodatage": "2026-02-24T21:23:52.193Z",
       "donnees": {}
     },
     {
       "id": "alert-2026-02-24-004",
-      "titre": "AAPL : +2,25% à 272,18 $, divergence haussière en contexte de panique",
-      "texte": "Apple gagne 2,25% à 272,18 $ malgré l'indice Fear & Greed extrême, suggérant une recherche de refuge dans les valeurs défensives de qualité. Mouvement contredit la tendance générale baissière.",
+      "titre": "AAPL : +2,25% à 272,18 $, divergence haussière",
+      "texte": "Apple progresse de 2,25% à 272,18 USD, divergeant positivement du sentiment global extrêmement baissier. Possible refuge défensif ou signal de sélectivité sectorielle.",
       "categorie": "marches",
       "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-02-24T18:51:04.317Z",
+      "horodatage": "2026-02-24T21:23:52.193Z",
       "donnees": {}
     },
     {
       "id": "alert-2026-02-24-005",
       "titre": "Valeurs financières : pire début d'année en une décennie",
-      "texte": "Le secteur financier enregistre sa pire performance en début d'année depuis 2016. Contexte de volatilité macro et incertitudes réglementaires impactent les valorisations bancaires.",
+      "texte": "Secteur financier enregistre sa pire performance de début d'année depuis 2016. Contexte de hausse des taux et incertitude macroéconomique.",
       "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-24T18:51:04.317Z",
+      "horodatage": "2026-02-24T21:23:52.193Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-02-24-006",
+      "titre": "BIC : bénéfice -60% en 2025, année difficile",
+      "texte": "Bénéfice de Bic s'effondre de 60% en 2025 après exercice qualifié de difficile. Signale contraction de la demande de consommation et pressions marges.",
+      "categorie": "marches",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-02-24T21:23:52.193Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-02-24-007",
+      "titre": "Gaz naturel : brûlages à plus bas 8 semaines",
+      "texte": "Brûlages de gaz naturel pour production électrique chutent à plus bas de 8 semaines sur fond de météo torride. Pression baissière sur les prix du gaz.",
+      "categorie": "matieres_premieres",
+      "severite": "info",
+      "impact": "baissier",
+      "horodatage": "2026-02-24T21:23:52.193Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-02-24-008",
+      "titre": "Tensions géopolitiques : saisies pétrolières US, exercices Iran",
+      "texte": "Forces américaines saisissent un troisième pétrolier sanctionné dans l'océan Indien ; Iran lance exercices militaires sur rives du Golfe. Risques d'approvisionnement énergétique accrus.",
+      "categorie": "geopolitique",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-02-24T21:23:52.193Z",
       "donnees": {}
     }
   ],
   "stats": {
-    "total": 5,
+    "total": 8,
     "urgent": 2,
-    "attention": 2,
-    "info": 1
+    "attention": 4,
+    "info": 2
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"

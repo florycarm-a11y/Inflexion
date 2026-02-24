@@ -1,65 +1,65 @@
 {
-  "updated": "2026-02-24T18:51:04.317Z",
+  "updated": "2026-02-24T21:23:52.193Z",
   "date": "2026-02-24",
   "global": {
-    "score": -0.2,
+    "score": -0.19,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (-0.2), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est mixte (-0.19), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.55,
-      "confidence": 0.82,
+      "score": -0.65,
+      "confidence": 0.85,
       "tendance": "baissier",
-      "resume": "Tensions géopolitiques multiples : saisies de pétroliers iraniens, escalade militaire en Ukraine entrée en cinquième année, exercices iraniens au Golfe, et débats sur l'IA militaire. Les dépenses de défense européennes augmentent à 21% du total mondial.",
+      "resume": "Escalade géopolitique multifocale : saisies pétrolières américaines, tensions Iran-Golfe, augmentation des dépenses de défense européennes (+21% du budget mondial), et débats sur l'IA militaire. Contexte de conflit prolongé (Ukraine année 5) et instabilité régionale croissante.",
       "signaux_cles": [
-        "Saisie d'un troisième pétrolier sanctionné dans l'océan Indien par les forces américaines",
-        "Ukraine : guerre entrée en cinquième année avec demandes d'échange de prisonniers refusées",
-        "Europe : dépenses de défense à 21% du total mondial, menées par l'Allemagne"
+        "Saisie d'un troisième pétrolier sanctionné dans l'océan Indien par les forces US",
+        "Exercices militaires iraniens sur les rives du Golfe + manifestations universitaires (4e jour)",
+        "Dépenses de défense européennes à 21% du budget mondial, menées par l'Allemagne"
       ]
     },
     "marches": {
       "score": -0.35,
-      "confidence": 0.75,
+      "confidence": 0.72,
       "tendance": "mixte",
-      "resume": "Signaux contradictoires : croissance projetée chez Fidelity National (+30%), Xometry (+21%), mais chute de 60% du bénéfice de Bic en 2025. Secteur financier en difficulté avec pire début d'année en décennie. Incertitudes commerciales USA-UE persistent.",
+      "resume": "Signaux contradictoires : croissance affichée par certains secteurs (Fidelity +30%, Xometry +21%) contrebalancée par des dégâts sectoriels (Bic -60%, valeurs financières pire début d'année en décennie). Incertitude commerciale US-UE et pressions inflationnistes énergétiques.",
       "signaux_cles": [
-        "Fidelity National projette +30% de croissance en 2026 via investissements IA et innovation bancaire",
-        "Bic : bénéfice chute de 60% en 2025, année qualifiée de difficile",
-        "Valeurs financières connaissent leur pire début d'année en une décennie"
+        "Bénéfice de Bic chute de 60% en 2025 après année difficile",
+        "Valeurs financières connaissent pire début d'année en une décennie",
+        "Fidelity projette croissance 30% CA 2026 via investissements IA et innovation bancaire"
       ]
     },
     "crypto": {
-      "score": -0.42,
-      "confidence": 0.78,
+      "score": -0.55,
+      "confidence": 0.8,
       "tendance": "baissier",
-      "resume": "Volatilité accrue : ETH plonge sous 2 000 $ vers 1 500 $, BTC oscille entre 60 000 et 64 000 $ avec affaiblissement des signaux de marché. Cependant, approbations réglementaires positives (SEC pour WisdomTree, Stripe à 159 Mds $) et expansion des marchés de prédiction (3 Mds $ annualisés).",
+      "resume": "Volatilité baissière marquée : ETH plonge sous 2 000 $ vers 1 500 $, BTC oscille 60 000-64 000 $ avec affaiblissement des signaux de marché. Contrebalancée par approbations réglementaires (SEC WisdomTree) et expansion d'utilité (Stripe Bridge volume x4, marchés de prédiction 3Mds$/an).",
       "signaux_cles": [
-        "ETH plonge sous 2 000 $ et file vers 1 500 $ (24 février 2026)",
-        "BTC oscille : reprend 64 000 $ puis glisse sous ce niveau avec signaux d'affaiblissement",
-        "WisdomTree obtient approbation SEC pour règlement instantané et échanges 24h/24 de fonds monétaires tokenisés"
+        "ETH plonge sous 2 000 $ et file vers 1 500 $",
+        "BTC baisse vers 60 000 $ avec signaux de marché affaiblis",
+        "Volume Stripe Bridge stablecoin quadruplé ; marchés de prédiction 3 milliards $/an annualisé"
       ]
     },
     "matieres_premieres": {
-      "score": 0.28,
-      "confidence": 0.72,
+      "score": 0.25,
+      "confidence": 0.68,
       "tendance": "neutre",
-      "resume": "Dynamiques mixtes : gaz naturel sous pression (brûlages en baisse, catalyseurs haussiers insaisissables), mais projets d'expansion majeurs (Permian, pipeline Koweït 7 Mds $). Boom nucléaire lié à l'IA. Nigeria augmente production pétrolière.",
+      "resume": "Dynamiques contrastées : gaz naturel sous pression (brûlages à plus bas 8 semaines), mais demande nucléaire croissante (boom IA), expansion pétrolière (Nigeria, Permian, Koweït 7Mds$). Transition énergétique en cours (56% bus électriques UE 2025).",
       "signaux_cles": [
-        "Koweït prépare accord pipeline pétrolier de 7 milliards de dollars",
-        "Ero Copper : projet Furnas avec durée de vie 24 ans et VAN de 2 milliards de dollars",
-        "Boom de l'IA alimente renaissance nucléaire ; bus électriques représentent 56% du marché UE en 2025"
+        "Brûlages gaz naturel à plus bas de 8 semaines sur météo torride",
+        "Koweït prépare accord pipeline pétrolier 7 milliards $ avec investisseurs mondiaux",
+        "Bus électriques 56% du marché urbain UE 2025 ; boom IA alimente renaissance nucléaire"
       ]
     },
     "ai_tech": {
-      "score": 0.15,
-      "confidence": 0.68,
-      "tendance": "mixte",
-      "resume": "Progrès technologiques contrastés : innovations positives (Microsoft Copilot, AMD-Meta accord 6GW, ProducerAI chez Google) mais préoccupations sécurité (Lazarus, CarGurus 12,4M comptes). COO OpenAI reconnaît que l'IA n'a pas encore pénétré les processus métier des entreprises.",
+      "score": 0.45,
+      "confidence": 0.75,
+      "tendance": "haussier",
+      "resume": "Dynamique positive globale malgré frictions réglementaires : déploiements d'IA en expansion (Microsoft Copilot, AMD-Meta 6GW, Google Labs), mais pénétration métier encore faible selon OpenAI. Débats sécurité militaire (Pentagone-Anthropic) et cybersécurité (Claude Code vs IBM/Cobol).",
       "signaux_cles": [
-        "COO OpenAI : l'IA n'a pas encore vraiment pénétré les processus métier des entreprises",
-        "AMD reproduit accord OpenAI pour Meta : 6 gigawatts et 10% de participation",
-        "Fuite CarGurus expose 12,4 millions de comptes ; groupe Lazarus cible organisations santé"
+        "AMD reproduit accord OpenAI pour Meta : 6 gigawatts + 10% participation",
+        "COO OpenAI : IA n'a pas encore vraiment pénétré processus métier entreprises",
+        "Pentagone convoque CEO Anthropic sur garde-fous Claude ; Claude Code impacte IBM"
       ]
     }
   },
@@ -156,12 +156,12 @@
     },
     {
       "date": "2026-02-24",
-      "global": -0.2,
-      "geopolitique": -0.55,
+      "global": -0.19,
+      "geopolitique": -0.65,
       "marches": -0.35,
-      "crypto": -0.42,
-      "matieres_premieres": 0.28,
-      "ai_tech": 0.15
+      "crypto": -0.55,
+      "matieres_premieres": 0.25,
+      "ai_tech": 0.45
     }
   ],
   "model": "claude-haiku-4-5-20251001",
