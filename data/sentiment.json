@@ -1,65 +1,65 @@
 {
-  "updated": "2026-02-21T07:05:47.810Z",
-  "date": "2026-02-21",
+  "updated": "2026-02-24T12:46:34.569Z",
+  "date": "2026-02-24",
   "global": {
-    "score": 0.02,
+    "score": -0.17,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (+0.02), dominé par la rubrique crypto (mixte)."
+    "resume": "Le sentiment global est mixte (-0.17), dominé par la rubrique crypto (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.45,
-      "confidence": 0.72,
+      "score": -0.55,
+      "confidence": 0.75,
       "tendance": "baissier",
-      "resume": "La géopolitique affiche un sentiment modérément baissier dominé par trois foyers de tension : escalade militaire au Moyen-Orient (Liban, Iran, Gaza), conflit ukrainien persistant, et instabilité politique américaine autour des tarifs douaniers. Ces frictions créent un environnement d'incertitude accrue pour les marchés, sans crise systémique immédiate.",
+      "resume": "Tensions géopolitiques multiples : conflit ukrainien à 4 ans, risques de confrontation Iran-États-Unis, instabilité au Moyen-Orient avec avertissements israéliens au Liban, et inquiétudes européennes sur la défense. Contexte d'incertitude accrue pour les marchés.",
       "signaux_cles": [
-        "Escalade Moyen-Orient : frappes israéliennes au Liban (12+ morts), craintes d'une guerre américaine contre l'Iran, déploiement marocain à Gaza — risque d'élargissement régional",
-        "Conflit Ukraine inchangé : 1 458e jour de guerre, harcèlement de civils par drones russes — persistance d'une tension chronique sans résolution visible",
-        "Instabilité politique américaine : Cour suprême rejette les tarifs mondiaux de Trump (3 titres), Trump contre-attaque avec 10% de droits de douane — risque de fragmentation du pouvoir exécutif et volatilité commerciale"
+        "Ukraine : 4 ans de guerre, mobilisation continue des brigades",
+        "Moyen-Orient : Israël avertit le Liban de frappes si implication du Hezbollah",
+        "Europe : rapport sur déficits majeurs de défense, dirigeants européens mobilisés"
       ]
     },
     "marches": {
-      "score": -0.35,
-      "confidence": 0.72,
-      "tendance": "baissier",
-      "resume": "Sentiment modérément baissier dominé par l'incertitude tarifaire et l'inflation persistante. La défaite de Trump à la Cour suprême sur les tarifs crée une volatilité court terme, tandis que l'accélération de l'inflation PCE (2,9-3,0 %) et du déflateur du PIB (3,7 %) soulève des questions sur la trajectoire monétaire de la Fed. Les signaux macro-économiques restent mixtes, limitant la confiance des investisseurs.",
+      "score": 0.15,
+      "confidence": 0.62,
+      "tendance": "mixte",
+      "resume": "Résultats d'entreprises mitigés : déceptions (Iovance, baisse d'objectifs), mais aussi surperformances (Home Depot, Keurig Dr Pepper, Constellation Energy). Accord Meta-AMD soutient le secteur tech. Inquiétudes sur perspectives IA dystopiques et risque Trump sur l'économie.",
       "signaux_cles": [
-        "Inflation PCE accélérée à 2,9-3,0 % et déflateur du PIB à 3,7 % : divergence avec l'IPC ralenti (2,4 %), créant une ambiguïté sur la direction monétaire de la Fed",
-        "Cour suprême invalide le régime tarifaire de Trump, mais Trump annonce immédiatement un tarif mondial de 10 % : escalade d'incertitude réglementaire impactant les flux commerciaux et les marges des entreprises",
-        "Ventes d'actions par insiders chez Clean Harbors (CLH) : 1,2 million $ cumulés vendus, signal de manque de confiance des dirigeants dans les perspectives court terme"
+        "Home Depot : croissance des ventes surprise, action en hausse",
+        "Constellation Energy : EPS 2,30$ (+0,05$), chiffre d'affaires 6,07 Md$ (+470 M$)",
+        "Meta-AMD : accord de puces de plusieurs milliards de dollars conclu"
       ]
     },
     "crypto": {
-      "score": 0.52,
-      "confidence": 0.68,
-      "tendance": "mixte",
-      "resume": "Sentiment modérément haussier porté par des catalyseurs structurels (adoption institutionnelle, clarification réglementaire, accumulation de baleines) et des rebonds techniques du Bitcoin (~68 000 $), contrebalancé par des signaux de fraude croissante, une pression de vente persistante et une faiblesse des altcoins. L'implication : marché en phase de consolidation avec risque de volatilité accrue.",
+      "score": -0.72,
+      "confidence": 0.88,
+      "tendance": "baissier",
+      "resume": "Marché crypto en capitulation totale : Bitcoin chute sous 63 000 $, Fear & Greed Index à 8 (peur extrême). Piratages majeurs (Step Finance 40 M$), liquidations massives, ventes d'ETF Bitcoin. Seul signal haussier : 400 000 BTC accumulés entre 60-70 k$.",
       "signaux_cles": [
-        "Accumulation de baleines en V compensant une vente massive de 230 K BTC, avec liquidations baissières de 600 M USD augmentant les chances d'un rebond à 70 000 USD",
-        "Clarification réglementaire majeure : la SEC émet des directives sur les exigences de capital en stablecoins pour les courtiers, et l'ETF ProShares génère 17 milliards de dollars de volume au premier jour",
-        "Adoption institutionnelle croissante (BNP Paribas sur Ethereum, tokenisation immobilière à Dubaï/Maldives, Nakamoto Inc. finalise l'acquisition de BTC Inc.) contrebalancée par fraude accrue et seulement 10 % des lancements de tokens faibles s'étant rétablis en 2025"
+        "Bitcoin : chute sous 63 000 $, oscillations près de cette zone critique",
+        "Fear & Greed Index : 8/100 (peur extrême), liquidations en cascade",
+        "Accumulation : 400 000 BTC achetés entre 60-70 k$ lors de la baisse"
       ]
     },
     "matieres_premieres": {
-      "score": 0.15,
-      "confidence": 0.55,
-      "tendance": "mixte",
-      "resume": "Sentiment contrasté sur les matières premières : les énergies renouvelables gagnent du terrain structurellement (électrique, solaire spatial), tandis que les énergies fossiles subissent des pressions réglementaires et commerciales (annulation des tarifs Trump, baisse des importations de pétrole UE). Les prix des commodités restent volatiles sans direction claire, avec des signaux contradictoires sur l'énergie et l'agriculture.",
+      "score": 0.35,
+      "confidence": 0.68,
+      "tendance": "neutre",
+      "resume": "Secteur énergétique stable avec investissements majeurs : Enel 63 Md$, TotalEnergies GNL vers Ukraine, Eni projets gaziers. Transports maritimes en rebond (Baltic Dry à 3 semaines de haut). Inquiétudes sur surproduction GNL et dépendance pétrolière de l'Inde (89%).",
       "signaux_cles": [
-        "Annulation des tarifs douaniers par la Cour suprême américaine : remise en question d'un pilier de la politique commerciale Trump, réduisant l'incertitude tarifaire sur les matières premières importées",
-        "Transition énergétique accélérée : l'électrique domine clairement le marché des bus urbains et l'énergie solaire spatiale progresse, tandis que les fossiles font face à des appels à taxation des profits",
-        "Volatilité des prix sans tendance dominante : gaz naturel en recul malgré le froid, pétrole stable près de ses plus hauts de 6 mois, indice Baltic Dry en rebond, mais variations frénétiques des contrats à terme reflètent l'incertitude macro"
+        "Enel : plan d'investissement 63 Md$ Europe-États-Unis",
+        "Baltic Dry Index : plus haut de 3 semaines",
+        "Inde : dépendance aux importations pétrolières à 89%, production stagnante"
       ]
     },
     "ai_tech": {
-      "score": 0.35,
-      "confidence": 0.62,
+      "score": 0.22,
+      "confidence": 0.58,
       "tendance": "mixte",
-      "resume": "Sentiment modérément haussier dominé par des avancées technologiques concrètes (déploiements d'IA, optimisations de performance) et une intensification de la concurrence, contrebalancé par des préoccupations réglementaires et des frictions commerciales (scraping, restrictions d'API). L'écosystème IA progresse mais fait face à des tensions croissantes autour de la monétisation et de la conformité.",
+      "resume": "Secteur tech fragmenté : innovations spatiales (LambdaVision, Sophia Space 10 M$), investissements IA (Intel-SambaNova 350 M$), mais préoccupations sécurité (piratages Odido, Lazarus). Articles catastrophistes sur IA deviennent viraux, créant volatilité d'opinion.",
       "signaux_cles": [
-        "Taalas déploie Llama 3.1 8B à 17 000 tokens/seconde : amélioration significative de la performance d'inférence, signal de maturité technologique et réduction des coûts d'exploitation",
-        "Sarvam lance l'application de chat Indus en Inde et intensification de la concurrence : expansion géographique des modèles IA et fragmentation du marché par région/langue",
-        "SerpApi accuse Google de mauvaise foi sur le scraping + Anthropic restreint les abonnements Claude : durcissement des conditions commerciales et des frictions réglementaires croissantes entre acteurs"
+        "Intel-SambaNova : offre 350 M$ pour défier GPU en inférence IA",
+        "Sophia Space : levée 10 M$ financement d'amorçage",
+        "Sécurité : gang ShinyHunters revendique violation Odido, millions d'utilisateurs affectés"
       ]
     }
   },
@@ -153,41 +153,17 @@
       "crypto": 0.52,
       "matieres_premieres": 0.15,
       "ai_tech": 0.35
+    },
+    {
+      "date": "2026-02-24",
+      "global": -0.17,
+      "geopolitique": -0.55,
+      "marches": 0.15,
+      "crypto": -0.72,
+      "matieres_premieres": 0.35,
+      "ai_tech": 0.22
     }
   ],
   "model": "claude-haiku-4-5-20251001",
-  "usage": {
-    "totalInputTokens": 7674,
-    "totalOutputTokens": 1787,
-    "totalCalls": 5,
-    "callsByLabel": {
-      "sentiment-geopolitique": {
-        "calls": 1,
-        "inputTokens": 1531,
-        "outputTokens": 334
-      },
-      "sentiment-marches": {
-        "calls": 1,
-        "inputTokens": 1688,
-        "outputTokens": 379
-      },
-      "sentiment-crypto": {
-        "calls": 1,
-        "inputTokens": 1558,
-        "outputTokens": 377
-      },
-      "sentiment-matieres_premieres": {
-        "calls": 1,
-        "inputTokens": 1445,
-        "outputTokens": 363
-      },
-      "sentiment-ai_tech": {
-        "calls": 1,
-        "inputTokens": 1452,
-        "outputTokens": 334
-      }
-    },
-    "estimatedCostUSD": 0.0133,
-    "model": "claude-haiku-4-5-20251001"
-  }
+  "mode": "consolidated"
 }
