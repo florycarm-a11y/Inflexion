@@ -71,7 +71,9 @@ const DataLoader = (function () {
             /\bmedaille\s+d'or\b/i, /\bgold\s+medal\b/i,
             /\bpatinage\b/i, /\bice\s+danc/i, /\bskeleto/i, /\bbiathlon\b/i,
             /\bski\s+(?:alpin|fond|cross)/i, /\bsnowboard/i, /\bbobsleigh/i,
-            /\bmascotte/i, /\bmascot\b/i
+            /\bmascotte/i, /\bmascot\b/i,
+            // Instruction 9 — exclure articles purement santé/culture sans lien finance
+            /\bhoroscope\b/i
         ],
         // Patterns spécifiques à exclure par rubrique
         geopolitics: [
@@ -110,7 +112,16 @@ const DataLoader = (function () {
             /\btesla\b.*\b(?:sales?|ventes?|down|up)\b.*\b(?:uk|norway|netherlands)/i,
             /\bev\s+retreat\b/i, /\blegacy\s+ev\b/i,
             /\bactions?\s+australien/i, /\baustralian\s+stocks?\b/i,
-            /\bhuman\s+health\s+matter/i
+            /\bhuman\s+health\s+matter/i,
+            // Instruction 9 — exclure santé, culture, faits divers
+            /\balzheimer\b/i, /\bparkinson\b/i, /\bcancer\b.*\b(?:traitement|soins|patient)/i,
+            /\bh[oô]pital\b/i, /\bclinique\b/i, /\bm[eé]decin\b/i,
+            /\bvaccin\b/i, /\bpand[eé]mie\b/i, /\b[eé]pid[eé]mie\b/i,
+            /\bfait\s*divers\b/i, /\bmeurtre\b/i, /\bhomicide\b/i, /\bassassin/i,
+            /\bmus[eé]e\b/i, /\bexposition\b.*\bart\b/i, /\bcin[eé]ma\b/i,
+            /\bfestival\b(?!.*(?:film|tech|fintech))/i,
+            /\bcuisine\b/i, /\brecette\b/i, /\bgastronomie\b/i,
+            /\btourisme\b/i, /\bvacances\b/i
         ],
         crypto: [
             /\bcac\s+40\b/i, /\bbourse\b.*\brecord\b/i,
@@ -1144,6 +1155,53 @@ const DataLoader = (function () {
         return Math.min(score, 100);
     }
 
+    // ─── Instruction 9 : validation de catégorie ──────────────
+    // Mots-clés minimaux pour confirmer qu'un article appartient bien à sa rubrique.
+    // Un article qui ne matche AUCUN mot-clé de sa rubrique est reclassé ou écarté.
+    var CATEGORY_KEYWORDS = {
+        matieres_premieres: /\b(?:or|gold|argent|silver|p[eé]trole|oil|brent|wti|cuivre|copper|aluminium|nickel|zinc|platine|palladium|mati[eè]res?\s+premi[eè]res?|commodit|m[eé]taux|metals?|minerai|mining|gaz\s+naturel|natural\s+gas|uranium|lithium|cobalt|bl[eé]|wheat|soja|soybean|cacao|cocoa|caf[eé]|coffee|coton|cotton|sucre|sugar|OPEC|opep|raffinerie|barrel)\b/i,
+        crypto: /\b(?:bitcoin|btc|ethereum|eth|crypto|blockchain|defi|nft|token|stablecoin|altcoin|mining|minage|binance|coinbase|solana|cardano|ripple|xrp|dogecoin|web3)\b/i,
+        geopolitique: /\b(?:g[eé]opoliti|diplomati|sanctions?|conflit|guerre|war|trait[eé]|OTAN|NATO|ONU|UE|EU|union\s+europ|s[eé]curit[eé]\s+(?:national|internation)|terroris|nucl[eé]aire|nuclear|d[eé]fense|fronti[eè]re|border|r[eé]fugi|migrat|souverainet[eé]|territorial|alliance|coalition|embargo|d[eé]stabilisa)\b/i,
+        ai_tech: /\b(?:intelligen\w+\s+artific|IA\b|AI\b|machine\s+learn|deep\s+learn|GPT|LLM|ChatGPT|Claude|neural|cybersecurit|hacker|ransomware|cloud|semiconductor|puce|chip|TSMC|Nvidia|Apple|Google|Microsoft|Meta|Amazon|startup|fintech|robotiq|automat)\b/i,
+        marches: /\b(?:bourse|stock|march[eé]|CAC|DAX|S&P|Nasdaq|indice|index|action|equity|obligation|bond|taux|rate|yield|dividende|IPO|fusion|acquisition|M&A|r[eé]sultat|b[eé]n[eé]fice|chiffre\s+d'affaires|capitalisation|banque|bank|assurance|insurance|investiss|PIB|GDP|inflation|ch[oô]mage|emploi)\b/i
+    };
+
+    /**
+     * Vérifie si un article appartient réellement à sa rubrique (Instruction 9).
+     * Reclasse ou écarte les articles dont la catégorie API est erronée.
+     * Sources connues (Tier 1-2) sont gardées telles quelles.
+     * @param {Object} article
+     * @returns {Object|null} article avec rubrique corrigée, ou null si hors-sujet
+     */
+    function validateCategory(article) {
+        var rub = article.rubrique;
+        if (!rub || rub === 'autre') return null; // Écarter "Autre"
+
+        // Les sources spécialisées Tier 1-2 sont de confiance pour leur catégorie
+        var src = (article.source || '').trim();
+        var tier = SOURCE_TIERS[src];
+        if (tier && tier <= 2) return article;
+
+        var text = ((article.title || '') + ' ' + (article.description || '')).toLowerCase();
+        var kw = CATEGORY_KEYWORDS[rub];
+
+        // Si l'article matche les mots-clés de sa rubrique, OK
+        if (kw && kw.test(text)) return article;
+
+        // Sinon, tenter de reclasser dans une autre rubrique
+        var RUBRIQUES_ORDERED = ['geopolitique', 'marches', 'crypto', 'matieres_premieres', 'ai_tech'];
+        for (var i = 0; i < RUBRIQUES_ORDERED.length; i++) {
+            var alt = RUBRIQUES_ORDERED[i];
+            if (alt !== rub && CATEGORY_KEYWORDS[alt] && CATEGORY_KEYWORDS[alt].test(text)) {
+                article.rubrique = alt;
+                return article;
+            }
+        }
+
+        // Source inconnue et aucune rubrique valide → écarter (article hors-sujet)
+        return null;
+    }
+
     /**
      * Sélectionne les meilleurs articles avec distribution équilibrée entre rubriques.
      * Objectif : 10-12 articles, 2-3 par rubrique, score qualité maximal.
@@ -1155,12 +1213,19 @@ const DataLoader = (function () {
     function curateArticles(allArticles, targetTotal) {
         targetTotal = targetTotal || 12;
 
+        // Instruction 9 : valider/reclasser la catégorie de chaque article
+        var validated = [];
+        allArticles.forEach(function(a) {
+            var v = validateCategory(a);
+            if (v) validated.push(v);
+        });
+
         // Regrouper par rubrique
         var byRubrique = {};
         var RUBRIQUES = ['geopolitique', 'marches', 'crypto', 'matieres_premieres', 'ai_tech'];
         RUBRIQUES.forEach(function(r) { byRubrique[r] = []; });
 
-        allArticles.forEach(function(a) {
+        validated.forEach(function(a) {
             var rub = a.rubrique || 'marches'; // Default
             if (!byRubrique[rub]) byRubrique[rub] = [];
             a._qualityScore = scoreArticle(a);
@@ -3079,11 +3144,13 @@ const DataLoader = (function () {
         _internals: {
             scoreArticle,
             curateArticles,
+            validateCategory,
             truncateTitle,
             isSummaryRedundant,
             isArticleRelevant,
             SOURCE_TIERS,
             IRRELEVANT_PATTERNS,
+            CATEGORY_KEYWORDS,
             _setCache: function(key, val) { _cache[key] = val; },
             _setInitialized: function(v) { _initialized = v; },
             _resetCache: function() { _cache = {}; _initialized = false; }
