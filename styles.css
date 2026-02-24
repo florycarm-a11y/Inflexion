@@ -186,7 +186,7 @@ a {
     transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* Desktop: header scrolls away, desktop-nav sticks */
+/* Desktop: header adjustments */
 @media (min-width: 769px) {
     .header {
         position: relative;
@@ -208,116 +208,6 @@ a {
     display: block;
     height: 2px;
     background: var(--accent);
-}
-
-/* ============================================
-   Desktop Navigation Bar
-   ============================================ */
-.desktop-nav {
-    display: none;
-    background: var(--card-bg);
-    border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 0;
-    z-index: 99;
-    transition: top var(--transition-normal), box-shadow var(--transition-normal);
-}
-
-/* Desktop nav shadow when scrolled */
-.desktop-nav.scrolled {
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-}
-
-.desktop-nav-inner {
-    max-width: var(--content-max-width);
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.desktop-nav-links {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-}
-
-.desktop-nav-links::-webkit-scrollbar {
-    display: none;
-}
-
-.desktop-nav-link {
-    font-family: var(--font-sans);
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    text-decoration: none;
-    padding: 0.7rem 0.9rem;
-    white-space: nowrap;
-    position: relative;
-    transition: color var(--transition-fast);
-    letter-spacing: 0.01em;
-}
-
-.desktop-nav-link:hover {
-    color: var(--green);
-}
-
-.desktop-nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0.9rem;
-    right: 0.9rem;
-    height: 2px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.desktop-nav-link:hover::after {
-    transform: scaleX(1);
-}
-
-.desktop-nav-link.active {
-    color: var(--green);
-    font-weight: 700;
-    border-bottom: 2px solid var(--green);
-}
-
-.desktop-nav-link.active::after {
-    transform: scaleX(1);
-}
-
-.desktop-nav-cta {
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: #fff;
-    background: var(--accent);
-    text-decoration: none;
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    white-space: nowrap;
-    transition: background var(--transition-fast), transform var(--transition-fast);
-    margin-left: 0.5rem;
-    flex-shrink: 0;
-}
-
-.desktop-nav-cta:hover {
-    background: var(--accent-dark);
-    transform: translateY(-1px);
-}
-
-@media (min-width: 769px) {
-    .desktop-nav {
-        display: block;
-    }
 }
 
 .header-top {
@@ -3756,8 +3646,7 @@ body.page-markets .market-status {
 
 
 /* ============================================
-   Desktop: hide hamburger, show desktop-nav
-   Mobile: show hamburger, hide desktop-nav
+   Desktop: drawer & hamburger adjustments
    ============================================ */
 
 @media (min-width: 769px) {
