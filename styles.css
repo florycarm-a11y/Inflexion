@@ -225,7 +225,7 @@ a {
 
 /* Desktop nav shadow when scrolled */
 .desktop-nav.scrolled {
-    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .desktop-nav-inner {
@@ -264,7 +264,7 @@ a {
 }
 
 .desktop-nav-link:hover {
-    color: var(--text-primary);
+    color: var(--green);
 }
 
 .desktop-nav-link::after {
@@ -285,8 +285,9 @@ a {
 }
 
 .desktop-nav-link.active {
-    color: var(--accent);
+    color: var(--green);
     font-weight: 700;
+    border-bottom: 2px solid var(--green);
 }
 
 .desktop-nav-link.active::after {
@@ -300,8 +301,8 @@ a {
     color: #fff;
     background: var(--accent);
     text-decoration: none;
-    padding: 0.4rem 0.9rem;
-    border-radius: var(--radius-sm);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
     white-space: nowrap;
     transition: background var(--transition-fast), transform var(--transition-fast);
     margin-left: 0.5rem;
@@ -491,19 +492,21 @@ a {
 }
 
 /* Navigation Overlay */
+/* Backdrop overlay */
 .nav-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(16, 94, 45, 0.97);
-    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     z-index: 200;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                visibility 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+                visibility 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .nav-overlay.nav-open {
@@ -511,13 +514,30 @@ a {
     visibility: visible;
 }
 
+/* Slide-in panel */
 .nav-overlay-content {
-    max-width: 600px;
-    margin: 0 auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 85vw;
+    max-width: 320px;
+    height: 100vh;
+    background: rgba(16, 94, 45, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 0 16px 16px 0;
+    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.25);
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     padding: 2rem 1.75rem;
-    height: 100%;
+    margin: 0;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+}
+
+.nav-overlay.nav-open .nav-overlay-content {
+    transform: translateX(0);
 }
 
 .nav-overlay-header {
@@ -539,24 +559,24 @@ a {
 }
 
 .nav-close {
-    background: none;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     cursor: pointer;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
     line-height: 1;
 }
 
 .nav-close:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
 }
 
 /* Navigation links in overlay */
@@ -572,46 +592,44 @@ a {
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
     font-family: var(--font-sans);
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     font-weight: 600;
-    padding: 0.85rem 0 0.85rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    transition: color 0.2s ease, padding-left 0.25s ease, background 0.2s ease;
+    padding: 0.7rem 0.5rem 0.7rem 0.5rem;
+    border-bottom: none;
+    border-left: 3px solid transparent;
+    border-radius: 8px;
+    transition: color 0.2s ease, padding-left 0.2s ease, background 0.2s ease, border-color 0.2s ease;
     position: relative;
     display: block;
     letter-spacing: -0.01em;
 }
 
+/* "Accueil" link — first link is slightly larger */
+.nav-links > .nav-overlay-link:first-child {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
 .nav-overlay-link:hover {
     color: white;
-    padding-left: 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding-left: 12px;
+    border-left-color: #A8D5BA;
 }
 
 .nav-overlay-link::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%) scaleX(0);
-    width: 3px;
-    height: 50%;
-    background: #fff;
-    border-radius: 2px;
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-origin: left center;
-}
-
-.nav-overlay-link:hover::before {
-    transform: translateY(-50%) scaleX(1);
+    display: none;
 }
 
 .nav-overlay-link[aria-current="page"] {
     color: white;
-    padding-left: 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding-left: 12px;
+    border-left-color: #A8D5BA;
 }
 
 .nav-overlay-link[aria-current="page"]::before {
-    transform: translateY(-50%) scaleX(1);
+    display: none;
 }
 
 /* Overlay link & group-label entrance animation */
@@ -3748,42 +3766,20 @@ body.page-markets .market-status {
         display: flex !important;
     }
 
-    /* Overlay still works on desktop (accessible via keyboard shortcut or JS) */
-    .nav-overlay {
-        background: rgba(0, 0, 0, 0);
-        backdrop-filter: none;
-        transition: background 0.35s ease, visibility 0.35s;
-    }
-
-    .nav-overlay.nav-open {
-        background: rgba(0, 0, 0, 0.4);
-    }
-
-    /* Drawer panel from left on desktop */
+    /* Desktop drawer — base styles already handle slide-in, just adjust sizing */
     .nav-overlay .nav-overlay-content {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 360px;
-        max-width: 85vw;
-        height: 100vh;
-        background: rgba(16, 94, 45, 0.98);
-        backdrop-filter: blur(20px);
-        transform: translateX(-100%);
-        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+        width: 320px;
+        max-width: 320px;
         padding: 2.5rem 2rem;
-        margin: 0;
-        overflow-y: auto;
-    }
-
-    .nav-overlay.nav-open .nav-overlay-content {
-        transform: translateX(0);
     }
 
     .nav-overlay .nav-overlay-link {
-        font-size: 1.35rem;
-        padding: 0.9rem 0;
+        font-size: 1.125rem;
+        padding: 0.75rem 0.5rem;
+    }
+
+    .nav-overlay .nav-links > .nav-overlay-link:first-child {
+        font-size: 1.25rem;
     }
 }
 /* ═══════════════════════════════════════════════════════════════
@@ -8036,41 +8032,56 @@ body.page-markets .market-status {
     font-size: 0.6rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 2px;
     color: rgba(255, 255, 255, 0.45);
-    padding: 1.5rem 0 0.25rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    margin-top: 0.25rem;
+    padding: 0 0 0.35rem;
+    border-top: none;
+    margin-top: 24px;
+    position: relative;
+}
+
+.nav-overlay-group-label::after {
+    content: '';
+    display: block;
+    margin-top: 0.35rem;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), transparent);
 }
 
 .nav-overlay-link.nav-indent {
     padding-left: 0.75rem;
-    font-size: 1.15rem;
+    font-size: 1rem;
     font-weight: 500;
 }
 
 .nav-overlay-link.nav-indent:hover {
     padding-left: 1.25rem;
+    border-left-color: #A8D5BA;
 }
 
 .nav-overlay-link.nav-cta {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     margin-top: 1.25rem;
     background: rgba(255, 255, 255, 0.12);
     color: #fff;
     padding: 0.6rem 1.5rem;
-    border-radius: var(--radius-sm);
+    border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
     font-weight: 700;
     font-size: 0.85rem;
     text-align: center;
-    transition: background 150ms ease, border-color 150ms ease;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
 .nav-overlay-link.nav-cta:hover {
     background: rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.4);
     padding-left: 1.5rem;
+    border-left-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-1px);
 }
 
 .nav-overlay-link.nav-cta::before {
