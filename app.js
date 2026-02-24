@@ -232,6 +232,7 @@ function initMenuOverlay() {
     const trigger = document.querySelector('.menu-trigger');
     const nav = document.getElementById('main-nav');
     const closeBtn = nav ? nav.querySelector('.nav-close') : null;
+    const panel = nav ? nav.querySelector('.nav-overlay-content') : null;
 
     if (!trigger || !nav) return;
 
@@ -246,6 +247,7 @@ function initMenuOverlay() {
         nav.classList.remove('nav-open');
         trigger.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
+        if (panel) panel.style.transform = '';
         trigger.focus();
     }
 
@@ -272,6 +274,53 @@ function initMenuOverlay() {
     nav.querySelectorAll('.nav-overlay-link').forEach(function(link) {
         link.addEventListener('click', closeMenu);
     });
+
+    // Swipe-to-close gesture (swipe left to close)
+    if (panel) {
+        var touchStartX = 0;
+        var touchStartY = 0;
+        var touchCurrentX = 0;
+        var isSwiping = false;
+
+        panel.addEventListener('touchstart', function(e) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            touchCurrentX = touchStartX;
+            isSwiping = false;
+        }, { passive: true });
+
+        panel.addEventListener('touchmove', function(e) {
+            touchCurrentX = e.touches[0].clientX;
+            var deltaX = touchCurrentX - touchStartX;
+            var deltaY = Math.abs(e.touches[0].clientY - touchStartY);
+
+            // Only swipe if horizontal movement dominates
+            if (!isSwiping && Math.abs(deltaX) > 10 && Math.abs(deltaX) > deltaY) {
+                isSwiping = true;
+            }
+
+            if (isSwiping && deltaX < 0) {
+                // Swipe left — move panel with finger
+                var offset = Math.max(deltaX, -panel.offsetWidth);
+                panel.style.transition = 'none';
+                panel.style.transform = 'translateX(' + offset + 'px)';
+            }
+        }, { passive: true });
+
+        panel.addEventListener('touchend', function() {
+            if (!isSwiping) return;
+            panel.style.transition = '';
+            var deltaX = touchCurrentX - touchStartX;
+
+            // Close if swiped more than 30% of panel width
+            if (deltaX < -(panel.offsetWidth * 0.3)) {
+                closeMenu();
+            } else {
+                panel.style.transform = 'translateX(0)';
+            }
+            isSwiping = false;
+        }, { passive: true });
+    }
 }
 
 /* ============================================
