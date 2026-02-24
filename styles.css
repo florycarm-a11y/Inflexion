@@ -4210,6 +4210,49 @@ body.page-markets .market-status {
     font-style: italic;
 }
 
+/* ── Agenda de la semaine (INSTRUCTION 3) ── */
+.briefing-agenda {
+    margin-top: 1.5rem;
+}
+
+.agenda-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.82rem;
+}
+
+.agenda-item:last-child {
+    border-bottom: none;
+}
+
+.agenda-date {
+    font-weight: 700;
+    color: #10b981;
+    min-width: 3.5rem;
+}
+
+.agenda-heure {
+    color: rgba(255, 255, 255, 0.5);
+    min-width: 4rem;
+    font-size: 0.75rem;
+}
+
+.agenda-event {
+    flex: 1;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.agenda-impact {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+    max-width: 12rem;
+    text-align: right;
+}
+
 /* ── Responsive briefing (mobile) ── */
 @media (max-width: 768px) {
     .signal-header {
@@ -4232,6 +4275,16 @@ body.page-markets .market-status {
     .risk-meta {
         flex-direction: column;
         gap: 0.3rem;
+    }
+
+    .agenda-item {
+        flex-wrap: wrap;
+        gap: 0.3rem;
+    }
+
+    .agenda-impact {
+        max-width: 100%;
+        text-align: left;
     }
 }
 

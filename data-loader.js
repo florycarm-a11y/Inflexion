@@ -849,6 +849,23 @@ const DataLoader = (function () {
             briefing.sentiment_global === 'baissier' ? '#dc2626' :
             briefing.sentiment_global === 'mixte' ? '#eab308' : '#94a3b8';
 
+        // ── Agenda de la semaine (INSTRUCTION 3) ──
+        var agendaHTML = '';
+        if (briefing.agenda && briefing.agenda.length > 0) {
+            var agendaItems = briefing.agenda.map(function(evt) {
+                return '<div class="agenda-item">' +
+                    '<span class="agenda-date">' + (evt.date || '') + '</span>' +
+                    '<span class="agenda-heure">' + (evt.heure || '') + '</span>' +
+                    '<span class="agenda-event">' + inlineMarkdownToHTML(evt.evenement || '') + '</span>' +
+                    '<span class="agenda-impact">' + (evt.impact_attendu || '') + '</span>' +
+                '</div>';
+            }).join('');
+            agendaHTML = '<div class="briefing-agenda">' +
+                '<h3 class="briefing-section-title">Agenda de la semaine</h3>' +
+                agendaItems +
+            '</div>';
+        }
+
         // ── Horodatage précis (INSTRUCTION 10) ──
         var tsInfo = formatBriefingTimestamp(briefing.generated_at);
         var timestampHTML = '';
@@ -873,7 +890,8 @@ const DataLoader = (function () {
             (s.sous_titre ? '<p class="article-du-jour-subtitle">' + s.sous_titre + '</p>' : '') +
             '<div class="article-du-jour-content">' + contenuHTML + '</div>' +
             signauxHTML +
-            riskHTML;
+            riskHTML +
+            agendaHTML;
     }
 
     /**

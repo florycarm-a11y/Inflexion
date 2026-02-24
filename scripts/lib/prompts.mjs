@@ -690,6 +690,33 @@ Le briefing principal (hors JSON structurel) ne doit PAS dépasser 800 mots. Vis
 La densité informationnelle par mot prime sur le volume. Le lecteur doit lire le briefing en 3 min max.
 Si le contenu dépasse 800 mots, couper les redondances en priorité, puis les détails secondaires.
 
+## COUVERTURE GÉOGRAPHIQUE MULTI-ZONES (INSTRUCTION 2)
+Chaque briefing doit consacrer au moins un paragraphe aux marchés hors-US. Inclure au minimum :
+- Un indice européen (DAX, STOXX 600 ou CAC 40) avec variation %
+- Un indice asiatique (Nikkei ou Hang Seng) si disponible dans les données
+- Une devise majeure (EUR/USD ou USD/JPY)
+Expliquer en 1-2 phrases comment ces marchés confirment ou divergent du narratif US du jour.
+Ne JAMAIS produire un briefing exclusivement centré sur les États-Unis.
+
+## SCÉNARIOS ANCRÉS SUR UN CALENDRIER (INSTRUCTION 3)
+Chaque scénario conditionnel DOIT être associé à un catalyseur daté : publication macro (CPI, PCE, NFP),
+réunion de banque centrale, expiration d'options, discours officiel.
+Ajouter dans la synthèse une sous-section "**Agenda**" listant les 3-5 événements clés de la semaine
+avec date, heure (fuseau CET) et impact attendu. Ne jamais écrire un scénario sans horizon temporel.
+
+## ANALYSE GÉOPOLITIQUE APPROFONDIE (INSTRUCTION 7)
+Quand un risque géopolitique est identifié, développer en 3 temps dans le signal correspondant :
+1. Scénarios possibles (conciliant / sanctions / escalade)
+2. Précédent historique comparable avec impact marché observé
+3. Impacts sectoriels chiffrés pour le scénario central
+Ne jamais mentionner un risque géopolitique sans l'avoir analysé au moins une fois en profondeur.
+
+## TAUX, CRÉDIT ET DEVISES (INSTRUCTION 8)
+Intégrer dans la section Contexte les données obligataires et devises : Treasury 10Y, spread 10Y-2Y,
+dollar index (DXY) et EUR/USD. Expliquer en 1 phrase comment ces indicateurs confirment ou contredisent
+le régime de marché identifié. Exemple : "Le Treasury 10Y stable à 4,08 % et le spread 10Y-2Y à 0,60 %
+confirment un régime de transition sans signal de récession imminent (FRED)."
+
 ## Structure attendue (contraintes de longueur strictes)
 
 ### 1. Synthèse stratégique (200-300 mots)
@@ -698,19 +725,21 @@ Markdown explicites (##). Chaque paragraphe fait 2-3 phrases maximum.
 
 #### ## Contexte (80-120 mots)
 - Accroche percutante avec LE fait le plus structurant du jour
-- Poser le cadre : régime de marché (risk-on/off, rotation, attentisme), dynamique dominante
-- Mentionner les grandes lignes SANS développer — le développement est dans les Signaux
+- Poser le cadre : régime de marché, dynamique dominante
+- Inclure taux/devises (Treasury 10Y, spread, EUR/USD) pour confirmer le régime (INSTRUCTION 8)
+- Mentionner au moins un marché hors-US (INSTRUCTION 2)
 
 #### ## Risques & Opportunités — Liste structurée (puces Markdown)
 **Risques** (2-3 puces, 1 phrase chacune avec données) :
 - Menaces avec canal de transmission et actifs impactés
+- Risques géopolitiques développés en profondeur dans les Signaux (INSTRUCTION 7)
 
 **Opportunités** (1-2 puces, 1 phrase chacune) :
 - Signaux positifs ou divergences factuelles
 
 #### ## Perspectives (60-80 mots)
-- Implications concrètes pour les prochaines 48-72h
-- Scénarios conditionnels avec seuils clés à surveiller
+- Scénarios conditionnels DATÉS avec catalyseurs (INSTRUCTION 3)
+- **Agenda** : 3-5 événements clés de la semaine (date, heure CET, impact attendu)
 
 ### 2. Signaux clés (3-4) — LES ENJEUX DU JOUR (~300 mots total)
 Les signaux SONT les enjeux clés. Chaque signal développe un enjeu majeur du jour.
@@ -721,6 +750,8 @@ Pour chaque signal :
 - INTERCONNEXIONS obligatoires (min 2) : chaîne de causalité concrète avec chiffres
 - Régions et secteurs impactés
 - Les signaux doivent couvrir au minimum 3 catégories distinctes
+- Si un signal est géopolitique, appliquer l'analyse en 3 temps (INSTRUCTION 7) :
+  scénarios, précédent historique, impacts sectoriels chiffrés
 
 ### 3. Risk Radar (3 risques) (~150 mots total)
 Les 3 risques classés du plus probable/impactant au moins :
@@ -805,6 +836,14 @@ Le GLD ($481) n'est PAS le cours de l'once d'or (~$2 950 spot). L'USO ($80) n'es
       "horizon": "court_terme|moyen_terme",
       "impact_marche": "Actifs, direction et amplitude estimée",
       "description": "1-2 phrases : contexte, mécanisme de transmission, seuil de déclenchement"
+    }
+  ],
+  "agenda": [
+    {
+      "date": "JJ/MM",
+      "heure": "HHhMM CET",
+      "evenement": "Nom de l'événement (ex: CPI US, réunion BCE)",
+      "impact_attendu": "Fort|Modéré|Faible — actifs concernés"
     }
   ],
   "sentiment_global": "haussier|baissier|neutre|mixte",
