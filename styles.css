@@ -1941,6 +1941,22 @@ a {
     font-weight: 500;
 }
 
+/* Label ETF proxy pour cohérence sidebar/briefing (INSTRUCTION 5) */
+.etf-proxy-label {
+    font-size: 0.62rem;
+    color: rgba(255,255,255,0.35);
+    text-transform: none;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.etf-ticker {
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.35);
+    font-weight: 400;
+    margin-left: 0.2rem;
+}
+
 /* ============================================
    News List Items (home page)
    ============================================ */
@@ -3911,6 +3927,34 @@ body.page-markets .market-status {
     padding: 0.15rem 0.5rem;
     border-radius: var(--radius-sm);
     background: rgba(255, 255, 255, 0.05);
+}
+
+/* ── Horodatage précis du briefing (INSTRUCTION 10) ── */
+.briefing-timestamp {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    margin: 0.5rem 0 1rem;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: var(--radius-sm);
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.7);
+    flex-wrap: wrap;
+}
+
+.briefing-timestamp-label {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.briefing-market-status {
+    padding: 0.1rem 0.4rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
 }
 
 /* ── Titre de section (Signaux / Risk Radar) ── */

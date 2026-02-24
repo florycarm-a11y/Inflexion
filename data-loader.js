@@ -380,13 +380,15 @@ const DataLoader = (function () {
         // Construire les lignes du tableau marchés
         var rows = [];
 
-        // Ajouter les quotes US
+        // Ajouter les quotes US avec label ETF pour cohérence sidebar/briefing (INSTRUCTION 5)
+        rows.push('<div class="market-row market-row-separator"><span class="market-row-name market-section-label">March\u00e9s US <span class="etf-proxy-label">(ETF proxies)</span></span></div>');
         quotes.forEach(function(q) {
             for (var displayName in nameMap) {
                 var aliases = nameMap[displayName];
                 if (aliases.indexOf(q.name) !== -1 || aliases.indexOf(q.symbol) !== -1) {
                     var pct = formatPercent(q.change);
-                    rows.push(buildMarketRow(displayName, formatUSD(q.price), pct));
+                    var priceWithETF = formatUSD(q.price) + ' <span class="etf-ticker">' + q.symbol + '</span>';
+                    rows.push(buildMarketRow(displayName, priceWithETF, pct));
                     break;
                 }
             }
@@ -756,9 +758,9 @@ const DataLoader = (function () {
                         signal.interconnexions.map(function(inter) {
                             return '<div class="inter-item">' +
                                 '<span class="inter-arrow">→</span>' +
-                                '<strong>' + inter.secteur + '</strong> ' +
-                                '<span class="inter-impact">' + inter.impact + '</span>' +
-                                (inter.explication ? '<span class="inter-explication"> — ' + inter.explication + '</span>' : '') +
+                                '<strong>' + inlineMarkdownToHTML(inter.secteur) + '</strong> ' +
+                                '<span class="inter-impact">' + inlineMarkdownToHTML(inter.impact) + '</span>' +
+                                (inter.explication ? '<span class="inter-explication"> — ' + inlineMarkdownToHTML(inter.explication) + '</span>' : '') +
                             '</div>';
                         }).join('') +
                     '</div>';
@@ -777,10 +779,10 @@ const DataLoader = (function () {
                 return '<div class="signal-card ' + severiteClass + '">' +
                     '<div class="signal-header">' +
                         '<span class="signal-emoji">' + catEmoji + '</span>' +
-                        '<h4 class="signal-title">' + signal.titre + '</h4>' +
+                        '<h4 class="signal-title">' + inlineMarkdownToHTML(signal.titre) + '</h4>' +
                         '<span class="signal-severity-badge ' + severiteClass + '">' + signal.severite + '</span>' +
                     '</div>' +
-                    '<p class="signal-description">' + signal.description + '</p>' +
+                    '<p class="signal-description">' + inlineMarkdownToHTML(signal.description) + '</p>' +
                     interHTML +
                     regionsHTML +
                 '</div>';
@@ -804,13 +806,13 @@ const DataLoader = (function () {
                 return '<div class="risk-item ' + severiteClass + '">' +
                     '<div class="risk-header">' +
                         '<span class="risk-icon"></span>' +
-                        '<strong class="risk-title">' + risk.risque + '</strong>' +
+                        '<strong class="risk-title">' + inlineMarkdownToHTML(risk.risque) + '</strong>' +
                         '<span class="risk-severity-badge ' + severiteClass + '">' + risk.severite + '</span>' +
                     '</div>' +
-                    '<p class="risk-description">' + risk.description + '</p>' +
+                    '<p class="risk-description">' + inlineMarkdownToHTML(risk.description) + '</p>' +
                     '<div class="risk-meta">' +
                         '<span class="risk-proba">' + probaLabel + '</span>' +
-                        '<span class="risk-impact">Impact : ' + risk.impact_marche + '</span>' +
+                        '<span class="risk-impact">Impact : ' + inlineMarkdownToHTML(risk.impact_marche) + '</span>' +
                     '</div>' +
                 '</div>';
             }).join('');
@@ -836,15 +838,26 @@ const DataLoader = (function () {
             briefing.sentiment_global === 'baissier' ? '#dc2626' :
             briefing.sentiment_global === 'mixte' ? '#eab308' : '#94a3b8';
 
+        // ── Horodatage précis (INSTRUCTION 10) ──
+        var tsInfo = formatBriefingTimestamp(briefing.generated_at);
+        var timestampHTML = '';
+        if (tsInfo.timestamp) {
+            timestampHTML = '<div class="briefing-timestamp">' +
+                '<span class="briefing-timestamp-label">Derni\u00e8re mise \u00e0 jour : ' + tsInfo.timestamp + '</span>' +
+                (tsInfo.marketStatus ? '<span class="briefing-market-status">' + tsInfo.marketStatus + '</span>' : '') +
+            '</div>';
+        }
+
         // ── Assemblage final ──
         container.innerHTML = '' +
             '<div class="article-du-jour-header">' +
-                '<div class="article-du-jour-badge briefing-badge">Briefing Stratégique</div>' +
+                '<div class="article-du-jour-badge briefing-badge">Briefing Strat\u00e9gique</div>' +
                 '<time class="article-du-jour-date">' + formatArticleDate(briefing.date) + '</time>' +
                 '<span class="briefing-sentiment-indicator" style="color:' + sentimentColor + '">' +
                     (briefing.sentiment_global || 'neutre') +
                 '</span>' +
             '</div>' +
+            timestampHTML +
             '<h2 class="article-du-jour-title">' + s.titre + '</h2>' +
             (s.sous_titre ? '<p class="article-du-jour-subtitle">' + s.sous_titre + '</p>' : '') +
             '<div class="article-du-jour-content">' + contenuHTML + '</div>' +
@@ -917,12 +930,72 @@ const DataLoader = (function () {
         return '<p>' + html + '</p>';
     }
 
+    /**
+     * Convertit le Markdown inline en HTML sans ajouter de balises <p>.
+     * Pour les descriptions de signaux, risques et interconnexions.
+     */
+    function inlineMarkdownToHTML(text) {
+        if (!text) return '';
+        return text
+            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.+?)\*/g, '<em>$1</em>')
+            .replace(/\n/g, '<br>');
+    }
+
     function formatArticleDate(dateStr) {
         if (!dateStr) return '';
         var d = new Date(dateStr + 'T00:00:00');
         var months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin',
                       'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
         return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+    }
+
+    /**
+     * Formate un horodatage ISO en "JJ/MM/AAAA à HHhMM CET" et détermine l'état des marchés.
+     * @param {string} isoStr - Horodatage ISO (generated_at du briefing JSON)
+     * @returns {{ timestamp: string, marketStatus: string }}
+     */
+    function formatBriefingTimestamp(isoStr) {
+        if (!isoStr) return { timestamp: '', marketStatus: '' };
+        var d = new Date(isoStr);
+        // Convertir en CET (UTC+1) / CEST (UTC+2)
+        var cetOffset = 1; // CET par défaut
+        // Détection simplifiée CEST : dernier dimanche de mars → dernier dimanche d'octobre
+        var year = d.getUTCFullYear();
+        var marchLast = new Date(Date.UTC(year, 2, 31));
+        marchLast.setUTCDate(31 - marchLast.getUTCDay());
+        var octLast = new Date(Date.UTC(year, 9, 31));
+        octLast.setUTCDate(31 - octLast.getUTCDay());
+        if (d >= marchLast && d < octLast) cetOffset = 2; // CEST
+        var cetMs = d.getTime() + cetOffset * 3600000;
+        var cet = new Date(cetMs);
+        var dd = ('0' + cet.getUTCDate()).slice(-2);
+        var mm = ('0' + (cet.getUTCMonth() + 1)).slice(-2);
+        var yyyy = cet.getUTCFullYear();
+        var hh = ('0' + cet.getUTCHours()).slice(-2);
+        var min = ('0' + cet.getUTCMinutes()).slice(-2);
+        var tzLabel = cetOffset === 2 ? 'CEST' : 'CET';
+        var timestamp = dd + '/' + mm + '/' + yyyy + ' \u00e0 ' + hh + 'h' + min + ' ' + tzLabel;
+
+        // Déterminer l'état des marchés (heure CET)
+        var cetHour = cet.getUTCHours();
+        var cetDay = cet.getUTCDay(); // 0=dim, 6=sam
+        var marketStatus = '';
+        if (cetDay === 0 || cetDay === 6) {
+            marketStatus = 'March\u00e9s ferm\u00e9s (week-end)';
+        } else if (cetHour < 9) {
+            marketStatus = 'Pr\u00e9-ouverture europ\u00e9enne';
+        } else if (cetHour >= 9 && cetHour < 15) {
+            marketStatus = 'March\u00e9s europ\u00e9ens ouverts, pr\u00e9-ouverture US';
+        } else if (cetHour >= 15 && cetHour < 17) {
+            marketStatus = 'March\u00e9s europ\u00e9ens et US ouverts';
+        } else if (cetHour >= 17 && cetHour < 22) {
+            marketStatus = 'March\u00e9s europ\u00e9ens ferm\u00e9s, US ouverts';
+        } else {
+            marketStatus = 'March\u00e9s ferm\u00e9s';
+        }
+
+        return { timestamp: timestamp, marketStatus: marketStatus };
     }
 
     // ─── Filtrage par rubrique ──────────────────────────────
