@@ -634,10 +634,34 @@ La section "## Enjeux cles" est supprimee de `synthese.contenu`. Les signaux dev
 - Estimation mensuelle : ~510K → ~280K tokens/mois (reduction ~45%)
 
 **Fichiers modifies :**
-- `scripts/lib/prompts.mjs` : refonte DAILY_BRIEFING_SYSTEM_PROMPT (suppression "## Enjeux cles", ajout regle anti-redondance, signaux enrichis 4-6 phrases, longueur cible 1 500-2 000 mots) + refonte DAILY_BRIEFING_DELTA_SYSTEM_PROMPT (suppression "## Signaux confirmes ou inverses", longueur cible 800-1 200 mots)
+- `scripts/lib/prompts.mjs` : refonte DAILY_BRIEFING_SYSTEM_PROMPT (suppression "## Enjeux cles", ajout regle anti-redondance, signaux enrichis 4-6 phrases, longueur cible 1 500-2 000 mots, attribution obligatoire des sources) + refonte DAILY_BRIEFING_DELTA_SYSTEM_PROMPT (suppression "## Signaux confirmes ou inverses", longueur cible 800-1 200 mots, sourcing)
 - `scripts/generate-daily-briefing.mjs` : FULL_MAX_TOKENS 8500→5000, DELTA_MAX_TOKENS 4000→3000, consignes mises a jour avec regle anti-redondance et cibles de longueur
+- `scripts/fetch-data.mjs` : Le Figaro Conjoncture restreint a markets uniquement (etait markets+commodities), isRelevantForCategory utilise desormais \b (word boundary) pour les mots-cles courts (<=4 car.) au lieu de substring matching
 - `data-loader.js` : titre section "Signaux cles du jour" → "Enjeux cles du jour" (reflete le nouveau role)
 - `CLAUDE.md` : documentation session
+
+### Sourcing obligatoire dans les prompts
+
+**Contexte :** Le briefing presentait des donnees chiffrees sans attribution claire de leur source. Les correlations et flux estimes etaient presentes comme des faits, sans qualification. Un lecteur institutionnel a besoin de tracer chaque donnee vers sa source.
+
+**Regles ajoutees aux prompts (DAILY_BRIEFING_SYSTEM_PROMPT + delta) :**
+- Chaque donnee chiffree porte une attribution entre parentheses : "BTC a 63 099 $ (CoinGecko, 24h: -4,6%)"
+- Sources API identifiees : CoinGecko, Finnhub, FRED, ECB Data, metals.dev, DefiLlama, Alpha Vantage
+- Sources presse attribuees : "selon Al-Monitor", "(Reuters rapporte que...)"
+- Correlations et estimations internes qualifiees de "estimation Inflexion" ou "correlation calculee sur X jours"
+- Regle de tracabilite dans les interconnexions : chiffres issus des donnees API, estimations explicitement qualifiees
+
+### Fix classification RSS (articles hors-sujet)
+
+**Probleme :** Des articles sans rapport avec la finance (Alzheimer, faits divers) apparaissaient dans la rubrique "Matieres Premieres". Deux causes identifiees :
+
+1. **Le Figaro Conjoncture** etait en dual-category `['markets', 'commodities']` alors que c'est un flux macro/conjoncture economique, pas un flux matieres premieres. Les articles de conjoncture passaient le filtre commodities grace aux faux positifs de mots-cles.
+
+2. **Faux positifs de mots-cles courts** : `isRelevantForCategory()` utilisait `text.includes(kw)` (substring matching). Le mot-cle `'or'` (= gold) matchait "Chamfort", "encore", "or" au sens de "however". Idem pour `'mine'`, `'blé'`, etc. Un article "Alain Chamfort... Alzheimer" passait le filtre commodities a cause de "Chamf**or**t".
+
+**Corrections :**
+- `Le Figaro Conjoncture` : `cats: ['markets', 'commodities']` → `cats: ['markets']`
+- `isRelevantForCategory()` : pour les mots-cles <=4 caracteres, utilisation de `\b` (regex word boundary) au lieu de `includes()`. Ainsi `\bor\b` matche "l'or monte" mais pas "Chamfort" ni "encore".
 
 **PR #22** : Setup initial RSS feeds
 - Ajout premiers flux RSS (Le Figaro, TLDR, Les Echos, BFM, CoinTelegraph, etc.)

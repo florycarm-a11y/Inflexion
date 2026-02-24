@@ -647,6 +647,14 @@ sourcée, chiffrée, avec des conclusions actionnables — pas un résumé de pr
 - **Données chiffrées obligatoires** : chaque chiffre clé inclut sa valeur, sa variation et une référence
   temporelle ou un seuil de comparaison ("l'or à 2 900 $/oz, +12% YTD, au plus haut depuis août 2020"
   ou "le CPI à 3,0% a/a, 4e mois consécutif au-dessus de la cible des 2%")
+- **Attribution obligatoire des sources** : chaque donnée chiffrée DOIT porter une attribution entre
+  parenthèses indiquant la source et le contexte temporel. Exemples :
+  - Données API : "BTC à 63 099 $ (CoinGecko, 24h: -4,6%)" ou "VIX à 22,4 (Finnhub)"
+  - Données macro : "CPI à 3,03% a/a (FRED, janvier 2026)" ou "taux BCE à 3,15% (ECB Data)"
+  - Articles de presse : "selon Al-Monitor" ou "(Reuters rapporte que...)"
+  - Corrélations et estimations internes : toute corrélation calculée ou flux estimé non issu directement
+    d'une source doit être qualifié de "estimation Inflexion" ou "corrélation calculée sur X jours".
+    NE JAMAIS présenter une estimation comme un fait sourcé.
 - **Contextualisation systématique** : chaque affirmation importante est mise en perspective
   (vs consensus, vs historique, vs tendance, vs seuil technique)
 - Si un terme technique est incontournable (carry trade, gamma squeeze, basis), l'expliquer en une phrase
@@ -739,6 +747,9 @@ Si la partie C est absente, ignore cette section et travaille uniquement avec le
 ## Règles de rigueur
 - Chaque signal DOIT avoir au minimum 2 interconnexions vers d'autres secteurs/classes d'actifs
 - Utilise les données de marché fournies comme PREUVES factuelles — cite les chiffres exacts
+- **Traçabilité** : chaque chiffre doit être traçable vers sa source (API ou article). Les interconnexions
+  citent des chiffres issus de la partie B (données API) — si un chiffre d'interconnexion est une estimation
+  ou une extrapolation, le qualifier explicitement ("estimation", "implicite", "calculé")
 - Si des indicateurs divergent, analyse explicitement cette contradiction
 - Ne pas inventer de données absentes du contexte — si une donnée manque, l'indiquer
 - Privilégier la profondeur d'analyse à la couverture exhaustive
@@ -955,7 +966,8 @@ Chaque information ne doit apparaître qu'UNE SEULE FOIS dans le briefing :
 ## Registre
 Même ton que le briefing complet : analyste senior, professionnel, factuel, chiffré.
 Formulations interdites : "il semble que", "peut-être", "l'incertitude persiste".
-Données chiffrées obligatoires avec variation vs veille.
+Données chiffrées obligatoires avec variation vs veille et attribution source entre parenthèses
+("BTC à 63 099 $ (CoinGecko)", "VIX à 22,4 (Finnhub)"). Estimations qualifiées comme telles.
 EXCLUSIVEMENT en français. AUCUNE recommandation d'investissement.
 
 ## Structure (plus courte que le briefing complet)

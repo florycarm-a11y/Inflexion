@@ -450,7 +450,21 @@ function isRelevantForCategory(article, categoryKey, sourceName) {
     const text = ((article.title || '') + ' ' + (article.description || '')).toLowerCase();
 
     // Vérifier si au moins un mot-clé est présent
-    return keywords.some(kw => text.includes(kw.toLowerCase()));
+    // Pour les mots courts (≤4 car.), on utilise une frontière de mot (\b) pour
+    // éviter les faux positifs (ex: "or" matchait "encore", "Chamfort", etc.)
+    return keywords.some(kw => {
+        const kwLower = kw.toLowerCase();
+        if (kwLower.length <= 4) {
+            // Mot court → regex avec frontières de mot
+            try {
+                const regex = new RegExp('\\b' + kwLower.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b');
+                return regex.test(text);
+            } catch {
+                return text.includes(kwLower);
+            }
+        }
+        return text.includes(kwLower);
+    });
 }
 
 // ─── Sources RSS (gratuit, pas de clé API) ───────────────
@@ -511,7 +525,7 @@ const RSS_SOURCES = [
 
     // 🇫🇷 Presse française — Économie & Finance
     { url: 'https://www.lefigaro.fr/rss/figaro_economie.xml',           source: 'Le Figaro Éco',       cats: ['markets'] },
-    { url: 'https://www.lefigaro.fr/rss/figaro_conjoncture.xml',        source: 'Le Figaro',            cats: ['markets', 'commodities'] },
+    { url: 'https://www.lefigaro.fr/rss/figaro_conjoncture.xml',        source: 'Le Figaro',            cats: ['markets'] },
     { url: 'https://www.lefigaro.fr/rss/figaro_societes.xml',           source: 'Le Figaro Sociétés',   cats: ['markets'] },
     { url: 'https://www.lefigaro.fr/rss/figaro_flash-eco.xml',          source: 'Le Figaro Flash Éco',  cats: ['markets'] },
     { url: 'https://syndication.lesechos.fr/rss/rss_une_titres.xml',    source: 'Les Echos',            cats: ['markets'] },
@@ -575,7 +589,7 @@ const RSS_SOURCES = [
     // ╚══════════════════════════════════════════════════════════╝
 
     // 🇫🇷 Conjoncture française (aussi commodités)
-    // (Le Figaro Conjoncture est déjà en dual-cat markets+commodities ci-dessus)
+    // (Le Figaro Conjoncture est en markets uniquement — conjoncture = macro/économie, pas commodities)
 
     // 🛢️ Énergie & Pétrole
     { url: 'https://oilprice.com/rss/main',                             source: 'OilPrice',             cats: ['commodities'], lang: 'en' },
