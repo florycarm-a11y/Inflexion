@@ -263,11 +263,19 @@ function formatNewsContext(articles) {
  */
 function formatMarkets(data) {
     if (!data?.quotes?.length) return null;
-    const lines = ['## 📊 Indices boursiers (Finnhub)'];
+    // IMPORTANT : Finnhub retourne des ETF proxies (SPY, QQQ, DIA, GLD, USO),
+    // pas les indices eux-mêmes. Le prix est celui de l'ETF en $, pas le niveau
+    // de l'indice en points. On le signale explicitement pour que Claude ne
+    // confonde pas "$682 SPY" avec "5 200 pts S&P 500".
+    const lines = ['## 📊 Marchés (Finnhub — prix ETF proxies, variations fiables)'];
     for (const q of data.quotes) {
         const sign = q.change > 0 ? '+' : '';
-        lines.push(`- **${q.name}** (${q.symbol}): $${q.price} (${sign}${q.change.toFixed(2)}%)`);
+        lines.push(`- **${q.name}** — ETF ${q.symbol}: $${q.price} (${sign}${q.change.toFixed(2)}%)`);
     }
+    lines.push('');
+    lines.push('> Note : les prix ci-dessus sont ceux des ETF (SPY, QQQ, DIA, GLD, USO), pas les niveaux d\'indices.');
+    lines.push('> Les **variations (%)** reflètent fidèlement les mouvements des indices sous-jacents.');
+    lines.push('> Dans le briefing, utiliser les noms d\'indices (S&P 500, Nasdaq, Dow Jones) avec les variations (%), mais NE PAS citer les prix ETF en $ comme s\'il s\'agissait de niveaux d\'indices en points.');
     return lines.join('\n');
 }
 

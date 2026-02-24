@@ -744,6 +744,17 @@ Exploite ce contexte pour :
 - **Détection de tendances** : identifier les signaux qui se répètent ou s'inversent
 Si la partie C est absente, ignore cette section et travaille uniquement avec les parties A et B.
 
+## Nomenclature indices vs ETF (IMPORTANT)
+Les données Finnhub (partie B) fournissent les prix d'**ETF proxies** (SPY, QQQ, DIA, GLD, USO), PAS les
+niveaux d'indices en points. Règles strictes :
+- **Utiliser les noms d'indices** dans le texte : "S&P 500", "Nasdaq 100", "Dow Jones" (pas "SPY", "QQQ", "DIA")
+- **Citer les variations (%)** qui sont identiques entre l'ETF et l'indice : "S&P 500 -1,02% (Finnhub)"
+- **NE JAMAIS citer un prix d'ETF en $ comme un niveau d'indice en points** : "$682 SPY" ≠ "5 200 pts S&P 500"
+- Si tu veux mentionner un niveau d'indice en points, tu dois le calculer ou le sourcer explicitement.
+  Sinon, reste aux variations en % qui sont fiables.
+- Pour l'or (GLD) et le pétrole (USO), même logique : citer la variation %, pas le prix de l'ETF
+  comme s'il s'agissait du cours du sous-jacent (or ≠ GLD, Brent ≠ USO)
+
 ## Règles de rigueur
 - Chaque signal DOIT avoir au minimum 2 interconnexions vers d'autres secteurs/classes d'actifs
 - Utilise les données de marché fournies comme PREUVES factuelles — cite les chiffres exacts

@@ -663,5 +663,17 @@ La section "## Enjeux cles" est supprimee de `synthese.contenu`. Les signaux dev
 - `Le Figaro Conjoncture` : `cats: ['markets', 'commodities']` → `cats: ['markets']`
 - `isRelevantForCategory()` : pour les mots-cles <=4 caracteres, utilisation de `\b` (regex word boundary) au lieu de `includes()`. Ainsi `\bor\b` matche "l'or monte" mais pas "Chamfort" ni "encore".
 
+### Fix nomenclature ETF vs indices
+
+**Probleme :** Finnhub retourne les prix d'ETF proxies (SPY $682, QQQ $601, DIA $488, GLD $481, USO $80) et non les niveaux d'indices en points (S&P 500 ~5 200 pts). Le script `formatMarkets` presentait ces donnees comme "S&P 500 (SPY): $682.39", et Claude les interpretait comme des niveaux d'indice. Resultat : "S&P sous 5 050 pts (soit -2% vs 682,39 $ SPY)" — un melange confus.
+
+**Corrections :**
+- `formatMarkets()` dans `generate-daily-briefing.mjs` : clarification que ce sont des ETF proxies (titre, labels, note explicite). Les variations % restent fiables car identiques entre ETF et indice.
+- Nouvelle section "Nomenclature indices vs ETF" dans `DAILY_BRIEFING_SYSTEM_PROMPT` : regle stricte de ne jamais citer un prix ETF en $ comme un niveau d'indice en points. Utiliser les noms d'indices + variations % uniquement.
+
+**Fichiers modifies :**
+- `scripts/generate-daily-briefing.mjs` : refonte `formatMarkets()` avec labels ETF et note explicative
+- `scripts/lib/prompts.mjs` : +section "Nomenclature indices vs ETF" dans DAILY_BRIEFING_SYSTEM_PROMPT
+
 **PR #22** : Setup initial RSS feeds
 - Ajout premiers flux RSS (Le Figaro, TLDR, Les Echos, BFM, CoinTelegraph, etc.)
