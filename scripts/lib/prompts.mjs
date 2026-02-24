@@ -748,12 +748,24 @@ Si la partie C est absente, ignore cette section et travaille uniquement avec le
 Les données Finnhub (partie B) fournissent les prix d'**ETF proxies** (SPY, QQQ, DIA, GLD, USO), PAS les
 niveaux d'indices en points. Règles strictes :
 - **Utiliser les noms d'indices** dans le texte : "S&P 500", "Nasdaq 100", "Dow Jones" (pas "SPY", "QQQ", "DIA")
-- **Citer les variations (%)** qui sont identiques entre l'ETF et l'indice : "S&P 500 -1,02% (Finnhub)"
-- **NE JAMAIS citer un prix d'ETF en $ comme un niveau d'indice en points** : "$682 SPY" ≠ "5 200 pts S&P 500"
+- **Citer les variations (%)** qui sont identiques entre l'ETF et l'indice
+- **NE JAMAIS citer un prix d'ETF en $ comme un niveau d'indice en points**
 - Si tu veux mentionner un niveau d'indice en points, tu dois le calculer ou le sourcer explicitement.
   Sinon, reste aux variations en % qui sont fiables.
-- Pour l'or (GLD) et le pétrole (USO), même logique : citer la variation %, pas le prix de l'ETF
-  comme s'il s'agissait du cours du sous-jacent (or ≠ GLD, Brent ≠ USO)
+
+**Exemples concrets :**
+- ✅ "S&P 500 en repli de 1,02 % sur la séance (Finnhub)"
+- ✅ "Nasdaq 100 -1,22 % (Finnhub), entraîné par les valeurs tech"
+- ❌ "S&P 500 à 682,39 $" ← c'est le prix du SPY, pas un niveau d'indice
+- ❌ "le S&P 500 passe sous les 680 points" ← 680 est le prix du SPY en dollars
+
+**Matières premières (GLD, USO) — attention au piège :**
+Le GLD ($481) n'est PAS le cours de l'once d'or (~$2 950 spot). L'USO ($80) n'est PAS le prix du baril.
+- ✅ "L'or progresse de 2,70 % (Finnhub)" — variation fiable
+- ✅ "L'or à 2 948 $/oz (metals.dev)" — si le prix spot est fourni dans les données
+- ❌ "L'or à 481,28 $" ← c'est le prix de l'ETF GLD, pas le cours de l'once
+- ❌ "Le pétrole à 80,90 $" ← c'est le prix de l'ETF USO, pas le Brent ni le WTI
+- Pour GLD/USO : utiliser UNIQUEMENT les variations (%) OU le prix spot s'il est fourni dans la partie commodités
 
 ## Règles de rigueur
 - Chaque signal DOIT avoir au minimum 2 interconnexions vers d'autres secteurs/classes d'actifs
@@ -973,6 +985,12 @@ Chaque information ne doit apparaître qu'UNE SEULE FOIS dans le briefing :
 - **Synthèse** : vue d'ensemble des évolutions vs hier + perspectives actualisées. PAS de détail par signal.
 - **Signaux** : les enjeux NOUVEAUX ou significativement évolués, avec analyse approfondie.
 - **Risk Radar** : risques mis à jour avec probabilité et seuils. Ne pas re-décrire les signaux.
+
+## Nomenclature indices vs ETF
+Les données Finnhub sont des ETF proxies (SPY, QQQ, DIA, GLD, USO), PAS des niveaux d'indices.
+- ✅ "S&P 500 -1,02 % (Finnhub)" — ✅ "L'or +2,70 % (Finnhub)"
+- ❌ "S&P 500 à 682 $" (= prix SPY) — ❌ "L'or à 481 $" (= prix GLD, l'once spot est ~$2 950)
+Règle : citer les variations (%) ou le prix spot si fourni, JAMAIS le prix de l'ETF comme cours du sous-jacent.
 
 ## Registre
 Même ton que le briefing complet : analyste senior, professionnel, factuel, chiffré.

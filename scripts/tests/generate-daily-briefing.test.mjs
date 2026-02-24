@@ -200,7 +200,7 @@ describe('C. formatMarkets', () => {
             ]
         };
         const result = formatMarkets(data);
-        assert.ok(result.includes('Indices boursiers'));
+        assert.ok(result.includes('Marchés'));
         assert.ok(result.includes('S&P 500'));
         assert.ok(result.includes('+1.20%'));
         assert.ok(result.includes('Nasdaq'));
@@ -210,6 +210,27 @@ describe('C. formatMarkets', () => {
         const data = { quotes: [{ name: 'Test', symbol: 'T', price: 100, change: 2.5 }] };
         const result = formatMarkets(data);
         assert.ok(result.includes('+2.50%'));
+    });
+
+    it('enrichit GLD avec le prix spot or quand disponible', () => {
+        const data = { quotes: [{ name: 'Or (ETF)', symbol: 'GLD', price: 481.28, change: 2.70 }] };
+        const commodities = { metals: { gold: { price_usd: 2948 } } };
+        const result = formatMarkets(data, commodities);
+        assert.ok(result.includes('spot or'));
+        assert.ok(result.includes('$2948/oz'));
+    });
+
+    it('avertit quand le prix spot or est indisponible', () => {
+        const data = { quotes: [{ name: 'Or (ETF)', symbol: 'GLD', price: 481.28, change: 2.70 }] };
+        const result = formatMarkets(data);
+        assert.ok(result.includes('Pas de prix spot'));
+        assert.ok(result.includes('UNIQUEMENT la variation'));
+    });
+
+    it('labellise USO clairement comme non-equivalent au baril', () => {
+        const data = { quotes: [{ name: 'Pétrole (ETF)', symbol: 'USO', price: 80.9, change: 0.06 }] };
+        const result = formatMarkets(data);
+        assert.ok(result.includes('PAS le prix du baril'));
     });
 });
 

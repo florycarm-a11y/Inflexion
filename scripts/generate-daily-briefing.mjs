@@ -261,21 +261,40 @@ function formatNewsContext(articles) {
  * @param {Object} data - Contenu de markets.json
  * @returns {string|null} Section markdown ou null si données absentes
  */
-function formatMarkets(data) {
+function formatMarkets(data, commoditiesData) {
     if (!data?.quotes?.length) return null;
     // IMPORTANT : Finnhub retourne des ETF proxies (SPY, QQQ, DIA, GLD, USO),
     // pas les indices eux-mêmes. Le prix est celui de l'ETF en $, pas le niveau
     // de l'indice en points. On le signale explicitement pour que Claude ne
     // confonde pas "$682 SPY" avec "5 200 pts S&P 500".
-    const lines = ['## 📊 Marchés (Finnhub — prix ETF proxies, variations fiables)'];
+
+    // Récupérer les prix spot des commodités si disponibles (metals.dev)
+    const spotGold = commoditiesData?.metals?.gold?.price_usd;
+    const spotSilver = commoditiesData?.metals?.silver?.price_usd;
+
+    const lines = ['## 📊 Marchés (Finnhub — ETF proxies, seules les variations % sont exploitables)'];
     for (const q of data.quotes) {
         const sign = q.change > 0 ? '+' : '';
-        lines.push(`- **${q.name}** — ETF ${q.symbol}: $${q.price} (${sign}${q.change.toFixed(2)}%)`);
+        const pctStr = `${sign}${q.change.toFixed(2)}%`;
+
+        if (q.symbol === 'GLD') {
+            const spotInfo = spotGold ? ` | spot or : $${Math.round(spotGold)}/oz (metals.dev)` : '';
+            lines.push(`- **Or** — ETF GLD: $${q.price} (${pctStr})${spotInfo}`);
+            if (!spotGold) {
+                lines.push(`  ⚠ Pas de prix spot disponible — utiliser UNIQUEMENT la variation (${pctStr})`);
+            }
+        } else if (q.symbol === 'USO') {
+            lines.push(`- **Pétrole** — ETF USO: $${q.price} (${pctStr}) — PAS le prix du baril`);
+            lines.push(`  ⚠ USO est un ETF structuré, son prix ($${q.price}) ≠ cours du Brent/WTI. Utiliser UNIQUEMENT la variation (${pctStr})`);
+        } else {
+            lines.push(`- **${q.name}** — ETF ${q.symbol}: $${q.price} (${pctStr})`);
+        }
     }
     lines.push('');
-    lines.push('> Note : les prix ci-dessus sont ceux des ETF (SPY, QQQ, DIA, GLD, USO), pas les niveaux d\'indices.');
-    lines.push('> Les **variations (%)** reflètent fidèlement les mouvements des indices sous-jacents.');
-    lines.push('> Dans le briefing, utiliser les noms d\'indices (S&P 500, Nasdaq, Dow Jones) avec les variations (%), mais NE PAS citer les prix ETF en $ comme s\'il s\'agissait de niveaux d\'indices en points.');
+    lines.push('> RÈGLE : les prix ci-dessus sont des ETF. Dans le briefing :');
+    lines.push('>  - Indices (SPY/QQQ/DIA) → écrire "S&P 500", "Nasdaq 100", "Dow Jones" + variation %');
+    lines.push('>  - Or (GLD) → écrire "l\'or" + variation % ou prix spot si fourni ci-dessus. JAMAIS $481 comme prix de l\'once');
+    lines.push('>  - Pétrole (USO) → écrire "le pétrole" + variation %. JAMAIS $80 comme prix du baril');
     return lines.join('\n');
 }
 
@@ -572,7 +591,7 @@ async function main() {
 
     // Données de marché (les PREUVES chiffrées pour les interconnexions)
     const marketSections = [
-        formatMarkets(sources.markets),
+        formatMarkets(sources.markets, sources.commodities),
         formatEuropeanMarkets(sources.europeanMarkets),
         formatCrypto(sources.crypto),
         formatFearGreed(sources.fearGreed),
