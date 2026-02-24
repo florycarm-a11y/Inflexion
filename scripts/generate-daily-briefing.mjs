@@ -42,8 +42,8 @@ const DRY_RUN = process.argv.includes('--dry-run');
 // Cycle hebdomadaire : Sonnet le lundi (briefing complet), Haiku les autres jours (delta)
 const FULL_MODEL = 'claude-sonnet-4-5-20250929';
 const DELTA_MODEL = 'claude-haiku-4-5-20251001';
-const FULL_MAX_TOKENS = 8500;
-const DELTA_MAX_TOKENS = 4000;
+const FULL_MAX_TOKENS = 5000;
+const DELTA_MAX_TOKENS = 3000;
 
 /**
  * Détermine si aujourd'hui est un jour de briefing complet (lundi) ou delta.
@@ -678,16 +678,19 @@ async function main() {
         ? `Produis le briefing stratégique quotidien en respectant ces priorités :
 1. **Identifier le fait le plus structurant** du jour (pas le plus spectaculaire — le plus significatif pour un investisseur)
 2. **Croiser les actualités (partie A) avec les données chiffrées (partie B)** pour établir des chaînes de causalité concrètes
-3. **Chaque interconnexion doit citer des chiffres** tirés de la partie B comme preuves factuelles
-4. **Signaler les divergences** si des indicateurs envoient des signaux contradictoires
-5. **Ne pas inventer de données** absentes des parties A et B — si une information manque, le mentionner${ragContext ? '\n6. **Exploiter le contexte historique (partie C)** pour la continuité narrative : signaler les évolutions par rapport aux briefings précédents, identifier les tendances qui se confirment ou s\'inversent' : ''}`
+3. **ANTI-REDONDANCE** : la synthèse pose le cadre macro (Contexte + Risques/Opportunités + Perspectives), les signaux portent l'analyse détaillée. Ne pas répéter les mêmes données dans les deux.
+4. **Chaque interconnexion doit citer des chiffres** tirés de la partie B comme preuves factuelles
+5. **Signaler les divergences** si des indicateurs envoient des signaux contradictoires
+6. **Ne pas inventer de données** absentes des parties A et B — si une information manque, le mentionner
+7. **Viser 1 500-2 000 mots au total** (synthèse ~400 mots + signaux ~800 mots + risk radar ~300 mots)${ragContext ? '\n8. **Exploiter le contexte historique (partie C)** pour la continuité narrative : signaler les évolutions par rapport aux briefings précédents, identifier les tendances qui se confirment ou s\'inversent' : ''}`
         : `Produis la MISE À JOUR du briefing en respectant ces priorités :
 1. **Comparer avec le briefing de la veille (partie D)** — qu'est-ce qui a changé ?
 2. **Ne pas répéter** les analyses déjà faites hier — se concentrer sur le NOUVEAU
-3. **Chiffrer les évolutions** vs la veille ("le VIX est passé de X à Y", "le BTC a gagné/perdu X%")
-4. **Signaler les signaux confirmés ou inversés** par rapport à hier
+3. **ANTI-REDONDANCE** : la synthèse cadre les évolutions, les signaux analysent en détail. Pas de duplication.
+4. **Chiffrer les évolutions** vs la veille ("le VIX est passé de X à Y", "le BTC a gagné/perdu X%")
 5. **Mettre à jour le risk radar** — probabilités et sévérités évoluent-elles ?
-6. **Ne pas inventer de données** absentes des parties A, B et D`;
+6. **Ne pas inventer de données** absentes des parties A, B et D
+7. **Viser 800-1 200 mots au total**`;
 
     const userMessage = `# ${useFullMode ? 'Briefing stratégique' : 'Mise à jour quotidienne'} Inflexion — ${today()}
 

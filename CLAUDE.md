@@ -604,5 +604,40 @@ python scripts/check-french.py
 - `expertise.html` : overlay titre "Navigation" + accents francais retablis
 - `CLAUDE.md` : documentation session
 
+### Session 2026-02-24 — Reduction redondance briefing strategique (~50% tokens)
+
+**Contexte :** Le briefing strategique quotidien contenait une redondance structurelle majeure : la section "Enjeux cles" dans `synthese.contenu` (3 points × ~100 mots) repetait les memes themes et donnees que le tableau `signaux[]` (3-5 signaux structures avec interconnexions). Le Risk Radar reprenait egalement les memes sujets. Resultat : ~4 000 mots avec triple repetition des memes informations (crypto capitulation, rotation defensive, tensions geopolitiques traitees 3 fois avec des chiffres quasi identiques). Un briefing strategique efficace doit viser 1 500-2 000 mots pour rester un outil de decision rapide.
+
+**Solution : fusion "Enjeux cles" dans les Signaux structures**
+
+La section "## Enjeux cles" est supprimee de `synthese.contenu`. Les signaux deviennent les enjeux cles du jour — ils portent deja l'analyse detaillee, les interconnexions et les donnees chiffrees. Chaque information n'apparait desormais qu'UNE SEULE FOIS dans le briefing.
+
+**Nouvelle architecture editoriale (3 blocs complementaires) :**
+
+| Bloc | Role | Longueur |
+|------|------|----------|
+| **Synthese** (Contexte + Risques/Opportunites + Perspectives) | Vue d'ensemble macro, regime de marche, cadrage | 350-500 mots |
+| **Signaux** (3-4 enjeux cles structures) | Analyse approfondie par enjeu, interconnexions, donnees chiffrees | ~800 mots |
+| **Risk Radar** (3 risques) | Probabilite, seuils de declenchement, impact marche | ~300 mots |
+| **Total** | | **1 500-2 000 mots** (vs ~4 000 avant) |
+
+**Regle anti-redondance ajoutee aux prompts :**
+- Chaque fait (ex: "BTC -4,6%") est mentionne une seule fois
+- La synthese pose le cadre SANS developper — le developpement est dans les Signaux
+- Le Risk Radar se concentre sur les risques de materialisation, sans re-decrire les signaux
+
+**Economies realisees :**
+- `FULL_MAX_TOKENS` : 8 500 → 5 000 (reduction 41%)
+- `DELTA_MAX_TOKENS` : 4 000 → 3 000 (reduction 25%)
+- Longueur briefing complet : ~4 000 → ~1 750 mots (reduction ~56%)
+- Longueur briefing delta : ~1 500 → ~1 000 mots (reduction ~33%)
+- Estimation mensuelle : ~510K → ~280K tokens/mois (reduction ~45%)
+
+**Fichiers modifies :**
+- `scripts/lib/prompts.mjs` : refonte DAILY_BRIEFING_SYSTEM_PROMPT (suppression "## Enjeux cles", ajout regle anti-redondance, signaux enrichis 4-6 phrases, longueur cible 1 500-2 000 mots) + refonte DAILY_BRIEFING_DELTA_SYSTEM_PROMPT (suppression "## Signaux confirmes ou inverses", longueur cible 800-1 200 mots)
+- `scripts/generate-daily-briefing.mjs` : FULL_MAX_TOKENS 8500→5000, DELTA_MAX_TOKENS 4000→3000, consignes mises a jour avec regle anti-redondance et cibles de longueur
+- `data-loader.js` : titre section "Signaux cles du jour" → "Enjeux cles du jour" (reflete le nouveau role)
+- `CLAUDE.md` : documentation session
+
 **PR #22** : Setup initial RSS feeds
 - Ajout premiers flux RSS (Le Figaro, TLDR, Les Echos, BFM, CoinTelegraph, etc.)
