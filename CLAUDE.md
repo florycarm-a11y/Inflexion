@@ -731,5 +731,48 @@ La section "## Enjeux cles" est supprimee de `synthese.contenu`. Les signaux dev
 - `scripts/generate-daily-briefing.mjs` : refonte `formatMarkets()` avec labels ETF et note explicative
 - `scripts/lib/prompts.mjs` : +section "Nomenclature indices vs ETF" dans DAILY_BRIEFING_SYSTEM_PROMPT
 
+### Session 2026-02-25 — Recherche hybride RAG + evaluateur anti-hallucination (Sprints 1 & 2)
+
+**Contexte :** Le systeme RAG reposait uniquement sur la similarite cosinus (embeddings MiniLM-L6-v2, 384D). Les acronymes, tickers et noms propres (BCE, VIX, BTC, OPEC) se retrouvaient noyes dans des voisinages semantiques proches sans remonter correctement. Par ailleurs, le briefing genere par Claude n'avait aucun mecanisme de verification factuelle post-generation.
+
+**Sprint 1 — Recherche hybride (Vectorielle + Mots-cles)**
+
+Enrichissement de `searchArticles()` et `searchBriefings()` pour combiner score vectoriel et score lexical :
+
+- `extractKeywords(text)` : extraction de mots-cles significatifs avec stopwords FR+EN (~90 mots), normalisation accents (NFD), deduplication
+- `keywordScore(queryKeywords, docText)` : scoring lexical 0-1 avec word boundaries `\b` pour mots courts (<=4 car.) — meme pattern anti-faux-positifs que `fetch-data.mjs`
+- `VECTOR_WEIGHT = 0.7` / `KEYWORD_WEIGHT = 0.3` : constantes exportees, ajustables sans toucher la logique
+- `cosineSimilarity()` inlinee dans `rag-store.mjs` (decouplage de `embeddings.mjs` qui charge `@xenova/transformers`)
+- Retrocompatibilite : sans `queryText`, comportement 100% vectoriel inchange
+
+**Score hybride :** `score_final = (cosinus * 0.7) + (lexical * 0.3)`
+
+**Sprint 2 — Evaluateur anti-hallucination**
+
+Nouveau module `scripts/lib/claim-verifier.mjs` — verification post-generation :
+
+- `buildReferenceMap(sources)` : dictionnaire de ~30+ valeurs tracables depuis les 12 sources JSON (markets, crypto, macro, FNG, VIX, commodities, indices EU, forex, DeFi, on-chain)
+- `extractClaims(text)` : regex FR/EN pour 4 types de claims — prix (`$63 099`), pourcentages (`+2,5%`), valeurs unitaires (`25,3 points`, `40 gwei`), scores (`25/100`)
+- `verifyClaims(claims, refMap)` : matching par valeur avec tolerance (`PRICE_TOLERANCE = 1%`, `PCT_TOLERANCE = 0.5pt`). Statuts : `verified` (exact), `approximate` (dans tolerance), `unverified`
+- `evaluateBriefing(briefing, sources)` : orchestrateur retournant `{ score, totalClaims, verified, unverified, pass, details[] }`
+- `MIN_ACCEPTABLE_SCORE = 0.6` : seuil d'alerte
+
+**Integration dans le pipeline :**
+- Etape 7 de `generate-daily-briefing.mjs` (entre generation Claude et sauvegarde)
+- Log console detaille des claims non tracables
+- Rapport `_verification` integre au JSON `daily-briefing.json`
+- Score affiche dans le resume final
+
+**Fichiers crees :**
+- `scripts/lib/claim-verifier.mjs` : module evaluateur complet
+- `scripts/tests/lib/rag-store.test.mjs` : 23 tests (extractKeywords, keywordScore, searchArticles hybride, searchBriefings hybride)
+- `scripts/tests/lib/claim-verifier.test.mjs` : 34 tests (buildReferenceMap, extractClaims, verifyClaims, flattenBriefingText, evaluateBriefing)
+
+**Fichiers modifies :**
+- `scripts/lib/rag-store.mjs` : +cosineSimilarity inline, +stopwords, +extractKeywords, +keywordScore, +VECTOR/KEYWORD_WEIGHT, searchArticles/searchBriefings hybrides
+- `scripts/generate-daily-briefing.mjs` : +import claim-verifier, +queryText dans appels RAG, +etape 7 verification, +_verification dans output, +score dans resume
+
+**Tests : 86 total (23 RAG + 34 claim-verifier + 29 briefing existants)**
+
 **PR #22** : Setup initial RSS feeds
 - Ajout premiers flux RSS (Le Figaro, TLDR, Les Echos, BFM, CoinTelegraph, etc.)
