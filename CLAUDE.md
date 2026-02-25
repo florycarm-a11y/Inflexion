@@ -774,5 +774,67 @@ Nouveau module `scripts/lib/claim-verifier.mjs` — verification post-generation
 
 **Tests : 86 total (23 RAG + 34 claim-verifier + 29 briefing existants)**
 
+## 11. Roadmap RAG & Qualite (Sprints 3-8)
+
+### Sprint 3 — Doctrine RAG + garde-fous prompt
+**Statut :** A faire
+**Objectif :** Renforcer les prompts pour que Claude exploite mieux le contexte RAG et prevenir les hallucinations en amont (pas seulement post-generation).
+**Modifications :**
+1. Ajouter une section "Utilisation du contexte historique (RAG)" dans `DAILY_BRIEFING_SYSTEM_PROMPT` (`scripts/lib/prompts.mjs`) — regles : comparer signaux du jour vs briefings precedents, signaler tendances confirmees/inversees, ne jamais inventer un chiffre absent du contexte ("donnee indisponible")
+2. Sanitizer anti-injection dans `scripts/generate-daily-briefing.mjs` — strip HTML, troncature, detection patterns suspects dans le texte des articles RAG avant injection dans le prompt Claude
+3. Feedback loop : si le briefing precedent a un `_verification.score < 0.6`, injecter une consigne de rigueur supplementaire dans le prompt delta
+4. Tests unitaires pour le sanitizer. Mettre a jour CLAUDE.md.
+
+### Sprint 4 — Persistance embeddings + cache RAG
+**Statut :** A faire
+**Objectif :** Eviter de recalculer les embeddings d'articles deja traites. Gain de temps cible : ~15s → ~3s.
+**Modifications :**
+1. Sauvegarder les embeddings dans `data/embeddings-cache.json` (hash du texte → vecteur 384D)
+2. Invalider le cache quand le texte source change (comparaison hash SHA-256)
+3. TTL de 7 jours sur les entrees du cache (les articles anciens ne servent plus au RAG)
+4. Mesurer le gain de temps (log avant/apres)
+**Fichiers :** `scripts/lib/rag-store.mjs`, `scripts/lib/embeddings.mjs`
+
+### Sprint 5 — Ponderation temporelle du RAG
+**Statut :** A faire
+**Objectif :** Un article de 2h doit peser plus qu'un article de 7 jours dans les resultats RAG.
+**Modifications :**
+1. `recencyBoost(publishedAt)` dans `searchArticles()` — bonus degressif : <6h = +0.15, <24h = +0.10, <48h = +0.05, >48h = 0
+2. Idem pour `searchBriefings()`
+3. Score final : `(cosinus * 0.6) + (lexical * 0.25) + (recency * 0.15)`
+4. Exporter `RECENCY_WEIGHT = 0.15` comme constante ajustable
+**Fichiers :** `scripts/lib/rag-store.mjs`
+
+### Sprint 6 — Detection de contradictions cross-sources
+**Statut :** A faire
+**Objectif :** Detecter et signaler quand deux sources donnent des chiffres divergents sur le meme indicateur.
+**Modifications :**
+1. Nouveau module `scripts/lib/contradiction-detector.mjs` — compare les valeurs entre sources pour les memes indicateurs
+2. Tolerance par type : crypto ±2%, indices ±0.5%, forex ±0.1%
+3. Si contradiction detectee, flag dans le contexte RAG : "Attention : divergence BTC entre CoinGecko ($63k) et Messari ($62.5k)"
+4. Integration dans `generate-daily-briefing.mjs` entre chargement donnees et construction prompt
+**Fichiers :** nouveau `scripts/lib/contradiction-detector.mjs`, `scripts/generate-daily-briefing.mjs`
+
+### Sprint 7 — Dashboard qualite briefing (frontend)
+**Statut :** A faire
+**Objectif :** Widget sidebar affichant le score de verification du briefing et le detail des claims.
+**Modifications :**
+1. Lire `_verification` depuis `daily-briefing.json` dans `data-loader.js`
+2. Widget sidebar : score global (jauge coloree), claims verifies/non verifies, tooltips
+3. Badge de confiance : vert (>80%), orange (60-80%), rouge (<60%)
+4. CSS responsive
+**Fichiers :** `data-loader.js`, `index.html`, `styles.css`
+
+### Sprint 8 — Tests d'integration end-to-end pipeline RAG
+**Statut :** A faire
+**Objectif :** Couvrir le pipeline RAG complet avec des tests d'integration (fixtures → embeddings → search → prompt → verification).
+**Modifications :**
+1. Fixtures JSON dans `scripts/tests/integration/` (mini-jeux de donnees marche/news/briefing)
+2. Mock API Claude pour tester sans appel reseau
+3. Verifier : contexte RAG pertinent, sanitizer bloque les injections, claim-verifier detecte les hallucinations, feedback loop s'active quand score < 0.6
+**Fichiers :** `scripts/tests/integration/`
+
+---
+
 **PR #22** : Setup initial RSS feeds
 - Ajout premiers flux RSS (Le Figaro, TLDR, Les Echos, BFM, CoinTelegraph, etc.)
