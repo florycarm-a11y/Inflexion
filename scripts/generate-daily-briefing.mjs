@@ -620,18 +620,20 @@ async function main() {
             const todayTopics = topArticles.slice(0, 5).map(a => a.title).join('. ');
             const queryEmbedding = await embedText(todayTopics);
 
-            // Recherche d'articles historiques similaires
+            // Recherche hybride (vectorielle + mots-clés) d'articles historiques
             const similarArticles = store.searchArticles(queryEmbedding, {
                 topK: 5,
                 minScore: 0.35,
                 excludeDate: today(),
+                queryText: todayTopics,
             });
 
-            // Recherche de briefings similaires + briefings récents
+            // Recherche hybride de briefings similaires + briefings récents
             const similarBriefings = store.searchBriefings(queryEmbedding, {
                 topK: 2,
                 minScore: 0.3,
                 excludeDate: today(),
+                queryText: todayTopics,
             });
             const recentBriefings = store.getRecentBriefings(2, today());
 
