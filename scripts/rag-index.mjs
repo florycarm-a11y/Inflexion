@@ -20,12 +20,13 @@
 import { readFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { embedText, embedBatch } from './lib/embeddings.mjs';
+import { embedText, embedBatch, initEmbeddingsCache, saveEmbeddingsCache, getCacheStats } from './lib/embeddings.mjs';
 import { RAGStore } from './lib/rag-store.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, '..', 'data');
 const RAG_DIR = join(DATA_DIR, 'rag');
+const CACHE_PATH = join(DATA_DIR, 'embeddings-cache.json');
 
 const DRY_RUN = process.argv.includes('--dry-run');
 const ONLY_ARTICLES = process.argv.includes('--articles');
@@ -234,6 +235,13 @@ async function main() {
     if (DRY_RUN) console.log('  [MODE DRY-RUN]');
     console.log('═══════════════════════════════════════');
 
+    const totalStart = Date.now();
+
+    // Initialiser le cache d'embeddings (Sprint 4)
+    if (!DRY_RUN) {
+        initEmbeddingsCache(CACHE_PATH);
+    }
+
     const store = new RAGStore(RAG_DIR);
 
     // Afficher les stats initiales
@@ -245,16 +253,29 @@ async function main() {
 
     // Indexer les articles (sauf si --briefing seulement)
     if (!ONLY_BRIEFING) {
+        const articlesStart = Date.now();
         articlesAdded = await indexArticles(store);
+        const articlesElapsed = ((Date.now() - articlesStart) / 1000).toFixed(1);
+        console.log(`  ⏱ Indexation articles: ${articlesElapsed}s`);
     }
 
     // Indexer le briefing (sauf si --articles seulement)
     if (!ONLY_ARTICLES) {
+        const briefingStart = Date.now();
         briefingIndexed = await indexBriefing(store);
+        const briefingElapsed = ((Date.now() - briefingStart) / 1000).toFixed(1);
+        console.log(`  ⏱ Indexation briefing: ${briefingElapsed}s`);
+    }
+
+    // Sauvegarder le cache d'embeddings
+    if (!DRY_RUN) {
+        saveEmbeddingsCache();
     }
 
     // Résumé
+    const totalElapsed = ((Date.now() - totalStart) / 1000).toFixed(1);
     const statsAfter = store.getStats();
+    const cacheStats = getCacheStats();
     console.log('\n═══════════════════════════════════════');
     console.log('  Résumé :');
     console.log(`  📚 Articles: ${statsAfter.articlesCount} (${articlesAdded > 0 ? '+' + articlesAdded : 'inchangé'})`);
@@ -265,6 +286,8 @@ async function main() {
     if (statsAfter.newestBriefing) {
         console.log(`  📅 Briefings: ${statsAfter.oldestBriefing} → ${statsAfter.newestBriefing}`);
     }
+    console.log(`  💾 Cache: ${cacheStats.entries} entrées, ${cacheStats.hitRate} hit rate (${cacheStats.hits} hits, ${cacheStats.misses} misses)`);
+    console.log(`  ⏱ Temps total: ${totalElapsed}s`);
     console.log('═══════════════════════════════════════\n');
 }
 

@@ -665,6 +665,12 @@ async function main() {
     RAGStore = ragMod.RAGStore;
     embedText = embMod.embedText;
 
+    // Initialiser le cache d'embeddings (Sprint 4) — accélère les recherches RAG
+    if (!DRY_RUN) {
+        const CACHE_PATH = join(DATA_DIR, 'embeddings-cache.json');
+        embMod.initEmbeddingsCache(CACHE_PATH);
+    }
+
     // ── 1. Charger toutes les sources de données ──────────────
     console.log('\n📂 Chargement des sources de données...');
 
@@ -1015,6 +1021,12 @@ ${consignes}`;
             console.error(`  Réponse brute : ${err.rawText.slice(0, 300)}...`);
         }
         process.exit(1);
+    }
+
+    // Sauvegarder le cache d'embeddings (Sprint 4)
+    if (!DRY_RUN) {
+        const embMod2 = await import('./lib/embeddings.mjs');
+        embMod2.saveEmbeddingsCache();
     }
 
     console.log('\n  ✅ Briefing IA quotidien terminé');

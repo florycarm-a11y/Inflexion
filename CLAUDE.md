@@ -786,14 +786,14 @@ Nouveau module `scripts/lib/claim-verifier.mjs` — verification post-generation
 4. Tests unitaires pour le sanitizer. Mettre a jour CLAUDE.md.
 
 ### Sprint 4 — Persistance embeddings + cache RAG
-**Statut :** A faire
+**Statut :** Termine
 **Objectif :** Eviter de recalculer les embeddings d'articles deja traites. Gain de temps cible : ~15s → ~3s.
 **Modifications :**
 1. Sauvegarder les embeddings dans `data/embeddings-cache.json` (hash du texte → vecteur 384D)
 2. Invalider le cache quand le texte source change (comparaison hash SHA-256)
 3. TTL de 7 jours sur les entrees du cache (les articles anciens ne servent plus au RAG)
 4. Mesurer le gain de temps (log avant/apres)
-**Fichiers :** `scripts/lib/rag-store.mjs`, `scripts/lib/embeddings.mjs`
+**Fichiers :** `scripts/lib/embeddings-cache.mjs` (nouveau), `scripts/lib/embeddings.mjs`, `scripts/rag-index.mjs`, `scripts/generate-daily-briefing.mjs`
 
 ### Sprint 5 — Ponderation temporelle du RAG
 **Statut :** A faire
@@ -881,6 +881,61 @@ Si le briefing precedent a un `_verification.score < 0.6` (seuil anti-hallucinat
 - `scripts/tests/sanitizer.test.mjs` : 39 tests (stripHTML, detectSuspiciousPatterns, sanitizeText, sanitizeArticles)
 
 **Tests : 39 sanitizer + 29 briefing existants + 23 RAG + 34 claim-verifier = 125 total**
+
+### Session 2026-02-25 (3) — Persistance embeddings + cache RAG (Sprint 4)
+
+**Contexte :** Le systeme RAG recalculait les embeddings de TOUS les articles a chaque execution de `rag-index.mjs`, meme si les articles n'avaient pas change. Avec ~500 articles, la generation d'embeddings via all-MiniLM-L6-v2 prenait ~15 secondes a chaque cycle. La majorite des articles etant identiques d'un cycle a l'autre (seuls quelques nouveaux articles arrivent), ce calcul etait largement redondant.
+
+**Solution : cache de persistance SHA-256**
+
+Nouveau module `scripts/lib/embeddings-cache.mjs` — cache independant de `@xenova/transformers` (testable sans charger le modele) :
+
+- `hashText(text)` : hash SHA-256 du texte tronque (cle de cache)
+- `initEmbeddingsCache(path)` : charge le cache JSON, purge les entrees expirees
+- `getCachedEmbedding(text)` : retourne l'embedding si present et non expire
+- `setCachedEmbedding(text, embedding)` : stocke un nouvel embedding
+- `saveEmbeddingsCache()` : sauvegarde sur disque si modifie (dirty flag)
+- `getCacheStats()` : statistiques (entries, hits, misses, hitRate%)
+- `resetEmbeddingsCache()` : reinitialisation (pour les tests)
+- `CACHE_TTL_MS` : constante exportee (7 jours = 604 800 000 ms)
+
+**Architecture du cache :**
+```
+data/embeddings-cache.json
+{
+  "sha256_hash_1": { "embedding": [384 floats], "timestamp": 1772036327074 },
+  "sha256_hash_2": { "embedding": [384 floats], "timestamp": 1772036327080 },
+  ...
+}
+```
+
+**Integration dans le pipeline :**
+- `embeddings.mjs` : `embedText()` verifie le cache avant de calculer, stocke le resultat apres calcul. `embedBatch()` affiche les statistiques de cache et le temps ecoule.
+- `rag-index.mjs` : `initEmbeddingsCache()` au demarrage, `saveEmbeddingsCache()` apres indexation, affiche les stats dans le resume.
+- `generate-daily-briefing.mjs` : `initEmbeddingsCache()` au demarrage (pour l'embedding de la requete RAG), `saveEmbeddingsCache()` en fin de script.
+
+**Mesures de temps :**
+- `rag-index.mjs` : timing total, timing indexation articles, timing indexation briefing
+- `embedBatch()` : temps ecoule + stats cache (hits, misses, hit rate)
+
+**Gains attendus :**
+| Metrique | Avant | Apres (2e execution) |
+|----------|-------|----------------------|
+| Temps embeddings (~500 articles) | ~15s | ~1-3s (cache hits) |
+| Appels modele MiniLM | ~500 | ~5-20 (nouveaux articles uniquement) |
+| Hit rate typique | 0% | 90-98% |
+
+**Fichiers crees :**
+- `scripts/lib/embeddings-cache.mjs` : module cache independant
+- `scripts/tests/lib/embeddings-cache.test.mjs` : 37 tests (hashText, initCache, getCachedEmbedding, setCachedEmbedding, saveCache, getCacheStats, resetCache, TTL)
+
+**Fichiers modifies :**
+- `scripts/lib/embeddings.mjs` : integration du cache via import de embeddings-cache.mjs, re-export des fonctions cache, modification de embedText() et embedBatch()
+- `scripts/rag-index.mjs` : +import cache functions, +CACHE_PATH, +initEmbeddingsCache au demarrage, +saveEmbeddingsCache apres indexation, +timing mesures, +cache stats dans resume
+- `scripts/generate-daily-briefing.mjs` : +initEmbeddingsCache au demarrage, +saveEmbeddingsCache en fin de script
+- `CLAUDE.md` : Sprint 4 marque Termine, documentation session
+
+**Tests : 37 cache + 39 sanitizer + 23 RAG + 34 claim-verifier = 133 total**
 
 **PR #22** : Setup initial RSS feeds
 - Ajout premiers flux RSS (Le Figaro, TLDR, Les Echos, BFM, CoinTelegraph, etc.)
