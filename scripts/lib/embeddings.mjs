@@ -5,10 +5,28 @@
  * le modèle all-MiniLM-L6-v2 (384 dimensions) directement en Node.js.
  * Zéro API externe, zéro coût.
  *
+ * Sprint 4 : Intégration du cache de persistance (embeddings-cache.mjs)
+ * pour éviter le recalcul des embeddings d'articles déjà traités.
+ *
  * @requires @xenova/transformers
  */
 
 import { pipeline, env } from '@xenova/transformers';
+import {
+    getCachedEmbedding,
+    setCachedEmbedding,
+    getCacheStats,
+} from './embeddings-cache.mjs';
+
+// Re-exporter les fonctions du cache pour usage par les scripts appelants
+export {
+    hashText,
+    initEmbeddingsCache,
+    saveEmbeddingsCache,
+    getCacheStats,
+    resetEmbeddingsCache,
+    CACHE_TTL_MS,
+} from './embeddings-cache.mjs';
 
 // Désactiver le téléchargement de modèles à distance si déjà en cache
 // Le modèle sera téléchargé au premier usage puis mis en cache
@@ -44,6 +62,8 @@ async function getEmbedder() {
 
 /**
  * Génère un embedding (vecteur 384D) pour un texte donné.
+ * Utilise le cache si disponible (initEmbeddingsCache appelé au préalable).
+ *
  * @param {string} text — Le texte à vectoriser
  * @returns {Promise<number[]>} — Vecteur de 384 dimensions (normalisé)
  */
@@ -52,22 +72,35 @@ export async function embedText(text) {
         return new Array(EMBEDDING_DIM).fill(0);
     }
 
-    const embed = await getEmbedder();
-
     // Tronquer à ~256 tokens (~1024 caractères) pour rester dans les limites du modèle
     const truncated = text.slice(0, 1024);
+
+    // Vérifier le cache
+    const cached = getCachedEmbedding(truncated);
+    if (cached) {
+        return cached;
+    }
+
+    // Cache miss — calculer l'embedding
+    const embed = await getEmbedder();
 
     const output = await embed(truncated, {
         pooling: 'mean',
         normalize: true,
     });
 
-    // Convertir le tensor en tableau JS
-    return Array.from(output.data);
+    const embedding = Array.from(output.data);
+
+    // Stocker dans le cache
+    setCachedEmbedding(truncated, embedding);
+
+    return embedding;
 }
 
 /**
  * Génère des embeddings pour un batch de textes.
+ * Affiche les statistiques de cache et le temps écoulé.
+ *
  * @param {string[]} texts — Les textes à vectoriser
  * @param {Object} [options]
  * @param {Function} [options.onProgress] — Callback (index, total)
@@ -75,6 +108,7 @@ export async function embedText(text) {
  */
 export async function embedBatch(texts, options = {}) {
     const { onProgress } = options;
+    const start = Date.now();
     const results = [];
 
     for (let i = 0; i < texts.length; i++) {
@@ -84,6 +118,14 @@ export async function embedBatch(texts, options = {}) {
         if (onProgress && i % 10 === 0) {
             onProgress(i, texts.length);
         }
+    }
+
+    const elapsed = ((Date.now() - start) / 1000).toFixed(1);
+    const stats = getCacheStats();
+    if (stats.entries > 0 || stats.hits > 0 || stats.misses > 0) {
+        console.log(`  ⏱ Batch embedding: ${texts.length} textes en ${elapsed}s (cache: ${stats.hits} hits, ${stats.misses} misses, ${stats.hitRate} hit rate)`);
+    } else {
+        console.log(`  ⏱ Batch embedding: ${texts.length} textes en ${elapsed}s (pas de cache)`);
     }
 
     return results;
