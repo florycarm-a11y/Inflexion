@@ -132,6 +132,9 @@ const log = createLogger(DEFAULT_CONFIG);
 /** Timestamp du dernier appel API (module-level) */
 let _lastCallTimestamp = 0;
 
+/** stop_reason du dernier appel (pour détection de troncature dans callClaudeJSON) */
+let _lastStopReason = null;
+
 /**
  * Impose un délai minimum entre chaque appel API.
  * @param {number} minDelayMs - Délai minimum en ms
@@ -302,6 +305,12 @@ export async function callClaude(options) {
                 throw new ClaudeAPIError('Réponse Claude vide (pas de content[0].text)');
             }
 
+            // Stocker le stop_reason pour détection de troncature dans callClaudeJSON
+            _lastStopReason = data.stop_reason || null;
+            if (data.stop_reason === 'max_tokens') {
+                log.warn(`[${label}] Réponse tronquée (max_tokens=${maxTokens} atteint)`);
+            }
+
             log.info(`[${label}] OK (${data.usage?.input_tokens ?? '?'}in/${data.usage?.output_tokens ?? '?'}out tokens)`);
             return text;
 
@@ -354,6 +363,15 @@ export async function callClaude(options) {
  */
 export async function callClaudeJSON(options) {
     const rawText = await callClaude(options);
+
+    // Détecter les réponses tronquées AVANT de tenter le parsing JSON
+    if (_lastStopReason === 'max_tokens') {
+        const maxTok = options.maxTokens ?? DEFAULT_CONFIG.maxTokens;
+        throw new ClaudeAPIError(
+            `Réponse JSON tronquée (stop_reason=max_tokens, maxTokens=${maxTok}). ` +
+            `Augmenter maxTokens pour ce script.`
+        );
+    }
 
     // Strip les marqueurs de code Markdown
     let jsonStr = rawText.trim();
