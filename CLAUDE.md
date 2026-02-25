@@ -777,7 +777,7 @@ Nouveau module `scripts/lib/claim-verifier.mjs` — verification post-generation
 ## 11. Roadmap RAG & Qualite (Sprints 3-8)
 
 ### Sprint 3 — Doctrine RAG + garde-fous prompt
-**Statut :** A faire
+**Statut :** Termine
 **Objectif :** Renforcer les prompts pour que Claude exploite mieux le contexte RAG et prevenir les hallucinations en amont (pas seulement post-generation).
 **Modifications :**
 1. Ajouter une section "Utilisation du contexte historique (RAG)" dans `DAILY_BRIEFING_SYSTEM_PROMPT` (`scripts/lib/prompts.mjs`) — regles : comparer signaux du jour vs briefings precedents, signaler tendances confirmees/inversees, ne jamais inventer un chiffre absent du contexte ("donnee indisponible")
@@ -835,6 +835,52 @@ Nouveau module `scripts/lib/claim-verifier.mjs` — verification post-generation
 **Fichiers :** `scripts/tests/integration/`
 
 ---
+
+### Session 2026-02-25 (2) — Doctrine RAG enrichie + garde-fous prompt (Sprint 3)
+
+**Contexte :** Le systeme RAG (Sprint 1-2) fournissait du contexte historique au briefing mais sans regles d'exploitation strictes. Les articles RSS injectes dans le prompt Claude n'etaient pas sanitises (risque d'injection de prompt via contenu malveillant). Aucun mecanisme de feedback ne corrigeait les erreurs du briefing precedent.
+
+**Sprint 3 — Trois modifications :**
+
+**1. Doctrine RAG enrichie dans les prompts**
+
+Enrichissement de la section "Utilisation du contexte historique (RAG)" dans `DAILY_BRIEFING_SYSTEM_PROMPT` avec 5 regles explicites :
+- Comparaison obligatoire signaux du jour vs briefings precedents (tendance confirmee / inversee / nouvelle)
+- Mise en perspective historique avec niveaux passes
+- Detection de recurrences (themes repetes = "tendance de fond")
+- Interdiction d'inventer : si donnee de comparaison absente, ecrire "(donnee indisponible)"
+- Ponderation : donnees du jour (A/B) prioritaires sur contexte RAG (C)
+
+Ajout equivalent dans `DAILY_BRIEFING_DELTA_SYSTEM_PROMPT` (version condensee).
+
+**2. Sanitizer anti-injection**
+
+Nouveau module integre dans `generate-daily-briefing.mjs` — protection du prompt Claude contre les contenus malveillants dans les articles RSS/API :
+
+- `stripHTML(text)` : suppression balises HTML, decodage entites (&amp;, &lt;, etc.), normalisation espaces
+- `detectSuspiciousPatterns(text)` : detection de 11 patterns d'injection de prompt (ignore previous instructions, system:, override prompt, act as, javascript:, event handlers HTML, etc.)
+- `sanitizeText(text, maxLength)` : pipeline complet — strip HTML → detection patterns → remplacement par placeholder si suspect → troncature (defaut 500 car.)
+- `sanitizeArticles(articles)` : sanitization en masse d'un tableau d'articles (titre 200 car. max, description 500 car. max)
+- Etape 2b ajoutee au pipeline principal : sanitization entre la selection d'articles et la construction du contexte
+- Constantes exportees : `SANITIZE_MAX_LENGTH`, `SUSPICIOUS_PATTERNS`
+
+**3. Feedback loop verification**
+
+Si le briefing precedent a un `_verification.score < 0.6` (seuil anti-hallucination du Sprint 2), une consigne de rigueur supplementaire est injectee dans le prompt :
+- Cite UNIQUEMENT des chiffres presents dans les parties A, B ou C
+- Chaque donnee doit apparaitre verbatim dans les sources
+- Ecrire "(donnee indisponible)" au lieu d'inventer
+- Privilegie les variations % aux valeurs absolues pour les ETF proxies
+- S'applique aux modes complet (full) et delta
+
+**Fichiers modifies :**
+- `scripts/lib/prompts.mjs` : enrichissement section RAG dans DAILY_BRIEFING_SYSTEM_PROMPT (5 regles), ajout section RAG dans DAILY_BRIEFING_DELTA_SYSTEM_PROMPT
+- `scripts/generate-daily-briefing.mjs` : +sanitizer (stripHTML, detectSuspiciousPatterns, sanitizeText, sanitizeArticles), +etape 2b sanitization, +feedback loop verification score, +exports tests
+
+**Fichiers crees :**
+- `scripts/tests/sanitizer.test.mjs` : 39 tests (stripHTML, detectSuspiciousPatterns, sanitizeText, sanitizeArticles)
+
+**Tests : 39 sanitizer + 29 briefing existants + 23 RAG + 34 claim-verifier = 125 total**
 
 **PR #22** : Setup initial RSS feeds
 - Ajout premiers flux RSS (Le Figaro, TLDR, Les Echos, BFM, CoinTelegraph, etc.)
