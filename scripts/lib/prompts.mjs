@@ -780,11 +780,11 @@ Les 3 risques classés du plus probable/impactant au moins :
 - Seuil de déclenchement ou facteur à surveiller
 - NE PAS répéter les signaux — focus sur le risque de matérialisation
 
-### 4. Positionnement suggéré (3-5 pistes) — INSTRUCTION 4
-Après le Risk Radar. Chaque piste en 1-2 phrases :
-- Actif/classe + direction (surpondérer/sous-pondérer/neutre)
-- Niveau d'entrée/sortie ou seuil technique
-- Ratio risque/rendement estimé
+### 4. Thèmes à surveiller (3-5 points d'attention) — INSTRUCTION 4
+Après le Risk Radar. Chaque point en 1-2 phrases :
+- Actif/classe + dynamique observée (haussière/baissière/neutre/volatile)
+- Seuils techniques ou niveaux clés à observer
+- Facteurs de catalyse à venir
 - Disclaimer obligatoire en fin de section
 
 ## Utilisation du contexte historique (RAG) — DOCTRINE
@@ -878,15 +878,14 @@ Le GLD ($481) n'est PAS le cours de l'once d'or (~$2 950 spot). L'USO ($80) n'es
       "description": "1-2 phrases : contexte, mécanisme de transmission, seuil de déclenchement"
     }
   ],
-  "positionnement": [
+  "themes_a_surveiller": [
     {
       "actif": "Nom de l'actif ou classe",
-      "direction": "surponderer|sous-ponderer|neutre|hedge",
-      "conviction": "forte|moderee|faible",
-      "details": "Niveau, seuil technique, ratio risque/rendement"
+      "dynamique": "haussiere|baissiere|neutre|volatile",
+      "details": "Seuils techniques à observer, facteurs de catalyse à venir"
     }
   ],
-  "positionnement_disclaimer": "Ces éléments sont des pistes de réflexion et ne constituent pas un conseil en investissement.",
+  "themes_disclaimer": "Ces éléments sont des observations factuelles et ne constituent pas un conseil en investissement. Consultez un professionnel agréé (CIF-AMF) avant toute décision.",
   "agenda": [
     {
       "date": "JJ/MM",

@@ -262,8 +262,8 @@ Chaque briefing doit consacrer un paragraphe aux marches hors-US. Inclure au min
 ### INSTRUCTION 3 — SCENARIOS ANCRES SUR UN CALENDRIER
 Chaque scenario conditionnel doit etre associe a un catalyseur date : publication macro (CPI, PCE, NFP), reunion de banque centrale, expiration d'options, discours officiel. Ajouter en fin de briefing une sous-section "Agenda de la semaine" listant les 3 a 5 evenements cles avec date, heure (fuseau CET) et impact attendu. Ne jamais ecrire un scenario sans horizon temporel precis.
 
-### INSTRUCTION 4 — RECOMMANDATIONS ACTIONNABLES
-Conclure chaque briefing par une section "Positionnement suggere" avec 3 a 5 actions concretes : actifs a surponderer ou sous-ponderer, niveaux d'entree et de sortie, hedges recommandes avec strikes et echeances. Chaque recommandation doit inclure un ratio risque/rendement estime. Terminer cette section par le disclaimer : "Ces elements sont des pistes de reflexion et ne constituent pas un conseil en investissement."
+### INSTRUCTION 4 — THEMES A SURVEILLER (PAS DE CONSEIL EN INVESTISSEMENT)
+Conclure chaque briefing par une section "Themes a surveiller" avec 3 a 5 points d'attention : actif ou classe d'actifs + dynamique observee (haussiere/baissiere/neutre/volatile), seuils techniques ou niveaux cles a observer, facteurs de catalyse a venir. NE JAMAIS formuler de recommandation d'achat, de vente, de surponderation ou de sous-ponderation. NE JAMAIS indiquer de niveaux d'entree/sortie, de strikes, de hedges ou de ratio risque/rendement. Terminer cette section par le disclaimer : "Ces elements sont des observations factuelles et ne constituent pas un conseil en investissement. Consultez un professionnel agree (CIF-AMF) avant toute decision."
 
 ### INSTRUCTION 5 — COHERENCE DES DONNEES SIDEBAR / BRIEFING
 Avant publication, executer une verification croisee systematique entre les donnees du briefing et celles des widgets sidebar. S'assurer que les unites sont coherentes (points d'indice vs prix d'ETF, pourcentage vs points de base). Si les widgets affichent le prix d'un ETF (SPY, QQQ, GLD), le preciser explicitement. Ne jamais laisser deux chiffres contradictoires sur la meme page.
@@ -298,7 +298,7 @@ Ouvrir chaque briefing par un encadre "Signal du jour" identifiant UN signal fai
 3. **Signaux confirmes ou inverses** (analyse sans re-citer les chiffres)
 4. **Enjeux cles** (2-3 themes, avec interconnexions)
 5. **Radar des risques** (scenarios avec probabilite, impact, catalyseur date)
-6. **Positionnement suggere** (3-5 actions concretes + disclaimer)
+6. **Themes a surveiller** (3-5 points d'attention + disclaimer)
 7. **Agenda de la semaine** (3-5 evenements dates avec heure et impact attendu)
 
 ## 10. Historique des modifications
