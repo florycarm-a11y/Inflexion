@@ -1,65 +1,65 @@
 {
-  "updated": "2026-02-25T01:14:01.327Z",
+  "updated": "2026-02-25T06:55:20.382Z",
   "date": "2026-02-25",
   "global": {
-    "score": -0.17,
+    "score": 0.08,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (-0.17), dominé par la rubrique crypto (baissier)."
+    "resume": "Le sentiment global est mixte (+0.08), dominé par la rubrique ai_tech (haussier)."
   },
   "categories": {
     "geopolitique": {
       "score": -0.45,
       "confidence": 0.75,
       "tendance": "baissier",
-      "resume": "Tensions géopolitiques persistantes avec escalade Ukraine-Russie (5e année), menaces iraniennes, et pressions sur les acteurs technologiques américains. Quelques signaux positifs (Madagascar, Mexique) insuffisants pour compenser les risques systémiques.",
+      "resume": "Tensions géopolitiques persistantes (Iran, Ukraine, Moyen-Orient) contrebalancées par discours économique optimiste de Trump. Risques d'escalade nucléaire et commerciale dominent le sentiment de marché.",
       "signaux_cles": [
-        "Guerre Ukraine-Russie entre dans sa 5e année avec intensification de la désinformation",
-        "Trump annonce plan de bataille contre l'Iran lors du discours sur l'état de l'Union",
-        "Pentagone menace de blacklister Anthropic IA pour restrictions sur modèles"
+        "Trump affirme que l'Iran construit des missiles pouvant atteindre des cibles américaines",
+        "Guerre en Ukraine : 4 ans de conflit en cours avec intensification des tensions",
+        "Modi en Israël au moment où les tensions États-Unis/Iran s'intensifient"
       ]
     },
     "marches": {
       "score": 0.15,
-      "confidence": 0.62,
+      "confidence": 0.65,
       "tendance": "mixte",
-      "resume": "Signaux contradictoires : croissance sectorielle (First Solar +5,2Mds$, Corcept 900M-1Mds$, CAVA +74-76 restaurants) contrebalancée par chute Workday et volatilité IA. Activité M&A intense (Paramount-Warner, Stripe-PayPal) mais contexte de panique boursière IA.",
+      "resume": "Signaux contradictoires : résultats solides de grandes entreprises (Fortescue, HSBC, E.ON) et levées de fonds massives (Wayve 8,6 Mds $) contrebalancés par restructurations (SEB -2.100 postes) et baisse de rentabilité.",
       "signaux_cles": [
-        "First Solar prévoit ventes 2026 jusqu'à 5,2 milliards de dollars avec technologies CuRe et pérovskite",
-        "Workday plonge révélant coûts de concurrence IA; Nvidia rapport prélude à mouvements majeurs",
-        "Paramount offre majorée à 31$/action pour Warner Bros Discovery; Stripe valorisé 159Mds$ en rachat"
+        "Wayve valorisée 8,6 milliards de dollars après levée de fonds en IA autonome",
+        "SEB supprime 2.100 postes dont 500 en France pour redresser la rentabilité",
+        "Fortescue affiche une forte hausse de bénéfice net grâce aux ventes record de minerai de fer"
       ]
     },
     "crypto": {
-      "score": -0.62,
-      "confidence": 0.82,
-      "tendance": "baissier",
-      "resume": "Correction majeure ETH (-35% en un mois) avec flux ETF négatifs. Pressions réglementaires (ESMA, sanctions Trésor sur courtiers russes) et enquêtes sénatoriales (Binance-Iran). Quelques points positifs (Bitwise-Chorus, tokenisation) insuffisants.",
+      "score": 0.35,
+      "confidence": 0.62,
+      "tendance": "mixte",
+      "resume": "Volatilité extrême : Bitcoin rebondit au-dessus de 65.000 $ sur affaiblissement du dollar, mais ETH chute de 35% en un mois avec flux d'ETF négatifs. Adoption en hausse mais prix stagnant.",
       "signaux_cles": [
-        "ETH chute 35% en un mois avec flux d'ETF deviennent négatifs; rebond limité à 1 800$",
-        "Trésor sanctionne courtier russe pour outils cybernétiques volés; sénateur Blumenthal enquête Binance-Iran",
-        "Détenteurs ont vendu 25 000+ BTC d'actions ETF bitcoin au dernier trimestre"
+        "Bitcoin franchit 65.000 $ après rebond des marchés américains",
+        "ETH chute de 35% en un mois avec flux d'ETF devenant négatifs",
+        "Adoption du Bitcoin explose selon River, malgré stagnation des prix"
       ]
     },
     "matieres_premieres": {
-      "score": -0.35,
+      "score": -0.25,
       "confidence": 0.68,
       "tendance": "baissier",
-      "resume": "Pétrole brut prolonge pertes malgré tensions iraniennes (accord possible). Gaz naturel recule avec fin d'hiver. Consolidation pétrolière canadienne record (38Mds$) reflète restructuration. Énergies propres volatiles malgré investissements records.",
+      "resume": "Secteur pétrolier sous pression : stocks de brut américain en hausse, demande de chauffage en baisse hivernale. Consolidation record du secteur pétrolier canadien (38 Mds $) reflète restructuration défensive.",
       "signaux_cles": [
-        "Contrats pétrole brut prolongent pertes; responsables iraniens se disent prêts pour accord États-Unis",
-        "Gaz naturel physique recule à mesure que l'hiver perd intensité; demande chauffage baisse",
-        "Secteur pétrolier canadien emporté par consolidation record de 38 milliards de dollars"
+        "Montée des stocks de pétrole brut américain pèse sur les prix du pétrole",
+        "Gaz naturel recule avec fin de l'intensité hivernale et baisse de la demande",
+        "Secteur pétrolier canadien : consolidation record de 38 milliards de dollars"
       ]
     },
     "ai_tech": {
-      "score": 0.52,
-      "confidence": 0.71,
+      "score": 0.62,
+      "confidence": 0.78,
       "tendance": "haussier",
-      "resume": "Financement massif IA/puces (MatX 500M$, Wayve 1,2Mds$, startups 1,1Mds$ en 2 jours) malgré volatilité. OpenAI gagne procès xAI. Meta open-source GCM. Contrebalancé par préoccupations Fed sur chômage et débats surveillance.",
+      "resume": "Dynamique très positive : Wayve lève 1,2 Mds $ (Nvidia, Uber, constructeurs auto), MatX lève 500 M$, Meta open-source GCM pour GPU. Anthropic abandonne engagement sécurité crée doute ponctuel.",
       "signaux_cles": [
-        "MatX lève 500 millions de dollars comme challenger Nvidia; Wayve lève 1,2 milliards auprès Nvidia/Uber",
-        "Startups puces IA absorbent 1,1 milliard de dollars en financement en 2 jours",
-        "OpenAI remporte victoire procès vol secrets commerciaux xAI; Meta open-source GCM surveillance GPU"
+        "Wayve lève 1,2 milliard de dollars auprès de Nvidia, Uber et constructeurs automobiles",
+        "MatX lève 500 millions de dollars en financement IA",
+        "Anthropic abandonne son engagement phare en matière de sécurité"
       ]
     }
   },
@@ -165,12 +165,12 @@
     },
     {
       "date": "2026-02-25",
-      "global": -0.17,
+      "global": 0.08,
       "geopolitique": -0.45,
       "marches": 0.15,
-      "crypto": -0.62,
-      "matieres_premieres": -0.35,
-      "ai_tech": 0.52
+      "crypto": 0.35,
+      "matieres_premieres": -0.25,
+      "ai_tech": 0.62
     }
   ],
   "model": "claude-haiku-4-5-20251001",

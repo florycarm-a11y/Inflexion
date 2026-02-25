@@ -1,14 +1,29 @@
 {
-  "updated": "2026-02-25T01:14:01.327Z",
+  "updated": "2026-02-25T06:55:20.382Z",
   "alertes": [
     {
       "id": "alert-2026-02-25-001",
-      "titre": "ETH : -35% en un mois, flux ETF négatifs, rebond limité à 1 800 $",
-      "texte": "Ethereum subit correction majeure avec sorties nettes d'ETF et indicateurs pointant vers faiblesse prolongée. Rebond technique à 1 800 $ n'a pas consolidé les gains, signalant pression vendeuse persistante.",
+      "titre": "ETH : -35% en un mois, flux d'ETF négatifs signalent sortie de capitaux",
+      "texte": "Ethereum enregistre une baisse de 35% sur un mois avec inversion des flux d'ETF vers le négatif. Contraction de liquidité et repositionnement des investisseurs institutionnels en cours.",
       "categorie": "crypto",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-02-25T01:14:01.327Z",
+      "horodatage": "2026-02-25T06:55:20.382Z",
+      "donnees": {
+        "symbole": "SOL",
+        "nom": "Solana",
+        "prix": 81.75,
+        "variation_24h": 6.48
+      }
+    },
+    {
+      "id": "alert-2026-02-25-002",
+      "titre": "BTC : +6,48% en 24h, franchit 65.000 $ sur affaiblissement du dollar",
+      "texte": "Bitcoin rebondit au-dessus de 65.000 $ suite au rebond des marchés américains et affaiblissement du dollar. Sentiment haussier temporaire malgré Fear & Greed Index à 11 (Extreme Fear).",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-02-25T06:55:20.382Z",
       "donnees": {
         "symbole": "AAPL",
         "nom": "Apple",
@@ -17,13 +32,13 @@
       }
     },
     {
-      "id": "alert-2026-02-25-002",
-      "titre": "Fear & Greed Index : 11 (Extreme Fear), signal de panique boursière généralisée",
-      "texte": "Indice atteint niveau extrême de peur reflétant panique IA et tensions géopolitiques. Contexte de volatilité majeure avec ventes massives ETF crypto et révisions baissières technologie.",
-      "categorie": "marches",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-02-25T01:14:01.327Z",
+      "id": "alert-2026-02-25-003",
+      "titre": "SOL : +6,48% en 24h, atteint $81,75 dans contexte de volatilité extrême",
+      "texte": "Solana progresse de 6,48% en 24 heures à $81,75. Mouvement porté par rebond global crypto malgré Fear & Greed Index en zone extrême.",
+      "categorie": "crypto",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-02-25T06:55:20.382Z",
       "donnees": {
         "symbole": "TSLA",
         "nom": "Tesla",
@@ -32,13 +47,13 @@
       }
     },
     {
-      "id": "alert-2026-02-25-003",
-      "titre": "Workday (WDAY) : plonge sur révélation coûts concurrence IA et prévisions baissières",
-      "texte": "Résultats révèlent impact majeur de concurrence IA sur modèle économique. Discours PDG sur IA insuffisant pour restaurer confiance investisseurs face à guidance révisée à la baisse.",
-      "categorie": "ai_tech",
-      "severite": "attention",
+      "id": "alert-2026-02-25-004",
+      "titre": "Fear & Greed Index : 11 (Extreme Fear), plus bas niveau de confiance détecté",
+      "texte": "L'indice Fear & Greed atteint 11, signalant une peur extrême sur les marchés. Niveau critique reflétant tensions géopolitiques (Iran, Ukraine) et volatilité crypto.",
+      "categorie": "marches",
+      "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-02-25T01:14:01.327Z",
+      "horodatage": "2026-02-25T06:55:20.382Z",
       "donnees": {
         "score": 11,
         "label": "Extreme Fear",
@@ -46,43 +61,33 @@
       }
     },
     {
-      "id": "alert-2026-02-25-004",
-      "titre": "Pétrole brut : prolonge pertes malgré tensions iraniennes, accord possible",
-      "texte": "Contrats futures pétrole reculent alors que responsables iraniens signalent disponibilité pour accord avec États-Unis. Hausse stocks brut américain pèse sur prix malgré risques géopolitiques.",
+      "id": "alert-2026-02-25-005",
+      "titre": "Pétrole : stocks américains en hausse, demande hivernale en baisse",
+      "texte": "Montée des stocks de pétrole brut américain et recul de la demande de chauffage pèsent sur les prix. Gaz naturel également en repli avec fin de l'intensité hivernale.",
       "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-25T01:14:01.327Z",
-      "donnees": {}
-    },
-    {
-      "id": "alert-2026-02-25-005",
-      "titre": "Financement IA/puces : 1,1 milliard de dollars absorbé en 2 jours par startups",
-      "texte": "MatX lève 500M$ comme challenger Nvidia; Wayve lève 1,2Mds$ auprès Nvidia/Uber/constructeurs. Dynamique de financement robuste malgré volatilité marchés et panique IA.",
-      "categorie": "ai_tech",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-02-25T01:14:01.327Z",
+      "horodatage": "2026-02-25T06:55:20.382Z",
       "donnees": {}
     },
     {
       "id": "alert-2026-02-25-006",
-      "titre": "Paramount-Warner Bros : offre majorée à 31 $/action, M&A défensif en contexte volatilité",
-      "texte": "Paramount soumet nouvelle offre rachat majorée à 31 $/action pour Warner Bros Discovery. Activité M&A intense (Stripe-PayPal 159Mds$) reflète consolidation secteur face à pressions IA.",
-      "categorie": "marches",
+      "titre": "Wayve : levée de 1,2 Md$ auprès de Nvidia, Uber et constructeurs auto",
+      "texte": "La startup IA pour véhicules autonomes Wayve lève 1,2 milliard de dollars auprès de Nvidia, Uber et trois constructeurs automobiles majeurs. Valorisation antérieure : 8,6 milliards de dollars.",
+      "categorie": "ai_tech",
       "severite": "info",
-      "impact": "neutre",
-      "horodatage": "2026-02-25T01:14:01.327Z",
+      "impact": "haussier",
+      "horodatage": "2026-02-25T06:55:20.382Z",
       "donnees": {}
     },
     {
       "id": "alert-2026-02-25-007",
-      "titre": "Trésor sanctionne courtiers russes pour outils cybernétiques volés, enquête Binance-Iran",
-      "texte": "Sanctions multiples contre courtiers russes financés crypto pour vol secrets commerciaux. Sénateur Blumenthal enquête Binance suite rapports évasion sanctions liées Iran.",
-      "categorie": "crypto",
+      "titre": "SEB : suppression de 2.100 postes dont 500 en France pour redresser rentabilité",
+      "texte": "Le géant français de l'électroménager SEB annonce un plan de restructuration majeur : 2.100 suppressions de postes (500 en France) pour améliorer la rentabilité.",
+      "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-25T01:14:01.327Z",
+      "horodatage": "2026-02-25T06:55:20.382Z",
       "donnees": {}
     }
   ],
