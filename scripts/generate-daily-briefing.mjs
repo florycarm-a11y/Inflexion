@@ -43,7 +43,7 @@ const DRY_RUN = process.argv.includes('--dry-run');
 const FULL_MODEL = 'claude-sonnet-4-5-20250929';
 const DELTA_MODEL = 'claude-haiku-4-5-20251001';
 const FULL_MAX_TOKENS = 3000;
-const DELTA_MAX_TOKENS = 2000;
+const DELTA_MAX_TOKENS = 3500;
 
 /**
  * Détermine si aujourd'hui est un jour de briefing complet (lundi) ou delta.
