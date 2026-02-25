@@ -858,29 +858,30 @@ const DataLoader = (function () {
             briefing.sentiment_global === 'baissier' ? '#dc2626' :
             briefing.sentiment_global === 'mixte' ? '#eab308' : '#94a3b8';
 
-        // ── Positionnement suggéré (INSTRUCTION 4) ──
+        // ── Thèmes à surveiller (INSTRUCTION 4) ──
+        var themesData = briefing.themes_a_surveiller || briefing.positionnement;
         var positionnementHTML = '';
-        if (briefing.positionnement && briefing.positionnement.length > 0) {
-            var posItems = briefing.positionnement.map(function(pos) {
-                var dirClass = pos.direction === 'surponderer' ? 'pos-long' :
-                    pos.direction === 'sous-ponderer' ? 'pos-short' :
-                    pos.direction === 'hedge' ? 'pos-hedge' : 'pos-neutral';
-                var dirLabel = pos.direction === 'surponderer' ? 'Surpond\u00e9rer' :
-                    pos.direction === 'sous-ponderer' ? 'Sous-pond\u00e9rer' :
-                    pos.direction === 'hedge' ? 'Hedge' : 'Neutre';
+        if (themesData && themesData.length > 0) {
+            var posItems = themesData.map(function(pos) {
+                var dyn = pos.dynamique || pos.direction || 'neutre';
+                var dirClass = dyn === 'haussiere' || dyn === 'surponderer' ? 'pos-long' :
+                    dyn === 'baissiere' || dyn === 'sous-ponderer' ? 'pos-short' :
+                    dyn === 'volatile' || dyn === 'hedge' ? 'pos-hedge' : 'pos-neutral';
+                var dirLabel = dyn === 'haussiere' || dyn === 'surponderer' ? 'Haussi\u00e8re' :
+                    dyn === 'baissiere' || dyn === 'sous-ponderer' ? 'Baissi\u00e8re' :
+                    dyn === 'volatile' || dyn === 'hedge' ? 'Volatile' : 'Neutre';
                 return '<div class="pos-item ' + dirClass + '">' +
                     '<div class="pos-header">' +
                         '<strong class="pos-actif">' + inlineMarkdownToHTML(pos.actif || '') + '</strong>' +
                         '<span class="pos-direction">' + dirLabel + '</span>' +
-                        (pos.conviction ? '<span class="pos-conviction">Conviction ' + pos.conviction + '</span>' : '') +
                     '</div>' +
                     '<p class="pos-details">' + inlineMarkdownToHTML(pos.details || '') + '</p>' +
                 '</div>';
             }).join('');
-            var disclaimer = briefing.positionnement_disclaimer ||
-                'Ces \u00e9l\u00e9ments sont des pistes de r\u00e9flexion et ne constituent pas un conseil en investissement.';
+            var disclaimer = briefing.themes_disclaimer || briefing.positionnement_disclaimer ||
+                'Ces \u00e9l\u00e9ments sont des observations factuelles et ne constituent pas un conseil en investissement. Consultez un professionnel agr\u00e9\u00e9 (CIF-AMF) avant toute d\u00e9cision.';
             positionnementHTML = '<div class="briefing-positionnement">' +
-                '<h3 class="briefing-section-title">Positionnement sugg\u00e9r\u00e9</h3>' +
+                '<h3 class="briefing-section-title">Th\u00e8mes \u00e0 surveiller</h3>' +
                 posItems +
                 '<p class="pos-disclaimer">' + disclaimer + '</p>' +
             '</div>';
