@@ -27,6 +27,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { callClaudeJSON, getUsageStats } from './lib/claude-api.mjs';
 import { DAILY_BRIEFING_SYSTEM_PROMPT, DAILY_BRIEFING_DELTA_SYSTEM_PROMPT } from './lib/prompts.mjs';
+import { evaluateBriefing } from './lib/claim-verifier.mjs';
 
 // RAG imports chargés dynamiquement dans main() pour ne pas bloquer les tests unitaires
 // (les tests n'importent que les fonctions pures et n'ont pas besoin de @xenova/transformers)
@@ -788,7 +789,22 @@ ${consignes}`;
             },
         });
 
-        // ── 7. Enrichir et sauvegarder ────────────────────────
+        // ── 7. Évaluation anti-hallucination ───────────────────
+        console.log('\n🔍 Vérification anti-hallucination...');
+        const evaluation = evaluateBriefing(briefing, sources);
+
+        console.log(`  📊 Claims: ${evaluation.totalClaims} extraites, ${evaluation.verified} vérifiées, ${evaluation.unverified} non traçables`);
+        console.log(`  📏 Score: ${(evaluation.score * 100).toFixed(0)}% (référence: ${evaluation.referenceCount} valeurs)`);
+        console.log(`  ${evaluation.pass ? '✅' : '⚠️'} ${evaluation.pass ? 'PASS' : 'ATTENTION — score sous le seuil de 60%'}`);
+
+        if (evaluation.unverified > 0) {
+            console.log('  📋 Claims non traçables :');
+            for (const d of evaluation.details.filter(d => d.status === 'unverified')) {
+                console.log(`    ❌ ${d.claim.raw} (${d.claim.type}) — "${d.claim.context.slice(0, 80)}..."`);
+            }
+        }
+
+        // ── 8. Enrichir et sauvegarder ────────────────────────
         const output = {
             date: today(),
             generated_at: new Date().toISOString(),
@@ -798,18 +814,27 @@ ${consignes}`;
             sources_market: available.filter(s => s !== 'news' && s !== 'newsapi').length,
             ...(previousBriefing && !useFullMode ? { reference_date: previousBriefing.date } : {}),
             ...briefing,
+            // Rapport de vérification intégré au JSON de sortie
+            _verification: {
+                score: evaluation.score,
+                totalClaims: evaluation.totalClaims,
+                verified: evaluation.verified,
+                unverified: evaluation.unverified,
+                pass: evaluation.pass,
+            },
         };
 
         const outputPath = join(DATA_DIR, 'daily-briefing.json');
         writeJSON(outputPath, output);
 
-        // ── 8. Résumé ─────────────────────────────────────────
+        // ── 9. Résumé ─────────────────────────────────────────
         const stats = getUsageStats();
         console.log('\n╔══════════════════════════════════════════════════╗');
         console.log(`║  Résumé du briefing (${useFullMode ? 'complet' : 'delta'})${' '.repeat(useFullMode ? 21 : 24)}║`);
         console.log('╚══════════════════════════════════════════════════╝');
         console.log(`  📰 Titre : ${briefing.synthese.titre}`);
         console.log(`  🎯 Sentiment : ${briefing.sentiment_global}`);
+        console.log(`  🔍 Vérification : ${(evaluation.score * 100).toFixed(0)}% (${evaluation.verified}/${evaluation.totalClaims} claims)`);
         console.log(`  📡 Signaux : ${briefing.signaux.length}`);
         for (const s of briefing.signaux) {
             console.log(`    → ${s.titre} (${s.severite}) — ${s.interconnexions.length} interconnexions`);
