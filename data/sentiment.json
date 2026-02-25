@@ -1,65 +1,65 @@
 {
-  "updated": "2026-02-24T21:23:52.193Z",
-  "date": "2026-02-24",
+  "updated": "2026-02-25T01:14:01.327Z",
+  "date": "2026-02-25",
   "global": {
-    "score": -0.19,
+    "score": -0.17,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (-0.19), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est mixte (-0.17), dominé par la rubrique crypto (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.65,
-      "confidence": 0.85,
+      "score": -0.45,
+      "confidence": 0.75,
       "tendance": "baissier",
-      "resume": "Escalade géopolitique multifocale : saisies pétrolières américaines, tensions Iran-Golfe, augmentation des dépenses de défense européennes (+21% du budget mondial), et débats sur l'IA militaire. Contexte de conflit prolongé (Ukraine année 5) et instabilité régionale croissante.",
+      "resume": "Tensions géopolitiques persistantes avec escalade Ukraine-Russie (5e année), menaces iraniennes, et pressions sur les acteurs technologiques américains. Quelques signaux positifs (Madagascar, Mexique) insuffisants pour compenser les risques systémiques.",
       "signaux_cles": [
-        "Saisie d'un troisième pétrolier sanctionné dans l'océan Indien par les forces US",
-        "Exercices militaires iraniens sur les rives du Golfe + manifestations universitaires (4e jour)",
-        "Dépenses de défense européennes à 21% du budget mondial, menées par l'Allemagne"
+        "Guerre Ukraine-Russie entre dans sa 5e année avec intensification de la désinformation",
+        "Trump annonce plan de bataille contre l'Iran lors du discours sur l'état de l'Union",
+        "Pentagone menace de blacklister Anthropic IA pour restrictions sur modèles"
       ]
     },
     "marches": {
-      "score": -0.35,
-      "confidence": 0.72,
+      "score": 0.15,
+      "confidence": 0.62,
       "tendance": "mixte",
-      "resume": "Signaux contradictoires : croissance affichée par certains secteurs (Fidelity +30%, Xometry +21%) contrebalancée par des dégâts sectoriels (Bic -60%, valeurs financières pire début d'année en décennie). Incertitude commerciale US-UE et pressions inflationnistes énergétiques.",
+      "resume": "Signaux contradictoires : croissance sectorielle (First Solar +5,2Mds$, Corcept 900M-1Mds$, CAVA +74-76 restaurants) contrebalancée par chute Workday et volatilité IA. Activité M&A intense (Paramount-Warner, Stripe-PayPal) mais contexte de panique boursière IA.",
       "signaux_cles": [
-        "Bénéfice de Bic chute de 60% en 2025 après année difficile",
-        "Valeurs financières connaissent pire début d'année en une décennie",
-        "Fidelity projette croissance 30% CA 2026 via investissements IA et innovation bancaire"
+        "First Solar prévoit ventes 2026 jusqu'à 5,2 milliards de dollars avec technologies CuRe et pérovskite",
+        "Workday plonge révélant coûts de concurrence IA; Nvidia rapport prélude à mouvements majeurs",
+        "Paramount offre majorée à 31$/action pour Warner Bros Discovery; Stripe valorisé 159Mds$ en rachat"
       ]
     },
     "crypto": {
-      "score": -0.55,
-      "confidence": 0.8,
+      "score": -0.62,
+      "confidence": 0.82,
       "tendance": "baissier",
-      "resume": "Volatilité baissière marquée : ETH plonge sous 2 000 $ vers 1 500 $, BTC oscille 60 000-64 000 $ avec affaiblissement des signaux de marché. Contrebalancée par approbations réglementaires (SEC WisdomTree) et expansion d'utilité (Stripe Bridge volume x4, marchés de prédiction 3Mds$/an).",
+      "resume": "Correction majeure ETH (-35% en un mois) avec flux ETF négatifs. Pressions réglementaires (ESMA, sanctions Trésor sur courtiers russes) et enquêtes sénatoriales (Binance-Iran). Quelques points positifs (Bitwise-Chorus, tokenisation) insuffisants.",
       "signaux_cles": [
-        "ETH plonge sous 2 000 $ et file vers 1 500 $",
-        "BTC baisse vers 60 000 $ avec signaux de marché affaiblis",
-        "Volume Stripe Bridge stablecoin quadruplé ; marchés de prédiction 3 milliards $/an annualisé"
+        "ETH chute 35% en un mois avec flux d'ETF deviennent négatifs; rebond limité à 1 800$",
+        "Trésor sanctionne courtier russe pour outils cybernétiques volés; sénateur Blumenthal enquête Binance-Iran",
+        "Détenteurs ont vendu 25 000+ BTC d'actions ETF bitcoin au dernier trimestre"
       ]
     },
     "matieres_premieres": {
-      "score": 0.25,
+      "score": -0.35,
       "confidence": 0.68,
-      "tendance": "neutre",
-      "resume": "Dynamiques contrastées : gaz naturel sous pression (brûlages à plus bas 8 semaines), mais demande nucléaire croissante (boom IA), expansion pétrolière (Nigeria, Permian, Koweït 7Mds$). Transition énergétique en cours (56% bus électriques UE 2025).",
+      "tendance": "baissier",
+      "resume": "Pétrole brut prolonge pertes malgré tensions iraniennes (accord possible). Gaz naturel recule avec fin d'hiver. Consolidation pétrolière canadienne record (38Mds$) reflète restructuration. Énergies propres volatiles malgré investissements records.",
       "signaux_cles": [
-        "Brûlages gaz naturel à plus bas de 8 semaines sur météo torride",
-        "Koweït prépare accord pipeline pétrolier 7 milliards $ avec investisseurs mondiaux",
-        "Bus électriques 56% du marché urbain UE 2025 ; boom IA alimente renaissance nucléaire"
+        "Contrats pétrole brut prolongent pertes; responsables iraniens se disent prêts pour accord États-Unis",
+        "Gaz naturel physique recule à mesure que l'hiver perd intensité; demande chauffage baisse",
+        "Secteur pétrolier canadien emporté par consolidation record de 38 milliards de dollars"
       ]
     },
     "ai_tech": {
-      "score": 0.45,
-      "confidence": 0.75,
+      "score": 0.52,
+      "confidence": 0.71,
       "tendance": "haussier",
-      "resume": "Dynamique positive globale malgré frictions réglementaires : déploiements d'IA en expansion (Microsoft Copilot, AMD-Meta 6GW, Google Labs), mais pénétration métier encore faible selon OpenAI. Débats sécurité militaire (Pentagone-Anthropic) et cybersécurité (Claude Code vs IBM/Cobol).",
+      "resume": "Financement massif IA/puces (MatX 500M$, Wayve 1,2Mds$, startups 1,1Mds$ en 2 jours) malgré volatilité. OpenAI gagne procès xAI. Meta open-source GCM. Contrebalancé par préoccupations Fed sur chômage et débats surveillance.",
       "signaux_cles": [
-        "AMD reproduit accord OpenAI pour Meta : 6 gigawatts + 10% participation",
-        "COO OpenAI : IA n'a pas encore vraiment pénétré processus métier entreprises",
-        "Pentagone convoque CEO Anthropic sur garde-fous Claude ; Claude Code impacte IBM"
+        "MatX lève 500 millions de dollars comme challenger Nvidia; Wayve lève 1,2 milliards auprès Nvidia/Uber",
+        "Startups puces IA absorbent 1,1 milliard de dollars en financement en 2 jours",
+        "OpenAI remporte victoire procès vol secrets commerciaux xAI; Meta open-source GCM surveillance GPU"
       ]
     }
   },
@@ -162,6 +162,15 @@
       "crypto": -0.55,
       "matieres_premieres": 0.25,
       "ai_tech": 0.45
+    },
+    {
+      "date": "2026-02-25",
+      "global": -0.17,
+      "geopolitique": -0.45,
+      "marches": 0.15,
+      "crypto": -0.62,
+      "matieres_premieres": -0.35,
+      "ai_tech": 0.52
     }
   ],
   "model": "claude-haiku-4-5-20251001",

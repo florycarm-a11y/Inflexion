@@ -1,100 +1,95 @@
 {
-  "updated": "2026-02-24T21:23:52.193Z",
+  "updated": "2026-02-25T01:14:01.327Z",
   "alertes": [
     {
-      "id": "alert-2026-02-24-001",
-      "titre": "ETH : plonge sous 2 000 $, cible 1 500 $ (24 février)",
-      "texte": "Ethereum franchit à la baisse le seuil psychologique de 2 000 USD avec trajectoire baissière vers 1 500 USD. Contexte de faiblesse crypto généralisée et affaiblissement des signaux de marché.",
+      "id": "alert-2026-02-25-001",
+      "titre": "ETH : -35% en un mois, flux ETF négatifs, rebond limité à 1 800 $",
+      "texte": "Ethereum subit correction majeure avec sorties nettes d'ETF et indicateurs pointant vers faiblesse prolongée. Rebond technique à 1 800 $ n'a pas consolidé les gains, signalant pression vendeuse persistante.",
       "categorie": "crypto",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-02-24T21:23:52.193Z",
+      "horodatage": "2026-02-25T01:14:01.327Z",
       "donnees": {
         "symbole": "AAPL",
         "nom": "Apple",
-        "prix": 272.18,
-        "variation": 2.25
+        "prix": 272.14,
+        "variation": 2.24
       }
     },
     {
-      "id": "alert-2026-02-24-002",
-      "titre": "BTC : oscillation 60 000-64 000 $, signaux affaiblis",
-      "texte": "Bitcoin fluctue entre 60 000 et 64 000 USD avec dégradation des signaux techniques. Traders surveillent les niveaux de support critiques dans un contexte de volatilité accrue.",
-      "categorie": "crypto",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-02-24T21:23:52.193Z",
-      "donnees": {
-        "score": 8,
-        "label": "Extreme Fear",
-        "variation_7j": -2
-      }
-    },
-    {
-      "id": "alert-2026-02-24-003",
-      "titre": "Fear & Greed Index : 8/100 (Extreme Fear)",
-      "texte": "Indice de sentiment de marché à 8 points (Extreme Fear), signalant une aversion au risque maximale parmi les investisseurs. Niveau extrême non observé depuis crises majeures.",
+      "id": "alert-2026-02-25-002",
+      "titre": "Fear & Greed Index : 11 (Extreme Fear), signal de panique boursière généralisée",
+      "texte": "Indice atteint niveau extrême de peur reflétant panique IA et tensions géopolitiques. Contexte de volatilité majeure avec ventes massives ETF crypto et révisions baissières technologie.",
       "categorie": "marches",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-02-24T21:23:52.193Z",
+      "horodatage": "2026-02-25T01:14:01.327Z",
+      "donnees": {
+        "symbole": "TSLA",
+        "nom": "Tesla",
+        "prix": 409.38,
+        "variation": 2.39
+      }
+    },
+    {
+      "id": "alert-2026-02-25-003",
+      "titre": "Workday (WDAY) : plonge sur révélation coûts concurrence IA et prévisions baissières",
+      "texte": "Résultats révèlent impact majeur de concurrence IA sur modèle économique. Discours PDG sur IA insuffisant pour restaurer confiance investisseurs face à guidance révisée à la baisse.",
+      "categorie": "ai_tech",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-02-25T01:14:01.327Z",
+      "donnees": {
+        "score": 11,
+        "label": "Extreme Fear",
+        "variation_7j": 3
+      }
+    },
+    {
+      "id": "alert-2026-02-25-004",
+      "titre": "Pétrole brut : prolonge pertes malgré tensions iraniennes, accord possible",
+      "texte": "Contrats futures pétrole reculent alors que responsables iraniens signalent disponibilité pour accord avec États-Unis. Hausse stocks brut américain pèse sur prix malgré risques géopolitiques.",
+      "categorie": "matieres_premieres",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-02-25T01:14:01.327Z",
       "donnees": {}
     },
     {
-      "id": "alert-2026-02-24-004",
-      "titre": "AAPL : +2,25% à 272,18 $, divergence haussière",
-      "texte": "Apple progresse de 2,25% à 272,18 USD, divergeant positivement du sentiment global extrêmement baissier. Possible refuge défensif ou signal de sélectivité sectorielle.",
-      "categorie": "marches",
+      "id": "alert-2026-02-25-005",
+      "titre": "Financement IA/puces : 1,1 milliard de dollars absorbé en 2 jours par startups",
+      "texte": "MatX lève 500M$ comme challenger Nvidia; Wayve lève 1,2Mds$ auprès Nvidia/Uber/constructeurs. Dynamique de financement robuste malgré volatilité marchés et panique IA.",
+      "categorie": "ai_tech",
       "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-02-24T21:23:52.193Z",
+      "horodatage": "2026-02-25T01:14:01.327Z",
       "donnees": {}
     },
     {
-      "id": "alert-2026-02-24-005",
-      "titre": "Valeurs financières : pire début d'année en une décennie",
-      "texte": "Secteur financier enregistre sa pire performance de début d'année depuis 2016. Contexte de hausse des taux et incertitude macroéconomique.",
+      "id": "alert-2026-02-25-006",
+      "titre": "Paramount-Warner Bros : offre majorée à 31 $/action, M&A défensif en contexte volatilité",
+      "texte": "Paramount soumet nouvelle offre rachat majorée à 31 $/action pour Warner Bros Discovery. Activité M&A intense (Stripe-PayPal 159Mds$) reflète consolidation secteur face à pressions IA.",
       "categorie": "marches",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-02-24T21:23:52.193Z",
-      "donnees": {}
-    },
-    {
-      "id": "alert-2026-02-24-006",
-      "titre": "BIC : bénéfice -60% en 2025, année difficile",
-      "texte": "Bénéfice de Bic s'effondre de 60% en 2025 après exercice qualifié de difficile. Signale contraction de la demande de consommation et pressions marges.",
-      "categorie": "marches",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-02-24T21:23:52.193Z",
-      "donnees": {}
-    },
-    {
-      "id": "alert-2026-02-24-007",
-      "titre": "Gaz naturel : brûlages à plus bas 8 semaines",
-      "texte": "Brûlages de gaz naturel pour production électrique chutent à plus bas de 8 semaines sur fond de météo torride. Pression baissière sur les prix du gaz.",
-      "categorie": "matieres_premieres",
       "severite": "info",
-      "impact": "baissier",
-      "horodatage": "2026-02-24T21:23:52.193Z",
+      "impact": "neutre",
+      "horodatage": "2026-02-25T01:14:01.327Z",
       "donnees": {}
     },
     {
-      "id": "alert-2026-02-24-008",
-      "titre": "Tensions géopolitiques : saisies pétrolières US, exercices Iran",
-      "texte": "Forces américaines saisissent un troisième pétrolier sanctionné dans l'océan Indien ; Iran lance exercices militaires sur rives du Golfe. Risques d'approvisionnement énergétique accrus.",
-      "categorie": "geopolitique",
+      "id": "alert-2026-02-25-007",
+      "titre": "Trésor sanctionne courtiers russes pour outils cybernétiques volés, enquête Binance-Iran",
+      "texte": "Sanctions multiples contre courtiers russes financés crypto pour vol secrets commerciaux. Sénateur Blumenthal enquête Binance suite rapports évasion sanctions liées Iran.",
+      "categorie": "crypto",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-24T21:23:52.193Z",
+      "horodatage": "2026-02-25T01:14:01.327Z",
       "donnees": {}
     }
   ],
   "stats": {
-    "total": 8,
+    "total": 7,
     "urgent": 2,
-    "attention": 4,
+    "attention": 3,
     "info": 2
   },
   "model": "claude-haiku-4-5-20251001",
