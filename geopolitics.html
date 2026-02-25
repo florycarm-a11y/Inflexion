@@ -282,9 +282,124 @@
     <script src="data-loader.js"></script>
     <script>if (typeof initCategoryPage === 'function') initCategoryPage('geopolitics');</script>
     <script>
-    // Tab switching + Country macro integration
+    // Tab switching + Country macro integration + Filter buttons
     (function() {
         'use strict';
+
+        // ── Filter buttons (Tous / Conflits / Commerce / Politique) ──
+        var FILTER_KEYWORDS = {
+            conflicts: [
+                'guerre', 'war', 'conflit', 'conflict', 'militaire', 'military',
+                'armee', 'armée', 'army', 'missile', 'frappe', 'strike', 'bombe',
+                'otan', 'nato', 'defense', 'défense', 'invasion', 'offensive',
+                'cessez-le-feu', 'ceasefire', 'combats', 'fighting', 'ukraine',
+                'gaza', 'israel', 'iran', 'escalade', 'escalation', 'tensions',
+                'arme', 'weapon', 'nucleaire', 'nucléaire', 'nuclear',
+                'sanction', 'embargo', 'blocus', 'blockade', 'terrorisme',
+                'insurrection', 'coup d\'etat', 'coup d\'état'
+            ],
+            trade: [
+                'commerce', 'trade', 'tarif', 'tariff', 'douane', 'customs',
+                'exportation', 'export', 'importation', 'import', 'libre-echange',
+                'libre-échange', 'free trade', 'protectionnisme', 'protectionism',
+                'accord commercial', 'trade deal', 'trade agreement', 'OMC', 'WTO',
+                'supply chain', 'chaine d\'approvisionnement', 'chaîne d\'approvisionnement',
+                'barriere', 'barrière', 'barrier', 'quota', 'dumping',
+                'guerre commerciale', 'trade war', 'droits de douane',
+                'mercosur', 'alena', 'usmca', 'rcep'
+            ],
+            politics: [
+                'election', 'élection', 'vote', 'referendum', 'référendum',
+                'president', 'président', 'premier ministre', 'prime minister',
+                'parlement', 'parliament', 'congres', 'congrès', 'congress',
+                'senat', 'sénat', 'senate', 'loi', 'law', 'legislation',
+                'législation', 'diplomatie', 'diplomacy', 'sommet', 'summit',
+                'traite', 'traité', 'treaty', 'alliance', 'G7', 'G20',
+                'ONU', 'UN', 'union europeenne', 'union européenne', 'european union',
+                'reforme', 'réforme', 'reform', 'gouvernement', 'government',
+                'politique', 'policy', 'souverainete', 'souveraineté', 'sovereignty'
+            ]
+        };
+
+        function classifyArticle(article) {
+            var text = ((article.textContent || article.innerText) || '').toLowerCase();
+            var titleEl = article.querySelector('.story-title, h3');
+            if (titleEl) text = (titleEl.textContent || '').toLowerCase() + ' ' + text;
+
+            var scores = { conflicts: 0, trade: 0, politics: 0 };
+            Object.keys(FILTER_KEYWORDS).forEach(function(cat) {
+                FILTER_KEYWORDS[cat].forEach(function(kw) {
+                    if (kw.length <= 3) {
+                        if (new RegExp('\\b' + kw + '\\b', 'i').test(text)) scores[cat]++;
+                    } else {
+                        if (text.indexOf(kw.toLowerCase()) !== -1) scores[cat]++;
+                    }
+                });
+            });
+
+            var best = 'politics'; // default fallback
+            var bestScore = 0;
+            Object.keys(scores).forEach(function(cat) {
+                if (scores[cat] > bestScore) { bestScore = scores[cat]; best = cat; }
+            });
+            return best;
+        }
+
+        function initFilterButtons() {
+            var filtersContainer = document.getElementById('filters');
+            if (!filtersContainer) return;
+
+            var buttons = filtersContainer.querySelectorAll('.filter-btn');
+            var pageNews = document.getElementById('page-news');
+            if (!pageNews) return;
+
+            // Tag articles with data-filter based on keyword classification
+            function tagArticles() {
+                var articles = pageNews.querySelectorAll('article, .top-story, .news-card');
+                articles.forEach(function(article) {
+                    if (!article.getAttribute('data-filter')) {
+                        article.setAttribute('data-filter', classifyArticle(article));
+                    }
+                });
+            }
+
+            // Filter articles by category
+            function filterArticles(category) {
+                var articles = pageNews.querySelectorAll('article, .top-story, .news-card');
+                articles.forEach(function(article) {
+                    if (category === 'all') {
+                        article.style.display = '';
+                    } else {
+                        article.style.display = (article.getAttribute('data-filter') === category) ? '' : 'none';
+                    }
+                });
+            }
+
+            buttons.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    buttons.forEach(function(b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    tagArticles(); // ensure articles are tagged
+                    filterArticles(btn.getAttribute('data-filter'));
+                });
+            });
+
+            // Tag articles once news is loaded (observe DOM changes)
+            var observer = new MutationObserver(function() {
+                var articles = pageNews.querySelectorAll('article, .top-story, .news-card');
+                if (articles.length > 0) {
+                    tagArticles();
+                    observer.disconnect();
+                }
+            });
+            observer.observe(pageNews, { childList: true, subtree: true });
+
+            // Also tag if articles are already present
+            var existingArticles = pageNews.querySelectorAll('article, .top-story, .news-card');
+            if (existingArticles.length > 0) tagArticles();
+        }
+
+        initFilterButtons();
 
         // ── Tab switching ──
         var tabs = document.querySelectorAll('#geo-tabs .page-tab');
@@ -298,9 +413,9 @@
                 tab.classList.add('active');
                 tab.setAttribute('aria-selected', 'true');
                 panels.forEach(function(p) { p.hidden = true; p.classList.remove('active'); });
-                var panel = document.getElementById(target);
+                var panel = document.getElementById('tab-' + target);
                 if (panel) { panel.hidden = false; panel.classList.add('active'); }
-                if (target === 'tab-geo-pays' && !countryInitialized) {
+                if (target === 'geo-pays' && !countryInitialized) {
                     countryInitialized = true;
                     initCountryData();
                 }
@@ -310,7 +425,7 @@
         // Handle URL param
         var params = new URLSearchParams(window.location.search);
         if (params.get('country') || params.get('tab') === 'pays') {
-            var paysTab = document.querySelector('[data-tab="tab-geo-pays"]');
+            var paysTab = document.querySelector('[data-tab="geo-pays"]');
             if (paysTab) paysTab.click();
         }
 
