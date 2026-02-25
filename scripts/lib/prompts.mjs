@@ -787,15 +787,27 @@ Après le Risk Radar. Chaque piste en 1-2 phrases :
 - Ratio risque/rendement estimé
 - Disclaimer obligatoire en fin de section
 
-## Utilisation du contexte historique (RAG)
+## Utilisation du contexte historique (RAG) — DOCTRINE
 Si une "PARTIE C : Contexte historique" est fournie, elle contient :
-- Des articles historiques similaires aux sujets du jour (retrouvés par similarité sémantique)
+- Des articles historiques similaires aux sujets du jour (retrouvés par recherche hybride vectorielle + mots-clés)
 - Les briefings des jours précédents (titre, sentiment, tags, résumé)
-Exploite ce contexte pour :
-- **Continuité narrative** : signaler les évolutions par rapport aux briefings précédents
-  ("comme signalé hier...", "confirmant la tendance amorcée mardi...")
-- **Mise en perspective** : comparer les niveaux actuels aux niveaux passés
-- **Détection de tendances** : identifier les signaux qui se répètent ou s'inversent
+
+### Règles d'exploitation du contexte RAG
+1. **Comparaison signaux du jour vs briefings précédents** : pour chaque signal clé du jour, vérifier
+   s'il était déjà identifié dans un briefing précédent. Si oui, indiquer explicitement l'évolution :
+   - Tendance confirmée : "confirmant le signal identifié le [date]..."
+   - Tendance inversée : "en retournement par rapport au [date] où..."
+   - Tendance nouvelle : ne pas forcer de lien avec le passé si aucun n'existe
+2. **Mise en perspective historique** : comparer les niveaux actuels aux niveaux mentionnés dans les
+   briefings précédents ("le VIX est passé de X (briefing du [date]) à Y aujourd'hui")
+3. **Détection de récurrences** : si un thème (ex: tensions commerciales, rotation sectorielle) apparaît
+   dans 2+ briefings consécutifs, le qualifier de "tendance de fond" et enrichir l'analyse
+4. **INTERDIT d'inventer** : ne JAMAIS citer un chiffre, un niveau ou une donnée qui n'apparaît ni dans
+   les parties A/B (données du jour) ni dans la partie C (contexte RAG). Si une donnée de comparaison
+   manque, écrire explicitement "(donnée indisponible)" ou "(non couvert dans les briefings précédents)"
+5. **Pondération** : les données du jour (parties A et B) ont toujours priorité sur le contexte historique.
+   Le RAG sert de mise en perspective, jamais de source primaire.
+
 Si la partie C est absente, ignore cette section et travaille uniquement avec les parties A et B.
 
 ## Nomenclature indices vs ETF (IMPORTANT)
@@ -1051,6 +1063,12 @@ une mise à jour incrémentale qui COMPLÈTE le briefing existant sans le répé
   mais ne le réanalyse pas en détail.
 - Si rien de majeur n'a changé dans une catégorie, dis-le en une phrase ("marchés actions stables,
   pas de changement significatif vs hier").
+
+## Utilisation du contexte historique (RAG)
+Si une "PARTIE C : Contexte historique" est fournie, applique les mêmes règles que le briefing complet :
+- Comparer les signaux du jour aux briefings précédents (tendance confirmée / inversée / nouvelle)
+- Ne JAMAIS inventer un chiffre absent des données fournies — écrire "(donnée indisponible)" si besoin
+- Les données du jour (parties A et B) ont toujours priorité sur le contexte historique
 
 ## RÈGLE ANTI-REDONDANCE (CRITIQUE)
 Chaque information ne doit apparaître qu'UNE SEULE FOIS dans le briefing :

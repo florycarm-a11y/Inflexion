@@ -40,6 +40,140 @@ const DATA_DIR = join(__dirname, '..', 'data');
 // Mode dry-run : valide les données sans appeler Claude (pas de coût API)
 const DRY_RUN = process.argv.includes('--dry-run');
 
+// ─── Sanitizer anti-injection pour le contenu RAG ───────────
+
+/** Longueur max d'un champ texte injecté dans le prompt (titre, description, contenu) */
+const SANITIZE_MAX_LENGTH = 500;
+
+/**
+ * Patterns suspects pouvant indiquer une tentative d'injection de prompt
+ * dans le contenu d'un article RSS/API avant injection dans le prompt Claude.
+ */
+const SUSPICIOUS_PATTERNS = [
+    /\bignore\s+(all\s+)?(previous|above|prior)\s+(instructions?|prompts?|rules?)/i,
+    /\byou\s+are\s+(now|actually)\b/i,
+    /\b(system|assistant|user)\s*:/i,
+    /\bdo\s+not\s+follow\b/i,
+    /\bforget\s+(everything|all|your)\b/i,
+    /\bnew\s+instructions?\s*:/i,
+    /\boverride\s+(the\s+)?(system|prompt|instructions?)/i,
+    /\bact\s+as\s+(if|a|an)\b/i,
+    /<\/?(?:script|style|iframe|object|embed|form|input|button|textarea|select)\b/i,
+    /\bjavascript\s*:/i,
+    /\bon\w+\s*=/i,
+];
+
+/**
+ * Supprime les balises HTML d'un texte.
+ * @param {string} text - Texte potentiellement contenant du HTML
+ * @returns {string} Texte sans balises HTML
+ */
+function stripHTML(text) {
+    if (typeof text !== 'string') return '';
+    return text
+        .replace(/<[^>]*>/g, '')      // supprime les balises
+        .replace(/&nbsp;/g, ' ')       // entités courantes
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#039;/g, "'")
+        .replace(/\s+/g, ' ')         // normalise les espaces
+        .trim();
+}
+
+/**
+ * Détecte des patterns suspects dans un texte (tentatives d'injection de prompt).
+ * @param {string} text - Texte à analyser
+ * @returns {string[]} Liste des patterns détectés (vide si aucun)
+ */
+function detectSuspiciousPatterns(text) {
+    if (typeof text !== 'string') return [];
+    const found = [];
+    for (const pattern of SUSPICIOUS_PATTERNS) {
+        if (pattern.test(text)) {
+            found.push(pattern.source);
+        }
+    }
+    return found;
+}
+
+/**
+ * Sanitize un texte avant injection dans le prompt Claude :
+ * 1. Strip HTML
+ * 2. Tronque à SANITIZE_MAX_LENGTH
+ * 3. Détecte et supprime les patterns suspects
+ *
+ * @param {string} text - Texte brut (titre, description, contenu d'article)
+ * @param {number} [maxLength=SANITIZE_MAX_LENGTH] - Longueur max
+ * @returns {{ text: string, wasTruncated: boolean, suspiciousPatterns: string[] }}
+ */
+function sanitizeText(text, maxLength = SANITIZE_MAX_LENGTH) {
+    if (typeof text !== 'string' || text.length === 0) {
+        return { text: '', wasTruncated: false, suspiciousPatterns: [] };
+    }
+
+    // 1. Strip HTML
+    let clean = stripHTML(text);
+
+    // 2. Detect suspicious patterns BEFORE truncation (full text check)
+    const suspiciousPatterns = detectSuspiciousPatterns(clean);
+
+    // 3. If suspicious, replace the text with a safe placeholder
+    if (suspiciousPatterns.length > 0) {
+        clean = '[contenu filtré — pattern suspect détecté]';
+    }
+
+    // 4. Truncate
+    const wasTruncated = clean.length > maxLength;
+    if (wasTruncated) {
+        clean = clean.slice(0, maxLength).replace(/\s+\S*$/, '') + '…';
+    }
+
+    return { text: clean, wasTruncated, suspiciousPatterns };
+}
+
+/**
+ * Sanitize un tableau d'articles avant injection dans le prompt.
+ * Modifie les articles en place (title, description).
+ *
+ * @param {Object[]} articles - Articles sélectionnés
+ * @returns {{ sanitizedCount: number, truncatedCount: number, suspiciousCount: number }}
+ */
+function sanitizeArticles(articles) {
+    let sanitizedCount = 0;
+    let truncatedCount = 0;
+    let suspiciousCount = 0;
+
+    for (const article of articles) {
+        // Sanitize title (shorter limit)
+        if (article.title) {
+            const r = sanitizeText(article.title, 200);
+            if (r.text !== article.title) sanitizedCount++;
+            if (r.wasTruncated) truncatedCount++;
+            if (r.suspiciousPatterns.length > 0) {
+                suspiciousCount++;
+                console.warn(`  ⚠ Article suspect filtré: "${article.title.slice(0, 80)}..." — patterns: ${r.suspiciousPatterns.join(', ')}`);
+            }
+            article.title = r.text;
+        }
+
+        // Sanitize description
+        if (article.description) {
+            const r = sanitizeText(article.description, SANITIZE_MAX_LENGTH);
+            if (r.text !== article.description) sanitizedCount++;
+            if (r.wasTruncated) truncatedCount++;
+            if (r.suspiciousPatterns.length > 0) {
+                suspiciousCount++;
+                console.warn(`  ⚠ Description suspecte filtrée: "${article.title?.slice(0, 60)}..."`);
+            }
+            article.description = r.text;
+        }
+    }
+
+    return { sanitizedCount, truncatedCount, suspiciousCount };
+}
+
 // Cycle hebdomadaire : Sonnet le lundi (briefing complet), Haiku les autres jours (delta)
 const FULL_MODEL = 'claude-sonnet-4-5-20250929';
 const DELTA_MODEL = 'claude-haiku-4-5-20251001';
@@ -584,6 +718,22 @@ async function main() {
         console.log(`    ${cat}: ${count} articles`);
     }
 
+    // ── 2b. Sanitizer anti-injection ─────────────────────────
+    console.log('\n🛡️  Sanitization des articles...');
+    const sanitizeStats = sanitizeArticles(topArticles);
+    if (sanitizeStats.sanitizedCount > 0) {
+        console.log(`  ✓ ${sanitizeStats.sanitizedCount} champs nettoyés (HTML stripped)`);
+    }
+    if (sanitizeStats.truncatedCount > 0) {
+        console.log(`  ✓ ${sanitizeStats.truncatedCount} champs tronqués (>${SANITIZE_MAX_LENGTH} car.)`);
+    }
+    if (sanitizeStats.suspiciousCount > 0) {
+        console.log(`  ⚠ ${sanitizeStats.suspiciousCount} contenus suspects filtrés`);
+    }
+    if (sanitizeStats.sanitizedCount === 0 && sanitizeStats.suspiciousCount === 0) {
+        console.log('  ✓ Aucun contenu problématique détecté');
+    }
+
     // ── 3. Construire le contexte complet pour Claude ─────────
     console.log('\n🔧 Construction du contexte multi-sources...');
 
@@ -698,6 +848,18 @@ async function main() {
         console.log(`  📋 Briefing précédent : ${previousBriefing.date} — "${previousBriefing.synthese?.titre || '?'}"`);
     }
 
+    // ── 3d. Feedback loop : vérifier le score du briefing précédent ──
+    let rigorConsigne = '';
+    const prevScore = previousBriefing?._verification?.score;
+    if (prevScore != null && prevScore < 0.6) {
+        rigorConsigne = `\n\n⚠️ **CONSIGNE DE RIGUEUR RENFORCÉE** : le briefing précédent (${previousBriefing.date}) a obtenu un score de vérification factuelle de ${(prevScore * 100).toFixed(0)}% (seuil : 60%). Plusieurs données chiffrées n'ont pas pu être tracées vers les sources. Pour ce briefing :
+- Cite UNIQUEMENT des chiffres présents dans les parties A, B ou C ci-dessus
+- Chaque donnée chiffrée DOIT apparaître verbatim dans les données fournies
+- Si une donnée est absente, écris explicitement "(donnée indisponible)" au lieu d'inventer
+- Privilégie les variations (%) aux valeurs absolues quand la source est un ETF proxy`;
+        console.log(`  ⚠ Score vérification précédent : ${(prevScore * 100).toFixed(0)}% < 60% — consigne de rigueur injectée`);
+    }
+
     // Assembler le message complet avec structure claire pour faciliter l'analyse
     let previousBriefingContext = '';
     if (previousBriefing && !useFullMode) {
@@ -712,7 +874,7 @@ async function main() {
 4. **Chaque interconnexion doit citer des chiffres** tirés de la partie B comme preuves factuelles
 5. **Signaler les divergences** si des indicateurs envoient des signaux contradictoires
 6. **Ne pas inventer de données** absentes des parties A et B — si une information manque, le mentionner
-7. **Viser 1 500-2 000 mots au total** (synthèse ~400 mots + signaux ~800 mots + risk radar ~300 mots)${ragContext ? '\n8. **Exploiter le contexte historique (partie C)** pour la continuité narrative : signaler les évolutions par rapport aux briefings précédents, identifier les tendances qui se confirment ou s\'inversent' : ''}`
+7. **Viser 1 500-2 000 mots au total** (synthèse ~400 mots + signaux ~800 mots + risk radar ~300 mots)${ragContext ? '\n8. **Exploiter le contexte historique (partie C)** pour la continuité narrative : signaler les évolutions par rapport aux briefings précédents, identifier les tendances qui se confirment ou s\'inversent' : ''}${rigorConsigne}`
         : `Produis la MISE À JOUR du briefing en respectant ces priorités :
 1. **Comparer avec le briefing de la veille (partie D)** — qu'est-ce qui a changé ?
 2. **Ne pas répéter** les analyses déjà faites hier — se concentrer sur le NOUVEAU
@@ -720,7 +882,7 @@ async function main() {
 4. **Chiffrer les évolutions** vs la veille ("le VIX est passé de X à Y", "le BTC a gagné/perdu X%")
 5. **Mettre à jour le risk radar** — probabilités et sévérités évoluent-elles ?
 6. **Ne pas inventer de données** absentes des parties A, B et D
-7. **Viser 800-1 200 mots au total**`;
+7. **Viser 800-1 200 mots au total**${rigorConsigne}`;
 
     const userMessage = `# ${useFullMode ? 'Briefing stratégique' : 'Mise à jour quotidienne'} Inflexion — ${today()}
 
@@ -868,4 +1030,6 @@ if (isDirectRun) {
 export { selectTopArticles, formatNewsContext, formatMarkets, formatCrypto,
          formatFearGreed, formatMacro, formatGlobalMacro, formatCommodities,
          formatEuropeanMarkets, formatDefi, formatAlphaVantage, formatOnChain,
-         formatSentiment, isFullBriefingDay, loadPreviousBriefing, formatPreviousBriefing };
+         formatSentiment, isFullBriefingDay, loadPreviousBriefing, formatPreviousBriefing,
+         stripHTML, detectSuspiciousPatterns, sanitizeText, sanitizeArticles,
+         SANITIZE_MAX_LENGTH, SUSPICIOUS_PATTERNS };
