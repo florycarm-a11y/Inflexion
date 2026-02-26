@@ -1,65 +1,65 @@
 {
-  "updated": "2026-02-26T01:06:58.044Z",
+  "updated": "2026-02-26T06:50:53.968Z",
   "date": "2026-02-26",
   "global": {
-    "score": 0.09,
+    "score": 0.16,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (+0.09), dominé par la rubrique crypto (haussier)."
+    "resume": "Le sentiment global est mixte (+0.16), dominé par la rubrique ai_tech (haussier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.45,
-      "confidence": 0.72,
+      "score": -0.65,
+      "confidence": 0.85,
       "tendance": "baissier",
-      "resume": "Tensions géopolitiques multiples : escalade Iran-États-Unis avec menaces militaires, incidents Cuba-Floride, conflits commerciaux et politiques internes américaines. Contexte d'instabilité accrue sans résolution visible.",
+      "resume": "Tensions géopolitiques accrues avec reprise des négociations nucléaires Iran-États-Unis, déploiements militaires américains dans le Golfe, escalade en Ukraine et menaces d'escalade nucléaire. Instabilité régionale croissante affectant les primes de risque.",
       "signaux_cles": [
-        "Vice-président Vance affirme preuves de reconstruction programme nucléaire iranien",
-        "CIA lance campagne recrutement ciblée Iraniens alors que Trump menace action militaire",
-        "Juge américain juge illégale politique déportations Trump vers tiers pays"
+        "Négociations Iran-États-Unis reprennent à Genève avec déploiement militaire américain simultané dans le Golfe",
+        "Attaques russes nocturnes sur Kiev, Kharkiv et Zaporijia avant discussions tripartites (Kiev-Moscou-Washington)",
+        "Avertissements d'escalade nucléaire et tensions accrues sur les corridors énergétiques (Hongrie-pétrole, Turquie-BP Irak)"
       ]
     },
     "marches": {
-      "score": 0.15,
-      "confidence": 0.65,
+      "score": 0.42,
+      "confidence": 0.72,
       "tendance": "mixte",
-      "resume": "Résultats d'entreprises contrastés : Nvidia dépasse attentes (+75% revenus data centers), mais Salesforce, Snowflake et Trade Desk déçoivent avec guidance mitigée. Indice Nikkei atteint nouveau sommet, pétrole volatil avant négociations Iran.",
+      "resume": "Résultats d'entreprises contrastés : Nvidia porte les Bourses asiatiques avec records, Allianz et Deutsche Telekom affichent solidité opérationnelle, mais dégradations de notations (Arcellx, Oddity Tech). Accord sur assurance chômage et débats fiscaux en France.",
       "signaux_cles": [
-        "Nvidia dépasse attentes, revenus data centers +75% porté par boom IA",
-        "Salesforce chute sur guidance mitigée malgré engagement 50 Mds$ rachats actions",
-        "Nikkei 225 atteint nouveau sommet, rebond technologique Wall Street"
+        "Nvidia dépasse les attentes et porte les Bourses asiatiques ; American Express relocalise son siège au World Trade Center",
+        "Allianz BPA non-GAAP 7,17 € et Deutsche Telekom 0,44 € avec perspectives 2026 présentées",
+        "Guggenheim abaisse Arcellx post-acquisition Gilead ; Evercore ISI réduit Oddity Tech sur hausse coûts publicitaires"
       ]
     },
     "crypto": {
-      "score": 0.62,
+      "score": 0.68,
       "confidence": 0.78,
       "tendance": "haussier",
-      "resume": "Rebond significatif multi-actifs suite résultats Nvidia et pause du selling. Expiration 10,5 Mds$ options Bitcoin imminente pourrait stabiliser marché. Intérêt institutionnel croissant (Morgan Stanley, Tether, Kraken).",
+      "resume": "Rebond crypto généralisé porté par stabilisation post-Nvidia et cadres réglementaires favorables (loi GENIUS, stablecoins OCC). Bitcoin frôle 70 000 $, altcoins en plus fort rebond depuis plusieurs semaines. Aave dépasse 1 000 Md$ de prêts.",
       "signaux_cles": [
-        "Bitcoin, Ethereum, Solana rebondissent après plainte Jane Street, pause dump 10h",
-        "Expiration 10,5 Mds$ options Bitcoin imminente pourrait mettre fin marché baissier",
-        "Morgan Stanley prévoit plans futurs trading, prêt et garde Bitcoin"
+        "Bitcoin frôle 70 000 $ avant recul ; altcoins mènent rebond le plus fort en plusieurs semaines",
+        "UNI bondit 15% sur vote gouvernance ; Aave dépasse 1 000 milliards de dollars de prêts avec intégrations bancaires",
+        "OCC publie cadre réglementaire stablecoins (loi GENIUS) ; Indiana approuve projet loi droits Bitcoin en vote bicaméral"
       ]
     },
     "matieres_premieres": {
-      "score": -0.25,
+      "score": -0.38,
       "confidence": 0.68,
       "tendance": "neutre",
-      "resume": "Pétrole volatil avant négociations États-Unis-Iran avec accumulation stocks US signalée. Gaz naturel soutenu par demande électricité croissante. Indices maritimes mitigés, innovation batteries clé pour réduire dépendance chaîne approvisionnement chinoise.",
+      "resume": "Pétrole volatil avant négociations Iran ; prime de risque iranienne soutient prix. Gaz naturel haussier (Texas occidental, expiration mars). Vopak affiche résultats record 2025 (distributions 1,7 Md EUR jusqu'2030). Indices de transport maritimes mitigés.",
       "signaux_cles": [
-        "Pétrole brut volatil avant négociations Iran, États-Unis signale accumulation stocks importants",
-        "Demande électricité en hausse se heurte pénurie turbines gaz naturel",
-        "Indice Baltic Dry recule légèrement, marché recyclage naval performances mitigées"
+        "Pétrole brut volatil avant négociations Iran ; prime de risque iranienne soutient les prix",
+        "Gaz naturel mars affiche tendance haussière à l'approche expiration ; reprise Texas occidental soutient marché spot",
+        "Vopak résultats record 2025, programme distributions 1,7 milliard EUR jusqu'fin 2030 ; Baltic Dry recule légèrement"
       ]
     },
     "ai_tech": {
-      "score": 0.35,
-      "confidence": 0.71,
-      "tendance": "mixte",
-      "resume": "Avancées IA contrastées : Nvidia record, Anthropic acquiert Vercept, mais vulnérabilités sécurité critiques (Claude, cyberattaques). Débat intensifié sur dépenses IA et capacités militaires IA dans simulations nucléaires.",
+      "score": 0.72,
+      "confidence": 0.81,
+      "tendance": "haussier",
+      "resume": "Dynamique IA positive : Anthropic corrige vulnérabilités Claude, acquiert Vercept, Wayve attire investissements NVIDIA/Microsoft/Uber/Mercedes. Mirakl (licorne française) accélère vers commerce agentique. AMD investit 250 M$ dans Nutanix pour pile IA. Débats sur sécurité IA s'intensifient.",
       "signaux_cles": [
-        "Nvidia enregistre trimestre record malgré dépenses capex record",
-        "Anthropic acquiert startup IA Vercept après débauchage fondateur par Meta",
-        "Modèles IA OpenAI, Google, Anthropic déploient armes nucléaires 95% simulations guerre"
+        "Anthropic corrige 3 vulnérabilités critiques Claude Code ; acquiert startup IA Vercept post-départ fondateur vers Meta",
+        "Wayve attire nouveaux investissements NVIDIA, Microsoft, Uber, Mercedes ; Mirakl (licorne française) accélère vers commerce agentique",
+        "AMD investit 250 millions de dollars dans Nutanix pour construire pile IA ; débats dépenses IA s'intensifient post-Nvidia"
       ]
     }
   },
@@ -174,12 +174,12 @@
     },
     {
       "date": "2026-02-26",
-      "global": 0.09,
-      "geopolitique": -0.45,
-      "marches": 0.15,
-      "crypto": 0.62,
-      "matieres_premieres": -0.25,
-      "ai_tech": 0.35
+      "global": 0.16,
+      "geopolitique": -0.65,
+      "marches": 0.42,
+      "crypto": 0.68,
+      "matieres_premieres": -0.38,
+      "ai_tech": 0.72
     }
   ],
   "model": "claude-haiku-4-5-20251001",
