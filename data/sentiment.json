@@ -1,65 +1,65 @@
 {
-  "updated": "2026-02-26T08:56:07.093Z",
+  "updated": "2026-02-26T18:52:50.869Z",
   "date": "2026-02-26",
   "global": {
-    "score": 0.09,
-    "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (+0.09), dominé par la rubrique geopolitique (baissier)."
+    "score": -0.31,
+    "tendance": "baissier",
+    "resume": "Le sentiment global est baissier (-0.31), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.72,
-      "confidence": 0.87,
+      "score": -0.65,
+      "confidence": 0.85,
       "tendance": "baissier",
-      "resume": "Tensions géopolitiques aigues : négociations Iran-USA à Genève, déploiements militaires américains au Golfe, opérations israéliennes en Syrie, et affaires judiciaires majeures (Epstein). Risque de conflit régional élevé.",
+      "resume": "Tensions géopolitiques accrues : négociations Iran-USA en impasse, escalade militaire Israël-Hezbollah, instabilité Afghanistan-Pakistan, et blocages commerciaux (lithium zimbabwéen). Risques de conflits régionaux multipliés.",
       "signaux_cles": [
-        "Négociations Iran-USA reprises à Genève avec déploiement des forces américaines dans le Golfe",
-        "Incursion militaire israélienne confirmée en Syrie (Quneitra, Golan)",
-        "Affaire Epstein : documents supplémentaires sur Trump en cours de réexamen par le ministère de la justice"
+        "Envoyés US déçus après négociations iraniennes du matin (Axios)",
+        "Israël frappe 8 bases du Hezbollah au Liban",
+        "Zimbabwe suspend exportations lithium brut, cours volatiles"
       ]
     },
     "marches": {
-      "score": -0.18,
+      "score": -0.15,
       "confidence": 0.72,
       "tendance": "mixte",
-      "resume": "Indices européens en baisse après sommets récents ; résultats Nvidia décevants malgré battements. Acquisitions majeures (Engie : 12 Mds€ au Royaume-Uni) contrebalancent prudence sur tech. Dividendes réguliers maintenus.",
+      "resume": "Résultats d'entreprises mitigés avec quelques surperformances (Millennium BCP, Sempra), mais inquiétudes croissantes sur crédit privé en récession et réductions d'effectifs tech (eBay -800 postes). Taux hypothécaires en baisse (<6%).",
       "signaux_cles": [
-        "Indices européens en repli après atteinte de nouveaux sommets",
-        "Nvidia : résultats supérieurs aux attentes mais déception des investisseurs",
-        "Engie : acquisition record d'un réseau britannique pour 12 milliards d'euros"
+        "eBay annonce 800 suppressions de postes dans restructuration tech",
+        "Crédit privé face à son premier vrai test de récession sans filet de sécurité Fed",
+        "Taux hypothécaires US chutent sous 6%, amélioration accessibilité immobilière"
       ]
     },
     "crypto": {
-      "score": 0.64,
-      "confidence": 0.81,
-      "tendance": "haussier",
-      "resume": "Rebond crypto significatif : Bitcoin dépasse 70 000$, altcoins en tête du mouvement. Vitalik Buterin accélère roadmap Ethereum post-quantique. Régulation positive (stablecoins UK, Indiana bitcoin bill). Ventes Vitalik limitées (35M$).",
+      "score": -0.55,
+      "confidence": 0.8,
+      "tendance": "baissier",
+      "resume": "Marché crypto sous pression : scandales d'initiés (Kalshi, Axiom), enquêtes fédérales, mais quelques signaux positifs (Citi intègre Bitcoin, Indiana approuve BTC en retraite). Bitcoin consolide près de 67k$.",
       "signaux_cles": [
-        "Bitcoin dépasse 70 000$ avec rebond des altcoins (ETH +7,58%, ADA +9,50%, SOL +6,39% en 24h)",
-        "Vitalik Buterin dévoile roadmap Ethereum 2030 et prépare transition post-quantique",
-        "Régulation positive : Royaume-Uni teste stablecoins pound, Indiana approuve bitcoin bill, OCC cadre stablecoins régulés"
+        "Bitcoin oscille près de 67 000 $ en consolidation",
+        "Citi lance services de garde Bitcoin intégrés à la finance traditionnelle",
+        "Paiements rançongiciels atteignent 800 millions $ en 2025"
       ]
     },
     "matieres_premieres": {
-      "score": 0.41,
+      "score": -0.35,
       "confidence": 0.75,
-      "tendance": "haussier",
-      "resume": "Pétrole volatil avant négociations Iran ; prime de risque Iran soutient cours. LNG : approbation fédérale Rio Grande, Shell évalue cession 24 Mds$ en Australie. Gaz naturel en hausse (CME). Fret maritime en contraction (Baltic Dry Index baisse).",
+      "tendance": "neutre",
+      "resume": "Secteur énergétique contrasté : Cheniere LNG +64% profit (demande forte), mais gaz naturel baisse sur perspectives météo négatives. Tensions géopolitiques (embargo pétrolier russe) créent volatilité.",
       "signaux_cles": [
-        "Pétrole volatil avant négociations Iran ; prime de risque Iran soutient les cours",
-        "Shell évalue cession de 24 milliards$ de participation dans projet LNG australien",
-        "Approbation fédérale Rio Grande signale progression vers premier LNG 2027"
+        "Profit Cheniere +64% en 2025 sur demande LNG accrue",
+        "Gaz naturel en baisse sur perspectives météo et stocks défavorables",
+        "Embargo UE pétrole russe nécessite approbation G7 mondiale"
       ]
     },
     "ai_tech": {
-      "score": 0.38,
+      "score": 0.25,
       "confidence": 0.68,
       "tendance": "mixte",
-      "resume": "Progrès technologiques (Wayve lève auprès Nvidia/Microsoft/Uber, Anthropic corrige vulnérabilités Claude) contrebalancés par risques (ChatGPT Health imprécis, Google API Keys exposées). Nvidia : 120 Mds$ profit sans revenus Chine. Mirakl (licorne française) accélère commerce agentique.",
+      "resume": "Innovation IA positive (Google Nano Banana 2, réduction coûts API 40%, Einride lève 113M$), mais préoccupations sécurité (failles Juniper, Trend Micro, breach ManoMano 38M clients). Pression Pentagon sur Anthropic.",
       "signaux_cles": [
-        "Wayve lève investissements frais de Nvidia, Microsoft, Uber et Mercedes pour IA autonome",
-        "Anthropic corrige 3 vulnérabilités critiques Claude Code ; ChatGPT Health pointe imprécisions",
-        "Nvidia : 120 milliards$ de profit sans revenus significatifs en Chine"
+        "Google Nano Banana 2 : génération image 40% moins chère, synthèse 4K sub-seconde",
+        "Einride (camions autonomes) lève 113M$ avant IPO PIPE",
+        "Faille critique Juniper PTX permet prise de contrôle complète routeurs"
       ]
     }
   },
@@ -174,12 +174,12 @@
     },
     {
       "date": "2026-02-26",
-      "global": 0.09,
-      "geopolitique": -0.72,
-      "marches": -0.18,
-      "crypto": 0.64,
-      "matieres_premieres": 0.41,
-      "ai_tech": 0.38
+      "global": -0.31,
+      "geopolitique": -0.65,
+      "marches": -0.15,
+      "crypto": -0.55,
+      "matieres_premieres": -0.35,
+      "ai_tech": 0.25
     }
   ],
   "model": "claude-haiku-4-5-20251001",

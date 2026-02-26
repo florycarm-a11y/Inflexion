@@ -1,116 +1,111 @@
 {
-  "updated": "2026-02-26T08:56:07.093Z",
+  "updated": "2026-02-26T18:52:50.870Z",
   "alertes": [
     {
       "id": "alert-2026-02-26-001",
-      "titre": "Cardano (ADA) : +9,50% en 24h, atteint $0,294",
-      "texte": "Cardano enregistre le plus fort gain parmi les altcoins majeurs en 24 heures. Mouvement s'inscrit dans rebond crypto plus large porté par Bitcoin au-dessus de 70 000$ et sentiment d'extrême peur (Fear & Greed Index : 11).",
-      "categorie": "crypto",
+      "titre": "NVDA : -5,13%, retour sous 186 $ sur craintes dépenses IA",
+      "texte": "Nvidia cède 5,13% à 185,52 $ dans contexte de révision à la baisse des dépenses d'infrastructure IA. Correction s'inscrit dans mouvement plus large des valeurs technologiques.",
+      "categorie": "ai_tech",
       "severite": "attention",
-      "impact": "haussier",
-      "horodatage": "2026-02-26T08:56:07.093Z",
+      "impact": "baissier",
+      "horodatage": "2026-02-26T18:52:50.870Z",
       "donnees": {
-        "symbole": "ETH",
-        "nom": "Ethereum",
-        "prix": 2054.78,
-        "variation_24h": 7.58
+        "symbole": "XRP",
+        "nom": "XRP",
+        "prix": 1.39,
+        "variation_24h": -5.51
       }
     },
     {
       "id": "alert-2026-02-26-002",
-      "titre": "Ethereum (ETH) : +7,58% en 24h, franchit $2 054,78",
-      "texte": "Ethereum progresse de 7,58% en 24 heures suite à annonce roadmap Ethereum 2030 par Vitalik Buterin et transition post-quantique. Ventes Vitalik limitées à 35M$ (16 384 ETH prévus).",
+      "titre": "XRP : -5,51% en 24h, consolidation sous 1,40 $",
+      "texte": "Ripple XRP recule de 5,51% à 1,39 $ sur 24 heures. Mouvement s'inscrit dans correction crypto générale avec Fear & Greed Index à 11 (peur extrême).",
       "categorie": "crypto",
       "severite": "attention",
-      "impact": "haussier",
-      "horodatage": "2026-02-26T08:56:07.093Z",
+      "impact": "baissier",
+      "horodatage": "2026-02-26T18:52:50.870Z",
       "donnees": {
-        "symbole": "XRP",
-        "nom": "XRP",
-        "prix": 1.44,
-        "variation_24h": 5.17
+        "symbole": "DOGE",
+        "nom": "Dogecoin",
+        "prix": 0.096114,
+        "variation_24h": -7.38
       }
     },
     {
       "id": "alert-2026-02-26-003",
-      "titre": "Bitcoin (BTC) : dépasse $70 000, rebond altcoins dominant",
-      "texte": "Bitcoin franchit 70 000$ avant léger repli. Altcoins mènent le mouvement le plus fort en plusieurs semaines (SOL +6,39%, XRP +5,17%, DOGE +6,84%). Fear & Greed Index à 11 (Extreme Fear) suggère accumulation contrarian.",
+      "titre": "DOGE : -7,38% en 24h, pression vendeuse accélérée",
+      "texte": "Dogecoin chute de 7,38% à 0,096 $ sur 24 heures. Déclin supérieur à XRP reflète volatilité accrue des altcoins dans contexte de peur extrême (Fear & Greed 11).",
       "categorie": "crypto",
       "severite": "attention",
-      "impact": "haussier",
-      "horodatage": "2026-02-26T08:56:07.093Z",
+      "impact": "baissier",
+      "horodatage": "2026-02-26T18:52:50.870Z",
       "donnees": {
-        "symbole": "SOL",
-        "nom": "Solana",
-        "prix": 87.56,
-        "variation_24h": 6.39
+        "symbole": "NVDA",
+        "nom": "Nvidia",
+        "prix": 185.52,
+        "variation": -5.13
       }
     },
     {
       "id": "alert-2026-02-26-004",
-      "titre": "Microsoft (MSFT) : +2,98%, investit dans IA autonome via Wayve",
-      "texte": "Microsoft progresse de 2,98% à $400,60. Investissement frais dans Wayve (IA autonome) aux côtés Nvidia, Uber et Mercedes renforce positionnement tech. Soutien régulation antitrust au Japon en cours.",
-      "categorie": "ai_tech",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-02-26T08:56:07.093Z",
+      "titre": "Fear & Greed Index : 11 (Peur Extrême), plus bas depuis mois",
+      "texte": "Indice Fear & Greed crypto atteint 11 signalant peur extrême. Niveau reflète combinaison tensions géopolitiques, scandales initiés (Kalshi, Axiom) et révisions dépenses IA.",
+      "categorie": "crypto",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-02-26T18:52:50.870Z",
       "donnees": {
-        "symbole": "DOGE",
-        "nom": "Dogecoin",
-        "prix": 0.099721,
-        "variation_24h": 6.84
+        "symbole": "GOOGL",
+        "nom": "Alphabet",
+        "prix": 306.4,
+        "variation": -2.08
       }
     },
     {
       "id": "alert-2026-02-26-005",
-      "titre": "Indices européens : repli après sommets, tech en focus post-Nvidia",
-      "texte": "Indices européens reculent après atteinte de nouveaux sommets. Résultats Nvidia décevants malgré battements des attentes pèsent sur secteur tech. Acquisitions majeures (Engie 12 Mds€) soutiennent sentiment.",
-      "categorie": "marches",
-      "severite": "info",
+      "titre": "Tech stocks : -2 à -5% sur révision dépenses IA et tensions géopolitiques",
+      "texte": "Alphabet -2,08% (306,40 $), Tesla -2,36% (407,55 $) dans correction technologique. Mouvements liés à craintes dépenses infrastructure IA et contexte géopolitique dégradé (Iran, Israël).",
+      "categorie": "ai_tech",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-26T08:56:07.093Z",
+      "horodatage": "2026-02-26T18:52:50.870Z",
       "donnees": {
-        "symbole": "ADA",
-        "nom": "Cardano",
-        "prix": 0.293554,
-        "variation_24h": 9.5
+        "symbole": "TSLA",
+        "nom": "Tesla",
+        "prix": 407.55,
+        "variation": -2.36
       }
     },
     {
       "id": "alert-2026-02-26-006",
-      "titre": "Pétrole : volatilité avant négociations Iran-USA à Genève",
-      "texte": "Cours pétroliers volatiles avant reprises négociations Iran-USA à Genève et déploiement forces américaines au Golfe. Prime de risque Iran soutient les cours. Approvisionnement Chine et USA en réserves stratégiques peut amortir choc.",
+      "titre": "Zimbabwe : suspension exportations lithium brut, cours volatiles",
+      "texte": "Zimbabwe suspend exportations lithium brut, créant volatilité sur marchés matières premières critiques. Décision géopolitique impacte chaînes d'approvisionnement batteries et technologie.",
       "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-26T08:56:07.093Z",
-      "donnees": {
-        "symbole": "MSFT",
-        "nom": "Microsoft",
-        "prix": 400.6,
-        "variation": 2.98
-      }
-    },
-    {
-      "id": "alert-2026-02-26-007",
-      "titre": "Tensions géopolitiques : incursions Israël-Syrie, affaire Epstein escalade",
-      "texte": "Incursion militaire israélienne confirmée en Syrie (Quneitra, Golan). Affaire Epstein : documents supplémentaires sur Trump en cours de réexamen. Négociations Iran-USA à Genève. Risque de conflit régional élevé.",
-      "categorie": "geopolitique",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-02-26T08:56:07.093Z",
+      "horodatage": "2026-02-26T18:52:50.870Z",
       "donnees": {
         "score": 11,
         "label": "Extreme Fear",
         "variation_7j": 2
       }
+    },
+    {
+      "id": "alert-2026-02-26-007",
+      "titre": "Iran-USA : négociations en impasse, escalade risque de conflit",
+      "texte": "Envoyés américains déçus après négociations matinales avec Iraniens (Axios). Ambassadeur israélien doute solution diplomatique. Risque escalade militaire régionale accru.",
+      "categorie": "geopolitique",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-02-26T18:52:50.870Z",
+      "donnees": {}
     }
   ],
   "stats": {
     "total": 7,
-    "urgent": 1,
-    "attention": 4,
-    "info": 2
+    "urgent": 2,
+    "attention": 5,
+    "info": 0
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
