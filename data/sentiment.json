@@ -1,65 +1,65 @@
 {
-  "updated": "2026-02-25T06:55:20.382Z",
-  "date": "2026-02-25",
+  "updated": "2026-02-26T01:06:58.044Z",
+  "date": "2026-02-26",
   "global": {
-    "score": 0.08,
+    "score": 0.09,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (+0.08), dominé par la rubrique ai_tech (haussier)."
+    "resume": "Le sentiment global est mixte (+0.09), dominé par la rubrique crypto (haussier)."
   },
   "categories": {
     "geopolitique": {
       "score": -0.45,
-      "confidence": 0.75,
+      "confidence": 0.72,
       "tendance": "baissier",
-      "resume": "Tensions géopolitiques persistantes (Iran, Ukraine, Moyen-Orient) contrebalancées par discours économique optimiste de Trump. Risques d'escalade nucléaire et commerciale dominent le sentiment de marché.",
+      "resume": "Tensions géopolitiques multiples : escalade Iran-États-Unis avec menaces militaires, incidents Cuba-Floride, conflits commerciaux et politiques internes américaines. Contexte d'instabilité accrue sans résolution visible.",
       "signaux_cles": [
-        "Trump affirme que l'Iran construit des missiles pouvant atteindre des cibles américaines",
-        "Guerre en Ukraine : 4 ans de conflit en cours avec intensification des tensions",
-        "Modi en Israël au moment où les tensions États-Unis/Iran s'intensifient"
+        "Vice-président Vance affirme preuves de reconstruction programme nucléaire iranien",
+        "CIA lance campagne recrutement ciblée Iraniens alors que Trump menace action militaire",
+        "Juge américain juge illégale politique déportations Trump vers tiers pays"
       ]
     },
     "marches": {
       "score": 0.15,
       "confidence": 0.65,
       "tendance": "mixte",
-      "resume": "Signaux contradictoires : résultats solides de grandes entreprises (Fortescue, HSBC, E.ON) et levées de fonds massives (Wayve 8,6 Mds $) contrebalancés par restructurations (SEB -2.100 postes) et baisse de rentabilité.",
+      "resume": "Résultats d'entreprises contrastés : Nvidia dépasse attentes (+75% revenus data centers), mais Salesforce, Snowflake et Trade Desk déçoivent avec guidance mitigée. Indice Nikkei atteint nouveau sommet, pétrole volatil avant négociations Iran.",
       "signaux_cles": [
-        "Wayve valorisée 8,6 milliards de dollars après levée de fonds en IA autonome",
-        "SEB supprime 2.100 postes dont 500 en France pour redresser la rentabilité",
-        "Fortescue affiche une forte hausse de bénéfice net grâce aux ventes record de minerai de fer"
+        "Nvidia dépasse attentes, revenus data centers +75% porté par boom IA",
+        "Salesforce chute sur guidance mitigée malgré engagement 50 Mds$ rachats actions",
+        "Nikkei 225 atteint nouveau sommet, rebond technologique Wall Street"
       ]
     },
     "crypto": {
-      "score": 0.35,
-      "confidence": 0.62,
-      "tendance": "mixte",
-      "resume": "Volatilité extrême : Bitcoin rebondit au-dessus de 65.000 $ sur affaiblissement du dollar, mais ETH chute de 35% en un mois avec flux d'ETF négatifs. Adoption en hausse mais prix stagnant.",
+      "score": 0.62,
+      "confidence": 0.78,
+      "tendance": "haussier",
+      "resume": "Rebond significatif multi-actifs suite résultats Nvidia et pause du selling. Expiration 10,5 Mds$ options Bitcoin imminente pourrait stabiliser marché. Intérêt institutionnel croissant (Morgan Stanley, Tether, Kraken).",
       "signaux_cles": [
-        "Bitcoin franchit 65.000 $ après rebond des marchés américains",
-        "ETH chute de 35% en un mois avec flux d'ETF devenant négatifs",
-        "Adoption du Bitcoin explose selon River, malgré stagnation des prix"
+        "Bitcoin, Ethereum, Solana rebondissent après plainte Jane Street, pause dump 10h",
+        "Expiration 10,5 Mds$ options Bitcoin imminente pourrait mettre fin marché baissier",
+        "Morgan Stanley prévoit plans futurs trading, prêt et garde Bitcoin"
       ]
     },
     "matieres_premieres": {
       "score": -0.25,
       "confidence": 0.68,
-      "tendance": "baissier",
-      "resume": "Secteur pétrolier sous pression : stocks de brut américain en hausse, demande de chauffage en baisse hivernale. Consolidation record du secteur pétrolier canadien (38 Mds $) reflète restructuration défensive.",
+      "tendance": "neutre",
+      "resume": "Pétrole volatil avant négociations États-Unis-Iran avec accumulation stocks US signalée. Gaz naturel soutenu par demande électricité croissante. Indices maritimes mitigés, innovation batteries clé pour réduire dépendance chaîne approvisionnement chinoise.",
       "signaux_cles": [
-        "Montée des stocks de pétrole brut américain pèse sur les prix du pétrole",
-        "Gaz naturel recule avec fin de l'intensité hivernale et baisse de la demande",
-        "Secteur pétrolier canadien : consolidation record de 38 milliards de dollars"
+        "Pétrole brut volatil avant négociations Iran, États-Unis signale accumulation stocks importants",
+        "Demande électricité en hausse se heurte pénurie turbines gaz naturel",
+        "Indice Baltic Dry recule légèrement, marché recyclage naval performances mitigées"
       ]
     },
     "ai_tech": {
-      "score": 0.62,
-      "confidence": 0.78,
-      "tendance": "haussier",
-      "resume": "Dynamique très positive : Wayve lève 1,2 Mds $ (Nvidia, Uber, constructeurs auto), MatX lève 500 M$, Meta open-source GCM pour GPU. Anthropic abandonne engagement sécurité crée doute ponctuel.",
+      "score": 0.35,
+      "confidence": 0.71,
+      "tendance": "mixte",
+      "resume": "Avancées IA contrastées : Nvidia record, Anthropic acquiert Vercept, mais vulnérabilités sécurité critiques (Claude, cyberattaques). Débat intensifié sur dépenses IA et capacités militaires IA dans simulations nucléaires.",
       "signaux_cles": [
-        "Wayve lève 1,2 milliard de dollars auprès de Nvidia, Uber et constructeurs automobiles",
-        "MatX lève 500 millions de dollars en financement IA",
-        "Anthropic abandonne son engagement phare en matière de sécurité"
+        "Nvidia enregistre trimestre record malgré dépenses capex record",
+        "Anthropic acquiert startup IA Vercept après débauchage fondateur par Meta",
+        "Modèles IA OpenAI, Google, Anthropic déploient armes nucléaires 95% simulations guerre"
       ]
     }
   },
@@ -171,6 +171,15 @@
       "crypto": 0.35,
       "matieres_premieres": -0.25,
       "ai_tech": 0.62
+    },
+    {
+      "date": "2026-02-26",
+      "global": 0.09,
+      "geopolitique": -0.45,
+      "marches": 0.15,
+      "crypto": 0.62,
+      "matieres_premieres": -0.25,
+      "ai_tech": 0.35
     }
   ],
   "model": "claude-haiku-4-5-20251001",
