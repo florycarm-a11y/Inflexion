@@ -28,6 +28,7 @@ import { fileURLToPath } from 'url';
 import { callClaudeJSON, getUsageStats } from './lib/claude-api.mjs';
 import { DAILY_BRIEFING_SYSTEM_PROMPT, DAILY_BRIEFING_DELTA_SYSTEM_PROMPT } from './lib/prompts.mjs';
 import { evaluateBriefing } from './lib/claim-verifier.mjs';
+import { detectContradictions, formatContradictionsForPrompt } from './lib/contradiction-detector.mjs';
 
 // RAG imports chargés dynamiquement dans main() pour ne pas bloquer les tests unitaires
 // (les tests n'importent que les fonctions pures et n'ont pas besoin de @xenova/transformers)
@@ -688,6 +689,7 @@ async function main() {
         alphaVantage:     loadJSON('alpha-vantage.json'),
         onchain:          loadJSON('onchain.json'),
         sentiment:        loadJSON('sentiment.json'),
+        messari:          loadJSON('messari.json'),
     };
 
     // Afficher quelles sources sont disponibles
@@ -698,7 +700,7 @@ async function main() {
         .filter(([, v]) => v === null)
         .map(([k]) => k);
 
-    console.log(`  ✅ Sources disponibles (${available.length}/13) : ${available.join(', ')}`);
+    console.log(`  ✅ Sources disponibles (${available.length}/14) : ${available.join(', ')}`);
     if (missing.length > 0) {
         console.log(`  ⚠  Sources manquantes (${missing.length}) : ${missing.join(', ')}`);
     }
@@ -739,6 +741,19 @@ async function main() {
     if (sanitizeStats.sanitizedCount === 0 && sanitizeStats.suspiciousCount === 0) {
         console.log('  ✓ Aucun contenu problématique détecté');
     }
+
+    // ── 2c. Détection de contradictions cross-sources ─────────
+    console.log('\n🔍 Vérification cohérence cross-sources...');
+    const { contradictions, summary: contradictionSummary } = detectContradictions(sources);
+    if (contradictions.length > 0) {
+        console.log(`  ⚠ ${contradictions.length} divergence(s) détectée(s) :`);
+        for (const c of contradictions) {
+            console.log(`    • ${c.indicator} : ${c.source1.name} (${c.source1.value}) vs ${c.source2.name} (${c.source2.value}) — ${c.divergence_pct}%`);
+        }
+    } else {
+        console.log('  ✓ Aucune divergence détectée entre les sources');
+    }
+    const contradictionContext = formatContradictionsForPrompt(contradictions);
 
     // ── 3. Construire le contexte complet pour Claude ─────────
     console.log('\n🔧 Construction du contexte multi-sources...');
@@ -899,7 +914,7 @@ ${newsContext}
 ## PARTIE B : Données de marché en temps réel
 
 ${marketSections.join('\n\n')}
-${ragContext}${previousBriefingContext}
+${contradictionContext}${ragContext}${previousBriefingContext}
 ---
 
 ## Consignes de production
@@ -990,6 +1005,7 @@ ${consignes}`;
                 unverified: evaluation.unverified,
                 pass: evaluation.pass,
             },
+            _contradictions: contradictions.length > 0 ? contradictions : undefined,
         };
 
         const outputPath = join(DATA_DIR, 'daily-briefing.json');
@@ -1003,6 +1019,7 @@ ${consignes}`;
         console.log(`  📰 Titre : ${briefing.synthese.titre}`);
         console.log(`  🎯 Sentiment : ${briefing.sentiment_global}`);
         console.log(`  🔍 Vérification : ${(evaluation.score * 100).toFixed(0)}% (${evaluation.verified}/${evaluation.totalClaims} claims)`);
+        console.log(`  ⚖️  Contradictions : ${contradictions.length > 0 ? contradictions.length + ' divergence(s)' : 'aucune'}`);
         console.log(`  📡 Signaux : ${briefing.signaux.length}`);
         for (const s of briefing.signaux) {
             console.log(`    → ${s.titre} (${s.severite}) — ${s.interconnexions.length} interconnexions`);
