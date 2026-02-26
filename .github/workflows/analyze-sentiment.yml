@@ -21,15 +21,6 @@ on:
   # Exécution manuelle depuis l'onglet Actions
   workflow_dispatch:
 
-  # Exécuter aussi au push sur main (pour les tests)
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/generate-market-analysis.mjs'
-      - 'scripts/lib/claude-api.mjs'
-      - 'scripts/lib/prompts.mjs'
-      - '.github/workflows/analyze-sentiment.yml'
-
 # Permissions nécessaires pour committer les fichiers
 permissions:
   contents: write

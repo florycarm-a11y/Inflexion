@@ -19,7 +19,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { callClaudeJSON, classifyText, getUsageStats } from './lib/claude-api.mjs';
+import { callClaudeJSON, getUsageStats } from './lib/claude-api.mjs';
 import { CLASSIFICATION_SYSTEM_PROMPT, ARTICLE_GENERATION_SYSTEM_PROMPT } from './lib/prompts.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -169,23 +169,49 @@ function classifyByKeywords(title, description) {
 }
 
 /**
- * Classifie un article via Claude API (étape 2 — pour les cas ambigus)
- * Utilise le module centralisé claude-api.mjs avec le prompt amélioré.
+ * Classifie un lot d'articles via un SEUL appel Claude (batch).
+ * Remplace les appels individuels classifyText() par un callClaudeJSON groupé.
+ * @param {Array<{index: number, title: string, description: string}>} batch
+ * @returns {Promise<Object<number, string>>} map index → rubrique
  */
-async function classifyWithClaude(title, description) {
-    const rubrique = await classifyText(
-        `Titre: ${title}\nDescription: ${description}`,
-        Object.keys(RUBRIQUES),
-        {
-            systemPrompt: CLASSIFICATION_SYSTEM_PROMPT,
-            label: 'classification',
+async function classifyBatchWithClaude(batch) {
+    const categories = Object.keys(RUBRIQUES);
+    const articlesText = batch
+        .map(a => `[${a.index}] ${a.title} — ${a.description || ''}`)
+        .join('\n');
+
+    const result = await callClaudeJSON({
+        systemPrompt: CLASSIFICATION_SYSTEM_PROMPT,
+        userMessage: `Classe chaque article dans UNE des catégories suivantes : ${categories.join(', ')}
+
+Réponds en JSON : {"classifications": [{"index": 0, "rubrique": "..."}, ...]}
+
+Articles :
+${articlesText}`,
+        maxTokens: 512,
+        temperature: 0,
+        label: 'classification-batch',
+        validate: (data) => {
+            if (!Array.isArray(data.classifications)) return 'classifications manquant';
+            return true;
+        },
+    });
+
+    const map = {};
+    for (const item of result.classifications) {
+        if (categories.includes(item.rubrique)) {
+            map[item.index] = item.rubrique;
         }
-    );
-    return rubrique;
+    }
+    return map;
 }
 
+/** Taille des lots pour la classification Claude */
+const CLASSIFY_BATCH_SIZE = 15;
+
 /**
- * Classifie tous les articles avec l'approche hybride
+ * Classifie tous les articles avec l'approche hybride.
+ * Étape 1 : mots-clés (gratuit). Étape 2 : Claude en batch (1 appel pour N articles).
  */
 async function classifyAllArticles(newsData) {
     console.log('\n🏷️  Classification des articles (hybride)...');
@@ -195,35 +221,63 @@ async function classifyAllArticles(newsData) {
     let fallbackCount = 0;
     const hasApiKey = !!process.env.ANTHROPIC_API_KEY;
 
+    // Phase 1 : mots-clés pour tous les articles, collecter les ambigus
+    const ambiguous = []; // {category, articleIndex, article}
     for (const [category, articles] of Object.entries(newsData.categories)) {
-        for (const article of articles) {
-            // Étape 1 : mots-clés
-            let rubrique = classifyByKeywords(article.title, article.description || '');
-
+        for (let i = 0; i < articles.length; i++) {
+            const article = articles[i];
+            const rubrique = classifyByKeywords(article.title, article.description || '');
             if (rubrique) {
+                article.rubrique = rubrique;
+                article.rubrique_label = RUBRIQUES[rubrique].label;
+                article.rubrique_emoji = RUBRIQUES[rubrique].emoji;
                 keywordCount++;
-            } else if (hasApiKey) {
-                // Étape 2 : Claude pour les cas ambigus (rate limit géré par claude-api.mjs)
-                rubrique = await classifyWithClaude(article.title, article.description || '');
-                if (rubrique) {
-                    claudeCount++;
-                }
+            } else {
+                ambiguous.push({ category, articleIndex: i, article });
             }
-
-            // Fallback : utiliser la catégorie GNews d'origine
-            if (!rubrique) {
-                rubrique = CATEGORY_MAP[category] || 'marches';
-                fallbackCount++;
-            }
-
-            // Enrichir l'article
-            article.rubrique = rubrique;
-            article.rubrique_label = RUBRIQUES[rubrique].label;
-            article.rubrique_emoji = RUBRIQUES[rubrique].emoji;
         }
     }
 
-    console.log(`  ✓ ${keywordCount} par mots-clés, ${claudeCount} par Claude, ${fallbackCount} par fallback`);
+    // Phase 2 : classifier les ambigus par batch Claude (1 appel pour ~15 articles)
+    if (hasApiKey && ambiguous.length > 0) {
+        console.log(`  🤖 ${ambiguous.length} articles ambigus → classification Claude par batch...`);
+        for (let start = 0; start < ambiguous.length; start += CLASSIFY_BATCH_SIZE) {
+            const batchItems = ambiguous.slice(start, start + CLASSIFY_BATCH_SIZE);
+            const batch = batchItems.map((item, idx) => ({
+                index: idx,
+                title: item.article.title,
+                description: item.article.description || '',
+            }));
+
+            try {
+                const results = await classifyBatchWithClaude(batch);
+                for (let j = 0; j < batchItems.length; j++) {
+                    const rubrique = results[j];
+                    if (rubrique) {
+                        batchItems[j].article.rubrique = rubrique;
+                        batchItems[j].article.rubrique_label = RUBRIQUES[rubrique].label;
+                        batchItems[j].article.rubrique_emoji = RUBRIQUES[rubrique].emoji;
+                        claudeCount++;
+                    }
+                }
+            } catch (err) {
+                console.warn(`  ⚠ Batch classification échouée: ${err.message}`);
+            }
+        }
+    }
+
+    // Phase 3 : fallback pour les articles non classifiés
+    for (const item of ambiguous) {
+        if (!item.article.rubrique) {
+            const rubrique = CATEGORY_MAP[item.category] || 'marches';
+            item.article.rubrique = rubrique;
+            item.article.rubrique_label = RUBRIQUES[rubrique].label;
+            item.article.rubrique_emoji = RUBRIQUES[rubrique].emoji;
+            fallbackCount++;
+        }
+    }
+
+    console.log(`  ✓ ${keywordCount} par mots-clés, ${claudeCount} par Claude (batch), ${fallbackCount} par fallback`);
     return newsData;
 }
 
