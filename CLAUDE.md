@@ -806,14 +806,15 @@ Nouveau module `scripts/lib/claim-verifier.mjs` — verification post-generation
 **Fichiers :** `scripts/lib/rag-store.mjs`, `scripts/tests/lib/rag-store.test.mjs`
 
 ### Sprint 6 — Detection de contradictions cross-sources
-**Statut :** A faire
+**Statut :** Termine
 **Objectif :** Detecter et signaler quand deux sources donnent des chiffres divergents sur le meme indicateur.
 **Modifications :**
-1. Nouveau module `scripts/lib/contradiction-detector.mjs` — compare les valeurs entre sources pour les memes indicateurs
-2. Tolerance par type : crypto ±2%, indices ±0.5%, forex ±0.1%
-3. Si contradiction detectee, flag dans le contexte RAG : "Attention : divergence BTC entre CoinGecko ($63k) et Messari ($62.5k)"
-4. Integration dans `generate-daily-briefing.mjs` entre chargement donnees et construction prompt
-**Fichiers :** nouveau `scripts/lib/contradiction-detector.mjs`, `scripts/generate-daily-briefing.mjs`
+1. Nouveau module `scripts/lib/contradiction-detector.mjs` — 4 verifications cross-sources + 2 self-checks
+2. Tolerance par type : crypto ±2%, forex ±0.7%, ETF self ±0.5%, indices EU self ±0.3%
+3. Si contradiction detectee, section "Divergences detectees" injectee dans le prompt Claude avec notes explicatives
+4. Integration dans `generate-daily-briefing.mjs` (etape 2c) entre sanitization et construction du prompt
+5. Rapport `_contradictions` integre au JSON `daily-briefing.json`
+**Fichiers :** nouveau `scripts/lib/contradiction-detector.mjs`, `scripts/generate-daily-briefing.mjs`, nouveau `scripts/tests/lib/contradiction-detector.test.mjs`
 
 ### Sprint 7 — Dashboard qualite briefing (frontend)
 **Statut :** A faire
@@ -976,6 +977,59 @@ Nouvelle fonction `recencyBoost(publishedAt, now)` dans `rag-store.mjs` — reto
 - `CLAUDE.md` : Sprint 5 marque Termine, documentation session
 
 **Tests : 40 RAG + 39 sanitizer + 34 claim-verifier + 37 cache = 150 total**
+
+### Session 2026-02-26 (2) — Detection de contradictions cross-sources (Sprint 6)
+
+**Contexte :** Le pipeline de briefing chargeait des donnees depuis 14 sources (15 APIs + 158 RSS) sans verifier la coherence entre elles. Deux sources pouvaient fournir des valeurs divergentes pour le meme indicateur (ex: prix BTC CoinGecko vs Messari, EUR/USD Alpha Vantage vs ECB) sans que Claude ni l'utilisateur n'en soient avertis. Cela pouvait generer des briefings avec des chiffres incoherents.
+
+**Solution : module de detection de contradictions**
+
+Nouveau module `scripts/lib/contradiction-detector.mjs` — 4 verifications independantes :
+
+| Verification | Sources comparees | Tolerance | Type |
+|-------------|-------------------|-----------|------|
+| Crypto prix | CoinGecko vs Messari (BTC, ETH, SOL, XRP...) | ±2% | cross-source |
+| Forex EUR/USD | Alpha Vantage (intraday) vs ECB Data (fixing) | ±0.7% | cross-source |
+| ETF self-check | Finnhub : price vs prev_close + change | ±0.5% | self-consistency |
+| Indices EU self-check | Twelve Data : price vs prev_close + change | ±0.3% | self-consistency |
+
+**Fonctions exportees :**
+- `pctDivergence(v1, v2)` : calcul de divergence en pourcentage
+- `checkCryptoContradictions(crypto, messari)` : comparaison CoinGecko/Messari
+- `checkForexContradictions(alphaVantage, globalMacro)` : comparaison EUR/USD
+- `checkETFSelfConsistency(markets)` : verification interne Finnhub
+- `checkEUIndexSelfConsistency(europeanMarkets)` : verification interne Twelve Data
+- `detectContradictions(sources)` : orchestrateur retournant `{ contradictions[], summary }`
+- `formatContradictionsForPrompt(contradictions)` : formatage Markdown pour injection prompt
+
+**Integration dans le pipeline (generate-daily-briefing.mjs) :**
+- Etape 2c ajoutee entre sanitization (2b) et construction du contexte (3)
+- `messari.json` ajoute aux sources chargees (13 → 14 fichiers)
+- Bloc `contradictionContext` injecte dans le prompt user entre PARTIE B et contexte RAG
+- Rapport `_contradictions` integre au JSON de sortie
+- Log console detaille des divergences detectees + ligne dans le resume final
+
+**Structure d'une contradiction :**
+```json
+{
+  "indicator": "BTC prix",
+  "source1": { "name": "CoinGecko", "value": 68000 },
+  "source2": { "name": "Messari", "value": 72000 },
+  "divergence_pct": 5.56,
+  "type": "crypto",
+  "note": "Divergence BTC : CoinGecko 68000 vs Messari 72000 (5.6%). Possible decalage temporel."
+}
+```
+
+**Fichiers crees :**
+- `scripts/lib/contradiction-detector.mjs` : module complet (4 checks + orchestrateur + formatage)
+- `scripts/tests/lib/contradiction-detector.test.mjs` : 38 tests (pctDivergence, crypto, forex, ETF, indices EU, orchestrateur, formatage, constantes)
+
+**Fichiers modifies :**
+- `scripts/generate-daily-briefing.mjs` : +import contradiction-detector, +messari.json dans sources, +etape 2c detection, +injection contradictionContext dans prompt, +_contradictions dans output JSON, +log resume
+- `CLAUDE.md` : Sprint 6 marque Termine, documentation session
+
+**Tests : 38 contradiction-detector + 40 RAG + 39 sanitizer + 34 claim-verifier + 37 cache = 188 total**
 
 **PR #22** : Setup initial RSS feeds
 - Ajout premiers flux RSS (Le Figaro, TLDR, Les Echos, BFM, CoinTelegraph, etc.)
