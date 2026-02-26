@@ -30,8 +30,8 @@ name: "📊 Fetch Market Data"
 
 on:
   schedule:
-    # Toutes les 6 heures (UTC) : 00h, 06h, 12h, 18h
-    - cron: '0 0,6,12,18 * * *'
+    # 2 fois par jour (UTC) : 06h et 18h
+    - cron: '0 6,18 * * *'
 
   # Exécution manuelle depuis l'onglet Actions
   workflow_dispatch:
@@ -83,15 +83,7 @@ jobs:
           NEWSAPI_API_KEY: ${{ secrets.NEWSAPI_API_KEY }}
         run: node scripts/fetch-data.mjs
 
-      - name: "🌐 Traduction immédiate EN→FR"
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: |
-          if [ -n "$ANTHROPIC_API_KEY" ]; then
-            node scripts/translate-articles.mjs
-          else
-            echo "⚠ ANTHROPIC_API_KEY non définie — traduction différée"
-          fi
+      # Traduction EN→FR déplacée dans generate-article.yml (évite les doublons)
 
       - name: "📝 Commit et push des données"
         run: |

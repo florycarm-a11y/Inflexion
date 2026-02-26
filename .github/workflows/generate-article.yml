@@ -18,13 +18,6 @@ on:
   # Exécution manuelle depuis l'onglet Actions
   workflow_dispatch:
 
-  # Exécuter aussi au push sur main (pour les premiers tests)
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/generate-article.mjs'
-      - '.github/workflows/generate-article.yml'
-
 # Permissions nécessaires pour créer une PR
 permissions:
   contents: write
@@ -53,19 +46,33 @@ jobs:
         with:
           node-version: '22'
 
-      - name: "🔍 Vérifier la fraîcheur des données"
+      - name: "🔍 Vérifier la fraîcheur des données et l'absence de doublon"
         id: check-data
         run: |
+          SHOULD_RUN=true
+
+          # 1. Vérifier que les données sont fraîches (< 30 min)
           LAST_DATA_CHANGE=$(git log -1 --format="%ct" -- data/)
           NOW=$(date +%s)
-          DIFF=$((NOW - LAST_DATA_CHANGE))
-          if [ $DIFF -gt 1800 ]; then
-            echo "data_changed=false" >> $GITHUB_OUTPUT
-            echo "⏭ Pas de nouvelles données (dernier commit data/ il y a ${DIFF}s)"
+          DATA_AGE=$((NOW - LAST_DATA_CHANGE))
+          if [ $DATA_AGE -gt 1800 ]; then
+            echo "⏭ Pas de nouvelles données (dernier commit data/ il y a ${DATA_AGE}s)"
+            SHOULD_RUN=false
           else
-            echo "data_changed=true" >> $GITHUB_OUTPUT
-            echo "✅ Données fraîches détectées (${DIFF}s)"
+            echo "✅ Données fraîches détectées (${DATA_AGE}s)"
           fi
+
+          # 2. Vérifier que l'article n'a pas déjà été généré récemment (< 10h)
+          if [ -f data/article-du-jour.json ] && git log -1 --format="%ct" -- data/article-du-jour.json > /dev/null 2>&1; then
+            LAST_ARTICLE=$(git log -1 --format="%ct" -- data/article-du-jour.json)
+            ARTICLE_AGE=$((NOW - LAST_ARTICLE))
+            if [ $ARTICLE_AGE -lt 36000 ]; then
+              echo "⏭ Article déjà généré il y a $((ARTICLE_AGE / 3600))h (< 10h) — skip"
+              SHOULD_RUN=false
+            fi
+          fi
+
+          echo "data_changed=${SHOULD_RUN}" >> $GITHUB_OUTPUT
 
       - name: "🌐 Traduction des articles EN→FR"
         if: steps.check-data.outputs.data_changed == 'true'

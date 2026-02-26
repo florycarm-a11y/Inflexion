@@ -23,19 +23,6 @@ on:
   # Exécution manuelle depuis l'onglet Actions (utile pour tester)
   workflow_dispatch:
 
-  # Ré-indexation RAG quand la PR article est mergée + quand le script change
-  push:
-    branches: [main]
-    paths:
-      - 'data/articles/**'
-      - 'data/article-du-jour.json'
-      - 'scripts/generate-daily-briefing.mjs'
-      - 'scripts/rag-index.mjs'
-      - 'scripts/lib/prompts.mjs'
-      - 'scripts/lib/embeddings.mjs'
-      - 'scripts/lib/rag-store.mjs'
-      - '.github/workflows/generate-daily-briefing.yml'
-
 # Permissions nécessaires pour committer les fichiers
 permissions:
   contents: write
@@ -67,19 +54,33 @@ jobs:
       - name: "📦 Install dependencies"
         run: npm ci
 
-      - name: "🔍 Vérifier la fraîcheur des données"
+      - name: "🔍 Vérifier la fraîcheur des données et l'absence de doublon"
         id: check-data
         run: |
+          SHOULD_RUN=true
+
+          # 1. Vérifier que les données sont fraîches (< 30 min)
           LAST_DATA_CHANGE=$(git log -1 --format="%ct" -- data/)
           NOW=$(date +%s)
-          DIFF=$((NOW - LAST_DATA_CHANGE))
-          if [ $DIFF -gt 1800 ]; then
-            echo "data_changed=false" >> $GITHUB_OUTPUT
-            echo "⏭ Pas de nouvelles données (dernier commit data/ il y a ${DIFF}s)"
+          DATA_AGE=$((NOW - LAST_DATA_CHANGE))
+          if [ $DATA_AGE -gt 1800 ]; then
+            echo "⏭ Pas de nouvelles données (dernier commit data/ il y a ${DATA_AGE}s)"
+            SHOULD_RUN=false
           else
-            echo "data_changed=true" >> $GITHUB_OUTPUT
-            echo "✅ Données fraîches détectées (${DIFF}s)"
+            echo "✅ Données fraîches détectées (${DATA_AGE}s)"
           fi
+
+          # 2. Vérifier que le briefing n'a pas déjà été généré récemment (< 10h)
+          if [ -f data/daily-briefing.json ] && git log -1 --format="%ct" -- data/daily-briefing.json > /dev/null 2>&1; then
+            LAST_BRIEFING=$(git log -1 --format="%ct" -- data/daily-briefing.json)
+            BRIEFING_AGE=$((NOW - LAST_BRIEFING))
+            if [ $BRIEFING_AGE -lt 36000 ]; then
+              echo "⏭ Briefing déjà généré il y a $((BRIEFING_AGE / 3600))h (< 10h) — skip"
+              SHOULD_RUN=false
+            fi
+          fi
+
+          echo "data_changed=${SHOULD_RUN}" >> $GITHUB_OUTPUT
 
       - name: "🔄 Cache modèle transformers.js"
         uses: actions/cache@v4
