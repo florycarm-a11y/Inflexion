@@ -40,11 +40,43 @@ function cosineSimilarity(a, b) {
 const MAX_ARTICLES = 500;   // Garder les 500 derniers articles indexés
 const MAX_BRIEFINGS = 60;   // Garder les 60 derniers briefings (~2 mois)
 
-// ─── Recherche hybride : pondération vectoriel / lexical ────
-// score_final = (cosinus * VECTOR_WEIGHT) + (lexical * KEYWORD_WEIGHT)
+// ─── Recherche hybride : pondération vectoriel / lexical / temporel ──
+// score_final = (cosinus * VECTOR_WEIGHT) + (lexical * KEYWORD_WEIGHT) + (recency * RECENCY_WEIGHT)
+// Sans queryText ni date : comportement 100% vectoriel inchangé.
 // Ajuster ces constantes pour calibrer l'importance relative.
-export const VECTOR_WEIGHT = 0.7;
-export const KEYWORD_WEIGHT = 0.3;
+export const VECTOR_WEIGHT = 0.6;
+export const KEYWORD_WEIGHT = 0.25;
+export const RECENCY_WEIGHT = 0.15;
+
+// ─── Pondération temporelle ─────────────────────────────────
+// Bonus dégressif pour les documents récents.
+// Un article de 2h pèse plus qu'un article de 7 jours.
+
+/**
+ * Calcule un bonus de fraîcheur (0 à 0.15) basé sur l'âge du document.
+ * @param {string|null} publishedAt — Date ISO 8601 du document (ex: "2026-02-25T14:30:00Z" ou "2026-02-25")
+ * @param {Date} [now] — Date de référence (défaut: Date.now(), paramètre pour les tests)
+ * @returns {number} — Bonus entre 0 et 1 (sera multiplié par RECENCY_WEIGHT)
+ *   <6h  → 1.0
+ *   <24h → 0.67
+ *   <48h → 0.33
+ *   ≥48h → 0
+ */
+export function recencyBoost(publishedAt, now = new Date()) {
+    if (!publishedAt) return 0;
+    const pubDate = new Date(publishedAt);
+    if (isNaN(pubDate.getTime())) return 0;
+
+    const ageMs = now.getTime() - pubDate.getTime();
+    if (ageMs < 0) return 1.0; // Date future → traiter comme très récent
+
+    const ageHours = ageMs / (1000 * 60 * 60);
+
+    if (ageHours < 6) return 1.0;
+    if (ageHours < 24) return 0.67;
+    if (ageHours < 48) return 0.33;
+    return 0;
+}
 
 // ─── Stopwords FR + EN ──────────────────────────────────────
 // Mots de liaison ignorés lors de l'extraction de mots-clés.
@@ -189,20 +221,23 @@ export class RAGStore {
 
     /**
      * Recherche les articles les plus similaires à un vecteur query.
-     * Mode hybride : si queryText est fourni, combine score vectoriel
-     * et score lexical (mots-clés) pour mieux remonter les acronymes,
-     * tickers et noms propres.
+     * Mode hybride : si queryText est fourni, combine score vectoriel,
+     * score lexical (mots-clés) et bonus de fraîcheur temporelle.
+     *
+     * Score = (cosinus * 0.6) + (lexical * 0.25) + (recency * 0.15)
+     * Sans queryText ni date : comportement 100% vectoriel inchangé.
      *
      * @param {number[]} queryEmbedding — Vecteur de recherche
      * @param {Object} [options]
      * @param {number} [options.topK=5] — Nombre de résultats
      * @param {number} [options.minScore=0.3] — Score minimum de similarité
      * @param {string} [options.excludeDate] — Exclure les articles de cette date
-     * @param {string} [options.queryText] — Texte brut de la requête (active le scoring hybride)
+     * @param {string} [options.queryText] — Texte brut de la requête (active le scoring hybride + temporel)
+     * @param {Date} [options.now] — Date de référence pour le calcul de fraîcheur (défaut: Date.now())
      * @returns {Array<{entry: Object, score: number}>}
      */
     searchArticles(queryEmbedding, options = {}) {
-        const { topK = 5, minScore = 0.3, excludeDate = null, queryText = null } = options;
+        const { topK = 5, minScore = 0.3, excludeDate = null, queryText = null, now = new Date() } = options;
         const articles = this.loadArticles();
         const qKeywords = queryText ? extractKeywords(queryText) : [];
 
@@ -214,9 +249,10 @@ export class RAGStore {
                     return { entry, score: vectorScore };
                 }
                 const kwScore = keywordScore(qKeywords, entry.text);
+                const recency = recencyBoost(entry.date, now);
                 return {
                     entry,
-                    score: (vectorScore * VECTOR_WEIGHT) + (kwScore * KEYWORD_WEIGHT),
+                    score: (vectorScore * VECTOR_WEIGHT) + (kwScore * KEYWORD_WEIGHT) + (recency * RECENCY_WEIGHT),
                 };
             })
             .filter(r => r.score >= minScore)
@@ -262,19 +298,22 @@ export class RAGStore {
 
     /**
      * Recherche les briefings les plus similaires à un vecteur query.
-     * Mode hybride : si queryText est fourni, combine score vectoriel
-     * et score lexical.
+     * Mode hybride : si queryText est fourni, combine score vectoriel,
+     * score lexical et bonus de fraîcheur temporelle.
+     *
+     * Score = (cosinus * 0.6) + (lexical * 0.25) + (recency * 0.15)
      *
      * @param {number[]} queryEmbedding — Vecteur de recherche
      * @param {Object} [options]
      * @param {number} [options.topK=3] — Nombre de résultats
      * @param {number} [options.minScore=0.25] — Score minimum
      * @param {string} [options.excludeDate] — Exclure le briefing de cette date
-     * @param {string} [options.queryText] — Texte brut de la requête (active le scoring hybride)
+     * @param {string} [options.queryText] — Texte brut de la requête (active le scoring hybride + temporel)
+     * @param {Date} [options.now] — Date de référence pour le calcul de fraîcheur (défaut: Date.now())
      * @returns {Array<{entry: Object, score: number}>}
      */
     searchBriefings(queryEmbedding, options = {}) {
-        const { topK = 3, minScore = 0.25, excludeDate = null, queryText = null } = options;
+        const { topK = 3, minScore = 0.25, excludeDate = null, queryText = null, now = new Date() } = options;
         const briefings = this.loadBriefings();
         const qKeywords = queryText ? extractKeywords(queryText) : [];
 
@@ -286,9 +325,10 @@ export class RAGStore {
                     return { entry, score: vectorScore };
                 }
                 const kwScore = keywordScore(qKeywords, entry.text);
+                const recency = recencyBoost(entry.date, now);
                 return {
                     entry,
-                    score: (vectorScore * VECTOR_WEIGHT) + (kwScore * KEYWORD_WEIGHT),
+                    score: (vectorScore * VECTOR_WEIGHT) + (kwScore * KEYWORD_WEIGHT) + (recency * RECENCY_WEIGHT),
                 };
             })
             .filter(r => r.score >= minScore)

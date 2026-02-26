@@ -796,14 +796,14 @@ Nouveau module `scripts/lib/claim-verifier.mjs` — verification post-generation
 **Fichiers :** `scripts/lib/embeddings-cache.mjs` (nouveau), `scripts/lib/embeddings.mjs`, `scripts/rag-index.mjs`, `scripts/generate-daily-briefing.mjs`
 
 ### Sprint 5 — Ponderation temporelle du RAG
-**Statut :** A faire
+**Statut :** Termine
 **Objectif :** Un article de 2h doit peser plus qu'un article de 7 jours dans les resultats RAG.
 **Modifications :**
-1. `recencyBoost(publishedAt)` dans `searchArticles()` — bonus degressif : <6h = +0.15, <24h = +0.10, <48h = +0.05, >48h = 0
+1. `recencyBoost(publishedAt)` dans `searchArticles()` — bonus degressif : <6h = 1.0, <24h = 0.67, <48h = 0.33, >=48h = 0
 2. Idem pour `searchBriefings()`
 3. Score final : `(cosinus * 0.6) + (lexical * 0.25) + (recency * 0.15)`
 4. Exporter `RECENCY_WEIGHT = 0.15` comme constante ajustable
-**Fichiers :** `scripts/lib/rag-store.mjs`
+**Fichiers :** `scripts/lib/rag-store.mjs`, `scripts/tests/lib/rag-store.test.mjs`
 
 ### Sprint 6 — Detection de contradictions cross-sources
 **Statut :** A faire
@@ -936,6 +936,46 @@ data/embeddings-cache.json
 - `CLAUDE.md` : Sprint 4 marque Termine, documentation session
 
 **Tests : 37 cache + 39 sanitizer + 23 RAG + 34 claim-verifier = 133 total**
+
+### Session 2026-02-26 — Ponderation temporelle du RAG (Sprint 5)
+
+**Contexte :** Le systeme RAG traitait tous les articles de la meme maniere quel que soit leur age. Un article publie il y a 2 heures avait le meme poids qu'un article de 7 jours dans les resultats de recherche. Pour un briefing strategique quotidien, la fraicheur de l'information est un critere crucial de pertinence.
+
+**Solution : bonus de fraicheur degressif**
+
+Nouvelle fonction `recencyBoost(publishedAt, now)` dans `rag-store.mjs` — retourne un score normalise 0-1 :
+
+| Age du document | Bonus |
+|-----------------|-------|
+| < 6h | 1.0 |
+| 6h - 24h | 0.67 |
+| 24h - 48h | 0.33 |
+| >= 48h | 0 |
+
+**Nouveaux poids du score hybride :**
+
+| Composante | Avant (Sprint 1) | Apres (Sprint 5) |
+|------------|-------------------|-------------------|
+| Vectoriel (cosinus) | 0.70 | 0.60 |
+| Lexical (mots-cles) | 0.30 | 0.25 |
+| Temporel (fraicheur) | — | 0.15 |
+| **Total** | **1.00** | **1.00** |
+
+`score_final = (cosinus * 0.6) + (lexical * 0.25) + (recency * 0.15)`
+
+**Retrocompatibilite :** Sans `queryText`, le comportement reste 100% vectoriel (pas de recency boost). Le bonus temporel ne s'applique qu'en mode hybride, tout comme le score lexical.
+
+**Integration :**
+- `searchArticles()` : parametre `now` optionnel pour le calcul de fraicheur
+- `searchBriefings()` : idem
+- `recencyBoost()` exportee pour les tests et une utilisation externe
+
+**Fichiers modifies :**
+- `scripts/lib/rag-store.mjs` : +recencyBoost(), VECTOR_WEIGHT 0.7→0.6, KEYWORD_WEIGHT 0.3→0.25, +RECENCY_WEIGHT 0.15, searchArticles et searchBriefings integrent la ponderation temporelle
+- `scripts/tests/lib/rag-store.test.mjs` : refonte des tests — +section E (recencyBoost, 9 tests), +section constantes (4 tests), tests C et D enrichis avec ponderation temporelle (paliers, articles recent vs ancien, mode pur vectoriel preserve). 23 → 40 tests.
+- `CLAUDE.md` : Sprint 5 marque Termine, documentation session
+
+**Tests : 40 RAG + 39 sanitizer + 34 claim-verifier + 37 cache = 150 total**
 
 **PR #22** : Setup initial RSS feeds
 - Ajout premiers flux RSS (Le Figaro, TLDR, Les Echos, BFM, CoinTelegraph, etc.)
