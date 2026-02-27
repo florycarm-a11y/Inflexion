@@ -1,23 +1,47 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <!-- Favicon: Globe + Arrow miniature -->
+  <!-- Favicon: Lion Inflexion — fidele au logo-header.png -->
   <defs>
-    <linearGradient id="fo" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2196F3"/>
-      <stop offset="100%" stop-color="#1565C0"/>
-    </linearGradient>
-    <clipPath id="fc"><circle cx="16" cy="16" r="13"/></clipPath>
+    <clipPath id="circleClip"><circle cx="16" cy="16" r="12"/></clipPath>
   </defs>
-  <!-- Globe -->
-  <circle cx="16" cy="16" r="13" fill="url(#fo)"/>
-  <g clip-path="url(#fc)">
-    <path d="M 7 7 Q 9 5, 12 6 Q 15 7, 16 9 Q 17 11, 15 13 Q 13 15, 11 14 Q 9 13, 8 11 Q 7 9, 7 7Z" fill="#4CAF50" opacity="0.85"/>
-    <path d="M 12 15 Q 13 16, 13 18 Q 12 19, 11 18Z" fill="#4CAF50" opacity="0.85"/>
-    <path d="M 12 19 Q 14 18, 16 20 Q 17 23, 16 25 Q 14 27, 12 26 Q 10 24, 10 22 Q 10 20, 12 19Z" fill="#4CAF50" opacity="0.85"/>
+
+  <!-- Cercle vert -->
+  <circle cx="16" cy="16" r="12" fill="none" stroke="#1B5E30" stroke-width="2"/>
+
+  <!-- Tete de lion (clippee dans le cercle) -->
+  <g fill="#1B5E30" clip-path="url(#circleClip)">
+    <!-- Criniere externe -->
+    <path d="M16 5 C10 5, 5.5 9.5, 5.5 15.5 C5.5 20, 8 24, 12 26 C10 24, 8 20, 8 15.5 C8 11, 11.5 8, 16 8 C20.5 8, 24 11, 24 15.5 C24 20, 22 24, 20 26 C24 24, 26.5 20, 26.5 15.5 C26.5 9.5, 22 5, 16 5Z"/>
+    <!-- Touffes criniere haut -->
+    <path d="M11 6 C10 4.5, 11.5 3.5, 13 4 C12 5, 11 5.5, 11 6Z"/>
+    <path d="M21 6 C22 4.5, 20.5 3.5, 19 4 C20 5, 21 5.5, 21 6Z"/>
+    <path d="M15.5 4.5 C15 3, 17 3, 16.5 4.5Z"/>
+    <!-- Touffes criniere cotes -->
+    <path d="M7.5 11 C6 9, 7 7, 9 7 C8 8.5, 7.5 10, 7.5 11Z"/>
+    <path d="M24.5 11 C26 9, 25 7, 23 7 C24 8.5, 24.5 10, 24.5 11Z"/>
+    <path d="M6 15 C4.5 13, 5 10.5, 7 10 C6 12, 5.5 13.5, 6 15Z"/>
+    <path d="M26 15 C27.5 13, 27 10.5, 25 10 C26 12, 26.5 13.5, 26 15Z"/>
+    <!-- Barbe / menton -->
+    <path d="M12 21 Q16 27, 20 21Z"/>
+    <!-- Visage -->
+    <ellipse cx="16" cy="15" rx="6" ry="7" fill="#2E7D32"/>
+    <!-- Yeux -->
+    <ellipse cx="13" cy="13" rx="1.2" ry="0.85" fill="#1B5E30"/>
+    <ellipse cx="19" cy="13" rx="1.2" ry="0.85" fill="#1B5E30"/>
+    <!-- Nez -->
+    <path d="M15 16 L16 17.3 L17 16Z" fill="#1B5E30"/>
+    <!-- Museau -->
+    <path d="M16 17.3 L16 18.5" stroke="#1B5E30" stroke-width="0.6" fill="none"/>
+    <path d="M14 19.2 Q16 20.8, 18 19.2" stroke="#1B5E30" stroke-width="0.5" fill="none"/>
   </g>
-  <circle cx="16" cy="16" r="13" fill="none" stroke="#0D2B52" stroke-width="1.5"/>
-  <!-- Arrow -->
-  <path d="M 7 27 Q 3 20, 7 13 Q 11 6, 19 4" stroke="white" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 7 27 Q 3 20, 7 13 Q 11 6, 19 4" stroke="#D32F2F" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <polygon points="17.5,1 24,5.5 18.5,6" fill="white"/>
-  <polygon points="18,2 23,5.5 19,5.5" fill="#D32F2F"/>
+
+  <!-- Fleche rouge courbee: du bas, autour du cote gauche, vers le haut-droit -->
+  <!-- Contour blanc pour contraste -->
+  <path d="M20 28 C16 31, 2 25, 1 16 C0 7, 5 0, 20 1"
+        stroke="white" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+  <!-- Fleche rouge -->
+  <path d="M20 28 C16 31, 2 25, 1 16 C0 7, 5 0, 20 1"
+        stroke="#B71C1C" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+  <!-- Pointe de fleche -->
+  <polygon points="18,-0.5 24.5,2.5 19.5,4" fill="white"/>
+  <polygon points="18.8,0.3 23.5,2.7 19.8,3.5" fill="#B71C1C"/>
 </svg>
