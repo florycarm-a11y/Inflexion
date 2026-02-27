@@ -250,7 +250,7 @@ describe('callClaude', () => {
         );
     });
 
-    it('envoie les bons headers', async () => {
+    it('envoie les bons headers (avec prompt caching beta)', async () => {
         const calls = mockFetch([{ status: 200, body: makeSuccessBody('ok') }]);
         await callClaude(baseOpts());
 
@@ -259,17 +259,26 @@ describe('callClaude', () => {
         assert.equal(headers['Content-Type'], 'application/json');
         assert.equal(headers['x-api-key'], 'test-key-123');
         assert.equal(headers['anthropic-version'], DEFAULT_CONFIG.apiVersion);
+        assert.equal(headers['anthropic-beta'], 'prompt-caching-2024-07-31');
     });
 
-    it('envoie le bon body avec model, max_tokens, system, messages', async () => {
+    it('envoie le bon body avec model, max_tokens, system (cached), messages', async () => {
         const calls = mockFetch([{ status: 200, body: makeSuccessBody('ok') }]);
         await callClaude(baseOpts({ systemPrompt: 'Sys', userMessage: 'Msg' }));
 
         const body = calls[0].body;
         assert.equal(body.model, DEFAULT_CONFIG.model);
         assert.equal(body.max_tokens, DEFAULT_CONFIG.maxTokens);
-        assert.equal(body.system, 'Sys');
+        // System prompt is transformed into cached block array by default
+        assert.deepEqual(body.system, [{ type: 'text', text: 'Sys', cache_control: { type: 'ephemeral' } }]);
         assert.deepEqual(body.messages, [{ role: 'user', content: 'Msg' }]);
+    });
+
+    it('envoie system comme string brut quand cacheSystemPrompt=false', async () => {
+        const calls = mockFetch([{ status: 200, body: makeSuccessBody('ok') }]);
+        await callClaude(baseOpts({ systemPrompt: 'Sys', userMessage: 'Msg', cacheSystemPrompt: false }));
+
+        assert.equal(calls[0].body.system, 'Sys');
     });
 
     it('inclut temperature uniquement si spécifiée', async () => {
@@ -505,12 +514,13 @@ describe('classifyText', () => {
         assert.equal(result, null);
     });
 
-    it('utilise le systemPrompt personnalisé si fourni', async () => {
+    it('utilise le systemPrompt personnalisé si fourni (cached)', async () => {
         const calls = mockFetch([{ status: 200, body: makeSuccessBody('marches') }]);
         await classifyText('Test', categories, {
             systemPrompt: 'Custom prompt',
         });
-        assert.equal(calls[0].body.system, 'Custom prompt');
+        // System prompt is transformed into cached block array
+        assert.deepEqual(calls[0].body.system, [{ type: 'text', text: 'Custom prompt', cache_control: { type: 'ephemeral' } }]);
     });
 
     it('utilise temperature: 0 et maxTokens: 64', async () => {
