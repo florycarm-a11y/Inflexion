@@ -58,7 +58,19 @@ jobs:
         run: |
           SHOULD_RUN=true
 
-          # 1. Vérifier que les données sont fraîches (< 30 min)
+          # 1. Vérifier le jour de la semaine (lun=1, mer=3, ven=5 uniquement)
+          # Seulement pour les exécutions automatiques (workflow_run), pas les manuelles
+          if [ "${{ github.event_name }}" = "workflow_run" ]; then
+            DAY_OF_WEEK=$(date -u +%u)
+            if [ "$DAY_OF_WEEK" != "1" ] && [ "$DAY_OF_WEEK" != "3" ] && [ "$DAY_OF_WEEK" != "5" ]; then
+              echo "⏭ Briefing non prévu aujourd'hui (jour $DAY_OF_WEEK, prévu lun/mer/ven)"
+              SHOULD_RUN=false
+            else
+              echo "✅ Jour de briefing (jour $DAY_OF_WEEK)"
+            fi
+          fi
+
+          # 2. Vérifier que les données sont fraîches (< 30 min)
           LAST_DATA_CHANGE=$(git log -1 --format="%ct" -- data/)
           NOW=$(date +%s)
           DATA_AGE=$((NOW - LAST_DATA_CHANGE))
@@ -69,7 +81,7 @@ jobs:
             echo "✅ Données fraîches détectées (${DATA_AGE}s)"
           fi
 
-          # 2. Vérifier que le briefing n'a pas déjà été généré récemment (< 10h)
+          # 3. Vérifier que le briefing n'a pas déjà été généré récemment (< 10h)
           if [ -f data/daily-briefing.json ] && git log -1 --format="%ct" -- data/daily-briefing.json > /dev/null 2>&1; then
             LAST_BRIEFING=$(git log -1 --format="%ct" -- data/daily-briefing.json)
             BRIEFING_AGE=$((NOW - LAST_BRIEFING))

@@ -151,7 +151,10 @@ async function rateLimitDelay(minDelayMs) {
 
 // ─── Suivi des coûts ─────────────────────────────────────────
 
-/** Coûts approximatifs par million de tokens (USD) */
+/** Coûts approximatifs par million de tokens (USD)
+ * Note : avec prompt caching activé, les tokens cache_read coûtent 90% moins cher
+ * et les tokens cache_creation coûtent 25% de plus que le prix input standard.
+ */
 const TOKEN_COSTS = {
     'claude-haiku-4-5-20251001': { input: 0.80, output: 4.00 },
     'claude-sonnet-4-5-20250929': { input: 3.00, output: 15.00 },
@@ -161,6 +164,8 @@ const TOKEN_COSTS = {
 const _usageStats = {
     totalInputTokens: 0,
     totalOutputTokens: 0,
+    totalCacheCreationTokens: 0,
+    totalCacheReadTokens: 0,
     totalCalls: 0,
     callsByLabel: {},
 };
@@ -174,6 +179,8 @@ const _usageStats = {
 function _trackUsage(usage, model, label) {
     _usageStats.totalInputTokens += usage.input_tokens || 0;
     _usageStats.totalOutputTokens += usage.output_tokens || 0;
+    _usageStats.totalCacheCreationTokens += usage.cache_creation_input_tokens || 0;
+    _usageStats.totalCacheReadTokens += usage.cache_read_input_tokens || 0;
     _usageStats.totalCalls++;
 
     if (!_usageStats.callsByLabel[label]) {
@@ -208,6 +215,8 @@ export function getUsageStats() {
 export function resetUsageStats() {
     _usageStats.totalInputTokens = 0;
     _usageStats.totalOutputTokens = 0;
+    _usageStats.totalCacheCreationTokens = 0;
+    _usageStats.totalCacheReadTokens = 0;
     _usageStats.totalCalls = 0;
     _usageStats.callsByLabel = {};
 }
@@ -226,6 +235,7 @@ export function resetUsageStats() {
  * @param {number} [options.timeoutMs] - Timeout en ms (défaut: 30000)
  * @param {Object} [options.retry] - Config retry (surcharge DEFAULT_CONFIG.retry)
  * @param {string} [options.label] - Label pour les logs (ex: 'classification')
+ * @param {boolean} [options.cacheSystemPrompt=true] - Activer le prompt caching Anthropic
  * @returns {Promise<string>} Texte de la réponse Claude
  * @throws {ClaudeAPIError|ClaudeRateLimitError|ClaudeTimeoutError}
  */
@@ -251,24 +261,41 @@ export async function callClaude(options) {
 
             log.debug(`[${label}] Tentative ${attempt}/${retryConfig.maxAttempts}`);
 
+            // Construire le system prompt (avec prompt caching si activé)
+            const cacheEnabled = options.cacheSystemPrompt !== false;
+            let systemField = options.systemPrompt;
+            if (cacheEnabled && typeof options.systemPrompt === 'string' && options.systemPrompt.length > 0) {
+                systemField = [{
+                    type: 'text',
+                    text: options.systemPrompt,
+                    cache_control: { type: 'ephemeral' },
+                }];
+            }
+
             // Construire le body de la requête
             const body = {
                 model,
                 max_tokens: maxTokens,
-                system: options.systemPrompt,
+                system: systemField,
                 messages: [{ role: 'user', content: options.userMessage }],
             };
             if (options.temperature !== undefined) {
                 body.temperature = options.temperature;
             }
 
+            // Headers (avec prompt caching beta si activé)
+            const headers = {
+                'Content-Type': 'application/json',
+                'x-api-key': API_KEY,
+                'anthropic-version': DEFAULT_CONFIG.apiVersion,
+            };
+            if (cacheEnabled) {
+                headers['anthropic-beta'] = 'prompt-caching-2024-07-31';
+            }
+
             const response = await fetch(DEFAULT_CONFIG.apiUrl, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-api-key': API_KEY,
-                    'anthropic-version': DEFAULT_CONFIG.apiVersion,
-                },
+                headers,
                 body: JSON.stringify(body),
                 signal: AbortSignal.timeout(timeoutMs),
             });
@@ -311,7 +338,10 @@ export async function callClaude(options) {
                 log.warn(`[${label}] Réponse tronquée (max_tokens=${maxTokens} atteint)`);
             }
 
-            log.info(`[${label}] OK (${data.usage?.input_tokens ?? '?'}in/${data.usage?.output_tokens ?? '?'}out tokens)`);
+            const cacheInfo = data.usage?.cache_read_input_tokens
+                ? ` [cache: ${data.usage.cache_read_input_tokens} read, ${data.usage.cache_creation_input_tokens || 0} created]`
+                : '';
+            log.info(`[${label}] OK (${data.usage?.input_tokens ?? '?'}in/${data.usage?.output_tokens ?? '?'}out tokens${cacheInfo})`);
             return text;
 
         } catch (err) {

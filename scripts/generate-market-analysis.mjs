@@ -336,7 +336,7 @@ async function runSentimentAndAlerts(sources) {
     const result = await callClaudeJSON({
         systemPrompt: CONSOLIDATED_SENTIMENT_ALERTS_PROMPT,
         userMessage,
-        maxTokens: 4000,
+        maxTokens: 3000,
         temperature: 0.3,
         timeoutMs: 120_000,
         label: 'consolidated-sentiment-alerts',
@@ -438,7 +438,7 @@ Cite les chiffres précis des données ci-dessus comme preuves.`;
     const result = await callClaudeJSON({
         systemPrompt: CONSOLIDATED_MACRO_BRIEFING_PROMPT,
         userMessage,
-        maxTokens: 8000,
+        maxTokens: 4000,
         timeoutMs: 120_000,
         temperature: 0.4,
         label: 'consolidated-macro-briefing',
