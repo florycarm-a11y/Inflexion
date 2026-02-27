@@ -6,8 +6,12 @@ name: CI/CD
 on:
   push:
     branches: [main, develop, 'feature/*', 'claude/*']
+    paths-ignore:
+      - 'data/**'
   pull_request:
     branches: [main, develop]
+    paths-ignore:
+      - 'data/**'
 
 env:
   NODE_VERSION: '22'
@@ -111,6 +115,11 @@ jobs:
           node --test scripts/tests/app.test.mjs
           node --test scripts/tests/supabase-client.test.mjs
           node --test scripts/tests/generate-daily-briefing.test.mjs
+          node --test scripts/tests/lib/rag-store.test.mjs
+          node --test scripts/tests/lib/claim-verifier.test.mjs
+          node --test scripts/tests/sanitizer.test.mjs
+          node --test scripts/tests/lib/embeddings-cache.test.mjs
+          node --test scripts/tests/lib/contradiction-detector.test.mjs
 
   # ============================================
   # Build Check
@@ -204,32 +213,14 @@ jobs:
           done
 
   # ============================================
-  # Deploy (only on main branch)
-  # ============================================
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    needs: [test, test-scripts, build, frontend]
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Deploy notification
-        run: |
-          echo "Ready for deployment!"
-          echo "Branch: ${{ github.ref }}"
-          echo "Commit: ${{ github.sha }}"
-          # Add actual deployment steps here (Vercel, Netlify, Railway, etc.)
-
-  # ============================================
   # Failure Alert
   # ============================================
   alert-on-failure:
     name: Alert on Failure
     runs-on: ubuntu-latest
     needs: [lint, test, test-scripts, build, security, frontend]
+    # Run on any failure except when triggered by bot data commits
+
     if: failure()
 
     steps:
@@ -256,8 +247,8 @@ jobs:
 # This pipeline:
 # 1. Lints the code (ESLint)
 # 2. Runs unit and integration tests with coverage
-# 3. Uploads coverage to Codecov
-# 4. Verifies the server can start
-# 5. Runs security audit
-# 6. Validates frontend HTML
-# 7. Deploys on main branch (placeholder)
+# 3. Runs scripts unit tests (12 test files, 188+ tests)
+# 4. Uploads coverage to Codecov
+# 5. Verifies the server can start
+# 6. Runs security audit
+# 7. Validates frontend HTML

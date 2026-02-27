@@ -41,13 +41,39 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'npm'
+
+      - name: "📦 Install dependencies"
+        run: npm ci
+
+      - name: "🔍 Vérifier l'absence de doublon"
+        id: check-freshness
+        run: |
+          SHOULD_RUN=true
+          NOW=$(date +%s)
+          if [ -f data/newsletter.json ] && git log -1 --format="%ct" -- data/newsletter.json > /dev/null 2>&1; then
+            LAST_NEWSLETTER=$(git log -1 --format="%ct" -- data/newsletter.json)
+            NEWSLETTER_AGE=$((NOW - LAST_NEWSLETTER))
+            # Skip si newsletter générée il y a moins de 6 jours (518400s)
+            if [ $NEWSLETTER_AGE -lt 518400 ]; then
+              echo "⏭ Newsletter déjà générée il y a $((NEWSLETTER_AGE / 86400))j (< 6j) — skip"
+              SHOULD_RUN=false
+            fi
+          fi
+          echo "should_run=${SHOULD_RUN}" >> $GITHUB_OUTPUT
 
       - name: "📰 Génération newsletter hebdomadaire"
+        if: steps.check-freshness.outputs.should_run == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/generate-newsletter.mjs
 
+      - name: "⏭ Génération ignorée — newsletter récente"
+        if: steps.check-freshness.outputs.should_run != 'true'
+        run: echo "Newsletter déjà générée récemment. Génération ignorée."
+
       - name: "🔀 Créer une PR pour relecture"
+        if: steps.check-freshness.outputs.should_run == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.PAT_TOKEN }}

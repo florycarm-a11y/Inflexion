@@ -1,6 +1,5 @@
 # Inflexion — Briefing IA Quotidien Stratégique + RAG Indexation
 # Déclenché automatiquement après le succès de fetch-data (workflow_run)
-# + Ré-indexation RAG quand la PR article est mergée (push sur data/articles/)
 #
 # Ce workflow :
 # 1. Indexe les articles disponibles dans le store RAG (embeddings locaux)
