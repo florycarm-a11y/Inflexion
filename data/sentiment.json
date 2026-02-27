@@ -1,65 +1,65 @@
 {
-  "updated": "2026-02-27T06:53:29.404Z",
+  "updated": "2026-02-27T14:40:26.006Z",
   "date": "2026-02-27",
   "global": {
-    "score": -0.29,
-    "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.29), dominé par la rubrique geopolitique (baissier)."
+    "score": 0.03,
+    "tendance": "mixte",
+    "resume": "Le sentiment global est mixte (+0.03), dominé par la rubrique ai_tech (haussier)."
   },
   "categories": {
     "geopolitique": {
       "score": -0.65,
-      "confidence": 0.85,
+      "confidence": 0.82,
       "tendance": "baissier",
-      "resume": "Instabilité géopolitique accrue : tensions Iran-États-Unis, escalade Pakistan-Afghanistan, conflits au Moyen-Orient et en Afrique de l'Ouest. Revers électoraux pour les gouvernements en place (Labour au Royaume-Uni). Contexte de nationalisme économique croissant.",
+      "resume": "Tensions géopolitiques multiples : escalade Iran-États-Unis, instabilité Ukraine, conflits Pakistan-Afghanistan et au Venezuela. Contexte de fragilité institutionnelle et militaire accrue.",
       "signaux_cles": [
-        "Pakistan en 'guerre ouverte' avec l'Afghanistan, frappes aériennes confirmées",
-        "Tensions nucléaires Iran-États-Unis sous administration Trump",
-        "Greens infligent défaite majeure au Labour dans banlieue de Manchester"
+        "Politique nucléaire iranienne chaotique sous Trump",
+        "60 000 habitants de Belgorod sans électricité (infrastructure critique endommagée)",
+        "Tensions Pakistan-Afghanistan : risque d'escalade vers conflit prolongé"
       ]
     },
     "marches": {
-      "score": -0.35,
-      "confidence": 0.72,
+      "score": 0.42,
+      "confidence": 0.75,
       "tendance": "mixte",
-      "resume": "Signaux contradictoires : débat sur risque de crise financière en 2027, mais activité M&A soutenue (Warner Bros). Changements réglementaires français (PEL, taxes) et promesses d'IA tempérées par statistiques économiques décevantes. Nationalisme économique en progression.",
+      "resume": "Dynamique contrastée : inflation wholesale supérieure aux attentes (-0.8% core PPI) pèse sur les indices, mais levée de fonds record d'OpenAI (110 Mds $) et gains de certains secteurs (hôtellerie, technologie) soutiennent les perspectives.",
       "signaux_cles": [
-        "Débat économique français sur crise financière potentielle en 2027",
-        "Famille Ellison (proche Trump) remporte enchères Warner Bros Discovery face à Netflix",
-        "Clôture massive de comptes PEL au 1er mars 2026, redéploiement de capitaux attendu"
+        "Core wholesale prices +0.8% en janvier (dépassement des prévisions)",
+        "OpenAI valorisée 730 Mds $ (financement Amazon 50 Mds $, Nvidia, SoftBank)",
+        "Sunstone Hotel Investors et inTest dépassent les prévisions de résultats"
       ]
     },
     "crypto": {
-      "score": -0.55,
-      "confidence": 0.8,
+      "score": -0.58,
+      "confidence": 0.88,
       "tendance": "baissier",
-      "resume": "Pression vendeuse sur Bitcoin avec protection contre crash sous 60 000 $. Prédictions baissières (fondateur Wikipédia : 10 000 $). Volatilité persistante malgré gains hebdomadaires. Ether subdué. Scandales réglementaires (insider trading Polymarket, dispute Pentagon-Anthropic).",
+      "resume": "Marché crypto sous pression : Bitcoin menace un breakdown, Ethereum et Solana en baisse significative (-5.43% et -5.78%). Saisies gouvernementales massives (580 M$) et fuite de données en Corée du Sud ajoutent à la nervosité.",
       "signaux_cles": [
-        "Bitcoin ETF holders accumulent protections contre chute sous 60 000 $",
-        "Fondateur Wikipédia prédit Bitcoin à 10 000 $",
-        "Insider trading détecté sur Polymarket, plateforme de prédiction"
+        "Ethereum -5.43% en 24h, Solana -5.78% (CoinDesk 20 en baisse)",
+        "Saisie de 580 M$ en crypto liée aux réseaux criminels chinois",
+        "Fuite de seed phrase en Corée du Sud : perte de 4.8 M$ en tokens saisis"
       ]
     },
     "matieres_premieres": {
-      "score": -0.28,
-      "confidence": 0.68,
+      "score": 0.35,
+      "confidence": 0.71,
       "tendance": "neutre",
-      "resume": "Pétrole en déclin hebdomadaire (prime de risque en baisse). Secteur énergétique fragmenté : LNG en expansion (Cheniere), énergies renouvelables progressent, mais sentiment services/industrie se détériore en zone euro. Tarifs américains sur panneaux solaires indiens (126%) freinent transition.",
+      "resume": "Pétrole volatil : hausse de 3.7% sur tensions US-Iran, mais recul depuis sommets 7 mois. Gaz naturel stable au-dessus de 2.85 $. Fret maritime en hausse (Baltic Dry +23 pts à 2140).",
       "signaux_cles": [
-        "Pétrole en baisse hebdomadaire, prime de risque en recul",
-        "Tarif américain 126% sur panneaux solaires indiens",
-        "Sentiment services et confiance industrielle se dégradent en zone euro"
+        "Pétrole +3.7% sur tensions US-Iran, prévisions 2026 révisées à la hausse",
+        "Gaz naturel franchit 2.85 $ sur retour du froid",
+        "Baltic Dry Index à 2140 (+23 pts) : reprise du fret conteneurisé"
       ]
     },
     "ai_tech": {
-      "score": 0.42,
-      "confidence": 0.75,
+      "score": 0.71,
+      "confidence": 0.85,
       "tendance": "haussier",
-      "resume": "Innovations IA en accélération (Perplexity, Microsoft CORPGEN, Google Form Energy 1Md$). Mais tensions réglementaires majeures : Anthropic refuse termes Pentagon sur armes autonomes. Block réduit moitié des effectifs pour pivot IA. Débats éthiques et sécurité dominent.",
+      "resume": "Secteur IA/tech dynamique : OpenAI lève 110 Mds $ (record historique), Rapidus (Japon) investit 1.7 Md $ en semi-conducteurs 2nm. Innovations logicielles et matérielles accélèrent. Block réduit 40% des effectifs via IA.",
       "signaux_cles": [
-        "Google acquiert Form Energy pour 1 milliard $ (batterie 100 heures)",
-        "Anthropic refuse conditions Pentagon sur armes autonomes et surveillance de masse",
-        "Block (Jack Dorsey) réduit 50% des effectifs pour pivot IA"
+        "OpenAI lève 110 Mds $ (Amazon 50 Mds $, Nvidia, SoftBank)",
+        "Rapidus : 1.7 Md $ pour production 2nm d'ici 2027",
+        "Claude Code améliore mémoire et personnalisation ; Ultrahuman ring 15 jours d'autonomie"
       ]
     }
   },
@@ -183,12 +183,12 @@
     },
     {
       "date": "2026-02-27",
-      "global": -0.29,
+      "global": 0.03,
       "geopolitique": -0.65,
-      "marches": -0.35,
-      "crypto": -0.55,
-      "matieres_premieres": -0.28,
-      "ai_tech": 0.42
+      "marches": 0.42,
+      "crypto": -0.58,
+      "matieres_premieres": 0.35,
+      "ai_tech": 0.71
     }
   ],
   "model": "claude-haiku-4-5-20251001",

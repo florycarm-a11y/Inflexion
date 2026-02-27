@@ -1,66 +1,101 @@
 {
-  "updated": "2026-02-27T06:53:29.404Z",
+  "updated": "2026-02-27T14:40:26.006Z",
   "alertes": [
     {
       "id": "alert-2026-02-27-001",
-      "titre": "NVDA : -5,46% à 184,89 $, pression vendeuse accélérée",
-      "texte": "Nvidia cède 5,46% dans contexte de risk-off généralisé (Fear & Greed Index à 13 - Extreme Fear). Correction technique significative sur leader IA, potentiellement liée aux tensions géopolitiques et débats réglementaires sur IA militaire.",
-      "categorie": "ai_tech",
+      "titre": "Ethereum : -5.43% en 24h, retour sous 1 955 $",
+      "texte": "ETH chute à 1 954,78 $ en 24 heures. Contexte : Bitcoin menace un breakdown technique, Fear & Greed Index à 13 (peur extrême). Saisies gouvernementales massives (580 M$) et fuites de données en Corée du Sud amplifient la nervosité.",
+      "categorie": "crypto",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-27T06:53:29.404Z",
+      "horodatage": "2026-02-27T14:40:26.006Z",
       "donnees": {
-        "symbole": "NVDA",
-        "nom": "Nvidia",
-        "prix": 184.89,
-        "variation": -5.46
+        "symbole": "ETH",
+        "nom": "Ethereum",
+        "prix": 1954.78,
+        "variation_24h": -5.43
       }
     },
     {
       "id": "alert-2026-02-27-002",
-      "titre": "Fear & Greed Index : 13 (Extreme Fear), plus bas depuis mois",
-      "texte": "Indicateur de sentiment atteint niveau d'extrême peur (13/100), signalant capitulation potentielle des investisseurs. Confluence de risques : géopolitique (Pakistan-Afghanistan, Iran), débats crise financière 2027, pression crypto sous 60 000 $.",
-      "categorie": "marches",
-      "severite": "urgent",
+      "titre": "Solana : -5.78% en 24h, SOL à 82,73 $",
+      "texte": "SOL recule à 82,73 $ en 24 heures, entraînant l'indice CoinDesk 20 à la baisse. Pression généralisée sur altcoins dans contexte de peur extrême (Fear & Greed 13).",
+      "categorie": "crypto",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-27T06:53:29.404Z",
+      "horodatage": "2026-02-27T14:40:26.006Z",
       "donnees": {
-        "symbole": "TSLA",
-        "nom": "Tesla",
-        "prix": 408.58,
-        "variation": -2.11
+        "symbole": "SOL",
+        "nom": "Solana",
+        "prix": 82.73,
+        "variation_24h": -5.78
       }
     },
     {
       "id": "alert-2026-02-27-003",
-      "titre": "Bitcoin : protection accumulée sous 60 000 $, volatilité attendue",
-      "texte": "Détenteurs d'ETF Bitcoin accumulent positions de protection contre chute sous 60 000 $ (Deribit). Prédictions baissières du fondateur Wikipédia (10 000 $) amplifient pression vendeuse. Pression de vente quasi-exhaustée selon analystes, mais support technique fragile.",
-      "categorie": "crypto",
-      "severite": "attention",
+      "titre": "Pétrole (USO) : +2.66%, tensions US-Iran soutiennent à 81,89 $",
+      "texte": "Pétrole remonte de 2.66% à 81,89 $ sur escalade nucléaire US-Iran et révision à la hausse des prévisions 2026. Primes de risque géopolitique réactivées après recul depuis sommets 7 mois.",
+      "categorie": "matieres_premieres",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-02-27T14:40:26.006Z",
+      "donnees": {
+        "symbole": "USO",
+        "nom": "Pétrole (ETF)",
+        "prix": 81.89,
+        "variation": 2.66
+      }
+    },
+    {
+      "id": "alert-2026-02-27-004",
+      "titre": "Nvidia : -2.39%, NVDA à 180,47 $ après annonce OpenAI",
+      "texte": "NVDA recule de 2.39% à 180,47 $ malgré investissement majeur dans OpenAI (110 Mds $). Profit-taking post-annonce et pression macro (inflation PPI supérieure aux attentes) pèsent sur le secteur tech.",
+      "categorie": "ai_tech",
+      "severite": "info",
       "impact": "baissier",
-      "horodatage": "2026-02-27T06:53:29.404Z",
+      "horodatage": "2026-02-27T14:40:26.006Z",
+      "donnees": {
+        "symbole": "NVDA",
+        "nom": "Nvidia",
+        "prix": 180.47,
+        "variation": -2.39
+      }
+    },
+    {
+      "id": "alert-2026-02-27-005",
+      "titre": "Microsoft : -2.08%, MSFT à 393,37 $ sur contexte macro dégradé",
+      "texte": "MSFT recule de 2.08% à 393,37 $ dans contexte d'inflation wholesale supérieure aux prévisions (+0.8% core PPI en janvier). Pression générale sur les grandes capitalisations technologiques.",
+      "categorie": "marches",
+      "severite": "info",
+      "impact": "baissier",
+      "horodatage": "2026-02-27T14:40:26.006Z",
+      "donnees": {
+        "symbole": "MSFT",
+        "nom": "Microsoft",
+        "prix": 393.37,
+        "variation": -2.08
+      }
+    },
+    {
+      "id": "alert-2026-02-27-006",
+      "titre": "Fear & Greed Index : 13 (Peur Extrême), plus bas depuis mois",
+      "texte": "Indice de sentiment à 13 signale peur extrême sur les marchés. Combinaison de tensions géopolitiques (Iran, Ukraine), données macro chaudes (inflation PPI) et fuites de données crypto (Corée du Sud) créent environnement de risque accru.",
+      "categorie": "marches",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-02-27T14:40:26.006Z",
       "donnees": {
         "score": 13,
         "label": "Extreme Fear",
         "variation_7j": 6
       }
-    },
-    {
-      "id": "alert-2026-02-27-004",
-      "titre": "TSLA : -2,11% à 408,58 $, correction modérée dans contexte risk-off",
-      "texte": "Tesla recule 2,11% dans mouvement de réduction de risque généralisée. Correction moins prononcée que Nvidia, mais cohérente avec dégradation du sentiment de marché et tensions géopolitiques affectant secteur automobile/énergie.",
-      "categorie": "marches",
-      "severite": "info",
-      "impact": "baissier",
-      "horodatage": "2026-02-27T06:53:29.404Z",
-      "donnees": {}
     }
   ],
   "stats": {
-    "total": 4,
+    "total": 6,
     "urgent": 1,
     "attention": 2,
-    "info": 1
+    "info": 3
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
