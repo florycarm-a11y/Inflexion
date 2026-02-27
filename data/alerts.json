@@ -1,111 +1,66 @@
 {
-  "updated": "2026-02-26T18:52:50.870Z",
+  "updated": "2026-02-27T06:53:29.404Z",
   "alertes": [
     {
-      "id": "alert-2026-02-26-001",
-      "titre": "NVDA : -5,13%, retour sous 186 $ sur craintes dépenses IA",
-      "texte": "Nvidia cède 5,13% à 185,52 $ dans contexte de révision à la baisse des dépenses d'infrastructure IA. Correction s'inscrit dans mouvement plus large des valeurs technologiques.",
+      "id": "alert-2026-02-27-001",
+      "titre": "NVDA : -5,46% à 184,89 $, pression vendeuse accélérée",
+      "texte": "Nvidia cède 5,46% dans contexte de risk-off généralisé (Fear & Greed Index à 13 - Extreme Fear). Correction technique significative sur leader IA, potentiellement liée aux tensions géopolitiques et débats réglementaires sur IA militaire.",
       "categorie": "ai_tech",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-26T18:52:50.870Z",
-      "donnees": {
-        "symbole": "XRP",
-        "nom": "XRP",
-        "prix": 1.39,
-        "variation_24h": -5.51
-      }
-    },
-    {
-      "id": "alert-2026-02-26-002",
-      "titre": "XRP : -5,51% en 24h, consolidation sous 1,40 $",
-      "texte": "Ripple XRP recule de 5,51% à 1,39 $ sur 24 heures. Mouvement s'inscrit dans correction crypto générale avec Fear & Greed Index à 11 (peur extrême).",
-      "categorie": "crypto",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-02-26T18:52:50.870Z",
-      "donnees": {
-        "symbole": "DOGE",
-        "nom": "Dogecoin",
-        "prix": 0.096114,
-        "variation_24h": -7.38
-      }
-    },
-    {
-      "id": "alert-2026-02-26-003",
-      "titre": "DOGE : -7,38% en 24h, pression vendeuse accélérée",
-      "texte": "Dogecoin chute de 7,38% à 0,096 $ sur 24 heures. Déclin supérieur à XRP reflète volatilité accrue des altcoins dans contexte de peur extrême (Fear & Greed 11).",
-      "categorie": "crypto",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-02-26T18:52:50.870Z",
+      "horodatage": "2026-02-27T06:53:29.404Z",
       "donnees": {
         "symbole": "NVDA",
         "nom": "Nvidia",
-        "prix": 185.52,
-        "variation": -5.13
+        "prix": 184.89,
+        "variation": -5.46
       }
     },
     {
-      "id": "alert-2026-02-26-004",
-      "titre": "Fear & Greed Index : 11 (Peur Extrême), plus bas depuis mois",
-      "texte": "Indice Fear & Greed crypto atteint 11 signalant peur extrême. Niveau reflète combinaison tensions géopolitiques, scandales initiés (Kalshi, Axiom) et révisions dépenses IA.",
-      "categorie": "crypto",
+      "id": "alert-2026-02-27-002",
+      "titre": "Fear & Greed Index : 13 (Extreme Fear), plus bas depuis mois",
+      "texte": "Indicateur de sentiment atteint niveau d'extrême peur (13/100), signalant capitulation potentielle des investisseurs. Confluence de risques : géopolitique (Pakistan-Afghanistan, Iran), débats crise financière 2027, pression crypto sous 60 000 $.",
+      "categorie": "marches",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-02-26T18:52:50.870Z",
-      "donnees": {
-        "symbole": "GOOGL",
-        "nom": "Alphabet",
-        "prix": 306.4,
-        "variation": -2.08
-      }
-    },
-    {
-      "id": "alert-2026-02-26-005",
-      "titre": "Tech stocks : -2 à -5% sur révision dépenses IA et tensions géopolitiques",
-      "texte": "Alphabet -2,08% (306,40 $), Tesla -2,36% (407,55 $) dans correction technologique. Mouvements liés à craintes dépenses infrastructure IA et contexte géopolitique dégradé (Iran, Israël).",
-      "categorie": "ai_tech",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-02-26T18:52:50.870Z",
+      "horodatage": "2026-02-27T06:53:29.404Z",
       "donnees": {
         "symbole": "TSLA",
         "nom": "Tesla",
-        "prix": 407.55,
-        "variation": -2.36
+        "prix": 408.58,
+        "variation": -2.11
       }
     },
     {
-      "id": "alert-2026-02-26-006",
-      "titre": "Zimbabwe : suspension exportations lithium brut, cours volatiles",
-      "texte": "Zimbabwe suspend exportations lithium brut, créant volatilité sur marchés matières premières critiques. Décision géopolitique impacte chaînes d'approvisionnement batteries et technologie.",
-      "categorie": "matieres_premieres",
+      "id": "alert-2026-02-27-003",
+      "titre": "Bitcoin : protection accumulée sous 60 000 $, volatilité attendue",
+      "texte": "Détenteurs d'ETF Bitcoin accumulent positions de protection contre chute sous 60 000 $ (Deribit). Prédictions baissières du fondateur Wikipédia (10 000 $) amplifient pression vendeuse. Pression de vente quasi-exhaustée selon analystes, mais support technique fragile.",
+      "categorie": "crypto",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-02-26T18:52:50.870Z",
+      "horodatage": "2026-02-27T06:53:29.404Z",
       "donnees": {
-        "score": 11,
+        "score": 13,
         "label": "Extreme Fear",
-        "variation_7j": 2
+        "variation_7j": 6
       }
     },
     {
-      "id": "alert-2026-02-26-007",
-      "titre": "Iran-USA : négociations en impasse, escalade risque de conflit",
-      "texte": "Envoyés américains déçus après négociations matinales avec Iraniens (Axios). Ambassadeur israélien doute solution diplomatique. Risque escalade militaire régionale accru.",
-      "categorie": "geopolitique",
-      "severite": "urgent",
+      "id": "alert-2026-02-27-004",
+      "titre": "TSLA : -2,11% à 408,58 $, correction modérée dans contexte risk-off",
+      "texte": "Tesla recule 2,11% dans mouvement de réduction de risque généralisée. Correction moins prononcée que Nvidia, mais cohérente avec dégradation du sentiment de marché et tensions géopolitiques affectant secteur automobile/énergie.",
+      "categorie": "marches",
+      "severite": "info",
       "impact": "baissier",
-      "horodatage": "2026-02-26T18:52:50.870Z",
+      "horodatage": "2026-02-27T06:53:29.404Z",
       "donnees": {}
     }
   ],
   "stats": {
-    "total": 7,
-    "urgent": 2,
-    "attention": 5,
-    "info": 0
+    "total": 4,
+    "urgent": 1,
+    "attention": 2,
+    "info": 1
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"

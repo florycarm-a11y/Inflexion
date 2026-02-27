@@ -1,65 +1,65 @@
 {
-  "updated": "2026-02-26T18:52:50.869Z",
-  "date": "2026-02-26",
+  "updated": "2026-02-27T06:53:29.404Z",
+  "date": "2026-02-27",
   "global": {
-    "score": -0.31,
+    "score": -0.29,
     "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.31), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est baissier (-0.29), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
       "score": -0.65,
       "confidence": 0.85,
       "tendance": "baissier",
-      "resume": "Tensions géopolitiques accrues : négociations Iran-USA en impasse, escalade militaire Israël-Hezbollah, instabilité Afghanistan-Pakistan, et blocages commerciaux (lithium zimbabwéen). Risques de conflits régionaux multipliés.",
+      "resume": "Instabilité géopolitique accrue : tensions Iran-États-Unis, escalade Pakistan-Afghanistan, conflits au Moyen-Orient et en Afrique de l'Ouest. Revers électoraux pour les gouvernements en place (Labour au Royaume-Uni). Contexte de nationalisme économique croissant.",
       "signaux_cles": [
-        "Envoyés US déçus après négociations iraniennes du matin (Axios)",
-        "Israël frappe 8 bases du Hezbollah au Liban",
-        "Zimbabwe suspend exportations lithium brut, cours volatiles"
+        "Pakistan en 'guerre ouverte' avec l'Afghanistan, frappes aériennes confirmées",
+        "Tensions nucléaires Iran-États-Unis sous administration Trump",
+        "Greens infligent défaite majeure au Labour dans banlieue de Manchester"
       ]
     },
     "marches": {
-      "score": -0.15,
+      "score": -0.35,
       "confidence": 0.72,
       "tendance": "mixte",
-      "resume": "Résultats d'entreprises mitigés avec quelques surperformances (Millennium BCP, Sempra), mais inquiétudes croissantes sur crédit privé en récession et réductions d'effectifs tech (eBay -800 postes). Taux hypothécaires en baisse (<6%).",
+      "resume": "Signaux contradictoires : débat sur risque de crise financière en 2027, mais activité M&A soutenue (Warner Bros). Changements réglementaires français (PEL, taxes) et promesses d'IA tempérées par statistiques économiques décevantes. Nationalisme économique en progression.",
       "signaux_cles": [
-        "eBay annonce 800 suppressions de postes dans restructuration tech",
-        "Crédit privé face à son premier vrai test de récession sans filet de sécurité Fed",
-        "Taux hypothécaires US chutent sous 6%, amélioration accessibilité immobilière"
+        "Débat économique français sur crise financière potentielle en 2027",
+        "Famille Ellison (proche Trump) remporte enchères Warner Bros Discovery face à Netflix",
+        "Clôture massive de comptes PEL au 1er mars 2026, redéploiement de capitaux attendu"
       ]
     },
     "crypto": {
       "score": -0.55,
       "confidence": 0.8,
       "tendance": "baissier",
-      "resume": "Marché crypto sous pression : scandales d'initiés (Kalshi, Axiom), enquêtes fédérales, mais quelques signaux positifs (Citi intègre Bitcoin, Indiana approuve BTC en retraite). Bitcoin consolide près de 67k$.",
+      "resume": "Pression vendeuse sur Bitcoin avec protection contre crash sous 60 000 $. Prédictions baissières (fondateur Wikipédia : 10 000 $). Volatilité persistante malgré gains hebdomadaires. Ether subdué. Scandales réglementaires (insider trading Polymarket, dispute Pentagon-Anthropic).",
       "signaux_cles": [
-        "Bitcoin oscille près de 67 000 $ en consolidation",
-        "Citi lance services de garde Bitcoin intégrés à la finance traditionnelle",
-        "Paiements rançongiciels atteignent 800 millions $ en 2025"
+        "Bitcoin ETF holders accumulent protections contre chute sous 60 000 $",
+        "Fondateur Wikipédia prédit Bitcoin à 10 000 $",
+        "Insider trading détecté sur Polymarket, plateforme de prédiction"
       ]
     },
     "matieres_premieres": {
-      "score": -0.35,
-      "confidence": 0.75,
+      "score": -0.28,
+      "confidence": 0.68,
       "tendance": "neutre",
-      "resume": "Secteur énergétique contrasté : Cheniere LNG +64% profit (demande forte), mais gaz naturel baisse sur perspectives météo négatives. Tensions géopolitiques (embargo pétrolier russe) créent volatilité.",
+      "resume": "Pétrole en déclin hebdomadaire (prime de risque en baisse). Secteur énergétique fragmenté : LNG en expansion (Cheniere), énergies renouvelables progressent, mais sentiment services/industrie se détériore en zone euro. Tarifs américains sur panneaux solaires indiens (126%) freinent transition.",
       "signaux_cles": [
-        "Profit Cheniere +64% en 2025 sur demande LNG accrue",
-        "Gaz naturel en baisse sur perspectives météo et stocks défavorables",
-        "Embargo UE pétrole russe nécessite approbation G7 mondiale"
+        "Pétrole en baisse hebdomadaire, prime de risque en recul",
+        "Tarif américain 126% sur panneaux solaires indiens",
+        "Sentiment services et confiance industrielle se dégradent en zone euro"
       ]
     },
     "ai_tech": {
-      "score": 0.25,
-      "confidence": 0.68,
-      "tendance": "mixte",
-      "resume": "Innovation IA positive (Google Nano Banana 2, réduction coûts API 40%, Einride lève 113M$), mais préoccupations sécurité (failles Juniper, Trend Micro, breach ManoMano 38M clients). Pression Pentagon sur Anthropic.",
+      "score": 0.42,
+      "confidence": 0.75,
+      "tendance": "haussier",
+      "resume": "Innovations IA en accélération (Perplexity, Microsoft CORPGEN, Google Form Energy 1Md$). Mais tensions réglementaires majeures : Anthropic refuse termes Pentagon sur armes autonomes. Block réduit moitié des effectifs pour pivot IA. Débats éthiques et sécurité dominent.",
       "signaux_cles": [
-        "Google Nano Banana 2 : génération image 40% moins chère, synthèse 4K sub-seconde",
-        "Einride (camions autonomes) lève 113M$ avant IPO PIPE",
-        "Faille critique Juniper PTX permet prise de contrôle complète routeurs"
+        "Google acquiert Form Energy pour 1 milliard $ (batterie 100 heures)",
+        "Anthropic refuse conditions Pentagon sur armes autonomes et surveillance de masse",
+        "Block (Jack Dorsey) réduit 50% des effectifs pour pivot IA"
       ]
     }
   },
@@ -180,6 +180,15 @@
       "crypto": -0.55,
       "matieres_premieres": -0.35,
       "ai_tech": 0.25
+    },
+    {
+      "date": "2026-02-27",
+      "global": -0.29,
+      "geopolitique": -0.65,
+      "marches": -0.35,
+      "crypto": -0.55,
+      "matieres_premieres": -0.28,
+      "ai_tech": 0.42
     }
   ],
   "model": "claude-haiku-4-5-20251001",
