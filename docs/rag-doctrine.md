@@ -123,7 +123,7 @@ RAG = lui donner acces a une bibliotheque.
 
 Inflexion ne fine-tune pas Claude.
 Inflexion lui fournit :
-- 158 sources RSS structurees (la bibliotheque de presse)
+- 157 sources RSS structurees (la bibliotheque de presse)
 - 15 APIs de marche (les donnees chiffrees en temps reel)
 - 500 articles vectorises (la memoire editoriale)
 - 60 briefings historiques (la continuite analytique)
@@ -282,7 +282,7 @@ Un mauvais RAG est pire qu'aucun RAG.
 Un RAG n'est pas un gadget IA.
 
 C'est :
-- **une architecture de connaissance** — 158 sources structurees en 5 rubriques
+- **une architecture de connaissance** — 157 sources structurees en 5 rubriques
 - **une structuration strategique** — metadonnees natives, scoring qualite, curation editoriale
 - **un moteur de credibilite** — chaque donnee sourcee, chaque estimation qualifiee
 
@@ -290,7 +290,7 @@ La question n'est pas :
 *"Est-ce que Claude est intelligent ?"*
 
 La question est :
-*"Est-ce que nos 158 sources, 15 APIs et 500 articles indexes sont structures pour produire un briefing que le Financial Times ne rougirait pas de publier ?"*
+*"Est-ce que nos 157 sources, 15 APIs et 500 articles indexes sont structures pour produire un briefing que le Financial Times ne rougirait pas de publier ?"*
 
 La reponse est dans l'architecture.
 
@@ -334,7 +334,7 @@ data-loader.js (frontend)
 ```
 
 Le RAG d'Inflexion n'est pas une "bibliotheque strategique augmentee".
-C'est un **systeme nerveux** : il capte (158 sources), memorise (500 articles + 60 briefings), analyse (Claude Sonnet/Haiku) et restitue (briefing quotidien) en boucle continue.
+C'est un **systeme nerveux** : il capte (157 sources), memorise (500 articles + 60 briefings), analyse (Claude Sonnet/Haiku) et restitue (briefing quotidien) en boucle continue.
 
 Demain, le briefing saura que le BTC etait a 65 066 $ aujourd'hui.
 Que le Fear & Greed etait a 11/100.

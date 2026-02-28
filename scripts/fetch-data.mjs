@@ -468,7 +468,7 @@ function isRelevantForCategory(article, categoryKey, sourceName) {
 }
 
 // ─── Sources RSS (gratuit, pas de clé API) ───────────────
-// 158 flux ultra-spécialisés couvrant 6 rubriques + politique européenne + défense/stratégie — mis à jour fév. 2026
+// 157 flux ultra-spécialisés couvrant 11 rubriques (géopolitique, marchés, crypto, commodités, IA/tech, FR complémentaires, think tanks macro, énergie/climat, politique EU, défense, non-occidentaux) — mis à jour fév. 2026
 const RSS_SOURCES = [
 
     // ╔══════════════════════════════════════════════════════════╗

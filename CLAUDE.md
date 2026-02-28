@@ -2,7 +2,7 @@
 
 ## 1. Vue d'ensemble
 
-**Inflexion** est une plateforme d'intelligence financiere automatisee combinant analyses geopolitiques et donnees de marche en temps reel. Le systeme agrege **15 APIs**, **140 flux RSS** et utilise **Claude Sonnet** (briefing strategique) + **Claude Haiku** (classification, alertes) pour generer des syntheses IA quotidiennes.
+**Inflexion** est une plateforme d'intelligence financiere automatisee combinant analyses geopolitiques et donnees de marche en temps reel. Le systeme agrege **15 APIs**, **157 flux RSS** et utilise **Claude Sonnet** (briefing strategique) + **Claude Haiku** (classification, alertes) pour generer des syntheses IA quotidiennes.
 
 **URL de production** : https://florycarm-a11y.github.io/Inflexion/
 
@@ -18,18 +18,24 @@ Inflexion/
 ├── geopolitics.html        # Page geopolitique
 ├── markets.html            # Page marches & finance
 ├── premium.html            # Page services premium (roadmap monetisation)
+├── expertise.html          # Page methodologie & approche
+├── country.html            # Page macro par pays (World Bank)
+├── cgu.html                # Conditions generales d'utilisation
+├── mentions-legales.html   # Mentions legales
+├── confidentialite.html    # Politique de confidentialite
+├── analyse-*.html          # Articles d'analyse thematique (4 pages)
 ├── styles.css              # CSS complet (design vert, responsive)
 ├── app.js                  # Logique JS principale + donnees statiques fallback
 ├── data-loader.js          # Charge les JSON dynamiques → met a jour le DOM
-├── api-client.js           # Client API frontend
-├── supabase-client.js      # Client Supabase (backend optionnel)
+├── api-client.js           # Client API frontend (18 endpoints RESTful)
+├── supabase-client.js      # Client Supabase (watchlist, partage, annotations)
 ├── data/                   # Fichiers JSON generes par le pipeline
 │   ├── crypto.json          # CoinGecko: prix, trending, stablecoins
-│   ├── markets.json         # Finnhub: indices US, forex, calendrier eco
+│   ├── markets.json         # Finnhub: indices US (ETF proxies), calendrier eco
 │   ├── european-markets.json # Twelve Data: CAC 40, DAX, FTSE, Euro Stoxx 50
 │   ├── news.json            # GNews + RSS: actualites multi-categories
 │   ├── newsapi.json         # NewsAPI: actualites complementaires EN
-│   ├── rss-feeds.json       # Suivi des 97 flux RSS
+│   ├── rss-feeds.json       # Suivi des 157 flux RSS
 │   ├── macro.json           # FRED: 10 indicateurs macro US
 │   ├── global-macro.json    # ECB + VIX: taux BCE, EUR/USD, volatilite
 │   ├── world-bank.json      # World Bank: PIB, inflation, chomage, dette (10 pays)
@@ -40,30 +46,48 @@ Inflexion/
 │   ├── chart-gold-btc.json  # CoinGecko: historique or vs BTC 90j
 │   ├── commodities.json     # metals.dev: metaux precieux & industriels
 │   ├── onchain.json         # Etherscan + Mempool: gas ETH, fees BTC, hashrate
+│   ├── daily-briefing.json  # Claude Sonnet: briefing strategique quotidien
+│   ├── article-du-jour.json # Claude Haiku: article synthese du jour
 │   ├── sentiment.json       # Claude IA: analyse de sentiment
 │   ├── alerts.json          # Claude IA: alertes marche
 │   ├── newsletter.json      # Claude IA: newsletter quotidienne
 │   ├── macro-analysis.json  # Claude IA: analyse macro
 │   ├── market-briefing.json # Claude IA: briefing marche
-│   └── _meta.json           # Metadonnees du pipeline
+│   ├── embeddings-cache.json # Cache embeddings RAG (SHA-256, TTL 7j)
+│   ├── _meta.json           # Metadonnees du pipeline
+│   ├── rag/                 # Store RAG vectoriel
+│   │   ├── articles.json    # Embeddings articles indexes
+│   │   └── briefings.json   # Embeddings briefings indexes
+│   └── articles/            # Archive articles par date (YYYY-MM-DD.json)
 ├── scripts/
-│   ├── fetch-data.mjs       # Pipeline principal (15 APIs + 97 RSS)
-│   ├── analyze-sentiment.mjs # Analyse de sentiment (Claude Haiku)
+│   ├── fetch-data.mjs       # Pipeline principal (15 APIs + 157 RSS)
+│   ├── generate-daily-briefing.mjs # Briefing strategique (Claude Sonnet + RAG)
+│   ├── generate-market-analysis.mjs # Script consolide : sentiment + alertes + macro + briefing (2 appels Claude)
 │   ├── generate-article.mjs  # Article du jour (Claude Haiku)
-│   ├── generate-alerts.mjs   # Alertes marche (Claude Haiku)
 │   ├── generate-newsletter.mjs # Newsletter (Claude Haiku)
-│   ├── generate-macro-analysis.mjs # Analyse macro (Claude Haiku)
-│   ├── generate-market-briefing.mjs # Briefing marche (Claude Haiku)
+│   ├── rag-index.mjs         # Indexation RAG (embeddings articles + briefings)
+│   ├── analyze-sentiment.mjs # Analyse de sentiment (individuel, debug)
+│   ├── generate-alerts.mjs   # Alertes marche (individuel, debug)
+│   ├── generate-macro-analysis.mjs # Analyse macro (individuel, debug)
+│   ├── generate-market-briefing.mjs # Briefing marche (individuel, debug)
 │   ├── translate-articles.mjs # Traduction EN→FR
 │   ├── check-french.py       # Verification qualite francais
 │   ├── lib/                   # Modules partages
-│   └── tests/                 # Tests unitaires (35 tests)
+│   │   ├── claude-api.mjs     # Client API Anthropic (retry, timeout)
+│   │   ├── prompts.mjs        # Prompts systeme (briefing, consolide, sentiment)
+│   │   ├── embeddings.mjs     # Embeddings MiniLM-L6-v2 (384D)
+│   │   ├── embeddings-cache.mjs # Cache persistant SHA-256 (TTL 7j)
+│   │   ├── rag-store.mjs      # Store vectoriel hybride (cosinus + lexical + recency)
+│   │   ├── claim-verifier.mjs # Verificateur anti-hallucination post-generation
+│   │   └── contradiction-detector.mjs # Detection contradictions cross-sources
+│   └── tests/                 # Tests unitaires (~434 tests, 12 fichiers)
 ├── backend/                   # Backend Node.js (optionnel)
 │   └── .env.example           # Template variables d'environnement
 ├── .github/workflows/
-│   ├── fetch-data.yml         # Cron 6h: recuperation donnees
+│   ├── fetch-data.yml         # Cron 2x/jour (06h/18h UTC): donnees + traduction
+│   ├── generate-daily-briefing.yml # Declenche apres fetch-data: briefing + RAG
 │   ├── generate-article.yml   # Cron quotidien: article IA
-│   ├── analyze-sentiment.yml  # Cron: analyse sentiment
+│   ├── analyze-sentiment.yml  # Cron 2x/jour: analyse consolidee (sentiment + alertes + macro + briefing)
 │   ├── generate-newsletter.yml # Cron: newsletter
 │   ├── deploy-pages.yml       # Deploy GitHub Pages
 │   ├── ci.yml                 # Tests CI
@@ -75,12 +99,13 @@ Inflexion/
 
 ### Flux principal
 ```
-GitHub Actions (cron toutes les 6h)
+GitHub Actions (cron 2x/jour : 06h + 18h UTC)
     ↓
 scripts/fetch-data.mjs
     ├── 15 APIs temps reel
-    ├── 97 flux RSS (5 sec delai entre chaque)
-    └── Deduplication + tri par date
+    ├── 157 flux RSS (5 sec delai entre chaque)
+    ├── Deduplication + tri par date
+    └── Traduction EN→FR (translate-articles.mjs)
     ↓
 data/*.json (commites automatiquement)
     ↓
@@ -88,21 +113,26 @@ GitHub Pages (deploiement auto)
     ↓
 data-loader.js (frontend)
     ├── Charge tous les JSON en parallele
+    ├── Curation qualitative (scoreArticle + curateArticles)
     ├── Met a jour le DOM (widgets, news, graphiques)
     └── Fallback vers app.js si JSON indisponibles
 ```
 
-### Flux IA (Claude Haiku + Sonnet)
+### Flux IA (Claude Sonnet + Haiku)
 ```
-GitHub Actions (cron quotidien)
-    ↓
-scripts/generate-daily-briefing.mjs → data/daily-briefing.json  (Claude Sonnet — briefing strategique)
-scripts/generate-article.mjs     → data/article-du-jour.json    (Claude Haiku — article synthese)
-scripts/analyze-sentiment.mjs    → data/sentiment.json           (Claude Haiku — sentiment)
-scripts/generate-alerts.mjs      → data/alerts.json              (Claude Haiku — alertes)
-scripts/generate-newsletter.mjs  → data/newsletter.json          (Claude Haiku — newsletter)
-scripts/generate-macro-analysis.mjs → data/macro-analysis.json   (Claude Haiku — macro)
-scripts/generate-market-briefing.mjs → data/market-briefing.json (Claude Haiku — briefing marche)
+Declenche apres fetch-data (workflow_run) :
+    scripts/rag-index.mjs                    → data/rag/ (embeddings articles + briefings)
+    scripts/generate-daily-briefing.mjs      → data/daily-briefing.json  (Claude Sonnet — briefing strategique + RAG + verification claims)
+
+Cron 2x/jour (06h30 + 18h30 UTC) — script consolide :
+    scripts/generate-market-analysis.mjs     → sentiment.json + alerts.json + macro-analysis.json + market-briefing.json (2 appels Claude Haiku)
+
+Cron quotidien :
+    scripts/generate-article.mjs             → data/article-du-jour.json (Claude Haiku)
+    scripts/generate-newsletter.mjs          → data/newsletter.json      (Claude Haiku)
+
+Scripts individuels (conserves pour debug) :
+    scripts/analyze-sentiment.mjs, generate-alerts.mjs, generate-macro-analysis.mjs, generate-market-briefing.mjs
 ```
 
 ## 4. Sources API (15)
@@ -130,38 +160,51 @@ scripts/generate-market-briefing.mjs → data/market-briefing.json (Claude Haiku
 | ECB Data API | Taux directeur BCE, EUR/USD fixing 90j |
 | World Bank | PIB, inflation, chomage, dette (10 economies majeures) |
 
-## 5. Sources RSS (158)
+## 5. Sources RSS (157)
 
-### Geopolitique (21 sources)
-- **FR** : Le Figaro Intl, France 24, RFI, Courrier Intl, Le Monde Diplomatique, Le Monde Intl
+### Geopolitique (30 sources)
+- **FR** : Le Figaro Intl, France 24, RFI, Courrier Intl, Le Monde Diplomatique
 - **Intl** : BBC World, Al Jazeera, The Guardian, NYT, Reuters, Politico EU
 - **Think tanks** : Foreign Policy, CFR, Brookings, Carnegie, CSIS, Responsible Statecraft, War on the Rocks
 - **Regional** : The Diplomat (Asie), Middle East Eye (MENA)
+- **Think tanks FR** : IFRI, IRIS, FRS, GRIP
+- **Think tanks intl complementaires** : Chatham House, IISS, Al-Monitor, Middle East Institute
+- **Donnees geopolitiques** : SIPRI (armement), Crisis Group (conflits)
 
-### Marches & Finance (25 sources)
-- **FR** : Le Figaro (Eco, Conj, Societes, Flash Eco, Finances), Les Echos, BFM Business, Zonebourse, La Tribune (general + finance), Capital, Le Monde Eco, Challenges, MoneyVox
+### Marches & Finance (23 sources)
+- **FR** : Le Figaro (Eco, Conj, Societes, Flash Eco), Les Echos, BFM Business, Zonebourse, La Tribune (general + finance), Capital
 - **Intl** : MarketWatch, Yahoo Finance, Seeking Alpha, CNBC, Investing.com
 - **Macro specialise** : Wolf Street, Calculated Risk, Naked Capitalism, TLDR Fintech
-- **Think tanks macro** : BIS (BRI), IMF Blog, World Economic Forum, PIIE, VoxEU/CEPR, OECD
+- **Presse financiere intl** : Financial Times, Nikkei Asia, L'AGEFI
+- **Banques centrales** : BCE (communiques), Banque de France
 
 ### Crypto & Blockchain (14 sources)
 - **FR** : CoinTelegraph FR, Cryptoast, Journal du Coin
 - **Actualites** : CoinDesk, CoinTelegraph EN, The Block, Decrypt, Blockworks, Bitcoin Magazine
 - **Specialise** : The Defiant, Unchained, Web3 is Going Great, Chainalysis, TLDR Crypto
 
-### Matieres Premieres & Energie (19 sources)
+### Matieres Premieres & Energie (17 sources)
 - **Energie** : OilPrice, Rigzone, Natural Gas Intel, Reuters Commodities
 - **Metaux** : GoldPrice.org, Mining.com, MetalMiner, S&P Global
 - **Agriculture** : Feedstuffs, DTN Ag News
 - **Transversal** : Hellenic Shipping, Trading Economics
-- **Energie & climat** : IEA, IRENA, Carbon Brief, CleanTechnica, Reuters Sustainability, Energy Monitor, S&P Energy Transition
+- **Energie specialise** : OPEC, Wood Mackenzie, Kpler Energy
 
-### IA, Tech & Cybersecurite (18 sources)
+### IA, Tech & Cybersecurite (20 sources)
 - **FR** : Le Figaro Tech, 01net, Numerama, Next INpact
 - **Tech** : TechCrunch, The Verge, Ars Technica, Wired, Hacker News
 - **IA** : VentureBeat AI, MIT Tech Review, IEEE Spectrum AI, MarkTechPost, The Decoder
 - **Cybersecurite** : Krebs on Security, BleepingComputer, The Register
 - **Newsletters** : TLDR Tech, TLDR AI
+
+### Sources francophones complementaires (6 sources)
+- Le Monde Eco, Le Monde Intl, Challenges, MoneyVox, Le Figaro Finances, La Tribune Finance
+
+### Think tanks macro (6 sources)
+- BIS (BRI), IMF Blog, World Economic Forum, PIIE, VoxEU/CEPR, OECD
+
+### Energie & climat (7 sources)
+- IEA, IRENA, Carbon Brief, CleanTechnica, Reuters Sustainability, Energy Monitor, S&P Energy Transition
 
 ### Politique europeenne & Regulation tech (18 sources)
 - **Think tanks EU** : Bruegel, CEPS, ECFR
@@ -171,12 +214,12 @@ scripts/generate-market-briefing.mjs → data/market-briefing.json (Claude Haiku
 - **Bio-souverainete** : EuropaBio, SynBioBeta, GEN Biotech
 - **Politique industrielle** : EU Tech Policy
 
-### Defense, Strategie & Renseignement (12 sources) — NOUVEAU
+### Defense, Strategie & Renseignement (12 sources)
 - **Think tanks defense** : RUSI, RAND, CNAS, Arms Control Association, European Leadership Network
 - **Presse defense & securite** : Defense One, Breaking Defense, C4ISRNET, Lawfare, Terra Bellum
 - **OSINT & investigations** : Bellingcat, ACLED
 
-### Think tanks non-occidentaux (4 sources) — NOUVEAU
+### Think tanks non-occidentaux (4 sources)
 - **Asie** : ORF India, ISEAS Singapore
 - **Afrique** : ISS Africa
 - **Non-proliferation** : NTI (Nuclear Threat Initiative)
@@ -184,11 +227,11 @@ scripts/generate-market-briefing.mjs → data/market-briefing.json (Claude Haiku
 ## 6. Frontend
 
 ### Architecture
-- **HTML5** semantique, pages separees par rubrique
-- **CSS3** : design vert (#10b981), responsive (480/768/1024px), glassmorphisme
+- **HTML5** semantique, 17 pages separees par rubrique
+- **CSS3** : design vert (#0B3D1E), responsive (480/768/1024px), glassmorphisme
 - **JavaScript Vanilla** : zero dependance externe
 - **TradingView Widgets** : graphiques temps reel integres
-- **data-loader.js** : IIFE `DataLoader` avec cache, fallback gracieux, freshness indicators
+- **data-loader.js** : IIFE `DataLoader` avec cache, curation qualitative (scoreArticle), fallback gracieux, freshness indicators
 
 ### Navigation
 - **Desktop (≥769px)** : barre de navigation horizontale sticky (`desktop-nav`) generee par JS (`initDesktopNav` dans `app.js`), avec indicateur de page active et CTA. Le header scroll hors ecran, la nav bar reste fixee en haut.
@@ -202,16 +245,16 @@ scripts/generate-market-briefing.mjs → data/market-briefing.json (Claude Haiku
 5. Alertes marche (Claude Haiku)
 6. Briefing marche (Claude Haiku)
 7. Analyse macro (Claude Haiku)
-8. **Indices europeens (Twelve Data)** — NOUVEAU
-9. **Macro internationale (World Bank)** — NOUVEAU
-10. **Crypto avance (Messari)** — NOUVEAU
+8. Indices europeens (Twelve Data)
+9. Macro internationale (World Bank)
+10. Crypto avance (Messari)
 11. Crypto & tendances (CoinGecko)
 12. DeFi & yields (DefiLlama)
 13. Calendrier economique (Finnhub)
 14. Forex & secteurs (Alpha Vantage)
-15. Article du jour (Claude Haiku)
-16. News par rubrique (GNews + RSS + NewsAPI)
-17. **Veille politique EU & Tech (RSS policy sources)** — NOUVEAU
+15. Briefing Strategique IA (Claude Sonnet, avec fallback vers article du jour)
+16. Selection du jour — news curees (GNews + RSS + NewsAPI, 8-12 articles)
+17. Veille politique EU & Tech (RSS policy sources)
 
 ## 7. Cles API et secrets GitHub
 
@@ -225,7 +268,8 @@ ALPHA_VANTAGE_API_KEY    # Alpha Vantage (forex, secteurs)
 MESSARI_API_KEY          # Messari (crypto avance)
 TWELVE_DATA_API_KEY      # Twelve Data (indices europeens)
 NEWSAPI_API_KEY          # NewsAPI (news complementaires)
-ANTHROPIC_API_KEY        # Claude Haiku (syntheses IA)
+ANTHROPIC_API_KEY        # Claude Sonnet + Haiku (syntheses IA)
+TAVILY_API_KEY           # Tavily (recherche web, optionnel — generate-article)
 PAT_TOKEN                # GitHub PAT (pour commit auto)
 ```
 

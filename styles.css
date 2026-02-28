@@ -60,23 +60,23 @@ button:focus-visible,
 
 :root {
     /* Professional palette Ã¢ÂÂ dark green primary identity */
-    --accent: #105E2D;
-    --accent-dark: #0A4420;
+    --accent: #0B3D1E;
+    --accent-dark: #072A14;
     --accent-light: #EDF5F0;
     --navy: #0B3D1E;
     --navy-light: #14713A;
 
     /* Backward-compat aliases (used in JS inline styles) */
-    --pink: #105E2D;
+    --pink: #0B3D1E;
     --pink-light: #8CBF9E;
     --pink-soft: #EDF5F0;
-    --coral: #105E2D;
+    --coral: #0B3D1E;
     --orange: #059669;
     --sky-deep: #3B6B8A;
     --teal: #2C5F5A;
     --teal-light: #EDF3F2;
     --yellow-soft: #ECFDF5;
-    --magenta: #0A4420;
+    --magenta: #072A14;
     --lavender: #6B7394;
     --red: #C41E3A;
     --green: #1B7A3D;
@@ -2831,9 +2831,9 @@ a {
     transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 .hero-cta:hover {
-    background: var(--accent-dark, #1a5c3a);
+    background: var(--accent-dark, #072A14);
     transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(34, 120, 69, 0.25);
+    box-shadow: 0 4px 16px rgba(11, 61, 30, 0.35);
 }
 
 /* Desktop header layout */
@@ -3580,7 +3580,7 @@ body.page-markets .market-status {
 
 /* Bandes degradees par source — palette verte premium */
 .top-story:nth-child(1)::before {
-    background: linear-gradient(to right, #052E16, #105E2D);
+    background: linear-gradient(to right, #052E16, #0B3D1E);
 }
 
 .top-story:nth-child(2)::before {

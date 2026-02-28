@@ -772,7 +772,7 @@ function setupLoadingFallbacks() {
             var id = parent.id || '';
 
             if (id === 'top-stories') {
-                message = 'Articles à la une en cours de récupération — 158 sources analysées toutes les 6h.';
+                message = 'Articles à la une en cours de récupération — 157 sources analysées toutes les 6h.';
             } else if (id === 'latest-news') {
                 message = 'Actualités en cours de chargement — nos 15 APIs et 158 flux RSS sont interrogés régulièrement.';
             } else if (id === 'market-table') {
