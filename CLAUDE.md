@@ -228,7 +228,7 @@ Scripts individuels (conserves pour debug) :
 
 ### Architecture
 - **HTML5** semantique, 17 pages separees par rubrique
-- **CSS3** : design vert (#105E2D), responsive (480/768/1024px), glassmorphisme
+- **CSS3** : design vert (#0B3D1E), responsive (480/768/1024px), glassmorphisme
 - **JavaScript Vanilla** : zero dependance externe
 - **TradingView Widgets** : graphiques temps reel integres
 - **data-loader.js** : IIFE `DataLoader` avec cache, curation qualitative (scoreArticle), fallback gracieux, freshness indicators
