@@ -1,65 +1,70 @@
 {
-  "updated": "2026-02-27T14:40:26.006Z",
-  "date": "2026-02-27",
+  "updated": "2026-03-01T06:45:58.941Z",
+  "date": "2026-03-01",
   "global": {
-    "score": 0.03,
-    "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (+0.03), dominé par la rubrique ai_tech (haussier)."
+    "score": -0.35,
+    "tendance": "baissier",
+    "resume": "Le sentiment global est baissier (-0.35), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.65,
-      "confidence": 0.82,
+      "score": -0.85,
+      "confidence": 0.95,
       "tendance": "baissier",
-      "resume": "Tensions géopolitiques multiples : escalade Iran-États-Unis, instabilité Ukraine, conflits Pakistan-Afghanistan et au Venezuela. Contexte de fragilité institutionnelle et militaire accrue.",
+      "resume": "Mort confirmée de l'ayatollah Ali Khamenei dans des frappes israélo-américaines le 1er mars 2026. Escalade militaire majeure avec ripostes iraniennes sur Israël et bases américaines du Golfe ; négociations nucléaires enterrées.",
       "signaux_cles": [
-        "Politique nucléaire iranienne chaotique sous Trump",
-        "60 000 habitants de Belgorod sans électricité (infrastructure critique endommagée)",
-        "Tensions Pakistan-Afghanistan : risque d'escalade vers conflit prolongé"
+        "Ali Khamenei tué dans frappes israélo-américaines (1er mars 2026)",
+        "Iran riposte avec attaques sur Israël et bases US dans le Golfe",
+        "Parlement iranien : 'le moment de la vengeance finale est venu'",
+        "Trump menace l'Iran de représailles 'sans précédent' en cas de nouvelle riposte"
       ]
     },
     "marches": {
-      "score": 0.42,
-      "confidence": 0.75,
-      "tendance": "mixte",
-      "resume": "Dynamique contrastée : inflation wholesale supérieure aux attentes (-0.8% core PPI) pèse sur les indices, mais levée de fonds record d'OpenAI (110 Mds $) et gains de certains secteurs (hôtellerie, technologie) soutiennent les perspectives.",
+      "score": -0.72,
+      "confidence": 0.88,
+      "tendance": "baissier",
+      "resume": "Choc majeur sur les marchés gaziers mondiaux depuis 2022 lié au conflit Iran. Fermeture des champs gaziers israéliens ; investisseurs se préparent à des ramifications économiques durables au-delà d'une campagne militaire brève.",
       "signaux_cles": [
-        "Core wholesale prices +0.8% en janvier (dépassement des prévisions)",
-        "OpenAI valorisée 730 Mds $ (financement Amazon 50 Mds $, Nvidia, SoftBank)",
-        "Sunstone Hotel Investors et inTest dépassent les prévisions de résultats"
+        "Marchés gaziers mondiaux face au plus grand choc depuis 2022",
+        "Israël ferme ses champs gaziers après frappes américano-israéliennes",
+        "Analystes : 'ramifications plus importantes que Venezuela'",
+        "Investisseurs se préparent à campagne militaire prolongée"
       ]
     },
     "crypto": {
-      "score": -0.58,
-      "confidence": 0.88,
-      "tendance": "baissier",
-      "resume": "Marché crypto sous pression : Bitcoin menace un breakdown, Ethereum et Solana en baisse significative (-5.43% et -5.78%). Saisies gouvernementales massives (580 M$) et fuite de données en Corée du Sud ajoutent à la nervosité.",
+      "score": 0.62,
+      "confidence": 0.82,
+      "tendance": "haussier",
+      "resume": "Bitcoin et altcoins en hausse suite à la mort du leader iranien. BTC dépasse 68 000 $ ; 600 millions de dollars de paris sur Polymarket concernant la crise Iran. Économie crypto souterraine iranienne (7,8 milliards $) mise en lumière.",
       "signaux_cles": [
-        "Ethereum -5.43% en 24h, Solana -5.78% (CoinDesk 20 en baisse)",
-        "Saisie de 580 M$ en crypto liée aux réseaux criminels chinois",
-        "Fuite de seed phrase en Corée du Sud : perte de 4.8 M$ en tokens saisis"
+        "Bitcoin récupère à 68 000 $ après confirmation mort Khamenei",
+        "600 millions $ de paris sur Polymarket liés à crise Iran",
+        "Économie crypto souterraine iranienne estimée à 7,8 milliards $",
+        "Ethereum +7,06% sur 24h ; Solana +9,68% ; Dogecoin +5,60%"
       ]
     },
     "matieres_premieres": {
-      "score": 0.35,
-      "confidence": 0.71,
-      "tendance": "neutre",
-      "resume": "Pétrole volatil : hausse de 3.7% sur tensions US-Iran, mais recul depuis sommets 7 mois. Gaz naturel stable au-dessus de 2.85 $. Fret maritime en hausse (Baltic Dry +23 pts à 2140).",
+      "score": -0.68,
+      "confidence": 0.91,
+      "tendance": "baissier",
+      "resume": "Pétrole et gaz naturels volatiles suite aux frappes sur Iran. OPEC+ envisage augmentation choc de production ; tankers immobilisés près du détroit d'Hormuz. Principal risque : hausse durable des prix énergétiques.",
       "signaux_cles": [
-        "Pétrole +3.7% sur tensions US-Iran, prévisions 2026 révisées à la hausse",
-        "Gaz naturel franchit 2.85 $ sur retour du froid",
-        "Baltic Dry Index à 2140 (+23 pts) : reprise du fret conteneurisé"
+        "Tankers immobilisés près d'Hormuz après attaques",
+        "OPEC+ envisage augmentation choc de production face à volatilité",
+        "Gaz naturel : 'risque principal est augmentation des prix du pétrole'",
+        "Israël ferme champs gaziers ; impact sur livraisons gaz naturel global"
       ]
     },
     "ai_tech": {
-      "score": 0.71,
-      "confidence": 0.85,
-      "tendance": "haussier",
-      "resume": "Secteur IA/tech dynamique : OpenAI lève 110 Mds $ (record historique), Rapidus (Japon) investit 1.7 Md $ en semi-conducteurs 2nm. Innovations logicielles et matérielles accélèrent. Block réduit 40% des effectifs via IA.",
+      "score": 0.15,
+      "confidence": 0.65,
+      "tendance": "mixte",
+      "resume": "Contexte géopolitique crée tensions autour de l'IA militaire (LUCAS drone utilisé en Iran). Anthropic et OpenAI face à scrutin accru sur usages défense. Avancées technologiques (Nvidia, Samsung Galaxy AI) contrebalancées par préoccupations éthiques.",
       "signaux_cles": [
-        "OpenAI lève 110 Mds $ (Amazon 50 Mds $, Nvidia, SoftBank)",
-        "Rapidus : 1.7 Md $ pour production 2nm d'ici 2027",
-        "Claude Code améliore mémoire et personnalisation ; Ultrahuman ring 15 jours d'autonomie"
+        "US confirme premier usage au combat du drone LUCAS en frappes Iran",
+        "Anthropic/OpenAI : accords militaires suscitent débat éthique",
+        "Nvidia préparerait puce pour portables ; Qualcomm en panique",
+        "Claude d'Anthropic monte à #2 App Store suite controverse Pentagon"
       ]
     }
   },
@@ -189,6 +194,15 @@
       "crypto": -0.58,
       "matieres_premieres": 0.35,
       "ai_tech": 0.71
+    },
+    {
+      "date": "2026-03-01",
+      "global": -0.35,
+      "geopolitique": -0.85,
+      "marches": -0.72,
+      "crypto": 0.62,
+      "matieres_premieres": -0.68,
+      "ai_tech": 0.15
     }
   ],
   "model": "claude-haiku-4-5-20251001",
