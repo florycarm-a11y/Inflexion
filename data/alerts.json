@@ -1,117 +1,91 @@
 {
-  "updated": "2026-03-01T06:45:58.942Z",
+  "updated": "2026-03-02T18:45:50.359Z",
   "alertes": [
     {
-      "id": "alert-2026-03-01-001",
-      "titre": "Solana (SOL) : +9,68% en 24h, dépasse 86 $",
-      "texte": "Solana progresse à 86,45 $ en 24 heures, surperformant l'ensemble du marché crypto. Hausse coïncide avec reprise générale post-mort Khamenei et fuite vers actifs volatiles.",
-      "categorie": "crypto",
-      "severite": "attention",
-      "impact": "haussier",
-      "horodatage": "2026-03-01T06:45:58.942Z",
-      "donnees": {
-        "symbole": "ETH",
-        "nom": "Ethereum",
-        "prix": 1995.58,
-        "variation_24h": 7.06
-      }
-    },
-    {
-      "id": "alert-2026-03-01-002",
-      "titre": "Bitcoin (BTC) : +5,9% à 68 000 $, rebond post-Iran",
-      "texte": "Bitcoin récupère à 68 000 $ suite à confirmation de la mort d'Ali Khamenei. Mouvement reflète appétit pour actifs refuge décentralisés en contexte géopolitique tendu.",
-      "categorie": "crypto",
-      "severite": "attention",
-      "impact": "haussier",
-      "horodatage": "2026-03-01T06:45:58.942Z",
-      "donnees": {
-        "symbole": "XRP",
-        "nom": "XRP",
-        "prix": 1.39,
-        "variation_24h": 5.46
-      }
-    },
-    {
-      "id": "alert-2026-03-01-003",
-      "titre": "Nvidia (NVDA) : -4,16% à 177,19 $, pression tech",
-      "texte": "Nvidia recule de 4,16 % à 177,19 $. Baisse s'inscrit dans correction technologique plus large (Apple -3,21 %, Microsoft -2,24 %) liée aux tensions géopolitiques et réévaluation des risques.",
-      "categorie": "marches",
+      "id": "alert-2026-03-02-001",
+      "titre": "Pétrole (USO) : +5,70% à 86,62 $, choc d'approvisionnement Iran",
+      "texte": "Fermeture du champ gazier Leviathan par Israël et arrêt production LNG Qatar suite escalade Iran créent déficit d'approvisionnement. Taux fret spot LNG en hausse ; risques haussiers persistants sur gaz naturel en cas prolongation conflit.",
+      "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-01T06:45:58.942Z",
+      "horodatage": "2026-03-02T18:45:50.359Z",
       "donnees": {
         "symbole": "SOL",
         "nom": "Solana",
-        "prix": 86.45,
-        "variation_24h": 9.68
+        "prix": 87.55,
+        "variation_7d": 12.51
       }
     },
     {
-      "id": "alert-2026-03-01-004",
-      "titre": "Pétrole (USO) : +2,73% à 81,95 $, choc Iran",
-      "texte": "Pétrole brut progresse de 2,73 % à 81,95 $ suite aux frappes israélo-américaines sur Iran et ripostes iraniennes. Tankers immobilisés près d'Hormuz ; risque de hausse durable des prix énergétiques.",
-      "categorie": "matieres_premieres",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-03-01T06:45:58.942Z",
-      "donnees": {
-        "symbole": "DOGE",
-        "nom": "Dogecoin",
-        "prix": 0.094703,
-        "variation_24h": 5.6
-      }
-    },
-    {
-      "id": "alert-2026-03-01-005",
-      "titre": "Fear & Greed Index : 14 (Extreme Fear), plus bas depuis crise",
-      "texte": "Indice Fear & Greed chute à 14 (Extreme Fear), signalant panique extrême sur les marchés. Contexte : escalade militaire Iran, fermeture champs gaziers israéliens, incertitude sur durée du conflit.",
-      "categorie": "marches",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-03-01T06:45:58.942Z",
-      "donnees": {
-        "symbole": "ADA",
-        "nom": "Cardano",
-        "prix": 0.282575,
-        "variation_24h": 6
-      }
-    },
-    {
-      "id": "alert-2026-03-01-006",
-      "titre": "Gaz naturel : choc majeur depuis 2022, Israël ferme champs",
-      "texte": "Marchés gaziers mondiaux face au plus grand choc depuis 2022. Israël ferme ses champs gaziers après frappes ; impact sur livraisons gaz naturel global. OPEC+ envisage augmentation choc de production.",
-      "categorie": "matieres_premieres",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-03-01T06:45:58.942Z",
+      "id": "alert-2026-03-02-002",
+      "titre": "Bitcoin : 70 000 $ (+7% trading matinal), résilience malgré tensions",
+      "texte": "BTC rebondit à 70 000 $ malgré escalade géopolitique Iran-Israël. Mineurs rapportent hashrate stable ; adoption institutionnelle soutient (CME >75% marché, ETF spot inversent sorties). Fear & Greed Index à 10 (Extreme Fear) indique potentiel rebond technique.",
+      "categorie": "crypto",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-03-02T18:45:50.359Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
-        "prix": 81.95,
-        "variation": 2.73
+        "prix": 86.62,
+        "variation": 5.7
       }
     },
     {
-      "id": "alert-2026-03-01-007",
-      "titre": "Iran : mort Khamenei, transition politique et risque escalade",
-      "texte": "Mort confirmée d'Ali Khamenei (1939-2026) dans frappes israélo-américaines du 1er mars. Iran riposte avec attaques sur Israël et bases US du Golfe. Parlement iranien : 'moment de vengeance finale'. Négociations nucléaires enterrées.",
-      "categorie": "geopolitique",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-03-01T06:45:58.942Z",
+      "id": "alert-2026-03-02-003",
+      "titre": "Solana (SOL) : +12,51% sur 7 jours, momentum altcoin",
+      "texte": "SOL surperforme Bitcoin avec gain hebdomadaire de 12,51%. Mouvement porté par adoption retail et volatilité géopolitique ; HyperLiquid signale activité bear market retail élevée.",
+      "categorie": "crypto",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-03-02T18:45:50.359Z",
       "donnees": {
         "symbole": "NVDA",
         "nom": "Nvidia",
-        "prix": 177.19,
-        "variation": -4.16
+        "prix": 182.27,
+        "variation": 2.87
       }
+    },
+    {
+      "id": "alert-2026-03-02-004",
+      "titre": "Nvidia (NVDA) : +2,87% à 182,27 $, défense et IA soutiennent",
+      "texte": "NVDA gagne 2,87% dans contexte d'escalade géopolitique ; investissement 4 Md$ en photonique pour IA renforce positionnement. Secteur défense/tech bénéficie tensions régionales.",
+      "categorie": "ai_tech",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-03-02T18:45:50.359Z",
+      "donnees": {
+        "score": 10,
+        "label": "Extreme Fear",
+        "variation_7j": 5
+      }
+    },
+    {
+      "id": "alert-2026-03-02-005",
+      "titre": "Stocks voyage : effondrement, pire disruption depuis pandémie",
+      "texte": "Secteur aérien/tourisme s'effondre suite fermetures aériennes Moyen-Orient et craintes passagers. Disruption comparée à choc COVID-19 ; impacts durée conflit Iran incertains.",
+      "categorie": "marches",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-03-02T18:45:50.359Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-03-02-006",
+      "titre": "Bourses européennes : clôture dans le rouge, escalade géopolitique",
+      "texte": "Indices européens terminent négatifs suite annonces Macron (dissuasion nucléaire), opérations Trump prolongées Iran, et fermetures énergétiques. Volatilité persiste ; secteur défense (Palantir, Lockheed) contrebalance partiellement.",
+      "categorie": "marches",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-03-02T18:45:50.359Z",
+      "donnees": {}
     }
   ],
   "stats": {
-    "total": 7,
-    "urgent": 3,
-    "attention": 4,
-    "info": 0
+    "total": 6,
+    "urgent": 0,
+    "attention": 3,
+    "info": 3
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"

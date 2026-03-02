@@ -1,70 +1,65 @@
 {
-  "updated": "2026-03-01T06:45:58.941Z",
-  "date": "2026-03-01",
+  "updated": "2026-03-02T18:45:50.359Z",
+  "date": "2026-03-02",
   "global": {
-    "score": -0.35,
+    "score": -0.44,
     "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.35), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est baissier (-0.44), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
       "score": -0.85,
       "confidence": 0.95,
       "tendance": "baissier",
-      "resume": "Mort confirmée de l'ayatollah Ali Khamenei dans des frappes israélo-américaines le 1er mars 2026. Escalade militaire majeure avec ripostes iraniennes sur Israël et bases américaines du Golfe ; négociations nucléaires enterrées.",
+      "resume": "Escalade majeure du conflit Iran-Israël-États-Unis avec annonces de renforcement nucléaire français et opérations militaires étendues. Risques géopolitiques aigus affectant stabilité régionale et corridors commerciaux.",
       "signaux_cles": [
-        "Ali Khamenei tué dans frappes israélo-américaines (1er mars 2026)",
-        "Iran riposte avec attaques sur Israël et bases US dans le Golfe",
-        "Parlement iranien : 'le moment de la vengeance finale est venu'",
-        "Trump menace l'Iran de représailles 'sans précédent' en cas de nouvelle riposte"
+        "Macron annonce dissuasion nucléaire avancée et extension aux alliés européens",
+        "Trump envisage opérations militaires prolongées contre l'Iran (2 mars 2026)",
+        "Israël frappe le Liban après tirs du Hezbollah ; fermetures de champs gaziers (Leviathan)"
       ]
     },
     "marches": {
-      "score": -0.72,
-      "confidence": 0.88,
+      "score": -0.42,
+      "confidence": 0.82,
       "tendance": "baissier",
-      "resume": "Choc majeur sur les marchés gaziers mondiaux depuis 2022 lié au conflit Iran. Fermeture des champs gaziers israéliens ; investisseurs se préparent à des ramifications économiques durables au-delà d'une campagne militaire brève.",
+      "resume": "Bourses européennes terminent dans le rouge suite au conflit Iran. Secteur défense et énergie volatiles. Stocks de voyage s'effondrent ; pressions tarifaires persistantes de l'administration Trump.",
       "signaux_cles": [
-        "Marchés gaziers mondiaux face au plus grand choc depuis 2022",
-        "Israël ferme ses champs gaziers après frappes américano-israéliennes",
-        "Analystes : 'ramifications plus importantes que Venezuela'",
-        "Investisseurs se préparent à campagne militaire prolongée"
+        "Bourses européennes en baisse ; secteur défense (Palantir, Lockheed) en hausse",
+        "Stocks de voyage en chute libre (pire disruption depuis pandémie)",
+        "Rejet judiciaire de la demande Trump de retard sur remboursements douaniers"
       ]
     },
     "crypto": {
-      "score": 0.62,
-      "confidence": 0.82,
-      "tendance": "haussier",
-      "resume": "Bitcoin et altcoins en hausse suite à la mort du leader iranien. BTC dépasse 68 000 $ ; 600 millions de dollars de paris sur Polymarket concernant la crise Iran. Économie crypto souterraine iranienne (7,8 milliards $) mise en lumière.",
+      "score": 0.28,
+      "confidence": 0.65,
+      "tendance": "mixte",
+      "resume": "Bitcoin rebondit à 70 000 $ malgré tensions géopolitiques ; mineurs non affectés. Volatilité élevée avec craintes géopolitiques compensées par adoption institutionnelle (CME, ETFs). Débats internes sur gouvernance (Aave).",
       "signaux_cles": [
-        "Bitcoin récupère à 68 000 $ après confirmation mort Khamenei",
-        "600 millions $ de paris sur Polymarket liés à crise Iran",
-        "Économie crypto souterraine iranienne estimée à 7,8 milliards $",
-        "Ethereum +7,06% sur 24h ; Solana +9,68% ; Dogecoin +5,60%"
+        "Bitcoin à 70 000 $ (+7% en trading matinal) ; hashrate stable malgré conflit",
+        "CME capture >75% du marché crypto avec nouveaux contrats (Cardano, Chainlink, Stellar)",
+        "BTC/ETH spot ETFs inversent tendance de sorties hebdomadaires"
       ]
     },
     "matieres_premieres": {
-      "score": -0.68,
-      "confidence": 0.91,
+      "score": -0.72,
+      "confidence": 0.93,
       "tendance": "baissier",
-      "resume": "Pétrole et gaz naturels volatiles suite aux frappes sur Iran. OPEC+ envisage augmentation choc de production ; tankers immobilisés près du détroit d'Hormuz. Principal risque : hausse durable des prix énergétiques.",
+      "resume": "Choc d'approvisionnement énergétique majeur : fermeture champ gazier Leviathan, arrêt production LNG Qatar, perturbations navires-citernes. Pétrole et gaz naturel volatiles ; or monte à plus haut mensuel.",
       "signaux_cles": [
-        "Tankers immobilisés près d'Hormuz après attaques",
-        "OPEC+ envisage augmentation choc de production face à volatilité",
-        "Gaz naturel : 'risque principal est augmentation des prix du pétrole'",
-        "Israël ferme champs gaziers ; impact sur livraisons gaz naturel global"
+        "Chevron déclare Force Majeure ; champ Leviathan fermé par Israël",
+        "Arrêt production LNG Qatar ; taux fret spot LNG en hausse sur craintes détroit Hormuz",
+        "Or à plus haut mensuel ; gaz naturel avril recule techniquement mais risques haussiers"
       ]
     },
     "ai_tech": {
-      "score": 0.15,
-      "confidence": 0.65,
-      "tendance": "mixte",
-      "resume": "Contexte géopolitique crée tensions autour de l'IA militaire (LUCAS drone utilisé en Iran). Anthropic et OpenAI face à scrutin accru sur usages défense. Avancées technologiques (Nvidia, Samsung Galaxy AI) contrebalancées par préoccupations éthiques.",
+      "score": -0.15,
+      "confidence": 0.58,
+      "tendance": "neutre",
+      "resume": "Cyberattaques géopolitiques sur infrastructures civiles et militaires iraniennes. Débat sur usage militaire de l'IA (Anthropic-Trump). Fusion HBO Max/Paramount+ confirmée ; adoption Apple Intelligence faible.",
       "signaux_cles": [
-        "US confirme premier usage au combat du drone LUCAS en frappes Iran",
-        "Anthropic/OpenAI : accords militaires suscitent débat éthique",
-        "Nvidia préparerait puce pour portables ; Qualcomm en panique",
-        "Claude d'Anthropic monte à #2 App Store suite controverse Pentagon"
+        "Cyberattaques sur médias, apps prière, systèmes militaires iraniens (front numérique conflit)",
+        "Polémique Trump-Anthropic sur fourniture militaire d'IA ; pression DOD/Congress",
+        "Nvidia investit 4 Md$ en photonique ; Apple Intelligence sous-utilisée en entrepôts"
       ]
     }
   },
@@ -203,6 +198,15 @@
       "crypto": 0.62,
       "matieres_premieres": -0.68,
       "ai_tech": 0.15
+    },
+    {
+      "date": "2026-03-02",
+      "global": -0.44,
+      "geopolitique": -0.85,
+      "marches": -0.42,
+      "crypto": 0.28,
+      "matieres_premieres": -0.72,
+      "ai_tech": -0.15
     }
   ],
   "model": "claude-haiku-4-5-20251001",
