@@ -3479,6 +3479,11 @@ body.page-markets .market-status {
         padding: 0.6rem 1.3rem;
         font-size: var(--fs-sm);
     }
+    .hero-eyebrow {
+        font-size: 0.55rem;
+        letter-spacing: 0.8px;
+        line-height: 1.6;
+    }
 
     /* Ã¢ÂÂÃ¢ÂÂ Top Stories Stack Ã¢ÂÂÃ¢ÂÂ */
     .top-stories-grid {
@@ -8097,10 +8102,9 @@ body.page-markets .market-status {
     transform: translateY(-1px);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .header-cta-btn {
-        font-size: 0.7rem;
-        padding: 0.4rem 0.75rem;
+        display: none !important;
     }
 }
 
