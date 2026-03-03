@@ -1,0 +1,173 @@
+%-------------------------
+% CV Floryan Leblanc - Modernisé (1 page)
+%-------------------------
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\frenchsetup{ItemLabels=\textbullet}
+\usepackage{tabularx}
+\usepackage{eurosym}
+\linespread{1.08}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Margins (comfortable 1-page)
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.1in}
+\addtolength{\topmargin}{-0.55in}
+\addtolength{\textheight}{1.1in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{{#1 \vspace{2pt}}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-4pt}
+}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+
+%-------------------------------------------
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Floryan Leblanc} \\ \vspace{1pt}
+    \small +33 6 32 76 43 49 $|$ 
+    \href{mailto:floryanleblancarm@gmail.com}{\underline{floryanleblancarm@gmail.com}} $|$ 
+    \href{https://linkedin.com/in/f.leblanc}{\underline{linkedin.com/in/f.leblanc}} $|$
+    Toulouse, France
+\end{center}
+
+%-----------FORMATION-----------
+\section{Formation}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {TBS Education (ESC Toulouse)}{Sept. 2025 -- Avril 2028}
+      {L3 -- Programme Grande École}{Toulouse, France}
+      \resumeItemListStart
+        \resumeItem{Séminaire SEMIS (4 jours) : monté un projet entrepreneurial sur une problématique réelle de l'enseignement supérieur. Notre équipe a travaillé à l'amélioration de la santé mentale étudiante : analyse du besoin, idéation, prototypage, pitch devant jury}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Lycée Levavasseur}{Août 2023 -- Mai 2025}
+      {CPGE Lettres et Sciences Sociales (B/L)}{Saint-Denis, La Réunion}
+      \resumeItemListStart
+        \resumeItem{Formation pluridisciplinaire exigeante : maths (probas, stats, algèbre), économie (micro/macro), sociologie, philosophie, histoire, géographie, littérature, langues vivantes. Concours : ENS et BCE}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------PROJETS-----------
+\section{Projets}
+  \resumeSubHeadingListStart
+
+    \resumeProjectHeading
+      {\textbf{Inflexionhub.com} -- \emph{Plateforme d'intelligence géopolitique et financière}}{Février 2026 — Présent}
+      \resumeItemListStart
+        \resumeItem{Projet personnel et Curriculaire construit intégralement via Claude Code (vibe coding) sans formation technique préalable}
+        \resumeItem{Conçu et déployé une plateforme d'intelligence géopolitique et financière agrégeant plus de 150 sources (15 APIs + 150 flux RSS), dont think tanks internationaux (CFR, Chatham House, RAND), banques centrales (BCE, Fed) et presse de référence (FT, Reuters), mise à jour automatiquement 2 fois par jour}
+        \resumeItem {Piloté via IA la mise en place de 7 pipelines autonomes (collecte, curation, traduction, vérification factuelle) produisant quotidiennement briefings stratégiques, analyses de sentiment et de risques du marché}
+        \resumeItem {Confronté à un dépassement du budget API IA au bout de 9 jours. Diagnostiqué les appels redondants et restructuré le pipeline pour réduire les coûts de 82\%}
+
+        \resumeItem {Utilisé l'IA (Claude) pour synthétiser +150 sources et rédiger des analyses thématiques (souveraineté européenne, or/bitcoin, IA et marchés), avec vérification croisée des chiffres et données via Gemini et Perplexity, et positionnement éditorial personnel}
+        \resumeItem{Mis en place un pipeline de vérification automatique : l’IA génère les briefings, puis un second système contrôle chaque chiffre contre 14 sources et signale les contradictions avant publication}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{Projet WINS} -- \emph{Concours d'éloquence bilingue inter-campus, TBS Education}}{Mars 2026}
+      \resumeItemListStart
+        \resumeItem{Contribué à la création d'un concours d'éloquence bilingue (FR/EN) : pilotage communication Instagram, démarchage de 2 jurés et d'un membre du jury, analyse a priori des risques opérationnels  }
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Expérience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Vice-Président -- RDVC}{Déc. 2025 -- Présent}
+      {Les Rendez-Vous Du Changement -- Tribune politique et diplomatique, TBS Education}{Toulouse, France}
+      \resumeItemListStart
+        \resumeItem{Co-organisé l'épreuve d'éloquence du Trophée Des Arts (TDA), première compétition étudiante artistique d'Europe}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Responsable Communication -- EasyJob}{Déc. 2025 -- Présent}
+      {Job Service \'Etudiant, TBS Education}{Toulouse, France}
+      \resumeItemListStart
+        \resumeItem{Restructuré le pôle Com/Event : centralisé la diffusion des offres sur WhatsApp (+400 membres), réduisant la dispersion des canaux de communication et améliorant la réactivité des candidatures}
+        \resumeItem{Représenté EasyJob au Career Fair TBS : tenue du stand, présentation des offres aux étudiants et échanges avec les intervenants professionnels}
+
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------COMPETENCES-----------
+\section{Compétences}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+    \textbf{IA \& Automatisation}{: utilisation avancée de LLMs et d'IA agentiques pour générer du code et automatiser des workflows ; vibe coding (conception d'applications complètes via IA)} \\
+    \textbf{Culture Tech}{: compréhension opérationnelle des architectures web (APIs REST, bases de données, CI/CD) permettant de spécifier, piloter et itérer sur des projets techniques} \\
+     \textbf{Analyse \& Stratégie}{: maîtrise des cadres d'analyse stratégique (SWOT, PESTEL, BCG Matrix) ; veille géopolitique et financière multi-sources ; structuration de business plans} \\
+     \textbf{Langues}{: Fran\c{c}ais (natif), Anglais B2 courant, Espagnol B1}
+    }}
+ \end{itemize}
+
+%-----------CENTRES D'INTERET-----------
+\section{Centres d'intérêt}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Géopolitique \& marchés}{: suivi quotidien de l'actualité géopolitique et financière internationale ; créateur d'Inflexion, plateforme de veille automatisée (172 sources)} \\
+     \textbf{Écriture \& Lecture}{: philosophie, littérature et essais de société} \\
+     \textbf{Engagement citoyen}{: ancien élu au Conseil de la Vie Lycéenne et au Conseil d'Administration du lycée (2021-2022)} \\
+     \textbf{Sport}{: handball (10 ans), tennis (3 ans)}
+    }}
+ \end{itemize}
+
+\end{document}
