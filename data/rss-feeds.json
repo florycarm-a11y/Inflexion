@@ -1,19 +1,19 @@
 {
-  "updated": "2026-03-03T06:47:46.945Z",
+  "updated": "2026-03-03T18:45:05.220Z",
   "feeds": [
     {
       "source": "Le Figaro",
       "url": "https://www.lefigaro.fr/rss/figaro_international.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 5
     },
     {
       "source": "France 24",
       "url": "https://www.france24.com/fr/rss",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 5
     },
     {
       "source": "RFI",
@@ -27,7 +27,7 @@
       "url": "https://www.courrierinternational.com/feed/all/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "Le Monde Diplomatique",
@@ -41,21 +41,21 @@
       "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 5
     },
     {
       "source": "Al Jazeera",
       "url": "https://www.aljazeera.com/xml/rss/all.xml",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 4
     },
     {
       "source": "The Guardian",
       "url": "https://www.theguardian.com/world/rss",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "New York Times",
@@ -76,7 +76,7 @@
       "url": "https://www.politico.eu/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 4
     },
     {
       "source": "Foreign Policy",
@@ -139,7 +139,7 @@
       "url": "https://www.middleeasteye.net/rss",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 3
     },
     {
       "source": "IFRI",
@@ -194,8 +194,8 @@
       "source": "Middle East Institute",
       "url": "https://www.mei.edu/rss.xml",
       "count": 0,
-      "ok": true,
-      "relevant": 0
+      "ok": false,
+      "error": "HTTP 403: https://www.mei.edu/rss.xml"
     },
     {
       "source": "SIPRI",
@@ -216,28 +216,28 @@
       "url": "https://www.lefigaro.fr/rss/figaro_economie.xml",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 2
     },
     {
       "source": "Le Figaro",
       "url": "https://www.lefigaro.fr/rss/figaro_conjoncture.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "Le Figaro Sociétés",
       "url": "https://www.lefigaro.fr/rss/figaro_societes.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 5
     },
     {
       "source": "Le Figaro Flash Éco",
       "url": "https://www.lefigaro.fr/rss/figaro_flash-eco.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 1
     },
     {
       "source": "Les Echos",
@@ -251,7 +251,7 @@
       "url": "https://www.bfmtv.com/rss/economie/",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 1
     },
     {
       "source": "Zonebourse",
@@ -265,7 +265,7 @@
       "url": "https://www.latribune.fr/feed.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 1
     },
     {
       "source": "Capital",
@@ -286,7 +286,7 @@
       "url": "https://finance.yahoo.com/news/rssindex",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 3
     },
     {
       "source": "Seeking Alpha",
@@ -307,7 +307,7 @@
       "url": "https://www.investing.com/rss/news.rss",
       "count": 5,
       "ok": true,
-      "relevant": 1
+      "relevant": 3
     },
     {
       "source": "Wolf Street",
@@ -389,9 +389,9 @@
     {
       "source": "Journal du Coin",
       "url": "https://journalducoin.com/feed/",
-      "count": 0,
-      "ok": false,
-      "error": "The operation was aborted due to timeout"
+      "count": 5,
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "CoinDesk",
@@ -508,9 +508,9 @@
     {
       "source": "Mining.com",
       "url": "https://www.mining.com/feed/",
-      "count": 0,
-      "ok": false,
-      "error": "The operation was aborted due to timeout"
+      "count": 5,
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "MetalMiner",
@@ -594,7 +594,7 @@
       "url": "https://www.numerama.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 1
     },
     {
       "source": "Next INpact",
@@ -615,7 +615,7 @@
       "url": "https://www.theverge.com/rss/index.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 0
     },
     {
       "source": "Ars Technica",
@@ -629,7 +629,7 @@
       "url": "https://www.wired.com/feed/rss",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 2
     },
     {
       "source": "Hacker News",
@@ -662,9 +662,9 @@
     {
       "source": "MarkTechPost",
       "url": "https://www.marktechpost.com/feed/",
-      "count": 0,
+      "count": 5,
       "ok": true,
-      "relevant": 0
+      "relevant": 5
     },
     {
       "source": "The Decoder",
@@ -692,7 +692,7 @@
       "url": "https://www.theregister.com/headlines.atom",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 3
     },
     {
       "source": "TLDR Tech",
@@ -741,7 +741,7 @@
       "url": "https://www.challenges.fr/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 3
     },
     {
       "source": "MoneyVox",
@@ -755,7 +755,7 @@
       "url": "https://www.lemonde.fr/international/rss_full.xml",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 4
     },
     {
       "source": "Le Figaro Finances",
@@ -1102,8 +1102,8 @@
     }
   ],
   "stats": {
-    "success": 108,
-    "failed": 49,
-    "articles": 462
+    "success": 109,
+    "failed": 48,
+    "articles": 472
   }
 }
