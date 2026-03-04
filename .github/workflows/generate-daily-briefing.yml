@@ -75,17 +75,21 @@ jobs:
           fi
 
           # 2. Vérifier que les données sont fraîches (< 60 min)
-          # Fenêtre élargie à 60 min (vs 30 min avant) pour absorber les délais
-          # de démarrage du runner GitHub Actions + npm ci
-          LAST_DATA_CHANGE=$(git log -1 --format="%ct" -- data/)
+          # Seulement pour les exécutions automatiques — les déclenchements manuels
+          # (workflow_dispatch) bypassen ce check pour permettre de forcer la génération
           NOW=$(date +%s)
-          DATA_AGE=$((NOW - LAST_DATA_CHANGE))
-          echo "📊 Dernier commit data/ il y a ${DATA_AGE}s ($((DATA_AGE / 60)) min)"
-          if [ $DATA_AGE -gt 3600 ]; then
-            echo "⏭ Pas de nouvelles données (> 60 min)"
-            SHOULD_RUN=false
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "✅ Exécution manuelle — check de fraîcheur ignoré"
           else
-            echo "✅ Données fraîches détectées"
+            LAST_DATA_CHANGE=$(git log -1 --format="%ct" -- data/)
+            DATA_AGE=$((NOW - LAST_DATA_CHANGE))
+            echo "📊 Dernier commit data/ il y a ${DATA_AGE}s ($((DATA_AGE / 60)) min)"
+            if [ $DATA_AGE -gt 3600 ]; then
+              echo "⏭ Pas de nouvelles données (> 60 min)"
+              SHOULD_RUN=false
+            else
+              echo "✅ Données fraîches détectées"
+            fi
           fi
 
           # 3. Vérifier que le briefing n'a pas déjà été généré récemment (< 10h)
