@@ -50,33 +50,50 @@ jobs:
       - name: "📦 Install dependencies"
         run: npm ci
 
+      - name: "🔄 Fetch latest commits (workflow_run may have stale checkout)"
+        run: git fetch origin main && git reset --hard origin/main
+
       - name: "🔍 Vérifier la fraîcheur des données et l'absence de doublon"
         id: check-data
         run: |
           SHOULD_RUN=true
-
-          # 1. Vérifier que les données sont fraîches (< 30 min)
-          LAST_DATA_CHANGE=$(git log -1 --format="%ct" -- data/)
           NOW=$(date +%s)
-          DATA_AGE=$((NOW - LAST_DATA_CHANGE))
-          if [ $DATA_AGE -gt 1800 ]; then
-            echo "⏭ Pas de nouvelles données (dernier commit data/ il y a ${DATA_AGE}s)"
-            SHOULD_RUN=false
-          else
-            echo "✅ Données fraîches détectées (${DATA_AGE}s)"
-          fi
 
-          # 2. Vérifier que l'article n'a pas déjà été généré récemment (< 10h)
-          if [ -f data/article-du-jour.json ] && git log -1 --format="%ct" -- data/article-du-jour.json > /dev/null 2>&1; then
-            LAST_ARTICLE=$(git log -1 --format="%ct" -- data/article-du-jour.json)
-            ARTICLE_AGE=$((NOW - LAST_ARTICLE))
-            if [ $ARTICLE_AGE -lt 36000 ]; then
-              echo "⏭ Article déjà généré il y a $((ARTICLE_AGE / 3600))h (< 10h) — skip"
+          # 1. Vérifier que les données sont fraîches (< 60 min)
+          # Seulement pour les exécutions automatiques — les déclenchements manuels
+          # (workflow_dispatch) bypassen ce check pour permettre de forcer la génération
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "✅ Exécution manuelle — check de fraîcheur ignoré"
+          else
+            LAST_DATA_CHANGE=$(git log -1 --format="%ct" -- data/)
+            DATA_AGE=$((NOW - LAST_DATA_CHANGE))
+            echo "📊 Dernier commit data/ il y a ${DATA_AGE}s ($((DATA_AGE / 60)) min)"
+            if [ $DATA_AGE -gt 3600 ]; then
+              echo "⏭ Pas de nouvelles données (> 60 min)"
               SHOULD_RUN=false
+            else
+              echo "✅ Données fraîches détectées"
             fi
           fi
 
+          # 2. Vérifier que l'article n'a pas déjà été généré récemment (< 10h)
+          # Seulement pour les exécutions automatiques — le mode manuel force la régénération
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "✅ Exécution manuelle — check de doublon ignoré"
+          elif [ -f data/article-du-jour.json ] && git log -1 --format="%ct" -- data/article-du-jour.json > /dev/null 2>&1; then
+            LAST_ARTICLE=$(git log -1 --format="%ct" -- data/article-du-jour.json)
+            ARTICLE_AGE=$((NOW - LAST_ARTICLE))
+            echo "📊 Dernier article il y a $((ARTICLE_AGE / 3600))h"
+            if [ $ARTICLE_AGE -lt 36000 ]; then
+              echo "⏭ Article déjà généré (< 10h) — skip"
+              SHOULD_RUN=false
+            fi
+          else
+            echo "📊 Aucun article précédent trouvé"
+          fi
+
           echo "data_changed=${SHOULD_RUN}" >> $GITHUB_OUTPUT
+          echo "📊 SHOULD_RUN=${SHOULD_RUN}"
 
       - name: "🌐 Traduction des articles EN→FR"
         if: steps.check-data.outputs.data_changed == 'true'
