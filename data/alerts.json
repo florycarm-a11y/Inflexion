@@ -1,91 +1,91 @@
 {
-  "updated": "2026-03-02T18:45:50.359Z",
+  "updated": "2026-03-04T06:46:05.871Z",
   "alertes": [
     {
-      "id": "alert-2026-03-02-001",
-      "titre": "Pétrole (USO) : +5,70% à 86,62 $, choc d'approvisionnement Iran",
-      "texte": "Fermeture du champ gazier Leviathan par Israël et arrêt production LNG Qatar suite escalade Iran créent déficit d'approvisionnement. Taux fret spot LNG en hausse ; risques haussiers persistants sur gaz naturel en cas prolongation conflit.",
+      "id": "alert-2026-03-04-001",
+      "titre": "Pétrole (USO) : +3,45% à 90,20 $, escalade Moyen-Orient",
+      "texte": "Pétrole brut surge à 80 $ sur risques d'approvisionnement liés à l'escalade Iran-Israël. Taux fret pétroliers explosent au détroit d'Ormuz avec trafic réduit. JP Morgan avertit d'une perte catastrophique d'approvisionnement.",
       "categorie": "matieres_premieres",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-03-02T18:45:50.359Z",
+      "severite": "urgent",
+      "impact": "haussier",
+      "horodatage": "2026-03-04T06:46:05.871Z",
       "donnees": {
-        "symbole": "SOL",
-        "nom": "Solana",
-        "prix": 87.55,
-        "variation_7d": 12.51
+        "symbole": "GLD",
+        "nom": "Or (ETF)",
+        "prix": 468.14,
+        "variation": -4.46
       }
     },
     {
-      "id": "alert-2026-03-02-002",
-      "titre": "Bitcoin : 70 000 $ (+7% trading matinal), résilience malgré tensions",
-      "texte": "BTC rebondit à 70 000 $ malgré escalade géopolitique Iran-Israël. Mineurs rapportent hashrate stable ; adoption institutionnelle soutient (CME >75% marché, ETF spot inversent sorties). Fear & Greed Index à 10 (Extreme Fear) indique potentiel rebond technique.",
-      "categorie": "crypto",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-03-02T18:45:50.359Z",
+      "id": "alert-2026-03-04-002",
+      "titre": "Or (GLD) : -4,46% à 468,14 $, refuge paradoxal",
+      "texte": "L'or recule de 4,46% malgré l'indice Fear & Greed à 10 (peur extrême), suggérant liquidations forcées et appels de marge. Mouvement atypique en contexte de crise géopolitique majeure.",
+      "categorie": "marches",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-03-04T06:46:05.871Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
-        "prix": 86.62,
-        "variation": 5.7
+        "prix": 90.2,
+        "variation": 3.45
       }
     },
     {
-      "id": "alert-2026-03-02-003",
-      "titre": "Solana (SOL) : +12,51% sur 7 jours, momentum altcoin",
-      "texte": "SOL surperforme Bitcoin avec gain hebdomadaire de 12,51%. Mouvement porté par adoption retail et volatilité géopolitique ; HyperLiquid signale activité bear market retail élevée.",
-      "categorie": "crypto",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-03-02T18:45:50.359Z",
+      "id": "alert-2026-03-04-003",
+      "titre": "Bourses asiatiques : Séoul en double-digit négatif, crise Moyen-Orient",
+      "texte": "Bourse de Séoul s'effondre en double-digit sur tensions Iran-Israël. Indices asiatiques à plus bas multi-annuels. Crise géopolitique déclenche réévaluation majeure des risques systémiques.",
+      "categorie": "marches",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-04T06:46:05.871Z",
       "donnees": {
-        "symbole": "NVDA",
-        "nom": "Nvidia",
-        "prix": 182.27,
-        "variation": 2.87
+        "symbole": "TSLA",
+        "nom": "Tesla",
+        "prix": 392.43,
+        "variation": -2.7
       }
     },
     {
-      "id": "alert-2026-03-02-004",
-      "titre": "Nvidia (NVDA) : +2,87% à 182,27 $, défense et IA soutiennent",
-      "texte": "NVDA gagne 2,87% dans contexte d'escalade géopolitique ; investissement 4 Md$ en photonique pour IA renforce positionnement. Secteur défense/tech bénéficie tensions régionales.",
-      "categorie": "ai_tech",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-03-02T18:45:50.359Z",
+      "id": "alert-2026-03-04-004",
+      "titre": "Fear & Greed Index : 10/100 (Peur Extrême), plus bas depuis crise",
+      "texte": "Indice Fear & Greed atteint 10, signalant peur extrême. Reflète escalade géopolitique Moyen-Orient, risques d'approvisionnement énergétique et volatilité multi-actifs.",
+      "categorie": "macro",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-04T06:46:05.871Z",
       "donnees": {
         "score": 10,
         "label": "Extreme Fear",
-        "variation_7j": 5
+        "variation_7j": -1
       }
     },
     {
-      "id": "alert-2026-03-02-005",
-      "titre": "Stocks voyage : effondrement, pire disruption depuis pandémie",
-      "texte": "Secteur aérien/tourisme s'effondre suite fermetures aériennes Moyen-Orient et craintes passagers. Disruption comparée à choc COVID-19 ; impacts durée conflit Iran incertains.",
-      "categorie": "marches",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-03-02T18:45:50.359Z",
+      "id": "alert-2026-03-04-005",
+      "titre": "Bitcoin (BTC) : rebond vers 70 000 $, afflux ETF 1,45 Md$ en 5 jours",
+      "texte": "Bitcoin rebond vers 70 000 $ avec afflux de 1,45 Md$ via ETFs en 5 jours, contrastant avec baisse Ethereum/Solana. Crypto positionnée comme couverture systémique par certains analystes.",
+      "categorie": "crypto",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-03-04T06:46:05.871Z",
       "donnees": {}
     },
     {
-      "id": "alert-2026-03-02-006",
-      "titre": "Bourses européennes : clôture dans le rouge, escalade géopolitique",
-      "texte": "Indices européens terminent négatifs suite annonces Macron (dissuasion nucléaire), opérations Trump prolongées Iran, et fermetures énergétiques. Volatilité persiste ; secteur défense (Palantir, Lockheed) contrebalance partiellement.",
+      "id": "alert-2026-03-04-006",
+      "titre": "Tesla (TSLA) : -2,70% à 392,43 $, exposition Asie-Chine",
+      "texte": "Tesla recule de 2,70% dans contexte de volatilité asiatique et contraction manufacturière chinoise en février. Exposition géopolitique et demande EV affectées.",
       "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-02T18:45:50.359Z",
+      "horodatage": "2026-03-04T06:46:05.871Z",
       "donnees": {}
     }
   ],
   "stats": {
     "total": 6,
-    "urgent": 0,
-    "attention": 3,
-    "info": 3
+    "urgent": 3,
+    "attention": 2,
+    "info": 1
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"

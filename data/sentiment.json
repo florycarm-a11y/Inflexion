@@ -1,65 +1,65 @@
 {
-  "updated": "2026-03-02T18:45:50.359Z",
-  "date": "2026-03-02",
+  "updated": "2026-03-04T06:46:05.871Z",
+  "date": "2026-03-04",
   "global": {
-    "score": -0.44,
-    "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.44), dominé par la rubrique geopolitique (baissier)."
+    "score": -0.15,
+    "tendance": "mixte",
+    "resume": "Le sentiment global est mixte (-0.15), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
       "score": -0.85,
       "confidence": 0.95,
       "tendance": "baissier",
-      "resume": "Escalade majeure du conflit Iran-Israël-États-Unis avec annonces de renforcement nucléaire français et opérations militaires étendues. Risques géopolitiques aigus affectant stabilité régionale et corridors commerciaux.",
+      "resume": "Escalade majeure au Moyen-Orient avec décès du leader iranien Khamenei, attaques iraniennes confirmées contre Israël et cibles US, contrôle iranien du détroit d'Ormuz annoncé, et intensification des frappes israéliennes au Liban. Risque systémique élevé sur les flux énergétiques mondiaux.",
       "signaux_cles": [
-        "Macron annonce dissuasion nucléaire avancée et extension aux alliés européens",
-        "Trump envisage opérations militaires prolongées contre l'Iran (2 mars 2026)",
-        "Israël frappe le Liban après tirs du Hezbollah ; fermetures de champs gaziers (Leviathan)"
+        "Iran confirme vague d'attaques contre cibles israéliennes et US (4 mars 2026)",
+        "Décès du leader Khamenei avec cérémonie à Téhéran",
+        "Iran revendique contrôle total du détroit d'Ormuz, bilan Liban: 11+ morts"
       ]
     },
     "marches": {
-      "score": -0.42,
-      "confidence": 0.82,
+      "score": -0.72,
+      "confidence": 0.92,
       "tendance": "baissier",
-      "resume": "Bourses européennes terminent dans le rouge suite au conflit Iran. Secteur défense et énergie volatiles. Stocks de voyage s'effondrent ; pressions tarifaires persistantes de l'administration Trump.",
+      "resume": "Bourses asiatiques en effondrement avec Séoul en double-digit négatif, tensions géopolitiques alimentant craintes inflationnistes et chocs pétroliers. Indices régionaux à plus bas multi-annuels.",
       "signaux_cles": [
-        "Bourses européennes en baisse ; secteur défense (Palantir, Lockheed) en hausse",
-        "Stocks de voyage en chute libre (pire disruption depuis pandémie)",
-        "Rejet judiciaire de la demande Trump de retard sur remboursements douaniers"
+        "Bourse de Séoul s'effondre en double-digit sur tensions Iran (4 mars)",
+        "Bourses d'Asie dévissent, indices à plus bas multi-annuels",
+        "Banques centrales testées par choc pétrolier et inflation"
       ]
     },
     "crypto": {
-      "score": 0.28,
+      "score": -0.15,
       "confidence": 0.65,
       "tendance": "mixte",
-      "resume": "Bitcoin rebondit à 70 000 $ malgré tensions géopolitiques ; mineurs non affectés. Volatilité élevée avec craintes géopolitiques compensées par adoption institutionnelle (CME, ETFs). Débats internes sur gouvernance (Aave).",
+      "resume": "Bitcoin résiste avec rebond vers 70 000 $ et afflux de 1,45 Md$ en 5 jours via ETFs, mais Ethereum et Solana reculent sur volatilité géopolitique. Débat sur rôle de crypto comme couverture systémique.",
       "signaux_cles": [
-        "Bitcoin à 70 000 $ (+7% en trading matinal) ; hashrate stable malgré conflit",
-        "CME capture >75% du marché crypto avec nouveaux contrats (Cardano, Chainlink, Stellar)",
-        "BTC/ETH spot ETFs inversent tendance de sorties hebdomadaires"
+        "Bitcoin rebond vers 70 000 $, ETFs Bitcoin +1,45 Md$ en 5 jours",
+        "Ethereum et Solana en baisse sur crise Moyen-Orient",
+        "Étude: modèles IA préfèrent Bitcoin au fiat et stablecoins"
       ]
     },
     "matieres_premieres": {
-      "score": -0.72,
+      "score": 0.78,
       "confidence": 0.93,
-      "tendance": "baissier",
-      "resume": "Choc d'approvisionnement énergétique majeur : fermeture champ gazier Leviathan, arrêt production LNG Qatar, perturbations navires-citernes. Pétrole et gaz naturel volatiles ; or monte à plus haut mensuel.",
+      "tendance": "haussier",
+      "resume": "Pétrole brut surge à 80 $ sur risques d'approvisionnement Moyen-Orient, taux fret pétroliers explosent au détroit d'Ormuz, Canada positionné comme fournisseur alternatif fiable. Capacités de secours OPEP exposées comme limitées.",
       "signaux_cles": [
-        "Chevron déclare Force Majeure ; champ Leviathan fermé par Israël",
-        "Arrêt production LNG Qatar ; taux fret spot LNG en hausse sur craintes détroit Hormuz",
-        "Or à plus haut mensuel ; gaz naturel avril recule techniquement mais risques haussiers"
+        "Pétrole brut atteint 80 $ sur risques d'approvisionnement",
+        "Taux fret pétroliers explosent, trafic Ormuz réduit",
+        "JP Morgan avertit perte catastrophique d'approvisionnement pétrolier"
       ]
     },
     "ai_tech": {
-      "score": -0.15,
-      "confidence": 0.58,
+      "score": 0.35,
+      "confidence": 0.62,
       "tendance": "neutre",
-      "resume": "Cyberattaques géopolitiques sur infrastructures civiles et militaires iraniennes. Débat sur usage militaire de l'IA (Anthropic-Trump). Fusion HBO Max/Paramount+ confirmée ; adoption Apple Intelligence faible.",
+      "resume": "Avancées technologiques continues (Physical Intelligence, Nvidia photonics, modèles IA) mais contrebalancées par incidents de sécurité (VMware RCE exploité, vol clé API Gemini 82K$) et consolidation VC (3 sociétés dominent 189 Md$).",
       "signaux_cles": [
-        "Cyberattaques sur médias, apps prière, systèmes militaires iraniens (front numérique conflit)",
-        "Polémique Trump-Anthropic sur fourniture militaire d'IA ; pression DOD/Congress",
-        "Nvidia investit 4 Md$ en photonique ; Apple Intelligence sous-utilisée en entrepôts"
+        "Physical Intelligence dévoile MEM pour robots avec contexte 15 minutes",
+        "CISA signale faille VMware Aria RCE exploitée en attaques",
+        "3 sociétés dominent 189 Md$ investissements VC février 2026"
       ]
     }
   },
@@ -207,6 +207,15 @@
       "crypto": 0.28,
       "matieres_premieres": -0.72,
       "ai_tech": -0.15
+    },
+    {
+      "date": "2026-03-04",
+      "global": -0.15,
+      "geopolitique": -0.85,
+      "marches": -0.72,
+      "crypto": -0.15,
+      "matieres_premieres": 0.78,
+      "ai_tech": 0.35
     }
   ],
   "model": "claude-haiku-4-5-20251001",
