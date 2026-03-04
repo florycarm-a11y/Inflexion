@@ -93,7 +93,10 @@ jobs:
           fi
 
           # 3. Vérifier que le briefing n'a pas déjà été généré récemment (< 10h)
-          if [ -f data/daily-briefing.json ] && git log -1 --format="%ct" -- data/daily-briefing.json > /dev/null 2>&1; then
+          # Seulement pour les exécutions automatiques — le mode manuel force la régénération
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "✅ Exécution manuelle — check de doublon ignoré"
+          elif [ -f data/daily-briefing.json ] && git log -1 --format="%ct" -- data/daily-briefing.json > /dev/null 2>&1; then
             LAST_BRIEFING=$(git log -1 --format="%ct" -- data/daily-briefing.json)
             BRIEFING_AGE=$((NOW - LAST_BRIEFING))
             echo "📊 Dernier briefing il y a $((BRIEFING_AGE / 3600))h"
