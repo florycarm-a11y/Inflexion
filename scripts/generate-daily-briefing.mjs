@@ -178,7 +178,7 @@ function sanitizeArticles(articles) {
 // Cycle hebdomadaire : Sonnet le lundi (briefing complet), Haiku les autres jours (delta)
 const FULL_MODEL = 'claude-sonnet-4-5-20250929';
 const DELTA_MODEL = 'claude-haiku-4-5-20251001';
-const FULL_MAX_TOKENS = 5000;
+const FULL_MAX_TOKENS = 7000;
 const DELTA_MAX_TOKENS = 4500;
 
 /**
@@ -382,7 +382,7 @@ function formatNewsContext(articles) {
         for (const a of arts) {
             const source = a.source || 'Source inconnue';
             const desc = a.description
-                ? ` : ${a.description.slice(0, 200)}`
+                ? ` : ${a.description.slice(0, 150)}`
                 : '';
             lines.push(`- **${a.title}** (${source})${desc}`);
         }
