@@ -29,6 +29,7 @@ import { callClaudeJSON, getUsageStats } from './lib/claude-api.mjs';
 import { DAILY_BRIEFING_SYSTEM_PROMPT, DAILY_BRIEFING_DELTA_SYSTEM_PROMPT } from './lib/prompts.mjs';
 import { evaluateBriefing } from './lib/claim-verifier.mjs';
 import { detectContradictions, formatContradictionsForPrompt } from './lib/contradiction-detector.mjs';
+import { generateBibliographyReport } from './lib/bibliography-verifier.mjs';
 
 // RAG imports chargés dynamiquement dans main() pour ne pas bloquer les tests unitaires
 // (les tests n'importent que les fonctions pures et n'ont pas besoin de @xenova/transformers)
@@ -384,7 +385,8 @@ function formatNewsContext(articles) {
             const desc = a.description
                 ? ` : ${a.description.slice(0, 150)}`
                 : '';
-            lines.push(`- **${a.title}** (${source})${desc}`);
+            const urlRef = a.url ? ` [source](${a.url})` : '';
+            lines.push(`- **${a.title}** (${source})${desc}${urlRef}`);
         }
         sections.push(lines.join('\n'));
     }
@@ -987,6 +989,23 @@ ${consignes}`;
             }
         }
 
+        // ── 7b. Vérification bibliographique ─────────────────
+        console.log('\n📚 Vérification bibliographique...');
+        const bibReport = generateBibliographyReport(briefing, topArticles, sources);
+
+        console.log(`  📖 Bibliographie: ${bibReport.bibliography.length} articles avec URL`);
+        console.log(`  🔗 Sources API: ${bibReport.apiSources.length} APIs traçables`);
+        console.log(`  📋 Références inline: ${bibReport.totalRefs} détectées, ${bibReport.matched} liées, ${bibReport.unmatched} non traçables`);
+        console.log(`  📏 Score traçabilité: ${(bibReport.score * 100).toFixed(0)}%`);
+        console.log(`  ${bibReport.pass ? '✅' : '⚠️'} ${bibReport.pass ? 'PASS' : 'ATTENTION — score sous le seuil de 50%'}`);
+
+        if (bibReport.unmatched > 0) {
+            console.log('  📋 Références non traçables :');
+            for (const d of bibReport.details.filter(d => !d.matched)) {
+                console.log(`    ❌ "${d.name}" (${d.type})`);
+            }
+        }
+
         // ── 8. Enrichir et sauvegarder ────────────────────────
         const output = {
             date: today(),
@@ -1006,6 +1025,17 @@ ${consignes}`;
                 pass: evaluation.pass,
             },
             _contradictions: contradictions.length > 0 ? contradictions : undefined,
+            // Rapport bibliographique (traçabilité des sources)
+            _bibliography: {
+                score: bibReport.score,
+                totalRefs: bibReport.totalRefs,
+                matched: bibReport.matched,
+                unmatched: bibReport.unmatched,
+                pass: bibReport.pass,
+                bibliography: bibReport.bibliography,
+                apiSources: bibReport.apiSources,
+                methodology: bibReport.methodology,
+            },
         };
 
         const outputPath = join(DATA_DIR, 'daily-briefing.json');
@@ -1020,6 +1050,7 @@ ${consignes}`;
         console.log(`  🎯 Sentiment : ${briefing.sentiment_global}`);
         console.log(`  🔍 Vérification : ${(evaluation.score * 100).toFixed(0)}% (${evaluation.verified}/${evaluation.totalClaims} claims)`);
         console.log(`  ⚖️  Contradictions : ${contradictions.length > 0 ? contradictions.length + ' divergence(s)' : 'aucune'}`);
+        console.log(`  📚 Bibliographie : ${bibReport.bibliography.length} articles, ${bibReport.apiSources.length} APIs — traçabilité ${(bibReport.score * 100).toFixed(0)}%`);
         console.log(`  📡 Signaux : ${briefing.signaux.length}`);
         for (const s of briefing.signaux) {
             console.log(`    → ${s.titre} (${s.severite}) — ${s.interconnexions.length} interconnexions`);

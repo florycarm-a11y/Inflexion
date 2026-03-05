@@ -4460,6 +4460,111 @@ body.page-markets .market-status {
     text-align: right;
 }
 
+/* ── Sources & Méthodologie (bibliographie) ── */
+.briefing-bibliography {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bib-score-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.82rem;
+    flex-wrap: wrap;
+}
+
+.bib-score-label {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.bib-score-value {
+    font-weight: 700;
+}
+
+.bib-score-detail {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.75rem;
+}
+
+.bib-subsection-title {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0.8rem 0 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.bib-api-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.bib-api-tag {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-radius: 4px;
+    font-size: 0.72rem;
+    color: #10b981;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.bib-api-tag:hover {
+    background: rgba(16, 185, 129, 0.25);
+}
+
+.bib-articles-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bib-article-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bib-article-item:last-child {
+    border-bottom: none;
+}
+
+.bib-article-link {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    line-height: 1.3;
+}
+
+.bib-article-link:hover {
+    color: #10b981;
+    text-decoration: underline;
+}
+
+.bib-article-meta {
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.bib-methodology-text {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+    line-height: 1.4;
+    margin: 0;
+}
+
 /* ── Responsive briefing (mobile) ── */
 @media (max-width: 768px) {
     .signal-header {

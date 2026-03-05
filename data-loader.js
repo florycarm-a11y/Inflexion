@@ -914,6 +914,74 @@ const DataLoader = (function () {
             '</div>';
         }
 
+        // ── Sources & Méthodologie (bibliographie) ──
+        var sourcesMethodoHTML = '';
+        var bib = briefing._bibliography;
+        if (bib) {
+            var bibScoreColor = bib.score >= 0.8 ? '#16a34a' : bib.score >= 0.5 ? '#eab308' : '#dc2626';
+            var bibScoreLabel = bib.score >= 0.8 ? 'Excellent' : bib.score >= 0.5 ? 'Acceptable' : 'Insuffisant';
+
+            // API sources list
+            var apiSourcesList = '';
+            if (bib.apiSources && bib.apiSources.length > 0) {
+                apiSourcesList = '<div class="bib-api-sources">' +
+                    '<h5 class="bib-subsection-title">Sources de donn\u00e9es en temps r\u00e9el (' + bib.apiSources.length + ' APIs)</h5>' +
+                    '<div class="bib-api-grid">' +
+                    bib.apiSources.map(function(api) {
+                        return '<a href="' + (api.url || '#') + '" target="_blank" rel="noopener" class="bib-api-tag">' +
+                            api.name + '</a>';
+                    }).join('') +
+                    '</div>' +
+                '</div>';
+            }
+
+            // Article bibliography (top 8 with URLs)
+            var articleBibList = '';
+            if (bib.bibliography && bib.bibliography.length > 0) {
+                var bibItems = bib.bibliography.slice(0, 8).map(function(b) {
+                    var dateStr = b.date ? new Date(b.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' }) : '';
+                    return '<li class="bib-article-item">' +
+                        '<a href="' + (b.url || '#') + '" target="_blank" rel="noopener" class="bib-article-link">' +
+                            b.titre.slice(0, 80) + (b.titre.length > 80 ? '...' : '') +
+                        '</a>' +
+                        '<span class="bib-article-meta">' + b.source + (dateStr ? ' \u2014 ' + dateStr : '') + '</span>' +
+                    '</li>';
+                }).join('');
+                articleBibList = '<div class="bib-articles">' +
+                    '<h5 class="bib-subsection-title">Articles de r\u00e9f\u00e9rence (' + bib.bibliography.length + ' sources)</h5>' +
+                    '<ul class="bib-articles-list">' + bibItems + '</ul>' +
+                '</div>';
+            }
+
+            // Methodology
+            var methodoText = '';
+            if (bib.methodology) {
+                methodoText = '<div class="bib-methodology">' +
+                    '<h5 class="bib-subsection-title">M\u00e9thodologie</h5>' +
+                    '<p class="bib-methodology-text">' + bib.methodology.description +
+                        ' \u2014 ' + bib.methodology.totalArticlesUsed + ' articles et ' +
+                        bib.methodology.totalAPISources + ' sources API analys\u00e9s.' +
+                    '</p>' +
+                '</div>';
+            }
+
+            sourcesMethodoHTML = '<div class="briefing-bibliography">' +
+                '<h3 class="briefing-section-title">Sources & M\u00e9thodologie</h3>' +
+                '<div class="bib-score-bar">' +
+                    '<span class="bib-score-label">Tra\u00e7abilit\u00e9 : </span>' +
+                    '<span class="bib-score-value" style="color:' + bibScoreColor + '">' +
+                        Math.round(bib.score * 100) + '% (' + bibScoreLabel + ')' +
+                    '</span>' +
+                    '<span class="bib-score-detail">' +
+                        bib.matched + '/' + bib.totalRefs + ' r\u00e9f\u00e9rences v\u00e9rifi\u00e9es' +
+                    '</span>' +
+                '</div>' +
+                apiSourcesList +
+                articleBibList +
+                methodoText +
+            '</div>';
+        }
+
         // ── Assemblage final ──
         container.innerHTML = '' +
             '<div class="article-du-jour-header">' +
@@ -931,7 +999,8 @@ const DataLoader = (function () {
             signauxHTML +
             riskHTML +
             positionnementHTML +
-            agendaHTML;
+            agendaHTML +
+            sourcesMethodoHTML;
     }
 
     /**
