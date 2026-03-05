@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ETF & Fonds — Inflexion</title>
-    <meta name="description" content="ETF et fonds : flux, performances, analyses. SMH, GLD, SPY, BOTZ et les tendances d'allocation en 2026.">
-    <meta name="keywords" content="ETF, fonds, SMH, GLD, SPY, BOTZ, semi-conducteurs, or, allocation, investissement">
-    <meta property="og:title" content="ETF & Fonds — Inflexion">
-    <meta property="og:description" content="ETF et fonds : flux, performances et tendances d'allocation en 2026.">
+    <title>IA, Tech &amp; Cybersécurité — Inflexion</title>
+    <meta name="description" content="Intelligence artificielle, technologies de rupture, cybersécurité et régulation numérique : veille stratégique et analyses d'impact sur les marchés.">
+    <meta name="keywords" content="intelligence artificielle, IA, tech, cybersécurité, semiconducteurs, GAFAM, régulation numérique, AI Act, fintech">
+    <meta property="og:title" content="IA, Tech & Cybersécurité — Inflexion">
+    <meta property="og:description" content="Intelligence artificielle, technologies de rupture, cybersécurité et régulation numérique.">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Inflexion">
     <meta property="og:locale" content="fr_FR">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="ETF & Fonds — Inflexion">
-    <meta name="twitter:description" content="ETF : flux, performances et tendances d'allocation.">
-    <meta property="og:url" content="https://florycarm-a11y.github.io/Inflexion/etf.html">
+    <meta name="twitter:title" content="IA, Tech & Cybersécurité — Inflexion">
+    <meta name="twitter:description" content="Veille stratégique IA, tech et cybersécurité et leur impact sur les marchés.">
+    <meta property="og:url" content="https://florycarm-a11y.github.io/Inflexion/ai-tech.html">
     <meta property="og:image" content="https://florycarm-a11y.github.io/Inflexion/og-image.png">
     <meta name="twitter:image" content="https://florycarm-a11y.github.io/Inflexion/og-image.png">
-    <link rel="canonical" href="https://florycarm-a11y.github.io/Inflexion/etf.html">
+    <link rel="canonical" href="https://florycarm-a11y.github.io/Inflexion/ai-tech.html">
     <link rel="icon" href="favicon.ico" sizes="32x32">
     <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
@@ -28,8 +28,8 @@
         {
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            "name": "ETF & Fonds — Inflexion",
-            "description": "ETF et fonds : flux, performances et tendances d'allocation en 2026.",
+            "name": "IA, Tech & Cybersécurité — Inflexion",
+            "description": "Veille stratégique IA, tech et cybersécurité et leur impact sur les marchés.",
             "publisher": {"@type": "Organization", "name": "Inflexion"},
             "inLanguage": "fr"
         },
@@ -38,7 +38,7 @@
             "@type": "BreadcrumbList",
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://florycarm-a11y.github.io/Inflexion/"},
-                {"@type": "ListItem", "position": 2, "name": "ETF & Fonds", "item": "https://florycarm-a11y.github.io/Inflexion/etf.html"}
+                {"@type": "ListItem", "position": 2, "name": "IA, Tech & Cybersécurité", "item": "https://florycarm-a11y.github.io/Inflexion/ai-tech.html"}
             ]
         }
     ]
@@ -94,7 +94,8 @@
                 <a href="markets.html" class="nav-overlay-link nav-indent">Marchés</a>
                 <a href="crypto.html" class="nav-overlay-link nav-indent">Crypto</a>
                 <a href="commodities.html" class="nav-overlay-link nav-indent">Matières premières</a>
-                <a href="etf.html" class="nav-overlay-link nav-indent" aria-current="page">ETF</a>
+                <a href="ai-tech.html" class="nav-overlay-link nav-indent" aria-current="page">IA & Tech</a>
+                <a href="etf.html" class="nav-overlay-link nav-indent">ETF</a>
                 <a href="analysis.html" class="nav-overlay-link nav-indent">Analyses</a>
                 <span class="nav-overlay-group-label">Outils</span>
                 <a href="premium.html" class="nav-overlay-link">Services</a>
@@ -107,30 +108,58 @@
 
     <main class="main-content" id="main-content">
         <div class="container">
-            <div class="page-header" data-category="etf">
-                <h1 class="page-title">ETF & Fonds</h1>
-                <p class="page-subtitle">Fonds indiciels, flux de capitaux et stratégies d'investissement</p>
+            <div class="page-header" data-category="ai_tech">
+                <h1 class="page-title">IA, Tech & Cybersécurité</h1>
+                <p class="page-subtitle">Intelligence artificielle, technologies de rupture, cybersécurité et régulation numérique</p>
             </div>
 
             <div id="category-trend"></div>
 
-            <!-- ETF Table -->
-            <div class="etf-table" id="etf-table"></div>
+            <div class="section-filters" id="filters">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="ai">Intelligence artificielle</button>
+                <button class="filter-btn" data-filter="cyber">Cybersécurité</button>
+                <button class="filter-btn" data-filter="regulation">Régulation</button>
+            </div>
 
             <div class="two-col">
                 <div class="col-main">
                     <div class="news-grid" id="page-news" aria-live="polite">
                         <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des articles...</span></div>
                     </div>
-                    <noscript>
-                        <p>Activez JavaScript pour afficher les actualités ETF. Consultez nos <a href="analysis.html">analyses approfondies</a>.</p>
-                    </noscript>
                 </div>
                 <aside class="col-side">
                     <div class="sidebar-block sidebar-card">
                         <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Marchés</h3>
                         <div class="market-table" id="market-table" aria-live="polite" role="region" aria-label="Cours des marchés en temps réel"></div>
                         <a href="markets.html" class="sidebar-more">Voir tous les marchés</a>
+                    </div>
+
+                    <!-- Sentiment IA -->
+                    <div class="sidebar-block sidebar-card" id="sentiment-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg> Sentiment IA</h3>
+                        <div id="sentiment-widget" class="sentiment-widget">
+                            <p class="sentiment-placeholder">Chargement de l'analyse de sentiment...</p>
+                        </div>
+                        <span class="sidebar-source">Source : Claude IA</span>
+                    </div>
+
+                    <!-- Alertes Marché IA -->
+                    <div class="sidebar-block sidebar-card" id="alerts-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Alertes Marché</h3>
+                        <div id="alerts-widget" class="alerts-widget">
+                            <p class="alerts-placeholder">Chargement des alertes...</p>
+                        </div>
+                        <span class="sidebar-source">Source : Claude IA</span>
+                    </div>
+
+                    <!-- Politique EU & Tech -->
+                    <div class="sidebar-block sidebar-card" id="eu-policy-section">
+                        <h3 class="sidebar-title"><svg class="sidebar-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg> Politique EU & Tech</h3>
+                        <div id="eu-policy-widget" class="eu-policy-widget">
+                            <p class="eu-policy-placeholder">Chargement...</p>
+                        </div>
+                        <span class="sidebar-source">Sources : Bruegel, CEPS, ECFR, CNIL, Euractiv</span>
                     </div>
                 </aside>
             </div>
@@ -173,7 +202,7 @@
                         <li><a href="markets.html">Marchés</a></li>
                         <li><a href="crypto.html">Crypto</a></li>
                         <li><a href="commodities.html">Matières premières</a></li>
-                        <li><a href="ai-tech.html">IA &amp; Tech</a></li>
+                        <li><a href="ai-tech.html">IA & Tech</a></li>
                         <li><a href="analysis.html">Analyses</a></li>
                     </ul>
                 </div>
@@ -211,6 +240,119 @@
 
     <script src="app.js"></script>
     <script src="data-loader.js"></script>
-    <script>if (typeof initCategoryPage === 'function') initCategoryPage('etf');</script>
+    <script>if (typeof initCategoryPage === 'function') initCategoryPage('ai_tech');</script>
+    <script>
+    // Filter buttons (IA / Cybersécurité / Régulation)
+    (function() {
+        'use strict';
+
+        var FILTER_KEYWORDS = {
+            ai: [
+                'intelligence artificielle', 'ia', 'ai', 'machine learning', 'deep learning',
+                'gpt', 'llm', 'chatgpt', 'claude', 'gemini', 'mistral', 'openai', 'anthropic',
+                'neural', 'modele de langage', 'modèle de langage', 'transformer',
+                'nvidia', 'gpu', 'semiconducteur', 'semi-conducteur', 'puce', 'chip', 'tsmc',
+                'cloud', 'datacenter', 'data center', 'inference', 'inférence',
+                'robotique', 'automatisation', 'computer vision', 'nlp',
+                'apple', 'google', 'microsoft', 'meta', 'amazon', 'gafam', 'big tech',
+                'startup', 'fintech', 'saas'
+            ],
+            cyber: [
+                'cybersecurite', 'cybersécurité', 'cybersecurity', 'hacker', 'ransomware',
+                'malware', 'phishing', 'zero-day', 'vulnerability', 'vulnérabilité',
+                'fuite de données', 'data breach', 'piratage', 'cyberattaque', 'cyberattack',
+                'ddos', 'botnet', 'chiffrement', 'encryption', 'firewall', 'pare-feu',
+                'soc', 'ciso', 'pentest', 'bug bounty', 'sécurité informatique',
+                'backdoor', 'espionnage', 'spyware', 'cyber defense', 'cyberdéfense'
+            ],
+            regulation: [
+                'regulation', 'régulation', 'dma', 'dsa', 'ai act', 'rgpd', 'gdpr',
+                'digital fairness', 'dark pattern', 'antitrust', 'concurrence',
+                'commission européenne', 'european commission', 'cnil', 'amende', 'fine',
+                'données personnelles', 'personal data', 'vie privée', 'privacy',
+                'souveraineté numérique', 'digital sovereignty', 'open source',
+                'interopérabilité', 'interoperability', 'abus de position dominante',
+                'ethique', 'éthique', 'ethics', 'biais', 'bias', 'transparence',
+                'noyb', 'eff', 'algorithmwatch', 'modération', 'content moderation'
+            ]
+        };
+
+        function classifyArticle(article) {
+            var text = ((article.textContent || article.innerText) || '').toLowerCase();
+            var titleEl = article.querySelector('.story-title, h3');
+            if (titleEl) text = (titleEl.textContent || '').toLowerCase() + ' ' + text;
+
+            var scores = { ai: 0, cyber: 0, regulation: 0 };
+            Object.keys(FILTER_KEYWORDS).forEach(function(cat) {
+                FILTER_KEYWORDS[cat].forEach(function(kw) {
+                    if (kw.length <= 3) {
+                        if (new RegExp('\\b' + kw + '\\b', 'i').test(text)) scores[cat]++;
+                    } else {
+                        if (text.indexOf(kw.toLowerCase()) !== -1) scores[cat]++;
+                    }
+                });
+            });
+
+            var best = 'ai';
+            var bestScore = 0;
+            Object.keys(scores).forEach(function(cat) {
+                if (scores[cat] > bestScore) { bestScore = scores[cat]; best = cat; }
+            });
+            return best;
+        }
+
+        function initFilterButtons() {
+            var filtersContainer = document.getElementById('filters');
+            if (!filtersContainer) return;
+
+            var buttons = filtersContainer.querySelectorAll('.filter-btn');
+            var pageNews = document.getElementById('page-news');
+            if (!pageNews) return;
+
+            function tagArticles() {
+                var articles = pageNews.querySelectorAll('article, .top-story, .news-card');
+                articles.forEach(function(article) {
+                    if (!article.getAttribute('data-filter')) {
+                        article.setAttribute('data-filter', classifyArticle(article));
+                    }
+                });
+            }
+
+            function filterArticles(category) {
+                var articles = pageNews.querySelectorAll('article, .top-story, .news-card');
+                articles.forEach(function(article) {
+                    if (category === 'all') {
+                        article.style.display = '';
+                    } else {
+                        article.style.display = (article.getAttribute('data-filter') === category) ? '' : 'none';
+                    }
+                });
+            }
+
+            buttons.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    buttons.forEach(function(b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    tagArticles();
+                    filterArticles(btn.getAttribute('data-filter'));
+                });
+            });
+
+            var observer = new MutationObserver(function() {
+                var articles = pageNews.querySelectorAll('article, .top-story, .news-card');
+                if (articles.length > 0) {
+                    tagArticles();
+                    observer.disconnect();
+                }
+            });
+            observer.observe(pageNews, { childList: true, subtree: true });
+
+            var existingArticles = pageNews.querySelectorAll('article, .top-story, .news-card');
+            if (existingArticles.length > 0) tagArticles();
+        }
+
+        initFilterButtons();
+    })();
+    </script>
 </body>
 </html>
