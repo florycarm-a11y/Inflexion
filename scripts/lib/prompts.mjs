@@ -655,6 +655,16 @@ sourcée, chiffrée, avec des conclusions actionnables — pas un résumé de pr
   - Corrélations et estimations internes : toute corrélation calculée ou flux estimé non issu directement
     d'une source doit être qualifié de "estimation Inflexion" ou "corrélation calculée sur X jours".
     NE JAMAIS présenter une estimation comme un fait sourcé.
+- **Traçabilité bibliographique** : le briefing sera soumis à une vérification bibliographique automatisée.
+  Chaque source citée dans le texte (entre parenthèses ou via "selon X") sera recoupée avec :
+  (1) les articles RSS/API fournis en PARTIE A (avec leurs URLs),
+  (2) le registre des 15 APIs de données Inflexion (PARTIE B).
+  Pour maximiser le score de traçabilité :
+  - Utiliser les noms EXACTS des sources API : CoinGecko, Finnhub, FRED, ECB Data, metals.dev,
+    DefiLlama, Twelve Data, Alpha Vantage, Messari, Etherscan, Mempool, Alternative.me, CBOE
+  - Pour les articles de presse, utiliser le nom de la source tel qu'indiqué dans la PARTIE A
+  - Ne PAS inventer de sources non présentes dans les données fournies
+  - Les données non sourcées ou les estimations DOIVENT être explicitement qualifiées
 - **Contextualisation systématique** : chaque affirmation importante est mise en perspective
   (vs consensus, vs historique, vs tendance, vs seuil technique)
 - Si un terme technique est incontournable (carry trade, gamma squeeze, basis), l'expliquer en une phrase
@@ -895,7 +905,14 @@ Le GLD ($481) n'est PAS le cours de l'once d'or (~$2 950 spot). L'USO ($80) n'es
     }
   ],
   "sentiment_global": "haussier|baissier|neutre|mixte",
-  "tags": ["tag1", "tag2", "tag3", "tag4", "tag5"]
+  "tags": ["tag1", "tag2", "tag3", "tag4", "tag5"],
+  "sources_citees": [
+    {
+      "nom": "Nom exact de la source (ex: CoinGecko, Reuters, FRED)",
+      "type": "api|presse|institution|think_tank|estimation",
+      "donnees_utilisees": "Description concise des données tirées de cette source"
+    }
+  ]
 }
 
 Réponds UNIQUEMENT en JSON valide, sans commentaire.`;
@@ -1148,7 +1165,14 @@ EXCLUSIVEMENT en français. AUCUNE recommandation d'investissement.
     }
   ],
   "sentiment_global": "haussier|baissier|neutre|mixte",
-  "tags": ["tag1", "tag2", "tag3", "tag4", "tag5"]
+  "tags": ["tag1", "tag2", "tag3", "tag4", "tag5"],
+  "sources_citees": [
+    {
+      "nom": "Nom exact de la source",
+      "type": "api|presse|institution|think_tank|estimation",
+      "donnees_utilisees": "Description concise"
+    }
+  ]
 }
 
 Réponds UNIQUEMENT en JSON valide, sans commentaire.`;
