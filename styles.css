@@ -3909,6 +3909,121 @@ body.page-markets .market-status {
     font-style: italic;
 }
 
+/* ─── Article du jour — Carte compacte (Analyses + rubriques) ─── */
+
+.article-du-jour-card {
+    background: linear-gradient(135deg, rgba(11, 61, 30, 0.15), rgba(16, 185, 129, 0.08));
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.article-du-jour-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, #10b981, #059669);
+    border-radius: 4px 0 0 4px;
+}
+
+.article-du-jour-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+}
+
+.article-du-jour-card-badge {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.article-du-jour-card-date {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.article-du-jour-card-sentiment {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-left: auto;
+}
+.sentiment-bullish { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+.sentiment-bearish { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+.sentiment-neutral { background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.7); }
+
+.article-du-jour-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
+
+.article-du-jour-card-subtitle {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+
+.article-du-jour-card-points {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.75rem 0;
+}
+
+.article-du-jour-card-points li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.45;
+}
+
+.article-du-jour-card-points li::before {
+    content: '\25B8';
+    position: absolute;
+    left: 0;
+    color: #10b981;
+}
+
+.article-du-jour-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.article-du-jour-card-tags .article-tag {
+    font-size: 0.68rem;
+}
+
+@media (max-width: 768px) {
+    .article-du-jour-card {
+        padding: 1rem;
+    }
+    .article-du-jour-card-title {
+        font-size: 1rem;
+    }
+}
+
 /* ─── Briefing Stratégique IA ─── */
 
 /* Badge spécifique au briefing (vs l'article classique) */
