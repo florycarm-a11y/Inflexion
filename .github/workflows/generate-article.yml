@@ -107,6 +107,10 @@ jobs:
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
         run: node scripts/generate-article.mjs
 
+      - name: "✅ Validation qualité de l'article"
+        if: steps.check-data.outputs.data_changed == 'true'
+        run: node scripts/validate-article.mjs
+
       - name: "⏭ Génération ignorée — données inchangées"
         if: steps.check-data.outputs.data_changed != 'true'
         run: echo "Les données n'ont pas changé depuis la dernière exécution. Génération ignorée."
