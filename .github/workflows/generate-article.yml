@@ -4,7 +4,7 @@
 # Prérequis :
 #   - ANTHROPIC_API_KEY dans GitHub Secrets (console.anthropic.com)
 #   - TAVILY_API_KEY dans GitHub Secrets (app.tavily.com — optionnel, enrichit les articles)
-#   - PAT_TOKEN dans GitHub Secrets (pour créer la PR)
+#   - PAT_TOKEN dans GitHub Secrets (pour committer)
 #   - data/news.json doit exister (généré par fetch-data.yml)
 
 name: "✍️ Generate Daily Article"
@@ -18,10 +18,9 @@ on:
   # Exécution manuelle depuis l'onglet Actions
   workflow_dispatch:
 
-# Permissions nécessaires pour créer une PR
+# Permissions nécessaires pour committer
 permissions:
   contents: write
-  pull-requests: write
 
 # Une seule exécution à la fois
 concurrency:
@@ -112,30 +111,27 @@ jobs:
         if: steps.check-data.outputs.data_changed != 'true'
         run: echo "Les données n'ont pas changé depuis la dernière exécution. Génération ignorée."
 
-      - name: "🔀 Créer une PR pour relecture"
+      - name: "📝 Commit et push"
         if: steps.check-data.outputs.data_changed == 'true'
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.PAT_TOKEN }}
-          commit-message: |
-            ✍️ Article du jour — ${{ github.run_id }}
+        run: |
+          git config user.name "Inflexion Bot"
+          git config user.email "bot@inflexionhub.com"
 
-            Génération automatique de l'article de synthèse et classification des news.
-          title: "✍️ Article du jour — ${{ github.run_id }}"
-          body: |
-            ## Contenu généré par IA
+          # Ajouter les fichiers générés
+          [ -f data/news.json ] && git add data/news.json || true
+          [ -f data/article-du-jour.json ] && git add data/article-du-jour.json || true
+          [ -d data/articles ] && git add data/articles/ || true
 
-            Ce PR contient l'article du jour et la classification des news, générés automatiquement par Claude.
+          # Vérifier s'il y a des changements
+          if git diff --staged --quiet; then
+            echo "Aucun changement"
+            exit 0
+          fi
 
-            **Fichiers modifiés :**
-            - `data/news.json` — articles traduits et classifiés
-            - `data/article-du-jour.json` — article de synthèse
-            - `data/articles/` — articles individuels
+          # Commit avec timestamp
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+          git commit -m "✍️ Article du jour + classification — ${TIMESTAMP}
 
-            > À relire avant merge pour publication sur GitHub Pages.
-          branch: ai/article-du-jour
-          delete-branch: true
-          add-paths: |
-            data/news.json
-            data/article-du-jour.json
-            data/articles/
+          Article de synthèse et classification des news générés par Claude."
+
+          git push
