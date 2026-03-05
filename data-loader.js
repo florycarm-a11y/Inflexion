@@ -983,6 +983,150 @@ const DataLoader = (function () {
             sourcesHTML;
     }
 
+    // ─── Article du jour sur pages Analyses + rubriques ────
+
+    /**
+     * Mapping tags article → catégories de pages thématiques.
+     * Un article avec le tag "crypto" sera injecté sur crypto.html, etc.
+     */
+    var TAG_TO_CATEGORY = {
+        'géopolitique': 'geopolitics',
+        'geopolitique': 'geopolitics',
+        'geopolitics': 'geopolitics',
+        'marchés': 'markets',
+        'marches': 'markets',
+        'markets': 'markets',
+        'inflation': 'markets',
+        'taux': 'markets',
+        'obligataire': 'markets',
+        'crypto': 'crypto',
+        'bitcoin': 'crypto',
+        'blockchain': 'crypto',
+        'defi': 'crypto',
+        'matières premières': 'commodities',
+        'matieres premieres': 'commodities',
+        'commodities': 'commodities',
+        'pétrole': 'commodities',
+        'or': 'commodities',
+        'énergie': 'commodities',
+        'ia': 'ai_tech',
+        'ia & tech': 'ai_tech',
+        'tech': 'ai_tech',
+        'cybersécurité': 'ai_tech'
+    };
+
+    /**
+     * Détermine la catégorie principale d'un article du jour à partir de ses tags.
+     * @param {Array<string>} tags - Tags de l'article
+     * @returns {string|null} Catégorie page (geopolitics, markets, crypto, commodities, ai_tech)
+     */
+    function getArticlePrimaryCategory(tags) {
+        if (!tags || !tags.length) return null;
+        // Compter les votes par catégorie
+        var votes = {};
+        tags.forEach(function(tag) {
+            var cat = TAG_TO_CATEGORY[(tag || '').toLowerCase().trim()];
+            if (cat) {
+                votes[cat] = (votes[cat] || 0) + 1;
+            }
+        });
+        // Retourner la catégorie avec le plus de votes
+        var best = null, bestCount = 0;
+        Object.keys(votes).forEach(function(cat) {
+            if (votes[cat] > bestCount) {
+                best = cat;
+                bestCount = votes[cat];
+            }
+        });
+        return best;
+    }
+
+    /**
+     * Génère le HTML de l'article du jour en format carte compacte
+     * (utilisé sur analysis.html et les pages thématiques).
+     * @param {Object} article - Données de article-du-jour.json
+     * @returns {string} HTML
+     */
+    function renderArticleDuJourCard(article) {
+        var tagsHTML = (article.tags || [])
+            .map(function(t) { return '<span class="article-tag">' + t + '</span>'; })
+            .join('');
+
+        var pointsClesHTML = '';
+        if (article.points_cles && article.points_cles.length > 0) {
+            pointsClesHTML = '<ul class="article-du-jour-card-points">' +
+                article.points_cles.slice(0, 3).map(function(p) { return '<li>' + p + '</li>'; }).join('') +
+                '</ul>';
+        }
+
+        var sentimentClass = article.sentiment_global === 'haussier' ? 'sentiment-bullish' :
+            article.sentiment_global === 'baissier' ? 'sentiment-bearish' : 'sentiment-neutral';
+
+        return '<article class="article-du-jour-card">' +
+            '<div class="article-du-jour-card-header">' +
+                '<span class="article-du-jour-card-badge">Synthèse IA du jour</span>' +
+                '<time class="article-du-jour-card-date">' + formatArticleDate(article.date) + '</time>' +
+                '<span class="article-du-jour-card-sentiment ' + sentimentClass + '">' + (article.sentiment_global || '') + '</span>' +
+            '</div>' +
+            '<h3 class="article-du-jour-card-title">' + article.titre + '</h3>' +
+            (article.sous_titre ? '<p class="article-du-jour-card-subtitle">' + article.sous_titre + '</p>' : '') +
+            pointsClesHTML +
+            (tagsHTML ? '<div class="article-du-jour-card-tags">' + tagsHTML + '</div>' : '') +
+        '</article>';
+    }
+
+    /**
+     * Affiche l'article du jour IA en haut de la page Analyses.
+     * Container : #article-du-jour-analysis (dans analysis.html)
+     */
+    function updateAnalysisPageArticle() {
+        var container = document.getElementById('article-du-jour-analysis');
+        if (!container) return;
+
+        var article = _cache.articleDuJour;
+        if (!article || !article.titre) return;
+
+        container.innerHTML = renderArticleDuJourCard(article);
+    }
+
+    /**
+     * Injecte l'article du jour IA en tête de la page thématique correspondante.
+     * L'article est affiché uniquement si ses tags correspondent à la catégorie de la page.
+     * Container : #page-news (en prepend, avant les articles RSS)
+     */
+    function updateCategoryPageArticleDuJour() {
+        var pageNews = document.getElementById('page-news');
+        if (!pageNews) return;
+
+        var article = _cache.articleDuJour;
+        if (!article || !article.titre) return;
+
+        // Détecter la catégorie de la page courante
+        var pageHeader = document.querySelector('[data-category]');
+        if (!pageHeader) return;
+        var pageCat = pageHeader.getAttribute('data-category');
+
+        // Déterminer la catégorie de l'article
+        var articleCat = getArticlePrimaryCategory(article.tags);
+        if (!articleCat) return;
+
+        // Mapping élargi : etf = markets + ai_tech
+        var catMap = {
+            geopolitics: ['geopolitics'],
+            markets: ['markets'],
+            crypto: ['crypto'],
+            commodities: ['commodities'],
+            etf: ['markets', 'ai_tech']
+        };
+
+        var targetCats = catMap[pageCat];
+        if (!targetCats || !targetCats.includes(articleCat)) return;
+
+        // Injecter en tête
+        var cardHTML = renderArticleDuJourCard(article);
+        pageNews.insertAdjacentHTML('afterbegin', cardHTML);
+    }
+
     /**
      * Convertit du Markdown basique en HTML.
      * Gère : ## titres, **gras**, paragraphes, sauts de ligne.
@@ -2947,6 +3091,8 @@ const DataLoader = (function () {
         updateDefiSection();
         updateGoldBitcoinChart();
         updateArticleDuJour();
+        updateAnalysisPageArticle();
+        updateCategoryPageArticleDuJour();
         updateTopStories();
         updateCategoryTrend();
         updateCategoryPageNews();
