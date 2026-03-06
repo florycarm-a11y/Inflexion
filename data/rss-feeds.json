@@ -1,12 +1,12 @@
 {
-  "updated": "2026-03-05T19:15:28.912Z",
+  "updated": "2026-03-06T06:44:21.059Z",
   "feeds": [
     {
       "source": "Le Figaro",
       "url": "https://www.lefigaro.fr/rss/figaro_international.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 5
     },
     {
       "source": "France 24",
@@ -20,7 +20,7 @@
       "url": "https://www.rfi.fr/fr/rss",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 5
     },
     {
       "source": "Courrier International",
@@ -41,7 +41,7 @@
       "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 5
     },
     {
       "source": "Al Jazeera",
@@ -62,7 +62,7 @@
       "url": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "Reuters",
@@ -76,7 +76,7 @@
       "url": "https://www.politico.eu/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 2
     },
     {
       "source": "Foreign Policy",
@@ -139,7 +139,7 @@
       "url": "https://www.middleeasteye.net/rss",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 5
     },
     {
       "source": "IFRI",
@@ -230,14 +230,14 @@
       "url": "https://www.lefigaro.fr/rss/figaro_societes.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 2
     },
     {
       "source": "Le Figaro Flash Éco",
       "url": "https://www.lefigaro.fr/rss/figaro_flash-eco.xml",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 4
     },
     {
       "source": "Les Echos",
@@ -251,7 +251,7 @@
       "url": "https://www.bfmtv.com/rss/economie/",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 5
     },
     {
       "source": "Zonebourse",
@@ -286,7 +286,7 @@
       "url": "https://finance.yahoo.com/news/rssindex",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "Seeking Alpha",
@@ -508,9 +508,9 @@
     {
       "source": "Mining.com",
       "url": "https://www.mining.com/feed/",
-      "count": 5,
-      "ok": true,
-      "relevant": 5
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 504: https://www.mining.com/feed/"
     },
     {
       "source": "MetalMiner",
@@ -594,7 +594,7 @@
       "url": "https://www.numerama.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 1
+      "relevant": 3
     },
     {
       "source": "Next INpact",
@@ -615,7 +615,7 @@
       "url": "https://www.theverge.com/rss/index.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 1
     },
     {
       "source": "Ars Technica",
@@ -629,14 +629,14 @@
       "url": "https://www.wired.com/feed/rss",
       "count": 5,
       "ok": true,
-      "relevant": 0
+      "relevant": 1
     },
     {
       "source": "Hacker News",
       "url": "https://hnrss.org/frontpage?count=15",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 0
     },
     {
       "source": "VentureBeat AI",
@@ -734,14 +734,14 @@
       "url": "https://www.lemonde.fr/economie/rss_full.xml",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 4
     },
     {
       "source": "Challenges",
       "url": "https://www.challenges.fr/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 2
     },
     {
       "source": "MoneyVox",
@@ -839,7 +839,7 @@
       "url": "https://cleantechnica.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 6
+      "relevant": 4
     },
     {
       "source": "Reuters Sustainability",
@@ -963,9 +963,9 @@
     {
       "source": "GEN Biotech",
       "url": "https://www.genengnews.com/feed/",
-      "count": 0,
-      "ok": false,
-      "error": "HTTP 403: https://www.genengnews.com/feed/"
+      "count": 5,
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "EC Single Market",
@@ -1104,6 +1104,6 @@
   "stats": {
     "success": 109,
     "failed": 48,
-    "articles": 476
+    "articles": 481
   }
 }
