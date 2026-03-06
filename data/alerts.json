@@ -1,90 +1,56 @@
 {
-  "updated": "2026-03-04T06:46:05.871Z",
+  "updated": "2026-03-06T18:43:50.987Z",
   "alertes": [
     {
-      "id": "alert-2026-03-04-001",
-      "titre": "Pétrole (USO) : +3,45% à 90,20 $, escalade Moyen-Orient",
-      "texte": "Pétrole brut surge à 80 $ sur risques d'approvisionnement liés à l'escalade Iran-Israël. Taux fret pétroliers explosent au détroit d'Ormuz avec trafic réduit. JP Morgan avertit d'une perte catastrophique d'approvisionnement.",
+      "id": "alert-2026-03-06-001",
+      "titre": "Pétrole (USO) : +12,39% à 108,24 $, plus haut depuis escalade Iran-Israël",
+      "texte": "L'ETF pétrolier USO bondit de 12,39% suite aux frappes aériennes israéliennes contre l'Iran et aux perturbations du détroit d'Ormuz. Le baril WTI dépasse 90 $ pour la première fois du conflit, soutenu par la réduction du trafic commercial maritime.",
       "categorie": "matieres_premieres",
       "severite": "urgent",
       "impact": "haussier",
-      "horodatage": "2026-03-04T06:46:05.871Z",
-      "donnees": {
-        "symbole": "GLD",
-        "nom": "Or (ETF)",
-        "prix": 468.14,
-        "variation": -4.46
-      }
-    },
-    {
-      "id": "alert-2026-03-04-002",
-      "titre": "Or (GLD) : -4,46% à 468,14 $, refuge paradoxal",
-      "texte": "L'or recule de 4,46% malgré l'indice Fear & Greed à 10 (peur extrême), suggérant liquidations forcées et appels de marge. Mouvement atypique en contexte de crise géopolitique majeure.",
-      "categorie": "marches",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-03-04T06:46:05.871Z",
+      "horodatage": "2026-03-06T18:43:50.987Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
-        "prix": 90.2,
-        "variation": 3.45
+        "prix": 108.24,
+        "variation": 12.39
       }
     },
     {
-      "id": "alert-2026-03-04-003",
-      "titre": "Bourses asiatiques : Séoul en double-digit négatif, crise Moyen-Orient",
-      "texte": "Bourse de Séoul s'effondre en double-digit sur tensions Iran-Israël. Indices asiatiques à plus bas multi-annuels. Crise géopolitique déclenche réévaluation majeure des risques systémiques.",
-      "categorie": "marches",
+      "id": "alert-2026-03-06-002",
+      "titre": "Détroit d'Ormuz : trafic commercial réduit à 9 navires, risque d'approvisionnement énergétique",
+      "texte": "Seulement 9 navires commerciaux détectés traversant le détroit depuis lundi, reflétant l'impact direct de l'escalade géopolitique sur les flux énergétiques mondiaux. Maersk suspend deux services majeurs reliant l'Extrême-Orient au Moyen-Orient.",
+      "categorie": "geopolitique",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-03-04T06:46:05.871Z",
-      "donnees": {
-        "symbole": "TSLA",
-        "nom": "Tesla",
-        "prix": 392.43,
-        "variation": -2.7
-      }
-    },
-    {
-      "id": "alert-2026-03-04-004",
-      "titre": "Fear & Greed Index : 10/100 (Peur Extrême), plus bas depuis crise",
-      "texte": "Indice Fear & Greed atteint 10, signalant peur extrême. Reflète escalade géopolitique Moyen-Orient, risques d'approvisionnement énergétique et volatilité multi-actifs.",
-      "categorie": "macro",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-03-04T06:46:05.871Z",
-      "donnees": {
-        "score": 10,
-        "label": "Extreme Fear",
-        "variation_7j": -1
-      }
-    },
-    {
-      "id": "alert-2026-03-04-005",
-      "titre": "Bitcoin (BTC) : rebond vers 70 000 $, afflux ETF 1,45 Md$ en 5 jours",
-      "texte": "Bitcoin rebond vers 70 000 $ avec afflux de 1,45 Md$ via ETFs en 5 jours, contrastant avec baisse Ethereum/Solana. Crypto positionnée comme couverture systémique par certains analystes.",
-      "categorie": "crypto",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-03-04T06:46:05.871Z",
+      "horodatage": "2026-03-06T18:43:50.987Z",
       "donnees": {}
     },
     {
-      "id": "alert-2026-03-04-006",
-      "titre": "Tesla (TSLA) : -2,70% à 392,43 $, exposition Asie-Chine",
-      "texte": "Tesla recule de 2,70% dans contexte de volatilité asiatique et contraction manufacturière chinoise en février. Exposition géopolitique et demande EV affectées.",
-      "categorie": "marches",
+      "id": "alert-2026-03-06-003",
+      "titre": "Gaz naturel US : hausse anticipée des factures résidentielles à partir de mai 2026",
+      "texte": "Bercy anticipe une augmentation des factures de gaz pour 60% des contrats français sans offre à prix fixe. Aux États-Unis, les prix du gaz naturel suivent la hausse pétrolière amplifiée par les tensions iraniennes.",
+      "categorie": "macro",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-04T06:46:05.871Z",
+      "horodatage": "2026-03-06T18:43:50.987Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-03-06-004",
+      "titre": "Kazakhstan : 350 millions de dollars investis en actifs crypto et Bitcoin",
+      "texte": "La Banque centrale du Kazakhstan annonce un investissement de jusqu'à 350 millions de dollars en réserves crypto, signalant une diversification stratégique des réserves de change face aux tensions géopolitiques.",
+      "categorie": "crypto",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-03-06T18:43:50.987Z",
       "donnees": {}
     }
   ],
   "stats": {
-    "total": 6,
-    "urgent": 3,
-    "attention": 2,
+    "total": 4,
+    "urgent": 2,
+    "attention": 1,
     "info": 1
   },
   "model": "claude-haiku-4-5-20251001",

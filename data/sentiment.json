@@ -1,65 +1,65 @@
 {
-  "updated": "2026-03-04T06:46:05.871Z",
-  "date": "2026-03-04",
+  "updated": "2026-03-06T18:43:50.986Z",
+  "date": "2026-03-06",
   "global": {
-    "score": -0.15,
+    "score": -0.13,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (-0.15), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est mixte (-0.13), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
       "score": -0.85,
       "confidence": 0.95,
       "tendance": "baissier",
-      "resume": "Escalade majeure au Moyen-Orient avec décès du leader iranien Khamenei, attaques iraniennes confirmées contre Israël et cibles US, contrôle iranien du détroit d'Ormuz annoncé, et intensification des frappes israéliennes au Liban. Risque systémique élevé sur les flux énergétiques mondiaux.",
+      "resume": "Escalade majeure Israël-Iran avec frappes aériennes, attaques contre infrastructures critiques et déplacements massifs de population. Tensions commerciales accrues (détroit d'Ormuz, transport maritime) et risque de conflit régional généralisé.",
       "signaux_cles": [
-        "Iran confirme vague d'attaques contre cibles israéliennes et US (4 mars 2026)",
-        "Décès du leader Khamenei avec cérémonie à Téhéran",
-        "Iran revendique contrôle total du détroit d'Ormuz, bilan Liban: 11+ morts"
+        "Au moins 300 000 personnes déplacées au Liban suite aux frappes israéliennes",
+        "Seulement 9 navires commerciaux détectés au détroit d'Ormuz depuis lundi",
+        "Trump déclare 'aucun accord' possible, escalade militaire en cours"
       ]
     },
     "marches": {
-      "score": -0.72,
-      "confidence": 0.92,
+      "score": -0.42,
+      "confidence": 0.82,
       "tendance": "baissier",
-      "resume": "Bourses asiatiques en effondrement avec Séoul en double-digit négatif, tensions géopolitiques alimentant craintes inflationnistes et chocs pétroliers. Indices régionaux à plus bas multi-annuels.",
+      "resume": "Tensions géopolitiques impactent les chaînes logistiques et les prix énergétiques. Hausse anticipée des coûts (gaz, transport maritime) et complications administratives sur les tarifs douaniers américains.",
       "signaux_cles": [
-        "Bourse de Séoul s'effondre en double-digit sur tensions Iran (4 mars)",
-        "Bourses d'Asie dévissent, indices à plus bas multi-annuels",
-        "Banques centrales testées par choc pétrolier et inflation"
+        "CMA CGM anticipe un ralentissement du transport maritime face aux tensions au Moyen-Orient",
+        "Bercy anticipe une augmentation des factures de gaz à partir de mai 2026",
+        "Agence américaine des douanes incapable de gérer les remboursements de droits de douane"
       ]
     },
     "crypto": {
-      "score": -0.15,
-      "confidence": 0.65,
+      "score": 0.15,
+      "confidence": 0.58,
       "tendance": "mixte",
-      "resume": "Bitcoin résiste avec rebond vers 70 000 $ et afflux de 1,45 Md$ en 5 jours via ETFs, mais Ethereum et Solana reculent sur volatilité géopolitique. Débat sur rôle de crypto comme couverture systémique.",
+      "resume": "Développements réglementaires positifs (Pakistan, Kazakhstan, ETF Polkadot) contrebalancés par pressions politiques (enquête Binance, sanctions Iran) et volatilité liée aux conflits géopolitiques.",
       "signaux_cles": [
-        "Bitcoin rebond vers 70 000 $, ETFs Bitcoin +1,45 Md$ en 5 jours",
-        "Ethereum et Solana en baisse sur crise Moyen-Orient",
-        "Étude: modèles IA préfèrent Bitcoin au fiat et stablecoins"
+        "Kazakhstan investira jusqu'à 350 millions de dollars en actifs crypto",
+        "Pakistan adopte le Virtual Assets Act of 2026",
+        "Binance rejette les accusations de violations de sanctions iraniennes"
       ]
     },
     "matieres_premieres": {
       "score": 0.78,
       "confidence": 0.93,
       "tendance": "haussier",
-      "resume": "Pétrole brut surge à 80 $ sur risques d'approvisionnement Moyen-Orient, taux fret pétroliers explosent au détroit d'Ormuz, Canada positionné comme fournisseur alternatif fiable. Capacités de secours OPEP exposées comme limitées.",
+      "resume": "Conflit Iran-Israël propulse les prix pétroliers au-delà de 90 $/baril pour la première fois. Gaz naturel et énergie bénéficient de la tension géopolitique. Perturbations logistiques (Maersk) amplifiées.",
       "signaux_cles": [
-        "Pétrole brut atteint 80 $ sur risques d'approvisionnement",
-        "Taux fret pétroliers explosent, trafic Ormuz réduit",
-        "JP Morgan avertit perte catastrophique d'approvisionnement pétrolier"
+        "Pétrole dépasse 90 $/baril, tiré par le conflit au Moyen-Orient",
+        "Essence américaine atteint son plus haut niveau sous Trump",
+        "Maersk suspend deux services de transport maritime Extrême-Orient/Moyen-Orient/Europe"
       ]
     },
     "ai_tech": {
-      "score": 0.35,
-      "confidence": 0.62,
-      "tendance": "neutre",
-      "resume": "Avancées technologiques continues (Physical Intelligence, Nvidia photonics, modèles IA) mais contrebalancées par incidents de sécurité (VMware RCE exploité, vol clé API Gemini 82K$) et consolidation VC (3 sociétés dominent 189 Md$).",
+      "score": -0.28,
+      "confidence": 0.65,
+      "tendance": "mixte",
+      "resume": "Anthropic face à des défis réglementaires (désignée risque chaîne d'approvisionnement) malgré croissance consommateur post-débâcle Pentagon. Débats sur sécurité IA et surveillance gouvernementale persistent.",
       "signaux_cles": [
-        "Physical Intelligence dévoile MEM pour robots avec contexte 15 minutes",
-        "CISA signale faille VMware Aria RCE exploitée en attaques",
-        "3 sociétés dominent 189 Md$ investissements VC février 2026"
+        "Anthropic officiellement désignée risque chaîne d'approvisionnement, CEO annonce action légale",
+        "Claude continue sa croissance consommateur après controverse Pentagon",
+        "SoftBank cherche 40 milliards de dollars pour financer sa participation OpenAI"
       ]
     }
   },
@@ -216,6 +216,15 @@
       "crypto": -0.15,
       "matieres_premieres": 0.78,
       "ai_tech": 0.35
+    },
+    {
+      "date": "2026-03-06",
+      "global": -0.13,
+      "geopolitique": -0.85,
+      "marches": -0.42,
+      "crypto": 0.15,
+      "matieres_premieres": 0.78,
+      "ai_tech": -0.28
     }
   ],
   "model": "claude-haiku-4-5-20251001",
