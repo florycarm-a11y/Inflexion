@@ -273,6 +273,10 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
     '.'
    ),
 
+   h('p',null,
+    'Cette p\u00e9nurie annonc\u00e9e a une cons\u00e9quence imm\u00e9diate\u00a0: les fournisseurs facturent une prime \u00e0 l\u2019impr\u00e9visibilit\u00e9. Les tarifs \u00e0 la demande explosent, et l\u2019\u00e9cart avec les engagements long terme n\u2019a jamais \u00e9t\u00e9 aussi large.'
+   ),
+
    // Section: Écart critique
    h('h2',null,'L\u2019\u00e9cart critique : tarif catalogue contre contrat r\u00e9serv\u00e9'),
 
@@ -294,9 +298,14 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
 
    h('p',null,'Prenons un cas concret. Une ETI dont la facture cloud mensuelle atteint 50\u00a0000 euros en tarif \u00e0 la demande peut r\u00e9duire ce montant \u00e0 moins de 15\u00a0000 euros en n\u00e9gociant un engagement pluriannuel coupl\u00e9 \u00e0 ses licences existantes. Sur la dur\u00e9e du contrat, le diff\u00e9rentiel repr\u00e9sente plus d\u2019un million d\u2019euros \u2014 l\u2019\u00e9quivalent du salaire charg\u00e9 de dix ing\u00e9nieurs sur un an.'),
 
+   h('p',null,
+    'Concr\u00e8tement, une ETI industrielle qui a migr\u00e9 ses environnements de CAO ou de simulation sur le cloud public sans verrouiller de contrat r\u00e9serv\u00e9 voit sa facture mensuelle fluctuer de 30 \u00e0 50\u00a0% au gr\u00e9 des pics de charge \u2014 sans aucun gain de performance en contrepartie.'
+   ),
+
    h('div',{className:'insight-box not-prose'},
     h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#1B6B4A] mb-2'},'La \u00ab\u00a0taxe sur l\u2019agilit\u00e9\u00a0\u00bb'),
-    h('p',{className:'text-sm text-[#3A3A3A] italic leading-relaxed'},'Dit autrement, chaque mois pass\u00e9 en tarif catalogue est un transfert de marge vers les clients qui ont su verrouiller leurs conditions. En 2026, le cloud n\u2019est plus une d\u00e9pense variable, mais un actif strat\u00e9gique dont le co\u00fbt doit \u00eatre verrouill\u00e9.')
+    h('p',{className:'text-sm text-[#3A3A3A] italic leading-relaxed'},'Dit autrement, chaque mois pass\u00e9 en tarif catalogue est un transfert de marge vers les clients qui ont su verrouiller leurs conditions. En 2026, le cloud n\u2019est plus une d\u00e9pense variable, mais un actif strat\u00e9gique dont le co\u00fbt doit \u00eatre verrouill\u00e9.'),
+    h('p',{className:'text-sm text-[#3A3A3A] italic leading-relaxed mt-3'},'Le m\u00e9canisme est progressif\u00a0: l\u2019int\u00e9gration par d\u00e9faut d\u2019assistants IA dans les suites bureautiques (Copilot dans Microsoft 365, Gemini dans Google Workspace) cr\u00e9e une d\u00e9pendance fonctionnelle avant m\u00eame que l\u2019entreprise n\u2019ait arbitr\u00e9. Quand le tarif augmente, le co\u00fbt de migration est d\u00e9j\u00e0 prohibitif.')
    ),
 
    // Section: Trois enjeux
@@ -313,9 +322,21 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
     )
    ),
 
-   h('div',{className:'insight-box alert not-prose'},
-    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#DC2626] mb-2'},'Signal critique'),
-    h('p',{className:'text-sm text-[#3A3A3A] italic leading-relaxed'},'Un indicateur op\u00e9rationnel simple permet de mesurer votre exposition : comparez vos temps de r\u00e9ponse entre 3\u00a0h et 10\u00a0h du matin. Si l\u2019\u00e9cart d\u00e9passe 40 \u00e0 50\u00a0%, votre charge est d\u00e9j\u00e0 soumise \u00e0 un m\u00e9canisme de priorisation qui ne vous favorise pas. C\u2019est le signal qu\u2019il faut s\u00e9curiser une capacit\u00e9 d\u00e9di\u00e9e.')
+   h('div',{className:'not-prose my-8 rounded-xl overflow-hidden border-2 border-[#DC2626]/30',style:{background:'linear-gradient(135deg, #FEF2F2 0%, #FFF5F5 100%)'}},
+    h('div',{className:'flex items-center gap-2 px-5 py-3',style:{background:'linear-gradient(90deg, #DC2626, #EF4444)'}},
+     h('span',{className:'text-lg'},'\u26a0\ufe0f'),
+     h('span',{className:'text-[11px] font-bold uppercase tracking-wider text-white'},'Signal critique \u2014 \u00c0 v\u00e9rifier imm\u00e9diatement')
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-[15px] text-[#1A1F2E] leading-relaxed font-medium'},
+      'Comparez vos temps de r\u00e9ponse cloud entre ',h('strong',null,'3\u00a0h et 10\u00a0h du matin'),'. Si l\u2019\u00e9cart d\u00e9passe ',h('strong',{className:'text-[#DC2626]'},'40 \u00e0 50\u00a0%'),', votre charge est d\u00e9j\u00e0 soumise \u00e0 un m\u00e9canisme de priorisation qui ne vous favorise pas.'
+     ),
+     h('p',{className:'text-sm text-[#6A6A6A] mt-2 italic'},'C\u2019est le signal qu\u2019il faut s\u00e9curiser une capacit\u00e9 d\u00e9di\u00e9e \u2014 avant que la fen\u00eatre ne se referme.')
+    )
+   ),
+
+   h('p',null,
+    'Cette d\u00e9pendance technique quasi exclusive envers des hyperscalers am\u00e9ricains satur\u00e9s pose un probl\u00e8me qui d\u00e9passe la DSI\u00a0: c\u2019est un risque de souverainet\u00e9. L\u2019Europe tente d\u2019y r\u00e9pondre par la voie r\u00e9glementaire.'
    ),
 
    h('span',{className:'section-number'},'Enjeu 02'),
@@ -338,6 +359,10 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
     h('p',{className:'text-[15px] text-[#3A3A3A] leading-relaxed'},
      'C\u00f4t\u00e9 mat\u00e9riel lourd, les d\u00e9lais de livraison des transformateurs haute tension atteignent d\u00e9sormais ',h('strong',null,'36 \u00e0 48 mois'),' \u2014 jusqu\u2019\u00e0 60 mois dans des cas extr\u00eames isol\u00e9s (source CISA/NIAC) \u2014 contre 6 \u00e0 8 mois avant 2020, figeant toute expansion rapide de capacit\u00e9 jusqu\u2019\u00e0 la fin de la d\u00e9cennie. La capacit\u00e9 de calcul cloud n\u2019est pas extensible \u00e0 volont\u00e9 : les cr\u00e9neaux se r\u00e9servent des trimestres \u00e0 l\u2019avance.'
     )
+   ),
+
+   h('p',null,
+    'Contrainte capacitaire, d\u00e9pendance juridique, goulets physiques\u00a0: l\u2019attentisme expose d\u00e9sormais \u00e0 un risque concret de d\u00e9crochage op\u00e9rationnel. Trois leviers restent activables \u00e0 court terme sans attendre que l\u2019offre rattrape la demande.'
    ),
 
    // Section: Leviers
@@ -371,6 +396,10 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
     h('div',{className:'data-row'},h('span',{className:'flex-1'},'Rapport de co\u00fbt'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#0B3D1E]'},'\u00d725 moins cher'))
    ),
 
+   h('p',null,
+    'Pour une PME, cela change l\u2019\u00e9quation sur des t\u00e2ches \u00e0 fort volume et faible complexit\u00e9\u00a0: tri automatis\u00e9 de tickets SAV, pr\u00e9-analyse d\u2019appels d\u2019offres, extraction de clauses contractuelles. Un mod\u00e8le d\u00e9ploy\u00e9 localement suffit \u2014 et garantit que les donn\u00e9es sensibles ne transitent pas par des serveurs tiers.'
+   ),
+
    h('p',null,'L\u2019\u00e9cart se creuse encore en local. Un Mac Studio M4 Ultra (pr\u00e9vu pour 2026) avec une m\u00e9moire unifi\u00e9e massive permet de faire tourner ces mod\u00e8les en interne. Le co\u00fbt mat\u00e9riel est ',h('strong',null,'amorti en moins de six mois'),' face aux facturations d\u2019API. Pour la majorit\u00e9 des cas d\u2019usage en entreprise \u2014 classification, extraction, recherche augment\u00e9e, synth\u00e8se \u2014 le logiciel libre offre une performance \u00e9quivalente avec un avantage d\u00e9cisif : aucune d\u00e9pendance \u00e0 la disponibilit\u00e9 d\u2019un tiers.'),
 
    h('span',{className:'section-number'},'Levier 03'),
@@ -388,23 +417,26 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
    h('div',{className:'overflow-x-auto my-6 not-prose'},
     h('table',{className:'matrix-table'},
      h('thead',null,
-      h('tr',null,h('th',null,'Profil'),h('th',null,'Priorit\u00e9 strat\u00e9gique'),h('th',null,'Action cl\u00e9 2026'))
+      h('tr',null,h('th',null,'Profil'),h('th',null,'Priorit\u00e9 strat\u00e9gique'),h('th',null,'Action cl\u00e9 2026'),h('th',null,'Risque si inaction'))
      ),
      h('tbody',null,
       h('tr',null,
        h('td',null,h('strong',null,'Jeune entreprise IA'),h('br'),h('span',{className:'text-xs text-[#6A6A6A]'},'10 pers., 5-15 k\u20ac/mois')),
        h('td',null,'Flexibilit\u00e9 maximale'),
-       h('td',null,'Utiliser les remises automatiques de GCP (\u221230\u00a0%) ou Scaleway \u00e0 la demande. Mod\u00e8le local (Llama/Mistral) comme filet de s\u00e9curit\u00e9.')
+       h('td',null,'Utiliser les remises automatiques de GCP (\u221230\u00a0%) ou Scaleway \u00e0 la demande. Mod\u00e8le local (Llama/Mistral) comme filet de s\u00e9curit\u00e9.'),
+       h('td',null,'Enfermement dans un \u00e9cosyst\u00e8me propri\u00e9taire avec perte de contr\u00f4le sur les co\u00fbts et les donn\u00e9es')
       ),
       h('tr',null,
        h('td',null,h('strong',null,'PME \u00e9ditrice de logiciel'),h('br'),h('span',{className:'text-xs text-[#6A6A6A]'},'50 pers., 30-80 k\u20ac/mois')),
        h('td',null,'Pr\u00e9visibilit\u00e9 des marges'),
-       h('td',null,'Migrer vers AWS \u00ab\u00a0Savings Plans\u00a0\u00bb 1 an (\u221250\u00a0% minimum) et hybrider avec Llama 3.3 en local pour les charges r\u00e9currentes.')
+       h('td',null,'Migrer vers AWS \u00ab\u00a0Savings Plans\u00a0\u00bb 1 an (\u221250\u00a0% minimum) et hybrider avec Llama 3.3 en local pour les charges r\u00e9currentes.'),
+       h('td',null,'Surco\u00fbt de 40 \u00e0 80\u00a0% sur les ressources cloud \u00e0 horizon 12 mois')
       ),
       h('tr',null,
        h('td',null,h('strong',null,'ETI europ\u00e9enne'),h('br'),h('span',{className:'text-xs text-[#6A6A6A]'},'200+ pers., 100 k+ \u20ac/mois')),
        h('td',null,'Souverainet\u00e9 et r\u00e9silience'),
-       h('td',null,'Combiner Azure \u00ab\u00a0Reserved\u00a0\u00bb 3 ans (\u221280\u00a0%) avec un fournisseur certifi\u00e9 SecNumCloud/HDS pour les donn\u00e9es sensibles. Deuxi\u00e8me fournisseur europ\u00e9en pour la reprise apr\u00e8s sinistre.')
+       h('td',null,'Combiner Azure \u00ab\u00a0Reserved\u00a0\u00bb 3 ans (\u221280\u00a0%) avec un fournisseur certifi\u00e9 SecNumCloud/HDS pour les donn\u00e9es sensibles. Deuxi\u00e8me fournisseur europ\u00e9en pour la reprise apr\u00e8s sinistre.'),
+       h('td',null,'Point de d\u00e9faillance unique en cas de panne, restriction d\u2019acc\u00e8s ou changement tarifaire unilat\u00e9ral')
       )
      )
     )
