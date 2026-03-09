@@ -155,7 +155,7 @@ return h('div',null,
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(5) saturate(0.3)',transition:'filter 0.3s ease'}})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(5) saturate(0.3)',transition:'filter 0.3s ease'}})
     ),
     h('nav',{className:'hidden md:flex items-center gap-1'},
      ...MEGA_NAV.map((cat,ci)=>
@@ -197,7 +197,7 @@ return h('div',null,
     ...cat.children.map((item,ii)=>
      h('a',{key:'m'+ci+'-'+ii,href:item.href,onClick:()=>setOpen(false),className:'menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8',style:{animationDelay:`${0.08+ci*0.18+ii*0.05}s`}},
       h('span',{className:'text-base'},item.icon),
-      h('span',{className:'text-[20px] font-medium'},item.label)
+      h('span',{className:'text-base sm:text-lg md:text-[20px] font-medium'},item.label)
      )
     )
    ]).flat()
@@ -216,7 +216,7 @@ return h('section',{className:'relative pt-28 pb-14 md:pt-36 md:pb-16',style:{ba
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'max-w-2xl'},
    h('p',{className:'anim-fade-up text-xs font-semibold uppercase tracking-wider text-[#34d399] mb-4'},'D\u00e9cryptages & signaux faibles'),
-   h('h1',{className:'anim-fade-up anim-d1 text-3xl md:text-5xl font-bold text-white leading-[1.1] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Nos analyses'),
+   h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-5xl font-bold text-white leading-[1.1] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Nos analyses'),
    h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/50 leading-relaxed max-w-lg'},
     'Analyses approfondies, d\u00e9cryptages th\u00e9matiques et intelligence strat\u00e9gique pour anticiper les inflexions de march\u00e9.'
    )
@@ -367,7 +367,7 @@ return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-16 pb-20
 // ─── APP ─────────────────────────────────────────────────────────────────────
 
 function App(){
-return h('div',{className:'pb-12'},
+return h('div',{className:'pb-16'},
  h(Navigation),
  h(PageHero),
  h(AnalysesGrid),

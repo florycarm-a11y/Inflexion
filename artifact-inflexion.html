@@ -174,7 +174,7 @@ return h('div',null,
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(5) saturate(0.3)',transition:'filter 0.3s ease'}})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(5) saturate(0.3)',transition:'filter 0.3s ease'}})
     ),
     h('nav',{className:'hidden md:flex items-center gap-1'},
      ...MEGA_NAV.map((cat,ci)=>
@@ -216,7 +216,7 @@ return h('div',null,
     ...cat.children.map((item,ii)=>
      h('a',{key:'m'+ci+'-'+ii,href:item.href,onClick:()=>setOpen(false),className:'menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8',style:{animationDelay:`${0.08+ci*0.18+ii*0.05}s`}},
       h('span',{className:'text-base'},item.icon),
-      h('span',{className:'text-[20px] font-medium'},item.label)
+      h('span',{className:'text-base sm:text-lg md:text-[20px] font-medium'},item.label)
      )
     )
    ]).flat()
@@ -481,7 +481,7 @@ return h('section',{className:'bg-[#0A1628] py-20'},
 }
 
 function App(){
-return h('div',{className:'pb-12'},
+return h('div',{className:'pb-16'},
  h(Navigation),
  h(Hero),
  h(CredibilityStrip),

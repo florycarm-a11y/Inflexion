@@ -174,7 +174,7 @@ return h('div',null,
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(5) saturate(0.3)',transition:'filter 0.3s ease'}})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(5) saturate(0.3)',transition:'filter 0.3s ease'}})
     ),
     h('nav',{className:'hidden md:flex items-center gap-1'},
      ...MEGA_NAV.map((cat,ci)=>
@@ -216,7 +216,7 @@ return h('div',null,
     ...cat.children.map((item,ii)=>
      h('a',{key:'m'+ci+'-'+ii,href:item.href,onClick:()=>setOpen(false),className:'menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8',style:{animationDelay:`${0.08+ci*0.18+ii*0.05}s`}},
       h('span',{className:'text-base'},item.icon),
-      h('span',{className:'text-[20px] font-medium'},item.label)
+      h('span',{className:'text-base sm:text-lg md:text-[20px] font-medium'},item.label)
      )
     )
    ]).flat()
@@ -239,7 +239,7 @@ return h('section',{className:'hero-dark relative pt-32 pb-20 md:pt-44 md:pb-28 
     h('div',{className:'anim-fade-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium text-white/60 mb-8 md:mb-10 border border-white/15'},
      '158 sources · 15 APIs · IA Claude'
     ),
-    h('h1',{className:'anim-fade-up anim-d1 text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.08] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+    h('h1',{className:'anim-fade-up anim-d1 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.08] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
      'Révéler les signaux',h('br'),
      'que le bruit dissimule.'
     ),
@@ -407,7 +407,7 @@ return h('div',{className:'bg-[#F7F8FA] border-t border-b border-[#E2E5EB] py-10
   h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center'},
    ...CREDIBILITY_STATS.map((s,i)=>
     h('div',{key:i},
-     h('div',{className:'text-3xl md:text-4xl font-bold text-[#1B6B4A]',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},s.value),
+     h('div',{className:'text-2xl sm:text-3xl md:text-4xl font-bold text-[#1B6B4A]',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},s.value),
      h('div',{className:'mt-2 text-xs font-medium uppercase tracking-wider text-[#5A6178]'},s.label)
     )
    )
@@ -446,8 +446,8 @@ return h('section',{className:'py-20 bg-white'},
    h('h2',{className:'text-2xl md:text-3xl',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Explorez notre couverture')
   ),
   h('div',{className:'flex justify-center gap-2 mb-10'},
-   h('button',{onClick:()=>switchTab('marches'),className:`px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors ${tab==='marches'?'bg-[#1B6B4A] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},'Marchés'),
-   h('button',{onClick:()=>switchTab('geopolitique'),className:`px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors ${tab==='geopolitique'?'bg-[#1B6B4A] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},'Géopolitique')
+   h('button',{onClick:()=>switchTab('marches'),className:`px-3 py-2 sm:px-5 sm:py-2.5 rounded-lg text-sm font-semibold transition-colors ${tab==='marches'?'bg-[#1B6B4A] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},'Marchés'),
+   h('button',{onClick:()=>switchTab('geopolitique'),className:`px-3 py-2 sm:px-5 sm:py-2.5 rounded-lg text-sm font-semibold transition-colors ${tab==='geopolitique'?'bg-[#1B6B4A] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},'Géopolitique')
   ),
   h('div',{className:'flex flex-col md:flex-row gap-6 md:gap-0 border border-[#E2E5EB] rounded-2xl overflow-hidden'},
    h('div',{className:'md:w-[38%] bg-[#F7F8FA] md:border-r border-[#E2E5EB]'},
@@ -481,7 +481,7 @@ return h('section',{className:'bg-[#0A1628] py-20'},
 }
 
 function App(){
-return h('div',{className:'pb-12'},
+return h('div',{className:'pb-16'},
  h(Navigation),
  h(Hero),
  h(CredibilityStrip),

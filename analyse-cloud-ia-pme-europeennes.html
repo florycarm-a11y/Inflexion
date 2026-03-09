@@ -72,8 +72,9 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 .matrix-table tbody tr:last-child td:last-child{border-radius:0 0 0.5rem 0}
 .matrix-table td strong{color:#1A1F2E}
 
-.data-row{display:flex;justify-content:space-between;align-items:baseline;padding:0.625rem 0;border-bottom:1px solid #ECEEF2;font-size:0.875rem;color:#3A3A3A}
+.data-row{display:flex;justify-content:space-between;align-items:baseline;padding:0.625rem 0;border-bottom:1px solid #ECEEF2;font-size:0.875rem;color:#3A3A3A;gap:0.5rem}
 .data-row:last-child{border-bottom:none}
+@media(max-width:480px){.data-row{flex-direction:column;gap:0.25rem}.data-row span:last-child{margin-left:0}}
 
 .article-card{transition:transform .2s ease,box-shadow .2s ease}
 .article-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(10,22,40,.08)}
@@ -154,7 +155,7 @@ return h('div',null,
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(5) saturate(0.3)',transition:'filter 0.3s ease'}})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(5) saturate(0.3)',transition:'filter 0.3s ease'}})
     ),
     h('nav',{className:'hidden md:flex items-center gap-1'},
      ...MEGA_NAV.map((cat,ci)=>
@@ -196,7 +197,7 @@ return h('div',null,
     ...cat.children.map((item,ii)=>
      h('a',{key:'m'+ci+'-'+ii,href:item.href,onClick:()=>setOpen(false),className:'menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8',style:{animationDelay:`${0.08+ci*0.18+ii*0.05}s`}},
       h('span',{className:'text-base'},item.icon),
-      h('span',{className:'text-[20px] font-medium'},item.label)
+      h('span',{className:'text-base sm:text-lg md:text-[20px] font-medium'},item.label)
      )
     )
    ]).flat()
@@ -430,7 +431,7 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
   ),
 
   // Sidebar
-  h('aside',{className:'lg:w-[220px] flex-shrink-0'},
+  h('aside',{className:'hidden lg:block lg:w-[220px] flex-shrink-0'},
    h('div',{className:'lg:sticky lg:top-24'},
     h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Articles li\u00e9s'),
     h('div',{className:'flex flex-col gap-4'},
@@ -540,7 +541,7 @@ return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-16 pb-20
 // ─── APP ─────────────────────────────────────────────────────────────────────
 
 function App(){
-return h('div',{className:'pb-12'},
+return h('div',{className:'pb-16'},
  h(Navigation),
  h(ArticleHero),
  h(ArticleContent),
