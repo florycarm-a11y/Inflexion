@@ -47,11 +47,15 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 
 /* Mega menu */
 .mega-trigger{position:relative}
-.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:520px;z-index:60}
+.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;z-index:60}
 .mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
-.mega-item{transition:background .15s ease}
-.mega-item:hover{background:rgba(27,107,74,.06)}
-.mega-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.mega-menu{min-width:260px;padding:8px}
+.mega-item{transition:background .15s ease,border-color .15s ease;border:1px solid transparent}
+.mega-item:hover{background:#F0FAF5;border-color:#D1EFE2}
+.mega-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;background:rgba(27,107,74,.08);color:#1B6B4A;transition:background .15s ease,transform .15s ease}
+.mega-item:hover .mega-icon{background:rgba(27,107,74,.15);transform:scale(1.1)}
+.mega-label{color:#1A1F2E}
+.mega-desc{color:#8A93A8}
 
 /* Categories */
 .category-geo{background:#2563eb}.category-marches{background:#1B6B4A}.category-crypto{background:#f59e0b}.category-matieres{background:#ef4444}.category-iatech{background:#8b5cf6}
@@ -239,16 +243,17 @@ return h('div',null,
     h('nav',{className:'hidden md:flex items-center gap-1'},
      ...MEGA_NAV.map((cat,ci)=>
       h('div',{key:ci,className:'mega-trigger'},
-       h('span',{className:`nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none ${dark&&scrolled?'text-white/60 hover:text-white':'text-gray-500 hover:text-gray-900'}`},cat.label),
-       h('div',{className:`mega-menu rounded-2xl shadow-xl p-5 ${dark?'bg-[#162A45] border border-[#1E3A5F]':'bg-white border border-gray-100'}`},
-        h('div',{className:'grid gap-1'},
+       h('span',{className:`nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none ${scrolled?(dark?'text-white/60 hover:text-white':'text-gray-500 hover:text-[#1B6B4A]'):'text-white/70 hover:text-white'}`},cat.label),
+       h('div',{className:`mega-menu rounded-2xl shadow-xl ${dark?'bg-[#162A45] border border-[#1E3A5F]':'bg-white border border-gray-100'}`},
+        h('div',{className:'flex flex-col gap-0.5'},
          ...cat.children.map((item,ii)=>
-          h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline'},
-           h('span',{className:'mega-icon bg-[#1B6B4A]/10 text-[#1B6B4A]'},item.icon),
-           h('span',{className:'flex flex-col'},
-            h('span',{className:`text-sm font-semibold ${dark?'text-white':'text-gray-900'}`},item.label),
-            h('span',{className:`text-xs mt-0.5 ${dark?'text-white/50':'text-gray-500'}`},item.desc)
-           )
+          h('a',{key:ii,href:item.href,className:`mega-item group flex items-center gap-3.5 px-3 py-2.5 rounded-xl no-underline transition-all duration-150 ${dark?'hover:bg-[#1E3A5F]/60 hover:border-[#2A4E72]':'hover:bg-[#F0FAF5] hover:border-[#D1EFE2]'} border border-transparent`},
+           h('span',{className:'mega-icon flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg text-base transition-transform duration-150 group-hover:scale-110'},item.icon),
+           h('span',{className:'flex flex-col min-w-0'},
+            h('span',{className:`mega-label text-sm font-semibold leading-tight ${dark?'text-white':'text-[#1A1F2E]'}`},item.label),
+            h('span',{className:`mega-desc text-[11px] mt-0.5 leading-snug truncate ${dark?'text-white/40':'text-[#8A93A8]'}`},item.desc)
+           ),
+           h('span',{className:'ml-auto flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-[#1B6B4A] text-xs font-bold'},'\u2192')
           )
          )
         )
