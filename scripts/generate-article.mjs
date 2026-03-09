@@ -697,9 +697,15 @@ async function main() {
     console.log('  Résumé :');
     console.log(`  ${newsData ? '✅' : '⚠️ '} Classification des articles`);
     console.log(`  ${tavilyResults.length > 0 ? '✅' : '⚠️ '} Enrichissement Tavily (${tavilyResults.length} sources)`);
-    console.log(`  ${articleSaved ? '✅' : '⚠️ '} Article du jour`);
+    console.log(`  ${articleSaved ? '✅' : '❌'} Article du jour`);
     console.log(`  💰 Claude API : ${stats.totalCalls} appels, ${stats.totalInputTokens}in/${stats.totalOutputTokens}out tokens, ~$${stats.estimatedCostUSD}`);
     console.log('═══════════════════════════════════════\n');
+
+    // ⚠️ Échec explicite si l'article n'a pas été généré — évite les "success" silencieux dans GitHub Actions
+    if (!articleSaved) {
+        console.error('❌ Article non généré — exit 1 pour signaler l\'échec au workflow.');
+        process.exit(1);
+    }
 }
 
 main().catch(err => {

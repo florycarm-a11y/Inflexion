@@ -76,16 +76,21 @@ jobs:
           fi
 
           # 2. Vérifier que l'article n'a pas déjà été généré récemment (< 10h)
-          # Seulement pour les exécutions automatiques — le mode manuel force la régénération
+          # Utilise la date interne du JSON (fiable) plutôt que git log (peu fiable en shallow clone)
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "✅ Exécution manuelle — check de doublon ignoré"
-          elif [ -f data/article-du-jour.json ] && git log -1 --format="%ct" -- data/article-du-jour.json > /dev/null 2>&1; then
-            LAST_ARTICLE=$(git log -1 --format="%ct" -- data/article-du-jour.json)
-            ARTICLE_AGE=$((NOW - LAST_ARTICLE))
-            echo "📊 Dernier article il y a $((ARTICLE_AGE / 3600))h"
-            if [ $ARTICLE_AGE -lt 36000 ]; then
-              echo "⏭ Article déjà généré (< 10h) — skip"
-              SHOULD_RUN=false
+          elif [ -f data/article-du-jour.json ]; then
+            ARTICLE_DATE=$(node -e "try { const a = JSON.parse(require('fs').readFileSync('data/article-du-jour.json','utf8')); console.log(a.generated_at || a.date || ''); } catch(e) { console.log(''); }")
+            if [ -n "$ARTICLE_DATE" ]; then
+              LAST_ARTICLE=$(node -e "console.log(Math.floor(new Date('$ARTICLE_DATE').getTime()/1000))")
+              ARTICLE_AGE=$((NOW - LAST_ARTICLE))
+              echo "📊 Dernier article : $ARTICLE_DATE (il y a $((ARTICLE_AGE / 3600))h)"
+              if [ $ARTICLE_AGE -lt 36000 ]; then
+                echo "⏭ Article déjà généré (< 10h) — skip"
+                SHOULD_RUN=false
+              fi
+            else
+              echo "📊 Aucune date valide dans l'article — régénération forcée"
             fi
           else
             echo "📊 Aucun article précédent trouvé"
