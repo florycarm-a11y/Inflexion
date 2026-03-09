@@ -1,638 +1,555 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Cloud et IA : la dépendance invisible des PME européennes — Inflexion</title>
-<meta name="description" content="610 milliards de dollars d'investissement en 2026, dont 75 % fléchés vers l'IA. Le cloud n'est plus un sujet technique — c'est un risque de direction générale. Analyse Inflexion.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="description" content="610 milliards de dollars d'investissement en 2026, dont 75 % fléchés vers l'IA. Le cloud n'est plus un sujet technique — c'est un risque de direction générale. Analyse Inflexion."/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{brand:{900:'#0A1628',800:'#1B6B4A',700:'#1E7E56',600:'#2A9D6E',500:'#10b981',400:'#34d399',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},navy:{900:'#0A1628',800:'#0F2035',700:'#162A45'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
-  :root {
-    --bg: #EDE8DC;
-    --bg-card: #FFFFFF;
-    --bg-alt: #E5DFD1;
-    --bg-highlight: #F5F2EA;
-    --text-primary: #1A1A1A;
-    --text-secondary: #3A3A3A;
-    --text-muted: #6A6A6A;
-    --green-dark: #0B3D1E;
-    --green: #105E2D;
-    --green-light: #1A7A3A;
-    --green-soft: rgba(11, 61, 30, 0.08);
-    --red-alert: #DC2626;
-    --gold: #EAB308;
-    --border: #D4CFC3;
-    --border-light: #E0DBD0;
-    --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-    --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: var(--serif);
-    background: var(--bg);
-    color: var(--text-primary);
-    line-height: 1.7;
-    font-size: 17px;
-    -webkit-font-smoothing: antialiased;
-  }
-  .top-bar {
-    background: var(--green-dark);
-    padding: 10px 0;
-    text-align: center;
-    font-family: var(--sans);
-    font-size: 11px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.75);
-    border-bottom: 2px solid var(--green);
-  }
-  .top-bar a {
-    color: rgba(255,255,255,0.75);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .top-bar a:hover {
-    color: #fff;
-  }
-  .top-bar span { opacity: 0.4; margin: 0 8px; }
-  .hero {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 80px 24px 40px;
-  }
-  .hero-meta {
-    font-family: var(--sans);
-    font-size: 12px;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-    color: var(--green);
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .hero-meta .tag {
-    background: var(--green-dark);
-    color: white;
-    padding: 3px 10px;
-    border-radius: 2px;
-    font-weight: 600;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-  }
-  .hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(32px, 5vw, 46px);
-    font-weight: 700;
-    line-height: 1.15;
-    color: var(--green-dark);
-    margin-bottom: 8px;
-  }
-  .hero h1 em {
-    color: var(--green);
-    font-style: normal;
-  }
-  .hero .subtitle {
-    font-size: 20px;
-    color: var(--text-secondary);
-    font-weight: 300;
-    line-height: 1.45;
-    margin-top: 16px;
-    margin-bottom: 32px;
-  }
-  .hero-divider {
-    width: 60px;
-    height: 3px;
-    background: var(--green);
-    margin-bottom: 24px;
-  }
-  .hero-info {
-    font-family: var(--sans);
-    font-size: 13px;
-    color: var(--text-muted);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    align-items: center;
-  }
-  .hero-info strong { color: var(--text-secondary); }
-  .article {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0 24px 80px;
-  }
-  .article p {
-    margin-bottom: 20px;
-    font-size: 17px;
-    color: var(--text-secondary);
-    line-height: 1.75;
-  }
-  .article strong { color: var(--text-primary); }
-  .article h2 {
-    font-family: var(--serif);
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--green-dark);
-    margin-top: 52px;
-    margin-bottom: 20px;
-    line-height: 1.3;
-  }
-  .article h3 {
-    font-family: var(--sans);
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--green);
-    margin-top: 32px;
-    margin-bottom: 12px;
-    letter-spacing: 0.3px;
-  }
-  /* Key figure */
-  .key-figure {
-    background: linear-gradient(135deg, var(--green-dark) 0%, #0D4A24 100%);
-    border-radius: 4px;
-    padding: 40px 36px;
-    margin: 40px 0;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .key-figure::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--green), var(--green-light), rgba(255,255,255,0.3));
-  }
-  .key-figure .number {
-    font-family: var(--sans);
-    font-size: 52px;
-    font-weight: 700;
-    color: #FFFFFF;
-    line-height: 1;
-    margin-bottom: 10px;
-  }
-  .key-figure .label {
-    font-family: var(--serif);
-    font-size: 17px;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.5;
-  }
-  .key-figure .label strong { color: white; }
-  /* Double key figure */
-  .key-figures-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin: 40px 0;
-  }
-  .key-figure-sm {
-    background: linear-gradient(135deg, var(--green-dark) 0%, #0D4A24 100%);
-    border-radius: 4px;
-    padding: 28px 24px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .key-figure-sm::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--green), var(--green-light), rgba(255,255,255,0.3));
-  }
-  .key-figure-sm .number {
-    font-family: var(--sans);
-    font-size: 36px;
-    font-weight: 700;
-    color: #FFFFFF;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .key-figure-sm .label {
-    font-family: var(--serif);
-    font-size: 14.5px;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.45;
-  }
-  .key-figure-sm .label strong { color: white; }
-  /* Insight box */
-  .insight {
-    border-left: 3px solid var(--green);
-    background: var(--bg-highlight);
-    padding: 20px 24px;
-    margin: 28px 0;
-    border-radius: 0 4px 4px 0;
-  }
-  .insight-label {
-    font-family: var(--sans);
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--green);
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
-  .insight p {
-    font-size: 16px;
-    color: var(--text-secondary);
-    margin-bottom: 0;
-    font-style: italic;
-    line-height: 1.65;
-  }
-  /* Alert insight (red) */
-  .insight.alert {
-    border-left-color: var(--red-alert);
-  }
-  .insight.alert .insight-label {
-    color: var(--red-alert);
-  }
-  /* Gold insight */
-  .insight.gold {
-    border-left-color: var(--gold);
-  }
-  .insight.gold .insight-label {
-    color: #9A7506;
-  }
-  /* Pillar cards */
-  .pillar {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 28px 28px 24px;
-    margin: 24px 0;
-    position: relative;
-    padding-left: 32px;
-  }
-  .pillar::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px;
-    height: 100%;
-    background: var(--green-dark);
-    border-radius: 4px 0 0 4px;
-  }
-  .pillar.green-mid::before { background: var(--green); }
-  .pillar.green-light::before { background: var(--green-light); }
-  .pillar h4 {
-    font-family: var(--sans);
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 12px;
-    line-height: 1.35;
-  }
-  .pillar p {
-    font-size: 15.5px;
-    line-height: 1.65;
-    margin-bottom: 12px;
-  }
-  .pillar p:last-child { margin-bottom: 0; }
-  .pillar .lever {
-    font-family: var(--sans);
-    font-size: 14px;
-    color: var(--text-secondary);
-    padding: 6px 0 6px 20px;
-    position: relative;
-    line-height: 1.5;
-  }
-  .pillar .lever::before {
-    content: '\2192';
-    position: absolute;
-    left: 0;
-    color: var(--green);
-    font-weight: 600;
-  }
-  .section-number {
-    font-family: var(--sans);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--green-light);
-    margin-bottom: 8px;
-    display: block;
-  }
-  /* Data rows */
-  .data-box {
-    margin: 20px 0 28px;
-    padding: 16px 20px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-  }
-  .data-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border-light);
-    font-family: var(--sans);
-    font-size: 14.5px;
-    color: var(--text-secondary);
-  }
-  .data-row:last-child { border-bottom: none; }
-  .data-row .data-label { flex: 1; }
-  .data-row .data-value {
-    font-weight: 700;
-    color: var(--green-dark);
-    margin-left: 16px;
-    white-space: nowrap;
-  }
-  .data-row .data-value.highlight { color: var(--green); }
-  /* Matrice table */
-  .matrix-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 24px 0 32px;
-    font-family: var(--sans);
-    font-size: 14px;
-  }
-  .matrix-table thead th {
-    background: var(--green-dark);
-    color: white;
-    padding: 12px 16px;
-    text-align: left;
-    font-weight: 600;
-    font-size: 12px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-  .matrix-table thead th:first-child {
-    border-radius: 4px 0 0 0;
-  }
-  .matrix-table thead th:last-child {
-    border-radius: 0 4px 0 0;
-  }
-  .matrix-table tbody td {
-    padding: 14px 16px;
-    border-bottom: 1px solid var(--border-light);
-    vertical-align: top;
-    line-height: 1.55;
-    color: var(--text-secondary);
-  }
-  .matrix-table tbody tr:nth-child(odd) td {
-    background: var(--bg-highlight);
-  }
-  .matrix-table tbody tr:nth-child(even) td {
-    background: var(--bg-card);
-  }
-  .matrix-table tbody tr:last-child td:first-child {
-    border-radius: 0 0 0 4px;
-  }
-  .matrix-table tbody tr:last-child td:last-child {
-    border-radius: 0 0 4px 0;
-  }
-  .matrix-table td strong {
-    color: var(--text-primary);
-  }
-  /* CTA banner */
-  .cta-banner {
-    background: var(--bg-alt);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 28px 24px;
-    margin: 40px 0;
-    text-align: center;
-  }
-  .cta-banner p {
-    font-family: var(--sans);
-    font-size: 14px;
-    color: var(--text-secondary);
-    margin-bottom: 0;
-  }
-  .cta-banner strong { color: var(--green-dark); }
-  .closing {
-    text-align: center;
-    padding: 48px 24px;
-    margin-top: 48px;
-    border-top: 2px solid var(--border);
-  }
-  .closing blockquote {
-    font-family: var(--serif);
-    font-size: 21px;
-    font-weight: 600;
-    color: var(--green-dark);
-    line-height: 1.45;
-    max-width: 580px;
-    margin: 0 auto 16px;
-  }
-  .closing .sub {
-    font-family: var(--sans);
-    font-size: 14px;
-    color: var(--text-muted);
-  }
-  .sources {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 32px 24px 60px;
-    border-top: 1px solid var(--border-light);
-  }
-  .sources h4 {
-    font-family: var(--sans);
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 12px;
-  }
-  .sources p {
-    font-family: var(--sans);
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
-  .back-nav {
-    text-align: center;
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0 24px 60px;
-  }
-  .back-nav a {
-    display: inline-block;
-    font-family: var(--sans);
-    font-size: 14px;
-    font-weight: 600;
-    color: #10b981;
-    text-decoration: none;
-    padding: 10px 24px;
-    border: 2px solid #10b981;
-    border-radius: 6px;
-    transition: background 0.2s ease, color 0.2s ease;
-  }
-  .back-nav a:hover {
-    background: #10b981;
-    color: #fff;
-  }
-  @media (max-width: 640px) {
-    .hero { padding: 48px 20px 32px; }
-    .hero h1 { font-size: 30px; }
-    .article { padding: 0 20px 60px; }
-    .key-figure { padding: 28px 20px; }
-    .key-figure .number { font-size: 40px; }
-    .key-figures-row { grid-template-columns: 1fr; }
-    .key-figure-sm .number { font-size: 30px; }
-    .pillar { padding: 20px 20px 20px 24px; }
-    .hero-info { flex-direction: column; gap: 8px; }
-    .data-row { font-size: 13.5px; }
-    .matrix-table { font-size: 13px; }
-    .matrix-table thead th, .matrix-table tbody td { padding: 10px 12px; }
-  }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden}
+
+h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
+.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#1B6B4A}
+
+@keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-track{animation:ticker-scroll 30s linear infinite}
+.ticker-track:hover{animation-play-state:paused}
+@keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.anim-fade-up{animation:fade-up .6s ease-out both}
+.anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}
+
+.nav-link{position:relative}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#1B6B4A;transform:scaleX(0);transition:transform .25s ease}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.mega-trigger{position:relative}
+.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:520px;z-index:60}
+.mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.mega-item{transition:background .15s ease}
+.mega-item:hover{background:rgba(27,107,74,.06)}
+.mega-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.nav-scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid #E2E5EB;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+
+.hamburger span{display:block;width:24px;height:2px;background:#1A1F2E;margin:5px 0;transition:all .3s ease}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-overlay{opacity:0;visibility:hidden;transition:opacity .35s cubic-bezier(.4,0,.2,1),visibility .35s}
+.mobile-overlay.open{opacity:1;visibility:visible}
+@keyframes menu-item-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.menu-item{opacity:0}
+.mobile-overlay.open .menu-item{animation:menu-item-in .4s ease-out forwards}
+
+.prose p{margin-bottom:1.25rem;font-size:1.0625rem;line-height:1.8;color:#3A3A3A}
+.prose strong{color:#1A1F2E}
+.prose h2{font-size:1.625rem;color:#0B3D1E;margin-top:3.25rem;margin-bottom:1.25rem;line-height:1.3}
+.prose h3{font-family:'Inter',sans-serif;font-size:1.0625rem;font-weight:600;color:#1B6B4A;margin-top:2rem;margin-bottom:0.75rem;letter-spacing:0.3px}
+
+.key-figure{background:linear-gradient(135deg,#0B3D1E 0%,#0D4A24 100%);border-radius:0.5rem;padding:2.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+.key-figure::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1B6B4A,#2A9D6E,rgba(255,255,255,0.3))}
+
+.insight-box{border-left:3px solid #1B6B4A;background:#F7F8FA;padding:1.25rem 1.5rem;margin:1.75rem 0;border-radius:0 0.5rem 0.5rem 0}
+.insight-box.alert{border-left-color:#DC2626}
+.insight-box.gold{border-left-color:#EAB308}
+
+.pillar-card{background:#FFFFFF;border:1px solid #E2E5EB;border-radius:0.5rem;padding:1.75rem 1.75rem 1.5rem;margin:1.5rem 0;position:relative;padding-left:2rem;border-left:4px solid #0B3D1E}
+.pillar-card.green-mid{border-left-color:#1B6B4A}
+.pillar-card.green-light{border-left-color:#2A9D6E}
+
+.matrix-table{width:100%;border-collapse:collapse;font-family:'Inter',sans-serif;font-size:0.875rem}
+.matrix-table thead th{background:#0B3D1E;color:white;padding:0.75rem 1rem;text-align:left;font-weight:600;font-size:0.75rem;letter-spacing:0.5px;text-transform:uppercase}
+.matrix-table thead th:first-child{border-radius:0.5rem 0 0 0}
+.matrix-table thead th:last-child{border-radius:0 0.5rem 0 0}
+.matrix-table tbody td{padding:0.875rem 1rem;border-bottom:1px solid #ECEEF2;vertical-align:top;line-height:1.55;color:#3A3A3A}
+.matrix-table tbody tr:nth-child(odd) td{background:#F7F8FA}
+.matrix-table tbody tr:nth-child(even) td{background:#FFFFFF}
+.matrix-table tbody tr:last-child td:first-child{border-radius:0 0 0 0.5rem}
+.matrix-table tbody tr:last-child td:last-child{border-radius:0 0 0.5rem 0}
+.matrix-table td strong{color:#1A1F2E}
+
+.data-row{display:flex;justify-content:space-between;align-items:baseline;padding:0.625rem 0;border-bottom:1px solid #ECEEF2;font-size:0.875rem;color:#3A3A3A}
+.data-row:last-child{border-bottom:none}
+
+.article-card{transition:transform .2s ease,box-shadow .2s ease}
+.article-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(10,22,40,.08)}
+
+.category-geo{background:#2563eb}.category-marches{background:#1B6B4A}.category-crypto{background:#f59e0b}.category-matieres{background:#ef4444}.category-iatech{background:#8b5cf6}
+
+.section-number{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2A9D6E;display:block;margin-bottom:0.5rem}
+
+.font-data{font-family:'JetBrains Mono','SF Mono',monospace}
 </style>
 </head>
 <body>
-<div class="top-bar">
-  <a href="index.html">INFLEXION</a> <span>&bull;</span> Intelligence Strat&eacute;gique
-</div>
-<div class="hero">
-  <div class="hero-meta">
-    <span class="tag">ANALYSE</span>
-    <span>Infrastructure &amp; Souverainet&eacute;</span>
-  </div>
-  <h1>Cloud et IA : la d&eacute;pendance invisible<br>des <em>PME europ&eacute;ennes</em></h1>
-  <p class="subtitle">Le cloud n'est plus un sujet technique. C'est un risque de direction g&eacute;n&eacute;rale. Quand la capacit&eacute; sature, les clients sans contrat sont les premiers sacrifi&eacute;s.</p>
-  <div class="hero-divider"></div>
-  <div class="hero-info">
-    <span><strong>Inflexion Research</strong></span>
-    <span>F&eacute;vrier 2026</span>
-    <span>9 min de lecture</span>
-  </div>
-</div>
-<div class="article">
-  <!-- ============================================================ -->
-  <!-- INTRODUCTION -->
-  <!-- ============================================================ -->
-  <p>Le secteur du cloud entre dans une phase de rationnement structurel. Les d&eacute;penses d'investissement cumul&eacute;es des cinq g&eacute;ants du cloud ont &eacute;t&eacute; multipli&eacute;es par sept entre 2020 et 2026, passant de 90 &agrave; plus de 600 milliards de dollars. L'essentiel de cette acc&eacute;l&eacute;ration s'est concentr&eacute; sur les deux derni&egrave;res ann&eacute;es, sous la pression d'une demande en calcul IA qui d&eacute;passe structurellement l'offre disponible. &Agrave; elle seule, la filiale cloud d'Amazon pr&eacute;voit d'engager 200 milliards de dollars en 2026 &mdash; un montant sup&eacute;rieur de 37 % aux anticipations du march&eacute;, et qui d&eacute;passe le budget annuel de d&eacute;fense de la France. Ce niveau d'engagement traduit une conviction industrielle, pas un cycle d'investissement classique. Sur ce total agr&eacute;g&eacute;, environ <strong>450 milliards &mdash; soit 75 % &mdash; sont sp&eacute;cifiquement fl&eacute;ch&eacute;s vers l'infrastructure d'intelligence artificielle</strong> (serveurs, processeurs graphiques, centres de donn&eacute;es).</p>
-  <div class="key-figures-row">
-    <div class="key-figure-sm">
-      <div class="number">610 Mds $</div>
-      <div class="label">D&eacute;penses d'investissement cumul&eacute;es<br><strong>&times;7 en six ans</strong></div>
-    </div>
-    <div class="key-figure-sm">
-      <div class="number">75 %</div>
-      <div class="label">Fl&eacute;ch&eacute;s vers <strong>l'infrastructure IA</strong><br>soit 450 Mds $</div>
-    </div>
-  </div>
-  <p>Malgr&eacute; cette injection massive, la demande exc&egrave;de l'offre : Azure fait face &agrave; des contraintes de capacit&eacute; qui devraient se prolonger jusqu'&agrave; la mi-2026. Le d&eacute;fi pour les PME et ETI europ&eacute;ennes est d&eacute;sormais double : <strong>s&eacute;curiser un acc&egrave;s au calcul dans un march&eacute; satur&eacute;</strong> et <strong>naviguer dans un cadre r&eacute;glementaire en pleine mutation</strong>.</p>
-  <!-- ============================================================ -->
-  <!-- &Eacute;CART CRITIQUE -->
-  <!-- ============================================================ -->
-  <h2>L'&eacute;cart critique : tarif catalogue contre contrat r&eacute;serv&eacute;</h2>
-  <p>L'&eacute;cart entre le tarif catalogue (facturation &agrave; la demande) et un contrat r&eacute;serv&eacute; de trois ans atteint <strong>80 % chez Microsoft Azure</strong>. Ce niveau est atteint en combinant les instances r&eacute;serv&eacute;es et le &laquo; Azure Hybrid Benefit &raquo;.</p>
-  <div class="key-figure">
-    <div class="number">&gt; 1 M&euro;</div>
-    <div class="label">&Eacute;conomie sur la dur&eacute;e du contrat pour une ETI &agrave; <strong>50 000 &euro;/mois</strong><br>en passant du tarif catalogue &agrave; l'engagement pluriannuel</div>
-  </div>
-  <p>Prenons un cas concret. Une ETI dont la facture cloud mensuelle atteint 50 000 euros en tarif &agrave; la demande peut r&eacute;duire ce montant &agrave; moins de 15 000 euros en n&eacute;gociant un engagement pluriannuel coupl&eacute; &agrave; ses licences existantes. Sur la dur&eacute;e du contrat, le diff&eacute;rentiel repr&eacute;sente plus d'un million d'euros &mdash; l'&eacute;quivalent du salaire charg&eacute; de dix ing&eacute;nieurs sur un an.</p>
-  <div class="insight">
-    <div class="insight-label">La &laquo; taxe sur l'agilit&eacute; &raquo;</div>
-    <p>Dit autrement, chaque mois pass&eacute; en tarif catalogue est un transfert de marge vers les clients qui ont su verrouiller leurs conditions. En 2026, le cloud n'est plus une d&eacute;pense variable, mais un actif strat&eacute;gique dont le co&ucirc;t doit &ecirc;tre verrouill&eacute;.</p>
-  </div>
-  <!-- ============================================================ -->
-  <!-- TROIS ENJEUX -->
-  <!-- ============================================================ -->
-  <h2>Trois enjeux critiques pour les dirigeants</h2>
-  <span class="section-number">Enjeu 01</span>
-  <div class="pillar">
-    <h4>La stratification de l'acc&egrave;s au calcul</h4>
-    <p>Le march&eacute; se scinde en deux. Les <strong>clients prioritaires</strong> &mdash; contrats pluriannuels &mdash; b&eacute;n&eacute;ficient d'une capacit&eacute; garantie, de prix verrouill&eacute;s et d'un acc&egrave;s pr&eacute;f&eacute;rentiel en cas de saturation. Les <strong>clients expos&eacute;s</strong> &mdash; facturation &agrave; la demande, sans engagement &mdash; sont les premiers rationn&eacute;s. Ce risque est av&eacute;r&eacute; : Azure reconna&icirc;t des contraintes de capacit&eacute; prolong&eacute;es jusqu'&agrave; la mi-2026.</p>
-    <p>La contrainte s'&eacute;tend au mat&eacute;riel. NVIDIA confirme que son architecture Blackwell (B200/GB200) est <strong>int&eacute;gralement attribu&eacute;e jusqu'&agrave; la mi-2026</strong>, avec un carnet de commandes d&eacute;passant 3,6 millions d'unit&eacute;s pour les seuls grands fournisseurs de cloud. Pour une PME, rester client expos&eacute; en 2026, c'est accepter un double risque : interruption de service <em>et</em> impossibilit&eacute; de monter en puissance.</p>
-  </div>
-  <div class="insight alert">
-    <div class="insight-label">Signal critique</div>
-    <p>Un indicateur op&eacute;rationnel simple permet de mesurer votre exposition : comparez vos temps de r&eacute;ponse entre 3 h et 10 h du matin. Si l'&eacute;cart d&eacute;passe 40 &agrave; 50 %, votre charge est d&eacute;j&agrave; soumise &agrave; un m&eacute;canisme de priorisation qui ne vous favorise pas. C'est le signal qu'il faut s&eacute;curiser une capacit&eacute; d&eacute;di&eacute;e.</p>
-  </div>
-  <span class="section-number">Enjeu 02</span>
-  <div class="pillar green-mid">
-    <h4>Le r&eacute;veil de la souverainet&eacute; et le cadre CADA</h4>
-    <p>L'Europe entre dans son &laquo; moment d'ind&eacute;pendance &raquo;. Le <strong>Cloud and AI Development Act</strong> (CADA), dont la proposition l&eacute;gislative est attendue au premier trimestre 2026, vise &agrave; harmoniser les architectures cloud et les processus de passation de march&eacute;s publics pour r&eacute;duire la d&eacute;pendance aux technologies non europ&eacute;ennes.</p>
-    <p>En parall&egrave;le, le sommet de novembre 2025 a marqu&eacute; une convergence vers la <strong>&laquo; pr&eacute;f&eacute;rence europ&eacute;enne &raquo;</strong> dans la commande publique, port&eacute;e par la France et l'Allemagne pour soutenir les acteurs locaux. L'alternative existe et se structure : <strong>Scaleway</strong> (infrastructure de pointe, &eacute;nergie 100 % renouvelable, localisation fran&ccedil;aise), <strong>OVHcloud</strong> (certifi&eacute; HDS, SecNumCloud en cours), Genesis Cloud (natif RGPD). Ces acteurs ne rivalisent pas sur la taille &mdash; ils rivalisent sur la conformit&eacute;, la proximit&eacute; et la pr&eacute;visibilit&eacute; contractuelle.</p>
-  </div>
-  <span class="section-number">Enjeu 03</span>
-  <div class="pillar green-light">
-    <h4>La contrainte physique : &eacute;nergie et d&eacute;lais industriels</h4>
-    <p>L'infrastructure IA se heurte &agrave; des limites physiques majeures. En Irlande, le moratoire sur les centres de donn&eacute;es a &eacute;t&eacute; lev&eacute; fin 2025, mais les <strong>nouvelles conditions sont drastiques</strong> : les centres de donn&eacute;es doivent installer une capacit&eacute; d'auto-g&eacute;n&eacute;ration ou de stockage sur site couvrant 100 % de leur demande, et 80 % de leur &eacute;lectricit&eacute; doit provenir de nouveaux projets renouvelables sp&eacute;cifiquement contract&eacute;s.</p>
-    <p>C&ocirc;t&eacute; mat&eacute;riel lourd, les d&eacute;lais de livraison des transformateurs haute tension atteignent d&eacute;sormais <strong>36 &agrave; 60 mois</strong> (contre 6 &agrave; 8 mois avant 2020), figeant toute expansion rapide de capacit&eacute; jusqu'&agrave; la fin de la d&eacute;cennie. La capacit&eacute; de calcul cloud n'est pas extensible &agrave; volont&eacute; : les cr&eacute;neaux se r&eacute;servent des trimestres &agrave; l'avance.</p>
-  </div>
-  <!-- ============================================================ -->
-  <!-- LEVIERS -->
-  <!-- ============================================================ -->
-  <h2>Leviers de r&eacute;duction de la d&eacute;pendance</h2>
-  <span class="section-number">Levier 01</span>
-  <h3>Passer &agrave; la n&eacute;gociation structur&eacute;e</h3>
-  <p>Les trois op&eacute;rateurs majeurs proposent des m&eacute;canismes de r&eacute;servation accessibles sans &ecirc;tre un grand compte :</p>
-  <div class="data-box">
-    <div class="data-row"><span class="data-label">AWS &mdash; &laquo; Savings Plans &raquo; (3 ans)</span><span class="data-value">&minus;66 &agrave; 72 %</span></div>
-    <div class="data-row"><span class="data-label">Azure &mdash; &laquo; Reserved &raquo; + &laquo; Hybrid Benefit &raquo; (3 ans + licences existantes)</span><span class="data-value">&minus;80 %</span></div>
-    <div class="data-row"><span class="data-label">GCP &mdash; &laquo; Committed Use Discounts &raquo; (3 ans)</span><span class="data-value">&minus;70 %</span></div>
-    <div class="data-row"><span class="data-label">GCP &mdash; &laquo; Sustained Use Discounts &raquo; (automatique, sans engagement)</span><span class="data-value highlight">&minus;30 %</span></div>
-  </div>
-  <p>Le point de d&eacute;part : <strong>auditer trois mois d'utilisation r&eacute;elle</strong> avant tout engagement. Le pi&egrave;ge le plus fr&eacute;quent reste le sur-provisionnement &mdash; r&eacute;server plus que ce qu'on consomme.</p>
-  <div class="insight">
-    <div class="insight-label">Levier sp&eacute;cifique PME</div>
-    <p>Point diff&eacute;renciant &agrave; conna&icirc;tre : AWS a mis en place une place de march&eacute; permettant de c&eacute;der ses capacit&eacute;s r&eacute;serv&eacute;es exc&eacute;dentaires &agrave; d'autres clients, moyennant un pr&eacute;l&egrave;vement de 12 %. Aucun autre fournisseur ne propose de m&eacute;canisme &eacute;quivalent &mdash; un filet de s&eacute;curit&eacute; non n&eacute;gligeable pour limiter le risque de sur-dimensionnement.</p>
-  </div>
-  <span class="section-number">Levier 02</span>
-  <h3>Rapatrier le calcul via le logiciel libre</h3>
-  <p>Le rapport de force a bascul&eacute;. Sur le test de r&eacute;f&eacute;rence MMLU, un mod&egrave;le libre de 70 milliards de param&egrave;tres &mdash; ex&eacute;cutable sur deux processeurs graphiques &mdash; obtient d&eacute;sormais un score comparable aux meilleurs mod&egrave;les propri&eacute;taires (86 % contre 85,9 % pour GPT-4o). La diff&eacute;rence n'est plus qualitative. Elle est &eacute;conomique : un facteur 25 sur le co&ucirc;t unitaire d'inf&eacute;rence.</p>
-  <div class="data-box">
-    <div class="data-row"><span class="data-label">Co&ucirc;t par million de jetons en entr&eacute;e &mdash; GPT-4o (interface de programmation)</span><span class="data-value">2,50 $</span></div>
-    <div class="data-row"><span class="data-label">Co&ucirc;t par million de jetons en entr&eacute;e &mdash; Llama 3.3 70B</span><span class="data-value highlight">0,10 $</span></div>
-    <div class="data-row"><span class="data-label">Rapport de co&ucirc;t</span><span class="data-value">&times;25 moins cher</span></div>
-  </div>
-  <p>L'&eacute;cart se creuse encore en local. Un Mac Studio M4 Ultra (pr&eacute;vu pour 2026) avec une m&eacute;moire unifi&eacute;e massive permet de faire tourner ces mod&egrave;les en interne. Le co&ucirc;t mat&eacute;riel est <strong>amorti en moins de six mois</strong> face aux facturations d'interface de programmation. Pour la majorit&eacute; des cas d'usage en entreprise &mdash; classification, extraction, recherche augment&eacute;e, synth&egrave;se &mdash; le logiciel libre offre une performance &eacute;quivalente avec un avantage d&eacute;cisif : aucune d&eacute;pendance &agrave; la disponibilit&eacute; d'un tiers.</p>
-  <span class="section-number">Levier 03</span>
-  <h3>Exploiter la fen&ecirc;tre r&eacute;glementaire</h3>
-  <p>La Commission europ&eacute;enne a propos&eacute; en novembre 2025 le <strong>&laquo; Digital Omnibus &raquo;</strong>, qui repousse la mise en conformit&eacute; du r&egrave;glement sur l'IA pour les syst&egrave;mes &agrave; haut risque au <strong>2 d&eacute;cembre 2027</strong>. Ce d&eacute;lai d'un an offre aux PME une fen&ecirc;tre pour structurer leur gouvernance de l'IA sans la pression d'une &eacute;ch&eacute;ance imm&eacute;diate en 2026.</p>
-  <div class="insight gold">
-    <div class="insight-label">Fen&ecirc;tre d'opportunit&eacute;</div>
-    <p>Le report du &laquo; Digital Omnibus &raquo; ne dispense pas de la conformit&eacute; &mdash; il accorde du temps. Les PME qui utilisent cette fen&ecirc;tre pour structurer leur gouvernance IA (documentation des mod&egrave;les, &eacute;valuation des risques, tra&ccedil;abilit&eacute;) seront en position de force quand l'&eacute;ch&eacute;ance de d&eacute;cembre 2027 s'appliquera.</p>
-  </div>
-  <!-- ============================================================ -->
-  <!-- MATRICE -->
-  <!-- ============================================================ -->
-  <h2>Matrice d'action par profil</h2>
-  <table class="matrix-table">
-    <thead>
-      <tr>
-        <th>Profil</th>
-        <th>Priorit&eacute; strat&eacute;gique</th>
-        <th>Action cl&eacute; 2026</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Jeune entreprise IA</strong><br><span style="font-size:12px;color:var(--text-muted);">10 pers., 5-15 k&euro;/mois</span></td>
-        <td>Flexibilit&eacute; maximale</td>
-        <td>Utiliser les remises automatiques de GCP (&minus;30 %) ou Scaleway &agrave; la demande. Mod&egrave;le local (Llama/Mistral) comme filet de s&eacute;curit&eacute;.</td>
-      </tr>
-      <tr>
-        <td><strong>PME &eacute;ditrice de logiciel</strong><br><span style="font-size:12px;color:var(--text-muted);">50 pers., 30-80 k&euro;/mois</span></td>
-        <td>Pr&eacute;visibilit&eacute; des marges</td>
-        <td>Migrer vers AWS &laquo; Savings Plans &raquo; 1 an (&minus;50 % minimum) et hybrider avec Llama 3.3 en local pour les charges r&eacute;currentes.</td>
-      </tr>
-      <tr>
-        <td><strong>ETI europ&eacute;enne</strong><br><span style="font-size:12px;color:var(--text-muted);">200+ pers., 100 k+ &euro;/mois</span></td>
-        <td>Souverainet&eacute; et r&eacute;silience</td>
-        <td>Combiner Azure &laquo; Reserved &raquo; 3 ans (&minus;80 %) avec un fournisseur certifi&eacute; SecNumCloud/HDS pour les donn&eacute;es sensibles. Deuxi&egrave;me fournisseur europ&eacute;en pour la reprise apr&egrave;s sinistre.</td>
-      </tr>
-    </tbody>
-  </table>
-  <!-- ============================================================ -->
-  <!-- CLOSING -->
-  <!-- ============================================================ -->
-  <div class="closing">
-    <blockquote>Dans une &eacute;conomie o&ugrave; les transformateurs haute tension se commandent cinq ans &agrave; l'avance et o&ugrave; les processeurs graphiques sont allou&eacute;s avant m&ecirc;me leur fabrication, le tempo de d&eacute;cision ne se compte plus en ann&eacute;es budg&eacute;taires mais en trimestres. Les contrats sign&eacute;s aujourd'hui d&eacute;terminent la capacit&eacute; de calcul disponible en 2027.</blockquote>
-    <p class="sub">Inflexion Research &mdash; F&eacute;vrier 2026</p>
-  </div>
-</div>
-<div class="sources">
-  <h4>Sources &amp; m&eacute;thodologie</h4>
-  <p>Publications de r&eacute;sultats T4 2025 (Amazon, Alphabet, Microsoft, Meta). Plan d'investissement Amazon 2026 (200 Mds $). Documentation tarifaire officielle AWS, Azure, GCP, OVHcloud, Scaleway. NVIDIA &mdash; carnet de commandes Blackwell B200/GB200. Goldman Sachs et Barclays &mdash; analyses des d&eacute;penses d'investissement des op&eacute;rateurs. Agence internationale de l'&eacute;nergie &mdash; consommation des centres de donn&eacute;es. Commission europ&eacute;enne &mdash; proposition &laquo; Digital Omnibus &raquo; (novembre 2025). Projet de r&egrave;glement CADA &mdash; Cloud and AI Development Act (T1 2026). DatacenterDynamics &mdash; d&eacute;lais des transformateurs haute tension et conditions du moratoire irlandais. Sommet de novembre 2025 &mdash; convergence &laquo; pr&eacute;f&eacute;rence europ&eacute;enne &raquo; (France, Allemagne).</p>
-</div>
-<div class="back-nav">
-  <a href="analysis.html">&larr; Toutes les analyses</a>
-</div>
+<div id="app"></div>
+<script type="module">
+import React,{useState,useEffect} from 'https://esm.sh/react@18.2.0'
+import{createRoot}from 'https://esm.sh/react-dom@18.2.0/client'
+
+const h=React.createElement
+
+const RELATED_ARTICLES=[
+{id:1,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'Tensions en mer de Chine : P\u00e9kin renforce ses positions autour de Ta\u00efwan',img:'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=300&h=200&fit=crop',href:'#'},
+{id:2,cat:'marches',catLabel:'March\u00e9s',title:'La Fed maintient ses taux : les march\u00e9s anticipent une baisse en juin',img:'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=300&h=200&fit=crop',href:'#'},
+{id:3,cat:'crypto',catLabel:'Crypto',title:'Bitcoin franchit les 68 000 $ : l\'effet ETF se confirme',img:'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=300&h=200&fit=crop',href:'#'},
+]
+
+const MEGA_NAV=[
+{label:'Intelligence',children:[
+ {icon:'\ud83c\udf0d',label:'G\u00e9opolitique',desc:'Risques pays & tensions internationales',href:'geopolitics.html'},
+ {icon:'\ud83d\udcc8',label:'March\u00e9s',desc:'Actions, indices, taux & devises',href:'markets.html'},
+ {icon:'\u20bf',label:'Crypto & Blockchain',desc:'Bitcoin, DeFi, r\u00e9gulation',href:'crypto.html'},
+ {icon:'\ud83d\udee2\ufe0f',label:'Mati\u00e8res premi\u00e8res',desc:'Or, p\u00e9trole, m\u00e9taux & \u00e9nergie',href:'commodities.html'},
+ {icon:'\ud83d\udcca',label:'ETF & Fonds',desc:'Allocations & flux de capitaux',href:'etf.html'},
+]},
+{label:'Analyses',children:[
+ {icon:'\ud83d\udcf0',label:'Briefing du jour',desc:'Synth\u00e8se IA quotidienne',href:'index.html#briefing'},
+ {icon:'\ud83d\udd0e',label:'Analyses approfondies',desc:'D\u00e9cryptages th\u00e9matiques',href:'analysis.html'},
+ {icon:'\ud83d\uddfa\ufe0f',label:'Macro par pays',desc:'Donn\u00e9es World Bank & indicateurs',href:'country.html'},
+]},
+{label:'Expertise',children:[
+ {icon:'\ud83e\udded',label:'Notre approche',desc:'M\u00e9thodologie & cadre d\'analyse',href:'expertise.html'},
+ {icon:'\ud83e\udd16',label:'Pipeline IA',desc:'158 sources, 15 APIs, Claude IA',href:'expertise.html#pipeline'},
+ {icon:'\ud83d\udce1',label:'Sources & donn\u00e9es',desc:'Transparence sur nos flux',href:'expertise.html#sources'},
+]},
+{label:'Services',children:[
+ {icon:'\ud83d\udcbc',label:'Diagnostic strat\u00e9gique',desc:'Audit personnalis\u00e9 de vos positions',href:'premium.html'},
+ {icon:'\ud83d\udd14',label:'Alertes & veille',desc:'Notifications personnalis\u00e9es',href:'premium.html#alertes'},
+ {icon:'\ud83d\udccb',label:'Rapports sur mesure',desc:'Analyses d\u00e9di\u00e9es \u00e0 votre portefeuille',href:'premium.html#rapports'},
+]},
+]
+
+const TICKER_DATA=[
+{symbol:'S&P 500',value:'5 248.32',change:'+0.87%',up:true},
+{symbol:'CAC 40',value:'7 892.15',change:'+0.42%',up:true},
+{symbol:'DAX',value:'18 456.78',change:'-0.15%',up:false},
+{symbol:'BTC',value:'$68 420',change:'+2.34%',up:true},
+{symbol:'ETH',value:'$3 812',change:'+1.56%',up:true},
+{symbol:'EUR/USD',value:'1.0847',change:'-0.12%',up:false},
+{symbol:'Or',value:'$2 178',change:'+0.65%',up:true},
+{symbol:'VIX',value:'14.32',change:'-3.21%',up:true},
+{symbol:'Euro Stoxx 50',value:'5 012.44',change:'+0.31%',up:true},
+{symbol:'Nikkei 225',value:'39 876',change:'+1.12%',up:true},
+{symbol:'P\u00e9trole WTI',value:'$78.45',change:'-0.89%',up:false},
+{symbol:'Argent',value:'$25.12',change:'+1.23%',up:true},
+]
+
+// ─── NAVIGATION ──────────────────────────────────────────────────────────────
+
+function Navigation(){
+const[open,setOpen]=useState(false)
+const[scrolled,setScrolled]=useState(false)
+useEffect(()=>{
+const fn=()=>setScrolled(window.scrollY>60)
+window.addEventListener('scroll',fn,{passive:true})
+return()=>window.removeEventListener('scroll',fn)
+},[])
+return h('div',null,
+ h('header',{className:`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
+  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+   h('div',{className:'flex items-center justify-between h-16'},
+    h('a',{href:'index.html',className:'flex items-center gap-2'},
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(5) saturate(0.3)',transition:'filter 0.3s ease'}})
+    ),
+    h('nav',{className:'hidden md:flex items-center gap-1'},
+     ...MEGA_NAV.map((cat,ci)=>
+      h('div',{key:ci,className:'mega-trigger'},
+       h('span',{className:'nav-link px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors cursor-default select-none'},cat.label),
+       h('div',{className:'mega-menu bg-white rounded-2xl shadow-xl border border-gray-100 p-5'},
+        h('div',{className:'grid gap-1'},
+         ...cat.children.map((item,ii)=>
+          h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline'},
+           h('span',{className:'mega-icon bg-[#1B6B4A]/10 text-[#1B6B4A]'},item.icon),
+           h('span',{className:'flex flex-col'},
+            h('span',{className:'text-sm font-semibold text-gray-900'},item.label),
+            h('span',{className:'text-xs text-gray-500 mt-0.5'},item.desc)
+           )
+          )
+         )
+        )
+       )
+      )
+     ),
+     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#1B6B4A] hover:bg-[#155A3D] text-white font-semibold text-sm rounded-lg transition-colors'},'R\u00e9server un diagnostic')
+    ),
+    h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,onClick:()=>setOpen(!open)},
+     h('span'),h('span'),h('span')
+    )
+   )
+  )
+ ),
+ h('div',{className:`mobile-overlay fixed inset-0 z-40 flex flex-col ${open?'open':''}`,style:{backgroundColor:'#0A1628'}},
+  h('div',{className:'flex items-center justify-between px-6 pt-6 pb-4'},
+   h('span',{className:'text-xs uppercase tracking-[.25em] text-white/50 font-medium'},'Navigation'),
+   h('button',{onClick:()=>setOpen(false),className:'w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
+    h('svg',{width:18,height:18,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2.5,strokeLinecap:'round',className:'text-white'},h('path',{d:'M18 6L6 18M6 6l12 12'}))
+   )
+  ),
+  h('div',{className:'flex-1 overflow-y-auto px-6 pt-4'},
+   ...MEGA_NAV.map((cat,ci)=>[
+    h('p',{key:'h'+ci,className:'menu-item text-[11px] uppercase tracking-[.2em] text-white/40 font-semibold mb-3'+(ci>0?' mt-8':''),style:{animationDelay:`${0.05+ci*0.18}s`}},cat.label),
+    ...cat.children.map((item,ii)=>
+     h('a',{key:'m'+ci+'-'+ii,href:item.href,onClick:()=>setOpen(false),className:'menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8',style:{animationDelay:`${0.08+ci*0.18+ii*0.05}s`}},
+      h('span',{className:'text-base'},item.icon),
+      h('span',{className:'text-[20px] font-medium'},item.label)
+     )
+    )
+   ]).flat()
+  ),
+  h('div',{className:'px-6 py-6'},
+   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-xl transition-colors text-base',style:{animationDelay:'0.85s'}},'R\u00e9server un diagnostic')
+  )
+ )
+)
+}
+
+// ─── ARTICLE HERO ────────────────────────────────────────────────────────────
+
+function ArticleHero(){
+return h('section',{className:'relative pt-28 pb-16 md:pt-36 md:pb-20',style:{backgroundColor:'#0A1628'}},
+ h('div',{className:'max-w-3xl mx-auto px-4 sm:px-6'},
+  h('div',{className:'anim-fade-up flex items-center gap-3 mb-6'},
+   h('span',{className:'px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white rounded bg-[#8b5cf6]'},'ANALYSE'),
+   h('span',{className:'text-xs uppercase tracking-wider text-white/50'},'Infrastructure & Souverainet\u00e9')
+  ),
+  h('h1',{className:'anim-fade-up anim-d1 text-3xl md:text-[2.75rem] font-bold text-white leading-[1.15] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+   'Cloud et IA : la d\u00e9pendance invisible des PME europ\u00e9ennes'
+  ),
+  h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/60 leading-relaxed'},
+   'Le cloud n\'est plus un sujet technique. C\'est un risque de direction g\u00e9n\u00e9rale. Quand la capacit\u00e9 sature, les clients sans contrat sont les premiers sacrifi\u00e9s.'
+  ),
+  h('div',{className:'anim-fade-up anim-d3 mt-8 flex flex-wrap items-center gap-5 text-sm text-white/40'},
+   h('div',{className:'w-12 h-[2px] bg-[#1B6B4A]'}),
+   h('span',null,h('strong',{className:'text-white/60'},'Inflexion Research')),
+   h('span',null,'F\u00e9vrier 2026'),
+   h('span',null,'9 min de lecture')
+  )
+ )
+)
+}
+
+// ─── ARTICLE CONTENT ─────────────────────────────────────────────────────────
+
+function ArticleContent(){
+return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20'},
+ h('div',{className:'flex flex-col lg:flex-row gap-10 lg:gap-12'},
+
+  h('article',{className:'prose flex-1 min-w-0'},
+
+   // Introduction
+   h('p',null,
+    'Le secteur du cloud entre dans une phase de rationnement structurel. Les d\u00e9penses d\u2019investissement cumul\u00e9es des cinq g\u00e9ants du cloud ont \u00e9t\u00e9 multipli\u00e9es par sept entre 2020 et 2026, passant de 90 \u00e0 plus de 600 milliards de dollars. L\u2019essentiel de cette acc\u00e9l\u00e9ration s\u2019est concentr\u00e9 sur les deux derni\u00e8res ann\u00e9es, sous la pression d\u2019une demande en calcul IA qui d\u00e9passe structurellement l\u2019offre disponible. \u00c0 elle seule, la filiale cloud d\u2019Amazon pr\u00e9voit d\u2019engager 200 milliards de dollars en 2026 \u2014 un montant sup\u00e9rieur de 37\u00a0% aux anticipations du march\u00e9, et qui d\u00e9passe le budget annuel de d\u00e9fense de la France. Ce niveau d\u2019engagement traduit une conviction industrielle, pas un cycle d\u2019investissement classique. Sur ce total agr\u00e9g\u00e9, environ ',
+    h('strong',null,'450 milliards \u2014 soit 75\u00a0% \u2014 sont sp\u00e9cifiquement fl\u00e9ch\u00e9s vers l\u2019infrastructure d\u2019intelligence artificielle'),
+    ' (serveurs, processeurs graphiques, centres de donn\u00e9es).'
+   ),
+
+   // Key figures
+   h('div',{className:'grid grid-cols-1 sm:grid-cols-2 gap-4 my-10 not-prose'},
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-4xl md:text-5xl font-bold text-white font-data mb-2'},'610 Mds $'),
+     h('div',{className:'text-sm text-white/70',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+      'D\u00e9penses d\u2019investissement cumul\u00e9es \u2014 ',h('strong',{className:'text-white'},'\u00d77 en six ans')
+     )
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-4xl md:text-5xl font-bold text-white font-data mb-2'},'75 %'),
+     h('div',{className:'text-sm text-white/70',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+      'Fl\u00e9ch\u00e9s vers ',h('strong',{className:'text-white'},'l\u2019infrastructure IA'),' \u2014 soit 450 Mds $'
+     )
+    )
+   ),
+
+   h('p',null,
+    'Malgr\u00e9 cette injection massive, la demande exc\u00e8de l\u2019offre : Azure fait face \u00e0 des contraintes de capacit\u00e9 qui devraient se prolonger jusqu\u2019\u00e0 la mi-2026. Le d\u00e9fi pour les PME et ETI europ\u00e9ennes est d\u00e9sormais double : ',
+    h('strong',null,'s\u00e9curiser un acc\u00e8s au calcul dans un march\u00e9 satur\u00e9'),
+    ' et ',
+    h('strong',null,'naviguer dans un cadre r\u00e9glementaire en pleine mutation'),
+    '.'
+   ),
+
+   // Section: Écart critique
+   h('h2',null,'L\u2019\u00e9cart critique : tarif catalogue contre contrat r\u00e9serv\u00e9'),
+
+   h('p',null,
+    'L\u2019\u00e9cart entre le tarif catalogue (facturation \u00e0 la demande) et un contrat r\u00e9serv\u00e9 de trois ans atteint ',
+    h('strong',null,'80\u00a0% chez Microsoft Azure'),
+    '. Ce niveau est atteint en combinant les instances r\u00e9serv\u00e9es et le \u00ab\u00a0Azure Hybrid Benefit\u00a0\u00bb.'
+   ),
+
+   // Single key figure
+   h('div',{className:'key-figure my-10 not-prose'},
+    h('div',{className:'text-4xl md:text-5xl font-bold text-white font-data mb-2'},'> 1 M\u20ac'),
+    h('div',{className:'text-sm text-white/70',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+     '\u00c9conomie sur la dur\u00e9e du contrat pour une ETI \u00e0 ',h('strong',{className:'text-white'},'50 000 \u20ac/mois'),
+     h('br'),
+     'en passant du tarif catalogue \u00e0 l\u2019engagement pluriannuel'
+    )
+   ),
+
+   h('p',null,'Prenons un cas concret. Une ETI dont la facture cloud mensuelle atteint 50\u00a0000 euros en tarif \u00e0 la demande peut r\u00e9duire ce montant \u00e0 moins de 15\u00a0000 euros en n\u00e9gociant un engagement pluriannuel coupl\u00e9 \u00e0 ses licences existantes. Sur la dur\u00e9e du contrat, le diff\u00e9rentiel repr\u00e9sente plus d\u2019un million d\u2019euros \u2014 l\u2019\u00e9quivalent du salaire charg\u00e9 de dix ing\u00e9nieurs sur un an.'),
+
+   h('div',{className:'insight-box not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#1B6B4A] mb-2'},'La \u00ab\u00a0taxe sur l\u2019agilit\u00e9\u00a0\u00bb'),
+    h('p',{className:'text-sm text-[#3A3A3A] italic leading-relaxed'},'Dit autrement, chaque mois pass\u00e9 en tarif catalogue est un transfert de marge vers les clients qui ont su verrouiller leurs conditions. En 2026, le cloud n\u2019est plus une d\u00e9pense variable, mais un actif strat\u00e9gique dont le co\u00fbt doit \u00eatre verrouill\u00e9.')
+   ),
+
+   // Section: Trois enjeux
+   h('h2',null,'Trois enjeux critiques pour les dirigeants'),
+
+   h('span',{className:'section-number'},'Enjeu 01'),
+   h('div',{className:'pillar-card not-prose'},
+    h('h4',{className:'text-base font-semibold text-[#1A1F2E] mb-3',style:{fontFamily:'Inter, sans-serif'}},'La stratification de l\u2019acc\u00e8s au calcul'),
+    h('p',{className:'text-[15px] text-[#3A3A3A] leading-relaxed mb-3'},
+     'Le march\u00e9 se scinde en deux. Les ',h('strong',null,'clients prioritaires'),' \u2014 contrats pluriannuels \u2014 b\u00e9n\u00e9ficient d\u2019une capacit\u00e9 garantie, de prix verrouill\u00e9s et d\u2019un acc\u00e8s pr\u00e9f\u00e9rentiel en cas de saturation. Les ',h('strong',null,'clients expos\u00e9s'),' \u2014 facturation \u00e0 la demande, sans engagement \u2014 sont les premiers rationn\u00e9s. Ce risque est av\u00e9r\u00e9 : Azure reconna\u00eet des contraintes de capacit\u00e9 prolong\u00e9es jusqu\u2019\u00e0 la mi-2026.'
+    ),
+    h('p',{className:'text-[15px] text-[#3A3A3A] leading-relaxed'},
+     'La contrainte s\u2019\u00e9tend au mat\u00e9riel. NVIDIA confirme que son architecture Blackwell (B200/GB200) est ',h('strong',null,'int\u00e9gralement attribu\u00e9e jusqu\u2019\u00e0 la mi-2026'),', avec un carnet de commandes d\u00e9passant 3,6 millions d\u2019unit\u00e9s pour les seuls grands fournisseurs de cloud. Pour une PME, rester client expos\u00e9 en 2026, c\u2019est accepter un double risque : interruption de service ',h('em',null,'et'),' impossibilit\u00e9 de monter en puissance.'
+    )
+   ),
+
+   h('div',{className:'insight-box alert not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#DC2626] mb-2'},'Signal critique'),
+    h('p',{className:'text-sm text-[#3A3A3A] italic leading-relaxed'},'Un indicateur op\u00e9rationnel simple permet de mesurer votre exposition : comparez vos temps de r\u00e9ponse entre 3\u00a0h et 10\u00a0h du matin. Si l\u2019\u00e9cart d\u00e9passe 40 \u00e0 50\u00a0%, votre charge est d\u00e9j\u00e0 soumise \u00e0 un m\u00e9canisme de priorisation qui ne vous favorise pas. C\u2019est le signal qu\u2019il faut s\u00e9curiser une capacit\u00e9 d\u00e9di\u00e9e.')
+   ),
+
+   h('span',{className:'section-number'},'Enjeu 02'),
+   h('div',{className:'pillar-card green-mid not-prose'},
+    h('h4',{className:'text-base font-semibold text-[#1A1F2E] mb-3',style:{fontFamily:'Inter, sans-serif'}},'Le r\u00e9veil de la souverainet\u00e9 et le cadre CADA'),
+    h('p',{className:'text-[15px] text-[#3A3A3A] leading-relaxed mb-3'},
+     'L\u2019Europe entre dans son \u00ab\u00a0moment d\u2019ind\u00e9pendance\u00a0\u00bb. Le ',h('strong',null,'Cloud and AI Development Act'),' (CADA), dont la proposition l\u00e9gislative est attendue au premier trimestre 2026, vise \u00e0 harmoniser les architectures cloud et les processus de passation de march\u00e9s publics pour r\u00e9duire la d\u00e9pendance aux technologies non europ\u00e9ennes.'
+    ),
+    h('p',{className:'text-[15px] text-[#3A3A3A] leading-relaxed'},
+     'En parall\u00e8le, le sommet de novembre 2025 a marqu\u00e9 une convergence vers la ',h('strong',null,'\u00ab\u00a0pr\u00e9f\u00e9rence europ\u00e9enne\u00a0\u00bb'),' dans la commande publique, port\u00e9e par la France et l\u2019Allemagne pour soutenir les acteurs locaux. L\u2019alternative existe et se structure : ',h('strong',null,'Scaleway'),' (infrastructure de pointe, \u00e9nergie 100\u00a0% renouvelable, localisation fran\u00e7aise), ',h('strong',null,'OVHcloud'),' (certifi\u00e9 HDS, SecNumCloud en cours), Genesis Cloud (natif RGPD). Ces acteurs ne rivalisent pas sur la taille \u2014 ils rivalisent sur la conformit\u00e9, la proximit\u00e9 et la pr\u00e9visibilit\u00e9 contractuelle.'
+    )
+   ),
+
+   h('span',{className:'section-number'},'Enjeu 03'),
+   h('div',{className:'pillar-card green-light not-prose'},
+    h('h4',{className:'text-base font-semibold text-[#1A1F2E] mb-3',style:{fontFamily:'Inter, sans-serif'}},'La contrainte physique : \u00e9nergie et d\u00e9lais industriels'),
+    h('p',{className:'text-[15px] text-[#3A3A3A] leading-relaxed mb-3'},
+     'L\u2019infrastructure IA se heurte \u00e0 des limites physiques majeures. En Irlande, le moratoire sur les centres de donn\u00e9es a \u00e9t\u00e9 lev\u00e9 fin 2025, mais les ',h('strong',null,'nouvelles conditions sont drastiques'),' : les centres de donn\u00e9es doivent installer une capacit\u00e9 d\u2019auto-g\u00e9n\u00e9ration ou de stockage sur site couvrant 100\u00a0% de leur demande, et 80\u00a0% de leur \u00e9lectricit\u00e9 doit provenir de nouveaux projets renouvelables sp\u00e9cifiquement contract\u00e9s.'
+    ),
+    h('p',{className:'text-[15px] text-[#3A3A3A] leading-relaxed'},
+     'C\u00f4t\u00e9 mat\u00e9riel lourd, les d\u00e9lais de livraison des transformateurs haute tension atteignent d\u00e9sormais ',h('strong',null,'36 \u00e0 60 mois'),' (contre 6 \u00e0 8 mois avant 2020), figeant toute expansion rapide de capacit\u00e9 jusqu\u2019\u00e0 la fin de la d\u00e9cennie. La capacit\u00e9 de calcul cloud n\u2019est pas extensible \u00e0 volont\u00e9 : les cr\u00e9neaux se r\u00e9servent des trimestres \u00e0 l\u2019avance.'
+    )
+   ),
+
+   // Section: Leviers
+   h('h2',null,'Leviers de r\u00e9duction de la d\u00e9pendance'),
+
+   h('span',{className:'section-number'},'Levier 01'),
+   h('h3',null,'Passer \u00e0 la n\u00e9gociation structur\u00e9e'),
+   h('p',null,'Les trois op\u00e9rateurs majeurs proposent des m\u00e9canismes de r\u00e9servation accessibles sans \u00eatre un grand compte :'),
+
+   h('div',{className:'bg-white border border-[#E2E5EB] rounded-lg p-5 my-6 not-prose'},
+    h('div',{className:'data-row'},h('span',{className:'flex-1'},'AWS \u2014 \u00ab\u00a0Savings Plans\u00a0\u00bb (3 ans)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#0B3D1E]'},'\u221266 \u00e0 72\u00a0%')),
+    h('div',{className:'data-row'},h('span',{className:'flex-1'},'Azure \u2014 \u00ab\u00a0Reserved\u00a0\u00bb + \u00ab\u00a0Hybrid Benefit\u00a0\u00bb (3 ans + licences existantes)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#0B3D1E]'},'\u221280\u00a0%')),
+    h('div',{className:'data-row'},h('span',{className:'flex-1'},'GCP \u2014 \u00ab\u00a0Committed Use Discounts\u00a0\u00bb (3 ans)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#0B3D1E]'},'\u221270\u00a0%')),
+    h('div',{className:'data-row'},h('span',{className:'flex-1'},'GCP \u2014 \u00ab\u00a0Sustained Use Discounts\u00a0\u00bb (automatique, sans engagement)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#1B6B4A]'},'\u221230\u00a0%'))
+   ),
+
+   h('p',null,'Le point de d\u00e9part : ',h('strong',null,'auditer trois mois d\u2019utilisation r\u00e9elle'),' avant tout engagement. Le pi\u00e8ge le plus fr\u00e9quent reste le sur-provisionnement \u2014 r\u00e9server plus que ce qu\u2019on consomme.'),
+
+   h('div',{className:'insight-box not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#1B6B4A] mb-2'},'Levier sp\u00e9cifique PME'),
+    h('p',{className:'text-sm text-[#3A3A3A] italic leading-relaxed'},'Point diff\u00e9renciant \u00e0 conna\u00eetre : AWS a mis en place une place de march\u00e9 permettant de c\u00e9der ses capacit\u00e9s r\u00e9serv\u00e9es exc\u00e9dentaires \u00e0 d\u2019autres clients, moyennant un pr\u00e9l\u00e8vement de 12\u00a0%. Aucun autre fournisseur ne propose de m\u00e9canisme \u00e9quivalent \u2014 un filet de s\u00e9curit\u00e9 non n\u00e9gligeable pour limiter le risque de sur-dimensionnement.')
+   ),
+
+   h('span',{className:'section-number'},'Levier 02'),
+   h('h3',null,'Rapatrier le calcul via le logiciel libre'),
+   h('p',null,'Le rapport de force a bascul\u00e9. Sur le test de r\u00e9f\u00e9rence MMLU, un mod\u00e8le libre de 70 milliards de param\u00e8tres \u2014 ex\u00e9cutable sur deux processeurs graphiques \u2014 obtient d\u00e9sormais un score comparable aux meilleurs mod\u00e8les propri\u00e9taires (86\u00a0% contre 85,9\u00a0% pour GPT-4o). La diff\u00e9rence n\u2019est plus qualitative. Elle est \u00e9conomique : un facteur 25 sur le co\u00fbt unitaire d\u2019inf\u00e9rence.'),
+
+   h('div',{className:'bg-white border border-[#E2E5EB] rounded-lg p-5 my-6 not-prose'},
+    h('div',{className:'data-row'},h('span',{className:'flex-1'},'Co\u00fbt par million de jetons en entr\u00e9e \u2014 GPT-4o (API)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#0B3D1E]'},'2,50 $')),
+    h('div',{className:'data-row'},h('span',{className:'flex-1'},'Co\u00fbt par million de jetons en entr\u00e9e \u2014 Llama 3.3 70B'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#1B6B4A]'},'0,10 $')),
+    h('div',{className:'data-row'},h('span',{className:'flex-1'},'Rapport de co\u00fbt'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#0B3D1E]'},'\u00d725 moins cher'))
+   ),
+
+   h('p',null,'L\u2019\u00e9cart se creuse encore en local. Un Mac Studio M4 Ultra (pr\u00e9vu pour 2026) avec une m\u00e9moire unifi\u00e9e massive permet de faire tourner ces mod\u00e8les en interne. Le co\u00fbt mat\u00e9riel est ',h('strong',null,'amorti en moins de six mois'),' face aux facturations d\u2019API. Pour la majorit\u00e9 des cas d\u2019usage en entreprise \u2014 classification, extraction, recherche augment\u00e9e, synth\u00e8se \u2014 le logiciel libre offre une performance \u00e9quivalente avec un avantage d\u00e9cisif : aucune d\u00e9pendance \u00e0 la disponibilit\u00e9 d\u2019un tiers.'),
+
+   h('span',{className:'section-number'},'Levier 03'),
+   h('h3',null,'Exploiter la fen\u00eatre r\u00e9glementaire'),
+   h('p',null,'La Commission europ\u00e9enne a propos\u00e9 en novembre 2025 le ',h('strong',null,'\u00ab\u00a0Digital Omnibus\u00a0\u00bb'),', qui repousse la mise en conformit\u00e9 du r\u00e8glement sur l\u2019IA pour les syst\u00e8mes \u00e0 haut risque au ',h('strong',null,'2 d\u00e9cembre 2027'),'. Ce d\u00e9lai d\u2019un an offre aux PME une fen\u00eatre pour structurer leur gouvernance de l\u2019IA sans la pression d\u2019une \u00e9ch\u00e9ance imm\u00e9diate en 2026.'),
+
+   h('div',{className:'insight-box gold not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2'},'Fen\u00eatre d\u2019opportunit\u00e9'),
+    h('p',{className:'text-sm text-[#3A3A3A] italic leading-relaxed'},'Le report du \u00ab\u00a0Digital Omnibus\u00a0\u00bb ne dispense pas de la conformit\u00e9 \u2014 il accorde du temps. Les PME qui utilisent cette fen\u00eatre pour structurer leur gouvernance IA (documentation des mod\u00e8les, \u00e9valuation des risques, tra\u00e7abilit\u00e9) seront en position de force quand l\u2019\u00e9ch\u00e9ance de d\u00e9cembre 2027 s\u2019appliquera.')
+   ),
+
+   // Section: Matrice
+   h('h2',null,'Matrice d\u2019action par profil'),
+
+   h('div',{className:'overflow-x-auto my-6 not-prose'},
+    h('table',{className:'matrix-table'},
+     h('thead',null,
+      h('tr',null,h('th',null,'Profil'),h('th',null,'Priorit\u00e9 strat\u00e9gique'),h('th',null,'Action cl\u00e9 2026'))
+     ),
+     h('tbody',null,
+      h('tr',null,
+       h('td',null,h('strong',null,'Jeune entreprise IA'),h('br'),h('span',{className:'text-xs text-[#6A6A6A]'},'10 pers., 5-15 k\u20ac/mois')),
+       h('td',null,'Flexibilit\u00e9 maximale'),
+       h('td',null,'Utiliser les remises automatiques de GCP (\u221230\u00a0%) ou Scaleway \u00e0 la demande. Mod\u00e8le local (Llama/Mistral) comme filet de s\u00e9curit\u00e9.')
+      ),
+      h('tr',null,
+       h('td',null,h('strong',null,'PME \u00e9ditrice de logiciel'),h('br'),h('span',{className:'text-xs text-[#6A6A6A]'},'50 pers., 30-80 k\u20ac/mois')),
+       h('td',null,'Pr\u00e9visibilit\u00e9 des marges'),
+       h('td',null,'Migrer vers AWS \u00ab\u00a0Savings Plans\u00a0\u00bb 1 an (\u221250\u00a0% minimum) et hybrider avec Llama 3.3 en local pour les charges r\u00e9currentes.')
+      ),
+      h('tr',null,
+       h('td',null,h('strong',null,'ETI europ\u00e9enne'),h('br'),h('span',{className:'text-xs text-[#6A6A6A]'},'200+ pers., 100 k+ \u20ac/mois')),
+       h('td',null,'Souverainet\u00e9 et r\u00e9silience'),
+       h('td',null,'Combiner Azure \u00ab\u00a0Reserved\u00a0\u00bb 3 ans (\u221280\u00a0%) avec un fournisseur certifi\u00e9 SecNumCloud/HDS pour les donn\u00e9es sensibles. Deuxi\u00e8me fournisseur europ\u00e9en pour la reprise apr\u00e8s sinistre.')
+      )
+     )
+    )
+   ),
+
+   // Closing
+   h('div',{className:'text-center py-10 mt-10 border-t border-[#E2E5EB] not-prose'},
+    h('blockquote',{className:'text-xl md:text-[1.35rem] font-bold text-[#0B3D1E] leading-[1.45] max-w-lg mx-auto mb-4',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+     'Dans une \u00e9conomie o\u00f9 les transformateurs haute tension se commandent cinq ans \u00e0 l\u2019avance et o\u00f9 les processeurs graphiques sont allou\u00e9s avant m\u00eame leur fabrication, le tempo de d\u00e9cision ne se compte plus en ann\u00e9es budg\u00e9taires mais en trimestres. Les contrats sign\u00e9s aujourd\u2019hui d\u00e9terminent la capacit\u00e9 de calcul disponible en 2027.'
+    ),
+    h('p',{className:'text-sm text-[#6A6A6A]'},'Inflexion Research \u2014 F\u00e9vrier 2026')
+   ),
+
+   // Sources
+   h('div',{className:'pt-8 mt-8 border-t border-[#ECEEF2] not-prose'},
+    h('h4',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] mb-3'},'Sources & m\u00e9thodologie'),
+    h('p',{className:'text-xs text-[#6A6A6A] leading-relaxed'},'Publications de r\u00e9sultats T4 2025 (Amazon, Alphabet, Microsoft, Meta). Plan d\u2019investissement Amazon 2026 (200 Mds $). Documentation tarifaire officielle AWS, Azure, GCP, OVHcloud, Scaleway. NVIDIA \u2014 carnet de commandes Blackwell B200/GB200. Goldman Sachs et Barclays \u2014 analyses des d\u00e9penses d\u2019investissement des op\u00e9rateurs. Agence internationale de l\u2019\u00e9nergie \u2014 consommation des centres de donn\u00e9es. Commission europ\u00e9enne \u2014 proposition \u00ab\u00a0Digital Omnibus\u00a0\u00bb (novembre 2025). Projet de r\u00e8glement CADA \u2014 Cloud and AI Development Act (T1 2026). DatacenterDynamics \u2014 d\u00e9lais des transformateurs haute tension et conditions du moratoire irlandais. Sommet de novembre 2025 \u2014 convergence \u00ab\u00a0pr\u00e9f\u00e9rence europ\u00e9enne\u00a0\u00bb (France, Allemagne).')
+   ),
+
+   // Back nav
+   h('div',{className:'mt-10 text-center not-prose'},
+    h('a',{href:'analysis.html',className:'inline-block px-6 py-2.5 text-sm font-semibold text-[#1B6B4A] border-2 border-[#1B6B4A] rounded-lg hover:bg-[#1B6B4A] hover:text-white transition-colors'},'\u2190 Toutes les analyses')
+   )
+  ),
+
+  // Sidebar
+  h('aside',{className:'lg:w-[220px] flex-shrink-0'},
+   h('div',{className:'lg:sticky lg:top-24'},
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Articles li\u00e9s'),
+    h('div',{className:'flex flex-col gap-4'},
+     ...RELATED_ARTICLES.map(a=>
+      h('a',{key:a.id,href:a.href,className:'article-card block rounded-xl overflow-hidden bg-white border border-[#E2E5EB] no-underline'},
+       h('div',{className:'aspect-[16/9] overflow-hidden'},
+        h('img',{src:a.img,alt:'',className:'w-full h-full object-cover',loading:'lazy'})
+       ),
+       h('div',{className:'p-3'},
+        h('span',{className:`category-${a.cat} text-[9px] font-semibold uppercase tracking-wider text-white px-1.5 py-0.5 rounded`},a.catLabel),
+        h('h4',{className:'mt-2 text-xs font-semibold text-[#1A1F2E] leading-snug line-clamp-2',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},a.title)
+       )
+      )
+     )
+    )
+   )
+  )
+ )
+)
+}
+
+// ─── MARKET TICKER ───────────────────────────────────────────────────────────
+
+function MarketTicker(){
+const items=[...TICKER_DATA,...TICKER_DATA]
+return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 overflow-hidden py-3 bg-[#0A1628]'},
+ h('div',{className:'ticker-track flex gap-8 whitespace-nowrap'},
+  items.map((t,i)=>h('div',{key:i,className:'flex items-center gap-2 text-sm'},
+   h('span',{className:'font-medium text-white/70'},t.symbol),
+   h('span',{className:'text-white/90 font-semibold font-data'},t.value),
+   h('span',{className:`font-medium font-data ${t.up?'text-[#34D399]':'text-[#F87171]'}`},
+    (t.up?'\u25b2 ':'\u25bc ')+t.change
+   )
+  ))
+ )
+)
+}
+
+// ─── FOOTER ──────────────────────────────────────────────────────────────────
+
+function Footer(){
+const footerLinks={
+intelligence:[
+{label:'G\u00e9opolitique',href:'geopolitics.html'},
+{label:'March\u00e9s',href:'markets.html'},
+{label:'Crypto',href:'crypto.html'},
+{label:'Mati\u00e8res premi\u00e8res',href:'commodities.html'},
+{label:'ETF & Fonds',href:'etf.html'},
+],
+plateforme:[
+{label:'Analyses',href:'analysis.html'},
+{label:'Expertise',href:'expertise.html'},
+{label:'Services',href:'premium.html'},
+{label:'Diagnostic',href:'premium.html#diagnostic'},
+],
+}
+const sources=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC']
+
+return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-16 pb-20'},
+ h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+  h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-10 mb-12'},
+   h('div',{className:'col-span-2 md:col-span-1'},
+    h('div',{className:'flex items-center gap-2 mb-4'},
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto'})
+    ),
+    h('p',{className:'text-sm text-[#5A6178] leading-relaxed'},'Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.')
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Intelligence'),
+    h('ul',{className:'space-y-2.5'},
+     ...footerLinks.intelligence.map(l=>
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#1B6B4A] transition-colors'},l.label))
+     )
+    )
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Plateforme'),
+    h('ul',{className:'space-y-2.5'},
+     ...footerLinks.plateforme.map(l=>
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#1B6B4A] transition-colors'},l.label))
+     )
+    )
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Suivez-nous'),
+    h('div',{className:'flex items-center gap-3 mb-4'},
+     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#1B6B4A] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+      h('svg',{width:16,height:16,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'}))
+     ),
+     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#1B6B4A] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+      h('svg',{width:14,height:14,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'}))
+     )
+    ),
+    h('a',{href:'#',className:'text-sm text-[#5A6178] hover:text-[#1B6B4A] transition-colors'},'Contact')
+   )
+  ),
+  h('div',{className:'border-t border-[#E2E5EB] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
+   h('span',{className:'text-sm text-[#5A6178]'},'\u00a9 2026 Inflexion \u2014 Intelligence financi\u00e8re & g\u00e9opolitique'),
+   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#5A6178]/40 font-medium'},
+    ...sources.map(s=>h('span',{key:s},s))
+   )
+  )
+ )
+)
+}
+
+// ─── APP ─────────────────────────────────────────────────────────────────────
+
+function App(){
+return h('div',{className:'pb-12'},
+ h(Navigation),
+ h(ArticleHero),
+ h(ArticleContent),
+ h(Footer),
+ h(MarketTicker)
+)
+}
+
+createRoot(document.getElementById('app')).render(h(App))
+</script>
 </body>
 </html>

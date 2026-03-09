@@ -150,7 +150,7 @@ const CATEGORIES=[
 ]
 
 const ARTICLES=[
-{id:1,cat:'geopolitique',title:'Tensions en mer de Chine : Pékin renforce ses positions autour de Taïwan',source:'Foreign Policy',time:'Il y a 2h',img:'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&h=240&fit=crop',summary:'Les mouvements militaires chinois s\'intensifient, provoquant une réaction coordonnée des alliés indo-pacifiques.'},
+{id:1,cat:'iatech',title:'Cloud et IA : la dépendance invisible des PME européennes',source:'Inflexion Research',time:'Analyse',img:'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=240&fit=crop',summary:'610 milliards de dollars d\'investissement en 2026, dont 75 % fléchés vers l\'IA. Le cloud n\'est plus un sujet technique — c\'est un risque de direction générale.',href:'analyse-cloud-ia-pme-europeennes.html'},
 {id:2,cat:'marches',title:'La Fed maintient ses taux : les marchés anticipent une baisse en juin',source:'Reuters',time:'Il y a 3h',img:'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=240&fit=crop',summary:'Jerome Powell signale un ralentissement progressif de l\'inflation, ouvrant la voie à un assouplissement monétaire.'},
 {id:3,cat:'crypto',title:'Bitcoin franchit les 68 000 $ : l\'effet ETF se confirme',source:'CoinDesk',time:'Il y a 1h',img:'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=400&h=240&fit=crop',summary:'Les flux entrants dans les ETF Bitcoin spot atteignent un record hebdomadaire de 2,4 milliards de dollars.'},
 {id:4,cat:'matieres',title:'L\'or atteint un nouveau sommet historique à 2 178 $/oz',source:'metals.dev',time:'Il y a 4h',img:'https://images.unsplash.com/photo-1610375461246-83df859d849d?w=400&h=240&fit=crop',summary:'La demande des banques centrales asiatiques et les tensions géopolitiques propulsent le métal jaune.'},
@@ -253,7 +253,7 @@ return h('section',{className:'hero-dark relative pt-32 pb-20 md:pt-44 md:pb-28 
    h('div',{className:'md:w-[60%] grid grid-cols-1 sm:grid-cols-3 gap-4'},
     ...heroArticles.map((a,i)=>{
      const cat=catFor(a)
-     return h('article',{key:a.id,className:`anim-fade-up anim-d${i+2} article-card rounded-xl overflow-hidden bg-white/10 border border-white/10 backdrop-blur-sm`},
+     return h('a',{key:a.id,href:a.href||'#',className:`anim-fade-up anim-d${i+2} article-card rounded-xl overflow-hidden bg-white/10 border border-white/10 backdrop-blur-sm block no-underline`},
       h('div',{className:'aspect-[4/3] overflow-hidden'},
        h('img',{src:a.img,alt:'',className:'w-full h-full object-cover opacity-90',loading:'lazy'})
       ),
@@ -303,7 +303,7 @@ return h('section',{className:'py-20 md:py-24'},
   h('div',{className:'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'},
    filtered.map(a=>{
     const cat=CATEGORIES.find(c=>c.id===a.cat)
-    return h('article',{key:a.id,className:'article-card rounded-xl overflow-hidden bg-white border border-[#E2E5EB]'},
+    return h('a',{key:a.id,href:a.href||'#',className:'article-card rounded-xl overflow-hidden bg-white border border-[#E2E5EB] block no-underline'},
      h('div',{className:'aspect-[5/3] overflow-hidden'},
       h('img',{src:a.img,alt:'',className:'w-full h-full object-cover',loading:'lazy'})
      ),
