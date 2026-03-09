@@ -143,7 +143,7 @@ const MEGA_NAV=[
 ]},
 ]
 
-const TICKER_DATA=[
+const TICKER_FALLBACK=[
 {symbol:'S&P 500',value:'5 248.32',change:'+0.87%',up:true},
 {symbol:'CAC 40',value:'7 892.15',change:'+0.42%',up:true},
 {symbol:'DAX',value:'18 456.78',change:'-0.15%',up:false},
@@ -152,11 +152,36 @@ const TICKER_DATA=[
 {symbol:'EUR/USD',value:'1.0847',change:'-0.12%',up:false},
 {symbol:'Or',value:'$2 178',change:'+0.65%',up:true},
 {symbol:'VIX',value:'14.32',change:'-3.21%',up:true},
-{symbol:'Euro Stoxx 50',value:'5 012.44',change:'+0.31%',up:true},
-{symbol:'Nikkei 225',value:'39 876',change:'+1.12%',up:true},
 {symbol:'Pétrole WTI',value:'$78.45',change:'-0.89%',up:false},
-{symbol:'Argent',value:'$25.12',change:'+1.23%',up:true},
 ]
+
+const DATA_BASE='data/'
+
+function fmtPrice(p,prefix=''){
+if(p>=1000)return prefix+p.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2})
+return prefix+p.toFixed(2)
+}
+
+async function fetchTickerData(){
+const[marketsRes,cryptoRes]=await Promise.all([
+fetch(DATA_BASE+'markets.json').then(r=>r.ok?r.json():null).catch(()=>null),
+fetch(DATA_BASE+'crypto.json').then(r=>r.ok?r.json():null).catch(()=>null)
+])
+const items=[]
+if(marketsRes?.quotes){
+for(const q of marketsRes.quotes){
+const up=q.change>=0
+items.push({symbol:q.name,value:fmtPrice(q.price,q.symbol==='GLD'||q.symbol==='USO'?'$':''),change:(up?'+':'')+q.change.toFixed(2)+'%',up})
+}
+}
+if(cryptoRes?.prices){
+for(const c of cryptoRes.prices.slice(0,4)){
+const up=c.change_24h>=0
+items.push({symbol:c.symbol.toUpperCase(),value:fmtPrice(c.price,'$'),change:(up?'+':'')+c.change_24h.toFixed(2)+'%',up})
+}
+}
+return items.length>0?items:null
+}
 
 const CATEGORIES=[
 {id:'geopolitique',label:'Géopolitique',cls:'category-geo'},
@@ -166,7 +191,7 @@ const CATEGORIES=[
 {id:'iatech',label:'IA & Tech',cls:'category-iatech'},
 ]
 
-const ARTICLES=[
+const ARTICLES_FALLBACK=[
 {id:1,cat:'iatech',title:'Cloud et IA : la dépendance invisible des PME européennes',source:'Inflexion Research',time:'Analyse',readingTime:7,img:'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=240&fit=crop',summary:'610 milliards de dollars d\'investissement en 2026, dont 75 % fléchés vers l\'IA. Le cloud n\'est plus un sujet technique — c\'est un risque de direction générale.',href:'analyse-cloud-ia-pme-europeennes.html'},
 {id:2,cat:'marches',title:'La Fed maintient ses taux : les marchés anticipent une baisse en juin',source:'Reuters',time:'Il y a 3h',readingTime:4,img:'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=240&fit=crop',summary:'Jerome Powell signale un ralentissement progressif de l\'inflation, ouvrant la voie à un assouplissement monétaire.'},
 {id:3,cat:'crypto',title:'Bitcoin franchit les 68 000 $ : l\'effet ETF se confirme',source:'CoinDesk',time:'Il y a 1h',readingTime:3,img:'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=400&h=240&fit=crop',summary:'Les flux entrants dans les ETF Bitcoin spot atteignent un record hebdomadaire de 2,4 milliards de dollars.'},
@@ -177,6 +202,24 @@ const ARTICLES=[
 {id:8,cat:'crypto',title:'DeFi : la TVL dépasse 100 Md$ pour la première fois depuis 2022',source:'DefiLlama',time:'Il y a 3h',readingTime:5,img:'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&h=240&fit=crop',summary:'Le retour de la confiance dans les protocoles décentralisés marque un tournant pour l\'écosystème.'},
 {id:9,cat:'iatech',title:'L\'AI Act entre en vigueur : ce qui change pour les entreprises européennes',source:'Euractiv',time:'Il y a 8h',readingTime:8,img:'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=240&fit=crop',summary:'Les premières obligations de transparence s\'appliquent dès juin 2026 pour les systèmes à haut risque.'},
 ]
+
+const CAT_IMAGES={geopolitique:'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=400&h=240&fit=crop',marches:'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=240&fit=crop',crypto:'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=400&h=240&fit=crop',matieres:'https://images.unsplash.com/photo-1610375461246-83df859d849d?w=400&h=240&fit=crop',iatech:'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=240&fit=crop'}
+const RUBRIQUE_MAP={geopolitique:'geopolitique',marches:'marches',crypto:'crypto',matieres_premieres:'matieres',ia_tech:'iatech'}
+
+function mapNewsToArticles(newsData){
+const articles=[]
+let id=1
+const catKeys={geopolitics:'geopolitique',markets:'marches',crypto:'crypto',commodities:'matieres',ai_tech:'iatech'}
+for(const[apiCat,items] of Object.entries(newsData.categories||{})){
+const cat=catKeys[apiCat]||'marches'
+for(const item of items){
+const readingTime=Math.min(8,Math.max(2,Math.round((item.description||'').length/200)+2))
+articles.push({id:id++,cat,title:item.title,source:item.source||'',time:item.time||'',readingTime,img:item.image||CAT_IMAGES[cat],summary:(item.description||'').slice(0,160),href:item.url||'#'})
+}
+}
+articles.sort((a,b)=>b.id-a.id)
+return articles
+}
 
 function Navigation({dark,toggleDark}){
 const[open,setOpen]=useState(false)
@@ -254,7 +297,7 @@ return h('div',null,
 }
 
 function Hero(){
-const heroArticles=ARTICLES.slice(0,3)
+const heroArticles=ARTICLES_FALLBACK.slice(0,3)
 const catFor=a=>CATEGORIES.find(c=>c.id===a.cat)
 return h('section',{className:'hero-dark relative pt-32 pb-20 md:pt-44 md:pb-28 lg:pt-52 lg:pb-36 overflow-hidden'},
  h('div',{className:'hero-glow',style:{background:'radial-gradient(circle, rgba(27,107,74,.15) 0%, transparent 70%)'}}),
@@ -295,16 +338,30 @@ return h('section',{className:'hero-dark relative pt-32 pb-20 md:pt-44 md:pb-28 
 }
 
 function MarketTicker(){
-const items=[...TICKER_DATA,...TICKER_DATA]
+const[data,setData]=useState(TICKER_FALLBACK)
+const[live,setLive]=useState(false)
+useEffect(()=>{
+const load=async()=>{const d=await fetchTickerData();if(d){setData(d);setLive(true)}}
+load()
+const iv=setInterval(load,60000)
+return()=>clearInterval(iv)
+},[])
+const items=[...data,...data]
 return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 overflow-hidden py-3 bg-[#0A1628]'},
- h('div',{className:'ticker-track flex gap-8 whitespace-nowrap'},
-  items.map((t,i)=>h('div',{key:i,className:'flex items-center gap-2 text-sm'},
-   h('span',{className:'font-medium text-white/70'},t.symbol),
-   h('span',{className:'text-white/90 font-semibold font-data'},t.value),
-   h('span',{className:`font-medium font-data ${t.up?'text-[#34D399]':'text-[#F87171]'}`},
-    (t.up?'▲ ':'▼ ')+t.change
-   )
-  ))
+ h('div',{className:'flex items-center'},
+  live&&h('div',{className:'flex items-center gap-1.5 pl-4 pr-4 flex-shrink-0 border-r border-white/10 mr-4'},
+   h('span',{className:'w-2 h-2 rounded-full bg-[#34D399] animate-pulse'}),
+   h('span',{className:'text-[10px] font-semibold uppercase tracking-wider text-[#34D399]'},'Live')
+  ),
+  h('div',{className:'ticker-track flex gap-8 whitespace-nowrap'},
+   items.map((t,i)=>h('div',{key:i,className:'flex items-center gap-2 text-sm'},
+    h('span',{className:'font-medium text-white/70'},t.symbol),
+    h('span',{className:'text-white/90 font-semibold font-data'},t.value),
+    h('span',{className:`font-medium font-data ${t.up?'text-[#34D399]':'text-[#F87171]'}`},
+     (t.up?'▲ ':'▼ ')+t.change
+    )
+   ))
+  )
  )
 )
 }
@@ -328,9 +385,17 @@ return h('div',{className:`rounded-xl overflow-hidden ${dark?'bg-[#162A45] borde
 
 function ArticlesGrid({dark}){
 const[filter,setFilter]=useState('all')
+const[articles,setArticles]=useState(ARTICLES_FALLBACK)
 const[loading,setLoading]=useState(true)
-useEffect(()=>{const t=setTimeout(()=>setLoading(false),800);return()=>clearTimeout(t)},[])
-const filtered=filter==='all'?ARTICLES:ARTICLES.filter(a=>a.cat===filter)
+const[visibleCount,setVisibleCount]=useState(9)
+useEffect(()=>{
+fetch(DATA_BASE+'news.json').then(r=>r.ok?r.json():null).then(d=>{
+if(d){const mapped=mapNewsToArticles(d);if(mapped.length>0)setArticles(mapped)}
+}).catch(()=>{}).finally(()=>setLoading(false))
+},[])
+const filtered=filter==='all'?articles:articles.filter(a=>a.cat===filter)
+const visible=filtered.slice(0,visibleCount)
+const hasMore=filtered.length>visibleCount
 const btnCls=(active)=>active?'bg-[#1B6B4A] text-white':(dark?'bg-[#162A45] text-white/50 hover:text-white border border-[#1E3A5F]':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]')
 return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
@@ -341,20 +406,20 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
     h('p',{className:`text-sm mt-2 ${dark?'text-white/40':'text-[#5A6178]'}`},'Articles sélectionnés par notre algorithme de curation qualitative')
    ),
    h('div',{className:'flex flex-wrap gap-2'},
-    h('button',{onClick:()=>setFilter('all'),className:`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${btnCls(filter==='all')}`},'Tout'),
-    CATEGORIES.map(c=>h('button',{key:c.id,onClick:()=>setFilter(c.id),className:`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${btnCls(filter===c.id)}`},c.label))
+    h('button',{onClick:()=>{setFilter('all');setVisibleCount(9)},className:`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${btnCls(filter==='all')}`},'Tout'),
+    CATEGORIES.map(c=>h('button',{key:c.id,onClick:()=>{setFilter(c.id);setVisibleCount(9)},className:`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${btnCls(filter===c.id)}`},c.label))
    )
   ),
   h('div',{className:'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'},
-   loading?[1,2,3,4,5,6].map(i=>h(SkeletonCard,{key:'sk'+i,dark})):filtered.map(a=>{
+   loading?[1,2,3,4,5,6].map(i=>h(SkeletonCard,{key:'sk'+i,dark})):visible.map(a=>{
     const cat=CATEGORIES.find(c=>c.id===a.cat)
-    return h('a',{key:a.id,href:a.href||'#',className:`article-card rounded-xl overflow-hidden block no-underline transition-colors duration-300 ${dark?'bg-[#162A45] border border-[#1E3A5F]':'bg-white border border-[#E2E5EB]'}`},
+    return h('a',{key:a.id,href:a.href||'#',target:a.href&&a.href.startsWith('http')?'_blank':undefined,rel:a.href&&a.href.startsWith('http')?'noopener noreferrer':undefined,className:`article-card rounded-xl overflow-hidden block no-underline transition-colors duration-300 ${dark?'bg-[#162A45] border border-[#1E3A5F]':'bg-white border border-[#E2E5EB]'}`},
      h('div',{className:'aspect-[5/3] overflow-hidden'},
-      h('img',{src:a.img,alt:'',className:'w-full h-full object-cover',loading:'lazy'})
+      h('img',{src:a.img,alt:'',className:'w-full h-full object-cover',loading:'lazy',onError:e=>{e.target.style.display='none'}})
      ),
      h('div',{className:'p-5'},
       h('div',{className:'flex items-center gap-2 mb-3'},
-       h('span',{className:`${cat.cls} text-[10px] font-semibold uppercase tracking-wider text-white px-2 py-0.5 rounded`},cat.label),
+       cat&&h('span',{className:`${cat.cls} text-[10px] font-semibold uppercase tracking-wider text-white px-2 py-0.5 rounded`},cat.label),
        h('span',{className:`text-xs ${dark?'text-white/40':'text-[#5A6178]'}`},a.time),
        h('span',{className:`text-xs ${dark?'text-white/40':'text-[#5A6178]'}`},'·'),
        h('span',{className:`text-xs ${dark?'text-white/40':'text-[#5A6178]'}`},a.readingTime+' min de lecture')
@@ -365,6 +430,11 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
      )
     )
    })
+  ),
+  !loading&&hasMore&&h('div',{className:'text-center mt-10'},
+   h('button',{onClick:()=>setVisibleCount(v=>v+9),className:`px-6 py-3 rounded-lg text-sm font-semibold transition-colors ${dark?'bg-[#162A45] text-white/70 hover:text-white border border-[#1E3A5F]':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},
+    'Charger plus d\'articles'
+   )
   )
  )
 ))
@@ -515,15 +585,40 @@ return h(FadeUp,null,h('section',{className:`py-20 transition-colors duration-30
 ))
 }
 
+const SUPABASE_URL='https://pizemouhfrwgvgibitox.supabase.co'
+const SUPABASE_KEY='sb_publishable_5u8lldvoUdA_pKTZIL9jdA_gJb72SZH'
+const EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+
 function NewsletterCTA(){
+const[email,setEmail]=useState('')
+const[status,setStatus]=useState(null) // null|'sending'|'success'|'duplicate'|'error'|'invalid'
+const submit=async(e)=>{
+e.preventDefault()
+if(!EMAIL_RE.test(email)){setStatus('invalid');return}
+setStatus('sending')
+try{
+const res=await fetch(SUPABASE_URL+'/rest/v1/newsletter',{method:'POST',headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Prefer':'return=minimal'},body:JSON.stringify({email})})
+if(res.ok||res.status===201){setStatus('success');setEmail('')}
+else if(res.status===409||(await res.text()).includes('23505')){setStatus('duplicate')}
+else{setStatus('error')}
+}catch(_){setStatus('error')}
+}
+const msg={success:'Inscription confirmée — bienvenue parmi nos lecteurs.',duplicate:'Cette adresse est déjà inscrite.',error:'Une erreur est survenue. Réessayez.',invalid:'Veuillez entrer une adresse email valide.'}
+const msgColor={success:'text-[#34D399]',duplicate:'text-yellow-400',error:'text-[#F87171]',invalid:'text-[#F87171]'}
 return h(FadeUp,null,h('section',{className:'bg-[#0A1628] py-20'},
  h('div',{className:'max-w-2xl mx-auto px-4 sm:px-6 text-center'},
   h('h2',{className:'text-2xl md:text-3xl font-bold text-white mb-4',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Recevez nos signaux faibles chaque semaine'),
   h('p',{className:'text-sm md:text-base text-white/50 leading-relaxed mb-8'},'Une sélection hebdomadaire d\'analyses et de données pour garder une longueur d\'avance.'),
-  h('form',{onSubmit:e=>e.preventDefault(),className:'flex flex-col sm:flex-row gap-3 max-w-md mx-auto'},
-   h('input',{type:'email',placeholder:'votre@email.com',className:'flex-1 px-4 py-3 rounded-lg bg-white/10 border border-white/15 text-white text-sm placeholder-white/30 outline-none focus:border-[#1B6B4A] transition-colors'}),
-   h('button',{type:'submit',className:'px-6 py-3 bg-[#1B6B4A] hover:bg-[#2A9D6E] text-white font-semibold text-sm rounded-lg transition-colors whitespace-nowrap'},'S\'abonner')
-  )
+  status==='success'?
+   h('div',{className:'flex items-center justify-center gap-2 text-[#34D399] text-sm font-medium'},
+    h('svg',{width:20,height:20,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2,strokeLinecap:'round'},h('path',{d:'M20 6L9 17l-5-5'})),
+    msg.success
+   ):
+   h('form',{onSubmit:submit,className:'flex flex-col sm:flex-row gap-3 max-w-md mx-auto'},
+    h('input',{type:'email',value:email,onChange:e=>{setEmail(e.target.value);if(status==='invalid')setStatus(null)},placeholder:'votre@email.com',className:`flex-1 px-4 py-3 rounded-lg bg-white/10 border text-white text-sm placeholder-white/30 outline-none transition-colors ${status==='invalid'?'border-[#F87171]':'border-white/15 focus:border-[#1B6B4A]'}`}),
+    h('button',{type:'submit',disabled:status==='sending',className:'px-6 py-3 bg-[#1B6B4A] hover:bg-[#2A9D6E] text-white font-semibold text-sm rounded-lg transition-colors whitespace-nowrap disabled:opacity-50'},status==='sending'?'Envoi...':'S\'abonner')
+   ),
+  status&&status!=='success'&&status!=='sending'&&h('p',{className:`mt-4 text-sm ${msgColor[status]}`},msg[status])
  )
 ))
 }
