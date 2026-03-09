@@ -260,21 +260,27 @@ Formulations interdites : "il semble que", "peut-être", "les marchés restent v
 
 1. **Titre de la semaine** — capture la dynamique dominante
 2. **Sous-titre** — 1 phrase d'angle analytique
-3. **## Éditorial** (250-350 mots) — synthèse thématique, PAS un résumé chronologique. Ouvrir sur le fait le plus structurant. Développer les interconnexions entre événements, en croisant au minimum 2 catégories par dynamique développée avec des connexions causales explicites. Conclure sur ce que cette semaine change (ou confirme) dans la trajectoire macro.
+3. **## Éditorial** — synthèse thématique, PAS un résumé chronologique. Ouvrir sur le fait le plus structurant. Développer les interconnexions entre événements, en croisant au minimum 2 catégories par dynamique développée avec des connexions causales explicites. Conclure sur ce que cette semaine change (ou confirme) dans la trajectoire macro.
 4. **Faits marquants** — les événements les plus impactants avec données chiffrées précises et implication concrète pour les marchés.
 5. **Point marché** — bilan par segment avec performances hebdomadaires :
    - Actions (indices US + Europe, secteurs leaders/retardataires, VIX)
    - Crypto (BTC, ETH, sentiment FNG, TVL DeFi, métriques on-chain)
    - Matières premières (or, pétrole, cuivre — et ce qu'ils signalent pour le cycle)
 6. **Risques et dynamiques** — les risques identifiés avec canal de transmission et actifs impactés. Les dynamiques favorables factuelles (sans recommandation).
-7. **## Perspectives** (100-150 mots) — la semaine prochaine : événements macro programmés, earnings attendus, décisions de banques centrales, seuils techniques, scénarios conditionnels datés ("si X avant [date], alors Y").
+7. **## Perspectives** — la semaine prochaine : événements macro programmés, earnings attendus, décisions de banques centrales, seuils techniques, scénarios conditionnels datés ("si X avant [date], alors Y").
 
-## Patterns interdits
-- Listes à puces avec titres en gras suivis de deux-points (**Risque** : description) — rédiger en prose
-- Conclure par une phrase d'optimisme générique
-- Règle de trois câblée : ne pas forcer 3 dynamiques, 3 risques, 3 opportunités
-- Em dash (—) excessif : préférer la virgule ou la subordonnée
-- Gras mécanique sur les substantifs : réserver aux chiffres et niveaux clés
+## Style rédactionnel (RÈGLES ABSOLUES)
+- Formulations IA interdites : "pivotal", "crucial", "tapestry", "vibrant", "underscore", "showcase", "highlight", "foster", "delve", "testament", "comprehensive"
+- Locutions IA françaises interdites : "il convient de", "dès lors", "à ce titre", "de facto", "à l'aune de", "force est de constater"
+- Pas de listes avec headers en gras (❌ "**Risque :** texte") → prose ou puces simples
+- Pas de conclusion générique positive ("L'avenir s'annonce...", "Ces dynamiques témoignent de...")
+- Pas d'abus d'em dashes (—) — max 1 par paragraphe
+- Pas de gras sauf chiffres clés et niveaux techniques
+- Varier les longueurs de phrases. Phrases courtes. Puis une phrase plus longue qui prend le temps de développer une idée complexe.
+- Avoir une thèse. Ne pas juste décrire — analyser et prendre position ("cela confirme X", "cela contredit Y", "le vrai risque est Z")
+- Admettre les contradictions réelles ("les données divergent sur ce point : X dit A, Y dit B")
+- Être spécifique sur les mécanismes ("hausse du Brent → coût de transport +3% → compression marge exportateurs EU" plutôt que "impact sur les marchés")
+- Règle de trois câblée interdite : analyser ce que les données justifient, pas un nombre fixe de dynamiques ou de risques
 
 ## Règles
 - Écris en FRANÇAIS
@@ -290,9 +296,9 @@ Formulations interdites : "il semble que", "peut-être", "les marchés restent v
     { "titre": "Fait marquant concis", "description": "Description avec chiffres, contexte et implication", "rubrique": "marches|crypto|geopolitique|matieres_premieres|ai_tech" }
   ],
   "point_marche": {
-    "actions": "Synthèse actions avec performance hebdo, secteurs et VIX (3-4 phrases)",
-    "crypto": "Synthèse crypto avec chiffres, sentiment et on-chain (3-4 phrases)",
-    "matieres_premieres": "Synthèse commodités et signal macro qu'elles envoient (3-4 phrases)"
+    "actions": "Synthèse actions avec performance hebdo, secteurs et VIX",
+    "crypto": "Synthèse crypto avec chiffres, sentiment et on-chain",
+    "matieres_premieres": "Synthèse commodités et signal macro qu'elles envoient"
   },
   "perspectives": "Points concrets et actionnables pour la semaine prochaine (Markdown)",
   "tags": ["tag1", "tag2", "tag3"]
