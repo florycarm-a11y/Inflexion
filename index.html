@@ -101,6 +101,23 @@ import{createRoot}from 'https://esm.sh/react-dom@18.2.0/client'
 
 const h=React.createElement
 
+function useInView(opts={}){
+const ref=useRef(null)
+const[visible,setVisible]=useState(false)
+useEffect(()=>{
+if(!ref.current)return
+const io=new IntersectionObserver(([e])=>{if(e.isIntersecting){setVisible(true);io.disconnect()}},{threshold:opts.threshold||0.15})
+io.observe(ref.current)
+return()=>io.disconnect()
+},[])
+return[ref,visible]
+}
+
+function FadeUp({children,className='',delay=0}){
+const[ref,visible]=useInView()
+return h('div',{ref,className,style:{opacity:visible?1:0,transform:visible?'translateY(0)':'translateY(24px)',transition:`opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`}},children)
+}
+
 const MEGA_NAV=[
 {label:'Intelligence',children:[
  {icon:'🌍',label:'Géopolitique',desc:'Risques pays & tensions internationales',href:'geopolitics.html'},
@@ -111,7 +128,7 @@ const MEGA_NAV=[
 ]},
 {label:'Analyses',children:[
  {icon:'📰',label:'Briefing du jour',desc:'Synthèse IA quotidienne',href:'index.html#briefing'},
- {icon:'🔎',label:'Analyses approfondies',desc:'Décryptages thématiques',href:'analysis.html'},
+ {icon:'🔎',label:'Analyses approfondies',desc:'Décryptages thématiques',href:'analyses.html'},
  {icon:'🗺️',label:'Macro par pays',desc:'Données World Bank & indicateurs',href:'country.html'},
 ]},
 {label:'Expertise',children:[
@@ -287,7 +304,7 @@ return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-wh
 function ArticlesGrid(){
 const[filter,setFilter]=useState('all')
 const filtered=filter==='all'?ARTICLES:ARTICLES.filter(a=>a.cat===filter)
-return h('section',{className:'py-20 md:py-24'},
+return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10'},
    h('div',null,
@@ -320,7 +337,7 @@ return h('section',{className:'py-20 md:py-24'},
    })
   )
  )
-)
+))
 }
 
 function Footer(){
@@ -402,7 +419,7 @@ const CREDIBILITY_STATS=[
 ]
 
 function CredibilityStrip(){
-return h('div',{className:'bg-[#F7F8FA] border-t border-b border-[#E2E5EB] py-10'},
+return h(FadeUp,null,h('div',{className:'bg-[#F7F8FA] border-t border-b border-[#E2E5EB] py-10'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center'},
    ...CREDIBILITY_STATS.map((s,i)=>
@@ -413,7 +430,7 @@ return h('div',{className:'bg-[#F7F8FA] border-t border-b border-[#E2E5EB] py-10
    )
   )
  )
-)
+))
 }
 
 const EXPERTISE_DATA={
@@ -439,7 +456,7 @@ const current=items.find(i=>i.id===selected)||items[0]
 
 const switchTab=(t)=>{setTab(t);setSelected(EXPERTISE_DATA[t][0].id)}
 
-return h('section',{className:'py-20 bg-white'},
+return h(FadeUp,null,h('section',{className:'py-20 bg-white'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'text-center mb-12'},
    h('p',{className:'category-label mb-2'},'Nos expertises'),
@@ -464,11 +481,11 @@ return h('section',{className:'py-20 bg-white'},
    )
   )
  )
-)
+))
 }
 
 function NewsletterCTA(){
-return h('section',{className:'bg-[#0A1628] py-20'},
+return h(FadeUp,null,h('section',{className:'bg-[#0A1628] py-20'},
  h('div',{className:'max-w-2xl mx-auto px-4 sm:px-6 text-center'},
   h('h2',{className:'text-2xl md:text-3xl font-bold text-white mb-4',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Recevez nos signaux faibles chaque semaine'),
   h('p',{className:'text-sm md:text-base text-white/50 leading-relaxed mb-8'},'Une sélection hebdomadaire d\'analyses et de données pour garder une longueur d\'avance.'),
@@ -477,7 +494,7 @@ return h('section',{className:'bg-[#0A1628] py-20'},
    h('button',{type:'submit',className:'px-6 py-3 bg-[#1B6B4A] hover:bg-[#2A9D6E] text-white font-semibold text-sm rounded-lg transition-colors whitespace-nowrap'},'S\'abonner')
   )
  )
-)
+))
 }
 
 function App(){
