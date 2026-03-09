@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-09T18:49:00.667Z",
+  "updated": "2026-03-09T23:02:39.357Z",
   "feeds": [
     {
       "source": "Le Figaro",
@@ -27,7 +27,7 @@
       "url": "https://www.courrierinternational.com/feed/all/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 5
     },
     {
       "source": "Le Monde Diplomatique",
@@ -48,7 +48,7 @@
       "url": "https://www.aljazeera.com/xml/rss/all.xml",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 4
     },
     {
       "source": "The Guardian",
@@ -76,7 +76,7 @@
       "url": "https://www.politico.eu/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 4
     },
     {
       "source": "Foreign Policy",
@@ -237,7 +237,7 @@
       "url": "https://www.lefigaro.fr/rss/figaro_flash-eco.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 2
     },
     {
       "source": "Les Echos",
@@ -251,7 +251,7 @@
       "url": "https://www.bfmtv.com/rss/economie/",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 2
     },
     {
       "source": "Zonebourse",
@@ -286,7 +286,7 @@
       "url": "https://finance.yahoo.com/news/rssindex",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 2
     },
     {
       "source": "Seeking Alpha",
@@ -307,7 +307,7 @@
       "url": "https://www.investing.com/rss/news.rss",
       "count": 5,
       "ok": true,
-      "relevant": 0
+      "relevant": 1
     },
     {
       "source": "Wolf Street",
@@ -580,7 +580,7 @@
       "url": "https://www.argusmedia.com/en/rss-feeds/home",
       "count": 0,
       "ok": false,
-      "error": "The operation was aborted due to timeout"
+      "error": "HTTP 404: https://www.argusmedia.com/en/rss-feeds/home"
     },
     {
       "source": "Le Figaro Tech",
@@ -608,14 +608,14 @@
       "url": "https://techcrunch.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 2
     },
     {
       "source": "The Verge",
       "url": "https://www.theverge.com/rss/index.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 2
     },
     {
       "source": "Ars Technica",
@@ -629,14 +629,14 @@
       "url": "https://www.wired.com/feed/rss",
       "count": 5,
       "ok": true,
-      "relevant": 1
+      "relevant": 2
     },
     {
       "source": "Hacker News",
       "url": "https://hnrss.org/frontpage?count=15",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 2
     },
     {
       "source": "VentureBeat AI",
@@ -692,7 +692,7 @@
       "url": "https://www.theregister.com/headlines.atom",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 5
     },
     {
       "source": "TLDR Tech",
@@ -734,7 +734,7 @@
       "url": "https://www.lemonde.fr/economie/rss_full.xml",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 4
     },
     {
       "source": "Challenges",
@@ -755,7 +755,7 @@
       "url": "https://www.lemonde.fr/international/rss_full.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "Le Figaro Finances",
@@ -769,7 +769,7 @@
       "url": "https://www.latribune.fr/feed/entreprises-finance.xml",
       "count": 0,
       "ok": false,
-      "error": "HTTP 503: https://www.latribune.fr/feed/entreprises-finance.xml"
+      "error": "HTTP 404: https://www.latribune.fr/feed/entreprises-finance.xml"
     },
     {
       "source": "BIS (BRI)",
@@ -996,7 +996,7 @@
       "error": "HTTP 404: https://rusi.org/rss.xml"
     },
     {
-      "source": "RAND",
+      "source": "RAND AGI Center",
       "url": "https://www.rand.org/blog.xml",
       "count": 5,
       "ok": true,
@@ -1099,11 +1099,46 @@
       "count": 0,
       "ok": false,
       "error": "HTTP 403: https://www.nti.org/rss/all/"
+    },
+    {
+      "source": "Le Grand Continent",
+      "url": "https://legrandcontinent.eu/fr/feed/",
+      "count": 5,
+      "ok": true,
+      "relevant": 5
+    },
+    {
+      "source": "Asialyst",
+      "url": "https://asialyst.com/fr/feed/",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://asialyst.com/fr/feed/"
+    },
+    {
+      "source": "Le Rubicon",
+      "url": "https://lerubicon.org/feed/",
+      "count": 5,
+      "ok": true,
+      "relevant": 5
+    },
+    {
+      "source": "The Wire China",
+      "url": "https://thewirechina.com/feed/",
+      "count": 5,
+      "ok": true,
+      "relevant": 10
+    },
+    {
+      "source": "Pekingnology",
+      "url": "https://pekingnology.substack.com/feed",
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://pekingnology.substack.com/feed"
     }
   ],
   "stats": {
-    "success": 110,
-    "failed": 47,
-    "articles": 476
+    "success": 113,
+    "failed": 49,
+    "articles": 492
   }
 }
