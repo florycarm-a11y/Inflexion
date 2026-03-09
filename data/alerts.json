@@ -1,55 +1,79 @@
 {
-  "updated": "2026-03-06T18:43:50.987Z",
+  "updated": "2026-03-09T23:04:51.910Z",
   "alertes": [
     {
-      "id": "alert-2026-03-06-001",
-      "titre": "Pétrole (USO) : +12,39% à 108,24 $, plus haut depuis escalade Iran-Israël",
-      "texte": "L'ETF pétrolier USO bondit de 12,39% suite aux frappes aériennes israéliennes contre l'Iran et aux perturbations du détroit d'Ormuz. Le baril WTI dépasse 90 $ pour la première fois du conflit, soutenu par la réduction du trafic commercial maritime.",
+      "id": "alert-2026-03-09-001",
+      "titre": "Pétrole (USO) : -4,08% à 104,33 USD, recul après volatilité extrême",
+      "texte": "Le brut cède 4,08% après avoir frôlé 120 USD en réaction aux tensions iraniennes. Trump annonce révision des options de contrôle des prix et affirme que la guerre pourrait se terminer 'très bientôt', provoquant un repli technique. Détroit d'Ormuz reste point de rupture critique.",
       "categorie": "matieres_premieres",
-      "severite": "urgent",
-      "impact": "haussier",
-      "horodatage": "2026-03-06T18:43:50.987Z",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-03-09T23:04:51.910Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
-        "prix": 108.24,
-        "variation": 12.39
+        "prix": 104.33,
+        "variation": -4.08
       }
     },
     {
-      "id": "alert-2026-03-06-002",
-      "titre": "Détroit d'Ormuz : trafic commercial réduit à 9 navires, risque d'approvisionnement énergétique",
-      "texte": "Seulement 9 navires commerciaux détectés traversant le détroit depuis lundi, reflétant l'impact direct de l'escalade géopolitique sur les flux énergétiques mondiaux. Maersk suspend deux services majeurs reliant l'Extrême-Orient au Moyen-Orient.",
+      "id": "alert-2026-03-09-002",
+      "titre": "Fear & Greed Index : 8/100 (Extreme Fear), plus bas depuis crise majeure",
+      "texte": "L'indice de sentiment atteint son niveau extrême de peur, reflétant l'aversion au risque généralisée face à l'escalade géopolitique au Moyen-Orient et à la volatilité énergétique. Signale capitulation potentielle des investisseurs.",
+      "categorie": "marches",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-09T23:04:51.910Z",
+      "donnees": {
+        "symbole": "NVDA",
+        "nom": "Nvidia",
+        "prix": 182.65,
+        "variation": 2.72
+      }
+    },
+    {
+      "id": "alert-2026-03-09-003",
+      "titre": "Nvidia (NVDA) : +2,72% à 182,65 USD, résilience tech face aux tensions",
+      "texte": "Nvidia gagne 2,72% malgré contexte géopolitique dégradé, bénéficiant de la rotation vers valeurs défensives et de la demande IA persistante. Alphabet suit avec +2,63%, indiquant une préférence pour les mega-cap technologiques.",
+      "categorie": "ai_tech",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-03-09T23:04:51.910Z",
+      "donnees": {
+        "symbole": "GOOGL",
+        "nom": "Alphabet",
+        "prix": 306.36,
+        "variation": 2.63
+      }
+    },
+    {
+      "id": "alert-2026-03-09-004",
+      "titre": "Anthropic vs Pentagone : contentieux 'risque chaîne d'approvisionnement' en cours",
+      "texte": "Anthropic conteste la désignation du Pentagone pouvant coûter des milliards de dollars. Employés d'OpenAI et Google déposent mémoire en soutien. Risque réglementaire majeur pour secteur IA avec implications budgétaires significatives.",
+      "categorie": "ai_tech",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-09T23:04:51.910Z",
+      "donnees": {
+        "score": 8,
+        "label": "Extreme Fear",
+        "variation_7j": -2
+      }
+    },
+    {
+      "id": "alert-2026-03-09-005",
+      "titre": "Détroit d'Ormuz : fermeture potentielle, risque critique pour énergie mondiale",
+      "texte": "Armateurs annulent voyages et reportent contrats ; recherche de routes alternatives au Golfe. Trump envisage prise de contrôle du détroit. Fermeture complète pourrait paralyser 20%+ du commerce pétrolier mondial.",
       "categorie": "geopolitique",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-03-06T18:43:50.987Z",
-      "donnees": {}
-    },
-    {
-      "id": "alert-2026-03-06-003",
-      "titre": "Gaz naturel US : hausse anticipée des factures résidentielles à partir de mai 2026",
-      "texte": "Bercy anticipe une augmentation des factures de gaz pour 60% des contrats français sans offre à prix fixe. Aux États-Unis, les prix du gaz naturel suivent la hausse pétrolière amplifiée par les tensions iraniennes.",
-      "categorie": "macro",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-03-06T18:43:50.987Z",
-      "donnees": {}
-    },
-    {
-      "id": "alert-2026-03-06-004",
-      "titre": "Kazakhstan : 350 millions de dollars investis en actifs crypto et Bitcoin",
-      "texte": "La Banque centrale du Kazakhstan annonce un investissement de jusqu'à 350 millions de dollars en réserves crypto, signalant une diversification stratégique des réserves de change face aux tensions géopolitiques.",
-      "categorie": "crypto",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-03-06T18:43:50.987Z",
+      "horodatage": "2026-03-09T23:04:51.910Z",
       "donnees": {}
     }
   ],
   "stats": {
-    "total": 4,
-    "urgent": 2,
+    "total": 5,
+    "urgent": 3,
     "attention": 1,
     "info": 1
   },
