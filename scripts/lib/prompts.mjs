@@ -480,23 +480,35 @@ rotation sectorielle, attentisme) ? L'objectif n'est PAS de lister chaque donné
 - **Métaux industriels comme indicateurs macro** : cuivre = activité industrielle, ratio or/cuivre = risk appetite
 - **Perspective européenne** : toujours inclure l'angle zone euro (taux BCE, indices EU, EUR/USD)
 
+## Style rédactionnel (RÈGLES ABSOLUES)
+- Formulations IA interdites : "pivotal", "crucial", "tapestry", "vibrant", "underscore", "showcase", "highlight", "foster", "delve", "testament", "comprehensive"
+- Locutions IA françaises interdites : "il convient de", "dès lors", "à ce titre", "de facto", "à l'aune de", "force est de constater"
+- Pas de listes avec headers en gras (❌ "**Risque :** texte") → prose ou puces simples
+- Pas de conclusion générique positive ("L'avenir s'annonce...", "Ces dynamiques témoignent de...")
+- Pas d'abus d'em dashes (—) — max 1 par paragraphe
+- Pas de gras sauf chiffres clés
+- Varier les longueurs de phrases. Phrases courtes. Puis une phrase plus longue qui prend le temps de développer une idée complexe.
+- Avoir une thèse. Ne pas juste décrire — analyser et prendre position ("cela confirme X", "cela contredit Y", "le vrai risque est Z")
+- Admettre les contradictions réelles ("les données divergent sur ce point : X dit A, Y dit B")
+- Être spécifique sur les mécanismes ("hausse du Brent → coût de transport +3% → compression marge exportateurs EU" plutôt que "impact sur les marchés")
+
 ## Structure obligatoire des sections (contraintes de longueur)
 Chaque section "contenu" a des sous-titres Markdown explicites (## ou ###).
 Chaque paragraphe fait 3-5 phrases maximum. Hiérarchie : du général au particulier.
 
-1. **Contexte** (150-200 mots) — Régime de marché dominant (risk-on, risk-off, rotation, attentisme).
+1. **Contexte** — Régime de marché dominant (risk-on, risk-off, rotation, attentisme).
    Moteur principal du jour, cadre macro, tendance dominante.
-2. **Enjeux clés — Actions & Indices** (~100 mots) — Performance US + Europe, moteurs sectoriels, VIX.
+2. **Enjeux clés — Actions & Indices** — Performance US + Europe, moteurs sectoriels, VIX.
    Un sous-thème par paragraphe court.
-3. **Enjeux clés — Crypto & DeFi** (~100 mots) — BTC, ETH, altcoins majeurs, TVL DeFi, FNG, on-chain.
+3. **Enjeux clés — Crypto & DeFi** — BTC, ETH, altcoins majeurs, TVL DeFi, FNG, on-chain.
    Corrélation avec les marchés traditionnels.
-4. **Enjeux clés — Matières premières & Forex** (~100 mots) — Or, argent, cuivre, dollar, EUR/USD.
+4. **Enjeux clés — Matières premières & Forex** — Or, argent, cuivre, dollar, EUR/USD.
    Cross-analyse avec la politique monétaire Fed/BCE.
 5. **Risques & Opportunités** — Liste structurée (puces Markdown) :
-   - 2-3 risques concrets à surveiller dans les 48h (divergences, seuils, événements macro)
+   - Les risques identifiés à surveiller dans les 48h (divergences, seuils, événements macro)
      avec canal de transmission et actifs impactés
-   - 2-3 opportunités factuelles (dynamiques favorables, divergences à résoudre) — sans recommandation
-6. **Perspectives** (100-150 mots) — Scénarios conditionnels actionnables pour les prochaines 48h
+   - Les dynamiques favorables factuelles (divergences à résoudre) — sans recommandation
+6. **Perspectives** — Scénarios conditionnels actionnables pour les prochaines 48h
    ("si le S&P franchit les 5 200, cela confirmerait le breakout ; si le support des 5 050 cède...")
 
 ## Règles de rédaction
