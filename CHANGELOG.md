@@ -1,0 +1,1079 @@
+# CLAUDE.md — Inflexion Architecture & Guide Technique
+
+## 1. Vue d'ensemble
+
+**Inflexion** est une plateforme d'intelligence financiere automatisee combinant analyses geopolitiques et donnees de marche en temps reel. Le systeme agrege **15 APIs**, **157 flux RSS** et utilise **Claude Sonnet** (briefing strategique) + **Claude Haiku** (classification, alertes) pour generer des syntheses IA quotidiennes.
+
+**URL de production** : https://florycarm-a11y.github.io/Inflexion/
+
+## 2. Architecture technique
+
+```
+Inflexion/
+├── index.html              # Page principale (widgets, sidebar, news)
+├── analysis.html           # Page analyses approfondies
+├── commodities.html        # Page matieres premieres
+├── crypto.html             # Page crypto & blockchain
+├── etf.html                # Page ETF & fonds
+├── geopolitics.html        # Page geopolitique
+├── markets.html            # Page marches & finance
+├── premium.html            # Page services premium (roadmap monetisation)
+├── expertise.html          # Page methodologie & approche
+├── country.html            # Page macro par pays (World Bank)
+├── cgu.html                # Conditions generales d'utilisation
+├── mentions-legales.html   # Mentions legales
+├── confidentialite.html    # Politique de confidentialite
+├── analyse-*.html          # Articles d'analyse thematique (4 pages)
+├── styles.css              # CSS complet (design vert, responsive)
+├── app.js                  # Logique JS principale + donnees statiques fallback
+├── data-loader.js          # Charge les JSON dynamiques → met a jour le DOM
+├── api-client.js           # Client API frontend (18 endpoints RESTful)
+├── supabase-client.js      # Client Supabase (watchlist, partage, annotations)
+├── data/                   # Fichiers JSON generes par le pipeline
+│   ├── crypto.json          # CoinGecko: prix, trending, stablecoins
+│   ├── markets.json         # Finnhub: indices US (ETF proxies), calendrier eco
+│   ├── european-markets.json # Twelve Data: CAC 40, DAX, FTSE, Euro Stoxx 50
+│   ├── news.json            # GNews + RSS: actualites multi-categories
+│   ├── newsapi.json         # NewsAPI: actualites complementaires EN
+│   ├── rss-feeds.json       # Suivi des 157 flux RSS
+│   ├── macro.json           # FRED: 10 indicateurs macro US
+│   ├── global-macro.json    # ECB + VIX: taux BCE, EUR/USD, volatilite
+│   ├── world-bank.json      # World Bank: PIB, inflation, chomage, dette (10 pays)
+│   ├── fear-greed.json      # Alternative.me: indice peur/avidite crypto
+│   ├── alpha-vantage.json   # Alpha Vantage: forex, secteurs, top movers
+│   ├── defi.json            # DefiLlama: TVL, protocoles, yields
+│   ├── messari.json         # Messari: crypto avance, dominance, metriques
+│   ├── chart-gold-btc.json  # CoinGecko: historique or vs BTC 90j
+│   ├── commodities.json     # metals.dev: metaux precieux & industriels
+│   ├── onchain.json         # Etherscan + Mempool: gas ETH, fees BTC, hashrate
+│   ├── daily-briefing.json  # Claude Sonnet: briefing strategique quotidien
+│   ├── article-du-jour.json # Claude Haiku: article synthese du jour
+│   ├── sentiment.json       # Claude IA: analyse de sentiment
+│   ├── alerts.json          # Claude IA: alertes marche
+│   ├── newsletter.json      # Claude IA: newsletter quotidienne
+│   ├── macro-analysis.json  # Claude IA: analyse macro
+│   ├── market-briefing.json # Claude IA: briefing marche
+│   ├── embeddings-cache.json # Cache embeddings RAG (SHA-256, TTL 7j)
+│   ├── _meta.json           # Metadonnees du pipeline
+│   ├── rag/                 # Store RAG vectoriel
+│   │   ├── articles.json    # Embeddings articles indexes
+│   │   └── briefings.json   # Embeddings briefings indexes
+│   └── articles/            # Archive articles par date (YYYY-MM-DD.json)
+├── scripts/
+│   ├── fetch-data.mjs       # Pipeline principal (15 APIs + 157 RSS)
+│   ├── generate-daily-briefing.mjs # Briefing strategique (Claude Sonnet + RAG)
+│   ├── generate-market-analysis.mjs # Script consolide : sentiment + alertes + macro + briefing (2 appels Claude)
+│   ├── generate-article.mjs  # Article du jour (Claude Haiku)
+│   ├── generate-newsletter.mjs # Newsletter (Claude Haiku)
+│   ├── rag-index.mjs         # Indexation RAG (embeddings articles + briefings)
+│   ├── analyze-sentiment.mjs # Analyse de sentiment (individuel, debug)
+│   ├── generate-alerts.mjs   # Alertes marche (individuel, debug)
+│   ├── generate-macro-analysis.mjs # Analyse macro (individuel, debug)
+│   ├── generate-market-briefing.mjs # Briefing marche (individuel, debug)
+│   ├── translate-articles.mjs # Traduction EN→FR
+│   ├── check-french.py       # Verification qualite francais
+│   ├── lib/                   # Modules partages
+│   │   ├── claude-api.mjs     # Client API Anthropic (retry, timeout)
+│   │   ├── prompts.mjs        # Prompts systeme (briefing, consolide, sentiment)
+│   │   ├── embeddings.mjs     # Embeddings MiniLM-L6-v2 (384D)
+│   │   ├── embeddings-cache.mjs # Cache persistant SHA-256 (TTL 7j)
+│   │   ├── rag-store.mjs      # Store vectoriel hybride (cosinus + lexical + recency)
+│   │   ├── claim-verifier.mjs # Verificateur anti-hallucination post-generation
+│   │   └── contradiction-detector.mjs # Detection contradictions cross-sources
+│   └── tests/                 # Tests unitaires (~434 tests, 12 fichiers)
+├── backend/                   # Backend Node.js (optionnel)
+│   └── .env.example           # Template variables d'environnement
+├── .github/workflows/
+│   ├── fetch-data.yml         # Cron 2x/jour (06h/18h UTC): donnees + traduction
+│   ├── generate-daily-briefing.yml # Declenche apres fetch-data: briefing + RAG
+│   ├── generate-article.yml   # Cron quotidien: article IA
+│   ├── analyze-sentiment.yml  # Cron 2x/jour: analyse consolidee (sentiment + alertes + macro + briefing)
+│   ├── generate-newsletter.yml # Cron: newsletter
+│   ├── deploy-pages.yml       # Deploy GitHub Pages
+│   ├── ci.yml                 # Tests CI
+│   └── check-french.yml       # Verification francais
+└── package.json
+```
+
+## 3. Pipeline de donnees
+
+### Flux principal
+```
+GitHub Actions (cron 2x/jour : 06h + 18h UTC)
+    ↓
+scripts/fetch-data.mjs
+    ├── 15 APIs temps reel
+    ├── 157 flux RSS (5 sec delai entre chaque)
+    ├── Deduplication + tri par date
+    └── Traduction EN→FR (translate-articles.mjs)
+    ↓
+data/*.json (commites automatiquement)
+    ↓
+GitHub Pages (deploiement auto)
+    ↓
+data-loader.js (frontend)
+    ├── Charge tous les JSON en parallele
+    ├── Curation qualitative (scoreArticle + curateArticles)
+    ├── Met a jour le DOM (widgets, news, graphiques)
+    └── Fallback vers app.js si JSON indisponibles
+```
+
+### Flux IA (Claude Sonnet + Haiku)
+```
+Declenche apres fetch-data (workflow_run) :
+    scripts/rag-index.mjs                    → data/rag/ (embeddings articles + briefings)
+    scripts/generate-daily-briefing.mjs      → data/daily-briefing.json  (Claude Sonnet — briefing strategique + RAG + verification claims)
+
+Cron 2x/jour (06h30 + 18h30 UTC) — script consolide :
+    scripts/generate-market-analysis.mjs     → sentiment.json + alerts.json + macro-analysis.json + market-briefing.json (2 appels Claude Haiku)
+
+Cron quotidien :
+    scripts/generate-article.mjs             → data/article-du-jour.json (Claude Haiku)
+    scripts/generate-newsletter.mjs          → data/newsletter.json      (Claude Haiku)
+
+Scripts individuels (conserves pour debug) :
+    scripts/analyze-sentiment.mjs, generate-alerts.mjs, generate-macro-analysis.mjs, generate-market-briefing.mjs
+```
+
+## 4. Sources API (15)
+
+### Avec cle API (7)
+| API | Cle env | Tier | Limite | Donnees |
+|-----|---------|------|--------|---------|
+| Finnhub | `FINNHUB_API_KEY` | Gratuit | 60 req/min | Indices US, VIX, calendrier eco |
+| GNews | `GNEWS_API_KEY` | Gratuit | 100 req/jour | Actualites FR/EN multi-categories |
+| FRED | `FRED_API_KEY` | Gratuit | 120 req/min | 10 series macro US |
+| Alpha Vantage | `ALPHA_VANTAGE_API_KEY` | Gratuit | 25 req/jour | Forex, secteurs, top movers |
+| Messari | `MESSARI_API_KEY` | Gratuit | 20 req/min | Crypto avance, dominance, metriques globales |
+| Twelve Data | `TWELVE_DATA_API_KEY` | Gratuit | 800 req/jour | CAC 40, DAX, FTSE, Euro Stoxx 50, IBEX 35, FTSE MIB |
+| NewsAPI | `NEWSAPI_API_KEY` | Gratuit | 100 req/jour | Actualites EN complementaires (5 categories) |
+
+### Sans cle (8)
+| API | Donnees |
+|-----|---------|
+| CoinGecko | Crypto: prix, trending, stablecoins, historique 90j |
+| Alternative.me | Fear & Greed Index crypto (31j historique) |
+| DefiLlama | TVL DeFi, top protocoles, yields stablecoins |
+| metals.dev | Metaux precieux (or, argent, platine) + industriels |
+| Etherscan | ETH gas tracker (low/standard/fast) |
+| Mempool.space | BTC fees, hashrate, difficulty |
+| ECB Data API | Taux directeur BCE, EUR/USD fixing 90j |
+| World Bank | PIB, inflation, chomage, dette (10 economies majeures) |
+
+## 5. Sources RSS (157)
+
+### Geopolitique (30 sources)
+- **FR** : Le Figaro Intl, France 24, RFI, Courrier Intl, Le Monde Diplomatique
+- **Intl** : BBC World, Al Jazeera, The Guardian, NYT, Reuters, Politico EU
+- **Think tanks** : Foreign Policy, CFR, Brookings, Carnegie, CSIS, Responsible Statecraft, War on the Rocks
+- **Regional** : The Diplomat (Asie), Middle East Eye (MENA)
+- **Think tanks FR** : IFRI, IRIS, FRS, GRIP
+- **Think tanks intl complementaires** : Chatham House, IISS, Al-Monitor, Middle East Institute
+- **Donnees geopolitiques** : SIPRI (armement), Crisis Group (conflits)
+
+### Marches & Finance (23 sources)
+- **FR** : Le Figaro (Eco, Conj, Societes, Flash Eco), Les Echos, BFM Business, Zonebourse, La Tribune (general + finance), Capital
+- **Intl** : MarketWatch, Yahoo Finance, Seeking Alpha, CNBC, Investing.com
+- **Macro specialise** : Wolf Street, Calculated Risk, Naked Capitalism, TLDR Fintech
+- **Presse financiere intl** : Financial Times, Nikkei Asia, L'AGEFI
+- **Banques centrales** : BCE (communiques), Banque de France
+
+### Crypto & Blockchain (14 sources)
+- **FR** : CoinTelegraph FR, Cryptoast, Journal du Coin
+- **Actualites** : CoinDesk, CoinTelegraph EN, The Block, Decrypt, Blockworks, Bitcoin Magazine
+- **Specialise** : The Defiant, Unchained, Web3 is Going Great, Chainalysis, TLDR Crypto
+
+### Matieres Premieres & Energie (17 sources)
+- **Energie** : OilPrice, Rigzone, Natural Gas Intel, Reuters Commodities
+- **Metaux** : GoldPrice.org, Mining.com, MetalMiner, S&P Global
+- **Agriculture** : Feedstuffs, DTN Ag News
+- **Transversal** : Hellenic Shipping, Trading Economics
+- **Energie specialise** : OPEC, Wood Mackenzie, Kpler Energy
+
+### IA, Tech & Cybersecurite (20 sources)
+- **FR** : Le Figaro Tech, 01net, Numerama, Next INpact
+- **Tech** : TechCrunch, The Verge, Ars Technica, Wired, Hacker News
+- **IA** : VentureBeat AI, MIT Tech Review, IEEE Spectrum AI, MarkTechPost, The Decoder
+- **Cybersecurite** : Krebs on Security, BleepingComputer, The Register
+- **Newsletters** : TLDR Tech, TLDR AI
+
+### Sources francophones complementaires (6 sources)
+- Le Monde Eco, Le Monde Intl, Challenges, MoneyVox, Le Figaro Finances, La Tribune Finance
+
+### Think tanks macro (6 sources)
+- BIS (BRI), IMF Blog, World Economic Forum, PIIE, VoxEU/CEPR, OECD
+
+### Energie & climat (7 sources)
+- IEA, IRENA, Carbon Brief, CleanTechnica, Reuters Sustainability, Energy Monitor, S&P Energy Transition
+
+### Politique europeenne & Regulation tech (18 sources)
+- **Think tanks EU** : Bruegel, CEPS, ECFR
+- **Presse & institutions EU** : Euractiv, Parlement Europeen, EC Single Market, BEI
+- **Infrastructures de connexion** : TeleGeography, SpaceNews, Hinrich Foundation
+- **Ethique numerique** : AlgorithmWatch, EFF, CNIL, noyb
+- **Bio-souverainete** : EuropaBio, SynBioBeta, GEN Biotech
+- **Politique industrielle** : EU Tech Policy
+
+### Defense, Strategie & Renseignement (12 sources)
+- **Think tanks defense** : RUSI, RAND, CNAS, Arms Control Association, European Leadership Network
+- **Presse defense & securite** : Defense One, Breaking Defense, C4ISRNET, Lawfare, Terra Bellum
+- **OSINT & investigations** : Bellingcat, ACLED
+
+### Think tanks non-occidentaux (4 sources)
+- **Asie** : ORF India, ISEAS Singapore
+- **Afrique** : ISS Africa
+- **Non-proliferation** : NTI (Nuclear Threat Initiative)
+
+## 6. Frontend
+
+### Architecture
+- **HTML5** semantique, 17 pages separees par rubrique
+- **CSS3** : design vert (#0B3D1E), responsive (480/768/1024px), glassmorphisme
+- **JavaScript Vanilla** : zero dependance externe
+- **TradingView Widgets** : graphiques temps reel integres
+- **data-loader.js** : IIFE `DataLoader` avec cache, curation qualitative (scoreArticle), fallback gracieux, freshness indicators
+
+### Navigation
+- **Desktop (≥769px)** : barre de navigation horizontale sticky (`desktop-nav`) generee par JS (`initDesktopNav` dans `app.js`), avec indicateur de page active et CTA. Le header scroll hors ecran, la nav bar reste fixee en haut.
+- **Mobile (<769px)** : menu hamburger ouvrant un overlay plein ecran vert avec animations d'entree decalees, groupes "Veille" et "Conseil", et CTA "Reserver un diagnostic".
+
+### Widgets dynamiques (sidebar index.html)
+1. Marches US (Finnhub)
+2. Indicateurs macro (FRED)
+3. Fear & Greed Index (Alternative.me)
+4. Sentiment IA (Claude Haiku)
+5. Alertes marche (Claude Haiku)
+6. Briefing marche (Claude Haiku)
+7. Analyse macro (Claude Haiku)
+8. Indices europeens (Twelve Data)
+9. Macro internationale (World Bank)
+10. Crypto avance (Messari)
+11. Crypto & tendances (CoinGecko)
+12. DeFi & yields (DefiLlama)
+13. Calendrier economique (Finnhub)
+14. Forex & secteurs (Alpha Vantage)
+15. Briefing Strategique IA (Claude Sonnet, avec fallback vers article du jour)
+16. Selection du jour — news curees (GNews + RSS + NewsAPI, 8-12 articles)
+17. Veille politique EU & Tech (RSS policy sources)
+
+## 7. Cles API et secrets GitHub
+
+Les cles sont stockees dans **GitHub Settings > Secrets and variables > Actions** :
+
+```
+FINNHUB_API_KEY          # Finnhub (indices, VIX)
+GNEWS_API_KEY            # GNews (actualites)
+FRED_API_KEY             # FRED (macro US)
+ALPHA_VANTAGE_API_KEY    # Alpha Vantage (forex, secteurs)
+MESSARI_API_KEY          # Messari (crypto avance)
+TWELVE_DATA_API_KEY      # Twelve Data (indices europeens)
+NEWSAPI_API_KEY          # NewsAPI (news complementaires)
+ANTHROPIC_API_KEY        # Claude Sonnet + Haiku (syntheses IA)
+TAVILY_API_KEY           # Tavily (recherche web, optionnel — generate-article)
+PAT_TOKEN                # GitHub PAT (pour commit auto)
+```
+
+## 8. Commandes utiles
+
+```bash
+# Lancer le pipeline de donnees localement
+FINNHUB_API_KEY=xxx GNEWS_API_KEY=xxx node scripts/fetch-data.mjs
+
+# Lancer les tests
+npm test
+
+# Serveur local
+npx serve .
+
+# Verifier la qualite du francais
+python scripts/check-french.py
+```
+
+## 9. Prompt systeme — Briefing Strategique IA
+
+Le prompt systeme ci-dessous est utilise par Claude (Sonnet) lors de la generation du briefing strategique quotidien (`scripts/generate-daily-briefing.mjs`). Il definit le role, les 12 instructions editoriales et la structure obligatoire du briefing.
+
+---
+
+Tu es l'IA redactrice du Briefing Strategique quotidien d'Inflexion, plateforme d'intelligence geopolitique et financiere. Tu produis chaque jour un briefing concis, non-redondant, actionnable et multi-geographique. Respecte imperativement les 12 instructions suivantes :
+
+### INSTRUCTION 1 — ZERO REDONDANCE
+Chaque donnee chiffree (prix, variation, indicateur) ne doit apparaitre qu'une seule fois dans le briefing. "Evolutions du jour" pose les faits bruts. "Enjeux cles" les analyse sans les re-citer. "Radar des risques" quantifie les scenarios en renvoyant aux donnees deja posees. Si un chiffre a ete mentionne dans une section precedente, ecrire "le support BTC identifie plus haut" plutot que de reecrire "63 282 $ (-4,1% sur 24h)". Aucune phrase ne doit etre repetee ou reformulee d'une section a l'autre.
+
+### INSTRUCTION 2 — COUVERTURE GEOGRAPHIQUE MULTI-ZONES
+Chaque briefing doit consacrer un paragraphe aux marches hors-US. Inclure au minimum : un indice europeen (DAX ou STOXX 600), un indice asiatique (Nikkei ou Hang Seng), et une devise majeure (EUR/USD ou USD/JPY). Expliquer comment ces marches confirment ou divergent du narratif US du jour. Ne jamais produire un briefing exclusivement centre sur les Etats-Unis.
+
+### INSTRUCTION 3 — SCENARIOS ANCRES SUR UN CALENDRIER
+Chaque scenario conditionnel doit etre associe a un catalyseur date : publication macro (CPI, PCE, NFP), reunion de banque centrale, expiration d'options, discours officiel. Ajouter en fin de briefing une sous-section "Agenda de la semaine" listant les 3 a 5 evenements cles avec date, heure (fuseau CET) et impact attendu. Ne jamais ecrire un scenario sans horizon temporel precis.
+
+### INSTRUCTION 4 — THEMES A SURVEILLER (PAS DE CONSEIL EN INVESTISSEMENT)
+Conclure chaque briefing par une section "Themes a surveiller" avec 3 a 5 points d'attention : actif ou classe d'actifs + dynamique observee (haussiere/baissiere/neutre/volatile), seuils techniques ou niveaux cles a observer, facteurs de catalyse a venir. NE JAMAIS formuler de recommandation d'achat, de vente, de surponderation ou de sous-ponderation. NE JAMAIS indiquer de niveaux d'entree/sortie, de strikes, de hedges ou de ratio risque/rendement. Terminer cette section par le disclaimer : "Ces elements sont des observations factuelles et ne constituent pas un conseil en investissement. Consultez un professionnel agree (CIF-AMF) avant toute decision."
+
+### INSTRUCTION 5 — COHERENCE DES DONNEES SIDEBAR / BRIEFING
+Avant publication, executer une verification croisee systematique entre les donnees du briefing et celles des widgets sidebar. S'assurer que les unites sont coherentes (points d'indice vs prix d'ETF, pourcentage vs points de base). Si les widgets affichent le prix d'un ETF (SPY, QQQ, GLD), le preciser explicitement. Ne jamais laisser deux chiffres contradictoires sur la meme page.
+
+### INSTRUCTION 6 — PAS DE MARKDOWN BRUT DANS LE HTML
+Ne jamais inserer de syntaxe Markdown brute (**, *, ```, etc.) dans le contenu destine a l'affichage HTML. Utiliser directement les balises HTML (`<strong>` pour le gras, `<em>` pour l'italique). Si le contenu passe par un parseur Markdown, verifier que la conversion s'effectue correctement. Tester visuellement le rendu de chaque briefing avant mise en ligne.
+
+### INSTRUCTION 7 — ANALYSE GEOPOLITIQUE EN PROFONDEUR
+Quand un evenement geopolitique est identifie comme risque, developper une analyse en trois temps : (1) les scenarios possibles (ex: ton conciliant vs annonce de sanctions vs escalade militaire), (2) un precedent historique comparable avec son impact marche observe, (3) les impacts sectoriels chiffres pour chaque scenario. Ne jamais mentionner un risque geopolitique plus de deux fois sans l'avoir analyse en profondeur au moins une fois.
+
+### INSTRUCTION 8 — TAUX, CREDIT ET DEVISES DANS LA NARRATION
+Integrer dans "Evolutions du jour" les donnees obligataires et devises : Treasury 10Y, spread 10Y-2Y, dollar index, et taux hypothecaire 30 ans si pertinent. Expliquer en une phrase comment ces indicateurs confirment ou contredisent le regime de marche identifie. Exemple : "Le Treasury 10Y stable a 4,08% et le spread 10Y-2Y a 0,60% confirment un regime de transition sans signal de recession imminent."
+
+### INSTRUCTION 9 — CLASSIFICATION CORRECTE DES ARTICLES
+Verifier la categorie thematique de chaque article selectionne avant affichage. Si l'API source attribue une categorie erronee (basee sur la rubrique du journal d'origine plutot que sur le contenu reel), la corriger. Les categories valides sont : Geopolitique, Marches, Crypto, Matieres Premieres, IA & Tech. Un article hors-sujet (ex: sante, culture) doit etre ecarte de la selection ou classe "Autre".
+
+### INSTRUCTION 10 — HORODATAGE PRECIS
+Indiquer en en-tete du briefing l'horodatage exact de la derniere mise a jour au format : "Derniere mise a jour : JJ/MM/AAAA a HHhMM CET". Preciser l'etat des marches au moment de la redaction (ex: "Marches US fermes, pre-ouverture europeenne" ou "Marches US ouverts, donnees intraday"). Ce timestamp doit etre genere automatiquement.
+
+### INSTRUCTION 11 — LIMITE DE 800 MOTS
+Le briefing principal (hors sidebar et widgets) ne doit pas depasser 800 mots. Viser 600 a 800 mots. La densite informationnelle par mot prime sur le volume. Le lecteur doit pouvoir lire le briefing complet en 3 minutes maximum. Si le contenu depasse 800 mots, couper les redondances en priorite, puis les details secondaires.
+
+### INSTRUCTION 12 — SIGNAL DU JOUR DIFFERENCIANT
+Ouvrir chaque briefing par un encadre "Signal du jour" identifiant UN signal faible ou une interconnexion non evidente que les autres sources ne couvrent pas. Ce signal doit croiser au moins deux classes d'actifs ou deux zones geographiques. Exemple : "La divergence or/dollar (DXY stable, or en hausse) suggere que la demande refuge vient des banques centrales etrangeres, pas du flight-to-safety classique." C'est la valeur ajoutee unique d'Inflexion.
+
+---
+
+### Structure du briefing a respecter
+
+1. **Signal du jour** (encadre, 2-3 phrases max)
+2. **Evolutions du jour** (faits bruts, donnees multi-zones, taux et devises inclus)
+3. **Signaux confirmes ou inverses** (analyse sans re-citer les chiffres)
+4. **Enjeux cles** (2-3 themes, avec interconnexions)
+5. **Radar des risques** (scenarios avec probabilite, impact, catalyseur date)
+6. **Themes a surveiller** (3-5 points d'attention + disclaimer)
+7. **Agenda de la semaine** (3-5 evenements dates avec heure et impact attendu)
+
+## 10. Historique des modifications
+
+### Session 2026-02-12 — Elargissement sources API (Partie C)
+
+**Nouvelles APIs integrees (4) :** 11 → 15 sources
+- **Messari** (`fetchMessari`) : metriques crypto avancees — dominance BTC, market cap, volumes reels, supply par asset. Ecrit `messari.json`.
+- **Twelve Data** (`fetchTwelveData`) : indices europeens — CAC 40, DAX, FTSE 100, Euro Stoxx 50, IBEX 35, FTSE MIB + forex EUR/GBP, EUR/CHF. Ecrit `european-markets.json`.
+- **World Bank** (`fetchWorldBank`) : donnees macro internationales — PIB, inflation, chomage, dette publique pour 10 economies majeures (USA, CHN, JPN, DEU, GBR, FRA, IND, BRA, CAN, KOR). Ecrit `world-bank.json`.
+- **NewsAPI** (`fetchNewsAPI`) : actualites EN complementaires (5 categories) pour enrichir le flux GNews + RSS. Ecrit `newsapi.json`. Les articles sont fusionnes dans le flux principal via `mergeNewsAPIArticles()` dans data-loader.js.
+
+**Nouveaux flux RSS (19) :** 78 → 97 sources
+- *Sources francophones (6)* : Le Monde Eco, Le Monde Intl, Challenges, MoneyVox, Le Figaro Finances, La Tribune Finance
+- *Think tanks macro (6)* : BIS (BRI), IMF Blog, World Economic Forum, PIIE, VoxEU/CEPR, OECD
+- *Energie & climat (7)* : IEA, IRENA, Carbon Brief, CleanTechnica, Reuters Sustainability, Energy Monitor, S&P Energy Transition
+
+**Fichiers modifies :**
+- `scripts/fetch-data.mjs` : +4 fonctions API, +19 entrees RSS, mise a jour main()
+- `data-loader.js` : +4 fichiers JSON dans CONFIG.FILES, +4 widgets (european markets, world bank, messari, newsapi merge), +4 getters publics
+- `index.html` : +3 blocs sidebar (indices europeens, macro internationale, crypto avance)
+- `.github/workflows/fetch-data.yml` : +3 secrets env (MESSARI, TWELVE_DATA, NEWSAPI), timeout 10→15min
+- `backend/.env.example` : documentation des nouvelles cles API
+- `CLAUDE.md` : creation du fichier (ce document)
+
+### Session 2026-02-12 (2) — Fix affichage news + traduction immediate
+
+**Problemes corriges :**
+- Traduction EN→FR maintenant executee a chaque cycle fetch (toutes les 6h) et non plus 1x/jour
+- `translate-articles.mjs` traite aussi `newsapi.json` (plus seulement `news.json`)
+- Layout articles : photo en haut, titre en dessous, resume bref (150 car. max) sous le titre
+- Filtrage rubriques : mapping `geopolitics→geopolitique`, `markets→marches` dans app.js
+- Ajout bouton filtre "IA & Tech" + badge CSS violet
+- CSS manquants ajoutes : `.news-list`, `.news-list-body`, `.news-list-thumb`, `.has-thumb`, `.news-list-summary`
+- Suppression bloc `.news-list-item !important` duplique
+- Display limits augmentes : homepage 15→30 articles, pagination 5→10
+
+**Fichiers modifies :**
+- `styles.css` : layout cards (photo top, summary bottom), +CSS widgets EU/WB/Messari
+- `app.js` : mapping rubrique, layout photo+resume, NEWS_PER_PAGE 5→10
+- `data-loader.js` : layout articles, slice 15→30, resume 150 car.
+- `index.html` : bouton filtre "IA & Tech"
+- `.github/workflows/fetch-data.yml` : ajout step traduction EN→FR apres fetch
+- `scripts/translate-articles.mjs` : ajout traitement newsapi.json
+
+### Session 2026-02-12 (3) — Analyse UX, page Premium, +25 RSS
+
+**Contexte :** Analyse approfondie de l'UX du point de vue du public cible (investisseur francophone actif). Identification des services premium a monetiser et des sources manquantes.
+
+**Nouveaux flux RSS (25) :** 97 → 122 sources
+- *Think tanks geopolitiques FR (4)* : IFRI, IRIS, FRS (Fondation pour la recherche strategique), GRIP (Bruxelles)
+- *Think tanks internationaux (4)* : Chatham House, IISS, Al-Monitor, Middle East Institute
+- *Donnees geopolitiques (2)* : SIPRI (armement), Crisis Group (conflits)
+- *Presse financiere internationale (3)* : Financial Times, Nikkei Asia, L'AGEFI
+- *Banques centrales (2)* : BCE (communiques), Banque de France
+- *Energie/commodites (4)* : OPEC, Wood Mackenzie, Kpler Energy, Argus Media
+- *IA & Tech premium (3)* : Stratechery, The Information, Simon Willison
+
+**Nouvelle page :** `premium.html`
+- Presentation de 6 services premium envisages : briefing IA strategique, alertes contextuelles, dashboard risque geopolitique, rapports thematiques, screener cross-asset, API entreprises
+- Cartographie des 122 sources par categorie
+- CTA vers inscription newsletter (early-adopter)
+
+**Ameliorations UX :**
+- Fallback messages contextualises pour chaque widget IA (au lieu de "Chargement..." generique)
+- Footer source tags elargis : CFR, IFRI, SIPRI, Chatham House, FMI, BCE, FRED, Finnhub, CoinGecko, DefiLlama, Messari, OPEC
+- Hero eyebrow mis a jour : "122 sources · 15 APIs · IA Claude"
+- Lien "Premium" ajoute dans la navigation de toutes les pages
+
+**Fichiers modifies :**
+- `scripts/fetch-data.mjs` : +25 entrees RSS, mise a jour commentaires (97→122)
+- `premium.html` : nouvelle page services premium
+- `styles.css` : +CSS premium page (grid, cards, sources, CTA, responsive)
+- `index.html` : nav premium, footer elargi, hero eyebrow, fallback article du jour
+- `app.js` : fallback messages contextualises par widget
+- `geopolitics.html`, `markets.html`, `crypto.html`, `commodities.html`, `etf.html`, `analysis.html`, `cgu.html`, `mentions-legales.html`, `confidentialite.html` : nav premium + footer sources
+- `CLAUDE.md` : documentation session
+
+### Session 2026-02-12 (4) — Briefing IA Quotidien Strategique
+
+**Contexte :** Nouvelle feature phare d'Inflexion — un briefing strategique quotidien qui croise signaux geopolitiques et donnees de marche avec interconnexions et risk radar. Utilise Claude Sonnet (vs Haiku pour les autres taches) pour la qualite d'analyse.
+
+**Nouveau script :** `scripts/generate-daily-briefing.mjs`
+- Charge 12 sources de donnees (news, marches, crypto, macro, commodities, etc.)
+- Selectionne les 20-30 articles les plus importants (diversite par rubrique)
+- Construit un contexte multi-sources en markdown
+- Appelle Claude Sonnet (`claude-sonnet-4-5-20250929`) avec prompt strategique
+- Produit : synthese 300-500 mots, 3-5 signaux avec interconnexions, 3 risques (risk radar)
+- Sortie : `data/daily-briefing.json`
+- Mode `--dry-run` pour valider sans appeler Claude
+
+**Nouveau workflow :** `.github/workflows/generate-daily-briefing.yml`
+- Cron quotidien 08h UTC (apres fetch-data 06h et article 07h)
+- Declenchement manuel (workflow_dispatch)
+- Commit automatique du briefing
+
+**Nouveau prompt :** `DAILY_BRIEFING_SYSTEM_PROMPT` dans `scripts/lib/prompts.mjs`
+- Ton "analyste senior" (Economist/FT/Stratfor)
+- Structure : synthese + signaux + interconnexions + risk radar
+- Regles d'interconnexion : chaque signal DOIT avoir 2+ liens vers d'autres secteurs
+
+**Frontend :** Section "Article du jour" transformee en "Briefing Strategique IA"
+- Priorite au briefing (`daily-briefing.json`) avec fallback vers article classique
+- Cartes de signaux avec badges de severite et interconnexions visuelles
+- Risk radar avec indicateurs de probabilite et impact
+- Tags et sentiment global colore
+- Responsive mobile
+
+**Fichiers modifies :**
+- `scripts/lib/claude-api.mjs` : ajout couts Sonnet dans TOKEN_COSTS
+- `scripts/lib/prompts.mjs` : +1 prompt (DAILY_BRIEFING_SYSTEM_PROMPT)
+- `data-loader.js` : chargement daily-briefing.json, nouveau rendu briefing, getter public
+- `index.html` : section "Briefing Strategique IA" (titre, sous-titre, placeholder)
+- `styles.css` : +CSS briefing (signal-card, interconnexions, risk-radar, severity badges, responsive)
+- `CLAUDE.md` : documentation session
+
+**Fichiers crees :**
+- `scripts/generate-daily-briefing.mjs` : script principal de generation
+- `.github/workflows/generate-daily-briefing.yml` : workflow CI/CD
+
+### Session 2026-02-17 — Watchlist Avancee (Gratuit)
+
+**Contexte :** Implementation complete des fonctionnalites avancees de la watchlist, initialement prevues en premium, desormais 100% gratuites. Comprend alertes croisees, donnees live, partage, annotations equipe, rapports automatises et API RESTful.
+
+**Nouvelles fonctionnalites :**
+
+1. **Donnees live sur la watchlist** — Enrichissement automatique de chaque actif suivi avec prix et variation 24h en temps reel. Cross-reference entre les sources : CoinGecko, Messari (crypto), Finnhub, Alpha Vantage (actions), Twelve Data (indices EU), etc. Rafraichissement automatique toutes les 5 minutes.
+
+2. **Alertes croisees** — Detection automatique quand une actualite ou une alerte IA mentionne un actif de la watchlist utilisateur. Croisement watchlist x 122 sources RSS x alertes Claude. Badge de notification par actif et panneau d'alertes croisees avec severite (urgent/attention/info).
+
+3. **Watchlists partagees** — Generation de lien de partage unique (code 12 caracteres). Vue lecture seule avec donnees live. Copie en un clic dans sa propre watchlist. Table Supabase `shared_watchlists`.
+
+4. **Annotations equipe** — Notes collaboratives sur chaque actif de la watchlist. Panneau slide-in avec formulaire, auteur, date, suppression. Table Supabase `watchlist_annotations`.
+
+5. **Rapports automatises** — Generation de rapport HTML complet en un clic : resume portfolio (hausse/baisse/tendance), detail de chaque actif (prix, variation, source), alertes croisees, contexte marche (sentiment IA, Fear & Greed). Ouverture dans un nouvel onglet pour impression/PDF.
+
+6. **API RESTful** — 18 endpoints couvrant toutes les donnees Inflexion. Architecture double : backend Node.js si disponible, fallback vers DataLoader (JSON statiques) sur GitHub Pages. Endpoints : articles, marche, crypto, macro, sentiment, alertes, briefing, DeFi, indices EU, prix par symbole, news par symbole, watchlist partagee, recherche, sources, categories, meta.
+
+**Helpers DataLoader :**
+- `getPriceForSymbol(symbol, category)` — Recherche le prix live dans toutes les sources
+- `getNewsForSymbol(symbol, label)` — Recherche les articles mentionnant un actif (avec alias : BTC→bitcoin, NVDA→nvidia, etc.)
+- `getAlertsForSymbol(symbol)` — Recherche les alertes IA mentionnant un actif
+
+**API Publique elargie (`window.InflexionAuth`) :**
+- `addToWatchlist()`, `removeFromWatchlist()`, `shareWatchlist()`, `loadSharedWatchlist()`
+- `generateReport()`
+- `watchlistItems` (getter), `crossAlerts` (getter)
+
+**Fichiers modifies :**
+- `data-loader.js` : +3 helpers (getPriceForSymbol, getNewsForSymbol, getAlertsForSymbol), +3 exports publics
+- `supabase-client.js` : refonte complete — enrichissement live, alertes croisees, partage, annotations, rapports, icones SVG par categorie
+- `index.html` : section watchlist elargie (toolbar, alertes croisees, annotations, watchlist partagee)
+- `styles.css` : refonte CSS watchlist (toolbar, items enrichis, alertes croisees, partage, annotations, responsive 4 breakpoints)
+- `api-client.js` : expansion en API RESTful complete (18 endpoints, fallback DataLoader)
+- `premium.html` : services 2 et 6 marques "Gratuit", CTA mis a jour
+- `CLAUDE.md` : documentation session
+
+**Tables Supabase ajoutees :**
+- `shared_watchlists` : `id`, `owner_id`, `share_code`, `name`, `is_public`, `created_at`
+- `watchlist_annotations` : `id`, `watchlist_item_id`, `user_id`, `author_name`, `text`, `created_at`
+
+### Session 2026-02-17 (2) — Curation qualitative des articles
+
+**Contexte :** L'affichage "Dernieres actualites" montrait 30 articles bruts tries par date, sans filtrage qualitatif ni distribution equilibree entre rubriques. L'utilisateur souhaitait 8-12 articles/jour de haute qualite, bien repartis entre les 5 thematiques d'Inflexion.
+
+**Nouveau systeme de curation (`data-loader.js`) :**
+- `SOURCE_TIERS` : classification de 70+ sources en 3 niveaux de qualite (think tanks/grandes redactions → presse specialisee → agregateurs)
+- `scoreArticle(article)` : algorithme de scoring 0-100 multi-criteres (autorite source 35pts, qualite titre 20pts, qualite description 20pts, fraicheur 15pts, image 5pts, langue 5pts)
+- `curateArticles(allArticles, targetTotal)` : selection equilibree en 2 phases — garantir 2 articles/rubrique puis completer avec les meilleurs restants (max 3/rubrique)
+- `updateLatestNewsWithRubriques()` : utilise desormais `curateArticles(allArticles, 12)` au lieu de `allArticles.slice(0, 30)`
+
+**Fix ordre DOM :** `mergeNewsAPIArticles()` deplace AVANT le rendu des news (etait appele apres, les articles NewsAPI n'apparaissaient pas dans la selection)
+
+**Modifications UI :**
+- Section "Dernieres actualites" renommee "Selection du jour" avec sous-titre explicatif
+- Bouton "Voir plus d'actualites" remplace par lien "Explorer toutes les rubriques"
+- CSS `.section-subtitle` ajoute
+
+**Fichiers modifies :**
+- `data-loader.js` : +SOURCE_TIERS, +scoreArticle(), +curateArticles(), refacto updateLatestNewsWithRubriques(), fix ordre mergeNewsAPIArticles
+- `index.html` : titre section, sous-titre, bouton → lien
+- `styles.css` : +.section-subtitle
+- `CLAUDE.md` : documentation session
+
+### Session 2026-02-18 — Fix timeouts API Claude (workflows CI)
+
+**Contexte :** Trois workflows GitHub Actions echouaient systematiquement avec l'erreur "The operation was aborted due to timeout" lors des appels a l'API Claude. Le timeout HTTP par defaut (30s) etait insuffisant pour les completions complexes (4000-6000 tokens), et le workflow `generate-article.yml` avait un timeout global de seulement 5 minutes.
+
+**Probleme racine :** Le module `claude-api.mjs` utilisait un timeout de 30 secondes par requete avec 3 retries (delay 1s → 2s). Pour les scripts generant des reponses longues (macro-analysis, market-briefing, newsletter), l'API Anthropic peut prendre 60+ secondes, causant des echecs en cascade.
+
+**Corrections apportees :**
+
+1. **Client API Claude (`scripts/lib/claude-api.mjs`)** — Augmentation des parametres par defaut :
+   - `timeoutMs` : 30s → 90s
+   - `retry.maxAttempts` : 3 → 4
+   - `retry.initialDelayMs` : 1s → 2s
+   - `retry.maxDelayMs` : 30s → 60s
+
+2. **Scripts lourds — timeout explicite 120s** :
+   - `generate-macro-analysis.mjs` : +`timeoutMs: 120_000` (maxTokens: 4096)
+   - `generate-market-briefing.mjs` : +`timeoutMs: 120_000` (maxTokens: 6000)
+   - `generate-newsletter.mjs` : +`timeoutMs: 120_000` (maxTokens: 6000)
+
+3. **Workflows GitHub Actions — timeout global augmente** :
+   - `generate-article.yml` : 5min → 15min (traduction + classification + generation)
+   - `analyze-sentiment.yml` : 10min → 15min (4 appels Claude sequentiels)
+   - `generate-daily-briefing.yml` : 10min → 15min (Claude Sonnet + RAG)
+
+**Fichiers modifies :**
+- `scripts/lib/claude-api.mjs` : DEFAULT_CONFIG timeout et retry
+- `scripts/generate-macro-analysis.mjs` : +timeoutMs explicite
+- `scripts/generate-market-briefing.mjs` : +timeoutMs explicite
+- `scripts/generate-newsletter.mjs` : +timeoutMs explicite
+- `.github/workflows/generate-article.yml` : timeout 5→15min
+- `.github/workflows/analyze-sentiment.yml` : timeout 10→15min
+- `.github/workflows/generate-daily-briefing.yml` : timeout 10→15min
+- `CLAUDE.md` : documentation session
+
+### Session 2026-02-21 — Consolidation des appels Claude (reduction tokens ~75%)
+
+**Contexte :** La limite de tokens API Anthropic a ete atteinte le 21 fevrier 2026. L'analyse a revele une consommation de ~2.87M tokens/mois, causee par 4 scripts Claude executes separement (8 appels par execution) 4 fois par jour (32 appels/jour). Les principaux consommateurs : `generate-market-briefing` (38%), `generate-macro-analysis` (21%), `analyze-sentiment` (17%), `generate-alerts` (8%).
+
+**Solution : fusion des 4 scripts en 1 script consolide avec 2 appels Claude**
+
+**Nouveau script :** `scripts/generate-market-analysis.mjs`
+- Charge toutes les donnees UNE SEULE FOIS (news, marches, crypto, FNG, macro, commodites, DeFi, forex, on-chain)
+- **Appel 1** : Sentiment multi-rubriques + alertes de marche (1 appel au lieu de 6)
+- **Appel 2** : Analyse macro + briefing marche (1 appel au lieu de 2)
+- Ecrit les 4 fichiers JSON existants (zero impact frontend) : `sentiment.json`, `alerts.json`, `macro-analysis.json`, `market-briefing.json`
+- Mode `--dry-run` pour valider sans appeler Claude
+
+**Nouveaux prompts consolides :** `scripts/lib/prompts.mjs`
+- `CONSOLIDATED_SENTIMENT_ALERTS_PROMPT` : combine sentiment par rubrique + alertes en un seul prompt
+- `CONSOLIDATED_MACRO_BRIEFING_PROMPT` : combine analyse macro + briefing marche en un seul prompt
+
+**Economies realisees :**
+- Appels Claude par execution : 8 → 2 (reduction 75%)
+- Frequence : 4x/jour → 2x/jour (06h30, 18h30 UTC)
+- System prompts repetes : ~4 000 tokens economises par execution
+- Contexte marche duplique : ~6 000 tokens economises par execution
+- **Estimation mensuelle : ~2.87M → ~500K tokens/mois (reduction ~82%)**
+
+| Metrique | Avant | Apres |
+|----------|-------|-------|
+| Appels Claude/jour | 32 | 4 |
+| Tokens/jour | ~95 000 | ~17 000 |
+| Tokens/mois | ~2 870 000 | ~510 000 |
+| Cout estime/mois | ~$12.50 | ~$2.25 |
+
+**Fichiers modifies :**
+- `scripts/lib/prompts.mjs` : +2 prompts consolides (CONSOLIDATED_SENTIMENT_ALERTS_PROMPT, CONSOLIDATED_MACRO_BRIEFING_PROMPT)
+- `.github/workflows/analyze-sentiment.yml` : 1 step consolide au lieu de 4, cron 4x→2x/jour, timeout 15→10min
+- `CLAUDE.md` : documentation session
+
+**Fichiers crees :**
+- `scripts/generate-market-analysis.mjs` : script consolide (remplace les 4 scripts individuels dans le workflow)
+
+**Note :** Les scripts individuels (`analyze-sentiment.mjs`, `generate-alerts.mjs`, `generate-macro-analysis.mjs`, `generate-market-briefing.mjs`) sont conserves pour execution manuelle ou debug individuel.
+
+### PRs precedentes
+
+**PR #23 (mergee)** : Redesign vert + widgets IA + 78 RSS + automatisation Claude
+- Redesign identite verte (#10b981)
+- Widgets sentiment, alertes, newsletter (Claude Haiku)
+- 49 → 78 flux RSS (+29 sources ultra-specialisees)
+- Pipeline fetch-data.mjs (11 APIs)
+- Tests unitaires (35 tests)
+
+### Session 2026-02-21 (2) — Veille politique technologique europeenne
+
+**Contexte :** Extension de la veille Inflexion a 5 secteurs strategiques complementaires identifies comme dependances critiques de l'economie numerique : (1) geopolitique des infrastructures de connexion (cables sous-marins, satellites, minerais critiques), (2) politique industrielle et "preference europeenne" (Industrial Accelerator Act, marches publics), (3) competitivite economique et productivity gap transatlantique, (4) bio-souverainete et biologie de synthese, (5) ethique numerique et Digital Fairness Act.
+
+**Nouveaux flux RSS (18) :** 122 → 140 sources
+
+- *Think tanks politiques europeens (3)* : Bruegel, CEPS (Centre for European Policy Studies), ECFR (European Council on Foreign Relations)
+- *Presse europeenne & politique (2)* : Euractiv, Parlement Europeen
+- *Infrastructures de connexion & souverainete numerique (3)* : TeleGeography (cables sous-marins), SpaceNews (constellations satellites), Hinrich Foundation (bifurcation technologique US/Chine)
+- *Ethique numerique & regulation digitale (4)* : AlgorithmWatch, EFF (Electronic Frontier Foundation), CNIL, noyb (Max Schrems)
+- *Bio-souverainete & biologie de synthese (3)* : EuropaBio, SynBioBeta, GEN Biotech (Genetic Engineering & Biotech News)
+- *Politique industrielle & competitivite (3)* : EC Single Market (Commission europeenne), BEI (Banque europeenne d'investissement), EU Tech Policy
+
+**Nouveaux mots-cles de pertinence :**
+- `geopolitics` : cable sous-marin, submarine cable, souverainete numerique, digital sovereignty, guerre hybride, hybrid warfare, minerais critiques, critical minerals, preference europeenne, buy european, politique industrielle, industrial policy, marches publics, public procurement
+- `markets` : politique industrielle, preference europeenne, marches publics, competitivite, productivity gap, union de l'epargne, savings union, investissement productif, energy cost, industrial accelerator
+- `ai_tech` : digital fairness, dark pattern, digital omnibus, DMA, DSA, AI Act, ethique numerique, digital ethics, biologie de synthese, synthetic biology, biotech, bio-souverainete, CRISPR, productivite, european competitiveness
+
+**Nouveau widget sidebar :** "Politique EU & Tech"
+- Filtre automatique les articles issus des 18+ sources EU-policy ou contenant des mots-cles politique europeenne
+- Affiche les 5 articles les plus recents avec source, temps relatif et titre
+- Deduplication et tri par fraicheur
+
+**Experts a surveiller (documentes, pas encore automatises) :**
+- *Infrastructures* : Sophia Besch & Jane Munga (Carnegie), Alex Capri (Hinrich Foundation)
+- *Politique industrielle* : Enrico Letta, Benoit Cormier (Teneo), Antonio Grasso (Digital SME Alliance)
+- *Competitivite* : Judith Arnal (CEPS), Martin Borowiecki (OCDE), Fabrizio Campelli (Deutsche Bank)
+- *Bio-souverainete* : Susan Rosser (Univ. Edinburgh), Lord Willetts (Regulatory Innovation Office)
+- *Ethique numerique* : Christine Tresignie (Ipsos), Natali Helberger (Univ. Amsterdam)
+
+**Fichiers modifies :**
+- `scripts/fetch-data.mjs` : +18 entrees RSS, +3 blocs mots-cles pertinence (geopolitics, markets, ai_tech), +17 SPECIALIZED_SOURCES, commentaire 122→140
+- `data-loader.js` : +17 SOURCE_TIERS, +formatTimeAgo(), +EU_POLICY_SOURCES, +EU_POLICY_KEYWORDS, +updateEuPolicyWidget()
+- `index.html` : +widget sidebar "Politique EU & Tech", footer +4 tags (Bruegel, CEPS, ECFR, CNIL), hero 122→140 sources
+- `styles.css` : +CSS European Policy Widget (eu-policy-item, eu-policy-source, eu-policy-title)
+- `premium.html` : +categorie "Politique EU & Regulation Tech" dans la grille sources
+- `geopolitics.html`, `markets.html`, `crypto.html`, `commodities.html`, `etf.html`, `analysis.html`, `country.html` : 122→140 sources
+- `app.js`, `supabase-client.js`, `scripts/generate-daily-briefing.mjs` : 122→140 sources
+- `CLAUDE.md` : documentation session
+
+### Session 2026-02-21 (3) — Defense, strategie & think tanks non-occidentaux
+
+**Contexte :** Extension de la veille geopolitique d'Inflexion aux domaines defense/strategie, OSINT et perspectives non-occidentales. Ajout de 18 nouvelles sources RSS couvrant les think tanks de defense (RUSI, RAND, CNAS), la presse securite/defense (Defense One, Breaking Defense, Lawfare), les investigations OSINT (Bellingcat, ACLED) et les think tanks non-occidentaux (ORF India, ISS Africa, ISEAS Singapore, NTI).
+
+**Nouveaux flux RSS (18) :** 140 → 158 sources
+
+- *Think tanks defense (5)* : RUSI, RAND, CNAS, Arms Control Association, European Leadership Network
+- *Presse defense & securite (5)* : Defense One, Breaking Defense, C4ISRNET, Lawfare, Terra Bellum
+- *OSINT & investigations (2)* : Bellingcat, ACLED
+- *Think tanks non-occidentaux (4)* : ORF India (Inde), ISS Africa (Afrique), ISEAS Singapore (Asie du Sud-Est), NTI (non-proliferation nucleaire)
+
+**Nouveaux mots-cles de pertinence :**
+- `geopolitics` : defense europeenne, budget defense, defense spending, arms control, dissuasion, deterrence, guerre cognitive, cognitive warfare, information warfare, desinformation, fonds marins, seabed warfare, indo-pacifique, proliferation, osint, lawfare, rearmement, industrie de defense
+- `ai_tech` : drone militaire, military drone, autonomous weapon, arme autonome, systemes autonomes letaux, cyber defense, electronic warfare, c4isr, IA militaire, military ai, dual use, technologie duale
+
+**Fichiers modifies :**
+- `scripts/fetch-data.mjs` : +18 entrees RSS, +16 SPECIALIZED_SOURCES, +mots-cles defense/OSINT (geopolitics + ai_tech), commentaire 140→158
+- `CLAUDE.md` : +2 sous-sections RSS (Defense & Think tanks non-occidentaux), documentation session
+
+### Session 2026-02-21 (4) — Amelioration UX du menu de navigation
+
+**Contexte :** Le menu du site reposait uniquement sur un hamburger (overlay plein ecran) pour toutes les tailles d'ecran. Sur desktop, cela ajoutait une friction inutile (clic obligatoire pour naviguer). Absence d'indicateur de page active dans le header. expertise.html avait des accents manquants.
+
+**Nouveau composant : Desktop Navigation Bar**
+- Barre de navigation horizontale visible sur desktop (≥769px), masquee sur mobile
+- Generee dynamiquement par `initDesktopNav()` dans `app.js` (zero duplication HTML)
+- 9 liens : Accueil, Geopolitique, Marches, Crypto, Matieres premieres, ETF, Analyses, Services, Expertise
+- Detection automatique de la page active via `window.location.pathname`
+- Indicateur visuel : couleur accent + underline animee sur la page courante
+- CTA "Reserver un diagnostic" positionne a droite
+- Comportement sticky : le header scroll hors ecran, la nav bar reste fixee en haut
+- Hover : underline verte animee via `transform: scaleX()`
+
+**Ameliorations overlay mobile :**
+- Taille des liens reduite (1.75rem → 1.5rem principal, 1.1rem → 1.15rem indent) pour meilleure lisibilite
+- Group labels affines (0.6rem, couleur plus subtile, espacement ameliore)
+- Bouton CTA restyle en semi-transparent avec bordure (differenciation visuelle)
+- Animations d'entree decalees etendues a 14 enfants (etait limite a 9)
+- Hamburger masque sur desktop (la desktop-nav prend le relais)
+- CTA header masque sur mobile (≤768px) pour reduire l'encombrement
+
+**Corrections de coherence :**
+- `expertise.html` : accents francais retablis (Geopolitique → Geopolitique, Marches → Marches, Matieres premieres → Matieres premieres, Reserver → Reserver)
+- Titre overlay "Menu" → "Navigation" sur les 14 pages HTML
+
+**Fichiers modifies :**
+- `styles.css` : +CSS desktop-nav (desktop-nav, desktop-nav-inner, desktop-nav-links, desktop-nav-link, desktop-nav-cta, .active, .scrolled, responsive), refonte overlay (tailles, spacing, animations 14 enfants, group labels, CTA semi-transparent), header desktop position relative
+- `app.js` : +initDesktopNav() (generation dynamique, detection page active), mise a jour initStickyHeader() (ajout classe scrolled sur desktop-nav), initDesktopNav appele dans initUI()
+- `index.html` : overlay titre "Navigation", suppression desktop-nav HTML statique (remplace par JS)
+- `geopolitics.html`, `markets.html`, `crypto.html`, `commodities.html`, `etf.html`, `analysis.html`, `country.html`, `premium.html`, `cgu.html`, `mentions-legales.html`, `confidentialite.html` : overlay titre "Navigation"
+- `expertise.html` : overlay titre "Navigation" + accents francais retablis
+- `CLAUDE.md` : documentation session
+
+### Session 2026-02-24 — Reduction redondance briefing strategique (~50% tokens)
+
+**Contexte :** Le briefing strategique quotidien contenait une redondance structurelle majeure : la section "Enjeux cles" dans `synthese.contenu` (3 points × ~100 mots) repetait les memes themes et donnees que le tableau `signaux[]` (3-5 signaux structures avec interconnexions). Le Risk Radar reprenait egalement les memes sujets. Resultat : ~4 000 mots avec triple repetition des memes informations (crypto capitulation, rotation defensive, tensions geopolitiques traitees 3 fois avec des chiffres quasi identiques). Un briefing strategique efficace doit viser 1 500-2 000 mots pour rester un outil de decision rapide.
+
+**Solution : fusion "Enjeux cles" dans les Signaux structures**
+
+La section "## Enjeux cles" est supprimee de `synthese.contenu`. Les signaux deviennent les enjeux cles du jour — ils portent deja l'analyse detaillee, les interconnexions et les donnees chiffrees. Chaque information n'apparait desormais qu'UNE SEULE FOIS dans le briefing.
+
+**Nouvelle architecture editoriale (3 blocs complementaires) :**
+
+| Bloc | Role | Longueur |
+|------|------|----------|
+| **Synthese** (Contexte + Risques/Opportunites + Perspectives) | Vue d'ensemble macro, regime de marche, cadrage | 350-500 mots |
+| **Signaux** (3-4 enjeux cles structures) | Analyse approfondie par enjeu, interconnexions, donnees chiffrees | ~800 mots |
+| **Risk Radar** (3 risques) | Probabilite, seuils de declenchement, impact marche | ~300 mots |
+| **Total** | | **1 500-2 000 mots** (vs ~4 000 avant) |
+
+**Regle anti-redondance ajoutee aux prompts :**
+- Chaque fait (ex: "BTC -4,6%") est mentionne une seule fois
+- La synthese pose le cadre SANS developper — le developpement est dans les Signaux
+- Le Risk Radar se concentre sur les risques de materialisation, sans re-decrire les signaux
+
+**Economies realisees :**
+- `FULL_MAX_TOKENS` : 8 500 → 5 000 (reduction 41%)
+- `DELTA_MAX_TOKENS` : 4 000 → 3 000 (reduction 25%)
+- Longueur briefing complet : ~4 000 → ~1 750 mots (reduction ~56%)
+- Longueur briefing delta : ~1 500 → ~1 000 mots (reduction ~33%)
+- Estimation mensuelle : ~510K → ~280K tokens/mois (reduction ~45%)
+
+**Fichiers modifies :**
+- `scripts/lib/prompts.mjs` : refonte DAILY_BRIEFING_SYSTEM_PROMPT (suppression "## Enjeux cles", ajout regle anti-redondance, signaux enrichis 4-6 phrases, longueur cible 1 500-2 000 mots, attribution obligatoire des sources) + refonte DAILY_BRIEFING_DELTA_SYSTEM_PROMPT (suppression "## Signaux confirmes ou inverses", longueur cible 800-1 200 mots, sourcing)
+- `scripts/generate-daily-briefing.mjs` : FULL_MAX_TOKENS 8500→5000, DELTA_MAX_TOKENS 4000→3000, consignes mises a jour avec regle anti-redondance et cibles de longueur
+- `scripts/fetch-data.mjs` : Le Figaro Conjoncture restreint a markets uniquement (etait markets+commodities), isRelevantForCategory utilise desormais \b (word boundary) pour les mots-cles courts (<=4 car.) au lieu de substring matching
+- `data-loader.js` : titre section "Signaux cles du jour" → "Enjeux cles du jour" (reflete le nouveau role)
+- `CLAUDE.md` : documentation session
+
+### Sourcing obligatoire dans les prompts
+
+**Contexte :** Le briefing presentait des donnees chiffrees sans attribution claire de leur source. Les correlations et flux estimes etaient presentes comme des faits, sans qualification. Un lecteur institutionnel a besoin de tracer chaque donnee vers sa source.
+
+**Regles ajoutees aux prompts (DAILY_BRIEFING_SYSTEM_PROMPT + delta) :**
+- Chaque donnee chiffree porte une attribution entre parentheses : "BTC a 63 099 $ (CoinGecko, 24h: -4,6%)"
+- Sources API identifiees : CoinGecko, Finnhub, FRED, ECB Data, metals.dev, DefiLlama, Alpha Vantage
+- Sources presse attribuees : "selon Al-Monitor", "(Reuters rapporte que...)"
+- Correlations et estimations internes qualifiees de "estimation Inflexion" ou "correlation calculee sur X jours"
+- Regle de tracabilite dans les interconnexions : chiffres issus des donnees API, estimations explicitement qualifiees
+
+### Fix classification RSS (articles hors-sujet)
+
+**Probleme :** Des articles sans rapport avec la finance (Alzheimer, faits divers) apparaissaient dans la rubrique "Matieres Premieres". Deux causes identifiees :
+
+1. **Le Figaro Conjoncture** etait en dual-category `['markets', 'commodities']` alors que c'est un flux macro/conjoncture economique, pas un flux matieres premieres. Les articles de conjoncture passaient le filtre commodities grace aux faux positifs de mots-cles.
+
+2. **Faux positifs de mots-cles courts** : `isRelevantForCategory()` utilisait `text.includes(kw)` (substring matching). Le mot-cle `'or'` (= gold) matchait "Chamfort", "encore", "or" au sens de "however". Idem pour `'mine'`, `'blé'`, etc. Un article "Alain Chamfort... Alzheimer" passait le filtre commodities a cause de "Chamf**or**t".
+
+**Corrections :**
+- `Le Figaro Conjoncture` : `cats: ['markets', 'commodities']` → `cats: ['markets']`
+- `isRelevantForCategory()` : pour les mots-cles <=4 caracteres, utilisation de `\b` (regex word boundary) au lieu de `includes()`. Ainsi `\bor\b` matche "l'or monte" mais pas "Chamfort" ni "encore".
+
+### Fix nomenclature ETF vs indices
+
+**Probleme :** Finnhub retourne les prix d'ETF proxies (SPY $682, QQQ $601, DIA $488, GLD $481, USO $80) et non les niveaux d'indices en points (S&P 500 ~5 200 pts). Le script `formatMarkets` presentait ces donnees comme "S&P 500 (SPY): $682.39", et Claude les interpretait comme des niveaux d'indice. Resultat : "S&P sous 5 050 pts (soit -2% vs 682,39 $ SPY)" — un melange confus.
+
+**Corrections :**
+- `formatMarkets()` dans `generate-daily-briefing.mjs` : clarification que ce sont des ETF proxies (titre, labels, note explicite). Les variations % restent fiables car identiques entre ETF et indice.
+- Nouvelle section "Nomenclature indices vs ETF" dans `DAILY_BRIEFING_SYSTEM_PROMPT` : regle stricte de ne jamais citer un prix ETF en $ comme un niveau d'indice en points. Utiliser les noms d'indices + variations % uniquement.
+
+**Fichiers modifies :**
+- `scripts/generate-daily-briefing.mjs` : refonte `formatMarkets()` avec labels ETF et note explicative
+- `scripts/lib/prompts.mjs` : +section "Nomenclature indices vs ETF" dans DAILY_BRIEFING_SYSTEM_PROMPT
+
+### Session 2026-02-25 — Recherche hybride RAG + evaluateur anti-hallucination (Sprints 1 & 2)
+
+**Contexte :** Le systeme RAG reposait uniquement sur la similarite cosinus (embeddings MiniLM-L6-v2, 384D). Les acronymes, tickers et noms propres (BCE, VIX, BTC, OPEC) se retrouvaient noyes dans des voisinages semantiques proches sans remonter correctement. Par ailleurs, le briefing genere par Claude n'avait aucun mecanisme de verification factuelle post-generation.
+
+**Sprint 1 — Recherche hybride (Vectorielle + Mots-cles)**
+
+Enrichissement de `searchArticles()` et `searchBriefings()` pour combiner score vectoriel et score lexical :
+
+- `extractKeywords(text)` : extraction de mots-cles significatifs avec stopwords FR+EN (~90 mots), normalisation accents (NFD), deduplication
+- `keywordScore(queryKeywords, docText)` : scoring lexical 0-1 avec word boundaries `\b` pour mots courts (<=4 car.) — meme pattern anti-faux-positifs que `fetch-data.mjs`
+- `VECTOR_WEIGHT = 0.7` / `KEYWORD_WEIGHT = 0.3` : constantes exportees, ajustables sans toucher la logique
+- `cosineSimilarity()` inlinee dans `rag-store.mjs` (decouplage de `embeddings.mjs` qui charge `@xenova/transformers`)
+- Retrocompatibilite : sans `queryText`, comportement 100% vectoriel inchange
+
+**Score hybride :** `score_final = (cosinus * 0.7) + (lexical * 0.3)`
+
+**Sprint 2 — Evaluateur anti-hallucination**
+
+Nouveau module `scripts/lib/claim-verifier.mjs` — verification post-generation :
+
+- `buildReferenceMap(sources)` : dictionnaire de ~30+ valeurs tracables depuis les 12 sources JSON (markets, crypto, macro, FNG, VIX, commodities, indices EU, forex, DeFi, on-chain)
+- `extractClaims(text)` : regex FR/EN pour 4 types de claims — prix (`$63 099`), pourcentages (`+2,5%`), valeurs unitaires (`25,3 points`, `40 gwei`), scores (`25/100`)
+- `verifyClaims(claims, refMap)` : matching par valeur avec tolerance (`PRICE_TOLERANCE = 1%`, `PCT_TOLERANCE = 0.5pt`). Statuts : `verified` (exact), `approximate` (dans tolerance), `unverified`
+- `evaluateBriefing(briefing, sources)` : orchestrateur retournant `{ score, totalClaims, verified, unverified, pass, details[] }`
+- `MIN_ACCEPTABLE_SCORE = 0.6` : seuil d'alerte
+
+**Integration dans le pipeline :**
+- Etape 7 de `generate-daily-briefing.mjs` (entre generation Claude et sauvegarde)
+- Log console detaille des claims non tracables
+- Rapport `_verification` integre au JSON `daily-briefing.json`
+- Score affiche dans le resume final
+
+**Fichiers crees :**
+- `scripts/lib/claim-verifier.mjs` : module evaluateur complet
+- `scripts/tests/lib/rag-store.test.mjs` : 23 tests (extractKeywords, keywordScore, searchArticles hybride, searchBriefings hybride)
+- `scripts/tests/lib/claim-verifier.test.mjs` : 34 tests (buildReferenceMap, extractClaims, verifyClaims, flattenBriefingText, evaluateBriefing)
+
+**Fichiers modifies :**
+- `scripts/lib/rag-store.mjs` : +cosineSimilarity inline, +stopwords, +extractKeywords, +keywordScore, +VECTOR/KEYWORD_WEIGHT, searchArticles/searchBriefings hybrides
+- `scripts/generate-daily-briefing.mjs` : +import claim-verifier, +queryText dans appels RAG, +etape 7 verification, +_verification dans output, +score dans resume
+
+**Tests : 86 total (23 RAG + 34 claim-verifier + 29 briefing existants)**
+
+## 11. Roadmap RAG & Qualite (Sprints 3-8)
+
+### Sprint 3 — Doctrine RAG + garde-fous prompt
+**Statut :** Termine
+**Objectif :** Renforcer les prompts pour que Claude exploite mieux le contexte RAG et prevenir les hallucinations en amont (pas seulement post-generation).
+**Modifications :**
+1. Ajouter une section "Utilisation du contexte historique (RAG)" dans `DAILY_BRIEFING_SYSTEM_PROMPT` (`scripts/lib/prompts.mjs`) — regles : comparer signaux du jour vs briefings precedents, signaler tendances confirmees/inversees, ne jamais inventer un chiffre absent du contexte ("donnee indisponible")
+2. Sanitizer anti-injection dans `scripts/generate-daily-briefing.mjs` — strip HTML, troncature, detection patterns suspects dans le texte des articles RAG avant injection dans le prompt Claude
+3. Feedback loop : si le briefing precedent a un `_verification.score < 0.6`, injecter une consigne de rigueur supplementaire dans le prompt delta
+4. Tests unitaires pour le sanitizer. Mettre a jour CLAUDE.md.
+
+### Sprint 4 — Persistance embeddings + cache RAG
+**Statut :** Termine
+**Objectif :** Eviter de recalculer les embeddings d'articles deja traites. Gain de temps cible : ~15s → ~3s.
+**Modifications :**
+1. Sauvegarder les embeddings dans `data/embeddings-cache.json` (hash du texte → vecteur 384D)
+2. Invalider le cache quand le texte source change (comparaison hash SHA-256)
+3. TTL de 7 jours sur les entrees du cache (les articles anciens ne servent plus au RAG)
+4. Mesurer le gain de temps (log avant/apres)
+**Fichiers :** `scripts/lib/embeddings-cache.mjs` (nouveau), `scripts/lib/embeddings.mjs`, `scripts/rag-index.mjs`, `scripts/generate-daily-briefing.mjs`
+
+### Sprint 5 — Ponderation temporelle du RAG
+**Statut :** Termine
+**Objectif :** Un article de 2h doit peser plus qu'un article de 7 jours dans les resultats RAG.
+**Modifications :**
+1. `recencyBoost(publishedAt)` dans `searchArticles()` — bonus degressif : <6h = 1.0, <24h = 0.67, <48h = 0.33, >=48h = 0
+2. Idem pour `searchBriefings()`
+3. Score final : `(cosinus * 0.6) + (lexical * 0.25) + (recency * 0.15)`
+4. Exporter `RECENCY_WEIGHT = 0.15` comme constante ajustable
+**Fichiers :** `scripts/lib/rag-store.mjs`, `scripts/tests/lib/rag-store.test.mjs`
+
+### Sprint 6 — Detection de contradictions cross-sources
+**Statut :** Termine
+**Objectif :** Detecter et signaler quand deux sources donnent des chiffres divergents sur le meme indicateur.
+**Modifications :**
+1. Nouveau module `scripts/lib/contradiction-detector.mjs` — 4 verifications cross-sources + 2 self-checks
+2. Tolerance par type : crypto ±2%, forex ±0.7%, ETF self ±0.5%, indices EU self ±0.3%
+3. Si contradiction detectee, section "Divergences detectees" injectee dans le prompt Claude avec notes explicatives
+4. Integration dans `generate-daily-briefing.mjs` (etape 2c) entre sanitization et construction du prompt
+5. Rapport `_contradictions` integre au JSON `daily-briefing.json`
+**Fichiers :** nouveau `scripts/lib/contradiction-detector.mjs`, `scripts/generate-daily-briefing.mjs`, nouveau `scripts/tests/lib/contradiction-detector.test.mjs`
+
+### Sprint 7 — Dashboard qualite briefing (frontend)
+**Statut :** A faire
+**Objectif :** Widget sidebar affichant le score de verification du briefing et le detail des claims.
+**Modifications :**
+1. Lire `_verification` depuis `daily-briefing.json` dans `data-loader.js`
+2. Widget sidebar : score global (jauge coloree), claims verifies/non verifies, tooltips
+3. Badge de confiance : vert (>80%), orange (60-80%), rouge (<60%)
+4. CSS responsive
+**Fichiers :** `data-loader.js`, `index.html`, `styles.css`
+
+### Sprint 8 — Tests d'integration end-to-end pipeline RAG
+**Statut :** A faire
+**Objectif :** Couvrir le pipeline RAG complet avec des tests d'integration (fixtures → embeddings → search → prompt → verification).
+**Modifications :**
+1. Fixtures JSON dans `scripts/tests/integration/` (mini-jeux de donnees marche/news/briefing)
+2. Mock API Claude pour tester sans appel reseau
+3. Verifier : contexte RAG pertinent, sanitizer bloque les injections, claim-verifier detecte les hallucinations, feedback loop s'active quand score < 0.6
+**Fichiers :** `scripts/tests/integration/`
+
+---
+
+### Session 2026-02-25 (2) — Doctrine RAG enrichie + garde-fous prompt (Sprint 3)
+
+**Contexte :** Le systeme RAG (Sprint 1-2) fournissait du contexte historique au briefing mais sans regles d'exploitation strictes. Les articles RSS injectes dans le prompt Claude n'etaient pas sanitises (risque d'injection de prompt via contenu malveillant). Aucun mecanisme de feedback ne corrigeait les erreurs du briefing precedent.
+
+**Sprint 3 — Trois modifications :**
+
+**1. Doctrine RAG enrichie dans les prompts**
+
+Enrichissement de la section "Utilisation du contexte historique (RAG)" dans `DAILY_BRIEFING_SYSTEM_PROMPT` avec 5 regles explicites :
+- Comparaison obligatoire signaux du jour vs briefings precedents (tendance confirmee / inversee / nouvelle)
+- Mise en perspective historique avec niveaux passes
+- Detection de recurrences (themes repetes = "tendance de fond")
+- Interdiction d'inventer : si donnee de comparaison absente, ecrire "(donnee indisponible)"
+- Ponderation : donnees du jour (A/B) prioritaires sur contexte RAG (C)
+
+Ajout equivalent dans `DAILY_BRIEFING_DELTA_SYSTEM_PROMPT` (version condensee).
+
+**2. Sanitizer anti-injection**
+
+Nouveau module integre dans `generate-daily-briefing.mjs` — protection du prompt Claude contre les contenus malveillants dans les articles RSS/API :
+
+- `stripHTML(text)` : suppression balises HTML, decodage entites (&amp;, &lt;, etc.), normalisation espaces
+- `detectSuspiciousPatterns(text)` : detection de 11 patterns d'injection de prompt (ignore previous instructions, system:, override prompt, act as, javascript:, event handlers HTML, etc.)
+- `sanitizeText(text, maxLength)` : pipeline complet — strip HTML → detection patterns → remplacement par placeholder si suspect → troncature (defaut 500 car.)
+- `sanitizeArticles(articles)` : sanitization en masse d'un tableau d'articles (titre 200 car. max, description 500 car. max)
+- Etape 2b ajoutee au pipeline principal : sanitization entre la selection d'articles et la construction du contexte
+- Constantes exportees : `SANITIZE_MAX_LENGTH`, `SUSPICIOUS_PATTERNS`
+
+**3. Feedback loop verification**
+
+Si le briefing precedent a un `_verification.score < 0.6` (seuil anti-hallucination du Sprint 2), une consigne de rigueur supplementaire est injectee dans le prompt :
+- Cite UNIQUEMENT des chiffres presents dans les parties A, B ou C
+- Chaque donnee doit apparaitre verbatim dans les sources
+- Ecrire "(donnee indisponible)" au lieu d'inventer
+- Privilegie les variations % aux valeurs absolues pour les ETF proxies
+- S'applique aux modes complet (full) et delta
+
+**Fichiers modifies :**
+- `scripts/lib/prompts.mjs` : enrichissement section RAG dans DAILY_BRIEFING_SYSTEM_PROMPT (5 regles), ajout section RAG dans DAILY_BRIEFING_DELTA_SYSTEM_PROMPT
+- `scripts/generate-daily-briefing.mjs` : +sanitizer (stripHTML, detectSuspiciousPatterns, sanitizeText, sanitizeArticles), +etape 2b sanitization, +feedback loop verification score, +exports tests
+
+**Fichiers crees :**
+- `scripts/tests/sanitizer.test.mjs` : 39 tests (stripHTML, detectSuspiciousPatterns, sanitizeText, sanitizeArticles)
+
+**Tests : 39 sanitizer + 29 briefing existants + 23 RAG + 34 claim-verifier = 125 total**
+
+### Session 2026-02-25 (3) — Persistance embeddings + cache RAG (Sprint 4)
+
+**Contexte :** Le systeme RAG recalculait les embeddings de TOUS les articles a chaque execution de `rag-index.mjs`, meme si les articles n'avaient pas change. Avec ~500 articles, la generation d'embeddings via all-MiniLM-L6-v2 prenait ~15 secondes a chaque cycle. La majorite des articles etant identiques d'un cycle a l'autre (seuls quelques nouveaux articles arrivent), ce calcul etait largement redondant.
+
+**Solution : cache de persistance SHA-256**
+
+Nouveau module `scripts/lib/embeddings-cache.mjs` — cache independant de `@xenova/transformers` (testable sans charger le modele) :
+
+- `hashText(text)` : hash SHA-256 du texte tronque (cle de cache)
+- `initEmbeddingsCache(path)` : charge le cache JSON, purge les entrees expirees
+- `getCachedEmbedding(text)` : retourne l'embedding si present et non expire
+- `setCachedEmbedding(text, embedding)` : stocke un nouvel embedding
+- `saveEmbeddingsCache()` : sauvegarde sur disque si modifie (dirty flag)
+- `getCacheStats()` : statistiques (entries, hits, misses, hitRate%)
+- `resetEmbeddingsCache()` : reinitialisation (pour les tests)
+- `CACHE_TTL_MS` : constante exportee (7 jours = 604 800 000 ms)
+
+**Architecture du cache :**
+```
+data/embeddings-cache.json
+{
+  "sha256_hash_1": { "embedding": [384 floats], "timestamp": 1772036327074 },
+  "sha256_hash_2": { "embedding": [384 floats], "timestamp": 1772036327080 },
+  ...
+}
+```
+
+**Integration dans le pipeline :**
+- `embeddings.mjs` : `embedText()` verifie le cache avant de calculer, stocke le resultat apres calcul. `embedBatch()` affiche les statistiques de cache et le temps ecoule.
+- `rag-index.mjs` : `initEmbeddingsCache()` au demarrage, `saveEmbeddingsCache()` apres indexation, affiche les stats dans le resume.
+- `generate-daily-briefing.mjs` : `initEmbeddingsCache()` au demarrage (pour l'embedding de la requete RAG), `saveEmbeddingsCache()` en fin de script.
+
+**Mesures de temps :**
+- `rag-index.mjs` : timing total, timing indexation articles, timing indexation briefing
+- `embedBatch()` : temps ecoule + stats cache (hits, misses, hit rate)
+
+**Gains attendus :**
+| Metrique | Avant | Apres (2e execution) |
+|----------|-------|----------------------|
+| Temps embeddings (~500 articles) | ~15s | ~1-3s (cache hits) |
+| Appels modele MiniLM | ~500 | ~5-20 (nouveaux articles uniquement) |
+| Hit rate typique | 0% | 90-98% |
+
+**Fichiers crees :**
+- `scripts/lib/embeddings-cache.mjs` : module cache independant
+- `scripts/tests/lib/embeddings-cache.test.mjs` : 37 tests (hashText, initCache, getCachedEmbedding, setCachedEmbedding, saveCache, getCacheStats, resetCache, TTL)
+
+**Fichiers modifies :**
+- `scripts/lib/embeddings.mjs` : integration du cache via import de embeddings-cache.mjs, re-export des fonctions cache, modification de embedText() et embedBatch()
+- `scripts/rag-index.mjs` : +import cache functions, +CACHE_PATH, +initEmbeddingsCache au demarrage, +saveEmbeddingsCache apres indexation, +timing mesures, +cache stats dans resume
+- `scripts/generate-daily-briefing.mjs` : +initEmbeddingsCache au demarrage, +saveEmbeddingsCache en fin de script
+- `CLAUDE.md` : Sprint 4 marque Termine, documentation session
+
+**Tests : 37 cache + 39 sanitizer + 23 RAG + 34 claim-verifier = 133 total**
+
+### Session 2026-02-26 — Ponderation temporelle du RAG (Sprint 5)
+
+**Contexte :** Le systeme RAG traitait tous les articles de la meme maniere quel que soit leur age. Un article publie il y a 2 heures avait le meme poids qu'un article de 7 jours dans les resultats de recherche. Pour un briefing strategique quotidien, la fraicheur de l'information est un critere crucial de pertinence.
+
+**Solution : bonus de fraicheur degressif**
+
+Nouvelle fonction `recencyBoost(publishedAt, now)` dans `rag-store.mjs` — retourne un score normalise 0-1 :
+
+| Age du document | Bonus |
+|-----------------|-------|
+| < 6h | 1.0 |
+| 6h - 24h | 0.67 |
+| 24h - 48h | 0.33 |
+| >= 48h | 0 |
+
+**Nouveaux poids du score hybride :**
+
+| Composante | Avant (Sprint 1) | Apres (Sprint 5) |
+|------------|-------------------|-------------------|
+| Vectoriel (cosinus) | 0.70 | 0.60 |
+| Lexical (mots-cles) | 0.30 | 0.25 |
+| Temporel (fraicheur) | — | 0.15 |
+| **Total** | **1.00** | **1.00** |
+
+`score_final = (cosinus * 0.6) + (lexical * 0.25) + (recency * 0.15)`
+
+**Retrocompatibilite :** Sans `queryText`, le comportement reste 100% vectoriel (pas de recency boost). Le bonus temporel ne s'applique qu'en mode hybride, tout comme le score lexical.
+
+**Integration :**
+- `searchArticles()` : parametre `now` optionnel pour le calcul de fraicheur
+- `searchBriefings()` : idem
+- `recencyBoost()` exportee pour les tests et une utilisation externe
+
+**Fichiers modifies :**
+- `scripts/lib/rag-store.mjs` : +recencyBoost(), VECTOR_WEIGHT 0.7→0.6, KEYWORD_WEIGHT 0.3→0.25, +RECENCY_WEIGHT 0.15, searchArticles et searchBriefings integrent la ponderation temporelle
+- `scripts/tests/lib/rag-store.test.mjs` : refonte des tests — +section E (recencyBoost, 9 tests), +section constantes (4 tests), tests C et D enrichis avec ponderation temporelle (paliers, articles recent vs ancien, mode pur vectoriel preserve). 23 → 40 tests.
+- `CLAUDE.md` : Sprint 5 marque Termine, documentation session
+
+**Tests : 40 RAG + 39 sanitizer + 34 claim-verifier + 37 cache = 150 total**
+
+### Session 2026-02-26 (2) — Detection de contradictions cross-sources (Sprint 6)
+
+**Contexte :** Le pipeline de briefing chargeait des donnees depuis 14 sources (15 APIs + 158 RSS) sans verifier la coherence entre elles. Deux sources pouvaient fournir des valeurs divergentes pour le meme indicateur (ex: prix BTC CoinGecko vs Messari, EUR/USD Alpha Vantage vs ECB) sans que Claude ni l'utilisateur n'en soient avertis. Cela pouvait generer des briefings avec des chiffres incoherents.
+
+**Solution : module de detection de contradictions**
+
+Nouveau module `scripts/lib/contradiction-detector.mjs` — 4 verifications independantes :
+
+| Verification | Sources comparees | Tolerance | Type |
+|-------------|-------------------|-----------|------|
+| Crypto prix | CoinGecko vs Messari (BTC, ETH, SOL, XRP...) | ±2% | cross-source |
+| Forex EUR/USD | Alpha Vantage (intraday) vs ECB Data (fixing) | ±0.7% | cross-source |
+| ETF self-check | Finnhub : price vs prev_close + change | ±0.5% | self-consistency |
+| Indices EU self-check | Twelve Data : price vs prev_close + change | ±0.3% | self-consistency |
+
+**Fonctions exportees :**
+- `pctDivergence(v1, v2)` : calcul de divergence en pourcentage
+- `checkCryptoContradictions(crypto, messari)` : comparaison CoinGecko/Messari
+- `checkForexContradictions(alphaVantage, globalMacro)` : comparaison EUR/USD
+- `checkETFSelfConsistency(markets)` : verification interne Finnhub
+- `checkEUIndexSelfConsistency(europeanMarkets)` : verification interne Twelve Data
+- `detectContradictions(sources)` : orchestrateur retournant `{ contradictions[], summary }`
+- `formatContradictionsForPrompt(contradictions)` : formatage Markdown pour injection prompt
+
+**Integration dans le pipeline (generate-daily-briefing.mjs) :**
+- Etape 2c ajoutee entre sanitization (2b) et construction du contexte (3)
+- `messari.json` ajoute aux sources chargees (13 → 14 fichiers)
+- Bloc `contradictionContext` injecte dans le prompt user entre PARTIE B et contexte RAG
+- Rapport `_contradictions` integre au JSON de sortie
+- Log console detaille des divergences detectees + ligne dans le resume final
+
+**Structure d'une contradiction :**
+```json
+{
+  "indicator": "BTC prix",
+  "source1": { "name": "CoinGecko", "value": 68000 },
+  "source2": { "name": "Messari", "value": 72000 },
+  "divergence_pct": 5.56,
+  "type": "crypto",
+  "note": "Divergence BTC : CoinGecko 68000 vs Messari 72000 (5.6%). Possible decalage temporel."
+}
+```
+
+**Fichiers crees :**
+- `scripts/lib/contradiction-detector.mjs` : module complet (4 checks + orchestrateur + formatage)
+- `scripts/tests/lib/contradiction-detector.test.mjs` : 38 tests (pctDivergence, crypto, forex, ETF, indices EU, orchestrateur, formatage, constantes)
+
+**Fichiers modifies :**
+- `scripts/generate-daily-briefing.mjs` : +import contradiction-detector, +messari.json dans sources, +etape 2c detection, +injection contradictionContext dans prompt, +_contradictions dans output JSON, +log resume
+- `CLAUDE.md` : Sprint 6 marque Termine, documentation session
+
+**Tests : 38 contradiction-detector + 40 RAG + 39 sanitizer + 34 claim-verifier + 37 cache = 188 total**
+
+**PR #22** : Setup initial RSS feeds
+- Ajout premiers flux RSS (Le Figaro, TLDR, Les Echos, BFM, CoinTelegraph, etc.)
