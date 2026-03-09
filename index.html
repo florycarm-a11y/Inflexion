@@ -178,7 +178,7 @@ const ARTICLES=[
 {id:9,cat:'iatech',title:'L\'AI Act entre en vigueur : ce qui change pour les entreprises européennes',source:'Euractiv',time:'Il y a 8h',img:'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=240&fit=crop',summary:'Les premières obligations de transparence s\'appliquent dès juin 2026 pour les systèmes à haut risque.'},
 ]
 
-function Navigation(){
+function Navigation({dark,toggleDark}){
 const[open,setOpen]=useState(false)
 const[scrolled,setScrolled]=useState(false)
 useEffect(()=>{
@@ -187,7 +187,7 @@ window.addEventListener('scroll',fn,{passive:true})
 return()=>window.removeEventListener('scroll',fn)
 },[])
 return h('div',null,
- h('header',{className:`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
+ h('header',{className:`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled?(dark?'bg-[#0A1628]/95 backdrop-blur-md border-b border-white/10':'nav-scrolled'):'bg-transparent'}`},
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
@@ -196,15 +196,15 @@ return h('div',null,
     h('nav',{className:'hidden md:flex items-center gap-1'},
      ...MEGA_NAV.map((cat,ci)=>
       h('div',{key:ci,className:'mega-trigger'},
-       h('span',{className:'nav-link px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors cursor-default select-none'},cat.label),
-       h('div',{className:'mega-menu bg-white rounded-2xl shadow-xl border border-gray-100 p-5'},
+       h('span',{className:`nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none ${dark&&scrolled?'text-white/60 hover:text-white':'text-gray-500 hover:text-gray-900'}`},cat.label),
+       h('div',{className:`mega-menu rounded-2xl shadow-xl p-5 ${dark?'bg-[#162A45] border border-[#1E3A5F]':'bg-white border border-gray-100'}`},
         h('div',{className:'grid gap-1'},
          ...cat.children.map((item,ii)=>
           h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline'},
            h('span',{className:'mega-icon bg-[#1B6B4A]/10 text-[#1B6B4A]'},item.icon),
            h('span',{className:'flex flex-col'},
-            h('span',{className:'text-sm font-semibold text-gray-900'},item.label),
-            h('span',{className:'text-xs text-gray-500 mt-0.5'},item.desc)
+            h('span',{className:`text-sm font-semibold ${dark?'text-white':'text-gray-900'}`},item.label),
+            h('span',{className:`text-xs mt-0.5 ${dark?'text-white/50':'text-gray-500'}`},item.desc)
            )
           )
          )
@@ -212,7 +212,11 @@ return h('div',null,
        )
       )
      ),
-     h('a',{href:'#diagnostic',className:'ml-4 px-4 py-2 bg-[#1B6B4A] hover:bg-[#155A3D] text-white font-semibold text-sm rounded-lg transition-colors'},'Réserver un diagnostic')
+     h('button',{onClick:toggleDark,'aria-label':'Toggle dark mode',className:`ml-3 w-9 h-9 flex items-center justify-center rounded-lg transition-colors ${dark?'bg-white/10 hover:bg-white/20 text-yellow-300':'bg-gray-100 hover:bg-gray-200 text-gray-600'}`},
+      dark?h('svg',{width:18,height:18,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M12 3a1 1 0 011 1v1a1 1 0 01-2 0V4a1 1 0 011-1zm0 15a1 1 0 011 1v1a1 1 0 01-2 0v-1a1 1 0 011-1zm9-8a1 1 0 010 2h-1a1 1 0 010-2h1zM5 11a1 1 0 010 2H4a1 1 0 010-2h1zm13.657-5.657a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM7.05 16.95a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zm11.314 0a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM7.05 5.636a1 1 0 010 1.414l-.707.707A1 1 0 014.93 6.343l.707-.707a1 1 0 011.414 0zM12 8a4 4 0 100 8 4 4 0 000-8z'}))
+       :h('svg',{width:18,height:18,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M12.1 22c-5.5 0-10-4.5-10-10 0-4.8 3.4-8.8 8.1-9.8.4-.1.8.1 1 .5s0 .8-.3 1c-2 1.4-3.2 3.7-3.2 6.2 0 4.1 3.3 7.4 7.4 7.4 2.5 0 4.8-1.2 6.2-3.2.2-.3.6-.5 1-.3.4.2.5.6.5 1-1 4.7-5 8.2-9.7 8.2z'}))
+     ),
+     h('a',{href:'#diagnostic',className:'ml-2 px-4 py-2 bg-[#1B6B4A] hover:bg-[#155A3D] text-white font-semibold text-sm rounded-lg transition-colors'},'Réserver un diagnostic')
     ),
     h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,onClick:()=>setOpen(!open)},
      h('span'),h('span'),h('span')
@@ -238,7 +242,11 @@ return h('div',null,
     )
    ]).flat()
   ),
-  h('div',{className:'px-6 py-6'},
+  h('div',{className:'px-6 py-6 flex flex-col gap-3'},
+   h('button',{onClick:toggleDark,className:'menu-item flex items-center justify-center gap-2 w-full px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-xl transition-colors text-base',style:{animationDelay:'0.8s'}},
+    dark?h('svg',{width:18,height:18,viewBox:'0 0 24 24',fill:'currentColor',className:'text-yellow-300'},h('path',{d:'M12 3a1 1 0 011 1v1a1 1 0 01-2 0V4a1 1 0 011-1zm0 15a1 1 0 011 1v1a1 1 0 01-2 0v-1a1 1 0 011-1zm9-8a1 1 0 010 2h-1a1 1 0 010-2h1zM5 11a1 1 0 010 2H4a1 1 0 010-2h1zm13.657-5.657a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM7.05 16.95a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zm11.314 0a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM7.05 5.636a1 1 0 010 1.414l-.707.707A1 1 0 014.93 6.343l.707-.707a1 1 0 011.414 0zM12 8a4 4 0 100 8 4 4 0 000-8z'})):h('svg',{width:18,height:18,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M12.1 22c-5.5 0-10-4.5-10-10 0-4.8 3.4-8.8 8.1-9.8.4-.1.8.1 1 .5s0 .8-.3 1c-2 1.4-3.2 3.7-3.2 6.2 0 4.1 3.3 7.4 7.4 7.4 2.5 0 4.8-1.2 6.2-3.2.2-.3.6-.5 1-.3.4.2.5.6.5 1-1 4.7-5 8.2-9.7 8.2z'})),
+    dark?'Mode clair':'Mode sombre'
+   ),
    h('a',{href:'#diagnostic',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-xl transition-colors text-base',style:{animationDelay:'0.85s'}},'Réserver un diagnostic')
   )
  )
@@ -301,37 +309,38 @@ return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-wh
 )
 }
 
-function ArticlesGrid(){
+function ArticlesGrid({dark}){
 const[filter,setFilter]=useState('all')
 const filtered=filter==='all'?ARTICLES:ARTICLES.filter(a=>a.cat===filter)
+const btnCls=(active)=>active?'bg-[#1B6B4A] text-white':(dark?'bg-[#162A45] text-white/50 hover:text-white border border-[#1E3A5F]':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]')
 return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10'},
    h('div',null,
     h('p',{className:'category-label mb-2'},'Veille quotidienne'),
-    h('h2',{className:'text-2xl md:text-3xl',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Sélection du jour'),
-    h('p',{className:'text-sm text-[#5A6178] mt-2'},'Articles sélectionnés par notre algorithme de curation qualitative')
+    h('h2',{className:`text-2xl md:text-3xl ${dark?'text-white':''}`,style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Sélection du jour'),
+    h('p',{className:`text-sm mt-2 ${dark?'text-white/40':'text-[#5A6178]'}`},'Articles sélectionnés par notre algorithme de curation qualitative')
    ),
    h('div',{className:'flex flex-wrap gap-2'},
-    h('button',{onClick:()=>setFilter('all'),className:`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${filter==='all'?'bg-[#1B6B4A] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},'Tout'),
-    CATEGORIES.map(c=>h('button',{key:c.id,onClick:()=>setFilter(c.id),className:`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${filter===c.id?'bg-[#1B6B4A] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},c.label))
+    h('button',{onClick:()=>setFilter('all'),className:`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${btnCls(filter==='all')}`},'Tout'),
+    CATEGORIES.map(c=>h('button',{key:c.id,onClick:()=>setFilter(c.id),className:`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${btnCls(filter===c.id)}`},c.label))
    )
   ),
   h('div',{className:'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'},
    filtered.map(a=>{
     const cat=CATEGORIES.find(c=>c.id===a.cat)
-    return h('a',{key:a.id,href:a.href||'#',className:'article-card rounded-xl overflow-hidden bg-white border border-[#E2E5EB] block no-underline'},
+    return h('a',{key:a.id,href:a.href||'#',className:`article-card rounded-xl overflow-hidden block no-underline transition-colors duration-300 ${dark?'bg-[#162A45] border border-[#1E3A5F]':'bg-white border border-[#E2E5EB]'}`},
      h('div',{className:'aspect-[5/3] overflow-hidden'},
       h('img',{src:a.img,alt:'',className:'w-full h-full object-cover',loading:'lazy'})
      ),
      h('div',{className:'p-5'},
       h('div',{className:'flex items-center gap-2 mb-3'},
        h('span',{className:`${cat.cls} text-[10px] font-semibold uppercase tracking-wider text-white px-2 py-0.5 rounded`},cat.label),
-       h('span',{className:'text-xs text-[#5A6178]'},a.time)
+       h('span',{className:`text-xs ${dark?'text-white/40':'text-[#5A6178]'}`},a.time)
       ),
-      h('h3',{className:'text-sm font-semibold text-[#1A1F2E] leading-snug mb-2 line-clamp-2',style:{fontFamily:'Libre Baskerville, Georgia, serif',fontSize:'0.95rem'}},a.title),
-      h('p',{className:'text-xs text-[#5A6178] leading-relaxed line-clamp-2'},a.summary),
-      h('div',{className:'mt-3 text-[11px] text-[#5A6178]/60 font-medium'},a.source)
+      h('h3',{className:`text-sm font-semibold leading-snug mb-2 line-clamp-2 ${dark?'text-white':'text-[#1A1F2E]'}`,style:{fontFamily:'Libre Baskerville, Georgia, serif',fontSize:'0.95rem'}},a.title),
+      h('p',{className:`text-xs leading-relaxed line-clamp-2 ${dark?'text-white/40':'text-[#5A6178]'}`},a.summary),
+      h('div',{className:`mt-3 text-[11px] font-medium ${dark?'text-white/25':'text-[#5A6178]/60'}`},a.source)
      )
     )
    })
@@ -340,7 +349,7 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
 ))
 }
 
-function Footer(){
+function Footer({dark}){
 const footerLinks={
 intelligence:[
 {label:'Géopolitique',href:'geopolitics.html'},
@@ -358,52 +367,52 @@ plateforme:[
 }
 const sources=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC']
 
-return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-16 pb-20'},
+return h('footer',{className:`border-t pt-16 pb-20 transition-colors duration-300 ${dark?'bg-[#0D1B2E] border-[#1E3A5F]':'bg-[#F7F8FA] border-[#E2E5EB]'}`},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-10 mb-12'},
    // Col 1 — Logo + description
    h('div',{className:'col-span-2 md:col-span-1'},
     h('div',{className:'flex items-center gap-2 mb-4'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto'})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto',style:dark?{filter:'brightness(5) saturate(0.3)'}:{}})
     ),
-    h('p',{className:'text-sm text-[#5A6178] leading-relaxed'},'Intelligence financière et géopolitique. Données en temps réel, analyses IA, signaux faibles.')
+    h('p',{className:`text-sm leading-relaxed ${dark?'text-white/50':'text-[#5A6178]'}`},'Intelligence financière et géopolitique. Données en temps réel, analyses IA, signaux faibles.')
    ),
    // Col 2 — Intelligence
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Intelligence'),
+    h('p',{className:`text-xs font-semibold uppercase tracking-wider mb-4 ${dark?'text-white':'text-[#1A1F2E]'}`},'Intelligence'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.intelligence.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#1B6B4A] transition-colors'},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:`text-sm hover:text-[#1B6B4A] transition-colors ${dark?'text-white/50':'text-[#5A6178]'}`},l.label))
      )
     )
    ),
    // Col 3 — Plateforme
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Plateforme'),
+    h('p',{className:`text-xs font-semibold uppercase tracking-wider mb-4 ${dark?'text-white':'text-[#1A1F2E]'}`},'Plateforme'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.plateforme.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#1B6B4A] transition-colors'},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:`text-sm hover:text-[#1B6B4A] transition-colors ${dark?'text-white/50':'text-[#5A6178]'}`},l.label))
      )
     )
    ),
    // Col 4 — Suivez-nous
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Suivez-nous'),
+    h('p',{className:`text-xs font-semibold uppercase tracking-wider mb-4 ${dark?'text-white':'text-[#1A1F2E]'}`},'Suivez-nous'),
     h('div',{className:'flex items-center gap-3 mb-4'},
-     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#1B6B4A] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+     h('a',{href:'#','aria-label':'LinkedIn',className:`w-9 h-9 rounded-lg hover:bg-[#1B6B4A] hover:text-white flex items-center justify-center transition-colors ${dark?'bg-white/10 text-white/50':'bg-[#E2E5EB] text-[#5A6178]'}`},
       h('svg',{width:16,height:16,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'}))
      ),
-     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#1B6B4A] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+     h('a',{href:'#','aria-label':'X / Twitter',className:`w-9 h-9 rounded-lg hover:bg-[#1B6B4A] hover:text-white flex items-center justify-center transition-colors ${dark?'bg-white/10 text-white/50':'bg-[#E2E5EB] text-[#5A6178]'}`},
       h('svg',{width:14,height:14,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'}))
      )
     ),
-    h('a',{href:'#',className:'text-sm text-[#5A6178] hover:text-[#1B6B4A] transition-colors'},'Contact')
+    h('a',{href:'#',className:`text-sm hover:text-[#1B6B4A] transition-colors ${dark?'text-white/50':'text-[#5A6178]'}`},'Contact')
    )
   ),
   // Bottom bar
-  h('div',{className:'border-t border-[#E2E5EB] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
-   h('span',{className:'text-sm text-[#5A6178]'},'© 2026 Inflexion — Intelligence financière & géopolitique'),
-   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#5A6178]/40 font-medium'},
+  h('div',{className:`border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4 ${dark?'border-[#1E3A5F]':'border-[#E2E5EB]'}`},
+   h('span',{className:`text-sm ${dark?'text-white/40':'text-[#5A6178]'}`},'© 2026 Inflexion — Intelligence financière & géopolitique'),
+   h('div',{className:`flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider font-medium ${dark?'text-white/20':'text-[#5A6178]/40'}`},
     ...sources.map(s=>h('span',{key:s},s))
    )
   )
@@ -418,14 +427,14 @@ const CREDIBILITY_STATS=[
 {value:'3 min',label:'Pour un briefing complet'},
 ]
 
-function CredibilityStrip(){
-return h(FadeUp,null,h('div',{className:'bg-[#F7F8FA] border-t border-b border-[#E2E5EB] py-10'},
+function CredibilityStrip({dark}){
+return h(FadeUp,null,h('div',{className:`border-t border-b py-10 transition-colors duration-300 ${dark?'bg-[#162A45] border-[#1E3A5F]':'bg-[#F7F8FA] border-[#E2E5EB]'}`},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center'},
    ...CREDIBILITY_STATS.map((s,i)=>
     h('div',{key:i},
      h('div',{className:'text-2xl sm:text-3xl md:text-4xl font-bold text-[#1B6B4A]',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},s.value),
-     h('div',{className:'mt-2 text-xs font-medium uppercase tracking-wider text-[#5A6178]'},s.label)
+     h('div',{className:`mt-2 text-xs font-medium uppercase tracking-wider ${dark?'text-white/50':'text-[#5A6178]'}`},s.label)
     )
    )
   )
@@ -448,35 +457,36 @@ geopolitique:[
 ],
 }
 
-function ExpertiseNav(){
+function ExpertiseNav({dark}){
 const[tab,setTab]=useState('marches')
 const[selected,setSelected]=useState('actions')
 const items=EXPERTISE_DATA[tab]
 const current=items.find(i=>i.id===selected)||items[0]
+const tabCls=(active)=>active?'bg-[#1B6B4A] text-white':(dark?'bg-[#162A45] text-white/50 hover:text-white border border-[#1E3A5F]':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]')
 
 const switchTab=(t)=>{setTab(t);setSelected(EXPERTISE_DATA[t][0].id)}
 
-return h(FadeUp,null,h('section',{className:'py-20 bg-white'},
+return h(FadeUp,null,h('section',{className:`py-20 transition-colors duration-300 ${dark?'bg-[#0A1628]':'bg-white'}`},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'text-center mb-12'},
    h('p',{className:'category-label mb-2'},'Nos expertises'),
-   h('h2',{className:'text-2xl md:text-3xl',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Explorez notre couverture')
+   h('h2',{className:`text-2xl md:text-3xl ${dark?'text-white':''}`,style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Explorez notre couverture')
   ),
   h('div',{className:'flex justify-center gap-2 mb-10'},
-   h('button',{onClick:()=>switchTab('marches'),className:`px-3 py-2 sm:px-5 sm:py-2.5 rounded-lg text-sm font-semibold transition-colors ${tab==='marches'?'bg-[#1B6B4A] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},'Marchés'),
-   h('button',{onClick:()=>switchTab('geopolitique'),className:`px-3 py-2 sm:px-5 sm:py-2.5 rounded-lg text-sm font-semibold transition-colors ${tab==='geopolitique'?'bg-[#1B6B4A] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},'Géopolitique')
+   h('button',{onClick:()=>switchTab('marches'),className:`px-3 py-2 sm:px-5 sm:py-2.5 rounded-lg text-sm font-semibold transition-colors ${tabCls(tab==='marches')}`},'Marchés'),
+   h('button',{onClick:()=>switchTab('geopolitique'),className:`px-3 py-2 sm:px-5 sm:py-2.5 rounded-lg text-sm font-semibold transition-colors ${tabCls(tab==='geopolitique')}`},'Géopolitique')
   ),
-  h('div',{className:'flex flex-col md:flex-row gap-6 md:gap-0 border border-[#E2E5EB] rounded-2xl overflow-hidden'},
-   h('div',{className:'md:w-[38%] bg-[#F7F8FA] md:border-r border-[#E2E5EB]'},
+  h('div',{className:`flex flex-col md:flex-row gap-6 md:gap-0 border rounded-2xl overflow-hidden transition-colors duration-300 ${dark?'border-[#1E3A5F]':'border-[#E2E5EB]'}`},
+   h('div',{className:`md:w-[38%] md:border-r transition-colors duration-300 ${dark?'bg-[#162A45] border-[#1E3A5F]':'bg-[#F7F8FA] border-[#E2E5EB]'}`},
     ...items.map(item=>
-     h('button',{key:item.id,onClick:()=>setSelected(item.id),className:`w-full text-left px-6 py-4 border-b border-[#E2E5EB] last:border-b-0 transition-colors ${selected===item.id?'bg-white font-semibold text-[#1A1F2E]':'text-[#5A6178] hover:bg-white/60'}`},
+     h('button',{key:item.id,onClick:()=>setSelected(item.id),className:`w-full text-left px-6 py-4 border-b last:border-b-0 transition-colors ${dark?'border-[#1E3A5F]':'border-[#E2E5EB]'} ${selected===item.id?(dark?'bg-[#0A1628] font-semibold text-white':'bg-white font-semibold text-[#1A1F2E]'):(dark?'text-white/50 hover:bg-[#0A1628]/50':'text-[#5A6178] hover:bg-white/60')}`},
       h('span',{className:'text-sm'},item.label)
      )
     )
    ),
    h('div',{className:'md:w-[62%] p-8 md:p-10 flex flex-col justify-center'},
-    h('h3',{className:'text-xl md:text-2xl font-bold mb-4',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},current.label),
-    h('p',{className:'text-sm text-[#5A6178] leading-relaxed mb-6'},current.desc),
+    h('h3',{className:`text-xl md:text-2xl font-bold mb-4 ${dark?'text-white':''}`,style:{fontFamily:'Libre Baskerville, Georgia, serif'}},current.label),
+    h('p',{className:`text-sm leading-relaxed mb-6 ${dark?'text-white/50':'text-[#5A6178]'}`},current.desc),
     h('a',{href:current.href,className:'inline-flex items-center gap-1 text-sm font-semibold text-[#1B6B4A] hover:text-[#2A9D6E] transition-colors'},'Explorer →')
    )
   )
@@ -498,14 +508,16 @@ return h(FadeUp,null,h('section',{className:'bg-[#0A1628] py-20'},
 }
 
 function App(){
-return h('div',{className:'pb-16'},
- h(Navigation),
+const[dark,setDark]=useState(false)
+const toggleDark=()=>setDark(d=>!d)
+return h('div',{className:`pb-16 transition-colors duration-300 ${dark?'bg-[#0A1628]':'bg-white'}`},
+ h(Navigation,{dark,toggleDark}),
  h(Hero),
- h(CredibilityStrip),
- h(ArticlesGrid),
- h(ExpertiseNav),
+ h(CredibilityStrip,{dark}),
+ h(ArticlesGrid,{dark}),
+ h(ExpertiseNav,{dark}),
  h(NewsletterCTA),
- h(Footer),
+ h(Footer,{dark}),
  h(MarketTicker)
 )
 }
