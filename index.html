@@ -309,8 +309,27 @@ return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-wh
 )
 }
 
+function SkeletonCard({dark}){
+const bg=dark?'bg-white/5':'bg-[#E2E5EB]'
+return h('div',{className:`rounded-xl overflow-hidden ${dark?'bg-[#162A45] border border-[#1E3A5F]':'bg-white border border-[#E2E5EB]'}`},
+ h('div',{className:`aspect-[5/3] animate-pulse ${bg}`}),
+ h('div',{className:'p-5'},
+  h('div',{className:'flex items-center gap-2 mb-3'},
+   h('div',{className:`w-16 h-4 rounded animate-pulse ${bg}`}),
+   h('div',{className:`w-12 h-4 rounded animate-pulse ${bg}`})
+  ),
+  h('div',{className:`w-full h-4 rounded mb-2 animate-pulse ${bg}`}),
+  h('div',{className:`w-3/4 h-4 rounded mb-3 animate-pulse ${bg}`}),
+  h('div',{className:`w-full h-3 rounded mb-1 animate-pulse ${bg}`}),
+  h('div',{className:`w-2/3 h-3 rounded animate-pulse ${bg}`})
+ )
+)
+}
+
 function ArticlesGrid({dark}){
 const[filter,setFilter]=useState('all')
+const[loading,setLoading]=useState(true)
+useEffect(()=>{const t=setTimeout(()=>setLoading(false),800);return()=>clearTimeout(t)},[])
 const filtered=filter==='all'?ARTICLES:ARTICLES.filter(a=>a.cat===filter)
 const btnCls=(active)=>active?'bg-[#1B6B4A] text-white':(dark?'bg-[#162A45] text-white/50 hover:text-white border border-[#1E3A5F]':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]')
 return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
@@ -327,7 +346,7 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
    )
   ),
   h('div',{className:'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'},
-   filtered.map(a=>{
+   loading?[1,2,3,4,5,6].map(i=>h(SkeletonCard,{key:'sk'+i,dark})):filtered.map(a=>{
     const cat=CATEGORIES.find(c=>c.id===a.cat)
     return h('a',{key:a.id,href:a.href||'#',className:`article-card rounded-xl overflow-hidden block no-underline transition-colors duration-300 ${dark?'bg-[#162A45] border border-[#1E3A5F]':'bg-white border border-[#E2E5EB]'}`},
      h('div',{className:'aspect-[5/3] overflow-hidden'},
