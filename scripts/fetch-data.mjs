@@ -428,11 +428,14 @@ const SPECIALIZED_SOURCES = new Set([
     'EuropaBio', 'SynBioBeta', 'GEN Biotech',
     'EC Single Market', 'BEI',
     // Défense, stratégie & OSINT
-    'RUSI', 'RAND', 'CNAS', 'Arms Control Assoc.', 'European Leadership',
+    'RUSI', 'RAND AGI Center', 'CNAS', 'Arms Control Assoc.', 'European Leadership',
     'Defense One', 'Breaking Defense', 'C4ISRNET', 'Lawfare',
     'Bellingcat', 'ACLED', 'NTI',
     // Think tanks non-occidentaux
-    'ORF India', 'ISS Africa', 'ISEAS Singapore', 'Terra Bellum'
+    'ORF India', 'ISS Africa', 'ISEAS Singapore', 'Terra Bellum',
+    // Doctrine & OSINT géopolitique
+    'Le Grand Continent', 'Asialyst', 'Le Rubicon', 'The Wire China',
+    'Pekingnology', 'RAND AGI Center'
 ]);
 
 /**
@@ -729,7 +732,7 @@ const RSS_SOURCES = [
 
     // 🏛️ Think tanks défense
     { url: 'https://rusi.org/rss.xml',                                 source: 'RUSI',                  cats: ['geopolitics'],             lang: 'en' },
-    { url: 'https://www.rand.org/blog.xml',                            source: 'RAND',                  cats: ['geopolitics', 'ai_tech'],  lang: 'en' },
+    { url: 'https://www.rand.org/blog.xml',                            source: 'RAND AGI Center',       cats: ['geopolitics', 'ai_tech'],  lang: 'en' },
     { url: 'https://www.cnas.org/rss/feed',                            source: 'CNAS',                  cats: ['geopolitics'],             lang: 'en' },
     { url: 'https://www.armscontrol.org/rss.xml',                     source: 'Arms Control Assoc.',   cats: ['geopolitics'],             lang: 'en' },
     { url: 'https://www.europeanleadershipnetwork.org/feed/',         source: 'European Leadership',   cats: ['geopolitics'],             lang: 'en' },
@@ -753,7 +756,59 @@ const RSS_SOURCES = [
     { url: 'https://issafrica.org/feed/',                             source: 'ISS Africa',            cats: ['geopolitics'],             lang: 'en' },
     { url: 'https://www.iseas.edu.sg/feed/',                         source: 'ISEAS Singapore',       cats: ['geopolitics'],             lang: 'en' },
     { url: 'https://www.nti.org/rss/all/',                           source: 'NTI',                   cats: ['geopolitics'],             lang: 'en' },
+
+    // ╔══════════════════════════════════════════════════════════╗
+    // ║  🔬 DOCTRINE & OSINT GÉOPOLITIQUE — 7 sources            ║
+    // ╚══════════════════════════════════════════════════════════╝
+
+    { url: 'https://legrandcontinent.eu/fr/feed/',                  source: 'Le Grand Continent',    cats: ['geopolitics'],                       },
+    { url: 'https://asialyst.com/fr/feed/',                         source: 'Asialyst',              cats: ['geopolitics'],                       },
+    { url: 'https://lerubicon.org/feed/',                           source: 'Le Rubicon',            cats: ['geopolitics'],                       },
+    { url: 'https://thewirechina.com/feed/',                        source: 'The Wire China',        cats: ['geopolitics', 'markets'],  lang: 'en' },
+    { url: 'https://pekingnology.substack.com/feed',                source: 'Pekingnology',          cats: ['geopolitics'],             lang: 'en' },
 ];
+
+// ─── 0. DOCTRINE & OSINT GÉOPOLITIQUE ────────────────────
+const GEOPOLITICAL_DOCTRINE_FEEDS = RSS_SOURCES.filter(s =>
+    ['Le Grand Continent', 'Asialyst', 'Le Rubicon', 'IRIS',
+     'The Wire China', 'Pekingnology', 'RAND AGI Center'].includes(s.source)
+);
+
+/**
+ * Fetches and validates geopolitical doctrine & OSINT feeds.
+ * Parses the 3 most recent articles per feed, logs title, date, detected language.
+ * Returns an array of { source, articles: [{ title, date, lang }] }.
+ */
+async function fetchGeopoliticalFeeds() {
+    console.log('\n🔬 Récupération flux doctrine & OSINT géopolitique...');
+    const results = [];
+
+    for (const feed of GEOPOLITICAL_DOCTRINE_FEEDS) {
+        try {
+            const xml = await fetchText(feed.url);
+            if (!xml) { console.log(`   ❌ ${feed.source} — pas de réponse`); continue; }
+
+            const items = parseRSSItems(xml).slice(0, 3);
+            if (!items.length) { console.log(`   ⚠️  ${feed.source} — flux vide`); continue; }
+
+            const articles = items.map(raw => {
+                const fields = raw.includes('<entry') ? extractAtomFields(raw) : extractRSSFields(raw);
+                const lang = /[\u00e0\u00e9\u00e8\u00ea\u00f4\u00fb\u00e7\u00e2\u00ee\u00f9]/.test(fields.title + (fields.description || '')) ? 'fr' : 'en';
+                return { title: fields.title, date: fields.pubDate || 'N/A', lang };
+            });
+
+            console.log(`   ✅ ${feed.source} (${articles[0]?.lang || '?'}) — ${articles.length} articles`);
+            articles.forEach((a, i) => console.log(`      ${i + 1}. ${a.title.slice(0, 75)}  [${a.date}]`));
+            results.push({ source: feed.source, url: feed.url, articles });
+        } catch (e) {
+            console.log(`   ❌ ${feed.source} — ${e.message}`);
+        }
+        await new Promise(r => setTimeout(r, 300));
+    }
+
+    console.log(`\n   📋 Bilan : ${results.length}/${GEOPOLITICAL_DOCTRINE_FEEDS.length} flux actifs`);
+    return results;
+}
 
 // ─── 1. CRYPTO (CoinGecko — gratuit, pas de clé) ──────────
 async function fetchCrypto() {
