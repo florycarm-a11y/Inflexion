@@ -22,10 +22,10 @@ tailwind.config={theme:{extend:{colors:{brand:{900:'#0A1628',800:'#1B6B4A',700:'
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden}
+body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden;transition:background-color .3s ease}
 
 /* Typography */
-h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
+h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:inherit}
 .category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#1B6B4A}
 
 /* Glass effects — updated for white bg */
@@ -167,15 +167,15 @@ const CATEGORIES=[
 ]
 
 const ARTICLES=[
-{id:1,cat:'iatech',title:'Cloud et IA : la dépendance invisible des PME européennes',source:'Inflexion Research',time:'Analyse',img:'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=240&fit=crop',summary:'610 milliards de dollars d\'investissement en 2026, dont 75 % fléchés vers l\'IA. Le cloud n\'est plus un sujet technique — c\'est un risque de direction générale.',href:'analyse-cloud-ia-pme-europeennes.html'},
-{id:2,cat:'marches',title:'La Fed maintient ses taux : les marchés anticipent une baisse en juin',source:'Reuters',time:'Il y a 3h',img:'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=240&fit=crop',summary:'Jerome Powell signale un ralentissement progressif de l\'inflation, ouvrant la voie à un assouplissement monétaire.'},
-{id:3,cat:'crypto',title:'Bitcoin franchit les 68 000 $ : l\'effet ETF se confirme',source:'CoinDesk',time:'Il y a 1h',img:'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=400&h=240&fit=crop',summary:'Les flux entrants dans les ETF Bitcoin spot atteignent un record hebdomadaire de 2,4 milliards de dollars.'},
-{id:4,cat:'matieres',title:'L\'or atteint un nouveau sommet historique à 2 178 $/oz',source:'metals.dev',time:'Il y a 4h',img:'https://images.unsplash.com/photo-1610375461246-83df859d849d?w=400&h=240&fit=crop',summary:'La demande des banques centrales asiatiques et les tensions géopolitiques propulsent le métal jaune.'},
-{id:5,cat:'iatech',title:'Claude 4 d\'Anthropic : un bond en raisonnement et en sécurité',source:'VentureBeat',time:'Il y a 5h',img:'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=240&fit=crop',summary:'Le nouveau modèle surpasse GPT-4 sur les benchmarks de raisonnement tout en renforçant les garde-fous.'},
-{id:6,cat:'geopolitique',title:'Sommet UE-Afrique : vers un partenariat stratégique renforcé',source:'IFRI',time:'Il y a 6h',img:'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=400&h=240&fit=crop',summary:'L\'Europe cherche à contrer l\'influence chinoise en proposant des investissements dans les infrastructures critiques.'},
-{id:7,cat:'marches',title:'Le DAX sous pression : l\'industrie allemande face au choc énergétique',source:'Les Échos',time:'Il y a 7h',img:'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=240&fit=crop',summary:'Les coûts de production restent élevés malgré la baisse des prix du gaz, pesant sur la compétitivité.'},
-{id:8,cat:'crypto',title:'DeFi : la TVL dépasse 100 Md$ pour la première fois depuis 2022',source:'DefiLlama',time:'Il y a 3h',img:'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&h=240&fit=crop',summary:'Le retour de la confiance dans les protocoles décentralisés marque un tournant pour l\'écosystème.'},
-{id:9,cat:'iatech',title:'L\'AI Act entre en vigueur : ce qui change pour les entreprises européennes',source:'Euractiv',time:'Il y a 8h',img:'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=240&fit=crop',summary:'Les premières obligations de transparence s\'appliquent dès juin 2026 pour les systèmes à haut risque.'},
+{id:1,cat:'iatech',title:'Cloud et IA : la dépendance invisible des PME européennes',source:'Inflexion Research',time:'Analyse',readingTime:7,img:'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=240&fit=crop',summary:'610 milliards de dollars d\'investissement en 2026, dont 75 % fléchés vers l\'IA. Le cloud n\'est plus un sujet technique — c\'est un risque de direction générale.',href:'analyse-cloud-ia-pme-europeennes.html'},
+{id:2,cat:'marches',title:'La Fed maintient ses taux : les marchés anticipent une baisse en juin',source:'Reuters',time:'Il y a 3h',readingTime:4,img:'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=240&fit=crop',summary:'Jerome Powell signale un ralentissement progressif de l\'inflation, ouvrant la voie à un assouplissement monétaire.'},
+{id:3,cat:'crypto',title:'Bitcoin franchit les 68 000 $ : l\'effet ETF se confirme',source:'CoinDesk',time:'Il y a 1h',readingTime:3,img:'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=400&h=240&fit=crop',summary:'Les flux entrants dans les ETF Bitcoin spot atteignent un record hebdomadaire de 2,4 milliards de dollars.'},
+{id:4,cat:'matieres',title:'L\'or atteint un nouveau sommet historique à 2 178 $/oz',source:'metals.dev',time:'Il y a 4h',readingTime:3,img:'https://images.unsplash.com/photo-1610375461246-83df859d849d?w=400&h=240&fit=crop',summary:'La demande des banques centrales asiatiques et les tensions géopolitiques propulsent le métal jaune.'},
+{id:5,cat:'iatech',title:'Claude 4 d\'Anthropic : un bond en raisonnement et en sécurité',source:'VentureBeat',time:'Il y a 5h',readingTime:5,img:'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=240&fit=crop',summary:'Le nouveau modèle surpasse GPT-4 sur les benchmarks de raisonnement tout en renforçant les garde-fous.'},
+{id:6,cat:'geopolitique',title:'Sommet UE-Afrique : vers un partenariat stratégique renforcé',source:'IFRI',time:'Il y a 6h',readingTime:6,img:'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=400&h=240&fit=crop',summary:'L\'Europe cherche à contrer l\'influence chinoise en proposant des investissements dans les infrastructures critiques.'},
+{id:7,cat:'marches',title:'Le DAX sous pression : l\'industrie allemande face au choc énergétique',source:'Les Échos',time:'Il y a 7h',readingTime:4,img:'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=240&fit=crop',summary:'Les coûts de production restent élevés malgré la baisse des prix du gaz, pesant sur la compétitivité.'},
+{id:8,cat:'crypto',title:'DeFi : la TVL dépasse 100 Md$ pour la première fois depuis 2022',source:'DefiLlama',time:'Il y a 3h',readingTime:5,img:'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&h=240&fit=crop',summary:'Le retour de la confiance dans les protocoles décentralisés marque un tournant pour l\'écosystème.'},
+{id:9,cat:'iatech',title:'L\'AI Act entre en vigueur : ce qui change pour les entreprises européennes',source:'Euractiv',time:'Il y a 8h',readingTime:8,img:'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=240&fit=crop',summary:'Les premières obligations de transparence s\'appliquent dès juin 2026 pour les systèmes à haut risque.'},
 ]
 
 function Navigation({dark,toggleDark}){
@@ -191,7 +191,7 @@ return h('div',null,
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(5) saturate(0.3)',transition:'filter 0.3s ease'}})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:(scrolled&&!dark)?'none':'brightness(5) saturate(0.3)',transition:'filter 0.3s ease'}})
     ),
     h('nav',{className:'hidden md:flex items-center gap-1'},
      ...MEGA_NAV.map((cat,ci)=>
@@ -219,7 +219,7 @@ return h('div',null,
      h('a',{href:'#diagnostic',className:'ml-2 px-4 py-2 bg-[#1B6B4A] hover:bg-[#155A3D] text-white font-semibold text-sm rounded-lg transition-colors'},'Réserver un diagnostic')
     ),
     h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,onClick:()=>setOpen(!open)},
-     h('span'),h('span'),h('span')
+     h('span',{style:(!open&&dark&&scrolled)?{background:'#fff'}:{}}),h('span',{style:(!open&&dark&&scrolled)?{background:'#fff'}:{}}),h('span',{style:(!open&&dark&&scrolled)?{background:'#fff'}:{}})
     )
    )
   )
@@ -336,7 +336,9 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
      h('div',{className:'p-5'},
       h('div',{className:'flex items-center gap-2 mb-3'},
        h('span',{className:`${cat.cls} text-[10px] font-semibold uppercase tracking-wider text-white px-2 py-0.5 rounded`},cat.label),
-       h('span',{className:`text-xs ${dark?'text-white/40':'text-[#5A6178]'}`},a.time)
+       h('span',{className:`text-xs ${dark?'text-white/40':'text-[#5A6178]'}`},a.time),
+       h('span',{className:`text-xs ${dark?'text-white/40':'text-[#5A6178]'}`},'·'),
+       h('span',{className:`text-xs ${dark?'text-white/40':'text-[#5A6178]'}`},a.readingTime+' min de lecture')
       ),
       h('h3',{className:`text-sm font-semibold leading-snug mb-2 line-clamp-2 ${dark?'text-white':'text-[#1A1F2E]'}`,style:{fontFamily:'Libre Baskerville, Georgia, serif',fontSize:'0.95rem'}},a.title),
       h('p',{className:`text-xs leading-relaxed line-clamp-2 ${dark?'text-white/40':'text-[#5A6178]'}`},a.summary),
@@ -510,7 +512,8 @@ return h(FadeUp,null,h('section',{className:'bg-[#0A1628] py-20'},
 function App(){
 const[dark,setDark]=useState(false)
 const toggleDark=()=>setDark(d=>!d)
-return h('div',{className:`pb-16 transition-colors duration-300 ${dark?'bg-[#0A1628]':'bg-white'}`},
+useEffect(()=>{document.body.style.backgroundColor=dark?'#0A1628':'#FFFFFF'},[dark])
+return h('div',{className:`pb-16 transition-colors duration-300 ${dark?'bg-[#0A1628] text-white':'bg-white text-[#1A1F2E]'}`},
  h(Navigation,{dark,toggleDark}),
  h(Hero),
  h(CredibilityStrip,{dark}),
