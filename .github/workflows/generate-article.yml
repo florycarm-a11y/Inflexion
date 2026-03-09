@@ -143,6 +143,10 @@ jobs:
 
           Article de synthèse et classification des news générés par Claude."
 
-          # Rebase sur main avant de pusher pour éviter les conflits
-          git pull --rebase origin main
-          git push
+          # Push avec retry (en cas de conflit concurrent)
+          for i in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main && git push && break
+            echo "⟳ Retry push $i/3..."
+            sleep 5
+          done
