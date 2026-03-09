@@ -143,4 +143,6 @@ jobs:
 
           Article de synthèse et classification des news générés par Claude."
 
+          # Rebase sur main avant de pusher pour éviter les conflits
+          git pull --rebase origin main
           git push
