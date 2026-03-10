@@ -1757,9 +1757,10 @@ const DataLoader = (function () {
                 ? '<span class="rubrique-badge" data-rubrique="' + rubriqueAttr + '">' + label + '</span>'
                 : '';
 
-            var hasThumb = n.image ? ' has-thumb' : '';
-            var thumbHTML = n.image
-                ? '<img src="' + n.image + '" alt="" class="news-list-thumb" loading="lazy" onerror="this.parentElement.classList.remove(\'has-thumb\');this.remove()">'
+            var imgSrc = n.image || (window.matchImage ? window.matchImage(n.title || '', n.rubrique || '', 300, 200) : '');
+            var hasThumb = imgSrc ? ' has-thumb' : '';
+            var thumbHTML = imgSrc
+                ? '<img src="' + imgSrc + '" alt="" class="news-list-thumb" loading="lazy" onerror="this.parentElement.classList.remove(\'has-thumb\');this.remove()">'
                 : '';
 
             // Titre tronqué si trop long
@@ -2290,9 +2291,10 @@ const DataLoader = (function () {
             ? '<span class="rubrique-badge" data-rubrique="' + (n.rubrique || '') + '">' + label + '</span>'
             : '';
 
-        var hasImage = !!n.image;
+        var featImgSrc = n.image || (window.matchImage ? window.matchImage(n.title || '', n.rubrique || '', 600, 360) : '');
+        var hasImage = !!featImgSrc;
         var imgHTML = hasImage
-            ? '<div class="featured-image"><img src="' + n.image + '" alt="" loading="lazy" onerror="this.parentElement.classList.add(\'no-image\')"></div>'
+            ? '<div class="featured-image"><img src="' + featImgSrc + '" alt="" loading="lazy" onerror="this.parentElement.classList.add(\'no-image\')"></div>'
             : '<div class="featured-image no-image"></div>';
 
         var displayTitle = truncateTitle(n.title || '', 120);
@@ -2532,9 +2534,10 @@ const DataLoader = (function () {
                 ? '<span class="rubrique-badge" data-rubrique="' + (n.rubrique || '') + '">' + label + '</span>'
                 : '';
 
-            var hasImage = !!n.image;
+            var storyImgSrc = n.image || (window.matchImage ? window.matchImage(n.title || '', n.rubrique || '', 400, 240) : '');
+            var hasImage = !!storyImgSrc;
             var imgHTML = hasImage
-                ? '<img src="' + n.image + '" alt="" class="story-image" loading="lazy" onerror="this.parentElement.classList.add(\'no-image\')">'
+                ? '<img src="' + storyImgSrc + '" alt="" class="story-image" loading="lazy" onerror="this.parentElement.classList.add(\'no-image\')">'
                 : '';
 
             // Titre tronqué si trop long

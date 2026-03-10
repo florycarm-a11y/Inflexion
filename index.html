@@ -113,6 +113,7 @@ a,button{min-height:44px;min-width:44px}
 </head>
 <body>
 <div id="app"></div>
+<script src="image-catalog.js"></script>
 <script type="module">
 import React,{useState,useEffect,useRef} from 'https://esm.sh/react@18.2.0'
 import{createRoot}from 'https://esm.sh/react-dom@18.2.0/client'
@@ -240,7 +241,7 @@ for(const[apiCat,items] of Object.entries(newsData.categories||{})){
 const cat=catKeys[apiCat]||'marches'
 for(const item of items){
 const readingTime=Math.min(8,Math.max(2,Math.round((item.description||'').length/200)+2))
-articles.push({id:id++,cat,title:item.title,source:item.source||'',time:item.time||'',readingTime,img:item.image||CAT_IMAGES[cat],summary:(item.description||'').slice(0,160),href:item.url||'#'})
+articles.push({id:id++,cat,title:item.title,source:item.source||'',time:item.time||'',readingTime,img:item.image||window.matchImage(item.title,cat),summary:(item.description||'').slice(0,160),href:item.url||'#'})
 }
 }
 articles.sort((a,b)=>b.id-a.id)
