@@ -51,13 +51,19 @@ jobs:
         run: |
           SHOULD_RUN=true
           NOW=$(date +%s)
-          if [ -f data/newsletter.json ] && git log -1 --format="%ct" -- data/newsletter.json > /dev/null 2>&1; then
-            LAST_NEWSLETTER=$(git log -1 --format="%ct" -- data/newsletter.json)
-            NEWSLETTER_AGE=$((NOW - LAST_NEWSLETTER))
-            # Skip si newsletter générée il y a moins de 6 jours (518400s)
-            if [ $NEWSLETTER_AGE -lt 518400 ]; then
-              echo "⏭ Newsletter déjà générée il y a $((NEWSLETTER_AGE / 86400))j (< 6j) — skip"
-              SHOULD_RUN=false
+          # Utilise la date interne du JSON (fiable en shallow clone) plutôt que git log
+          if [ -f data/newsletter.json ]; then
+            NEWSLETTER_DATE=$(node -e "try { const n = JSON.parse(require('fs').readFileSync('data/newsletter.json','utf8')); console.log(n.updated || n.generated_at || n.date || ''); } catch(e) { console.log(''); }")
+            if [ -n "$NEWSLETTER_DATE" ]; then
+              LAST_NEWSLETTER=$(node -e "console.log(Math.floor(new Date('$NEWSLETTER_DATE').getTime()/1000))")
+              NEWSLETTER_AGE=$((NOW - LAST_NEWSLETTER))
+              # Skip si newsletter générée il y a moins de 6 jours (518400s)
+              if [ $NEWSLETTER_AGE -lt 518400 ]; then
+                echo "⏭ Newsletter déjà générée il y a $((NEWSLETTER_AGE / 86400))j (< 6j) — skip"
+                SHOULD_RUN=false
+              else
+                echo "📊 Dernière newsletter : $NEWSLETTER_DATE (il y a $((NEWSLETTER_AGE / 86400))j)"
+              fi
             fi
           fi
           echo "should_run=${SHOULD_RUN}" >> $GITHUB_OUTPUT
