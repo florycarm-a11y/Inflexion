@@ -36,8 +36,9 @@ Inflexion/
 ├── cgu.html / mentions-legales.html / confidentialite.html
 ├── styles.css              # CSS pages legacy (variables `:root` migrées)
 ├── nav-shared.js           # Navigation moderne injectée sur pages legacy
+├── image-catalog.js        # ~120 images Unsplash par sous-thème + matchImage()
 ├── app.js                  # Logique JS principale
-├── data-loader.js          # Charge les JSON → met à jour le DOM
+├── data-loader.js          # Charge les JSON → met à jour le DOM (utilise matchImage)
 ├── data/                   # Fichiers JSON générés par le pipeline
 ├── scripts/                # Pipeline Node.js (fetch, briefing, RAG, tests)
 ├── .github/workflows/      # CI/CD (fetch, briefing, article, sentiment, deploy)
@@ -82,25 +83,29 @@ Inflexion/
 ### Couleurs interdites (anciennes)
 `#0B3D1E`, `#072A14`, `#14713A`, `#EDE8DC`, `#C41E3A`, `#8CBF9E`, `#1B6B4A`, `#155A3D`, `#0A1628`, `#0F2035`, `#162A45`, `Plus Jakarta Sans`
 
-### Migration effectuée (état actuel)
+### Migration effectuée (TERMINÉE)
 
-**Fait :**
-- `index.html` : badge "Mis à jour" supprimé, couverture "Marchés" remplacée par "IA & Tech" (4 sous-items : IA générative, Cloud & Souveraineté, Régulation Tech, Cybersécurité)
-- `nav-shared.js` : entièrement réécrit — injecte bronze bar, header mega menu, hero navy, footer moderne, mobile overlay, scroll handler
-- `styles.css` : toutes les variables `:root` migrées (--accent→#006650, --navy→#006650, --bg-primary→#FFFFFF, --font-sans→Inter, --font-serif→Libre Baskerville, --red→#C8955A) + 2 couleurs hardcodées corrigées
-- `analyses.html` : couleurs migrées (#1B6B4A→#006650, etc.), bronze bar ajoutée
-- 8 pages legacy (geopolitics, markets, crypto, commodities, etf, premium, expertise, country) : Tailwind CDN + config ajoutés, Google Fonts ajoutées, nav-shared.js ajouté, Plus Jakarta Sans supprimée
+- **22 fichiers** migrés vers palette emerald (commit `3d6b38e`)
+- `index.html` : Tailwind config, couleurs inline, hero dark, glass effects migrés
+- `nav-shared.js` : bronze bar, mega menu, mobile overlay emerald, scroll handler
+- `styles.css` : variables `:root` + couleurs hardcodées migrées
+- `analyses.html` + 5 articles `analyse-*.html` : couleurs, bronze bar, hero gradient 3D
+- 8 pages legacy : Tailwind CDN + config, Google Fonts, nav-shared.js
+- 3 pages légales (cgu, mentions-legales, confidentialite) : migrées
+- Articles React : hero gradient dynamique (CSS keyframes + parallax scroll via useRef)
 
-**Reste à faire :**
-- Vérifier que chaque page legacy n'a plus de couleurs inline anciennes dans `<main>`
-- Migrer les articles `analyse-*.html` (couleurs inline dans styles React)
-- Migrer les pages légales (cgu, mentions-legales, confidentialite)
-- Test visuel complet desktop + mobile sur chaque page
+### Images éditoriales
+
+- `image-catalog.js` : ~120 images Unsplash classées par 60+ sous-thèmes (pétrole, bitcoin, Fed, IA, etc.)
+- `matchImage(title, category, w, h)` : matching titre → mots-clés → image contextuelle
+- Fallback : sous-thème → catégorie générique → géopolitique par défaut
+- Branché sur `index.html` (React) et `data-loader.js` (legacy) — 11 pages au total
+- Pour ajouter un thème : ajouter une entrée dans `CATALOG` de `image-catalog.js`
 
 ## 4. Navigation frontend
 
 - **Desktop (≥768px)** : mega menu dropdown avec icônes emoji, CTA "Réserver un diagnostic"
-- **Mobile (<768px)** : hamburger → overlay plein écran navy `#006650`, animations décalées
+- **Mobile (<768px)** : hamburger → overlay plein écran emerald `#006650`, animations décalées
 - **`nav-shared.js`** : remplace automatiquement header/nav/hero/footer sur pages legacy
 
 ## 5. Pipeline de données
