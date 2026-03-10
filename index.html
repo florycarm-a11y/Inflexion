@@ -416,9 +416,9 @@ return h('section',{className:'relative pt-28 pb-16 md:pt-40 md:pb-24 lg:pt-48 l
    ),
    // Right: Featured article card
    h('div',{className:'lg:w-[58%]'},
-    h('a',{href:featured.href,className:'anim-fade-up anim-d2 block group rounded-2xl overflow-hidden bg-[#F7F8FA] border border-[#E2E5EB] hover:border-[#006650]/30 hover:shadow-lg transition-all duration-300'},
+    h('a',{href:featured.href,className:'anim-fade-up anim-d2 block group rounded-2xl overflow-hidden transition-all duration-300'},
      h('div',{className:'relative'},
-      h('div',{className:'aspect-[16/9] overflow-hidden'},
+      h('div',{className:'aspect-[16/9] overflow-hidden rounded-2xl'},
        h('img',{src:featured.img,alt:'',className:'w-full h-full object-cover group-hover:scale-[1.02] transition-all duration-500',loading:'eager'})
       ),
       h('div',{className:'absolute top-4 left-4 flex items-center gap-2'},
@@ -426,10 +426,10 @@ return h('section',{className:'relative pt-28 pb-16 md:pt-40 md:pb-24 lg:pt-48 l
        h('span',{className:'px-2.5 py-1 bg-black/50 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider rounded'},featured.cat)
       )
      ),
-     h('div',{className:'p-6 lg:p-8'},
+     h('div',{className:'pt-5 lg:pt-6 px-1'},
       h('h2',{className:'text-xl lg:text-2xl font-bold text-[#1A1F2E] leading-snug group-hover:text-[#006650] transition-colors',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},featured.title),
       h('p',{className:'mt-3 text-sm text-[#5A6178] leading-relaxed line-clamp-2'},featured.summary),
-      h('div',{className:'mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-[#5A6178]/60'},
+      h('div',{className:'mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-[#5A6178]/50'},
        h('span',{className:'flex items-center gap-1.5'},
         h('svg',{width:12,height:12,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2},h('circle',{cx:12,cy:12,r:10}),h('path',{d:'M12 6v6l4 2'})),
         featured.readingTime+' min de lecture'
