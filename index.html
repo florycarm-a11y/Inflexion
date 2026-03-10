@@ -97,6 +97,11 @@ body.menu-open{overflow:hidden}
 /* Data font */
 .font-data{font-family:'JetBrains Mono','SF Mono',monospace}
 
+/* Featured analysis card hover */
+.featured-card{position:relative;overflow:hidden}
+.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:#1B6B4A;transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
+.featured-card:hover::before{transform:scaleY(1)}
+
 /* Mobile responsive */
 @media(max-width:768px){
 html,body{overflow-x:hidden}
@@ -219,6 +224,12 @@ const ARTICLES_FALLBACK=[
 ]
 
 const CAT_IMAGES={geopolitique:'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=400&h=240&fit=crop',marches:'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=240&fit=crop',crypto:'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=400&h=240&fit=crop',matieres:'https://images.unsplash.com/photo-1610375461246-83df859d849d?w=400&h=240&fit=crop',iatech:'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=240&fit=crop'}
+
+const FEATURED_ANALYSES=[
+{title:'Pétrole à 119 $ : Trump, Iran et le détroit d\'Ormuz',href:'analyse-petrole-trump-iran-ormuz.html',cat:'Matières premières',date:'10 mars 2026',author:'Inflexion Research',readingTime:12,summary:'Le Brent flambe à 119 $/b après les frappes Epic Fury et le blocage du détroit d\'Ormuz. Analyse complète des scénarios, impact sur l\'Europe et les marchés émergents.',sources:56,grade:'A'},
+{title:'Cuba — La crise de trop : effondrement énergétique et bras de fer Trump',href:'analyse-cuba-crise-perspectives.html',cat:'Géopolitique',date:'10 mars 2026',author:'Inflexion Research',readingTime:14,summary:'Blackouts sur 64 % du territoire, PIB en chute de 4 %, exode massif. Cuba au bord de l\'asphyxie sous la pression maximale de Washington.',sources:53,grade:'A-'},
+{title:'Cloud et IA : la dépendance invisible des PME européennes',href:'analyse-cloud-ia-pme-europeennes.html',cat:'IA & Tech',date:'8 mars 2026',author:'Inflexion Research',readingTime:7,summary:'610 milliards de dollars d\'investissement en 2026, dont 75 % fléchés vers l\'IA. Le cloud n\'est plus un sujet technique — c\'est un risque de direction générale.',sources:32,grade:'B+'},
+]
 const RUBRIQUE_MAP={geopolitique:'geopolitique',marches:'marches',crypto:'crypto',matieres_premieres:'matieres',ia_tech:'iatech'}
 
 function mapNewsToArticles(newsData){
@@ -317,73 +328,102 @@ return h('div',null,
 }
 
 function Hero(){
-const heroArticles=ARTICLES_FALLBACK.slice(0,3)
-const catFor=a=>CATEGORIES.find(c=>c.id===a.cat)
-return h('section',{className:'hero-dark relative pt-32 pb-20 md:pt-44 md:pb-28 lg:pt-52 lg:pb-36 overflow-hidden'},
- h('div',{className:'hero-glow',style:{background:'radial-gradient(circle, rgba(27,107,74,.15) 0%, transparent 70%)'}}),
+const featured=FEATURED_ANALYSES[0]
+return h('section',{className:'hero-dark relative pt-28 pb-16 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 overflow-hidden'},
+ h('div',{className:'hero-glow',style:{background:'radial-gradient(circle at 70% 30%, rgba(27,107,74,.12) 0%, transparent 60%)'}}),
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
-  h('div',{className:'flex flex-col md:flex-row md:items-center gap-12 md:gap-10'},
-   h('div',{className:'md:w-[40%] text-center md:text-left flex-shrink-0'},
-    h('div',{className:'anim-fade-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium text-white/60 mb-8 md:mb-10 border border-white/15'},
-     '158 sources · 15 APIs · IA Claude'
+  h('div',{className:'flex flex-col lg:flex-row lg:items-start gap-12 lg:gap-16'},
+   // Left: Tagline
+   h('div',{className:'lg:w-[42%] text-center lg:text-left flex-shrink-0 lg:pt-4'},
+    h('div',{className:'anim-fade-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-medium text-white/50 mb-8 lg:mb-10 border border-white/10'},
+     h('span',{className:'w-1.5 h-1.5 rounded-full bg-[#34D399]'}),'Mis à jour le 10 mars 2026'
     ),
-    h('h1',{className:'anim-fade-up anim-d1 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.08] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+    h('h1',{className:'anim-fade-up anim-d1 text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.08] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
      'Révéler les signaux',h('br'),
      'que le bruit dissimule.'
     ),
-    h('p',{className:'anim-fade-up anim-d2 mt-6 md:mt-8 text-base md:text-lg text-white/50 max-w-lg leading-relaxed font-normal italic'},
-     'Décideur, prête une oreille fine au bruit, il te le rendra au centuple.'
+    h('p',{className:'anim-fade-up anim-d2 mt-6 lg:mt-8 text-base lg:text-lg text-white/40 max-w-lg leading-relaxed'},
+     'Intelligence géopolitique et financière pour les décideurs. 158 sources, 15 APIs, analyse IA.'
     ),
-    h('div',{className:'anim-fade-up anim-d3 mt-10 md:mt-12'},
-     h('a',{href:'analyses.html',className:'inline-block px-7 py-3.5 bg-[#1B6B4A] hover:bg-[#2A9D6E] text-white font-semibold rounded-lg transition-colors text-sm'},'Explorer les analyses')
+    h('div',{className:'anim-fade-up anim-d3 mt-8 lg:mt-10 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start'},
+     h('a',{href:'analyses.html',className:'inline-block px-7 py-3.5 bg-[#1B6B4A] hover:bg-[#2A9D6E] text-white font-semibold rounded-lg transition-colors text-sm'},'Explorer les analyses'),
+     h('a',{href:'expertise.html',className:'inline-block px-7 py-3.5 border border-white/15 hover:border-white/30 text-white/70 hover:text-white font-medium rounded-lg transition-colors text-sm'},'Notre méthodologie')
     )
    ),
-   h('div',{className:'md:w-[60%] grid grid-cols-1 sm:grid-cols-3 gap-4'},
-    ...heroArticles.map((a,i)=>{
-     const cat=catFor(a)
-     return h('a',{key:a.id,href:a.href||'#',className:`anim-fade-up anim-d${i+2} article-card rounded-xl overflow-hidden bg-white/10 border border-white/10 backdrop-blur-sm block no-underline`},
-      h('div',{className:'aspect-[4/3] overflow-hidden'},
-       h('img',{src:a.img,alt:'',className:'w-full h-full object-cover opacity-90',loading:'lazy'})
+   // Right: Featured article card
+   h('div',{className:'lg:w-[58%]'},
+    h('a',{href:featured.href,className:'anim-fade-up anim-d2 block group rounded-2xl overflow-hidden bg-white/[0.07] border border-white/10 hover:border-white/20 transition-all duration-300'},
+     h('div',{className:'relative'},
+      h('div',{className:'aspect-[16/9] overflow-hidden'},
+       h('div',{className:'w-full h-full bg-gradient-to-br from-[#1B6B4A]/30 via-[#0A1628] to-[#162A45] flex items-center justify-center'},
+        h('div',{className:'text-center px-8'},
+         h('span',{className:'text-6xl mb-4 block'},'🛢️'),
+         h('span',{className:'text-white/30 text-sm font-medium uppercase tracking-wider'},'Analyse approfondie')
+        )
+       )
       ),
-      h('div',{className:'p-4'},
-       h('span',{className:'text-[10px] font-semibold uppercase tracking-wider text-[#34d399]'},cat.label),
-       h('h3',{className:'mt-2 text-sm font-semibold text-white leading-snug line-clamp-2',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},a.title)
+      h('div',{className:'absolute top-4 left-4 flex items-center gap-2'},
+       h('span',{className:'px-2.5 py-1 bg-[#ef4444] text-white text-[10px] font-bold uppercase tracking-wider rounded'},'Alerte'),
+       h('span',{className:'px-2.5 py-1 bg-black/40 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider rounded'},featured.cat)
+      )
+     ),
+     h('div',{className:'p-6 lg:p-8'},
+      h('h2',{className:'text-xl lg:text-2xl font-bold text-white leading-snug group-hover:text-[#34d399] transition-colors',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},featured.title),
+      h('p',{className:'mt-3 text-sm text-white/40 leading-relaxed line-clamp-2'},featured.summary),
+      h('div',{className:'mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-white/30'},
+       h('span',{className:'flex items-center gap-1.5'},
+        h('svg',{width:12,height:12,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2},h('circle',{cx:12,cy:12,r:10}),h('path',{d:'M12 6v6l4 2'})),
+        featured.readingTime+' min de lecture'
+       ),
+       h('span',null,featured.date),
+       h('span',{className:'flex items-center gap-1.5'},
+        h('svg',{width:12,height:12,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2},h('path',{d:'M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z'}),h('path',{d:'M14 2v6h6'})),
+        featured.sources+' sources'
+       ),
+       h('span',{className:'px-2 py-0.5 border border-[#34d399]/30 text-[#34d399] rounded font-semibold'},'Score : '+featured.grade)
       )
      )
-    })
+    )
    )
   )
  )
 )
 }
 
-function MarketTicker(){
-const[data,setData]=useState(TICKER_FALLBACK)
-const[live,setLive]=useState(false)
-useEffect(()=>{
-const load=async()=>{const d=await fetchTickerData();if(d){setData(d);setLive(true)}}
-load()
-const iv=setInterval(load,60000)
-return()=>clearInterval(iv)
-},[])
-const items=[...data,...data]
-return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 overflow-hidden py-3 bg-[#0A1628]'},
- h('div',{className:'flex items-center'},
-  live&&h('div',{className:'flex items-center gap-1.5 pl-4 pr-4 flex-shrink-0 border-r border-white/10 mr-4'},
-   h('span',{className:'w-2 h-2 rounded-full bg-[#34D399] animate-pulse'}),
-   h('span',{className:'text-[10px] font-semibold uppercase tracking-wider text-[#34D399]'},'Live')
+function FeaturedAnalyses({dark}){
+const analyses=FEATURED_ANALYSES.slice(1) // 2 secondary analyses (first is in hero)
+return h(FadeUp,null,h('section',{className:`py-16 md:py-20 transition-colors duration-300 ${dark?'bg-[#0D1B2E]':'bg-white'}`},
+ h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+  h('div',{className:'flex items-end justify-between mb-10'},
+   h('div',null,
+    h('p',{className:'category-label mb-2'},'Nos analyses'),
+    h('h2',{className:`text-2xl md:text-3xl ${dark?'text-white':''}`,style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Décryptages approfondis')
+   ),
+   h('a',{href:'analyses.html',className:'hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-[#1B6B4A] hover:text-[#2A9D6E] transition-colors'},'Voir toutes les analyses →')
   ),
-  h('div',{className:'ticker-track flex gap-8 whitespace-nowrap'},
-   items.map((t,i)=>h('div',{key:i,className:'flex items-center gap-2 text-sm'},
-    h('span',{className:'font-medium text-white/70'},t.symbol),
-    h('span',{className:'text-white/90 font-semibold font-data'},t.value),
-    h('span',{className:`font-medium font-data ${t.up?'text-[#34D399]':'text-[#F87171]'}`},
-     (t.up?'▲ ':'▼ ')+t.change
+  h('div',{className:'grid grid-cols-1 md:grid-cols-2 gap-6'},
+   ...analyses.map((a,i)=>
+    h('a',{key:i,href:a.href,className:`group block rounded-xl overflow-hidden transition-all duration-300 ${dark?'bg-[#162A45] border border-[#1E3A5F] hover:border-[#2A9D6E]/40':'bg-[#F7F8FA] border border-[#E2E5EB] hover:border-[#1B6B4A]/30 hover:shadow-lg'}`},
+     h('div',{className:'p-6 md:p-8'},
+      h('div',{className:'flex items-center gap-3 mb-4'},
+       h('span',{className:`px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded ${a.cat==='Géopolitique'?'bg-[#2563eb]/10 text-[#2563eb]':'bg-[#8b5cf6]/10 text-[#8b5cf6]'}`},a.cat),
+       h('span',{className:`text-[11px] ${dark?'text-white/30':'text-[#5A6178]/60'}`},a.date)
+      ),
+      h('h3',{className:`text-lg md:text-xl font-bold leading-snug mb-3 group-hover:text-[#1B6B4A] transition-colors ${dark?'text-white':'text-[#1A1F2E]'}`,style:{fontFamily:'Libre Baskerville, Georgia, serif'}},a.title),
+      h('p',{className:`text-sm leading-relaxed mb-5 ${dark?'text-white/40':'text-[#5A6178]'}`},a.summary),
+      h('div',{className:`flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] ${dark?'text-white/25':'text-[#5A6178]/50'}`},
+       h('span',null,a.readingTime+' min de lecture'),
+       h('span',null,a.sources+' sources'),
+       h('span',{className:`px-2 py-0.5 border rounded font-semibold ${dark?'border-[#34d399]/20 text-[#34d399]/60':'border-[#1B6B4A]/20 text-[#1B6B4A]/60'}`},'Score : '+a.grade),
+       h('span',{className:`${dark?'text-white/20':'text-[#5A6178]/40'}`},'Par '+a.author)
+      )
+     )
     )
-   ))
-  )
+   )
+  ),
+  h('a',{href:'analyses.html',className:'sm:hidden flex items-center justify-center gap-1 mt-6 text-sm font-semibold text-[#1B6B4A] hover:text-[#2A9D6E] transition-colors'},'Voir toutes les analyses →')
  )
-)
+))
 }
 
 function SkeletonCard({dark}){
@@ -421,9 +461,9 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10'},
    h('div',null,
-    h('p',{className:'category-label mb-2'},'Veille quotidienne'),
-    h('h2',{className:`text-2xl md:text-3xl ${dark?'text-white':''}`,style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Sélection du jour'),
-    h('p',{className:`text-sm mt-2 ${dark?'text-white/40':'text-[#5A6178]'}`},'Articles sélectionnés par notre algorithme de curation qualitative')
+    h('p',{className:'category-label mb-2'},'Veille continue'),
+    h('h2',{className:`text-2xl md:text-3xl ${dark?'text-white':''}`,style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Sources & signaux'),
+    h('p',{className:`text-sm mt-2 ${dark?'text-white/40':'text-[#5A6178]'}`},'Flux automatisé — 158 sources, 15 APIs, filtrage IA')
    ),
    h('div',{className:'flex flex-wrap gap-2'},
     h('button',{onClick:()=>{setFilter('all');setVisibleCount(9)},className:`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${btnCls(filter==='all')}`},'Tout'),
@@ -647,15 +687,15 @@ function App(){
 const[dark,setDark]=useState(false)
 const toggleDark=()=>setDark(d=>!d)
 useEffect(()=>{document.body.style.backgroundColor=dark?'#0A1628':'#FFFFFF'},[dark])
-return h('div',{className:`pb-16 transition-colors duration-300 ${dark?'bg-[#0A1628] text-white':'bg-white text-[#1A1F2E]'}`},
+return h('div',{className:`transition-colors duration-300 ${dark?'bg-[#0A1628] text-white':'bg-white text-[#1A1F2E]'}`},
  h(Navigation,{dark,toggleDark}),
  h(Hero),
+ h(FeaturedAnalyses,{dark}),
  h(CredibilityStrip,{dark}),
  h(ArticlesGrid,{dark}),
  h(ExpertiseNav,{dark}),
  h(NewsletterCTA),
- h(Footer,{dark}),
- h(MarketTicker)
+ h(Footer,{dark})
 )
 }
 
