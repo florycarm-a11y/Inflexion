@@ -17,7 +17,7 @@
 <meta name="twitter:image" content="https://inflexionhub.com/og-image.png"/>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-tailwind.config={theme:{extend:{colors:{brand:{900:'#0A1628',800:'#1B6B4A',700:'#1E7E56',600:'#2A9D6E',500:'#10b981',400:'#34d399',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},navy:{900:'#0A1628',800:'#0F2035',700:'#162A45'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
+tailwind.config={theme:{extend:{colors:{brand:{900:'#006650',800:'#006650',700:'#007A60',600:'#008066',500:'#00997A',400:'#33B894',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},navy:{900:'#006650',800:'#06402A',700:'#06402A'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
@@ -26,11 +26,11 @@ body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1
 
 /* Typography */
 h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:inherit}
-.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#1B6B4A}
+.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#006650}
 
 /* Glass effects — updated for white bg */
-.glass{background:rgba(27,107,74,.06);backdrop-filter:blur(16px);border:1px solid rgba(27,107,74,.10)}
-.glass-light{background:rgba(27,107,74,.04);backdrop-filter:blur(12px);border:1px solid rgba(27,107,74,.06)}
+.glass{background:rgba(0,102,80,.06);backdrop-filter:blur(16px);border:1px solid rgba(0,102,80,.10)}
+.glass-light{background:rgba(0,102,80,.04);backdrop-filter:blur(12px);border:1px solid rgba(0,102,80,.06)}
 
 /* Animations */
 @keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
@@ -42,7 +42,7 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 
 /* Nav links */
 .nav-link{position:relative}
-.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#1B6B4A;transform:scaleX(0);transition:transform .25s ease}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}
 .nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
 
 /* Mega menu */
@@ -52,13 +52,13 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 .mega-menu{min-width:260px;padding:8px}
 .mega-item{transition:background .15s ease,border-color .15s ease;border:1px solid transparent}
 .mega-item:hover{background:#F0FAF5;border-color:#D1EFE2}
-.mega-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;background:rgba(27,107,74,.08);color:#1B6B4A;transition:background .15s ease,transform .15s ease}
-.mega-item:hover .mega-icon{background:rgba(27,107,74,.15);transform:scale(1.1)}
+.mega-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;background:rgba(0,102,80,.08);color:#006650;transition:background .15s ease,transform .15s ease}
+.mega-item:hover .mega-icon{background:rgba(0,102,80,.15);transform:scale(1.1)}
 .mega-label{color:#1A1F2E}
 .mega-desc{color:#8A93A8}
 
 /* Categories */
-.category-geo{background:#2563eb}.category-marches{background:#1B6B4A}.category-crypto{background:#f59e0b}.category-matieres{background:#ef4444}.category-iatech{background:#8b5cf6}
+.category-geo{background:#2563eb}.category-marches{background:#006650}.category-crypto{background:#f59e0b}.category-matieres{background:#C8955A}.category-iatech{background:#8b5cf6}
 
 /* Article cards */
 .article-card{transition:transform .2s ease,box-shadow .2s ease}
@@ -79,7 +79,7 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 body.menu-open{overflow:hidden}
 
 /* Hero glow — navy tinted */
-.hero-glow{position:absolute;top:-120px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(27,107,74,.06) 0%,transparent 70%);pointer-events:none}
+.hero-glow{position:absolute;top:-120px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,102,80,.06) 0%,transparent 70%);pointer-events:none}
 
 /* Nav scrolled */
 .nav-scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid #E2E5EB;box-shadow:0 1px 8px rgba(0,0,0,.04)}
@@ -88,7 +88,7 @@ body.menu-open{overflow:hidden}
 .section-alt{background-color:#F7F8FA}
 
 /* Hero dark */
-.hero-dark{background-color:#0A1628;color:#FFFFFF}
+.hero-dark{background-color:#006650;color:#FFFFFF}
 .hero-dark h1,.hero-dark h2,.hero-dark .display-text{color:#FFFFFF}
 
 /* Divider */
@@ -99,7 +99,7 @@ body.menu-open{overflow:hidden}
 
 /* Featured analysis card hover */
 .featured-card{position:relative;overflow:hidden}
-.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:#1B6B4A;transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
+.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:#006650;transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
 .featured-card:hover::before{transform:scaleY(1)}
 
 /* Mobile responsive */
@@ -260,17 +260,18 @@ if(open){document.body.classList.add('menu-open')}else{document.body.classList.r
 return()=>document.body.classList.remove('menu-open')
 },[open])
 return h('div',null,
- h('header',{className:`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled?(dark?'bg-[#0A1628]/95 backdrop-blur-md border-b border-white/10':'nav-scrolled'):'bg-transparent'}`},
+ h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#C8955A]'}),
+ h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?(dark?'bg-[#006650]/95 backdrop-blur-md border-b border-white/10':'nav-scrolled'):'bg-transparent'}`},
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:(scrolled&&!dark)?'none':'brightness(10) saturate(0) invert(0)',transition:'filter 0.3s ease'}})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:dark&&!scrolled?'brightness(10) saturate(0)':'none',transition:'filter 0.3s ease'}})
     ),
     h('nav',{className:'hidden md:flex items-center gap-1'},
      ...MEGA_NAV.map((cat,ci)=>
       h('div',{key:ci,className:'mega-trigger'},
-       h('span',{className:`nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none ${scrolled?(dark?'text-white/60 hover:text-white':'text-gray-500 hover:text-[#1B6B4A]'):'text-white/70 hover:text-white'}`},cat.label),
-       h('div',{className:`mega-menu rounded-2xl shadow-xl ${dark?'bg-[#162A45] border border-[#1E3A5F]':'bg-white border border-gray-100'}`},
+       h('span',{className:`nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none ${dark&&!scrolled?'text-white/70 hover:text-white':'text-gray-500 hover:text-[#006650]'}`},cat.label),
+       h('div',{className:`mega-menu rounded-2xl shadow-xl ${dark?'bg-[#06402A] border border-[#1E3A5F]':'bg-white border border-gray-100'}`},
         h('div',{className:'flex flex-col gap-0.5'},
          ...cat.children.map((item,ii)=>
           h('a',{key:ii,href:item.href,className:`mega-item group flex items-center gap-3.5 px-3 py-2.5 rounded-xl no-underline transition-all duration-150 ${dark?'hover:bg-[#1E3A5F]/60 hover:border-[#2A4E72]':'hover:bg-[#F0FAF5] hover:border-[#D1EFE2]'} border border-transparent`},
@@ -279,7 +280,7 @@ return h('div',null,
             h('span',{className:`mega-label text-sm font-semibold leading-tight ${dark?'text-white':'text-[#1A1F2E]'}`},item.label),
             h('span',{className:`mega-desc text-[11px] mt-0.5 leading-snug truncate ${dark?'text-white/40':'text-[#8A93A8]'}`},item.desc)
            ),
-           h('span',{className:'ml-auto flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-[#1B6B4A] text-xs font-bold'},'\u2192')
+           h('span',{className:'ml-auto flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-[#006650] text-xs font-bold'},'\u2192')
           )
          )
         )
@@ -290,15 +291,15 @@ return h('div',null,
       dark?h('svg',{width:18,height:18,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M12 3a1 1 0 011 1v1a1 1 0 01-2 0V4a1 1 0 011-1zm0 15a1 1 0 011 1v1a1 1 0 01-2 0v-1a1 1 0 011-1zm9-8a1 1 0 010 2h-1a1 1 0 010-2h1zM5 11a1 1 0 010 2H4a1 1 0 010-2h1zm13.657-5.657a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM7.05 16.95a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zm11.314 0a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM7.05 5.636a1 1 0 010 1.414l-.707.707A1 1 0 014.93 6.343l.707-.707a1 1 0 011.414 0zM12 8a4 4 0 100 8 4 4 0 000-8z'}))
        :h('svg',{width:18,height:18,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M12.1 22c-5.5 0-10-4.5-10-10 0-4.8 3.4-8.8 8.1-9.8.4-.1.8.1 1 .5s0 .8-.3 1c-2 1.4-3.2 3.7-3.2 6.2 0 4.1 3.3 7.4 7.4 7.4 2.5 0 4.8-1.2 6.2-3.2.2-.3.6-.5 1-.3.4.2.5.6.5 1-1 4.7-5 8.2-9.7 8.2z'}))
      ),
-     h('a',{href:'#diagnostic',className:'ml-2 px-4 py-2 bg-[#1B6B4A] hover:bg-[#155A3D] text-white font-semibold text-sm rounded-lg transition-colors'},'Réserver un diagnostic')
+     h('a',{href:'#diagnostic',className:'ml-2 px-4 py-2 bg-[#006650] hover:bg-[#06402A] text-white font-semibold text-sm rounded-lg transition-colors'},'Réserver un diagnostic')
     ),
     h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,onClick:()=>setOpen(!open),'aria-label':'Menu'},
-     h('span',{style:(scrolled&&!dark)?{}:{background:'#fff'}}),h('span',{style:(scrolled&&!dark)?{}:{background:'#fff'}}),h('span',{style:(scrolled&&!dark)?{}:{background:'#fff'}})
+     h('span',{style:dark&&!scrolled?{background:'#fff'}:{}}),h('span',{style:dark&&!scrolled?{background:'#fff'}:{}}),h('span',{style:dark&&!scrolled?{background:'#fff'}:{}})
     )
    )
   )
  ),
- h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#0A1628'}},
+ h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#006650'}},
   h('div',{className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0'},
    h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-8 w-auto',style:{filter:'brightness(10) saturate(0)'}}),
    h('button',{onClick:()=>setOpen(false),className:'w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
@@ -329,43 +330,40 @@ return h('div',null,
 
 function Hero(){
 const featured=FEATURED_ANALYSES[0]
-return h('section',{className:'hero-dark relative pt-28 pb-16 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 overflow-hidden'},
- h('div',{className:'hero-glow',style:{background:'radial-gradient(circle at 70% 30%, rgba(27,107,74,.12) 0%, transparent 60%)'}}),
+return h('section',{className:'relative pt-28 pb-16 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-white'},
+ h('div',{className:'hero-glow',style:{background:'radial-gradient(circle at 70% 30%, rgba(0,102,80,.08) 0%, transparent 60%)'}}),
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'flex flex-col lg:flex-row lg:items-start gap-12 lg:gap-16'},
    // Left: Tagline
    h('div',{className:'lg:w-[42%] text-center lg:text-left flex-shrink-0 lg:pt-4'},
-    h('div',{className:'anim-fade-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-medium text-white/50 mb-8 lg:mb-10 border border-white/10'},
-     h('span',{className:'w-1.5 h-1.5 rounded-full bg-[#34D399]'}),'Mis à jour le 10 mars 2026'
-    ),
-    h('h1',{className:'anim-fade-up anim-d1 text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.08] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+    h('h1',{className:'anim-fade-up anim-d1 text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-[#1A1F2E] leading-[1.08] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
      'Révéler les signaux',h('br'),
      'que le bruit dissimule.'
     ),
-    h('p',{className:'anim-fade-up anim-d2 mt-6 lg:mt-8 text-base lg:text-lg text-white/40 max-w-lg leading-relaxed'},
+    h('p',{className:'anim-fade-up anim-d2 mt-6 lg:mt-8 text-base lg:text-lg text-[#5A6178] max-w-lg leading-relaxed'},
      'Intelligence géopolitique et financière pour les décideurs. 158 sources, 15 APIs, analyse IA.'
     ),
     h('div',{className:'anim-fade-up anim-d3 mt-8 lg:mt-10 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start'},
-     h('a',{href:'analyses.html',className:'inline-block px-7 py-3.5 bg-[#1B6B4A] hover:bg-[#2A9D6E] text-white font-semibold rounded-lg transition-colors text-sm'},'Explorer les analyses'),
-     h('a',{href:'expertise.html',className:'inline-block px-7 py-3.5 border border-white/15 hover:border-white/30 text-white/70 hover:text-white font-medium rounded-lg transition-colors text-sm'},'Notre méthodologie')
+     h('a',{href:'analyses.html',className:'inline-block px-7 py-3.5 bg-[#006650] hover:bg-[#008066] text-white font-semibold rounded-lg transition-colors text-sm'},'Explorer les analyses'),
+     h('a',{href:'expertise.html',className:'inline-block px-7 py-3.5 border border-[#E2E5EB] hover:border-[#006650]/30 text-[#5A6178] hover:text-[#1A1F2E] font-medium rounded-lg transition-colors text-sm'},'Notre méthodologie')
     )
    ),
    // Right: Featured article card
    h('div',{className:'lg:w-[58%]'},
-    h('a',{href:featured.href,className:'anim-fade-up anim-d2 block group rounded-2xl overflow-hidden bg-white/[0.07] border border-white/10 hover:border-white/20 transition-all duration-300'},
+    h('a',{href:featured.href,className:'anim-fade-up anim-d2 block group rounded-2xl overflow-hidden bg-[#F7F8FA] border border-[#E2E5EB] hover:border-[#006650]/30 hover:shadow-lg transition-all duration-300'},
      h('div',{className:'relative'},
       h('div',{className:'aspect-[16/9] overflow-hidden'},
-       h('img',{src:featured.img,alt:'',className:'w-full h-full object-cover opacity-80 group-hover:opacity-90 group-hover:scale-[1.02] transition-all duration-500',loading:'eager'})
+       h('img',{src:featured.img,alt:'',className:'w-full h-full object-cover group-hover:scale-[1.02] transition-all duration-500',loading:'eager'})
       ),
       h('div',{className:'absolute top-4 left-4 flex items-center gap-2'},
-       h('span',{className:'px-2.5 py-1 bg-[#ef4444] text-white text-[10px] font-bold uppercase tracking-wider rounded'},'Alerte'),
-       h('span',{className:'px-2.5 py-1 bg-black/40 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider rounded'},featured.cat)
+       h('span',{className:'px-2.5 py-1 bg-[#C8955A] text-white text-[10px] font-bold uppercase tracking-wider rounded'},'Alerte'),
+       h('span',{className:'px-2.5 py-1 bg-black/50 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider rounded'},featured.cat)
       )
      ),
      h('div',{className:'p-6 lg:p-8'},
-      h('h2',{className:'text-xl lg:text-2xl font-bold text-white leading-snug group-hover:text-[#34d399] transition-colors',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},featured.title),
-      h('p',{className:'mt-3 text-sm text-white/40 leading-relaxed line-clamp-2'},featured.summary),
-      h('div',{className:'mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-white/30'},
+      h('h2',{className:'text-xl lg:text-2xl font-bold text-[#1A1F2E] leading-snug group-hover:text-[#006650] transition-colors',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},featured.title),
+      h('p',{className:'mt-3 text-sm text-[#5A6178] leading-relaxed line-clamp-2'},featured.summary),
+      h('div',{className:'mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-[#5A6178]/60'},
        h('span',{className:'flex items-center gap-1.5'},
         h('svg',{width:12,height:12,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2},h('circle',{cx:12,cy:12,r:10}),h('path',{d:'M12 6v6l4 2'})),
         featured.readingTime+' min de lecture'
@@ -375,7 +373,7 @@ return h('section',{className:'hero-dark relative pt-28 pb-16 md:pt-40 md:pb-24 
         h('svg',{width:12,height:12,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2},h('path',{d:'M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z'}),h('path',{d:'M14 2v6h6'})),
         featured.sources+' sources'
        ),
-       h('span',{className:'px-2 py-0.5 border border-[#34d399]/30 text-[#34d399] rounded font-semibold'},'Score : '+featured.grade)
+       h('span',{className:'px-2 py-0.5 border border-[#006650]/20 text-[#006650] rounded font-semibold'},'Score : '+featured.grade)
       )
      )
     )
@@ -394,11 +392,11 @@ return h(FadeUp,null,h('section',{className:`py-16 md:py-20 transition-colors du
     h('p',{className:'category-label mb-2'},'Nos analyses'),
     h('h2',{className:`text-2xl md:text-3xl ${dark?'text-white':''}`,style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Décryptages approfondis')
    ),
-   h('a',{href:'analyses.html',className:'hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-[#1B6B4A] hover:text-[#2A9D6E] transition-colors'},'Voir toutes les analyses →')
+   h('a',{href:'analyses.html',className:'hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-[#006650] hover:text-[#008066] transition-colors'},'Voir toutes les analyses →')
   ),
   h('div',{className:'grid grid-cols-1 md:grid-cols-2 gap-6'},
    ...analyses.map((a,i)=>
-    h('a',{key:i,href:a.href,className:`group block rounded-xl overflow-hidden transition-all duration-300 ${dark?'bg-[#162A45] border border-[#1E3A5F] hover:border-[#2A9D6E]/40':'bg-[#F7F8FA] border border-[#E2E5EB] hover:border-[#1B6B4A]/30 hover:shadow-lg'}`},
+    h('a',{key:i,href:a.href,className:`group block rounded-xl overflow-hidden transition-all duration-300 ${dark?'bg-[#06402A] border border-[#1E3A5F] hover:border-[#008066]/40':'bg-[#F7F8FA] border border-[#E2E5EB] hover:border-[#006650]/30 hover:shadow-lg'}`},
      h('div',{className:'aspect-[21/9] overflow-hidden'},
       h('img',{src:a.img,alt:'',className:'w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-500',loading:'lazy'})
      ),
@@ -407,26 +405,26 @@ return h(FadeUp,null,h('section',{className:`py-16 md:py-20 transition-colors du
        h('span',{className:`px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded ${a.cat==='Géopolitique'?'bg-[#2563eb]/10 text-[#2563eb]':'bg-[#8b5cf6]/10 text-[#8b5cf6]'}`},a.cat),
        h('span',{className:`text-[11px] ${dark?'text-white/30':'text-[#5A6178]/60'}`},a.date)
       ),
-      h('h3',{className:`text-lg md:text-xl font-bold leading-snug mb-3 group-hover:text-[#1B6B4A] transition-colors ${dark?'text-white':'text-[#1A1F2E]'}`,style:{fontFamily:'Libre Baskerville, Georgia, serif'}},a.title),
+      h('h3',{className:`text-lg md:text-xl font-bold leading-snug mb-3 group-hover:text-[#006650] transition-colors ${dark?'text-white':'text-[#1A1F2E]'}`,style:{fontFamily:'Libre Baskerville, Georgia, serif'}},a.title),
       h('p',{className:`text-sm leading-relaxed mb-5 ${dark?'text-white/40':'text-[#5A6178]'}`},a.summary),
       h('div',{className:`flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] ${dark?'text-white/25':'text-[#5A6178]/50'}`},
        h('span',null,a.readingTime+' min de lecture'),
        h('span',null,a.sources+' sources'),
-       h('span',{className:`px-2 py-0.5 border rounded font-semibold ${dark?'border-[#34d399]/20 text-[#34d399]/60':'border-[#1B6B4A]/20 text-[#1B6B4A]/60'}`},'Score : '+a.grade),
+       h('span',{className:`px-2 py-0.5 border rounded font-semibold ${dark?'border-[#33B894]/20 text-[#33B894]/60':'border-[#006650]/20 text-[#006650]/60'}`},'Score : '+a.grade),
        h('span',{className:`${dark?'text-white/20':'text-[#5A6178]/40'}`},'Par '+a.author)
       )
      )
     )
    )
   ),
-  h('a',{href:'analyses.html',className:'sm:hidden flex items-center justify-center gap-1 mt-6 text-sm font-semibold text-[#1B6B4A] hover:text-[#2A9D6E] transition-colors'},'Voir toutes les analyses →')
+  h('a',{href:'analyses.html',className:'sm:hidden flex items-center justify-center gap-1 mt-6 text-sm font-semibold text-[#006650] hover:text-[#008066] transition-colors'},'Voir toutes les analyses →')
  )
 ))
 }
 
 function SkeletonCard({dark}){
 const bg=dark?'bg-white/5':'bg-[#E2E5EB]'
-return h('div',{className:`rounded-xl overflow-hidden ${dark?'bg-[#162A45] border border-[#1E3A5F]':'bg-white border border-[#E2E5EB]'}`},
+return h('div',{className:`rounded-xl overflow-hidden ${dark?'bg-[#06402A] border border-[#1E3A5F]':'bg-white border border-[#E2E5EB]'}`},
  h('div',{className:`aspect-[5/3] animate-pulse ${bg}`}),
  h('div',{className:'p-5'},
   h('div',{className:'flex items-center gap-2 mb-3'},
@@ -454,7 +452,7 @@ if(d){const mapped=mapNewsToArticles(d);if(mapped.length>0)setArticles(mapped)}
 const filtered=filter==='all'?articles:articles.filter(a=>a.cat===filter)
 const visible=filtered.slice(0,visibleCount)
 const hasMore=filtered.length>visibleCount
-const btnCls=(active)=>active?'bg-[#1B6B4A] text-white':(dark?'bg-[#162A45] text-white/50 hover:text-white border border-[#1E3A5F]':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]')
+const btnCls=(active)=>active?'bg-[#006650] text-white':(dark?'bg-[#06402A] text-white/50 hover:text-white border border-[#1E3A5F]':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]')
 return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10'},
@@ -471,7 +469,7 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
   h('div',{className:'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'},
    loading?[1,2,3,4,5,6].map(i=>h(SkeletonCard,{key:'sk'+i,dark})):visible.map(a=>{
     const cat=CATEGORIES.find(c=>c.id===a.cat)
-    return h('a',{key:a.id,href:a.href||'#',target:a.href&&a.href.startsWith('http')?'_blank':undefined,rel:a.href&&a.href.startsWith('http')?'noopener noreferrer':undefined,className:`article-card rounded-xl overflow-hidden block no-underline transition-colors duration-300 ${dark?'bg-[#162A45] border border-[#1E3A5F]':'bg-white border border-[#E2E5EB]'}`},
+    return h('a',{key:a.id,href:a.href||'#',target:a.href&&a.href.startsWith('http')?'_blank':undefined,rel:a.href&&a.href.startsWith('http')?'noopener noreferrer':undefined,className:`article-card rounded-xl overflow-hidden block no-underline transition-colors duration-300 ${dark?'bg-[#06402A] border border-[#1E3A5F]':'bg-white border border-[#E2E5EB]'}`},
      h('div',{className:'aspect-[5/3] overflow-hidden'},
       h('img',{src:a.img,alt:'',className:'w-full h-full object-cover',loading:'lazy',onError:e=>{e.target.style.display='none'}})
      ),
@@ -490,7 +488,7 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
    })
   ),
   !loading&&hasMore&&h('div',{className:'text-center mt-10'},
-   h('button',{onClick:()=>setVisibleCount(v=>v+9),className:`px-6 py-3 rounded-lg text-sm font-semibold transition-colors ${dark?'bg-[#162A45] text-white/70 hover:text-white border border-[#1E3A5F]':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},
+   h('button',{onClick:()=>setVisibleCount(v=>v+9),className:`px-6 py-3 rounded-lg text-sm font-semibold transition-colors ${dark?'bg-[#06402A] text-white/70 hover:text-white border border-[#1E3A5F]':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},
     'Charger plus d\'articles'
    )
   )
@@ -531,7 +529,7 @@ return h('footer',{className:`border-t pt-16 pb-20 transition-colors duration-30
     h('p',{className:`text-xs font-semibold uppercase tracking-wider mb-4 ${dark?'text-white':'text-[#1A1F2E]'}`},'Intelligence'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.intelligence.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:`text-sm hover:text-[#1B6B4A] transition-colors ${dark?'text-white/50':'text-[#5A6178]'}`},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:`text-sm hover:text-[#006650] transition-colors ${dark?'text-white/50':'text-[#5A6178]'}`},l.label))
      )
     )
    ),
@@ -540,7 +538,7 @@ return h('footer',{className:`border-t pt-16 pb-20 transition-colors duration-30
     h('p',{className:`text-xs font-semibold uppercase tracking-wider mb-4 ${dark?'text-white':'text-[#1A1F2E]'}`},'Plateforme'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.plateforme.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:`text-sm hover:text-[#1B6B4A] transition-colors ${dark?'text-white/50':'text-[#5A6178]'}`},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:`text-sm hover:text-[#006650] transition-colors ${dark?'text-white/50':'text-[#5A6178]'}`},l.label))
      )
     )
    ),
@@ -548,14 +546,14 @@ return h('footer',{className:`border-t pt-16 pb-20 transition-colors duration-30
    h('div',null,
     h('p',{className:`text-xs font-semibold uppercase tracking-wider mb-4 ${dark?'text-white':'text-[#1A1F2E]'}`},'Suivez-nous'),
     h('div',{className:'flex items-center gap-3 mb-4'},
-     h('a',{href:'#','aria-label':'LinkedIn',className:`w-9 h-9 rounded-lg hover:bg-[#1B6B4A] hover:text-white flex items-center justify-center transition-colors ${dark?'bg-white/10 text-white/50':'bg-[#E2E5EB] text-[#5A6178]'}`},
+     h('a',{href:'#','aria-label':'LinkedIn',className:`w-9 h-9 rounded-lg hover:bg-[#006650] hover:text-white flex items-center justify-center transition-colors ${dark?'bg-white/10 text-white/50':'bg-[#E2E5EB] text-[#5A6178]'}`},
       h('svg',{width:16,height:16,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'}))
      ),
-     h('a',{href:'#','aria-label':'X / Twitter',className:`w-9 h-9 rounded-lg hover:bg-[#1B6B4A] hover:text-white flex items-center justify-center transition-colors ${dark?'bg-white/10 text-white/50':'bg-[#E2E5EB] text-[#5A6178]'}`},
+     h('a',{href:'#','aria-label':'X / Twitter',className:`w-9 h-9 rounded-lg hover:bg-[#006650] hover:text-white flex items-center justify-center transition-colors ${dark?'bg-white/10 text-white/50':'bg-[#E2E5EB] text-[#5A6178]'}`},
       h('svg',{width:14,height:14,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'}))
      )
     ),
-    h('a',{href:'#',className:`text-sm hover:text-[#1B6B4A] transition-colors ${dark?'text-white/50':'text-[#5A6178]'}`},'Contact')
+    h('a',{href:'#',className:`text-sm hover:text-[#006650] transition-colors ${dark?'text-white/50':'text-[#5A6178]'}`},'Contact')
    )
   ),
   // Bottom bar
@@ -577,12 +575,12 @@ const CREDIBILITY_STATS=[
 ]
 
 function CredibilityStrip({dark}){
-return h(FadeUp,null,h('div',{className:`border-t border-b py-10 transition-colors duration-300 ${dark?'bg-[#162A45] border-[#1E3A5F]':'bg-[#F7F8FA] border-[#E2E5EB]'}`},
+return h(FadeUp,null,h('div',{className:`border-t border-b py-10 transition-colors duration-300 ${dark?'bg-[#06402A] border-[#1E3A5F]':'bg-[#F7F8FA] border-[#E2E5EB]'}`},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center'},
    ...CREDIBILITY_STATS.map((s,i)=>
     h('div',{key:i},
-     h('div',{className:'text-2xl sm:text-3xl md:text-4xl font-bold text-[#1B6B4A]',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},s.value),
+     h('div',{className:'text-2xl sm:text-3xl md:text-4xl font-bold text-[#006650]',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},s.value),
      h('div',{className:`mt-2 text-xs font-medium uppercase tracking-wider ${dark?'text-white/50':'text-[#5A6178]'}`},s.label)
     )
    )
@@ -592,11 +590,11 @@ return h(FadeUp,null,h('div',{className:`border-t border-b py-10 transition-colo
 }
 
 const EXPERTISE_DATA={
-marches:[
-{id:'actions',label:'Actions & Indices',desc:'Suivi en temps réel des principaux indices mondiaux (S&P 500, CAC 40, DAX, Nikkei) et analyse des mouvements sectoriels. Nos algorithmes détectent les divergences de momentum et les rotations de capitaux avant qu\'elles ne deviennent consensus.',href:'markets.html'},
-{id:'taux',label:'Taux & Obligations',desc:'Décryptage des courbes de taux souverains, spreads de crédit et anticipations de politique monétaire. Nous suivons les signaux de la Fed, de la BCE et de la BoJ pour anticiper les inflexions du cycle.',href:'markets.html'},
-{id:'devises',label:'Devises & Forex',desc:'Analyse des paires majeures (EUR/USD, USD/JPY, GBP/USD) et des devises émergentes. Nos modèles intègrent les différentiels de taux, les flux commerciaux et le positionnement spéculatif.',href:'markets.html'},
-{id:'etf',label:'ETF & Flux de capitaux',desc:'Cartographie des flux entrants et sortants sur les principaux ETF mondiaux. Identification des tendances d\'allocation et des arbitrages sectoriels des investisseurs institutionnels.',href:'etf.html'},
+iatech:[
+{id:'ia',label:'Intelligence artificielle',desc:'Décryptage des avancées en IA générative, modèles de fondation et agents autonomes. Analyse des investissements massifs ($610 Mds en 2026) et de leurs implications stratégiques pour les entreprises européennes.',href:'analyse-cloud-ia-pme-europeennes.html'},
+{id:'cloud',label:'Cloud & Souveraineté',desc:'Cartographie de la dépendance européenne aux hyperscalers américains (AWS, Azure, GCP). Enjeux de souveraineté numérique, risques CLOUD Act et alternatives souveraines.',href:'analyse-cloud-ia-pme-europeennes.html'},
+{id:'regulation',label:'Régulation Tech',desc:'Suivi de l\'AI Act européen, du Digital Markets Act et des régulations tech mondiales. Analyse d\'impact sur les modèles économiques et les obligations de conformité.',href:'geopolitics.html'},
+{id:'cyber',label:'Cybersécurité & Risques',desc:'Veille sur les menaces cyber étatiques, ransomware et espionnage industriel. Analyse des vulnérabilités critiques et des stratégies de résilience pour les PME/ETI.',href:'geopolitics.html'},
 ],
 geopolitique:[
 {id:'tensions',label:'Tensions & Conflits',desc:'Veille sur les zones de friction géopolitique majeures : mer de Chine, Ukraine, Moyen-Orient, Sahel. Analyse d\'impact sur les marchés et les chaînes d\'approvisionnement critiques.',href:'geopolitics.html'},
@@ -607,28 +605,28 @@ geopolitique:[
 }
 
 function ExpertiseNav({dark}){
-const[tab,setTab]=useState('marches')
-const[selected,setSelected]=useState('actions')
+const[tab,setTab]=useState('iatech')
+const[selected,setSelected]=useState('ia')
 const items=EXPERTISE_DATA[tab]
 const current=items.find(i=>i.id===selected)||items[0]
-const tabCls=(active)=>active?'bg-[#1B6B4A] text-white':(dark?'bg-[#162A45] text-white/50 hover:text-white border border-[#1E3A5F]':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]')
+const tabCls=(active)=>active?'bg-[#006650] text-white':(dark?'bg-[#06402A] text-white/50 hover:text-white border border-[#1E3A5F]':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]')
 
 const switchTab=(t)=>{setTab(t);setSelected(EXPERTISE_DATA[t][0].id)}
 
-return h(FadeUp,null,h('section',{className:`py-20 transition-colors duration-300 ${dark?'bg-[#0A1628]':'bg-white'}`},
+return h(FadeUp,null,h('section',{className:`py-20 transition-colors duration-300 ${dark?'bg-[#006650]':'bg-white'}`},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'text-center mb-12'},
    h('p',{className:'category-label mb-2'},'Nos expertises'),
    h('h2',{className:`text-2xl md:text-3xl ${dark?'text-white':''}`,style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Explorez notre couverture')
   ),
   h('div',{className:'flex justify-center gap-2 mb-10'},
-   h('button',{onClick:()=>switchTab('marches'),className:`px-3 py-2 sm:px-5 sm:py-2.5 rounded-lg text-sm font-semibold transition-colors ${tabCls(tab==='marches')}`},'Marchés'),
+   h('button',{onClick:()=>switchTab('iatech'),className:`px-3 py-2 sm:px-5 sm:py-2.5 rounded-lg text-sm font-semibold transition-colors ${tabCls(tab==='iatech')}`},'IA & Tech'),
    h('button',{onClick:()=>switchTab('geopolitique'),className:`px-3 py-2 sm:px-5 sm:py-2.5 rounded-lg text-sm font-semibold transition-colors ${tabCls(tab==='geopolitique')}`},'Géopolitique')
   ),
   h('div',{className:`flex flex-col md:flex-row gap-6 md:gap-0 border rounded-2xl overflow-hidden transition-colors duration-300 ${dark?'border-[#1E3A5F]':'border-[#E2E5EB]'}`},
-   h('div',{className:`md:w-[38%] md:border-r transition-colors duration-300 ${dark?'bg-[#162A45] border-[#1E3A5F]':'bg-[#F7F8FA] border-[#E2E5EB]'}`},
+   h('div',{className:`md:w-[38%] md:border-r transition-colors duration-300 ${dark?'bg-[#06402A] border-[#1E3A5F]':'bg-[#F7F8FA] border-[#E2E5EB]'}`},
     ...items.map(item=>
-     h('button',{key:item.id,onClick:()=>setSelected(item.id),className:`w-full text-left px-6 py-4 border-b last:border-b-0 transition-colors ${dark?'border-[#1E3A5F]':'border-[#E2E5EB]'} ${selected===item.id?(dark?'bg-[#0A1628] font-semibold text-white':'bg-white font-semibold text-[#1A1F2E]'):(dark?'text-white/50 hover:bg-[#0A1628]/50':'text-[#5A6178] hover:bg-white/60')}`},
+     h('button',{key:item.id,onClick:()=>setSelected(item.id),className:`w-full text-left px-6 py-4 border-b last:border-b-0 transition-colors ${dark?'border-[#1E3A5F]':'border-[#E2E5EB]'} ${selected===item.id?(dark?'bg-[#006650] font-semibold text-white':'bg-white font-semibold text-[#1A1F2E]'):(dark?'text-white/50 hover:bg-[#006650]/50':'text-[#5A6178] hover:bg-white/60')}`},
       h('span',{className:'text-sm'},item.label)
      )
     )
@@ -636,7 +634,7 @@ return h(FadeUp,null,h('section',{className:`py-20 transition-colors duration-30
    h('div',{className:'md:w-[62%] p-8 md:p-10 flex flex-col justify-center'},
     h('h3',{className:`text-xl md:text-2xl font-bold mb-4 ${dark?'text-white':''}`,style:{fontFamily:'Libre Baskerville, Georgia, serif'}},current.label),
     h('p',{className:`text-sm leading-relaxed mb-6 ${dark?'text-white/50':'text-[#5A6178]'}`},current.desc),
-    h('a',{href:current.href,className:'inline-flex items-center gap-1 text-sm font-semibold text-[#1B6B4A] hover:text-[#2A9D6E] transition-colors'},'Explorer →')
+    h('a',{href:current.href,className:'inline-flex items-center gap-1 text-sm font-semibold text-[#006650] hover:text-[#008066] transition-colors'},'Explorer →')
    )
   )
  )
@@ -662,19 +660,19 @@ else{setStatus('error')}
 }catch(_){setStatus('error')}
 }
 const msg={success:'Inscription confirmée — bienvenue parmi nos lecteurs.',duplicate:'Cette adresse est déjà inscrite.',error:'Une erreur est survenue. Réessayez.',invalid:'Veuillez entrer une adresse email valide.'}
-const msgColor={success:'text-[#34D399]',duplicate:'text-yellow-400',error:'text-[#F87171]',invalid:'text-[#F87171]'}
-return h(FadeUp,null,h('section',{className:'bg-[#0A1628] py-20'},
+const msgColor={success:'text-[#33B894]',duplicate:'text-yellow-400',error:'text-[#F87171]',invalid:'text-[#F87171]'}
+return h(FadeUp,null,h('section',{className:'bg-[#006650] py-20'},
  h('div',{className:'max-w-2xl mx-auto px-4 sm:px-6 text-center'},
   h('h2',{className:'text-2xl md:text-3xl font-bold text-white mb-4',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Recevez nos signaux faibles chaque semaine'),
   h('p',{className:'text-sm md:text-base text-white/50 leading-relaxed mb-8'},'Une sélection hebdomadaire d\'analyses et de données pour garder une longueur d\'avance.'),
   status==='success'?
-   h('div',{className:'flex items-center justify-center gap-2 text-[#34D399] text-sm font-medium'},
+   h('div',{className:'flex items-center justify-center gap-2 text-[#33B894] text-sm font-medium'},
     h('svg',{width:20,height:20,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2,strokeLinecap:'round'},h('path',{d:'M20 6L9 17l-5-5'})),
     msg.success
    ):
    h('form',{onSubmit:submit,className:'flex flex-col sm:flex-row gap-3 max-w-md mx-auto'},
-    h('input',{type:'email',value:email,onChange:e=>{setEmail(e.target.value);if(status==='invalid')setStatus(null)},placeholder:'votre@email.com',className:`flex-1 px-4 py-3 rounded-lg bg-white/10 border text-white text-sm placeholder-white/30 outline-none transition-colors ${status==='invalid'?'border-[#F87171]':'border-white/15 focus:border-[#1B6B4A]'}`}),
-    h('button',{type:'submit',disabled:status==='sending',className:'px-6 py-3 bg-[#1B6B4A] hover:bg-[#2A9D6E] text-white font-semibold text-sm rounded-lg transition-colors whitespace-nowrap disabled:opacity-50'},status==='sending'?'Envoi...':'S\'abonner')
+    h('input',{type:'email',value:email,onChange:e=>{setEmail(e.target.value);if(status==='invalid')setStatus(null)},placeholder:'votre@email.com',className:`flex-1 px-4 py-3 rounded-lg bg-white/10 border text-white text-sm placeholder-white/30 outline-none transition-colors ${status==='invalid'?'border-[#F87171]':'border-white/15 focus:border-[#006650]'}`}),
+    h('button',{type:'submit',disabled:status==='sending',className:'px-6 py-3 bg-[#006650] hover:bg-[#008066] text-white font-semibold text-sm rounded-lg transition-colors whitespace-nowrap disabled:opacity-50'},status==='sending'?'Envoi...':'S\'abonner')
    ),
   status&&status!=='success'&&status!=='sending'&&h('p',{className:`mt-4 text-sm ${msgColor[status]}`},msg[status])
  )
@@ -684,8 +682,8 @@ return h(FadeUp,null,h('section',{className:'bg-[#0A1628] py-20'},
 function App(){
 const[dark,setDark]=useState(false)
 const toggleDark=()=>setDark(d=>!d)
-useEffect(()=>{document.body.style.backgroundColor=dark?'#0A1628':'#FFFFFF'},[dark])
-return h('div',{className:`transition-colors duration-300 ${dark?'bg-[#0A1628] text-white':'bg-white text-[#1A1F2E]'}`},
+useEffect(()=>{document.body.style.backgroundColor=dark?'#006650':'#FFFFFF'},[dark])
+return h('div',{className:`transition-colors duration-300 ${dark?'bg-[#006650] text-white':'bg-white text-[#1A1F2E]'}`},
  h(Navigation,{dark,toggleDark}),
  h(Hero),
  h(FeaturedAnalyses,{dark}),

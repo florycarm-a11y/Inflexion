@@ -60,45 +60,45 @@ button:focus-visible,
 
 :root {
     /* Professional palette Ã¢ÂÂ dark green primary identity */
-    --accent: #0B3D1E;
-    --accent-dark: #072A14;
-    --accent-light: #EDF5F0;
-    --navy: #0B3D1E;
-    --navy-light: #14713A;
+    --accent: #006650;
+    --accent-dark: #06402A;
+    --accent-light: #E8F5EE;
+    --navy: #006650;
+    --navy-light: #06402A;
 
     /* Backward-compat aliases (used in JS inline styles) */
-    --pink: #0B3D1E;
-    --pink-light: #8CBF9E;
-    --pink-soft: #EDF5F0;
-    --coral: #0B3D1E;
-    --orange: #059669;
-    --sky-deep: #3B6B8A;
-    --teal: #2C5F5A;
-    --teal-light: #EDF3F2;
-    --yellow-soft: #ECFDF5;
-    --magenta: #072A14;
-    --lavender: #6B7394;
-    --red: #C41E3A;
-    --green: #1B7A3D;
+    --pink: #006650;
+    --pink-light: #33B894;
+    --pink-soft: #E8F5EE;
+    --coral: #006650;
+    --orange: #008066;
+    --sky-deep: #006650;
+    --teal: #006650;
+    --teal-light: #E8F5EE;
+    --yellow-soft: #F7F8FA;
+    --magenta: #06402A;
+    --lavender: #5A6178;
+    --red: #C8955A;
+    --green: #006650;
 
     /* Backgrounds */
-    --bg-primary: #EDE8DC;
-    --bg-secondary: #F8F8F8;
-    --bg-tertiary: #F0F0F0;
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F7F8FA;
+    --bg-tertiary: #ECEEF2;
     --card-bg: #FFFFFF;
 
     /* Text */
-    --text-primary: #1a1a1a;
-    --text-secondary: #4a4a4a;
-    --text-muted: #6b6b6b;
+    --text-primary: #1A1F2E;
+    --text-secondary: #5A6178;
+    --text-muted: #8A93A8;
 
     /* Borders */
-    --border-color: #E5E5E5;
-    --border-light: #F0F0F0;
+    --border-color: #E2E5EB;
+    --border-light: #ECEEF2;
 
     /* Typography */
-    --font-serif: 'Georgia', 'Times New Roman', Times, serif;
-    --font-sans: 'Plus Jakarta Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-serif: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+    --font-sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
     /* No gradients Ã¢ÂÂ solid accent used everywhere */
     --gradient-main: var(--accent);
@@ -2831,7 +2831,7 @@ a {
     transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 .hero-cta:hover {
-    background: var(--accent-dark, #072A14);
+    background: var(--accent-dark, #06402A);
     transform: translateY(-1px);
     box-shadow: 0 4px 16px rgba(11, 61, 30, 0.35);
 }
@@ -3580,7 +3580,7 @@ body.page-markets .market-status {
 
 /* Bandes degradees par source — palette verte premium */
 .top-story:nth-child(1)::before {
-    background: linear-gradient(to right, #052E16, #0B3D1E);
+    background: linear-gradient(to right, #06402A, #006650);
 }
 
 .top-story:nth-child(2)::before {

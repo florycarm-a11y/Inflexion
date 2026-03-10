@@ -7,7 +7,7 @@
 <meta name="description" content="Toutes les analyses Inflexion : décryptages thématiques, signaux faibles et intelligence stratégique."/>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-tailwind.config={theme:{extend:{colors:{brand:{900:'#0A1628',800:'#1B6B4A',700:'#1E7E56',600:'#2A9D6E',500:'#10b981',400:'#34d399',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},navy:{900:'#0A1628',800:'#0F2035',700:'#162A45'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
+tailwind.config={theme:{extend:{colors:{brand:{900:'#06402A',800:'#006650',700:'#007A60',600:'#008066',500:'#00997A',400:'#33B894',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
@@ -15,7 +15,7 @@ tailwind.config={theme:{extend:{colors:{brand:{900:'#0A1628',800:'#1B6B4A',700:'
 body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden}
 
 h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
-.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#1B6B4A}
+.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#006650}
 
 @keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .ticker-track{animation:ticker-scroll 30s linear infinite}
@@ -25,13 +25,13 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 .anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}
 
 .nav-link{position:relative}
-.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#1B6B4A;transform:scaleX(0);transition:transform .25s ease}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}
 .nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
 .mega-trigger{position:relative}
 .mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:520px;z-index:60}
 .mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
 .mega-item{transition:background .15s ease}
-.mega-item:hover{background:rgba(27,107,74,.06)}
+.mega-item:hover{background:rgba(0,102,80,.06)}
 .mega-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
 .nav-scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid #E2E5EB;box-shadow:0 1px 8px rgba(0,0,0,.04)}
 
@@ -49,9 +49,26 @@ body.menu-open{overflow:hidden}
 .article-card{transition:transform .2s ease,box-shadow .2s ease}
 .article-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(10,22,40,.08)}
 
-.category-geo{background:#2563eb}.category-marches{background:#1B6B4A}.category-crypto{background:#f59e0b}.category-matieres{background:#ef4444}.category-iatech{background:#8b5cf6}
+.category-geo{background:#2563eb}.category-marches{background:#006650}.category-crypto{background:#f59e0b}.category-matieres{background:#C8955A}.category-iatech{background:#8b5cf6}
 
 .font-data{font-family:'JetBrains Mono','SF Mono',monospace}
+
+.glass{background:rgba(0,102,80,.06);backdrop-filter:blur(16px);border:1px solid rgba(0,102,80,.10)}
+.glass-light{background:rgba(0,102,80,.04);backdrop-filter:blur(12px);border:1px solid rgba(0,102,80,.06)}
+.hero-dark{background-color:#006650;color:#FFFFFF}
+.hero-dark h1,.hero-dark h2,.hero-dark .display-text{color:#FFFFFF}
+.section-alt{background-color:#F7F8FA}
+.section-divider{border-top:1px solid #ECEEF2}
+.featured-card{position:relative;overflow:hidden}
+.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:#006650;transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
+.featured-card:hover::before{transform:scaleY(1)}
+.hero-glow{position:absolute;top:-120px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,102,80,.06) 0%,transparent 70%);pointer-events:none}
+@media(max-width:768px){
+html,body{overflow-x:hidden}
+img{max-width:100%;height:auto}
+a,button{min-height:44px;min-width:44px}
+.mobile-overlay .menu-item a{min-height:48px;display:flex;align-items:center}
+}
 </style>
 </head>
 <body>
@@ -167,7 +184,8 @@ if(open){document.body.classList.add('menu-open')}else{document.body.classList.r
 return()=>document.body.classList.remove('menu-open')
 },[open])
 return h('div',null,
- h('header',{className:`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
+ h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#C8955A]'}),
+ h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
@@ -176,12 +194,12 @@ return h('div',null,
     h('nav',{className:'hidden md:flex items-center gap-1'},
      ...MEGA_NAV.map((cat,ci)=>
       h('div',{key:ci,className:'mega-trigger'},
-       h('span',{className:`nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none ${scrolled?'text-gray-500 hover:text-[#1B6B4A]':'text-white/70 hover:text-white'}`},cat.label),
+       h('span',{className:`nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none ${scrolled?'text-gray-500 hover:text-[#006650]':'text-white/70 hover:text-white'}`},cat.label),
        h('div',{className:'mega-menu bg-white rounded-2xl shadow-xl border border-gray-100 p-5'},
         h('div',{className:'grid gap-1'},
          ...cat.children.map((item,ii)=>
           h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline'},
-           h('span',{className:'mega-icon bg-[#1B6B4A]/10 text-[#1B6B4A]'},item.icon),
+           h('span',{className:'mega-icon bg-[#006650]/10 text-[#006650]'},item.icon),
            h('span',{className:'flex flex-col'},
             h('span',{className:'text-sm font-semibold text-gray-900'},item.label),
             h('span',{className:'text-xs text-gray-500 mt-0.5'},item.desc)
@@ -192,7 +210,7 @@ return h('div',null,
        )
       )
      ),
-     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#1B6B4A] hover:bg-[#155A3D] text-white font-semibold text-sm rounded-lg transition-colors'},'R\u00e9server un diagnostic')
+     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#006650] hover:bg-[#06402A] text-white font-semibold text-sm rounded-lg transition-colors'},'R\u00e9server un diagnostic')
     ),
     h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,'aria-label':'Menu',onClick:()=>setOpen(!open)},
      h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}})
@@ -200,7 +218,7 @@ return h('div',null,
    )
   )
  ),
- h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#0A1628'}},
+ h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#006650'}},
   h('div',{className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0'},
    h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-8 w-auto',style:{filter:'brightness(10) saturate(0)'}}),
    h('button',{onClick:()=>setOpen(false),className:'w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
@@ -228,10 +246,10 @@ return h('div',null,
 // ─── PAGE HERO ───────────────────────────────────────────────────────────────
 
 function PageHero(){
-return h('section',{className:'relative pt-28 pb-14 md:pt-36 md:pb-16',style:{backgroundColor:'#0A1628'}},
+return h('section',{className:'relative pt-28 pb-14 md:pt-36 md:pb-16',style:{backgroundColor:'#006650'}},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'max-w-2xl'},
-   h('p',{className:'anim-fade-up text-xs font-semibold uppercase tracking-wider text-[#34d399] mb-4'},'D\u00e9cryptages & signaux faibles'),
+   h('p',{className:'anim-fade-up text-xs font-semibold uppercase tracking-wider text-[#33B894] mb-4'},'D\u00e9cryptages & signaux faibles'),
    h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-5xl font-bold text-white leading-[1.1] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Nos analyses'),
    h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/50 leading-relaxed max-w-lg'},
     'Analyses approfondies, d\u00e9cryptages th\u00e9matiques et intelligence strat\u00e9gique pour anticiper les inflexions de march\u00e9.'
@@ -254,7 +272,7 @@ return h('section',{className:'py-16 md:py-20'},
   // Filters
   h('div',{className:'flex flex-wrap gap-2 mb-8 overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0'},
    ...CATEGORIES.map(c=>
-    h('button',{key:c.id,onClick:()=>setFilter(c.id),className:`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${filter===c.id?'bg-[#1B6B4A] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},c.label)
+    h('button',{key:c.id,onClick:()=>setFilter(c.id),className:`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${filter===c.id?'bg-[#006650] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},c.label)
    )
   ),
 
@@ -282,7 +300,7 @@ return h('section',{className:'py-16 md:py-20'},
         h('p',{className:'text-sm text-[#5A6178] leading-relaxed line-clamp-3 mb-4'},a.summary),
         h('div',{className:'flex items-center justify-between'},
          h('span',{className:'text-xs text-[#5A6178]/60 font-medium'},a.source),
-         h('span',{className:'text-sm font-semibold text-[#1B6B4A] group-hover:text-[#2A9D6E] transition-colors'},'Lire \u2192')
+         h('span',{className:'text-sm font-semibold text-[#006650] group-hover:text-[#008066] transition-colors'},'Lire \u2192')
         )
        )
       )
@@ -299,12 +317,12 @@ return h('section',{className:'py-16 md:py-20'},
 
 function MarketTicker(){
 const items=[...TICKER_DATA,...TICKER_DATA]
-return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 overflow-hidden py-3 bg-[#0A1628]'},
+return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 overflow-hidden py-3 bg-[#006650]'},
  h('div',{className:'ticker-track flex gap-8 whitespace-nowrap'},
   items.map((t,i)=>h('div',{key:i,className:'flex items-center gap-2 text-sm'},
    h('span',{className:'font-medium text-white/70'},t.symbol),
    h('span',{className:'text-white/90 font-semibold font-data'},t.value),
-   h('span',{className:`font-medium font-data ${t.up?'text-[#34D399]':'text-[#F87171]'}`},
+   h('span',{className:`font-medium font-data ${t.up?'text-[#33B894]':'text-[#F87171]'}`},
     (t.up?'\u25b2 ':'\u25bc ')+t.change
    )
   ))
@@ -345,7 +363,7 @@ return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-12 sm:pt
     h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Intelligence'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.intelligence.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#1B6B4A] transition-colors'},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
      )
     )
    ),
@@ -353,21 +371,21 @@ return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-12 sm:pt
     h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Plateforme'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.plateforme.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#1B6B4A] transition-colors'},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
      )
     )
    ),
    h('div',null,
     h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Suivez-nous'),
     h('div',{className:'flex items-center gap-3 mb-4'},
-     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#1B6B4A] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
       h('svg',{width:16,height:16,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'}))
      ),
-     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#1B6B4A] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
       h('svg',{width:14,height:14,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'}))
      )
     ),
-    h('a',{href:'#',className:'text-sm text-[#5A6178] hover:text-[#1B6B4A] transition-colors'},'Contact')
+    h('a',{href:'#',className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},'Contact')
    )
   ),
   h('div',{className:'border-t border-[#E2E5EB] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},

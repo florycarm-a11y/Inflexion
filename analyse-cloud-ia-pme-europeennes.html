@@ -7,7 +7,7 @@
 <meta name="description" content="~660 milliards de dollars d'investissement en 2026, dont 75 % fléchés vers l'IA. Le cloud n'est plus un sujet technique — c'est un risque de direction générale. Analyse Inflexion."/>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-tailwind.config={theme:{extend:{colors:{brand:{900:'#0A1628',800:'#1B6B4A',700:'#1E7E56',600:'#2A9D6E',500:'#10b981',400:'#34d399',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},navy:{900:'#0A1628',800:'#0F2035',700:'#162A45'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
+tailwind.config={theme:{extend:{colors:{brand:{900:'#06402A',800:'#006650',700:'#007A60',600:'#008066',500:'#00997A',400:'#33B894',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
@@ -15,7 +15,7 @@ tailwind.config={theme:{extend:{colors:{brand:{900:'#0A1628',800:'#1B6B4A',700:'
 body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden}
 
 h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
-.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#1B6B4A}
+.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#006650}
 
 @keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .ticker-track{animation:ticker-scroll 30s linear infinite}
@@ -25,7 +25,7 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 .anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}
 
 .nav-link{position:relative}
-.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#1B6B4A;transform:scaleX(0);transition:transform .25s ease}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}
 .nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
 .mega-trigger{position:relative}
 .mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:520px;z-index:60}
@@ -44,25 +44,26 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 @keyframes menu-item-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 .menu-item{opacity:0}
 .mobile-overlay.open .menu-item{animation:menu-item-in .4s ease-out forwards}
+body.menu-open{overflow:hidden}
 
 .prose p{margin-bottom:1.25rem;font-size:1.0625rem;line-height:1.8;color:#3A3A3A}
 .prose strong{color:#1A1F2E}
-.prose h2{font-size:1.625rem;color:#0B3D1E;margin-top:3.25rem;margin-bottom:1.25rem;line-height:1.3}
-.prose h3{font-family:'Inter',sans-serif;font-size:1.0625rem;font-weight:600;color:#1B6B4A;margin-top:2rem;margin-bottom:0.75rem;letter-spacing:0.3px}
+.prose h2{font-size:1.625rem;color:#006650;margin-top:3.25rem;margin-bottom:1.25rem;line-height:1.3}
+.prose h3{font-family:'Inter',sans-serif;font-size:1.0625rem;font-weight:600;color:#006650;margin-top:2rem;margin-bottom:0.75rem;letter-spacing:0.3px}
 
-.key-figure{background:linear-gradient(135deg,#0B3D1E 0%,#0D4A24 100%);border-radius:0.5rem;padding:2.5rem 2rem;text-align:center;position:relative;overflow:hidden}
-.key-figure::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1B6B4A,#2A9D6E,rgba(255,255,255,0.3))}
+.key-figure{background:linear-gradient(135deg,#006650 0%,#06402A 100%);border-radius:0.5rem;padding:2.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+.key-figure::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#006650,#33B894,rgba(255,255,255,0.3))}
 
-.insight-box{border-left:3px solid #1B6B4A;background:#F7F8FA;padding:1.25rem 1.5rem;margin:1.75rem 0;border-radius:0 0.5rem 0.5rem 0}
+.insight-box{border-left:3px solid #006650;background:#F7F8FA;padding:1.25rem 1.5rem;margin:1.75rem 0;border-radius:0 0.5rem 0.5rem 0}
 .insight-box.alert{border-left-color:#DC2626}
 .insight-box.gold{border-left-color:#EAB308}
 
-.pillar-card{background:#FFFFFF;border:1px solid #E2E5EB;border-radius:0.5rem;padding:1.75rem 1.75rem 1.5rem;margin:1.5rem 0;position:relative;padding-left:2rem;border-left:4px solid #0B3D1E}
-.pillar-card.green-mid{border-left-color:#1B6B4A}
-.pillar-card.green-light{border-left-color:#2A9D6E}
+.pillar-card{background:#FFFFFF;border:1px solid #E2E5EB;border-radius:0.5rem;padding:1.75rem 1.75rem 1.5rem;margin:1.5rem 0;position:relative;padding-left:2rem;border-left:4px solid #006650}
+.pillar-card.green-mid{border-left-color:#006650}
+.pillar-card.green-light{border-left-color:#33B894}
 
 .matrix-table{width:100%;border-collapse:collapse;font-family:'Inter',sans-serif;font-size:0.875rem}
-.matrix-table thead th{background:#0B3D1E;color:white;padding:0.75rem 1rem;text-align:left;font-weight:600;font-size:0.75rem;letter-spacing:0.5px;text-transform:uppercase}
+.matrix-table thead th{background:#006650;color:white;padding:0.75rem 1rem;text-align:left;font-weight:600;font-size:0.75rem;letter-spacing:0.5px;text-transform:uppercase}
 .matrix-table thead th:first-child{border-radius:0.5rem 0 0 0}
 .matrix-table thead th:last-child{border-radius:0 0.5rem 0 0}
 .matrix-table tbody td{padding:0.875rem 1rem;border-bottom:1px solid #ECEEF2;vertical-align:top;line-height:1.55;color:#3A3A3A}
@@ -79,17 +80,89 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 .article-card{transition:transform .2s ease,box-shadow .2s ease}
 .article-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(10,22,40,.08)}
 
-.category-geo{background:#2563eb}.category-marches{background:#1B6B4A}.category-crypto{background:#f59e0b}.category-matieres{background:#ef4444}.category-iatech{background:#8b5cf6}
+.category-geo{background:#2563eb}.category-marches{background:#006650}.category-crypto{background:#f59e0b}.category-matieres{background:#ef4444}.category-iatech{background:#8b5cf6}
 
-.section-number{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2A9D6E;display:block;margin-bottom:0.5rem}
+.section-number{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#33B894;display:block;margin-bottom:0.5rem}
 
 .font-data{font-family:'JetBrains Mono','SF Mono',monospace}
+
+/* Hero gradient dynamique 3D */
+@keyframes hero-gradient-shift{
+0%{background-position:0% 50%}
+25%{background-position:100% 25%}
+50%{background-position:100% 75%}
+75%{background-position:0% 100%}
+100%{background-position:0% 50%}
+}
+@keyframes hero-orb-float{
+0%,100%{transform:translate(0,0) scale(1)}
+33%{transform:translate(30px,-20px) scale(1.1)}
+66%{transform:translate(-20px,15px) scale(0.95)}
+}
+.hero-dynamic{
+background:linear-gradient(135deg,#004D3D 0%,#006650 25%,#007A60 50%,#06402A 75%,#004D3D 100%);
+background-size:400% 400%;
+animation:hero-gradient-shift 12s ease infinite;
+position:relative;
+overflow:hidden;
+}
+.hero-dynamic::before{
+content:'';
+position:absolute;
+top:-50%;left:-50%;
+width:200%;height:200%;
+background:radial-gradient(ellipse at 30% 20%,rgba(51,184,148,.15) 0%,transparent 50%),
+            radial-gradient(ellipse at 70% 80%,rgba(0,122,96,.2) 0%,transparent 50%),
+            radial-gradient(ellipse at 50% 50%,rgba(200,149,90,.06) 0%,transparent 40%);
+animation:hero-orb-float 8s ease-in-out infinite;
+pointer-events:none;
+}
+.hero-dynamic::after{
+content:'';
+position:absolute;
+bottom:0;left:0;right:0;
+height:120px;
+background:linear-gradient(to top,rgba(255,255,255,.06) 0%,transparent 100%);
+pointer-events:none;
+}
+.hero-wave{
+position:absolute;
+bottom:-1px;left:0;right:0;
+width:100%;
+line-height:0;
+z-index:2;
+}
+.hero-wave svg{
+width:100%;
+height:60px;
+display:block;
+}
+@media(min-width:768px){
+.hero-wave svg{height:80px}
+}
+
+.glass{background:rgba(0,102,80,.06);backdrop-filter:blur(16px);border:1px solid rgba(0,102,80,.10)}
+.glass-light{background:rgba(0,102,80,.04);backdrop-filter:blur(12px);border:1px solid rgba(0,102,80,.06)}
+.hero-dark{background-color:#006650;color:#FFFFFF}
+.hero-dark h1,.hero-dark h2,.hero-dark .display-text{color:#FFFFFF}
+.section-alt{background-color:#F7F8FA}
+.section-divider{border-top:1px solid #ECEEF2}
+.featured-card{position:relative;overflow:hidden}
+.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:#006650;transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
+.featured-card:hover::before{transform:scaleY(1)}
+.hero-glow{position:absolute;top:-120px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,102,80,.06) 0%,transparent 70%);pointer-events:none}
+@media(max-width:768px){
+html,body{overflow-x:hidden}
+img{max-width:100%;height:auto}
+button,a[href]:not(.prose a){min-height:44px;min-width:44px}
+.mobile-overlay .menu-item a{min-height:48px;display:flex;align-items:center}
+}
 </style>
 </head>
 <body>
 <div id="app"></div>
 <script type="module">
-import React,{useState,useEffect} from 'https://esm.sh/react@18.2.0'
+import React,{useState,useEffect,useRef} from 'https://esm.sh/react@18.2.0'
 import{createRoot}from 'https://esm.sh/react-dom@18.2.0/client'
 
 const h=React.createElement
@@ -150,8 +223,13 @@ const fn=()=>setScrolled(window.scrollY>60)
 window.addEventListener('scroll',fn,{passive:true})
 return()=>window.removeEventListener('scroll',fn)
 },[])
+useEffect(()=>{
+if(open){document.body.classList.add('menu-open')}else{document.body.classList.remove('menu-open')}
+return()=>document.body.classList.remove('menu-open')
+},[open])
 return h('div',null,
- h('header',{className:`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
+ h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#C8955A]'}),
+ h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
@@ -165,7 +243,7 @@ return h('div',null,
         h('div',{className:'grid gap-1'},
          ...cat.children.map((item,ii)=>
           h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline'},
-           h('span',{className:'mega-icon bg-[#1B6B4A]/10 text-[#1B6B4A]'},item.icon),
+           h('span',{className:'mega-icon bg-[#006650]/10 text-[#006650]'},item.icon),
            h('span',{className:'flex flex-col'},
             h('span',{className:'text-sm font-semibold text-gray-900'},item.label),
             h('span',{className:'text-xs text-gray-500 mt-0.5'},item.desc)
@@ -176,7 +254,7 @@ return h('div',null,
        )
       )
      ),
-     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#1B6B4A] hover:bg-[#155A3D] text-white font-semibold text-sm rounded-lg transition-colors'},'R\u00e9server un diagnostic')
+     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#006650] hover:bg-[#06402A] text-white font-semibold text-sm rounded-lg transition-colors'},'R\u00e9server un diagnostic')
     ),
     h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,onClick:()=>setOpen(!open)},
      h('span'),h('span'),h('span')
@@ -184,9 +262,9 @@ return h('div',null,
    )
   )
  ),
- h('div',{className:`mobile-overlay fixed inset-0 z-40 flex flex-col ${open?'open':''}`,style:{backgroundColor:'#0A1628'}},
+ h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#006650'}},
   h('div',{className:'flex items-center justify-between px-6 pt-6 pb-4'},
-   h('span',{className:'text-xs uppercase tracking-[.25em] text-white/50 font-medium'},'Navigation'),
+   h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-8 w-auto',style:{filter:'brightness(10) saturate(0)'}}),
    h('button',{onClick:()=>setOpen(false),className:'w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
     h('svg',{width:18,height:18,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2.5,strokeLinecap:'round',className:'text-white'},h('path',{d:'M18 6L6 18M6 6l12 12'}))
    )
@@ -212,8 +290,22 @@ return h('div',null,
 // ─── ARTICLE HERO ────────────────────────────────────────────────────────────
 
 function ArticleHero(){
-return h('section',{className:'relative pt-28 pb-16 md:pt-36 md:pb-20',style:{backgroundColor:'#0A1628'}},
- h('div',{className:'max-w-3xl mx-auto px-4 sm:px-6'},
+const heroRef=useRef(null)
+useEffect(()=>{
+const el=heroRef.current
+if(!el)return
+const onScroll=()=>{
+const r=el.getBoundingClientRect()
+const p=Math.max(0,Math.min(1,-r.top/(r.height||1)))
+el.style.setProperty('--scroll',p)
+el.querySelector('.hero-content').style.transform=`translateY(${p*40}px)`
+el.querySelector('.hero-content').style.opacity=1-p*0.6
+}
+window.addEventListener('scroll',onScroll,{passive:true})
+return()=>window.removeEventListener('scroll',onScroll)
+},[])
+return h('section',{ref:heroRef,className:'hero-dynamic relative pt-28 pb-24 md:pt-36 md:pb-28'},
+ h('div',{className:'hero-content relative z-[3] max-w-3xl mx-auto px-4 sm:px-6',style:{willChange:'transform,opacity'}},
   h('div',{className:'anim-fade-up flex items-center gap-3 mb-6'},
    h('span',{className:'px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white rounded bg-[#8b5cf6]'},'ANALYSE'),
    h('span',{className:'text-xs uppercase tracking-wider text-white/50'},'Infrastructure & Souverainet\u00e9')
@@ -225,10 +317,17 @@ return h('section',{className:'relative pt-28 pb-16 md:pt-36 md:pb-20',style:{ba
    'Le cloud n\'est plus un sujet technique. C\'est un risque de direction g\u00e9n\u00e9rale. Quand la capacit\u00e9 sature, les clients sans contrat sont les premiers sacrifi\u00e9s.'
   ),
   h('div',{className:'anim-fade-up anim-d3 mt-8 flex flex-wrap items-center gap-5 text-sm text-white/40'},
-   h('div',{className:'w-12 h-[2px] bg-[#1B6B4A]'}),
+   h('div',{className:'w-12 h-[2px] bg-[#33B894]'}),
    h('span',null,h('strong',{className:'text-white/60'},'Inflexion Research')),
    h('span',null,'F\u00e9vrier 2026'),
    h('span',null,'9 min de lecture')
+  )
+ ),
+ h('div',{className:'hero-wave'},
+  h('svg',{viewBox:'0 0 1440 80',preserveAspectRatio:'none',xmlns:'http://www.w3.org/2000/svg'},
+   h('path',{d:'M0,40 C180,80 360,0 540,40 C720,80 900,10 1080,40 C1200,60 1350,20 1440,40 L1440,80 L0,80 Z',fill:'#FFFFFF',fillOpacity:'0.07'}),
+   h('path',{d:'M0,50 C200,20 400,70 600,40 C800,10 1000,60 1200,35 C1320,20 1400,50 1440,45 L1440,80 L0,80 Z',fill:'#FFFFFF',fillOpacity:'0.05'}),
+   h('path',{d:'M0,60 C240,40 480,75 720,55 C960,35 1200,65 1440,50 L1440,80 L0,80 Z',fill:'#FFFFFF'})
   )
  )
 )
@@ -303,7 +402,7 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
    ),
 
    h('div',{className:'insight-box not-prose'},
-    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#1B6B4A] mb-2'},'La \u00ab\u00a0taxe sur l\u2019agilit\u00e9\u00a0\u00bb'),
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#006650] mb-2'},'La \u00ab\u00a0taxe sur l\u2019agilit\u00e9\u00a0\u00bb'),
     h('p',{className:'text-sm text-[#3A3A3A] italic leading-relaxed'},'Dit autrement, chaque mois pass\u00e9 en tarif catalogue est un transfert de marge vers les clients qui ont su verrouiller leurs conditions. En 2026, le cloud n\u2019est plus une d\u00e9pense variable, mais un actif strat\u00e9gique dont le co\u00fbt doit \u00eatre verrouill\u00e9.'),
     h('p',{className:'text-sm text-[#3A3A3A] italic leading-relaxed mt-3'},'Le m\u00e9canisme est progressif\u00a0: l\u2019int\u00e9gration par d\u00e9faut d\u2019assistants IA dans les suites bureautiques (Copilot dans Microsoft 365, Gemini dans Google Workspace) cr\u00e9e une d\u00e9pendance fonctionnelle avant m\u00eame que l\u2019entreprise n\u2019ait arbitr\u00e9. Quand le tarif augmente, le co\u00fbt de migration est d\u00e9j\u00e0 prohibitif.')
    ),
@@ -373,16 +472,16 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
    h('p',null,'Les trois op\u00e9rateurs majeurs proposent des m\u00e9canismes de r\u00e9servation accessibles sans \u00eatre un grand compte :'),
 
    h('div',{className:'bg-white border border-[#E2E5EB] rounded-lg p-5 my-6 not-prose'},
-    h('div',{className:'data-row'},h('span',{className:'flex-1'},'AWS \u2014 \u00ab\u00a0Savings Plans\u00a0\u00bb (3 ans)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#0B3D1E]'},'\u221266 \u00e0 72\u00a0%')),
-    h('div',{className:'data-row'},h('span',{className:'flex-1'},'Azure \u2014 \u00ab\u00a0Reserved\u00a0\u00bb + \u00ab\u00a0Hybrid Benefit\u00a0\u00bb (3 ans + licences existantes)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#0B3D1E]'},'\u221280\u00a0%')),
-    h('div',{className:'data-row'},h('span',{className:'flex-1'},'GCP \u2014 \u00ab\u00a0Committed Use Discounts\u00a0\u00bb (3 ans)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#0B3D1E]'},'\u221270\u00a0%')),
-    h('div',{className:'data-row'},h('span',{className:'flex-1'},'GCP \u2014 \u00ab\u00a0Sustained Use Discounts\u00a0\u00bb (automatique, sans engagement)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#1B6B4A]'},'\u221230\u00a0%'))
+    h('div',{className:'data-row'},h('span',{className:'flex-1'},'AWS \u2014 \u00ab\u00a0Savings Plans\u00a0\u00bb (3 ans)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#006650]'},'\u221266 \u00e0 72\u00a0%')),
+    h('div',{className:'data-row'},h('span',{className:'flex-1'},'Azure \u2014 \u00ab\u00a0Reserved\u00a0\u00bb + \u00ab\u00a0Hybrid Benefit\u00a0\u00bb (3 ans + licences existantes)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#006650]'},'\u221280\u00a0%')),
+    h('div',{className:'data-row'},h('span',{className:'flex-1'},'GCP \u2014 \u00ab\u00a0Committed Use Discounts\u00a0\u00bb (3 ans)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#006650]'},'\u221270\u00a0%')),
+    h('div',{className:'data-row'},h('span',{className:'flex-1'},'GCP \u2014 \u00ab\u00a0Sustained Use Discounts\u00a0\u00bb (automatique, sans engagement)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#006650]'},'\u221230\u00a0%'))
    ),
 
    h('p',null,'Le point de d\u00e9part : ',h('strong',null,'auditer trois mois d\u2019utilisation r\u00e9elle'),' avant tout engagement. Le pi\u00e8ge le plus fr\u00e9quent reste le sur-provisionnement \u2014 r\u00e9server plus que ce qu\u2019on consomme.'),
 
    h('div',{className:'insight-box not-prose'},
-    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#1B6B4A] mb-2'},'Levier sp\u00e9cifique PME'),
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#006650] mb-2'},'Levier sp\u00e9cifique PME'),
     h('p',{className:'text-sm text-[#3A3A3A] italic leading-relaxed'},'Point diff\u00e9renciant \u00e0 conna\u00eetre : AWS a mis en place une place de march\u00e9 permettant de c\u00e9der ses capacit\u00e9s r\u00e9serv\u00e9es exc\u00e9dentaires \u00e0 d\u2019autres clients, moyennant un pr\u00e9l\u00e8vement de 12\u00a0%. Aucun autre fournisseur ne propose de m\u00e9canisme \u00e9quivalent \u2014 un filet de s\u00e9curit\u00e9 non n\u00e9gligeable pour limiter le risque de sur-dimensionnement.')
    ),
 
@@ -391,9 +490,9 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
    h('p',null,'Le rapport de force a bascul\u00e9. Sur le test de r\u00e9f\u00e9rence MMLU, un mod\u00e8le libre de 70 milliards de param\u00e8tres \u2014 ex\u00e9cutable sur deux processeurs graphiques \u2014 obtient d\u00e9sormais un score comparable aux meilleurs mod\u00e8les propri\u00e9taires (86\u00a0% contre 85,9\u00a0% pour GPT-4o, selon les benchmarks publi\u00e9s par Meta). La diff\u00e9rence n\u2019est plus qualitative. Elle est \u00e9conomique : un facteur 25 sur le co\u00fbt unitaire d\u2019inf\u00e9rence, sur le co\u00fbt d\u2019entr\u00e9e via les API les moins ch\u00e8res.'),
 
    h('div',{className:'bg-white border border-[#E2E5EB] rounded-lg p-5 my-6 not-prose'},
-    h('div',{className:'data-row'},h('span',{className:'flex-1'},'Co\u00fbt par million de jetons en entr\u00e9e \u2014 GPT-4o (API)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#0B3D1E]'},'2,50 $')),
-    h('div',{className:'data-row'},h('span',{className:'flex-1'},'Co\u00fbt par million de jetons en entr\u00e9e \u2014 Llama 3.3 70B'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#1B6B4A]'},'0,10 $')),
-    h('div',{className:'data-row'},h('span',{className:'flex-1'},'Rapport de co\u00fbt'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#0B3D1E]'},'\u00d725 moins cher'))
+    h('div',{className:'data-row'},h('span',{className:'flex-1'},'Co\u00fbt par million de jetons en entr\u00e9e \u2014 GPT-4o (API)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#006650]'},'2,50 $')),
+    h('div',{className:'data-row'},h('span',{className:'flex-1'},'Co\u00fbt par million de jetons en entr\u00e9e \u2014 Llama 3.3 70B'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#006650]'},'0,10 $')),
+    h('div',{className:'data-row'},h('span',{className:'flex-1'},'Rapport de co\u00fbt'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#006650]'},'\u00d725 moins cher'))
    ),
 
    h('p',null,
@@ -444,7 +543,7 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
 
    // Closing
    h('div',{className:'text-center py-10 mt-10 border-t border-[#E2E5EB] not-prose'},
-    h('blockquote',{className:'text-xl md:text-[1.35rem] font-bold text-[#0B3D1E] leading-[1.45] max-w-lg mx-auto mb-4',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+    h('blockquote',{className:'text-xl md:text-[1.35rem] font-bold text-[#006650] leading-[1.45] max-w-lg mx-auto mb-4',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
      'Dans une \u00e9conomie o\u00f9 les transformateurs haute tension se commandent trois \u00e0 quatre ans \u00e0 l\u2019avance et o\u00f9 les processeurs graphiques sont allou\u00e9s avant m\u00eame leur fabrication, le tempo de d\u00e9cision ne se compte plus en ann\u00e9es budg\u00e9taires mais en trimestres. Les contrats sign\u00e9s aujourd\u2019hui d\u00e9terminent la capacit\u00e9 de calcul disponible en 2027.'
     ),
     h('p',{className:'text-sm text-[#6A6A6A]'},'Inflexion Research \u2014 F\u00e9vrier 2026')
@@ -458,7 +557,7 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
 
    // Back nav
    h('div',{className:'mt-10 text-center not-prose'},
-    h('a',{href:'analysis.html',className:'inline-block px-6 py-2.5 text-sm font-semibold text-[#1B6B4A] border-2 border-[#1B6B4A] rounded-lg hover:bg-[#1B6B4A] hover:text-white transition-colors'},'\u2190 Toutes les analyses')
+    h('a',{href:'analysis.html',className:'inline-block px-6 py-2.5 text-sm font-semibold text-[#006650] border-2 border-[#006650] rounded-lg hover:bg-[#006650] hover:text-white transition-colors'},'\u2190 Toutes les analyses')
    )
   ),
 
@@ -489,7 +588,7 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
 
 function MarketTicker(){
 const items=[...TICKER_DATA,...TICKER_DATA]
-return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 overflow-hidden py-3 bg-[#0A1628]'},
+return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 overflow-hidden py-3 bg-[#006650]'},
  h('div',{className:'ticker-track flex gap-8 whitespace-nowrap'},
   items.map((t,i)=>h('div',{key:i,className:'flex items-center gap-2 text-sm'},
    h('span',{className:'font-medium text-white/70'},t.symbol),
@@ -535,7 +634,7 @@ return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-16 pb-20
     h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Intelligence'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.intelligence.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#1B6B4A] transition-colors'},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
      )
     )
    ),
@@ -543,21 +642,21 @@ return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-16 pb-20
     h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Plateforme'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.plateforme.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#1B6B4A] transition-colors'},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
      )
     )
    ),
    h('div',null,
     h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Suivez-nous'),
     h('div',{className:'flex items-center gap-3 mb-4'},
-     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#1B6B4A] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
       h('svg',{width:16,height:16,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'}))
      ),
-     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#1B6B4A] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
       h('svg',{width:14,height:14,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'}))
      )
     ),
-    h('a',{href:'#',className:'text-sm text-[#5A6178] hover:text-[#1B6B4A] transition-colors'},'Contact')
+    h('a',{href:'#',className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},'Contact')
    )
   ),
   h('div',{className:'border-t border-[#E2E5EB] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
