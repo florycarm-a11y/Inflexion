@@ -143,6 +143,9 @@ jobs:
 
           Article de synthèse et classification des news générés par Claude."
 
+          # Nettoyer les fichiers non-stagés avant rebase (news.backup.json, etc.)
+          git checkout -- .
+
           # Push avec retry (en cas de conflit concurrent)
           for i in 1 2 3; do
             git fetch origin main
