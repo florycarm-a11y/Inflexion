@@ -165,4 +165,11 @@ jobs:
           Briefing stratégique généré par Claude Sonnet (signaux + interconnexions + risk radar).
           Articles et briefing indexés dans le store RAG."
 
-          git push
+          # Nettoyer fichiers non-stagés + push avec retry
+          git checkout -- .
+          for i in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main && git push && break
+            echo "⟳ Retry push $i/3..."
+            sleep 5
+          done
