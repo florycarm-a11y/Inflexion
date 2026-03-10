@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Arctique : le grand jeu polaire &#8212; Groenland, terres rares et nouvelles routes du pouvoir &#8212; Inflexion</title>
+<meta name="description" content="54 brise-glaces russes, 28 Mt de terres rares au Groenland, route maritime Nord en expansion. L'Arctique devient l'&#233;picentre d'une comp&#233;tition g&#233;opolitique sans pr&#233;c&#233;dent. Analyse Inflexion."/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{brand:{900:'#06402A',800:'#006650',700:'#007A60',600:'#008066',500:'#00997A',400:'#33B894',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden}
+
+h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
+.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#006650}
+
+@keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-track{animation:ticker-scroll 30s linear infinite}
+.ticker-track:hover{animation-play-state:paused}
+@keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.anim-fade-up{animation:fade-up .6s ease-out both}
+.anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}
+
+.nav-link{position:relative}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.mega-trigger{position:relative}
+.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:520px;z-index:60}
+.mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.mega-item{transition:background .15s ease}
+.mega-item:hover{background:rgba(27,107,74,.06)}
+.mega-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.nav-scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid #E2E5EB;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+
+.hamburger span{display:block;width:24px;height:2px;background:#1A1F2E;margin:5px 0;transition:all .3s ease}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-overlay{opacity:0;visibility:hidden;transition:opacity .35s cubic-bezier(.4,0,.2,1),visibility .35s;height:100dvh}
+.mobile-overlay.open{opacity:1;visibility:visible}
+@keyframes menu-item-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.menu-item{opacity:0}
+.mobile-overlay.open .menu-item{animation:menu-item-in .4s ease-out forwards}
+body.menu-open{overflow:hidden}
+
+.prose p{margin-bottom:1.25rem;font-size:1rem;line-height:1.75;color:#3A3A3A}
+@media(min-width:640px){.prose p{font-size:1.0625rem;line-height:1.8}}
+.prose strong{color:#1A1F2E}
+.prose h2{font-size:1.375rem;color:#006650;margin-top:2.5rem;margin-bottom:1rem;line-height:1.3}
+@media(min-width:640px){.prose h2{font-size:1.625rem;margin-top:3.25rem;margin-bottom:1.25rem}}
+.prose h3{font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;color:#006650;margin-top:1.75rem;margin-bottom:0.75rem;letter-spacing:0.3px}
+@media(min-width:640px){.prose h3{font-size:1.0625rem;margin-top:2rem}}
+
+.key-figure{background:linear-gradient(135deg,#006650 0%,#06402A 100%);border-radius:0.5rem;padding:1.5rem 1rem;text-align:center;position:relative;overflow:hidden}
+@media(min-width:640px){.key-figure{padding:2.5rem 2rem}}
+.key-figure::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#006650,#33B894,rgba(255,255,255,0.3))}
+
+.insight-box{border-left:3px solid #006650;background:#F7F8FA;padding:1rem 1rem;margin:1.5rem 0;border-radius:0 0.5rem 0.5rem 0}
+@media(min-width:640px){.insight-box{padding:1.25rem 1.5rem;margin:1.75rem 0}}
+.insight-box.alert{border-left-color:#DC2626}
+.insight-box.gold{border-left-color:#EAB308}
+
+.article-card{transition:transform .2s ease,box-shadow .2s ease}
+.article-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(10,22,40,.08)}
+
+.category-geo{background:#2563eb}.category-marches{background:#006650}.category-crypto{background:#f59e0b}.category-matieres{background:#ef4444}.category-iatech{background:#8b5cf6}
+
+.font-data{font-family:'JetBrains Mono','SF Mono',monospace}
+
+@keyframes hero-gradient-shift{
+0%{background-position:0% 50%}
+25%{background-position:100% 25%}
+50%{background-position:100% 75%}
+75%{background-position:0% 100%}
+100%{background-position:0% 50%}
+}
+@keyframes hero-orb-float{
+0%,100%{transform:translate(0,0) scale(1)}
+33%{transform:translate(30px,-20px) scale(1.1)}
+66%{transform:translate(-20px,15px) scale(0.95)}
+}
+.hero-dynamic{
+background:linear-gradient(135deg,#004D3D 0%,#006650 25%,#007A60 50%,#06402A 75%,#004D3D 100%);
+background-size:400% 400%;
+animation:hero-gradient-shift 12s ease infinite;
+position:relative;
+overflow:hidden;
+}
+.hero-dynamic::before{
+content:'';
+position:absolute;
+top:-50%;left:-50%;
+width:200%;height:200%;
+background:radial-gradient(ellipse at 30% 20%,rgba(51,184,148,.15) 0%,transparent 50%),
+            radial-gradient(ellipse at 70% 80%,rgba(0,122,96,.2) 0%,transparent 50%),
+            radial-gradient(ellipse at 50% 50%,rgba(200,149,90,.06) 0%,transparent 40%);
+animation:hero-orb-float 8s ease-in-out infinite;
+pointer-events:none;
+}
+.hero-dynamic::after{
+content:'';
+position:absolute;
+bottom:0;left:0;right:0;
+height:120px;
+background:linear-gradient(to top,rgba(255,255,255,.06) 0%,transparent 100%);
+pointer-events:none;
+}
+.hero-wave{
+position:absolute;
+bottom:-1px;left:0;right:0;
+width:100%;
+line-height:0;
+z-index:2;
+}
+.hero-wave svg{
+width:100%;
+height:60px;
+display:block;
+}
+@media(min-width:768px){
+.hero-wave svg{height:80px}
+}
+
+.glass{background:rgba(0,102,80,.06);backdrop-filter:blur(16px);border:1px solid rgba(0,102,80,.10)}
+.glass-light{background:rgba(0,102,80,.04);backdrop-filter:blur(12px);border:1px solid rgba(0,102,80,.06)}
+.hero-dark{background-color:#006650;color:#FFFFFF}
+.hero-dark h1,.hero-dark h2,.hero-dark .display-text{color:#FFFFFF}
+.section-alt{background-color:#F7F8FA}
+.section-divider{border-top:1px solid #ECEEF2}
+.featured-card{position:relative;overflow:hidden}
+.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:#006650;transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
+.featured-card:hover::before{transform:scaleY(1)}
+.hero-glow{position:absolute;top:-120px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,102,80,.06) 0%,transparent 70%);pointer-events:none}
+@media(max-width:768px){
+html,body{overflow-x:hidden}
+img{max-width:100%;height:auto}
+button,a[href]:not(.prose a){min-height:44px;min-width:44px}
+.mobile-overlay .menu-item a{min-height:48px;display:flex;align-items:center}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script type="module">
+import React,{useState,useEffect,useRef} from 'https://esm.sh/react@18.2.0'
+import{createRoot}from 'https://esm.sh/react-dom@18.2.0/client'
+
+const h=React.createElement
+
+const RELATED_ARTICLES=[
+{id:1,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'P\u00e9trole \u00e0 119\u00a0$ : Op\u00e9ration Epic Fury, Ormuz ferm\u00e9 et le jeu dangereux de Trump',img:'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=300&h=200&fit=crop',href:'analyse-petrole-trump-iran-ormuz.html'},
+{id:2,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'Corridor de d\u00e9fense France\u2013Inde : 140 Rafale et l\u2019axe strat\u00e9gique Indo-Pacifique',img:'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=300&h=200&fit=crop',href:'analyse-corridor-defense-france-inde.html'},
+{id:3,cat:'marches',catLabel:'March\u00e9s',title:'FTA UE\u2013Inde : le trait\u00e9 commercial qui red\u00e9finit les flux euro-asiatiques',img:'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=300&h=200&fit=crop',href:'analyse-fta-ue-inde-traite-fiscal.html'},
+]
+
+const MEGA_NAV=[
+{label:'Intelligence',children:[
+ {icon:'\ud83c\udf0d',label:'G\u00e9opolitique',desc:'Risques pays & tensions internationales',href:'geopolitics.html'},
+ {icon:'\ud83d\udcc8',label:'March\u00e9s',desc:'Actions, indices, taux & devises',href:'markets.html'},
+ {icon:'\u20bf',label:'Crypto & Blockchain',desc:'Bitcoin, DeFi, r\u00e9gulation',href:'crypto.html'},
+ {icon:'\ud83d\udee2\ufe0f',label:'Mati\u00e8res premi\u00e8res',desc:'Or, p\u00e9trole, m\u00e9taux & \u00e9nergie',href:'commodities.html'},
+ {icon:'\ud83d\udcca',label:'ETF & Fonds',desc:'Allocations & flux de capitaux',href:'etf.html'},
+]},
+{label:'Analyses',children:[
+ {icon:'\ud83d\udcf0',label:'Briefing du jour',desc:'Synth\u00e8se IA quotidienne',href:'index.html#briefing'},
+ {icon:'\ud83d\udd0e',label:'Analyses approfondies',desc:'D\u00e9cryptages th\u00e9matiques',href:'analyses.html'},
+ {icon:'\ud83d\uddfa\ufe0f',label:'Macro par pays',desc:'Donn\u00e9es World Bank & indicateurs',href:'country.html'},
+]},
+{label:'Expertise',children:[
+ {icon:'\ud83e\udded',label:'Notre approche',desc:'M\u00e9thodologie & cadre d\'analyse',href:'expertise.html'},
+ {icon:'\ud83e\udd16',label:'Pipeline IA',desc:'158 sources, 15 APIs, Claude IA',href:'expertise.html#pipeline'},
+ {icon:'\ud83d\udce1',label:'Sources & donn\u00e9es',desc:'Transparence sur nos flux',href:'expertise.html#sources'},
+]},
+{label:'Services',children:[
+ {icon:'\ud83d\udcbc',label:'Diagnostic strat\u00e9gique',desc:'Audit personnalis\u00e9 de vos positions',href:'premium.html'},
+ {icon:'\ud83d\udd14',label:'Alertes & veille',desc:'Notifications personnalis\u00e9es',href:'premium.html#alertes'},
+ {icon:'\ud83d\udccb',label:'Rapports sur mesure',desc:'Analyses d\u00e9di\u00e9es \u00e0 votre portefeuille',href:'premium.html#rapports'},
+]},
+]
+
+const TICKER_DATA=[
+{symbol:'Or',value:'$2 180',change:'+1.4%',up:true},
+{symbol:'Brent',value:'$88.60',change:'-10.5%',up:false},
+{symbol:'Cuivre',value:'$9 420',change:'+0.8%',up:true},
+{symbol:'Lithium',value:'$12 800/t',change:'-3.2%',up:false},
+{symbol:'Uranium',value:'$65.20/lb',change:'+4.1%',up:true},
+{symbol:'Nickel',value:'$16 350',change:'+1.9%',up:true},
+{symbol:'EUR/DKK',value:'7.4604',change:'+0.01%',up:true},
+{symbol:'NSR Cargo',value:'37 Mt',change:'-2.3%',up:false},
+{symbol:'OTAN',value:'Arctic Sentry',change:'F\u00e9v. 2026',up:false},
+]
+
+// ─── NAVIGATION ──────────────────────────────────────────────────────────────
+
+function Navigation(){
+const[open,setOpen]=useState(false)
+const[scrolled,setScrolled]=useState(false)
+useEffect(()=>{
+const fn=()=>setScrolled(window.scrollY>60)
+window.addEventListener('scroll',fn,{passive:true})
+return()=>window.removeEventListener('scroll',fn)
+},[])
+useEffect(()=>{
+if(open){document.body.classList.add('menu-open')}else{document.body.classList.remove('menu-open')}
+return()=>document.body.classList.remove('menu-open')
+},[open])
+return h('div',null,
+ h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#C8955A]'}),
+ h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
+  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+   h('div',{className:'flex items-center justify-between h-16'},
+    h('a',{href:'index.html',className:'flex items-center gap-2'},
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(10) saturate(0) invert(0)',transition:'filter 0.3s ease'}})
+    ),
+    h('nav',{className:'hidden md:flex items-center gap-1'},
+     ...MEGA_NAV.map((cat,ci)=>
+      h('div',{key:ci,className:'mega-trigger'},
+       h('span',{className:`nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none ${scrolled?'text-gray-500 hover:text-[#006650]':'text-white/70 hover:text-white'}`},cat.label),
+       h('div',{className:'mega-menu bg-white rounded-2xl shadow-xl border border-gray-100 p-5'},
+        h('div',{className:'grid gap-1'},
+         ...cat.children.map((item,ii)=>
+          h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline'},
+           h('span',{className:'mega-icon bg-[#006650]/10 text-[#006650]'},item.icon),
+           h('span',{className:'flex flex-col'},
+            h('span',{className:'text-sm font-semibold text-gray-900'},item.label),
+            h('span',{className:'text-xs text-gray-500 mt-0.5'},item.desc)
+           )
+          )
+         )
+        )
+       )
+      )
+     ),
+     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#006650] hover:bg-[#06402A] text-white font-semibold text-sm rounded-lg transition-colors'},'R\u00e9server un diagnostic')
+    ),
+    h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,'aria-label':'Menu',onClick:()=>setOpen(!open)},
+     h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}})
+    )
+   )
+  )
+ ),
+ h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#006650'}},
+  h('div',{className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0'},
+   h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-8 w-auto',style:{filter:'brightness(10) saturate(0)'}}),
+   h('button',{onClick:()=>setOpen(false),className:'w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
+    h('svg',{width:18,height:18,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2.5,strokeLinecap:'round',className:'text-white'},h('path',{d:'M18 6L6 18M6 6l12 12'}))
+   )
+  ),
+  h('div',{className:'flex-1 overflow-y-auto px-6 pt-2 pb-4'},
+   ...MEGA_NAV.map((cat,ci)=>[
+    h('p',{key:'h'+ci,className:'menu-item text-[11px] uppercase tracking-[.2em] text-white/40 font-semibold mb-3'+(ci>0?' mt-8':''),style:{animationDelay:`${0.05+ci*0.18}s`}},cat.label),
+    ...cat.children.map((item,ii)=>
+     h('a',{key:'m'+ci+'-'+ii,href:item.href,onClick:()=>setOpen(false),className:'menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8',style:{animationDelay:`${0.08+ci*0.18+ii*0.05}s`}},
+      h('span',{className:'text-base'},item.icon),
+      h('span',{className:'text-base sm:text-lg md:text-[20px] font-medium'},item.label)
+     )
+    )
+   ]).flat()
+  ),
+  h('div',{className:'px-6 pt-4 pb-20 flex-shrink-0'},
+   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-xl transition-colors text-base',style:{animationDelay:'0.85s'}},'R\u00e9server un diagnostic')
+  )
+ )
+)
+}
+
+// ─── ARTICLE HERO ────────────────────────────────────────────────────────────
+
+function ArticleHero(){
+const heroRef=useRef(null)
+useEffect(()=>{
+const el=heroRef.current
+if(!el)return
+const onScroll=()=>{
+const r=el.getBoundingClientRect()
+const p=Math.max(0,Math.min(1,-r.top/(r.height||1)))
+el.style.setProperty('--scroll',p)
+el.querySelector('.hero-content').style.transform=`translateY(${p*40}px)`
+el.querySelector('.hero-content').style.opacity=1-p*0.6
+}
+window.addEventListener('scroll',onScroll,{passive:true})
+return()=>window.removeEventListener('scroll',onScroll)
+},[])
+return h('section',{ref:heroRef,className:'hero-dynamic relative pt-28 pb-24 md:pt-36 md:pb-28'},
+ h('div',{className:'hero-content relative z-[3] max-w-3xl mx-auto px-4 sm:px-6',style:{willChange:'transform,opacity'}},
+  h('div',{className:'anim-fade-up flex items-center gap-3 mb-6'},
+   h('span',{className:'px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white rounded bg-[#2563eb]'},'G\u00c9OPOLITIQUE'),
+   h('span',{className:'text-xs uppercase tracking-wider text-white/50'},'Arctique & Ressources strat\u00e9giques')
+  ),
+  h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-[2.75rem] font-bold text-white leading-[1.15] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+   'Arctique\u00a0: le grand jeu polaire \u2014 Groenland, terres rares et nouvelles routes du pouvoir'
+  ),
+  h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/60 leading-relaxed'},
+   'De la convoitise de Trump sur le Groenland \u00e0 la Route de la Soie polaire chinoise, des 54\u00a0brise-glaces russes aux manoeuvres de l\u2019OTAN\u00a0: l\u2019Arctique est devenu le th\u00e9\u00e2tre d\u2019une comp\u00e9tition g\u00e9opolitique majeure autour des ressources, des routes maritimes et de la supr\u00e9matie militaire.'
+  ),
+  h('div',{className:'anim-fade-up anim-d3 mt-8 flex flex-wrap items-center gap-5 text-sm text-white/40'},
+   h('div',{className:'w-12 h-[2px] bg-[#33B894]'}),
+   h('span',null,h('strong',{className:'text-white/60'},'Inflexion Research')),
+   h('span',null,'11 mars 2026'),
+   h('span',null,'14 min de lecture')
+  )
+ ),
+ h('div',{className:'hero-wave'},
+  h('svg',{viewBox:'0 0 1440 80',preserveAspectRatio:'none',xmlns:'http://www.w3.org/2000/svg'},
+   h('path',{d:'M0,40 C180,80 360,0 540,40 C720,80 900,10 1080,40 C1200,60 1350,20 1440,40 L1440,80 L0,80 Z',fill:'#FFFFFF',fillOpacity:'0.07'}),
+   h('path',{d:'M0,50 C200,20 400,70 600,40 C800,10 1000,60 1200,35 C1320,20 1400,50 1440,45 L1440,80 L0,80 Z',fill:'#FFFFFF',fillOpacity:'0.05'}),
+   h('path',{d:'M0,60 C240,40 480,75 720,55 C960,35 1200,65 1440,50 L1440,80 L0,80 Z',fill:'#FFFFFF'})
+  )
+ )
+)
+}
+
+// ─── ARTICLE CONTENT ─────────────────────────────────────────────────────────
+
+function ArticleContent(){
+return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20'},
+ h('div',{className:'flex flex-col lg:flex-row gap-10 lg:gap-12'},
+
+  h('article',{className:'prose flex-1 min-w-0'},
+
+   // Key figures
+   h('div',{className:'grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 my-8 sm:my-10 not-prose'},
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'28,2 Mt'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Terres rares Tanbreez \u2014 1er gisement mondial')
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'54'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Brise-glaces russes \u2014 dont 8 nucl\u00e9aires')
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'37 Mt'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Fret route maritime Nord 2025')
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'3,1/5'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Score SEMPLICE \u2014 \u00c9lev\u00e9')
+    )
+   ),
+
+   // Synth\u00e8se
+   h('div',{className:'not-prose my-8 rounded-xl overflow-hidden border-2 border-[#006650]/30',style:{background:'linear-gradient(135deg, #E8F5EE 0%, #F0FAF5 100%)'}},
+    h('div',{className:'flex items-center gap-2 px-5 py-3',style:{background:'linear-gradient(90deg, #006650, #006650)'}},
+     h('span',{className:'text-[11px] font-bold uppercase tracking-wider text-white'},'Synth\u00e8se ex\u00e9cutive')
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-[15px] text-[#1A1F2E] leading-relaxed'},
+      'L\u2019Arctique concentre d\u00e9sormais toutes les lignes de fracture g\u00e9opolitiques du XXIe si\u00e8cle. Le Groenland, avec ',h('strong',null,'28,2\u00a0millions de tonnes de terres rares'),' et 25 des 34 min\u00e9raux critiques de l\u2019UE, cristallise les convoitises \u2014 de la pression am\u00e9ricaine de Trump aux investissements chinois. La Russie domine le terrain avec ',h('strong',null,'54\u00a0brise-glaces'),' et la r\u00e9ouverture de bases sovi\u00e9tiques, tandis que l\u2019OTAN lance Arctic Sentry. Le Conseil de l\u2019Arctique, gel\u00e9 depuis 2022, peine \u00e0 contenir une comp\u00e9tition qui s\u2019acc\u00e9l\u00e8re autour des ',h('strong',null,'routes maritimes'),' (\u221240\u00a0% de trajet Shanghai\u2013Rotterdam) et des ',h('strong',{className:'text-[#006650]'},'ressources min\u00e9rales, \u00e9nerg\u00e9tiques et strat\u00e9giques'),' du Grand Nord.'
+     )
+    )
+   ),
+
+   // I. Groenland
+   h('h2',null,'I. Le Groenland au coeur du grand jeu\u00a0: convoitise am\u00e9ricaine et r\u00e9sistance danoise'),
+   h('p',null,
+    'L\u2019\u00e9pisode le plus spectaculaire de la comp\u00e9tition arctique r\u00e9cente est la tentative de ',h('strong',null,'Donald Trump d\u2019annexer le Groenland'),'. D\u00e8s d\u00e9cembre 2025, Trump a nomm\u00e9 Jeff Landry envoy\u00e9 sp\u00e9cial pour le Groenland, avec pour mission explicite de \u00ab\u00a0faire du Groenland une partie des \u00c9tats-Unis\u00a0\u00bb. En janvier 2026, il a menac\u00e9 d\u2019imposer une ',h('strong',null,'taxe de 25\u00a0% sur les importations europ\u00e9ennes'),' si le Danemark refusait de c\u00e9der le territoire, tout en refusant d\u2019exclure l\u2019usage de la force militaire (source\u00a0: ',h('a',{href:'https://www.cnbc.com/2026/01/07/why-trump-wants-greenland-and-what-makes-it-so-important-for-security.html',target:'_blank',className:'text-[#006650] hover:underline'},'CNBC'),', ',h('a',{href:'https://www.npr.org/2026/01/07/nx-s1-5670244/trump-greenland',target:'_blank',className:'text-[#006650] hover:underline'},'NPR'),').'
+   ),
+   h('p',null,
+    'Le 21 janvier, au Forum de Davos 2026, Trump a effectu\u00e9 un revirement partiel en s\u2019engageant \u00e0 ne pas utiliser la force ni les tarifs douaniers. Mais un \u00ab\u00a0',h('em',null,'framework deal'),'\u00a0\u00bb reste sur la table \u2014 ses contours restent flous (source\u00a0: ',h('a',{href:'https://www.aljazeera.com/news/2026/1/22/trumps-greenland-framework-deal-what-we-know-about-it-what-we-dont',target:'_blank',className:'text-[#006650] hover:underline'},'Al Jazeera'),').'
+   ),
+   h('p',null,
+    'La motivation strat\u00e9gique est triple. ',h('strong',null,'Premi\u00e8rement'),', le Groenland chevauche le ',h('strong',null,'GIUK gap'),' (Groenland\u2013Islande\u2013Royaume-Uni), corridor maritime essentiel pour contr\u00f4ler l\u2019acc\u00e8s \u00e0 l\u2019Atlantique Nord face aux sous-marins russes. ',h('strong',null,'Deuxi\u00e8mement'),', ses ressources min\u00e9rales \u2014 terres rares, graphite, uranium, zinc, p\u00e9trole \u2014 en font un enjeu de souverainet\u00e9 technologique. ',h('strong',null,'Troisi\u00e8mement'),', la base a\u00e9rienne de Thul\u00e9 (Pituffik Space Base) constitue un maillon cl\u00e9 du syst\u00e8me d\u2019alerte antimissile am\u00e9ricain (source\u00a0: ',h('a',{href:'https://www.csis.org/analysis/greenland-rare-earths-and-arctic-security',target:'_blank',className:'text-[#006650] hover:underline'},'CSIS'),', ',h('a',{href:'https://time.com/7344877/trump-greenland-annexation-threats-purchase-national-security-economic/',target:'_blank',className:'text-[#006650] hover:underline'},'TIME'),').'
+   ),
+   h('p',null,
+    'C\u00f4t\u00e9 groenlandais, ',h('strong',null,'85\u00a0% de la population'),' s\u2019oppose \u00e0 un rattachement am\u00e9ricain. Le mouvement ind\u00e9pendantiste gagne du terrain \u2014 les \u00e9lections parlementaires de 2026 produisent un paysage fragment\u00e9 o\u00f9 les voix en faveur d\u2019une ind\u00e9pendance acc\u00e9l\u00e9r\u00e9e se multiplient. Le Parlement europ\u00e9en a vot\u00e9 le 19 janvier 2026 une r\u00e9solution de soutien \u00e0 l\u2019int\u00e9grit\u00e9 territoriale du Groenland, les ministres nordiques r\u00e9affirmant le droit \u00e0 l\u2019autod\u00e9termination (source\u00a0: ',h('a',{href:'https://www.europarl.europa.eu/news/en/agenda/plenary-news/2026-01-19/1/support-for-greenland-s-territorial-integrity-and-sovereignty',target:'_blank',className:'text-[#006650] hover:underline'},'Parlement europ\u00e9en'),').'
+   ),
+
+   h('div',{className:'insight-box not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#006650] mb-2'},'Paradoxe groenlandais'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'Le Groenland d\u00e9pend du Danemark pour ',h('strong',null,'~60\u00a0% de son budget'),' via une subvention annuelle de ~3,9\u00a0milliards de couronnes danoises (~$570\u00a0M). L\u2019ind\u00e9pendance impliquerait de trouver des revenus alternatifs \u2014 pr\u00e9cis\u00e9ment l\u00e0 o\u00f9 l\u2019exploitation mini\u00e8re entre en jeu. Mais l\u2019interdiction de l\u2019extraction d\u2019uranium vot\u00e9e en 2021 bloque le projet phare de Kvanefjeld, cr\u00e9ant un dilemme entre aspirations souverainistes et r\u00e9alit\u00e9s \u00e9conomiques.'
+    )
+   ),
+
+   // II. Terres rares
+   h('h2',null,'II. La course aux min\u00e9raux critiques\u00a0: le tr\u00e9sor enfoui sous la glace'),
+   h('p',null,
+    'Le Groenland poss\u00e8de ',h('strong',null,'25 des 34 min\u00e9raux critiques'),' identifi\u00e9s par l\u2019UE dans sa liste officielle. Le gisement de ',h('strong',null,'Tanbreez'),', avec ses 28,2\u00a0millions de tonnes m\u00e9triques de terres rares, est potentiellement le plus important au monde. En juin 2025, l\u2019US Export-Import Bank a adress\u00e9 une lettre d\u2019int\u00e9r\u00eat pour un ',h('strong',null,'pr\u00eat de 120\u00a0millions de dollars'),' \u00e0 Critical Metals Corp pour financer le d\u00e9veloppement de Tanbreez (source\u00a0: ',h('a',{href:'https://www.mining.com/critical-metals-to-build-pilot-plant-in-greenland/',target:'_blank',className:'text-[#006650] hover:underline'},'MINING.COM'),').'
+   ),
+   h('p',null,
+    'Parall\u00e8lement, le projet de graphite d\u2019',h('strong',null,'Amitsoq'),' a obtenu deux validations majeures\u00a0: la d\u00e9signation de \u00ab\u00a0Projet strat\u00e9gique\u00a0\u00bb par l\u2019UE sous le Critical Raw Materials Act en juin 2025, et une licence d\u2019exploitation de 30\u00a0ans accord\u00e9e par le Groenland en d\u00e9cembre 2025 \u00e0 GreenRoc Mining Plc (source\u00a0: ',h('a',{href:'https://www.chathamhouse.org/2025/10/race-greenlands-rare-earth-minerals-heating-uk-should-work-europe-sustainable-strategy',target:'_blank',className:'text-[#006650] hover:underline'},'Chatham House'),').'
+   ),
+   h('p',null,
+    'Pourtant, ',h('strong',null,'aucune mine de terres rares n\u2019est en production commerciale'),' au Groenland \u00e0 ce jour. Les obstacles sont multiples\u00a0: l\u2019interdiction d\u2019extraction d\u2019uranium de 2021 (qui a bloqu\u00e9 le projet Kvanefjeld), les conditions climatiques extr\u00eames (temp\u00e9ratures descendant \u00e0 \u221240\u00b0C), l\u2019absence quasi-totale d\u2019infrastructures mini\u00e8res (pas de routes entre les localit\u00e9s), les r\u00e9sistances environnementales des communaut\u00e9s locales, et la complexit\u00e9 r\u00e9glementaire entre la gouvernance autonome groenlandaise et le cadre danois (source\u00a0: ',h('a',{href:'https://www.atlanticcouncil.org/dispatches/greenlands-critical-minerals-require-patient-statecraft/',target:'_blank',className:'text-[#006650] hover:underline'},'Atlantic Council'),').'
+   ),
+
+   h('div',{className:'insight-box gold not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2'},'Enjeu industriel mondial'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'La Chine contr\u00f4le actuellement ',h('strong',null,'~60\u00a0% de la production mondiale'),' et ',h('strong',null,'~90\u00a0% du raffinage'),' des terres rares \u2014 utilis\u00e9es dans les \u00e9oliennes, v\u00e9hicules \u00e9lectriques, \u00e9lectronique de d\u00e9fense et semi-conducteurs. Le d\u00e9veloppement des gisements groenlandais est une question de ',h('strong',null,'souverainet\u00e9 technologique'),' pour l\u2019Occident, mais les experts estiment qu\u2019une production significative ne sera pas possible avant ',h('strong',null,'2030-2035'),' au plus t\u00f4t.'
+    )
+   ),
+
+   // III. Russie
+   h('h2',null,'III. La Russie\u00a0: le ma\u00eetre de la glace'),
+   h('p',null,
+    'La Russie est la puissance arctique dominante en termes de capacit\u00e9s op\u00e9rationnelles. Avec ',h('strong',null,'54\u00a0brise-glaces, dont 8 \u00e0 propulsion nucl\u00e9aire'),', Moscou dispose d\u2019une flotte sans \u00e9quivalent mondial. En comparaison, les \u00c9tats-Unis ne poss\u00e8dent que deux brise-glaces lourds op\u00e9rationnels. La Russie pr\u00e9voit ',h('strong',null,'14 brise-glaces suppl\u00e9mentaires'),' d\u2019ici 2030, dont le Lider \u2014 d\u00e9crit par Poutine comme un navire de ',h('strong',null,'150\u00a0MW sans \u00e9quivalent mondial'),' \u2014 en construction au chantier naval Zvezda (source\u00a0: ',h('a',{href:'https://www.armyrecognition.com/news/navy-news/2026/russia-builds-arctic-power-edge-over-u-s-with-lider-nuclear-icebreaker-by-2030',target:'_blank',className:'text-[#006650] hover:underline'},'Army Recognition'),').'
+   ),
+   h('p',null,
+    'La militarisation de l\u2019Arctique russe s\u2019est acc\u00e9l\u00e9r\u00e9e depuis la guerre en Ukraine. Moscou a ',h('strong',null,'r\u00e9ouvert des bases sovi\u00e9tiques'),', d\u00e9ploy\u00e9 des syst\u00e8mes radar avanc\u00e9s, cr\u00e9\u00e9 un nouveau ',h('strong',null,'Commandement arctique'),' d\u00e9di\u00e9, et test\u00e9 des syst\u00e8mes d\u2019armes sp\u00e9cifiques \u00e0 l\u2019environnement polaire. Les brise-glaces eux-m\u00eames sont de plus en plus \u00ab\u00a0weaponis\u00e9s\u00a0\u00bb \u2014 capables de remplir des fonctions militaires en plus de leurs missions logistiques (source\u00a0: ',h('a',{href:'https://www.csis.org/analysis/ice-curtain-russias-arctic-military-presence',target:'_blank',className:'text-[#006650] hover:underline'},'CSIS'),', ',h('a',{href:'https://ecfr.eu/publication/the-bear-beneath-the-ice-russias-ambitions-in-the-arctic/',target:'_blank',className:'text-[#006650] hover:underline'},'ECFR'),').'
+   ),
+   h('p',null,
+    'La ',h('strong',null,'route maritime du Nord (NSR)'),' est l\u2019autre pilier de la strat\u00e9gie russe. En 2025, la route a enregistr\u00e9 ',h('strong',null,'103 transits par 88 navires'),' distincts, avec un volume total de 37\u00a0millions de tonnes de fret \u2014 en l\u00e9ger recul de 2,3\u00a0% par rapport \u00e0 2024, loin de l\u2019objectif de 80\u00a0Mt fix\u00e9 par Moscou. La NSR reste limit\u00e9e \u00e0 une saison navigable de ',h('strong',null,'quatre mois et demi'),' (source\u00a0: ',h('a',{href:'https://www.highnorthnews.com/en/northern-sea-route-2025-season-concludes-stable-transit-traffic-amid-challenging-ice-conditions',target:'_blank',className:'text-[#006650] hover:underline'},'High North News'),', ',h('a',{href:'https://euromaidanpress.com/2026/02/10/russia-arctic-shipping-route-decline/',target:'_blank',className:'text-[#006650] hover:underline'},'Euromaidan Press'),').'
+   ),
+
+   h('div',{className:'insight-box alert not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#DC2626] mb-2'},'Axe Moscou\u2013P\u00e9kin sur le passage arctique'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'Le 14 octobre 2025, la Russie et la Chine ont sign\u00e9 un accord pour ',h('strong',null,'d\u00e9velopper conjointement la route maritime du Nord'),', transformant le passage en \u00e9pine dorsale de la \u00ab\u00a0Route de la Soie polaire\u00a0\u00bb. La Chine a effectu\u00e9 un ',h('strong',null,'record de 14 voyages de conteneurs'),' via l\u2019Arctique en 2025, avec des plans d\u2019expansion pour 2026. Le trajet Shanghai\u2013Rotterdam est raccourci de ',h('strong',null,'7\u00a0000\u00a0km'),' (\u221240\u00a0% vs Suez), r\u00e9duisant les co\u00fbts de carburant de plus de 20\u00a0%.'
+    )
+   ),
+
+   // IV. OTAN et sécurité
+   h('h2',null,'IV. L\u2019OTAN et la nouvelle fronti\u00e8re nord\u00a0: Arctic Sentry'),
+   h('p',null,
+    'Face \u00e0 la mont\u00e9e en puissance russe, l\u2019OTAN a op\u00e9r\u00e9 un virage strat\u00e9gique majeur. En f\u00e9vrier 2026, l\u2019Alliance a lanc\u00e9 ',h('strong',null,'Arctic Sentry'),', coordonn\u00e9 par le Joint Force Command Norfolk. En octobre 2025, le ',h('strong',null,'Centre d\u2019op\u00e9rations a\u00e9riennes combin\u00e9es (CAOC) de Bod\u00f8'),', en Norv\u00e8ge, a \u00e9t\u00e9 inauguré \u2014 il supervise d\u00e9sormais les op\u00e9rations a\u00e9riennes dans la r\u00e9gion nordique, la mer Baltique, l\u2019Atlantique Nord et la mer de Barents (source\u00a0: ',h('a',{href:'https://www.nato.int/en/what-we-do/deterrence-and-defence/arctic-security',target:'_blank',className:'text-[#006650] hover:underline'},'OTAN'),').'
+   ),
+   h('p',null,
+    'Les d\u00e9ploiements se concr\u00e9tisent. Le Royaume-Uni ',h('strong',null,'double son contingent en Norv\u00e8ge arctique \u00e0 2\u00a0000 hommes'),' sur trois ans. La Su\u00e8de dirige une nouvelle force terrestre bas\u00e9e en Finlande d\u2019au moins ',h('strong',null,'4\u00a0000 soldats'),', avec des contributions britanniques, danoises, fran\u00e7aises, norv\u00e9giennes, islandaises et italiennes. En Alaska, le s\u00e9nateur Sullivan a d\u00e9clar\u00e9 que l\u2019\u00c9tat conna\u00eet le ',h('strong',null,'\u00ab\u00a0plus grand renforcement militaire depuis la Seconde Guerre mondiale\u00a0\u00bb'),' (source\u00a0: ',h('a',{href:'https://gvwire.com/2026/02/11/nato-is-stepping-up-arctic-security-heres-why/',target:'_blank',className:'text-[#006650] hover:underline'},'GV Wire'),', ',h('a',{href:'https://www.alaskasnewssource.com/2026/03/03/sullivan-alaska-experiencing-largest-military-buildup-since-wwii-amid-rising-arctic-threats/',target:'_blank',className:'text-[#006650] hover:underline'},'Alaska\u2019s News Source'),').'
+   ),
+   h('p',null,
+    'L\u2019adh\u00e9sion de la Finlande (2023) et de la Su\u00e8de (2024) \u00e0 l\u2019OTAN a transform\u00e9 la g\u00e9ographie de l\u2019Alliance dans le Grand Nord\u00a0: ',h('strong',null,'sept des huit \u00c9tats arctiques sont d\u00e9sormais membres de l\u2019OTAN'),', ne laissant que la Russie en dehors. Un rapport du Hudson Institute recommande le d\u00e9ploiement massif de ',h('strong',null,'drones autonomes'),' dans l\u2019Arctique pour combler les lacunes de surveillance dans cet espace immense (source\u00a0: ',h('a',{href:'https://ipdefenseforum.com/2026/02/report-recommends-large-arctic-drone-presence-for-nato/',target:'_blank',className:'text-[#006650] hover:underline'},'Indo-Pacific Defense Forum'),').'
+   ),
+
+   // V. Norvège, Canada, Chine
+   h('h2',null,'V. Norv\u00e8ge, Canada, Chine\u00a0: les autres joueurs du grand \u00e9chiquier'),
+   h('h3',null,'La Norv\u00e8ge\u00a0: entre p\u00e9trole et pr\u00e9caution'),
+   h('p',null,
+    'Oslo poursuit une strat\u00e9gie paradoxale. D\u2019un c\u00f4t\u00e9, la Norv\u00e8ge a ouvert un ',h('strong',null,'nombre record de licences d\u2019exploration p\u00e9troli\u00e8re'),' en 2025 via le cycle APA 2025\u00a0: 68 nouveaux blocs en mer de Barents, 57 licences de production attribu\u00e9es \u00e0 19 entreprises en 2026. Les deux champs producteurs arctiques \u2014 ',h('strong',null,'Johan Castberg et Goliat'),' \u2014 sont op\u00e9r\u00e9s par Equinor et V\u00e5r Energi. Le champ ',h('strong',null,'Wisting'),', plus grand gisement arctique non d\u00e9velopp\u00e9 du pays, attend une d\u00e9cision finale d\u2019investissement en 2026 (source\u00a0: ',h('a',{href:'https://oilprice.com/Latest-Energy-News/World-News/Norways-Oil-Industry-Raises-2026-Investment-Forecast.html',target:'_blank',className:'text-[#006650] hover:underline'},'OilPrice'),', ',h('a',{href:'https://worldoil.com/magazine/2026/january/features/regional-report-focus-on-arctic-oil-and-gas-sharpened-during-2025/',target:'_blank',className:'text-[#006650] hover:underline'},'World Oil'),').'
+   ),
+   h('p',null,
+    'De l\u2019autre, Oslo a ',h('strong',null,'gel\u00e9 l\u2019exploration mini\u00e8re en eaux profondes'),' jusqu\u2019\u00e0 2029 au moins, signalant une approche de pr\u00e9caution sur les ressources sous-marines. La ferm\u00e9ture de la Mine 7 au Svalbard en 2023 a mis fin \u00e0 la production charbon\u00e8re norv\u00e9gienne dans l\u2019archipel (source\u00a0: ',h('a',{href:'https://bellona.org/news/arctic/2025-04-norway-opens-new-arctic-oil-fields-named-after-sea-ice-phenomenon-that-the-very-same-oil-will-contribute-to-melting',target:'_blank',className:'text-[#006650] hover:underline'},'Bellona'),').'
+   ),
+
+   h('h3',null,'Le Canada\u00a0: le passage du Nord-Ouest en question'),
+   h('p',null,
+    'Le Canada maintient que le passage du Nord-Ouest rel\u00e8ve de ses ',h('strong',null,'eaux int\u00e9rieures historiques'),', une position contest\u00e9e par Washington qui le consid\u00e8re comme un ',h('strong',null,'d\u00e9troit international'),' ouvert au transit libre. La fonte acc\u00e9l\u00e9r\u00e9e des glaces rend ce diff\u00e9rend juridique de plus en plus concret\u00a0: chaque ann\u00e9e, la fen\u00eatre navigable s\u2019\u00e9largit. Les Inuit, via l\u2019ICC Canada, d\u00e9fendent leurs droits souverains sur ces eaux en invoquant la D\u00e9claration des Nations Unies sur les droits des peuples autochtones (source\u00a0: ',h('a',{href:'https://www.belfercenter.org/research-analysis/explainer-northwest-passages-shipping-potential-legal-status-and-whats-stake',target:'_blank',className:'text-[#006650] hover:underline'},'Belfer Center'),').'
+   ),
+   h('p',null,
+    'En 2025, les garde-c\u00f4tes am\u00e9ricains ont ',h('strong',null,'suivi deux navires de recherche chinois'),' op\u00e9rant dans les eaux internationales au large de l\u2019Alaska \u2014 un signal de la pr\u00e9sence croissante de P\u00e9kin dans la r\u00e9gion.'
+   ),
+
+   h('h3',null,'La Chine\u00a0: le \u00ab\u00a0near-Arctic state\u00a0\u00bb'),
+   h('p',null,
+    'P\u00e9kin se pr\u00e9sente comme un \u00ab\u00a0\u00c9tat quasi-arctique\u00a0\u00bb depuis son Livre blanc de 2018, d\u00e9ployant la ',h('strong',null,'Route de la Soie polaire'),' comme extension du BRI. Outre le d\u00e9veloppement conjoint de la NSR avec la Russie, la Chine investit dans les ',h('strong',null,'infrastructures num\u00e9riques arctiques'),' \u2014 satellites et c\u00e2bles sous-marins \u2014 pour \u00e9tendre son empreinte technologique dans la r\u00e9gion. Les compagnies maritimes NewNew Shipping et Sea Legend Shipping ont effectu\u00e9 ',h('strong',null,'14 voyages record'),' de conteneurs via l\u2019Arctique en 2025, avec des plans d\u2019expansion pour 2026 (source\u00a0: ',h('a',{href:'https://gcaptain.com/china-expands-arctic-container-shipping-with-record-14-voyages-in-2025/',target:'_blank',className:'text-[#006650] hover:underline'},'gCaptain'),', ',h('a',{href:'https://www.thearcticinstitute.org/chinas-digital-footprint-arctic-strategic-role-satellite-subsea-cable-infrastructure/',target:'_blank',className:'text-[#006650] hover:underline'},'The Arctic Institute'),').'
+   ),
+   h('p',null,
+    'Cependant, le bilan de la Route de la Soie polaire reste mitig\u00e9. Plusieurs projets d\u2019investissement chinois ont \u00e9chou\u00e9 \u2014 notamment un corridor arctique via la Norv\u00e8ge, la Finlande et l\u2019Estonie, abandonn\u00e9 face aux r\u00e9sistances locales. La strat\u00e9gie chinoise s\u2019apparente davantage \u00e0 un ',h('strong',null,'jeu de long terme'),' qu\u2019\u00e0 une percée imm\u00e9diate (source\u00a0: ',h('a',{href:'https://www.rand.org/pubs/commentary/2025/02/is-the-polar-silk-road-a-highway-or-is-it-at-an-impasse.html',target:'_blank',className:'text-[#006650] hover:underline'},'RAND'),', ',h('a',{href:'https://www.thearcticinstitute.org/china-polar-silk-road-long-game-failed-strategy/',target:'_blank',className:'text-[#006650] hover:underline'},'The Arctic Institute'),').'
+   ),
+
+   // VI. Conseil de l'Arctique et coopération
+   h('h2',null,'VI. Le Conseil de l\u2019Arctique\u00a0: une coop\u00e9ration en sursis'),
+   h('p',null,
+    'Le Conseil de l\u2019Arctique, cr\u00e9\u00e9 en 1996 comme \u00ab\u00a0forum intergouvernemental de r\u00e9f\u00e9rence pour la coop\u00e9ration arctique\u00a0\u00bb, traverse sa pire crise existentielle. L\u2019invasion russe de l\u2019Ukraine en f\u00e9vrier 2022 a provoqu\u00e9 un ',h('strong',null,'gel des activit\u00e9s'),' par les sept autres membres. Environ ',h('strong',null,'70 projets sur 140'),' des groupes de travail ont \u00e9t\u00e9 repris sans participation russe \u00e0 partir de juin 2022 (source\u00a0: ',h('a',{href:'https://www.belfercenter.org/research-analysis/revitalizing-arctic-council',target:'_blank',className:'text-[#006650] hover:underline'},'Belfer Center'),').'
+   ),
+   h('p',null,
+    'En mai 2025, le Danemark, le Groenland et les \u00eeles F\u00e9ro\u00e9 ont pris la pr\u00e9sidence du Conseil \u00e0 Troms\u00f8. La coop\u00e9ration a ',h('strong',null,'partiellement repris'),' au niveau des groupes de travail, mais la Russie, par la voix de son vice-ministre des Affaires \u00e9trang\u00e8res Alexandre Grouchko, d\u00e9nonce le blocage d\u00e9lib\u00e9r\u00e9 par les Occidentaux de \u00ab\u00a0tous les moyens pacifiques de coop\u00e9ration\u00a0\u00bb. Moscou a m\u00eame menac\u00e9 de se retirer \u2014 comme elle l\u2019a fait du Conseil Euro-Arctique de Barents (source\u00a0: ',h('a',{href:'https://gjia.georgetown.edu/2022/06/29/is-it-possible-to-continue-cooperating-with-russia-in-the-arctic-council/',target:'_blank',className:'text-[#006650] hover:underline'},'Georgetown Journal'),').'
+   ),
+   h('p',null,
+    'Le Congr\u00e8s am\u00e9ricain a adopt\u00e9 en 2025 la r\u00e9solution ',h('strong',null,'H.Res.431'),', r\u00e9affirmant l\u2019engagement des \u00c9tats-Unis envers le Conseil. Mais la juxtaposition de cette r\u00e9solution avec les menaces de Trump sur le Groenland illustre les contradictions de la politique arctique am\u00e9ricaine. L\u2019avenir du Conseil d\u00e9pend de la capacit\u00e9 des \u00c9tats membres \u00e0 dissocier la coop\u00e9ration technique (environnement, recherche, peuples autochtones) de la confrontation g\u00e9opolitique.'
+   ),
+
+   h('div',{className:'insight-box not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#006650] mb-2'},'Dimension environnementale critique'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'L\u2019Arctique se r\u00e9chauffe ',h('strong',null,'quatre fois plus vite'),' que la moyenne mondiale. La fonte des glaces ouvre de nouvelles routes et rend les ressources accessibles \u2014 mais la d\u00e9gradation du permafrost menace les infrastructures russes existantes, tandis que la perte de r\u00e9flectivit\u00e9 (alb\u00e9do) acc\u00e9l\u00e8re le r\u00e9chauffement global. Le paradoxe\u00a0: les m\u00eames \u00c9tats qui exploitent le r\u00e9chauffement pour acc\u00e9der aux ressources arctiques alimentent le ph\u00e9nom\u00e8ne qui les rend accessibles.'
+    )
+   ),
+
+   // VII. Évaluation SEMPLICE
+   h('h2',null,'VII. \u00c9valuation SEMPLICE\u00a0: risque g\u00e9opolitique arctique'),
+   h('div',{className:'not-prose my-6 overflow-x-auto'},
+    h('table',{className:'w-full text-sm border-collapse'},
+     h('thead',null,
+      h('tr',{className:'bg-[#F7F8FA]'},
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Dimension'),
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Score'),
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Analyse')
+      )
+     ),
+     h('tbody',null,
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'S \u2014 Social'),
+       h('td',{className:'px-3 py-2.5 font-data text-[#006650] font-bold'},'2/5'),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Populations autochtones stables, revendications souverainistes Inuit l\u00e9gitimes, 85\u00a0% opposés \u00e0 l\u2019annexion US')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'E \u2014 \u00c9conomique'),
+       h('td',{className:'px-3 py-2.5 font-data text-[#006650] font-bold'},'3/5'),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Richesse mini\u00e8re colossale mais non exploit\u00e9e, NSR en stagnation (37 Mt), Groenland d\u00e9pendant \u00e0 60\u00a0% du Danemark')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'M \u2014 Militaire'),
+       h('td',{className:'px-3 py-2.5 font-data text-[#DC2626] font-bold'},'4/5'),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'54 brise-glaces russes, bases sovi\u00e9tiques rouvertes, Arctic Sentry OTAN, renforcement Alaska, coopération militaire Chine-Russie')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'P \u2014 Politique'),
+       h('td',{className:'px-3 py-2.5 font-data text-[#DC2626] font-bold'},'4/5'),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Menaces d\u2019annexion Trump, Conseil de l\u2019Arctique gel\u00e9, ind\u00e9pendantisme groenlandais, fragmentarion parlementaire')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'L \u2014 L\u00e9gal'),
+       h('td',{className:'px-3 py-2.5 font-data text-[#006650] font-bold'},'3/5'),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Diff\u00e9rend passage du Nord-Ouest (Canada vs US), revendications UNCLOS chevauchantes, ban uranium Groenland 2021')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'I \u2014 Information'),
+       h('td',{className:'px-3 py-2.5 font-data text-[#006650] font-bold'},'2/5'),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'D\u00e9sinformation russe limit\u00e9e, gouvernance nordique transparente, infrastructure num\u00e9rique arctique encore faible')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'C \u2014 Cyber'),
+       h('td',{className:'px-3 py-2.5 font-data text-[#006650] font-bold'},'3/5'),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Sabotages c\u00e2bles sous-marins en Baltique, empreinte num\u00e9rique chinoise croissante, vuln\u00e9rabilit\u00e9s infrastructures critiques')
+      ),
+      h('tr',null,
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'E \u2014 Environnemental'),
+       h('td',{className:'px-3 py-2.5 font-data text-[#DC2626] font-bold'},'4/5'),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'R\u00e9chauffement 4x plus rapide, fonte banquise, d\u00e9gradation permafrost, Norv\u00e8ge expand p\u00e9trole malgr\u00e9 engagements climat')
+      )
+     )
+    )
+   ),
+   h('p',null,
+    h('strong',null,'Score composite\u00a0: 3,1/5 \u2014 \u00c9lev\u00e9'),'. La r\u00e9gion arctique pr\u00e9sente un profil de risque tir\u00e9 par les dimensions militaire, politique et environnementale, partiellement compens\u00e9 par la stabilit\u00e9 sociale et la transparence informationnelle des \u00c9tats nordiques.'
+   ),
+
+   // VIII. Scénarios
+   h('h2',null,'VIII. Trois sc\u00e9narios pour l\u2019Arctique \u00e0 horizon 2030'),
+
+   h('div',{className:'not-prose my-6 rounded-xl overflow-hidden border border-[#006650]/20 bg-[#F0FAF5]'},
+    h('div',{className:'px-5 py-3 bg-[#006650]/10 border-b border-[#006650]/20'},
+     h('div',{className:'flex items-center justify-between'},
+      h('span',{className:'text-sm font-bold text-[#006650]'},'Sc\u00e9nario 1 \u2014 Coop\u00e9ration multilat\u00e9rale relanc\u00e9e'),
+      h('span',{className:'text-xs font-semibold text-[#006650] bg-[#006650]/10 px-2 py-1 rounded'},'25\u00a0%')
+     )
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+      h('strong',null,'D\u00e9clencheurs'),' : r\u00e9solution du conflit ukrainien, changement d\u2019administration US, pressions climatiques forc\u00e7ant la coop\u00e9ration. Le Conseil de l\u2019Arctique reprend ses travaux \u00e0 plein r\u00e9gime. L\u2019UE et le Groenland formalisent un partenariat-cadre sur les min\u00e9raux critiques. Les projets miniers avancent sous supervision environnementale stricte. La NSR est ouverte \u00e0 la navigation internationale avec un r\u00e9gime de r\u00e8gles partag\u00e9es. ',h('strong',null,'Perspectives'),' : d\u00e9veloppement ordonn\u00e9 des ressources, r\u00e9duction des tensions militaires, b\u00e9n\u00e9fices pour les communaut\u00e9s autochtones.'
+     )
+    )
+   ),
+
+   h('div',{className:'not-prose my-6 rounded-xl overflow-hidden border border-[#EAB308]/20 bg-[#FFFBEB]'},
+    h('div',{className:'px-5 py-3 bg-[#EAB308]/10 border-b border-[#EAB308]/20'},
+     h('div',{className:'flex items-center justify-between'},
+      h('span',{className:'text-sm font-bold text-[#92400E]'},'Sc\u00e9nario 2 \u2014 Comp\u00e9tition encadr\u00e9e (sc\u00e9nario central)'),
+      h('span',{className:'text-xs font-semibold text-[#92400E] bg-[#EAB308]/10 px-2 py-1 rounded'},'50\u00a0%')
+     )
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+      h('strong',null,'Trajectoire'),' : la comp\u00e9tition se poursuit mais dans un cadre de dissuasion. Les accords bilat\u00e9raux remplacent le multilat\u00e9ralisme\u00a0: deals min\u00e9raux US-Groenland, d\u00e9veloppement NSR Chine-Russie, partenariats nordiques via l\u2019OTAN. La militarisation continue sans confrontation directe. Les projets miniers progressent lentement (Tanbreez pilot plant 2027-2028). Le Groenland n\u00e9gocie son autonomie \u00e9conomique sans ind\u00e9pendance formelle. ',h('strong',null,'Perspectives'),' : fen\u00eatre d\u2019investissement s\u00e9lective dans les min\u00e9raux critiques, prime de risque g\u00e9opolitique mod\u00e9r\u00e9e, march\u00e9s \u00e9nerg\u00e9tiques norv\u00e9giens stables.'
+     )
+    )
+   ),
+
+   h('div',{className:'not-prose my-6 rounded-xl overflow-hidden border border-[#DC2626]/20 bg-[#FEF2F2]'},
+    h('div',{className:'px-5 py-3 bg-[#DC2626]/10 border-b border-[#DC2626]/20'},
+     h('div',{className:'flex items-center justify-between'},
+      h('span',{className:'text-sm font-bold text-[#991B1B]'},'Sc\u00e9nario 3 \u2014 Escalade et fragmentation'),
+      h('span',{className:'text-xs font-semibold text-[#991B1B] bg-[#DC2626]/10 px-2 py-1 rounded'},'25\u00a0%')
+     )
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+      h('strong',null,'D\u00e9clencheurs'),' : Trump relance la pression \u00e9conomique sur le Danemark (tarifs 25\u00a0%), la Russie et la Chine formalisent une alliance militaire arctique, incidents navals en mer de Barents ou au Svalbard. Le Conseil de l\u2019Arctique s\u2019effondre d\u00e9finitivement. La course aux revendications de plateau continental s\u2019intensifie. Des incidents hybrides (sabotage de c\u00e2bles, confrontations maritimes) se multiplient. ',h('strong',null,'Perspectives'),' : blocage des projets miniers, forte volatilit\u00e9 \u00e9nerg\u00e9tique, risque d\u2019escalade militaire dans le Grand Nord.'
+     )
+    )
+   ),
+
+   // Indicateurs
+   h('h3',null,'Indicateurs \u00e0 surveiller'),
+   h('div',{className:'insight-box not-prose'},
+    h('ul',{className:'space-y-1.5 text-sm text-[#3A3A3A]'},
+     h('li',null,h('strong',null,'Volume NSR > 50 Mt/an'),' \u2014 seuil de viabilit\u00e9 commerciale de la route'),
+     h('li',null,h('strong',null,'Premi\u00e8re mine groenlandaise en production'),' \u2014 signal de faisabilit\u00e9 industrielle'),
+     h('li',null,h('strong',null,'R\u00e9f\u00e9rendum ind\u00e9pendance Groenland'),' \u2014 reconfiguration majeure'),
+     h('li',null,h('strong',null,'Exercices militaires conjoints Chine-Russie en Arctique'),' \u2014 escalade'),
+     h('li',null,h('strong',null,'Nouveau cycle de tarifs US sur l\u2019UE li\u00e9 au Groenland'),' \u2014 coercition \u00e9conomique'),
+     h('li',null,h('strong',null,'Sabotage d\u2019infrastructure sous-marine arctique'),' \u2014 hybridit\u00e9 confirm\u00e9e')
+    )
+   ),
+
+   // Disclaimer AMF
+   h('div',{className:'insight-box gold not-prose mt-10'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2'},'Avertissement AMF'),
+    h('p',{className:'text-xs text-[#6A6A6A] leading-relaxed'},
+     'Les analyses publi\u00e9es par Inflexion sont fournies \u00e0 titre informatif et ne constituent en aucun cas un conseil en investissement, une recommandation personnalis\u00e9e ou une incitation \u00e0 acheter ou vendre des instruments financiers. Les performances pass\u00e9es ne pr\u00e9jugent pas des performances futures. Tout investissement comporte des risques de perte en capital. Les \u00e9valuations de risque SEMPLICE refl\u00e8tent une appr\u00e9ciation \u00e0 date et ne constituent pas une garantie.'
+    )
+   ),
+
+   // Sources
+   h('div',{className:'pt-8 mt-8 border-t border-[#ECEEF2] not-prose'},
+    h('h4',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] mb-3'},'Sources principales (fiabilit\u00e9 A/B)'),
+    h('ul',{className:'space-y-1.5'},
+     h('li',null,h('a',{href:'https://www.csis.org/analysis/greenland-rare-earths-and-arctic-security',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'CSIS \u2014 Greenland, Rare Earths, and Arctic Security')),
+     h('li',null,h('a',{href:'https://www.cnbc.com/2026/01/07/why-trump-wants-greenland-and-what-makes-it-so-important-for-security.html',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'CNBC \u2014 Why Trump Wants Greenland')),
+     h('li',null,h('a',{href:'https://www.cfr.org/articles/greenlands-independence-what-would-mean-us-interests',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'CFR \u2014 The Trump Administration\u2019s Push for Greenland')),
+     h('li',null,h('a',{href:'https://ecfr.eu/publication/the-bear-beneath-the-ice-russias-ambitions-in-the-arctic/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'ECFR \u2014 The Bear Beneath the Ice: Russia\u2019s Ambitions in the Arctic')),
+     h('li',null,h('a',{href:'https://www.csis.org/analysis/ice-curtain-russias-arctic-military-presence',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'CSIS \u2014 The Ice Curtain: Russia\u2019s Arctic Military Presence')),
+     h('li',null,h('a',{href:'https://www.armyrecognition.com/news/navy-news/2026/russia-builds-arctic-power-edge-over-u-s-with-lider-nuclear-icebreaker-by-2030',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Army Recognition \u2014 Russia\u2019s Lider Nuclear Icebreaker by 2030')),
+     h('li',null,h('a',{href:'https://www.highnorthnews.com/en/northern-sea-route-2025-season-concludes-stable-transit-traffic-amid-challenging-ice-conditions',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'High North News \u2014 Northern Sea Route 2025 Season')),
+     h('li',null,h('a',{href:'https://gcaptain.com/china-expands-arctic-container-shipping-with-record-14-voyages-in-2025/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'gCaptain \u2014 China Expands Arctic Container Shipping (14 Voyages Record)')),
+     h('li',null,h('a',{href:'https://www.nato.int/en/what-we-do/deterrence-and-defence/arctic-security',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'OTAN \u2014 Arctic Security')),
+     h('li',null,h('a',{href:'https://www.mining.com/critical-metals-to-build-pilot-plant-in-greenland/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'MINING.COM \u2014 Critical Metals Pilot Plant in Greenland')),
+     h('li',null,h('a',{href:'https://www.atlanticcouncil.org/dispatches/greenlands-critical-minerals-require-patient-statecraft/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Atlantic Council \u2014 Greenland\u2019s Critical Minerals Require Patient Statecraft')),
+     h('li',null,h('a',{href:'https://www.chathamhouse.org/2025/10/race-greenlands-rare-earth-minerals-heating-uk-should-work-europe-sustainable-strategy',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Chatham House \u2014 The Race for Greenland\u2019s Rare Earth Minerals')),
+     h('li',null,h('a',{href:'https://www.europarl.europa.eu/news/en/agenda/plenary-news/2026-01-19/1/support-for-greenland-s-territorial-integrity-and-sovereignty',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Parlement europ\u00e9en \u2014 Support for Greenland\u2019s Territorial Integrity')),
+     h('li',null,h('a',{href:'https://www.rand.org/pubs/commentary/2025/02/is-the-polar-silk-road-a-highway-or-is-it-at-an-impasse.html',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'RAND \u2014 Is the Polar Silk Road a Highway or an Impasse?')),
+     h('li',null,h('a',{href:'https://www.belfercenter.org/research-analysis/explainer-northwest-passages-shipping-potential-legal-status-and-whats-stake',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Belfer Center \u2014 The Northwest Passage: Legal Status and What\u2019s at Stake')),
+     h('li',null,h('a',{href:'https://oilprice.com/Latest-Energy-News/World-News/Norways-Oil-Industry-Raises-2026-Investment-Forecast.html',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'OilPrice \u2014 Norway\u2019s Oil Industry 2026 Investment Forecast')),
+     h('li',null,h('a',{href:'https://www.thearcticinstitute.org/china-polar-silk-road-long-game-failed-strategy/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'The Arctic Institute \u2014 China\u2019s Polar Silk Road: Long Game or Failed Strategy?')),
+     h('li',null,h('a',{href:'https://gvwire.com/2026/02/11/nato-is-stepping-up-arctic-security-heres-why/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'GV Wire \u2014 NATO Is Stepping Up Arctic Security'))
+    ),
+    h('p',{className:'mt-3 text-[10px] text-[#6A6A6A] italic'},'Collecte OSINT\u00a0: 10 recherches parall\u00e8les, 40+ sources crois\u00e9es. Grille de fiabilit\u00e9 A/B. Mis \u00e0 jour le 11 mars 2026.')
+   ),
+
+   // Back nav
+   h('div',{className:'mt-10 text-center not-prose'},
+    h('a',{href:'analyses.html',className:'inline-block px-6 py-2.5 text-sm font-semibold text-[#006650] border-2 border-[#006650] rounded-lg hover:bg-[#006650] hover:text-white transition-colors'},'\u2190 Toutes les analyses')
+   )
+  ),
+
+  // Sidebar
+  h('aside',{className:'hidden lg:block lg:w-[220px] flex-shrink-0'},
+   h('div',{className:'lg:sticky lg:top-24'},
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Articles li\u00e9s'),
+    h('div',{className:'flex flex-col gap-4'},
+     ...RELATED_ARTICLES.map(a=>
+      h('a',{key:a.id,href:a.href,className:'article-card block rounded-xl overflow-hidden bg-white border border-[#E2E5EB] no-underline'},
+       h('div',{className:'aspect-[16/9] overflow-hidden'},
+        h('img',{src:a.img,alt:'',className:'w-full h-full object-cover',loading:'lazy'})
+       ),
+       h('div',{className:'p-3'},
+        h('span',{className:`category-${a.cat} text-[9px] font-semibold uppercase tracking-wider text-white px-1.5 py-0.5 rounded`},a.catLabel),
+        h('h4',{className:'mt-2 text-xs font-semibold text-[#1A1F2E] leading-snug line-clamp-2',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},a.title)
+       )
+      )
+     )
+    )
+   )
+  )
+ )
+)
+}
+
+// ─── MARKET TICKER ───────────────────────────────────────────────────────────
+
+function MarketTicker(){
+const items=[...TICKER_DATA,...TICKER_DATA]
+return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 overflow-hidden py-3 bg-[#006650]'},
+ h('div',{className:'ticker-track flex gap-8 whitespace-nowrap'},
+  items.map((t,i)=>h('div',{key:i,className:'flex items-center gap-2 text-sm'},
+   h('span',{className:'font-medium text-white/70'},t.symbol),
+   h('span',{className:'text-white/90 font-semibold font-data'},t.value),
+   h('span',{className:`font-medium font-data ${t.up?'text-[#34D399]':'text-[#F87171]'}`},
+    (t.up?'\u25b2 ':'\u25bc ')+t.change
+   )
+  ))
+ )
+)
+}
+
+// ─── FOOTER ──────────────────────────────────────────────────────────────────
+
+function Footer(){
+const footerLinks={
+intelligence:[
+{label:'G\u00e9opolitique',href:'geopolitics.html'},
+{label:'March\u00e9s',href:'markets.html'},
+{label:'Crypto',href:'crypto.html'},
+{label:'Mati\u00e8res premi\u00e8res',href:'commodities.html'},
+{label:'ETF & Fonds',href:'etf.html'},
+],
+plateforme:[
+{label:'Analyses',href:'analyses.html'},
+{label:'Expertise',href:'expertise.html'},
+{label:'Services',href:'premium.html'},
+{label:'Diagnostic',href:'premium.html#diagnostic'},
+],
+}
+const sources=['CSIS','OTAN','RAND','Arctic Institute','ECFR','Chatham House','Atlantic Council','High North News','Belfer Center','MINING.COM']
+
+return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-12 sm:pt-16 pb-24 sm:pb-20'},
+ h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+  h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-10 mb-12'},
+   h('div',{className:'col-span-2 md:col-span-1'},
+    h('div',{className:'flex items-center gap-2 mb-4'},
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto'})
+    ),
+    h('p',{className:'text-sm text-[#5A6178] leading-relaxed'},'Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.')
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Intelligence'),
+    h('ul',{className:'space-y-2.5'},
+     ...footerLinks.intelligence.map(l=>
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+     )
+    )
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Plateforme'),
+    h('ul',{className:'space-y-2.5'},
+     ...footerLinks.plateforme.map(l=>
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+     )
+    )
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Suivez-nous'),
+    h('div',{className:'flex items-center gap-3 mb-4'},
+     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+      h('svg',{width:16,height:16,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'}))
+     ),
+     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+      h('svg',{width:14,height:14,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'}))
+     )
+    ),
+    h('a',{href:'#',className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},'Contact')
+   )
+  ),
+  h('div',{className:'border-t border-[#E2E5EB] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
+   h('span',{className:'text-sm text-[#5A6178]'},'\u00a9 2026 Inflexion \u2014 Intelligence financi\u00e8re & g\u00e9opolitique'),
+   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#5A6178]/40 font-medium'},
+    ...sources.map(s=>h('span',{key:s},s))
+   )
+  )
+ )
+)
+}
+
+// ─── APP ─────────────────────────────────────────────────────────────────────
+
+function App(){
+return h('div',{className:'pb-16'},
+ h(Navigation),
+ h(ArticleHero),
+ h(ArticleContent),
+ h(Footer),
+ h(MarketTicker)
+)
+}
+
+createRoot(document.getElementById('app')).render(h(App))
+</script>
+</body>
+</html>
