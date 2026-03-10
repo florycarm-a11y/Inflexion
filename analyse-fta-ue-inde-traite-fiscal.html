@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>FTA UE-Inde : le deal &#224; 2 milliards de personnes et la refonte fiscale &#8212; Inflexion</title>
+<meta name="description" content="96,6 % des tarifs &#233;limin&#233;s, trait&#233; fiscal r&#233;&#233;crit apr&#232;s 34 ans, &#8364;4 milliards d&#8217;&#233;conomies annuelles. L&#8217;accord de libre-&#233;change UE-Inde et la refonte fiscale bilat&#233;rale ouvrent une fen&#234;tre d&#8217;investissement historique pour les entreprises fran&#231;aises."/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{brand:{900:'#06402A',800:'#006650',700:'#007A60',600:'#008066',500:'#00997A',400:'#33B894',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden}
+
+h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
+.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#006650}
+
+@keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-track{animation:ticker-scroll 30s linear infinite}
+.ticker-track:hover{animation-play-state:paused}
+@keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.anim-fade-up{animation:fade-up .6s ease-out both}
+.anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}
+
+.nav-link{position:relative}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.mega-trigger{position:relative}
+.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:520px;z-index:60}
+.mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.mega-item{transition:background .15s ease}
+.mega-item:hover{background:rgba(27,107,74,.06)}
+.mega-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.nav-scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid #E2E5EB;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+
+.hamburger span{display:block;width:24px;height:2px;background:#1A1F2E;margin:5px 0;transition:all .3s ease}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-overlay{opacity:0;visibility:hidden;transition:opacity .35s cubic-bezier(.4,0,.2,1),visibility .35s;height:100dvh}
+.mobile-overlay.open{opacity:1;visibility:visible}
+@keyframes menu-item-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.menu-item{opacity:0}
+.mobile-overlay.open .menu-item{animation:menu-item-in .4s ease-out forwards}
+body.menu-open{overflow:hidden}
+
+.prose p{margin-bottom:1.25rem;font-size:1rem;line-height:1.75;color:#3A3A3A}
+@media(min-width:640px){.prose p{font-size:1.0625rem;line-height:1.8}}
+.prose strong{color:#1A1F2E}
+.prose h2{font-size:1.375rem;color:#006650;margin-top:2.5rem;margin-bottom:1rem;line-height:1.3}
+@media(min-width:640px){.prose h2{font-size:1.625rem;margin-top:3.25rem;margin-bottom:1.25rem}}
+.prose h3{font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;color:#006650;margin-top:1.75rem;margin-bottom:0.75rem;letter-spacing:0.3px}
+@media(min-width:640px){.prose h3{font-size:1.0625rem;margin-top:2rem}}
+
+.key-figure{background:linear-gradient(135deg,#006650 0%,#06402A 100%);border-radius:0.5rem;padding:1.5rem 1rem;text-align:center;position:relative;overflow:hidden}
+@media(min-width:640px){.key-figure{padding:2.5rem 2rem}}
+.key-figure::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#006650,#33B894,rgba(255,255,255,0.3))}
+
+.insight-box{border-left:3px solid #006650;background:#F7F8FA;padding:1rem 1rem;margin:1.5rem 0;border-radius:0 0.5rem 0.5rem 0}
+@media(min-width:640px){.insight-box{padding:1.25rem 1.5rem;margin:1.75rem 0}}
+.insight-box.alert{border-left-color:#DC2626}
+.insight-box.gold{border-left-color:#EAB308}
+
+.article-card{transition:transform .2s ease,box-shadow .2s ease}
+.article-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(10,22,40,.08)}
+
+.category-geo{background:#2563eb}.category-geopolitique{background:#2563eb}.category-marches{background:#006650}.category-crypto{background:#f59e0b}.category-matieres{background:#ef4444}.category-iatech{background:#8b5cf6}
+
+.font-data{font-family:'JetBrains Mono','SF Mono',monospace}
+
+/* Hero gradient dynamique 3D */
+@keyframes hero-gradient-shift{
+0%{background-position:0% 50%}
+25%{background-position:100% 25%}
+50%{background-position:100% 75%}
+75%{background-position:0% 100%}
+100%{background-position:0% 50%}
+}
+@keyframes hero-orb-float{
+0%,100%{transform:translate(0,0) scale(1)}
+33%{transform:translate(30px,-20px) scale(1.1)}
+66%{transform:translate(-20px,15px) scale(0.95)}
+}
+.hero-dynamic{
+background:linear-gradient(135deg,#004D3D 0%,#006650 25%,#007A60 50%,#06402A 75%,#004D3D 100%);
+background-size:400% 400%;
+animation:hero-gradient-shift 12s ease infinite;
+position:relative;
+overflow:hidden;
+}
+.hero-dynamic::before{
+content:'';
+position:absolute;
+top:-50%;left:-50%;
+width:200%;height:200%;
+background:radial-gradient(ellipse at 30% 20%,rgba(51,184,148,.15) 0%,transparent 50%),
+            radial-gradient(ellipse at 70% 80%,rgba(0,122,96,.2) 0%,transparent 50%),
+            radial-gradient(ellipse at 50% 50%,rgba(200,149,90,.06) 0%,transparent 40%);
+animation:hero-orb-float 8s ease-in-out infinite;
+pointer-events:none;
+}
+.hero-dynamic::after{
+content:'';
+position:absolute;
+bottom:0;left:0;right:0;
+height:120px;
+background:linear-gradient(to top,rgba(255,255,255,.06) 0%,transparent 100%);
+pointer-events:none;
+}
+.hero-wave{
+position:absolute;
+bottom:-1px;left:0;right:0;
+width:100%;
+line-height:0;
+z-index:2;
+}
+.hero-wave svg{
+width:100%;
+height:60px;
+display:block;
+}
+@media(min-width:768px){
+.hero-wave svg{height:80px}
+}
+
+.glass{background:rgba(0,102,80,.06);backdrop-filter:blur(16px);border:1px solid rgba(0,102,80,.10)}
+.glass-light{background:rgba(0,102,80,.04);backdrop-filter:blur(12px);border:1px solid rgba(0,102,80,.06)}
+.hero-dark{background-color:#006650;color:#FFFFFF}
+.hero-dark h1,.hero-dark h2,.hero-dark .display-text{color:#FFFFFF}
+.section-alt{background-color:#F7F8FA}
+.section-divider{border-top:1px solid #ECEEF2}
+.featured-card{position:relative;overflow:hidden}
+.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:#006650;transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
+.featured-card:hover::before{transform:scaleY(1)}
+.hero-glow{position:absolute;top:-120px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,102,80,.06) 0%,transparent 70%);pointer-events:none}
+@media(max-width:768px){
+html,body{overflow-x:hidden}
+img{max-width:100%;height:auto}
+button,a[href]:not(.prose a){min-height:44px;min-width:44px}
+.mobile-overlay .menu-item a{min-height:48px;display:flex;align-items:center}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script type="module">
+import React,{useState,useEffect,useRef} from 'https://esm.sh/react@18.2.0'
+import{createRoot}from 'https://esm.sh/react-dom@18.2.0/client'
+
+const h=React.createElement
+
+const RELATED_ARTICLES=[
+{id:1,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'P\u00e9trole \u00e0 119 $ : Op\u00e9ration Epic Fury, Ormuz ferm\u00e9 et le jeu dangereux de Trump',img:'https://images.unsplash.com/photo-1516937941344-00b4e0337589?w=300&h=200&fit=crop',href:'analyse-petrole-trump-iran-ormuz.html'},
+{id:2,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'Droits de douane, Groenland : la doctrine Trump en actes',img:'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=300&h=200&fit=crop',href:'analyse-droits-douane-trump-groenland.html'},
+{id:3,cat:'marches',catLabel:'March\u00e9s',title:'Corridor d\u00e9fense France-Inde : 140 Rafale et le pari du Tamil Nadu',img:'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=300&h=200&fit=crop',href:'analyse-corridor-defense-france-inde.html'},
+]
+
+const MEGA_NAV=[
+{label:'Intelligence',children:[
+ {icon:'\ud83c\udf0d',label:'G\u00e9opolitique',desc:'Risques pays & tensions internationales',href:'geopolitics.html'},
+ {icon:'\ud83d\udcc8',label:'March\u00e9s',desc:'Actions, indices, taux & devises',href:'markets.html'},
+ {icon:'\u20bf',label:'Crypto & Blockchain',desc:'Bitcoin, DeFi, r\u00e9gulation',href:'crypto.html'},
+ {icon:'\ud83d\udee2\ufe0f',label:'Mati\u00e8res premi\u00e8res',desc:'Or, p\u00e9trole, m\u00e9taux & \u00e9nergie',href:'commodities.html'},
+ {icon:'\ud83d\udcca',label:'ETF & Fonds',desc:'Allocations & flux de capitaux',href:'etf.html'},
+]},
+{label:'Analyses',children:[
+ {icon:'\ud83d\udcf0',label:'Briefing du jour',desc:'Synth\u00e8se IA quotidienne',href:'index.html#briefing'},
+ {icon:'\ud83d\udd0e',label:'Analyses approfondies',desc:'D\u00e9cryptages th\u00e9matiques',href:'analyses.html'},
+ {icon:'\ud83d\uddfa\ufe0f',label:'Macro par pays',desc:'Donn\u00e9es World Bank & indicateurs',href:'country.html'},
+]},
+{label:'Expertise',children:[
+ {icon:'\ud83e\udded',label:'Notre approche',desc:'M\u00e9thodologie & cadre d\'analyse',href:'expertise.html'},
+ {icon:'\ud83e\udd16',label:'Pipeline IA',desc:'158 sources, 15 APIs, Claude IA',href:'expertise.html#pipeline'},
+ {icon:'\ud83d\udce1',label:'Sources & donn\u00e9es',desc:'Transparence sur nos flux',href:'expertise.html#sources'},
+]},
+{label:'Services',children:[
+ {icon:'\ud83d\udcbc',label:'Diagnostic strat\u00e9gique',desc:'Audit personnalis\u00e9 de vos positions',href:'premium.html'},
+ {icon:'\ud83d\udd14',label:'Alertes & veille',desc:'Notifications personnalis\u00e9es',href:'premium.html#alertes'},
+ {icon:'\ud83d\udccb',label:'Rapports sur mesure',desc:'Analyses d\u00e9di\u00e9es \u00e0 votre portefeuille',href:'premium.html#rapports'},
+]},
+]
+
+const TICKER_DATA=[
+{symbol:'EUR/INR',value:'109.7',change:'+2.3%',up:true},
+{symbol:'Dassault Av.',value:'\u20ac287',change:'+14.2%',up:true},
+{symbol:'Safran',value:'\u20ac268',change:'+8.7%',up:true},
+{symbol:'Nifty 50',value:'22 850',change:'+1.1%',up:true},
+{symbol:'CAC 40',value:'8 012',change:'-0.3%',up:false},
+{symbol:'Saint-Gobain',value:'\u20ac92',change:'+3.1%',up:true},
+{symbol:'Renault',value:'\u20ac58',change:'+5.2%',up:true},
+{symbol:'Airbus',value:'\u20ac178',change:'+2.8%',up:true},
+]
+
+// ─── NAVIGATION ──────────────────────────────────────────────────────────────
+
+function Navigation(){
+const[open,setOpen]=useState(false)
+const[scrolled,setScrolled]=useState(false)
+useEffect(()=>{
+const fn=()=>setScrolled(window.scrollY>60)
+window.addEventListener('scroll',fn,{passive:true})
+return()=>window.removeEventListener('scroll',fn)
+},[])
+useEffect(()=>{
+if(open){document.body.classList.add('menu-open')}else{document.body.classList.remove('menu-open')}
+return()=>document.body.classList.remove('menu-open')
+},[open])
+return h('div',null,
+ h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#C8955A]'}),
+ h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
+  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+   h('div',{className:'flex items-center justify-between h-16'},
+    h('a',{href:'index.html',className:'flex items-center gap-2'},
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(10) saturate(0) invert(0)',transition:'filter 0.3s ease'}})
+    ),
+    h('nav',{className:'hidden md:flex items-center gap-1'},
+     ...MEGA_NAV.map((cat,ci)=>
+      h('div',{key:ci,className:'mega-trigger'},
+       h('span',{className:`nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none ${scrolled?'text-gray-500 hover:text-[#006650]':'text-white/70 hover:text-white'}`},cat.label),
+       h('div',{className:'mega-menu bg-white rounded-2xl shadow-xl border border-gray-100 p-5'},
+        h('div',{className:'grid gap-1'},
+         ...cat.children.map((item,ii)=>
+          h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline'},
+           h('span',{className:'mega-icon bg-[#006650]/10 text-[#006650]'},item.icon),
+           h('span',{className:'flex flex-col'},
+            h('span',{className:'text-sm font-semibold text-gray-900'},item.label),
+            h('span',{className:'text-xs text-gray-500 mt-0.5'},item.desc)
+           )
+          )
+         )
+        )
+       )
+      )
+     ),
+     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#006650] hover:bg-[#06402A] text-white font-semibold text-sm rounded-lg transition-colors'},'R\u00e9server un diagnostic')
+    ),
+    h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,'aria-label':'Menu',onClick:()=>setOpen(!open)},
+     h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}})
+    )
+   )
+  )
+ ),
+ h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#006650'}},
+  h('div',{className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0'},
+   h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-8 w-auto',style:{filter:'brightness(10) saturate(0)'}}),
+   h('button',{onClick:()=>setOpen(false),className:'w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
+    h('svg',{width:18,height:18,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2.5,strokeLinecap:'round',className:'text-white'},h('path',{d:'M18 6L6 18M6 6l12 12'}))
+   )
+  ),
+  h('div',{className:'flex-1 overflow-y-auto px-6 pt-2 pb-4'},
+   ...MEGA_NAV.map((cat,ci)=>[
+    h('p',{key:'h'+ci,className:'menu-item text-[11px] uppercase tracking-[.2em] text-white/40 font-semibold mb-3'+(ci>0?' mt-8':''),style:{animationDelay:`${0.05+ci*0.18}s`}},cat.label),
+    ...cat.children.map((item,ii)=>
+     h('a',{key:'m'+ci+'-'+ii,href:item.href,onClick:()=>setOpen(false),className:'menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8',style:{animationDelay:`${0.08+ci*0.18+ii*0.05}s`}},
+      h('span',{className:'text-base'},item.icon),
+      h('span',{className:'text-base sm:text-lg md:text-[20px] font-medium'},item.label)
+     )
+    )
+   ]).flat()
+  ),
+  h('div',{className:'px-6 pt-4 pb-20 flex-shrink-0'},
+   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-xl transition-colors text-base',style:{animationDelay:'0.85s'}},'R\u00e9server un diagnostic')
+  )
+ )
+)
+}
+
+// ─── ARTICLE HERO ────────────────────────────────────────────────────────────
+
+function ArticleHero(){
+const heroRef=useRef(null)
+useEffect(()=>{
+const el=heroRef.current
+if(!el)return
+const onScroll=()=>{
+const r=el.getBoundingClientRect()
+const p=Math.max(0,Math.min(1,-r.top/(r.height||1)))
+el.style.setProperty('--scroll',p)
+el.querySelector('.hero-content').style.transform=`translateY(${p*40}px)`
+el.querySelector('.hero-content').style.opacity=1-p*0.6
+}
+window.addEventListener('scroll',onScroll,{passive:true})
+return()=>window.removeEventListener('scroll',onScroll)
+},[])
+return h('section',{ref:heroRef,className:'hero-dynamic relative pt-28 pb-24 md:pt-36 md:pb-28'},
+ h('div',{className:'hero-content relative z-[3] max-w-3xl mx-auto px-4 sm:px-6',style:{willChange:'transform,opacity'}},
+  h('div',{className:'anim-fade-up flex items-center gap-3 mb-6'},
+   h('span',{className:'px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white rounded bg-[#2563eb]'},'G\u00c9OPOLITIQUE & MARCH\u00c9S'),
+   h('span',{className:'text-xs uppercase tracking-wider text-white/50'},'Commerce international')
+  ),
+  h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-[2.75rem] font-bold text-white leading-[1.15] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+   'FTA UE-Inde\u00a0: le deal \u00e0 2\u00a0milliards de personnes et la refonte fiscale qui change la donne'
+  ),
+  h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/60 leading-relaxed'},
+   '96,6\u00a0% des tarifs \u00e9limin\u00e9s, trait\u00e9 fiscal r\u00e9\u00e9crit apr\u00e8s 34\u00a0ans, \u20ac4\u00a0milliards d\u2019\u00e9conomies annuelles. L\u2019accord de libre-\u00e9change UE-Inde et la refonte fiscale bilat\u00e9rale ouvrent une fen\u00eatre d\u2019investissement historique pour les entreprises fran\u00e7aises.'
+  ),
+  h('div',{className:'anim-fade-up anim-d3 mt-8 flex flex-wrap items-center gap-5 text-sm text-white/40'},
+   h('div',{className:'w-12 h-[2px] bg-[#33B894]'}),
+   h('span',null,h('strong',{className:'text-white/60'},'Inflexion Research')),
+   h('span',null,'10 mars 2026'),
+   h('span',null,'12 min de lecture')
+  )
+ ),
+ h('div',{className:'hero-wave'},
+  h('svg',{viewBox:'0 0 1440 80',preserveAspectRatio:'none',xmlns:'http://www.w3.org/2000/svg'},
+   h('path',{d:'M0,40 C180,80 360,0 540,40 C720,80 900,10 1080,40 C1200,60 1350,20 1440,40 L1440,80 L0,80 Z',fill:'#FFFFFF',fillOpacity:'0.07'}),
+   h('path',{d:'M0,50 C200,20 400,70 600,40 C800,10 1000,60 1200,35 C1320,20 1400,50 1440,45 L1440,80 L0,80 Z',fill:'#FFFFFF',fillOpacity:'0.05'}),
+   h('path',{d:'M0,60 C240,40 480,75 720,55 C960,35 1200,65 1440,50 L1440,80 L0,80 Z',fill:'#FFFFFF'})
+  )
+ )
+)
+}
+
+// ─── ARTICLE CONTENT ─────────────────────────────────────────────────────────
+
+function ArticleContent(){
+return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20'},
+ h('div',{className:'flex flex-col lg:flex-row gap-10 lg:gap-12'},
+
+  h('article',{className:'prose flex-1 min-w-0'},
+
+   // Key figures
+   h('div',{className:'grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 my-8 sm:my-10 not-prose'},
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'96,6\u00a0%'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Tarifs UE \u00e9limin\u00e9s')
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'\u20ac4 Mds'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'\u00c9conomies annuelles droits de douane')
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'19 ans'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'De n\u00e9gociation pour aboutir')
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'5\u00a0%'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Nouveau taux dividendes (\u226510\u00a0% capital)')
+    )
+   ),
+
+   // Synth\u00e8se
+   h('div',{className:'not-prose my-8 rounded-xl overflow-hidden border-2 border-[#006650]/30',style:{background:'linear-gradient(135deg, #E8F5EE 0%, #F0FAF5 100%)'}},
+    h('div',{className:'flex items-center gap-2 px-5 py-3',style:{background:'linear-gradient(90deg, #006650, #006650)'}},
+     h('span',{className:'text-lg'},'\ud83d\udccc'),
+     h('span',{className:'text-[11px] font-bold uppercase tracking-wider text-white'},'Synth\u00e8se ex\u00e9cutive')
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-[15px] text-[#1A1F2E] leading-relaxed'},
+      'Le 27\u00a0janvier 2026, l\u2019UE et l\u2019Inde concluent le plus grand accord de libre-\u00e9change jamais n\u00e9goci\u00e9 par les deux parties \u2014 ',h('strong',null,'19\u00a0ans de tractations, 14\u00a0rounds formels, 24\u00a0chapitres'),'. ',h('strong',null,'96,6\u00a0%'),' des droits de douane sur les exports europ\u00e9ens seront \u00e9limin\u00e9s ou r\u00e9duits, repr\u00e9sentant ~',h('strong',null,'\u20ac4\u00a0milliards d\u2019\u00e9conomies annuelles'),'. Un mois plus tard, la visite d\u2019\u00c9tat de Macron en Inde (17-19\u00a0f\u00e9vrier) produit une refonte compl\u00e8te du trait\u00e9 fiscal bilat\u00e9ral vieux de 34\u00a0ans\u00a0: dividendes \u00e0 ',h('strong',{className:'text-[#006650]'},'5\u00a0% pour les participations strat\u00e9giques'),', suppression de la clause MFN disput\u00e9e jusqu\u2019en Cour supr\u00eame. Pour les entreprises fran\u00e7aises, c\u2019est une ',h('strong',null,'double fen\u00eatre sans pr\u00e9c\u00e9dent'),' \u2014 commerciale et fiscale.'
+     )
+    )
+   ),
+
+   // I. Chronologie
+   h('h2',null,'I. Dix-neuf ans pour un accord\u00a0: chronologie du FTA UE-Inde'),
+   h('p',null,
+    'L\u2019histoire de l\u2019accord de libre-\u00e9change UE-Inde est celle d\u2019un marathon diplomatique. Les n\u00e9gociations d\u00e9butent en ',h('strong',null,'juin\u00a02007'),', port\u00e9es par un optimisme post-mondialisation. Mais les divergences s\u2019accumulent\u00a0: protection des appellations d\u2019origine europ\u00e9ennes, acc\u00e8s au march\u00e9 des services, propri\u00e9t\u00e9 intellectuelle. En ',h('strong',null,'2013'),', les n\u00e9gociations sont officiellement suspendues. L\u2019Inde de Narendra Modi, \u00e9lue en 2014, privil\u00e9gie les accords bilat\u00e9raux et le programme \u00ab\u00a0Make in India\u00a0\u00bb.'
+   ),
+   h('p',null,
+    'La relance survient en ',h('strong',null,'mai\u00a02022'),', lors du sommet UE-Inde \u00e0 Porto. Le contexte g\u00e9opolitique a radicalement chang\u00e9\u00a0: la guerre en Ukraine r\u00e9v\u00e8le la d\u00e9pendance europ\u00e9enne \u00e0 la Russie, la strat\u00e9gie ',h('strong',null,'China+1'),' pousse les industriels occidentaux \u00e0 diversifier leurs cha\u00eenes d\u2019approvisionnement, et les ',h('strong',null,'tarifs Trump'),' (jusqu\u2019\u00e0 50\u00a0% sur les produits indiens) incitent New Delhi \u00e0 chercher des partenaires alternatifs. Les n\u00e9gociations reprennent \u00e0 un rythme acc\u00e9l\u00e9r\u00e9\u00a0: 14\u00a0rounds formels, dont le ',h('strong',null,'14e en octobre\u00a02025'),', qui scelle les derni\u00e8res concessions.'
+   ),
+   h('p',null,
+    'Le ',h('strong',null,'27\u00a0janvier\u00a02026'),', \u00e0 Hyderabad House \u00e0 New Delhi, les deux parties annoncent la conclusion de l\u2019accord. ',h('strong',null,'20 des 24\u00a0chapitres'),' sont pleinement agr\u00e9\u00e9s. Al Jazeera qualifie le FTA de \u00ab\u00a0',h('em',null,'mother of all deals'),'\u00a0\u00bb \u2014 un accord couvrant un march\u00e9 de plus de 2\u00a0milliards de personnes (source\u00a0: ec.europa.eu, CNBC, Al Jazeera, India Briefing).'
+   ),
+   h('p',null,
+    'Le contexte am\u00e9ricain a jou\u00e9 un r\u00f4le d\u00e9terminant. Le 2\u00a0f\u00e9vrier\u00a02026, les \u00c9tats-Unis et l\u2019Inde signent un accord r\u00e9duisant les ',h('strong',null,'tarifs am\u00e9ricains de 50\u00a0% \u00e0 18\u00a0%'),', en \u00e9change d\u2019achats accrus de produits am\u00e9ricains. Mais l\u2019instabilit\u00e9 de la politique commerciale de Trump \u2014 qui a menac\u00e9 la Cor\u00e9e du Sud apr\u00e8s un accord similaire \u2014 renforce l\u2019attrait d\u2019un ancrage europ\u00e9en stable pour l\u2019Inde.'
+   ),
+
+   // II. Contenu de l'accord
+   h('h2',null,'II. Ce que contient l\u2019accord\u00a0: secteur par secteur'),
+   h('h3',null,'Exports europ\u00e9ens vers l\u2019Inde'),
+   h('p',null,
+    'L\u2019accord \u00e9limine les tarifs sur ',h('strong',null,'96,6\u00a0% des biens export\u00e9s par l\u2019UE vers l\u2019Inde'),'. Les secteurs cl\u00e9s\u00a0: l\u2019Inde r\u00e9duit ses droits de douane sur les ',h('strong',null,'automobiles europ\u00e9ennes'),' (actuellement 60\u00a0\u00e0\u00a0100\u00a0% selon les segments), les ',h('strong',null,'produits agricoles transform\u00e9s'),' (vins, fromages hors appellations prot\u00e9g\u00e9es, huile d\u2019olive), les \u00e9quipements industriels et les biens de haute technologie. Pour les constructeurs automobiles fran\u00e7ais \u2014 Renault, Stellantis \u2014 c\u2019est un acc\u00e8s au ',h('strong',null,'troisi\u00e8me plus grand march\u00e9 automobile mondial'),' \u00e0 des conditions enfin comp\u00e9titives (source\u00a0: ec.europa.eu, India Briefing).'
+   ),
+   h('h3',null,'Exports indiens vers l\u2019UE'),
+   h('p',null,
+    'En contrepartie, l\u2019UE r\u00e9duit ses tarifs sur les ',h('strong',null,'textiles, le cuir, les produits de la mer, les pierres pr\u00e9cieuses et la joaillerie'),' indiens. Ces secteurs repr\u00e9sentent une part significative de l\u2019emploi industriel indien et constituaient le principal levier de n\u00e9gociation de New Delhi. Le chapitre services, particuli\u00e8rement sensible, pr\u00e9voit une lib\u00e9ralisation progressive des services IT et de la mobilit\u00e9 des professionnels indiens en Europe (source\u00a0: ECIPE, DLA Piper).'
+   ),
+   h('h3',null,'Les exclusions strat\u00e9giques'),
+   h('p',null,
+    'Contrairement au trait\u00e9 UE-Mercosur, le FTA UE-Inde a ',h('strong',null,'exclu les secteurs agricoles les plus sensibles'),' \u2014 b\u0153uf, produits laitiers, volaille. Cette d\u00e9cision est calcul\u00e9e\u00a0: elle \u00e9vite de r\u00e9p\u00e9ter le blocage politique qui a paralyse\u0301 le Mercosur au Parlement europ\u00e9en sous la pression des lobbies agricoles fran\u00e7ais et irlandais. La coop\u00e9ration r\u00e9glementaire couvre les normes SPS (sanitaires et phytosanitaires) et la reconnaissance mutuelle de certaines certifications industrielles.'
+   ),
+
+   h('div',{className:'insight-box not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#006650] mb-2'},'Inflexion Insight'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'Contrairement au Mercosur, le FTA UE-Inde a exclu les secteurs agricoles sensibles (b\u0153uf, produits laitiers), ',h('strong',null,'r\u00e9duisant consid\u00e9rablement le risque de blocage politique au Parlement europ\u00e9en'),'. La strat\u00e9gie de n\u00e9gociation diff\u00e8re radicalement\u00a0: sacrifier quelques pourcents de couverture tarifaire pour s\u00e9curiser la ratification.'
+    )
+   ),
+
+   h('h3',null,'Le point de friction\u00a0: CBAM et conventions OIT'),
+   h('p',null,
+    'Deux tensions structurelles persistent. Le ',h('strong',null,'m\u00e9canisme d\u2019ajustement carbone aux fronti\u00e8res (CBAM)'),' de l\u2019UE, entr\u00e9 en phase transitoire en 2026, pourrait cr\u00e9er une taxation de facto sur les exportations indiennes d\u2019acier, d\u2019aluminium et de ciment \u2014 annulant partiellement les r\u00e9ductions tarifaires. Par ailleurs, le Parlement europ\u00e9en examinera le respect par l\u2019Inde des ',h('strong',null,'conventions fondamentales de l\u2019OIT'),', un sujet qui a d\u00e9j\u00e0 ralenti l\u2019accord avec le Vietnam (source\u00a0: Sullivan & Cromwell, HSF Kramer, EPC).'
+   ),
+
+   // III. Ratification
+   h('h2',null,'III. Ratification\u00a0: le dernier obstacle'),
+   h('p',null,
+    'La conclusion de l\u2019accord n\u2019est que la premi\u00e8re \u00e9tape. Le processus de ratification implique trois validations distinctes. C\u00f4t\u00e9 europ\u00e9en\u00a0: le ',h('strong',null,'Conseil de l\u2019UE'),' (vote \u00e0 la majorit\u00e9 qualifi\u00e9e) et le ',h('strong',null,'Parlement europ\u00e9en'),' (vote de consentement, n\u00e9cessitant une majorit\u00e9 simple). C\u00f4t\u00e9 indien\u00a0: le ',h('strong',null,'Union Council of Ministers'),' doit approuver formellement le texte (source\u00a0: ec.europa.eu, DLA Piper).'
+   ),
+   h('p',null,
+    'Un \u00e9l\u00e9ment crucial\u00a0: l\u2019Inde ',h('strong',null,'ne pratique pas l\u2019application provisoire'),' des trait\u00e9s commerciaux. Contrairement \u00e0 ce qui s\u2019est pass\u00e9 avec le CETA (UE-Canada), o\u00f9 une application provisoire a permis d\u2019activer l\u2019essentiel de l\u2019accord d\u00e8s 2017 sans attendre la ratification compl\u00e8te par tous les parlements nationaux, rien ne s\u2019appliquera avant la ratification int\u00e9grale par les deux parties. Cela signifie qu\u2019aucune r\u00e9duction tarifaire ne prendra effet avant la conclusion de tout le processus.'
+   ),
+   h('p',null,
+    'Le calendrier r\u00e9aliste\u00a0: le ',h('strong',null,'Conseil pourrait voter d\u2019ici la fin 2026'),', le Parlement europ\u00e9en n\u00e9cessitera au moins un an d\u2019examen en commission (INTA), le processus indien est g\u00e9n\u00e9ralement plus rapide. ',h('strong',null,'Mise en \u0153uvre attendue\u00a0: d\u00e9but 2027 au plus t\u00f4t'),'. Les risques de d\u00e9lai\u00a0: d\u00e9bats sur les conventions OIT, tensions li\u00e9es au CBAM, \u00e9lections europ\u00e9ennes de 2029 qui pourraient repousser si le processus s\u2019\u00e9ternise.'
+   ),
+
+   // IV. Trait\u00e9 fiscal
+   h('h2',null,'IV. Le trait\u00e9 fiscal France-Inde\u00a0: autopsie d\u2019une refonte historique'),
+   h('p',null,
+    'Parall\u00e8lement au FTA, un \u00e9v\u00e9nement de port\u00e9e peut-\u00eatre sup\u00e9rieure pour les entreprises fran\u00e7aises s\u2019est produit en f\u00e9vrier\u00a02026\u00a0: la ',h('strong',null,'r\u00e9\u00e9criture compl\u00e8te du trait\u00e9 de double imposition France-Inde'),'. Le texte original, sign\u00e9 il y a 34\u00a0ans, \u00e9tait devenu obsol\u00e8te face \u00e0 l\u2019\u00e9volution des structures d\u2019investissement, au d\u00e9veloppement de l\u2019\u00e9conomie num\u00e9rique et aux standards BEPS de l\u2019OCDE. La visite d\u2019\u00c9tat de Macron en Inde (17-19\u00a0f\u00e9vrier), qui a \u00e9lev\u00e9 la relation bilat\u00e9rale au rang de \u00ab\u00a0',h('em',null,'Special Global Strategic Partnership'),'\u00a0\u00bb avec plus de 20\u00a0accords sign\u00e9s, a fourni le cadre politique pour finaliser cette refonte (source\u00a0: \u00c9lys\u00e9e, DD News, Eurasia Review).'
+   ),
+
+   h('h3',null,'Dividendes\u00a0: le changement majeur'),
+   h('p',null,
+    'Ancien r\u00e9gime\u00a0: taux unique de ',h('strong',null,'10\u00a0%'),' de retenue \u00e0 la source, quelle que soit la participation. Nouveau r\u00e9gime\u00a0: ',h('strong',null,'5\u00a0%'),' si l\u2019actionnaire d\u00e9tient ',h('strong',null,'\u226510\u00a0% du capital'),' de la soci\u00e9t\u00e9 distributrice, ',h('strong',null,'15\u00a0%'),' dans les autres cas. La logique est claire\u00a0: favoriser l\u2019investissement direct strat\u00e9gique au d\u00e9triment de l\u2019investissement de portefeuille (source\u00a0: EY India, Business Today, India Briefing).'
+   ),
+
+   h('h3',null,'Plus-values\u00a0: basculement des droits d\u2019imposition'),
+   h('p',null,
+    'Le nouveau protocole accorde les ',h('strong',null,'droits d\u2019imposition pleins au pays de r\u00e9sidence de la soci\u00e9t\u00e9'),'. Concr\u00e8tement\u00a0: une entreprise fran\u00e7aise c\u00e9dant sa participation dans une filiale indienne sera impos\u00e9e en France, pas en Inde. C\u2019est un renversement qui s\u00e9curise les strat\u00e9gies de d\u00e9sinvestissement et am\u00e9liore la pr\u00e9visibilit\u00e9 fiscale des op\u00e9rations de M&A transfrontalier.'
+   ),
+
+   h('h3',null,'Service PE\u00a0: le pi\u00e8ge pour les PME'),
+   h('p',null,
+    'Le nouveau trait\u00e9 introduit une disposition cl\u00e9\u00a0: les services fournis au-del\u00e0 d\u2019un ',h('strong',null,'certain seuil d\u00e9clenchent un \u00e9tablissement stable (PE)'),' en Inde. Cons\u00e9quence directe\u00a0: les cabinets de conseil, les SSII et les prestataires de services fran\u00e7ais intervenant r\u00e9guli\u00e8rement en Inde pourront \u00eatre consid\u00e9r\u00e9s comme y ayant un \u00e9tablissement stable \u2014 et donc \u00eatre soumis \u00e0 l\u2019imp\u00f4t sur les soci\u00e9t\u00e9s indien. Les structures de facturation devront imp\u00e9rativement \u00eatre revues (source\u00a0: EY India, International Tax Review).'
+   ),
+
+   h('h3',null,'Redevances techniques et clause MFN'),
+   h('p',null,
+    'Le taux de ',h('strong',null,'10\u00a0% sur les redevances de services techniques est maintenu'),', mais la d\u00e9finition est resserr\u00e9e, align\u00e9e sur le trait\u00e9 Inde-\u00c9tats-Unis. Surtout, la ',h('strong',null,'clause de la nation la plus favoris\u00e9e (MFN) est supprim\u00e9e'),'. Cette clause avait g\u00e9n\u00e9r\u00e9 des litiges all\u00e9s jusqu\u2019\u00e0 la Cour supr\u00eame indienne\u00a0: des entreprises fran\u00e7aises invoquaient les taux plus favorables n\u00e9goci\u00e9s par d\u2019autres pays de l\u2019OCDE avec l\u2019Inde. La suppression met fin \u00e0 cette ins\u00e9curit\u00e9 juridique, au prix d\u2019un abandon de levier pour les investisseurs fran\u00e7ais (source\u00a0: Business Standard, The Week).'
+   ),
+
+   h('h3',null,'\u00c9change d\u2019informations et assistance au recouvrement'),
+   h('p',null,
+    'Le nouveau protocole int\u00e8gre les standards ',h('strong',null,'OCDE/BEPS'),' d\u2019\u00e9change d\u2019informations fiscales renforc\u00e9 et introduit un nouvel article sur l\u2019',h('strong',null,'assistance au recouvrement des cr\u00e9ances fiscales'),' entre les deux pays. Ce dispositif permet \u00e0 l\u2019administration fiscale fran\u00e7aise de demander \u00e0 son homologue indienne de recouvrer une cr\u00e9ance fiscale pour son compte, et inversement. Le protocole entrera en vigueur apr\u00e8s les proc\u00e9dures l\u00e9gales internes dans les deux pays (source\u00a0: EY India, India Briefing).'
+   ),
+
+   h('div',{className:'insight-box gold not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2'},'Inflexion Insight \u2014 Impact chiffr\u00e9'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'Pour une PME fran\u00e7aise d\u00e9tenant \u226510\u00a0% d\u2019une filiale indienne, le nouveau taux de ',h('strong',null,'5\u00a0% sur dividendes (vs 10\u00a0% avant) am\u00e9liore le rendement net de ~5,6\u00a0%'),' \u2014 un diff\u00e9rentiel qui peut justifier une implantation directe plut\u00f4t qu\u2019un simple export. Sur un dividende de \u20ac1\u00a0million, l\u2019\u00e9conomie annuelle est de \u20ac50\u00a0000.'
+    )
+   ),
+
+   // V. Impact entreprises fran\u00e7aises
+   h('h2',null,'V. Impact pour les entreprises fran\u00e7aises\u00a0: qui gagne, qui perd'),
+
+   h('h3',null,'Les gagnants\u00a0: automobile, mat\u00e9riaux, luxe, a\u00e9ronautique'),
+   h('p',null,
+    h('strong',null,'Automobile'),' \u2014 Renault (pr\u00e9sent en Inde via sa JV avec Nissan \u00e0 Chennai) et Stellantis b\u00e9n\u00e9ficieront de la r\u00e9duction des tarifs douaniers qui rendent enfin les v\u00e9hicules europ\u00e9ens comp\u00e9titifs face aux acteurs locaux (Tata, Mahindra) et cor\u00e9ens (Hyundai). ',h('strong',null,'Mat\u00e9riaux de construction'),' \u2014 Saint-Gobain, d\u00e9j\u00e0 implant\u00e9 au Tamil Nadu (usines de verre plat et de pl\u00e2tre), verra ses co\u00fbts d\u2019importation de composants sp\u00e9cialis\u00e9s depuis l\u2019Europe baisser. ',h('strong',null,'Luxe et vins'),' \u2014 La r\u00e9duction des droits sur les produits agricoles transform\u00e9s ouvre le march\u00e9 indien aux vins fran\u00e7ais (actuellement tax\u00e9s \u00e0 150\u00a0%). ',h('strong',null,'A\u00e9ronautique'),' \u2014 Dassault Aviation (+14,2\u00a0%), Safran (+8,7\u00a0%) et Airbus (+2,8\u00a0%) profitent de la dynamique bilat\u00e9rale, renforc\u00e9e par le corridor d\u00e9fense France-Inde (source\u00a0: Euronext, India Briefing).'
+   ),
+
+   h('h3',null,'Le Tamil Nadu\u00a0: hub fran\u00e7ais en Inde'),
+   h('p',null,
+    'Le Tamil Nadu est le point d\u2019ancrage des entreprises fran\u00e7aises en Inde. ',h('strong',null,'29\u00a0entreprises fran\u00e7aises'),' y ont leur si\u00e8ge indien\u00a0: Michelin, Renault, Saint-Gobain, Valeo, Vivendi. L\u2019\u00c9tat affiche un GSDP de ',h('strong',null,'~410\u00a0milliards\u00a0$'),' (2025-26), une croissance manufacturing de ',h('strong',null,'14,74\u00a0%'),' (3x la moyenne nationale), et repr\u00e9sente ',h('strong',null,'41\u00a0% des exportations \u00e9lectroniques indiennes'),'. Son objectif\u00a0: devenir une \u00e9conomie de $1\u00a0trillion d\u2019ici 2030. C\u2019est la deuxi\u00e8me plus grande \u00e9conomie r\u00e9gionale du pays (9,4\u00a0% du PIB indien). Le PMI manufacturing indien, \u00e0 ',h('strong',null,'56,9 en f\u00e9vrier\u00a02026'),', confirme la solidit\u00e9 de la dynamique industrielle et le positionnement China+1 de l\u2019Inde (source\u00a0: Tamil Nadu State Planning Commission, S&P Global).'
+   ),
+
+   h('h3',null,'Le pi\u00e8ge du Service PE'),
+
+   h('div',{className:'insight-box alert not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#DC2626] mb-2'},'Alerte \u2014 Service PE'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'Attention au nouveau Service PE\u00a0: les prestataires de services fran\u00e7ais intervenant r\u00e9guli\u00e8rement en Inde au-del\u00e0 du seuil fix\u00e9 ',h('strong',null,'d\u00e9clencheront un \u00e9tablissement stable \u2014 et donc une imposition locale'),'. Les cabinets de conseil, SSII et soci\u00e9t\u00e9s d\u2019ing\u00e9nierie doivent imp\u00e9rativement revoir leurs structures de facturation et la dur\u00e9e de leurs missions sur le territoire indien.'
+    )
+   ),
+
+   h('h3',null,'Risque de change\u00a0: EUR/INR'),
+   h('p',null,
+    'Le taux EUR/INR, actuellement \u00e0 ',h('strong',null,'109,7'),', est anticip\u00e9 dans une fourchette de ',h('strong',null,'104 \u00e0 126'),' sur 2026. Cette volatilit\u00e9 potentielle de ~20\u00a0% est un param\u00e8tre cl\u00e9 pour la rentabilit\u00e9 des investissements directs. Les entreprises fran\u00e7aises exportant vers l\u2019Inde ou rapatriant des dividendes devront mettre en place des couvertures de change adapt\u00e9es.'
+   ),
+
+   h('h3',null,'Matrice d\u2019impact sectoriel'),
+   h('div',{className:'not-prose my-6 overflow-x-auto'},
+    h('table',{className:'w-full text-sm border-collapse'},
+     h('thead',null,
+      h('tr',{className:'bg-[#F7F8FA]'},
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Secteur'),
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Impact FTA'),
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Impact fiscal'),
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Action')
+      )
+     ),
+     h('tbody',null,
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Automobile'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#006650] px-2 py-0.5 rounded'},'TR\u00c8S POSITIF')),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#006650] px-2 py-0.5 rounded'},'POSITIF')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Acc\u00e9l\u00e9rer les JV indiennes')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'A\u00e9ronautique / D\u00e9fense'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#006650] px-2 py-0.5 rounded'},'TR\u00c8S POSITIF')),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#006650] px-2 py-0.5 rounded'},'POSITIF')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Structurer les filiales indiennes \u226510\u00a0%')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Mat\u00e9riaux / BTP'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#006650] px-2 py-0.5 rounded'},'POSITIF')),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#006650] px-2 py-0.5 rounded'},'POSITIF')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Optimiser les flux de dividendes')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Luxe / Vins & Spiritueux'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#006650] px-2 py-0.5 rounded'},'TR\u00c8S POSITIF')),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-[#1A1F2E] bg-[#E2E5EB] px-2 py-0.5 rounded'},'NEUTRE')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Pr\u00e9parer l\u2019entr\u00e9e sur le march\u00e9')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Conseil / IT Services'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-[#1A1F2E] bg-[#E2E5EB] px-2 py-0.5 rounded'},'NEUTRE')),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#DC2626] px-2 py-0.5 rounded'},'RISQUE PE')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Revoir les structures de facturation')
+      ),
+      h('tr',null,
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Agriculture / Laitier'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-[#1A1F2E] bg-[#E2E5EB] px-2 py-0.5 rounded'},'EXCLU')),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-[#1A1F2E] bg-[#E2E5EB] px-2 py-0.5 rounded'},'NEUTRE')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Pas de changement \u00e0 court terme')
+      )
+     )
+    )
+   ),
+
+   // VI. Sc\u00e9narios
+   h('h2',null,'VI. Sc\u00e9narios et indicateurs \u00e0 surveiller'),
+
+   h('div',{className:'not-prose my-6 rounded-xl overflow-hidden border border-[#006650]/20 bg-[#F0FAF5]'},
+    h('div',{className:'px-5 py-3 bg-[#006650]/10 border-b border-[#006650]/20'},
+     h('div',{className:'flex items-center justify-between'},
+      h('span',{className:'text-sm font-bold text-[#006650]'},'Sc\u00e9nario 1 \u2014 Optimiste'),
+      h('span',{className:'text-xs font-semibold text-[#006650] bg-[#006650]/10 px-2 py-1 rounded'},'35\u00a0%')
+     )
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+      'Le FTA est ratifi\u00e9 mi-2026 par le Conseil, le Parlement europ\u00e9en vote fin\u00a02026, l\u2019Inde ratifie dans la foul\u00e9e. Mise en \u0153uvre d\u00e9but 2027. Les ',h('strong',null,'\u20ac4\u00a0milliards d\u2019\u00e9conomies annuelles'),' commencent \u00e0 se mat\u00e9rialiser. Le nouveau trait\u00e9 fiscal entre en vigueur simultan\u00e9ment, cr\u00e9ant un appel d\u2019air pour l\u2019investissement direct fran\u00e7ais. ',h('strong',null,'Impact d\u00e9cideurs'),' : fen\u00eatre de premier entrant sur le march\u00e9 indien \u00e0 saisir rapidement.'
+     )
+    )
+   ),
+
+   h('div',{className:'not-prose my-6 rounded-xl overflow-hidden border border-[#EAB308]/20 bg-[#FFFBEB]'},
+    h('div',{className:'px-5 py-3 bg-[#EAB308]/10 border-b border-[#EAB308]/20'},
+     h('div',{className:'flex items-center justify-between'},
+      h('span',{className:'text-sm font-bold text-[#92400E]'},'Sc\u00e9nario 2 \u2014 Central'),
+      h('span',{className:'text-xs font-semibold text-[#92400E] bg-[#EAB308]/10 px-2 py-1 rounded'},'50\u00a0%')
+     )
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+      'Ratification repouss\u00e9e \u00e0 2027. Les d\u00e9bats sur les conventions OIT et le CBAM ralentissent le processus sans le bloquer. Le Parlement europ\u00e9en demande des garanties suppl\u00e9mentaires sur les normes sociales. La mise en \u0153uvre intervient fin 2027. Le trait\u00e9 fiscal, ind\u00e9pendant du FTA, pourrait entrer en vigueur plus t\u00f4t. ',h('strong',null,'Impact d\u00e9cideurs'),' : pr\u00e9parer les structures juridiques et fiscales d\u00e8s maintenant pour \u00eatre pr\u00eat au jour J.'
+     )
+    )
+   ),
+
+   h('div',{className:'not-prose my-6 rounded-xl overflow-hidden border border-[#DC2626]/20 bg-[#FEF2F2]'},
+    h('div',{className:'px-5 py-3 bg-[#DC2626]/10 border-b border-[#DC2626]/20'},
+     h('div',{className:'flex items-center justify-between'},
+      h('span',{className:'text-sm font-bold text-[#991B1B]'},'Sc\u00e9nario 3 \u2014 Pessimiste'),
+      h('span',{className:'text-xs font-semibold text-[#991B1B] bg-[#DC2626]/10 px-2 py-1 rounded'},'15\u00a0%')
+     )
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+      'Le Parlement europ\u00e9en bloque l\u2019accord, r\u00e9p\u00e9tant le pr\u00e9c\u00e9dent Mercosur. Les lobbies agricoles, m\u00eame sans les secteurs sensibles inclus, trouvent des relais pour retarder le vote. Les tarifs Trump escaladent, poussant l\u2019Inde vers un accord bilat\u00e9ral US exclusif. La fen\u00eatre g\u00e9opolitique se referme. ',h('strong',null,'Impact d\u00e9cideurs'),' : le trait\u00e9 fiscal reste un acquis ind\u00e9pendant \u2014 l\u2019optimisation fiscale fonctionne m\u00eame sans le FTA.'
+     )
+    )
+   ),
+
+   h('h3',null,'Indicateurs d\u2019alerte'),
+   h('div',{className:'insight-box not-prose'},
+    h('ul',{className:'space-y-1.5 text-sm text-[#3A3A3A]'},
+     h('li',null,h('strong',null,'Calendrier de vote INTA'),' (commission commerce du PE) \u2014 signal de temporalit\u00e9'),
+     h('li',null,h('strong',null,'EUR/INR > 120'),' \u2014 d\u00e9t\u00e9rioration des conditions d\u2019investissement'),
+     h('li',null,h('strong',null,'Tweets/d\u00e9clarations Trump sur l\u2019Inde'),' \u2014 risque de r\u00e9ciprocit\u00e9 tarifaire'),
+     h('li',null,h('strong',null,'\u00c9lections r\u00e9gionales indiennes 2027'),' \u2014 fen\u00eatre de ratification indienne'),
+     h('li',null,h('strong',null,'D\u00e9cisions CBAM phase 2'),' \u2014 impact sur les exports indiens d\u2019acier et aluminium'),
+     h('li',null,h('strong',null,'Nifty 50 < 21\u00a0000'),' \u2014 signal de stress \u00e9conomique indien')
+    )
+   ),
+
+   // Disclaimer AMF
+   h('div',{className:'insight-box gold not-prose mt-10'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2'},'Avertissement AMF'),
+    h('p',{className:'text-xs text-[#6A6A6A] leading-relaxed'},
+     'Cette analyse est fournie \u00e0 titre informatif et ne constitue en aucun cas un conseil en investissement, une recommandation personnalis\u00e9e ou une incitation \u00e0 acheter ou vendre des instruments financiers. Les performances pass\u00e9es ne pr\u00e9jugent pas des performances futures. Tout investissement comporte des risques de perte en capital. Les informations fiscales pr\u00e9sent\u00e9es ne remplacent pas un avis professionnel adapt\u00e9 \u00e0 votre situation personnelle.'
+    )
+   ),
+
+   // Sources
+   h('div',{className:'pt-8 mt-8 border-t border-[#ECEEF2] not-prose'},
+    h('h4',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] mb-3'},'Sources principales'),
+    h('ul',{className:'space-y-1.5'},
+     h('li',null,h('a',{href:'https://ec.europa.eu/commission/presscorner/detail/en/ip_26_184',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Commission europ\u00e9enne \u2014 EU-India Free Trade Agreement (ip_26_184)')),
+     h('li',null,h('a',{href:'https://www.cnbc.com/2026/01/27/india-eu-trade-deal-tariffs-exports.html',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'CNBC \u2014 India-EU trade deal: tariffs and exports analysis')),
+     h('li',null,h('a',{href:'https://www.india-briefing.com/news/india-eu-fta-signing-january-2026-41926.html',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'India Briefing \u2014 India-EU FTA signing, January 2026')),
+     h('li',null,h('a',{href:'https://www.aljazeera.com/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Al Jazeera \u2014 \u00ab\u00a0Mother of all deals\u00a0\u00bb : EU-India FTA coverage')),
+     h('li',null,h('a',{href:'https://www.elysee.fr/en/emmanuel-macron/2026/02/17/india-france-joint-statement-1',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'\u00c9lys\u00e9e \u2014 India-France Joint Statement, Special Global Strategic Partnership')),
+     h('li',null,h('a',{href:'https://www.ey.com/en_in/technical/alerts-hub/2026/02/press-release-on-amending-protocol-to-india-france-tax-treaty',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'EY India \u2014 Amending protocol to India-France tax treaty')),
+     h('li',null,h('a',{href:'https://www.india-briefing.com/news/india-france-tax-treaty-revised-dividend-capital-gains-investor-impact-43055.html',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'India Briefing \u2014 India-France tax treaty revised: dividend, capital gains, investor impact')),
+     h('li',null,h('a',{href:'https://www.businesstoday.in/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Business Today \u2014 India-France bilateral tax treaty overhaul')),
+     h('li',null,h('a',{href:'https://www.business-standard.com/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Business Standard \u2014 MFN clause removal and Supreme Court disputes')),
+     h('li',null,h('a',{href:'https://www.internationaltaxreview.com/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'International Tax Review \u2014 Service PE provisions in revised India-France treaty')),
+     h('li',null,h('a',{href:'https://www.ecipe.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'ECIPE \u2014 EU-India trade relations analysis')),
+     h('li',null,h('a',{href:'https://epc.eu/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'European Policy Centre \u2014 FTA ratification outlook')),
+     h('li',null,h('a',{href:'https://www.sullcrom.com/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Sullivan & Cromwell \u2014 EU-India FTA legal analysis')),
+     h('li',null,h('a',{href:'https://www.dlapiper.com/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'DLA Piper \u2014 Trade agreement implications for European businesses')),
+     h('li',null,h('a',{href:'https://ddnews.gov.in/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'DD News \u2014 Macron state visit to India, February 2026')),
+     h('li',null,h('a',{href:'https://www.eurasiareview.com/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Eurasia Review \u2014 India-France Special Global Strategic Partnership'))
+    ),
+    h('p',{className:'mt-3 text-[10px] text-[#6A6A6A] italic'},'Analyse bas\u00e9e sur 16+ sources institutionnelles et juridiques. Donn\u00e9es v\u00e9rifi\u00e9es au 10\u00a0mars\u00a02026.')
+   ),
+
+   // Back nav
+   h('div',{className:'mt-10 text-center not-prose'},
+    h('a',{href:'analyses.html',className:'inline-block px-6 py-2.5 text-sm font-semibold text-[#006650] border-2 border-[#006650] rounded-lg hover:bg-[#006650] hover:text-white transition-colors'},'\u2190 Toutes les analyses')
+   )
+  ),
+
+  // Sidebar
+  h('aside',{className:'hidden lg:block lg:w-[220px] flex-shrink-0'},
+   h('div',{className:'lg:sticky lg:top-24'},
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Articles li\u00e9s'),
+    h('div',{className:'flex flex-col gap-4'},
+     ...RELATED_ARTICLES.map(a=>
+      h('a',{key:a.id,href:a.href,className:'article-card block rounded-xl overflow-hidden bg-white border border-[#E2E5EB] no-underline'},
+       h('div',{className:'aspect-[16/9] overflow-hidden'},
+        h('img',{src:a.img,alt:'',className:'w-full h-full object-cover',loading:'lazy'})
+       ),
+       h('div',{className:'p-3'},
+        h('span',{className:`category-${a.cat} text-[9px] font-semibold uppercase tracking-wider text-white px-1.5 py-0.5 rounded`},a.catLabel),
+        h('h4',{className:'mt-2 text-xs font-semibold text-[#1A1F2E] leading-snug line-clamp-2',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},a.title)
+       )
+      )
+     )
+    )
+   )
+  )
+ )
+)
+}
+
+// ─── MARKET TICKER ───────────────────────────────────────────────────────────
+
+function MarketTicker(){
+const items=[...TICKER_DATA,...TICKER_DATA]
+return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 overflow-hidden py-3 bg-[#006650]'},
+ h('div',{className:'ticker-track flex gap-8 whitespace-nowrap'},
+  items.map((t,i)=>h('div',{key:i,className:'flex items-center gap-2 text-sm'},
+   h('span',{className:'font-medium text-white/70'},t.symbol),
+   h('span',{className:'text-white/90 font-semibold font-data'},t.value),
+   h('span',{className:`font-medium font-data ${t.up?'text-[#34D399]':'text-[#F87171]'}`},
+    (t.up?'\u25b2 ':'\u25bc ')+t.change
+   )
+  ))
+ )
+)
+}
+
+// ─── FOOTER ──────────────────────────────────────────────────────────────────
+
+function Footer(){
+const footerLinks={
+intelligence:[
+{label:'G\u00e9opolitique',href:'geopolitics.html'},
+{label:'March\u00e9s',href:'markets.html'},
+{label:'Crypto',href:'crypto.html'},
+{label:'Mati\u00e8res premi\u00e8res',href:'commodities.html'},
+{label:'ETF & Fonds',href:'etf.html'},
+],
+plateforme:[
+{label:'Analyses',href:'analyses.html'},
+{label:'Expertise',href:'expertise.html'},
+{label:'Services',href:'premium.html'},
+{label:'Diagnostic',href:'premium.html#diagnostic'},
+],
+}
+const sources=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC']
+
+return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-12 sm:pt-16 pb-24 sm:pb-20'},
+ h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+  h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-10 mb-12'},
+   h('div',{className:'col-span-2 md:col-span-1'},
+    h('div',{className:'flex items-center gap-2 mb-4'},
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto'})
+    ),
+    h('p',{className:'text-sm text-[#5A6178] leading-relaxed'},'Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.')
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Intelligence'),
+    h('ul',{className:'space-y-2.5'},
+     ...footerLinks.intelligence.map(l=>
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+     )
+    )
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Plateforme'),
+    h('ul',{className:'space-y-2.5'},
+     ...footerLinks.plateforme.map(l=>
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+     )
+    )
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Suivez-nous'),
+    h('div',{className:'flex items-center gap-3 mb-4'},
+     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+      h('svg',{width:16,height:16,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'}))
+     ),
+     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+      h('svg',{width:14,height:14,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'}))
+     )
+    ),
+    h('a',{href:'#',className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},'Contact')
+   )
+  ),
+  h('div',{className:'border-t border-[#E2E5EB] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
+   h('span',{className:'text-sm text-[#5A6178]'},'\u00a9 2026 Inflexion \u2014 Intelligence financi\u00e8re & g\u00e9opolitique'),
+   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#5A6178]/40 font-medium'},
+    ...sources.map(s=>h('span',{key:s},s))
+   )
+  )
+ )
+)
+}
+
+// ─── APP ─────────────────────────────────────────────────────────────────────
+
+function App(){
+return h('div',{className:'pb-16'},
+ h(Navigation),
+ h(ArticleHero),
+ h(ArticleContent),
+ h(Footer),
+ h(MarketTicker)
+)
+}
+
+createRoot(document.getElementById('app')).render(h(App))
+</script>
+</body>
+</html>
