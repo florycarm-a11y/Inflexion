@@ -435,7 +435,7 @@ const SPECIALIZED_SOURCES = new Set([
     'ORF India', 'ISS Africa', 'ISEAS Singapore', 'Terra Bellum',
     // Doctrine & OSINT géopolitique
     'Le Grand Continent', 'Asialyst', 'Le Rubicon', 'The Wire China',
-    'Pekingnology', 'RAND AGI Center'
+    'Pekingnology', 'RAND AGI Center', 'Geopolitical Dispatch'
 ]);
 
 /**
@@ -766,12 +766,13 @@ const RSS_SOURCES = [
     { url: 'https://lerubicon.org/feed/',                           source: 'Le Rubicon',            cats: ['geopolitics'],                       },
     { url: 'https://thewirechina.com/feed/',                        source: 'The Wire China',        cats: ['geopolitics', 'markets'],  lang: 'en' },
     { url: 'https://pekingnology.substack.com/feed',                source: 'Pekingnology',          cats: ['geopolitics'],             lang: 'en' },
+    { url: 'https://www.geopoliticaldispatch.com/feed',             source: 'Geopolitical Dispatch', cats: ['geopolitics'],             lang: 'en' },
 ];
 
 // ─── 0. DOCTRINE & OSINT GÉOPOLITIQUE ────────────────────
 const GEOPOLITICAL_DOCTRINE_FEEDS = RSS_SOURCES.filter(s =>
     ['Le Grand Continent', 'Asialyst', 'Le Rubicon', 'IRIS',
-     'The Wire China', 'Pekingnology', 'RAND AGI Center'].includes(s.source)
+     'The Wire China', 'Pekingnology', 'RAND AGI Center', 'Geopolitical Dispatch'].includes(s.source)
 );
 
 /**
