@@ -70,9 +70,9 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 .mega-item:hover{background:#F8FAF9;border-color:#E8EDE9}
 .mega-item:hover::before{width:3px}
 
-/* Icon — refined square with subtle gradient */
-.mega-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:17px;background:linear-gradient(135deg,rgba(0,102,80,.06) 0%,rgba(0,102,80,.12) 100%);border:1px solid rgba(0,102,80,.08);transition:all .25s cubic-bezier(.4,0,.2,1)}
-.mega-item:hover .mega-icon{background:linear-gradient(135deg,rgba(0,102,80,.12) 0%,rgba(0,102,80,.2) 100%);border-color:rgba(0,102,80,.16);transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,80,.1)}
+/* Icon — monogram initials */
+.mega-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Libre Baskerville',Georgia,serif;font-size:12px;font-weight:700;font-style:italic;color:#006650;background:linear-gradient(135deg,rgba(0,102,80,.05) 0%,rgba(0,102,80,.1) 100%);border:1px solid rgba(0,102,80,.1);transition:all .25s cubic-bezier(.4,0,.2,1);letter-spacing:-.02em}
+.mega-item:hover .mega-icon{color:#fff;background:linear-gradient(135deg,#006650 0%,#06402A 100%);border-color:#006650;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,80,.18)}
 
 /* Label & description */
 .mega-label{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:600;color:#1A1F2E;letter-spacing:-.01em;transition:color .15s ease}
@@ -104,8 +104,8 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 .mega-dark .mega-cat-header{color:#C8955A;border-bottom-color:rgba(255,255,255,.06)}
 .mega-dark .mega-item:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.06)}
 .mega-dark .mega-item::before{background:#33B894}
-.mega-dark .mega-icon{background:linear-gradient(135deg,rgba(51,184,148,.08) 0%,rgba(51,184,148,.15) 100%);border-color:rgba(51,184,148,.1)}
-.mega-dark .mega-item:hover .mega-icon{background:linear-gradient(135deg,rgba(51,184,148,.15) 0%,rgba(51,184,148,.25) 100%);border-color:rgba(51,184,148,.2);box-shadow:0 4px 12px rgba(51,184,148,.1)}
+.mega-dark .mega-icon{color:#33B894;background:linear-gradient(135deg,rgba(51,184,148,.08) 0%,rgba(51,184,148,.15) 100%);border-color:rgba(51,184,148,.1)}
+.mega-dark .mega-item:hover .mega-icon{color:#fff;background:linear-gradient(135deg,#33B894 0%,#006650 100%);border-color:#33B894;box-shadow:0 4px 12px rgba(51,184,148,.15)}
 .mega-dark .mega-label{color:rgba(255,255,255,.9)}
 .mega-dark .mega-item:hover .mega-label{color:#33B894}
 .mega-dark .mega-desc{color:rgba(255,255,255,.35)}
@@ -195,26 +195,26 @@ return h('div',{ref,className,style:{opacity:visible?1:0,transform:visible?'tran
 
 const MEGA_NAV=[
 {label:'Intelligence',children:[
- {icon:'🌍',label:'Géopolitique',desc:'Risques pays & tensions internationales',href:'geopolitics.html'},
- {icon:'📈',label:'Marchés',desc:'Actions, indices, taux & devises',href:'markets.html'},
- {icon:'₿',label:'Crypto & Blockchain',desc:'Bitcoin, DeFi, régulation',href:'crypto.html'},
- {icon:'🛢️',label:'Matières premières',desc:'Or, pétrole, métaux & énergie',href:'commodities.html'},
- {icon:'📊',label:'ETF & Fonds',desc:'Allocations & flux de capitaux',href:'etf.html'},
+ {icon:'Gp',label:'Géopolitique',desc:'Risques pays & tensions internationales',href:'geopolitics.html'},
+ {icon:'Mk',label:'Marchés',desc:'Actions, indices, taux & devises',href:'markets.html'},
+ {icon:'Cr',label:'Crypto & Blockchain',desc:'Bitcoin, DeFi, régulation',href:'crypto.html'},
+ {icon:'Mp',label:'Matières premières',desc:'Or, pétrole, métaux & énergie',href:'commodities.html'},
+ {icon:'Ef',label:'ETF & Fonds',desc:'Allocations & flux de capitaux',href:'etf.html'},
 ]},
 {label:'Analyses',children:[
- {icon:'📰',label:'Briefing du jour',desc:'Synthèse IA quotidienne',href:'index.html#briefing'},
- {icon:'🔎',label:'Analyses approfondies',desc:'Décryptages thématiques',href:'analyses.html'},
- {icon:'🗺️',label:'Macro par pays',desc:'Données World Bank & indicateurs',href:'country.html'},
+ {icon:'Bj',label:'Briefing du jour',desc:'Synthèse IA quotidienne',href:'index.html#briefing'},
+ {icon:'An',label:'Analyses approfondies',desc:'Décryptages thématiques',href:'analyses.html'},
+ {icon:'Mc',label:'Macro par pays',desc:'Données World Bank & indicateurs',href:'country.html'},
 ]},
 {label:'Expertise',children:[
- {icon:'🧭',label:'Notre approche',desc:'Méthodologie & cadre d\'analyse',href:'expertise.html'},
- {icon:'🤖',label:'Pipeline IA',desc:'158 sources, 15 APIs, Claude IA',href:'expertise.html#pipeline'},
- {icon:'📡',label:'Sources & données',desc:'Transparence sur nos flux',href:'expertise.html#sources'},
+ {icon:'Na',label:'Notre approche',desc:'Méthodologie & cadre d\'analyse',href:'expertise.html'},
+ {icon:'Ia',label:'Pipeline IA',desc:'158 sources, 15 APIs, Claude IA',href:'expertise.html#pipeline'},
+ {icon:'Sd',label:'Sources & données',desc:'Transparence sur nos flux',href:'expertise.html#sources'},
 ]},
 {label:'Services',children:[
- {icon:'💼',label:'Diagnostic stratégique',desc:'Audit personnalisé de vos positions',href:'premium.html'},
- {icon:'🔔',label:'Alertes & veille',desc:'Notifications personnalisées',href:'premium.html#alertes'},
- {icon:'📋',label:'Rapports sur mesure',desc:'Analyses dédiées à votre portefeuille',href:'premium.html#rapports'},
+ {icon:'Ds',label:'Diagnostic stratégique',desc:'Audit personnalisé de vos positions',href:'premium.html'},
+ {icon:'Av',label:'Alertes & veille',desc:'Notifications personnalisées',href:'premium.html#alertes'},
+ {icon:'Rm',label:'Rapports sur mesure',desc:'Analyses dédiées à votre portefeuille',href:'premium.html#rapports'},
 ]},
 ]
 
@@ -377,7 +377,7 @@ return h('div',null,
     h('p',{key:'h'+ci,className:'menu-item text-[11px] uppercase tracking-[.2em] text-white/40 font-semibold mb-3'+(ci>0?' mt-8':''),style:{animationDelay:`${0.05+ci*0.18}s`}},cat.label),
     ...cat.children.map((item,ii)=>
      h('a',{key:'m'+ci+'-'+ii,href:item.href,onClick:()=>setOpen(false),className:'menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8',style:{animationDelay:`${0.08+ci*0.18+ii*0.05}s`}},
-      h('span',{className:'text-base'},item.icon),
+      h('span',{className:'w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-xs font-bold italic text-white/70',style:{fontFamily:'Libre Baskerville,Georgia,serif'}},item.icon),
       h('span',{className:'text-base sm:text-lg md:text-[20px] font-medium'},item.label)
      )
     )
