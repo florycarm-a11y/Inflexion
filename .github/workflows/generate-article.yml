@@ -105,6 +105,18 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/translate-articles.mjs
 
+      - name: "🔬 Filtre d'insight (scoring qualité)"
+        if: steps.check-data.outputs.data_changed == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/insight-filter.mjs
+
+      - name: "📡 Veille continue (watchlist + signaux faibles)"
+        if: steps.check-data.outputs.data_changed == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/veille-continue.mjs
+
       - name: "✍️ Génération article + classification"
         if: steps.check-data.outputs.data_changed == 'true'
         env:
@@ -129,6 +141,9 @@ jobs:
           # Ajouter les fichiers générés
           [ -f data/news.json ] && git add data/news.json || true
           [ -f data/article-du-jour.json ] && git add data/article-du-jour.json || true
+          [ -f data/insights.json ] && git add data/insights.json || true
+          [ -f data/signals.json ] && git add data/signals.json || true
+          [ -f data/signals-history.json ] && git add data/signals-history.json || true
           [ -d data/articles ] && git add data/articles/ || true
 
           # Vérifier s'il y a des changements

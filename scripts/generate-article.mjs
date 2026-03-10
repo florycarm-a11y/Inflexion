@@ -400,7 +400,7 @@ function formatTavilyContext(results) {
 /**
  * Génère un article de synthèse éditorial à partir des news du jour
  */
-async function generateDailyArticle(newsData, tavilyResults = [], macroData = null, fngData = null, cryptoData = null, marketsData = null, defiData = null, avData = null) {
+async function generateDailyArticle(newsData, tavilyResults = [], macroData = null, fngData = null, cryptoData = null, marketsData = null, defiData = null, avData = null, signalsData = null) {
     console.log('\n✍️  Génération de l\'article du jour...');
 
     const API_KEY = process.env.ANTHROPIC_API_KEY;
@@ -505,6 +505,28 @@ async function generateDailyArticle(newsData, tavilyResults = [], macroData = nu
         console.log(`  💱 Forex + secteurs injectés dans le contexte`);
     }
 
+    // Ajouter les signaux de veille si disponibles
+    if (signalsData) {
+        const criticalWatchlist = (signalsData.watchlist || []).filter(w => w.priority === 'critical' || w.priority === 'high');
+        if (criticalWatchlist.length > 0) {
+            context.push('## 📡 Signaux de veille prioritaires');
+            for (const w of criticalWatchlist) {
+                const icon = w.priority === 'critical' ? '🔴' : '🟠';
+                context.push(`- ${icon} **${w.label}** (${w.count} article(s)) — priorité ${w.priority}`);
+            }
+            context.push('');
+        }
+        const weakSigs = signalsData.weak_signals || [];
+        if (weakSigs.length > 0) {
+            context.push('## 🔮 Signaux faibles détectés');
+            for (const s of weakSigs.slice(0, 3)) {
+                context.push(`- **${s.theme}** (${s.force}) : ${s.description}`);
+                if (s.implication) context.push(`  → Implication : ${s.implication}`);
+            }
+            context.push('');
+        }
+    }
+
     // Ajouter le contexte Tavily si disponible
     const tavilyContext = formatTavilyContext(tavilyResults);
 
@@ -588,19 +610,48 @@ async function main() {
     console.log(`  ${new Date().toISOString()}`);
     console.log('═══════════════════════════════════════');
 
-    // Lire les news existantes
+    // Lire les news — priorité aux insights filtrés si disponibles
+    const insightsPath = join(DATA_DIR, 'insights.json');
     const newsPath = join(DATA_DIR, 'news.json');
-    if (!existsSync(newsPath)) {
-        console.error('✗ data/news.json introuvable — exécuter fetch-data.mjs d\'abord');
-        process.exit(1);
+    let newsData;
+    let usingInsights = false;
+
+    if (existsSync(insightsPath)) {
+        try {
+            const insights = JSON.parse(readFileSync(insightsPath, 'utf-8'));
+            if (insights.categories && insights.total_retained > 0) {
+                newsData = { categories: insights.categories, metadata: { source: 'insights.json', threshold: insights.threshold } };
+                usingInsights = true;
+                console.log(`🔬 Insights chargés : ${insights.total_retained}/${insights.total_analyzed} articles retenus (seuil ≥${insights.threshold})`);
+            }
+        } catch (err) {
+            console.warn(`⚠ Erreur lecture insights.json: ${err.message} — fallback news.json`);
+        }
     }
 
-    let newsData;
-    try {
-        newsData = JSON.parse(readFileSync(newsPath, 'utf-8'));
-    } catch (err) {
-        console.error(`✗ Erreur lecture news.json: ${err.message}`);
-        process.exit(1);
+    if (!usingInsights) {
+        if (!existsSync(newsPath)) {
+            console.error('✗ data/news.json introuvable — exécuter fetch-data.mjs d\'abord');
+            process.exit(1);
+        }
+        try {
+            newsData = JSON.parse(readFileSync(newsPath, 'utf-8'));
+        } catch (err) {
+            console.error(`✗ Erreur lecture news.json: ${err.message}`);
+            process.exit(1);
+        }
+    }
+
+    // Charger les signaux de veille si disponibles (injectés dans le contexte article)
+    let signalsData = null;
+    const signalsPath = join(DATA_DIR, 'signals.json');
+    if (existsSync(signalsPath)) {
+        try {
+            signalsData = JSON.parse(readFileSync(signalsPath, 'utf-8'));
+            const critical = signalsData.summary?.watchlist_critical || 0;
+            const weak = signalsData.summary?.weak_signals || 0;
+            console.log(`📡 Signaux veille : ${critical} critique(s), ${weak} signal(aux) faible(s)`);
+        } catch { /* ignore */ }
     }
 
     // Lire les données macro (FRED) si disponibles
@@ -677,7 +728,7 @@ async function main() {
 
     const totalArticles = Object.values(newsData.categories)
         .reduce((sum, arr) => sum + arr.length, 0);
-    console.log(`\n📰 ${totalArticles} articles trouvés dans news.json`);
+    console.log(`\n📰 ${totalArticles} articles trouvés dans ${usingInsights ? 'insights.json' : 'news.json'}`);
 
     // 1. Classifier les articles
     newsData = await classifyAllArticles(newsData);
@@ -688,7 +739,7 @@ async function main() {
     const tavilyResults = await searchTavily(topics);
 
     // 3. Générer l'article du jour (avec contexte Tavily + macro + FNG + trending + calendrier + DeFi + forex)
-    const article = await generateDailyArticle(newsData, tavilyResults, macroData, fngData, cryptoData, marketsData, defiData, avData);
+    const article = await generateDailyArticle(newsData, tavilyResults, macroData, fngData, cryptoData, marketsData, defiData, avData, signalsData);
     const articleSaved = saveArticle(article);
 
     // Résumé

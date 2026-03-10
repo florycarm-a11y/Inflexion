@@ -40,7 +40,7 @@ Inflexion/
 ├── app.js                  # Logique JS principale
 ├── data-loader.js          # Charge les JSON → met à jour le DOM (utilise matchImage)
 ├── data/                   # Fichiers JSON générés par le pipeline
-├── scripts/                # Pipeline Node.js (fetch, briefing, RAG, tests)
+├── scripts/                # Pipeline Node.js (fetch, insight, veille, briefing, RAG, tests)
 ├── .github/workflows/      # CI/CD (fetch, briefing, article, sentiment, deploy)
 └── DESIGN-MIGRATION-PROMPT.md  # Spécifications complètes design system
 ```
@@ -112,13 +112,19 @@ Inflexion/
 
 ```
 GitHub Actions (cron 2x/jour : 06h + 18h UTC)
-  → scripts/fetch-data.mjs (15 APIs + 158 RSS)
-  → data/*.json (commit auto) → GitHub Pages (deploy auto)
-  → data-loader.js (frontend)
+  → fetch-data.mjs (15 APIs + 158 RSS)
+  → insight-filter.mjs (scoring 1-10, seuil ≥6, dédup sémantique)
+  → veille-continue.mjs (watchlist 22 thèmes + signaux faibles Claude)
+  → generate-article.mjs (synthèse depuis insights.json + signaux)
+  → validate-article.mjs (structure + anti-hallucination)
+  → data/*.json → GitHub Pages (deploy auto)
 ```
 
 ### Flux IA
-- **Briefing** : Claude Sonnet + RAG | **Analyses** : Claude Haiku 2x/jour | **Article + Newsletter** : Haiku quotidien
+- **Insight filter** : Claude Haiku, score 1-10, ~2-3 appels batch/jour
+- **Veille continue** : Watchlist (22 thèmes, 4 priorités) + signaux faibles Claude
+- **Briefing** : Claude Sonnet + RAG | **Article** : Haiku quotidien (source : insights filtrés)
+- Sorties : `insights.json`, `signals.json`, `signals-history.json` (30j)
 
 ## 6. APIs (15)
 
@@ -131,6 +137,8 @@ GitHub Actions (cron 2x/jour : 06h + 18h UTC)
 npm test                                              # ~188 tests
 npx serve .                                           # Serveur local
 node scripts/fetch-data.mjs                           # Pipeline données
+node scripts/insight-filter.mjs                       # Scoring insight (nécessite ANTHROPIC_API_KEY)
+node scripts/veille-continue.mjs                      # Watchlist + signaux faibles
 node scripts/generate-daily-briefing.mjs --dry-run    # Test briefing
 grep -rn '#0B3D1E\|#072A14\|#EDE8DC' *.html styles.css  # Audit anciennes couleurs
 ```
