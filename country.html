@@ -347,25 +347,67 @@
             maxZoom:19
         }).addTo(leafletMap);
 
-        // Add GeoJSON zones
+        // Add GeoJSON zones (each feature rendered as separate Polygon layer to avoid even-odd fill conflicts)
         ZONES.forEach(function(zone){
-            var geo=GEOJSON[zone.id];
-            if(!geo)return;
+            var features=GEOJSON[zone.id];
+            if(!features||!features.length)return;
 
-            var layer=L.geoJSON(geo,{
-                style:function(){
-                    return {
-                        fillColor:getColor(zone),
-                        fillOpacity:0.45,
-                        color:zone.color,
-                        weight:2,
-                        opacity:0.9
-                    };
-                },
-                onEachFeature:function(feature,lyr){
-                    // Tooltip on hover
-                    var score=currentMode==='risk'?zone.composite:zone.oppComposite;
-                    var label=currentMode==='risk'?zone.level:zone.oppLevel;
+            var group=L.featureGroup();
+            features.forEach(function(geo){
+                var layer=L.geoJSON(geo,{
+                    style:function(){
+                        return {
+                            fillColor:getColor(zone),
+                            fillOpacity:0.45,
+                            color:zone.color,
+                            weight:2,
+                            opacity:0.9
+                        };
+                    },
+                    onEachFeature:function(feature,lyr){
+                        lyr.bindTooltip(
+                            '<div class="map-tooltip-custom">'+
+                            '<strong style="color:'+zone.color+'">'+zone.name+'</strong>'+
+                            '<span style="color:#DC2626;">Risque : '+zone.composite.toFixed(1)+'/5</span><br>'+
+                            '<span style="color:#006650;">Opportunité : '+zone.oppComposite.toFixed(1)+'/5</span><br>'+
+                            '<span style="color:#5A6178;font-size:.75rem;">Ratio O/R : '+(zone.oppComposite/zone.composite).toFixed(2)+'</span>'+
+                            '</div>',
+                            {sticky:true,direction:'top',offset:[0,-10],className:''}
+                        );
+                        lyr.on('mouseover',function(){
+                            group.eachLayer(function(gl){gl.setStyle({fillOpacity:0.7,weight:3});});
+                        });
+                        lyr.on('mouseout',function(){
+                            group.eachLayer(function(gl){gl.setStyle({fillOpacity:0.45,weight:2});});
+                        });
+                        lyr.on('click',function(){
+                            leafletMap.flyTo(zone.center,zone.zoom,{duration:0.8});
+                            highlightZoneCard(zone.id);
+                        });
+                    }
+                });
+                group.addLayer(layer);
+            });
+            group.addTo(leafletMap);
+            geoLayers[zone.id]=group;
+        });
+    }
+
+    function updateMapColors(){
+        ZONES.forEach(function(zone){
+            var group=geoLayers[zone.id];
+            if(!group)return;
+            // setStyle propagates through featureGroup → geoJSON → path layers
+            group.setStyle({
+                fillColor:getColor(zone),
+                color:zone.color,
+                fillOpacity:0.45,
+                weight:2
+            });
+            // Update tooltips on leaf layers (paths)
+            group.eachLayer(function(geoLayer){
+                geoLayer.eachLayer(function(lyr){
+                    lyr.unbindTooltip();
                     lyr.bindTooltip(
                         '<div class="map-tooltip-custom">'+
                         '<strong style="color:'+zone.color+'">'+zone.name+'</strong>'+
@@ -373,60 +415,9 @@
                         '<span style="color:#006650;">Opportunité : '+zone.oppComposite.toFixed(1)+'/5</span><br>'+
                         '<span style="color:#5A6178;font-size:.75rem;">Ratio O/R : '+(zone.oppComposite/zone.composite).toFixed(2)+'</span>'+
                         '</div>',
-                        {sticky:true,direction:'top',offset:[0,-10],className:''}
+                        {sticky:true,direction:'top',offset:[0,-10]}
                     );
-
-                    // Hover effects
-                    lyr.on('mouseover',function(){
-                        lyr.setStyle({fillOpacity:0.7,weight:3});
-                    });
-                    lyr.on('mouseout',function(){
-                        lyr.setStyle({fillOpacity:0.45,weight:2});
-                    });
-
-                    // Click → zoom + scroll to card
-                    lyr.on('click',function(){
-                        leafletMap.flyTo(zone.center,zone.zoom,{duration:0.8});
-                        highlightZoneCard(zone.id);
-                    });
-                }
-            }).addTo(leafletMap);
-
-            // Fix even-odd fill rule for MultiPolygons (Greenland/Arctic overlap)
-            layer.eachLayer(function(lyr){
-                if(lyr._path) lyr._path.setAttribute('fill-rule','nonzero');
-            });
-
-            geoLayers[zone.id]=layer;
-        });
-    }
-
-    function updateMapColors(){
-        ZONES.forEach(function(zone){
-            var layer=geoLayers[zone.id];
-            if(!layer)return;
-            layer.setStyle({
-                fillColor:getColor(zone),
-                color:zone.color,
-                fillOpacity:0.45,
-                weight:2
-            });
-            // Preserve nonzero fill-rule after setStyle
-            layer.eachLayer(function(lyr){
-                if(lyr._path) lyr._path.setAttribute('fill-rule','nonzero');
-            });
-            // Update tooltips
-            layer.eachLayer(function(lyr){
-                lyr.unbindTooltip();
-                lyr.bindTooltip(
-                    '<div class="map-tooltip-custom">'+
-                    '<strong style="color:'+zone.color+'">'+zone.name+'</strong>'+
-                    '<span style="color:#DC2626;">Risque : '+zone.composite.toFixed(1)+'/5</span><br>'+
-                    '<span style="color:#006650;">Opportunité : '+zone.oppComposite.toFixed(1)+'/5</span><br>'+
-                    '<span style="color:#5A6178;font-size:.75rem;">Ratio O/R : '+(zone.oppComposite/zone.composite).toFixed(2)+'</span>'+
-                    '</div>',
-                    {sticky:true,direction:'top',offset:[0,-10]}
-                );
+                });
             });
         });
 
@@ -836,7 +827,15 @@
             var resp=await fetch('data/semplice-zones.geojson');
             var collection=await resp.json();
             collection.features.forEach(function(f){
-                GEOJSON[f.properties.zone]={type:'Feature',properties:f.properties,geometry:f.geometry};
+                var zoneId=f.properties.zone;
+                // Split MultiPolygons into individual Polygon features to avoid even-odd fill conflicts
+                if(f.geometry.type==='MultiPolygon'){
+                    GEOJSON[zoneId]=f.geometry.coordinates.map(function(coords){
+                        return {type:'Feature',properties:f.properties,geometry:{type:'Polygon',coordinates:coords}};
+                    });
+                }else{
+                    GEOJSON[zoneId]=[{type:'Feature',properties:f.properties,geometry:f.geometry}];
+                }
             });
         }catch(e){console.warn('GeoJSON load failed, map zones will not display:',e);}
 
