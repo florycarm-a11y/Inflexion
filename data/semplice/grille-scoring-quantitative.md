@@ -1,4 +1,4 @@
-# SEMPLICE — Grille de Scoring Quantitative v1.0
+# SEMPLICE — Grille de Scoring Quantitative v1.1
 
 > **Cadre méthodologique pour l'évaluation reproductible des risques géopolitiques**
 > Inflexion Intelligence — Mars 2026
@@ -69,12 +69,17 @@ Chaque indicateur est normalisé : la valeur observée est classée dans le pali
 | **Dette publique / PIB** | IMF Fiscal Monitor | < 40% | 40–60% | 60–90% | 90–120% | > 120% |
 | **Balance courante / PIB** | IMF BOP | > +3% | 0 à +3% | -3 à 0% | -6 à -3% | < -6% |
 | **Notation souveraine (Fitch/S&P/Moody's)** | Agences | AA+ à AAA | A- à AA | BBB- à BBB+ | BB+ à B- | CCC+ et < |
+| **Peg monétaire artificiel / contrôle des capitaux** | IMF AREAER / BC | Flottant libre | Flottant géré | Crawling peg | Peg fixe + contrôles partiels | Peg artificiel + contrôles stricts |
 
 ### Calcul
 
 ```
-Score_quanti_E = moyenne(PIB_norm, Inflation_norm, Dette_norm, Balance_norm, Rating_norm)
+Score_quanti_E = moyenne(PIB_norm, Inflation_norm, Dette_norm, Balance_norm, Rating_norm, Peg_norm)
 ```
+
+### Note méthodologique — Peg artificiel (v1.1)
+
+L'indicateur "Peg artificiel" est un **flag correctif** identifié lors du backtest Liban 2020. Un peg maintenu artificiellement (LBP/USD à 1507.5 pendant 22 ans) masque l'inflation réelle et le score E. Le backtest montre que l'inflation officielle à 3% au Liban était un faux négatif — l'inflation réelle a explosé à 155% dès la levée du peg. Quand cet indicateur atteint palier 4-5, le score quali E doit être surpondéré (50/50 au lieu de 60/40).
 
 ### Note méthodologique
 
@@ -101,16 +106,20 @@ Pour les pays sous sanctions (Cuba, Iran, DPRK), certains indicateurs officiels 
 | **Global Firepower Index (rang)** | GFP | > 80e | 40–80e | 15–40e | 5–15e | Top 5 impliqué |
 | **Exercices militaires majeurs (12 mois, zone)** | IISS / OTAN | 0 | 1–2 | 3–5 | 6–10 | > 10 ou mobilisation |
 | **Prolifération nucléaire / missiles balistiques** | SIPRI / IAEA | Aucun risque | Zone NWFZ | Voisinage nucléaire | Programme suspect | Arsenal déployé / test récent |
+| **Coups militaires régionaux (rayon 1 500 km, 5 ans)** | ACLED / UCDP / Wikipedia | 0 | 1 | 2 | 3–4 | > 4 |
+| **Subordination armée au pouvoir civil** | V-Dem Military Index (v2x_civmil) | > 0.85 | 0.65–0.85 | 0.45–0.65 | 0.25–0.45 | < 0.25 |
 
 ### Calcul
 
 ```
-Score_quanti_M = moyenne(Dépenses_norm, Conflits_norm, GFP_norm, Exercices_norm, Prolifération_norm)
+Score_quanti_M = moyenne(Dépenses_norm, Conflits_norm, GFP_norm, Exercices_norm, Prolifération_norm, Coups_régionaux_norm, Subordination_norm)
 ```
 
 ### Note méthodologique
 
 Le GFP Index mesure la capacité, pas la menace. Un rang élevé (Top 5) ne signifie risque 5 que si la puissance est **impliquée** dans la zone évaluée. Un pays top 5 non belligérant dans la zone = palier 1-2.
+
+Les deux indicateurs ajoutés en v1.1 corrigent la sous-détection des coups d'État internes identifiée lors du backtest Niger 2023 : les indicateurs de capacité militaire (dépenses, GFP) ne capturent pas le risque de coup interne. La contagion régionale (7 coups en 5 ans au Sahel) et la faible subordination civile de l'armée sont les deux meilleurs prédicteurs.
 
 ### Validation rétrospective
 
@@ -319,7 +328,7 @@ ZONE : [Nom]
 DATE : [JJ/MM/AAAA]
 ANALYSTE : [Nom ou pseudonyme]
 ANGLE : [Défaut / Investissement / Supply Chain / Implantation]
-VERSION GRILLE : v1.0
+VERSION GRILLE : v1.1
 
 | Dimension | Score Quanti | Score Quali | Score Final | Trend | Sources clés |
 |-----------|-------------|-------------|-------------|-------|-------------|
@@ -372,11 +381,14 @@ VERSION HISTORY :
 | E | Dette/PIB | IMF Fiscal Monitor | imf.org | Semestriel | Gratuit |
 | E | Balance courante | IMF BOP | imf.org | Trimestriel | Gratuit |
 | E | Rating souverain | Fitch / S&P / Moody's | fitchratings.com | Ad hoc | Payant* |
+| E | Peg artificiel / contrôle capitaux | IMF AREAER / BC nationales | imf.org/areaer | Annuel | Gratuit |
 | M | Dépenses mil. | SIPRI | sipri.org | Annuel | Gratuit |
 | M | Conflits | ACLED / UCDP | ucdp.uu.se | Temps réel | Gratuit |
 | M | Global Firepower | GFP | globalfirepower.com | Annuel | Gratuit |
 | M | Exercices | IISS Military Balance | iiss.org | Annuel | Payant |
 | M | Prolifération | SIPRI / IAEA | sipri.org | Annuel | Gratuit |
+| M | Coups régionaux (5 ans) | ACLED / UCDP | acleddata.com | Continu | Freemium |
+| M | Subordination civile armée | V-Dem Institute | v-dem.net | Annuel | Gratuit |
 | P | CPI | Transparency Intl | transparency.org | Annuel | Gratuit |
 | P | V-Dem | V-Dem Institute | v-dem.net | Annuel | Gratuit |
 | P | WGI | World Bank | info.worldbank.org/governance | Annuel | Gratuit |
@@ -412,3 +424,4 @@ VERSION HISTORY :
 | Version | Date | Modification |
 |---------|------|-------------|
 | v1.0 | 2026-03-11 | Création — 8 dimensions, 40 indicateurs, seuils, validations rétrospectives |
+| v1.1 | 2026-03-11 | +3 indicateurs (coups régionaux M, subordination civile M, peg artificiel E) — corrections backtests Niger/Liban. 43 indicateurs. |
