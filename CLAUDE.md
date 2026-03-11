@@ -29,7 +29,7 @@ Inflexion/
 ├── geopolitics.html        # Page géopolitique
 ├── markets.html            # Page marchés & finance
 ├── premium.html            # Page services premium
-├── expertise.html          # Page méthodologie & approche
+├── expertise.html          # Page méthodologie, approche & SEMPLICE (#semplice)
 ├── country.html            # Page macro par pays (World Bank)
 ├── ai-tech.html            # Page IA & Tech
 ├── analyse-*.html          # Articles d'analyse thématique
@@ -102,11 +102,22 @@ Inflexion/
 - Branché sur `index.html` (React) et `data-loader.js` (legacy) — 11 pages au total
 - Pour ajouter un thème : ajouter une entrée dans `CATALOG` de `image-catalog.js`
 
+### SEMPLICE — Cadre d'évaluation géopolitique
+
+- **Localisation** : `expertise.html#semplice` (section complète avec radar interactif)
+- **Framework** : 8 dimensions (Social, Économique, Militaire, Politique, Légal, Information, Cyber, Environnemental), scores 1-5
+- **Dimensions exclusives** : Information (I) et Cyber (C) — absentes de PESTEL/SWOT/FSI
+- **Radar interactif** : Canvas JS dans expertise.html (toggle zones, hover dimensions, tooltip scores)
+- **Scoreboard** : tableau des évaluations publiées avec scores par dimension et liens vers articles
+- **Nav** : entrée "SEMPLICE" en tête du mega menu Expertise (`Se` monogramme / icône cible legacy)
+- **Chaque analyse** doit inclure une évaluation SEMPLICE complète (scores + scénarios)
+
 ## 4. Navigation frontend
 
-- **Desktop (≥768px)** : mega menu dropdown avec icônes emoji, CTA "Réserver un diagnostic"
+- **Desktop (≥768px)** : mega menu dropdown avec monogrammes italiques, CTA "Réserver un diagnostic"
 - **Mobile (<768px)** : hamburger → overlay plein écran emerald `#006650`, animations décalées
 - **`nav-shared.js`** : remplace automatiquement header/nav/hero/footer sur pages legacy
+- **Mega menu Expertise** : SEMPLICE (premier), Notre approche, Pipeline IA, Sources & données
 
 ## 5. Pipeline de données
 
@@ -152,3 +163,4 @@ grep -rn '#0B3D1E\|#072A14\|#EDE8DC' *.html styles.css  # Audit anciennes couleu
 - **Sourcing** : chaque donnée porte une attribution (source API ou presse)
 - **Mots-clés courts (≤4 car.)** : `\b` (word boundary) dans les regex, pas `includes()`
 - **Design** : toujours vérifier la cohérence avec index.html avant de modifier une page
+- **SEMPLICE** : toute nouvelle analyse doit inclure une évaluation SEMPLICE et être ajoutée au scoreboard (`expertise.html`) et au catalogue (`analyses.html`)
