@@ -73,6 +73,16 @@
     .sort-header:hover{color:#006650}
     .sort-header .sort-arrow{display:inline-block;margin-left:4px;transition:transform .2s}
     .sort-header.asc .sort-arrow{transform:rotate(180deg)}
+    /* Filters */
+    .filter-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:1rem}
+    .filter-select{padding:6px 12px;border:1.5px solid #E2E5EB;border-radius:8px;font-size:.82rem;font-family:Inter,sans-serif;color:#1A1F2E;background:#fff;cursor:pointer;transition:border-color .2s}
+    .filter-select:focus{outline:none;border-color:#006650}
+    .filter-label{font-size:.78rem;color:#5A6178;font-weight:600}
+    .filter-range{-webkit-appearance:none;width:100px;height:4px;background:#E2E5EB;border-radius:2px;outline:none}
+    .filter-range::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#006650;cursor:pointer}
+    .filter-range::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#006650;cursor:pointer;border:none}
+    .filter-range-value{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#006650;font-weight:600;min-width:24px}
+    @keyframes bubble-pulse{0%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.5}100%{transform:scale(1);opacity:1}}
     .leaflet-popup-content-wrapper{border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,.12)}
     .leaflet-popup-content{margin:12px 16px;font-family:Inter,sans-serif}
     .leaflet-top,.leaflet-bottom{z-index:10!important}
@@ -155,7 +165,32 @@
             <!-- ═══ SCATTER PLOT ═══ -->
             <section id="screening" style="margin-bottom:3rem;">
                 <h2 style="font-family:'Libre Baskerville',Georgia,serif;font-size:1.3rem;font-weight:700;color:#1A1F2E;margin-bottom:.5rem;">Screening Risque / Opportunit&eacute;</h2>
-                <p style="font-size:.85rem;color:#5A6178;margin-bottom:1.25rem;">Positionnement des zones sur la matrice risque-opportunit&eacute;. Cliquez sur une bulle pour localiser la zone.</p>
+                <p style="font-size:.85rem;color:#5A6178;margin-bottom:1.25rem;">Positionnement des zones sur la matrice risque-opportunit&eacute;. Taille des bulles proportionnelle &agrave; la population. Cliquez sur une bulle pour localiser la zone.</p>
+                <!-- Filters -->
+                <div class="filter-bar" id="scatter-filters">
+                    <span class="filter-label">R&eacute;gion</span>
+                    <select class="filter-select" id="filter-region">
+                        <option value="all">Toutes</option>
+                        <option value="Asie">Asie</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Afrique">Afrique</option>
+                        <option value="Amériques">Am&eacute;riques</option>
+                        <option value="Moyen-Orient">Moyen-Orient</option>
+                    </select>
+                    <span class="filter-label">Risque max</span>
+                    <input type="range" class="filter-range" id="filter-risk" min="1" max="5" step="0.5" value="5">
+                    <span class="filter-range-value" id="filter-risk-val">5.0</span>
+                    <span class="filter-label">Dimension &ge; 3</span>
+                    <select class="filter-select" id="filter-dimension">
+                        <option value="all">Toutes</option>
+                        <option value="Information">Information (I)</option>
+                        <option value="Cyber">Cyber (C)</option>
+                        <option value="Militaire">Militaire (M)</option>
+                        <option value="Politique">Politique (P)</option>
+                        <option value="Innovation">Innovation (opp.)</option>
+                        <option value="Maturité tech">Maturit&eacute; tech (opp.)</option>
+                    </select>
+                </div>
                 <div id="scatter-container" style="position:relative;background:#fff;border:1px solid #E2E5EB;border-radius:12px;padding:1rem;overflow:hidden;">
                     <canvas id="scatter-canvas" aria-label="Scatter plot risque opportunit&eacute;"></canvas>
                 </div>
@@ -268,43 +303,43 @@
         {id:'cuba',name:'Cuba',scores:[5,5,3,5,5,5,4,4],composite:4.5,level:'Critique',
          opp:[1,1,1,1,1,1,1,1],oppComposite:1.0,oppLevel:'Faible',
          color:'#9333ea',href:'analyse-cuba-crise-perspectives.html',
-         center:[21.5,-79.9],zoom:7},
+         center:[21.5,-79.9],zoom:7,region:'Amériques',pop:11},
         {id:'ukraine',name:'Ukraine / Mer Noire',scores:[4,4,5,5,4,5,5,4],composite:4.4,level:'Critique',
          opp:[3,2,1,2,2,4,3,2],oppComposite:2.4,oppLevel:'Modéré',
          color:'#DC2626',href:'#',
-         center:[48.5,35],zoom:5},
+         center:[48.5,35],zoom:5,region:'Europe',pop:44},
         {id:'ormuz',name:'Détroit d\'Ormuz',scores:[4,5,5,5,4,4,4,3],composite:4.3,level:'Critique',
          opp:[2,4,1,2,2,2,2,3],oppComposite:2.3,oppLevel:'Modéré',
          color:'#b91c1c',href:'analyse-petrole-trump-iran-ormuz.html',
-         center:[26.5,56],zoom:6},
+         center:[26.5,56],zoom:6,region:'Moyen-Orient',pop:90},
         {id:'sahel',name:'Sahel',scores:[4,4,5,5,4,4,2,4],composite:3.8,level:'Élevé',
          opp:[2,2,1,1,1,1,1,2],oppComposite:1.4,oppLevel:'Faible',
          color:'#C8955A',href:'#',
-         center:[15,2],zoom:5},
+         center:[15,2],zoom:5,region:'Afrique',pop:70},
         {id:'chine',name:'Mer de Chine',scores:[3,3,4,3,3,4,4,3],composite:3.4,level:'Élevé',
          opp:[4,5,2,3,3,5,4,3],oppComposite:3.6,oppLevel:'Élevé',
          color:'#f59e0b',href:'#',
-         center:[16,115],zoom:5},
+         center:[16,115],zoom:5,region:'Asie',pop:1400},
         {id:'arctique',name:'Arctique',scores:[2,3,4,4,3,3,3,3],composite:3.1,level:'Élevé',
          opp:[1,3,1,2,2,2,2,4],oppComposite:2.1,oppLevel:'Modéré',
          color:'#d97706',href:'analyse-arctique-groenland-grand-jeu-polaire.html',
-         center:[74,0],zoom:3},
+         center:[74,0],zoom:3,region:'Europe',pop:4},
         {id:'turquie',name:'Turquie',scores:[3,4,2,4,3,4,3,2],composite:3.1,level:'Modéré-Élevé',
          opp:[4,3,2,2,2,3,3,3],oppComposite:2.8,oppLevel:'Modéré',
          color:'#0891b2',href:'#',
-         center:[39,35],zoom:6},
+         center:[39,35],zoom:6,region:'Europe',pop:85},
         {id:'bresil',name:'Brésil',scores:[3,3,1,3,3,2,2,3],composite:2.6,level:'Modéré',
          opp:[4,4,2,3,2,3,2,5],oppComposite:3.1,oppLevel:'Élevé',
          color:'#16a34a',href:'#',
-         center:[-14,-51],zoom:4},
+         center:[-14,-51],zoom:4,region:'Amériques',pop:214},
         {id:'tamil',name:'Tamil Nadu',scores:[2,2,2,3,3,2,3,2],composite:2.4,level:'Modéré',
          opp:[5,4,3,3,3,5,4,3],oppComposite:3.8,oppLevel:'Élevé',
          color:'#006650',href:'analyse-corridor-defense-france-inde.html',
-         center:[11,79],zoom:7},
+         center:[11,79],zoom:7,region:'Asie',pop:78},
         {id:'singapour',name:'Singapour',scores:[1,2,1,1,1,2,2,2],composite:1.7,level:'Faible',
          opp:[4,4,4,5,5,5,5,3],oppComposite:4.4,oppLevel:'Très élevé',
          color:'#6366f1',href:'#',
-         center:[1.35,103.82],zoom:11}
+         center:[1.35,103.82],zoom:11,region:'Asie',pop:6}
     ];
 
     /* GeoJSON loaded from external file (Natural Earth real boundaries) */
@@ -313,6 +348,30 @@
     var currentMode='risk';
     var leafletMap=null;
     var geoLayers={};
+    var scatterBubbles=[];
+    var activeScatterZone=null;
+
+    /* Filter state */
+    var filterRegion='all';
+    var filterRiskMax=5;
+    var filterDimension='all';
+
+    function filteredZones(){
+        return ZONES.filter(function(z){
+            if(filterRegion!=='all'&&z.region!==filterRegion)return false;
+            if(z.composite>filterRiskMax)return false;
+            if(filterDimension!=='all'){
+                var idx=DIM_LABELS.indexOf(filterDimension);
+                if(idx===-1)idx=OPP_LABELS.indexOf(filterDimension);
+                if(idx!==-1){
+                    var isOpp=DIM_LABELS.indexOf(filterDimension)===-1;
+                    var val=isOpp?z.opp[idx]:z.scores[idx];
+                    if(val<3)return false;
+                }
+            }
+            return true;
+        });
+    }
 
     /* ════════════════════════════════════════════
        COLOR HELPERS
@@ -383,6 +442,7 @@
                         lyr.on('click',function(){
                             leafletMap.flyTo(zone.center,zone.zoom,{duration:0.8});
                             highlightZoneCard(zone.id);
+                            pulseScatterBubble(zone.id);
                         });
                     }
                 });
@@ -562,6 +622,8 @@
     /* ════════════════════════════════════════════
        SCATTER PLOT
        ════════════════════════════════════════════ */
+    var scatterMeta={W:0,H:0,pad:{},pW:0,pH:0,xPos:null,yPos:null};
+
     function initScatterPlot(){
         var canvas=document.getElementById('scatter-canvas');
         if(!canvas)return;
@@ -578,6 +640,7 @@
 
         function xPos(risk){return pad.left+(5-risk)/4*pW;}
         function yPos(opp){return pad.top+(5-opp)/4*pH;}
+        scatterMeta={W:W,H:H,pad:pad,pW:pW,pH:pH,xPos:xPos,yPos:yPos};
 
         var midX=xPos(3),midY=yPos(3);
 
@@ -589,10 +652,10 @@
 
         // Quadrant labels
         ctx.font='italic 10px Inter,sans-serif';ctx.fillStyle='rgba(90,97,120,0.7)';ctx.textAlign='center';
-        ctx.fillText('Zone idéale',(midX+pad.left+pW)/2,pad.top+16);
+        ctx.fillText('Zone id\u00e9ale',(midX+pad.left+pW)/2,pad.top+16);
         ctx.fillText('Potentiel sous contrainte',(pad.left+midX)/2,pad.top+16);
-        ctx.fillText('Stabilité sans rendement',(midX+pad.left+pW)/2,pad.top+pH-6);
-        ctx.fillText('Zone à éviter',(pad.left+midX)/2,pad.top+pH-6);
+        ctx.fillText('Stabilit\u00e9 sans rendement',(midX+pad.left+pW)/2,pad.top+pH-6);
+        ctx.fillText('Zone \u00e0 \u00e9viter',(pad.left+midX)/2,pad.top+pH-6);
 
         // Grid
         ctx.strokeStyle='#E2E5EB';ctx.lineWidth=0.5;
@@ -614,60 +677,124 @@
             ctx.textAlign='right';ctx.fillText(v.toString(),pad.left-8,yPos(v)+4);
         }
 
-        // Bubbles
-        var bubbles=[];
-        ZONES.forEach(function(zone){
-            var bx=xPos(zone.composite),by=yPos(zone.oppComposite),br=16;
+        // Population-based bubble size (log scale to prevent extreme differences)
+        var maxPop=Math.max.apply(null,ZONES.map(function(z){return z.pop;}));
+        function bubbleRadius(pop){return 10+Math.sqrt(pop/maxPop)*18;}
+
+        // Bubbles (filtered)
+        var zones=filteredZones();
+        scatterBubbles=[];
+        zones.forEach(function(zone){
+            var bx=xPos(zone.composite),by=yPos(zone.oppComposite);
+            var br=bubbleRadius(zone.pop);
+            var isActive=activeScatterZone===zone.id;
             ctx.beginPath();ctx.arc(bx,by,br,0,Math.PI*2);
-            ctx.fillStyle=zone.color+'30';ctx.fill();
-            ctx.strokeStyle=zone.color;ctx.lineWidth=2.5;ctx.stroke();
+            ctx.fillStyle=zone.color+(isActive?'50':'30');ctx.fill();
+            ctx.strokeStyle=zone.color;ctx.lineWidth=isActive?3.5:2.5;ctx.stroke();
+            if(isActive){ctx.beginPath();ctx.arc(bx,by,br+4,0,Math.PI*2);ctx.strokeStyle=zone.color+'60';ctx.lineWidth=2;ctx.stroke();}
             // Inner dot
             ctx.beginPath();ctx.arc(bx,by,3,0,Math.PI*2);
             ctx.fillStyle=zone.color;ctx.fill();
             // Label
             ctx.font='bold 7.5px Inter,sans-serif';ctx.fillStyle=zone.color;
             ctx.textAlign='center';ctx.textBaseline='bottom';
-            var short=zone.name.length>12?zone.name.substring(0,10)+'…':zone.name;
+            var short=zone.name.length>12?zone.name.substring(0,10)+'\u2026':zone.name;
             ctx.fillText(short,bx,by-br-3);
-            bubbles.push({zone:zone,x:bx,y:by,r:br});
+            scatterBubbles.push({zone:zone,x:bx,y:by,r:br});
         });
 
-        // Interaction
+        // Also show filtered-out zones as faded dots
+        ZONES.forEach(function(zone){
+            if(zones.indexOf(zone)!==-1)return;
+            var bx=xPos(zone.composite),by=yPos(zone.oppComposite);
+            ctx.beginPath();ctx.arc(bx,by,6,0,Math.PI*2);
+            ctx.fillStyle='#E2E5EB';ctx.fill();
+            ctx.beginPath();ctx.arc(bx,by,2,0,Math.PI*2);
+            ctx.fillStyle='#9ca3af';ctx.fill();
+        });
+
+        // Tooltip element
+        var existing=container.querySelector('.scatter-tip');
+        if(existing)existing.remove();
         var tip=document.createElement('div');
-        tip.className='map-tooltip';tip.style.cssText='position:absolute;pointer-events:none;opacity:0;transition:opacity .15s;z-index:50;min-width:170px;background:#fff;border:1px solid #E2E5EB;border-radius:10px;padding:10px 14px;box-shadow:0 4px 16px rgba(0,0,0,.1);font-family:Inter,sans-serif;font-size:.8rem;';
+        tip.className='scatter-tip';tip.style.cssText='position:absolute;pointer-events:none;opacity:0;transition:opacity .15s;z-index:50;min-width:180px;background:#fff;border:1px solid #E2E5EB;border-radius:10px;padding:10px 14px;box-shadow:0 4px 16px rgba(0,0,0,.1);font-family:Inter,sans-serif;font-size:.8rem;';
         container.appendChild(tip);
 
         canvas.addEventListener('mousemove',function(e){
             var rect=canvas.getBoundingClientRect();
             var mx=(e.clientX-rect.left)*(W/rect.width),my=(e.clientY-rect.top)*(H/rect.height);
             var found=null;
-            bubbles.forEach(function(b){var d=Math.sqrt((mx-b.x)*(mx-b.x)+(my-b.y)*(my-b.y));if(d<b.r*1.3)found=b;});
+            scatterBubbles.forEach(function(b){var d=Math.sqrt((mx-b.x)*(mx-b.x)+(my-b.y)*(my-b.y));if(d<b.r*1.3)found=b;});
             if(found){
                 canvas.style.cursor='pointer';
                 tip.innerHTML='<strong style="color:'+found.zone.color+';font-size:.9rem;">'+found.zone.name+'</strong>'+
                     '<div style="margin-top:4px;color:#DC2626;">Risque : '+found.zone.composite.toFixed(1)+'/5</div>'+
                     '<div style="color:#006650;">Opp. : '+found.zone.oppComposite.toFixed(1)+'/5</div>'+
-                    '<div style="color:#5A6178;margin-top:2px;">Ratio O/R : '+(found.zone.oppComposite/found.zone.composite).toFixed(2)+'</div>';
+                    '<div style="color:#5A6178;margin-top:2px;">Ratio O/R : '+(found.zone.oppComposite/found.zone.composite).toFixed(2)+'</div>'+
+                    '<div style="color:#5A6178;font-size:.72rem;margin-top:2px;">Pop. ~'+found.zone.pop+' M</div>';
                 tip.style.opacity='1';
                 var cx=e.clientX-container.getBoundingClientRect().left+15;
                 var cy=e.clientY-container.getBoundingClientRect().top-10;
-                if(cx+190>container.clientWidth)cx-=210;
+                if(cx+200>container.clientWidth)cx-=220;
                 tip.style.left=cx+'px';tip.style.top=cy+'px';
+                // Bidirectional: highlight zone on map
+                highlightMapZone(found.zone.id);
             }else{
                 canvas.style.cursor='default';tip.style.opacity='0';
+                clearMapHighlight();
             }
         });
         canvas.addEventListener('click',function(e){
             var rect=canvas.getBoundingClientRect();
             var mx=(e.clientX-rect.left)*(W/rect.width),my=(e.clientY-rect.top)*(H/rect.height);
-            bubbles.forEach(function(b){
+            scatterBubbles.forEach(function(b){
                 if(Math.sqrt((mx-b.x)*(mx-b.x)+(my-b.y)*(my-b.y))<b.r*1.3){
                     highlightZoneCard(b.zone.id);
                     flyToZone(b.zone.id);
                 }
             });
         });
-        canvas.addEventListener('mouseleave',function(){tip.style.opacity='0';});
+        canvas.addEventListener('mouseleave',function(){tip.style.opacity='0';clearMapHighlight();});
+    }
+
+    /* Map highlight helpers (scatter hover → map) */
+    var highlightedMapZone=null;
+    function highlightMapZone(zoneId){
+        if(highlightedMapZone===zoneId)return;
+        clearMapHighlight();
+        highlightedMapZone=zoneId;
+        var layer=geoLayers[zoneId];
+        if(layer)layer.setStyle({fillOpacity:0.75,weight:4});
+    }
+    function clearMapHighlight(){
+        if(highlightedMapZone){
+            var layer=geoLayers[highlightedMapZone];
+            if(layer)layer.setStyle({fillOpacity:0.45,weight:2});
+            highlightedMapZone=null;
+        }
+    }
+
+    /* Pulse a bubble in scatter plot (map click → scatter) */
+    function pulseScatterBubble(zoneId){
+        activeScatterZone=zoneId;
+        initScatterPlot();
+        setTimeout(function(){activeScatterZone=null;initScatterPlot();},1800);
+    }
+
+    /* Filter controls */
+    function initFilters(){
+        var regionSel=document.getElementById('filter-region');
+        var riskRange=document.getElementById('filter-risk');
+        var riskVal=document.getElementById('filter-risk-val');
+        var dimSel=document.getElementById('filter-dimension');
+        if(!regionSel)return;
+        regionSel.addEventListener('change',function(){filterRegion=this.value;applyFilters();});
+        riskRange.addEventListener('input',function(){filterRiskMax=parseFloat(this.value);riskVal.textContent=this.value;applyFilters();});
+        dimSel.addEventListener('change',function(){filterDimension=this.value;applyFilters();});
+    }
+    function applyFilters(){
+        initScatterPlot();
+        renderTable();
     }
 
     /* ════════════════════════════════════════════
@@ -678,7 +805,7 @@
     function renderTable(){
         var tbody=document.getElementById('zone-table-body');
         if(!tbody)return;
-        var sorted=ZONES.slice().sort(function(a,b){
+        var sorted=filteredZones().slice().sort(function(a,b){
             var va,vb;
             switch(sortCol){
                 case 'name':va=a.name;vb=b.name;return sortAsc?va.localeCompare(vb):vb.localeCompare(va);
@@ -713,7 +840,10 @@
                 var zid=row.dataset.zone;
                 highlightZoneCard(zid);
                 flyToZone(zid);
+                pulseScatterBubble(zid);
             });
+            row.addEventListener('mouseenter',function(){highlightMapZone(row.dataset.zone);});
+            row.addEventListener('mouseleave',function(){clearMapHighlight();});
         });
     }
 
@@ -844,6 +974,7 @@
         // Force Leaflet to recalculate size after nav-shared.js modifies DOM
         setTimeout(function(){if(leafletMap)leafletMap.invalidateSize();},500);
         renderZoneCards();
+        initFilters();
         initScatterPlot();
         renderTable();
         initTableSort();
