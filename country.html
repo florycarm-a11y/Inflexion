@@ -392,6 +392,11 @@
                 }
             }).addTo(leafletMap);
 
+            // Fix even-odd fill rule for MultiPolygons (Greenland/Arctic overlap)
+            layer.eachLayer(function(lyr){
+                if(lyr._path) lyr._path.setAttribute('fill-rule','nonzero');
+            });
+
             geoLayers[zone.id]=layer;
         });
     }
@@ -405,6 +410,10 @@
                 color:zone.color,
                 fillOpacity:0.45,
                 weight:2
+            });
+            // Preserve nonzero fill-rule after setStyle
+            layer.eachLayer(function(lyr){
+                if(lyr._path) lyr._path.setAttribute('fill-rule','nonzero');
             });
             // Update tooltips
             layer.eachLayer(function(lyr){
