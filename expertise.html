@@ -431,80 +431,241 @@
                 </div>
             </section>
 
-            <!-- Radar visuel — profils comparés -->
+            <!-- Radar interactif — profils comparés -->
             <section class="expertise-section" style="max-width:760px;">
                 <h3 style="font-size:1.1rem;font-weight:700;color:#1A1F2E;margin:2rem 0 1rem;padding-bottom:0.4rem;border-bottom:2px solid #006650;display:inline-block;">Profils SEMPLICE comparés</h3>
-                <p>Le radar SEMPLICE permet de visualiser instantanément le profil de risque d'une zone. Deux scores composites identiques peuvent masquer des réalités radicalement différentes — c'est le <strong>profil</strong>, pas la moyenne, qui éclaire la décision.</p>
+                <p>Le radar SEMPLICE permet de visualiser instantanément le profil de risque d'une zone. Sélectionnez une ou plusieurs zones. Survolez une dimension pour voir le score détaillé.</p>
 
-                <div style="display:flex;gap:1.5rem;margin:2rem 0;flex-wrap:wrap;">
-                    <!-- Radar SVG -->
-                    <div style="flex:1;min-width:280px;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:12px;padding:1.5rem;text-align:center;">
-                        <svg viewBox="0 0 300 300" style="max-width:280px;width:100%;height:auto;" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Grille radar -->
-                            <g transform="translate(150,150)">
-                                <!-- Cercles de référence -->
-                                <polygon points="0,-120 84.85,-84.85 120,0 84.85,84.85 0,120 -84.85,84.85 -120,0 -84.85,-84.85" fill="none" stroke="#E2E5EB" stroke-width="0.5"/>
-                                <polygon points="0,-96 67.88,-67.88 96,0 67.88,67.88 0,96 -67.88,67.88 -96,0 -67.88,-67.88" fill="none" stroke="#E2E5EB" stroke-width="0.5"/>
-                                <polygon points="0,-72 50.91,-50.91 72,0 50.91,50.91 0,72 -50.91,50.91 -72,0 -50.91,-50.91" fill="none" stroke="#E2E5EB" stroke-width="0.5"/>
-                                <polygon points="0,-48 33.94,-33.94 48,0 33.94,33.94 0,48 -33.94,33.94 -48,0 -33.94,-33.94" fill="none" stroke="#E2E5EB" stroke-width="0.5"/>
-                                <polygon points="0,-24 16.97,-16.97 24,0 16.97,16.97 0,24 -16.97,16.97 -24,0 -16.97,-16.97" fill="none" stroke="#E2E5EB" stroke-width="0.5"/>
-                                <!-- Axes -->
-                                <line x1="0" y1="0" x2="0" y2="-120" stroke="#E2E5EB" stroke-width="0.5"/>
-                                <line x1="0" y1="0" x2="84.85" y2="-84.85" stroke="#E2E5EB" stroke-width="0.5"/>
-                                <line x1="0" y1="0" x2="120" y2="0" stroke="#E2E5EB" stroke-width="0.5"/>
-                                <line x1="0" y1="0" x2="84.85" y2="84.85" stroke="#E2E5EB" stroke-width="0.5"/>
-                                <line x1="0" y1="0" x2="0" y2="120" stroke="#E2E5EB" stroke-width="0.5"/>
-                                <line x1="0" y1="0" x2="-84.85" y2="84.85" stroke="#E2E5EB" stroke-width="0.5"/>
-                                <line x1="0" y1="0" x2="-120" y2="0" stroke="#E2E5EB" stroke-width="0.5"/>
-                                <line x1="0" y1="0" x2="-84.85" y2="-84.85" stroke="#E2E5EB" stroke-width="0.5"/>
-                                <!-- Ormuz (4.4) — rouge -->
-                                <polygon points="0,-96 81.72,-81.72 120,0 101.82,101.82 0,96 -67.88,67.88 -96,0 -84.85,-84.85" fill="rgba(220,38,38,0.12)" stroke="#DC2626" stroke-width="1.5"/>
-                                <!-- Arctique (3.1) — bronze -->
-                                <polygon points="0,-72 50.91,-50.91 96,0 50.91,50.91 0,48 -50.91,50.91 -72,0 -67.88,-67.88" fill="rgba(200,149,90,0.12)" stroke="#C8955A" stroke-width="1.5"/>
-                                <!-- Tamil Nadu (2.4) — vert -->
-                                <polygon points="0,-48 33.94,-33.94 48,0 50.91,50.91 0,24 -33.94,33.94 -48,0 -33.94,-33.94" fill="rgba(0,102,80,0.12)" stroke="#006650" stroke-width="1.5"/>
-                                <!-- Labels dimensions -->
-                                <text x="0" y="-128" text-anchor="middle" font-size="8" font-family="JetBrains Mono,monospace" font-weight="600" fill="#1A1F2E">S</text>
-                                <text x="94" y="-92" text-anchor="middle" font-size="8" font-family="JetBrains Mono,monospace" font-weight="600" fill="#1A1F2E">E</text>
-                                <text x="132" y="4" text-anchor="middle" font-size="8" font-family="JetBrains Mono,monospace" font-weight="600" fill="#1A1F2E">M</text>
-                                <text x="94" y="96" text-anchor="middle" font-size="8" font-family="JetBrains Mono,monospace" font-weight="600" fill="#1A1F2E">P</text>
-                                <text x="0" y="136" text-anchor="middle" font-size="8" font-family="JetBrains Mono,monospace" font-weight="600" fill="#1A1F2E">L</text>
-                                <text x="-94" y="96" text-anchor="middle" font-size="8" font-family="JetBrains Mono,monospace" font-weight="600" fill="#1A1F2E">I</text>
-                                <text x="-132" y="4" text-anchor="middle" font-size="8" font-family="JetBrains Mono,monospace" font-weight="600" fill="#1A1F2E">C</text>
-                                <text x="-94" y="-92" text-anchor="middle" font-size="8" font-family="JetBrains Mono,monospace" font-weight="600" fill="#1A1F2E">E</text>
-                            </g>
-                        </svg>
+                <!-- Controls -->
+                <div id="radar-controls" style="display:flex;gap:0.5rem;flex-wrap:wrap;margin:1.5rem 0 1rem;">
+                </div>
+
+                <div style="display:flex;gap:1.5rem;margin:1rem 0 2rem;flex-wrap:wrap;align-items:start;">
+                    <!-- Canvas radar -->
+                    <div style="flex:1;min-width:300px;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:12px;padding:1.5rem;text-align:center;position:relative;">
+                        <canvas id="semplice-radar" width="400" height="400" style="max-width:100%;height:auto;cursor:crosshair;"></canvas>
+                        <div id="radar-tooltip" style="display:none;position:absolute;background:#1A1F2E;color:white;padding:0.5rem 0.75rem;border-radius:6px;font-size:0.75rem;font-family:'JetBrains Mono',monospace;pointer-events:none;z-index:10;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,0.15);"></div>
                     </div>
-                    <!-- Légende -->
-                    <div style="flex:1;min-width:200px;display:flex;flex-direction:column;justify-content:center;gap:1rem;">
-                        <div style="display:flex;align-items:center;gap:0.75rem;">
-                            <span style="width:16px;height:3px;background:#DC2626;border-radius:2px;flex-shrink:0;"></span>
-                            <div>
-                                <strong style="font-size:0.85rem;color:#1A1F2E;">Détroit d'Ormuz</strong>
-                                <span style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#DC2626;font-weight:600;">4.4/5 — Critique</span>
-                                <span style="font-size:0.75rem;color:#5A6178;">Militaire et politique au maximum</span>
-                            </div>
-                        </div>
-                        <div style="display:flex;align-items:center;gap:0.75rem;">
-                            <span style="width:16px;height:3px;background:#C8955A;border-radius:2px;flex-shrink:0;"></span>
-                            <div>
-                                <strong style="font-size:0.85rem;color:#1A1F2E;">Arctique</strong>
-                                <span style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#C8955A;font-weight:600;">3.1/5 — Élevé</span>
-                                <span style="font-size:0.75rem;color:#5A6178;">Environnemental et militaire dominants</span>
-                            </div>
-                        </div>
-                        <div style="display:flex;align-items:center;gap:0.75rem;">
-                            <span style="width:16px;height:3px;background:#006650;border-radius:2px;flex-shrink:0;"></span>
-                            <div>
-                                <strong style="font-size:0.85rem;color:#1A1F2E;">Tamil Nadu</strong>
-                                <span style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#006650;font-weight:600;">2.4/5 — Modéré</span>
-                                <span style="font-size:0.75rem;color:#5A6178;">Politique élevé, reste modéré</span>
-                            </div>
-                        </div>
-                        <p style="font-size:0.75rem;color:#5A6178;line-height:1.5;margin:0.5rem 0 0;font-style:italic;">Même score composite, profils radicalement différents. C'est la signature SEMPLICE.</p>
+                    <!-- Légende dynamique -->
+                    <div id="radar-legend" style="flex:0 0 220px;min-width:200px;display:flex;flex-direction:column;justify-content:center;gap:1rem;">
                     </div>
                 </div>
             </section>
+
+            <script>
+            (function(){
+                var DIMS=['Social','Économique','Militaire','Politique','Légal','Information','Cyber','Environnemental'];
+                var DIM_SHORT=['S','E','M','P','L','I','C','E'];
+                var ZONES=[
+                    {name:'Cuba',scores:[5,5,3,5,5,5,4,4],composite:4.5,level:'Critique',color:'#9333ea',fill:'rgba(147,51,234,0.10)',href:'analyse-cuba-crise-perspectives.html'},
+                    {name:'Détroit d\'Ormuz',scores:[4,5,5,5,4,4,4,3],composite:4.3,level:'Critique',color:'#DC2626',fill:'rgba(220,38,38,0.10)',href:'analyse-petrole-trump-iran-ormuz.html'},
+                    {name:'Arctique',scores:[2,3,4,4,3,3,3,3],composite:3.1,level:'Élevé',color:'#C8955A',fill:'rgba(200,149,90,0.10)',href:'analyse-arctique-groenland-grand-jeu-polaire.html'},
+                    {name:'Tamil Nadu',scores:[2,2,2,3,3,2,3,2],composite:2.4,level:'Modéré',color:'#006650',fill:'rgba(0,102,80,0.10)',href:'analyse-corridor-defense-france-inde-tamil-nadu.html'},
+                ];
+                var active=ZONES.map(function(){return true;});
+                var canvas=document.getElementById('semplice-radar');
+                var ctx=canvas.getContext('2d');
+                var tooltip=document.getElementById('radar-tooltip');
+                var cx=200,cy=200,R=150;
+                var hoverDim=-1;
+
+                function levelColor(c){return c>=4?'#DC2626':c>=3?'#f59e0b':c>=2?'#C8955A':'#006650';}
+
+                function angleFor(i){return(Math.PI*2*i/8)-Math.PI/2;}
+
+                function pointFor(i,val){
+                    var a=angleFor(i);
+                    var r=R*(val/5);
+                    return{x:cx+r*Math.cos(a),y:cy+r*Math.sin(a)};
+                }
+
+                function draw(){
+                    ctx.clearRect(0,0,400,400);
+                    // Grid rings
+                    for(var ring=1;ring<=5;ring++){
+                        ctx.beginPath();
+                        for(var i=0;i<8;i++){
+                            var a=angleFor(i);
+                            var r=R*(ring/5);
+                            var px=cx+r*Math.cos(a),py=cy+r*Math.sin(a);
+                            i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+                        }
+                        ctx.closePath();
+                        ctx.strokeStyle=ring===5?'#D1D5DE':'#E2E5EB';
+                        ctx.lineWidth=ring===5?1:0.5;
+                        ctx.stroke();
+                    }
+                    // Axes
+                    for(var i=0;i<8;i++){
+                        var a=angleFor(i);
+                        ctx.beginPath();
+                        ctx.moveTo(cx,cy);
+                        ctx.lineTo(cx+R*Math.cos(a),cy+R*Math.sin(a));
+                        ctx.strokeStyle='#E2E5EB';
+                        ctx.lineWidth=0.5;
+                        ctx.stroke();
+                    }
+                    // Axis labels
+                    for(var i=0;i<8;i++){
+                        var a=angleFor(i);
+                        var lr=R+18;
+                        var lx=cx+lr*Math.cos(a),ly=cy+lr*Math.sin(a);
+                        ctx.font=(hoverDim===i?'bold 13px':'600 11px')+' JetBrains Mono,monospace';
+                        ctx.fillStyle=hoverDim===i?'#006650':'#1A1F2E';
+                        ctx.textAlign='center';
+                        ctx.textBaseline='middle';
+                        ctx.fillText(DIM_SHORT[i],lx,ly);
+                    }
+                    // Ring labels (right side)
+                    for(var ring=1;ring<=5;ring++){
+                        var ry=cy-R*(ring/5);
+                        ctx.font='9px JetBrains Mono,monospace';
+                        ctx.fillStyle='#5A6178';
+                        ctx.textAlign='left';
+                        ctx.textBaseline='middle';
+                        ctx.fillText(ring,cx+4,ry+1);
+                    }
+                    // Zone polygons
+                    ZONES.forEach(function(z,zi){
+                        if(!active[zi])return;
+                        ctx.beginPath();
+                        for(var i=0;i<8;i++){
+                            var p=pointFor(i,z.scores[i]);
+                            i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y);
+                        }
+                        ctx.closePath();
+                        ctx.fillStyle=z.fill;
+                        ctx.fill();
+                        ctx.strokeStyle=z.color;
+                        ctx.lineWidth=2;
+                        ctx.stroke();
+                        // Dots
+                        for(var i=0;i<8;i++){
+                            var p=pointFor(i,z.scores[i]);
+                            ctx.beginPath();
+                            ctx.arc(p.x,p.y,hoverDim===i?5:3,0,Math.PI*2);
+                            ctx.fillStyle=z.color;
+                            ctx.fill();
+                            if(hoverDim===i){
+                                ctx.strokeStyle='white';
+                                ctx.lineWidth=2;
+                                ctx.stroke();
+                            }
+                        }
+                    });
+                    // Hover highlight axis
+                    if(hoverDim>=0){
+                        var a=angleFor(hoverDim);
+                        ctx.beginPath();
+                        ctx.moveTo(cx,cy);
+                        ctx.lineTo(cx+R*Math.cos(a),cy+R*Math.sin(a));
+                        ctx.strokeStyle='rgba(0,102,80,0.3)';
+                        ctx.lineWidth=2;
+                        ctx.stroke();
+                    }
+                }
+
+                function buildControls(){
+                    var c=document.getElementById('radar-controls');
+                    c.innerHTML='';
+                    ZONES.forEach(function(z,i){
+                        var btn=document.createElement('button');
+                        btn.textContent=z.name;
+                        btn.style.cssText='padding:0.35rem 0.75rem;border-radius:6px;font-size:0.78rem;font-weight:600;cursor:pointer;transition:all 0.2s;border:2px solid '+z.color+';'+(active[i]?'background:'+z.color+';color:white;':'background:white;color:'+z.color+';');
+                        btn.addEventListener('click',function(){
+                            active[i]=!active[i];
+                            buildControls();
+                            buildLegend();
+                            draw();
+                        });
+                        c.appendChild(btn);
+                    });
+                    // Bouton "Tous"
+                    var allActive=active.every(function(a){return a;});
+                    var allBtn=document.createElement('button');
+                    allBtn.textContent=allActive?'Aucun':'Tous';
+                    allBtn.style.cssText='padding:0.35rem 0.75rem;border-radius:6px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid #E2E5EB;background:#F7F8FA;color:#5A6178;transition:all 0.2s;';
+                    allBtn.addEventListener('click',function(){
+                        var newState=!allActive;
+                        for(var j=0;j<active.length;j++)active[j]=newState;
+                        buildControls();buildLegend();draw();
+                    });
+                    c.appendChild(allBtn);
+                }
+
+                function buildLegend(){
+                    var leg=document.getElementById('radar-legend');
+                    leg.innerHTML='';
+                    ZONES.forEach(function(z,i){
+                        if(!active[i])return;
+                        var d=document.createElement('a');
+                        d.href=z.href;
+                        d.style.cssText='display:flex;align-items:center;gap:0.75rem;text-decoration:none;padding:0.5rem;border-radius:8px;transition:background 0.2s;';
+                        d.addEventListener('mouseenter',function(){d.style.background='#F7F8FA';});
+                        d.addEventListener('mouseleave',function(){d.style.background='transparent';});
+                        var dot=document.createElement('span');
+                        dot.style.cssText='width:14px;height:14px;border-radius:50%;flex-shrink:0;background:'+z.color+';';
+                        var info=document.createElement('div');
+                        info.innerHTML='<strong style="font-size:0.85rem;color:#1A1F2E;">'+z.name+'</strong><span style="display:block;font-family:JetBrains Mono,monospace;font-size:0.8rem;color:'+levelColor(z.composite)+';font-weight:600;">'+z.composite.toFixed(1)+'/5 — '+z.level+'</span>';
+                        d.appendChild(dot);d.appendChild(info);leg.appendChild(d);
+                    });
+                    if(active.filter(function(a){return a;}).length===0){
+                        var empty=document.createElement('p');
+                        empty.style.cssText='font-size:0.8rem;color:#5A6178;font-style:italic;';
+                        empty.textContent='Sélectionnez une zone ci-dessus.';
+                        leg.appendChild(empty);
+                    }
+                }
+
+                // Mouse interaction
+                canvas.addEventListener('mousemove',function(e){
+                    var rect=canvas.getBoundingClientRect();
+                    var scaleX=400/rect.width;
+                    var mx=(e.clientX-rect.left)*scaleX;
+                    var my=(e.clientY-rect.top)*scaleX;
+                    var angle=Math.atan2(my-cy,mx-cx);
+                    var dist=Math.sqrt((mx-cx)*(mx-cx)+(my-cy)*(my-cy));
+                    if(dist>R+30){
+                        if(hoverDim>=0){hoverDim=-1;draw();tooltip.style.display='none';}
+                        return;
+                    }
+                    // Find closest dimension
+                    var best=-1,bestDist=999;
+                    for(var i=0;i<8;i++){
+                        var a=angleFor(i);
+                        var da=Math.abs(Math.atan2(Math.sin(angle-a),Math.cos(angle-a)));
+                        if(da<bestDist){bestDist=da;best=i;}
+                    }
+                    if(best!==hoverDim){
+                        hoverDim=best;
+                        draw();
+                        // Build tooltip
+                        var lines=[];
+                        lines.push('<strong style="color:#33B894;">'+DIMS[best]+' ('+DIM_SHORT[best]+')</strong>');
+                        ZONES.forEach(function(z,zi){
+                            if(!active[zi])return;
+                            lines.push('<span style="color:'+z.color+';">\u25CF</span> '+z.name+': <strong>'+z.scores[best]+'/5</strong>');
+                        });
+                        tooltip.innerHTML=lines.join('<br>');
+                        tooltip.style.display='block';
+                    }
+                    // Position tooltip
+                    var tx=e.clientX-canvas.closest('div').getBoundingClientRect().left+12;
+                    var ty=e.clientY-canvas.closest('div').getBoundingClientRect().top-10;
+                    tooltip.style.left=tx+'px';
+                    tooltip.style.top=ty+'px';
+                });
+
+                canvas.addEventListener('mouseleave',function(){
+                    hoverDim=-1;draw();tooltip.style.display='none';
+                });
+
+                // Init
+                buildControls();
+                buildLegend();
+                draw();
+            })();
+            </script>
 
             <!-- Méthodologie de scoring -->
             <section class="expertise-section" style="max-width:760px;">

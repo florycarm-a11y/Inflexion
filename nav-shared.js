@@ -43,6 +43,7 @@ var MEGA_NAV=[
  {icon:'\u{1F5FA}\ufe0f',label:'Macro par pays',desc:'Donn\u00e9es World Bank & indicateurs',href:'country.html'},
 ]},
 {label:'Expertise',children:[
+ {icon:'\u{1F3AF}',label:'SEMPLICE',desc:'Notre cadre d\'\u00e9valuation g\u00e9opolitique en 8 dimensions',href:'expertise.html#semplice'},
  {icon:'\u{1F9ED}',label:'Notre approche',desc:'M\u00e9thodologie & cadre d\'analyse',href:'expertise.html'},
  {icon:'\u{1F916}',label:'Pipeline IA',desc:'158 sources, 15 APIs, Claude IA',href:'expertise.html#pipeline'},
  {icon:'\u{1F4E1}',label:'Sources & donn\u00e9es',desc:'Transparence sur nos flux',href:'expertise.html#sources'},
