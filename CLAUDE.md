@@ -107,7 +107,11 @@ Inflexion/
 - **Localisation** : `expertise.html#semplice` (section complète avec radar interactif)
 - **Framework** : 8 dimensions (Social, Économique, Militaire, Politique, Légal, Information, Cyber, Environnemental), scores 1-5
 - **Dimensions exclusives** : Information (I) et Cyber (C) — absentes de PESTEL/SWOT/FSI
-- **Radar interactif** : Canvas JS dans expertise.html (toggle zones, hover dimensions, tooltip scores)
+- **Radar dual** : Canvas JS, toggle Risk/Opportunité/Combiné, 10 zones avec scores risque ET opportunité
+- **Dimensions opportunité** : Capital humain, Croissance, Sécurité, Gouvernance, Attractivité juridique, Innovation, Maturité tech, Durabilité
+- **Comparaison** : 8 cadres (PESTEL, SWOT, FSI, S&P, PMESII-PT, EIU, Coface) + 8 critères
+- **Backtests** : v1.1, 12 évaluations, 10/12 détections, Ukraine 2022 cas principal (WhisperGate)
+- **Grille scoring** : `data/semplice/grille-scoring-quantitative.md` (43 indicateurs, 60% quanti / 40% quali)
 - **Scoreboard** : tableau des évaluations publiées avec scores par dimension et liens vers articles
 - **Nav** : entrée "SEMPLICE" en tête du mega menu Expertise (`Se` monogramme / icône cible legacy)
 - **Chaque analyse** doit inclure une évaluation SEMPLICE complète (scores + scénarios)
