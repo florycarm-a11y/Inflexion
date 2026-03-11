@@ -8647,6 +8647,28 @@ body.page-markets .market-status {
     .expertise-highlight {
         padding: 1rem 1.25rem;
     }
+    .expertise-section [style*="grid-template-columns: repeat(2"] {
+        grid-template-columns: 1fr !important;
+    }
+    .expertise-section [style*="grid-template-columns: repeat(3"] {
+        grid-template-columns: 1fr !important;
+    }
+    .expertise-section [style*="grid-template-columns:repeat(2"] {
+        grid-template-columns: 1fr !important;
+    }
+    .expertise-section [style*="grid-template-columns:repeat(3"] {
+        grid-template-columns: 1fr !important;
+    }
+    .expertise-section [style*="grid-template-columns:repeat(5"] {
+        grid-template-columns: repeat(5, 1fr) !important;
+        font-size: 0.6rem !important;
+    }
+    .expertise-section [style*="display:flex;gap:1.5rem"] {
+        flex-direction: column !important;
+    }
+    .expertise-section table {
+        font-size: 0.7rem !important;
+    }
 }
 
 /* --- Case Studies Section (analysis.html) --- */
