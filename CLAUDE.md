@@ -30,7 +30,7 @@ Inflexion/
 ├── markets.html            # Page marchés & finance
 ├── premium.html            # Page services premium
 ├── expertise.html          # Page méthodologie, approche & SEMPLICE (#semplice)
-├── country.html            # Page macro par pays (World Bank)
+├── country.html            # Radar Pays — carte Leaflet + scatter plot + tableau triable
 ├── ai-tech.html            # Page IA & Tech
 ├── analyse-*.html          # Articles d'analyse thématique
 ├── cgu.html / mentions-legales.html / confidentialite.html
@@ -39,6 +39,7 @@ Inflexion/
 ├── image-catalog.js        # ~120 images Unsplash par sous-thème + matchImage()
 ├── app.js                  # Logique JS principale
 ├── data-loader.js          # Charge les JSON → met à jour le DOM (utilise matchImage)
+├── data/semplice-zones.geojson  # GeoJSON 10 zones SEMPLICE (Natural Earth 50m)
 ├── data/                   # Fichiers JSON générés par le pipeline
 ├── scripts/                # Pipeline Node.js (fetch, insight, veille, briefing, RAG, tests)
 ├── .github/workflows/      # CI/CD (fetch, briefing, article, sentiment, deploy)
@@ -115,6 +116,8 @@ Inflexion/
 - **Scoreboard** : tableau des évaluations publiées avec scores par dimension et liens vers articles
 - **Nav** : entrée "SEMPLICE" en tête du mega menu Expertise (`Se` monogramme / icône cible legacy)
 - **Chaque analyse** doit inclure une évaluation SEMPLICE complète (scores + scénarios)
+- **Radar Pays** (`country.html`) : carte Leaflet (CartoDB Positron) + 10 zones GeoJSON (Natural Earth 50m) + scatter plot risque/opportunité + tableau triable 7 colonnes + mini radars Canvas 8D + données World Bank conservées
+- **GeoJSON** : `data/semplice-zones.geojson` — frontières réelles (Cuba, Ukraine, Turquie, Brésil, Singapour, Sahel=Mali+Niger+Burkina, Arctique=Groenland+ZEE, Tamil Nadu, Ormuz, Mer de Chine). Zone IDs doivent correspondre entre JS (`ZONES[].id`) et GeoJSON (`properties.zone`)
 
 ## 4. Navigation frontend
 
