@@ -187,7 +187,7 @@
             <section class="expertise-section" style="max-width:760px;">
                 <h3 style="font-size:1.1rem;font-weight:700;color:#1A1F2E;margin:2rem 0 1rem;padding-bottom:0.4rem;border-bottom:2px solid #006650;display:inline-block;">Pourquoi un nouveau cadre</h3>
                 <p>Les outils d'analyse géopolitique existants souffrent de trois limites structurelles. Les cadres académiques (<strong>PESTEL</strong>, <strong>SWOT</strong>) offrent une grille de lecture qualitative utile en stratégie d'entreprise, mais ne produisent pas de score comparable d'une zone à l'autre. Les indices institutionnels (<strong>Fragile States Index</strong>, <strong>Democracy Index</strong>, <strong>Global Peace Index</strong>) mesurent des états statiques avec un décalage de 12 à 18 mois — trop lents pour une crise émergente. Les ratings souverains (<strong>Moody's</strong>, <strong>S&P</strong>, <strong>Fitch</strong>) se concentrent sur le risque de crédit et ignorent les dimensions informationnelle, cyber et militaire.</p>
-                <p>SEMPLICE comble cet espace. Il combine la <strong>rigueur quantitative</strong> d'un indice (scores 1-5, moyenne composite) avec la <strong>granularité</strong> d'une analyse dimensionnelle et la <strong>réactivité</strong> d'une évaluation produite en temps réel, adossée à des sources vérifiées.</p>
+                <p>SEMPLICE comble cet espace. Il combine la <strong>rigueur quantitative</strong> d'un indice (scores 1-7, composite pondéré) avec la <strong>granularité</strong> d'une analyse dimensionnelle et la <strong>réactivité</strong> d'une évaluation produite en temps réel, adossée à des sources vérifiées.</p>
 
                 <div class="expertise-highlight" style="margin-top:2rem;margin-bottom:2rem;">
                     <p><strong>Pourquoi « SEMPLICE » ?</strong> — L'acronyme signifie « simple » en italien. C'est notre philosophie : rendre lisible la complexité géopolitique. Un chiffre qui parle, un profil qui éclaire, des scénarios qui préparent.</p>
@@ -215,7 +215,7 @@
                         <tbody>
                             <tr style="border-bottom:1px solid #E2E5EB;">
                                 <td style="padding:0.5rem 0.6rem;font-weight:600;color:#1A1F2E;">Score quantitatif</td>
-                                <td style="padding:0.5rem 0.5rem;text-align:center;color:#006650;font-weight:700;">1-5</td>
+                                <td style="padding:0.5rem 0.5rem;text-align:center;color:#006650;font-weight:700;">1-7</td>
                                 <td style="padding:0.5rem 0.5rem;text-align:center;color:#DC2626;">Non</td>
                                 <td style="padding:0.5rem 0.5rem;text-align:center;color:#DC2626;">Non</td>
                                 <td style="padding:0.5rem 0.5rem;text-align:center;color:#006650;">0-120</td>
@@ -514,16 +514,16 @@
                 var OPP_DIMS=['Capital humain','Croissance & marché','Sécurité & alliances','Gouvernance & réformes','Attractivité juridique','Innovation & numérique','Maturité technologique','Durabilité & transition'];
                 var DIM_SHORT=['S','E','M','P','L','I','C','E'];
                 var ZONES=[
-                    {name:'Cuba',scores:[5,5,3,5,5,5,4,4],composite:4.5,level:'Critique',opp:[1,1,1,1,1,1,1,1],oppComposite:1.0,oppLevel:'Faible',color:'#9333ea',fill:'rgba(147,51,234,0.10)',href:'analyse-cuba-crise-perspectives.html'},
-                    {name:'Ukraine / Mer Noire',scores:[4,4,5,5,4,5,5,4],composite:4.4,level:'Critique',opp:[3,2,1,2,2,4,3,2],oppComposite:2.4,oppLevel:'Modéré',color:'#DC2626',fill:'rgba(220,38,38,0.10)',href:'#'},
-                    {name:'Détroit d\'Ormuz',scores:[4,5,5,5,4,4,4,3],composite:4.3,level:'Critique',opp:[2,4,1,2,2,2,2,3],oppComposite:2.3,oppLevel:'Modéré',color:'#b91c1c',fill:'rgba(185,28,28,0.10)',href:'analyse-petrole-trump-iran-ormuz.html'},
-                    {name:'Sahel',scores:[4,4,5,5,4,4,2,4],composite:3.8,level:'Élevé',opp:[2,2,1,1,1,1,1,2],oppComposite:1.4,oppLevel:'Faible',color:'#C8955A',fill:'rgba(200,149,90,0.10)',href:'#'},
-                    {name:'Mer de Chine',scores:[3,3,4,3,3,4,4,3],composite:3.4,level:'Élevé',opp:[4,5,2,3,3,5,4,3],oppComposite:3.6,oppLevel:'Élevé',color:'#f59e0b',fill:'rgba(245,158,11,0.10)',href:'#'},
-                    {name:'Arctique',scores:[2,3,4,4,3,3,3,3],composite:3.1,level:'Élevé',opp:[1,3,1,2,2,2,2,4],oppComposite:2.1,oppLevel:'Modéré',color:'#d97706',fill:'rgba(217,119,6,0.10)',href:'analyse-arctique-groenland-grand-jeu-polaire.html'},
-                    {name:'Turquie',scores:[3,4,2,4,3,4,3,2],composite:3.1,level:'Modéré-Élevé',opp:[4,3,2,2,2,3,3,3],oppComposite:2.8,oppLevel:'Modéré',color:'#0891b2',fill:'rgba(8,145,178,0.10)',href:'#'},
-                    {name:'Brésil',scores:[3,3,1,3,3,2,2,3],composite:2.6,level:'Modéré',opp:[4,4,2,3,2,3,2,5],oppComposite:3.1,oppLevel:'Élevé',color:'#16a34a',fill:'rgba(22,163,74,0.10)',href:'#'},
-                    {name:'Tamil Nadu',scores:[2,2,2,3,3,2,3,2],composite:2.4,level:'Modéré',opp:[5,4,3,3,3,5,4,3],oppComposite:3.8,oppLevel:'Élevé',color:'#006650',fill:'rgba(0,102,80,0.10)',href:'analyse-corridor-defense-france-inde-tamil-nadu.html'},
-                    {name:'Singapour',scores:[1,2,1,1,1,2,2,2],composite:1.7,level:'Faible',opp:[4,4,4,5,5,5,5,3],oppComposite:4.4,oppLevel:'Très élevé',color:'#6366f1',fill:'rgba(99,102,241,0.10)',href:'#'},
+                    {name:'Cuba',scores:[5,5,3,5,5,5,4,4],composite:4.5,level:'Modéré-Élevé',opp:[1,1,1,1,1,1,1,1],oppComposite:1.0,oppLevel:'Minimal',color:'#9333ea',fill:'rgba(147,51,234,0.10)',href:'analyse-cuba-crise-perspectives.html'},
+                    {name:'Ukraine / Mer Noire',scores:[4,4,5,5,4,5,5,4],composite:4.4,level:'Modéré-Élevé',opp:[4,3,1,3,3,5,4,3],oppComposite:3.2,oppLevel:'Modéré',color:'#DC2626',fill:'rgba(220,38,38,0.10)',href:'#'},
+                    {name:'Détroit d\'Ormuz',scores:[4,5,5,5,4,4,4,3],composite:4.3,level:'Modéré-Élevé',opp:[3,5,1,3,3,3,3,4],oppComposite:3.1,oppLevel:'Modéré',color:'#b91c1c',fill:'rgba(185,28,28,0.10)',href:'analyse-petrole-trump-iran-ormuz.html'},
+                    {name:'Sahel',scores:[4,4,5,5,4,4,2,4],composite:3.8,level:'Modéré',opp:[3,3,1,1,1,1,1,3],oppComposite:1.8,oppLevel:'Faible',color:'#C8955A',fill:'rgba(200,149,90,0.10)',href:'#'},
+                    {name:'Mer de Chine',scores:[3,3,4,3,3,4,4,3],composite:3.4,level:'Modéré',opp:[5,6,3,4,4,6,5,4],oppComposite:4.7,oppLevel:'Élevé',color:'#f59e0b',fill:'rgba(245,158,11,0.10)',href:'#'},
+                    {name:'Arctique',scores:[2,3,4,4,3,3,3,3],composite:3.1,level:'Modéré',opp:[1,4,1,3,3,3,3,5],oppComposite:2.9,oppLevel:'Modéré',color:'#d97706',fill:'rgba(217,119,6,0.10)',href:'analyse-arctique-groenland-grand-jeu-polaire.html'},
+                    {name:'Turquie',scores:[3,4,2,4,3,4,3,2],composite:3.1,level:'Modéré',opp:[5,4,3,3,3,4,4,4],oppComposite:3.8,oppLevel:'Significatif',color:'#0891b2',fill:'rgba(8,145,178,0.10)',href:'#'},
+                    {name:'Brésil',scores:[3,3,1,3,3,2,2,3],composite:2.6,level:'Modéré-Faible',opp:[5,5,3,4,3,4,3,6],oppComposite:4.2,oppLevel:'Significatif',color:'#16a34a',fill:'rgba(22,163,74,0.10)',href:'#'},
+                    {name:'Tamil Nadu',scores:[2,2,2,3,3,2,3,2],composite:2.4,level:'Modéré-Faible',opp:[6,5,4,4,4,6,5,4],oppComposite:4.9,oppLevel:'Élevé',color:'#006650',fill:'rgba(0,102,80,0.10)',href:'analyse-corridor-defense-france-inde-tamil-nadu.html'},
+                    {name:'Singapour',scores:[1,2,1,1,1,2,2,2],composite:1.7,level:'Très faible',opp:[5,5,5,6,6,6,6,4],oppComposite:5.5,oppLevel:'Exemplaire',color:'#6366f1',fill:'rgba(99,102,241,0.10)',href:'#'},
                 ];
                 var active=[false,false,true,false,false,true,false,false,true,true];
                 var viewMode='risk'; // 'risk','opp','combined'
@@ -533,15 +533,15 @@
                 var cx=200,cy=200,R=150;
                 var hoverDim=-1;
 
-                function riskLevelColor(c){return c>=4?'#DC2626':c>=3?'#f59e0b':c>=2?'#C8955A':'#006650';}
-                function oppLevelColor(c){return c>=4?'#006650':c>=3?'#33B894':c>=2?'#C8955A':'#DC2626';}
+                function riskLevelColor(c){return c>=5.5?'#DC2626':c>=4?'#f59e0b':c>=2.5?'#C8955A':'#006650';}
+                function oppLevelColor(c){return c>=5?'#006650':c>=3.5?'#33B894':c>=2?'#C8955A':'#DC2626';}
                 function currentDims(){return viewMode==='opp'?OPP_DIMS:DIMS;}
 
                 function angleFor(i){return(Math.PI*2*i/8)-Math.PI/2;}
 
                 function pointFor(i,val){
                     var a=angleFor(i);
-                    var r=R*(val/5);
+                    var r=R*(val/7);
                     return{x:cx+r*Math.cos(a),y:cy+r*Math.sin(a)};
                 }
 
@@ -570,16 +570,16 @@
                 function draw(){
                     ctx.clearRect(0,0,400,400);
                     // Grid rings
-                    for(var ring=1;ring<=5;ring++){
+                    for(var ring=1;ring<=7;ring++){
                         ctx.beginPath();
                         for(var i=0;i<8;i++){
-                            var a=angleFor(i);var r=R*(ring/5);
+                            var a=angleFor(i);var r=R*(ring/7);
                             var px=cx+r*Math.cos(a),py=cy+r*Math.sin(a);
                             i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
                         }
                         ctx.closePath();
-                        ctx.strokeStyle=ring===5?'#D1D5DE':'#E2E5EB';
-                        ctx.lineWidth=ring===5?1:0.5;
+                        ctx.strokeStyle=ring===7?'#D1D5DE':'#E2E5EB';
+                        ctx.lineWidth=ring===7?1:0.5;
                         ctx.stroke();
                     }
                     // Axes
@@ -599,8 +599,8 @@
                         ctx.fillText(DIM_SHORT[i],lx,ly);
                     }
                     // Ring labels
-                    for(var ring=1;ring<=5;ring++){
-                        var ry=cy-R*(ring/5);
+                    for(var ring=1;ring<=7;ring++){
+                        var ry=cy-R*(ring/7);
                         ctx.font='9px JetBrains Mono,monospace';ctx.fillStyle='#5A6178';
                         ctx.textAlign='left';ctx.textBaseline='middle';
                         ctx.fillText(ring,cx+4,ry+1);
@@ -697,9 +697,9 @@
                         dot.style.cssText='width:14px;height:14px;border-radius:50%;flex-shrink:0;background:'+z.color+';';
                         var info=document.createElement('div');
                         if(viewMode==='risk'){
-                            info.innerHTML='<strong style="font-size:0.85rem;color:#1A1F2E;">'+z.name+'</strong><span style="display:block;font-family:JetBrains Mono,monospace;font-size:0.8rem;color:'+riskLevelColor(z.composite)+';font-weight:600;">'+z.composite.toFixed(1)+'/5 — '+z.level+'</span>';
+                            info.innerHTML='<strong style="font-size:0.85rem;color:#1A1F2E;">'+z.name+'</strong><span style="display:block;font-family:JetBrains Mono,monospace;font-size:0.8rem;color:'+riskLevelColor(z.composite)+';font-weight:600;">'+z.composite.toFixed(1)+'/7 — '+z.level+'</span>';
                         }else if(viewMode==='opp'){
-                            info.innerHTML='<strong style="font-size:0.85rem;color:#1A1F2E;">'+z.name+'</strong><span style="display:block;font-family:JetBrains Mono,monospace;font-size:0.8rem;color:'+oppLevelColor(z.oppComposite)+';font-weight:600;">'+z.oppComposite.toFixed(1)+'/5 — '+z.oppLevel+'</span>';
+                            info.innerHTML='<strong style="font-size:0.85rem;color:#1A1F2E;">'+z.name+'</strong><span style="display:block;font-family:JetBrains Mono,monospace;font-size:0.8rem;color:'+oppLevelColor(z.oppComposite)+';font-weight:600;">'+z.oppComposite.toFixed(1)+'/7 — '+z.oppLevel+'</span>';
                         }else{
                             info.innerHTML='<strong style="font-size:0.85rem;color:#1A1F2E;">'+z.name+'</strong><span style="display:block;font-family:JetBrains Mono,monospace;font-size:0.75rem;"><span style="color:'+riskLevelColor(z.composite)+';font-weight:600;">R '+z.composite.toFixed(1)+'</span> <span style="color:#E2E5EB;">/</span> <span style="color:'+oppLevelColor(z.oppComposite)+';font-weight:600;">O '+z.oppComposite.toFixed(1)+'</span></span>';
                         }
@@ -740,9 +740,9 @@
                         ZONES.forEach(function(z,zi){
                             if(!active[zi])return;
                             if(viewMode==='risk'){
-                                lines.push('<span style="color:'+z.color+';">\u25CF</span> '+z.name+': <strong>'+z.scores[best]+'/5</strong>');
+                                lines.push('<span style="color:'+z.color+';">\u25CF</span> '+z.name+': <strong>'+z.scores[best]+'/7</strong>');
                             }else if(viewMode==='opp'){
-                                lines.push('<span style="color:'+z.color+';">\u25CF</span> '+z.name+': <strong>'+z.opp[best]+'/5</strong>');
+                                lines.push('<span style="color:'+z.color+';">\u25CF</span> '+z.name+': <strong>'+z.opp[best]+'/7</strong>');
                             }else{
                                 lines.push('<span style="color:'+z.color+';">\u25CF</span> '+z.name+': <span style="color:#DC2626;">R'+z.scores[best]+'</span> / <span style="color:#006650;">O'+z.opp[best]+'</span>');
                             }
@@ -782,11 +782,11 @@
                     </div>
                     <div style="padding:1.25rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:12px;">
                         <strong style="color:#006650;font-size:0.85rem;display:block;margin-bottom:0.5rem;">2. Scoring dimensionnel</strong>
-                        <p style="font-size:0.8rem;color:#5A6178;line-height:1.55;margin:0;">Chaque dimension reçoit un score 1-5 selon une grille de <strong>40 indicateurs quantitatifs</strong> (PIB, Gini, RSF, CPI, ND-GAIN...) avec seuils prédéfinis, croisés avec l'analyse qualitative OSINT. Mix formalisé : <strong>60% quanti / 40% quali</strong>.</p>
+                        <p style="font-size:0.8rem;color:#5A6178;line-height:1.55;margin:0;">Chaque dimension reçoit un score 1-7 selon une grille de <strong>95 indicateurs risque</strong> et <strong>66 indicateurs opportunité</strong> (PIB, Gini, RSF, CPI, ND-GAIN...) avec seuils prédéfinis, croisés avec l'analyse qualitative OSINT. Mix formalisé : <strong>60% quanti / 40% quali</strong>.</p>
                     </div>
                     <div style="padding:1.25rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:12px;">
                         <strong style="color:#006650;font-size:0.85rem;display:block;margin-bottom:0.5rem;">3. Pondération contextuelle</strong>
-                        <p style="font-size:0.8rem;color:#5A6178;line-height:1.55;margin:0;">Le score composite est une moyenne simple par défaut. Mais selon l'angle décisionnel (investissement, supply chain, implantation), certaines dimensions peuvent être surpondérées. La pondération est toujours explicite.</p>
+                        <p style="font-size:0.8rem;color:#5A6178;line-height:1.55;margin:0;">Le score composite est une <strong>moyenne pondérée</strong> (M=16%, E=15%, P=14%, S=12%, I=12%, C=11%, Ee=10%, L=10%) avec <strong>amplification de pic</strong> : toute dimension dépassant le composite de &gt;1.0 reçoit un bonus de poids (+0.20 par point d'écart, cap +0.3). La pondération est toujours explicite.</p>
                     </div>
                     <div style="padding:1.25rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:12px;">
                         <strong style="color:#006650;font-size:0.85rem;display:block;margin-bottom:0.5rem;">4. Scénarios probabilisés</strong>
@@ -867,27 +867,39 @@
                         <tbody>
                             <tr style="border-bottom:1px solid #E2E5EB;">
                                 <td style="padding:0.75rem 1rem;font-family:'JetBrains Mono',monospace;font-weight:700;color:#006650;">1.0 – 2.0</td>
-                                <td style="padding:0.75rem 1rem;"><span style="background:#006650;color:white;padding:0.15rem 0.6rem;border-radius:4px;font-size:0.75rem;font-weight:600;">FAIBLE</span></td>
+                                <td style="padding:0.75rem 1rem;"><span style="background:#006650;color:white;padding:0.15rem 0.6rem;border-radius:4px;font-size:0.75rem;font-weight:600;">TRÈS FAIBLE</span></td>
                                 <td style="padding:0.75rem 1rem;color:#5A6178;">Environnement stable, risques contenus</td>
                                 <td style="padding:0.75rem 1rem;color:#1A1F2E;font-weight:500;">Déploiement, investissement, expansion</td>
                             </tr>
                             <tr style="border-bottom:1px solid #E2E5EB;">
-                                <td style="padding:0.75rem 1rem;font-family:'JetBrains Mono',monospace;font-weight:700;color:#C8955A;">2.0 – 3.0</td>
+                                <td style="padding:0.75rem 1rem;font-family:'JetBrains Mono',monospace;font-weight:700;color:#33B894;">2.0 – 3.0</td>
+                                <td style="padding:0.75rem 1rem;"><span style="background:#33B894;color:white;padding:0.15rem 0.6rem;border-radius:4px;font-size:0.75rem;font-weight:600;">FAIBLE</span></td>
+                                <td style="padding:0.75rem 1rem;color:#5A6178;">Risques faibles, contexte favorable</td>
+                                <td style="padding:0.75rem 1rem;color:#1A1F2E;font-weight:500;">Opportunités d'expansion, veille standard</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid #E2E5EB;">
+                                <td style="padding:0.75rem 1rem;font-family:'JetBrains Mono',monospace;font-weight:700;color:#C8955A;">3.0 – 4.0</td>
                                 <td style="padding:0.75rem 1rem;"><span style="background:#C8955A;color:white;padding:0.15rem 0.6rem;border-radius:4px;font-size:0.75rem;font-weight:600;">MODÉRÉ</span></td>
                                 <td style="padding:0.75rem 1rem;color:#5A6178;">Tensions identifiées, gérables</td>
                                 <td style="padding:0.75rem 1rem;color:#1A1F2E;font-weight:500;">Due diligence renforcée, veille active</td>
                             </tr>
                             <tr style="border-bottom:1px solid #E2E5EB;">
-                                <td style="padding:0.75rem 1rem;font-family:'JetBrains Mono',monospace;font-weight:700;color:#f59e0b;">3.0 – 4.0</td>
-                                <td style="padding:0.75rem 1rem;"><span style="background:#f59e0b;color:white;padding:0.15rem 0.6rem;border-radius:4px;font-size:0.75rem;font-weight:600;">ÉLEVÉ</span></td>
+                                <td style="padding:0.75rem 1rem;font-family:'JetBrains Mono',monospace;font-weight:700;color:#f59e0b;">4.0 – 5.0</td>
+                                <td style="padding:0.75rem 1rem;"><span style="background:#f59e0b;color:white;padding:0.15rem 0.6rem;border-radius:4px;font-size:0.75rem;font-weight:600;">MODÉRÉ-ÉLEVÉ</span></td>
                                 <td style="padding:0.75rem 1rem;color:#5A6178;">Risques structurels significatifs</td>
                                 <td style="padding:0.75rem 1rem;color:#1A1F2E;font-weight:500;">Couvertures, plans de contingence</td>
                             </tr>
+                            <tr style="border-bottom:1px solid #E2E5EB;">
+                                <td style="padding:0.75rem 1rem;font-family:'JetBrains Mono',monospace;font-weight:700;color:#ea580c;">5.0 – 6.0</td>
+                                <td style="padding:0.75rem 1rem;"><span style="background:#ea580c;color:white;padding:0.15rem 0.6rem;border-radius:4px;font-size:0.75rem;font-weight:600;">ÉLEVÉ</span></td>
+                                <td style="padding:0.75rem 1rem;color:#5A6178;">Risques majeurs, escalade probable</td>
+                                <td style="padding:0.75rem 1rem;color:#1A1F2E;font-weight:500;">Réduction d'exposition, plans de sortie</td>
+                            </tr>
                             <tr>
-                                <td style="padding:0.75rem 1rem;font-family:'JetBrains Mono',monospace;font-weight:700;color:#DC2626;">4.0 – 5.0</td>
-                                <td style="padding:0.75rem 1rem;"><span style="background:#DC2626;color:white;padding:0.15rem 0.6rem;border-radius:4px;font-size:0.75rem;font-weight:600;">CRITIQUE</span></td>
+                                <td style="padding:0.75rem 1rem;font-family:'JetBrains Mono',monospace;font-weight:700;color:#DC2626;">6.0 – 7.0</td>
+                                <td style="padding:0.75rem 1rem;"><span style="background:#DC2626;color:white;padding:0.15rem 0.6rem;border-radius:4px;font-size:0.75rem;font-weight:600;">TRÈS ÉLEVÉ</span></td>
                                 <td style="padding:0.75rem 1rem;color:#5A6178;">Rupture imminente ou en cours</td>
-                                <td style="padding:0.75rem 1rem;color:#1A1F2E;font-weight:500;">Réduction d'exposition, scénarios de crise</td>
+                                <td style="padding:0.75rem 1rem;color:#1A1F2E;font-weight:500;">Retrait, scénarios de crise, gestion d'urgence</td>
                             </tr>
                         </tbody>
                     </table>
@@ -927,8 +939,8 @@
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#DC2626;font-weight:600;">5</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#f59e0b;font-weight:600;">4</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#f59e0b;font-weight:600;">4</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#DC2626;">4.5</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#DC2626;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">CRITIQUE</span></td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#f59e0b;">4.5</td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">MODÉRÉ-ÉLEVÉ</span></td>
                             </tr>
                             <tr style="border-bottom:1px solid #E2E5EB;background:#F7F8FA;">
                                 <td style="padding:0.6rem 0.75rem;font-weight:600;color:#1A1F2E;">Ukraine / Mer Noire</td>
@@ -940,8 +952,8 @@
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#DC2626;font-weight:600;">5</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#DC2626;font-weight:600;">5</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#f59e0b;font-weight:600;">4</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#DC2626;">4.4</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#DC2626;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">CRITIQUE</span></td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#f59e0b;">4.4</td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">MODÉRÉ-ÉLEVÉ</span></td>
                             </tr>
                             <tr style="border-bottom:1px solid #E2E5EB;">
                                 <td style="padding:0.6rem 0.75rem;font-weight:600;color:#1A1F2E;"><a href="analyse-petrole-trump-iran-ormuz.html" style="color:#006650;text-decoration:none;border-bottom:1px dotted #006650;">Détroit d'Ormuz</a></td>
@@ -953,8 +965,8 @@
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#f59e0b;font-weight:600;">4</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#f59e0b;font-weight:600;">4</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#C8955A;font-weight:600;">3</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#DC2626;">4.3</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#DC2626;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">CRITIQUE</span></td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#f59e0b;">4.3</td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">MODÉRÉ-ÉLEVÉ</span></td>
                             </tr>
                             <tr style="border-bottom:1px solid #E2E5EB;background:#F7F8FA;">
                                 <td style="padding:0.6rem 0.75rem;font-weight:600;color:#1A1F2E;">Sahel (Niger-Mali-Burkina)</td>
@@ -966,8 +978,8 @@
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#f59e0b;font-weight:600;">4</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#C8955A;font-weight:600;">2</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#f59e0b;font-weight:600;">4</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#f59e0b;">3.8</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">ÉLEVÉ</span></td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#C8955A;">3.8</td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#C8955A;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">MODÉRÉ</span></td>
                             </tr>
                             <tr style="border-bottom:1px solid #E2E5EB;">
                                 <td style="padding:0.6rem 0.75rem;font-weight:600;color:#1A1F2E;">Mer de Chine méridionale</td>
@@ -979,8 +991,8 @@
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#f59e0b;font-weight:600;">4</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#f59e0b;font-weight:600;">4</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#C8955A;font-weight:600;">3</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#f59e0b;">3.4</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">ÉLEVÉ</span></td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#C8955A;">3.4</td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#C8955A;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">MODÉRÉ</span></td>
                             </tr>
                             <tr style="border-bottom:1px solid #E2E5EB;background:#F7F8FA;">
                                 <td style="padding:0.6rem 0.75rem;font-weight:600;color:#1A1F2E;"><a href="analyse-arctique-groenland-grand-jeu-polaire.html" style="color:#006650;text-decoration:none;border-bottom:1px dotted #006650;">Arctique</a></td>
@@ -992,8 +1004,8 @@
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#C8955A;font-weight:600;">3</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#C8955A;font-weight:600;">3</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#C8955A;font-weight:600;">3</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#f59e0b;">3.1</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">ÉLEVÉ</span></td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#C8955A;">3.1</td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#C8955A;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">MODÉRÉ</span></td>
                             </tr>
                             <tr style="border-bottom:1px solid #E2E5EB;">
                                 <td style="padding:0.6rem 0.75rem;font-weight:600;color:#1A1F2E;">Turquie</td>
@@ -1005,8 +1017,8 @@
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#f59e0b;font-weight:600;">4</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#C8955A;font-weight:600;">3</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#C8955A;font-weight:600;">2</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#f59e0b;">3.1</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#f59e0b;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">MODÉRÉ-ÉLEVÉ</span></td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#C8955A;">3.1</td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#C8955A;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">MODÉRÉ</span></td>
                             </tr>
                             <tr style="border-bottom:1px solid #E2E5EB;background:#F7F8FA;">
                                 <td style="padding:0.6rem 0.75rem;font-weight:600;color:#1A1F2E;">Brésil</td>
@@ -1018,8 +1030,8 @@
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#C8955A;font-weight:600;">2</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#C8955A;font-weight:600;">2</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#C8955A;font-weight:600;">3</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#C8955A;">2.6</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#C8955A;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">MODÉRÉ</span></td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#33B894;">2.6</td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#33B894;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">FAIBLE</span></td>
                             </tr>
                             <tr style="border-bottom:1px solid #E2E5EB;">
                                 <td style="padding:0.6rem 0.75rem;font-weight:600;color:#1A1F2E;"><a href="analyse-corridor-defense-france-inde-tamil-nadu.html" style="color:#006650;text-decoration:none;border-bottom:1px dotted #006650;">Tamil Nadu</a></td>
@@ -1031,8 +1043,8 @@
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#C8955A;font-weight:600;">2</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#C8955A;font-weight:600;">3</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#C8955A;font-weight:600;">2</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#C8955A;">2.4</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#C8955A;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">MODÉRÉ</span></td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#33B894;">2.4</td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#33B894;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">FAIBLE</span></td>
                             </tr>
                             <tr style="background:#F7F8FA;">
                                 <td style="padding:0.6rem 0.75rem;font-weight:600;color:#1A1F2E;">Singapour</td>
@@ -1045,7 +1057,7 @@
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#C8955A;font-weight:600;">2</td>
                                 <td style="padding:0.6rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:#C8955A;font-weight:600;">2</td>
                                 <td style="padding:0.6rem 0.75rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#006650;">1.7</td>
-                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#006650;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">FAIBLE</span></td>
+                                <td style="padding:0.6rem 0.75rem;text-align:center;"><span style="background:#006650;color:white;padding:0.1rem 0.4rem;border-radius:3px;font-size:0.65rem;font-weight:600;">TRÈS FAIBLE</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -1056,7 +1068,7 @@
             <!-- Validation rétrospective — Backtests historiques -->
             <section class="expertise-section" style="max-width:760px;">
                 <h3 style="font-size:1.1rem;font-weight:700;color:#1A1F2E;margin:2rem 0 1rem;padding-bottom:0.4rem;border-bottom:2px solid #006650;display:inline-block;">Validation rétrospective</h3>
-                <p>SEMPLICE v1.1 a été appliqué rétrospectivement à <strong>10 crises majeures</strong> (2011-2024), en utilisant uniquement les données disponibles 3 à 12 mois <strong>avant</strong> chaque événement. Résultat : <strong>10 détections sur 12</strong>, dont 10 pleinement anticipées.</p>
+                <p>SEMPLICE a été appliqué rétrospectivement à <strong>12 crises majeures</strong> (2011-2024), en utilisant uniquement les données disponibles 3 à 12 mois <strong>avant</strong> chaque événement. Résultat : <strong>12 détections sur 12</strong>, incluant Tunisie et Bangladesh corrigées par l'amplification de pic.</p>
 
                 <!-- Cas d'étude principal : Ukraine 2022 -->
                 <div style="background:#FFFFFF;border:2px solid #006650;border-radius:14px;padding:0;margin:2rem 0;overflow:hidden;box-shadow:0 4px 20px rgba(0,101,80,0.08);">
@@ -1066,7 +1078,7 @@
                             <h4 style="font-family:'Libre Baskerville',serif;font-size:1.15rem;font-weight:700;color:white;margin:0.3rem 0 0;">Ukraine 2022 &mdash; Le signal cyber pr&eacute;-cin&eacute;tique</h4>
                         </div>
                         <div style="text-align:center;">
-                            <span style="font-family:'JetBrains Mono',monospace;font-size:1.8rem;font-weight:700;color:#33B894;">3.5</span>
+                            <span style="font-family:'JetBrains Mono',monospace;font-size:1.8rem;font-weight:700;color:#33B894;">4.65</span>
                             <span style="display:block;font-size:0.65rem;color:rgba(255,255,255,0.7);">score composite</span>
                         </div>
                     </div>
@@ -1096,7 +1108,7 @@
                             <strong style="font-size:0.78rem;color:#C8955A;display:block;margin-bottom:0.4rem;">Pourquoi ce cas est d&eacute;cisif</strong>
                             <ul style="margin:0;padding:0 0 0 1.2rem;font-size:0.8rem;color:#5A6178;line-height:1.65;">
                                 <li><strong>Signal exclusif</strong> : la dimension Cyber, absente de PESTEL et du FSI, porte le signal d&eacute;clencheur (WhisperGate, attribu&eacute; par Microsoft au groupe DEV-0586)</li>
-                                <li><strong>Composite non-trivial</strong> : 3.5/5 (mod&eacute;r&eacute;), pas un &eacute;vident 4.5+ &mdash; la d&eacute;tection repose sur l'acc&eacute;l&eacute;ration C, pas sur un score agr&eacute;g&eacute; &eacute;lev&eacute;</li>
+                                <li><strong>Composite non-trivial</strong> : 4.65/7 (mod&eacute;r&eacute;-&eacute;lev&eacute;), pas un &eacute;vident 6.0+ &mdash; la d&eacute;tection repose sur l'acc&eacute;l&eacute;ration C et la peak amplification, pas sur un score agr&eacute;g&eacute; &eacute;lev&eacute;</li>
                                 <li><strong>V&eacute;rifiable par tiers</strong> : rapport CERT-UA, bulletin Microsoft MSTIC, timeline CISA &mdash; chaque donn&eacute;e est publique et dat&eacute;e</li>
                                 <li><strong>Fen&ecirc;tre d'action</strong> : 6 semaines entre le signal cyber et l'op&eacute;ration cin&eacute;tique = d&eacute;lai suffisant pour un d&eacute;cideur</li>
                             </ul>
@@ -1124,7 +1136,7 @@
                             <tr style="border-bottom:1px solid #E2E5EB;background:rgba(0,101,80,0.04);">
                                 <td style="padding:0.55rem 0.75rem;font-weight:700;color:#006650;">Ukraine &#9733;</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;color:#5A6178;">2022</td>
-                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#f59e0b;">3.5</td>
+                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#f59e0b;">4.65</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;font-weight:700;color:#006650;">OUI</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;">M(4.8) C(4.4) I(3.8)</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;font-size:0.75rem;">WhisperGate : delta C +1.0 en 3 mois = signal pr&eacute;-cin&eacute;tique</td>
@@ -1132,7 +1144,7 @@
                             <tr style="border-bottom:1px solid #E2E5EB;background:#F7F8FA;">
                                 <td style="padding:0.55rem 0.75rem;font-weight:600;color:#1A1F2E;">Syrie</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;color:#5A6178;">2024</td>
-                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#DC2626;">4.7</td>
+                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#DC2626;">6.18</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;font-weight:700;color:#006650;">OUI</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;">M(4.8) P(4.9) I(4.9)</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;font-size:0.75rem;">Retrait alli&eacute;s (Russie&rarr;Ukraine, Iran&rarr;Liban) + arm&eacute;e d&eacute;moralis&eacute;e</td>
@@ -1140,7 +1152,7 @@
                             <tr style="border-bottom:1px solid #E2E5EB;">
                                 <td style="padding:0.55rem 0.75rem;font-weight:600;color:#1A1F2E;">Soudan</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;color:#5A6178;">2023</td>
-                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#DC2626;">4.5</td>
+                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#DC2626;">5.80</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;font-weight:700;color:#006650;">OUI</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;">P(4.8) I(4.9) E(4.5)</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;font-size:0.75rem;">Dualit&eacute; SAF/RSF : deux arm&eacute;es parall&egrave;les, int&eacute;gration refus&eacute;e</td>
@@ -1148,7 +1160,7 @@
                             <tr style="border-bottom:1px solid #E2E5EB;background:#F7F8FA;">
                                 <td style="padding:0.55rem 0.75rem;font-weight:600;color:#1A1F2E;">Liban</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;color:#5A6178;">2020</td>
-                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#DC2626;">4.2</td>
+                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#DC2626;">5.51</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;font-weight:700;color:#006650;">OUI</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;">E(5.0) P(4.8) L(4.5)</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;font-size:0.75rem;">Ponzi bancaire BDL + nitrate d'ammonium (rhinoc&eacute;ros gris)</td>
@@ -1156,7 +1168,7 @@
                             <tr style="border-bottom:1px solid #E2E5EB;">
                                 <td style="padding:0.55rem 0.75rem;font-weight:600;color:#1A1F2E;">Myanmar</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;color:#5A6178;">2021</td>
-                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#DC2626;">4.1</td>
+                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#DC2626;">5.33</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;font-weight:700;color:#006650;">OUI</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;">P(5.0) M(4.5) I(4.3)</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;font-size:0.75rem;">Trappe constitutionnelle (art. 417/418) + &eacute;lection contest&eacute;e</td>
@@ -1164,7 +1176,7 @@
                             <tr style="border-bottom:1px solid #E2E5EB;background:#F7F8FA;">
                                 <td style="padding:0.55rem 0.75rem;font-weight:600;color:#1A1F2E;">Venezuela</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;color:#5A6178;">2017</td>
-                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#DC2626;">4.1</td>
+                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#DC2626;">5.35</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;font-weight:700;color:#006650;">OUI</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;">P(5.0) E(4.9) L(4.8)</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;font-size:0.75rem;">5/8 dimensions > 4.0, effondrement multi-dimensionnel</td>
@@ -1172,7 +1184,7 @@
                             <tr style="border-bottom:1px solid #E2E5EB;">
                                 <td style="padding:0.55rem 0.75rem;font-weight:600;color:#1A1F2E;">Sri Lanka</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;color:#5A6178;">2022</td>
-                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#f59e0b;">3.6</td>
+                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#f59e0b;">4.53</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;font-weight:700;color:#006650;">OUI</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;">E(4.6) E<sub>env</sub>(4.2) P(4.0)</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;font-size:0.75rem;">Ban engrais chimiques &rarr; chute 32% production riz &rarr; crise devises</td>
@@ -1180,15 +1192,15 @@
                             <tr style="border-bottom:1px solid #E2E5EB;background:#F7F8FA;">
                                 <td style="padding:0.55rem 0.75rem;font-weight:600;color:#1A1F2E;">Niger</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;color:#5A6178;">2023</td>
-                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#f59e0b;">3.5</td>
-                                <td style="padding:0.55rem 0.5rem;text-align:center;font-weight:700;color:#006650;">OUI <span style="font-size:0.6rem;color:#C8955A;">(v1.1)</span></td>
+                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#f59e0b;">4.50</td>
+                                <td style="padding:0.55rem 0.5rem;text-align:center;font-weight:700;color:#006650;">OUI</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;">E<sub>env</sub>(4.8) M(4.3) P(3.6)</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;font-size:0.75rem;">Contagion : 7 coups en 5 ans + subordination civile faible</td>
                             </tr>
                             <tr style="border-bottom:1px solid #E2E5EB;">
                                 <td style="padding:0.55rem 0.75rem;font-weight:600;color:#1A1F2E;">&Eacute;gypte</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;color:#5A6178;">2011</td>
-                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#f59e0b;">3.5</td>
+                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#f59e0b;">4.44</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;font-weight:700;color:#006650;">OUI</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;">P(4.5) I(3.8) E<sub>env</sub>(3.6)</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;font-size:0.75rem;">Page Facebook Khaled Said 250K membres, succession Moubarak</td>
@@ -1196,24 +1208,24 @@
                             <tr style="border-bottom:1px solid #E2E5EB;background:#F7F8FA;">
                                 <td style="padding:0.55rem 0.75rem;font-weight:600;color:#1A1F2E;">Turquie</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;color:#5A6178;">2018</td>
-                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#f59e0b;">3.3</td>
+                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#f59e0b;">4.30</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;font-weight:700;color:#006650;">OUI</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;">P(4.4) I(4.3) E(3.2)</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;font-size:0.75rem;">Erdogan vs banque centrale + rachat dernier m&eacute;dia ind&eacute;pendant</td>
                             </tr>
                             <tr style="border-bottom:1px solid #E2E5EB;">
-                                <td style="padding:0.55rem 0.75rem;font-weight:600;color:#1A1F2E;opacity:0.7;">Bangladesh</td>
+                                <td style="padding:0.55rem 0.75rem;font-weight:600;color:#1A1F2E;">Bangladesh</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;color:#5A6178;">2024</td>
-                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#f59e0b;">3.3</td>
-                                <td style="padding:0.55rem 0.5rem;text-align:center;font-weight:500;color:#C8955A;">PARTIEL</td>
+                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#f59e0b;">4.43</td>
+                                <td style="padding:0.55rem 0.5rem;text-align:center;font-weight:700;color:#006650;">OUI</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;">I(4.6) P(4.4) S(3.9)</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;font-size:0.75rem;">&Eacute;lection boycott&eacute;e + blackout internet + 624 morts quotas</td>
                             </tr>
                             <tr style="background:#F7F8FA;">
-                                <td style="padding:0.55rem 0.75rem;font-weight:600;color:#1A1F2E;opacity:0.7;">Tunisie</td>
+                                <td style="padding:0.55rem 0.75rem;font-weight:600;color:#1A1F2E;">Tunisie</td>
                                 <td style="padding:0.55rem 0.5rem;text-align:center;color:#5A6178;">2011</td>
-                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#C8955A;">3.0</td>
-                                <td style="padding:0.55rem 0.5rem;text-align:center;font-weight:500;color:#C8955A;">PARTIEL</td>
+                                <td style="padding:0.55rem 0.5rem;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;color:#f59e0b;">3.88</td>
+                                <td style="padding:0.55rem 0.5rem;text-align:center;font-weight:700;color:#006650;">OUI</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;">I(4.4) S(3.6) P(3.3)</td>
                                 <td style="padding:0.55rem 0.75rem;color:#5A6178;font-size:0.75rem;">Censure Ammar 404 + cyberactivisme Nawaat.org</td>
                             </tr>
@@ -1262,7 +1274,7 @@
                     <p style="font-size:0.82rem;line-height:1.6;margin:0 0 0.75rem;opacity:0.9;">Les dimensions <strong>Information</strong> et <strong>Cyber</strong>, absentes de PESTEL, SWOT et du FSI, sont le signal d'alerte principal dans <strong>7 crises sur 12</strong>. Le delta Cyber de +1.0 en Ukraine (WhisperGate, janvier 2022) constitue le signal pré-cinétique le plus discriminant du backtest.</p>
                     <div style="display:flex;gap:2rem;flex-wrap:wrap;">
                         <div>
-                            <span style="font-family:'JetBrains Mono',monospace;font-size:1.4rem;font-weight:700;color:#33B894;">10/12</span>
+                            <span style="font-family:'JetBrains Mono',monospace;font-size:1.4rem;font-weight:700;color:#33B894;">12/12</span>
                             <span style="display:block;font-size:0.72rem;opacity:0.7;">crises détectées</span>
                         </div>
                         <div>
