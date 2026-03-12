@@ -1,0 +1,333 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://inflexionhub.com/schemas/semplice/evaluation-v2.schema.json",
+  "title": "SEMPLICE v2.0 Evaluation",
+  "description": "Schema for a SEMPLICE v2.0 geopolitical risk and opportunity evaluation (scale 1-7, 95 risk indicators + 66 opportunity indicators across 8 dimensions)",
+  "type": "object",
+  "required": ["zone", "meta", "dimensions", "composite", "classification", "signatures", "flags"],
+  "additionalProperties": false,
+  "properties": {
+    "zone": {
+      "type": "object",
+      "required": ["id", "name", "region"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique zone identifier (kebab-case)",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the zone"
+        },
+        "region": {
+          "type": "string",
+          "description": "Geographic region",
+          "enum": ["europe", "asie", "afrique", "ameriques", "moyen-orient", "oceanie", "arctique", "multi-regional"]
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "required": ["date", "version", "analyst"],
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "Evaluation date (ISO 8601)"
+        },
+        "version": {
+          "type": "string",
+          "description": "SEMPLICE grid version",
+          "const": "2.0"
+        },
+        "analyst": {
+          "type": "string",
+          "description": "Analyst or team who produced the evaluation"
+        }
+      }
+    },
+    "dimensions": {
+      "type": "object",
+      "required": ["S", "E", "M", "P", "L", "I", "C", "Ee"],
+      "additionalProperties": false,
+      "properties": {
+        "S": { "$ref": "#/$defs/dimension" },
+        "E": { "$ref": "#/$defs/dimension" },
+        "M": { "$ref": "#/$defs/dimension" },
+        "P": { "$ref": "#/$defs/dimension" },
+        "L": { "$ref": "#/$defs/dimension" },
+        "I": { "$ref": "#/$defs/dimension" },
+        "C": { "$ref": "#/$defs/dimension" },
+        "Ee": { "$ref": "#/$defs/dimension" }
+      }
+    },
+    "composite": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 7,
+      "description": "Weighted average of all 8 dimension final scores"
+    },
+    "classification": {
+      "type": "string",
+      "description": "Risk classification label",
+      "enum": ["Tres faible", "Faible", "Modere-Faible", "Modere", "Modere-Eleve", "Eleve", "Tres eleve"]
+    },
+    "signatures": {
+      "type": "array",
+      "description": "Detected risk signatures (populated by validator)",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "description"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Signature identifier"
+          },
+          "label": {
+            "type": "string",
+            "description": "Short signature label"
+          },
+          "description": {
+            "type": "string",
+            "description": "Explanation of the detected signature"
+          },
+          "dimensions": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Dimensions involved in this signature"
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["low", "medium", "high", "critical"]
+          }
+        }
+      }
+    },
+    "opportunity": {
+      "type": "object",
+      "description": "Opportunity assessment (optional, recommended for full evaluations)",
+      "required": ["dimensions", "composite", "classification"],
+      "additionalProperties": false,
+      "properties": {
+        "dimensions": {
+          "type": "object",
+          "required": ["So", "Eo", "Mo", "Po", "Lo", "Io", "Co", "Eeo"],
+          "additionalProperties": false,
+          "properties": {
+            "So": { "$ref": "#/$defs/oppDimension" },
+            "Eo": { "$ref": "#/$defs/oppDimension" },
+            "Mo": { "$ref": "#/$defs/oppDimension" },
+            "Po": { "$ref": "#/$defs/oppDimension" },
+            "Lo": { "$ref": "#/$defs/oppDimension" },
+            "Io": { "$ref": "#/$defs/oppDimension" },
+            "Co": { "$ref": "#/$defs/oppDimension" },
+            "Eeo": { "$ref": "#/$defs/oppDimension" }
+          }
+        },
+        "composite": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 7,
+          "description": "Weighted average of all 8 opportunity dimension scores"
+        },
+        "classification": {
+          "type": "string",
+          "description": "Opportunity classification label",
+          "enum": ["Minimal", "Faible", "Modere", "Significatif", "Eleve", "Exemplaire"]
+        },
+        "quadrant": {
+          "type": "string",
+          "description": "Risk/opportunity positioning",
+          "enum": ["stable-neutre", "hub-attractif", "zone-crise", "pari-haut-potentiel"]
+        },
+        "delta": {
+          "type": "number",
+          "description": "Opportunity composite minus risk composite (positive = more opportunity than risk)"
+        }
+      }
+    },
+    "flags": {
+      "type": "array",
+      "description": "Data quality or methodological flags (populated by validator)",
+      "items": {
+        "type": "object",
+        "required": ["type", "dimension", "indicator", "message"],
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["false-positive", "data-gap", "estimate", "outdated", "methodology"],
+            "description": "Type of flag"
+          },
+          "dimension": {
+            "type": "string",
+            "description": "Dimension code (S, E, M, P, L, I, C, Ee)"
+          },
+          "indicator": {
+            "type": "string",
+            "description": "Indicator ID (e.g. E3)"
+          },
+          "message": {
+            "type": "string",
+            "description": "Explanation of the flag"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "oppDimension": {
+      "type": "object",
+      "required": ["label", "scoreQuanti", "scoreQuali", "scoreFinal"],
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "Full opportunity dimension name"
+        },
+        "indicators": {
+          "type": "array",
+          "description": "Opportunity indicators for this dimension",
+          "items": { "$ref": "#/$defs/oppIndicator" }
+        },
+        "scoreQuanti": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 7,
+          "description": "Average of indicator paliers (1=minimal, 7=exemplary)"
+        },
+        "scoreQuali": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 7,
+          "description": "Qualitative expert assessment (1=minimal, 7=exemplary)"
+        },
+        "scoreFinal": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 7,
+          "description": "Weighted score: 0.6 * scoreQuanti + 0.4 * scoreQuali"
+        },
+        "commentary": {
+          "type": "string",
+          "description": "Qualitative opportunity narrative"
+        }
+      }
+    },
+    "oppIndicator": {
+      "type": "object",
+      "required": ["id", "label", "value", "palier", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Indicator code (e.g. So1, Eo3, Io8)",
+          "pattern": "^(So|Eo|Mo|Po|Lo|Io|Co|Eeo)\\d{1,2}$"
+        },
+        "label": {
+          "type": "string",
+          "description": "Indicator name"
+        },
+        "value": {
+          "type": "string",
+          "description": "Descriptive or numeric value as text"
+        },
+        "rawValue": {
+          "type": ["number", "null"],
+          "description": "Numeric raw value when available, null otherwise"
+        },
+        "palier": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 7,
+          "description": "Opportunity tier (1 = minimal opportunity, 7 = exemplary opportunity)"
+        },
+        "source": {
+          "type": "string",
+          "description": "Institutional data source"
+        }
+      }
+    },
+    "dimension": {
+      "type": "object",
+      "required": ["label", "indicators", "scoreQuanti", "scoreQuali", "scoreFinal", "trend"],
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "Full dimension name"
+        },
+        "indicators": {
+          "type": "array",
+          "description": "All indicators for this dimension",
+          "items": { "$ref": "#/$defs/indicator" }
+        },
+        "scoreQuanti": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 7,
+          "description": "Average of indicator paliers"
+        },
+        "scoreQuali": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 7,
+          "description": "Qualitative expert assessment"
+        },
+        "scoreFinal": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 7,
+          "description": "Weighted score: 0.6 * scoreQuanti + 0.4 * scoreQuali"
+        },
+        "trend": {
+          "type": "string",
+          "enum": ["up", "down", "stable"],
+          "description": "Trend direction (up = worsening risk, down = improving, stable = unchanged)"
+        },
+        "commentary": {
+          "type": "string",
+          "description": "Qualitative assessment narrative"
+        }
+      }
+    },
+    "indicator": {
+      "type": "object",
+      "required": ["id", "label", "value", "palier", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Indicator code (e.g. S1, E3, M12)",
+          "pattern": "^(S|E|M|P|L|I|C|Ee)\\d{1,2}$"
+        },
+        "label": {
+          "type": "string",
+          "description": "Indicator name"
+        },
+        "value": {
+          "type": "string",
+          "description": "Descriptive or numeric value as text"
+        },
+        "rawValue": {
+          "type": ["number", "null"],
+          "description": "Numeric raw value when available, null otherwise"
+        },
+        "palier": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 7,
+          "description": "Risk tier (1 = lowest risk, 7 = highest risk)"
+        },
+        "source": {
+          "type": "string",
+          "description": "Institutional data source"
+        }
+      }
+    }
+  }
+}
