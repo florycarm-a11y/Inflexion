@@ -1,0 +1,193 @@
+{
+  "zone": {
+    "id": "ukraine",
+    "name": "Ukraine / Mer Noire",
+    "region": "europe"
+  },
+  "meta": {
+    "date": "2026-03-12",
+    "version": "2.0",
+    "analyst": "Inflexion Intelligence"
+  },
+  "dimensions": {
+    "S": {
+      "label": "Social",
+      "indicators": [
+        { "id": "S1", "label": "Gini", "value": "0.362", "rawValue": 0.362, "palier": 4, "source": "World Bank" },
+        { "id": "S2", "label": "IDH", "value": "0.70 (estime, pre-guerre 0.773)", "rawValue": 0.70, "palier": 4, "source": "UNDP (estime)" },
+        { "id": "S3", "label": "Chomage jeunes", "value": "~35% (zones controlees)", "rawValue": 35, "palier": 5, "source": "ILO (estime)" },
+        { "id": "S4", "label": "Solde migratoire", "value": "-85‰ (6.2M refugies)", "rawValue": -85, "palier": 7, "source": "UNHCR" },
+        { "id": "S5", "label": "Mouvements sociaux", "value": "2 (mineurs, contexte guerre)", "rawValue": 2, "palier": 3, "source": "ACLED" },
+        { "id": "S6", "label": "Tensions ethniques", "value": "Tensions linguistiques residuelles, unite nationale forte", "rawValue": null, "palier": 3, "source": "ICG" },
+        { "id": "S7", "label": "Acces sante", "value": "7.4 lits/1000 (pre-guerre) → ~4 estime", "rawValue": 4, "palier": 4, "source": "WHO (estime)" },
+        { "id": "S8", "label": "Urbanisation rapide", "value": "-2% (depopulation urbaine Donbass)", "rawValue": -2, "palier": 5, "source": "UN-Habitat" },
+        { "id": "S9", "label": "Inegalite genre (GII)", "value": "0.20 (pre-guerre) → ~0.30 estime", "rawValue": 0.30, "palier": 3, "source": "UNDP (estime)" },
+        { "id": "S10", "label": "Esperance de vie", "value": "71 → ~66 estime (pertes militaires + civiles)", "rawValue": 66, "palier": 5, "source": "WHO (estime)" },
+        { "id": "S11", "label": "Securite alimentaire", "value": "~5% sous-alimentes (aide internationale)", "rawValue": 5, "palier": 3, "source": "FAO" },
+        { "id": "S12", "label": "Education secondaire", "value": "~85% (zones controlees)", "rawValue": 85, "palier": 3, "source": "UNESCO" }
+      ],
+      "scoreQuanti": 5.3,
+      "scoreQuali": 6,
+      "scoreFinal": 5.6,
+      "trend": "up",
+      "commentary": "Crise humanitaire majeure. 9.9M deplaces (internes + externes). Infrastructure sanitaire detruite dans les oblasts de l'est. Cohesion nationale paradoxalement forte mais pression demographique catastrophique."
+    },
+    "E": {
+      "label": "Economique",
+      "indicators": [
+        { "id": "E1", "label": "PIB reel", "value": "+3.5% (rebond post -29% 2022)", "rawValue": 3.5, "palier": 2, "source": "IMF" },
+        { "id": "E2", "label": "Inflation", "value": "~18% (NBU fin 2025)", "rawValue": 18, "palier": 5, "source": "NBU" },
+        { "id": "E3", "label": "Dette publique / PIB", "value": "~95%", "rawValue": 95, "palier": 5, "source": "IMF" },
+        { "id": "E4", "label": "Balance courante", "value": "-8% PIB", "rawValue": -8, "palier": 7, "source": "NBU" },
+        { "id": "E5", "label": "Notation souveraine", "value": "Caa3 (Moody's)", "rawValue": null, "palier": 7, "source": "Moody's" },
+        { "id": "E6", "label": "Peg / controles capitaux", "value": "Controles stricts, marche parallele", "rawValue": null, "palier": 6, "source": "NBU" },
+        { "id": "E7", "label": "Reserves de change", "value": "~3 mois (soutien FMI)", "rawValue": 3, "palier": 5, "source": "NBU / IMF" },
+        { "id": "E8", "label": "IDE entrants", "value": "~0.2% PIB", "rawValue": 0.2, "palier": 5, "source": "UNCTAD" },
+        { "id": "E9", "label": "Chomage total", "value": "~20% (estime, zones controlees)", "rawValue": 20, "palier": 6, "source": "ILO (estime)" },
+        { "id": "E10", "label": "Dette privee / PIB", "value": "~35%", "rawValue": 35, "palier": 1, "source": "BIS" },
+        { "id": "E11", "label": "Concentration exports", "value": "Cereales + acier ~45%", "rawValue": 45, "palier": 4, "source": "UN Comtrade" },
+        { "id": "E12", "label": "Croissance credit", "value": "Negatif reel", "rawValue": null, "palier": 6, "source": "NBU" },
+        { "id": "E13", "label": "Economie informelle", "value": "~45% PIB", "rawValue": 45, "palier": 5, "source": "IMF (estime)" },
+        { "id": "E14", "label": "Cout energie", "value": ">300 $/MWh (destructions infra)", "rawValue": 300, "palier": 6, "source": "IEA" },
+        { "id": "E15", "label": "Indice de misere", "value": "18+20 = 38", "rawValue": 38, "palier": 5, "source": "Calcul (inflation + chomage)" }
+      ],
+      "scoreQuanti": 5.5,
+      "scoreQuali": 6,
+      "scoreFinal": 5.7,
+      "trend": "stable",
+      "commentary": "Economie de guerre sous perfusion (40 Mrd$/an aide). Reconstruction estimee 486 Mrd$. Marche du travail sinistre. Seul point positif : resilience secteur tech/IT (exports services)."
+    },
+    "M": {
+      "label": "Militaire",
+      "indicators": [
+        { "id": "M1", "label": "Depenses mil. / PIB", "value": "~37% (budget + aide)", "rawValue": 37, "palier": 7, "source": "SIPRI" },
+        { "id": "M2", "label": "Conflits actifs", "value": "Guerre ouverte (invasion russe)", "rawValue": null, "palier": 7, "source": "ACLED / IISS" },
+        { "id": "M3", "label": "GFP", "value": "Ukraine 18e + Russie 2e engagee", "rawValue": null, "palier": 7, "source": "Global Firepower" },
+        { "id": "M4", "label": "Exercices majeurs", "value": ">20 (operations continues)", "rawValue": 20, "palier": 7, "source": "IISS" },
+        { "id": "M5", "label": "Proliferation", "value": "Voisinage nucleaire Russie", "rawValue": null, "palier": 5, "source": "SIPRI / FAS" },
+        { "id": "M6", "label": "Coups regionaux", "value": "0", "rawValue": 0, "palier": 1, "source": "Cline Center" },
+        { "id": "M7", "label": "Subordination civile", "value": "0.65 (loi martiale, controle civil maintenu)", "rawValue": 0.65, "palier": 3, "source": "V-Dem" },
+        { "id": "M8", "label": "Transferts armes", "value": ">30 000 TIV (aide OTAN massive)", "rawValue": 30000, "palier": 7, "source": "SIPRI" },
+        { "id": "M9", "label": "Bases etrangeres", "value": "Bases russes en Crimee + Belarus", "rawValue": null, "palier": 6, "source": "IISS" },
+        { "id": "M10", "label": "Milices / PMC", "value": "Wagner → Africa Corps, Kadyrovtsy, milices DPR/LPR", "rawValue": null, "palier": 7, "source": "ACLED / ICG" },
+        { "id": "M11", "label": "Traites defense", "value": "Pas membre OTAN (partenariat renforce)", "rawValue": null, "palier": 4, "source": "NATO" },
+        { "id": "M12", "label": "R&D defense", "value": "> 10% (drones, guerre electronique)", "rawValue": 10, "palier": 2, "source": "SIPRI" }
+      ],
+      "scoreQuanti": 6.4,
+      "scoreQuali": 7,
+      "scoreFinal": 6.6,
+      "trend": "up",
+      "commentary": "Guerre conventionnelle de haute intensite en cours depuis 4 ans. >500 000 pertes estimees. Front de >1200 km. Risque escalade nucleaire non nul."
+    },
+    "P": {
+      "label": "Politique",
+      "indicators": [
+        { "id": "P1", "label": "CPI", "value": "33", "rawValue": 33, "palier": 5, "source": "Transparency International" },
+        { "id": "P2", "label": "V-Dem", "value": "0.40 (baisse post loi martiale)", "rawValue": 0.40, "palier": 4, "source": "V-Dem Institute" },
+        { "id": "P3", "label": "WGI Political Stability", "value": "-1.5", "rawValue": -1.5, "palier": 6, "source": "World Bank WGI" },
+        { "id": "P4", "label": "Cycle electoral", "value": "Elections reportees (loi martiale)", "rawValue": null, "palier": 7, "source": "IFES" },
+        { "id": "P5", "label": "Risque regime", "value": "Modere (unite nationale, mais fatigue guerre)", "rawValue": null, "palier": 4, "source": "ICG" },
+        { "id": "P6", "label": "Polarisation", "value": "0.45 (Zelensky vs opposition emergente)", "rawValue": 0.45, "palier": 4, "source": "V-Dem" },
+        { "id": "P7", "label": "Libertes civiles", "value": "32 (restreintes loi martiale)", "rawValue": 32, "palier": 4, "source": "Freedom House" },
+        { "id": "P8", "label": "Risque successoral", "value": "Zelensky centralise, pas de succession claire", "rawValue": null, "palier": 5, "source": "ICG" },
+        { "id": "P9", "label": "Autonomie regionale", "value": "Territoires occupes (Crimee, Donbass)", "rawValue": null, "palier": 6, "source": "ICG" },
+        { "id": "P10", "label": "Opposition", "value": "Restreinte (loi martiale, partis pro-russes interdits)", "rawValue": null, "palier": 4, "source": "Freedom House" },
+        { "id": "P11", "label": "Pression demographique", "value": "-5‰ (depopulation acceleree)", "rawValue": -5, "palier": 6, "source": "UN DESA" },
+        { "id": "P12", "label": "Diaspora politique", "value": "Lobby tres actif (UE, US) en soutien", "rawValue": null, "palier": 3, "source": "ICG" }
+      ],
+      "scoreQuanti": 5.0,
+      "scoreQuali": 6,
+      "scoreFinal": 5.4,
+      "trend": "stable",
+      "commentary": "Etat fonctionnel sous loi martiale. Legitimite democratique suspendue. Question post-guerre critique."
+    },
+    "L": {
+      "label": "Legal",
+      "indicators": [
+        { "id": "L1", "label": "Rule of Law", "value": "0.42", "rawValue": 0.42, "palier": 5, "source": "WJP" },
+        { "id": "L2", "label": "B-READY", "value": "~52", "rawValue": 52, "palier": 4, "source": "World Bank" },
+        { "id": "L3", "label": "Sanctions", "value": "Ukraine non sanctionnee (cible : Russie)", "rawValue": null, "palier": 1, "source": "OFAC / EU" },
+        { "id": "L4", "label": "Protection PI", "value": "~38", "rawValue": 38, "palier": 5, "source": "GIPC" },
+        { "id": "L5", "label": "Execution contrats", "value": "~700 jours (perturbe)", "rawValue": 700, "palier": 5, "source": "World Bank" },
+        { "id": "L6", "label": "Independance judiciaire", "value": "Faible (reformes en cours mais lentes)", "rawValue": null, "palier": 5, "source": "WJP" },
+        { "id": "L7", "label": "BIT actifs", "value": "~60", "rawValue": 60, "palier": 2, "source": "UNCTAD" },
+        { "id": "L8", "label": "Anti-corruption", "value": "Moderee (NABU progresse mais corruption endemique)", "rawValue": null, "palier": 4, "source": "TI / NABU" },
+        { "id": "L9", "label": "Arbitrage ICSID", "value": "Membre, execution incertaine en contexte guerre", "rawValue": null, "palier": 5, "source": "ICSID" },
+        { "id": "L10", "label": "Risque expropriation", "value": "Modere (nationalisations actifs russes)", "rawValue": null, "palier": 4, "source": "ICG" }
+      ],
+      "scoreQuanti": 4.5,
+      "scoreQuali": 5,
+      "scoreFinal": 4.7,
+      "trend": "stable",
+      "commentary": "Cadre legal en transition, reformes UE-compatibles mais application compromise par la guerre."
+    },
+    "I": {
+      "label": "Information",
+      "indicators": [
+        { "id": "I1", "label": "RSF rang", "value": "61 (Ukraine) / 162 (Russie, agissant sur zone)", "rawValue": 61, "palier": 5, "source": "RSF" },
+        { "id": "I2", "label": "Freedom on the Net", "value": "55 (Ukraine)", "rawValue": 55, "palier": 3, "source": "Freedom House" },
+        { "id": "I3", "label": "Operations influence", "value": ">20 (campagnes russes continues)", "rawValue": 20, "palier": 7, "source": "EU DisinfoLab / DFRLab" },
+        { "id": "I4", "label": "Censure internet", "value": "10-15% (Ukraine bloque medias russes)", "rawValue": 12.5, "palier": 4, "source": "OONI" },
+        { "id": "I5", "label": "Controle medias Etat", "value": "~35% (Ukraine, wartime)", "rawValue": 35, "palier": 4, "source": "RSF" },
+        { "id": "I6", "label": "Penetration reseaux sociaux", "value": "~65%", "rawValue": 65, "palier": 3, "source": "DataReportal" },
+        { "id": "I7", "label": "Desinformation IA / deepfakes", "value": ">50 incidents (deepfakes Zelensky, etc.)", "rawValue": 50, "palier": 7, "source": "DFRLab / Bellingcat" },
+        { "id": "I8", "label": "Pluralisme mediatique", "value": "~40 (restreint wartime)", "rawValue": 40, "palier": 5, "source": "RSF" },
+        { "id": "I9", "label": "Journalistes emprisonnes", "value": "~12 (dont zones occupees)", "rawValue": 12, "palier": 4, "source": "CPJ" },
+        { "id": "I10", "label": "Controle narratif diaspora", "value": "Russie : intimidation + RT residuel", "rawValue": null, "palier": 6, "source": "DFRLab" },
+        { "id": "I11", "label": "Bots / trolls", "value": ">50 000 (troll farms russes actives)", "rawValue": 50000, "palier": 7, "source": "Stanford IO / DFRLab" },
+        { "id": "I12", "label": "Usage VPN", "value": "~25%", "rawValue": 25, "palier": 4, "source": "Surfshark" }
+      ],
+      "scoreQuanti": 5.6,
+      "scoreQuali": 6,
+      "scoreFinal": 5.8,
+      "trend": "up",
+      "commentary": "Guerre informationnelle de tres haute intensite. Ukraine a construit une capacite narrative remarquable mais fait face a la machine de desinformation russe la plus sophistiquee au monde."
+    },
+    "C": {
+      "label": "Cyber",
+      "indicators": [
+        { "id": "C1", "label": "NCSI", "value": "63 (Ukraine, ameliore post-2022)", "rawValue": 63, "palier": 3, "source": "e-Governance Academy" },
+        { "id": "C2", "label": "GCI", "value": "56", "rawValue": 56, "palier": 4, "source": "ITU" },
+        { "id": "C3", "label": "Incidents majeurs", "value": ">6 (Sandworm, WhisperGate legacy, wiper campaigns)", "rawValue": 6, "palier": 7, "source": "CERT-UA / Microsoft MSTIC" },
+        { "id": "C4", "label": "APT actifs", "value": "Sandworm, Fancy Bear, Gamaredon, Turla, Armageddon... >15", "rawValue": 15, "palier": 6, "source": "MITRE ATT&CK / Mandiant" },
+        { "id": "C5", "label": "Exposition infra critique", "value": "Critique (reseau electrique cible systematiquement)", "rawValue": null, "palier": 7, "source": "CERT-UA / ICS-CERT" },
+        { "id": "C6", "label": "Budget cyberdefense", "value": "~6% budget defense (SSSCIP renforce)", "rawValue": 6, "palier": 2, "source": "SSSCIP" },
+        { "id": "C7", "label": "Ransomware", "value": "~40 incidents", "rawValue": 40, "palier": 5, "source": "CERT-UA" },
+        { "id": "C8", "label": "Supply chain attacks", "value": "3-4 (NotPetya heritage, MEDoc)", "rawValue": 3.5, "palier": 4, "source": "ESET / Microsoft" },
+        { "id": "C9", "label": "Workforce cyber", "value": "~90 / 100k (secteur IT fort)", "rawValue": 90, "palier": 3, "source": "ISC2" },
+        { "id": "C10", "label": "Souverainete donnees", "value": "Cadre en cours (align UE)", "rawValue": null, "palier": 3, "source": "SSSCIP" },
+        { "id": "C11", "label": "Cloud exposure", "value": "Elevee (migration urgente post-invasion)", "rawValue": null, "palier": 5, "source": "SSSCIP" },
+        { "id": "C12", "label": "Zero-day exposure", "value": "Tres elevee (cible prioritaire APT russes)", "rawValue": null, "palier": 6, "source": "Google TAG / Mandiant" }
+      ],
+      "scoreQuanti": 5.8,
+      "scoreQuali": 7,
+      "scoreFinal": 6.3,
+      "trend": "up",
+      "commentary": "Theatre de cyberguerre le plus intense au monde. Sandworm (GRU Unit 74455) mene des operations destructrices continues. La resilience ukrainienne (aide US/UK NCSC) est remarquable mais l'exposition reste critique."
+    },
+    "Ee": {
+      "label": "Environnemental",
+      "indicators": [
+        { "id": "Ee1", "label": "ND-GAIN", "value": "48", "rawValue": 48, "palier": 4, "source": "ND-GAIN" },
+        { "id": "Ee2", "label": "Water Stress", "value": "2.1 (modere, sauf post-Kakhovka)", "rawValue": 2.1, "palier": 3, "source": "WRI Aqueduct" },
+        { "id": "Ee3", "label": "Dependance extractive", "value": "~25% (cereales + minerais)", "rawValue": 25, "palier": 3, "source": "World Bank" },
+        { "id": "Ee4", "label": "Catastrophes (5 ans)", "value": ">10 (destructions = catastrophes induites)", "rawValue": 10, "palier": 5, "source": "EM-DAT" },
+        { "id": "Ee5", "label": "Transition energetique", "value": "~8% renouvelables (infra detruite)", "rawValue": 8, "palier": 5, "source": "IEA" },
+        { "id": "Ee6", "label": "CO2 / capita", "value": "5.5 tonnes (reduit par guerre)", "rawValue": 5.5, "palier": 3, "source": "Global Carbon Project" },
+        { "id": "Ee7", "label": "Biodiversite menacee", "value": "~18%", "rawValue": 18, "palier": 4, "source": "IUCN" },
+        { "id": "Ee8", "label": "Deforestation", "value": "~0.5% (bombardements, mines)", "rawValue": 0.5, "palier": 3, "source": "Global Forest Watch" },
+        { "id": "Ee9", "label": "Montee des eaux", "value": "~4% pop (Odessa, littoral)", "rawValue": 4, "palier": 3, "source": "Climate Central" },
+        { "id": "Ee10", "label": "Pollution air", "value": "~35 (emissions militaires, incendies)", "rawValue": 35, "palier": 4, "source": "IQAir" }
+      ],
+      "scoreQuanti": 4.4,
+      "scoreQuali": 5,
+      "scoreFinal": 4.6,
+      "trend": "stable",
+      "commentary": "Catastrophe ecologique de guerre : Kakhovka, contamination sols par munitions, deforestation par bombardements, mines antipersonnel sur 30% des terres agricoles."
+    }
+  },
+  "composite": 5.6,
+  "classification": "Tres eleve",
+  "signatures": [],
+  "flags": []
+}

@@ -1,0 +1,193 @@
+{
+  "zone": {
+    "id": "singapour",
+    "name": "Singapour",
+    "region": "asie"
+  },
+  "meta": {
+    "date": "2026-03-12",
+    "version": "2.0",
+    "analyst": "Inflexion Intelligence"
+  },
+  "dimensions": {
+    "S": {
+      "label": "Social",
+      "indicators": [
+        { "id": "S1", "label": "Gini", "value": "0.444", "rawValue": 0.444, "palier": 5, "source": "DOS Singapore" },
+        { "id": "S2", "label": "IDH", "value": "0.949", "rawValue": 0.949, "palier": 1, "source": "UNDP" },
+        { "id": "S3", "label": "Chomage jeunes", "value": "7.8%", "rawValue": 7.8, "palier": 1, "source": "MOM Singapore" },
+        { "id": "S4", "label": "Solde migratoire", "value": "+12.5‰", "rawValue": 12.5, "palier": 1, "source": "UN DESA" },
+        { "id": "S5", "label": "Mouvements sociaux", "value": "0", "rawValue": 0, "palier": 1, "source": "ACLED" },
+        { "id": "S6", "label": "Tensions ethniques", "value": "Tres faibles (modele multiculturel)", "rawValue": null, "palier": 2, "source": "ICG" },
+        { "id": "S7", "label": "Acces sante", "value": "2.4 lits/1000", "rawValue": 2.4, "palier": 4, "source": "WHO" },
+        { "id": "S8", "label": "Urbanisation", "value": "~0.8%", "rawValue": 0.8, "palier": 2, "source": "UN-Habitat" },
+        { "id": "S9", "label": "Inegalite genre (GII)", "value": "0.065", "rawValue": 0.065, "palier": 1, "source": "UNDP" },
+        { "id": "S10", "label": "Esperance de vie", "value": "84.1", "rawValue": 84.1, "palier": 1, "source": "WHO" },
+        { "id": "S11", "label": "Securite alimentaire", "value": "< 2.5% (importe 90% mais appro assuree)", "rawValue": 2.5, "palier": 2, "source": "FAO" },
+        { "id": "S12", "label": "Education secondaire", "value": "98%", "rawValue": 98, "palier": 1, "source": "UNESCO" }
+      ],
+      "scoreQuanti": 2.3,
+      "scoreQuali": 2,
+      "scoreFinal": 2.2,
+      "trend": "stable",
+      "commentary": "Societe stable, cohesive, mais inegalites de revenus elevees (Gini) et capacite hospitaliere relativement faible pour le niveau de developpement. Dependance alimentaire structurelle (90% importe)."
+    },
+    "E": {
+      "label": "Economique",
+      "indicators": [
+        { "id": "E1", "label": "PIB reel", "value": "+2.8%", "rawValue": 2.8, "palier": 2, "source": "MAS" },
+        { "id": "E2", "label": "Inflation", "value": "2.4%", "rawValue": 2.4, "palier": 2, "source": "MAS" },
+        { "id": "E3", "label": "Dette publique / PIB", "value": "168% (mais actifs souverains >> dette)", "rawValue": 168, "palier": 7, "source": "IMF" },
+        { "id": "E4", "label": "Balance courante", "value": "+18% PIB", "rawValue": 18, "palier": 1, "source": "MAS" },
+        { "id": "E5", "label": "Notation souveraine", "value": "AAA (triple A, les 3 agences)", "rawValue": null, "palier": 1, "source": "Moody's / S&P / Fitch" },
+        { "id": "E6", "label": "Regime change", "value": "Flottant gere (MAS, bande de fluctuation)", "rawValue": null, "palier": 2, "source": "MAS" },
+        { "id": "E7", "label": "Reserves de change", "value": ">18 mois", "rawValue": 18, "palier": 1, "source": "MAS" },
+        { "id": "E8", "label": "IDE entrants", "value": "~15% PIB", "rawValue": 15, "palier": 1, "source": "UNCTAD" },
+        { "id": "E9", "label": "Chomage total", "value": "1.9%", "rawValue": 1.9, "palier": 1, "source": "MOM Singapore" },
+        { "id": "E10", "label": "Dette privee / PIB", "value": "~130%", "rawValue": 130, "palier": 4, "source": "BIS" },
+        { "id": "E11", "label": "Concentration exports", "value": "Electronique + petrochimie + pharma ~40%", "rawValue": 40, "palier": 4, "source": "Enterprise Singapore" },
+        { "id": "E12", "label": "Croissance credit", "value": "~5%", "rawValue": 5, "palier": 1, "source": "MAS" },
+        { "id": "E13", "label": "Economie informelle", "value": "< 8%", "rawValue": 8, "palier": 1, "source": "IMF" },
+        { "id": "E14", "label": "Cout energie", "value": "~90 $/MWh", "rawValue": 90, "palier": 3, "source": "EMA Singapore" },
+        { "id": "E15", "label": "Indice de misere", "value": "2.4+1.9 = 4.3", "rawValue": 4.3, "palier": 1, "source": "Calcul (inflation + chomage)" }
+      ],
+      "scoreQuanti": 1.7,
+      "scoreQuali": 1,
+      "scoreFinal": 1.4,
+      "trend": "stable",
+      "commentary": "Economie parmi les plus resilientes au monde. La dette/PIB elevee est trompeuse : Temasek + GIC detiennent >700 Mrd$ d'actifs. Seuls risques : dependance commerce mondial et concentration sectorielle."
+    },
+    "M": {
+      "label": "Militaire",
+      "indicators": [
+        { "id": "M1", "label": "Depenses mil. / PIB", "value": "3.0%", "rawValue": 3.0, "palier": 4, "source": "SIPRI" },
+        { "id": "M2", "label": "Conflits actifs", "value": "0 (mais mer de Chine a 1500 km)", "rawValue": 0, "palier": 2, "source": "ACLED" },
+        { "id": "M3", "label": "GFP", "value": "40e (pas implique)", "rawValue": 40, "palier": 1, "source": "Global Firepower" },
+        { "id": "M4", "label": "Exercices majeurs", "value": "4-5 (FPDA, bilateraux US, Australie)", "rawValue": 4.5, "palier": 3, "source": "IISS" },
+        { "id": "M5", "label": "Proliferation", "value": "Zone Asie du SE (voisinage nucleaire indirect)", "rawValue": null, "palier": 3, "source": "SIPRI / FAS" },
+        { "id": "M6", "label": "Coups regionaux", "value": "1 (Myanmar 2021)", "rawValue": 1, "palier": 2, "source": "Cline Center" },
+        { "id": "M7", "label": "Subordination civile", "value": "0.88 (armee professionnelle, controle civil fort)", "rawValue": 0.88, "palier": 1, "source": "V-Dem" },
+        { "id": "M8", "label": "Transferts armes", "value": "~1500 TIV (achats F-35, sous-marins)", "rawValue": 1500, "palier": 3, "source": "SIPRI" },
+        { "id": "M9", "label": "Bases etrangeres", "value": "Acces US Changi, pas de base rivale", "rawValue": null, "palier": 2, "source": "IISS" },
+        { "id": "M10", "label": "Milices / PMC", "value": "0", "rawValue": 0, "palier": 1, "source": "ACLED" },
+        { "id": "M11", "label": "Traites defense", "value": "FPDA (Five Power), bilateraux US", "rawValue": null, "palier": 2, "source": "IISS" },
+        { "id": "M12", "label": "R&D defense", "value": "~12% (DSO National Lab, ST Engineering)", "rawValue": 12, "palier": 2, "source": "SIPRI" }
+      ],
+      "scoreQuanti": 2.5,
+      "scoreQuali": 3,
+      "scoreFinal": 2.7,
+      "trend": "up",
+      "commentary": "Pas de menace directe mais exposition indirecte via detroit de Malacca (30% commerce mondial). Tension Chine-Taiwan = risque systemique pour Singapour (disruption supply chain). Armee professionnelle, bien equipee, dissuasion credible."
+    },
+    "P": {
+      "label": "Politique",
+      "indicators": [
+        { "id": "P1", "label": "CPI", "value": "83", "rawValue": 83, "palier": 1, "source": "Transparency International" },
+        { "id": "P2", "label": "V-Dem", "value": "0.35 (classe 'autocratie electorale')", "rawValue": 0.35, "palier": 5, "source": "V-Dem Institute" },
+        { "id": "P3", "label": "WGI Political Stability", "value": "+1.5", "rawValue": 1.5, "palier": 1, "source": "World Bank WGI" },
+        { "id": "P4", "label": "Cycle electoral", "value": ">4 ans (2025 effectuees)", "rawValue": null, "palier": 1, "source": "ELD" },
+        { "id": "P5", "label": "Risque regime", "value": "Negligeable", "rawValue": null, "palier": 1, "source": "EIU" },
+        { "id": "P6", "label": "Polarisation", "value": "0.15", "rawValue": 0.15, "palier": 1, "source": "V-Dem" },
+        { "id": "P7", "label": "Libertes civiles", "value": "30 (restreintes, presse, assemblee)", "rawValue": 30, "palier": 4, "source": "Freedom House" },
+        { "id": "P8", "label": "Risque successoral", "value": "Transition Wong effectuee, institutionnelle", "rawValue": null, "palier": 1, "source": "EIU" },
+        { "id": "P9", "label": "Autonomie regionale", "value": "Cite-Etat, pas de risque", "rawValue": null, "palier": 1, "source": "N/A" },
+        { "id": "P10", "label": "Opposition", "value": "Restreinte (WP a 10 sieges, harcelement judiciaire ponctuel)", "rawValue": null, "palier": 3, "source": "Freedom House" },
+        { "id": "P11", "label": "Pression demographique", "value": "+0.8% (immigration controlee)", "rawValue": 0.8, "palier": 2, "source": "UN DESA" },
+        { "id": "P12", "label": "Diaspora", "value": "Negligeable", "rawValue": null, "palier": 1, "source": "N/A" }
+      ],
+      "scoreQuanti": 1.8,
+      "scoreQuali": 2,
+      "scoreFinal": 1.9,
+      "trend": "stable",
+      "commentary": "Paradoxe singapourien : stabilite exemplaire, absence de corruption, mais libertes civiles restreintes. Le V-Dem a 0.35 est le seul indicateur 'rouge' — il mesure la democratie liberale, pas la gouvernance effective. Singapour est une 'autocratie efficace'."
+    },
+    "L": {
+      "label": "Legal",
+      "indicators": [
+        { "id": "L1", "label": "Rule of Law", "value": "0.84", "rawValue": 0.84, "palier": 1, "source": "WJP" },
+        { "id": "L2", "label": "B-READY", "value": "82", "rawValue": 82, "palier": 1, "source": "World Bank" },
+        { "id": "L3", "label": "Sanctions", "value": "Aucune", "rawValue": null, "palier": 1, "source": "OFAC / EU" },
+        { "id": "L4", "label": "Protection PI", "value": "82", "rawValue": 82, "palier": 1, "source": "GIPC" },
+        { "id": "L5", "label": "Execution contrats", "value": "164 jours", "rawValue": 164, "palier": 1, "source": "World Bank" },
+        { "id": "L6", "label": "Independance judiciaire", "value": "Elevee (mais Executive influence sur ISA)", "rawValue": null, "palier": 2, "source": "WJP" },
+        { "id": "L7", "label": "BIT actifs", "value": ">75", "rawValue": 75, "palier": 1, "source": "UNCTAD" },
+        { "id": "L8", "label": "Anti-corruption", "value": "Tres efficace (CPIB)", "rawValue": null, "palier": 1, "source": "TI / CPIB" },
+        { "id": "L9", "label": "Arbitrage ICSID", "value": "Membre actif, hub arbitrage SIAC", "rawValue": null, "palier": 1, "source": "ICSID / SIAC" },
+        { "id": "L10", "label": "Risque expropriation", "value": "Negligeable", "rawValue": null, "palier": 1, "source": "EIU" }
+      ],
+      "scoreQuanti": 1.3,
+      "scoreQuali": 1,
+      "scoreFinal": 1.2,
+      "trend": "stable",
+      "commentary": "Environnement legal parmi les meilleurs au monde. SIAC = 3e centre arbitrage mondial. Execution contrats la plus rapide d'Asie."
+    },
+    "I": {
+      "label": "Information",
+      "indicators": [
+        { "id": "I1", "label": "RSF rang", "value": "126", "rawValue": 126, "palier": 5, "source": "RSF" },
+        { "id": "I2", "label": "Freedom on the Net", "value": "54", "rawValue": 54, "palier": 3, "source": "Freedom House" },
+        { "id": "I3", "label": "Operations influence", "value": "2 (Chine, faible)", "rawValue": 2, "palier": 2, "source": "DFRLab" },
+        { "id": "I4", "label": "Censure internet", "value": "~3% (POFMA, selective)", "rawValue": 3, "palier": 3, "source": "OONI" },
+        { "id": "I5", "label": "Controle medias Etat", "value": "~55% (SPH Media Trust, Mediacorp)", "rawValue": 55, "palier": 5, "source": "RSF" },
+        { "id": "I6", "label": "Penetration reseaux sociaux", "value": "88%", "rawValue": 88, "palier": 1, "source": "DataReportal" },
+        { "id": "I7", "label": "Desinformation IA", "value": "2-3 incidents", "rawValue": 2.5, "palier": 2, "source": "CSA Singapore" },
+        { "id": "I8", "label": "Pluralisme mediatique", "value": "~35", "rawValue": 35, "palier": 5, "source": "RSF" },
+        { "id": "I9", "label": "Journalistes emprisonnes", "value": "0", "rawValue": 0, "palier": 1, "source": "CPJ" },
+        { "id": "I10", "label": "Controle narratif diaspora", "value": "Aucun", "rawValue": null, "palier": 1, "source": "N/A" },
+        { "id": "I11", "label": "Bots / trolls", "value": "< 100 (faible)", "rawValue": 100, "palier": 2, "source": "DFRLab" },
+        { "id": "I12", "label": "Usage VPN", "value": "~12%", "rawValue": 12, "palier": 3, "source": "Surfshark" }
+      ],
+      "scoreQuanti": 3.3,
+      "scoreQuali": 3,
+      "scoreFinal": 3.2,
+      "trend": "stable",
+      "commentary": "Presse controlee par l'Etat (SPH, Mediacorp) mais pas de repression violente. POFMA (anti-fake news) = outil legal de controle narratif. Paradoxe : societe hyper-connectee (88% RS) dans un cadre mediatique restreint."
+    },
+    "C": {
+      "label": "Cyber",
+      "indicators": [
+        { "id": "C1", "label": "NCSI", "value": "78", "rawValue": 78, "palier": 2, "source": "e-Governance Academy" },
+        { "id": "C2", "label": "GCI", "value": "94 (2e mondial)", "rawValue": 94, "palier": 1, "source": "ITU" },
+        { "id": "C3", "label": "Incidents majeurs", "value": "1 (SingHealth 2018 legacy)", "rawValue": 1, "palier": 2, "source": "CSA Singapore" },
+        { "id": "C4", "label": "APT actifs", "value": "3-4 espionnage (Chine principalement)", "rawValue": 3.5, "palier": 3, "source": "MITRE ATT&CK / Mandiant" },
+        { "id": "C5", "label": "Exposition infra critique", "value": "Moderee (smart nation = surface d'attaque)", "rawValue": null, "palier": 3, "source": "CSA Singapore" },
+        { "id": "C6", "label": "Budget cyberdefense", "value": "~7% (CSA, DIS)", "rawValue": 7, "palier": 2, "source": "CSA Singapore" },
+        { "id": "C7", "label": "Ransomware", "value": "~8 incidents", "rawValue": 8, "palier": 2, "source": "CSA Singapore" },
+        { "id": "C8", "label": "Supply chain attacks", "value": "1", "rawValue": 1, "palier": 2, "source": "CSA Singapore" },
+        { "id": "C9", "label": "Workforce cyber", "value": "~180 / 100k", "rawValue": 180, "palier": 2, "source": "ISC2" },
+        { "id": "C10", "label": "Souverainete donnees", "value": "Cadre mature (PDPA + sectorielles)", "rawValue": null, "palier": 1, "source": "PDPC Singapore" },
+        { "id": "C11", "label": "Cloud exposure", "value": "Faible (reglementation MAS stricte)", "rawValue": null, "palier": 2, "source": "MAS" },
+        { "id": "C12", "label": "Zero-day exposure", "value": "Moderee (hub financier = cible)", "rawValue": null, "palier": 3, "source": "Google TAG" }
+      ],
+      "scoreQuanti": 2.2,
+      "scoreQuali": 2,
+      "scoreFinal": 2.1,
+      "trend": "stable",
+      "commentary": "Cyberdefense parmi les meilleures d'Asie. CSA (Cyber Security Agency) mature. Seul risque : surface d'attaque 'smart nation' et statut de hub financier (cible APT)."
+    },
+    "Ee": {
+      "label": "Environnemental",
+      "indicators": [
+        { "id": "Ee1", "label": "ND-GAIN", "value": "66", "rawValue": 66, "palier": 2, "source": "ND-GAIN" },
+        { "id": "Ee2", "label": "Water Stress", "value": "3.8 (dependance importation eau Malaisie)", "rawValue": 3.8, "palier": 6, "source": "WRI Aqueduct" },
+        { "id": "Ee3", "label": "Dependance extractive", "value": "< 5% (hub raffinage, pas extraction)", "rawValue": 5, "palier": 1, "source": "World Bank" },
+        { "id": "Ee4", "label": "Catastrophes", "value": "0 (pas de catastrophe majeure)", "rawValue": 0, "palier": 1, "source": "EM-DAT" },
+        { "id": "Ee5", "label": "Transition energetique", "value": "~5% renouvelables (contrainte surface)", "rawValue": 5, "palier": 6, "source": "EMA Singapore" },
+        { "id": "Ee6", "label": "CO2 / capita", "value": "8.9 tonnes (petrochimie)", "rawValue": 8.9, "palier": 4, "source": "Global Carbon Project" },
+        { "id": "Ee7", "label": "Biodiversite menacee", "value": "~15%", "rawValue": 15, "palier": 3, "source": "IUCN" },
+        { "id": "Ee8", "label": "Deforestation", "value": "~0% (ville-Etat)", "rawValue": 0, "palier": 1, "source": "Global Forest Watch" },
+        { "id": "Ee9", "label": "Montee des eaux", "value": "~30% pop zone < 5m", "rawValue": 30, "palier": 6, "source": "Climate Central" },
+        { "id": "Ee10", "label": "Pollution air", "value": "~18 (haze saisonnier Indonesie)", "rawValue": 18, "palier": 2, "source": "IQAir" }
+      ],
+      "scoreQuanti": 2.9,
+      "scoreQuali": 3,
+      "scoreFinal": 2.9,
+      "trend": "stable",
+      "commentary": "Vulnerabilite structurelle : montee des eaux (30% pop) et dependance hydrique (accord Malaisie expire 2061). Programme SolarNova et desalinisation en cours mais contraintes physiques."
+    }
+  },
+  "composite": 2.2,
+  "classification": "Modere-Faible",
+  "signatures": [],
+  "flags": []
+}

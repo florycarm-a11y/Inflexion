@@ -1,0 +1,40 @@
+{
+  "schema": "evaluation-v2",
+  "version": "2.0",
+  "generatedAt": "2026-03-12",
+  "count": 4,
+  "evaluations": [
+    {
+      "zoneId": "ukraine",
+      "name": "Ukraine / Mer Noire",
+      "region": "europe",
+      "composite": 5.6,
+      "classification": "Tres eleve",
+      "file": "ukraine-v2.json"
+    },
+    {
+      "zoneId": "inde",
+      "name": "Inde",
+      "region": "asie",
+      "composite": 3.9,
+      "classification": "Modere",
+      "file": "inde-v2.json"
+    },
+    {
+      "zoneId": "ile-maurice",
+      "name": "Ile Maurice",
+      "region": "afrique",
+      "composite": 2.5,
+      "classification": "Modere-Faible",
+      "file": "ile-maurice-v2.json"
+    },
+    {
+      "zoneId": "singapour",
+      "name": "Singapour",
+      "region": "asie",
+      "composite": 2.2,
+      "classification": "Modere-Faible",
+      "file": "singapour-v2.json"
+    }
+  ]
+}

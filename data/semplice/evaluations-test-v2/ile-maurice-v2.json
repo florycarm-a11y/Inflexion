@@ -1,0 +1,193 @@
+{
+  "zone": {
+    "id": "ile-maurice",
+    "name": "Ile Maurice",
+    "region": "afrique"
+  },
+  "meta": {
+    "date": "2026-03-12",
+    "version": "2.0",
+    "analyst": "Inflexion Intelligence"
+  },
+  "dimensions": {
+    "S": {
+      "label": "Social",
+      "indicators": [
+        { "id": "S1", "label": "Gini", "value": "0.367", "rawValue": 0.367, "palier": 4, "source": "World Bank" },
+        { "id": "S2", "label": "IDH", "value": "0.802", "rawValue": 0.802, "palier": 2, "source": "UNDP" },
+        { "id": "S3", "label": "Chomage jeunes", "value": "~22%", "rawValue": 22, "palier": 4, "source": "Statistics Mauritius" },
+        { "id": "S4", "label": "Solde migratoire", "value": "-1.5‰ (fuite des cerveaux moderee)", "rawValue": -1.5, "palier": 5, "source": "UN DESA" },
+        { "id": "S5", "label": "Mouvements sociaux", "value": "1 (manifestations Wakashio 2020 legacy)", "rawValue": 1, "palier": 2, "source": "ACLED" },
+        { "id": "S6", "label": "Tensions ethniques", "value": "Tensions intercommunautaires latentes (hindous/creoles/musulmans)", "rawValue": null, "palier": 3, "source": "ICG" },
+        { "id": "S7", "label": "Acces sante", "value": "3.4 lits/1000", "rawValue": 3.4, "palier": 3, "source": "WHO" },
+        { "id": "S8", "label": "Urbanisation", "value": "~0.3%", "rawValue": 0.3, "palier": 1, "source": "UN-Habitat" },
+        { "id": "S9", "label": "Inegalite genre (GII)", "value": "0.35", "rawValue": 0.35, "palier": 4, "source": "UNDP" },
+        { "id": "S10", "label": "Esperance de vie", "value": "75.4", "rawValue": 75.4, "palier": 2, "source": "WHO" },
+        { "id": "S11", "label": "Securite alimentaire", "value": "~5% (dependance importation 70%)", "rawValue": 5, "palier": 2, "source": "FAO" },
+        { "id": "S12", "label": "Education secondaire", "value": "88%", "rawValue": 88, "palier": 2, "source": "UNESCO" }
+      ],
+      "scoreQuanti": 2.6,
+      "scoreQuali": 2,
+      "scoreFinal": 2.4,
+      "trend": "stable",
+      "commentary": "Societe multiculturelle globalement stable. Modele de cohabitation envie en Afrique. Points de vigilance : chomage jeunes structurel, vieillissement accelere, et dependance alimentaire (70% importe)."
+    },
+    "E": {
+      "label": "Economique",
+      "indicators": [
+        { "id": "E1", "label": "PIB reel", "value": "+4.1% (tourisme + services financiers)", "rawValue": 4.1, "palier": 2, "source": "Statistics Mauritius" },
+        { "id": "E2", "label": "Inflation", "value": "4.9%", "rawValue": 4.9, "palier": 2, "source": "BOM" },
+        { "id": "E3", "label": "Dette publique / PIB", "value": "78% (post-COVID)", "rawValue": 78, "palier": 4, "source": "IMF" },
+        { "id": "E4", "label": "Balance courante", "value": "-5.2% PIB", "rawValue": -5.2, "palier": 6, "source": "BOM" },
+        { "id": "E5", "label": "Notation souveraine", "value": "Baa3 (Moody's) investment grade", "rawValue": null, "palier": 3, "source": "Moody's" },
+        { "id": "E6", "label": "Regime change", "value": "Flottant gere (BOM)", "rawValue": null, "palier": 2, "source": "BOM" },
+        { "id": "E7", "label": "Reserves de change", "value": "~7 mois", "rawValue": 7, "palier": 3, "source": "BOM" },
+        { "id": "E8", "label": "IDE entrants", "value": "~2.5% PIB", "rawValue": 2.5, "palier": 3, "source": "UNCTAD" },
+        { "id": "E9", "label": "Chomage total", "value": "6.5%", "rawValue": 6.5, "palier": 3, "source": "Statistics Mauritius" },
+        { "id": "E10", "label": "Dette privee / PIB", "value": "~95%", "rawValue": 95, "palier": 3, "source": "BIS" },
+        { "id": "E11", "label": "Concentration exports", "value": "Textile + sucre + tourisme ~55%", "rawValue": 55, "palier": 5, "source": "UN Comtrade" },
+        { "id": "E12", "label": "Croissance credit", "value": "~6%", "rawValue": 6, "palier": 1, "source": "BOM" },
+        { "id": "E13", "label": "Economie informelle", "value": "~22%", "rawValue": 22, "palier": 3, "source": "IMF" },
+        { "id": "E14", "label": "Cout energie", "value": "~140 $/MWh (100% import fossiles)", "rawValue": 140, "palier": 4, "source": "CEB Mauritius" },
+        { "id": "E15", "label": "Indice de misere", "value": "4.9+6.5 = 11.4", "rawValue": 11.4, "palier": 3, "source": "Calcul (inflation + chomage)" }
+      ],
+      "scoreQuanti": 2.5,
+      "scoreQuali": 2,
+      "scoreFinal": 2.3,
+      "trend": "down",
+      "commentary": "Economie diversifiee pour un PEID (petit Etat insulaire). Hub financier offshore (GBC), tourisme, textile, TIC. Vulnerabilites : dependance energetique totale (import fossiles), dette post-COVID elevee, balance courante deficitaire. Risque liste grise GAFI (sorti 2021, sous surveillance)."
+    },
+    "M": {
+      "label": "Militaire",
+      "indicators": [
+        { "id": "M1", "label": "Depenses mil. / PIB", "value": "0.2% (pas d'armee, Special Mobile Force + Coast Guard)", "rawValue": 0.2, "palier": 1, "source": "SIPRI" },
+        { "id": "M2", "label": "Conflits actifs", "value": "0", "rawValue": 0, "palier": 1, "source": "ACLED" },
+        { "id": "M3", "label": "GFP", "value": "Non classe (pas d'armee conventionnelle)", "rawValue": null, "palier": 1, "source": "Global Firepower" },
+        { "id": "M4", "label": "Exercices majeurs", "value": "1 (bilateraux Inde)", "rawValue": 1, "palier": 2, "source": "IISS" },
+        { "id": "M5", "label": "Proliferation", "value": "Zone NWFZ (Pelindaba)", "rawValue": null, "palier": 2, "source": "UNODA" },
+        { "id": "M6", "label": "Coups regionaux", "value": "0 (ocean Indien stable)", "rawValue": 0, "palier": 1, "source": "Cline Center" },
+        { "id": "M7", "label": "Subordination civile", "value": "0.92 (democratie parlementaire, pas d'armee)", "rawValue": 0.92, "palier": 1, "source": "V-Dem" },
+        { "id": "M8", "label": "Transferts armes", "value": "< 50 TIV (coast guard boats)", "rawValue": 50, "palier": 1, "source": "SIPRI" },
+        { "id": "M9", "label": "Bases etrangeres", "value": "Base Diego Garcia (US/UK, contestee, Chagos)", "rawValue": null, "palier": 2, "source": "IISS" },
+        { "id": "M10", "label": "Milices / PMC", "value": "0", "rawValue": 0, "palier": 1, "source": "ACLED" },
+        { "id": "M11", "label": "Traites defense", "value": "Accords bilateraux Inde (Agalega), pas d'alliance", "rawValue": null, "palier": 3, "source": "IISS" },
+        { "id": "M12", "label": "R&D defense", "value": "0%", "rawValue": 0, "palier": 1, "source": "SIPRI" }
+      ],
+      "scoreQuanti": 1.3,
+      "scoreQuali": 1,
+      "scoreFinal": 1.2,
+      "trend": "stable",
+      "commentary": "Aucune menace militaire directe. Ile Maurice n'a pas d'armee conventionnelle. Seul enjeu : souverainete Chagos/Diego Garcia (CIJ favorable 2019, retrocession en cours 2024-2026) et presence indienne a Agalega (base surveillance maritime)."
+    },
+    "P": {
+      "label": "Politique",
+      "indicators": [
+        { "id": "P1", "label": "CPI", "value": "50", "rawValue": 50, "palier": 4, "source": "Transparency International" },
+        { "id": "P2", "label": "V-Dem", "value": "0.72 (democratie electorale)", "rawValue": 0.72, "palier": 2, "source": "V-Dem Institute" },
+        { "id": "P3", "label": "WGI Political Stability", "value": "+0.8", "rawValue": 0.8, "palier": 2, "source": "World Bank WGI" },
+        { "id": "P4", "label": "Cycle electoral", "value": "~3 ans (dernieres : nov 2024)", "rawValue": null, "palier": 2, "source": "ECM Mauritius" },
+        { "id": "P5", "label": "Risque regime", "value": "Negligeable", "rawValue": null, "palier": 1, "source": "EIU" },
+        { "id": "P6", "label": "Polarisation", "value": "0.50 (MSM vs PTr + MMM, bipartisme)", "rawValue": 0.50, "palier": 4, "source": "V-Dem" },
+        { "id": "P7", "label": "Libertes civiles", "value": "45", "rawValue": 45, "palier": 2, "source": "Freedom House" },
+        { "id": "P8", "label": "Risque successoral", "value": "Institutions solides, alternance reguliere", "rawValue": null, "palier": 2, "source": "EIU" },
+        { "id": "P9", "label": "Autonomie regionale", "value": "Rodrigues (autonomie, pas de risque secession)", "rawValue": null, "palier": 2, "source": "N/A" },
+        { "id": "P10", "label": "Opposition", "value": "Opposition libre", "rawValue": null, "palier": 2, "source": "Freedom House" },
+        { "id": "P11", "label": "Pression demographique", "value": "+0.1% (vieillissement rapide, 15% > 65 ans d'ici 2030)", "rawValue": 0.1, "palier": 3, "source": "UN DESA" },
+        { "id": "P12", "label": "Diaspora", "value": "Communautaire (UK, Australie, France)", "rawValue": null, "palier": 2, "source": "IOM" }
+      ],
+      "scoreQuanti": 2.3,
+      "scoreQuali": 2,
+      "scoreFinal": 2.2,
+      "trend": "stable",
+      "commentary": "Democratie la plus stable d'Afrique (alternances regulieres depuis 1968). Corruption moderee (affaire Alvaro Sobrinho, scandales ponctuels). Systeme consensuel intercommunautaire (best loser system)."
+    },
+    "L": {
+      "label": "Legal",
+      "indicators": [
+        { "id": "L1", "label": "Rule of Law", "value": "0.58", "rawValue": 0.58, "palier": 3, "source": "WJP" },
+        { "id": "L2", "label": "B-READY", "value": "65", "rawValue": 65, "palier": 2, "source": "World Bank" },
+        { "id": "L3", "label": "Sanctions", "value": "Aucune (sorti liste grise GAFI oct 2021)", "rawValue": null, "palier": 1, "source": "GAFI / OFAC" },
+        { "id": "L4", "label": "Protection PI", "value": "~48", "rawValue": 48, "palier": 4, "source": "GIPC" },
+        { "id": "L5", "label": "Execution contrats", "value": "~520 jours", "rawValue": 520, "palier": 3, "source": "World Bank" },
+        { "id": "L6", "label": "Independance judiciaire", "value": "Moderee (Privy Council London = appel)", "rawValue": null, "palier": 3, "source": "WJP" },
+        { "id": "L7", "label": "BIT actifs", "value": "~45 (hub traites investissement)", "rawValue": 45, "palier": 3, "source": "UNCTAD" },
+        { "id": "L8", "label": "Anti-corruption", "value": "Moderee (ICAC existe mais effectivite debattue)", "rawValue": null, "palier": 3, "source": "TI / ICAC" },
+        { "id": "L9", "label": "Arbitrage ICSID", "value": "Membre, hub arbitrage MCCI", "rawValue": null, "palier": 2, "source": "ICSID / MCCI" },
+        { "id": "L10", "label": "Risque expropriation", "value": "Tres faible", "rawValue": null, "palier": 2, "source": "EIU" }
+      ],
+      "scoreQuanti": 2.4,
+      "scoreQuali": 2,
+      "scoreFinal": 2.2,
+      "trend": "stable",
+      "commentary": "Cadre legal herite du droit francais + common law britannique. Hub offshore (GBC 1 & 2) avec legislation attractive mais sous surveillance GAFI. Appel au Privy Council de Londres = garantie d'independance."
+    },
+    "I": {
+      "label": "Information",
+      "indicators": [
+        { "id": "I1", "label": "RSF rang", "value": "64", "rawValue": 64, "palier": 3, "source": "RSF" },
+        { "id": "I2", "label": "Freedom on the Net", "value": "68", "rawValue": 68, "palier": 2, "source": "Freedom House" },
+        { "id": "I3", "label": "Operations influence", "value": "0", "rawValue": 0, "palier": 1, "source": "DFRLab" },
+        { "id": "I4", "label": "Censure internet", "value": "< 1%", "rawValue": 1, "palier": 2, "source": "OONI" },
+        { "id": "I5", "label": "Controle medias Etat", "value": "~30% (MBC + presse proche pouvoir)", "rawValue": 30, "palier": 4, "source": "RSF" },
+        { "id": "I6", "label": "Penetration reseaux sociaux", "value": "~72%", "rawValue": 72, "palier": 2, "source": "DataReportal" },
+        { "id": "I7", "label": "Desinformation IA", "value": "0", "rawValue": 0, "palier": 1, "source": "N/A" },
+        { "id": "I8", "label": "Pluralisme mediatique", "value": "~55", "rawValue": 55, "palier": 3, "source": "RSF" },
+        { "id": "I9", "label": "Journalistes emprisonnes", "value": "0", "rawValue": 0, "palier": 1, "source": "CPJ" },
+        { "id": "I10", "label": "Controle narratif diaspora", "value": "Aucun", "rawValue": null, "palier": 1, "source": "N/A" },
+        { "id": "I11", "label": "Bots / trolls", "value": "< 50", "rawValue": 50, "palier": 1, "source": "DFRLab" },
+        { "id": "I12", "label": "Usage VPN", "value": "~8%", "rawValue": 8, "palier": 2, "source": "Surfshark" }
+      ],
+      "scoreQuanti": 2.6,
+      "scoreQuali": 2,
+      "scoreFinal": 2.4,
+      "trend": "stable",
+      "commentary": "Presse relativement libre pour l'Afrique. Pluralisme reel (L'Express, Le Defi, Le Mauricien). Points de vigilance : IBA (Independent Broadcasting Authority) sous influence, et ICT Act utilise ponctuellement contre critiques en ligne."
+    },
+    "C": {
+      "label": "Cyber",
+      "indicators": [
+        { "id": "C1", "label": "NCSI", "value": "42", "rawValue": 42, "palier": 4, "source": "e-Governance Academy" },
+        { "id": "C2", "label": "GCI", "value": "55", "rawValue": 55, "palier": 4, "source": "ITU" },
+        { "id": "C3", "label": "Incidents majeurs", "value": "1 mineur (attaque BOM 2024)", "rawValue": 1, "palier": 2, "source": "CERT-MU" },
+        { "id": "C4", "label": "APT actifs", "value": "0 connus", "rawValue": 0, "palier": 1, "source": "MITRE ATT&CK" },
+        { "id": "C5", "label": "Exposition infra critique", "value": "Moderee (fintech hub en croissance)", "rawValue": null, "palier": 3, "source": "CERT-MU" },
+        { "id": "C6", "label": "Budget cyberdefense", "value": "~0.5% (CERT-MU sous-finance)", "rawValue": 0.5, "palier": 5, "source": "CERT-MU" },
+        { "id": "C7", "label": "Ransomware", "value": "~3 incidents", "rawValue": 3, "palier": 2, "source": "CERT-MU" },
+        { "id": "C8", "label": "Supply chain attacks", "value": "0", "rawValue": 0, "palier": 1, "source": "CERT-MU" },
+        { "id": "C9", "label": "Workforce cyber", "value": "~15 / 100k", "rawValue": 15, "palier": 6, "source": "ISC2" },
+        { "id": "C10", "label": "Souverainete donnees", "value": "Data Protection Act 2017 (GDPR-inspired)", "rawValue": null, "palier": 2, "source": "DPO Mauritius" },
+        { "id": "C11", "label": "Cloud exposure", "value": "Moderee", "rawValue": null, "palier": 3, "source": "CERT-MU" },
+        { "id": "C12", "label": "Zero-day exposure", "value": "Faible (pas de cible prioritaire)", "rawValue": null, "palier": 2, "source": "Google TAG" }
+      ],
+      "scoreQuanti": 3.4,
+      "scoreQuali": 3,
+      "scoreFinal": 3.2,
+      "trend": "stable",
+      "commentary": "Cyberdefense encore immature pour un hub financier. CERT-MU existe mais moyens limites. Workforce cyber insuffisante. Le positionnement fintech (hub offshore) cree une surface d'attaque croissante sans capacite proportionnelle."
+    },
+    "Ee": {
+      "label": "Environnemental",
+      "indicators": [
+        { "id": "Ee1", "label": "ND-GAIN", "value": "50", "rawValue": 50, "palier": 4, "source": "ND-GAIN" },
+        { "id": "Ee2", "label": "Water Stress", "value": "2.8", "rawValue": 2.8, "palier": 4, "source": "WRI Aqueduct" },
+        { "id": "Ee3", "label": "Dependance extractive", "value": "< 5%", "rawValue": 5, "palier": 1, "source": "World Bank" },
+        { "id": "Ee4", "label": "Catastrophes", "value": "4 (cyclones, inondations, Wakashio)", "rawValue": 4, "palier": 3, "source": "EM-DAT" },
+        { "id": "Ee5", "label": "Transition energetique", "value": "~22% (canne a sucre bagasse + solaire)", "rawValue": 22, "palier": 4, "source": "CEB Mauritius" },
+        { "id": "Ee6", "label": "CO2 / capita", "value": "3.5 tonnes", "rawValue": 3.5, "palier": 2, "source": "Global Carbon Project" },
+        { "id": "Ee7", "label": "Biodiversite menacee", "value": "~35% (endemisme eleve, especes en danger)", "rawValue": 35, "palier": 5, "source": "IUCN" },
+        { "id": "Ee8", "label": "Deforestation", "value": "~0.4%", "rawValue": 0.4, "palier": 3, "source": "Global Forest Watch" },
+        { "id": "Ee9", "label": "Montee des eaux", "value": "~12% pop zone cotiere < 5m", "rawValue": 12, "palier": 5, "source": "Climate Central" },
+        { "id": "Ee10", "label": "Pollution air", "value": "~15", "rawValue": 15, "palier": 2, "source": "IQAir" }
+      ],
+      "scoreQuanti": 3.6,
+      "scoreQuali": 4,
+      "scoreFinal": 3.8,
+      "trend": "up",
+      "commentary": "Vulnerabilite climatique majeure pour un PEID. Wakashio (2020) = catastrophe ecologique revelatrice. Erosion cotiere acceleree, blanchiment corallien (>60% des recifs), biodiversite endemique en danger critique (dodo syndrome). Montee des eaux = menace existentielle a horizon 2050-2100."
+    }
+  },
+  "composite": 2.5,
+  "classification": "Modere-Faible",
+  "signatures": [],
+  "flags": []
+}

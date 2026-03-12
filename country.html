@@ -73,22 +73,32 @@
     .sort-header:hover{color:#006650}
     .sort-header .sort-arrow{display:inline-block;margin-left:4px;transition:transform .2s}
     .sort-header.asc .sort-arrow{transform:rotate(180deg)}
-    /* Filters */
-    .filter-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:1rem}
-    .filter-select{padding:6px 12px;border:1.5px solid #E2E5EB;border-radius:8px;font-size:.82rem;font-family:Inter,sans-serif;color:#1A1F2E;background:#fff;cursor:pointer;transition:border-color .2s}
-    .filter-select:focus{outline:none;border-color:#006650}
-    .filter-label{font-size:.78rem;color:#5A6178;font-weight:600}
-    .filter-range{-webkit-appearance:none;width:100px;height:4px;background:#E2E5EB;border-radius:2px;outline:none}
-    .filter-range::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#006650;cursor:pointer}
-    .filter-range::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#006650;cursor:pointer;border:none}
-    .filter-range-value{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#006650;font-weight:600;min-width:24px}
-    @keyframes bubble-pulse{0%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.5}100%{transform:scale(1);opacity:1}}
     .leaflet-popup-content-wrapper{border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,.12)}
     .leaflet-popup-content{margin:12px 16px;font-family:Inter,sans-serif}
     .leaflet-top,.leaflet-bottom{z-index:10!important}
     .leaflet-pane{z-index:5!important}
     .leaflet-tooltip-pane{z-index:12!important}
     .leaflet-popup-pane{z-index:12!important}
+    .scatter-filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:1rem}
+    .scatter-filters label{font-size:.78rem;color:#5A6178;font-weight:500}
+    .scatter-filters select,.scatter-filters input[type=range]{font-size:.78rem;padding:4px 8px;border:1px solid #E2E5EB;border-radius:6px;background:#fff;color:#1A1F2E;font-family:Inter,sans-serif}
+    .scatter-filters select:focus,.scatter-filters input:focus{outline:none;border-color:#006650}
+    .scatter-filters .filter-val{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:#006650;font-weight:600;min-width:20px;text-align:center}
+    .tl-pill{padding:5px 14px;border-radius:20px;font-size:.75rem;font-weight:600;border:2px solid #E2E5EB;background:#fff;color:#5A6178;cursor:pointer;transition:all .2s;font-family:Inter,sans-serif}
+    .tl-pill:hover{border-color:#006650;color:#006650}
+    .tl-pill.active{color:#fff;border-color:transparent}
+    .tl-event-item{display:flex;align-items:flex-start;gap:10px;padding:8px 12px;border-left:3px solid #E2E5EB;margin-bottom:6px;font-size:.78rem;font-family:Inter,sans-serif;transition:border-color .2s}
+    .tl-event-item.escalation{border-left-color:#DC2626}
+    .tl-event-item.deescalation{border-left-color:#006650}
+    .tl-event-item.neutral{border-left-color:#C8955A}
+    .tl-event-date{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:#5A6178;white-space:nowrap;min-width:80px}
+    .tl-event-label{color:#1A1F2E;flex:1}
+    .tl-event-delta{font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:12px;white-space:nowrap}
+    .tl-event-delta.up{background:#FEE2E2;color:#DC2626}
+    .tl-event-delta.down{background:#D1FAE5;color:#006650}
+    .tl-event-delta.flat{background:#F7F8FA;color:#5A6178}
+    @keyframes scatter-pulse{0%{transform:scale(1);opacity:1}50%{transform:scale(1.8);opacity:.4}100%{transform:scale(1);opacity:1}}
+    .scatter-pulse-dot{position:absolute;border-radius:50%;pointer-events:none;animation:scatter-pulse .6s ease-out 3}
     </style>
 </head>
 <body>
@@ -165,35 +175,66 @@
             <!-- ═══ SCATTER PLOT ═══ -->
             <section id="screening" style="margin-bottom:3rem;">
                 <h2 style="font-family:'Libre Baskerville',Georgia,serif;font-size:1.3rem;font-weight:700;color:#1A1F2E;margin-bottom:.5rem;">Screening Risque / Opportunit&eacute;</h2>
-                <p style="font-size:.85rem;color:#5A6178;margin-bottom:1.25rem;">Positionnement des zones sur la matrice risque-opportunit&eacute;. Taille des bulles proportionnelle &agrave; la population. Cliquez sur une bulle pour localiser la zone.</p>
-                <!-- Filters -->
-                <div class="filter-bar" id="scatter-filters">
-                    <span class="filter-label">R&eacute;gion</span>
-                    <select class="filter-select" id="filter-region">
-                        <option value="all">Toutes</option>
-                        <option value="Asie">Asie</option>
-                        <option value="Europe">Europe</option>
-                        <option value="Afrique">Afrique</option>
-                        <option value="Amériques">Am&eacute;riques</option>
-                        <option value="Moyen-Orient">Moyen-Orient</option>
-                    </select>
-                    <span class="filter-label">Risque max</span>
-                    <input type="range" class="filter-range" id="filter-risk" min="1" max="5" step="0.5" value="5">
-                    <span class="filter-range-value" id="filter-risk-val">5.0</span>
-                    <span class="filter-label">Dimension &ge; 3</span>
-                    <select class="filter-select" id="filter-dimension">
-                        <option value="all">Toutes</option>
-                        <option value="Information">Information (I)</option>
-                        <option value="Cyber">Cyber (C)</option>
-                        <option value="Militaire">Militaire (M)</option>
-                        <option value="Politique">Politique (P)</option>
-                        <option value="Innovation">Innovation (opp.)</option>
-                        <option value="Maturité tech">Maturit&eacute; tech (opp.)</option>
-                    </select>
+                <p style="font-size:.85rem;color:#5A6178;margin-bottom:1.25rem;">Positionnement des zones sur la matrice risque-opportunit&eacute;. Cliquez sur une bulle pour localiser la zone.</p>
+                <div class="scatter-filters" id="scatter-filters">
+                    <label>R&eacute;gion :
+                        <select id="filter-region">
+                            <option value="all">Toutes</option>
+                            <option value="Asie">Asie</option>
+                            <option value="Europe">Europe</option>
+                            <option value="Afrique">Afrique</option>
+                            <option value="Amériques">Am&eacute;riques</option>
+                            <option value="Moyen-Orient">Moyen-Orient</option>
+                            <option value="Multi">Multi-r&eacute;gional</option>
+                        </select>
+                    </label>
+                    <label>Risque max :
+                        <input type="range" id="filter-risk" min="1" max="5" step="0.5" value="5">
+                        <span class="filter-val" id="filter-risk-val">5.0</span>
+                    </label>
+                    <label>Dimension :
+                        <select id="filter-dim">
+                            <option value="all">Toutes</option>
+                            <option value="0">Social &gt; 3</option>
+                            <option value="1">&Eacute;conomique &gt; 3</option>
+                            <option value="2">Militaire &gt; 3</option>
+                            <option value="3">Politique &gt; 3</option>
+                            <option value="4">L&eacute;gal &gt; 3</option>
+                            <option value="5">Information &gt; 3</option>
+                            <option value="6">Cyber &gt; 3</option>
+                            <option value="7">Environnemental &gt; 3</option>
+                        </select>
+                    </label>
                 </div>
                 <div id="scatter-container" style="position:relative;background:#fff;border:1px solid #E2E5EB;border-radius:12px;padding:1rem;overflow:hidden;">
                     <canvas id="scatter-canvas" aria-label="Scatter plot risque opportunit&eacute;"></canvas>
                 </div>
+                <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:.5rem;flex-wrap:wrap;">
+                    <span style="font-size:.7rem;color:#9ca3af;">Taille des bulles proportionnelle au PIB</span>
+                </div>
+            </section>
+
+            <!-- ═══ SCORE HISTORY TIMELINE ═══ -->
+            <section id="timeline-section" style="margin-bottom:3rem;">
+                <h2 style="font-family:'Libre Baskerville',Georgia,serif;font-size:1.3rem;font-weight:700;color:#1A1F2E;margin-bottom:.5rem;">&Eacute;volution historique des scores</h2>
+                <p style="font-size:.85rem;color:#5A6178;margin-bottom:1rem;">Trajectoire des scores composites risque et opportunit&eacute; dans le temps. S&eacute;lectionnez une zone pour voir son historique.</p>
+
+                <!-- Zone pills -->
+                <div id="timeline-zone-pills" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:.75rem;"></div>
+
+                <!-- Mode toggle -->
+                <div style="display:flex;justify-content:center;gap:8px;margin-bottom:1rem;">
+                    <button class="toggle-btn active" id="tl-mode-composite">Composite</button>
+                    <button class="toggle-btn" id="tl-mode-dims">8 Dimensions</button>
+                </div>
+
+                <!-- Canvas -->
+                <div id="timeline-container" style="position:relative;background:#fff;border:1px solid #E2E5EB;border-radius:12px;padding:1rem;overflow:hidden;">
+                    <canvas id="timeline-canvas" aria-label="Timeline des scores SEMPLICE"></canvas>
+                </div>
+
+                <!-- Events panel -->
+                <div id="timeline-events" style="margin-top:1rem;"></div>
             </section>
 
             <!-- ═══ SORTABLE TABLE ═══ -->
@@ -303,43 +344,43 @@
         {id:'cuba',name:'Cuba',scores:[5,5,3,5,5,5,4,4],composite:4.5,level:'Critique',
          opp:[1,1,1,1,1,1,1,1],oppComposite:1.0,oppLevel:'Faible',
          color:'#9333ea',href:'analyse-cuba-crise-perspectives.html',
-         center:[21.5,-79.9],zoom:7,region:'Amériques',pop:11},
+         center:[21.5,-79.9],zoom:7,gdp:107,region:'Amériques'},
         {id:'ukraine',name:'Ukraine / Mer Noire',scores:[4,4,5,5,4,5,5,4],composite:4.4,level:'Critique',
          opp:[3,2,1,2,2,4,3,2],oppComposite:2.4,oppLevel:'Modéré',
          color:'#DC2626',href:'#',
-         center:[48.5,35],zoom:5,region:'Europe',pop:44},
+         center:[48.5,35],zoom:5,gdp:178,region:'Europe'},
         {id:'ormuz',name:'Détroit d\'Ormuz',scores:[4,5,5,5,4,4,4,3],composite:4.3,level:'Critique',
          opp:[2,4,1,2,2,2,2,3],oppComposite:2.3,oppLevel:'Modéré',
          color:'#b91c1c',href:'analyse-petrole-trump-iran-ormuz.html',
-         center:[26.5,56],zoom:6,region:'Moyen-Orient',pop:90},
+         center:[26.5,56],zoom:6,gdp:510,region:'Moyen-Orient'},
         {id:'sahel',name:'Sahel',scores:[4,4,5,5,4,4,2,4],composite:3.8,level:'Élevé',
          opp:[2,2,1,1,1,1,1,2],oppComposite:1.4,oppLevel:'Faible',
          color:'#C8955A',href:'#',
-         center:[15,2],zoom:5,region:'Afrique',pop:70},
+         center:[15,2],zoom:5,gdp:45,region:'Afrique'},
         {id:'chine',name:'Mer de Chine',scores:[3,3,4,3,3,4,4,3],composite:3.4,level:'Élevé',
          opp:[4,5,2,3,3,5,4,3],oppComposite:3.6,oppLevel:'Élevé',
          color:'#f59e0b',href:'#',
-         center:[16,115],zoom:5,region:'Asie',pop:1400},
+         center:[16,115],zoom:5,gdp:18000,region:'Asie'},
         {id:'arctique',name:'Arctique',scores:[2,3,4,4,3,3,3,3],composite:3.1,level:'Élevé',
          opp:[1,3,1,2,2,2,2,4],oppComposite:2.1,oppLevel:'Modéré',
          color:'#d97706',href:'analyse-arctique-groenland-grand-jeu-polaire.html',
-         center:[74,0],zoom:3,region:'Europe',pop:4},
+         center:[74,0],zoom:3,gdp:2100,region:'Multi'},
         {id:'turquie',name:'Turquie',scores:[3,4,2,4,3,4,3,2],composite:3.1,level:'Modéré-Élevé',
          opp:[4,3,2,2,2,3,3,3],oppComposite:2.8,oppLevel:'Modéré',
          color:'#0891b2',href:'#',
-         center:[39,35],zoom:6,region:'Europe',pop:85},
+         center:[39,35],zoom:6,gdp:905,region:'Europe'},
         {id:'bresil',name:'Brésil',scores:[3,3,1,3,3,2,2,3],composite:2.6,level:'Modéré',
          opp:[4,4,2,3,2,3,2,5],oppComposite:3.1,oppLevel:'Élevé',
          color:'#16a34a',href:'#',
-         center:[-14,-51],zoom:4,region:'Amériques',pop:214},
+         center:[-14,-51],zoom:4,gdp:2130,region:'Amériques'},
         {id:'tamil',name:'Tamil Nadu',scores:[2,2,2,3,3,2,3,2],composite:2.4,level:'Modéré',
          opp:[5,4,3,3,3,5,4,3],oppComposite:3.8,oppLevel:'Élevé',
          color:'#006650',href:'analyse-corridor-defense-france-inde.html',
-         center:[11,79],zoom:7,region:'Asie',pop:78},
+         center:[11,79],zoom:7,gdp:310,region:'Asie'},
         {id:'singapour',name:'Singapour',scores:[1,2,1,1,1,2,2,2],composite:1.7,level:'Faible',
          opp:[4,4,4,5,5,5,5,3],oppComposite:4.4,oppLevel:'Très élevé',
          color:'#6366f1',href:'#',
-         center:[1.35,103.82],zoom:11,region:'Asie',pop:6}
+         center:[1.35,103.82],zoom:11,gdp:397,region:'Asie'}
     ];
 
     /* GeoJSON loaded from external file (Natural Earth real boundaries) */
@@ -348,30 +389,6 @@
     var currentMode='risk';
     var leafletMap=null;
     var geoLayers={};
-    var scatterBubbles=[];
-    var activeScatterZone=null;
-
-    /* Filter state */
-    var filterRegion='all';
-    var filterRiskMax=5;
-    var filterDimension='all';
-
-    function filteredZones(){
-        return ZONES.filter(function(z){
-            if(filterRegion!=='all'&&z.region!==filterRegion)return false;
-            if(z.composite>filterRiskMax)return false;
-            if(filterDimension!=='all'){
-                var idx=DIM_LABELS.indexOf(filterDimension);
-                if(idx===-1)idx=OPP_LABELS.indexOf(filterDimension);
-                if(idx!==-1){
-                    var isOpp=DIM_LABELS.indexOf(filterDimension)===-1;
-                    var val=isOpp?z.opp[idx]:z.scores[idx];
-                    if(val<3)return false;
-                }
-            }
-            return true;
-        });
-    }
 
     /* ════════════════════════════════════════════
        COLOR HELPERS
@@ -516,6 +533,8 @@
                 setTimeout(function(){layer.setStyle({fillOpacity:0.45,weight:2});},2000);
             }
         }
+        // Sync timeline
+        if(typeof selectTimelineZone==='function'&&selectedTLZone!==zoneId)selectTimelineZone(zoneId);
     }
 
     /* ════════════════════════════════════════════
@@ -620,9 +639,31 @@
     }
 
     /* ════════════════════════════════════════════
-       SCATTER PLOT
+       SCATTER PLOT (with GDP-proportional bubbles, filters, bidirectional sync)
        ════════════════════════════════════════════ */
-    var scatterMeta={W:0,H:0,pad:{},pW:0,pH:0,xPos:null,yPos:null};
+    var scatterBubbles=[];
+    var scatterMeta={};
+    var lastHoveredZone=null;
+
+    function getFilteredZones(){
+        var region=document.getElementById('filter-region').value;
+        var riskMax=parseFloat(document.getElementById('filter-risk').value);
+        var dim=document.getElementById('filter-dim').value;
+        return ZONES.filter(function(z){
+            if(region!=='all'&&z.region!==region)return false;
+            if(z.composite>riskMax)return false;
+            if(dim!=='all'&&z.scores[parseInt(dim)]<=3)return false;
+            return true;
+        });
+    }
+
+    function bubbleRadius(gdp){
+        var minR=12,maxR=34;
+        var gdps=ZONES.map(function(z){return z.gdp;});
+        var logMin=Math.log(Math.min.apply(null,gdps)),logMax=Math.log(Math.max.apply(null,gdps));
+        var t=(Math.log(gdp)-logMin)/(logMax-logMin);
+        return minR+t*(maxR-minR);
+    }
 
     function initScatterPlot(){
         var canvas=document.getElementById('scatter-canvas');
@@ -640,7 +681,8 @@
 
         function xPos(risk){return pad.left+(5-risk)/4*pW;}
         function yPos(opp){return pad.top+(5-opp)/4*pH;}
-        scatterMeta={W:W,H:H,pad:pad,pW:pW,pH:pH,xPos:xPos,yPos:yPos};
+
+        scatterMeta={W:W,H:H,pad:pad,pW:pW,pH:pH,xPos:xPos,yPos:yPos,canvas:canvas,container:container};
 
         var midX=xPos(3),midY=yPos(3);
 
@@ -652,10 +694,10 @@
 
         // Quadrant labels
         ctx.font='italic 10px Inter,sans-serif';ctx.fillStyle='rgba(90,97,120,0.7)';ctx.textAlign='center';
-        ctx.fillText('Zone id\u00e9ale',(midX+pad.left+pW)/2,pad.top+16);
+        ctx.fillText('Zone idéale',(midX+pad.left+pW)/2,pad.top+16);
         ctx.fillText('Potentiel sous contrainte',(pad.left+midX)/2,pad.top+16);
-        ctx.fillText('Stabilit\u00e9 sans rendement',(midX+pad.left+pW)/2,pad.top+pH-6);
-        ctx.fillText('Zone \u00e0 \u00e9viter',(pad.left+midX)/2,pad.top+pH-6);
+        ctx.fillText('Stabilité sans rendement',(midX+pad.left+pW)/2,pad.top+pH-6);
+        ctx.fillText('Zone à éviter',(pad.left+midX)/2,pad.top+pH-6);
 
         // Grid
         ctx.strokeStyle='#E2E5EB';ctx.lineWidth=0.5;
@@ -677,74 +719,64 @@
             ctx.textAlign='right';ctx.fillText(v.toString(),pad.left-8,yPos(v)+4);
         }
 
-        // Population-based bubble size (log scale to prevent extreme differences)
-        var maxPop=Math.max.apply(null,ZONES.map(function(z){return z.pop;}));
-        function bubbleRadius(pop){return 10+Math.sqrt(pop/maxPop)*18;}
-
-        // Bubbles (filtered)
-        var zones=filteredZones();
+        // Bubbles — GDP-proportional radius
         scatterBubbles=[];
-        zones.forEach(function(zone){
+        var filtered=getFilteredZones();
+        filtered.forEach(function(zone){
             var bx=xPos(zone.composite),by=yPos(zone.oppComposite);
-            var br=bubbleRadius(zone.pop);
-            var isActive=activeScatterZone===zone.id;
+            var br=bubbleRadius(zone.gdp);
             ctx.beginPath();ctx.arc(bx,by,br,0,Math.PI*2);
-            ctx.fillStyle=zone.color+(isActive?'50':'30');ctx.fill();
-            ctx.strokeStyle=zone.color;ctx.lineWidth=isActive?3.5:2.5;ctx.stroke();
-            if(isActive){ctx.beginPath();ctx.arc(bx,by,br+4,0,Math.PI*2);ctx.strokeStyle=zone.color+'60';ctx.lineWidth=2;ctx.stroke();}
+            ctx.fillStyle=zone.color+'25';ctx.fill();
+            ctx.strokeStyle=zone.color;ctx.lineWidth=2.5;ctx.stroke();
             // Inner dot
-            ctx.beginPath();ctx.arc(bx,by,3,0,Math.PI*2);
+            ctx.beginPath();ctx.arc(bx,by,3.5,0,Math.PI*2);
             ctx.fillStyle=zone.color;ctx.fill();
             // Label
             ctx.font='bold 7.5px Inter,sans-serif';ctx.fillStyle=zone.color;
             ctx.textAlign='center';ctx.textBaseline='bottom';
-            var short=zone.name.length>12?zone.name.substring(0,10)+'\u2026':zone.name;
+            var short=zone.name.length>12?zone.name.substring(0,10)+'…':zone.name;
             ctx.fillText(short,bx,by-br-3);
             scatterBubbles.push({zone:zone,x:bx,y:by,r:br});
         });
 
-        // Also show filtered-out zones as faded dots
-        ZONES.forEach(function(zone){
-            if(zones.indexOf(zone)!==-1)return;
-            var bx=xPos(zone.composite),by=yPos(zone.oppComposite);
-            ctx.beginPath();ctx.arc(bx,by,6,0,Math.PI*2);
-            ctx.fillStyle='#E2E5EB';ctx.fill();
-            ctx.beginPath();ctx.arc(bx,by,2,0,Math.PI*2);
-            ctx.fillStyle='#9ca3af';ctx.fill();
-        });
+        // Tooltip (reuse if exists)
+        var tip=container.querySelector('.scatter-tip');
+        if(!tip){
+            tip=document.createElement('div');
+            tip.className='scatter-tip';tip.style.cssText='position:absolute;pointer-events:none;opacity:0;transition:opacity .15s;z-index:50;min-width:180px;background:#fff;border:1px solid #E2E5EB;border-radius:10px;padding:10px 14px;box-shadow:0 4px 16px rgba(0,0,0,.1);font-family:Inter,sans-serif;font-size:.8rem;';
+            container.appendChild(tip);
+        }
 
-        // Tooltip element
-        var existing=container.querySelector('.scatter-tip');
-        if(existing)existing.remove();
-        var tip=document.createElement('div');
-        tip.className='scatter-tip';tip.style.cssText='position:absolute;pointer-events:none;opacity:0;transition:opacity .15s;z-index:50;min-width:180px;background:#fff;border:1px solid #E2E5EB;border-radius:10px;padding:10px 14px;box-shadow:0 4px 16px rgba(0,0,0,.1);font-family:Inter,sans-serif;font-size:.8rem;';
-        container.appendChild(tip);
-
-        canvas.addEventListener('mousemove',function(e){
+        canvas.onmousemove=function(e){
             var rect=canvas.getBoundingClientRect();
             var mx=(e.clientX-rect.left)*(W/rect.width),my=(e.clientY-rect.top)*(H/rect.height);
             var found=null;
             scatterBubbles.forEach(function(b){var d=Math.sqrt((mx-b.x)*(mx-b.x)+(my-b.y)*(my-b.y));if(d<b.r*1.3)found=b;});
             if(found){
                 canvas.style.cursor='pointer';
+                var gdpLabel=found.zone.gdp>=1000?(found.zone.gdp/1000).toFixed(1)+' T$':found.zone.gdp+' Mrd$';
                 tip.innerHTML='<strong style="color:'+found.zone.color+';font-size:.9rem;">'+found.zone.name+'</strong>'+
                     '<div style="margin-top:4px;color:#DC2626;">Risque : '+found.zone.composite.toFixed(1)+'/5</div>'+
                     '<div style="color:#006650;">Opp. : '+found.zone.oppComposite.toFixed(1)+'/5</div>'+
                     '<div style="color:#5A6178;margin-top:2px;">Ratio O/R : '+(found.zone.oppComposite/found.zone.composite).toFixed(2)+'</div>'+
-                    '<div style="color:#5A6178;font-size:.72rem;margin-top:2px;">Pop. ~'+found.zone.pop+' M</div>';
+                    '<div style="color:#5A6178;font-size:.72rem;margin-top:2px;">PIB ~ '+gdpLabel+'</div>';
                 tip.style.opacity='1';
-                var cx=e.clientX-container.getBoundingClientRect().left+15;
-                var cy=e.clientY-container.getBoundingClientRect().top-10;
-                if(cx+200>container.clientWidth)cx-=220;
-                tip.style.left=cx+'px';tip.style.top=cy+'px';
-                // Bidirectional: highlight zone on map
-                highlightMapZone(found.zone.id);
+                var cx2=e.clientX-container.getBoundingClientRect().left+15;
+                var cy2=e.clientY-container.getBoundingClientRect().top-10;
+                if(cx2+200>container.clientWidth)cx2-=220;
+                tip.style.left=cx2+'px';tip.style.top=cy2+'px';
+                // Highlight zone on Leaflet map
+                if(lastHoveredZone!==found.zone.id){
+                    if(lastHoveredZone)unhighlightMapZone(lastHoveredZone);
+                    highlightMapZone(found.zone.id);
+                    lastHoveredZone=found.zone.id;
+                }
             }else{
                 canvas.style.cursor='default';tip.style.opacity='0';
-                clearMapHighlight();
+                if(lastHoveredZone){unhighlightMapZone(lastHoveredZone);lastHoveredZone=null;}
             }
-        });
-        canvas.addEventListener('click',function(e){
+        };
+        canvas.onclick=function(e){
             var rect=canvas.getBoundingClientRect();
             var mx=(e.clientX-rect.left)*(W/rect.width),my=(e.clientY-rect.top)*(H/rect.height);
             scatterBubbles.forEach(function(b){
@@ -753,48 +785,284 @@
                     flyToZone(b.zone.id);
                 }
             });
-        });
-        canvas.addEventListener('mouseleave',function(){tip.style.opacity='0';clearMapHighlight();});
+        };
+        canvas.onmouseleave=function(){
+            tip.style.opacity='0';
+            if(lastHoveredZone){unhighlightMapZone(lastHoveredZone);lastHoveredZone=null;}
+        };
     }
 
-    /* Map highlight helpers (scatter hover → map) */
-    var highlightedMapZone=null;
+    /* Map highlight helpers for scatter ↔ map sync */
     function highlightMapZone(zoneId){
-        if(highlightedMapZone===zoneId)return;
-        clearMapHighlight();
-        highlightedMapZone=zoneId;
-        var layer=geoLayers[zoneId];
-        if(layer)layer.setStyle({fillOpacity:0.75,weight:4});
+        var group=geoLayers[zoneId];
+        if(group)group.setStyle({fillOpacity:0.75,weight:4});
     }
-    function clearMapHighlight(){
-        if(highlightedMapZone){
-            var layer=geoLayers[highlightedMapZone];
-            if(layer)layer.setStyle({fillOpacity:0.45,weight:2});
-            highlightedMapZone=null;
-        }
+    function unhighlightMapZone(zoneId){
+        var group=geoLayers[zoneId];
+        if(group)group.setStyle({fillOpacity:0.45,weight:2});
     }
 
-    /* Pulse a bubble in scatter plot (map click → scatter) */
+    /* Pulse a bubble in scatter when map zone is clicked */
     function pulseScatterBubble(zoneId){
-        activeScatterZone=zoneId;
-        initScatterPlot();
-        setTimeout(function(){activeScatterZone=null;initScatterPlot();},1800);
+        var b=scatterBubbles.find(function(bb){return bb.zone.id===zoneId;});
+        if(!b||!scatterMeta.container)return;
+        var container=scatterMeta.container;
+        var canvas=scatterMeta.canvas;
+        var rect=canvas.getBoundingClientRect();
+        var scaleX=rect.width/scatterMeta.W,scaleY=rect.height/scatterMeta.H;
+        var dot=document.createElement('div');
+        dot.className='scatter-pulse-dot';
+        var sz=b.r*2*scaleX;
+        dot.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+(b.x*scaleX+canvas.offsetLeft-sz/2)+'px;top:'+(b.y*scaleY+canvas.offsetTop-sz/2)+'px;border:3px solid '+b.zone.color+';';
+        container.appendChild(dot);
+        setTimeout(function(){if(dot.parentNode)dot.parentNode.removeChild(dot);},2000);
+        // Scroll scatter into view
+        container.scrollIntoView({behavior:'smooth',block:'center'});
     }
 
-    /* Filter controls */
-    function initFilters(){
+    /* Filter event listeners */
+    function initScatterFilters(){
         var regionSel=document.getElementById('filter-region');
         var riskRange=document.getElementById('filter-risk');
         var riskVal=document.getElementById('filter-risk-val');
-        var dimSel=document.getElementById('filter-dimension');
-        if(!regionSel)return;
-        regionSel.addEventListener('change',function(){filterRegion=this.value;applyFilters();});
-        riskRange.addEventListener('input',function(){filterRiskMax=parseFloat(this.value);riskVal.textContent=this.value;applyFilters();});
-        dimSel.addEventListener('change',function(){filterDimension=this.value;applyFilters();});
+        var dimSel=document.getElementById('filter-dim');
+        function refresh(){initScatterPlot();}
+        regionSel.addEventListener('change',refresh);
+        dimSel.addEventListener('change',refresh);
+        riskRange.addEventListener('input',function(){riskVal.textContent=parseFloat(riskRange.value).toFixed(1);refresh();});
     }
-    function applyFilters(){
-        initScatterPlot();
-        renderTable();
+
+    /* ════════════════════════════════════════════
+       SCORE HISTORY TIMELINE
+       ════════════════════════════════════════════ */
+    var HISTORY={};
+    var selectedTLZone='cuba';
+    var tlMode='composite';
+    var DIM_COLORS=['#3b82f6','#f59e0b','#DC2626','#8b5cf6','#6b7280','#06b6d4','#4f46e5','#16a34a'];
+
+    async function loadHistory(){
+        try{
+            var resp=await fetch('data/semplice-history.json');
+            var data=await resp.json();
+            HISTORY=data.zones||{};
+        }catch(e){console.warn('History load failed:',e);}
+    }
+
+    function renderTimelinePills(){
+        var container=document.getElementById('timeline-zone-pills');
+        if(!container)return;
+        container.innerHTML=ZONES.map(function(z){
+            var active=z.id===selectedTLZone;
+            return '<button class="tl-pill'+(active?' active':'')+'" data-zone="'+z.id+'" style="'+(active?'background:'+z.color+';':'')+'">'+z.name+'</button>';
+        }).join('');
+        container.querySelectorAll('.tl-pill').forEach(function(btn){
+            btn.addEventListener('click',function(){
+                selectTimelineZone(btn.dataset.zone);
+            });
+        });
+    }
+
+    function selectTimelineZone(zoneId){
+        selectedTLZone=zoneId;
+        renderTimelinePills();
+        drawTimeline();
+        renderTimelineEvents(zoneId);
+    }
+
+    function drawTimeline(){
+        var canvas=document.getElementById('timeline-canvas');
+        if(!canvas)return;
+        var container=document.getElementById('timeline-container');
+        var hist=HISTORY[selectedTLZone];
+        var zone=ZONES.find(function(z){return z.id===selectedTLZone;});
+        if(!hist||!zone){
+            var ctx0=canvas.getContext('2d');
+            canvas.width=container.clientWidth-32;canvas.height=200;
+            ctx0.clearRect(0,0,canvas.width,canvas.height);
+            ctx0.font='13px Inter,sans-serif';ctx0.fillStyle='#9ca3af';ctx0.textAlign='center';
+            ctx0.fillText('Historique non disponible pour cette zone',canvas.width/2,100);
+            return;
+        }
+
+        var dpr=window.devicePixelRatio||1;
+        var W=container.clientWidth-32;
+        var H=Math.min(380,Math.max(260,W*0.45));
+        canvas.width=W*dpr;canvas.height=H*dpr;
+        canvas.style.width=W+'px';canvas.style.height=H+'px';
+        var ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+
+        var pad={top:30,right:25,bottom:55,left:50};
+        var pW=W-pad.left-pad.right,pH=H-pad.top-pad.bottom;
+
+        var snaps=hist.snapshots;
+        var events=hist.events||[];
+
+        // Time range
+        var allDates=snaps.map(function(s){return new Date(s.date).getTime();});
+        var tMin=Math.min.apply(null,allDates),tMax=Math.max.apply(null,allDates);
+        if(tMin===tMax)tMax=tMin+86400000*30;
+
+        function xTime(t){return pad.left+(t-tMin)/(tMax-tMin)*pW;}
+        function yScore(s){return pad.top+(5-s)/4*pH;}
+
+        // Background — score bands
+        ctx.fillStyle='rgba(220,38,38,0.04)';ctx.fillRect(pad.left,yScore(5),pW,yScore(4)-yScore(5));
+        ctx.fillStyle='rgba(245,158,11,0.03)';ctx.fillRect(pad.left,yScore(4),pW,yScore(3)-yScore(4));
+        ctx.fillStyle='rgba(0,102,80,0.03)';ctx.fillRect(pad.left,yScore(2),pW,yScore(1)-yScore(2));
+
+        // Grid
+        ctx.strokeStyle='#E2E5EB';ctx.lineWidth=0.5;
+        for(var v=1;v<=5;v++){
+            var gy=yScore(v);ctx.beginPath();ctx.moveTo(pad.left,gy);ctx.lineTo(pad.left+pW,gy);ctx.stroke();
+        }
+
+        // Y-axis ticks
+        ctx.font='500 9px JetBrains Mono,monospace';ctx.fillStyle='#5A6178';ctx.textAlign='right';
+        for(var v=1;v<=5;v++){ctx.fillText(v.toString(),pad.left-8,yScore(v)+4);}
+        // Y label
+        ctx.save();ctx.translate(12,pad.top+pH/2);ctx.rotate(-Math.PI/2);
+        ctx.font='600 10px Inter,sans-serif';ctx.fillStyle='#1A1F2E';ctx.textAlign='center';
+        ctx.fillText('Score',0,0);ctx.restore();
+
+        // X-axis date ticks
+        ctx.textAlign='center';ctx.font='500 8px JetBrains Mono,monospace';ctx.fillStyle='#5A6178';
+        var MONTHS=['Jan','Fév','Mar','Avr','Mai','Jun','Jul','Aoû','Sep','Oct','Nov','Déc'];
+        snaps.forEach(function(s){
+            var d=new Date(s.date);
+            var x=xTime(d.getTime());
+            ctx.fillText(MONTHS[d.getMonth()]+' '+d.getFullYear(),x,H-8);
+            // Tick mark
+            ctx.beginPath();ctx.moveTo(x,pad.top+pH);ctx.lineTo(x,pad.top+pH+4);ctx.strokeStyle='#E2E5EB';ctx.stroke();
+        });
+
+        // Event markers — dashed verticals
+        events.forEach(function(ev){
+            var evT=new Date(ev.date).getTime();
+            if(evT<tMin||evT>tMax)return;
+            var x=xTime(evT);
+            ctx.save();ctx.setLineDash([3,3]);
+            ctx.strokeStyle=ev.type==='escalation'?'rgba(220,38,38,0.3)':ev.type==='deescalation'?'rgba(0,102,80,0.3)':'rgba(200,149,90,0.3)';
+            ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,pad.top);ctx.lineTo(x,pad.top+pH);ctx.stroke();ctx.restore();
+            // Diamond marker
+            ctx.fillStyle=ev.type==='escalation'?'#DC2626':ev.type==='deescalation'?'#006650':'#C8955A';
+            ctx.beginPath();ctx.moveTo(x,pad.top-8);ctx.lineTo(x+5,pad.top-3);ctx.lineTo(x,pad.top+2);ctx.lineTo(x-5,pad.top-3);ctx.closePath();ctx.fill();
+        });
+
+        if(tlMode==='composite'){
+            // Risk line
+            drawLine(ctx,snaps.map(function(s){return {x:xTime(new Date(s.date).getTime()),y:yScore(s.composite)};}),
+                '#DC2626',2,'rgba(220,38,38,0.08)',pad.top+pH);
+            // Opportunity line
+            drawLine(ctx,snaps.map(function(s){return {x:xTime(new Date(s.date).getTime()),y:yScore(s.oppComposite)};}),
+                '#006650',2,'rgba(0,102,80,0.06)',pad.top+pH);
+            // Legend
+            ctx.font='600 9px Inter,sans-serif';
+            var lx=pad.left+10,ly=pad.top+14;
+            ctx.fillStyle='#DC2626';ctx.fillRect(lx,ly-4,14,2);ctx.fillText('Risque',lx+18,ly);
+            ctx.fillStyle='#006650';ctx.fillRect(lx+70,ly-4,14,2);ctx.fillText('Opportunité',lx+88,ly);
+        }else{
+            // 8 dimension lines (risk only)
+            for(var di=0;di<8;di++){
+                var pts=snaps.map(function(s){return {x:xTime(new Date(s.date).getTime()),y:yScore(s.scores[di])};});
+                drawLine(ctx,pts,DIM_COLORS[di],1.5,null,0);
+            }
+            // Legend
+            ctx.font='bold 7px Inter,sans-serif';
+            for(var di=0;di<8;di++){
+                var lx2=pad.left+10+(di%4)*((pW-20)/4);
+                var ly2=pad.top+pH+22+(di<4?0:12);
+                ctx.fillStyle=DIM_COLORS[di];
+                ctx.fillRect(lx2,ly2-3,10,2);
+                ctx.textAlign='left';ctx.fillText(DIMS[di]+' — '+DIM_LABELS[di],lx2+14,ly2);
+            }
+        }
+
+        // Data points
+        if(tlMode==='composite'){
+            snaps.forEach(function(s){
+                var x=xTime(new Date(s.date).getTime());
+                // Risk dot
+                ctx.beginPath();ctx.arc(x,yScore(s.composite),4,0,Math.PI*2);
+                ctx.fillStyle='#DC2626';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke();
+                // Opp dot
+                ctx.beginPath();ctx.arc(x,yScore(s.oppComposite),4,0,Math.PI*2);
+                ctx.fillStyle='#006650';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke();
+            });
+        }
+
+        // Tooltip
+        var tip=container.querySelector('.tl-tip');
+        if(!tip){
+            tip=document.createElement('div');
+            tip.className='tl-tip';tip.style.cssText='position:absolute;pointer-events:none;opacity:0;transition:opacity .15s;z-index:50;min-width:160px;background:#fff;border:1px solid #E2E5EB;border-radius:10px;padding:10px 14px;box-shadow:0 4px 16px rgba(0,0,0,.1);font-family:Inter,sans-serif;font-size:.78rem;';
+            container.appendChild(tip);
+        }
+        canvas.onmousemove=function(e){
+            var rect=canvas.getBoundingClientRect();
+            var mx=(e.clientX-rect.left)*(W/rect.width);
+            var closest=null,minD=Infinity;
+            snaps.forEach(function(s){
+                var sx=xTime(new Date(s.date).getTime());
+                var d=Math.abs(mx-sx);
+                if(d<minD&&d<30){minD=d;closest=s;}
+            });
+            if(closest){
+                var d=new Date(closest.date);
+                var dateStr=d.toLocaleDateString('fr-FR',{year:'numeric',month:'short'});
+                tip.innerHTML='<strong style="color:'+zone.color+';">'+zone.name+'</strong> — <span style="color:#5A6178;">'+dateStr+'</span>'+
+                    '<div style="margin-top:4px;color:#DC2626;">Risque : '+closest.composite.toFixed(1)+'/5</div>'+
+                    '<div style="color:#006650;">Opp. : '+closest.oppComposite.toFixed(1)+'/5</div>'+
+                    '<div style="color:#5A6178;font-size:.72rem;margin-top:2px;">'+DIMS.map(function(d2,i){return d2+':'+closest.scores[i];}).join(' ')+'</div>';
+                tip.style.opacity='1';
+                var cx2=e.clientX-container.getBoundingClientRect().left+15;
+                var cy2=e.clientY-container.getBoundingClientRect().top-10;
+                if(cx2+180>container.clientWidth)cx2-=200;
+                tip.style.left=cx2+'px';tip.style.top=cy2+'px';
+            }else{tip.style.opacity='0';}
+        };
+        canvas.onmouseleave=function(){tip.style.opacity='0';};
+    }
+
+    function drawLine(ctx,pts,color,width,fillColor,bottomY){
+        if(pts.length<2)return;
+        ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);
+        for(var i=1;i<pts.length;i++)ctx.lineTo(pts[i].x,pts[i].y);
+        ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke();
+        if(fillColor&&bottomY){
+            ctx.lineTo(pts[pts.length-1].x,bottomY);ctx.lineTo(pts[0].x,bottomY);ctx.closePath();
+            ctx.fillStyle=fillColor;ctx.fill();
+        }
+    }
+
+    function renderTimelineEvents(zoneId){
+        var panel=document.getElementById('timeline-events');
+        if(!panel)return;
+        var hist=HISTORY[zoneId];
+        if(!hist||!hist.events||!hist.events.length){panel.innerHTML='';return;}
+
+        panel.innerHTML='<h3 style="font-family:\'Libre Baskerville\',serif;font-size:1rem;font-weight:700;color:#1A1F2E;margin-bottom:.75rem;">&Eacute;v&eacute;nements cl&eacute;s</h3>'+
+            hist.events.map(function(ev){
+                var d=new Date(ev.date);
+                var dateStr=d.toLocaleDateString('fr-FR',{year:'numeric',month:'short'});
+                var dimLabel=typeof ev.dim==='number'?DIMS[ev.dim]:'';
+                var deltaClass=ev.delta.startsWith('+')?'up':ev.delta.startsWith('-')?'down':'flat';
+                return '<div class="tl-event-item '+ev.type+'">'+
+                    '<span class="tl-event-date">'+dateStr+'</span>'+
+                    '<span class="tl-event-label">'+ev.label+'</span>'+
+                    '<span class="tl-event-delta '+deltaClass+'">'+dimLabel+' '+ev.delta+'</span>'+
+                '</div>';
+            }).join('');
+    }
+
+    function initTimelineToggles(){
+        var compBtn=document.getElementById('tl-mode-composite');
+        var dimsBtn=document.getElementById('tl-mode-dims');
+        compBtn.addEventListener('click',function(){
+            tlMode='composite';compBtn.classList.add('active');dimsBtn.classList.remove('active');drawTimeline();
+        });
+        dimsBtn.addEventListener('click',function(){
+            tlMode='dims';dimsBtn.classList.add('active');compBtn.classList.remove('active');drawTimeline();
+        });
     }
 
     /* ════════════════════════════════════════════
@@ -805,7 +1073,7 @@
     function renderTable(){
         var tbody=document.getElementById('zone-table-body');
         if(!tbody)return;
-        var sorted=filteredZones().slice().sort(function(a,b){
+        var sorted=ZONES.slice().sort(function(a,b){
             var va,vb;
             switch(sortCol){
                 case 'name':va=a.name;vb=b.name;return sortAsc?va.localeCompare(vb):vb.localeCompare(va);
@@ -840,10 +1108,7 @@
                 var zid=row.dataset.zone;
                 highlightZoneCard(zid);
                 flyToZone(zid);
-                pulseScatterBubble(zid);
             });
-            row.addEventListener('mouseenter',function(){highlightMapZone(row.dataset.zone);});
-            row.addEventListener('mouseleave',function(){clearMapHighlight();});
         });
     }
 
@@ -974,8 +1239,13 @@
         // Force Leaflet to recalculate size after nav-shared.js modifies DOM
         setTimeout(function(){if(leafletMap)leafletMap.invalidateSize();},500);
         renderZoneCards();
-        initFilters();
+        initScatterFilters();
         initScatterPlot();
+        await loadHistory();
+        initTimelineToggles();
+        renderTimelinePills();
+        drawTimeline();
+        renderTimelineEvents(selectedTLZone);
         renderTable();
         initTableSort();
 
@@ -989,7 +1259,7 @@
     });
 
     var resizeTimer;
-    window.addEventListener('resize',function(){clearTimeout(resizeTimer);resizeTimer=setTimeout(initScatterPlot,250);});
+    window.addEventListener('resize',function(){clearTimeout(resizeTimer);resizeTimer=setTimeout(function(){initScatterPlot();drawTimeline();},250);});
 
     })();
     </script>

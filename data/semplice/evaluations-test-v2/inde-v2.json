@@ -1,0 +1,193 @@
+{
+  "zone": {
+    "id": "inde",
+    "name": "Inde",
+    "region": "asie"
+  },
+  "meta": {
+    "date": "2026-03-12",
+    "version": "2.0",
+    "analyst": "Inflexion Intelligence"
+  },
+  "dimensions": {
+    "S": {
+      "label": "Social",
+      "indicators": [
+        { "id": "S1", "label": "Gini", "value": "0.352 (sous-estime, consommation pas revenu)", "rawValue": 0.352, "palier": 4, "source": "World Bank" },
+        { "id": "S2", "label": "IDH", "value": "0.644", "rawValue": 0.644, "palier": 5, "source": "UNDP" },
+        { "id": "S3", "label": "Chomage jeunes", "value": "~23% (CMIE, incluant sous-emploi)", "rawValue": 23, "palier": 4, "source": "CMIE" },
+        { "id": "S4", "label": "Solde migratoire", "value": "-0.4‰", "rawValue": -0.4, "palier": 4, "source": "UN DESA" },
+        { "id": "S5", "label": "Mouvements sociaux", "value": "5 (farmers, CAA, Manipur, caste)", "rawValue": 5, "palier": 5, "source": "ACLED" },
+        { "id": "S6", "label": "Tensions ethniques", "value": "Frequentes (hindous-musulmans, castes, NE)", "rawValue": null, "palier": 4, "source": "ICG" },
+        { "id": "S7", "label": "Acces sante", "value": "0.5 lits/1000", "rawValue": 0.5, "palier": 7, "source": "WHO" },
+        { "id": "S8", "label": "Urbanisation", "value": "~2.3%", "rawValue": 2.3, "palier": 4, "source": "UN-Habitat" },
+        { "id": "S9", "label": "Inegalite genre (GII)", "value": "0.49", "rawValue": 0.49, "palier": 5, "source": "UNDP" },
+        { "id": "S10", "label": "Esperance de vie", "value": "70.8", "rawValue": 70.8, "palier": 4, "source": "WHO" },
+        { "id": "S11", "label": "Securite alimentaire", "value": "~15% sous-alimentes (FAO)", "rawValue": 15, "palier": 4, "source": "FAO" },
+        { "id": "S12", "label": "Education secondaire", "value": "~62% (taux net)", "rawValue": 62, "palier": 5, "source": "UNESCO" }
+      ],
+      "scoreQuanti": 4.2,
+      "scoreQuali": 4,
+      "scoreFinal": 4.1,
+      "trend": "stable",
+      "commentary": "1.4 milliard d'habitants, inegalites massives. Systeme de sante parmi les plus sous-capacitaires au monde (0.5 lit/1000). Tensions communautaires recurrentes (Manipur 2023-2024, violences anti-musulmans ponctuelles). Paradoxe : classe moyenne en expansion rapide mais 230M de personnes sous le seuil de pauvrete."
+    },
+    "E": {
+      "label": "Economique",
+      "indicators": [
+        { "id": "E1", "label": "PIB reel", "value": "+6.3%", "rawValue": 6.3, "palier": 1, "source": "RBI / IMF" },
+        { "id": "E2", "label": "Inflation", "value": "5.1%", "rawValue": 5.1, "palier": 2, "source": "RBI" },
+        { "id": "E3", "label": "Dette publique / PIB", "value": "83%", "rawValue": 83, "palier": 5, "source": "IMF" },
+        { "id": "E4", "label": "Balance courante", "value": "-1.8% PIB", "rawValue": -1.8, "palier": 4, "source": "RBI" },
+        { "id": "E5", "label": "Notation souveraine", "value": "Baa3 (Moody's) investment grade", "rawValue": null, "palier": 3, "source": "Moody's" },
+        { "id": "E6", "label": "Regime change", "value": "Flottant gere (RBI)", "rawValue": null, "palier": 2, "source": "RBI" },
+        { "id": "E7", "label": "Reserves de change", "value": "~10 mois (650+ Mrd$)", "rawValue": 10, "palier": 2, "source": "RBI" },
+        { "id": "E8", "label": "IDE entrants", "value": "~1.6% PIB (en baisse)", "rawValue": 1.6, "palier": 3, "source": "UNCTAD" },
+        { "id": "E9", "label": "Chomage total", "value": "~8% (CMIE, > officiel)", "rawValue": 8, "palier": 3, "source": "CMIE" },
+        { "id": "E10", "label": "Dette privee / PIB", "value": "~55%", "rawValue": 55, "palier": 2, "source": "BIS" },
+        { "id": "E11", "label": "Concentration exports", "value": "Petrole raffine + pharma + IT ~35%", "rawValue": 35, "palier": 3, "source": "UN Comtrade" },
+        { "id": "E12", "label": "Croissance credit", "value": "~14%", "rawValue": 14, "palier": 3, "source": "RBI" },
+        { "id": "E13", "label": "Economie informelle", "value": "~52%", "rawValue": 52, "palier": 5, "source": "IMF" },
+        { "id": "E14", "label": "Cout energie", "value": "~75 $/MWh", "rawValue": 75, "palier": 2, "source": "IEA" },
+        { "id": "E15", "label": "Indice de misere", "value": "5.1+8 = 13.1", "rawValue": 13.1, "palier": 3, "source": "Calcul (inflation + chomage)" }
+      ],
+      "scoreQuanti": 2.9,
+      "scoreQuali": 3,
+      "scoreFinal": 2.9,
+      "trend": "down",
+      "commentary": "5e economie mondiale, croissance la plus rapide des grandes economies (+6.3%). Mais dualisme extreme : secteur IT/pharma de classe mondiale vs 52% d'informel. Reserves de change colossales (650 Mrd$). Risques : dette publique elevee, IDE en baisse (red tape, retroactivite fiscale), dependance energetique (80% import petrole)."
+    },
+    "M": {
+      "label": "Militaire",
+      "indicators": [
+        { "id": "M1", "label": "Depenses mil. / PIB", "value": "2.4%", "rawValue": 2.4, "palier": 3, "source": "SIPRI" },
+        { "id": "M2", "label": "Conflits actifs", "value": "2 (Cachemire + Naxalites basse intensite)", "rawValue": 2, "palier": 4, "source": "ACLED / IISS" },
+        { "id": "M3", "label": "GFP", "value": "4e (pas en conflit direct majeur)", "rawValue": 4, "palier": 3, "source": "Global Firepower" },
+        { "id": "M4", "label": "Exercices majeurs", "value": "8-10 (Malabar, RIMPAC, bilateraux France)", "rawValue": 9, "palier": 5, "source": "IISS" },
+        { "id": "M5", "label": "Proliferation", "value": "Arsenal nucleaire deploye (~170 tetes)", "rawValue": 170, "palier": 7, "source": "SIPRI / FAS" },
+        { "id": "M6", "label": "Coups regionaux", "value": "1 (Myanmar 2021)", "rawValue": 1, "palier": 2, "source": "Cline Center" },
+        { "id": "M7", "label": "Subordination civile", "value": "0.78", "rawValue": 0.78, "palier": 2, "source": "V-Dem" },
+        { "id": "M8", "label": "Transferts armes", "value": "~12 000 TIV (2e importateur mondial)", "rawValue": 12000, "palier": 5, "source": "SIPRI" },
+        { "id": "M9", "label": "Bases etrangeres", "value": "Presence indienne Agalega (Maurice), pas de base rivale", "rawValue": null, "palier": 2, "source": "IISS" },
+        { "id": "M10", "label": "Milices / PMC", "value": "Naxalites + milices Cachemire", "rawValue": null, "palier": 4, "source": "ACLED / SATP" },
+        { "id": "M11", "label": "Traites defense", "value": "Quad (US-JP-AU-IN), bilateraux France", "rawValue": null, "palier": 2, "source": "IISS" },
+        { "id": "M12", "label": "R&D defense", "value": "~8% (DRDO, Agni, Tejas)", "rawValue": 8, "palier": 2, "source": "SIPRI / DRDO" }
+      ],
+      "scoreQuanti": 4.0,
+      "scoreQuali": 4,
+      "scoreFinal": 4.0,
+      "trend": "stable",
+      "commentary": "Puissance nucleaire, 4e armee mondiale, frontiere contestee avec Chine (LAC, Galwan 2020) et Pakistan (LoC). Conflits basse intensite chroniques (Cachemire, Naxalites). Modernisation rapide (Tejas, INS Vikrant, S-400). Position equilibriste OTAN/Russie (achat S-400 + Quad)."
+    },
+    "P": {
+      "label": "Politique",
+      "indicators": [
+        { "id": "P1", "label": "CPI", "value": "39", "rawValue": 39, "palier": 5, "source": "Transparency International" },
+        { "id": "P2", "label": "V-Dem", "value": "0.28 (reclasse 'autocratie electorale' 2024)", "rawValue": 0.28, "palier": 5, "source": "V-Dem Institute" },
+        { "id": "P3", "label": "WGI Political Stability", "value": "-0.7", "rawValue": -0.7, "palier": 5, "source": "World Bank WGI" },
+        { "id": "P4", "label": "Cycle electoral", "value": "~3 ans (Lok Sabha 2024 effectuee)", "rawValue": null, "palier": 2, "source": "ECI" },
+        { "id": "P5", "label": "Risque regime", "value": "Faible (BJP dominant)", "rawValue": null, "palier": 2, "source": "EIU" },
+        { "id": "P6", "label": "Polarisation", "value": "0.82 (BJP/Hindutva vs INDIA alliance)", "rawValue": 0.82, "palier": 5, "source": "V-Dem" },
+        { "id": "P7", "label": "Libertes civiles", "value": "33 (Freedom House 66/100)", "rawValue": 33, "palier": 4, "source": "Freedom House" },
+        { "id": "P8", "label": "Risque successoral", "value": "Modi 75 ans, pas de successeur clair BJP", "rawValue": null, "palier": 4, "source": "ICG" },
+        { "id": "P9", "label": "Autonomie regionale", "value": "Mouvements actifs (Cachemire, NE)", "rawValue": null, "palier": 4, "source": "ICG" },
+        { "id": "P10", "label": "Opposition", "value": "Harcelee (ED raids, gel comptes INC)", "rawValue": null, "palier": 4, "source": "Freedom House" },
+        { "id": "P11", "label": "Pression demographique", "value": "+0.8% (dividende demographique)", "rawValue": 0.8, "palier": 2, "source": "UN DESA" },
+        { "id": "P12", "label": "Diaspora", "value": "Lobby tres organise (US, UK, Golfe)", "rawValue": null, "palier": 2, "source": "IOM" }
+      ],
+      "scoreQuanti": 3.7,
+      "scoreQuali": 4,
+      "scoreFinal": 3.8,
+      "trend": "up",
+      "commentary": "Plus grande democratie du monde mais erosion democratique documentee (V-Dem reclasse en autocratie electorale). BJP hegemonique, opposition affaiblie par instruments juridiques (ED, CBI). Polarisation communautaire (CAA, UCC). Dividende demographique = atout majeur. Question successorale Modi latente."
+    },
+    "L": {
+      "label": "Legal",
+      "indicators": [
+        { "id": "L1", "label": "Rule of Law", "value": "0.50", "rawValue": 0.50, "palier": 4, "source": "WJP" },
+        { "id": "L2", "label": "B-READY", "value": "63", "rawValue": 63, "palier": 2, "source": "World Bank" },
+        { "id": "L3", "label": "Sanctions", "value": "Aucune", "rawValue": null, "palier": 1, "source": "OFAC / EU" },
+        { "id": "L4", "label": "Protection PI", "value": "~40", "rawValue": 40, "palier": 5, "source": "GIPC" },
+        { "id": "L5", "label": "Execution contrats", "value": "~1445 jours", "rawValue": 1445, "palier": 7, "source": "World Bank" },
+        { "id": "L6", "label": "Independance judiciaire", "value": "Moderee (Supreme Court independante, tribunaux inf. lents)", "rawValue": null, "palier": 3, "source": "WJP" },
+        { "id": "L7", "label": "BIT actifs", "value": "~15 (resilie la plupart, nouveau modele BIT 2016)", "rawValue": 15, "palier": 5, "source": "UNCTAD" },
+        { "id": "L8", "label": "Anti-corruption", "value": "Faible (Lokpal existe, effectivite limitee)", "rawValue": null, "palier": 4, "source": "TI" },
+        { "id": "L9", "label": "Arbitrage ICSID", "value": "Non-membre (mais accepte UNCITRAL)", "rawValue": null, "palier": 4, "source": "ICSID" },
+        { "id": "L10", "label": "Risque expropriation", "value": "Modere (retrospective fiscale Vodafone-like)", "rawValue": null, "palier": 4, "source": "EIU" }
+      ],
+      "scoreQuanti": 3.6,
+      "scoreQuali": 4,
+      "scoreFinal": 3.8,
+      "trend": "stable",
+      "commentary": "Cadre legal complexe, lent (1445 jours execution contrats = parmi les pires au monde), mais en amelioration (IBC 2016, GST). Resiliation massive des BIT = signal negatif pour les investisseurs. Retrospective fiscale reste un risque (Cairn Energy, Vodafone). Supreme Court independante mais systeme judiciaire inferieur surcharge (45M affaires pendantes)."
+    },
+    "I": {
+      "label": "Information",
+      "indicators": [
+        { "id": "I1", "label": "RSF rang", "value": "159", "rawValue": 159, "palier": 6, "source": "RSF" },
+        { "id": "I2", "label": "Freedom on the Net", "value": "50", "rawValue": 50, "palier": 4, "source": "Freedom House" },
+        { "id": "I3", "label": "Operations influence", "value": "6-8 (BJP IT cell, influence interne + externe)", "rawValue": 7, "palier": 5, "source": "DFRLab / EU DisinfoLab" },
+        { "id": "I4", "label": "Censure internet", "value": "~12% (shutdowns Cachemire + blocking ordres)", "rawValue": 12, "palier": 4, "source": "OONI / Access Now" },
+        { "id": "I5", "label": "Controle medias Etat", "value": "~40% (Prasar Bharati + medias pro-BJP)", "rawValue": 40, "palier": 4, "source": "RSF" },
+        { "id": "I6", "label": "Penetration reseaux sociaux", "value": "~45%", "rawValue": 45, "palier": 4, "source": "DataReportal" },
+        { "id": "I7", "label": "Desinformation IA", "value": "10-15 incidents (deepfakes elections 2024)", "rawValue": 12.5, "palier": 5, "source": "DFRLab" },
+        { "id": "I8", "label": "Pluralisme mediatique", "value": "~32", "rawValue": 32, "palier": 5, "source": "RSF" },
+        { "id": "I9", "label": "Journalistes emprisonnes", "value": "~15 (UAPA, NSA)", "rawValue": 15, "palier": 4, "source": "CPJ" },
+        { "id": "I10", "label": "Controle narratif diaspora", "value": "Surveillance active (Hindutva networks)", "rawValue": null, "palier": 5, "source": "EU DisinfoLab" },
+        { "id": "I11", "label": "Bots / trolls", "value": "~5000 (BJP IT cell documentes)", "rawValue": 5000, "palier": 4, "source": "Stanford IO / DFRLab" },
+        { "id": "I12", "label": "Usage VPN", "value": "~30%", "rawValue": 30, "palier": 4, "source": "Surfshark" }
+      ],
+      "scoreQuanti": 4.2,
+      "scoreQuali": 5,
+      "scoreFinal": 4.5,
+      "trend": "up",
+      "commentary": "Deterioration rapide. RSF 159e (etait 140e en 2020). Internet shutdowns record mondial (>100 en 2023, surtout Cachemire/Manipur). BJP IT cell = operation d'influence interne structuree. Pegasus (2021) revelait une surveillance des journalistes et opposants. Medias mainstream largement alignes (Republic TV, Zee News). Pluralisme en recul."
+    },
+    "C": {
+      "label": "Cyber",
+      "indicators": [
+        { "id": "C1", "label": "NCSI", "value": "58", "rawValue": 58, "palier": 3, "source": "e-Governance Academy" },
+        { "id": "C2", "label": "GCI", "value": "75", "rawValue": 75, "palier": 3, "source": "ITU" },
+        { "id": "C3", "label": "Incidents majeurs", "value": "2 (AIIMS ransomware 2022, CoWIN leak 2023)", "rawValue": 2, "palier": 4, "source": "CERT-In" },
+        { "id": "C4", "label": "APT actifs", "value": "5-6 (SideWinder, Patchwork + APT chinois/pakistanais ciblant l'Inde)", "rawValue": 5.5, "palier": 3, "source": "MITRE ATT&CK / Mandiant" },
+        { "id": "C5", "label": "Exposition infra critique", "value": "Significative (grille electrique, chemins de fer)", "rawValue": null, "palier": 4, "source": "CERT-In" },
+        { "id": "C6", "label": "Budget cyberdefense", "value": "~2% (CERT-In, Defence Cyber Agency)", "rawValue": 2, "palier": 4, "source": "MoD India" },
+        { "id": "C7", "label": "Ransomware", "value": "~25 incidents significatifs", "rawValue": 25, "palier": 4, "source": "CERT-In" },
+        { "id": "C8", "label": "Supply chain attacks", "value": "2", "rawValue": 2, "palier": 3, "source": "CERT-In" },
+        { "id": "C9", "label": "Workforce cyber", "value": "~25 / 100k (malgre pool IT enorme)", "rawValue": 25, "palier": 4, "source": "ISC2" },
+        { "id": "C10", "label": "Souverainete donnees", "value": "DPDP Act 2023 (en implementation)", "rawValue": null, "palier": 3, "source": "MeitY" },
+        { "id": "C11", "label": "Cloud exposure", "value": "Significative (digitalisation rapide)", "rawValue": null, "palier": 4, "source": "CERT-In" },
+        { "id": "C12", "label": "Zero-day exposure", "value": "Moderee (cible APT chinois/pakistanais)", "rawValue": null, "palier": 3, "source": "Google TAG" }
+      ],
+      "scoreQuanti": 3.3,
+      "scoreQuali": 3,
+      "scoreFinal": 3.2,
+      "trend": "stable",
+      "commentary": "Paradoxe : 2e pool de talents IT au monde mais cyberdefense immature. CERT-In reactif mais sous-dimensionne. Incidents critiques (AIIMS = hopital paralyse, Aadhaar leaks). DPDP Act 2023 = progres mais implementation lente. Defence Cyber Agency creee 2018 mais capacite limitee."
+    },
+    "Ee": {
+      "label": "Environnemental",
+      "indicators": [
+        { "id": "Ee1", "label": "ND-GAIN", "value": "40", "rawValue": 40, "palier": 5, "source": "ND-GAIN" },
+        { "id": "Ee2", "label": "Water Stress", "value": "4.2 (stress hydrique extreme, Rajasthan, Tamil Nadu)", "rawValue": 4.2, "palier": 6, "source": "WRI Aqueduct" },
+        { "id": "Ee3", "label": "Dependance extractive", "value": "~15% (charbon principalement)", "rawValue": 15, "palier": 2, "source": "World Bank" },
+        { "id": "Ee4", "label": "Catastrophes (5 ans)", "value": ">15 (mousson, inondations, cyclones, seismes)", "rawValue": 15, "palier": 6, "source": "EM-DAT" },
+        { "id": "Ee5", "label": "Transition energetique", "value": "~22% renouvelables (solaire + eolien en croissance rapide)", "rawValue": 22, "palier": 4, "source": "IEA / MNRE" },
+        { "id": "Ee6", "label": "CO2 / capita", "value": "2.0 tonnes (faible mais en hausse rapide)", "rawValue": 2.0, "palier": 2, "source": "Global Carbon Project" },
+        { "id": "Ee7", "label": "Biodiversite menacee", "value": "~28%", "rawValue": 28, "palier": 5, "source": "IUCN" },
+        { "id": "Ee8", "label": "Deforestation", "value": "~0.5%", "rawValue": 0.5, "palier": 3, "source": "Global Forest Watch" },
+        { "id": "Ee9", "label": "Montee des eaux", "value": "~8% pop (Mumbai, Chennai, Kolkata)", "rawValue": 8, "palier": 4, "source": "Climate Central" },
+        { "id": "Ee10", "label": "Pollution air", "value": "~92 ug/m3 (Delhi record mondial)", "rawValue": 92, "palier": 7, "source": "IQAir" }
+      ],
+      "scoreQuanti": 4.8,
+      "scoreQuali": 5,
+      "scoreFinal": 4.9,
+      "trend": "up",
+      "commentary": "Crise environnementale multidimensionnelle. Delhi = ville la plus polluee au monde (PM2.5 >90). Stress hydrique extreme (21 villes a risque de 'day zero' d'ici 2030 selon NITI Aayog). Mousson de plus en plus erratique (inondations + secheresses). Points positifs : programme solaire ambitieux (500 GW d'ici 2030), ISA (International Solar Alliance creee par l'Inde)."
+    }
+  },
+  "composite": 3.9,
+  "classification": "Modere",
+  "signatures": [],
+  "flags": []
+}
