@@ -1,0 +1,360 @@
+{
+  "zone": {
+    "id": "turquie",
+    "name": "Turquie",
+    "region": "europe-moyen-orient"
+  },
+  "meta": {
+    "date": "2026-03-13",
+    "version": "2.1",
+    "analyst": "Inflexion Intelligence",
+    "note": "Évaluation tenant compte du PKK dissolution mai 2025, de l'arrestation İmamoğlu mars 2025, du cycle désinflation TCMB (47%→37% 2025-2026), et du pivot syrien post-Assad."
+  },
+  "dimensions": {
+    "S": {
+      "label": "Social",
+      "indicators": [
+        { "id": "S1", "label": "Gini", "value": "0.415 (inégalités structurelles)", "rawValue": 0.415, "palier": 4, "source": "TurkStat / World Bank 2024" },
+        { "id": "S2", "label": "IDH", "value": "0.855 (49e mondial)", "rawValue": 0.855, "palier": 3, "source": "UNDP 2024" },
+        { "id": "S3", "label": "Chomage jeunes", "value": "~22% (persistant, économie informelle élevée)", "rawValue": 22, "palier": 4, "source": "TurkStat 2025" },
+        { "id": "S4", "label": "Solde migratoire", "value": "-2‰ (fuite cerveaux post-2023 / 3.2M réfugiés syriens)", "rawValue": -2, "palier": 5, "source": "UNHCR / TurkStat" },
+        { "id": "S5", "label": "Mouvements sociaux", "value": "MAJEUR : protestations mars-avril 2025 (arrestation İmamoğlu), plus importantes depuis Gezi 2013", "rawValue": null, "palier": 6, "source": "Wikipedia / Al Jazeera" },
+        { "id": "S6", "label": "Tensions ethniques", "value": "Question kurde (PKK dissolution mai 2025, processus fragile) + Alévis + minorités", "rawValue": null, "palier": 4, "source": "ICG / Wikipedia" },
+        { "id": "S7", "label": "Lits hopital/1000", "value": "2.8 (en hausse, sst secteur privé)", "rawValue": 2.8, "palier": 3, "source": "WHO" },
+        { "id": "S8", "label": "Croissance urbaine", "value": "+1.2% (urbanisation rapide, 77%+ urbain)", "rawValue": 1.2, "palier": 3, "source": "UN-Habitat" },
+        { "id": "S9", "label": "GII genre", "value": "0.306 (68e mondial, inégalités persistantes)", "rawValue": 0.306, "palier": 4, "source": "UNDP" },
+        { "id": "S10", "label": "Esperance de vie", "value": "78.3 ans", "rawValue": 78.3, "palier": 2, "source": "WHO" },
+        { "id": "S11", "label": "Sous-alimentation", "value": "<2.5% (sécurité alimentaire globalement assurée)", "rawValue": 2.5, "palier": 2, "source": "FAO" },
+        { "id": "S12", "label": "Education secondaire", "value": "~93% (scolarisation secondaire élevée)", "rawValue": 93, "palier": 2, "source": "UNESCO" }
+      ],
+      "scoreQuanti": 3.5,
+      "scoreQuali": 4,
+      "scoreFinal": 3.7,
+      "trend": "up",
+      "commentary": "Les protestations de mars 2025 (arrestation İmamoğlu + 100 opposants) ont exposé une fracture sociale profonde entre base urbaine CHP/séculariste et base AKP/conservatrice. Les 3.2M réfugiés syriens créent des tensions dans les villes de taille moyenne. La question kurde est partiellement désamorcée par la dissolution formelle du PKK (mai 2025) mais les étapes pratiques (désarmement) restent incertaines."
+    },
+    "E": {
+      "label": "Economique",
+      "indicators": [
+        { "id": "E1", "label": "Croissance PIB", "value": "+3.1% 2025 (ralentissement vs 4.5% 2024)", "rawValue": 3.1, "palier": 3, "source": "World Bank / IMF 2025" },
+        { "id": "E2", "label": "Inflation", "value": "31.53% (fév 2026, en baisse vs 85% pic 2023)", "rawValue": 31.53, "palier": 6, "source": "TurkStat / TCMB" },
+        { "id": "E3", "label": "Dette/PIB", "value": "~33% (faible, point fort structurel)", "rawValue": 33, "palier": 2, "source": "IMF" },
+        { "id": "E4", "label": "Balance courante", "value": "-1.2% PIB (2025, amélioration vs -4% 2022)", "rawValue": -1.2, "palier": 3, "source": "TCMB / Bloomberg" },
+        { "id": "E5", "label": "Notation souveraine", "value": "BB- S&P / Ba3 Moody's (stable, amélioration 2024)", "rawValue": null, "palier": 5, "source": "S&P / Moody's 2024-2025" },
+        { "id": "E6", "label": "Regime change", "value": "Flottant depuis 2021 (TCMB orthodoxie restaurée)", "rawValue": null, "palier": 3, "source": "TCMB" },
+        { "id": "E7", "label": "Reserves change", "value": "~3.5 mois (réserves nettes de swaps : ~30% dette CT externe)", "rawValue": 3.5, "palier": 5, "source": "TCMB / bne IntelliNews" },
+        { "id": "E8", "label": "IDE/PIB", "value": "~1.5% PIB (en reprise post-crise lira)", "rawValue": 1.5, "palier": 4, "source": "UNCTAD" },
+        { "id": "E9", "label": "Chomage total", "value": "~10.5% (2025, persistant)", "rawValue": 10.5, "palier": 4, "source": "TurkStat" },
+        { "id": "E10", "label": "Dette privee/PIB", "value": "~75% (modéré)", "rawValue": 75, "palier": 3, "source": "BIS" },
+        { "id": "E11", "label": "Concentration exports", "value": "Textile + automobile + chimie = ~55% (modérément diversifié)", "rawValue": 55, "palier": 4, "source": "TurkStat / UN Comtrade" },
+        { "id": "E12", "label": "Croissance credit", "value": "~25% nominal (ralentissement TCMB)", "rawValue": 25, "palier": 4, "source": "TCMB" },
+        { "id": "E13", "label": "Shadow banking", "value": "~30% économie informelle", "rawValue": 30, "palier": 4, "source": "IMF" },
+        { "id": "E14", "label": "Cout energie", "value": "~95 $/MWh (import gaz russe + LNG) + vulnérabilité import >70% énergie", "rawValue": 95, "palier": 4, "source": "IEA" },
+        { "id": "E15", "label": "Indice misere", "value": "31.5+10.5 = 42 (très élevé mais en forte baisse)", "rawValue": 42, "palier": 6, "source": "Calcul (inflation + chômage)" },
+        { "id": "E16", "label": "Independance BC", "value": "RE1 AMÉLIORÉ : TCMB pivot hawkish 2023 (Şimşek/Erkan), mais indépendance fragile sous Erdoğan", "rawValue": null, "palier": 4, "source": "Cukierman / Bloomberg" }
+      ],
+      "scoreQuanti": 3.9,
+      "scoreQuali": 4,
+      "scoreFinal": 3.94,
+      "trend": "down",
+      "commentary": "Le pivot macroéconomique de 2023 (TCMB orthodoxe, taux 47-50% peak) porte ses fruits : inflation en baisse de 85% à 31% en 15 mois. La dette publique reste faible (33%), point de différenciation positif. Vulnérabilités structurelles : dépendance énergétique >70% (Russie + GNL), réserves nettes de change limitées (couvrent 30% dette CT externe), taux d'intérêt réels encore négatifs. La baisse des taux (47%→37% fin 2025-jan 2026) signale la reprise mais fragilise la désinflation."
+    },
+    "M": {
+      "label": "Militaire",
+      "indicators": [
+        { "id": "M1", "label": "Depenses mil./PIB", "value": "2.09% 2024 (17e mondial, +12% vs 2023)", "rawValue": 2.09, "palier": 3, "source": "SIPRI 2025 / NATO" },
+        { "id": "M2", "label": "Conflits armes", "value": "Operations actives : nord Syrie (SNA/SDF), nord Irak (PKK résiduels)", "rawValue": null, "palier": 5, "source": "ACLED / LWJ 2025" },
+        { "id": "M3", "label": "GFP Index", "value": "8e mondial (Turquie, armée OTAN la plus nombreuse après US)", "rawValue": null, "palier": 2, "source": "Global Firepower 2025" },
+        { "id": "M4", "label": "Exercices militaires", "value": ">15 exercices/an (OTAN + bilatéraux) + opérations réelles Syria/Iraq", "rawValue": 15, "palier": 4, "source": "IISS" },
+        { "id": "M5", "label": "Proliferation nucleaire", "value": "Partage nucléaire OTAN (B61, Incirlik) / Accusation programme nucléaire civil en expansion (Akkuyu)", "rawValue": null, "palier": 4, "source": "SIPRI / FAS" },
+        { "id": "M6", "label": "Coups regionaux", "value": "0 direct / Instabilité post-Assad Syrie = périmètre risque élevé", "rawValue": null, "palier": 3, "source": "Cline Center" },
+        { "id": "M7", "label": "Subordination armee", "value": "0.52 (contrôle civil post-2016, purges armée = armée AKP-dépendante)", "rawValue": 0.52, "palier": 4, "source": "V-Dem" },
+        { "id": "M8", "label": "Transferts armes", "value": "Turquie : exportateur actif (drones Bayraktar, 50+ pays) + importe F-16 upgrade", "rawValue": null, "palier": 3, "source": "SIPRI" },
+        { "id": "M9", "label": "Bases etrangeres", "value": "Incirlik (US OTAN) + bases turques nord Syrie/Irak + radar BMD Kürecik", "rawValue": null, "palier": 4, "source": "IISS" },
+        { "id": "M10", "label": "Milices/PMC", "value": "SNA (proxy turc en Syrie) = ~80 000 combattants", "rawValue": null, "palier": 5, "source": "FDD / ACLED 2025" },
+        { "id": "M11", "label": "Traites defense", "value": "OTAN article 5 + accords bilatéraux + blocus S-400 OTAN (F-35 exclusion)", "rawValue": null, "palier": 3, "source": "NATO / Congress.gov" },
+        { "id": "M12", "label": "R&D defense", "value": "~1.8% PIB (industrie de défense nationale en forte hausse : Baykar, ASELSAN, STM)", "rawValue": 1.8, "palier": 2, "source": "SSB / SIPRI" },
+        { "id": "M13", "label": "Fiabilite protecteur", "value": "OTAN fiable mais tensions persistantes (S-400, F-35, Kurdistan)", "rawValue": null, "palier": 3, "source": "Carnegie / WashInstitute" }
+      ],
+      "scoreQuanti": 3.5,
+      "scoreQuali": 4,
+      "scoreFinal": 3.7,
+      "trend": "stable",
+      "commentary": "La Turquie est une puissance militaire régionale crédible (8e mondial GFP) avec des opérations actives en Syrie et Irak. La dissolution formelle du PKK (mai 2025) soulage la dimension, mais les opérations SNA en Syrie créent de nouveaux fronts. L'industrie de défense nationale (Bayraktar = révolution drone) réduit la dépendance. Tension intra-OTAN (S-400/F-35) non résolue. Purge post-2016 : >4 000 officiers épurés = armée politisée."
+    },
+    "P": {
+      "label": "Politique",
+      "indicators": [
+        { "id": "P1", "label": "CPI Corruption", "value": "36 (116e mondial, en dégradation)", "rawValue": 36, "palier": 5, "source": "TI CPI 2025" },
+        { "id": "P2", "label": "V-Dem LDI", "value": "0.28 (régime hybride, frontière autocratie)", "rawValue": 0.28, "palier": 5, "source": "V-Dem Institute 2025" },
+        { "id": "P3", "label": "WGI Stabilite", "value": "-0.5 (instabilité modérée-élevée)", "rawValue": -0.5, "palier": 5, "source": "World Bank WGI" },
+        { "id": "P4", "label": "Cycle electoral", "value": "Présidentielle 2028 (Erdoğan inéligible constitutionnellement, contournement possible)", "rawValue": null, "palier": 5, "source": "Carnegie / FDD 2026" },
+        { "id": "P5", "label": "Risque changement regime", "value": "Modéré-élevé : arrestation İmamoğlu = signal autocratisation / CHP maintient grandes villes", "rawValue": null, "palier": 5, "source": "ICG / WashInstitute 2025" },
+        { "id": "P6", "label": "Polarisation", "value": "0.72 (très élevée : AKP/MHP vs CHP/HDP, clivage sec./religieux profond)", "rawValue": 0.72, "palier": 6, "source": "V-Dem" },
+        { "id": "P7", "label": "Libertes civiles", "value": "32/100 (Not Free - Freedom House 2025)", "rawValue": 32, "palier": 5, "source": "Freedom House 2025" },
+        { "id": "P8", "label": "Risque successoral", "value": "CRITIQUE : Erdoğan 2028 bloqué par Constitution, alternatives AKP non testées", "rawValue": null, "palier": 6, "source": "FDD / After Erdogan analysis" },
+        { "id": "P9", "label": "Autonomie regionale", "value": "14 maires CHP emprisonnés, fonctions transférées à kaymakam gouvernementaux", "rawValue": null, "palier": 5, "source": "Carnegie / HRW 2025" },
+        { "id": "P10", "label": "Opposition", "value": "CHP résiste (grandes villes) mais sous pression judiciaire systémique / HDP dissous → DEM Parti", "rawValue": null, "palier": 5, "source": "Carnegie / Freedom House" },
+        { "id": "P11", "label": "Pression demographique", "value": "+1.1% (croissance soutenue, 87M hab.) + 3.2M réfugiés syriens", "rawValue": 1.1, "palier": 3, "source": "UN DESA" },
+        { "id": "P12", "label": "Diaspora", "value": "7M Turcs en Europe (Allemagne, France, Pays-Bas) = base militante AKP + opposition", "rawValue": null, "palier": 4, "source": "IOM / UNHCR" },
+        { "id": "P13", "label": "Capture institutionnelle", "value": "ÉLEVÉE : justice (118e WJP), universités (annulation diplôme İmamoğlu), médias (RTÜK)", "rawValue": null, "palier": 6, "source": "WJP 2025 / Carnegie" },
+        { "id": "P14", "label": "Chocs auto-infliges", "value": "Arrestation İmamoğlu = choc géré mais dégâts institutionnels majeurs (condamnation internationale)", "rawValue": null, "palier": 5, "source": "European Parliament / CoE" },
+        { "id": "P15", "label": "Fenetres action", "value": "2025-2028 = fenêtre critique : Erdoğan cherche voie juridique vers 3e mandat avant échéance 2028", "rawValue": null, "palier": 6, "source": "FDD / Carnegie 2026" }
+      ],
+      "scoreQuanti": 5.1,
+      "scoreQuali": 5,
+      "scoreFinal": 5.06,
+      "trend": "up",
+      "commentary": "La dimension politique est la plus préoccupante de l'évaluation. L'arrestation d'İmamoğlu (mars 2025), les 14 maires CHP emprisonnés, les restrictions médiatiques post-protestation et la capture progressive des institutions judiciaires constituent une autocratisation documentée. La question de la succession 2028 (Erdoğan constitutionnellement inéligible) est le risque systémique majeur. L'élection de Demokraatit au Groenland est anecdotique comparée à ce pivot."
+    },
+    "L": {
+      "label": "Legal",
+      "indicators": [
+        { "id": "L1", "label": "Rule of Law", "value": "118e (WJP 2025, -38 places depuis 2015)", "rawValue": null, "palier": 6, "source": "WJP 2025" },
+        { "id": "L2", "label": "B-READY", "value": "~60 (environnement affaires moyen)", "rawValue": 60, "palier": 3, "source": "World Bank" },
+        { "id": "L3", "label": "Sanctions", "value": "Aucune OFAC directe / Pression USA/UE sur sanctions secondaires Russie (contournement via Turquie documenté)", "rawValue": null, "palier": 3, "source": "OFAC / EU" },
+        { "id": "L4", "label": "Protection PI", "value": "~42 (insuffisant, contrefaçon persistante)", "rawValue": 42, "palier": 4, "source": "GIPC 2025" },
+        { "id": "L5", "label": "Execution contrats", "value": "~570 jours (lent, courts encombrés)", "rawValue": 570, "palier": 4, "source": "World Bank" },
+        { "id": "L6", "label": "Independance judiciaire", "value": "136e sur 'Contraintes pouvoir' (WJP) / -41 places en 10 ans / purge >4000 juges post-2016", "rawValue": null, "palier": 6, "source": "WJP 2025" },
+        { "id": "L7", "label": "BIT actifs", "value": "~80 BIT (actif, cherche IDE)", "rawValue": 80, "palier": 2, "source": "UNCTAD" },
+        { "id": "L8", "label": "Anti-corruption", "value": "Faible (CPI 36, GRECO recommandations non appliquées)", "rawValue": null, "palier": 5, "source": "TI / GRECO" },
+        { "id": "L9", "label": "Arbitrage ICSID", "value": "Membre / Risque non-exécution en cas conflit avec pouvoir", "rawValue": null, "palier": 4, "source": "ICSID" },
+        { "id": "L10", "label": "Risque expropriation", "value": "Modéré (incidents passés médias, immobilier) / En hausse contexte crise", "rawValue": null, "palier": 4, "source": "EIU" }
+      ],
+      "scoreQuanti": 4.1,
+      "scoreQuali": 5,
+      "scoreFinal": 4.46,
+      "trend": "up",
+      "commentary": "La Turquie a chuté 38 rangs WJP depuis 2015 (80→118). L'indépendance judiciaire est théoriquement la dimension la plus dégradée ('Contraintes sur le pouvoir' = 136e). Post-2016, la masse critique des juges est AKP-affiliée. Paradoxe : solide réseau de BIT (80+) mais confiance investisseurs érodée par l'utilisation politique de la justice."
+    },
+    "I": {
+      "label": "Information",
+      "indicators": [
+        { "id": "I1", "label": "RSF rang", "value": "158e (RSF 2025, quasi-fond mondial)", "rawValue": 158, "palier": 6, "source": "RSF 2025" },
+        { "id": "I2", "label": "Freedom on Net", "value": "25/100 (Not Free, Freedom House)", "rawValue": 25, "palier": 6, "source": "Freedom House FOTN" },
+        { "id": "I3", "label": "Operations influence", "value": "Opérations pro-AKP internes + influence en Afrique/Balkans via TRT World, Diyanet", "rawValue": null, "palier": 5, "source": "DFRLab / Reuters" },
+        { "id": "I4", "label": "Censure internet", "value": ">1 000 000 sites bloqués depuis 2007 / Twitter/X bloqué ponctuellement / Accès VPN normalisé", "rawValue": null, "palier": 6, "source": "Freedom House / RSF" },
+        { "id": "I5", "label": "Controle medias Etat", "value": "~90% médias sous contrôle AKP direct ou indirect (Albayrak Group, Demirören)", "rawValue": 90, "palier": 7, "source": "RSF 2025" },
+        { "id": "I6", "label": "Penetration reseaux sociaux", "value": "~78% Turquie (très élevé, outil d'opposition)", "rawValue": 78, "palier": 2, "source": "DataReportal" },
+        { "id": "I7", "label": "Desinformation IA", "value": "Deepfakes politiques domestiques / campagnes narratives Turquie-Afrique", "rawValue": null, "palier": 4, "source": "DFRLab" },
+        { "id": "I8", "label": "Pluralisme mediatique", "value": "~15 (très faible, journalisme indépendant = Cumhuriyet, Medyascope marginal)", "rawValue": 15, "palier": 6, "source": "RSF" },
+        { "id": "I9", "label": "Journalistes emprisonnes", "value": "~40 (3e mondial selon CPJ)", "rawValue": 40, "palier": 7, "source": "CPJ 2025" },
+        { "id": "I10", "label": "Controle narratif diaspora", "value": "RTÜK sanction Halk TV + Tele1 (mars 2025) / Diyanet réseau 80 pays", "rawValue": null, "palier": 6, "source": "RSF / RTÜK" },
+        { "id": "I11", "label": "Comptes coordonnes", "value": ">10 000 (opérations AKP Twitter/X documentées, Twitter déféré 2023)", "rawValue": 10000, "palier": 6, "source": "Stanford IO / Twitter/Meta takedowns" },
+        { "id": "I12", "label": "Usage VPN", "value": "~32% (élevé, contournement blocages)", "rawValue": 32, "palier": 5, "source": "Surfshark 2025" }
+      ],
+      "scoreQuanti": 5.5,
+      "scoreQuali": 6,
+      "scoreFinal": 5.7,
+      "trend": "up",
+      "commentary": "La Turquie est parmi les environnements médiatiques les plus contrôlés du G20. Avec ~40 journalistes emprisonnés, >1M sites bloqués et ~90% médias sous contrôle AKP, l'espace informationnel est quasi-fermé. La réponse à l'arrestation İmamoğlu (mars 2025) a révélé la mécanique : blocage réseaux sociaux + amendes RTÜK + fermeture chaînes en direct = protocole de contrôle narratif opérationnel. Les réseaux sociaux restent le seul espace d'opposition (VPN 32%)."
+    },
+    "C": {
+      "label": "Cyber",
+      "indicators": [
+        { "id": "C1", "label": "NCSI", "value": "23e (score 9.71, stagnation)", "rawValue": 9.71, "palier": 3, "source": "e-Governance Academy / NCSI" },
+        { "id": "C2", "label": "GCI", "value": "Score élevé ITU (commitment vs réalité) / montée 43→11 en GFP 2017-2020", "rawValue": null, "palier": 2, "source": "ITU GCI 2024" },
+        { "id": "C3", "label": "Incidents cyber", "value": ">8 incidents majeurs 2024-2025 (infra critique, institutions financières)", "rawValue": 8, "palier": 4, "source": "USOM / CERT-TR" },
+        { "id": "C4", "label": "Capacite offensive", "value": "Capacités développées (NSA, SADAT controversé) / cible de Russie + acteurs État-nation", "rawValue": null, "palier": 4, "source": "IISS / Insight Turkey" },
+        { "id": "C5", "label": "Exposition infra critique", "value": "Élevée : énergie (import gaz russe) + finance (secteur bancaire développé) + transport Istanbul", "rawValue": null, "palier": 5, "source": "USOM" },
+        { "id": "C6", "label": "Budget cyberdefense", "value": "~0.3% budget (USOM + BTK) = insuffisant pour la taille de l'économie", "rawValue": null, "palier": 3, "source": "SSB / BTK" },
+        { "id": "C7", "label": "Ransomware", "value": "~15 incidents majeurs 2024 (PME + collectivités)", "rawValue": 15, "palier": 4, "source": "CERT-TR / USOM" },
+        { "id": "C8", "label": "Supply chain attacks", "value": "2 incidents documentés (logiciels comptables + infra telecoms)", "rawValue": 2, "palier": 3, "source": "CERT-TR" },
+        { "id": "C9", "label": "Workforce cyber", "value": "~55/100k (insuffisant pour économie 1.3T$)", "rawValue": 55, "palier": 3, "source": "ISC2" },
+        { "id": "C10", "label": "Legislation donnees", "value": "KVKK (2016, RGPD-inspiré) mais application faible + BTK accès données étatique controversé", "rawValue": null, "palier": 4, "source": "KVKK / BTK" },
+        { "id": "C11", "label": "Cloud exposure", "value": "Modérée-élevée (cloud étranger = AWS/Azure dominant, loi localisation données)", "rawValue": null, "palier": 4, "source": "BTK / Cloud laws TR" },
+        { "id": "C12", "label": "Zero-day exposure", "value": "Élevée (cible PKK/KCK, Israël, acteurs État-nation) / NSO Group usage documenté", "rawValue": null, "palier": 5, "source": "Citizen Lab / Amnesty Tech" }
+      ],
+      "scoreQuanti": 3.7,
+      "scoreQuali": 4,
+      "scoreFinal": 3.82,
+      "trend": "stable",
+      "commentary": "La posture cyber turque est plus orientée contrôle interne que défense externe. Le BTK utilise les outils cyber pour surveiller et bloquer l'opposition. La capacité offensive est développée mais mal calibrée pour la défense. L'usage de logiciels espions (NSO Group) contre journalistes et opposants est documenté. La dépendance cloud étrangère crée une surface d'attaque significative."
+    },
+    "Ee": {
+      "label": "Environnemental",
+      "indicators": [
+        { "id": "Ee1", "label": "ND-GAIN", "value": "~52 (modéré, vulnérabilité sécheresse+séismes)", "rawValue": 52, "palier": 3, "source": "ND-GAIN" },
+        { "id": "Ee2", "label": "Water Stress", "value": "3.2 (élevé, stress hydrique croissant Anatolie centrale)", "rawValue": 3.2, "palier": 5, "source": "WRI Aqueduct" },
+        { "id": "Ee3", "label": "Dependance extractives", "value": "~8% (charbon domestique + tourisme), importateur net énergie >70%", "rawValue": 8, "palier": 3, "source": "IEA / TurkStat" },
+        { "id": "Ee4", "label": "Catastrophes 5 ans", "value": "MAJEUR : Séisme Kahramanmaraş fév 2023 (55 000 morts, 100Mrd$ dégâts) + sécheresses récurrentes", "rawValue": null, "palier": 6, "source": "EM-DAT / AFAD" },
+        { "id": "Ee5", "label": "Transition energetique", "value": "~45% renouvelables (hydroélectrique + éolien + solaire en forte hausse) / Coal record 2024", "rawValue": 45, "palier": 3, "source": "Ember Electricity Review 2025" },
+        { "id": "Ee6", "label": "CO2/capita", "value": "~6.5 t (en hausse, charbon record 2024)", "rawValue": 6.5, "palier": 3, "source": "Global Carbon Project" },
+        { "id": "Ee7", "label": "Biodiversite menacee", "value": "~22% espèces évaluées menacées (Méditerranée = hotspot biodiversité)", "rawValue": 22, "palier": 4, "source": "IUCN" },
+        { "id": "Ee8", "label": "Deforestation", "value": "~0.3% (reboisement officiel mais controversé)", "rawValue": 0.3, "palier": 2, "source": "Global Forest Watch" },
+        { "id": "Ee9", "label": "Montee des eaux", "value": "~6% pop côtière à risque (Istanbul, côte Egée/Méditerranée)", "rawValue": 6, "palier": 4, "source": "Climate Central" },
+        { "id": "Ee10", "label": "Pollution air PM2.5", "value": "~32 µg/m3 (élevé, Istanbul + industrie)", "rawValue": 32, "palier": 5, "source": "IQAir 2025 / WHO" }
+      ],
+      "scoreQuanti": 3.8,
+      "scoreQuali": 4,
+      "scoreFinal": 3.88,
+      "trend": "up",
+      "commentary": "Le séisme de Kahramanmaraş (fév 2023) a révélé les failles catastrophiques de gouvernance environnementale (permis de construire illégaux, corruption dans la construction). Le stress hydrique croissant (Anatolie centrale, rivières à sec) s'ajoute à la dépendance gazière. La Turquie est le plus grand producteur de charbon électrique en Europe absolue (122 TWh 2024) tout en développant des renouvelables (+39% solaire 2024). NDC non conforme Paris 2°C."
+    }
+  },
+  "composite": 4.3,
+  "compositeMethod": {
+    "simpleAvg": 4.32,
+    "weighted": 4.28,
+    "amplified": 4.3,
+    "weights": {
+      "S": 0.12, "E": 0.15, "M": 0.16, "P": 0.14,
+      "L": 0.10, "I": 0.12, "C": 0.11, "Ee": 0.10
+    }
+  },
+  "classification": "Eleve",
+  "opportunity": {
+    "dimensions": {
+      "So": {
+        "label": "Capital humain",
+        "indicators": [
+          { "id": "So1", "label": "Alphabetisation", "value": "~96%", "palier": 5, "source": "UNESCO" },
+          { "id": "So2", "label": "PISA", "value": "444 (en dessous OCDE, amélioration)", "palier": 3, "source": "OCDE PISA 2022" },
+          { "id": "So3", "label": "Depenses sante/PIB", "value": "5.0% (insuffisant pour taille économique)", "palier": 3, "source": "OCDE" },
+          { "id": "So4", "label": "Medecins/1000", "value": "1.9 (insuffisant)", "palier": 3, "source": "WHO" },
+          { "id": "So5", "label": "Scolarisation tertiaire", "value": "~55% (en progression rapide)", "palier": 5, "source": "UNESCO" },
+          { "id": "So6", "label": "Mobilite sociale", "value": "Modérée (classe moyenne émergente vs inégalités)", "palier": 4, "source": "World Bank" },
+          { "id": "So7", "label": "Pop 15-64%", "value": "67% (dividende démographique favorable)", "palier": 6, "source": "UN DESA" },
+          { "id": "So8", "label": "Solde migratoire qualifie", "value": "-1‰ (fuite cerveaux post-instabilité)", "palier": 2, "source": "OECD" }
+        ],
+        "scoreQuanti": 3.9, "scoreQuali": 3, "scoreFinal": 3.54
+      },
+      "Eo": {
+        "label": "Croissance & marche",
+        "indicators": [
+          { "id": "Eo1", "label": "Croissance tendanciel", "value": "+3.5% potentiel (réformes maintenues)", "palier": 4, "source": "World Bank" },
+          { "id": "Eo2", "label": "IDE/PIB", "value": "~1.5% (en reprise, potentiel plus élevé)", "palier": 3, "source": "UNCTAD" },
+          { "id": "Eo3", "label": "Taille marche", "value": "87M hab. + hub régional Balkans/MENA/Caucase", "palier": 6, "source": "World Bank" },
+          { "id": "Eo4", "label": "Classe moyenne", "value": "~45% (sous pression inflation mais résiliente)", "palier": 4, "source": "OCDE" },
+          { "id": "Eo5", "label": "Diversification", "value": "Bonne : textile, auto, chimie, tech, tourisme", "palier": 5, "source": "TurkStat" },
+          { "id": "Eo6", "label": "Profondeur financiere", "value": "Secteur bancaire développé (actifs >150% PIB)", "palier": 5, "source": "BDDK" },
+          { "id": "Eo7", "label": "Brevets/million", "value": "~50 (GII 43e, en progression)", "palier": 3, "source": "WIPO GII 2025" },
+          { "id": "Eo8", "label": "Productivite", "value": "~50% USA (amélioration modeste)", "palier": 3, "source": "Conference Board" },
+          { "id": "Eo9", "label": "ALE", "value": "Union douanière UE + 20+ ALE (atout majeur)", "palier": 5, "source": "WTO" },
+          { "id": "Eo10", "label": "Reserves minerales", "value": "Ressources modérées (boron = 1er mondial, chrome, marbre)", "palier": 4, "source": "MTA Turkey" }
+        ],
+        "scoreQuanti": 4.2, "scoreQuali": 4, "scoreFinal": 4.12
+      },
+      "Mo": {
+        "label": "Securite & alliances",
+        "indicators": [
+          { "id": "Mo1", "label": "Alliances", "value": "OTAN (2e armée, atout considérable)", "palier": 6, "source": "NATO" },
+          { "id": "Mo2", "label": "Exercices conjoints", "value": ">15/an (OTAN + bilatéraux)", "palier": 5, "source": "IISS" },
+          { "id": "Mo3", "label": "Stabilite regionale", "value": "Ambiguë : acteur stabilisateur ET facteur déstabilisation (Syrie)", "palier": 3, "source": "ICG" },
+          { "id": "Mo4", "label": "Accords defense", "value": "Accords bilatéraux avec >20 pays + vente drones Bayraktar", "palier": 5, "source": "SSB" },
+          { "id": "Mo5", "label": "Controle frontieres", "value": "Frontières terrestres complexes (Syrie/Iraq/Iran/Caucase) mais contrôle relatif", "palier": 3, "source": "FRONTEX / AFAD" },
+          { "id": "Mo6", "label": "R&D defense", "value": "Industrie défense nationale dynamique (Baykar, ASELSAN) = atout export", "palier": 6, "source": "SSB / SIPRI" }
+        ],
+        "scoreQuanti": 4.67, "scoreQuali": 4, "scoreFinal": 4.4
+      },
+      "Po": {
+        "label": "Gouvernance & reformes",
+        "indicators": [
+          { "id": "Po1", "label": "WGI Effectiveness", "value": "0.2 (moyen, bureaucratie efficace mais politisée)", "palier": 4, "source": "World Bank WGI" },
+          { "id": "Po2", "label": "V-Dem Participatory", "value": "0.28 (faible)", "palier": 2, "source": "V-Dem" },
+          { "id": "Po3", "label": "Reformes", "value": "Réformes économiques Şimşek 2023+ (crédibles) / pas de réformes politiques", "palier": 4, "source": "IMF / Moody's" },
+          { "id": "Po4", "label": "E-Government", "value": "~65 (e-government en développement rapide)", "palier": 4, "source": "UN E-Government" },
+          { "id": "Po5", "label": "Decentralisation", "value": "Maires CHP emprisonnés = recentralisation autoritaire en cours", "palier": 2, "source": "Carnegie" },
+          { "id": "Po6", "label": "Open Budget", "value": "~40 (insuffisant, transparence limitée)", "palier": 3, "source": "IBP" },
+          { "id": "Po7", "label": "Succession", "value": "Problématique (P15) : succession 2028 non définie", "palier": 2, "source": "FDD" },
+          { "id": "Po8", "label": "Dialogue social", "value": "Modéré (syndicats actifs mais espace réduit)", "palier": 3, "source": "ILO" }
+        ],
+        "scoreQuanti": 3.0, "scoreQuali": 3, "scoreFinal": 3.0
+      },
+      "Lo": {
+        "label": "Attractivite juridique",
+        "indicators": [
+          { "id": "Lo1", "label": "Rule of Law", "value": "118e WJP (faible mais amélioration espérée Şimşek)", "palier": 2, "source": "WJP 2025" },
+          { "id": "Lo2", "label": "Protection investisseurs", "value": "Modérée (risque politique > risque légal)", "palier": 3, "source": "World Bank" },
+          { "id": "Lo3", "label": "BIT", "value": "~80 BIT actifs (réseau dense)", "palier": 6, "source": "UNCTAD" },
+          { "id": "Lo4", "label": "Arbitrage", "value": "Istambul Arbitration Centre (ISTAC) + ICSID", "palier": 4, "source": "ISTAC" },
+          { "id": "Lo5", "label": "PI", "value": "~42 (insuffisant, contrefaçon)", "palier": 3, "source": "GIPC" },
+          { "id": "Lo6", "label": "Imposition corporate", "value": "25% (relevé 2023, mais zones franches attractives)", "palier": 4, "source": "OCDE" },
+          { "id": "Lo7", "label": "Zones franches", "value": "21 zones franches actives (textile, tech, auto)", "palier": 5, "source": "Turkish FZ Association" },
+          { "id": "Lo8", "label": "Stabilite reglementaire", "value": "Faible (imprévisibilité politique→réglementaire)", "palier": 2, "source": "WEF" }
+        ],
+        "scoreQuanti": 3.6, "scoreQuali": 3, "scoreFinal": 3.36
+      },
+      "Io": {
+        "label": "Innovation & numerique",
+        "indicators": [
+          { "id": "Io1", "label": "GII", "value": "43e (en progression, top émergents)", "palier": 4, "source": "WIPO GII 2025" },
+          { "id": "Io2", "label": "R&D/PIB", "value": "1.09% (en hausse, cible 3% 2023 loin)", "palier": 3, "source": "OCDE" },
+          { "id": "Io3", "label": "Startups", "value": "Ecosystème Istanbul dynamique (Getir, Trendyol = licornes)", "palier": 5, "source": "Startup Genome" },
+          { "id": "Io4", "label": "Internet HD", "value": "~85% pénétration internet", "palier": 5, "source": "ITU" },
+          { "id": "Io5", "label": "Publications IA", "value": "En hausse (universités Istanbul, ODTÜ)", "palier": 3, "source": "Elsevier" },
+          { "id": "Io6", "label": "Capital-risque", "value": "~0.15% PIB (limité mais en croissance)", "palier": 3, "source": "Dealroom" },
+          { "id": "Io7", "label": "STEM", "value": "~28% diplômés STEM (fort)", "palier": 6, "source": "Eurostat / TurkStat" },
+          { "id": "Io8", "label": "Adoption IA", "value": "Stratégie IA nationale 2021-2025, drones IA (Baykar)", "palier": 4, "source": "Presidency of Strategy and Budget TR" }
+        ],
+        "scoreQuanti": 4.1, "scoreQuali": 4, "scoreFinal": 4.06
+      },
+      "Co": {
+        "label": "Maturite technologique",
+        "indicators": [
+          { "id": "Co1", "label": "GCI", "value": "Élevé engagement ITU (score GCI élevé)", "palier": 5, "source": "ITU" },
+          { "id": "Co2", "label": "Cloud", "value": "Développé (cloud local obligatoire données sensibles)", "palier": 4, "source": "BTK" },
+          { "id": "Co3", "label": "5G+fibre", "value": "5G lancé 2022, couverture 60%+ urbain", "palier": 4, "source": "GSMA / BTK" },
+          { "id": "Co4", "label": "Souverainete donnees", "value": "KVKK + loi stockage local (BTK = contrôle étatique fort)", "palier": 3, "source": "BTK / KVKK" },
+          { "id": "Co5", "label": "CERT", "value": "USOM + SOME réseau sectoriel (en développement)", "palier": 4, "source": "USOM / BTK" },
+          { "id": "Co6", "label": "Workforce cyber", "value": "~55/100k (insuffisant)", "palier": 3, "source": "ISC2" },
+          { "id": "Co7", "label": "E-commerce", "value": "~70% pénétration e-commerce (Trendyol dominant)", "palier": 5, "source": "Eurostat / DataReportal" },
+          { "id": "Co8", "label": "Identite numerique", "value": "e-Devlet (e-gouvernement turc = référence régionale)", "palier": 5, "source": "e-Devlet" }
+        ],
+        "scoreQuanti": 4.1, "scoreQuali": 4, "scoreFinal": 4.06
+      },
+      "Eeo": {
+        "label": "Durabilite & transition",
+        "indicators": [
+          { "id": "Eeo1", "label": "Renouvelables", "value": "~45% mix électrique 2024 (hydroélectrique fort + solaire +39%)", "palier": 4, "source": "Ember 2025" },
+          { "id": "Eeo2", "label": "NDC", "value": "NDC 2021 non conforme Paris 2°C (insuffisant)", "palier": 2, "source": "UNFCCC / Climate Action Tracker" },
+          { "id": "Eeo3", "label": "Obligations vertes", "value": "Marché vert émergent (BIST green bonds)", "palier": 3, "source": "Climate Bonds Initiative" },
+          { "id": "Eeo4", "label": "ND-GAIN Prep", "value": "~52 (modéré)", "palier": 3, "source": "ND-GAIN" },
+          { "id": "Eeo5", "label": "Recyclage", "value": "~25% (inférieur UE)", "palier": 3, "source": "Eurostat" },
+          { "id": "Eeo6", "label": "Invest verts", "value": "~1% PIB (insuffisant)", "palier": 2, "source": "IEA" },
+          { "id": "Eeo7", "label": "Aires protegees", "value": "~30% territoire (Turquie biodiversité méditerranéenne)", "palier": 5, "source": "IUCN WDPA" },
+          { "id": "Eeo8", "label": "EPI", "value": "~43 (faible, pression environnementale industrielle)", "palier": 2, "source": "Yale EPI 2024" }
+        ],
+        "scoreQuanti": 3.0, "scoreQuali": 3, "scoreFinal": 3.0
+      }
+    },
+    "composite": 3.7,
+    "classification": "Modéré",
+    "weights": {
+      "So": 0.12, "Eo": 0.17, "Mo": 0.07, "Po": 0.14,
+      "Lo": 0.13, "Io": 0.15, "Co": 0.12, "Eeo": 0.10
+    }
+  },
+  "delta": 0.6,
+  "quadrant": "Zone de risque avec potentiel émergent",
+  "resilience": {
+    "RS1": 4,
+    "RE1": 5,
+    "RM1": 3,
+    "RP1": 4,
+    "RI1": 2,
+    "RL1": 2,
+    "commentary": "RE1=5 (TCMB pivot hawkish 2023, taux 47-50%, désinflation en cours = signal fort de correction monétaire). RP1=4 (alternance municipale CHP 2024, élections 2028 constitutionnellement prévues). RS1=4 (société civile active, protestations massives mars 2025). RM1=3 (armée sous contrôle civil mais purge post-2016 = armée politisée). RI1=2 (pluralisme médiatique quasi-inexistant, 90% médias AKP-contrôlés). RL1=2 (justice capturée, 118e WJP)."
+  },
+  "scenarios": {
+    "baseline": "Désinflation continue (30%→18% fin 2026), économie +3%, tension politique persistante sans rupture institutionnelle. Composite 4.3.",
+    "degradation": "Arrestation İmamoğlu condamné, CHP interdit/scindé, Erdoğan obtient 3e mandat via amendement constitutionnel ou anticipées. Composite → 5.5-6.0. Probable départ investisseurs, lirasation forcée.",
+    "amelioration": "Alternance politique 2028 (candidat CHP ou AKP-dissident), réformes judiciaires crédibles, inflation descend sous 15%. Composite → 3.2. Réaccélération IDE, potentiel UE-accession réanimé."
+  },
+  "velocite": {
+    "delta_trimestre": 0.25,
+    "alerte": false,
+    "note": "Progression modérée. Dimension I et P en accélération post-mars 2025. RE1 (TCMB) = facteur de ralentissement. Surveiller P8/P15 (succession 2028) et P13 (capture institutionnelle)."
+  },
+  "signatures": [
+    "SIG-P1 : Arrestation İmamoğlu + 100 opposants = autocratisation qualitative (signal de P13 capture institutionnelle)",
+    "SIG-I1 : 90% médias sous contrôle AKP + protocole blocage réseaux sociaux opérationnel (mars 2025)",
+    "SIG-RE1 : TCMB pivot hawkish = résilience économique réelle malgré inflation encore élevée (31%)"
+  ],
+  "flags": [
+    "P8-CRITIQUE : succession Erdoğan 2028 = risque systémique non résolu (inéligibilité constitutionnelle)",
+    "I5-CRITIQUE : 90% médias AKP-contrôlés = pire ratio G20",
+    "L6-ELEVE : 136e 'Contraintes sur le pouvoir' WJP, purge >4000 juges post-2016",
+    "Ee4-ELEVE : Séisme 2023 Kahramanmaraş = exposition catastrophique (100Mrd$ dégâts, 55000 morts)"
+  ]
+}

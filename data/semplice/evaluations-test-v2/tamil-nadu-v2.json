@@ -1,0 +1,306 @@
+{
+  "zone": {
+    "id": "tamil-nadu",
+    "name": "Tamil Nadu (Inde — zone sub-nationale)",
+    "region": "asie",
+    "parentZone": "inde",
+    "subnational": true,
+    "type": "etat-indien"
+  },
+  "meta": {
+    "date": "2026-03-13",
+    "version": "2.1",
+    "analyst": "Inflexion Intelligence",
+    "notes": "Zone sub-nationale pilote. Dimensions L et C héritées de l'Inde nationale (score Inde ajusté). Dimensions S, M, P, Ee utilisent données régionales où disponibles. E et I = mix régional/national."
+  },
+  "dimensions": {
+    "S": {
+      "label": "Social",
+      "indicators": [
+        { "id": "S1", "label": "Gini (état)", "value": "~0.33 (inf. moy. nationale 0.352 — TN = état moins inégal)", "rawValue": 0.33, "palier": 3, "source": "IBEF / NSS / World Bank India" },
+        { "id": "S2", "label": "IDH (état)", "value": "0.751 (rang 3/28 états indiens)", "rawValue": 0.751, "palier": 3, "source": "UNDP / NITI Aayog 2024" },
+        { "id": "S3", "label": "Chomage jeunes", "value": "~16% (inf. moy. nationale ~23%)", "rawValue": 16, "palier": 3, "source": "CMIE / IBEF Tamil Nadu" },
+        { "id": "S4", "label": "Solde migratoire", "value": "+0.5‰ (attracteur net : emploi manufacturing + IT Chennai)", "rawValue": 0.5, "palier": 3, "source": "Census India / IBEF" },
+        { "id": "S5", "label": "Mouvements sociaux", "value": "Limites : mobilisations agriculteurs eau, anti-NEET, Jallikattu 2017 résiduel", "rawValue": null, "palier": 2, "source": "ACLED / Hindu" },
+        { "id": "S6", "label": "Tensions ethniques", "value": "Tamil vs Hindi (polarisation linguistique, opposition au 3 Language Policy). Castes (Dalits discrimination)", "rawValue": null, "palier": 3, "source": "ICG / PUCL Tamil Nadu" },
+        { "id": "S7", "label": "Acces sante", "value": "1.5 lits/1000 (mieux que India 0.5, système public + privé Chennai)", "rawValue": 1.5, "palier": 4, "source": "World Bank India Health / TN Health Dept" },
+        { "id": "S8", "label": "Urbanisation", "value": "~2.1%/an. 50%+ urbain. Chennai = 2e hub économique Sud Inde.", "rawValue": 2.1, "palier": 3, "source": "Census / UN-Habitat" },
+        { "id": "S9", "label": "Inegalite genre (GII)", "value": "~0.39 (mieux que national 0.49, mais violence conjugale élevée)", "rawValue": 0.39, "palier": 4, "source": "UNDP / NFHS-5" },
+        { "id": "S10", "label": "Esperance de vie", "value": "73.8 ans (supérieur national 70.8)", "rawValue": 73.8, "palier": 3, "source": "Registrar General India / WHO" },
+        { "id": "S11", "label": "Securite alimentaire", "value": "~8% sous-alimentation (mieux que national 15%)", "rawValue": 8, "palier": 3, "source": "FAO / NFHS-5 Tamil Nadu" },
+        { "id": "S12", "label": "Education secondaire", "value": "~82% (rang 1 GER supérieur Inde)", "rawValue": 82, "palier": 3, "source": "AISHE / IBEF" }
+      ],
+      "scoreQuanti": 3.1,
+      "scoreQuali": 3.0,
+      "resilience": {
+        "RS1": { "score": 4, "label": "Societe civile", "commentary": "Société civile active : ONGs Dalit actives, mouvements droits femmes, réseau agriculteurs. Presse tamoule indépendante (The Hindu, Dinamalar). Mobilisation publique sur eau et gouvernance locale." }
+      },
+      "scoreFinal": 2.8,
+      "trend": "down",
+      "commentary": "Tamil Nadu surperforme nettement la moyenne nationale indienne sur l'ensemble des indicateurs sociaux. IDH 0.751 (rang 3 national), espérance de vie 73.8 ans, taux alphabétisation 82%. Rang 1 Inde en Social Progress Index (SPI 63.3). Points de vulnérabilité : crise hydrique sévère (per capita eau 750 m³ vs national 1544 m³), tension linguistique Tamil-Hindi structurelle, discrimination de caste (Dalits = ~20% pop.). Classe ouvrière manufacturing (textile, auto, électronique) en expansion rapide."
+    },
+    "E": {
+      "label": "Economique",
+      "indicators": [
+        { "id": "E1", "label": "Croissance GSDP", "value": "+16% (2024-25, record états indiens) ; +15% projeté 2025-26", "rawValue": 16, "palier": 1, "source": "TN Economic Survey 2025 / Business Standard" },
+        { "id": "E2", "label": "Inflation (India)", "value": "5.1% (RBI national, TN alimentaire ~5.5%)", "rawValue": 5.3, "palier": 2, "source": "RBI / DPIIT" },
+        { "id": "E3", "label": "Dette publique état", "value": "~28% GSDP (dette état TN, modérée)", "rawValue": 28, "palier": 2, "source": "PRS India / TN Budget 2025-26" },
+        { "id": "E4", "label": "Balance commerciale (état)", "value": "Exportateur net (IT, textiles, auto). TN = 2e exportateur états indiens.", "rawValue": null, "palier": 2, "source": "DPIIT / IBEF" },
+        { "id": "E5", "label": "Notation souveraine (India)", "value": "Baa3 (Moody's, investment grade)", "rawValue": null, "palier": 3, "source": "Moody's / RBI" },
+        { "id": "E6", "label": "Regime change (India)", "value": "Flottant géré (RBI). Stable.", "rawValue": null, "palier": 2, "source": "RBI" },
+        { "id": "E7", "label": "Reserves (India)", "value": "~10 mois (~650 Mrd$)", "rawValue": 10, "palier": 2, "source": "RBI" },
+        { "id": "E8", "label": "IDE état", "value": "$3.68 Mrd (2024-25). Cumul $17.29 Mrd (2019-2025). Rang 5 national.", "rawValue": 3.68, "palier": 2, "source": "Guidance Tamil Nadu / IBEF" },
+        { "id": "E9", "label": "Chomage total (état)", "value": "~5.5% (CMIE, inf. national 8%)", "rawValue": 5.5, "palier": 2, "source": "CMIE" },
+        { "id": "E10", "label": "Dette privee / PIB (India)", "value": "~55%", "rawValue": 55, "palier": 2, "source": "BIS / RBI" },
+        { "id": "E11", "label": "Concentration exports (état)", "value": "IT 25%, textiles 20%, auto 15%, pharma 10% — diversifié", "rawValue": 25, "palier": 2, "source": "IBEF / Exim Bank" },
+        { "id": "E12", "label": "Croissance credit (India)", "value": "~14%", "rawValue": 14, "palier": 3, "source": "RBI" },
+        { "id": "E13", "label": "Economie informelle (état)", "value": "~35% (inf. national 52%)", "rawValue": 35, "palier": 3, "source": "IMF / IBEF" },
+        { "id": "E14", "label": "Cout energie (état)", "value": "~65 $/MWh (TANGEDCO). Projets solaires TN (10 GW+).", "rawValue": 65, "palier": 2, "source": "TANGEDCO / MNRE" },
+        { "id": "E15", "label": "Indice de misere (India)", "value": "5.1+8=13.1", "rawValue": 13.1, "palier": 3, "source": "Calcul" },
+        { "id": "E16", "label": "Independance BC (India)", "value": "RBI moderément indépendant", "rawValue": null, "palier": 3, "source": "RBI" }
+      ],
+      "scoreQuanti": 2.2,
+      "scoreQuali": 2.0,
+      "resilience": {
+        "RE1": { "score": 4, "label": "Correction monetaire", "commentary": "TN bénéficie de la stabilité RBI nationale. Budget état équilibré (dette 28% GSDP). Croissance GSDP +16% = coussin de résilience majeur." }
+      },
+      "scoreFinal": 2.1,
+      "trend": "down",
+      "commentary": "Tamil Nadu est le moteur économique du Sud de l'Inde. Croissance GSDP +16% en 2024-25 = record national. GSDP projeté Rs 35.67 lakh crore (2025-26). Hub manufacturier (Toyota, Hyundai, Foxconn, BMW, Daimler) + IT (Infosys, TCS, Wipro + 305 GCCs Chennai). Foxconn engagement Rs 15.000 crore + 14.000 emplois (oct.2025). Secteur manufacturing +14.74% = 3x la moyenne nationale. Exportateur net de services IT (10-15% exports nationaux IT). Risques : infrastructure eau (Chennai day-zero latent), dépendance gouvernance centrale indienne, pression inflation nationale."
+    },
+    "M": {
+      "label": "Militaire",
+      "indicators": [
+        { "id": "M1", "label": "Depenses mil. India", "value": "2.4% PIB (~$78.5 Mrd, budget 2025-26 +9.5%)", "rawValue": 2.4, "palier": 3, "source": "MoD India / SIPRI" },
+        { "id": "M2", "label": "Conflits actifs (region TN)", "value": "0 conflit direct. Sri Lanka stable. Mer de Chine = risque résiduel. LTTE éliminé 2009.", "rawValue": 0, "palier": 2, "source": "ACLED / IISS" },
+        { "id": "M3", "label": "GFP (India)", "value": "4/145 mondial", "rawValue": 4, "palier": 3, "source": "Global Firepower 2025" },
+        { "id": "M4", "label": "Exercices majeurs (France-Inde)", "value": "6-8 (Shakti binational France, Malabar, RIMPAC, corridor défense TN)", "rawValue": 7, "palier": 4, "source": "MoD India / EFN" },
+        { "id": "M5", "label": "Proliferation nucleaire (India)", "value": "~170 têtes nucléaires (SIPRI). Inde = puissance nucleaire declaree.", "rawValue": 170, "palier": 7, "source": "SIPRI / FAS" },
+        { "id": "M6", "label": "Coups regionaux", "value": "0 dans region directe TN (Sri Lanka stable post-Aragalaya 2022)", "rawValue": 0, "palier": 2, "source": "Cline Center" },
+        { "id": "M7", "label": "Subordination civile", "value": "Forte en Inde. Army ne fait pas de politique directement.", "rawValue": null, "palier": 2, "source": "V-Dem / Constitution India" },
+        { "id": "M8", "label": "Transferts armes", "value": "India 2e importateur mondial. TN : base INS Adyar + Southern Naval Command Vizag.", "rawValue": null, "palier": 4, "source": "SIPRI / Southern Naval Command" },
+        { "id": "M9", "label": "Bases etrangeres (region)", "value": "Aucune base étrangere en TN. Port Trincomalee Sri Lanka (interest géopolique Chine-Inde-France).", "rawValue": null, "palier": 2, "source": "IISS" },
+        { "id": "M10", "label": "Milices (TN)", "value": "Aucune milice structurée active. LTTE diaspora hors zone.", "rawValue": null, "palier": 1, "source": "ACLED / MHA India" },
+        { "id": "M11", "label": "Traites defense (Inde)", "value": "Quad, France-Inde DICQ, accord AIP/LEMOA US, partenariat stratégique France (corridor Sep.2024)", "rawValue": null, "palier": 2, "source": "MEA India / Elysée" },
+        { "id": "M12", "label": "R&D defense (India)", "value": "~8% budget mil. (DRDO, Tejas, Agni V)", "rawValue": 8, "palier": 2, "source": "DRDO / SIPRI" },
+        { "id": "M13", "label": "Fiabilite protecteur", "value": "Quad solide. Corridor défense France-Inde (sep.2024) = ancrage occidental. Mais autonomie strategique d'abord.", "rawValue": null, "palier": 2, "source": "Belfer Center / MEA India" }
+      ],
+      "scoreQuanti": 2.8,
+      "scoreQuali": 3.5,
+      "resilience": {
+        "RM1": { "score": 5, "label": "Doctrine republicaine armee", "commentary": "Armée indienne strictement subordinée civile. Pas de coup depuis Indépendance. Tamil Nadu = zone pacifique (LTTE éliminé, frontière maritime Sri Lanka stable)." }
+      },
+      "scoreFinal": 3.2,
+      "trend": "stable",
+      "commentary": "Tamil Nadu bénéficie du parapluie stratégique de l'Inde (4e puissance militaire mondiale). Zone directement concernée par le corridor de défense France-Inde (accord sep.2024 : usines défense à Chennai + Coimbatore, drones, sous-marins). Southern Naval Command = présence navale significative dans l'Océan Indien. Absence totale de conflits régionaux actifs depuis la défaite du LTTE (2009). Risque résiduel : tension maritime golfe du Mannar (pêcheurs TN vs Sri Lanka), escalade Inde-Chine mer de l'Inde distante. Nucléaire indien = posture national (No First Use), facteur risque pour tout conflit Inde-Pakistan ou Inde-Chine."
+    },
+    "P": {
+      "label": "Politique",
+      "indicators": [
+        { "id": "P1", "label": "CPI (India)", "value": "39/100 (rang 91/180, 2025 +1pt)", "rawValue": 39, "palier": 5, "source": "Transparency International 2025" },
+        { "id": "P2", "label": "V-Dem (India)", "value": "0.28 (autocratie electorale nationale). TN = opposition DMK = contrepoids.", "rawValue": 0.28, "palier": 4, "source": "V-Dem 2025" },
+        { "id": "P3", "label": "WGI Stabilite (India)", "value": "-0.7 national. TN = état stable sous gouvernement DMK majoritaire.", "rawValue": -0.7, "palier": 4, "source": "World Bank WGI" },
+        { "id": "P4", "label": "Cycle electoral (TN)", "value": "~2 ans (elections législatives TN 2026)", "rawValue": null, "palier": 3, "source": "Election Commission of India" },
+        { "id": "P5", "label": "Risque regime (TN)", "value": "Tres faible. DMK solide, MK Stalin populaire. BJP marginal en TN (<5% votes).", "rawValue": null, "palier": 2, "source": "EIU / Hindu" },
+        { "id": "P6", "label": "Polarisation", "value": "Élevée (Tamil identité vs hindutva BJP, anti-Hindi sentiment fort)", "rawValue": null, "palier": 4, "source": "V-Dem / Hindu" },
+        { "id": "P7", "label": "Libertes civiles (India)", "value": "Freedom House 67/100. TN = état Plus libéral que moy. nationale.", "rawValue": 67, "palier": 3, "source": "Freedom House 2025" },
+        { "id": "P8", "label": "Risque successoral", "value": "MK Stalin 71 ans. Udhayanidhi Stalin (fils) = successeur identifié. Transition preparée.", "rawValue": null, "palier": 3, "source": "The Hindu / ICG" },
+        { "id": "P9", "label": "Autonomie regionale", "value": "Forte tradition autonomie contre Centre. Résistance aux politiques BJP-Centre (NEET, 3 Language, fonds). Federalisme asymétrique.", "rawValue": null, "palier": 3, "source": "PRSB / Hindu" },
+        { "id": "P10", "label": "Opposition (TN)", "value": "AIADMK affaiblie mais présente. BJP absent. Opposition intra-Dravidien = modérée.", "rawValue": null, "palier": 2, "source": "The Hindu / ECI" },
+        { "id": "P11", "label": "Pression demographique", "value": "77M habitants. Croissance ralentissant (fécondité 1.7, sous remplacement). Vieillissement.", "rawValue": null, "palier": 2, "source": "Census India / IBEF" },
+        { "id": "P12", "label": "Diaspora", "value": "Diaspora tamoule puissante (Sri Lanka, Singapour, Malaysia, UK, Canada). Influence politique interne sur Sri Lanka.", "rawValue": null, "palier": 3, "source": "IOM / Tamil Diaspora studies" },
+        { "id": "P13", "label": "Capture institutionnelle", "value": "Modérée (corruption systémique India nationale touche TN, mais meilleur que moy.)", "rawValue": null, "palier": 3, "source": "TI / V-Dem" },
+        { "id": "P14", "label": "Chocs auto-infliges", "value": "1 : tensions Centre-État (délais fonds infrastructure, NEET contestation)", "rawValue": 1, "palier": 2, "source": "PIB India / Hindu" },
+        { "id": "P15", "label": "Fenetres action", "value": "Elections TN 2026 + momentum investissement semi-conducteurs / défense = fenetre opportunite.", "rawValue": null, "palier": 2, "source": "Analyse Inflexion" }
+      ],
+      "scoreQuanti": 2.8,
+      "scoreQuali": 3.0,
+      "resilience": {
+        "RP1": { "score": 5, "label": "Alternance democratique", "commentary": "Alternances régulières DMK/AIADMK depuis 1967. Démocratie compétitive réelle. BJP marginal = contrepoids au hindutva national." }
+      },
+      "scoreFinal": 2.9,
+      "trend": "stable",
+      "commentary": "Tamil Nadu jouit d'une gouvernance nettement supérieure à la moyenne nationale indienne. Gouvernement DMK (MK Stalin) = centre-gauche pro-développement, anti-BJP, défenseur de l'autonomie tamoule. Conflit structurel Centre-État : TN refuse la 3 Language Policy (enseignement Hindi obligatoire), conteste le NEET, revendique une plus grande part des fonds centraux. BJP <5% des votes en TN = rempart contre le glissement hindutva. Corruption (CPI 39 national) réduite mais présente. Succession bien préparée (Udhayanidhi Stalin). Points de vigilance : polarisation identitaire Tamil vs Centre BJP potentiellement déstabilisatrice si New Delhi renforce la pression."
+    },
+    "L": {
+      "label": "Legal (herite Inde nationale)",
+      "indicators": [
+        { "id": "L1", "label": "Rule of Law (India)", "value": "0.49 (rang 86/140, WJP 2025, -6 places)", "rawValue": 0.49, "palier": 4, "source": "WJP 2025" },
+        { "id": "L2", "label": "B-READY (India)", "value": "63", "rawValue": 63, "palier": 2, "source": "World Bank B-READY 2025" },
+        { "id": "L3", "label": "Sanctions (India)", "value": "Aucune sanction internationale", "rawValue": null, "palier": 1, "source": "OFAC / EU / UN" },
+        { "id": "L4", "label": "Protection PI (India)", "value": "~40 (GIPC ranking)", "rawValue": 40, "palier": 5, "source": "GIPC / UNCTAD" },
+        { "id": "L5", "label": "Execution contrats (India)", "value": "~1445 jours", "rawValue": 1445, "palier": 7, "source": "World Bank" },
+        { "id": "L6", "label": "Independance judiciaire (India)", "value": "Supreme Court indép. Tribunaux inférieurs lents + corrompus.", "rawValue": null, "palier": 3, "source": "WJP / Freedom House" },
+        { "id": "L7", "label": "BIT actifs (India)", "value": "~15 (modele BIT 2016, résiliation massive)", "rawValue": 15, "palier": 5, "source": "UNCTAD" },
+        { "id": "L8", "label": "Anti-corruption (India)", "value": "Faible effectivite (Lokpal existant, CBI politique)", "rawValue": null, "palier": 4, "source": "TI" },
+        { "id": "L9", "label": "Arbitrage ICSID (India)", "value": "Non-membre. UNCITRAL accepté.", "rawValue": null, "palier": 4, "source": "ICSID / UNCTAD" },
+        { "id": "L10", "label": "Risque expropriation (India)", "value": "Modere (retrospective fiscale Vodafone-type)", "rawValue": null, "palier": 4, "source": "EIU / World Bank" }
+      ],
+      "scoreQuanti": 3.6,
+      "scoreQuali": 4.0,
+      "resilience": {
+        "RL1": { "score": 3, "label": "Autonomie judiciaire", "commentary": "Supreme Court indépendante mais de plus en plus politisée. Tribunaux inférieurs TN = mêmes défauts que partout en Inde (délais, corruption). Madras High Court = respecté régionalement." }
+      },
+      "scoreFinal": 3.8,
+      "trend": "stable",
+      "commentary": "Cadre légal national indien hérité — faiblesse principale pour Tamil Nadu. L'état n'a pas la compétence pour reformer l'IBC, l'arbitrage ou les BIT. La Madras High Court jouit d'une bonne réputation régionale. La lenteur des contrats (1445 jours) est un frein réel aux investissements manufacturing. Pour les GCCs IT, le risque légal est modéré (secteur contractuel mieux outillé). Note TN légèrement meilleure que nationale grâce à la gouvernance DMK plus professionnelle."
+    },
+    "I": {
+      "label": "Information (mix national / état)",
+      "indicators": [
+        { "id": "I1", "label": "RSF rang (India)", "value": "151/180 (2025, amélioration vs 159 en 2024)", "rawValue": 151, "palier": 5, "source": "RSF 2025" },
+        { "id": "I2", "label": "Freedom on the Net (India)", "value": "50/100 (Partly Free)", "rawValue": 50, "palier": 4, "source": "Freedom House 2025" },
+        { "id": "I3", "label": "Operations influence (TN)", "value": "3-4 (DMK IT cell actif, RSS/BJP réseaux hors zone). Modere.", "rawValue": 3.5, "palier": 3, "source": "DFRLab / Hindu" },
+        { "id": "I4", "label": "Censure internet (India)", "value": "~12% (shutdowns principalement Cachemire + Manipur). TN = pas de shutdown.", "rawValue": 2, "palier": 2, "source": "OONI / Access Now" },
+        { "id": "I5", "label": "Controle medias Etat (TN)", "value": "~25% (Kalaignar TV gouvernemental, presse tamoule privée diversifiée)", "rawValue": 25, "palier": 3, "source": "RSF / Hoot" },
+        { "id": "I6", "label": "Penetration reseaux sociaux (India)", "value": "~45% national. TN Chennai = > 70% urban.", "rawValue": 45, "palier": 4, "source": "DataReportal 2025" },
+        { "id": "I7", "label": "Desinformation IA (India)", "value": "12-15 incidents élections 2024. TN concerné (deepfakes MK Stalin vs AIADMK).", "rawValue": 13, "palier": 5, "source": "DFRLab / TNM" },
+        { "id": "I8", "label": "Pluralisme mediatique (TN)", "value": "Modéré-fort : presse tamoule indépendante (The Hindu, Dinamalar, TNM, Vikatan, Polimer)", "rawValue": null, "palier": 3, "source": "RSF / Hoot" },
+        { "id": "I9", "label": "Journalistes emprisonnes (India)", "value": "~15 national (UAPA, NSA). TN = 0-1 (moins ciblé que Cachemire/UP).", "rawValue": 1, "palier": 2, "source": "CPJ / RSF" },
+        { "id": "I10", "label": "Controle narratif diaspora", "value": "Diaspora tamoule mondiale influence débat politique TN (Eelam cause, anti-Chine). Modere.", "rawValue": null, "palier": 3, "source": "DFRLab / ICG" },
+        { "id": "I11", "label": "Bots / trolls (TN)", "value": "~1000-2000 (DMK IT cell + RSS réseaux ciblant TN modérément)", "rawValue": 1500, "palier": 3, "source": "Stanford IO / Hoot" },
+        { "id": "I12", "label": "Usage VPN (India)", "value": "~30% national (surtout mobile gaming + privacy)", "rawValue": 30, "palier": 3, "source": "Surfshark / DataReportal" }
+      ],
+      "scoreQuanti": 3.4,
+      "scoreQuali": 3.5,
+      "resilience": {
+        "RI1": { "score": 4, "label": "Pluralisme mediatique", "commentary": "Presse tamoule robuste (The Hindu fondé 1878, Dinamalar, The News Minute, Vikatan). Journalisme d'investigation actif. Opposition médiatique réelle." }
+      },
+      "scoreFinal": 4.0,
+      "trend": "stable",
+      "commentary": "Tamil Nadu hérite du contexte médiatique national indien dégradé (RSF 151e) mais bénéficie d'une presse régionale tamoule plus pluraliste qu'ailleurs en Inde. Pas de shutdowns internet (contrairement à Cachemire/Manipur). Deepfakes utilisés dans la campagne électorale tamoule 2024. BJP IT cell peu influent en TN (faible implantation). DMK gère son propre dispositif de communication numérique (Kalaignar TV). La diaspora tamoule mondiale (Singapour, Sri Lanka, UK, Canada) amplifie les enjeux identitaires (langue, Eelam) sur les réseaux. Score légèrement pénalisé par héritage national."
+    },
+    "C": {
+      "label": "Cyber (herite Inde nationale, ajuste TN)",
+      "indicators": [
+        { "id": "C1", "label": "NCSI (India)", "value": "~60/100 (amélioration post-DPDP Act)", "rawValue": 60, "palier": 3, "source": "e-Governance Academy NCSI" },
+        { "id": "C2", "label": "GCI (India)", "value": "98.49/100 (Tier 1, ITU GCI 2024)", "rawValue": 98.49, "palier": 1, "source": "ITU GCI 2024 / PIB India" },
+        { "id": "C3", "label": "Incidents majeurs (India)", "value": "2 majeurs (AIIMS ransomware 2022, CoWIN data breach 2023). TN : expositions TANGEDCO 2024.", "rawValue": 2, "palier": 3, "source": "CERT-In / Hindu" },
+        { "id": "C4", "label": "APT actifs (region)", "value": "4-5 (APT Chine ciblant Inde, SideWinder Pakistan, ransomware EA). TN = cible IT + manufacturing.", "rawValue": 4.5, "palier": 3, "source": "MITRE / Mandiant" },
+        { "id": "C5", "label": "Exposition infra critique (TN)", "value": "Elevée : TANGEDCO (réseau électrique), ports Chennai + Ennore, corridor semiconductor annoncé", "rawValue": null, "palier": 4, "source": "CERT-In / TN Govt" },
+        { "id": "C6", "label": "Budget cyberdefense (India)", "value": "~2% budget mil. (CERT-In + NCIIPC)", "rawValue": 2, "palier": 4, "source": "MoD India / MeitY" },
+        { "id": "C7", "label": "Ransomware (India)", "value": "~25 incidents signif./an. TN : secteur IT Chennai cible.", "rawValue": 25, "palier": 4, "source": "CERT-In / Palo Alto" },
+        { "id": "C8", "label": "Supply chain attacks", "value": "2 (India level). TN semiconductor supply chain = risque émergent.", "rawValue": 2, "palier": 3, "source": "CERT-In / Google TAG" },
+        { "id": "C9", "label": "Workforce cyber (India)", "value": "~25/100k (deficit paradoxal malgré 2e pool IT mondial)", "rawValue": 25, "palier": 4, "source": "ISC2 / NASSCOM" },
+        { "id": "C10", "label": "Legislation donnees (India)", "value": "DPDP Act 2023 (en implementation). Cadre moderne.", "rawValue": null, "palier": 3, "source": "MeitY / DPDP" },
+        { "id": "C11", "label": "Cloud exposure (TN)", "value": "Très elevée : 305 GCCs Chennai = cloud AWS/Azure/GCP intensif", "rawValue": null, "palier": 5, "source": "CERT-In / Flexiple" },
+        { "id": "C12", "label": "Zero-day exposure (TN)", "value": "Modéré-élevé : cible APT pour semiconducteurs + defence corridor (espionnage industriel)", "rawValue": null, "palier": 4, "source": "Google TAG / CISA" }
+      ],
+      "scoreQuanti": 3.1,
+      "scoreQuali": 3.5,
+      "scoreFinal": 3.2,
+      "trend": "up",
+      "commentary": "Tamil Nadu hérite du cadre cyber national indien (GCI Tier 1 = bonne posture légale/organisationnelle) mais fait face à des risques spécifiques liés à sa concentration de GCCs (305 centres Chennai) et au corridor défense-semiconductor émergent. L'annonce du corridor France-Inde et les investissements Foxconn font de la zone une cible potentielle d'espionnage industriel (APT chinois + pakistanais). TANGEDCO (réseau électrique) a connu des incidents cyber en 2024. DPDP Act 2023 = progrès réglementaire mais implémentation incomplète."
+    },
+    "Ee": {
+      "label": "Environnemental",
+      "indicators": [
+        { "id": "Ee1", "label": "ND-GAIN (India)", "value": "~40 (vulnerability score élevé, readiness 102e)", "rawValue": 40, "palier": 5, "source": "ND-GAIN 2024" },
+        { "id": "Ee2", "label": "Water Stress (TN)", "value": "Critique : 750 m³/capita (seuil stress 1700 m³). 70% eaux contaminées. Chennai Day Zero risque.", "rawValue": 4.5, "palier": 6, "source": "WRI Aqueduct / CEEW 2025" },
+        { "id": "Ee3", "label": "Dependance extractive (TN)", "value": "~8% GSDP (granite, sable, fer). Inf. nationale. Services = moteur principal.", "rawValue": 8, "palier": 2, "source": "IBEF / TN Economic Survey" },
+        { "id": "Ee4", "label": "Catastrophes 5 ans (TN)", "value": ">8 : cyclones (Nivar 2020, Burevi 2020, Mandous 2022, Michaung 2023), inondations Chennai.", "rawValue": 8, "palier": 5, "source": "EM-DAT / NDMA India" },
+        { "id": "Ee5", "label": "Transition energetique (TN)", "value": "~36% mix electrique renouvelable (eolien TN = 1er état India + solaire 10 GW+)", "rawValue": 36, "palier": 3, "source": "MNRE / TANGEDCO 2025" },
+        { "id": "Ee6", "label": "CO2 / capita (India)", "value": "2.0t (faible, mais TN industrie = 2.5t estimé)", "rawValue": 2.5, "palier": 3, "source": "Global Carbon Project" },
+        { "id": "Ee7", "label": "Biodiversite menacee (TN)", "value": "Nilgiris = hotspot mondial (UNESCO). Espèces menacées tigres, léopards, éléphants.", "rawValue": null, "palier": 5, "source": "IUCN / WCS" },
+        { "id": "Ee8", "label": "Deforestation (TN)", "value": "~0.2%/an (inf. national 0.5%). Nilgiris sous pression plantation tea + eucalyptus.", "rawValue": 0.2, "palier": 2, "source": "Global Forest Watch / FSI" },
+        { "id": "Ee9", "label": "Montee des eaux (TN)", "value": "~12% pop côtière exposée (Chennai, Nagapattinam, Rameswaram). Densité élevée. Cyclones = risque aggravant.", "rawValue": 12, "palier": 5, "source": "Climate Central / NDMA" },
+        { "id": "Ee10", "label": "Pollution air (Chennai)", "value": "~48 ug/m3 (PM2.5, nettement inf. Delhi 92). Amélioration tendancielle 2021-2025.", "rawValue": 48, "palier": 4, "source": "IQAir 2025 / TN Pollution Control Board" }
+      ],
+      "scoreQuanti": 4.0,
+      "scoreQuali": 4.0,
+      "scoreFinal": 4.0,
+      "trend": "stable",
+      "commentary": "Tamil Nadu fait face à des vulnérabilités environnementales distinctes de l'Inde nationale. Le stress hydrique est critique : 750 m³/capita (moitié du seuil ONU de stress, 2.5x sous le seuil national). Chennai a frôlé le Day Zero en 2019 et reste exposé. Les cyclones s'intensifient (Michaung déc.2023 = 2Mrd$ dégâts). Côte orientale vulnérable (montée des eaux, cyclones Bay of Bengal). Points positifs : 1er état indien pour l'éolien (>10 GW installés), solaire en forte expansion. Nilgiris UNESCO = responsabilité conservation internationale. Tamil Nadu est le plus avancé en transition énergétique parmi les grands états industriels indiens."
+    }
+  },
+  "composite": 3.2,
+  "classification": "Modere",
+  "opportunity": {
+    "So": {
+      "label": "Capital humain",
+      "scoreOpp": 5.5,
+      "commentary": "IDH 0.751 (rang 3 national). Taux alphabétisation 82%. Rang 1 GER enseignement supérieur Inde. 12.000+ startups (50% dirigées par femmes). Vivier ingénieurs/techniciens = 1er état India. 77M d'habitants avec pyramide des âges favorable (TFR 1.7 = transition démographique avancée)."
+    },
+    "Eo": {
+      "label": "Croissance",
+      "scoreOpp": 6.0,
+      "commentary": "GSDP +16% 2024-25 = record national. GSDP Rs 35.67 lakh crore (2025-26). FDI $3.68 Mrd 2024-25. Hub manufacturing mondial (Toyota, Hyundai, BMW, Daimler, Foxconn, Nokia, Samsung). Corridor défense France-Inde (sep.2024) = montée en gamme défense. Objectif $1 trillion economy annoncé. Manufacturing +14.74% = 3x national. 2e exportateur états indiens."
+    },
+    "Mo": {
+      "label": "Securite",
+      "scoreOpp": 4.5,
+      "commentary": "Zone pacifique (pas de conflit depuis LTTE 2009). Corridor défense France-Inde = usines défense Chennai + Coimbatore. Southern Naval Command = actif stratégique Océan Indien. Quad India = parapluie sécurité crédible. Stabilité Sri Lanka améliorée post-2022."
+    },
+    "Po": {
+      "label": "Gouvernance",
+      "scoreOpp": 4.5,
+      "commentary": "Gouvernance TN nettement supérieure à la nationale (rang 3 health index, rang 1 SPI). DMK = vision développement (GCC Policy 2024-27, AI Mission TN, Semiconductor Mission). E-governance solide (TN ARJUN system). Résistance réussie à certaines politiques centrales inappropriées (NEET, 3 Language)."
+    },
+    "Lo": {
+      "label": "Attractivite juridique",
+      "scoreOpp": 3.0,
+      "commentary": "Contraint par le cadre national indien (non-ICSID, BIT limités, délais contrats). TN = relative prévisibilité réglementaire vs états du Nord. Guidance Tamil Nadu = agence promotion investissement efficace. Zone franche Madras Special Economic Zone active."
+    },
+    "Io": {
+      "label": "Innovation",
+      "scoreOpp": 5.5,
+      "commentary": "Rang 3 India Innovation Index (NITI Aayog). 305 GCCs à Chennai (+70% depuis 2019). 4 nouveaux GCC hubs (Coimbatore, Madurai, Trichy, Vellore). Foxconn AI manufacturing hub. TSMC discussions en cours. Publications IA parmi les meilleures universités indiennes (IIT Madras = top 10 India). 15% exports IT nationaux."
+    },
+    "Co": {
+      "label": "Maturite tech",
+      "scoreOpp": 5.0,
+      "commentary": "305 GCCs = ecosystème cloud/data mature. Infrastructure fibre Chennai parmi les meilleures India. 5G déployé zones urbaines. Hub fintech et deeptech émergent (TVS, Freshworks, Zoho basé TN). Zoho = acteur cloud souverain global. Corridor semiconducteurs annoncé = disruption stratégique. IIT Madras + IIM Trichy = vivier talents."
+    },
+    "Eeo": {
+      "label": "Durabilite",
+      "scoreOpp": 4.5,
+      "commentary": "1er état India éolien (>10 GW). Solaire en forte expansion (cible 15 GW). Tamil Nadu Climate Action Plan solide. Nilgiris UNESCO = levier conservation/écotourisme. Green Tamil Nadu Mission (reforestation urbaine). Meilleure transition énergétique grands états industriels indiens. Mais stress hydrique = contrainte majeure durabilité."
+    },
+    "compositeOpp": 4.9
+  },
+  "resilience": {
+    "RS1": { "score": 4, "label": "Societe civile", "commentary": "Active et pluraliste. Tradition protestataire tamoule (Jallikattu, anti-NEET). Presse indépendante." },
+    "RE1": { "score": 4, "label": "Correction monetaire", "commentary": "Bénéficie de la stabilité RBI. Budget état sain (dette 28% GSDP). Croissance GSDP = amortisseur." },
+    "RM1": { "score": 5, "label": "Doctrine republicaine armee", "commentary": "Armée indienne = subordination civile stricte. TN = zone pacifique post-LTTE." },
+    "RP1": { "score": 5, "label": "Alternance democratique", "commentary": "Alternances DMK/AIADMK régulières depuis 1967 = démocratie compétitive exemplaire dans contexte indien." },
+    "RI1": { "score": 4, "label": "Pluralisme mediatique", "commentary": "Presse tamoule diversifiée (The Hindu, TNM, Vikatan, Dinamalar). Journalisme d'investigation actif." },
+    "RL1": { "score": 3, "label": "Autonomie judiciaire", "commentary": "Madras High Court réputé. Mais contraint par lenteur systémique nationale. Meilleur que moyenne nationale." }
+  },
+  "scenarios": [
+    {
+      "id": "S1",
+      "label": "Hub mondial semiconducteurs et défense",
+      "probability": 0.40,
+      "horizon": "2028",
+      "description": "Corridor défense France-Inde + Foxconn + TSMC se concrétisent. TN devient le hub Asian semiconductors hors Taiwan-Corée. GSDP +18%/an. Score composite -> 2.5 (modéré-faible)."
+    },
+    {
+      "id": "S2",
+      "label": "Croissance solide mais tensions Centre-État",
+      "probability": 0.40,
+      "horizon": "2027",
+      "description": "DMK maintient cap développement mais tensions récurrentes avec gouvernement central BJP (fonds, NEET, langue). Score composite ~3.2 stable."
+    },
+    {
+      "id": "S3",
+      "label": "Crise hydrique + catastrophe climatique",
+      "probability": 0.15,
+      "horizon": "2026-2027",
+      "description": "Cyclone majeur ou Day Zero Chennai + sécheresse = déstabilisation économique. Score composite -> 4.0."
+    },
+    {
+      "id": "S4",
+      "label": "Escalade tensions Inde-Chine mer Indienne",
+      "probability": 0.05,
+      "horizon": "2027+",
+      "description": "Conflit naval indirect Inde-Chine Océan Indien. TN = zone de transit stratégique exposée. Score composite -> 4.5+."
+    }
+  ],
+  "flags": [
+    "STRESS_HYDRIQUE_CRITIQUE: 750 m³/capita = sous le seuil de stress. Chennai Day Zero latent.",
+    "OPPORTUNITE_MAJEURE: GSDP +16%, corridor défense France-Inde, GCC hub, Foxconn",
+    "HERITAGE_JURIDIQUE_INDIEN: contrainte principale pour investisseurs (1445j contrats)",
+    "ESPIONNAGE_INDUSTRIEL: semiconductor + défense = cible APT Chine"
+  ],
+  "signatures": []
+}

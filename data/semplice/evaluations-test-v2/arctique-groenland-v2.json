@@ -1,0 +1,359 @@
+{
+  "zone": {
+    "id": "arctique",
+    "name": "Arctique (Groenland + région polaire)",
+    "region": "arctique"
+  },
+  "meta": {
+    "date": "2026-03-13",
+    "version": "2.1",
+    "analyst": "Inflexion Intelligence",
+    "note": "Zone multi-acteurs : données primaires Danemark/Groenland, contexte élargi Russie/OTAN/États-Unis. Paliers reflètent l'instabilité géopolitique structurelle de la zone, pas uniquement le profil danois."
+  },
+  "dimensions": {
+    "S": {
+      "label": "Social",
+      "indicators": [
+        { "id": "S1", "label": "Gini", "value": "0.29 (Danemark) / ~0.40 (Groenland interne)", "rawValue": 0.35, "palier": 3, "source": "Statistics Denmark / Statistics Greenland" },
+        { "id": "S2", "label": "IDH", "value": "0.952 (Danemark, 6e mondial)", "rawValue": 0.952, "palier": 1, "source": "UNDP 2024" },
+        { "id": "S3", "label": "Chomage jeunes", "value": "~10% (Danemark) / ~35% (Groenland rural)", "rawValue": 22, "palier": 4, "source": "Statistics Denmark / Statistics Greenland" },
+        { "id": "S4", "label": "Solde migratoire", "value": "+3.5‰ (Danemark) / -8‰ (Groenland, exode vers Danemark)", "rawValue": -2, "palier": 4, "source": "UN DESA" },
+        { "id": "S5", "label": "Mouvements sociaux", "value": "Protestations Groenland mars 2025 (pression Trump)", "rawValue": null, "palier": 3, "source": "ACLED / Reuters" },
+        { "id": "S6", "label": "Tensions ethniques", "value": "Tensions Inuits/colons historiques, revendications culturelles Kalaallit", "rawValue": null, "palier": 3, "source": "ICG / Minority Rights Group" },
+        { "id": "S7", "label": "Lits hopital/1000", "value": "2.5 (Danemark) / 3.8 (Groenland, hopitaux concentres)", "rawValue": 3.0, "palier": 2, "source": "WHO" },
+        { "id": "S8", "label": "Croissance urbaine", "value": "-0.8% Groenland (population 56 000, stable)", "rawValue": -0.8, "palier": 3, "source": "UN-Habitat" },
+        { "id": "S9", "label": "GII genre", "value": "0.038 (Danemark, 2e mondial)", "rawValue": 0.038, "palier": 1, "source": "UNDP" },
+        { "id": "S10", "label": "Esperance de vie", "value": "81.4 (Danemark) / 70.2 (Groenland)", "rawValue": 74, "palier": 3, "source": "WHO" },
+        { "id": "S11", "label": "Sous-alimentation", "value": "<2.5% (Danemark) / 8% (Groenland, dependance import 80%)", "rawValue": 5, "palier": 3, "source": "FAO" },
+        { "id": "S12", "label": "Education secondaire", "value": "~88% (Groenland, taux abandon eleve zones rurales)", "rawValue": 88, "palier": 3, "source": "UNESCO / Statistics Greenland" }
+      ],
+      "scoreQuanti": 2.75,
+      "scoreQuali": 3,
+      "scoreFinal": 2.85,
+      "trend": "up",
+      "commentary": "La dualité Danemark/Groenland crée un profil bimodal. Le Danemark affiche des indicateurs nordiques exemplaires, mais Groenland souffre d'isolement géographique extrême, de dépendance aux subsides danois (4.1 Mrd DKK/an = ~20% PIB), et d'une crise sociale latente (alcoolisme, suicides, chômage rural). La pression géopolitique de 2025-2026 amplifie les tensions identitaires inuites."
+    },
+    "E": {
+      "label": "Economique",
+      "indicators": [
+        { "id": "E1", "label": "Croissance PIB", "value": "+0.2% Groenland 2025 (pêche stable, construction ralentie)", "rawValue": 0.2, "palier": 4, "source": "Statistics Greenland" },
+        { "id": "E2", "label": "Inflation", "value": "~3% (Danemark, BCE/import) / ~5.5% Groenland (coûts logistiques)", "rawValue": 4.5, "palier": 3, "source": "Statistics Denmark" },
+        { "id": "E3", "label": "Dette/PIB", "value": "29% Danemark (très faible) / Groenland = dépendance totale subside", "rawValue": 29, "palier": 1, "source": "IMF" },
+        { "id": "E4", "label": "Balance courante", "value": "+9.2% Danemark / Groenland déficitaire (subsides = équilibre artificiel)", "rawValue": 9.2, "palier": 1, "source": "Danmarks Nationalbank" },
+        { "id": "E5", "label": "Notation souveraine", "value": "AAA (Danemark, S&P/Moody's/Fitch)", "rawValue": null, "palier": 1, "source": "S&P / Moody's" },
+        { "id": "E6", "label": "Regime change", "value": "Couronne danoise (flottant géré, indexé EUR)", "rawValue": null, "palier": 2, "source": "Danmarks Nationalbank" },
+        { "id": "E7", "label": "Reserves change", "value": ">6 mois (Danemark)", "rawValue": 8, "palier": 1, "source": "Danmarks Nationalbank" },
+        { "id": "E8", "label": "IDE/PIB", "value": "~5% Danemark / quasi-nul Groenland (hors pêche)", "rawValue": 3, "palier": 3, "source": "UNCTAD" },
+        { "id": "E9", "label": "Chomage total", "value": "5.0% Danemark / ~12% Groenland", "rawValue": 8, "palier": 3, "source": "Statistics Denmark / Greenland" },
+        { "id": "E10", "label": "Dette privee/PIB", "value": "~240% Danemark (hypothèques élevées)", "rawValue": 240, "palier": 5, "source": "BIS" },
+        { "id": "E11", "label": "Concentration exports", "value": "Groenland : crevettes + flétan = 90% exports", "rawValue": 90, "palier": 6, "source": "Statistics Greenland / UN Comtrade" },
+        { "id": "E12", "label": "Croissance credit", "value": "~4% Danemark (modéré)", "rawValue": 4, "palier": 2, "source": "Danmarks Nationalbank" },
+        { "id": "E13", "label": "Shadow banking", "value": "~15% (Danemark, fonds pension)", "rawValue": 15, "palier": 2, "source": "FSB / DNB" },
+        { "id": "E14", "label": "Cout energie", "value": "Groenland : diesel import (~0.35 USD/kWh) + hydroélectrique local", "rawValue": null, "palier": 4, "source": "Nukissiorfiit / IEA" },
+        { "id": "E15", "label": "Indice misere", "value": "5.0+5.0 = 10.0 (Danemark), 5.5+12 = 17.5 (Groenland)", "rawValue": 13, "palier": 3, "source": "Calcul (inflation + chômage)" },
+        { "id": "E16", "label": "Independance BC", "value": "Danmarks Nationalbank = très indépendante", "rawValue": null, "palier": 1, "source": "Cukierman Index" }
+      ],
+      "scoreQuanti": 2.6,
+      "scoreQuali": 3,
+      "scoreFinal": 2.76,
+      "trend": "stable",
+      "commentary": "L'économie de la zone est duale : le Danemark est parmi les plus solides du monde (AAA, surplus courant, dette faible), mais Groenland est structurellement dépendant et monoproduit (pêche 90% exports). La pression géopolitique américaine génère une incertitude sur les investissements miniers. Les 25 minéraux critiques (sur 34 listés par l'UE) présents au Groenland représentent un potentiel transformateur mais l'infrastructure est quasi-absente (<100 miles de routes pavées)."
+    },
+    "M": {
+      "label": "Militaire",
+      "indicators": [
+        { "id": "M1", "label": "Depenses mil./PIB", "value": "2.4% Danemark 2025 (engagement OTAN, +£3.2Mrd Arctique)", "rawValue": 2.4, "palier": 3, "source": "SIPRI / Danish MoD" },
+        { "id": "M2", "label": "Conflits armes", "value": "0 direct / Tension militaire US-Danemark (Groenland) + Russie (Arctique)", "rawValue": null, "palier": 5, "source": "IISS / ACLED" },
+        { "id": "M3", "label": "GFP Index", "value": "Danemark 37e / Russie 2e (acteur dominant zone)", "rawValue": null, "palier": 5, "source": "Global Firepower 2025" },
+        { "id": "M4", "label": "Exercices militaires", "value": ">550 soldats exercice Groenland 2025 (OTAN) / 33+ exercices russes Arctique jan-mars 2025", "rawValue": null, "palier": 6, "source": "Danish Armed Forces / USNI" },
+        { "id": "M5", "label": "Proliferation nucleaire", "value": "Russie : vecteurs nucléaires Flotte Nord (SSBN) / OTAN : partage nucléaire potentiel", "rawValue": null, "palier": 6, "source": "FAS / SIPRI" },
+        { "id": "M6", "label": "Coups regionaux", "value": "0 / Pression annexionniste US sans précédent", "rawValue": null, "palier": 4, "source": "Cline Center / Reuters" },
+        { "id": "M7", "label": "Subordination armee", "value": "0.95 Danemark (démocratie solide)", "rawValue": 0.95, "palier": 1, "source": "V-Dem" },
+        { "id": "M8", "label": "Transferts armes", "value": "Danemark : fournisseur Ukraine + modernisation Arctic (F-35, frigates)", "rawValue": null, "palier": 3, "source": "SIPRI" },
+        { "id": "M9", "label": "Bases etrangeres", "value": "Base Pituffik (Thulé, USAF) - présence stratégique US", "rawValue": null, "palier": 5, "source": "IISS" },
+        { "id": "M10", "label": "Milices/PMC", "value": "0 / Wagner-Africa Corps actif en périphérie arctique", "rawValue": null, "palier": 2, "source": "ACLED" },
+        { "id": "M11", "label": "Traites defense", "value": "OTAN article 5 + accords bilatéraux US-Danemark / Plan Arctique 14.6Mrd EUR", "rawValue": null, "palier": 2, "source": "NATO / Danish MoD" },
+        { "id": "M12", "label": "R&D defense", "value": "~0.8% PIB Danemark (en hausse)", "rawValue": 0.8, "palier": 3, "source": "SIPRI" },
+        { "id": "M13", "label": "Fiabilite protecteur", "value": "CRITIQUE : Trump menace militaire contre Groenland (jan 2026) = fiabilité US remise en cause", "rawValue": null, "palier": 6, "source": "ABC News / White House" }
+      ],
+      "scoreQuanti": 4.2,
+      "scoreQuali": 5,
+      "scoreFinal": 4.52,
+      "trend": "up",
+      "commentary": "Dimension la plus alarmante. L'Arctique est devenu le théâtre de tensions tri-polaires (USA-Russie-Chine) avec l'OTAN comme acteur central défensif. La menace d'annexion militaire américaine (jan 2025-2026) est sans précédent dans l'histoire alliée. La Russie maintient 32 navires + 33 sous-marins en Flotte Nord avec 7 brise-glace nucléaires. NATO 'Arctic Sentry' lancé fév 2026. Pituffik (ex-Thulé) = clé voûte défense anti-missile nord-américaine."
+    },
+    "P": {
+      "label": "Politique",
+      "indicators": [
+        { "id": "P1", "label": "CPI Corruption", "value": "90 (Danemark, 1er mondial)", "rawValue": 90, "palier": 1, "source": "Transparency International 2025" },
+        { "id": "P2", "label": "V-Dem LDI", "value": "0.88 (Danemark, démocratie libérale consolidée)", "rawValue": 0.88, "palier": 1, "source": "V-Dem Institute" },
+        { "id": "P3", "label": "WGI Stabilite", "value": "+1.2 (Danemark) / zone Arctique : turbulences géopolitiques", "rawValue": 1.2, "palier": 2, "source": "World Bank WGI" },
+        { "id": "P4", "label": "Cycle electoral", "value": "Elections Groenland mars 2025 : Demokraatit 1er (pro-indépendance lente), IA 3e", "rawValue": null, "palier": 3, "source": "Statistics Greenland / CNN" },
+        { "id": "P5", "label": "Risque changement regime", "value": "Faible Danemark / Groenland : indépendance plausible à 5-10 ans", "rawValue": null, "palier": 3, "source": "EIU / COFACE" },
+        { "id": "P6", "label": "Polarisation", "value": "0.55 (Groenland : clivage indépendantistes vs pragmatiques) / 0.30 Danemark", "rawValue": 0.42, "palier": 3, "source": "V-Dem / CNBC" },
+        { "id": "P7", "label": "Libertes civiles", "value": "98/100 Danemark (Freedom House) - score maximal", "rawValue": 98, "palier": 1, "source": "Freedom House 2025" },
+        { "id": "P8", "label": "Risque successoral", "value": "Très faible (démocratie parlementaire, alternance institutionnalisée)", "rawValue": null, "palier": 1, "source": "EIU" },
+        { "id": "P9", "label": "Autonomie regionale", "value": "Groenland : gouvernement autonome Naalakkersuisut, compétences étendues (sauf défense/diplomatie)", "rawValue": null, "palier": 3, "source": "Danish Constitution / Greenland Self-Government Act" },
+        { "id": "P10", "label": "Opposition", "value": "Pleinement libre (Danemark + Groenland) - pression externe US/Russie", "rawValue": null, "palier": 2, "source": "Freedom House" },
+        { "id": "P11", "label": "Pression demographique", "value": "+0.3% Danemark / -0.5% Groenland (vieillissement + exode)", "rawValue": -0.1, "palier": 3, "source": "UN DESA" },
+        { "id": "P12", "label": "Diaspora", "value": "15 000-20 000 Groenlandais au Danemark (politique, pression indépendance)", "rawValue": null, "palier": 2, "source": "Statistics Denmark" },
+        { "id": "P13", "label": "Capture institutionnelle", "value": "Très faible Danemark / Risque pression US sur institutions groenlandaises", "rawValue": null, "palier": 2, "source": "WJP" },
+        { "id": "P14", "label": "Chocs auto-infliges", "value": "Election Groenland mars 2025 = pivot politique non anticipé (IA battu)", "rawValue": null, "palier": 2, "source": "CNN / NPR" },
+        { "id": "P15", "label": "Fenetres action", "value": "CRITIQUE : passage Trump = fenêtre d'opportunité/pression irréversible sur statut Groenland", "rawValue": null, "palier": 5, "source": "Institut Jacques Delors / CSIS" }
+      ],
+      "scoreQuanti": 2.2,
+      "scoreQuali": 3,
+      "scoreFinal": 2.52,
+      "trend": "up",
+      "commentary": "Le Danemark affiche les meilleurs scores institutionnels mondiaux, mais la zone Arctique subit une pression géopolitique sans précédent depuis 1940. L'élection groenlandaise de mars 2025 (victoire Demokraatit, défaite Inuit Ataqatigiit) signale un pivot vers le pragmatisme économique face aux menaces US. La fenêtre Trump 2025-2028 = pression transformatrice sur le statut constitutionnel de Groenland."
+    },
+    "L": {
+      "label": "Legal",
+      "indicators": [
+        { "id": "L1", "label": "Rule of Law", "value": "0.97 (Danemark, top 3 mondial, WJP)", "rawValue": 0.97, "palier": 1, "source": "WJP 2025" },
+        { "id": "L2", "label": "B-READY", "value": "82 (Danemark)", "rawValue": 82, "palier": 1, "source": "World Bank" },
+        { "id": "L3", "label": "Sanctions", "value": "Aucune / Danemark applique sanctions UE vs Russie", "rawValue": null, "palier": 1, "source": "OFAC / EU" },
+        { "id": "L4", "label": "Protection PI", "value": "~78 (Danemark, cadre UE + accords bilatéraux)", "rawValue": 78, "palier": 1, "source": "GIPC 2025" },
+        { "id": "L5", "label": "Execution contrats", "value": "~400 jours (Danemark, performance élevée)", "rawValue": 400, "palier": 2, "source": "World Bank" },
+        { "id": "L6", "label": "Independance judiciaire", "value": "Très haute (Danemark, top 5 mondial)", "rawValue": null, "palier": 1, "source": "WJP" },
+        { "id": "L7", "label": "BIT actifs", "value": "~70 (Danemark, réseau dense)", "rawValue": 70, "palier": 1, "source": "UNCTAD" },
+        { "id": "L8", "label": "Anti-corruption", "value": "Top 3 mondial (GRECO conforme)", "rawValue": null, "palier": 1, "source": "TI / GRECO" },
+        { "id": "L9", "label": "Arbitrage ICSID", "value": "Membre actif / Groenland : statut d'investissement ambigu (Acte d'autonomie)", "rawValue": null, "palier": 2, "source": "ICSID" },
+        { "id": "L10", "label": "Risque expropriation", "value": "Très faible Danemark / Groenland : moratoire uranium controversé, nationalisations potentielles ressources", "rawValue": null, "palier": 3, "source": "EIU / Greenland Self-Government" }
+      ],
+      "scoreQuanti": 1.3,
+      "scoreQuali": 2,
+      "scoreFinal": 1.58,
+      "trend": "stable",
+      "commentary": "Cadre légal danois parmi les meilleurs au monde. Risques spécifiques à Groenland : ambiguïté juridique du statut minier (moratoire uranium 2021, révision stratégie minière 2025-2029), droit foncier inuit non codifié, et incertitude sur les investissements en cas d'indépendance. La pression US pourrait tester la solidité des institutions légales."
+    },
+    "I": {
+      "label": "Information",
+      "indicators": [
+        { "id": "I1", "label": "RSF rang", "value": "7 (Danemark, presse très libre)", "rawValue": 7, "palier": 1, "source": "RSF 2025" },
+        { "id": "I2", "label": "Freedom on Net", "value": "95 (Danemark, Libre)", "rawValue": 95, "palier": 1, "source": "Freedom House" },
+        { "id": "I3", "label": "Operations influence", "value": "Campagnes russes actives : fake letter ministre groenlandais (2025), +300% infops russes Arctique vs 2019", "rawValue": null, "palier": 6, "source": "Danish Security Service (PET) / DFRLab" },
+        { "id": "I4", "label": "Censure internet", "value": "<1% (Danemark) / Groenland : accès limité zones rurales", "rawValue": 0.5, "palier": 1, "source": "OONI" },
+        { "id": "I5", "label": "Controle medias Etat", "value": "<5% (DR public indépendant, Groenland : KNR public)", "rawValue": 5, "palier": 1, "source": "RSF" },
+        { "id": "I6", "label": "Penetration reseaux sociaux", "value": "~82% Danemark / ~60% Groenland", "rawValue": 71, "palier": 2, "source": "DataReportal" },
+        { "id": "I7", "label": "Desinformation IA", "value": "Deepfakes russes, fausse lettre Groenland 2025, amplification AI pro-séparatiste", "rawValue": null, "palier": 5, "source": "ArcticToday / Misbar.com" },
+        { "id": "I8", "label": "Pluralisme mediatique", "value": "90 (Danemark) / Groenland : KNR monopole relatif", "rawValue": 85, "palier": 1, "source": "RSF" },
+        { "id": "I9", "label": "Journalistes emprisonnes", "value": "0", "rawValue": 0, "palier": 1, "source": "CPJ" },
+        { "id": "I10", "label": "Controle narratif diaspora", "value": "Russie : ciblage diaspora arctique / Chine : influence narrative sur ressources Groenland", "rawValue": null, "palier": 4, "source": "Arctic Institute" },
+        { "id": "I11", "label": "Comptes coordonnes", "value": ">5 000 (campagnes russes anti-OTAN Arctique, pro-indépendance Groenland)", "rawValue": 5000, "palier": 5, "source": "DFRLab / ArcticToday" },
+        { "id": "I12", "label": "Usage VPN", "value": "~12% Danemark", "rawValue": 12, "palier": 2, "source": "Surfshark" }
+      ],
+      "scoreQuanti": 2.5,
+      "scoreQuali": 4,
+      "scoreFinal": 3.1,
+      "trend": "up",
+      "commentary": "Le profil informationnel est trompeusement solide (scores danois excellents) mais la zone Arctique est une cible prioritaire des opérations d'influence russes. La falsification de la lettre du ministre groenlandais (2025), la multiplication par 4 des campagnes depuis 2019, et l'exploitation de la fracture Trump-OTAN constituent un risque informationnel structurel élevé pour la stabilité de la zone."
+    },
+    "C": {
+      "label": "Cyber",
+      "indicators": [
+        { "id": "C1", "label": "NCSI", "value": "~80 (Danemark, top 10 Europe)", "rawValue": 80, "palier": 1, "source": "e-Governance Academy" },
+        { "id": "C2", "label": "GCI", "value": "Danemark : Tier 1 (ITU GCI 2024)", "rawValue": null, "palier": 1, "source": "ITU GCI 2024" },
+        { "id": "C3", "label": "Incidents cyber", "value": "Groenland : infrastructure critique exposée (câbles sous-marins, GPS jamming russe Arctique)", "rawValue": null, "palier": 5, "source": "SecAlliance / Wilson Center" },
+        { "id": "C4", "label": "Capacite offensive", "value": "Danemark : capacités cyber OTAN / Russie GRU actif sur zone / Chine pré-positionnement réseaux Groenland", "rawValue": null, "palier": 5, "source": "CFCS Denmark / Mandiant" },
+        { "id": "C5", "label": "Exposition infra critique", "value": "CRITIQUE : câbles sous-marins Arctique, Pituffik, conduites eau douce, futur câble N-Atlantique ($468M)", "rawValue": null, "palier": 6, "source": "ArcticToday / Truman Project" },
+        { "id": "C6", "label": "Budget cyberdefense", "value": "~0.15% PIB Danemark (CFCS solide) / Groenland : quasi-nul", "rawValue": null, "palier": 2, "source": "CFCS" },
+        { "id": "C7", "label": "Ransomware", "value": "~5 incidents majeurs Danemark (2024-2025) / Groenland : Tusass exposée", "rawValue": 5, "palier": 3, "source": "CFCS / CERT-DK" },
+        { "id": "C8", "label": "Supply chain attacks", "value": "1 (chaîne logistique arctique, GPS jamming Russie Baltic/Arctic 2024-2025)", "rawValue": 1, "palier": 3, "source": "Jamestown Foundation" },
+        { "id": "C9", "label": "Workforce cyber", "value": "~120/100k Danemark / ~5/100k Groenland (criticalement faible)", "rawValue": 60, "palier": 2, "source": "ISC2" },
+        { "id": "C10", "label": "Legislation donnees", "value": "RGPD (Danemark, conforme) / Groenland : Starlink bloqué (protectionnisme numérique Tusass)", "rawValue": null, "palier": 2, "source": "Datatilsynet / ArcticToday" },
+        { "id": "C11", "label": "Cloud exposure", "value": "Modérée Danemark / Groenland : dépendance infrastructure physique sous-marine vulnérable", "rawValue": null, "palier": 4, "source": "CFCS" },
+        { "id": "C12", "label": "Zero-day exposure", "value": "Elevée sur infra Groenland (cible Russie/Chine, pré-positionnement documenté)", "rawValue": null, "palier": 5, "source": "SecAlliance / ainvest.com" }
+      ],
+      "scoreQuanti": 3.25,
+      "scoreQuali": 4,
+      "scoreFinal": 3.55,
+      "trend": "up",
+      "commentary": "L'asymétrie est saisissante : le Danemark dispose d'une cyberdefense mature (CFCS, NCSI top 10), mais Groenland est une cible quasi-sans-défense. Les câbles sous-marins arctiques sont identifiés par les analystes OTAN comme le talon d'Achille de la connectivité transatlantique. Le pré-positionnement cyber russe et chinois sur les réseaux groenlandais est documenté par les services danois. Le nouveau câble N-Atlantique ($468M) sera critique."
+    },
+    "Ee": {
+      "label": "Environnemental",
+      "indicators": [
+        { "id": "Ee1", "label": "ND-GAIN", "value": "~82 Danemark (très haute résilience) / Groenland : exposé (température record oct 2024-sept 2025)", "rawValue": 72, "palier": 2, "source": "ND-GAIN / NOAA Arctic Report 2025" },
+        { "id": "Ee2", "label": "Water Stress", "value": "0.4 (Danemark, faible) / Groenland : eau abondante mais fonte permafrost", "rawValue": 0.8, "palier": 1, "source": "WRI Aqueduct" },
+        { "id": "Ee3", "label": "Dependance extractives", "value": "Groenland : 90% exports = pêche (crevettes+flétan), transition vers mining en cours", "rawValue": 90, "palier": 5, "source": "Statistics Greenland / Mineral Resources Strategy 2025-2029" },
+        { "id": "Ee4", "label": "Catastrophes 5 ans", "value": "Fonte record nappe arctique 2025 / Rivières rouillées (permafrost NOAA) / Tempêtes arctiques +30%", "rawValue": null, "palier": 5, "source": "NOAA Arctic Report Card 2025" },
+        { "id": "Ee5", "label": "Transition energetique", "value": "~80% hydroélectrique Groenland / Danemark : 59% renouvelables (éolien offshore)", "rawValue": 70, "palier": 1, "source": "Nukissiorfiit / Danish Energy Agency" },
+        { "id": "Ee6", "label": "CO2/capita", "value": "6.4 t (Danemark) / 9.5 t (Groenland, diesel)", "rawValue": 7.5, "palier": 3, "source": "Global Carbon Project" },
+        { "id": "Ee7", "label": "Biodiversite menacee", "value": "CRITIQUE : 179/207 glaciers groenlandais en recul depuis 40 ans / Ours polaires, narvals menacés", "rawValue": null, "palier": 6, "source": "NOAA / IUCN" },
+        { "id": "Ee8", "label": "Deforestation", "value": "Non applicable (zone polaire/sous-arctique) / Quelques forêts boréales stables", "rawValue": null, "palier": 1, "source": "Global Forest Watch" },
+        { "id": "Ee9", "label": "Montee des eaux", "value": "PARADOXE : Groenland contribue +27cm SLR engagé / Îles côtières danoises menacées", "rawValue": null, "palier": 6, "source": "Belfer Center / Bulletin of Atomic Scientists 2025" },
+        { "id": "Ee10", "label": "Pollution air PM2.5", "value": "~8 µg/m3 Danemark (bon) / Arctique : diesel + shipping NSR", "rawValue": 10, "palier": 2, "source": "IQAir / WHO" }
+      ],
+      "scoreQuanti": 3.2,
+      "scoreQuali": 4,
+      "scoreFinal": 3.52,
+      "trend": "up",
+      "commentary": "DIMENSION SYSTÉMIQUE CRITIQUE. Le Groenland est à la fois victime et vecteur du changement climatique : sa fonte contribue 27cm de SLR engagé tout en étant la zone de réchauffement le plus rapide (températures record oct 2024-sept 2025, NOAA). Le paradoxe arctique : le recul des glaces ouvre les ressources (NSR +37.9 Mt 2024) tout en déstabilisant les écosystèmes. 179 sur 207 glaciers en recul documenté depuis 1985."
+    }
+  },
+  "composite": 3.1,
+  "compositeMethod": {
+    "simpleAvg": 3.05,
+    "weighted": 3.08,
+    "amplified": 3.1,
+    "weights": {
+      "S": 0.12, "E": 0.15, "M": 0.16, "P": 0.14,
+      "L": 0.10, "I": 0.12, "C": 0.11, "Ee": 0.10
+    }
+  },
+  "classification": "Modere",
+  "opportunity": {
+    "dimensions": {
+      "So": {
+        "label": "Capital humain",
+        "indicators": [
+          { "id": "So1", "label": "Alphabetisation", "value": "99%+ (Danemark) / 98% Groenland", "palier": 7, "source": "UNESCO" },
+          { "id": "So2", "label": "PISA", "value": "481 Danemark (dans la moyenne OCDE)", "palier": 5, "source": "OCDE PISA 2022" },
+          { "id": "So3", "label": "Depenses sante/PIB", "value": "10.5% Danemark (très élevé)", "palier": 7, "source": "OCDE" },
+          { "id": "So4", "label": "Medecins/1000", "value": "4.3 Danemark / 1.8 Groenland", "palier": 5, "source": "WHO" },
+          { "id": "So5", "label": "Scolarisation tertiaire", "value": "~75% Danemark / ~35% Groenland", "palier": 5, "source": "UNESCO" },
+          { "id": "So6", "label": "Mobilite sociale", "value": "Danemark : meilleure mobilité sociale OCDE", "palier": 7, "source": "World Bank" },
+          { "id": "So7", "label": "Pop 15-64%", "value": "63% Danemark", "palier": 5, "source": "UN DESA" },
+          { "id": "So8", "label": "Solde migratoire qualifie", "value": "+2‰ net qualifié Danemark / Groenland perd ses diplômés", "palier": 3, "source": "OECD" }
+        ],
+        "scoreQuanti": 5.5, "scoreQuali": 5, "scoreFinal": 5.3
+      },
+      "Eo": {
+        "label": "Croissance & marche",
+        "indicators": [
+          { "id": "Eo1", "label": "Croissance tendanciel", "value": "+1.5% Danemark / Groenland : potentiel minéral transformateur", "palier": 3, "source": "IMF" },
+          { "id": "Eo2", "label": "IDE/PIB", "value": "~5% Danemark (attractif)", "palier": 5, "source": "UNCTAD" },
+          { "id": "Eo3", "label": "Taille marche", "value": "Petit marché local / Accès marché nordique + UE", "palier": 3, "source": "World Bank" },
+          { "id": "Eo4", "label": "Classe moyenne", "value": "Danemark : 75%+ classe moyenne (État providence)", "palier": 7, "source": "OCDE" },
+          { "id": "Eo5", "label": "Diversification", "value": "Danemark très diversifié / Groenland monoproduit (pêche)", "palier": 4, "source": "WTO / Statistics Denmark" },
+          { "id": "Eo6", "label": "Profondeur financiere", "value": "Danemark : secteur financier très développé", "palier": 6, "source": "IMF FSAP" },
+          { "id": "Eo7", "label": "Brevets/million", "value": "~220 (Danemark, top 15 OCDE)", "palier": 6, "source": "WIPO" },
+          { "id": "Eo8", "label": "Productivite", "value": "~80% USA (Danemark, élevée)", "palier": 6, "source": "Conference Board" },
+          { "id": "Eo9", "label": "ALE", "value": "Accès UE + 40+ accords (Danemark)", "palier": 6, "source": "WTO" },
+          { "id": "Eo10", "label": "Reserves minerales", "value": "EXCEPTIONNEL : 25/34 minéraux critiques UE, 8e réserves REE mondiales", "palier": 7, "source": "GEUS / EU Commission" }
+        ],
+        "scoreQuanti": 5.3, "scoreQuali": 5, "scoreFinal": 5.18
+      },
+      "Mo": {
+        "label": "Securite & alliances",
+        "indicators": [
+          { "id": "Mo1", "label": "Alliances", "value": "OTAN membre fondateur / Article 5 pleinement activable", "palier": 7, "source": "NATO" },
+          { "id": "Mo2", "label": "Exercices conjoints", "value": ">5 exercices arctiques majeurs 2025", "palier": 6, "source": "Danish Armed Forces" },
+          { "id": "Mo3", "label": "Stabilite regionale", "value": "Ambiguë : partenaires nordiques solides mais tension US-Danemark", "palier": 3, "source": "IISS" },
+          { "id": "Mo4", "label": "Accords defense", "value": "Plan Arctic £3.2Mrd + accord bilatéral US-Danemark (Pituffik)", "palier": 5, "source": "Danish MoD" },
+          { "id": "Mo5", "label": "Controle frontieres", "value": "Vaste ZEE arctique (Groenland + Iles Féroé) = potentiel énorme", "palier": 4, "source": "IBRU" },
+          { "id": "Mo6", "label": "R&D defense", "value": "Danemark en hausse, intégration industrie défense OTAN", "palier": 5, "source": "SIPRI" }
+        ],
+        "scoreQuanti": 5.0, "scoreQuali": 4, "scoreFinal": 4.6
+      },
+      "Po": {
+        "label": "Gouvernance & reformes",
+        "indicators": [
+          { "id": "Po1", "label": "WGI Effectiveness", "value": "2.0 (Danemark, top 5 mondial)", "palier": 7, "source": "World Bank WGI" },
+          { "id": "Po2", "label": "V-Dem Participatory", "value": "0.88 (Danemark)", "palier": 7, "source": "V-Dem" },
+          { "id": "Po3", "label": "Reformes", "value": "Stratégie minière Groenland 2025-2029 adoptée", "palier": 5, "source": "Naalakkersuisut" },
+          { "id": "Po4", "label": "E-Government", "value": "Top 3 mondial (Danemark)", "palier": 7, "source": "UN E-Government Survey" },
+          { "id": "Po5", "label": "Decentralisation", "value": "Groenland : autonomie quasi-totale (sauf défense/diplomatie)", "palier": 5, "source": "Greenland Self-Government Act" },
+          { "id": "Po6", "label": "Open Budget", "value": "~75 Danemark (transparent)", "palier": 6, "source": "IBP" },
+          { "id": "Po7", "label": "Succession", "value": "Institutionnellement solide", "palier": 7, "source": "EIU" },
+          { "id": "Po8", "label": "Dialogue social", "value": "Modèle nordique tripartite exemplaire", "palier": 7, "source": "ILO" }
+        ],
+        "scoreQuanti": 6.1, "scoreQuali": 6, "scoreFinal": 6.06
+      },
+      "Lo": {
+        "label": "Attractivite juridique",
+        "indicators": [
+          { "id": "Lo1", "label": "Rule of Law", "value": "0.97 Danemark (top 3)", "palier": 7, "source": "WJP" },
+          { "id": "Lo2", "label": "Protection investisseurs", "value": "Très élevée (Danemark)", "palier": 7, "source": "World Bank" },
+          { "id": "Lo3", "label": "BIT", "value": "~70 BIT actifs", "palier": 6, "source": "UNCTAD" },
+          { "id": "Lo4", "label": "Arbitrage", "value": "Centre arbitrage Copenhagen + ICSID", "palier": 6, "source": "ICSID" },
+          { "id": "Lo5", "label": "PI", "value": "~78 (top 10)", "palier": 6, "source": "GIPC" },
+          { "id": "Lo6", "label": "Imposition corporate", "value": "22% Danemark (compétitif pour pays nordique)", "palier": 5, "source": "OCDE" },
+          { "id": "Lo7", "label": "Zones franches", "value": "Zones minières Groenland (régime fiscal attractif)", "palier": 4, "source": "Greenland Minerals Strategy" },
+          { "id": "Lo8", "label": "Stabilite reglementaire", "value": "Très haute Danemark / Groenland en construction", "palier": 5, "source": "WEF" }
+        ],
+        "scoreQuanti": 5.75, "scoreQuali": 6, "scoreFinal": 5.85
+      },
+      "Io": {
+        "label": "Innovation & numerique",
+        "indicators": [
+          { "id": "Io1", "label": "GII", "value": "Top 10 Europe (Danemark)", "palier": 6, "source": "WIPO GII 2025" },
+          { "id": "Io2", "label": "R&D/PIB", "value": "3.1% Danemark (très élevé)", "palier": 6, "source": "OCDE" },
+          { "id": "Io3", "label": "Startups", "value": "Ecosystème Copenhagen dynamique (Zendesk, Unity, Trustpilot)", "palier": 5, "source": "Startup Genome" },
+          { "id": "Io4", "label": "Internet HD", "value": "~95% Danemark / Groenland : en cours (nouveau câble $468M)", "palier": 5, "source": "ITU" },
+          { "id": "Io5", "label": "Publications IA", "value": "Danemark : actif en IA médicale, green tech, maritime", "palier": 5, "source": "Elsevier" },
+          { "id": "Io6", "label": "Capital-risque", "value": "~0.4% PIB Danemark (bon pour taille)", "palier": 5, "source": "Dealroom" },
+          { "id": "Io7", "label": "STEM", "value": "~22% diplômés STEM Danemark", "palier": 5, "source": "Eurostat" },
+          { "id": "Io8", "label": "Adoption IA", "value": "Politique IA nationale danoise 2025 active", "palier": 5, "source": "Danish Agency for Digital Government" }
+        ],
+        "scoreQuanti": 5.25, "scoreQuali": 5, "scoreFinal": 5.15
+      },
+      "Co": {
+        "label": "Maturite technologique",
+        "indicators": [
+          { "id": "Co1", "label": "GCI", "value": "Tier 1 Danemark", "palier": 7, "source": "ITU" },
+          { "id": "Co2", "label": "Cloud", "value": "Très développé (Microsoft, AWS implantés Danemark)", "palier": 6, "source": "Synergy Research" },
+          { "id": "Co3", "label": "5G+fibre", "value": "~98% couverture 5G Danemark / Groenland : en cours", "palier": 6, "source": "GSMA" },
+          { "id": "Co4", "label": "Souverainete donnees", "value": "RGPD conforme, Datatilsynet actif", "palier": 6, "source": "Datatilsynet" },
+          { "id": "Co5", "label": "CERT", "value": "CFCS (Centre for Cybersecurity) = référence nordique", "palier": 7, "source": "CFCS" },
+          { "id": "Co6", "label": "Workforce cyber", "value": "~120/100k Danemark (élevé)", "palier": 6, "source": "ISC2" },
+          { "id": "Co7", "label": "E-commerce", "value": "~85% pénétration e-commerce (Danemark)", "palier": 6, "source": "Eurostat" },
+          { "id": "Co8", "label": "Identite numerique", "value": "MitID (Danemark, leader eIDAS)", "palier": 7, "source": "Danish Agency for Digital Government" }
+        ],
+        "scoreQuanti": 6.37, "scoreQuali": 6, "scoreFinal": 6.22
+      },
+      "Eeo": {
+        "label": "Durabilite & transition",
+        "indicators": [
+          { "id": "Eeo1", "label": "Renouvelables", "value": "59% Danemark (éolien offshore mondial #1 ratio) / 80% hydro Groenland", "palier": 6, "source": "Danish Energy Agency / Nukissiorfiit" },
+          { "id": "Eeo2", "label": "NDC", "value": "Danemark : -70% GES vs 1990 d'ici 2030 (loi climatique)", "palier": 6, "source": "UNFCCC" },
+          { "id": "Eeo3", "label": "Obligations vertes", "value": "Danemark : émetteur actif obligations vertes souveraines", "palier": 6, "source": "Climate Bonds Initiative" },
+          { "id": "Eeo4", "label": "ND-GAIN Prep", "value": "~82 (Danemark)", "palier": 6, "source": "ND-GAIN" },
+          { "id": "Eeo5", "label": "Recyclage", "value": "~45% déchets recyclés Danemark (UE leader)", "palier": 6, "source": "Eurostat" },
+          { "id": "Eeo6", "label": "Invest verts", "value": "~3% PIB investissements verts Danemark", "palier": 6, "source": "IEA" },
+          { "id": "Eeo7", "label": "Aires protegees", "value": "Groenland : parc national NE = plus grand du monde (972 000 km²)", "palier": 7, "source": "IUCN WDPA" },
+          { "id": "Eeo8", "label": "EPI", "value": "~77 Danemark (top 5 mondial)", "palier": 7, "source": "Yale EPI 2024" }
+        ],
+        "scoreQuanti": 6.25, "scoreQuali": 6, "scoreFinal": 6.15
+      }
+    },
+    "composite": 5.6,
+    "classification": "Elevé",
+    "weights": {
+      "So": 0.12, "Eo": 0.17, "Mo": 0.07, "Po": 0.14,
+      "Lo": 0.13, "Io": 0.15, "Co": 0.12, "Eeo": 0.10
+    }
+  },
+  "delta": -2.5,
+  "quadrant": "Pole attractif sous tension",
+  "resilience": {
+    "RS1": 6,
+    "RE1": 6,
+    "RM1": 6,
+    "RP1": 7,
+    "RI1": 6,
+    "RL1": 7,
+    "commentary": "Résilience institutionnelle danoise exceptionnelle (RP1=7, RL1=7). RS1=6 (société civile active, mobilisation anti-Trump). RE1=6 (politique monétaire indépendante, arrimage EUR solide). RM1=6 (armée sous contrôle civil, doctrine OTAN). Résilience partielle de Groenland (autonomie politique fonctionnelle mais dépendance économique)."
+  },
+  "scenarios": {
+    "baseline": "Statu quo géopolitique : Groenland reste territoire autonome danois, OTAN renforce présence, ressources minières en phase de prospection. Composite 3.1.",
+    "degradation": "Pression US escalade (2025-2028) : Groenland proclame indépendance unilatérale sous pression / partition de fait. Composite → 4.5-5.0. Déclencheur : élu pro-indépendance Groenland + retrait aide danoise.",
+    "amelioration": "Accord arctique multilatéral : OTAN consolide défense collective, Groenland négocie statut d'État associé avec UE, investissements miniers décollent. Composite → 2.3."
+  },
+  "velocite": {
+    "delta_trimestre": 0.35,
+    "alerte": false,
+    "note": "Hausse graduelle mais soutenue. Dimension M en accélération (M13 fiabilité protecteur = signal critique)."
+  },
+  "signatures": [
+    "SIG-M1 : Menace militaire intra-alliée sans précédent (USA vs Danemark sur Groenland)",
+    "SIG-I1 : Opérations influence russes actives (+300% depuis 2019), cible élection groenlandaise 2025",
+    "SIG-C1 : Pré-positionnement cyber Russie/Chine sur réseaux Groenland (documenté PET)"
+  ],
+  "flags": [
+    "M13-CRITIQUE : fiabilité protecteur américain remise en cause (menace militaire jan 2025-2026)",
+    "Ee7-CRITIQUE : 179/207 glaciers en recul, SLR engagé +27cm",
+    "E11-ELEVEE : concentration exports Groenland 90% pêche = vulnérabilité monoproduit"
+  ]
+}

@@ -1,0 +1,387 @@
+{
+  "zone": {
+    "id": "mer-de-chine",
+    "name": "Mer de Chine méridionale (Chine)",
+    "region": "asie"
+  },
+  "meta": {
+    "date": "2026-03-13",
+    "version": "2.1",
+    "analyst": "Inflexion Intelligence"
+  },
+  "dimensions": {
+    "S": {
+      "label": "Social",
+      "indicators": [
+        { "id": "S1", "label": "Gini", "value": "0.467 (2022, Asie-Pacifique moy. 0.35)", "rawValue": 0.467, "palier": 5, "source": "World Bank / Statista" },
+        { "id": "S2", "label": "IDH", "value": "0.788 (2023, 75e mondial)", "rawValue": 0.788, "palier": 2, "source": "UNDP" },
+        { "id": "S3", "label": "Chômage jeunes", "value": "16.5% (déc 2025, nouvelle méthodologie)", "rawValue": 16.5, "palier": 4, "source": "NBS Chine" },
+        { "id": "S4", "label": "Solde migratoire", "value": "-1.5‰ (fuite talents qualifiés vers Occident)", "rawValue": -1.5, "palier": 3, "source": "UN DESA" },
+        { "id": "S5", "label": "Mouvements sociaux", "value": "3 (supprimés, post-COVID zéro, Hong Kong)", "rawValue": 3, "palier": 4, "source": "ACLED" },
+        { "id": "S6", "label": "Tensions ethniques", "value": "Ouïghours (Xinjiang), Tibétains : répression systématique", "rawValue": null, "palier": 6, "source": "ICG / Freedom House" },
+        { "id": "S7", "label": "Lits hôpital/1000", "value": "6.9 (bonne capacité)", "rawValue": 6.9, "palier": 2, "source": "WHO" },
+        { "id": "S8", "label": "Croissance urbaine", "value": "+1.5%/an (ralentissement post-bulle immo)", "rawValue": 1.5, "palier": 3, "source": "UN-Habitat" },
+        { "id": "S9", "label": "Inégalité genre (GII)", "value": "0.192 (2023)", "rawValue": 0.192, "palier": 3, "source": "UNDP" },
+        { "id": "S10", "label": "Espérance de vie", "value": "78.6 ans (2024)", "rawValue": 78.6, "palier": 2, "source": "WHO" },
+        { "id": "S11", "label": "Sous-alimentation", "value": "~2.5% (FAO 2024)", "rawValue": 2.5, "palier": 2, "source": "FAO" },
+        { "id": "S12", "label": "Éducation secondaire", "value": "~92% (taux brut)", "rawValue": 92, "palier": 2, "source": "UNESCO" }
+      ],
+      "scoreQuanti": 3.2,
+      "scoreQuali": 4,
+      "scoreFinal": 3.5,
+      "trend": "stable",
+      "commentary": "Société à deux vitesses : bonne infrastructure sociale (santé, éducation) masquant des inégalités profondes (Gini 0.467 réel). Chômage jeunes élevé (réel probablement >20%) aggravé par la crise immobilière. Tensions ethniques graves au Xinjiang (génocide culturel ONU). Cohésion nationale instillée par le nationalisme d'État."
+    },
+    "E": {
+      "label": "Économique",
+      "indicators": [
+        { "id": "E1", "label": "PIB réel", "value": "5.0% (2025, cible officielle), 4.8% Q3", "rawValue": 5.0, "palier": 2, "source": "NBS / IMF" },
+        { "id": "E2", "label": "Inflation", "value": "-0.1% CPI (déflation), PPI -2.5%", "rawValue": -0.1, "palier": 4, "source": "NBS / IMF Art IV 2025" },
+        { "id": "E3", "label": "Dette/PIB", "value": "~124% (inclus LGFV) ; 61% officiel", "rawValue": 124, "palier": 6, "source": "World Bank CEU Dec 2025" },
+        { "id": "E4", "label": "Balance courante", "value": "+3.3% PIB (surplus export)", "rawValue": 3.3, "palier": 2, "source": "IMF" },
+        { "id": "E5", "label": "Notation souveraine", "value": "A1 (Moody's) / A+ (Fitch)", "rawValue": null, "palier": 2, "source": "Moody's / Fitch" },
+        { "id": "E6", "label": "Régime change", "value": "Géré (bande PBOC) ; pressions dépréciation 2025", "rawValue": null, "palier": 3, "source": "PBOC" },
+        { "id": "E7", "label": "Réserves change", "value": "$3.2 trillions (>18 mois imports)", "rawValue": 18, "palier": 1, "source": "SAFE China" },
+        { "id": "E8", "label": "IDE/PIB", "value": "~1.0% (baisse marque depuis 2023)", "rawValue": 1.0, "palier": 4, "source": "UNCTAD" },
+        { "id": "E9", "label": "Chômage total", "value": "3.75% (officiel, sous-estimé)", "rawValue": 3.75, "palier": 2, "source": "NBS" },
+        { "id": "E10", "label": "Dette privée/PIB", "value": "~312% (non-financier total)", "rawValue": 312, "palier": 7, "source": "BIS / World Bank" },
+        { "id": "E11", "label": "Concentration exports", "value": "Manufacture ~60% (diversifiée mais dépendance tech US)", "rawValue": 60, "palier": 3, "source": "UN Comtrade" },
+        { "id": "E12", "label": "Croissance crédit", "value": "~8% (modérée mais dette initiale colossale)", "rawValue": 8, "palier": 4, "source": "PBOC" },
+        { "id": "E13", "label": "Shadow banking", "value": "~28% PIB (LGFV, fiduciaires)", "rawValue": 28, "palier": 5, "source": "IMF / World Bank" },
+        { "id": "E14", "label": "Coût énergie", "value": "Maîtrisé (dominant charbon + nucléaire + renouvelables)", "rawValue": null, "palier": 2, "source": "IEA" },
+        { "id": "E15", "label": "Indice misère", "value": "~4 (déflation + faible chômage officiel)", "rawValue": 4, "palier": 1, "source": "Calcul Inflexion" },
+        { "id": "E16", "label": "Indépendance BC", "value": "Limitée (PBOC sous Conseil État, Xi direct)", "rawValue": null, "palier": 5, "source": "IMF Art IV 2025" }
+      ],
+      "scoreQuanti": 3.3,
+      "scoreQuali": 4,
+      "scoreFinal": 3.6,
+      "trend": "stable",
+      "commentary": "Économie solide en apparence (5% croissance) mais fragilités profondes : déflation persistante, crise immobilière (Evergrande/Country Garden), dette non-financière à 312% du PIB. La dépendance aux exportations tech rend l'économie vulnérable aux tarifs douaniers Trump (2025-26). Surplus courant fort mais IDE entrant en baisse structurelle (reshoring occidental)."
+    },
+    "M": {
+      "label": "Militaire",
+      "indicators": [
+        { "id": "M1", "label": "Dépenses mil./PIB", "value": "1.5% officiel (~3-4% réel selon DoD US)", "rawValue": 3.5, "palier": 4, "source": "SIPRI / Heritage Foundation" },
+        { "id": "M2", "label": "Conflits armés", "value": "Pas de guerre ouverte (tension Taiwan, Mer de Chine)", "rawValue": null, "palier": 4, "source": "ACLED / IISS" },
+        { "id": "M3", "label": "GFP Index", "value": "3e mondial (PLA Navy 1ère en nombre de navires)", "rawValue": 3, "palier": 3, "source": "Global Firepower" },
+        { "id": "M4", "label": "Exercices militaires", "value": "163 opérations MCS + 2 exercices Taiwan 2025", "rawValue": 163, "palier": 7, "source": "CSIS ChinaPower" },
+        { "id": "M5", "label": "Prolifération nucléaire", "value": "~500 ogives (2024, accélération SIPRI)", "rawValue": 500, "palier": 6, "source": "SIPRI / FAS" },
+        { "id": "M6", "label": "Coups régionaux 5 ans", "value": "0 (hors coups d'État Myanmar soutenu indirectement)", "rawValue": 0, "palier": 2, "source": "Cline Center" },
+        { "id": "M7", "label": "Subordination armée", "value": "PLA = 'armée du Parti' (Xi président CMC)", "rawValue": null, "palier": 6, "source": "V-Dem / IISS" },
+        { "id": "M8", "label": "Transferts armes", "value": "Exportateur majeur (Moyen-Orient, Afrique, Russie dual-use)", "rawValue": null, "palier": 5, "source": "SIPRI" },
+        { "id": "M9", "label": "Bases étrangères", "value": "Djibouti, Îles artificielles MCS (7 bases opérationnelles)", "rawValue": null, "palier": 6, "source": "IISS" },
+        { "id": "M10", "label": "Milices/PMC", "value": "Garde côtière maritime (armée), milices pêcheurs MCS", "rawValue": null, "palier": 5, "source": "CSIS ChinaPower" },
+        { "id": "M11", "label": "Traités défense", "value": "Pas d'alliance formelle (OCS, BRICS) ; isolement stratégique choisi", "rawValue": null, "palier": 4, "source": "IISS" },
+        { "id": "M12", "label": "R&D défense", "value": "~20% budget défense (hypersoniques, IA militaire, spatial)", "rawValue": 20, "palier": 3, "source": "RAND / IISS" },
+        { "id": "M13", "label": "Fiabilité protecteur", "value": "Russie : partenariat 'sans limites' mais fragile post-Iran", "rawValue": null, "palier": 3, "source": "IISS" }
+      ],
+      "scoreQuanti": 4.5,
+      "scoreQuali": 5,
+      "scoreFinal": 4.7,
+      "trend": "up",
+      "commentary": "Montée en puissance militaire structurelle : 7.2% budget 2025-26. Exercices Taiwan (Justice Mission 2025, Strait Thunder 2025A) normalisent les simulations de blocus. 163 opérations MCS = record 2025. 7 îles artificielles = bases avancées. Programme nucléaire accéléré (500→1000 ogives visés 2030). Absence de guerre ouverte mais 'zone grise' permanente."
+    },
+    "P": {
+      "label": "Politique",
+      "indicators": [
+        { "id": "P1", "label": "CPI", "value": "43/100 (2025, 76e/182, moyenne mondiale)", "rawValue": 43, "palier": 4, "source": "Transparency International" },
+        { "id": "P2", "label": "V-Dem LDI", "value": "0.04 (régime autoritaire électoral bas)", "rawValue": 0.04, "palier": 7, "source": "V-Dem Institute" },
+        { "id": "P3", "label": "WGI Stabilité", "value": "+0.1 (stable en apparence)", "rawValue": 0.1, "palier": 3, "source": "World Bank WGI" },
+        { "id": "P4", "label": "Cycle électoral", "value": "Pas d'élections compétitives (PCC monopole)", "rawValue": null, "palier": 6, "source": "Freedom House" },
+        { "id": "P5", "label": "Risque régime", "value": "Faible CT (Xi consolidé), mais élevé MT (succession)", "rawValue": null, "palier": 4, "source": "ICG" },
+        { "id": "P6", "label": "Polarisation", "value": "Nationalisme d'État élevé, dissidence interne réprimée", "rawValue": null, "palier": 5, "source": "V-Dem" },
+        { "id": "P7", "label": "Libertés civiles", "value": "9/100 (Pas libre, Freedom House 2025)", "rawValue": 9, "palier": 7, "source": "Freedom House" },
+        { "id": "P8", "label": "Risque successoral", "value": "Modéré : Xi 3e mandat mais aucun successeur désigné", "rawValue": null, "palier": 4, "source": "ICG" },
+        { "id": "P9", "label": "Autonomie régionale", "value": "Xinjiang, Tibet, HK (autonomie de plus en plus fictive)", "rawValue": null, "palier": 6, "source": "ICG" },
+        { "id": "P10", "label": "Opposition", "value": "Nulle en interne (civil society démantelée)", "rawValue": null, "palier": 7, "source": "Freedom House / ICNL" },
+        { "id": "P11", "label": "Pression démographique", "value": "-0.3‰ (déclin population 2022-2025)", "rawValue": -0.3, "palier": 4, "source": "NBS" },
+        { "id": "P12", "label": "Diaspora politique", "value": "Diaspora pro-démocratie active mais peu influente", "rawValue": null, "palier": 3, "source": "Freedom House" },
+        { "id": "P13", "label": "Capture institutionnelle", "value": "Totale : Xi = PCC = armée = justice = médias", "rawValue": null, "palier": 7, "source": "Freedom House 2025 / Journal of Democracy" },
+        { "id": "P14", "label": "Chocs auto-infligés", "value": "Tarifs récurrents (Trump 2025) aggravés par posture agressive", "rawValue": null, "palier": 5, "source": "OECD Economic Outlook 2025" },
+        { "id": "P15", "label": "Fenêtres d'action", "value": "Crise HK/Taiwan = fenêtres d'escalade prévisibles", "rawValue": null, "palier": 5, "source": "CSIS / AEI" }
+      ],
+      "scoreQuanti": 5.1,
+      "scoreQuali": 5,
+      "scoreFinal": 5.0,
+      "trend": "stable",
+      "commentary": "Régime stable mais autoritaire en durcissement continu sous Xi Jinping (3e mandat). Capture institutionnelle totale (armée du Parti, justice du Parti). Seule vraie fragilité CT : succession opaque dans un système sans mécanisme institutionnel établi. Nationalisme de Taiwan comme ressort de légitimité intérieure amplifié par les exercices militaires réguliers."
+    },
+    "L": {
+      "label": "Légal",
+      "indicators": [
+        { "id": "L1", "label": "Rule of Law", "value": "0.40 (percentile WJP, 75e/142)", "rawValue": 0.40, "palier": 5, "source": "WJP" },
+        { "id": "L2", "label": "B-READY", "value": "~63 (procédures complexes mais infrastructure forte)", "rawValue": 63, "palier": 3, "source": "World Bank" },
+        { "id": "L3", "label": "Sanctions", "value": "Sanctions US (Xinjiang, PLA, tech), mais pas totales", "rawValue": null, "palier": 4, "source": "OFAC / EU" },
+        { "id": "L4", "label": "Protection PI", "value": "Amélioration officielle ; contrefaçon systémique persiste", "rawValue": null, "palier": 4, "source": "GIPC" },
+        { "id": "L5", "label": "Exécution contrats", "value": "~496 jours", "rawValue": 496, "palier": 4, "source": "World Bank" },
+        { "id": "L6", "label": "Indépendance judiciaire", "value": "Faible (juges = membres PCC, cas politiques perdus)", "rawValue": null, "palier": 6, "source": "Freedom House / Journal of Democracy" },
+        { "id": "L7", "label": "BIT actifs", "value": "~130 (actif, mais exceptions PCC)", "rawValue": 130, "palier": 2, "source": "UNCTAD" },
+        { "id": "L8", "label": "Anti-corruption", "value": "Campagne Xi : 58 'tigres' en 2024 mais instrument politique", "rawValue": null, "palier": 4, "source": "TI / CCDI" },
+        { "id": "L9", "label": "Arbitrage ICSID", "value": "Membre ; usage limité par souveraineté revendiquée", "rawValue": null, "palier": 3, "source": "ICSID" },
+        { "id": "L10", "label": "Risque expropriation", "value": "Modéré (cas tech, due diligence obligatoire)", "rawValue": null, "palier": 4, "source": "ICG / OECD" }
+      ],
+      "scoreQuanti": 3.9,
+      "scoreQuali": 4,
+      "scoreFinal": 3.9,
+      "trend": "stable",
+      "commentary": "Cadre légal formellement développé mais sous contrôle du PCC. L'indépendance judiciaire est une fiction pour les cas politiquement sensibles. Les lois de sécurité nationale (2015, 2020 HK) sont utilisées contre les entreprises étrangères. Amélioration anti-corruption est instrumentalisée politiquement."
+    },
+    "I": {
+      "label": "Information",
+      "indicators": [
+        { "id": "I1", "label": "RSF rang", "value": "176e/180 (2025)", "rawValue": 176, "palier": 7, "source": "RSF 2025" },
+        { "id": "I2", "label": "Freedom on Net", "value": "9/100 (Pas libre, 2025)", "rawValue": 9, "palier": 7, "source": "Freedom House" },
+        { "id": "I3", "label": "Opérations influence", "value": ">30 (Storm-0558, Spamouflage, etc.)", "rawValue": 30, "palier": 7, "source": "Microsoft MSTIC / Stanford IO" },
+        { "id": "I4", "label": "Censure internet", "value": ">200 000 domaines bloqués (Great Firewall)", "rawValue": 200000, "palier": 7, "source": "RSF / GFWatch" },
+        { "id": "I5", "label": "Contrôle médias État", "value": "~95% (CCTV, Xinhua monopole + censure internet)", "rawValue": 95, "palier": 7, "source": "RSF" },
+        { "id": "I6", "label": "Pénétration réseaux sociaux", "value": "~75% WeChat/Weibo (domestiques surveillés)", "rawValue": 75, "palier": 5, "source": "DataReportal" },
+        { "id": "I7", "label": "Désinformation IA", "value": "Leader mondial deepfakes politiques (Spamouflage, GRU-équivalent)", "rawValue": null, "palier": 7, "source": "Stanford IO / CYFIRMA" },
+        { "id": "I8", "label": "Pluralisme médiatique", "value": "Nul (7 sujets 'tabous' officiels depuis 2013)", "rawValue": null, "palier": 7, "source": "RSF / Freedom House" },
+        { "id": "I9", "label": "Journalistes emprisonnés", "value": ">50 (CPJ 2025, 1er ou 2e mondial)", "rawValue": 50, "palier": 7, "source": "CPJ" },
+        { "id": "I10", "label": "Contrôle narratif diaspora", "value": "Opérations 'Fox Hunt', stations police illégales étrangères", "rawValue": null, "palier": 7, "source": "DFRLab / FBI" },
+        { "id": "I11", "label": "Comptes coordonnés", "value": ">50 000 (Spamouflage = plus grande opération mondiale)", "rawValue": 50000, "palier": 7, "source": "Stanford IO" },
+        { "id": "I12", "label": "Usage VPN", "value": "~31% (illégal depuis 2017, MIIT reinforced nov 2025)", "rawValue": 31, "palier": 6, "source": "MSS Nov 2025 / CNBC" }
+      ],
+      "scoreQuanti": 6.8,
+      "scoreQuali": 7,
+      "scoreFinal": 6.9,
+      "trend": "up",
+      "commentary": "Système de contrôle informationnel le plus sophistiqué au monde : 2 millions d'agents internet, Great Firewall 200k+ domaines, Spamouflage (50k+ comptes), deepfakes exportés (Kazakhstan, Éthiopie, Myanmar via Geedge Networks). Salt Typhoon = 200+ télécoms mondiales compromises. Opération Fox Hunt = répression transnationale diaspora."
+    },
+    "C": {
+      "label": "Cyber",
+      "indicators": [
+        { "id": "C1", "label": "NCSI", "value": "~70 (infra défense forte)", "rawValue": 70, "palier": 3, "source": "e-Governance Academy (estimé)" },
+        { "id": "C2", "label": "GCI", "value": "~80 (T2 Tier 1 ITU)", "rawValue": 80, "palier": 2, "source": "ITU GCI 2024" },
+        { "id": "C3", "label": "Incidents cyber", "value": "Volt Typhoon (200+ télécoms), Salt Typhoon (>200 opérateurs)", "rawValue": null, "palier": 7, "source": "CISA / Congress.gov" },
+        { "id": "C4", "label": "Capacité offensive", "value": "Grade mondial: MSS + PLA SSF (Unit 61398, APT40, APT41)", "rawValue": null, "palier": 7, "source": "MITRE / Mandiant / CISA" },
+        { "id": "C5", "label": "Exposition infra critique", "value": "Élevée côté victime (US/Alliés cibles) + risque contre-frappes", "rawValue": null, "palier": 6, "source": "CISA / DoD" },
+        { "id": "C6", "label": "Budget cyberdéfense", "value": "~5% budget défense (SSF, Great Firewall maintenance)", "rawValue": 5, "palier": 2, "source": "RAND" },
+        { "id": "C7", "label": "Ransomware", "value": "Faible domestique ; APT actifs à l'étranger", "rawValue": null, "palier": 3, "source": "CISA" },
+        { "id": "C8", "label": "Attaques supply chain", "value": ">10 (Solarwinds-equiv, HW backdoors Huawei/ZTE)", "rawValue": 10, "palier": 7, "source": "CISA / Cyberwarzone 2026" },
+        { "id": "C9", "label": "Workforce cyber", "value": "~500/100k (2e mondiale après USA)", "rawValue": 500, "palier": 2, "source": "ISC2 (estimé)" },
+        { "id": "C10", "label": "Législation données", "value": "PIPL/DSL 2021 : cadre fort mais État = exempt", "rawValue": null, "palier": 3, "source": "CACS China" },
+        { "id": "C11", "label": "Cloud exposure", "value": "Souverain (Alibaba Cloud, Huawei) ; risque d'accès État", "rawValue": null, "palier": 4, "source": "Gartner" },
+        { "id": "C12", "label": "Zero-day exposure", "value": "Élevée (stockage zero-day légalement obligatoire en Chine)", "rawValue": null, "palier": 6, "source": "VulDB / CISA" }
+      ],
+      "scoreQuanti": 4.3,
+      "scoreQuali": 6,
+      "scoreFinal": 5.0,
+      "trend": "up",
+      "commentary": "Puissance cyber offensive de rang 1 mondial : Volt Typhoon (prépositionnement infra critique US), Salt Typhoon (200+ télécoms globaux), APT40/41 actifs. La loi 2022 force la divulgation des zero-days à l'État avant publication. Défense nationale forte mais paradoxe : Chine = attaquant ET cible (contre-frappes US signalées). Export de surveillance (Geedge Networks)."
+    },
+    "Ee": {
+      "label": "Environnemental",
+      "indicators": [
+        { "id": "Ee1", "label": "ND-GAIN", "value": "~56 (vulnérabilité modérée)", "rawValue": 56, "palier": 3, "source": "ND-GAIN" },
+        { "id": "Ee2", "label": "Water Stress", "value": "3.8 (élevé ; nord très sec, sud inondé)", "rawValue": 3.8, "palier": 5, "source": "WRI Aqueduct" },
+        { "id": "Ee3", "label": "Dépendance extractives", "value": "Charbon ~55% énergie (transition en cours)", "rawValue": 55, "palier": 5, "source": "IEA" },
+        { "id": "Ee4", "label": "Catastrophes naturelles 5 ans", "value": "8 (typhons, inondations, sécheresses)", "rawValue": 8, "palier": 4, "source": "EM-DAT" },
+        { "id": "Ee5", "label": "Transition énergétique", "value": "~35% renouvelables 2024 (leader mondial solaire/éolien)", "rawValue": 35, "palier": 3, "source": "IEA / CREA" },
+        { "id": "Ee6", "label": "CO2/capita", "value": "8.5 tonnes (émissions totales peak 2024-25)", "rawValue": 8.5, "palier": 5, "source": "Global Carbon Project / Carbon Brief" },
+        { "id": "Ee7", "label": "Biodiversité menacée", "value": "~18% espèces menacées", "rawValue": 18, "palier": 4, "source": "IUCN" },
+        { "id": "Ee8", "label": "Déforestation", "value": "~0.3%/an (reforestation partielle officielle)", "rawValue": 0.3, "palier": 2, "source": "Global Forest Watch" },
+        { "id": "Ee9", "label": "Montée des eaux", "value": "~8% pop (Shanghai, Guangzhou, côtes)", "rawValue": 8, "palier": 4, "source": "Climate Central" },
+        { "id": "Ee10", "label": "Pollution air PM2.5", "value": "~32 µg/m³ (amélioration depuis 2015, encore 2x OMS)", "rawValue": 32, "palier": 4, "source": "IQAir 2024" }
+      ],
+      "scoreQuanti": 3.9,
+      "scoreQuali": 4,
+      "scoreFinal": 3.9,
+      "trend": "down",
+      "commentary": "Double posture : plus grand émetteur CO2 mondial ET leader mondial des renouvelables (solaire, éolien). Les émissions ont possiblement atteint leur pic en 2024-25 (Carbon Brief). Stress hydrique structurel (nord sec). Vulnérabilité côtière importante (Shanghai, Guangzhou). Progrès air qualité réels depuis 2015 mais loin des normes OMS."
+    }
+  },
+  "composite": 4.8,
+  "classification": "Élevé",
+  "opportunity": {
+    "So": {
+      "label": "Capital humain",
+      "indicators": [
+        { "id": "So1", "label": "Alphabétisation", "value": "97% (très élevé)", "rawValue": 97, "palier": 6, "source": "UNESCO" },
+        { "id": "So2", "label": "PISA", "value": "Top 3 mondial (Shanghai/Beijing/Zhejiang)", "rawValue": null, "palier": 7, "source": "OCDE PISA" },
+        { "id": "So3", "label": "Dépenses santé/PIB", "value": "~5.5% (2024)", "rawValue": 5.5, "palier": 4, "source": "WHO" },
+        { "id": "So4", "label": "Médecins/1000", "value": "2.4 (en hausse)", "rawValue": 2.4, "palier": 4, "source": "WHO" },
+        { "id": "So5", "label": "Scolarisation tertiaire", "value": "~60% (explosion universitaire)", "rawValue": 60, "palier": 6, "source": "UNESCO" },
+        { "id": "So6", "label": "Mobilité sociale", "value": "Gaokao = ascenseur social, mais inégalités rurales-urbaines", "rawValue": null, "palier": 4, "source": "Asia Society" },
+        { "id": "So7", "label": "Pop 15-64 %", "value": "68% (encore favorable mais vieillissement accéléré)", "rawValue": 68, "palier": 5, "source": "UN DESA" },
+        { "id": "So8", "label": "Solde migratoire qualifié", "value": "Légèrement négatif (hauts qualifiés quittent vers US/EU)", "rawValue": null, "palier": 4, "source": "OECD" }
+      ],
+      "scoreQuanti": 5.0,
+      "scoreQuali": 5,
+      "scoreFinal": 5.0,
+      "commentary": "Capital humain exceptionnel : top 3 PISA, 60% scolarisation tertiaire, 1,4 milliard d'habitants. Dividende démographique en fin de cycle mais encore exploitable. Légère fuite des talents qualifiés vers l'Occident préoccupante sur le long terme."
+    },
+    "Eo": {
+      "label": "Croissance économique",
+      "indicators": [
+        { "id": "Eo1", "label": "PIB tendanciel", "value": "4.5-5% (2025-2027 malgré ralentissement)", "rawValue": 5, "palier": 5, "source": "IMF / BOFIT" },
+        { "id": "Eo2", "label": "IDE/PIB", "value": "~1% (en baisse mais encore significatif)", "rawValue": 1, "palier": 4, "source": "UNCTAD" },
+        { "id": "Eo3", "label": "PIB PPA", "value": "$35 trillions (1er mondial en PPA 2024)", "rawValue": 35000, "palier": 7, "source": "IMF" },
+        { "id": "Eo4", "label": "Croissance classe moyenne", "value": "Stagnation (immobilier + chômage jeunes)", "rawValue": null, "palier": 4, "source": "World Bank" },
+        { "id": "Eo5", "label": "Diversification exports", "value": "Forte : EV, batteries, solaire, IA, manufacture", "rawValue": null, "palier": 6, "source": "UN Comtrade" },
+        { "id": "Eo6", "label": "Profondeur financière", "value": "Marché obligataire $25T, bourse Shanghai+Shenzhen", "rawValue": null, "palier": 6, "source": "BIS" },
+        { "id": "Eo7", "label": "Brevets/million", "value": "Top 1 mondial PCT (26% des dépôts mondiaux)", "rawValue": null, "palier": 7, "source": "WIPO PCT 2025" },
+        { "id": "Eo8", "label": "Productivité 5 ans", "value": "+3.5%/an (malgré ralentissement)", "rawValue": 3.5, "palier": 5, "source": "IMF" },
+        { "id": "Eo9", "label": "Commerce ALE", "value": "RCEP (15 pays), ASEAN, nombreux BIT : 1er partenaire commercial mondial", "rawValue": null, "palier": 7, "source": "WTO" },
+        { "id": "Eo10", "label": "Réserves minérales", "value": "Leader terres rares (60%+), lithium, tungstène", "rawValue": null, "palier": 7, "source": "USGS" }
+      ],
+      "scoreQuanti": 5.8,
+      "scoreQuali": 6,
+      "scoreFinal": 5.9,
+      "commentary": "Économie de la taille sans équivalent (1er PIB PPA mondial). Leader mondial : brevets (26% PCT), terres rares (60%+), EV, solaire. BRI 2025 : $213Mrd de nouveaux contrats (+75% vs 2024). Fragilités structurelles (dette, déflation) mais potentiel commercial immense."
+    },
+    "Mo": {
+      "label": "Sécurité",
+      "indicators": [
+        { "id": "Mo1", "label": "Alliances", "value": "SCO, BRICS, partenariat Russie (limité)", "rawValue": null, "palier": 4, "source": "IISS" },
+        { "id": "Mo2", "label": "Exercices conjoints", "value": "Nombreux (SCO, ASEAN partiel, Russie)", "rawValue": null, "palier": 5, "source": "IISS" },
+        { "id": "Mo3", "label": "Stabilité régionale", "value": "Modérée (tensions MCS, Taiwan)", "rawValue": null, "palier": 3, "source": "ICG" },
+        { "id": "Mo4", "label": "Accords défense", "value": "Limités (Chine évite les alliances formelles)", "rawValue": null, "palier": 3, "source": "IISS" },
+        { "id": "Mo5", "label": "Contrôle frontières", "value": "Fort (Grande Muraille numérique = frontières cyber)", "rawValue": null, "palier": 5, "source": "IISS" },
+        { "id": "Mo6", "label": "R&D défense", "value": "Fort (hypersoniques, IA, spatial, cyber)", "rawValue": null, "palier": 6, "source": "RAND" }
+      ],
+      "scoreQuanti": 4.3,
+      "scoreQuali": 4,
+      "scoreFinal": 4.2,
+      "commentary": "Puissance militaire de rang 3 mondial en croissance rapide. Pas d'alliances formelles mais partenariats d'influence importants via BRI et SCO. Contrôle frontières fort. R&D militaire de pointe (hypersoniques type DF-17, IA militaire)."
+    },
+    "Po": {
+      "label": "Gouvernance",
+      "indicators": [
+        { "id": "Po1", "label": "Efficacité gouvernement (WGI)", "value": "+0.6 (au-dessus de la moyenne)", "rawValue": 0.6, "palier": 4, "source": "World Bank WGI" },
+        { "id": "Po2", "label": "V-Dem Participatif", "value": "0.06 (très faible)", "rawValue": 0.06, "palier": 2, "source": "V-Dem" },
+        { "id": "Po3", "label": "Réformes", "value": "Réformes économiques actives (consommation intérieure)", "rawValue": null, "palier": 4, "source": "World Bank CEU" },
+        { "id": "Po4", "label": "E-Government", "value": "Fort (appli gouvernementale WeChat, QR codes)", "rawValue": null, "palier": 6, "source": "UN EGDI" },
+        { "id": "Po5", "label": "Décentralisation", "value": "Centralisée (Xi a récentré vs Hu/Wen)", "rawValue": null, "palier": 3, "source": "Journal of Democracy" },
+        { "id": "Po6", "label": "Open Budget", "value": "20/100 (peu transparent)", "rawValue": 20, "palier": 2, "source": "IBP" },
+        { "id": "Po7", "label": "Succession", "value": "Aucun mécanisme clair (Xi 3e mandat)", "rawValue": null, "palier": 2, "source": "ICG" },
+        { "id": "Po8", "label": "Dialogue social", "value": "Syndicats ACFTU = courroie PCC, pas d'indépendance", "rawValue": null, "palier": 2, "source": "ILO" }
+      ],
+      "scoreQuanti": 3.1,
+      "scoreQuali": 3,
+      "scoreFinal": 3.1,
+      "commentary": "Gouvernance efficace techniquement (e-gouvernement fort, exécution politique rapide) mais manquant totalement de légitimité démocratique et de transparence. Efficacité = performance ≠ résilience institutionnelle en cas de choc."
+    },
+    "Lo": {
+      "label": "Attractivité juridique",
+      "indicators": [
+        { "id": "Lo1", "label": "Rule of Law", "value": "0.40 (moyen)", "rawValue": 0.40, "palier": 3, "source": "WJP" },
+        { "id": "Lo2", "label": "Protection investisseurs", "value": "Partielle (loi sur investissement étranger 2020, mais NSL)", "rawValue": null, "palier": 3, "source": "UNCTAD" },
+        { "id": "Lo3", "label": "BIT", "value": "~130 actifs (réseau très large)", "rawValue": 130, "palier": 5, "source": "UNCTAD" },
+        { "id": "Lo4", "label": "Arbitrage", "value": "ICSID membre ; CIETAC actif", "rawValue": null, "palier": 4, "source": "ICSID / CIETAC" },
+        { "id": "Lo5", "label": "Protection PI", "value": "Amélioration structurelle (GII top 10 2025)", "rawValue": null, "palier": 5, "source": "WIPO GII 2025" },
+        { "id": "Lo6", "label": "Fiscalité", "value": "25% IS (zones libres 15%), avantages tech", "rawValue": null, "palier": 4, "source": "PwC" },
+        { "id": "Lo7", "label": "Zones franches", "value": "Nombreuses (Shenzhen, Shanghai FTZ, Hainan)", "rawValue": null, "palier": 6, "source": "UNCTAD" },
+        { "id": "Lo8", "label": "Stabilité réglementaire", "value": "Instable (régulation tech 2021-22, immobilier)", "rawValue": null, "palier": 3, "source": "OECD" }
+      ],
+      "scoreQuanti": 4.1,
+      "scoreQuali": 4,
+      "scoreFinal": 4.1,
+      "commentary": "Attractivité juridique en amélioration structurelle (GII top 10) mais risque réglementaire élevé (corrections sectorielles arbitraires : tech, tutoring, gaming, immobilier). Zones franches attractives. Réseau BIT étendu."
+    },
+    "Io": {
+      "label": "Innovation",
+      "indicators": [
+        { "id": "Io1", "label": "GII rang", "value": "10e mondial 2025 (1er top 10 pour pays à revenu moyen)", "rawValue": 10, "palier": 6, "source": "WIPO GII 2025" },
+        { "id": "Io2", "label": "R&D/PIB", "value": "2.4% (2024, 2e rang mondial dépenses absolues)", "rawValue": 2.4, "palier": 6, "source": "UNESCO / WIPO" },
+        { "id": "Io3", "label": "Startups", "value": "1 cluster top 1 mondial (Shenzhen-HK-GZ), 24 top 100", "rawValue": null, "palier": 7, "source": "WIPO GII 2025" },
+        { "id": "Io4", "label": "Internet haut débit", "value": "~78% (4G/5G extensive)", "rawValue": 78, "palier": 5, "source": "ITU" },
+        { "id": "Io5", "label": "Publications IA", "value": "26% du total mondial 2024, +14%/an", "rawValue": null, "palier": 7, "source": "WIPO / Scopus" },
+        { "id": "Io6", "label": "Capital-risque", "value": "~$50Mrd/an (3e mondial)", "rawValue": 50, "palier": 6, "source": "PitchBook / WIPO" },
+        { "id": "Io7", "label": "STEM", "value": "Production ingénieurs : >4 millions/an", "rawValue": null, "palier": 7, "source": "UNESCO" },
+        { "id": "Io8", "label": "Adoption IA", "value": "Leader mondial IA industrielle (Baidu, Huawei, DeepSeek)", "rawValue": null, "palier": 7, "source": "WIPO GII" }
+      ],
+      "scoreQuanti": 6.4,
+      "scoreQuali": 6,
+      "scoreFinal": 6.2,
+      "commentary": "Puissance d'innovation de rang 1 en volume : 1er PCT mondial (26%), 26% publications IA, GII top 10 (1er parmi pays à revenu moyen). DeepSeek, Baidu, Huawei = concurrents directs d'OpenAI, Qualcomm, AMD. Contrainte principale : accès puces avancées (restrictions Nvidia A100/H100 depuis 2022)."
+    },
+    "Co": {
+      "label": "Maturité tech",
+      "indicators": [
+        { "id": "Co1", "label": "GCI", "value": "~80/100 (T1 Tier)", "rawValue": 80, "palier": 5, "source": "ITU GCI 2024" },
+        { "id": "Co2", "label": "Cloud", "value": "Alibaba/Huawei/Tencent = 3e marché mondial cloud", "rawValue": null, "palier": 6, "source": "Gartner" },
+        { "id": "Co3", "label": "5G+fibre", "value": "Leader mondial 5G (>3M antennes), fibre >800M foyers", "rawValue": null, "palier": 7, "source": "GSMA" },
+        { "id": "Co4", "label": "Souveraineté données", "value": "Totale (Great Firewall + PIPL/DSL, mais État = exempt)", "rawValue": null, "palier": 5, "source": "CACS" },
+        { "id": "Co5", "label": "CERT", "value": "CNCERT actif et mature", "rawValue": null, "palier": 5, "source": "ENISA" },
+        { "id": "Co6", "label": "Workforce cyber", "value": "~500/100k (massive)", "rawValue": 500, "palier": 6, "source": "ISC2" },
+        { "id": "Co7", "label": "E-commerce", "value": "$1.5 trillions (1er mondial) : Alibaba, JD, Pinduoduo", "rawValue": 1500, "palier": 7, "source": "Statista 2024" },
+        { "id": "Co8", "label": "Identité numérique", "value": "Système national mature (WeChat ID, reconnaissance faciale)", "rawValue": null, "palier": 6, "source": "ITU" }
+      ],
+      "scoreQuanti": 5.9,
+      "scoreQuali": 6,
+      "scoreFinal": 5.9,
+      "commentary": "Superpuissance numérique : leader mondial 5G, 1er e-commerce ($1.5T), cloud souverain mature, workforce cyber massive. L'écosystème numérique domestique est coupé du monde occidental mais auto-suffisant et innovant (DeepSeek R1, Kimi, Baidu Ernie)."
+    },
+    "Eeo": {
+      "label": "Durabilité",
+      "indicators": [
+        { "id": "Eeo1", "label": "Renouvelables", "value": "35% électricité 2024 (leader mondial capacité installée)", "rawValue": 35, "palier": 5, "source": "IEA" },
+        { "id": "Eeo2", "label": "NDC", "value": "Pic émissions 2030, neutralité 2060 (insuffisant ONU mais en voie)", "rawValue": null, "palier": 4, "source": "UNFCCC / CAT" },
+        { "id": "Eeo3", "label": "Obligations vertes", "value": "$100Mrd+ émis 2024 (2e mondial)", "rawValue": 100, "palier": 6, "source": "Climate Bonds" },
+        { "id": "Eeo4", "label": "ND-GAIN Préparation", "value": "Modérée (~56)", "rawValue": 56, "palier": 4, "source": "ND-GAIN" },
+        { "id": "Eeo5", "label": "Recyclage", "value": "~25% (en hausse, politique nationale)", "rawValue": 25, "palier": 4, "source": "UNEP" },
+        { "id": "Eeo6", "label": "Investissements verts", "value": "Leader mondial : >$750Mrd 2024 (Bloomberg NEF)", "rawValue": 750, "palier": 7, "source": "BloombergNEF" },
+        { "id": "Eeo7", "label": "Aires protégées", "value": "~18% territoire (engagement COP15)", "rawValue": 18, "palier": 5, "source": "IUCN" },
+        { "id": "Eeo8", "label": "EPI", "value": "~51 (2024, amélioration air)", "rawValue": 51, "palier": 4, "source": "Yale EPI" }
+      ],
+      "scoreQuanti": 4.9,
+      "scoreQuali": 5,
+      "scoreFinal": 4.9,
+      "commentary": "Paradoxe vert : 1er émetteur CO2 mondial ET 1er investisseur en énergies vertes ($750Mrd/an). Leader solaire (80% production mondiale panneaux), éolien et VE. Émissions peut-être au pic 2024-25. La NDC 2030 est insuffisante climatiquement mais la trajectoire s'accélère. Obligations vertes : 2e marché mondial."
+    }
+  },
+  "opportunityComposite": 5.4,
+  "opportunityClassification": "Très élevé (puissance économique et technologique de rang 1, mais risques politiques et géopolitiques inhibants)",
+  "resilience": {
+    "RS1": { "label": "Société civile", "score": 1, "commentary": "Société civile démantelée depuis 2015. GONGOs (ONG gouvernementales) dominant. Loi ONG 2017 + répressions systématiques. Aucun espace pour la dissidence organisée. Score : 1/7." },
+    "RE1": { "label": "Correction monétaire", "score": 4, "commentary": "PBOC dispose d'une capacité technique réelle (réserves $3.2T, outils de politique monétaire) mais est soumise au Conseil d'État. Capacité de correction : présente mais conditionnelle à la volonté politique. Score : 4/7." },
+    "RM1": { "label": "Doctrine républicaine armée", "score": 1, "commentary": "L'APL est l'armée du PCC, pas de l'État. Xi est Président de la Commission Militaire Centrale. Aucune doctrine de neutralité ou de subordination civile démocratique. Score : 1/7." },
+    "RP1": { "label": "Alternance démocratique", "score": 1, "commentary": "Xi a supprimé les limites de mandat en 2018. Aucune alternance démocratique possible dans le cadre actuel. Le PCC détient le monopole du pouvoir depuis 1949. Score : 1/7." },
+    "RI1": { "label": "Pluralisme médiatique", "score": 1, "commentary": "Médias = courroies de transmission du PCC. Les 7 sujets tabous officiels depuis 2013. RSF 176e/180. Great Firewall. >50 journalistes emprisonnés. Pluralisme = 0 en interne. Score : 1/7." },
+    "RL1": { "label": "Autonomie judiciaire", "score": 1, "commentary": "Tribunaux supervisés par comités politico-juridiques du PCC. Juges = membres PCC. Aucune autonomie sur les cas politiquement sensibles (Hong Kong, Xinjiang, Taiwan). Score : 1/7." }
+  },
+  "resilienceScore": 1.5,
+  "velocite": {
+    "delta_trimestre": 0.3,
+    "alerte": false,
+    "note": "Delta < 0.50 : pas d'alerte de vitesse critique mais tendance haussière soutenue. La normalisation des exercices Taiwan (deux fois/an) et les 163 opérations MCS 2025 constituent une escalade structurelle plutôt qu'aiguë."
+  },
+  "peakAmplification": {
+    "dimensionsTrigger": ["I", "C", "P"],
+    "facteur": 0.20,
+    "cap": 0.3,
+    "compositeAvantPeak": 4.75,
+    "compositeApresAmp": 4.8,
+    "note": "Dimensions I et C en pic (6.9 et 5.0). Peak amplification appliquée : +0.05 sur composite. Composite final : 4.8."
+  },
+  "quadrant": "Risque élevé / Opportunité très élevée (dilemme d'engagement stratégique)",
+  "scenarios": [
+    {
+      "label": "Statut quo tendu (guerre de zone grise continue)",
+      "probabilite": 0.50,
+      "impact": "Composite stable ~4.8-5.0. Exercices Taiwan 3x/an. Cyber opérations continues. Tension MCS persistante mais pas de guerre.",
+      "horizon": "12-24 mois"
+    },
+    {
+      "label": "Escalade Taiwan (incident armé limité)",
+      "probabilite": 0.20,
+      "impact": "Composite → 6.0-6.5. Blocus partiel, frappes limités. Sanctions massives. Crise économique mondiale (MCS = 30% commerce mondial).",
+      "horizon": "6-24 mois"
+    },
+    {
+      "label": "Détente pragmatique (Xi-successeur ouverture)",
+      "probabilite": 0.15,
+      "impact": "Composite → 3.5-4.0. Reprises diplomatiques. Investissements accélérés. Opportunité composite → 6.0.",
+      "horizon": "24-60 mois"
+    },
+    {
+      "label": "Conflit Taiwan ouvert",
+      "probabilite": 0.15,
+      "impact": "Composite → 6.5-7.0. Sanctions totales. Découplage complet. Récession mondiale -4%. Crise chaînes approvisionnement globales.",
+      "horizon": "12-60 mois"
+    }
+  ],
+  "signatures": ["SIG2_CYBER_OFFENSIVE_TIER1", "SIG4_MILITARY_BUILDUP", "SIG7_INFORMATION_CONTROL"],
+  "flags": ["VOLT_TYPHOON_ACTIF", "SALT_TYPHOON_200_TELECOMS", "TAIWAN_BLOCUS_DRILLS", "MCS_163_OPS_2025", "DEINFLATION_STRUCTURELLE"]
+}

@@ -1,0 +1,448 @@
+{
+  "zone": {
+    "id": "sahel",
+    "name": "Sahel (Mali + Niger + Burkina Faso)",
+    "region": "afrique_subsaharienne"
+  },
+  "meta": {
+    "date": "2026-03-13",
+    "version": "2.1",
+    "analyst": "Inflexion Intelligence"
+  },
+  "dimensions": {
+    "S": {
+      "label": "Social",
+      "indicators": [
+        { "id": "S1", "label": "Gini", "value": "0.35-0.40 (BF: 0.37; Mali: 0.33; Niger: 0.34)", "rawValue": 0.37, "palier": 4, "source": "World Bank 2024" },
+        { "id": "S2", "label": "IDH", "value": "Mali 0.410 (186e); BF 0.449 (181e); Niger 0.394 (189e/193)", "rawValue": 0.41, "palier": 7, "source": "UNDP HDR 2024" },
+        { "id": "S3", "label": "Chomage jeunes", "value": "~50% (estimation; exacerbe par fermeture 14 800 ecoles)", "rawValue": 50, "palier": 6, "source": "ILO / UNHCR 2025" },
+        { "id": "S4", "label": "Solde migratoire", "value": "~4 millions deplaces internes; exode vers cotes et Maghreb; +67% en 5 ans", "rawValue": -20, "palier": 6, "source": "UNHCR oct. 2025" },
+        { "id": "S5", "label": "Mouvements sociaux", "value": "Soulèvements populaires post-coups; manifestations anti-ECOWAS; tensions intercommunautaires", "rawValue": null, "palier": 5, "source": "ACLED 2025" },
+        { "id": "S6", "label": "Tensions ethniques", "value": "Tres elevees: Tuareg/Peul/Haoussa/Bambara + recrutement jihadiste sur lignes ethniques", "rawValue": null, "palier": 7, "source": "ICG / ACLED 2025" },
+        { "id": "S7", "label": "Lits hopital / 1000", "value": "~0.2-0.4 (parmi plus bas mondiaux); 900 structures de sante fermees", "rawValue": 0.3, "palier": 7, "source": "WHO / UNHCR 2025" },
+        { "id": "S8", "label": "Croissance urbaine desordonnee", "value": "3-4%/an; villes inondees de deplaces (Ouagadougou, Bamako, Niamey)", "rawValue": 3.5, "palier": 6, "source": "UN-Habitat" },
+        { "id": "S9", "label": "Inegalite genre (GII)", "value": "0.65+ (parmi pires mondiaux; mariage enfants, excision persistants)", "rawValue": 0.65, "palier": 7, "source": "UNDP GII 2024" },
+        { "id": "S10", "label": "Esperance de vie", "value": "Mali 60; BF 63; Niger 62 (parmi plus bas Afrique subsaharienne)", "rawValue": 62, "palier": 6, "source": "WHO 2024" },
+        { "id": "S11", "label": "Sous-alimentation", "value": "7.5M en crise/urgence/famine (IPC 3-5); 37.5% BF en extreme pauvrete", "rawValue": 35, "palier": 7, "source": "WFP / IPC 2025" },
+        { "id": "S12", "label": "Education secondaire", "value": "~30-35% taux de scolarisation secondaire; 3M enfants sans ecole (fermetures securite)", "rawValue": 32, "palier": 6, "source": "UNESCO / UNHCR 2025" }
+      ],
+      "scoreQuanti": 6.25,
+      "scoreQuali": 7,
+      "scoreFinal": 6.55,
+      "trend": "up",
+      "resilience": {
+        "RS1": {
+          "score": 2,
+          "commentary": "Societe civile sous severe repression (conscription forcee au BF, detentions arbitraires au Mali et Niger); espaces civiques fermes par juntes"
+        }
+      },
+      "commentary": "Crise humanitaire parmi les plus severes au monde. IDH en queue de peloton mondial. 4M deplaces internes (hausse 67%/5 ans). 14 800 ecoles fermees (3M enfants). 900 structures sante fermees. Tensions ethniques combustible direct du recrutement jihadiste (JNIM, ISSP). Societe civile etouffee par les juntes militaires."
+    },
+    "E": {
+      "label": "Economique",
+      "indicators": [
+        { "id": "E1", "label": "Croissance PIB", "value": "Mali +4.9% (lithium); BF +4.7%; Niger +5%+ (petrole Agadem). Croissance nominale malgre crise securitaire", "rawValue": 4.8, "palier": 3, "source": "World Bank / ECLAC 2025" },
+        { "id": "E2", "label": "Inflation", "value": "Mali ~6%; BF ~5%; Niger ~7% (apres hyperinflation sanctions ECOWAS 2023)", "rawValue": 6, "palier": 3, "source": "BCEAO / BCN 2025" },
+        { "id": "E3", "label": "Dette / PIB", "value": "Mali ~50%; BF ~60%; Niger ~55%; genable mais dependance aide IMF", "rawValue": 55, "palier": 4, "source": "IMF / World Bank 2025" },
+        { "id": "E4", "label": "Balance courante", "value": "Deficitaire chronique; amelioration Niger (petrole) + Mali (lithium)", "rawValue": -5, "palier": 5, "source": "BCN / IMF" },
+        { "id": "E5", "label": "Notation souveraine", "value": "Mali: Caa1 (Moody's, retrait apres sanctions); BF: CCC+ (Fitch); Niger: CC", "rawValue": null, "palier": 6, "source": "Moody's / Fitch 2025" },
+        { "id": "E6", "label": "Regime de change", "value": "Zone FCFA (BF, Mali) maintenu; Niger: pression sur parité; politique monetaire BCEAO contrainte", "rawValue": null, "palier": 4, "source": "BCEAO 2025" },
+        { "id": "E7", "label": "Reserves de change (mois imports)", "value": "~2-3 mois (BCEAO mutualisé); fragile", "rawValue": 2.5, "palier": 5, "source": "BCEAO 2025" },
+        { "id": "E8", "label": "IDE / PIB", "value": "~3-4% (mines = principal attracteur; mais risque securitaire deterrent)", "rawValue": 3.5, "palier": 4, "source": "UNCTAD 2025" },
+        { "id": "E9", "label": "Chomage total", "value": "~30-40% (sous-emploi massif; agriculture = 70-80% actifs)", "rawValue": 35, "palier": 5, "source": "ILO 2025" },
+        { "id": "E10", "label": "Dette privee / PIB", "value": "<20% (acces credit tres limite; secteur prive embryonnaire)", "rawValue": 18, "palier": 2, "source": "BIS / estime" },
+        { "id": "E11", "label": "Concentration exports", "value": "Or >80% BF; or+lithium Mali; petrole+uranium Niger = hyper-concentration", "rawValue": 80, "palier": 6, "source": "UN Comtrade 2025" },
+        { "id": "E12", "label": "Croissance credit", "value": "Negative reelle dans zones d'insecurite; banques retirees de nombreuses zones", "rawValue": null, "palier": 5, "source": "BCEAO / IMF" },
+        { "id": "E13", "label": "Shadow banking / economie informelle", "value": "~60-70% PIB (economie parallele dominante; taxe jihadiste dans zones controlees)", "rawValue": 65, "palier": 6, "source": "IMF / estime" },
+        { "id": "E14", "label": "Cout energie", "value": "Coupures frequentes; dependance thermique (Niger: raffinage local nascent)", "rawValue": null, "palier": 5, "source": "WAPP / estime" },
+        { "id": "E15", "label": "Indice misere", "value": "~41 (35 sous-emploi + 6 inflation)", "rawValue": 41, "palier": 6, "source": "Calcul Inflexion" },
+        { "id": "E16", "label": "Independence banque centrale", "value": "BCEAO (BF, Mali) = independance formelle UEMOA; mais pressions juntes. BCN (Niger) plus independante post-sortie ECOWAS", "rawValue": null, "palier": 4, "source": "BCEAO / BCN" }
+      ],
+      "scoreQuanti": 4.56,
+      "scoreQuali": 5,
+      "scoreFinal": 4.74,
+      "trend": "mixed",
+      "resilience": {
+        "RE1": {
+          "score": 3,
+          "commentary": "BCEAO maintient ancrage CFA (franc); politique monetaire partiellement stabilisatrice. Niger BCN = moins d'outils. Correction possible mais limitee par structure."
+        }
+      },
+      "commentary": "Paradoxe econom: croissance nominale tiree par mines (lithium Mali, or BF, petrole/uranium Niger) mais benefices peu redistribues (resource nationalism + insecurite). Economie agricole sous pression (37% PIB; 80% actifs). Taxe jihadiste dans zones controlees. Retrait banques = desertification financiere rurale."
+    },
+    "M": {
+      "label": "Militaire",
+      "indicators": [
+        { "id": "M1", "label": "Depenses mil. / PIB", "value": "Mali ~3.6%; BF ~6.5%; Niger ~4.5% (hausse massive post-coups)", "rawValue": 4.9, "palier": 5, "source": "SIPRI 2025" },
+        { "id": "M2", "label": "Conflits armes actifs", "value": "Guerre contre-insurectionnelle continue; JNIM + ISSP = attaques quotidiennes; 1000+ incidents ACLED/mois", "rawValue": null, "palier": 7, "source": "ACLED 2025" },
+        { "id": "M3", "label": "GFP Index", "value": "Mali 95e; BF 100e+; Niger ~110e; capacites tres limitees vs menace asymetrique", "rawValue": 100, "palier": 6, "source": "GFP 2025" },
+        { "id": "M4", "label": "Exercices militaires majeurs", "value": "Bataillon conjoint AES lance dec. 2025; exercices conjoints Africa Corps/armees nationales", "rawValue": null, "palier": 5, "source": "Africanews dec. 2025" },
+        { "id": "M5", "label": "Proliferation nucleaire", "value": "Niger: uranium (Arlit); risque proliferation indirect via instabilite", "rawValue": null, "palier": 4, "source": "SIPRI / IAEA" },
+        { "id": "M6", "label": "Coups regionaux 5 ans", "value": "3 coups dans la zone (Mali 2021, BF 2022x2, Niger 2023) + coups Guinea/Gabon/etc.", "rawValue": 3, "palier": 7, "source": "Cline Center 2025" },
+        { "id": "M7", "label": "Subordination armee / civil", "value": "Inverse: militaires AU POUVOIR dans les 3 pays; aucun controle civil", "rawValue": null, "palier": 7, "source": "V-Dem / ICG 2025" },
+        { "id": "M8", "label": "Transferts armes", "value": "Africa Corps (~1500 combattants Mali + presence BF et Niger); drones + armements russes", "rawValue": null, "palier": 6, "source": "ICG / CNN 2025" },
+        { "id": "M9", "label": "Bases etrangeres", "value": "Bases Africa Corps (ex-Wagner) Mali, BF, Niger; fermeture bases US (Niger 2024) et francaises", "rawValue": null, "palier": 5, "source": "CNN / IISS 2025" },
+        { "id": "M10", "label": "Milices / PMC", "value": "Africa Corps central; milices Dogon; Dan Na Ambassagou; Dan Nan Ambassagou; self-defense villages", "rawValue": null, "palier": 7, "source": "ICG / ACLED 2025" },
+        { "id": "M11", "label": "Traites defense", "value": "AES (Alliance Etats du Sahel): cadre defense collectif; retrait ECOWAS; accord Russie avril 2025", "rawValue": null, "palier": 4, "source": "Wikipedia / Moscow 2025" },
+        { "id": "M12", "label": "R&D defense", "value": "Quasi nul; depend de livraisons russes et achats d'urgence", "rawValue": null, "palier": 6, "source": "SIPRI" },
+        { "id": "M13", "label": "Fiabilite protecteur", "value": "Russia Africa Corps: fiable a court terme mais incertitude post-Ukraine; Occident expulse", "rawValue": null, "palier": 5, "source": "SWJ 2026 / ICG" }
+      ],
+      "scoreQuanti": 5.85,
+      "scoreQuali": 6,
+      "scoreFinal": 5.91,
+      "trend": "up",
+      "resilience": {
+        "RM1": {
+          "score": 1,
+          "commentary": "Doctrine republicaine de l'armee totalement absente: armees sont le pouvoir politique dans les 3 pays"
+        }
+      },
+      "commentary": "Zone de guerre asymetrique a haute intensite. JNIM + ISSP controlent des portions croissantes du territoire rural. Bataillon conjoint AES (dec. 2025) = signal politique fort mais capacite operationnelle a prouver. Africa Corps = dependance securitaire a la Russie. 3 coups en 4 ans = instabilite structurelle profonde."
+    },
+    "P": {
+      "label": "Politique",
+      "indicators": [
+        { "id": "P1", "label": "CPI Corruption", "value": "Mali 27/100; BF 42/100; Niger 33/100 (tous bas, mais BF paradoxalement moins pire)", "rawValue": 34, "palier": 5, "source": "TI 2024" },
+        { "id": "P2", "label": "V-Dem LDI", "value": "Autocracies electorales au mieux; 3 pays = regimes militaires sans elections", "rawValue": 0.08, "palier": 7, "source": "V-Dem 2025" },
+        { "id": "P3", "label": "WGI Stabilite politique", "value": "Mali ~-2.7; BF ~-2.5; Niger ~-2.2 (parmi plus bas mondiaux)", "rawValue": -2.5, "palier": 7, "source": "World Bank WGI 2024" },
+        { "id": "P4", "label": "Cycle electoral", "value": "Pas d'elections: Goïta jusqu'en 2030 (Mali); Traore BF sans calendrier; Tchiani 5 ans Niger", "rawValue": null, "palier": 7, "source": "ICG / Security Council 2025" },
+        { "id": "P5", "label": "Risque changement regime", "value": "Tres eleve: precedent 3 coups etabli; risque contre-coups et fragmentation jihadiste", "rawValue": null, "palier": 7, "source": "ICG / CFR 2025" },
+        { "id": "P6", "label": "Polarisation politique", "value": "Profonde: juntes vs partis dissous; tensions inter-ethniques; jihadistes = pole alternatif de gouvernance", "rawValue": null, "palier": 7, "source": "ICG 2025" },
+        { "id": "P7", "label": "Libertes civiles", "value": "Tres basses (Freedom House: Not Free; conscription forcee BF; exil force politiques)", "rawValue": null, "palier": 7, "source": "Freedom House 2025" },
+        { "id": "P8", "label": "Risque successoral", "value": "Tres eleve: juntes jeunes, pas d'institutions stables, risque coup dans le coup", "rawValue": null, "palier": 7, "source": "ICG / CFR" },
+        { "id": "P9", "label": "Autonomie regionale / separatisme", "value": "Tres eleve: Azawad (Mali nord); GSIM controle regions entieres; fragmentation de facto", "rawValue": null, "palier": 7, "source": "ICG 2025" },
+        { "id": "P10", "label": "Opposition organisee", "value": "Partis dissous (Mali, Niger, BF); opposition = exil, prison ou silence", "rawValue": null, "palier": 6, "source": "ICG / Security Council 2025" },
+        { "id": "P11", "label": "Pression demographique", "value": "Tres forte: Niger taux fertilite 7.4 (1er mondial); croissance pop. +3-4%/an en contexte de crise", "rawValue": null, "palier": 7, "source": "World Bank 2025" },
+        { "id": "P12", "label": "Diaspora politique", "value": "Active (Paris, Abidjan, Dakar) mais sans levier effectif face aux juntes", "rawValue": null, "palier": 3, "source": "ICG" },
+        { "id": "P13", "label": "Capture institutionnelle", "value": "Complete dans les 3 pays: armees = Etat = PAS de separation des pouvoirs", "rawValue": null, "palier": 7, "source": "V-Dem / ICG" },
+        { "id": "P14", "label": "Chocs auto-infliges", "value": "Sortie ECOWAS + expulsion France/USA + fermeture frontieres partielles = isolement volontaire", "rawValue": null, "palier": 7, "source": "ICG / ECOWAS 2025" },
+        { "id": "P15", "label": "Fenetres action", "value": "Quasi fermees: logique de survie des juntes; seule pression = avancee jihadiste", "rawValue": null, "palier": 7, "source": "ICG 2025" }
+      ],
+      "scoreQuanti": 6.6,
+      "scoreQuali": 7,
+      "scoreFinal": 6.76,
+      "trend": "up",
+      "resilience": {
+        "RP1": {
+          "score": 1,
+          "commentary": "Alternance democratique inexistante: les 3 pays sont des junte militaires sans elections ni partis politiques"
+        }
+      },
+      "commentary": "Zone de gouvernance militaire autoritaire dans les 3 pays simultanement. Aucune institution democratique fonctionnelle. Partis politiques dissous. P14 critique: sortie ECOWAS + expulsions occidentales = auto-isolement qui affaiblit la position de negociation. Fragmentation territoriale de facto (JNIM gouverne le sahel rural)."
+    },
+    "L": {
+      "label": "Legal",
+      "indicators": [
+        { "id": "L1", "label": "Rule of Law", "value": "Scores ~15-25/100 (WJP); tres bas; droit = outil de la junte", "rawValue": 20, "palier": 7, "source": "WJP 2024" },
+        { "id": "L2", "label": "B-READY / Doing Business", "value": "Non evalues recemment; classements historiques tres bas (170-180e)", "rawValue": null, "palier": 6, "source": "World Bank" },
+        { "id": "L3", "label": "Sanctions", "value": "Sanctions ECOWAS levees janv. 2025 (sortie AES); sanctions bilaterales US/UE maintenues sur certains officiels", "rawValue": null, "palier": 4, "source": "ECOWAS / OFAC 2025" },
+        { "id": "L4", "label": "Protection PI", "value": "Cadre OAPI (Organisation africaine PI) theorique; application faible", "rawValue": null, "palier": 5, "source": "OAPI / estime" },
+        { "id": "L5", "label": "Execution contrats", "value": "Extremement aleatoire; tribunaux sous influence militaire", "rawValue": null, "palier": 6, "source": "Heritage / WJP" },
+        { "id": "L6", "label": "Independance judiciaire", "value": "Inexistante: juntes controlent nominations; purges judiciaires", "rawValue": null, "palier": 7, "source": "ICG / Freedom House 2025" },
+        { "id": "L7", "label": "BIT actifs", "value": "Portefeuilles BIT formels (avec France, UE etc.) mais renégociation/dénonciation probable", "rawValue": null, "palier": 4, "source": "UNCTAD IIA" },
+        { "id": "L8", "label": "Anti-corruption", "value": "Discours anti-corruption des juntes (justification coups) mais aucun mecanisme independant", "rawValue": null, "palier": 5, "source": "TI / ICG 2025" },
+        { "id": "L9", "label": "Arbitrage ICSID", "value": "Membres ICSID formellement; mais expropriations recentes sans compensation (Barrick Mali 2025)", "rawValue": null, "palier": 5, "source": "ICSID / MiningSeE 2025" },
+        { "id": "L10", "label": "Risque expropriation", "value": "Tres eleve: nationalisation partielle mines (Mali: Goulamina lithium controle etatique); re-negoce forcees", "rawValue": null, "palier": 7, "source": "MiningSeE 2025 / capmad.com" }
+      ],
+      "scoreQuanti": 5.6,
+      "scoreQuali": 6,
+      "scoreFinal": 5.76,
+      "trend": "up",
+      "resilience": {
+        "RL1": {
+          "score": 1,
+          "commentary": "Independance judiciaire inexistante dans les 3 pays: nominations sous contrôle des juntes militaires"
+        }
+      },
+      "commentary": "Cadre legal parmi les moins securisants pour les investisseurs. Nationalisme minier = risque expropriation direct (Mali: Goulamina prise de controle etatique 2024-25). BIT existants mais juntes favorisent renégociation. Sanctions bilaterales residuelles (UE/US sur officiels) post-sortie ECOWAS."
+    },
+    "I": {
+      "label": "Information",
+      "indicators": [
+        { "id": "I1", "label": "RSF rang", "value": "BF 105e (-19 en 2025); Mali 119e (-5); Niger 92e (-3)", "rawValue": 105, "palier": 6, "source": "RSF 2025" },
+        { "id": "I2", "label": "Freedom on Net", "value": "Niger: coupures internet post-coup 2023; BF: blocages reseaux sociaux; Mali: censures regulieres", "rawValue": null, "palier": 6, "source": "Freedom House FOTN 2025" },
+        { "id": "I3", "label": "Operations influence", "value": "Extremement actives: Russie (Africa Corps = bot farms + narrative anti-France); JNIM propagande sociale", "rawValue": null, "palier": 7, "source": "ECFR / EUISS 2025" },
+        { "id": "I4", "label": "Censure internet", "value": "Coupures situationnelles (post-coup Niger 2023); blocages reseaux sociaux BF et Mali reguliers", "rawValue": null, "palier": 5, "source": "Freedom House 2025" },
+        { "id": "I5", "label": "Controle medias Etat", "value": "Croissant: ORTM (Mali), RTB (BF) = voix juntes; suspension medias independants etrangers (RFI, France 24)", "rawValue": null, "palier": 6, "source": "RSF / Mfwa 2025" },
+        { "id": "I6", "label": "Penetration reseaux sociaux", "value": "~25-35% (croissante mais variable selon zones rurales/urbaines)", "rawValue": 30, "palier": 3, "source": "Statista / estime" },
+        { "id": "I7", "label": "Desinformation IA", "value": "Tres active: operateurs russes (bot farms ~50% X et YouTube 2024); anti-France narratives amplifies par IA", "rawValue": null, "palier": 7, "source": "ECFR / EUISS 2025" },
+        { "id": "I8", "label": "Pluralisme mediatique", "value": "Drastiquement reduit: suspension associations journalistes (BF, Niger); RFI/France24 bannis; journalistes en exil", "rawValue": null, "palier": 7, "source": "RSF 2025" },
+        { "id": "I9", "label": "Journalistes emprisonnes / disparus", "value": "Plusieurs (BF: conscription forcee journalistes activistes); Mali: disparitions; Niger: arrestations", "rawValue": null, "palier": 6, "source": "RSF / Mfwa 2025" },
+        { "id": "I10", "label": "Controle narratif diaspora", "value": "Modere: diaspora Paris/Abidjan active mais sans acces au terrain", "rawValue": null, "palier": 4, "source": "estime" },
+        { "id": "I11", "label": "Comptes coordonnes / astroturfing", "value": "Massif: reseau russe (Russosphere africaine, Luc Michel); ~703-947% hausse engagement 2020-2023", "rawValue": null, "palier": 7, "source": "EUISS / ECFR 2025" },
+        { "id": "I12", "label": "Usage VPN", "value": "En hausse dans zones urbaines; acces reste limite en milieu rural", "rawValue": null, "palier": 3, "source": "estime" }
+      ],
+      "scoreQuanti": 5.58,
+      "scoreQuali": 6,
+      "scoreFinal": 5.75,
+      "trend": "up",
+      "resilience": {
+        "RI1": {
+          "score": 2,
+          "commentary": "Pluralisme mediatique severement reduit mais certains medias independants subsistent en ligne (avec risques); diaspora maintient certains contre-recits"
+        }
+      },
+      "commentary": "Environnement informationnel gravement deteriore. Operations russes documentees et massives (~50% espace X/YouTube en 2024). Juntes utilisent la manipulation informationnelle comme outil de legitimation (anti-France, anti-Occident). Medias independants bannis ou reduits au silence (journalistes conscrites au BF)."
+    },
+    "C": {
+      "label": "Cyber",
+      "indicators": [
+        { "id": "C1", "label": "NCSI rang", "value": "Tres bas (<20/100) pour les 3 pays; capacites cyber embryonnaires", "rawValue": 18, "palier": 7, "source": "NCSI / e-Governance Academy" },
+        { "id": "C2", "label": "GCI rang", "value": "Tier 4-5 (tres en retard); engagement minimal", "rawValue": null, "palier": 6, "source": "ITU GCI 2024" },
+        { "id": "C3", "label": "Incidents cyber", "value": "Coupures internet post-coup (Niger 2023); attaques sur infra gouvernementale limitees", "rawValue": null, "palier": 4, "source": "estime" },
+        { "id": "C4", "label": "Capacite offensive", "value": "Quasi nulle endogenement; deleguee a Russie (Africa Corps) pour ops d'influence", "rawValue": null, "palier": 3, "source": "estime" },
+        { "id": "C5", "label": "Exposition infra critique", "value": "Elevee: reseaux electriques fragiles; infra telecom concentree sur capital; reseau SONITEL/Orange", "rawValue": null, "palier": 6, "source": "estime" },
+        { "id": "C6", "label": "Budget cybersecurite", "value": "Minimal (priorite securite physique); quelques projets UEMOA/CEDEAO suspendus", "rawValue": null, "palier": 7, "source": "estime" },
+        { "id": "C7", "label": "Ransomware", "value": "Faible exposition (economie peu numerisee en zones rurales)", "rawValue": null, "palier": 3, "source": "estime" },
+        { "id": "C8", "label": "Attaques supply chain", "value": "Faible (peu de supply chains numeriques)", "rawValue": null, "palier": 2, "source": "estime" },
+        { "id": "C9", "label": "Workforce cyber", "value": "Quasi inexistante; quelques formations USTN (Niger), Sup'Itech (Mali) tres limitees", "rawValue": null, "palier": 7, "source": "estime" },
+        { "id": "C10", "label": "Legislation donnees", "value": "Cadres UEMOA theoriques; application tres partielle; surveillance civile par juntes sans cadre legal", "rawValue": null, "palier": 5, "source": "UEMOA / estime" },
+        { "id": "C11", "label": "Cloud exposure", "value": "Tres faible (infrastructure cloud quasi inexistante)", "rawValue": null, "palier": 2, "source": "estime" },
+        { "id": "C12", "label": "Zero-day exposure", "value": "Faible (infrastructure basique = peu de surface d'attaque sophistiquee)", "rawValue": null, "palier": 3, "source": "estime" }
+      ],
+      "scoreQuanti": 4.58,
+      "scoreQuali": 5,
+      "scoreFinal": 4.78,
+      "trend": "stable",
+      "commentary": "Vulnerabilite cyber elevee par defaut de capacites plutot que par sophistication des menaces. Coupures internet = outil de controle politique des juntes (Niger 2023 = cas documenté). Dependance totale aux operateurs etrangers (Orange, MTN). Ops d'influence russes = vraie menace cyber-information sans capacite de reponse locale."
+    },
+    "Ee": {
+      "label": "Environnemental",
+      "indicators": [
+        { "id": "Ee1", "label": "ND-GAIN", "value": "Niger ~30/100 (parmi plus vulnerables mondiaux); BF et Mali ~32-35/100", "rawValue": 32, "palier": 7, "source": "ND-GAIN 2023" },
+        { "id": "Ee2", "label": "Water Stress", "value": "Critique: >50% sans acces eau potable (BF, Niger); Lac Tchad -90% depuis 1960s", "rawValue": null, "palier": 7, "source": "CSIS / ACLED 2025" },
+        { "id": "Ee3", "label": "Dependance extractives", "value": "Tres elevee: or (BF ~94t record 2025), lithium (Mali), uranium/petrole (Niger)", "rawValue": null, "palier": 6, "source": "MiningSeE 2025" },
+        { "id": "Ee4", "label": "Catastrophes naturelles 5 ans", "value": "Secheresses recurrentes + inondations saisonnieres paradoxales; degradation terres 45%", "rawValue": null, "palier": 6, "source": "ICRC / AKEM 2025" },
+        { "id": "Ee5", "label": "Transition energetique", "value": "Tres faible: acces electrique <30% (Niger <20%); quelques projets solaires (Yeleen BF)", "rawValue": 25, "palier": 6, "source": "WAPP / estime" },
+        { "id": "Ee6", "label": "CO2 / capita", "value": "0.15-0.3 t/cap (parmi plus bas mondiaux; sous-industrialisation)", "rawValue": 0.2, "palier": 1, "source": "Our World in Data" },
+        { "id": "Ee7", "label": "Biodiversite menacee", "value": "Tres elevee: desertification (87% Niger), deforestation pour charbon de bois, braconnage", "rawValue": null, "palier": 7, "source": "AKEM / IUCN 2025" },
+        { "id": "Ee8", "label": "Deforestation", "value": "Rapide: utilisation bois energie + agriculture extensive + deplacement populations", "rawValue": null, "palier": 6, "source": "GFW 2025" },
+        { "id": "Ee9", "label": "Montee des eaux", "value": "Impact indirect: inondations Ouagadougou, pression sur fleuve Niger et Senegal", "rawValue": null, "palier": 5, "source": "ICRC / World Bank" },
+        { "id": "Ee10", "label": "Pollution air PM2.5", "value": "Elevee (poussieres sahariennes + feux de brousse + groupes electrogenes)", "rawValue": null, "palier": 5, "source": "WHO / estime" }
+      ],
+      "scoreQuanti": 5.6,
+      "scoreQuali": 6,
+      "scoreFinal": 5.76,
+      "trend": "up",
+      "commentary": "Parmi les zones les plus vulnerables environnementalement. Desertification a vitesse acceleree (Niger: 100-120k ha/an). Stress hydrique critique et aggrave par conflit (destruction infrastructures eau). Changement climatique = multiplicateur de menace directement lie a la dynamique jihadiste (competition ressources). Paradoxe CO2 bas mais impact environnemental devastateur."
+    }
+  },
+  "composite": 5.82,
+  "classification": "Très élevé",
+  "compositeMethod": {
+    "weights": {
+      "S": 0.12,
+      "E": 0.15,
+      "M": 0.16,
+      "P": 0.14,
+      "L": 0.10,
+      "I": 0.12,
+      "C": 0.11,
+      "Ee": 0.10
+    },
+    "simpleAvg": 5.75,
+    "weighted": 5.78,
+    "peakAmplification": {
+      "applied": true,
+      "dimensions_above_threshold": ["S", "M", "P", "L", "I", "Ee"],
+      "factor": 0.20,
+      "cap": 0.3,
+      "amplification_added": 0.04
+    },
+    "amplified": 5.82
+  },
+  "opportunity": {
+    "dimensions": {
+      "So": {
+        "label": "Capital humain",
+        "scoreQuanti": 2.25,
+        "scoreQuali": 2,
+        "scoreFinal": 2.15,
+        "indicators": [
+          { "id": "So1", "palier": 3, "label": "Alphabetisation", "value": "Mali 35%; BF 42%; Niger 38% (parmi plus bas mondiaux)" },
+          { "id": "So2", "palier": 2, "label": "PISA / performance educative", "value": "Non participants; ecoles fermees massivement (14 800 etablissements)" },
+          { "id": "So3", "palier": 3, "label": "Depenses sante / PIB", "value": "~4-5% (insuffisant; 900 structures fermees)" },
+          { "id": "So4", "palier": 2, "label": "Medecins / 1000", "value": "0.08-0.15 (tres bas; exode vers capitales)" },
+          { "id": "So5", "palier": 2, "label": "Scolarisation tertiaire", "value": "~5-8% (tres bas; fragilise par insecurite)" },
+          { "id": "So6", "palier": 2, "label": "Mobilite sociale", "value": "Quasi nulle en zones rurales/insecurisees" },
+          { "id": "So7", "palier": 4, "label": "Pop 15-64%", "value": "~55% (population tres jeune = potentiel si stabilite)" },
+          { "id": "So8", "palier": 2, "label": "Solde migratoire qualifie", "value": "Tres negatif: exode vers cotes et Europe des elites formees" }
+        ]
+      },
+      "Eo": {
+        "label": "Croissance economique",
+        "scoreQuanti": 3.5,
+        "scoreQuali": 3,
+        "scoreFinal": 3.3,
+        "indicators": [
+          { "id": "Eo1", "palier": 4, "label": "Croissance PIB tendanciel 5 ans", "value": "Mali +4.5%/an (lithium); BF +4%/an (or); Niger +5%/an (petrole)" },
+          { "id": "Eo2", "palier": 3, "label": "IDE / PIB", "value": "~3-4% (mines concentrees; insecurite deterrente)" },
+          { "id": "Eo3", "palier": 2, "label": "Taille marche (PIB PPA)", "value": "~$70 Mrd cumule (Mali+BF+Niger); fragmentation" },
+          { "id": "Eo4", "palier": 2, "label": "Croissance classe moyenne", "value": "Tres limitee; benefices miniers peu redistribues" },
+          { "id": "Eo5", "palier": 2, "label": "Diversification exports", "value": "Hyper-concentration (or/lithium/petrole/uranium)" },
+          { "id": "Eo6", "palier": 3, "label": "Profondeur financiere", "value": "Mobile money en progression (Orange Money, Moov); bancarisation ~20%" },
+          { "id": "Eo7", "palier": 2, "label": "Brevets / million hab", "value": "Quasi nuls; innovation tres embryonnaire" },
+          { "id": "Eo8", "palier": 3, "label": "Productivite 5 ans", "value": "Marginalement positive tiree par mines; agriculture stagnante" },
+          { "id": "Eo9", "palier": 4, "label": "Commerce ALE", "value": "ZLECAF potentiel mais sortie ECOWAS = perte marche 400M personnes" },
+          { "id": "Eo10", "palier": 5, "label": "Reserves minerales critiques", "value": "Exceptionnelles: or (~800t BF), lithium (21Mt Goulamina Mali), uranium (Niger 4e mondial), manganese" }
+        ]
+      },
+      "Mo": {
+        "label": "Securite defensive",
+        "scoreQuanti": 2.33,
+        "scoreQuali": 2,
+        "scoreFinal": 2.2,
+        "indicators": [
+          { "id": "Mo1", "palier": 3, "label": "Alliances defensives", "value": "AES cree; accord Russie avril 2025; ECOWAS quitte" },
+          { "id": "Mo2", "palier": 3, "label": "Exercices conjoints", "value": "Bataillon conjoint AES + Africa Corps exercises" },
+          { "id": "Mo3", "palier": 1, "label": "Stabilite regionale", "value": "Tres mauvaise: contagion vers cotes (Benin, Cote d'Ivoire, Ghana, Togo)" },
+          { "id": "Mo4", "palier": 3, "label": "Accords defense", "value": "AES = accord collectif; accord Russia 2025" },
+          { "id": "Mo5", "palier": 2, "label": "Controle frontieres", "value": "Tres limite: frontieres poreuses = vecteur jihadiste principal" },
+          { "id": "Mo6", "palier": 2, "label": "R&D defense", "value": "Quasi nul; dependance imports russes" }
+        ]
+      },
+      "Po": {
+        "label": "Gouvernance",
+        "scoreQuanti": 1.75,
+        "scoreQuali": 2,
+        "scoreFinal": 1.85,
+        "indicators": [
+          { "id": "Po1", "palier": 1, "label": "WGI Gouvernement effectif", "value": "~-1.8 (parmi plus bas mondiaux)" },
+          { "id": "Po2", "palier": 1, "label": "V-Dem Participatory", "value": "~0.05 (quasi nul: regimes militaires)" },
+          { "id": "Po3", "palier": 2, "label": "Reformes structurelles", "value": "Nationalisme minier = seule reforme visible (redistribution extractive)" },
+          { "id": "Po4", "palier": 2, "label": "E-Government", "value": "Tres limité; quelques services mobiles en capitale" },
+          { "id": "Po5", "palier": 2, "label": "Decentralisation", "value": "Formelle mais operationnellement impossible dans zones insecurisees" },
+          { "id": "Po6", "palier": 1, "label": "Open Budget", "value": "Opacite totale sous juntes" },
+          { "id": "Po7", "palier": 2, "label": "Succession institutionnelle", "value": "Tres aleatoire; constitutions suspendues" },
+          { "id": "Po8", "palier": 3, "label": "Dialogue social", "value": "Rare tentative de concertation nationale (Mali 2025 = vitrine politique)" }
+        ]
+      },
+      "Lo": {
+        "label": "Attractivite juridique",
+        "scoreQuanti": 2.63,
+        "scoreQuali": 3,
+        "scoreFinal": 2.77,
+        "indicators": [
+          { "id": "Lo1", "palier": 2, "label": "Rule of Law", "value": "~15-25/100 WJP; tres bas" },
+          { "id": "Lo2", "palier": 2, "label": "Protection investisseurs", "value": "Risque expropriation eleve (Goulamina); re-negoce forces" },
+          { "id": "Lo3", "palier": 4, "label": "BIT actifs", "value": "BIT avec France, UE, Maroc, Chine; mais renégociations probables" },
+          { "id": "Lo4", "palier": 3, "label": "Arbitrage international", "value": "ICSID membres; mais jurisprudence limitee et acces difficile" },
+          { "id": "Lo5", "palier": 3, "label": "Protection PI", "value": "OAPI = cadre regional mais application tres partielle" },
+          { "id": "Lo6", "palier": 4, "label": "Taux imposition corporate", "value": "Variable (25-30%); zones minières avec avantages specifiques" },
+          { "id": "Lo7", "palier": 4, "label": "Zones franches", "value": "Quelques zones (Bamako Invest, SODEMI BF) peu attractives vu insecurite" },
+          { "id": "Lo8", "palier": 1, "label": "Stabilite reglementaire", "value": "Tres instable: codes miniers re-negocies de force; juntes impredictibles" }
+        ]
+      },
+      "Io": {
+        "label": "Innovation",
+        "scoreQuanti": 2.0,
+        "scoreQuali": 2,
+        "scoreFinal": 2.0,
+        "indicators": [
+          { "id": "Io1", "palier": 2, "label": "GII rang", "value": "Non classes dans top 100; tres bas" },
+          { "id": "Io2", "palier": 1, "label": "R&D / PIB", "value": "<0.2% (investissement recherche quasi nul)" },
+          { "id": "Io3", "palier": 3, "label": "Ecosysteme startups", "value": "Naissant (Bamako, Ouagadougou) mais tres fragile; fintechs et agritech" },
+          { "id": "Io4", "palier": 3, "label": "Internet haut debit", "value": "Mobile internet croissant; fibre limitee aux capitales" },
+          { "id": "Io5", "palier": 1, "label": "Publications IA", "value": "Quasi nulles" },
+          { "id": "Io6", "palier": 1, "label": "Capital-risque / PIB", "value": "Quasi nul; impact Hub Africa limité par securite" },
+          { "id": "Io7", "palier": 3, "label": "Diplomes STEM", "value": "~8% (croissant mais exode massif)" },
+          { "id": "Io8", "palier": 2, "label": "Adoption IA industrie", "value": "Quasi nulle; quelques apps agricoles/meteo" }
+        ]
+      },
+      "Co": {
+        "label": "Maturite tech / cyber",
+        "scoreQuanti": 2.25,
+        "scoreQuali": 2,
+        "scoreFinal": 2.15,
+        "indicators": [
+          { "id": "Co1", "palier": 2, "label": "GCI maturite cyber", "value": "Tier 4-5; tres en retard" },
+          { "id": "Co2", "palier": 2, "label": "Maturite cloud", "value": "Quasi inexistante" },
+          { "id": "Co3", "palier": 2, "label": "Couverture 5G / fibre", "value": "Pas de 5G; couverture 3G/4G partielle" },
+          { "id": "Co4", "palier": 2, "label": "Souverainete donnees", "value": "Dependance operateurs etrangers (Orange, Airtel)" },
+          { "id": "Co5", "palier": 3, "label": "CERT national", "value": "Existent formellement (CERT-ML, CERT-BF) mais capacites tres limitees" },
+          { "id": "Co6", "palier": 2, "label": "Workforce cyber", "value": "Tres limitee; quelques formations universitaires" },
+          { "id": "Co7", "palier": 3, "label": "Commerce en ligne", "value": "Mobile money dominant (Flooz, Orange Money); e-commerce naissant" },
+          { "id": "Co8", "palier": 2, "label": "Identite numerique", "value": "Embryonnaire; registres civils incomplets" }
+        ]
+      },
+      "Eeo": {
+        "label": "Durabilite environnementale",
+        "scoreQuanti": 3.0,
+        "scoreQuali": 3,
+        "scoreFinal": 3.0,
+        "indicators": [
+          { "id": "Eeo1", "palier": 3, "label": "Part renouvelables", "value": "Potentiel solaire exceptionnel (Sahel = gisement irradiation mondial); deploiement limité" },
+          { "id": "Eeo2", "palier": 3, "label": "Ambition NDC", "value": "NDC soumis mais capacite de mise en oeuvre tres limitee" },
+          { "id": "Eeo3", "palier": 2, "label": "Obligations vertes / PIB", "value": "Quasi inexistantes; pas d'acces marche obligataire vert" },
+          { "id": "Eeo4", "palier": 2, "label": "ND-GAIN Preparation", "value": "Readiness tres bas; vulnerabilite extreme documentee" },
+          { "id": "Eeo5", "palier": 2, "label": "Taux recyclage", "value": "Quasi nul" },
+          { "id": "Eeo6", "palier": 4, "label": "Investissements verts", "value": "Quelques projets (Great Green Wall, Yeleen BF, IDAs Banque Mondiale)" },
+          { "id": "Eeo7", "palier": 4, "label": "Aires protegees", "value": "Parcs nationaux (Pendjari, W, Arly) mais pression anthropique et insecurite" },
+          { "id": "Eeo8", "palier": 3, "label": "EPI Yale", "value": "Score ~25/100 (tres bas; parmi pires mondiaux)" }
+        ]
+      }
+    },
+    "weights": {
+      "So": 0.12,
+      "Eo": 0.17,
+      "Mo": 0.07,
+      "Po": 0.14,
+      "Lo": 0.13,
+      "Io": 0.15,
+      "Co": 0.12,
+      "Eeo": 0.10
+    },
+    "composite": 2.58,
+    "classification": "Modéré-Faible"
+  },
+  "resilience": {
+    "RS1": 2,
+    "RE1": 3,
+    "RM1": 1,
+    "RP1": 1,
+    "RI1": 2,
+    "RL1": 1
+  },
+  "resilienceScore": 1.67,
+  "delta": 3.24,
+  "quadrant": "Trap_critique_risque_tres_eleve_faible_opportunite",
+  "signatures": [
+    "SIG_ARMED_CONFLICT_ACTIVE",
+    "SIG_INSTITUTIONAL_CAPTURE",
+    "SIG_INFORMATION_WAR",
+    "SIG_RESOURCE_NATIONALISM",
+    "SIG_DEMOGRAPHIC_PRESSURE"
+  ],
+  "flags": [
+    {
+      "code": "R10",
+      "label": "Absence garde-fous institutionnels",
+      "triggered": true,
+      "detail": "3 pays sous junte militaire: capture institutionnelle totale, partis dissous, independance judiciaire inexistante"
+    },
+    {
+      "code": "R11",
+      "label": "Velocite critique",
+      "triggered": true,
+      "detail": "Deterioration multidimensionnelle acceleree: deplaces +67%/5 ans, 14 800 ecoles fermees, expansion jihadiste continue vers cotes; delta/trimestre P et M estime >0.50"
+    },
+    {
+      "code": "P13_PEAK",
+      "label": "Capture institutionnelle maximale",
+      "triggered": true,
+      "detail": "3 juntes militaires = aucune separation des pouvoirs; armees sont le pouvoir executif, legislatif et judiciaire"
+    },
+    {
+      "code": "P14_PEAK",
+      "label": "Chocs auto-infliges critiques",
+      "triggered": true,
+      "detail": "Sortie ECOWAS (perte marche 400M), expulsion France/USA (perte aide securitaire), isolation internationale = aggravation structurelle volontaire"
+    },
+    {
+      "code": "M_PEAK",
+      "label": "Conflit arme actif haute intensite",
+      "triggered": true,
+      "detail": "JNIM + ISSP contrôlent portions croissantes du territoire; contagion vers 4 pays cötiers confirmee"
+    }
+  ]
+}

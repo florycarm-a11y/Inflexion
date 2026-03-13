@@ -1,9 +1,69 @@
 {
   "schema": "evaluation-v2",
-  "version": "2.0",
+  "version": "2.1",
   "generatedAt": "2026-03-13",
-  "count": 6,
+  "count": 12,
   "evaluations": [
+    {
+      "zoneId": "arctique",
+      "name": "Arctique (Groenland + région polaire)",
+      "region": "arctique",
+      "composite": 3.1,
+      "compositeOpp": 5.6,
+      "delta": -2.5,
+      "quadrant": "Pole attractif sous tension",
+      "classification": "Modere",
+      "file": "arctique-groenland-v2.json"
+    },
+    {
+      "zoneId": "turquie",
+      "name": "Turquie",
+      "region": "europe-moyen-orient",
+      "composite": 4.3,
+      "compositeOpp": 3.7,
+      "delta": 0.6,
+      "quadrant": "Zone de risque avec potentiel emergent",
+      "classification": "Eleve",
+      "file": "turquie-v2.json"
+    },
+    {
+      "zoneId": "ormuz",
+      "name": "Détroit d'Ormuz (Iran)",
+      "region": "moyen-orient",
+      "composite": 6.2,
+      "compositeOpp": 2.2,
+      "classification": "Critique",
+      "file": "ormuz-v2.json"
+    },
+    {
+      "zoneId": "mer-de-chine",
+      "name": "Mer de Chine méridionale (Chine)",
+      "region": "asie",
+      "composite": 4.8,
+      "compositeOpp": 5.4,
+      "classification": "Élevé",
+      "file": "mer-de-chine-v2.json"
+    },
+    {
+      "zoneId": "bresil",
+      "name": "Brésil",
+      "region": "amerique-latine",
+      "composite": 3.5,
+      "compositeOpp": 4.2,
+      "classification": "Modere",
+      "file": "bresil-v2.json"
+    },
+    {
+      "zoneId": "tamil-nadu",
+      "name": "Tamil Nadu (Inde — sub-national)",
+      "region": "asie",
+      "subnational": true,
+      "parentZone": "inde",
+      "composite": 3.2,
+      "compositeOpp": 4.9,
+      "classification": "Modere",
+      "file": "tamil-nadu-v2.json"
+    },
     {
       "zoneId": "madagascar",
       "name": "Madagascar",

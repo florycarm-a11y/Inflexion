@@ -1,0 +1,387 @@
+{
+  "zone": {
+    "id": "ormuz",
+    "name": "Détroit d'Ormuz (Iran)",
+    "region": "moyen-orient"
+  },
+  "meta": {
+    "date": "2026-03-13",
+    "version": "2.1",
+    "analyst": "Inflexion Intelligence"
+  },
+  "dimensions": {
+    "S": {
+      "label": "Social",
+      "indicators": [
+        { "id": "S1", "label": "Gini", "value": "0.41 (estimé 2025)", "rawValue": 0.41, "palier": 4, "source": "Statista / World Bank" },
+        { "id": "S2", "label": "IDH", "value": "0.774 (2023, 78e mondial)", "rawValue": 0.774, "palier": 3, "source": "UNDP" },
+        { "id": "S3", "label": "Chômage jeunes", "value": "22.8% (2024, 50% males 25-40 inactifs)", "rawValue": 22.8, "palier": 5, "source": "ILO / Majlis" },
+        { "id": "S4", "label": "Solde migratoire", "value": "-5.2‰ (exode cerveaux + fuite capitaux)", "rawValue": -5.2, "palier": 4, "source": "UN DESA" },
+        { "id": "S5", "label": "Mouvements sociaux", "value": "8 épisodes (2025-26, après grèves et répression)", "rawValue": 8, "palier": 6, "source": "ACLED / Iran International" },
+        { "id": "S6", "label": "Tensions ethniques", "value": "Kurdes, Baloutches, Arabes : résistances armées actives", "rawValue": null, "palier": 5, "source": "ICG" },
+        { "id": "S7", "label": "Lits hôpital/1000", "value": "1.6 (santé sous-financée, pénurie médicaments)", "rawValue": 1.6, "palier": 5, "source": "WHO" },
+        { "id": "S8", "label": "Croissance urbaine", "value": "+1.8%/an (bidonvilles périurbains)", "rawValue": 1.8, "palier": 3, "source": "UN-Habitat" },
+        { "id": "S9", "label": "Inégalité genre (GII)", "value": "0.459 (119e mondial)", "rawValue": 0.459, "palier": 5, "source": "UNDP" },
+        { "id": "S10", "label": "Espérance de vie", "value": "77.1 ans (dégradation post-sanctions)", "rawValue": 77.1, "palier": 2, "source": "WHO" },
+        { "id": "S11", "label": "Sous-alimentation", "value": "~7% (FAO 2024, hausse inflation alimentaire)", "rawValue": 7, "palier": 4, "source": "FAO" },
+        { "id": "S12", "label": "Éducation secondaire", "value": "87% (bon niveau mais fuite étudiants)", "rawValue": 87, "palier": 2, "source": "UNESCO" }
+      ],
+      "scoreQuanti": 4.0,
+      "scoreQuali": 5,
+      "scoreFinal": 4.4,
+      "trend": "up",
+      "commentary": "Société sous pression extrême : pauvreté 40%, chômage massif chez les jeunes, exode des cerveaux accéléré. Crises eau + pollution air (58 975 morts/an PM2.5). Crise de Mahsa Amini (2022) laisse des cicatrices profondes. Les frappes US-Israël (mars 2026) amplifient la détresse humanitaire."
+    },
+    "E": {
+      "label": "Économique",
+      "indicators": [
+        { "id": "E1", "label": "PIB réel", "value": "0.6% (IMF oct 2025) → négatif après frappes", "rawValue": 0.6, "palier": 5, "source": "IMF WEO Oct 2025" },
+        { "id": "E2", "label": "Inflation", "value": "43-49% (2025, rial à 1 750 000/USD)", "rawValue": 46, "palier": 7, "source": "IMF / Iran International" },
+        { "id": "E3", "label": "Dette/PIB", "value": "~40% officiel (mais opaque)", "rawValue": 40, "palier": 3, "source": "IMF" },
+        { "id": "E4", "label": "Balance courante", "value": "+2% PIB (pétrole sanction-contourné via Chine)", "rawValue": 2, "palier": 2, "source": "IMF" },
+        { "id": "E5", "label": "Notation souveraine", "value": "Non notée (sanctions OFAC/UE/ONU)", "rawValue": null, "palier": 7, "source": "Absence notation" },
+        { "id": "E6", "label": "Régime change", "value": "Multiple (officiel vs marché noir, écart >3x)", "rawValue": null, "palier": 7, "source": "Iran International" },
+        { "id": "E7", "label": "Réserves change", "value": "~2 mois imports (bloquées par sanctions)", "rawValue": 2, "palier": 6, "source": "Clingendael" },
+        { "id": "E8", "label": "IDE/PIB", "value": "<0.5% (sanction totale + risque guerre)", "rawValue": 0.5, "palier": 7, "source": "UNCTAD" },
+        { "id": "E9", "label": "Chômage total", "value": "8.4% (officiel) ; sous-emploi ~25%", "rawValue": 8.4, "palier": 4, "source": "SCI Iran" },
+        { "id": "E10", "label": "Dette privée/PIB", "value": "~30%", "rawValue": 30, "palier": 2, "source": "BIS (estimé)" },
+        { "id": "E11", "label": "Concentration exports", "value": "Pétrole + gaz >80%", "rawValue": 80, "palier": 7, "source": "UN Comtrade" },
+        { "id": "E12", "label": "Croissance crédit", "value": ">40% nominal (hyperinflation monétaire)", "rawValue": 40, "palier": 7, "source": "CBI Iran" },
+        { "id": "E13", "label": "Shadow banking", "value": ">40% PIB (économie informelle, IRGC)", "rawValue": 40, "palier": 7, "source": "IMF / Clingendael" },
+        { "id": "E14", "label": "Coût énergie", "value": "Très bas domestique (subventions), mais coupures", "rawValue": null, "palier": 5, "source": "IEA" },
+        { "id": "E15", "label": "Indice misère", "value": "~55 (inflation 46 + chômage 8.4 + undercount)", "rawValue": 55, "palier": 7, "source": "Calcul Inflexion" },
+        { "id": "E16", "label": "Indépendance BC", "value": "Nulle (CBI sous directive Gouvernement/IRGC)", "rawValue": null, "palier": 7, "source": "BTI 2024" }
+      ],
+      "scoreQuanti": 5.6,
+      "scoreQuali": 6,
+      "scoreFinal": 5.7,
+      "trend": "up",
+      "commentary": "Économie sinistrée par 45 ans de sanctions cumulées, hyperinflation chronique et dollarisation parallèle. L'IRGC contrôle ~40% du PIB via des entités off-budget. Le choc Ormuz mars 2026 (+$40/baril) risque de provoquer une récession régionale profonde. Aucun accès aux marchés financiers internationaux."
+    },
+    "M": {
+      "label": "Militaire",
+      "indicators": [
+        { "id": "M1", "label": "Dépenses mil./PIB", "value": "6-8% officiel (IRGC off-budget : 10%+)", "rawValue": 8, "palier": 5, "source": "SIPRI / Iran Focus" },
+        { "id": "M2", "label": "Conflits armés", "value": "Guerre ouverte US-Israël-Iran (mars 2026)", "rawValue": null, "palier": 7, "source": "Wikipedia / IISS" },
+        { "id": "M3", "label": "GFP Index", "value": "17e mondial (avant frappes massives)", "rawValue": 17, "palier": 5, "source": "Global Firepower" },
+        { "id": "M4", "label": "Exercices militaires", "value": ">15 (IRGC, navy, Ormuz drills, 2025)", "rawValue": 15, "palier": 6, "source": "IISS" },
+        { "id": "M5", "label": "Prolifération nucléaire", "value": "Enrichissement 60-84% U235 ; capacité bomb-making imminente", "rawValue": null, "palier": 7, "source": "IAEA / FAS" },
+        { "id": "M6", "label": "Coups régionaux 5 ans", "value": "0 coup d'État mais contrôle Houthis, Hezbollah, PMF", "rawValue": 0, "palier": 4, "source": "Cline Center" },
+        { "id": "M7", "label": "Subordination armée", "value": "IRGC > gouvernement civil (Guide Suprême)", "rawValue": null, "palier": 6, "source": "BTI 2024" },
+        { "id": "M8", "label": "Transferts armes", "value": "Drones Shahed → Russie, Houthis, Hezbollah (TIV >5000)", "rawValue": 5000, "palier": 6, "source": "SIPRI" },
+        { "id": "M9", "label": "Bases étrangères", "value": "Présence IRGC/Quds Syrie, Irak, Yémen, Liban", "rawValue": null, "palier": 5, "source": "ICG / IISS" },
+        { "id": "M10", "label": "Milices/PMC", "value": "Houthis, Hezbollah, PMF (proxy network IRGC)", "rawValue": null, "palier": 7, "source": "ACLED / CriticalThreats" },
+        { "id": "M11", "label": "Traités défense", "value": "Accord bilatéral Iran-Russie (janv 2026), SCO membre", "rawValue": null, "palier": 3, "source": "TASS / IISS" },
+        { "id": "M12", "label": "R&D défense", "value": ">8% budget défense (missiles, drones, cyber)", "rawValue": 8, "palier": 3, "source": "IISS" },
+        { "id": "M13", "label": "Fiabilité protecteur", "value": "Russie/Chine : soutien limité (évitent confrontation)", "rawValue": null, "palier": 5, "source": "CFR / ICG" }
+      ],
+      "scoreQuanti": 5.7,
+      "scoreQuali": 7,
+      "scoreFinal": 6.2,
+      "trend": "up",
+      "commentary": "Zone de conflit direct depuis mars 2026 (900 frappes US-Israël). Khamenei tué le 28 fév 2026. IRGC maintient le blocage d'Ormuz (trafic ~0). Réseau proxy actif : Houthis, Hezbollah, PMF irakiens. Programme nucléaire à stade critique. Fiabilité protecteur (Russie/Chine) faible en cas de confrontation directe avec les USA."
+    },
+    "P": {
+      "label": "Politique",
+      "indicators": [
+        { "id": "P1", "label": "CPI", "value": "23/100 (2025, 153e/180)", "rawValue": 23, "palier": 7, "source": "Transparency International" },
+        { "id": "P2", "label": "V-Dem LDI", "value": "0.05 (régime autocratique électoral)", "rawValue": 0.05, "palier": 7, "source": "V-Dem Institute" },
+        { "id": "P3", "label": "WGI Stabilité", "value": "-1.8 (très instable)", "rawValue": -1.8, "palier": 7, "source": "World Bank WGI" },
+        { "id": "P4", "label": "Cycle électoral", "value": "Pezeshkian élu 2024 mais limité par Guide Suprême", "rawValue": null, "palier": 5, "source": "IFES" },
+        { "id": "P5", "label": "Risque régime", "value": "Critique : Khamenei mort, succession ouverte (Mojtaba?)", "rawValue": null, "palier": 7, "source": "ICG / Iran International" },
+        { "id": "P6", "label": "Polarisation", "value": "Extrême (Réforme vs IRGC, protestants vs clergé)", "rawValue": null, "palier": 7, "source": "Freedom House 2025" },
+        { "id": "P7", "label": "Libertés civiles", "value": "6/100 (Pas libre, Freedom House 2025)", "rawValue": 6, "palier": 7, "source": "Freedom House" },
+        { "id": "P8", "label": "Risque successoral", "value": "Extrême : mort du Guide Suprême, vide de pouvoir", "rawValue": null, "palier": 7, "source": "Iran International" },
+        { "id": "P9", "label": "Autonomie régionale", "value": "Contestations kurde, baloutche, arabe (Khuzestan)", "rawValue": null, "palier": 6, "source": "ICG" },
+        { "id": "P10", "label": "Opposition", "value": "Opposition unie en exil (jan 2026), répression interne", "rawValue": null, "palier": 6, "source": "MEF / ICG" },
+        { "id": "P11", "label": "Pression démographique", "value": "-3‰ (fuite des élites + exode post-frappes)", "rawValue": -3, "palier": 5, "source": "UN DESA" },
+        { "id": "P12", "label": "Diaspora politique", "value": "Diaspora active (NCRI, monarchistes) mais divisée", "rawValue": null, "palier": 5, "source": "MEF" },
+        { "id": "P13", "label": "Capture institutionnelle", "value": "Totale : IRGC contrôle armée, économie, médias, justice", "rawValue": null, "palier": 7, "source": "BTI 2024 / Freedom House" },
+        { "id": "P14", "label": "Chocs auto-infligés", "value": "Blocage Ormuz = autodestruction économique nationale", "rawValue": null, "palier": 7, "source": "Inflexion analysis" },
+        { "id": "P15", "label": "Fenêtres d'action", "value": "Ouverture maximale : chaos post-Khamenei (2026)", "rawValue": null, "palier": 7, "source": "ICG / El Cano" }
+      ],
+      "scoreQuanti": 6.5,
+      "scoreQuali": 7,
+      "scoreFinal": 6.7,
+      "trend": "up",
+      "commentary": "Crise politique systémique : élimination du Guide Suprême le 28 fév 2026, succession non préparée, factions IRGC potentiellement divergentes. L'opposition en exil tente de se structurer mais est divisée. La capture institutionnelle totale par l'IRGC rend toute réforme interne quasi impossible. Fenêtre de changement de régime maximale."
+    },
+    "L": {
+      "label": "Légal",
+      "indicators": [
+        { "id": "L1", "label": "Rule of Law", "value": "0.08 (percentile WJP)", "rawValue": 0.08, "palier": 7, "source": "WJP" },
+        { "id": "L2", "label": "B-READY", "value": "Non classé (sanctions)", "rawValue": null, "palier": 7, "source": "World Bank" },
+        { "id": "L3", "label": "Sanctions", "value": "Maximum : OFAC, UE, ONU snap-back (sept 2025)", "rawValue": null, "palier": 7, "source": "OFAC / EU / UN" },
+        { "id": "L4", "label": "Protection PI", "value": "Faible (non-membre conventions majeures)", "rawValue": null, "palier": 6, "source": "GIPC" },
+        { "id": "L5", "label": "Exécution contrats", "value": ">800 jours (système judiciaire politisé)", "rawValue": 800, "palier": 7, "source": "World Bank" },
+        { "id": "L6", "label": "Indépendance judiciaire", "value": "Nulle (Conseil des Gardiens, Guide Suprême)", "rawValue": null, "palier": 7, "source": "BTI 2024" },
+        { "id": "L7", "label": "BIT actifs", "value": "~10 (la plupart suspendus, sanctions)", "rawValue": 10, "palier": 6, "source": "UNCTAD" },
+        { "id": "L8", "label": "Anti-corruption", "value": "Inexistant (IRGC au-dessus des lois)", "rawValue": null, "palier": 7, "source": "TI" },
+        { "id": "L9", "label": "Arbitrage ICSID", "value": "Non-membre", "rawValue": null, "palier": 7, "source": "ICSID" },
+        { "id": "L10", "label": "Risque expropriation", "value": "Très élevé (nationalisation IRGC continue)", "rawValue": null, "palier": 7, "source": "ICG / BTI" }
+      ],
+      "scoreQuanti": 6.8,
+      "scoreQuali": 7,
+      "scoreFinal": 6.9,
+      "trend": "up",
+      "commentary": "Environnement légal le plus hostile possible pour les investisseurs internationaux. Sanctions OFAC absolues, snapback ONU (sept 2025), absence d'État de droit indépendant. L'IRGC est au-dessus de tout cadre légal. Risque d'expropriation systémique pour toute entité étrangère."
+    },
+    "I": {
+      "label": "Information",
+      "indicators": [
+        { "id": "I1", "label": "RSF rang", "value": "176e/180 (2025, 'trou noir de l'info')", "rawValue": 176, "palier": 7, "source": "RSF 2025" },
+        { "id": "I2", "label": "Freedom on Net", "value": "7/100 (Pas libre, 2025)", "rawValue": 7, "palier": 7, "source": "Freedom House" },
+        { "id": "I3", "label": "Opérations influence", "value": ">20 campagnes (Charming Kitten, Phosphorus, etc.)", "rawValue": 20, "palier": 7, "source": "CSIS / Microsoft" },
+        { "id": "I4", "label": "Censure internet", "value": ">85% du trafic bloqué (Instagram, WhatsApp, X...)", "rawValue": 85, "palier": 7, "source": "RSF / OONI" },
+        { "id": "I5", "label": "Contrôle médias État", "value": "~98% (IRIB monopole, presse libre inexistante)", "rawValue": 98, "palier": 7, "source": "RSF" },
+        { "id": "I6", "label": "Pénétration réseaux sociaux", "value": "~45% (dont 80% via VPN illégaux)", "rawValue": 45, "palier": 5, "source": "DataReportal" },
+        { "id": "I7", "label": "Désinformation IA", "value": ">30 campagnes deepfakes identifiées (2024-25)", "rawValue": 30, "palier": 7, "source": "Rapid7 / Axios" },
+        { "id": "I8", "label": "Pluralisme médiatique", "value": "Nul en interne ; diaspora = seule pluralité", "rawValue": null, "palier": 7, "source": "RSF" },
+        { "id": "I9", "label": "Journalistes emprisonnés", "value": ">60 (CPJ 2025, 2e mondial)", "rawValue": 60, "palier": 7, "source": "CPJ / RSF" },
+        { "id": "I10", "label": "Contrôle narratif diaspora", "value": "Intimidation familles, opérations kidnapping journalistes", "rawValue": null, "palier": 7, "source": "RSF / CISA" },
+        { "id": "I11", "label": "Comptes coordonnés", "value": ">5 000 (Meta, Twitter bans répétés)", "rawValue": 5000, "palier": 7, "source": "Stanford IO" },
+        { "id": "I12", "label": "Usage VPN", "value": ">35% (mais légalement criminalisé depuis fév 2024)", "rawValue": 35, "palier": 6, "source": "RSF / Surfshark" }
+      ],
+      "scoreQuanti": 6.8,
+      "scoreQuali": 7,
+      "scoreFinal": 6.9,
+      "trend": "up",
+      "commentary": "Parmi les 5 pires environnements informationnels mondiaux. Internet national 'enclavé' (SHAB). Opérations d'influence actives en représailles aux frappes US-Israël (mars 2026) : cyberattaques + désinformation coordonnée. Diaspora = seul vecteur d'information pluraliste."
+    },
+    "C": {
+      "label": "Cyber",
+      "indicators": [
+        { "id": "C1", "label": "NCSI", "value": "~28/100 (Iran non classé officiellement)", "rawValue": 28, "palier": 6, "source": "e-Governance Academy (estimé)" },
+        { "id": "C2", "label": "GCI", "value": "~30/100 (capacité offensive >> défense)", "rawValue": 30, "palier": 5, "source": "ITU (estimé)" },
+        { "id": "C3", "label": "Incidents cyber", "value": ">15 majeurs en représailles (mars 2026) + Stuxnet legacy", "rawValue": 15, "palier": 7, "source": "CISA / IndustrialCyber" },
+        { "id": "C4", "label": "Capacité offensive", "value": "APT33/35/39/42, IRGC-CEC : grade mondial 'élevé'", "rawValue": null, "palier": 7, "source": "CSIS / CISA" },
+        { "id": "C5", "label": "Exposition infra critique", "value": "Très élevée (Stuxnet 2010, Predatory Sparrow 2021)", "rawValue": null, "palier": 7, "source": "CISA / CheckPoint" },
+        { "id": "C6", "label": "Budget cyberdéfense", "value": "<3% (priorité offensive sur défensive)", "rawValue": 3, "palier": 5, "source": "CSIS" },
+        { "id": "C7", "label": "Ransomware", "value": ">30 incidents (cibles occidentales) + réponses sur Iran", "rawValue": 30, "palier": 6, "source": "Canadian CCCS / CISA" },
+        { "id": "C8", "label": "Attaques supply chain", "value": "5+ (IRGC ciblant infrastructure ICS/SCADA)", "rawValue": 5, "palier": 6, "source": "CISA 2025" },
+        { "id": "C9", "label": "Workforce cyber", "value": "~40/100k (offensif fort, défensif faible)", "rawValue": 40, "palier": 5, "source": "ISC2 (estimé)" },
+        { "id": "C10", "label": "Législation données", "value": "Loi cybercrime 2010 sert la répression, pas la protection", "rawValue": null, "palier": 7, "source": "Freedom House" },
+        { "id": "C11", "label": "Cloud exposure", "value": "Élevée (infrastructure nationale vieillissante)", "rawValue": null, "palier": 6, "source": "CISA" },
+        { "id": "C12", "label": "Zero-day exposure", "value": "Très élevée (Predatory Sparrow : aciéries, carburants)", "rawValue": null, "palier": 7, "source": "Wired / CISA" }
+      ],
+      "scoreQuanti": 6.2,
+      "scoreQuali": 7,
+      "scoreFinal": 6.5,
+      "trend": "up",
+      "commentary": "Acteur cyber offensif de rang mondial (IRGC-CEC, APT33/35/42) mais infrastructure défensive vulnérable. En réponse aux frappes de mars 2026, vague de cyberattaques iraniennes sur infrastructures critiques occidentales et du Golfe. Prépositionnement ICS/SCADA occidental par IRGC signalé par CISA depuis 2025."
+    },
+    "Ee": {
+      "label": "Environnemental",
+      "indicators": [
+        { "id": "Ee1", "label": "ND-GAIN", "value": "~42 (vulnérabilité élevée)", "rawValue": 42, "palier": 5, "source": "ND-GAIN (estimé)" },
+        { "id": "Ee2", "label": "Water Stress", "value": "4.8 (extrêmement élevé, 17 bassins secs)", "rawValue": 4.8, "palier": 7, "source": "WRI Aqueduct / Carnegie 2025" },
+        { "id": "Ee3", "label": "Dépendance extractives", "value": "Pétrole + gaz >80% recettes export", "rawValue": 80, "palier": 7, "source": "UN Comtrade" },
+        { "id": "Ee4", "label": "Catastrophes naturelles 5 ans", "value": "6 (séismes, inondations, sécheresses)", "rawValue": 6, "palier": 5, "source": "EM-DAT" },
+        { "id": "Ee5", "label": "Transition énergétique", "value": "<3% renouvelables (blocage réformes)", "rawValue": 3, "palier": 7, "source": "IEA" },
+        { "id": "Ee6", "label": "CO2/capita", "value": "8.6 tonnes (très élevé pour niveau revenu)", "rawValue": 8.6, "palier": 5, "source": "Global Carbon Project" },
+        { "id": "Ee7", "label": "Biodiversité menacée", "value": "~22% espèces menacées (aridification)", "rawValue": 22, "palier": 5, "source": "IUCN" },
+        { "id": "Ee8", "label": "Déforestation", "value": "~1.2%/an (pressions anthropiques)", "rawValue": 1.2, "palier": 4, "source": "Global Forest Watch" },
+        { "id": "Ee9", "label": "Montée des eaux", "value": "~5% pop côtes Golfe et Caspienne", "rawValue": 5, "palier": 3, "source": "Climate Central" },
+        { "id": "Ee10", "label": "Pollution air PM2.5", "value": "~38 µg/m³ moy (161 morts/jour, 2024)", "rawValue": 38, "palier": 5, "source": "IQAir / Inside Climate News" }
+      ],
+      "scoreQuanti": 5.3,
+      "scoreQuali": 5,
+      "scoreFinal": 5.2,
+      "trend": "up",
+      "commentary": "Triple crise environnementale : eau (lac Urmia disparu, rivières asséchées), air (Tehran fermée plusieurs fois en 2025), et sécheresse historique aggravant l'instabilité sociale. Carnegie Endowment (nov 2025) : 'modèle d'alerte pour tous les pays'. La fermeture d'Ormuz accentue la désindustrialisation liée aux pénuries énergétiques."
+    }
+  },
+  "composite": 6.2,
+  "classification": "Critique",
+  "opportunity": {
+    "So": {
+      "label": "Capital humain",
+      "indicators": [
+        { "id": "So1", "label": "Alphabétisation", "value": "88% (bonne base)", "rawValue": 88, "palier": 5, "source": "UNESCO" },
+        { "id": "So2", "label": "PISA (équiv.)", "value": "Non classé mais niveau universitaire correct", "rawValue": null, "palier": 4, "source": "UNESCO" },
+        { "id": "So3", "label": "Dépenses santé/PIB", "value": "~3% (très faible)", "rawValue": 3, "palier": 3, "source": "WHO" },
+        { "id": "So4", "label": "Médecins/1000", "value": "1.5 (pénurie post-sanctions)", "rawValue": 1.5, "palier": 3, "source": "WHO" },
+        { "id": "So5", "label": "Scolarisation tertiaire", "value": "~60% (fort taux mais diplômés émigrent)", "rawValue": 60, "palier": 5, "source": "UNESCO" },
+        { "id": "So6", "label": "Mobilité sociale", "value": "Très faible (IRGC + connexions = seul ascenseur)", "rawValue": null, "palier": 2, "source": "BTI" },
+        { "id": "So7", "label": "Pop 15-64 %", "value": "65% (dividende démographique potentiel)", "rawValue": 65, "palier": 4, "source": "UN DESA" },
+        { "id": "So8", "label": "Solde migratoire qualifié", "value": "Très négatif (5e exode cerveaux mondial)", "rawValue": null, "palier": 2, "source": "IMF" }
+      ],
+      "scoreQuanti": 3.5,
+      "scoreQuali": 3,
+      "scoreFinal": 3.3,
+      "commentary": "Population éduquée sous-exploitée : Iran forme des ingénieurs et médecins de qualité mais l'exode des cerveaux (5e mondial) prive le pays de ses talents. Dans un scénario post-régime, le capital humain diasporique pourrait être un atout considérable."
+    },
+    "Eo": {
+      "label": "Croissance économique",
+      "indicators": [
+        { "id": "Eo1", "label": "PIB tendanciel", "value": "Négatif (sanctions + guerre)", "rawValue": null, "palier": 2, "source": "IMF" },
+        { "id": "Eo2", "label": "IDE/PIB", "value": "<0.5% (sanctions totales)", "rawValue": 0.5, "palier": 1, "source": "UNCTAD" },
+        { "id": "Eo3", "label": "PIB PPA", "value": "~$1 900 Mrd (7e mondial, potentiel énorme)", "rawValue": 1900, "palier": 6, "source": "IMF" },
+        { "id": "Eo4", "label": "Croissance classe moyenne", "value": "Régression (pauvreté >40%)", "rawValue": null, "palier": 2, "source": "World Bank" },
+        { "id": "Eo5", "label": "Diversification exports", "value": "Très faible (pétrole dominant)", "rawValue": null, "palier": 2, "source": "UN Comtrade" },
+        { "id": "Eo6", "label": "Profondeur financière", "value": "Faible (système bancaire exclu SWIFT)", "rawValue": null, "palier": 2, "source": "BIS" },
+        { "id": "Eo7", "label": "Brevets/million", "value": "~8 (très faible)", "rawValue": 8, "palier": 2, "source": "WIPO" },
+        { "id": "Eo8", "label": "Productivité 5 ans", "value": "Régression continue", "rawValue": null, "palier": 2, "source": "IMF" },
+        { "id": "Eo9", "label": "Commerce ALE", "value": "Minimal (SCO partiel)", "rawValue": null, "palier": 2, "source": "WTO" },
+        { "id": "Eo10", "label": "Réserves minérales", "value": "4e réserves gaz mondial, 4e pétrole : atout colossal", "rawValue": null, "palier": 7, "source": "OPEC / IEA" }
+      ],
+      "scoreQuanti": 2.8,
+      "scoreQuali": 2,
+      "scoreFinal": 2.5,
+      "commentary": "Paradoxe iranien : ressources naturelles immenses (4e gaz/pétrole mondial) mais potentiel bloqué par sanctions, IRGC prédateur et hyperinflation. Dans un scénario de normalisation, potentiel de croissance 5-8%/an."
+    },
+    "Mo": {
+      "label": "Sécurité",
+      "indicators": [
+        { "id": "Mo1", "label": "Alliances", "value": "SCO, Iran-Russie (2026), BRICS observateur", "rawValue": null, "palier": 3, "source": "IISS" },
+        { "id": "Mo2", "label": "Exercices conjoints", "value": "Exercices Russie-Chine-Iran (Golfe 2024-25)", "rawValue": null, "palier": 3, "source": "IISS" },
+        { "id": "Mo3", "label": "Stabilité régionale", "value": "Nulle (guerre ouverte mars 2026)", "rawValue": null, "palier": 1, "source": "ICG" },
+        { "id": "Mo4", "label": "Accords défense", "value": "Accord Iran-Russie jan 2026", "rawValue": null, "palier": 3, "source": "TASS" },
+        { "id": "Mo5", "label": "Contrôle frontières", "value": "Dégradé (Baloutchistan, Kurdistan)", "rawValue": null, "palier": 2, "source": "ICG" },
+        { "id": "Mo6", "label": "R&D défense", "value": "Fort (drones, missiles balistiques)", "rawValue": null, "palier": 4, "source": "IISS" }
+      ],
+      "scoreQuanti": 2.7,
+      "scoreQuali": 2,
+      "scoreFinal": 2.4,
+      "commentary": "Sécurité nationale effondrée en contexte de guerre ouverte. Les alliances avec Russie/Chine offrent un minimum de protection diplomatique mais pas opérationnelle face aux USA-Israël."
+    },
+    "Po": {
+      "label": "Gouvernance",
+      "indicators": [
+        { "id": "Po1", "label": "Efficacité gouvernement (WGI)", "value": "-1.1 (très faible)", "rawValue": null, "palier": 2, "source": "World Bank WGI" },
+        { "id": "Po2", "label": "V-Dem Participatif", "value": "0.04 (parmi les plus bas)", "rawValue": 0.04, "palier": 1, "source": "V-Dem" },
+        { "id": "Po3", "label": "Réformes", "value": "Bloquées (Pezeshkian empêché par IRGC)", "rawValue": null, "palier": 2, "source": "BTI" },
+        { "id": "Po4", "label": "E-Government", "value": "Moyen (mais censuré)", "rawValue": null, "palier": 3, "source": "UN EGDI" },
+        { "id": "Po5", "label": "Décentralisation", "value": "Centralisée (mollahcratie)", "rawValue": null, "palier": 2, "source": "BTI" },
+        { "id": "Po6", "label": "Open Budget", "value": "16/100 (opaque)", "rawValue": 16, "palier": 2, "source": "IBP" },
+        { "id": "Po7", "label": "Succession", "value": "Critique (Khamenei mort, aucun successeur légitime)", "rawValue": null, "palier": 1, "source": "Iran International" },
+        { "id": "Po8", "label": "Dialogue social", "value": "Inexistant (syndicats interdits)", "rawValue": null, "palier": 1, "source": "ILO" }
+      ],
+      "scoreQuanti": 1.8,
+      "scoreQuali": 2,
+      "scoreFinal": 1.9,
+      "commentary": "Gouvernance parmi les pires mondiales. Le vide successoral post-Khamenei est une fenêtre d'opportunité historique pour une transition, mais aussi un risque maximal de chaos institutionnel."
+    },
+    "Lo": {
+      "label": "Attractivité juridique",
+      "indicators": [
+        { "id": "Lo1", "label": "Rule of Law", "value": "0.08 (quasi nul)", "rawValue": 0.08, "palier": 1, "source": "WJP" },
+        { "id": "Lo2", "label": "Protection investisseurs", "value": "Inexistante (sanctions + IRGC)", "rawValue": null, "palier": 1, "source": "UNCTAD" },
+        { "id": "Lo3", "label": "BIT", "value": "~10 (majorité suspendus)", "rawValue": 10, "palier": 2, "source": "UNCTAD" },
+        { "id": "Lo4", "label": "Arbitrage", "value": "Non-ICSID, arbitrage non reconnu", "rawValue": null, "palier": 1, "source": "ICSID" },
+        { "id": "Lo5", "label": "Protection PI", "value": "Faible", "rawValue": null, "palier": 2, "source": "GIPC" },
+        { "id": "Lo6", "label": "Fiscalité", "value": "Imprévisible (IRGC off-budget)", "rawValue": null, "palier": 2, "source": "IMF" },
+        { "id": "Lo7", "label": "Zones franches", "value": "Kish, Qeshm existent mais bloquées par sanctions", "rawValue": null, "palier": 2, "source": "UNCTAD" },
+        { "id": "Lo8", "label": "Stabilité réglementaire", "value": "Nulle (changements arbitraires IRGC)", "rawValue": null, "palier": 1, "source": "BTI" }
+      ],
+      "scoreQuanti": 1.5,
+      "scoreQuali": 1,
+      "scoreFinal": 1.3,
+      "commentary": "Environnement légal prohibitif pour tout investissement international. Seul scénario d'amélioration : levée sanctions dans cadre accord nucléaire post-guerre, possible uniquement avec changement de régime."
+    },
+    "Io": {
+      "label": "Innovation",
+      "indicators": [
+        { "id": "Io1", "label": "GII rang", "value": "~80e (non classé officiellement depuis 2022)", "rawValue": null, "palier": 3, "source": "WIPO (estimé)" },
+        { "id": "Io2", "label": "R&D/PIB", "value": "~0.8% (faible)", "rawValue": 0.8, "palier": 3, "source": "UNESCO" },
+        { "id": "Io3", "label": "Startups", "value": "Écosystème limité (sanctions = pas d'accès cloud/paiement)", "rawValue": null, "palier": 2, "source": "WIPO" },
+        { "id": "Io4", "label": "Internet haut débit", "value": "~20% (censuré, infrastructure médiocre)", "rawValue": 20, "palier": 2, "source": "ITU" },
+        { "id": "Io5", "label": "Publications IA", "value": "Modeste mais croissant (universités)", "rawValue": null, "palier": 3, "source": "Scopus" },
+        { "id": "Io6", "label": "Capital-risque", "value": "Quasi nul (isolement financier)", "rawValue": null, "palier": 1, "source": "UNCTAD" },
+        { "id": "Io7", "label": "STEM", "value": "Fort : Iran forme beaucoup d'ingénieurs (exode massif)", "rawValue": null, "palier": 4, "source": "UNESCO" },
+        { "id": "Io8", "label": "Adoption IA", "value": "Limitée (sanction accès GPU/cloud)", "rawValue": null, "palier": 2, "source": "WIPO" }
+      ],
+      "scoreQuanti": 2.5,
+      "scoreQuali": 2,
+      "scoreFinal": 2.3,
+      "commentary": "Potentiel latent en STEM mais structurellement bloqué par les sanctions (accès cloud, GPU, paiements). Dans un scénario de normalisation, la diaspora iranienne en Silicon Valley/Europe pourrait catalyser un écosystème tech rapidement."
+    },
+    "Co": {
+      "label": "Maturité tech",
+      "indicators": [
+        { "id": "Co1", "label": "GCI", "value": "~30 (estimé, non classé)", "rawValue": 30, "palier": 2, "source": "ITU (estimé)" },
+        { "id": "Co2", "label": "Cloud", "value": "Quasi nul (sanctions AWS, Azure, GCP)", "rawValue": null, "palier": 1, "source": "CSP restrictions" },
+        { "id": "Co3", "label": "5G+fibre", "value": "5G absente, fibre partielle", "rawValue": null, "palier": 2, "source": "ITU" },
+        { "id": "Co4", "label": "Souveraineté données", "value": "Internet national (SHAB) = contrôle total", "rawValue": null, "palier": 3, "source": "RSF" },
+        { "id": "Co5", "label": "CERT", "value": "MAHER (Iran CERT) actif en défense", "rawValue": null, "palier": 3, "source": "ENISA" },
+        { "id": "Co6", "label": "Workforce cyber", "value": "Offensif fort, défensif faible", "rawValue": null, "palier": 3, "source": "CISA" },
+        { "id": "Co7", "label": "E-commerce", "value": "Ecosystème interne (Digikala) mais isolé du monde", "rawValue": null, "palier": 2, "source": "Statista" },
+        { "id": "Co8", "label": "Identité numérique", "value": "Système national (contrôle)", "rawValue": null, "palier": 3, "source": "ITU" }
+      ],
+      "scoreQuanti": 2.4,
+      "scoreQuali": 2,
+      "scoreFinal": 2.2,
+      "commentary": "Infrastructure numérique en retard sévère à cause des sanctions technologiques. Le réseau intranet national (SHAB) sert la censure plutôt que le développement. Capacités offensives cyber ≠ maturité numérique civile."
+    },
+    "Eeo": {
+      "label": "Durabilité",
+      "indicators": [
+        { "id": "Eeo1", "label": "Renouvelables", "value": "<3% (bloqué par IRGC fossile)", "rawValue": 3, "palier": 1, "source": "IEA" },
+        { "id": "Eeo2", "label": "NDC", "value": "NDC conditionnelle (non financée)", "rawValue": null, "palier": 2, "source": "UNFCCC" },
+        { "id": "Eeo3", "label": "Obligations vertes", "value": "Aucune (sanctions)", "rawValue": null, "palier": 1, "source": "Climate Bonds" },
+        { "id": "Eeo4", "label": "ND-GAIN Préparation", "value": "Faible (~38)", "rawValue": 38, "palier": 2, "source": "ND-GAIN" },
+        { "id": "Eeo5", "label": "Recyclage", "value": "~8% (infrastructure absente)", "rawValue": 8, "palier": 2, "source": "UNEP" },
+        { "id": "Eeo6", "label": "Investissements verts", "value": "Quasi nuls", "rawValue": null, "palier": 1, "source": "BloombergNEF" },
+        { "id": "Eeo7", "label": "Aires protégées", "value": "~8% territoire", "rawValue": 8, "palier": 3, "source": "IUCN" },
+        { "id": "Eeo8", "label": "EPI", "value": "~32 (2024)", "rawValue": 32, "palier": 2, "source": "Yale EPI" }
+      ],
+      "scoreQuanti": 1.8,
+      "scoreQuali": 2,
+      "scoreFinal": 1.9,
+      "commentary": "Durabilité environnementale quasi inexistante. L'économie fossile est structurellement entretenue par l'IRGC. Dans un scénario de transition, les réserves gazières (4e mondial) pourraient financer une reconversion énergétique, mais cela nécessite d'abord une refonte politique totale."
+    }
+  },
+  "opportunityComposite": 2.2,
+  "opportunityClassification": "Faible (potentiel latent conditionnel au changement de régime)",
+  "resilience": {
+    "RS1": { "label": "Société civile", "score": 1, "commentary": "Société civile quasi inexistante (répression systématique, ONG dissoutes, activistes emprisonnés). Convergence opposition en exil naissante (jan 2026) mais sans ancrage interne structuré." },
+    "RE1": { "label": "Correction monétaire", "score": 1, "commentary": "Banque centrale sans indépendance. Rial à 1 750 000/USD. Aucun mécanisme de correction crédible sans levée des sanctions. Résilience monétaire nulle." },
+    "RM1": { "label": "Doctrine républicaine armée", "score": 1, "commentary": "L'armée (Artesh) est subordonnée au Guide Suprême et concurrencée par l'IRGC. Aucune doctrine de subordination civile démocratique. Risque de fracturation IRGC/Artesh post-Khamenei." },
+    "RP1": { "label": "Alternance démocratique", "score": 1, "commentary": "Alternance formelle (Pezeshkian 2024) mais sans pouvoir réel. Le Conseil des Gardiens filtre toute opposition. Mort de Khamenei = fenêtre historique mais aucun mécanisme de transition pacifique établi." },
+    "RI1": { "label": "Pluralisme médiatique", "score": 1, "commentary": "Pluralisme nul en interne. IRIB monopole d'État. >60 journalistes emprisonnés. Seule pluralité = diaspora (Iran International, BBC Persian, VOA) accessible via VPN illégaux." },
+    "RL1": { "label": "Autonomie judiciaire", "score": 1, "commentary": "Justice totalement inféodée au Guide Suprême et à l'IRGC. Tribunaux révolutionnaires pour opposants. Aucune autonomie. Score résilience juridique = 1/7." }
+  },
+  "resilienceScore": 1.0,
+  "velocite": {
+    "delta_trimestre": 0.8,
+    "alerte": true,
+    "note": "Delta > 0.50 déclenché. Escalade extrêmement rapide depuis Q4 2025 : snapback ONU (sept 2025), frappes US-Israël (fév-mars 2026), mort Khamenei, fermeture Ormuz. Vitesse de dégradation : critique."
+  },
+  "peakAmplification": {
+    "dimensionsTrigger": ["M", "P", "L", "I", "C"],
+    "facteur": 0.20,
+    "cap": 0.3,
+    "compositeAvantPeak": 6.2,
+    "compositeApresAmp": 6.2,
+    "note": "Composite déjà plafonné à 6.2 (proche du maximum 7). Peak amp s'applique mais le composite reste capé."
+  },
+  "quadrant": "Risque critique / Opportunité très faible",
+  "scenarios": [
+    {
+      "label": "Continuité guerre + chaos successoral",
+      "probabilite": 0.45,
+      "impact": "Composite → 6.8-7.0. Ormuz bloqué 6-12 mois. Effondrement régime islamique. Partition possible.",
+      "horizon": "6-18 mois"
+    },
+    {
+      "label": "Accord diplomatique + transition négociée",
+      "probabilite": 0.25,
+      "impact": "Composite → 4.5-5.0. Levée progressive sanctions. Reconstruction. Diaspora de retour.",
+      "horizon": "12-36 mois"
+    },
+    {
+      "label": "Fragmentation IRGC + guerre civile",
+      "probabilite": 0.20,
+      "impact": "Composite → 7.0. Worst-case régional : Liban 1975, mais en version nucléaire latente.",
+      "horizon": "3-12 mois"
+    },
+    {
+      "label": "Normalisation partielle sans changement régime",
+      "probabilite": 0.10,
+      "impact": "Composite → 5.5-6.0. Statu quo avec réouverture partielle Ormuz sous pression internationale.",
+      "horizon": "3-6 mois"
+    }
+  ],
+  "signatures": ["SIG6_VELOCITE_CRITIQUE", "SIG1_REGIME_INSTABILITY", "SIG3_MILITARY_CONFLICT"],
+  "flags": ["GUERRA_OUVERTE_2026", "HORMUZ_BLOQUE", "SUCCESSION_OUVERTE", "SANCTIONS_MAX", "NUCLÉAIRE_SEUIL"]
+}

@@ -1,0 +1,437 @@
+{
+  "zone": {
+    "id": "cuba",
+    "name": "Cuba",
+    "region": "caraibes"
+  },
+  "meta": {
+    "date": "2026-03-13",
+    "version": "2.1",
+    "analyst": "Inflexion Intelligence"
+  },
+  "dimensions": {
+    "S": {
+      "label": "Social",
+      "indicators": [
+        { "id": "S1", "label": "Gini", "value": "0.42 (estime 2025, hausse depuis 2020)", "rawValue": 0.42, "palier": 4, "source": "ONEI / World Bank estime" },
+        { "id": "S2", "label": "IDH", "value": "0.762 (2023, rang 97/193, baisse depuis 2021)", "rawValue": 0.762, "palier": 3, "source": "UNDP HDR 2024" },
+        { "id": "S3", "label": "Chomage jeunes", "value": "~35% (estime, exode massif jeunes actifs)", "rawValue": 35, "palier": 5, "source": "ECLAC / estime" },
+        { "id": "S4", "label": "Solde migratoire", "value": "-30‰ (>1M emigres depuis 2021, pop. tombee a ~8.6M)", "rawValue": -30, "palier": 7, "source": "CiberCuba / ONEI 2025" },
+        { "id": "S5", "label": "Mouvements sociaux", "value": "Repression des suites du 11J 2021 ; emeutes sporadiques 2025", "rawValue": null, "palier": 4, "source": "Freedom House 2025" },
+        { "id": "S6", "label": "Tensions ethniques", "value": "Faibles (societe homogene), mais fractures generation/classe", "rawValue": null, "palier": 2, "source": "ICG" },
+        { "id": "S7", "label": "Lits hopital / 1000", "value": "5.3 (infrastructure deterioree, ruptures medicaments)", "rawValue": 5.3, "palier": 3, "source": "WHO / MINSAP" },
+        { "id": "S8", "label": "Croissance urbaine desordonnee", "value": "Exode rural inverse; degradation Havane", "rawValue": null, "palier": 3, "source": "UN-Habitat" },
+        { "id": "S9", "label": "Inegalite genre (GII)", "value": "0.30 (estime 2024, deterioration acces emploi femmes)", "rawValue": 0.30, "palier": 3, "source": "UNDP (estime)" },
+        { "id": "S10", "label": "Esperance de vie", "value": "75.5 ans (2023, baisse vs 78 en 2019)", "rawValue": 75.5, "palier": 2, "source": "WHO / ONEI" },
+        { "id": "S11", "label": "Sous-alimentation", "value": "~20% (crise alimentaire severe, recolte sucre <200kt, premiere fois en 200 ans)", "rawValue": 20, "palier": 5, "source": "FAO / CiberCuba 2025" },
+        { "id": "S12", "label": "Education secondaire", "value": "~85% (maintenu officiellement, qualite en baisse)", "rawValue": 85, "palier": 2, "source": "UNESCO / ONEI" }
+      ],
+      "scoreQuanti": 3.58,
+      "scoreQuali": 4,
+      "scoreFinal": 3.75,
+      "trend": "up",
+      "resilience": {
+        "RS1": {
+          "score": 2,
+          "commentary": "Societe civile quasi inexistante legalement; organismes independants sous surveillance permanente et dissous depuis 2021"
+        }
+      },
+      "commentary": "Crise sociale multidimensionnelle. Exode historique (>1M en 4 ans, 24% reduction population active). Insecurite alimentaire severe avec effondrement production agricole. Systeme de sante deteriore malgre indicateurs historiquement eleves. Vieillissement accelere (mediane 42 ans, plus agee d'Amerique latine)."
+    },
+    "E": {
+      "label": "Economique",
+      "indicators": [
+        { "id": "E1", "label": "Croissance PIB", "value": "-5% en 2025 (cumul -15% depuis 2020)", "rawValue": -5, "palier": 7, "source": "CEEC / ECLAC 2026" },
+        { "id": "E2", "label": "Inflation", "value": "~27% annualisee (janv. 2026: +2.06% mensuel)", "rawValue": 27, "palier": 5, "source": "ONEI / CiberCuba 2026" },
+        { "id": "E3", "label": "Dette / PIB", "value": "~83% (dette totale $28.5 Mrd; Paris Club $4.8 Mrd)", "rawValue": 83, "palier": 5, "source": "Coface / Paris Club 2025" },
+        { "id": "E4", "label": "Balance courante", "value": "Tres deficitaire (tourisme -72% vs 2024; quasi aucune exportation)", "rawValue": -15, "palier": 7, "source": "AS/COA / InDepthNews 2025" },
+        { "id": "E5", "label": "Notation souveraine", "value": "Non note (defaut effectif, arrears); Coface E", "rawValue": null, "palier": 7, "source": "Coface 2025" },
+        { "id": "E6", "label": "Regime de change", "value": "Multi-taux dysfonctionnel; dollarisation de facto; marche noir actif", "rawValue": null, "palier": 7, "source": "Coface / IMF" },
+        { "id": "E7", "label": "Reserves de change (mois imports)", "value": "<1 mois (penurie petroliere critique en 2026)", "rawValue": 0.8, "palier": 7, "source": "CiberCuba janv. 2026" },
+        { "id": "E8", "label": "IDE / PIB", "value": "0.3% (investissements approuves $1.1 Mrd 2025 mais non decaisses)", "rawValue": 0.3, "palier": 5, "source": "MINVEC 2025" },
+        { "id": "E9", "label": "Chomage total", "value": "~25% (sous-emploi massif; economie informelle dominante)", "rawValue": 25, "palier": 6, "source": "ONEI / estime" },
+        { "id": "E10", "label": "Dette privee / PIB", "value": "~15% (secteur prive embryonnaire, micro-entreprises depuis 2021)", "rawValue": 15, "palier": 2, "source": "ONEI / estime" },
+        { "id": "E11", "label": "Concentration exports", "value": "Nickel + biotechnologie + tourisme; tres concentre", "rawValue": null, "palier": 6, "source": "UN Comtrade" },
+        { "id": "E12", "label": "Croissance credit", "value": "Negative reelle (systeme bancaire insolvable)", "rawValue": null, "palier": 6, "source": "BNC / estime" },
+        { "id": "E13", "label": "Shadow banking / economie informelle", "value": "~50% PIB (dollarisation informelle massive)", "rawValue": 50, "palier": 6, "source": "Econlib 2025" },
+        { "id": "E14", "label": "Cout energie", "value": "Crise electrique: coupures 10-16h/jour; prix ETECSA+500% jan. 2026", "rawValue": null, "palier": 7, "source": "OilPrice / CiberCuba 2025-2026" },
+        { "id": "E15", "label": "Indice misere", "value": "~52 (27 inflation + 25 chomage)", "rawValue": 52, "palier": 7, "source": "Calcul Inflexion" },
+        { "id": "E16", "label": "Independence banque centrale", "value": "BNC entierement sous controle PCC; pas d'autonomie", "rawValue": null, "palier": 7, "source": "Heritage / Coface" }
+      ],
+      "scoreQuanti": 6.0,
+      "scoreQuali": 6,
+      "scoreFinal": 6.0,
+      "trend": "up",
+      "resilience": {
+        "RE1": {
+          "score": 1,
+          "commentary": "Aucune capacite de correction monetaire: BNC sous controle du PCC, multi-taux toxique, pas de stabilisateur automatique"
+        }
+      },
+      "commentary": "Effondrement economique multidimensionnel. GDP -5% en 2025 (15e cumule depuis 2020). Penurie petroliere critique depuis janv. 2026 suite aux sanctions Trump. Tourisme en chute libre (-72%). Dollarisation de facto incontrôlee. Economie informelle dominante (~50% PIB). Aucun acces aux marches de capitaux internationaux."
+    },
+    "M": {
+      "label": "Militaire",
+      "indicators": [
+        { "id": "M1", "label": "Depenses mil. / PIB", "value": "~3% (budget opaque; penurie ressources)", "rawValue": 3, "palier": 3, "source": "SIPRI / estime" },
+        { "id": "M2", "label": "Conflits armes", "value": "Aucun conflit externe; tensions sociales internes", "rawValue": null, "palier": 2, "source": "ACLED" },
+        { "id": "M3", "label": "GFP Index", "value": "Rang 89/145 (matériel obsolete, inoperable en partie)", "rawValue": 89, "palier": 3, "source": "GFP 2025" },
+        { "id": "M4", "label": "Exercices militaires majeurs", "value": "Exercices defensifs internes; cooperation Russie-Bielorussie (modernisation S-125 mai 2025)", "rawValue": null, "palier": 3, "source": "GlobalMilitary.net 2025" },
+        { "id": "M5", "label": "Proliferation nucleaire", "value": "Pas d'arme; voisinage strategique USA; presence russe potentielle", "rawValue": null, "palier": 3, "source": "SIPRI" },
+        { "id": "M6", "label": "Coups regionaux 5 ans", "value": "0 (Caraibes stable; coups Haiti)", "rawValue": 0, "palier": 2, "source": "Cline Center" },
+        { "id": "M7", "label": "Subordination armee / civil", "value": "FAR = pilier regime PCC; armee = acteur politique et economique", "rawValue": null, "palier": 6, "source": "Freedom House / State Dept. 2025" },
+        { "id": "M8", "label": "Transferts armes", "value": "Russie: ratification accord coop. militaire oct. 2025; armement sovietique vieillissant", "rawValue": null, "palier": 3, "source": "MacroTrends / estime" },
+        { "id": "M9", "label": "Bases etrangeres", "value": "Antennes d'ecoute russe (historique); proximite USA cree pression latente", "rawValue": null, "palier": 4, "source": "IISS" },
+        { "id": "M10", "label": "Milices / PMC", "value": "Milices paramilitaires (CDR, MININT) actives contre dissidents", "rawValue": null, "palier": 4, "source": "Freedom House" },
+        { "id": "M11", "label": "Traites defense", "value": "ALBA-TCP; accord Russie oct. 2025; pas d'engagement collectif robuste", "rawValue": null, "palier": 3, "source": "IISS" },
+        { "id": "M12", "label": "R&D defense", "value": "Quasi nul (ressources insuffisantes)", "rawValue": null, "palier": 5, "source": "SIPRI" },
+        { "id": "M13", "label": "Fiabilite protecteur", "value": "Russie sous pression (Ukraine); Venezuela en crise; China distante", "rawValue": null, "palier": 5, "source": "ICG / estime 2025" }
+      ],
+      "scoreQuanti": 3.54,
+      "scoreQuali": 3,
+      "scoreFinal": 3.32,
+      "trend": "stable",
+      "resilience": {
+        "RM1": {
+          "score": 2,
+          "commentary": "Doctrine republicaine de l'armee formellement absente: FAR est l'instrument politique et economique du PCC"
+        }
+      },
+      "commentary": "Force militaire formellement intacte mais capacite operationnelle degradee par la crise economique. Menace principale = instabilite interne et capacite a reprimer les mouvements sociaux. Accord militaire russo-cubain (oct. 2025) denote dependance croissante. Modernisation partielle S-125 (Bielorussie, mai 2025)."
+    },
+    "P": {
+      "label": "Politique",
+      "indicators": [
+        { "id": "P1", "label": "CPI Corruption", "value": "41/100 (2024), rang ~84/180; opacite totale regime", "rawValue": 41, "palier": 4, "source": "TI 2024" },
+        { "id": "P2", "label": "V-Dem LDI", "value": "Autocracie fermee (closed autocracy); score LDI ~0.05", "rawValue": 0.05, "palier": 7, "source": "V-Dem 2025" },
+        { "id": "P3", "label": "WGI Stabilite politique", "value": "~-1.0 (pression interne elevee malgre repression)", "rawValue": -1.0, "palier": 5, "source": "World Bank WGI" },
+        { "id": "P4", "label": "Cycle electoral", "value": "Pas d'election competitive; Diaz-Canel president sans opposition", "rawValue": null, "palier": 7, "source": "Freedom House 2025" },
+        { "id": "P5", "label": "Risque changement regime", "value": "Eleve (crise systémique); successoral flou; jeunesse exodee", "rawValue": null, "palier": 6, "source": "Coface / ICG 2025" },
+        { "id": "P6", "label": "Polarisation politique", "value": "Regime vs population (crise 2021, repression continue 2024-2025)", "rawValue": null, "palier": 6, "source": "Freedom House / Civicus 2025" },
+        { "id": "P7", "label": "Libertes civiles", "value": "Score 12/100 (Freedom House Not Free 2025)", "rawValue": 12, "palier": 7, "source": "Freedom House 2025" },
+        { "id": "P8", "label": "Risque successoral", "value": "Diaz-Canel (64 ans), succession non balisee; appareil vieillissant", "rawValue": null, "palier": 5, "source": "ICG" },
+        { "id": "P9", "label": "Autonomie regionale / separatisme", "value": "Centralisation totale; pas de risque separatiste", "rawValue": null, "palier": 1, "source": "ICG" },
+        { "id": "P10", "label": "Opposition organisee", "value": "Opposition en exil (diaspora +1M); interieur reduit au silence", "rawValue": null, "palier": 5, "source": "Civicus / RSF 2025" },
+        { "id": "P11", "label": "Pression demographique", "value": "Vieillissement extreme (25.7% >60 ans); depopulation dramatique", "rawValue": null, "palier": 5, "source": "CiberCuba / ONEI 2025" },
+        { "id": "P12", "label": "Diaspora politique", "value": "Tres active (Miami, Madrid, Mexique); pression croissante sur regime", "rawValue": null, "palier": 4, "source": "CiberCuba 2025" },
+        { "id": "P13", "label": "Capture institutionnelle", "value": "Complete: PCC controle Etat, Armee (FAR), Justice, Media, Economie", "rawValue": null, "palier": 7, "source": "V-Dem / Freedom House" },
+        { "id": "P14", "label": "Chocs auto-infliges", "value": "Politique monetaire (multi-taux), blocage secteur prive, refus aides FMI", "rawValue": null, "palier": 6, "source": "AS/COA / Econlib 2025" },
+        { "id": "P15", "label": "Fenetres action", "value": "Faibles: crise aigue mais regime contraint par ideologie et dependances exterieures", "rawValue": null, "palier": 5, "source": "ICG" }
+      ],
+      "scoreQuanti": 5.4,
+      "scoreQuali": 6,
+      "scoreFinal": 5.64,
+      "trend": "up",
+      "resilience": {
+        "RP1": {
+          "score": 1,
+          "commentary": "Alternance democratique impossible: systeme monopartiste, opposition criminalisee, elections non competitives"
+        }
+      },
+      "commentary": "Autocracie fermee en crise de legitimite profonde. Capture institutionnelle totale (PCC controle tous les leviers). Population fuit massivement plutot que de s'opposer. Diaspora active mais sans capacite d'action directe. P13 (capture institutionnelle) et P14 (chocs auto-infliges: multi-taux, blocage reformes) sont des signaux v2.1 critiques."
+    },
+    "L": {
+      "label": "Legal",
+      "indicators": [
+        { "id": "L1", "label": "Rule of Law", "value": "Score ~20/100 (WJP 2024; independance judiciaire nulle)", "rawValue": 20, "palier": 6, "source": "WJP 2024" },
+        { "id": "L2", "label": "B-READY / Doing Business", "value": "Non evalue (regime socialiste); contraintes massives entrepreneuriat", "rawValue": null, "palier": 7, "source": "World Bank" },
+        { "id": "L3", "label": "Sanctions", "value": "Embargo US complet depuis 1962; EO14380 janv. 2026 (sanctions petrole etendues)", "rawValue": null, "palier": 7, "source": "OFAC / State Dept. 2026" },
+        { "id": "L4", "label": "Protection PI", "value": "Faible (systeme socialiste, peu de droits PI reconnus)", "rawValue": null, "palier": 5, "source": "UNCTAD / estime" },
+        { "id": "L5", "label": "Execution contrats", "value": "Alea important; tribunaux sous controle etatique", "rawValue": null, "palier": 6, "source": "Heritage" },
+        { "id": "L6", "label": "Independance judiciaire", "value": "Inexistante: Assemblee nationale (PCC) controle nominations judiciaires", "rawValue": null, "palier": 7, "source": "U4 / State Dept. 2023" },
+        { "id": "L7", "label": "BIT actifs", "value": "~60 BIT (avec UE, Canada, etc.) mais applicabilite limitee par embargo", "rawValue": 60, "palier": 3, "source": "UNCTAD IIA" },
+        { "id": "L8", "label": "Anti-corruption", "value": "Mecanismes formels PCC sans independance reelle", "rawValue": null, "palier": 6, "source": "TI / U4 2025" },
+        { "id": "L9", "label": "Arbitrage ICSID", "value": "Non membre ICSID; arbitrages possibles via BIT bilateraux", "rawValue": null, "palier": 5, "source": "ICSID" },
+        { "id": "L10", "label": "Risque expropriation", "value": "Tres eleve: Helms-Burton Title III reactive 2019; expropriations historiques", "rawValue": null, "palier": 7, "source": "OFAC / GT Law 2026" }
+      ],
+      "scoreQuanti": 5.9,
+      "scoreQuali": 6,
+      "scoreFinal": 5.94,
+      "trend": "up",
+      "resilience": {
+        "RL1": {
+          "score": 1,
+          "commentary": "Autonomie judiciaire effective nulle: nominations controlees par PCC, pas de Cour constitutionnelle independante"
+        }
+      },
+      "commentary": "Cadre legal parmi les plus defavorables des economies emergentes. Embargo US renforce (EO14380 janv. 2026) + Helms-Burton actif = deterrence totale investissement etranger US. Independance judiciaire inexistante. BIT formellement existants mais inapplicables dans les faits pour investisseurs US."
+    },
+    "I": {
+      "label": "Information",
+      "indicators": [
+        { "id": "I1", "label": "RSF rang", "value": "172/180 (2024, pire d'Amerique latine)", "rawValue": 172, "palier": 7, "source": "RSF 2024" },
+        { "id": "I2", "label": "Freedom on Net", "value": "Score 21/100 'Not Free' (2025); controle maximal", "rawValue": 21, "palier": 6, "source": "Freedom House FOTN 2025" },
+        { "id": "I3", "label": "Operations influence", "value": "Cuba cible d'ops US (USAID, NED); regime contre-attaque sur diaspora", "rawValue": null, "palier": 4, "source": "Lawfare / State Dept." },
+        { "id": "I4", "label": "Censure internet", "value": "Maximale: blocage WhatsApp, Telegram, Twitter; ETECSA monopole", "rawValue": null, "palier": 7, "source": "Freedom House / Wikipedia 2025" },
+        { "id": "I5", "label": "Controle medias Etat", "value": "Constitution: medias = propriete de l'Etat; presse independante hors-la-loi", "rawValue": null, "palier": 7, "source": "RSF / Constitution 1992-2019" },
+        { "id": "I6", "label": "Penetration reseaux sociaux", "value": "~50% (hausse malgre restrictions; role cle dans 11J 2021)", "rawValue": 50, "palier": 3, "source": "Freedom House 2025" },
+        { "id": "I7", "label": "Desinformation IA", "value": "Croissante (Loi communication sociale oct. 2024 + surveillance IA chinoise)", "rawValue": null, "palier": 5, "source": "RSF / Freedom House 2025" },
+        { "id": "I8", "label": "Pluralisme mediatique", "value": "Inexistant: media indépendant = clandestinite; 14ymedio harasse", "rawValue": null, "palier": 7, "source": "RSF / CPJ 2025" },
+        { "id": "I9", "label": "Journalistes emprisonnes", "value": "2+ (Hernandez, Barrenechea) + nombreux en exil force", "rawValue": 2, "palier": 6, "source": "CPJ 2025" },
+        { "id": "I10", "label": "Controle narratif diaspora", "value": "Actif: surveillance diaspora Miami/Madrid; loi socialisation 2024 vise exterieurs", "rawValue": null, "palier": 5, "source": "RSF / Freedom House 2025" },
+        { "id": "I11", "label": "Comptes coordonnes / astroturfing", "value": "Reseaux pro-regime sur Twitter/YouTube; contre-narrative etatique", "rawValue": null, "palier": 4, "source": "DFRLab / estime" },
+        { "id": "I12", "label": "Usage VPN", "value": "Eleve (VPNs populaires malgre interdiction formelle)", "rawValue": null, "palier": 3, "source": "Freedom House / VPNoverview 2025" }
+      ],
+      "scoreQuanti": 5.33,
+      "scoreQuali": 6,
+      "scoreFinal": 5.6,
+      "trend": "up",
+      "resilience": {
+        "RI1": {
+          "score": 1,
+          "commentary": "Pluralisme mediatique inexistant: tout media independant est illegal; journalistes emprisonnes ou en exil"
+        }
+      },
+      "commentary": "Parmi les pires environnements informationnels mondiaux. RSF 172e. Monopole ETECSA + censure massique + Loi communication sociale (oct. 2024) = fermeture totale. Paradoxe: reseaux sociaux ont catalyse 11J 2021 → regime a durci davantage. Surveillance par technologie chinoise."
+    },
+    "C": {
+      "label": "Cyber",
+      "indicators": [
+        { "id": "C1", "label": "NCSI rang", "value": "Non classe / score tres bas (~25/100); capacites limitees", "rawValue": 25, "palier": 6, "source": "NCSI / e-Governance Academy" },
+        { "id": "C2", "label": "GCI rang", "value": "Tier 3 (en developpement); engagement partiel", "rawValue": null, "palier": 5, "source": "ITU GCI 2024" },
+        { "id": "C3", "label": "Incidents cyber", "value": "Cibles d'attaques US (CISA-listed); quelques incidents contre infrastructure ETECSA", "rawValue": null, "palier": 4, "source": "RecordMedia / estime" },
+        { "id": "C4", "label": "Capacite offensive", "value": "Limitee; expertise intelligence (G2) mais pas de capacite cyber etatique avancee", "rawValue": null, "palier": 3, "source": "IISS" },
+        { "id": "C5", "label": "Exposition infra critique", "value": "Elevee: ETECSA monopole fragile; reseau electrique critique (coupures massives)", "rawValue": null, "palier": 6, "source": "CiberCuba / estime 2025" },
+        { "id": "C6", "label": "Budget cybersecurite", "value": "Minimal (crisis budgetaire); depend de cooperation cubano-russe", "rawValue": null, "palier": 6, "source": "SIPRI / estime" },
+        { "id": "C7", "label": "Ransomware", "value": "Faible exposition (deconnexion relative d'internet)", "rawValue": null, "palier": 3, "source": "estime" },
+        { "id": "C8", "label": "Attaques supply chain", "value": "Faible (economie peu numerisee; isolation relative)", "rawValue": null, "palier": 2, "source": "estime" },
+        { "id": "C9", "label": "Workforce cyber", "value": "Exode cerveaux massif (informaticiens emigres); residuel competent mais contraint", "rawValue": null, "palier": 5, "source": "estime / CiberCuba 2025" },
+        { "id": "C10", "label": "Legislation donnees", "value": "Loi cybersecurite 2021 + loi communication sociale 2024 = surveillance legale totale", "rawValue": null, "palier": 6, "source": "RecordMedia / Freedom House 2025" },
+        { "id": "C11", "label": "Cloud exposure", "value": "Faible (peu de cloud; ETECSA centralise)", "rawValue": null, "palier": 2, "source": "estime" },
+        { "id": "C12", "label": "Zero-day exposure", "value": "Modere (infrastructure ancienne; patches limites par sanctions)", "rawValue": null, "palier": 4, "source": "estime" }
+      ],
+      "scoreQuanti": 4.33,
+      "scoreQuali": 4,
+      "scoreFinal": 4.2,
+      "trend": "stable",
+      "commentary": "Capacites cyber limitees par la crise economique et la fuite des cerveaux. Infrastructure critique (ETECSA, reseau electrique) extremement vulnerable. Legislations 2021/2024 servent avant tout a la surveillance interieure. Dependance Russie/Chine pour technologie de surveillance."
+    },
+    "Ee": {
+      "label": "Environnemental",
+      "indicators": [
+        { "id": "Ee1", "label": "ND-GAIN", "value": "Score ~42/100; rang 112e readiness / 80e vulnerabilite", "rawValue": 42, "palier": 5, "source": "ND-GAIN 2023" },
+        { "id": "Ee2", "label": "Water Stress", "value": "Modere-eleve (secheresses prolongees; salinisation nappes cotieres)", "rawValue": null, "palier": 4, "source": "UNDP / PBS 2025" },
+        { "id": "Ee3", "label": "Dependance extractives", "value": "Nickel (majeur); petrole importe (quasi 100%); dependance critique", "rawValue": null, "palier": 5, "source": "ONEI / Coface" },
+        { "id": "Ee4", "label": "Catastrophes naturelles 5 ans", "value": "Cyclone Ian (2022, devastateur); saisons cycloniques regulieres; crises electriques", "rawValue": null, "palier": 5, "source": "UNDP / World Bank" },
+        { "id": "Ee5", "label": "Transition energetique", "value": "9% renouvelables actuels; objectif 26% en 2035; 35 parcs solaires (oct. 2025)", "rawValue": 9, "palier": 4, "source": "OilPrice / Columbia SCCL 2025" },
+        { "id": "Ee6", "label": "CO2 / capita", "value": "~2.5 t/cap (faible, contrainte energetique pas vertu)", "rawValue": 2.5, "palier": 2, "source": "Our World in Data" },
+        { "id": "Ee7", "label": "Biodiversite menacee", "value": "Ecosystemes marins stresses; deforestation en reprise (coupure bois energie)", "rawValue": null, "palier": 4, "source": "IUCN / CiberCuba 2025" },
+        { "id": "Ee8", "label": "Deforestation", "value": "Reprise deforestation 2024-2025 (familles coupent arbres pour cuire)", "rawValue": null, "palier": 4, "source": "GFW / CiberCuba 2025" },
+        { "id": "Ee9", "label": "Montee des eaux", "value": "Tres vulnerables (ile plate; zones cotieres; Havane menacee)", "rawValue": null, "palier": 5, "source": "UNDP / World Bank" },
+        { "id": "Ee10", "label": "Pollution air PM2.5", "value": "Moderee (industrie degradee; vehicules anciens; coupures electriques = generateurs diesel)", "rawValue": null, "palier": 3, "source": "WHO / estime" }
+      ],
+      "scoreQuanti": 4.1,
+      "scoreQuali": 4,
+      "scoreFinal": 4.06,
+      "trend": "up",
+      "commentary": "Vulnerabilite climatique elevee (ile, cyclones, montee eaux). Transition energetique amorcee (35 parcs solaires) mais crise petroliere aigue (Trump EO14380) court-circuite les progres. Deforestation repart sous pression de la crise energetique. Biodiversite marine pressee par exploitation intense."
+    }
+  },
+  "composite": 5.02,
+  "classification": "Élevé",
+  "compositeMethod": {
+    "weights": {
+      "S": 0.12,
+      "E": 0.15,
+      "M": 0.16,
+      "P": 0.14,
+      "L": 0.10,
+      "I": 0.12,
+      "C": 0.11,
+      "Ee": 0.10
+    },
+    "simpleAvg": 4.81,
+    "weighted": 4.97,
+    "peakAmplification": {
+      "applied": true,
+      "dimensions_above_threshold": ["E", "P", "L", "I"],
+      "factor": 0.20,
+      "cap": 0.3,
+      "amplification_added": 0.05
+    },
+    "amplified": 5.02
+  },
+  "opportunity": {
+    "dimensions": {
+      "So": {
+        "label": "Capital humain",
+        "scoreQuanti": 3.5,
+        "scoreQuali": 3,
+        "scoreFinal": 3.3,
+        "indicators": [
+          { "id": "So1", "palier": 5, "label": "Alphabetisation", "value": "99.8% (un des plus hauts mondialement, mais brain drain critique)" },
+          { "id": "So2", "palier": 3, "label": "PISA / performance educative", "value": "Non participant; qualite en baisse malgre acces formel" },
+          { "id": "So3", "palier": 4, "label": "Depenses sante / PIB", "value": "~12% (historiquement eleve mais qualite s'effondre)" },
+          { "id": "So4", "palier": 4, "label": "Medecins / 1000", "value": "8.4 (le plus haut monde; mais exode massif vers l'etranger)" },
+          { "id": "So5", "palier": 4, "label": "Scolarisation tertiaire", "value": "~45% (haute pour la region, mais exode post-diplome)" },
+          { "id": "So6", "palier": 2, "label": "Mobilite sociale", "value": "Tres bloquee par systeme egalitariste + prise en main PCC" },
+          { "id": "So7", "palier": 2, "label": "Pop 15-64%", "value": "~63% (vieillissement acce lere, mediane 42 ans)" },
+          { "id": "So8", "palier": 1, "label": "Solde migratoire qualifie", "value": "Tres negatif: exode massif des medecins, ingenieurs, informaticiens" }
+        ],
+        "commentary": "Paradoxe cubain: indicateurs educatifs historiquement excellents, mais brain drain catastrophique vide le capital humain en temps reel."
+      },
+      "Eo": {
+        "label": "Croissance economique",
+        "scoreQuanti": 1.9,
+        "scoreQuali": 2,
+        "scoreFinal": 1.94,
+        "indicators": [
+          { "id": "Eo1", "palier": 1, "label": "Croissance PIB tendanciel 5 ans", "value": "-15% cumule 2020-2025; ECLAC: parmi pires" },
+          { "id": "Eo2", "palier": 2, "label": "IDE / PIB", "value": "0.3% (formellement $1.1 Mrd approuves 2025 mais non decaisses)" },
+          { "id": "Eo3", "palier": 2, "label": "Taille marche (PIB PPA)", "value": "~$140 Mrd PPA (2023); effondrement en cours" },
+          { "id": "Eo4", "palier": 2, "label": "Croissance classe moyenne", "value": "Inexistante; regression severe" },
+          { "id": "Eo5", "palier": 2, "label": "Diversification exports", "value": "Nickel + biotech + tourisme; tres limitee" },
+          { "id": "Eo6", "palier": 2, "label": "Profondeur financiere", "value": "Secteur bancaire sous-developpe et insolvable" },
+          { "id": "Eo7", "palier": 3, "label": "Brevets / million hab", "value": "Biotech: quelques brevets (vaccins COVID: Abdala); potentiel restreint" },
+          { "id": "Eo8", "palier": 1, "label": "Productivite 5 ans", "value": "Negative (penurie intrants, energie, main d'oeuvre)" },
+          { "id": "Eo9", "palier": 1, "label": "Commerce ALE", "value": "Quasi nul (embargo US + exclusion USMCA + pas de FTA UE)" },
+          { "id": "Eo10", "palier": 3, "label": "Reserves minerales critiques", "value": "Nickel (5e mondial), cobalt associe; ressources marinees potentielles" }
+        ],
+        "commentary": "Quasi aucune opportunite economique a court terme. Seuls actifs: nickel, biotech et capital humain (si brain drain enraye)."
+      },
+      "Mo": {
+        "label": "Securite defensive",
+        "scoreQuanti": 3.17,
+        "scoreQuali": 3,
+        "scoreFinal": 3.1,
+        "indicators": [
+          { "id": "Mo1", "palier": 3, "label": "Alliances defensives", "value": "ALBA-TCP; accord Russie 2025; sans garanties robustes" },
+          { "id": "Mo2", "palier": 3, "label": "Exercices conjoints", "value": "Limites (avec Russie, Venezuela)" },
+          { "id": "Mo3", "palier": 3, "label": "Stabilite regionale", "value": "Caraibes relativement stable hors Haiti" },
+          { "id": "Mo4", "palier": 3, "label": "Accords defense", "value": "Accord russo-cubain oct. 2025; historique ALBA" },
+          { "id": "Mo5", "palier": 4, "label": "Controle frontieres", "value": "Ile = frontiere naturelle; mais exode maritime incontrôle" },
+          { "id": "Mo6", "palier": 3, "label": "R&D defense", "value": "Tres limite par crise budgetaire" }
+        ]
+      },
+      "Po": {
+        "label": "Gouvernance",
+        "scoreQuanti": 1.63,
+        "scoreQuali": 2,
+        "scoreFinal": 1.78,
+        "indicators": [
+          { "id": "Po1", "palier": 2, "label": "WGI Gouvernement effectif", "value": "~-1.2 (Banque mondiale)" },
+          { "id": "Po2", "palier": 1, "label": "V-Dem Participatory", "value": "~0.03 (quasi nul - autocracie fermee)" },
+          { "id": "Po3", "palier": 2, "label": "Reformes structurelles", "value": "Micro-entreprises autorisees 2021; reformes timides bloquees par ideologie" },
+          { "id": "Po4", "palier": 2, "label": "E-Government", "value": "Infrastructure numerique naissante; ETECSA monopole limitatif" },
+          { "id": "Po5", "palier": 1, "label": "Decentralisation", "value": "Centralisation absolue; pas de gouvernance locale autonome" },
+          { "id": "Po6", "palier": 1, "label": "Open Budget", "value": "Opacite totale; aucun budget accessible" },
+          { "id": "Po7", "palier": 2, "label": "Succession institutionnelle", "value": "Non balisee; risque de choc successoral" },
+          { "id": "Po8", "palier": 2, "label": "Dialogue social", "value": "CTC (syndicat d'Etat) = courroie transmission PCC; dialogue inexistant" }
+        ]
+      },
+      "Lo": {
+        "label": "Attractivite juridique",
+        "scoreQuanti": 1.75,
+        "scoreQuali": 2,
+        "scoreFinal": 1.85,
+        "indicators": [
+          { "id": "Lo1", "palier": 2, "label": "Rule of Law", "value": "~20/100 WJP; independance judiciaire nulle" },
+          { "id": "Lo2", "palier": 2, "label": "Protection investisseurs", "value": "Tres faible; Helms-Burton Title III active" },
+          { "id": "Lo3", "palier": 3, "label": "BIT actifs", "value": "~60 BIT (UE, Canada etc.) mais applicabilite compromise par sanctions" },
+          { "id": "Lo4", "palier": 2, "label": "Arbitrage international", "value": "Non membre ICSID; risque expropriation historique" },
+          { "id": "Lo5", "palier": 2, "label": "Protection PI", "value": "Cadre socialiste; PI reconnue partiellement (biotech)" },
+          { "id": "Lo6", "palier": 3, "label": "Taux imposition corporate", "value": "Variable selon secteur; ZES Mariel: 0% pendant 10 ans" },
+          { "id": "Lo7", "palier": 3, "label": "Zones franches", "value": "Mariel ZES (avantages reels mais sanctions limitent acces)" },
+          { "id": "Lo8", "palier": 1, "label": "Stabilite reglementaire", "value": "Impredictibilite complete; changements arbitraires frequents" }
+        ]
+      },
+      "Io": {
+        "label": "Innovation",
+        "scoreQuanti": 2.0,
+        "scoreQuali": 2,
+        "scoreFinal": 2.0,
+        "indicators": [
+          { "id": "Io1", "palier": 3, "label": "GII rang", "value": "Non classe dans top 130 GII; biotechnologie = niche notable" },
+          { "id": "Io2", "palier": 2, "label": "R&D / PIB", "value": "~0.5% (historiquement plus eleve; effondrment financement)" },
+          { "id": "Io3", "palier": 2, "label": "Ecosysteme startups", "value": "Naissant post-2021 (micro-entreprises autorisees); contraint par embargo" },
+          { "id": "Io4", "palier": 2, "label": "Internet haut debit", "value": "Penetration 60% mobile mais acces tres limite + tres cher apres hausse ETECSA 2025" },
+          { "id": "Io5", "palier": 2, "label": "Publications IA", "value": "Quelques publications academiques (UCLV); tres limitees" },
+          { "id": "Io6", "palier": 1, "label": "Capital-risque / PIB", "value": "Quasi nul (systeme socialiste + embargo)" },
+          { "id": "Io7", "palier": 3, "label": "Diplomes STEM", "value": "~12% diplomes STEM (heritage fort); mais exode post-diplome" },
+          { "id": "Io8", "palier": 1, "label": "Adoption IA industrie", "value": "Quasi nulle (penurie materiel, sanctions acces GPU)" }
+        ]
+      },
+      "Co": {
+        "label": "Maturite tech / cyber",
+        "scoreQuanti": 2.25,
+        "scoreQuali": 2,
+        "scoreFinal": 2.15,
+        "indicators": [
+          { "id": "Co1", "palier": 2, "label": "GCI maturite cyber", "value": "Tier 3; capacites limitees" },
+          { "id": "Co2", "palier": 2, "label": "Maturite cloud", "value": "Quasi inexistante (sanctions acces cloud US)" },
+          { "id": "Co3", "palier": 2, "label": "Couverture 5G / fibre", "value": "Pas de 5G; fibre limitee" },
+          { "id": "Co4", "palier": 2, "label": "Souverainete donnees", "value": "ETECSA monopole; dependance technologie chinoise/russe" },
+          { "id": "Co5", "palier": 3, "label": "CERT national", "value": "CiberSECU existe; capacites modestes" },
+          { "id": "Co6", "palier": 2, "label": "Workforce cyber", "value": "En exode; residuel competent mais sous-equipe" },
+          { "id": "Co7", "palier": 3, "label": "Commerce en ligne", "value": "Naissant (MLC stores en ligne) mais tres contraint" },
+          { "id": "Co8", "palier": 2, "label": "Identite numerique", "value": "Carnet d'identite numerique embryonnaire" }
+        ]
+      },
+      "Eeo": {
+        "label": "Durabilite environnementale",
+        "scoreQuanti": 3.0,
+        "scoreQuali": 3,
+        "scoreFinal": 3.0,
+        "indicators": [
+          { "id": "Eeo1", "palier": 3, "label": "Part renouvelables", "value": "9% actuel; potentiel solaire fort; 35 parcs en service oct. 2025" },
+          { "id": "Eeo2", "palier": 3, "label": "Ambition NDC", "value": "3e NDC soumis fev. 2025; objectif 26% ENR 2035" },
+          { "id": "Eeo3", "palier": 2, "label": "Obligations vertes / PIB", "value": "Inexistantes (acces marche nul)" },
+          { "id": "Eeo4", "palier": 3, "label": "ND-GAIN Preparation", "value": "Readiness ~42/100; ambigu (engagement sans moyens)" },
+          { "id": "Eeo5", "palier": 2, "label": "Taux recyclage", "value": "Faible (infrastructure effondree)" },
+          { "id": "Eeo6", "palier": 4, "label": "Investissements verts", "value": "Solaire chinois (~8-10 Mrd$ besoin); quelques projets concretises" },
+          { "id": "Eeo7", "palier": 4, "label": "Aires protegees", "value": "20% territoire protege (Biosphere Reserves UNESCO; reel) mais pression deforestation" },
+          { "id": "Eeo8", "palier": 3, "label": "EPI Yale", "value": "Score ~40/100 (2024); progression limitee" }
+        ]
+      }
+    },
+    "weights": {
+      "So": 0.12,
+      "Eo": 0.17,
+      "Mo": 0.07,
+      "Po": 0.14,
+      "Lo": 0.13,
+      "Io": 0.15,
+      "Co": 0.12,
+      "Eeo": 0.10
+    },
+    "composite": 2.28,
+    "classification": "Modéré-Faible"
+  },
+  "resilience": {
+    "RS1": 2,
+    "RE1": 1,
+    "RM1": 2,
+    "RP1": 1,
+    "RI1": 1,
+    "RL1": 1
+  },
+  "resilienceScore": 1.33,
+  "delta": 2.74,
+  "quadrant": "Trap_critiquement_risque_faible_opportunite",
+  "signatures": [
+    "SIG_ECONOMIC_COLLAPSE",
+    "SIG_INSTITUTIONAL_CAPTURE",
+    "SIG_DIASPORA_HEMORRHAGE",
+    "SIG_SANCTIONS_ESCALATION"
+  ],
+  "flags": [
+    {
+      "code": "R10",
+      "label": "Absence garde-fous institutionnels",
+      "triggered": true,
+      "detail": "Capture institutionnelle totale (PCC): aucun contre-pouvoir fonctionnel"
+    },
+    {
+      "code": "R11",
+      "label": "Velocite critique",
+      "triggered": true,
+      "detail": "Deterioration acceleree: GDP -5% 2025, pop. -24% en 4 ans, reserves <1 mois; delta/trimestre estime >0.50 sur E et L"
+    },
+    {
+      "code": "P13_PEAK",
+      "label": "Capture institutionnelle maximale",
+      "triggered": true,
+      "detail": "PCC contrôle l'integralite des leviers: militaire, judiciaire, economique, mediatique"
+    }
+  ]
+}

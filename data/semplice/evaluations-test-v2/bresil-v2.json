@@ -1,0 +1,302 @@
+{
+  "zone": {
+    "id": "bresil",
+    "name": "Brésil",
+    "region": "amerique-latine"
+  },
+  "meta": {
+    "date": "2026-03-13",
+    "version": "2.1",
+    "analyst": "Inflexion Intelligence"
+  },
+  "dimensions": {
+    "S": {
+      "label": "Social",
+      "indicators": [
+        { "id": "S1", "label": "Gini", "value": "0.506 (2024, baisse depuis 0.517 en 2023)", "rawValue": 0.506, "palier": 5, "source": "IBGE / World Bank" },
+        { "id": "S2", "label": "IDH", "value": "0.760 (rang ~84/193)", "rawValue": 0.760, "palier": 3, "source": "UNDP 2024" },
+        { "id": "S3", "label": "Chomage jeunes", "value": "~19% (PNAD 2025)", "rawValue": 19, "palier": 4, "source": "IBGE PNAD" },
+        { "id": "S4", "label": "Solde migratoire", "value": "+0.1‰ (flux limites)", "rawValue": 0.1, "palier": 3, "source": "UN DESA" },
+        { "id": "S5", "label": "Mouvements sociaux", "value": "Moderes : greves sectorielles, protests fiscaux avr 2025, mouvement rural MST", "rawValue": null, "palier": 3, "source": "ACLED / IBGE" },
+        { "id": "S6", "label": "Tensions ethniques", "value": "Tensions raciales (pop. noire ~56%), violences policières documentees, inegalites racialisées", "rawValue": null, "palier": 4, "source": "IBGE / Amnesty International" },
+        { "id": "S7", "label": "Acces sante", "value": "2.1 lits/1000 (SUS sous-finance)", "rawValue": 2.1, "palier": 4, "source": "WHO / MS Brasil" },
+        { "id": "S8", "label": "Urbanisation", "value": "~0.9%/an (87% urbain)", "rawValue": 0.9, "palier": 3, "source": "World Bank" },
+        { "id": "S9", "label": "Inegalite genre (GII)", "value": "0.384", "rawValue": 0.384, "palier": 4, "source": "UNDP" },
+        { "id": "S10", "label": "Esperance de vie", "value": "75.5 ans", "rawValue": 75.5, "palier": 3, "source": "WHO" },
+        { "id": "S11", "label": "Securite alimentaire", "value": "3.5% extreme pauvrete, retire Hunger Map FAO juil.2025", "rawValue": 3.5, "palier": 2, "source": "FAO / IBGE 2025" },
+        { "id": "S12", "label": "Education secondaire", "value": "~78% (taux net)", "rawValue": 78, "palier": 3, "source": "INEP / UNESCO" }
+      ],
+      "scoreQuanti": 3.4,
+      "scoreQuali": 3.5,
+      "resilience": {
+        "RS1": { "score": 4, "label": "Societe civile", "commentary": "Societe civile robuste (OAB, MST, CUT, ONGs amazoniennes). A tenu face au putsch Bolsonaro janv.2023. Presse independante actuelle malgre pressions." }
+      },
+      "scoreFinal": 3.5,
+      "trend": "down",
+      "commentary": "Brésil reste l'un des pays les plus inégaux du monde malgré Gini en baisse (0.506 en 2024 vs 0.517 en 2023). Bolsa Família + programme Pé-de-Meia ont sorti 17.5M de personnes de la pauvreté en 2023-2024. Retrait de la Hunger Map FAO = victoire symbolique. Persistance : violences policières structurelles (pop. noire), tensions agraires (MST), cartels urbains (RJ, SP). IDH 0.760 bon pour le niveau de revenus mais masque d'immenses disparités régionales (Nord/Nordeste vs Sud/Sudeste)."
+    },
+    "E": {
+      "label": "Economique",
+      "indicators": [
+        { "id": "E1", "label": "PIB reel", "value": "+2.3% (2025e, apres +3.4% en 2024)", "rawValue": 2.3, "palier": 3, "source": "BCB / IMF / OCDE" },
+        { "id": "E2", "label": "Inflation", "value": "5.3% (IPCA août 2025, au-dessus cible 4.5%)", "rawValue": 5.3, "palier": 3, "source": "BCB / IBGE" },
+        { "id": "E3", "label": "Dette publique / PIB", "value": "87.6% (2024), tendance ~92% fin 2025", "rawValue": 92, "palier": 5, "source": "BCB / IMF" },
+        { "id": "E4", "label": "Balance courante", "value": "-2.2% PIB (déficit structurel)", "rawValue": -2.2, "palier": 4, "source": "BCB" },
+        { "id": "E5", "label": "Notation souveraine", "value": "Ba1 (Moody's, upgrade oct.2024, outlook positif)", "rawValue": null, "palier": 4, "source": "Moody's oct.2024" },
+        { "id": "E6", "label": "Regime change", "value": "Flottant (BRL volatile, interventions BCB limitées)", "rawValue": null, "palier": 3, "source": "BCB" },
+        { "id": "E7", "label": "Reserves de change", "value": "~5.5 mois (env. 370 Mrd$)", "rawValue": 5.5, "palier": 3, "source": "BCB / IMF" },
+        { "id": "E8", "label": "IDE entrants", "value": "~3.5% PIB (agriculture, mines, energie)", "rawValue": 3.5, "palier": 3, "source": "UNCTAD / BCB" },
+        { "id": "E9", "label": "Chomage total", "value": "~6.8% (PNAD 2025, baisse historique)", "rawValue": 6.8, "palier": 2, "source": "IBGE PNAD" },
+        { "id": "E10", "label": "Dette privee / PIB", "value": "~65%", "rawValue": 65, "palier": 3, "source": "BIS / BCB" },
+        { "id": "E11", "label": "Concentration exports", "value": "Soja+minerai de fer+pétrole ~55% (forte concentration matières premières)", "rawValue": 55, "palier": 5, "source": "Comex Stat / UN Comtrade" },
+        { "id": "E12", "label": "Croissance credit", "value": "~10%", "rawValue": 10, "palier": 3, "source": "BCB" },
+        { "id": "E13", "label": "Economie informelle", "value": "~38% PIB (IBRE-FGV)", "rawValue": 38, "palier": 4, "source": "IBRE-FGV" },
+        { "id": "E14", "label": "Cout energie", "value": "~65-75 $/MWh (mix hydro dominant mais crise sécheresse)", "rawValue": 70, "palier": 2, "source": "ANEEL / IRENA" },
+        { "id": "E15", "label": "Indice de misere", "value": "5.3+6.8 = 12.1", "rawValue": 12.1, "palier": 3, "source": "Calcul (inflation+chomage)" },
+        { "id": "E16", "label": "Independance BC", "value": "BCB formellement independante depuis 2021 (loi 13.506). Credibilite moderee (pression politique)", "rawValue": null, "palier": 3, "source": "BCB / IMF 2025 Art.IV" }
+      ],
+      "scoreQuanti": 3.4,
+      "scoreQuali": 4,
+      "resilience": {
+        "RE1": { "score": 3, "label": "Correction monetaire", "commentary": "BCB indépendante depuis 2021. A monté le Selic à 13.75% pour combattre l'inflation. Mais pression politique (Lula vs Campos Neto 2023). Credibilite moderee." }
+      },
+      "scoreFinal": 3.6,
+      "trend": "stable",
+      "commentary": "Economie en décélération après dynamisme 2024 (+3.4%). Principaux risques : trajectoire dette explosive (87.6%→~96% PIB en 2026 selon FMI), inflation au-dessus de la cible, forte dépendance aux matières premières (commodities curse). Points forts : réforme TVA en cours (simplification fiscale), upgrade Moody's Ba1, réserves solides (~370 Mrd$). Paradoxe brésilien : croissance réelle mais déséquilibre fiscal persistant. Réforme fiscale (PEC fiscal) = signal positif mais insuffisant pour inverser la trajectoire de la dette."
+    },
+    "M": {
+      "label": "Militaire",
+      "indicators": [
+        { "id": "M1", "label": "Depenses mil. / PIB", "value": "1.1% (~23.5 Mrd$ en 2025)", "rawValue": 1.1, "palier": 2, "source": "SIPRI / GlobalData" },
+        { "id": "M2", "label": "Conflits actifs", "value": "0 conflit interétatique. Violences cartels internes (RJ, SP, Nordeste)", "rawValue": 0, "palier": 2, "source": "ACLED / IISS" },
+        { "id": "M3", "label": "GFP rang", "value": "12/145 (puissance conventionnelle importante)", "rawValue": 12, "palier": 2, "source": "Global Firepower 2025" },
+        { "id": "M4", "label": "Exercices majeurs", "value": "3-4 (UNITAS, CORE, binationaux Pérou/Argentine)", "rawValue": 3.5, "palier": 3, "source": "IISS" },
+        { "id": "M5", "label": "Proliferation", "value": "Zone NWFZ (Traité de Tlatelolco). Programme nucléaire civil (Angra 1-3). Pas d'arme.", "rawValue": null, "palier": 2, "source": "UNODA / ABACC" },
+        { "id": "M6", "label": "Coups regionaux", "value": "1 (Pérou 2022 - instabilité modérée voisinage)", "rawValue": 1, "palier": 2, "source": "Cline Center" },
+        { "id": "M7", "label": "Subordination civile", "value": "Renforcée post-janv.2023. Armée a refusé le coup Bolsonaro. V-Dem ~0.80", "rawValue": 0.80, "palier": 2, "source": "V-Dem / TMF rapports" },
+        { "id": "M8", "label": "Transferts armes", "value": "Importateur net (Gripen, FX-2 programme), industrie défense nationale (Embraer KC-390, VBTP Guarani)", "rawValue": null, "palier": 3, "source": "SIPRI" },
+        { "id": "M9", "label": "Bases etrangeres", "value": "Aucune base etrangere sur sol bresilien. Pas de base brésilienne a l'étranger.", "rawValue": null, "palier": 1, "source": "IISS" },
+        { "id": "M10", "label": "Milices / PMC", "value": "Milices paramilitaires à RJ (estimees ~3000 membres actifs). PCC/CV trafic narco Amazonie.", "rawValue": null, "palier": 4, "source": "ACLED / GFSS" },
+        { "id": "M11", "label": "Traites defense", "value": "TIAR (désactivé), UNASUR, bilatéraux. Pas de garantie mutuelle forte.", "rawValue": null, "palier": 3, "source": "IISS" },
+        { "id": "M12", "label": "R&D defense", "value": "~3.5% budget mil. (Embraer KC-390, sub programme, Gripen)", "rawValue": 3.5, "palier": 3, "source": "SIPRI / GlobalData" },
+        { "id": "M13", "label": "Fiabilite protecteur", "value": "Pas d'alliance formelle majeure. Stratégie autonomiste (non-alignement). Tensions US sous Trump.", "rawValue": null, "palier": 3, "source": "IISS / Belfer Center" }
+      ],
+      "scoreQuanti": 2.5,
+      "scoreQuali": 2.5,
+      "resilience": {
+        "RM1": { "score": 6, "label": "Doctrine republicaine armee", "commentary": "Militaire a refusé le coup Bolsonaro en jan.2023 malgré des généraux pro-Bolsonaro. Le chef d'état-major Freire Gomes a opposé un refus formel. Signal fort de subordination constitutionnelle." }
+      },
+      "scoreFinal": 2.4,
+      "trend": "stable",
+      "commentary": "Le Brésil est une puissance militaire régionale sans ambition d'expansion territoriale. Doctrine de non-intervention, non-alignement. Armée professionnelle qui a démontré son attachement constitutionnel en refusant le coup Bolsonaro (janvier 2023) — événement historique majeur. Vulnérabilités internes : milices paramilitaires à Rio, organisations criminelles (PCC, CV) contrôlant des territoires en Amazonie et dans le Nordeste. Budget défense faible (1.1% PIB) mais modernisation en cours (KC-390, Gripen, sous-marins nucléaires programme PROSUB)."
+    },
+    "P": {
+      "label": "Politique",
+      "indicators": [
+        { "id": "P1", "label": "CPI", "value": "35/100 (rang 107/180, 2025)", "rawValue": 35, "palier": 5, "source": "Transparency International 2025" },
+        { "id": "P2", "label": "V-Dem LDI", "value": "0.52 (democratisant apres Bolsonaro)", "rawValue": 0.52, "palier": 3, "source": "V-Dem 2025" },
+        { "id": "P3", "label": "WGI Stabilite politique", "value": "-0.3 (instabilite moderee post-janv.2023)", "rawValue": -0.3, "palier": 4, "source": "World Bank WGI" },
+        { "id": "P4", "label": "Cycle electoral", "value": "~2 ans (elections generales 2026)", "rawValue": null, "palier": 3, "source": "TSE" },
+        { "id": "P5", "label": "Risque changement regime", "value": "Faible-modere (Lula stable mais Bolsonaro ineligible 2026, droite fragmentée)", "rawValue": null, "palier": 3, "source": "EIU / ICG" },
+        { "id": "P6", "label": "Polarisation", "value": "Tres elevee (Lula vs Bolsonarisme). Societe fracturée post-janv.2023", "rawValue": null, "palier": 6, "source": "V-Dem / Freedom House 2025" },
+        { "id": "P7", "label": "Libertes civiles", "value": "72/100 (Free, Freedom House 2025)", "rawValue": 72, "palier": 2, "source": "Freedom House 2025" },
+        { "id": "P8", "label": "Risque successoral", "value": "Lula 79 ans, sante fragile (2023-2024), pas de successeur PT evident", "rawValue": null, "palier": 5, "source": "ICG / media brésiliens" },
+        { "id": "P9", "label": "Autonomie regionale", "value": "Federalisme robuste. Gouverneurs puissants (Tarcísio SP). Tensions centre-périphérie.", "rawValue": null, "palier": 3, "source": "IBGE / TSE" },
+        { "id": "P10", "label": "Opposition", "value": "Bolsonarisme persistant (~40% electeurs), Bolsonaro ineligible jan.2023, processus judiciaire en cours", "rawValue": null, "palier": 3, "source": "TSE / STF" },
+        { "id": "P11", "label": "Pression demographique", "value": "+0.6%/an, vieillissement accelerant (taux fecondite 1.7)", "rawValue": 0.6, "palier": 3, "source": "IBGE" },
+        { "id": "P12", "label": "Diaspora", "value": "~4.5M a l'étranger (US, Portugal, Japon), influence limitée", "rawValue": 4.5, "palier": 2, "source": "IOM / MRE" },
+        { "id": "P13", "label": "Capture institutionnelle", "value": "Modérée : STF actif contre tentative coup, mais «centrão» contrôle Congres (corruption institutionnalisée)", "rawValue": null, "palier": 4, "source": "TI / V-Dem" },
+        { "id": "P14", "label": "Chocs auto-infliges", "value": "2 : blocage Bolsonaro (inéligibilité), tensions fiscales Lula-Congres 2024-2025", "rawValue": 2, "palier": 4, "source": "ICG / media" },
+        { "id": "P15", "label": "Fenetres action", "value": "Elections 2026 = fenetre critique. COP30 (nov.2025) = opportunite diplomatique.", "rawValue": null, "palier": 3, "source": "Analyse Inflexion" }
+      ],
+      "scoreQuanti": 3.6,
+      "scoreQuali": 4,
+      "resilience": {
+        "RP1": { "score": 5, "label": "Alternance democratique", "commentary": "Alternance Bolsonaro→Lula 2022 malgré contestation. STF a maintenu l'ordre constitutionnel. Institutions résistantes mais sous pression extrême." }
+      },
+      "scoreFinal": 3.8,
+      "trend": "stable",
+      "commentary": "Démocratie brésilienne résistante mais sous tension. STF a joué un rôle décisif pour contenir le bolsonarisme (inéligibilité Bolsonaro août 2023, procès coup janv.2023). La polarisation reste extrême : V-Dem note une reprise démocratique mais fragile. Le «centrão» (coalition parlementaire transpartisane opportuniste) contrôle le budget et freine les réformes structurelles. Corruption institutionnalisée (CPI 35/100). Elections 2026 = test majeur (Tarcísio São Paulo vs Lula ou successeur PT). Lula vieillissant (79 ans) avec problème de succession. CPI 35 = dégradation (était 38 en 2022)."
+    },
+    "L": {
+      "label": "Legal",
+      "indicators": [
+        { "id": "L1", "label": "Rule of Law", "value": "0.48 (rang 86/140, WJP 2025)", "rawValue": 0.48, "palier": 4, "source": "WJP 2025" },
+        { "id": "L2", "label": "B-READY", "value": "58 (systeme fiscal complexe, améliore)", "rawValue": 58, "palier": 3, "source": "World Bank B-READY 2025" },
+        { "id": "L3", "label": "Sanctions", "value": "Aucune sanction internationale", "rawValue": null, "palier": 1, "source": "OFAC / EU / UN" },
+        { "id": "L4", "label": "Protection PI", "value": "~42 (GIPC ranking : adequate, système en amélioration)", "rawValue": 42, "palier": 4, "source": "GIPC / UNCTAD" },
+        { "id": "L5", "label": "Execution contrats", "value": "~800 jours (long mais meilleur que sous-continent)", "rawValue": 800, "palier": 5, "source": "World Bank" },
+        { "id": "L6", "label": "Independance judiciaire", "value": "STF independant (cle vs coup 2023), tribunaux inférieurs corrompus", "rawValue": null, "palier": 3, "source": "WJP / Freedom House" },
+        { "id": "L7", "label": "BIT actifs", "value": "~8 ACFIs (Accords Coopération Investissement, modele bresilien, pas ratifié ICSID)", "rawValue": 8, "palier": 4, "source": "UNCTAD / MRE" },
+        { "id": "L8", "label": "Anti-corruption", "value": "Operacao Lava Jato sequelles, TCU actif, mais corruption systemique persistante", "rawValue": null, "palier": 4, "source": "TI / TCU" },
+        { "id": "L9", "label": "Arbitrage ICSID", "value": "Non-membre ICSID. ACFI modele alternatif.", "rawValue": null, "palier": 4, "source": "ICSID / UNCTAD" },
+        { "id": "L10", "label": "Risque expropriation", "value": "Faible-modere (precedents limites, protection constitutionnelle propriété)", "rawValue": null, "palier": 3, "source": "EIU / World Bank" }
+      ],
+      "scoreQuanti": 3.5,
+      "scoreQuali": 3.5,
+      "resilience": {
+        "RL1": { "score": 4, "label": "Autonomie judiciaire effective", "commentary": "STF a maintenu l'indépendance constitutionnelle (arrêts anti-coup 2023, inéligibilité Bolsonaro). Mais politisation croissante du STF (nominations partisanes)." }
+      },
+      "scoreFinal": 3.4,
+      "trend": "stable",
+      "commentary": "Cadre légal en amélioration mais toujours très lent (800 jours exécution contrats). La réforme TVA (PEC 45) est un progrès majeur — simplifie le système fiscal le plus complexe du monde. STF = institution clé qui a résisté à la tentative de coup. Points négatifs : non-membre ICSID (modèle ACFI alternatif moins protecteur), corruption judiciaire aux niveaux inférieurs, protection PI insuffisante (piratage logiciels + agrochimiques). CPI 35 place le Brésil à 107e/180."
+    },
+    "I": {
+      "label": "Information",
+      "indicators": [
+        { "id": "I1", "label": "RSF rang", "value": "63/180 (amelioration post-Bolsonaro)", "rawValue": 63, "palier": 3, "source": "RSF 2025" },
+        { "id": "I2", "label": "Freedom on the Net", "value": "65/100 (Partly Free)", "rawValue": 65, "palier": 3, "source": "Freedom House 2025" },
+        { "id": "I3", "label": "Operations influence", "value": "5-6 (bolsonarisme actif sur réseaux, Telegram, WhatsApp)", "rawValue": 5.5, "palier": 4, "source": "DFRLab / Agencia Publica" },
+        { "id": "I4", "label": "Censure internet", "value": "Blocage X (août 2024, Rumble fev.2025) par STF — débat constitutionnel majeur", "rawValue": null, "palier": 3, "source": "Freedom House / STF" },
+        { "id": "I5", "label": "Controle medias Etat", "value": "~15% (TV Cultura, EBC). Presse privée dominante et polarisée", "rawValue": 15, "palier": 2, "source": "RSF / Reporters Brasil" },
+        { "id": "I6", "label": "Penetration reseaux sociaux", "value": "~85% (parmi les plus hauts au monde, WhatsApp universel)", "rawValue": 85, "palier": 5, "source": "DataReportal 2025" },
+        { "id": "I7", "label": "Desinformation IA", "value": "8-10 incidents (deepfakes election 2022, fausses videos 2024-2025)", "rawValue": 9, "palier": 4, "source": "NetLab UFRJ / DFRLab" },
+        { "id": "I8", "label": "Pluralisme mediatique", "value": "Modere : Globo dominant mais concurrence (UOL, Folha, Estadao, Record proBolsonaro)", "rawValue": null, "palier": 3, "source": "RSF / Atlas da Noticia" },
+        { "id": "I9", "label": "Journalistes emprisonnes", "value": "1-2 (contexte Bolsonaro residuel), violences physiques en zones rurales", "rawValue": 1.5, "palier": 2, "source": "CPJ / RSF" },
+        { "id": "I10", "label": "Controle narratif diaspora", "value": "Faible-modere (bolsonarisme dans diaspora US, Portugal)", "rawValue": null, "palier": 2, "source": "DFRLab" },
+        { "id": "I11", "label": "Bots / trolls", "value": "~3000-5000 (reseaux bolsonaristes documentes par TSE + NetLab)", "rawValue": 4000, "palier": 4, "source": "TSE / NetLab UFRJ" },
+        { "id": "I12", "label": "Usage VPN", "value": "~25% (post-blocage X)", "rawValue": 25, "palier": 3, "source": "Surfshark / DataReportal" }
+      ],
+      "scoreQuanti": 3.2,
+      "scoreQuali": 3.5,
+      "resilience": {
+        "RI1": { "score": 4, "label": "Pluralisme mediatique", "commentary": "Presse privée active (Folha, Estadão, O Globo, Piauí, Agência Pública). Journalisme d'investigation solide. Mais Globo très dominant et polarisation médiatique réelle (Record/SBT pro-conservateur vs Globo/Folha pro-centre)." }
+      },
+      "scoreFinal": 3.5,
+      "trend": "stable",
+      "commentary": "Amélioration relative post-Bolsonaro (RSF 63e vs 110e en 2022). Mais ecosystème numérique à haut risque désinformation : Brésil = 2e marché WhatsApp mondial, vecteur principal de fausses nouvelles. Blocage X par STF (août 2024) a créé un précédent juridique contesté. Réseaux bolsonaristes toujours actifs malgré inéligibilité du leader. Deepfakes en campagnes électorales = menace croissante. Agence Lupa, Aos Fatos = fact-checkers actifs."
+    },
+    "C": {
+      "label": "Cyber",
+      "indicators": [
+        { "id": "C1", "label": "NCSI", "value": "~55/100 (cyber readiness intermédiaire)", "rawValue": 55, "palier": 3, "source": "e-Governance Academy NCSI" },
+        { "id": "C2", "label": "GCI", "value": "~70/100 (Tier 2, capacites en developpement)", "rawValue": 70, "palier": 3, "source": "ITU GCI 2024" },
+        { "id": "C3", "label": "Incidents majeurs cyber", "value": "3 majeurs en 2025 : attaque PIX ($148M, juin-juil.2025), INSS data breach, Tribunal Superior Eleitoral", "rawValue": 3, "palier": 5, "source": "CERT.br / LACNIC / Segura.security" },
+        { "id": "C4", "label": "APT actifs", "value": "3-4 (groupes financiers latinoamericains, espionnage chinois, ransomware russe/bielorusse)", "rawValue": 3.5, "palier": 3, "source": "Intel471 / CSIS" },
+        { "id": "C5", "label": "Exposition infra critique", "value": "Elevee (systeme PIX, SABRE electrique, reseau sante SUS non uniforme)", "rawValue": null, "palier": 5, "source": "AHA / BCB" },
+        { "id": "C6", "label": "Budget cyberdefense", "value": "~1.5% budget defens (CDCIBER + ANPD sous-finances)", "rawValue": 1.5, "palier": 4, "source": "Ministere Defense BR" },
+        { "id": "C7", "label": "Ransomware", "value": "~30% victimes LatAm (450+ incidents region 2025, +78% vs 2024)", "rawValue": 30, "palier": 5, "source": "Intel471 / LACNIC 2026" },
+        { "id": "C8", "label": "Supply chain attacks", "value": "2 documentes (C&M Software PIX 2025, fournisseurs Petrobras)", "rawValue": 2, "palier": 4, "source": "Segura.security / CSIS" },
+        { "id": "C9", "label": "Workforce cyber", "value": "~18/100k (deficit significatif malgre pole IT Sao Paulo)", "rawValue": 18, "palier": 4, "source": "ISC2 / Brazil Ransomware Task Force" },
+        { "id": "C10", "label": "Legislation donnees", "value": "LGPD 2020 (en application), ANPD operationnelle, lacunes sanction", "rawValue": null, "palier": 3, "source": "ANPD / LGPD" },
+        { "id": "C11", "label": "Cloud exposure", "value": "Significative (AWS/Azure dominants, peu de cloud souverain)", "rawValue": null, "palier": 4, "source": "ANPD / CERT.br" },
+        { "id": "C12", "label": "Zero-day exposure", "value": "Modere (cible financier : insiders + phishing, moins APT etatiques)", "rawValue": null, "palier": 4, "source": "Intel471" }
+      ],
+      "scoreQuanti": 3.9,
+      "scoreQuali": 4.5,
+      "scoreFinal": 4.1,
+      "trend": "up",
+      "commentary": "Deterioration cybersécurité notable en 2025. L'attaque du PIX (juin-juillet 2025, $148M via insider) est l'incident le plus grave jamais enregistré sur le système de paiement national. Brésil = 30% des victimes de ransomware en Amérique Latine (450+ incidents 2025, +78% vs 2024). CERT.br et Brazil Ransomware Task Force (OEA + MAE) montrent une prise de conscience mais le retard est significatif. LGPD 2020 = cadre légal, mais ANPD sous-dotée en ressources. Système financier numérique (PIX, Open Banking) = attractivité criminelle majeure."
+    },
+    "Ee": {
+      "label": "Environnemental",
+      "indicators": [
+        { "id": "Ee1", "label": "ND-GAIN", "value": "~48 (vulnerabilite elevee, readiness moderee)", "rawValue": 48, "palier": 4, "source": "ND-GAIN 2024" },
+        { "id": "Ee2", "label": "Water Stress", "value": "Modere-eleve (sécheresses Sud-Est, Nordeste chronique, Amazon resilient)", "rawValue": 3.0, "palier": 4, "source": "WRI Aqueduct" },
+        { "id": "Ee3", "label": "Dependance extractives", "value": "~35% (petrole Pré-Sal, minerai de fer, soja) — haut risque commodity", "rawValue": 35, "palier": 5, "source": "World Bank / ANP" },
+        { "id": "Ee4", "label": "Catastrophes 5 ans", "value": ">12 (inondations RS 2024, secheresse AM 2023, incendies CE 2025)", "rawValue": 12, "palier": 5, "source": "EM-DAT / S2ID" },
+        { "id": "Ee5", "label": "Transition energetique", "value": "~90% electricite renouvelable (hydro+eolien+solaire). Modele reference.", "rawValue": 90, "palier": 1, "source": "ANEEL / IRENA 2025" },
+        { "id": "Ee6", "label": "CO2 / capita", "value": "~2.2t (bas grace au mix renouvelable, mais feux+defrichement = 700-800Mt/an)", "rawValue": 2.2, "palier": 3, "source": "Global Carbon Project 2025" },
+        { "id": "Ee7", "label": "Biodiversite menacee", "value": "Critique (Amazon + Cerrado = 2 hotspots mondiaux, ~8000 especes menacees IUCN)", "rawValue": null, "palier": 6, "source": "IUCN / ICMBio" },
+        { "id": "Ee8", "label": "Deforestation", "value": "-11% Amazon 2024-2025 (Lula/FUNAI). Mais PL de devastation agribusiness nov.2025", "rawValue": -11, "palier": 4, "source": "INPE / Imazon 2025" },
+        { "id": "Ee9", "label": "Montee des eaux", "value": "~7% pop cotière exposée (Recife, Florianópolis, Santos)", "rawValue": 7, "palier": 4, "source": "Climate Central / IPCC" },
+        { "id": "Ee10", "label": "Pollution air", "value": "~16 ug/m3 (São Paulo), acceptable vs Asie. Focos incêndio = pic saisonnier", "rawValue": 16, "palier": 2, "source": "IQAir 2025" }
+      ],
+      "scoreQuanti": 3.8,
+      "scoreQuali": 4.5,
+      "scoreFinal": 4.2,
+      "trend": "stable",
+      "commentary": "Paradoxe environnemental brésilien : ~90% d'électricité renouvelable (meilleur G20) mais 35% d'exports dépendant des matières premières extractives. Déforestation Amazonie en baisse (-11% 2024-2025) grâce aux politiques Lula mais le PL de dévastation voté par le Congres post-COP30 menace les acquis. Catastrophes climatiques s'intensifient : inondations RS (mai 2024, 160 morts, 500k déplacés) = pire catastrophe naturelle de l'histoire du Rio Grande do Sul. Brésil accueille COP30 à Belém (nov.2025) = levier diplomatique mais aussi miroir de ses propres contradictions. Biodiversité sous pression extrême (Amazonie + Cerrado)."
+    }
+  },
+  "composite": 3.5,
+  "classification": "Modere",
+  "opportunity": {
+    "So": {
+      "label": "Capital humain",
+      "scoreOpp": 4.5,
+      "commentary": "Alphabétisation 93%. PISA scores moyens (441 math 2022). Classe ouvrière éduquée. 200M+ consommateurs. Mais qualité éducation secondaire inégale (Nord vs Sud)."
+    },
+    "Eo": {
+      "label": "Croissance",
+      "scoreOpp": 5.5,
+      "commentary": "Leader mondial agribusiness (soja, maïs, viande, sucre, café, cellulose). 1er lithium mondial (reserves 2e rang), minerais de fer Carajás. Pré-Sal pétrole (offshore deepwater). Classe moyenne 120M+. Réforme TVA (PEC 45) = boost productivité estimé +20% PIB long terme (FGV). Mercosur + Accord UE-Mercosur (ratification 2025)."
+    },
+    "Mo": {
+      "label": "Securite",
+      "scoreOpp": 3.5,
+      "commentary": "Puissance régionale stabilisatrice. Aucun conflit interétatique. Armée professionnelle constitutionnelle (démonstration jan.2023). PROSUB (sous-marins nucléaires) = montée en puissance. Exportateur défense (KC-390 = succès export Portugal, Pays-Bas, Autriche)."
+    },
+    "Po": {
+      "label": "Gouvernance",
+      "scoreOpp": 3.5,
+      "commentary": "Démocratie fonctionnelle, alternances régulières. STF actif. Réformes structurelles (TVA, pensions partielles). Federalisme expérimenté. Mais corruption systémique et centrão = frein aux réformes."
+    },
+    "Lo": {
+      "label": "Attractivite juridique",
+      "scoreOpp": 3.0,
+      "commentary": "Réforme TVA = simplification majeure. LGPD = cadre données moderne. STF fiable pour grands arbitrages constitutionnels. Mais ICSID non-membre, durée procédures, risque politique = réserves investisseurs."
+    },
+    "Io": {
+      "label": "Innovation",
+      "scoreOpp": 4.0,
+      "commentary": "Pole tech São Paulo (Faria Lima = hub fintech LatAm). Nubank (plus grande banque digitale monde), TOTVS, iFood, 99. 3e marché fintech mondial. R&D 1.2% PIB. Embraer = champion aéro mondial. Pétrobras innovation deepwater."
+    },
+    "Co": {
+      "label": "Maturite tech",
+      "scoreOpp": 4.5,
+      "commentary": "PIX = système de paiement instantané le plus avancé du monde (2021, 140M+ utilisateurs). Open Banking/Finance pionnier. Infrastructure fibre 5G en déploiement. Mais cyber-risques = ombre au tableau (PIX aussi vecteur d'attaques)."
+    },
+    "Eeo": {
+      "label": "Durabilite",
+      "scoreOpp": 5.5,
+      "commentary": "90% électricité renouvelable = modèle mondial. 1er rangs biomasse, hydroélectricité. Reservations carbone forêts = actif stratégique. Lithium + terres rares = metals de la transition. COP30 à Belém 2025 = capital diplomatique vert. 6T$ d'opportunité transition nette d'ici 2050 (BNEF)."
+    },
+    "compositeOpp": 4.2
+  },
+  "resilience": {
+    "RS1": { "score": 4, "label": "Societe civile", "commentary": "Robuste mais polarisée." },
+    "RE1": { "score": 3, "label": "Correction monetaire", "commentary": "BCB indépendante depuis 2021, crédibilité modérée." },
+    "RM1": { "score": 6, "label": "Doctrine republicaine armee", "commentary": "Refus du coup Bolsonaro jan.2023 = signal fort de constitutionnalisme militaire." },
+    "RP1": { "score": 5, "label": "Alternance democratique", "commentary": "Alternance 2022 malgré contestation violente. STF garant constitutionnel." },
+    "RI1": { "score": 4, "label": "Pluralisme mediatique", "commentary": "Presse privée active, fact-checkers solides (Lupa, Aos Fatos). Mais Globo hégémonique." },
+    "RL1": { "score": 4, "label": "Autonomie judiciaire", "commentary": "STF très actif (indépendance politique démontrée). Tribunaux inférieurs sous pression corruption." }
+  },
+  "scenarios": [
+    {
+      "id": "S1",
+      "label": "Consolidation démocratique + réforme fiscale",
+      "probability": 0.45,
+      "horizon": "2027",
+      "description": "Lula (ou successeur PT) gagne 2026. Réforme TVA pleinement mise en oeuvre. Moody's passe investment grade. Déforestation Amazonie atteint zéro net 2030. Score composite -> 3.0."
+    },
+    {
+      "id": "S2",
+      "label": "Statu quo instable",
+      "probability": 0.35,
+      "horizon": "2027",
+      "description": "Alternance droite modérée (Tarcísio) 2026. Polarisation persistante. Déséquilibre fiscal non résolu. Score composite ~3.5 stable."
+    },
+    {
+      "id": "S3",
+      "label": "Crise fiscale et déstabilisation",
+      "probability": 0.15,
+      "horizon": "2026-2027",
+      "description": "Dette atteint 96% PIB, marchés dégradent le Brésil. Crise BRL. Instabilité politique pré-électorale. Score composite -> 4.5."
+    },
+    {
+      "id": "S4",
+      "label": "Résurgence bolsonariste autoritaire",
+      "probability": 0.05,
+      "horizon": "2027+",
+      "description": "Victoire extrême droite 2026 + érosion STF + retrait Amazon. Score composite -> 5.0+."
+    }
+  ],
+  "flags": [
+    "DETTE_EXPLOSIF: trajectoire 87.6%→96% PIB = risque systemique",
+    "CYBER_DETERIORATION: attaque PIX $148M juin 2025 = vulnerabilite systeme financier",
+    "POLARISATION_EXTREME: risque pré-élections 2026",
+    "BIODIVERSITE_CRITIQUE: PL devastation post-COP30 = regression"
+  ],
+  "signatures": []
+}
