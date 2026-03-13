@@ -1,12 +1,13 @@
 /**
  * nav-shared.js — Modern Inflexion Navigation Shell
  * Replaces old header/nav/hero/footer with the new design system.
+ * Matches index.html design: monograms, bronze accents, category headers, footer strips.
  * Include AFTER app.js and data-loader.js.
  */
 (function(){
 'use strict';
 
-// ── Inject required CSS ──
+// ── Inject required CSS (matches index.html mega menu styles) ──
 var css=document.createElement('style');
 css.textContent=
 '/* Nav shared styles */\n'+
@@ -14,45 +15,81 @@ css.textContent=
 '.nav-link-new::after{content:"";position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}\n'+
 '.nav-link-new:hover::after,.nav-link-new.active::after{transform:scaleX(1)}\n'+
 '.mega-trigger{position:relative}\n'+
-'.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;z-index:60;min-width:260px;padding:8px}\n'+
+'.mega-menu{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(10px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s cubic-bezier(.4,0,.2,1),transform .28s cubic-bezier(.4,0,.2,1),visibility .28s;z-index:60;min-width:340px;padding:0;overflow:hidden}\n'+
 '.mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}\n'+
-'.mega-item{transition:background .15s ease,border-color .15s ease;border:1px solid transparent}\n'+
-'.mega-item:hover{background:#F0FAF5;border-color:#D1EFE2}\n'+
-'.mega-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;background:rgba(0,102,80,.08);color:#006650;transition:background .15s ease,transform .15s ease}\n'+
-'.mega-item:hover .mega-icon{background:rgba(0,102,80,.15);transform:scale(1.1)}\n'+
+'.mega-menu::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#C8955A 20%,#C8955A 80%,transparent);z-index:2}\n'+
+'.mega-menu::after{content:"";position:absolute;top:2px;right:0;width:60px;height:60px;background:radial-gradient(circle at top right,rgba(200,149,90,.06) 0%,transparent 70%);pointer-events:none}\n'+
+'.mega-cat-header{font-family:"Libre Baskerville",Georgia,serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:#C8955A;padding:20px 20px 10px;border-bottom:1px solid #F0F1F4;margin-bottom:4px;display:flex;align-items:center;gap:8px}\n'+
+'.mega-cat-header::before{content:"";width:12px;height:1px;background:#C8955A}\n'+
+'.mega-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;padding:8px 10px 12px}\n'+
+'.mega-list{display:flex;flex-direction:column;gap:2px;padding:8px 10px 12px}\n'+
+'.mega-item{position:relative;display:flex;align-items:flex-start;gap:14px;padding:12px 14px;border-radius:10px;text-decoration:none;transition:all .2s cubic-bezier(.4,0,.2,1);border:1px solid transparent;overflow:hidden}\n'+
+'.mega-item::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:0;height:60%;background:#006650;border-radius:0 2px 2px 0;transition:width .2s cubic-bezier(.4,0,.2,1)}\n'+
+'.mega-item:hover{background:#F8FAF9;border-color:#E8EDE9}\n'+
+'.mega-item:hover::before{width:3px}\n'+
+'.mega-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:"Libre Baskerville",Georgia,serif;font-size:12px;font-weight:700;font-style:italic;color:#006650;background:linear-gradient(135deg,rgba(0,102,80,.05) 0%,rgba(0,102,80,.1) 100%);border:1px solid rgba(0,102,80,.1);transition:all .25s cubic-bezier(.4,0,.2,1);letter-spacing:-.02em}\n'+
+'.mega-item:hover .mega-icon{color:#fff;background:linear-gradient(135deg,#006650 0%,#06402A 100%);border-color:#006650;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,80,.18)}\n'+
+'.mega-label{font-size:13.5px;font-weight:600;color:#1A1F2E;transition:color .2s}\n'+
+'.mega-item:hover .mega-label{color:#006650}\n'+
+'.mega-desc{font-size:11.5px;color:#8A93A8;margin-top:2px;transition:color .2s}\n'+
+'.mega-item:hover .mega-desc{color:#6B7280}\n'+
+'.mega-arrow{position:absolute;right:12px;top:50%;transform:translateY(-50%) translateX(-4px);opacity:0;color:#006650;font-size:13px;font-weight:700;transition:all .2s cubic-bezier(.4,0,.2,1)}\n'+
+'.mega-item:hover .mega-arrow{opacity:1;transform:translateY(-50%) translateX(0)}\n'+
+'@keyframes mega-item-reveal{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}\n'+
+'.mega-trigger:hover .mega-item{animation:mega-item-reveal .3s cubic-bezier(.4,0,.2,1) both}\n'+
+'.mega-trigger:hover .mega-item:nth-child(1){animation-delay:.04s}\n'+
+'.mega-trigger:hover .mega-item:nth-child(2){animation-delay:.08s}\n'+
+'.mega-trigger:hover .mega-item:nth-child(3){animation-delay:.12s}\n'+
+'.mega-trigger:hover .mega-item:nth-child(4){animation-delay:.16s}\n'+
+'.mega-trigger:hover .mega-item:nth-child(5){animation-delay:.20s}\n'+
+'.mega-footer{padding:10px 20px;background:#F9FAFB;border-top:1px solid #F0F1F4;display:flex;align-items:center;gap:6px;font-size:10.5px;color:#A0A8B8;letter-spacing:.04em;font-weight:500}\n'+
+'.mega-footer-dot{width:4px;height:4px;border-radius:50%;background:#C8955A;flex-shrink:0}\n'+
 '@keyframes ns-fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}\n'+
 '@keyframes ns-menu-item-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}\n'+
 '.ns-anim{animation:ns-fade-up .6s ease-out both}\n'+
 '.ns-anim-d1{animation-delay:.1s}.ns-anim-d2{animation-delay:.2s}\n'+
+'/* Hamburger open animation */\n'+
+'.hamburger-open .hamburger-bar:nth-child(1){transform:translateY(8px) rotate(45deg)}\n'+
+'.hamburger-open .hamburger-bar:nth-child(2){opacity:0}\n'+
+'.hamburger-open .hamburger-bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}\n'+
+'/* Nav link hover emerald when scrolled */\n'+
+'.nav-scrolled-mode .nav-link-new:hover{color:#006650!important}\n'+
 '/* Hide old elements */\n'+
 'header.header,nav.nav-overlay,button.back-to-top{display:none!important}\n';
 document.head.appendChild(css);
 
-// ── Navigation Data ──
+// ── Navigation Data (monograms matching index.html) ──
 var MEGA_NAV=[
 {label:'Intelligence',children:[
- {icon:'\u{1F30D}',label:'G\u00e9opolitique',desc:'Risques pays & tensions internationales',href:'geopolitics.html'},
- {icon:'\u{1F4C8}',label:'March\u00e9s',desc:'Actions, indices, taux & devises',href:'markets.html'},
- {icon:'\u20bf',label:'Crypto & Blockchain',desc:'Bitcoin, DeFi, r\u00e9gulation',href:'crypto.html'},
- {icon:'\u{1F6E2}\ufe0f',label:'Mati\u00e8res premi\u00e8res',desc:'Or, p\u00e9trole, m\u00e9taux & \u00e9nergie',href:'commodities.html'},
- {icon:'\u{1F4CA}',label:'ETF & Fonds',desc:'Allocations & flux de capitaux',href:'etf.html'},
+ {icon:'Gp',label:'G\u00e9opolitique',desc:'Risques pays & tensions internationales',href:'geopolitics.html'},
+ {icon:'Mk',label:'March\u00e9s',desc:'Actions, indices, taux & devises',href:'markets.html'},
+ {icon:'Cr',label:'Crypto & Blockchain',desc:'Bitcoin, DeFi, r\u00e9gulation',href:'crypto.html'},
+ {icon:'Mp',label:'Mati\u00e8res premi\u00e8res',desc:'Or, p\u00e9trole, m\u00e9taux & \u00e9nergie',href:'commodities.html'},
+ {icon:'Ef',label:'ETF & Fonds',desc:'Allocations & flux de capitaux',href:'etf.html'},
 ]},
 {label:'Analyses',children:[
- {icon:'\u{1F4F0}',label:'Briefing du jour',desc:'Synth\u00e8se IA quotidienne',href:'index.html#briefing'},
- {icon:'\u{1F50E}',label:'Analyses approfondies',desc:'D\u00e9cryptages th\u00e9matiques',href:'analyses.html'},
- {icon:'\u{1F5FA}\ufe0f',label:'Macro par pays',desc:'Donn\u00e9es World Bank & indicateurs',href:'country.html'},
+ {icon:'Bj',label:'Briefing du jour',desc:'Synth\u00e8se IA quotidienne',href:'index.html#briefing'},
+ {icon:'An',label:'Analyses approfondies',desc:'D\u00e9cryptages th\u00e9matiques',href:'analyses.html'},
+ {icon:'Mc',label:'Macro par pays',desc:'Donn\u00e9es World Bank & indicateurs',href:'country.html'},
 ]},
 {label:'Expertise',children:[
- {icon:'\u{1F3AF}',label:'SEMPLICE',desc:'Notre cadre d\'\u00e9valuation g\u00e9opolitique en 8 dimensions',href:'expertise.html#semplice'},
- {icon:'\u{1F9ED}',label:'Notre approche',desc:'M\u00e9thodologie & cadre d\'analyse',href:'expertise.html'},
- {icon:'\u{1F916}',label:'Pipeline IA',desc:'158 sources, 15 APIs, Claude IA',href:'expertise.html#pipeline'},
- {icon:'\u{1F4E1}',label:'Sources & donn\u00e9es',desc:'Transparence sur nos flux',href:'expertise.html#sources'},
+ {icon:'Se',label:'SEMPLICE',desc:'Notre cadre d\'\u00e9valuation g\u00e9opolitique en 8 dimensions',href:'expertise.html#semplice'},
+ {icon:'Na',label:'Notre approche',desc:'M\u00e9thodologie & cadre d\'analyse',href:'expertise.html'},
+ {icon:'Ia',label:'Pipeline IA',desc:'158 sources, 15 APIs, Claude IA',href:'expertise.html#pipeline'},
+ {icon:'Sd',label:'Sources & donn\u00e9es',desc:'Transparence sur nos flux',href:'expertise.html#sources'},
 ]},
 {label:'Services',children:[
- {icon:'\u{1F4BC}',label:'Diagnostic strat\u00e9gique',desc:'Audit personnalis\u00e9 de vos positions',href:'premium.html'},
- {icon:'\u{1F514}',label:'Alertes & veille',desc:'Notifications personnalis\u00e9es',href:'premium.html#alertes'},
- {icon:'\u{1F4CB}',label:'Rapports sur mesure',desc:'Analyses d\u00e9di\u00e9es \u00e0 votre portefeuille',href:'premium.html#rapports'},
+ {icon:'Ds',label:'Diagnostic strat\u00e9gique',desc:'Audit personnalis\u00e9 de vos positions',href:'premium.html'},
+ {icon:'Av',label:'Alertes & veille',desc:'Notifications personnalis\u00e9es',href:'premium.html#alertes'},
+ {icon:'Rm',label:'Rapports sur mesure',desc:'Analyses d\u00e9di\u00e9es \u00e0 votre portefeuille',href:'premium.html#rapports'},
 ]},
+];
+
+var MEGA_FOOTERS=[
+'5 rubriques \u00b7 Donn\u00e9es temps r\u00e9el',
+'Analyses \u00b7 Mis \u00e0 jour quotidiennement',
+'M\u00e9thodologie \u00b7 Transparence totale',
+'Services \u00b7 Sur mesure'
 ];
 
 var CATEGORY_LABELS={
@@ -77,38 +114,44 @@ header.id='modern-header';
 header.className='fixed left-0 right-0 z-50 transition-all duration-300 bg-transparent';
 header.style.top='3px';
 
-var megaHTML=MEGA_NAV.map(function(cat){
+var megaHTML=MEGA_NAV.map(function(cat,ci){
+var isWide=ci===0;
 var ch=cat.children.map(function(item){
-return '<a href="'+item.href+'" class="mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline" style="text-decoration:none">'+
+return '<a href="'+item.href+'" class="mega-item">'+
 '<span class="mega-icon">'+item.icon+'</span>'+
 '<span style="display:flex;flex-direction:column">'+
-'<span style="font-size:0.875rem;font-weight:600;color:#1A1F2E">'+item.label+'</span>'+
-'<span style="font-size:0.75rem;color:#8A93A8;margin-top:2px">'+item.desc+'</span>'+
-'</span></a>';
+'<span class="mega-label">'+item.label+'</span>'+
+'<span class="mega-desc">'+item.desc+'</span>'+
+'</span>'+
+'<span class="mega-arrow">\u2192</span>'+
+'</a>';
 }).join('');
 return '<div class="mega-trigger">'+
 '<span class="nav-link-new" style="padding:0.5rem 0.75rem;font-size:0.875rem;font-weight:500;transition:color .2s;cursor:default;user-select:none;color:rgba(255,255,255,.7)">'+cat.label+'</span>'+
-'<div class="mega-menu" style="background:#fff;border-radius:1rem;box-shadow:0 20px 60px rgba(0,0,0,.12);border:1px solid #f3f4f6;padding:1.25rem">'+
-'<div style="display:grid;gap:4px">'+ch+'</div></div></div>';
+'<div class="mega-menu" style="background:#fff;border-radius:1rem;box-shadow:0 20px 60px rgba(0,20,15,.12),0 8px 24px rgba(0,20,15,.06);border:1px solid rgba(243,244,246,.8)'+(isWide?';min-width:480px':'')+'">'+
+'<div class="mega-cat-header">'+cat.label+'</div>'+
+'<div class="'+(isWide?'mega-grid':'mega-list')+'">'+ch+'</div>'+
+'<div class="mega-footer"><span class="mega-footer-dot"></span>'+MEGA_FOOTERS[ci]+'</div>'+
+'</div></div>';
 }).join('');
 
 header.innerHTML=
 '<div style="max-width:80rem;margin:0 auto;padding:0 1rem">'+
 '<div style="display:flex;align-items:center;justify-content:space-between;height:4rem">'+
 '<a href="index.html" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none">'+
-'<img src="logo-header.png" alt="Inflexion" id="nav-logo" style="height:50px;width:auto;filter:brightness(10) saturate(0);transition:filter .3s ease"/></a>'+
+'<img src="logo-header.png" alt="Inflexion" id="nav-logo" style="height:40px;width:auto;filter:brightness(10) saturate(0);transition:filter .3s ease"/></a>'+
 '<nav style="display:none" class="md-show" id="desktop-nav-items">'+megaHTML+
-'<a href="premium.html" style="margin-left:1rem;padding:0.5rem 1rem;background:#006650;color:#fff;font-weight:600;font-size:0.875rem;border-radius:0.5rem;transition:background .2s;text-decoration:none" onmouseover="this.style.background=\'#06402A\'" onmouseout="this.style.background=\'#006650\'">R\u00e9server un diagnostic</a>'+
+'<a href="premium.html" style="margin-left:0.5rem;padding:0.5rem 1rem;background:#006650;color:#fff;font-weight:600;font-size:0.875rem;border-radius:0.5rem;transition:background .2s;text-decoration:none" onmouseover="this.style.background=\'#06402A\'" onmouseout="this.style.background=\'#006650\'">R\u00e9server un diagnostic</a>'+
 '</nav>'+
 '<button id="mobile-menu-btn" style="display:none;padding:0.5rem" class="md-hide" aria-label="Menu">'+
-'<div style="display:flex;flex-direction:column;gap:6px"><span class="hamburger-bar" style="display:block;width:24px;height:2px;background:#fff;transition:all .3s"></span>'+
+'<div id="hamburger-wrapper" style="display:flex;flex-direction:column;gap:6px"><span class="hamburger-bar" style="display:block;width:24px;height:2px;background:#fff;transition:all .3s;transform-origin:center"></span>'+
 '<span class="hamburger-bar" style="display:block;width:24px;height:2px;background:#fff;transition:all .3s"></span>'+
-'<span class="hamburger-bar" style="display:block;width:24px;height:2px;background:#fff;transition:all .3s"></span></div></button>'+
+'<span class="hamburger-bar" style="display:block;width:24px;height:2px;background:#fff;transition:all .3s;transform-origin:center"></span></div></button>'+
 '</div></div>';
 
-// Add responsive CSS for md breakpoint
+// Add responsive CSS for md breakpoint + logo responsive sizing
 var mdCss=document.createElement('style');
-mdCss.textContent='@media(min-width:768px){#desktop-nav-items{display:flex!important;align-items:center;gap:4px}#mobile-menu-btn{display:none!important}}@media(max-width:767px){#desktop-nav-items{display:none!important}#mobile-menu-btn{display:block!important}}';
+mdCss.textContent='@media(min-width:768px){#desktop-nav-items{display:flex!important;align-items:center;gap:4px}#mobile-menu-btn{display:none!important}#nav-logo{height:50px!important}}@media(min-width:1024px){#nav-logo{height:65px!important}}@media(max-width:767px){#desktop-nav-items{display:none!important}#mobile-menu-btn{display:block!important}}';
 document.head.appendChild(mdCss);
 
 document.body.insertBefore(header,bronzeBar.nextSibling);
@@ -121,7 +164,7 @@ overlay.style.cssText='position:fixed;inset:0;z-index:60;display:flex;flex-direc
 var mobileLinks=MEGA_NAV.map(function(cat,ci){
 var links=cat.children.map(function(item,ii){
 return '<a href="'+item.href+'" class="mobile-nav-link" style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 0;color:rgba(255,255,255,.9);transition:color .2s;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08);opacity:0;animation-delay:'+(0.08+ci*0.18+ii*0.05)+'s;font-size:1rem;font-weight:500">'+
-'<span style="font-size:1rem">'+item.icon+'</span>'+
+'<span style="width:2rem;height:2rem;border-radius:0.5rem;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.1);font-family:Libre Baskerville,Georgia,serif;font-style:italic;font-weight:700;font-size:11px;color:rgba(255,255,255,.7);flex-shrink:0">'+item.icon+'</span>'+
 '<span>'+item.label+'</span></a>';
 }).join('');
 return '<p class="mobile-nav-link" style="font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,.4);font-weight:600;margin-bottom:0.75rem;opacity:0;animation-delay:'+(0.05+ci*0.18)+'s'+(ci>0?';margin-top:2rem':'')+'">' +cat.label+'</p>'+links;
@@ -226,7 +269,7 @@ newFooter.innerHTML=
 
 // Responsive footer grid
 var footerCss=document.createElement('style');
-footerCss.textContent='@media(min-width:768px){.footer-grid{grid-template-columns:repeat(4,1fr)!important}.footer-col1{grid-column:span 1!important}}@media(min-width:768px){.footer-grid>div:last-child+div{}}';
+footerCss.textContent='@media(min-width:768px){.footer-grid{grid-template-columns:repeat(4,1fr)!important}.footer-col1{grid-column:span 1!important}}';
 document.head.appendChild(footerCss);
 
 oldFooter.parentNode.replaceChild(newFooter,oldFooter);
@@ -241,13 +284,17 @@ scrolled=s;
 if(scrolled){
 header.style.background='rgba(255,255,255,.92)';
 header.style.backdropFilter='blur(16px)';
+header.style.webkitBackdropFilter='blur(16px)';
 header.style.borderBottom='1px solid #E2E5EB';
 header.style.boxShadow='0 1px 8px rgba(0,0,0,.04)';
+header.classList.add('nav-scrolled-mode');
 }else{
 header.style.background='transparent';
 header.style.backdropFilter='';
+header.style.webkitBackdropFilter='';
 header.style.borderBottom='';
 header.style.boxShadow='';
+header.classList.remove('nav-scrolled-mode');
 }
 // Update nav link colors
 var links=header.querySelectorAll('.nav-link-new');
@@ -267,15 +314,18 @@ onScroll();
 
 // ── Mobile Menu ──
 var mobileOpen=false;
+var hamburgerWrapper=document.getElementById('hamburger-wrapper');
 function toggleMobile(open){
 mobileOpen=open;
 if(open){
 overlay.style.opacity='1';overlay.style.visibility='visible';
 document.body.style.overflow='hidden';
+if(hamburgerWrapper)hamburgerWrapper.classList.add('hamburger-open');
 overlay.querySelectorAll('.mobile-nav-link').forEach(function(el){el.style.animation='ns-menu-item-in .4s ease-out forwards';});
 }else{
 overlay.style.opacity='0';overlay.style.visibility='hidden';
 document.body.style.overflow='';
+if(hamburgerWrapper)hamburgerWrapper.classList.remove('hamburger-open');
 overlay.querySelectorAll('.mobile-nav-link').forEach(function(el){el.style.animation='';el.style.opacity='0';});
 }
 }
