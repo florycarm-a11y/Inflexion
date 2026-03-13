@@ -1,0 +1,236 @@
+{
+  "zone": {
+    "id": "madagascar",
+    "name": "Madagascar",
+    "region": "afrique"
+  },
+  "meta": {
+    "date": "2026-03-12",
+    "version": "2.1",
+    "analyst": "Inflexion Intelligence"
+  },
+  "dimensions": {
+    "S": {
+      "label": "Social",
+      "indicators": [
+        { "id": "S1", "label": "Gini", "value": "0.492", "rawValue": 0.492, "palier": 5, "source": "World Bank" },
+        { "id": "S2", "label": "IDH", "value": "0.487 (rang 178/193)", "rawValue": 0.487, "palier": 7, "source": "UNDP" },
+        { "id": "S3", "label": "Chomage jeunes", "value": "5.4% officiel, 24% NEET, 96% informel", "rawValue": 24, "palier": 4, "source": "ILO / UN Madagascar" },
+        { "id": "S4", "label": "Solde migratoire", "value": "-0.06‰ (fuite des cerveaux qualitative)", "rawValue": -0.06, "palier": 4, "source": "UN DESA" },
+        { "id": "S5", "label": "Mouvements sociaux", "value": "Manifestations Gen Z sept-oct 2025, 22+ morts, renversement regime", "rawValue": null, "palier": 7, "source": "Al Jazeera / OHCHR" },
+        { "id": "S6", "label": "Tensions ethniques", "value": "Merina/Cotiers latentes + dahalo (banditisme arme sud)", "rawValue": null, "palier": 4, "source": "BTI 2024 / ICG" },
+        { "id": "S7", "label": "Acces sante", "value": "0.14 lits/1000 hab.", "rawValue": 0.14, "palier": 7, "source": "World Bank / Statista" },
+        { "id": "S8", "label": "Urbanisation", "value": "~4.4%/an", "rawValue": 4.4, "palier": 5, "source": "Worldometers" },
+        { "id": "S9", "label": "Inegalite genre (GII)", "value": "0.556", "rawValue": 0.556, "palier": 5, "source": "UNDP" },
+        { "id": "S10", "label": "Esperance de vie", "value": "63.8 ans", "rawValue": 63.8, "palier": 5, "source": "WHO / database.earth" },
+        { "id": "S11", "label": "Securite alimentaire", "value": "~49% sous-alimentes", "rawValue": 49, "palier": 7, "source": "FAO / Global Hunger Index" },
+        { "id": "S12", "label": "Education secondaire", "value": "~30% (taux net)", "rawValue": 30, "palier": 7, "source": "World Bank / UNESCO" }
+      ],
+      "scoreQuanti": 5.6,
+      "scoreQuali": 6,
+      "resilience": { "RS1": { "score": 3, "label": "Societe civile", "commentary": "Gen Z a mobilise massivement mais societe civile structurellement faible, dependante des bailleurs (USAID coupe)" } },
+      "scoreFinal": 5.8,
+      "trend": "up",
+      "commentary": "Crise sociale structurelle. IDH parmi les 15 plus bas, 80.7% de pauvrete, 49% sous-alimentes. Manifestations Gen Z (sept-oct 2025) ont renverse le regime. Hopitaux quasi inexistants (0.14 lits/1000)."
+    },
+    "E": {
+      "label": "Economique",
+      "indicators": [
+        { "id": "E1", "label": "PIB reel", "value": "+4.2% (2024, pre-coup)", "rawValue": 4.2, "palier": 2, "source": "World Bank / IMF" },
+        { "id": "E2", "label": "Inflation", "value": "8.6% (dec. 2024)", "rawValue": 8.6, "palier": 3, "source": "IMF / Coface" },
+        { "id": "E3", "label": "Dette publique / PIB", "value": "50.3%", "rawValue": 50.3, "palier": 3, "source": "Trading Economics" },
+        { "id": "E4", "label": "Balance courante", "value": "-5.0% PIB", "rawValue": -5.0, "palier": 5, "source": "Coface / IMF" },
+        { "id": "E5", "label": "Notation souveraine", "value": "S&P B- (negative watch), Coface D", "rawValue": null, "palier": 6, "source": "S&P / Coface" },
+        { "id": "E6", "label": "Regime change", "value": "Flottant gere + controles FX partiels", "rawValue": null, "palier": 3, "source": "US State Dept ICS 2024" },
+        { "id": "E7", "label": "Reserves de change", "value": "~6.2 mois", "rawValue": 6.2, "palier": 3, "source": "Coface / IMF" },
+        { "id": "E8", "label": "IDE entrants", "value": "~2.6% PIB (pre-coup)", "rawValue": 2.6, "palier": 3, "source": "World Bank / UNCTAD" },
+        { "id": "E9", "label": "Chomage total", "value": "3.0% officiel (96% informel)", "rawValue": 3, "palier": 5, "source": "ILO" },
+        { "id": "E10", "label": "Dette privee / PIB", "value": "~25%", "rawValue": 25, "palier": 1, "source": "IMF DSA" },
+        { "id": "E11", "label": "Concentration exports", "value": "Nickel 26% + vanille 17% + textile 12% = 55%", "rawValue": 55, "palier": 5, "source": "Coface / OEC" },
+        { "id": "E12", "label": "Croissance credit", "value": "~11%", "rawValue": 11, "palier": 2, "source": "IMF" },
+        { "id": "E13", "label": "Economie informelle", "value": "~36.5% PIB", "rawValue": 36.5, "palier": 4, "source": "World Economics" },
+        { "id": "E14", "label": "Cout energie", "value": "~220 $/MWh (business)", "rawValue": 220, "palier": 4, "source": "GlobalPetrolPrices" },
+        { "id": "E15", "label": "Indice de misere", "value": "8.6 + 3.0 = 11.6", "rawValue": 11.6, "palier": 3, "source": "Calcul" },
+        { "id": "E16", "label": "Independance BC", "value": "BFM legalement independante, taux 12% — autonomie menacee post-coup", "rawValue": null, "palier": 4, "source": "US State Dept / BTI 2024" }
+      ],
+      "scoreQuanti": 3.5,
+      "scoreQuali": 5,
+      "resilience": { "RE1": { "score": 3, "label": "Correction monetaire", "commentary": "Programme FMI ECF/RSF actif mais a risque post-coup. Pas de swap lines. Reserves 6.2 mois." } },
+      "scoreFinal": 4.1,
+      "trend": "up",
+      "commentary": "Economie fragile a double visage. Croissance 4.2% masque 80.7% pauvrete. Post-coup : USAID suspendu ($690M), FMI a risque, AGOA expire, pivot russe extractif."
+    },
+    "M": {
+      "label": "Militaire",
+      "indicators": [
+        { "id": "M1", "label": "Depenses mil. / PIB", "value": "0.7%", "rawValue": 0.7, "palier": 1, "source": "SIPRI" },
+        { "id": "M2", "label": "Conflits actifs", "value": "1 (Cabo Delgado, Mozambique, canal)", "rawValue": 1, "palier": 3, "source": "ACLED" },
+        { "id": "M3", "label": "GFP", "value": "131/145", "rawValue": 131, "palier": 1, "source": "Global Firepower" },
+        { "id": "M4", "label": "Exercices majeurs", "value": "3-4 (Cutlass Express + entrainement russe post-coup)", "rawValue": 4, "palier": 3, "source": "East-West Center / Moscow Times" },
+        { "id": "M5", "label": "Proliferation", "value": "Zone NWFZ (Pelindaba)", "rawValue": null, "palier": 2, "source": "UNODA" },
+        { "id": "M6", "label": "Coups regionaux", "value": "Madagascar oct. 2025 + tentatives Comores", "rawValue": 2, "palier": 4, "source": "Al Jazeera" },
+        { "id": "M7", "label": "Subordination civile", "value": "Tres faible — armee gouverne directement", "rawValue": 0.15, "palier": 6, "source": "V-Dem / BTI 2024" },
+        { "id": "M8", "label": "Transferts armes", "value": "Livraisons russes dec. 2025 (drones, armes legeres)", "rawValue": 500, "palier": 3, "source": "Moscow Times / Bloomberg" },
+        { "id": "M9", "label": "Bases etrangeres", "value": "France (Reunion, Mayotte) + 140 instructeurs russes", "rawValue": null, "palier": 4, "source": "France24 / Critical Threats" },
+        { "id": "M10", "label": "Milices / PMC", "value": "Dahalo (groupes armes) + fokonolona (milices civiles) + instructeurs russes", "rawValue": null, "palier": 4, "source": "ENACT OCI" },
+        { "id": "M11", "label": "Traites defense", "value": "SADC (suspendu?), alignement de facto Russie", "rawValue": null, "palier": 4, "source": "ADF Magazine" },
+        { "id": "M12", "label": "R&D defense", "value": "0%", "rawValue": 0, "palier": 7, "source": "SIPRI" },
+        { "id": "M13", "label": "Fiabilite protecteur", "value": "France/US en retrait, Russie = nouveau patron (track record extractif)", "rawValue": null, "palier": 5, "source": "Critical Threats / GIS Reports" }
+      ],
+      "scoreQuanti": 3.6,
+      "scoreQuali": 5,
+      "resilience": { "RM1": { "score": 1, "label": "Doctrine republicaine armee", "commentary": "4 coups d'Etat. Armee gouverne directement. Aucune tradition de non-intervention." } },
+      "scoreFinal": 4.2,
+      "trend": "up",
+      "commentary": "Rupture strategique majeure. 4e coup. Pivot Russie (140 instructeurs, armement). Canal du Mozambique = 30% trafic petrolier. Dahalo = insecurite endemique sud."
+    },
+    "P": {
+      "label": "Politique",
+      "indicators": [
+        { "id": "P1", "label": "CPI", "value": "26/100 (rang 140/180)", "rawValue": 26, "palier": 6, "source": "Transparency International" },
+        { "id": "P2", "label": "V-Dem", "value": "0.21 (autocratie electorale)", "rawValue": 0.21, "palier": 6, "source": "V-Dem Institute" },
+        { "id": "P3", "label": "WGI Political Stability", "value": "Tres bas, effondre post-coup", "rawValue": -1.2, "palier": 6, "source": "World Bank WGI" },
+        { "id": "P4", "label": "Cycle electoral", "value": "Junta promet elections ~oct. 2027, pas de date confirmee", "rawValue": null, "palier": 7, "source": "PBS / ConstitutionNet" },
+        { "id": "P5", "label": "Risque regime", "value": "En cours — coup oct. 2025, contre-coup possible", "rawValue": null, "palier": 6, "source": "Al Jazeera" },
+        { "id": "P6", "label": "Polarisation", "value": "Tres elevee (pro-Rajoelina vs anti vs junta vs Gen Z)", "rawValue": 0.85, "palier": 5, "source": "Brookings / Freedom House" },
+        { "id": "P7", "label": "Libertes civiles", "value": "34/60 (pre-coup, degradation attendue)", "rawValue": 34, "palier": 4, "source": "Freedom House 2025" },
+        { "id": "P8", "label": "Risque successoral", "value": "Junta sans mecanisme, constitution suspendue", "rawValue": null, "palier": 6, "source": "ConstitutionNet" },
+        { "id": "P9", "label": "Autonomie regionale", "value": "Sud marginalise, pas de mouvement secessionniste actif", "rawValue": null, "palier": 3, "source": "BTI 2024" },
+        { "id": "P10", "label": "Opposition", "value": "Opposition harcelee (Collectif des 10 + Rajoelina en exil)", "rawValue": null, "palier": 4, "source": "Freedom House" },
+        { "id": "P11", "label": "Pression demographique", "value": "+2.42%/an", "rawValue": 2.42, "palier": 5, "source": "UN DESA" },
+        { "id": "P12", "label": "Diaspora", "value": "Rajoelina a Dubai, diaspora franco-malgache active", "rawValue": null, "palier": 4, "source": "France24 / Global Voices" },
+        { "id": "P13", "label": "Capture institutionnelle", "value": "Post-coup : 3-4/5 (junta controle executif + armee)", "rawValue": 4, "palier": 6, "source": "BTI 2024 / Freedom House" },
+        { "id": "P14", "label": "Chocs auto-infliges", "value": "Refus crise eau/electricite → coup ; scandale nationalite ; fraude legislatives", "rawValue": null, "palier": 5, "source": "Al Jazeera / OHCHR" },
+        { "id": "P15", "label": "Fenetres action critiques", "value": "Transition constitutionnelle, reintegration UA, relation Russie, services publics", "rawValue": null, "palier": 5, "source": "ADF Magazine" }
+      ],
+      "scoreQuanti": 5.1,
+      "scoreQuali": 6,
+      "resilience": { "RP1": { "score": 2, "label": "Alternance democratique", "commentary": "2 transferts pacifiques en 60+ ans. Election 2023 boycottee. Coup 2025." } },
+      "scoreFinal": 5.5,
+      "trend": "up",
+      "commentary": "5e crise constitutionnelle. Autocratie militaire, constitution suspendue, UA suspendue. Trajectoire comparable AES (Mali, Niger, Burkina) avec pivot russe."
+    },
+    "L": {
+      "label": "Legal",
+      "indicators": [
+        { "id": "L1", "label": "Rule of Law", "value": "0.43 (rang 112/142)", "rawValue": 0.43, "palier": 5, "source": "WJP" },
+        { "id": "L2", "label": "B-READY", "value": "~51 (Heritage IEF, Mostly Unfree)", "rawValue": 51, "palier": 5, "source": "Heritage Foundation" },
+        { "id": "L3", "label": "Sanctions", "value": "AU suspendue, USAID coupe, pas de sanctions formelles encore", "rawValue": null, "palier": 3, "source": "ADF Magazine" },
+        { "id": "L4", "label": "Protection PI", "value": "Tres faible", "rawValue": 25, "palier": 5, "source": "US State Dept ICS" },
+        { "id": "L5", "label": "Execution contrats", "value": "~871 jours", "rawValue": 871, "palier": 5, "source": "World Bank" },
+        { "id": "L6", "label": "Independance judiciaire", "value": "Tres faible, degradee post-coup", "rawValue": null, "palier": 6, "source": "BTI 2024 / Freedom House" },
+        { "id": "L7", "label": "BIT actifs", "value": "9 + 5 accords investissement", "rawValue": 14, "palier": 5, "source": "UNCTAD" },
+        { "id": "L8", "label": "Anti-corruption", "value": "Tres faible (BIANCO, CPI 26)", "rawValue": null, "palier": 6, "source": "TI / BTI 2024" },
+        { "id": "L9", "label": "Arbitrage ICSID", "value": "Membre, execution incertaine post-coup", "rawValue": null, "palier": 4, "source": "ICSID" },
+        { "id": "L10", "label": "Risque expropriation", "value": "Eleve — Russie cherche minerais, revision code minier", "rawValue": null, "palier": 5, "source": "Critical Threats / GIS Reports" }
+      ],
+      "scoreQuanti": 4.9,
+      "scoreQuali": 5,
+      "resilience": { "RL1": { "score": 2, "label": "Autonomie judiciaire", "commentary": "Justice non independante. Pressions executif. Haute Cour a destitue Rajoelina sous pression militaire." } },
+      "scoreFinal": 4.9,
+      "trend": "up",
+      "commentary": "Cadre legal degrade. Constitution suspendue. Securite juridique des concessions minieres questionnable. Risque d'expropriation pour partenaires russes/chinois."
+    },
+    "I": {
+      "label": "Information",
+      "indicators": [
+        { "id": "I1", "label": "RSF rang", "value": "113/180 (-13 places en 2025)", "rawValue": 113, "palier": 4, "source": "RSF" },
+        { "id": "I2", "label": "Freedom on the Net", "value": "Non note (estime ~40)", "rawValue": 40, "palier": 4, "source": "Estime" },
+        { "id": "I3", "label": "Operations influence", "value": "Russie active post-coup + Rajoelina depuis Dubai", "rawValue": 3, "palier": 3, "source": "SWP Berlin / Critical Threats" },
+        { "id": "I4", "label": "Censure internet", "value": "Faible, BitChat adopte par anticipation", "rawValue": 1, "palier": 2, "source": "Global Voices / OONI" },
+        { "id": "I5", "label": "Controle medias Etat", "value": "Eleve — medias d'Etat + proprietaires politiques, felaka", "rawValue": 45, "palier": 5, "source": "RSF / BTI 2024" },
+        { "id": "I6", "label": "Penetration reseaux sociaux", "value": "12.1% (3.9M utilisateurs)", "rawValue": 12.1, "palier": 6, "source": "DataReportal 2025" },
+        { "id": "I7", "label": "Desinformation IA", "value": "0 incidents documentes", "rawValue": 0, "palier": 1, "source": "N/A" },
+        { "id": "I8", "label": "Pluralisme mediatique", "value": "Faible — paysage tres politise", "rawValue": 35, "palier": 4, "source": "RSF" },
+        { "id": "I9", "label": "Journalistes emprisonnes", "value": "1 (Fernand Cello, fev. 2025)", "rawValue": 1, "palier": 2, "source": "RSF / CPJ" },
+        { "id": "I10", "label": "Controle narratif diaspora", "value": "Rajoelina actif depuis Dubai", "rawValue": null, "palier": 3, "source": "France24" },
+        { "id": "I11", "label": "Bots / trolls", "value": "< 100 estimes", "rawValue": 100, "palier": 2, "source": "DFRLab" },
+        { "id": "I12", "label": "Usage VPN", "value": "Faible (~5% estime)", "rawValue": 5, "palier": 1, "source": "Estime" }
+      ],
+      "scoreQuanti": 3.1,
+      "scoreQuali": 4,
+      "resilience": { "RI1": { "score": 2, "label": "Pluralisme mediatique", "commentary": "Paysage tres politise. RSF 113/180. Felaka systemique. Pas de media independant a audience significative." } },
+      "scoreFinal": 3.5,
+      "trend": "up",
+      "commentary": "Environnement informationnel fragile. RSF en chute. Penetration internet 20%, reseaux sociaux 12%. Paradoxe : Gen Z a utilise Discord/BitChat avec sophistication."
+    },
+    "C": {
+      "label": "Cyber",
+      "indicators": [
+        { "id": "C1", "label": "NCSI", "value": "14.29 (rang ~143)", "rawValue": 14.29, "palier": 7, "source": "e-Governance Academy" },
+        { "id": "C2", "label": "GCI", "value": "31.70 (Tier 4/5)", "rawValue": 31.7, "palier": 5, "source": "ITU" },
+        { "id": "C3", "label": "Incidents majeurs", "value": "1 (phishing international)", "rawValue": 1, "palier": 2, "source": "ENACT OCI" },
+        { "id": "C4", "label": "APT actifs", "value": "0", "rawValue": 0, "palier": 1, "source": "MITRE ATT&CK" },
+        { "id": "C5", "label": "Exposition infra critique", "value": "Critique — 36% acces electricite, pas de SCADA protege", "rawValue": null, "palier": 6, "source": "ACAPS / AfDB" },
+        { "id": "C6", "label": "Budget cyberdefense", "value": "Quasi nul", "rawValue": 0, "palier": 7, "source": "Estime" },
+        { "id": "C7", "label": "Ransomware", "value": "Faible (surface limitee)", "rawValue": 2, "palier": 2, "source": "ENACT" },
+        { "id": "C8", "label": "Supply chain attacks", "value": "0", "rawValue": 0, "palier": 1, "source": "N/A" },
+        { "id": "C9", "label": "Workforce cyber", "value": "< 5 / 100k", "rawValue": 5, "palier": 7, "source": "ISC2 estime" },
+        { "id": "C10", "label": "Souverainete donnees", "value": "Aucun cadre (strategie en redaction)", "rawValue": null, "palier": 6, "source": "Ecofin Agency" },
+        { "id": "C11", "label": "Cloud exposure", "value": "Faible (faible numerisation)", "rawValue": null, "palier": 2, "source": "DataReportal" },
+        { "id": "C12", "label": "Zero-day exposure", "value": "Negligeable", "rawValue": null, "palier": 1, "source": "Google TAG" }
+      ],
+      "scoreQuanti": 3.9,
+      "scoreQuali": 6,
+      "scoreFinal": 4.7,
+      "trend": "stable",
+      "commentary": "Immaturite cyber structurelle. NCSI 14.29 = parmi les 10% les plus faibles. Workforce quasi inexistante. Mais surface d'attaque limitee (20% internet, peu de cibles). Risque = vulnerabilite latente, pas menace active."
+    },
+    "Ee": {
+      "label": "Environnemental",
+      "indicators": [
+        { "id": "Ee1", "label": "ND-GAIN", "value": "35.3 (22e plus vulnerable, 174e readiness)", "rawValue": 35.3, "palier": 6, "source": "ND-GAIN" },
+        { "id": "Ee2", "label": "Water Stress", "value": "Modere a eleve (aigu Grand Sud)", "rawValue": 2.5, "palier": 4, "source": "WRI Aqueduct / ACAPS" },
+        { "id": "Ee3", "label": "Dependance extractive", "value": "~30% exports (nickel + cobalt + minerais)", "rawValue": 30, "palier": 4, "source": "Coface" },
+        { "id": "Ee4", "label": "Catastrophes naturelles", "value": "6+ (Batsirai, Emnati, Gamane, secheresse Grand Sud)", "rawValue": 6, "palier": 4, "source": "EM-DAT / ACAPS" },
+        { "id": "Ee5", "label": "Transition energetique", "value": "~53% electricite renouvelable (hydro 49% + solaire 5%)", "rawValue": 53, "palier": 2, "source": "IRENA / AfDB" },
+        { "id": "Ee6", "label": "CO2 / capita", "value": "0.13 tonnes", "rawValue": 0.13, "palier": 1, "source": "Our World in Data" },
+        { "id": "Ee7", "label": "Biodiversite menacee", "value": "41% especes evaluees menacees", "rawValue": 41, "palier": 5, "source": "IUCN" },
+        { "id": "Ee8", "label": "Deforestation", "value": "~1.5%/an (25% couvert perdu depuis 2000)", "rawValue": 1.5, "palier": 6, "source": "Global Forest Watch" },
+        { "id": "Ee9", "label": "Montee des eaux", "value": "~10% pop zones cotieres basses", "rawValue": 10, "palier": 4, "source": "Climate Central / World Bank" },
+        { "id": "Ee10", "label": "Pollution air", "value": "18 µg/m3 (3.6x OMS)", "rawValue": 18, "palier": 3, "source": "IQAir" }
+      ],
+      "scoreQuanti": 3.9,
+      "scoreQuali": 5,
+      "scoreFinal": 4.3,
+      "trend": "up",
+      "commentary": "Catastrophe environnementale lente. Hotspot biodiversite mondial (3% global, 95% endemisme). Deforestation 1.5%/an. Cyclones croissants. Grand Sud en quasi-famine climatique. ND-GAIN 35.3 = extremement vulnerable."
+    }
+  },
+  "composite": 4.6,
+  "compositeMethod": {
+    "simpleAvg": 4.63,
+    "weighted": 4.61,
+    "amplified": 4.65,
+    "weights": {
+      "S": 0.12, "E": 0.15, "M": 0.16, "P": 0.14,
+      "L": 0.10, "I": 0.12, "C": 0.11, "Ee": 0.10
+    }
+  },
+  "classification": "Eleve",
+  "opportunity": {
+    "dimensions": {
+      "So": { "label": "Capital humain", "scoreQuanti": 1.8, "scoreQuali": 2, "scoreFinal": 1.9 },
+      "Eo": { "label": "Croissance & marche", "scoreQuanti": 2.5, "scoreQuali": 3, "scoreFinal": 2.7 },
+      "Mo": { "label": "Securite & alliances", "scoreQuanti": 2.2, "scoreQuali": 2, "scoreFinal": 2.1 },
+      "Po": { "label": "Gouvernance & reformes", "scoreQuanti": 1.8, "scoreQuali": 2, "scoreFinal": 1.9 },
+      "Lo": { "label": "Attractivite juridique", "scoreQuanti": 2.3, "scoreQuali": 2, "scoreFinal": 2.2 },
+      "Io": { "label": "Innovation & numerique", "scoreQuanti": 1.5, "scoreQuali": 2, "scoreFinal": 1.7 },
+      "Co": { "label": "Maturite technologique", "scoreQuanti": 1.4, "scoreQuali": 1, "scoreFinal": 1.2 },
+      "Eeo": { "label": "Durabilite & transition", "scoreQuanti": 2.0, "scoreQuali": 2, "scoreFinal": 2.0 }
+    },
+    "composite": 2.0,
+    "classification": "Faible",
+    "weights": {
+      "So": 0.12, "Eo": 0.17, "Mo": 0.07, "Po": 0.14,
+      "Lo": 0.13, "Io": 0.15, "Co": 0.12, "Eeo": 0.10
+    }
+  },
+  "delta": -2.6,
+  "quadrant": "Zone de crise",
+  "signatures": ["absence-garde-fou"],
+  "flags": ["facade-economique", "absence-garde-fou"],
+  "resilience": {
+    "RS1": 3, "RE1": 3, "RM1": 1, "RP1": 2, "RI1": 2, "RL1": 2
+  }
+}

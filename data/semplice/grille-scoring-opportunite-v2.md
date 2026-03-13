@@ -1,4 +1,4 @@
-# SEMPLICE — Grille de Scoring Opportunite v2.0
+# SEMPLICE — Grille de notation Opportunite v2.0
 
 > **Cadre methodologique pour l'evaluation reproductible du potentiel geopolitique**
 > Inflexion Intelligence — Mars 2026
@@ -9,9 +9,12 @@
 ## Architecture du score
 
 ```
-So_d = 0.60 x Score_quanti + 0.40 x Score_quali
+Score_quanti_d = moyenne arithmetique simple des paliers (somme / nombre d'indicateurs)
+So_d = 0.60 x Score_quanti_d + 0.40 x Score_quali_d
 Composite_opp = Sigma (poids_d x So_d) pour d in {So, Eo, Mo, Po, Lo, Io, Co, Eeo}
 ```
+
+> **Regle** : `Score_quanti` = moyenne arithmetique simple (non ponderee) de tous les paliers de la dimension.
 
 ### Echelle 1-7 (sens INVERSE du risque)
 
@@ -42,7 +45,7 @@ Les scores risque et opportunite sont **independants** : un pays peut avoir un r
 
 | | Opp faible | Opp elevee |
 |---|---|---|
-| **Risque faible** | Stable neutre (Singapour) | Hub attractif (Tamil Nadu) |
+| **Risque faible** | Stable neutre (Singapour) | Pole attractif (Tamil Nadu) |
 | **Risque eleve** | Zone de crise (Cuba, Sahel) | Pari a haut potentiel (Bresil, Turquie) |
 
 ---
@@ -57,10 +60,10 @@ Les poids refletent l'impact relatif de chaque dimension sur le potentiel de dev
 | **Io** — Innovation & numerique | 15% | Levier de transformation et de competitivite future |
 | **Po** — Gouvernance & reformes | 14% | Environnement institutionnel, capacite de reforme |
 | **Lo** — Attractivite juridique | 13% | Securite des investissements, previsibilite |
-| **Co** — Maturite technologique | 12% | Infrastructure numerique, readiness |
+| **Co** — Maturite technologique | 12% | Infrastructure numerique, maturite |
 | **So** — Capital humain | 12% | Qualite de la main-d'oeuvre, potentiel demographique |
 | **Eeo** — Durabilite & transition | 10% | Positionnement strategique long terme |
-| **Mo** — Securite & alliances | 7% | Pre-requis enabler (non-createur direct de valeur) |
+| **Mo** — Securite & alliances | 7% | Pre-requis facilitateur (non-createur direct de valeur) |
 | **Total** | **100%** | |
 
 ---
@@ -78,7 +81,7 @@ Mesure la qualite, la disponibilite et le potentiel de la main-d'oeuvre.
 | So5 | **Taux scolarisation tertiaire brut (%)** | UNESCO | < 10% | 10–22% | 22–35% | 35–50% | 50–65% | 65–80% | > 80% |
 | So6 | **Indice de mobilite sociale (0-100)** | WEF | < 40 | 40–50 | 50–58 | 58–66 | 66–74 | 74–82 | > 82 |
 | So7 | **Population en age de travailler (% 15-64 ans)** | UN DESA | < 50% | 50–55% | 55–60% | 60–64% | 64–68% | 68–72% | > 72% |
-| So8 | **Brain gain net (solde migration qualifiee)** | OECD / World Bank | Fuite massive | Fuite forte | Fuite moderee | Equilibre | Gain modere | Gain fort | Hub d'attraction |
+| So8 | **Solde migratoire qualifie (solde migration qualifiee)** | OECD / World Bank | Fuite massive | Fuite forte | Fuite moderee | Equilibre | Gain modere | Gain fort | Pole d'attraction mondial |
 
 ```
 Score_quanti_So = moyenne(So1..So8)
@@ -161,7 +164,7 @@ Mesure la securite juridique et la facilite d'investissement.
 | Lo4 | **Acces arbitrage international** | ICSID / CNUDCI | Refus systematique | Refus frequent | Execution incertaine | Membre passif | Membre actif | Membre actif, respecte | Exemplaire + jurisprudence favorable |
 | Lo5 | **Indice protection PI (0-100)** | US Chamber GIPC | < 20 | 20–32 | 32–45 | 45–58 | 58–72 | 72–85 | > 85 |
 | Lo6 | **Taux effectif d'imposition corporate (%)** | OECD / PwC | > 40% | 32–40% | 26–32% | 20–26% | 15–20% | 10–15% | < 10% + incentives |
-| Lo7 | **Zones franches / regimes speciaux** | FIAS / OSINT | Aucun | 1 inactive | 1–2 actives | 3–5 actives | 5–10 etablies | 10+ avec track record | Hub reconnu (Dubai, Singapour) |
+| Lo7 | **Zones franches / regimes speciaux** | FIAS / OSINT | Aucun | 1 inactive | 1–2 actives | 3–5 actives | 5–10 etablies | 10+ avec bilan etabli | Pole reconnu (Dubai, Singapour) |
 | Lo8 | **Stabilite reglementaire (changements majeurs / 3 ans)** | OSINT / EIU | > 15 | 10–15 | 7–10 | 4–7 | 2–4 | 1 | 0 (environnement previsible) |
 
 ```
@@ -193,17 +196,17 @@ Score_quanti_Io = moyenne(Io1..Io8)
 
 ## Co — Maturite technologique (8 indicateurs)
 
-Mesure la robustesse des infrastructures numeriques et la readiness technologique.
+Mesure la robustesse des infrastructures numeriques et la maturite technologique.
 
 | # | Indicateur | Source | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 |---|-----------|--------|---|---|---|---|---|---|---|
 | Co1 | **Global Cybersecurity Index (0-100)** | ITU GCI | < 25 | 25–40 | 40–55 | 55–70 | 70–82 | 82–92 | > 92 |
-| Co2 | **Cloud readiness index** | Asia Cloud Computing / OSINT | Minimal | Basique | En developpement | Modere | Avance | Mature | Leader mondial |
+| Co2 | **Indice de maturite cloud** | Asia Cloud Computing / OSINT | Minimal | Basique | En developpement | Modere | Avance | Mature | Leader mondial |
 | Co3 | **Couverture 5G + fibre (% pop.)** | GSMA / ITU | < 5% | 5–15% | 15–30% | 30–50% | 50–70% | 70–88% | > 88% |
-| Co4 | **Souverainete donnees (cadre juridique)** | OSINT / GDPR tracker | Aucun | Minimal | En cours | Partiel | Cadre solide | Cadre mature | GDPR-equivalent + enforcement |
+| Co4 | **Souverainete donnees (cadre juridique)** | OSINT / GDPR tracker | Aucun | Minimal | En cours | Partiel | Cadre solide | Cadre mature | Equivalent RGPD + application effective |
 | Co5 | **CERT national (maturite, echelle CMM 1-5)** | GFCE / ITU | Aucun | Start-up (1) | Formative (2) | Established (3) | Strategic (4) | Dynamic (5) | Dynamic + cooperation regionale |
 | Co6 | **Workforce cyber (professionnels / 100k hab.)** | ISC2 / ENISA | < 10 | 10–25 | 25–50 | 50–80 | 80–130 | 130–200 | > 200 |
-| Co7 | **E-commerce (% retail total)** | eMarketer / Statista | < 2% | 2–5% | 5–10% | 10–18% | 18–28% | 28–40% | > 40% |
+| Co7 | **Commerce en ligne (% commerce de detail)** | eMarketer / Statista | < 2% | 2–5% | 5–10% | 10–18% | 18–28% | 28–40% | > 40% |
 | Co8 | **Identite numerique (couverture pop. %)** | World Bank ID4D | < 10% | 10–30% | 30–50% | 50–70% | 70–85% | 85–95% | > 95% |
 
 ```
@@ -220,8 +223,8 @@ Mesure le positionnement strategique dans la transition energetique et climatiqu
 |---|-----------|--------|---|---|---|---|---|---|---|
 | Eeo1 | **Part renouvelables (% energie primaire)** | IEA / IRENA | < 5% | 5–12% | 12–22% | 22–35% | 35–50% | 50–65% | > 65% |
 | Eeo2 | **Ambition NDC (ecart vs trajectoire 1.5C)** | Climate Action Tracker | Critique | Tres insuffisant | Insuffisant | Modere | Compatible 2C | Compatible 1.5C | Leader + neutralite atteinte |
-| Eeo3 | **Green bonds emis / PIB (%)** | CBI / Bloomberg | 0% | < 0.1% | 0.1–0.3% | 0.3–0.6% | 0.6–1.2% | 1.2–2.5% | > 2.5% |
-| Eeo4 | **ND-GAIN Readiness (0-1)** | Notre Dame | < 0.25 | 0.25–0.35 | 0.35–0.45 | 0.45–0.55 | 0.55–0.65 | 0.65–0.75 | > 0.75 |
+| Eeo3 | **Obligations vertes emises / PIB (%)** | CBI / Bloomberg | 0% | < 0.1% | 0.1–0.3% | 0.3–0.6% | 0.6–1.2% | 1.2–2.5% | > 2.5% |
+| Eeo4 | **ND-GAIN Preparation (0-1)** | Notre Dame | < 0.25 | 0.25–0.35 | 0.35–0.45 | 0.45–0.55 | 0.55–0.65 | 0.65–0.75 | > 0.75 |
 | Eeo5 | **Economie circulaire (taux recyclage municipal %)** | OECD / Eurostat | < 5% | 5–12% | 12–22% | 22–35% | 35–48% | 48–60% | > 60% |
 | Eeo6 | **Investissements verts (% FBCF totale)** | OECD / IEA | < 2% | 2–5% | 5–10% | 10–16% | 16–24% | 24–35% | > 35% |
 | Eeo7 | **Aires protegees (% territoire terrestre + marin)** | IUCN / WDPA | < 3% | 3–8% | 8–14% | 14–22% | 22–30% | 30–40% | > 40% |
@@ -258,21 +261,21 @@ Score_quanti_Eeo = moyenne(Eeo1..Eeo8)
 | **3** | Emergent | Premiers signaux positifs, 1-2 reformes, investissements pilotes |
 | **4** | Modere | Trajectoire positive confirmee par 2+ sources, dynamique naissante |
 | **5** | Significatif | Ecosysteme fonctionnel, croissance auto-entretenue, attractivite demontree |
-| **6** | Avance | Hub regional reconnu, indicateurs top quartile, acceleration des flux |
+| **6** | Avance | Pole regional reconnu, indicateurs premier quartile, acceleration des flux |
 | **7** | Exemplaire | Reference mondiale, benchmark pour les pairs, attractivite maximale |
 
 ---
 
-## Amplification de l'opportunite dominante (Peak Amplification miroir)
+## Amplification de l'opportunite dominante (amplification de pic miroir)
 
 Mecanisme symetrique a l'amplification du risque, pour les profils a opportunite sectorielle isolee.
 
-**Principe** : toute dimension dont le scoreOpp depasse le composite opportunite de base de plus de **1.0 point** recoit un bonus de ponderation proportionnel a l'ecart.
+**Principe** : toute dimension dont le scoreOpp depasse le composite opportunite de base de plus de **1.0 point** recoit une majoration de ponderation proportionnelle a l'ecart.
 
 **Algorithme** (identique au risque) :
 1. Calculer le composite pondere de base (poids fixes opportunite)
 2. Pour chaque dimension d ou `scoreOpp_d - compositeOppBase > 1.0` :
-   - Bonus poids = `0.20 x (scoreOpp_d - compositeOppBase - 1.0)`
+   - Majoration poids = `0.20 x (scoreOpp_d - compositeOppBase - 1.0)`
 3. Renormaliser tous les poids pour somme = 100%
 4. Recalculer le composite avec les poids amplifies
 5. Plafonner l'effet d'amplification a **+0.3 point** sur le composite
@@ -310,8 +313,8 @@ Chaque evaluation SEMPLICE v2.0 complete doit inclure :
 
 ---
 
-## Changelog
+## Historique des modifications
 
 | Version | Date | Modification |
 |---------|------|-------------|
-| v2.0 | 2026-03-12 | Creation — 66 indicateurs, echelle 1-7, ponderations specifiques, peak amplification miroir |
+| v2.0 | 2026-03-12 | Creation — 66 indicateurs, echelle 1-7, ponderations specifiques, amplification de pic miroir |

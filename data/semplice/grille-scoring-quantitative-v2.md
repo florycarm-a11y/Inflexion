@@ -1,17 +1,22 @@
-# SEMPLICE — Grille de Scoring Quantitative v2.1
+# SEMPLICE — Grille de notation quantitative v2.1
 
 > **Cadre methodologique pour l'evaluation reproductible des risques geopolitiques**
 > Inflexion Intelligence — Mars 2026
-> Echelle 1-7 | 107 indicateurs (95 risque + 6 leading + 6 resilience) | Mix 60% quanti / 40% quali
+> Echelle 1-7 | 107 indicateurs (95 risque + 6 precurseurs + 6 resilience) | Repartition 60% quanti / 40% quali
 
 ---
 
 ## Architecture du score
 
 ```
-S_d = 0.60 x Score_quanti + 0.40 x Score_quali
-Score_composite = (1/8) x Sigma S_d   [ponderation egale par defaut]
+Score_quanti_d = moyenne arithmetique simple des paliers de la dimension
+                 (somme des paliers / nombre d'indicateurs, sans ponderation)
+Score_quali_d  = note expert 1-7 (jugement qualitatif structure)
+S_d            = 0.60 x Score_quanti_d + 0.40 x Score_quali_d - Bonification_resilience_d
+Score_composite = Sigma (poids_d x S_d)   [ponderation inter-dimensionnelle, cf. section dediee]
 ```
+
+> **Regle de calcul** : `Score_quanti` est toujours la **moyenne arithmetique simple** (non ponderee) de tous les paliers de la dimension. Aucun indicateur n'a plus de poids qu'un autre au sein d'une dimension. La ponderation n'intervient qu'au niveau inter-dimensionnel (composite).
 
 ### Echelle 1-7
 
@@ -70,13 +75,13 @@ Score_quanti_S = moyenne(S1..S12)
 | E3 | **Dette publique / PIB** | IMF Fiscal Monitor | < 30% | 30–45% | 45–60% | 60–80% | 80–100% | 100–130% | > 130% |
 | E4 | **Balance courante / PIB** | IMF BOP | > +5% | +3 a +5% | +1 a +3% | -2 a +1% | -5 a -2% | -8 a -5% | < -8% |
 | E5 | **Notation souveraine** | Fitch/S&P/Moody's | AAA–AA | AA- a A | A- a BBB | BBB- a BB+ | BB a B+ | B a CCC+ | CCC et < |
-| E6 | **Peg artificiel / controle capitaux** | IMF AREAER | Flottant libre | Flottant gere transparent | Flottant gere opaque | Crawling peg | Peg fixe | Peg + controles partiels | Peg artificiel + controles stricts |
+| E6 | **Ancrage artificiel / controle capitaux** | IMF AREAER | Flottant libre | Flottant gere transparent | Flottant gere opaque | Ancrage glissant | Ancrage fixe | Ancrage + controles partiels | Ancrage artificiel + controles stricts |
 | E7 | **Reserves de change (mois d'importations)** | IMF / BC | > 12 | 8–12 | 6–8 | 4–6 | 2–4 | 1–2 | < 1 |
 | E8 | **IDE entrants nets (% PIB)** | World Bank / UNCTAD | > 5% | 3–5% | 1.5–3% | 0.5–1.5% | 0–0.5% | Negatif | Fuite massive |
 | E9 | **Chomage total (%)** | ILO | < 3% | 3–5% | 5–8% | 8–12% | 12–18% | 18–25% | > 25% |
 | E10 | **Dette privee / PIB** | BIS / IMF | < 50% | 50–80% | 80–120% | 120–160% | 160–200% | 200–250% | > 250% |
 | E11 | **Concentration exports (top 3 produits, % total)** | World Bank / WITS | < 15% | 15–25% | 25–40% | 40–55% | 55–70% | 70–85% | > 85% |
-| E12 | **Croissance du credit (% annuel)** | BIS / BC | 2–8% | 8–12% | 0–2% ou 12–18% | 18–25% | 25–35% ou negatif | 35–50% | > 50% ou credit crunch |
+| E12 | **Croissance du credit (% annuel)** | BIS / BC | 2–8% | 8–12% | 0–2% ou 12–18% | 18–25% | 25–35% ou negatif | 35–50% | > 50% ou contraction du credit |
 | E13 | **Shadow banking / economie informelle (% PIB est.)** | IMF / World Bank | < 10% | 10–18% | 18–28% | 28–40% | 40–55% | 55–70% | > 70% |
 | E14 | **Cout de l'energie ($/MWh equivalent)** | IEA / Ember | < 50 | 50–80 | 80–120 | 120–170 | 170–250 | 250–400 | > 400 ou penuries |
 | E15 | **Indice de misere (inflation + chomage)** | Calcule | < 6 | 6–10 | 10–16 | 16–24 | 24–40 | 40–60 | > 60 |
@@ -125,7 +130,7 @@ Score_quanti_M = moyenne(M1..M12)
 | P9 | **Autonomie regionale / risque secession** | ACLED / OSINT | Aucun | Tensions mineures | Mouvement politique | Mouvement actif | Referendums / greves | Violence separatiste | Guerre de secession |
 | P10 | **Opposition organisee** | V-Dem / OSINT | Opposition libre forte | Opposition libre | Opposition restreinte | Opposition harcelee | Opposition emprisonnee | Opposition exilee | Opposition eliminee |
 | P11 | **Pression demographique (croissance pop. %)** | UN DESA | 0.5–1.5% | 0–0.5% ou 1.5–2% | 2–2.5% | 2.5–3% ou negatif | 3–3.5% ou < -0.5% | > 3.5% ou < -1% | > 4% ou < -1.5% |
-| P12 | **Diaspora politique active** | OSINT | Negligeable | Faible | Communautaire | Lobby organise | Financement opposition | Gouvernement en exil | Insurrection soutenue depuis l'etranger |
+| P12 | **Diaspora politique active** | OSINT | Negligeable | Faible | Communautaire | Groupe de pression organise | Financement opposition | Gouvernement en exil | Insurrection soutenue depuis l'etranger |
 
 ```
 Score_quanti_P = moyenne(P1..P12)
@@ -167,8 +172,8 @@ Score_quanti_L = moyenne(L1..L10)
 | I7 | **Desinformation IA / deepfakes (incidents 12 mois)** | DFRLab / VIGINUM | 0 | 1–2 | 3–5 | 6–10 | 11–20 | 21–50 | > 50 |
 | I8 | **Pluralisme mediatique (indice RSF composante)** | RSF | > 75 | 60–75 | 45–60 | 30–45 | 18–30 | 8–18 | < 8 |
 | I9 | **Journalistes emprisonnes** | RSF / CPJ | 0 | 1–3 | 4–10 | 11–25 | 26–50 | 51–100 | > 100 |
-| I10 | **Controle narratif diaspora** | DFRLab / OSINT | Aucun | Passif | Soft power culturel | Medias diaspora finances | Surveillance active | Intimidation transnationale | Repression extraterritoriale |
-| I11 | **Bots / trolls (comptes coordonnes identifies)** | Stanford IO / DFRLab | 0 | < 100 | 100–500 | 500–2000 | 2000–10000 | 10000–50000 | > 50000 |
+| I10 | **Controle narratif diaspora** | DFRLab / OSINT | Aucun | Passif | Soft power | Medias diaspora finances | Surveillance active | Intimidation transnationale | Repression extraterritoriale |
+| I11 | **Comptes coordonnes identifies (robots et faux comptes)** | Stanford IO / DFRLab | 0 | < 100 | 100–500 | 500–2000 | 2000–10000 | 10000–50000 | > 50000 |
 | I12 | **Usage VPN (% internautes)** | Top10VPN / GlobalWebIndex | < 5% | 5–10% | 10–20% | 20–35% | 35–50% | 50–70% | > 70% (indicateur de censure) |
 
 ```
@@ -189,8 +194,8 @@ Note : I6 (penetration reseaux sociaux) est un indicateur **inverse contextuel**
 | C4 | **Capacite offensive etatique (APT actifs)** | MITRE ATT&CK | 0 | 1–2 surveillance | 3–5 espionnage | 6–10 actifs | 11–20 destructifs | 21–40 | > 40 ou cyber-ops offensives |
 | C5 | **Exposition infrastructure critique** | ENISA / CISA | Resiliente | Faible | Moderee | Significative | Elevee | Tres elevee | Critique (SCADA exposes) |
 | C6 | **Budget cyberdefense (% budget defense)** | IISS / OSINT | > 8% | 5–8% | 3–5% | 1.5–3% | 0.5–1.5% | 0.1–0.5% | < 0.1% ou inconnu |
-| C7 | **Ransomware incidents (12 mois, zone)** | Chainalysis / ENISA | 0 | 1–5 | 6–15 | 16–40 | 41–100 | 101–250 | > 250 |
-| C8 | **Supply chain attacks (12 mois)** | Mandiant / SolarWinds tracker | 0 | 1 | 2–3 | 4–6 | 7–12 | 13–25 | > 25 |
+| C7 | **Rancongiciel (incidents 12 mois, zone) (12 mois, zone)** | Chainalysis / ENISA | 0 | 1–5 | 6–15 | 16–40 | 41–100 | 101–250 | > 250 |
+| C8 | **Attaques chaine d'approvisionnement (12 mois)** | Mandiant / SolarWinds tracker | 0 | 1 | 2–3 | 4–6 | 7–12 | 13–25 | > 25 |
 | C9 | **Workforce cyber (professionnels / 100k hab.)** | ISC2 / ENISA | > 200 | 120–200 | 70–120 | 40–70 | 20–40 | 8–20 | < 8 |
 | C10 | **Legislation souverainete donnees** | OSINT / GDPR tracker | Cadre mature (GDPR-equiv) | Cadre solide | En cours | Partiel | Minimal | Aucun | Surveillance d'Etat active |
 | C11 | **Cloud infrastructure exposure** | Shodan / Censys | Tres faible | Faible | Moderee | Significative | Elevee | Tres elevee | Critique |
@@ -274,19 +279,19 @@ Le composite SEMPLICE v2.0 utilise une moyenne pondérée (et non arithmétique)
 
 **Formule** : `Composite = Σ (poids_d × scoreFinal_d)` pour d ∈ {S, E, M, P, L, I, C, Ee}
 
-### Amplification du risque dominant (Peak Amplification)
+### Amplification du risque dominant (amplification de pic)
 
 Mécanisme adaptatif pour les profils asymétriques où une dimension critique est diluée par la moyenne.
 
-**Principe** : toute dimension dont le scoreFinal dépasse le composite pondéré de base de plus de **1.0 point** reçoit un bonus de pondération proportionnel à l'écart.
+**Principe** : toute dimension dont le scoreFinal dépasse le composite pondéré de base de plus de **1.0 point** reçoit une majoration de pondération proportionnelle à l'écart.
 
 **Algorithme** :
 1. Calculer le composite pondéré de base (poids fixes)
 2. Pour chaque dimension d où `scoreFinal_d - compositeBase > 1.0` :
-   - Bonus poids = `0.20 × (scoreFinal_d - compositeBase - 1.0)`
+   - Majoration poids = `0.20 × (scoreFinal_d - compositeBase - 1.0)`
 3. Renormaliser tous les poids pour que la somme = 100%
 4. Recalculer le composite avec les poids amplifiés
-5. Plafonner l'effet d'amplification à **+0.3 point** sur le composite
+5. Plafond d'amplification : **+0.3 point** maximum sur le composite
 
 **Exemples de calibration** (évaluations test v2.0) :
 
@@ -346,13 +351,13 @@ Le **score national** peut être recalculé comme moyenne pondérée par populat
 | 1 | Nord-Ouest | Cachemire, Punjab, Rajasthan | M dominant (conflit actif Cachemire) |
 | 2 | Indo-Gangétique | UP, Bihar, MP | S dominant (pauvreté, densité, sous-développement) |
 | 3 | Nord-Est | Assam, Manipur, Nagaland | M+P (insurgences, isolement, tensions ethniques) |
-| 4 | Ouest | Gujarat, Maharashtra, Goa | Hub économique, risque modéré |
+| 4 | Ouest | Gujarat, Maharashtra, Goa | Pole economique, risque modere |
 | 5 | Sud | Tamil Nadu, Kerala, Karnataka, AP | S+E forts, Ee en hausse (montée des eaux) |
 | 6 | Est | Odisha, Jharkhand, Bengal | Ee+S (naxalisme résiduel, cyclones, pauvreté) |
 
 ---
 
-## Leading indicators — Patterns pre-crise recurrents (v2.1)
+## Indicateurs precurseurs — Schemas pre-crise recurrents (v2.1)
 
 Indicateurs structurels a haute valeur predictive, identifies par analyse des 12 backtests. Chaque indicateur est present dans 4+ crises historiques. Ils sont integres dans les dimensions existantes et participent au score quanti de la dimension.
 
@@ -397,22 +402,22 @@ Score_quanti_M = moyenne(M1..M13) [13 indicateurs]
 Score_quanti_E = moyenne(E1..E16) [16 indicateurs]
 ```
 
-### Total indicateurs v2.1 : 95 + 5 leading + 1 leading = **101 indicateurs risque**
+### Total indicateurs v2.1 : 95 + 5 precurseurs + 1 precurseur = **101 indicateurs risque**
 
 ---
 
-## Facteurs de resilience — Patterns d'endiguement recurrents (v2.1)
+## Facteurs de resilience — Schemas d'endiguement recurrents (v2.1)
 
 Indicateurs identifies par analyse des crises evitees (Turquie post-2023, Bresil post-jan 2023, Singapour, Ile Maurice) et des 7 deescalation events dans semplice-history.json. Chaque facteur est present dans 3+ cas d'endiguement.
 
 ### Architecture
 
-Les facteurs de resilience sont des **modificateurs negatifs** : scores 1-7 ou **1 = aucune resilience** et **7 = resilience maximale**. Ils sont integres dans les dimensions existantes avec un **scoring inverse** : un score de resilience eleve REDUIT le score final de la dimension.
+Les facteurs de resilience sont des **modificateurs negatifs** : scores 1-7 ou **1 = aucune resilience** et **7 = resilience maximale**. Ils sont integres dans les dimensions existantes avec une **notation inverse** : un score de resilience eleve REDUIT le score final de la dimension.
 
 **Formule modifiee** :
 ```
-S_d = 0.60 x Score_quanti_risque + 0.40 x Score_quali - Bonus_resilience_d
-Bonus_resilience_d = 0.15 x max(0, ScoreResilience_d - 4)
+S_d = 0.60 x Score_quanti_risque + 0.40 x Score_quali - Bonification_resilience_d
+Bonification_resilience_d = 0.15 x max(0, ScoreResilience_d - 4)
 ```
 
 Interpretation : un facteur de resilience au-dessus de 4 (modere) commence a reduire le score de la dimension. Effet maximal : -0.45 points (quand resilience = 7). L'effet est **plafonné** : le score final ne peut pas descendre en dessous de 1.0.
@@ -450,7 +455,7 @@ Interpretation : un facteur de resilience au-dessus de 4 (modere) commence a red
 | Bangladesh 2024 | 3 | 3 | 4 | **1** | 1 | 2 | RP1+RI1 : election boycottee + blackout |
 | Niger 2023 | 2 | 2 | **1** | 3 | 2 | 2 | RM1 : contagion coups + pas de doctrine |
 
-**Pattern cle** : quand RM1 (doctrine republicaine) + RL1 (autonomie judiciaire) sont tous deux ≤ 2, le risque de coup ou d'effondrement institutionnel est quasi-certain si P ≥ 5.0. C'est la **signature d'absence de garde-fou**.
+**Schema cle** : quand RM1 (doctrine republicaine) + RL1 (autonomie judiciaire) sont tous deux ≤ 2, le risque de coup ou d'effondrement institutionnel est quasi-certain si P ≥ 5.0. C'est la **signature d'absence de garde-fou**.
 
 ---
 
@@ -458,7 +463,7 @@ Interpretation : un facteur de resilience au-dessus de 4 (modere) commence a red
 
 ### Principe
 
-Les 101 indicateurs mesurent des **niveaux** (snapshots). La velocite mesure la **derivee premiere** — la vitesse de changement par trimestre. La velocite est souvent plus predictive que le niveau absolu.
+Les 101 indicateurs mesurent des **niveaux** (instantanes). La velocite mesure la **derivee premiere** — la vitesse de changement par trimestre. La velocite est souvent plus predictive que le niveau absolu.
 
 ### Calcul
 
@@ -503,14 +508,14 @@ La velocite ne modifie pas le composite directement. Elle genere des **alertes**
 **Declencheur** : E1 (croissance PIB) ≤ palier 3 ET (E3 ≥ 5 OU E7 ≥ 5 OU E12 ≥ 5)
 **Signification** : la croissance headline masque une fragilite structurelle (dette, reserves, credit)
 **Crises validees** : Bangladesh (PIB +5.8% / reserves en chute), Turquie (PIB +7.3% / bulle credit), Liban (inflation 3% / Ponzi), Sri Lanka (croissance / reserves negatives) — **4/12**
-**Action** : flag "facade-economique" + recommandation de majorer le score quali E de +1
+**Action** : signal "facade-economique" + recommandation de majorer le score quali E de +1
 
 ### R10 — Absence de garde-fou
 
 **Declencheur** : RM1 ≤ 2 ET RL1 ≤ 2 ET P ≥ 5.0
 **Signification** : ni l'armee ni la justice ne peuvent freiner une derive du pouvoir
 **Crises validees** : Myanmar (RM1=1, RL1=1, P=6.5), Soudan (1,1,6.3), Venezuela (2,1,6.5), Syrie (1,1,6.5), Niger (1,2,4.5) — **5/12**
-**Action** : flag "absence-garde-fou" + signature automatique "regime collapse" si P ≥ 6.0
+**Action** : signal "absence-garde-fou" + signature automatique "regime collapse" si P ≥ 6.0
 
 ### R11 — Velocite critique
 
@@ -529,7 +534,7 @@ La velocite ne modifie pas le composite directement. Elle genere des **alertes**
 | Indicateurs resilience | 0 | **6** | +6 (RS1, RE1, RM1, RP1, RI1, RL1) |
 | **Total indicateurs** | **95** | **107** | **+12** |
 | Regles validateur | R1-R8 | R1-**R11** | +3 (facade eco, garde-fou, velocite) |
-| Mecanismes | Peak amp | Peak amp + **Velocite** + **Resilience modifier** | +2 |
+| Mecanismes | Amplification de crete | Amplification de crete + **Velocite** + **Modificateur resilience** | +2 |
 | Signatures | 6 | 6 + **absence-garde-fou** | +1 |
 
 ---
@@ -548,11 +553,11 @@ La velocite ne modifie pas le composite directement. Elle genere des **alertes**
 
 ---
 
-## Changelog
+## Historique des modifications
 
 | Version | Date | Modification |
 |---------|------|-------------|
 | v1.0 | 2026-03-11 | Creation — 40 indicateurs, echelle 1-5 |
 | v1.1 | 2026-03-11 | +3 indicateurs (43 total), corrections backtests |
 | v2.0 | 2026-03-12 | Echelle 1-7, 95 indicateurs, seuils recalibres, 4 pays tests (Ukraine, Singapour, Ile Maurice, Inde) |
-| v2.1 | 2026-03-12 | +6 leading indicators (P13-15, M13, E16), +6 resilience (RS1, RE1, RM1, RP1, RI1, RL1), +3 regles validateur (R9-R11), mecanisme velocite, 107 indicateurs total |
+| v2.1 | 2026-03-12 | +6 indicateurs precurseurs (P13-15, M13, E16), +6 resilience (RS1, RE1, RM1, RP1, RI1, RL1), +3 regles validateur (R9-R11), mecanisme velocite, 107 indicateurs total |
