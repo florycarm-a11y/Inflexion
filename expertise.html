@@ -473,18 +473,20 @@
                 var DIMS=['Social','Économique','Militaire','Politique','Légal','Information','Cyber','Environnemental'];
                 var OPP_DIMS=['Capital humain','Croissance & marché','Sécurité & alliances','Gouvernance & réformes','Attractivité juridique','Innovation & numérique','Maturité technologique','Durabilité & transition'];
                 var DIM_SHORT=['S','E','M','P','L','I','C','E'];
+                /* SEMPLICE v2.1 — échelle 1-7 risque ET opportunité */
                 var ZONES=[
-                    {name:'Cuba',scores:[5,5,3,5,5,5,4,4],composite:4.5,level:'Modéré-Élevé',opp:[1,1,1,1,1,1,1,1],oppComposite:1.0,oppLevel:'Minimal',color:'#9333ea',fill:'rgba(147,51,234,0.10)',href:'analyse-cuba-crise-perspectives.html'},
-                    {name:'Ukraine / Mer Noire',scores:[4,4,5,5,4,5,5,4],composite:4.4,level:'Modéré-Élevé',opp:[4,3,1,3,3,5,4,3],oppComposite:3.2,oppLevel:'Modéré',color:'#DC2626',fill:'rgba(220,38,38,0.10)',href:'#'},
-                    {name:'Détroit d\'Ormuz',scores:[4,5,5,5,4,4,4,3],composite:4.3,level:'Modéré-Élevé',opp:[3,5,1,3,3,3,3,4],oppComposite:3.1,oppLevel:'Modéré',color:'#b91c1c',fill:'rgba(185,28,28,0.10)',href:'analyse-petrole-trump-iran-ormuz.html'},
+                    {name:'Cuba',scores:[5,5,3,5,5,5,4,4],composite:4.5,level:'Élevé',opp:[1,1,1,1,1,1,1,1],oppComposite:1.0,oppLevel:'Minimal',color:'#9333ea',fill:'rgba(147,51,234,0.10)',href:'analyse-cuba-crise-perspectives.html'},
+                    {name:'Ukraine / Mer Noire',scores:[5.6,5.7,6.6,5.4,4.7,5.8,6.3,4.6],composite:5.6,level:'Très élevé',opp:[4,3,1,3,3,5,4,3],oppComposite:3.2,oppLevel:'Modéré',color:'#DC2626',fill:'rgba(220,38,38,0.10)',href:'#'},
+                    {name:'Détroit d\'Ormuz',scores:[4,5,5,5,4,4,4,3],composite:4.3,level:'Élevé',opp:[3,5,1,3,3,3,3,4],oppComposite:3.1,oppLevel:'Modéré',color:'#b91c1c',fill:'rgba(185,28,28,0.10)',href:'analyse-petrole-trump-iran-ormuz.html'},
                     {name:'Sahel',scores:[4,4,5,5,4,4,2,4],composite:3.8,level:'Modéré',opp:[3,3,1,1,1,1,1,3],oppComposite:1.8,oppLevel:'Faible',color:'#C8955A',fill:'rgba(200,149,90,0.10)',href:'#'},
                     {name:'Mer de Chine',scores:[3,3,4,3,3,4,4,3],composite:3.4,level:'Modéré',opp:[5,6,3,4,4,6,5,4],oppComposite:4.7,oppLevel:'Élevé',color:'#f59e0b',fill:'rgba(245,158,11,0.10)',href:'#'},
-                    {name:'Arctique',scores:[2,3,4,4,3,3,3,3],composite:3.1,level:'Modéré',opp:[1,4,1,3,3,3,3,5],oppComposite:2.9,oppLevel:'Modéré',color:'#d97706',fill:'rgba(217,119,6,0.10)',href:'analyse-arctique-groenland-grand-jeu-polaire.html'},
-                    {name:'Turquie',scores:[3,4,2,4,3,4,3,2],composite:3.1,level:'Modéré',opp:[5,4,3,3,3,4,4,4],oppComposite:3.8,oppLevel:'Significatif',color:'#0891b2',fill:'rgba(8,145,178,0.10)',href:'#'},
-                    {name:'Brésil',scores:[3,3,1,3,3,2,2,3],composite:2.6,level:'Modéré-Faible',opp:[5,5,3,4,3,4,3,6],oppComposite:4.2,oppLevel:'Significatif',color:'#16a34a',fill:'rgba(22,163,74,0.10)',href:'#'},
+                    {name:'Arctique',scores:[2,3,4,4,3,3,3,3],composite:3.1,level:'Modéré',opp:[1,4,1,3,3,3,3,5],oppComposite:2.9,oppLevel:'Modéré-Faible',color:'#d97706',fill:'rgba(217,119,6,0.10)',href:'analyse-arctique-groenland-grand-jeu-polaire.html'},
+                    {name:'Turquie',scores:[3,4,2,4,3,4,3,2],composite:3.1,level:'Modéré',opp:[5,4,3,3,3,4,4,4],oppComposite:3.8,oppLevel:'Modéré',color:'#0891b2',fill:'rgba(8,145,178,0.10)',href:'#'},
+                    {name:'Brésil',scores:[3,3,1,3,3,2,2,3],composite:2.6,level:'Modéré-Faible',opp:[5,5,3,4,3,4,3,6],oppComposite:4.2,oppLevel:'Élevé',color:'#16a34a',fill:'rgba(22,163,74,0.10)',href:'#'},
                     {name:'Tamil Nadu',scores:[2,2,2,3,3,2,3,2],composite:2.4,level:'Modéré-Faible',opp:[6,5,4,4,4,6,5,4],oppComposite:4.9,oppLevel:'Élevé',color:'#006650',fill:'rgba(0,102,80,0.10)',href:'analyse-corridor-defense-france-inde-tamil-nadu.html'},
-                    {name:'Singapour',scores:[1,2,1,1,1,2,2,2],composite:1.7,level:'Très faible',opp:[5,5,5,6,6,6,6,4],oppComposite:5.5,oppLevel:'Exemplaire',color:'#6366f1',fill:'rgba(99,102,241,0.10)',href:'#'},
-                    {name:'République tchèque',scores:[1,1,1,1,1,1,2,2],composite:1.4,level:'Très faible',opp:[4,3,3,4,4,3,4,3],oppComposite:3.4,oppLevel:'Significatif',color:'#0d9488',fill:'rgba(13,148,136,0.10)',href:'#'},
+                    {name:'Singapour',scores:[2.2,1.4,2.7,1.9,1.2,3.2,2.1,2.9],composite:2.2,level:'Modéré-Faible',opp:[5,5,5,6,6,6,6,4],oppComposite:5.5,oppLevel:'Très élevé',color:'#6366f1',fill:'rgba(99,102,241,0.10)',href:'#'},
+                    {name:'Madagascar',scores:[5.8,4.1,4.2,5.5,4.9,3.5,4.7,4.3],composite:4.6,level:'Élevé',opp:[1.9,2.7,2.1,1.9,2.2,1.7,1.2,2.0],oppComposite:2.0,oppLevel:'Faible',color:'#be185d',fill:'rgba(190,24,93,0.10)',href:'#'},
+                    {name:'République tchèque',scores:[1.7,1.9,1.7,1.6,1.7,1.6,2.8,2.6],composite:1.9,level:'Faible',opp:[5.4,3.9,4.8,5.5,5.0,3.9,5.1,4.0],oppComposite:4.7,oppLevel:'Élevé',color:'#0d9488',fill:'rgba(13,148,136,0.10)',href:'#'},
                 ];
                 var active=[false,false,true,false,false,true,false,false,true,true,true];
                 var viewMode='risk'; // 'risk','opp','combined'
