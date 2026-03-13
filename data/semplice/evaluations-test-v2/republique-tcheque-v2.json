@@ -1,0 +1,236 @@
+{
+  "zone": {
+    "id": "republique-tcheque",
+    "name": "Republique tcheque",
+    "region": "europe"
+  },
+  "meta": {
+    "date": "2026-03-13",
+    "version": "2.1",
+    "analyst": "Inflexion Intelligence"
+  },
+  "dimensions": {
+    "S": {
+      "label": "Social",
+      "indicators": [
+        { "id": "S1", "label": "Gini", "value": "0.250", "rawValue": 0.250, "palier": 2, "source": "World Bank" },
+        { "id": "S2", "label": "IDH", "value": "0.895 (rang 32/193)", "rawValue": 0.895, "palier": 2, "source": "UNDP" },
+        { "id": "S3", "label": "Chomage jeunes", "value": "7.3%", "rawValue": 7.3, "palier": 1, "source": "ILO / Eurostat" },
+        { "id": "S4", "label": "Solde migratoire", "value": "+2.8‰ (immigration nette)", "rawValue": 2.8, "palier": 3, "source": "UN DESA / CZSO" },
+        { "id": "S5", "label": "Mouvements sociaux", "value": "Sporadiques (agriculteurs 2024), faible intensite", "rawValue": null, "palier": 2, "source": "Freedom House 2025" },
+        { "id": "S6", "label": "Tensions ethniques", "value": "Minorite rom (3%), discrimination mais pas de conflit violent", "rawValue": null, "palier": 2, "source": "ECRI / FRA" },
+        { "id": "S7", "label": "Acces sante", "value": "6.6 lits/1000 hab.", "rawValue": 6.6, "palier": 1, "source": "OECD Health Data" },
+        { "id": "S8", "label": "Urbanisation", "value": "0.2%/an (stable, 74% urbain)", "rawValue": 0.2, "palier": 1, "source": "World Bank" },
+        { "id": "S9", "label": "Inegalite genre (GII)", "value": "0.136", "rawValue": 0.136, "palier": 2, "source": "UNDP" },
+        { "id": "S10", "label": "Esperance de vie", "value": "78.3 ans", "rawValue": 78.3, "palier": 2, "source": "WHO" },
+        { "id": "S11", "label": "Securite alimentaire", "value": "<2.5% (negligeable)", "rawValue": 2.5, "palier": 1, "source": "FAO" },
+        { "id": "S12", "label": "Education secondaire", "value": "95%+ (taux net)", "rawValue": 95, "palier": 1, "source": "UNESCO / Eurostat" }
+      ],
+      "scoreQuanti": 1.7,
+      "scoreQuali": 2,
+      "resilience": { "RS1": { "score": 5, "label": "Societe civile", "commentary": "Societe civile active (Revolution de velours, Milion chvilek). ONGs nombreuses. Tradition de contre-pouvoir citoyen." } },
+      "scoreFinal": 1.7,
+      "trend": "stable",
+      "commentary": "Profil social exemplaire. Gini 0.250 = un des plus egalitaires de l'UE. IDH 0.895. Chomage quasi nul. Points de vigilance : integration rom, vieillissement demographique."
+    },
+    "E": {
+      "label": "Economique",
+      "indicators": [
+        { "id": "E1", "label": "PIB reel", "value": "+2.5% (2025e)", "rawValue": 2.5, "palier": 3, "source": "IMF WEO" },
+        { "id": "E2", "label": "Inflation", "value": "2.44% (2025)", "rawValue": 2.44, "palier": 2, "source": "CNB / IMF" },
+        { "id": "E3", "label": "Dette publique / PIB", "value": "44.5%", "rawValue": 44.5, "palier": 2, "source": "IMF / Eurostat" },
+        { "id": "E4", "label": "Balance courante", "value": "-1.3% PIB", "rawValue": -1.3, "palier": 4, "source": "CNB / IMF" },
+        { "id": "E5", "label": "Notation souveraine", "value": "AA- (S&P), Aa3 (Moody's)", "rawValue": null, "palier": 2, "source": "S&P / Moody's" },
+        { "id": "E6", "label": "Regime change", "value": "Flottant gere (CZK, CNB interventionniste transparent)", "rawValue": null, "palier": 2, "source": "CNB" },
+        { "id": "E7", "label": "Reserves de change", "value": "~7.5 mois", "rawValue": 7.5, "palier": 3, "source": "CNB / IMF" },
+        { "id": "E8", "label": "IDE entrants", "value": "~4.5% PIB (stock historique eleve)", "rawValue": 4.5, "palier": 2, "source": "UNCTAD / CzechInvest" },
+        { "id": "E9", "label": "Chomage total", "value": "2.6%", "rawValue": 2.6, "palier": 1, "source": "Eurostat" },
+        { "id": "E10", "label": "Dette privee / PIB", "value": "~85%", "rawValue": 85, "palier": 3, "source": "BIS / CNB" },
+        { "id": "E11", "label": "Concentration exports", "value": "Automobile ~25%, machines ~15% (diversifie intra-industrie)", "rawValue": 40, "palier": 4, "source": "CZSO / OEC" },
+        { "id": "E12", "label": "Croissance credit", "value": "~5%", "rawValue": 5, "palier": 1, "source": "CNB" },
+        { "id": "E13", "label": "Economie informelle", "value": "~15% PIB", "rawValue": 15, "palier": 2, "source": "World Economics" },
+        { "id": "E14", "label": "Cout energie", "value": "~130-150 $/MWh (business)", "rawValue": 140, "palier": 4, "source": "Eurostat / GlobalPetrolPrices" },
+        { "id": "E15", "label": "Indice de misere", "value": "2.44 + 2.6 = 5.04", "rawValue": 5.04, "palier": 1, "source": "Calcul" },
+        { "id": "E16", "label": "Independance BC", "value": "CNB tres independante, credibilite reconstruite post-inflation", "rawValue": null, "palier": 2, "source": "CNB / ECB Convergence Report" }
+      ],
+      "scoreQuanti": 2.4,
+      "scoreQuali": 2,
+      "resilience": { "RE1": { "score": 6, "label": "Correction monetaire", "commentary": "CNB tres credible. Inflation ramenee de 15.1% a 2.44% en 2 ans. Reserves solides. AA-." } },
+      "scoreFinal": 1.9,
+      "trend": "stable",
+      "commentary": "Economie manufacturiere robuste. PIB PPA 625 Mrd$. AA-. Inflation maitrisee. Vulnerabilite : dependance auto allemande, couts energetiques, balance courante deficitaire."
+    },
+    "M": {
+      "label": "Militaire",
+      "indicators": [
+        { "id": "M1", "label": "Depenses mil. / PIB", "value": "1.92%", "rawValue": 1.92, "palier": 3, "source": "SIPRI / NATO" },
+        { "id": "M2", "label": "Conflits actifs", "value": "0 (Ukraine a ~800km)", "rawValue": 0, "palier": 2, "source": "ACLED" },
+        { "id": "M3", "label": "GFP rang", "value": "44/145", "rawValue": 44, "palier": 3, "source": "Global Firepower" },
+        { "id": "M4", "label": "Exercices majeurs", "value": "5+ (NATO EFP, Defender Europe)", "rawValue": 5, "palier": 4, "source": "NATO" },
+        { "id": "M5", "label": "Proliferation", "value": "Zone NWFZ (TNP)", "rawValue": null, "palier": 1, "source": "UNODA" },
+        { "id": "M6", "label": "Coups regionaux", "value": "0", "rawValue": 0, "palier": 1, "source": "N/A" },
+        { "id": "M7", "label": "Subordination civile", "value": "Pleine subordination civile", "rawValue": null, "palier": 1, "source": "V-Dem / BTI" },
+        { "id": "M8", "label": "Transferts armes", "value": "Importateur net (F-35, CAESAR), fournisseur Ukraine", "rawValue": null, "palier": 3, "source": "SIPRI" },
+        { "id": "M9", "label": "Bases etrangeres", "value": "NATO FWD presence, pas de base permanente", "rawValue": null, "palier": 2, "source": "NATO" },
+        { "id": "M10", "label": "Milices / PMC", "value": "Aucune", "rawValue": 0, "palier": 1, "source": "N/A" },
+        { "id": "M11", "label": "Traites defense", "value": "OTAN Article 5, UE CSDP, bilateraux multiples", "rawValue": null, "palier": 1, "source": "NATO / EU" },
+        { "id": "M12", "label": "R&D defense", "value": "~15% budget defense (~0.29% PIB)", "rawValue": 15, "palier": 2, "source": "SIPRI" },
+        { "id": "M13", "label": "Fiabilite protecteur", "value": "OTAN solide, presence US adjacente (Pologne)", "rawValue": null, "palier": 2, "source": "NATO / RAND" }
+      ],
+      "scoreQuanti": 2.0,
+      "scoreQuali": 2,
+      "resilience": { "RM1": { "score": 6, "label": "Doctrine republicaine armee", "commentary": "Armee subordonnee au civil depuis 1989. Aucun precedent d'intervention. President Pavel = garant." } },
+      "scoreFinal": 1.7,
+      "trend": "stable",
+      "commentary": "Membre OTAN/UE. Budget defense 1.92% (quasi 2%). Subordination civile totale. President Pavel (ex-OTAN). Principal fournisseur armes Ukraine/UE."
+    },
+    "P": {
+      "label": "Politique",
+      "indicators": [
+        { "id": "P1", "label": "CPI", "value": "57/100 (rang 41/180)", "rawValue": 57, "palier": 4, "source": "Transparency International" },
+        { "id": "P2", "label": "V-Dem", "value": "0.83 (democratie liberale)", "rawValue": 0.83, "palier": 1, "source": "V-Dem Institute" },
+        { "id": "P3", "label": "WGI Political Stability", "value": "0.82 (70e percentile)", "rawValue": 0.82, "palier": 2, "source": "World Bank WGI" },
+        { "id": "P4", "label": "Cycle electoral", "value": "Elections oct. 2025 tenues, alternance pacifique ANO", "rawValue": null, "palier": 1, "source": "CZSO / OSCE" },
+        { "id": "P5", "label": "Risque regime", "value": "Tres faible — democratie consolidee depuis 1993", "rawValue": null, "palier": 2, "source": "Freedom House" },
+        { "id": "P6", "label": "Polarisation", "value": "Moderee (ANO vs SPOLU, pas de fractures violentes)", "rawValue": null, "palier": 3, "source": "V-Dem / Brookings" },
+        { "id": "P7", "label": "Libertes civiles", "value": "53/60 (Freedom House 2025)", "rawValue": 53, "palier": 1, "source": "Freedom House" },
+        { "id": "P8", "label": "Risque successoral", "value": "Faible — mecanismes institutionnels solides", "rawValue": null, "palier": 1, "source": "BTI" },
+        { "id": "P9", "label": "Autonomie regionale", "value": "Moderee (14 regions, Moravie distincte mais pas secessionniste)", "rawValue": null, "palier": 2, "source": "CZSO" },
+        { "id": "P10", "label": "Opposition", "value": "Saine et active (SPOLU, Pirates)", "rawValue": null, "palier": 2, "source": "Freedom House" },
+        { "id": "P11", "label": "Pression demographique", "value": "-0.2%/an (declin)", "rawValue": -0.2, "palier": 4, "source": "UN DESA" },
+        { "id": "P12", "label": "Diaspora", "value": "Faible influence", "rawValue": null, "palier": 2, "source": "CZSO" },
+        { "id": "P13", "label": "Capture institutionnelle", "value": "2/5 — Babis/Mafra mais contre-pouvoirs actifs", "rawValue": 2, "palier": 3, "source": "Freedom House / RSF" },
+        { "id": "P14", "label": "Chocs auto-infliges", "value": "Faible — pas de crise autogeneree recente", "rawValue": null, "palier": 2, "source": "BTI" },
+        { "id": "P15", "label": "Fenetres action critiques", "value": "Dukovany (10 Mrd EUR), reforme retraites", "rawValue": null, "palier": 2, "source": "Government CZ" }
+      ],
+      "scoreQuanti": 2.1,
+      "scoreQuali": 2,
+      "resilience": { "RP1": { "score": 7, "label": "Alternance democratique", "commentary": "7 alternances pacifiques depuis 1993. Velvet Divorce pacifique. Elections regulieres. Score maximal." } },
+      "scoreFinal": 1.6,
+      "trend": "up",
+      "commentary": "Democratie consolidee depuis 1993. Alternance pacifique oct. 2025. President Pavel (pro-UE, ex-OTAN) contrepoids institutionnel. CPI 57 perfectible."
+    },
+    "L": {
+      "label": "Legal",
+      "indicators": [
+        { "id": "L1", "label": "Rule of Law", "value": "0.70 (rang 18/142)", "rawValue": 0.70, "palier": 2, "source": "WJP" },
+        { "id": "L2", "label": "B-READY", "value": "~73 (Mostly Free)", "rawValue": 73, "palier": 2, "source": "Heritage Foundation" },
+        { "id": "L3", "label": "Sanctions", "value": "Aucune", "rawValue": null, "palier": 1, "source": "N/A" },
+        { "id": "L4", "label": "Protection PI", "value": "Solide (cadre UE, EUIPO)", "rawValue": null, "palier": 2, "source": "EUIPO / WIPO" },
+        { "id": "L5", "label": "Execution contrats", "value": "~611 jours", "rawValue": 611, "palier": 4, "source": "World Bank" },
+        { "id": "L6", "label": "Independance judiciaire", "value": "Cour constitutionnelle active, independance reelle", "rawValue": null, "palier": 2, "source": "WJP / BTI" },
+        { "id": "L7", "label": "BIT actifs", "value": "73", "rawValue": 73, "palier": 1, "source": "UNCTAD" },
+        { "id": "L8", "label": "Anti-corruption", "value": "Moderee (GRECO, CPI 57)", "rawValue": null, "palier": 3, "source": "TI / GRECO" },
+        { "id": "L9", "label": "Arbitrage ICSID", "value": "Membre, execution fiable (UE)", "rawValue": null, "palier": 2, "source": "ICSID" },
+        { "id": "L10", "label": "Risque expropriation", "value": "Quasi nul (cadre UE)", "rawValue": null, "palier": 1, "source": "US State Dept ICS" }
+      ],
+      "scoreQuanti": 2.0,
+      "scoreQuali": 2,
+      "resilience": { "RL1": { "score": 6, "label": "Autonomie judiciaire", "commentary": "Cour constitutionnelle active et respectee. WJP 0.70. Cadre UE. GRECO monitoring." } },
+      "scoreFinal": 1.7,
+      "trend": "stable",
+      "commentary": "Cadre legal solide, acquis UE. WJP 0.70 (18e mondial). 73 BIT actifs. Expropriation quasi nulle. Execution contrats perfectible (611 jours)."
+    },
+    "I": {
+      "label": "Information",
+      "indicators": [
+        { "id": "I1", "label": "RSF rang", "value": "14/180", "rawValue": 14, "palier": 1, "source": "RSF" },
+        { "id": "I2", "label": "Freedom on the Net", "value": "78/100 (Free)", "rawValue": 78, "palier": 2, "source": "Freedom House" },
+        { "id": "I3", "label": "Operations influence", "value": "Russie active (Voice of Europe, interdite 2024)", "rawValue": null, "palier": 3, "source": "BIS CZ / EU DisinfoLab" },
+        { "id": "I4", "label": "Censure internet", "value": "Aucune", "rawValue": 0, "palier": 1, "source": "Freedom House" },
+        { "id": "I5", "label": "Controle medias Etat", "value": "Faible — CT autonome, debat financement", "rawValue": null, "palier": 2, "source": "RSF" },
+        { "id": "I6", "label": "Penetration reseaux sociaux", "value": "71% (7.7M utilisateurs)", "rawValue": 71, "palier": 2, "source": "DataReportal 2025" },
+        { "id": "I7", "label": "Desinformation IA", "value": "1-2 incidents (deepfakes campagne 2024/25)", "rawValue": 2, "palier": 2, "source": "EU DisinfoLab" },
+        { "id": "I8", "label": "Pluralisme mediatique", "value": "Bon mais concentration Mafra (Babis)", "rawValue": null, "palier": 3, "source": "RSF / Reporters Shield" },
+        { "id": "I9", "label": "Journalistes emprisonnes", "value": "0", "rawValue": 0, "palier": 1, "source": "RSF / CPJ" },
+        { "id": "I10", "label": "Controle narratif diaspora", "value": "Faible", "rawValue": null, "palier": 1, "source": "N/A" },
+        { "id": "I11", "label": "Bots / trolls", "value": "Moderee (reseaux pro-russes sur Facebook/X)", "rawValue": null, "palier": 3, "source": "DFRLab / BIS CZ" },
+        { "id": "I12", "label": "Usage VPN", "value": "Faible (internet libre)", "rawValue": 3, "palier": 1, "source": "DataReportal" }
+      ],
+      "scoreQuanti": 1.8,
+      "scoreQuali": 2,
+      "resilience": { "RI1": { "score": 6, "label": "Pluralisme mediatique", "commentary": "RSF 14/180. Freedom on the Net 78/100. Pluralisme reel malgre Mafra. CT autonome." } },
+      "scoreFinal": 1.6,
+      "trend": "stable",
+      "commentary": "Environnement informationnel ouvert. RSF 14/180. Aucune censure. Risques : operations influence russes, concentration Mafra/Babis, deepfakes IA."
+    },
+    "C": {
+      "label": "Cyber",
+      "indicators": [
+        { "id": "C1", "label": "NCSI", "value": "98.33 (#1 mondial)", "rawValue": 98.33, "palier": 1, "source": "e-Governance Academy" },
+        { "id": "C2", "label": "GCI", "value": "97.80 (Tier 1)", "rawValue": 97.80, "palier": 1, "source": "ITU" },
+        { "id": "C3", "label": "Incidents majeurs", "value": "2 (MFA 2024/APT28 + ransomware hopitaux 2020)", "rawValue": 2, "palier": 3, "source": "NUKIB / NCSC" },
+        { "id": "C4", "label": "APT actifs", "value": "3 (APT28, Sandworm, Turla — espionnage GRU/FSB)", "rawValue": 3, "palier": 3, "source": "MITRE ATT&CK / NUKIB" },
+        { "id": "C5", "label": "Exposition infra critique", "value": "Moderee (nucleaire Dukovany/Temelin, reseau UE)", "rawValue": null, "palier": 3, "source": "NUKIB / SUJB" },
+        { "id": "C6", "label": "Budget cyberdefense", "value": "~2.6% budget defense (~0.05% PIB)", "rawValue": 2.6, "palier": 4, "source": "NUKIB Annual Report" },
+        { "id": "C7", "label": "Ransomware", "value": "2-3 incidents/an (hopitaux, PME)", "rawValue": 3, "palier": 2, "source": "NUKIB" },
+        { "id": "C8", "label": "Supply chain attacks", "value": "1 (SolarWinds indirect, 2020)", "rawValue": 1, "palier": 2, "source": "NUKIB" },
+        { "id": "C9", "label": "Workforce cyber", "value": "~25-30 / 100k", "rawValue": 28, "palier": 5, "source": "ISC2 / NUKIB" },
+        { "id": "C10", "label": "Souverainete donnees", "value": "Cadre mature (GDPR, membre UE)", "rawValue": null, "palier": 1, "source": "Eurostat" },
+        { "id": "C11", "label": "Cloud exposure", "value": "Moderee (adoption rapide, dependance hyperscalers)", "rawValue": null, "palier": 3, "source": "Eurostat" },
+        { "id": "C12", "label": "Zero-day exposure", "value": "2-3 (cible secondaire APT russes)", "rawValue": 3, "palier": 3, "source": "Google TAG / NUKIB" }
+      ],
+      "scoreQuanti": 2.6,
+      "scoreQuali": 3,
+      "scoreFinal": 2.8,
+      "trend": "stable",
+      "commentary": "Paradoxe cyber. NCSI #1 (98.33) et GCI Tier 1 = excellence defensive. Mais cible APT russes (espionnage) et workforce cyber limitee (25-30/100k). Menace structurelle liee au soutien Ukraine."
+    },
+    "Ee": {
+      "label": "Environnemental",
+      "indicators": [
+        { "id": "Ee1", "label": "ND-GAIN", "value": "62.7 (40e, bonne readiness)", "rawValue": 62.7, "palier": 2, "source": "ND-GAIN" },
+        { "id": "Ee2", "label": "Water Stress", "value": "Modere (secheresses estivales)", "rawValue": 1.8, "palier": 3, "source": "WRI Aqueduct" },
+        { "id": "Ee3", "label": "Dependance extractive", "value": "~5% exports (charbon en declin)", "rawValue": 5, "palier": 1, "source": "CZSO" },
+        { "id": "Ee4", "label": "Catastrophes naturelles", "value": "1-2/decennie (inondations ponctuelles)", "rawValue": 1, "palier": 2, "source": "EM-DAT" },
+        { "id": "Ee5", "label": "Transition energetique", "value": "~15% renouvelables (nucleaire 40%, charbon en declin)", "rawValue": 15, "palier": 5, "source": "Eurostat / ERU" },
+        { "id": "Ee6", "label": "CO2 / capita", "value": "8.9 tonnes", "rawValue": 8.9, "palier": 4, "source": "Our World in Data" },
+        { "id": "Ee7", "label": "Biodiversite menacee", "value": "~15% especes evaluees menacees", "rawValue": 15, "palier": 3, "source": "IUCN" },
+        { "id": "Ee8", "label": "Deforestation", "value": "0% (forets stables, ~34% couvert)", "rawValue": 0, "palier": 1, "source": "Global Forest Watch" },
+        { "id": "Ee9", "label": "Montee des eaux", "value": "0% (pays enclaves)", "rawValue": 0, "palier": 1, "source": "N/A" },
+        { "id": "Ee10", "label": "Pollution air", "value": "~16 µg/m3 (Ostrava hotspot)", "rawValue": 16, "palier": 2, "source": "IQAir / EEA" }
+      ],
+      "scoreQuanti": 2.4,
+      "scoreQuali": 3,
+      "scoreFinal": 2.6,
+      "trend": "stable",
+      "commentary": "Profil mixte. Points forts : pas d'extractivisme, forets stables, catastrophes rares, pollution air contenue. Points faibles : CO2/capita eleve (8.9t), transition energetique lente (15% renouvelables)."
+    }
+  },
+  "composite": 1.9,
+  "compositeMethod": {
+    "simpleAvg": 1.95,
+    "weighted": 1.92,
+    "amplified": 1.9,
+    "weights": {
+      "S": 0.12, "E": 0.15, "M": 0.16, "P": 0.14,
+      "L": 0.10, "I": 0.12, "C": 0.11, "Ee": 0.10
+    }
+  },
+  "classification": "Faible",
+  "opportunity": {
+    "dimensions": {
+      "So": { "label": "Capital humain", "scoreQuanti": 5.0, "scoreQuali": 6, "scoreFinal": 5.4 },
+      "Eo": { "label": "Croissance & marche", "scoreQuanti": 3.8, "scoreQuali": 4, "scoreFinal": 3.9 },
+      "Mo": { "label": "Securite & alliances", "scoreQuanti": 4.7, "scoreQuali": 5, "scoreFinal": 4.8 },
+      "Po": { "label": "Gouvernance & reformes", "scoreQuanti": 5.1, "scoreQuali": 6, "scoreFinal": 5.5 },
+      "Lo": { "label": "Attractivite juridique", "scoreQuanti": 5.0, "scoreQuali": 5, "scoreFinal": 5.0 },
+      "Io": { "label": "Innovation & numerique", "scoreQuanti": 3.9, "scoreQuali": 4, "scoreFinal": 3.9 },
+      "Co": { "label": "Maturite technologique", "scoreQuanti": 5.1, "scoreQuali": 5, "scoreFinal": 5.1 },
+      "Eeo": { "label": "Durabilite & transition", "scoreQuanti": 4.0, "scoreQuali": 4, "scoreFinal": 4.0 }
+    },
+    "composite": 4.7,
+    "classification": "Significatif",
+    "weights": {
+      "So": 0.12, "Eo": 0.17, "Mo": 0.07, "Po": 0.14,
+      "Lo": 0.13, "Io": 0.15, "Co": 0.12, "Eeo": 0.10
+    }
+  },
+  "delta": -2.8,
+  "quadrant": "Pole attractif",
+  "signatures": [],
+  "flags": [],
+  "resilience": {
+    "RS1": 5, "RE1": 6, "RM1": 6, "RP1": 7, "RI1": 6, "RL1": 6
+  }
+}
