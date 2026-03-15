@@ -7,7 +7,7 @@
 <meta name="description" content="Description de l'analyse pour le SEO et les réseaux sociaux."/>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-tailwind.config={theme:{extend:{colors:{brand:{900:'#0A1628',800:'#33B894',700:'#1E7E56',600:'#2A9D6E',500:'#10b981',400:'#34d399',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},navy:{900:'#0A1628',800:'#0F2035',700:'#162A45'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
+tailwind.config={theme:{extend:{colors:{brand:{900:'#06402A',800:'#33B894',700:'#1E7E56',600:'#2A9D6E',500:'#10b981',400:'#34d399',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},navy:{900:'#06402A',800:'#06402A',700:'#06402A'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
@@ -56,7 +56,7 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 .prose h3{font-family:'Inter',sans-serif;font-size:1.0625rem;font-weight:600;color:#33B894;margin-top:2rem;margin-bottom:0.75rem;letter-spacing:0.3px}
 
 /* Key figure */
-.key-figure{background:linear-gradient(135deg,#006650 0%,#0D4A24 100%);border-radius:0.5rem;padding:2.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+.key-figure{background:linear-gradient(135deg,#006650 0%,#06402A 100%);border-radius:0.5rem;padding:2.5rem 2rem;text-align:center;position:relative;overflow:hidden}
 .key-figure::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#33B894,#2A9D6E,rgba(255,255,255,0.3))}
 
 /* Insight box */
@@ -201,7 +201,7 @@ return h('div',null,
        )
       )
      ),
-     h('a',{href:'#diagnostic',className:'ml-4 px-4 py-2 bg-[#33B894] hover:bg-[#155A3D] text-white font-semibold text-sm rounded-lg transition-colors'},'Réserver un diagnostic')
+     h('a',{href:'#diagnostic',className:'ml-4 px-4 py-2 bg-[#33B894] hover:bg-[#06402A] text-white font-semibold text-sm rounded-lg transition-colors'},'Réserver un diagnostic')
     ),
     h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,onClick:()=>setOpen(!open)},
      h('span'),h('span'),h('span')
@@ -209,7 +209,7 @@ return h('div',null,
    )
   )
  ),
- h('div',{className:`mobile-overlay fixed inset-0 z-40 flex flex-col ${open?'open':''}`,style:{backgroundColor:'#0A1628'}},
+ h('div',{className:`mobile-overlay fixed inset-0 z-40 flex flex-col ${open?'open':''}`,style:{backgroundColor:'#06402A'}},
   h('div',{className:'flex items-center justify-between px-6 pt-6 pb-4'},
    h('span',{className:'text-xs uppercase tracking-[.25em] text-white/50 font-medium'},'Navigation'),
    h('button',{onClick:()=>setOpen(false),className:'w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
@@ -238,7 +238,7 @@ return h('div',null,
 
 function ArticleHero(){
 const d=ARTICLE_DATA
-return h('section',{className:'relative pt-28 pb-16 md:pt-36 md:pb-20',style:{backgroundColor:'#0A1628'}},
+return h('section',{className:'relative pt-28 pb-16 md:pt-36 md:pb-20',style:{backgroundColor:'#06402A'}},
  h('div',{className:'max-w-3xl mx-auto px-4 sm:px-6'},
   h('div',{className:'anim-fade-up flex items-center gap-3 mb-6'},
    h('span',{className:'px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white rounded',style:{backgroundColor:d.categoryColor}},d.category),
@@ -390,7 +390,7 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
 
 function MarketTicker(){
 const items=[...TICKER_DATA,...TICKER_DATA]
-return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 overflow-hidden py-3 bg-[#0A1628]'},
+return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 overflow-hidden py-3 bg-[#06402A]'},
  h('div',{className:'ticker-track flex gap-8 whitespace-nowrap'},
   items.map((t,i)=>h('div',{key:i,className:'flex items-center gap-2 text-sm'},
    h('span',{className:'font-medium text-white/70'},t.symbol),

@@ -983,7 +983,7 @@
         var reportHTML =
             '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Rapport Inflexion — ' + dateStr + '</title>' +
             '<style>' +
-                'body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;max-width:800px;margin:0 auto;padding:2rem;color:#1a1a2e;background:#fafafa;}' +
+                'body{font-family:"Inter",system-ui,sans-serif;max-width:800px;margin:0 auto;padding:2rem;color:#1a1a2e;background:#fafafa;}' +
                 'h1{color:#064E3B;border-bottom:3px solid #10b981;padding-bottom:0.5rem;}' +
                 'h2{color:#065F46;margin-top:2rem;}' +
                 '.meta{color:#6b7280;font-size:0.9rem;margin-bottom:2rem;}' +

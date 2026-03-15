@@ -17,7 +17,7 @@
 <meta name="twitter:image" content="https://inflexionhub.com/og-image.png"/>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-tailwind.config={theme:{extend:{colors:{brand:{900:'#0A1628',800:'#1B6B4A',700:'#1E7E56',600:'#2A9D6E',500:'#10b981',400:'#34d399',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},navy:{900:'#0A1628',800:'#0F2035',700:'#162A45'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
+tailwind.config={theme:{extend:{colors:{brand:{900:'#06402A',800:'#33B894',700:'#1E7E56',600:'#2A9D6E',500:'#10b981',400:'#34d399',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},navy:{900:'#06402A',800:'#06402A',700:'#06402A'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
@@ -26,7 +26,7 @@ body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1
 
 /* Typography */
 h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
-.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#1B6B4A}
+.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#006650}
 
 /* Glass effects — updated for white bg */
 .glass{background:rgba(27,107,74,.06);backdrop-filter:blur(16px);border:1px solid rgba(27,107,74,.10)}
@@ -42,7 +42,7 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 
 /* Nav links */
 .nav-link{position:relative}
-.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#1B6B4A;transform:scaleX(0);transition:transform .25s ease}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}
 .nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
 
 /* Mega menu */
@@ -54,7 +54,7 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 .mega-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
 
 /* Categories */
-.category-geo{background:#2563eb}.category-marches{background:#1B6B4A}.category-crypto{background:#f59e0b}.category-matieres{background:#ef4444}.category-iatech{background:#8b5cf6}
+.category-geo{background:#2563eb}.category-marches{background:#006650}.category-crypto{background:#f59e0b}.category-matieres{background:#ef4444}.category-iatech{background:#8b5cf6}
 
 /* Article cards */
 .article-card{transition:transform .2s ease,box-shadow .2s ease}
@@ -83,7 +83,7 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 .section-alt{background-color:#F7F8FA}
 
 /* Hero dark */
-.hero-dark{background-color:#0A1628;color:#FFFFFF}
+.hero-dark{background-color:#06402A;color:#FFFFFF}
 .hero-dark h1,.hero-dark h2,.hero-dark .display-text{color:#FFFFFF}
 
 /* Divider */
@@ -162,7 +162,7 @@ return h('div',null,
         h('div',{className:'grid gap-1'},
          ...cat.children.map((item,ii)=>
           h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline'},
-           h('span',{className:'mega-icon bg-[#1B6B4A]/10 text-[#1B6B4A]'},item.icon),
+           h('span',{className:'mega-icon bg-[#006650]/10 text-[#006650]'},item.icon),
            h('span',{className:'flex flex-col'},
             h('span',{className:'text-sm font-semibold text-gray-900'},item.label),
             h('span',{className:'text-xs text-gray-500 mt-0.5'},item.desc)
@@ -173,7 +173,7 @@ return h('div',null,
        )
       )
      ),
-     h('a',{href:'#diagnostic',className:'ml-4 px-4 py-2 bg-[#1B6B4A] hover:bg-[#155A3D] text-white font-semibold text-sm rounded-lg transition-colors'},'Réserver un diagnostic')
+     h('a',{href:'#diagnostic',className:'ml-4 px-4 py-2 bg-[#006650] hover:bg-[#06402A] text-white font-semibold text-sm rounded-lg transition-colors'},'Réserver un diagnostic')
     ),
     h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,onClick:()=>setOpen(!open)},
      h('span'),h('span'),h('span')
@@ -181,7 +181,7 @@ return h('div',null,
    )
   )
  ),
- h('div',{className:`mobile-overlay fixed inset-0 z-40 flex flex-col ${open?'open':''}`,style:{backgroundColor:'#0A1628'}},
+ h('div',{className:`mobile-overlay fixed inset-0 z-40 flex flex-col ${open?'open':''}`,style:{backgroundColor:'#06402A'}},
   h('div',{className:'flex items-center justify-between px-6 pt-6 pb-4'},
    h('span',{className:'text-xs uppercase tracking-[.25em] text-white/50 font-medium'},'Navigation'),
    h('button',{onClick:()=>setOpen(false),className:'w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
@@ -225,7 +225,7 @@ return h('section',{className:'hero-dark relative pt-32 pb-20 md:pt-44 md:pb-28 
      'Décideur, prête une oreille fine au bruit, il te le rendra au centuple.'
     ),
     h('div',{className:'anim-fade-up anim-d3 mt-10 md:mt-12'},
-     h('a',{href:'analysis.html',className:'inline-block px-7 py-3.5 bg-[#1B6B4A] hover:bg-[#2A9D6E] text-white font-semibold rounded-lg transition-colors text-sm'},'Explorer les analyses')
+     h('a',{href:'analysis.html',className:'inline-block px-7 py-3.5 bg-[#006650] hover:bg-[#2A9D6E] text-white font-semibold rounded-lg transition-colors text-sm'},'Explorer les analyses')
     )
    ),
    h('div',{className:'md:w-[60%] grid grid-cols-1 sm:grid-cols-3 gap-4'},
@@ -249,7 +249,7 @@ return h('section',{className:'hero-dark relative pt-32 pb-20 md:pt-44 md:pb-28 
 
 function MarketTicker(){
 const items=[...TICKER_DATA,...TICKER_DATA]
-return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 overflow-hidden py-3 bg-[#0A1628]'},
+return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 overflow-hidden py-3 bg-[#06402A]'},
  h('div',{className:'ticker-track flex gap-8 whitespace-nowrap'},
   items.map((t,i)=>h('div',{key:i,className:'flex items-center gap-2 text-sm'},
    h('span',{className:'font-medium text-white/70'},t.symbol),
@@ -274,8 +274,8 @@ return h('section',{className:'py-20 md:py-24'},
     h('p',{className:'text-sm text-[#5A6178] mt-2'},'Articles sélectionnés par notre algorithme de curation qualitative')
    ),
    h('div',{className:'flex flex-wrap gap-2'},
-    h('button',{onClick:()=>setFilter('all'),className:`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${filter==='all'?'bg-[#1B6B4A] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},'Tout'),
-    CATEGORIES.map(c=>h('button',{key:c.id,onClick:()=>setFilter(c.id),className:`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${filter===c.id?'bg-[#1B6B4A] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},c.label))
+    h('button',{onClick:()=>setFilter('all'),className:`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${filter==='all'?'bg-[#006650] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},'Tout'),
+    CATEGORIES.map(c=>h('button',{key:c.id,onClick:()=>setFilter(c.id),className:`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${filter===c.id?'bg-[#006650] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},c.label))
    )
   ),
   h('div',{className:'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'},
@@ -334,7 +334,7 @@ return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-16 pb-20
     h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Intelligence'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.intelligence.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#1B6B4A] transition-colors'},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
      )
     )
    ),
@@ -343,7 +343,7 @@ return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-16 pb-20
     h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Plateforme'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.plateforme.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#1B6B4A] transition-colors'},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
      )
     )
    ),
@@ -351,14 +351,14 @@ return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-16 pb-20
    h('div',null,
     h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Suivez-nous'),
     h('div',{className:'flex items-center gap-3 mb-4'},
-     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#1B6B4A] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
       h('svg',{width:16,height:16,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'}))
      ),
-     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#1B6B4A] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
       h('svg',{width:14,height:14,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'}))
      )
     ),
-    h('a',{href:'#',className:'text-sm text-[#5A6178] hover:text-[#1B6B4A] transition-colors'},'Contact')
+    h('a',{href:'#',className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},'Contact')
    )
   ),
   // Bottom bar
@@ -385,7 +385,7 @@ return h('div',{className:'bg-[#F7F8FA] border-t border-b border-[#E2E5EB] py-10
   h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center'},
    ...CREDIBILITY_STATS.map((s,i)=>
     h('div',{key:i},
-     h('div',{className:'text-3xl md:text-4xl font-bold text-[#1B6B4A]',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},s.value),
+     h('div',{className:'text-3xl md:text-4xl font-bold text-[#006650]',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},s.value),
      h('div',{className:'mt-2 text-xs font-medium uppercase tracking-wider text-[#5A6178]'},s.label)
     )
    )
@@ -424,8 +424,8 @@ return h('section',{className:'py-20 bg-white'},
    h('h2',{className:'text-2xl md:text-3xl',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Explorez notre couverture')
   ),
   h('div',{className:'flex justify-center gap-2 mb-10'},
-   h('button',{onClick:()=>switchTab('marches'),className:`px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors ${tab==='marches'?'bg-[#1B6B4A] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},'Marchés'),
-   h('button',{onClick:()=>switchTab('geopolitique'),className:`px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors ${tab==='geopolitique'?'bg-[#1B6B4A] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},'Géopolitique')
+   h('button',{onClick:()=>switchTab('marches'),className:`px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors ${tab==='marches'?'bg-[#006650] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},'Marchés'),
+   h('button',{onClick:()=>switchTab('geopolitique'),className:`px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors ${tab==='geopolitique'?'bg-[#006650] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},'Géopolitique')
   ),
   h('div',{className:'flex flex-col md:flex-row gap-6 md:gap-0 border border-[#E2E5EB] rounded-2xl overflow-hidden'},
    h('div',{className:'md:w-[38%] bg-[#F7F8FA] md:border-r border-[#E2E5EB]'},
@@ -438,7 +438,7 @@ return h('section',{className:'py-20 bg-white'},
    h('div',{className:'md:w-[62%] p-8 md:p-10 flex flex-col justify-center'},
     h('h3',{className:'text-xl md:text-2xl font-bold mb-4',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},current.label),
     h('p',{className:'text-sm text-[#5A6178] leading-relaxed mb-6'},current.desc),
-    h('a',{href:current.href,className:'inline-flex items-center gap-1 text-sm font-semibold text-[#1B6B4A] hover:text-[#2A9D6E] transition-colors'},'Explorer →')
+    h('a',{href:current.href,className:'inline-flex items-center gap-1 text-sm font-semibold text-[#006650] hover:text-[#2A9D6E] transition-colors'},'Explorer →')
    )
   )
  )
@@ -446,13 +446,13 @@ return h('section',{className:'py-20 bg-white'},
 }
 
 function NewsletterCTA(){
-return h('section',{className:'bg-[#0A1628] py-20'},
+return h('section',{className:'bg-[#06402A] py-20'},
  h('div',{className:'max-w-2xl mx-auto px-4 sm:px-6 text-center'},
   h('h2',{className:'text-2xl md:text-3xl font-bold text-white mb-4',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Recevez nos signaux faibles chaque semaine'),
   h('p',{className:'text-sm md:text-base text-white/50 leading-relaxed mb-8'},'Une sélection hebdomadaire d\'analyses et de données pour garder une longueur d\'avance.'),
   h('form',{onSubmit:e=>e.preventDefault(),className:'flex flex-col sm:flex-row gap-3 max-w-md mx-auto'},
-   h('input',{type:'email',placeholder:'votre@email.com',className:'flex-1 px-4 py-3 rounded-lg bg-white/10 border border-white/15 text-white text-sm placeholder-white/30 outline-none focus:border-[#1B6B4A] transition-colors'}),
-   h('button',{type:'submit',className:'px-6 py-3 bg-[#1B6B4A] hover:bg-[#2A9D6E] text-white font-semibold text-sm rounded-lg transition-colors whitespace-nowrap'},'S\'abonner')
+   h('input',{type:'email',placeholder:'votre@email.com',className:'flex-1 px-4 py-3 rounded-lg bg-white/10 border border-white/15 text-white text-sm placeholder-white/30 outline-none focus:border-[#006650] transition-colors'}),
+   h('button',{type:'submit',className:'px-6 py-3 bg-[#006650] hover:bg-[#2A9D6E] text-white font-semibold text-sm rounded-lg transition-colors whitespace-nowrap'},'S\'abonner')
   )
  )
 )
