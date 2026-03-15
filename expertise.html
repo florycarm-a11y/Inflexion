@@ -1633,6 +1633,117 @@
                 <p style="font-size:0.825rem;">Pour intégrer SEMPLICE dans vos processus internes ou vos publications académiques, <a href="#contact" style="color:#006650;">contactez-nous</a>.</p>
             </section>
 
+            <!-- Pipeline IA -->
+            <section id="pipeline" class="expertise-section" style="max-width:760px;">
+                <h3 style="font-size:1.1rem;font-weight:700;color:#1A1F2E;margin:2rem 0 1rem;padding-bottom:0.4rem;border-bottom:2px solid #006650;display:inline-block;">Pipeline IA</h3>
+                <p>Inflexion agrège, filtre et synthétise l'information grâce à un pipeline automatisé qui tourne deux fois par jour (06h et 18h UTC).</p>
+
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0;">
+                    <div style="padding:1.25rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:12px;text-align:center;">
+                        <span style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:#006650;display:block;">158</span>
+                        <span style="font-size:0.8rem;color:#5A6178;">flux RSS &amp; sources</span>
+                    </div>
+                    <div style="padding:1.25rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:12px;text-align:center;">
+                        <span style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:#006650;display:block;">15</span>
+                        <span style="font-size:0.8rem;color:#5A6178;">APIs de marché</span>
+                    </div>
+                    <div style="padding:1.25rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:12px;text-align:center;">
+                        <span style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:#006650;display:block;">2</span>
+                        <span style="font-size:0.8rem;color:#5A6178;">modèles Claude (Sonnet + Haiku)</span>
+                    </div>
+                </div>
+
+                <div style="margin:1.5rem 0;">
+                    <h4 style="font-size:0.9rem;font-weight:700;color:#006650;margin:0 0 1rem;">Architecture du pipeline</h4>
+                    <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:8px;border-left:3px solid #006650;">
+                            <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:#006650;font-weight:600;white-space:nowrap;">1. Fetch</span>
+                            <span style="font-size:0.8rem;color:#5A6178;">Collecte brute depuis 15 APIs financières + 158 flux RSS (presse, think tanks, institutions)</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:8px;border-left:3px solid #006650;">
+                            <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:#006650;font-weight:600;white-space:nowrap;">2. Filter</span>
+                            <span style="font-size:0.8rem;color:#5A6178;">Claude Haiku score chaque signal (1-10), seuil &ge;6, d&eacute;duplication s&eacute;mantique</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:8px;border-left:3px solid #006650;">
+                            <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:#006650;font-weight:600;white-space:nowrap;">3. Veille</span>
+                            <span style="font-size:0.8rem;color:#5A6178;">Watchlist 22 th&egrave;mes &times; 4 priorit&eacute;s + d&eacute;tection signaux faibles Claude</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:8px;border-left:3px solid #C8955A;">
+                            <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:#C8955A;font-weight:600;white-space:nowrap;">4. Briefing</span>
+                            <span style="font-size:0.8rem;color:#5A6178;">Claude Sonnet + RAG : synth&egrave;se strat&eacute;gique quotidienne avec attribution des sources</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:8px;border-left:3px solid #C8955A;">
+                            <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:#C8955A;font-weight:600;white-space:nowrap;">5. Article</span>
+                            <span style="font-size:0.8rem;color:#5A6178;">G&eacute;n&eacute;ration, validation anti-hallucination, publication automatique</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expertise-highlight" style="margin-top:1.5rem;">
+                    <p><strong>Aucun contenu n'est publi&eacute; sans validation.</strong> Chaque article passe par un validateur structurel et un contr&ocirc;le anti-hallucination avant mise en ligne. Les donn&eacute;es chiffr&eacute;es portent syst&eacute;matiquement leur source.</p>
+                </div>
+            </section>
+
+            <!-- Sources & Données -->
+            <section id="sources" class="expertise-section" style="max-width:760px;">
+                <h3 style="font-size:1.1rem;font-weight:700;color:#1A1F2E;margin:2rem 0 1rem;padding-bottom:0.4rem;border-bottom:2px solid #006650;display:inline-block;">Sources &amp; donn&eacute;es</h3>
+                <p>Inflexion s'appuie sur des sources institutionnelles, acad&eacute;miques et de march&eacute; v&eacute;rifi&eacute;es. Aucune donn&eacute;e ne provient de r&eacute;seaux sociaux non v&eacute;rifi&eacute;s.</p>
+
+                <div style="margin:1.5rem 0;">
+                    <h4 style="font-size:0.9rem;font-weight:700;color:#006650;margin:0 0 1rem;">APIs de march&eacute; (donn&eacute;es temps r&eacute;el)</h4>
+                    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+                        <span style="padding:0.35rem 0.75rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:6px;font-size:0.78rem;color:#1A1F2E;font-family:'JetBrains Mono',monospace;">Finnhub</span>
+                        <span style="padding:0.35rem 0.75rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:6px;font-size:0.78rem;color:#1A1F2E;font-family:'JetBrains Mono',monospace;">FRED</span>
+                        <span style="padding:0.35rem 0.75rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:6px;font-size:0.78rem;color:#1A1F2E;font-family:'JetBrains Mono',monospace;">Alpha Vantage</span>
+                        <span style="padding:0.35rem 0.75rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:6px;font-size:0.78rem;color:#1A1F2E;font-family:'JetBrains Mono',monospace;">CoinGecko</span>
+                        <span style="padding:0.35rem 0.75rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:6px;font-size:0.78rem;color:#1A1F2E;font-family:'JetBrains Mono',monospace;">DefiLlama</span>
+                        <span style="padding:0.35rem 0.75rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:6px;font-size:0.78rem;color:#1A1F2E;font-family:'JetBrains Mono',monospace;">Messari</span>
+                        <span style="padding:0.35rem 0.75rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:6px;font-size:0.78rem;color:#1A1F2E;font-family:'JetBrains Mono',monospace;">Twelve Data</span>
+                        <span style="padding:0.35rem 0.75rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:6px;font-size:0.78rem;color:#1A1F2E;font-family:'JetBrains Mono',monospace;">ECB Data</span>
+                        <span style="padding:0.35rem 0.75rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:6px;font-size:0.78rem;color:#1A1F2E;font-family:'JetBrains Mono',monospace;">metals.dev</span>
+                        <span style="padding:0.35rem 0.75rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:6px;font-size:0.78rem;color:#1A1F2E;font-family:'JetBrains Mono',monospace;">Etherscan</span>
+                        <span style="padding:0.35rem 0.75rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:6px;font-size:0.78rem;color:#1A1F2E;font-family:'JetBrains Mono',monospace;">Mempool.space</span>
+                        <span style="padding:0.35rem 0.75rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:6px;font-size:0.78rem;color:#1A1F2E;font-family:'JetBrains Mono',monospace;">World Bank</span>
+                    </div>
+                </div>
+
+                <div style="margin:1.5rem 0;">
+                    <h4 style="font-size:0.9rem;font-weight:700;color:#006650;margin:0 0 1rem;">Presse &amp; institutions (158 flux RSS)</h4>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                        <div>
+                            <p style="font-size:0.8rem;font-weight:600;color:#1A1F2E;margin:0 0 0.5rem;">Presse internationale</p>
+                            <p style="font-size:0.78rem;color:#5A6178;line-height:1.6;margin:0;">Reuters, Bloomberg, Financial Times, The Economist, Le Monde, Les &Eacute;chos, WSJ, SCMP, Al Jazeera, Nikkei Asia</p>
+                        </div>
+                        <div>
+                            <p style="font-size:0.8rem;font-weight:600;color:#1A1F2E;margin:0 0 0.5rem;">Think tanks &amp; institutions</p>
+                            <p style="font-size:0.78rem;color:#5A6178;line-height:1.6;margin:0;">IFRI, Chatham House, SIPRI, Brookings, IISS, CSIS, Carnegie, OPEC, FMI, Banque mondiale, BCE, Fed</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin:1.5rem 0;">
+                    <h4 style="font-size:0.9rem;font-weight:700;color:#006650;margin:0 0 1rem;">Actualisation</h4>
+                    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
+                        <div style="padding:1rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:8px;text-align:center;">
+                            <span style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#006650;display:block;">2&times;/jour</span>
+                            <span style="font-size:0.75rem;color:#5A6178;">Donn&eacute;es de march&eacute;</span>
+                        </div>
+                        <div style="padding:1rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:8px;text-align:center;">
+                            <span style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#006650;display:block;">Quotidien</span>
+                            <span style="font-size:0.75rem;color:#5A6178;">Briefing IA</span>
+                        </div>
+                        <div style="padding:1rem;background:#F7F8FA;border:1px solid #E2E5EB;border-radius:8px;text-align:center;">
+                            <span style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#C8955A;display:block;">Continu</span>
+                            <span style="font-size:0.75rem;color:#5A6178;">Veille signaux faibles</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expertise-highlight" style="margin-top:1.5rem;">
+                    <p><strong>Transparence totale.</strong> Chaque donn&eacute;e affich&eacute;e sur Inflexion porte l'attribution de sa source. Les analyses IA sont syst&eacute;matiquement valid&eacute;es et sourc&eacute;es. Aucune information n'est invent&eacute;e ou extrapol&eacute;e sans mention explicite.</p>
+                </div>
+            </section>
+
             <!-- CTA -->
             <section class="expertise-cta" id="contact">
                 <h2>Échangeons sur vos enjeux</h2>
