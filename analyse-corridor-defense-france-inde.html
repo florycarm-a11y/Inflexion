@@ -145,6 +145,7 @@ button,a[href]:not(.prose a){min-height:44px;min-width:44px}
 </head>
 <body>
 <div id="app"></div>
+<script src="nav-config.js"></script>
 <script type="module">
 import React,{useState,useEffect,useRef} from 'https://esm.sh/react@18.2.0'
 import{createRoot}from 'https://esm.sh/react-dom@18.2.0/client'
@@ -157,30 +158,7 @@ const RELATED_ARTICLES=[
 {id:3,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'Droits de douane, Groenland : la doctrine Trump en actes',img:'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=300&h=200&fit=crop',href:'analyse-droits-douane-trump-groenland.html'},
 ]
 
-const MEGA_NAV=[
-{label:'Intelligence',children:[
- {icon:'\ud83c\udf0d',label:'G\u00e9opolitique',desc:'Risques pays & tensions internationales',href:'geopolitics.html'},
- {icon:'\ud83d\udcc8',label:'March\u00e9s',desc:'Actions, indices, taux & devises',href:'markets.html'},
- {icon:'\u20bf',label:'Crypto & Blockchain',desc:'Bitcoin, DeFi, r\u00e9gulation',href:'crypto.html'},
- {icon:'\ud83d\udee2\ufe0f',label:'Mati\u00e8res premi\u00e8res',desc:'Or, p\u00e9trole, m\u00e9taux & \u00e9nergie',href:'commodities.html'},
- {icon:'\ud83d\udcca',label:'ETF & Fonds',desc:'Allocations & flux de capitaux',href:'etf.html'},
-]},
-{label:'Analyses',children:[
- {icon:'\ud83d\udcf0',label:'Briefing du jour',desc:'Synth\u00e8se IA quotidienne',href:'index.html#briefing'},
- {icon:'\ud83d\udd0e',label:'Analyses approfondies',desc:'D\u00e9cryptages th\u00e9matiques',href:'analyses.html'},
- {icon:'\ud83d\uddfa\ufe0f',label:'Macro par pays',desc:'Donn\u00e9es World Bank & indicateurs',href:'country.html'},
-]},
-{label:'Expertise',children:[
- {icon:'\ud83e\udded',label:'Notre approche',desc:'M\u00e9thodologie & cadre d\'analyse',href:'expertise.html'},
- {icon:'\ud83e\udd16',label:'Pipeline IA',desc:'158 sources, 15 APIs, Claude IA',href:'expertise.html#pipeline'},
- {icon:'\ud83d\udce1',label:'Sources & donn\u00e9es',desc:'Transparence sur nos flux',href:'expertise.html#sources'},
-]},
-{label:'Services',children:[
- {icon:'\ud83d\udcbc',label:'Diagnostic strat\u00e9gique',desc:'Audit personnalis\u00e9 de vos positions',href:'premium.html'},
- {icon:'\ud83d\udd14',label:'Alertes & veille',desc:'Notifications personnalis\u00e9es',href:'premium.html#alertes'},
- {icon:'\ud83d\udccb',label:'Rapports sur mesure',desc:'Analyses d\u00e9di\u00e9es \u00e0 votre portefeuille',href:'premium.html#rapports'},
-]},
-]
+const MEGA_NAV=window.MEGA_NAV
 
 const TICKER_DATA=[
 {symbol:'Dassault Av.',value:'\u20ac287',change:'+14.2%',up:true},

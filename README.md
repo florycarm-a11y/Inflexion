@@ -2,7 +2,7 @@
 
 Plateforme d'intelligence financière automatisée combinant analyses géopolitiques et données de marché en temps réel. Agrège 15 APIs, 122 flux RSS et génère des synthèses IA quotidiennes via Claude pour les investisseurs francophones.
 
-**Production** : [florycarm-a11y.github.io/Inflexion](https://florycarm-a11y.github.io/Inflexion/)
+**Production** : [inflexionhub.com](https://inflexionhub.com/)
 
 ## Architecture & Stack
 

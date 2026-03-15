@@ -4,7 +4,7 @@
 
 **Inflexion** est une plateforme d'intelligence financiere automatisee combinant analyses geopolitiques et donnees de marche en temps reel. Le systeme agrege **15 APIs**, **157 flux RSS** et utilise **Claude Sonnet** (briefing strategique) + **Claude Haiku** (classification, alertes) pour generer des syntheses IA quotidiennes.
 
-**URL de production** : https://florycarm-a11y.github.io/Inflexion/
+**URL de production** : https://inflexionhub.com/
 
 ## 2. Architecture technique
 

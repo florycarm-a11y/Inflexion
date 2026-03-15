@@ -58,39 +58,8 @@ css.textContent=
 'header.header,nav.nav-overlay,button.back-to-top{display:none!important}\n';
 document.head.appendChild(css);
 
-// ── Navigation Data (monograms matching index.html) ──
-var MEGA_NAV=[
-{label:'Intelligence',children:[
- {icon:'Gp',label:'G\u00e9opolitique',desc:'Risques pays & tensions internationales',href:'geopolitics.html'},
- {icon:'Mk',label:'March\u00e9s',desc:'Actions, indices, taux & devises',href:'markets.html'},
- {icon:'Cr',label:'Crypto & Blockchain',desc:'Bitcoin, DeFi, r\u00e9gulation',href:'crypto.html'},
- {icon:'Mp',label:'Mati\u00e8res premi\u00e8res',desc:'Or, p\u00e9trole, m\u00e9taux & \u00e9nergie',href:'commodities.html'},
- {icon:'Ef',label:'ETF & Fonds',desc:'Allocations & flux de capitaux',href:'etf.html'},
-]},
-{label:'Analyses',children:[
- {icon:'Bj',label:'Briefing du jour',desc:'Synth\u00e8se IA quotidienne',href:'index.html#briefing'},
- {icon:'An',label:'Analyses approfondies',desc:'D\u00e9cryptages th\u00e9matiques',href:'analyses.html'},
- {icon:'Mc',label:'Macro par pays',desc:'Donn\u00e9es World Bank & indicateurs',href:'country.html'},
-]},
-{label:'Expertise',children:[
- {icon:'Se',label:'SEMPLICE',desc:'Notre cadre d\'\u00e9valuation g\u00e9opolitique en 8 dimensions',href:'expertise.html#semplice'},
- {icon:'Na',label:'Notre approche',desc:'M\u00e9thodologie & cadre d\'analyse',href:'expertise.html'},
- {icon:'Ia',label:'Pipeline IA',desc:'158 sources, 15 APIs, Claude IA',href:'expertise.html#pipeline'},
- {icon:'Sd',label:'Sources & donn\u00e9es',desc:'Transparence sur nos flux',href:'expertise.html#sources'},
-]},
-{label:'Services',children:[
- {icon:'Ds',label:'Diagnostic strat\u00e9gique',desc:'Audit personnalis\u00e9 de vos positions',href:'premium.html'},
- {icon:'Av',label:'Alertes & veille',desc:'Notifications personnalis\u00e9es',href:'premium.html#alertes'},
- {icon:'Rm',label:'Rapports sur mesure',desc:'Analyses d\u00e9di\u00e9es \u00e0 votre portefeuille',href:'premium.html#rapports'},
-]},
-];
-
-var MEGA_FOOTERS=[
-'5 rubriques \u00b7 Donn\u00e9es temps r\u00e9el',
-'Analyses \u00b7 Mis \u00e0 jour quotidiennement',
-'M\u00e9thodologie \u00b7 Transparence totale',
-'Services \u00b7 Sur mesure'
-];
+// ── Navigation Data : chargée depuis nav-config.js (source unique) ──
+// MEGA_NAV et MEGA_FOOTERS sont définis dans window par nav-config.js
 
 var CATEGORY_LABELS={
 geopolitics:'Risques & tensions internationales',

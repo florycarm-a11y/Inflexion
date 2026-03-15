@@ -14,10 +14,10 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Marchés — Inflexion">
     <meta name="twitter:description" content="Suivi des marchés financiers et impact de l'IA sur l'emploi.">
-    <meta property="og:url" content="https://florycarm-a11y.github.io/Inflexion/markets.html">
-    <meta property="og:image" content="https://florycarm-a11y.github.io/Inflexion/og-image.png">
-    <meta name="twitter:image" content="https://florycarm-a11y.github.io/Inflexion/og-image.png">
-    <link rel="canonical" href="https://florycarm-a11y.github.io/Inflexion/markets.html">
+    <meta property="og:url" content="https://inflexionhub.com/markets.html">
+    <meta property="og:image" content="https://inflexionhub.com/og-image.png">
+    <meta name="twitter:image" content="https://inflexionhub.com/og-image.png">
+    <link rel="canonical" href="https://inflexionhub.com/markets.html">
     <link rel="icon" href="favicon.ico" sizes="32x32">
     <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
@@ -37,8 +37,8 @@
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-                {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://florycarm-a11y.github.io/Inflexion/"},
-                {"@type": "ListItem", "position": 2, "name": "Marchés", "item": "https://florycarm-a11y.github.io/Inflexion/markets.html"}
+                {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://inflexionhub.com/"},
+                {"@type": "ListItem", "position": 2, "name": "Marchés", "item": "https://inflexionhub.com/markets.html"}
             ]
         }
     ]
@@ -52,60 +52,7 @@
 </head>
 <body class="page-markets">
     <a href="#main-content" class="skip-link">Aller au contenu principal</a>
-    <header class="header" role="banner">
-        <div class="container">
-            <div class="header-top">
-                <div class="header-left">
-                    <button class="menu-trigger" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu de navigation">
-                        <div class="hamburger" aria-hidden="true">
-                            <span class="hamburger-bar"></span>
-                            <span class="hamburger-bar"></span>
-                            <span class="hamburger-bar"></span>
-                        </div>
-                    </button>
-                    <a href="index.html" class="logo"><img src="logo-header.png" alt="Inflexion — Géopolitique &amp; Marchés" class="logo-img"></a>
-                </div>
-                <div class="header-controls">
-                    <div class="market-status closed">
-                        <span class="market-status-dot"></span>
-                        <span class="market-status-text">Fermé</span>
-                    </div>
-                    <div class="header-search">
-                        <form class="search-form" id="search-form">
-                            <label for="search-input" class="sr-only">Rechercher sur Inflexion</label>
-                            <input type="text" class="search-input" id="search-input" placeholder="Rechercher...">
-                            <button type="submit" class="search-btn">Rechercher</button>
-                        </form>
-                    </div>
-                    <a href="premium.html#contact" class="header-cta-btn">Nous contacter</a>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- Navigation Overlay -->
-    <nav class="nav-overlay" id="main-nav" aria-label="Navigation principale">
-        <div class="nav-overlay-content">
-            <div class="nav-overlay-header">
-                <span class="nav-overlay-title">Navigation</span>
-                <button class="nav-close" aria-label="Fermer le menu">&times;</button>
-            </div>
-            <div class="nav-links">
-                <a href="index.html" class="nav-overlay-link">Accueil</a>
-                <span class="nav-overlay-group-label">Veille</span>
-                <a href="geopolitics.html" class="nav-overlay-link nav-indent">Géopolitique</a>
-                <a href="markets.html" class="nav-overlay-link nav-indent" aria-current="page">Marchés</a>
-                <a href="crypto.html" class="nav-overlay-link nav-indent">Crypto</a>
-                <a href="commodities.html" class="nav-overlay-link nav-indent">Matières premières</a>
-                <a href="ai-tech.html" class="nav-overlay-link nav-indent">IA &amp; Tech</a>
-                <a href="analysis.html" class="nav-overlay-link nav-indent">Analyses</a>
-                <span class="nav-overlay-group-label">Outils</span>
-                <a href="premium.html" class="nav-overlay-link">Services</a>
-                <a href="analysis.html#cas-usage" class="nav-overlay-link">Cas d'usage</a>
-                <a href="expertise.html" class="nav-overlay-link">Méthodologie</a>
-                <a href="premium.html#contact" class="nav-overlay-link nav-cta"><span aria-hidden="true">&#x1F4DE;</span> Nous contacter</a>
-            </div>
-        </div>
-    </nav>
+    <div id="nav-target"></div>
 
     <main class="main-content" id="main-content">
         <div class="container">
@@ -538,6 +485,7 @@
         }
     })();
     </script>
+    <script src="nav-config.js"></script>
     <script src="nav-shared.js"></script>
 </body>
 </html>

@@ -656,14 +656,14 @@ function initDivergenceChart() {
                         grid: { display: false },
                         ticks: {
                             maxTicksLimit: 8,
-                            font: { size: 11, family: "'Plus Jakarta Sans'" },
+                            font: { size: 11, family: "'Inter'" },
                             color: '#6b6b6b'
                         }
                     },
                     y: {
                         grid: { color: 'rgba(0,0,0,0.04)' },
                         ticks: {
-                            font: { size: 11, family: "'Plus Jakarta Sans'" },
+                            font: { size: 11, family: "'Inter'" },
                             color: '#6b6b6b'
                         }
                     }

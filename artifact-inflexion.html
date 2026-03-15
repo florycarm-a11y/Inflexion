@@ -95,36 +95,14 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 </head>
 <body>
 <div id="app"></div>
+<script src="nav-config.js"></script>
 <script type="module">
 import React,{useState,useEffect,useRef} from 'https://esm.sh/react@18.2.0'
 import{createRoot}from 'https://esm.sh/react-dom@18.2.0/client'
 
 const h=React.createElement
 
-const MEGA_NAV=[
-{label:'Intelligence',children:[
- {icon:'🌍',label:'Géopolitique',desc:'Risques pays & tensions internationales',href:'geopolitics.html'},
- {icon:'📈',label:'Marchés',desc:'Actions, indices, taux & devises',href:'markets.html'},
- {icon:'₿',label:'Crypto & Blockchain',desc:'Bitcoin, DeFi, régulation',href:'crypto.html'},
- {icon:'🛢️',label:'Matières premières',desc:'Or, pétrole, métaux & énergie',href:'commodities.html'},
- {icon:'📊',label:'ETF & Fonds',desc:'Allocations & flux de capitaux',href:'etf.html'},
-]},
-{label:'Analyses',children:[
- {icon:'📰',label:'Briefing du jour',desc:'Synthèse IA quotidienne',href:'index.html#briefing'},
- {icon:'🔎',label:'Analyses approfondies',desc:'Décryptages thématiques',href:'analysis.html'},
- {icon:'🗺️',label:'Macro par pays',desc:'Données World Bank & indicateurs',href:'country.html'},
-]},
-{label:'Expertise',children:[
- {icon:'🧭',label:'Notre approche',desc:'Méthodologie & cadre d\'analyse',href:'expertise.html'},
- {icon:'🤖',label:'Pipeline IA',desc:'158 sources, 15 APIs, Claude IA',href:'expertise.html#pipeline'},
- {icon:'📡',label:'Sources & données',desc:'Transparence sur nos flux',href:'expertise.html#sources'},
-]},
-{label:'Services',children:[
- {icon:'💼',label:'Diagnostic stratégique',desc:'Audit personnalisé de vos positions',href:'premium.html'},
- {icon:'🔔',label:'Alertes & veille',desc:'Notifications personnalisées',href:'premium.html#alertes'},
- {icon:'📋',label:'Rapports sur mesure',desc:'Analyses dédiées à votre portefeuille',href:'premium.html#rapports'},
-]},
-]
+const MEGA_NAV=window.MEGA_NAV
 
 const TICKER_DATA=[
 {symbol:'S&P 500',value:'5 248.32',change:'+0.87%',up:true},
