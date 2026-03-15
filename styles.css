@@ -2138,10 +2138,11 @@ a {
    Page Header (category pages)
    ============================================ */
 .page-header {
-    padding: 1.5rem 0;
-    margin-bottom: 1rem;
+    padding: 2.5rem 2rem;
+    margin-bottom: 1.5rem;
     position: relative;
-    border-bottom: 1px solid var(--border-color);
+    background: #006650;
+    border-radius: 12px;
 }
 
 .page-title {
@@ -2150,13 +2151,13 @@ a {
     font-weight: 700;
     margin-bottom: 0.5rem;
     letter-spacing: -0.5px;
-    color: var(--navy);
+    color: #FFFFFF;
 }
 
 .page-subtitle {
     font-family: var(--font-serif);
     font-size: 1rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.8);
     font-style: italic;
 }
 
