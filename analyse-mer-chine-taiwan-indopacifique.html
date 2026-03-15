@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Mer de Chine — Taïwan, semi-conducteurs et bascule indo-pacifique — Inflexion</title>
+<meta name="description" content="Tensions militaires en mer de Chine, guerre informationnelle, enjeu TSMC et semi-conducteurs avancés : analyse SEMPLICE 4.8/7 pour les décideurs. Inflexion."/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{brand:{900:'#06402A',800:'#006650',700:'#007A60',600:'#008066',500:'#00997A',400:'#33B894',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden}
+
+h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
+.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#006650}
+
+@keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.anim-fade-up{animation:fade-up .6s ease-out both}
+.anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}
+
+.nav-link{position:relative}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.mega-trigger{position:relative}
+.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:520px;z-index:60}
+.mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.mega-item{transition:background .15s ease}
+.mega-item:hover{background:rgba(27,107,74,.06)}
+.mega-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.nav-scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid #E2E5EB;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+
+.hamburger span{display:block;width:24px;height:2px;background:#1A1F2E;margin:5px 0;transition:all .3s ease}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-overlay{opacity:0;visibility:hidden;transition:opacity .35s cubic-bezier(.4,0,.2,1),visibility .35s;height:100dvh}
+.mobile-overlay.open{opacity:1;visibility:visible}
+@keyframes menu-item-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.menu-item{opacity:0}
+.mobile-overlay.open .menu-item{animation:menu-item-in .4s ease-out forwards}
+body.menu-open{overflow:hidden}
+
+.prose p{margin-bottom:1.25rem;font-size:1rem;line-height:1.75;color:#3A3A3A}
+@media(min-width:640px){.prose p{font-size:1.0625rem;line-height:1.8}}
+.prose strong{color:#1A1F2E}
+.prose h2{font-size:1.375rem;color:#006650;margin-top:2.5rem;margin-bottom:1rem;line-height:1.3}
+@media(min-width:640px){.prose h2{font-size:1.625rem;margin-top:3.25rem;margin-bottom:1.25rem}}
+.prose h3{font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;color:#006650;margin-top:1.75rem;margin-bottom:0.75rem;letter-spacing:0.3px}
+@media(min-width:640px){.prose h3{font-size:1.0625rem;margin-top:2rem}}
+
+.key-figure{background:linear-gradient(135deg,#006650 0%,#06402A 100%);border-radius:0.5rem;padding:1.5rem 1rem;text-align:center;position:relative;overflow:hidden}
+@media(min-width:640px){.key-figure{padding:2.5rem 2rem}}
+.key-figure::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#006650,#33B894,rgba(255,255,255,0.3))}
+
+.insight-box{border-left:3px solid #006650;background:#F7F8FA;padding:1rem 1rem;margin:1.5rem 0;border-radius:0 0.5rem 0.5rem 0}
+@media(min-width:640px){.insight-box{padding:1.25rem 1.5rem;margin:1.75rem 0}}
+.insight-box.alert{border-left-color:#DC2626}
+.insight-box.gold{border-left-color:#EAB308}
+
+.article-card{transition:transform .2s ease,box-shadow .2s ease}
+.article-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(10,22,40,.08)}
+
+.category-geo{background:#2563eb}.category-marches{background:#006650}.category-crypto{background:#f59e0b}.category-matieres{background:#ef4444}.category-iatech{background:#8b5cf6}
+
+.font-data{font-family:'JetBrains Mono','SF Mono',monospace}
+
+/* Hero gradient dynamique 3D */
+@keyframes hero-gradient-shift{
+0%{background-position:0% 50%}
+25%{background-position:100% 25%}
+50%{background-position:100% 75%}
+75%{background-position:0% 100%}
+100%{background-position:0% 50%}
+}
+@keyframes hero-orb-float{
+0%,100%{transform:translate(0,0) scale(1)}
+33%{transform:translate(30px,-20px) scale(1.1)}
+66%{transform:translate(-20px,15px) scale(0.95)}
+}
+.hero-dynamic{
+background:linear-gradient(135deg,#004D3D 0%,#006650 25%,#007A60 50%,#06402A 75%,#004D3D 100%);
+background-size:400% 400%;
+animation:hero-gradient-shift 12s ease infinite;
+position:relative;
+overflow:hidden;
+}
+.hero-dynamic::before{
+content:'';
+position:absolute;
+top:-50%;left:-50%;
+width:200%;height:200%;
+background:radial-gradient(ellipse at 30% 20%,rgba(51,184,148,.15) 0%,transparent 50%),
+            radial-gradient(ellipse at 70% 80%,rgba(0,122,96,.2) 0%,transparent 50%),
+            radial-gradient(ellipse at 50% 50%,rgba(200,149,90,.06) 0%,transparent 40%);
+animation:hero-orb-float 8s ease-in-out infinite;
+pointer-events:none;
+}
+.hero-dynamic::after{
+content:'';
+position:absolute;
+bottom:0;left:0;right:0;
+height:120px;
+background:linear-gradient(to top,rgba(255,255,255,.06) 0%,transparent 100%);
+pointer-events:none;
+}
+.hero-wave{
+position:absolute;
+bottom:-1px;left:0;right:0;
+width:100%;
+line-height:0;
+z-index:2;
+}
+.hero-wave svg{
+width:100%;
+height:60px;
+display:block;
+}
+@media(min-width:768px){
+.hero-wave svg{height:80px}
+}
+.glass{background:rgba(0,102,80,.06);backdrop-filter:blur(16px);border:1px solid rgba(0,102,80,.10)}
+.glass-light{background:rgba(0,102,80,.04);backdrop-filter:blur(12px);border:1px solid rgba(0,102,80,.06)}
+.hero-dark{background-color:#006650;color:#FFFFFF}
+.hero-dark h1,.hero-dark h2,.hero-dark .display-text{color:#FFFFFF}
+.section-alt{background-color:#F7F8FA}
+.section-divider{border-top:1px solid #ECEEF2}
+.featured-card{position:relative;overflow:hidden}
+.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:#006650;transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
+.featured-card:hover::before{transform:scaleY(1)}
+.hero-glow{position:absolute;top:-120px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,102,80,.06) 0%,transparent 70%);pointer-events:none}
+@media(max-width:768px){
+html,body{overflow-x:hidden}
+img{max-width:100%;height:auto}
+button,a[href]:not(.prose a){min-height:44px;min-width:44px}
+.mobile-overlay .menu-item a{min-height:48px;display:flex;align-items:center}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="nav-config.js"></script>
+<script type="module">
+import React,{useState,useEffect,useRef} from 'https://esm.sh/react@18.2.0'
+import{createRoot}from 'https://esm.sh/react-dom@18.2.0/client'
+
+const h=React.createElement
+
+const RELATED_ARTICLES=[
+{id:1,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'Corridor de d\u00e9fense France-Inde : Tamil Nadu, pivot strat\u00e9gique',img:'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=300&h=200&fit=crop',href:'analyse-corridor-defense-france-inde.html'},
+{id:2,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'Arctique \u2014 Groenland : le grand jeu polaire',img:'https://images.unsplash.com/photo-1517783999520-f068d7431571?w=300&h=200&fit=crop',href:'analyse-arctique-groenland-grand-jeu-polaire.html'},
+{id:3,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'P\u00e9trole \u00e0 119 $ : Trump, Iran et le d\u00e9troit d\u2019Ormuz',img:'https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=300&h=200&fit=crop',href:'analyse-petrole-trump-iran-ormuz.html'},
+]
+
+const MEGA_NAV=window.MEGA_NAV
+
+// ─── NAVIGATION ──────────────────────────────────────────────────────────────
+
+function Navigation(){
+const[open,setOpen]=useState(false)
+const[scrolled,setScrolled]=useState(false)
+useEffect(()=>{
+const fn=()=>setScrolled(window.scrollY>60)
+window.addEventListener('scroll',fn,{passive:true})
+return()=>window.removeEventListener('scroll',fn)
+},[])
+useEffect(()=>{
+if(open){document.body.classList.add('menu-open')}else{document.body.classList.remove('menu-open')}
+return()=>document.body.classList.remove('menu-open')
+},[open])
+return h('div',null,
+ h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#C8955A]'}),
+ h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
+  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+   h('div',{className:'flex items-center justify-between h-16'},
+    h('a',{href:'index.html',className:'flex items-center gap-2'},
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(10) saturate(0) invert(0)',transition:'filter 0.3s ease'}})
+    ),
+    h('nav',{className:'hidden md:flex items-center gap-1'},
+     ...MEGA_NAV.map((cat,ci)=>
+      h('div',{key:ci,className:'mega-trigger'},
+       h('span',{className:`nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none ${scrolled?'text-gray-500 hover:text-[#006650]':'text-white/70 hover:text-white'}`},cat.label),
+       h('div',{className:'mega-menu bg-white rounded-2xl shadow-xl border border-gray-100 p-5'},
+        h('div',{className:'grid gap-1'},
+         ...cat.children.map((item,ii)=>
+          h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline'},
+           h('span',{className:'mega-icon bg-[#006650]/10 text-[#006650]'},item.icon),
+           h('span',{className:'flex flex-col'},
+            h('span',{className:'text-sm font-semibold text-gray-900'},item.label),
+            h('span',{className:'text-xs text-gray-500 mt-0.5'},item.desc)
+           )
+          )
+         )
+        )
+       )
+      )
+     ),
+     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#006650] hover:bg-[#06402A] text-white font-semibold text-sm rounded-lg transition-colors'},'R\u00e9server un diagnostic')
+    ),
+    h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,'aria-label':'Menu',onClick:()=>setOpen(!open)},
+     h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}})
+    )
+   )
+  )
+ ),
+ h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#006650'}},
+  h('div',{className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0'},
+   h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-8 w-auto',style:{filter:'brightness(10) saturate(0)'}}),
+   h('button',{onClick:()=>setOpen(false),className:'w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
+    h('svg',{width:18,height:18,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2.5,strokeLinecap:'round',className:'text-white'},h('path',{d:'M18 6L6 18M6 6l12 12'}))
+   )
+  ),
+  h('div',{className:'flex-1 overflow-y-auto px-6 pt-2 pb-4'},
+   ...MEGA_NAV.map((cat,ci)=>[
+    h('p',{key:'h'+ci,className:'menu-item text-[11px] uppercase tracking-[.2em] text-white/40 font-semibold mb-3'+(ci>0?' mt-8':''),style:{animationDelay:`${0.05+ci*0.18}s`}},cat.label),
+    ...cat.children.map((item,ii)=>
+     h('a',{key:'m'+ci+'-'+ii,href:item.href,onClick:()=>setOpen(false),className:'menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8',style:{animationDelay:`${0.08+ci*0.18+ii*0.05}s`}},
+      h('span',{className:'text-base'},item.icon),
+      h('span',{className:'text-base sm:text-lg md:text-[20px] font-medium'},item.label)
+     )
+    )
+   ]).flat()
+  ),
+  h('div',{className:'px-6 pt-4 pb-20 flex-shrink-0'},
+   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-xl transition-colors text-base',style:{animationDelay:'0.85s'}},'R\u00e9server un diagnostic')
+  )
+ )
+)
+}
+
+// ─── ARTICLE HERO ────────────────────────────────────────────────────────────
+
+function ArticleHero(){
+const heroRef=useRef(null)
+useEffect(()=>{
+const el=heroRef.current
+if(!el)return
+const onScroll=()=>{
+const r=el.getBoundingClientRect()
+const p=Math.max(0,Math.min(1,-r.top/(r.height||1)))
+el.style.setProperty('--scroll',p)
+el.querySelector('.hero-content').style.transform=`translateY(${p*40}px)`
+el.querySelector('.hero-content').style.opacity=1-p*0.6
+}
+window.addEventListener('scroll',onScroll,{passive:true})
+return()=>window.removeEventListener('scroll',onScroll)
+},[])
+return h('section',{ref:heroRef,className:'hero-dynamic relative pt-28 pb-24 md:pt-36 md:pb-28'},
+ h('div',{className:'hero-content relative z-[3] max-w-3xl mx-auto px-4 sm:px-6',style:{willChange:'transform,opacity'}},
+  h('div',{className:'anim-fade-up flex items-center gap-3 mb-6'},
+   h('span',{className:'px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white rounded bg-[#2563eb]'},'G\u00c9OPOLITIQUE'),
+   h('span',{className:'text-xs uppercase tracking-wider text-white/50'},'Asie-Pacifique & Indo-Pacifique')
+  ),
+  h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-[2.75rem] font-bold text-white leading-[1.15] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+   'Mer de Chine \u2014 Ta\u00efwan, semi-conducteurs et bascule indo-pacifique'
+  ),
+  h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/60 leading-relaxed'},
+   'La mer de Chine m\u00e9ridionale concentre les lignes de fracture du XXIe si\u00e8cle\u00a0: escalade militaire PLA, guerre informationnelle sans pr\u00e9c\u00e9dent, monopole TSMC sur les puces avanc\u00e9es. Score SEMPLICE 4,8/7 \u2014 \u00c9lev\u00e9. Ce que cela change pour les d\u00e9cideurs europ\u00e9ens.'
+  ),
+  h('div',{className:'anim-fade-up anim-d3 mt-8 flex flex-wrap items-center gap-5 text-sm text-white/40'},
+   h('div',{className:'w-12 h-[2px] bg-[#33B894]'}),
+   h('span',null,h('strong',{className:'text-white/60'},'Inflexion Research')),
+   h('span',null,'15 mars 2026'),
+   h('span',null,'24 min de lecture')
+  )
+ ),
+ h('div',{className:'hero-wave'},
+  h('svg',{viewBox:'0 0 1440 80',preserveAspectRatio:'none',xmlns:'http://www.w3.org/2000/svg'},
+   h('path',{d:'M0,40 C180,80 360,0 540,40 C720,80 900,10 1080,40 C1200,60 1350,20 1440,40 L1440,80 L0,80 Z',fill:'#FFFFFF',fillOpacity:'0.07'}),
+   h('path',{d:'M0,50 C200,20 400,70 600,40 C800,10 1000,60 1200,35 C1320,20 1400,50 1440,45 L1440,80 L0,80 Z',fill:'#FFFFFF',fillOpacity:'0.05'}),
+   h('path',{d:'M0,60 C240,40 480,75 720,55 C960,35 1200,65 1440,50 L1440,80 L0,80 Z',fill:'#FFFFFF'})
+  )
+ )
+)
+}
+
+// ─── ARTICLE CONTENT ─────────────────────────────────────────────────────────
+
+function ArticleContent(){
+return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20'},
+ h('div',{className:'flex flex-col lg:flex-row gap-10 lg:gap-12'},
+
+  h('article',{className:'prose flex-1 min-w-0'},
+
+   // Key figures
+   h('div',{className:'grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 my-8 sm:my-10 not-prose'},
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'18 000 Mrd$'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'PIB r\u00e9gional Indo-Pacifique')
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'6,9/7'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Information \u2014 dimension la plus critique')
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'92\u00a0%'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Semi-conducteurs avanc\u00e9s (TSMC)')
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'4,8/7'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Score SEMPLICE \u2014 \u00c9lev\u00e9')
+    )
+   ),
+
+   // Synth\u00e8se ex\u00e9cutive
+   h('div',{className:'not-prose my-8 rounded-xl overflow-hidden border-2 border-[#006650]/30',style:{background:'linear-gradient(135deg, #E8F5EE 0%, #F0FAF5 100%)'}},
+    h('div',{className:'flex items-center gap-2 px-5 py-3',style:{background:'linear-gradient(90deg, #006650, #006650)'}},
+     h('span',{className:'text-lg'},'\ud83d\udccc'),
+     h('span',{className:'text-[11px] font-bold uppercase tracking-wider text-white'},'Synth\u00e8se ex\u00e9cutive')
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-[15px] text-[#1A1F2E] leading-relaxed'},
+      'La mer de Chine m\u00e9ridionale est devenue le th\u00e9\u00e2tre d\u2019une confrontation multidimensionnelle in\u00e9dite. P\u00e9kin a conduit ',h('strong',null,'quatre exercices militaires majeurs en 2024'),' autour de Ta\u00efwan, tandis que les op\u00e9rations de guerre informationnelle (Volt Typhoon, Salt Typhoon) r\u00e9v\u00e8lent un ',h('strong',null,'pr\u00e9-positionnement cyber dans les infrastructures critiques am\u00e9ricaines'),'. L\u2019enjeu central reste TSMC, qui produit ',h('strong',null,'92\u00a0% des semi-conducteurs avanc\u00e9s mondiaux'),' \u2014 un monopole dont la perturbation paralyserait l\u2019\u00e9conomie mondiale. Le score SEMPLICE de ',h('strong',{className:'text-[#006650]'},'4,8/7 (\u00c9lev\u00e9)'),' refl\u00e8te une zone de risque syst\u00e9mique, compens\u00e9e par un score d\u2019opportunit\u00e9 de ',h('strong',{className:'text-[#006650]'},'5,4/7 (Tr\u00e8s \u00e9lev\u00e9)'),' li\u00e9 au dynamisme technologique et commercial de la r\u00e9gion.'
+     )
+    )
+   ),
+
+   // Th\u00e8se centrale
+   h('h2',null,'Th\u00e8se centrale'),
+   h('p',null,
+    'La mer de Chine m\u00e9ridionale n\u2019est plus un \u00ab\u00a0point chaud\u00a0\u00bb parmi d\u2019autres \u2014 c\u2019est le ',h('strong',null,'nexus strat\u00e9gique du XXIe si\u00e8cle'),', o\u00f9 convergent trois dynamiques d\u00e9stabilisantes\u00a0: une escalade militaire conventionnelle (PLA), une guerre informationnelle et cyber sans pr\u00e9c\u00e9dent (dimension I \u00e0 6,9/7), et une d\u00e9pendance technologique mondiale concentr\u00e9e sur un seul point de d\u00e9faillance \u2014 Ta\u00efwan. Cette convergence cr\u00e9e un ',h('strong',null,'risque de d\u00e9corr\u00e9lation strat\u00e9gique'),'\u00a0: les acteurs \u00e9conomiques continuent d\u2019op\u00e9rer comme si le statu quo \u00e9tait garanti, alors que les signaux militaires, cyber et informationnels indiquent une fen\u00eatre de risque critique entre 2026 et 2028.'
+   ),
+   h('p',null,
+    'Pour les d\u00e9cideurs europ\u00e9ens et fran\u00e7ais, la question n\u2019est pas de savoir ',h('em',null,'si'),' un conflit en mer de Chine les affectera, mais ',h('strong',null,'par quel canal et \u00e0 quelle vitesse'),'. Semi-conducteurs, routes maritimes, cha\u00eenes d\u2019approvisionnement IA, alliances de d\u00e9fense\u00a0: chaque dimension de cette crise touche directement l\u2019\u00e9conomie fran\u00e7aise.'
+   ),
+
+   // Partie I
+   h('h2',null,'I. Tensions militaires\u00a0: la zone grise permanente'),
+
+   h('h3',null,'Les exercices PLA\u00a0: mont\u00e9e en puissance'),
+   h('p',null,
+    'L\u2019Arm\u00e9e populaire de lib\u00e9ration (PLA) a conduit ',h('strong',null,'quatre exercices majeurs autour de Ta\u00efwan en 2024'),' \u2014 Joint Sword 2024A (mai), Joint Sword 2024B (octobre), et deux exercices non nomm\u00e9s en mars et d\u00e9cembre. Chacun a impliqu\u00e9 des ',h('strong',null,'simulations de blocus naval et a\u00e9rien'),' de l\u2019\u00eele, avec des trajectoires de missiles balistiques survolant le d\u00e9troit de Ta\u00efwan. Le nombre de violations de la ligne m\u00e9diane du d\u00e9troit est pass\u00e9 de z\u00e9ro (avant ao\u00fbt 2022) \u00e0 plus de ',h('strong',null,'1\u00a0800 incursions document\u00e9es en 2024'),' (source\u00a0: minist\u00e8re de la D\u00e9fense ta\u00efwanais, CSIS).'
+   ),
+   h('p',null,
+    'La militarisation des r\u00e9cifs se poursuit\u00a0: sept \u00eelots artificiels dans les Spratly sont d\u00e9sormais \u00e9quip\u00e9s de ',h('strong',null,'pistes d\u2019atterrissage, syst\u00e8mes de missiles anti-navires HQ-9B et radars OTH'),'. Mischief Reef, Subi Reef et Fiery Cross disposent de capacit\u00e9s de commandement int\u00e9gr\u00e9es. Le SIPRI estime que la Chine a augment\u00e9 ses d\u00e9penses navales de ',h('strong',null,'12\u00a0% en 2024'),', portant la flotte de la PLAN \u00e0 ',h('strong',null,'370 navires de combat'),' \u2014 la plus grande marine du monde en nombre (source\u00a0: IISS Military Balance 2025, SIPRI).'
+   ),
+
+   h('h3',null,'Zone grise et coercition quotidienne'),
+   h('p',null,
+    'Au-del\u00e0 des exercices, la PLA et les milices maritimes chinoises m\u00e8nent une ',h('strong',null,'campagne de zone grise permanente'),'. Les garde-c\u00f4tes chinois (CCG) ont d\u00e9ploy\u00e9 le ',h('em',null,'Monster'),', le plus grand navire garde-c\u00f4tes du monde (12\u00a0000 tonnes), au Second Thomas Shoal, o\u00f9 les forces philippines maintiennent un d\u00e9tachement sur le BRP Sierra Madre \u00e9chou\u00e9. Les incidents de water cannon, laser \u00e9blouissant et collision d\u00e9lib\u00e9r\u00e9e se sont multipli\u00e9s\u00a0: ',h('strong',null,'47 incidents document\u00e9s en 2024'),' contre les Philippines seules (source\u00a0: CSIS AMTI, Nikkei Asia).'
+   ),
+   h('p',null,
+    'Les violations de la zone d\u2019identification a\u00e9rienne (ADIZ) ta\u00efwanaise sont devenues quotidiennes. En moyenne, ',h('strong',null,'12 a\u00e9ronefs militaires chinois'),' p\u00e9n\u00e8trent l\u2019ADIZ chaque jour, for\u00e7ant Ta\u00efwan \u00e0 d\u00e9ployer ses chasseurs F-16V \u2014 une strat\u00e9gie d\u2019\u00e9puisement qui co\u00fbte \u00e0 Taipei un surcro\u00eet estim\u00e9 \u00e0 ',h('strong',null,'900 millions de dollars par an'),' en maintenance a\u00e9ronautique (source\u00a0: RAND Corporation, Atlantic Council).'
+   ),
+
+   h('div',{className:'insight-box alert not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#DC2626] mb-2'},'Risque critique \u2014 Fen\u00eatre 2026-2028'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'L\u2019amiral Philip Davidson (ancien commandant de l\u2019INDOPACOM) a estim\u00e9 que la Chine pourrait tenter une action de force sur Ta\u00efwan ',h('strong',null,'\u00ab\u00a0d\u2019ici 2027\u00a0\u00bb'),' \u2014 la \u00ab\u00a0Davidson Window\u00a0\u00bb. Les indicateurs actuels (acc\u00e9l\u00e9ration de la production navale, entra\u00eenement amphibie, exercices de blocus) sont coh\u00e9rents avec cette \u00e9ch\u00e9ance. Le 20e Congr\u00e8s du PCC a confirm\u00e9 la \u00ab\u00a0r\u00e9unification\u00a0\u00bb comme objectif strat\u00e9gique non n\u00e9gociable.'
+    )
+   ),
+
+   // Partie II
+   h('h2',null,'II. Guerre informationnelle et cyber\u00a0: la dimension invisible'),
+
+   h('h3',null,'Volt Typhoon et Salt Typhoon\u00a0: pr\u00e9-positionnement strat\u00e9gique'),
+   h('p',null,
+    'Les r\u00e9v\u00e9lations de 2024-2025 sur les groupes ',h('strong',null,'Volt Typhoon'),' et ',h('strong',null,'Salt Typhoon'),' ont transform\u00e9 la compr\u00e9hension de la menace cyber chinoise. Volt Typhoon, attribu\u00e9 au PLA par le FBI, la NSA et les Five Eyes, a ',h('strong',null,'p\u00e9n\u00e9tr\u00e9 les r\u00e9seaux d\u2019infrastructures critiques am\u00e9ricaines'),' \u2014 r\u00e9seaux \u00e9lectriques, syst\u00e8mes hydrauliques, t\u00e9l\u00e9communications, ports \u2014 non pas pour espionner, mais pour ',h('strong',null,'\u00ab\u00a0pr\u00e9-positionner\u00a0\u00bb des capacit\u00e9s de sabotage'),' activables en cas de conflit (source\u00a0: CISA, Microsoft Threat Intelligence, FBI Director Wray testimony).'
+   ),
+   h('p',null,
+    'Salt Typhoon a cibl\u00e9 directement les ',h('strong',null,'op\u00e9rateurs t\u00e9l\u00e9coms am\u00e9ricains'),' \u2014 AT&T, Verizon, T-Mobile \u2014 acc\u00e9dant aux m\u00e9tadonn\u00e9es d\u2019appels de hauts responsables gouvernementaux et, dans certains cas, au contenu des communications. Le directeur du FBI Christopher Wray a qualifi\u00e9 Volt Typhoon de ',h('strong',null,'\u00ab\u00a0menace d\u00e9terminante de notre \u00e9poque\u00a0\u00bb'),'. La dimension C (Cyber) de notre \u00e9valuation SEMPLICE atteint 5,0/7, et la dimension I (Information) culmine \u00e0 ',h('strong',null,'6,9/7 \u2014 le score le plus \u00e9lev\u00e9 de toutes nos \u00e9valuations'),' (source\u00a0: Brookings, Atlantic Council Cyber Statecraft Initiative).'
+   ),
+
+   h('h3',null,'Guerre cognitive et d\u00e9sinformation'),
+   h('p',null,
+    'Parall\u00e8lement aux op\u00e9rations cyber, P\u00e9kin m\u00e8ne une campagne de ',h('strong',null,'guerre cognitive (cognitive warfare)'),' visant \u00e0 \u00e9roder la volont\u00e9 de r\u00e9sistance ta\u00efwanaise et la cr\u00e9dibilit\u00e9 des engagements am\u00e9ricains. Les op\u00e9rations incluent\u00a0: amplification de contenus s\u00e9paratistes ta\u00efwanais, deepfakes ciblant des responsables politiques, campagnes de d\u00e9sinformation sur les r\u00e9seaux sociaux (TikTok, Weibo, Twitter/X), et infiltration de m\u00e9dias en mandarin. Le Digital Forensic Research Lab (DFRLab) de l\u2019Atlantic Council a document\u00e9 ',h('strong',null,'plus de 4\u00a0600 comptes coordonn\u00e9s'),' ciblant Ta\u00efwan en 2024 (source\u00a0: DFRLab, RAND).'
+   ),
+   h('p',null,
+    'Cette dimension informationnelle est particuli\u00e8rement dangereuse car elle op\u00e8re en dessous du seuil de r\u00e9ponse militaire. La \u00ab\u00a0l\u00e9galit\u00e9 grise\u00a0\u00bb des op\u00e9rations d\u2019influence rend toute attribution et riposte probl\u00e9matiques. L\u2019objectif strat\u00e9gique est clair\u00a0: ',h('strong',null,'cr\u00e9er les conditions d\u2019un fait accompli'),', o\u00f9 la communaut\u00e9 internationale juge qu\u2019une intervention est trop co\u00fbteuse ou trop tardive.'
+   ),
+
+   h('div',{className:'insight-box not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#006650] mb-2'},'Signal SEMPLICE \u2014 Dimension I : 6,9/7'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'La dimension Information atteint un score in\u00e9dit dans notre cadre d\u2019\u00e9valuation. Elle traduit la ',h('strong',null,'convergence sans pr\u00e9c\u00e9dent de la guerre informationnelle, du pr\u00e9-positionnement cyber et de la manipulation cognitive'),'. Ce score est sup\u00e9rieur \u00e0 celui de l\u2019Ukraine pr\u00e9-invasion (I\u00a0: 5,8/7 en d\u00e9cembre 2021). Les indicateurs I11 (warfare informationnel) et I12 (manipulation narrative) sont en zone rouge.'
+    )
+   ),
+
+   // Partie III
+   h('h2',null,'III. L\u2019enjeu semi-conducteurs\u00a0: le talon d\u2019Achille mondial'),
+
+   h('h3',null,'TSMC\u00a0: 92\u00a0% des puces avanc\u00e9es'),
+   h('p',null,
+    'Taiwan Semiconductor Manufacturing Company (TSMC) produit ',h('strong',null,'92\u00a0% des semi-conducteurs les plus avanc\u00e9s au monde'),' (noeuds inf\u00e9rieurs \u00e0 7 nm). Ce monopole de fait est sans \u00e9quivalent dans l\u2019histoire \u00e9conomique moderne\u00a0: aucun autre secteur ne d\u00e9pend \u00e0 ce point d\u2019un seul fabricant, situ\u00e9 dans une zone \u00e0 risque g\u00e9opolitique maximal. Les puces TSMC sont pr\u00e9sentes dans ',h('strong',null,'chaque iPhone, chaque data center IA, chaque syst\u00e8me d\u2019armes avanc\u00e9'),' occidental (source\u00a0: SIA, CSIS, Brookings).'
+   ),
+   h('p',null,
+    'Les revenus de TSMC ont atteint ',h('strong',null,'87,1 milliards de dollars en 2024'),' (+33\u00a0%), tir\u00e9s par la demande en puces IA (Nvidia, Apple, AMD). L\u2019entreprise investit ',h('strong',null,'32 milliards de dollars en CapEx pour 2025'),', principalement dans les noeuds 3 nm et 2 nm. La technologie N2 (pr\u00e9vue pour 2025-2026) utilisera des transistors gate-all-around (GAA), renfor\u00e7ant l\u2019avance technologique de TSMC sur Samsung et Intel (source\u00a0: TSMC earnings reports, Nikkei Asia).'
+   ),
+
+   h('h3',null,'CHIPS Act et reshoring\u00a0: la diversification en marche'),
+   h('p',null,
+    'Face \u00e0 cette concentration des risques, les \u00c9tats-Unis ont adopt\u00e9 le ',h('strong',null,'CHIPS and Science Act'),' (52,7 milliards de dollars), et l\u2019UE le ',h('strong',null,'European Chips Act'),' (43 milliards d\u2019euros). TSMC construit actuellement ',h('strong',null,'trois usines en Arizona'),' (investissement total\u00a0: 65 milliards de dollars), dont la premi\u00e8re (Fab 21, noeud 4 nm) doit entrer en production courant 2025. Le Japon accueille une usine TSMC \u00e0 Kumamoto (noeud 12/28 nm, op\u00e9rationnelle depuis f\u00e9vrier 2024), et l\u2019Allemagne une fab TSMC \u00e0 Dresde avec Bosch et Infineon (source\u00a0: SIA, European Commission, Nikkei Asia).'
+   ),
+   h('p',null,
+    'Cependant, ces efforts de reshoring ne r\u00e9duiront pas la d\u00e9pendance \u00e0 court terme. Les usines am\u00e9ricaines de TSMC produiront des noeuds ',h('strong',null,'N4 et N3'),' \u2014 mais le noeud N2 le plus avanc\u00e9 restera \u00e0 Ta\u00efwan. La mont\u00e9e en cadence prend ',h('strong',null,'3 \u00e0 5 ans'),'. Samsung Foundry et Intel Foundry Services restent en retard de 12 \u00e0 18 mois. En cas de conflit, le ',h('strong',null,'d\u00e9troit de Ta\u00efwan \u2014 par lequel transitent 88\u00a0% des plus grands porte-conteneurs mondiaux'),' \u2014 serait le premier chokepoint coup\u00e9 (source\u00a0: RAND, Bloomberg).'
+   ),
+
+   h('div',{className:'insight-box alert not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#DC2626] mb-2'},'Vuln\u00e9rabilit\u00e9 critique \u2014 Supply chain semi-conducteurs'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'Une perturbation de la production TSMC \u00e0 Ta\u00efwan \u2014 m\u00eame temporaire (30 jours) \u2014 provoquerait une ',h('strong',null,'perte de PIB mondial estim\u00e9e entre 600 milliards et 1\u00a0000 milliards de dollars'),' (RAND). L\u2019arr\u00eat complet co\u00fbterait ',h('strong',null,'jusqu\u2019\u00e0 3\u00a0400 milliards de dollars'),' la premi\u00e8re ann\u00e9e (Rhodium Group). Pour comparaison, la pand\u00e9mie COVID a co\u00fbt\u00e9 environ 2\u00a0000 milliards en 2020.'
+    )
+   ),
+
+   // Partie IV
+   h('h2',null,'IV. La dimension opportunit\u00e9\u00a0: un \u00e9cosyst\u00e8me \u00e0 18\u00a0000 milliards'),
+
+   h('h3',null,'Le dynamisme r\u00e9gional'),
+   h('p',null,
+    'Malgr\u00e9 les risques, la r\u00e9gion Indo-Pacifique reste le ',h('strong',null,'moteur de la croissance mondiale'),'. Le PIB combin\u00e9 des \u00e9conomies riveraines de la mer de Chine m\u00e9ridionale d\u00e9passe ',h('strong',null,'18\u00a0000 milliards de dollars'),'. L\u2019ASEAN affiche une croissance de ',h('strong',null,'4,7\u00a0% en 2024'),', port\u00e9e par le Vietnam (6,5\u00a0%), les Philippines (5,8\u00a0%) et l\u2019Indon\u00e9sie (5,1\u00a0%). Ces \u00e9conomies captent les b\u00e9n\u00e9fices du ',h('strong',null,'\u00ab\u00a0China+1\u00a0\u00bb'),', la strat\u00e9gie de diversification des multinationales hors de Chine (source\u00a0: Banque mondiale, ASEAN Secretariat, McKinsey).'
+   ),
+   h('p',null,
+    'Le score d\u2019opportunit\u00e9 SEMPLICE de ',h('strong',null,'5,4/7 (Tr\u00e8s \u00e9lev\u00e9)'),' refl\u00e8te plusieurs dynamiques positives\u00a0: innovation technologique (dimension I opportunit\u00e9\u00a0: 6,2/7), croissance \u00e9conomique soutenue (E\u00a0: 5,9/7), maturit\u00e9 tech \u00e9lev\u00e9e (C\u00a0: 5,9/7), et capital humain en progression (S\u00a0: 5,0/7). La r\u00e9gion concentre ',h('strong',null,'60\u00a0% de la R&D mondiale en semi-conducteurs'),', 45\u00a0% des brevets IA, et h\u00e9berge les si\u00e8ges de TSMC, Samsung, ASML (Pays-Bas, mais \u00e9cosyst\u00e8me client en Asie) et Tokyo Electron.'
+   ),
+
+   h('h3',null,'Corridors commerciaux et RCEP'),
+   h('p',null,
+    'Le Regional Comprehensive Economic Partnership (RCEP), entr\u00e9 en vigueur en 2022, cr\u00e9e la ',h('strong',null,'plus grande zone de libre-\u00e9change au monde'),' (15 pays, 30\u00a0% du PIB mondial). L\u2019accord r\u00e9duit les barri\u00e8res tarifaires sur les composants \u00e9lectroniques, les mati\u00e8res premi\u00e8res et les biens interm\u00e9diaires, renfor\u00e7ant les cha\u00eenes de valeur r\u00e9gionales. Les \u00e9changes intrar\u00e9gionaux ont augment\u00e9 de ',h('strong',null,'8,3\u00a0% en 2024'),' (source\u00a0: UNCTAD, RCEP Secretariat).'
+   ),
+   h('p',null,
+    'Pour les entreprises fran\u00e7aises, la r\u00e9gion offre des opportunit\u00e9s dans le ',h('strong',null,'luxe'),' (LVMH, Herm\u00e8s \u2014 march\u00e9 ASEAN en croissance de 12\u00a0%/an), l\u2019',h('strong',null,'a\u00e9ronautique'),' (Airbus \u2014 42\u00a0% des commandes mondiales proviennent d\u2019Asie-Pacifique), l\u2019',h('strong',null,'\u00e9nergie'),' (TotalEnergies, EDF \u2014 LNG et renouvelables), et la ',h('strong',null,'d\u00e9fense'),' (Naval Group \u2014 sous-marins, corvettes). Le FDI fran\u00e7ais en ASEAN a augment\u00e9 de ',h('strong',null,'18\u00a0% en 2024'),' (source\u00a0: Business France, BPI France).'
+   ),
+
+   h('div',{className:'insight-box gold not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2'},'Signal opportunit\u00e9 \u2014 Corridor tech ASEAN'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'Le Vietnam, Singapour et la Malaisie captent une part croissante du ',h('strong',null,'reshoring semi-conducteurs'),'. Intel investit 7 milliards en Malaisie (packaging), Samsung 4,2 milliards au Vietnam (m\u00e9moire NAND). Pour les entreprises fran\u00e7aises du secteur \u00e9lectronique et IA, le \u00ab\u00a0triangle des puces\u00a0\u00bb ASEAN est une alternative cr\u00e9dible \u00e0 la concentration ta\u00efwanaise.'
+    )
+   ),
+
+   // Partie V
+   h('h2',null,'V. Impact pour les d\u00e9cideurs fran\u00e7ais'),
+
+   h('h3',null,'AUKUS et l\u2019Indo-Pacifique fran\u00e7ais'),
+   h('p',null,
+    'L\u2019alliance AUKUS (Australie, Royaume-Uni, \u00c9tats-Unis) restructure l\u2019architecture de s\u00e9curit\u00e9 Indo-Pacifique. Le Pilier I (sous-marins nucl\u00e9aires australiens) affecte directement ',h('strong',null,'Naval Group'),', qui a perdu le contrat des sous-marins australiens en 2021 (56 milliards d\u2019euros). Le Pilier II (technologies avanc\u00e9es\u00a0: hypersoniques, IA, cyber, guerre \u00e9lectronique) cr\u00e9e un ',h('strong',null,'club technologique anglo-saxon'),' dont la France est exclue, malgr\u00e9 ses capacit\u00e9s dans chacun de ces domaines (source\u00a0: IISS, Brookings).'
+   ),
+   h('p',null,
+    'La France dispose pourtant d\u2019une ',h('strong',null,'pr\u00e9sence souveraine unique en Indo-Pacifique'),'\u00a0: 1,6 million de ressortissants, 7\u00a0000 militaires (FANC en Nouvelle-Cal\u00e9donie, FAPF en Polyn\u00e9sie, FAZSOI \u00e0 La R\u00e9union), la deuxi\u00e8me ZEE mondiale (11 millions de km\u00b2, dont 62\u00a0% en Indo-Pacifique). La strat\u00e9gie fran\u00e7aise Indo-Pacifique (2019, actualis\u00e9e 2023) insiste sur un \u00ab\u00a0troisi\u00e8me voie\u00a0\u00bb entre Washington et P\u00e9kin \u2014 mais la marge de manoeuvre se r\u00e9duit (source\u00a0: minist\u00e8re des Arm\u00e9es, Quai d\u2019Orsay).'
+   ),
+
+   h('h3',null,'D\u00e9fense navale et projection'),
+   h('p',null,
+    'La Marine nationale d\u00e9ploie r\u00e9guli\u00e8rement des b\u00e2timents en mer de Chine m\u00e9ridionale, dont la fr\u00e9gate ',h('em',null,'Lorraine'),' (FREMM DA) en 2024 et le PHA ',h('em',null,'Tonnerre'),' dans le cadre de la mission Jeanne d\u2019Arc. Ces d\u00e9ploiements affirment la libert\u00e9 de navigation (FONOP) face aux revendications chinoises. Naval Group n\u00e9gocie des contrats de ',h('strong',null,'corvettes avec les Philippines et l\u2019Indon\u00e9sie'),', et poursuit le programme Barracuda avec l\u2019Australie (version conventionnelle pour les partenaires r\u00e9gionaux). Le march\u00e9 naval Indo-Pacifique repr\u00e9sente ',h('strong',null,'120 milliards de dollars d\u2019acquisitions pr\u00e9vues d\u2019ici 2030'),' (source\u00a0: Jane\u2019s, Naval Group, minist\u00e8re des Arm\u00e9es).'
+   ),
+
+   h('h3',null,'Supply chain semi-conducteurs et puces IA'),
+   h('p',null,
+    'La France h\u00e9berge STMicroelectronics (franco-italienne, leader mondial en capteurs et semi-conducteurs automobiles) et Soitec (substrats SOI). ',h('strong',null,'Ni l\u2019un ni l\u2019autre ne produit de puces avanc\u00e9es sub-7 nm'),' \u2014 une d\u00e9pendance directe \u00e0 TSMC et Samsung. Le plan France 2030 alloue ',h('strong',null,'5,5 milliards d\u2019euros au secteur \u00e9lectronique et semi-conducteurs'),', mais le retard structurel sur les noeuds avanc\u00e9s reste de 5 \u00e0 10 ans. L\u2019enjeu imm\u00e9diat est de s\u00e9curiser l\u2019acc\u00e8s aux puces IA (H100/B200 de Nvidia, fabriqu\u00e9es par TSMC) pour les programmes de d\u00e9fense et les clouds souverains (source\u00a0: European Chips Act, France 2030, Cour des comptes).'
+   ),
+
+   h('h3',null,'Matrice d\u2019impact sectoriel'),
+   h('div',{className:'not-prose my-6 overflow-x-auto'},
+    h('table',{className:'w-full text-sm border-collapse'},
+     h('thead',null,
+      h('tr',{className:'bg-[#F7F8FA]'},
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Secteur'),
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Risque CT'),
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Recommandation')
+      )
+     ),
+     h('tbody',null,
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Semi-conducteurs'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#DC2626] px-2 py-0.5 rounded'},'CRITIQUE')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Diversification sources TSMC, stocks strat\u00e9giques 6 mois')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'D\u00e9fense navale'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#f59e0b] px-2 py-0.5 rounded'},'\u00c9LEV\u00c9')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Renforcement pr\u00e9sence Indo-Pacifique, partenariats r\u00e9gionaux')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Commerce maritime'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#f59e0b] px-2 py-0.5 rounded'},'\u00c9LEV\u00c9')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Sc\u00e9narios disruption d\u00e9troit de Ta\u00efwan, routes alternatives')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Cyber / Infra critiques'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#DC2626] px-2 py-0.5 rounded'},'CRITIQUE')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Audit Volt/Salt Typhoon, segmentation r\u00e9seaux OT/IT')
+      ),
+      h('tr',null,
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Innovation / IA'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#006650] px-2 py-0.5 rounded'},'OPPORTUNIT\u00c9')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Partenariats tech ASEAN, corridors IA franco-asiatiques')
+      )
+     )
+    )
+   ),
+
+   h('h3',null,'Recommandations op\u00e9rationnelles'),
+   h('p',null,
+    h('strong',null,'Imm\u00e9diat (0-3 mois)'),' \u2014 Auditer l\u2019exposition supply chain aux semi-conducteurs ta\u00efwanais (tier 1 et tier 2). Constituer des stocks strat\u00e9giques de puces critiques (6 mois). Renforcer la cybers\u00e9curit\u00e9 des infrastructures OT/IT (indicateurs Volt Typhoon). \u00c9valuer les clauses de force majeure des contrats r\u00e9gionaux.'
+   ),
+   h('p',null,
+    h('strong',null,'Court terme (3-12 mois)'),' \u2014 Diversifier les sources de semi-conducteurs (Samsung Korea, GlobalFoundries, STMicroelectronics pour les noeuds matures). Acc\u00e9l\u00e9rer les partenariats de d\u00e9fense avec l\u2019Inde, les Philippines et le Japon. Mettre en place une veille ADIZ/mer de Chine hebdomadaire. Explorer les corridors tech ASEAN (Vietnam, Singapour, Malaisie).'
+   ),
+   h('p',null,
+    h('strong',null,'Moyen terme (1-3 ans)'),' \u2014 Investir dans les capacit\u00e9s europ\u00e9ennes de fabrication de puces avanc\u00e9es (European Chips Act, France 2030). Structurer une strat\u00e9gie Indo-Pacifique d\u2019entreprise int\u00e9grant les sc\u00e9narios de conflit. Positionner Naval Group et Thales sur les appels d\u2019offres navals r\u00e9gionaux (120 Mrd$ d\u2019ici 2030). D\u00e9velopper des partenariats IA avec Ta\u00efwan, le Japon et Singapour.'
+   ),
+
+   // Score SEMPLICE
+   h('h2',null,'\u00c9valuation SEMPLICE'),
+   h('div',{className:'not-prose my-6 overflow-x-auto'},
+    h('table',{className:'w-full text-sm border-collapse'},
+     h('thead',null,
+      h('tr',{className:'bg-[#F7F8FA]'},
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Dimension'),
+       h('th',{className:'text-center px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Risque'),
+       h('th',{className:'text-center px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Opportunit\u00e9'),
+       h('th',{className:'text-center px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Tendance')
+      )
+     ),
+     h('tbody',null,
+      ...([
+       ['Social','3,5/7','5,0/7','\u2192'],['Économique','3,6/7','5,9/7','\u2192'],['Militaire','4,7/7','4,2/7','\u2191'],['Politique','5,0/7','3,1/7','\u2191'],
+       ['Légal','3,9/7','4,1/7','\u2192'],['Information','6,9/7','6,2/7','\u2191'],['Cyber','5,0/7','5,9/7','\u2191'],['Environnemental','3,9/7','4,9/7','\u2192']
+      ].map((r,i)=>
+       h('tr',{key:i,className:'border-b border-[#E2E5EB]'},
+        h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},r[0]),
+        h('td',{className:'px-3 py-2.5 text-center font-data font-semibold text-[#DC2626]'},r[1]),
+        h('td',{className:'px-3 py-2.5 text-center font-data font-semibold text-[#006650]'},r[2]),
+        h('td',{className:'px-3 py-2.5 text-center text-lg'},r[3])
+       )
+      )),
+      h('tr',{className:'bg-[#006650]/5'},
+       h('td',{className:'px-3 py-2.5 font-bold text-[#006650]'},'COMPOSITE'),
+       h('td',{className:'px-3 py-2.5 text-center font-data font-bold text-[#DC2626] text-base'},'4,8/7'),
+       h('td',{className:'px-3 py-2.5 text-center font-data font-bold text-[#006650] text-base'},'5,4/7'),
+       h('td',{className:'px-3 py-2.5 text-center text-lg'},'\u2191')
+      )
+     )
+    )
+   ),
+
+   // Indicateurs d'alerte
+   h('h3',null,'Indicateurs d\u2019alerte \u00e0 surveiller'),
+   h('div',{className:'insight-box not-prose'},
+    h('ul',{className:'space-y-1.5 text-sm text-[#3A3A3A]'},
+     h('li',null,h('strong',null,'Exercice PLA > 72h autour de Ta\u00efwan'),' \u2014 signal de transition vers blocus r\u00e9el'),
+     h('li',null,h('strong',null,'Violation physique de la ligne m\u00e9diane par b\u00e2timent PLAN'),' \u2014 escalade militaire directe'),
+     h('li',null,h('strong',null,'Cyberattaque sur infrastructure \u00e9nerg\u00e9tique US/UE attribu\u00e9e \u00e0 Volt Typhoon'),' \u2014 pr\u00e9lude \u00e0 action militaire'),
+     h('li',null,h('strong',null,'TSMC annonce restriction exports vers la Chine'),' \u2014 escalade \u00e9conomique'),
+     h('li',null,h('strong',null,'D\u00e9ploiement amphibie PLA > 3 groupes'),' \u2014 posture offensive'),
+     h('li',null,h('strong',null,'Suspension des vols commerciaux vers Ta\u00efwan'),' \u2014 signal d\u2019alerte maximal')
+    )
+   ),
+
+   // Trois sc\u00e9narios
+   h('h2',null,'Trois sc\u00e9narios pour les 12 \u00e0 24 prochains mois'),
+
+   // Sc\u00e9nario optimiste
+   h('div',{className:'not-prose my-6 rounded-xl overflow-hidden border border-[#006650]/20 bg-[#F0FAF5]'},
+    h('div',{className:'px-5 py-3 bg-[#006650]/10 border-b border-[#006650]/20'},
+     h('div',{className:'flex items-center justify-between'},
+      h('span',{className:'text-sm font-bold text-[#006650]'},'Sc\u00e9nario 1 \u2014 Statu quo sous tension'),
+      h('span',{className:'text-xs font-semibold text-[#006650] bg-[#006650]/10 px-2 py-1 rounded'},'Probabilit\u00e9 : 45-50\u00a0%')
+     )
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+      'La dissuasion fonctionne. Les exercices PLA restent en de\u00e7\u00e0 du seuil de conflit. Washington maintient l\u2019ambigu\u00eft\u00e9 strat\u00e9gique sur Ta\u00efwan. Le CHIPS Act acc\u00e9l\u00e8re la diversification. Les tensions cyber restent sous le seuil de la riposte arm\u00e9e. Le d\u00e9troit reste ouvert. ',h('strong',null,'Impact d\u00e9cideurs'),' : fen\u00eatre de 2-3 ans pour diversifier les supply chains et renforcer la r\u00e9silience. Ne pas confondre ce sc\u00e9nario avec un retour \u00e0 la normale.'
+     )
+    )
+   ),
+
+   // Sc\u00e9nario central
+   h('div',{className:'not-prose my-6 rounded-xl overflow-hidden border border-[#EAB308]/20 bg-[#FFFBEB]'},
+    h('div',{className:'px-5 py-3 bg-[#EAB308]/10 border-b border-[#EAB308]/20'},
+     h('div',{className:'flex items-center justify-between'},
+      h('span',{className:'text-sm font-bold text-[#92400E]'},'Sc\u00e9nario 2 \u2014 Blocus partiel ou quarantaine'),
+      h('span',{className:'text-xs font-semibold text-[#92400E] bg-[#EAB308]/10 px-2 py-1 rounded'},'Probabilit\u00e9 : 30-35\u00a0%')
+     )
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+      'P\u00e9kin impose une \u00ab\u00a0quarantaine\u00a0\u00bb de Ta\u00efwan (inspection des navires, zone d\u2019exclusion maritime partielle) sans franchir le seuil du conflit arm\u00e9 classique. Les exports TSMC sont perturb\u00e9s (d\u00e9lais de 4-8 semaines). Les march\u00e9s corrigent de 15-20\u00a0%. Les assurances maritimes s\u2019envolent. ',h('strong',null,'Impact d\u00e9cideurs'),' : activation des plans de continuit\u00e9, recours aux stocks strat\u00e9giques, pression sur les prix des \u00e9quipements tech, acc\u00e9l\u00e9ration du reshoring.'
+     )
+    )
+   ),
+
+   // Sc\u00e9nario pessimiste
+   h('div',{className:'not-prose my-6 rounded-xl overflow-hidden border border-[#DC2626]/20 bg-[#FEF2F2]'},
+    h('div',{className:'px-5 py-3 bg-[#DC2626]/10 border-b border-[#DC2626]/20'},
+     h('div',{className:'flex items-center justify-between'},
+      h('span',{className:'text-sm font-bold text-[#991B1B]'},'Sc\u00e9nario 3 \u2014 Conflit ouvert'),
+      h('span',{className:'text-xs font-semibold text-[#991B1B] bg-[#DC2626]/10 px-2 py-1 rounded'},'Probabilit\u00e9 : 15-20\u00a0%')
+     )
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+      'Action de force chinoise sur Ta\u00efwan (invasion amphibie ou blocus total). D\u00e9clenchement d\u2019une r\u00e9ponse am\u00e9ricaine (Seventh Fleet, bases japonaises). Activation des cyberarmes Volt Typhoon contre les infrastructures US et alli\u00e9es. TSMC arr\u00eate sa production. Effondrement des cha\u00eenes d\u2019approvisionnement mondiales. PIB mondial -3\u00a0% \u00e0 -5\u00a0% la premi\u00e8re ann\u00e9e. ',h('strong',null,'Impact d\u00e9cideurs'),' : choc syst\u00e9mique global. P\u00e9nurie de puces paralysant l\u2019automobile, la d\u00e9fense, l\u2019IA. Disruption totale du commerce maritime asiatique. Mobilisation des alli\u00e9s OTAN.'
+     )
+    )
+   ),
+
+   // Disclaimer AMF
+   h('div',{className:'insight-box gold not-prose mt-10'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2'},'Avertissement AMF'),
+    h('p',{className:'text-xs text-[#6A6A6A] leading-relaxed'},
+     'Cette analyse est fournie \u00e0 titre informatif et ne constitue en aucun cas un conseil en investissement, une recommandation personnalis\u00e9e ou une incitation \u00e0 acheter ou vendre des instruments financiers. Les performances pass\u00e9es ne pr\u00e9jugent pas des performances futures. Tout investissement comporte des risques de perte en capital. Les \u00e9valuations de risque SEMPLICE refl\u00e8tent une appr\u00e9ciation \u00e0 date et ne constituent pas une garantie.'
+    )
+   ),
+
+   // Sources
+   h('div',{className:'pt-8 mt-8 border-t border-[#ECEEF2] not-prose'},
+    h('h4',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] mb-3'},'Sources principales (50+ sources \u2014 fiabilit\u00e9 A/B)'),
+    h('ul',{className:'space-y-1.5'},
+     h('li',null,h('a',{href:'https://www.csis.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'CSIS Asia Maritime Transparency Initiative \u2014 Suivi militarisation mer de Chine m\u00e9ridionale, incidents Philippines-CCG')),
+     h('li',null,h('a',{href:'https://www.rand.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'RAND Corporation \u2014 Taiwan contingency scenarios, semiconductor supply chain vulnerability assessment')),
+     h('li',null,h('a',{href:'https://www.iiss.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'IISS Military Balance 2025 \u2014 Capacit\u00e9s navales PLA, d\u00e9penses militaires comparatives')),
+     h('li',null,h('a',{href:'https://asia.nikkei.com/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Nikkei Asia \u2014 TSMC expansion plans, CHIPS Act implementation, ASEAN semiconductor corridor')),
+     h('li',null,h('a',{href:'https://www.brookings.edu/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Brookings Institution \u2014 Cyber threat landscape, Volt Typhoon implications, Indo-Pacific security architecture')),
+     h('li',null,h('a',{href:'https://www.sipri.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'SIPRI \u2014 Arms transfers to Asia-Pacific, military expenditure database, China naval buildup')),
+     h('li',null,h('a',{href:'https://www.atlanticcouncil.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Atlantic Council \u2014 Cyber Statecraft Initiative, DFRLab coordinated inauthentic behavior reports')),
+     h('li',null,h('a',{href:'https://www.cisa.gov/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'CISA / FBI / NSA \u2014 Joint advisory on Volt Typhoon, People\u2019s Republic of China state-sponsored cyber actor')),
+     h('li',null,h('a',{href:'https://www.microsoft.com/en-us/security/blog/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Microsoft Threat Intelligence \u2014 Volt Typhoon targeting U.S. critical infrastructure (mai 2023)')),
+     h('li',null,h('a',{href:'https://www.semiconductors.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Semiconductor Industry Association (SIA) \u2014 Global semiconductor market data, CHIPS Act tracking')),
+     h('li',null,h('a',{href:'https://investor.tsmc.com/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'TSMC Investor Relations \u2014 Quarterly earnings, CapEx guidance, technology roadmap N2/A16')),
+     h('li',null,h('a',{href:'https://www.defense.gouv.fr/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Minist\u00e8re des Arm\u00e9es \u2014 Strat\u00e9gie de d\u00e9fense en Indo-Pacifique, d\u00e9ploiements FANC/FAPF/FAZSOI')),
+     h('li',null,h('a',{href:'https://www.worldbank.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Banque mondiale \u2014 ASEAN economic outlook, regional GDP data, trade flows')),
+     h('li',null,h('a',{href:'https://rhg.com/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Rhodium Group \u2014 Taiwan conflict economic impact assessment, $3,400 billion first-year cost estimate'))
+    ),
+    h('p',{className:'mt-3 text-[10px] text-[#6A6A6A] italic'},'Collecte OSINT compl\u00e8te disponible : 54+ sources, grille de fiabilit\u00e9 A/B/C/D. Mis \u00e0 jour le 15 mars 2026.')
+   ),
+
+   // Back nav
+   h('div',{className:'mt-10 text-center not-prose'},
+    h('a',{href:'analyses.html',className:'inline-block px-6 py-2.5 text-sm font-semibold text-[#006650] border-2 border-[#006650] rounded-lg hover:bg-[#006650] hover:text-white transition-colors'},'\u2190 Toutes les analyses')
+   )
+  ),
+
+  // Sidebar
+  h('aside',{className:'hidden lg:block lg:w-[220px] flex-shrink-0'},
+   h('div',{className:'lg:sticky lg:top-24'},
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Articles li\u00e9s'),
+    h('div',{className:'flex flex-col gap-4'},
+     ...RELATED_ARTICLES.map(a=>
+      h('a',{key:a.id,href:a.href,className:'article-card block rounded-xl overflow-hidden bg-white border border-[#E2E5EB] no-underline'},
+       h('div',{className:'aspect-[16/9] overflow-hidden'},
+        h('img',{src:a.img,alt:'',className:'w-full h-full object-cover',loading:'lazy'})
+       ),
+       h('div',{className:'p-3'},
+        h('span',{className:`category-${a.cat} text-[9px] font-semibold uppercase tracking-wider text-white px-1.5 py-0.5 rounded`},a.catLabel),
+        h('h4',{className:'mt-2 text-xs font-semibold text-[#1A1F2E] leading-snug line-clamp-2',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},a.title)
+       )
+      )
+     )
+    )
+   )
+  )
+ )
+)
+}
+
+// ─── FOOTER ──────────────────────────────────────────────────────────────────
+
+function Footer(){
+const footerLinks={
+intelligence:[
+{label:'G\u00e9opolitique',href:'geopolitics.html'},
+{label:'March\u00e9s',href:'markets.html'},
+{label:'Crypto',href:'crypto.html'},
+{label:'Mati\u00e8res premi\u00e8res',href:'commodities.html'},
+{label:'ETF & Fonds',href:'etf.html'},
+],
+plateforme:[
+{label:'Analyses',href:'analyses.html'},
+{label:'Expertise',href:'expertise.html'},
+{label:'Services',href:'premium.html'},
+{label:'Diagnostic',href:'premium.html#diagnostic'},
+],
+}
+const sources=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC']
+
+return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-12 sm:pt-16 pb-24 sm:pb-20'},
+ h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+  h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-10 mb-12'},
+   h('div',{className:'col-span-2 md:col-span-1'},
+    h('div',{className:'flex items-center gap-2 mb-4'},
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto'})
+    ),
+    h('p',{className:'text-sm text-[#5A6178] leading-relaxed'},'Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.')
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Intelligence'),
+    h('ul',{className:'space-y-2.5'},
+     ...footerLinks.intelligence.map(l=>
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+     )
+    )
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Plateforme'),
+    h('ul',{className:'space-y-2.5'},
+     ...footerLinks.plateforme.map(l=>
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+     )
+    )
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Suivez-nous'),
+    h('div',{className:'flex items-center gap-3 mb-4'},
+     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+      h('svg',{width:16,height:16,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'}))
+     ),
+     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+      h('svg',{width:14,height:14,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'}))
+     )
+    ),
+    h('a',{href:'#',className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},'Contact')
+   )
+  ),
+  h('div',{className:'border-t border-[#E2E5EB] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
+   h('span',{className:'text-sm text-[#5A6178]'},'\u00a9 2026 Inflexion \u2014 Intelligence financi\u00e8re & g\u00e9opolitique'),
+   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#5A6178]/40 font-medium'},
+    ...sources.map(s=>h('span',{key:s},s))
+   )
+  )
+ )
+)
+}
+
+// ─── APP ─────────────────────────────────────────────────────────────────────
+
+function App(){
+return h('div',null,
+ h(Navigation),
+ h(ArticleHero),
+ h(ArticleContent),
+ h(Footer)
+)
+}
+
+createRoot(document.getElementById('app')).render(h(App))
+</script>
+</body>
+</html>

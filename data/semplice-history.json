@@ -1,6 +1,6 @@
 {
   "version": "2.1",
-  "lastUpdated": "2026-03-13",
+  "lastUpdated": "2026-03-15",
   "scales": {
     "risk": {"min": 1, "max": 7, "direction": "higher_is_worse"},
     "opportunity": {"min": 1, "max": 7, "direction": "higher_is_better"}
@@ -145,6 +145,62 @@
         {"date":"2024-05-15","label":"Transition PM Lawrence Wong","dim":3,"delta":"0","type":"neutral"},
         {"date":"2025-05-01","label":"Élections générales PAP 65%","dim":3,"delta":"0","type":"neutral"},
         {"date":"2025-09-01","label":"Programme Forward SG pro-business","dim":1,"delta":"-0.1","type":"deescalation"}
+      ]
+    },
+    "madagascar": {
+      "snapshots": [
+        {"date":"2023-01-01","scores":[4,3,3,4,4,2,2,3],"composite":3.1,"opp":[2,3,2,2,2,2,1,3],"oppComposite":2.1},
+        {"date":"2023-11-16","scores":[5,3,3,5,4,3,2,3],"composite":3.5,"opp":[2,3,2,2,2,2,1,2],"oppComposite":1.9},
+        {"date":"2024-06-01","scores":[5,4,3,5,4,3,3,4],"composite":3.9,"opp":[2,3,2,2,2,2,1,2],"oppComposite":1.9},
+        {"date":"2026-03-13","scores":[5.8,4.1,4.2,5.5,4.9,3.5,4.7,4.3],"composite":4.6,"opp":[1.9,2.7,2.1,1.9,2.2,1.7,1.2,2.0],"oppComposite":2.0}
+      ],
+      "events": [
+        {"date":"2023-11-16","label":"Réélection Rajoelina — opposition conteste (boycott)","dim":3,"delta":"+1.0","type":"escalation"},
+        {"date":"2024-02-01","label":"Cyclone Gamane — 18 morts, 35 000 déplacés","dim":7,"delta":"+0.5","type":"escalation"},
+        {"date":"2024-09-01","label":"Coupures électriques récurrentes JIRAMA (>12h/jour)","dim":1,"delta":"+0.5","type":"escalation"},
+        {"date":"2025-06-01","label":"Trafic bois de rose : nouvelles saisies record","dim":7,"delta":"+0.3","type":"escalation"}
+      ]
+    },
+    "inde": {
+      "snapshots": [
+        {"date":"2023-06-01","scores":[3,2,3,3,3,3,2,4],"composite":3.0,"opp":null,"oppComposite":null},
+        {"date":"2024-06-04","scores":[4,3,3,3,3,4,3,4],"composite":3.4,"opp":null,"oppComposite":null},
+        {"date":"2025-06-01","scores":[4,3,4,4,4,4,3,5],"composite":3.8,"opp":null,"oppComposite":null},
+        {"date":"2026-03-13","scores":[4.1,2.9,4.0,3.8,3.8,4.5,3.2,4.9],"composite":3.9,"opp":null,"oppComposite":null}
+      ],
+      "events": [
+        {"date":"2024-06-04","label":"Élections : BJP perd la majorité absolue (coalition NDA)","dim":3,"delta":"+0.5","type":"escalation"},
+        {"date":"2024-08-01","label":"Tensions LAC Ladakh — patrouilles mixtes reprises","dim":2,"delta":"-0.3","type":"deescalation"},
+        {"date":"2025-02-01","label":"Manipur : 250+ morts, état d'urgence prolongé","dim":0,"delta":"+0.5","type":"escalation"},
+        {"date":"2025-09-01","label":"Vague de chaleur record 51°C Rajasthan","dim":7,"delta":"+0.5","type":"escalation"}
+      ]
+    },
+    "ile-maurice": {
+      "snapshots": [
+        {"date":"2024-01-01","scores":[2,2,1,2,2,2,2,3],"composite":2.0,"opp":null,"oppComposite":null},
+        {"date":"2024-11-10","scores":[2,2,1,3,2,2,2,3],"composite":2.1,"opp":null,"oppComposite":null},
+        {"date":"2025-06-01","scores":[2,2,1,2,2,2,3,4],"composite":2.3,"opp":null,"oppComposite":null},
+        {"date":"2026-03-13","scores":[2.4,2.3,1.2,2.2,2.2,2.4,3.2,3.8],"composite":2.5,"opp":null,"oppComposite":null}
+      ],
+      "events": [
+        {"date":"2024-08-15","label":"Marée noire MV Wakashio — écosystème lagon dégradé","dim":7,"delta":"+0.5","type":"escalation"},
+        {"date":"2024-11-10","label":"Élections : victoire opposition (Alliance du Changement)","dim":3,"delta":"-0.5","type":"deescalation"},
+        {"date":"2025-03-01","label":"Cyclone Garance : infrastructure côtière endommagée","dim":7,"delta":"+0.3","type":"escalation"},
+        {"date":"2025-09-01","label":"Hausse cyberattaques secteur financier offshore","dim":6,"delta":"+0.5","type":"escalation"}
+      ]
+    },
+    "republique-tcheque": {
+      "snapshots": [
+        {"date":"2023-01-01","scores":[1,2,1,2,1,1,2,2],"composite":1.5,"opp":[5,4,4,5,5,4,4,4],"oppComposite":4.4},
+        {"date":"2024-01-01","scores":[1,2,1,2,2,2,2,2],"composite":1.8,"opp":[5,4,5,5,5,4,5,4],"oppComposite":4.6},
+        {"date":"2025-06-01","scores":[2,2,2,2,2,2,3,3],"composite":2.2,"opp":[5,4,5,5,5,4,5,4],"oppComposite":4.6},
+        {"date":"2026-03-13","scores":[1.7,1.9,1.7,1.6,1.7,1.6,2.8,2.6],"composite":1.9,"opp":[5.4,3.9,4.8,5.5,5.0,3.9,5.1,4.0],"oppComposite":4.7}
+      ],
+      "events": [
+        {"date":"2023-03-09","label":"Présidence UE réussie — influence régionale accrue","dim":3,"delta":"-0.2","type":"deescalation"},
+        {"date":"2024-07-01","label":"Sommet OTAN : engagement 2% PIB défense atteint","dim":2,"delta":"-0.3","type":"deescalation"},
+        {"date":"2025-01-01","label":"Hausse cyberattaques russes infrastructure critique","dim":6,"delta":"+0.5","type":"escalation"},
+        {"date":"2025-10-01","label":"Élections législatives : coalition pro-UE maintenue","dim":3,"delta":"-0.2","type":"deescalation"}
       ]
     }
   }

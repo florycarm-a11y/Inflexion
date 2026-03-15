@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Madagascar — Fragilité institutionnelle et prédation des ressources — Inflexion</title>
+<meta name="description" content="Madagascar : fragilité institutionnelle, prédation des ressources naturelles, pauvreté extrême et vulnérabilité climatique. Analyse SEMPLICE 4.6/7 pour les décideurs. Inflexion."/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{brand:{900:'#06402A',800:'#006650',700:'#007A60',600:'#008066',500:'#00997A',400:'#33B894',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden}
+
+h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
+.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#006650}
+
+@keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.anim-fade-up{animation:fade-up .6s ease-out both}
+.anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}
+
+.nav-link{position:relative}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.mega-trigger{position:relative}
+.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:520px;z-index:60}
+.mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.mega-item{transition:background .15s ease}
+.mega-item:hover{background:rgba(27,107,74,.06)}
+.mega-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.nav-scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid #E2E5EB;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+
+.hamburger span{display:block;width:24px;height:2px;background:#1A1F2E;margin:5px 0;transition:all .3s ease}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-overlay{opacity:0;visibility:hidden;transition:opacity .35s cubic-bezier(.4,0,.2,1),visibility .35s;height:100dvh}
+.mobile-overlay.open{opacity:1;visibility:visible}
+@keyframes menu-item-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.menu-item{opacity:0}
+.mobile-overlay.open .menu-item{animation:menu-item-in .4s ease-out forwards}
+body.menu-open{overflow:hidden}
+
+.prose p{margin-bottom:1.25rem;font-size:1rem;line-height:1.75;color:#3A3A3A}
+@media(min-width:640px){.prose p{font-size:1.0625rem;line-height:1.8}}
+.prose strong{color:#1A1F2E}
+.prose h2{font-size:1.375rem;color:#006650;margin-top:2.5rem;margin-bottom:1rem;line-height:1.3}
+@media(min-width:640px){.prose h2{font-size:1.625rem;margin-top:3.25rem;margin-bottom:1.25rem}}
+.prose h3{font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;color:#006650;margin-top:1.75rem;margin-bottom:0.75rem;letter-spacing:0.3px}
+@media(min-width:640px){.prose h3{font-size:1.0625rem;margin-top:2rem}}
+
+.key-figure{background:linear-gradient(135deg,#006650 0%,#06402A 100%);border-radius:0.5rem;padding:1.5rem 1rem;text-align:center;position:relative;overflow:hidden}
+@media(min-width:640px){.key-figure{padding:2.5rem 2rem}}
+.key-figure::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#006650,#33B894,rgba(255,255,255,0.3))}
+
+.insight-box{border-left:3px solid #006650;background:#F7F8FA;padding:1rem 1rem;margin:1.5rem 0;border-radius:0 0.5rem 0.5rem 0}
+@media(min-width:640px){.insight-box{padding:1.25rem 1.5rem;margin:1.75rem 0}}
+.insight-box.alert{border-left-color:#DC2626}
+.insight-box.gold{border-left-color:#EAB308}
+
+.article-card{transition:transform .2s ease,box-shadow .2s ease}
+.article-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(10,22,40,.08)}
+
+.category-geo{background:#2563eb}.category-marches{background:#006650}.category-crypto{background:#f59e0b}.category-matieres{background:#ef4444}.category-iatech{background:#8b5cf6}
+
+.font-data{font-family:'JetBrains Mono','SF Mono',monospace}
+
+/* Hero gradient dynamique 3D */
+@keyframes hero-gradient-shift{
+0%{background-position:0% 50%}
+25%{background-position:100% 25%}
+50%{background-position:100% 75%}
+75%{background-position:0% 100%}
+100%{background-position:0% 50%}
+}
+@keyframes hero-orb-float{
+0%,100%{transform:translate(0,0) scale(1)}
+33%{transform:translate(30px,-20px) scale(1.1)}
+66%{transform:translate(-20px,15px) scale(0.95)}
+}
+.hero-dynamic{
+background:linear-gradient(135deg,#004D3D 0%,#006650 25%,#007A60 50%,#06402A 75%,#004D3D 100%);
+background-size:400% 400%;
+animation:hero-gradient-shift 12s ease infinite;
+position:relative;
+overflow:hidden;
+}
+.hero-dynamic::before{
+content:'';
+position:absolute;
+top:-50%;left:-50%;
+width:200%;height:200%;
+background:radial-gradient(ellipse at 30% 20%,rgba(51,184,148,.15) 0%,transparent 50%),
+            radial-gradient(ellipse at 70% 80%,rgba(0,122,96,.2) 0%,transparent 50%),
+            radial-gradient(ellipse at 50% 50%,rgba(200,149,90,.06) 0%,transparent 40%);
+animation:hero-orb-float 8s ease-in-out infinite;
+pointer-events:none;
+}
+.hero-dynamic::after{
+content:'';
+position:absolute;
+bottom:0;left:0;right:0;
+height:120px;
+background:linear-gradient(to top,rgba(255,255,255,.06) 0%,transparent 100%);
+pointer-events:none;
+}
+.hero-wave{
+position:absolute;
+bottom:-1px;left:0;right:0;
+width:100%;
+line-height:0;
+z-index:2;
+}
+.hero-wave svg{
+width:100%;
+height:60px;
+display:block;
+}
+@media(min-width:768px){
+.hero-wave svg{height:80px}
+}
+.glass{background:rgba(0,102,80,.06);backdrop-filter:blur(16px);border:1px solid rgba(0,102,80,.10)}
+.glass-light{background:rgba(0,102,80,.04);backdrop-filter:blur(12px);border:1px solid rgba(0,102,80,.06)}
+.hero-dark{background-color:#006650;color:#FFFFFF}
+.hero-dark h1,.hero-dark h2,.hero-dark .display-text{color:#FFFFFF}
+.section-alt{background-color:#F7F8FA}
+.section-divider{border-top:1px solid #ECEEF2}
+.featured-card{position:relative;overflow:hidden}
+.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:#006650;transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
+.featured-card:hover::before{transform:scaleY(1)}
+.hero-glow{position:absolute;top:-120px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,102,80,.06) 0%,transparent 70%);pointer-events:none}
+@media(max-width:768px){
+html,body{overflow-x:hidden}
+img{max-width:100%;height:auto}
+button,a[href]:not(.prose a){min-height:44px;min-width:44px}
+.mobile-overlay .menu-item a{min-height:48px;display:flex;align-items:center}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="nav-config.js"></script>
+<script type="module">
+import React,{useState,useEffect,useRef} from 'https://esm.sh/react@18.2.0'
+import{createRoot}from 'https://esm.sh/react-dom@18.2.0/client'
+
+const h=React.createElement
+
+const RELATED_ARTICLES=[
+{id:1,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'Cuba \u2014 La crise de trop : effondrement \u00e9nerg\u00e9tique et si\u00e8ge am\u00e9ricain',img:'https://images.unsplash.com/photo-1570299437522-25057a5368b0?w=300&h=200&fit=crop',href:'analyse-cuba-crise-perspectives.html'},
+{id:2,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'P\u00e9trole \u00e0 119 $ : Trump, Iran et le d\u00e9troit d\u2019Ormuz',img:'https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=300&h=200&fit=crop',href:'analyse-petrole-trump-iran-ormuz.html'},
+{id:3,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'Sahel : la recomposition strat\u00e9gique',img:'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=300&h=200&fit=crop',href:'analyses.html'},
+]
+
+const MEGA_NAV=window.MEGA_NAV
+
+// ─── NAVIGATION ──────────────────────────────────────────────────────────────
+
+function Navigation(){
+const[open,setOpen]=useState(false)
+const[scrolled,setScrolled]=useState(false)
+useEffect(()=>{
+const fn=()=>setScrolled(window.scrollY>60)
+window.addEventListener('scroll',fn,{passive:true})
+return()=>window.removeEventListener('scroll',fn)
+},[])
+useEffect(()=>{
+if(open){document.body.classList.add('menu-open')}else{document.body.classList.remove('menu-open')}
+return()=>document.body.classList.remove('menu-open')
+},[open])
+return h('div',null,
+ h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#C8955A]'}),
+ h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
+  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+   h('div',{className:'flex items-center justify-between h-16'},
+    h('a',{href:'index.html',className:'flex items-center gap-2'},
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(10) saturate(0) invert(0)',transition:'filter 0.3s ease'}})
+    ),
+    h('nav',{className:'hidden md:flex items-center gap-1'},
+     ...MEGA_NAV.map((cat,ci)=>
+      h('div',{key:ci,className:'mega-trigger'},
+       h('span',{className:`nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none ${scrolled?'text-gray-500 hover:text-[#006650]':'text-white/70 hover:text-white'}`},cat.label),
+       h('div',{className:'mega-menu bg-white rounded-2xl shadow-xl border border-gray-100 p-5'},
+        h('div',{className:'grid gap-1'},
+         ...cat.children.map((item,ii)=>
+          h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline'},
+           h('span',{className:'mega-icon bg-[#006650]/10 text-[#006650]'},item.icon),
+           h('span',{className:'flex flex-col'},
+            h('span',{className:'text-sm font-semibold text-gray-900'},item.label),
+            h('span',{className:'text-xs text-gray-500 mt-0.5'},item.desc)
+           )
+          )
+         )
+        )
+       )
+      )
+     ),
+     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#006650] hover:bg-[#06402A] text-white font-semibold text-sm rounded-lg transition-colors'},'R\u00e9server un diagnostic')
+    ),
+    h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,'aria-label':'Menu',onClick:()=>setOpen(!open)},
+     h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}})
+    )
+   )
+  )
+ ),
+ h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#006650'}},
+  h('div',{className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0'},
+   h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-8 w-auto',style:{filter:'brightness(10) saturate(0)'}}),
+   h('button',{onClick:()=>setOpen(false),className:'w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
+    h('svg',{width:18,height:18,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2.5,strokeLinecap:'round',className:'text-white'},h('path',{d:'M18 6L6 18M6 6l12 12'}))
+   )
+  ),
+  h('div',{className:'flex-1 overflow-y-auto px-6 pt-2 pb-4'},
+   ...MEGA_NAV.map((cat,ci)=>[
+    h('p',{key:'h'+ci,className:'menu-item text-[11px] uppercase tracking-[.2em] text-white/40 font-semibold mb-3'+(ci>0?' mt-8':''),style:{animationDelay:`${0.05+ci*0.18}s`}},cat.label),
+    ...cat.children.map((item,ii)=>
+     h('a',{key:'m'+ci+'-'+ii,href:item.href,onClick:()=>setOpen(false),className:'menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8',style:{animationDelay:`${0.08+ci*0.18+ii*0.05}s`}},
+      h('span',{className:'text-base'},item.icon),
+      h('span',{className:'text-base sm:text-lg md:text-[20px] font-medium'},item.label)
+     )
+    )
+   ]).flat()
+  ),
+  h('div',{className:'px-6 pt-4 pb-20 flex-shrink-0'},
+   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-xl transition-colors text-base',style:{animationDelay:'0.85s'}},'R\u00e9server un diagnostic')
+  )
+ )
+)
+}
+
+// ─── ARTICLE HERO ────────────────────────────────────────────────────────────
+
+function ArticleHero(){
+const heroRef=useRef(null)
+useEffect(()=>{
+const el=heroRef.current
+if(!el)return
+const onScroll=()=>{
+const r=el.getBoundingClientRect()
+const p=Math.max(0,Math.min(1,-r.top/(r.height||1)))
+el.style.setProperty('--scroll',p)
+el.querySelector('.hero-content').style.transform=`translateY(${p*40}px)`
+el.querySelector('.hero-content').style.opacity=1-p*0.6
+}
+window.addEventListener('scroll',onScroll,{passive:true})
+return()=>window.removeEventListener('scroll',onScroll)
+},[])
+return h('section',{ref:heroRef,className:'hero-dynamic relative pt-28 pb-24 md:pt-36 md:pb-28'},
+ h('div',{className:'hero-content relative z-[3] max-w-3xl mx-auto px-4 sm:px-6',style:{willChange:'transform,opacity'}},
+  h('div',{className:'anim-fade-up flex items-center gap-3 mb-6'},
+   h('span',{className:'px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white rounded bg-[#2563eb]'},'G\u00c9OPOLITIQUE'),
+   h('span',{className:'text-xs uppercase tracking-wider text-white/50'},'Afrique & Oc\u00e9an Indien')
+  ),
+  h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-[2.75rem] font-bold text-white leading-[1.15] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+   'Madagascar \u2014 Fragilit\u00e9 institutionnelle et pr\u00e9dation des ressources'
+  ),
+  h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/60 leading-relaxed'},
+   'Quatri\u00e8me plus grande \u00eele du monde, Madagascar cumule pauvret\u00e9 extr\u00eame, d\u00e9ficit d\u00e9mocratique et pillage syst\u00e9matique de ses ressources naturelles. L\u2019\u00e9valuation SEMPLICE r\u00e9v\u00e8le un profil de fragilit\u00e9 \u00e9lev\u00e9e o\u00f9 la dimension sociale constitue le facteur de risque dominant.'
+  ),
+  h('div',{className:'anim-fade-up anim-d3 mt-8 flex flex-wrap items-center gap-5 text-sm text-white/40'},
+   h('div',{className:'w-12 h-[2px] bg-[#33B894]'}),
+   h('span',null,h('strong',{className:'text-white/60'},'Inflexion Research')),
+   h('span',null,'15 mars 2026'),
+   h('span',null,'18 min de lecture')
+  )
+ ),
+ h('div',{className:'hero-wave'},
+  h('svg',{viewBox:'0 0 1440 80',preserveAspectRatio:'none',xmlns:'http://www.w3.org/2000/svg'},
+   h('path',{d:'M0,40 C180,80 360,0 540,40 C720,80 900,10 1080,40 C1200,60 1350,20 1440,40 L1440,80 L0,80 Z',fill:'#FFFFFF',fillOpacity:'0.07'}),
+   h('path',{d:'M0,50 C200,20 400,70 600,40 C800,10 1000,60 1200,35 C1320,20 1400,50 1440,45 L1440,80 L0,80 Z',fill:'#FFFFFF',fillOpacity:'0.05'}),
+   h('path',{d:'M0,60 C240,40 480,75 720,55 C960,35 1200,65 1440,50 L1440,80 L0,80 Z',fill:'#FFFFFF'})
+  )
+ )
+)
+}
+
+// ─── ARTICLE CONTENT ─────────────────────────────────────────────────────────
+
+function ArticleContent(){
+return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20'},
+ h('div',{className:'flex flex-col lg:flex-row gap-10 lg:gap-12'},
+
+  h('article',{className:'prose flex-1 min-w-0'},
+
+   // Key figures
+   h('div',{className:'grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 my-8 sm:my-10 not-prose'},
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'14,5 Mrd$'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'PIB \u2014 4e \u00eele mondiale')
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'5.8/7'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Social \u2014 dimension la plus critique')
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'81 %'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Population sous seuil de pauvret\u00e9')
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'4.6/7'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Score SEMPLICE \u2014 \u00c9lev\u00e9')
+    )
+   ),
+
+   // Synth\u00e8se ex\u00e9cutive
+   h('div',{className:'not-prose my-8 rounded-xl overflow-hidden border-2 border-[#006650]/30',style:{background:'linear-gradient(135deg, #E8F5EE 0%, #F0FAF5 100%)'}},
+    h('div',{className:'flex items-center gap-2 px-5 py-3',style:{background:'linear-gradient(90deg, #006650, #006650)'}},
+     h('span',{className:'text-lg'},'\ud83d\udccc'),
+     h('span',{className:'text-[11px] font-bold uppercase tracking-wider text-white'},'Synth\u00e8se ex\u00e9cutive')
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-[15px] text-[#1A1F2E] leading-relaxed'},
+      'Madagascar concentre les marqueurs d\u2019un \u00c9tat fragile : une ',h('strong',null,'pauvret\u00e9 extr\u00eame touchant 81\u00a0% de la population'),', une gouvernance min\u00e9e par la r\u00e9\u00e9lection contest\u00e9e d\u2019Andry Rajoelina en 2023, et un ',h('strong',null,'pillage syst\u00e9matique des ressources naturelles'),' \u2014 bois de rose, nickel, cobalt, ilm\u00e9nite. La vuln\u00e9rabilit\u00e9 climatique (cyclones, d\u00e9forestation \u00e0 90\u00a0%) amplifie chaque crise. Le score SEMPLICE de ',h('strong',{className:'text-[#006650]'},'4,6/7 (\u00c9lev\u00e9)'),' refl\u00e8te un risque structurel profond. Pour les d\u00e9cideurs fran\u00e7ais, Madagascar repr\u00e9sente un enjeu francophone, un acc\u00e8s aux minerais critiques et un terrain d\u2019aide au d\u00e9veloppement \u00e0 red\u00e9finir.'
+     )
+    )
+   ),
+
+   // Th\u00e8se centrale
+   h('h2',null,'Th\u00e8se centrale'),
+   h('p',null,
+    'Madagascar est un paradoxe : une ',h('strong',null,'richesse naturelle exceptionnelle encha\u00een\u00e9e \u00e0 une pauvret\u00e9 structurelle'),'. L\u2019\u00eele abrite 5\u00a0% de la biodiversit\u00e9 mondiale, des gisements de nickel, cobalt et terres rares strat\u00e9giques, et une position g\u00e9ographique cl\u00e9 dans le canal du Mozambique. Pourtant, son PIB par habitant reste parmi les plus bas du monde (environ 500\u00a0$ par an), ses institutions sont captur\u00e9es par des \u00e9lites pr\u00e9datrices, et sa population subit des crises r\u00e9currentes sans filet de s\u00e9curit\u00e9. La question n\u2019est pas de savoir si Madagascar peut se d\u00e9velopper \u2014 c\u2019est de comprendre ',h('strong',null,'pourquoi les m\u00e9canismes de pr\u00e9dation l\u2019en emp\u00eachent syst\u00e9matiquement'),'.'
+   ),
+
+   // Partie I
+   h('h2',null,'I. Crise politique chronique : le d\u00e9ficit d\u00e9mocratique'),
+
+   h('h3',null,'La r\u00e9\u00e9lection contest\u00e9e de Rajoelina'),
+   h('p',null,
+    'En novembre 2023, Andry Rajoelina a \u00e9t\u00e9 r\u00e9\u00e9lu pr\u00e9sident avec ',h('strong',null,'58,9\u00a0% des voix'),', mais dans un scrutin boycott\u00e9 par les principaux candidats de l\u2019opposition (source\u00a0: France 24, RFI). Le taux de participation officiel de 46\u00a0% masque une abstention massive dans les zones urbaines, o\u00f9 le m\u00e9contentement est le plus fort. La Communaut\u00e9 de d\u00e9veloppement d\u2019Afrique australe (SADC) et l\u2019Union africaine ont valid\u00e9 le processus, mais les observateurs ind\u00e9pendants ont relev\u00e9 de nombreuses irr\u00e9gularit\u00e9s \u2014 achat de votes, instrumentalisation de la CENI (Commission \u00e9lectorale nationale ind\u00e9pendante), et couverture m\u00e9diatique d\u00e9s\u00e9quilibr\u00e9e.'
+   ),
+   h('p',null,
+    'Ce d\u00e9ficit de l\u00e9gitimit\u00e9 mine la capacit\u00e9 du pouvoir \u00e0 conduire des r\u00e9formes structurelles. Le Parlement, domin\u00e9 par le parti pr\u00e9sidentiel IRD (Isika Rehetra miaraka amin\u2019i Andry Rajoelina), fonctionne comme une chambre d\u2019enregistrement. L\u2019opposition, fragment\u00e9e entre l\u2019ancien pr\u00e9sident Marc Ravalomanana et plusieurs figures r\u00e9gionales, peine \u00e0 s\u2019organiser. La soci\u00e9t\u00e9 civile, dynamique mais vuln\u00e9rable, fait face \u00e0 des pressions croissantes \u2014 ',h('strong',null,'sept journalistes poursuivis en 2025'),' selon Reporters sans fronti\u00e8res (RSF).'
+   ),
+
+   h('h3',null,'La capture institutionnelle'),
+   h('p',null,
+    'L\u2019indice de perception de la corruption de Transparency International classe Madagascar au ',h('strong',null,'149e rang sur 180 pays'),' en 2025 (score 24/100). La justice est soumise \u00e0 des pressions politiques constantes. Le Bureau ind\u00e9pendant anti-corruption (BIANCO), cr\u00e9\u00e9 en 2004, dispose de moyens limit\u00e9s et d\u2019une ind\u00e9pendance contest\u00e9e. Les march\u00e9s publics, en particulier dans les secteurs minier et des infrastructures, sont r\u00e9guli\u00e8rement entach\u00e9s de favoritisme. Cette capture institutionnelle constitue le premier obstacle \u00e0 tout d\u00e9veloppement durable.'
+   ),
+
+   h('div',{className:'insight-box alert not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#DC2626] mb-2'},'Risque politique'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'Le cycle politique malgache est marqu\u00e9 par une instabilit\u00e9 chronique : quatre crises majeures depuis 1991 (1991, 2002, 2009, 2018). Chaque transition de pouvoir s\u2019accompagne de paralysie \u00e9conomique et de recul des investissements \u00e9trangers. La prochaine \u00e9ch\u00e9ance critique : les \u00e9lections l\u00e9gislatives de 2028, potentiel d\u00e9clencheur de tensions.'
+    )
+   ),
+
+   // Partie II
+   h('h2',null,'II. Pr\u00e9dation des ressources : le mal end\u00e9mique'),
+
+   h('h3',null,'Le bois de rose : un trafic mondial'),
+   h('p',null,
+    'Le bois de rose malgache (',h('em',null,'Dalbergia'),'), inscrit \u00e0 l\u2019Annexe II de la CITES depuis 2013, reste l\u2019objet d\u2019un trafic massif. L\u2019ONG Environmental Investigation Agency (EIA) estime que ',h('strong',null,'plus de 350\u00a0000 arbres'),' ont \u00e9t\u00e9 abattus ill\u00e9galement entre 2010 et 2023, repr\u00e9sentant une valeur de march\u00e9 d\u00e9passant ',h('strong',null,'2 milliards de dollars'),'. La destination principale reste la Chine, o\u00f9 le bois de rose alimente l\u2019industrie du mobilier de luxe hongmu. Malgr\u00e9 le moratoire officiel sur l\u2019exportation, les saisies douani\u00e8res internationales attestent de la persistance du trafic \u2014 42 conteneurs intercept\u00e9s au port de Singapour en 2024 (source\u00a0: TRAFFIC).'
+   ),
+   h('p',null,
+    'Le r\u00e9seau de trafic implique des acteurs \u00e0 tous les niveaux : communaut\u00e9s rurales pouss\u00e9es par la pauvret\u00e9, interm\u00e9diaires locaux, exportateurs li\u00e9s au pouvoir politique, et importateurs chinois. La corruption des services douaniers et forestiers rend toute r\u00e9pression structurelle illusoire. Le CITES Standing Committee a menac\u00e9 Madagascar de suspension commerciale en 2024, mais l\u2019effet dissuasif reste limit\u00e9.'
+   ),
+
+   h('h3',null,'Nickel, cobalt et ilm\u00e9nite : la mal\u00e9diction mini\u00e8re'),
+   h('p',null,
+    'Le projet ',h('strong',null,'Ambatovy'),', op\u00e9r\u00e9 par le consortium japonais Sumitomo (avec la participation de Korea Resources Corp), repr\u00e9sente l\u2019un des plus grands investissements miniers d\u2019Afrique subsaharienne \u2014 environ ',h('strong',null,'8 milliards de dollars'),' investis. La mine produit du nickel et du cobalt, deux minerais critiques pour la transition \u00e9nerg\u00e9tique (batteries de v\u00e9hicules \u00e9lectriques). Cependant, le projet a connu des d\u00e9passements de co\u00fbts massifs, des difficult\u00e9s techniques et des tensions avec les communaut\u00e9s locales. La production reste en de\u00e7\u00e0 des objectifs initiaux.'
+   ),
+   h('p',null,
+    'Le groupe Rio Tinto exploite le gisement d\u2019ilm\u00e9nite de ',h('strong',null,'Fort Dauphin'),' (QIT Madagascar Minerals) depuis 2009. Ce projet, cens\u00e9 g\u00e9n\u00e9rer des retomb\u00e9es \u00e9conomiques locales, est r\u00e9guli\u00e8rement critiqu\u00e9 pour ses impacts environnementaux \u2014 d\u00e9forestation de la for\u00eat littorale, contamination des nappes phr\u00e9atiques, d\u00e9placement de communaut\u00e9s. Le ',h('strong',null,'taux de redistribution fiscale'),' aux collectivit\u00e9s locales reste opaque et contest\u00e9 (source\u00a0: Publish What You Pay, Global Witness).'
+   ),
+
+   h('div',{className:'insight-box gold not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2'},'Signal strat\u00e9gique'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'Le cobalt et le nickel malgaches int\u00e9ressent directement la strat\u00e9gie europ\u00e9enne des minerais critiques (Critical Raw Materials Act, 2024). Mais le risque op\u00e9rationnel \u2014 instabilit\u00e9 politique, corruption, d\u00e9ficit d\u2019infrastructures \u2014 rend tout nouvel investissement conditionn\u00e9 \u00e0 des garanties de gouvernance que le r\u00e9gime actuel ne peut offrir.'
+    )
+   ),
+
+   h('h3',null,'L\u2019or et les saphirs : l\u2019\u00e9conomie de l\u2019ombre'),
+   h('p',null,
+    'Au-del\u00e0 des grands projets industriels, l\u2019extraction artisanale d\u2019or et de pierres pr\u00e9cieuses (saphirs d\u2019Ilakaka, rubis d\u2019Andilamena) alimente une \u00e9conomie informelle massive. On estime \u00e0 ',h('strong',null,'500\u00a0000 le nombre de mineurs artisanaux'),' dans des conditions de travail extr\u00eames. Le travail des enfants dans les mines reste document\u00e9 par l\u2019OIT et Human Rights Watch. Les fili\u00e8res d\u2019exportation, largement informelles, \u00e9chappent presque totalement \u00e0 la fiscalit\u00e9 malgache \u2014 un manque \u00e0 gagner estim\u00e9 \u00e0 ',h('strong',null,'200-400 millions de dollars par an'),' (source\u00a0: EITI Madagascar, Banque mondiale).'
+   ),
+
+   // Partie III
+   h('h2',null,'III. La dimension sociale : un pays au bord du gouffre'),
+
+   h('h3',null,'Pauvret\u00e9 extr\u00eame et in\u00e9galit\u00e9s'),
+   h('p',null,
+    'Avec ',h('strong',null,'81\u00a0% de sa population vivant sous le seuil de pauvret\u00e9 international'),' (2,15 $/jour PPA), Madagascar est l\u2019un des pays les plus pauvres du monde (source\u00a0: Banque mondiale, 2025). Le PIB par habitant, environ 500 dollars, a ',h('strong',null,'diminu\u00e9 en termes r\u00e9els depuis l\u2019ind\u00e9pendance en 1960'),' \u2014 un cas unique parmi les grandes \u00eeles. L\u2019indice de d\u00e9veloppement humain (IDH) classe le pays au ',h('strong',null,'173e rang sur 193'),' (UNDP, 2025). Le coefficient de Gini de 0,43 refl\u00e8te des in\u00e9galit\u00e9s marqu\u00e9es entre la capitale Antananarivo et le reste du pays.'
+   ),
+   h('p',null,
+    'La malnutrition chronique touche ',h('strong',null,'42\u00a0% des enfants de moins de 5 ans'),' (stunting), un taux parmi les plus \u00e9lev\u00e9s au monde (source\u00a0: UNICEF). Dans le sud du pays (r\u00e9gions Androy et Anosy), la s\u00e9cheresse r\u00e9currente a provoqu\u00e9 ce que le PAM a qualifi\u00e9 de premi\u00e8re \u00ab\u00a0famine climatique\u00a0\u00bb au monde en 2021-2022. La situation reste pr\u00e9caire en 2026, avec ',h('strong',null,'1,3 million de personnes en ins\u00e9curit\u00e9 alimentaire aig\u00fce'),' (IPC phase 3+).'
+   ),
+
+   h('h3',null,'L\u2019effondrement des services publics'),
+   h('p',null,
+    'La soci\u00e9t\u00e9 d\u2019\u00e9lectricit\u00e9 JIRAMA (Jiro sy Rano Malagasy) est devenue le symbole du d\u00e9labrement institutionnel. Les coupures d\u00e9passent ',h('strong',null,'12 heures par jour'),' dans la plupart des villes de province, et la JIRAMA accumule un d\u00e9ficit chronique de plus de ',h('strong',null,'100 millions de dollars par an'),'. Le syst\u00e8me de sant\u00e9 ne dispose que de ',h('strong',null,'2 m\u00e9decins pour 10\u00a0000 habitants'),' (OMS) \u2014 contre 32 en France. Le taux de mortalit\u00e9 maternelle reste parmi les plus \u00e9lev\u00e9s au monde (392 pour 100\u00a0000 naissances vivantes). L\u2019\u00e9ducation souffre de taux d\u2019abandon massifs : moins de ',h('strong',null,'30\u00a0% des enfants ach\u00e8vent le cycle secondaire'),'.'
+   ),
+
+   h('div',{className:'insight-box alert not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#DC2626] mb-2'},'Alerte humanitaire'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'Le sud de Madagascar reste en situation de crise alimentaire chronique. Le cumul de s\u00e9cheresse, cyclones et pauvret\u00e9 structurelle cr\u00e9e un cercle vicieux que l\u2019aide internationale ne parvient pas \u00e0 briser. Le PAM alerte sur un risque de famine localis\u00e9e en cas de saison cyclonique particuli\u00e8rement destructrice en 2026-2027.'
+    )
+   ),
+
+   // Partie IV
+   h('h2',null,'IV. Vuln\u00e9rabilit\u00e9 climatique : un pays en premi\u00e8re ligne'),
+
+   h('h3',null,'Cyclones r\u00e9currents et \u00e9rosion c\u00f4ti\u00e8re'),
+   h('p',null,
+    'Madagascar est l\u2019un des pays les plus expos\u00e9s aux cyclones tropicaux dans l\u2019oc\u00e9an Indien. Le ',h('strong',null,'cyclone Gamane (mars 2024)'),' a caus\u00e9 124 d\u00e9c\u00e8s, d\u00e9plac\u00e9 460\u00a0000 personnes et d\u00e9truit 120\u00a0000 hectares de cultures (source\u00a0: OCHA, BNGRC). En moyenne, 3 \u00e0 4 cyclones frappent l\u2019\u00eele par saison, chaque passage effondrant un peu plus des infrastructures d\u00e9j\u00e0 fragiles. Les co\u00fbts de reconstruction absorbent une part croissante du budget national \u2014 en 2023-2024, les dommages cumul\u00e9s sont estim\u00e9s \u00e0 ',h('strong',null,'plus de 600 millions de dollars'),' (source\u00a0: Banque mondiale, Global Facility for Disaster Reduction).'
+   ),
+   h('p',null,
+    'L\u2019\u00e9l\u00e9vation du niveau de la mer menace les zones c\u00f4ti\u00e8res basses, en particulier la c\u00f4te est et les villes portuaires de Toamasina et Mahajanga. Les mod\u00e8les climatiques du GIEC pr\u00e9voient une intensification de la fr\u00e9quence et de la puissance des cyclones dans le canal du Mozambique d\u2019ici 2050, rendant les projections de d\u00e9veloppement c\u00f4tier incertaines.'
+   ),
+
+   h('h3',null,'D\u00e9forestation : 90\u00a0% du couvert originel perdu'),
+   h('p',null,
+    'Madagascar a perdu ',h('strong',null,'plus de 90\u00a0% de sa for\u00eat originelle'),'. Le rythme de d\u00e9forestation reste alarmant : environ ',h('strong',null,'100\u00a0000 hectares par an'),' selon Global Forest Watch. La culture sur br\u00fblis (tavy), pratiqu\u00e9e par des millions de paysans faute d\u2019alternatives, est la premi\u00e8re cause de d\u00e9forestation. Le charbon de bois, principale source d\u2019\u00e9nergie domestique (utilis\u00e9 par 90\u00a0% des m\u00e9nages), alimente la destruction des for\u00eats r\u00e9siduelles. Les cons\u00e9quences sont en cascade : \u00e9rosion des sols (les ',h('em',null,'lavaka'),', ravines g\u00e9antes, sont visibles depuis l\u2019espace), envasement des rivi\u00e8res, perte de biodiversit\u00e9.'
+   ),
+
+   h('div',{className:'insight-box gold not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2'},'Enjeu biodiversit\u00e9'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'Madagascar est un hotspot de biodiversit\u00e9 absolument unique : ',h('strong',null,'environ 90\u00a0% de ses esp\u00e8ces sont end\u00e9miques'),' (l\u00e9muriens, baobabs, cam\u00e9l\u00e9ons). L\u2019UICN classe 120 esp\u00e8ces de l\u00e9muriens sur 111 comme menac\u00e9es. La perte de cet h\u00e9ritage biologique est irr\u00e9versible et constitue un enjeu mondial, pas seulement malgache.'
+    )
+   ),
+
+   // Partie V
+   h('h2',null,'V. Impact pour les d\u00e9cideurs fran\u00e7ais'),
+
+   h('h3',null,'Matrice d\u2019impact'),
+   h('div',{className:'not-prose my-6 overflow-x-auto'},
+    h('table',{className:'w-full text-sm border-collapse'},
+     h('thead',null,
+      h('tr',{className:'bg-[#F7F8FA]'},
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Enjeu'),
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Niveau'),
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'D\u00e9tail')
+      )
+     ),
+     h('tbody',null,
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Minerais critiques'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#f59e0b] px-2 py-0.5 rounded'},'MOD\u00c9R\u00c9')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Nickel/cobalt pour batteries, mais risque op\u00e9rationnel \u00e9lev\u00e9')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Aide au d\u00e9veloppement'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#DC2626] px-2 py-0.5 rounded'},'\u00c9LEV\u00c9')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Red\u00e9finir strat\u00e9gie AFD, conditionnalit\u00e9 gouvernance')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Biodiversit\u00e9'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#DC2626] px-2 py-0.5 rounded'},'CRITIQUE')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'90\u00a0% esp\u00e8ces end\u00e9miques menac\u00e9es, perte irr\u00e9versible')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'S\u00e9curit\u00e9 maritime'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#f59e0b] px-2 py-0.5 rounded'},'MOD\u00c9R\u00c9')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Canal du Mozambique, piraterie, base R\u00e9union')
+      ),
+      h('tr',null,
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Francophonie'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#f59e0b] px-2 py-0.5 rounded'},'MOD\u00c9R\u00c9')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Influence culturelle et linguistique \u00e0 pr\u00e9server')
+      )
+     )
+    )
+   ),
+
+   h('h3',null,'La France et Madagascar : un lien historique \u00e0 r\u00e9inventer'),
+   h('p',null,
+    'La France reste le premier bailleur bilat\u00e9ral de Madagascar, avec une enveloppe AFD d\u2019environ ',h('strong',null,'150 millions d\u2019euros par an'),'. Mais l\u2019efficacit\u00e9 de cette aide est contest\u00e9e : les indicateurs de d\u00e9veloppement ne cessent de se d\u00e9grader malgr\u00e9 des d\u00e9cennies de coop\u00e9ration. La communaut\u00e9 fran\u00e7aise (environ 25\u00a0000 ressortissants) est expos\u00e9e \u00e0 l\u2019ins\u00e9curit\u00e9 croissante \u2014 ',h('strong',null,'agressions, kidnappings et cambriolages en hausse de 35\u00a0% en 2024-2025'),' selon le MEAE.'
+   ),
+   h('p',null,
+    'La base militaire fran\u00e7aise de La R\u00e9union (FAZSOI \u2014 Forces arm\u00e9es de la zone sud de l\u2019oc\u00e9an Indien) surveille le canal du Mozambique, corridor maritime strat\u00e9gique pour le commerce Asie-Europe. La piraterie r\u00e9siduelle et le trafic maritime ill\u00e9gal (p\u00eache, drogue) justifient une pr\u00e9sence navale continue. L\u2019enjeu francophone est \u00e9galement significatif : Madagascar est le ',h('strong',null,'4e pays francophone par la population'),', et la progression du mandarin (via les programmes Confucius) et de l\u2019anglais \u00e9rode l\u2019influence linguistique fran\u00e7aise.'
+   ),
+
+   h('h3',null,'Recommandations op\u00e9rationnelles'),
+   h('p',null,
+    h('strong',null,'Imm\u00e9diat (0-3 mois)'),' \u2014 Renforcer la veille s\u00e9curit\u00e9 pour les ressortissants et entreprises fran\u00e7ais \u00e0 Madagascar. Conditionner les nouveaux d\u00e9caissements AFD \u00e0 des progr\u00e8s mesurables en mati\u00e8re de gouvernance. \u00c9valuer l\u2019exposition des fournisseurs fran\u00e7ais aux fili\u00e8res nickel/cobalt malgaches.'
+   ),
+   h('p',null,
+    h('strong',null,'Court terme (3-12 mois)'),' \u2014 Soutenir les m\u00e9canismes de transparence EITI pour le secteur extractif. Renforcer les programmes de conservation biodiversit\u00e9 (parcs nationaux, corridors forestiers). Int\u00e9grer Madagascar dans la strat\u00e9gie fran\u00e7aise des minerais critiques, mais avec des exigences ESG contraignantes.'
+   ),
+   h('p',null,
+    h('strong',null,'Moyen terme (1-3 ans)'),' \u2014 Accompagner la r\u00e9forme du secteur \u00e9lectrique (JIRAMA) comme levier de stabilisation \u00e9conomique. Soutenir la d\u00e9centralisation effective pour r\u00e9duire la concentration du pouvoir \u00e0 Antananarivo. Maintenir l\u2019engagement francophone via l\u2019\u00e9ducation et la formation professionnelle.'
+   ),
+
+   // Score SEMPLICE
+   h('h2',null,'\u00c9valuation SEMPLICE'),
+   h('div',{className:'not-prose my-6 overflow-x-auto'},
+    h('table',{className:'w-full text-sm border-collapse'},
+     h('thead',null,
+      h('tr',{className:'bg-[#F7F8FA]'},
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Dimension'),
+       h('th',{className:'text-center px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Score'),
+       h('th',{className:'text-center px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Tendance')
+      )
+     ),
+     h('tbody',null,
+      ...([
+       ['Social','5.8/7','\u2191'],
+       ['\u00c9conomique','4.1/7','\u2192'],
+       ['Militaire','4.2/7','\u2192'],
+       ['Politique','5.5/7','\u2191'],
+       ['L\u00e9gal','4.9/7','\u2192'],
+       ['Information','3.5/7','\u2192'],
+       ['Cyber','4.7/7','\u2191'],
+       ['Environnemental','4.3/7','\u2191']
+      ].map((r,i)=>
+       h('tr',{key:i,className:'border-b border-[#E2E5EB]'},
+        h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},r[0]),
+        h('td',{className:'px-3 py-2.5 text-center font-data font-semibold text-[#006650]'},r[1]),
+        h('td',{className:'px-3 py-2.5 text-center text-lg'},r[2])
+       )
+      )),
+      h('tr',{className:'bg-[#006650]/5'},
+       h('td',{className:'px-3 py-2.5 font-bold text-[#006650]'},'COMPOSITE'),
+       h('td',{className:'px-3 py-2.5 text-center font-data font-bold text-[#DC2626] text-base'},'4.6/7'),
+       h('td',{className:'px-3 py-2.5 text-center text-lg'},'\u2191')
+      )
+     )
+    )
+   ),
+
+   // Opportunit\u00e9
+   h('h3',null,'Score d\u2019opportunit\u00e9'),
+   h('div',{className:'not-prose my-6 overflow-x-auto'},
+    h('table',{className:'w-full text-sm border-collapse'},
+     h('thead',null,
+      h('tr',{className:'bg-[#F7F8FA]'},
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Dimension'),
+       h('th',{className:'text-center px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Score')
+      )
+     ),
+     h('tbody',null,
+      ...([
+       ['Capital humain','1.9/7'],
+       ['Croissance','2.7/7'],
+       ['S\u00e9curit\u00e9','2.1/7'],
+       ['Gouvernance','1.9/7'],
+       ['Attractivit\u00e9 juridique','2.2/7'],
+       ['Innovation','1.7/7'],
+       ['Maturit\u00e9 tech','1.2/7'],
+       ['Durabilit\u00e9','2.0/7']
+      ].map((r,i)=>
+       h('tr',{key:i,className:'border-b border-[#E2E5EB]'},
+        h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},r[0]),
+        h('td',{className:'px-3 py-2.5 text-center font-data font-semibold text-[#5A6178]'},r[1])
+       )
+      )),
+      h('tr',{className:'bg-[#006650]/5'},
+       h('td',{className:'px-3 py-2.5 font-bold text-[#006650]'},'COMPOSITE OPPORTUNIT\u00c9'),
+       h('td',{className:'px-3 py-2.5 text-center font-data font-bold text-[#5A6178] text-base'},'2.0/7 \u2014 Minimal')
+      )
+     )
+    )
+   ),
+
+   // Indicateurs d'alerte
+   h('h3',null,'Indicateurs d\u2019alerte \u00e0 surveiller'),
+   h('div',{className:'insight-box not-prose'},
+    h('ul',{className:'space-y-1.5 text-sm text-[#3A3A3A]'},
+     h('li',null,h('strong',null,'Manifestations anti-Rajoelina > 5 villes'),' \u2014 signal de fracture politique'),
+     h('li',null,h('strong',null,'Coupures JIRAMA > 18h/jour'),' \u2014 seuil de col\u00e8re sociale'),
+     h('li',null,h('strong',null,'D\u00e9forestation > 150\u00a0000 ha/an'),' \u2014 acc\u00e9l\u00e9ration irr\u00e9versible'),
+     h('li',null,h('strong',null,'Cyclone de cat\u00e9gorie 4+ sur zone peupl\u00e9e'),' \u2014 crise humanitaire majeure'),
+     h('li',null,h('strong',null,'Suspension EITI ou CITES'),' \u2014 isolement diplomatique et commercial'),
+     h('li',null,h('strong',null,'Ins\u00e9curit\u00e9 alimentaire IPC 4+ > 500\u00a0000 personnes'),' \u2014 risque famine')
+    )
+   ),
+
+   // Disclaimer AMF
+   h('div',{className:'insight-box gold not-prose mt-10'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2'},'Avertissement AMF'),
+    h('p',{className:'text-xs text-[#6A6A6A] leading-relaxed'},
+     'Cette analyse est fournie \u00e0 titre informatif et ne constitue en aucun cas un conseil en investissement, une recommandation personnalis\u00e9e ou une incitation \u00e0 acheter ou vendre des instruments financiers. Les performances pass\u00e9es ne pr\u00e9jugent pas des performances futures. Tout investissement comporte des risques de perte en capital. Les \u00e9valuations de risque SEMPLICE refl\u00e8tent une appr\u00e9ciation \u00e0 date et ne constituent pas une garantie.'
+    )
+   ),
+
+   // Sources
+   h('div',{className:'pt-8 mt-8 border-t border-[#ECEEF2] not-prose'},
+    h('h4',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] mb-3'},'Sources principales (35+ sources \u2014 fiabilit\u00e9 A/B)'),
+    h('ul',{className:'space-y-1.5'},
+     h('li',null,h('a',{href:'https://www.worldbank.org/en/country/madagascar',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Banque mondiale \u2014 Madagascar Economic Update, indicateurs pauvret\u00e9 81\u00a0% (2025)')),
+     h('li',null,h('a',{href:'https://hdr.undp.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'UNDP \u2014 Human Development Report, IDH Madagascar 173e/193 (2025)')),
+     h('li',null,h('a',{href:'https://www.transparency.org/en/cpi/2025',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Transparency International \u2014 Indice de perception de la corruption, Madagascar 149e/180 (2025)')),
+     h('li',null,h('a',{href:'https://www.france24.com/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'France 24 \u2014 \u00c9lection pr\u00e9sidentielle Madagascar, r\u00e9\u00e9lection Rajoelina (nov. 2023)')),
+     h('li',null,h('a',{href:'https://www.rfi.fr/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'RFI \u2014 Madagascar : boycott opposition, contestation \u00e9lectorale (2023-2024)')),
+     h('li',null,h('a',{href:'https://www.madagascar-tribune.com/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Madagascar Tribune \u2014 Coupures JIRAMA, crise \u00e9nerg\u00e9tique (multi-articles 2024-2026)')),
+     h('li',null,h('a',{href:'https://www.crisisgroup.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'International Crisis Group \u2014 Madagascar: Averting a Return to Crisis (2024)')),
+     h('li',null,h('a',{href:'https://eia-international.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Environmental Investigation Agency \u2014 Trafic bois de rose, 350\u00a0000 arbres abattus')),
+     h('li',null,h('a',{href:'https://www.traffic.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'TRAFFIC \u2014 Saisies bois de rose, 42 conteneurs Singapour (2024)')),
+     h('li',null,h('a',{href:'https://www.globalwitness.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Global Witness \u2014 Secteur extractif Madagascar, transparence fiscale')),
+     h('li',null,h('a',{href:'https://eiti.org/countries/madagascar',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'EITI Madagascar \u2014 Rapports transparence industries extractives')),
+     h('li',null,h('a',{href:'https://www.globalforestwatch.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Global Forest Watch \u2014 D\u00e9forestation Madagascar, 100\u00a0000 ha/an')),
+     h('li',null,h('a',{href:'https://www.unicef.org/madagascar',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'UNICEF \u2014 Malnutrition chronique 42\u00a0% enfants < 5 ans')),
+     h('li',null,h('a',{href:'https://www.wfp.org/countries/madagascar',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Programme alimentaire mondial \u2014 Ins\u00e9curit\u00e9 alimentaire, 1,3M personnes IPC 3+')),
+     h('li',null,h('a',{href:'https://www.unocha.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'OCHA \u2014 Cyclone Gamane : 124 d\u00e9c\u00e8s, 460\u00a0000 d\u00e9plac\u00e9s (mars 2024)')),
+     h('li',null,h('a',{href:'https://rsf.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Reporters sans fronti\u00e8res \u2014 Libert\u00e9 de la presse Madagascar (2025)')),
+     h('li',null,h('a',{href:'https://www.who.int/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'OMS \u2014 Profil sanitaire Madagascar, 2 m\u00e9decins / 10\u00a0000 hab.')),
+     h('li',null,h('a',{href:'https://www.hrw.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Human Rights Watch \u2014 Travail des enfants mines artisanales Madagascar')),
+     h('li',null,h('a',{href:'https://www.iucn.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'UICN \u2014 Liste rouge : 120 esp\u00e8ces de l\u00e9muriens menac\u00e9es')),
+     h('li',null,h('a',{href:'https://www.diplomatie.gouv.fr/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'MEAE \u2014 Conseils aux voyageurs Madagascar, ins\u00e9curit\u00e9 +35\u00a0% (2024-2025)'))
+    ),
+    h('p',{className:'mt-3 text-[10px] text-[#6A6A6A] italic'},'Collecte OSINT compl\u00e8te : 35+ sources, grille de fiabilit\u00e9 A/B/C. Mis \u00e0 jour le 15 mars 2026.')
+   ),
+
+   // Back nav
+   h('div',{className:'mt-10 text-center not-prose'},
+    h('a',{href:'analyses.html',className:'inline-block px-6 py-2.5 text-sm font-semibold text-[#006650] border-2 border-[#006650] rounded-lg hover:bg-[#006650] hover:text-white transition-colors'},'\u2190 Toutes les analyses')
+   )
+  ),
+
+  // Sidebar
+  h('aside',{className:'hidden lg:block lg:w-[220px] flex-shrink-0'},
+   h('div',{className:'lg:sticky lg:top-24'},
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Articles li\u00e9s'),
+    h('div',{className:'flex flex-col gap-4'},
+     ...RELATED_ARTICLES.map(a=>
+      h('a',{key:a.id,href:a.href,className:'article-card block rounded-xl overflow-hidden bg-white border border-[#E2E5EB] no-underline'},
+       h('div',{className:'aspect-[16/9] overflow-hidden'},
+        h('img',{src:a.img,alt:'',className:'w-full h-full object-cover',loading:'lazy'})
+       ),
+       h('div',{className:'p-3'},
+        h('span',{className:`category-${a.cat} text-[9px] font-semibold uppercase tracking-wider text-white px-1.5 py-0.5 rounded`},a.catLabel),
+        h('h4',{className:'mt-2 text-xs font-semibold text-[#1A1F2E] leading-snug line-clamp-2',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},a.title)
+       )
+      )
+     )
+    )
+   )
+  )
+ )
+)
+}
+
+// ─── FOOTER ──────────────────────────────────────────────────────────────────
+
+function Footer(){
+const footerLinks={
+intelligence:[
+{label:'G\u00e9opolitique',href:'geopolitics.html'},
+{label:'March\u00e9s',href:'markets.html'},
+{label:'Crypto',href:'crypto.html'},
+{label:'Mati\u00e8res premi\u00e8res',href:'commodities.html'},
+{label:'ETF & Fonds',href:'etf.html'},
+],
+plateforme:[
+{label:'Analyses',href:'analyses.html'},
+{label:'Expertise',href:'expertise.html'},
+{label:'Services',href:'premium.html'},
+{label:'Diagnostic',href:'premium.html#diagnostic'},
+],
+}
+const sources=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC']
+
+return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-12 sm:pt-16 pb-24 sm:pb-20'},
+ h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+  h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-10 mb-12'},
+   h('div',{className:'col-span-2 md:col-span-1'},
+    h('div',{className:'flex items-center gap-2 mb-4'},
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto'})
+    ),
+    h('p',{className:'text-sm text-[#5A6178] leading-relaxed'},'Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.')
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Intelligence'),
+    h('ul',{className:'space-y-2.5'},
+     ...footerLinks.intelligence.map(l=>
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+     )
+    )
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Plateforme'),
+    h('ul',{className:'space-y-2.5'},
+     ...footerLinks.plateforme.map(l=>
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+     )
+    )
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Suivez-nous'),
+    h('div',{className:'flex items-center gap-3 mb-4'},
+     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+      h('svg',{width:16,height:16,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'}))
+     ),
+     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+      h('svg',{width:14,height:14,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'}))
+     )
+    ),
+    h('a',{href:'#',className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},'Contact')
+   )
+  ),
+  h('div',{className:'border-t border-[#E2E5EB] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
+   h('span',{className:'text-sm text-[#5A6178]'},'\u00a9 2026 Inflexion \u2014 Intelligence financi\u00e8re & g\u00e9opolitique'),
+   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#5A6178]/40 font-medium'},
+    ...sources.map(s=>h('span',{key:s},s))
+   )
+  )
+ )
+)
+}
+
+// ─── APP ─────────────────────────────────────────────────────────────────────
+
+function App(){
+return h('div',null,
+ h(Navigation),
+ h(ArticleHero),
+ h(ArticleContent),
+ h(Footer)
+)
+}
+
+createRoot(document.getElementById('app')).render(h(App))
+</script>
+</body>
+</html>

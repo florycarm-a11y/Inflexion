@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Sahel — Fracture sahélienne et recomposition sécuritaire — Inflexion</title>
+<meta name="description" content="Mali, Niger, Burkina Faso : triple coup d'État, Alliance des États du Sahel, crise sécuritaire et recomposition géopolitique. Analyse SEMPLICE 5.8/7 pour les décideurs. Inflexion."/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{brand:{900:'#06402A',800:'#006650',700:'#007A60',600:'#008066',500:'#00997A',400:'#33B894',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden}
+
+h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
+.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#006650}
+
+@keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.anim-fade-up{animation:fade-up .6s ease-out both}
+.anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}
+
+.nav-link{position:relative}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.mega-trigger{position:relative}
+.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:520px;z-index:60}
+.mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.mega-item{transition:background .15s ease}
+.mega-item:hover{background:rgba(27,107,74,.06)}
+.mega-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.nav-scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid #E2E5EB;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+
+.hamburger span{display:block;width:24px;height:2px;background:#1A1F2E;margin:5px 0;transition:all .3s ease}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-overlay{opacity:0;visibility:hidden;transition:opacity .35s cubic-bezier(.4,0,.2,1),visibility .35s;height:100dvh}
+.mobile-overlay.open{opacity:1;visibility:visible}
+@keyframes menu-item-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.menu-item{opacity:0}
+.mobile-overlay.open .menu-item{animation:menu-item-in .4s ease-out forwards}
+body.menu-open{overflow:hidden}
+
+.prose p{margin-bottom:1.25rem;font-size:1rem;line-height:1.75;color:#3A3A3A}
+@media(min-width:640px){.prose p{font-size:1.0625rem;line-height:1.8}}
+.prose strong{color:#1A1F2E}
+.prose h2{font-size:1.375rem;color:#006650;margin-top:2.5rem;margin-bottom:1rem;line-height:1.3}
+@media(min-width:640px){.prose h2{font-size:1.625rem;margin-top:3.25rem;margin-bottom:1.25rem}}
+.prose h3{font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;color:#006650;margin-top:1.75rem;margin-bottom:0.75rem;letter-spacing:0.3px}
+@media(min-width:640px){.prose h3{font-size:1.0625rem;margin-top:2rem}}
+
+.key-figure{background:linear-gradient(135deg,#006650 0%,#06402A 100%);border-radius:0.5rem;padding:1.5rem 1rem;text-align:center;position:relative;overflow:hidden}
+@media(min-width:640px){.key-figure{padding:2.5rem 2rem}}
+.key-figure::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#006650,#33B894,rgba(255,255,255,0.3))}
+
+.insight-box{border-left:3px solid #006650;background:#F7F8FA;padding:1rem 1rem;margin:1.5rem 0;border-radius:0 0.5rem 0.5rem 0}
+@media(min-width:640px){.insight-box{padding:1.25rem 1.5rem;margin:1.75rem 0}}
+.insight-box.alert{border-left-color:#DC2626}
+.insight-box.gold{border-left-color:#EAB308}
+
+.article-card{transition:transform .2s ease,box-shadow .2s ease}
+.article-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(10,22,40,.08)}
+
+.category-geo{background:#2563eb}.category-marches{background:#006650}.category-crypto{background:#f59e0b}.category-matieres{background:#ef4444}.category-iatech{background:#8b5cf6}
+
+.font-data{font-family:'JetBrains Mono','SF Mono',monospace}
+
+/* Hero gradient dynamique 3D */
+@keyframes hero-gradient-shift{
+0%{background-position:0% 50%}
+25%{background-position:100% 25%}
+50%{background-position:100% 75%}
+75%{background-position:0% 100%}
+100%{background-position:0% 50%}
+}
+@keyframes hero-orb-float{
+0%,100%{transform:translate(0,0) scale(1)}
+33%{transform:translate(30px,-20px) scale(1.1)}
+66%{transform:translate(-20px,15px) scale(0.95)}
+}
+.hero-dynamic{
+background:linear-gradient(135deg,#004D3D 0%,#006650 25%,#007A60 50%,#06402A 75%,#004D3D 100%);
+background-size:400% 400%;
+animation:hero-gradient-shift 12s ease infinite;
+position:relative;
+overflow:hidden;
+}
+.hero-dynamic::before{
+content:'';
+position:absolute;
+top:-50%;left:-50%;
+width:200%;height:200%;
+background:radial-gradient(ellipse at 30% 20%,rgba(51,184,148,.15) 0%,transparent 50%),
+            radial-gradient(ellipse at 70% 80%,rgba(0,122,96,.2) 0%,transparent 50%),
+            radial-gradient(ellipse at 50% 50%,rgba(200,149,90,.06) 0%,transparent 40%);
+animation:hero-orb-float 8s ease-in-out infinite;
+pointer-events:none;
+}
+.hero-dynamic::after{
+content:'';
+position:absolute;
+bottom:0;left:0;right:0;
+height:120px;
+background:linear-gradient(to top,rgba(255,255,255,.06) 0%,transparent 100%);
+pointer-events:none;
+}
+.hero-wave{
+position:absolute;
+bottom:-1px;left:0;right:0;
+width:100%;
+line-height:0;
+z-index:2;
+}
+.hero-wave svg{
+width:100%;
+height:60px;
+display:block;
+}
+@media(min-width:768px){
+.hero-wave svg{height:80px}
+}
+.glass{background:rgba(0,102,80,.06);backdrop-filter:blur(16px);border:1px solid rgba(0,102,80,.10)}
+.glass-light{background:rgba(0,102,80,.04);backdrop-filter:blur(12px);border:1px solid rgba(0,102,80,.06)}
+.hero-dark{background-color:#006650;color:#FFFFFF}
+.hero-dark h1,.hero-dark h2,.hero-dark .display-text{color:#FFFFFF}
+.section-alt{background-color:#F7F8FA}
+.section-divider{border-top:1px solid #ECEEF2}
+.featured-card{position:relative;overflow:hidden}
+.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:#006650;transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
+.featured-card:hover::before{transform:scaleY(1)}
+.hero-glow{position:absolute;top:-120px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,102,80,.06) 0%,transparent 70%);pointer-events:none}
+@media(max-width:768px){
+html,body{overflow-x:hidden}
+img{max-width:100%;height:auto}
+button,a[href]:not(.prose a){min-height:44px;min-width:44px}
+.mobile-overlay .menu-item a{min-height:48px;display:flex;align-items:center}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="nav-config.js"></script>
+<script type="module">
+import React,{useState,useEffect,useRef} from 'https://esm.sh/react@18.2.0'
+import{createRoot}from 'https://esm.sh/react-dom@18.2.0/client'
+
+const h=React.createElement
+
+const RELATED_ARTICLES=[
+{id:1,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'P\u00e9trole \u00e0 119 $ : Trump, Iran et le d\u00e9troit d\u2019Ormuz',img:'https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=300&h=200&fit=crop',href:'analyse-petrole-trump-iran-ormuz.html'},
+{id:2,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'Cuba \u2014 La crise de trop : effondrement \u00e9nerg\u00e9tique et si\u00e8ge am\u00e9ricain',img:'https://images.unsplash.com/photo-1500759285222-a95626b934cb?w=300&h=200&fit=crop',href:'analyse-cuba-crise-perspectives.html'},
+{id:3,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'Arctique \u2014 Groenland : le grand jeu polaire',img:'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=300&h=200&fit=crop',href:'analyse-arctique-groenland-grand-jeu-polaire.html'},
+]
+
+const MEGA_NAV=window.MEGA_NAV
+
+// ─── NAVIGATION ──────────────────────────────────────────────────────────────
+
+function Navigation(){
+const[open,setOpen]=useState(false)
+const[scrolled,setScrolled]=useState(false)
+useEffect(()=>{
+const fn=()=>setScrolled(window.scrollY>60)
+window.addEventListener('scroll',fn,{passive:true})
+return()=>window.removeEventListener('scroll',fn)
+},[])
+useEffect(()=>{
+if(open){document.body.classList.add('menu-open')}else{document.body.classList.remove('menu-open')}
+return()=>document.body.classList.remove('menu-open')
+},[open])
+return h('div',null,
+ h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#C8955A]'}),
+ h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
+  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+   h('div',{className:'flex items-center justify-between h-16'},
+    h('a',{href:'index.html',className:'flex items-center gap-2'},
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(10) saturate(0) invert(0)',transition:'filter 0.3s ease'}})
+    ),
+    h('nav',{className:'hidden md:flex items-center gap-1'},
+     ...MEGA_NAV.map((cat,ci)=>
+      h('div',{key:ci,className:'mega-trigger'},
+       h('span',{className:`nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none ${scrolled?'text-gray-500 hover:text-[#006650]':'text-white/70 hover:text-white'}`},cat.label),
+       h('div',{className:'mega-menu bg-white rounded-2xl shadow-xl border border-gray-100 p-5'},
+        h('div',{className:'grid gap-1'},
+         ...cat.children.map((item,ii)=>
+          h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline'},
+           h('span',{className:'mega-icon bg-[#006650]/10 text-[#006650]'},item.icon),
+           h('span',{className:'flex flex-col'},
+            h('span',{className:'text-sm font-semibold text-gray-900'},item.label),
+            h('span',{className:'text-xs text-gray-500 mt-0.5'},item.desc)
+           )
+          )
+         )
+        )
+       )
+      )
+     ),
+     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#006650] hover:bg-[#06402A] text-white font-semibold text-sm rounded-lg transition-colors'},'R\u00e9server un diagnostic')
+    ),
+    h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,'aria-label':'Menu',onClick:()=>setOpen(!open)},
+     h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}})
+    )
+   )
+  )
+ ),
+ h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#006650'}},
+  h('div',{className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0'},
+   h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-8 w-auto',style:{filter:'brightness(10) saturate(0)'}}),
+   h('button',{onClick:()=>setOpen(false),className:'w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
+    h('svg',{width:18,height:18,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2.5,strokeLinecap:'round',className:'text-white'},h('path',{d:'M18 6L6 18M6 6l12 12'}))
+   )
+  ),
+  h('div',{className:'flex-1 overflow-y-auto px-6 pt-2 pb-4'},
+   ...MEGA_NAV.map((cat,ci)=>[
+    h('p',{key:'h'+ci,className:'menu-item text-[11px] uppercase tracking-[.2em] text-white/40 font-semibold mb-3'+(ci>0?' mt-8':''),style:{animationDelay:`${0.05+ci*0.18}s`}},cat.label),
+    ...cat.children.map((item,ii)=>
+     h('a',{key:'m'+ci+'-'+ii,href:item.href,onClick:()=>setOpen(false),className:'menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8',style:{animationDelay:`${0.08+ci*0.18+ii*0.05}s`}},
+      h('span',{className:'text-base'},item.icon),
+      h('span',{className:'text-base sm:text-lg md:text-[20px] font-medium'},item.label)
+     )
+    )
+   ]).flat()
+  ),
+  h('div',{className:'px-6 pt-4 pb-20 flex-shrink-0'},
+   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-xl transition-colors text-base',style:{animationDelay:'0.85s'}},'R\u00e9server un diagnostic')
+  )
+ )
+)
+}
+
+// ─── ARTICLE HERO ────────────────────────────────────────────────────────────
+
+function ArticleHero(){
+const heroRef=useRef(null)
+useEffect(()=>{
+const el=heroRef.current
+if(!el)return
+const onScroll=()=>{
+const r=el.getBoundingClientRect()
+const p=Math.max(0,Math.min(1,-r.top/(r.height||1)))
+el.style.setProperty('--scroll',p)
+el.querySelector('.hero-content').style.transform=`translateY(${p*40}px)`
+el.querySelector('.hero-content').style.opacity=1-p*0.6
+}
+window.addEventListener('scroll',onScroll,{passive:true})
+return()=>window.removeEventListener('scroll',onScroll)
+},[])
+return h('section',{ref:heroRef,className:'hero-dynamic relative pt-28 pb-24 md:pt-36 md:pb-28'},
+ h('div',{className:'hero-content relative z-[3] max-w-3xl mx-auto px-4 sm:px-6',style:{willChange:'transform,opacity'}},
+  h('div',{className:'anim-fade-up flex items-center gap-3 mb-6'},
+   h('span',{className:'px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white rounded bg-[#2563eb]'},'G\u00c9OPOLITIQUE'),
+   h('span',{className:'text-xs uppercase tracking-wider text-white/50'},'Afrique & S\u00e9curit\u00e9')
+  ),
+  h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-[2.75rem] font-bold text-white leading-[1.15] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+   'Sahel \u2014 Fracture sah\u00e9lienne et recomposition s\u00e9curitaire'
+  ),
+  h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/60 leading-relaxed'},
+   'Mali, Niger, Burkina Faso\u00a0: trois coups d\u2019\u00c9tat en trois ans, sortie de la CEDEAO, pivot vers Moscou. L\u2019Alliance des \u00c9tats du Sahel redessine la g\u00e9opolitique ouest-africaine tandis que les groupes arm\u00e9s \u00e9tendent leur emprise. Analyse des dynamiques, des acteurs et des cons\u00e9quences pour les d\u00e9cideurs fran\u00e7ais.'
+  ),
+  h('div',{className:'anim-fade-up anim-d3 mt-8 flex flex-wrap items-center gap-5 text-sm text-white/40'},
+   h('div',{className:'w-12 h-[2px] bg-[#33B894]'}),
+   h('span',null,h('strong',{className:'text-white/60'},'Inflexion Research')),
+   h('span',null,'15 mars 2026'),
+   h('span',null,'20 min de lecture')
+  )
+ ),
+ h('div',{className:'hero-wave'},
+  h('svg',{viewBox:'0 0 1440 80',preserveAspectRatio:'none',xmlns:'http://www.w3.org/2000/svg'},
+   h('path',{d:'M0,40 C180,80 360,0 540,40 C720,80 900,10 1080,40 C1200,60 1350,20 1440,40 L1440,80 L0,80 Z',fill:'#FFFFFF',fillOpacity:'0.07'}),
+   h('path',{d:'M0,50 C200,20 400,70 600,40 C800,10 1000,60 1200,35 C1320,20 1400,50 1440,45 L1440,80 L0,80 Z',fill:'#FFFFFF',fillOpacity:'0.05'}),
+   h('path',{d:'M0,60 C240,40 480,75 720,55 C960,35 1200,65 1440,50 L1440,80 L0,80 Z',fill:'#FFFFFF'})
+  )
+ )
+)
+}
+
+// ─── ARTICLE CONTENT ─────────────────────────────────────────────────────────
+
+function ArticleContent(){
+return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20'},
+ h('div',{className:'flex flex-col lg:flex-row gap-10 lg:gap-12'},
+
+  h('article',{className:'prose flex-1 min-w-0'},
+
+   // Key figures
+   h('div',{className:'grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 my-8 sm:my-10 not-prose'},
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'3'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Coups d\u2019\u00c9tat (2020-2023)')
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'7 200'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'\u00c9v\u00e9nements violents/an (ACLED)')
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'6.8/7'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Politique \u2014 Dim. la plus critique')
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'5.8/7'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Score SEMPLICE \u2014 Tr\u00e8s \u00e9lev\u00e9')
+    )
+   ),
+
+   // Synth\u00e8se ex\u00e9cutive
+   h('div',{className:'not-prose my-8 rounded-xl overflow-hidden border-2 border-[#006650]/30',style:{background:'linear-gradient(135deg, #E8F5EE 0%, #F0FAF5 100%)'}},
+    h('div',{className:'flex items-center gap-2 px-5 py-3',style:{background:'linear-gradient(90deg, #006650, #006650)'}},
+     h('span',{className:'text-lg'},'\ud83d\udccc'),
+     h('span',{className:'text-[11px] font-bold uppercase tracking-wider text-white'},'Synth\u00e8se ex\u00e9cutive')
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-[15px] text-[#1A1F2E] leading-relaxed'},
+      'Le Sahel traverse une fracture g\u00e9opolitique in\u00e9dite. En trois ans, le Mali, le Niger et le Burkina Faso ont connu ',h('strong',null,'trois coups d\u2019\u00c9tat militaires'),', quitt\u00e9 la CEDEAO et fond\u00e9 l\u2019Alliance des \u00c9tats du Sahel (AES), tournant le dos \u00e0 la France et \u00e0 l\u2019architecture de s\u00e9curit\u00e9 ouest-africaine. La zone enregistre ',h('strong',null,'7\u00a0200 \u00e9v\u00e9nements violents par an'),' (ACLED), plus de ',h('strong',null,'3 millions de d\u00e9plac\u00e9s internes'),', et une ins\u00e9curit\u00e9 alimentaire touchant 16 millions de personnes. Le score SEMPLICE de ',h('strong',{className:'text-[#006650]'},'5.8/7 (Tr\u00e8s \u00e9lev\u00e9)'),' refl\u00e8te un risque syst\u00e9mique majeur. Pour les d\u00e9cideurs fran\u00e7ais, la perte d\u2019acc\u00e8s \u00e0 l\u2019uranium nig\u00e9rien (Orano), les pressions migratoires et la menace terroriste persistante imposent un repositionnement strat\u00e9gique complet.'
+     )
+    )
+   ),
+
+   // Th\u00e8se centrale
+   h('h2',null,'Th\u00e8se centrale'),
+   h('p',null,
+    'La crise sah\u00e9lienne de 2026 n\u2019est pas un \u00e9pisode de plus dans la s\u00e9rie d\u2019instabilit\u00e9s qui frappe la r\u00e9gion depuis 2012. C\u2019est une ',h('strong',null,'rupture structurelle \u00e0 triple dimension'),'\u00a0: s\u00e9curitaire (expansion jihadiste incontr\u00f4l\u00e9e), politique (pr\u00e9torianisme militaire institutionnalis\u00e9) et g\u00e9opolitique (basculement de l\u2019axe d\u2019alliance vers Moscou et P\u00e9kin). L\u2019Alliance des \u00c9tats du Sahel (AES) constitue un fait accompli\u00a0: la zone de souverainet\u00e9 fran\u00e7aise post-coloniale est d\u00e9finitivement r\u00e9volue. La question n\u2019est plus de savoir si la France peut revenir, mais ',h('strong',null,'comment elle peut prot\u00e9ger ses int\u00e9r\u00eats r\u00e9siduels'),' et se repositionner dans une architecture r\u00e9gionale en recomposition.'
+   ),
+
+   // Partie I
+   h('h2',null,'I. Triple coup d\u2019\u00c9tat et Alliance des \u00c9tats du Sahel'),
+
+   h('h3',null,'La s\u00e9quence pr\u00e9torienne'),
+   h('p',null,
+    'En ',h('strong',null,'ao\u00fbt 2020'),', le colonel Assimi Go\u00efta renverse Ibrahim Boubacar Ke\u00efta au Mali, avant de proc\u00e9der \u00e0 un second coup en mai 2021 pour \u00e9carter le gouvernement de transition civilo-militaire. En ',h('strong',null,'janvier puis septembre 2022'),', le capitaine Ibrahim Traor\u00e9 prend le pouvoir au Burkina Faso apr\u00e8s le renversement de Damiba, lui-m\u00eame auteur du putsch de janvier. En ',h('strong',null,'juillet 2023'),', le g\u00e9n\u00e9ral Abdourahamane Tchiani renverse le pr\u00e9sident \u00e9lu Mohamed Bazoum au Niger \u2014 le dernier alli\u00e9 d\u00e9mocratique de la France dans la r\u00e9gion (source\u00a0: ICG, IFRI).'
+   ),
+   h('p',null,
+    'Ces coups d\u2019\u00c9tat partagent un sch\u00e9ma commun\u00a0: ',h('strong',null,'instrumentalisation du sentiment anti-fran\u00e7ais'),', discr\u00e9dit des \u00e9lites civiles accus\u00e9es de corruption et d\u2019inefficacit\u00e9 s\u00e9curitaire, promesses de souverainet\u00e9 retrouv\u00e9e. Dans les trois cas, les juntes ont b\u00e9n\u00e9fici\u00e9 d\u2019un soutien populaire initial significatif, nourri par la d\u00e9ception face \u00e0 l\u2019\u00e9chec des op\u00e9rations anti-terroristes internationales.'
+   ),
+
+   h('h3',null,'L\u2019AES\u00a0: un bloc de rupture'),
+   h('p',null,
+    'Le 16 septembre 2023, le Mali, le Niger et le Burkina Faso signent la ',h('strong',null,'Charte du Liptako-Gourma'),', cr\u00e9ant l\u2019Alliance des \u00c9tats du Sahel. Le 28 janvier 2024, les trois pays annoncent leur retrait de la CEDEAO, effectif en janvier 2025. L\u2019AES se dote d\u2019un passeport commun, d\u2019une banque d\u2019investissement projet\u00e9e et d\u2019un commandement militaire conjoint. En juillet 2024, la Conf\u00e9d\u00e9ration des \u00c9tats du Sahel est proclam\u00e9e \u00e0 Niamey, avec l\u2019ambition d\u2019\u00e9tendre le mod\u00e8le \u00e0 d\u2019autres \u00c9tats (source\u00a0: RFI, Le Monde Afrique).'
+   ),
+   h('p',null,
+    'La sortie de la CEDEAO a des cons\u00e9quences \u00e9conomiques majeures\u00a0: perte d\u2019acc\u00e8s au m\u00e9canisme de r\u00e9gulation commerciale r\u00e9gionale, isolement bancaire (BCEAO), et vuln\u00e9rabilit\u00e9 accrue aux sanctions. Le Burkina et le Niger, pays enclav\u00e9s, d\u00e9pendent du port d\u2019Abidjan et de Cotonou pour leurs approvisionnements \u2014 un levier de pression que la CEDEAO conserve.'
+   ),
+
+   h('div',{className:'insight-box gold not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2'},'Signal strat\u00e9gique'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'L\u2019AES n\u2019est pas une alliance d\u00e9fensive classique \u2014 c\u2019est un ',h('strong',null,'v\u00e9hicule de l\u00e9gitimation'),'. Les juntes instrumentalisent la souverainet\u00e9 r\u00e9gionale pour repousser ind\u00e9finiment tout calendrier de transition d\u00e9mocratique. Le pr\u00e9c\u00e9dent est dangereux pour l\u2019ensemble de l\u2019Afrique de l\u2019Ouest.'
+    )
+   ),
+
+   // Partie II
+   h('h2',null,'II. Crise s\u00e9curitaire\u00a0: l\u2019expansion jihadiste'),
+
+   h('h3',null,'JNIM et EIGS\u00a0: deux menaces, une r\u00e9gion submerge\u00e9e'),
+   h('p',null,
+    'La zone sah\u00e9lienne enregistre ',h('strong',null,'7\u00a0200 \u00e9v\u00e9nements violents par an'),' selon ACLED, un niveau record. Deux mouvements dominent\u00a0: le ',h('strong',null,'JNIM'),' (Groupe de soutien \u00e0 l\u2019Islam et aux Musulmans, affili\u00e9 \u00e0 Al-Qa\u00efda) et l\u2019',h('strong',null,'EIGS'),' (\u00c9tat islamique au Grand Sahara). Le JNIM contr\u00f4le de facto de vastes zones rurales au centre du Mali et au nord du Burkina, imposant sa gouvernance, pr\u00e9levant des taxes et rendant la justice. L\u2019EIGS, plus brutal, op\u00e8re dans la zone des trois fronti\u00e8res et s\u2019\u00e9tend vers le sud (source\u00a0: ACLED, ISS Africa).'
+   ),
+   h('p',null,
+    'Le ',h('strong',null,'massacre de Barsalogho'),' (ao\u00fbt 2024) illustre la catastrophe s\u00e9curitaire\u00a0: au moins 200 civils tu\u00e9s lors d\u2019une attaque du JNIM contre des volontaires pour la d\u00e9fense de la patrie (VDP) r\u00e9unis par l\u2019arm\u00e9e burkinab\u00e8. Human Rights Watch \u00e9voque l\u2019une des pires atrocit\u00e9s commises au Sahel. Ce massacre r\u00e9v\u00e8le l\u2019\u00e9chec de la strat\u00e9gie d\u2019armement des milices civiles comme substitut \u00e0 une arm\u00e9e professionnelle (source\u00a0: HRW, Le Monde Afrique).'
+   ),
+
+   h('h3',null,'Wagner/Africa Corps\u00a0: le remplacement fran\u00e7ais'),
+   h('p',null,
+    'Le retrait de la force Barkhane (2022) puis de Takuba (2023) a laiss\u00e9 un vide partiellement combl\u00e9 par le ',h('strong',null,'groupe Wagner'),' (devenu Africa Corps apr\u00e8s la mort de Prigojine). Au Mali, ',h('strong',null,'1\u00a0500 \u00e0 2\u00a0000 mercenaires'),' russes sont d\u00e9ploy\u00e9s, op\u00e9rant aux c\u00f4t\u00e9s des FAMa. Au Burkina, la pr\u00e9sence est estim\u00e9e \u00e0 300-400 \u00e9l\u00e9ments. Le mod\u00e8le est transactionnel\u00a0: s\u00e9curit\u00e9 (anti-insurrection, protection de la junte) contre acc\u00e8s aux ressources mini\u00e8res (or, uranium) (source\u00a0: SIPRI, IFRI).'
+   ),
+   h('p',null,
+    'L\u2019efficacit\u00e9 de Wagner est contest\u00e9e. Le massacre de Moura (mars 2022, 300+ civils tu\u00e9s selon l\u2019ONU), attribu\u00e9 conjointement aux FAMa et Wagner, illustre une strat\u00e9gie de contre-insurrection fond\u00e9e sur la terreur plut\u00f4t que sur le contr\u00f4le territorial. Les pertes russes se multiplient\u00a0: en juillet 2024, une embuscade du JNIM \u00e0 Tinzaouatine (nord du Mali) a co\u00fbt\u00e9 la vie \u00e0 ',h('strong',null,'plus de 80 combattants Wagner'),', l\u2019une des plus lourdes d\u00e9faites du groupe (source\u00a0: Le Monde, ISS Africa).'
+   ),
+
+   h('div',{className:'insight-box alert not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#DC2626] mb-2'},'Risque critique'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'L\u2019expansion jihadiste ne se limite plus au Sahel. Le JNIM et l\u2019EIGS progressent vers les \u00c9tats c\u00f4tiers\u00a0: B\u00e9nin, Togo, Ghana, C\u00f4te d\u2019Ivoire. Le risque d\u2019un \u00ab\u00a0arc d\u2019instabilit\u00e9\u00a0\u00bb s\u2019\u00e9tendant du Sahel au golfe de Guin\u00e9e menace l\u2019ensemble de l\u2019architecture de s\u00e9curit\u00e9 ouest-africaine et les int\u00e9r\u00eats \u00e9conomiques europ\u00e9ens dans la r\u00e9gion.'
+    )
+   ),
+
+   // Partie III
+   h('h2',null,'III. Dimension sociale et environnementale'),
+
+   h('h3',null,'Crise humanitaire\u00a0: 3 millions de d\u00e9plac\u00e9s'),
+   h('p',null,
+    'Le Burkina Faso concentre la crise humanitaire la plus aig\u00fc\u00e8 du Sahel avec ',h('strong',null,'plus de 2 millions de d\u00e9plac\u00e9s internes'),' \u2014 le pays comptant la croissance la plus rapide de d\u00e9placements forc\u00e9s au monde. Le Mali enregistre 400\u00a0000 d\u00e9plac\u00e9s, le Niger 350\u00a0000. Au total, plus de ',h('strong',null,'3 millions de personnes'),' ont fui leur foyer dans les trois pays. L\u2019ins\u00e9curit\u00e9 alimentaire touche ',h('strong',null,'16 millions de personnes'),' dans le Sahel central (source\u00a0: OCHA, PAM).'
+   ),
+   h('p',null,
+    'Les blocus militaires aggravent la situation\u00a0: au Burkina, plusieurs localit\u00e9s sont assi\u00e9g\u00e9es par les groupes arm\u00e9s, sans acc\u00e8s humanitaire. Au Mali, les combats dans la r\u00e9gion de Kidal apr\u00e8s la reprise de la ville par les FAMa et Wagner (novembre 2023) ont provoqu\u00e9 le d\u00e9placement de dizaines de milliers de Touaregs vers l\u2019Alg\u00e9rie et la Mauritanie. Les camps de r\u00e9fugi\u00e9s sont d\u00e9bord\u00e9s et sous-financ\u00e9s.'
+   ),
+
+   h('h3',null,'Stress environnemental et d\u00e9mographie'),
+   h('p',null,
+    'Le Sahel est l\u2019une des r\u00e9gions les plus vuln\u00e9rables au changement climatique. Les temp\u00e9ratures augmentent ',h('strong',null,'1,5 fois plus vite que la moyenne mondiale'),'. Le stress hydrique s\u2019intensifie\u00a0: la saisonnalit\u00e9 des pluies devient impr\u00e9visible, les nappes phr\u00e9atiques s\u2019\u00e9puisent, les conflits agropastoraux (cultivateurs vs \u00e9leveurs) se multiplient. Le lac Tchad a perdu ',h('strong',null,'90\u00a0% de sa surface'),' en 50 ans (source\u00a0: PNUE, Banque mondiale).'
+   ),
+   h('p',null,
+    'La d\u00e9mographie amplifie toutes les tensions. Le Niger affiche le ',h('strong',null,'taux de f\u00e9condit\u00e9 le plus \u00e9lev\u00e9 au monde'),' (6,7 enfants/femme). Le Burkina et le Mali d\u00e9passent 5 enfants/femme. La population des trois pays devrait passer de 70 millions (2025) \u00e0 ',h('strong',null,'130 millions d\u2019ici 2050'),'. Cette bombe d\u00e9mographique, dans un contexte de rarification des ressources et de gouvernance d\u00e9faillante, constitue un multiplicateur de risque structurel.'
+   ),
+
+   h('div',{className:'insight-box not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#006650] mb-2'},'Dynamique de fond'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'Le triptyque climat-d\u00e9mographie-gouvernance est le v\u00e9ritable moteur de la crise sah\u00e9lienne. Les coups d\u2019\u00c9tat et les guerres sont les sympt\u00f4mes d\u2019une fragilit\u00e9 structurelle que ni les arm\u00e9es nationales, ni Wagner, ni les interventions internationales n\u2019ont su traiter. Toute strat\u00e9gie de long terme doit int\u00e9grer ces param\u00e8tres.'
+    )
+   ),
+
+   // Partie IV
+   h('h2',null,'IV. G\u00e9opolitique des alliances\u00a0: le grand basculement'),
+
+   h('h3',null,'Le pivot russe'),
+   h('p',null,
+    'La Russie est devenue le partenaire s\u00e9curitaire de r\u00e9f\u00e9rence des trois juntes. Au-del\u00e0 de Wagner/Africa Corps, Moscou fournit des \u00e9quipements militaires (h\u00e9licopt\u00e8res Mi-171, blinds, munitions), forme des officiers et offre une couverture diplomatique au Conseil de s\u00e9curit\u00e9 de l\u2019ONU. En \u00e9change, les compagnies russes acc\u00e8dent aux ',h('strong',null,'gisements aurifres du Mali'),' (premier producteur d\u2019or d\u2019Afrique de l\u2019Ouest) et aux ressources uranif\u00e8res du Niger (source\u00a0: SIPRI, Africa Intelligence).'
+   ),
+   h('p',null,
+    'L\u2019axe Moscou-Sahel s\u2019inscrit dans la strat\u00e9gie russe de ',h('strong',null,'p\u00e9n\u00e9tration africaine'),'\u00a0: d\u00e9stabiliser l\u2019influence occidentale, s\u00e9curiser des ressources strat\u00e9giques, cr\u00e9er des bases d\u2019influence dans l\u2019arri\u00e8re-cour europ\u00e9enne. Cependant, la capacit\u00e9 russe \u00e0 fournir une alternative cr\u00e9dible \u00e0 l\u2019aide au d\u00e9veloppement occidentale reste limit\u00e9e\u00a0: Moscou n\u2019a ni les moyens financiers ni l\u2019expertise pour adresser les causes profondes de l\u2019instabilit\u00e9.'
+   ),
+
+   h('h3',null,'Le r\u00f4le chinois\u00a0: discret mais strat\u00e9gique'),
+   h('p',null,
+    'P\u00e9kin adopte une approche diff\u00e9rente\u00a0: investissements dans les infrastructures (routes, t\u00e9l\u00e9communications, \u00e9nergie), non-ing\u00e9rence proclam\u00e9e, relations pragmatiques avec tous les r\u00e9gimes. La Chine est le premier partenaire commercial du Niger et finance des projets de pipeline (p\u00e9trole nig\u00e9rien vers le port de S\u00e9m\u00e9, B\u00e9nin). L\u2019ouvrage du pipeline Niger-B\u00e9nin, ',h('strong',null,'2\u00a0000 km, 4 milliards de dollars'),', est op\u00e9r\u00e9 par CNPC (source\u00a0: Reuters, China-Global South Project).'
+   ),
+
+   h('h3',null,'Le retrait fran\u00e7ais\u00a0: chronique d\u2019une \u00e9viction'),
+   h('p',null,
+    'La France a \u00e9t\u00e9 expuls\u00e9e du Mali (f\u00e9vrier 2022, retrait Barkhane), du Burkina (f\u00e9vrier 2023, retrait des forces sp\u00e9ciales) et du Niger (d\u00e9cembre 2023, retrait des 1\u00a0500 soldats de la base de Niamey). L\u2019ambassadeur fran\u00e7ais a \u00e9t\u00e9 retenu \u00e0 Niamey avant d\u2019\u00eatre rappel\u00e9. Les relations diplomatiques sont au plus bas. Le ',h('strong',null,'sentiment anti-fran\u00e7ais'),', aliment\u00e9 par les r\u00e9seaux sociaux et les campagnes de d\u00e9sinformation (y compris russes), est d\u00e9sormais un fait structurel de la politique sah\u00e9lienne (source\u00a0: IFRI, Le Monde).'
+   ),
+
+   h('h3',null,'L\u2019axe Ankara-Moscou et la recomposition r\u00e9gionale'),
+   h('p',null,
+    'La Turquie renforce sa pr\u00e9sence au Sahel via la vente de drones Bayraktar TB2 au Niger et au Burkina, le d\u00e9ploiement de programmes de coop\u00e9ration militaire et l\u2019expansion de la TIKA (agence de coop\u00e9ration turque). Ankara et Moscou, bien que rivaux en Libye et en Syrie, convergent au Sahel sur un objectif commun\u00a0: ',h('strong',null,'r\u00e9duire l\u2019espace occidental'),'. L\u2019AES vs CEDEAO cristallise un affrontement plus large entre mod\u00e8les de gouvernance\u00a0: souverainet\u00e9 autoritaire vs int\u00e9gration r\u00e9gionale d\u00e9mocratique (source\u00a0: ISS Africa, SIPRI).'
+   ),
+
+   // Partie V
+   h('h2',null,'V. Impact pour les d\u00e9cideurs fran\u00e7ais'),
+
+   h('h3',null,'Matrice d\u2019impact sectoriel'),
+   h('div',{className:'not-prose my-6 overflow-x-auto'},
+    h('table',{className:'w-full text-sm border-collapse'},
+     h('thead',null,
+      h('tr',{className:'bg-[#F7F8FA]'},
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Secteur'),
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Risque'),
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Recommandation')
+      )
+     ),
+     h('tbody',null,
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'D\u00e9fense / S\u00e9curit\u00e9'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#DC2626] px-2 py-0.5 rounded'},'CRITIQUE')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Repositionnement forces fran\u00e7aises Afrique de l\u2019Ouest')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'\u00c9nergie (uranium)'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#f59e0b] px-2 py-0.5 rounded'},'\u00c9LEV\u00c9')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Diversification approvisionnement nucl\u00e9aire (Kazakhstan, Canada, Australie)')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Migration'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#f59e0b] px-2 py-0.5 rounded'},'\u00c9LEV\u00c9')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Renforcement coop\u00e9ration avec \u00c9tats c\u00f4tiers sur les flux')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Terrorisme'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#DC2626] px-2 py-0.5 rounded'},'CRITIQUE')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Surveillance JNIM/EIGS, coop\u00e9ration DGSE/DGSI \u00c9tats c\u00f4tiers')
+      ),
+      h('tr',null,
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Influence'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-[#1A1F2E] bg-[#E2E5EB] px-2 py-0.5 rounded'},'MOD\u00c9R\u00c9')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Strat\u00e9gie de communication \u00e0 repenser, contrer la d\u00e9sinformation')
+      )
+     )
+    )
+   ),
+
+   h('h3',null,'Uranium\u00a0: la vuln\u00e9rabilit\u00e9 Orano'),
+   h('p',null,
+    'Le Niger fournissait environ ',h('strong',null,'15\u00a0% de l\u2019uranium import\u00e9 par la France'),' via les sites d\u2019Orano (ex-Areva) \u00e0 Arlit et Akouta. Le permis d\u2019exploitation d\u2019Imouraren, ',h('strong',null,'l\u2019un des plus grands gisements au monde'),' (5\u00a0000 tonnes de r\u00e9serves), a \u00e9t\u00e9 r\u00e9voqu\u00e9 par la junte en juin 2024. La mine d\u2019Arlit (SOMAÏR) op\u00e8re en mode d\u00e9grad\u00e9, les expatri\u00e9s ont \u00e9t\u00e9 largement rapatri\u00e9s. Le risque de nationalisation compl\u00e8te des actifs Orano est \u00e9lev\u00e9, sur le mod\u00e8le des d\u00e9cisions maliennes et burkinab\u00e8 concernant les mines d\u2019or (source\u00a0: Reuters, Le Monde, Africa Intelligence).'
+   ),
+
+   h('h3',null,'Recommandations op\u00e9rationnelles'),
+   h('p',null,
+    h('strong',null,'Imm\u00e9diat (0-3 mois)'),' \u2014 Cartographier tous les actifs et personnels fran\u00e7ais r\u00e9siduels dans la zone AES. Activer les plans de continuit\u00e9 pour les approvisionnements uranif\u00e8res. Renforcer la veille s\u00e9curitaire sur les \u00c9tats c\u00f4tiers (B\u00e9nin, Togo, C\u00f4te d\u2019Ivoire). Engager un dialogue discret avec les autorit\u00e9s de transition via des canaux tiers (Alg\u00e9rie, Mauritanie).'
+   ),
+   h('p',null,
+    h('strong',null,'Court terme (3-12 mois)'),' \u2014 Diversifier les sources d\u2019uranium (acc\u00e9l\u00e9rer les partenariats Kazakhstan/Cameco, Australie). Repositionner la pr\u00e9sence militaire fran\u00e7aise vers les \u00c9tats c\u00f4tiers partenaires (C\u00f4te d\u2019Ivoire, S\u00e9n\u00e9gal). Soutenir la CEDEAO dans sa strat\u00e9gie de r\u00e9int\u00e9gration. Investir dans la lutte informationnelle pour contrer les narratifs anti-fran\u00e7ais.'
+   ),
+   h('p',null,
+    h('strong',null,'Moyen terme (1-3 ans)'),' \u2014 Pr\u00e9parer des sc\u00e9narios de r\u00e9engagement conditionn\u00e9 \u00e0 un retour de la gouvernance civile. Maintenir une veille strat\u00e9gique sur les \u00e9volutions des juntes (fragmentation interne, succession, n\u00e9gociations avec groupes arm\u00e9s). Le Sahel reste un march\u00e9 de ',h('strong',null,'70 millions de consommateurs'),' en croissance d\u00e9mographique rapide \u2014 un d\u00e9sengagement total serait strat\u00e9giquement co\u00fbteux \u00e0 long terme.'
+   ),
+
+   // Sc\u00e9narios
+   h('h2',null,'Trois sc\u00e9narios pour les douze \u00e0 trente-six prochains mois'),
+
+   // Sc\u00e9nario optimiste
+   h('div',{className:'not-prose my-6 rounded-xl overflow-hidden border border-[#006650]/20 bg-[#F0FAF5]'},
+    h('div',{className:'px-5 py-3 bg-[#006650]/10 border-b border-[#006650]/20'},
+     h('div',{className:'flex items-center justify-between'},
+      h('span',{className:'text-sm font-bold text-[#006650]'},'Sc\u00e9nario 1 \u2014 Transition n\u00e9goci\u00e9e'),
+      h('span',{className:'text-xs font-semibold text-[#006650] bg-[#006650]/10 px-2 py-1 rounded'},'Probabilit\u00e9 : 10-15\u00a0%')
+     )
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+      'Sous pression \u00e9conomique (sanctions CEDEAO, difficult\u00e9s budg\u00e9taires) et face \u00e0 la persistance de l\u2019ins\u00e9curit\u00e9, une ou plusieurs juntes acceptent un calendrier de transition cr\u00e9dible. Des \u00e9lections sont organis\u00e9es dans un cadre n\u00e9goci\u00e9 avec la CEDEAO et l\u2019UA. Le dialogue avec la France reprend progressivement. ',h('strong',null,'Impact d\u00e9cideurs'),' : fen\u00eatre de repositionnement pour les entreprises fran\u00e7aises, r\u00e9activation des partenariats Orano, relance de la coop\u00e9ration militaire.'
+     )
+    )
+   ),
+
+   // Sc\u00e9nario central
+   h('div',{className:'not-prose my-6 rounded-xl overflow-hidden border border-[#EAB308]/20 bg-[#FFFBEB]'},
+    h('div',{className:'px-5 py-3 bg-[#EAB308]/10 border-b border-[#EAB308]/20'},
+     h('div',{className:'flex items-center justify-between'},
+      h('span',{className:'text-sm font-bold text-[#92400E]'},'Sc\u00e9nario 2 \u2014 Statu quo d\u00e9grad\u00e9'),
+      h('span',{className:'text-xs font-semibold text-[#92400E] bg-[#EAB308]/10 px-2 py-1 rounded'},'Probabilit\u00e9 : 50-55\u00a0%')
+     )
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+      'Les juntes se maintiennent, repoussant les transitions ind\u00e9finiment. L\u2019AES se consolide institutionnellement sans r\u00e9sultats s\u00e9curitaires probants. Wagner/Africa Corps fournit une s\u00e9curit\u00e9 parcellaire. L\u2019expansion jihadiste vers les \u00c9tats c\u00f4tiers se poursuit. La crise humanitaire s\u2019aggrave sans effondrement complet. ',h('strong',null,'Impact d\u00e9cideurs'),' : perte durable d\u2019acc\u00e8s au march\u00e9 sah\u00e9lien, n\u00e9cessit\u00e9 de s\u00e9curiser les \u00c9tats c\u00f4tiers comme ligne de d\u00e9fense.'
+     )
+    )
+   ),
+
+   // Sc\u00e9nario pessimiste
+   h('div',{className:'not-prose my-6 rounded-xl overflow-hidden border border-[#DC2626]/20 bg-[#FEF2F2]'},
+    h('div',{className:'px-5 py-3 bg-[#DC2626]/10 border-b border-[#DC2626]/20'},
+     h('div',{className:'flex items-center justify-between'},
+      h('span',{className:'text-sm font-bold text-[#991B1B]'},'Sc\u00e9nario 3 \u2014 Fragmentation et contagion'),
+      h('span',{className:'text-xs font-semibold text-[#991B1B] bg-[#DC2626]/10 px-2 py-1 rounded'},'Probabilit\u00e9 : 30-35\u00a0%')
+     )
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+      'Fracture interne d\u2019une ou plusieurs juntes (contre-coup, rivalit\u00e9s internes). L\u2019EIGS s\u2019empare de zones enclav\u00e9es, le JNIM contr\u00f4le le centre du Mali. Vague de r\u00e9fugi\u00e9s massive vers les \u00c9tats c\u00f4tiers et l\u2019Afrique du Nord. Attentats majeurs \u00e0 Abidjan, Accra ou Cotonou. Effondrement des cha\u00eenes d\u2019approvisionnement r\u00e9gionales. ',h('strong',null,'Impact d\u00e9cideurs'),' : crise migratoire affectant l\u2019Europe m\u00e9ridionale, risque terroriste \u00e9lev\u00e9 sur le territoire europ\u00e9en, perte compl\u00e8te des actifs extractifs, onde de choc sur les march\u00e9s des mati\u00e8res premi\u00e8res.'
+     )
+    )
+   ),
+
+   // Score SEMPLICE
+   h('h2',null,'\u00c9valuation SEMPLICE'),
+   h('div',{className:'not-prose my-6 overflow-x-auto'},
+    h('table',{className:'w-full text-sm border-collapse'},
+     h('thead',null,
+      h('tr',{className:'bg-[#F7F8FA]'},
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Dimension'),
+       h('th',{className:'text-center px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Risque'),
+       h('th',{className:'text-center px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Opportunit\u00e9'),
+       h('th',{className:'text-center px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Tendance')
+      )
+     ),
+     h('tbody',null,
+      ...([
+       ['Social','6.6/7','2.2/7','\u2191'],['Économique','4.7/7','3.3/7','\u2192'],['Militaire','5.9/7','2.2/7','\u2191'],['Politique','6.8/7','1.9/7','\u2191'],
+       ['L\u00e9gal','5.8/7','2.8/7','\u2192'],['Information','5.8/7','2.0/7','\u2192'],['Cyber','4.8/7','2.2/7','\u2192'],['Environnemental','5.8/7','3.0/7','\u2191']
+      ].map((r,i)=>
+       h('tr',{key:i,className:'border-b border-[#E2E5EB]'},
+        h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},r[0]),
+        h('td',{className:'px-3 py-2.5 text-center font-data font-semibold text-[#DC2626]'},r[1]),
+        h('td',{className:'px-3 py-2.5 text-center font-data font-semibold text-[#006650]'},r[2]),
+        h('td',{className:'px-3 py-2.5 text-center text-lg'},r[3])
+       )
+      )),
+      h('tr',{className:'bg-[#006650]/5'},
+       h('td',{className:'px-3 py-2.5 font-bold text-[#006650]'},'COMPOSITE'),
+       h('td',{className:'px-3 py-2.5 text-center font-data font-bold text-[#DC2626] text-base'},'5.8/7'),
+       h('td',{className:'px-3 py-2.5 text-center font-data font-bold text-[#006650] text-base'},'2.6/7'),
+       h('td',{className:'px-3 py-2.5 text-center text-lg'},'\u2191')
+      )
+     )
+    )
+   ),
+
+   h('div',{className:'not-prose my-4 flex flex-wrap gap-3'},
+    h('span',{className:'text-xs font-semibold text-white bg-[#DC2626] px-3 py-1.5 rounded-lg'},'Risque : 5.8/7 \u2014 Tr\u00e8s \u00e9lev\u00e9'),
+    h('span',{className:'text-xs font-semibold text-white bg-[#006650] px-3 py-1.5 rounded-lg'},'Opportunit\u00e9 : 2.6/7 \u2014 Faible')
+   ),
+
+   // Indicateurs d'alerte
+   h('h3',null,'Indicateurs d\u2019alerte \u00e0 surveiller'),
+   h('div',{className:'insight-box not-prose'},
+    h('ul',{className:'space-y-1.5 text-sm text-[#3A3A3A]'},
+     h('li',null,h('strong',null,'Contre-coup dans un pays AES'),' \u2014 signal de fragmentation interne'),
+     h('li',null,h('strong',null,'Attentat majeur dans un \u00c9tat c\u00f4tier'),' (Abidjan, Cotonou, Accra) \u2014 contagion jihadiste'),
+     h('li',null,h('strong',null,'R\u00e9vocation des permis Orano restants'),' \u2014 nationalisation compl\u00e8te'),
+     h('li',null,h('strong',null,'D\u00e9plac\u00e9s > 5 millions'),' \u2014 seuil de crise humanitaire r\u00e9gionale'),
+     h('li',null,h('strong',null,'Arriv\u00e9es sahéliennes en Afrique du Nord > 200\u00a0000/an'),' \u2014 pression migratoire Europe'),
+     h('li',null,h('strong',null,'Rupture diplomatique AES-CEDEAO totale'),' \u2014 fermeture des corridors commerciaux')
+    )
+   ),
+
+   // Disclaimer AMF
+   h('div',{className:'insight-box gold not-prose mt-10'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2'},'Avertissement AMF'),
+    h('p',{className:'text-xs text-[#6A6A6A] leading-relaxed'},
+     'Cette analyse est fournie \u00e0 titre informatif et ne constitue en aucun cas un conseil en investissement, une recommandation personnalis\u00e9e ou une incitation \u00e0 acheter ou vendre des instruments financiers. Les performances pass\u00e9es ne pr\u00e9jugent pas des performances futures. Tout investissement comporte des risques de perte en capital. Les \u00e9valuations de risque SEMPLICE refl\u00e8tent une appr\u00e9ciation \u00e0 date et ne constituent pas une garantie.'
+    )
+   ),
+
+   // Sources
+   h('div',{className:'pt-8 mt-8 border-t border-[#ECEEF2] not-prose'},
+    h('h4',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] mb-3'},'Sources principales (45+ sources — fiabilit\u00e9 A/B)'),
+    h('ul',{className:'space-y-1.5'},
+     h('li',null,h('a',{href:'https://acleddata.com/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'ACLED \u2014 Armed Conflict Location & Event Data, Sahel dataset 2020-2026')),
+     h('li',null,h('a',{href:'https://www.crisisgroup.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'International Crisis Group \u2014 Sahel reports : Mali, Niger, Burkina Faso (multi-rapports)')),
+     h('li',null,h('a',{href:'https://www.ifri.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'IFRI \u2014 Notes de l\u2019Ifri : Le Sahel apr\u00e8s Barkhane, recomposition s\u00e9curitaire')),
+     h('li',null,h('a',{href:'https://www.rfi.fr/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'RFI \u2014 Couverture continue de la crise sah\u00e9lienne, AES, transitions militaires')),
+     h('li',null,h('a',{href:'https://www.lemonde.fr/afrique/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Le Monde Afrique \u2014 Sahel : Wagner, JNIM, coups d\u2019\u00c9tat (multi-articles)')),
+     h('li',null,h('a',{href:'https://issafrica.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'ISS Africa \u2014 Institute for Security Studies, analyses Sahel et terrorisme')),
+     h('li',null,h('a',{href:'https://www.sipri.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'SIPRI \u2014 Stockholm International Peace Research Institute, flux d\u2019armes Sahel')),
+     h('li',null,h('a',{href:'https://www.hrw.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Human Rights Watch \u2014 Massacre de Barsalogho, Moura, exactions FAMa/Wagner')),
+     h('li',null,h('a',{href:'https://reliefweb.int/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'OCHA/ReliefWeb \u2014 Sahel Humanitarian Overview 2025-2026')),
+     h('li',null,h('a',{href:'https://www.worldbank.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Banque mondiale \u2014 Indicateurs socio\u00e9conomiques Mali, Niger, Burkina Faso')),
+     h('li',null,h('a',{href:'https://www.reuters.com/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Reuters \u2014 Niger uranium, Orano permits, CNPC pipeline')),
+     h('li',null,h('a',{href:'https://www.africaintelligence.com/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Africa Intelligence \u2014 Activit\u00e9s Wagner/Africa Corps, contrats miniers russes')),
+     h('li',null,h('a',{href:'https://chinaglobalsouth.com/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'China-Global South Project \u2014 Investissements chinois au Sahel, pipeline Niger-B\u00e9nin')),
+     h('li',null,h('a',{href:'https://www.unep.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'PNUE \u2014 Stress hydrique Sahel, lac Tchad, changement climatique'))
+    ),
+    h('p',{className:'mt-3 text-[10px] text-[#6A6A6A] italic'},'Collecte OSINT compl\u00e8te disponible : 45+ sources, grille de fiabilit\u00e9 A/B/C/D. Mis \u00e0 jour le 15 mars 2026.')
+   ),
+
+   // Back nav
+   h('div',{className:'mt-10 text-center not-prose'},
+    h('a',{href:'analyses.html',className:'inline-block px-6 py-2.5 text-sm font-semibold text-[#006650] border-2 border-[#006650] rounded-lg hover:bg-[#006650] hover:text-white transition-colors'},'\u2190 Toutes les analyses')
+   )
+  ),
+
+  // Sidebar
+  h('aside',{className:'hidden lg:block lg:w-[220px] flex-shrink-0'},
+   h('div',{className:'lg:sticky lg:top-24'},
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Articles li\u00e9s'),
+    h('div',{className:'flex flex-col gap-4'},
+     ...RELATED_ARTICLES.map(a=>
+      h('a',{key:a.id,href:a.href,className:'article-card block rounded-xl overflow-hidden bg-white border border-[#E2E5EB] no-underline'},
+       h('div',{className:'aspect-[16/9] overflow-hidden'},
+        h('img',{src:a.img,alt:'',className:'w-full h-full object-cover',loading:'lazy'})
+       ),
+       h('div',{className:'p-3'},
+        h('span',{className:`category-${a.cat} text-[9px] font-semibold uppercase tracking-wider text-white px-1.5 py-0.5 rounded`},a.catLabel),
+        h('h4',{className:'mt-2 text-xs font-semibold text-[#1A1F2E] leading-snug line-clamp-2',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},a.title)
+       )
+      )
+     )
+    )
+   )
+  )
+ )
+)
+}
+
+// ─── FOOTER ──────────────────────────────────────────────────────────────────
+
+function Footer(){
+const footerLinks={
+intelligence:[
+{label:'G\u00e9opolitique',href:'geopolitics.html'},
+{label:'March\u00e9s',href:'markets.html'},
+{label:'Crypto',href:'crypto.html'},
+{label:'Mati\u00e8res premi\u00e8res',href:'commodities.html'},
+{label:'ETF & Fonds',href:'etf.html'},
+],
+plateforme:[
+{label:'Analyses',href:'analyses.html'},
+{label:'Expertise',href:'expertise.html'},
+{label:'Services',href:'premium.html'},
+{label:'Diagnostic',href:'premium.html#diagnostic'},
+],
+}
+const sources=['ACLED','ICG','IFRI','SIPRI','ISS Africa','RFI','Finnhub','CoinGecko','ECB','FRED']
+
+return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-12 sm:pt-16 pb-24 sm:pb-20'},
+ h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+  h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-10 mb-12'},
+   h('div',{className:'col-span-2 md:col-span-1'},
+    h('div',{className:'flex items-center gap-2 mb-4'},
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto'})
+    ),
+    h('p',{className:'text-sm text-[#5A6178] leading-relaxed'},'Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.')
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Intelligence'),
+    h('ul',{className:'space-y-2.5'},
+     ...footerLinks.intelligence.map(l=>
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+     )
+    )
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Plateforme'),
+    h('ul',{className:'space-y-2.5'},
+     ...footerLinks.plateforme.map(l=>
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+     )
+    )
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Suivez-nous'),
+    h('div',{className:'flex items-center gap-3 mb-4'},
+     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+      h('svg',{width:16,height:16,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'}))
+     ),
+     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+      h('svg',{width:14,height:14,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'}))
+     )
+    ),
+    h('a',{href:'#',className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},'Contact')
+   )
+  ),
+  h('div',{className:'border-t border-[#E2E5EB] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
+   h('span',{className:'text-sm text-[#5A6178]'},'\u00a9 2026 Inflexion \u2014 Intelligence financi\u00e8re & g\u00e9opolitique'),
+   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#5A6178]/40 font-medium'},
+    ...sources.map(s=>h('span',{key:s},s))
+   )
+  )
+ )
+)
+}
+
+// ─── APP ─────────────────────────────────────────────────────────────────────
+
+function App(){
+return h('div',null,
+ h(Navigation),
+ h(ArticleHero),
+ h(ArticleContent),
+ h(Footer)
+)
+}
+
+createRoot(document.getElementById('app')).render(h(App))
+</script>
+</body>
+</html>

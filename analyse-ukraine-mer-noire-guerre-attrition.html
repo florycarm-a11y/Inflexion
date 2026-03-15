@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Ukraine / Mer Noire — Guerre d'attrition et recomposition stratégique — Inflexion</title>
+<meta name="description" content="Plus de 1000 jours de guerre : front stabilisé, économie de guerre, cyber/information et recomposition géopolitique. Analyse SEMPLICE 5.6/7 pour les décideurs. Inflexion."/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{brand:{900:'#06402A',800:'#006650',700:'#007A60',600:'#008066',500:'#00997A',400:'#33B894',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden}
+
+h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
+.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#006650}
+
+@keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.anim-fade-up{animation:fade-up .6s ease-out both}
+.anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}
+
+.nav-link{position:relative}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.mega-trigger{position:relative}
+.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:520px;z-index:60}
+.mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.mega-item{transition:background .15s ease}
+.mega-item:hover{background:rgba(27,107,74,.06)}
+.mega-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.nav-scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid #E2E5EB;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+
+.hamburger span{display:block;width:24px;height:2px;background:#1A1F2E;margin:5px 0;transition:all .3s ease}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-overlay{opacity:0;visibility:hidden;transition:opacity .35s cubic-bezier(.4,0,.2,1),visibility .35s;height:100dvh}
+.mobile-overlay.open{opacity:1;visibility:visible}
+@keyframes menu-item-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.menu-item{opacity:0}
+.mobile-overlay.open .menu-item{animation:menu-item-in .4s ease-out forwards}
+body.menu-open{overflow:hidden}
+
+.prose p{margin-bottom:1.25rem;font-size:1rem;line-height:1.75;color:#3A3A3A}
+@media(min-width:640px){.prose p{font-size:1.0625rem;line-height:1.8}}
+.prose strong{color:#1A1F2E}
+.prose h2{font-size:1.375rem;color:#006650;margin-top:2.5rem;margin-bottom:1rem;line-height:1.3}
+@media(min-width:640px){.prose h2{font-size:1.625rem;margin-top:3.25rem;margin-bottom:1.25rem}}
+.prose h3{font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;color:#006650;margin-top:1.75rem;margin-bottom:0.75rem;letter-spacing:0.3px}
+@media(min-width:640px){.prose h3{font-size:1.0625rem;margin-top:2rem}}
+
+.key-figure{background:linear-gradient(135deg,#006650 0%,#06402A 100%);border-radius:0.5rem;padding:1.5rem 1rem;text-align:center;position:relative;overflow:hidden}
+@media(min-width:640px){.key-figure{padding:2.5rem 2rem}}
+.key-figure::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#006650,#33B894,rgba(255,255,255,0.3))}
+
+.insight-box{border-left:3px solid #006650;background:#F7F8FA;padding:1rem 1rem;margin:1.5rem 0;border-radius:0 0.5rem 0.5rem 0}
+@media(min-width:640px){.insight-box{padding:1.25rem 1.5rem;margin:1.75rem 0}}
+.insight-box.alert{border-left-color:#DC2626}
+.insight-box.gold{border-left-color:#EAB308}
+
+.article-card{transition:transform .2s ease,box-shadow .2s ease}
+.article-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(10,22,40,.08)}
+
+.category-geo{background:#2563eb}.category-marches{background:#006650}.category-crypto{background:#f59e0b}.category-matieres{background:#ef4444}.category-iatech{background:#8b5cf6}
+
+.font-data{font-family:'JetBrains Mono','SF Mono',monospace}
+
+/* Hero gradient dynamique 3D */
+@keyframes hero-gradient-shift{
+0%{background-position:0% 50%}
+25%{background-position:100% 25%}
+50%{background-position:100% 75%}
+75%{background-position:0% 100%}
+100%{background-position:0% 50%}
+}
+@keyframes hero-orb-float{
+0%,100%{transform:translate(0,0) scale(1)}
+33%{transform:translate(30px,-20px) scale(1.1)}
+66%{transform:translate(-20px,15px) scale(0.95)}
+}
+.hero-dynamic{
+background:linear-gradient(135deg,#004D3D 0%,#006650 25%,#007A60 50%,#06402A 75%,#004D3D 100%);
+background-size:400% 400%;
+animation:hero-gradient-shift 12s ease infinite;
+position:relative;
+overflow:hidden;
+}
+.hero-dynamic::before{
+content:'';
+position:absolute;
+top:-50%;left:-50%;
+width:200%;height:200%;
+background:radial-gradient(ellipse at 30% 20%,rgba(51,184,148,.15) 0%,transparent 50%),
+            radial-gradient(ellipse at 70% 80%,rgba(0,122,96,.2) 0%,transparent 50%),
+            radial-gradient(ellipse at 50% 50%,rgba(200,149,90,.06) 0%,transparent 40%);
+animation:hero-orb-float 8s ease-in-out infinite;
+pointer-events:none;
+}
+.hero-dynamic::after{
+content:'';
+position:absolute;
+bottom:0;left:0;right:0;
+height:120px;
+background:linear-gradient(to top,rgba(255,255,255,.06) 0%,transparent 100%);
+pointer-events:none;
+}
+.hero-wave{
+position:absolute;
+bottom:-1px;left:0;right:0;
+width:100%;
+line-height:0;
+z-index:2;
+}
+.hero-wave svg{
+width:100%;
+height:60px;
+display:block;
+}
+@media(min-width:768px){
+.hero-wave svg{height:80px}
+}
+.glass{background:rgba(0,102,80,.06);backdrop-filter:blur(16px);border:1px solid rgba(0,102,80,.10)}
+.glass-light{background:rgba(0,102,80,.04);backdrop-filter:blur(12px);border:1px solid rgba(0,102,80,.06)}
+.hero-dark{background-color:#006650;color:#FFFFFF}
+.hero-dark h1,.hero-dark h2,.hero-dark .display-text{color:#FFFFFF}
+.section-alt{background-color:#F7F8FA}
+.section-divider{border-top:1px solid #ECEEF2}
+.featured-card{position:relative;overflow:hidden}
+.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:#006650;transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
+.featured-card:hover::before{transform:scaleY(1)}
+.hero-glow{position:absolute;top:-120px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,102,80,.06) 0%,transparent 70%);pointer-events:none}
+@media(max-width:768px){
+html,body{overflow-x:hidden}
+img{max-width:100%;height:auto}
+button,a[href]:not(.prose a){min-height:44px;min-width:44px}
+.mobile-overlay .menu-item a{min-height:48px;display:flex;align-items:center}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="nav-config.js"></script>
+<script type="module">
+import React,{useState,useEffect,useRef} from 'https://esm.sh/react@18.2.0'
+import{createRoot}from 'https://esm.sh/react-dom@18.2.0/client'
+
+const h=React.createElement
+
+const RELATED_ARTICLES=[
+{id:1,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'P\u00e9trole \u00e0 119 $ : Trump, Iran et le d\u00e9troit d\u2019Ormuz',img:'https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=300&h=200&fit=crop',href:'analyse-petrole-trump-iran-ormuz.html'},
+{id:2,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'Arctique / Groenland : le grand jeu polaire',img:'https://images.unsplash.com/photo-1517783999520-f068d7431571?w=300&h=200&fit=crop',href:'analyse-arctique-groenland-grand-jeu-polaire.html'},
+{id:3,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'Cuba \u2014 La crise de trop : effondrement et jeu des puissances',img:'https://images.unsplash.com/photo-1570299437488-d430e1e677c7?w=300&h=200&fit=crop',href:'analyse-cuba-crise-perspectives.html'},
+]
+
+const MEGA_NAV=window.MEGA_NAV
+
+// ─── NAVIGATION ──────────────────────────────────────────────────────────────
+
+function Navigation(){
+const[open,setOpen]=useState(false)
+const[scrolled,setScrolled]=useState(false)
+useEffect(()=>{
+const fn=()=>setScrolled(window.scrollY>60)
+window.addEventListener('scroll',fn,{passive:true})
+return()=>window.removeEventListener('scroll',fn)
+},[])
+useEffect(()=>{
+if(open){document.body.classList.add('menu-open')}else{document.body.classList.remove('menu-open')}
+return()=>document.body.classList.remove('menu-open')
+},[open])
+return h('div',null,
+ h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#C8955A]'}),
+ h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
+  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+   h('div',{className:'flex items-center justify-between h-16'},
+    h('a',{href:'index.html',className:'flex items-center gap-2'},
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(10) saturate(0) invert(0)',transition:'filter 0.3s ease'}})
+    ),
+    h('nav',{className:'hidden md:flex items-center gap-1'},
+     ...MEGA_NAV.map((cat,ci)=>
+      h('div',{key:ci,className:'mega-trigger'},
+       h('span',{className:`nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none ${scrolled?'text-gray-500 hover:text-[#006650]':'text-white/70 hover:text-white'}`},cat.label),
+       h('div',{className:'mega-menu bg-white rounded-2xl shadow-xl border border-gray-100 p-5'},
+        h('div',{className:'grid gap-1'},
+         ...cat.children.map((item,ii)=>
+          h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline'},
+           h('span',{className:'mega-icon bg-[#006650]/10 text-[#006650]'},item.icon),
+           h('span',{className:'flex flex-col'},
+            h('span',{className:'text-sm font-semibold text-gray-900'},item.label),
+            h('span',{className:'text-xs text-gray-500 mt-0.5'},item.desc)
+           )
+          )
+         )
+        )
+       )
+      )
+     ),
+     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#006650] hover:bg-[#06402A] text-white font-semibold text-sm rounded-lg transition-colors'},'R\u00e9server un diagnostic')
+    ),
+    h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,'aria-label':'Menu',onClick:()=>setOpen(!open)},
+     h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}})
+    )
+   )
+  )
+ ),
+ h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#006650'}},
+  h('div',{className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0'},
+   h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-8 w-auto',style:{filter:'brightness(10) saturate(0)'}}),
+   h('button',{onClick:()=>setOpen(false),className:'w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
+    h('svg',{width:18,height:18,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2.5,strokeLinecap:'round',className:'text-white'},h('path',{d:'M18 6L6 18M6 6l12 12'}))
+   )
+  ),
+  h('div',{className:'flex-1 overflow-y-auto px-6 pt-2 pb-4'},
+   ...MEGA_NAV.map((cat,ci)=>[
+    h('p',{key:'h'+ci,className:'menu-item text-[11px] uppercase tracking-[.2em] text-white/40 font-semibold mb-3'+(ci>0?' mt-8':''),style:{animationDelay:`${0.05+ci*0.18}s`}},cat.label),
+    ...cat.children.map((item,ii)=>
+     h('a',{key:'m'+ci+'-'+ii,href:item.href,onClick:()=>setOpen(false),className:'menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8',style:{animationDelay:`${0.08+ci*0.18+ii*0.05}s`}},
+      h('span',{className:'text-base'},item.icon),
+      h('span',{className:'text-base sm:text-lg md:text-[20px] font-medium'},item.label)
+     )
+    )
+   ]).flat()
+  ),
+  h('div',{className:'px-6 pt-4 pb-20 flex-shrink-0'},
+   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-xl transition-colors text-base',style:{animationDelay:'0.85s'}},'R\u00e9server un diagnostic')
+  )
+ )
+)
+}
+
+// ─── ARTICLE HERO ────────────────────────────────────────────────────────────
+
+function ArticleHero(){
+const heroRef=useRef(null)
+useEffect(()=>{
+const el=heroRef.current
+if(!el)return
+const onScroll=()=>{
+const r=el.getBoundingClientRect()
+const p=Math.max(0,Math.min(1,-r.top/(r.height||1)))
+el.style.setProperty('--scroll',p)
+el.querySelector('.hero-content').style.transform=`translateY(${p*40}px)`
+el.querySelector('.hero-content').style.opacity=1-p*0.6
+}
+window.addEventListener('scroll',onScroll,{passive:true})
+return()=>window.removeEventListener('scroll',onScroll)
+},[])
+return h('section',{ref:heroRef,className:'hero-dynamic relative pt-28 pb-24 md:pt-36 md:pb-28'},
+ h('div',{className:'hero-content relative z-[3] max-w-3xl mx-auto px-4 sm:px-6',style:{willChange:'transform,opacity'}},
+  h('div',{className:'anim-fade-up flex items-center gap-3 mb-6'},
+   h('span',{className:'px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white rounded bg-[#2563eb]'},'G\u00c9OPOLITIQUE'),
+   h('span',{className:'text-xs uppercase tracking-wider text-white/50'},'Europe de l\u2019Est & Mer Noire')
+  ),
+  h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-[2.75rem] font-bold text-white leading-[1.15] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+   'Ukraine / Mer Noire \u2014 Guerre d\u2019attrition et recomposition strat\u00e9gique'
+  ),
+  h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/60 leading-relaxed'},
+   'Plus de mille jours de guerre. Le front est stabilis\u00e9 mais la guerre d\u2019attrition se poursuit sur tous les axes \u2014 militaire, \u00e9conomique, cyber, informationnel. Analyse des dynamiques, des recompositions g\u00e9opolitiques et des implications pour les d\u00e9cideurs europ\u00e9ens.'
+  ),
+  h('div',{className:'anim-fade-up anim-d3 mt-8 flex flex-wrap items-center gap-5 text-sm text-white/40'},
+   h('div',{className:'w-12 h-[2px] bg-[#33B894]'}),
+   h('span',null,h('strong',{className:'text-white/60'},'Inflexion Research')),
+   h('span',null,'15 mars 2026'),
+   h('span',null,'22 min de lecture')
+  )
+ ),
+ h('div',{className:'hero-wave'},
+  h('svg',{viewBox:'0 0 1440 80',preserveAspectRatio:'none',xmlns:'http://www.w3.org/2000/svg'},
+   h('path',{d:'M0,40 C180,80 360,0 540,40 C720,80 900,10 1080,40 C1200,60 1350,20 1440,40 L1440,80 L0,80 Z',fill:'#FFFFFF',fillOpacity:'0.07'}),
+   h('path',{d:'M0,50 C200,20 400,70 600,40 C800,10 1000,60 1200,35 C1320,20 1400,50 1440,45 L1440,80 L0,80 Z',fill:'#FFFFFF',fillOpacity:'0.05'}),
+   h('path',{d:'M0,60 C240,40 480,75 720,55 C960,35 1200,65 1440,50 L1440,80 L0,80 Z',fill:'#FFFFFF'})
+  )
+ )
+)
+}
+
+// ─── ARTICLE CONTENT ─────────────────────────────────────────────────────────
+
+function ArticleContent(){
+return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20'},
+ h('div',{className:'flex flex-col lg:flex-row gap-10 lg:gap-12'},
+
+  h('article',{className:'prose flex-1 min-w-0'},
+
+   // Key figures
+   h('div',{className:'grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 my-8 sm:my-10 not-prose'},
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'1 000+'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Jours de guerre')
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'~180 Mrd$'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'PIB (vs 200 Mrd$ pr\u00e9-guerre)')
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'6.3/7'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Cyber \u2014 Dimension la plus \u00e9lev\u00e9e apr\u00e8s M')
+    ),
+    h('div',{className:'key-figure'},
+     h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'5.6/7'),
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Score SEMPLICE \u2014 Tr\u00e8s \u00e9lev\u00e9')
+    )
+   ),
+
+   // Synth\u00e8se ex\u00e9cutive
+   h('div',{className:'not-prose my-8 rounded-xl overflow-hidden border-2 border-[#006650]/30',style:{background:'linear-gradient(135deg, #E8F5EE 0%, #F0FAF5 100%)'}},
+    h('div',{className:'flex items-center gap-2 px-5 py-3',style:{background:'linear-gradient(90deg, #006650, #006650)'}},
+     h('span',{className:'text-lg'},'\ud83d\udccc'),
+     h('span',{className:'text-[11px] font-bold uppercase tracking-wider text-white'},'Synth\u00e8se ex\u00e9cutive')
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-[15px] text-[#1A1F2E] leading-relaxed'},
+      'L\u2019Ukraine entre dans sa troisi\u00e8me ann\u00e9e de guerre d\u2019attrition. Le front terrestre est largement stabilis\u00e9 sur l\u2019axe Zaporizhzhia-Donetsk, mais le conflit s\u2019est d\u00e9plac\u00e9 sur des axes asym\u00e9triques \u2014 ',h('strong',null,'cyber-offensives, guerre informationnelle, frappes sur les infrastructures \u00e9nerg\u00e9tiques'),'. Le PIB ukrainien reste contract\u00e9 \u00e0 ',h('strong',null,'~180 milliards de dollars'),' (contre 200 Mrd$ avant-guerre), avec une dette d\u00e9passant ',h('strong',null,'90\u00a0% du PIB'),'. Le score SEMPLICE de ',h('strong',{className:'text-[#006650]'},'5.6/7 (Tr\u00e8s \u00e9lev\u00e9)'),' refl\u00e8te un conflit syst\u00e9mique dont la dimension cyber (6.3/7) et militaire (6.6/7) dominent. Pour les d\u00e9cideurs fran\u00e7ais, les enjeux couvrent la d\u00e9fense, l\u2019\u00e9nergie, l\u2019agroalimentaire, la cyberd\u00e9fense et le positionnement dans la reconstruction future.'
+     )
+    )
+   ),
+
+   // Th\u00e8se centrale
+   h('h2',null,'Th\u00e8se centrale'),
+   h('p',null,
+    'La guerre en Ukraine n\u2019est plus un conflit conventionnel classique. C\u2019est une ',h('strong',null,'guerre d\u2019attrition multidimensionnelle'),' o\u00f9 aucune des parties ne dispose de la sup\u00e9riorit\u00e9 n\u00e9cessaire pour une perc\u00e9e d\u00e9cisive. Le front terrestre est fig\u00e9, mais le conflit s\u2019intensifie sur les axes cyber, informationnel et \u00e9conomique. La question centrale n\u2019est plus celle d\u2019une victoire militaire totale, mais celle de la ',h('strong',null,'capacit\u00e9 de r\u00e9silience relative'),' \u2014 qui \u00e9puisera l\u2019autre en premier\u00a0? Et surtout\u00a0: ',h('strong',null,'quelles recompositions g\u00e9opolitiques'),' ce conflit acc\u00e9l\u00e8re-t-il en Europe, en Eurasie et sur les march\u00e9s mondiaux\u00a0?'
+   ),
+
+   // Partie I
+   h('h2',null,'I. Situation militaire\u00a0: front stabilis\u00e9, guerre d\u2019attrition'),
+
+   h('h3',null,'Un front fig\u00e9 sur 1\u00a0200 kilom\u00e8tres'),
+   h('p',null,
+    'Depuis l\u2019\u00e9chec de la contre-offensive ukrainienne de l\u2019\u00e9t\u00e9 2023 et les avances russes limit\u00e9es dans le Donbass, la ligne de front s\u2019est largement stabilis\u00e9e. L\u2019axe principal reste ',h('strong',null,'Zaporizhzhia-Donetsk'),', o\u00f9 les combats d\u2019infanterie et d\u2019artillerie se poursuivent quotidiennement pour des gains territoriaux marginaux \u2014 quelques centaines de m\u00e8tres par semaine dans le meilleur des cas. L\u2019ISW (Institute for the Study of War) estime que les gains russes nets depuis janvier 2025 repr\u00e9sentent ',h('strong',null,'moins de 0,5\u00a0% du territoire ukrainien'),' (source\u00a0: ISW, RUSI).'
+   ),
+   h('p',null,
+    'La Russie compense ses pertes humaines massives par un flux continu de mobilisation et le recrutement de combattants \u00e9trangers. L\u2019Ukraine, confront\u00e9e \u00e0 un d\u00e9ficit d\u00e9mographique structurel, a abaiss\u00e9 l\u2019\u00e2ge de mobilisation \u00e0 25 ans et intensifi\u00e9 le recrutement. Les deux arm\u00e9es sont confront\u00e9es \u00e0 un ',h('strong',null,'probl\u00e8me d\u2019attrition humaine'),' qui conditionne la suite du conflit.'
+   ),
+
+   h('h3',null,'Drones et IA\u00a0: la r\u00e9volution du champ de bataille'),
+   h('p',null,
+    'Le conflit ukrainien est devenu le ',h('strong',null,'premier laboratoire mondial de la guerre par drones'),'. L\u2019Ukraine d\u00e9ploie plus de ',h('strong',null,'50\u00a0000 drones par mois'),' \u2014 FPV, reconnaissance, munitions r\u00f4deuses \u2014 cr\u00e9ant une couverture de surveillance quasi permanente du champ de bataille (source\u00a0: RUSI, Atlantic Council). L\u2019intelligence artificielle s\u2019int\u00e8gre progressivement\u00a0: ciblage automatis\u00e9, analyse de donn\u00e9es ISR en temps r\u00e9el, planification de missions. Les syst\u00e8mes ukrainiens comme ',h('strong',null,'Delta et Kropyva'),' agr\u00e8gent les donn\u00e9es de capteurs multiples pour cr\u00e9er une image op\u00e9rationnelle partag\u00e9e.'
+   ),
+   h('p',null,
+    'La Russie a \u00e9galement massifi\u00e9 sa production de drones, notamment les Shahed iraniens fabriqu\u00e9s sous licence (Geran-2), utilis\u00e9s pour saturer les d\u00e9fenses a\u00e9riennes ukrainiennes. Cette ',h('strong',null,'course aux drones'),' transforme la doctrine militaire mondiale et a des implications directes pour les programmes de d\u00e9fense europ\u00e9ens (source\u00a0: IISS, SIPRI).'
+   ),
+
+   h('div',{className:'insight-box not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#006650] mb-2'},'Le\u00e7on op\u00e9rationnelle'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'Le conflit d\u00e9montre que la sup\u00e9riorit\u00e9 num\u00e9rique en drones low-cost peut compenser partiellement le d\u00e9savantage en artillerie et en blindage. Pour les arm\u00e9es europ\u00e9ennes, c\u2019est un changement de paradigme\u00a0: ',h('strong',null,'la masse redevient un facteur d\u00e9cisif'),', mais sous forme de syst\u00e8mes autonomes bon march\u00e9, pas de plateformes lourdes traditionnelles.'
+    )
+   ),
+
+   // Partie II
+   h('h2',null,'II. \u00c9conomie de guerre\u00a0: r\u00e9silience sous contrainte'),
+
+   h('h3',null,'Un PIB contract\u00e9, une dette explosive'),
+   h('p',null,
+    'Le PIB ukrainien, qui avait plong\u00e9 de 29\u00a0% en 2022, s\u2019est partiellement redress\u00e9 mais reste significativement inf\u00e9rieur \u00e0 son niveau d\u2019avant-guerre. Les estimations pour 2025 situent le PIB \u00e0 ',h('strong',null,'environ 180 milliards de dollars'),' en termes nominaux (contre ~200 Mrd$ en 2021), soit une contraction cumul\u00e9e de pr\u00e8s de 10\u00a0% sur trois ans (source\u00a0: KSE Institute, Banque mondiale). La dette publique d\u00e9passe d\u00e9sormais ',h('strong',null,'90\u00a0% du PIB'),', contre 49\u00a0% avant l\u2019invasion.'
+   ),
+   h('p',null,
+    'La restructuration de la dette ext\u00e9rieure n\u00e9goci\u00e9e en 2024 a permis un ',h('strong',null,'moratoire partiel jusqu\u2019en 2027'),', avec une d\u00e9cote de 37\u00a0% sur les eurobonds. Mais cette bouff\u00e9e d\u2019oxyg\u00e8ne est temporaire\u00a0: les besoins de financement restent colossaux \u2014 entre 3 et 4 milliards de dollars par mois pour maintenir l\u2019effort de guerre et le fonctionnement de l\u2019\u00c9tat (source\u00a0: FMI, KSE Institute).'
+   ),
+
+   h('h3',null,'Aide occidentale\u00a0: la question de la durabilit\u00e9'),
+   h('p',null,
+    'L\u2019aide occidentale cumul\u00e9e depuis f\u00e9vrier 2022 d\u00e9passe ',h('strong',null,'250 milliards de dollars'),' (militaire, financi\u00e8re, humanitaire), dont plus de 100 Mrd$ provenant des \u00c9tats-Unis et environ 90 Mrd\u20ac de l\u2019Union europ\u00e9enne (source\u00a0: Kiel Institute). Mais la ',h('strong',null,'fatigue des donateurs'),' s\u2019installe. Le retour de Donald Trump \u00e0 la Maison-Blanche en janvier 2025 a introduit une incertitude majeure\u00a0: les livraisons d\u2019aide militaire am\u00e9ricaine ont ralenti, et la pression pour des n\u00e9gociations s\u2019intensifie.'
+   ),
+   h('p',null,
+    'L\u2019Europe se retrouve en premi\u00e8re ligne. Le ',h('strong',null,'plan de 50 milliards d\u2019euros'),' de l\u2019UE (Ukraine Facility) couvre le financement jusqu\u2019en 2027, mais les besoins de reconstruction \u00e0 long terme sont estim\u00e9s \u00e0 ',h('strong',null,'486 milliards de dollars'),' par la Banque mondiale (source\u00a0: Banque mondiale, RDNA3). Le financement de cet effort titanesque reste la question centrale.'
+   ),
+
+   h('div',{className:'insight-box alert not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#DC2626] mb-2'},'Risque strat\u00e9gique'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'Si l\u2019aide am\u00e9ricaine militaire est significativement r\u00e9duite ou conditionn\u00e9e \u00e0 des concessions territoriales, l\u2019\u00e9quilibre du conflit bascule en faveur de Moscou. L\u2019Europe devrait alors combler un d\u00e9ficit capacitaire de ',h('strong',null,'40 \u00e0 60 milliards de dollars par an'),' en aide militaire \u2014 un effort incompatible avec les contraintes budg\u00e9taires actuelles de la plupart des \u00c9tats membres.'
+    )
+   ),
+
+   // Partie III
+   h('h2',null,'III. Dimension cyber et informationnelle\u00a0: le conflit invisible'),
+
+   h('h3',null,'WhisperGate et au-del\u00e0\u00a0: le cyber comme arme strat\u00e9gique'),
+   h('p',null,
+    'La dimension cyber du conflit ukrainien constitue un cas d\u2019\u00e9tude sans pr\u00e9c\u00e9dent. D\u00e8s janvier 2022 \u2014 ',h('strong',null,'un mois avant l\u2019invasion terrestre'),' \u2014 le malware WhisperGate ciblait les minist\u00e8res ukrainiens, suivi par HermeticWiper le 23 f\u00e9vrier et l\u2019attaque contre le r\u00e9seau Viasat le 24. Cette s\u00e9quence a d\u00e9montr\u00e9 que ',h('strong',null,'le cyber constitue d\u00e9sormais la premi\u00e8re phase de toute op\u00e9ration militaire majeure'),' (source\u00a0: Microsoft DART, Mandiant, ANSSI).'
+   ),
+   h('p',null,
+    'Depuis 2022, la Russie a conduit plus de ',h('strong',null,'500 op\u00e9rations cyber attribu\u00e9es'),' contre l\u2019Ukraine \u2014 ciblant les infrastructures \u00e9nerg\u00e9tiques, les r\u00e9seaux de t\u00e9l\u00e9communication, les syst\u00e8mes financiers et les administrations. Le groupe Sandworm (GRU, unit\u00e9 74455) reste le principal acteur offensif, responsable des attaques Industroyer2 contre le r\u00e9seau \u00e9lectrique et des wiper d\u00e9ploy\u00e9s sur les syst\u00e8mes critiques (source\u00a0: ESET, Google TAG).'
+   ),
+
+   h('h3',null,'Huit vagues de frappes sur les infrastructures \u00e9nerg\u00e9tiques'),
+   h('p',null,
+    'La strat\u00e9gie russe de frappes massives sur les infrastructures \u00e9nerg\u00e9tiques ukrainiennes a connu ',h('strong',null,'huit vagues majeures'),' depuis octobre 2022. L\u2019objectif est double\u00a0: d\u00e9grader la capacit\u00e9 industrielle et saper le moral de la population. La campagne de l\u2019hiver 2025-2026 a d\u00e9truit ou endommag\u00e9 ',h('strong',null,'plus de 50\u00a0% de la capacit\u00e9 de production \u00e9lectrique'),' ukrainienne (source\u00a0: Ukrenergo, IEA). Les frappes combinent missiles balistiques (Iskander), missiles de croisi\u00e8re (Kalibr, Kh-101) et drones Shahed dans des attaques saturantes.'
+   ),
+   h('p',null,
+    'L\u2019Ukraine a d\u00e9velopp\u00e9 une r\u00e9silience remarquable\u00a0: d\u00e9centralisation de la production, micro-r\u00e9seaux, g\u00e9n\u00e9rateurs distribu\u00e9s et r\u00e9parations rapides. Mais chaque vague de frappes impose des co\u00fbts cumulatifs croissants. La reconstruction du r\u00e9seau \u00e9nerg\u00e9tique est estim\u00e9e \u00e0 ',h('strong',null,'plus de 12 milliards de dollars'),' (source\u00a0: Banque mondiale).'
+   ),
+
+   h('h3',null,'Guerre cognitive et informationnelle'),
+   h('p',null,
+    'Le conflit se joue \u00e9galement sur le terrain de l\u2019information. La Russie d\u00e9ploie une ',h('strong',null,'strat\u00e9gie d\u2019influence multivectorielle'),'\u00a0: r\u00e9seaux de d\u00e9sinformation sur les r\u00e9seaux sociaux, manipulation de la classe politique europ\u00e9enne, amplification des narratifs anti-aide via des proxy m\u00e9diatiques. L\u2019Ukraine a r\u00e9pondu par une communication strat\u00e9gique efficace, mais la bataille de l\u2019attention se joue d\u00e9sormais dans les opinions publiques occidentales \u2014 et la ',h('strong',null,'lassitude informationnelle'),' constitue un risque strat\u00e9gique majeur (source\u00a0: Atlantic Council DFRLab, EU DisinfoLab).'
+   ),
+
+   h('div',{className:'insight-box not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#006650] mb-2'},'Cas d\u2019\u00e9tude SEMPLICE'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'L\u2019Ukraine est le cas d\u2019\u00e9tude principal du cadre SEMPLICE pour la ',h('strong',null,'d\u00e9tection pr\u00e9coce des crises'),'. L\u2019attaque WhisperGate de janvier 2022 \u2014 d\u00e9tect\u00e9e par le delta Cyber de +1.0 \u2014 a signal\u00e9 l\u2019invasion ',h('strong',null,'six semaines avant le 24 f\u00e9vrier'),'. Cette anticipation valide la capacit\u00e9 du cadre \u00e0 int\u00e9grer les signaux faibles des dimensions Information et Cyber, absentes des frameworks traditionnels (PESTEL, SWOT).'
+    )
+   ),
+
+   // Partie IV
+   h('h2',null,'IV. Recomposition g\u00e9opolitique\u00a0: l\u2019Europe et les acteurs tiers'),
+
+   h('h3',null,'Adh\u00e9sion \u00e0 l\u2019UE\u00a0: un processus acc\u00e9l\u00e9r\u00e9 mais incertain'),
+   h('p',null,
+    'L\u2019Ukraine a obtenu le statut de candidat \u00e0 l\u2019UE en juin 2022 et l\u2019ouverture des n\u00e9gociations d\u2019adh\u00e9sion en d\u00e9cembre 2023. Ce calendrier sans pr\u00e9c\u00e9dent refl\u00e8te la solidarit\u00e9 europ\u00e9enne, mais le chemin reste long. Les r\u00e9formes n\u00e9cessaires \u2014 ',h('strong',null,'\u00c9tat de droit, lutte anticorruption, r\u00e9forme judiciaire'),' \u2014 sont consid\u00e9rables et difficilement compatibles avec un \u00e9tat de guerre. L\u2019adh\u00e9sion effective n\u2019est pas envisageable avant ',h('strong',null,'2030 au plus t\u00f4t'),' selon les estimations les plus optimistes (source\u00a0: Chatham House, ECFR).'
+   ),
+
+   h('h3',null,'Le facteur Trump et la fatigue alli\u00e9e'),
+   h('p',null,
+    'Le retour de Donald Trump \u00e0 la pr\u00e9sidence am\u00e9ricaine en janvier 2025 a profond\u00e9ment reconfigur\u00e9 l\u2019\u00e9quation. Sa rh\u00e9torique de ',h('strong',null,'\u00ab\u00a0r\u00e8glement en 24 heures\u00a0\u00bb'),' n\u2019a pas abouti, mais la pression pour des n\u00e9gociations s\u2019est intensifi\u00e9e. Les livraisons d\u2019armes am\u00e9ricaines ont ralenti, certains programmes ont \u00e9t\u00e9 gel\u00e9s, et le ton de Washington oscille entre soutien conditionn\u00e9 et d\u00e9sengagement implicite. Cette incertitude ',h('strong',null,'fragilise la planification strat\u00e9gique ukrainienne'),' et alimente l\u2019anxi\u00e9t\u00e9 en Europe (source\u00a0: IISS, CFR).'
+   ),
+   h('p',null,
+    'La fatigue alli\u00e9e se manifeste \u00e9galement en Europe. La Hongrie maintient son veto sur certains paquets d\u2019aide, la Slovaquie a infléchi sa position, et des voix critiques s\u2019\u00e9l\u00e8vent en Allemagne et en Italie. Le consensus europ\u00e9en, solide en 2022, s\u2019effrite progressivement sous l\u2019effet de la dur\u00e9e du conflit et des co\u00fbts \u00e9conomiques domestiques.'
+   ),
+
+   h('h3',null,'Turquie et Chine\u00a0: jeux d\u2019\u00e9quilibre'),
+   h('p',null,
+    'La Turquie d\u2019Erdo\u011fan continue de jouer un r\u00f4le d\u2019\u00e9quilibriste\u00a0: livraison de drones Bayraktar \u00e0 l\u2019Ukraine, maintien de relations commerciales avec Moscou, m\u00e9diation ponctuelle. Ankara contr\u00f4le un levier strat\u00e9gique via la ',h('strong',null,'Convention de Montreux'),' r\u00e9gissant le passage des D\u00e9troits. La fermeture du Bosphore aux navires de guerre depuis f\u00e9vrier 2022 reste un facteur cl\u00e9 de l\u2019\u00e9quilibre naval en mer Noire (source\u00a0: IISS, ICG).'
+   ),
+   h('p',null,
+    'La Chine maintient une position d\u2019\u00e9quilibre ambigu\u00eb\u00a0: soutien diplomatique implicite \u00e0 Moscou, refus de condamner l\u2019invasion, mais aussi refus de fournir des armes l\u00e9tales. P\u00e9kin est le ',h('strong',null,'premier partenaire commercial de la Russie'),', absorbant les hydrocarbures redirig\u00e9s depuis l\u2019Europe, et fournissant des composants \u00e9lectroniques \u00e0 double usage. La posture chinoise conditionne la capacit\u00e9 de la Russie \u00e0 soutenir l\u2019effort de guerre dans la dur\u00e9e (source\u00a0: SIPRI, Carnegie).'
+   ),
+
+   h('div',{className:'insight-box gold not-prose'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2'},'Signal strat\u00e9gique'),
+    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     'Le conflit ukrainien acc\u00e9l\u00e8re la ',h('strong',null,'fragmentation de l\u2019ordre mondial en blocs'),'. L\u2019axe Russie-Chine-Iran-Cor\u00e9e du Nord se consolide, tandis que l\u2019Europe est contrainte d\u2019acc\u00e9l\u00e9rer sa r\u00e9industrialisation de d\u00e9fense. Le Global South reste largement non-align\u00e9, exploitant les rivalit\u00e9s. Ce r\u00e9alignement a des implications de long terme pour les cha\u00eenes d\u2019approvisionnement, les march\u00e9s \u00e9nerg\u00e9tiques et les flux de capitaux.'
+    )
+   ),
+
+   // Partie V
+   h('h2',null,'V. Impact pour les d\u00e9cideurs fran\u00e7ais'),
+
+   h('h3',null,'Matrice d\u2019impact sectoriel'),
+   h('div',{className:'not-prose my-6 overflow-x-auto'},
+    h('table',{className:'w-full text-sm border-collapse'},
+     h('thead',null,
+      h('tr',{className:'bg-[#F7F8FA]'},
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Secteur'),
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Niveau'),
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Recommandation')
+      )
+     ),
+     h('tbody',null,
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'D\u00e9fense'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#DC2626] px-2 py-0.5 rounded'},'CRITIQUE')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Acc\u00e9l\u00e9rer programmes drones/IA, adapter doctrine RETEX Ukraine')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'\u00c9nergie'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#f59e0b] px-2 py-0.5 rounded'},'\u00c9LEV\u00c9')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Diversification gaz poursuivie, stockage strat\u00e9gique, r\u00e9silience r\u00e9seau')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Agroalimentaire'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#f59e0b] px-2 py-0.5 rounded'},'MOD\u00c9R\u00c9')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Corridors c\u00e9r\u00e9aliers alternatifs, veille prix bl\u00e9/ma\u00efs')
+      ),
+      h('tr',{className:'border-b border-[#E2E5EB]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Cyber'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#DC2626] px-2 py-0.5 rounded'},'CRITIQUE')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Renforcer ANSSI, doctrine cyber offensive, partage renseignement')
+      ),
+      h('tr',null,
+       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Reconstruction'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-[#006650] bg-[#006650]/10 px-2 py-0.5 rounded'},'OPPORTUNIT\u00c9')),
+       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Positionnement BTP/infra fran\u00e7ais, Vinci/Bouygues/EDF')
+      )
+     )
+    )
+   ),
+
+   h('h3',null,'Recommandations op\u00e9rationnelles'),
+   h('p',null,
+    h('strong',null,'D\u00e9fense et industrie'),' \u2014 La France doit acc\u00e9l\u00e9rer ses programmes de drones tactiques et de munitions r\u00f4deuses, en tirant les le\u00e7ons du RETEX ukrainien. Les industriels fran\u00e7ais (Thales, MBDA, Nexter/KNDS) sont positionn\u00e9s mais les cadences de production restent insuffisantes face aux besoins identifi\u00e9s. Le programme SCORPION doit int\u00e9grer les enseignements de la guerre d\u2019attrition\u00a0: pr\u00e9pond\u00e9rance de l\u2019artillerie, n\u00e9cessit\u00e9 de masse, r\u00f4le critique de la d\u00e9fense a\u00e9rienne basse couche.'
+   ),
+   h('p',null,
+    h('strong',null,'\u00c9nergie'),' \u2014 La d\u00e9pendance \u00e9nerg\u00e9tique europ\u00e9enne au gaz russe a \u00e9t\u00e9 drastiquement r\u00e9duite (de 40\u00a0% \u00e0 moins de 15\u00a0% des importations), mais la diversification reste fragile. Les prix du GNL demeurent structurellement \u00e9lev\u00e9s. Le stockage strat\u00e9gique fran\u00e7ais (obligation de 90\u00a0% au 1er novembre) doit \u00eatre compl\u00e9t\u00e9 par des accords long terme avec les fournisseurs alternatifs (Norv\u00e8ge, Qatar, \u00c9tats-Unis).'
+   ),
+   h('p',null,
+    h('strong',null,'Cyber et information'),' \u2014 Le conflit valide la n\u00e9cessit\u00e9 d\u2019une ',h('strong',null,'doctrine cyber offensive fran\u00e7aise'),' assum\u00e9e. L\u2019ANSSI doit renforcer la protection des OIV et des administrations, en s\u2019appuyant sur le partage de renseignement avec les partenaires (Five Eyes, UE). La lutte contre la d\u00e9sinformation n\u00e9cessite une approche interministerielle (SGDSN, Viginum, forces arm\u00e9es).'
+   ),
+   h('p',null,
+    h('strong',null,'Reconstruction'),' \u2014 La reconstruction de l\u2019Ukraine repr\u00e9sente un march\u00e9 de ',h('strong',null,'486 milliards de dollars'),'. Les entreprises fran\u00e7aises du BTP et des infrastructures (Vinci, Bouygues, Eiffage), de l\u2019\u00e9nergie (EDF, Engie, TotalEnergies) et du transport (Alstom) doivent se positionner d\u00e8s maintenant via les instances multilat\u00e9rales (Ukraine Recovery Conference, BERD, BEI). Le financement passera largement par les institutions europ\u00e9ennes et les actifs russes gel\u00e9s.'
+   ),
+
+   // Score SEMPLICE
+   h('h2',null,'\u00c9valuation SEMPLICE'),
+   h('div',{className:'not-prose my-6 overflow-x-auto'},
+    h('table',{className:'w-full text-sm border-collapse'},
+     h('thead',null,
+      h('tr',{className:'bg-[#F7F8FA]'},
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Dimension'),
+       h('th',{className:'text-center px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Score risque'),
+       h('th',{className:'text-center px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Score opp.'),
+       h('th',{className:'text-center px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Tendance')
+      )
+     ),
+     h('tbody',null,
+      ...([
+       ['Social','5.6/7','4/7','\u2191'],['Économique','5.7/7','3/7','\u2191'],['Militaire','6.6/7','1/7','\u2191'],['Politique','5.4/7','3/7','\u2191'],
+       ['L\u00e9gal','4.7/7','3/7','\u2192'],['Information','5.8/7','5/7','\u2191'],['Cyber','6.3/7','4/7','\u2191'],['Environnemental','4.6/7','3/7','\u2192']
+      ].map((r,i)=>
+       h('tr',{key:i,className:'border-b border-[#E2E5EB]'},
+        h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},r[0]),
+        h('td',{className:'px-3 py-2.5 text-center font-data font-semibold text-[#006650]'},r[1]),
+        h('td',{className:'px-3 py-2.5 text-center font-data text-[#5A6178]'},r[2]),
+        h('td',{className:'px-3 py-2.5 text-center text-lg'},r[3])
+       )
+      )),
+      h('tr',{className:'bg-[#006650]/5'},
+       h('td',{className:'px-3 py-2.5 font-bold text-[#006650]'},'COMPOSITE RISQUE'),
+       h('td',{className:'px-3 py-2.5 text-center font-data font-bold text-[#DC2626] text-base'},'5.6/7'),
+       h('td',{className:'px-3 py-2.5 text-center font-data font-bold text-[#5A6178]'},'3.2/7'),
+       h('td',{className:'px-3 py-2.5 text-center text-lg'},'\u2191')
+      )
+     )
+    )
+   ),
+
+   h('p',null,
+    h('strong',null,'Lecture du score'),' \u2014 Le composite risque de ',h('strong',null,'5.6/7'),' classe l\u2019Ukraine dans la cat\u00e9gorie \u00ab\u00a0Tr\u00e8s \u00e9lev\u00e9\u00a0\u00bb. Les dimensions Militaire (6.6) et Cyber (6.3) dominent, refl\u00e9tant l\u2019intensit\u00e9 du conflit sur ces axes. Le score d\u2019opportunit\u00e9 mod\u00e9r\u00e9 (3.2/7) est tir\u00e9 vers le haut par la dimension Information (5/7), refl\u00e9tant la capacit\u00e9 ukrainienne de communication strat\u00e9gique et l\u2019\u00e9cosyst\u00e8me tech innovant n\u00e9 du conflit. La dimension Militaire en opportunit\u00e9 (1/7) confirme l\u2019absence de fen\u00eatre de s\u00e9curit\u00e9 \u00e0 court terme.'
+   ),
+
+   // Indicateurs d'alerte
+   h('h3',null,'Indicateurs d\u2019alerte \u00e0 surveiller'),
+   h('div',{className:'insight-box not-prose'},
+    h('ul',{className:'space-y-1.5 text-sm text-[#3A3A3A]'},
+     h('li',null,h('strong',null,'R\u00e9duction aide US > 50\u00a0%'),' \u2014 signal de basculement strat\u00e9gique'),
+     h('li',null,h('strong',null,'Cessez-le-feu impos\u00e9 sans garanties'),' \u2014 risque de conflit gel\u00e9 d\u00e9favorable'),
+     h('li',null,h('strong',null,'Attaque cyber majeure sur infrastructure UE'),' \u2014 escalade hors zone de conflit'),
+     h('li',null,h('strong',null,'Mobilisation g\u00e9n\u00e9rale russe d\u00e9clar\u00e9e'),' \u2014 signal d\u2019intensification militaire'),
+     h('li',null,h('strong',null,'Rupture corridor c\u00e9r\u00e9alier mer Noire'),' \u2014 choc alimentaire global'),
+     h('li',null,h('strong',null,'D\u00e9faut souverain ukrainien post-2027'),' \u2014 crise de confiance cr\u00e9anciers')
+    )
+   ),
+
+   // Trois sc\u00e9narios
+   h('h2',null,'Trois sc\u00e9narios \u00e0 12-24 mois'),
+
+   // Sc\u00e9nario 1
+   h('div',{className:'not-prose my-6 rounded-xl overflow-hidden border border-[#006650]/20 bg-[#F0FAF5]'},
+    h('div',{className:'px-5 py-3 bg-[#006650]/10 border-b border-[#006650]/20'},
+     h('div',{className:'flex items-center justify-between'},
+      h('span',{className:'text-sm font-bold text-[#006650]'},'Sc\u00e9nario 1 \u2014 N\u00e9gociation sous pression'),
+      h('span',{className:'text-xs font-semibold text-[#006650] bg-[#006650]/10 px-2 py-1 rounded'},'Probabilit\u00e9 : 25-30\u00a0%')
+     )
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+      'Sous pression am\u00e9ricaine, un cessez-le-feu est n\u00e9goci\u00e9 avec gel de la ligne de contact. L\u2019Ukraine conserve 82\u00a0% de son territoire mais sans garanties de s\u00e9curit\u00e9 fermes. Le processus d\u2019adh\u00e9sion \u00e0 l\u2019UE s\u2019acc\u00e9l\u00e8re. La Russie revendique une victoire strat\u00e9gique. ',h('strong',null,'Impact d\u00e9cideurs'),' : fen\u00eatre de reconstruction rapide mais risque de reprise du conflit \u00e0 moyen terme.'
+     )
+    )
+   ),
+
+   // Sc\u00e9nario 2
+   h('div',{className:'not-prose my-6 rounded-xl overflow-hidden border border-[#EAB308]/20 bg-[#FFFBEB]'},
+    h('div',{className:'px-5 py-3 bg-[#EAB308]/10 border-b border-[#EAB308]/20'},
+     h('div',{className:'flex items-center justify-between'},
+      h('span',{className:'text-sm font-bold text-[#92400E]'},'Sc\u00e9nario 2 \u2014 Attrition prolong\u00e9e'),
+      h('span',{className:'text-xs font-semibold text-[#92400E] bg-[#EAB308]/10 px-2 py-1 rounded'},'Probabilit\u00e9 : 45-50\u00a0%')
+     )
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+      'Le statu quo perdure. Le front reste fig\u00e9, les frappes mutuelles se poursuivent, l\u2019aide occidentale diminue progressivement. L\u2019Ukraine r\u00e9siste mais s\u2019\u00e9puise. La Russie maintient sa pression sans perc\u00e9e d\u00e9cisive. Le conflit \u00e9volue vers un mod\u00e8le Cor\u00e9e \u2014 armistice de facto sans trait\u00e9 de paix. ',h('strong',null,'Impact d\u00e9cideurs'),' : co\u00fbts de d\u00e9fense europ\u00e9ens durablement \u00e9lev\u00e9s, fragmentation du march\u00e9 \u00e9nerg\u00e9tique eurasiatique.'
+     )
+    )
+   ),
+
+   // Sc\u00e9nario 3
+   h('div',{className:'not-prose my-6 rounded-xl overflow-hidden border border-[#DC2626]/20 bg-[#FEF2F2]'},
+    h('div',{className:'px-5 py-3 bg-[#DC2626]/10 border-b border-[#DC2626]/20'},
+     h('div',{className:'flex items-center justify-between'},
+      h('span',{className:'text-sm font-bold text-[#991B1B]'},'Sc\u00e9nario 3 \u2014 Escalade et d\u00e9bordement'),
+      h('span',{className:'text-xs font-semibold text-[#991B1B] bg-[#DC2626]/10 px-2 py-1 rounded'},'Probabilit\u00e9 : 15-20\u00a0%')
+     )
+    ),
+    h('div',{className:'px-5 py-4'},
+     h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+      'Escalade non contr\u00f4l\u00e9e\u00a0: frappe russe sur un convoi OTAN, cyberattaque massive sur infrastructure critique europ\u00e9enne, ou incident nucl\u00e9aire \u00e0 Zaporijjia. Activation de l\u2019article 5. Rupture compl\u00e8te des relations \u00e9conomiques Russie-Europe. ',h('strong',null,'Impact d\u00e9cideurs'),' : mobilisation de l\u2019\u00e9conomie europ\u00e9enne, choc \u00e9nerg\u00e9tique et financier majeur, repositionnement g\u00e9opolitique radical.'
+     )
+    )
+   ),
+
+   // Disclaimer AMF
+   h('div',{className:'insight-box gold not-prose mt-10'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2'},'Avertissement AMF'),
+    h('p',{className:'text-xs text-[#6A6A6A] leading-relaxed'},
+     'Cette analyse est fournie \u00e0 titre informatif et ne constitue en aucun cas un conseil en investissement, une recommandation personnalis\u00e9e ou une incitation \u00e0 acheter ou vendre des instruments financiers. Les performances pass\u00e9es ne pr\u00e9jugent pas des performances futures. Tout investissement comporte des risques de perte en capital. Les \u00e9valuations de risque SEMPLICE refl\u00e8tent une appr\u00e9ciation \u00e0 date et ne constituent pas une garantie.'
+    )
+   ),
+
+   // Sources
+   h('div',{className:'pt-8 mt-8 border-t border-[#ECEEF2] not-prose'},
+    h('h4',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] mb-3'},'Sources principales (40+ sources — fiabilit\u00e9 A/B)'),
+    h('ul',{className:'space-y-1.5'},
+     h('li',null,h('a',{href:'https://www.crisisgroup.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'International Crisis Group (ICG) \u2014 Ukraine : conflict tracker, analyses strat\u00e9giques')),
+     h('li',null,h('a',{href:'https://www.iiss.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'IISS \u2014 The Military Balance 2026, \u00e9valuations capacitaires Russie/Ukraine')),
+     h('li',null,h('a',{href:'https://www.sipri.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'SIPRI \u2014 Arms transfers to Ukraine, d\u00e9penses militaires mondiales 2025')),
+     h('li',null,h('a',{href:'https://www.chathamhouse.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Chatham House \u2014 Ukraine\u2019s European path, adh\u00e9sion UE et r\u00e9formes')),
+     h('li',null,h('a',{href:'https://kse.ua/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'KSE Institute \u2014 Ukraine\u2019s economic resilience, PIB et dette publique')),
+     h('li',null,h('a',{href:'https://rusi.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'RUSI \u2014 Drone warfare in Ukraine, le\u00e7ons tactiques et strat\u00e9giques')),
+     h('li',null,h('a',{href:'https://www.atlanticcouncil.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Atlantic Council \u2014 DFRLab, d\u00e9sinformation et guerre informationnelle')),
+     h('li',null,h('a',{href:'https://www.understandingwar.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'ISW (Institute for the Study of War) \u2014 Daily battlefield assessments')),
+     h('li',null,h('a',{href:'https://www.ifw-kiel.de/topics/war-against-ukraine/ukraine-support-tracker/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Kiel Institute \u2014 Ukraine Support Tracker, aide internationale cumul\u00e9e')),
+     h('li',null,h('a',{href:'https://www.worldbank.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Banque mondiale \u2014 RDNA3, \u00e9valuation des besoins de reconstruction (486 Mrd$)')),
+     h('li',null,h('a',{href:'https://www.microsoft.com/en-us/security/blog/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Microsoft DART \u2014 WhisperGate, HermeticWiper, analyse des cyberattaques russes')),
+     h('li',null,h('a',{href:'https://www.mandiant.com/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Mandiant / Google TAG \u2014 Sandworm (GRU unit\u00e9 74455), Industroyer2')),
+     h('li',null,h('a',{href:'https://www.ssi.gouv.fr/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'ANSSI \u2014 Panorama de la menace 2025, retour d\u2019exp\u00e9rience cyber Ukraine')),
+     h('li',null,h('a',{href:'https://www.iea.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'AIE \u2014 Ukraine energy situation, impact des frappes sur le r\u00e9seau \u00e9lectrique'))
+    ),
+    h('p',{className:'mt-3 text-[10px] text-[#6A6A6A] italic'},'Collecte OSINT multi-sources. Classification fiabilit\u00e9 A/B/C. Mis \u00e0 jour le 15 mars 2026.')
+   ),
+
+   // Back nav
+   h('div',{className:'mt-10 text-center not-prose'},
+    h('a',{href:'analyses.html',className:'inline-block px-6 py-2.5 text-sm font-semibold text-[#006650] border-2 border-[#006650] rounded-lg hover:bg-[#006650] hover:text-white transition-colors'},'\u2190 Toutes les analyses')
+   )
+  ),
+
+  // Sidebar
+  h('aside',{className:'hidden lg:block lg:w-[220px] flex-shrink-0'},
+   h('div',{className:'lg:sticky lg:top-24'},
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Articles li\u00e9s'),
+    h('div',{className:'flex flex-col gap-4'},
+     ...RELATED_ARTICLES.map(a=>
+      h('a',{key:a.id,href:a.href,className:'article-card block rounded-xl overflow-hidden bg-white border border-[#E2E5EB] no-underline'},
+       h('div',{className:'aspect-[16/9] overflow-hidden'},
+        h('img',{src:a.img,alt:'',className:'w-full h-full object-cover',loading:'lazy'})
+       ),
+       h('div',{className:'p-3'},
+        h('span',{className:`category-${a.cat} text-[9px] font-semibold uppercase tracking-wider text-white px-1.5 py-0.5 rounded`},a.catLabel),
+        h('h4',{className:'mt-2 text-xs font-semibold text-[#1A1F2E] leading-snug line-clamp-2',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},a.title)
+       )
+      )
+     )
+    )
+   )
+  )
+ )
+)
+}
+
+// ─── FOOTER ──────────────────────────────────────────────────────────────────
+
+function Footer(){
+const footerLinks={
+intelligence:[
+{label:'G\u00e9opolitique',href:'geopolitics.html'},
+{label:'March\u00e9s',href:'markets.html'},
+{label:'Crypto',href:'crypto.html'},
+{label:'Mati\u00e8res premi\u00e8res',href:'commodities.html'},
+{label:'ETF & Fonds',href:'etf.html'},
+],
+plateforme:[
+{label:'Analyses',href:'analyses.html'},
+{label:'Expertise',href:'expertise.html'},
+{label:'Services',href:'premium.html'},
+{label:'Diagnostic',href:'premium.html#diagnostic'},
+],
+}
+const sources=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC']
+
+return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-12 sm:pt-16 pb-24 sm:pb-20'},
+ h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+  h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-10 mb-12'},
+   h('div',{className:'col-span-2 md:col-span-1'},
+    h('div',{className:'flex items-center gap-2 mb-4'},
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto'})
+    ),
+    h('p',{className:'text-sm text-[#5A6178] leading-relaxed'},'Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.')
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Intelligence'),
+    h('ul',{className:'space-y-2.5'},
+     ...footerLinks.intelligence.map(l=>
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+     )
+    )
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Plateforme'),
+    h('ul',{className:'space-y-2.5'},
+     ...footerLinks.plateforme.map(l=>
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+     )
+    )
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Suivez-nous'),
+    h('div',{className:'flex items-center gap-3 mb-4'},
+     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+      h('svg',{width:16,height:16,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'}))
+     ),
+     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+      h('svg',{width:14,height:14,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'}))
+     )
+    ),
+    h('a',{href:'#',className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},'Contact')
+   )
+  ),
+  h('div',{className:'border-t border-[#E2E5EB] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
+   h('span',{className:'text-sm text-[#5A6178]'},'\u00a9 2026 Inflexion \u2014 Intelligence financi\u00e8re & g\u00e9opolitique'),
+   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#5A6178]/40 font-medium'},
+    ...sources.map(s=>h('span',{key:s},s))
+   )
+  )
+ )
+)
+}
+
+// ─── APP ─────────────────────────────────────────────────────────────────────
+
+function App(){
+return h('div',null,
+ h(Navigation),
+ h(ArticleHero),
+ h(ArticleContent),
+ h(Footer)
+)
+}
+
+createRoot(document.getElementById('app')).render(h(App))
+</script>
+</body>
+</html>

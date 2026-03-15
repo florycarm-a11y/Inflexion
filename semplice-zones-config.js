@@ -16,13 +16,13 @@ var SEMPLICE_ZONES=[
     {id:'sahel',name:'Sahel',
      scores:[6.6,4.7,5.9,6.8,5.8,5.8,4.8,5.8],composite:5.8,level:'Très élevé',
      opp:[2.2,3.3,2.2,1.9,2.8,2.0,2.2,3.0],oppComposite:2.6,oppLevel:'Faible',
-     color:'#C8955A',fill:'rgba(200,149,90,0.10)',href:'#',
+     color:'#C8955A',fill:'rgba(200,149,90,0.10)',href:'analyse-sahel-mali-niger-burkina-crise.html',
      center:[15,2],zoom:5,gdp:45,region:'Afrique'},
 
     {id:'ukraine',name:'Ukraine / Mer Noire',
      scores:[5.6,5.7,6.6,5.4,4.7,5.8,6.3,4.6],composite:5.6,level:'Très élevé',
      opp:[4,3,1,3,3,5,4,3],oppComposite:3.2,oppLevel:'Modéré',
-     color:'#DC2626',fill:'rgba(220,38,38,0.10)',href:'#',
+     color:'#DC2626',fill:'rgba(220,38,38,0.10)',href:'analyse-ukraine-mer-noire-guerre-attrition.html',
      center:[48.5,35],zoom:5,gdp:178,region:'Europe'},
 
     {id:'cuba',name:'Cuba',
@@ -34,19 +34,19 @@ var SEMPLICE_ZONES=[
     {id:'chine',name:'Mer de Chine',
      scores:[3.5,3.6,4.7,5.0,3.9,6.9,5.0,3.9],composite:4.8,level:'Élevé',
      opp:[5.0,5.9,4.2,3.1,4.1,6.2,5.9,4.9],oppComposite:5.4,oppLevel:'Très élevé',
-     color:'#f59e0b',fill:'rgba(245,158,11,0.10)',href:'#',
+     color:'#f59e0b',fill:'rgba(245,158,11,0.10)',href:'analyse-mer-chine-taiwan-indopacifique.html',
      center:[16,115],zoom:5,gdp:18000,region:'Asie'},
 
     {id:'madagascar',name:'Madagascar',
      scores:[5.8,4.1,4.2,5.5,4.9,3.5,4.7,4.3],composite:4.6,level:'Élevé',
      opp:[1.9,2.7,2.1,1.9,2.2,1.7,1.2,2.0],oppComposite:2.0,oppLevel:'Minimal',
-     color:'#be185d',fill:'rgba(190,24,93,0.10)',href:'#',
+     color:'#be185d',fill:'rgba(190,24,93,0.10)',href:'analyse-madagascar-fragilite-ressources.html',
      center:[-18.9,47.5],zoom:5,gdp:14.5,region:'Afrique'},
 
     {id:'turquie',name:'Turquie',
      scores:[3.7,3.9,3.7,5.1,4.5,5.7,3.8,3.9],composite:4.3,level:'Élevé',
      opp:[3.5,4.1,4.4,3.0,3.4,4.1,4.1,3.0],oppComposite:3.7,oppLevel:'Modéré',
-     color:'#0891b2',fill:'rgba(8,145,178,0.10)',href:'#',
+     color:'#0891b2',fill:'rgba(8,145,178,0.10)',href:'analyse-turquie-erdogan-equilibriste.html',
      center:[39,35],zoom:6,gdp:905,region:'Europe'},
 
     {id:'inde',name:'Inde',
