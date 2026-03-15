@@ -325,6 +325,7 @@
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
 
+    <script src="semplice-zones-config.js"></script>
     <script src="app.js"></script>
     <script>if(typeof initCommon==='function')initCommon();</script>
     <script src="image-catalog.js"></script>
@@ -336,61 +337,11 @@
     /* ════════════════════════════════════════════
        SEMPLICE DATA
        ════════════════════════════════════════════ */
-    var DIMS=['S','E','M','P','L','I','C','E'];
-    var DIM_LABELS=['Social','Économique','Militaire','Politique','Légal','Information','Cyber','Environnemental'];
-    var OPP_LABELS=['Capital humain','Croissance','Sécurité','Gouvernance','Attract. juridique','Innovation','Maturité tech','Durabilité'];
-
-    /* SEMPLICE v2.1 — échelle 1-7 risque ET opportunité — 12 zones évaluées (107 ind. risque + 66 ind. opp.) */
-    var ZONES=[
-        {id:'ormuz',name:'Détroit d\'Ormuz',scores:[4.4,5.7,6.2,6.7,6.9,6.9,6.5,5.2],composite:6.2,level:'Critique',
-         opp:[3.3,2.5,2.4,1.9,1.3,2.3,2.2,1.9],oppComposite:2.2,oppLevel:'Faible',
-         color:'#b91c1c',href:'analyse-petrole-trump-iran-ormuz.html',
-         center:[26.5,56],zoom:6,gdp:510,region:'Moyen-Orient'},
-        {id:'sahel',name:'Sahel',scores:[6.6,4.7,5.9,6.8,5.8,5.8,4.8,5.8],composite:5.8,level:'Très élevé',
-         opp:[2.2,3.3,2.2,1.9,2.8,2.0,2.2,3.0],oppComposite:2.6,oppLevel:'Faible',
-         color:'#C8955A',href:'#',
-         center:[15,2],zoom:5,gdp:45,region:'Afrique'},
-        {id:'ukraine',name:'Ukraine / Mer Noire',scores:[5.6,5.7,6.6,5.4,4.7,5.8,6.3,4.6],composite:5.6,level:'Très élevé',
-         opp:[4,3,1,3,3,5,4,3],oppComposite:3.2,oppLevel:'Modéré',
-         color:'#DC2626',href:'#',
-         center:[48.5,35],zoom:5,gdp:178,region:'Europe'},
-        {id:'cuba',name:'Cuba',scores:[3.8,6.0,3.3,5.6,5.9,5.6,4.2,4.1],composite:5.0,level:'Élevé',
-         opp:[3.3,1.9,3.1,1.8,1.9,2.0,2.2,3.0],oppComposite:2.3,oppLevel:'Faible',
-         color:'#9333ea',href:'analyse-cuba-crise-perspectives.html',
-         center:[21.5,-79.9],zoom:7,gdp:107,region:'Amériques'},
-        {id:'chine',name:'Mer de Chine',scores:[3.5,3.6,4.7,5.0,3.9,6.9,5.0,3.9],composite:4.8,level:'Élevé',
-         opp:[5.0,5.9,4.2,3.1,4.1,6.2,5.9,4.9],oppComposite:5.4,oppLevel:'Très élevé',
-         color:'#f59e0b',href:'#',
-         center:[16,115],zoom:5,gdp:18000,region:'Asie'},
-        {id:'madagascar',name:'Madagascar',scores:[5.8,4.1,4.2,5.5,4.9,3.5,4.7,4.3],composite:4.6,level:'Élevé',
-         opp:[1.9,2.7,2.1,1.9,2.2,1.7,1.2,2.0],oppComposite:2.0,oppLevel:'Minimal',
-         color:'#be185d',href:'#',
-         center:[-18.9,47.5],zoom:5,gdp:14.5,region:'Afrique'},
-        {id:'turquie',name:'Turquie',scores:[3.7,3.9,3.7,5.1,4.5,5.7,3.8,3.9],composite:4.3,level:'Élevé',
-         opp:[3.5,4.1,4.4,3.0,3.4,4.1,4.1,3.0],oppComposite:3.7,oppLevel:'Modéré',
-         color:'#0891b2',href:'#',
-         center:[39,35],zoom:6,gdp:905,region:'Europe'},
-        {id:'bresil',name:'Brésil',scores:[3.5,3.6,2.4,3.8,3.4,3.5,4.1,4.2],composite:3.5,level:'Modéré',
-         opp:[4.5,5.5,3.5,3.5,3.0,4.0,4.5,5.5],oppComposite:4.2,oppLevel:'Élevé',
-         color:'#16a34a',href:'#',
-         center:[-14,-51],zoom:4,gdp:2130,region:'Amériques'},
-        {id:'tamil',name:'Tamil Nadu',scores:[2.8,2.1,3.2,2.9,3.8,4.0,3.2,4.0],composite:3.2,level:'Modéré',
-         opp:[5.5,6.0,4.5,4.5,3.0,5.5,5.0,4.5],oppComposite:4.9,oppLevel:'Élevé',
-         color:'#006650',href:'analyse-corridor-defense-france-inde.html',
-         center:[11,79],zoom:7,gdp:310,region:'Asie'},
-        {id:'arctique',name:'Arctique',scores:[2.9,2.8,4.5,2.5,1.6,3.1,3.6,3.5],composite:3.1,level:'Modéré',
-         opp:[5.3,5.2,4.6,6.1,5.9,5.2,6.2,6.2],oppComposite:5.6,oppLevel:'Très élevé',
-         color:'#d97706',href:'analyse-arctique-groenland-grand-jeu-polaire.html',
-         center:[74,0],zoom:3,gdp:2100,region:'Multi'},
-        {id:'singapour',name:'Singapour',scores:[2.2,1.4,2.7,1.9,1.2,3.2,2.1,2.9],composite:2.2,level:'Modéré-Faible',
-         opp:[5,5,5,6,6,6,6,4],oppComposite:5.5,oppLevel:'Très élevé',
-         color:'#6366f1',href:'#',
-         center:[1.35,103.82],zoom:11,gdp:397,region:'Asie'},
-        {id:'republique-tcheque',name:'République tchèque',scores:[1.7,1.9,1.7,1.6,1.7,1.6,2.8,2.6],composite:1.9,level:'Faible',
-         opp:[5.4,3.9,4.8,5.5,5.0,3.9,5.1,4.0],oppComposite:4.7,oppLevel:'Élevé',
-         color:'#0d9488',href:'#',
-         center:[49.8,15.5],zoom:7,gdp:330,region:'Europe'}
-    ];
+    /* SEMPLICE v2.1 — données depuis semplice-zones-config.js */
+    var DIMS=SEMPLICE_DIM_SHORT;
+    var DIM_LABELS=SEMPLICE_DIM_LABELS;
+    var OPP_LABELS=SEMPLICE_OPP_LABELS;
+    var ZONES=SEMPLICE_ZONES;
 
     /* GeoJSON loaded from external file (Natural Earth real boundaries) */
     var GEOJSON={};
@@ -409,7 +360,9 @@
     function oppColor(s){
         if(s>=5)return '#006650';if(s>=4)return '#33B894';if(s>=3)return '#a7f3d0';return '#d1d5db';
     }
-    function getColor(zone){return currentMode==='risk'?riskColor(zone.composite):oppColor(zone.oppComposite);}
+    function getColor(zone){return currentMode==='risk'?riskColor(zone.composite):(zone.oppComposite!=null?oppColor(zone.oppComposite):'#d1d5db');}
+    /* Zones avec données opportunité disponibles */
+    var ZONES_OPP=ZONES.filter(function(z){return z.opp!==null;});
 
     /* ════════════════════════════════════════════
        LEAFLET MAP
@@ -454,8 +407,7 @@
                             '<div class="map-tooltip-custom">'+
                             '<strong style="color:'+zone.color+'">'+zone.name+'</strong>'+
                             '<span style="color:#DC2626;">Risque : '+zone.composite.toFixed(1)+'/7</span><br>'+
-                            '<span style="color:#006650;">Opportunité : '+zone.oppComposite.toFixed(1)+'/7</span><br>'+
-                            '<span style="color:#5A6178;font-size:.75rem;">Ratio O/R : '+(zone.oppComposite/zone.composite).toFixed(2)+'</span>'+
+                            (zone.oppComposite!=null?'<span style="color:#006650;">Opportunité : '+zone.oppComposite.toFixed(1)+'/7</span><br><span style="color:#5A6178;font-size:.75rem;">Ratio O/R : '+(zone.oppComposite/zone.composite).toFixed(2)+'</span>':'<span style="color:#5A6178;font-size:.75rem;">Opp. : données indisponibles</span>')+
                             '</div>',
                             {sticky:true,direction:'top',offset:[0,-10],className:''}
                         );
@@ -498,8 +450,7 @@
                         '<div class="map-tooltip-custom">'+
                         '<strong style="color:'+zone.color+'">'+zone.name+'</strong>'+
                         '<span style="color:#DC2626;">Risque : '+zone.composite.toFixed(1)+'/7</span><br>'+
-                        '<span style="color:#006650;">Opportunité : '+zone.oppComposite.toFixed(1)+'/7</span><br>'+
-                        '<span style="color:#5A6178;font-size:.75rem;">Ratio O/R : '+(zone.oppComposite/zone.composite).toFixed(2)+'</span>'+
+                        (zone.oppComposite!=null?'<span style="color:#006650;">Opportunité : '+zone.oppComposite.toFixed(1)+'/7</span><br><span style="color:#5A6178;font-size:.75rem;">Ratio O/R : '+(zone.oppComposite/zone.composite).toFixed(2)+'</span>':'<span style="color:#5A6178;font-size:.75rem;">Opp. : données indisponibles</span>')+
                         '</div>',
                         {sticky:true,direction:'top',offset:[0,-10]}
                     );
@@ -559,7 +510,8 @@
         grid.innerHTML=ZONES.map(function(zone){
             var hasArticle=zone.href&&zone.href!=='#';
             var riskDom=DIM_LABELS[zone.scores.indexOf(Math.max.apply(null,zone.scores))];
-            var oppDom=OPP_LABELS[zone.opp.indexOf(Math.max.apply(null,zone.opp))];
+            var oppDom=zone.opp?OPP_LABELS[zone.opp.indexOf(Math.max.apply(null,zone.opp))]:'—';
+            var hasOpp=zone.oppComposite!=null;
 
             return '<div class="zone-card" id="card-'+zone.id+'" data-zone="'+zone.id+'">'+
                 '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem;">'+
@@ -570,7 +522,7 @@
                         '</h3>'+
                         '<div style="display:flex;gap:6px;flex-wrap:wrap;">'+
                             '<span class="score-badge score-risk">R '+zone.composite.toFixed(1)+'</span>'+
-                            '<span class="score-badge score-opp">O '+zone.oppComposite.toFixed(1)+'</span>'+
+                            (hasOpp?'<span class="score-badge score-opp">O '+zone.oppComposite.toFixed(1)+'</span>':'')+
                             '<span style="font-size:.72rem;color:#5A6178;padding:3px 8px;background:#F7F8FA;border-radius:20px;">'+zone.level+'</span>'+
                         '</div>'+
                     '</div>'+
@@ -579,8 +531,8 @@
                 '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:.78rem;margin-bottom:.75rem;">'+
                     '<div style="color:#5A6178;">Risque dom. : <strong style="color:#1A1F2E;">'+riskDom+'</strong></div>'+
                     '<div style="color:#5A6178;">Opp. dom. : <strong style="color:#1A1F2E;">'+oppDom+'</strong></div>'+
-                    '<div style="color:#5A6178;">Ratio O/R : <strong style="color:#1A1F2E;font-family:\'JetBrains Mono\',monospace;">'+(zone.oppComposite/zone.composite).toFixed(2)+'</strong></div>'+
-                    '<div style="color:#5A6178;">Score global : <strong style="color:#1A1F2E;font-family:\'JetBrains Mono\',monospace;">'+(zone.composite+zone.oppComposite).toFixed(1)+'/14</strong></div>'+
+                    (hasOpp?'<div style="color:#5A6178;">Ratio O/R : <strong style="color:#1A1F2E;font-family:\'JetBrains Mono\',monospace;">'+(zone.oppComposite/zone.composite).toFixed(2)+'</strong></div>'+
+                    '<div style="color:#5A6178;">Score global : <strong style="color:#1A1F2E;font-family:\'JetBrains Mono\',monospace;">'+(zone.composite+zone.oppComposite).toFixed(1)+'/14</strong></div>':'<div style="color:#9ca3af;font-style:italic;" colspan="2">Opp. : données à venir</div>')+
                 '</div>'+
                 '<div style="display:flex;justify-content:space-between;align-items:center;">'+
                     (hasArticle?'<a href="'+zone.href+'" style="font-size:.8rem;color:#006650;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px;">Lire l\'analyse <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></a>':'<span style="font-size:.78rem;color:#9ca3af;">Analyse à venir</span>')+
@@ -631,16 +583,18 @@
         }
         ctx.closePath();ctx.fillStyle='rgba(220,38,38,0.15)';ctx.fill();
         ctx.strokeStyle='#DC2626';ctx.lineWidth=1.5;ctx.stroke();
-        // Opportunity polygon (échelle 1-7)
-        ctx.beginPath();
-        for(var i=0;i<n;i++){
-            var a=(Math.PI*2/n)*i-Math.PI/2;
-            var v=zone.opp[i]/7*r;
-            var px=cx+Math.cos(a)*v,py=cy+Math.sin(a)*v;
-            i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+        // Opportunity polygon (échelle 1-7) — skip if no opp data
+        if(zone.opp){
+            ctx.beginPath();
+            for(var i=0;i<n;i++){
+                var a=(Math.PI*2/n)*i-Math.PI/2;
+                var v=zone.opp[i]/7*r;
+                var px=cx+Math.cos(a)*v,py=cy+Math.sin(a)*v;
+                i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+            }
+            ctx.closePath();ctx.fillStyle='rgba(0,102,80,0.15)';ctx.fill();
+            ctx.strokeStyle='#006650';ctx.lineWidth=1.5;ctx.stroke();
         }
-        ctx.closePath();ctx.fillStyle='rgba(0,102,80,0.15)';ctx.fill();
-        ctx.strokeStyle='#006650';ctx.lineWidth=1.5;ctx.stroke();
         // Labels
         ctx.font='bold 7px Inter,sans-serif';ctx.fillStyle='#5A6178';
         ctx.textAlign='center';ctx.textBaseline='middle';
@@ -657,11 +611,12 @@
     var scatterMeta={};
     var lastHoveredZone=null;
 
-    function getFilteredZones(){
+    function getFilteredZones(requireOpp){
         var region=document.getElementById('filter-region').value;
         var riskMax=parseFloat(document.getElementById('filter-risk').value);
         var dim=document.getElementById('filter-dim').value;
         return ZONES.filter(function(z){
+            if(requireOpp&&z.opp===null)return false;
             if(region!=='all'&&z.region!==region)return false;
             if(z.composite>riskMax)return false;
             if(dim!=='all'&&z.scores[parseInt(dim)]<=3)return false;
@@ -737,7 +692,7 @@
 
         // Bubbles — GDP-proportional radius
         scatterBubbles=[];
-        var filtered=getFilteredZones();
+        var filtered=getFilteredZones(true);
         filtered.forEach(function(zone){
             var bx=xPos(zone.composite),by=yPos(zone.oppComposite);
             var br=bubbleRadius(zone.gdp);
@@ -1094,24 +1049,25 @@
             switch(sortCol){
                 case 'name':va=a.name;vb=b.name;return sortAsc?va.localeCompare(vb):vb.localeCompare(va);
                 case 'risk':va=a.composite;vb=b.composite;break;
-                case 'opp':va=a.oppComposite;vb=b.oppComposite;break;
-                case 'ratio':va=a.oppComposite/a.composite;vb=b.oppComposite/b.composite;break;
+                case 'opp':va=(a.oppComposite||0);vb=(b.oppComposite||0);break;
+                case 'ratio':va=a.oppComposite?a.oppComposite/a.composite:0;vb=b.oppComposite?b.oppComposite/b.composite:0;break;
                 default:va=a.composite;vb=b.composite;
             }
             return sortAsc?va-vb:vb-va;
         });
 
         tbody.innerHTML=sorted.map(function(zone){
-            var ratio=(zone.oppComposite/zone.composite).toFixed(2);
+            var hasOpp=zone.oppComposite!=null;
+            var ratio=hasOpp?(zone.oppComposite/zone.composite).toFixed(2):'—';
             var riskDom=DIM_LABELS[zone.scores.indexOf(Math.max.apply(null,zone.scores))];
-            var oppDom=OPP_LABELS[zone.opp.indexOf(Math.max.apply(null,zone.opp))];
+            var oppDom=zone.opp?OPP_LABELS[zone.opp.indexOf(Math.max.apply(null,zone.opp))]:'—';
             var hasArticle=zone.href&&zone.href!=='#';
             return '<tr style="border-bottom:1px solid #E2E5EB;cursor:pointer;" data-zone="'+zone.id+'" onmouseenter="this.style.background=\'#F0FAF5\'" onmouseleave="this.style.background=\'\'">'+
                 '<td style="padding:.65rem .75rem;font-weight:600;color:#1A1F2E;white-space:nowrap;">'+
                     '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:'+zone.color+';margin-right:6px;vertical-align:middle;"></span>'+zone.name+'</td>'+
                 '<td style="padding:.65rem .75rem;text-align:center;"><span class="score-badge score-risk">'+zone.composite.toFixed(1)+'</span></td>'+
-                '<td style="padding:.65rem .75rem;text-align:center;"><span class="score-badge score-opp">'+zone.oppComposite.toFixed(1)+'</span></td>'+
-                '<td style="padding:.65rem .75rem;text-align:center;font-family:\'JetBrains Mono\',monospace;font-weight:600;color:'+(parseFloat(ratio)>=1?'#006650':'#DC2626')+';">'+ratio+'</td>'+
+                '<td style="padding:.65rem .75rem;text-align:center;">'+(hasOpp?'<span class="score-badge score-opp">'+zone.oppComposite.toFixed(1)+'</span>':'<span style="color:#9ca3af;font-size:.78rem;">—</span>')+'</td>'+
+                '<td style="padding:.65rem .75rem;text-align:center;font-family:\'JetBrains Mono\',monospace;font-weight:600;color:'+(hasOpp&&parseFloat(ratio)>=1?'#006650':hasOpp?'#DC2626':'#9ca3af')+';">'+ratio+'</td>'+
                 '<td style="padding:.65rem .75rem;text-align:center;color:#5A6178;font-size:.78rem;">'+riskDom+'</td>'+
                 '<td style="padding:.65rem .75rem;text-align:center;color:#5A6178;font-size:.78rem;">'+oppDom+'</td>'+
                 '<td style="padding:.65rem .75rem;text-align:center;">'+(hasArticle?'<a href="'+zone.href+'" style="color:#006650;font-weight:600;font-size:.78rem;text-decoration:none;">Lire →</a>':'<span style="color:#9ca3af;font-size:.78rem;">—</span>')+'</td>'+

@@ -470,26 +470,12 @@
 
             <script>
             (function(){
-                var DIMS=['Social','Économique','Militaire','Politique','Légal','Information','Cyber','Environnemental'];
-                var OPP_DIMS=['Capital humain','Croissance & marché','Sécurité & alliances','Gouvernance & réformes','Attractivité juridique','Innovation & numérique','Maturité technologique','Durabilité & transition'];
-                var DIM_SHORT=['S','E','M','P','L','I','C','E'];
-                /* SEMPLICE v2.1 — échelle 1-7 risque ET opportunité */
-                /* SEMPLICE v2.1 — échelle 1-7 risque ET opportunité — 12 zones évaluées */
-                var ZONES=[
-                    {name:'Détroit d\'Ormuz',scores:[4.4,5.7,6.2,6.7,6.9,6.9,6.5,5.2],composite:6.2,level:'Critique',opp:[3.3,2.5,2.4,1.9,1.3,2.3,2.2,1.9],oppComposite:2.2,oppLevel:'Faible',color:'#7C2D12',fill:'rgba(124,45,18,0.10)',href:'analyse-petrole-trump-iran-ormuz.html'},
-                    {name:'Sahel',scores:[6.6,4.7,5.9,6.8,5.8,5.8,4.8,5.8],composite:5.8,level:'Très élevé',opp:[2.2,3.3,2.2,1.9,2.8,2.0,2.2,3.0],oppComposite:2.6,oppLevel:'Faible',color:'#C8955A',fill:'rgba(200,149,90,0.10)',href:'#'},
-                    {name:'Ukraine / Mer Noire',scores:[5.6,5.7,6.6,5.4,4.7,5.8,6.3,4.6],composite:5.6,level:'Très élevé',opp:[4,3,1,3,3,5,4,3],oppComposite:3.2,oppLevel:'Modéré',color:'#DC2626',fill:'rgba(220,38,38,0.10)',href:'#'},
-                    {name:'Cuba',scores:[3.8,6.0,3.3,5.6,5.9,5.6,4.2,4.1],composite:5.0,level:'Élevé',opp:[3.3,1.9,3.1,1.8,1.9,2.0,2.2,3.0],oppComposite:2.3,oppLevel:'Faible',color:'#9333ea',fill:'rgba(147,51,234,0.10)',href:'analyse-cuba-crise-perspectives.html'},
-                    {name:'Mer de Chine',scores:[3.5,3.6,4.7,5.0,3.9,6.9,5.0,3.9],composite:4.8,level:'Élevé',opp:[5.0,5.9,4.2,3.1,4.1,6.2,5.9,4.9],oppComposite:5.4,oppLevel:'Très élevé',color:'#f59e0b',fill:'rgba(245,158,11,0.10)',href:'#'},
-                    {name:'Madagascar',scores:[5.8,4.1,4.2,5.5,4.9,3.5,4.7,4.3],composite:4.6,level:'Élevé',opp:[1.9,2.7,2.1,1.9,2.2,1.7,1.2,2.0],oppComposite:2.0,oppLevel:'Minimal',color:'#be185d',fill:'rgba(190,24,93,0.10)',href:'#'},
-                    {name:'Turquie',scores:[3.7,3.9,3.7,5.1,4.5,5.7,3.8,3.9],composite:4.3,level:'Élevé',opp:[3.5,4.1,4.4,3.0,3.4,4.1,4.1,3.0],oppComposite:3.7,oppLevel:'Modéré',color:'#0891b2',fill:'rgba(8,145,178,0.10)',href:'#'},
-                    {name:'Brésil',scores:[3.5,3.6,2.4,3.8,3.4,3.5,4.1,4.2],composite:3.5,level:'Modéré',opp:[4.5,5.5,3.5,3.5,3.0,4.0,4.5,5.5],oppComposite:4.2,oppLevel:'Élevé',color:'#16a34a',fill:'rgba(22,163,74,0.10)',href:'#'},
-                    {name:'Tamil Nadu',scores:[2.8,2.1,3.2,2.9,3.8,4.0,3.2,4.0],composite:3.2,level:'Modéré',opp:[5.5,6.0,4.5,4.5,3.0,5.5,5.0,4.5],oppComposite:4.9,oppLevel:'Élevé',color:'#006650',fill:'rgba(0,102,80,0.10)',href:'analyse-corridor-defense-france-inde-tamil-nadu.html'},
-                    {name:'Arctique',scores:[2.9,2.8,4.5,2.5,1.6,3.1,3.6,3.5],composite:3.1,level:'Modéré',opp:[5.3,5.2,4.6,6.1,5.9,5.2,6.2,6.2],oppComposite:5.6,oppLevel:'Très élevé',color:'#d97706',fill:'rgba(217,119,6,0.10)',href:'analyse-arctique-groenland-grand-jeu-polaire.html'},
-                    {name:'Singapour',scores:[2.2,1.4,2.7,1.9,1.2,3.2,2.1,2.9],composite:2.2,level:'Modéré-Faible',opp:[5,5,5,6,6,6,6,4],oppComposite:5.5,oppLevel:'Très élevé',color:'#6366f1',fill:'rgba(99,102,241,0.10)',href:'#'},
-                    {name:'République tchèque',scores:[1.7,1.9,1.7,1.6,1.7,1.6,2.8,2.6],composite:1.9,level:'Faible',opp:[5.4,3.9,4.8,5.5,5.0,3.9,5.1,4.0],oppComposite:4.7,oppLevel:'Élevé',color:'#0d9488',fill:'rgba(13,148,136,0.10)',href:'#'},
-                ];
-                var active=[false,false,true,false,false,false,false,false,true,false,true,false];
+                var DIMS=SEMPLICE_DIM_LABELS;
+                var OPP_DIMS=SEMPLICE_OPP_LABELS;
+                var DIM_SHORT=SEMPLICE_DIM_SHORT;
+                /* SEMPLICE v2.1 — données depuis semplice-zones-config.js */
+                var ZONES=SEMPLICE_ZONES;
+                var active=ZONES.map(function(z){return z.id==='ukraine'||z.id==='tamil'||z.id==='arctique';});
                 var viewMode='risk'; // 'risk','opp','combined'
                 var canvas=document.getElementById('semplice-radar');
                 var ctx=canvas.getContext('2d');
@@ -575,15 +561,12 @@
                         if(viewMode==='risk'){
                             drawPolygon(z,z.scores,z.fill,z.color,2);
                         }else if(viewMode==='opp'){
-                            drawPolygon(z,z.opp,z.fill,z.color,2);
+                            if(z.opp) drawPolygon(z,z.opp,z.fill,z.color,2);
                         }else{
-                            // Combined: risk in dashed red, opp in solid color
-                            // Draw risk polygon with dashed stroke
                             ctx.setLineDash([4,3]);
                             drawPolygon(z,z.scores,'rgba(220,38,38,0.05)','rgba(220,38,38,0.5)',1.5);
                             ctx.setLineDash([]);
-                            // Draw opp polygon solid
-                            drawPolygon(z,z.opp,z.fill,z.color,2);
+                            if(z.opp) drawPolygon(z,z.opp,z.fill,z.color,2);
                         }
                     });
                     // Hover highlight axis
@@ -663,9 +646,11 @@
                         if(viewMode==='risk'){
                             info.innerHTML='<strong style="font-size:0.85rem;color:#1A1F2E;">'+z.name+'</strong><span style="display:block;font-family:JetBrains Mono,monospace;font-size:0.8rem;color:'+riskLevelColor(z.composite)+';font-weight:600;">'+z.composite.toFixed(1)+'/7 — '+z.level+'</span>';
                         }else if(viewMode==='opp'){
-                            info.innerHTML='<strong style="font-size:0.85rem;color:#1A1F2E;">'+z.name+'</strong><span style="display:block;font-family:JetBrains Mono,monospace;font-size:0.8rem;color:'+oppLevelColor(z.oppComposite)+';font-weight:600;">'+z.oppComposite.toFixed(1)+'/7 — '+z.oppLevel+'</span>';
+                            var oppStr=z.oppComposite!=null?(oppLevelColor(z.oppComposite)+';font-weight:600;">'+z.oppComposite.toFixed(1)+'/7 — '+z.oppLevel):('#5A6178;font-style:italic;">Données indisponibles');
+                            info.innerHTML='<strong style="font-size:0.85rem;color:#1A1F2E;">'+z.name+'</strong><span style="display:block;font-family:JetBrains Mono,monospace;font-size:0.8rem;color:'+oppStr+'</span>';
                         }else{
-                            info.innerHTML='<strong style="font-size:0.85rem;color:#1A1F2E;">'+z.name+'</strong><span style="display:block;font-family:JetBrains Mono,monospace;font-size:0.75rem;"><span style="color:'+riskLevelColor(z.composite)+';font-weight:600;">R '+z.composite.toFixed(1)+'</span> <span style="color:#E2E5EB;">/</span> <span style="color:'+oppLevelColor(z.oppComposite)+';font-weight:600;">O '+z.oppComposite.toFixed(1)+'</span></span>';
+                            var oppPart=z.oppComposite!=null?('<span style="color:'+oppLevelColor(z.oppComposite)+';font-weight:600;">O '+z.oppComposite.toFixed(1)+'</span>'):('<span style="color:#5A6178;">O —</span>');
+                            info.innerHTML='<strong style="font-size:0.85rem;color:#1A1F2E;">'+z.name+'</strong><span style="display:block;font-family:JetBrains Mono,monospace;font-size:0.75rem;"><span style="color:'+riskLevelColor(z.composite)+';font-weight:600;">R '+z.composite.toFixed(1)+'</span> <span style="color:#E2E5EB;">/</span> '+oppPart+'</span>';
                         }
                         d.appendChild(dot);d.appendChild(info);leg.appendChild(d);
                     });
@@ -706,9 +691,9 @@
                             if(viewMode==='risk'){
                                 lines.push('<span style="color:'+z.color+';">\u25CF</span> '+z.name+': <strong>'+z.scores[best]+'/7</strong>');
                             }else if(viewMode==='opp'){
-                                lines.push('<span style="color:'+z.color+';">\u25CF</span> '+z.name+': <strong>'+z.opp[best]+'/7</strong>');
+                                lines.push('<span style="color:'+z.color+';">\u25CF</span> '+z.name+': <strong>'+(z.opp?z.opp[best]+'/7':'—')+'</strong>');
                             }else{
-                                lines.push('<span style="color:'+z.color+';">\u25CF</span> '+z.name+': <span style="color:#DC2626;">R'+z.scores[best]+'</span> / <span style="color:#006650;">O'+z.opp[best]+'</span>');
+                                lines.push('<span style="color:'+z.color+';">\u25CF</span> '+z.name+': <span style="color:#DC2626;">R'+z.scores[best]+'</span> / <span style="color:#006650;">O'+(z.opp?z.opp[best]:'—')+'</span>');
                             }
                         });
                         if(viewMode==='combined'){
@@ -1810,6 +1795,7 @@
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
 
+    <script src="semplice-zones-config.js"></script>
     <script src="app.js"></script>
     <script>if (typeof initCommon === 'function') initCommon();</script>
     <script src="nav-config.js"></script>
