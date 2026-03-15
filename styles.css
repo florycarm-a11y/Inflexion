@@ -1,5 +1,5 @@
 /* ============================================
-   Inflexion Ã¢ÂÂ Editorial Professional Design
+   Inflexion — Editorial Professional Design
    Inspired by The Economist, FT, McKinsey, HBR
    ============================================ */
 
@@ -59,27 +59,12 @@ button:focus-visible,
 }
 
 :root {
-    /* Professional palette Ã¢ÂÂ dark green primary identity */
+    /* Professional palette — dark green primary identity */
     --accent: #006650;
     --accent-dark: #06402A;
     --accent-light: #E8F5EE;
     --navy: #006650;
     --navy-light: #06402A;
-
-    /* Backward-compat aliases (used in JS inline styles) */
-    --pink: #006650;
-    --pink-light: #33B894;
-    --pink-soft: #E8F5EE;
-    --coral: #006650;
-    --orange: #008066;
-    --sky-deep: #006650;
-    --teal: #006650;
-    --teal-light: #E8F5EE;
-    --yellow-soft: #F7F8FA;
-    --magenta: #06402A;
-    --lavender: #5A6178;
-    --red: #C8955A;
-    --green: #006650;
 
     /* Backgrounds */
     --bg-primary: #FFFFFF;
@@ -100,11 +85,11 @@ button:focus-visible,
     --font-serif: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
     --font-sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-    /* No gradients Ã¢ÂÂ solid accent used everywhere */
+    /* No gradients — solid accent used everywhere */
     --gradient-main: var(--accent);
     --gradient-accent: var(--accent);
 
-    /* Ã¢ÂÂÃ¢ÂÂ Typography Scale Ã¢ÂÂÃ¢ÂÂ */
+    /* ── Typography Scale ── */
     --fs-xs: 0.7rem;
     --fs-sm: 0.82rem;
     --fs-base: 1rem;
@@ -121,7 +106,7 @@ button:focus-visible,
     --lh-normal: 1.5;
     --lh-relaxed: 1.7;
 
-    /* Ã¢ÂÂÃ¢ÂÂ Spacing Ã¢ÂÂÃ¢ÂÂ */
+    /* ── Spacing ── */
     --space-xs: 0.25rem;
     --space-sm: 0.5rem;
     --space-md: 1rem;
@@ -130,25 +115,25 @@ button:focus-visible,
     --space-2xl: 3rem;
     --space-3xl: 4rem;
 
-    /* Ã¢ÂÂÃ¢ÂÂ Shadows Ã¢ÂÂÃ¢ÂÂ */
+    /* ── Shadows ── */
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
     --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
     --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
     --shadow-header: 0 2px 8px rgba(0,0,0,0.1);
 
-    /* Ã¢ÂÂÃ¢ÂÂ Border Radius Ã¢ÂÂÃ¢ÂÂ */
+    /* ── Border Radius ── */
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
     --radius-xl: 16px;
     --radius-full: 9999px;
 
-    /* Ã¢ÂÂÃ¢ÂÂ Transitions Ã¢ÂÂÃ¢ÂÂ */
+    /* ── Transitions ── */
     --transition-fast: 0.15s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
 
-    /* Ã¢ÂÂÃ¢ÂÂ Layout Ã¢ÂÂÃ¢ÂÂ */
+    /* ── Layout ── */
     --header-height: 60px;
     --header-height-scrolled: 52px;
     --content-max-width: 1240px;
@@ -175,7 +160,7 @@ a {
 }
 
 /* ============================================
-   Header Ã¢ÂÂ Clean Editorial
+   Header — Clean Editorial
    ============================================ */
 .header {
     background: var(--bg-primary);
@@ -556,7 +541,7 @@ a {
 
 
 /* ============================================
-   Hero Section Ã¢ÂÂ Clean, Typographic
+   Hero Section — Clean, Typographic
    ============================================ */
 .hero {
     background: var(--bg-primary);
@@ -634,7 +619,7 @@ a {
 }
 
 /* ============================================
-   Section Headers Ã¢ÂÂ Minimal Rule
+   Section Headers — Minimal Rule
    ============================================ */
 .main-content {
     padding: 2.5rem 0;
@@ -694,7 +679,7 @@ a {
 
 .section-badge.live { background: var(--accent); }
 .section-badge.crypto-badge { background: var(--navy-light); }
-.section-badge.commodities-badge { background: var(--teal); }
+.section-badge.commodities-badge { background: var(--accent); }
 .section-badge.etf-badge { background: var(--navy); }
 
 /* Section Filters */
@@ -794,7 +779,7 @@ a {
 }
 
 /* ============================================
-   News Grid Ã¢ÂÂ Clean Cards
+   News Grid — Clean Cards
    ============================================ */
 .news-grid {
     display: grid;
@@ -999,14 +984,14 @@ a {
     border: 1px solid;
 }
 
-/* Muted, professional tags Ã¢ÂÂ borders not fills */
+/* Muted, professional tags — borders not fills */
 .tag.geopolitics { color: var(--accent); border-color: var(--accent); background: none; }
-.tag.markets { color: var(--teal); border-color: var(--teal); background: none; }
+.tag.markets { color: var(--accent); border-color: var(--accent); background: none; }
 .tag.crypto { color: var(--navy-light); border-color: var(--navy-light); background: none; }
-.tag.commodities { color: var(--orange); border-color: var(--orange); background: none; }
+.tag.commodities { color: #008066; border-color: #008066; background: none; }
 .tag.conflicts { color: var(--accent); border-color: var(--accent); background: none; }
-.tag.trade { color: var(--sky-deep); border-color: var(--sky-deep); background: none; }
-.tag.politics { color: var(--lavender); border-color: var(--lavender); background: none; }
+.tag.trade { color: var(--accent); border-color: var(--accent); background: none; }
+.tag.politics { color: var(--text-secondary); border-color: var(--text-secondary); background: none; }
 .tag.etf { color: var(--navy); border-color: var(--navy); background: none; }
 
 .news-link {
@@ -1072,7 +1057,7 @@ a {
 }
 
 /* ============================================
-   Top Stories Ã¢ÂÂ Editorial Layout
+   Top Stories — Editorial Layout
    ============================================ */
 .top-stories-grid {
     display: grid;
@@ -1777,7 +1762,7 @@ a {
     margin-top: 2.5rem;
 }
 
-/* Sidebar Ã¢ÂÂ sticky on desktop */
+/* Sidebar — sticky on desktop */
 .col-side {
     position: sticky;
     top: 5rem;
@@ -1841,7 +1826,7 @@ a {
     font-weight: 500;
 }
 
-/* Single hover style Ã¢ÂÂ professional */
+/* Single hover style — professional */
 .sidebar-nav li a:hover {
     border-left-color: var(--accent);
     color: var(--text-primary);
@@ -2280,7 +2265,7 @@ a {
     opacity: 0.8;
 }
 
-.data-table .positive { color: var(--green); font-weight: 700; }
+.data-table .positive { color: var(--accent); font-weight: 700; }
 .data-table .negative { color: var(--accent); font-weight: 700; }
 
 /* Breadcrumbs */
@@ -2315,7 +2300,7 @@ a {
 }
 
 /* ============================================
-   Analysis Section Ã¢ÂÂ Full Articles
+   Analysis Section — Full Articles
    ============================================ */
 .analysis-full {
     padding: 1.75rem 2rem;
@@ -2546,7 +2531,7 @@ a {
     font-weight: 600;
 }
 
-.market-change.positive { color: var(--green); }
+.market-change.positive { color: var(--accent); }
 .market-change.negative { color: var(--accent); }
 
 .market-meta {
@@ -2590,7 +2575,7 @@ a {
 .commodity-name { font-family: var(--font-sans); font-size: 0.8rem; color: var(--text-secondary); flex-grow: 1; }
 .commodity-price { font-family: var(--font-sans); font-size: 0.88rem; font-weight: 700; }
 .commodity-change { font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600; }
-.commodity-change.positive { color: var(--green); }
+.commodity-change.positive { color: var(--accent); }
 .commodity-change.negative { color: var(--accent); }
 
 .etf-card { background: var(--navy); padding: 1rem; color: rgba(255, 255, 255, 0.9); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md, 8px); }
@@ -2599,7 +2584,7 @@ a {
 .etf-provider { font-family: var(--font-sans); font-size: 0.62rem; color: rgba(255, 255, 255, 0.55); text-transform: uppercase; letter-spacing: 0.5px; }
 .etf-name { font-family: var(--font-sans); font-size: 0.78rem; color: rgba(255, 255, 255, 0.75); margin-bottom: 0.5rem; }
 .etf-flow { font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600; }
-.etf-flow.positive { color: var(--green); }
+.etf-flow.positive { color: var(--accent); }
 .etf-flow.negative { color: var(--accent); }
 
 /* ============================================
@@ -2731,7 +2716,7 @@ a {
 }
 
 /* ============================================
-   Footer Ã¢ÂÂ Dark, Clean
+   Footer — Dark, Clean
    ============================================ */
 .footer {
     background: var(--navy);
@@ -2813,7 +2798,7 @@ a {
    ============================================ */
 
 /* ============================================
-   NEW UX COMPONENTS Ã¢ÂÂ Feb 2026
+   NEW UX COMPONENTS — Feb 2026
    ============================================ */
 
 /* --- Hero CTA Button --- */
@@ -3048,7 +3033,7 @@ a {
 }
 
 /* ============================================
-   Chart Section Ã¢ÂÂ Data Visualization
+   Chart Section — Data Visualization
    ============================================ */
 .chart-section {
     background: var(--bg-secondary);
@@ -3121,7 +3106,7 @@ a {
 }
 
 .legend-value.positive {
-    color: var(--green);
+    color: var(--accent);
 }
 
 .legend-value.negative {
@@ -3368,7 +3353,7 @@ body.page-markets .market-status {
 }
 
 .market-status.open .market-status-dot {
-    background: var(--green);
+    background: var(--accent);
 }
 
 .market-status.closed .market-status-dot {
@@ -3391,7 +3376,7 @@ body.page-markets .market-status {
 }
 
 .market-status.open .market-status-text {
-    color: var(--green);
+    color: var(--accent);
 }
 
 .market-status.closed .market-status-text {
@@ -3412,7 +3397,7 @@ body.page-markets .market-status {
 }
 
 /* ============================================
-   Reduced Motion Ã¢ÂÂ Accessibility
+   Reduced Motion — Accessibility
    ============================================ */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -3443,11 +3428,11 @@ body.page-markets .market-status {
 
 
 /* =============================================
-   VAGUE 1 Ã¢ÂÂ ENHANCED MOBILE RESPONSIVE
+   VAGUE 1 — ENHANCED MOBILE RESPONSIVE
    ============================================= */
 
 @media (max-width: 768px) {
-    /* Ã¢ÂÂÃ¢ÂÂ Mobile Header Ã¢ÂÂÃ¢ÂÂ */
+    /* ── Mobile Header ── */
     .header-top {
         padding: 0.4rem 0.75rem;
     }
@@ -3466,7 +3451,7 @@ body.page-markets .market-status {
         padding: 0.3rem 0.6rem;
     }
 
-    /* Ã¢ÂÂÃ¢ÂÂ Hero Mobile Ã¢ÂÂÃ¢ÂÂ */
+    /* ── Hero Mobile ── */
     .hero {
         padding: 2rem 1rem;
         min-height: auto;
@@ -3480,7 +3465,7 @@ body.page-markets .market-status {
         font-size: var(--fs-sm);
     }
 
-    /* Ã¢ÂÂÃ¢ÂÂ Top Stories Stack Ã¢ÂÂÃ¢ÂÂ */
+    /* ── Top Stories Stack ── */
     .top-stories-grid {
         grid-template-columns: 1fr;
     }
@@ -3489,7 +3474,7 @@ body.page-markets .market-status {
         padding: var(--space-md);
     }
 
-    /* Ã¢ÂÂÃ¢ÂÂ Chart Container Ã¢ÂÂÃ¢ÂÂ */
+    /* ── Chart Container ── */
     .chart-container {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -3497,7 +3482,7 @@ body.page-markets .market-status {
         padding: 0 0.5rem;
     }
 
-    /* Ã¢ÂÂÃ¢ÂÂ Sidebar collapse Ã¢ÂÂÃ¢ÂÂ */
+    /* ── Sidebar collapse ── */
     .two-col {
         grid-template-columns: 1fr;
     }
@@ -3507,7 +3492,7 @@ body.page-markets .market-status {
         position: static;
     }
 
-    /* Ã¢ÂÂÃ¢ÂÂ Newsletter Mobile Ã¢ÂÂÃ¢ÂÂ */
+    /* ── Newsletter Mobile ── */
     .newsletter-form {
         flex-direction: column;
         gap: var(--space-sm);
@@ -3517,14 +3502,14 @@ body.page-markets .market-status {
         width: 100%;
     }
 
-    /* Ã¢ÂÂÃ¢ÂÂ Footer Mobile Ã¢ÂÂÃ¢ÂÂ */
+    /* ── Footer Mobile ── */
     .footer .footer-content {
         flex-direction: column;
         gap: var(--space-lg);
         text-align: center;
     }
 
-    /* Ã¢ÂÂÃ¢ÂÂ Section spacing Ã¢ÂÂÃ¢ÂÂ */
+    /* ── Section spacing ── */
     .section-title {
         font-size: var(--fs-lg);
     }
@@ -3534,7 +3519,7 @@ body.page-markets .market-status {
 }
 
 @media (max-width: 480px) {
-    /* Ã¢ÂÂÃ¢ÂÂ Extra-small tweaks Ã¢ÂÂÃ¢ÂÂ */
+    /* ── Extra-small tweaks ── */
     .hero .hero-title {
         font-size: var(--fs-lg);
     }
@@ -3556,7 +3541,7 @@ body.page-markets .market-status {
    Demandes 13-16 : Cartes A la une redesign
    ============================================ */
 
-/* #13 â Cards avec bande de couleur degradee, radius 12px, ombre */
+/* #13 — Cards avec bande de couleur degradee, radius 12px, ombre */
 .top-story {
     border-left: none;
     border-radius: var(--radius-lg);
@@ -3595,7 +3580,7 @@ body.page-markets .market-status {
     border-left: none;
 }
 
-/* #14 â Effet hover : translateY(-6px), ombre intensifiee, bande 6->8px */
+/* #14 — Effet hover : translateY(-6px), ombre intensifiee, bande 6->8px */
 .top-story:hover {
     transform: translateY(-6px);
     box-shadow: var(--shadow-lg);
@@ -3611,7 +3596,7 @@ body.page-markets .market-status {
     height: 8px;
 }
 
-/* #15 â Badge source plus visible avec couleur par source */
+/* #15 — Badge source plus visible avec couleur par source */
 .top-story .source-name {
     display: inline-block;
     font-size: 11px;
@@ -3639,7 +3624,7 @@ body.page-markets .market-status {
     color: #065F46;
 }
 
-/* #16 â Footer de carte : date a gauche, lien Lire a droite, border-top */
+/* #16 — Footer de carte : date a gauche, lien Lire a droite, border-top */
 .top-story p {
     flex-grow: 1;
 }
@@ -7106,7 +7091,7 @@ body.page-markets .market-status {
     overflow: hidden;
 }
 
-.alert-urgent { border-left: 3px solid var(--red); padding-left: 0.5rem; }
+.alert-urgent { border-left: 3px solid #C8955A; padding-left: 0.5rem; }
 .alert-attention { border-left: 3px solid #eab308; padding-left: 0.5rem; }
 .alert-info { border-left: 3px solid #3b82f6; padding-left: 0.5rem; }
 

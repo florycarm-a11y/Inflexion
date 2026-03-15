@@ -17,9 +17,6 @@ body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1
 h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
 .category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#006650}
 
-@keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.ticker-track{animation:ticker-scroll 30s linear infinite}
-.ticker-track:hover{animation-play-state:paused}
 @keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .anim-fade-up{animation:fade-up .6s ease-out both}
 .anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}
@@ -159,18 +156,6 @@ const RELATED_ARTICLES=[
 ]
 
 const MEGA_NAV=window.MEGA_NAV
-
-const TICKER_DATA=[
-{symbol:'Brent',value:'$88.60',change:'-10.5%',up:false},
-{symbol:'WTI',value:'$84.12',change:'-11.2%',up:false},
-{symbol:'VLCC',value:'$423k/j',change:'ATH',up:false},
-{symbol:'S&P 500',value:'5 248',change:'-1.31%',up:false},
-{symbol:'Or',value:'$5 100',change:'+2.1%',up:true},
-{symbol:'BTC',value:'$73 000',change:'+3.7%',up:true},
-{symbol:'EUR/USD',value:'1.0847',change:'-0.12%',up:false},
-{symbol:'VIX',value:'28.5',change:'+8.2%',up:false},
-{symbol:'IEA',value:'R\u00e9union',change:'10/03',up:false},
-]
 
 // ─── NAVIGATION ──────────────────────────────────────────────────────────────
 
@@ -600,23 +585,6 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
 )
 }
 
-// ─── MARKET TICKER ───────────────────────────────────────────────────────────
-
-function MarketTicker(){
-const items=[...TICKER_DATA,...TICKER_DATA]
-return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 overflow-hidden py-3 bg-[#006650]'},
- h('div',{className:'ticker-track flex gap-8 whitespace-nowrap'},
-  items.map((t,i)=>h('div',{key:i,className:'flex items-center gap-2 text-sm'},
-   h('span',{className:'font-medium text-white/70'},t.symbol),
-   h('span',{className:'text-white/90 font-semibold font-data'},t.value),
-   h('span',{className:`font-medium font-data ${t.up?'text-[#34D399]':'text-[#F87171]'}`},
-    (t.up?'\u25b2 ':'\u25bc ')+t.change
-   )
-  ))
- )
-)
-}
-
 // ─── FOOTER ──────────────────────────────────────────────────────────────────
 
 function Footer(){
@@ -688,12 +656,11 @@ return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-12 sm:pt
 // ─── APP ─────────────────────────────────────────────────────────────────────
 
 function App(){
-return h('div',{className:'pb-16'},
+return h('div',null,
  h(Navigation),
  h(ArticleHero),
  h(ArticleContent),
- h(Footer),
- h(MarketTicker)
+ h(Footer)
 )
 }
 

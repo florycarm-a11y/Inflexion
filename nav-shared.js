@@ -11,6 +11,11 @@
 var css=document.createElement('style');
 css.textContent=
 '/* Nav shared styles */\n'+
+'/* Hover states (replaces inline onmouseover/onmouseout) */\n'+
+'.ns-btn-cta:hover{background:#06402A!important}\n'+
+'.ns-close-btn:hover{background:rgba(255,255,255,.2)!important}\n'+
+'.ns-mobile-cta:hover{background:rgba(255,255,255,.15)!important}\n'+
+'.ns-footer-link:hover{color:#006650!important}\n'+
 '.nav-link-new{position:relative}\n'+
 '.nav-link-new::after{content:"";position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}\n'+
 '.nav-link-new:hover::after,.nav-link-new.active::after{transform:scaleX(1)}\n'+
@@ -110,7 +115,7 @@ header.innerHTML=
 '<a href="index.html" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none">'+
 '<img src="logo-header.png" alt="Inflexion" id="nav-logo" style="height:40px;width:auto;filter:brightness(10) saturate(0);transition:filter .3s ease"/></a>'+
 '<nav style="display:none" class="md-show" id="desktop-nav-items">'+megaHTML+
-'<a href="premium.html" style="margin-left:0.5rem;padding:0.5rem 1rem;background:#006650;color:#fff;font-weight:600;font-size:0.875rem;border-radius:0.5rem;transition:background .2s;text-decoration:none" onmouseover="this.style.background=\'#06402A\'" onmouseout="this.style.background=\'#006650\'">R\u00e9server un diagnostic</a>'+
+'<a href="premium.html" class="ns-btn-cta" style="margin-left:0.5rem;padding:0.5rem 1rem;background:#006650;color:#fff;font-weight:600;font-size:0.875rem;border-radius:0.5rem;transition:background .2s;text-decoration:none">R\u00e9server un diagnostic</a>'+
 '</nav>'+
 '<button id="mobile-menu-btn" style="display:none;padding:0.5rem" class="md-hide" aria-label="Menu">'+
 '<div id="hamburger-wrapper" style="display:flex;flex-direction:column;gap:6px"><span class="hamburger-bar" style="display:block;width:24px;height:2px;background:#fff;transition:all .3s;transform-origin:center"></span>'+
@@ -142,11 +147,11 @@ return '<p class="mobile-nav-link" style="font-size:11px;text-transform:uppercas
 overlay.innerHTML=
 '<div style="display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem 1rem;flex-shrink:0">'+
 '<img src="logo-header.png" alt="Inflexion" style="height:2rem;width:auto;filter:brightness(10) saturate(0)"/>'+
-'<button id="mobile-close-btn" style="width:2.75rem;height:2.75rem;display:flex;align-items:center;justify-content:center;border-radius:9999px;background:rgba(255,255,255,.1);border:none;cursor:pointer;transition:background .2s" onmouseover="this.style.background=\'rgba(255,255,255,.2)\'" onmouseout="this.style.background=\'rgba(255,255,255,.1)\'" aria-label="Fermer">'+
+'<button id="mobile-close-btn" class="ns-close-btn" style="width:2.75rem;height:2.75rem;display:flex;align-items:center;justify-content:center;border-radius:9999px;background:rgba(255,255,255,.1);border:none;cursor:pointer;transition:background .2s" aria-label="Fermer">'+
 '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>'+
 '<div style="flex:1;overflow-y:auto;padding:0.5rem 1.5rem 1rem">'+mobileLinks+'</div>'+
 '<div style="padding:1rem 1.5rem 5rem;flex-shrink:0">'+
-'<a href="premium.html" class="mobile-nav-link" style="display:block;width:100%;text-align:center;padding:0.875rem 1.5rem;background:rgba(255,255,255,.1);color:#fff;font-weight:600;border-radius:0.75rem;transition:background .2s;font-size:1rem;text-decoration:none;opacity:0;animation-delay:0.85s" onmouseover="this.style.background=\'rgba(255,255,255,.15)\'" onmouseout="this.style.background=\'rgba(255,255,255,.1)\'">R\u00e9server un diagnostic</a></div>';
+'<a href="premium.html" class="mobile-nav-link ns-mobile-cta" style="display:block;width:100%;text-align:center;padding:0.875rem 1.5rem;background:rgba(255,255,255,.1);color:#fff;font-weight:600;border-radius:0.75rem;transition:background .2s;font-size:1rem;text-decoration:none;opacity:0;animation-delay:0.85s">R\u00e9server un diagnostic</a></div>';
 
 header.after(overlay);
 
@@ -215,19 +220,19 @@ newFooter.innerHTML=
 // Col 2
 '<div><p style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#1A1F2E;margin-bottom:1rem;font-family:Inter,sans-serif">Intelligence</p>'+
 '<ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.625rem">'+
-'<li><a href="geopolitics.html" style="font-size:0.875rem;color:#5A6178;text-decoration:none;transition:color .2s" onmouseover="this.style.color=\'#006650\'" onmouseout="this.style.color=\'#5A6178\'">G\u00e9opolitique</a></li>'+
-'<li><a href="markets.html" style="font-size:0.875rem;color:#5A6178;text-decoration:none;transition:color .2s" onmouseover="this.style.color=\'#006650\'" onmouseout="this.style.color=\'#5A6178\'">March\u00e9s</a></li>'+
-'<li><a href="crypto.html" style="font-size:0.875rem;color:#5A6178;text-decoration:none;transition:color .2s" onmouseover="this.style.color=\'#006650\'" onmouseout="this.style.color=\'#5A6178\'">Crypto</a></li>'+
-'<li><a href="commodities.html" style="font-size:0.875rem;color:#5A6178;text-decoration:none;transition:color .2s" onmouseover="this.style.color=\'#006650\'" onmouseout="this.style.color=\'#5A6178\'">Mati\u00e8res premi\u00e8res</a></li>'+
-'<li><a href="etf.html" style="font-size:0.875rem;color:#5A6178;text-decoration:none;transition:color .2s" onmouseover="this.style.color=\'#006650\'" onmouseout="this.style.color=\'#5A6178\'">ETF & Fonds</a></li>'+
+'<li><a href="geopolitics.html" class="ns-footer-link" style="font-size:0.875rem;color:#5A6178;text-decoration:none;transition:color .2s">G\u00e9opolitique</a></li>'+
+'<li><a href="markets.html" class="ns-footer-link" style="font-size:0.875rem;color:#5A6178;text-decoration:none;transition:color .2s">March\u00e9s</a></li>'+
+'<li><a href="crypto.html" class="ns-footer-link" style="font-size:0.875rem;color:#5A6178;text-decoration:none;transition:color .2s">Crypto</a></li>'+
+'<li><a href="commodities.html" class="ns-footer-link" style="font-size:0.875rem;color:#5A6178;text-decoration:none;transition:color .2s">Mati\u00e8res premi\u00e8res</a></li>'+
+'<li><a href="etf.html" class="ns-footer-link" style="font-size:0.875rem;color:#5A6178;text-decoration:none;transition:color .2s">ETF & Fonds</a></li>'+
 '</ul></div>'+
 // Col 3
 '<div><p style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#1A1F2E;margin-bottom:1rem;font-family:Inter,sans-serif">Plateforme</p>'+
 '<ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.625rem">'+
-'<li><a href="analyses.html" style="font-size:0.875rem;color:#5A6178;text-decoration:none;transition:color .2s" onmouseover="this.style.color=\'#006650\'" onmouseout="this.style.color=\'#5A6178\'">Analyses</a></li>'+
-'<li><a href="expertise.html" style="font-size:0.875rem;color:#5A6178;text-decoration:none;transition:color .2s" onmouseover="this.style.color=\'#006650\'" onmouseout="this.style.color=\'#5A6178\'">Expertise</a></li>'+
-'<li><a href="premium.html" style="font-size:0.875rem;color:#5A6178;text-decoration:none;transition:color .2s" onmouseover="this.style.color=\'#006650\'" onmouseout="this.style.color=\'#5A6178\'">Services</a></li>'+
-'<li><a href="premium.html#contact" style="font-size:0.875rem;color:#5A6178;text-decoration:none;transition:color .2s" onmouseover="this.style.color=\'#006650\'" onmouseout="this.style.color=\'#5A6178\'">Contact</a></li>'+
+'<li><a href="analyses.html" class="ns-footer-link" style="font-size:0.875rem;color:#5A6178;text-decoration:none;transition:color .2s">Analyses</a></li>'+
+'<li><a href="expertise.html" class="ns-footer-link" style="font-size:0.875rem;color:#5A6178;text-decoration:none;transition:color .2s">Expertise</a></li>'+
+'<li><a href="premium.html" class="ns-footer-link" style="font-size:0.875rem;color:#5A6178;text-decoration:none;transition:color .2s">Services</a></li>'+
+'<li><a href="premium.html#contact" class="ns-footer-link" style="font-size:0.875rem;color:#5A6178;text-decoration:none;transition:color .2s">Contact</a></li>'+
 '</ul></div>'+
 '</div>'+
 // Bottom bar

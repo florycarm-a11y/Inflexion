@@ -17,9 +17,6 @@ body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1
 h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
 .category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#006650}
 
-@keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.ticker-track{animation:ticker-scroll 30s linear infinite}
-.ticker-track:hover{animation-play-state:paused}
 @keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .anim-fade-up{animation:fade-up .6s ease-out both}
 .anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}
@@ -159,17 +156,6 @@ const RELATED_ARTICLES=[
 ]
 
 const MEGA_NAV=window.MEGA_NAV
-
-const TICKER_DATA=[
-{symbol:'Dassault Av.',value:'\u20ac287',change:'+14.2%',up:true},
-{symbol:'Safran',value:'\u20ac268',change:'+8.7%',up:true},
-{symbol:'Thales',value:'\u20ac215',change:'+5.3%',up:true},
-{symbol:'Nifty 50',value:'22 850',change:'+1.1%',up:true},
-{symbol:'HAL India',value:'\u20b94 285',change:'+6.1%',up:true},
-{symbol:'Airbus',value:'\u20ac178',change:'+2.8%',up:true},
-{symbol:'BEL India',value:'\u20b9312',change:'+4.7%',up:true},
-{symbol:'CAC 40',value:'8 012',change:'-0.3%',up:false},
-]
 
 // ─── NAVIGATION ──────────────────────────────────────────────────────────────
 
@@ -588,23 +574,6 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
 )
 }
 
-// ─── MARKET TICKER ───────────────────────────────────────────────────────────
-
-function MarketTicker(){
-const items=[...TICKER_DATA,...TICKER_DATA]
-return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 overflow-hidden py-3 bg-[#006650]'},
- h('div',{className:'ticker-track flex gap-8 whitespace-nowrap'},
-  items.map((t,i)=>h('div',{key:i,className:'flex items-center gap-2 text-sm'},
-   h('span',{className:'font-medium text-white/70'},t.symbol),
-   h('span',{className:'text-white/90 font-semibold font-data'},t.value),
-   h('span',{className:`font-medium font-data ${t.up?'text-[#34D399]':'text-[#F87171]'}`},
-    (t.up?'\u25b2 ':'\u25bc ')+t.change
-   )
-  ))
- )
-)
-}
-
 // ─── FOOTER ──────────────────────────────────────────────────────────────────
 
 function Footer(){
@@ -676,12 +645,11 @@ return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-12 sm:pt
 // ─── APP ─────────────────────────────────────────────────────────────────────
 
 function App(){
-return h('div',{className:'pb-16'},
+return h('div',null,
  h(Navigation),
  h(ArticleHero),
  h(ArticleContent),
- h(Footer),
- h(MarketTicker)
+ h(Footer)
 )
 }
 

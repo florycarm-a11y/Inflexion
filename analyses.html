@@ -17,9 +17,6 @@ body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1
 h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
 .category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#006650}
 
-@keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.ticker-track{animation:ticker-scroll 30s linear infinite}
-.ticker-track:hover{animation-play-state:paused}
 @keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .anim-fade-up{animation:fade-up .6s ease-out both}
 .anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}
@@ -198,21 +195,6 @@ const ANALYSES=[
 
 const MEGA_NAV=window.MEGA_NAV
 
-const TICKER_DATA=[
-{symbol:'S&P 500',value:'5 248.32',change:'+0.87%',up:true},
-{symbol:'CAC 40',value:'7 892.15',change:'+0.42%',up:true},
-{symbol:'DAX',value:'18 456.78',change:'-0.15%',up:false},
-{symbol:'BTC',value:'$68 420',change:'+2.34%',up:true},
-{symbol:'ETH',value:'$3 812',change:'+1.56%',up:true},
-{symbol:'EUR/USD',value:'1.0847',change:'-0.12%',up:false},
-{symbol:'Or',value:'$2 178',change:'+0.65%',up:true},
-{symbol:'VIX',value:'14.32',change:'-3.21%',up:true},
-{symbol:'Euro Stoxx 50',value:'5 012.44',change:'+0.31%',up:true},
-{symbol:'Nikkei 225',value:'39 876',change:'+1.12%',up:true},
-{symbol:'P\u00e9trole WTI',value:'$78.45',change:'-0.89%',up:false},
-{symbol:'Argent',value:'$25.12',change:'+1.23%',up:true},
-]
-
 // ─── NAVIGATION ──────────────────────────────────────────────────────────────
 
 function Navigation(){
@@ -332,7 +314,7 @@ return h('section',{className:'py-16 md:py-20'},
       const cat=catMap[a.cat]
       return h('a',{key:a.id,href:a.href,className:'article-card block rounded-xl overflow-hidden bg-white border border-[#E2E5EB] no-underline group'},
        h('div',{className:'aspect-[16/9] overflow-hidden'},
-        h('img',{src:a.img,alt:'',className:'w-full h-full object-cover group-hover:scale-105 transition-transform duration-300',loading:'lazy'})
+        h('img',{src:a.img,alt:a.title,className:'w-full h-full object-cover group-hover:scale-105 transition-transform duration-300',loading:'lazy'})
        ),
        h('div',{className:'p-6'},
         h('div',{className:'flex items-center gap-3 mb-3'},
@@ -353,23 +335,6 @@ return h('section',{className:'py-16 md:py-20'},
   : h('div',{className:'text-center py-20'},
      h('p',{className:'text-[#5A6178] text-sm'},'Aucune analyse dans cette cat\u00e9gorie pour le moment.')
     )
- )
-)
-}
-
-// ─── MARKET TICKER ───────────────────────────────────────────────────────────
-
-function MarketTicker(){
-const items=[...TICKER_DATA,...TICKER_DATA]
-return h('div',{className:'fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 overflow-hidden py-3 bg-[#006650]'},
- h('div',{className:'ticker-track flex gap-8 whitespace-nowrap'},
-  items.map((t,i)=>h('div',{key:i,className:'flex items-center gap-2 text-sm'},
-   h('span',{className:'font-medium text-white/70'},t.symbol),
-   h('span',{className:'text-white/90 font-semibold font-data'},t.value),
-   h('span',{className:`font-medium font-data ${t.up?'text-[#33B894]':'text-[#F87171]'}`},
-    (t.up?'\u25b2 ':'\u25bc ')+t.change
-   )
-  ))
  )
 )
 }
@@ -445,12 +410,11 @@ return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-12 sm:pt
 // ─── APP ─────────────────────────────────────────────────────────────────────
 
 function App(){
-return h('div',{className:'pb-16'},
+return h('div',null,
  h(Navigation),
  h(PageHero),
  h(AnalysesGrid),
- h(Footer),
- h(MarketTicker)
+ h(Footer)
 )
 }
 
