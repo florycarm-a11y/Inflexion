@@ -1,0 +1,387 @@
+{
+  "zone": {
+    "id": "vietnam",
+    "name": "Vietnam",
+    "region": "asie-pacifique"
+  },
+  "meta": {
+    "date": "2026-03-16",
+    "version": "2.1",
+    "analyst": "Inflexion Intelligence"
+  },
+  "dimensions": {
+    "S": {
+      "label": "Social",
+      "indicators": [
+        { "id": "S1", "label": "Gini", "value": "0.357", "rawValue": 0.357, "palier": 4, "source": "World Bank" },
+        { "id": "S2", "label": "IDH", "value": "0.726 (rang 107/193)", "rawValue": 0.726, "palier": 4, "source": "UNDP" },
+        { "id": "S3", "label": "Chomage jeunes", "value": "7.6%", "rawValue": 7.6, "palier": 1, "source": "ILO / GSO Vietnam" },
+        { "id": "S4", "label": "Solde migratoire", "value": "-0.5 pour mille", "rawValue": -0.5, "palier": 4, "source": "UN DESA" },
+        { "id": "S5", "label": "Mouvements sociaux", "value": "1 (greves usines FDI sporadiques 2025)", "rawValue": 1, "palier": 2, "source": "ACLED / RFA" },
+        { "id": "S6", "label": "Tensions ethniques", "value": "Tensions mineures Hmong/Montagnards Tay Nguyen, isolees", "rawValue": null, "palier": 3, "source": "Minorities at Risk / ACLED" },
+        { "id": "S7", "label": "Acces sante", "value": "2.6 lits/1000 hab.", "rawValue": 2.6, "palier": 4, "source": "OMS / World Bank" },
+        { "id": "S8", "label": "Urbanisation", "value": "~2.8%/an", "rawValue": 2.8, "palier": 4, "source": "UN Habitat / GSO" },
+        { "id": "S9", "label": "Inegalite genre (GII)", "value": "0.296", "rawValue": 0.296, "palier": 3, "source": "UNDP" },
+        { "id": "S10", "label": "Esperance de vie", "value": "75.4 ans", "rawValue": 75.4, "palier": 2, "source": "WHO / World Bank" },
+        { "id": "S11", "label": "Securite alimentaire", "value": "~5.8% sous-alimentes", "rawValue": 5.8, "palier": 3, "source": "FAO" },
+        { "id": "S12", "label": "Education secondaire", "value": "~88% (taux net)", "rawValue": 88, "palier": 2, "source": "UNESCO / GSO" }
+      ],
+      "scoreQuanti": 3.0,
+      "scoreQuali": 3,
+      "resilience": { "RS1": { "score": 2, "label": "Societe civile", "commentary": "Societe civile tres reprimee. Syndicats sous controle du Parti. ONG sous forte surveillance. Pas de contre-pouvoir organise." } },
+      "scoreFinal": 3.0,
+      "trend": "stable",
+      "commentary": "Fondamentaux sociaux solides pour un pays a revenu intermediaire. Population jeune (mediane 31 ans), alphabetisation 97%, scores PISA superieurs a la moyenne OCDE. Inegalites en hausse (Gini 0.357) et tensions mineures avec minorites ethniques. Acces sante en amelioration mais insuffisant."
+    },
+    "E": {
+      "label": "Economique",
+      "indicators": [
+        { "id": "E1", "label": "PIB reel", "value": "+6.5% (2025), objectif 8% (2026)", "rawValue": 6.5, "palier": 1, "source": "IMF WEO / GSO" },
+        { "id": "E2", "label": "Inflation", "value": "~3.5%", "rawValue": 3.5, "palier": 2, "source": "IMF / SBV" },
+        { "id": "E3", "label": "Dette publique / PIB", "value": "~37%", "rawValue": 37, "palier": 2, "source": "IMF Fiscal Monitor" },
+        { "id": "E4", "label": "Balance courante", "value": "+3.2% PIB", "rawValue": 3.2, "palier": 2, "source": "IMF BOP / SBV" },
+        { "id": "E5", "label": "Notation souveraine", "value": "BB+ (S&P, positive outlook), Ba2 (Moody's)", "rawValue": null, "palier": 4, "source": "S&P / Moody's" },
+        { "id": "E6", "label": "Regime change", "value": "Flottant gere opaque (dong ancre de facto)", "rawValue": null, "palier": 3, "source": "IMF AREAER / SBV" },
+        { "id": "E7", "label": "Reserves de change", "value": "~4.5 mois d'importations", "rawValue": 4.5, "palier": 4, "source": "IMF / SBV" },
+        { "id": "E8", "label": "IDE entrants", "value": "~4.7% PIB (Samsung, Intel, Apple supply chain)", "rawValue": 4.7, "palier": 2, "source": "World Bank / UNCTAD / FIA Vietnam" },
+        { "id": "E9", "label": "Chomage total", "value": "~2.1%", "rawValue": 2.1, "palier": 1, "source": "ILO / GSO" },
+        { "id": "E10", "label": "Dette privee / PIB", "value": "~130%", "rawValue": 130, "palier": 4, "source": "BIS / SBV" },
+        { "id": "E11", "label": "Concentration exports", "value": "Electronique 35% + textile 12% + chaussures 8% = 55%", "rawValue": 55, "palier": 5, "source": "World Bank / WITS / GSO" },
+        { "id": "E12", "label": "Croissance credit", "value": "~14%", "rawValue": 14, "palier": 3, "source": "SBV" },
+        { "id": "E13", "label": "Economie informelle", "value": "~30% PIB", "rawValue": 30, "palier": 4, "source": "IMF / World Bank" },
+        { "id": "E14", "label": "Cout energie", "value": "~85 $/MWh", "rawValue": 85, "palier": 3, "source": "IEA / Ember / EVN" },
+        { "id": "E15", "label": "Indice de misere", "value": "3.5 + 2.1 = 5.6", "rawValue": 5.6, "palier": 1, "source": "Calcul" },
+        { "id": "E16", "label": "Independance BC", "value": "SBV sous tutelle gouvernementale, autonomie reduite, politique monetaire alignee sur objectifs PCV", "rawValue": null, "palier": 4, "source": "IMF Art. IV / SBV" }
+      ],
+      "scoreQuanti": 2.8,
+      "scoreQuali": 3,
+      "resilience": { "RE1": { "score": 4, "label": "Correction monetaire", "commentary": "Acces FMI, reserves 4.5 mois, pas de swap lines majeures mais partenariat US/Japon. Politique monetaire sous controle politique mais prudente." } },
+      "scoreFinal": 2.9,
+      "trend": "stable",
+      "commentary": "Dynamique economique remarquable. Croissance 6.5%, inflation maitrisee, IDE massifs (Samsung = 30% exports). Vulnerabilites : dette privee elevee (130% PIB), concentration exports electronique, reserves limitees (4.5 mois). Risque de surchauffe credit."
+    },
+    "M": {
+      "label": "Militaire",
+      "indicators": [
+        { "id": "M1", "label": "Depenses mil. / PIB", "value": "~2.0%", "rawValue": 2.0, "palier": 3, "source": "SIPRI" },
+        { "id": "M2", "label": "Conflits actifs", "value": "Tensions Mer de Chine du Sud (Spratleys, EEZ violations chinoises recurrentes)", "rawValue": null, "palier": 4, "source": "ACLED / CSIS AMTI" },
+        { "id": "M3", "label": "GFP", "value": "22/145", "rawValue": 22, "palier": 4, "source": "Global Firepower" },
+        { "id": "M4", "label": "Exercices majeurs", "value": "5-7 (RIMPAC observer, exercices avec Japon, Inde, US, Russie)", "rawValue": 6, "palier": 4, "source": "IISS Military Balance" },
+        { "id": "M5", "label": "Proliferation", "value": "Voisinage nucleaire (Chine, Coree du Nord)", "rawValue": null, "palier": 3, "source": "SIPRI / IAEA" },
+        { "id": "M6", "label": "Coups regionaux", "value": "Myanmar 2021 (voisin direct)", "rawValue": 1, "palier": 2, "source": "ACLED" },
+        { "id": "M7", "label": "Subordination civile", "value": "Armee sous controle du Parti, fusion parti-armee", "rawValue": 0.35, "palier": 5, "source": "V-Dem / IISS" },
+        { "id": "M8", "label": "Transferts armes", "value": "~2500 TIV (Russie principal, diversification Israel/Inde)", "rawValue": 2500, "palier": 4, "source": "SIPRI Arms Transfers" },
+        { "id": "M9", "label": "Bases etrangeres", "value": "Bases chinoises (iles artificielles Spratleys) — rivale directe", "rawValue": null, "palier": 5, "source": "CSIS AMTI / IISS" },
+        { "id": "M10", "label": "Milices / PMC", "value": "Milices maritimes chinoises dans EEZ", "rawValue": null, "palier": 3, "source": "CSIS AMTI / ACLED" },
+        { "id": "M11", "label": "Traites defense", "value": "Non-aligne, partenariats strategiques multiples (US, Russie, Inde, Japon) mais pas d'alliance formelle", "rawValue": null, "palier": 4, "source": "IISS / SIPRI" },
+        { "id": "M12", "label": "R&D defense", "value": "~3%", "rawValue": 3, "palier": 4, "source": "SIPRI / IISS" },
+        { "id": "M13", "label": "Fiabilite protecteur", "value": "Pas de protecteur unique — bamboo diplomacy, multi-alignement. Partenariat US recent mais non teste.", "rawValue": null, "palier": 4, "source": "CSIS / IISS" }
+      ],
+      "scoreQuanti": 3.8,
+      "scoreQuali": 4,
+      "resilience": { "RM1": { "score": 2, "label": "Doctrine republicaine armee", "commentary": "Armee integree au Parti communiste. Pas de tradition de non-intervention — l'armee EST le pouvoir politique. Mais stabilite interne forte." } },
+      "scoreFinal": 3.9,
+      "trend": "up",
+      "commentary": "Tensions Mer de Chine du Sud dominantes. Violations EEZ recurrentes par la Chine. Modernisation navale en cours (sous-marins Kilo, corvettes). Bamboo diplomacy limite le risque d'escalade directe mais position strategique exposee. GFP rang 22."
+    },
+    "P": {
+      "label": "Politique",
+      "indicators": [
+        { "id": "P1", "label": "CPI", "value": "41/100 (rang 83/180)", "rawValue": 41, "palier": 5, "source": "Transparency International" },
+        { "id": "P2", "label": "V-Dem", "value": "0.12 (autocratie fermee)", "rawValue": 0.12, "palier": 7, "source": "V-Dem Institute" },
+        { "id": "P3", "label": "WGI Political Stability", "value": "+0.15", "rawValue": 0.15, "palier": 3, "source": "World Bank WGI" },
+        { "id": "P4", "label": "Cycle electoral", "value": "Congres PCV 2031 (~5 ans)", "rawValue": 5, "palier": 1, "source": "PCV / VietnamNet" },
+        { "id": "P5", "label": "Risque regime", "value": "Tres faible — consolidation To Lam, purge anti-corruption en cours", "rawValue": null, "palier": 2, "source": "EIU / Freedom House" },
+        { "id": "P6", "label": "Polarisation", "value": "Faible (parti unique, pas d'opposition organisee)", "rawValue": 0.25, "palier": 2, "source": "V-Dem" },
+        { "id": "P7", "label": "Libertes civiles", "value": "15/60", "rawValue": 15, "palier": 5, "source": "Freedom House 2025" },
+        { "id": "P8", "label": "Risque successoral", "value": "To Lam consolide, cumul fonctions sans precedent. Succession post-Trong geree mais concentration pouvoir", "rawValue": null, "palier": 4, "source": "Brookings / ICG" },
+        { "id": "P9", "label": "Autonomie regionale", "value": "Centralise, pas de mouvement secessionniste", "rawValue": null, "palier": 2, "source": "BTI / Freedom House" },
+        { "id": "P10", "label": "Opposition", "value": "Opposition eliminee (dissidents emprisonnes, societé civile reprimee)", "rawValue": null, "palier": 7, "source": "Freedom House / HRW" },
+        { "id": "P11", "label": "Pression demographique", "value": "+0.85%/an", "rawValue": 0.85, "palier": 1, "source": "UN DESA" },
+        { "id": "P12", "label": "Diaspora", "value": "Diaspora vietnamienne (Viet Kieu) active aux US/France, financement communautaire mais pas insurrectionnel", "rawValue": null, "palier": 3, "source": "OSINT" },
+        { "id": "P13", "label": "Capture institutionnelle", "value": "5/5 — PCV controle executif, judiciaire, armee, medias, Assemblee nationale", "rawValue": 5, "palier": 7, "source": "V-Dem / Freedom House" },
+        { "id": "P14", "label": "Chocs auto-infliges", "value": "Campagne anti-corruption Blazing Furnace destabilise temporairement l'administration (paralysie bureaucratique)", "rawValue": null, "palier": 3, "source": "Nikkei Asia / VnExpress" },
+        { "id": "P15", "label": "Fenetres action critiques", "value": "0 — calendrier stable, pas de deadline critique", "rawValue": 0, "palier": 1, "source": "OSINT" }
+      ],
+      "scoreQuanti": 3.5,
+      "scoreQuali": 4,
+      "resilience": { "RP1": { "score": 1, "label": "Alternance democratique", "commentary": "Aucune alternance. Parti unique depuis 1975. Pas de mecanisme electoral competitif. Transitions internes opaques." } },
+      "scoreFinal": 3.7,
+      "trend": "stable",
+      "commentary": "Paradoxe autoritaire stable. Regime le plus fermé d'Asie du Sud-Est mais stabilite politique remarquable. Campagne anti-corruption sans precedent (>100 cadres sanctionnes). Capture institutionnelle totale (5/5) mais gouvernance pragmatique orientee croissance. Freedom House 19/100."
+    },
+    "L": {
+      "label": "Legal",
+      "indicators": [
+        { "id": "L1", "label": "Rule of Law", "value": "0.49 (rang 82/142)", "rawValue": 0.49, "palier": 4, "source": "WJP" },
+        { "id": "L2", "label": "B-READY", "value": "~55", "rawValue": 55, "palier": 4, "source": "World Bank B-READY" },
+        { "id": "L3", "label": "Sanctions", "value": "Aucune sanction internationale", "rawValue": null, "palier": 1, "source": "OFAC / EU" },
+        { "id": "L4", "label": "Protection PI", "value": "~38 (amelioration post-CPTPP)", "rawValue": 38, "palier": 5, "source": "US Chamber GIPC" },
+        { "id": "L5", "label": "Execution contrats", "value": "~400 jours", "rawValue": 400, "palier": 2, "source": "World Bank" },
+        { "id": "L6", "label": "Independance judiciaire", "value": "Tres faible — justice sous controle du Parti", "rawValue": null, "palier": 6, "source": "WJP / V-Dem" },
+        { "id": "L7", "label": "BIT actifs", "value": "66", "rawValue": 66, "palier": 2, "source": "UNCTAD IIA" },
+        { "id": "L8", "label": "Anti-corruption", "value": "Campagne intense (Blazing Furnace) mais selective et politisee", "rawValue": null, "palier": 4, "source": "TI / Nikkei Asia" },
+        { "id": "L9", "label": "Arbitrage ICSID", "value": "Membre, execution partielle", "rawValue": null, "palier": 3, "source": "ICSID" },
+        { "id": "L10", "label": "Risque expropriation", "value": "Modere — loi fonciere 2024 ameliore mais Etat reste proprietaire unique du sol", "rawValue": null, "palier": 4, "source": "EIU / US State Dept ICS" }
+      ],
+      "scoreQuanti": 3.5,
+      "scoreQuali": 4,
+      "resilience": { "RL1": { "score": 1, "label": "Autonomie judiciaire", "commentary": "Justice totalement subordonnee au PCV. Aucune capacite a bloquer l'executif. Pas de precedent d'independance." } },
+      "scoreFinal": 3.7,
+      "trend": "down",
+      "commentary": "Environnement legal a deux vitesses. CPTPP et EVFTA ameliorent le cadre formel (66 BIT, execution contrats rapide). Mais independance judiciaire inexistante, PI faiblement protegee, et Etat proprietaire unique du foncier. Campagne anti-corruption paradoxale : assainissement reel mais instrumentalisation politique."
+    },
+    "I": {
+      "label": "Information",
+      "indicators": [
+        { "id": "I1", "label": "RSF rang", "value": "174/180", "rawValue": 174, "palier": 7, "source": "RSF" },
+        { "id": "I2", "label": "Freedom on the Net", "value": "22/100 (Not Free)", "rawValue": 22, "palier": 6, "source": "Freedom House" },
+        { "id": "I3", "label": "Operations influence", "value": "4-6 (desinformation domestique PCV, fermes de trolls)", "rawValue": 5, "palier": 4, "source": "DFRLab / Oxford Internet Institute" },
+        { "id": "I4", "label": "Censure internet", "value": "15-20% (Facebook restreint, VPN services bloques, Decret 13/2023)", "rawValue": 18, "palier": 5, "source": "OONI / AccessNow" },
+        { "id": "I5", "label": "Controle medias Etat", "value": ">90% — tous medias sous controle PCV", "rawValue": 92, "palier": 7, "source": "RSF / Freedom House" },
+        { "id": "I6", "label": "Penetration reseaux sociaux", "value": "73.7% (76M utilisateurs)", "rawValue": 73.7, "palier": 2, "source": "DataReportal 2025" },
+        { "id": "I7", "label": "Desinformation IA", "value": "3-5 incidents (deepfakes cibles dissidents)", "rawValue": 4, "palier": 3, "source": "DFRLab" },
+        { "id": "I8", "label": "Pluralisme mediatique", "value": "< 10 — monopole PCV total", "rawValue": 8, "palier": 7, "source": "RSF" },
+        { "id": "I9", "label": "Journalistes emprisonnes", "value": "~40", "rawValue": 40, "palier": 5, "source": "RSF / CPJ" },
+        { "id": "I10", "label": "Controle narratif diaspora", "value": "Surveillance active (espionnage diaspora, Force 47)", "rawValue": null, "palier": 5, "source": "DFRLab / BBC" },
+        { "id": "I11", "label": "Bots / trolls", "value": "Force 47 : 10 000+ comptes coordonnes estimes", "rawValue": 10000, "palier": 5, "source": "Oxford II / BBC" },
+        { "id": "I12", "label": "Usage VPN", "value": "~38% (parmi les plus eleves d'Asie)", "rawValue": 38, "palier": 5, "source": "Top10VPN / GlobalWebIndex" }
+      ],
+      "scoreQuanti": 5.1,
+      "scoreQuali": 6,
+      "resilience": { "RI1": { "score": 1, "label": "Pluralisme mediatique", "commentary": "Aucun media independant. Tous les medias appartiennent au PCV ou a des entites controlees. Dissidents en ligne persecutes." } },
+      "scoreFinal": 5.5,
+      "trend": "up",
+      "commentary": "Controle informationnel parmi les plus stricts au monde. RSF 174/180, Freedom on the Net 22/100. Force 47 (armee cyber-propagande). Paradoxe : penetration reseaux sociaux 74% mais sous surveillance massive. Decret 13/2023 renforce le controle. ~40 journalistes emprisonnes."
+    },
+    "C": {
+      "label": "Cyber",
+      "indicators": [
+        { "id": "C1", "label": "NCSI", "value": "48.05", "rawValue": 48.05, "palier": 4, "source": "e-Governance Academy" },
+        { "id": "C2", "label": "GCI", "value": "76.75 (Tier 2)", "rawValue": 76.75, "palier": 3, "source": "ITU GCI" },
+        { "id": "C3", "label": "Incidents majeurs", "value": "2-3 (attaques aeroports 2024, banques)", "rawValue": 3, "palier": 3, "source": "Mandiant / CrowdStrike" },
+        { "id": "C4", "label": "APT actifs", "value": "APT32/OceanLotus (etatique, 6+ campagnes)", "rawValue": 8, "palier": 4, "source": "MITRE ATT&CK / Mandiant" },
+        { "id": "C5", "label": "Exposition infra critique", "value": "Significative — SCADA partiellement exposes, industrialisation rapide", "rawValue": null, "palier": 4, "source": "ENISA / VNCERT" },
+        { "id": "C6", "label": "Budget cyberdefense", "value": "~1.5% budget defense", "rawValue": 1.5, "palier": 5, "source": "IISS / OSINT" },
+        { "id": "C7", "label": "Ransomware", "value": "~20 incidents (zone ASEAN active)", "rawValue": 20, "palier": 3, "source": "Chainalysis / Kaspersky" },
+        { "id": "C8", "label": "Supply chain attacks", "value": "1-2 (via supply chain electronique)", "rawValue": 2, "palier": 3, "source": "Mandiant" },
+        { "id": "C9", "label": "Workforce cyber", "value": "~15 / 100k", "rawValue": 15, "palier": 6, "source": "ISC2 / VNCERT" },
+        { "id": "C10", "label": "Souverainete donnees", "value": "Loi cybersecurite 2018 + Decret 13/2023 — surveillance d'Etat active", "rawValue": null, "palier": 7, "source": "AccessNow / Freedom House" },
+        { "id": "C11", "label": "Cloud exposure", "value": "Significative — cloud adoption rapide, standards faibles", "rawValue": null, "palier": 4, "source": "Shodan / DataReportal" },
+        { "id": "C12", "label": "Zero-day exposure", "value": "Moderee — APT32 achete/utilise des zero-days", "rawValue": null, "palier": 3, "source": "Google TAG" }
+      ],
+      "scoreQuanti": 4.1,
+      "scoreQuali": 4,
+      "scoreFinal": 4.1,
+      "trend": "up",
+      "commentary": "Profil cyber dual. Capacite offensive significative (APT32/OceanLotus cible dissidents, entreprises, gouvernements voisins). Mais defense insuffisante : NCSI 48, workforce limitee (15/100k), budget cyber faible. Loi cybersecurite 2018 = surveillance d'Etat, pas protection citoyens. Risque croissant avec industrialisation rapide."
+    },
+    "Ee": {
+      "label": "Environnemental",
+      "indicators": [
+        { "id": "Ee1", "label": "ND-GAIN", "value": "42.8 (rang ~100)", "rawValue": 42.8, "palier": 5, "source": "ND-GAIN" },
+        { "id": "Ee2", "label": "Water Stress", "value": "1.8 (Mekong Delta : salinisation, subsidence)", "rawValue": 1.8, "palier": 3, "source": "WRI Aqueduct" },
+        { "id": "Ee3", "label": "Dependance extractive", "value": "~8% exports (petrole brut)", "rawValue": 8, "palier": 2, "source": "World Bank / GSO" },
+        { "id": "Ee4", "label": "Catastrophes naturelles", "value": "8+ (typhons Yagi 2024, inondations Mekong recurrentes)", "rawValue": 8, "palier": 4, "source": "EM-DAT / CRED" },
+        { "id": "Ee5", "label": "Transition energetique", "value": "~12% renouvelables hors hydro (PDP8 : objectif 30-40%), charbon dominant ~47%", "rawValue": 12, "palier": 5, "source": "IEA / IRENA / EVN" },
+        { "id": "Ee6", "label": "CO2 / capita", "value": "3.5 tonnes", "rawValue": 3.5, "palier": 2, "source": "Global Carbon Project" },
+        { "id": "Ee7", "label": "Biodiversite menacee", "value": "~15% especes evaluees menacees", "rawValue": 15, "palier": 3, "source": "IUCN" },
+        { "id": "Ee8", "label": "Deforestation", "value": "~0.4%/an (reforestation partielle mais qualite)", "rawValue": 0.4, "palier": 3, "source": "Global Forest Watch" },
+        { "id": "Ee9", "label": "Montee des eaux", "value": "~12% pop zones < 5m (Mekong Delta, HCMC)", "rawValue": 12, "palier": 4, "source": "Climate Central / World Bank" },
+        { "id": "Ee10", "label": "Pollution air", "value": "35 µg/m3 (Hanoi parmi les plus polluees d'Asie)", "rawValue": 35, "palier": 4, "source": "IQAir" }
+      ],
+      "scoreQuanti": 3.5,
+      "scoreQuali": 4,
+      "scoreFinal": 3.7,
+      "trend": "up",
+      "commentary": "Vulnerabilite environnementale croissante. Mekong Delta (20M hab.) menace par salinisation, subsidence et montee des eaux. PDP8 ambitieux mais charbon encore 47% du mix. Pollution air severe a Hanoi. Typhons de plus en plus intenses (Yagi 2024 = 4.5 Mrd$ degats)."
+    }
+  },
+  "composite": 3.8,
+  "compositeMethod": {
+    "simpleAvg": 3.81,
+    "weighted": 3.82,
+    "amplified": 3.95,
+    "weights": {
+      "S": 0.12, "E": 0.15, "M": 0.16, "P": 0.14,
+      "L": 0.10, "I": 0.12, "C": 0.11, "Ee": 0.10
+    },
+    "amplificationDetail": "I (5.5, delta=+1.68 vs 3.82) → majoration. Plafond +0.3 applique."
+  },
+  "classification": "Modere",
+  "opportunity": {
+    "dimensions": {
+      "So": {
+        "label": "Capital humain",
+        "scoreQuanti": 4.6,
+        "scoreQuali": 5,
+        "scoreFinal": 4.8,
+        "indicators": [
+          { "id": "So1", "label": "Alphabetisation", "value": "97.2%", "palier": 6, "source": "UNESCO" },
+          { "id": "So2", "label": "PISA", "value": "~500 (au-dessus OCDE)", "palier": 5, "source": "OECD PISA" },
+          { "id": "So3", "label": "Depenses sante / PIB", "value": "~5.5%", "palier": 4, "source": "OMS" },
+          { "id": "So4", "label": "Medecins / 1000", "value": "0.83", "palier": 3, "source": "OMS" },
+          { "id": "So5", "label": "Scolarisation tertiaire", "value": "~30%", "palier": 3, "source": "UNESCO" },
+          { "id": "So6", "label": "Mobilite sociale", "value": "~52", "palier": 3, "source": "WEF" },
+          { "id": "So7", "label": "Pop. age travailler", "value": "69%", "palier": 6, "source": "UN DESA" },
+          { "id": "So8", "label": "Solde migration qualifiee", "value": "Fuite moderee (retour diaspora en hausse)", "palier": 4, "source": "World Bank / OSINT" }
+        ]
+      },
+      "Eo": {
+        "label": "Croissance & marche",
+        "scoreQuanti": 4.8,
+        "scoreQuali": 5,
+        "scoreFinal": 4.9,
+        "indicators": [
+          { "id": "Eo1", "label": "PIB tendanciel 5 ans", "value": "~6.2%", "palier": 6, "source": "IMF WEO" },
+          { "id": "Eo2", "label": "IDE / PIB", "value": "~4.7%", "palier": 5, "source": "UNCTAD" },
+          { "id": "Eo3", "label": "Taille marche", "value": "~1 300 Mrd$ PPA", "palier": 5, "source": "IMF" },
+          { "id": "Eo4", "label": "Croissance classe moyenne", "value": "+10 pts (5 ans)", "palier": 5, "source": "Brookings" },
+          { "id": "Eo5", "label": "Diversification eco", "value": "~0.35 HHI inverse", "palier": 4, "source": "World Bank / WITS" },
+          { "id": "Eo6", "label": "Profondeur marche financier", "value": "~130% credit prive / PIB", "palier": 6, "source": "World Bank" },
+          { "id": "Eo7", "label": "Brevets / million hab.", "value": "~8", "palier": 2, "source": "WIPO" },
+          { "id": "Eo8", "label": "Productivite totale", "value": "~1.5%", "palier": 5, "source": "Conference Board" },
+          { "id": "Eo9", "label": "Accords commerciaux", "value": "~65% (CPTPP, EVFTA, RCEP, ASEAN)", "palier": 5, "source": "WTO" },
+          { "id": "Eo10", "label": "Reserves strategiques", "value": "2-3 (terres rares, bauxite, tungstene)", "palier": 3, "source": "USGS" }
+        ]
+      },
+      "Mo": {
+        "label": "Securite & alliances",
+        "scoreQuanti": 3.8,
+        "scoreQuali": 4,
+        "scoreFinal": 3.9,
+        "indicators": [
+          { "id": "Mo1", "label": "Alliances defensives", "value": "Partenariats strategiques multiples (US, Russie, Inde, Japon, Coree)", "palier": 4, "source": "IISS" },
+          { "id": "Mo2", "label": "Exercices conjoints", "value": "~8-10/an", "palier": 4, "source": "IISS" },
+          { "id": "Mo3", "label": "Stabilite regionale", "value": "Tensions Mer de Chine, Myanmar voisin", "palier": 3, "source": "ACLED / UCDP" },
+          { "id": "Mo4", "label": "Cooperation defense", "value": "~12 accords actifs", "palier": 4, "source": "SIPRI / IISS" },
+          { "id": "Mo5", "label": "Controle frontieres", "value": "Substantiel", "palier": 5, "source": "IOM" },
+          { "id": "Mo6", "label": "R&D defense", "value": "~3%", "palier": 3, "source": "SIPRI" }
+        ]
+      },
+      "Po": {
+        "label": "Gouvernance & reformes",
+        "scoreQuanti": 3.4,
+        "scoreQuali": 4,
+        "scoreFinal": 3.6,
+        "indicators": [
+          { "id": "Po1", "label": "WGI Effectiveness", "value": "+0.1", "palier": 4, "source": "World Bank" },
+          { "id": "Po2", "label": "V-Dem Participatory", "value": "0.12", "palier": 1, "source": "V-Dem" },
+          { "id": "Po3", "label": "Reformes structurelles", "value": "3-4 majeures (loi fonciere 2024, CPTPP compliance, PDP8, reforme fiscale)", "palier": 5, "source": "IMF Art. IV" },
+          { "id": "Po4", "label": "E-Government", "value": "0.67", "palier": 4, "source": "UN DESA" },
+          { "id": "Po5", "label": "Decentralisation", "value": "Centralise — delegation limitee aux provinces", "palier": 2, "source": "World Bank" },
+          { "id": "Po6", "label": "Transparence budgetaire", "value": "~38 (Open Budget Index)", "palier": 3, "source": "IBP" },
+          { "id": "Po7", "label": "Succession institutionnelle", "value": "Codifie au sein du PCV, teste (transition Trong → To Lam)", "palier": 5, "source": "V-Dem / OSINT" },
+          { "id": "Po8", "label": "Dialogue social", "value": "Facade — syndicats uniques sous PCV", "palier": 2, "source": "ILO" }
+        ]
+      },
+      "Lo": {
+        "label": "Attractivite juridique",
+        "scoreQuanti": 4.1,
+        "scoreQuali": 4,
+        "scoreFinal": 4.1,
+        "indicators": [
+          { "id": "Lo1", "label": "Rule of Law", "value": "0.49", "palier": 3, "source": "WJP" },
+          { "id": "Lo2", "label": "Protection investisseurs", "value": "Moderement ouvert (EVFTA, CPTPP)", "palier": 5, "source": "OECD / World Bank" },
+          { "id": "Lo3", "label": "BIT actifs", "value": "66", "palier": 5, "source": "UNCTAD" },
+          { "id": "Lo4", "label": "Arbitrage international", "value": "Membre actif, execution partielle", "palier": 4, "source": "ICSID" },
+          { "id": "Lo5", "label": "Protection PI", "value": "~38", "palier": 3, "source": "GIPC" },
+          { "id": "Lo6", "label": "Taux imposition corporate", "value": "20% (incentives ZI : 10-17%)", "palier": 4, "source": "PwC / EY" },
+          { "id": "Lo7", "label": "Zones franches", "value": "18 zones economiques + zones industrielles", "palier": 5, "source": "FIA Vietnam" },
+          { "id": "Lo8", "label": "Stabilite reglementaire", "value": "~4 changements majeurs / 3 ans", "palier": 4, "source": "EIU" }
+        ]
+      },
+      "Io": {
+        "label": "Innovation & numerique",
+        "scoreQuanti": 3.4,
+        "scoreQuali": 4,
+        "scoreFinal": 3.6,
+        "indicators": [
+          { "id": "Io1", "label": "GII rang", "value": "44/130", "palier": 4, "source": "WIPO" },
+          { "id": "Io2", "label": "R&D / PIB", "value": "~0.5%", "palier": 3, "source": "UNESCO" },
+          { "id": "Io3", "label": "Ecosysteme startups", "value": "~8 Mrd$ (en hausse)", "palier": 3, "source": "Dealroom / TechInAsia" },
+          { "id": "Io4", "label": "Internet haut debit", "value": "~55%", "palier": 4, "source": "ITU / DataReportal" },
+          { "id": "Io5", "label": "Publications IA", "value": "~1.2% mondial", "palier": 3, "source": "Scopus" },
+          { "id": "Io6", "label": "Capital-risque / PIB", "value": "~0.06%", "palier": 3, "source": "NVCA / TechInAsia" },
+          { "id": "Io7", "label": "Diplomes STEM", "value": "~85 / 100k", "palier": 5, "source": "UNESCO / MOET" },
+          { "id": "Io8", "label": "Adoption IA industrie", "value": "~15%", "palier": 3, "source": "McKinsey / OSINT" }
+        ]
+      },
+      "Co": {
+        "label": "Maturite technologique",
+        "scoreQuanti": 3.6,
+        "scoreQuali": 4,
+        "scoreFinal": 3.8,
+        "indicators": [
+          { "id": "Co1", "label": "GCI", "value": "76.75", "palier": 4, "source": "ITU" },
+          { "id": "Co2", "label": "Maturite cloud", "value": "En developpement (AWS, Azure arrivent)", "palier": 3, "source": "Asia Cloud Computing" },
+          { "id": "Co3", "label": "5G + fibre", "value": "~25% couverture 5G, fibre en expansion", "palier": 3, "source": "GSMA / Viettel" },
+          { "id": "Co4", "label": "Souverainete donnees", "value": "Loi cybersecurite 2018, localisation donnees imposee", "palier": 4, "source": "OSINT" },
+          { "id": "Co5", "label": "CERT national", "value": "VNCERT established (CMM 3)", "palier": 4, "source": "GFCE / ITU" },
+          { "id": "Co6", "label": "Workforce cyber", "value": "~15 / 100k", "palier": 2, "source": "ISC2" },
+          { "id": "Co7", "label": "Commerce en ligne", "value": "~14% (en forte hausse)", "palier": 4, "source": "eMarketer / Statista" },
+          { "id": "Co8", "label": "Identite numerique", "value": "~65% (chip ID rollout en cours)", "palier": 4, "source": "World Bank ID4D / VnExpress" }
+        ]
+      },
+      "Eeo": {
+        "label": "Durabilite & transition",
+        "scoreQuanti": 3.0,
+        "scoreQuali": 3,
+        "scoreFinal": 3.0,
+        "indicators": [
+          { "id": "Eeo1", "label": "Renouvelables", "value": "~12% hors hydro, ~25% avec hydro", "palier": 3, "source": "IRENA" },
+          { "id": "Eeo2", "label": "Ambition NDC", "value": "Insuffisant (CAT)", "palier": 3, "source": "Climate Action Tracker" },
+          { "id": "Eeo3", "label": "Obligations vertes", "value": "~0.2% PIB", "palier": 3, "source": "CBI / Bloomberg" },
+          { "id": "Eeo4", "label": "ND-GAIN Preparation", "value": "0.38", "palier": 3, "source": "ND-GAIN" },
+          { "id": "Eeo5", "label": "Economie circulaire", "value": "~12%", "palier": 2, "source": "OSINT / World Bank" },
+          { "id": "Eeo6", "label": "Investissements verts", "value": "~8% FBCF (JETP 15.5 Mrd$ mobilise)", "palier": 3, "source": "OECD / IEA" },
+          { "id": "Eeo7", "label": "Aires protegees", "value": "~8%", "palier": 3, "source": "IUCN / WDPA" },
+          { "id": "Eeo8", "label": "EPI", "value": "43.7", "palier": 3, "source": "Yale EPI" }
+        ]
+      }
+    },
+    "composite": 4.0,
+    "compositeMethod": {
+      "simpleAvg": 3.96,
+      "weighted": 4.01,
+      "amplified": 4.01,
+      "amplificationDetail": "Eo (4.9, delta=+0.89 vs 4.01) — sous seuil 1.0, pas d'amplification."
+    },
+    "classification": "Modere",
+    "weights": {
+      "So": 0.12, "Eo": 0.17, "Mo": 0.07, "Po": 0.14,
+      "Lo": 0.13, "Io": 0.15, "Co": 0.12, "Eeo": 0.10
+    }
+  },
+  "delta": 0.1,
+  "quadrant": "Pari a haut potentiel",
+  "signatures": [],
+  "flags": [],
+  "resilience": {
+    "RS1": 2, "RE1": 4, "RM1": 2, "RP1": 1, "RI1": 1, "RL1": 1
+  },
+  "velocite": {
+    "commentary": "Premiere evaluation — pas de comparaison historique. Dimensions a surveiller : I (tendance haussiere, Decret 13/2023), Ee (typhons croissants, Mekong Delta), M (escalade Mer de Chine).",
+    "alerts": []
+  },
+  "scenarios": {
+    "base": {
+      "label": "Croissance sous controle autoritaire",
+      "horizon": "12 mois",
+      "probability": "65%",
+      "description": "Le PCV maintient la trajectoire de croissance 6-7%, attire les IDE (China+1 strategy), gere les tensions Mer de Chine par la diplomatie bambou. Anti-corruption continue sans destabiliser. Score stable."
+    },
+    "upside": {
+      "label": "Acceleration du decouplage Chine",
+      "horizon": "12 mois",
+      "probability": "20%",
+      "description": "Escalade commerciale US-Chine accelere le shift supply chain vers le Vietnam. IDE record (>25 Mrd$), croissance 8%+, upgrade notation souveraine (investment grade). E ameliore, Eo ameliore."
+    },
+    "downside": {
+      "label": "Escalade Mer de Chine du Sud",
+      "horizon": "12 mois",
+      "probability": "15%",
+      "description": "Incident maritime majeur (collision, saisie navire peche). Paralysie diplomatie bambou. Deterioration M (+1.0), impact E (IDE en suspens), I (repression renforcee)."
+    }
+  }
+}

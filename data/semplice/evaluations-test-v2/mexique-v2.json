@@ -1,0 +1,236 @@
+{
+  "zone": {
+    "id": "mexique",
+    "name": "Mexique",
+    "region": "amerique-latine"
+  },
+  "meta": {
+    "date": "2026-03-16",
+    "version": "2.1",
+    "analyst": "Inflexion Intelligence"
+  },
+  "dimensions": {
+    "S": {
+      "label": "Social",
+      "indicators": [
+        { "id": "S1", "label": "Gini", "value": "0.418", "rawValue": 0.418, "palier": 5, "source": "World Bank" },
+        { "id": "S2", "label": "IDH", "value": "0.758 (rang 77/193)", "rawValue": 0.758, "palier": 3, "source": "UNDP" },
+        { "id": "S3", "label": "Chomage jeunes", "value": "7.2%", "rawValue": 7.2, "palier": 1, "source": "ILO" },
+        { "id": "S4", "label": "Solde migratoire", "value": "-1.5‰ (emigration nette vers US)", "rawValue": -1.5, "palier": 5, "source": "UN DESA" },
+        { "id": "S5", "label": "Mouvements sociaux", "value": "Protestations reforme judiciaire (sept. 2024), manifestations anti-violence episodiques", "rawValue": null, "palier": 4, "source": "ACLED / Reuters" },
+        { "id": "S6", "label": "Tensions ethniques", "value": "Tensions indigenes Chiapas/Guerrero, EZLN residuel, communautes autochtones marginalisees", "rawValue": null, "palier": 3, "source": "Minorities at Risk / ACLED" },
+        { "id": "S7", "label": "Acces sante", "value": "1.0 lits/1000 hab.", "rawValue": 1.0, "palier": 5, "source": "OMS / World Bank" },
+        { "id": "S8", "label": "Urbanisation", "value": "~1.2%/an", "rawValue": 1.2, "palier": 3, "source": "UN Habitat" },
+        { "id": "S9", "label": "Inegalite genre (GII)", "value": "0.309", "rawValue": 0.309, "palier": 3, "source": "UNDP" },
+        { "id": "S10", "label": "Esperance de vie", "value": "75.1 ans", "rawValue": 75.1, "palier": 2, "source": "World Bank" },
+        { "id": "S11", "label": "Securite alimentaire", "value": "~7.1% sous-alimentes", "rawValue": 7.1, "palier": 3, "source": "FAO" },
+        { "id": "S12", "label": "Education secondaire", "value": "~78% (taux net)", "rawValue": 78, "palier": 3, "source": "UNESCO" }
+      ],
+      "scoreQuanti": 3.3,
+      "scoreQuali": 4,
+      "resilience": { "RS1": { "score": 4, "label": "Societe civile", "commentary": "Societe civile active (syndicats, ONG droits humains, mouvements etudiants, UNAM). Manifestations massives contre la reforme judiciaire (sept. 2024). Mais sous pression croissante du pouvoir MORENA." } },
+      "scoreFinal": 3.6,
+      "trend": "stable",
+      "commentary": "Profil social intermediaire avec fractures profondes. IDH moyen-haut (0.758) masque des inegalites majeures (Gini 0.418) et un acces sante deficient (1.0 lit/1000). Violence des cartels = premiere cause de mortalite precoce. Emigration nette vers les US structurelle. Dividende demographique en cours (median 29 ans, 130M pop)."
+    },
+    "E": {
+      "label": "Economique",
+      "indicators": [
+        { "id": "E1", "label": "PIB reel", "value": "+2.3% (2025 est.)", "rawValue": 2.3, "palier": 3, "source": "IMF WEO" },
+        { "id": "E2", "label": "Inflation", "value": "4.1% (fev. 2026)", "rawValue": 4.1, "palier": 2, "source": "Banxico / IMF" },
+        { "id": "E3", "label": "Dette publique / PIB", "value": "50.2%", "rawValue": 50.2, "palier": 3, "source": "IMF Fiscal Monitor" },
+        { "id": "E4", "label": "Balance courante", "value": "-1.2% PIB", "rawValue": -1.2, "palier": 4, "source": "IMF BOP" },
+        { "id": "E5", "label": "Notation souveraine", "value": "BBB (S&P, Fitch), Baa2 (Moody's) — stable", "rawValue": null, "palier": 3, "source": "S&P / Fitch / Moody's" },
+        { "id": "E6", "label": "Regime change", "value": "Flottant libre (peso)", "rawValue": null, "palier": 1, "source": "IMF AREAER" },
+        { "id": "E7", "label": "Reserves de change", "value": "~5.5 mois importations ($205 Mrd reserves brutes)", "rawValue": 5.5, "palier": 4, "source": "Banxico / IMF" },
+        { "id": "E8", "label": "IDE entrants", "value": "~2.8% PIB (record nearshoring)", "rawValue": 2.8, "palier": 3, "source": "SE Mexico / UNCTAD" },
+        { "id": "E9", "label": "Chomage total", "value": "2.8%", "rawValue": 2.8, "palier": 1, "source": "INEGI" },
+        { "id": "E10", "label": "Dette privee / PIB", "value": "~42%", "rawValue": 42, "palier": 1, "source": "BIS" },
+        { "id": "E11", "label": "Concentration exports", "value": "Automobile 25% + electronique 18% + petrole 5% = 48%", "rawValue": 48, "palier": 4, "source": "INEGI / World Bank" },
+        { "id": "E12", "label": "Croissance credit", "value": "~9%", "rawValue": 9, "palier": 2, "source": "Banxico" },
+        { "id": "E13", "label": "Economie informelle", "value": "~55% emploi informel, ~23% PIB", "rawValue": 23, "palier": 3, "source": "INEGI / World Bank" },
+        { "id": "E14", "label": "Cout energie", "value": "~85 $/MWh (subsidise CFE)", "rawValue": 85, "palier": 2, "source": "CFE / IEA" },
+        { "id": "E15", "label": "Indice de misere", "value": "4.1 + 2.8 = 6.9", "rawValue": 6.9, "palier": 2, "source": "Calcul" },
+        { "id": "E16", "label": "Independance BC", "value": "Banxico constitutionnellement autonome, credibilite elevee, taux directeur 9.5%. Pression MORENA latente.", "rawValue": null, "palier": 2, "source": "Banxico / IMF Art. IV" }
+      ],
+      "scoreQuanti": 2.5,
+      "scoreQuali": 3,
+      "resilience": { "RE1": { "score": 6, "label": "Correction monetaire", "commentary": "Banxico credible (taux 9.5%), swap lines Fed/BCE actives, reserves $205 Mrd, acces FMI FCL ($35 Mrd ligne preventive), notation investment grade BBB." } },
+      "scoreFinal": 2.4,
+      "trend": "stable",
+      "commentary": "Economie resiliente mais a risques latents. Investment grade, Banxico credible, IDE record (nearshoring). Mais dependance commerciale US ~80%, renegociation T-MEC 2026 = risque majeur. Peso volatil post-reforme judiciaire (-15% en 6 mois). Economie informelle massive (55% emploi). Pemex = passif contingent (~$100 Mrd dette)."
+    },
+    "M": {
+      "label": "Militaire",
+      "indicators": [
+        { "id": "M1", "label": "Depenses mil. / PIB", "value": "0.5%", "rawValue": 0.5, "palier": 1, "source": "SIPRI" },
+        { "id": "M2", "label": "Conflits actifs", "value": "Guerre des cartels (CJNG vs Sinaloa, >30k homicides/an), basse intensite asymetrique", "rawValue": null, "palier": 4, "source": "ACLED / UCDP" },
+        { "id": "M3", "label": "GFP rang", "value": "31/145", "rawValue": 31, "palier": 3, "source": "Global Firepower" },
+        { "id": "M4", "label": "Exercices majeurs", "value": "2-3 (UNITAS, cooperation US limitee)", "rawValue": 3, "palier": 2, "source": "IISS" },
+        { "id": "M5", "label": "Proliferation", "value": "Zone NWFZ (Tlatelolco, Mexique = signataire fondateur)", "rawValue": null, "palier": 2, "source": "UNODA" },
+        { "id": "M6", "label": "Coups regionaux", "value": "0 dans la zone (1500km)", "rawValue": 0, "palier": 1, "source": "ACLED" },
+        { "id": "M7", "label": "Subordination civile", "value": "~0.60 — militarisation croissante sous AMLO/Sheinbaum (GN, aeroport, Tren Maya, douanes)", "rawValue": 0.60, "palier": 4, "source": "V-Dem / ICG" },
+        { "id": "M8", "label": "Transferts armes", "value": "~$800M (5 ans, dont Blackhawk US, Israel)", "rawValue": 800, "palier": 3, "source": "SIPRI Arms Transfers" },
+        { "id": "M9", "label": "Bases etrangeres", "value": "0 (doctrine Estrada, souverainete)", "rawValue": 0, "palier": 1, "source": "IISS" },
+        { "id": "M10", "label": "Milices / PMC", "value": "Cartels = quasi-forces paramilitaires (CJNG, Sinaloa, CSRL, Zetas residuels), autodefensas Michoacan/Guerrero", "rawValue": null, "palier": 6, "source": "ACLED / InSight Crime" },
+        { "id": "M11", "label": "Traites defense", "value": "Pas d'alliance defensive formelle (non-aligne, doctrine Estrada)", "rawValue": null, "palier": 4, "source": "SRE Mexico" },
+        { "id": "M12", "label": "R&D defense", "value": "~1.5%", "rawValue": 1.5, "palier": 5, "source": "SIPRI / SEDENA" },
+        { "id": "M13", "label": "Fiabilite protecteur", "value": "US = partenaire securitaire principal mais relation tendue (fentanyl, migration, Initiative Merida remplacee par Bicentennial Framework)", "rawValue": null, "palier": 3, "source": "CRS / IISS" }
+      ],
+      "scoreQuanti": 3.0,
+      "scoreQuali": 4,
+      "resilience": { "RM1": { "score": 5, "label": "Doctrine republicaine armee", "commentary": "Aucun coup d'Etat depuis 1920. Armee historiquement subordonnee au PRI puis au pouvoir civil. Mais militarisation acceleree des fonctions civiles sous AMLO/Sheinbaum (GN, aeroports, douanes, chemins de fer) erode la separation." } },
+      "scoreFinal": 3.3,
+      "trend": "up",
+      "commentary": "Paradoxe securitaire. Pas de conflit interétatique, aucun coup en 100+ ans, mais guerre asymetrique des cartels = >30k homicides/an. CJNG et Sinaloa = quasi-armees avec drones, blindes, controle territorial. Militarisation croissante de l'Etat sous MORENA (armee gere aeroports, douanes, Tren Maya, GN). Budget defense tres bas (0.5% PIB) pour un pays de cette taille."
+    },
+    "P": {
+      "label": "Politique",
+      "indicators": [
+        { "id": "P1", "label": "CPI", "value": "31/100 (rang 126/180)", "rawValue": 31, "palier": 5, "source": "Transparency International" },
+        { "id": "P2", "label": "V-Dem", "value": "~0.35 (declin sous MORENA)", "rawValue": 0.35, "palier": 5, "source": "V-Dem Institute" },
+        { "id": "P3", "label": "WGI Political Stability", "value": "-0.55 (violence cartels)", "rawValue": -0.55, "palier": 5, "source": "World Bank WGI" },
+        { "id": "P4", "label": "Cycle electoral", "value": "Legislatives intermediaires juin 2027 (~15 mois)", "rawValue": null, "palier": 4, "source": "INE" },
+        { "id": "P5", "label": "Risque regime", "value": "Faible — continuite MORENA, supermajoritie, pas de menace de renversement", "rawValue": null, "palier": 2, "source": "EIU" },
+        { "id": "P6", "label": "Polarisation", "value": "Elevee (MORENA vs coalition opposition PRI-PAN-PRD, polarisation ideologique crescendo)", "rawValue": 0.72, "palier": 4, "source": "V-Dem / Latinobarometro" },
+        { "id": "P7", "label": "Libertes civiles", "value": "37/60 (en baisse)", "rawValue": 37, "palier": 3, "source": "Freedom House 2025" },
+        { "id": "P8", "label": "Risque successoral", "value": "Transition AMLO→Sheinbaum reussie (oct. 2024), succession institutionnelle", "rawValue": null, "palier": 2, "source": "OSINT" },
+        { "id": "P9", "label": "Autonomie regionale", "value": "Chiapas (EZLN residuel), tensions frontieres nord, mais pas de mouvement secessionniste", "rawValue": null, "palier": 2, "source": "ACLED" },
+        { "id": "P10", "label": "Opposition", "value": "Opposition legale mais affaiblie (PRI-PAN-PRD coalition en desintegration), presse libre mais menacee", "rawValue": null, "palier": 3, "source": "V-Dem / Freedom House" },
+        { "id": "P11", "label": "Pression demographique", "value": "+0.7%/an (ralentissement)", "rawValue": 0.7, "palier": 1, "source": "CONAPO / UN DESA" },
+        { "id": "P12", "label": "Diaspora", "value": "~37M Mexicains-Americains, remesas $66 Mrd, influence politique bilaterale", "rawValue": null, "palier": 4, "source": "Pew / Banxico" },
+        { "id": "P13", "label": "Capture institutionnelle", "value": "3/5 post-reforme judiciaire (executif + legislatif + judiciaire en cours d'alignement). INE affaibli. Banxico preservee.", "rawValue": 3, "palier": 5, "source": "V-Dem / ICG / Americas Quarterly" },
+        { "id": "P14", "label": "Chocs auto-infliges", "value": "Reforme judiciaire (election des juges sept. 2024), dissolution INAI (transparence), militarisation GN — 3 chocs majeurs", "rawValue": null, "palier": 5, "source": "ICG / Americas Quarterly" },
+        { "id": "P15", "label": "Fenetres action critiques", "value": "Renegociation T-MEC (revision 2026), elections juges (2025-2027), tensions Trump administration", "rawValue": null, "palier": 4, "source": "USTR / Reuters" }
+      ],
+      "scoreQuanti": 3.6,
+      "scoreQuali": 4,
+      "resilience": { "RP1": { "score": 5, "label": "Alternance democratique", "commentary": "Alternance PRI→PAN (2000), PAN→PRI (2012), PRI→MORENA (2018), MORENA→MORENA (2024, mais transition pacifique). Alternances regulieres aux niveaux federal et etatique. Risque : reforme judiciaire et concentration MORENA pourraient eroder ce mecanisme." } },
+      "scoreFinal": 3.6,
+      "trend": "up",
+      "commentary": "Erosion democratique en cours sous MORENA. Reforme judiciaire (election des juges) = recul institutionnel majeur, critique par UE/US/ONU. CPI 31/100 = corruption systemique. V-Dem en declin. Mais alternance democratique fonctionnelle, transition pacifique 2024, pas de risque de coup. Polarisation croissante mais dans un cadre institutionnel encore fonctionnel."
+    },
+    "L": {
+      "label": "Legal",
+      "indicators": [
+        { "id": "L1", "label": "Rule of Law", "value": "0.44 (rang 116/142)", "rawValue": 0.44, "palier": 5, "source": "WJP" },
+        { "id": "L2", "label": "B-READY", "value": "~63 (Heritage IEF 'Moderately Free')", "rawValue": 63, "palier": 3, "source": "Heritage Foundation / World Bank" },
+        { "id": "L3", "label": "Sanctions", "value": "Aucune sanction internationale", "rawValue": null, "palier": 1, "source": "OFAC" },
+        { "id": "L4", "label": "Protection PI", "value": "~52 (GIPC)", "rawValue": 52, "palier": 4, "source": "US Chamber GIPC" },
+        { "id": "L5", "label": "Execution contrats", "value": "~341 jours (Mexico City), variable par Etat", "rawValue": 341, "palier": 2, "source": "World Bank" },
+        { "id": "L6", "label": "Independance judiciaire", "value": "Faible et en declin — reforme judiciaire (election des juges) compromet l'independance", "rawValue": null, "palier": 5, "source": "WJP / ICG" },
+        { "id": "L7", "label": "BIT actifs", "value": "~35 BIT + T-MEC chapitre investissement", "rawValue": 35, "palier": 3, "source": "UNCTAD / USTR" },
+        { "id": "L8", "label": "Anti-corruption", "value": "Faible — SNA (Sistema Nacional Anticorrupcion) dysfonctionnel, INAI dissous", "rawValue": null, "palier": 5, "source": "TI / OECD" },
+        { "id": "L9", "label": "Arbitrage ICSID", "value": "Membre actif, execution generalement respectee (ALENA/T-MEC Chapter 14)", "rawValue": null, "palier": 2, "source": "ICSID / USTR" },
+        { "id": "L10", "label": "Risque expropriation", "value": "Modere — nationalisation lithium 2022, Pemex priorite politique, renegociation contrats energie", "rawValue": null, "palier": 4, "source": "EIU / Americas Quarterly" }
+      ],
+      "scoreQuanti": 3.4,
+      "scoreQuali": 4,
+      "resilience": { "RL1": { "score": 3, "label": "Autonomie judiciaire", "commentary": "SCJN a historiquement bloque des lois inconstitutionnelles. Mais reforme judiciaire (election des juges) en cours d'implementation = erosion majeure. Cour Supreme videe de ses juges experimentes. Capacite de blocage future incertaine." } },
+      "scoreFinal": 3.6,
+      "trend": "up",
+      "commentary": "Cadre legal fragilise par la reforme judiciaire. T-MEC = ancrage juridique majeur pour les investisseurs, mais renegociation 2026 cree de l'incertitude. Nationalisation du lithium (2022) = signal d'interventionnisme. INAI (transparence) dissous. Rule of Law WJP en declin constant. Execution des contrats relativement efficace dans les grands centres."
+    },
+    "I": {
+      "label": "Information",
+      "indicators": [
+        { "id": "I1", "label": "RSF rang", "value": "128/180 (parmi les plus dangereux pour les journalistes)", "rawValue": 128, "palier": 5, "source": "RSF" },
+        { "id": "I2", "label": "Freedom on the Net", "value": "60/100 (Partly Free)", "rawValue": 60, "palier": 3, "source": "Freedom House" },
+        { "id": "I3", "label": "Operations influence", "value": "3-4 (bots MORENA documentes, interference US latente, cartels shaping narratif)", "rawValue": 4, "palier": 3, "source": "DFRLab / Stanford IO" },
+        { "id": "I4", "label": "Censure internet", "value": "Faible (<2% sites bloques), mais surveillance croissante (Pegasus)", "rawValue": 1.5, "palier": 2, "source": "OONI / Citizen Lab" },
+        { "id": "I5", "label": "Controle medias Etat", "value": "Modere — mananeras (conferences matinales) comme vecteur narratif dominant, medias prives diversifies", "rawValue": 30, "palier": 3, "source": "RSF / Article 19" },
+        { "id": "I6", "label": "Penetration reseaux sociaux", "value": "73% (96M utilisateurs)", "rawValue": 73, "palier": 2, "source": "DataReportal 2025" },
+        { "id": "I7", "label": "Desinformation IA", "value": "3-4 incidents (deepfakes electoraux 2024, bots politiques)", "rawValue": 4, "palier": 3, "source": "DFRLab / Verificado" },
+        { "id": "I8", "label": "Pluralisme mediatique", "value": "Modere — medias diversifies mais autocensure par peur (cartels + gouvernement)", "rawValue": 42, "palier": 4, "source": "RSF" },
+        { "id": "I9", "label": "Journalistes emprisonnes", "value": "0 emprisonnes mais 13 tues en 2024", "rawValue": 0, "palier": 1, "source": "CPJ / RSF" },
+        { "id": "I10", "label": "Controle narratif diaspora", "value": "Soft power diaspora (consulats, remesas), pas de controle coercitif", "rawValue": null, "palier": 3, "source": "SRE / OSINT" },
+        { "id": "I11", "label": "Bots / trolls", "value": "~2000-5000 (bots politiques documentes, 'pejebot' phenomenon)", "rawValue": 3000, "palier": 4, "source": "Stanford IO / DFRLab" },
+        { "id": "I12", "label": "Usage VPN", "value": "~15%", "rawValue": 15, "palier": 3, "source": "Top10VPN" }
+      ],
+      "scoreQuanti": 3.0,
+      "scoreQuali": 4,
+      "resilience": { "RI1": { "score": 5, "label": "Pluralisme mediatique", "commentary": "Ecosysteme mediatique diversifie : Reforma, El Universal, Animal Politico, Aristegui Noticias, Latinus. Pluralisme reel malgre les menaces. Mais autocensure massive dans les Etats domines par les cartels (Tamaulipas, Guerrero, Sinaloa)." } },
+      "scoreFinal": 3.3,
+      "trend": "up",
+      "commentary": "Environnement informationnel paradoxal. Medias nationaux diversifies et reseaux sociaux omnipresents (73%), mais Mexique = pays le plus dangereux au monde pour les journalistes (13 tues en 2024). RSF 128/180. Cartels imposent le silence dans des regions entieres ('zonas de silencio'). Pegasus utilise contre journalistes et activistes (Citizen Lab). Bots politiques documentes."
+    },
+    "C": {
+      "label": "Cyber",
+      "indicators": [
+        { "id": "C1", "label": "NCSI", "value": "48.05 (rang ~65)", "rawValue": 48.05, "palier": 4, "source": "e-Governance Academy" },
+        { "id": "C2", "label": "GCI", "value": "62.5 (Tier 2)", "rawValue": 62.5, "palier": 4, "source": "ITU GCI" },
+        { "id": "C3", "label": "Incidents majeurs", "value": "2-3 (Pemex ransomware, Guacamaya leaks, attaques SEDENA)", "rawValue": 3, "palier": 3, "source": "Mandiant / Recorded Future" },
+        { "id": "C4", "label": "APT actifs", "value": "1-2 (ciblage par APT US et cartels-affiliated)", "rawValue": 2, "palier": 2, "source": "MITRE ATT&CK" },
+        { "id": "C5", "label": "Exposition infra critique", "value": "Significative — Pemex, CFE, systeme bancaire, AIFA", "rawValue": null, "palier": 4, "source": "CISA / ENISA" },
+        { "id": "C6", "label": "Budget cyberdefense", "value": "~1% du budget defense (tres faible)", "rawValue": 1.0, "palier": 5, "source": "SEDENA / estime" },
+        { "id": "C7", "label": "Ransomware", "value": "~50-80 incidents/an (secteur financier + sante + gouvernement)", "rawValue": 65, "palier": 4, "source": "Chainalysis / Fortinet" },
+        { "id": "C8", "label": "Supply chain attacks", "value": "2-3 (via sous-traitants US/nearshoring)", "rawValue": 3, "palier": 3, "source": "Mandiant" },
+        { "id": "C9", "label": "Workforce cyber", "value": "~25 / 100k hab.", "rawValue": 25, "palier": 5, "source": "ISC2 / estime" },
+        { "id": "C10", "label": "Souverainete donnees", "value": "LFPDPPP (2010) + loi secondaire, cadre partiel", "rawValue": null, "palier": 4, "source": "INAI / OSINT" },
+        { "id": "C11", "label": "Cloud exposure", "value": "Moderee (nearshoring augmente la surface)", "rawValue": null, "palier": 3, "source": "Shodan / Censys" },
+        { "id": "C12", "label": "Zero-day exposure", "value": "Moderee (Pegasus achete par gouvernement, cible de spyware)", "rawValue": null, "palier": 3, "source": "Citizen Lab / Google TAG" }
+      ],
+      "scoreQuanti": 3.7,
+      "scoreQuali": 4,
+      "scoreFinal": 3.8,
+      "trend": "up",
+      "commentary": "Cyber en retard par rapport au poids economique. NCSI et GCI dans la moyenne basse. Incidents majeurs (Guacamaya leaks 2022 = 6 To donnes militaires exfiltrees, Pemex ransomware 2019). Nearshoring augmente la surface d'attaque sans renforcement proportionnel. Pegasus utilise par le gouvernement contre civils. Budget cyberdefense derisoire. Workforce cyber insuffisante (25/100k)."
+    },
+    "Ee": {
+      "label": "Environnemental",
+      "indicators": [
+        { "id": "Ee1", "label": "ND-GAIN", "value": "47.8 (rang ~85)", "rawValue": 47.8, "palier": 4, "source": "ND-GAIN" },
+        { "id": "Ee2", "label": "Water Stress", "value": "3.3 (eleve, Mexico City = subsidence critique)", "rawValue": 3.3, "palier": 5, "source": "WRI Aqueduct" },
+        { "id": "Ee3", "label": "Dependance extractive", "value": "~15% exports (petrole + mineraux)", "rawValue": 15, "palier": 2, "source": "INEGI / World Bank" },
+        { "id": "Ee4", "label": "Catastrophes naturelles", "value": "8+ (ouragans Otis 2023, seismes, inondations, secheresses nord)", "rawValue": 8, "palier": 4, "source": "EM-DAT / CENAPRED" },
+        { "id": "Ee5", "label": "Transition energetique", "value": "~22% renouvelables (eolien, solaire, hydro)", "rawValue": 22, "palier": 4, "source": "IRENA / SENER" },
+        { "id": "Ee6", "label": "CO2 / capita", "value": "3.6 tonnes", "rawValue": 3.6, "palier": 2, "source": "Global Carbon Project" },
+        { "id": "Ee7", "label": "Biodiversite menacee", "value": "~20% especes menacees (megadiversite)", "rawValue": 20, "palier": 4, "source": "IUCN / CONABIO" },
+        { "id": "Ee8", "label": "Deforestation", "value": "~0.4%/an", "rawValue": 0.4, "palier": 3, "source": "Global Forest Watch" },
+        { "id": "Ee9", "label": "Montee des eaux", "value": "~4% pop zones cotieres basses", "rawValue": 4, "palier": 3, "source": "Climate Central" },
+        { "id": "Ee10", "label": "Pollution air", "value": "22 µg/m3 (Mexico City)", "rawValue": 22, "palier": 3, "source": "IQAir" }
+      ],
+      "scoreQuanti": 3.4,
+      "scoreQuali": 4,
+      "scoreFinal": 3.6,
+      "trend": "up",
+      "commentary": "Stress hydrique = risque existentiel. Mexico City (22M hab.) s'enfonce de 50cm/an (subsidence), jour zero eau credible a horizon 2028. Exposition extreme aux ouragans (Otis 2023, cat. 5, $16 Mrd degats). Mexique = pays megadivers (#4 mondial) mais deforestation et urbanisation menacent la biodiversite. Transition energetique freinee par priorite CFE/Pemex."
+    }
+  },
+  "composite": 3.4,
+  "compositeMethod": {
+    "simpleAvg": 3.40,
+    "weighted": 3.36,
+    "amplified": 3.36,
+    "weights": {
+      "S": 0.12, "E": 0.15, "M": 0.16, "P": 0.14,
+      "L": 0.10, "I": 0.12, "C": 0.11, "Ee": 0.10
+    }
+  },
+  "classification": "Modere",
+  "opportunity": {
+    "dimensions": {
+      "So": { "label": "Capital humain", "scoreQuanti": 3.9, "scoreQuali": 4, "scoreFinal": 3.9 },
+      "Eo": { "label": "Croissance & marche", "scoreQuanti": 3.9, "scoreQuali": 5, "scoreFinal": 4.3 },
+      "Mo": { "label": "Securite & alliances", "scoreQuanti": 3.5, "scoreQuali": 4, "scoreFinal": 3.7 },
+      "Po": { "label": "Gouvernance & reformes", "scoreQuanti": 4.1, "scoreQuali": 3, "scoreFinal": 3.7 },
+      "Lo": { "label": "Attractivite juridique", "scoreQuanti": 3.8, "scoreQuali": 4, "scoreFinal": 3.9 },
+      "Io": { "label": "Innovation & numerique", "scoreQuanti": 3.3, "scoreQuali": 3, "scoreFinal": 3.2 },
+      "Co": { "label": "Maturite technologique", "scoreQuanti": 3.5, "scoreQuali": 3, "scoreFinal": 3.3 },
+      "Eeo": { "label": "Durabilite & transition", "scoreQuanti": 3.1, "scoreQuali": 3, "scoreFinal": 3.1 }
+    },
+    "composite": 3.7,
+    "classification": "Modere",
+    "weights": {
+      "So": 0.12, "Eo": 0.17, "Mo": 0.07, "Po": 0.14,
+      "Lo": 0.13, "Io": 0.15, "Co": 0.12, "Eeo": 0.10
+    }
+  },
+  "delta": 0.3,
+  "quadrant": "Pari a haut potentiel",
+  "signatures": [],
+  "flags": [],
+  "resilience": {
+    "RS1": 4, "RE1": 6, "RM1": 5, "RP1": 5, "RI1": 5, "RL1": 3
+  }
+}

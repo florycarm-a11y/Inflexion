@@ -2,7 +2,7 @@
   "schema": "evaluation-v2",
   "version": "2.1",
   "generatedAt": "2026-03-13",
-  "count": 12,
+  "count": 16,
   "evaluations": [
     {
       "zoneId": "arctique",
@@ -111,6 +111,50 @@
       "composite": 1.9,
       "classification": "Faible",
       "file": "republique-tcheque-v2.json"
+    },
+    {
+      "zoneId": "iran",
+      "name": "Iran",
+      "region": "moyen-orient",
+      "composite": 5.1,
+      "compositeOpp": 2.5,
+      "delta": 2.6,
+      "quadrant": "Zone de crise",
+      "classification": "Tres eleve",
+      "file": "iran-v2.json"
+    },
+    {
+      "zoneId": "mexique",
+      "name": "Mexique",
+      "region": "amerique-latine",
+      "composite": 3.4,
+      "compositeOpp": 3.7,
+      "delta": -0.3,
+      "quadrant": "Stable neutre",
+      "classification": "Modere",
+      "file": "mexique-v2.json"
+    },
+    {
+      "zoneId": "vietnam",
+      "name": "Vietnam",
+      "region": "asie",
+      "composite": 3.8,
+      "compositeOpp": 4.0,
+      "delta": -0.2,
+      "quadrant": "Pari a haut potentiel",
+      "classification": "Modere",
+      "file": "vietnam-v2.json"
+    },
+    {
+      "zoneId": "ethiopie",
+      "name": "Éthiopie",
+      "region": "afrique",
+      "composite": 4.5,
+      "compositeOpp": 2.8,
+      "delta": 1.7,
+      "quadrant": "Zone de crise",
+      "classification": "Eleve",
+      "file": "ethiopie-v2.json"
     }
   ]
 }

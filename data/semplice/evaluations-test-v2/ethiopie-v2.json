@@ -1,0 +1,236 @@
+{
+  "zone": {
+    "id": "ethiopie",
+    "name": "Ethiopie",
+    "region": "afrique"
+  },
+  "meta": {
+    "date": "2026-03-16",
+    "version": "2.1",
+    "analyst": "Inflexion Intelligence"
+  },
+  "dimensions": {
+    "S": {
+      "label": "Social",
+      "indicators": [
+        { "id": "S1", "label": "Gini", "value": "0.35 (World Bank 2021)", "rawValue": 0.35, "palier": 4, "source": "World Bank" },
+        { "id": "S2", "label": "IDH", "value": "0.498 (rang 175/193)", "rawValue": 0.498, "palier": 7, "source": "UNDP" },
+        { "id": "S3", "label": "Chomage jeunes", "value": "~22% (urban, sous-estime)", "rawValue": 22, "palier": 4, "source": "ILO / CSA Ethiopia" },
+        { "id": "S4", "label": "Solde migratoire", "value": "-0.3 pour mille", "rawValue": -0.3, "palier": 4, "source": "UN DESA" },
+        { "id": "S5", "label": "Mouvements sociaux", "value": "Insurrection Fano (Amhara) active, OLA residuel, manifestations sporadiques", "rawValue": null, "palier": 6, "source": "ACLED" },
+        { "id": "S6", "label": "Tensions ethniques", "value": "Federalisme ethnique, >5M IDPs, tensions Amhara/Oromo/Tigray/Somali", "rawValue": null, "palier": 6, "source": "ACLED / ICG" },
+        { "id": "S7", "label": "Acces sante", "value": "0.3 lits/1000 hab.", "rawValue": 0.3, "palier": 7, "source": "WHO" },
+        { "id": "S8", "label": "Urbanisation", "value": "~4.6%/an", "rawValue": 4.6, "palier": 5, "source": "UN Habitat" },
+        { "id": "S9", "label": "Inegalite genre (GII)", "value": "0.517", "rawValue": 0.517, "palier": 5, "source": "UNDP" },
+        { "id": "S10", "label": "Esperance de vie", "value": "66.6 ans", "rawValue": 66.6, "palier": 4, "source": "World Bank" },
+        { "id": "S11", "label": "Securite alimentaire", "value": "~25% sous-alimentes (Horn of Africa, secheresses recurrentes)", "rawValue": 25, "palier": 5, "source": "FAO / WFP" },
+        { "id": "S12", "label": "Education secondaire", "value": "~38% (taux net)", "rawValue": 38, "palier": 6, "source": "UNESCO / World Bank" }
+      ],
+      "scoreQuanti": 5.25,
+      "scoreQuali": 5,
+      "resilience": { "RS1": { "score": 3, "label": "Societe civile", "commentary": "Societe civile affaiblie par loi CSP de 2009 (assouplie 2019 mais controle persiste). Syndicats faibles. ONG sous pression. Mouvements Fano et OLA sont des forces de contestation mais armees, pas civiles." } },
+      "scoreFinal": 5.2,
+      "trend": "stable",
+      "commentary": "Crise sociale profonde. IDH parmi les 20 plus bas, >5M de deplaces internes, 25% sous-alimentes. Federalisme ethnique (9 regions) est un facteur structurel de tensions. Population de 126M (2e Afrique) avec age median de 19 ans = pression demographique enorme sur des services publics defaillants."
+    },
+    "E": {
+      "label": "Economique",
+      "indicators": [
+        { "id": "E1", "label": "PIB reel", "value": "+6.0% (2025-2026 est.)", "rawValue": 6.0, "palier": 1, "source": "IMF WEO / World Bank" },
+        { "id": "E2", "label": "Inflation", "value": "~20% (mars 2026)", "rawValue": 20, "palier": 5, "source": "CSA Ethiopia / IMF" },
+        { "id": "E3", "label": "Dette publique / PIB", "value": "~38% (post-restructuration Common Framework)", "rawValue": 38, "palier": 2, "source": "IMF DSA" },
+        { "id": "E4", "label": "Balance courante", "value": "-4.5% PIB", "rawValue": -4.5, "palier": 5, "source": "IMF BOP" },
+        { "id": "E5", "label": "Notation souveraine", "value": "CCC+ (S&P post-restructuration), Caa1 (Moody's)", "rawValue": null, "palier": 7, "source": "S&P / Moody's" },
+        { "id": "E6", "label": "Regime change", "value": "Liberalisation FX en cours (juil. 2024), birr parallele 2x officiel", "rawValue": null, "palier": 5, "source": "IMF / NBE" },
+        { "id": "E7", "label": "Reserves de change", "value": "~1.8 mois d'importations", "rawValue": 1.8, "palier": 6, "source": "IMF / NBE" },
+        { "id": "E8", "label": "IDE entrants", "value": "~2.0% PIB (en hausse post-liberalisation)", "rawValue": 2.0, "palier": 3, "source": "UNCTAD / EIC" },
+        { "id": "E9", "label": "Chomage total", "value": "~5% officiel (masque sous-emploi massif ~60% informel)", "rawValue": 5, "palier": 4, "source": "ILO / CSA" },
+        { "id": "E10", "label": "Dette privee / PIB", "value": "~22%", "rawValue": 22, "palier": 1, "source": "IMF" },
+        { "id": "E11", "label": "Concentration exports", "value": "Cafe 30% + or 15% + fleurs 10% = 55%", "rawValue": 55, "palier": 5, "source": "OEC / EIC" },
+        { "id": "E12", "label": "Croissance credit", "value": "~25% (expansion rapide post-liberalisation)", "rawValue": 25, "palier": 4, "source": "NBE" },
+        { "id": "E13", "label": "Economie informelle", "value": "~40% PIB", "rawValue": 40, "palier": 4, "source": "World Bank / ILO" },
+        { "id": "E14", "label": "Cout energie", "value": "~60 $/MWh (hydro subsidie, GERD en remplissage)", "rawValue": 60, "palier": 2, "source": "IEA / EEP" },
+        { "id": "E15", "label": "Indice de misere", "value": "20 + 5 = 25", "rawValue": 25, "palier": 5, "source": "Calcul" },
+        { "id": "E16", "label": "Independance BC", "value": "NBE sous forte influence executif, gouverneur nomme par PM, taux directeur maintenu bas malgre inflation", "rawValue": null, "palier": 5, "source": "IMF Art. IV / OSINT" }
+      ],
+      "scoreQuanti": 3.9,
+      "scoreQuali": 5,
+      "resilience": { "RE1": { "score": 4, "label": "Correction monetaire", "commentary": "Programme FMI Extended Credit Facility approuve (3.4 Mrd$, 2024). Liberalisation FX en cours (pivot majeur). Restructuration dette Common Framework. Acces FMI = filet partiel mais fragile." } },
+      "scoreFinal": 4.3,
+      "trend": "stable",
+      "commentary": "Economie a double visage. Croissance headline de 6% masque inflation de 20%, reserves de change critiques (1.8 mois), crise forex avec birr parallele 2x officiel. Restructuration dette en cours (Common Framework = premier cas pilote). Liberalisation FX de juillet 2024 = choc structurel. Ethiopian Airlines = success story (15 Mrd$ revenus, hub continental)."
+    },
+    "M": {
+      "label": "Militaire",
+      "indicators": [
+        { "id": "M1", "label": "Depenses mil. / PIB", "value": "~3.5% (post-Tigray, incluant forces regionales)", "rawValue": 3.5, "palier": 4, "source": "SIPRI est." },
+        { "id": "M2", "label": "Conflits actifs", "value": "2 (Fano/Amhara + OLA/Oromia residuel)", "rawValue": 2, "palier": 5, "source": "ACLED / UCDP" },
+        { "id": "M3", "label": "GFP rang", "value": "60/145", "rawValue": 60, "palier": 3, "source": "Global Firepower" },
+        { "id": "M4", "label": "Exercices majeurs", "value": "3-5 (AMISOM/ATMIS rotation, bilateral UAE, Turquie, cooperation Erytree)", "rawValue": 4, "palier": 3, "source": "IISS" },
+        { "id": "M5", "label": "Proliferation", "value": "Zone NWFZ (Pelindaba)", "rawValue": null, "palier": 2, "source": "UNODA" },
+        { "id": "M6", "label": "Coups regionaux (1500km, 5 ans)", "value": "Soudan 2021, Soudan guerre 2023, tentative coup Ethiopie 2019", "rawValue": 3, "palier": 4, "source": "ACLED" },
+        { "id": "M7", "label": "Subordination civile", "value": "ENDF sous autorite PM, mais forces regionales partiellement autonomes", "rawValue": 0.45, "palier": 5, "source": "V-Dem / ICG" },
+        { "id": "M8", "label": "Transferts armes", "value": "~3000 TIV (drones turcs Bayraktar, UAE, Iran, Chine)", "rawValue": 3000, "palier": 4, "source": "SIPRI Arms Transfers" },
+        { "id": "M9", "label": "Bases etrangeres", "value": "Djibouti (US Camp Lemonnier, France, Chine, Japon — 100km frontiere), UAE Assab (Erytree, 200km)", "rawValue": null, "palier": 5, "source": "IISS Military Balance" },
+        { "id": "M10", "label": "Milices / PMC", "value": "Forces regionales Amhara (Fano), OLA (Oromia), milices Tigray reintegration partielle, forces speciales regionales", "rawValue": null, "palier": 5, "source": "ACLED / ICG" },
+        { "id": "M11", "label": "Traites defense", "value": "UA siege, IGAD, bilateraux UAE/Turquie/Chine, pas de traite de defense collective", "rawValue": null, "palier": 4, "source": "IISS" },
+        { "id": "M12", "label": "R&D defense", "value": "~2% (industrie defense naissante, MIDI)", "rawValue": 2, "palier": 5, "source": "SIPRI / IISS" },
+        { "id": "M13", "label": "Fiabilite protecteur", "value": "Multi-alignment (UAE + Turquie + Chine), pas de protecteur unique fiable, US engagement reduit", "rawValue": null, "palier": 4, "source": "ICG / IISS" }
+      ],
+      "scoreQuanti": 4.1,
+      "scoreQuali": 5,
+      "resilience": { "RM1": { "score": 3, "label": "Doctrine republicaine armee", "commentary": "ENDF restructure post-Tigray. Tentative coup Amhara 2019 echouee. Forces regionales = risque d'autonomisation. Pas de tradition de coup reussi mais armee politisee." } },
+      "scoreFinal": 4.5,
+      "trend": "down",
+      "commentary": "Securite fragmentee. Accord de Pretoria (nov. 2022) partiellement mis en oeuvre — reintegration forces Tigray lente, insurrection Fano active en Amhara. Forces regionales partiellement autonomes = risque de fragmentation militaire. ENDF = 2e armee subsaharienne (GFP 60). Drones turcs Bayraktar ont ete decisifs dans la guerre du Tigray. Djibouti a 100km = plus forte concentration de bases etrangeres au monde."
+    },
+    "P": {
+      "label": "Politique",
+      "indicators": [
+        { "id": "P1", "label": "CPI", "value": "37/100 (rang 94/180)", "rawValue": 37, "palier": 5, "source": "Transparency International" },
+        { "id": "P2", "label": "V-Dem", "value": "~0.18 (autocratie electorale)", "rawValue": 0.18, "palier": 6, "source": "V-Dem Institute" },
+        { "id": "P3", "label": "WGI Political Stability", "value": "-1.5 (bottom quintile)", "rawValue": -1.5, "palier": 6, "source": "World Bank WGI" },
+        { "id": "P4", "label": "Cycle electoral", "value": "Prochaines elections ~2026-2027, calendrier incertain", "rawValue": null, "palier": 5, "source": "IFES / NEBE" },
+        { "id": "P5", "label": "Risque regime", "value": "Modere-eleve — Abiy concentre pouvoir, fragmentation ethnique latente", "rawValue": null, "palier": 4, "source": "EIU / Freedom House" },
+        { "id": "P6", "label": "Polarisation", "value": "Tres elevee (TPLF vs PP vs Fano vs OLA vs partis ethniques)", "rawValue": 0.88, "palier": 6, "source": "V-Dem / ICG" },
+        { "id": "P7", "label": "Libertes civiles", "value": "22/100 (Freedom House, Not Free)", "rawValue": 22, "palier": 5, "source": "Freedom House 2025" },
+        { "id": "P8", "label": "Risque successoral", "value": "Abiy ~50 ans, pas de successeur clair, parti Prosperity consolide autour de lui", "rawValue": null, "palier": 5, "source": "OSINT / ICG" },
+        { "id": "P9", "label": "Autonomie regionale", "value": "Federalisme ethnique, Fano (Amhara) en insurrection, OLA residuel, Tigray autonomie de facto", "rawValue": null, "palier": 6, "source": "ACLED / ICG" },
+        { "id": "P10", "label": "Opposition", "value": "Opposition harcelee — leaders emprisonnes ou en exil, medias fermes", "rawValue": null, "palier": 5, "source": "Freedom House / Amnesty" },
+        { "id": "P11", "label": "Pression demographique", "value": "+2.5%/an (126M, median 19 ans)", "rawValue": 2.5, "palier": 4, "source": "UN DESA" },
+        { "id": "P12", "label": "Diaspora", "value": "Diaspora US/Europe tres active politiquement, financement factions", "rawValue": null, "palier": 5, "source": "OSINT / ICG" },
+        { "id": "P13", "label": "Capture institutionnelle", "value": "3/5 (executif + armee + medias sous PP, judiciaire/BC partiellement)", "rawValue": 3, "palier": 5, "source": "V-Dem / Freedom House" },
+        { "id": "P14", "label": "Chocs auto-infliges", "value": "Dissolution TPLF, arrestations opposition, internet shutdowns, operation militaire Amhara 2023", "rawValue": null, "palier": 5, "source": "ICG / HRW" },
+        { "id": "P15", "label": "Fenetres action critiques", "value": "Implementation Pretoria, desarmement Fano, GERD 4e remplissage (tensions Egypte), elections reportees", "rawValue": null, "palier": 5, "source": "ICG / Crisis Group" }
+      ],
+      "scoreQuanti": 5.1,
+      "scoreQuali": 5,
+      "resilience": { "RP1": { "score": 2, "label": "Alternance democratique", "commentary": "Aucune alternance democratique en histoire moderne. EPRDF/PP au pouvoir depuis 1991. Elections 2021 boycottees par opposition. Abiy arrive par transition intra-parti, pas par vote." } },
+      "scoreFinal": 5.1,
+      "trend": "stable",
+      "commentary": "Regime en consolidation autoritaire. Abiy Ahmed (Nobel 2019) concentre le pouvoir via le Parti de la Prosperite. V-Dem classe l'Ethiopie en autocratie electorale (~0.18). Federalisme ethnique = bombe a retardement avec 9 regions a base ethnique. Fano (Amhara) = insurrection active la plus serieuse. Accord de Pretoria fragile, reintegration TPLF lente. >5M de deplaces internes."
+    },
+    "L": {
+      "label": "Legal",
+      "indicators": [
+        { "id": "L1", "label": "Rule of Law", "value": "~0.38 (rang 120+/142)", "rawValue": 0.38, "palier": 5, "source": "WJP" },
+        { "id": "L2", "label": "B-READY", "value": "~46 (Heritage IEF, Mostly Unfree)", "rawValue": 46, "palier": 5, "source": "Heritage Foundation / World Bank" },
+        { "id": "L3", "label": "Sanctions", "value": "Sanctions US levees (2022), sanctions ciblees UE residuelles post-Tigray", "rawValue": null, "palier": 3, "source": "OFAC / EU" },
+        { "id": "L4", "label": "Protection PI", "value": "Faible (~28)", "rawValue": 28, "palier": 5, "source": "GIPC / EIPO" },
+        { "id": "L5", "label": "Execution contrats", "value": "~530 jours", "rawValue": 530, "palier": 3, "source": "World Bank" },
+        { "id": "L6", "label": "Independance judiciaire", "value": "Faible — pressions executif, tribunaux speciaux post-conflit", "rawValue": null, "palier": 5, "source": "V-Dem / Freedom House" },
+        { "id": "L7", "label": "BIT actifs", "value": "~30 BIT", "rawValue": 30, "palier": 4, "source": "UNCTAD" },
+        { "id": "L8", "label": "Anti-corruption", "value": "Faible (FEACC existe, CPI 37, efforts post-2018 mais recul)", "rawValue": null, "palier": 5, "source": "TI / FEACC" },
+        { "id": "L9", "label": "Arbitrage ICSID", "value": "Non-membre ICSID, bilateral arbitrage possible", "rawValue": null, "palier": 5, "source": "ICSID / UNCTAD" },
+        { "id": "L10", "label": "Risque expropriation", "value": "Modere — nationalisation historique, reformes en cours (telecom, banque) mais cadre fragile", "rawValue": null, "palier": 4, "source": "EIU / US State Dept" }
+      ],
+      "scoreQuanti": 4.4,
+      "scoreQuali": 5,
+      "resilience": { "RL1": { "score": 2, "label": "Autonomie judiciaire", "commentary": "Justice non independante. Executif nomme juges. Tribunaux speciaux post-Tigray. Pas de blocage significatif de l'executif par le judiciaire." } },
+      "scoreFinal": 4.6,
+      "trend": "stable",
+      "commentary": "Cadre legal en transition. L'Ethiopie n'est pas membre de l'ICSID, ce qui complique la protection des investissements. Liberalisation en cours (telecom, banque, logistique) mais cadre juridique fragile. Protection PI faible. Non-membre OMC (candidature en cours). Corruption systemique malgre reformes post-2018."
+    },
+    "I": {
+      "label": "Information",
+      "indicators": [
+        { "id": "I1", "label": "RSF rang", "value": "130/180", "rawValue": 130, "palier": 5, "source": "RSF" },
+        { "id": "I2", "label": "Freedom on the Net", "value": "24/100 (Not Free)", "rawValue": 24, "palier": 6, "source": "Freedom House" },
+        { "id": "I3", "label": "Operations influence", "value": "Campagnes pro-gouvernementales + diaspora pro/anti Abiy, trolls organises", "rawValue": 5, "palier": 4, "source": "DFRLab / Stanford IO" },
+        { "id": "I4", "label": "Censure internet", "value": "Coupures frequentes (Tigray 2 ans, Amhara recurrentes), >15% sites bloques", "rawValue": 20, "palier": 5, "source": "OONI / AccessNow / NetBlocks" },
+        { "id": "I5", "label": "Controle medias Etat", "value": "EBC + Fana dominant, medias prives sous pression, licences revoquees", "rawValue": 55, "palier": 5, "source": "RSF / IREX" },
+        { "id": "I6", "label": "Penetration reseaux sociaux", "value": "~8% (10M utilisateurs sur 126M)", "rawValue": 8, "palier": 7, "source": "DataReportal 2025" },
+        { "id": "I7", "label": "Desinformation IA", "value": "2-3 incidents documentes (deepfakes pendant conflit Tigray)", "rawValue": 3, "palier": 3, "source": "DFRLab" },
+        { "id": "I8", "label": "Pluralisme mediatique", "value": "Faible — degradation post-2020, fermetures medias (Addis Standard harcelements)", "rawValue": 25, "palier": 5, "source": "RSF" },
+        { "id": "I9", "label": "Journalistes emprisonnes", "value": "~8-12 (CPJ 2025)", "rawValue": 10, "palier": 3, "source": "CPJ / RSF" },
+        { "id": "I10", "label": "Controle narratif diaspora", "value": "Surveillance active diaspora, campagnes coordonnees pro-Abiy, intimidation", "rawValue": null, "palier": 5, "source": "DFRLab / OSINT" },
+        { "id": "I11", "label": "Bots / trolls", "value": "500-2000 comptes coordonnes estimes (Stanford IO ethiopian nets)", "rawValue": 1000, "palier": 4, "source": "Stanford IO" },
+        { "id": "I12", "label": "Usage VPN", "value": "~25% des internautes (indicateur coupures)", "rawValue": 25, "palier": 4, "source": "Top10VPN / GlobalWebIndex" }
+      ],
+      "scoreQuanti": 4.7,
+      "scoreQuali": 5,
+      "resilience": { "RI1": { "score": 2, "label": "Pluralisme mediatique", "commentary": "Medias independants en recul. Addis Standard, Ethiopian Reporter sous pression. Coupures internet systematiques (Amhara). Freedom on the Net 24/100 = 'Not Free'." } },
+      "scoreFinal": 4.8,
+      "trend": "stable",
+      "commentary": "Controle informationnel avance. L'Ethiopie pratique les internet shutdowns les plus frequents d'Afrique (2 ans complets au Tigray). RSF 130/180. Freedom on the Net 24/100. Penetration reseaux sociaux 8% = la plupart de la population informee par radio + bouche-a-oreille. Diaspora US tres polarisee entre pro et anti-Abiy."
+    },
+    "C": {
+      "label": "Cyber",
+      "indicators": [
+        { "id": "C1", "label": "NCSI", "value": "~35 (rang ~90)", "rawValue": 35, "palier": 5, "source": "e-Governance Academy" },
+        { "id": "C2", "label": "GCI", "value": "~45 (Tier 3)", "rawValue": 45, "palier": 4, "source": "ITU" },
+        { "id": "C3", "label": "Incidents majeurs", "value": "2-3 (attaques DDoS pendant conflit Tigray, phishing cible gouvernement)", "rawValue": 3, "palier": 3, "source": "ENACT / Mandiant" },
+        { "id": "C4", "label": "APT actifs", "value": "1-2 (surveillance interieure Pegasus/FinFisher allegue)", "rawValue": 2, "palier": 2, "source": "Citizen Lab / MITRE" },
+        { "id": "C5", "label": "Exposition infra critique", "value": "Elevee — GERD (cible strategique), Ethio Telecom monopole, grid fragile", "rawValue": null, "palier": 5, "source": "CISA / OSINT" },
+        { "id": "C6", "label": "Budget cyberdefense", "value": "~0.3% budget defense (INSA = agence nationale)", "rawValue": 0.3, "palier": 6, "source": "IISS / OSINT" },
+        { "id": "C7", "label": "Ransomware", "value": "5-10 incidents (surface en expansion avec numerisation)", "rawValue": 8, "palier": 2, "source": "ENACT" },
+        { "id": "C8", "label": "Supply chain attacks", "value": "1 (telecom supply chain)", "rawValue": 1, "palier": 2, "source": "Mandiant" },
+        { "id": "C9", "label": "Workforce cyber", "value": "~10 / 100k hab.", "rawValue": 10, "palier": 6, "source": "ISC2 estime" },
+        { "id": "C10", "label": "Souverainete donnees", "value": "Minimal — pas de loi protection donnees comprehensive, Data Protection Proclamation 2021 incomplete", "rawValue": null, "palier": 5, "source": "OSINT / GDPR tracker" },
+        { "id": "C11", "label": "Cloud exposure", "value": "Moderee (numerisation rapide mais depuis base faible)", "rawValue": null, "palier": 3, "source": "DataReportal" },
+        { "id": "C12", "label": "Zero-day exposure", "value": "Moderee (Pegasus/FinFisher = cible surveillance)", "rawValue": null, "palier": 3, "source": "Citizen Lab / Google TAG" }
+      ],
+      "scoreQuanti": 3.8,
+      "scoreQuali": 4,
+      "scoreFinal": 3.9,
+      "trend": "up",
+      "commentary": "Immaturite cyber avec surface en expansion. INSA (agence nationale) existe mais capacites limitees. GERD = infrastructure critique de premier ordre (cible strategique potentielle pour l'Egypte). Ethio Telecom monopole = point de defaillance unique. Surveillance interieure (Pegasus/FinFisher allegue) plus avancee que la cyberdefense."
+    },
+    "Ee": {
+      "label": "Environnemental",
+      "indicators": [
+        { "id": "Ee1", "label": "ND-GAIN", "value": "37.8 (tres vulnerable, faible readiness)", "rawValue": 37.8, "palier": 5, "source": "ND-GAIN" },
+        { "id": "Ee2", "label": "Water Stress", "value": "2.8 (modere-eleve, aigu dans Est/Somali/Afar)", "rawValue": 2.8, "palier": 4, "source": "WRI Aqueduct" },
+        { "id": "Ee3", "label": "Dependance extractive", "value": "~18% exports (or + opalale + pierres precieuses)", "rawValue": 18, "palier": 3, "source": "OEC / World Bank" },
+        { "id": "Ee4", "label": "Catastrophes naturelles", "value": "8+ (secheresses Horn of Africa 2020-2023, inondations 2024, criquets 2019-2021)", "rawValue": 8, "palier": 5, "source": "EM-DAT / ACAPS" },
+        { "id": "Ee5", "label": "Transition energetique", "value": "~95% electricite renouvelable (hydro 90% + eolien 5%, GERD transformateur)", "rawValue": 95, "palier": 1, "source": "IRENA / EEP" },
+        { "id": "Ee6", "label": "CO2 / capita", "value": "0.18 tonnes", "rawValue": 0.18, "palier": 1, "source": "Our World in Data" },
+        { "id": "Ee7", "label": "Biodiversite menacee", "value": "~15% especes evaluees menacees", "rawValue": 15, "palier": 3, "source": "IUCN" },
+        { "id": "Ee8", "label": "Deforestation", "value": "~0.9%/an (degradation forte dans le sud et l'ouest)", "rawValue": 0.9, "palier": 4, "source": "Global Forest Watch" },
+        { "id": "Ee9", "label": "Montee des eaux", "value": "<1% (pays enclaveave)", "rawValue": 0.5, "palier": 1, "source": "Climate Central" },
+        { "id": "Ee10", "label": "Pollution air", "value": "~45 ug/m3 (Addis Abeba)", "rawValue": 45, "palier": 4, "source": "IQAir" }
+      ],
+      "scoreQuanti": 3.1,
+      "scoreQuali": 4,
+      "scoreFinal": 3.5,
+      "trend": "stable",
+      "commentary": "Profil environnemental mixte. L'Ethiopie est un champion des renouvelables (95% electricite hydro) grace au GERD et au reseau hydroelectrique existant. CO2/capita ultra-faible. Mais vulnerabilite climatique extreme : secheresses recurrentes Horn of Africa (Est/Somali/Afar), criquets, inondations. ND-GAIN 37.8 = tres vulnerable. GERD = enjeu geopolitique majeur (tensions Egypte/Soudan sur le partage du Nil)."
+    }
+  },
+  "composite": 4.5,
+  "compositeMethod": {
+    "simpleAvg": 4.49,
+    "weighted": 4.52,
+    "amplified": 4.55,
+    "weights": {
+      "S": 0.12, "E": 0.15, "M": 0.16, "P": 0.14,
+      "L": 0.10, "I": 0.12, "C": 0.11, "Ee": 0.10
+    }
+  },
+  "classification": "Eleve",
+  "opportunity": {
+    "dimensions": {
+      "So": { "label": "Capital humain", "scoreQuanti": 2.4, "scoreQuali": 3, "scoreFinal": 2.6 },
+      "Eo": { "label": "Croissance & marche", "scoreQuanti": 3.4, "scoreQuali": 4, "scoreFinal": 3.6 },
+      "Mo": { "label": "Securite & alliances", "scoreQuanti": 3.0, "scoreQuali": 3, "scoreFinal": 3.0 },
+      "Po": { "label": "Gouvernance & reformes", "scoreQuanti": 2.5, "scoreQuali": 3, "scoreFinal": 2.7 },
+      "Lo": { "label": "Attractivite juridique", "scoreQuanti": 2.6, "scoreQuali": 3, "scoreFinal": 2.8 },
+      "Io": { "label": "Innovation & numerique", "scoreQuanti": 1.9, "scoreQuali": 2, "scoreFinal": 1.9 },
+      "Co": { "label": "Maturite technologique", "scoreQuanti": 1.8, "scoreQuali": 2, "scoreFinal": 1.9 },
+      "Eeo": { "label": "Durabilite & transition", "scoreQuanti": 3.0, "scoreQuali": 3, "scoreFinal": 3.0 }
+    },
+    "composite": 2.8,
+    "classification": "Faible",
+    "weights": {
+      "So": 0.12, "Eo": 0.17, "Mo": 0.07, "Po": 0.14,
+      "Lo": 0.13, "Io": 0.15, "Co": 0.12, "Eeo": 0.10
+    }
+  },
+  "delta": -1.7,
+  "quadrant": "Pari a haut potentiel",
+  "signatures": [],
+  "flags": ["facade-economique"],
+  "resilience": {
+    "RS1": 3, "RE1": 4, "RM1": 3, "RP1": 2, "RI1": 2, "RL1": 2
+  }
+}

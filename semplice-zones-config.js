@@ -1,6 +1,6 @@
 /* semplice-zones-config.js — Source unique des zones SEMPLICE v2.1
    Utilisé par expertise.html (radar) et country.html (carte + scatter + tableau)
-   Échelle 1-7 risque ET opportunité — 14 zones évaluées */
+   Échelle 1-7 risque ET opportunité — 18 zones évaluées */
 
 var SEMPLICE_DIM_LABELS=['Social','Économique','Militaire','Politique','Légal','Information','Cyber','Environnemental'];
 var SEMPLICE_OPP_LABELS=['Capital humain','Croissance','Sécurité','Gouvernance','Attract. juridique','Innovation','Maturité tech','Durabilité'];
@@ -89,5 +89,29 @@ var SEMPLICE_ZONES=[
      scores:[1.7,1.9,1.7,1.6,1.7,1.6,2.8,2.6],composite:1.9,level:'Faible',
      opp:[5.4,3.9,4.8,5.5,5.0,3.9,5.1,4.0],oppComposite:4.7,oppLevel:'Élevé',
      color:'#0d9488',fill:'rgba(13,148,136,0.10)',href:'#',
-     center:[49.8,15.5],zoom:7,gdp:330,region:'Europe'}
+     center:[49.8,15.5],zoom:7,gdp:330,region:'Europe'},
+
+    {id:'iran',name:'Iran',
+     scores:[4.2,4.6,5.5,5.7,5.5,5.9,4.8,4.6],composite:5.1,level:'Très élevé',
+     opp:[3.9,3.0,3.1,1.7,1.9,2.8,2.2,1.8],oppComposite:2.5,oppLevel:'Faible',
+     color:'#991b1b',fill:'rgba(153,27,27,0.10)',href:'#',
+     center:[32,53],zoom:5,gdp:388,region:'Moyen-Orient'},
+
+    {id:'mexique',name:'Mexique',
+     scores:[3.6,2.4,3.3,3.6,3.6,3.3,3.8,3.6],composite:3.4,level:'Modéré',
+     opp:[3.9,4.3,3.7,3.7,3.9,3.2,3.3,3.1],oppComposite:3.7,oppLevel:'Modéré',
+     color:'#2563eb',fill:'rgba(37,99,235,0.10)',href:'#',
+     center:[23.6,-102.5],zoom:5,gdp:1790,region:'Amériques'},
+
+    {id:'vietnam',name:'Vietnam',
+     scores:[3.0,2.9,3.9,3.7,3.7,5.5,4.1,3.7],composite:3.8,level:'Modéré',
+     opp:[4.8,4.9,3.9,3.6,4.1,3.6,3.8,3.0],oppComposite:4.0,oppLevel:'Modéré',
+     color:'#db2777',fill:'rgba(219,39,119,0.10)',href:'#',
+     center:[16,107.8],zoom:6,gdp:430,region:'Asie'},
+
+    {id:'ethiopie',name:'Éthiopie',
+     scores:[5.2,4.3,4.5,5.1,4.6,4.8,3.9,3.5],composite:4.5,level:'Élevé',
+     opp:[2.6,3.6,3.0,2.7,2.8,1.9,1.9,3.0],oppComposite:2.8,oppLevel:'Faible',
+     color:'#92400e',fill:'rgba(146,64,14,0.10)',href:'#',
+     center:[9.1,40.5],zoom:6,gdp:156,region:'Afrique'}
 ];
