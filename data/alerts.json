@@ -1,11 +1,162 @@
 {
-  "updated": "2026-03-12T06:54:46.848Z",
-  "alertes": [],
+  "updated": "2026-03-16T19:01:14.198Z",
+  "alertes": [
+    {
+      "id": "alert-2026-03-16-001",
+      "titre": "ETH : +10,77% en 24h, franchit 2 325 $, +14,68% sur 7j",
+      "texte": "Ethereum surperforme les grands actifs crypto avec une progression de 14,68% sur 7 jours, atteignant 2 325,22 $. Mouvement soutenu par la maturité accrue de la base d'investisseurs institutionnels et l'intérêt pour les actifs alternatifs en contexte de tensions géopolitiques.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-03-16T19:01:14.198Z",
+      "donnees": {
+        "symbole": "ETH",
+        "nom": "Ethereum",
+        "prix": 2325.22,
+        "variation_24h": 10.77
+      }
+    },
+    {
+      "id": "alert-2026-03-16-002",
+      "titre": "XRP : +8,74% en 24h, +12,56% sur 7j, atteint 1,54 $",
+      "texte": "XRP progresse de 12,56% sur 7 jours à 1,54 $, reflétant une dynamique haussière généralisée sur les altcoins. Mouvement cohérent avec la rotation vers les actifs crypto alternatifs.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-03-16T19:01:14.198Z",
+      "donnees": {
+        "symbole": "ETH",
+        "nom": "Ethereum",
+        "prix": 2325.22,
+        "variation_7d": 14.68
+      }
+    },
+    {
+      "id": "alert-2026-03-16-003",
+      "titre": "SOL : +7,26% en 24h, +10,95% sur 7j, 94,50 $",
+      "texte": "Solana progresse de 10,95% sur 7 jours à 94,50 $, participant à la hausse généralisée des altcoins. Dynamique soutenue par l'intérêt institutionnel croissant pour les écosystèmes blockchain alternatifs.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-03-16T19:01:14.198Z",
+      "donnees": {
+        "symbole": "XRP",
+        "nom": "XRP",
+        "prix": 1.54,
+        "variation_24h": 8.74
+      }
+    },
+    {
+      "id": "alert-2026-03-16-004",
+      "titre": "DOGE : +7,42% en 24h, +11,62% sur 7j, 0,102 $",
+      "texte": "Dogecoin progresse de 11,62% sur 7 jours à 0,102 $. Hausse cohérente avec la dynamique haussière généralisée du marché crypto et l'intérêt politique accru (Eric Trump confirmé comme orateur à Bitcoin 2026).",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-03-16T19:01:14.198Z",
+      "donnees": {
+        "symbole": "XRP",
+        "nom": "XRP",
+        "prix": 1.54,
+        "variation_7d": 12.56
+      }
+    },
+    {
+      "id": "alert-2026-03-16-005",
+      "titre": "ADA : +9,36% en 24h, +11,92% sur 7j, 0,287 $",
+      "texte": "Cardano progresse de 11,92% sur 7 jours à 0,287 $. Mouvement soutenu par la rotation vers les altcoins et l'intérêt pour les plateformes blockchain alternatives en contexte d'escalade géopolitique.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-03-16T19:01:14.198Z",
+      "donnees": {
+        "symbole": "SOL",
+        "nom": "Solana",
+        "prix": 94.5,
+        "variation_24h": 7.26
+      }
+    },
+    {
+      "id": "alert-2026-03-16-006",
+      "titre": "Pétrole (USO) : -3,77%, recul à 115,37 $",
+      "texte": "L'ETF pétrole USO recule de 3,77% à 115,37 $, contredisant les tensions géopolitiques majeures au Moyen-Orient. Mouvement suggère une réévaluation des risques d'approvisionnement ou une prise de bénéfices après les gains antérieurs.",
+      "categorie": "matieres_premieres",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-03-16T19:01:14.198Z",
+      "donnees": {
+        "symbole": "SOL",
+        "nom": "Solana",
+        "prix": 94.5,
+        "variation_7d": 10.95
+      }
+    },
+    {
+      "id": "alert-2026-03-16-007",
+      "titre": "Indice Fear & Greed : -15 pts sur 7j, actuellement 23 (extrême peur)",
+      "texte": "L'indice Fear & Greed chute de 15 points sur 7 jours pour atteindre 23, signalant un sentiment d'extrême peur sur les marchés. Niveau critique reflétant les craintes de stagflation, l'escalade géopolitique et les incertitudes macroéconomiques.",
+      "categorie": "macro",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-16T19:01:14.198Z",
+      "donnees": {
+        "symbole": "DOGE",
+        "nom": "Dogecoin",
+        "prix": 0.101809,
+        "variation_24h": 7.42
+      }
+    },
+    {
+      "id": "alert-2026-03-16-008",
+      "titre": "NVDA : +2,17%, 184,16 $ (résilience tech sélective)",
+      "texte": "Nvidia progresse de 2,17% à 184,16 $, démontrant une résilience relative du secteur tech malgré les tensions. Mouvement soutenu par l'anticipation de la keynote GTC 2026 de Jensen Huang et la demande continue en puces IA.",
+      "categorie": "ai_tech",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-03-16T19:01:14.198Z",
+      "donnees": {
+        "symbole": "DOGE",
+        "nom": "Dogecoin",
+        "prix": 0.101809,
+        "variation_7d": 11.62
+      }
+    },
+    {
+      "id": "alert-2026-03-16-009",
+      "titre": "Détroit d'Ormuz : fermeture partielle, tensions escaladent (16 mars)",
+      "texte": "Débris de missiles détectés près de sites religieux à Jérusalem ; invasion du Sud-Liban en cours ; Iran rejette le cessez-le-feu. Alliés occidentaux refusent l'intervention militaire demandée par Trump, créant une impasse géopolitique majeure.",
+      "categorie": "geopolitique",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-16T19:01:14.198Z",
+      "donnees": {
+        "symbole": "ADA",
+        "nom": "Cardano",
+        "prix": 0.287073,
+        "variation_24h": 9.36
+      }
+    },
+    {
+      "id": "alert-2026-03-16-010",
+      "titre": "Gaz naturel : divergence prix LNG Asie vs. Europe, chaos logistique",
+      "texte": "Prix du LNG asiatique surpassent les gains européens ; le plus grand producteur d'aluminium réduit sa production en raison du chaos logistique. Marché du gaz naturel fragmenté par les tensions du détroit d'Ormuz.",
+      "categorie": "matieres_premieres",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-03-16T19:01:14.198Z",
+      "donnees": {
+        "symbole": "ADA",
+        "nom": "Cardano",
+        "prix": 0.287073,
+        "variation_7d": 11.92
+      }
+    }
+  ],
   "stats": {
-    "total": 0,
-    "urgent": 0,
-    "attention": 0,
-    "info": 0
+    "total": 10,
+    "urgent": 2,
+    "attention": 7,
+    "info": 1
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
