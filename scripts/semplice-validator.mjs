@@ -841,6 +841,43 @@ function runStructuralChecks(data) {
     }
   }
 
+  // Verify 60/40 quanti/quali ratio enforcement
+  // Each dimension should have enough quantitative indicators (with rawValue)
+  // to justify the 60% weight on scoreQuanti. Minimum: 4 quanti indicators.
+  const EXPECTED_QUANTI_WEIGHT = 0.60;
+  const EXPECTED_QUALI_WEIGHT = 0.40;
+  const MIN_QUANTI_INDICATORS = 4;
+  const RATIO_TOLERANCE = 0.10; // 10% deviation allowed
+
+  for (const dk of DIMENSION_KEYS) {
+    const dim = data.dimensions?.[dk];
+    if (!dim?.indicators || dim.indicators.length === 0) continue;
+
+    const quantiCount = dim.indicators.filter(i => i.rawValue != null || (typeof i.value === 'string' && /[\d.]+/.test(i.value))).length;
+    const qualiCount = dim.indicators.length - quantiCount;
+    const total = dim.indicators.length;
+
+    if (total > 0) {
+      const actualQuantiRatio = quantiCount / total;
+      const deviation = Math.abs(actualQuantiRatio - EXPECTED_QUANTI_WEIGHT);
+
+      if (quantiCount < MIN_QUANTI_INDICATORS) {
+        warnings.push(
+          `${dk}: only ${quantiCount}/${total} quantitative indicators (min ${MIN_QUANTI_INDICATORS}). ` +
+          `60% quanti weight may be over-reliant on sparse data.`
+        );
+      }
+
+      if (deviation > RATIO_TOLERANCE && actualQuantiRatio < EXPECTED_QUANTI_WEIGHT) {
+        warnings.push(
+          `${dk}: quanti/quali ratio ${(actualQuantiRatio * 100).toFixed(0)}%/${((1 - actualQuantiRatio) * 100).toFixed(0)}% ` +
+          `deviates from target 60/40 by ${(deviation * 100).toFixed(0)}pp. ` +
+          `Consider adding quantitative indicators or adjusting weights.`
+        );
+      }
+    }
+  }
+
   return warnings;
 }
 
