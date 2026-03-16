@@ -51,7 +51,7 @@ var SEMPLICE_ZONES=[
 
     {id:'inde',name:'Inde',
      scores:[4.1,2.9,4.0,3.8,3.8,4.5,3.2,4.9],composite:3.9,level:'Modéré',
-     opp:null,oppComposite:null,oppLevel:null,
+     opp:[3.5,5.0,3.5,3.5,3.0,5.0,4.5,3.5],oppComposite:4.0,oppLevel:'Modéré',
      color:'#ea580c',fill:'rgba(234,88,12,0.10)',href:'#',
      center:[21,78],zoom:5,gdp:3730,region:'Asie'},
 
@@ -64,7 +64,7 @@ var SEMPLICE_ZONES=[
     {id:'tamil',name:'Tamil Nadu',
      scores:[2.8,2.1,3.2,2.9,3.8,4.0,3.2,4.0],composite:3.2,level:'Modéré',
      opp:[5.5,6.0,4.5,4.5,3.0,5.5,5.0,4.5],oppComposite:4.9,oppLevel:'Élevé',
-     color:'#006650',fill:'rgba(0,102,80,0.10)',href:'analyse-corridor-defense-france-inde-tamil-nadu.html',
+     color:'#006650',fill:'rgba(0,102,80,0.10)',href:'analyse-corridor-defense-france-inde.html',
      center:[11,79],zoom:7,gdp:310,region:'Asie'},
 
     {id:'arctique',name:'Arctique',
@@ -75,7 +75,7 @@ var SEMPLICE_ZONES=[
 
     {id:'ile-maurice',name:'Île Maurice',
      scores:[2.4,2.3,1.2,2.2,2.2,2.4,3.2,3.8],composite:2.5,level:'Modéré-Faible',
-     opp:null,oppComposite:null,oppLevel:null,
+     opp:[4.5,4.0,5.0,5.0,5.5,3.5,4.0,3.5],oppComposite:4.3,oppLevel:'Significatif',
      color:'#7c3aed',fill:'rgba(124,58,237,0.10)',href:'#',
      center:[-20.25,57.55],zoom:9,gdp:14.8,region:'Afrique'},
 
