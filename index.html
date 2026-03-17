@@ -74,7 +74,7 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 /* Label & description */
 .mega-label{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:600;color:#1A1F2E;letter-spacing:-.01em;transition:color .15s ease}
 .mega-item:hover .mega-label{color:#006650}
-.mega-desc{font-size:11.5px;color:#8A93A8;line-height:1.4;margin-top:2px;transition:color .15s ease}
+.mega-desc{font-size:11.5px;color:#6B7280;line-height:1.4;margin-top:2px;transition:color .15s ease}
 .mega-item:hover .mega-desc{color:#6B7280}
 
 /* Arrow indicator */
@@ -145,6 +145,7 @@ a,button{min-height:44px;min-width:44px}
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:#006650;color:#fff;font-family:Inter,sans-serif;font-size:14px;text-decoration:none;border-radius:0 0 4px 0;" onfocus="this.style.position='fixed';this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Aller au contenu principal</a>
 <div id="app"></div>
 <script src="image-catalog.js"></script>
 <script src="nav-config.js"></script>
@@ -279,7 +280,7 @@ return h('div',null,
     h('a',{href:'index.html',className:'flex items-center gap-2'},
      h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto'})
     ),
-    h('nav',{className:'hidden md:flex items-center gap-1'},
+    h('nav',{className:'hidden md:flex items-center gap-1','aria-label':'Navigation principale'},
      ...MEGA_NAV.map((cat,ci)=>{
       const isWide=cat.children.length>3
       return h('div',{key:ci,className:'mega-trigger'},
@@ -310,7 +311,7 @@ return h('div',null,
      ),
      h('a',{href:'#diagnostic',className:'ml-3 px-4 py-2 bg-[#006650] hover:bg-[#06402A] text-white font-semibold text-sm rounded-lg transition-colors'},'Réserver un diagnostic')
     ),
-    h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,onClick:()=>setOpen(!open),'aria-label':'Menu'},
+    h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,onClick:()=>setOpen(!open),'aria-label':'Menu','aria-expanded':open},
      h('span'),h('span'),h('span')
     )
    )
@@ -376,7 +377,7 @@ return h('section',{className:'relative pt-28 pb-16 md:pt-40 md:pb-24 lg:pt-48 l
      h('div',{className:'pt-5 lg:pt-6 px-1'},
       h('h2',{className:'text-xl lg:text-2xl font-bold text-[#1A1F2E] leading-snug group-hover:text-[#006650] transition-colors',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},featured.title),
       h('p',{className:'mt-3 text-sm text-[#5A6178] leading-relaxed line-clamp-2'},featured.summary),
-      h('div',{className:'mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-[#5A6178]/50'},
+      h('div',{className:'mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-[#6B7280]'},
        h('span',{className:'flex items-center gap-1.5'},
         h('svg',{width:12,height:12,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2},h('circle',{cx:12,cy:12,r:10}),h('path',{d:'M12 6v6l4 2'})),
         featured.readingTime+' min de lecture'
@@ -416,15 +417,15 @@ return h(FadeUp,null,h('section',{className:'py-16 md:py-20 bg-white'},
      h('div',{className:'p-6 md:p-8'},
       h('div',{className:'flex items-center gap-3 mb-4'},
        h('span',{className:`px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded ${a.cat==='Géopolitique'?'bg-[#2563eb]/10 text-[#2563eb]':'bg-[#8b5cf6]/10 text-[#8b5cf6]'}`},a.cat),
-       h('span',{className:'text-[11px] text-[#5A6178]/60'},a.date)
+       h('span',{className:'text-[11px] text-[#6B7280]'},a.date)
       ),
       h('h3',{className:'text-lg md:text-xl font-bold leading-snug mb-3 group-hover:text-[#006650] transition-colors text-[#1A1F2E]',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},a.title),
       h('p',{className:'text-sm leading-relaxed mb-5 text-[#5A6178]'},a.summary),
-      h('div',{className:'flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-[#5A6178]/50'},
+      h('div',{className:'flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-[#6B7280]'},
        h('span',null,a.readingTime+' min de lecture'),
        h('span',null,a.sources+' sources'),
        h('span',{className:'px-2 py-0.5 border rounded font-semibold border-[#006650]/20 text-[#006650]/60'},'Score : '+a.grade),
-       h('span',{className:'text-[#5A6178]/40'},'Par '+a.author)
+       h('span',{className:'text-[#6B7280]'},'Par '+a.author)
       )
      )
     )
@@ -495,7 +496,7 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
       ),
       h('h3',{className:'text-sm font-semibold leading-snug mb-2 line-clamp-2 text-[#1A1F2E]',style:{fontFamily:'Libre Baskerville, Georgia, serif',fontSize:'0.95rem'}},a.title),
       h('p',{className:'text-xs leading-relaxed line-clamp-2 text-[#5A6178]'},a.summary),
-      h('div',{className:'mt-3 text-[11px] font-medium text-[#5A6178]/60'},a.source)
+      h('div',{className:'mt-3 text-[11px] font-medium text-[#6B7280]'},a.source)
      )
     )
    })
@@ -527,7 +528,7 @@ plateforme:[
 }
 const sources=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC']
 
-return h('footer',{className:'border-t pt-16 pb-20 bg-[#F7F8FA] border-[#E2E5EB]'},
+return h('footer',{className:'border-t pt-16 pb-20 bg-[#F7F8FA] border-[#E2E5EB]',role:'contentinfo'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-10 mb-12'},
    // Col 1 — Logo + description
@@ -557,22 +558,14 @@ return h('footer',{className:'border-t pt-16 pb-20 bg-[#F7F8FA] border-[#E2E5EB]
    ),
    // Col 4 — Suivez-nous
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider mb-4 text-[#1A1F2E]'},'Suivez-nous'),
-    h('div',{className:'flex items-center gap-3 mb-4'},
-     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 rounded-lg hover:bg-[#006650] hover:text-white flex items-center justify-center transition-colors bg-[#E2E5EB] text-[#5A6178]'},
-      h('svg',{width:16,height:16,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'}))
-     ),
-     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 rounded-lg hover:bg-[#006650] hover:text-white flex items-center justify-center transition-colors bg-[#E2E5EB] text-[#5A6178]'},
-      h('svg',{width:14,height:14,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'}))
-     )
-    ),
-    h('a',{href:'#',className:'text-sm hover:text-[#006650] transition-colors text-[#5A6178]'},'Contact')
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider mb-4 text-[#1A1F2E]'},'Contact'),
+    h('a',{href:'premium.html#contact',className:'text-sm hover:text-[#006650] transition-colors text-[#5A6178]'},'Nous contacter')
    )
   ),
   // Bottom bar
   h('div',{className:'border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4 border-[#E2E5EB]'},
    h('span',{className:'text-sm text-[#5A6178]'},'© 2026 Inflexion — Intelligence financière & géopolitique'),
-   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider font-medium text-[#5A6178]/40'},
+   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider font-medium text-[#6B7280]'},
     ...sources.map(s=>h('span',{key:s},s))
    )
   )
@@ -695,12 +688,14 @@ return h(FadeUp,null,h('section',{className:'bg-[#006650] py-20'},
 function App(){
 return h('div',{className:'bg-white text-[#1A1F2E]'},
  h(Navigation),
- h(Hero),
- h(FeaturedAnalyses),
- h(CredibilityStrip),
- h(ArticlesGrid),
- h(ExpertiseNav),
- h(NewsletterCTA),
+ h('main',{id:'main-content'},
+  h(Hero),
+  h(FeaturedAnalyses),
+  h(CredibilityStrip),
+  h(ArticlesGrid),
+  h(ExpertiseNav),
+  h(NewsletterCTA)
+ ),
  h(Footer)
 )
 }

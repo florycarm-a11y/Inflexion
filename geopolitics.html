@@ -65,12 +65,12 @@
 
             <!-- Onglets internes Actualités / Macro par Pays -->
             <div class="page-tabs" id="geo-tabs" role="tablist" aria-label="Sous-rubriques Géopolitique">
-                <button class="page-tab active" role="tab" aria-selected="true" aria-controls="tab-geo-news" data-tab="geo-news">Actualités</button>
-                <button class="page-tab" role="tab" aria-selected="false" aria-controls="tab-geo-pays" data-tab="geo-pays">Macro par Pays</button>
+                <button class="page-tab active" id="btn-tab-geo-news" role="tab" aria-selected="true" aria-controls="tab-geo-news" data-tab="geo-news">Actualités</button>
+                <button class="page-tab" id="btn-tab-geo-pays" role="tab" aria-selected="false" aria-controls="tab-geo-pays" data-tab="geo-pays">Macro par Pays</button>
             </div>
 
             <!-- ═══ Tab: Actualités géopolitiques ═══ -->
-            <div class="tab-panel active" id="tab-geo-news" role="tabpanel">
+            <div class="tab-panel active" id="tab-geo-news" role="tabpanel" aria-labelledby="btn-tab-geo-news">
                 <!-- Analyse a la une -->
                 <section class="rubrique-featured-analysis">
                     <h2 class="section-title">Analyse à la une</h2>
@@ -137,7 +137,7 @@
             </div>
 
             <!-- ═══ Tab: Macro par Pays ═══ -->
-            <div class="tab-panel" id="tab-geo-pays" role="tabpanel" hidden>
+            <div class="tab-panel" id="tab-geo-pays" role="tabpanel" aria-labelledby="btn-tab-geo-pays" hidden>
                 <section class="country-selector" id="country-selector">
                     <div class="country-grid" role="list" aria-label="Sélection de pays">
                         <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des pays...</span></div>

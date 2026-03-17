@@ -65,13 +65,13 @@
 
             <!-- Onglets internes Marchés / ETF / Mat. Premières -->
             <div class="page-tabs" id="markets-tabs" role="tablist" aria-label="Sous-rubriques Marchés">
-                <button class="page-tab active" role="tab" aria-selected="true" aria-controls="tab-marches" data-tab="marches">Marchés</button>
-                <button class="page-tab" role="tab" aria-selected="false" aria-controls="tab-etf" data-tab="etf">ETF & Fonds</button>
-                <button class="page-tab" role="tab" aria-selected="false" aria-controls="tab-commodities" data-tab="commodities">Matières Premières</button>
+                <button class="page-tab active" id="btn-tab-marches" role="tab" aria-selected="true" aria-controls="tab-marches" data-tab="marches">Marchés</button>
+                <button class="page-tab" id="btn-tab-etf" role="tab" aria-selected="false" aria-controls="tab-etf" data-tab="etf">ETF & Fonds</button>
+                <button class="page-tab" id="btn-tab-commodities" role="tab" aria-selected="false" aria-controls="tab-commodities" data-tab="commodities">Matières Premières</button>
             </div>
 
             <!-- ═══ Tab: Marchés ═══ -->
-            <div class="tab-panel active" id="tab-marches" role="tabpanel">
+            <div class="tab-panel active" id="tab-marches" role="tabpanel" aria-labelledby="btn-tab-marches">
                 <!-- Analyse a la une -->
                 <section class="rubrique-featured-analysis">
                     <h2 class="section-title">Analyse à la une</h2>
@@ -241,7 +241,7 @@
             </div>
 
             <!-- ═══ Tab: ETF & Fonds ═══ -->
-            <div class="tab-panel" id="tab-etf" role="tabpanel" hidden>
+            <div class="tab-panel" id="tab-etf" role="tabpanel" aria-labelledby="btn-tab-etf" hidden>
                 <!-- Introduction ETF -->
                 <div class="etf-intro">
                     <p><strong>Les ETF (Exchange Traded Funds)</strong> sont des fonds indiciels cotés en bourse qui répliquent la performance d'un indice, d'un secteur ou d'une classe d'actifs. Ils offrent diversification instantanée, frais réduits et liquidité quotidienne. <a href="analysis.html">En savoir plus &rarr;</a></p>
@@ -292,7 +292,7 @@
             </div>
 
             <!-- ═══ Tab: Matières Premières ═══ -->
-            <div class="tab-panel" id="tab-commodities" role="tabpanel" hidden>
+            <div class="tab-panel" id="tab-commodities" role="tabpanel" aria-labelledby="btn-tab-commodities" hidden>
                 <!-- Analyse a la une commodities -->
                 <section class="rubrique-featured-analysis">
                     <h2 class="section-title">Analyse à la une</h2>
@@ -318,7 +318,7 @@
                         <span class="section-subtitle">Performance comparée des valeurs refuges</span>
                     </div>
                     <div class="chart-container">
-                        <canvas id="divergenceChart"></canvas>
+                        <canvas id="divergenceChart" role="img" aria-label="Graphique de divergence Or vs Bitcoin depuis janvier 2026"></canvas>
                     </div>
                     <div class="chart-legend">
                         <div class="legend-item legend-gold">

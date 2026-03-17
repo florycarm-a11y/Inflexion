@@ -36,7 +36,7 @@ css.textContent=
 '.mega-item:hover .mega-icon{color:#fff;background:linear-gradient(135deg,#006650 0%,#06402A 100%);border-color:#006650;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,80,.18)}\n'+
 '.mega-label{font-size:13.5px;font-weight:600;color:#1A1F2E;transition:color .2s}\n'+
 '.mega-item:hover .mega-label{color:#006650}\n'+
-'.mega-desc{font-size:11.5px;color:#8A93A8;margin-top:2px;transition:color .2s}\n'+
+'.mega-desc{font-size:11.5px;color:#6B7280;margin-top:2px;transition:color .2s}\n'+
 '.mega-item:hover .mega-desc{color:#6B7280}\n'+
 '.mega-arrow{position:absolute;right:12px;top:50%;transform:translateY(-50%) translateX(-4px);opacity:0;color:#006650;font-size:13px;font-weight:700;transition:all .2s cubic-bezier(.4,0,.2,1)}\n'+
 '.mega-item:hover .mega-arrow{opacity:1;transform:translateY(-50%) translateX(0)}\n'+
@@ -117,7 +117,7 @@ header.innerHTML=
 '<nav style="display:none" class="md-show" id="desktop-nav-items">'+megaHTML+
 '<a href="premium.html" class="ns-btn-cta" style="margin-left:0.5rem;padding:0.5rem 1rem;background:#006650;color:#fff;font-weight:600;font-size:0.875rem;border-radius:0.5rem;transition:background .2s;text-decoration:none">R\u00e9server un diagnostic</a>'+
 '</nav>'+
-'<button id="mobile-menu-btn" style="display:none;padding:0.5rem" class="md-hide" aria-label="Menu">'+
+'<button id="mobile-menu-btn" style="display:none;padding:0.5rem" class="md-hide" aria-label="Menu" aria-expanded="false">'+
 '<div id="hamburger-wrapper" style="display:flex;flex-direction:column;gap:6px"><span class="hamburger-bar" style="display:block;width:24px;height:2px;background:#fff;transition:all .3s;transform-origin:center"></span>'+
 '<span class="hamburger-bar" style="display:block;width:24px;height:2px;background:#fff;transition:all .3s"></span>'+
 '<span class="hamburger-bar" style="display:block;width:24px;height:2px;background:#fff;transition:all .3s;transform-origin:center"></span></div></button>'+
@@ -291,6 +291,8 @@ var mobileOpen=false;
 var hamburgerWrapper=document.getElementById('hamburger-wrapper');
 function toggleMobile(open){
 mobileOpen=open;
+var menuBtn=document.getElementById('mobile-menu-btn');
+if(menuBtn)menuBtn.setAttribute('aria-expanded',open?'true':'false');
 if(open){
 overlay.style.opacity='1';overlay.style.visibility='visible';
 document.body.style.overflow='hidden';

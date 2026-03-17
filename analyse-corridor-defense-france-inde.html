@@ -141,6 +141,7 @@ button,a[href]:not(.prose a){min-height:44px;min-width:44px}
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:#006650;color:#fff;font-family:Inter,sans-serif;font-size:14px;text-decoration:none;border-radius:0 0 4px 0;" onfocus="this.style.position='fixed';this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Aller au contenu principal</a>
 <div id="app"></div>
 <script src="nav-config.js"></script>
 <script type="module">
@@ -647,8 +648,10 @@ return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-12 sm:pt
 function App(){
 return h('div',null,
  h(Navigation),
- h(ArticleHero),
- h(ArticleContent),
+ h('main',{id:'main-content'},
+  h(ArticleHero),
+  h(ArticleContent)
+ ),
  h(Footer)
 )
 }
