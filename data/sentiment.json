@@ -1,65 +1,65 @@
 {
-  "updated": "2026-03-16T19:01:14.198Z",
-  "date": "2026-03-16",
+  "updated": "2026-03-19T06:59:33.990Z",
+  "date": "2026-03-19",
   "global": {
-    "score": -0.28,
+    "score": -0.23,
     "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.28), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est baissier (-0.23), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
       "score": -0.75,
       "confidence": 0.92,
       "tendance": "baissier",
-      "resume": "Escalade militaire majeure au Moyen-Orient avec intensification des opérations israéliennes au Liban, frappes iraniennes, et tensions croissantes autour du détroit d'Ormuz. Les alliés occidentaux rejettent les demandes de Trump pour une intervention militaire coordonnée.",
+      "resume": "Escalade majeure au Moyen-Orient avec attaques iraniennes sur infrastructures gazières qataries, menaces américaines sur South Pars, et crise énergétique européenne. Tensions géopolitiques multiples (Ukraine, Taiwan, RDC) amplifient l'incertitude macroéconomique.",
       "signaux_cles": [
-        "Débris de missiles près de la mosquée Al-Aqsa et du Saint-Sépulcre (16 mars 2026)",
-        "Hôpitaux ciblés au Liban ; invasion du Sud-Liban en cours",
-        "Refus des principaux alliés de l'OTAN de participer à la sécurisation du détroit d'Ormuz"
+        "Iran inflige des dégâts étendus au plus grand site GNL mondial au Qatar",
+        "Hausse de 70% des prix du gaz depuis le début de la guerre en Iran",
+        "Trump menace de détruire le gisement de South Pars en cas de nouvelles attaques"
       ]
     },
     "marches": {
-      "score": -0.42,
-      "confidence": 0.78,
-      "tendance": "mixte",
-      "resume": "Marchés divisés : craintes de stagflation liée à la guerre iranienne et volatilité tech, contrebalancées par des signaux de maturité du marché et intérêt pour les actifs défensifs. Pressions inflationnistes sur les chaînes d'approvisionnement.",
+      "score": -0.52,
+      "confidence": 0.85,
+      "tendance": "baissier",
+      "resume": "Tensions inflationnistes liées à la guerre et aux tarifs douaniers (UK à 50% sur l'acier). Choc énergétique impacte les chaînes d'approvisionnement technologiques asiatiques. Quelques signaux positifs (Transdev +bénéfices) noyés dans contexte baissier global.",
       "signaux_cles": [
-        "Probabilités de récession déjà à des niveaux 'inconfortablement élevés' avant la guerre",
-        "Prix du pétrole en hausse ; fournisseurs renégocient à la hausse avec la grande distribution",
-        "Intérêt accru pour le PEA et les placements défensifs chez les épargnants français"
+        "Hausse des droits de douane britanniques à 50% sur l'acier, imitant Trump et Bruxelles",
+        "Stocks technologiques asiatiques chutent sur craintes de perturbation chaîne d'approvisionnement chips",
+        "Risque d'inflation accru par la guerre et hausse des prix du carburant"
       ]
     },
     "crypto": {
-      "score": 0.68,
-      "confidence": 0.85,
-      "tendance": "haussier",
-      "resume": "Dynamique haussière soutenue avec Bitcoin approchant 75 000 $, maturité accrue de la base d'investisseurs, et intérêt institutionnel croissant. Ethereum surperforme ; débats sur les bulles et fraudes parallèles.",
-      "signaux_cles": [
-        "Bitcoin en progression vers 75 000 $ ; base d'investisseurs maturée (moins dépendante du retail)",
-        "Ethereum +14,68% sur 7 jours ; Circle +100% en un mois",
-        "Abra vise une introduction Nasdaq à 750 millions $ ; Ironlight lève 21 millions $ pour titrisations"
-      ]
-    },
-    "matieres_premieres": {
       "score": -0.58,
       "confidence": 0.88,
       "tendance": "baissier",
-      "resume": "Perturbations majeures du marché du gaz naturel et du pétrole dues à la crise du détroit d'Ormuz. Prix du LNG asiatique surpassent les gains européens. Réductions de production et chaos logistique.",
+      "resume": "Marché crypto en contraction avec réductions d'effectifs massives (Algorand -25%, Kraken reporte IPO). Malgré 74% des institutionnels anticipant hausse et inflows ETF Bitcoin ($1.1Mrd), les ventes de baleines et incertitude macro dominent.",
       "signaux_cles": [
-        "Prix du gaz naturel en divergence selon les conditions météorologiques et tensions géopolitiques",
-        "Prix du LNG asiatique surpassent les gains européens ; plus grand producteur d'aluminium réduit la production",
-        "Pétrole : Iran rejette le cessez-le-feu, maintient le détroit ouvert aux non-combattants"
+        "Algorand Foundation réduit 25% de ses effectifs face à incertitude macro et baisse marché crypto",
+        "Kraken gèle plans IPO alors que marché listings crypto 2026 perd dynamique",
+        "Bitcoin OG vend $72M en BTC, baleines augmentent dépôts en exchange"
+      ]
+    },
+    "matieres_premieres": {
+      "score": 0.68,
+      "confidence": 0.89,
+      "tendance": "haussier",
+      "resume": "Choc d'offre majeur au Moyen-Orient propulse pétrole à $112/baril avec scénario $200 envisagé. Gaz naturel et LNG volatiles. Charbon asiatique en hausse face à pénurie gaz. Taux VLCC sous pression mais dynamique globale haussière.",
+      "signaux_cles": [
+        "Pétrole atteint $112/baril sur escalade Iran-Qatar, $200 n'est plus exclu",
+        "Asie augmente consommation charbon face à pénurie gaz du Moyen-Orient",
+        "Futures gaz naturel en hausse sur risques LNG mondiaux liés aux frappes"
       ]
     },
     "ai_tech": {
-      "score": -0.28,
-      "confidence": 0.72,
+      "score": 0.12,
+      "confidence": 0.62,
       "tendance": "neutre",
-      "resume": "Litiges majeurs autour de la propriété intellectuelle (Encyclopedia Britannica, dictionnaire contre OpenAI), contrebalancés par avancées technologiques (Frore unicorn, Nvidia GTC 2026). Débats sur les gains de productivité réels vs. risques cybercriminels.",
+      "resume": "Innovations technologiques continues (Mamba-3, Claude d'Anthropic, outils Google) mais préoccupations croissantes sur sécurité IA autonome et risques (agents rogue Meta, vulnérabilités LLM). Contrats défense importants (Rocket Lab $190M, Lockheed) soutiennent secteur.",
       "signaux_cles": [
-        "Encyclopedia Britannica et dictionnaire poursuivent OpenAI pour entraînement non autorisé sur ~100 000 articles",
-        "Frore devient licorne à 1,64 milliard $ ; Fuse lève 25 millions $ pour systèmes de crédit",
-        "GPT-4.5 trompe 73% des utilisateurs en simulant une intelligence inférieure"
+        "Anthropic Claude progresse vers leadership marché IA",
+        "Rocket Lab remporte contrat Pentagon $190M pour tests hypersoniques",
+        "Préoccupations croissantes sur vulnérabilités agents IA autonomes et sécurité"
       ]
     }
   },
@@ -252,6 +252,15 @@
       "crypto": 0.68,
       "matieres_premieres": -0.58,
       "ai_tech": -0.28
+    },
+    {
+      "date": "2026-03-19",
+      "global": -0.23,
+      "geopolitique": -0.75,
+      "marches": -0.52,
+      "crypto": -0.58,
+      "matieres_premieres": 0.68,
+      "ai_tech": 0.12
     }
   ],
   "model": "claude-haiku-4-5-20251001",
