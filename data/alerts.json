@@ -1,87 +1,72 @@
 {
-  "updated": "2026-03-19T06:59:33.990Z",
+  "updated": "2026-03-19T18:57:47.534Z",
   "alertes": [
     {
       "id": "alert-2026-03-19-001",
-      "titre": "Pétrole (USO) : +2,38% à $121,67, escalade Moyen-Orient soutient",
-      "texte": "Pétrole brut atteint $112/baril suite aux attaques iraniennes sur infrastructures gazières qataries. Scénario $200 envisagé par analystes face à risque d'effondrement offre Golfe. Contrats futurs gaz naturel en hausse sur perturbations LNG mondiales.",
+      "titre": "Or (GLD) : -4,90% à 422,94 $, fuite vers actifs refuge géopolitiques",
+      "texte": "Recul de l'or malgré escalade Iran-Israël-États-Unis, signalant une préférence des investisseurs pour les obligations et devises refuge plutôt que les métaux précieux. Pression vendeuse technique sur les ETF aurifères.",
       "categorie": "matieres_premieres",
       "severite": "attention",
-      "impact": "haussier",
-      "horodatage": "2026-03-19T06:59:33.990Z",
+      "impact": "baissier",
+      "horodatage": "2026-03-19T18:57:47.534Z",
       "donnees": {
-        "symbole": "ETH",
-        "nom": "Ethereum",
-        "prix": 2181.54,
-        "variation_24h": -6.24
+        "symbole": "GLD",
+        "nom": "Or (ETF)",
+        "prix": 422.94,
+        "variation": -4.9
       }
     },
     {
       "id": "alert-2026-03-19-002",
-      "titre": "Ethereum (ETH) : -6,24% à $2 181,54, correction crypto s'accélère",
-      "texte": "Ethereum recule de 6,24% en 24h, suivi par Cardano (-6,18%) et Dogecoin (-5,86%). Ventes de baleines ($72M BTC) et réductions d'effectifs secteur (Algorand -25%) pèsent malgré inflows ETF Bitcoin $1,1Mrd et 74% institutionnels haussiers.",
-      "categorie": "crypto",
+      "titre": "Tesla (TSLA) : -3,41% à 379,37 $, correction secteur technologique",
+      "texte": "Baisse alignée sur volatilité macro (tensions géopolitiques, incertitudes Fed) et révision des perspectives de croissance. Pression sur les valeurs de croissance dans contexte d'inflation anticipée par la BCE.",
+      "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-19T06:59:33.990Z",
+      "horodatage": "2026-03-19T18:57:47.534Z",
       "donnees": {
-        "symbole": "DOGE",
-        "nom": "Dogecoin",
-        "prix": 0.094637,
-        "variation_24h": -5.86
+        "symbole": "TSLA",
+        "nom": "Tesla",
+        "prix": 379.37,
+        "variation": -3.41
       }
     },
     {
       "id": "alert-2026-03-19-003",
-      "titre": "Or (GLD) : -3,16% à $444,74, refuge dépassé par volatilité géopolitique",
-      "texte": "Or recule de 3,16% malgré achat retail multiplié par 3 en 6 mois. Volatilité géopolitique et hausse pétrole détournent flux vers énergie. Incertitude macro persiste mais refuge traditionnel perd attrait face à choc énergétique immédiat.",
-      "categorie": "matieres_premieres",
-      "severite": "info",
-      "impact": "baissier",
-      "horodatage": "2026-03-19T06:59:33.990Z",
-      "donnees": {
-        "symbole": "ADA",
-        "nom": "Cardano",
-        "prix": 0.271662,
-        "variation_24h": -6.18
-      }
-    },
-    {
-      "id": "alert-2026-03-19-004",
-      "titre": "Stocks technologiques Asie : recul sur craintes chaîne approvisionnement chips",
-      "texte": "Indices tech asiatiques chutent suite à escalade Moyen-Orient menaçant approvisionnement énergétique critique pour fabrication semiconducteurs. Perturbations LNG et gaz naturel risquent ralentir production puces face à demande IA croissante.",
-      "categorie": "ai_tech",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-03-19T06:59:33.990Z",
-      "donnees": {
-        "symbole": "GLD",
-        "nom": "Or (ETF)",
-        "prix": 444.74,
-        "variation": -3.16
-      }
-    },
-    {
-      "id": "alert-2026-03-19-005",
-      "titre": "Gaz naturel : hausse sur risques LNG mondiaux, crise énergétique européenne",
-      "texte": "Futures gaz naturel en hausse suite à dégâts étendus sur plus grand site GNL mondial (Qatar). Prix gaz européen +70% depuis début guerre Iran. Réunion BCE et dirigeants européens à Bruxelles face à risque crise énergétique majeure.",
+      "titre": "Crise LNG Qatar : impact pluriannuel, manne potentielle pour exportateurs US",
+      "texte": "Arrêt de production au Qatar transformé en perturbation structurelle pluriannuelle. Exportateurs US LNG (Cheniere, Sempra) positionnés pour gains de marges significatifs sur contrats spot et long terme.",
       "categorie": "matieres_premieres",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-03-19T06:59:33.990Z",
-      "donnees": {
-        "symbole": "USO",
-        "nom": "Pétrole (ETF)",
-        "prix": 121.67,
-        "variation": 2.38
-      }
+      "horodatage": "2026-03-19T18:57:47.534Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-03-19-004",
+      "titre": "Escalade Iran-Israël : demande budgétaire Pentagone 200 Md$, volatilité pétrolière",
+      "texte": "Pentagone demande 200 milliards $ supplémentaires pour financer opérations en Iran. Attaques de missiles confirmées sur infrastructure pétrolière israélienne (Haïfa). Risque de perturbation durable des flux énergétiques du Golfe.",
+      "categorie": "geopolitique",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-19T18:57:47.534Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-03-19-005",
+      "titre": "BCE anticipe bond d'inflation et creux de croissance sur choc Moyen-Orient",
+      "texte": "Gouverneur BCE Stournaras signale que tensions géopolitiques entraîneront hausse d'inflation et contraction de croissance. Scénario stagflationniste pénalisant actions et obligations nominales en zone euro.",
+      "categorie": "macro",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-19T18:57:47.534Z",
+      "donnees": {}
     }
   ],
   "stats": {
     "total": 5,
-    "urgent": 1,
-    "attention": 3,
-    "info": 1
+    "urgent": 3,
+    "attention": 2,
+    "info": 0
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
