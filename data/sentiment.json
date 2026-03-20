@@ -1,65 +1,65 @@
 {
-  "updated": "2026-03-19T18:57:47.534Z",
-  "date": "2026-03-19",
+  "updated": "2026-03-20T18:47:17.704Z",
+  "date": "2026-03-20",
   "global": {
-    "score": -0.29,
-    "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.29), dominé par la rubrique geopolitique (baissier)."
+    "score": -0.15,
+    "tendance": "mixte",
+    "resume": "Le sentiment global est mixte (-0.15), dominé par la rubrique matieres_premieres (haussier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.75,
-      "confidence": 0.92,
-      "tendance": "baissier",
-      "resume": "Escalade militaire Iran-Israël-États-Unis avec demandes budgétaires massives (200 Md$), attaques de missiles confirmées et perturbations logistiques majeures. Tensions géopolitiques structurelles affectant l'énergie et les chaînes d'approvisionnement.",
-      "signaux_cles": [
-        "Pentagone demande 200 milliards $ supplémentaires pour financer la guerre en Iran",
-        "Israël confirme frappe du port pétrolier de Haïfa suite aux attaques iraniennes",
-        "Perturbations des corridors aériens du Golfe et évacuation d'équipages maritimes ordonnée par l'OMI"
-      ]
-    },
-    "marches": {
-      "score": -0.35,
-      "confidence": 0.68,
-      "tendance": "mixte",
-      "resume": "Signaux contradictoires : distributions ETF régulières et approbation Wegovy contrebalancées par tensions géopolitiques, volatilité Powell-Fed et avertissements BCE sur inflation/croissance. Mohawk Industries atteint son plus bas 52 semaines.",
-      "signaux_cles": [
-        "BCE anticipe un bond de l'inflation et un creux de croissance suite au choc du Moyen-Orient",
-        "Mohawk Industries à son plus bas 52 semaines (96,15 $)",
-        "Wegovy haute dose approuvée avec perte de poids de 21% en essai clinique"
-      ]
-    },
-    "crypto": {
-      "score": 0.15,
-      "confidence": 0.62,
-      "tendance": "neutre",
-      "resume": "Dynamique institutionnelle positive (BlackRock, Morgan Stanley, Amundi) contrebalancée par correction Bitcoin (-10%) et signaux techniques faibles. Adoption d'infrastructures RWA et tokenisation progresse mais volatilité persiste.",
-      "signaux_cles": [
-        "BlackRock Staked Ethereum Fund dépasse 250 M$ en première semaine",
-        "Bitcoin chute 10% et menace un retest de support technique non fiable",
-        "Morgan Stanley Bitcoin Trust commence cotation sur NYSE Arca (MSBT)"
-      ]
-    },
-    "matieres_premieres": {
       "score": -0.65,
       "confidence": 0.85,
       "tendance": "baissier",
-      "resume": "Crise multi-énergies : perte de capacité LNG Qatar (impact pluriannuel), tensions Hormuz menaçant le gaz naturel, tanker russe en dérive en Méditerranée. Perturbations d'approvisionnement structurelles et risques environnementaux majeurs.",
+      "resume": "Escalade militaire Iran-États-Unis avec frappes aériennes, attaques de drones et risques d'interruption des flux énergétiques mondiaux. Tensions géopolitiques croissantes affectant les marchés énergétiques et les chaînes d'approvisionnement.",
       "signaux_cles": [
-        "Crise LNG Qatar transformée en problème pluriannuel avec potentiel de manne pour exportateurs US",
-        "Tanker gazier russe à la dérive en Méditerranée, risque d'explosion environnementale",
-        "Tensions Hormuz soutiennent les prix du gaz naturel malgré injections de stockage"
+        "Royaume-Uni autorise les bases britanniques pour frappes contre sites de missiles iraniens",
+        "Explosion à Jérusalem suite à alerte missile iranienne ; trois drones supplémentaires abattus par l'Arabie Saoudite",
+        "Risque de choc gazier au Moyen-Orient ; projet d'expansion North Field au Qatar menacé par attaques iraniennes"
+      ]
+    },
+    "marches": {
+      "score": -0.58,
+      "confidence": 0.82,
+      "tendance": "baissier",
+      "resume": "Signaux baissiers dominants : Russell 2000 en correction, rendements obligataires britanniques à 17 ans, avertissements sur crise économique 2008+. Secteurs défensifs et technologiques sous pression.",
+      "signaux_cles": [
+        "Russell 2000 premier indice majeur américain en correction ; Nvidia affiche signal technique baissier",
+        "Rendements obligataires UK à plus hauts 17 ans ; Bundesbank demande action ECB sur inflation énergétique",
+        "Économiste américain prédit crise plus grave que 2008 ; 30% des Américains ignorent date retraite"
+      ]
+    },
+    "crypto": {
+      "score": -0.42,
+      "confidence": 0.68,
+      "tendance": "mixte",
+      "resume": "Signaux contradictoires : levées de fonds massives (Kalshi $1B, Bitstack €16M) contrastent avec avertissements baissiers Bitcoin ($60K clé), problèmes réglementaires (Gemini, Coinbase) et déclarations pessimistes sur gaming crypto.",
+      "signaux_cles": [
+        "Kalshi lève $1B à $22B de valorisation mais fait face à ordonnance restrictive au Nevada",
+        "Indicateur RSI Bitcoin suggère potentiel bottom ; analyste signale risque baissier sous $60K",
+        "Fondation Solana déclare crypto gaming mort ; Coinbase menacée par action $1,35Md sur rendements stablecoins"
+      ]
+    },
+    "matieres_premieres": {
+      "score": 0.72,
+      "confidence": 0.88,
+      "tendance": "haussier",
+      "resume": "Signaux fortement haussiers : tensions Iran-Détroit d'Ormuz, réduction capacités de secours pétrolier, contrats LNG menacés. Pétrole soutenu par géopolitique ; gaz naturel volatil sur risques d'approvisionnement.",
+      "signaux_cles": [
+        "Pétrole +4,46% ; États-Unis envisage lever sanctions sur tankers iraniens pour sécuriser approvisionnement Asie",
+        "Capacités de secours pétrolier épuisées (Norvège) ; Trump envisage saisir île Kharg pour rouvrir Détroit d'Ormuz",
+        "Expansion North Field Qatar retardée par attaques iraniennes ; gaz naturel +15% prévu en mai 2026"
       ]
     },
     "ai_tech": {
-      "score": 0.42,
-      "confidence": 0.71,
-      "tendance": "haussier",
-      "resume": "Avancées technologiques soutenues (géothermie, centres de données orbitaux, modèles IA compétitifs) mais risques de sécurité émergents (incident Meta, cyberattaque Lazarus). Investissements stratégiques en infrastructure énergétique pour l'IA.",
+      "score": 0.15,
+      "confidence": 0.62,
+      "tendance": "neutre",
+      "resume": "Signaux mitigés : avancées technologiques (Claude agents, Firefly 30+ modèles, Nasdaq onchain) contrebalancées par risques réglementaires (Trump vs régulation IA états) et incidents opérationnels (suppression base données par IA).",
       "signaux_cles": [
-        "Fervo franchit le 'valley of death' en géothermie pour alimenter les data centers",
-        "Kratos remporte contrat Space Force de 446 M$ pour systèmes de suivi de missiles",
-        "Bitrefill victime d'attaque du groupe Lazarus nord-coréen ; Meta renforce les systèmes d'application IA"
+        "Trump cherche démanteler régulation IA états ; Maison-Blanche propose cadre IA fédéral unifié",
+        "Anthropic Claude devient agent IA permanent ; Adobe Firefly intègre 30+ modèles avec entraînement custom",
+        "Incident critique : IA supprime base production complète ; NHTSA élève enquête Tesla FSD à analyse ingénierie"
       ]
     }
   },
@@ -261,6 +261,15 @@
       "crypto": 0.15,
       "matieres_premieres": -0.65,
       "ai_tech": 0.42
+    },
+    {
+      "date": "2026-03-20",
+      "global": -0.15,
+      "geopolitique": -0.65,
+      "marches": -0.58,
+      "crypto": -0.42,
+      "matieres_premieres": 0.72,
+      "ai_tech": 0.15
     }
   ],
   "model": "claude-haiku-4-5-20251001",

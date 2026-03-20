@@ -1,72 +1,131 @@
 {
-  "updated": "2026-03-19T18:57:47.534Z",
+  "updated": "2026-03-20T18:47:17.704Z",
   "alertes": [
     {
-      "id": "alert-2026-03-19-001",
-      "titre": "Or (GLD) : -4,90% à 422,94 $, fuite vers actifs refuge géopolitiques",
-      "texte": "Recul de l'or malgré escalade Iran-Israël-États-Unis, signalant une préférence des investisseurs pour les obligations et devises refuge plutôt que les métaux précieux. Pression vendeuse technique sur les ETF aurifères.",
+      "id": "alert-2026-03-20-001",
+      "titre": "Pétrole (USO) : +4,46% à $122,60 ; tensions Iran-Détroit d'Ormuz",
+      "texte": "Pétrole en hausse significative suite à escalade géopolitique Iran-États-Unis et risques d'interruption du Détroit d'Ormuz. Capacités de secours pétrolier épuisées (Norvège) ; Trump envisage saisir île Kharg pour rouvrir le détroit. Expansion LNG Qatar menacée par attaques iraniennes.",
       "categorie": "matieres_premieres",
       "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-03-19T18:57:47.534Z",
+      "impact": "haussier",
+      "horodatage": "2026-03-20T18:47:17.704Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
-        "prix": 422.94,
-        "variation": -4.9
+        "prix": 417.06,
+        "variation": -2.19
       }
     },
     {
-      "id": "alert-2026-03-19-002",
-      "titre": "Tesla (TSLA) : -3,41% à 379,37 $, correction secteur technologique",
-      "texte": "Baisse alignée sur volatilité macro (tensions géopolitiques, incertitudes Fed) et révision des perspectives de croissance. Pression sur les valeurs de croissance dans contexte d'inflation anticipée par la BCE.",
+      "id": "alert-2026-03-20-002",
+      "titre": "Or (GLD) : -2,19% à $417,06 ; fuite vers actifs risqués",
+      "texte": "Or recule malgré tensions géopolitiques, reflétant recherche de rendement et pression sur actifs défensifs. Fear & Greed Index à 11 (Extreme Fear) contredit mouvement ; possible repositionnement vers pétrole et matières premières énergétiques.",
+      "categorie": "matieres_premieres",
+      "severite": "info",
+      "impact": "baissier",
+      "horodatage": "2026-03-20T18:47:17.704Z",
+      "donnees": {
+        "symbole": "USO",
+        "nom": "Pétrole (ETF)",
+        "prix": 122.6,
+        "variation": 4.46
+      }
+    },
+    {
+      "id": "alert-2026-03-20-003",
+      "titre": "Nvidia (NVDA) : -2,64% à $173,84 ; signal technique baissier détecté",
+      "texte": "Nvidia affiche signal technique baissier sur graphique boursier ; perte de brillance du leader IA. Contexte : Russell 2000 premier indice majeur en correction ; pression générale sur technologie haute valorisation.",
       "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-19T18:57:47.534Z",
+      "horodatage": "2026-03-20T18:47:17.704Z",
       "donnees": {
-        "symbole": "TSLA",
-        "nom": "Tesla",
-        "prix": 379.37,
-        "variation": -3.41
+        "symbole": "NVDA",
+        "nom": "Nvidia",
+        "prix": 173.84,
+        "variation": -2.64
       }
     },
     {
-      "id": "alert-2026-03-19-003",
-      "titre": "Crise LNG Qatar : impact pluriannuel, manne potentielle pour exportateurs US",
-      "texte": "Arrêt de production au Qatar transformé en perturbation structurelle pluriannuelle. Exportateurs US LNG (Cheniere, Sempra) positionnés pour gains de marges significatifs sur contrats spot et long terme.",
+      "id": "alert-2026-03-20-004",
+      "titre": "Alphabet (GOOGL) : -2,59% à $299,17 ; secteur tech sous pression",
+      "texte": "Alphabet recule dans contexte de correction technologique et avertissements macro. Pression réglementaire (Trump vs régulation IA) et concurrence intensifiée (Claude agents, Firefly) pèsent sur valorisation.",
+      "categorie": "marches",
+      "severite": "info",
+      "impact": "baissier",
+      "horodatage": "2026-03-20T18:47:17.704Z",
+      "donnees": {
+        "symbole": "GOOGL",
+        "nom": "Alphabet",
+        "prix": 299.17,
+        "variation": -2.59
+      }
+    },
+    {
+      "id": "alert-2026-03-20-005",
+      "titre": "Tesla (TSLA) : -3,08% à $368,58 ; enquête FSD escalade",
+      "texte": "Tesla recule ; NHTSA élève enquête Full Self-Driving à analyse ingénierie. Pression supplémentaire sur secteur automobile face à hausse énergétique et incertitudes réglementaires IA.",
+      "categorie": "ai_tech",
+      "severite": "info",
+      "impact": "baissier",
+      "horodatage": "2026-03-20T18:47:17.704Z",
+      "donnees": {
+        "symbole": "TSLA",
+        "nom": "Tesla",
+        "prix": 368.58,
+        "variation": -3.08
+      }
+    },
+    {
+      "id": "alert-2026-03-20-006",
+      "titre": "Russell 2000 : entrée en correction ; premier indice majeur US affecté",
+      "texte": "Russell 2000 devient premier indice majeur américain à entrer en correction. Signal d'aversion au risque généralisée ; économiste américain prédit crise plus grave que 2008. Rendements obligataires UK à 17 ans.",
+      "categorie": "marches",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-20T18:47:17.704Z",
+      "donnees": {
+        "score": 11,
+        "label": "Extreme Fear",
+        "variation_7j": -4
+      }
+    },
+    {
+      "id": "alert-2026-03-20-007",
+      "titre": "Fear & Greed Index : 11 (Extreme Fear) ; panique extrême détectée",
+      "texte": "Indice Fear & Greed à 11 signale panique extrême sur marchés. Contexte : escalade géopolitique Iran, correction technologique, avertissements macro. Liquidations possibles sur actifs risqués.",
+      "categorie": "marches",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-20T18:47:17.704Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-03-20-008",
+      "titre": "Kalshi : $1B levés à $22Md mais ordonnance restrictive Nevada",
+      "texte": "Kalshi lève $1B doublant valorisation à $22Md, mais fait face ordonnance restrictive temporaire au Nevada. Incertitude réglementaire sur marchés prédictifs crypto ; Gemini poursuivi en action collective.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "neutre",
+      "horodatage": "2026-03-20T18:47:17.704Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-03-20-009",
+      "titre": "Gaz naturel : +15% prévu mai 2026 ; hausse énergétique imminente",
+      "texte": "Gaz naturel en hausse de 15% attendue en mai 2026 suite tensions géopolitiques Moyen-Orient. Expansion North Field Qatar retardée ; Mexico cherche réduire dépendance 75% gaz US. Impact inflationniste sur économies européenne et nord-américaine.",
       "categorie": "matieres_premieres",
-      "severite": "urgent",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-19T18:57:47.534Z",
-      "donnees": {}
-    },
-    {
-      "id": "alert-2026-03-19-004",
-      "titre": "Escalade Iran-Israël : demande budgétaire Pentagone 200 Md$, volatilité pétrolière",
-      "texte": "Pentagone demande 200 milliards $ supplémentaires pour financer opérations en Iran. Attaques de missiles confirmées sur infrastructure pétrolière israélienne (Haïfa). Risque de perturbation durable des flux énergétiques du Golfe.",
-      "categorie": "geopolitique",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-03-19T18:57:47.534Z",
-      "donnees": {}
-    },
-    {
-      "id": "alert-2026-03-19-005",
-      "titre": "BCE anticipe bond d'inflation et creux de croissance sur choc Moyen-Orient",
-      "texte": "Gouverneur BCE Stournaras signale que tensions géopolitiques entraîneront hausse d'inflation et contraction de croissance. Scénario stagflationniste pénalisant actions et obligations nominales en zone euro.",
-      "categorie": "macro",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-03-19T18:57:47.534Z",
+      "horodatage": "2026-03-20T18:47:17.704Z",
       "donnees": {}
     }
   ],
   "stats": {
-    "total": 5,
-    "urgent": 3,
-    "attention": 2,
-    "info": 0
+    "total": 9,
+    "urgent": 2,
+    "attention": 4,
+    "info": 3
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
