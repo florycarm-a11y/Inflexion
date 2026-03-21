@@ -13,7 +13,7 @@
 
 ## 1. Vue d'ensemble
 
-**Inflexion** est une plateforme d'intelligence financière automatisée combinant analyses géopolitiques et données de marché en temps réel. Le système agrège **15 APIs**, **158 flux RSS** et utilise **Claude Sonnet** (briefing stratégique) + **Claude Haiku** (classification, alertes).
+**Inflexion** est une plateforme d'intelligence financière automatisée combinant analyses géopolitiques et données de marché en temps réel. Le système agrège **15 APIs**, **163 flux RSS** et utilise **Claude Sonnet** (briefing stratégique) + **Claude Haiku** (classification, alertes).
 
 **URL de production** : https://inflexionhub.com/
 
@@ -130,7 +130,7 @@ Inflexion/
 
 ```
 GitHub Actions (cron 2x/jour : 06h + 18h UTC)
-  → fetch-data.mjs (15 APIs + 158 RSS)
+  → fetch-data.mjs (15 APIs + 163 RSS)
   → insight-filter.mjs (scoring 1-10, seuil ≥6, dédup sémantique)
   → veille-continue.mjs (watchlist 22 thèmes + signaux faibles Claude)
   → generate-article.mjs (synthèse depuis insights.json + signaux)
