@@ -1,131 +1,96 @@
 {
-  "updated": "2026-03-20T18:47:17.704Z",
+  "updated": "2026-03-21T06:42:44.300Z",
   "alertes": [
     {
-      "id": "alert-2026-03-20-001",
-      "titre": "Pétrole (USO) : +4,46% à $122,60 ; tensions Iran-Détroit d'Ormuz",
-      "texte": "Pétrole en hausse significative suite à escalade géopolitique Iran-États-Unis et risques d'interruption du Détroit d'Ormuz. Capacités de secours pétrolier épuisées (Norvège) ; Trump envisage saisir île Kharg pour rouvrir le détroit. Expansion LNG Qatar menacée par attaques iraniennes.",
+      "id": "alert-2026-03-21-001",
+      "titre": "Or (GLD) : -3,06% à $413,38, plus grande baisse hebdomadaire en 43 ans",
+      "texte": "L'or recule malgré l'escalade géopolitique au Moyen-Orient, reflétant une hausse des taux réels et une réduction de la demande de safe-haven. Cette baisse contraste avec les tensions Iran-Israël et suggère une réévaluation des attentes d'inflation.",
       "categorie": "matieres_premieres",
       "severite": "attention",
-      "impact": "haussier",
-      "horodatage": "2026-03-20T18:47:17.704Z",
+      "impact": "baissier",
+      "horodatage": "2026-03-21T06:42:44.300Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
-        "prix": 417.06,
-        "variation": -2.19
+        "prix": 413.38,
+        "variation": -3.06
       }
     },
     {
-      "id": "alert-2026-03-20-002",
-      "titre": "Or (GLD) : -2,19% à $417,06 ; fuite vers actifs risqués",
-      "texte": "Or recule malgré tensions géopolitiques, reflétant recherche de rendement et pression sur actifs défensifs. Fear & Greed Index à 11 (Extreme Fear) contredit mouvement ; possible repositionnement vers pétrole et matières premières énergétiques.",
+      "id": "alert-2026-03-21-002",
+      "titre": "Pétrole (USO) : +3,47% à $121,43, Brent 5e semaine consécutive de hausse",
+      "texte": "Le pétrole brut s'apprécie sur fond d'escalade militaire au Moyen-Orient (frappes israéliennes confirmées) et renforcement militaire US. 40% des exportations pétrolières mondiales sont affectées par le conflit, créant un choc d'offre structurel.",
       "categorie": "matieres_premieres",
-      "severite": "info",
+      "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-03-20T18:47:17.704Z",
+      "horodatage": "2026-03-21T06:42:44.300Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
-        "prix": 122.6,
-        "variation": 4.46
+        "prix": 121.43,
+        "variation": 3.47
       }
     },
     {
-      "id": "alert-2026-03-20-003",
-      "titre": "Nvidia (NVDA) : -2,64% à $173,84 ; signal technique baissier détecté",
-      "texte": "Nvidia affiche signal technique baissier sur graphique boursier ; perte de brillance du leader IA. Contexte : Russell 2000 premier indice majeur en correction ; pression générale sur technologie haute valorisation.",
-      "categorie": "marches",
+      "id": "alert-2026-03-21-003",
+      "titre": "NVDA : -3,28% à $172,70, correction tech sur tensions géopolitiques",
+      "texte": "NVIDIA recule dans un contexte de réduction de risque généralisée (Fear & Greed Index à 12 - Extreme Fear). Les tensions Pentagon-Anthropic sur l'alignement AI en temps de conflit ajoutent une couche d'incertitude réglementaire au secteur.",
+      "categorie": "ai_tech",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-20T18:47:17.704Z",
+      "horodatage": "2026-03-21T06:42:44.300Z",
       "donnees": {
         "symbole": "NVDA",
         "nom": "Nvidia",
-        "prix": 173.84,
-        "variation": -2.64
+        "prix": 172.7,
+        "variation": -3.28
       }
     },
     {
-      "id": "alert-2026-03-20-004",
-      "titre": "Alphabet (GOOGL) : -2,59% à $299,17 ; secteur tech sous pression",
-      "texte": "Alphabet recule dans contexte de correction technologique et avertissements macro. Pression réglementaire (Trump vs régulation IA) et concurrence intensifiée (Claude agents, Firefly) pèsent sur valorisation.",
+      "id": "alert-2026-03-21-004",
+      "titre": "TSLA : -3,24% à $367,96, correction alignée sur risque macro et énergie",
+      "texte": "Tesla subit une correction parallèle aux tensions géopolitiques et à la volatilité énergétique. La hausse du kérosène et du gaz naturel impacte les coûts de production et la demande de mobilité électrique dans un contexte d'incertitude macro.",
       "categorie": "marches",
-      "severite": "info",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-20T18:47:17.704Z",
-      "donnees": {
-        "symbole": "GOOGL",
-        "nom": "Alphabet",
-        "prix": 299.17,
-        "variation": -2.59
-      }
-    },
-    {
-      "id": "alert-2026-03-20-005",
-      "titre": "Tesla (TSLA) : -3,08% à $368,58 ; enquête FSD escalade",
-      "texte": "Tesla recule ; NHTSA élève enquête Full Self-Driving à analyse ingénierie. Pression supplémentaire sur secteur automobile face à hausse énergétique et incertitudes réglementaires IA.",
-      "categorie": "ai_tech",
-      "severite": "info",
-      "impact": "baissier",
-      "horodatage": "2026-03-20T18:47:17.704Z",
+      "horodatage": "2026-03-21T06:42:44.300Z",
       "donnees": {
         "symbole": "TSLA",
         "nom": "Tesla",
-        "prix": 368.58,
-        "variation": -3.08
+        "prix": 367.96,
+        "variation": -3.24
       }
     },
     {
-      "id": "alert-2026-03-20-006",
-      "titre": "Russell 2000 : entrée en correction ; premier indice majeur US affecté",
-      "texte": "Russell 2000 devient premier indice majeur américain à entrer en correction. Signal d'aversion au risque généralisée ; économiste américain prédit crise plus grave que 2008. Rendements obligataires UK à 17 ans.",
+      "id": "alert-2026-03-21-005",
+      "titre": "Fear & Greed Index : 12 (Extreme Fear), plus bas depuis tensions géopolitiques",
+      "texte": "L'indice de peur atteint un niveau extrême reflétant une aversion au risque généralisée. Les traders réduisent les positions en BTC et actions face à l'escalade militaire Iran-Israël et aux risques de choc obligataire identifiés par les analystes.",
       "categorie": "marches",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-03-20T18:47:17.704Z",
+      "horodatage": "2026-03-21T06:42:44.300Z",
       "donnees": {
-        "score": 11,
+        "score": 12,
         "label": "Extreme Fear",
         "variation_7j": -4
       }
     },
     {
-      "id": "alert-2026-03-20-007",
-      "titre": "Fear & Greed Index : 11 (Extreme Fear) ; panique extrême détectée",
-      "texte": "Indice Fear & Greed à 11 signale panique extrême sur marchés. Contexte : escalade géopolitique Iran, correction technologique, avertissements macro. Liquidations possibles sur actifs risqués.",
-      "categorie": "marches",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-03-20T18:47:17.704Z",
-      "donnees": {}
-    },
-    {
-      "id": "alert-2026-03-20-008",
-      "titre": "Kalshi : $1B levés à $22Md mais ordonnance restrictive Nevada",
-      "texte": "Kalshi lève $1B doublant valorisation à $22Md, mais fait face ordonnance restrictive temporaire au Nevada. Incertitude réglementaire sur marchés prédictifs crypto ; Gemini poursuivi en action collective.",
+      "id": "alert-2026-03-21-006",
+      "titre": "Accord crypto White House-lawmakers : régulation stablecoin yield en vue",
+      "texte": "Accord de principe atteint sur la régulation des rendements de stablecoin dans le cadre d'une loi crypto globale. Cette avancée réglementaire positive contraste avec le contexte macro baissier et pourrait soutenir les actifs numériques à moyen terme.",
       "categorie": "crypto",
-      "severite": "attention",
-      "impact": "neutre",
-      "horodatage": "2026-03-20T18:47:17.704Z",
-      "donnees": {}
-    },
-    {
-      "id": "alert-2026-03-20-009",
-      "titre": "Gaz naturel : +15% prévu mai 2026 ; hausse énergétique imminente",
-      "texte": "Gaz naturel en hausse de 15% attendue en mai 2026 suite tensions géopolitiques Moyen-Orient. Expansion North Field Qatar retardée ; Mexico cherche réduire dépendance 75% gaz US. Impact inflationniste sur économies européenne et nord-américaine.",
-      "categorie": "matieres_premieres",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-03-20T18:47:17.704Z",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-03-21T06:42:44.300Z",
       "donnees": {}
     }
   ],
   "stats": {
-    "total": 9,
+    "total": 6,
     "urgent": 2,
-    "attention": 4,
-    "info": 3
+    "attention": 3,
+    "info": 1
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
