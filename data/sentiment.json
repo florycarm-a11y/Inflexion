@@ -1,65 +1,65 @@
 {
-  "updated": "2026-03-21T06:42:44.300Z",
-  "date": "2026-03-21",
+  "updated": "2026-03-22T18:35:51.000Z",
+  "date": "2026-03-22",
   "global": {
-    "score": -0.44,
-    "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.44), dominé par la rubrique matieres_premieres (baissier)."
+    "score": -0.11,
+    "tendance": "mixte",
+    "resume": "Le sentiment global est mixte (-0.11), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.65,
-      "confidence": 0.85,
+      "score": -0.82,
+      "confidence": 0.92,
       "tendance": "baissier",
-      "resume": "Escalade militaire au Moyen-Orient (frappes israéliennes sur Téhéran et Beyrouth) contrebalancée par signaux de désescalade (Trump envisage réduction graduelle des opérations en Iran). Risque géopolitique élevé avec impacts directs sur marchés énergétiques et stabilité financière.",
+      "resume": "Escalade majeure au Moyen-Orient avec menaces directes de Trump contre l'Iran, frappes israéliennes en Liban et proximité d'installations nucléaires iraniennes. Tensions géopolitiques à leur plus haut niveau depuis 2024.",
       "signaux_cles": [
-        "Frappes israéliennes sur Téhéran et Beyrouth confirmées (21 mars 2026)",
-        "Trump annonce réduction graduelle des opérations militaires en Iran (exclusion cessez-le-feu)",
-        "Iran war raises risk of bond market shock - impact financier systémique identifié"
+        "Trump menace d'éliminer les centrales électriques iraniennes",
+        "180 blessés dans des frappes de missiles iraniens près du centre nucléaire de Dimona",
+        "Israël frappe le pont de Qasmiyeh au Liban, craintes d'invasion terrestre"
       ]
     },
     "marches": {
       "score": -0.45,
-      "confidence": 0.72,
+      "confidence": 0.78,
       "tendance": "baissier",
-      "resume": "Tensions inflationnistes dues à la guerre (kérosène, gaz naturel) et chocs d'offre (40% exportations pétrolières sérieusement affectées). Contrebalancé par stabilité relative de certains secteurs (immobilier, SCPI). Risque obligataire et volatilité accrue.",
+      "resume": "Marchés sous pression avec indices au bord de la correction. Crise du Détroit d'Ormuz imminente (délai de 2 semaines), perturbation potentielle de 10 millions de barils/jour. Volatilité accrue sur les valeurs défensives.",
       "signaux_cles": [
-        "Prix billets d'avion en hausse avec kérosène (guerre Moyen-Orient)",
-        "Brent crude +5 semaines consécutives, troupes US renforcées",
-        "Elon Musk jugé responsable de tromperie Twitter (dommages plusieurs milliards)"
+        "WTI brut atteint $100 en trading de fin de semaine",
+        "Stocks en territoire de correction, risque de déflation du 'TACO trade'",
+        "PDG TotalEnergies avertit : 10 millions de barils/jour bloqués au Golfe si conflit perdure"
       ]
     },
     "crypto": {
-      "score": -0.35,
-      "confidence": 0.68,
+      "score": -0.38,
+      "confidence": 0.72,
       "tendance": "mixte",
-      "resume": "Absorption institutionnelle forte en BTC (5x offre quotidienne) contrastant avec faiblesse technique et réduction de risque liée à la guerre. Avancées réglementaires positives (accord stablecoin, CLARITY Act) mais volatilité accrue par contexte macro.",
+      "resume": "Secteur crypto fragmenté : changement de régulation positive (fin ère Gensler) contrebalancé par exploit DeFi majeur (USR stablecoin). Bitcoin corrélé aux actions US, risque de baisse de 50% identifié.",
       "signaux_cles": [
-        "Institutionnels absorbent 5x offre quotidienne BTC (21 mars)",
-        "Bitcoin weakness deepens amid war et réduction de risque traders",
-        "Accord de principe White House-lawmakers sur régulation crypto (stablecoin yield)"
+        "USR stablecoin dépeg après exploit : 80 millions de tokens non adossés, ~$25 millions extraits",
+        "Bitcoin risque une baisse de 50% avec corrélation positive croissante aux actions US",
+        "Whale Ethereum mise 19,5 millions : signal potentiel de reprise"
       ]
     },
     "matieres_premieres": {
-      "score": -0.72,
-      "confidence": 0.88,
-      "tendance": "baissier",
-      "resume": "Choc d'offre pétrolière majeur : 40% exportations sérieusement affectées par conflit. Or en baisse malgré tensions (flight-to-safety contrebalancé par hausse taux réels). Gaz naturel volatile. Énergies renouvelables (17% électricité US 2025) offrent alternative structurelle.",
+      "score": 0.68,
+      "confidence": 0.85,
+      "tendance": "haussier",
+      "resume": "Secteur énergétique fortement haussier : pétrole WTI à $100, crise d'approvisionnement imminente en avril, sanctions sur Lukoil. Nucléaire en spotlight comme alternative. Or sous pression (-3,05%).",
       "signaux_cles": [
-        "40% exportations pétrolières mondiales affectées par guerre Moyen-Orient",
-        "Or chute de 3,06% (GLD) - plus grande baisse hebdomadaire en 43 ans",
-        "Pétrole Brent +5 semaines consécutives, troupes US renforcées en région"
+        "Pétrole WTI franchit $100 avec crise d'approvisionnement prévue en avril",
+        "Lukoil durement touché par sanctions US sur pétrole russe",
+        "Demande énergétique IA alimente pari sur fusion nucléaire et ventes de baux pétroliers en Alaska"
       ]
     },
     "ai_tech": {
-      "score": 0.15,
-      "confidence": 0.62,
-      "tendance": "neutre",
-      "resume": "Avancées technologiques continues (NVIDIA Nemotron-Cascade 2, lasercom, satellites) mais contexte géopolitique crée incertitude. Tensions Pentagon-Anthropic sur alignement AI en temps de conflit. Risques réglementaires (FISA, cybersécurité russe) modèrent optimisme.",
+      "score": 0.52,
+      "confidence": 0.68,
+      "tendance": "haussier",
+      "resume": "Innovation technologique soutenue malgré controverses éthiques. Musk annonce Terafab (1 milliard de puces), Amazon Trainium gagne clients majeurs (Anthropic, OpenAI, Apple). Débat IA militaire divise Silicon Valley.",
       "signaux_cles": [
-        "NVIDIA Nemotron-Cascade 2 : 30B MoE avec 3B paramètres actifs (reasoning amélioré)",
-        "Pentagon-Anthropic : tensions sur alignement AI déclarées 'nearly aligned' une semaine avant rupture Trump",
-        "FBI lie attaques Signal phishing à services renseignement russes"
+        "Musk lance Terafab à Austin : fabrication de 1 milliard de puces pour SpaceX/Tesla",
+        "Amazon Trainium remporte contrats majeurs auprès d'Anthropic, OpenAI, Apple",
+        "Karpathy (OpenAI) : humains deviennent goulot d'étranglement en recherche IA"
       ]
     }
   },
@@ -279,6 +279,15 @@
       "crypto": -0.35,
       "matieres_premieres": -0.72,
       "ai_tech": 0.15
+    },
+    {
+      "date": "2026-03-22",
+      "global": -0.11,
+      "geopolitique": -0.82,
+      "marches": -0.45,
+      "crypto": -0.38,
+      "matieres_premieres": 0.68,
+      "ai_tech": 0.52
     }
   ],
   "model": "claude-haiku-4-5-20251001",

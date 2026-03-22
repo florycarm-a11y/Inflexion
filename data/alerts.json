@@ -1,96 +1,116 @@
 {
-  "updated": "2026-03-21T06:42:44.300Z",
+  "updated": "2026-03-22T18:35:51.000Z",
   "alertes": [
     {
-      "id": "alert-2026-03-21-001",
-      "titre": "Or (GLD) : -3,06% à $413,38, plus grande baisse hebdomadaire en 43 ans",
-      "texte": "L'or recule malgré l'escalade géopolitique au Moyen-Orient, reflétant une hausse des taux réels et une réduction de la demande de safe-haven. Cette baisse contraste avec les tensions Iran-Israël et suggère une réévaluation des attentes d'inflation.",
+      "id": "alert-2026-03-22-001",
+      "titre": "Pétrole (USO) : +3,48% à $121,45, WTI franchit $100 sur tensions Iran",
+      "texte": "Le brut WTI atteint $100 en trading de fin de semaine suite aux menaces de Trump contre l'Iran et aux frappes israéliennes. Crise d'approvisionnement prévue en avril avec risque de blocage de 10 millions de barils/jour au Détroit d'Ormuz.",
       "categorie": "matieres_premieres",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-03-21T06:42:44.300Z",
+      "severite": "urgent",
+      "impact": "haussier",
+      "horodatage": "2026-03-22T18:35:51.000Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
-        "prix": 413.38,
-        "variation": -3.06
+        "prix": 413.4,
+        "variation": -3.05
       }
     },
     {
-      "id": "alert-2026-03-21-002",
-      "titre": "Pétrole (USO) : +3,47% à $121,43, Brent 5e semaine consécutive de hausse",
-      "texte": "Le pétrole brut s'apprécie sur fond d'escalade militaire au Moyen-Orient (frappes israéliennes confirmées) et renforcement militaire US. 40% des exportations pétrolières mondiales sont affectées par le conflit, créant un choc d'offre structurel.",
+      "id": "alert-2026-03-22-002",
+      "titre": "Or (GLD) : -3,05% à $413,40, fuite vers actifs risqués",
+      "texte": "L'or recule malgré tensions géopolitiques majeures, reflétant une rotation vers pétrole et actifs énergétiques. Fear & Greed Index à 10 (Extreme Fear) indique capitulation potentielle des investisseurs.",
       "categorie": "matieres_premieres",
-      "severite": "urgent",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-21T06:42:44.300Z",
+      "horodatage": "2026-03-22T18:35:51.000Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
-        "prix": 121.43,
-        "variation": 3.47
+        "prix": 121.45,
+        "variation": 3.49
       }
     },
     {
-      "id": "alert-2026-03-21-003",
-      "titre": "NVDA : -3,28% à $172,70, correction tech sur tensions géopolitiques",
-      "texte": "NVIDIA recule dans un contexte de réduction de risque généralisée (Fear & Greed Index à 12 - Extreme Fear). Les tensions Pentagon-Anthropic sur l'alignement AI en temps de conflit ajoutent une couche d'incertitude réglementaire au secteur.",
-      "categorie": "ai_tech",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-03-21T06:42:44.300Z",
-      "donnees": {
-        "symbole": "NVDA",
-        "nom": "Nvidia",
-        "prix": 172.7,
-        "variation": -3.28
-      }
-    },
-    {
-      "id": "alert-2026-03-21-004",
-      "titre": "TSLA : -3,24% à $367,96, correction alignée sur risque macro et énergie",
-      "texte": "Tesla subit une correction parallèle aux tensions géopolitiques et à la volatilité énergétique. La hausse du kérosène et du gaz naturel impacte les coûts de production et la demande de mobilité électrique dans un contexte d'incertitude macro.",
+      "id": "alert-2026-03-22-003",
+      "titre": "Nvidia (NVDA) : -3,27% à $172,72, correction technologique",
+      "texte": "Nvidia cède 3,27% dans contexte de correction d'indices et de volatilité accrue. Indices au bord du territoire de correction technique.",
       "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-21T06:42:44.300Z",
+      "horodatage": "2026-03-22T18:35:51.000Z",
+      "donnees": {
+        "symbole": "NVDA",
+        "nom": "Nvidia",
+        "prix": 172.72,
+        "variation": -3.27
+      }
+    },
+    {
+      "id": "alert-2026-03-22-004",
+      "titre": "Tesla (TSLA) : -3,24% à $367,98, pression sur valeurs cycliques",
+      "texte": "Tesla recule parallèlement à Nvidia dans contexte de risque de correction d'indices. Annonces de Musk sur Terafab insuffisent à soutenir le titre face aux pressions macroéconomiques.",
+      "categorie": "marches",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-03-22T18:35:51.000Z",
       "donnees": {
         "symbole": "TSLA",
         "nom": "Tesla",
-        "prix": 367.96,
+        "prix": 367.98,
         "variation": -3.24
       }
     },
     {
-      "id": "alert-2026-03-21-005",
-      "titre": "Fear & Greed Index : 12 (Extreme Fear), plus bas depuis tensions géopolitiques",
-      "texte": "L'indice de peur atteint un niveau extrême reflétant une aversion au risque généralisée. Les traders réduisent les positions en BTC et actions face à l'escalade militaire Iran-Israël et aux risques de choc obligataire identifiés par les analystes.",
-      "categorie": "marches",
+      "id": "alert-2026-03-22-005",
+      "titre": "USR Stablecoin : dépeg après exploit DeFi, $25M extraits",
+      "texte": "Le stablecoin USR de Resolv dépeg suite à exploit : attaquant a frappé 80 millions de tokens non adossés et extrait ~$25 millions. Aucune perte d'actifs client confirmée mais confiance en DeFi fragilisée.",
+      "categorie": "crypto",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-03-21T06:42:44.300Z",
+      "horodatage": "2026-03-22T18:35:51.000Z",
       "donnees": {
-        "score": 12,
+        "score": 10,
         "label": "Extreme Fear",
-        "variation_7j": -4
+        "variation_7j": -5
       }
     },
     {
-      "id": "alert-2026-03-21-006",
-      "titre": "Accord crypto White House-lawmakers : régulation stablecoin yield en vue",
-      "texte": "Accord de principe atteint sur la régulation des rendements de stablecoin dans le cadre d'une loi crypto globale. Cette avancée réglementaire positive contraste avec le contexte macro baissier et pourrait soutenir les actifs numériques à moyen terme.",
+      "id": "alert-2026-03-22-006",
+      "titre": "Moyen-Orient : escalade critique, menaces nucléaires directes",
+      "texte": "Trump menace d'éliminer les centrales électriques iraniennes. Missiles iraniens blessent 180 personnes près du centre nucléaire de Dimona. Israël frappe le Liban, craintes d'invasion terrestre. Risque d'embrasement régional majeur.",
+      "categorie": "geopolitique",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-22T18:35:51.000Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-03-22-007",
+      "titre": "Détroit d'Ormuz : crise d'approvisionnement dans 2 semaines",
+      "texte": "Délai critique de 2 semaines avant crise potentielle du Détroit d'Ormuz. Blocage de 10 millions de barils/jour impacterait toutes les économies selon PDG TotalEnergies. Scénario de choc pétrolier 2022 à anticiper.",
+      "categorie": "macro",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-22T18:35:51.000Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-03-22-008",
+      "titre": "Bitcoin : risque de baisse de 50% avec corrélation actions US",
+      "texte": "Corrélation positive croissante entre Bitcoin et actions US crée risque de baisse de 50%. Contexte : Fear & Greed Index à 10 (Extreme Fear), correction d'indices en cours.",
       "categorie": "crypto",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-03-21T06:42:44.300Z",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-03-22T18:35:51.000Z",
       "donnees": {}
     }
   ],
   "stats": {
-    "total": 6,
-    "urgent": 2,
-    "attention": 3,
-    "info": 1
+    "total": 8,
+    "urgent": 4,
+    "attention": 4,
+    "info": 0
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
