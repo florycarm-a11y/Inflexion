@@ -1,65 +1,75 @@
 {
-  "updated": "2026-03-22T18:35:51.000Z",
-  "date": "2026-03-22",
+  "updated": "2026-03-23T07:09:55.126Z",
+  "date": "2026-03-23",
   "global": {
-    "score": -0.11,
-    "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (-0.11), dominé par la rubrique geopolitique (baissier)."
+    "score": -0.34,
+    "tendance": "baissier",
+    "resume": "Le sentiment global est baissier (-0.34), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.82,
-      "confidence": 0.92,
+      "score": -0.85,
+      "confidence": 0.95,
       "tendance": "baissier",
-      "resume": "Escalade majeure au Moyen-Orient avec menaces directes de Trump contre l'Iran, frappes israéliennes en Liban et proximité d'installations nucléaires iraniennes. Tensions géopolitiques à leur plus haut niveau depuis 2024.",
+      "resume": "Escalade majeure au Moyen-Orient avec ultimatum américain de 48h sur le détroit d'Ormuz, menaces iraniennes de représailles contre les infrastructures énergétiques, et attaques coordonnées contre l'Arabie saoudite et le Golfe. Tensions géopolitiques au plus haut depuis 2024.",
       "signaux_cles": [
-        "Trump menace d'éliminer les centrales électriques iraniennes",
-        "180 blessés dans des frappes de missiles iraniens près du centre nucléaire de Dimona",
-        "Israël frappe le pont de Qasmiyeh au Liban, craintes d'invasion terrestre"
+        "Ultimatum Trump : 48 heures à l'Iran pour rouvrir le détroit d'Ormuz",
+        "Iran menace de frapper les infrastructures énergétiques clés en cas de frappes américaines",
+        "Attaques coordonnées contre Arabie saoudite, Émirats arabes unis et Bahreïn signalées",
+        "Neuf sur dix Israéliens soutiennent une guerre contre l'Iran selon sondage Tel-Aviv",
+        "Crise climatique : la Terre dépasse ses limites selon rapport ONU 2025"
       ]
     },
     "marches": {
-      "score": -0.45,
-      "confidence": 0.78,
+      "score": -0.72,
+      "confidence": 0.92,
       "tendance": "baissier",
-      "resume": "Marchés sous pression avec indices au bord de la correction. Crise du Détroit d'Ormuz imminente (délai de 2 semaines), perturbation potentielle de 10 millions de barils/jour. Volatilité accrue sur les valeurs défensives.",
+      "resume": "Les marchés asiatiques et mondiaux reculent fortement sous le poids des tensions géopolitiques et de l'ultimatum américain. Le KOSPI plonge de 5,8%, les Bourses asiatiques perdent 3% à l'ouverture, et les prix du pétrole connaissent une volatilité extrême.",
       "signaux_cles": [
-        "WTI brut atteint $100 en trading de fin de semaine",
-        "Stocks en territoire de correction, risque de déflation du 'TACO trade'",
-        "PDG TotalEnergies avertit : 10 millions de barils/jour bloqués au Golfe si conflit perdure"
+        "KOSPI : -5,8% suite à ultimatum américain et incertitude politique",
+        "Bourses asiatiques : -3% à l'ouverture lundi 23 mars",
+        "Prix du pétrole : volatilité extrême liée aux menaces sur le détroit d'Ormuz",
+        "Nvidia : -3,28% à $172,70",
+        "Tesla : -3,24% à $367,96"
       ]
     },
     "crypto": {
-      "score": -0.38,
-      "confidence": 0.72,
-      "tendance": "mixte",
-      "resume": "Secteur crypto fragmenté : changement de régulation positive (fin ère Gensler) contrebalancé par exploit DeFi majeur (USR stablecoin). Bitcoin corrélé aux actions US, risque de baisse de 50% identifié.",
+      "score": -0.78,
+      "confidence": 0.93,
+      "tendance": "baissier",
+      "resume": "Marché cryptographique sous forte pression géopolitique avec Bitcoin chutant à $60 000, Ethereum -11,08% sur 7 jours, et Cardano -13,53%. Incident majeur : Resolv stablecoin s'effondre de 70% suite à extraction de $25M en ETH.",
       "signaux_cles": [
-        "USR stablecoin dépeg après exploit : 80 millions de tokens non adossés, ~$25 millions extraits",
-        "Bitcoin risque une baisse de 50% avec corrélation positive croissante aux actions US",
-        "Whale Ethereum mise 19,5 millions : signal potentiel de reprise"
+        "Bitcoin : retour sous $60 000 suite aux tensions géopolitiques",
+        "Ethereum : -11,08% sur 7 jours",
+        "Cardano : -13,53% sur 7 jours",
+        "Resolv stablecoin : -70% avec extraction de $25M en ETH par attaquant",
+        "XRP : -3,7% sous $1,40 signalant risques baissiers accrus"
       ]
     },
     "matieres_premieres": {
       "score": 0.68,
-      "confidence": 0.85,
+      "confidence": 0.94,
       "tendance": "haussier",
-      "resume": "Secteur énergétique fortement haussier : pétrole WTI à $100, crise d'approvisionnement imminente en avril, sanctions sur Lukoil. Nucléaire en spotlight comme alternative. Or sous pression (-3,05%).",
+      "resume": "Pétrole brut en hausse significative avec panier dépassant $155 et ETF USO +3,47%. Tensions sur le détroit d'Ormuz soutiennent les prix. Or recule paradoxalement de -3,06% malgré crise géopolitique. Taux de fret maritime en hausse sur conflits régionaux.",
       "signaux_cles": [
-        "Pétrole WTI franchit $100 avec crise d'approvisionnement prévue en avril",
-        "Lukoil durement touché par sanctions US sur pétrole russe",
-        "Demande énergétique IA alimente pari sur fusion nucléaire et ventes de baux pétroliers en Alaska"
+        "Pétrole : panier au-dessus de $155 avec ultimatum Trump sur Ormuz",
+        "USO (ETF pétrole) : +3,47% à $121,43",
+        "Or (GLD) : -3,06% à $413,38 malgré tensions géopolitiques",
+        "Taux de fret chimique (chem tanker) : hausse suite conflit Moyen-Orient",
+        "Inde maintient prix carburants stables malgré envolée du panier pétrolier"
       ]
     },
     "ai_tech": {
-      "score": 0.52,
-      "confidence": 0.68,
-      "tendance": "haussier",
-      "resume": "Innovation technologique soutenue malgré controverses éthiques. Musk annonce Terafab (1 milliard de puces), Amazon Trainium gagne clients majeurs (Anthropic, OpenAI, Apple). Débat IA militaire divise Silicon Valley.",
+      "score": 0.15,
+      "confidence": 0.62,
+      "tendance": "neutre",
+      "resume": "Secteur IA-Tech mitigé : initiatives majeures (Elon Musk sur puces, Novartis-Pikavation $3B, SpaceX data centers) contrebalancées par reculs boursiers et préoccupations éthiques (IA art, phishing). Secteur moins affecté que marchés généraux.",
       "signaux_cles": [
-        "Musk lance Terafab à Austin : fabrication de 1 milliard de puces pour SpaceX/Tesla",
-        "Amazon Trainium remporte contrats majeurs auprès d'Anthropic, OpenAI, Apple",
-        "Karpathy (OpenAI) : humains deviennent goulot d'étranglement en recherche IA"
+        "Elon Musk : projet de 50x augmentation production puces avec 'nouvelle physique'",
+        "Novartis acquiert Pikavation pour jusqu'à $3B (pipeline cancer)",
+        "SpaceX : détails sur satellites data center orbitaux",
+        "SEC : clôture enquête 4 ans sur Faraday Future",
+        "Menaces de phishing : acteurs russes usurpent identité Signal support"
       ]
     }
   },
@@ -288,6 +298,15 @@
       "crypto": -0.38,
       "matieres_premieres": 0.68,
       "ai_tech": 0.52
+    },
+    {
+      "date": "2026-03-23",
+      "global": -0.34,
+      "geopolitique": -0.85,
+      "marches": -0.72,
+      "crypto": -0.78,
+      "matieres_premieres": 0.68,
+      "ai_tech": 0.15
     }
   ],
   "model": "claude-haiku-4-5-20251001",
