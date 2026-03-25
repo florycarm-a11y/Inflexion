@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-25T07:00:37.722Z",
+  "updated": "2026-03-25T18:54:24.541Z",
   "source": "FRED (Federal Reserve Economic Data)",
   "indicators": [
     {
@@ -55,6 +55,19 @@
       }
     },
     {
+      "id": "DGS10",
+      "label": "Treasury 10 ans",
+      "value": 4.34,
+      "date": "2026-03-23",
+      "unit": "%",
+      "change": -0.05,
+      "change_type": "abs",
+      "previous": {
+        "value": 4.39,
+        "date": "2026-03-20"
+      }
+    },
+    {
       "id": "DTWEXBGS",
       "label": "Dollar Index (broad)",
       "value": 120.2757,
@@ -68,6 +81,19 @@
       }
     },
     {
+      "id": "T10Y2Y",
+      "label": "Spread 10Y-2Y",
+      "value": 0.49,
+      "date": "2026-03-24",
+      "unit": "%",
+      "change": -0.02,
+      "change_type": "abs",
+      "previous": {
+        "value": 0.51,
+        "date": "2026-03-23"
+      }
+    },
+    {
       "id": "M2SL",
       "label": "Masse monétaire M2",
       "value": 22667.3,
@@ -78,6 +104,32 @@
       "previous": {
         "value": 22469.1,
         "date": "2026-01-01"
+      }
+    },
+    {
+      "id": "WALCL",
+      "label": "Bilan Fed (actifs)",
+      "value": 6655939,
+      "date": "2026-03-18",
+      "unit": "M $",
+      "change": 9595,
+      "change_type": "abs",
+      "previous": {
+        "value": 6646344,
+        "date": "2026-03-11"
+      }
+    },
+    {
+      "id": "MORTGAGE30US",
+      "label": "Taux hypothécaire 30 ans",
+      "value": 6.22,
+      "date": "2026-03-19",
+      "unit": "%",
+      "change": 0.11,
+      "change_type": "abs",
+      "previous": {
+        "value": 6.11,
+        "date": "2026-03-12"
       }
     }
   ]
