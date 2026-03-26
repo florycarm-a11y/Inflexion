@@ -1,75 +1,65 @@
 {
-  "updated": "2026-03-23T07:09:55.126Z",
-  "date": "2026-03-23",
+  "updated": "2026-03-26T13:18:13.950Z",
+  "date": "2026-03-26",
   "global": {
-    "score": -0.34,
+    "score": -0.5,
     "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.34), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est baissier (-0.5), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
       "score": -0.85,
       "confidence": 0.95,
       "tendance": "baissier",
-      "resume": "Escalade majeure au Moyen-Orient avec ultimatum américain de 48h sur le détroit d'Ormuz, menaces iraniennes de représailles contre les infrastructures énergétiques, et attaques coordonnées contre l'Arabie saoudite et le Golfe. Tensions géopolitiques au plus haut depuis 2024.",
+      "resume": "Escalade militaire majeure au Moyen-Orient : guerre Iran-Israël en cours depuis 27 jours avec attaques aériennes réciproques, missiles et drones. Tensions géopolitiques aigues affectant stabilité régionale et flux énergétiques mondiaux.",
       "signaux_cles": [
-        "Ultimatum Trump : 48 heures à l'Iran pour rouvrir le détroit d'Ormuz",
-        "Iran menace de frapper les infrastructures énergétiques clés en cas de frappes américaines",
-        "Attaques coordonnées contre Arabie saoudite, Émirats arabes unis et Bahreïn signalées",
-        "Neuf sur dix Israéliens soutiennent une guerre contre l'Iran selon sondage Tel-Aviv",
-        "Crise climatique : la Terre dépasse ses limites selon rapport ONU 2025"
+        "Guerre Iran-Israël jour 27 avec attaques aériennes continues et interceptions de missiles",
+        "Iran rejette plan de trêve en 15 points de Trump et maintient posture offensive",
+        "Fermeture potentielle du détroit d'Ormuz menaçant l'économie mondiale et les approvisionnements énergétiques"
       ]
     },
     "marches": {
-      "score": -0.72,
-      "confidence": 0.92,
+      "score": -0.62,
+      "confidence": 0.88,
       "tendance": "baissier",
-      "resume": "Les marchés asiatiques et mondiaux reculent fortement sous le poids des tensions géopolitiques et de l'ultimatum américain. Le KOSPI plonge de 5,8%, les Bourses asiatiques perdent 3% à l'ouverture, et les prix du pétrole connaissent une volatilité extrême.",
+      "resume": "Marchés équitaires asiatiques en repli suite au rejet iranien du plan de paix. Marché pétrolier en backwardation avec risques de perturbation majeure. Avertissements d'experts sur persistance des impacts économiques du conflit.",
       "signaux_cles": [
-        "KOSPI : -5,8% suite à ultimatum américain et incertitude politique",
-        "Bourses asiatiques : -3% à l'ouverture lundi 23 mars",
-        "Prix du pétrole : volatilité extrême liée aux menaces sur le détroit d'Ormuz",
-        "Nvidia : -3,28% à $172,70",
-        "Tesla : -3,24% à $367,96"
+        "Retraite des équités asiatiques après rejet du plan de trêve par l'Iran",
+        "Marché pétrolier en backwardation indiquant tensions d'approvisionnement court terme",
+        "Ex-PDG Goldman Sachs avertit des retombées persistantes de la guerre iranienne sur l'économie"
       ]
     },
     "crypto": {
-      "score": -0.78,
-      "confidence": 0.93,
-      "tendance": "baissier",
-      "resume": "Marché cryptographique sous forte pression géopolitique avec Bitcoin chutant à $60 000, Ethereum -11,08% sur 7 jours, et Cardano -13,53%. Incident majeur : Resolv stablecoin s'effondre de 70% suite à extraction de $25M en ETH.",
+      "score": -0.15,
+      "confidence": 0.62,
+      "tendance": "mixte",
+      "resume": "Marché crypto fragmenté : Bitcoin confronté à indicateurs baissiers et résistance à 70 000 $, mais mouvements de transfert institutionnels (Bhoutan 500 BTC). Régulation accrue aux États-Unis sur stablecoins et marchés de prédiction crée incertitude.",
       "signaux_cles": [
-        "Bitcoin : retour sous $60 000 suite aux tensions géopolitiques",
-        "Ethereum : -11,08% sur 7 jours",
-        "Cardano : -13,53% sur 7 jours",
-        "Resolv stablecoin : -70% avec extraction de $25M en ETH par attaquant",
-        "XRP : -3,7% sous $1,40 signalant risques baissiers accrus"
+        "Bitcoin : indicateurs techniques baissiers, résistance maintenue à 70 000 $ en question",
+        "Bhoutan transfère 500 BTC supplémentaires vers exchanges (total 2026 : 150M$ d'outflows)",
+        "Coinbase s'oppose au CLARITY Act sur rendements stablecoins, menace retrait soutien réglementaire"
       ]
     },
     "matieres_premieres": {
-      "score": 0.68,
-      "confidence": 0.94,
-      "tendance": "haussier",
-      "resume": "Pétrole brut en hausse significative avec panier dépassant $155 et ETF USO +3,47%. Tensions sur le détroit d'Ormuz soutiennent les prix. Or recule paradoxalement de -3,06% malgré crise géopolitique. Taux de fret maritime en hausse sur conflits régionaux.",
+      "score": -0.72,
+      "confidence": 0.92,
+      "tendance": "baissier",
+      "resume": "Marché énergétique sous pression : prix du pétrole brut en baisse malgré tensions géopolitiques, gaz naturel volatil. Production pétrolière du Venezuela en hausse (1,1M bpd) contrebalançant risques Moyen-Orient. Crise d'approvisionnement énergétique potentielle en Occident.",
       "signaux_cles": [
-        "Pétrole : panier au-dessus de $155 avec ultimatum Trump sur Ormuz",
-        "USO (ETF pétrole) : +3,47% à $121,43",
-        "Or (GLD) : -3,06% à $413,38 malgré tensions géopolitiques",
-        "Taux de fret chimique (chem tanker) : hausse suite conflit Moyen-Orient",
-        "Inde maintient prix carburants stables malgré envolée du panier pétrolier"
+        "Pétrole brut en baisse malgré guerre Iran-Israël, confusion des marchés sur négociations",
+        "Production Venezuela monte à 1,1M bpd, réduisant dépendance occidentale aux approvisionnements moyen-orientaux",
+        "Chevron avertit Californie de risque de crise énergétique liée à la guerre iranienne"
       ]
     },
     "ai_tech": {
-      "score": 0.15,
-      "confidence": 0.62,
+      "score": 0.18,
+      "confidence": 0.65,
       "tendance": "neutre",
-      "resume": "Secteur IA-Tech mitigé : initiatives majeures (Elon Musk sur puces, Novartis-Pikavation $3B, SpaceX data centers) contrebalancées par reculs boursiers et préoccupations éthiques (IA art, phishing). Secteur moins affecté que marchés généraux.",
+      "resume": "Secteur IA en dynamique mixte : Meta réduit effectifs malgré investissements massifs en IA, GitHub révise politique d'entraînement sur données utilisateurs. Préoccupations croissantes sur sécurité (malware LiteLLM) et écart de compétences IA.",
       "signaux_cles": [
-        "Elon Musk : projet de 50x augmentation production puces avec 'nouvelle physique'",
-        "Novartis acquiert Pikavation pour jusqu'à $3B (pipeline cancer)",
-        "SpaceX : détails sur satellites data center orbitaux",
-        "SEC : clôture enquête 4 ans sur Faraday Future",
-        "Menaces de phishing : acteurs russes usurpent identité Signal support"
+        "Meta licencie centaines d'employés tout en augmentant investissements IA",
+        "GitHub abandonne entraînement IA sur données utilisateurs après backlash",
+        "Écart de compétences IA s'accentue : utilisateurs avancés tirent profit tandis que marché se polarise"
       ]
     }
   },
@@ -307,6 +297,15 @@
       "crypto": -0.78,
       "matieres_premieres": 0.68,
       "ai_tech": 0.15
+    },
+    {
+      "date": "2026-03-26",
+      "global": -0.5,
+      "geopolitique": -0.85,
+      "marches": -0.62,
+      "crypto": -0.15,
+      "matieres_premieres": -0.72,
+      "ai_tech": 0.18
     }
   ],
   "model": "claude-haiku-4-5-20251001",

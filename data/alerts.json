@@ -1,165 +1,65 @@
 {
-  "updated": "2026-03-23T07:09:55.126Z",
+  "updated": "2026-03-26T13:18:13.950Z",
   "alertes": [
     {
-      "id": "alert-2026-03-23-001",
-      "titre": "KOSPI : -5,8% en séance, chute majeure sous tensions géopolitiques",
-      "texte": "L'indice sud-coréen plonge de 5,8% suite à l'ultimatum américain de 48h sur le détroit d'Ormuz et l'incertitude politique interne. Bourses asiatiques perdent 3% à l'ouverture lundi 23 mars 2026.",
-      "categorie": "marches",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-03-23T07:09:55.126Z",
-      "donnees": {
-        "symbole": "ETH",
-        "nom": "Ethereum",
-        "prix": 2030.72,
-        "variation_7d": -11.08
-      }
-    },
-    {
-      "id": "alert-2026-03-23-002",
-      "titre": "Ethereum (ETH) : -11,08% sur 7 jours, pression géopolitique",
-      "texte": "Ethereum recule de 11,08% sur une semaine sous le poids des tensions Moyen-Orient et de la hausse des rendements obligataires. Bitcoin chute sous $60 000 en parallèle.",
-      "categorie": "crypto",
+      "id": "alert-2026-03-26-001",
+      "titre": "Or (GLD) : +3,01% à $416,29, fuite vers actifs refuge",
+      "texte": "L'or gagne 3,01% à $416,29 en contexte de crise géopolitique majeure (guerre Iran-Israël jour 27) et indice Fear & Greed à 10 (peur extrême). Mouvement classique de fuite vers actifs refuge face aux risques systémiques.",
+      "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-23T07:09:55.126Z",
-      "donnees": {
-        "symbole": "DOGE",
-        "nom": "Dogecoin",
-        "prix": 0.09024,
-        "variation_7d": -11.17
-      }
-    },
-    {
-      "id": "alert-2026-03-23-003",
-      "titre": "Cardano (ADA) : -13,53% sur 7 jours, correction majeure",
-      "texte": "Cardano enregistre la plus forte baisse du portefeuille crypto avec -13,53% sur 7 jours, reflétant la fuite des investisseurs vers des actifs refuge.",
-      "categorie": "crypto",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-03-23T07:09:55.126Z",
-      "donnees": {
-        "symbole": "ADA",
-        "nom": "Cardano",
-        "prix": 0.249155,
-        "variation_7d": -13.53
-      }
-    },
-    {
-      "id": "alert-2026-03-23-004",
-      "titre": "Dogecoin (DOGE) : -11,17% sur 7 jours, volatilité accrue",
-      "texte": "Dogecoin recule de 11,17% sur une semaine dans un contexte de panique générale sur les cryptomonnaies liée aux tensions géopolitiques.",
-      "categorie": "crypto",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-03-23T07:09:55.126Z",
+      "horodatage": "2026-03-26T13:18:13.950Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
-        "prix": 413.38,
-        "variation": -3.06
+        "prix": 416.29,
+        "variation": 3.01
       }
     },
     {
-      "id": "alert-2026-03-23-005",
-      "titre": "Resolv stablecoin : -70%, extraction de $25M en ETH",
-      "texte": "Le stablecoin Resolv (USR) s'effondre de 70% suite à une attaque ayant permis l'extraction de $25M en Ethereum. Incident majeur de sécurité révélant une clé compromise.",
-      "categorie": "crypto",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-03-23T07:09:55.126Z",
-      "donnees": {
-        "symbole": "USO",
-        "nom": "Pétrole (ETF)",
-        "prix": 121.43,
-        "variation": 3.47
-      }
-    },
-    {
-      "id": "alert-2026-03-23-006",
-      "titre": "Pétrole (USO) : +3,47% à $121,43, tensions Ormuz",
-      "texte": "L'ETF pétrole USO gagne 3,47% à $121,43 suite à l'ultimatum américain de 48h sur le détroit d'Ormuz et aux menaces iraniennes de représailles. Panier pétrolier dépasse $155.",
-      "categorie": "matieres_premieres",
-      "severite": "attention",
-      "impact": "haussier",
-      "horodatage": "2026-03-23T07:09:55.126Z",
-      "donnees": {
-        "symbole": "NVDA",
-        "nom": "Nvidia",
-        "prix": 172.7,
-        "variation": -3.28
-      }
-    },
-    {
-      "id": "alert-2026-03-23-007",
-      "titre": "Or (GLD) : -3,06% à $413,38, paradoxe refuge",
-      "texte": "L'or recule paradoxalement de 3,06% à $413,38 malgré la crise géopolitique majeure, suggérant une liquidation d'actifs refuge pour financer les appels de marge.",
-      "categorie": "matieres_premieres",
-      "severite": "info",
-      "impact": "baissier",
-      "horodatage": "2026-03-23T07:09:55.126Z",
-      "donnees": {
-        "symbole": "TSLA",
-        "nom": "Tesla",
-        "prix": 367.96,
-        "variation": -3.24
-      }
-    },
-    {
-      "id": "alert-2026-03-23-008",
-      "titre": "Nvidia (NVDA) : -3,28% à $172,70, correction tech",
-      "texte": "Nvidia recule de 3,28% à $172,70 dans un contexte de baisse généralisée des marchés actions liée aux tensions géopolitiques et à la hausse des rendements obligataires.",
-      "categorie": "marches",
-      "severite": "info",
-      "impact": "baissier",
-      "horodatage": "2026-03-23T07:09:55.126Z",
-      "donnees": {
-        "score": 8,
-        "label": "Extreme Fear",
-        "variation_7j": -15
-      }
-    },
-    {
-      "id": "alert-2026-03-23-009",
-      "titre": "Tesla (TSLA) : -3,24% à $367,96, secteur automobile affecté",
-      "texte": "Tesla recule de 3,24% à $367,96 dans un contexte de correction boursière généralisée et de préoccupations concernant les chaînes d'approvisionnement mondiales.",
-      "categorie": "marches",
-      "severite": "info",
-      "impact": "baissier",
-      "horodatage": "2026-03-23T07:09:55.126Z",
-      "donnees": {
-        "score": 8,
-        "label": "Extreme Fear",
-        "variation_7j": -15
-      }
-    },
-    {
-      "id": "alert-2026-03-23-010",
-      "titre": "Fear & Greed Index : 8/100 (Extreme Fear), -15 pts sur 7 jours",
-      "texte": "L'indice Fear & Greed atteint 8/100 (peur extrême), en baisse de 15 points sur 7 jours, reflétant une aversion au risque maximale suite aux tensions géopolitiques et aux mouvements de marché.",
+      "id": "alert-2026-03-26-002",
+      "titre": "Fear & Greed Index : 10/100 (peur extrême), chute de -13 pts en 7 jours",
+      "texte": "Indice Fear & Greed s'effondre à 10/100 (peur extrême) avec variation de -13 points sur 7 jours. Reflète escalade géopolitique majeure (conflit Iran-Israël) et rejet du plan de paix par Téhéran, générant aversion au risque systémique.",
       "categorie": "marches",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-03-23T07:09:55.126Z",
-      "donnees": {}
+      "horodatage": "2026-03-26T13:18:13.950Z",
+      "donnees": {
+        "score": 10,
+        "label": "Extreme Fear",
+        "variation_7j": -13
+      }
     },
     {
-      "id": "alert-2026-03-23-011",
-      "titre": "Moyen-Orient : escalade majeure, attaques coordonnées contre Golfe",
-      "texte": "L'Arabie saoudite, les Émirats arabes unis et Bahreïn sont visés par des attaques coordonnées. Trump donne 48h à l'Iran pour rouvrir le détroit d'Ormuz ; Téhéran menace de frapper les infrastructures énergétiques.",
+      "id": "alert-2026-03-26-003",
+      "titre": "Moyen-Orient : escalade Iran-Israël jour 27, détroit d'Ormuz menacé",
+      "texte": "Guerre Iran-Israël poursuit escalade avec attaques aériennes réciproques, missiles et drones. Fermeture potentielle du détroit d'Ormuz (30% du pétrole maritime mondial) constitue risque critique pour approvisionnements énergétiques globaux et stabilité économique.",
       "categorie": "geopolitique",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-03-23T07:09:55.126Z",
+      "horodatage": "2026-03-26T13:18:13.950Z",
+      "donnees": {
+        "score": 10,
+        "label": "Extreme Fear",
+        "variation_7j": -13
+      }
+    },
+    {
+      "id": "alert-2026-03-26-004",
+      "titre": "Équités asiatiques : repli suite rejet plan de paix iranien",
+      "texte": "Marchés équitaires asiatiques en retrait après rejet par l'Iran du plan de trêve en 15 points de Trump. Maintien de posture offensive iranienne élimine perspective court terme de désescalade, prolongeant incertitude géopolitique.",
+      "categorie": "marches",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-03-26T13:18:13.950Z",
       "donnees": {}
     }
   ],
   "stats": {
-    "total": 11,
-    "urgent": 4,
-    "attention": 4,
-    "info": 3
+    "total": 4,
+    "urgent": 2,
+    "attention": 2,
+    "info": 0
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
