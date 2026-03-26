@@ -536,7 +536,7 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
 
    // Back nav
    h('div',{className:'mt-10 text-center not-prose'},
-    h('a',{href:'analysis.html',className:'inline-block px-6 py-2.5 text-sm font-semibold text-[#006650] border-2 border-[#006650] rounded-lg hover:bg-[#006650] hover:text-white transition-colors'},'\u2190 Toutes les analyses')
+    h('a',{href:'analyses.html',className:'inline-block px-6 py-2.5 text-sm font-semibold text-[#006650] border-2 border-[#006650] rounded-lg hover:bg-[#006650] hover:text-white transition-colors'},'\u2190 Toutes les analyses')
    )
   ),
 
@@ -575,7 +575,7 @@ intelligence:[
 {label:'ETF & Fonds',href:'etf.html'},
 ],
 plateforme:[
-{label:'Analyses',href:'analysis.html'},
+{label:'Analyses',href:'analyses.html'},
 {label:'Expertise',href:'expertise.html'},
 {label:'Services',href:'premium.html'},
 {label:'Diagnostic',href:'premium.html#diagnostic'},
@@ -646,5 +646,6 @@ return h('div',null,
 
 createRoot(document.getElementById('app')).render(h(App))
 </script>
+<script src="scroll-reveal.js"></script>
 </body>
 </html>

@@ -1229,7 +1229,7 @@ const DataLoader = (function () {
 
     /**
      * Génère le HTML de l'article du jour en format carte compacte
-     * (utilisé sur analysis.html et les pages thématiques).
+     * (utilisé sur analyses.html et les pages thématiques).
      * @param {Object} article - Données de article-du-jour.json
      * @returns {string} HTML
      */
@@ -1263,7 +1263,7 @@ const DataLoader = (function () {
 
     /**
      * Affiche l'article du jour IA en haut de la page Analyses.
-     * Container : #article-du-jour-analysis (dans analysis.html)
+     * Container : #article-du-jour-analysis (dans analyses.html)
      */
     function updateAnalysisPageArticle() {
         var container = document.getElementById('article-du-jour-analysis');
@@ -1827,7 +1827,7 @@ const DataLoader = (function () {
         {
             titre: 'SpaceX + xAI : quand Musk crée le premier conglomérat IA-aérospatial à 1 250 milliards',
             resume: 'La plus grande fusion de l\'histoire crée une entité à 1 250 Mds $. Centres de données orbitaux, constellation de 1 million de satellites, IPO prévue mi-2026.',
-            url: 'analysis.html',
+            url: 'analyses.html',
             date: '5 fév. 2026',
             categorie: 'sectorielle',
             gradient: 'linear-gradient(135deg, #1E3A5F 0%, #3B82F6 100%)',
@@ -1837,7 +1837,7 @@ const DataLoader = (function () {
         {
             titre: 'Stablecoins : la vraie allocation défensive en crypto (et pourquoi le « digital gold » est mort)',
             resume: '33 000 Mds $ de transactions en 2025, croissance de 50 %. Les stablecoins sont devenus le seul refuge dans un écosystème où tout baisse avec le BTC.',
-            url: 'analysis.html',
+            url: 'analyses.html',
             date: '5 fév. 2026',
             categorie: 'crypto',
             gradient: 'linear-gradient(135deg, #312E81 0%, #7C3AED 100%)',
@@ -1847,7 +1847,7 @@ const DataLoader = (function () {
         {
             titre: 'Or, argent, pétrole : le supercycle des matières premières face à la dédollarisation',
             resume: 'Or à 5 100 $, argent au-dessus de 100 $ pour la première fois. Les banques centrales achètent 60 tonnes/mois. L\'OPEC+ maintient ses coupes face à la demande chinoise incertaine.',
-            url: 'analysis.html',
+            url: 'analyses.html',
             date: '6 fév. 2026',
             categorie: 'commodities',
             gradient: 'linear-gradient(135deg, #78350F 0%, #F59E0B 100%)',

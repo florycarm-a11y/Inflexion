@@ -286,6 +286,53 @@ return h('section',{className:'relative pt-28 pb-14 md:pt-36 md:pb-16',style:{ba
 )
 }
 
+// ─── ARTICLE DU JOUR ────────────────────────────────────────────────────────
+
+function ArticleDuJour(){
+const[article,setArticle]=useState(null)
+useEffect(()=>{
+fetch('data/article-du-jour.json').then(r=>r.ok?r.json():null).then(d=>{
+if(d&&d.titre)setArticle(d)
+}).catch(()=>{})
+},[])
+if(!article)return null
+
+const tags=(article.tags||[]).slice(0,4)
+const points=(article.points_cles||[]).slice(0,3)
+const date=article.date?new Date(article.date).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'}):''
+
+return h('section',{className:'pt-16 md:pt-20 pb-0'},
+ h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+  h('div',{className:'rounded-2xl border border-[#E2E5EB] bg-white overflow-hidden shadow-sm'},
+   h('div',{className:'p-6 md:p-8'},
+    h('div',{className:'flex items-center gap-3 mb-4'},
+     h('span',{className:'inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#006650]/10 text-[#006650] text-xs font-semibold uppercase tracking-wider'},
+      h('span',{className:'w-2 h-2 rounded-full bg-[#006650] animate-pulse'}),
+      'Article du jour'
+     ),
+     date&&h('span',{className:'text-xs text-[#5A6178]'},date)
+    ),
+    h('h2',{className:'text-xl md:text-2xl font-bold text-[#1A1F2E] leading-snug mb-2',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},article.titre),
+    article.sous_titre&&h('p',{className:'text-base text-[#5A6178] leading-relaxed mb-4'},article.sous_titre),
+    points.length>0&&h('ul',{className:'space-y-2 mb-4'},
+     ...points.map((p,i)=>
+      h('li',{key:i,className:'flex items-start gap-2 text-sm text-[#1A1F2E]'},
+       h('span',{className:'mt-1.5 w-1.5 h-1.5 rounded-full bg-[#006650] flex-shrink-0'}),
+       p
+      )
+     )
+    ),
+    tags.length>0&&h('div',{className:'flex flex-wrap gap-2'},
+     ...tags.map((t,i)=>
+      h('span',{key:i,className:'px-2.5 py-0.5 rounded-full bg-[#F7F8FA] text-[11px] font-medium text-[#5A6178] border border-[#E2E5EB]'},t)
+     )
+    )
+   )
+  )
+ )
+)
+}
+
 // ─── ANALYSES GRID ───────────────────────────────────────────────────────────
 
 function AnalysesGrid(){
@@ -407,6 +454,7 @@ return h('div',null,
  h(Navigation),
  h('main',{id:'main-content'},
   h(PageHero),
+  h(ArticleDuJour),
   h(AnalysesGrid)
  ),
  h(Footer)
@@ -415,5 +463,6 @@ return h('div',null,
 
 createRoot(document.getElementById('app')).render(h(App))
 </script>
+<script src="scroll-reveal.js"></script>
 </body>
 </html>

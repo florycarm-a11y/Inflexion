@@ -13,7 +13,7 @@ window.MEGA_NAV=[
  {icon:'Ef',label:'ETF & Fonds',desc:'Allocations & flux de capitaux',href:'etf.html'},
 ]},
 {label:'Analyses',children:[
- {icon:'Bj',label:'Briefing du jour',desc:'Synthèse IA quotidienne',href:'index.html#briefing'},
+ {icon:'Bj',label:'Briefing du jour',desc:'Synthèse IA quotidienne',href:'briefing.html'},
  {icon:'An',label:'Analyses approfondies',desc:'Décryptages thématiques',href:'analyses.html'},
  {icon:'Mc',label:'Macro par pays',desc:'Données World Bank & indicateurs',href:'country.html'},
 ]},
