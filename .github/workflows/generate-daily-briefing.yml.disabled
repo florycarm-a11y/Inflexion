@@ -1,0 +1,178 @@
+# Inflexion — Briefing IA Quotidien Stratégique + RAG Indexation
+# Déclenché automatiquement après le succès de fetch-data (workflow_run)
+#
+# Ce workflow :
+# 1. Indexe les articles disponibles dans le store RAG (embeddings locaux)
+# 2. Génère le briefing stratégique avec contexte historique RAG
+# 3. Indexe le briefing produit dans le store RAG pour le lendemain
+#
+# Prérequis :
+#   - ANTHROPIC_API_KEY dans GitHub Secrets (console.anthropic.com)
+#   - PAT_TOKEN dans GitHub Secrets (pour committer)
+#   - data/news.json + data de marché (générés par fetch-data.yml)
+
+name: "🧠 Generate Daily Briefing"
+
+on:
+  # Déclenché automatiquement après fetch-data (données marché fraîches)
+  workflow_run:
+    workflows: ["📊 Fetch Market Data"]
+    types: [completed]
+
+  # Exécution manuelle depuis l'onglet Actions (utile pour tester)
+  workflow_dispatch:
+
+# Permissions nécessaires pour committer les fichiers
+permissions:
+  contents: write
+
+# Une seule exécution à la fois
+concurrency:
+  group: "generate-daily-briefing"
+  cancel-in-progress: true
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # Ne s'exécuter que si fetch-data a réussi (ou si déclenché manuellement/push)
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: "📥 Checkout du repo"
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: "🟢 Setup Node.js 22"
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: "📦 Install dependencies"
+        run: npm ci
+
+      - name: "🔄 Fetch latest commits (workflow_run may have stale checkout)"
+        run: git fetch origin main && git reset --hard origin/main
+
+      - name: "🔍 Vérifier la fraîcheur des données et l'absence de doublon"
+        id: check-data
+        run: |
+          SHOULD_RUN=true
+
+          # 1. Vérifier le jour de la semaine (lun=1, mer=3, ven=5 uniquement)
+          # Seulement pour les exécutions automatiques (workflow_run), pas les manuelles
+          # Réduit les coûts API Sonnet de ~57% (3 briefings/semaine au lieu de 7)
+          if [ "${{ github.event_name }}" = "workflow_run" ]; then
+            DAY_OF_WEEK=$(date -u +%u)
+            if [ "$DAY_OF_WEEK" != "1" ] && [ "$DAY_OF_WEEK" != "3" ] && [ "$DAY_OF_WEEK" != "5" ]; then
+              echo "⏭ Briefing non prévu aujourd'hui (jour $DAY_OF_WEEK, prévu lun/mer/ven)"
+              SHOULD_RUN=false
+            else
+              echo "✅ Jour de briefing (jour $DAY_OF_WEEK)"
+            fi
+          fi
+
+          # 2. Vérifier que les données sont fraîches (< 60 min)
+          # Seulement pour les exécutions automatiques — les déclenchements manuels
+          # (workflow_dispatch) bypassen ce check pour permettre de forcer la génération
+          NOW=$(date +%s)
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "✅ Exécution manuelle — check de fraîcheur ignoré"
+          else
+            LAST_DATA_CHANGE=$(git log -1 --format="%ct" -- data/)
+            DATA_AGE=$((NOW - LAST_DATA_CHANGE))
+            echo "📊 Dernier commit data/ il y a ${DATA_AGE}s ($((DATA_AGE / 60)) min)"
+            if [ $DATA_AGE -gt 3600 ]; then
+              echo "⏭ Pas de nouvelles données (> 60 min)"
+              SHOULD_RUN=false
+            else
+              echo "✅ Données fraîches détectées"
+            fi
+          fi
+
+          # 3. Vérifier que le briefing n'a pas déjà été généré récemment (< 10h)
+          # Utilise la date interne du JSON (fiable) plutôt que git log (peu fiable en shallow clone)
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "✅ Exécution manuelle — check de doublon ignoré"
+          elif [ -f data/daily-briefing.json ]; then
+            BRIEFING_DATE=$(node -e "try { const b = JSON.parse(require('fs').readFileSync('data/daily-briefing.json','utf8')); console.log(b.generated_at || b.date || ''); } catch(e) { console.log(''); }")
+            if [ -n "$BRIEFING_DATE" ]; then
+              LAST_BRIEFING=$(node -e "console.log(Math.floor(new Date('$BRIEFING_DATE').getTime()/1000))")
+              BRIEFING_AGE=$((NOW - LAST_BRIEFING))
+              echo "📊 Dernier briefing : $BRIEFING_DATE (il y a $((BRIEFING_AGE / 3600))h)"
+              if [ $BRIEFING_AGE -lt 36000 ]; then
+                echo "⏭ Briefing déjà généré (< 10h) — skip"
+                SHOULD_RUN=false
+              fi
+            else
+              echo "📊 Aucune date valide dans le briefing — régénération forcée"
+            fi
+          else
+            echo "📊 Aucun briefing précédent trouvé"
+          fi
+
+          echo "data_changed=${SHOULD_RUN}" >> $GITHUB_OUTPUT
+          echo "📊 SHOULD_RUN=${SHOULD_RUN}"
+
+      - name: "🔄 Cache modèle transformers.js"
+        uses: actions/cache@v4
+        with:
+          path: .cache/transformers
+          key: transformers-all-MiniLM-L6-v2
+
+      - name: "📚 RAG — Indexation des articles du jour"
+        if: steps.check-data.outputs.data_changed == 'true'
+        continue-on-error: true
+        run: node scripts/rag-index.mjs --articles
+
+      - name: "🧠 Génération du briefing stratégique (avec RAG)"
+        if: steps.check-data.outputs.data_changed == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-daily-briefing.mjs
+
+      - name: "📋 RAG — Indexation du briefing produit"
+        if: steps.check-data.outputs.data_changed == 'true'
+        continue-on-error: true
+        run: node scripts/rag-index.mjs --briefing
+
+      - name: "⏭ Génération ignorée — données inchangées"
+        if: steps.check-data.outputs.data_changed != 'true'
+        run: echo "Les données n'ont pas changé depuis la dernière exécution. Briefing ignoré."
+
+      - name: "📝 Commit et push"
+        if: steps.check-data.outputs.data_changed == 'true'
+        run: |
+          git config user.name "Inflexion Bot"
+          git config user.email "bot@inflexionhub.com"
+
+          # Ajouter le briefing et les données RAG
+          [ -f data/daily-briefing.json ] && git add data/daily-briefing.json || true
+          [ -d data/rag ] && git add data/rag/ || true
+
+          # Vérifier s'il y a des changements
+          if git diff --staged --quiet; then
+            echo "Aucun changement"
+            exit 0
+          fi
+
+          # Commit avec timestamp
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+          git commit -m "🧠 Briefing IA quotidien + RAG — ${TIMESTAMP}
+
+          Briefing stratégique généré par Claude Sonnet (signaux + interconnexions + risk radar).
+          Articles et briefing indexés dans le store RAG."
+
+          # Nettoyer fichiers non-stagés + push avec retry
+          git checkout -- .
+          for i in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main && git push && break
+            echo "⟳ Retry push $i/3..."
+            sleep 5
+          done

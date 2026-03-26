@@ -588,7 +588,15 @@ async function main() {
     console.log('═══════════════════════════════════════════════\n');
 }
 
-main().catch(err => {
-    console.error('Erreur fatale:', err);
-    process.exit(1);
-});
+// Ne pas lancer main() si importé comme module
+const isDirectRun = import.meta.url === `file://${process.argv[1]}`;
+if (isDirectRun) {
+    main().catch(err => { console.error('Erreur fatale:', err); process.exit(1); });
+}
+
+// Exports pour réutilisation par le pipeline unifié
+export {
+    loadAllSources, formatMarketContext, detectSignificantChanges,
+    runSentimentAndAlerts, runMacroAndBriefing,
+    loadJSON, writeJSON, today,
+};

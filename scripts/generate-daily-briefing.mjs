@@ -709,8 +709,7 @@ async function main() {
 
     // Il faut au minimum les news pour générer le briefing
     if (!sources.news) {
-        console.error('\n  ❌ news.json introuvable — exécuter fetch-data.mjs d\'abord');
-        process.exit(1);
+        throw new Error('news.json introuvable — exécuter fetch-data.mjs d\'abord');
     }
 
     // ── 2. Sélectionner les articles les plus importants ──────
@@ -937,10 +936,7 @@ ${consignes}`;
 
     // ── 5. Vérifier la clé API ────────────────────────────────
     if (!process.env.ANTHROPIC_API_KEY) {
-        console.error('\n  ❌ ANTHROPIC_API_KEY non définie');
-        console.error('  → Ajouter le secret dans GitHub: Settings > Secrets > ANTHROPIC_API_KEY');
-        console.error('  → Clé sur https://console.anthropic.com');
-        process.exit(1);
+        throw new Error('ANTHROPIC_API_KEY non définie — ajouter le secret dans GitHub Settings');
     }
 
     // ── 6. Appeler Claude pour le briefing ────────────────────
@@ -1086,10 +1082,11 @@ if (isDirectRun) {
     main().catch(err => { console.error('Erreur fatale:', err); process.exit(1); });
 }
 
-// Export pour tests unitaires
+// Export pour tests unitaires et pipeline unifié
 export { selectTopArticles, formatNewsContext, formatMarkets, formatCrypto,
          formatFearGreed, formatMacro, formatGlobalMacro, formatCommodities,
          formatEuropeanMarkets, formatDefi, formatAlphaVantage, formatOnChain,
          formatSentiment, isFullBriefingDay, loadPreviousBriefing, formatPreviousBriefing,
          stripHTML, detectSuspiciousPatterns, sanitizeText, sanitizeArticles,
-         SANITIZE_MAX_LENGTH, SUSPICIOUS_PATTERNS };
+         SANITIZE_MAX_LENGTH, SUSPICIOUS_PATTERNS,
+         main as generateStrategicBriefing };

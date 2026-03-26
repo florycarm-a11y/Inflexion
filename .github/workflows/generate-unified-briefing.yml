@@ -1,17 +1,22 @@
-# Inflexion — Briefing IA Quotidien Stratégique + RAG Indexation
-# Déclenché automatiquement après le succès de fetch-data (workflow_run)
+# Inflexion — Pipeline de briefing unifié (marché + stratégique + RAG)
+# Remplace generate-daily-briefing.yml + analyze-sentiment.yml
 #
 # Ce workflow :
-# 1. Indexe les articles disponibles dans le store RAG (embeddings locaux)
-# 2. Génère le briefing stratégique avec contexte historique RAG
-# 3. Indexe le briefing produit dans le store RAG pour le lendemain
+# 1. Génère l'analyse marché consolidée (sentiment + alertes + macro + briefing)
+# 2. Archive le briefing précédent dans data/briefing-history/
+# 3. Indexe les articles dans le store RAG
+# 4. Génère le briefing stratégique avec contexte RAG + sentiment frais
+# 5. Indexe le briefing produit dans le store RAG
+#
+# Tourne QUOTIDIENNEMENT (pas de filtre jour de la semaine)
+# Coût : ~3 appels Haiku/jour + 1 Sonnet le lundi
 #
 # Prérequis :
-#   - ANTHROPIC_API_KEY dans GitHub Secrets (console.anthropic.com)
-#   - PAT_TOKEN dans GitHub Secrets (pour committer)
+#   - ANTHROPIC_API_KEY dans GitHub Secrets
+#   - PAT_TOKEN dans GitHub Secrets
 #   - data/news.json + data de marché (générés par fetch-data.yml)
 
-name: "🧠 Generate Daily Briefing"
+name: "🧠 Generate Unified Briefing"
 
 on:
   # Déclenché automatiquement après fetch-data (données marché fraîches)
@@ -19,7 +24,7 @@ on:
     workflows: ["📊 Fetch Market Data"]
     types: [completed]
 
-  # Exécution manuelle depuis l'onglet Actions (utile pour tester)
+  # Exécution manuelle depuis l'onglet Actions
   workflow_dispatch:
 
 # Permissions nécessaires pour committer les fichiers
@@ -28,14 +33,17 @@ permissions:
 
 # Une seule exécution à la fois
 concurrency:
-  group: "generate-daily-briefing"
+  group: "generate-unified-briefing"
   cancel-in-progress: true
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-    # Ne s'exécuter que si fetch-data a réussi (ou si déclenché manuellement/push)
+    timeout-minutes: 20
+    # Ne s'exécuter que si fetch-data a réussi (ou si déclenché manuellement)
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
 
     steps:
@@ -61,25 +69,11 @@ jobs:
         run: |
           SHOULD_RUN=true
 
-          # 1. Vérifier le jour de la semaine (lun=1, mer=3, ven=5 uniquement)
-          # Seulement pour les exécutions automatiques (workflow_run), pas les manuelles
-          # Réduit les coûts API Sonnet de ~57% (3 briefings/semaine au lieu de 7)
-          if [ "${{ github.event_name }}" = "workflow_run" ]; then
-            DAY_OF_WEEK=$(date -u +%u)
-            if [ "$DAY_OF_WEEK" != "1" ] && [ "$DAY_OF_WEEK" != "3" ] && [ "$DAY_OF_WEEK" != "5" ]; then
-              echo "⏭ Briefing non prévu aujourd'hui (jour $DAY_OF_WEEK, prévu lun/mer/ven)"
-              SHOULD_RUN=false
-            else
-              echo "✅ Jour de briefing (jour $DAY_OF_WEEK)"
-            fi
-          fi
-
-          # 2. Vérifier que les données sont fraîches (< 60 min)
-          # Seulement pour les exécutions automatiques — les déclenchements manuels
-          # (workflow_dispatch) bypassen ce check pour permettre de forcer la génération
+          # 1. Vérifier que les données sont fraîches (< 60 min)
+          # Exécutions manuelles (workflow_dispatch) bypassen ce check
           NOW=$(date +%s)
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "✅ Exécution manuelle — check de fraîcheur ignoré"
+            echo "✅ Exécution manuelle — checks de fraîcheur et doublon ignorés"
           else
             LAST_DATA_CHANGE=$(git log -1 --format="%ct" -- data/)
             DATA_AGE=$((NOW - LAST_DATA_CHANGE))
@@ -90,27 +84,20 @@ jobs:
             else
               echo "✅ Données fraîches détectées"
             fi
-          fi
 
-          # 3. Vérifier que le briefing n'a pas déjà été généré récemment (< 10h)
-          # Utilise la date interne du JSON (fiable) plutôt que git log (peu fiable en shallow clone)
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "✅ Exécution manuelle — check de doublon ignoré"
-          elif [ -f data/daily-briefing.json ]; then
-            BRIEFING_DATE=$(node -e "try { const b = JSON.parse(require('fs').readFileSync('data/daily-briefing.json','utf8')); console.log(b.generated_at || b.date || ''); } catch(e) { console.log(''); }")
-            if [ -n "$BRIEFING_DATE" ]; then
-              LAST_BRIEFING=$(node -e "console.log(Math.floor(new Date('$BRIEFING_DATE').getTime()/1000))")
-              BRIEFING_AGE=$((NOW - LAST_BRIEFING))
-              echo "📊 Dernier briefing : $BRIEFING_DATE (il y a $((BRIEFING_AGE / 3600))h)"
-              if [ $BRIEFING_AGE -lt 36000 ]; then
-                echo "⏭ Briefing déjà généré (< 10h) — skip"
-                SHOULD_RUN=false
+            # 2. Vérifier que le briefing n'a pas déjà été généré récemment (< 10h)
+            if [ -f data/daily-briefing.json ]; then
+              BRIEFING_DATE=$(node -e "try { const b = JSON.parse(require('fs').readFileSync('data/daily-briefing.json','utf8')); console.log(b.generated_at || b.date || ''); } catch(e) { console.log(''); }")
+              if [ -n "$BRIEFING_DATE" ]; then
+                LAST_BRIEFING=$(node -e "console.log(Math.floor(new Date('$BRIEFING_DATE').getTime()/1000))")
+                BRIEFING_AGE=$((NOW - LAST_BRIEFING))
+                echo "📊 Dernier briefing : $BRIEFING_DATE (il y a $((BRIEFING_AGE / 3600))h)"
+                if [ $BRIEFING_AGE -lt 36000 ]; then
+                  echo "⏭ Briefing déjà généré (< 10h) — skip"
+                  SHOULD_RUN=false
+                fi
               fi
-            else
-              echo "📊 Aucune date valide dans le briefing — régénération forcée"
             fi
-          else
-            echo "📊 Aucun briefing précédent trouvé"
           fi
 
           echo "data_changed=${SHOULD_RUN}" >> $GITHUB_OUTPUT
@@ -127,11 +114,11 @@ jobs:
         continue-on-error: true
         run: node scripts/rag-index.mjs --articles
 
-      - name: "🧠 Génération du briefing stratégique (avec RAG)"
+      - name: "🧠 Pipeline unifié (marché + archivage + briefing stratégique)"
         if: steps.check-data.outputs.data_changed == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: node scripts/generate-daily-briefing.mjs
+        run: node scripts/generate-unified-briefing.mjs
 
       - name: "📋 RAG — Indexation du briefing produit"
         if: steps.check-data.outputs.data_changed == 'true'
@@ -140,7 +127,7 @@ jobs:
 
       - name: "⏭ Génération ignorée — données inchangées"
         if: steps.check-data.outputs.data_changed != 'true'
-        run: echo "Les données n'ont pas changé depuis la dernière exécution. Briefing ignoré."
+        run: echo "Les données n'ont pas changé depuis la dernière exécution. Pipeline ignoré."
 
       - name: "📝 Commit et push"
         if: steps.check-data.outputs.data_changed == 'true'
@@ -148,8 +135,13 @@ jobs:
           git config user.name "Inflexion Bot"
           git config user.email "bot@inflexionhub.com"
 
-          # Ajouter le briefing et les données RAG
+          # Ajouter tous les fichiers produits par le pipeline
+          [ -f data/sentiment.json ] && git add data/sentiment.json || true
+          [ -f data/alerts.json ] && git add data/alerts.json || true
+          [ -f data/macro-analysis.json ] && git add data/macro-analysis.json || true
+          [ -f data/market-briefing.json ] && git add data/market-briefing.json || true
           [ -f data/daily-briefing.json ] && git add data/daily-briefing.json || true
+          [ -d data/briefing-history ] && git add data/briefing-history/ || true
           [ -d data/rag ] && git add data/rag/ || true
 
           # Vérifier s'il y a des changements
@@ -160,12 +152,11 @@ jobs:
 
           # Commit avec timestamp
           TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
-          git commit -m "🧠 Briefing IA quotidien + RAG — ${TIMESTAMP}
+          git commit -m "🧠 Pipeline unifié (marché + briefing + RAG) — ${TIMESTAMP}
 
-          Briefing stratégique généré par Claude Sonnet (signaux + interconnexions + risk radar).
-          Articles et briefing indexés dans le store RAG."
+          Analyse marché consolidée + briefing stratégique + archivage historique."
 
-          # Nettoyer fichiers non-stagés + push avec retry
+          # Push avec retry (en cas de conflit avec d'autres workflows)
           git checkout -- .
           for i in 1 2 3; do
             git fetch origin main
