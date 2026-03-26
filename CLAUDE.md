@@ -32,6 +32,7 @@ Inflexion/
 ├── expertise.html          # Page méthodologie, approche & SEMPLICE (#semplice)
 ├── country.html            # Radar Pays — carte Leaflet + scatter plot + tableau triable
 ├── ai-tech.html            # Page IA & Tech
+├── briefing.html           # Briefing stratégique quotidien (React, fetch daily-briefing.json)
 ├── analyse-*.html          # Articles d'analyse thématique
 ├── cgu.html / mentions-legales.html / confidentialite.html
 ├── styles.css              # CSS pages legacy (variables `:root` migrées)
@@ -79,7 +80,7 @@ Inflexion/
 
 ### Architecture double
 - **Pages legacy** (geopolitics, markets, crypto, commodities, etf, premium, expertise, country) : `styles.css` + `nav-shared.js` (dernier script)
-- **Pages React** (index, analyses, analyse-*.html) : Tailwind CDN + styles inline
+- **Pages React** (index, analyses, briefing, analyse-*.html) : Tailwind CDN + styles inline
 
 ### Couleurs interdites (anciennes)
 `#0B3D1E`, `#072A14`, `#14713A`, `#EDE8DC`, `#C41E3A`, `#8CBF9E`, `#1B6B4A`, `#155A3D`, `#0A1628`, `#0F2035`, `#162A45`, `Plus Jakarta Sans`
