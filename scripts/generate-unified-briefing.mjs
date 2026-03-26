@@ -120,15 +120,18 @@ async function main() {
             runMacroAndBriefing,
             formatMarketContext,
             detectSignificantChanges,
+            runAllEnrichments,
         } = await import('./generate-market-analysis.mjs');
 
         const sources = loadAllSources();
 
         if (DRY_RUN) {
             const changes = detectSignificantChanges(sources);
-            console.log(`\n🔍 [DRY-RUN] ${changes.length} mouvement(s) significatif(s)`);
+            const enrichments = runAllEnrichments(sources);
+            console.log(`\n🔍 [DRY-RUN] ${changes.length} mouvement(s) + ${enrichments.signals.length} signal(aux) enrichi(s)`);
             const sections = formatMarketContext(sources);
-            console.log(`🔍 [DRY-RUN] ${sections.length} sections de marché prêtes`);
+            console.log(`🔍 [DRY-RUN] ${sections.length + enrichments.sections.length} sections de marché`);
+            console.log(`🔍 [DRY-RUN] Régime : ${enrichments.interconnexion?.regime || 'N/A'}`);
         } else {
             await runSentimentAndAlerts(sources);
             await runMacroAndBriefing(sources);

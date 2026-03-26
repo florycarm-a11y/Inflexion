@@ -142,6 +142,7 @@ jobs:
           [ -f data/market-briefing.json ] && git add data/market-briefing.json || true
           [ -f data/daily-briefing.json ] && git add data/daily-briefing.json || true
           [ -d data/briefing-history ] && git add data/briefing-history/ || true
+          [ -f data/defi-history.json ] && git add data/defi-history.json || true
           [ -d data/rag ] && git add data/rag/ || true
 
           # Vérifier s'il y a des changements

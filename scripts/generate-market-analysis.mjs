@@ -30,6 +30,7 @@ import {
     CONSOLIDATED_SENTIMENT_ALERTS_PROMPT,
     CONSOLIDATED_MACRO_BRIEFING_PROMPT,
 } from './lib/prompts.mjs';
+import { runAllEnrichments } from './lib/data-enrichment.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, '..', 'data');
@@ -98,6 +99,8 @@ function loadAllSources() {
         defi: loadJSON('defi.json'),
         alphaVantage: loadJSON('alpha-vantage.json'),
         onchain: loadJSON('onchain.json'),
+        europeanMarkets: loadJSON('european-markets.json'),
+        worldBank: loadJSON('world-bank.json'),
     };
 
     const available = Object.entries(sources)
@@ -319,13 +322,24 @@ async function runSentimentAndAlerts(sources) {
         userMessage += `## ${rubrique} (${articles.length} articles)\n${titles}\n\n`;
     }
 
-    // PARTIE 2 : mouvements significatifs pour les alertes
+    // PARTIE 2 : mouvements significatifs pour les alertes (incluant enrichissements)
     const changes = detectSignificantChanges(sources);
+    const enrichments = runAllEnrichments(sources);
+    changes.push(...enrichments.signals);
+
     userMessage += '# MOUVEMENTS DE MARCHÉ SIGNIFICATIFS\n\n';
     if (changes.length > 0) {
         userMessage += changes.map((c, i) => `[${i + 1}] ${c.description}`).join('\n');
     } else {
         userMessage += 'Aucun mouvement significatif détecté. Retourne un tableau "alertes" vide.';
+    }
+
+    // Interconnexion Index (contexte régime marché)
+    if (enrichments.interconnexion) {
+        userMessage += `\n\n# RÉGIME DE MARCHÉ\nRégime détecté : ${enrichments.interconnexion.regime} (consensus ${enrichments.interconnexion.consensus}%, amplitude ${enrichments.interconnexion.amplitude_moyenne}%)`;
+        const classes = Object.entries(enrichments.interconnexion.par_classe)
+            .map(([c, avg]) => `${c}: ${avg > 0 ? '+' : ''}${avg}%`).join(', ');
+        userMessage += `\nPar classe d'actifs : ${classes}`;
     }
 
     userMessage += '\n\nProduis le JSON consolidé sentiment + alertes.';
@@ -410,8 +424,10 @@ async function runMacroAndBriefing(sources) {
     console.log('  📈 Appel 2/2 : Macro + Briefing');
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 
-    // Construire le contexte marché (une seule fois pour les deux analyses)
+    // Construire le contexte marché + sections enrichies
     const sections = formatMarketContext(sources);
+    const enrichments = runAllEnrichments(sources);
+    sections.push(...enrichments.sections);
 
     if (sections.length === 0) {
         console.log('  ⚠ Aucune donnée de marché disponible — macro+briefing ignoré');
@@ -599,4 +615,5 @@ export {
     loadAllSources, formatMarketContext, detectSignificantChanges,
     runSentimentAndAlerts, runMacroAndBriefing,
     loadJSON, writeJSON, today,
+    runAllEnrichments,
 };
