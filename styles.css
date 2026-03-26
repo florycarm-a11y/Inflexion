@@ -2819,7 +2819,7 @@ a {
 .hero-cta:hover {
     background: var(--accent-dark, #06402A);
     transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(11, 61, 30, 0.35);
+    box-shadow: 0 4px 16px rgba(6, 64, 42, 0.35);
 }
 
 /* Desktop header layout */
@@ -3696,7 +3696,7 @@ body.page-markets .market-status {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(11, 61, 30, 0.95) 0%, rgba(11, 61, 30, 0.98) 100%);
+    background: linear-gradient(135deg, rgba(6, 64, 42, 0.95) 0%, rgba(6, 64, 42, 0.98) 100%);
     pointer-events: none;
     z-index: 0;
 }
@@ -3898,7 +3898,7 @@ body.page-markets .market-status {
 /* ─── Article du jour — Carte compacte (Analyses + rubriques) ─── */
 
 .article-du-jour-card {
-    background: linear-gradient(135deg, rgba(11, 61, 30, 0.15), rgba(16, 185, 129, 0.08));
+    background: linear-gradient(135deg, rgba(6, 64, 42, 0.15), rgba(16, 185, 129, 0.08));
     border: 1px solid rgba(16, 185, 129, 0.25);
     border-radius: 12px;
     padding: 1.5rem;

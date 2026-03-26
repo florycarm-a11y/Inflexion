@@ -73,6 +73,7 @@ crypto:'Bitcoin, DeFi & blockchain',
 commodities:'Or, p\u00e9trole, m\u00e9taux & \u00e9nergie',
 etf:'Fonds indiciels & allocations',
 macro:'Donn\u00e9es macro\u00e9conomiques',
+briefing:'Intelligence quotidienne — Signal & Risk Radar',
 };
 
 var FOOTER_SOURCES=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC'];
@@ -308,5 +309,10 @@ overlay.querySelectorAll('.mobile-nav-link').forEach(function(el){el.style.anima
 document.getElementById('mobile-menu-btn').addEventListener('click',function(){toggleMobile(!mobileOpen);});
 document.getElementById('mobile-close-btn').addEventListener('click',function(){toggleMobile(false);});
 overlay.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){toggleMobile(false);});});
+
+// ── Scroll reveal (fade-in au scroll) ──
+if(!document.querySelector('script[src*="scroll-reveal"]')){
+var sr=document.createElement('script');sr.src='scroll-reveal.js';document.body.appendChild(sr);
+}
 
 })();
