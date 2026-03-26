@@ -42,7 +42,7 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 
 @keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .anim-fade-up{animation:fade-up .6s ease-out both}
-.anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}
+.anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}.anim-d4{animation-delay:.4s}
 
 .nav-link{position:relative}
 .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}
@@ -120,7 +120,67 @@ display:block;
 .hero-wave svg{height:80px}
 }
 
+@keyframes pulse-live{
+0%,100%{opacity:1;transform:scale(1)}
+50%{opacity:.4;transform:scale(1.8)}
+}
+@keyframes slide-in-left{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:translateX(0)}}
+@keyframes count-up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.reveal-section{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.reveal-section.visible{opacity:1;transform:translateY(0)}
+
 .font-data{font-family:'JetBrains Mono','SF Mono',monospace}
+
+.briefing-card{
+background:#fff;
+border:1px solid #E2E5EB;
+border-radius:14px;
+overflow:hidden;
+transition:box-shadow .3s cubic-bezier(.4,0,.2,1),border-color .3s ease;
+}
+.briefing-card:hover{
+box-shadow:0 8px 32px rgba(0,20,15,.06),0 2px 8px rgba(0,20,15,.04);
+border-color:#D1D5DE;
+}
+
+.card-header{padding:16px 20px;display:flex;align-items:flex-start;gap:12px}
+.card-body{padding:0 20px 16px}
+.card-footer{padding:12px 20px;background:#F9FAFB;border-top:1px solid #F0F2F5}
+@media(min-width:640px){.card-header{padding:18px 24px}.card-body{padding:0 24px 20px}.card-footer{padding:14px 24px}}
+
+.sev-stripe{height:3px;flex-shrink:0}
+.sev-urgent{background:#dc2626}.sev-attention{background:#d97706}.sev-info{background:#3b82f6}
+
+.sev-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:6px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0;line-height:1}
+.sev-badge-urgent{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.sev-badge-attention{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.sev-badge-info{background:#eff6ff;color:#3b82f6;border:1px solid #bfdbfe}
+
+.sev-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.sev-dot-urgent{background:#dc2626}.sev-dot-attention{background:#d97706}.sev-dot-info{background:#3b82f6}
+
+.inter-table{display:grid;gap:0;border:1px solid #E2E5EB;border-radius:10px;overflow:hidden}
+.inter-row{display:grid;grid-template-columns:120px 1fr;gap:0;font-size:12px;border-bottom:1px solid #F0F2F5}
+.inter-row:last-child{border-bottom:none}
+.inter-cell-label{padding:8px 12px;background:#F9FAFB;font-weight:600;color:#1A1F2E;border-right:1px solid #F0F2F5;display:flex;align-items:flex-start;gap:6px}
+.inter-cell-value{padding:8px 12px;color:#5A6178;line-height:1.5}
+.inter-cell-value strong{color:#1A1F2E}
+@media(min-width:640px){.inter-cell-label{padding:10px 14px}.inter-cell-value{padding:10px 14px}}
+
+.prob-meter{height:6px;border-radius:3px;background:#F0F2F5;overflow:hidden;position:relative}
+.prob-fill{height:100%;border-radius:3px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.prob-markers{display:flex;justify-content:space-between;margin-top:4px}
+.prob-marker{font-size:9px;color:#A0A8B8;font-weight:500;letter-spacing:.3px}
+
+.theme-arrow{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.theme-arrow svg{width:14px;height:14px}
+
+.toc-dot{width:8px;height:8px;border-radius:50%;border:2px solid #E2E5EB;background:#fff;transition:all .2s ease;flex-shrink:0}
+.toc-dot.active{border-color:#006650;background:#006650;box-shadow:0 0 0 3px rgba(0,102,80,.15)}
+.toc-link{color:#5A6178;transition:color .2s ease}
+.toc-link.active{color:#006650;font-weight:600}
+
 @media(max-width:768px){
 html,body{overflow-x:hidden}
 img{max-width:100%;height:auto}
@@ -134,89 +194,136 @@ button,a[href]:not(.prose a){min-height:44px;min-width:44px}
 <div id="app"></div>
 <script src="nav-config.js"></script>
 <script type="module">
-import React,{useState,useEffect,useRef} from 'https://esm.sh/react@18.2.0'
+import React,{useState,useEffect,useRef,useCallback} from 'https://esm.sh/react@18.2.0'
 import{createRoot}from 'https://esm.sh/react-dom@18.2.0/client'
 
-const h=React.createElement
-const MEGA_NAV=window.MEGA_NAV
+var h=React.createElement
+var MEGA_NAV=window.MEGA_NAV
+
+// ─── HOOKS ──────────────────────────────────────────────────────────────────
+
+function useInView(opts){
+var ref=useRef(null)
+var vis=useState(false)
+var visible=vis[0],setVisible=vis[1]
+useEffect(function(){
+if(!ref.current)return
+var io=new IntersectionObserver(function(entries){
+if(entries[0].isIntersecting){setVisible(true);if(!(opts&&opts.repeat))io.disconnect()}
+else if(opts&&opts.repeat)setVisible(false)
+},{threshold:(opts&&opts.threshold)||0.12,rootMargin:(opts&&opts.rootMargin)||'0px'})
+io.observe(ref.current)
+return function(){io.disconnect()}
+},[])
+return[ref,visible]
+}
+
+function useActiveSection(ids){
+var st=useState('')
+var active=st[0],setActive=st[1]
+useEffect(function(){
+var observer=new IntersectionObserver(function(entries){
+entries.forEach(function(e){
+if(e.isIntersecting)setActive(e.target.id)
+})
+},{threshold:0.3,rootMargin:'-80px 0px -50% 0px'})
+ids.forEach(function(id){
+var el=document.getElementById(id)
+if(el)observer.observe(el)
+})
+return function(){observer.disconnect()}
+},[ids.join(',')])
+return active
+}
 
 // ─── NAVIGATION ──────────────────────────────────────────────────────────────
 
 function Navigation(){
-const[open,setOpen]=useState(false)
-const[scrolled,setScrolled]=useState(false)
-useEffect(()=>{
-const fn=()=>setScrolled(window.scrollY>60)
+var st1=useState(false),open=st1[0],setOpen=st1[1]
+var st2=useState(false),scrolled=st2[0],setScrolled=st2[1]
+useEffect(function(){
+var fn=function(){setScrolled(window.scrollY>60)}
 window.addEventListener('scroll',fn,{passive:true})
-return()=>window.removeEventListener('scroll',fn)
+return function(){window.removeEventListener('scroll',fn)}
 },[])
-useEffect(()=>{
-if(open){document.body.classList.add('menu-open')}else{document.body.classList.remove('menu-open')}
-return()=>document.body.classList.remove('menu-open')
+useEffect(function(){
+if(open)document.body.classList.add('menu-open')
+else document.body.classList.remove('menu-open')
+return function(){document.body.classList.remove('menu-open')}
 },[open])
 return h('div',null,
  h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#C8955A]'}),
- h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
+ h('header',{className:'fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 '+(scrolled?'nav-scrolled':'bg-transparent')},
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
      h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(10) saturate(0) invert(0)',transition:'filter 0.3s ease'}})
     ),
     h('nav',{className:'hidden md:flex items-center gap-1'},
-     ...MEGA_NAV.map((cat,ci)=>
-      h('div',{key:ci,className:'mega-trigger'},
-       h('span',{className:`nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none ${scrolled?'text-gray-500 hover:text-[#006650]':'text-white/70 hover:text-white'}`},cat.label),
+     MEGA_NAV.map(function(cat,ci){
+      return h('div',{key:ci,className:'mega-trigger'},
+       h('span',{className:'nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none '+(scrolled?'text-gray-500 hover:text-[#006650]':'text-white/70 hover:text-white')},cat.label),
        h('div',{className:'mega-menu bg-white rounded-2xl shadow-xl border border-gray-100 p-5'},
         h('div',{className:'grid gap-1'},
-         ...cat.children.map((item,ii)=>
-          h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline'},
+         cat.children.map(function(item,ii){
+          return h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline'},
            h('span',{className:'mega-icon bg-[#006650]/10 text-[#006650]'},item.icon),
            h('span',{className:'flex flex-col'},
             h('span',{className:'text-sm font-semibold text-gray-900'},item.label),
             h('span',{className:'text-xs text-gray-500 mt-0.5'},item.desc)
            )
           )
-         )
+         })
         )
        )
       )
-     ),
+     }),
      h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#006650] hover:bg-[#06402A] text-white font-semibold text-sm rounded-lg transition-colors'},'R\u00e9server un diagnostic')
     ),
-    h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,'aria-label':'Menu',onClick:()=>setOpen(!open)},
+    h('button',{className:'hamburger md:hidden p-2 '+(open?'open':''),'aria-label':'Menu',onClick:function(){setOpen(!open)}},
      h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}})
     )
    )
   )
  ),
- h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#006650'}},
+ h('div',{className:'mobile-overlay fixed inset-0 z-[60] flex flex-col '+(open?'open':''),style:{backgroundColor:'#006650'}},
   h('div',{className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0'},
    h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-8 w-auto',style:{filter:'brightness(10) saturate(0)'}}),
-   h('button',{onClick:()=>setOpen(false),className:'w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
+   h('button',{onClick:function(){setOpen(false)},className:'w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
     h('svg',{width:18,height:18,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2.5,strokeLinecap:'round',className:'text-white'},h('path',{d:'M18 6L6 18M6 6l12 12'}))
    )
   ),
   h('div',{className:'flex-1 overflow-y-auto px-6 pt-2 pb-4'},
-   ...MEGA_NAV.map((cat,ci)=>[
-    h('p',{key:'h'+ci,className:'menu-item text-[11px] uppercase tracking-[.2em] text-white/40 font-semibold mb-3'+(ci>0?' mt-8':''),style:{animationDelay:`${0.05+ci*0.18}s`}},cat.label),
-    ...cat.children.map((item,ii)=>
-     h('a',{key:'m'+ci+'-'+ii,href:item.href,onClick:()=>setOpen(false),className:'menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8',style:{animationDelay:`${0.08+ci*0.18+ii*0.05}s`}},
+   MEGA_NAV.map(function(cat,ci){
+    return[
+     h('p',{key:'h'+ci,className:'menu-item text-[11px] uppercase tracking-[.2em] text-white/40 font-semibold mb-3'+(ci>0?' mt-8':''),style:{animationDelay:(0.05+ci*0.18)+'s'}},cat.label)
+    ].concat(cat.children.map(function(item,ii){
+     return h('a',{key:'m'+ci+'-'+ii,href:item.href,onClick:function(){setOpen(false)},className:'menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8',style:{animationDelay:(0.08+ci*0.18+ii*0.05)+'s'}},
       h('span',{className:'text-base'},item.icon),
       h('span',{className:'text-base sm:text-lg md:text-[20px] font-medium'},item.label)
      )
-    )
-   ]).flat()
+    }))
+   }).flat()
   ),
   h('div',{className:'px-6 pt-4 pb-20 flex-shrink-0'},
-   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-xl transition-colors text-base',style:{animationDelay:'0.85s'}},'R\u00e9server un diagnostic')
+   h('a',{href:'premium.html',onClick:function(){setOpen(false)},className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-xl transition-colors text-base',style:{animationDelay:'0.85s'}},'R\u00e9server un diagnostic')
   )
  )
 )
 }
 
+// ─── REVEAL WRAPPER ─────────────────────────────────────────────────────────
+
+function Reveal(props){
+var r=useInView({threshold:0.08})
+var ref=r[0],visible=r[1]
+return h('div',{ref:ref,className:'reveal-section'+(visible?' visible':'')+(props.className?' '+props.className:''),style:props.delay?{transitionDelay:props.delay+'s'}:undefined},props.children)
+}
+
 // ─── HERO ────────────────────────────────────────────────────────────────────
 
-function BriefingHero({briefing}){
+function BriefingHero(props){
+var briefing=props.briefing
 var heroRef=useRef(null)
 useEffect(function(){
 var el=heroRef.current
@@ -224,7 +331,6 @@ if(!el)return
 var onScroll=function(){
 var r=el.getBoundingClientRect()
 var p=Math.max(0,Math.min(1,-r.top/(r.height||1)))
-el.style.setProperty('--scroll',p)
 var content=el.querySelector('.hero-content')
 if(content){content.style.transform='translateY('+p*40+'px)';content.style.opacity=1-p*0.6}
 }
@@ -239,24 +345,49 @@ try{dateStr=new Date(briefing.date).toLocaleDateString('fr-FR',{weekday:'long',d
 
 var sentimentLabel=briefing&&briefing.sentiment_global?briefing.sentiment_global:'neutre'
 var sentimentColor=sentimentLabel==='haussier'?'#10b981':sentimentLabel==='baissier'?'#ef4444':sentimentLabel==='mixte'?'#eab308':'#94a3b8'
+var sentimentBg=sentimentLabel==='haussier'?'rgba(16,185,129,.15)':sentimentLabel==='baissier'?'rgba(239,68,68,.15)':sentimentLabel==='mixte'?'rgba(234,179,8,.15)':'rgba(148,163,184,.15)'
 
-return h('section',{ref:heroRef,className:'hero-dynamic relative pt-28 pb-24 md:pt-36 md:pb-28'},
- h('div',{className:'hero-content relative z-[3] max-w-3xl mx-auto px-4 sm:px-6',style:{willChange:'transform,opacity'}},
-  h('div',{className:'anim-fade-up flex items-center gap-3 mb-6'},
-   h('span',{className:'px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white rounded bg-[#33B894]'},'BRIEFING STRAT\u00c9GIQUE'),
-   h('span',{className:'text-xs uppercase tracking-wider text-white/50'},'Intelligence quotidienne')
+var signalCount=briefing&&briefing.signaux?briefing.signaux.length:0
+var riskCount=briefing&&briefing.risk_radar?briefing.risk_radar.length:0
+var sourcesCount=briefing&&briefing.sources_count?briefing.sources_count:0
+
+return h('section',{ref:heroRef,className:'hero-dynamic relative pt-28 pb-28 md:pt-36 md:pb-36'},
+ h('div',{className:'hero-content relative z-[3] max-w-5xl mx-auto px-4 sm:px-6',style:{willChange:'transform,opacity'}},
+
+  // Top meta line
+  h('div',{className:'anim-fade-up flex items-center gap-3 mb-8'},
+   h('span',{className:'flex items-center gap-2 px-3 py-1.5 rounded-full',style:{background:'rgba(51,184,148,.15)',border:'1px solid rgba(51,184,148,.3)'}},
+    h('span',{style:{width:6,height:6,borderRadius:'50%',background:'#33B894',animation:'pulse-live 2s ease infinite',display:'inline-block'}}),
+    h('span',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#33B894]'},'LIVE')
+   ),
+   h('span',{className:'text-[11px] uppercase tracking-wider text-white/40 font-medium'},'Briefing strat\u00e9gique')
   ),
-  h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-[2.75rem] font-bold text-white leading-[1.15] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+
+  // Title
+  h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-[2.75rem] lg:text-[3.25rem] font-bold text-white leading-[1.1] tracking-tight max-w-3xl',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
    briefing&&briefing.synthese&&briefing.synthese.titre?briefing.synthese.titre:'Briefing du jour'
   ),
+
+  // Subtitle
   briefing&&briefing.synthese&&briefing.synthese.sous_titre?
-   h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/60 leading-relaxed'},briefing.synthese.sous_titre):
-   h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/60 leading-relaxed'},'Synth\u00e8se IA quotidienne \u2014 signaux g\u00e9opolitiques, financiers et risk radar'),
-  h('div',{className:'anim-fade-up anim-d3 mt-8 flex flex-wrap items-center gap-5 text-sm text-white/40'},
-   h('div',{className:'w-12 h-[2px] bg-[#C8955A]'}),
-   h('span',null,h('strong',{className:'text-white/60'},'Inflexion Research')),
-   dateStr?h('span',null,dateStr):null,
-   h('span',{style:{color:sentimentColor,fontWeight:700,textTransform:'uppercase',fontSize:'0.75rem',letterSpacing:'0.05em'}},sentimentLabel)
+   h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/55 leading-relaxed max-w-2xl'},briefing.synthese.sous_titre):
+   h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/55 leading-relaxed max-w-2xl'},'Synth\u00e8se IA quotidienne \u2014 signaux g\u00e9opolitiques, financiers et risk radar'),
+
+  // Meta bar
+  h('div',{className:'anim-fade-up anim-d3 mt-10 flex flex-wrap items-center gap-4'},
+   // Date
+   h('div',{className:'flex items-center gap-2'},
+    h('div',{className:'w-8 h-[2px] bg-[#C8955A]'}),
+    dateStr?h('span',{className:'text-sm text-white/50'},dateStr):null
+   ),
+   // Sentiment pill
+   h('span',{className:'px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider',style:{color:sentimentColor,background:sentimentBg,border:'1px solid '+sentimentColor+'33'}},sentimentLabel),
+   // Quick stats
+   h('div',{className:'hidden sm:flex items-center gap-4 ml-auto'},
+    sourcesCount>0?h('span',{className:'font-data text-[11px] text-white/30'},sourcesCount+' sources'):null,
+    signalCount>0?h('span',{className:'font-data text-[11px] text-white/30'},signalCount+' signaux'):null,
+    riskCount>0?h('span',{className:'font-data text-[11px] text-white/30'},riskCount+' risques'):null
+   )
   )
  ),
  h('div',{className:'hero-wave'},
@@ -271,10 +402,9 @@ return h('section',{ref:heroRef,className:'hero-dynamic relative pt-28 pb-24 md:
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
 
-function esc(s){if(!s)return'';var d=document.createElement('div');d.textContent=s;return d.innerHTML}
 function md(s){
 if(!s)return''
-return s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/`(.+?)`/g,'<code>$1</code>')
+return s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/`(.+?)`/g,'<code class="font-data text-[0.85em] px-1 py-0.5 rounded bg-[#006650]/8 text-[#006650]">$1</code>')
 }
 function mdBlock(s){
 if(!s)return''
@@ -287,149 +417,348 @@ if(/^#{2,3}\s/.test(line)){
 if(inList){html+='</ul>';inList=false}
 var level=line.match(/^(#{2,3})/)[1].length
 var text=line.replace(/^#{2,3}\s+/,'')
-html+='<h'+level+' class="article-section-title">'+md(text)+'</h'+level+'>'
+if(level===2)html+='<h2 style="font-family:Libre Baskerville,Georgia,serif;font-size:1.25rem;font-weight:700;color:#1A1F2E;margin:2rem 0 0.75rem;padding-bottom:0.5rem;border-bottom:2px solid #E2E5EB">'+md(text)+'</h2>'
+else html+='<h3 style="font-family:Libre Baskerville,Georgia,serif;font-size:1.05rem;font-weight:700;color:#1A1F2E;margin:1.5rem 0 0.5rem">'+md(text)+'</h3>'
 }else if(/^[-*]\s/.test(line)){
 if(!inList){html+='<ul style="list-style:none;padding:0;margin:0.75rem 0">';inList=true}
-html+='<li style="position:relative;padding-left:1.2rem;margin-bottom:0.4rem;font-size:0.9rem;color:rgba(255,255,255,0.85);line-height:1.6"><span style="position:absolute;left:0;color:rgba(255,255,255,0.5);font-weight:700">\u25B8</span>'+md(line.replace(/^[-*]\s+/,''))+'</li>'
+html+='<li style="position:relative;padding-left:1.5rem;margin-bottom:0.5rem;font-size:0.9rem;color:#5A6178;line-height:1.65"><span style="position:absolute;left:0;color:#C8955A;font-weight:700;font-size:0.75rem;top:0.2rem">\u25B8</span>'+md(line.replace(/^[-*]\s+/,''))+'</li>'
 }else if(line.trim()){
 if(inList){html+='</ul>';inList=false}
-html+='<p>'+md(line)+'</p>'
+html+='<p style="font-size:0.95rem;color:#3D4355;line-height:1.75;margin:0.75rem 0">'+md(line)+'</p>'
 }
 }
 if(inList)html+='</ul>'
 return html
 }
 
-function formatDate(d){
-if(!d)return''
-try{return new Date(d).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'})}catch(e){return d}
+// ─── TABLE OF CONTENTS (desktop sidebar) ────────────────────────────────────
+
+var TOC_SECTIONS=[
+{id:'signal-du-jour',label:'Signal du jour',icon:'\u26A1'},
+{id:'synthese',label:'Synth\u00e8se',icon:'\uD83D\uDCDD'},
+{id:'enjeux',label:'Enjeux cl\u00e9s',icon:'\uD83C\uDFAF'},
+{id:'risques',label:'Radar des risques',icon:'\u26A0\uFE0F'},
+{id:'themes',label:'Th\u00e8mes',icon:'\uD83D\uDCC8'},
+{id:'agenda',label:'Agenda',icon:'\uD83D\uDCC5'}
+]
+
+function TableOfContents(props){
+var active=useActiveSection(TOC_SECTIONS.map(function(s){return s.id}))
+var briefing=props.briefing
+if(!briefing)return null
+
+var signalCount=briefing.signaux?briefing.signaux.length:0
+var riskCount=briefing.risk_radar?briefing.risk_radar.length:0
+var urgentCount=0
+if(briefing.signaux)briefing.signaux.forEach(function(s){if(s.severite==='urgent')urgentCount++})
+if(briefing.risk_radar)briefing.risk_radar.forEach(function(r){if(r.severite==='urgent')urgentCount++})
+
+return h('aside',{className:'hidden xl:block sticky top-24 w-56 flex-shrink-0'},
+ // Stats card
+ h('div',{className:'mb-6 p-4 rounded-xl bg-[#F7F8FA] border border-[#E2E5EB]'},
+  h('p',{className:'text-[10px] font-semibold uppercase tracking-wider text-[#5A6178] mb-3'},'Aper\u00e7u'),
+  h('div',{className:'space-y-2.5'},
+   h('div',{className:'flex items-center justify-between'},
+    h('span',{className:'text-xs text-[#5A6178]'},'Signaux'),
+    h('span',{className:'font-data text-xs font-semibold text-[#1A1F2E]'},String(signalCount))
+   ),
+   h('div',{className:'flex items-center justify-between'},
+    h('span',{className:'text-xs text-[#5A6178]'},'Risques'),
+    h('span',{className:'font-data text-xs font-semibold text-[#1A1F2E]'},String(riskCount))
+   ),
+   urgentCount>0?h('div',{className:'flex items-center justify-between'},
+    h('span',{className:'text-xs text-[#dc2626]'},'Urgents'),
+    h('span',{className:'font-data text-xs font-bold text-[#dc2626]'},String(urgentCount))
+   ):null,
+   briefing.sources_count?h('div',{className:'flex items-center justify-between'},
+    h('span',{className:'text-xs text-[#5A6178]'},'Sources'),
+    h('span',{className:'font-data text-xs font-semibold text-[#1A1F2E]'},String(briefing.sources_count))
+   ):null
+  )
+ ),
+
+ // TOC links
+ h('nav',{'aria-label':'Sommaire'},
+  h('p',{className:'text-[10px] font-semibold uppercase tracking-wider text-[#5A6178] mb-3 px-1'},'Sommaire'),
+  h('div',{className:'space-y-1'},
+   TOC_SECTIONS.map(function(sec){
+    var isActive=active===sec.id
+    return h('a',{key:sec.id,href:'#'+sec.id,className:'flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-xs transition-all duration-200 no-underline '+(isActive?'bg-[#006650]/8 text-[#006650] font-semibold':'text-[#5A6178] hover:text-[#1A1F2E] hover:bg-[#F7F8FA]')},
+     h('span',{className:'toc-dot'+(isActive?' active':'')}),
+     h('span',null,sec.label)
+    )
+   })
+  )
+ )
+)
 }
 
 // ─── BRIEFING CONTENT ────────────────────────────────────────────────────────
 
-function BriefingContent({briefing}){
-if(!briefing)return h('div',{className:'max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center'},
- h('p',{className:'text-[#5A6178] text-lg'},'Chargement du briefing\u2026')
+function BriefingContent(props){
+var briefing=props.briefing
+if(!briefing)return h('div',{className:'max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center'},
+ h('div',{className:'inline-flex items-center gap-3 px-5 py-3 rounded-full bg-[#F7F8FA] border border-[#E2E5EB]'},
+  h('div',{className:'w-5 h-5 border-2 border-[#006650] border-t-transparent rounded-full',style:{animation:'spin 1s linear infinite'}}),
+  h('span',{className:'text-sm text-[#5A6178]'},'Chargement du briefing\u2026')
+ )
 )
 
 var s=briefing.synthese||{}
 
-return h('div',{className:'max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16'},
+return h('div',{className:'max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16'},
+ h('div',{className:'flex gap-12'},
 
- // Intro bar
- h('div',{className:'flex items-center gap-3 mb-8 pb-4 border-b border-[#E2E5EB]'},
-  h('div',{className:'w-1 h-10 bg-[#C8955A] rounded-sm flex-shrink-0'}),
-  h('p',{className:'text-sm text-[#5A6178] leading-relaxed m-0'},
-   'Chaque jour, notre pipeline IA agr\u00e8ge ',h('strong',{className:'text-[#1A1F2E]'},'15 APIs'),' et ',h('strong',{className:'text-[#1A1F2E]'},'163 flux RSS'),' pour produire une synth\u00e8se structur\u00e9e des signaux g\u00e9opolitiques et financiers \u00e0 surveiller.'
-  )
- ),
+  // Main content column
+  h('div',{className:'flex-1 min-w-0'},
 
- // Signal du jour
- briefing.signal_du_jour?h('div',{className:'signal-du-jour mb-6'},
-  h('div',{className:'signal-du-jour-label'},'Signal du jour'),
-  h('p',{className:'signal-du-jour-text',dangerouslySetInnerHTML:{__html:md(briefing.signal_du_jour)}})
- ):null,
-
- // Synthese content
- s.contenu?h('div',{className:'article-du-jour rounded-xl p-6 sm:p-8 mb-8'},
-  h('div',{className:'article-du-jour-content',dangerouslySetInnerHTML:{__html:mdBlock(s.contenu)}})
- ):null,
-
- // Signaux
- briefing.signaux&&briefing.signaux.length>0?h('div',{className:'mb-8'},
-  h('h3',{className:'briefing-section-title'},'Enjeux cl\u00e9s du jour'),
-  h('div',{className:'space-y-3'},
-   ...briefing.signaux.map(function(sig,i){
-    var sevClass=sig.severite==='urgent'?'severity-urgent':sig.severite==='attention'?'severity-attention':'severity-info'
-    return h('div',{key:i,className:'signal-card '+sevClass},
-     h('div',{className:'signal-header'},
-      h('h4',{className:'signal-title',dangerouslySetInnerHTML:{__html:md(sig.titre)}}),
-      h('span',{className:'signal-severity-badge '+sevClass},sig.severite)
-     ),
-     h('p',{className:'signal-description',dangerouslySetInnerHTML:{__html:md(sig.description)}}),
-     sig.interconnexions&&sig.interconnexions.length>0?h('div',{className:'signal-interconnexions'},
-      h('span',{className:'inter-label'},'Interconnexions :'),
-      ...sig.interconnexions.map(function(inter,j){
-       return h('div',{key:j,className:'inter-item'},
-        h('span',{className:'inter-arrow'},'\u2192'),
-        h('strong',null,inter.secteur),' ',
-        h('span',{className:'inter-impact'},inter.impact),
-        inter.explication?h('span',{className:'inter-explication'},' \u2014 '+inter.explication):null
+   // Pipeline intro bar
+   h(Reveal,null,
+    h('div',{className:'flex items-center gap-4 mb-10 pb-5 border-b border-[#E2E5EB]'},
+     h('div',{className:'flex items-center gap-2'},
+      h('div',{className:'w-1.5 h-10 rounded-full bg-gradient-to-b from-[#C8955A] to-[#C8955A]/30'}),
+      h('div',null,
+       h('p',{className:'text-xs font-semibold text-[#1A1F2E] mb-0.5'},'Pipeline IA — Intelligence automatis\u00e9e'),
+       h('p',{className:'text-[13px] text-[#5A6178] leading-relaxed m-0'},
+        h('span',{className:'font-data text-[#006650] font-semibold'},'15'),
+        ' APIs \u00b7 ',
+        h('span',{className:'font-data text-[#006650] font-semibold'},'163'),
+        ' flux RSS \u00b7 scoring IA \u00b7 d\u00e9duplication s\u00e9mantique'
        )
-      })
-     ):null,
-     sig.regions&&sig.regions.length>0?h('div',{className:'signal-regions'},
-      ...sig.regions.map(function(r,j){return h('span',{key:j,className:'region-tag'},r)})
+      )
+     ),
+     briefing.generated_at?h('span',{className:'hidden sm:block ml-auto font-data text-[10px] text-[#5A6178]/60'},
+      'G\u00e9n\u00e9r\u00e9 le '+new Date(briefing.generated_at).toLocaleString('fr-FR',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})
      ):null
     )
-   })
-  )
- ):null,
+   ),
 
- // Risk Radar
- briefing.risk_radar&&briefing.risk_radar.length>0?h('div',{className:'mb-8'},
-  h('h3',{className:'briefing-section-title'},'Radar des Risques'),
-  h('div',{className:'space-y-3'},
-   ...briefing.risk_radar.map(function(risk,i){
-    var sevClass=risk.severite==='urgent'?'severity-urgent':risk.severite==='attention'?'severity-attention':'severity-info'
-    var probaLabel=risk.probabilite==='elevee'?'Probabilit\u00e9 \u00e9lev\u00e9e':risk.probabilite==='moyenne'?'Probabilit\u00e9 moyenne':'Probabilit\u00e9 faible'
-    return h('div',{key:i,className:'risk-item '+sevClass},
-     h('div',{className:'risk-header'},
-      h('strong',{className:'risk-title',dangerouslySetInnerHTML:{__html:md(risk.risque)}}),
-      h('span',{className:'risk-severity-badge '+sevClass},risk.severite)
-     ),
-     h('p',{className:'risk-description',dangerouslySetInnerHTML:{__html:md(risk.description)}}),
-     h('div',{className:'risk-meta'},
-      h('span',{className:'risk-proba'},probaLabel),
-      h('span',{className:'risk-impact'},'Impact : ',risk.impact_marche||'')
+   // Signal du jour
+   briefing.signal_du_jour?h(Reveal,null,
+    h('div',{id:'signal-du-jour',className:'mb-10 relative overflow-hidden rounded-2xl',style:{background:'linear-gradient(135deg, #006650 0%, #004D3D 100%)'}},
+     h('div',{className:'absolute inset-0',style:{background:'radial-gradient(ellipse at 80% 20%, rgba(200,149,90,.12) 0%, transparent 60%)',pointerEvents:'none'}}),
+     h('div',{className:'relative p-6 sm:p-8'},
+      h('div',{className:'flex items-center gap-2 mb-3'},
+       h('span',{style:{width:8,height:8,borderRadius:'50%',background:'#C8955A',display:'inline-block'}}),
+       h('span',{className:'text-[11px] font-bold uppercase tracking-widest text-[#C8955A]'},'Signal du jour')
+      ),
+      h('p',{className:'text-base sm:text-lg text-white/90 leading-relaxed m-0',dangerouslySetInnerHTML:{__html:md(briefing.signal_du_jour)}})
      )
     )
-   })
-  )
- ):null,
+   ):null,
 
- // Themes a surveiller
- (function(){
-  var themes=briefing.themes_a_surveiller||briefing.positionnement
-  if(!themes||themes.length===0)return null
-  var disclaimer=briefing.themes_disclaimer||briefing.positionnement_disclaimer||'Ces \u00e9l\u00e9ments sont des observations factuelles et ne constituent pas un conseil en investissement. Consultez un professionnel agr\u00e9\u00e9 (CIF-AMF) avant toute d\u00e9cision.'
-  return h('div',{className:'briefing-positionnement mb-8'},
-   h('h3',{className:'briefing-section-title'},'Th\u00e8mes \u00e0 surveiller'),
-   ...themes.map(function(pos,i){
-    var dyn=pos.dynamique||pos.direction||'neutre'
-    var dirClass=dyn==='haussiere'||dyn==='surponderer'?'pos-long':dyn==='baissiere'||dyn==='sous-ponderer'?'pos-short':dyn==='volatile'||dyn==='hedge'?'pos-hedge':'pos-neutral'
-    var dirLabel=dyn==='haussiere'||dyn==='surponderer'?'Haussi\u00e8re':dyn==='baissiere'||dyn==='sous-ponderer'?'Baissi\u00e8re':dyn==='volatile'||dyn==='hedge'?'Volatile':'Neutre'
-    return h('div',{key:i,className:'pos-item '+dirClass},
-     h('div',{className:'pos-header'},
-      h('strong',{className:'pos-actif'},pos.actif||''),
-      h('span',{className:'pos-direction'},dirLabel)
-     ),
-     h('p',{className:'pos-details'},pos.details||'')
+   // Synthese
+   s.contenu?h(Reveal,null,
+    h('div',{id:'synthese',className:'mb-12'},
+     h('div',{className:'prose-container',dangerouslySetInnerHTML:{__html:mdBlock(s.contenu)}})
     )
-   }),
-   h('p',{className:'pos-disclaimer'},disclaimer)
-  )
- })(),
+   ):null,
 
- // Agenda
- briefing.agenda&&briefing.agenda.length>0?h('div',{className:'briefing-agenda mb-8'},
-  h('h3',{className:'briefing-section-title'},'Agenda de la semaine'),
-  ...briefing.agenda.map(function(evt,i){
-   return h('div',{key:i,className:'agenda-item'},
-    h('span',{className:'agenda-date'},evt.date||''),
-    h('span',{className:'agenda-heure'},evt.heure||''),
-    h('span',{className:'agenda-event'},evt.evenement||''),
-    h('span',{className:'agenda-impact'},evt.impact_attendu||'')
-   )
-  })
- ):null,
+   // Signaux / Enjeux clés
+   briefing.signaux&&briefing.signaux.length>0?h(Reveal,null,
+    h('div',{id:'enjeux',className:'mb-14'},
+     h('div',{className:'flex items-center gap-3 mb-6'},
+      h('h3',{className:'text-lg font-bold text-[#1A1F2E]',style:{fontFamily:'Libre Baskerville,Georgia,serif',margin:0}},'Enjeux cl\u00e9s du jour'),
+      h('div',{className:'flex-1 h-px bg-[#E2E5EB]'}),
+      h('span',{className:'font-data text-[11px] text-[#5A6178]'},briefing.signaux.length+' signaux')
+     ),
+     h('div',{className:'space-y-5'},
+      briefing.signaux.map(function(sig,i){
+       var sev=sig.severite||'info'
+       var sevCls=sev==='urgent'?'urgent':sev==='attention'?'attention':'info'
+       return h('div',{key:i,className:'briefing-card'},
+        // Color stripe
+        h('div',{className:'sev-stripe sev-'+sevCls}),
+        // Header zone
+        h('div',{className:'card-header'},
+         h('div',{className:'flex-1 min-w-0'},
+          h('div',{className:'flex items-center gap-2 mb-1.5'},
+           h('span',{className:'sev-dot sev-dot-'+sevCls}),
+           sig.regions&&sig.regions.length>0?h('span',{className:'text-[10px] text-[#5A6178] font-medium'},sig.regions.join(' \u00b7 ')):null
+          ),
+          h('h4',{className:'text-[15px] font-bold text-[#1A1F2E] leading-snug',style:{fontFamily:'Libre Baskerville,Georgia,serif'},dangerouslySetInnerHTML:{__html:md(sig.titre)}})
+         ),
+         h('span',{className:'sev-badge sev-badge-'+sevCls,style:{marginTop:2}},sev)
+        ),
+        // Body — description
+        h('div',{className:'card-body'},
+         h('p',{className:'text-[13.5px] text-[#4A5066] leading-[1.75] m-0',dangerouslySetInnerHTML:{__html:md(sig.description)}})
+        ),
+        // Footer — interconnexions as structured table
+        sig.interconnexions&&sig.interconnexions.length>0?h('div',{className:'card-footer'},
+         h('p',{className:'text-[10px] font-bold uppercase tracking-wider text-[#8890A0] mb-3',style:{letterSpacing:'1px'}},'Interconnexions sectorielles'),
+         h('div',{className:'inter-table'},
+          sig.interconnexions.map(function(inter,j){
+           return h('div',{key:j,className:'inter-row'},
+            h('div',{className:'inter-cell-label'},
+             h('span',{className:'text-[#C8955A]',style:{fontSize:10,marginTop:1}},'\u25B8'),
+             h('span',null,inter.secteur)
+            ),
+            h('div',{className:'inter-cell-value'},
+             h('strong',{className:'font-data',style:{fontSize:11}},inter.impact),
+             inter.explication?h('span',null,' \u2014 '+inter.explication):null
+            )
+           )
+          })
+         )
+        ):null
+       )
+      })
+     )
+    )
+   ):null,
 
- // Tags
- briefing.tags&&briefing.tags.length>0?h('div',{className:'flex flex-wrap gap-2 mt-6 pt-4 border-t border-[#E2E5EB]'},
-  ...briefing.tags.map(function(t,i){
-   return h('span',{key:i,className:'px-3 py-1 text-xs font-medium bg-[#006650]/10 text-[#006650] rounded-full'},t)
-  })
- ):null
+   // Risk Radar
+   briefing.risk_radar&&briefing.risk_radar.length>0?h(Reveal,null,
+    h('div',{id:'risques',className:'mb-14'},
+     h('div',{className:'flex items-center gap-3 mb-6'},
+      h('h3',{className:'text-lg font-bold text-[#1A1F2E]',style:{fontFamily:'Libre Baskerville,Georgia,serif',margin:0}},'Radar des risques'),
+      h('div',{className:'flex-1 h-px bg-[#E2E5EB]'}),
+      h('span',{className:'font-data text-[11px] text-[#5A6178]'},briefing.risk_radar.length+' risques')
+     ),
+     h('div',{className:'space-y-5'},
+      briefing.risk_radar.map(function(risk,i){
+       var sev=risk.severite||'info'
+       var sevCls=sev==='urgent'?'urgent':sev==='attention'?'attention':'info'
+       var sevColor=sev==='urgent'?'#dc2626':sev==='attention'?'#d97706':'#3b82f6'
+       var probaWidth=risk.probabilite==='elevee'?'85%':risk.probabilite==='moyenne'?'50%':'20%'
+       var probaLabel=risk.probabilite==='elevee'?'\u00c9lev\u00e9e':risk.probabilite==='moyenne'?'Moyenne':'Faible'
+       return h('div',{key:i,className:'briefing-card'},
+        h('div',{className:'sev-stripe sev-'+sevCls}),
+        // Header
+        h('div',{className:'card-header'},
+         h('div',{className:'flex-1 min-w-0'},
+          h('strong',{className:'text-[15px] font-bold text-[#1A1F2E] leading-snug block',style:{fontFamily:'Libre Baskerville,Georgia,serif'},dangerouslySetInnerHTML:{__html:md(risk.risque)}})
+         ),
+         h('span',{className:'sev-badge sev-badge-'+sevCls,style:{marginTop:2}},sev)
+        ),
+        // Body — description
+        h('div',{className:'card-body'},
+         h('p',{className:'text-[13.5px] text-[#4A5066] leading-[1.75] m-0 mb-5',dangerouslySetInnerHTML:{__html:md(risk.description)}}),
+         // Probability meter + Impact — structured footer area
+         h('div',{className:'grid sm:grid-cols-3 gap-4 p-4 rounded-xl bg-[#F9FAFB] border border-[#F0F2F5]'},
+          // Probability meter — 2 cols
+          h('div',{className:'sm:col-span-2'},
+           h('div',{className:'flex items-center justify-between mb-2'},
+            h('span',{className:'text-[10px] font-semibold uppercase tracking-wider text-[#8890A0]',style:{letterSpacing:'1px'}},'Probabilit\u00e9'),
+            h('span',{className:'font-data text-[11px] font-bold',style:{color:sevColor}},probaLabel)
+           ),
+           h('div',{className:'prob-meter'},
+            h('div',{className:'prob-fill',style:{width:probaWidth,background:'linear-gradient(90deg, '+sevColor+'88, '+sevColor+')'}})
+           ),
+           h('div',{className:'prob-markers'},
+            h('span',{className:'prob-marker'},'Faible'),
+            h('span',{className:'prob-marker'},'Moyenne'),
+            h('span',{className:'prob-marker'},'\u00c9lev\u00e9e')
+           )
+          ),
+          // Impact
+          risk.impact_marche?h('div',{className:'sm:border-l sm:border-[#E2E5EB] sm:pl-4'},
+           h('span',{className:'text-[10px] font-semibold uppercase tracking-wider text-[#8890A0] block mb-1.5',style:{letterSpacing:'1px'}},'Impact march\u00e9'),
+           h('p',{className:'text-[12.5px] text-[#1A1F2E] leading-snug m-0 font-medium'},risk.impact_marche)
+          ):null
+         )
+        )
+       )
+      })
+     )
+    )
+   ):null,
+
+   // Themes a surveiller
+   (function(){
+    var themes=briefing.themes_a_surveiller||briefing.positionnement
+    if(!themes||themes.length===0)return null
+    var disclaimer=briefing.themes_disclaimer||briefing.positionnement_disclaimer||'Ces \u00e9l\u00e9ments sont des observations factuelles et ne constituent pas un conseil en investissement. Consultez un professionnel agr\u00e9\u00e9 (CIF-AMF) avant toute d\u00e9cision.'
+    return h(Reveal,null,
+     h('div',{id:'themes',className:'mb-14'},
+      h('div',{className:'flex items-center gap-3 mb-6'},
+       h('h3',{className:'text-lg font-bold text-[#1A1F2E]',style:{fontFamily:'Libre Baskerville,Georgia,serif',margin:0}},'Th\u00e8mes \u00e0 surveiller'),
+       h('div',{className:'flex-1 h-px bg-[#E2E5EB]'})
+      ),
+      h('div',{className:'grid gap-4 sm:grid-cols-2'},
+       themes.map(function(pos,i){
+        var dyn=pos.dynamique||pos.direction||'neutre'
+        var isUp=dyn==='haussiere'||dyn==='surponderer'
+        var isDown=dyn==='baissiere'||dyn==='sous-ponderer'
+        var isVolatile=dyn==='volatile'||dyn==='hedge'
+        var color=isUp?'#16a34a':isDown?'#dc2626':isVolatile?'#d97706':'#94a3b8'
+        var bgTint=isUp?'#f0fdf4':isDown?'#fef2f2':isVolatile?'#fffbeb':'#f8fafc'
+        var label=isUp?'Haussi\u00e8re':isDown?'Baissi\u00e8re':isVolatile?'Volatile':'Neutre'
+        // SVG arrows
+        var arrowPath=isUp?'M7 17V3m0 0l-5 5m5-5l5 5':isDown?'M7 3v14m0 0l-5-5m5 5l5-5':isVolatile?'M7 3v14M2 7l5-4 5 4M2 13l5 4 5-4':'M3 7h14'
+        return h('div',{key:i,className:'briefing-card'},
+         h('div',{className:'flex items-start gap-3 p-4 sm:p-5'},
+          // Arrow icon
+          h('div',{className:'theme-arrow',style:{background:bgTint,border:'1px solid '+color+'25'}},
+           h('svg',{viewBox:'0 0 14 20',fill:'none',stroke:color,strokeWidth:2,strokeLinecap:'round',strokeLinejoin:'round'},
+            h('path',{d:arrowPath})
+           )
+          ),
+          // Content
+          h('div',{className:'flex-1 min-w-0'},
+           h('div',{className:'flex items-center justify-between gap-2 mb-1.5'},
+            h('strong',{className:'text-[13.5px] text-[#1A1F2E]'},pos.actif||''),
+            h('span',{className:'text-[10px] font-bold uppercase tracking-wider',style:{color:color}},label)
+           ),
+           h('p',{className:'text-[12.5px] text-[#5A6178] leading-[1.65] m-0'},pos.details||'')
+          )
+         )
+        )
+       })
+      ),
+      h('p',{className:'text-[11px] text-[#5A6178]/50 italic mt-5 leading-relaxed pl-1'},disclaimer)
+     )
+    )
+   })(),
+
+   // Agenda
+   briefing.agenda&&briefing.agenda.length>0?h(Reveal,null,
+    h('div',{id:'agenda',className:'mb-12'},
+     h('div',{className:'flex items-center gap-3 mb-6'},
+      h('h3',{className:'text-lg font-bold text-[#1A1F2E]',style:{fontFamily:'Libre Baskerville,Georgia,serif',margin:0}},'Agenda de la semaine'),
+      h('div',{className:'flex-1 h-px bg-[#E2E5EB]'})
+     ),
+     h('div',{className:'briefing-card'},
+      briefing.agenda.map(function(evt,i){
+       var isLast=i===briefing.agenda.length-1
+       return h('div',{key:i,className:'flex items-start gap-4 px-5 py-3.5 sm:px-6 sm:py-4'+(isLast?'':' border-b border-[#F0F2F5]')},
+        // Date column
+        h('div',{className:'flex-shrink-0 w-24 sm:w-28'},
+         h('span',{className:'font-data text-[11px] font-bold text-[#006650] block'},evt.date||''),
+         evt.heure?h('span',{className:'font-data text-[10px] text-[#5A6178]/50'},evt.heure):null
+        ),
+        // Event
+        h('div',{className:'flex-1 min-w-0'},
+         h('span',{className:'text-[13px] text-[#1A1F2E] font-medium leading-snug'},evt.evenement||'')
+        ),
+        // Impact
+        evt.impact_attendu?h('div',{className:'hidden sm:block flex-shrink-0 max-w-[10rem] text-right'},
+         h('span',{className:'text-[11px] text-[#5A6178] italic leading-snug'},evt.impact_attendu)
+        ):null
+       )
+      })
+     )
+    )
+   ):null,
+
+   // Tags
+   briefing.tags&&briefing.tags.length>0?h(Reveal,null,
+    h('div',{className:'pt-6 border-t border-[#E2E5EB]'},
+     h('div',{className:'flex flex-wrap gap-2'},
+      briefing.tags.map(function(t,i){
+       return h('span',{key:i,className:'px-3 py-1.5 text-xs font-medium bg-[#F7F8FA] text-[#5A6178] rounded-full border border-[#E2E5EB] hover:border-[#006650]/30 hover:text-[#006650] transition-colors cursor-default'},t)
+      })
+     )
+    )
+   ):null
+
+  ), // end main column
+
+  // Sidebar (TOC)
+  h(TableOfContents,{briefing:briefing})
+
+ ) // end flex
 )
 }
 
@@ -465,13 +794,13 @@ return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-12 sm:pt
    h('div',null,
     h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Intelligence'),
     h('ul',{className:'space-y-2.5'},
-     ...footerLinks.intelligence.map(function(l){return h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))})
+     footerLinks.intelligence.map(function(l){return h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))})
     )
    ),
    h('div',null,
     h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Plateforme'),
     h('ul',{className:'space-y-2.5'},
-     ...footerLinks.plateforme.map(function(l){return h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))})
+     footerLinks.plateforme.map(function(l){return h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))})
     )
    ),
    h('div',null,
@@ -490,7 +819,7 @@ return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-12 sm:pt
   h('div',{className:'border-t border-[#E2E5EB] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
    h('span',{className:'text-sm text-[#5A6178]'},'\u00a9 2026 Inflexion \u2014 Intelligence financi\u00e8re & g\u00e9opolitique'),
    h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#5A6178]/40 font-medium'},
-    ...sources.map(function(s){return h('span',{key:s},s)})
+    sources.map(function(s){return h('span',{key:s},s)})
    )
   )
  )
