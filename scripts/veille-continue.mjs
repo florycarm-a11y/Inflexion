@@ -158,7 +158,7 @@ JSON : {"signals": [{"theme": "...", "description": "...", "articles_indices": [
 
 Titres :
 ${titles.map((t, i) => `[${i}] ${t}`).join('\n')}`,
-        maxTokens: 1024,
+        maxTokens: 2048,
         temperature: 0.3,
         label: 'weak-signals',
         model: 'claude-haiku-4-5-20251001',

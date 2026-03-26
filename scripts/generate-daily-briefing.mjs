@@ -952,7 +952,7 @@ ${consignes}`;
             maxTokens: MAX_TOKENS,
             temperature: useFullMode ? 0.3 : 0.2,
             label: 'daily-briefing',
-            timeoutMs: useFullMode ? 120_000 : 60_000,
+            timeoutMs: useFullMode ? 180_000 : 90_000,
             retry: { maxAttempts: 4, initialDelayMs: 5_000, maxDelayMs: 60_000, backoffMultiplier: 2, retryableStatusCodes: [429, 500, 502, 503, 529] },
             validate: (data) => {
                 // Valider la structure du briefing
