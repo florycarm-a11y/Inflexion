@@ -1,4 +1,10 @@
 {
+  "timestamp": "2026-03-26T13:21:00.572Z",
+  "threshold": 6,
+  "total_analyzed": 75,
+  "total_retained": 15,
+  "total_rejected": 60,
+  "avg_score": 4.8,
   "categories": {
     "geopolitics": [
       {
@@ -134,9 +140,9 @@
         "time": "26 mars",
         "lang": "fr",
         "via": "rss",
-        "rubrique": "matieres_premieres",
-        "rubrique_label": "Matières Premières",
-        "rubrique_emoji": "⛏️",
+        "rubrique": "marches",
+        "rubrique_label": "Marchés",
+        "rubrique_emoji": "📈",
         "title_en": "The oil market is in &apos;backwardation&apos; — Here’s what that means for energy prices",
         "description_en": "Oil prices have been rocked by volatility since the U.S.-Iran war began.",
         "translated": true,
@@ -276,8 +282,43 @@
       }
     ]
   },
-  "metadata": {
-    "source": "insights.json",
-    "threshold": 6
-  }
+  "score_distribution": {
+    "1": 4,
+    "2": 7,
+    "3": 2,
+    "4": 3,
+    "5": 44,
+    "6": 5,
+    "7": 6,
+    "8": 4,
+    "9": 0,
+    "10": 0
+  },
+  "top_rejected": [
+    {
+      "title": "\"La guerre ou la paix\" : Orban brandit l’Ukraine comme épouvantail avant des élections cruciales",
+      "score": 5,
+      "raison": "Contexte électoral hongrois intéressant mais analyse superficielle."
+    },
+    {
+      "title": "L'ancien PDG de Goldman Sachs Lloyd Blankfein avertit que les retombées de la guerre en Iran persisteront",
+      "score": 5,
+      "raison": "Avertissement Blankfein pertinent mais vague, pas de chiffres ou scénarios."
+    },
+    {
+      "title": "Health In Tech fixe un objectif de chiffre d'affaires de 45 à 50 millions de dollars pour 2026 tout en avançant sa plateforme IA et son déploiement auprès des grands employeurs",
+      "score": 5,
+      "raison": "scoring échoué"
+    },
+    {
+      "title": "Transcription d'appel de résultats : Syndax Pharmaceuticals dépasse les prévisions au Q4 2025, l'action progresse",
+      "score": 5,
+      "raison": "scoring échoué"
+    },
+    {
+      "title": "Nagel de la BCE déclare qu'une hausse des taux en avril « est une option »",
+      "score": 5,
+      "raison": "scoring échoué"
+    }
+  ]
 }
