@@ -1,65 +1,65 @@
 {
-  "updated": "2026-03-26T13:18:13.950Z",
-  "date": "2026-03-26",
+  "updated": "2026-03-27T07:06:50.579Z",
+  "date": "2026-03-27",
   "global": {
-    "score": -0.5,
+    "score": -0.39,
     "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.5), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est baissier (-0.39), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
       "score": -0.85,
-      "confidence": 0.95,
+      "confidence": 0.92,
       "tendance": "baissier",
-      "resume": "Escalade militaire majeure au Moyen-Orient : guerre Iran-Israël en cours depuis 27 jours avec attaques aériennes réciproques, missiles et drones. Tensions géopolitiques aigues affectant stabilité régionale et flux énergétiques mondiaux.",
+      "resume": "Escalade militaire majeure au Moyen-Orient avec attaques de drones sur le Koweït, frappes israéliennes sur l'Iran et le Liban, et menaces de Trump sur les infrastructures énergétiques iraniennes. Risque systémique d'interruption du détroit d'Ormuz et déstabilisation géopolitique globale.",
       "signaux_cles": [
-        "Guerre Iran-Israël jour 27 avec attaques aériennes continues et interceptions de missiles",
-        "Iran rejette plan de trêve en 15 points de Trump et maintient posture offensive",
-        "Fermeture potentielle du détroit d'Ormuz menaçant l'économie mondiale et les approvisionnements énergétiques"
+        "Attaques de drones sur le port de Shuwaikh (Koweït) avec dégâts matériels confirmés",
+        "Israël cible le système de missiles balistiques iranien (jour 28 d'attaques)",
+        "Trump prolonge l'ultimatum à l'Iran avec menace de frappes sur le réseau électrique"
       ]
     },
     "marches": {
       "score": -0.62,
-      "confidence": 0.88,
+      "confidence": 0.85,
       "tendance": "baissier",
-      "resume": "Marchés équitaires asiatiques en repli suite au rejet iranien du plan de paix. Marché pétrolier en backwardation avec risques de perturbation majeure. Avertissements d'experts sur persistance des impacts économiques du conflit.",
+      "resume": "Tensions géopolitiques provoquent des sorties massives de capitaux étrangers des marchés asiatiques (-12 Mds$ d'actions indiennes) et perturbent les flux de private equity. Seul point positif : déficit budgétaire français 2025 meilleur que prévu (5,1% vs 5,4% attendu).",
       "signaux_cles": [
-        "Retraite des équités asiatiques après rejet du plan de trêve par l'Iran",
-        "Marché pétrolier en backwardation indiquant tensions d'approvisionnement court terme",
-        "Ex-PDG Goldman Sachs avertit des retombées persistantes de la guerre iranienne sur l'économie"
+        "Investisseurs étrangers retirent 12 milliards de dollars des actions indiennes (record)",
+        "Déficit public français 2025 : 5,1% du PIB, mieux que les 5,4% prévus",
+        "Levée de fonds en private equity asiatique : pire année de la décennie"
       ]
     },
     "crypto": {
-      "score": -0.15,
-      "confidence": 0.62,
-      "tendance": "mixte",
-      "resume": "Marché crypto fragmenté : Bitcoin confronté à indicateurs baissiers et résistance à 70 000 $, mais mouvements de transfert institutionnels (Bhoutan 500 BTC). Régulation accrue aux États-Unis sur stablecoins et marchés de prédiction crée incertitude.",
+      "score": -0.78,
+      "confidence": 0.88,
+      "tendance": "baissier",
+      "resume": "Bitcoin chute à 68 500 $ suite à l'extension de la guerre en Iran par Trump. Liquidations massives sur XRP et ETH. Seuls points positifs : victoire judiciaire d'Anthropic contre le Pentagon et audit USDT par KPMG/PwC pour expansion US.",
       "signaux_cles": [
-        "Bitcoin : indicateurs techniques baissiers, résistance maintenue à 70 000 $ en question",
-        "Bhoutan transfère 500 BTC supplémentaires vers exchanges (total 2026 : 150M$ d'outflows)",
-        "Coinbase s'oppose au CLARITY Act sur rendements stablecoins, menace retrait soutien réglementaire"
+        "Bitcoin recule à 68 500 $ (baisse directement liée à l'escalade Iran-Trump)",
+        "XRP glisse vers 1,35 $ avec vague de liquidations et support faible",
+        "Tether engage KPMG et PwC pour audit USDT en préparation expansion États-Unis"
       ]
     },
     "matieres_premieres": {
-      "score": -0.72,
-      "confidence": 0.92,
-      "tendance": "baissier",
-      "resume": "Marché énergétique sous pression : prix du pétrole brut en baisse malgré tensions géopolitiques, gaz naturel volatil. Production pétrolière du Venezuela en hausse (1,1M bpd) contrebalançant risques Moyen-Orient. Crise d'approvisionnement énergétique potentielle en Occident.",
+      "score": 0.72,
+      "confidence": 0.89,
+      "tendance": "haussier",
+      "resume": "Pétrole surperforme (+3,41%) sur risques de disruption du détroit d'Ormuz. Taux de fret pétroliers au plus haut depuis décennies. Gaz naturel volatil mais soutenu par risques géopolitiques. Revenus pétroliers iraniens en hausse.",
       "signaux_cles": [
-        "Pétrole brut en baisse malgré guerre Iran-Israël, confusion des marchés sur négociations",
-        "Production Venezuela monte à 1,1M bpd, réduisant dépendance occidentale aux approvisionnements moyen-orientaux",
-        "Chevron avertit Californie de risque de crise énergétique liée à la guerre iranienne"
+        "Pétrole (USO) : +3,41% à 117,26 $ sur risques Hormuz",
+        "Taux de fret pétroliers au plus haut en plusieurs décennies (mars 2026)",
+        "Revenus pétroliers iraniens en hausse malgré sanctions"
       ]
     },
     "ai_tech": {
-      "score": 0.18,
-      "confidence": 0.65,
-      "tendance": "neutre",
-      "resume": "Secteur IA en dynamique mixte : Meta réduit effectifs malgré investissements massifs en IA, GitHub révise politique d'entraînement sur données utilisateurs. Préoccupations croissantes sur sécurité (malware LiteLLM) et écart de compétences IA.",
+      "score": -0.45,
+      "confidence": 0.72,
+      "tendance": "mixte",
+      "resume": "Victoire judiciaire majeure d'Anthropic contre le Pentagon (blocage temporaire de l'interdiction). Innovations positives (Gemini 3.1 Flash, Meta TRIBE v2) mais contexte d'incertitude réglementaire. David Sacks quitte son rôle de crypto czar pour poste consultatif plus large.",
       "signaux_cles": [
-        "Meta licencie centaines d'employés tout en augmentant investissements IA",
-        "GitHub abandonne entraînement IA sur données utilisateurs après backlash",
-        "Écart de compétences IA s'accentue : utilisateurs avancés tirent profit tandis que marché se polarise"
+        "Anthropic remporte ordonnance judiciaire bloquant l'interdiction du Pentagon",
+        "Google lance Gemini 3.1 Flash : modèle multimodal temps réel pour agents IA",
+        "David Sacks transfère du rôle de crypto czar à comité consultatif présidentiel"
       ]
     }
   },
@@ -306,6 +306,15 @@
       "crypto": -0.15,
       "matieres_premieres": -0.72,
       "ai_tech": 0.18
+    },
+    {
+      "date": "2026-03-27",
+      "global": -0.39,
+      "geopolitique": -0.85,
+      "marches": -0.62,
+      "crypto": -0.78,
+      "matieres_premieres": 0.72,
+      "ai_tech": -0.45
     }
   ],
   "model": "claude-haiku-4-5-20251001",

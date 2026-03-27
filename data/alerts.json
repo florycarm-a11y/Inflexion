@@ -1,65 +1,130 @@
 {
-  "updated": "2026-03-26T13:18:13.950Z",
+  "updated": "2026-03-27T07:06:50.579Z",
   "alertes": [
     {
-      "id": "alert-2026-03-26-001",
-      "titre": "Or (GLD) : +3,01% à $416,29, fuite vers actifs refuge",
-      "texte": "L'or gagne 3,01% à $416,29 en contexte de crise géopolitique majeure (guerre Iran-Israël jour 27) et indice Fear & Greed à 10 (peur extrême). Mouvement classique de fuite vers actifs refuge face aux risques systémiques.",
+      "id": "alert-2026-03-27-001",
+      "titre": "Nasdaq 100 (QQQ) : -2,39% à 573,79 $, tech en repli généralisé",
+      "texte": "Indice technologique recule dans contexte de risk-off généralisé. Nvidia (-4,16%), Alphabet (-3,44%) et Tesla (-3,59%) tous en baisse significative. Régime détecté : risk-off avec consensus 88% et amplitude 2,38%.",
+      "categorie": "marches",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-03-27T07:06:50.579Z",
+      "donnees": {
+        "symbole": "QQQ",
+        "nom": "Nasdaq 100",
+        "prix": 573.79,
+        "variation": -2.39
+      }
+    },
+    {
+      "id": "alert-2026-03-27-002",
+      "titre": "Or (GLD) : -3,76% à 400,64 $, refuge paradoxalement vendu",
+      "texte": "L'or recule malgré l'escalade géopolitique majeure au Moyen-Orient, signalant des liquidations forcées et besoin de cash. Divergence commodities-tech : pétrole +3,41% tandis que métaux précieux baissent.",
       "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-26T13:18:13.950Z",
+      "horodatage": "2026-03-27T07:06:50.579Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
-        "prix": 416.29,
-        "variation": 3.01
+        "prix": 400.64,
+        "variation": -3.76
       }
     },
     {
-      "id": "alert-2026-03-26-002",
-      "titre": "Fear & Greed Index : 10/100 (peur extrême), chute de -13 pts en 7 jours",
-      "texte": "Indice Fear & Greed s'effondre à 10/100 (peur extrême) avec variation de -13 points sur 7 jours. Reflète escalade géopolitique majeure (conflit Iran-Israël) et rejet du plan de paix par Téhéran, générant aversion au risque systémique.",
-      "categorie": "marches",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-03-26T13:18:13.950Z",
+      "id": "alert-2026-03-27-003",
+      "titre": "Pétrole (USO) : +3,41% à 117,26 $, risques Hormuz prennent effet",
+      "texte": "Brut surperforme sur menaces d'interruption du détroit d'Ormuz et escalade Iran-Israël. Taux de fret pétroliers au plus haut depuis plusieurs décennies. Risque d'accélération si frappes sur infrastructure énergétique iranienne confirmées.",
+      "categorie": "matieres_premieres",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-03-27T07:06:50.579Z",
       "donnees": {
-        "score": 10,
-        "label": "Extreme Fear",
-        "variation_7j": -13
+        "symbole": "USO",
+        "nom": "Pétrole (ETF)",
+        "prix": 117.26,
+        "variation": 3.41
       }
     },
     {
-      "id": "alert-2026-03-26-003",
-      "titre": "Moyen-Orient : escalade Iran-Israël jour 27, détroit d'Ormuz menacé",
-      "texte": "Guerre Iran-Israël poursuit escalade avec attaques aériennes réciproques, missiles et drones. Fermeture potentielle du détroit d'Ormuz (30% du pétrole maritime mondial) constitue risque critique pour approvisionnements énergétiques globaux et stabilité économique.",
-      "categorie": "geopolitique",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-03-26T13:18:13.950Z",
-      "donnees": {
-        "score": 10,
-        "label": "Extreme Fear",
-        "variation_7j": -13
-      }
-    },
-    {
-      "id": "alert-2026-03-26-004",
-      "titre": "Équités asiatiques : repli suite rejet plan de paix iranien",
-      "texte": "Marchés équitaires asiatiques en retrait après rejet par l'Iran du plan de trêve en 15 points de Trump. Maintien de posture offensive iranienne élimine perspective court terme de désescalade, prolongeant incertitude géopolitique.",
-      "categorie": "marches",
+      "id": "alert-2026-03-27-004",
+      "titre": "Bitcoin : 68 500 $, chute directe suite extension guerre Iran",
+      "texte": "Bitcoin recule suite à l'extension de l'ultimatum de Trump à l'Iran avec menaces de frappes sur réseau électrique. Liquidations massives observées. Crypto TVL DeFi en baisse (-3,4% en 24h), ether.fi Stake TVL -10% sur 7j.",
+      "categorie": "crypto",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-26T13:18:13.950Z",
-      "donnees": {}
+      "horodatage": "2026-03-27T07:06:50.579Z",
+      "donnees": {
+        "symbole": "NVDA",
+        "nom": "Nvidia",
+        "prix": 171.24,
+        "variation": -4.16
+      }
+    },
+    {
+      "id": "alert-2026-03-27-005",
+      "titre": "Marchés asiatiques : fuite record de 12 Mds$ d'actions indiennes",
+      "texte": "Investisseurs étrangers retirent 12 milliards de dollars des actions indiennes (record historique), déclenché par escalade guerre Iran. Private equity asiatique en pire année de la décennie pour levées de fonds.",
+      "categorie": "marches",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-27T07:06:50.579Z",
+      "donnees": {
+        "symbole": "GOOGL",
+        "nom": "Alphabet",
+        "prix": 280.92,
+        "variation": -3.44
+      }
+    },
+    {
+      "id": "alert-2026-03-27-006",
+      "titre": "Fear & Greed Index : 13 (Extreme Fear), plus bas niveaux",
+      "texte": "Indice de peur extrême atteint 13, signalant capitulation des investisseurs. Régime risk-off généralisé avec consensus 88% : ETF -1,11%, actions -2,49%, crypto -2,2%, indices européens -1,98%.",
+      "categorie": "marches",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-27T07:06:50.579Z",
+      "donnees": {
+        "symbole": "TSLA",
+        "nom": "Tesla",
+        "prix": 372.11,
+        "variation": -3.59
+      }
+    },
+    {
+      "id": "alert-2026-03-27-007",
+      "titre": "Anthropic : victoire judiciaire contre Pentagon, ordonnance temporaire",
+      "texte": "Juge bloque temporairement l'interdiction du Pentagon contre la technologie IA d'Anthropic. Levée d'incertitude réglementaire majeure pour secteur IA. David Sacks transfère à rôle consultatif présidentiel plus large.",
+      "categorie": "ai_tech",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-03-27T07:06:50.579Z",
+      "donnees": {
+        "score": 13,
+        "label": "Extreme Fear",
+        "variation_7j": 2
+      }
+    },
+    {
+      "id": "alert-2026-03-27-008",
+      "titre": "Tether (USDT) : audit KPMG/PwC lancé pour expansion États-Unis",
+      "texte": "Tether engage KPMG pour audit USDT et PwC pour expansion réglementaire US. Signal de normalisation et conformité accrue du stablecoin majeur face à pressions réglementaires.",
+      "categorie": "crypto",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-03-27T07:06:50.579Z",
+      "donnees": {
+        "protocole": "ether.fi Stake",
+        "tvl_b": 5.1,
+        "change_7d": -10
+      }
     }
   ],
   "stats": {
-    "total": 4,
+    "total": 8,
     "urgent": 2,
-    "attention": 2,
-    "info": 0
+    "attention": 4,
+    "info": 2
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
