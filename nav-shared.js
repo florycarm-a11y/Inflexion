@@ -164,7 +164,7 @@ var mainEl=document.querySelector('main.main-content,main#main-content');
 
 function buildHero(catLabel,titleText,subtitleText){
 var hero=document.createElement('section');
-hero.style.cssText='position:relative;padding:7rem 0 3.5rem;background-color:#006650';
+hero.style.cssText='position:relative;padding:5rem 0 3rem;background-color:#006650';
 hero.innerHTML=
 '<div style="max-width:80rem;margin:0 auto;padding:0 1rem">'+
 '<div style="max-width:42rem">'+
