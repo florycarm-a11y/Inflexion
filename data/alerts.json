@@ -1,101 +1,129 @@
 {
-  "updated": "2026-03-28T06:58:58.157Z",
+  "updated": "2026-03-28T18:39:39.125Z",
   "alertes": [
     {
       "id": "alert-2026-03-28-001",
-      "titre": "Pétrole (USO) : +5.92% à $124.20, tensions Ormuz et perturbations navales",
-      "texte": "Hausse pétrolière alimentée par escalade Iran-Israël et perturbations du détroit d'Ormuz. Taux de fret pétrolier à sommets multi-décennies ; conflit coûte 340 millions €/jour au transport maritime. Risque d'approvisionnement accru.",
+      "titre": "Pétrole (USO) : +5.94% à $124.22, franchit $100/baril en contexte Iran",
+      "texte": "Escalade militaire au Moyen-Orient (attaques iraniennes, frappes israéliennes) propulse le pétrole brut à $100/baril. Disruptions potentielles du Strait of Hormuz et tempête Narelle en Australie amplifient les tensions d'approvisionnement.",
       "categorie": "matieres_premieres",
-      "severite": "attention",
+      "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-03-28T06:58:58.157Z",
+      "horodatage": "2026-03-28T18:39:39.125Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
-        "prix": 414.7,
+        "prix": 414.72,
         "variation": 3.51
       }
     },
     {
       "id": "alert-2026-03-28-002",
-      "titre": "Or (GLD) : +3.51% à $414.70, refuge face à risques géopolitiques",
-      "texte": "Hausse de l'or reflétant fuite vers actifs refuge. Escalade militaire au Moyen-Orient et recul du dollar (31 ans) soutiennent demande. Fear & Greed Index à 12 (Extreme Fear) confirme aversion au risque.",
+      "titre": "Or (GLD) : +3.51% à $414.72, fuite vers actifs refuge",
+      "texte": "Hausse de 3.51% reflète la migration vers actifs de sécurité en contexte de crise géopolitique majeure. Tensions Iran-Israël-USA et volatilité boursière (-2% Nasdaq) alimentent la demande d'or.",
       "categorie": "matieres_premieres",
-      "severite": "info",
-      "impact": "baissier",
-      "horodatage": "2026-03-28T06:58:58.157Z",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-03-28T18:39:39.125Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
-        "prix": 124.2,
-        "variation": 5.92
+        "prix": 124.22,
+        "variation": 5.94
       }
     },
     {
       "id": "alert-2026-03-28-003",
-      "titre": "Tech (NVDA -2.17%, MSFT -2.51%, GOOGL -2.34%, TSLA -2.76%)",
-      "texte": "Recul généralisé des géants technologiques dans régime risk-off. Spread commodities/tech de -6.9pp indique rotation vers matières premières. Actions US en baisse de 2.28% en moyenne.",
+      "titre": "Nasdaq : -2%, Dow Jones en correction ; indices EU -1.68%",
+      "texte": "Wall Street finit nettement dans le rouge avec Nasdaq -2% et Dow Jones en zone de correction. Hausse des rendements obligataires et tensions géopolitiques pèsent sur les valuations technologiques. Indices européens -1.68%.",
       "categorie": "marches",
-      "severite": "attention",
+      "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-03-28T06:58:58.157Z",
+      "horodatage": "2026-03-28T18:39:39.125Z",
       "donnees": {
         "symbole": "NVDA",
         "nom": "Nvidia",
-        "prix": 167.52,
-        "variation": -2.17
+        "prix": 167.54,
+        "variation": -2.16
       }
     },
     {
       "id": "alert-2026-03-28-004",
-      "titre": "DeFi TVL : baisse prolongée (EigenCloud -10.2%, Sky Lending -10.7%, ether.fi -12.8%)",
-      "texte": "Sorties massives de liquidités DeFi sur 7 jours. Fear & Greed Index extrême (12) et régime risk-off généralisé (consensus 88%) accélèrent déleveraging. Crypto en baisse de 2.7%.",
-      "categorie": "crypto",
+      "titre": "Tech mega-cap : NVDA -2.16%, MSFT -2.51%, GOOGL -2.34%, TSLA -2.76%",
+      "texte": "Repli généralisé des géants technologiques sur fond de hausse des taux et risk-off. Tesla subit le plus fort recul (-2.76%) dans contexte de doutes sur robotaxis. Spread commodities-tech de -6.9pp confirme rotation défensive.",
+      "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-28T06:58:58.157Z",
+      "horodatage": "2026-03-28T18:39:39.125Z",
       "donnees": {
         "symbole": "MSFT",
         "nom": "Microsoft",
-        "prix": 356.77,
+        "prix": 356.79,
         "variation": -2.51
       }
     },
     {
       "id": "alert-2026-03-28-005",
-      "titre": "Régime risk-off généralisé : actions -2.28%, crypto -2.7%, indices EU -1.63%",
-      "texte": "Consensus 88% sur aversion au risque, amplitude volatilité 2.58%. Escalade géopolitique (Iran-Israël, Ormuz) et avertissements de prolongation du conflit déclenchent rotation massive vers refuge (or +3.51%, pétrole +5.92%).",
-      "categorie": "geopolitique",
+      "titre": "Fear & Greed Index : 12 (Extreme Fear), régime fragmenté détecté",
+      "texte": "Indice de peur extrême (12/100) reflète la panique de marché. Régime fragmenté avec consensus 56% et amplitude 2.37% : crypto +2.02%, commodités surperforment, actions -2.27%, EU -1.68%.",
+      "categorie": "marches",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-03-28T06:58:58.157Z",
+      "horodatage": "2026-03-28T18:39:39.125Z",
       "donnees": {
         "symbole": "GOOGL",
         "nom": "Alphabet",
-        "prix": 274.34,
+        "prix": 274.36,
         "variation": -2.34
       }
     },
     {
       "id": "alert-2026-03-28-006",
-      "titre": "Dollar en baisse structurelle : part réserve mondiale chute à 31% (31 ans)",
-      "texte": "Banques centrales diversifient en or et autres devises. Recul du dollar affecte valorisations actifs libellés en USD et soutient matières premières. Contexte de tensions géopolitiques accélère dédollarisation.",
-      "categorie": "macro",
+      "titre": "Crypto DeFi : Sky Lending TVL -10.7% (7j), ether.fi -10.9% (7j)",
+      "texte": "Sorties massives de liquidités DeFi sur 7 jours : Sky Lending -10.7% à $6.6B, ether.fi -10.9% à $5.0B. Reflète la migration vers actifs refuge en contexte de risk-off généralisé.",
+      "categorie": "crypto",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-28T06:58:58.157Z",
+      "horodatage": "2026-03-28T18:39:39.125Z",
       "donnees": {
         "symbole": "TSLA",
         "nom": "Tesla",
-        "prix": 361.83,
+        "prix": 361.85,
         "variation": -2.76
+      }
+    },
+    {
+      "id": "alert-2026-03-28-007",
+      "titre": "Morgan Stanley lance ETF Bitcoin spot à 0.14%, compression des frais",
+      "texte": "Morgan Stanley positionne son ETF Bitcoin spot à 0.14% de frais, undercutting tous les concurrents du marché. Signal d'adoption institutionnelle continue malgré volatilité macroéconomique.",
+      "categorie": "crypto",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-03-28T18:39:39.125Z",
+      "donnees": {
+        "score": 12,
+        "label": "Extreme Fear",
+        "variation_7j": 0
+      }
+    },
+    {
+      "id": "alert-2026-03-28-008",
+      "titre": "Moyen-Orient : escalade militaire Iran-Israël-USA, 28 mars 2026",
+      "texte": "Attaques de missiles Houthis soutenus par l'Iran contre Israël, frappes israéliennes au Liban (3 journalistes tués, 9 paramédicaux), soldats américains blessés en Arabie saoudite. Risque d'élargissement du conflit.",
+      "categorie": "geopolitique",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-28T18:39:39.125Z",
+      "donnees": {
+        "protocole": "Sky Lending",
+        "tvl_b": 6.6,
+        "change_7d": -10.7
       }
     }
   ],
   "stats": {
-    "total": 6,
-    "urgent": 1,
-    "attention": 4,
+    "total": 8,
+    "urgent": 4,
+    "attention": 3,
     "info": 1
   },
   "model": "claude-haiku-4-5-20251001",
