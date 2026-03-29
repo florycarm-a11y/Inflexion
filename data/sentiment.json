@@ -1,65 +1,65 @@
 {
-  "updated": "2026-03-28T18:39:39.125Z",
-  "date": "2026-03-28",
+  "updated": "2026-03-29T07:02:55.557Z",
+  "date": "2026-03-29",
   "global": {
-    "score": -0.1,
+    "score": -0.15,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (-0.1), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est mixte (-0.15), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
       "score": -0.75,
       "confidence": 0.92,
       "tendance": "baissier",
-      "resume": "Escalade militaire au Moyen-Orient avec attaques iraniennes, frappes israéliennes et mobilisation américaine. Tensions géopolitiques majeures impactant directement les marchés énergétiques et les primes de risque.",
+      "resume": "Escalade majeure au Moyen-Orient avec frappes répétées sur l'Iran, mobilisation militaire russe accélérée en Ukraine, et tensions nucléaires croissantes. Les risques géopolitiques systémiques dominent l'agenda.",
       "signaux_cles": [
-        "Attaque de missiles Houthis soutenus par l'Iran contre Israël (28 mars 2026)",
-        "Soldats américains blessés dans frappe iranienne sur base saoudite en Arabie",
-        "Trois journalistes libanais tués dans frappe israélienne ; neuf paramédicaux tués au Liban"
+        "Frappes multiples sur installations iraniennes (Bushehr, ports) avec dégâts confirmés",
+        "Corée du Nord teste moteur missile haute puissance ; Iran menace universités américaines du Golfe",
+        "Mobilisation forcée étudiants russes + réduction record banquise arctique signalent escalade durable"
       ]
     },
     "marches": {
-      "score": -0.58,
-      "confidence": 0.85,
+      "score": -0.45,
+      "confidence": 0.78,
       "tendance": "baissier",
-      "resume": "Indices boursiers en correction avec Nasdaq -2%, Dow Jones en zone de correction. Hausse des rendements obligataires pèse sur les valeurs technologiques. Volatilité accrue liée aux tensions géopolitiques.",
+      "resume": "Choc énergétique moyen-oriental impacte coûts d'emprunt eurozone et prix carburants. Immobilier français stable mais secteur aérien en restructuration (Air France-Orly).",
       "signaux_cles": [
-        "Wall Street finit nettement dans le rouge : Nasdaq -2%, Dow Jones en correction",
-        "Pétrole atteint $100/baril en contexte de guerre iranienne",
-        "Rendements obligataires en hausse, pression sur les actions technologiques"
+        "Coûts d'emprunt eurozone en hausse sur craintes choc fiscal Iran",
+        "Hausse prix carburant confirmée ; routiers déçus par mesures gouvernementales",
+        "Air France quitte Orly dimanche ; immobilier Nice atteint 14 000 €/m² record"
       ]
     },
     "crypto": {
-      "score": 0.12,
-      "confidence": 0.62,
-      "tendance": "mixte",
-      "resume": "Marché crypto fragmenté : adoption institutionnelle continue (Binance, GameStop) mais régulation accrue (Washington vs Kalshi). Sentiment mitigé entre innovation et pression réglementaire.",
+      "score": -0.35,
+      "confidence": 0.72,
+      "tendance": "baissier",
+      "resume": "Secteur crypto en phase de consolidation avec pressions réglementaires (ban donations Canada, poursuites Kalshi) et liquidations majeures (WLD -65M$ OTC). Morgan Stanley lance ETF BTC agressif à 0,14%.",
       "signaux_cles": [
-        "Morgan Stanley lance ETF Bitcoin spot à 0.14% de frais, plus compétitif du marché",
-        "Binance confirme achats institutionnels record de Bitcoin",
-        "Washington poursuit Kalshi ; Canada bannit donations crypto pour campagnes électorales"
+        "World Foundation vend $65M WLD tokens à plus bas historique via OTC",
+        "Morgan Stanley ETF Bitcoin à 0,14% (undercutting tous rivaux) = compression marges",
+        "Canada propose ban donations crypto ; Washington poursuit Kalshi ; Sen. Warren cible Bitmain-Trump"
       ]
     },
     "matieres_premieres": {
       "score": 0.68,
-      "confidence": 0.88,
+      "confidence": 0.89,
       "tendance": "haussier",
-      "resume": "Matières premières surperforment nettement : pétrole +5.94%, or +3.51%. Tensions géopolitiques et disruptions d'approvisionnement (Hormuz, tempête Narelle) soutiennent les prix énergétiques et métaux précieux.",
+      "resume": "Choc énergétique moyen-oriental propulse pétrole et gaz naturel. Disruptions Détroit d'Ormuz, tempête Narelle Australie, et rationalisation production créent déficit d'offre durable.",
       "signaux_cles": [
-        "Pétrole (USO) +5.94% à $124.22 ; or (GLD) +3.51% à $414.72",
-        "Disruptions Strait of Hormuz et tempête Narelle impactent GNL australien",
-        "Spread commodities vs tech : -6.9pp, signal risk-off et inflation"
+        "Pétrole +5,92% (USO $124,20) ; drillers anticipent triple-digit crude",
+        "Disruptions Détroit d'Ormuz et tempête Narelle perturbent GNL ; tanker freight spikes",
+        "Transition énergétique accélérée ; rationnement énergétique débattu en Europe"
       ]
     },
     "ai_tech": {
-      "score": 0.15,
-      "confidence": 0.68,
+      "score": 0.12,
+      "confidence": 0.65,
       "tendance": "neutre",
-      "resume": "Secteur IA en consolidation : innovations continues (Gemini API, Claude, Suno v5.5) mais pressions concurrentielles et réglementaires. Anthropic gagne en adoption consommateurs malgré défis chinois.",
+      "resume": "Innovation continue (Mistral Voxtral, Claude Mac control, Gemini Agents) mais tensions concurrence (Anthropic vs OpenAI, pression chinoise) et risques sécurité (Infinity Stealer, ClickFix). Startups cloud IA empruntent sur stocks Nvidia.",
       "signaux_cles": [
-        "Anthropic : popularité consommateurs en hausse, mais concurrence chinoise et contraintes de sécurité",
-        "OpenAI ferme Sora app avril 2026, API septembre 2026",
-        "Google soutient Anthropic avec $5B pour data centers ; NVIDIA déploie ProRL Agent"
+        "Mistral Voxtral TTS 4B ; Claude prend contrôle Mac ; Google Gemini API Agents",
+        "Anthropic lutte concurrence chinoise + obsession sécurité ; Anthropic vs OpenAI 'tobacco industry'",
+        "Startups cloud IA empruntent sur stocks Nvidia (pratique nouvelle ampleur) ; malware Infinity Stealer macOS"
       ]
     }
   },
@@ -324,6 +324,15 @@
       "crypto": 0.12,
       "matieres_premieres": 0.68,
       "ai_tech": 0.15
+    },
+    {
+      "date": "2026-03-29",
+      "global": -0.15,
+      "geopolitique": -0.75,
+      "marches": -0.45,
+      "crypto": -0.35,
+      "matieres_premieres": 0.68,
+      "ai_tech": 0.12
     }
   ],
   "model": "claude-haiku-4-5-20251001",
