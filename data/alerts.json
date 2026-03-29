@@ -1,104 +1,104 @@
 {
-  "updated": "2026-03-29T07:02:55.557Z",
+  "updated": "2026-03-29T18:41:35.740Z",
   "alertes": [
     {
       "id": "alert-2026-03-29-001",
-      "titre": "Pétrole (USO) : +5,92% à $124,20, disruptions Ormuz et Narelle soutiennent",
-      "texte": "Choc énergétique moyen-oriental amplifié par frappes iraniennes répétées et tempête Narelle en Australie. Drillers anticipent prix triple-digit ; tanker freight spikes confirment tensions d'approvisionnement durable.",
+      "titre": "Pétrole (USO) : +5.94% à $124.22, escalade Moyen-Orient soutient les prix",
+      "texte": "Hausse significative du brut liée à l'expansion militaire israélienne au Liban, frappes iraniennes et ouverture d'un nouveau front houthiste. Drillers anticipent des prix triple-digit ; risque d'implication américaine amplifie les craintes d'approvisionnement.",
       "categorie": "matieres_premieres",
-      "severite": "urgent",
+      "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-03-29T07:02:55.557Z",
+      "horodatage": "2026-03-29T18:41:35.740Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
-        "prix": 414.7,
+        "prix": 414.72,
         "variation": 3.51
       }
     },
     {
       "id": "alert-2026-03-29-002",
-      "titre": "Or (GLD) : +3,51% à $414,70, refuge inflation et géopolitique",
-      "texte": "Hausse refuge sur escalade moyen-orientale, craintes inflation énergétique et compression marges tech. Fear & Greed Index à 9 (Extreme Fear) soutient demande métaux précieux.",
+      "titre": "Or (GLD) : +3.51% à $414.72, refuge face aux tensions géopolitiques",
+      "texte": "Hausse de l'or reflétant la fuite vers la sécurité dans un contexte d'escalade militaire majeure au Moyen-Orient et d'incertitude sur l'implication américaine. Fear & Greed Index à 9 (Extreme Fear) confirme la recherche de refuges.",
       "categorie": "matieres_premieres",
-      "severite": "attention",
+      "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-03-29T07:02:55.557Z",
+      "horodatage": "2026-03-29T18:41:35.740Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
-        "prix": 124.2,
-        "variation": 5.92
+        "prix": 124.22,
+        "variation": 5.94
       }
     },
     {
       "id": "alert-2026-03-29-003",
-      "titre": "Tech (NVDA -2,17%, MSFT -2,51%, GOOGL -2,34%, TSLA -2,76%) : rotation risk-off",
-      "texte": "Divergence commodities vs tech (-6,9pp spread) signale rotation risk-off. Choc énergétique moyen-oriental, compression marges IA (Morgan Stanley ETF BTC 0,14%), et Fear & Greed Extreme Fear pèsent sur valorisations technologiques.",
+      "titre": "Tech (NVDA -2.16%, MSFT -2.51%, GOOGL -2.34%, TSLA -2.76%) : correction généralisée",
+      "texte": "Secteur technologique en repli dans un régime risk-off généralisé (consensus 88%). Divergence commodities/tech (spread -6.9pp) signale une rotation vers matières premières et un repositionnement défensif face aux risques géopolitiques et d'inflation.",
       "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-29T07:02:55.557Z",
+      "horodatage": "2026-03-29T18:41:35.740Z",
       "donnees": {
         "symbole": "NVDA",
         "nom": "Nvidia",
-        "prix": 167.52,
-        "variation": -2.17
+        "prix": 167.54,
+        "variation": -2.16
       }
     },
     {
       "id": "alert-2026-03-29-004",
-      "titre": "Eurozone : coûts d'emprunt en hausse sur choc fiscal Iran",
-      "texte": "Craintes d'impact budgétaire du choc énergétique moyen-oriental font monter les rendements obligataires eurozone. Hausse prix carburant confirmée en France ; routiers déçus par mesures gouvernementales.",
+      "titre": "Régime risk-off confirmé : Fear & Greed Index à 9 (Extreme Fear)",
+      "texte": "Marché en mode aversion au risque généralisée (consensus 88%, amplitude 2.25%). Actions -2.27%, crypto -1.63%, indices EU -1.68% ; seuls ETF +0.82% et commodités surperforment. Escalade géopolitique Moyen-Orient et risque d'implication américaine dominent.",
       "categorie": "macro",
-      "severite": "attention",
+      "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-03-29T07:02:55.557Z",
+      "horodatage": "2026-03-29T18:41:35.740Z",
       "donnees": {
         "symbole": "MSFT",
         "nom": "Microsoft",
-        "prix": 356.77,
+        "prix": 356.79,
         "variation": -2.51
       }
     },
     {
       "id": "alert-2026-03-29-005",
-      "titre": "Crypto : liquidations WLD ($65M OTC) et pressions réglementaires (Kalshi, Canada)",
-      "texte": "World Foundation vend $65M WLD tokens à plus bas historique. Canada propose ban donations crypto ; Washington poursuit Kalshi ; Sen. Warren cible Bitmain-Trump. Morgan Stanley ETF BTC agressif (0,14%) comprime marges secteur.",
+      "titre": "Bitcoin : fin de 13 semaines d'accumulation institutionnelle, signal technique baissier",
+      "texte": "Strategy pause accumulation Bitcoin après 13 semaines consécutives d'achats ; Bitcoin bullish bets à 28 mois de hauteur (signal contrarian pour analystes baissiers). Contexte crypto mixte malgré adoption mainstream (BNP Paribas, Walmart OnePay).",
       "categorie": "crypto",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-29T07:02:55.557Z",
+      "horodatage": "2026-03-29T18:41:35.740Z",
       "donnees": {
         "symbole": "GOOGL",
         "nom": "Alphabet",
-        "prix": 274.34,
+        "prix": 274.36,
         "variation": -2.34
       }
     },
     {
       "id": "alert-2026-03-29-006",
-      "titre": "Crypto TVL : Sky Lending -10,1% (7j), ether.fi -10,5% (7j)",
-      "texte": "Sorties de liquidités prolongées sur protocoles DeFi majeures. Sky Lending TVL $6,7B ; ether.fi Stake TVL $5,0B. Signale réduction exposition leverage et risk-off crypto.",
-      "categorie": "crypto",
-      "severite": "info",
+      "titre": "Moyen-Orient : escalade militaire majeure, risque d'implication américaine",
+      "texte": "Israël ordonne expansion invasion sud-Liban, Iran frappe zone industrielle israélienne, Houthistes ouvrent nouveau front. Trump face à tentation escalade après un mois de guerre ; Pakistan organise talks de-escalade. Risque de déploiement troupes américaines affecte Dow Jones Futures.",
+      "categorie": "geopolitique",
+      "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-03-29T07:02:55.557Z",
+      "horodatage": "2026-03-29T18:41:35.740Z",
       "donnees": {
         "symbole": "TSLA",
         "nom": "Tesla",
-        "prix": 361.83,
+        "prix": 361.85,
         "variation": -2.76
       }
     },
     {
       "id": "alert-2026-03-29-007",
-      "titre": "Régime marché : tendance baissière modérée, Fear & Greed Extreme Fear",
-      "texte": "Consensus 63% baissier, amplitude 1,9%. Actions -2,28% ; indices EU -1,68% ; ETF +0,81% (refuge). Choc géopolitique moyen-oriental et inflation énergétique dominent.",
-      "categorie": "marches",
+      "titre": "GNL Australie : perturbations persistantes post-tempête Narelle, milliers sans électricité",
+      "texte": "Tempête Narelle continue de perturber production GNL australienne et affecte approvisionnement énergétique régional. Milliers de foyers privés d'électricité ; impact sur chaînes d'approvisionnement énergétiques mondiales et prix du gaz naturel.",
+      "categorie": "matieres_premieres",
       "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-03-29T07:02:55.557Z",
+      "impact": "haussier",
+      "horodatage": "2026-03-29T18:41:35.740Z",
       "donnees": {
         "score": 9,
         "label": "Extreme Fear",
@@ -108,8 +108,8 @@
   ],
   "stats": {
     "total": 7,
-    "urgent": 1,
-    "attention": 5,
+    "urgent": 2,
+    "attention": 4,
     "info": 1
   },
   "model": "claude-haiku-4-5-20251001",
