@@ -1,115 +1,75 @@
 {
-  "updated": "2026-03-29T18:41:35.740Z",
+  "updated": "2026-03-31T07:12:21.521Z",
   "alertes": [
     {
-      "id": "alert-2026-03-29-001",
-      "titre": "Pétrole (USO) : +5.94% à $124.22, escalade Moyen-Orient soutient les prix",
-      "texte": "Hausse significative du brut liée à l'expansion militaire israélienne au Liban, frappes iraniennes et ouverture d'un nouveau front houthiste. Drillers anticipent des prix triple-digit ; risque d'implication américaine amplifie les craintes d'approvisionnement.",
+      "id": "alert-2026-03-31-001",
+      "titre": "Pétrole (USO) : +4,53% à $129,83, escalade moyen-orientale",
+      "texte": "Pétrole brut en hausse significative suite aux attaques iraniennes (drone MQ-9, tanker koweïtien) et fermeture du détroit d'Ormuz. WTI clôture au-dessus de $100/baril, essence USA dépasse $4/gallon, risque de $200/baril évoqué par Bloomberg.",
       "categorie": "matieres_premieres",
-      "severite": "attention",
-      "impact": "haussier",
-      "horodatage": "2026-03-29T18:41:35.740Z",
-      "donnees": {
-        "symbole": "GLD",
-        "nom": "Or (ETF)",
-        "prix": 414.72,
-        "variation": 3.51
-      }
-    },
-    {
-      "id": "alert-2026-03-29-002",
-      "titre": "Or (GLD) : +3.51% à $414.72, refuge face aux tensions géopolitiques",
-      "texte": "Hausse de l'or reflétant la fuite vers la sécurité dans un contexte d'escalade militaire majeure au Moyen-Orient et d'incertitude sur l'implication américaine. Fear & Greed Index à 9 (Extreme Fear) confirme la recherche de refuges.",
-      "categorie": "matieres_premieres",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-03-29T18:41:35.740Z",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-31T07:12:21.521Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
-        "prix": 124.22,
-        "variation": 5.94
+        "prix": 129.83,
+        "variation": 4.53
       }
     },
     {
-      "id": "alert-2026-03-29-003",
-      "titre": "Tech (NVDA -2.16%, MSFT -2.51%, GOOGL -2.34%, TSLA -2.76%) : correction généralisée",
-      "texte": "Secteur technologique en repli dans un régime risk-off généralisé (consensus 88%). Divergence commodities/tech (spread -6.9pp) signale une rotation vers matières premières et un repositionnement défensif face aux risques géopolitiques et d'inflation.",
+      "id": "alert-2026-03-31-002",
+      "titre": "Inflation France : +1,7% Y/Y en mars, accélération énergétique",
+      "texte": "Inflation française accélère nettement à 1,7% en mars 2026 (vs 0,9% février), tirée par hausse des prix de l'énergie liée à la crise moyen-orientale. Impact direct sur consommation ménages et coûts d'exploitation des entreprises.",
+      "categorie": "macro",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-03-31T07:12:21.521Z",
+      "donnees": {
+        "score": 11,
+        "label": "Extreme Fear",
+        "variation_7j": 0
+      }
+    },
+    {
+      "id": "alert-2026-03-31-003",
+      "titre": "Crypto : risque quantique critique, 6M BTC et 20M ETH exposés",
+      "texte": "Google identifie vulnérabilité quantique majeure : 6 millions BTC et 20 millions ETH exposés à attaque en quelques jours avec ordinateurs quantiques nécessitant moins de qubits que prévu. Taproot partiellement responsable de la faille de sécurité cryptographique.",
+      "categorie": "crypto",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-31T07:12:21.521Z",
+      "donnees": {
+        "tech_avg": -0.49,
+        "comm_avg": 2.25,
+        "spread": -2.74,
+        "regime": "risk-off / inflation"
+      }
+    },
+    {
+      "id": "alert-2026-03-31-004",
+      "titre": "Fear & Greed Index : 11 (Extreme Fear), divergence risk-off",
+      "texte": "Indice Fear & Greed à 11 signalant peur extrême. Divergence commodités surperformant tech (-2,7pp spread) confirme régime risk-off avec rotation vers matières premières et inflation hedge sur fond d'incertitude géopolitique.",
       "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-29T18:41:35.740Z",
-      "donnees": {
-        "symbole": "NVDA",
-        "nom": "Nvidia",
-        "prix": 167.54,
-        "variation": -2.16
-      }
+      "horodatage": "2026-03-31T07:12:21.521Z",
+      "donnees": {}
     },
     {
-      "id": "alert-2026-03-29-004",
-      "titre": "Régime risk-off confirmé : Fear & Greed Index à 9 (Extreme Fear)",
-      "texte": "Marché en mode aversion au risque généralisée (consensus 88%, amplitude 2.25%). Actions -2.27%, crypto -1.63%, indices EU -1.68% ; seuls ETF +0.82% et commodités surperforment. Escalade géopolitique Moyen-Orient et risque d'implication américaine dominent.",
-      "categorie": "macro",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-03-29T18:41:35.740Z",
-      "donnees": {
-        "symbole": "MSFT",
-        "nom": "Microsoft",
-        "prix": 356.79,
-        "variation": -2.51
-      }
-    },
-    {
-      "id": "alert-2026-03-29-005",
-      "titre": "Bitcoin : fin de 13 semaines d'accumulation institutionnelle, signal technique baissier",
-      "texte": "Strategy pause accumulation Bitcoin après 13 semaines consécutives d'achats ; Bitcoin bullish bets à 28 mois de hauteur (signal contrarian pour analystes baissiers). Contexte crypto mixte malgré adoption mainstream (BNP Paribas, Walmart OnePay).",
+      "id": "alert-2026-03-31-005",
+      "titre": "Nakamoto : vente $20M BTC à -40% perte, trésorerie crypto fragilisée",
+      "texte": "Firme trésorerie Bitcoin Nakamoto réalise perte de 40% sur vente $20M BTC, signalant fragilité des positions long-term holders face aux pressions de marché et risques de liquidations en cascade.",
       "categorie": "crypto",
-      "severite": "attention",
+      "severite": "info",
       "impact": "baissier",
-      "horodatage": "2026-03-29T18:41:35.740Z",
-      "donnees": {
-        "symbole": "GOOGL",
-        "nom": "Alphabet",
-        "prix": 274.36,
-        "variation": -2.34
-      }
-    },
-    {
-      "id": "alert-2026-03-29-006",
-      "titre": "Moyen-Orient : escalade militaire majeure, risque d'implication américaine",
-      "texte": "Israël ordonne expansion invasion sud-Liban, Iran frappe zone industrielle israélienne, Houthistes ouvrent nouveau front. Trump face à tentation escalade après un mois de guerre ; Pakistan organise talks de-escalade. Risque de déploiement troupes américaines affecte Dow Jones Futures.",
-      "categorie": "geopolitique",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-03-29T18:41:35.740Z",
-      "donnees": {
-        "symbole": "TSLA",
-        "nom": "Tesla",
-        "prix": 361.85,
-        "variation": -2.76
-      }
-    },
-    {
-      "id": "alert-2026-03-29-007",
-      "titre": "GNL Australie : perturbations persistantes post-tempête Narelle, milliers sans électricité",
-      "texte": "Tempête Narelle continue de perturber production GNL australienne et affecte approvisionnement énergétique régional. Milliers de foyers privés d'électricité ; impact sur chaînes d'approvisionnement énergétiques mondiales et prix du gaz naturel.",
-      "categorie": "matieres_premieres",
-      "severite": "attention",
-      "impact": "haussier",
-      "horodatage": "2026-03-29T18:41:35.740Z",
-      "donnees": {
-        "score": 9,
-        "label": "Extreme Fear",
-        "variation_7j": -1
-      }
+      "horodatage": "2026-03-31T07:12:21.521Z",
+      "donnees": {}
     }
   ],
   "stats": {
-    "total": 7,
+    "total": 5,
     "urgent": 2,
-    "attention": 4,
+    "attention": 2,
     "info": 1
   },
   "model": "claude-haiku-4-5-20251001",

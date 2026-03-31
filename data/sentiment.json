@@ -1,78 +1,69 @@
 {
-  "updated": "2026-03-29T18:41:35.739Z",
-  "date": "2026-03-29",
+  "updated": "2026-03-31T07:12:21.521Z",
+  "date": "2026-03-31",
   "global": {
-    "score": -0.21,
+    "score": -0.23,
     "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.21), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est baissier (-0.23), dominé par la rubrique matieres_premieres (haussier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.85,
-      "confidence": 0.95,
+      "score": -0.65,
+      "confidence": 0.85,
       "tendance": "baissier",
-      "resume": "Escalade militaire majeure au Moyen-Orient avec expansion israélienne au Liban, frappes iraniennes, ouverture d'un nouveau front houthiste et risque d'implication américaine. Contexte de guerre prolongée en Ukraine et tensions géopolitiques multiples destabilisant les marchés.",
+      "resume": "Escalade géopolitique majeure au Moyen-Orient avec attaques iraniennes (drone MQ-9, tanker koweïtien), tensions sino-européennes et instabilité régionale croissante. Multiplication des foyers de crise (Ukraine, Liban, Cisjordanie) créant un environnement d'incertitude systémique.",
       "signaux_cles": [
-        "Israël ordonne l'expansion de l'invasion du sud-Liban (29 mars 2026)",
-        "Iran frappe une zone industrielle en Israël du sud ; guerre déclarée depuis un mois",
-        "Houthistes ouvrent un nouveau front contre Israël, risque accru sur le trafic maritime de la Mer Rouge"
+        "Iran abat drone MQ-9 près d'Ispahan et attaque tanker pétrolier koweïtien après menaces Trump",
+        "Trois Casques bleus tués au Liban, réunion d'urgence ONU convoquée",
+        "Gardiens révolution iraniens en campagne recrutement enfants-soldats, escalade militaire confirmée"
       ]
     },
     "marches": {
-      "score": -0.62,
-      "confidence": 0.82,
+      "score": -0.42,
+      "confidence": 0.78,
       "tendance": "baissier",
-      "resume": "Marchés financiers sous pression géopolitique avec craintes d'escalade militaire au Moyen-Orient et implication américaine potentielle. Volatilité accrue sur les matières premières et divergence secteurs technologiques vs commodités.",
+      "resume": "Inflation française accélère à 1,7% Y/Y en mars (vs 0,9% février) tirée par hausse énergétique liée à la guerre moyen-orientale. Consommation ménages en baisse, gels d'embauche chez Unilever et ralentissement économique généralisé observé.",
       "signaux_cles": [
-        "Dow Jones Futures affectés par prix du pétrole et risque de déploiement de troupes américaines en Iran",
-        "Investisseurs sans refuge : marchés financiers gémissent sous le poids du conflit iranien",
-        "Agenda économique perturbé : G7, inflation allemande, tensions commerciales (tarifs numériques WTO)"
+        "Inflation France +1,7% en mars 2026, accélération nette due aux prix énergie (+0,8pp vs février)",
+        "Unilever annonce gel global d'embauche 3+ mois et fusion McCormick en cours",
+        "Nikkei 225 -1,27%, divergence actions vs commodités (-2,7pp spread)"
       ]
     },
     "crypto": {
-      "score": -0.35,
-      "confidence": 0.68,
-      "tendance": "mixte",
-      "resume": "Sentiment crypto contrasté : adoption institutionnelle progressive (BNP Paribas, Walmart OnePay) mais signaux techniques baissiers (Bitcoin bullish bets à 28 mois, fin de 13 semaines d'accumulation). Régulation CLARITY Act potentiellement restrictive pour DeFi.",
+      "score": -0.58,
+      "confidence": 0.82,
+      "tendance": "baissier",
+      "resume": "Risque quantique critique identifié par Google : 6M BTC et 20M ETH exposés à attaque en quelques jours. Régulation positive (401k, Dubai ETD) contrebalancée par préoccupations sécurité cryptographique et pertes de trésorerie (Nakamoto -40%).",
       "signaux_cles": [
-        "BNP Paribas ouvre Bitcoin et Ethereum aux particuliers en France (adoption mainstream)",
-        "Strategy pause accumulation Bitcoin après 13 semaines consécutives d'achats",
-        "Sam Altman vend $65M en WLD à nouveaux plus bas ; Circle (USDC) chute 20%, Ark Invest déploie $16M"
+        "Google alerte : ordinateurs quantiques peuvent casser crypto avec moins de qubits que prévu, Taproot vulnérable",
+        "6 millions BTC et 20 millions ETH exposés à attaque quantique en quelques jours selon étude Google",
+        "Nakamoto vend $20M BTC à -40% perte, Bernstein voit -60% sur Coinbase/Robinhood comme opportunité"
       ]
     },
     "matieres_premieres": {
       "score": 0.72,
-      "confidence": 0.9,
+      "confidence": 0.88,
       "tendance": "haussier",
-      "resume": "Matières premières énergétiques en hausse structurelle : conflit moyen-oriental reignite la transition énergétique, perturbations GNL australiennes, anticipation de brut triple-digit. Secteur des commodités surperforme technologie.",
+      "resume": "Pétrole brut en forte hausse (+4,53% USO à $129,83) sur tensions moyen-orientales et fermeture du détroit d'Ormuz. Prix essence USA dépassent $4/gallon, risque de $200/baril évoqué. LNG et charbon bénéficient de la crise énergétique.",
       "signaux_cles": [
-        "Pétrole (USO) +5.94% à $124.22 ; drillers anticipent brut triple-digit",
-        "Australie : perturbations GNL persistantes après tempête Narelle, milliers de foyers sans électricité",
-        "Or (GLD) +3.51% à $414.72 ; refuge traditionnel face aux risques géopolitiques"
+        "WTI clôture au-dessus de $100, USO +4,53% à $129,83 sur escalade Iran",
+        "Essence USA dépasse $4/gallon, Bloomberg évoque scénario $200/baril possible",
+        "Cyclone réduit production LNG australienne, charbon rallye porté par Japon, tensions approvisionnement confirmées"
       ]
     },
     "ai_tech": {
-      "score": 0.15,
-      "confidence": 0.55,
-      "tendance": "neutre",
-      "resume": "Secteur IA-Tech en consolidation : avancées technologiques (A-Evolve, Chroma Context-1, Naver Seoul World Model) contrebalancées par critiques (Sora shutdown, LLM limitations, sycophancy). Investissements stratégiques majeurs (Eli Lilly $2.75B avec Insilico) mais contexte de correction boursière.",
+      "score": -0.28,
+      "confidence": 0.65,
+      "tendance": "mixte",
+      "resume": "Progrès technologiques contrastés : Artemis 2 en compte à rebours, modèles IA multimodaux avancés (Qwen3.5, Harrier-OSS), mais débâcles réputationnelles (GitHub Copilot ads, Rec Room fermeture). Risque quantique majeur crée incertitude sur sécurité crypto-systèmes.",
       "signaux_cles": [
-        "Eli Lilly signe $2.75B avec Insilico Medicine pour IA drug development",
-        "Avancées en agentic AI (A-Evolve, MetaClaw, Chroma Context-1) et modèles de monde (Naver Street View)",
-        "Critiques émergentes : Sora shutdown, LLM faibles en jeux vidéo, risques de sycophancy IA"
+        "Artemis 2 countdown en cours, mission lunaire NASA programmée",
+        "Alibaba Qwen3.5 Omni et Microsoft Harrier-OSS-v1 déploiement multimodal accéléré",
+        "Deuxième satellite Starlink anomalie génère débris, Rec Room 150M users ferme, GitHub recule sur Copilot ads"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-02-12",
-      "global": -0.18,
-      "geopolitique": -0.35,
-      "marches": -0.35,
-      "crypto": -0.35,
-      "matieres_premieres": -0.15,
-      "ai_tech": 0.35
-    },
     {
       "date": "2026-02-13",
       "global": 0.12,
@@ -333,6 +324,15 @@
       "crypto": -0.35,
       "matieres_premieres": 0.72,
       "ai_tech": 0.15
+    },
+    {
+      "date": "2026-03-31",
+      "global": -0.23,
+      "geopolitique": -0.65,
+      "marches": -0.42,
+      "crypto": -0.58,
+      "matieres_premieres": 0.72,
+      "ai_tech": -0.28
     }
   ],
   "model": "claude-haiku-4-5-20251001",
