@@ -1,76 +1,161 @@
 {
-  "updated": "2026-03-31T07:12:21.521Z",
+  "updated": "2026-03-31T19:02:23.036Z",
   "alertes": [
     {
       "id": "alert-2026-03-31-001",
-      "titre": "Pétrole (USO) : +4,53% à $129,83, escalade moyen-orientale",
-      "texte": "Pétrole brut en hausse significative suite aux attaques iraniennes (drone MQ-9, tanker koweïtien) et fermeture du détroit d'Ormuz. WTI clôture au-dessus de $100/baril, essence USA dépasse $4/gallon, risque de $200/baril évoqué par Bloomberg.",
-      "categorie": "matieres_premieres",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-03-31T07:12:21.521Z",
+      "titre": "Nasdaq-100 : +3.16% à 575.92, surperformance tech confirmée",
+      "texte": "Indice technologique ample hausse portée par 10 valeurs majeures (Nvidia +5.24%, Alphabet +4.90%, Tesla +4.92%). Divergence risk-on/commodities de +3.2pp confirme rotation vers croissance malgré contexte géopolitique dégradé.",
+      "categorie": "marches",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-03-31T19:02:23.036Z",
       "donnees": {
-        "symbole": "USO",
-        "nom": "Pétrole (ETF)",
-        "prix": 129.83,
-        "variation": 4.53
+        "symbole": "SPY",
+        "nom": "S&P 500",
+        "prix": 648.75,
+        "variation": 2.66
       }
     },
     {
       "id": "alert-2026-03-31-002",
-      "titre": "Inflation France : +1,7% Y/Y en mars, accélération énergétique",
-      "texte": "Inflation française accélère nettement à 1,7% en mars 2026 (vs 0,9% février), tirée par hausse des prix de l'énergie liée à la crise moyen-orientale. Impact direct sur consommation ménages et coûts d'exploitation des entreprises.",
-      "categorie": "macro",
+      "titre": "Or (GLD) : +3.46% à 428.91$, refuge géopolitique activé",
+      "texte": "Hausse significative de l'or reflétant demande de couverture sur tensions Iran-Israël et escalade B-52. Divergence avec indices actions suggère allocation défensive parallèle en portefeuilles institutionnels.",
+      "categorie": "matieres_premieres",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-03-31T19:02:23.036Z",
+      "donnees": {
+        "symbole": "QQQ",
+        "nom": "Nasdaq 100",
+        "prix": 575.92,
+        "variation": 3.16
+      }
+    },
+    {
+      "id": "alert-2026-03-31-003",
+      "titre": "Pétrole : plus forte hausse mensuelle historique en mars 2026",
+      "texte": "Escalade géopolitique (opérations B-52, frappes Israël-Liban) propulse pétrole à niveaux critiques. Risque de récession mondiale à 150$/baril selon analyses. Détroit d'Ormuz reste point focal de volatilité.",
+      "categorie": "matieres_premieres",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-31T19:02:23.036Z",
+      "donnees": {
+        "symbole": "DIA",
+        "nom": "Dow Jones",
+        "prix": 462.44,
+        "variation": 2.3
+      }
+    },
+    {
+      "id": "alert-2026-03-31-004",
+      "titre": "Bitcoin/Ethereum : menace quantique Google accélère timeline sécurité",
+      "texte": "Google annonce réduction de la fenêtre de sécurité post-quantique pour Bitcoin et Ethereum. Stress test 2026 en cours. Fuite simultanée code Anthropic (Claude) amplifie risques cybersécurité sur écosystème crypto.",
+      "categorie": "crypto",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-31T19:02:23.036Z",
+      "donnees": {
+        "symbole": "GLD",
+        "nom": "Or (ETF)",
+        "prix": 428.91,
+        "variation": 3.46
+      }
+    },
+    {
+      "id": "alert-2026-03-31-005",
+      "titre": "Nvidia (NVDA) : +5.24% à 173.82$, momentum IA persiste",
+      "texte": "Hausse majeure d'Nvidia reflète demande continue en infrastructure IA (Oracle investissement massif, réductions coûts Google Veo 3.1). Contrebalance partiellement risques sécurité et réductions d'effectifs secteur.",
+      "categorie": "ai_tech",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-03-31T19:02:23.036Z",
+      "donnees": {
+        "symbole": "NVDA",
+        "nom": "Nvidia",
+        "prix": 173.82,
+        "variation": 5.24
+      }
+    },
+    {
+      "id": "alert-2026-03-31-006",
+      "titre": "Allbirds : effondrement 98% depuis IPO 2.2 Mds$ vers 39 M$",
+      "texte": "Cas d'école de destruction de valeur actionnariale. Reflète correction post-bulle ESG et sensibilité aux tarifs douaniers. Signal d'alerte sur valorisations durabilité/mode.",
+      "categorie": "marches",
+      "severite": "info",
+      "impact": "baissier",
+      "horodatage": "2026-03-31T19:02:23.036Z",
+      "donnees": {
+        "symbole": "AAPL",
+        "nom": "Apple",
+        "prix": 253.8,
+        "variation": 2.91
+      }
+    },
+    {
+      "id": "alert-2026-03-31-007",
+      "titre": "Israël : réduction à zéro importations militaires françaises annoncée",
+      "texte": "Ministère Défense israélien annonce cessation complète des achats militaires français suite tensions diplomatiques. Impact direct sur contrats Thales, DCNS, Dassault. Risque géopolitique pour défense européenne.",
+      "categorie": "geopolitique",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-03-31T07:12:21.521Z",
+      "horodatage": "2026-03-31T19:02:23.036Z",
+      "donnees": {
+        "symbole": "MSFT",
+        "nom": "Microsoft",
+        "prix": 370.66,
+        "variation": 3.26
+      }
+    },
+    {
+      "id": "alert-2026-03-31-008",
+      "titre": "Fear & Greed Index : 11 (Extreme Fear) vs rally +2.66% S&P 500",
+      "texte": "Divergence extrême : indices actions en hausse généralisée (+2.66% S&P, +3.16% Nasdaq) tandis que sentiment investisseurs reste en panique extrême. Signale potentiel squeeze court-terme ou accumulation institutionnelle.",
+      "categorie": "marches",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-03-31T19:02:23.036Z",
+      "donnees": {
+        "symbole": "GOOGL",
+        "nom": "Alphabet",
+        "prix": 286.9,
+        "variation": 4.9
+      }
+    },
+    {
+      "id": "alert-2026-03-31-009",
+      "titre": "Anthropic : source code Claude Code exposé publiquement",
+      "texte": "Fuite accidentelle du code source Claude Code sur internet avec conservation permanente par tiers. Risque sécurité majeur pour propriété intellectuelle IA et infrastructure cloud. Amplifie vulnérabilités secteur (Cisco breach parallèle).",
+      "categorie": "ai_tech",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-31T19:02:23.036Z",
+      "donnees": {
+        "symbole": "TSLA",
+        "nom": "Tesla",
+        "prix": 372.75,
+        "variation": 4.92
+      }
+    },
+    {
+      "id": "alert-2026-03-31-010",
+      "titre": "Coût conflit Iran-Israël : 194 Mds$ en un mois (pays arabes)",
+      "texte": "UNDP quantifie impact économique régional d'un mois de conflit à 194 Mds$. Trajectoire annualisée insoutenable. Pression majeure sur croissance MENA et flux capitaux vers marchés émergents.",
+      "categorie": "geopolitique",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-03-31T19:02:23.036Z",
       "donnees": {
         "score": 11,
         "label": "Extreme Fear",
         "variation_7j": 0
       }
-    },
-    {
-      "id": "alert-2026-03-31-003",
-      "titre": "Crypto : risque quantique critique, 6M BTC et 20M ETH exposés",
-      "texte": "Google identifie vulnérabilité quantique majeure : 6 millions BTC et 20 millions ETH exposés à attaque en quelques jours avec ordinateurs quantiques nécessitant moins de qubits que prévu. Taproot partiellement responsable de la faille de sécurité cryptographique.",
-      "categorie": "crypto",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-03-31T07:12:21.521Z",
-      "donnees": {
-        "tech_avg": -0.49,
-        "comm_avg": 2.25,
-        "spread": -2.74,
-        "regime": "risk-off / inflation"
-      }
-    },
-    {
-      "id": "alert-2026-03-31-004",
-      "titre": "Fear & Greed Index : 11 (Extreme Fear), divergence risk-off",
-      "texte": "Indice Fear & Greed à 11 signalant peur extrême. Divergence commodités surperformant tech (-2,7pp spread) confirme régime risk-off avec rotation vers matières premières et inflation hedge sur fond d'incertitude géopolitique.",
-      "categorie": "marches",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-03-31T07:12:21.521Z",
-      "donnees": {}
-    },
-    {
-      "id": "alert-2026-03-31-005",
-      "titre": "Nakamoto : vente $20M BTC à -40% perte, trésorerie crypto fragilisée",
-      "texte": "Firme trésorerie Bitcoin Nakamoto réalise perte de 40% sur vente $20M BTC, signalant fragilité des positions long-term holders face aux pressions de marché et risques de liquidations en cascade.",
-      "categorie": "crypto",
-      "severite": "info",
-      "impact": "baissier",
-      "horodatage": "2026-03-31T07:12:21.521Z",
-      "donnees": {}
     }
   ],
   "stats": {
-    "total": 5,
-    "urgent": 2,
-    "attention": 2,
-    "info": 1
+    "total": 10,
+    "urgent": 4,
+    "attention": 4,
+    "info": 2
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"

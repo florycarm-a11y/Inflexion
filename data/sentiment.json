@@ -1,65 +1,65 @@
 {
-  "updated": "2026-03-31T07:12:21.521Z",
+  "updated": "2026-03-31T19:02:23.036Z",
   "date": "2026-03-31",
   "global": {
-    "score": -0.23,
-    "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.23), dominé par la rubrique matieres_premieres (haussier)."
+    "score": -0.03,
+    "tendance": "mixte",
+    "resume": "Le sentiment global est mixte (-0.03), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.65,
-      "confidence": 0.85,
+      "score": -0.72,
+      "confidence": 0.92,
       "tendance": "baissier",
-      "resume": "Escalade géopolitique majeure au Moyen-Orient avec attaques iraniennes (drone MQ-9, tanker koweïtien), tensions sino-européennes et instabilité régionale croissante. Multiplication des foyers de crise (Ukraine, Liban, Cisjordanie) créant un environnement d'incertitude systémique.",
+      "resume": "Escalade militaire majeure au Moyen-Orient avec opérations B-52 sur l'Iran, frappes israéliennes au Liban et menaces iraniennes contre les infrastructures technologiques américaines. Tensions géopolitiques structurelles pesant sur les marchés énergétiques et de défense.",
       "signaux_cles": [
-        "Iran abat drone MQ-9 près d'Ispahan et attaque tanker pétrolier koweïtien après menaces Trump",
-        "Trois Casques bleus tués au Liban, réunion d'urgence ONU convoquée",
-        "Gardiens révolution iraniens en campagne recrutement enfants-soldats, escalade militaire confirmée"
+        "B-52s en missions opérationnelles sur l'Iran (Pentagon confirmé)",
+        "Coût d'un mois de conflit : 194 Mds$ pour les pays arabes (UNDP)",
+        "Israël réduit à zéro les importations militaires françaises (annonce ministère Défense)"
       ]
     },
     "marches": {
-      "score": -0.42,
-      "confidence": 0.78,
-      "tendance": "baissier",
-      "resume": "Inflation française accélère à 1,7% Y/Y en mars (vs 0,9% février) tirée par hausse énergétique liée à la guerre moyen-orientale. Consommation ménages en baisse, gels d'embauche chez Unilever et ralentissement économique généralisé observé.",
+      "score": 0.18,
+      "confidence": 0.64,
+      "tendance": "mixte",
+      "resume": "Divergence marquée : indices technologiques surperforment (+3.5% Nasdaq) sur fond de réductions de coûts (Oracle, Ford), mais secteurs sensibles aux tarifs et commodités affichent des signaux d'alerte (J.Jill, Allbirds). Marché du travail stagnant contredit gains boursiers.",
       "signaux_cles": [
-        "Inflation France +1,7% en mars 2026, accélération nette due aux prix énergie (+0,8pp vs février)",
-        "Unilever annonce gel global d'embauche 3+ mois et fusion McCormick en cours",
-        "Nikkei 225 -1,27%, divergence actions vs commodités (-2,7pp spread)"
+        "Nasdaq +3.5% porté par 10 valeurs technologiques majeures",
+        "Allbirds : effondrement de 2.2 Mds$ (IPO) à 39 M$ (capitalisation)",
+        "Délai de remboursement tarifs douaniers : jusqu'à 45 jours (agence douanes US)"
       ]
     },
     "crypto": {
       "score": -0.58,
-      "confidence": 0.82,
+      "confidence": 0.88,
       "tendance": "baissier",
-      "resume": "Risque quantique critique identifié par Google : 6M BTC et 20M ETH exposés à attaque en quelques jours. Régulation positive (401k, Dubai ETD) contrebalancée par préoccupations sécurité cryptographique et pertes de trésorerie (Nakamoto -40%).",
+      "resume": "Menace existentielle quantique sur Bitcoin et Ethereum : Google annonce accélération de la transition post-quantique, réduisant la fenêtre de sécurité. Fuite de code Anthropic (Claude) amplifie les risques de sécurité informatique. Marché stablecoin projette +2 Trillions en 2028 mais sous pression réglementaire.",
       "signaux_cles": [
-        "Google alerte : ordinateurs quantiques peuvent casser crypto avec moins de qubits que prévu, Taproot vulnérable",
-        "6 millions BTC et 20 millions ETH exposés à attaque quantique en quelques jours selon étude Google",
-        "Nakamoto vend $20M BTC à -40% perte, Bernstein voit -60% sur Coinbase/Robinhood comme opportunité"
+        "Google : timeline menace quantique plus proche que prévu (stress test 2026)",
+        "Anthropic : source code Claude Code exposé publiquement (internet conserve copie)",
+        "Marché stablecoin : projection 2 Trillions en 2028 (Standard Chartered)"
       ]
     },
     "matieres_premieres": {
-      "score": 0.72,
-      "confidence": 0.88,
+      "score": 0.64,
+      "confidence": 0.86,
       "tendance": "haussier",
-      "resume": "Pétrole brut en forte hausse (+4,53% USO à $129,83) sur tensions moyen-orientales et fermeture du détroit d'Ormuz. Prix essence USA dépassent $4/gallon, risque de $200/baril évoqué. LNG et charbon bénéficient de la crise énergétique.",
+      "resume": "Pétrole affiche la plus forte hausse mensuelle de l'histoire (mars 2026) sur tensions géopolitiques Iran-Israël. Risque de récession à 150$/baril. Production LNG (QatarEnergy-ExxonMobil Texas) et engrais mondiaux sous pression structurelle.",
       "signaux_cles": [
-        "WTI clôture au-dessus de $100, USO +4,53% à $129,83 sur escalade Iran",
-        "Essence USA dépasse $4/gallon, Bloomberg évoque scénario $200/baril possible",
-        "Cyclone réduit production LNG australienne, charbon rallye porté par Japon, tensions approvisionnement confirmées"
+        "Pétrole : plus grande hausse mensuelle historique en mars 2026",
+        "Seuil de récession : 150$/baril pourrait basculer économie mondiale",
+        "Détroit d'Ormuz : Iran exempte tankers malaisiens de frais (géopolitique énergétique)"
       ]
     },
     "ai_tech": {
-      "score": -0.28,
-      "confidence": 0.65,
+      "score": 0.52,
+      "confidence": 0.72,
       "tendance": "mixte",
-      "resume": "Progrès technologiques contrastés : Artemis 2 en compte à rebours, modèles IA multimodaux avancés (Qwen3.5, Harrier-OSS), mais débâcles réputationnelles (GitHub Copilot ads, Rec Room fermeture). Risque quantique majeur crée incertitude sur sécurité crypto-systèmes.",
+      "resume": "Innovations majeures (Veo 3.1 réduction coûts -50%, Whoop valorisation +200%) contrebalancées par risques sécurité (Cisco breach, fuite Claude, GPS militaire 8 Mds$ dysfonctionnel). Réductions d'effectifs (Oracle) signalent consolidation post-bulle IA.",
       "signaux_cles": [
-        "Artemis 2 countdown en cours, mission lunaire NASA programmée",
-        "Alibaba Qwen3.5 Omni et Microsoft Harrier-OSS-v1 déploiement multimodal accéléré",
-        "Deuxième satellite Starlink anomalie génère débris, Rec Room 150M users ferme, GitHub recule sur Copilot ads"
+        "Google Veo 3.1 : réduction coûts génération vidéo >50%",
+        "Whoop : valorisation triple à 10 Mds$ (croissance santé connectée)",
+        "GPS militaire US : projet 8 Mds$ en dysfonctionnement chronique"
       ]
     }
   },
@@ -327,12 +327,12 @@
     },
     {
       "date": "2026-03-31",
-      "global": -0.23,
-      "geopolitique": -0.65,
-      "marches": -0.42,
+      "global": -0.03,
+      "geopolitique": -0.72,
+      "marches": 0.18,
       "crypto": -0.58,
-      "matieres_premieres": 0.72,
-      "ai_tech": -0.28
+      "matieres_premieres": 0.64,
+      "ai_tech": 0.52
     }
   ],
   "model": "claude-haiku-4-5-20251001",
