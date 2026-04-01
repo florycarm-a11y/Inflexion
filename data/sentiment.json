@@ -1,78 +1,69 @@
 {
-  "updated": "2026-03-31T19:02:23.036Z",
-  "date": "2026-03-31",
+  "updated": "2026-04-01T07:20:32.481Z",
+  "date": "2026-04-01",
   "global": {
-    "score": -0.03,
+    "score": -0.04,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (-0.03), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est mixte (-0.04), dominé par la rubrique marches (haussier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.72,
-      "confidence": 0.92,
+      "score": -0.65,
+      "confidence": 0.85,
       "tendance": "baissier",
-      "resume": "Escalade militaire majeure au Moyen-Orient avec opérations B-52 sur l'Iran, frappes israéliennes au Liban et menaces iraniennes contre les infrastructures technologiques américaines. Tensions géopolitiques structurelles pesant sur les marchés énergétiques et de défense.",
+      "resume": "Escalade militaire persistante au Moyen-Orient (Iran, Israël, Liban) avec 33 jours de frappes US-israéliennes et destructions d'infrastructures civiles. Trump signale un possible dénouement dans 2-3 semaines, créant une asymétrie entre risques immédiats et espoirs de désescalade.",
       "signaux_cles": [
-        "B-52s en missions opérationnelles sur l'Iran (Pentagon confirmé)",
-        "Coût d'un mois de conflit : 194 Mds$ pour les pays arabes (UNDP)",
-        "Israël réduit à zéro les importations militaires françaises (annonce ministère Défense)"
+        "Jour 33 des attaques US-Israël contre l'Iran avec destructions d'infrastructures civiles",
+        "Frappes israéliennes sur Beyrouth causant 7 morts ; 6 286 blessés côté israélien",
+        "Trump annonce fin de la guerre d'ici 2-3 semaines (potentiel de désescalade)"
       ]
     },
     "marches": {
-      "score": 0.18,
-      "confidence": 0.64,
-      "tendance": "mixte",
-      "resume": "Divergence marquée : indices technologiques surperforment (+3.5% Nasdaq) sur fond de réductions de coûts (Oracle, Ford), mais secteurs sensibles aux tarifs et commodités affichent des signaux d'alerte (J.Jill, Allbirds). Marché du travail stagnant contredit gains boursiers.",
+      "score": 0.72,
+      "confidence": 0.88,
+      "tendance": "haussier",
+      "resume": "Rebond généralisé des marchés actions européens et asiatiques sur espoirs de désescalade géopolitique et signaux de fin de conflit. Secteurs tech et énergies renouvelables en avant-plan ; pétrole en baisse (-3%) sur perspectives de sortie de crise.",
       "signaux_cles": [
-        "Nasdaq +3.5% porté par 10 valeurs technologiques majeures",
-        "Allbirds : effondrement de 2.2 Mds$ (IPO) à 39 M$ (capitalisation)",
-        "Délai de remboursement tarifs douaniers : jusqu'à 45 jours (agence douanes US)"
+        "Nikkei 225 +5,31% ; marchés européens en forte hausse sur désescalade espérée",
+        "Pétrole -3% en trading volatil suite aux déclarations Trump sur fin de guerre",
+        "Ventes automobiles France +12,86% en mars ; investissements verts accélérés (électrification)"
       ]
     },
     "crypto": {
-      "score": -0.58,
-      "confidence": 0.88,
-      "tendance": "baissier",
-      "resume": "Menace existentielle quantique sur Bitcoin et Ethereum : Google annonce accélération de la transition post-quantique, réduisant la fenêtre de sécurité. Fuite de code Anthropic (Claude) amplifie les risques de sécurité informatique. Marché stablecoin projette +2 Trillions en 2028 mais sous pression réglementaire.",
+      "score": -0.48,
+      "confidence": 0.72,
+      "tendance": "mixte",
+      "resume": "Bitcoin en contraction sévère (-24% au Q1 2026, pire trimestre depuis 2018) malgré rebond technique court terme. Risques quantiques émergents (tokens résistants +50%) et innovations (obligations municipales Bitcoin, stablecoins). Lancement politique de HORMUZ par Trump ajoute volatilité.",
       "signaux_cles": [
-        "Google : timeline menace quantique plus proche que prévu (stress test 2026)",
-        "Anthropic : source code Claude Code exposé publiquement (internet conserve copie)",
-        "Marché stablecoin : projection 2 Trillions en 2028 (Standard Chartered)"
+        "Bitcoin -24% au Q1 2026 (pire trimestre depuis 2018) ; retour en 'zone d'achat' selon analystes",
+        "Tokens résistants quantiques +50% sur alertes Google sur vulnérabilités cryptographiques",
+        "New Hampshire émet obligation municipale Bitcoin de $100M notée par Moody's (spéculatif)"
       ]
     },
     "matieres_premieres": {
-      "score": 0.64,
-      "confidence": 0.86,
-      "tendance": "haussier",
-      "resume": "Pétrole affiche la plus forte hausse mensuelle de l'histoire (mars 2026) sur tensions géopolitiques Iran-Israël. Risque de récession à 150$/baril. Production LNG (QatarEnergy-ExxonMobil Texas) et engrais mondiaux sous pression structurelle.",
+      "score": -0.42,
+      "confidence": 0.79,
+      "tendance": "baissier",
+      "resume": "Production OPEC effondrée (-7 Mbpd) sous impact de la guerre ; pétrole brut en baisse sur signaux de sortie de crise. Volatilité extrême sur carburant aviation (Inde). Accord France-Japon sur terres rares en négociation ; exploration pétrolière reprend face à réserves déclinantes.",
       "signaux_cles": [
-        "Pétrole : plus grande hausse mensuelle historique en mars 2026",
-        "Seuil de récession : 150$/baril pourrait basculer économie mondiale",
-        "Détroit d'Ormuz : Iran exempte tankers malaisiens de frais (géopolitique énergétique)"
+        "Production OPEC -7 millions bpd ; pétrole brut en baisse sur perspectives de désescalade",
+        "Volatilité extrême prix jet fuel en Inde ; Baltic Dry Index à plus bas 3 semaines",
+        "Accord France-Japon terres rares en cours ; exploration pétrolière reprend (réserves déclinantes)"
       ]
     },
     "ai_tech": {
-      "score": 0.52,
-      "confidence": 0.72,
-      "tendance": "mixte",
-      "resume": "Innovations majeures (Veo 3.1 réduction coûts -50%, Whoop valorisation +200%) contrebalancées par risques sécurité (Cisco breach, fuite Claude, GPS militaire 8 Mds$ dysfonctionnel). Réductions d'effectifs (Oracle) signalent consolidation post-bulle IA.",
+      "score": 0.58,
+      "confidence": 0.75,
+      "tendance": "haussier",
+      "resume": "Écosystème IA en expansion rapide : OpenAI lève $122Md (valorisation $852Md), Google déploie Veo 3.1 Lite, Hugging Face release TRL v1.0. Risques sécurité émergents (fuite Claude Code, cyberattaque LiteLLM, quantum threats). NIS2 crée tensions vie privée/sécurité.",
       "signaux_cles": [
-        "Google Veo 3.1 : réduction coûts génération vidéo >50%",
-        "Whoop : valorisation triple à 10 Mds$ (croissance santé connectée)",
-        "GPS militaire US : projet 8 Mds$ en dysfonctionnement chronique"
+        "OpenAI lève $122Md (valorisation $852Md) ; Apple 50 ans vise IA comme 'porte d'entrée' iPhone",
+        "Google Veo 3.1 Lite lancé ; Hugging Face TRL v1.0 unifie post-training (SFT, DPO, GRPO)",
+        "Cyberattaque LiteLLM ; fuite Claude Code ; alertes quantiques Caltech sur cryptographie"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-02-13",
-      "global": 0.12,
-      "geopolitique": -0.62,
-      "marches": -0.35,
-      "crypto": 0.62,
-      "matieres_premieres": 0.35,
-      "ai_tech": 0.62
-    },
     {
       "date": "2026-02-14",
       "global": -0.17,
@@ -333,6 +324,15 @@
       "crypto": -0.58,
       "matieres_premieres": 0.64,
       "ai_tech": 0.52
+    },
+    {
+      "date": "2026-04-01",
+      "global": -0.04,
+      "geopolitique": -0.65,
+      "marches": 0.72,
+      "crypto": -0.48,
+      "matieres_premieres": -0.42,
+      "ai_tech": 0.58
     }
   ],
   "model": "claude-haiku-4-5-20251001",
