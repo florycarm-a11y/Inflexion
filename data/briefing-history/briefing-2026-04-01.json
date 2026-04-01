@@ -1,0 +1,634 @@
+{
+  "date": "2026-04-01",
+  "generated_at": "2026-04-01T07:21:42.941Z",
+  "type": "delta",
+  "model": "claude-haiku-4-5-20251001",
+  "sources_count": 25,
+  "sources_market": 11,
+  "reference_date": "2026-03-31",
+  "synthese": {
+    "titre": "Rallye actions +2,9% et crypto en rebond technique — Trump signale une sortie Iran en 2-3 semaines",
+    "sous_titre": "Les marchés anticipent une désescalade diplomatique malgré l'escalade militaire ; crypto sort de la panique extrême mais reste fragile.",
+    "contenu": "## Évolutions du jour\n\n**Accélération du rebond actions vs hier.** S&P 500 +2,91% (SPY, Finnhub), Nasdaq 100 +3,39% (QQQ), Dow Jones +2,46% (DIA) — progression supérieure au rebond de J31 (+2,66%, +3,16%, +2,30% respectivement). Les mégacaps tech maintiennent leur dynamique : Nvidia +5,59%, Tesla +4,64%, Alphabet +5,14%, Microsoft +3,12%, Apple +2,90%. **Catalyseur principal : déclaration Trump** annonçant une possible sortie du conflit Iran en 2-3 semaines sans accord (Al Jazeera), contrastant avec le refus de négocier du ministre iranien Araghchi — le marché privilégie le scénario de désescalade unilatérale.\n\n**Pétrole corrige davantage (-1,99% vs -1,79% hier), or accélère (+3,79% vs +3,46%).** La baisse pétrolière s'accentue malgré les déclarations de Trump, suggérant que les investisseurs intègrent une réduction de la prime de risque Hormuz. L'or consolide sa dynamique refuge, cohérente avec la volatilité géopolitique persistante et l'inflation US confirmée (+2,66% a/a, FRED).\n\n**Crypto sort partiellement de la panique extrême.** Bitcoin +3,0% (24h) à 69 129 $ (CoinGecko), Ethereum +5,1% à 2 148,55 $ — rebond plus marqué qu'hier (+1,8% et +3,3%). **Fear & Greed Index à 8/100** (vs 11/100 hier) — aggravation paradoxale du sentiment malgré le rebond des prix, signalant une capitulation accélérée. Bitcoin affiche son pire Q1 depuis 2018 (-24%, The Block), renforçant la pression psychologique.\n\n## Perspectives actualisées\n\n**Scénario haussier court terme consolidé** : déclaration Trump crédibilise une sortie rapide du conflit sans fermeture d'Hormuz. Seuils à surveiller : S&P 500 au-delà de 655 $ (SPY), pétrole en-dessous de 125 $ (USO). **Risque de retournement** : si Trump ne concrétise pas la sortie en 2-3 semaines ou si l'Iran intensifie les représailles, rebond actions pourrait s'inverser (-2 à -3%). Crypto reste vulnérable : Bitcoin en-dessous de 65 000 $ déclencherait une nouvelle vague de liquidations (Fear & Greed < 5/100)."
+  },
+  "signaux": [
+    {
+      "titre": "Trump signale une sortie Iran en 2-3 semaines — désescalade diplomatique vs escalade militaire réelle",
+      "description": "Trump annonce une possible sortie du conflit Iran en 2-3 semaines sans accord (Al Jazeera, J33), contrastant avec le refus de négocier du ministre iranien Araghchi. Ce signal crédibilise un scénario de désescalade unilatérale et explique l'accélération du rebond actions (S&P 500 +2,91% vs +2,66% hier, Nasdaq 100 +3,39% vs +3,16%). Cependant, l'escalade militaire persiste : frappes israéliennes sur Beyrouth (7 morts, Middle East Eye), blessés israéliens montant à 6 286 (health ministry). Le marché privilégie la sortie diplomatique rapide sur la réalité tactique, créant un risque de retournement si Trump ne concrétise pas en 2-3 semaines.",
+      "categorie": "geopolitique",
+      "interconnexions": [
+        {
+          "secteur": "Pétrole & énergie",
+          "impact": "USO -1,99% (vs -1,79% hier) — prime de risque Hormuz réduite",
+          "explication": "Marché anticipe une réduction de la probabilité de fermeture du détroit suite aux signaux de désescalade Trump"
+        },
+        {
+          "secteur": "Actions tech & mégacaps",
+          "impact": "Nasdaq 100 +3,39%, Nvidia +5,59%, Alphabet +5,14%",
+          "explication": "Rebond accéléré vs hier reflète l'appétit pour le risque renforcé par la perspective d'une sortie rapide du conflit"
+        }
+      ],
+      "regions": [
+        "Moyen-Orient",
+        "États-Unis"
+      ],
+      "severite": "urgent"
+    },
+    {
+      "titre": "Crypto : Fear & Greed aggravé à 8/100 malgré rebond Bitcoin +3,0% — capitulation accélérée",
+      "description": "Bitcoin rebondit à 69 129 $ (+3,0% sur 24h, CoinGecko), Ethereum à 2 148,55 $ (+5,1%), mais **Fear & Greed Index s'aggrave à 8/100** (vs 11/100 hier) — paradoxe d'une dégradation du sentiment malgré la hausse des prix. Bitcoin affiche son pire Q1 depuis 2018 (-24%, The Block), renforçant la pression psychologique et signalant une capitulation accélérée des détenteurs. Cette inversion sentiment/prix suggère une accumulation de positions courtes et une vulnérabilité accrue à une nouvelle vague de liquidations en-dessous de 65 000 $.",
+      "categorie": "crypto",
+      "interconnexions": [
+        {
+          "secteur": "Sentiment de marché global",
+          "impact": "Fear & Greed 8/100 (Extreme Fear) vs 11/100 hier",
+          "explication": "Aggravation paradoxale du sentiment malgré rebond technique suggère une capitulation psychologique, non une confiance retrouvée"
+        },
+        {
+          "secteur": "Risque quantique non résolu",
+          "impact": "Menace existentielle sur cryptographie elliptique (Google, 6 mois)",
+          "explication": "Incertitude sur la timeline de la menace quantique maintient une pression baissière structurelle sur les prix"
+        }
+      ],
+      "regions": [
+        "Global"
+      ],
+      "severite": "urgent"
+    },
+    {
+      "titre": "OpenAI lève 122 Md$ — valorisation record dans contexte de consolidation IA",
+      "description": "OpenAI conclut sa levée de fonds à 122 milliards de dollars (Next INpact), marquant une valorisation record. Parallèlement, Hugging Face lance TRL v1.0 (stack post-training unifié) et Google généralise la détection ransomware IA sur Drive (BleepingComputer). Cette consolidation IA contraste avec les tensions géopolitiques et la volatilité crypto, signalant une confiance persistante des investisseurs dans le secteur malgré les risques macro. Cependant, le financement massif d'OpenAI intervient dans un contexte de repricing des coûts d'infrastructure IA (Oracle réduit ses effectifs pour financer ses data centers, signalé hier).",
+      "categorie": "ai_tech",
+      "interconnexions": [
+        {
+          "secteur": "Mégacaps tech",
+          "impact": "Nvidia +5,59%, Alphabet +5,14% — rebond actions tech accéléré",
+          "explication": "Levée record d'OpenAI renforce la confiance dans la demande d'infrastructure IA et de puissance de calcul"
+        },
+        {
+          "secteur": "Financement & dette",
+          "impact": "Valorisation record vs pression financière Oracle (dette montante)",
+          "explication": "Divergence entre valorisations IA (OpenAI) et contraintes de financement (Oracle) signale une fragmentation du secteur"
+        }
+      ],
+      "regions": [
+        "États-Unis",
+        "Global"
+      ],
+      "severite": "attention"
+    }
+  ],
+  "risk_radar": [
+    {
+      "risque": "Fermeture du Détroit d'Hormuz : choc pétrolier +10-15%, actions -3 à -5%",
+      "severite": "urgent",
+      "probabilite": "moyenne",
+      "horizon": "court_terme",
+      "impact_marche": "Pétrole +10-15%, S&P 500 -3 à -5%, or +5-8%",
+      "description": "**Probabilité réduite de élevée à moyenne** suite aux signaux de désescalade Trump (sortie en 2-3 semaines). Cependant, escalade militaire réelle persiste (frappes Beyrouth, blessés israéliens 6 286). Seuil critique : fermeture effective du détroit déclencherait un choc pétrolier de 10-15% et une correction actions de 3-5%."
+    },
+    {
+      "risque": "Liquidation en cascade crypto : Bitcoin en-dessous de 65k$, Fear & Greed < 5/100",
+      "severite": "urgent",
+      "probabilite": "elevee",
+      "horizon": "court_terme",
+      "impact_marche": "Bitcoin -15-20%, Ethereum -20-25%, Fear & Greed < 5/100",
+      "description": "**Probabilité stable à élevée.** Fear & Greed s'aggrave à 8/100 (vs 11/100 hier) malgré rebond Bitcoin +3,0%, signalant une capitulation accélérée. Bitcoin -24% en Q1 2026 (pire depuis 2018) renforce la pression psychologique. Seuil critique : Bitcoin en-dessous de 65 000 $ déclencherait une nouvelle vague de liquidations et une chute Fear & Greed en-dessous de 5/100."
+    },
+    {
+      "risque": "Repricing de la prime de risque géopolitique : Treasury 10Y au-delà de 4,50%",
+      "severite": "attention",
+      "probabilite": "moyenne",
+      "horizon": "moyen_terme",
+      "impact_marche": "Treasury 10Y +0,15 pts, spread 10Y-2Y +0,10 pts, actions -1 à -2%",
+      "description": "**Probabilité stable à moyenne.** Treasury 10Y à 4,35% (-0,09 pts vs hier, FRED) reste inchangé malgré l'escalade géopolitique J33 et l'inflation US confirmée (+2,66% a/a). Marché n'a pas encore intégré une repricing complète. Seuil critique : Treasury 10Y au-delà de 4,50% signalerait une réévaluation des risques macro et déclencherait une correction actions de 1-2%."
+    }
+  ],
+  "sentiment_global": "mixte",
+  "tags": [
+    "desescalade-diplomatique-trump-j33-sortie-2-3-semaines",
+    "rebond-actions-3pct-nasdaq-3-39pct-mégacaps-tech-dominants",
+    "crypto-capitulation-acceleree-fear-greed-8-100-bitcoin-69k",
+    "petrole-correction-1-99pct-prime-hormuz-reduite",
+    "openai-122md-valorisation-record-consolidation-ia"
+  ],
+  "sources_citees": [
+    {
+      "nom": "Al Jazeera",
+      "type": "presse",
+      "donnees_utilisees": "Trump signale sortie Iran en 2-3 semaines, refus de négocier d'Araghchi (J33)"
+    },
+    {
+      "nom": "Finnhub",
+      "type": "api",
+      "donnees_utilisees": "S&P 500 +2,91%, Nasdaq 100 +3,39%, Dow Jones +2,46%, pétrole -1,99%, or +3,79%, mégacaps tech"
+    },
+    {
+      "nom": "CoinGecko",
+      "type": "api",
+      "donnees_utilisees": "Bitcoin 69 129 $ (+3,0% 24h), Ethereum 2 148,55 $ (+5,1%), Fear & Greed Index 8/100"
+    },
+    {
+      "nom": "The Block",
+      "type": "presse",
+      "donnees_utilisees": "Bitcoin pire Q1 depuis 2018 (-24%)"
+    },
+    {
+      "nom": "Middle East Eye",
+      "type": "presse",
+      "donnees_utilisees": "Frappes israéliennes Beyrouth (7 morts), blessés israéliens 6 286"
+    },
+    {
+      "nom": "Next INpact",
+      "type": "presse",
+      "donnees_utilisees": "OpenAI lève 122 milliards de dollars"
+    },
+    {
+      "nom": "FRED",
+      "type": "institution",
+      "donnees_utilisees": "Inflation US +2,66% a/a, Treasury 10Y 4,35% (-0,09 pts)"
+    },
+    {
+      "nom": "BleepingComputer",
+      "type": "presse",
+      "donnees_utilisees": "Google généralise détection ransomware IA sur Drive"
+    }
+  ],
+  "_verification": {
+    "score": 0.8679245283018868,
+    "totalClaims": 53,
+    "verified": 46,
+    "unverified": 7,
+    "pass": true
+  },
+  "_contradictions": [
+    {
+      "indicator": "SPY (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 650.34
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 634.8768
+      },
+      "divergence_pct": 2.38,
+      "type": "etf_self",
+      "note": "SPY : prix 650.34 ≠ prev_close (631.97) + change (2.9068) = 634.88. Possible donnée corrompue."
+    },
+    {
+      "indicator": "QQQ (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 577.18
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 561.6654
+      },
+      "divergence_pct": 2.69,
+      "type": "etf_self",
+      "note": "QQQ : prix 577.18 ≠ prev_close (558.28) + change (3.3854) = 561.67. Possible donnée corrompue."
+    },
+    {
+      "indicator": "DIA (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 463.19
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 454.5221
+      },
+      "divergence_pct": 1.87,
+      "type": "etf_self",
+      "note": "DIA : prix 463.19 ≠ prev_close (452.06) + change (2.4621) = 454.52. Possible donnée corrompue."
+    },
+    {
+      "indicator": "GLD (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 430.29
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 418.3694
+      },
+      "divergence_pct": 2.77,
+      "type": "etf_self",
+      "note": "GLD : prix 430.29 ≠ prev_close (414.58) + change (3.7894) = 418.37. Possible donnée corrompue."
+    },
+    {
+      "indicator": "NVDA (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 174.4
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 170.7582
+      },
+      "divergence_pct": 2.09,
+      "type": "etf_self",
+      "note": "NVDA : prix 174.4 ≠ prev_close (165.17) + change (5.5882) = 170.76. Possible donnée corrompue."
+    },
+    {
+      "indicator": "AAPL (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 253.79
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 249.5331
+      },
+      "divergence_pct": 1.68,
+      "type": "etf_self",
+      "note": "AAPL : prix 253.79 ≠ prev_close (246.63) + change (2.9031) = 249.53. Possible donnée corrompue."
+    },
+    {
+      "indicator": "MSFT (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 370.17
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 362.0829
+      },
+      "divergence_pct": 2.18,
+      "type": "etf_self",
+      "note": "MSFT : prix 370.17 ≠ prev_close (358.96) + change (3.1229) = 362.08. Possible donnée corrompue."
+    },
+    {
+      "indicator": "GOOGL (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 287.56
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 278.6408
+      },
+      "divergence_pct": 3.1,
+      "type": "etf_self",
+      "note": "GOOGL : prix 287.56 ≠ prev_close (273.5) + change (5.1408) = 278.64. Possible donnée corrompue."
+    },
+    {
+      "indicator": "TSLA (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 371.75
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 359.9158
+      },
+      "divergence_pct": 3.18,
+      "type": "etf_self",
+      "note": "TSLA : prix 371.75 ≠ prev_close (355.28) + change (4.6358) = 359.92. Possible donnée corrompue."
+    }
+  ],
+  "_bibliography": {
+    "score": 0.42857142857142855,
+    "totalRefs": 14,
+    "matched": 6,
+    "unmatched": 8,
+    "pass": false,
+    "bibliography": [
+      {
+        "titre": "The NPT System Hangs in the Balance",
+        "source": "Arms Control Assoc.",
+        "url": "https://www.armscontrol.org/act/2026-04/focus/npt-system-hangs-balance",
+        "domain": "armscontrol.org",
+        "date": "2026-04-01T18:36:26.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Conference Chief Seeks to Rebuild NPT Credibility: An Interview with Ambassador Do Hung Viet of Vietnam, president of the 2026 NPT Review Conference",
+        "source": "Arms Control Assoc.",
+        "url": "https://www.armscontrol.org/act/2026-04/interviews/conference-chief-seeks-rebuild-npt-credibility-interview-ambassador-do-hung",
+        "domain": "armscontrol.org",
+        "date": "2026-04-01T14:43:31.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "The Arsenal as the Battlefield: The War on Iran and the Return of Counter-Industrial Targeting",
+        "source": "War on the Rocks",
+        "url": "https://warontherocks.com/2026/04/the-arsenal-as-the-battlefield-the-war-on-iran-and-the-return-of-counter-industrial-targeting/",
+        "domain": "warontherocks.com",
+        "date": "2026-04-01T07:15:06.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Why Europe is Wrong to Think Iran is ‘Not Our War’",
+        "source": "Politico EU",
+        "url": "https://www.politico.com/news/magazine/2026/03/31/europe-iran-war-us-israel-00852813?utm_content=politico%2Fmagazine%2FPolitics&#038;utm_source=RSS_Feed&#038;utm_medium=RSS&#038;utm_campaign=RSS_Syndication",
+        "domain": "politico.com",
+        "date": "2026-04-01T07:14:18.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Lebanon says Israeli strikes on Beirut area kill seven",
+        "source": "Middle East Eye",
+        "url": "https://www.middleeasteye.net/live-blog/live-blog-update/lebanon-says-israeli-strikes-beirut-area-kill-seven",
+        "domain": "middleeasteye.net",
+        "date": "2026-04-01T07:13:45.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Artémis II : que se passe-t-il s&#8217;il y a un pépin juste avant le départ de la fusée SLS ?",
+        "source": "Numerama",
+        "url": "https://www.numerama.com/sciences/2220625-artemis-ii-que-se-passe-t-il-sil-y-a-un-pepin-juste-avant-le-depart-de-la-fusee-sls.html",
+        "domain": "numerama.com",
+        "date": "2026-04-01T07:08:26.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "Forum InCyber 2026 : pourquoi bloquer l&#8217;IA en entreprise est une erreur stratégique",
+        "source": "Numerama",
+        "url": "https://www.numerama.com/cyberguerre/2223319-forum-incyber-2026-pourquoi-bloquer-lia-en-entreprise-est-une-erreur-strategique.html",
+        "domain": "numerama.com",
+        "date": "2026-04-01T07:07:25.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "Le président Macron, l’ADN et un message secret transféré entre la France et le Japon",
+        "source": "Le Monde Intl",
+        "url": "https://www.lemonde.fr/sciences/article/2026/04/01/le-president-macron-l-adn-et-un-message-secret-transfere-entre-la-france-et-le-japon_6675851_1650684.html",
+        "domain": "lemonde.fr",
+        "date": "2026-04-01T07:07:23.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "OpenAI porte son tour de table à 122 milliards de dollars",
+        "source": "Next INpact",
+        "url": "https://next.ink/231701/openai-porte-son-tour-de-table-a-122-milliards-de-dollars/",
+        "domain": "next.ink",
+        "date": "2026-04-01T07:07:12.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "Japan stocks higher at close of trade; Nikkei 225 up 5.31%",
+        "source": "Investing.com",
+        "url": "https://www.investing.com/news/stock-market-news/japan-stocks-higher-at-close-of-trade-nikkei-225-up-531-4592116",
+        "domain": "investing.com",
+        "date": "2026-04-01T07:05:04.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Hugging Face Releases TRL v1.0: A Unified Post-Training Stack for SFT, Reward Modeling, DPO, and GRPO Workflows",
+        "source": "MarkTechPost",
+        "url": "https://www.marktechpost.com/2026/04/01/hugging-face-releases-trl-v1-0-a-unified-post-training-stack-for-sft-reward-modeling-dpo-and-grpo-workflows/",
+        "domain": "marktechpost.com",
+        "date": "2026-04-01T07:04:43.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "Barclays upgrades Orsted stock rating on balance sheet stabilization",
+        "source": "Investing.com",
+        "url": "https://www.investing.com/news/analyst-ratings/barclays-upgrades-orsted-stock-rating-on-balance-sheet-stabilization-93CH-4592114",
+        "domain": "investing.com",
+        "date": "2026-04-01T07:04:09.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Le débrief de l'actu : \"Pas à n'importe quel prix\", le nouveau mantra - 01/04",
+        "source": "BFM Business",
+        "url": "https://www.bfmtv.com/economie/replay-emissions/good-morning-business/video-le-debrief-de-l-actu-pas-a-n-importe-quel-prix-le-nouveau-mantra-01-04_VN-202604010309.html",
+        "domain": "bfmtv.com",
+        "date": "2026-04-01T07:03:31.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "L'UE a intérêt à décarboner son économie",
+        "source": "BFM Business",
+        "url": "https://www.bfmtv.com/economie/replay-emissions/good-morning-business/video-l-ue-a-interet-a-decarboner-son-economie_VN-202604010302.html",
+        "domain": "bfmtv.com",
+        "date": "2026-04-01T07:02:02.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Iran war: What is happening on day 33 of US-Israel attacks?",
+        "source": "Al Jazeera",
+        "url": "https://www.aljazeera.com/news/2026/4/1/iran-war-what-is-happening-on-day-33-of-us-israel-attacks?traffic_source=rss",
+        "domain": "aljazeera.com",
+        "date": "2026-04-01T07:01:14.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Donald Trump lance la cryptomonnaie HORMUZ pour « financer les opérations visant à sécuriser le détroit d'Ormuz »",
+        "source": "Cryptoast",
+        "url": "https://cryptoast.fr/donald-trump-lance-cryptomonnaie-hormuz-financer-operations-visant-securiser-detroit-ormuz/",
+        "domain": "cryptoast.fr",
+        "date": "2026-04-01T07:00:38.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "European shares poised for relief rally on Middle East de-escalation hopes",
+        "source": "Investing.com",
+        "url": "https://www.investing.com/news/stock-market-news/european-shares-poised-for-relief-rally-on-middle-east-deescalation-hopes-4592109",
+        "domain": "investing.com",
+        "date": "2026-04-01T07:00:28.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Claude Code source leak reveals how much info Anthropic can hoover up about you and your system",
+        "source": "The Register",
+        "url": "https://go.theregister.com/feed/www.theregister.com/2026/04/01/claude_code_source_leak_privacy_nightmare/",
+        "domain": "go.theregister.com",
+        "date": "2026-04-01T07:00:12.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "Coca-Cola unveils $1B South Africa investment plan through 2030",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4571064-coca-cola-unveils-1b-south-africa-investment-plan-through-2030?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-04-01T06:56:05.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Bitcoin posts worst first quarter since 2018, falling 24%",
+        "source": "The Block",
+        "url": "https://www.theblock.co/post/395991/bitcoin-worst-q1-since-2018?utm_source=rss&amp;utm_medium=rss",
+        "domain": "theblock.co",
+        "date": "2026-04-01T06:54:24.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "Oil prices plunge over 3% in volatile trading as investors assess Trump comments on Iran war exit",
+        "source": "CNBC",
+        "url": "https://www.cnbc.com/2026/04/01/oil-prices-today-brent-wti.html",
+        "domain": "cnbc.com",
+        "date": "2026-04-01T06:53:51.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "À Tokyo, Macron tacle Trump en vantant la «prévisibilité» de l'Europe face à l'imprévisibilité de son homologue",
+        "source": "Le Figaro Flash Éco",
+        "url": "https://www.lefigaro.fr/international/a-tokyo-macron-vante-la-previsibilite-de-l-europe-face-a-l-imprevisibilite-de-trump-20260401",
+        "domain": "lefigaro.fr",
+        "date": "2026-04-01T06:53:15.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "OPEC Output Plunges by 7 Million Bpd as War Chokes Supply",
+        "source": "OilPrice",
+        "url": "https://oilprice.com/Latest-Energy-News/World-News/OPEC-Output-Plunges-by-7-Million-Bpd-as-War-Chokes-Supply.html",
+        "domain": "oilprice.com",
+        "date": "2026-04-01T06:45:00.000Z",
+        "category": "matieres_premieres"
+      },
+      {
+        "titre": "Israel’s war-time injuries rise to 6,286, health ministry says",
+        "source": "Middle East Eye",
+        "url": "https://www.middleeasteye.net/live-blog/live-blog-update/israels-war-time-injuries-rise-6286-health-ministry-says",
+        "domain": "middleeasteye.net",
+        "date": "2026-04-01T06:44:57.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Google Drive ransomware detection now on by default for paying users",
+        "source": "BleepingComputer",
+        "url": "https://www.bleepingcomputer.com/news/security/google-drive-ransomware-detection-now-on-by-default-for-paying-users/",
+        "domain": "bleepingcomputer.com",
+        "date": "2026-04-01T06:35:34.000Z",
+        "category": "ai_tech"
+      }
+    ],
+    "apiSources": [
+      {
+        "name": "Finnhub",
+        "url": "https://finnhub.io",
+        "domain": "finnhub.io",
+        "category": "markets",
+        "indicators": [
+          "SPY",
+          "QQQ",
+          "DIA",
+          "GLD",
+          "USO",
+          "NVDA",
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA"
+        ]
+      },
+      {
+        "name": "CoinGecko",
+        "url": "https://www.coingecko.com",
+        "domain": "coingecko.com",
+        "category": "crypto",
+        "indicators": [
+          "BTC",
+          "ETH",
+          "XRP",
+          "SOL",
+          "DOGE",
+          "ADA"
+        ]
+      },
+      {
+        "name": "Alternative.me",
+        "url": "https://alternative.me/crypto/fear-and-greed-index/",
+        "domain": "alternative.me",
+        "category": "crypto",
+        "indicators": [
+          "Fear & Greed Index"
+        ]
+      },
+      {
+        "name": "FRED",
+        "url": "https://fred.stlouisfed.org",
+        "domain": "fred.stlouisfed.org",
+        "category": "macro",
+        "indicators": [
+          "Inflation (CPI)",
+          "Taux directeur (Fed Funds)",
+          "PIB (trimestriel)",
+          "Chômage",
+          "Treasury 10 ans",
+          "Dollar Index (broad)",
+          "Spread 10Y-2Y",
+          "Masse monétaire M2",
+          "Bilan Fed (actifs)",
+          "Taux hypothécaire 30 ans"
+        ]
+      },
+      {
+        "name": "ECB Data",
+        "url": "https://data.ecb.europa.eu",
+        "domain": "data.ecb.europa.eu",
+        "category": "macro",
+        "indicators": [
+          "Taux directeur",
+          "EUR/USD"
+        ]
+      },
+      {
+        "name": "metals.dev",
+        "url": "https://metals.dev",
+        "domain": "metals.dev",
+        "category": "commodities",
+        "indicators": []
+      },
+      {
+        "name": "Twelve Data",
+        "url": "https://twelvedata.com",
+        "domain": "twelvedata.com",
+        "category": "markets",
+        "indicators": [
+          "DAX (Francfort)"
+        ]
+      },
+      {
+        "name": "DefiLlama",
+        "url": "https://defillama.com",
+        "domain": "defillama.com",
+        "category": "defi",
+        "indicators": [
+          "Binance CEX",
+          "Aave V3",
+          "Lido",
+          "Bitfinex",
+          "SSV Network"
+        ]
+      },
+      {
+        "name": "Alpha Vantage",
+        "url": "https://www.alphavantage.co",
+        "domain": "alphavantage.co",
+        "category": "markets",
+        "indicators": [
+          "EUR/USD",
+          "GBP/USD",
+          "USD/JPY"
+        ]
+      },
+      {
+        "name": "Mempool",
+        "url": "https://mempool.space",
+        "domain": "mempool.space",
+        "category": "onchain",
+        "indicators": [
+          "BTC Fees",
+          "BTC Hashrate"
+        ]
+      }
+    ],
+    "methodology": {
+      "description": "Vérification bibliographique par recoupement multi-sources",
+      "steps": [
+        "Extraction des références de sources dans le texte du briefing",
+        "Recoupement avec la bibliographie des articles RSS/API utilisés",
+        "Vérification croisée avec le registre des 15 sources API",
+        "Classification des sources (API, presse, institution, think tank, estimation)"
+      ],
+      "totalArticlesUsed": 25,
+      "totalAPISources": 10,
+      "standardApplied": "Adaptation APA 7 pour veille financière/géopolitique"
+    }
+  }
+}

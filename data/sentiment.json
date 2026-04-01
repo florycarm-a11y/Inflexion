@@ -1,65 +1,65 @@
 {
-  "updated": "2026-04-01T07:20:32.481Z",
+  "updated": "2026-04-01T19:01:13.439Z",
   "date": "2026-04-01",
   "global": {
-    "score": -0.04,
-    "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (-0.04), dominé par la rubrique marches (haussier)."
+    "score": -0.21,
+    "tendance": "baissier",
+    "resume": "Le sentiment global est baissier (-0.21), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.65,
-      "confidence": 0.85,
+      "score": -0.75,
+      "confidence": 0.92,
       "tendance": "baissier",
-      "resume": "Escalade militaire persistante au Moyen-Orient (Iran, Israël, Liban) avec 33 jours de frappes US-israéliennes et destructions d'infrastructures civiles. Trump signale un possible dénouement dans 2-3 semaines, créant une asymétrie entre risques immédiats et espoirs de désescalade.",
+      "resume": "Escalade majeure au Moyen-Orient avec annonce iranienne d'attaques contre Israël et bases américaines. Tensions transatlantiques aigues : Trump menace de sortir de l'Otan et conditionne l'aide Ukraine à une coalition Hormuz dirigée par les États-Unis.",
       "signaux_cles": [
-        "Jour 33 des attaques US-Israël contre l'Iran avec destructions d'infrastructures civiles",
-        "Frappes israéliennes sur Beyrouth causant 7 morts ; 6 286 blessés côté israélien",
-        "Trump annonce fin de la guerre d'ici 2-3 semaines (potentiel de désescalade)"
+        "Iran annonce vague d'attaques contre Israël et bases US dans le Golfe",
+        "Trump menace de sortir de l'Otan, froissé par attitude des alliés",
+        "Négociations Ukraine-USA en cours pour cessez-le-feu Pâques, mais conditionnalités US renforcées"
       ]
     },
     "marches": {
-      "score": 0.72,
-      "confidence": 0.88,
-      "tendance": "haussier",
-      "resume": "Rebond généralisé des marchés actions européens et asiatiques sur espoirs de désescalade géopolitique et signaux de fin de conflit. Secteurs tech et énergies renouvelables en avant-plan ; pétrole en baisse (-3%) sur perspectives de sortie de crise.",
+      "score": -0.15,
+      "confidence": 0.68,
+      "tendance": "mixte",
+      "resume": "Signaux contradictoires : rebond boursier tempéré par ajustements saisonniers, ventes au détail en février affaiblies. Secteurs défensifs (obligations) en drawdown record 68 mois. Tensions inflationnistes liées au conflit Moyen-Orient sur chimie et plastique.",
       "signaux_cles": [
-        "Nikkei 225 +5,31% ; marchés européens en forte hausse sur désescalade espérée",
-        "Pétrole -3% en trading volatil suite aux déclarations Trump sur fin de guerre",
-        "Ventes automobiles France +12,86% en mars ; investissements verts accélérés (électrification)"
+        "Drawdown obligataire record : 68 mois consécutifs de baisse",
+        "Ventes au détail février plongées, rebond masqué par ajustements saisonniers",
+        "Emploi intérimaire : -100 000 postes en 3 ans, concurrence auto-entrepreneuriat"
       ]
     },
     "crypto": {
-      "score": -0.48,
-      "confidence": 0.72,
-      "tendance": "mixte",
-      "resume": "Bitcoin en contraction sévère (-24% au Q1 2026, pire trimestre depuis 2018) malgré rebond technique court terme. Risques quantiques émergents (tokens résistants +50%) et innovations (obligations municipales Bitcoin, stablecoins). Lancement politique de HORMUZ par Trump ajoute volatilité.",
+      "score": -0.55,
+      "confidence": 0.85,
+      "tendance": "baissier",
+      "resume": "Crise de sécurité majeure : exploit Drift Protocol (Solana) de $200-270M, première semaine d'avril. Régulation accélérée (CFTC, Treasury GENIUS Act, stablecoins). Risques quantiques émergents sur Bitcoin.",
       "signaux_cles": [
-        "Bitcoin -24% au Q1 2026 (pire trimestre depuis 2018) ; retour en 'zone d'achat' selon analystes",
-        "Tokens résistants quantiques +50% sur alertes Google sur vulnérabilités cryptographiques",
-        "New Hampshire émet obligation municipale Bitcoin de $100M notée par Moody's (spéculatif)"
+        "Drift Protocol exploit : $200-270M en pertes potentielles, dépôts gelés",
+        "Treasury GENIUS Act : proposition 87 pages pour supervision états, stablecoins sous contrôle fédéral",
+        "Genius Group liquide tous ses Bitcoin pour rembourser dettes, signale stress liquidité secteur"
       ]
     },
     "matieres_premieres": {
-      "score": -0.42,
-      "confidence": 0.79,
-      "tendance": "baissier",
-      "resume": "Production OPEC effondrée (-7 Mbpd) sous impact de la guerre ; pétrole brut en baisse sur signaux de sortie de crise. Volatilité extrême sur carburant aviation (Inde). Accord France-Japon sur terres rares en négociation ; exploration pétrolière reprend face à réserves déclinantes.",
+      "score": 0.25,
+      "confidence": 0.72,
+      "tendance": "neutre",
+      "resume": "Volatilité pétrole extrême : baisse 2% sur signaux de-escalade Trump vs hausse record Saxo Bank sur disruptions Hormuz. Inventaires US en hausse pèsent sur prix. Énergies renouvelables soutenues (hydrogène vert UE $7B).",
       "signaux_cles": [
-        "Production OPEC -7 millions bpd ; pétrole brut en baisse sur perspectives de désescalade",
-        "Volatilité extrême prix jet fuel en Inde ; Baltic Dry Index à plus bas 3 semaines",
-        "Accord France-Japon terres rares en cours ; exploration pétrolière reprend (réserves déclinantes)"
+        "Pétrole -2% sur déclaration Trump sortie Iran 'rapide', mais Saxo Bank signale hausse record énergies",
+        "Disruptions Hormuz : benchmark Dubaï sous pression, route commerce Russie exposée",
+        "UE approuve $7B aide verte hydrogène Italie, contrepoids énergies fossiles"
       ]
     },
     "ai_tech": {
-      "score": 0.58,
-      "confidence": 0.75,
+      "score": 0.45,
+      "confidence": 0.65,
       "tendance": "haussier",
-      "resume": "Écosystème IA en expansion rapide : OpenAI lève $122Md (valorisation $852Md), Google déploie Veo 3.1 Lite, Hugging Face release TRL v1.0. Risques sécurité émergents (fuite Claude Code, cyberattaque LiteLLM, quantum threats). NIS2 crée tensions vie privée/sécurité.",
+      "resume": "Dynamique d'investissement robuste : OpenAI lève $122B pour 'construire', Cognichip $60M pour IA-design chips. Risques de sécurité identifiés (malware NoVoice 2.3M appareils, clonage outil Anthropic 8000x). Demande spatiale croissante.",
       "signaux_cles": [
-        "OpenAI lève $122Md (valorisation $852Md) ; Apple 50 ans vise IA comme 'porte d'entrée' iPhone",
-        "Google Veo 3.1 Lite lancé ; Hugging Face TRL v1.0 unifie post-training (SFT, DPO, GRPO)",
-        "Cyberattaque LiteLLM ; fuite Claude Code ; alertes quantiques Caltech sur cryptographie"
+        "OpenAI lève $122B, plus gros financement IA, mandate 'construire sans contraintes'",
+        "Malware NoVoice infecte 2.3M appareils Android Google Play, faille sécurité majeure",
+        "Outil Anthropic cloné 8000 fois malgré takedowns, risque IP et sécurité"
       ]
     }
   },
@@ -327,12 +327,12 @@
     },
     {
       "date": "2026-04-01",
-      "global": -0.04,
-      "geopolitique": -0.65,
-      "marches": 0.72,
-      "crypto": -0.48,
-      "matieres_premieres": -0.42,
-      "ai_tech": 0.58
+      "global": -0.21,
+      "geopolitique": -0.75,
+      "marches": -0.15,
+      "crypto": -0.55,
+      "matieres_premieres": 0.25,
+      "ai_tech": 0.45
     }
   ],
   "model": "claude-haiku-4-5-20251001",

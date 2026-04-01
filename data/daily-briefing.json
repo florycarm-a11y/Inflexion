@@ -1,79 +1,80 @@
 {
   "date": "2026-04-01",
-  "generated_at": "2026-04-01T07:21:42.941Z",
+  "generated_at": "2026-04-01T19:02:28.124Z",
   "type": "delta",
   "model": "claude-haiku-4-5-20251001",
   "sources_count": 25,
   "sources_market": 11,
-  "reference_date": "2026-03-31",
+  "reference_date": "2026-04-01",
   "synthese": {
-    "titre": "Rallye actions +2,9% et crypto en rebond technique — Trump signale une sortie Iran en 2-3 semaines",
-    "sous_titre": "Les marchés anticipent une désescalade diplomatique malgré l'escalade militaire ; crypto sort de la panique extrême mais reste fragile.",
-    "contenu": "## Évolutions du jour\n\n**Accélération du rebond actions vs hier.** S&P 500 +2,91% (SPY, Finnhub), Nasdaq 100 +3,39% (QQQ), Dow Jones +2,46% (DIA) — progression supérieure au rebond de J31 (+2,66%, +3,16%, +2,30% respectivement). Les mégacaps tech maintiennent leur dynamique : Nvidia +5,59%, Tesla +4,64%, Alphabet +5,14%, Microsoft +3,12%, Apple +2,90%. **Catalyseur principal : déclaration Trump** annonçant une possible sortie du conflit Iran en 2-3 semaines sans accord (Al Jazeera), contrastant avec le refus de négocier du ministre iranien Araghchi — le marché privilégie le scénario de désescalade unilatérale.\n\n**Pétrole corrige davantage (-1,99% vs -1,79% hier), or accélère (+3,79% vs +3,46%).** La baisse pétrolière s'accentue malgré les déclarations de Trump, suggérant que les investisseurs intègrent une réduction de la prime de risque Hormuz. L'or consolide sa dynamique refuge, cohérente avec la volatilité géopolitique persistante et l'inflation US confirmée (+2,66% a/a, FRED).\n\n**Crypto sort partiellement de la panique extrême.** Bitcoin +3,0% (24h) à 69 129 $ (CoinGecko), Ethereum +5,1% à 2 148,55 $ — rebond plus marqué qu'hier (+1,8% et +3,3%). **Fear & Greed Index à 8/100** (vs 11/100 hier) — aggravation paradoxale du sentiment malgré le rebond des prix, signalant une capitulation accélérée. Bitcoin affiche son pire Q1 depuis 2018 (-24%, The Block), renforçant la pression psychologique.\n\n## Perspectives actualisées\n\n**Scénario haussier court terme consolidé** : déclaration Trump crédibilise une sortie rapide du conflit sans fermeture d'Hormuz. Seuils à surveiller : S&P 500 au-delà de 655 $ (SPY), pétrole en-dessous de 125 $ (USO). **Risque de retournement** : si Trump ne concrétise pas la sortie en 2-3 semaines ou si l'Iran intensifie les représailles, rebond actions pourrait s'inverser (-2 à -3%). Crypto reste vulnérable : Bitcoin en-dessous de 65 000 $ déclencherait une nouvelle vague de liquidations (Fear & Greed < 5/100)."
+    "titre": "Consolidation actions +0,4% — crypto s'enfonce (Fear & Greed 8/100), Drift piratée pour $200M",
+    "sous_titre": "Rebond épuisé après deux jours de hausse ; escalade Iran-Israël persiste malgré signaux Trump ; choc de sécurité DeFi remet en question la stabilité Solana",
+    "contenu": "## Évolutions du jour\n\n**Ralentissement net du rebond actions.** S&P 500 +0,62% (SPY, Finnhub), Nasdaq 100 +1,04% (QQQ), Dow Jones +0,52% (DIA) — progression divisée par 3-5 vs hier (+2,91%, +3,39%, +2,46% respectivement). Les mégacaps tech affichent des gains fragmentés : Alphabet +3,05% (rebond), Tesla +1,84%, Nvidia +0,60%, Microsoft -0,25%, Apple +0,22%. **Interprétation : consolidation après deux jours de rattrapage**, le marché attendant des clarifications sur la trajectoire Iran-Israël et les données macro US (retail sales février en contraction, ajustements saisonniers massifs — Wolf Street).\n\n**Pétrole accélère sa correction (-1,96% vs -1,99% hier), or consolide (+1,44% vs +3,79%).** La baisse pétrolière s'inscrit dans la continuité, confirmant l'intégration d'une prime de risque Hormuz réduite. L'or ralentit significativement, suggérant un essoufflement des achats refuge court terme malgré la persistance de l'escalade géopolitique (Iran annonce une vague d'attaques contre Israël et bases US — Le Monde).\n\n**Crypto s'enfonce malgré stabilité des prix.** Bitcoin à 68 079 $ (+0,5% 24h, CoinGecko), Ethereum à 2 128,99 $ (+1,5%), mais **Fear & Greed Index stagne à 8/100** — aucune amélioration vs hier, confirmant une capitulation psychologique persistante. **Choc majeur : plateforme Solana Drift piratée pour au moins $200M** (The Block, CoinDesk) — exploit visant plusieurs vaults, halte des dépôts ordonnée. Cet incident ravive les craintes de contagion DeFi et remet en question la sécurité des protocoles Solana.\n\n## Perspectives actualisées\n\n**Scénario haussier court terme fragilisé.** Rebond actions épuisé après deux jours ; marché attend clarifications géopolitiques (discours Trump attendu) et données macro (retail sales février). Seuil critique : S&P 500 en-dessous de 650 (SPY) déclencherait test des plus bas de mars.\n\n**Risque DeFi élevé.** Exploit Drift $200M accélère les audits de sécurité Solana ; probabilité d'une correction des TVL Solana-based augmente. Lido (+4,8% TVL 24h) et Aave V3 (+2,0%) restent stables, mais sentiment de contagion persiste.\n\n**Géopolitique : escalade réelle vs signaux de désescalade.** Iran annonce attaques contre Israël et bases US (Le Monde) ; Trump minimise la menace uranium (NYT). Marché privilégie toujours le scénario de sortie en 2-3 semaines, mais volatilité court terme élevée."
   },
   "signaux": [
     {
-      "titre": "Trump signale une sortie Iran en 2-3 semaines — désescalade diplomatique vs escalade militaire réelle",
-      "description": "Trump annonce une possible sortie du conflit Iran en 2-3 semaines sans accord (Al Jazeera, J33), contrastant avec le refus de négocier du ministre iranien Araghchi. Ce signal crédibilise un scénario de désescalade unilatérale et explique l'accélération du rebond actions (S&P 500 +2,91% vs +2,66% hier, Nasdaq 100 +3,39% vs +3,16%). Cependant, l'escalade militaire persiste : frappes israéliennes sur Beyrouth (7 morts, Middle East Eye), blessés israéliens montant à 6 286 (health ministry). Le marché privilégie la sortie diplomatique rapide sur la réalité tactique, créant un risque de retournement si Trump ne concrétise pas en 2-3 semaines.",
-      "categorie": "geopolitique",
-      "interconnexions": [
-        {
-          "secteur": "Pétrole & énergie",
-          "impact": "USO -1,99% (vs -1,79% hier) — prime de risque Hormuz réduite",
-          "explication": "Marché anticipe une réduction de la probabilité de fermeture du détroit suite aux signaux de désescalade Trump"
-        },
-        {
-          "secteur": "Actions tech & mégacaps",
-          "impact": "Nasdaq 100 +3,39%, Nvidia +5,59%, Alphabet +5,14%",
-          "explication": "Rebond accéléré vs hier reflète l'appétit pour le risque renforcé par la perspective d'une sortie rapide du conflit"
-        }
-      ],
-      "regions": [
-        "Moyen-Orient",
-        "États-Unis"
-      ],
-      "severite": "urgent"
-    },
-    {
-      "titre": "Crypto : Fear & Greed aggravé à 8/100 malgré rebond Bitcoin +3,0% — capitulation accélérée",
-      "description": "Bitcoin rebondit à 69 129 $ (+3,0% sur 24h, CoinGecko), Ethereum à 2 148,55 $ (+5,1%), mais **Fear & Greed Index s'aggrave à 8/100** (vs 11/100 hier) — paradoxe d'une dégradation du sentiment malgré la hausse des prix. Bitcoin affiche son pire Q1 depuis 2018 (-24%, The Block), renforçant la pression psychologique et signalant une capitulation accélérée des détenteurs. Cette inversion sentiment/prix suggère une accumulation de positions courtes et une vulnérabilité accrue à une nouvelle vague de liquidations en-dessous de 65 000 $.",
+      "titre": "Drift (Solana) piratée $200M — contagion DeFi et remise en question sécurité Solana",
+      "description": "La plateforme de trading Drift sur Solana a subi un exploit visant au moins $200 millions répartis sur plusieurs vaults (The Block, CoinDesk). L'incident, survenu en deux heures, a forcé l'arrêt des dépôts et une alerte utilisateurs. Cet événement ravive les craintes de vulnérabilités systémiques dans l'écosystème Solana, déjà fragilisé par le sentiment de panique extrême (Fear & Greed 8/100). **Interconnexions** : (1) **DeFi TVL** — Lido (+4,8% 24h) et Aave V3 (+2,0%) restent stables, mais risque de migration des liquidités vers Ethereum ; (2) **Crypto sentiment** — exploit accélère la capitulation psychologique, Fear & Greed stagne à 8/100 malgré rebond Bitcoin +0,5%, renforçant la pression de liquidation.",
       "categorie": "crypto",
       "interconnexions": [
         {
-          "secteur": "Sentiment de marché global",
-          "impact": "Fear & Greed 8/100 (Extreme Fear) vs 11/100 hier",
-          "explication": "Aggravation paradoxale du sentiment malgré rebond technique suggère une capitulation psychologique, non une confiance retrouvée"
+          "secteur": "DeFi TVL Solana-based",
+          "impact": "Risque de contraction des liquidités Drift et protocoles associés",
+          "explication": "Exploit $200M crédibilise les craintes de vulnérabilités Solana ; migration vers Ethereum/Aave probable"
         },
         {
-          "secteur": "Risque quantique non résolu",
-          "impact": "Menace existentielle sur cryptographie elliptique (Google, 6 mois)",
-          "explication": "Incertitude sur la timeline de la menace quantique maintient une pression baissière structurelle sur les prix"
+          "secteur": "Sentiment crypto global",
+          "impact": "Fear & Greed stagne à 8/100 malgré rebond Bitcoin +0,5%",
+          "explication": "Incident DeFi renforce la capitulation psychologique et accélère les liquidations"
         }
       ],
       "regions": [
-        "Global"
+        "Solana ecosystem",
+        "DeFi global"
       ],
       "severite": "urgent"
     },
     {
-      "titre": "OpenAI lève 122 Md$ — valorisation record dans contexte de consolidation IA",
-      "description": "OpenAI conclut sa levée de fonds à 122 milliards de dollars (Next INpact), marquant une valorisation record. Parallèlement, Hugging Face lance TRL v1.0 (stack post-training unifié) et Google généralise la détection ransomware IA sur Drive (BleepingComputer). Cette consolidation IA contraste avec les tensions géopolitiques et la volatilité crypto, signalant une confiance persistante des investisseurs dans le secteur malgré les risques macro. Cependant, le financement massif d'OpenAI intervient dans un contexte de repricing des coûts d'infrastructure IA (Oracle réduit ses effectifs pour financer ses data centers, signalé hier).",
-      "categorie": "ai_tech",
+      "titre": "Rebond actions épuisé après 2 jours — consolidation court terme, seuil critique S&P 500 < 650",
+      "description": "Le rallye actions de J31-J32 (+2,91% et +3,39% Nasdaq) s'essouffle : S&P 500 +0,62%, Nasdaq 100 +1,04%, Dow Jones +0,52% (Finnhub). Mégacaps tech fragmentées (Alphabet +3,05%, Tesla +1,84%, Nvidia +0,60%, Microsoft -0,25%). **Catalyseur** : données retail sales février en contraction avec ajustements saisonniers massifs (Wolf Street), marché attendant clarifications Trump sur Iran et données macro US. **Interconnexions** : (1) **Géopolitique** — escalade Iran-Israël persiste (Iran annonce attaques — Le Monde) malgré signaux Trump, créant incertitude court terme ; (2) **Obligations** — Treasury 10Y à 4,35% (-0,09 pts), marché n'a pas intégré repricing de la prime de risque géopolitique.",
+      "categorie": "marches",
       "interconnexions": [
         {
-          "secteur": "Mégacaps tech",
-          "impact": "Nvidia +5,59%, Alphabet +5,14% — rebond actions tech accéléré",
-          "explication": "Levée record d'OpenAI renforce la confiance dans la demande d'infrastructure IA et de puissance de calcul"
+          "secteur": "Données macro US",
+          "impact": "Retail sales février en contraction, ajustements saisonniers massifs",
+          "explication": "Incertitude sur la trajectoire de la demande US freine les achats actions court terme"
         },
         {
-          "secteur": "Financement & dette",
-          "impact": "Valorisation record vs pression financière Oracle (dette montante)",
-          "explication": "Divergence entre valorisations IA (OpenAI) et contraintes de financement (Oracle) signale une fragmentation du secteur"
+          "secteur": "Géopolitique Iran-Israël",
+          "impact": "Escalade réelle vs signaux de désescalade Trump",
+          "explication": "Volatilité court terme élevée ; marché attend clarifications discours Trump"
         }
       ],
       "regions": [
         "États-Unis",
-        "Global"
+        "Marchés globaux"
+      ],
+      "severite": "attention"
+    },
+    {
+      "titre": "Anthropic Claude Code source leaked — 8 000+ clones GitHub malgré takedowns massifs",
+      "description": "Le code source de l'outil de codage Claude d'Anthropic a été accidentellement divulgué et cloné plus de 8 000 fois sur GitHub malgré les suppressions en masse (The Decoder). Cet incident expose les risques de sécurité des outils IA propriétaires et remet en question les contrôles d'accès des éditeurs. **Interconnexions** : (1) **Compétition IA** — fuite accélère la démocratisation des outils de codage IA, réduisant l'avantage compétitif d'Anthropic face à OpenAI (levée $122Md, valorisation record) et Google ; (2) **Cybersécurité** — incident s'ajoute à NoVoice Android malware (2,3M appareils infectés — BleepingComputer), signalant une augmentation des vecteurs d'attaque IA/tech.",
+      "categorie": "ai_tech",
+      "interconnexions": [
+        {
+          "secteur": "Compétition IA générative",
+          "impact": "Fuite Claude Code réduit l'avantage propriétaire d'Anthropic",
+          "explication": "8 000+ clones GitHub accélèrent la démocratisation des outils de codage IA"
+        },
+        {
+          "secteur": "Cybersécurité IA",
+          "impact": "Incident s'ajoute à NoVoice malware (2,3M appareils)",
+          "explication": "Augmentation des vecteurs d'attaque IA/tech renforce les risques de sécurité"
+        }
+      ],
+      "regions": [
+        "Global",
+        "Écosystème IA"
       ],
       "severite": "attention"
     }
@@ -85,80 +86,85 @@
       "probabilite": "moyenne",
       "horizon": "court_terme",
       "impact_marche": "Pétrole +10-15%, S&P 500 -3 à -5%, or +5-8%",
-      "description": "**Probabilité réduite de élevée à moyenne** suite aux signaux de désescalade Trump (sortie en 2-3 semaines). Cependant, escalade militaire réelle persiste (frappes Beyrouth, blessés israéliens 6 286). Seuil critique : fermeture effective du détroit déclencherait un choc pétrolier de 10-15% et une correction actions de 3-5%."
+      "description": "**Probabilité stable à moyenne.** Escalade Iran-Israël persiste (Iran annonce attaques contre Israël et bases US — Le Monde) malgré signaux Trump de sortie en 2-3 semaines. Pétrole corrige davantage (-1,96% vs -1,99% hier), confirmant l'intégration d'une prime de risque réduite. Seuil critique : fermeture Hormuz déclencherait choc pétrolier immédiat et correction actions de -3 à -5%."
     },
     {
       "risque": "Liquidation en cascade crypto : Bitcoin en-dessous de 65k$, Fear & Greed < 5/100",
       "severite": "urgent",
       "probabilite": "elevee",
       "horizon": "court_terme",
-      "impact_marche": "Bitcoin -15-20%, Ethereum -20-25%, Fear & Greed < 5/100",
-      "description": "**Probabilité stable à élevée.** Fear & Greed s'aggrave à 8/100 (vs 11/100 hier) malgré rebond Bitcoin +3,0%, signalant une capitulation accélérée. Bitcoin -24% en Q1 2026 (pire depuis 2018) renforce la pression psychologique. Seuil critique : Bitcoin en-dessous de 65 000 $ déclencherait une nouvelle vague de liquidations et une chute Fear & Greed en-dessous de 5/100."
+      "impact_marche": "Bitcoin -5 à -10%, Ethereum -8 à -12%, TVL DeFi -15-20%",
+      "description": "**Probabilité stable à élevée, renforcée par exploit Drift $200M.** Fear & Greed stagne à 8/100 (vs 11/100 hier) malgré rebond Bitcoin +0,5%, confirmant une capitulation psychologique persistante. Exploit Drift accélère les liquidations DeFi et remet en question la sécurité Solana. Bitcoin -24% en Q1 2026 (pire depuis 2018) renforce la pression psychologique. Seuil critique : Bitcoin en-dessous de 65k$ déclencherait liquidations en cascade."
     },
     {
-      "risque": "Repricing de la prime de risque géopolitique : Treasury 10Y au-delà de 4,50%",
+      "risque": "Contagion DeFi post-Drift : TVL Solana-based -20-30%, migration vers Ethereum",
       "severite": "attention",
-      "probabilite": "moyenne",
-      "horizon": "moyen_terme",
-      "impact_marche": "Treasury 10Y +0,15 pts, spread 10Y-2Y +0,10 pts, actions -1 à -2%",
-      "description": "**Probabilité stable à moyenne.** Treasury 10Y à 4,35% (-0,09 pts vs hier, FRED) reste inchangé malgré l'escalade géopolitique J33 et l'inflation US confirmée (+2,66% a/a). Marché n'a pas encore intégré une repricing complète. Seuil critique : Treasury 10Y au-delà de 4,50% signalerait une réévaluation des risques macro et déclencherait une correction actions de 1-2%."
+      "probabilite": "elevee",
+      "horizon": "court_terme",
+      "impact_marche": "TVL Solana -20-30%, TVL Ethereum +5-10%, Lido/Aave V3 +2-5%",
+      "description": "**Probabilité élevée, nouveau risque suite à exploit Drift $200M.** Incident ravive les craintes de vulnérabilités systémiques Solana et accélère les audits de sécurité. Lido (+4,8% TVL 24h) et Aave V3 (+2,0%) restent stables, mais risque de migration des liquidités vers Ethereum probable. Seuil critique : TVL Solana-based en-dessous de $100B déclencherait contraction accélérée."
     }
   ],
-  "sentiment_global": "mixte",
+  "sentiment_global": "baissier",
   "tags": [
-    "desescalade-diplomatique-trump-j33-sortie-2-3-semaines",
-    "rebond-actions-3pct-nasdaq-3-39pct-mégacaps-tech-dominants",
-    "crypto-capitulation-acceleree-fear-greed-8-100-bitcoin-69k",
-    "petrole-correction-1-99pct-prime-hormuz-reduite",
-    "openai-122md-valorisation-record-consolidation-ia"
+    "rebond-actions-epuise-consolidation-court-terme",
+    "drift-solana-200m-exploit-contagion-defi",
+    "crypto-panique-persistante-fear-greed-8-100",
+    "escalade-iran-israel-j33-attaques-annoncees-vs-signaux-trump",
+    "anthropic-claude-code-leak-8000-clones-github"
   ],
   "sources_citees": [
     {
-      "nom": "Al Jazeera",
-      "type": "presse",
-      "donnees_utilisees": "Trump signale sortie Iran en 2-3 semaines, refus de négocier d'Araghchi (J33)"
-    },
-    {
       "nom": "Finnhub",
       "type": "api",
-      "donnees_utilisees": "S&P 500 +2,91%, Nasdaq 100 +3,39%, Dow Jones +2,46%, pétrole -1,99%, or +3,79%, mégacaps tech"
+      "donnees_utilisees": "S&P 500 (SPY) +0,62%, Nasdaq 100 (QQQ) +1,04%, Dow Jones (DIA) +0,52%, variations mégacaps tech"
     },
     {
       "nom": "CoinGecko",
       "type": "api",
-      "donnees_utilisees": "Bitcoin 69 129 $ (+3,0% 24h), Ethereum 2 148,55 $ (+5,1%), Fear & Greed Index 8/100"
+      "donnees_utilisees": "Bitcoin $68 079 (+0,5% 24h), Ethereum $2 128,99 (+1,5%), Fear & Greed Index 8/100"
     },
     {
       "nom": "The Block",
       "type": "presse",
-      "donnees_utilisees": "Bitcoin pire Q1 depuis 2018 (-24%)"
+      "donnees_utilisees": "Drift exploit $200M, Bitcoin -24% Q1 2026"
     },
     {
-      "nom": "Middle East Eye",
+      "nom": "CoinDesk",
       "type": "presse",
-      "donnees_utilisees": "Frappes israéliennes Beyrouth (7 morts), blessés israéliens 6 286"
+      "donnees_utilisees": "Drift suspicious activity, halt deposits"
     },
     {
-      "nom": "Next INpact",
+      "nom": "Le Monde",
       "type": "presse",
-      "donnees_utilisees": "OpenAI lève 122 milliards de dollars"
+      "donnees_utilisees": "Iran annonce vague d'attaques contre Israël et bases US"
     },
     {
-      "nom": "FRED",
-      "type": "institution",
-      "donnees_utilisees": "Inflation US +2,66% a/a, Treasury 10Y 4,35% (-0,09 pts)"
+      "nom": "Wolf Street",
+      "type": "presse",
+      "donnees_utilisees": "Retail sales février contraction, ajustements saisonniers massifs"
+    },
+    {
+      "nom": "The Decoder",
+      "type": "presse",
+      "donnees_utilisees": "Anthropic Claude Code leak 8 000+ clones GitHub"
     },
     {
       "nom": "BleepingComputer",
       "type": "presse",
-      "donnees_utilisees": "Google généralise détection ransomware IA sur Drive"
+      "donnees_utilisees": "NoVoice Android malware 2,3M appareils infectés"
+    },
+    {
+      "nom": "FRED",
+      "type": "api",
+      "donnees_utilisees": "Treasury 10Y 4,35% (-0,09 pts)"
     }
   ],
   "_verification": {
-    "score": 0.8679245283018868,
-    "totalClaims": 53,
+    "score": 0.7666666666666667,
+    "totalClaims": 60,
     "verified": 46,
-    "unverified": 7,
+    "unverified": 14,
     "pass": true
   },
   "_contradictions": [
@@ -166,136 +172,168 @@
       "indicator": "SPY (ETF self-check)",
       "source1": {
         "name": "prix actuel",
-        "value": 650.34
+        "value": 654.37
       },
       "source2": {
         "name": "prev_close + change",
-        "value": 634.8768
+        "value": 650.9597
       },
-      "divergence_pct": 2.38,
+      "divergence_pct": 0.52,
       "type": "etf_self",
-      "note": "SPY : prix 650.34 ≠ prev_close (631.97) + change (2.9068) = 634.88. Possible donnée corrompue."
+      "note": "SPY : prix 654.37 ≠ prev_close (650.34) + change (0.6197) = 650.96. Possible donnée corrompue."
     },
     {
       "indicator": "QQQ (ETF self-check)",
       "source1": {
         "name": "prix actuel",
-        "value": 577.18
+        "value": 583.17
       },
       "source2": {
         "name": "prev_close + change",
-        "value": 561.6654
+        "value": 578.2177999999999
       },
-      "divergence_pct": 2.69,
+      "divergence_pct": 0.85,
       "type": "etf_self",
-      "note": "QQQ : prix 577.18 ≠ prev_close (558.28) + change (3.3854) = 561.67. Possible donnée corrompue."
-    },
-    {
-      "indicator": "DIA (ETF self-check)",
-      "source1": {
-        "name": "prix actuel",
-        "value": 463.19
-      },
-      "source2": {
-        "name": "prev_close + change",
-        "value": 454.5221
-      },
-      "divergence_pct": 1.87,
-      "type": "etf_self",
-      "note": "DIA : prix 463.19 ≠ prev_close (452.06) + change (2.4621) = 454.52. Possible donnée corrompue."
+      "note": "QQQ : prix 583.17 ≠ prev_close (577.18) + change (1.0378) = 578.22. Possible donnée corrompue."
     },
     {
       "indicator": "GLD (ETF self-check)",
       "source1": {
         "name": "prix actuel",
-        "value": 430.29
+        "value": 436.49
       },
       "source2": {
         "name": "prev_close + change",
-        "value": 418.3694
+        "value": 431.7309
       },
-      "divergence_pct": 2.77,
+      "divergence_pct": 1.09,
       "type": "etf_self",
-      "note": "GLD : prix 430.29 ≠ prev_close (414.58) + change (3.7894) = 418.37. Possible donnée corrompue."
-    },
-    {
-      "indicator": "NVDA (ETF self-check)",
-      "source1": {
-        "name": "prix actuel",
-        "value": 174.4
-      },
-      "source2": {
-        "name": "prev_close + change",
-        "value": 170.7582
-      },
-      "divergence_pct": 2.09,
-      "type": "etf_self",
-      "note": "NVDA : prix 174.4 ≠ prev_close (165.17) + change (5.5882) = 170.76. Possible donnée corrompue."
-    },
-    {
-      "indicator": "AAPL (ETF self-check)",
-      "source1": {
-        "name": "prix actuel",
-        "value": 253.79
-      },
-      "source2": {
-        "name": "prev_close + change",
-        "value": 249.5331
-      },
-      "divergence_pct": 1.68,
-      "type": "etf_self",
-      "note": "AAPL : prix 253.79 ≠ prev_close (246.63) + change (2.9031) = 249.53. Possible donnée corrompue."
-    },
-    {
-      "indicator": "MSFT (ETF self-check)",
-      "source1": {
-        "name": "prix actuel",
-        "value": 370.17
-      },
-      "source2": {
-        "name": "prev_close + change",
-        "value": 362.0829
-      },
-      "divergence_pct": 2.18,
-      "type": "etf_self",
-      "note": "MSFT : prix 370.17 ≠ prev_close (358.96) + change (3.1229) = 362.08. Possible donnée corrompue."
+      "note": "GLD : prix 436.49 ≠ prev_close (430.29) + change (1.4409) = 431.73. Possible donnée corrompue."
     },
     {
       "indicator": "GOOGL (ETF self-check)",
       "source1": {
         "name": "prix actuel",
-        "value": 287.56
+        "value": 296.33
       },
       "source2": {
         "name": "prev_close + change",
-        "value": 278.6408
+        "value": 290.6098
       },
-      "divergence_pct": 3.1,
+      "divergence_pct": 1.93,
       "type": "etf_self",
-      "note": "GOOGL : prix 287.56 ≠ prev_close (273.5) + change (5.1408) = 278.64. Possible donnée corrompue."
+      "note": "GOOGL : prix 296.33 ≠ prev_close (287.56) + change (3.0498) = 290.61. Possible donnée corrompue."
     },
     {
       "indicator": "TSLA (ETF self-check)",
       "source1": {
         "name": "prix actuel",
-        "value": 371.75
+        "value": 378.59
       },
       "source2": {
         "name": "prev_close + change",
-        "value": 359.9158
+        "value": 373.5899
       },
-      "divergence_pct": 3.18,
+      "divergence_pct": 1.32,
       "type": "etf_self",
-      "note": "TSLA : prix 371.75 ≠ prev_close (355.28) + change (4.6358) = 359.92. Possible donnée corrompue."
+      "note": "TSLA : prix 378.59 ≠ prev_close (371.75) + change (1.8399) = 373.59. Possible donnée corrompue."
     }
   ],
   "_bibliography": {
-    "score": 0.42857142857142855,
-    "totalRefs": 14,
+    "score": 0.5,
+    "totalRefs": 12,
     "matched": 6,
-    "unmatched": 8,
-    "pass": false,
+    "unmatched": 6,
+    "pass": true,
     "bibliography": [
+      {
+        "titre": "Here&#x2019;s one reason investors shouldn&#x2019;t get too excited about this week&#x2019;s stock-market rebound",
+        "source": "MarketWatch",
+        "url": "https://www.marketwatch.com/story/heres-one-reason-investors-shouldnt-get-too-excited-about-this-weeks-stock-market-rebound-d394affd?mod=mw_rss_topstories",
+        "domain": "marketwatch.com",
+        "date": "2026-04-01T18:51:00.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Interactive Brokers Adds Bitcoin Trading in European Economic Area",
+        "source": "Bitcoin Magazine",
+        "url": "https://bitcoinmagazine.com/news/interactive-brokers-adds-bitcoin-trading",
+        "domain": "bitcoinmagazine.com",
+        "date": "2026-04-01T18:50:15.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "Airbus forms Skywise unit to consolidate digital aviation services",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4571804-airbus-forms-skywise-unit-to-consolidate-digital-aviation-services?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-04-01T18:47:52.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "\"La cible de 40% de véhicules électriques en 2027 ne sera vraisemblablement pas atteinte\": la Cour des comptes appelle à recentrer les aides à l'achat automobile sur les ménages modestes",
+        "source": "BFM Business",
+        "url": "https://www.bfmtv.com/economie/entreprises/la-cible-de-40-de-vehicules-electriques-en-2027-ne-sera-vraisemblablement-pas-atteinte-la-cour-des-comptes-appelle-a-recentrer-les-aides-a-l-achat-automobile-sur-les-menages-modestes_AD-202604010877.html",
+        "domain": "bfmtv.com",
+        "date": "2026-04-01T18:47:50.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "EN DIRECT, guerre au Moyen-Orient : avant le discours attendu de Donald Trump, l’Iran annonce une vague d’attaques menée contre Israël et des bases américaines dans le Golfe",
+        "source": "Le Monde Intl",
+        "url": "https://www.lemonde.fr/international/live/2026/04/01/en-direct-guerre-au-moyen-orient-avant-le-discours-attendu-de-donald-trump-l-iran-annonce-une-vague-d-attaques-menee-contre-israel-et-des-bases-americaines-dans-le-golfe_6674837_3210.html",
+        "domain": "lemonde.fr",
+        "date": "2026-04-01T18:45:40.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Supermicro duo plead not guilty in server smuggling case: report",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4571790-supermicro-duo-plead-not-guilty-in-server-smuggling-case-report?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-04-01T18:44:38.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Retail Sales Plunged in February. But Huge Seasonal Adjustments Caused them to Jump. A Look at Both",
+        "source": "Wolf Street",
+        "url": "https://wolfstreet.com/2026/04/01/retail-sales-plunged-in-february-huge-seasonal-adjustments-caused-them-to-jump-a-look-at-both/",
+        "domain": "wolfstreet.com",
+        "date": "2026-04-01T18:44:16.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "AeroVironment selected for U.S. Navy ISR services contract",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4571803-aerovironment-selected-for-u-s-navy-isr-services-contract?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-04-01T18:39:53.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Longest bond market drawdown on record hits 68 months",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4571789-longest-bond-market-drawdown-on-record-hits-68-months?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-04-01T18:39:25.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Lilly CEO says new GLP-1 pill's scalability will help expand global reach",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4571774-lilly-ceo-says-new-glp-1-pills-scalability-will-help-expand-global-reach?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-04-01T18:37:32.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Iran War Live Updates: Trump Downplays Uranium Threat, Sending More Conflicting Signals",
+        "source": "New York Times",
+        "url": "https://www.nytimes.com/live/2026/04/01/world/iran-war-trump-oil-news",
+        "domain": "nytimes.com",
+        "date": "2026-04-01T18:37:05.000Z",
+        "category": "geopolitique"
+      },
       {
         "titre": "The NPT System Hangs in the Balance",
         "source": "Arms Control Assoc.",
@@ -305,195 +343,107 @@
         "category": "geopolitique"
       },
       {
-        "titre": "Conference Chief Seeks to Rebuild NPT Credibility: An Interview with Ambassador Do Hung Viet of Vietnam, president of the 2026 NPT Review Conference",
-        "source": "Arms Control Assoc.",
-        "url": "https://www.armscontrol.org/act/2026-04/interviews/conference-chief-seeks-rebuild-npt-credibility-interview-ambassador-do-hung",
-        "domain": "armscontrol.org",
-        "date": "2026-04-01T14:43:31.000Z",
-        "category": "geopolitique"
-      },
-      {
-        "titre": "The Arsenal as the Battlefield: The War on Iran and the Return of Counter-Industrial Targeting",
-        "source": "War on the Rocks",
-        "url": "https://warontherocks.com/2026/04/the-arsenal-as-the-battlefield-the-war-on-iran-and-the-return-of-counter-industrial-targeting/",
-        "domain": "warontherocks.com",
-        "date": "2026-04-01T07:15:06.000Z",
-        "category": "geopolitique"
-      },
-      {
-        "titre": "Why Europe is Wrong to Think Iran is ‘Not Our War’",
-        "source": "Politico EU",
-        "url": "https://www.politico.com/news/magazine/2026/03/31/europe-iran-war-us-israel-00852813?utm_content=politico%2Fmagazine%2FPolitics&#038;utm_source=RSS_Feed&#038;utm_medium=RSS&#038;utm_campaign=RSS_Syndication",
-        "domain": "politico.com",
-        "date": "2026-04-01T07:14:18.000Z",
-        "category": "geopolitique"
-      },
-      {
-        "titre": "Lebanon says Israeli strikes on Beirut area kill seven",
-        "source": "Middle East Eye",
-        "url": "https://www.middleeasteye.net/live-blog/live-blog-update/lebanon-says-israeli-strikes-beirut-area-kill-seven",
-        "domain": "middleeasteye.net",
-        "date": "2026-04-01T07:13:45.000Z",
-        "category": "geopolitique"
-      },
-      {
-        "titre": "Artémis II : que se passe-t-il s&#8217;il y a un pépin juste avant le départ de la fusée SLS ?",
-        "source": "Numerama",
-        "url": "https://www.numerama.com/sciences/2220625-artemis-ii-que-se-passe-t-il-sil-y-a-un-pepin-juste-avant-le-depart-de-la-fusee-sls.html",
-        "domain": "numerama.com",
-        "date": "2026-04-01T07:08:26.000Z",
+        "titre": "Meta’s natural gas binge could power South Dakota",
+        "source": "TechCrunch",
+        "url": "https://techcrunch.com/2026/04/01/metas-natural-gas-binge-could-power-south-dakota/",
+        "domain": "techcrunch.com",
+        "date": "2026-04-01T18:35:36.000Z",
         "category": "ai_tech"
       },
       {
-        "titre": "Forum InCyber 2026 : pourquoi bloquer l&#8217;IA en entreprise est une erreur stratégique",
-        "source": "Numerama",
-        "url": "https://www.numerama.com/cyberguerre/2223319-forum-incyber-2026-pourquoi-bloquer-lia-en-entreprise-est-une-erreur-strategique.html",
-        "domain": "numerama.com",
-        "date": "2026-04-01T07:07:25.000Z",
-        "category": "ai_tech"
-      },
-      {
-        "titre": "Le président Macron, l’ADN et un message secret transféré entre la France et le Japon",
-        "source": "Le Monde Intl",
-        "url": "https://www.lemonde.fr/sciences/article/2026/04/01/le-president-macron-l-adn-et-un-message-secret-transfere-entre-la-france-et-le-japon_6675851_1650684.html",
-        "domain": "lemonde.fr",
-        "date": "2026-04-01T07:07:23.000Z",
-        "category": "geopolitique"
-      },
-      {
-        "titre": "OpenAI porte son tour de table à 122 milliards de dollars",
-        "source": "Next INpact",
-        "url": "https://next.ink/231701/openai-porte-son-tour-de-table-a-122-milliards-de-dollars/",
-        "domain": "next.ink",
-        "date": "2026-04-01T07:07:12.000Z",
-        "category": "ai_tech"
-      },
-      {
-        "titre": "Japan stocks higher at close of trade; Nikkei 225 up 5.31%",
-        "source": "Investing.com",
-        "url": "https://www.investing.com/news/stock-market-news/japan-stocks-higher-at-close-of-trade-nikkei-225-up-531-4592116",
-        "domain": "investing.com",
-        "date": "2026-04-01T07:05:04.000Z",
-        "category": "marches"
-      },
-      {
-        "titre": "Hugging Face Releases TRL v1.0: A Unified Post-Training Stack for SFT, Reward Modeling, DPO, and GRPO Workflows",
-        "source": "MarkTechPost",
-        "url": "https://www.marktechpost.com/2026/04/01/hugging-face-releases-trl-v1-0-a-unified-post-training-stack-for-sft-reward-modeling-dpo-and-grpo-workflows/",
-        "domain": "marktechpost.com",
-        "date": "2026-04-01T07:04:43.000Z",
-        "category": "ai_tech"
-      },
-      {
-        "titre": "Barclays upgrades Orsted stock rating on balance sheet stabilization",
-        "source": "Investing.com",
-        "url": "https://www.investing.com/news/analyst-ratings/barclays-upgrades-orsted-stock-rating-on-balance-sheet-stabilization-93CH-4592114",
-        "domain": "investing.com",
-        "date": "2026-04-01T07:04:09.000Z",
-        "category": "marches"
-      },
-      {
-        "titre": "Le débrief de l'actu : \"Pas à n'importe quel prix\", le nouveau mantra - 01/04",
-        "source": "BFM Business",
-        "url": "https://www.bfmtv.com/economie/replay-emissions/good-morning-business/video-le-debrief-de-l-actu-pas-a-n-importe-quel-prix-le-nouveau-mantra-01-04_VN-202604010309.html",
-        "domain": "bfmtv.com",
-        "date": "2026-04-01T07:03:31.000Z",
-        "category": "marches"
-      },
-      {
-        "titre": "L'UE a intérêt à décarboner son économie",
-        "source": "BFM Business",
-        "url": "https://www.bfmtv.com/economie/replay-emissions/good-morning-business/video-l-ue-a-interet-a-decarboner-son-economie_VN-202604010302.html",
-        "domain": "bfmtv.com",
-        "date": "2026-04-01T07:02:02.000Z",
-        "category": "marches"
-      },
-      {
-        "titre": "Iran war: What is happening on day 33 of US-Israel attacks?",
-        "source": "Al Jazeera",
-        "url": "https://www.aljazeera.com/news/2026/4/1/iran-war-what-is-happening-on-day-33-of-us-israel-attacks?traffic_source=rss",
-        "domain": "aljazeera.com",
-        "date": "2026-04-01T07:01:14.000Z",
-        "category": "geopolitique"
-      },
-      {
-        "titre": "Donald Trump lance la cryptomonnaie HORMUZ pour « financer les opérations visant à sécuriser le détroit d'Ormuz »",
-        "source": "Cryptoast",
-        "url": "https://cryptoast.fr/donald-trump-lance-cryptomonnaie-hormuz-financer-operations-visant-securiser-detroit-ormuz/",
-        "domain": "cryptoast.fr",
-        "date": "2026-04-01T07:00:38.000Z",
-        "category": "crypto"
-      },
-      {
-        "titre": "European shares poised for relief rally on Middle East de-escalation hopes",
-        "source": "Investing.com",
-        "url": "https://www.investing.com/news/stock-market-news/european-shares-poised-for-relief-rally-on-middle-east-deescalation-hopes-4592109",
-        "domain": "investing.com",
-        "date": "2026-04-01T07:00:28.000Z",
-        "category": "marches"
-      },
-      {
-        "titre": "Claude Code source leak reveals how much info Anthropic can hoover up about you and your system",
-        "source": "The Register",
-        "url": "https://go.theregister.com/feed/www.theregister.com/2026/04/01/claude_code_source_leak_privacy_nightmare/",
-        "domain": "go.theregister.com",
-        "date": "2026-04-01T07:00:12.000Z",
-        "category": "ai_tech"
-      },
-      {
-        "titre": "Coca-Cola unveils $1B South Africa investment plan through 2030",
-        "source": "Seeking Alpha",
-        "url": "https://seekingalpha.com/news/4571064-coca-cola-unveils-1b-south-africa-investment-plan-through-2030?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
-        "domain": "seekingalpha.com",
-        "date": "2026-04-01T06:56:05.000Z",
-        "category": "marches"
-      },
-      {
-        "titre": "Bitcoin posts worst first quarter since 2018, falling 24%",
+        "titre": "&#8216;Not an April Fools joke&#8217;: Major Solana-based trading platform Drift exploited for at least $200 million",
         "source": "The Block",
-        "url": "https://www.theblock.co/post/395991/bitcoin-worst-q1-since-2018?utm_source=rss&amp;utm_medium=rss",
+        "url": "https://www.theblock.co/post/396107/solana-trading-platform-drift-exploited-at-least-200-million?utm_source=rss&amp;utm_medium=rss",
         "domain": "theblock.co",
-        "date": "2026-04-01T06:54:24.000Z",
+        "date": "2026-04-01T18:35:29.000Z",
         "category": "crypto"
       },
       {
-        "titre": "Oil prices plunge over 3% in volatile trading as investors assess Trump comments on Iran war exit",
-        "source": "CNBC",
-        "url": "https://www.cnbc.com/2026/04/01/oil-prices-today-brent-wti.html",
-        "domain": "cnbc.com",
-        "date": "2026-04-01T06:53:51.000Z",
-        "category": "marches"
+        "titre": "Solana DeFi platform Drift investigates suspicious activity, tells users to halt deposits",
+        "source": "CoinDesk",
+        "url": "https://www.coindesk.com/tech/2026/04/01/solana-defi-platform-drift-investigates-suspicious-activity-tells-users-to-halt-deposits",
+        "domain": "coindesk.com",
+        "date": "2026-04-01T18:35:27.000Z",
+        "category": "crypto"
       },
       {
-        "titre": "À Tokyo, Macron tacle Trump en vantant la «prévisibilité» de l'Europe face à l'imprévisibilité de son homologue",
-        "source": "Le Figaro Flash Éco",
-        "url": "https://www.lefigaro.fr/international/a-tokyo-macron-vante-la-previsibilite-de-l-europe-face-a-l-imprevisibilite-de-trump-20260401",
-        "domain": "lefigaro.fr",
-        "date": "2026-04-01T06:53:15.000Z",
-        "category": "marches"
+        "titre": "EN DIRECT, guerre en Ukraine : Volodymyr Zelensky dit avoir eu une discussion « positive » avec les émissaires américains pour un cessez-le-feu pour les fêtes de Pâques",
+        "source": "Le Monde Intl",
+        "url": "https://www.lemonde.fr/international/live/2026/04/01/en-direct-guerre-en-ukraine-volodymyr-zelensky-dit-avoir-eu-une-discussion-positive-avec-les-emissaires-americains-pour-un-cessez-le-feu-pour-les-fetes-de-paques_6675208_3210.html",
+        "domain": "lemonde.fr",
+        "date": "2026-04-01T18:34:57.000Z",
+        "category": "geopolitique"
       },
       {
-        "titre": "OPEC Output Plunges by 7 Million Bpd as War Chokes Supply",
+        "titre": "Why Iran says its universities are being targeted",
+        "source": "Al Jazeera",
+        "url": "https://www.aljazeera.com/video/the-take-2/2026/4/1/aje-onl-tt_irn_scholasticide_av_v3-010426?traffic_source=rss",
+        "domain": "aljazeera.com",
+        "date": "2026-04-01T18:34:28.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Evacuated From War-Torn Gaza, 11 Toddlers Return Home to Hugs and Tears",
+        "source": "New York Times",
+        "url": "https://www.nytimes.com/2026/04/01/world/middleeast/gaza-children-evacuated-return.html",
+        "domain": "nytimes.com",
+        "date": "2026-04-01T18:31:36.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Iranians vow to 'resist until the end' at Guards naval chief's funeral",
+        "source": "Al-Monitor",
+        "url": "https://www.al-monitor.com/originals/2026/04/iranians-vow-resist-until-end-guards-naval-chiefs-funeral",
+        "domain": "al-monitor.com",
+        "date": "2026-04-01T18:30:23.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Traders Ramp Up Bearish Oil Bets To Nearly $1 Billion",
         "source": "OilPrice",
-        "url": "https://oilprice.com/Latest-Energy-News/World-News/OPEC-Output-Plunges-by-7-Million-Bpd-as-War-Chokes-Supply.html",
+        "url": "https://oilprice.com/Latest-Energy-News/World-News/Traders-Ramp-Up-Bearish-Oil-Bets-To-Nearly-1-Billion.html",
         "domain": "oilprice.com",
-        "date": "2026-04-01T06:45:00.000Z",
+        "date": "2026-04-01T18:30:00.000Z",
         "category": "matieres_premieres"
       },
       {
-        "titre": "Israel’s war-time injuries rise to 6,286, health ministry says",
-        "source": "Middle East Eye",
-        "url": "https://www.middleeasteye.net/live-blog/live-blog-update/israels-war-time-injuries-rise-6286-health-ministry-says",
-        "domain": "middleeasteye.net",
-        "date": "2026-04-01T06:44:57.000Z",
+        "titre": "Hormuz disruption will change trade — and defense — at other chokepoints",
+        "source": "Breaking Defense",
+        "url": "https://breakingdefense.com/2026/04/hormuz-disruption-will-change-trade-and-defense-at-other-chokepoints/",
+        "domain": "breakingdefense.com",
+        "date": "2026-04-01T18:23:34.000Z",
         "category": "geopolitique"
       },
       {
-        "titre": "Google Drive ransomware detection now on by default for paying users",
+        "titre": "Anthropic's leaked AI coding tool has been cloned over 8,000 times on GitHub despite mass takedowns",
+        "source": "The Decoder",
+        "url": "https://the-decoder.com/anthropics-leaked-ai-coding-tool-has-been-cloned-over-8000-times-on-github-despite-mass-takedowns/",
+        "domain": "the-decoder.com",
+        "date": "2026-04-01T18:16:51.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "‘Thank You for Generating With Us!’ Hollywood's AI Acolytes Stay on the Hype Train",
+        "source": "Wired",
+        "url": "https://www.wired.com/story/thank-you-for-generating-with-us-hollywoods-ai-acolytes-stay-on-the-hype-train/",
+        "domain": "wired.com",
+        "date": "2026-04-01T18:13:34.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "Paradigm mulls prediction market entry with trading terminal, market making desk: Fortune",
+        "source": "The Block",
+        "url": "https://www.theblock.co/post/396099/paradigm-prediction-market-trading-terminal-market-making-desk-fortune?utm_source=rss&amp;utm_medium=rss",
+        "domain": "theblock.co",
+        "date": "2026-04-01T18:08:21.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "'NoVoice' Android malware on Google Play infected 2.3 million devices",
         "source": "BleepingComputer",
-        "url": "https://www.bleepingcomputer.com/news/security/google-drive-ransomware-detection-now-on-by-default-for-paying-users/",
+        "url": "https://www.bleepingcomputer.com/news/security/novoice-android-malware-on-google-play-infected-23-million-devices/",
         "domain": "bleepingcomputer.com",
-        "date": "2026-04-01T06:35:34.000Z",
+        "date": "2026-04-01T18:07:21.000Z",
         "category": "ai_tech"
       }
     ],

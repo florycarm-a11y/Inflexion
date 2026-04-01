@@ -1,162 +1,91 @@
 {
-  "updated": "2026-04-01T07:20:32.482Z",
+  "updated": "2026-04-01T19:01:13.440Z",
   "alertes": [
     {
       "id": "alert-2026-04-01-001",
-      "titre": "Nikkei 225 : +5,31% à la clôture, plus fort rebond sur désescalade géopolitique",
-      "texte": "Marché japonais en hausse significative suite aux signaux de Trump sur fin imminente du conflit Iran-Israël. Consensus risk-on généralisé avec amplitude +3,48% sur tous les indices.",
+      "titre": "GOOGL : +3,05% à $296,33, rebond isolé dans contexte Fear Index extrême",
+      "texte": "Alphabet gagne 3,05% tandis que Fear & Greed Index s'effondre à 8 (Extreme Fear). Rebond technique sur classe action (+1,09% régime) contredit par sentiment macro détérioré. Drawdown obligataire record 68 mois signale fuite vers valeurs défensives.",
       "categorie": "marches",
       "severite": "attention",
-      "impact": "haussier",
-      "horodatage": "2026-04-01T07:20:32.482Z",
+      "impact": "neutre",
+      "horodatage": "2026-04-01T19:01:13.440Z",
       "donnees": {
-        "symbole": "ETH",
-        "nom": "Ethereum",
-        "prix": 2148.55,
-        "variation_24h": 5.11
+        "symbole": "GOOGL",
+        "nom": "Alphabet",
+        "prix": 296.33,
+        "variation": 3.05
       }
     },
     {
       "id": "alert-2026-04-01-002",
-      "titre": "Pétrole brut : -3% en trading volatil, Trump signale sortie de crise",
-      "texte": "Baisse des prix pétroliers sur déclarations Trump annonçant fin de la guerre d'ici 2-3 semaines. Production OPEC effondrée de 7 Mbpd sous impact de la guerre, mais perspectives de désescalade dominent.",
-      "categorie": "matieres_premieres",
-      "severite": "attention",
+      "titre": "Drift Protocol (Solana) : exploit $200-270M, gels de dépôts immédiats",
+      "texte": "Plateforme trading DeFi Solana Drift subit exploit de $200-270M en avril 2026. Utilisateurs sommés de suspendre dépôts. Première crise sécurité majeure post-régulation crypto, déclenche scrutin CFTC et Treasury sur supervision.",
+      "categorie": "crypto",
+      "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-04-01T07:20:32.482Z",
+      "horodatage": "2026-04-01T19:01:13.440Z",
       "donnees": {
-        "symbole": "SPY",
-        "nom": "S&P 500",
-        "prix": 650.34,
-        "variation": 2.91
+        "score": 8,
+        "label": "Extreme Fear",
+        "variation_7j": -6
       }
     },
     {
       "id": "alert-2026-04-01-003",
-      "titre": "Bitcoin : -24% au Q1 2026, pire trimestre depuis 2018",
-      "texte": "Contraction sévère du bitcoin au premier trimestre 2026. Analystes signalent retour en 'zone d'achat' technique, mais risques quantiques émergents (tokens résistants +50%) créent volatilité structurelle.",
-      "categorie": "crypto",
-      "severite": "attention",
+      "titre": "Iran annonce vague d'attaques contre Israël et bases US Golfe",
+      "texte": "Téhéran déclare offensive imminente contre Israël et installations américaines dans le Golfe Persique, avant discours Trump attendu. Escalade directe risque disruption Hormuz et choc énergétique global. Saxo Bank signale hausse record énergies.",
+      "categorie": "geopolitique",
+      "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-04-01T07:20:32.482Z",
-      "donnees": {
-        "symbole": "QQQ",
-        "nom": "Nasdaq 100",
-        "prix": 577.18,
-        "variation": 3.39
-      }
+      "horodatage": "2026-04-01T19:01:13.440Z",
+      "donnees": {}
     },
     {
       "id": "alert-2026-04-01-004",
-      "titre": "Nvidia (NVDA) : +5,59% à $174,40, tech surperforme sur risk-on",
-      "texte": "Nvidia gagne 5,59% dans contexte de surperformance technologique généralisée (+3,3pp vs commodities). Alphabet (+5,14%), Microsoft (+3,12%) et Apple (+2,90%) bénéficient du consensus risk-on.",
-      "categorie": "ai_tech",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-04-01T07:20:32.482Z",
-      "donnees": {
-        "symbole": "DIA",
-        "nom": "Dow Jones",
-        "prix": 463.19,
-        "variation": 2.46
-      }
+      "titre": "Trump menace sortie OTAN, conditionne aide Ukraine à coalition Hormuz",
+      "texte": "Président US froissé par attitude alliés Iran, menace retrait OTAN. Lie aide militaire Ukraine à participation européenne coalition Hormuz dirigée Washington. Rupture alliance transatlantique crée risque géopolitique systémique.",
+      "categorie": "geopolitique",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-04-01T19:01:13.440Z",
+      "donnees": {}
     },
     {
       "id": "alert-2026-04-01-005",
-      "titre": "Or (GLD) : +3,79% à $430,29, refuge sur tensions géopolitiques persistantes",
-      "texte": "Or en hausse de 3,79% malgré rebond risk-on, reflétant demande de couverture face aux risques géopolitiques non résorbés (jour 33 des frappes, 6 286 blessés israéliens).",
+      "titre": "Pétrole : volatilité extrême, -2% sur signaux de-escalade vs hausse record",
+      "texte": "Brut recule 2% sur déclaration Trump sortie Iran 'rapide', mais Saxo Bank signale hausse record énergies sur disruptions Hormuz. Inventaires US en hausse pèsent. Benchmark Dubaï sous pression, route commerce Russie exposée.",
       "categorie": "matieres_premieres",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-04-01T07:20:32.482Z",
-      "donnees": {
-        "symbole": "GLD",
-        "nom": "Or (ETF)",
-        "prix": 430.29,
-        "variation": 3.79
-      }
+      "severite": "attention",
+      "impact": "neutre",
+      "horodatage": "2026-04-01T19:01:13.440Z",
+      "donnees": {}
     },
     {
       "id": "alert-2026-04-01-006",
-      "titre": "Ethereum (ETH) : +5,11% à $2 148,55, rebond crypto sur désescalade",
-      "texte": "Ethereum gagne 5,11% en 24h dans contexte de rebond crypto généralisé (+3,23% classe d'actifs). Divergence avec Bitcoin (-24% Q1) suggère rotation vers altcoins et tokens innovants.",
-      "categorie": "crypto",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-04-01T07:20:32.482Z",
-      "donnees": {
-        "symbole": "NVDA",
-        "nom": "Nvidia",
-        "prix": 174.4,
-        "variation": 5.59
-      }
+      "titre": "Malware NoVoice : 2,3M appareils Android infectés via Google Play",
+      "texte": "Campagne malware NoVoice infecte 2,3M appareils sur Google Play Store. Faille sécurité majeure dans écosystème mobile, parallèle aux 8000 clonages outil Anthropic malgré takedowns. Risques cybersécurité secteur tech en hausse.",
+      "categorie": "ai_tech",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-04-01T19:01:13.440Z",
+      "donnees": {}
     },
     {
       "id": "alert-2026-04-01-007",
-      "titre": "OpenAI : levée de $122Md, valorisation atteint $852Md",
-      "texte": "OpenAI complète tour de table record à $122Md, portant valorisation à $852Md. Renforce position dominante en IA générative face à concurrence (Google, Anthropic, Hugging Face).",
+      "titre": "OpenAI lève $122B, plus gros financement IA, mandat 'construire sans limites'",
+      "texte": "OpenAI sécurise $122B pour 'construire les choses' sans contraintes externes. Plus gros financement IA historique. Signale confiance investisseurs malgré contexte macro dégradé et risques géopolitiques aigus.",
       "categorie": "ai_tech",
       "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-04-01T07:20:32.482Z",
-      "donnees": {
-        "symbole": "AAPL",
-        "nom": "Apple",
-        "prix": 253.79,
-        "variation": 2.9
-      }
-    },
-    {
-      "id": "alert-2026-04-01-008",
-      "titre": "S&P 500 (SPY) : +2,91% à $650,34, indices US en hausse généralisée",
-      "texte": "S&P 500 gagne 2,91% ; Nasdaq 100 (+3,39%), Dow Jones (+2,46%). Régime risk-on détecté avec consensus 94% et amplitude 3,48% sur tous les indices.",
-      "categorie": "marches",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-04-01T07:20:32.482Z",
-      "donnees": {
-        "symbole": "MSFT",
-        "nom": "Microsoft",
-        "prix": 370.17,
-        "variation": 3.12
-      }
-    },
-    {
-      "id": "alert-2026-04-01-009",
-      "titre": "Tokens résistants quantiques : +50%, Google alerte sur vulnérabilités Bitcoin",
-      "texte": "Tokens cryptographiquement résistants aux ordinateurs quantiques gagnent 50% suite aux alertes Google et Caltech sur risques pour Bitcoin. Caltech signale ordinateurs quantiques plus proches que prévu.",
-      "categorie": "crypto",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-04-01T07:20:32.482Z",
-      "donnees": {
-        "symbole": "GOOGL",
-        "nom": "Alphabet",
-        "prix": 287.56,
-        "variation": 5.14
-      }
-    },
-    {
-      "id": "alert-2026-04-01-010",
-      "titre": "Ventes automobiles France : +12,86% en mars, électrification accélérée",
-      "texte": "Ventes de voitures neuves en France bonissent de 12,86% en mars. Gouvernement accélère électrification face à flambée des coûts carburant ; investissements verts en hausse.",
-      "categorie": "marches",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-04-01T07:20:32.482Z",
-      "donnees": {
-        "symbole": "TSLA",
-        "nom": "Tesla",
-        "prix": 371.75,
-        "variation": 4.64
-      }
+      "horodatage": "2026-04-01T19:01:13.440Z",
+      "donnees": {}
     }
   ],
   "stats": {
-    "total": 10,
-    "urgent": 0,
-    "attention": 4,
-    "info": 6
+    "total": 7,
+    "urgent": 3,
+    "attention": 3,
+    "info": 1
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
