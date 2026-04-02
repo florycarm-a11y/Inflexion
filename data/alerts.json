@@ -1,91 +1,114 @@
 {
-  "updated": "2026-04-01T19:01:13.440Z",
+  "updated": "2026-04-02T18:57:39.511Z",
   "alertes": [
     {
-      "id": "alert-2026-04-01-001",
-      "titre": "GOOGL : +3,05% à $296,33, rebond isolé dans contexte Fear Index extrême",
-      "texte": "Alphabet gagne 3,05% tandis que Fear & Greed Index s'effondre à 8 (Extreme Fear). Rebond technique sur classe action (+1,09% régime) contredit par sentiment macro détérioré. Drawdown obligataire record 68 mois signale fuite vers valeurs défensives.",
-      "categorie": "marches",
-      "severite": "attention",
-      "impact": "neutre",
-      "horodatage": "2026-04-01T19:01:13.440Z",
+      "id": "alert-2026-04-02-001",
+      "titre": "Pétrole (USO) : +11,15% à 137,93 $, WTI dépasse Brent pour la première fois depuis 2022",
+      "texte": "Escalade Iran-États-Unis provoque envolée des prix énergétiques. WTI surperforme Brent sur craintes de prolongation du conflit et perturbations d'approvisionnement (40% capacité export russe offline, détroit d'Ormuz menacé). Choc pétrolier répercuté sur spreads souverains français (taux les plus élevés depuis 15 ans).",
+      "categorie": "matieres_premieres",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-04-02T18:57:39.511Z",
       "donnees": {
-        "symbole": "GOOGL",
-        "nom": "Alphabet",
-        "prix": 296.33,
-        "variation": 3.05
+        "symbole": "SOL",
+        "nom": "Solana",
+        "prix": 78.86,
+        "variation_24h": -6.12
       }
     },
     {
-      "id": "alert-2026-04-01-002",
-      "titre": "Drift Protocol (Solana) : exploit $200-270M, gels de dépôts immédiats",
-      "texte": "Plateforme trading DeFi Solana Drift subit exploit de $200-270M en avril 2026. Utilisateurs sommés de suspendre dépôts. Première crise sécurité majeure post-régulation crypto, déclenche scrutin CFTC et Treasury sur supervision.",
+      "id": "alert-2026-04-02-002",
+      "titre": "Bitcoin : sous 68 000 $, risque de crash vers 60 000 $ (Fear & Greed Index à 12)",
+      "texte": "Régime risk-off généralisé (consensus 81%) entraîne crypto en contraction (-3,48% classe d'actifs). Bitcoin chute sous 68 000 $ avec probabilité élevée de test 60 000 $. Fear & Greed Index à 12 (Extreme Fear) signale capitulation potentielle.",
       "categorie": "crypto",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-04-01T19:01:13.440Z",
+      "horodatage": "2026-04-02T18:57:39.511Z",
       "donnees": {
-        "score": 8,
-        "label": "Extreme Fear",
-        "variation_7j": -6
+        "symbole": "GLD",
+        "nom": "Or (ETF)",
+        "prix": 428.65,
+        "variation": -2.09
       }
     },
     {
-      "id": "alert-2026-04-01-003",
-      "titre": "Iran annonce vague d'attaques contre Israël et bases US Golfe",
-      "texte": "Téhéran déclare offensive imminente contre Israël et installations américaines dans le Golfe Persique, avant discours Trump attendu. Escalade directe risque disruption Hormuz et choc énergétique global. Saxo Bank signale hausse record énergies.",
-      "categorie": "geopolitique",
-      "severite": "urgent",
+      "id": "alert-2026-04-02-003",
+      "titre": "Solana (SOL) : -6,12% en 24h à 78,86 $, TVL DeFi en contraction (-3,2%)",
+      "texte": "Solana recule de 6,12% en 24h. ether.fi TVL chute de 9,3% (4,9 Md$). Stress systémique DeFi confirmé par contraction TVL moyenne des protocoles majeurs (-3,2% en 24h). Pression liquidités sur écosystème crypto.",
+      "categorie": "crypto",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-01T19:01:13.440Z",
-      "donnees": {}
+      "horodatage": "2026-04-02T18:57:39.511Z",
+      "donnees": {
+        "symbole": "USO",
+        "nom": "Pétrole (ETF)",
+        "prix": 137.93,
+        "variation": 11.15
+      }
     },
     {
-      "id": "alert-2026-04-01-004",
-      "titre": "Trump menace sortie OTAN, conditionne aide Ukraine à coalition Hormuz",
-      "texte": "Président US froissé par attitude alliés Iran, menace retrait OTAN. Lie aide militaire Ukraine à participation européenne coalition Hormuz dirigée Washington. Rupture alliance transatlantique crée risque géopolitique systémique.",
-      "categorie": "geopolitique",
-      "severite": "urgent",
+      "id": "alert-2026-04-02-004",
+      "titre": "Tesla (TSLA) : -5,55% à 360,11 $, tech recule dans régime risk-off",
+      "texte": "Tesla perd 5,55% dans contexte de divergence commodities/tech (-4,4pp spread). Classe actions en baisse (-1,04%), tech survendue face à hausse pétrole et tensions géopolitiques. Indice EU recule de 0,77%.",
+      "categorie": "marches",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-01T19:01:13.440Z",
-      "donnees": {}
+      "horodatage": "2026-04-02T18:57:39.511Z",
+      "donnees": {
+        "symbole": "TSLA",
+        "nom": "Tesla",
+        "prix": 360.11,
+        "variation": -5.55
+      }
     },
     {
-      "id": "alert-2026-04-01-005",
-      "titre": "Pétrole : volatilité extrême, -2% sur signaux de-escalade vs hausse record",
-      "texte": "Brut recule 2% sur déclaration Trump sortie Iran 'rapide', mais Saxo Bank signale hausse record énergies sur disruptions Hormuz. Inventaires US en hausse pèsent. Benchmark Dubaï sous pression, route commerce Russie exposée.",
+      "id": "alert-2026-04-02-005",
+      "titre": "Or (GLD) : -2,09% à 428,65 $, refuge baissier malgré tensions géopolitiques",
+      "texte": "Or recule de 2,09% malgré escalade Iran-États-Unis, signalant liquidations de portefeuille dans régime risk-off. Pétrole surperforme or comme couverture inflation, divergence atypique.",
       "categorie": "matieres_premieres",
-      "severite": "attention",
-      "impact": "neutre",
-      "horodatage": "2026-04-01T19:01:13.440Z",
-      "donnees": {}
-    },
-    {
-      "id": "alert-2026-04-01-006",
-      "titre": "Malware NoVoice : 2,3M appareils Android infectés via Google Play",
-      "texte": "Campagne malware NoVoice infecte 2,3M appareils sur Google Play Store. Faille sécurité majeure dans écosystème mobile, parallèle aux 8000 clonages outil Anthropic malgré takedowns. Risques cybersécurité secteur tech en hausse.",
-      "categorie": "ai_tech",
-      "severite": "attention",
+      "severite": "info",
       "impact": "baissier",
-      "horodatage": "2026-04-01T19:01:13.440Z",
-      "donnees": {}
+      "horodatage": "2026-04-02T18:57:39.511Z",
+      "donnees": {
+        "score": 12,
+        "label": "Extreme Fear",
+        "variation_7j": 2
+      }
     },
     {
-      "id": "alert-2026-04-01-007",
-      "titre": "OpenAI lève $122B, plus gros financement IA, mandat 'construire sans limites'",
-      "texte": "OpenAI sécurise $122B pour 'construire les choses' sans contraintes externes. Plus gros financement IA historique. Signale confiance investisseurs malgré contexte macro dégradé et risques géopolitiques aigus.",
+      "id": "alert-2026-04-02-006",
+      "titre": "Régime risk-off généralisé : consensus 81%, amplitude volatilité 2,48%",
+      "texte": "Détection d'un régime risk-off systémique avec consensus élevé (81%). Divergence majeure par classe : ETF +1,69%, actions -1,04%, crypto -3,48%, indices EU -0,77%. Géopolitique (Iran) et macro (emploi US) dominent l'agenda.",
+      "categorie": "macro",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-04-02T18:57:39.511Z",
+      "donnees": {
+        "protocole": "ether.fi Stake",
+        "tvl_b": 4.9,
+        "change_1d": -9.3,
+        "categorie": "Liquid Restaking"
+      }
+    },
+    {
+      "id": "alert-2026-04-02-007",
+      "titre": "OpenAI lève 122 milliards de dollars, signal haussier tech contrebalancé par risk-off",
+      "texte": "OpenAI sécurise 122 Md$ de financement (2 avril 2026), signal majeur de confiance en IA. Cependant, impact limité par régime risk-off généralisé et préoccupations sur fiabilité des modèles (Copilot Microsoft, malware Claude).",
       "categorie": "ai_tech",
       "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-04-01T19:01:13.440Z",
-      "donnees": {}
+      "horodatage": "2026-04-02T18:57:39.511Z",
+      "donnees": {
+        "avg_change_1d": -3.2,
+        "nb_protocoles": 12
+      }
     }
   ],
   "stats": {
     "total": 7,
     "urgent": 3,
-    "attention": 3,
-    "info": 1
+    "attention": 2,
+    "info": 2
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"

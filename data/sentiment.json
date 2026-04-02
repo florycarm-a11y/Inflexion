@@ -1,78 +1,69 @@
 {
-  "updated": "2026-04-01T19:01:13.439Z",
-  "date": "2026-04-01",
+  "updated": "2026-04-02T18:57:39.511Z",
+  "date": "2026-04-02",
   "global": {
-    "score": -0.21,
-    "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.21), dominé par la rubrique geopolitique (baissier)."
+    "score": -0.18,
+    "tendance": "mixte",
+    "resume": "Le sentiment global est mixte (-0.18), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.75,
+      "score": -0.82,
       "confidence": 0.92,
       "tendance": "baissier",
-      "resume": "Escalade majeure au Moyen-Orient avec annonce iranienne d'attaques contre Israël et bases américaines. Tensions transatlantiques aigues : Trump menace de sortir de l'Otan et conditionne l'aide Ukraine à une coalition Hormuz dirigée par les États-Unis.",
+      "resume": "Escalade majeure du conflit Iran-États-Unis avec avancées militaires israéliennes, fermeture du détroit d'Ormuz et tensions NATO. Instabilité géopolitique généralisée impactant les marchés énergétiques et les spreads de crédit souverain français.",
       "signaux_cles": [
-        "Iran annonce vague d'attaques contre Israël et bases US dans le Golfe",
-        "Trump menace de sortir de l'Otan, froissé par attitude des alliés",
-        "Négociations Ukraine-USA en cours pour cessez-le-feu Pâques, mais conditionnalités US renforcées"
+        "Quarantaine de pays appellent à la réouverture du détroit d'Ormuz (2 avril 2026)",
+        "Trump envoie des missiles en Iran et limoge la ministre de la Justice Pam Bondi",
+        "France s'endette aux taux les plus élevés depuis 15 ans (choc pétrolier)"
       ]
     },
     "marches": {
-      "score": -0.15,
+      "score": -0.35,
       "confidence": 0.68,
       "tendance": "mixte",
-      "resume": "Signaux contradictoires : rebond boursier tempéré par ajustements saisonniers, ventes au détail en février affaiblies. Secteurs défensifs (obligations) en drawdown record 68 mois. Tensions inflationnistes liées au conflit Moyen-Orient sur chimie et plastique.",
+      "resume": "Divergence marquée : levée de fonds massive d'OpenAI (122 Md$) contrebalancée par faiblesse du marché du travail américain et volatilité sectorielle. Pétrole surperforme (+11,15% USO) sur tensions géopolitiques, tech recule.",
       "signaux_cles": [
-        "Drawdown obligataire record : 68 mois consécutifs de baisse",
-        "Ventes au détail février plongées, rebond masqué par ajustements saisonniers",
-        "Emploi intérimaire : -100 000 postes en 3 ans, concurrence auto-entrepreneuriat"
+        "OpenAI lève 122 milliards de dollars (2 avril 2026)",
+        "Rapport emploi mars attendu vendredi avec attentes modérées",
+        "WTI dépasse Brent pour la première fois depuis 2022 (Trump vs Iran)"
       ]
     },
     "crypto": {
-      "score": -0.55,
+      "score": -0.71,
       "confidence": 0.85,
       "tendance": "baissier",
-      "resume": "Crise de sécurité majeure : exploit Drift Protocol (Solana) de $200-270M, première semaine d'avril. Régulation accélérée (CFTC, Treasury GENIUS Act, stablecoins). Risques quantiques émergents sur Bitcoin.",
+      "resume": "Bitcoin chute sous 68 000 $ avec risque de crash vers 60 000 $. Solana -6,12% en 24h, TVL DeFi en contraction (-3,2% protocoles majeurs). Seuls signaux positifs : adoption institutionnelle (Coinbase trust charter, tokenisation France) insuffisante pour compenser la pression.",
       "signaux_cles": [
-        "Drift Protocol exploit : $200-270M en pertes potentielles, dépôts gelés",
-        "Treasury GENIUS Act : proposition 87 pages pour supervision états, stablecoins sous contrôle fédéral",
-        "Genius Group liquide tous ses Bitcoin pour rembourser dettes, signale stress liquidité secteur"
+        "Bitcoin sous 68 000 $ avec risque baissier vers 60 000 $",
+        "Solana (SOL) -6,12% en 24h à 78,86 $",
+        "ether.fi TVL -9,3% en 24h (4,9 Md$), Fear & Greed Index à 12 (Extreme Fear)"
       ]
     },
     "matieres_premieres": {
-      "score": 0.25,
-      "confidence": 0.72,
-      "tendance": "neutre",
-      "resume": "Volatilité pétrole extrême : baisse 2% sur signaux de-escalade Trump vs hausse record Saxo Bank sur disruptions Hormuz. Inventaires US en hausse pèsent sur prix. Énergies renouvelables soutenues (hydrogène vert UE $7B).",
+      "score": 0.68,
+      "confidence": 0.89,
+      "tendance": "haussier",
+      "resume": "Pétrole en hausse majeure (+11,15% USO) sur craintes de prolongation du conflit Iran et perturbations d'approvisionnement. WTI dépasse Brent. Chaînes d'approvisionnement énergétiques mondiales sous tension (carburant aviation UK, capacité export russe).",
       "signaux_cles": [
-        "Pétrole -2% sur déclaration Trump sortie Iran 'rapide', mais Saxo Bank signale hausse record énergies",
-        "Disruptions Hormuz : benchmark Dubaï sous pression, route commerce Russie exposée",
-        "UE approuve $7B aide verte hydrogène Italie, contrepoids énergies fossiles"
+        "USO +11,15% à 137,93 $ (WTI > Brent, première fois depuis 2022)",
+        "40% de la capacité d'export pétrolier russe en Baltique hors ligne",
+        "Carburant aviation UK en risque de pénurie (Iran War Maritime Intelligence)"
       ]
     },
     "ai_tech": {
-      "score": 0.45,
-      "confidence": 0.65,
-      "tendance": "haussier",
-      "resume": "Dynamique d'investissement robuste : OpenAI lève $122B pour 'construire', Cognichip $60M pour IA-design chips. Risques de sécurité identifiés (malware NoVoice 2.3M appareils, clonage outil Anthropic 8000x). Demande spatiale croissante.",
+      "score": 0.42,
+      "confidence": 0.62,
+      "tendance": "neutre",
+      "resume": "Google relance la course IA open-source avec Gemma 4 (Apache 2.0), soutien réglementaire Trump pour marchés de prédiction. Mais préoccupations sur fiabilité (Copilot Microsoft, malware Claude), et consommation énergétique massive des data centers.",
       "signaux_cles": [
-        "OpenAI lève $122B, plus gros financement IA, mandate 'construire sans contraintes'",
-        "Malware NoVoice infecte 2.3M appareils Android Google Play, faille sécurité majeure",
-        "Outil Anthropic cloné 8000 fois malgré takedowns, risque IP et sécurité"
+        "Google Gemma 4 disponible open-source avec Apache 2.0 (2 avril 2026)",
+        "OpenAI acquiert TBPN, Sakana AI lance 'Ultra Deep Research'",
+        "Google finance data center géant alimenté par centrale gaz (consommation énergétique critique)"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-02-14",
-      "global": -0.17,
-      "geopolitique": -0.35,
-      "marches": -0.15,
-      "crypto": 0.35,
-      "matieres_premieres": -0.35,
-      "ai_tech": -0.35
-    },
     {
       "date": "2026-02-15",
       "global": -0.05,
@@ -333,6 +324,15 @@
       "crypto": -0.55,
       "matieres_premieres": 0.25,
       "ai_tech": 0.45
+    },
+    {
+      "date": "2026-04-02",
+      "global": -0.18,
+      "geopolitique": -0.82,
+      "marches": -0.35,
+      "crypto": -0.71,
+      "matieres_premieres": 0.68,
+      "ai_tech": 0.42
     }
   ],
   "model": "claude-haiku-4-5-20251001",
