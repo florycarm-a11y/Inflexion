@@ -114,7 +114,7 @@ header.innerHTML=
 '<div style="max-width:80rem;margin:0 auto;padding:0 1rem">'+
 '<div style="display:flex;align-items:center;justify-content:space-between;height:4rem">'+
 '<a href="index.html" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none">'+
-'<img src="logo-header.png" alt="Inflexion" id="nav-logo" style="height:40px;width:auto;filter:brightness(10) saturate(0);transition:filter .3s ease"/></a>'+
+'<img src="logo-header.png" alt="Inflexion" id="nav-logo" style="height:48px;width:auto;filter:brightness(10) saturate(0);transition:filter .3s ease"/></a>'+
 '<nav style="display:none" class="md-show" id="desktop-nav-items">'+megaHTML+
 '<a href="premium.html" class="ns-btn-cta" style="margin-left:0.5rem;padding:0.5rem 1rem;background:#006650;color:#fff;font-weight:600;font-size:0.875rem;border-radius:0.5rem;transition:background .2s;text-decoration:none">R\u00e9server un diagnostic</a>'+
 '</nav>'+
