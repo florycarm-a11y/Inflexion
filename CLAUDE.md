@@ -153,8 +153,9 @@ GitHub Actions (cron 2x/jour : 06h + 18h UTC)
 - **Gamma API** : DNS bypass via DoH (OpenDNS bloqué), champs camelCase, outcomePrices en JSON string
 - **Backtest** : 48 événements historiques, win rate 42%, P&L +4414% (avec intel)
 - **Dashboard** : `bot/dashboard.html` (standalone, auto-refresh 60s, design Inflexion)
-- **Commandes** : `python bot/main.py --mock`, `--local`, `--backtest`, `--compare`, `--live`
-- **87 tests** : `python -m pytest bot/test_bot.py` (classify_event, filtrage, matching, sizing, dedup)
+- **Commandes** : `python bot/main.py --mock`, `--local`, `--backtest`, `--compare`, `--watch`, `--live`
+- **Watch mode** : `--watch --local --interval 5` (scan continu, alerte nouveaux signaux, Ctrl+C pour arrêter)
+- **95 tests** : `python -m pytest bot/test_bot.py` (classify_event, filtrage, matching, sizing, dedup, anchoring, horizon)
 
 ## 7. APIs (15)
 

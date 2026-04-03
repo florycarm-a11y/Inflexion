@@ -521,3 +521,158 @@ class TestGenerateSignals:
                               {"token_id": "t2", "outcome": "No", "price": 0.90}])
         signals = generate_signals([mm], min_edge_pct=5.0)
         assert len(signals) >= 1
+
+
+# ═══════════════════════════════════════════════════════════════════
+#  8. Favori électoral — anchoring au consensus marché
+# ═══════════════════════════════════════════════════════════════════
+
+class TestElectionFavoriteAnchoring:
+    def test_favorite_gets_boosted(self):
+        """Quand le marché price > 65%, la prob doit être rehaussée vers le consensus."""
+        z = _zone(scores=[4.0]*8, composite=4.0, opp=[4.0]*8)
+        mm = _matched(
+            "Will Modi win India's general election in 2024?", zone=z,
+            tokens=[{"token_id": "t1", "outcome": "Yes", "price": 0.85},
+                    {"token_id": "t2", "outcome": "No", "price": 0.15}],
+            end_date="2024-06-30",
+        )
+        prob, _, etype, _, _, _ = estimate_probability(mm, reference_date="2024-01-01")
+        assert etype == EventType.ELECTION
+        # Sans anchoring, base_rate 45% × mult ~1.0 → prob ~22%
+        # Avec anchoring, annual_prob rehaussée → prob finale ~44% (horizon 0.5 an)
+        # L'important : prob bien plus haute qu'un modèle pur (~22%)
+        assert prob > 0.35
+
+    def test_non_favorite_not_boosted(self):
+        """Quand le marché price < 65%, pas d'anchoring."""
+        z = _zone(scores=[4.0]*8, composite=4.0, opp=[4.0]*8)
+        mm = _matched(
+            "Will the opposition win the election?", zone=z,
+            tokens=[{"token_id": "t1", "outcome": "Yes", "price": 0.30},
+                    {"token_id": "t2", "outcome": "No", "price": 0.70}],
+            end_date="2025-06-30",
+        )
+        prob, _, etype, _, _, _ = estimate_probability(mm, reference_date="2025-01-01")
+        assert etype == EventType.ELECTION
+        # Prob doit rester proche du modèle SEMPLICE, pas être tirée vers 30%
+        assert prob < 0.60
+
+    def test_non_election_not_anchored(self):
+        """L'anchoring ne s'applique qu'aux ELECTION, pas aux autres types."""
+        z = _zone(scores=[4.0]*8, composite=4.0)
+        mm = _matched(
+            "Will Russia capture Donbas?", zone=z,
+            tokens=[{"token_id": "t1", "outcome": "Yes", "price": 0.85},
+                    {"token_id": "t2", "outcome": "No", "price": 0.15}],
+            end_date="2025-12-31",
+        )
+        prob, _, etype, _, _, _ = estimate_probability(mm)
+        assert etype == EventType.TERRITORIAL
+        # Pas d'anchoring → prob déterminée uniquement par SEMPLICE
+        assert prob < 0.60
+
+
+# ═══════════════════════════════════════════════════════════════════
+#  9. Horizon court — plancher 0.25 an
+# ═══════════════════════════════════════════════════════════════════
+
+class TestShortHorizonFloor:
+    def test_short_horizon_not_diluted(self):
+        """Un marché à 1 mois ne doit pas donner une prob quasi-nulle."""
+        z = _zone(scores=[5.5]*8, composite=5.5)
+        mm = _matched(
+            "Will the US launch a military strike on Iran in January 2025?", zone=z,
+            tokens=[{"token_id": "t1", "outcome": "Yes", "price": 0.15},
+                    {"token_id": "t2", "outcome": "No", "price": 0.85}],
+            end_date="2025-01-31",
+        )
+        prob, _, etype, _, _, _ = estimate_probability(mm, reference_date="2025-01-01")
+        assert etype == EventType.MILITARY_STRIKE
+        # Avec le plancher à 0.25 an, la prob ne doit pas descendre sous 3%
+        assert prob >= 0.03
+
+    def test_regime_stability_no_floor(self):
+        """REGIME_STABILITY n'a pas de plancher d'horizon (probabilité décroissante)."""
+        z = _zone(scores=[3.0]*8, composite=3.0, opp=[5.0]*8)
+        mm = _matched(
+            "Will Erdogan still be president after 1 month?", zone=z,
+            tokens=[{"token_id": "t1", "outcome": "Yes", "price": 0.95},
+                    {"token_id": "t2", "outcome": "No", "price": 0.05}],
+            end_date="2025-02-01",
+        )
+        prob, _, etype, _, _, _ = estimate_probability(mm, reference_date="2025-01-01")
+        assert etype == EventType.REGIME_STABILITY
+        # Pour regime_stability, pas de floor → prob reste très haute sur horizon court
+        assert prob > 0.80
+
+    def test_long_horizon_unaffected(self):
+        """Un marché à 1 an ne doit pas être affecté par le plancher."""
+        z = _zone(scores=[5.0]*8, composite=5.0)
+        mm_short = _matched(
+            "Will the US launch a military strike in 2025?", zone=z,
+            tokens=[{"token_id": "t1", "outcome": "Yes", "price": 0.15},
+                    {"token_id": "t2", "outcome": "No", "price": 0.85}],
+            end_date="2025-12-31",
+        )
+        prob_long, *_ = estimate_probability(mm_short, reference_date="2025-01-01")
+        # 1 an > 0.25 an → pas de floor appliqué, prob réaliste
+        assert 0.05 < prob_long < 0.60
+
+
+# ═══════════════════════════════════════════════════════════════════
+#  10. save_backtest_results — sérialisation JSON
+# ═══════════════════════════════════════════════════════════════════
+
+class TestSaveBacktestResults:
+    def _make_result(self, event_id="test-event", outcome=True,
+                     would_bet="BUY_YES", pnl=233.0):
+        from backtester import BacktestResult, BacktestEvent
+        event = BacktestEvent(
+            id=event_id, question="Test?", zone_id="test",
+            entry_date="2024-01-01", end_date="2024-12-31",
+            outcome=outcome, poly_price_at_open=0.30,
+        )
+        correct = (would_bet == "BUY_YES" and outcome) or \
+                  (would_bet == "BUY_NO" and not outcome) or \
+                  would_bet == "SKIP"
+        return BacktestResult(
+            event=event, semplice_prob=0.55,
+            event_type=EventType.CONFLICT, base_rate=0.06,
+            multiplier=1.5, edge=25.0, would_have_bet=would_bet,
+            correct=correct, pnl_pct=pnl, reasoning="test",
+        )
+
+    def test_creates_json_file(self, tmp_path, monkeypatch):
+        """save_backtest_results crée un fichier JSON valide."""
+        import json
+        import backtester
+
+        # Rediriger la sortie vers tmp_path
+        monkeypatch.setattr(backtester, "Path",
+                            lambda *a: tmp_path / a[-1] if a else tmp_path)
+
+        from backtester import save_backtest_results
+        result = self._make_result()
+
+        out = save_backtest_results([result])
+        assert out.exists()
+
+        data = json.loads(out.read_text())
+        assert "summary" in data
+        assert "results" in data
+        assert data["summary"]["events_tested"] == 1
+        assert data["summary"]["win_rate"] == 100.0
+        assert len(data["results"]) == 1
+        assert data["results"][0]["event_id"] == "test-event"
+
+    def test_skip_not_counted_in_bets(self):
+        """Les SKIP ne comptent pas dans les métriques de trading."""
+        import json
+        from backtester import save_backtest_results
+
+        result = self._make_result(would_bet="SKIP", pnl=0.0)
+        out = save_backtest_results([result])
+        data = json.loads(out.read_text())
+        assert data["summary"]["signals_generated"] == 0
+        assert data["summary"]["skips"] == 1

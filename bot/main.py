@@ -16,6 +16,8 @@ Commandes :
   python main.py --compare                 # Comparer backtest avec/sans intelligence
   python main.py --mock --portfolio        # Voir le portfolio
   python main.py --local                   # SEMPLICE local + Polymarket réel
+  python main.py --watch --local           # Monitoring continu (scan toutes les 15 min)
+  python main.py --watch --interval 5      # Scan toutes les 5 minutes
   python main.py --live --max-position 25  # Trading réel (attention !)
 """
 
@@ -250,6 +252,91 @@ def run_backtest_cmd(min_edge: float = 5.0):
     logger.info("Résultats sauvegardés → %s", out)
 
 
+async def run_watch(cfg: Config, local: bool = False, interval_min: int = 15):
+    """Mode monitoring continu — scan toutes les N minutes, alerte sur nouveaux signaux."""
+    print(BANNER)
+    logger.info("Mode WATCH — scan toutes les %d minutes (Ctrl+C pour arrêter)", interval_min)
+
+    seen_signals: set[str] = set()  # condition_id des signaux déjà vus
+    cycle = 0
+
+    while True:
+        cycle += 1
+        now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+        logger.info("── Cycle %d — %s ──", cycle, now)
+
+        try:
+            # 1. Charger SEMPLICE
+            if local:
+                zones = load_from_local("/Users/floryanleblanc/Documents/GitHub/Inflexion")
+            else:
+                zones = await load_from_remote(cfg.inflexion_url)
+
+            # 2. Charger insights
+            insights = await load_insights(cfg.inflexion_url) if not local else []
+            insight_boosts = insights_to_boosts(insights, zones)
+
+            # 3. Intelligence Inflexion
+            if local:
+                history_data = load_history_local("/Users/floryanleblanc/Documents/GitHub/Inflexion")
+                signals_path = Path("/Users/floryanleblanc/Documents/GitHub/Inflexion/data/signals.json")
+                signals_full = {}
+                if signals_path.exists():
+                    import json
+                    signals_full = json.loads(signals_path.read_text(encoding="utf-8"))
+            else:
+                history_data = await load_history_remote(cfg.inflexion_url)
+                signals_full = await load_signals_full(cfg.inflexion_url)
+
+            intel_report = build_intel_report(zones, history_data, signals_full)
+
+            # 4. Scanner Polymarket
+            markets = await fetch_markets(cfg)
+            logger.info("  %d marchés scannés", len(markets))
+
+            # 5. Matching
+            ai_matched = []
+            if cfg.anthropic_key:
+                from ai_matcher import ai_match_markets
+                ai_matched = await ai_match_markets(markets, zones, cfg)
+            ai_cids = {mm.market.condition_id for mm in ai_matched}
+            remaining = [m for m in markets if m.condition_id not in ai_cids]
+            kw_matched = match_markets_to_zones(remaining, zones)
+            matched = ai_matched + kw_matched
+
+            # 6. Signaux
+            trading_signals = generate_signals(
+                matched, min_edge_pct=cfg.min_edge_pct,
+                signals_from_insights=insight_boosts,
+                intel_report=intel_report,
+            )
+            trading_signals = deduplicate_signals(trading_signals, max_per_group=3)
+
+            # 7. Détecter les NOUVEAUX signaux
+            new_signals = [
+                s for s in trading_signals
+                if s.market.market.condition_id not in seen_signals
+            ]
+
+            if new_signals:
+                logger.info("  🔔 %d NOUVEAUX signaux détectés !", len(new_signals))
+                for s in new_signals:
+                    emoji = "📈" if s.direction.value == "BUY_YES" else "📉"
+                    logger.info("    %s %s | %s | Edge=%.0f%% | P=%.0f%% vs Poly=%.0f%%",
+                                emoji, s.direction.value,
+                                s.market.market.question[:50],
+                                s.edge, s.semplice_prob * 100, s.poly_price * 100)
+                    seen_signals.add(s.market.market.condition_id)
+            else:
+                logger.info("  Pas de nouveau signal (total suivis: %d)", len(seen_signals))
+
+        except Exception as e:
+            logger.error("Erreur cycle %d: %s", cycle, e)
+
+        logger.info("  Prochain scan dans %d minutes...", interval_min)
+        await asyncio.sleep(interval_min * 60)
+
+
 def show_portfolio_cmd():
     """Affiche le portfolio actuel."""
     print(format_portfolio())
@@ -264,6 +351,8 @@ def main():
     parser.add_argument("--backtest", action="store_true", help="Backtest sur événements historiques")
     parser.add_argument("--compare", action="store_true", help="Comparer backtest avec/sans intelligence")
     parser.add_argument("--portfolio", action="store_true", help="Afficher le portfolio")
+    parser.add_argument("--watch", action="store_true", help="Mode monitoring continu")
+    parser.add_argument("--interval", type=int, default=15, help="Intervalle de scan en minutes (défaut: 15)")
     parser.add_argument("--min-edge", type=float, help="Edge minimum en %% (défaut: 8)")
     parser.add_argument("--max-position", type=float, help="Taille max par position en USD")
     parser.add_argument("--max-exposure", type=float, help="Exposition totale max en USD")
@@ -286,6 +375,8 @@ def main():
         run_backtest_cmd(min_edge=cfg.min_edge_pct)
     elif args.portfolio:
         show_portfolio_cmd()
+    elif args.watch:
+        asyncio.run(run_watch(cfg, local=args.local, interval_min=args.interval))
     else:
         asyncio.run(run(cfg, local=args.local, mock=args.mock))
 
