@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inflexion × Polymarket — Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --emerald: #006650;
+            --emerald-hover: #06402A;
+            --emerald-light: #33B894;
+            --bronze: #C8955A;
+            --bg: #FFFFFF;
+            --bg-alt: #F7F8FA;
+            --text: #1A1F2E;
+            --text-secondary: #5A6178;
+            --border: #E2E5EB;
+            --green: #16a34a;
+            --red: #dc2626;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-alt);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Bronze top bar */
+        .bronze-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--bronze);
+            z-index: 100;
+        }
+
+        /* Header */
+        .header {
+            background: var(--emerald);
+            padding: 2rem 1.5rem 1.5rem;
+            margin-top: 3px;
+        }
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .header h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #fff;
+            line-height: 1.15;
+        }
+        .header h1 span {
+            color: var(--bronze);
+        }
+        .header-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--emerald-light);
+        }
+
+        /* Main */
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        /* Summary cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .summary-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+        .summary-card .label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+        .summary-card .value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .summary-card .value.positive { color: var(--green); }
+        .summary-card .value.negative { color: var(--red); }
+
+        /* Section cards */
+        .card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        .card-header {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-header h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+        .card-header .badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            background: var(--bg-alt);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+        .card-body {
+            padding: 1.25rem;
+        }
+
+        /* Tables */
+        .table-wrap {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        th {
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            padding: 0.6rem 0.75rem;
+            border-bottom: 2px solid var(--border);
+            white-space: nowrap;
+        }
+        td {
+            padding: 0.6rem 0.75rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover td {
+            background: var(--bg-alt);
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+        .direction-yes {
+            color: var(--green);
+            font-weight: 600;
+        }
+        .direction-no {
+            color: var(--red);
+            font-weight: 600;
+        }
+        .zone-tag {
+            display: inline-block;
+            background: var(--bg-alt);
+            color: var(--emerald);
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+        }
+        .status-open {
+            color: var(--emerald-light);
+            font-weight: 600;
+        }
+        .status-closed {
+            color: var(--text-secondary);
+        }
+        .pnl-positive { color: var(--green); font-weight: 600; }
+        .pnl-negative { color: var(--red); font-weight: 600; }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-secondary);
+        }
+        .empty-state .icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+            opacity: 0.4;
+        }
+        .empty-state p {
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+            background: var(--bg-alt);
+            margin-top: 2rem;
+        }
+        .footer a {
+            color: var(--emerald);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.15rem; }
+            .summary-grid { grid-template-columns: repeat(2, 1fr); }
+            table { font-size: 0.78rem; }
+            td, th { padding: 0.5rem; }
+            .hide-mobile { display: none; }
+        }
+        @media (max-width: 480px) {
+            .summary-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bronze-bar"></div>
+
+<header class="header">
+    <div class="header-inner">
+        <h1>Inflexion <span>&times;</span> Polymarket</h1>
+        <div class="header-meta" id="refresh-meta">Chargement...</div>
+    </div>
+</header>
+
+<main class="main">
+    <!-- Portfolio summary -->
+    <section class="summary-grid" id="summary-grid">
+        <div class="summary-card">
+            <div class="label">Positions actives</div>
+            <div class="value" id="s-count">--</div>
+        </div>
+        <div class="summary-card">
+            <div class="label">Exposition totale</div>
+            <div class="value" id="s-exposure">--</div>
+        </div>
+        <div class="summary-card">
+            <div class="label">P&L r&eacute;alis&eacute;</div>
+            <div class="value" id="s-realized-pnl">--</div>
+        </div>
+        <div class="summary-card">
+            <div class="label">P&L non r&eacute;alis&eacute;</div>
+            <div class="value" id="s-unrealized-pnl">--</div>
+        </div>
+    </section>
+
+    <!-- Active positions -->
+    <section class="card">
+        <div class="card-header">
+            <h2>Positions</h2>
+            <span class="badge" id="pos-badge">--</span>
+        </div>
+        <div class="card-body">
+            <div class="table-wrap" id="positions-container">
+                <div class="empty-state">
+                    <div class="icon">&#9711;</div>
+                    <p>Chargement des positions...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Backtest results -->
+    <section class="card">
+        <div class="card-header">
+            <h2>R&eacute;sultats Backtest</h2>
+            <span class="badge" id="bt-badge">--</span>
+        </div>
+        <div class="card-body">
+            <div id="backtest-summary" style="margin-bottom:1rem;"></div>
+            <div class="table-wrap" id="backtest-container">
+                <div class="empty-state">
+                    <div class="icon">&#9711;</div>
+                    <p>Chargement du backtest...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    Inflexion &mdash; Intelligence financi&egrave;re automatis&eacute;e &mdash;
+    <a href="https://inflexionhub.com/">inflexionhub.com</a>
+    &nbsp;|&nbsp; Auto-refresh 60s
+</footer>
+
+<script>
+(function() {
+    const DATA_BASE = 'data/';
+    const REFRESH_INTERVAL = 60000;
+
+    function fmt(n, decimals) {
+        if (n == null || isNaN(n)) return '--';
+        return Number(n).toFixed(decimals === undefined ? 2 : decimals);
+    }
+
+    function fmtUsd(n) {
+        if (n == null || isNaN(n)) return '--';
+        return '$' + Number(n).toFixed(2);
+    }
+
+    function fmtPct(n) {
+        if (n == null || isNaN(n)) return '--';
+        var s = Number(n).toFixed(1) + '%';
+        return n > 0 ? '+' + s : s;
+    }
+
+    function pnlClass(v) {
+        if (v > 0) return 'pnl-positive';
+        if (v < 0) return 'pnl-negative';
+        return '';
+    }
+
+    function valueClass(v) {
+        if (v > 0) return 'positive';
+        if (v < 0) return 'negative';
+        return '';
+    }
+
+    function emptyState(msg) {
+        return '<div class="empty-state"><div class="icon">&#8709;</div><p>' + msg + '</p></div>';
+    }
+
+    // ── Positions ────────────────────────────────────────────────
+
+    function renderPositions(positions) {
+        var container = document.getElementById('positions-container');
+        var badge = document.getElementById('pos-badge');
+
+        if (!positions || positions.length === 0) {
+            container.innerHTML = emptyState('Aucune position pour le moment. Lancez le bot pour commencer.');
+            badge.textContent = '0';
+            return;
+        }
+
+        var openPositions = positions.filter(function(p) { return p.status === 'open'; });
+        var closedPositions = positions.filter(function(p) { return p.status !== 'open'; });
+
+        badge.textContent = openPositions.length + ' actives / ' + positions.length + ' total';
+
+        // Summary calculations
+        var totalExposure = 0;
+        var realizedPnl = 0;
+        var unrealizedPnl = 0;
+
+        positions.forEach(function(p) {
+            if (p.status === 'open') {
+                totalExposure += (p.size_usd || 0);
+                unrealizedPnl += (p.pnl_usd || 0);
+            } else {
+                realizedPnl += (p.pnl_usd || 0);
+            }
+        });
+
+        document.getElementById('s-count').textContent = openPositions.length;
+        var expEl = document.getElementById('s-exposure');
+        expEl.textContent = fmtUsd(totalExposure);
+
+        var rpEl = document.getElementById('s-realized-pnl');
+        rpEl.textContent = fmtUsd(realizedPnl);
+        rpEl.className = 'value ' + valueClass(realizedPnl);
+
+        var upEl = document.getElementById('s-unrealized-pnl');
+        upEl.textContent = fmtUsd(unrealizedPnl);
+        upEl.className = 'value ' + valueClass(unrealizedPnl);
+
+        // Build table
+        var html = '<table>';
+        html += '<thead><tr>';
+        html += '<th>March&eacute;</th>';
+        html += '<th>Zone</th>';
+        html += '<th>Direction</th>';
+        html += '<th>Entr&eacute;e</th>';
+        html += '<th class="hide-mobile">Sortie</th>';
+        html += '<th>Taille</th>';
+        html += '<th>Edge</th>';
+        html += '<th>P&L</th>';
+        html += '<th>Statut</th>';
+        html += '</tr></thead><tbody>';
+
+        // Show open first, then closed
+        var sorted = openPositions.concat(closedPositions);
+
+        sorted.forEach(function(p) {
+            var dirClass = (p.direction || '').indexOf('YES') >= 0 ? 'direction-yes' : 'direction-no';
+            var dirLabel = (p.direction || '').replace('BUY_', '');
+            var statusClass = p.status === 'open' ? 'status-open' : 'status-closed';
+            var exitPrice = p.exit_price ? fmt(p.exit_price) : '--';
+
+            html += '<tr>';
+            html += '<td style="max-width:280px;">' + (p.question || p.id || '--') + '</td>';
+            html += '<td><span class="zone-tag">' + (p.zone_name || p.zone_id || '--') + '</span></td>';
+            html += '<td class="mono ' + dirClass + '">' + dirLabel + '</td>';
+            html += '<td class="mono">' + fmt(p.entry_price) + '</td>';
+            html += '<td class="mono hide-mobile">' + exitPrice + '</td>';
+            html += '<td class="mono">' + fmtUsd(p.size_usd) + '</td>';
+            html += '<td class="mono">' + fmt(p.edge_at_entry, 1) + '%</td>';
+            html += '<td class="mono ' + pnlClass(p.pnl_usd) + '">' + fmtUsd(p.pnl_usd) + '</td>';
+            html += '<td class="' + statusClass + '">' + (p.status || '--') + '</td>';
+            html += '</tr>';
+        });
+
+        html += '</tbody></table>';
+        container.innerHTML = html;
+    }
+
+    // ── Backtest ─────────────────────────────────────────────────
+
+    function renderBacktest(data) {
+        var container = document.getElementById('backtest-container');
+        var badge = document.getElementById('bt-badge');
+        var summaryEl = document.getElementById('backtest-summary');
+
+        if (!data || !data.results || data.results.length === 0) {
+            container.innerHTML = emptyState('Pas de r&eacute;sultats de backtest. Lancez: python bot/main.py --backtest');
+            badge.textContent = '--';
+            summaryEl.innerHTML = '';
+            return;
+        }
+
+        var results = data.results;
+        var bets = results.filter(function(r) { return r.signal !== 'SKIP'; });
+        var wins = bets.filter(function(r) { return r.correct; });
+        var totalPnl = bets.reduce(function(s, r) { return s + (r.pnl_pct || 0); }, 0);
+        var avgPnl = bets.length ? totalPnl / bets.length : 0;
+        var winRate = bets.length ? (wins.length / bets.length * 100) : 0;
+
+        badge.textContent = results.length + ' events';
+
+        // Summary cards
+        summaryEl.innerHTML =
+            '<div class="summary-grid">' +
+            '<div class="summary-card"><div class="label">Win Rate</div><div class="value">' + fmt(winRate, 0) + '%</div></div>' +
+            '<div class="summary-card"><div class="label">Signaux g&eacute;n&eacute;r&eacute;s</div><div class="value">' + bets.length + ' / ' + results.length + '</div></div>' +
+            '<div class="summary-card"><div class="label">P&L moyen / trade</div><div class="value ' + valueClass(avgPnl) + '">' + fmtPct(avgPnl) + '</div></div>' +
+            '<div class="summary-card"><div class="label">P&L cumul&eacute;</div><div class="value ' + valueClass(totalPnl) + '">' + fmtPct(totalPnl) + '</div></div>' +
+            '</div>';
+
+        // Table
+        var html = '<table>';
+        html += '<thead><tr>';
+        html += '<th>Question</th>';
+        html += '<th>Zone</th>';
+        html += '<th>Type</th>';
+        html += '<th>P(SEMPLICE)</th>';
+        html += '<th>Prix Poly</th>';
+        html += '<th>Edge</th>';
+        html += '<th>Signal</th>';
+        html += '<th>Correct</th>';
+        html += '<th>P&L</th>';
+        html += '</tr></thead><tbody>';
+
+        results.forEach(function(r) {
+            var correctIcon = r.signal === 'SKIP' ? '--' : (r.correct ? '&#10003;' : '&#10007;');
+            var correctClass = r.signal === 'SKIP' ? '' : (r.correct ? 'pnl-positive' : 'pnl-negative');
+            var pnlStr = r.signal === 'SKIP' ? '--' : fmtPct(r.pnl_pct);
+            var pnlCls = r.signal === 'SKIP' ? '' : pnlClass(r.pnl_pct);
+
+            html += '<tr>';
+            html += '<td style="max-width:300px;">' + (r.question || '--') + '</td>';
+            html += '<td><span class="zone-tag">' + (r.zone || '--') + '</span></td>';
+            html += '<td class="mono">' + (r.event_type || '--') + '</td>';
+            html += '<td class="mono">' + fmt(r.semplice_prob) + '</td>';
+            html += '<td class="mono">' + fmt(r.poly_price) + '</td>';
+            html += '<td class="mono">' + fmt(r.edge, 1) + '%</td>';
+            html += '<td class="mono">' + (r.signal || '--') + '</td>';
+            html += '<td class="' + correctClass + '">' + correctIcon + '</td>';
+            html += '<td class="mono ' + pnlCls + '">' + pnlStr + '</td>';
+            html += '</tr>';
+        });
+
+        html += '</tbody></table>';
+        container.innerHTML = html;
+    }
+
+    // ── Data loading ─────────────────────────────────────────────
+
+    function loadData() {
+        var now = new Date();
+        document.getElementById('refresh-meta').textContent =
+            'Mis a jour : ' + now.toLocaleTimeString('fr-FR') + ' — auto-refresh 60s';
+
+        fetch(DATA_BASE + 'positions.json')
+            .then(function(r) { return r.ok ? r.json() : null; })
+            .then(function(data) { renderPositions(data); })
+            .catch(function() {
+                renderPositions(null);
+            });
+
+        fetch(DATA_BASE + 'backtest-results.json')
+            .then(function(r) { return r.ok ? r.json() : null; })
+            .then(function(data) { renderBacktest(data); })
+            .catch(function() {
+                renderBacktest(null);
+            });
+    }
+
+    // Initial load + auto-refresh
+    loadData();
+    setInterval(loadData, REFRESH_INTERVAL);
+})();
+</script>
+
+</body>
+</html>

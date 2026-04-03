@@ -43,6 +43,7 @@ Inflexion/
 ├── data/semplice-zones.geojson  # GeoJSON 10 zones SEMPLICE (Natural Earth 50m)
 ├── data/                   # Fichiers JSON générés par le pipeline
 ├── scripts/                # Pipeline Node.js (fetch, insight, veille, briefing, RAG, tests)
+├── bot/                    # Bot Polymarket × SEMPLICE (Python, Signal Engine v2)
 ├── .github/workflows/      # CI/CD (fetch, briefing, article, sentiment, deploy)
 └── DESIGN-MIGRATION-PROMPT.md  # Spécifications complètes design system
 ```
@@ -145,12 +146,21 @@ GitHub Actions (cron 2x/jour : 06h + 18h UTC)
 - **Briefing** : Claude Sonnet + RAG | **Article** : Haiku quotidien (source : insights filtrés)
 - Sorties : `insights.json`, `signals.json`, `signals-history.json` (30j)
 
-## 6. APIs (15)
+## 6. Bot Polymarket (`bot/`)
+
+- **Python** : Signal Engine v2 (taux de base × mult SEMPLICE × intel × horizon), Kelly/2 sizing
+- **Intelligence** : vélocité SEMPLICE, signatures SIG1-SIG8, watchlist/weak signals, sentiment
+- **Gamma API** : DNS bypass via DoH (OpenDNS bloqué), champs camelCase, outcomePrices en JSON string
+- **Backtest** : 22 événements historiques, mode `--compare` (baseline vs +intel)
+- **Commandes** : `python bot/main.py --mock`, `--local`, `--backtest`, `--compare`, `--live`
+- **Problèmes ouverts** : matching mots-clés faux positifs (besoin Haiku), classify_event incomplet
+
+## 7. APIs (15)
 
 **Avec clé** : Finnhub, GNews, FRED, Alpha Vantage, Messari, Twelve Data, NewsAPI
 **Sans clé** : CoinGecko, Alternative.me, DefiLlama, metals.dev, Etherscan, Mempool.space, ECB Data, World Bank
 
-## 7. Commandes utiles
+## 8. Commandes utiles
 
 ```bash
 npm test                                              # ~188 tests
@@ -159,10 +169,12 @@ node scripts/fetch-data.mjs                           # Pipeline données
 node scripts/insight-filter.mjs                       # Scoring insight (nécessite ANTHROPIC_API_KEY)
 node scripts/veille-continue.mjs                      # Watchlist + signaux faibles
 node scripts/generate-daily-briefing.mjs --dry-run    # Test briefing
-grep -rn '#0B3D1E\|#072A14\|#EDE8DC' *.html styles.css  # Audit anciennes couleurs
+python bot/main.py --mock                             # Bot Polymarket (simulation)
+python bot/main.py --compare                          # Backtest baseline vs intelligence
+python bot/main.py --local                            # Bot avec Polymarket réel
 ```
 
-## 8. Règles importantes
+## 9. Règles importantes
 
 - **Pas de Markdown brut dans le HTML** : utiliser `<strong>`, `<em>` etc.
 - **Pas de conseil en investissement** : disclaimer AMF obligatoire
