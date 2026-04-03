@@ -18,3 +18,12 @@ node_modules/
 
 # Browser save artifacts
 *_files/
+
+# Python
+__pycache__/
+*.pyc
+bot/data/
+bot/.venv/
+
+# Outputs générés
+outputs/

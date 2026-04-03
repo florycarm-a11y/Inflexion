@@ -148,12 +148,13 @@ GitHub Actions (cron 2x/jour : 06h + 18h UTC)
 
 ## 6. Bot Polymarket (`bot/`)
 
-- **Python** : Signal Engine v2 (taux de base × mult SEMPLICE × intel × horizon), Kelly/2 sizing
+- **Python** : Signal Engine v2 (26 types, taux de base calibrés × mult SEMPLICE × intel × horizon), Kelly/2 sizing
 - **Intelligence** : vélocité SEMPLICE, signatures SIG1-SIG8, watchlist/weak signals, sentiment
 - **Gamma API** : DNS bypass via DoH (OpenDNS bloqué), champs camelCase, outcomePrices en JSON string
-- **Backtest** : 22 événements historiques, mode `--compare` (baseline vs +intel)
+- **Backtest** : 48 événements historiques, win rate 42%, P&L +4414% (avec intel)
+- **Dashboard** : `bot/dashboard.html` (standalone, auto-refresh 60s, design Inflexion)
 - **Commandes** : `python bot/main.py --mock`, `--local`, `--backtest`, `--compare`, `--live`
-- **Problèmes ouverts** : matching mots-clés faux positifs (besoin Haiku), classify_event incomplet
+- **87 tests** : `python -m pytest bot/test_bot.py` (classify_event, filtrage, matching, sizing, dedup)
 
 ## 7. APIs (15)
 
