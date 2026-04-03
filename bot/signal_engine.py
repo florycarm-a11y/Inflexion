@@ -434,12 +434,27 @@ def estimate_probability(
     annual_prob = base_rate * mult * intel_mult
     annual_prob = max(0.005, min(0.95, annual_prob))
 
+    # 5b. Ajustement favori électoral : si le marché price > 65%, c'est un
+    # favori clair — on rehausse la probabilité vers le consensus marché
+    # pour éviter les BUY_NO sur des quasi-certitudes (Modi, Sheinbaum).
+    poly_price = market.market.tokens[0]["price"] if market.market.tokens else 0.5
+    if event_type == EventType.ELECTION and poly_price > 0.65:
+        market_anchor = poly_price * 0.6 + annual_prob * 0.4
+        annual_prob = max(annual_prob, market_anchor)
+
     # 6. Ajustement pour l'horizon temporel
     horizon = _time_horizon_years(market.market.end_date, reference_date)
+
+    # Correction horizon court : pour les marchés < 3 mois, la conversion
+    # annuelle→mensuelle dilue excessivement. On applique un plancher de
+    # 0.25 an (3 mois) pour éviter que des événements imminents soient
+    # sous-estimés (ex: frappe militaire dans le mois).
+    effective_horizon = max(horizon, 0.25) if event_type != EventType.REGIME_STABILITY else horizon
+
     if event_type == EventType.REGIME_STABILITY:
         final_prob = annual_prob ** horizon
     else:
-        final_prob = 1 - (1 - annual_prob) ** horizon
+        final_prob = 1 - (1 - annual_prob) ** effective_horizon
 
     final_prob = max(0.01, min(0.98, final_prob))
 
