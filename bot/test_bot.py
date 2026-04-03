@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from signal_engine import (
     classify_event, EventType, _semplice_multiplier, _question_root,
     deduplicate_signals, estimate_probability, generate_signals,
-    Signal, Direction,
+    detect_active_conflicts, Signal, Direction,
 )
 from market_scanner import (
     _is_geopolitical, _kw_matches, _SKIP_PATTERNS,
@@ -676,3 +676,80 @@ class TestSaveBacktestResults:
         data = json.loads(out.read_text())
         assert data["summary"]["signals_generated"] == 0
         assert data["summary"]["skips"] == 1
+
+
+# ═══════════════════════════════════════════════════════════════════
+#  11. Détection de conflit actif
+# ═══════════════════════════════════════════════════════════════════
+
+class TestDetectActiveConflicts:
+    def test_no_conflict_returns_empty(self):
+        """Pas de cluster militaire → pas de multiplicateur."""
+        markets = [
+            _matched("Will Brazil's GDP grow?"),
+            _matched("Will Modi win the election?"),
+        ]
+        assert detect_active_conflicts(markets) == {}
+
+    def test_small_cluster_ignored(self):
+        """< 3 marchés militaires → pas de multiplicateur."""
+        z = _zone("Iran", "iran")
+        markets = [
+            _matched("Will Iran strike Syria?", zone=z),
+            _matched("Will sanctions be lifted?", zone=z),
+        ]
+        assert detect_active_conflicts(markets) == {}
+
+    def test_medium_cluster_detected(self):
+        """3-4 marchés militaires → multiplicateur ×2."""
+        z = _zone("Iran", "iran")
+        markets = [
+            _matched("Will Iran strike Syria?", zone=z),
+            _matched("Military action against Iran ends by April?", zone=z),
+            _matched("Iran drone attack on target?", zone=z),
+        ]
+        result = detect_active_conflicts(markets)
+        assert "iran" in result
+        assert result["iran"] == 2.0
+
+    def test_large_cluster_detected(self):
+        """5+ marchés militaires → multiplicateur ×3."""
+        z = _zone("Iran", "iran")
+        markets = [
+            _matched("Will Iran strike Syria?", zone=z),
+            _matched("Military action ends by April 19?", zone=z),
+            _matched("Military action ends by April 22?", zone=z),
+            _matched("Iran drone attack on target?", zone=z),
+            _matched("Iran missile strike on Ras Tanura?", zone=z),
+        ]
+        result = detect_active_conflicts(markets)
+        assert result["iran"] == 3.0
+
+    def test_major_cluster_detected(self):
+        """8+ marchés militaires → multiplicateur ×5."""
+        z = _zone("Iran", "iran")
+        markets = [_matched(f"Military action ends on April {10+i}?", zone=z) for i in range(8)]
+        result = detect_active_conflicts(markets)
+        assert result["iran"] == 5.0
+
+    def test_conflict_boosts_probability(self):
+        """Le multiplicateur de conflit rehausse la probabilité estimée."""
+        z = _zone("Iran", "iran", scores=[5.0]*8, composite=5.0)
+        mm = _matched("Will Iran strike Syria?", zone=z, end_date="2026-12-31")
+        prob_normal, *_ = estimate_probability(mm, conflict_multiplier=1.0)
+        prob_conflict, *_ = estimate_probability(mm, conflict_multiplier=3.0)
+        assert prob_conflict > prob_normal
+
+    def test_different_zones_independent(self):
+        """Chaque zone a son propre compteur de conflit."""
+        z_iran = _zone("Iran", "iran")
+        z_ukraine = _zone("Ukraine", "ukraine")
+        markets = [
+            _matched("Military action against Iran ends?", zone=z_iran),
+            _matched("Iran strike on target?", zone=z_iran),
+            _matched("Iran missile attack?", zone=z_iran),
+            _matched("Will Brazil's GDP grow?", zone=z_ukraine),
+        ]
+        result = detect_active_conflicts(markets)
+        assert "iran" in result
+        assert "ukraine" not in result

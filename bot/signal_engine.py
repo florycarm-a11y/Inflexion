@@ -369,10 +369,48 @@ def _time_horizon_years(end_date: str, reference_date: str | None = None) -> flo
         return 1.0
 
 
+def detect_active_conflicts(matched_markets: list[MatchedMarket]) -> dict[str, float]:
+    """Détecte les zones en conflit actif via l'analyse des clusters de marchés.
+
+    Si une zone a beaucoup de marchés avec du vocabulaire militaire/conflit,
+    c'est le signe d'une opération en cours. Les taux de base historiques
+    ne sont plus pertinents → on retourne un multiplicateur de conflit.
+
+    Retourne : {zone_id: conflict_multiplier}
+    """
+    _CONFLICT_KW = [
+        "military action", "strike ", "strikes ", "attack", "clash",
+        "ceasefire", "ends by", "ends on", "war ", "invasion",
+        "bomb", "drone", "missile", "escalat", "retaliat",
+        "target ", "shell", "offensive",
+    ]
+
+    zone_hits: dict[str, int] = {}
+    for mm in matched_markets:
+        q = mm.market.question.lower()
+        if any(kw in q for kw in _CONFLICT_KW):
+            zone_hits[mm.zone.id] = zone_hits.get(mm.zone.id, 0) + 1
+
+    multipliers: dict[str, float] = {}
+    for zid, count in zone_hits.items():
+        if count >= 8:
+            multipliers[zid] = 5.0   # conflit majeur (ex: opération militaire active)
+        elif count >= 5:
+            multipliers[zid] = 3.0   # conflit significatif
+        elif count >= 3:
+            multipliers[zid] = 2.0   # tensions élevées
+    return multipliers
+
+
+# Horizon minimum en jours sous lequel on skippe (sauf conflit actif)
+_MIN_HORIZON_DAYS = 7
+
+
 def estimate_probability(
     market: MatchedMarket,
     reference_date: str | None = None,
     zone_intel: "ZoneIntel | None" = None,
+    conflict_multiplier: float = 1.0,
 ) -> tuple[float, str, EventType, float, float, float]:
     """
     Estime la probabilité calibrée d'un événement.
@@ -380,6 +418,7 @@ def estimate_probability(
     Args:
         reference_date: Date de référence ISO (pour backtest). None = maintenant.
         zone_intel: Intelligence Inflexion (vélocité, signatures, watchlist).
+        conflict_multiplier: Multiplicateur de conflit actif (≥1.0).
 
     Retourne : (probabilité, raisonnement, type, base_rate, multiplier, horizon)
     """
@@ -387,8 +426,10 @@ def estimate_probability(
     question = market.market.question
     event_type, is_negative = classify_event(question)
 
-    # 1. Taux de base annuel
+    # 1. Taux de base annuel (ajusté si conflit actif détecté)
     base_rate = BASE_RATES[event_type]
+    if conflict_multiplier > 1.0:
+        base_rate = min(base_rate * conflict_multiplier, 0.85)
 
     # 2. Score SEMPLICE pondéré selon le type d'événement
     weights = DIM_WEIGHTS[event_type]
@@ -464,8 +505,10 @@ def estimate_probability(
     dims_str = ", ".join(f"{label}={score:.1f}(w={w:.0%})" for w, label, score in top_dims)
 
     polarity = "négatif" if is_negative else "positif"
+    conflict_str = f" ⚠CONFLIT×{conflict_multiplier:.0f}" if conflict_multiplier > 1.0 else ""
     reasoning = (
-        f"Type={event_type.value}({polarity}) | Base={base_rate:.1%} × Mult={mult:.2f}"
+        f"Type={event_type.value}({polarity}) | Base={BASE_RATES[event_type]:.1%}"
+        f"{conflict_str} × Mult={mult:.2f}"
         f"{'×Intel' + f'{intel_mult:.2f}' if intel_mult != 1.0 else ''} "
         f"→ Ann={annual_prob:.1%} → T={horizon:.1f}a → P={final_prob:.1%} | {dims_str}"
         f"{intel_reasoning}"
@@ -486,16 +529,26 @@ def generate_signals(
     if signals_from_insights is None:
         signals_from_insights = {}
 
+    # Détecter les conflits actifs (clusters de marchés militaires par zone)
+    conflict_mults = detect_active_conflicts(matched_markets)
+
     for mm in matched_markets:
         if mm.match_score < min_match_score:
+            continue
+
+        # Filtre horizon court : skip les marchés < 7 jours sauf si conflit actif
+        horizon_days = _time_horizon_years(mm.market.end_date) * 365.25
+        zone_in_conflict = mm.zone.id in conflict_mults
+        if horizon_days < _MIN_HORIZON_DAYS and not zone_in_conflict:
             continue
 
         zone_intel = None
         if intel_report:
             zone_intel = intel_report.zones.get(mm.zone.id)
 
+        conflict_mult = conflict_mults.get(mm.zone.id, 1.0)
         prob, reasoning, event_type, base_rate, mult, horizon = estimate_probability(
-            mm, zone_intel=zone_intel
+            mm, zone_intel=zone_intel, conflict_multiplier=conflict_mult,
         )
 
         # Ajuster avec les insights Inflexion (boost modéré : ±15% max)

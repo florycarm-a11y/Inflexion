@@ -16,6 +16,8 @@ Commandes :
   python main.py --compare                 # Comparer backtest avec/sans intelligence
   python main.py --mock --portfolio        # Voir le portfolio
   python main.py --local                   # SEMPLICE local + Polymarket réel
+  python main.py --scan                    # Scan sectoriel court terme (< 7 jours)
+  python main.py --scan --scan-days 3      # Scan marchés < 3 jours
   python main.py --watch --local           # Monitoring continu (scan toutes les 15 min)
   python main.py --watch --interval 5      # Scan toutes les 5 minutes
   python main.py --live --max-position 25  # Trading réel (attention !)
@@ -337,6 +339,154 @@ async def run_watch(cfg: Config, local: bool = False, interval_min: int = 15):
         await asyncio.sleep(interval_min * 60)
 
 
+async def run_scan(cfg: Config, project_root: str, max_days: int = 7):
+    """Scan sectoriel court terme — marchés <N jours, groupés par zone SEMPLICE.
+
+    Produit data/polymarket-scan.json pour intégration dans le briefing Inflexion.
+    """
+    import json
+    from signal_engine import (
+        estimate_probability, classify_event, detect_active_conflicts,
+        _time_horizon_years,
+    )
+
+    print(BANNER)
+    now_dt = datetime.now(timezone.utc)
+    now = now_dt.strftime("%Y-%m-%d %H:%M UTC")
+    logger.info("Mode SCAN SECTORIEL — marchés < %d jours — %s", max_days, now)
+
+    # 1. Charger SEMPLICE + intelligence
+    zones = load_from_local(project_root)
+    logger.info("  %d zones SEMPLICE chargées", len(zones))
+
+    history_data = load_history_local(project_root)
+    signals_path = Path(project_root) / "data" / "signals.json"
+    signals_full = json.loads(signals_path.read_text(encoding="utf-8")) if signals_path.exists() else {}
+    intel_report = build_intel_report(zones, history_data, signals_full)
+
+    # 2. Scanner Polymarket
+    logger.info("Scan des marchés Polymarket...")
+    markets = await fetch_markets(cfg)
+    logger.info("  %d marchés ouverts", len(markets))
+
+    # 3. Matching
+    matched = match_markets_to_zones(markets, zones)
+    logger.info("  %d matchés avec des zones SEMPLICE", len(matched))
+
+    # 4. Filtrer court terme (< max_days)
+    short_term = []
+    for mm in matched:
+        horizon_days = _time_horizon_years(mm.market.end_date) * 365.25
+        if 0 < horizon_days <= max_days:
+            short_term.append(mm)
+    logger.info("  %d marchés à horizon < %d jours", len(short_term), max_days)
+
+    if not short_term:
+        logger.info("Aucun marché court terme — scan terminé")
+        return
+
+    # 5. Détection de conflits actifs
+    conflict_mults = detect_active_conflicts(matched)  # sur TOUS les matchés
+    if conflict_mults:
+        logger.info("  ⚠ Conflits actifs détectés : %s",
+                    ", ".join(f"{k}(×{v:.0f})" for k, v in conflict_mults.items()))
+
+    # 6. Analyse par zone
+    zone_data: dict[str, dict] = {}
+    for mm in short_term:
+        zid = mm.zone.id
+        if zid not in zone_data:
+            zone_data[zid] = {
+                "zone_id": zid,
+                "zone_name": mm.zone.name,
+                "risk_score": round(mm.zone.composite, 1),
+                "opp_score": round(mm.zone.opp_composite, 1),
+                "conflict_active": zid in conflict_mults,
+                "conflict_multiplier": conflict_mults.get(zid, 1.0),
+                "intel_multiplier": 1.0,
+                "markets": [],
+            }
+            zi = intel_report.zones.get(zid)
+            if zi:
+                zone_data[zid]["intel_multiplier"] = round(zi.combined_multiplier, 2)
+
+        zone_intel = intel_report.zones.get(zid)
+        conflict_mult = conflict_mults.get(zid, 1.0)
+        prob, reasoning, etype, base_rate, mult, horizon = estimate_probability(
+            mm, zone_intel=zone_intel, conflict_multiplier=conflict_mult,
+        )
+
+        yes_token = next((t for t in mm.market.tokens if t["outcome"] == "Yes"), None)
+        poly_price = yes_token["price"] if yes_token else 0.5
+        edge = abs(prob - poly_price) * 100
+
+        horizon_days = round(_time_horizon_years(mm.market.end_date) * 365.25, 1)
+
+        zone_data[zid]["markets"].append({
+            "question": mm.market.question,
+            "end_date": mm.market.end_date[:10],
+            "horizon_days": horizon_days,
+            "event_type": etype.value,
+            "poly_price": round(poly_price, 3),
+            "semplice_prob": round(prob, 3),
+            "edge_pct": round(edge, 1),
+            "direction": "BUY_YES" if prob > poly_price else "BUY_NO",
+            "reasoning": reasoning[:120],
+        })
+
+    # Trier les zones par nombre de marchés (les plus actives en premier)
+    zones_sorted = sorted(zone_data.values(), key=lambda z: len(z["markets"]), reverse=True)
+
+    # 7. Résumé global
+    total_markets = sum(len(z["markets"]) for z in zones_sorted)
+    conflict_zones = [z for z in zones_sorted if z["conflict_active"]]
+    high_edge = [
+        m for z in zones_sorted for m in z["markets"]
+        if m["edge_pct"] >= 15
+    ]
+
+    report = {
+        "generated_at": now_dt.isoformat() + "Z",
+        "scan_type": "short_term_sectoral",
+        "max_horizon_days": max_days,
+        "summary": {
+            "total_markets_scanned": len(markets),
+            "total_matched": len(matched),
+            "short_term_markets": total_markets,
+            "zones_active": len(zones_sorted),
+            "conflicts_active": len(conflict_zones),
+            "conflict_zones": [z["zone_id"] for z in conflict_zones],
+            "high_edge_signals": len(high_edge),
+        },
+        "zones": zones_sorted,
+    }
+
+    # 8. Sauvegarder
+    out_path = Path(project_root) / "data" / "polymarket-scan.json"
+    out_path.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
+    logger.info("Rapport sauvegardé → %s", out_path)
+
+    # Afficher le résumé
+    print(f"\n{'═'*64}")
+    print(f"  SCAN SECTORIEL — {total_markets} marchés < {max_days} jours")
+    print(f"{'─'*64}")
+    for z in zones_sorted:
+        conflict_tag = " ⚠CONFLIT" if z["conflict_active"] else ""
+        print(f"  {z['zone_name']:<20} {len(z['markets']):>2} marchés  "
+              f"R={z['risk_score']:.1f} O={z['opp_score']:.1f}{conflict_tag}")
+        for m in z["markets"][:3]:
+            arrow = "↑" if m["direction"] == "BUY_YES" else "↓"
+            print(f"    {arrow} {m['question'][:50]:<50} "
+                  f"Edge={m['edge_pct']:>4.0f}%  {m['horizon_days']:.0f}j")
+        if len(z["markets"]) > 3:
+            print(f"    ... +{len(z['markets'])-3} autres")
+    print(f"{'─'*64}")
+    if conflict_zones:
+        print(f"  ⚠ ZONES EN CONFLIT ACTIF : {', '.join(z['zone_name'] for z in conflict_zones)}")
+    print(f"  Signaux edge ≥ 15% : {len(high_edge)}")
+    print(f"{'═'*64}\n")
+
+
 def show_portfolio_cmd():
     """Affiche le portfolio actuel."""
     print(format_portfolio())
@@ -351,6 +501,8 @@ def main():
     parser.add_argument("--backtest", action="store_true", help="Backtest sur événements historiques")
     parser.add_argument("--compare", action="store_true", help="Comparer backtest avec/sans intelligence")
     parser.add_argument("--portfolio", action="store_true", help="Afficher le portfolio")
+    parser.add_argument("--scan", action="store_true", help="Scan sectoriel court terme (marchés < 7 jours)")
+    parser.add_argument("--scan-days", type=int, default=7, help="Horizon max pour le scan en jours (défaut: 7)")
     parser.add_argument("--watch", action="store_true", help="Mode monitoring continu")
     parser.add_argument("--interval", type=int, default=15, help="Intervalle de scan en minutes (défaut: 15)")
     parser.add_argument("--min-edge", type=float, help="Edge minimum en %% (défaut: 8)")
@@ -369,12 +521,17 @@ def main():
     if args.max_exposure:
         cfg.max_total_exposure_usd = args.max_exposure
 
+    # Résoudre le project_root (CI ou local)
+    project_root = str(Path(__file__).resolve().parent.parent)
+
     if args.compare:
         run_compare_cmd(min_edge=cfg.min_edge_pct)
     elif args.backtest:
         run_backtest_cmd(min_edge=cfg.min_edge_pct)
     elif args.portfolio:
         show_portfolio_cmd()
+    elif args.scan:
+        asyncio.run(run_scan(cfg, project_root=project_root, max_days=args.scan_days))
     elif args.watch:
         asyncio.run(run_watch(cfg, local=args.local, interval_min=args.interval))
     else:

@@ -1,0 +1,70 @@
+# Inflexion — Scan sectoriel Polymarket × SEMPLICE
+# Analyse les marchés géopolitiques court terme (< 7 jours)
+# via le Signal Engine et l'intelligence Inflexion.
+#
+# Déclenché après le pipeline de données (06h + 18h UTC)
+# Produit : data/polymarket-scan.json
+
+name: "🔭 Polymarket Sectoral Scan"
+
+on:
+  workflow_run:
+    workflows: ["🧠 Generate Unified Briefing"]
+    types: [completed]
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "polymarket-scan"
+  cancel-in-progress: true
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: "📥 Checkout"
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: "🔄 Fetch latest (workflow_run may be stale)"
+        run: git fetch origin main && git reset --hard origin/main
+
+      - name: "🐍 Setup Python"
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: "📦 Install bot dependencies"
+        run: pip install httpx python-dotenv
+
+      - name: "🔭 Scan sectoriel Polymarket"
+        working-directory: bot
+        run: python main.py --scan --scan-days 7
+
+      - name: "📝 Commit et push"
+        run: |
+          git config user.name "Inflexion Bot"
+          git config user.email "bot@inflexionhub.com"
+
+          git add data/polymarket-scan.json
+          if git diff --staged --quiet; then
+            echo "Aucun changement"
+            exit 0
+          fi
+
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+          git commit -m "🔭 Scan sectoriel Polymarket — ${TIMESTAMP}"
+
+          for i in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main && git push && break
+            echo "⟳ Retry push $i/3..."
+            sleep 5
+          done

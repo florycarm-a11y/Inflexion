@@ -153,9 +153,12 @@ GitHub Actions (cron 2x/jour : 06h + 18h UTC)
 - **Gamma API** : DNS bypass via DoH (OpenDNS bloqué), champs camelCase, outcomePrices en JSON string
 - **Backtest** : 48 événements historiques, win rate 42%, P&L +4414% (avec intel)
 - **Dashboard** : `bot/dashboard.html` (standalone, auto-refresh 60s, design Inflexion)
-- **Commandes** : `python bot/main.py --mock`, `--local`, `--backtest`, `--compare`, `--watch`, `--live`
+- **Commandes** : `python bot/main.py --mock`, `--local`, `--backtest`, `--compare`, `--scan`, `--watch`, `--live`
+- **Scan sectoriel** : `--scan` analyse marchés <7j, groupés par zone, détection conflit actif → `data/polymarket-scan.json`
 - **Watch mode** : `--watch --local --interval 5` (scan continu, alerte nouveaux signaux, Ctrl+C pour arrêter)
-- **95 tests** : `python -m pytest bot/test_bot.py` (classify_event, filtrage, matching, sizing, dedup, anchoring, horizon)
+- **Conflit actif** : détection automatique de clusters militaires (≥3 marchés/zone) → boost base rates ×2-5
+- **CI** : workflow `polymarket-scan.yml` (après briefing, 2x/jour 06h+18h UTC)
+- **102 tests** : `python -m pytest bot/test_bot.py`
 
 ## 7. APIs (15)
 
