@@ -1,114 +1,91 @@
 {
-  "updated": "2026-04-02T18:57:39.511Z",
+  "updated": "2026-04-03T07:07:23.131Z",
   "alertes": [
     {
-      "id": "alert-2026-04-02-001",
-      "titre": "Pétrole (USO) : +11,15% à 137,93 $, WTI dépasse Brent pour la première fois depuis 2022",
-      "texte": "Escalade Iran-États-Unis provoque envolée des prix énergétiques. WTI surperforme Brent sur craintes de prolongation du conflit et perturbations d'approvisionnement (40% capacité export russe offline, détroit d'Ormuz menacé). Choc pétrolier répercuté sur spreads souverains français (taux les plus élevés depuis 15 ans).",
+      "id": "alert-2026-04-03-001",
+      "titre": "Pétrole (USO) : +11,15% à 137,92$, risque 150$ si Ormuz fermé",
+      "texte": "Escalade Iran-États-Unis jour 35 provoque hausse structurelle du brut. JP Morgan prévient que perturbations jusqu'à mi-mai pourraient porter le pétrole au-delà de 150$. Fermeture du détroit d'Ormuz imminente (vote ONU retardé, opposition chinoise).",
       "categorie": "matieres_premieres",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-04-02T18:57:39.511Z",
-      "donnees": {
-        "symbole": "SOL",
-        "nom": "Solana",
-        "prix": 78.86,
-        "variation_24h": -6.12
-      }
-    },
-    {
-      "id": "alert-2026-04-02-002",
-      "titre": "Bitcoin : sous 68 000 $, risque de crash vers 60 000 $ (Fear & Greed Index à 12)",
-      "texte": "Régime risk-off généralisé (consensus 81%) entraîne crypto en contraction (-3,48% classe d'actifs). Bitcoin chute sous 68 000 $ avec probabilité élevée de test 60 000 $. Fear & Greed Index à 12 (Extreme Fear) signale capitulation potentielle.",
-      "categorie": "crypto",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-04-02T18:57:39.511Z",
-      "donnees": {
-        "symbole": "GLD",
-        "nom": "Or (ETF)",
-        "prix": 428.65,
-        "variation": -2.09
-      }
-    },
-    {
-      "id": "alert-2026-04-02-003",
-      "titre": "Solana (SOL) : -6,12% en 24h à 78,86 $, TVL DeFi en contraction (-3,2%)",
-      "texte": "Solana recule de 6,12% en 24h. ether.fi TVL chute de 9,3% (4,9 Md$). Stress systémique DeFi confirmé par contraction TVL moyenne des protocoles majeurs (-3,2% en 24h). Pression liquidités sur écosystème crypto.",
-      "categorie": "crypto",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-04-02T18:57:39.511Z",
+      "horodatage": "2026-04-03T07:07:23.131Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
-        "prix": 137.93,
+        "prix": 137.92,
         "variation": 11.15
       }
     },
     {
-      "id": "alert-2026-04-02-004",
-      "titre": "Tesla (TSLA) : -5,55% à 360,11 $, tech recule dans régime risk-off",
-      "texte": "Tesla perd 5,55% dans contexte de divergence commodities/tech (-4,4pp spread). Classe actions en baisse (-1,04%), tech survendue face à hausse pétrole et tensions géopolitiques. Indice EU recule de 0,77%.",
+      "id": "alert-2026-04-03-002",
+      "titre": "Tesla (TSLA) : -5,42% à 360,59$, secteur auto en crise",
+      "texte": "Baisse Tesla reflète effondrement des ventes automobiles neuves aux USA, signal d'alerte pour ralentissement économique 2026. Secteur auto fragilisé par inflation énergétique et incertitude macroéconomique.",
       "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-02T18:57:39.511Z",
+      "horodatage": "2026-04-03T07:07:23.131Z",
       "donnees": {
         "symbole": "TSLA",
         "nom": "Tesla",
-        "prix": 360.11,
-        "variation": -5.55
+        "prix": 360.59,
+        "variation": -5.42
       }
     },
     {
-      "id": "alert-2026-04-02-005",
-      "titre": "Or (GLD) : -2,09% à 428,65 $, refuge baissier malgré tensions géopolitiques",
-      "texte": "Or recule de 2,09% malgré escalade Iran-États-Unis, signalant liquidations de portefeuille dans régime risk-off. Pétrole surperforme or comme couverture inflation, divergence atypique.",
-      "categorie": "matieres_premieres",
-      "severite": "info",
+      "id": "alert-2026-04-03-003",
+      "titre": "Fear & Greed Index : 9/100 (Extreme Fear), divergence risk-off confirmée",
+      "texte": "Indice de peur extrême reflète tensions géopolitiques (Iran) et volatilité macro. Divergence commodities vs tech (-4,2pp) confirme rotation risk-off : matières premières surperforment, technologie sous-performe.",
+      "categorie": "marches",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-02T18:57:39.511Z",
+      "horodatage": "2026-04-03T07:07:23.131Z",
       "donnees": {
-        "score": 12,
+        "score": 9,
         "label": "Extreme Fear",
-        "variation_7j": 2
+        "variation_7j": -4
       }
     },
     {
-      "id": "alert-2026-04-02-006",
-      "titre": "Régime risk-off généralisé : consensus 81%, amplitude volatilité 2,48%",
-      "texte": "Détection d'un régime risk-off systémique avec consensus élevé (81%). Divergence majeure par classe : ETF +1,69%, actions -1,04%, crypto -3,48%, indices EU -0,77%. Géopolitique (Iran) et macro (emploi US) dominent l'agenda.",
-      "categorie": "macro",
+      "id": "alert-2026-04-03-004",
+      "titre": "Crypto : 169M$ volés en Q1 2026, sécurité DeFi critique",
+      "texte": "DefiLlama rapporte 169M$ dérobés sur 34 protocoles DeFi au Q1 2026. Exploits Solana et Drift ajoutent volatilité. Chainalysis déploie agents IA pour traçabilité, mais risques de sécurité restent aigus.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-04-03T07:07:23.131Z",
+      "donnees": {
+        "tech_avg": 0.4,
+        "comm_avg": 4.61,
+        "spread": -4.21,
+        "regime": "risk-off / inflation"
+      }
+    },
+    {
+      "id": "alert-2026-04-03-005",
+      "titre": "Fret maritime : +30% en 1 mois, perturbations Ormuz amplifient coûts",
+      "texte": "Taux conteneurs Shanghai-Rotterdam en hausse 30% sur 1 mois. Risques Houthis et tensions Ormuz créent inefficacités tanker. Spread LNG Singapore-Rotterdam en inversion, marché en stress structurel.",
+      "categorie": "matieres_premieres",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-04-03T07:07:23.131Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-04-03-006",
+      "titre": "Commission européenne : 30 entités exposées par hack CERT-EU",
+      "texte": "Incident de sécurité critique : Commission européenne piratée, données de 30 entités UE compromises. Chaîne logicielle affectée (NPM supply chain). Risques de propagation à infrastructure critique européenne.",
+      "categorie": "ai_tech",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-04-02T18:57:39.511Z",
-      "donnees": {
-        "protocole": "ether.fi Stake",
-        "tvl_b": 4.9,
-        "change_1d": -9.3,
-        "categorie": "Liquid Restaking"
-      }
-    },
-    {
-      "id": "alert-2026-04-02-007",
-      "titre": "OpenAI lève 122 milliards de dollars, signal haussier tech contrebalancé par risk-off",
-      "texte": "OpenAI sécurise 122 Md$ de financement (2 avril 2026), signal majeur de confiance en IA. Cependant, impact limité par régime risk-off généralisé et préoccupations sur fiabilité des modèles (Copilot Microsoft, malware Claude).",
-      "categorie": "ai_tech",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-04-02T18:57:39.511Z",
-      "donnees": {
-        "avg_change_1d": -3.2,
-        "nb_protocoles": 12
-      }
+      "horodatage": "2026-04-03T07:07:23.131Z",
+      "donnees": {}
     }
   ],
   "stats": {
-    "total": 7,
-    "urgent": 3,
-    "attention": 2,
-    "info": 2
+    "total": 6,
+    "urgent": 2,
+    "attention": 4,
+    "info": 0
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"

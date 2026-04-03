@@ -1,78 +1,69 @@
 {
-  "updated": "2026-04-02T18:57:39.511Z",
-  "date": "2026-04-02",
+  "updated": "2026-04-03T07:07:23.130Z",
+  "date": "2026-04-03",
   "global": {
-    "score": -0.18,
+    "score": -0.19,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (-0.18), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est mixte (-0.19), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.82,
-      "confidence": 0.92,
+      "score": -0.85,
+      "confidence": 0.95,
       "tendance": "baissier",
-      "resume": "Escalade majeure du conflit Iran-États-Unis avec avancées militaires israéliennes, fermeture du détroit d'Ormuz et tensions NATO. Instabilité géopolitique généralisée impactant les marchés énergétiques et les spreads de crédit souverain français.",
+      "resume": "Escalade majeure Iran-États-Unis avec 35 jours de frappes, fermeture du détroit d'Ormuz imminente, perturbations énergétiques globales et crise de leadership au Pentagone. Tensions géopolitiques à leur plus haut niveau depuis le début du conflit.",
       "signaux_cles": [
-        "Quarantaine de pays appellent à la réouverture du détroit d'Ormuz (2 avril 2026)",
-        "Trump envoie des missiles en Iran et limoge la ministre de la Justice Pam Bondi",
-        "France s'endette aux taux les plus élevés depuis 15 ans (choc pétrolier)"
+        "Jour 35 des attaques US-Israël contre l'Iran avec drones et F-35 abattus",
+        "Fermeture probable du détroit d'Ormuz : vote ONU retardé, opposition chinoise signalée",
+        "Crise militaire US : révocation du chef d'état-major de l'armée de terre, leadership fragilisé"
       ]
     },
     "marches": {
-      "score": -0.35,
-      "confidence": 0.68,
-      "tendance": "mixte",
-      "resume": "Divergence marquée : levée de fonds massive d'OpenAI (122 Md$) contrebalancée par faiblesse du marché du travail américain et volatilité sectorielle. Pétrole surperforme (+11,15% USO) sur tensions géopolitiques, tech recule.",
+      "score": -0.42,
+      "confidence": 0.72,
+      "tendance": "baissier",
+      "resume": "Signaux contradictoires : effondrement des ventes automobiles US suggérant ralentissement économique 2026, mais marchés Asie-Pacifique en hausse sur espoirs de réouverture d'Ormuz. Inflation énergétique pèse sur consommation française et droits de douane Trump sur médicaments créent incertitude.",
       "signaux_cles": [
-        "OpenAI lève 122 milliards de dollars (2 avril 2026)",
-        "Rapport emploi mars attendu vendredi avec attentes modérées",
-        "WTI dépasse Brent pour la première fois depuis 2022 (Trump vs Iran)"
+        "Ventes voitures neuves USA en effondrement : indicateur de ralentissement économique majeur",
+        "Carburants : Français réduisent achats alimentaires et plaisir, inflation énergétique confirmée",
+        "Droits de douane Trump sur médicaments et métaux relancés, impact secteur pharma français"
       ]
     },
     "crypto": {
-      "score": -0.71,
-      "confidence": 0.85,
-      "tendance": "baissier",
-      "resume": "Bitcoin chute sous 68 000 $ avec risque de crash vers 60 000 $. Solana -6,12% en 24h, TVL DeFi en contraction (-3,2% protocoles majeurs). Seuls signaux positifs : adoption institutionnelle (Coinbase trust charter, tokenisation France) insuffisante pour compenser la pression.",
+      "score": -0.38,
+      "confidence": 0.68,
+      "tendance": "mixte",
+      "resume": "Marché crypto volatil : pertes significatives (169M$ volés en Q1, exploits Solana), mais innovations institutionnelles (Circle/cirBTC, tokenization) et nomination d'un pro-crypto à la tête du DOJ créent contrebalance. Bitcoin exposé avec ETF/CME flows offline.",
       "signaux_cles": [
-        "Bitcoin sous 68 000 $ avec risque baissier vers 60 000 $",
-        "Solana (SOL) -6,12% en 24h à 78,86 $",
-        "ether.fi TVL -9,3% en 24h (4,9 Md$), Fear & Greed Index à 12 (Extreme Fear)"
+        "Vols DeFi Q1 2026 : 169M$ sur 34 protocoles, sécurité critique",
+        "Circle lance cirBTC pour institutionnels, Metaplanet devient 3e détenteur Bitcoin mondial",
+        "Todd Blanche (auteur mémo DOJ crypto) nommé AG intérimaire : signal pro-régulation claire"
       ]
     },
     "matieres_premieres": {
-      "score": 0.68,
-      "confidence": 0.89,
+      "score": 0.78,
+      "confidence": 0.92,
       "tendance": "haussier",
-      "resume": "Pétrole en hausse majeure (+11,15% USO) sur craintes de prolongation du conflit Iran et perturbations d'approvisionnement. WTI dépasse Brent. Chaînes d'approvisionnement énergétiques mondiales sous tension (carburant aviation UK, capacité export russe).",
+      "resume": "Pétrole en hausse structurelle (+11,15% à 137,92$) sur perturbations Iran-Ormuz. Fret maritime +30% en 1 mois, LNG en tension (annulation contrats long-terme Japon), risque Houthis amplifie inefficacités. JP Morgan prévoit pétrole >150$ si perturbations jusqu'à mi-mai.",
       "signaux_cles": [
-        "USO +11,15% à 137,93 $ (WTI > Brent, première fois depuis 2022)",
-        "40% de la capacité d'export pétrolier russe en Baltique hors ligne",
-        "Carburant aviation UK en risque de pénurie (Iran War Maritime Intelligence)"
+        "Pétrole +11,15% à 137,92$ : escalade Iran directe, risque 150$ si Ormuz fermé jusqu'à mi-mai",
+        "Fret maritime conteneurs +30% sur 1 mois, tankers en tension, perturbations Houthis confirmées",
+        "LNG : Japon annule contrat long-terme Commonwealth, marché en stress structurel"
       ]
     },
     "ai_tech": {
-      "score": 0.42,
-      "confidence": 0.62,
+      "score": -0.15,
+      "confidence": 0.55,
       "tendance": "neutre",
-      "resume": "Google relance la course IA open-source avec Gemma 4 (Apache 2.0), soutien réglementaire Trump pour marchés de prédiction. Mais préoccupations sur fiabilité (Copilot Microsoft, malware Claude), et consommation énergétique massive des data centers.",
+      "resume": "Actualité fragmentée : faille sécurité majeure (Commission européenne, 30 entités exposées), compromis supply chain NPM, mais innovations positives (Arcee AI, Gemma 4 vs modèles chinois). Risques éthiques IA (déception agents) et protection données en débat.",
       "signaux_cles": [
-        "Google Gemma 4 disponible open-source avec Apache 2.0 (2 avril 2026)",
-        "OpenAI acquiert TBPN, Sakana AI lance 'Ultra Deep Research'",
-        "Google finance data center géant alimenté par centrale gaz (consommation énergétique critique)"
+        "CERT-EU : hack Commission européenne expose 30 entités UE, incident critique",
+        "Axios NPM supply chain compromise confirmé, chaîne logicielle affectée",
+        "Google Gemma 4 lancé contre modèles open-weights chinois, compétition IA s'intensifie"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-02-15",
-      "global": -0.05,
-      "geopolitique": -0.65,
-      "marches": -0.35,
-      "crypto": 0.15,
-      "matieres_premieres": 0.35,
-      "ai_tech": 0.35
-    },
     {
       "date": "2026-02-16",
       "global": -0.37,
@@ -333,6 +324,15 @@
       "crypto": -0.71,
       "matieres_premieres": 0.68,
       "ai_tech": 0.42
+    },
+    {
+      "date": "2026-04-03",
+      "global": -0.19,
+      "geopolitique": -0.85,
+      "marches": -0.42,
+      "crypto": -0.38,
+      "matieres_premieres": 0.78,
+      "ai_tech": -0.15
     }
   ],
   "model": "claude-haiku-4-5-20251001",
