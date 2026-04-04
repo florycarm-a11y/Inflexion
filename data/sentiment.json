@@ -1,78 +1,69 @@
 {
-  "updated": "2026-04-03T07:07:23.130Z",
-  "date": "2026-04-03",
+  "updated": "2026-04-04T07:01:24.605Z",
+  "date": "2026-04-04",
   "global": {
-    "score": -0.19,
+    "score": -0.01,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (-0.19), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est mixte (-0.01), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.85,
-      "confidence": 0.95,
+      "score": -0.82,
+      "confidence": 0.92,
       "tendance": "baissier",
-      "resume": "Escalade majeure Iran-États-Unis avec 35 jours de frappes, fermeture du détroit d'Ormuz imminente, perturbations énergétiques globales et crise de leadership au Pentagone. Tensions géopolitiques à leur plus haut niveau depuis le début du conflit.",
+      "resume": "Escalade militaire majeure au Moyen-Orient avec attaques aériennes US-Israël en Iran, crash d'un F-15E américain et recherche de pilote en cours. Tensions géopolitiques élevées impactant directement les marchés énergétiques et les anticipations de conflits régionaux.",
       "signaux_cles": [
-        "Jour 35 des attaques US-Israël contre l'Iran avec drones et F-35 abattus",
-        "Fermeture probable du détroit d'Ormuz : vote ONU retardé, opposition chinoise signalée",
-        "Crise militaire US : révocation du chef d'état-major de l'armée de terre, leadership fragilisé"
+        "Avion de chasse américain F-15E abattu en Iran, équipage partiellement récupéré",
+        "Attaques aériennes US-Israël confirmées sur sites militaires iraniens (nuit du 3-4 avril)",
+        "Escalade Ukraine : attaques de missiles et drones russes signalées dans le sud"
       ]
     },
     "marches": {
-      "score": -0.42,
-      "confidence": 0.72,
-      "tendance": "baissier",
-      "resume": "Signaux contradictoires : effondrement des ventes automobiles US suggérant ralentissement économique 2026, mais marchés Asie-Pacifique en hausse sur espoirs de réouverture d'Ormuz. Inflation énergétique pèse sur consommation française et droits de douane Trump sur médicaments créent incertitude.",
+      "score": -0.15,
+      "confidence": 0.68,
+      "tendance": "mixte",
+      "resume": "Contexte économique français dégradé avec PIB par habitant sous moyenne européenne (4e année), mais soutien gouvernemental via prêts flash carburant. Secteur automobile électrique surperforme (Tesla, Kia, Hyundai) malgré crise énergétique. Marché automobile global en repli.",
       "signaux_cles": [
-        "Ventes voitures neuves USA en effondrement : indicateur de ralentissement économique majeur",
-        "Carburants : Français réduisent achats alimentaires et plaisir, inflation énergétique confirmée",
-        "Droits de douane Trump sur médicaments et métaux relancés, impact secteur pharma français"
+        "Budget défense US demandé à 1 500 Mds$ pour 2027 (hausse significative)",
+        "France : PIB/habitant sous moyenne européenne pour 4e année consécutive",
+        "Hausse carburants : mesures gouvernementales (prêts flash TPE-PME) et grèves de taxis"
       ]
     },
     "crypto": {
-      "score": -0.38,
-      "confidence": 0.68,
-      "tendance": "mixte",
-      "resume": "Marché crypto volatil : pertes significatives (169M$ volés en Q1, exploits Solana), mais innovations institutionnelles (Circle/cirBTC, tokenization) et nomination d'un pro-crypto à la tête du DOJ créent contrebalance. Bitcoin exposé avec ETF/CME flows offline.",
+      "score": 0.18,
+      "confidence": 0.62,
+      "tendance": "neutre",
+      "resume": "Adoption institutionnelle progressive (Charles Schwab lance trading spot BTC/ETH H1 2026, Bitcoin ETF potentiellement supérieur aux gold ETF) contrebalancée par sorties nettes de flux (-67% vs Q1 2025 : 11 Mds$ vs 33 Mds$). Incidents de sécurité majeurs (Drift hack 285 M$, Circle inaction).",
       "signaux_cles": [
-        "Vols DeFi Q1 2026 : 169M$ sur 34 protocoles, sécurité critique",
-        "Circle lance cirBTC pour institutionnels, Metaplanet devient 3e détenteur Bitcoin mondial",
-        "Todd Blanche (auteur mémo DOJ crypto) nommé AG intérimaire : signal pro-régulation claire"
+        "Charles Schwab annonce lancement trading spot Bitcoin/Ethereum H1 2026",
+        "JPMorgan : flux crypto Q1 2026 = 11 Mds$ (-67% vs Q1 2025)",
+        "41% de l'offre BTC en circulation en moins-value théorique"
       ]
     },
     "matieres_premieres": {
-      "score": 0.78,
-      "confidence": 0.92,
+      "score": 0.71,
+      "confidence": 0.88,
       "tendance": "haussier",
-      "resume": "Pétrole en hausse structurelle (+11,15% à 137,92$) sur perturbations Iran-Ormuz. Fret maritime +30% en 1 mois, LNG en tension (annulation contrats long-terme Japon), risque Houthis amplifie inefficacités. JP Morgan prévoit pétrole >150$ si perturbations jusqu'à mi-mai.",
+      "resume": "Pétrole en hausse majeure (+11,15% à 137,92$/baril) suite à escalade Iran-USA et menaces sur détroit d'Ormuz. Gaz naturel soutenu (Israël relance Leviathan). Terres rares : compétition USA-Australie vs Chine s'intensifie. Secteur énergétique bénéficiaire direct de la crise géopolitique.",
       "signaux_cles": [
-        "Pétrole +11,15% à 137,92$ : escalade Iran directe, risque 150$ si Ormuz fermé jusqu'à mi-mai",
-        "Fret maritime conteneurs +30% sur 1 mois, tankers en tension, perturbations Houthis confirmées",
-        "LNG : Japon annule contrat long-terme Commonwealth, marché en stress structurel"
+        "Pétrole (USO) : +11,15% à 137,92$ (escalade Moyen-Orient)",
+        "Trump évoque possibilité de contrôler le pétrole du détroit d'Ormuz",
+        "Israël relance exploitation gaz Leviathan (600 Mds m³ réserves Méditerranée)"
       ]
     },
     "ai_tech": {
-      "score": -0.15,
+      "score": 0.12,
       "confidence": 0.55,
       "tendance": "neutre",
-      "resume": "Actualité fragmentée : faille sécurité majeure (Commission européenne, 30 entités exposées), compromis supply chain NPM, mais innovations positives (Arcee AI, Gemma 4 vs modèles chinois). Risques éthiques IA (déception agents) et protection données en débat.",
+      "resume": "Dynamique mixte : avancées technologiques (Google DeepMind algorithmes auto-réécrivables, Netflix éditeur IA) contrebalancées par risques de sécurité (Meta/Mercor data breach, OpenClaw, LinkedIn scanning). Consolidation OpenAI (Simo en congé médical, restructuration leadership). Budget CISA réduit de 707 M$.",
       "signaux_cles": [
-        "CERT-EU : hack Commission européenne expose 30 entités UE, incident critique",
-        "Axios NPM supply chain compromise confirmé, chaîne logicielle affectée",
-        "Google Gemma 4 lancé contre modèles open-weights chinois, compétition IA s'intensifie"
+        "Google DeepMind : LLM réécrit algorithmes théorie des jeux avec surperformance",
+        "Meta pause partenariat Mercor après fuite données industrie IA",
+        "OpenAI : changements leadership, Simo en congé médical, Lightcap nouveau rôle"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-02-16",
-      "global": -0.37,
-      "geopolitique": -0.62,
-      "marches": -0.35,
-      "crypto": -0.15,
-      "matieres_premieres": -0.35,
-      "ai_tech": -0.35
-    },
     {
       "date": "2026-02-17",
       "global": -0.13,
@@ -333,6 +324,15 @@
       "crypto": -0.38,
       "matieres_premieres": 0.78,
       "ai_tech": -0.15
+    },
+    {
+      "date": "2026-04-04",
+      "global": -0.01,
+      "geopolitique": -0.82,
+      "marches": -0.15,
+      "crypto": 0.18,
+      "matieres_premieres": 0.71,
+      "ai_tech": 0.12
     }
   ],
   "model": "claude-haiku-4-5-20251001",

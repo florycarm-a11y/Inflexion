@@ -1,14 +1,14 @@
 {
-  "updated": "2026-04-03T07:07:23.131Z",
+  "updated": "2026-04-04T07:01:24.606Z",
   "alertes": [
     {
-      "id": "alert-2026-04-03-001",
-      "titre": "Pétrole (USO) : +11,15% à 137,92$, risque 150$ si Ormuz fermé",
-      "texte": "Escalade Iran-États-Unis jour 35 provoque hausse structurelle du brut. JP Morgan prévient que perturbations jusqu'à mi-mai pourraient porter le pétrole au-delà de 150$. Fermeture du détroit d'Ormuz imminente (vote ONU retardé, opposition chinoise).",
+      "id": "alert-2026-04-04-001",
+      "titre": "Pétrole (USO) : +11,15% à 137,92$, escalade Iran-USA",
+      "texte": "Hausse majeure suite aux attaques aériennes US-Israël en Iran et crash d'un F-15E américain. Menaces sur le détroit d'Ormuz et déclarations Trump sur contrôle pétrolier amplifient les craintes d'approvisionnement. Régime risk-on sur commodities vs tech (-4,2pp de spread).",
       "categorie": "matieres_premieres",
       "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-04-03T07:07:23.131Z",
+      "impact": "haussier",
+      "horodatage": "2026-04-04T07:01:24.606Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
@@ -17,13 +17,13 @@
       }
     },
     {
-      "id": "alert-2026-04-03-002",
-      "titre": "Tesla (TSLA) : -5,42% à 360,59$, secteur auto en crise",
-      "texte": "Baisse Tesla reflète effondrement des ventes automobiles neuves aux USA, signal d'alerte pour ralentissement économique 2026. Secteur auto fragilisé par inflation énergétique et incertitude macroéconomique.",
+      "id": "alert-2026-04-04-002",
+      "titre": "Tesla (TSLA) : -5,42% à 360,59$, divergence secteur auto",
+      "texte": "Baisse malgré surperformance des véhicules électriques (Kia, Hyundai) dans contexte de crise énergétique. Marché automobile global en repli. Fear & Greed Index à 11 (Extreme Fear) pèse sur sentiment actions.",
       "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-03T07:07:23.131Z",
+      "horodatage": "2026-04-04T07:01:24.606Z",
       "donnees": {
         "symbole": "TSLA",
         "nom": "Tesla",
@@ -32,27 +32,27 @@
       }
     },
     {
-      "id": "alert-2026-04-03-003",
-      "titre": "Fear & Greed Index : 9/100 (Extreme Fear), divergence risk-off confirmée",
-      "texte": "Indice de peur extrême reflète tensions géopolitiques (Iran) et volatilité macro. Divergence commodities vs tech (-4,2pp) confirme rotation risk-off : matières premières surperforment, technologie sous-performe.",
+      "id": "alert-2026-04-04-003",
+      "titre": "Fear & Greed Index : 11 (Extreme Fear), divergence actifs",
+      "texte": "Indice de peur extrême reflétant tensions géopolitiques (Iran-USA) et dégradation économique française. Divergence marquée : ETF +1,87%, actions -0,76%, indices EU -0,82%. Régime haussier modéré (consensus 63%) fragilisé par risques géopolitiques.",
       "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-03T07:07:23.131Z",
+      "horodatage": "2026-04-04T07:01:24.606Z",
       "donnees": {
-        "score": 9,
+        "score": 11,
         "label": "Extreme Fear",
-        "variation_7j": -4
+        "variation_7j": -1
       }
     },
     {
-      "id": "alert-2026-04-03-004",
-      "titre": "Crypto : 169M$ volés en Q1 2026, sécurité DeFi critique",
-      "texte": "DefiLlama rapporte 169M$ dérobés sur 34 protocoles DeFi au Q1 2026. Exploits Solana et Drift ajoutent volatilité. Chainalysis déploie agents IA pour traçabilité, mais risques de sécurité restent aigus.",
+      "id": "alert-2026-04-04-004",
+      "titre": "Crypto : flux nets -67% vs Q1 2025 (11 Mds$ vs 33 Mds$)",
+      "texte": "JPMorgan signale contraction majeure des entrées de capitaux en Q1 2026 malgré adoption institutionnelle (Charles Schwab, Bitcoin ETF). Incidents de sécurité (Drift 285 M$, Circle inaction) érodent confiance. 41% de l'offre BTC en moins-value théorique.",
       "categorie": "crypto",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-03T07:07:23.131Z",
+      "horodatage": "2026-04-04T07:01:24.606Z",
       "donnees": {
         "tech_avg": 0.4,
         "comm_avg": 4.61,
@@ -61,30 +61,20 @@
       }
     },
     {
-      "id": "alert-2026-04-03-005",
-      "titre": "Fret maritime : +30% en 1 mois, perturbations Ormuz amplifient coûts",
-      "texte": "Taux conteneurs Shanghai-Rotterdam en hausse 30% sur 1 mois. Risques Houthis et tensions Ormuz créent inefficacités tanker. Spread LNG Singapore-Rotterdam en inversion, marché en stress structurel.",
-      "categorie": "matieres_premieres",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-04-03T07:07:23.131Z",
-      "donnees": {}
-    },
-    {
-      "id": "alert-2026-04-03-006",
-      "titre": "Commission européenne : 30 entités exposées par hack CERT-EU",
-      "texte": "Incident de sécurité critique : Commission européenne piratée, données de 30 entités UE compromises. Chaîne logicielle affectée (NPM supply chain). Risques de propagation à infrastructure critique européenne.",
-      "categorie": "ai_tech",
+      "id": "alert-2026-04-04-005",
+      "titre": "Moyen-Orient : F-15E abattu en Iran, escalade militaire confirmée",
+      "texte": "Avion de chasse américain crash en Iran avec équipage partiellement récupéré. Attaques aériennes US-Israël sur sites militaires iraniens confirmées. Risque d'élargissement du conflit impacte directement prix énergétiques et anticipations de défense (+1 500 Mds$ budget US 2027).",
+      "categorie": "geopolitique",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-04-03T07:07:23.131Z",
+      "horodatage": "2026-04-04T07:01:24.606Z",
       "donnees": {}
     }
   ],
   "stats": {
-    "total": 6,
+    "total": 5,
     "urgent": 2,
-    "attention": 4,
+    "attention": 3,
     "info": 0
   },
   "model": "claude-haiku-4-5-20251001",
