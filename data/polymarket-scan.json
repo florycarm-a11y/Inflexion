@@ -1,63 +1,17 @@
 {
-  "generated_at": "2026-04-03T13:29:47.183658+00:00Z",
+  "generated_at": "2026-04-04T07:02:53.299983+00:00Z",
   "scan_type": "short_term_sectoral",
   "max_horizon_days": 7,
   "summary": {
-    "total_markets_scanned": 281,
-    "total_matched": 59,
-    "short_term_markets": 4,
+    "total_markets_scanned": 286,
+    "total_matched": 54,
+    "short_term_markets": 2,
     "zones_active": 2,
-    "conflicts_active": 1,
-    "conflict_zones": [
-      "iran"
-    ],
-    "high_edge_signals": 3
+    "conflicts_active": 0,
+    "conflict_zones": [],
+    "high_edge_signals": 0
   },
   "zones": [
-    {
-      "zone_id": "iran",
-      "zone_name": "Iran",
-      "risk_score": 5.1,
-      "opp_score": 2.5,
-      "conflict_active": true,
-      "conflict_multiplier": 5.0,
-      "intel_multiplier": 1.38,
-      "markets": [
-        {
-          "question": "Will Iran strike Oman again in March?",
-          "end_date": "2026-03-07",
-          "horizon_days": 1.0,
-          "event_type": "military_strike",
-          "poly_price": 0.177,
-          "semplice_prob": 0.527,
-          "edge_pct": 35.0,
-          "direction": "BUY_YES",
-          "reasoning": "Type=military_strike(négatif) | Base=14.0% ⚠CONFLIT×5 × Mult=1.92×Intel1.38 → Ann=95.0% → T=0.0a → P=52.7% | M=5.5(w=40%"
-        },
-        {
-          "question": "Will Iran strike Spain by March 31?",
-          "end_date": "2026-03-07",
-          "horizon_days": 1.0,
-          "event_type": "military_strike",
-          "poly_price": 0.001,
-          "semplice_prob": 0.527,
-          "edge_pct": 52.6,
-          "direction": "BUY_YES",
-          "reasoning": "Type=military_strike(négatif) | Base=14.0% ⚠CONFLIT×5 × Mult=1.92×Intel1.38 → Ann=95.0% → T=0.0a → P=52.7% | M=5.5(w=40%"
-        },
-        {
-          "question": "Military action against Iran ends by May 31, 2026?",
-          "end_date": "2026-03-31",
-          "horizon_days": 1.0,
-          "event_type": "ceasefire",
-          "poly_price": 0.685,
-          "semplice_prob": 0.154,
-          "edge_pct": 53.1,
-          "direction": "BUY_NO",
-          "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×5 × Mult=0.41×Intel1.38 → Ann=48.8% → T=0.0a → P=15.4% | P=1.5(w=30%), M=2"
-        }
-      ]
-    },
     {
       "zone_id": "ukraine",
       "zone_name": "Ukraine / Mer Noire",
@@ -72,11 +26,33 @@
           "end_date": "2026-01-31",
           "horizon_days": 1.0,
           "event_type": "territorial",
-          "poly_price": 0.051,
+          "poly_price": 0.058,
           "semplice_prob": 0.143,
-          "edge_pct": 9.2,
+          "edge_pct": 8.5,
           "direction": "BUY_YES",
           "reasoning": "Type=territorial(négatif) | Base=15.0% × Mult=2.38×Intel1.29 → Ann=46.0% → T=0.0a → P=14.3% | M=6.6(w=45%), P=5.4(w=15%)"
+        }
+      ]
+    },
+    {
+      "zone_id": "inde",
+      "zone_name": "Inde",
+      "risk_score": 3.9,
+      "opp_score": 4.0,
+      "conflict_active": false,
+      "conflict_multiplier": 1.0,
+      "intel_multiplier": 1.03,
+      "markets": [
+        {
+          "question": "Will the Communist Party of India (CPI) win the most seats in the 2026 Kerala Legislative Assembly election?",
+          "end_date": "2026-04-09",
+          "horizon_days": 4.7,
+          "event_type": "election",
+          "poly_price": 0.002,
+          "semplice_prob": 0.136,
+          "edge_pct": 13.5,
+          "direction": "BUY_YES",
+          "reasoning": "Type=election(positif) | Base=45.0% × Mult=0.96×Intel1.03 → Ann=44.3% → T=0.0a → P=13.6% | P=3.6(w=35%), S=3.8(w=20%), E"
         }
       ]
     }
