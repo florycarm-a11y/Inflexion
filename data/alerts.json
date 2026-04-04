@@ -1,44 +1,44 @@
 {
-  "updated": "2026-04-04T07:01:24.606Z",
+  "updated": "2026-04-04T18:41:31.297Z",
   "alertes": [
     {
       "id": "alert-2026-04-04-001",
-      "titre": "Pétrole (USO) : +11,15% à 137,92$, escalade Iran-USA",
-      "texte": "Hausse majeure suite aux attaques aériennes US-Israël en Iran et crash d'un F-15E américain. Menaces sur le détroit d'Ormuz et déclarations Trump sur contrôle pétrolier amplifient les craintes d'approvisionnement. Régime risk-on sur commodities vs tech (-4,2pp de spread).",
+      "titre": "Pétrole (USO) : +11,16% à 137,94$, prime géopolitique Iran-Hormuz",
+      "texte": "Hausse majeure du brut liée aux tensions Iran-États-Unis et menace d'ultimatum Trump 48h. Risque d'escalade militaire affectant détroit de Hormuz (30% flux pétrolier mondial). Production russe divisée par deux en mars avant rebond lié à la guerre.",
       "categorie": "matieres_premieres",
       "severite": "urgent",
       "impact": "haussier",
-      "horodatage": "2026-04-04T07:01:24.606Z",
+      "horodatage": "2026-04-04T18:41:31.297Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
-        "prix": 137.92,
-        "variation": 11.15
+        "prix": 137.94,
+        "variation": 11.16
       }
     },
     {
       "id": "alert-2026-04-04-002",
-      "titre": "Tesla (TSLA) : -5,42% à 360,59$, divergence secteur auto",
-      "texte": "Baisse malgré surperformance des véhicules électriques (Kia, Hyundai) dans contexte de crise énergétique. Marché automobile global en repli. Fear & Greed Index à 11 (Extreme Fear) pèse sur sentiment actions.",
+      "titre": "Tesla (TSLA) : -5,42% à 360,61$, divergence tech vs commodités",
+      "texte": "Baisse significative dans contexte de risk-off généralisé. Spread commodités/tech se creuse de -4,2pp, signalant rotation vers actifs défensifs et inflation. Fear & Greed Index à 11 (peur extrême) amplifie pression sur valeurs cycliques.",
       "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-04T07:01:24.606Z",
+      "horodatage": "2026-04-04T18:41:31.297Z",
       "donnees": {
         "symbole": "TSLA",
         "nom": "Tesla",
-        "prix": 360.59,
+        "prix": 360.61,
         "variation": -5.42
       }
     },
     {
       "id": "alert-2026-04-04-003",
-      "titre": "Fear & Greed Index : 11 (Extreme Fear), divergence actifs",
-      "texte": "Indice de peur extrême reflétant tensions géopolitiques (Iran-USA) et dégradation économique française. Divergence marquée : ETF +1,87%, actions -0,76%, indices EU -0,82%. Régime haussier modéré (consensus 63%) fragilisé par risques géopolitiques.",
+      "titre": "Fear & Greed Index : 11 (Peur extrême), divergence actifs majeurs",
+      "texte": "Indice à niveau critique (11/100). Divergence marquée : ETF +1,87%, actions -0,76%, indices EU -0,82%. Régime haussier modéré (consensus 63%) masque volatilité sous-jacente et rotation sectorielles liées aux tensions géopolitiques.",
       "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-04T07:01:24.606Z",
+      "horodatage": "2026-04-04T18:41:31.297Z",
       "donnees": {
         "score": 11,
         "label": "Extreme Fear",
@@ -47,27 +47,27 @@
     },
     {
       "id": "alert-2026-04-04-004",
-      "titre": "Crypto : flux nets -67% vs Q1 2025 (11 Mds$ vs 33 Mds$)",
-      "texte": "JPMorgan signale contraction majeure des entrées de capitaux en Q1 2026 malgré adoption institutionnelle (Charles Schwab, Bitcoin ETF). Incidents de sécurité (Drift 285 M$, Circle inaction) érodent confiance. 41% de l'offre BTC en moins-value théorique.",
+      "titre": "Bitcoin : risque liquidation shorts 2,5 Md$ au-dessus de 72 000$",
+      "texte": "Accumulation de positions courtes crée vulnérabilité technique. Données marché montrent amincissement interne (5 sources convergentes). Tensions géopolitiques créent volatilité accrue ; Michael Burry active position haussière en contexte crise économique.",
       "categorie": "crypto",
       "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-04-04T07:01:24.606Z",
+      "impact": "neutre",
+      "horodatage": "2026-04-04T18:41:31.297Z",
       "donnees": {
-        "tech_avg": 0.4,
-        "comm_avg": 4.61,
+        "tech_avg": 0.41,
+        "comm_avg": 4.62,
         "spread": -4.21,
         "regime": "risk-off / inflation"
       }
     },
     {
       "id": "alert-2026-04-04-005",
-      "titre": "Moyen-Orient : F-15E abattu en Iran, escalade militaire confirmée",
-      "texte": "Avion de chasse américain crash en Iran avec équipage partiellement récupéré. Attaques aériennes US-Israël sur sites militaires iraniens confirmées. Risque d'élargissement du conflit impacte directement prix énergétiques et anticipations de défense (+1 500 Mds$ budget US 2027).",
+      "titre": "Escalade Iran-États-Unis : pilote américain disparu, ultimatum 48h Trump",
+      "texte": "Chasseur américain abattu en Iran ; membre d'équipage toujours recherché. Trump réitère menaces d'escalade massive si pas d'accord dans 48h. Risque systémique pour corridors énergétiques et marchés commodités. Frappes israéliennes continues (Gaza : 72 291 morts).",
       "categorie": "geopolitique",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-04-04T07:01:24.606Z",
+      "horodatage": "2026-04-04T18:41:31.297Z",
       "donnees": {}
     }
   ],
