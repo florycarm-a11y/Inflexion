@@ -1,15 +1,18 @@
 {
-  "generated_at": "2026-04-04T07:02:53.299983+00:00Z",
+  "generated_at": "2026-04-04T18:43:09.083219+00:00Z",
   "scan_type": "short_term_sectoral",
   "max_horizon_days": 7,
   "summary": {
-    "total_markets_scanned": 286,
-    "total_matched": 54,
-    "short_term_markets": 2,
+    "total_markets_scanned": 283,
+    "total_matched": 40,
+    "short_term_markets": 3,
     "zones_active": 2,
-    "conflicts_active": 0,
-    "conflict_zones": [],
-    "high_edge_signals": 0
+    "conflicts_active": 2,
+    "conflict_zones": [
+      "ukraine",
+      "iran"
+    ],
+    "high_edge_signals": 2
   },
   "zones": [
     {
@@ -17,42 +20,53 @@
       "zone_name": "Ukraine / Mer Noire",
       "risk_score": 5.6,
       "opp_score": 3.2,
-      "conflict_active": false,
-      "conflict_multiplier": 1.0,
+      "conflict_active": true,
+      "conflict_multiplier": 2.0,
       "intel_multiplier": 1.29,
       "markets": [
+        {
+          "question": "Will Russia strike Kyiv on March 31, 2026?",
+          "end_date": "2026-02-28",
+          "horizon_days": 1.0,
+          "event_type": "military_strike",
+          "poly_price": 0.007,
+          "semplice_prob": 0.367,
+          "edge_pct": 36.0,
+          "direction": "BUY_YES",
+          "reasoning": "Type=military_strike(négatif) | Base=14.0% ⚠CONFLIT×2 × Mult=2.33×Intel1.29 → Ann=84.0% → T=0.0a → P=36.7% | M=6.6(w=40%"
+        },
         {
           "question": "Will Russia enter Dobropillia by April 30?",
           "end_date": "2026-01-31",
           "horizon_days": 1.0,
           "event_type": "territorial",
-          "poly_price": 0.058,
-          "semplice_prob": 0.143,
-          "edge_pct": 8.5,
+          "poly_price": 0.051,
+          "semplice_prob": 0.469,
+          "edge_pct": 41.8,
           "direction": "BUY_YES",
-          "reasoning": "Type=territorial(négatif) | Base=15.0% × Mult=2.38×Intel1.29 → Ann=46.0% → T=0.0a → P=14.3% | M=6.6(w=45%), P=5.4(w=15%)"
+          "reasoning": "Type=territorial(négatif) | Base=15.0% ⚠CONFLIT×2 × Mult=2.38×Intel1.29 → Ann=92.1% → T=0.0a → P=46.9% | M=6.6(w=45%), P"
         }
       ]
     },
     {
-      "zone_id": "inde",
-      "zone_name": "Inde",
-      "risk_score": 3.9,
-      "opp_score": 4.0,
-      "conflict_active": false,
-      "conflict_multiplier": 1.0,
-      "intel_multiplier": 1.03,
+      "zone_id": "iran",
+      "zone_name": "Iran",
+      "risk_score": 5.1,
+      "opp_score": 2.5,
+      "conflict_active": true,
+      "conflict_multiplier": 5.0,
+      "intel_multiplier": 1.38,
       "markets": [
         {
-          "question": "Will the Communist Party of India (CPI) win the most seats in the 2026 Kerala Legislative Assembly election?",
-          "end_date": "2026-04-09",
-          "horizon_days": 4.7,
-          "event_type": "election",
-          "poly_price": 0.002,
-          "semplice_prob": 0.136,
-          "edge_pct": 13.5,
-          "direction": "BUY_YES",
-          "reasoning": "Type=election(positif) | Base=45.0% × Mult=0.96×Intel1.03 → Ann=44.3% → T=0.0a → P=13.6% | P=3.6(w=35%), S=3.8(w=20%), E"
+          "question": "Military action against Iran ends by April 30, 2026?",
+          "end_date": "2026-03-31",
+          "horizon_days": 1.0,
+          "event_type": "ceasefire",
+          "poly_price": 0.26,
+          "semplice_prob": 0.154,
+          "edge_pct": 10.6,
+          "direction": "BUY_NO",
+          "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×5 × Mult=0.41×Intel1.38 → Ann=48.8% → T=0.0a → P=15.4% | P=1.5(w=30%), M=2"
         }
       ]
     }
