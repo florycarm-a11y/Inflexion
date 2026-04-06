@@ -1,78 +1,69 @@
 {
-  "updated": "2026-04-04T18:41:31.297Z",
-  "date": "2026-04-04",
+  "updated": "2026-04-06T07:29:44.460Z",
+  "date": "2026-04-06",
   "global": {
-    "score": -0.03,
+    "score": 0.08,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (-0.03), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est mixte (+0.08), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.85,
+      "score": -0.72,
       "confidence": 0.92,
       "tendance": "baissier",
-      "resume": "Escalade majeure Iran-États-Unis avec menaces d'ultimatum de Trump (48h), disparition d'un pilote américain, et intensification des conflits au Moyen-Orient et Gaza. Tensions géopolitiques systémiques affectant les corridors énergétiques critiques.",
+      "resume": "Escalade militaire au Moyen-Orient avec menaces directes des États-Unis contre l'Iran (centrales électriques, ponts), raids israéliens en Irak, et 163 blessés en 24h en Israël. Négociations de cessez-le-feu en cours mais tensions géopolitiques élevées dominent.",
       "signaux_cles": [
-        "Trump impose ultimatum 48h à l'Iran avec menaces d'escalade militaire",
-        "Pilote américain disparu après abattage d'un chasseur en Iran",
-        "Bilan Gaza atteint 72 291 morts ; frappes israéliennes continues"
+        "Trump menace de détruire les centrales électriques et ponts iraniens si le détroit d'Ormuz ne rouvre pas",
+        "Israël rapporte 163 blessés en 24h suite aux attaques iraniennes et du Hezbollah",
+        "Plans de cessez-le-feu Iran-États-Unis reçus par les deux parties, mais contexte d'escalade militaire"
       ]
     },
     "marches": {
-      "score": -0.15,
-      "confidence": 0.62,
+      "score": 0.18,
+      "confidence": 0.64,
       "tendance": "mixte",
-      "resume": "Signaux contradictoires : consolidation bancaire et mesures de pouvoir d'achat (titres-restaurant dimanche) contrebalancées par risques macroéconomiques. Données d'emploi et logement montrent résilience relative mais volatilité sous-jacente.",
+      "resume": "Signaux contradictoires : ventes de puces mondiales +61,8% Y/Y et Nikkei +0,49%, mais tensions géopolitiques et débats sur les aides budgétaires européennes créent de l'incertitude. OpenAI confrontée à des divisions internes sur l'IPO.",
       "signaux_cles": [
-        "Fermetures de succursales bancaires s'accélèrent dans contexte de consolidation",
-        "Extension utilisation titres-restaurant au dimanche (mesure de soutien au pouvoir d'achat)",
-        "Marché immobilier : acheteurs retrouvent du levier, données emploi mitigées"
+        "Ventes mondiales de puces +61,8% Y/Y en février, trajectoire vers 1 000 Md$ annuels",
+        "Nikkei 225 +0,49% ; S&P 500 historiquement +80% des fois en avril sur 20 ans",
+        "OpenAI divisée en interne sur le calendrier d'IPO avec risques de dépenses croissantes"
       ]
     },
     "crypto": {
-      "score": 0.05,
-      "confidence": 0.51,
-      "tendance": "neutre",
-      "resume": "Sentiment fragmenté : appels haussiers de figures établies (Michael Burry, ex-chancelier UK) contrebalancés par avertissements réglementaires Fed sur stablecoins et risques de liquidation shorts Bitcoin. Marché techniquement tendu.",
+      "score": 0.31,
+      "confidence": 0.58,
+      "tendance": "mixte",
+      "resume": "Bitcoin oscille autour de 69 000-70 000 $ avec risques de correction majeure identifiés. Menaces quantiques adressées par Circle/Arc, mais infiltrations nord-coréennes en DeFi et exploits de sécurité (Drift : 280 M$) pèsent sur la confiance.",
       "signaux_cles": [
-        "Michael Burry active position haussière Bitcoin en contexte de crise économique",
-        "Risque liquidation shorts Bitcoin estimé à 2,5 Md$ au-dessus de 72 000$",
-        "Fed émet avertissement sur stablecoins ; débat DeFi s'intensifie"
+        "Bitcoin frôle 70 000 $ mais analyst prévoit effondrement à 10 000 $ si pas de reclaim à 75 000 $",
+        "Drift exploit de 280 M$ lié à opération d'ingénierie sociale nord-coréenne de 6 mois",
+        "Circle déploie roadmap résistant aux menaces quantiques pour blockchain Arc"
       ]
     },
     "matieres_premieres": {
-      "score": 0.78,
+      "score": 0.68,
       "confidence": 0.88,
       "tendance": "haussier",
-      "resume": "Signaux fortement haussiers : tensions géopolitiques Iran-Hormuz, production pétrolière russe divisée par deux en mars, production énergétique US à records 2025. Fenêtre 2 semaines identifiée comme critique pour marchés commodités.",
+      "resume": "OPEC+ relève les quotas de production de 206 000 bpj en réponse à la réouverture du détroit d'Ormuz, mais avertit que les réparations des infrastructures énergétiques prendront longtemps. Pétrole soutenu par tensions géopolitiques et demande.",
       "signaux_cles": [
-        "Pétrole brut : tensions Hormuz et menaces Trump créent prime de risque géopolitique",
-        "Revenus pétroliers russes divisés par deux en mars avant rebond lié à la guerre",
-        "Production énergétique USA atteint niveaux records en 2025 ; prix carburants en hausse France"
+        "OPEC+ augmente quotas de 206 000 barils/jour suite à accord de réouverture du détroit d'Ormuz",
+        "Avertissement OPEC+ : réparations des installations énergétiques prendront longtemps après la guerre",
+        "Irak stabilise ses exportations avec passage accordé par l'Iran"
       ]
     },
     "ai_tech": {
       "score": 0.12,
-      "confidence": 0.58,
-      "tendance": "mixte",
-      "resume": "Avancées technologiques (Netflix VOID, Anthropic émotions Claude, PrismML 1-bit LLM) contrebalancées par crises réglementaires (Kalshi/Polymarket), fuite Claude Code, et départs talents Microsoft Azure. Secteur en transition avec risques de gouvernance.",
+      "confidence": 0.52,
+      "tendance": "neutre",
+      "resume": "Innovations technologiques positives (trois fusées géantes en 3 semaines, MaxToki pour prédiction du vieillissement cellulaire) contrebalancées par failles de sécurité critiques (FortiClient EMS, fuite Claude Code) et confiance réduite des utilisateurs en IA.",
       "signaux_cles": [
-        "Netflix open-source VOID : IA suppression objets vidéo avec physique recalculée",
-        "Anthropic découvre vecteurs émotionnels fonctionnels dans Claude influençant comportement",
-        "Crises réglementaires Kalshi/Polymarket : délits initiés, menaces, manipulation détectés"
+        "Américains utilisent l'IA plus que jamais mais lui font moins confiance (sondage Quinnipiac)",
+        "Faille critique FortiClient EMS exploitée en attaques, patch d'urgence publié",
+        "Fuite de code source Anthropic Claude Code crée problèmes de sécurité majeurs"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-02-17",
-      "global": -0.13,
-      "geopolitique": -0.35,
-      "marches": 0.15,
-      "crypto": -0.42,
-      "matieres_premieres": -0.35,
-      "ai_tech": 0.35
-    },
     {
       "date": "2026-02-18",
       "global": 0.08,
@@ -332,6 +323,15 @@
       "marches": -0.15,
       "crypto": 0.05,
       "matieres_premieres": 0.78,
+      "ai_tech": 0.12
+    },
+    {
+      "date": "2026-04-06",
+      "global": 0.08,
+      "geopolitique": -0.72,
+      "marches": 0.18,
+      "crypto": 0.31,
+      "matieres_premieres": 0.68,
       "ai_tech": 0.12
     }
   ],

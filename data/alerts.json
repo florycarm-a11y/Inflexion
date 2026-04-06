@@ -1,80 +1,95 @@
 {
-  "updated": "2026-04-04T18:41:31.297Z",
+  "updated": "2026-04-06T07:29:44.460Z",
   "alertes": [
     {
-      "id": "alert-2026-04-04-001",
-      "titre": "Pétrole (USO) : +11,16% à 137,94$, prime géopolitique Iran-Hormuz",
-      "texte": "Hausse majeure du brut liée aux tensions Iran-États-Unis et menace d'ultimatum Trump 48h. Risque d'escalade militaire affectant détroit de Hormuz (30% flux pétrolier mondial). Production russe divisée par deux en mars avant rebond lié à la guerre.",
+      "id": "alert-2026-04-06-001",
+      "titre": "Pétrole (USO) : +11,15% en 24h, franchit 137,92 $",
+      "texte": "Hausse significative du pétrole brut suite aux menaces d'escalade au Moyen-Orient et aux négociations de réouverture du détroit d'Ormuz. OPEC+ relève ses quotas de 206 000 bpj, signalant une anticipation de normalisation partielle mais avec avertissements sur les délais de réparation des infrastructures.",
       "categorie": "matieres_premieres",
-      "severite": "urgent",
-      "impact": "haussier",
-      "horodatage": "2026-04-04T18:41:31.297Z",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-04-06T07:29:44.460Z",
       "donnees": {
-        "symbole": "USO",
-        "nom": "Pétrole (ETF)",
-        "prix": 137.94,
-        "variation": 11.16
+        "symbole": "ADA",
+        "nom": "Cardano",
+        "prix": 0.255873,
+        "variation_24h": 5.4
       }
     },
     {
-      "id": "alert-2026-04-04-002",
-      "titre": "Tesla (TSLA) : -5,42% à 360,61$, divergence tech vs commodités",
-      "texte": "Baisse significative dans contexte de risk-off généralisé. Spread commodités/tech se creuse de -4,2pp, signalant rotation vers actifs défensifs et inflation. Fear & Greed Index à 11 (peur extrême) amplifie pression sur valeurs cycliques.",
+      "id": "alert-2026-04-06-002",
+      "titre": "Tesla (TSLA) : -5,42% en 24h, recul à 360,59 $",
+      "texte": "Baisse marquée dans un contexte de divergence commodities/tech (-4,2pp) et régime risk-off. Fear & Greed Index à 13 (Extreme Fear) reflète une aversion au risque générale affectant les valeurs technologiques de croissance.",
       "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-04T18:41:31.297Z",
+      "horodatage": "2026-04-06T07:29:44.460Z",
+      "donnees": {
+        "symbole": "USO",
+        "nom": "Pétrole (ETF)",
+        "prix": 137.92,
+        "variation": 11.15
+      }
+    },
+    {
+      "id": "alert-2026-04-06-003",
+      "titre": "Bitcoin : oscillation 69 000-70 000 $, risque de correction majeure",
+      "texte": "BTC frôle 70 000 $ mais analyst prévoit effondrement à 10 000 $ si pas de reclaim au-dessus de 75 000 $. Cardano +5,40% sur 24h offre une divergence haussière partielle, mais Fear & Greed Index à 13 indique peur extrême sur les marchés.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-04-06T07:29:44.460Z",
       "donnees": {
         "symbole": "TSLA",
         "nom": "Tesla",
-        "prix": 360.61,
+        "prix": 360.59,
         "variation": -5.42
       }
     },
     {
-      "id": "alert-2026-04-04-003",
-      "titre": "Fear & Greed Index : 11 (Peur extrême), divergence actifs majeurs",
-      "texte": "Indice à niveau critique (11/100). Divergence marquée : ETF +1,87%, actions -0,76%, indices EU -0,82%. Régime haussier modéré (consensus 63%) masque volatilité sous-jacente et rotation sectorielles liées aux tensions géopolitiques.",
-      "categorie": "marches",
-      "severite": "attention",
+      "id": "alert-2026-04-06-004",
+      "titre": "Moyen-Orient : escalade militaire, menaces directes USA-Iran",
+      "texte": "Trump menace de détruire centrales électriques et ponts iraniens ; Israël rapporte 163 blessés en 24h ; raids US-israéliens sur bases irakiennes. Négociations de cessez-le-feu en cours mais contexte d'escalade domine, créant volatilité accrue sur marchés.",
+      "categorie": "geopolitique",
+      "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-04-04T18:41:31.297Z",
+      "horodatage": "2026-04-06T07:29:44.460Z",
       "donnees": {
-        "score": 11,
+        "score": 13,
         "label": "Extreme Fear",
-        "variation_7j": -1
+        "variation_7j": 5
       }
     },
     {
-      "id": "alert-2026-04-04-004",
-      "titre": "Bitcoin : risque liquidation shorts 2,5 Md$ au-dessus de 72 000$",
-      "texte": "Accumulation de positions courtes crée vulnérabilité technique. Données marché montrent amincissement interne (5 sources convergentes). Tensions géopolitiques créent volatilité accrue ; Michael Burry active position haussière en contexte crise économique.",
+      "id": "alert-2026-04-06-005",
+      "titre": "Drift Protocol : exploit de 280 M$ lié à acteurs nord-coréens",
+      "texte": "Plateforme DeFi Drift victime d'exploit de 280 M$ suite à opération d'ingénierie sociale de 6 mois menée par acteurs nord-coréens présents en DeFi depuis 7 ans. Incident majeur de sécurité affectant confiance en écosystème crypto.",
       "categorie": "crypto",
-      "severite": "attention",
-      "impact": "neutre",
-      "horodatage": "2026-04-04T18:41:31.297Z",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-04-06T07:29:44.460Z",
       "donnees": {
-        "tech_avg": 0.41,
-        "comm_avg": 4.62,
+        "tech_avg": 0.4,
+        "comm_avg": 4.61,
         "spread": -4.21,
         "regime": "risk-off / inflation"
       }
     },
     {
-      "id": "alert-2026-04-04-005",
-      "titre": "Escalade Iran-États-Unis : pilote américain disparu, ultimatum 48h Trump",
-      "texte": "Chasseur américain abattu en Iran ; membre d'équipage toujours recherché. Trump réitère menaces d'escalade massive si pas d'accord dans 48h. Risque systémique pour corridors énergétiques et marchés commodités. Frappes israéliennes continues (Gaza : 72 291 morts).",
-      "categorie": "geopolitique",
-      "severite": "urgent",
+      "id": "alert-2026-04-06-006",
+      "titre": "Régime risk-off confirmé : commodities surperforment tech (-4,2pp)",
+      "texte": "Divergence significative avec commodities en hausse (pétrole +11,15%) et tech en baisse (Tesla -5,42%). Fear & Greed Index à 13 (Extreme Fear) confirme rotation vers actifs défensifs et aversion au risque généralisée.",
+      "categorie": "marches",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-04T18:41:31.297Z",
+      "horodatage": "2026-04-06T07:29:44.460Z",
       "donnees": {}
     }
   ],
   "stats": {
-    "total": 5,
+    "total": 6,
     "urgent": 2,
-    "attention": 3,
+    "attention": 4,
     "info": 0
   },
   "model": "claude-haiku-4-5-20251001",
