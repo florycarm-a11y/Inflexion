@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-04-07T07:16:52.359525+00:00Z",
+  "generated_at": "2026-04-07T19:05:34.533907+00:00Z",
   "scan_type": "short_term_sectoral",
   "max_horizon_days": 7,
   "summary": {
-    "total_markets_scanned": 278,
-    "total_matched": 44,
-    "short_term_markets": 3,
+    "total_markets_scanned": 282,
+    "total_matched": 51,
+    "short_term_markets": 4,
     "zones_active": 2,
     "conflicts_active": 1,
     "conflict_zones": [
       "iran"
     ],
-    "high_edge_signals": 2
+    "high_edge_signals": 3
   },
   "zones": [
     {
@@ -28,9 +28,9 @@
           "end_date": "2026-03-31",
           "horizon_days": 1.0,
           "event_type": "conflict",
-          "poly_price": 0.936,
+          "poly_price": 0.911,
           "semplice_prob": 0.527,
-          "edge_pct": 40.9,
+          "edge_pct": 38.4,
           "direction": "BUY_NO",
           "reasoning": "Type=conflict(négatif) | Base=6.0% ⚠CONFLIT×5 × Mult=1.91×Intel1.85 → Ann=95.0% → T=0.0a → P=52.7% | M=5.5(w=40%), P=5.7"
         },
@@ -42,6 +42,17 @@
           "poly_price": 0.73,
           "semplice_prob": 0.148,
           "edge_pct": 58.2,
+          "direction": "BUY_NO",
+          "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×5 × Mult=0.41×Intel1.34 → Ann=47.4% → T=0.0a → P=14.8% | P=1.5(w=30%), M=2"
+        },
+        {
+          "question": "Military action against Iran ends by April 30, 2026?",
+          "end_date": "2026-03-31",
+          "horizon_days": 1.0,
+          "event_type": "ceasefire",
+          "poly_price": 0.315,
+          "semplice_prob": 0.148,
+          "edge_pct": 16.7,
           "direction": "BUY_NO",
           "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×5 × Mult=0.41×Intel1.34 → Ann=47.4% → T=0.0a → P=14.8% | P=1.5(w=30%), M=2"
         }
@@ -61,9 +72,9 @@
           "end_date": "2026-02-28",
           "horizon_days": 1.0,
           "event_type": "territorial",
-          "poly_price": 0.032,
+          "poly_price": 0.03,
           "semplice_prob": 0.138,
-          "edge_pct": 10.6,
+          "edge_pct": 10.7,
           "direction": "BUY_YES",
           "reasoning": "Type=territorial(négatif) | Base=15.0% × Mult=2.38×Intel1.25 → Ann=44.7% → T=0.0a → P=13.8% | M=6.6(w=45%), P=5.4(w=15%)"
         }
