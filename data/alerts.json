@@ -1,29 +1,44 @@
 {
-  "updated": "2026-04-07T07:15:16.655Z",
+  "updated": "2026-04-07T19:03:56.920Z",
   "alertes": [
     {
       "id": "alert-2026-04-07-001",
-      "titre": "TESLA : -2,15% à 352,82 $, pression baissière en marché fragmenté",
-      "texte": "Tesla recule de 2,15% dans un contexte de marché fragmenté (consensus 50%, amplitude 0,99%). Crypto en baisse -1,49% et Fear & Greed Index extrême (11) pèsent sur les actions technologiques.",
+      "titre": "AAPL : -3,29% à $250,35, pression risk-off généralisé",
+      "texte": "Apple recule de 3,29% dans un contexte de régime risk-off généralisé (consensus 81%). Secteur tech surperformé négativement par matières premières (-2,3pp de spread). Nervosité accrue avant deadline Iran de Trump (7 avril).",
       "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-07T07:15:16.655Z",
+      "horodatage": "2026-04-07T19:03:56.920Z",
       "donnees": {
-        "symbole": "TSLA",
-        "nom": "Tesla",
-        "prix": 352.82,
-        "variation": -2.15
+        "symbole": "AAPL",
+        "nom": "Apple",
+        "prix": 250.35,
+        "variation": -3.29
       }
     },
     {
       "id": "alert-2026-04-07-002",
-      "titre": "SKY LENDING : TVL chute -8,1% en 24h à 6,1 Mds $, stress DeFi",
-      "texte": "Sky Lending enregistre retrait massif de liquidités (-8,1% en 24h, TVL 6,1Mds$). Solana Foundation renforce sécurité DeFi face attaques continues ; Phantom signale panne temporaire.",
-      "categorie": "crypto",
+      "titre": "TSLA : -3,64% à $339,96, pression secteur tech en risk-off",
+      "texte": "Tesla recule de 3,64% dans un contexte de volatilité accrue liée à l'ultimatum iranien. Classe d'actifs actions en baisse de -1,75% et crypto de -2,31%, signalant un régime de risque généralisé.",
+      "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-07T07:15:16.655Z",
+      "horodatage": "2026-04-07T19:03:56.920Z",
+      "donnees": {
+        "symbole": "TSLA",
+        "nom": "Tesla",
+        "prix": 339.96,
+        "variation": -3.64
+      }
+    },
+    {
+      "id": "alert-2026-04-07-003",
+      "titre": "Fear & Greed Index : 11 (Extreme Fear), plus bas niveau détecté",
+      "texte": "Indice de sentiment à 11 indiquant une peur extrême. Régime risk-off confirmé avec amplitude de volatilité de 1,71% et consensus baissier de 81% sur l'ensemble des marchés.",
+      "categorie": "marches",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-04-07T19:03:56.920Z",
       "donnees": {
         "score": 11,
         "label": "Extreme Fear",
@@ -31,66 +46,75 @@
       }
     },
     {
-      "id": "alert-2026-04-07-003",
-      "titre": "FEAR & GREED INDEX : 11 (Extreme Fear), plus bas depuis mois",
-      "texte": "Indice Fear & Greed atteint 11 (Extreme Fear) reflétant deadline Trump mardi sur Iran et escalade géopolitique. Bitcoin ETF inflows positifs (471M$) contredisent sentiment extrême.",
-      "categorie": "macro",
-      "severite": "urgent",
+      "id": "alert-2026-04-07-004",
+      "titre": "Sky Lending TVL : -11,8% sur 7j à $5,9B, retraits massifs DeFi",
+      "texte": "Sky Lending enregistre une baisse prolongée de -11,8% sur 7 jours et -10,6% en 24h, signalant des retraits massifs de liquidités. Perte de confiance dans le protocole DeFi dans contexte de fraudes record ($11B en 2025).",
+      "categorie": "crypto",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-07T07:15:16.655Z",
+      "horodatage": "2026-04-07T19:03:56.920Z",
       "donnees": {
         "protocole": "Sky Lending",
-        "tvl_b": 6.1,
-        "change_1d": -8.1,
+        "tvl_b": 5.9,
+        "change_1d": -10.6,
         "categorie": "CDP"
       }
     },
     {
-      "id": "alert-2026-04-07-004",
-      "titre": "PÉTROLE : Hormuz trafic record, risque choc d'approvisionnement",
-      "texte": "Trafic Hormuz au plus haut en semaines suite escalade Iran-Israël-États-Unis. Irak prépare hausse production post-guerre ; Corée du Sud sécurise approvisionnement alternatif. Deadline Trump mardi crée volatilité.",
+      "id": "alert-2026-04-07-005",
+      "titre": "Crise énergétique mondiale : pire que 1973-2022 selon l'AIE",
+      "texte": "L'Agence internationale de l'énergie déclare la crise actuelle pire que celle de 1973, 1979 et 2022 combinées. Guerre en Iran génère choc prolongé sur l'offre énergétique mondiale avec impact stagflationnaire identifié par la Fed.",
       "categorie": "matieres_premieres",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-04-07T07:15:16.655Z",
-      "donnees": {}
-    },
-    {
-      "id": "alert-2026-04-07-005",
-      "titre": "IRAN-ISRAËL : Attaques missiles confirmées, deadline Trump mardi soir",
-      "texte": "Fragments de roquettes dans 5 villes israéliennes ; attaques sur Jubail (Arabie Saoudite) confirmées. Trump menace destructions d'infrastructures iraniennes et fixe deadline mardi pour accord. Résolution ONU Hormuz attendue.",
-      "categorie": "geopolitique",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-04-07T07:15:16.655Z",
-      "donnees": {}
+      "horodatage": "2026-04-07T19:03:56.920Z",
+      "donnees": {
+        "protocole": "Sky Lending",
+        "tvl_b": 5.9,
+        "change_7d": -11.8
+      }
     },
     {
       "id": "alert-2026-04-07-006",
-      "titre": "UNIVERSAL MUSIC GROUP : +29% sur proposition Pershing Square 9,4Mds €",
-      "texte": "Universal Music Group bondit 29% suite annonce proposition d'acquisition Pershing Square (9,4Mds €). Mouvement significatif M&A dans secteur médias-divertissement.",
-      "categorie": "marches",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-04-07T07:15:16.655Z",
-      "donnees": {}
+      "titre": "Iran : ultimatum Trump mardi soir, escalade cyberattaques confirmée",
+      "texte": "Deadline présidentielle imminente (7 avril 2026) avec menaces d'élimination de civilisation iranienne. Cyberattaques iraniennes contre infrastructures critiques américaines en escalade depuis début du conflit, confirmées par autorités US.",
+      "categorie": "geopolitique",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-04-07T19:03:56.920Z",
+      "donnees": {
+        "tech_avg": -1.28,
+        "comm_avg": 0.98,
+        "spread": -2.26,
+        "regime": "risk-off / inflation"
+      }
     },
     {
       "id": "alert-2026-04-07-007",
-      "titre": "ANTHROPIC : 30Mds $ run rate, dépasse OpenAI pour première fois",
-      "texte": "Anthropic revendique chiffre d'affaires 30Mds $ run rate, surpassant OpenAI. Partenariat Google/Broadcom pour 3.5GW chips IA nouvelle génération confirmé.",
+      "titre": "Fraudes crypto : $11B en 2025, record historique selon FBI",
+      "texte": "Fraudes cryptographiques américaines atteignent $11 milliards en 2025, shattering records précédents. Contexte de perte de confiance secteur avec retraits massifs de liquidités DeFi et régulation FDIC en cours.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-04-07T19:03:56.920Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-04-07-008",
+      "titre": "Pertes cybercriminalité US : $20B+ pour la première fois",
+      "texte": "Pertes cybercriminalité américaines dépassent $20B pour la première fois. IA amplifie les fraudes en ligne. Contexte d'escalade des cybermenaces gouvernementales (Iran, Russie) contre infrastructures critiques.",
       "categorie": "ai_tech",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-04-07T07:15:16.655Z",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-04-07T19:03:56.920Z",
       "donnees": {}
     }
   ],
   "stats": {
-    "total": 7,
+    "total": 8,
     "urgent": 3,
-    "attention": 2,
-    "info": 2
+    "attention": 5,
+    "info": 0
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
