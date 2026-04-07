@@ -1,78 +1,69 @@
 {
-  "updated": "2026-04-06T07:29:44.460Z",
-  "date": "2026-04-06",
+  "updated": "2026-04-07T07:15:16.655Z",
+  "date": "2026-04-07",
   "global": {
-    "score": 0.08,
+    "score": -0.08,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (+0.08), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est mixte (-0.08), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
       "score": -0.72,
       "confidence": 0.92,
       "tendance": "baissier",
-      "resume": "Escalade militaire au Moyen-Orient avec menaces directes des États-Unis contre l'Iran (centrales électriques, ponts), raids israéliens en Irak, et 163 blessés en 24h en Israël. Négociations de cessez-le-feu en cours mais tensions géopolitiques élevées dominent.",
+      "resume": "Escalade militaire Iran-Israël-États-Unis avec attaques directes, menaces de frappes sur infrastructures critiques et deadline Trump mardi soir. Tensions régionales affectant corridors commerciaux stratégiques (Hormuz).",
       "signaux_cles": [
-        "Trump menace de détruire les centrales électriques et ponts iraniens si le détroit d'Ormuz ne rouvre pas",
-        "Israël rapporte 163 blessés en 24h suite aux attaques iraniennes et du Hezbollah",
-        "Plans de cessez-le-feu Iran-États-Unis reçus par les deux parties, mais contexte d'escalade militaire"
+        "Trump menace destructions d'infrastructures iraniennes et deadline mardi pour accord",
+        "Attaques de missiles sur Arabie Saoudite (Jubail) et villes israéliennes confirmées",
+        "Résolution ONU attendue sur Hormuz ; trafic en hausse maximale depuis semaines"
       ]
     },
     "marches": {
       "score": 0.18,
-      "confidence": 0.64,
+      "confidence": 0.62,
       "tendance": "mixte",
-      "resume": "Signaux contradictoires : ventes de puces mondiales +61,8% Y/Y et Nikkei +0,49%, mais tensions géopolitiques et débats sur les aides budgétaires européennes créent de l'incertitude. OpenAI confrontée à des divisions internes sur l'IPO.",
+      "resume": "Signaux contradictoires : acquisitions majeures (Universal Music +29%, Pershing Square €9.4B) et gains sectoriels (Samsung record, Latécoère +7.2%) contrebalancés par avertissements sur crédit privé américain et baisse des prévisions cuivre (Goldman).",
       "signaux_cles": [
-        "Ventes mondiales de puces +61,8% Y/Y en février, trajectoire vers 1 000 Md$ annuels",
-        "Nikkei 225 +0,49% ; S&P 500 historiquement +80% des fois en avril sur 20 ans",
-        "OpenAI divisée en interne sur le calendrier d'IPO avec risques de dépenses croissantes"
+        "Universal Music Group +29% sur proposition Pershing Square €9.4B",
+        "Samsung prévoit bénéfice d'exploitation record T1 2026",
+        "Goldman réduit prévisions cuivre sur demande molle ; confiance crédit privé US en baisse"
       ]
     },
     "crypto": {
       "score": 0.31,
-      "confidence": 0.58,
-      "tendance": "mixte",
-      "resume": "Bitcoin oscille autour de 69 000-70 000 $ avec risques de correction majeure identifiés. Menaces quantiques adressées par Circle/Arc, mais infiltrations nord-coréennes en DeFi et exploits de sécurité (Drift : 280 M$) pèsent sur la confiance.",
+      "confidence": 0.68,
+      "tendance": "neutre",
+      "resume": "Flux Bitcoin ETF spot positifs (471M$ en 24h, plus haut depuis 6 semaines) et stabilité prix face deadline Iran, mais XRP en retrait (-1.31$) et préoccupations quantiques. Régulation favorable (SEC 'reg crypto') en discussion.",
       "signaux_cles": [
-        "Bitcoin frôle 70 000 $ mais analyst prévoit effondrement à 10 000 $ si pas de reclaim à 75 000 $",
-        "Drift exploit de 280 M$ lié à opération d'ingénierie sociale nord-coréenne de 6 mois",
-        "Circle déploie roadmap résistant aux menaces quantiques pour blockchain Arc"
+        "Bitcoin ETF inflows 471M$ en 24h, plus haut depuis 6 semaines",
+        "Bitcoin frais au plus bas depuis 2011 ; prix stable malgré deadline Trump mardi",
+        "XRP glisse à 1.31$ après rupture échouée ; SEC prépare 'reg crypto' pour levées"
       ]
     },
     "matieres_premieres": {
-      "score": 0.68,
-      "confidence": 0.88,
-      "tendance": "haussier",
-      "resume": "OPEC+ relève les quotas de production de 206 000 bpj en réponse à la réouverture du détroit d'Ormuz, mais avertit que les réparations des infrastructures énergétiques prendront longtemps. Pétrole soutenu par tensions géopolitiques et demande.",
+      "score": -0.58,
+      "confidence": 0.85,
+      "tendance": "baissier",
+      "resume": "Chocs d'approvisionnement pétrolier (Hormuz, Irak, Japon vulnérable) et craintes géopolitiques dominent, mais pétrole en léger repli (-0.78% selon régime) face à évaluation risques. Engrais, plastiques et tech affectés par volatilité brut.",
       "signaux_cles": [
-        "OPEC+ augmente quotas de 206 000 barils/jour suite à accord de réouverture du détroit d'Ormuz",
-        "Avertissement OPEC+ : réparations des installations énergétiques prendront longtemps après la guerre",
-        "Irak stabilise ses exportations avec passage accordé par l'Iran"
+        "Trafic Hormuz au plus haut en semaines ; Corée du Sud sécurise pétrole hors Hormuz",
+        "Irak prépare hausse production post-guerre ; Japon exposé vulnérabilité approvisionnement",
+        "Chocs pétroliers cascadent sur engrais, plastiques, tech ; pétrole en repli léger"
       ]
     },
     "ai_tech": {
-      "score": 0.12,
-      "confidence": 0.52,
-      "tendance": "neutre",
-      "resume": "Innovations technologiques positives (trois fusées géantes en 3 semaines, MaxToki pour prédiction du vieillissement cellulaire) contrebalancées par failles de sécurité critiques (FortiClient EMS, fuite Claude Code) et confiance réduite des utilisateurs en IA.",
+      "score": 0.64,
+      "confidence": 0.79,
+      "tendance": "haussier",
+      "resume": "Anthropic domine avec chiffre d'affaires 30Mds$ run rate, partenariats Google/Broadcom et 3.5GW chips. Meta EUPE, Picsart monétisation et avancées sécurité IA positives. Préoccupations 'AI slop' et vulnérabilités GPU mineures.",
       "signaux_cles": [
-        "Américains utilisent l'IA plus que jamais mais lui font moins confiance (sondage Quinnipiac)",
-        "Faille critique FortiClient EMS exploitée en attaques, patch d'urgence publié",
-        "Fuite de code source Anthropic Claude Code crée problèmes de sécurité majeurs"
+        "Anthropic annonce 30Mds$ run rate, dépasse OpenAI ; partenariat Google/Broadcom 3.5GW",
+        "Meta EUPE : encodeur vision <100M paramètres rivalise modèles spécialisés",
+        "Vulnérabilités GPU (GPUBreach) et 'AI slop' identifiées ; OpenAI alums lèvent ~100M$"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-02-18",
-      "global": 0.08,
-      "geopolitique": -0.45,
-      "marches": 0.25,
-      "crypto": 0.52,
-      "matieres_premieres": 0.35,
-      "ai_tech": -0.15
-    },
     {
       "date": "2026-02-19",
       "global": -0.06,
@@ -333,6 +324,15 @@
       "crypto": 0.31,
       "matieres_premieres": 0.68,
       "ai_tech": 0.12
+    },
+    {
+      "date": "2026-04-07",
+      "global": -0.08,
+      "geopolitique": -0.72,
+      "marches": 0.18,
+      "crypto": 0.31,
+      "matieres_premieres": -0.58,
+      "ai_tech": 0.64
     }
   ],
   "model": "claude-haiku-4-5-20251001",

@@ -1,96 +1,96 @@
 {
-  "updated": "2026-04-06T07:29:44.460Z",
+  "updated": "2026-04-07T07:15:16.655Z",
   "alertes": [
     {
-      "id": "alert-2026-04-06-001",
-      "titre": "Pétrole (USO) : +11,15% en 24h, franchit 137,92 $",
-      "texte": "Hausse significative du pétrole brut suite aux menaces d'escalade au Moyen-Orient et aux négociations de réouverture du détroit d'Ormuz. OPEC+ relève ses quotas de 206 000 bpj, signalant une anticipation de normalisation partielle mais avec avertissements sur les délais de réparation des infrastructures.",
-      "categorie": "matieres_premieres",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-04-06T07:29:44.460Z",
-      "donnees": {
-        "symbole": "ADA",
-        "nom": "Cardano",
-        "prix": 0.255873,
-        "variation_24h": 5.4
-      }
-    },
-    {
-      "id": "alert-2026-04-06-002",
-      "titre": "Tesla (TSLA) : -5,42% en 24h, recul à 360,59 $",
-      "texte": "Baisse marquée dans un contexte de divergence commodities/tech (-4,2pp) et régime risk-off. Fear & Greed Index à 13 (Extreme Fear) reflète une aversion au risque générale affectant les valeurs technologiques de croissance.",
+      "id": "alert-2026-04-07-001",
+      "titre": "TESLA : -2,15% à 352,82 $, pression baissière en marché fragmenté",
+      "texte": "Tesla recule de 2,15% dans un contexte de marché fragmenté (consensus 50%, amplitude 0,99%). Crypto en baisse -1,49% et Fear & Greed Index extrême (11) pèsent sur les actions technologiques.",
       "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-06T07:29:44.460Z",
-      "donnees": {
-        "symbole": "USO",
-        "nom": "Pétrole (ETF)",
-        "prix": 137.92,
-        "variation": 11.15
-      }
-    },
-    {
-      "id": "alert-2026-04-06-003",
-      "titre": "Bitcoin : oscillation 69 000-70 000 $, risque de correction majeure",
-      "texte": "BTC frôle 70 000 $ mais analyst prévoit effondrement à 10 000 $ si pas de reclaim au-dessus de 75 000 $. Cardano +5,40% sur 24h offre une divergence haussière partielle, mais Fear & Greed Index à 13 indique peur extrême sur les marchés.",
-      "categorie": "crypto",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-04-06T07:29:44.460Z",
+      "horodatage": "2026-04-07T07:15:16.655Z",
       "donnees": {
         "symbole": "TSLA",
         "nom": "Tesla",
-        "prix": 360.59,
-        "variation": -5.42
+        "prix": 352.82,
+        "variation": -2.15
       }
     },
     {
-      "id": "alert-2026-04-06-004",
-      "titre": "Moyen-Orient : escalade militaire, menaces directes USA-Iran",
-      "texte": "Trump menace de détruire centrales électriques et ponts iraniens ; Israël rapporte 163 blessés en 24h ; raids US-israéliens sur bases irakiennes. Négociations de cessez-le-feu en cours mais contexte d'escalade domine, créant volatilité accrue sur marchés.",
+      "id": "alert-2026-04-07-002",
+      "titre": "SKY LENDING : TVL chute -8,1% en 24h à 6,1 Mds $, stress DeFi",
+      "texte": "Sky Lending enregistre retrait massif de liquidités (-8,1% en 24h, TVL 6,1Mds$). Solana Foundation renforce sécurité DeFi face attaques continues ; Phantom signale panne temporaire.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-04-07T07:15:16.655Z",
+      "donnees": {
+        "score": 11,
+        "label": "Extreme Fear",
+        "variation_7j": 0
+      }
+    },
+    {
+      "id": "alert-2026-04-07-003",
+      "titre": "FEAR & GREED INDEX : 11 (Extreme Fear), plus bas depuis mois",
+      "texte": "Indice Fear & Greed atteint 11 (Extreme Fear) reflétant deadline Trump mardi sur Iran et escalade géopolitique. Bitcoin ETF inflows positifs (471M$) contredisent sentiment extrême.",
+      "categorie": "macro",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-04-07T07:15:16.655Z",
+      "donnees": {
+        "protocole": "Sky Lending",
+        "tvl_b": 6.1,
+        "change_1d": -8.1,
+        "categorie": "CDP"
+      }
+    },
+    {
+      "id": "alert-2026-04-07-004",
+      "titre": "PÉTROLE : Hormuz trafic record, risque choc d'approvisionnement",
+      "texte": "Trafic Hormuz au plus haut en semaines suite escalade Iran-Israël-États-Unis. Irak prépare hausse production post-guerre ; Corée du Sud sécurise approvisionnement alternatif. Deadline Trump mardi crée volatilité.",
+      "categorie": "matieres_premieres",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-04-07T07:15:16.655Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-04-07-005",
+      "titre": "IRAN-ISRAËL : Attaques missiles confirmées, deadline Trump mardi soir",
+      "texte": "Fragments de roquettes dans 5 villes israéliennes ; attaques sur Jubail (Arabie Saoudite) confirmées. Trump menace destructions d'infrastructures iraniennes et fixe deadline mardi pour accord. Résolution ONU Hormuz attendue.",
       "categorie": "geopolitique",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-04-06T07:29:44.460Z",
-      "donnees": {
-        "score": 13,
-        "label": "Extreme Fear",
-        "variation_7j": 5
-      }
+      "horodatage": "2026-04-07T07:15:16.655Z",
+      "donnees": {}
     },
     {
-      "id": "alert-2026-04-06-005",
-      "titre": "Drift Protocol : exploit de 280 M$ lié à acteurs nord-coréens",
-      "texte": "Plateforme DeFi Drift victime d'exploit de 280 M$ suite à opération d'ingénierie sociale de 6 mois menée par acteurs nord-coréens présents en DeFi depuis 7 ans. Incident majeur de sécurité affectant confiance en écosystème crypto.",
-      "categorie": "crypto",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-04-06T07:29:44.460Z",
-      "donnees": {
-        "tech_avg": 0.4,
-        "comm_avg": 4.61,
-        "spread": -4.21,
-        "regime": "risk-off / inflation"
-      }
-    },
-    {
-      "id": "alert-2026-04-06-006",
-      "titre": "Régime risk-off confirmé : commodities surperforment tech (-4,2pp)",
-      "texte": "Divergence significative avec commodities en hausse (pétrole +11,15%) et tech en baisse (Tesla -5,42%). Fear & Greed Index à 13 (Extreme Fear) confirme rotation vers actifs défensifs et aversion au risque généralisée.",
+      "id": "alert-2026-04-07-006",
+      "titre": "UNIVERSAL MUSIC GROUP : +29% sur proposition Pershing Square 9,4Mds €",
+      "texte": "Universal Music Group bondit 29% suite annonce proposition d'acquisition Pershing Square (9,4Mds €). Mouvement significatif M&A dans secteur médias-divertissement.",
       "categorie": "marches",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-04-06T07:29:44.460Z",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-04-07T07:15:16.655Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-04-07-007",
+      "titre": "ANTHROPIC : 30Mds $ run rate, dépasse OpenAI pour première fois",
+      "texte": "Anthropic revendique chiffre d'affaires 30Mds $ run rate, surpassant OpenAI. Partenariat Google/Broadcom pour 3.5GW chips IA nouvelle génération confirmé.",
+      "categorie": "ai_tech",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-04-07T07:15:16.655Z",
       "donnees": {}
     }
   ],
   "stats": {
-    "total": 6,
-    "urgent": 2,
-    "attention": 4,
-    "info": 0
+    "total": 7,
+    "urgent": 3,
+    "attention": 2,
+    "info": 2
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
