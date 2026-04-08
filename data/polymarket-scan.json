@@ -1,74 +1,19 @@
 {
-  "generated_at": "2026-04-08T07:19:37.314104+00:00Z",
+  "generated_at": "2026-04-08T19:18:01.125959+00:00Z",
   "scan_type": "short_term_sectoral",
   "max_horizon_days": 7,
   "summary": {
-    "total_markets_scanned": 274,
-    "total_matched": 47,
-    "short_term_markets": 4,
+    "total_markets_scanned": 284,
+    "total_matched": 46,
+    "short_term_markets": 5,
     "zones_active": 3,
     "conflicts_active": 1,
     "conflict_zones": [
       "iran"
     ],
-    "high_edge_signals": 2
+    "high_edge_signals": 0
   },
   "zones": [
-    {
-      "zone_id": "iran",
-      "zone_name": "Iran",
-      "risk_score": 5.1,
-      "opp_score": 2.5,
-      "conflict_active": true,
-      "conflict_multiplier": 5.0,
-      "intel_multiplier": 1.34,
-      "markets": [
-        {
-          "question": "Will Iran take military action against a Gulf State on March 29, 2026?",
-          "end_date": "2026-03-31",
-          "horizon_days": 1.0,
-          "event_type": "conflict",
-          "poly_price": 0.868,
-          "semplice_prob": 0.527,
-          "edge_pct": 34.0,
-          "direction": "BUY_NO",
-          "reasoning": "Type=conflict(négatif) | Base=6.0% ⚠CONFLIT×5 × Mult=1.91×Intel1.85 → Ann=95.0% → T=0.0a → P=52.7% | M=5.5(w=40%), P=5.7"
-        },
-        {
-          "question": "US x Iran meeting by April 10, 2026?",
-          "end_date": "2026-04-10",
-          "horizon_days": 1.7,
-          "event_type": "diplomacy",
-          "poly_price": 0.747,
-          "semplice_prob": 0.141,
-          "edge_pct": 60.6,
-          "direction": "BUY_NO",
-          "reasoning": "Type=diplomacy(positif) | Base=20.0% ⚠CONFLIT×5 × Mult=0.40×Intel1.34 → Ann=45.6% → T=0.0a → P=14.1% | P=1.5(w=30%), M=2"
-        }
-      ]
-    },
-    {
-      "zone_id": "ormuz",
-      "zone_name": "Détroit d\"Ormuz",
-      "risk_score": 6.2,
-      "opp_score": 2.2,
-      "conflict_active": false,
-      "conflict_multiplier": 1.0,
-      "intel_multiplier": 2.0,
-      "markets": [
-        {
-          "question": "US escorts commercial ship through Hormuz by April 30?",
-          "end_date": "2026-03-31",
-          "horizon_days": 1.0,
-          "event_type": "maritime",
-          "poly_price": 0.28,
-          "semplice_prob": 0.195,
-          "edge_pct": 8.5,
-          "direction": "BUY_NO",
-          "reasoning": "Type=maritime(négatif) | Base=12.0% × Mult=2.41×Intel2.00 → Ann=57.9% → T=0.0a → P=19.5% | M=6.2(w=30%), Ee=5.2(w=15%), "
-        }
-      ]
-    },
     {
       "zone_id": "ukraine",
       "zone_name": "Ukraine / Mer Noire",
@@ -88,6 +33,72 @@
           "edge_pct": 10.7,
           "direction": "BUY_YES",
           "reasoning": "Type=territorial(négatif) | Base=15.0% × Mult=2.38×Intel1.25 → Ann=44.7% → T=0.0a → P=13.8% | M=6.6(w=45%), P=5.4(w=15%)"
+        },
+        {
+          "question": "Will Russia capture Kostyantynivka by April 30?",
+          "end_date": "2026-03-31",
+          "horizon_days": 1.0,
+          "event_type": "territorial",
+          "poly_price": 0.085,
+          "semplice_prob": 0.138,
+          "edge_pct": 5.3,
+          "direction": "BUY_YES",
+          "reasoning": "Type=territorial(négatif) | Base=15.0% × Mult=2.38×Intel1.25 → Ann=44.7% → T=0.0a → P=13.8% | M=6.6(w=45%), P=5.4(w=15%)"
+        }
+      ]
+    },
+    {
+      "zone_id": "iran",
+      "zone_name": "Iran",
+      "risk_score": 5.1,
+      "opp_score": 2.5,
+      "conflict_active": true,
+      "conflict_multiplier": 5.0,
+      "intel_multiplier": 1.34,
+      "markets": [
+        {
+          "question": "Trump announces US x Iran ceasefire end by April 10, 2026?",
+          "end_date": "2026-04-10",
+          "horizon_days": 1.2,
+          "event_type": "ceasefire",
+          "poly_price": 0.145,
+          "semplice_prob": 0.148,
+          "edge_pct": 0.3,
+          "direction": "BUY_YES",
+          "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×5 × Mult=0.41×Intel1.34 → Ann=47.4% → T=0.0a → P=14.8% | P=1.5(w=30%), M=2"
+        },
+        {
+          "question": "Trump announces end of military operations against Iran by April 15th?",
+          "end_date": "2026-04-15",
+          "horizon_days": 6.2,
+          "event_type": "ceasefire",
+          "poly_price": 0.185,
+          "semplice_prob": 0.148,
+          "edge_pct": 3.7,
+          "direction": "BUY_NO",
+          "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×5 × Mult=0.41×Intel1.34 → Ann=47.4% → T=0.0a → P=14.8% | P=1.5(w=30%), M=2"
+        }
+      ]
+    },
+    {
+      "zone_id": "inde",
+      "zone_name": "Inde",
+      "risk_score": 3.9,
+      "opp_score": 4.0,
+      "conflict_active": false,
+      "conflict_multiplier": 1.0,
+      "intel_multiplier": 1.0,
+      "markets": [
+        {
+          "question": "Will the Indian Union Muslim League (IUML) win fewer than 10 seats in the 2026 Kerala Legislative Assembly election?",
+          "end_date": "2026-04-09",
+          "horizon_days": 1.0,
+          "event_type": "election",
+          "poly_price": 0.004,
+          "semplice_prob": 0.131,
+          "edge_pct": 12.8,
+          "direction": "BUY_YES",
+          "reasoning": "Type=election(positif) | Base=45.0% × Mult=0.96 → Ann=43.0% → T=0.0a → P=13.1% | P=3.6(w=35%), S=3.8(w=20%), E=4.0(w=20%"
         }
       ]
     }
