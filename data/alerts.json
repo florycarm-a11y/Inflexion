@@ -1,120 +1,87 @@
 {
-  "updated": "2026-04-07T19:03:56.920Z",
+  "updated": "2026-04-08T07:18:01.246Z",
   "alertes": [
     {
-      "id": "alert-2026-04-07-001",
-      "titre": "AAPL : -3,29% à $250,35, pression risk-off généralisé",
-      "texte": "Apple recule de 3,29% dans un contexte de régime risk-off généralisé (consensus 81%). Secteur tech surperformé négativement par matières premières (-2,3pp de spread). Nervosité accrue avant deadline Iran de Trump (7 avril).",
-      "categorie": "marches",
+      "id": "alert-2026-04-08-001",
+      "titre": "BTC : +5% à 72 500 $, rallye cessez-le-feu US-Iran",
+      "texte": "Bitcoin bondit de 5% à 72 500 dollars suite à l'annonce du cessez-le-feu de deux semaines entre États-Unis et Iran le 8 avril 2026. Liquidations de shorts crypto totalisant 427 millions de dollars enregistrées sur 24h.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-04-08T07:18:01.246Z",
+      "donnees": {
+        "symbole": "ETH",
+        "nom": "Ethereum",
+        "prix": 2248.02,
+        "variation_24h": 7
+      }
+    },
+    {
+      "id": "alert-2026-04-08-002",
+      "titre": "ETH : +7% à 2 248 $, encours stablecoins ATH à 180 Md$",
+      "texte": "Ethereum gagne 7% à 2 248 dollars en 24h. L'encours des stablecoins Ethereum atteint un sommet historique de 180 milliards de dollars, reflétant une accumulation de liquidités sur la blockchain.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-04-08T07:18:01.246Z",
+      "donnees": {
+        "symbole": "XRP",
+        "nom": "XRP",
+        "prix": 1.38,
+        "variation_24h": 5.19
+      }
+    },
+    {
+      "id": "alert-2026-04-08-003",
+      "titre": "Pétrole : chute sous 100 $ suite cessez-le-feu Iran-États-Unis",
+      "texte": "Le pétrole brut chute sous 100 dollars le 8 avril 2026 suite à l'annonce du cessez-le-feu US-Iran et la perspective de réouverture du détroit d'Ormuz. Baisse du kérosène de 5 à 10 centimes attendue en 48 heures.",
+      "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-07T19:03:56.920Z",
+      "horodatage": "2026-04-08T07:18:01.246Z",
+      "donnees": {
+        "symbole": "SOL",
+        "nom": "Solana",
+        "prix": 84.35,
+        "variation_24h": 6.09
+      }
+    },
+    {
+      "id": "alert-2026-04-08-004",
+      "titre": "Nikkei 225 : +5,42%, rebond asiatique post-cessez-le-feu",
+      "texte": "L'indice Nikkei 225 clôture en hausse de 5,42% le 8 avril 2026, porté par le soulagement géopolitique suite à l'accord US-Iran et la baisse des prix de l'énergie.",
+      "categorie": "marches",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-04-08T07:18:01.246Z",
+      "donnees": {
+        "symbole": "ADA",
+        "nom": "Cardano",
+        "prix": 0.261147,
+        "variation_24h": 7.28
+      }
+    },
+    {
+      "id": "alert-2026-04-08-005",
+      "titre": "AAPL : -2,07% à 253,50 $, décrochage actions technologiques",
+      "texte": "Apple recule de 2,07% à 253,50 dollars le 8 avril 2026, contrastant avec le rallye crypto et les indices asiatiques. Les actions technologiques US affichent une faiblesse relative.",
+      "categorie": "marches",
+      "severite": "info",
+      "impact": "baissier",
+      "horodatage": "2026-04-08T07:18:01.246Z",
       "donnees": {
         "symbole": "AAPL",
         "nom": "Apple",
-        "prix": 250.35,
-        "variation": -3.29
+        "prix": 253.5,
+        "variation": -2.07
       }
-    },
-    {
-      "id": "alert-2026-04-07-002",
-      "titre": "TSLA : -3,64% à $339,96, pression secteur tech en risk-off",
-      "texte": "Tesla recule de 3,64% dans un contexte de volatilité accrue liée à l'ultimatum iranien. Classe d'actifs actions en baisse de -1,75% et crypto de -2,31%, signalant un régime de risque généralisé.",
-      "categorie": "marches",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-04-07T19:03:56.920Z",
-      "donnees": {
-        "symbole": "TSLA",
-        "nom": "Tesla",
-        "prix": 339.96,
-        "variation": -3.64
-      }
-    },
-    {
-      "id": "alert-2026-04-07-003",
-      "titre": "Fear & Greed Index : 11 (Extreme Fear), plus bas niveau détecté",
-      "texte": "Indice de sentiment à 11 indiquant une peur extrême. Régime risk-off confirmé avec amplitude de volatilité de 1,71% et consensus baissier de 81% sur l'ensemble des marchés.",
-      "categorie": "marches",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-04-07T19:03:56.920Z",
-      "donnees": {
-        "score": 11,
-        "label": "Extreme Fear",
-        "variation_7j": 0
-      }
-    },
-    {
-      "id": "alert-2026-04-07-004",
-      "titre": "Sky Lending TVL : -11,8% sur 7j à $5,9B, retraits massifs DeFi",
-      "texte": "Sky Lending enregistre une baisse prolongée de -11,8% sur 7 jours et -10,6% en 24h, signalant des retraits massifs de liquidités. Perte de confiance dans le protocole DeFi dans contexte de fraudes record ($11B en 2025).",
-      "categorie": "crypto",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-04-07T19:03:56.920Z",
-      "donnees": {
-        "protocole": "Sky Lending",
-        "tvl_b": 5.9,
-        "change_1d": -10.6,
-        "categorie": "CDP"
-      }
-    },
-    {
-      "id": "alert-2026-04-07-005",
-      "titre": "Crise énergétique mondiale : pire que 1973-2022 selon l'AIE",
-      "texte": "L'Agence internationale de l'énergie déclare la crise actuelle pire que celle de 1973, 1979 et 2022 combinées. Guerre en Iran génère choc prolongé sur l'offre énergétique mondiale avec impact stagflationnaire identifié par la Fed.",
-      "categorie": "matieres_premieres",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-04-07T19:03:56.920Z",
-      "donnees": {
-        "protocole": "Sky Lending",
-        "tvl_b": 5.9,
-        "change_7d": -11.8
-      }
-    },
-    {
-      "id": "alert-2026-04-07-006",
-      "titre": "Iran : ultimatum Trump mardi soir, escalade cyberattaques confirmée",
-      "texte": "Deadline présidentielle imminente (7 avril 2026) avec menaces d'élimination de civilisation iranienne. Cyberattaques iraniennes contre infrastructures critiques américaines en escalade depuis début du conflit, confirmées par autorités US.",
-      "categorie": "geopolitique",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-04-07T19:03:56.920Z",
-      "donnees": {
-        "tech_avg": -1.28,
-        "comm_avg": 0.98,
-        "spread": -2.26,
-        "regime": "risk-off / inflation"
-      }
-    },
-    {
-      "id": "alert-2026-04-07-007",
-      "titre": "Fraudes crypto : $11B en 2025, record historique selon FBI",
-      "texte": "Fraudes cryptographiques américaines atteignent $11 milliards en 2025, shattering records précédents. Contexte de perte de confiance secteur avec retraits massifs de liquidités DeFi et régulation FDIC en cours.",
-      "categorie": "crypto",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-04-07T19:03:56.920Z",
-      "donnees": {}
-    },
-    {
-      "id": "alert-2026-04-07-008",
-      "titre": "Pertes cybercriminalité US : $20B+ pour la première fois",
-      "texte": "Pertes cybercriminalité américaines dépassent $20B pour la première fois. IA amplifie les fraudes en ligne. Contexte d'escalade des cybermenaces gouvernementales (Iran, Russie) contre infrastructures critiques.",
-      "categorie": "ai_tech",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-04-07T19:03:56.920Z",
-      "donnees": {}
     }
   ],
   "stats": {
-    "total": 8,
-    "urgent": 3,
-    "attention": 5,
-    "info": 0
+    "total": 5,
+    "urgent": 0,
+    "attention": 4,
+    "info": 1
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
