@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-04-07T19:05:34.533907+00:00Z",
+  "generated_at": "2026-04-08T07:19:37.314104+00:00Z",
   "scan_type": "short_term_sectoral",
   "max_horizon_days": 7,
   "summary": {
-    "total_markets_scanned": 282,
-    "total_matched": 51,
+    "total_markets_scanned": 274,
+    "total_matched": 47,
     "short_term_markets": 4,
-    "zones_active": 2,
+    "zones_active": 3,
     "conflicts_active": 1,
     "conflict_zones": [
       "iran"
     ],
-    "high_edge_signals": 3
+    "high_edge_signals": 2
   },
   "zones": [
     {
@@ -28,33 +28,44 @@
           "end_date": "2026-03-31",
           "horizon_days": 1.0,
           "event_type": "conflict",
-          "poly_price": 0.911,
+          "poly_price": 0.868,
           "semplice_prob": 0.527,
-          "edge_pct": 38.4,
+          "edge_pct": 34.0,
           "direction": "BUY_NO",
           "reasoning": "Type=conflict(négatif) | Base=6.0% ⚠CONFLIT×5 × Mult=1.91×Intel1.85 → Ann=95.0% → T=0.0a → P=52.7% | M=5.5(w=40%), P=5.7"
         },
         {
-          "question": "Military action against Iran ends by June 30, 2026?",
-          "end_date": "2026-03-31",
-          "horizon_days": 1.0,
-          "event_type": "ceasefire",
-          "poly_price": 0.73,
-          "semplice_prob": 0.148,
-          "edge_pct": 58.2,
+          "question": "US x Iran meeting by April 10, 2026?",
+          "end_date": "2026-04-10",
+          "horizon_days": 1.7,
+          "event_type": "diplomacy",
+          "poly_price": 0.747,
+          "semplice_prob": 0.141,
+          "edge_pct": 60.6,
           "direction": "BUY_NO",
-          "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×5 × Mult=0.41×Intel1.34 → Ann=47.4% → T=0.0a → P=14.8% | P=1.5(w=30%), M=2"
-        },
+          "reasoning": "Type=diplomacy(positif) | Base=20.0% ⚠CONFLIT×5 × Mult=0.40×Intel1.34 → Ann=45.6% → T=0.0a → P=14.1% | P=1.5(w=30%), M=2"
+        }
+      ]
+    },
+    {
+      "zone_id": "ormuz",
+      "zone_name": "Détroit d\"Ormuz",
+      "risk_score": 6.2,
+      "opp_score": 2.2,
+      "conflict_active": false,
+      "conflict_multiplier": 1.0,
+      "intel_multiplier": 2.0,
+      "markets": [
         {
-          "question": "Military action against Iran ends by April 30, 2026?",
+          "question": "US escorts commercial ship through Hormuz by April 30?",
           "end_date": "2026-03-31",
           "horizon_days": 1.0,
-          "event_type": "ceasefire",
-          "poly_price": 0.315,
-          "semplice_prob": 0.148,
-          "edge_pct": 16.7,
+          "event_type": "maritime",
+          "poly_price": 0.28,
+          "semplice_prob": 0.195,
+          "edge_pct": 8.5,
           "direction": "BUY_NO",
-          "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×5 × Mult=0.41×Intel1.34 → Ann=47.4% → T=0.0a → P=14.8% | P=1.5(w=30%), M=2"
+          "reasoning": "Type=maritime(négatif) | Base=12.0% × Mult=2.41×Intel2.00 → Ann=57.9% → T=0.0a → P=19.5% | M=6.2(w=30%), Ee=5.2(w=15%), "
         }
       ]
     },
