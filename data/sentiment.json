@@ -1,65 +1,70 @@
 {
-  "updated": "2026-04-08T07:18:01.246Z",
+  "updated": "2026-04-08T19:16:02.006Z",
   "date": "2026-04-08",
   "global": {
-    "score": 0.38,
-    "tendance": "haussier",
-    "resume": "Le sentiment global est haussier (+0.38), dominé par la rubrique crypto (haussier)."
+    "score": 0.06,
+    "tendance": "mixte",
+    "resume": "Le sentiment global est mixte (+0.06), dominé par la rubrique matieres_premieres (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": 0.65,
+      "score": -0.65,
       "confidence": 0.85,
-      "tendance": "haussier",
-      "resume": "Accord de cessez-le-feu de deux semaines entre États-Unis et Iran annoncé le 8 avril 2026, levant les tensions géopolitiques majeures au Moyen-Orient. Réouverture du détroit d'Ormuz confirmée, bien que certains dirigeants israéliens critiquent l'accord.",
+      "tendance": "baissier",
+      "resume": "Trêve Iran-États-Unis fragile avec violations rapportées (frappes israéliennes au Liban, attaques contre pipeline saoudien). Incertitude sur la durabilité de l'accord et inclusion du Liban dans les négociations.",
       "signaux_cles": [
-        "Cessez-le-feu US-Iran de 2 semaines annoncé le 8 avril 2026",
-        "Réouverture du détroit d'Ormuz confirmée par le Royaume-Uni",
-        "Critiques israéliennes qualifiant l'accord de 'désastre politique' mais sans blocage unilatéral"
+        "Ceasefire testé par confusion sur le Détroit d'Ormuz et frappes continues au Liban",
+        "Iran demande l'inclusion du Liban dans l'accord de trêve",
+        "Attaques iraniennes contre le pipeline Est-Ouest saoudien rapportées",
+        "Trump revendique victoire sans atteindre objectifs déclarés après 5 semaines de bombardements"
       ]
     },
     "marches": {
       "score": 0.58,
-      "confidence": 0.78,
+      "confidence": 0.72,
       "tendance": "haussier",
-      "resume": "Rebond des marchés mondiaux suite à l'annonce du cessez-le-feu Iran-États-Unis, avec hausse des actions asiatiques et baisse des prix du pétrole. Nikkei 225 en hausse de 5,42%, mais déficit commercial français s'aggrave à 5,8 milliards d'euros en février.",
+      "resume": "Rebond généralisé post-ceasefire avec focus sur secteur tech/IA. Mémoires et actions technologiques surperforment. Signaux mitigés sur politique monétaire (Fed envisage hausses ET baisses).",
       "signaux_cles": [
-        "Nikkei 225 +5,42% à la clôture du 8 avril 2026",
-        "Pétrole chute sous 100 $ suite au cessez-le-feu",
-        "Déficit commercial français creusé à 5,8 milliards d'euros en février 2026"
+        "Micron et mémoires surperforment après ceasefire (refocus sur boom IA)",
+        "Fed minutes montrent ouverture aux hausses de taux en mars mais majorité anticipe baisse en 2026",
+        "ServiceNow atteint plus bas 52 semaines à 97,96 USD",
+        "NewJersey Resources atteint plus haut historique à 56,95 USD"
       ]
     },
     "crypto": {
       "score": 0.72,
-      "confidence": 0.88,
+      "confidence": 0.78,
       "tendance": "haussier",
-      "resume": "Rallye crypto significatif déclenché par l'annonce du cessez-le-feu US-Iran, avec Bitcoin revenant à 72 000 dollars et liquidations de shorts de 427 millions de dollars. Stablecoin Ethereum atteint 180 milliards de dollars d'encours.",
+      "resume": "Rallye crypto post-ceasefire avec squeeze court et optimisme sur volumes stablecoins. Bitcoin cible 90K avec support à 72K. Préoccupations quantiques minimisées par analystes majeurs.",
       "signaux_cles": [
-        "Bitcoin +5% à 72 500 dollars suite à l'annonce du cessez-le-feu",
-        "Liquidations de shorts crypto de 427 millions de dollars le 7-8 avril",
-        "Encours stablecoins Ethereum atteint 180 milliards de dollars (ATH)"
+        "Bitcoin vise 90K avec achats agressifs sur Binance, support à 72K",
+        "Volumes stablecoins pourraient atteindre 1,5 quadrillion $ d'ici 2035 (Chainalysis)",
+        "Liquidations massives Hyperliquid suite à effondrement prix pétrole",
+        "Adam Back et Bernstein minimisent risque quantique existentiel pour BTC"
       ]
     },
     "matieres_premieres": {
-      "score": -0.42,
-      "confidence": 0.82,
+      "score": -0.78,
+      "confidence": 0.88,
       "tendance": "baissier",
-      "resume": "Chute des prix du pétrole brut sous 100 dollars suite au cessez-le-feu, avec perspective de baisse du kérosène de 5 à 10 centimes sous 48 heures. Pénuries de carburant aviation persistantes pendant plusieurs mois malgré la réouverture du détroit d'Ormuz.",
+      "resume": "Effondrement des prix pétroliers (-10,25% USO) malgré ceasefire fragile. Attaques iraniennes contre infrastructure saoudienne contrebalancées par craintes de récession. Uranium et métaux volatiles.",
       "signaux_cles": [
-        "Pétrole brut chute sous 100 $ le 8 avril 2026",
-        "Baisse kérosène prévue de 5 à 10 centimes en 48 heures",
-        "Pénuries carburant aviation persistantes pendant plusieurs mois après réouverture"
+        "Pétrole (USO) -10,25% en 24h à 123,93 USD malgré trêve Iran-États-Unis",
+        "Iran attaque pipeline Est-Ouest saoudien (risque géopolitique non intégré)",
+        "Exxon Mobil signale +2,9Md$ bénéfices Q1 sur prix pétroliers élevés",
+        "Conseil de sécurité : Russie et Chine vetent résolution sur Détroit d'Ormuz"
       ]
     },
     "ai_tech": {
-      "score": 0.35,
-      "confidence": 0.62,
-      "tendance": "mixte",
-      "resume": "Avancées technologiques contrastées : modèle Anthropic Sonnet 4.6 signale des taux d'erreur élevés, tandis que Google lance une application IA de dictée hors ligne et le Japon assouplit les lois de confidentialité pour l'IA. Alertes cybersécurité : acteurs iraniens perturbent installations US, 21 milliards de dollars de pertes cybercriminelles en 2025.",
+      "score": 0.68,
+      "confidence": 0.75,
+      "tendance": "haussier",
+      "resume": "Accélération innovation IA avec modèles frontier (Meta Muse Spark) et intégrations ChatGPT. Défis d'approvisionnement GPU Nvidia (Rubin en retard). Sécurité critique : 13 ans de vulnérabilité ActiveMQ.",
       "signaux_cles": [
-        "Sonnet 4.6 d'Anthropic présente taux d'erreur élevé",
-        "Japon assouplit lois de confidentialité pour devenir 'pays le plus facile pour développer l'IA'",
-        "FBI rapporte 21 milliards de dollars de pertes cybercriminelles en 2025"
+        "Meta déploie Muse Spark (premier modèle frontier sans poids ouverts)",
+        "Nvidia Rubin GPU retardé par pénurie mémoire et défis techniques",
+        "Volkswagen teste microbuses autonomes à Los Angeles avec Uber",
+        "Vulnérabilité ActiveMQ 13 ans permet exécution code distante (patch urgent CISA)"
       ]
     }
   },
@@ -327,12 +332,12 @@
     },
     {
       "date": "2026-04-08",
-      "global": 0.38,
-      "geopolitique": 0.65,
+      "global": 0.06,
+      "geopolitique": -0.65,
       "marches": 0.58,
       "crypto": 0.72,
-      "matieres_premieres": -0.42,
-      "ai_tech": 0.35
+      "matieres_premieres": -0.78,
+      "ai_tech": 0.68
     }
   ],
   "model": "claude-haiku-4-5-20251001",

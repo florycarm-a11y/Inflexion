@@ -1,87 +1,87 @@
 {
-  "updated": "2026-04-08T07:18:01.246Z",
+  "updated": "2026-04-08T19:16:02.007Z",
   "alertes": [
     {
       "id": "alert-2026-04-08-001",
-      "titre": "BTC : +5% à 72 500 $, rallye cessez-le-feu US-Iran",
-      "texte": "Bitcoin bondit de 5% à 72 500 dollars suite à l'annonce du cessez-le-feu de deux semaines entre États-Unis et Iran le 8 avril 2026. Liquidations de shorts crypto totalisant 427 millions de dollars enregistrées sur 24h.",
-      "categorie": "crypto",
-      "severite": "attention",
-      "impact": "haussier",
-      "horodatage": "2026-04-08T07:18:01.246Z",
+      "titre": "Pétrole (USO) : -10,25% en 24h, chute à 123,93 USD malgré ceasefire",
+      "texte": "Effondrement des prix pétroliers malgré accord Iran-États-Unis, reflétant craintes de récession mondiale et liquidations Hyperliquid. Attaques iraniennes contre pipeline saoudien non suffisantes pour soutenir les cours.",
+      "categorie": "matieres_premieres",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-04-08T19:16:02.007Z",
       "donnees": {
         "symbole": "ETH",
         "nom": "Ethereum",
-        "prix": 2248.02,
-        "variation_24h": 7
+        "prix": 2202.69,
+        "variation_24h": 5.55
       }
     },
     {
       "id": "alert-2026-04-08-002",
-      "titre": "ETH : +7% à 2 248 $, encours stablecoins ATH à 180 Md$",
-      "texte": "Ethereum gagne 7% à 2 248 dollars en 24h. L'encours des stablecoins Ethereum atteint un sommet historique de 180 milliards de dollars, reflétant une accumulation de liquidités sur la blockchain.",
+      "titre": "Ethereum (ETH) : +5,55% en 24h, rallye post-ceasefire à 2 202,69 USD",
+      "texte": "Crypto-actifs surperforment dans régime risk-on généralisé suite à ceasefire Iran. Bitcoin cible 90K avec support à 72K selon traders agressifs sur Binance.",
       "categorie": "crypto",
       "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-04-08T07:18:01.246Z",
+      "horodatage": "2026-04-08T19:16:02.007Z",
       "donnees": {
-        "symbole": "XRP",
-        "nom": "XRP",
-        "prix": 1.38,
-        "variation_24h": 5.19
+        "symbole": "SPY",
+        "nom": "S&P 500",
+        "prix": 673.72,
+        "variation": 2.2
       }
     },
     {
       "id": "alert-2026-04-08-003",
-      "titre": "Pétrole : chute sous 100 $ suite cessez-le-feu Iran-États-Unis",
-      "texte": "Le pétrole brut chute sous 100 dollars le 8 avril 2026 suite à l'annonce du cessez-le-feu US-Iran et la perspective de réouverture du détroit d'Ormuz. Baisse du kérosène de 5 à 10 centimes attendue en 48 heures.",
-      "categorie": "matieres_premieres",
+      "titre": "Indices US : +2,2% à +2,5% (S&P 500, Nasdaq, Dow), refocus sur croissance IA",
+      "texte": "Rallye généralisé post-ceasefire avec spread tech/commodities de +7,0pp. Mémoires (Micron) surperforment sur retour focus boom IA. Régime risk-on détecté à 81% consensus.",
+      "categorie": "marches",
       "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-04-08T07:18:01.246Z",
+      "impact": "haussier",
+      "horodatage": "2026-04-08T19:16:02.007Z",
       "donnees": {
-        "symbole": "SOL",
-        "nom": "Solana",
-        "prix": 84.35,
-        "variation_24h": 6.09
+        "symbole": "QQQ",
+        "nom": "Nasdaq 100",
+        "prix": 603.47,
+        "variation": 2.53
       }
     },
     {
       "id": "alert-2026-04-08-004",
-      "titre": "Nikkei 225 : +5,42%, rebond asiatique post-cessez-le-feu",
-      "texte": "L'indice Nikkei 225 clôture en hausse de 5,42% le 8 avril 2026, porté par le soulagement géopolitique suite à l'accord US-Iran et la baisse des prix de l'énergie.",
-      "categorie": "marches",
-      "severite": "attention",
-      "impact": "haussier",
-      "horodatage": "2026-04-08T07:18:01.246Z",
+      "titre": "Ceasefire Iran fragile : violations rapportées, Liban non inclus, Ormuz bloqué",
+      "texte": "Accord Iran-États-Unis testé par frappes israéliennes continues au Liban, attaques iraniennes contre pipeline saoudien, et impasse sur réouverture Détroit d'Ormuz. Conseil sécurité veto Russie-Chine sur résolution.",
+      "categorie": "geopolitique",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-04-08T19:16:02.007Z",
       "donnees": {
-        "symbole": "ADA",
-        "nom": "Cardano",
-        "prix": 0.261147,
-        "variation_24h": 7.28
+        "symbole": "DIA",
+        "nom": "Dow Jones",
+        "prix": 477.31,
+        "variation": 2.45
       }
     },
     {
       "id": "alert-2026-04-08-005",
-      "titre": "AAPL : -2,07% à 253,50 $, décrochage actions technologiques",
-      "texte": "Apple recule de 2,07% à 253,50 dollars le 8 avril 2026, contrastant avec le rallye crypto et les indices asiatiques. Les actions technologiques US affichent une faiblesse relative.",
-      "categorie": "marches",
-      "severite": "info",
+      "titre": "Nvidia Rubin GPU : retard confirmé par pénurie mémoire et défis techniques",
+      "texte": "Processeur phare Nvidia confronté à délais de production suite à contraintes d'approvisionnement mémoire et obstacles techniques. Impact potentiel sur timeline déploiement IA enterprise.",
+      "categorie": "ai_tech",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-08T07:18:01.246Z",
+      "horodatage": "2026-04-08T19:16:02.007Z",
       "donnees": {
-        "symbole": "AAPL",
-        "nom": "Apple",
-        "prix": 253.5,
-        "variation": -2.07
+        "symbole": "USO",
+        "nom": "Pétrole (ETF)",
+        "prix": 123.93,
+        "variation": -10.25
       }
     }
   ],
   "stats": {
     "total": 5,
-    "urgent": 0,
-    "attention": 4,
-    "info": 1
+    "urgent": 2,
+    "attention": 3,
+    "info": 0
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
