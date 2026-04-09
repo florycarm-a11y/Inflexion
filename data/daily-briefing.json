@@ -1,174 +1,155 @@
 {
-  "date": "2026-04-08",
-  "generated_at": "2026-04-08T19:17:18.973Z",
+  "date": "2026-04-09",
+  "generated_at": "2026-04-09T07:23:19.418Z",
   "type": "delta",
   "model": "claude-haiku-4-5-20251001",
   "sources_count": 25,
   "sources_market": 11,
   "reference_date": "2026-04-08",
   "synthese": {
-    "titre": "Euphorie risk-on confirmée — marchés actions +2,2%, crypto +4%, pétrole -10% vs cessez-le-feu",
-    "sous_titre": "Le marché consolide la désescalade Iran-US annoncée hier ; rotation des actifs refuge et retour de l'appétit pour le risque se poursuivent.",
-    "contenu": "## Évolutions du jour\n\nLa consolidation de l'accord de cessez-le-feu US-Iran annoncé hier se traduit par une accélération de la rotation risk-on. Le S&P 500 progresse de **+2,20%** (Finnhub, SPY), le Nasdaq 100 de **+2,53%** (QQQ), le Dow Jones de **+2,45%** (DIA) — gains significatifs vs la stabilité relative d'hier (+0,04% S&P 500). Cette accélération reflète l'apaisement des craintes géopolitiques et le retour de la liquidité institutionnelle vers les actifs cycliques.\n\nLa crypto amplifie ce mouvement : Bitcoin atteint **$71 162** (+4,0% 24h, CoinGecko), Ethereum **$2 202,69** (+5,5% 24h), Solana **$82,92** (+3,3% 24h). Le Fear & Greed Index remonte à **17/100** (Extreme Fear persistant mais +9 points vs hier), signalant une amélioration progressive du sentiment malgré les niveaux extrêmes. Les liquidations de shorts crypto s'accélèrent : **$470 millions** de positions courtes liquidées en 24h (The Defiant), confirmant un squeeze haussier.\n\nLe pétrole poursuit sa correction : **-10,25%** (Finnhub, USO) vs hier, amplifiant la baisse de -15% annoncée hier suite à la perspective de réouverture du détroit d'Ormuz. L'or se stabilise à **+0,13%** (GLD), la prime géopolitique se dégonflant progressivement. Les mégacaps tech rebondissent : Alphabet **+4,02%** (GOOGL), Nvidia **+2,04%** (NVDA), Apple **+1,60%** (AAPL), tandis que Tesla recule de **-1,53%** (TSLA) — rotation sectorielle vers les valeurs défensives et les leaders IA.\n\n## Perspectives actualisées\n\nLa fenêtre de 2 semaines du cessez-le-feu crée une phase de consolidation haussière, mais trois catalyseurs critiques demeurent : (1) **confirmation de la réouverture d'Ormuz** — condition sine qua non de la stabilisation pétrolière ; (2) **poursuite des frappes israéliennes au Liban** — exclu de l'accord, créant un foyer asymétrique de tension ; (3) **renouvellement de l'accord après 14 jours** — risque de rupture élevé si les négociations stagnent. Les seuils à surveiller : S&P 500 au-delà de 680 (résistance technique), Bitcoin au-delà de $73 000 (cassure de la zone de congestion), pétrole en-dessous de $70/baril (normalisation complète). L'inflation US (CPI +2,66% a/a, FRED) et la décision de la Fed sur les taux (3,64%, inchangé) restent des variables de second ordre face à la géopolitique."
+    "titre": "Euphorie risk-on consolidée — actions +2,5%, crypto -2%, pétrole -9,8% vs veille",
+    "sous_titre": "Cessez-le-feu US-Iran tient, mais frictions géopolitiques résiduelles (Liban, Ormuz) et volatilité crypto tempèrent l'optimisme",
+    "contenu": "## Évolutions du jour\n\nLa consolidation du cessez-le-feu US-Iran se poursuit, mais avec des signaux mixtes. Les marchés actions accélèrent : **S&P 500 +2,55%** (Finnhub, SPY), **Nasdaq 100 +2,97%** (QQQ), **Dow Jones +2,85%** (DIA) — gains supérieurs à hier (+2,20% S&P 500), confirmant la poursuite de la rotation risk-on. Les mégacaps tech maintiennent leur dynamique : Alphabet **+3,88%** (GOOGL), Nvidia **+2,23%** (NVDA), Apple **+2,13%** (AAPL).\n\nLa crypto inverse sa trajectoire : Bitcoin recule à **$71 006** (-1,0% 24h, CoinGecko), Ethereum **$2 182,62** (-3,0% 24h), Solana **$82,25** (-2,5% 24h). Le Fear & Greed Index s'effondre à **14/100** (Extreme Fear, -3 points vs hier), signalant une prise de risque excessive et une correction technique. Le marché crypto total perd **-1,18%** en 24h (CoinGecko), tandis que la dominance ETH se contracte à **10,6%**.\n\nLe pétrole poursuit sa correction : **-9,78%** (Finnhub, USO) vs hier, amplifiant la baisse cumulée post-cessez-le-feu (-20% en 2 jours). L'or se stabilise à **+0,63%** (GLD), la prime géopolitique résiduelle restant contenue. **Tensions résiduelles** : les frappes israéliennes sur le Liban (7 morts signalés, Middle East Eye) et les ambiguïtés sur le statut du détroit d'Ormuz (New York Times) maintiennent une volatilité géopolitique latente, sans déclencher de relance des prix énergétiques.\n\n## Perspectives actualisées\n\nLe cessez-le-feu US-Iran tient formellement, mais les 2 semaines d'accord restent fragiles. Les trois risques critiques : (1) **Liban hors accord** — Israël poursuit les frappes, créant une escalade asymétrique Hezbollah non couverte par le cessez-le-feu ; (2) **Ormuz ambigüe** — le statut du détroit reste flou, maintenant une prime de risque résiduelle sur le pétrole ; (3) **Correction crypto technique** — le Fear & Greed à 14/100 signale une capitulation potentielle avant rebond ou poursuite de la baisse. Les seuils à surveiller : S&P 500 au-delà de 680 (résistance), Bitcoin en-dessous de 70 000 $ (support clé), pétrole vers 115 $ (normalisation complète)."
   },
   "signaux": [
     {
-      "titre": "Liquidation de shorts crypto accélérée : $470M en 24h, squeeze haussier post-cessez-le-feu",
-      "description": "Le rebond crypto du jour s'accompagne d'une accélération des liquidations de positions courtes : **$470 millions** de shorts liquidés en 24h (The Defiant), confirmant un mécanisme de squeeze haussier. Bitcoin a touché un plus haut de 3 semaines au-dessus de $72 700 avant de se consolider à $71 162 (+4,0% 24h). Ethereum progresse de +5,5% 24h à $2 202,69, Solana de +3,3% à $82,92. Ce mouvement inverse complètement la capitulation de la veille et reflète le retour de la liquidité institutionnelle vers les actifs risqués suite à la désescalade géopolitique. Le Fear & Greed Index remonte à 17/100 (+9 points vs hier), quittant progressivement l'Extreme Fear mais restant en zone critique. Les stablecoins (Binance CEX TVL +2,3%, Aave V3 +3,6%, Lido +6,5%) enregistrent des entrées nettes, signalant une reconstitution des positions long.",
+      "titre": "Correction crypto technique : Fear & Greed à 14/100, liquidations de longs accélérées",
+      "description": "Le Fear & Greed Index s'effondre à **14/100** (Extreme Fear, -3 points vs hier), inversant la dynamique haussière du cessez-le-feu. Bitcoin perd **-1,0%** 24h à $71 006, Ethereum **-3,0%** à $2 182,62, Solana **-2,5%** à $82,25 — retournement brutal vs les gains de +4% à +5,5% d'hier. Le marché crypto total recule de **-1,18%** (CoinGecko), tandis que la dominance ETH se contracte à **10,6%**, signalant une fuite vers les stablecoins. Cette correction technique intervient après un squeeze de $470M de shorts liquidés hier, suggérant une prise de risque excessive et une capitulation de détail. Le signal croise deux mécanismes : (1) **saturation technique** — les gains de +4% à +5,5% en 24h hier ont déclenché des prises de bénéfices institutionnelles ; (2) **divergence macro** — les actions US continuent de rebondir (+2,5% S&P 500), créant une déconnexion crypto-actions incompatible avec un scénario risk-on pur.",
       "categorie": "crypto",
       "interconnexions": [
         {
-          "secteur": "Géopolitique",
-          "impact": "Cessez-le-feu US-Iran annoncé hier → réduction de la prime de risque → retour de l'appétit pour les actifs volatiles",
-          "explication": "La désescalade diplomatique lève l'incertitude sur la fermeture du détroit d'Ormuz, réduisant la volatilité macro et permettant aux traders de reprendre des positions long en crypto"
+          "secteur": "Marchés actions",
+          "impact": "S&P 500 +2,55% vs crypto -1,18%",
+          "explication": "Divergence risk-on : les actions rebondissent sur le cessez-le-feu, mais la crypto capitule sur saturation technique et prise de bénéfices"
         },
         {
-          "secteur": "Marchés actions",
-          "impact": "S&P 500 +2,20%, Nasdaq 100 +2,53% — rotation risk-on parallèle",
-          "explication": "Le rebond crypto suit la même dynamique que les actions : retour de la liquidité vers les actifs cycliques et les mégacaps tech (Alphabet +4,02%, Nvidia +2,04%)"
+          "secteur": "Sentiment macro",
+          "impact": "Fear & Greed 14/100 vs 17/100 hier",
+          "explication": "Extrême peur signale une capitulation de détail, incompatible avec la consolidation du cessez-le-feu — correction technique avant rebond ou poursuite baisse"
         }
       ],
       "regions": [
-        "Global",
-        "États-Unis"
+        "Global"
       ],
       "severite": "attention"
     },
     {
-      "titre": "Rotation sectorielle accélérée : mégacaps IA rebondissent (+4% Alphabet), Tesla recule (-1,53%)",
-      "description": "La consolidation du cessez-le-feu déclenche une rotation sectorielle marquée au sein des actions US. Alphabet rebondit de **+4,02%** (GOOGL), Nvidia de **+2,04%** (NVDA), Apple de **+1,60%** (AAPL) — les leaders IA et les valeurs défensives reprennent la main. À l'inverse, Tesla recule de **-1,53%** (TSLA), confirmant une sortie des valeurs cycliques/spéculatives. Cette rotation reflète deux mécanismes : (1) la réduction de la prime de risque géopolitique favorise les mégacaps à flux de trésorerie stables et à exposition IA ; (2) la baisse du pétrole (-10,25%) réduit les coûts énergétiques pour les data centers (Micron et autres stocks mémoire rebondissent selon MarketWatch), renforçant les marges des géants cloud. Microsoft reste stable (-0,03%, MSFT), suggérant une consolidation plutôt qu'une rupture haussière.",
-      "categorie": "marches",
+      "titre": "Liban hors accord : frappes israéliennes poursuivies, escalade asymétrique Hezbollah non couverte",
+      "description": "Israël poursuit les frappes aériennes sur le sud-Liban malgré le cessez-le-feu US-Iran, tuant **7 civils** (Middle East Eye, 2026-04-09). La France condamne explicitement cette « vague » de frappes comme minant les efforts de trêve (Middle East Eye). Le Liban reste **explicitement exclu** de l'accord US-Iran, créant une asymétrie géopolitique majeure : le cessez-le-feu couvre Iran-USA, mais pas Israël-Hezbollah. Cette exclusion maintient une escalade latente sans couverture diplomatique, avec risque de réaction Hezbollah (roquettes, drones) déclenchant une relance des frappes israéliennes. Le signal croise deux dimensions : (1) **géopolitique** — l'accord US-Iran ne stabilise que partiellement le Moyen-Orient, laissant un foyer d'escalade actif ; (2) **marchés** — le pétrole ne baisse que de -9,78% vs hier, car cette friction Liban-Israël maintient une prime de risque résiduelle sur l'approvisionnement énergétique.",
+      "categorie": "geopolitique",
       "interconnexions": [
         {
-          "secteur": "Matières premières",
-          "impact": "Pétrole -10,25% (USO) → réduction des coûts énergétiques → marges data centers améliorées",
-          "explication": "La baisse du pétrole suite à la perspective de réouverture d'Ormuz réduit les coûts opérationnels des data centers, bénéficiant directement aux mégacaps IA (Nvidia, Alphabet, Microsoft)"
+          "secteur": "Pétrole & énergie",
+          "impact": "Pétrole -9,78% vs -15% attendu post-cessez-le-feu",
+          "explication": "La poursuite des frappes israéliennes sur le Liban maintient une prime de risque résiduelle, limitant la baisse du pétrole vs normalisation complète"
         },
         {
-          "secteur": "Crypto",
-          "impact": "Bitcoin +4,0%, Ethereum +5,5% — appétit pour le risque parallèle",
-          "explication": "La rotation vers les mégacaps IA et la réduction de la volatilité géopolitique créent un environnement favorable aux actifs risqués, y compris la crypto"
-        }
-      ],
-      "regions": [
-        "États-Unis"
-      ],
-      "severite": "attention"
-    },
-    {
-      "titre": "Pétrole -10,25% : normalisation accélérée post-Ormuz, mais friction approvisionnement kérosène persiste",
-      "description": "Le pétrole poursuit sa correction amorcée hier, perdant **-10,25%** en 24h (Finnhub, USO) suite à la perspective de réouverture du détroit d'Ormuz. Cette baisse amplifie le mécanisme inverse de la prime de risque géopolitique : la désescalade US-Iran lève l'incertitude sur les flux pétroliers mondiaux. Cependant, une friction résiduelle demeure : l'Association internationale du transport aérien (IATA) avertit que l'approvisionnement en kérosène mettra **« des mois »** avant de revenir à la normale, malgré la baisse des prix spot (OilPrice, BFM Business). Cette asymétrie entre les prix et les flux physiques crée un risque d'inflation résiduelle pour les marges aériennes. Vermilion Energy rapporte une forte production Q1 et une expansion en Allemagne (Seeking Alpha), confirmant que les producteurs anticipent une normalisation durable des prix.",
-      "categorie": "matieres_premieres",
-      "interconnexions": [
-        {
-          "secteur": "Géopolitique",
-          "impact": "Cessez-le-feu US-Iran → réouverture Ormuz anticipée → baisse pétrole -10,25%",
-          "explication": "La levée de l'incertitude sur la fermeture du détroit d'Ormuz réduit la prime de risque géopolitique, permettant une correction rapide des prix pétroliers"
-        },
-        {
-          "secteur": "Marchés actions",
-          "impact": "Mégacaps IA rebondissent (+4% Alphabet) — réduction des coûts énergétiques",
-          "explication": "La baisse du pétrole réduit les coûts opérationnels des data centers, bénéficiant directement aux mégacaps IA et aux stocks mémoire (Micron rebondit selon MarketWatch)"
+          "secteur": "Diplomatie",
+          "impact": "Condamnation française, tensions OTAN-Trump",
+          "explication": "L'exclusion du Liban de l'accord crée des frictions diplomatiques (France, OTAN) et renforce les tensions Trump-alliés européens sur la stratégie moyen-orientale"
         }
       ],
       "regions": [
         "Moyen-Orient",
-        "Global"
+        "Liban",
+        "Europe"
+      ],
+      "severite": "urgent"
+    },
+    {
+      "titre": "Ambiguïté Ormuz post-accord : statut du détroit flou, prime de risque résiduelle maintenue",
+      "description": "Le statut du détroit d'Ormuz reste **ambigu** malgré le cessez-le-feu US-Iran, avec des « dueling threats » (New York Times) entre officiels US et iraniens sur la possibilité de relancer les attaques. Cette incertitude maintient une prime de risque résiduelle sur le pétrole, qui ne baisse que de **-9,78%** vs hier, loin de la normalisation complète attendue. Trump avertit que les troupes US resteront « près de l'Iran » jusqu'à un « vrai accord » (Seeking Alpha), signalant que les 2 semaines de cessez-le-feu ne constituent qu'une trêve fragile. Le signal croise deux mécanismes : (1) **géopolitique** — l'accord n'est que de 2 semaines, avec risque élevé de rupture si les négociations échouent ; (2) **marchés énergétiques** — la prime Ormuz persiste, limitant la baisse du pétrole et maintenant une volatilité résiduelle pour les transporteurs aériens et les raffineurs.",
+      "categorie": "geopolitique",
+      "interconnexions": [
+        {
+          "secteur": "Pétrole & transport maritime",
+          "impact": "Pétrole -9,78%, prime Ormuz résiduelle ~2-3% du prix",
+          "explication": "L'ambiguïté sur le statut du détroit maintient une prime de risque, empêchant la normalisation complète du pétrole post-cessez-le-feu"
+        },
+        {
+          "secteur": "Aérien & logistique",
+          "impact": "Marges kérosène comprimées, coûts de transport persistants",
+          "explication": "La friction Ormuz maintient une volatilité résiduelle du pétrole, prolongeant les pressions sur les marges aériennes et les coûts logistiques"
+        }
+      ],
+      "regions": [
+        "Moyen-Orient",
+        "Golfe persique"
       ],
       "severite": "attention"
     }
   ],
   "risk_radar": [
     {
-      "risque": "Rupture de l'accord 2 semaines US-Iran → relance escalade militaire, fermeture Ormuz",
+      "risque": "Rupture accord 2 semaines US-Iran → relance escalade militaire, fermeture Ormuz",
       "severite": "urgent",
       "probabilite": "moyenne",
       "horizon": "court_terme",
-      "impact_marche": "Pétrole +20-30%, Bitcoin -5-10%, S&P 500 -2-3%, or +5-10%",
-      "description": "Probabilité maintenue à **moyenne** (vs élevée hier) suite à l'accord formel, mais risque résiduel élevé : l'accord n'est que de 2 semaines, et les positions politiques internes en Iran restent fragmentées (manifestations pro-régime à Téhéran, France 24). Seuil critique : rupture des négociations avant le 22 avril."
+      "impact_marche": "Pétrole +15-20%, S&P 500 -3-5%, Bitcoin -5-10%",
+      "description": "Probabilité maintenue à **moyenne** (vs élevée hier) suite à l'accord formel, mais risque résiduel élevé : l'accord n'est que de 2 semaines, et les positions politiques internes en Iran restent fragmentées. Trump maintient une posture agressive (« troupes resteront près de l'Iran »), signalant une faible confiance dans la durabilité. Seuil critique : rupture avant 2026-04-22."
     },
     {
       "risque": "Liban : poursuite des frappes israéliennes hors accord, escalade asymétrique Hezbollah",
       "severite": "urgent",
       "probabilite": "elevee",
       "horizon": "court_terme",
-      "impact_marche": "Volatilité géopolitique persistante, prime de risque pétrolière non complètement dégonflée, crypto instabilité",
-      "description": "Probabilité maintenue à **élevée** : Israël exclut explicitement le Liban de l'accord et poursuit les frappes aériennes sur le sud-Liban (Al-Monitor, New York Times). Des tensions diplomatiques émergent avec l'Europe : un casque bleu espagnol a été détenu par l'IDF (Politico EU). Cette asymétrie crée un foyer de tension non résolu, risquant une escalade Hezbollah-Israël indépendante de l'accord US-Iran."
+      "impact_marche": "Pétrole +5-10%, volatilité géopolitique +200 bps VIX, actions défensives +2-3%",
+      "description": "Probabilité **relevée de moyenne à élevée** suite aux frappes du jour (7 morts, Middle East Eye). Israël exclut explicitement le Liban de l'accord et poursuit les bombardements. Risque de réaction Hezbollah (roquettes, drones) déclenchant une escalade asymétrique non couverte par le cessez-le-feu US-Iran. Seuil critique : attaque Hezbollah majeure (>50 roquettes) relançant les frappes israéliennes."
     },
     {
-      "risque": "Friction approvisionnement kérosène : inflation résiduelle, marges aériennes comprimées",
+      "risque": "Correction crypto technique : capitulation de détail, rebond ou poursuite baisse",
       "severite": "attention",
       "probabilite": "elevee",
-      "horizon": "moyen_terme",
-      "impact_marche": "Secteur aérien : marges comprimées, inflation résiduelle des billets, rendements obligataires aériens sous pression",
-      "description": "Probabilité maintenue à **élevée** : malgré la baisse du pétrole (-10,25%), l'IATA avertit que la normalisation prendra **des mois** (OilPrice). Cette friction entre les prix spot et les flux physiques crée un risque d'inflation résiduelle pour les marges aériennes et les coûts de transport. Seuil : si le kérosène reste au-dessus de $2,50/gallon au-delà de mai, impact significatif sur les marges."
+      "horizon": "court_terme",
+      "impact_marche": "Bitcoin -5-15% ou +10-20%, Ethereum -3-10% ou +15-25%, liquidations de longs accélérées",
+      "description": "Probabilité **élevée** : Fear & Greed à 14/100 (Extreme Fear, -3 points vs hier) signale une capitulation de détail après gains de +4-5% hier. Bitcoin perd -1,0% 24h, Ethereum -3,0%, inversant la dynamique haussière. Seuil critique : Bitcoin en-dessous de 70 000 $ (support clé) → poursuite baisse ; au-dessus de 72 000 $ → rebond technique."
     }
   ],
-  "sentiment_global": "haussier",
+  "sentiment_global": "mixte",
   "tags": [
-    "cessez-le-feu-us-iran-consolidation",
-    "crypto-squeeze-470m-shorts-liquidés",
-    "rotation-mégacaps-ia-alphabet-nvidia",
-    "pétrole-10pct-ormuz-normalisation",
-    "liban-escalade-asymétrique-hors-accord"
+    "cessez-le-feu-us-iran-consolidé-2-semaines",
+    "liban-hors-accord-escalade-asymétrique-hezbollah",
+    "ormuz-ambigüe-prime-risque-résiduelle",
+    "crypto-correction-technique-fear-greed-14-100",
+    "actions-us-rebond-2-5pct-mégacaps-ia-dynamiques"
   ],
   "sources_citees": [
     {
       "nom": "Finnhub",
       "type": "api",
-      "donnees_utilisees": "S&P 500 +2,20% (SPY), Nasdaq 100 +2,53% (QQQ), Dow Jones +2,45% (DIA), pétrole -10,25% (USO), or +0,13% (GLD), mégacaps tech (GOOGL, NVDA, AAPL, MSFT, TSLA)"
+      "donnees_utilisees": "S&P 500 +2,55% (SPY), Nasdaq 100 +2,97% (QQQ), Dow Jones +2,85% (DIA), pétrole -9,78% (USO), or +0,63% (GLD), mégacaps tech (GOOGL, NVDA, AAPL)"
     },
     {
       "nom": "CoinGecko",
       "type": "api",
-      "donnees_utilisees": "Bitcoin $71 162 (+4,0% 24h), Ethereum $2 202,69 (+5,5% 24h), Solana $82,92 (+3,3% 24h), Fear & Greed Index 17/100"
-    },
-    {
-      "nom": "The Defiant",
-      "type": "presse",
-      "donnees_utilisees": "$470 millions de shorts liquidés en 24h, Bitcoin trois-semaine high au-dessus de $72 700"
-    },
-    {
-      "nom": "MarketWatch",
-      "type": "presse",
-      "donnees_utilisees": "Micron et stocks mémoire rebondissent suite à baisse pétrole et retour focus IA"
-    },
-    {
-      "nom": "Al-Monitor",
-      "type": "presse",
-      "donnees_utilisees": "Israël exclut Liban de l'accord, poursuit frappes aériennes sud-Liban"
+      "donnees_utilisees": "Bitcoin $71 006 (-1,0% 24h), Ethereum $2 182,62 (-3,0% 24h), Solana $82,25 (-2,5% 24h), marché crypto total -1,18%, dominance ETH 10,6%, Fear & Greed Index 14/100"
     },
     {
       "nom": "New York Times",
       "type": "presse",
-      "donnees_utilisees": "Cessez-le-feu US-Iran 2 semaines, ultimatum Trump résolu, tensions Liban-Israël"
+      "donnees_utilisees": "Ambiguïté Ormuz post-accord, dueling threats US-Iran, confusion sur statut détroit"
     },
     {
-      "nom": "Politico EU",
+      "nom": "Middle East Eye",
       "type": "presse",
-      "donnees_utilisees": "Casque bleu espagnol détenu par IDF, tensions diplomatiques Israël-Europe"
-    },
-    {
-      "nom": "OilPrice",
-      "type": "presse",
-      "donnees_utilisees": "IATA avertit normalisation kérosène prendra des mois malgré baisse pétrole"
+      "donnees_utilisees": "Frappes israéliennes Liban (7 morts), condamnation française, escalade asymétrique Hezbollah"
     },
     {
       "nom": "Seeking Alpha",
       "type": "presse",
-      "donnees_utilisees": "Vermilion Energy Q1 output fort, expansion Allemagne, anticipation normalisation prix"
+      "donnees_utilisees": "Trump avertit troupes US resteront près Iran, ultimatum accord 2 semaines"
     },
     {
-      "nom": "FRED",
-      "type": "api",
-      "donnees_utilisees": "Inflation CPI +2,66% a/a, taux Fed Funds 3,64%, chômage 4,3%"
+      "nom": "War on the Rocks",
+      "type": "think_tank",
+      "donnees_utilisees": "Campagne asymétrique Iran contre bases aériennes US, destruction E-3 Sentry Prince Sultan"
     }
   ],
   "_verification": {
-    "score": 0.7735849056603774,
-    "totalClaims": 53,
+    "score": 0.8541666666666666,
+    "totalClaims": 48,
     "verified": 41,
-    "unverified": 12,
+    "unverified": 7,
     "pass": true
   },
   "_contradictions": [
@@ -176,320 +157,320 @@
       "indicator": "SPY (ETF self-check)",
       "source1": {
         "name": "prix actuel",
-        "value": 673.72
+        "value": 676.01
       },
       "source2": {
         "name": "prev_close + change",
-        "value": 661.4196000000001
+        "value": 661.7669000000001
       },
-      "divergence_pct": 1.83,
+      "divergence_pct": 2.11,
       "type": "etf_self",
-      "note": "SPY : prix 673.72 ≠ prev_close (659.22) + change (2.1996) = 661.42. Possible donnée corrompue."
+      "note": "SPY : prix 676.01 ≠ prev_close (659.22) + change (2.5469) = 661.77. Possible donnée corrompue."
     },
     {
       "indicator": "QQQ (ETF self-check)",
       "source1": {
         "name": "prix actuel",
-        "value": 603.47
+        "value": 606.09
       },
       "source2": {
         "name": "prev_close + change",
-        "value": 591.1181
+        "value": 591.5632
       },
-      "divergence_pct": 2.05,
+      "divergence_pct": 2.4,
       "type": "etf_self",
-      "note": "QQQ : prix 603.47 ≠ prev_close (588.59) + change (2.5281) = 591.12. Possible donnée corrompue."
+      "note": "QQQ : prix 606.09 ≠ prev_close (588.59) + change (2.9732) = 591.56. Possible donnée corrompue."
     },
     {
       "indicator": "DIA (ETF self-check)",
       "source1": {
         "name": "prix actuel",
-        "value": 477.31
+        "value": 479.16
       },
       "source2": {
         "name": "prev_close + change",
-        "value": 468.3334
+        "value": 468.7305
       },
-      "divergence_pct": 1.88,
+      "divergence_pct": 2.18,
       "type": "etf_self",
-      "note": "DIA : prix 477.31 ≠ prev_close (465.88) + change (2.4534) = 468.33. Possible donnée corrompue."
+      "note": "DIA : prix 479.16 ≠ prev_close (465.88) + change (2.8505) = 468.73. Possible donnée corrompue."
     },
     {
       "indicator": "USO (ETF self-check)",
       "source1": {
         "name": "prix actuel",
-        "value": 123.93
+        "value": 124.58
       },
       "source2": {
         "name": "prev_close + change",
-        "value": 127.83230000000002
+        "value": 128.3031
       },
-      "divergence_pct": 3.05,
+      "divergence_pct": 2.9,
       "type": "etf_self",
-      "note": "USO : prix 123.93 ≠ prev_close (138.08) + change (-10.2477) = 127.83. Possible donnée corrompue."
+      "note": "USO : prix 124.58 ≠ prev_close (138.08) + change (-9.7769) = 128.30. Possible donnée corrompue."
     },
     {
       "indicator": "NVDA (ETF self-check)",
       "source1": {
         "name": "prix actuel",
-        "value": 181.74
+        "value": 182.08
       },
       "source2": {
         "name": "prev_close + change",
-        "value": 180.1438
+        "value": 180.3347
       },
-      "divergence_pct": 0.88,
+      "divergence_pct": 0.96,
       "type": "etf_self",
-      "note": "NVDA : prix 181.74 ≠ prev_close (178.1) + change (2.0438) = 180.14. Possible donnée corrompue."
+      "note": "NVDA : prix 182.08 ≠ prev_close (178.1) + change (2.2347) = 180.33. Possible donnée corrompue."
     },
     {
       "indicator": "AAPL (ETF self-check)",
       "source1": {
         "name": "prix actuel",
-        "value": 257.55
+        "value": 258.9
       },
       "source2": {
         "name": "prev_close + change",
-        "value": 255.0976
+        "value": 255.6302
       },
-      "divergence_pct": 0.95,
+      "divergence_pct": 1.26,
       "type": "etf_self",
-      "note": "AAPL : prix 257.55 ≠ prev_close (253.5) + change (1.5976) = 255.10. Possible donnée corrompue."
+      "note": "AAPL : prix 258.9 ≠ prev_close (253.5) + change (2.1302) = 255.63. Possible donnée corrompue."
     },
     {
       "indicator": "GOOGL (ETF self-check)",
       "source1": {
         "name": "prix actuel",
-        "value": 317.75
+        "value": 317.32
       },
       "source2": {
         "name": "prev_close + change",
-        "value": 309.48339999999996
+        "value": 309.3427
       },
-      "divergence_pct": 2.6,
+      "divergence_pct": 2.51,
       "type": "etf_self",
-      "note": "GOOGL : prix 317.75 ≠ prev_close (305.46) + change (4.0234) = 309.48. Possible donnée corrompue."
+      "note": "GOOGL : prix 317.32 ≠ prev_close (305.46) + change (3.8827) = 309.34. Possible donnée corrompue."
     },
     {
       "indicator": "TSLA (ETF self-check)",
       "source1": {
         "name": "prix actuel",
-        "value": 341.34
+        "value": 343.25
       },
       "source2": {
         "name": "prev_close + change",
-        "value": 345.1182
+        "value": 345.6692
       },
-      "divergence_pct": 1.09,
+      "divergence_pct": 0.7,
       "type": "etf_self",
-      "note": "TSLA : prix 341.34 ≠ prev_close (346.65) + change (-1.5318) = 345.12. Possible donnée corrompue."
+      "note": "TSLA : prix 343.25 ≠ prev_close (346.65) + change (-0.9808) = 345.67. Possible donnée corrompue."
     }
   ],
   "_bibliography": {
-    "score": 0.4166666666666667,
-    "totalRefs": 24,
+    "score": 0.5263157894736842,
+    "totalRefs": 19,
     "matched": 10,
-    "unmatched": 14,
-    "pass": false,
+    "unmatched": 9,
+    "pass": true,
     "bibliography": [
       {
-        "titre": "Vermilion reports strong Q1 output, expands Germany footprint, exits Croatia asset",
-        "source": "Seeking Alpha",
-        "url": "https://seekingalpha.com/news/4573481-vermilion-reports-strong-q1-output-expands-germany-footprint-exits-croatia-asset?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
-        "domain": "seekingalpha.com",
-        "date": "2026-04-08T19:09:26.000Z",
-        "category": "marches"
+        "titre": "Iran’s Asymmetric Counterair Campaign: Attacking the U.S. Air Force’s Nests and Eggs",
+        "source": "War on the Rocks",
+        "url": "https://warontherocks.com/2026/04/irans-asymmetric-counterair-campaign-attacking-the-u-s-air-forces-nests-and-eggs/",
+        "domain": "warontherocks.com",
+        "date": "2026-04-09T07:15:20.000Z",
+        "category": "geopolitique"
       },
       {
-        "titre": "YieldMax Bitcoin Option Income Strategy ETF announces weekly distribution of $0.2727",
-        "source": "Seeking Alpha",
-        "url": "https://seekingalpha.com/news/4573480-yieldmax-bitcoin-option-income-strategy-etf-announces-weekly-distribution-of-02727?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
-        "domain": "seekingalpha.com",
-        "date": "2026-04-08T19:07:38.000Z",
-        "category": "marches"
+        "titre": "Prix des carburants : l’Etat s’enrichit-il vraiment grâce aux taxes payées par les automobilistes ?",
+        "source": "Le Monde Intl",
+        "url": "https://www.lemonde.fr/les-decodeurs/article/2026/04/09/prix-des-carburants-l-etat-s-enrichit-il-vraiment-grace-aux-taxes-payees-par-les-automobilistes_6678557_4355770.html",
+        "domain": "lemonde.fr",
+        "date": "2026-04-09T07:13:40.000Z",
+        "category": "geopolitique"
       },
       {
-        "titre": "Simon Property Group on track to widen gains to seventh straight session",
-        "source": "Seeking Alpha",
-        "url": "https://seekingalpha.com/news/4573476-simon-property-group-on-track-to-widen-gains-to-seventh-straight-session?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
-        "domain": "seekingalpha.com",
-        "date": "2026-04-08T19:07:14.000Z",
-        "category": "marches"
+        "titre": "Summary: Could AI Chatbots influence a Government’s Decisions?",
+        "source": "AlgorithmWatch",
+        "url": "https://algorithmwatch.org/en/summary-ai-chatbots-influence-governments-decisions/",
+        "domain": "algorithmwatch.org",
+        "date": "2026-04-09T07:12:59.000Z",
+        "category": "ai_tech"
       },
       {
-        "titre": "Iran War Live Updates: Cease-Fire Tested by Confusion Over Strait and Strikes on Lebanon",
+        "titre": "Cease-Fire Tested by Confusion Over Strait and Strikes on Lebanon",
         "source": "New York Times",
         "url": "https://www.nytimes.com/live/2026/04/08/world/iran-war-trump-news",
         "domain": "nytimes.com",
-        "date": "2026-04-08T19:07:00.000Z",
+        "date": "2026-04-09T07:12:58.000Z",
         "category": "geopolitique"
       },
       {
-        "titre": "YieldMax XYZ Option Income Strategy ETF announces weekly distribution of $0.3543",
-        "source": "Seeking Alpha",
-        "url": "https://seekingalpha.com/news/4573479-yieldmax-xyz-option-income-strategy-etf-announces-weekly-distribution-of-03543?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
-        "domain": "seekingalpha.com",
-        "date": "2026-04-08T19:06:16.000Z",
-        "category": "marches"
-      },
-      {
-        "titre": "Stablecoin Trading Volume Could Skyrocket to $1.5 Quadrillion by 2035: Chainalysis",
-        "source": "Decrypt",
-        "url": "https://decrypt.co/363685/stablecoin-trading-volume-skyrocket-1-5-quadrillion-2035-chainalysis",
-        "domain": "decrypt.co",
-        "date": "2026-04-08T19:06:15.000Z",
-        "category": "crypto"
-      },
-      {
-        "titre": "ECARX explores minority stake & IP acquisition from DreamSmart; shares up",
-        "source": "Seeking Alpha",
-        "url": "https://seekingalpha.com/news/4573478-ecarx-explores-minority-stake-ip-acquisition-from-dreamsmart-shares-up?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
-        "domain": "seekingalpha.com",
-        "date": "2026-04-08T19:06:09.000Z",
-        "category": "marches"
-      },
-      {
-        "titre": "'Total victory' or TACO? Trump faces questions on Iran deal",
-        "source": "Al-Monitor",
-        "url": "https://www.al-monitor.com/originals/2026/04/total-victory-or-taco-trump-faces-questions-iran-deal",
-        "domain": "al-monitor.com",
-        "date": "2026-04-08T19:00:21.000Z",
+        "titre": "Otan: Mark Rutte continue son exercice d'équilibriste après une entrevue «très franche» avec Donald Trump",
+        "source": "RFI",
+        "url": "https://www.rfi.fr/fr/monde/20260409-otan-mark-rutte-continue-son-exercice-d-%C3%A9quilibriste-apr%C3%A8s-une-entrevue-tr%C3%A8s-franche-avec-donald-trump",
+        "domain": "rfi.fr",
+        "date": "2026-04-09T07:11:37.000Z",
         "category": "geopolitique"
       },
       {
-        "titre": "« L’idéalisme suffit à nous envoyer dans l’espace, mais pas à nous y maintenir » : pourquoi la conquête spatiale doit prouver sa valeur économique",
-        "source": "Challenges",
-        "url": "https://www.challenges.fr/entreprise/aeronautique/lidealisme-suffit-a-nous-envoyer-dans-lespace-mais-pas-a-nous-y-maintenir-pourquoi-la-conquete-spatiale-doit-prouver-sa-valeur-economique_642550",
-        "domain": "challenges.fr",
-        "date": "2026-04-08T19:00:00.000Z",
+        "titre": "Trump vows U.S. troops will remain near Iran until 'real agreement' met, warns of major escalation",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4573596-trump-vows-us-troops-will-remain-near-iran-until-real-agreement-met-warns-of-major-escalation?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-04-09T07:11:01.000Z",
         "category": "marches"
       },
       {
-        "titre": "Price predictions 4/8: BTC, ETH, XRP, BNB, SOL, DOGE, HYPE, ADA, BCH, LINK",
-        "source": "CoinTelegraph",
-        "url": "https://cointelegraph.com/news/price-predictions-4-8-btc-eth-xrp-bnb-sol-doge-hype-ada-bch-link?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-        "domain": "cointelegraph.com",
-        "date": "2026-04-08T19:00:00.000Z",
-        "category": "crypto"
-      },
-      {
-        "titre": "$2B Investment Drives Expansion of U.S.-Canada Oil Flows",
-        "source": "OilPrice",
-        "url": "https://oilprice.com/Energy/Energy-General/2B-Investment-Drives-Expansion-of-US-Canada-Oil-Flows.html",
-        "domain": "oilprice.com",
-        "date": "2026-04-08T19:00:00.000Z",
-        "category": "matieres_premieres"
-      },
-      {
-        "titre": "Micron and other memory stocks soar as Iran cease-fire refocuses attention on the AI boom",
-        "source": "MarketWatch",
-        "url": "https://www.marketwatch.com/story/micron-and-other-memory-stocks-soar-as-iran-cease-fire-refocuses-attention-on-the-ai-boom-3989c0d4?mod=mw_rss_topstories",
-        "domain": "marketwatch.com",
-        "date": "2026-04-08T18:59:00.000Z",
-        "category": "marches"
-      },
-      {
-        "titre": "Crypto Markets Surge as US-Iran Ceasefire Triggers Short Squeeze",
-        "source": "The Defiant",
-        "url": "https://thedefiant.io/news/markets/crypto-markets-surge-as-us-iran-ceasefire-triggers-short-squeeze",
-        "domain": "thedefiant.io",
-        "date": "2026-04-08T18:58:46.000Z",
-        "category": "crypto"
-      },
-      {
-        "titre": "Bitcoin Pioneer Adam Back, Bernstein Say Quantum Threat to BTC Isn’t Existential",
-        "source": "Decrypt",
-        "url": "https://decrypt.co/363680/bitcoin-pioneer-adam-back-bernstein-quantum-threat-not-existential",
-        "domain": "decrypt.co",
-        "date": "2026-04-08T18:58:03.000Z",
-        "category": "crypto"
-      },
-      {
-        "titre": "Servicenow stock hits 52-week low at 97.96 USD",
-        "source": "Investing.com",
-        "url": "https://www.investing.com/news/company-news/servicenow-stock-hits-52week-low-at-9796-usd-93CH-4603788",
-        "domain": "investing.com",
-        "date": "2026-04-08T18:57:57.000Z",
-        "category": "marches"
-      },
-      {
-        "titre": "New macOS stealer campaign uses Script Editor in ClickFix attack",
-        "source": "BleepingComputer",
-        "url": "https://www.bleepingcomputer.com/news/security/new-macos-stealer-campaign-uses-script-editor-in-clickfix-attack/",
-        "domain": "bleepingcomputer.com",
-        "date": "2026-04-08T18:55:43.000Z",
+        "titre": "Sigmoid vs ReLU Activation Functions: The Inference Cost of Losing Geometric Context",
+        "source": "MarkTechPost",
+        "url": "https://www.marktechpost.com/2026/04/09/sigmoid-vs-relu-activation-functions-the-inference-cost-of-losing-geometric-context/",
+        "domain": "marktechpost.com",
+        "date": "2026-04-09T07:10:00.000Z",
         "category": "ai_tech"
       },
       {
-        "titre": "Meta debuts the Muse Spark model in a &#8216;ground-up overhaul&#8217; of its AI",
-        "source": "TechCrunch",
-        "url": "https://techcrunch.com/2026/04/08/meta-debuts-the-muse-spark-model-in-a-ground-up-overhaul-of-its-ai/",
-        "domain": "techcrunch.com",
-        "date": "2026-04-08T18:53:19.000Z",
-        "category": "ai_tech"
-      },
-      {
-        "titre": "OpenAI Publishes Child Safety Blueprint to Address AI-Enabled Exploitation",
-        "source": "Decrypt",
-        "url": "https://decrypt.co/363681/openai-child-safety-blueprint-ai-exploitation",
-        "domain": "decrypt.co",
-        "date": "2026-04-08T18:51:32.000Z",
-        "category": "crypto"
-      },
-      {
-        "titre": "Hack-for-hire group caught targeting Android devices and iCloud backups",
-        "source": "TechCrunch",
-        "url": "https://techcrunch.com/2026/04/08/hack-for-hire-group-caught-targeting-android-devices-and-icloud-backups/",
-        "domain": "techcrunch.com",
-        "date": "2026-04-08T18:51:20.000Z",
-        "category": "ai_tech"
-      },
-      {
-        "titre": "Meta's New AI Model Gives Mark Zuckerberg a Seat at the Big Kid's Table",
-        "source": "Wired",
-        "url": "https://www.wired.com/story/muse-spark-meta-open-source-closed-source/",
-        "domain": "wired.com",
-        "date": "2026-04-08T18:51:09.000Z",
-        "category": "ai_tech"
-      },
-      {
-        "titre": "SEC appoints David Woodcock as new enforcement director amid concerns over previous lead, agency&#8217;s crypto cases",
+        "titre": "Bhutan moves $23 million worth of bitcoin; total holdings down 70% from peak",
         "source": "The Block",
-        "url": "https://www.theblock.co/post/396770/sec-appoints-david-woodcock-new-enforcement-director-amid-concerns-over-previous-lead-crypto-cases?utm_source=rss&amp;utm_medium=rss",
+        "url": "https://www.theblock.co/post/396818/bhutan-moves-23-million-worth-bitcoin?utm_source=rss&amp;utm_medium=rss",
         "domain": "theblock.co",
-        "date": "2026-04-08T18:45:20.000Z",
+        "date": "2026-04-09T07:09:07.000Z",
         "category": "crypto"
       },
       {
-        "titre": "IDF conduct in Lebanon plunges Israel-Europe relations to lower depths",
+        "titre": "Absentéisme: un «bouton d’alerte» permettra bientôt aux chefs d’entreprise de déclencher un contrôle en cas de suspicion d’abus",
+        "source": "Le Figaro Éco",
+        "url": "https://www.lefigaro.fr/social/absenteisme-un-bouton-d-alerte-permettra-bientot-aux-chefs-d-entreprise-de-declencher-un-controle-en-cas-suspicion-d-abus-20260409",
+        "domain": "lefigaro.fr",
+        "date": "2026-04-09T07:07:43.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Israeli strikes kill seven in southern Lebanon",
+        "source": "Middle East Eye",
+        "url": "https://www.middleeasteye.net/live-blog/live-blog-update/seven-killed-others-wounded-israeli-bombing-town-southern-lebanon",
+        "domain": "middleeasteye.net",
+        "date": "2026-04-09T07:07:27.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Could AI Chatbots influence a Government’s Decisions?",
+        "source": "AlgorithmWatch",
+        "url": "https://algorithmwatch.org/en/could-ai-chatbots-influence-governments/",
+        "domain": "algorithmwatch.org",
+        "date": "2026-04-09T07:07:24.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "Le repreneur de Tupperware en France va développer la marque dans 23 pays en Europe",
+        "source": "Le Figaro Flash Éco",
+        "url": "https://www.lefigaro.fr/societes/le-repreneur-de-tupperware-en-france-va-developper-la-marque-dans-23-pays-en-europe-20260409",
+        "domain": "lefigaro.fr",
+        "date": "2026-04-09T07:03:04.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "French minister condemns Israeli blitz on Lebanon, says it undermines truce efforts",
+        "source": "Middle East Eye",
+        "url": "https://www.middleeasteye.net/live-blog/live-blog-update/french-minister-condemns-israeli-blitz-lebanon-says-it-undermines-truce",
+        "domain": "middleeasteye.net",
+        "date": "2026-04-09T07:02:53.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Vistra prices $4B senior notes",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4573598-vistra-prices-4b-senior-notes?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-04-09T07:02:42.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Cryptographers place $5,000 bet whether quantum will matter",
+        "source": "The Register",
+        "url": "https://go.theregister.com/feed/www.theregister.com/2026/04/09/cryptograhpers_quantum_bet/",
+        "domain": "go.theregister.com",
+        "date": "2026-04-09T07:00:10.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "Japan stocks lower at close of trade; Nikkei 225 down 0.53%",
+        "source": "Investing.com",
+        "url": "https://www.investing.com/news/stock-market-news/japan-stocks-lower-at-close-of-trade-nikkei-225-down-053-4604630",
+        "domain": "investing.com",
+        "date": "2026-04-09T07:00:05.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Médicament : n’attendons pas la présidentielle !",
         "source": "Politico EU",
-        "url": "https://www.politico.eu/article/spanish-peacekeeper-detained-by-idf-in-lebanon/?utm_source=RSS_Feed&#038;utm_medium=RSS&#038;utm_campaign=RSS_Syndication",
+        "url": "https://www.politico.eu/sponsored-content/medicament-nattendons-pas-la-presidentielle/?utm_source=RSS_Feed&#038;utm_medium=RSS&#038;utm_campaign=RSS_Syndication",
         "domain": "politico.eu",
-        "date": "2026-04-08T18:41:58.000Z",
+        "date": "2026-04-09T07:00:00.000Z",
         "category": "geopolitique"
       },
       {
-        "titre": "The Metals Royalty debuts on Nasdaq with deep-sea bet",
-        "source": "Mining.com",
-        "url": "https://www.mining.com/the-metals-royalty-debuts-on-nasdaq-with-deep-sea-bet/",
-        "domain": "mining.com",
-        "date": "2026-04-08T18:39:43.000Z",
-        "category": "matieres_premieres"
-      },
-      {
-        "titre": "Israeli strikes in Gaza kill four, including Al Jazeera journalist, medics say",
-        "source": "Al-Monitor",
-        "url": "https://www.al-monitor.com/originals/2026/04/israeli-strikes-gaza-kill-four-including-al-jazeera-journalist-medics-say",
-        "domain": "al-monitor.com",
-        "date": "2026-04-08T18:36:45.000Z",
+        "titre": "Between Legacy and Emergence: The Spatial Integration of New Defence Companies in Europe’s Historical Defence Landscape",
+        "source": "IRIS",
+        "url": "https://www.iris-france.org/between-legacy-and-emergence-the-spatial-integration-of-new-defence-companies-in-europes-historical-defence-landscape/",
+        "domain": "iris-france.org",
+        "date": "2026-04-09T07:00:00.000Z",
         "category": "geopolitique"
       },
       {
-        "titre": "Michael Saylor says bitcoin has likely bottomed, quantum risk overblown",
-        "source": "CoinDesk",
-        "url": "https://www.coindesk.com/markets/2026/04/08/michael-saylor-says-bitcoin-has-likely-bottomed-quantum-risk-overblown",
-        "domain": "coindesk.com",
-        "date": "2026-04-08T18:35:47.000Z",
+        "titre": "Anticiper le « risque réputationnel » qui fait trembler tous les investisseurs, la promesse d’une fintech française",
+        "source": "Challenges",
+        "url": "https://www.challenges.fr/entreprise/anticiper-le-risque-reputationnel-qui-fait-trembler-tous-les-investisseurs-la-promesse-dune-fintech-francaise_642537",
+        "domain": "challenges.fr",
+        "date": "2026-04-09T07:00:00.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Hyperliquid : Le vault HLP part en fumée sur le Fartcoin, 1,5 million $ s’évaporent",
+        "source": "Journal du Coin",
+        "url": "https://journalducoin.com/defi/hyperliquid-vault-hlp-part-en-fumee-sur-le-fartcoin-15-million-sevaporent/",
+        "domain": "journalducoin.com",
+        "date": "2026-04-09T07:00:00.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "Le pétrole rebondit en Asie, les Bourses de Tokyo et Séoul prudentes",
+        "source": "Le Figaro Flash Éco",
+        "url": "https://www.lefigaro.fr/flash-eco/le-petrole-rebondit-en-asie-les-bourses-de-tokyo-et-seoul-prudentes-1-20260409",
+        "domain": "lefigaro.fr",
+        "date": "2026-04-09T06:55:34.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "A Coding Guide to Build Advanced Document Intelligence Pipelines with Google LangExtract, OpenAI Models, Structured Extraction, and Interactive Visualization",
+        "source": "MarkTechPost",
+        "url": "https://www.marktechpost.com/2026/04/08/a-coding-guide-to-build-advanced-document-intelligence-pipelines-with-google-langextract-openai-models-structured-extraction-and-interactive-visualization/",
+        "domain": "marktechpost.com",
+        "date": "2026-04-09T06:54:36.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "Thor Explorations reports record profit on higher gold output",
+        "source": "Investing.com",
+        "url": "https://www.investing.com/news/company-news/thor-explorations-reports-record-profit-on-higher-gold-output-93CH-4604628",
+        "domain": "investing.com",
+        "date": "2026-04-09T06:54:34.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Microsoft suspends dev accounts for high-profile open source projects",
+        "source": "BleepingComputer",
+        "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-suspends-dev-accounts-for-high-profile-open-source-projects/",
+        "domain": "bleepingcomputer.com",
+        "date": "2026-04-09T06:46:26.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "Binance : Changpeng Zhao (CZ) révèle les coulisses de son ascension dans un livre inédit",
+        "source": "Journal du Coin",
+        "url": "https://journalducoin.com/actualites/binance-changpeng-zhao-cz-livre/",
+        "domain": "journalducoin.com",
+        "date": "2026-04-09T06:41:10.000Z",
         "category": "crypto"
       }
     ],

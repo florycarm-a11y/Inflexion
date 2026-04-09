@@ -1,83 +1,69 @@
 {
-  "updated": "2026-04-08T19:16:02.006Z",
-  "date": "2026-04-08",
+  "updated": "2026-04-09T07:22:01.247Z",
+  "date": "2026-04-09",
   "global": {
-    "score": 0.06,
-    "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (+0.06), dominé par la rubrique matieres_premieres (baissier)."
+    "score": -0.35,
+    "tendance": "baissier",
+    "resume": "Le sentiment global est baissier (-0.35), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.65,
-      "confidence": 0.85,
+      "score": -0.72,
+      "confidence": 0.92,
       "tendance": "baissier",
-      "resume": "Trêve Iran-États-Unis fragile avec violations rapportées (frappes israéliennes au Liban, attaques contre pipeline saoudien). Incertitude sur la durabilité de l'accord et inclusion du Liban dans les négociations.",
+      "resume": "Escalade militaire au Moyen-Orient avec frappes israéliennes au Liban, tensions Iran-États-Unis et risque de rupture du cessez-le-feu après 48 heures. Contrôle iranien du détroit d'Ormuz crée une prime de risque géopolitique majeure sur les marchés énergétiques.",
       "signaux_cles": [
-        "Ceasefire testé par confusion sur le Détroit d'Ormuz et frappes continues au Liban",
-        "Iran demande l'inclusion du Liban dans l'accord de trêve",
-        "Attaques iraniennes contre le pipeline Est-Ouest saoudien rapportées",
-        "Trump revendique victoire sans atteindre objectifs déclarés après 5 semaines de bombardements"
+        "Cessez-le-feu USA-Iran craque après 48 heures (date: 2026-04-09)",
+        "Frappes israéliennes au Liban tuent 7 civils, ministre français condamne l'escalade",
+        "Iran annonce deux routes maritimes alternatives au détroit d'Ormuz, dictant les conditions de passage"
       ]
     },
     "marches": {
       "score": 0.58,
-      "confidence": 0.72,
-      "tendance": "haussier",
-      "resume": "Rebond généralisé post-ceasefire avec focus sur secteur tech/IA. Mémoires et actions technologiques surperforment. Signaux mitigés sur politique monétaire (Fed envisage hausses ET baisses).",
+      "confidence": 0.68,
+      "tendance": "mixte",
+      "resume": "Indices boursiers américains en hausse (+2.55% à +2.97%) sur optimisme de baisse des prix pétroliers post-cessez-le-feu, mais divergence avec matières premières et incertitude sur durabilité de l'accord. Marché fragmenté avec consensus faible (56%).",
       "signaux_cles": [
-        "Micron et mémoires surperforment après ceasefire (refocus sur boom IA)",
-        "Fed minutes montrent ouverture aux hausses de taux en mars mais majorité anticipe baisse en 2026",
-        "ServiceNow atteint plus bas 52 semaines à 97,96 USD",
-        "NewJersey Resources atteint plus haut historique à 56,95 USD"
+        "S&P 500 +2.55%, Nasdaq +2.97%, Dow Jones +2.85% (prix: $676.01, $606.09, $479.16)",
+        "Goldman Sachs réduit prévisions pétrole Q2 mais avertit risque Brent à $115 si cessez-le-feu échoue",
+        "FedEx accord salarial préliminaire avec pilotes après négociations prolongées"
       ]
     },
     "crypto": {
-      "score": 0.72,
-      "confidence": 0.78,
-      "tendance": "haussier",
-      "resume": "Rallye crypto post-ceasefire avec squeeze court et optimisme sur volumes stablecoins. Bitcoin cible 90K avec support à 72K. Préoccupations quantiques minimisées par analystes majeurs.",
+      "score": -0.65,
+      "confidence": 0.85,
+      "tendance": "baissier",
+      "resume": "Bitcoin et altcoins en baisse (-2.65% secteur crypto) suite à fragilisation du cessez-le-feu USA-Iran. Bhutan réduit holdings Bitcoin de 70% du pic, incident de sécurité Bitcoin Depot ($3.7M volés). Volatilité liée aux prix pétroliers et géopolitique.",
       "signaux_cles": [
-        "Bitcoin vise 90K avec achats agressifs sur Binance, support à 72K",
-        "Volumes stablecoins pourraient atteindre 1,5 quadrillion $ d'ici 2035 (Chainalysis)",
-        "Liquidations massives Hyperliquid suite à effondrement prix pétrole",
-        "Adam Back et Bernstein minimisent risque quantique existentiel pour BTC"
+        "Bitcoin sous $71,000 après 48h de rupture du cessez-le-feu (date: 2026-04-09)",
+        "Bhutan réduit holdings Bitcoin de 70% du pic, vend $23M en BTC",
+        "Bitcoin Depot subit vol de $3.7M, Hyperliquid perd $1.5M sur Fartcoin"
       ]
     },
     "matieres_premieres": {
-      "score": -0.78,
+      "score": -0.68,
       "confidence": 0.88,
       "tendance": "baissier",
-      "resume": "Effondrement des prix pétroliers (-10,25% USO) malgré ceasefire fragile. Attaques iraniennes contre infrastructure saoudienne contrebalancées par craintes de récession. Uranium et métaux volatiles.",
+      "resume": "Pétrole brut s'effondre (-9.78% USO à $124.58) sur annonce cessez-le-feu USA-Iran, mais prime de risque Hormuz persiste. Goldman réduit prévisions Q2 mais avertit volatilité extrême si accord échoue. Blé s'effondre avec pétrole.",
       "signaux_cles": [
-        "Pétrole (USO) -10,25% en 24h à 123,93 USD malgré trêve Iran-États-Unis",
-        "Iran attaque pipeline Est-Ouest saoudien (risque géopolitique non intégré)",
-        "Exxon Mobil signale +2,9Md$ bénéfices Q1 sur prix pétroliers élevés",
-        "Conseil de sécurité : Russie et Chine vetent résolution sur Détroit d'Ormuz"
+        "USO (pétrole) -9.78% à $124.58 suite cessez-le-feu (date: 2026-04-09)",
+        "Goldman avertit Brent pourrait atteindre $115 si cessez-le-feu échoue",
+        "Iran contrôle détroit d'Ormuz, impose routes maritimes alternatives, crée prime de risque persistante"
       ]
     },
     "ai_tech": {
-      "score": 0.68,
-      "confidence": 0.75,
-      "tendance": "haussier",
-      "resume": "Accélération innovation IA avec modèles frontier (Meta Muse Spark) et intégrations ChatGPT. Défis d'approvisionnement GPU Nvidia (Rubin en retard). Sécurité critique : 13 ans de vulnérabilité ActiveMQ.",
+      "score": 0.12,
+      "confidence": 0.52,
+      "tendance": "neutre",
+      "resume": "Secteur IA-Tech fragmenté : Microsoft bloque comptes développeurs open-source (VeraCrypt, WireGuard), mais Google et Meta lancent nouveaux modèles (PaperOrchestra, Muse Spark). Préoccupations sécurité et conformité équilibrent innovations produits.",
       "signaux_cles": [
-        "Meta déploie Muse Spark (premier modèle frontier sans poids ouverts)",
-        "Nvidia Rubin GPU retardé par pénurie mémoire et défis techniques",
-        "Volkswagen teste microbuses autonomes à Los Angeles avec Uber",
-        "Vulnérabilité ActiveMQ 13 ans permet exécution code distante (patch urgent CISA)"
+        "Microsoft suspend comptes développeurs VeraCrypt, WireGuard, Windscribe",
+        "Google introduit PaperOrchestra pour recherche IA automatisée",
+        "Meta lance Muse Spark et outils Gemini notebooks pour organisation projets"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-02-20",
-      "global": -0.23,
-      "geopolitique": -0.55,
-      "marches": -0.45,
-      "crypto": 0.45,
-      "matieres_premieres": -0.15,
-      "ai_tech": -0.35
-    },
     {
       "date": "2026-02-21",
       "global": 0.02,
@@ -338,6 +324,15 @@
       "crypto": 0.72,
       "matieres_premieres": -0.78,
       "ai_tech": 0.68
+    },
+    {
+      "date": "2026-04-09",
+      "global": -0.35,
+      "geopolitique": -0.72,
+      "marches": 0.58,
+      "crypto": -0.65,
+      "matieres_premieres": -0.68,
+      "ai_tech": 0.12
     }
   ],
   "model": "claude-haiku-4-5-20251001",
