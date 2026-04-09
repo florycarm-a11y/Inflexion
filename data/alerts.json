@@ -1,117 +1,76 @@
 {
-  "updated": "2026-04-09T07:22:01.247Z",
+  "updated": "2026-04-09T19:04:29.129Z",
   "alertes": [
     {
       "id": "alert-2026-04-09-001",
-      "titre": "Pétrole (USO) : -9.78% à $124.58, effondrement post-cessez-le-feu",
-      "texte": "Le brut s'effondre suite à l'annonce du cessez-le-feu USA-Iran (2026-04-09), mais Goldman Sachs avertit d'une volatilité extrême : Brent pourrait atteindre $115 si l'accord échoue. Le contrôle iranien du détroit d'Ormuz maintient une prime de risque géopolitique.",
-      "categorie": "matieres_premieres",
+      "titre": "Géopolitique : Détroit d'Ormuz fermé, risque de choc pétrolier malgré trêve Iran",
+      "texte": "Le chef pétrolier des EAU confirme la fermeture persistante du détroit d'Ormuz. Les troupes US restent positionnées en Golfe avant les négociations. Chevron anticipe une baisse de production. Risque de disruption énergétique structurelle malgré l'accord de cessez-le-feu.",
+      "categorie": "geopolitique",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-04-09T07:22:01.247Z",
+      "horodatage": "2026-04-09T19:04:29.129Z",
       "donnees": {
-        "symbole": "SPY",
-        "nom": "S&P 500",
-        "prix": 676.01,
-        "variation": 2.55
+        "score": 14,
+        "label": "Extreme Fear",
+        "variation_7j": 2
       }
     },
     {
       "id": "alert-2026-04-09-002",
-      "titre": "Bitcoin : sous $71,000, cessez-le-feu USA-Iran craque après 48h",
-      "texte": "Bitcoin chute sous $71,000 suite à la fragilisation du cessez-le-feu USA-Iran après seulement 48 heures (date: 2026-04-09). Secteur crypto recule de -2.65% globalement. Volatilité liée aux prix pétroliers et tensions géopolitiques persistantes.",
-      "categorie": "crypto",
+      "titre": "Marchés : Correction boursière non terminée, trêve Iran interprétée comme signal baissier",
+      "texte": "Analystes avertissent que la correction n'est pas achevée. Les marchés de prédiction pointent une dé-escalade mais les signaux techniques restent fragiles. Plans sociaux multiples en France (Webedia, La Montagne, Bayard) signalent des tensions économiques sous-jacentes.",
+      "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-09T07:22:01.247Z",
-      "donnees": {
-        "symbole": "QQQ",
-        "nom": "Nasdaq 100",
-        "prix": 606.09,
-        "variation": 2.97
-      }
+      "horodatage": "2026-04-09T19:04:29.129Z",
+      "donnees": {}
     },
     {
       "id": "alert-2026-04-09-003",
-      "titre": "S&P 500 : +2.55% à $676.01, rebond sur optimisme pétrolier fragile",
-      "texte": "Les indices américains rebondissent (+2.55% S&P 500, +2.97% Nasdaq) sur l'annonce du cessez-le-feu et baisse pétrolière, mais le consensus de marché reste faible (56%) avec amplitude de 2.88%. Divergence tech/commodities (+6.8pp) signale risk-on temporaire.",
-      "categorie": "marches",
-      "severite": "attention",
-      "impact": "haussier",
-      "horodatage": "2026-04-09T07:22:01.247Z",
-      "donnees": {
-        "symbole": "DIA",
-        "nom": "Dow Jones",
-        "prix": 479.16,
-        "variation": 2.85
-      }
-    },
-    {
-      "id": "alert-2026-04-09-004",
-      "titre": "Alphabet (GOOGL) : +3.88% à $317.32, surperformance tech",
-      "texte": "Alphabet surperforme avec +3.88% (prix: $317.32) dans un contexte de rotation risk-on vers la croissance technologique. Nvidia +2.23%, Apple +2.13% confirment appétit pour valeurs de croissance malgré tensions géopolitiques.",
-      "categorie": "marches",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-04-09T07:22:01.247Z",
-      "donnees": {
-        "symbole": "USO",
-        "nom": "Pétrole (ETF)",
-        "prix": 124.58,
-        "variation": -9.78
-      }
-    },
-    {
-      "id": "alert-2026-04-09-005",
-      "titre": "Cessez-le-feu USA-Iran : rupture après 48h, escalade Liban confirmée",
-      "texte": "L'accord de cessez-le-feu USA-Iran se fragilise après 48 heures (date: 2026-04-09). Frappes israéliennes au Liban tuent 7 civils, ministre français condamne l'escalade. Trump avertit d'une escalade majeure si les négociations échouent. Iran contrôle le détroit d'Ormuz.",
-      "categorie": "geopolitique",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-04-09T07:22:01.247Z",
-      "donnees": {
-        "symbole": "NVDA",
-        "nom": "Nvidia",
-        "prix": 182.08,
-        "variation": 2.23
-      }
-    },
-    {
-      "id": "alert-2026-04-09-006",
-      "titre": "Fear & Greed Index : 14 (Extreme Fear), divergence marché fragmenté",
-      "texte": "L'indice Fear & Greed atteint 14 (Extreme Fear) malgré rebond des indices. Régime de marché fragmenté avec consensus 56% et divergence majeure entre tech (+2.97% Nasdaq) et crypto (-2.65%), signalant incertitude structurelle.",
+      "titre": "Fear & Greed Index : 14 (Extreme Fear), divergence avec régime risk-on détecté",
+      "texte": "Indice de peur extrême (14) contraste avec consensus risk-on 88% et gains ETF +0.67%, crypto +0.65%. Divergence suggère volatilité accrue et risque de retournement rapide. Amplitude 0.64% indique instabilité sous-jacente.",
       "categorie": "marches",
       "severite": "attention",
       "impact": "neutre",
-      "horodatage": "2026-04-09T07:22:01.247Z",
-      "donnees": {
-        "symbole": "AAPL",
-        "nom": "Apple",
-        "prix": 258.9,
-        "variation": 2.13
-      }
+      "horodatage": "2026-04-09T19:04:29.129Z",
+      "donnees": {}
     },
     {
-      "id": "alert-2026-04-09-007",
-      "titre": "Bitcoin Depot : vol de $3.7M, incident sécurité crypto",
-      "texte": "Bitcoin Depot révèle un vol de $3.7M depuis les portefeuilles de l'entreprise (date: 2026-04-09). Incident de sécurité majeur dans l'écosystème crypto, ajoutant aux pressions baissières du secteur.",
+      "id": "alert-2026-04-09-004",
+      "titre": "Crypto : Morgan Stanley BTC ETF MSBT +30.6M$ J1, adoption institutionnelle confirmée",
+      "texte": "Morgan Stanley Bitcoin ETF enregistre 30.6M$ d'entrées le premier jour. Marché RWA tokenisé projeté à 400Md$ d'ici 2030. Adoption institutionnelle s'accélère malgré gels de fonds (12M$ US Secret Service) et tensions régulation.",
       "categorie": "crypto",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-04-09T19:04:29.129Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-04-09-005",
+      "titre": "IA/Tech : OpenAI IA d'entreprise = 40% revenus, Pro réduit à 100$/mois",
+      "texte": "OpenAI rapporte que l'IA d'entreprise représente 40% des revenus avec shift vers workflows agentiques. Prix Pro réduit de moitié à 100$/mois pour utilisateurs Codex intensifie concurrence vs Anthropic et Google. Consolidation du marché accélérée.",
+      "categorie": "ai_tech",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-04-09T19:04:29.129Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-04-09-006",
+      "titre": "Matières premières : Marché engrais sous pression, trêve ne soulage pas tensions",
+      "texte": "Malgré la trêve Iran, le marché des engrais reste sous pression d'approvisionnement. Israël redémarre gisement gazier offshore. Mexique envisage fracturation pour réduire dépendance gaz US. Risque inflationniste alimentaire persistant.",
+      "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-09T07:22:01.247Z",
-      "donnees": {
-        "symbole": "GOOGL",
-        "nom": "Alphabet",
-        "prix": 317.32,
-        "variation": 3.88
-      }
+      "horodatage": "2026-04-09T19:04:29.129Z",
+      "donnees": {}
     }
   ],
   "stats": {
-    "total": 7,
-    "urgent": 2,
-    "attention": 4,
-    "info": 1
+    "total": 6,
+    "urgent": 1,
+    "attention": 3,
+    "info": 2
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"

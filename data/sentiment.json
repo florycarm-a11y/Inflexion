@@ -1,65 +1,65 @@
 {
-  "updated": "2026-04-09T07:22:01.247Z",
+  "updated": "2026-04-09T19:04:29.129Z",
   "date": "2026-04-09",
   "global": {
-    "score": -0.35,
+    "score": -0.23,
     "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.35), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est baissier (-0.23), dominé par la rubrique matieres_premieres (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.72,
-      "confidence": 0.92,
-      "tendance": "baissier",
-      "resume": "Escalade militaire au Moyen-Orient avec frappes israéliennes au Liban, tensions Iran-États-Unis et risque de rupture du cessez-le-feu après 48 heures. Contrôle iranien du détroit d'Ormuz crée une prime de risque géopolitique majeure sur les marchés énergétiques.",
-      "signaux_cles": [
-        "Cessez-le-feu USA-Iran craque après 48 heures (date: 2026-04-09)",
-        "Frappes israéliennes au Liban tuent 7 civils, ministre français condamne l'escalade",
-        "Iran annonce deux routes maritimes alternatives au détroit d'Ormuz, dictant les conditions de passage"
-      ]
-    },
-    "marches": {
-      "score": 0.58,
-      "confidence": 0.68,
-      "tendance": "mixte",
-      "resume": "Indices boursiers américains en hausse (+2.55% à +2.97%) sur optimisme de baisse des prix pétroliers post-cessez-le-feu, mais divergence avec matières premières et incertitude sur durabilité de l'accord. Marché fragmenté avec consensus faible (56%).",
-      "signaux_cles": [
-        "S&P 500 +2.55%, Nasdaq +2.97%, Dow Jones +2.85% (prix: $676.01, $606.09, $479.16)",
-        "Goldman Sachs réduit prévisions pétrole Q2 mais avertit risque Brent à $115 si cessez-le-feu échoue",
-        "FedEx accord salarial préliminaire avec pilotes après négociations prolongées"
-      ]
-    },
-    "crypto": {
       "score": -0.65,
       "confidence": 0.85,
       "tendance": "baissier",
-      "resume": "Bitcoin et altcoins en baisse (-2.65% secteur crypto) suite à fragilisation du cessez-le-feu USA-Iran. Bhutan réduit holdings Bitcoin de 70% du pic, incident de sécurité Bitcoin Depot ($3.7M volés). Volatilité liée aux prix pétroliers et géopolitique.",
+      "resume": "Tensions persistantes au Moyen-Orient malgré les pourparlers : Israël maintient ses opérations contre le Hezbollah, l'Iran reste mobilisé, et les menaces sur le détroit d'Ormuz créent une incertitude géopolitique structurelle. Les négociations de paix restent fragiles et conditionnelles.",
       "signaux_cles": [
-        "Bitcoin sous $71,000 après 48h de rupture du cessez-le-feu (date: 2026-04-09)",
-        "Bhutan réduit holdings Bitcoin de 70% du pic, vend $23M en BTC",
-        "Bitcoin Depot subit vol de $3.7M, Hyperliquid perd $1.5M sur Fartcoin"
+        "Israël intensifie la production d'intercepteurs Arrow et maintient les frappes malgré les négociations avec le Liban",
+        "Le Hezbollah rejette les négociations directes avec Israël ; avertissement d'expansion des tirs 'dans les heures à venir'",
+        "Détroit d'Ormuz : fermeture persistante signalée par le chef pétrolier des EAU ; présence militaire US maintenue en Golfe"
+      ]
+    },
+    "marches": {
+      "score": -0.45,
+      "confidence": 0.78,
+      "tendance": "baissier",
+      "resume": "Correction boursière en cours avec signaux d'alerte : la trêve Iran est interprétée comme un mauvais présage par les analystes, les marchés de prédiction pointent une dé-escalade mais restent volatiles. Plans sociaux multiples en France (Webedia, La Montagne, Bayard) signalent des tensions économiques.",
+      "signaux_cles": [
+        "Analystes avertissent que la correction n'est pas terminée ; la trêve Iran vue comme signal baissier, non haussier",
+        "Plans sociaux : Webedia (départs volontaires), La Montagne (152 postes), Bayard (59 postes) en contexte d'incertitude",
+        "Inflation alimentaire anticipée ; gouvernement français annonce 20M€ supplémentaires pour agriculteurs en difficulté"
+      ]
+    },
+    "crypto": {
+      "score": 0.35,
+      "confidence": 0.62,
+      "tendance": "mixte",
+      "resume": "Dynamique contrastée : adoption institutionnelle en progression (Morgan Stanley BTC ETF +30.6M$ J1, RWA tokenisé vers 400Md$ 2030) mais régulation restrictive persiste (Tornado Cash, gels de fonds). Marchés de prédiction régulés (Kalshi 89% marché US) gagnent en légitimité.",
+      "signaux_cles": [
+        "Morgan Stanley Bitcoin ETF MSBT : 30.6M$ d'entrées le premier jour ; adoption institutionnelle confirmée",
+        "Marché RWA tokenisé projeté à 400Md$ d'ici 2030 (Keyrock, Securitize) ; Securitize recrute ex-SEC pour IPO",
+        "US Secret Service gèle 12M$ crypto (fraude globale) ; affaire Tornado Cash en cours ; tensions régulation vs innovation"
       ]
     },
     "matieres_premieres": {
-      "score": -0.68,
+      "score": -0.72,
       "confidence": 0.88,
       "tendance": "baissier",
-      "resume": "Pétrole brut s'effondre (-9.78% USO à $124.58) sur annonce cessez-le-feu USA-Iran, mais prime de risque Hormuz persiste. Goldman réduit prévisions Q2 mais avertit volatilité extrême si accord échoue. Blé s'effondre avec pétrole.",
+      "resume": "Chocs d'approvisionnement aigus : détroit d'Ormuz fermé, Israël redémarre un gisement offshore, Chevron réduit sa production. Marché des engrais reste sous pression malgré la trêve. Incertitude structurelle sur les flux énergétiques et alimentaires.",
       "signaux_cles": [
-        "USO (pétrole) -9.78% à $124.58 suite cessez-le-feu (date: 2026-04-09)",
-        "Goldman avertit Brent pourrait atteindre $115 si cessez-le-feu échoue",
-        "Iran contrôle détroit d'Ormuz, impose routes maritimes alternatives, crée prime de risque persistante"
+        "Détroit d'Ormuz : fermeture confirmée par chef pétrolier EAU ; troupes US maintenues en Golfe avant négociations",
+        "Israël redémarre son deuxième gisement gazier offshore post-trêve ; Chevron anticipe baisse de production",
+        "Marché des engrais : trêve ne soulage pas les tensions d'approvisionnement ; Mexique envisage fracturation pour réduire dépendance US gaz"
       ]
     },
     "ai_tech": {
-      "score": 0.12,
-      "confidence": 0.52,
-      "tendance": "neutre",
-      "resume": "Secteur IA-Tech fragmenté : Microsoft bloque comptes développeurs open-source (VeraCrypt, WireGuard), mais Google et Meta lancent nouveaux modèles (PaperOrchestra, Muse Spark). Préoccupations sécurité et conformité équilibrent innovations produits.",
+      "score": 0.58,
+      "confidence": 0.75,
+      "tendance": "haussier",
+      "resume": "Accélération de l'adoption IA en entreprise : OpenAI rapporte 40% de revenus en IA d'entreprise, Google-Intel approfondissent partenariat infra, visualisations interactives Gemini déployées. Concurrence tarifaire (OpenAI Pro -50% à 100$) intensifie la consolidation.",
       "signaux_cles": [
-        "Microsoft suspend comptes développeurs VeraCrypt, WireGuard, Windscribe",
-        "Google introduit PaperOrchestra pour recherche IA automatisée",
-        "Meta lance Muse Spark et outils Gemini notebooks pour organisation projets"
+        "OpenAI : IA d'entreprise = 40% des revenus ; Pro réduit à 100$/mois (vs Anthropic/Google) ; shift vers workflows agentiques",
+        "Google-Intel : partenariat infra IA approfondi ; Gemini génère visualisations 3D interactives en chat",
+        "Startups IA : 70 personnes défient géants ; Framework annonce événement Linux 21 avril ; AWS lance registre agents"
       ]
     }
   },
@@ -327,12 +327,12 @@
     },
     {
       "date": "2026-04-09",
-      "global": -0.35,
-      "geopolitique": -0.72,
-      "marches": 0.58,
-      "crypto": -0.65,
-      "matieres_premieres": -0.68,
-      "ai_tech": 0.12
+      "global": -0.23,
+      "geopolitique": -0.65,
+      "marches": -0.45,
+      "crypto": 0.35,
+      "matieres_premieres": -0.72,
+      "ai_tech": 0.58
     }
   ],
   "model": "claude-haiku-4-5-20251001",
