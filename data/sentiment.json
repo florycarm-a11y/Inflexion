@@ -1,78 +1,69 @@
 {
-  "updated": "2026-04-09T19:04:29.129Z",
-  "date": "2026-04-09",
+  "updated": "2026-04-10T07:27:10.392Z",
+  "date": "2026-04-10",
   "global": {
-    "score": -0.23,
-    "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.23), dominé par la rubrique matieres_premieres (baissier)."
+    "score": 0.02,
+    "tendance": "mixte",
+    "resume": "Le sentiment global est mixte (+0.02), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
       "score": -0.65,
       "confidence": 0.85,
       "tendance": "baissier",
-      "resume": "Tensions persistantes au Moyen-Orient malgré les pourparlers : Israël maintient ses opérations contre le Hezbollah, l'Iran reste mobilisé, et les menaces sur le détroit d'Ormuz créent une incertitude géopolitique structurelle. Les négociations de paix restent fragiles et conditionnelles.",
+      "resume": "Escalade militaire persistante au Moyen-Orient avec frappes israéliennes continues sur le Liban et l'Iran, malgré un cessez-le-feu fragile. Les tensions géopolitiques restent élevées avec risques de perturbation énergétique et instabilité régionale prolongée.",
       "signaux_cles": [
-        "Israël intensifie la production d'intercepteurs Arrow et maintient les frappes malgré les négociations avec le Liban",
-        "Le Hezbollah rejette les négociations directes avec Israël ; avertissement d'expansion des tirs 'dans les heures à venir'",
-        "Détroit d'Ormuz : fermeture persistante signalée par le chef pétrolier des EAU ; présence militaire US maintenue en Golfe"
+        "Jour 42 des attaques US-israéliennes contre l'Iran, décès du stratège en affaires étrangères iranien",
+        "Cessez-le-feu au Moyen-Orient qualifié de 'fragile' avec menaces américaines sur le détroit d'Ormuz",
+        "Normalisation des prix énergétiques prévue sur 'plusieurs mois' malgré le cessez-le-feu"
       ]
     },
     "marches": {
-      "score": -0.45,
-      "confidence": 0.78,
-      "tendance": "baissier",
-      "resume": "Correction boursière en cours avec signaux d'alerte : la trêve Iran est interprétée comme un mauvais présage par les analystes, les marchés de prédiction pointent une dé-escalade mais restent volatiles. Plans sociaux multiples en France (Webedia, La Montagne, Bayard) signalent des tensions économiques.",
+      "score": -0.25,
+      "confidence": 0.72,
+      "tendance": "mixte",
+      "resume": "Signaux contradictoires : croissance technologique soutenue (TSMC +45% Y/Y) et inflows ETF Bitcoin, contrebalancés par dégradations de guidance (Sodexo), inquiétudes sur valorisations post-rallye et risques de dégradation de notation souveraine française.",
       "signaux_cles": [
-        "Analystes avertissent que la correction n'est pas terminée ; la trêve Iran vue comme signal baissier, non haussier",
-        "Plans sociaux : Webedia (départs volontaires), La Montagne (152 postes), Bayard (59 postes) en contexte d'incertitude",
-        "Inflation alimentaire anticipée ; gouvernement français annonce 20M€ supplémentaires pour agriculteurs en difficulté"
+        "TSMC Q1 revenue NT$1.13T, ventes mars +45% Y/Y sur demande IA",
+        "Sodexo abaisse prévisions après chute bénéfice net semestriel",
+        "Moody's envisage dégradation note France sur fond choc pétrolier et taux élevés"
       ]
     },
     "crypto": {
-      "score": 0.35,
-      "confidence": 0.62,
-      "tendance": "mixte",
-      "resume": "Dynamique contrastée : adoption institutionnelle en progression (Morgan Stanley BTC ETF +30.6M$ J1, RWA tokenisé vers 400Md$ 2030) mais régulation restrictive persiste (Tornado Cash, gels de fonds). Marchés de prédiction régulés (Kalshi 89% marché US) gagnent en légitimité.",
+      "score": 0.15,
+      "confidence": 0.65,
+      "tendance": "neutre",
+      "resume": "Dynamique mitigée : inflows institutionnels positifs (BlackRock +$269M, Morgan Stanley entrée marché) et adoption réglementaire (Japon), mais consolidation technique avec Bitcoin bloqué sous $73K et corrections sur altcoins (TAO -15%).",
       "signaux_cles": [
-        "Morgan Stanley Bitcoin ETF MSBT : 30.6M$ d'entrées le premier jour ; adoption institutionnelle confirmée",
-        "Marché RWA tokenisé projeté à 400Md$ d'ici 2030 (Keyrock, Securitize) ; Securitize recrute ex-SEC pour IPO",
-        "US Secret Service gèle 12M$ crypto (fraude globale) ; affaire Tornado Cash en cours ; tensions régulation vs innovation"
+        "BlackRock Bitcoin ETF inflows $269M, plus haut en 5 semaines",
+        "Bitcoin maintenu au-dessus $72K mais échoue 3e tentative franchissement $73K",
+        "Covenant AI quitte Bittensor, TAO chute 15% sur critiques décentralisation"
       ]
     },
     "matieres_premieres": {
-      "score": -0.72,
-      "confidence": 0.88,
-      "tendance": "baissier",
-      "resume": "Chocs d'approvisionnement aigus : détroit d'Ormuz fermé, Israël redémarre un gisement offshore, Chevron réduit sa production. Marché des engrais reste sous pression malgré la trêve. Incertitude structurelle sur les flux énergétiques et alimentaires.",
+      "score": 0.55,
+      "confidence": 0.78,
+      "tendance": "haussier",
+      "resume": "Soutien des prix pétroliers par persistance des risques géopolitiques (perturbations Ormuz) et demande chinoise (achat brut iranien à prime). Hausse anticipée des cours bénéficie aux producteurs malgré volatilité des marchés agricoles.",
       "signaux_cles": [
-        "Détroit d'Ormuz : fermeture confirmée par chef pétrolier EAU ; troupes US maintenues en Golfe avant négociations",
-        "Israël redémarre son deuxième gisement gazier offshore post-trêve ; Chevron anticipe baisse de production",
-        "Marché des engrais : trêve ne soulage pas les tensions d'approvisionnement ; Mexique envisage fracturation pour réduire dépendance US gaz"
+        "Prix pétrole progressent vers $100 sur doutes cessez-le-feu Iran et risques Ormuz",
+        "Raffineurs chinois achètent brut iranien à prime, soutien demande Asie",
+        "Chevron anticipe impact positif hausse cours matières premières sur résultats amont"
       ]
     },
     "ai_tech": {
-      "score": 0.58,
-      "confidence": 0.75,
+      "score": 0.42,
+      "confidence": 0.68,
       "tendance": "haussier",
-      "resume": "Accélération de l'adoption IA en entreprise : OpenAI rapporte 40% de revenus en IA d'entreprise, Google-Intel approfondissent partenariat infra, visualisations interactives Gemini déployées. Concurrence tarifaire (OpenAI Pro -50% à 100$) intensifie la consolidation.",
+      "resume": "Dynamique positive avec expansion offre commerciale (ChatGPT Pro $100/mois, Microsoft réduction 20%, AWS saturation capacité IA) mais émergence de risques sécurité (malware LucidRook, phishing VENOM, vulnérabilité Y2K chiffrement).",
       "signaux_cles": [
-        "OpenAI : IA d'entreprise = 40% des revenus ; Pro réduit à 100$/mois (vs Anthropic/Google) ; shift vers workflows agentiques",
-        "Google-Intel : partenariat infra IA approfondi ; Gemini génère visualisations 3D interactives en chat",
-        "Startups IA : 70 personnes défient géants ; Framework annonce événement Linux 21 avril ; AWS lance registre agents"
+        "AWS quasi-saturé capacité IA, envisage vente chips maison par rack",
+        "ChatGPT lance abonnement Pro $100/mois, Microsoft baisse prix desktop cloud 20%",
+        "Malware LucidRook ciblant ONG/universités, attaques VENOM sur exécutifs Microsoft"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-02-21",
-      "global": 0.02,
-      "geopolitique": -0.45,
-      "marches": -0.35,
-      "crypto": 0.52,
-      "matieres_premieres": 0.15,
-      "ai_tech": 0.35
-    },
     {
       "date": "2026-02-24",
       "global": -0.19,
@@ -333,6 +324,15 @@
       "crypto": 0.35,
       "matieres_premieres": -0.72,
       "ai_tech": 0.58
+    },
+    {
+      "date": "2026-04-10",
+      "global": 0.02,
+      "geopolitique": -0.65,
+      "marches": -0.25,
+      "crypto": 0.15,
+      "matieres_premieres": 0.55,
+      "ai_tech": 0.42
     }
   ],
   "model": "claude-haiku-4-5-20251001",
