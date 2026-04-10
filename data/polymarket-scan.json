@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-04-09T19:05:58.200891+00:00Z",
+  "generated_at": "2026-04-10T07:28:42.334134+00:00Z",
   "scan_type": "short_term_sectoral",
   "max_horizon_days": 7,
   "summary": {
-    "total_markets_scanned": 279,
-    "total_matched": 51,
-    "short_term_markets": 4,
+    "total_markets_scanned": 283,
+    "total_matched": 45,
+    "short_term_markets": 6,
     "zones_active": 3,
     "conflicts_active": 1,
     "conflict_zones": [
@@ -14,6 +14,83 @@
     "high_edge_signals": 1
   },
   "zones": [
+    {
+      "zone_id": "ukraine",
+      "zone_name": "Ukraine / Mer Noire",
+      "risk_score": 5.6,
+      "opp_score": 3.2,
+      "conflict_active": false,
+      "conflict_multiplier": 1.0,
+      "intel_multiplier": 1.25,
+      "markets": [
+        {
+          "question": "Will Russia capture Havrylivka by April 30, 2026?",
+          "end_date": "2026-02-28",
+          "horizon_days": 1.0,
+          "event_type": "territorial",
+          "poly_price": 0.032,
+          "semplice_prob": 0.138,
+          "edge_pct": 10.6,
+          "direction": "BUY_YES",
+          "reasoning": "Type=territorial(négatif) | Base=15.0% × Mult=2.38×Intel1.25 → Ann=44.7% → T=0.0a → P=13.8% | M=6.6(w=45%), P=5.4(w=15%)"
+        },
+        {
+          "question": "Will Russia capture Lyman by June 30, 2026?",
+          "end_date": "2025-12-31",
+          "horizon_days": 1.0,
+          "event_type": "territorial",
+          "poly_price": 0.25,
+          "semplice_prob": 0.138,
+          "edge_pct": 11.2,
+          "direction": "BUY_NO",
+          "reasoning": "Type=territorial(négatif) | Base=15.0% × Mult=2.38×Intel1.25 → Ann=44.7% → T=0.0a → P=13.8% | M=6.6(w=45%), P=5.4(w=15%)"
+        },
+        {
+          "question": "Will Russia capture Kostyantynivka by April 30?",
+          "end_date": "2026-03-31",
+          "horizon_days": 1.0,
+          "event_type": "territorial",
+          "poly_price": 0.1,
+          "semplice_prob": 0.138,
+          "edge_pct": 3.8,
+          "direction": "BUY_YES",
+          "reasoning": "Type=territorial(négatif) | Base=15.0% × Mult=2.38×Intel1.25 → Ann=44.7% → T=0.0a → P=13.8% | M=6.6(w=45%), P=5.4(w=15%)"
+        }
+      ]
+    },
+    {
+      "zone_id": "iran",
+      "zone_name": "Iran",
+      "risk_score": 5.1,
+      "opp_score": 2.5,
+      "conflict_active": true,
+      "conflict_multiplier": 5.0,
+      "intel_multiplier": 1.34,
+      "markets": [
+        {
+          "question": "Military action against Iran ends by May 31, 2026?",
+          "end_date": "2026-03-31",
+          "horizon_days": 1.0,
+          "event_type": "ceasefire",
+          "poly_price": 0.981,
+          "semplice_prob": 0.148,
+          "edge_pct": 83.2,
+          "direction": "BUY_NO",
+          "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×5 × Mult=0.41×Intel1.34 → Ann=47.4% → T=0.0a → P=14.8% | P=1.5(w=30%), M=2"
+        },
+        {
+          "question": "Trump announces US x Iran ceasefire end by April 10, 2026?",
+          "end_date": "2026-04-10",
+          "horizon_days": 1.0,
+          "event_type": "ceasefire",
+          "poly_price": 0.022,
+          "semplice_prob": 0.148,
+          "edge_pct": 12.6,
+          "direction": "BUY_YES",
+          "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×5 × Mult=0.41×Intel1.34 → Ann=47.4% → T=0.0a → P=14.8% | P=1.5(w=30%), M=2"
+        }
+      ]
+    },
     {
       "zone_id": "inde",
       "zone_name": "Inde",
@@ -33,61 +110,6 @@
           "edge_pct": 13.1,
           "direction": "BUY_YES",
           "reasoning": "Type=election(positif) | Base=45.0% × Mult=0.96 → Ann=43.0% → T=0.0a → P=13.1% | P=3.6(w=35%), S=3.8(w=20%), E=4.0(w=20%"
-        },
-        {
-          "question": "Will the Bahujan Samaj Party (BSP) win the most seats in the 2026 Kerala Legislative Assembly election?",
-          "end_date": "2026-04-09",
-          "horizon_days": 1.0,
-          "event_type": "election",
-          "poly_price": 0.001,
-          "semplice_prob": 0.131,
-          "edge_pct": 13.1,
-          "direction": "BUY_YES",
-          "reasoning": "Type=election(positif) | Base=45.0% × Mult=0.96 → Ann=43.0% → T=0.0a → P=13.1% | P=3.6(w=35%), S=3.8(w=20%), E=4.0(w=20%"
-        }
-      ]
-    },
-    {
-      "zone_id": "ukraine",
-      "zone_name": "Ukraine / Mer Noire",
-      "risk_score": 5.6,
-      "opp_score": 3.2,
-      "conflict_active": false,
-      "conflict_multiplier": 1.0,
-      "intel_multiplier": 1.25,
-      "markets": [
-        {
-          "question": "Will Russia capture Kostyantynivka by April 30?",
-          "end_date": "2026-03-31",
-          "horizon_days": 1.0,
-          "event_type": "territorial",
-          "poly_price": 0.11,
-          "semplice_prob": 0.138,
-          "edge_pct": 2.8,
-          "direction": "BUY_YES",
-          "reasoning": "Type=territorial(négatif) | Base=15.0% × Mult=2.38×Intel1.25 → Ann=44.7% → T=0.0a → P=13.8% | M=6.6(w=45%), P=5.4(w=15%)"
-        }
-      ]
-    },
-    {
-      "zone_id": "iran",
-      "zone_name": "Iran",
-      "risk_score": 5.1,
-      "opp_score": 2.5,
-      "conflict_active": true,
-      "conflict_multiplier": 5.0,
-      "intel_multiplier": 1.34,
-      "markets": [
-        {
-          "question": "Iran x Israel/US conflict ends by April 15?",
-          "end_date": "2026-04-15",
-          "horizon_days": 5.2,
-          "event_type": "ceasefire",
-          "poly_price": 0.571,
-          "semplice_prob": 0.148,
-          "edge_pct": 42.3,
-          "direction": "BUY_NO",
-          "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×5 × Mult=0.41×Intel1.34 → Ann=47.4% → T=0.0a → P=14.8% | P=1.5(w=30%), M=2"
         }
       ]
     }
