@@ -1,11 +1,71 @@
 {
-  "updated": "2026-04-10T07:27:10.392Z",
-  "alertes": [],
+  "updated": "2026-04-11T07:00:58.400Z",
+  "alertes": [
+    {
+      "id": "alert-2026-04-11-001",
+      "titre": "BTC : +2,7% à $73 000, entrées ETF massives BlackRock et Morgan Stanley",
+      "texte": "Bitcoin dépasse le seuil des $73 000 sur fond de CPI chaud et cessez-le-feu fragile au Moyen-Orient. BlackRock enregistre des entrées massives sur son ETF Bitcoin spot, tandis que Morgan Stanley débute son produit MSBT avec forte demande initiale.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-04-11T07:00:58.400Z",
+      "donnees": {
+        "symbole": "NVDA",
+        "nom": "Nvidia",
+        "prix": 188.63,
+        "variation": 2.57
+      }
+    },
+    {
+      "id": "alert-2026-04-11-002",
+      "titre": "NVDA : +2,57% à $188,63, rebond sectoriel tech sur fonds de sentiment mixte",
+      "texte": "Nvidia progresse de 2,57% à $188,63 dans un contexte de marché fragmenté (consensus 50%). Les actions technologiques bénéficient des avancées IA (Artemis II, ChatGPT Pro, contrats défense) malgré un Fear & Greed Index à 15 (Extreme Fear).",
+      "categorie": "ai_tech",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-04-11T07:00:58.400Z",
+      "donnees": {
+        "score": 15,
+        "label": "Extreme Fear",
+        "variation_7j": 4
+      }
+    },
+    {
+      "id": "alert-2026-04-11-003",
+      "titre": "Treasuries US : rendements 10Y à 4,31%, ventes massives $620Mds cette semaine",
+      "texte": "Le gouvernement américain a vendu $620 milliards de Treasuries cette semaine, le rendement 10 ans s'établissant à 4,31% et le 30 ans à 4,91%. Cette hausse des rendements reflète les tensions inflationnistes et les incertitudes géopolitiques.",
+      "categorie": "macro",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-04-11T07:00:58.400Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-04-11-004",
+      "titre": "Fear & Greed Index : 15 (Extreme Fear), marché fragmenté (consensus 50%)",
+      "texte": "L'indice Fear & Greed atteint 15 signalant une peur extrême. Le régime de marché détecté est fragmenté avec consensus à 50% et amplitude 0,79%. Les classes d'actifs divergent: ETF -0,47%, action +0,51%, crypto +1,09%, indice EU -0,11%.",
+      "categorie": "marches",
+      "severite": "attention",
+      "impact": "neutre",
+      "horodatage": "2026-04-11T07:00:58.400Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-04-11-005",
+      "titre": "Pétrole : repli avant négociations Iran, contraintes Ormuz maintiennent prix élevés",
+      "texte": "Le pétrole se replie en anticipation des négociations Iran-USA à Islamabad. Cependant, les contraintes persistantes du détroit d'Ormuz et les tensions Israël-Liban maintiennent les prix à des niveaux élevés, avec pénurie carburant réaction prévue en Europe dans les semaines.",
+      "categorie": "matieres_premieres",
+      "severite": "attention",
+      "impact": "neutre",
+      "horodatage": "2026-04-11T07:00:58.400Z",
+      "donnees": {}
+    }
+  ],
   "stats": {
-    "total": 0,
+    "total": 5,
     "urgent": 0,
-    "attention": 0,
-    "info": 0
+    "attention": 4,
+    "info": 1
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"

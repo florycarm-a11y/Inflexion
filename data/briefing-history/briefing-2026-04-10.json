@@ -1,0 +1,556 @@
+{
+  "date": "2026-04-10",
+  "generated_at": "2026-04-10T07:28:24.479Z",
+  "type": "delta",
+  "model": "claude-haiku-4-5-20251001",
+  "sources_count": 25,
+  "sources_market": 11,
+  "reference_date": "2026-04-09",
+  "synthese": {
+    "titre": "Reprise modérée des actions, crypto en Extreme Fear, géopolitique Liban-Ormuz inchangée",
+    "sous_titre": "Les marchés actions accélèrent légèrement (+0,6%), la crypto stabilise sans conviction (Fear & Greed 16/100), tandis que la fragmentation du cessez-le-feu persiste.",
+    "contenu": "## Évolutions du jour\n\nLes marchés actions accélèrent marginalement vs hier : **S&P 500 +0,58%** (Finnhub, SPY), **Nasdaq 100 +0,68%** (QQQ), **Dow Jones +0,57%** (DIA) — gains stables mais sans accélération significative. Les mégacaps tech progressent : Nvidia **+1,01%** (NVDA), Tesla **+0,69%** (TSLA), Alphabet **+0,37%** (GOOGL), tandis que Microsoft recule légèrement **-0,34%** (MSFT). Cette dynamique confirme la consolidation post-euphorie du cessez-le-feu sans rupture baissière.\n\nLa crypto demeure en **Extreme Fear (16/100)** — progression mineure de +2 points vs hier (14/100) — signalant une capitulation prolongée malgré les gains de prix. Bitcoin **$71 764** (+1,1% 24h, CoinGecko), Ethereum **$2 186,70** (+0,2% 24h), Solana **$83,22** (+1,1% 24h). La dominance Ethereum recule à **10,5%**, confirmant une rotation vers Bitcoin. Le marché crypto total progresse **+0,85%** 24h — gains minimes reflétant l'absence de conviction.\n\nLes matières premières s'apprécient : l'or **+0,78%** (GLD), le pétrole **+1,91%** (USO) — accélération énergétique modérée vs hier (+0,98%), suggérant une prime géopolitique résiduelle stable. **Géopolitique inchangée** : les frappes israéliennes sur le Liban se poursuivent (New York Times, 2026-04-10), tandis que le détroit d'Ormuz reste ambigu — aucune escalade majeure vs hier, mais aucune désescalade confirmée.\n\n## Perspectives actualisées\n\nLe cessez-le-feu US-Iran entre dans sa deuxième semaine sans rupture majeure. Les seuils critiques demeurent : **680 SPY** (support technique post-euphorie), **$70 000 BTC** (support psychologique crypto), **$120 USD/baril équivalent** (seuil énergétique Ormuz). Les élections hongroises du 12 avril (Courrier International) et l'approbation japonaise de la régulation crypto (CoinTelegraph) constituent des catalyseurs secondaires. L'afflux d'ETF Bitcoin ($269M BlackRock, CoinTelegraph) contraste avec le sentiment Extreme Fear — signal de divergence institutionnel-retail à surveiller."
+  },
+  "signaux": [
+    {
+      "titre": "Divergence institutionnel-retail crypto : afflux ETF vs Extreme Fear prolongé",
+      "description": "BlackRock's Bitcoin ETF enregistre $269M d'entrées (5-week high, CoinTelegraph), tandis que le Fear & Greed Index stagne en Extreme Fear (16/100, +2 pts vs hier). Cette divergence signale une accumulation institutionnelle sur fond de capitulation de détail — pattern historiquement bullish court-terme. Les ETF Bitcoin combinés (BlackRock, Fidelity, Morgan Stanley) totalisent $337,2M d'inflows, confirmant une rotation vers les produits régulés. Cependant, l'absence de rebond du sentiment (Fear & Greed +2 pts seulement) suggère que le marché retail reste convaincu d'une poursuite baissière — configuration classique d'accumulation avant squeeze.",
+      "categorie": "crypto",
+      "interconnexions": [
+        {
+          "secteur": "Marchés actions",
+          "impact": "Mégacaps tech +0,6% (Nvidia +1,01%, Tesla +0,69%)",
+          "explication": "Les inflows ETF Bitcoin reflètent une rotation vers les actifs de croissance post-cessez-le-feu ; les gains tech modérés confirment une consolidation sans euphorie"
+        },
+        {
+          "secteur": "Sentiment macro",
+          "impact": "Sentiment global mixte, score IA +0,02",
+          "explication": "La divergence institutionnel-retail crypto crée une asymétrie de conviction — les institutions accumulent tandis que le retail capitule, typique d'une phase de transition haussière"
+        }
+      ],
+      "regions": [
+        "États-Unis",
+        "Monde"
+      ],
+      "severite": "attention"
+    },
+    {
+      "titre": "Régulation crypto accélère : Japon classe les cryptos comme instruments financiers",
+      "description": "Le Cabinet japonais a approuvé un projet de loi reclassifiant les cryptomonnaies comme instruments financiers, imposant des interdictions de délit d'initié et des mandats de divulgation annuelle pour les émetteurs (CoinTelegraph). Cette évolution marque une transition majeure du cadre réglementaire japonais — passage d'une tolérance de facto à une régulation formelle. L'impact immédiat reste limité (XRP +0,7% 24h, CoinGecko), mais le signal de légitimation institutionnelle renforce la thèse d'adoption mainstream. Cette régulation s'inscrit dans la continuité de la vision de CZ (Binance) : « dans 5 ans, les gens arrêteront de parler de crypto et l'utiliseront simplement » (CoinTelegraph).",
+      "categorie": "crypto",
+      "interconnexions": [
+        {
+          "secteur": "Adoption mainstream",
+          "impact": "11% des Français détiennent des cryptos (Cryptoast, baromètre ADAN 2026)",
+          "explication": "La régulation japonaise accélère la légitimation institutionnelle, soutenant la thèse d'adoption progressive en Europe et Asie"
+        },
+        {
+          "secteur": "Sécurité quantique",
+          "impact": "XRP moins exposé aux menaces quantiques que Bitcoin (CoinDesk)",
+          "explication": "La régulation formelle favorise les actifs avec profils de risque technique supérieurs — XRP bénéficie d'une exposition réduite aux attaques quantiques vs Bitcoin"
+        }
+      ],
+      "regions": [
+        "Japon",
+        "Asie-Pacifique"
+      ],
+      "severite": "info"
+    },
+    {
+      "titre": "Fragmentation géopolitique Liban-Ormuz persiste : frappes israéliennes hors accord",
+      "description": "Israël poursuit les bombardements du sud-Liban malgré le cessez-le-feu US-Iran, tuant au moins 1 civil supplémentaire (Middle East Eye, 2026-04-10). Le détroit d'Ormuz reste ambigu : Washington et Tel-Aviv l'excluent de l'accord, tandis que Téhéran et le Liban revendiquent son inclusion (New York Times). Cette fragmentation maintient une prime géopolitique résiduelle : le pétrole progresse +1,91% (USO) vs +0,98% hier, l'or +0,78% (GLD). Contrairement aux attentes de désescalade post-accord, la configuration asymétrique (frappes israéliennes sans réplique majeure) prolonge l'incertitude sur la durabilité des 2 semaines d'accord.",
+      "categorie": "geopolitique",
+      "interconnexions": [
+        {
+          "secteur": "Matières premières",
+          "impact": "Pétrole +1,91%, or +0,78% (Finnhub)",
+          "explication": "La poursuite des frappes maintient une prime de risque énergétique ; l'ambiguïté Ormuz empêche une normalisation complète des prix"
+        },
+        {
+          "secteur": "Élections régionales",
+          "impact": "Hongrie 12 avril : Poutine surveille Orbán (Courrier International)",
+          "explication": "La fragmentation Liban-Ormuz s'inscrit dans un contexte géopolitique plus large : les élections hongroises testent la stabilité de l'axe Moscou-Budapest, créant une volatilité secondaire"
+        }
+      ],
+      "regions": [
+        "Moyen-Orient",
+        "Liban",
+        "Détroit d'Ormuz"
+      ],
+      "severite": "urgent"
+    }
+  ],
+  "risk_radar": [
+    {
+      "risque": "Rupture accord 2 semaines US-Iran → relance escalade militaire, fermeture Ormuz",
+      "severite": "urgent",
+      "probabilite": "moyenne",
+      "horizon": "court_terme",
+      "impact_marche": "Pétrole +15-20% (fermeture Ormuz), or +5-8%, actions -3-5% (S&P 500), crypto -10-15%",
+      "description": "Probabilité maintenue à **moyenne** : l'accord formel réduit le risque immédiat, mais les frappes israéliennes hors accord (New York Times, 2026-04-10) et l'ambiguïté Ormuz persistent. Seuil critique : rupture avant le 24 avril (fin des 2 semaines). Aucune escalade majeure vs hier, mais aucune désescalade confirmée."
+    },
+    {
+      "risque": "Liban : poursuite des frappes israéliennes hors accord, escalade asymétrique Hezbollah",
+      "severite": "urgent",
+      "probabilite": "elevee",
+      "horizon": "court_terme",
+      "impact_marche": "Pétrole +2-5% (prime résiduelle), or +1-3%, actions -1-2% (volatilité accrue)",
+      "description": "Probabilité **maintenue à élevée** : Israël poursuit les bombardements du sud-Liban (1 mort supplémentaire, Middle East Eye, 2026-04-10), tandis que Hezbollah rejette les négociations directes. Configuration asymétrique : frappes sans réplique majeure maintient une volatilité latente sans déclencher de relance énergétique complète."
+    },
+    {
+      "risque": "Correction crypto technique : capitulation de détail prolongée, rebond fragile",
+      "severite": "attention",
+      "probabilite": "elevee",
+      "horizon": "court_terme",
+      "impact_marche": "Bitcoin -5-10% (test $65 000), Ethereum -8-12%, altcoins -15-20%",
+      "description": "Probabilité **élevée** : Fear & Greed progresse marginalement à 16/100 (+2 pts vs hier, 14/100), confirmant une capitulation prolongée. Bitcoin +1,1% 24h, Ethereum +0,2% — gains minimes malgré stabilisation. Divergence institutionnel-retail (inflows ETF $269M BlackRock vs Extreme Fear) crée une asymétrie : accumulation institutionnelle sur fond de capitulation retail — pattern bullish court-terme mais risque de poursuite baisse si inflows ralentissent."
+    },
+    {
+      "risque": "Consolidation actions post-euphorie : ralentissement gains, seuil technique 680 SPY",
+      "severite": "attention",
+      "probabilite": "elevee",
+      "horizon": "moyen_terme",
+      "impact_marche": "S&P 500 -2-4% (test 675 SPY), Nasdaq 100 -3-5%, mégacaps tech -2-3%",
+      "description": "Probabilité **élevée** : S&P 500 +0,58% vs +0,48% hier — accélération mineure sans rupture. Gains stables mais sans momentum. Seuil clé : 680 SPY (support technique post-euphorie). TSMC Q1 revenue +45% Y/Y (Seeking Alpha) soutient les mégacaps tech, mais Microsoft -0,34% (MSFT) signale une consolidation sectorielle. Aucune rupture baissière majeure vs hier."
+    }
+  ],
+  "sentiment_global": "mixte",
+  "tags": [
+    "cessez-le-feu-us-iran-fragmentation-liban-ormuz",
+    "crypto-extreme-fear-16-100-divergence-institutionnel-retail",
+    "regulation-japon-cryptos-instruments-financiers",
+    "petrole-prime-residuelle-1-91pct-ormuz-ambigu",
+    "actions-consolidation-stable-0-6pct-sans-momentum"
+  ],
+  "sources_citees": [
+    {
+      "nom": "Finnhub",
+      "type": "api",
+      "donnees_utilisees": "S&P 500 +0,58% (SPY), Nasdaq 100 +0,68% (QQQ), Dow Jones +0,57% (DIA), or +0,78% (GLD), pétrole +1,91% (USO), mégacaps tech (NVDA, MSFT, GOOGL, TSLA)"
+    },
+    {
+      "nom": "CoinGecko",
+      "type": "api",
+      "donnees_utilisees": "Bitcoin $71 764 (+1,1% 24h), Ethereum $2 186,70 (+0,2% 24h), Solana $83,22 (+1,1% 24h), XRP $1,34 (+0,7% 24h), dominance ETH 10,5%, market cap total +0,85% 24h"
+    },
+    {
+      "nom": "Fear & Greed Index",
+      "type": "api",
+      "donnees_utilisees": "Score 16/100 (Extreme Fear), variation 7j +7 points"
+    },
+    {
+      "nom": "New York Times",
+      "type": "presse",
+      "donnees_utilisees": "Frappes israéliennes sur Liban, ambiguïté détroit d'Ormuz, cessez-le-feu fragile"
+    },
+    {
+      "nom": "Middle East Eye",
+      "type": "presse",
+      "donnees_utilisees": "Frappe aérienne israélienne tuant 1 civil dans le sud-Liban"
+    },
+    {
+      "nom": "CoinTelegraph",
+      "type": "presse",
+      "donnees_utilisees": "BlackRock Bitcoin ETF $269M inflows (5-week high), Fidelity + Morgan Stanley $68,2M inflows, Japon approuve régulation crypto, CZ vision adoption mainstream"
+    },
+    {
+      "nom": "Cryptoast",
+      "type": "presse",
+      "donnees_utilisees": "11% des Français détiennent des cryptomonnaies (baromètre ADAN 2026)"
+    },
+    {
+      "nom": "CoinDesk",
+      "type": "presse",
+      "donnees_utilisees": "XRP moins exposé aux menaces quantiques que Bitcoin"
+    },
+    {
+      "nom": "Courrier International",
+      "type": "presse",
+      "donnees_utilisees": "Élections hongroises 12 avril, Poutine surveille Orbán"
+    },
+    {
+      "nom": "Seeking Alpha",
+      "type": "presse",
+      "donnees_utilisees": "TSMC Q1 revenue +45% Y/Y, GSK retire demande de drogue autisme"
+    }
+  ],
+  "_verification": {
+    "score": 0.7441860465116279,
+    "totalClaims": 43,
+    "verified": 32,
+    "unverified": 11,
+    "pass": true
+  },
+  "_contradictions": [
+    {
+      "indicator": "QQQ (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 610.19
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 606.7665000000001
+      },
+      "divergence_pct": 0.56,
+      "type": "etf_self",
+      "note": "QQQ : prix 610.19 ≠ prev_close (606.09) + change (0.6765) = 606.77. Possible donnée corrompue."
+    },
+    {
+      "indicator": "GLD (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 437.91
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 435.30789999999996
+      },
+      "divergence_pct": 0.59,
+      "type": "etf_self",
+      "note": "GLD : prix 437.91 ≠ prev_close (434.53) + change (0.7779) = 435.31. Possible donnée corrompue."
+    }
+  ],
+  "_bibliography": {
+    "score": 0.5185185185185185,
+    "totalRefs": 27,
+    "matched": 14,
+    "unmatched": 13,
+    "pass": true,
+    "bibliography": [
+      {
+        "titre": "☕️ Après les Mac, Little Snitch débarque sur Linux pour surveiller les connexions réseau",
+        "source": "Next INpact",
+        "url": "https://next.ink/brief_article/apres-les-mac-little-snitch-debarque-sur-linux-pour-surveiller-les-connexions-reseau/",
+        "domain": "next.ink",
+        "date": "2026-04-10T07:17:00.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "11% des français détiennent des cryptomonnaies - Qui sont-ils et quelles sont leurs stratégies ?",
+        "source": "Cryptoast",
+        "url": "https://cryptoast.fr/11-francais-detiennent-cryptomonnaies/",
+        "domain": "cryptoast.fr",
+        "date": "2026-04-10T07:15:45.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "Iran War Live Updates: Israel Strikes Hezbollah as Lebanon Impasse Threatens Cease-Fire",
+        "source": "New York Times",
+        "url": "https://www.nytimes.com/live/2026/04/10/world/iran-war-trump-israel-lebanon",
+        "domain": "nytimes.com",
+        "date": "2026-04-10T07:15:07.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "TAP Real Estate appoints Jeff Jarrard as Chief Technology Officer",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4573928-tap-real-estate-appoints-jeff-jarrard-as-chief-technology-officer?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-04-10T07:14:19.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Israeli air strike kills one in southern Lebanon",
+        "source": "Middle East Eye",
+        "url": "https://www.middleeasteye.net/live-blog/live-blog-update/israeli-air-strike-kills-one-southern-lebanon",
+        "domain": "middleeasteye.net",
+        "date": "2026-04-10T07:12:03.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Thailand has limited ammunition to address economic problems, says finance minister",
+        "source": "Investing.com",
+        "url": "https://www.investing.com/news/economy-news/thailand-has-limited-ammunition-to-address-economic-problems-says-finance-minister-4607110",
+        "domain": "investing.com",
+        "date": "2026-04-10T07:06:34.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Élections en Hongrie : pourquoi Poutine ne veut pas perdre Orban",
+        "source": "Courrier International",
+        "url": "https://www.courrierinternational.com/article/vu-de-russie-elections-en-hongrie-pourquoi-poutine-ne-veut-pas-perdre-orban_242737",
+        "domain": "courrierinternational.com",
+        "date": "2026-04-10T07:06:14.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Nouvelle crise entre l'Équateur et la Colombie sur fond de guerre commerciale et lutte contre le narcotrafic",
+        "source": "RFI",
+        "url": "https://www.rfi.fr/fr/am%C3%A9riques/20260410-nouvelle-crise-%C3%A9quateur-colombie-guerre-commerciale-et-lutte-contre-le-narcotrafic",
+        "domain": "rfi.fr",
+        "date": "2026-04-10T07:05:16.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "EN DIRECT, guerre au Moyen-Orient : un cessez-le-feu fragile, entre attaques israéliennes sur le Liban et menaces américaines pour rouvrir le détroit d’Ormuz",
+        "source": "Le Monde Intl",
+        "url": "https://www.lemonde.fr/international/live/2026/04/10/en-direct-guerre-au-moyen-orient-un-cessez-le-feu-fragile-entre-attaques-israeliennes-sur-le-liban-et-menaces-americaines-pour-rouvrir-le-detroit-d-ormuz_6676633_3210.html",
+        "domain": "lemonde.fr",
+        "date": "2026-04-10T07:03:30.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Japan stocks higher at close of trade; Nikkei 225 up 1.90%",
+        "source": "Investing.com",
+        "url": "https://www.investing.com/news/stock-market-news/japan-stocks-higher-at-close-of-trade-nikkei-225-up-190-4607109",
+        "domain": "investing.com",
+        "date": "2026-04-10T07:00:05.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "CIRIUS Digital lance CanopIA : une plateforme IA agentique spécialisée dans la rédaction des dossiers CIR et CII",
+        "source": "BFM Business",
+        "url": "https://www.bfmtv.com/economie/professionnels/focus-entreprises/cirius-digital-lance-canop-ia-une-plateforme-ia-agentique-specialisee-dans-la-redaction-des-dossiers-cir-et-cii_AB-202604100018.html",
+        "domain": "bfmtv.com",
+        "date": "2026-04-10T07:00:00.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Happinance : la start-up française qui transforme la gestion d’actifs",
+        "source": "BFM Business",
+        "url": "https://www.bfmtv.com/economie/professionnels/focus-entreprises/happinance-la-start-up-francaise-qui-transforme-la-gestion-d-actifs_AB-202604100017.html",
+        "domain": "bfmtv.com",
+        "date": "2026-04-10T07:00:00.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Melania Trump denies ties to Jeffrey Epstein and urges hearing for survivors",
+        "source": "BBC World",
+        "url": "https://www.bbc.com/news/articles/c3ex07l1qvpo?at_medium=RSS&amp;at_campaign=rss",
+        "domain": "bbc.com",
+        "date": "2026-04-10T06:59:43.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Les Mac perdent leur connexion réseau après 49 jours, 17 heures, 2 minutes et 47 secondes",
+        "source": "Next INpact",
+        "url": "https://next.ink/233093/les-mac-perdent-leur-connexion-reseau-apres-49-jours-17-heures-2-minutes-et-47-secondes/",
+        "domain": "next.ink",
+        "date": "2026-04-10T06:45:23.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "Gig Jobs and Crime: Evidence from Food Delivery Platforms in France",
+        "source": "Naked Capitalism",
+        "url": "https://www.nakedcapitalism.com/2026/04/gig-jobs-and-crime-evidence-from-food-delivery-platforms-in-france.html",
+        "domain": "nakedcapitalism.com",
+        "date": "2026-04-10T06:45:05.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Gaza media office rejects Board of Peace claim that 602 trucks entered Thursday",
+        "source": "Middle East Eye",
+        "url": "https://www.middleeasteye.net/live-blog/live-blog-update/gaza-media-office-rejects-board-peace-claim-602-trucks-entered-thursday",
+        "domain": "middleeasteye.net",
+        "date": "2026-04-10T06:40:00.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Ukraine in talks with Oman, Kuwait, Bahrain on security cooperation, Zelenskiy says",
+        "source": "Al-Monitor",
+        "url": "https://www.al-monitor.com/originals/2026/04/ukraine-talks-oman-kuwait-bahrain-security-cooperation-zelenskiy-says",
+        "domain": "al-monitor.com",
+        "date": "2026-04-10T06:36:40.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "GSK withdraws autism drug application backed by Trump after recent submission",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4573934-gsk-withdraws-autism-drug-application-backed-by-trump-after-recent-submission?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-04-10T06:33:54.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "CZ hopes in 5 years people stop talking about crypto and just use it",
+        "source": "CoinTelegraph",
+        "url": "https://cointelegraph.com/news/cz-crypto-invisible-mainstream-adoption-ai-blockchain?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+        "domain": "cointelegraph.com",
+        "date": "2026-04-10T06:24:48.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "XRP may be less exposed to quantum computer threats than bitcoin, experts say",
+        "source": "CoinDesk",
+        "url": "https://www.coindesk.com/tech/2026/04/10/xrp-may-be-less-exposed-to-quantum-threats-than-bitcoin-experts-say",
+        "domain": "coindesk.com",
+        "date": "2026-04-10T06:24:28.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "Bitcoin : 2 mineurs solo touchent le jackpot cette semaine",
+        "source": "Journal du Coin",
+        "url": "https://journalducoin.com/bitcoin/bitcoin-2-mineurs-solo-touchent-jackpot-semaine/",
+        "domain": "journalducoin.com",
+        "date": "2026-04-10T06:22:37.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "TSMC Q1 revenue hits NT$1.13T as March sales surge 45% Y/Y on AI demand",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4573932-tsmc-q1-revenue-hits-nt113t-as-march-sales-surge-45-yy-on-ai-demand?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-04-10T06:22:28.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "World Liberty defends borrowing position on Dolomite, dismisses liquidation concerns as &#8216;FUD&#8217;",
+        "source": "The Block",
+        "url": "https://www.theblock.co/post/396967/world-liberty-rebuts-dolomite-criticism?utm_source=rss&amp;utm_medium=rss",
+        "domain": "theblock.co",
+        "date": "2026-04-10T06:18:30.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "Japan approves bill to classify crypto as financial instruments",
+        "source": "CoinTelegraph",
+        "url": "https://cointelegraph.com/news/japan-approves-bill-classify-cryptocurrencies-financial-instruments?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+        "domain": "cointelegraph.com",
+        "date": "2026-04-10T06:13:12.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "BlackRock’s Bitcoin ETF inflows $269M, marking a 5-week high",
+        "source": "CoinTelegraph",
+        "url": "https://cointelegraph.com/news/blackrock-biggest-btc-etf-inflow-in-month?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+        "domain": "cointelegraph.com",
+        "date": "2026-04-10T06:12:29.000Z",
+        "category": "crypto"
+      }
+    ],
+    "apiSources": [
+      {
+        "name": "Finnhub",
+        "url": "https://finnhub.io",
+        "domain": "finnhub.io",
+        "category": "markets",
+        "indicators": [
+          "SPY",
+          "QQQ",
+          "DIA",
+          "GLD",
+          "USO",
+          "NVDA",
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA"
+        ]
+      },
+      {
+        "name": "CoinGecko",
+        "url": "https://www.coingecko.com",
+        "domain": "coingecko.com",
+        "category": "crypto",
+        "indicators": [
+          "BTC",
+          "ETH",
+          "XRP",
+          "SOL",
+          "DOGE",
+          "ADA"
+        ]
+      },
+      {
+        "name": "Alternative.me",
+        "url": "https://alternative.me/crypto/fear-and-greed-index/",
+        "domain": "alternative.me",
+        "category": "crypto",
+        "indicators": [
+          "Fear & Greed Index"
+        ]
+      },
+      {
+        "name": "FRED",
+        "url": "https://fred.stlouisfed.org",
+        "domain": "fred.stlouisfed.org",
+        "category": "macro",
+        "indicators": [
+          "Inflation (CPI)",
+          "Taux directeur (Fed Funds)",
+          "PIB (trimestriel)",
+          "Chômage",
+          "Treasury 10 ans",
+          "Dollar Index (broad)",
+          "Spread 10Y-2Y",
+          "Masse monétaire M2",
+          "Bilan Fed (actifs)",
+          "Taux hypothécaire 30 ans"
+        ]
+      },
+      {
+        "name": "ECB Data",
+        "url": "https://data.ecb.europa.eu",
+        "domain": "data.ecb.europa.eu",
+        "category": "macro",
+        "indicators": [
+          "Taux directeur",
+          "EUR/USD"
+        ]
+      },
+      {
+        "name": "metals.dev",
+        "url": "https://metals.dev",
+        "domain": "metals.dev",
+        "category": "commodities",
+        "indicators": []
+      },
+      {
+        "name": "Twelve Data",
+        "url": "https://twelvedata.com",
+        "domain": "twelvedata.com",
+        "category": "markets",
+        "indicators": [
+          "DAX (Francfort)"
+        ]
+      },
+      {
+        "name": "DefiLlama",
+        "url": "https://defillama.com",
+        "domain": "defillama.com",
+        "category": "defi",
+        "indicators": [
+          "Binance CEX",
+          "Aave V3",
+          "Lido",
+          "Bitfinex",
+          "SSV Network"
+        ]
+      },
+      {
+        "name": "Alpha Vantage",
+        "url": "https://www.alphavantage.co",
+        "domain": "alphavantage.co",
+        "category": "markets",
+        "indicators": [
+          "EUR/USD",
+          "GBP/USD",
+          "USD/JPY"
+        ]
+      },
+      {
+        "name": "Mempool",
+        "url": "https://mempool.space",
+        "domain": "mempool.space",
+        "category": "onchain",
+        "indicators": [
+          "BTC Fees",
+          "BTC Hashrate"
+        ]
+      }
+    ],
+    "methodology": {
+      "description": "Vérification bibliographique par recoupement multi-sources",
+      "steps": [
+        "Extraction des références de sources dans le texte du briefing",
+        "Recoupement avec la bibliographie des articles RSS/API utilisés",
+        "Vérification croisée avec le registre des 15 sources API",
+        "Classification des sources (API, presse, institution, think tank, estimation)"
+      ],
+      "totalArticlesUsed": 25,
+      "totalAPISources": 10,
+      "standardApplied": "Adaptation APA 7 pour veille financière/géopolitique"
+    }
+  }
+}
