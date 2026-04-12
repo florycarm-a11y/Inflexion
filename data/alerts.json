@@ -1,56 +1,71 @@
 {
-  "updated": "2026-04-12T07:13:24.175Z",
+  "updated": "2026-04-12T18:45:45.563Z",
   "alertes": [
     {
       "id": "alert-2026-04-12-001",
-      "titre": "NVDA : +2,57% à 188,63$, divergence haussière en régime risk-off",
-      "texte": "Nvidia gagne 2,57% à 188,63$ malgré un régime risk-off généralisé (consensus 81%). Divergence positive suggérée par les avancées IA (SiFive 3,65Mds$, partenariats MIT-NVIDIA) contrastant avec baisse crypto (-1,52%) et ETF (-0,47%).",
-      "categorie": "ai_tech",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-04-12T07:13:24.175Z",
+      "titre": "Blocus Ormuz : Trump annonce blockade naval, pétrole en hausse attendue",
+      "texte": "Donald Trump annonce un blocus naval du détroit d'Ormuz suite à l'échec des négociations avec l'Iran (12 avril 2026). Cette escalade géopolitique majeure crée un catalyseur haussier pour les prix du pétrole et augmente le risque systémique. Le Royaume-Uni refuse de participer, créant une fragmentation des réponses occidentales.",
+      "categorie": "geopolitique",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-04-12T18:45:45.563Z",
       "donnees": {
-        "symbole": "NVDA",
-        "nom": "Nvidia",
-        "prix": 188.63,
-        "variation": 2.57
+        "symbole": "ADA",
+        "nom": "Cardano",
+        "prix": 0.239446,
+        "variation_24h": -5.17
       }
     },
     {
       "id": "alert-2026-04-12-002",
-      "titre": "Crypto : -1,52% en régime risk-off, XRP à 1,33$ après échec Iran",
-      "texte": "Classe crypto recule de 1,52% suite à l'effondrement des négociations USA-Iran à Islamabad (12 avril). XRP chute à 1,33$, tokens Trump-linked s'effondrent. Bitcoin approche 25Mds$ d'open interest avec signaux d'épuisement vendeur.",
+      "titre": "Cardano (ADA) : -5,17% en 24h, test de support à $0,239",
+      "texte": "Cardano recule de 5,17% en 24 heures à $0,239, reflétant le régime risk-off généralisé (-3,27% crypto sur 24h). Le mouvement s'inscrit dans un contexte de tensions géopolitiques et d'escalade réglementaire du secteur crypto.",
       "categorie": "crypto",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-12T07:13:24.175Z",
-      "donnees": {}
+      "horodatage": "2026-04-12T18:45:45.563Z",
+      "donnees": {
+        "symbole": "NVDA",
+        "nom": "Nvidia",
+        "prix": 188.65,
+        "variation": 2.58
+      }
     },
     {
       "id": "alert-2026-04-12-003",
-      "titre": "Géopolitique : USA-Iran sans accord, fin des pourparlers à Islamabad",
-      "texte": "Négociations USA-Iran terminées à Islamabad sans accord de paix (12 avril 2026). J.D. Vance met fin aux discussions après une seule journée. Contexte : 2000+ enfants iraniens blessés selon Téhéran, tensions Israël-Turquie sur Syrie-Gaza.",
-      "categorie": "geopolitique",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-04-12T07:13:24.175Z",
+      "titre": "Nvidia (NVDA) : +2,58% à $188,65, résistance aux tensions macro",
+      "texte": "Nvidia progresse de 2,58% à $188,65 malgré le régime risk-off, bénéficiant de la demande structurelle en IA et de contrats défense (accélération course armements IA US-Chine-Russie). Performance divergente du secteur tech face aux tensions géopolitiques.",
+      "categorie": "ai_tech",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-04-12T18:45:45.563Z",
       "donnees": {}
     },
     {
       "id": "alert-2026-04-12-004",
-      "titre": "Marchés : volatilité Iran stimule haul bancaire de 40Mds$",
-      "texte": "Wall Street anticipe un haul de trading de 40 milliards $ grâce à la volatilité liée à la guerre Iran-USA. Crise du crédit privé visible dans les ETF obligataires. Sondage : 80% des Français doutent d'un cessez-le-feu durable.",
+      "titre": "Régime risk-off généralisé : -3,27% crypto, -0,46% ETF, tensions géopolitiques",
+      "texte": "Consensus risk-off à 75% avec amplitude 1,47%. Crypto chute de 3,27%, ETF de 0,46%, indices européens de 0,11%. Blocus Ormuz annoncé, élections Hongrie et tensions Ukraine/Moyen-Orient créent environnement de risque systémique élevé.",
       "categorie": "marches",
-      "severite": "attention",
-      "impact": "neutre",
-      "horodatage": "2026-04-12T07:13:24.175Z",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-04-12T18:45:45.563Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-04-12-005",
+      "titre": "Pétrole : hausse attendue suite blocus Ormuz, futures +7% sur Hyperliquid",
+      "texte": "Futures pétrole affichent +7% sur Hyperliquid suite à l'annonce du blocus du détroit d'Ormuz. Catalyseur géopolitique majeur crée pression haussière sur matières premières énergétiques. Risque de disruption du commerce maritime mondial.",
+      "categorie": "matieres_premieres",
+      "severite": "urgent",
+      "impact": "haussier",
+      "horodatage": "2026-04-12T18:45:45.563Z",
       "donnees": {}
     }
   ],
   "stats": {
-    "total": 4,
-    "urgent": 1,
-    "attention": 2,
+    "total": 5,
+    "urgent": 3,
+    "attention": 1,
     "info": 1
   },
   "model": "claude-haiku-4-5-20251001",
