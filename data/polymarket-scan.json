@@ -1,61 +1,17 @@
 {
-  "generated_at": "2026-04-12T07:14:56.542015+00:00Z",
+  "generated_at": "2026-04-12T18:47:14.442164+00:00Z",
   "scan_type": "short_term_sectoral",
   "max_horizon_days": 7,
   "summary": {
-    "total_markets_scanned": 273,
-    "total_matched": 54,
-    "short_term_markets": 3,
-    "zones_active": 3,
+    "total_markets_scanned": 279,
+    "total_matched": 43,
+    "short_term_markets": 1,
+    "zones_active": 1,
     "conflicts_active": 0,
     "conflict_zones": [],
     "high_edge_signals": 1
   },
   "zones": [
-    {
-      "zone_id": "ukraine",
-      "zone_name": "Ukraine / Mer Noire",
-      "risk_score": 5.6,
-      "opp_score": 3.2,
-      "conflict_active": false,
-      "conflict_multiplier": 1.0,
-      "intel_multiplier": 1.25,
-      "markets": [
-        {
-          "question": "Will Russia capture Kostyantynivka by April 30?",
-          "end_date": "2026-03-31",
-          "horizon_days": 1.0,
-          "event_type": "territorial",
-          "poly_price": 0.095,
-          "semplice_prob": 0.138,
-          "edge_pct": 4.3,
-          "direction": "BUY_YES",
-          "reasoning": "Type=territorial(négatif) | Base=15.0% × Mult=2.38×Intel1.25 → Ann=44.7% → T=0.0a → P=13.8% | M=6.6(w=45%), P=5.4(w=15%)"
-        }
-      ]
-    },
-    {
-      "zone_id": "inde",
-      "zone_name": "Inde",
-      "risk_score": 3.9,
-      "opp_score": 4.0,
-      "conflict_active": false,
-      "conflict_multiplier": 1.0,
-      "intel_multiplier": 1.0,
-      "markets": [
-        {
-          "question": "Will the Bahujan Samaj Party (BSP) win the most seats in the 2026 Kerala Legislative Assembly election?",
-          "end_date": "2026-04-09",
-          "horizon_days": 1.0,
-          "event_type": "election",
-          "poly_price": 0.001,
-          "semplice_prob": 0.131,
-          "edge_pct": 13.1,
-          "direction": "BUY_YES",
-          "reasoning": "Type=election(positif) | Base=45.0% × Mult=0.96 → Ann=43.0% → T=0.0a → P=13.1% | P=3.6(w=35%), S=3.8(w=20%), E=4.0(w=20%"
-        }
-      ]
-    },
     {
       "zone_id": "mexique",
       "zone_name": "Mexique",
