@@ -1,14 +1,14 @@
 {
-  "updated": "2026-04-11T07:00:58.400Z",
+  "updated": "2026-04-12T07:13:24.175Z",
   "alertes": [
     {
-      "id": "alert-2026-04-11-001",
-      "titre": "BTC : +2,7% à $73 000, entrées ETF massives BlackRock et Morgan Stanley",
-      "texte": "Bitcoin dépasse le seuil des $73 000 sur fond de CPI chaud et cessez-le-feu fragile au Moyen-Orient. BlackRock enregistre des entrées massives sur son ETF Bitcoin spot, tandis que Morgan Stanley débute son produit MSBT avec forte demande initiale.",
-      "categorie": "crypto",
-      "severite": "attention",
+      "id": "alert-2026-04-12-001",
+      "titre": "NVDA : +2,57% à 188,63$, divergence haussière en régime risk-off",
+      "texte": "Nvidia gagne 2,57% à 188,63$ malgré un régime risk-off généralisé (consensus 81%). Divergence positive suggérée par les avancées IA (SiFive 3,65Mds$, partenariats MIT-NVIDIA) contrastant avec baisse crypto (-1,52%) et ETF (-0,47%).",
+      "categorie": "ai_tech",
+      "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-04-11T07:00:58.400Z",
+      "horodatage": "2026-04-12T07:13:24.175Z",
       "donnees": {
         "symbole": "NVDA",
         "nom": "Nvidia",
@@ -17,54 +17,40 @@
       }
     },
     {
-      "id": "alert-2026-04-11-002",
-      "titre": "NVDA : +2,57% à $188,63, rebond sectoriel tech sur fonds de sentiment mixte",
-      "texte": "Nvidia progresse de 2,57% à $188,63 dans un contexte de marché fragmenté (consensus 50%). Les actions technologiques bénéficient des avancées IA (Artemis II, ChatGPT Pro, contrats défense) malgré un Fear & Greed Index à 15 (Extreme Fear).",
-      "categorie": "ai_tech",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-04-11T07:00:58.400Z",
-      "donnees": {
-        "score": 15,
-        "label": "Extreme Fear",
-        "variation_7j": 4
-      }
-    },
-    {
-      "id": "alert-2026-04-11-003",
-      "titre": "Treasuries US : rendements 10Y à 4,31%, ventes massives $620Mds cette semaine",
-      "texte": "Le gouvernement américain a vendu $620 milliards de Treasuries cette semaine, le rendement 10 ans s'établissant à 4,31% et le 30 ans à 4,91%. Cette hausse des rendements reflète les tensions inflationnistes et les incertitudes géopolitiques.",
-      "categorie": "macro",
+      "id": "alert-2026-04-12-002",
+      "titre": "Crypto : -1,52% en régime risk-off, XRP à 1,33$ après échec Iran",
+      "texte": "Classe crypto recule de 1,52% suite à l'effondrement des négociations USA-Iran à Islamabad (12 avril). XRP chute à 1,33$, tokens Trump-linked s'effondrent. Bitcoin approche 25Mds$ d'open interest avec signaux d'épuisement vendeur.",
+      "categorie": "crypto",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-11T07:00:58.400Z",
+      "horodatage": "2026-04-12T07:13:24.175Z",
       "donnees": {}
     },
     {
-      "id": "alert-2026-04-11-004",
-      "titre": "Fear & Greed Index : 15 (Extreme Fear), marché fragmenté (consensus 50%)",
-      "texte": "L'indice Fear & Greed atteint 15 signalant une peur extrême. Le régime de marché détecté est fragmenté avec consensus à 50% et amplitude 0,79%. Les classes d'actifs divergent: ETF -0,47%, action +0,51%, crypto +1,09%, indice EU -0,11%.",
+      "id": "alert-2026-04-12-003",
+      "titre": "Géopolitique : USA-Iran sans accord, fin des pourparlers à Islamabad",
+      "texte": "Négociations USA-Iran terminées à Islamabad sans accord de paix (12 avril 2026). J.D. Vance met fin aux discussions après une seule journée. Contexte : 2000+ enfants iraniens blessés selon Téhéran, tensions Israël-Turquie sur Syrie-Gaza.",
+      "categorie": "geopolitique",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-04-12T07:13:24.175Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-04-12-004",
+      "titre": "Marchés : volatilité Iran stimule haul bancaire de 40Mds$",
+      "texte": "Wall Street anticipe un haul de trading de 40 milliards $ grâce à la volatilité liée à la guerre Iran-USA. Crise du crédit privé visible dans les ETF obligataires. Sondage : 80% des Français doutent d'un cessez-le-feu durable.",
       "categorie": "marches",
       "severite": "attention",
       "impact": "neutre",
-      "horodatage": "2026-04-11T07:00:58.400Z",
-      "donnees": {}
-    },
-    {
-      "id": "alert-2026-04-11-005",
-      "titre": "Pétrole : repli avant négociations Iran, contraintes Ormuz maintiennent prix élevés",
-      "texte": "Le pétrole se replie en anticipation des négociations Iran-USA à Islamabad. Cependant, les contraintes persistantes du détroit d'Ormuz et les tensions Israël-Liban maintiennent les prix à des niveaux élevés, avec pénurie carburant réaction prévue en Europe dans les semaines.",
-      "categorie": "matieres_premieres",
-      "severite": "attention",
-      "impact": "neutre",
-      "horodatage": "2026-04-11T07:00:58.400Z",
+      "horodatage": "2026-04-12T07:13:24.175Z",
       "donnees": {}
     }
   ],
   "stats": {
-    "total": 5,
-    "urgent": 0,
-    "attention": 4,
+    "total": 4,
+    "urgent": 1,
+    "attention": 2,
     "info": 1
   },
   "model": "claude-haiku-4-5-20251001",

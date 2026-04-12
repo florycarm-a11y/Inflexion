@@ -1,78 +1,69 @@
 {
-  "updated": "2026-04-11T07:00:58.399Z",
-  "date": "2026-04-11",
+  "updated": "2026-04-12T07:13:24.175Z",
+  "date": "2026-04-12",
   "global": {
-    "score": 0.01,
-    "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (+0.01), dominé par la rubrique crypto (haussier)."
+    "score": -0.27,
+    "tendance": "baissier",
+    "resume": "Le sentiment global est baissier (-0.27), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.45,
-      "confidence": 0.75,
+      "score": -0.72,
+      "confidence": 0.87,
       "tendance": "baissier",
-      "resume": "Négociations Iran-USA en cours à Islamabad avec présence de JD Vance, mais tensions persistantes au Moyen-Orient (Israël-Liban, Gaza). Incertitudes géopolitiques élevées malgré dialogue diplomatique.",
+      "resume": "Échec des négociations USA-Iran à Islamabad après discussions d'une journée sans accord. Tensions électorales en Hongrie et au Pérou, violations du cessez-le-feu signalées en Ukraine. Contexte géopolitique dégradé impactant les marchés.",
       "signaux_cles": [
-        "Délégation américaine arrivée au Pakistan pour négociations avec l'Iran (11 avril 2026)",
-        "Frappes israéliennes continues au Liban et tensions Gaza (pénurie carburant, inflation des prix)",
-        "Nouveau leader suprême iranien avec blessures graves rapportées par sources"
+        "USA-Iran : fin des pourparlers à Islamabad sans accord de paix (12 avril 2026)",
+        "J.D. Vance met fin aux négociations après une seule journée",
+        "Hongrie : élections législatives à haut risque pour Viktor Orbán"
       ]
     },
     "marches": {
-      "score": -0.15,
-      "confidence": 0.62,
-      "tendance": "neutre",
-      "resume": "Rendements obligataires américains en hausse (10Y: 4,31%, 30Y: 4,91%), ventes massives de Treasuries ($620Mds). Débats sur politique fiscale française et impacts sectoriels mitigés.",
+      "score": -0.38,
+      "confidence": 0.72,
+      "tendance": "mixte",
+      "resume": "Volatilité accrue liée à la guerre Iran-USA stimulant les volumes de trading bancaires (+40Mds$). Préoccupations sur le crédit privé en obligations contrebalancées par opportunités de valorisation bancaire. Marché français fragmenté entre mesures fiscales et incertitudes macro.",
       "signaux_cles": [
-        "Ventes de Treasuries US: $620 milliards cette semaine, rendement 10Y à 4,31%",
-        "Bataille Eiffage-Mundys autour d'Eurotunnel intensifiée",
-        "Hausse carburants: plus grande augmentation mensuelle en 60 ans rapportée"
+        "Wall Street : haul de trading de 40 milliards $ attendu grâce à la volatilité Iran",
+        "Crise du crédit privé visible dans les ETF obligataires",
+        "Sondage : 80% des Français doutent d'un cessez-le-feu durable en Iran"
       ]
     },
     "crypto": {
-      "score": 0.55,
-      "confidence": 0.72,
-      "tendance": "haussier",
-      "resume": "Bitcoin dépasse $73 000 sur fond de CPI chaud et cessez-le-feu fragile. Entrées massives ETF Bitcoin BlackRock et débuts forts MSBT Morgan Stanley. Régulation crypto progresse (CFTC task force).",
+      "score": -0.65,
+      "confidence": 0.84,
+      "tendance": "baissier",
+      "resume": "Bitcoin et altcoins en baisse suite à l'échec des négociations USA-Iran. XRP chute à 1,33$, tokens liés à Trump s'effondrent. Signaux techniques montrent épuisement des vendeurs mais contexte macro reste dégradé.",
       "signaux_cles": [
-        "Bitcoin surpasse $73 000 (11 avril 2026), entrées massives ETF BlackRock",
-        "Morgan Stanley lance MSBT avec forte demande initiale",
-        "CFTC dévoile membres task force innovation crypto pour clarification réglementaire"
+        "XRP : baisse à 1,33$ suite à la faiblesse du Bitcoin",
+        "Tokens Trump-linked : crash significatif après revers diplomatiques",
+        "Open interest Bitcoin : approche 25 milliards $ avec potentiel short squeeze"
       ]
     },
     "matieres_premieres": {
-      "score": -0.35,
+      "score": 0.18,
       "confidence": 0.68,
-      "tendance": "baissier",
-      "resume": "Pétrole baisse avant négociations Iran, mais contraintes détroit d'Ormuz maintiennent prix élevés. Pénurie carburant réaction (jet fuel Europe en semaines). Production gaz offshore Venezuela-Trinité confirmée par Shell.",
+      "tendance": "neutre",
+      "resume": "Pétrole en baisse avant les pourparlers Iran (finalement échoués), mais soutenu par les craintes de perturbation d'approvisionnement. Demande d'énergie verte en hausse (Inde surpasse USA). Lithium-cuivre : Argentine accélère réformes minières.",
       "signaux_cles": [
-        "Pétrole se replie avant négociations Iran, contraintes détroit d'Ormuz persistantes",
-        "Pénurie carburant réaction en Europe prévue en semaines",
-        "Shell confirme projet production gaz offshore Venezuela-Trinité"
+        "Pétrole : baisse hebdomadaire forte avant négociations, puis stabilisation",
+        "Inde : surpasse USA dans la construction d'énergie propre",
+        "Argentine : adoption de réforme minière pour lithium-cuivre en régions glaciaires"
       ]
     },
     "ai_tech": {
       "score": 0.42,
-      "confidence": 0.7,
+      "confidence": 0.71,
       "tendance": "haussier",
-      "resume": "Succès mission Artemis II (4 astronautes rentrés), avancées IA (ChatGPT Pro $100, Alibaba VimRAG, Deepmind AGI). Contrat Pentagon-Lockheed Martin $4,7Mds PAC-3. Incidents sécurité (Molotov chez Altman).",
+      "resume": "Avancées technologiques continues (LFM2.5-VL, TriAttention, SQLite 3.53.0). Nvidia-backed SiFive atteint 3,65Mds$ de valorisation. Consolidation compétitive (Salesforce vs ServiceNow). Incident de sécurité chez OpenAI (Molotov) sans impact opérationnel détecté.",
       "signaux_cles": [
-        "Artemis II splashdown réussi, 4 astronautes revenus (11 avril 2026)",
-        "ChatGPT lance abonnement Pro $100 pour concurrencer Claude",
-        "Pentagon-Lockheed Martin accord $4,7 milliards intercepteurs PAC-3"
+        "SiFive (Nvidia-backed) : valorisation 3,65 milliards $ pour puces IA ouvertes",
+        "Liquid AI : modèle vision-langage 450M paramètres avec inférence <250ms",
+        "Recherche MIT-NVIDIA : compression KV cache 2,5× plus rapide"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-02-25",
-      "global": 0.08,
-      "geopolitique": -0.45,
-      "marches": 0.15,
-      "crypto": 0.35,
-      "matieres_premieres": -0.25,
-      "ai_tech": 0.62
-    },
     {
       "date": "2026-02-26",
       "global": -0.31,
@@ -332,6 +323,15 @@
       "marches": -0.15,
       "crypto": 0.55,
       "matieres_premieres": -0.35,
+      "ai_tech": 0.42
+    },
+    {
+      "date": "2026-04-12",
+      "global": -0.27,
+      "geopolitique": -0.72,
+      "marches": -0.38,
+      "crypto": -0.65,
+      "matieres_premieres": 0.18,
       "ai_tech": 0.42
     }
   ],
