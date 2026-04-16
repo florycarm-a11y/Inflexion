@@ -1,36 +1,126 @@
 {
-  "generated_at": "2026-04-12T18:47:14.442164+00:00Z",
+  "generated_at": "2026-04-16T07:33:55.833538+00:00Z",
   "scan_type": "short_term_sectoral",
   "max_horizon_days": 7,
   "summary": {
     "total_markets_scanned": 279,
-    "total_matched": 43,
-    "short_term_markets": 1,
-    "zones_active": 1,
-    "conflicts_active": 0,
-    "conflict_zones": [],
-    "high_edge_signals": 1
+    "total_matched": 49,
+    "short_term_markets": 7,
+    "zones_active": 3,
+    "conflicts_active": 1,
+    "conflict_zones": [
+      "iran"
+    ],
+    "high_edge_signals": 2
   },
   "zones": [
     {
-      "zone_id": "mexique",
-      "zone_name": "Mexique",
-      "risk_score": 3.4,
-      "opp_score": 3.7,
+      "zone_id": "ukraine",
+      "zone_name": "Ukraine / Mer Noire",
+      "risk_score": 5.6,
+      "opp_score": 3.2,
       "conflict_active": false,
       "conflict_multiplier": 1.0,
-      "intel_multiplier": 1.0,
+      "intel_multiplier": 1.29,
       "markets": [
         {
-          "question": "Will Audias Flores-Silva be arrested in 2026?",
-          "end_date": "2026-02-28",
+          "question": "Will Russia enter Dobropillia by April 30?",
+          "end_date": "2026-01-31",
+          "horizon_days": 1.0,
+          "event_type": "territorial",
+          "poly_price": 0.016,
+          "semplice_prob": 0.143,
+          "edge_pct": 12.7,
+          "direction": "BUY_YES",
+          "reasoning": "Type=territorial(négatif) | Base=15.0% × Mult=2.38×Intel1.29 → Ann=46.0% → T=0.0a → P=14.3% | M=6.6(w=45%), P=5.4(w=15%)"
+        },
+        {
+          "question": "Will Russia capture Kostyantynivka by April 30?",
+          "end_date": "2026-03-31",
+          "horizon_days": 1.0,
+          "event_type": "territorial",
+          "poly_price": 0.095,
+          "semplice_prob": 0.143,
+          "edge_pct": 4.8,
+          "direction": "BUY_YES",
+          "reasoning": "Type=territorial(négatif) | Base=15.0% × Mult=2.38×Intel1.29 → Ann=46.0% → T=0.0a → P=14.3% | M=6.6(w=45%), P=5.4(w=15%)"
+        },
+        {
+          "question": "Ukraine recognizes Russian sovereignty over its territory by June 30, 2026?",
+          "end_date": "2025-12-31",
+          "horizon_days": 1.0,
+          "event_type": "territorial",
+          "poly_price": 0.012,
+          "semplice_prob": 0.143,
+          "edge_pct": 13.1,
+          "direction": "BUY_YES",
+          "reasoning": "Type=territorial(négatif) | Base=15.0% × Mult=2.38×Intel1.29 → Ann=46.0% → T=0.0a → P=14.3% | M=6.6(w=45%), P=5.4(w=15%)"
+        },
+        {
+          "question": "Will Trump say \"Russia\" during No Tax on Tips Roundtable?",
+          "end_date": "2026-04-16",
           "horizon_days": 1.0,
           "event_type": "generic",
-          "poly_price": 0.275,
-          "semplice_prob": 0.029,
-          "edge_pct": 24.6,
+          "poly_price": 0.235,
+          "semplice_prob": 0.122,
+          "edge_pct": 11.3,
           "direction": "BUY_NO",
-          "reasoning": "Type=generic(négatif) | Base=15.0% × Mult=0.74 → Ann=11.1% → T=0.0a → P=2.9% | M=3.3(w=16%), E=2.4(w=15%), P=3.6(w=14%)"
+          "reasoning": "Type=generic(négatif) | Base=15.0% × Mult=2.11×Intel1.29 → Ann=40.7% → T=0.0a → P=12.2% | M=6.6(w=16%), E=5.7(w=15%), P="
+        }
+      ]
+    },
+    {
+      "zone_id": "iran",
+      "zone_name": "Iran",
+      "risk_score": 5.1,
+      "opp_score": 2.5,
+      "conflict_active": true,
+      "conflict_multiplier": 5.0,
+      "intel_multiplier": 1.38,
+      "markets": [
+        {
+          "question": "Iran x Israel/US conflict ends by April 7?",
+          "end_date": "2026-04-07",
+          "horizon_days": 1.0,
+          "event_type": "ceasefire",
+          "poly_price": 0.866,
+          "semplice_prob": 0.154,
+          "edge_pct": 71.2,
+          "direction": "BUY_NO",
+          "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×5 × Mult=0.41×Intel1.38 → Ann=48.8% → T=0.0a → P=15.4% | P=1.5(w=30%), M=2"
+        },
+        {
+          "question": "Iran x Israel/US conflict ends by April 15?",
+          "end_date": "2026-04-15",
+          "horizon_days": 1.0,
+          "event_type": "ceasefire",
+          "poly_price": 0.859,
+          "semplice_prob": 0.154,
+          "edge_pct": 70.4,
+          "direction": "BUY_NO",
+          "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×5 × Mult=0.41×Intel1.38 → Ann=48.8% → T=0.0a → P=15.4% | P=1.5(w=30%), M=2"
+        }
+      ]
+    },
+    {
+      "zone_id": "inde",
+      "zone_name": "Inde",
+      "risk_score": 3.9,
+      "opp_score": 4.0,
+      "conflict_active": false,
+      "conflict_multiplier": 1.0,
+      "intel_multiplier": 1.03,
+      "markets": [
+        {
+          "question": "Will the Bharatiya Janata Party (BJP) win the most seats in the 2026 Kerala Legislative Assembly election?",
+          "end_date": "2026-04-09",
+          "horizon_days": 1.0,
+          "event_type": "election",
+          "poly_price": 0.001,
+          "semplice_prob": 0.136,
+          "edge_pct": 13.6,
+          "direction": "BUY_YES",
+          "reasoning": "Type=election(positif) | Base=45.0% × Mult=0.96×Intel1.03 → Ann=44.3% → T=0.0a → P=13.6% | P=3.6(w=35%), S=3.8(w=20%), E"
         }
       ]
     }
