@@ -1,19 +1,19 @@
 {
-  "updated": "2026-04-16T07:28:30.446Z",
+  "updated": "2026-04-16T19:09:24.548Z",
   "feeds": [
     {
       "source": "Le Figaro",
       "url": "https://www.lefigaro.fr/rss/figaro_international.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 5
     },
     {
       "source": "France 24",
       "url": "https://www.france24.com/fr/rss",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 5
     },
     {
       "source": "RFI",
@@ -27,7 +27,7 @@
       "url": "https://www.courrierinternational.com/feed/all/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 5
     },
     {
       "source": "Le Monde Diplomatique",
@@ -41,14 +41,14 @@
       "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "Al Jazeera",
       "url": "https://www.aljazeera.com/xml/rss/all.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 2
     },
     {
       "source": "The Guardian",
@@ -76,7 +76,7 @@
       "url": "https://www.politico.eu/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "Foreign Policy",
@@ -165,9 +165,9 @@
     {
       "source": "GRIP",
       "url": "https://www.grip.org/feed/",
-      "count": 0,
-      "ok": false,
-      "error": "HTTP 500: https://www.grip.org/feed/"
+      "count": 5,
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Chatham House",
@@ -237,7 +237,7 @@
       "url": "https://www.lefigaro.fr/rss/figaro_flash-eco.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 2
     },
     {
       "source": "Les Echos",
@@ -251,7 +251,7 @@
       "url": "https://www.bfmtv.com/rss/economie/",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 1
     },
     {
       "source": "Zonebourse",
@@ -265,7 +265,7 @@
       "url": "https://www.latribune.fr/feed.xml",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 3
     },
     {
       "source": "Capital",
@@ -286,7 +286,7 @@
       "url": "https://finance.yahoo.com/news/rssindex",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "Seeking Alpha",
@@ -300,14 +300,14 @@
       "url": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 2
     },
     {
       "source": "Investing.com",
       "url": "https://www.investing.com/rss/news.rss",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 1
     },
     {
       "source": "Wolf Street",
@@ -494,9 +494,9 @@
     {
       "source": "Natural Gas Intel",
       "url": "https://www.naturalgasintel.com/feed/",
-      "count": 0,
-      "ok": false,
-      "error": "HTTP 405: https://www.naturalgasintel.com/feed/"
+      "count": 5,
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "GoldPrice.org",
@@ -594,14 +594,14 @@
       "url": "https://www.numerama.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 0
+      "relevant": 2
     },
     {
       "source": "Next INpact",
       "url": "https://www.nextinpact.com/feed",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 3
     },
     {
       "source": "TechCrunch",
@@ -615,7 +615,7 @@
       "url": "https://www.theverge.com/rss/index.xml",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 0
     },
     {
       "source": "Ars Technica",
@@ -636,7 +636,7 @@
       "url": "https://hnrss.org/frontpage?count=15",
       "count": 5,
       "ok": true,
-      "relevant": 1
+      "relevant": 3
     },
     {
       "source": "VentureBeat AI",
@@ -669,9 +669,9 @@
     {
       "source": "The Decoder",
       "url": "https://the-decoder.com/feed/",
-      "count": 0,
-      "ok": false,
-      "error": "The operation was aborted due to timeout"
+      "count": 5,
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Krebs on Security",
@@ -692,7 +692,7 @@
       "url": "https://www.theregister.com/headlines.atom",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 2
     },
     {
       "source": "TLDR Tech",
@@ -839,7 +839,7 @@
       "url": "https://cleantechnica.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 6
+      "relevant": 3
     },
     {
       "source": "Reuters Sustainability",
@@ -1144,8 +1144,8 @@
     }
   ],
   "stats": {
-    "success": 107,
-    "failed": 56,
-    "articles": 476
+    "success": 110,
+    "failed": 53,
+    "articles": 480
   }
 }
