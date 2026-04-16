@@ -1,72 +1,141 @@
 {
-  "updated": "2026-04-12T18:45:45.563Z",
+  "updated": "2026-04-16T07:30:54.647Z",
   "alertes": [
     {
-      "id": "alert-2026-04-12-001",
-      "titre": "Blocus Ormuz : Trump annonce blockade naval, pétrole en hausse attendue",
-      "texte": "Donald Trump annonce un blocus naval du détroit d'Ormuz suite à l'échec des négociations avec l'Iran (12 avril 2026). Cette escalade géopolitique majeure crée un catalyseur haussier pour les prix du pétrole et augmente le risque systémique. Le Royaume-Uni refuse de participer, créant une fragmentation des réponses occidentales.",
-      "categorie": "geopolitique",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-04-12T18:45:45.563Z",
+      "id": "alert-2026-04-16-001",
+      "titre": "Tesla (TSLA) : +7,62% à $391,95, surperformance tech généralisée",
+      "texte": "Tesla gagne 7,62% dans contexte de rotation risk-on vers technologie. QQQ surperforme DIA (+1,4% vs -0,2%), tech outperforme commodities de 3,5pp. Consensus marché 81% risk-on, amplitude 2,34%.",
+      "categorie": "marches",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-04-16T07:30:54.647Z",
       "donnees": {
         "symbole": "ADA",
         "nom": "Cardano",
-        "prix": 0.239446,
-        "variation_24h": -5.17
+        "prix": 0.250903,
+        "variation_24h": 5.01
       }
     },
     {
-      "id": "alert-2026-04-12-002",
-      "titre": "Cardano (ADA) : -5,17% en 24h, test de support à $0,239",
-      "texte": "Cardano recule de 5,17% en 24 heures à $0,239, reflétant le régime risk-off généralisé (-3,27% crypto sur 24h). Le mouvement s'inscrit dans un contexte de tensions géopolitiques et d'escalade réglementaire du secteur crypto.",
-      "categorie": "crypto",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-04-12T18:45:45.563Z",
-      "donnees": {
-        "symbole": "NVDA",
-        "nom": "Nvidia",
-        "prix": 188.65,
-        "variation": 2.58
-      }
-    },
-    {
-      "id": "alert-2026-04-12-003",
-      "titre": "Nvidia (NVDA) : +2,58% à $188,65, résistance aux tensions macro",
-      "texte": "Nvidia progresse de 2,58% à $188,65 malgré le régime risk-off, bénéficiant de la demande structurelle en IA et de contrats défense (accélération course armements IA US-Chine-Russie). Performance divergente du secteur tech face aux tensions géopolitiques.",
-      "categorie": "ai_tech",
+      "id": "alert-2026-04-16-002",
+      "titre": "Microsoft (MSFT) : +4,61% à $411,22, momentum tech soutenu",
+      "texte": "Microsoft gagne 4,61% dans rallye technologique. Secteur actions +3,53% vs ETF -0,01%, signalant sélectivité haussière. Divergence tech-commodities (+3,5pp) confirme appétit pour croissance.",
+      "categorie": "marches",
       "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-04-12T18:45:45.563Z",
-      "donnees": {}
+      "horodatage": "2026-04-16T07:30:54.647Z",
+      "donnees": {
+        "symbole": "AAPL",
+        "nom": "Apple",
+        "prix": 266.43,
+        "variation": 2.94
+      }
     },
     {
-      "id": "alert-2026-04-12-004",
-      "titre": "Régime risk-off généralisé : -3,27% crypto, -0,46% ETF, tensions géopolitiques",
-      "texte": "Consensus risk-off à 75% avec amplitude 1,47%. Crypto chute de 3,27%, ETF de 0,46%, indices européens de 0,11%. Blocus Ormuz annoncé, élections Hongrie et tensions Ukraine/Moyen-Orient créent environnement de risque systémique élevé.",
-      "categorie": "marches",
+      "id": "alert-2026-04-16-003",
+      "titre": "Bitcoin : test 75 000-80 000 $, activité whale accrue",
+      "texte": "Bitcoin teste niveau janvier (75 000 $) avec réveil des whales. Morgan Stanley Bitcoin fund dépasse WisdomTree après 6 jours. Tether renforce réserves, inflows institutionnels confirmés. Crypto +3,01% sur 24h.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-04-16T07:30:54.647Z",
+      "donnees": {
+        "symbole": "MSFT",
+        "nom": "Microsoft",
+        "prix": 411.22,
+        "variation": 4.61
+      }
+    },
+    {
+      "id": "alert-2026-04-16-004",
+      "titre": "Cardano (ADA) : +5,01% à $0,251, altcoin momentum",
+      "texte": "Cardano gagne 5,01% en 24h, surperformant Bitcoin (+3,01% crypto global). Dogecoin +4,5% à $0,10 confirme rotation altcoins. Régime risk-on généraliste soutient classe crypto.",
+      "categorie": "crypto",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-04-16T07:30:54.647Z",
+      "donnees": {
+        "symbole": "TSLA",
+        "nom": "Tesla",
+        "prix": 391.95,
+        "variation": 7.62
+      }
+    },
+    {
+      "id": "alert-2026-04-16-005",
+      "titre": "Ukraine : 17 morts, 115 blessés dans attaques russes du 16 avril",
+      "texte": "Nouvelle escalade militaire en Ukraine : 17 décès et 115 blessés confirmés dans frappes russes du 16 avril. Responsable ukrainien qualifie d'« acte de terreur délibéré ». Risque géopolitique élevé pour approvisionnements énergétiques européens.",
+      "categorie": "geopolitique",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-04-12T18:45:45.563Z",
+      "horodatage": "2026-04-16T07:30:54.647Z",
+      "donnees": {
+        "tech_avg": 2.5,
+        "comm_avg": -1.03,
+        "spread": 3.53,
+        "regime": "risk-on / croissance"
+      }
+    },
+    {
+      "id": "alert-2026-04-16-006",
+      "titre": "Liban : démolitions israéliennes massives, 4 paramédicaux tués",
+      "texte": "Images satellites documentent démolitions israéliennes de villes du sud-Liban. Quatre paramédicaux tués dans frappes consécutives. Finul ciblée à nouveau. Escalade militaire continue malgré tentatives diplomatiques (Trump annonce discussions Liban-Israël).",
+      "categorie": "geopolitique",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-04-16T07:30:54.647Z",
+      "donnees": {
+        "qqq": 1.4,
+        "dia": -0.16,
+        "spread": 1.56
+      }
+    },
+    {
+      "id": "alert-2026-04-16-007",
+      "titre": "Pétrole : raffineries chinoises ralentissent malgré hausse 50% YTD",
+      "texte": "Activité de raffinage chinois décline alors que pétrole brut a progressé 50% depuis début année. Stocks élevés en Inde retardent importations, signalant demande faible malgré tensions d'approvisionnement Moyen-Orient. FMI alerte sur risque récession.",
+      "categorie": "matieres_premieres",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-04-16T07:30:54.647Z",
       "donnees": {}
     },
     {
-      "id": "alert-2026-04-12-005",
-      "titre": "Pétrole : hausse attendue suite blocus Ormuz, futures +7% sur Hyperliquid",
-      "texte": "Futures pétrole affichent +7% sur Hyperliquid suite à l'annonce du blocus du détroit d'Ormuz. Catalyseur géopolitique majeur crée pression haussière sur matières premières énergétiques. Risque de disruption du commerce maritime mondial.",
-      "categorie": "matieres_premieres",
-      "severite": "urgent",
+      "id": "alert-2026-04-16-008",
+      "titre": "TSMC : profit Q1 +58%, dépassement consensus, demande IA record",
+      "texte": "Taiwan Semiconductor Manufacturing dépasse estimations Q1 2026 avec profit +58%. Guidance Q2 revenue au-dessus consensus. Demande IA soutient croissance record. Signal haussier pour secteur technologique et chaîne d'approvisionnement.",
+      "categorie": "marches",
+      "severite": "info",
       "impact": "haussier",
-      "horodatage": "2026-04-12T18:45:45.563Z",
+      "horodatage": "2026-04-16T07:30:54.647Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-04-16-009",
+      "titre": "Chine : croissance Q1 2026 confirmée à 5% malgré crise Moyen-Orient",
+      "texte": "Économie chinoise affiche croissance 5% au Q1 2026, dépassant attentes. Industrie tire la croissance. Résilience confirmée malgré escalade géopolitique et perturbations commerciales. Signal positif pour demande globale.",
+      "categorie": "macro",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-04-16T07:30:54.647Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-04-16-010",
+      "titre": "Gaz naturel : dépenses +16% clients BofA, volatilité Iran-USA",
+      "texte": "Dépenses gaz naturel clients Bank of America augmentent 16% dans contexte conflit Iran-USA (jour 48). Volatilité accrue sur approvisionnements énergétiques. Risque de transmission aux prix électricité Europe.",
+      "categorie": "matieres_premieres",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-04-16T07:30:54.647Z",
       "donnees": {}
     }
   ],
   "stats": {
-    "total": 5,
-    "urgent": 3,
-    "attention": 1,
-    "info": 1
+    "total": 10,
+    "urgent": 2,
+    "attention": 3,
+    "info": 5
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"

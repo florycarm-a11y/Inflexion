@@ -1,78 +1,69 @@
 {
-  "updated": "2026-04-12T18:45:45.562Z",
-  "date": "2026-04-12",
+  "updated": "2026-04-16T07:30:54.647Z",
+  "date": "2026-04-16",
   "global": {
-    "score": -0.24,
-    "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.24), dominé par la rubrique geopolitique (baissier)."
+    "score": 0.04,
+    "tendance": "mixte",
+    "resume": "Le sentiment global est mixte (+0.04), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.85,
+      "score": -0.72,
       "confidence": 0.92,
       "tendance": "baissier",
-      "resume": "Escalade majeure des tensions géopolitiques avec annonce par Trump d'un blocus naval du détroit d'Ormuz suite à l'échec des négociations Iran-USA. Élections en Hongrie et tensions multiples (Ukraine, Moyen-Orient, Liban) créent un environnement de risque systémique accru.",
+      "resume": "Escalade militaire continue en Ukraine (17 morts, 115 blessés) et au Moyen-Orient avec intensification des frappes israéliennes au Liban. Tensions Iran-USA persistent (jour 48 du conflit) malgré tentatives diplomatiques pakistanaises et américaines.",
       "signaux_cles": [
-        "Trump annonce blocus du détroit d'Ormuz après échec négociations Iran (12 avril 2026)",
-        "Élections en Hongrie avec participation record et menace potentielle au régime Orbán",
-        "Tensions Ukraine persistantes : 55 combats dimanche, Russie refuse prolongation trêve"
+        "Ukraine : 17 morts et 115 blessés dans attaques russes du 16 avril",
+        "Liban : démolitions israéliennes massives documentées par images satellites, 4 paramédicaux tués",
+        "Iran-USA : conflit à jour 48, débat sur tolls du Détroit d'Ormuz, risque de perturbation commerciale"
       ]
     },
     "marches": {
-      "score": -0.42,
-      "confidence": 0.78,
-      "tendance": "baissier",
-      "resume": "Marchés réagissent négativement aux tensions géopolitiques. Hausse attendue des prix du pétrole contrebalancée par craintes macro. Saison des résultats (earnings) commence avec volatilité accrue. Rotation sectorielle : Adidas monte, Nike recule.",
+      "score": 0.58,
+      "confidence": 0.85,
+      "tendance": "haussier",
+      "resume": "Résultats trimestriels solides (TSMC +58% profit, dépassement consensus), croissance économique positive (Chine 5%, UK 0,5%), mais restructurations sectorielles (Stellantis fermeture Poissy, Snapchat -1000 emplois). Résilience macroéconomique malgré contexte géopolitique.",
       "signaux_cles": [
-        "Prix du pétrole attendus en hausse suite blocus Ormuz annoncé",
-        "Saison des résultats Q1 2026 débute avec test majeur de marché",
-        "Adidas passe 16e à 2e en réputation mondiale, Nike chute 22e à 50e"
+        "TSMC Q1 2026 : profit +58%, dépassement estimations, demande IA record",
+        "Chine Q1 2026 : croissance 5%, résistance confirmée malgré crise Moyen-Orient",
+        "UK février 2026 : PIB +0,5%, dépassement consensus avant escalade géopolitique"
       ]
     },
     "crypto": {
-      "score": -0.68,
-      "confidence": 0.85,
-      "tendance": "baissier",
-      "resume": "Secteur crypto sous pression avec tensions réglementaires (CFTC, CLARITY Act) et conflits publics majeurs (Justin Sun vs WLFI). Bitcoin teste support à 65 000 $. Staking Ethereum atteint 32% des ETH. Régime risk-off pèse sur l'ensemble.",
+      "score": 0.64,
+      "confidence": 0.79,
+      "tendance": "haussier",
+      "resume": "Bitcoin teste 75 000-80 000 $ avec activité whale accrue et inflows institutionnels (Morgan Stanley fund, Tether renforcement réserves). Dynamique positive tempérée par débats de gouvernance (World Liberty Financial) et volatilité court terme.",
       "signaux_cles": [
-        "Bitcoin forme potentiellement une base à 65 000 $ après liquidation des positions spéculatives",
-        "Ethereum staking atteint 32% du total des ETH en circulation",
-        "Conflit Justin Sun/WLFI escalade : menaces légales et accusations de backdoor dans contrats"
+        "Bitcoin : test 75 000-80 000 $ avec réveil des whales, niveau de janvier en test",
+        "Morgan Stanley Bitcoin fund : dépasse WisdomTree après 6 jours de trading",
+        "Dogecoin : +4,5% à 0,10 $, surperformance vs BTC/ETH"
       ]
     },
     "matieres_premieres": {
-      "score": 0.72,
+      "score": -0.51,
       "confidence": 0.88,
-      "tendance": "haussier",
-      "resume": "Blocus Ormuz crée catalyseur haussier majeur pour pétrole et énergie. Crise énergétique colombienne s'aggrave. Transition énergétique accélérée en Europe. Terres rares et lithium en focus géopolitique (Argentine, Norvège).",
+      "tendance": "baissier",
+      "resume": "Pétrole brut sous pression malgré hausse 50% YTD : raffineries chinoises ralentissent, stocks élevés en Inde retardent importations. Risque récession global (avertissement FMI) contrebalance tensions d'approvisionnement Moyen-Orient. Gaz naturel volatilité accrue (+16% dépenses BofA).",
       "signaux_cles": [
-        "Blocus Ormuz annoncé génère hausse pétrole et avantage compétitif Chine en énergies propres",
-        "Crise énergétique Colombie : production pétrolière baisse, importations augmentent",
-        "Argentine adopte réforme minière pour lithium/cuivre ; Norvège peine à exploiter terres rares"
+        "Pétrole : hausse 50% YTD mais raffineries chinoises réduisent activité, équilibre fragile",
+        "FMI : alerte récession potentielle liée aux prix pétroliers élevés",
+        "Gaz naturel : dépenses +16% pour clients BofA, volatilité Iran-USA"
       ]
     },
     "ai_tech": {
-      "score": 0.15,
-      "confidence": 0.62,
-      "tendance": "neutre",
-      "resume": "Secteur IA en phase de maturation avec débats éthiques/réglementaires croissants. Anthropic consulte leaders religieux sur moralité de Claude. Préoccupations croissantes sur confidentialité (lunettes Meta). Modèles open-source gagnent en importance face aux limites des frontier models.",
+      "score": 0.41,
+      "confidence": 0.72,
+      "tendance": "mixte",
+      "resume": "Initiatives réglementaires européennes (CEPD consultation AIPD) et suisses (6 banques stablecoin CHF) avancent. Failles sécurité Windows 11 et Chrome persistent. Pivots stratégiques (Allbirds → IA) et investissements spatiaux (X-Energy IPO $800M) signalent transformation secteur.",
       "signaux_cles": [
-        "Anthropic cherche conseil auprès de leaders religieux sur comportement moral/spirituel de Claude",
-        "Lunettes IA Meta suscitent craintes majeures de violation de vie privée",
-        "Écart croissant entre enterprise AI et frontier AI favorise modèles open-weights"
+        "CEPD : consultation publique modèle européen IA lancée avril 2026",
+        "Suisse : 6 banques avancent stablecoin CHF vs retard européen",
+        "X-Energy : IPO $800M soutenue Amazon, repositionnement nucléaire-spatial"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-02-26",
-      "global": -0.31,
-      "geopolitique": -0.65,
-      "marches": -0.15,
-      "crypto": -0.55,
-      "matieres_premieres": -0.35,
-      "ai_tech": 0.25
-    },
     {
       "date": "2026-02-27",
       "global": 0.03,
@@ -333,6 +324,15 @@
       "crypto": -0.68,
       "matieres_premieres": 0.72,
       "ai_tech": 0.15
+    },
+    {
+      "date": "2026-04-16",
+      "global": 0.04,
+      "geopolitique": -0.72,
+      "marches": 0.58,
+      "crypto": 0.64,
+      "matieres_premieres": -0.51,
+      "ai_tech": 0.41
     }
   ],
   "model": "claude-haiku-4-5-20251001",
