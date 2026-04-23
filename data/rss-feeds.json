@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-23T07:47:45.719Z",
+  "updated": "2026-04-23T08:17:53.064Z",
   "feeds": [
     {
       "source": "Le Figaro",
@@ -20,7 +20,7 @@
       "url": "https://www.rfi.fr/fr/rss",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "Courrier International",
@@ -265,7 +265,7 @@
       "url": "https://www.latribune.fr/feed.xml",
       "count": 5,
       "ok": true,
-      "relevant": 1
+      "relevant": 2
     },
     {
       "source": "Capital",
@@ -286,7 +286,7 @@
       "url": "https://finance.yahoo.com/news/rssindex",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 5
     },
     {
       "source": "Seeking Alpha",
@@ -307,7 +307,7 @@
       "url": "https://www.investing.com/rss/news.rss",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 3
     },
     {
       "source": "Wolf Street",
@@ -370,7 +370,7 @@
       "url": "https://www.banque-france.fr/feed",
       "count": 0,
       "ok": false,
-      "error": "HTTP 404: https://www.banque-france.fr/feed"
+      "error": "The operation was aborted due to timeout"
     },
     {
       "source": "CoinTelegraph FR",
@@ -594,7 +594,7 @@
       "url": "https://www.numerama.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 1
+      "relevant": 2
     },
     {
       "source": "Next INpact",
@@ -636,7 +636,7 @@
       "url": "https://hnrss.org/frontpage?count=15",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 3
     },
     {
       "source": "VentureBeat AI",
@@ -662,9 +662,9 @@
     {
       "source": "MarkTechPost",
       "url": "https://www.marktechpost.com/feed/",
-      "count": 0,
+      "count": 5,
       "ok": true,
-      "relevant": 0
+      "relevant": 5
     },
     {
       "source": "The Decoder",
@@ -692,7 +692,7 @@
       "url": "https://www.theregister.com/headlines.atom",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 4
     },
     {
       "source": "TLDR Tech",
@@ -755,7 +755,7 @@
       "url": "https://www.lemonde.fr/international/rss_full.xml",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 4
     },
     {
       "source": "Le Figaro Finances",
@@ -1146,6 +1146,6 @@
   "stats": {
     "success": 111,
     "failed": 52,
-    "articles": 479
+    "articles": 488
   }
 }
