@@ -189,3 +189,20 @@ python bot/main.py --local                            # Bot avec Polymarket rée
 - **Mots-clés courts (≤4 car.)** : `\b` (word boundary) dans les regex, pas `includes()`
 - **Design** : toujours vérifier la cohérence avec index.html avant de modifier une page
 - **SEMPLICE** : toute nouvelle analyse doit inclure une évaluation SEMPLICE et être ajoutée au scoreboard (`expertise.html`) et au catalogue (`analyses.html`)
+
+## 10. Claude Code Routines (migration IA)
+
+Le pipeline IA est orchestré par 4 Routines Claude Code (infra Anthropic, Max 5x, quota 15/jour) :
+
+| Routine | Trigger | Rôle |
+|---------|---------|------|
+| Master | webhook fetch-data + schedule `30 6,18 * * *` | Briefing quotidien + article + alertes + signaux + RAG |
+| Inspector | schedule `0 7,19 * * *` | Vérif prod post-deploy, crée issues si régression |
+| Newsletter | schedule `0 10 * * 0` | Newsletter hebdo (dimanche 10h UTC) |
+| SEMPLICE Validator | schedule `0 22 * * 6` | Mise à jour scores SEMPLICE (samedi 22h UTC) |
+
+- **Prompts système** : `.routines/*.md` (versionnés dans le repo)
+- **Scripts `.mjs` conservés** : fallback si Routines désactivées (rollback 30s)
+- **Design spec** : `docs/superpowers/specs/2026-04-23-routines-migration-design.md`
+- **Plan d'implémentation** : `docs/superpowers/plans/2026-04-23-routines-migration.md`
+- **Rollback** : décommenter `on: schedule:` dans `generate-article.yml`, `generate-unified-briefing.yml`, `generate-newsletter.yml`, puis désactiver les Routines sur claude.ai/code
