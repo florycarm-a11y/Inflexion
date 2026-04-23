@@ -110,6 +110,23 @@ jobs:
 
           git push
 
+      - name: "🚀 Trigger Master Routine"
+        if: success()
+        env:
+          ROUTINE_WEBHOOK_TOKEN: ${{ secrets.ROUTINE_WEBHOOK_TOKEN }}
+          ROUTINE_MASTER_URL: ${{ secrets.ROUTINE_MASTER_URL }}
+        run: |
+          if [ -z "$ROUTINE_WEBHOOK_TOKEN" ] || [ -z "$ROUTINE_MASTER_URL" ]; then
+            echo "⚠️ ROUTINE_WEBHOOK_TOKEN ou ROUTINE_MASTER_URL non défini — skip trigger (fallback schedule gère)"
+            exit 0
+          fi
+          curl -X POST "$ROUTINE_MASTER_URL" \
+            -H "Authorization: Bearer $ROUTINE_WEBHOOK_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{\"trigger_source\":\"fetch-data-success\",\"timestamp\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" \
+            --fail --retry 3 --retry-delay 10 \
+            || echo "⚠️ Routine trigger failed, fallback schedule will handle"
+
       - name: "🚨 Alerte d'échec"
         if: failure()
         run: |
