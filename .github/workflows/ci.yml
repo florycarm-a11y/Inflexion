@@ -121,6 +121,7 @@ jobs:
           node --test scripts/tests/sanitizer.test.mjs
           node --test scripts/tests/lib/embeddings-cache.test.mjs
           node --test scripts/tests/lib/contradiction-detector.test.mjs
+          node --test scripts/tests/test-routine-output.test.mjs
 
   # ============================================
   # Build Check
