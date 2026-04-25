@@ -1,7 +1,33 @@
 {
-  "updated": "2026-04-24T18:45:45.116Z",
+  "updated": "2026-04-25T07:12:03.977Z",
   "source": "FRED (Federal Reserve Economic Data)",
   "indicators": [
+    {
+      "id": "CPIAUCSL",
+      "label": "Inflation (CPI)",
+      "value": 330.293,
+      "date": "2026-03-01",
+      "unit": "index",
+      "change": 3.32,
+      "change_type": "yoy",
+      "previous": {
+        "value": 327.46,
+        "date": "2026-02-01"
+      }
+    },
+    {
+      "id": "DFF",
+      "label": "Taux directeur (Fed Funds)",
+      "value": 3.64,
+      "date": "2026-04-23",
+      "unit": "%",
+      "change": 0,
+      "change_type": "abs",
+      "previous": {
+        "value": 3.64,
+        "date": "2026-04-22"
+      }
+    },
     {
       "id": "GDP",
       "label": "PIB (trimestriel)",
@@ -31,14 +57,14 @@
     {
       "id": "DGS10",
       "label": "Treasury 10 ans",
-      "value": 4.3,
-      "date": "2026-04-22",
+      "value": 4.34,
+      "date": "2026-04-23",
       "unit": "%",
-      "change": 0,
+      "change": 0.04,
       "change_type": "abs",
       "previous": {
         "value": 4.3,
-        "date": "2026-04-21"
+        "date": "2026-04-22"
       }
     },
     {
@@ -52,6 +78,32 @@
       "previous": {
         "value": 118.3616,
         "date": "2026-04-16"
+      }
+    },
+    {
+      "id": "T10Y2Y",
+      "label": "Spread 10Y-2Y",
+      "value": 0.53,
+      "date": "2026-04-24",
+      "unit": "%",
+      "change": 0.02,
+      "change_type": "abs",
+      "previous": {
+        "value": 0.51,
+        "date": "2026-04-23"
+      }
+    },
+    {
+      "id": "M2SL",
+      "label": "Masse monétaire M2",
+      "value": 22667.3,
+      "date": "2026-02-01",
+      "unit": "Mrd $",
+      "change": 198.2,
+      "change_type": "abs",
+      "previous": {
+        "value": 22469.1,
+        "date": "2026-01-01"
       }
     },
     {
