@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-30T08:16:44.418Z",
+  "updated": "2026-04-30T19:16:59.093Z",
   "feeds": [
     {
       "source": "Le Figaro",
@@ -13,7 +13,7 @@
       "url": "https://www.france24.com/fr/rss",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "RFI",
@@ -41,14 +41,14 @@
       "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 5
     },
     {
       "source": "Al Jazeera",
       "url": "https://www.aljazeera.com/xml/rss/all.xml",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 2
     },
     {
       "source": "The Guardian",
@@ -139,7 +139,7 @@
       "url": "https://www.middleeasteye.net/rss",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 5
     },
     {
       "source": "IFRI",
@@ -237,7 +237,7 @@
       "url": "https://www.lefigaro.fr/rss/figaro_flash-eco.xml",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 3
     },
     {
       "source": "Les Echos",
@@ -265,7 +265,7 @@
       "url": "https://www.latribune.fr/feed.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 2
     },
     {
       "source": "Capital",
@@ -307,7 +307,7 @@
       "url": "https://www.investing.com/rss/news.rss",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 2
     },
     {
       "source": "Wolf Street",
@@ -445,9 +445,9 @@
     {
       "source": "Unchained",
       "url": "https://unchainedcrypto.com/feed/",
-      "count": 0,
-      "ok": false,
-      "error": "The operation was aborted due to timeout"
+      "count": 5,
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Web3 is Going Great",
@@ -508,9 +508,9 @@
     {
       "source": "Mining.com",
       "url": "https://www.mining.com/feed/",
-      "count": 5,
-      "ok": true,
-      "relevant": 5
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 403: https://www.mining.com/feed/"
     },
     {
       "source": "MetalMiner",
@@ -594,21 +594,21 @@
       "url": "https://www.numerama.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 1
+      "relevant": 4
     },
     {
       "source": "Next INpact",
       "url": "https://www.nextinpact.com/feed",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 4
     },
     {
       "source": "TechCrunch",
       "url": "https://techcrunch.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 4
     },
     {
       "source": "The Verge",
@@ -629,7 +629,7 @@
       "url": "https://www.wired.com/feed/rss",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 3
     },
     {
       "source": "Hacker News",
@@ -662,9 +662,9 @@
     {
       "source": "MarkTechPost",
       "url": "https://www.marktechpost.com/feed/",
-      "count": 0,
+      "count": 5,
       "ok": true,
-      "relevant": 0
+      "relevant": 5
     },
     {
       "source": "The Decoder",
@@ -839,7 +839,7 @@
       "url": "https://cleantechnica.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 3
     },
     {
       "source": "Reuters Sustainability",
@@ -1103,9 +1103,9 @@
     {
       "source": "Le Grand Continent",
       "url": "https://legrandcontinent.eu/fr/feed/",
-      "count": 0,
-      "ok": false,
-      "error": "HTTP 500: https://legrandcontinent.eu/fr/feed/"
+      "count": 5,
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Asialyst",
@@ -1144,8 +1144,8 @@
     }
   ],
   "stats": {
-    "success": 109,
-    "failed": 54,
-    "articles": 486
+    "success": 110,
+    "failed": 53,
+    "articles": 495
   }
 }
