@@ -18,19 +18,18 @@ var SEMPLICE_CALC = {
     round1: function (x) { return Math.round(x * 10) / 10; },
 
     /* scores: array aligné sur keys ; retourne {base, amplified, weights} non arrondis.
-       Le déclenchement de l'amplification (delta > seuil) se juge sur la base arrondie
-       à 1 décimale : les scores d'entrée sont eux-mêmes à 1 décimale, et un écart de
-       calcul en flottant ne doit pas faire basculer un profil homogène en "pic isolé". */
+       Le seuil d'amplification se compare à la base BRUTE (spec §7.1) — parité exigée
+       avec l'historique computeWeightedComposite du validateur. Un dépassement infime
+       (ex. Singapour : delta 1.003) produit un bonus négligeable, invisible après arrondi. */
     computeComposite: function (scores, weights, keys) {
         var base = 0, i, k;
         for (i = 0; i < keys.length; i++) base += weights[keys[i]] * scores[i];
-        var baseRounded = this.round1(base);
 
         var aw = {};
         for (i = 0; i < keys.length; i++) {
             k = keys[i];
             aw[k] = weights[k];
-            var delta = scores[i] - baseRounded;
+            var delta = scores[i] - base;
             if (delta > this.AMPLIFICATION_THRESHOLD) {
                 aw[k] += this.AMPLIFICATION_FACTOR * (delta - this.AMPLIFICATION_THRESHOLD);
             }

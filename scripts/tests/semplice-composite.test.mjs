@@ -27,8 +27,14 @@ test('composite base = moyenne pondérée (Ormuz v2.1)', () => {
   assert.strictEqual(C.round1(r.base), 6.1);
 });
 
-test('profil uniforme : amplified === base (Singapour)', () => {
+test('profil quasi uniforme : amplification négligeable après arrondi (Singapour)', () => {
   const r = C.computeComposite([2.2, 1.4, 2.7, 1.9, 1.2, 3.2, 2.1, 2.9], C.WEIGHTS_RISK_V21, C.DIM_KEYS);
+  // I=3.2 dépasse la base (2.197) de 0.003 au-delà du seuil → bonus infime, sans effet à 1 décimale
+  assert.strictEqual(C.round1(r.amplified), C.round1(r.base));
+});
+
+test('profil strictement uniforme : amplified === base', () => {
+  const r = C.computeComposite([3, 3, 3, 3, 3, 3, 3, 3], C.WEIGHTS_RISK_V21, C.DIM_KEYS);
   assert.ok(Math.abs(r.amplified - r.base) < 1e-9);
 });
 
