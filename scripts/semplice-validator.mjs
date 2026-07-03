@@ -257,6 +257,8 @@ function computeWeightedComposite(data) {
       keys.map(k => [k, Math.round((r.weights[k] / totalAmplified) * 1000) / 1000])
     ),
     amplifications: keys
+      // Hypothèse de contrat : computeComposite ne majore aw[k] QUE si delta > seuil
+      // (semplice-composite.js:33-36) — sinon aw[k] reste une copie stricte du poids de base.
       .filter(k => r.weights[k] > Wn[k])
       .map(k => ({
         dim: k,
