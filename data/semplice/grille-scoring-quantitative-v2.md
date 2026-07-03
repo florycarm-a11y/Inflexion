@@ -228,6 +228,32 @@ Score_quanti_Ee = moyenne(Ee1..Ee10)
 
 ---
 
+## K — Culturel (module optionnel, 6 indicateurs)
+
+> **Module greffe** active sur les angles Investissement / Supply Chain / Implantation uniquement.
+> Detail complet et seuils : [module-culturel-hofstede-hall.md](module-culturel-hofstede-hall.md).
+
+| # | Indicateur | Source | Reference France |
+|---|-----------|--------|-----------------|
+| K1 | **Power Distance (PDI)** | Hofstede Insights | 68 |
+| K2 | **Uncertainty Avoidance (UAI)** | Hofstede Insights | 86 |
+| K3 | **Individualism (IDV)** | Hofstede Insights | 71 |
+| K4 | **Long-Term Orientation (LTO)** | Hofstede Insights | 63 |
+| K5 | **Contexte communicationnel (low/high context Hall)** | Litterature Hall + grille experte | mixte tendant high (5) |
+| K6 | **Distance culturelle composite (Kogut-Singh vs France)** | Calcule a partir de K1-K4 | 0 par definition |
+
+```
+Score_quanti_K = moyenne(K1..K6)
+S_K = 0.60 x Score_quanti_K + 0.40 x Score_quali_K
+```
+
+**Particularites** :
+- Calibrage par defaut vs **France** (referent parametrable, cf. RK3 du module).
+- Pas d'amplification de crete ni de velocite (RK4, RK5) — la culture est structurelle.
+- Desactive sur l'angle Defaut (rétrocompatibilite v2.0).
+
+---
+
 ## Recapitulatif
 
 | Dimension | Nb indicateurs v1.1 | Nb indicateurs v2.0 | Evolution |
@@ -244,18 +270,35 @@ Score_quanti_Ee = moyenne(Ee1..Ee10)
 
 ---
 
-## Ponderations par angle decisionnel (v2.0)
+## Ponderations par angle decisionnel (v2.0 + K v1.0)
+
+> Depuis avril 2026, le module optionnel **K — Culturel** ([detail](module-culturel-hofstede-hall.md))
+> peut etre active sur les angles Investissement / Supply Chain / Implantation.
+> Il reste desactive (poids 0%) sur l'angle Defaut pour preserver la retrocompatibilite v2.0.
+
+> **Colonne Défaut = source de vérité `scripts/semplice-validator.mjs` (`DIMENSION_WEIGHTS`).**
+> Les poids par défaut sont **différenciés** (cf. section « Pondération dimensionnelle » ci-dessous),
+> et non uniformes. L'ancienne valeur 12,5 % (équipondération) n'a jamais été appliquée par le code.
 
 | Dimension | Defaut | Investissement | Supply Chain | Implantation |
 |-----------|--------|---------------|--------------|-------------|
-| S | 12.5% | 8% | 8% | **18%** |
-| E | 12.5% | **22%** | 10% | 10% |
-| M | 12.5% | 8% | **18%** | 8% |
-| P | 12.5% | **15%** | 8% | 15% |
-| L | 12.5% | **15%** | 8% | **18%** |
-| I | 12.5% | 10% | 12% | **15%** |
-| C | 12.5% | 10% | **22%** | 8% |
-| E_env | 12.5% | 12% | **14%** | 8% |
+| S | 12% | 4.5% | 8% | 10% |
+| E | 15% | **22%** | 10% | 10% |
+| M | **16%** | 8% | **18%** | 8% |
+| P | 14% | **15%** | 8% | 15% |
+| L | 10% | **15%** | 8% | **18%** |
+| I | 12% | 5.5% | 7% | 8% |
+| C | 11% | 10% | **22%** | 8% |
+| E_env | 10% | 12% | **14%** | 8% |
+| **K** (optionnel) | **0%** | **8%** | **5%** | **15%** |
+| **Total** | 100% | 100% | 100% | 100% |
+
+**Reajustements v2.0 → v2.1+K** :
+- *Investissement* : S 8%→4.5% (-3.5), I 10%→5.5% (-4.5), +K=8% → solde nul, total preserve a 100%.
+- *Supply Chain* : I 12%→7% (-5), +K=5% → solde nul.
+- *Implantation* : S 18%→10% (-8), I 15%→8% (-7), +K=15% → solde nul.
+
+**Logique des transferts** : K subsume une part du poids S (la culture business est une sous-composante du social) et une part du poids I (la communication interculturelle est partiellement informationnelle). C est preserve car la cyber n'est pas culturellement absorbee.
 
 ---
 
@@ -528,14 +571,38 @@ La velocite ne modifie pas le composite directement. Elle genere des **alertes**
 
 ## Recapitulatif v2.1
 
-| Categorie | v2.0 | v2.1 | Delta |
-|-----------|:----:|:----:|:-----:|
-| Indicateurs risque | 95 | **101** | +6 (P13-P15, M13, E16, + correction totaux dim) |
-| Indicateurs resilience | 0 | **6** | +6 (RS1, RE1, RM1, RP1, RI1, RL1) |
-| **Total indicateurs** | **95** | **107** | **+12** |
-| Regles validateur | R1-R8 | R1-**R11** | +3 (facade eco, garde-fou, velocite) |
-| Mecanismes | Amplification de crete | Amplification de crete + **Velocite** + **Modificateur resilience** | +2 |
-| Signatures | 6 | 6 + **absence-garde-fou** | +1 |
+| Categorie | v2.0 | v2.1 | v2.1 + K | Delta |
+|-----------|:----:|:----:|:--------:|:-----:|
+| Indicateurs risque | 95 | **101** | 101 | +6 (P13-P15, M13, E16, + correction totaux dim) |
+| Indicateurs resilience | 0 | **6** | 6 | +6 (RS1, RE1, RM1, RP1, RI1, RL1) |
+| Indicateurs culturels (module optionnel) | 0 | 0 | **6** | +6 (K1-K6, actif sur 3 angles) |
+| **Total indicateurs** | **95** | **107** | **113** | **+18 vs v2.0** |
+| Regles validateur | R1-R8 | R1-**R11** | R1-R11 | +3 (facade eco, garde-fou, velocite) |
+| Mecanismes | Amplification de crete | Amplification de crete + **Velocite** + **Modificateur resilience** | + module **K** | +2 |
+| Signatures | 6 | 6 + **absence-garde-fou** | 6 + absence-garde-fou | +1 |
+
+---
+
+## Recommandation operationnelle — Pont SEMPLICE → modalite d'approche
+
+> Une fois le score SEMPLICE calcule, le **pont composite → modalite** convertit le diagnostic
+> en recommandation actionnable (modalite d'export/implantation + mode de paiement).
+>
+> Detail complet, matrice de decision, algorithme et cas types : [pont-semplice-modalite-approche.md](pont-semplice-modalite-approche.md).
+
+**Lecture rapide** : trois axes combines determinent la modalite recommandee :
+1. **Composite SEMPLICE** (1-7) — niveau de risque global
+2. **L+E moyenne** — securite juridico-financiere
+3. **K** (si module actif) — friction culturelle
+
+Modalites possibles, du plus engage au moins engage :
+- **Controlee** (Filiale, Vente directe, Succursale, Bureau de representation, Agent salarie, Agent commercial)
+- **Concertee** (JV, Franchise, Portage, Free Zone)
+- **Sous-traitee** (Importateur, Centrale d'achat, SCI)
+- **Abstention** (composite > 5.5 sur zones critiques)
+
+Le pont integre des modulations pour I (>= 5), C (>= 5), traites bilateraux d'investissement (L7 <= 2)
+et velocite critique (rétrograder d'un cran si une dimension d depasse +0.5/trimestre).
 
 ---
 
@@ -561,3 +628,4 @@ La velocite ne modifie pas le composite directement. Elle genere des **alertes**
 | v1.1 | 2026-03-11 | +3 indicateurs (43 total), corrections backtests |
 | v2.0 | 2026-03-12 | Echelle 1-7, 95 indicateurs, seuils recalibres, 4 pays tests (Ukraine, Singapour, Ile Maurice, Inde) |
 | v2.1 | 2026-03-12 | +6 indicateurs precurseurs (P13-15, M13, E16), +6 resilience (RS1, RE1, RM1, RP1, RI1, RL1), +3 regles validateur (R9-R11), mecanisme velocite, 107 indicateurs total |
+| v2.1 + K v1.0 | 2026-04-30 | Module optionnel **K — Culturel** (6 indicateurs Hofstede + Hall + Kogut-Singh 1988). Recalibrage des ponderations Investissement/Supply Chain/Implantation pour integrer K (poids 8% / 5% / 15%). |

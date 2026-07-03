@@ -92,6 +92,33 @@ Pour les espaces strategiques, les dimensions **M** (projection militaire) et **
 
 ---
 
+## Regles pour le module K — Culturel (v2.1 + K)
+
+> Le module K ([detail](module-culturel-hofstede-hall.md)) est un module greffe optionnel
+> active uniquement sur les angles Investissement / Supply Chain / Implantation.
+
+### R12 — Heritage culturel par defaut, override sur cas avere
+
+Pour les zones **sub-nationales** et **transfrontalieres**, le module K **herite par defaut du score national** :
+
+- **Sub-national** (Tamil Nadu, Catalogne, Quebec) : K herite du national sauf si l'entite presente une **identite culturelle business documentee** distincte du noyau national. Cas d'override avere :
+  - Hong Kong vs Chine continentale (LTO, IDV divergents historiquement)
+  - Quebec vs Canada anglophone (PDI, IDV, Hall)
+  - Ecosse vs Angleterre (UAI, contexte communicationnel)
+  - Tibet, Xinjiang vs Chine han (Hofstede non publie ; jugement qualitatif justifie)
+  - Catalogne vs Espagne castillane (LTO et IDV plus proches de l'Europe du Nord)
+- **Transfrontalier** (Sahel, Maghreb) : K calcule comme **moyenne ponderee par population** des K nationaux des composants, **uniquement si** l'ecart-type des K nationaux est < 1.0. Sinon, le module K n'est pas active sur la zone (documenter dans `flags`).
+
+### R13 — Espaces strategiques : K non applicable
+
+Les espaces maritimes / arctiques / detroits (Ormuz, Mer de Chine, Arctique) **n'ont pas de score K**. La culture business des riverains n'est pas une variable pertinente pour ces zones (cf. R7 et R8 : primaute du M et E). Si une analyse d'implantation portuaire est requise, scorer K sur le pays riverain pertinent.
+
+### R14 — Coherence inter-niveaux pour K
+
+Si une zone sub-nationale a un override K, l'ecart par rapport au K national ne peut pas exceder **2.0 points** sauf justification ethnographique formelle (ex. Hong Kong post-1997 vs Chine continentale, justifiee par 150 ans de divergence institutionnelle britannique).
+
+---
+
 ## Processus d'ajout d'une nouvelle zone sub-nationale
 
 1. Verifier les 5 criteres de decouplage (minimum 3 remplis)
