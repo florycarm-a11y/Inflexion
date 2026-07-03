@@ -1,25 +1,28 @@
-# SEMPLICE — Grille de notation quantitative v2.1
-
-> ⚠️ **DÉPRÉCIÉE** — remplacée par [grille-scoring-quantitative-v3.md](grille-scoring-quantitative-v3.md)
-> (dimension I = Intelligence Artificielle). Conservée pour l'historique des évaluations ≤ v2.1.
+# SEMPLICE — Grille de notation quantitative v3.0
 
 > **Cadre methodologique pour l'evaluation reproductible des risques geopolitiques**
-> Inflexion Intelligence — Mars 2026
-> Echelle 1-7 | 107 indicateurs (95 risque + 6 precurseurs + 6 resilience) | Repartition 60% quanti / 40% quali
+> Inflexion Intelligence — Juillet 2026
+> v3.0 | Echelle 1-7 | **102 indicateurs risque + 6 resilience** (+6 K optionnel)
+> Correction de comptage : le "107" annonce en v2.1 etait errone (les precurseurs P13-15/M13/E16
+> sont 5 indicateurs, pas 6 ; le total reel v2.1 etait **100** indicateurs risque, cf. audit 2026-06-18).
 
 ---
 
 ## Architecture du score
 
 ```
-Score_quanti_d = moyenne arithmetique simple des paliers de la dimension
-                 (somme des paliers / nombre d'indicateurs, sans ponderation)
+Score_quanti_d = Sigma(w_i x palier_i) / Sigma(w_i)   w_i ∈ {3=critique, 2=majeur, 1=mineur}
+                 (v3.0 : ponderation intra-dimension par tags, cf. section dediee ;
+                 equivaut a la moyenne arithmetique simple v2.1 tant qu'aucun tag n'est pose)
 Score_quali_d  = note expert 1-7 (jugement qualitatif structure)
 S_d            = 0.60 x Score_quanti_d + 0.40 x Score_quali_d - Bonification_resilience_d
 Score_composite = Sigma (poids_d x S_d)   [ponderation inter-dimensionnelle, cf. section dediee]
 ```
 
-> **Regle de calcul** : `Score_quanti` est toujours la **moyenne arithmetique simple** (non ponderee) de tous les paliers de la dimension. Aucun indicateur n'a plus de poids qu'un autre au sein d'une dimension. La ponderation n'intervient qu'au niveau inter-dimensionnel (composite).
+> **Regle de calcul (v3.0)** : `Score_quanti` est une **moyenne ponderee par tags** (critique w=3,
+> majeur w=2 par defaut, mineur w=1) au sein d'une dimension — voir « Pondération intra-dimension
+> (v3, nouveau) ». Tant qu'aucun tag n'est pose, elle est strictement equivalente a la moyenne
+> arithmetique simple v2.1. La ponderation inter-dimensionnelle (composite) reste independante.
 
 ### Echelle 1-7
 
@@ -162,32 +165,64 @@ Score_quanti_L = moyenne(L1..L10)
 
 ---
 
-## I — Information (12 indicateurs) — EXCLUSIVE SEMPLICE
+## I — Intelligence Artificielle (9 indicateurs) — EXCLUSIVE SEMPLICE
+
+Sens de l'echelle : **7 = dependance / vulnerabilite maximale**. Construit : puissance IA autonome
+d'un Etat vs dependance (compute, puces, modeles, energie, statecraft). Orthogonal a Cyber
+(posture reseaux) et a Militaire (systemes d'armes).
 
 | # | Indicateur | Source | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 |---|-----------|--------|---|---|---|---|---|---|---|
-| I1 | **Classement RSF (rang /180)** | RSF | 1–20 | 21–45 | 46–80 | 81–120 | 121–150 | 151–170 | 171–180 |
-| I2 | **Freedom on the Net (0-100)** | Freedom House | > 78 | 65–78 | 52–65 | 40–52 | 28–40 | 16–28 | < 16 |
-| I3 | **Operations d'influence (12 mois)** | EU DisinfoLab / DFRLab | 0 | 1 isolee | 2–3 | 4–6 | 7–10 | 11–20 | > 20 ou guerre cognitive |
-| I4 | **Censure internet (% sites bloques)** | OONI / AccessNow | < 0.5% | 0.5–2% | 2–5% | 5–15% | 15–30% | 30–50% | > 50% ou coupures |
-| I5 | **Controle medias d'Etat (% audience)** | RSF / IREX MSI | < 10% | 10–20% | 20–35% | 35–50% | 50–70% | 70–90% | > 90% ou monopole |
-| I6 | **Penetration reseaux sociaux (% pop.)** | DataReportal / We Are Social | > 80% | 65–80% | 50–65% | 35–50% | 20–35% | 10–20% | < 10% |
-| I7 | **Desinformation IA / deepfakes (incidents 12 mois)** | DFRLab / VIGINUM | 0 | 1–2 | 3–5 | 6–10 | 11–20 | 21–50 | > 50 |
-| I8 | **Pluralisme mediatique (indice RSF composante)** | RSF | > 75 | 60–75 | 45–60 | 30–45 | 18–30 | 8–18 | < 8 |
-| I9 | **Journalistes emprisonnes** | RSF / CPJ | 0 | 1–3 | 4–10 | 11–25 | 26–50 | 51–100 | > 100 |
-| I10 | **Controle narratif diaspora** | DFRLab / OSINT | Aucun | Passif | Soft power | Medias diaspora finances | Surveillance active | Intimidation transnationale | Repression extraterritoriale |
-| I11 | **Comptes coordonnes identifies (robots et faux comptes)** | Stanford IO / DFRLab | 0 | < 100 | 100–500 | 500–2000 | 2000–10000 | 10000–50000 | > 50000 |
-| I12 | **Usage VPN (% internautes)** | Top10VPN / GlobalWebIndex | < 5% | 5–10% | 10–20% | 20–35% | 35–50% | 50–70% | > 70% (indicateur de censure) |
+| IA1 | **Souverainete du compute (% capacite data centers sous controle national)** | Synergy Research / SemiAnalysis / Uptime Institute / Cloudscene | > 80% | 65–80% | 50–65% | 35–50% | 20–35% | 8–20% | < 8% |
+| IA2 | **Dependance semi-conducteurs avances (acces puces < 7 nm/HBM, exposition export controls)** | BIS Entity List / Georgetown CSET / CSIS / SIA / TechInsights | Production nationale de pointe | Production nationale partielle | Fournisseurs allies diversifies | Dependance a un fournisseur unique | Dependance + controles renforces | Dependance + sanctions partielles | Embargo total (retrait de modeles type **Fable 5**) |
+| IA3 | **Capacite data centers installee (W IA / habitant)** | IEA Data Centres & Networks / Epoch AI / Uptime Institute / Baxtel | > 40 | 25–40 | 10–25 | 5–10 | 2–5 | 0.5–2 | < 0.5 |
+| IA4 | **Souverainete des modeles (modeles de fondation nationaux)** | Epoch AI (Notable AI Models) / Stanford HAI AI Index / Artificial Analysis / LMSYS Arena | Modeles frontiere nationaux | Modeles nationaux compétitifs (2e rang) | Modeles nationaux de niche | Dependance modeles ouverts etrangers | Dependance modeles proprietaires etrangers | Acces restreint / partiel | Acces revocable ou revoque |
+| IA5 | **Puissance IA adverse projetable (domination compute regionale par un rival)** | IISS / Georgetown CSET / RAND / OSINT | Aucune | Rival present, non dominant | Rival en avance moderee | Rival en avance sensible | Rival dominant regional | Rival dominant + posture agressive | Rival dominant + IA offensive documentee dirigee vers la zone |
+| IA6 | **Investissement IA public + prive (% PIB)** | OECD.AI / Stanford HAI AI Index / Air Street « State of AI » / Dealroom | > 1.5% | 0.8–1.5% | 0.4–0.8% | 0.2–0.4% | 0.1–0.2% | 0.03–0.1% | < 0.03% |
+| IA7 | **Talent IA (chercheurs IA / 100k hab. + solde migratoire des talents)** | MacroPolo Global AI Talent Tracker / OECD.AI / LinkedIn Economic Graph / Scopus | > 30 et gain net | 15–30, gain net | 8–15, equilibre | ~5, equilibre | 2–5, solde negatif leger | 1–2, exode modere | < 1 ou exode massif |
+| IA8 | **Contrainte energetique du compute (capacite electrique disponible pour data centers)** | IEA / Ember / EPRI / operateurs de reseau nationaux | Excedent + prix bas | Excedent + prix moderes | Equilibre offre/demande | Tension moderee | Tension forte (délestages ponctuels) | Tension critique (rationnement) | Incapacite d'alimenter (delestages) |
+| IA9 | **Statecraft IA (capacite de l'Etat a orienter/financer/restreindre sa puissance IA : allocation de compute, participation aux champions, levier export)** | OECD.AI Policy Observatory / Carnegie Endowment / Georgetown CSET / OSINT | Controle effectif complet | Controle fort, leviers multiples | Leviers significatifs | Leviers partiels | Leviers limites | Leviers marginaux | Aucun levier (capture etrangere ou privee totale) |
 
 ```
-Score_quanti_I = moyenne(I1..I12)
+Score_quanti_I = ponderation intra-dimension : IA2 et IA9 (w=3, critiques), IA6 (w=1, mineur), reste w=2
+                 = Sigma(w_i x palier_i) / Sigma(w_i)  sur IA1..IA9
 ```
 
-Note : I6 (penetration reseaux sociaux) est un indicateur **inverse contextuel** : un score faible de penetration dans un pays autoritaire amplifie I4/I5 (la censure est plus efficace). Un score faible dans un pays democratique pauvre est neutre.
+Bandes 1-7 completes : les colonnes 1/4/7 de la spec sont des ancres ; les paliers 2/3/5/6
+sont interpoles de facon monotone et coherente avec le style des autres tables de la grille.
+
+**Bloc de reference — sources de donnees tech/IA (v3)**
+
+| Categorie | Sources primaires | Cadence |
+|-----------|-------------------|---------|
+| Compute & data centers | IEA Data Centres & Networks, Synergy Research, Uptime Institute, SemiAnalysis, Cloudscene, Baxtel | trimestrielle |
+| Semi-conducteurs & export controls | BIS Entity List, Georgetown CSET, CSIS, SIA, TechInsights | evenementielle + trimestrielle |
+| Modeles & capacites | Epoch AI, Stanford HAI AI Index (annuel), Artificial Analysis, LMSYS, Hugging Face | mensuelle |
+| Investissement & ecosysteme | OECD.AI, Dealroom, CB Insights, Crunchbase, Air Street « State of AI » (annuel), fDi Markets | trimestrielle |
+| Talent | MacroPolo Global AI Talent Tracker, LinkedIn Economic Graph, Scopus | annuelle |
+| Politique & statecraft | OECD.AI Policy Observatory, Carnegie, RAND, CSET | evenementielle |
+| Energie | IEA, Ember, EPRI, operateurs de reseau | trimestrielle |
+
+Ces sources alimentent aussi la veille continue (`veille-continue.mjs` / Routines) : ajouter les
+flux correspondants a la watchlist (theme « IA souveraine ») fait partie du plan d'implementation.
+
+**Frontieres anti-double-comptage** :
+- vs **M** : systemes d'armes autonomes restent dans M ; IA5 mesure la domination compute/modeles.
+- vs **C** : C11 (cloud *exposure*) = surface d'attaque ; IA3 = puissance installee. Construits distincts.
+- vs **L** : IA9 = levier de puissance de l'Etat sur ses champions ; L = cadre reglementaire general.
+- vs **E** : E14 (cout de l'energie) reste dans E (intrant economie entiere) ; IA8 mesure la
+  *disponibilite pour le compute* specifiquement.
+
+**Regle de coherence (validateur)** : remplace l'ancien check |I−C| ≤ 2 par « si IA ≤ 2 (puissance
+souveraine forte) alors C ≤ 4 attendu (un Etat a compute souverain a une posture cyber au moins
+correcte) — sinon justification obligatoire ».
+
+Note : la dimension IA n'a pas de facteur de resilience a ce stade (donnees trop jeunes) —
+candidat futur : « diversification des fournisseurs de compute ».
 
 ---
 
-## C — Cyber (12 indicateurs) — EXCLUSIVE SEMPLICE
+## C — Cyber & controle informationnel (14 indicateurs) — EXCLUSIVE SEMPLICE
 
 | # | Indicateur | Source | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 |---|-----------|--------|---|---|---|---|---|---|---|
@@ -203,10 +238,21 @@ Note : I6 (penetration reseaux sociaux) est un indicateur **inverse contextuel**
 | C10 | **Legislation souverainete donnees** | OSINT / GDPR tracker | Cadre mature (GDPR-equiv) | Cadre solide | En cours | Partiel | Minimal | Aucun | Surveillance d'Etat active |
 | C11 | **Cloud infrastructure exposure** | Shodan / Censys | Tres faible | Faible | Moderee | Significative | Elevee | Tres elevee | Critique |
 | C12 | **Zero-day market exposure** | Zerodium / Google TAG | Negligeable | Faible | Moderee | Significative | Elevee | Tres elevee | Cible prioritaire |
+| C13 | **Censure & controle numerique (fusion ex-I2 Freedom on the Net + ex-I4 censure internet + ex-I12 usage VPN)** | Freedom House / OONI / AccessNow / Top10VPN | Aucune censure, internet libre | Censure marginale | Censure ciblee limitee | Censure sectorielle | Censure large + contournement repandu | Censure systematique | Coupures / verrouillage total |
+| C14 | **Operations d'influence & manipulation IA (fusion ex-I3 operations d'influence + ex-I7 desinformation IA/deepfakes + ex-I11 comptes coordonnes)** | EU DisinfoLab / DFRLab / VIGINUM / Stanford IO | Aucune operation identifiee | Operations isolees | Operations recurrentes limitees | Operations frequentes | Operations coordonnees a grande echelle | Operations systemiques multi-vecteurs | Guerre cognitive / manipulation IA generalisee |
 
 ```
-Score_quanti_C = moyenne(C1..C12)
+Score_quanti_C = moyenne(C1..C14) [14 indicateurs, CM1 exclu]
 ```
+
+**Sous-coefficients** : C13 = moyenne des paliers (ex-I2, ex-I4, ex-I12), 1/3 chacun, palier =
+arrondi de la moyenne des paliers des composantes. C14 = moyenne des paliers (ex-I3, ex-I7,
+ex-I11), 1/3 chacun, meme regle d'arrondi.
+
+**CM1 — Modificateur contextuel (ex-I6 penetration reseaux sociaux)** : **non score**, n'entre
+pas dans la moyenne de C. Module l'interpretation de C13 : un score faible de penetration dans
+un pays autoritaire amplifie l'efficacite de la censure (C13) ; un score faible dans un pays
+democratique pauvre est neutre.
 
 ---
 
@@ -259,21 +305,25 @@ S_K = 0.60 x Score_quanti_K + 0.40 x Score_quali_K
 
 ## Recapitulatif
 
-| Dimension | Nb indicateurs v1.1 | Nb indicateurs v2.0 | Evolution |
-|-----------|---------------------|---------------------|-----------|
-| S — Social | 5 | **12** | +140% |
-| E — Economique | 6 | **15** | +150% |
-| M — Militaire | 7 | **12** | +71% |
-| P — Politique | 5 | **12** | +140% |
-| L — Legal | 5 | **10** | +100% |
-| I — Information | 5 | **12** | +140% |
-| C — Cyber | 5 | **12** | +140% |
-| E — Environnemental | 5 | **10** | +100% |
-| **TOTAL** | **43** | **95** | **+121%** |
+| Dimension | Nb indicateurs v1.1 | Nb indicateurs v2.0 (base) | Nb indicateurs v3.0 | Evolution v1.1→v3.0 |
+|-----------|---------------------|---------------------|---------------------|-----------|
+| S — Social | 5 | 12 | **12** | +140% |
+| E — Economique | 6 | 15 | **16** *(+E16 precurseur)* | +167% |
+| M — Militaire | 7 | 12 | **13** *(+M13 precurseur)* | +86% |
+| P — Politique | 5 | 12 | **18** *(+P13-15 precurseurs, +P16-18 ex-I)* | +260% |
+| L — Legal | 5 | 10 | **10** | +100% |
+| I — Intelligence Artificielle *(ex-Information)* | 5 | 12 | **9** *(repurpose IA1-IA9)* | +80% |
+| C — Cyber & controle informationnel | 5 | 12 | **14** *(+C13-14 ex-I)* | +180% |
+| Ee — Environnemental | 5 | 10 | **10** | +100% |
+| **TOTAL risque** | **43** | **95 (base)** | **102** | **+137%** |
+
+Ce tableau donne le comptage de base par dimension. Le total 95 (v2.0 base) devient 100 avec les
+6 precurseurs v2.1 (P13-15, M13, E16), puis 102 en v3.0 avec la redistribution de l'ancien I
+(voir « Récapitulatif v3.0 » en fin de document pour le detail complet, K et resilience inclus).
 
 ---
 
-## Ponderations par angle decisionnel (v2.0 + K v1.0)
+## Ponderations par angle decisionnel (v3.0)
 
 > Depuis avril 2026, le module optionnel **K — Culturel** ([detail](module-culturel-hofstede-hall.md))
 > peut etre active sur les angles Investissement / Supply Chain / Implantation.
@@ -287,21 +337,23 @@ S_K = 0.60 x Score_quanti_K + 0.40 x Score_quali_K
 |-----------|--------|---------------|--------------|-------------|
 | S | 12% | 4.5% | 8% | 10% |
 | E | 15% | **22%** | 10% | 10% |
-| M | **16%** | 8% | **18%** | 8% |
-| P | 14% | **15%** | 8% | 15% |
-| L | 10% | **15%** | 8% | **18%** |
-| I | 12% | 5.5% | 7% | 8% |
+| M | **16%** | 8% | **16%** | 8% |
+| P | 14% | 15% | 8% | 15% |
+| L | 9% | 12.5% | 7% | **18%** |
+| **I — IA** | **13%** | 8% | 10% | 8% |
 | C | 11% | 10% | **22%** | 8% |
-| E_env | 10% | 12% | **14%** | 8% |
+| Ee | 10% | 12% | 14% | 8% |
 | **K** (optionnel) | **0%** | **8%** | **5%** | **15%** |
 | **Total** | 100% | 100% | 100% | 100% |
 
-**Reajustements v2.0 → v2.1+K** :
-- *Investissement* : S 8%→4.5% (-3.5), I 10%→5.5% (-4.5), +K=8% → solde nul, total preserve a 100%.
-- *Supply Chain* : I 12%→7% (-5), +K=5% → solde nul.
-- *Implantation* : S 18%→10% (-8), I 15%→8% (-7), +K=15% → solde nul.
+**Reajustements v2.1 → v3.0** : la dimension IA gagne la ou le compute est decisionnel (Defaut
++1 pt, Investissement +2,5 pts, Supply Chain +3 pts), finance par L (portee reduite, cf. audit
+2026-06-18) et marginalement M sur Supply Chain (18%→16%). L'angle Implantation reste inchange
+(l'IA y est peu discriminante).
 
-**Logique des transferts** : K subsume une part du poids S (la culture business est une sous-composante du social) et une part du poids I (la communication interculturelle est partiellement informationnelle). C est preserve car la cyber n'est pas culturellement absorbee.
+**Logique des transferts K (v2.1+K, conservee)** : K subsume une part du poids S (la culture
+business est une sous-composante du social) et une part de l'ancien poids I informationnel. C
+est preserve car la cyber n'est pas culturellement absorbee.
 
 ---
 
@@ -309,21 +361,51 @@ S_K = 0.60 x Score_quanti_K + 0.40 x Score_quali_K
 
 ### Poids fixes par dimension
 
-Le composite SEMPLICE v2.0 utilise une moyenne pondérée (et non arithmétique) des 8 dimensions. Les poids reflètent l'impact relatif de chaque dimension sur le risque géopolitique global.
+Le composite SEMPLICE v3.0 utilise une moyenne pondérée (et non arithmétique) des 8 dimensions. Les poids reflètent l'impact relatif de chaque dimension sur le risque géopolitique global.
 
 | Dimension | Poids | Justification |
 |-----------|:-----:|---------------|
 | **M** — Militaire | 16% | Menace physique directe, conséquences irréversibles |
 | **E** — Économique | 15% | Stabilité systémique, impact sur toutes les autres dimensions |
 | **P** — Politique | 14% | Gouvernance, stabilité du régime, capacité de réponse |
+| **I** — Intelligence Artificielle | 13% | Dimension exclusive SEMPLICE, enjeu de pouvoir IA (souverainete du compute, dependance technologique, statecraft) |
 | **S** — Social | 12% | Fondamentaux de la population, cohésion sociale |
-| **I** — Information | 12% | Contrôle narratif, signal précoce de crise, dimension exclusive SEMPLICE |
 | **C** — Cyber | 11% | Vecteur de menace moderne, multiplicateur de force, dimension exclusive SEMPLICE |
 | **Ee** — Environnemental | 10% | Risque structurel de long terme |
-| **L** — Légal | 10% | Environnement des affaires, cadre institutionnel |
+| **L** — Légal | 9% | Environnement des affaires, cadre institutionnel — portée réduite sur l'angle Défaut, cf. audit 2026-06-18 (financement du transfert vers I) |
 | **Total** | **100%** | |
 
-**Formule** : `Composite = Σ (poids_d × scoreFinal_d)` pour d ∈ {S, E, M, P, L, I, C, Ee}
+**Formule** : `Composite = Σ (poids_d × scoreFinal_d)` pour d ∈ {S, E, M, P, L, I, C, Ee} (I = Intelligence Artificielle)
+
+### Pondération intra-dimension (v3, nouveau)
+
+Jusqu'en v2.1, `Score_quanti_d` etait toujours une moyenne arithmetique simple des paliers d'une
+dimension (aucun indicateur n'avait plus de poids qu'un autre). La v3.0 introduit une
+ponderation intra-dimension optionnelle par tags **critique / majeur / mineur**.
+
+```
+Score_quanti_d = Σ (w_i × palier_i) / Σ (w_i)      w_i ∈ {3 = critique, 2 = majeur, 1 = mineur}
+```
+
+**Defaut** : tout indicateur non tague est considere **majeur (w=2)** — la moyenne ponderee reste
+alors strictement equivalente a la moyenne simple v2.1 (retrocompatibilite exacte tant qu'aucun
+tag n'est pose).
+
+**Table des tags initiaux** :
+
+| Dimension | Critiques (w=3) | Mineurs (w=1) |
+|-----------|-----------------|----------------|
+| S | S6 (tensions ethniques), S11 (securite alimentaire) | S8 (urbanisation) |
+| E | E2 (inflation), E7 (reserves), E16 (independance BC) | E13 (economie informelle) |
+| M | M2 (conflits actifs), M13 (fiabilite protecteur) | M4 (exercices) |
+| P | P5 (risque changement regime), P13 (capture institutionnelle) | P11 (pression demographique) |
+| L | L3 (sanctions), L10 (expropriation) | L7 (BIT) |
+| I (IA) | IA2 (semi-conducteurs), IA9 (statecraft) | IA6 (investissement — donnee bruitee) |
+| C | C3 (incidents majeurs), C5 (infra critique) | C7 (rancongiciels) |
+| Ee | Ee2 (stress hydrique) | Ee6 (CO2/capita), Ee7 (biodiversite) |
+
+Tous les autres indicateurs : majeur (w=2). Cette table est une **proposition de calibration** —
+a valider par backtest (les 12 crises + 5 cas d'endiguement) avant application aux 18 zones.
 
 ### Amplification du risque dominant (amplification de pic)
 
@@ -374,13 +456,17 @@ Un pays est éligible à l'évaluation sub-nationale si :
 | **M** Militaire | Régional | Réévaluation (zones de conflit localisées) |
 | **P** Politique | Régional | Réévaluation (gouvernance locale, séparatisme, tensions) |
 | **L** Légal | National hérité | Cadre fédéral unique, delta possible (efficacité justice locale) |
-| **I** Information | Mixte | Presse locale + héritage national (censure, médias d'État) |
+| **I** Intelligence Artificielle *(v3.0 — note : le bloc presse/médias, ex-composante I, est désormais dans P16-P18)* | National hérité | Infrastructure compute et politique IA typiquement nationales (data centers, statecraft) |
 | **C** Cyber | National hérité | Infrastructure nationale, CERT central |
 | **Ee** Environnemental | Régional | Réévaluation complète (eau, pollution, climat très géographiques) |
 
 **Dimensions réévaluées** (4) : S, M, P, Ee — forte variance intra-nationale
-**Dimensions héritées** (2) : L, C — cadre national dominant
-**Dimensions mixtes** (2) : E, I — composante nationale + delta régional
+**Dimensions héritées** (3, v3.0) : L, C, I — cadre national dominant
+**Dimensions mixtes** (1, v3.0) : E — composante nationale + delta régional
+
+> Note v3.0 : la redistribution de l'ancien I (presse/médias vers P16-P18) fait de P une dimension
+> "Mixte" à la fois pour ses composantes historiques (gouvernance locale) et pour le bloc presse
+> hérité. La classification P reste "Régional" par défaut (poids dominant gouvernance/séparatisme).
 
 ### Score sub-national
 
@@ -407,21 +493,31 @@ Le **score national** peut être recalculé comme moyenne pondérée par populat
 
 Indicateurs structurels a haute valeur predictive, identifies par analyse des 12 backtests. Chaque indicateur est present dans 4+ crises historiques. Ils sont integres dans les dimensions existantes et participent au score quanti de la dimension.
 
-### P — Ajouts (3 indicateurs)
+### P — Ajouts (6 indicateurs : 3 precurseurs v2.1 + 3 redistribues de l'ex-I v3.0)
 
 | # | Indicateur | Source | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 |---|-----------|--------|---|---|---|---|---|---|---|
 | P13 | **Capture institutionnelle (nb institutions cles controlees par le clan/parti dominant sur 5 : executif, judiciaire, BC, armee, medias)** | V-Dem / OSINT | 0-1 | 1 | 2 | 2-3 | 3-4 | 4 | 5/5 (capture totale) |
 | P14 | **Chocs politiques auto-infliges (12 mois) : decisions radicales contraires au consensus expert** | OSINT / IMF Art. IV | 0 | 1 mineure | 1 majeure | 2 majeures | 3+ majeures | Cascades en cours | Politique etat de siege |
 | P15 | **Fenetres d'action critiques (12 mois) : deadlines non-electorales forcant l'action (retraite militaire, expiration accord, succession sanitaire)** | OSINT | 0 | 1 lointaine | 1 proche | 2+ convergentes | Imminente + acteur pret | Imminente + mobilisation | Deadline passee, action en cours |
+| P16 | **Liberte & pluralisme de la presse (fusion ex-I1 classement RSF + ex-I8 pluralisme mediatique)** | RSF | 1–20 (rang) / > 75 (pluralisme) | 21–45 / 60–75 | 46–80 / 45–60 | 81–120 / 30–45 | 121–150 / 18–30 | 151–170 / 8–18 | 171–180 / < 8 |
+| P17 | **Controle etatique des medias (% audience)** *(ex-I5, repris tel quel)* | RSF / IREX MSI | < 10% | 10–20% | 20–35% | 35–50% | 50–70% | 70–90% | > 90% ou monopole |
+| P18 | **Repression des journalistes (journalistes emprisonnes)** *(ex-I9, repris tel quel)* | RSF / CPJ | 0 | 1–3 | 4–10 | 11–25 | 26–50 | 51–100 | > 100 |
 
-**Crises validees** :
+**Crises validees (precurseurs v2.1)** :
 - P13 : Sri Lanka (Rajapaksa x6), Tunisie (Ben Ali/Trabelsi), Egypte (Moubarak 30 ans), Syrie (Assad 54 ans), Venezuela (chavisme), Myanmar (Tatmadaw), Bangladesh (Hasina/Awami) — **7/12**
 - P14 : Sri Lanka (ban engrais), Turquie (baisses taux), Venezuela (ANC), Bangladesh (quotas 1971) — **4/12**
 - P15 : Myanmar (retraite Min Aung Hlaing juil. 2021), Soudan (deadline integration RSF), Niger (accountability), Egypte (sante Moubarak) — **4/12**
 
+**Note P12 elargi** : P12 (« Diaspora politique active ») absorbe l'ex-I10 (« Controle narratif
+diaspora ») — la fusion est integree directement dans les paliers de P12, sans creation d'un
+indicateur supplementaire (redistribution v3, cf. spec §5.2).
+
+**Sous-coefficient P16** : paliers derives des seuils RSF des ex-indicateurs I1 (classement) et
+I8 (composante pluralisme), moyenne des deux composantes, arrondi au palier le plus proche.
+
 ```
-Score_quanti_P = moyenne(P1..P15) [15 indicateurs]
+Score_quanti_P = moyenne(P1..P18) [18 indicateurs]
 ```
 
 ### M — Ajout (1 indicateur)
@@ -448,7 +544,7 @@ Score_quanti_M = moyenne(M1..M13) [13 indicateurs]
 Score_quanti_E = moyenne(E1..E16) [16 indicateurs]
 ```
 
-### Total indicateurs v2.1 : 95 + 5 precurseurs + 1 precurseur = **101 indicateurs risque**
+### Total indicateurs v3.0 : S12 + E16 + M13 + P18 + L10 + I9 + C14 + Ee10 = **102 indicateurs risque**
 
 ---
 
@@ -476,8 +572,19 @@ Interpretation : un facteur de resilience au-dessus de 4 (modere) commence a red
 | RE1 | **Capacite de correction monetaire (acces FMI, pivots BC possibles, swap lines)** | E | IMF / OSINT | Aucune | Tres limitee | Limitee | Moderee | Acces programmes FMI | Pivot credible recent | Filet complet (swap lines + reserves + FMI) |
 | RM1 | **Doctrine republicaine de l'armee (historique non-intervention dans la politique)** | M | V-Dem / OSINT | Armee au pouvoir | Interventions frequentes | 1 intervention recente (<10 ans) | Neutre (pas de doctrine claire) | Doctrine non-intervention | Non-intervention testee et respectee | Refus documente de coup (Bresil 2023, Tunisie 2011) |
 | RP1 | **Alternance democratique fonctionnelle (election credible avec changement effectif dans les 10 dernieres annees)** | P | V-Dem / IFES | Aucune alternance | Alternance >20 ans | Alternance 10-20 ans | Alternance <10 ans contestee | Alternance <10 ans ordonnee | Alternance reguliere + locale | Alternance recente reussie + locale (Turquie CHP 2024, Bresil Lula 2022) |
-| RI1 | **Pluralisme mediatique residuel (existence d'au moins 1 media independant credible a audience significative)** | I | RSF / IREX MSI | Aucun | 1 en exil | 1 local marginal | 1-2 locaux <10% audience | 2-3 locaux 10-25% audience | Pluralisme reel 25-50% | Ecosysteme pluraliste >50% |
+| RI1 | **Pluralisme mediatique residuel (existence d'au moins 1 media independant credible a audience significative)** | **P** *(v3.0 — rattache a P, ex-I en v2.1)* | RSF / IREX MSI | Aucun | 1 en exil | 1 local marginal | 1-2 locaux <10% audience | 2-3 locaux 10-25% audience | Pluralisme reel 25-50% | Ecosysteme pluraliste >50% |
 | RL1 | **Autonomie judiciaire effective (capacite demontree a bloquer l'executif)** | L | WJP / V-Dem / OSINT | Justice captive | Justice soumise | Independance theorique | 1 blocage mineur (<5 ans) | Blocages reguliers | Annulation decision majeure (Bresil STF) | Tradition constitutionnelle etablie (Cour supreme type US/DE) |
+
+**Rattachement RI1 → P (v3.0)** : RI1 suit le bloc presse (P16-P18) dans la redistribution de
+l'ancien I. La dimension P porte donc **2 facteurs de resilience** (RP1 et RI1) :
+
+```
+Bonification_P = 0.15 x max(0, moyenne(RP1, RI1) - 4)
+```
+
+Toutes les autres dimensions (S, E, M, L) continuent de porter un seul facteur de resilience,
+formule standard `Bonification_d = 0.15 x max(0, ScoreResilience_d - 4)`. La dimension IA n'a
+aucun facteur de resilience (cf. section I ci-dessus).
 
 ### Validation sur cas d'endiguement
 
@@ -572,17 +679,22 @@ La velocite ne modifie pas le composite directement. Elle genere des **alertes**
 
 ---
 
-## Recapitulatif v2.1
+## Recapitulatif v2.1 (corrige) et v3.0
 
-| Categorie | v2.0 | v2.1 | v2.1 + K | Delta |
-|-----------|:----:|:----:|:--------:|:-----:|
-| Indicateurs risque | 95 | **101** | 101 | +6 (P13-P15, M13, E16, + correction totaux dim) |
-| Indicateurs resilience | 0 | **6** | 6 | +6 (RS1, RE1, RM1, RP1, RI1, RL1) |
-| Indicateurs culturels (module optionnel) | 0 | 0 | **6** | +6 (K1-K6, actif sur 3 angles) |
-| **Total indicateurs** | **95** | **107** | **113** | **+18 vs v2.0** |
-| Regles validateur | R1-R8 | R1-**R11** | R1-R11 | +3 (facade eco, garde-fou, velocite) |
-| Mecanismes | Amplification de crete | Amplification de crete + **Velocite** + **Modificateur resilience** | + module **K** | +2 |
-| Signatures | 6 | 6 + **absence-garde-fou** | 6 + absence-garde-fou | +1 |
+> **Correction de comptage (D8, audit 2026-06-18)** : le total v2.1 annonce a l'origine (107) etait
+> errone. Les precurseurs P13-15, M13, E16 sont **5 indicateurs, pas 6** — le total reel v2.1 est
+> **100** indicateurs risque (95 base + 5 precurseurs), soit **106** avec resilience (et 112 avec K).
+
+| Categorie | v2.0 | v2.1 (reel, corrige) | v2.1 + K (reel) | v3.0 |
+|-----------|:----:|:----:|:--------:|:----:|
+| Indicateurs risque | 95 | **100** | 100 | **102** |
+| Indicateurs resilience | 0 | **6** | 6 | 6 (RI1 rattache a P) |
+| Indicateurs culturels (module optionnel) | 0 | 0 | **6** | 6 |
+| **Total indicateurs** | **95** | **106** | **112** | **114** |
+| Regles validateur | R1-R8 | R1-R11 | R1-R11 | R1-R11 (regle I-C remplacee par regle IA-C) |
+| Mecanismes | Amplification de crete | Amplification de crete + Velocite + Modificateur resilience | + module K | + **ponderation intra-dimension** (tags 3/2/1) ; amplification **systematisee** (calculee, jamais saisie a la main) |
+| Signatures | 6 | 6 + absence-garde-fou | 6 + absence-garde-fou | 6 + absence-garde-fou (SIG referencant I a recalibrer sur IA) |
+| Dimensions | 8 (I = Information) | 8 (I = Information) | 8 (I = Information) | 8 (**I = Intelligence Artificielle**) |
 
 ---
 
@@ -604,8 +716,10 @@ Modalites possibles, du plus engage au moins engage :
 - **Sous-traitee** (Importateur, Centrale d'achat, SCI)
 - **Abstention** (composite > 5.5 sur zones critiques)
 
-Le pont integre des modulations pour I (>= 5), C (>= 5), traites bilateraux d'investissement (L7 <= 2)
-et velocite critique (rétrograder d'un cran si une dimension d depasse +0.5/trimestre).
+Le pont integre des modulations pour **IA (>= 5)** *(anciennement « I >= 5 » ; devient « dependance
+IA forte → retrograder d'un cran les modalites a forte exposition technologique »)*, C (>= 5),
+traites bilateraux d'investissement (L7 <= 2) et velocite critique (rétrograder d'un cran si une
+dimension d depasse +0.5/trimestre).
 
 ---
 
@@ -632,3 +746,4 @@ et velocite critique (rétrograder d'un cran si une dimension d depasse +0.5/tri
 | v2.0 | 2026-03-12 | Echelle 1-7, 95 indicateurs, seuils recalibres, 4 pays tests (Ukraine, Singapour, Ile Maurice, Inde) |
 | v2.1 | 2026-03-12 | +6 indicateurs precurseurs (P13-15, M13, E16), +6 resilience (RS1, RE1, RM1, RP1, RI1, RL1), +3 regles validateur (R9-R11), mecanisme velocite, 107 indicateurs total |
 | v2.1 + K v1.0 | 2026-04-30 | Module optionnel **K — Culturel** (6 indicateurs Hofstede + Hall + Kogut-Singh 1988). Recalibrage des ponderations Investissement/Supply Chain/Implantation pour integrer K (poids 8% / 5% / 15%). |
+| v3.0 | 2026-07-03 | I repurpose Intelligence Artificielle (9 indicateurs IA1-IA9), redistribution ancien I vers P (P16-P18) et C (C13-C14+CM1), poids Defaut I13/L9, ponderation intra-dimension (tags 3/2/1), RI1→P, corrections de comptage (v2.1 reel = 100, pas 107) |
