@@ -14,9 +14,13 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { resolve, basename, join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+const _require = createRequire(import.meta.url);
+const CALC = _require('../semplice-composite.js');
 
 // ─── ANSI Colors ─────────────────────────────────────────────────────────
 
@@ -43,16 +47,11 @@ const ICON_SKIP    = `${C.dim}-${C.reset}`;
 
 const DIMENSION_KEYS = ['S', 'E', 'M', 'P', 'L', 'I', 'C', 'Ee'];
 
-const DIMENSION_WEIGHTS = {
-  M:  0.16,  // Military — direct physical threat, irreversible
-  E:  0.15,  // Economic — systemic stability
-  P:  0.14,  // Political — governance, regime stability
-  S:  0.12,  // Social — population fundamentals
-  I:  0.12,  // Information — narrative control, early warning signal
-  C:  0.11,  // Cyber — modern threat vector, force multiplier
-  Ee: 0.10,  // Environmental — long-term, structural
-  L:  0.10,  // Legal — business environment
-};
+// Poids sélectionnés par version d'évaluation (spec v3 §2.1) — source : semplice-composite.js
+function weightsFor(data) {
+  const v = parseFloat(data?.meta?.version ?? '2.1');
+  return v >= 3 ? CALC.WEIGHTS_RISK_V3 : CALC.WEIGHTS_RISK_V21;
+}
 
 const EVALUATIONS_DIR = resolve(__dirname, '..', 'data', 'semplice', 'evaluations-test-v2');
 
@@ -231,80 +230,40 @@ function dimQuali(data, dk) {
  * @returns {{ baseComposite: number, amplifiedComposite: number, weights: object, amplifications: Array }}
  */
 function computeWeightedComposite(data) {
-  const scores = {};
+  const W = weightsFor(data);
+  const keys = [];
+  const arr = [];
   for (const dk of DIMENSION_KEYS) {
     const s = dimScore(data, dk);
-    if (s != null) scores[dk] = s;
+    if (s != null) { keys.push(dk); arr.push(s); }
+  }
+  if (keys.length === 0) {
+    return { baseComposite: 0, amplifiedComposite: 0, weights: {}, amplifications: [] };
   }
 
-  // Step 1: base weighted composite
-  let weightSum = 0;
-  let weightedSum = 0;
-  for (const dk of DIMENSION_KEYS) {
-    if (scores[dk] == null) continue;
-    const w = DIMENSION_WEIGHTS[dk];
-    weightedSum += w * scores[dk];
-    weightSum += w;
-  }
-  const baseComposite = weightSum > 0 ? weightedSum / weightSum : 0;
+  // Pre-normalize weights over present dimensions (no-op when all 8 are present: sum = 1.0),
+  // because CALC.computeComposite does not divide the base by the weight sum.
+  const presentSum = keys.reduce((sum, k) => sum + W[k], 0);
+  const Wn = Object.fromEntries(keys.map(k => [k, W[k] / presentSum]));
 
-  // Step 2: peak amplification
-  const AMPLIFICATION_THRESHOLD = 1.0;
-  const AMPLIFICATION_FACTOR = 0.20;
-  const MAX_AMPLIFICATION_DELTA = 0.3;
-
-  const amplifiedWeights = {};
-  const amplifications = [];
-  for (const dk of DIMENSION_KEYS) {
-    amplifiedWeights[dk] = DIMENSION_WEIGHTS[dk];
-  }
-
-  for (const dk of DIMENSION_KEYS) {
-    if (scores[dk] == null) continue;
-    const delta = scores[dk] - baseComposite;
-    if (delta > AMPLIFICATION_THRESHOLD) {
-      const bonus = AMPLIFICATION_FACTOR * (delta - AMPLIFICATION_THRESHOLD);
-      amplifiedWeights[dk] += bonus;
-      amplifications.push({
-        dim: dk,
-        base: DIMENSION_WEIGHTS[dk],
-        amplified: amplifiedWeights[dk],
-        reason: `${dk}=${scores[dk].toFixed(1)} exceeds composite ${baseComposite.toFixed(1)} by ${delta.toFixed(2)}`,
-      });
-    }
-  }
-
-  // Step 3: renormalize weights to sum to 1.0
-  const totalAmplifiedWeight = DIMENSION_KEYS.reduce((sum, dk) => sum + (scores[dk] != null ? amplifiedWeights[dk] : 0), 0);
-  const finalWeights = {};
-  for (const dk of DIMENSION_KEYS) {
-    if (scores[dk] != null) {
-      finalWeights[dk] = totalAmplifiedWeight > 0 ? amplifiedWeights[dk] / totalAmplifiedWeight : DIMENSION_WEIGHTS[dk];
-    }
-  }
-
-  // Step 4: recompute with amplified weights
-  let amplifiedSum = 0;
-  let amplifiedWeightSum = 0;
-  for (const dk of DIMENSION_KEYS) {
-    if (scores[dk] == null) continue;
-    amplifiedSum += finalWeights[dk] * scores[dk];
-    amplifiedWeightSum += finalWeights[dk];
-  }
-  let amplifiedComposite = amplifiedWeightSum > 0 ? amplifiedSum / amplifiedWeightSum : baseComposite;
-
-  // Step 5: cap amplification effect at +0.3
-  if (amplifiedComposite - baseComposite > MAX_AMPLIFICATION_DELTA) {
-    amplifiedComposite = baseComposite + MAX_AMPLIFICATION_DELTA;
-  }
+  const r = CALC.computeComposite(arr, Wn, keys);
+  const scoreOf = Object.fromEntries(keys.map((k, i) => [k, arr[i]]));
+  const totalAmplified = keys.reduce((sum, k) => sum + r.weights[k], 0);
 
   return {
-    baseComposite: Math.round(baseComposite * 100) / 100,
-    amplifiedComposite: Math.round(amplifiedComposite * 100) / 100,
+    baseComposite: Math.round(r.base * 100) / 100,
+    amplifiedComposite: Math.round(r.amplified * 100) / 100,
     weights: Object.fromEntries(
-      Object.entries(finalWeights).map(([k, v]) => [k, Math.round(v * 1000) / 1000])
+      keys.map(k => [k, Math.round((r.weights[k] / totalAmplified) * 1000) / 1000])
     ),
-    amplifications,
+    amplifications: keys
+      .filter(k => r.weights[k] > Wn[k])
+      .map(k => ({
+        dim: k,
+        base: Wn[k],
+        amplified: r.weights[k],
+        reason: `${k}=${scoreOf[k].toFixed(1)} exceeds composite ${r.base.toFixed(1)} by ${(scoreOf[k] - r.base).toFixed(2)}`,
+      })),
   };
 }
 
@@ -955,7 +914,8 @@ function formatConsole(filePath, data, schemaErrors, structWarnings, layer1, lay
     const simpleAvgVal = simpleAvg.length > 0 ? simpleAvg.reduce((a, b) => a + b, 0) / simpleAvg.length : 0;
     w('');
     w(`${C.bold}\u2500\u2500 Weighted Composite \u2500\u2500${C.reset}`);
-    const baseWeightStr = DIMENSION_KEYS.map(dk => `${dk}=${Math.round(DIMENSION_WEIGHTS[dk] * 100)}%`).join(', ');
+    const W = weightsFor(data);
+    const baseWeightStr = DIMENSION_KEYS.map(dk => `${dk}=${Math.round(W[dk] * 100)}%`).join(', ');
     w(`  Base weights: ${baseWeightStr}`);
     w(`  Base composite: ${wc.baseComposite.toFixed(2)} (vs simple avg: ${simpleAvgVal.toFixed(1)})`);
     if (wc.amplifications.length > 0) {
