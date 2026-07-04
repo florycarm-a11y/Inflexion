@@ -1,11 +1,11 @@
-# SEMPLICE — Grille de notation Opportunite v2.0
-
-> ⚠️ **DÉPRÉCIÉE** — remplacée par [grille-scoring-opportunite-v3.md](grille-scoring-opportunite-v3.md)
-> (Io = Innovation & IA souveraine, 14 indicateurs). Conservée pour l'historique des évaluations ≤ v2.
+# SEMPLICE — Grille de notation Opportunite v3.0
 
 > **Cadre methodologique pour l'evaluation reproductible du potentiel geopolitique**
-> Inflexion Intelligence — Mars 2026
-> Echelle 1-7 | 66 indicateurs | Mix 60% quanti / 40% quali
+> Inflexion Intelligence — Juillet 2026
+> v3.0 | Echelle 1-7 | **70 indicateurs** | Mix 60% quanti / 40% quali
+> Correction de comptage : le "66" annonce en v2.0 etait errone (la somme reelle des lignes
+> etait **64** indicateurs, cf. audit 2026-06-18). Le total v3.0 (70) part donc de cette base
+> reelle de 64, + Io9-Io14 (6 nouveaux indicateurs IA-opportunite).
 
 ---
 
@@ -60,7 +60,7 @@ Les poids refletent l'impact relatif de chaque dimension sur le potentiel de dev
 | Dimension | Poids | Justification |
 |-----------|:-----:|---------------|
 | **Eo** — Croissance & marche | 17% | Moteur principal de creation de valeur |
-| **Io** — Innovation & numerique | 15% | Levier de transformation et de competitivite future |
+| **Io** — Innovation & IA souveraine | 15% | Levier de transformation et differenciateur IA |
 | **Po** — Gouvernance & reformes | 14% | Environnement institutionnel, capacite de reforme |
 | **Lo** — Attractivite juridique | 13% | Securite des investissements, previsibilite |
 | **Co** — Maturite technologique | 12% | Infrastructure numerique, maturite |
@@ -176,9 +176,11 @@ Score_quanti_Lo = moyenne(Lo1..Lo8)
 
 ---
 
-## Io — Innovation & numerique (8 indicateurs)
+## Io — Innovation & IA souveraine (14 indicateurs)
 
-Mesure le dynamisme de l'ecosysteme d'innovation et de transformation digitale.
+Mesure le dynamisme de l'ecosysteme d'innovation ET la puissance IA souveraine comme avantage
+competitif. Io1-Io8 (socle innovation) inchanges depuis v2.0 ; Io9-Io14 (nouveaux v3.0) miroir
+opportunite de la dimension risque IA.
 
 | # | Indicateur | Source | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 |---|-----------|--------|---|---|---|---|---|---|---|
@@ -190,10 +192,23 @@ Mesure le dynamisme de l'ecosysteme d'innovation et de transformation digitale.
 | Io6 | **Capital-risque / PIB (%)** | OECD / NVCA / Invest Europe | < 0.01% | 0.01–0.03% | 0.03–0.08% | 0.08–0.15% | 0.15–0.30% | 0.30–0.50% | > 0.50% |
 | Io7 | **Diplomes STEM / 100 000 hab.** | UNESCO / OECD | < 10 | 10–25 | 25–50 | 50–80 | 80–120 | 120–180 | > 180 |
 | Io8 | **Adoption IA dans l'industrie (% entreprises)** | OECD / McKinsey | < 5% | 5–12% | 12–22% | 22–35% | 35–50% | 50–65% | > 65% |
+| Io9 | **Capacite compute exportable (services cloud/IA vendus a l'etranger, % exports services)** | Synergy Research / Omdia / OMC / ITU | Nulle | Marginale | Regionale naissante | Regionale etablie | Multi-regionale | Mondiale forte | Hub mondial (type hyperscaler) |
+| Io10 | **Attractivite talents & modeles (flux entrants chercheurs IA, adoption internationale des modeles nationaux)** | MacroPolo Global AI Talent Tracker / Epoch AI / Hugging Face (telechargements) | Exode | Exode modere | Solde legerement negatif | Equilibre | Attraction moderee | Attraction forte | Pole d'attraction mondial |
+| Io11 | **Investissement IA entrant (IDE fleche IA/data centers, % PIB)** | UNCTAD / fDi Markets / Dealroom | Nul | < 0.05% | 0.05–0.1% | 0.1–0.3% | 0.3–0.6% | 0.6–1% | > 1% |
+| Io12 | **Ecosysteme startups IA (nb licornes IA + valorisation cumulee, Mrd$)** *(sous-ensemble IA de Io3, scoré separement car dynamique propre)* | Dealroom / CB Insights / Crunchbase AI | 0 | < 1 licorne / < 1 | 1–2 licornes / 1–5 | 3–5 licornes / 5–15 | 6–10 licornes / 15–75 | 11–15 licornes / 75–300 | > 15 licornes / > 300 |
+| Io13 | **Excedent energetique mobilisable pour le compute (capacite electrique excedentaire contractualisable pour data centers, GW)** *(miroir opportunite de IA8)* | IEA / Ember / EPRI | Deficit structurel | Deficit modere | Marge tres faible | Marge faible mais pilotable | Marge confortable | Excedent notable | Excedent massif + prix competitifs (atout d'implantation) |
+| Io14 | **Partenariats IA internationaux (accords « sovereign AI » avec hyperscalers/Etats : acces privilegie compute, modeles, transferts de savoir-faire)** | OECD.AI / CSET / OSINT | Aucun | 1 accord exploratoire | 1–2 accords sectoriels | 3–4 accords sectoriels | Plusieurs accords + 1 structurant | Reseau dense d'accords | Reseau dense d'accords strategiques + clauses de transfert |
 
 ```
-Score_quanti_Io = moyenne(Io1..Io8)
+Score_quanti_Io = moyenne(Io1..Io14)
 ```
+
+Bandes completes 1-7 pour Io9-Io14 : les colonnes 1/4/7 de la spec sont des ancres ; les paliers
+2/3/5/6 sont interpoles de facon monotone et coherente avec le style des autres tables de la grille.
+
+**Note de frontiere Io12 / Io3** : Io12 (startups IA) est un sous-ensemble de Io3 (ecosysteme
+startups global), mais scoré separément car sa dynamique de croissance et ses cycles
+d'investissement sont propres à l'IA (ne pas fusionner avec Io3 lors du calcul).
 
 ---
 
@@ -248,10 +263,10 @@ Score_quanti_Eeo = moyenne(Eeo1..Eeo8)
 | Mo — Securite & alliances | M — Militaire | 6 |
 | Po — Gouvernance & reformes | P — Politique | 8 |
 | Lo — Attractivite juridique | L — Legal | 8 |
-| Io — Innovation & numerique | I — Information | 8 |
+| Io — Innovation & IA souveraine | I — Intelligence Artificielle (miroir risque) | 14 |
 | Co — Maturite technologique | C — Cyber | 8 |
 | Eeo — Durabilite & transition | Ee — Environnemental | 8 |
-| **TOTAL** | | **66** |
+| **TOTAL** | | **70** |
 
 ---
 
@@ -291,21 +306,26 @@ Mecanisme symetrique a l'amplification du risque, pour les profils a opportunite
 |-----------|:------:|:--------------:|:------------:|:------------:|
 | So | 12% | 8% | 8% | **18%** |
 | Eo | 17% | **22%** | 12% | 10% |
-| Mo | 7% | 5% | **12%** | 5% |
+| Mo | 7% | 5% | 10% *(12→10)* | 5% |
 | Po | 14% | 12% | 8% | **18%** |
-| Lo | 13% | **18%** | 8% | **16%** |
-| Io | 15% | 15% | **18%** | 12% |
+| Lo | 13% | 16% *(18→16)* | 8% | **16%** |
+| **Io** | 15% | **17%** *(15→17)* | **20%** *(18→20)* | 12% |
 | Co | 12% | 10% | **22%** | 10% |
 | Eeo | 10% | 10% | 12% | 11% |
+| **Total** | **100%** | **100%** | **100%** | **100%** |
+
+**Reajustements v2.0 → v3.0** : Io gagne la ou l'IA souveraine devient un differenciateur
+(Investissement +2 pts, pris sur Lo ; Supply Chain +2 pts, pris sur Mo). Defaut inchange (Io
+deja 2e poids). Implantation inchangee.
 
 ---
 
 ## Articulation risque / opportunite dans les evaluations
 
-Chaque evaluation SEMPLICE v2.0 complete doit inclure :
+Chaque evaluation SEMPLICE v3.0 complete doit inclure :
 
-1. **Scores risque** : 8 dimensions, 95 indicateurs (grille risque v2.0)
-2. **Scores opportunite** : 8 dimensions, 66 indicateurs (cette grille)
+1. **Scores risque** : 8 dimensions, 102 indicateurs (grille risque v3.0)
+2. **Scores opportunite** : 8 dimensions, 70 indicateurs (cette grille)
 3. **Composite risque pondere** + classification
 4. **Composite opportunite pondere** + classification
 5. **Matrice de positionnement** : quadrant risque/opportunite
@@ -321,3 +341,4 @@ Chaque evaluation SEMPLICE v2.0 complete doit inclure :
 | Version | Date | Modification |
 |---------|------|-------------|
 | v2.0 | 2026-03-12 | Creation — 66 indicateurs, echelle 1-7, ponderations specifiques, amplification de pic miroir |
+| v3.0 | 2026-07-03 | Io repurpose « Innovation & IA souveraine » (+Io9 compute exportable, Io10 attractivite talents/modeles, Io11 IDE IA, Io12 startups IA, Io13 excedent energetique, Io14 partenariats sovereign AI), matrice de poids par angle actualisee, correction comptage v2 (66 annonce → 64 reel), total 70 |
