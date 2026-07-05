@@ -11,6 +11,7 @@ echo "════════════════════════�
 node --test scripts/tests/lib/claude-api.test.mjs
 node --test scripts/tests/semplice-composite.test.mjs
 node --test scripts/tests/semplice-zones-config.test.mjs
+node --test scripts/tests/semplice-validator-v3.test.mjs
 
 echo ""
 echo "✅ Tous les tests sont passés."

@@ -13,7 +13,7 @@
 
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { resolve, basename, join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createRequire } from 'node:module';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -47,10 +47,14 @@ const ICON_SKIP    = `${C.dim}-${C.reset}`;
 
 const DIMENSION_KEYS = ['S', 'E', 'M', 'P', 'L', 'I', 'C', 'Ee'];
 
+/** Version numérique d'une évaluation (défaut : 2.1). */
+function evalVersion(data) {
+  return parseFloat(data?.meta?.version ?? '2.1');
+}
+
 // Poids sélectionnés par version d'évaluation (spec v3 §2.1) — source : semplice-composite.js
 function weightsFor(data) {
-  const v = parseFloat(data?.meta?.version ?? '2.1');
-  return v >= 3 ? CALC.WEIGHTS_RISK_V3 : CALC.WEIGHTS_RISK_V21;
+  return evalVersion(data) >= 3 ? CALC.WEIGHTS_RISK_V3 : CALC.WEIGHTS_RISK_V21;
 }
 
 const EVALUATIONS_DIR = resolve(__dirname, '..', 'data', 'semplice', 'evaluations-test-v2');
@@ -220,6 +224,28 @@ function dimQuanti(data, dk) {
 /** Get a dimension's scoreQuali. */
 function dimQuali(data, dk) {
   return data.dimensions?.[dk]?.scoreQuali ?? null;
+}
+
+// ─── v3 Utilities ────────────────────────────────────────────────────────
+
+/* v3 — moyenne intra-dimension pondérée (spec §4) : w ∈ {3 critique, 2 majeur, 1 mineur}, défaut 2 */
+export function weightedQuanti(indicators) {
+  let num = 0, den = 0;
+  for (const ind of indicators) {
+    const w = ind.weight ?? 2;
+    num += w * ind.palier;
+    den += w;
+  }
+  return den > 0 ? num / den : 0;
+}
+
+/* v3 — règle de cohérence IA-C (spec §5.3) : un État à compute souverain fort (IA<=2)
+   doit avoir une posture cyber au moins correcte (C<=4), sinon justification requise. */
+export function checkIaCyberCoherence(iaScore, cScore) {
+  if (iaScore <= 2 && cScore > 4) {
+    return { ok: false, message: `IA=${iaScore} (souveraineté forte) mais C=${cScore} — incohérence à justifier` };
+  }
+  return { ok: true };
 }
 
 // ─── Weighted Composite (v2.0) ──────────────────────────────────────────
@@ -462,13 +488,41 @@ const RULES = [
       return { status: 'pass', detail: `Max \u0394=${maxDelta.toFixed(1)}` };
     },
   },
+  // \u2500\u2500 R9: IA-Cyber Coherence (v3 only) \u2500\u2500
+  // Remplace l'ancien check m\u00e9thodologique |I\u2212C| > 2 (semplice-i-c-interactions.md, jamais
+  // impl\u00e9ment\u00e9 comme r\u00e8gle) : en v3, I = Intelligence Artificielle (spec \u00a75.3).
+  {
+    id: 'R9',
+    name: 'IA-Cyber Coherence',
+    minVersion: 3,
+    check(data) {
+      const ia = dimScore(data, 'I');
+      const c = dimScore(data, 'C');
+      if (ia == null || c == null) return { status: 'skip', detail: 'Missing I or C' };
+      const result = checkIaCyberCoherence(ia, c);
+      if (!result.ok) {
+        return {
+          status: 'flag',
+          type: 'coherence',
+          dimension: 'I',
+          indicator: '-',
+          message: result.message,
+          detail: `IA=${ia}, C=${c}`,
+        };
+      }
+      return { status: 'pass', detail: `IA=${ia}, C=${c}` };
+    },
+  },
 ];
 
 function runLayer1(data) {
-  return RULES.map(rule => {
-    const result = rule.check(data);
-    return { id: rule.id, name: rule.name, ...result };
-  });
+  const v = evalVersion(data);
+  return RULES
+    .filter(rule => rule.minVersion == null || v >= rule.minVersion)
+    .map(rule => {
+      const result = rule.check(data);
+      return { id: rule.id, name: rule.name, ...result };
+    });
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -577,6 +631,28 @@ const SIGNATURES = [
   },
 ];
 
+// v3 — SIG6 recalibrée (spec §5.3) : la composante I disparaît (l'influence informationnelle
+// est désormais portée par C via C14), le poids de C est renforcé en compensation.
+const SIG6_V3 = {
+  id: 'SIG6',
+  label: 'Cyber War',
+  description: 'C >= 5.0 AND M >= 4.0',
+  severity: 'critical',
+  conditions: [
+    { dim: 'C', min: 5.0, weight: 1.1 },
+    { dim: 'M', min: 4.0, weight: 0.7 },
+  ],
+  indicators: [],
+};
+
+/** Signatures applicables selon la version de l'évaluation. */
+function signaturesFor(data) {
+  if (evalVersion(data) >= 3) {
+    return SIGNATURES.map(sig => (sig.id === 'SIG6' ? SIG6_V3 : sig));
+  }
+  return SIGNATURES;
+}
+
 /**
  * Compute match percentage for a signature against an evaluation.
  * Returns a score 0-100 representing how well the evaluation fits the pattern.
@@ -625,7 +701,7 @@ function computeSignatureMatch(sig, data) {
 }
 
 function runLayer2(data) {
-  const results = SIGNATURES.map(sig => {
+  const results = signaturesFor(data).map(sig => {
     const { pct, dimScores } = computeSignatureMatch(sig, data);
     return {
       id: sig.id,
@@ -788,16 +864,21 @@ function runStructuralChecks(data) {
   }
 
   // Verify scoreQuanti = mean(paliers) (tolerance 0.3)
+  // v2 : moyenne simple. v3 : moyenne pond\u00e9r\u00e9e par tags intra-dimension (spec \u00a74).
+  const isV3 = evalVersion(data) >= 3;
   for (const dk of DIMENSION_KEYS) {
     const dim = data.dimensions?.[dk];
     if (!dim?.indicators || dim.indicators.length === 0 || dim.scoreQuanti == null) continue;
-    const paliers = dim.indicators.map(i => i.palier).filter(p => p != null);
-    if (paliers.length === 0) continue;
-    const avgPalier = paliers.reduce((a, b) => a + b, 0) / paliers.length;
+    const scored = dim.indicators.filter(i => i.palier != null);
+    if (scored.length === 0) continue;
+    const avgPalier = isV3
+      ? weightedQuanti(scored)
+      : scored.reduce((a, i) => a + i.palier, 0) / scored.length;
     const diff = Math.abs(dim.scoreQuanti - avgPalier);
     if (diff > 0.3) {
+      const label = isV3 ? 'weightedMean(paliers)' : 'mean(paliers)';
       warnings.push(
-        `${dk}: scoreQuanti=${dim.scoreQuanti} != mean(paliers)=${avgPalier.toFixed(2)} (\u0394=${diff.toFixed(2)})`
+        `${dk}: scoreQuanti=${dim.scoreQuanti} != ${label}=${avgPalier.toFixed(2)} (\u0394=${diff.toFixed(2)})`
       );
     }
   }
@@ -1110,7 +1191,7 @@ ${C.bold}Usage:${C.reset}
   node scripts/semplice-validator.mjs --all --json                 Output as JSON
 
 ${C.bold}Layers:${C.reset}
-  1. Deterministic cross-validation rules (8 rules: R1-R8)
+  1. Deterministic cross-validation rules (9 rules: R1-R9, R9 v3 only)
   2. Multi-dimensional risk signatures (8 patterns: SIG1-SIG8)
   3. AI coherence check (Claude Haiku, requires ANTHROPIC_API_KEY)
 
@@ -1123,6 +1204,7 @@ ${C.bold}Rules:${C.reset}
   R6  Democratic Autocracy     P2 >= 4, P1 <= 2, L1 <= 2
   R7  Environmental SIDS       Ee9 >= 5, Ee2 >= 4, Ee6 <= 2
   R8  Quanti/Quali Divergence  |quanti - quali| > 2.0 for any dim
+  R9  IA-Cyber Coherence       IA <= 2, C > 4 (v3 only)
 
 ${C.bold}Signatures:${C.reset}
   SIG1  Invasion/War           M >= 5.5, C >= 5.0, I >= 5.0, S >= 4.0
@@ -1130,7 +1212,7 @@ ${C.bold}Signatures:${C.reset}
   SIG3  Revolution/Uprising    S >= 5.0, P >= 4.5, I >= 4.0
   SIG4  Financial Crisis       E >= 5.0, L >= 4.0, E3 >= 5, E5 >= 5
   SIG5  Climate Catastrophe    Ee >= 4.5, S >= 3.5, E >= 3.5
-  SIG6  Cyber War              C >= 5.0, M >= 4.0, I >= 4.5
+  SIG6  Cyber War              C >= 5.0, M >= 4.0, I >= 4.5 (v3: sans I, C renforcé)
   SIG7  State Capture          P >= 4.5, L >= 4.5, I >= 4.0, P1 >= 5
   SIG8  Fragile State          ALL dimensions >= 3.5
 
@@ -1186,7 +1268,10 @@ ${C.bold}Exit codes:${C.reset}
   process.exit(anyCritical ? 1 : 0);
 }
 
-main().catch(err => {
-  console.error(`${C.red}Fatal error:${C.reset} ${err.message}`);
-  process.exit(1);
-});
+// N'exécute la CLI que si le fichier est le point d'entrée (pas lors d'un import de test).
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch(err => {
+    console.error(`${C.red}Fatal error:${C.reset} ${err.message}`);
+    process.exit(1);
+  });
+}
