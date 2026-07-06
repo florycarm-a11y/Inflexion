@@ -488,11 +488,11 @@ const RULES = [
       return { status: 'pass', detail: `Max \u0394=${maxDelta.toFixed(1)}` };
     },
   },
-  // \u2500\u2500 R9: IA-Cyber Coherence (v3 only) \u2500\u2500
+  // \u2500\u2500 R12: IA-Cyber Coherence (v3 only) — R9-R11 reserves (facade eco, garde-fou, velocite, cf. grille) \u2500\u2500
   // Remplace l'ancien check m\u00e9thodologique |I\u2212C| > 2 (semplice-i-c-interactions.md, jamais
   // impl\u00e9ment\u00e9 comme r\u00e8gle) : en v3, I = Intelligence Artificielle (spec \u00a75.3).
   {
-    id: 'R9',
+    id: 'R12',
     name: 'IA-Cyber Coherence',
     minVersion: 3,
     check(data) {
@@ -1191,7 +1191,7 @@ ${C.bold}Usage:${C.reset}
   node scripts/semplice-validator.mjs --all --json                 Output as JSON
 
 ${C.bold}Layers:${C.reset}
-  1. Deterministic cross-validation rules (9 rules: R1-R9, R9 v3 only)
+  1. Deterministic cross-validation rules (9 rules: R1-R8 + R12, R12 v3 only)
   2. Multi-dimensional risk signatures (8 patterns: SIG1-SIG8)
   3. AI coherence check (Claude Haiku, requires ANTHROPIC_API_KEY)
 
@@ -1204,7 +1204,7 @@ ${C.bold}Rules:${C.reset}
   R6  Democratic Autocracy     P2 >= 4, P1 <= 2, L1 <= 2
   R7  Environmental SIDS       Ee9 >= 5, Ee2 >= 4, Ee6 <= 2
   R8  Quanti/Quali Divergence  |quanti - quali| > 2.0 for any dim
-  R9  IA-Cyber Coherence       IA <= 2, C > 4 (v3 only)
+  R12 IA-Cyber Coherence       IA <= 2, C > 4 (v3 only)
 
 ${C.bold}Signatures:${C.reset}
   SIG1  Invasion/War           M >= 5.5, C >= 5.0, I >= 5.0, S >= 4.0
