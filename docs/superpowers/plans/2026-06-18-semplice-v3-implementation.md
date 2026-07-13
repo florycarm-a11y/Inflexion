@@ -25,7 +25,7 @@
 | `data/semplice/grille-scoring-opportunite-v3.md` | **Créer** — grille opportunité v3 (70 indicateurs) | Phase B |
 | `data/semplice/rescoring-ia-2026-06.md` | **Créer** — justification du rescoring IA des 18 zones | Phase B |
 | `data/semplice/semplice-ia-c-interactions.md` | **Créer** — remplace `semplice-i-c-interactions.md` | Phase B |
-| `data/semplice/backtests-v3.md` | **Créer** — rejeu des 12 crises avec dimension IA | Phase B |
+| `data/semplice/backtests-v3.md` | **Créer** — 3 backtests IA ciblés (Ukraine 2022, embargo puces Chine, retrait Fable 5) | Phase B |
 | `data/semplice-history.json` (vérifier le chemin exact en Task 9) | Modifier — série I → `I_legacy` | Phase B |
 | `scripts/veille-continue.mjs` | Modifier — thème watchlist « IA souveraine » | Phase B |
 | `CLAUDE.md` | Modifier — section SEMPLICE (I = IA, totaux) | Phase B |
@@ -695,12 +695,13 @@ Ajouter ce fichier au `git add` du Step 5.
 
 - [ ] **Step 4 : Backtests v3**
 
-Créer `data/semplice/backtests-v3.md` : rejouer les 12 crises de `backtests-v2.md` en ajoutant la
-lecture dimension IA — au minimum : Ukraine 2022 (dépendance Starlink/compute occidental, WhisperGate
-déjà couvert par C), embargo semi-conducteurs Chine (IA2 comme signal précoce), **retrait Fable 5
+Créer `data/semplice/backtests-v3.md` : **3 cas seulement** (décision utilisateur 2026-07-06 — ne PAS
+rejouer les 12 crises) : (1) Ukraine 2022 (dépendance Starlink/compute occidental, WhisperGate déjà
+couvert par C), (2) embargo semi-conducteurs Chine (IA2 comme signal précoce), (3) **retrait Fable 5
 2026 comme cas fondateur du palier 7 de IA2** (un fournisseur étranger révoque l'accès à un modèle
 frontière sur décision gouvernementale). Conclure sur la valeur prédictive attendue de IA
-(signal lent/structurel vs vélocité).
+(signal lent/structurel vs vélocité). `backtests-v2.md` reste la référence des 12 crises historiques
+(non déprécié : il documente la dimension Information de l'époque, toujours valide pour v2).
 
 - [ ] **Step 5 : Vérification navigateur + commit**
 

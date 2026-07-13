@@ -306,7 +306,7 @@ référent paramétrable (défaut France).
 | `expertise.html` | section SEMPLICE : présentation dimension IA, tableau comparatif 8 cadres (argument « seul cadre avec axe IA ») |
 | `data/semplice/semplice-i-c-interactions.md` | réécrire : interactions IA↔C (le doc actuel décrit l'ancien I) |
 | `semplice-history.json` | rupture de série sur I : anno­ter le changement de construit (l'historique Information n'est pas comparable à IA) |
-| Backtests | rejouer les 12 crises avec IA : Ukraine 2022 (WhisperGate + dépendance Starlink), embargo puces Chine, cas Fable 5 comme événement fondateur de IA2 |
+| Backtests | 3 cas ciblés (décision 2026-07-06, pas de rejeu des 12 crises) : Ukraine 2022 (WhisperGate + dépendance Starlink), embargo puces Chine, cas Fable 5 comme événement fondateur de IA2 |
 | `scripts/veille-continue.mjs` / Routines | ajouter le thème « IA souveraine » à la watchlist (22→23 thèmes) + flux des sources du bloc de référence §5.3 |
 
 **Rupture de série assumée** : les scores I historiques (Information) ne sont pas convertibles
