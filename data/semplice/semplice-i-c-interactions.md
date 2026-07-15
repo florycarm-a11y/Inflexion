@@ -1,3 +1,5 @@
+> ⚠️ **DÉPRÉCIÉE** — la dimension I est devenue Intelligence Artificielle (v3). Voir [semplice-ia-c-interactions.md](semplice-ia-c-interactions.md). Conservé pour l'historique v2 (I = Information).
+
 # SEMPLICE — Interactions Information (I) / Cyber (C)
 
 > **Objectif** : documenter les mecanismes causaux entre les dimensions Information et Cyber,

@@ -54,8 +54,8 @@ Axe engagement-contrôle : `SCI < Importateur/Distributeur < Concessionnaire < A
 
 ### Règles de modulation complémentaires
 
-**K7 — Décote pour I (Information) élevé**
-Si I ≥ 5 (presse muselée, opérations d'influence, censure), pousser d'un cran vers la concertée même si le composite est bon. Exemple : Singapour composite 2.2 mais I=3.2 → conserver Contrôlée mais avec présence locale forte (compliance, communication interne).
+**K7 — Décote pour IA (Intelligence Artificielle) élevée**
+Si **IA ≥ 5** (dépendance IA forte — compute, semi-conducteurs, modèles étrangers, cf. grille v3 §I), rétrograder d'un cran les modalités à forte exposition technologique (hébergement cloud, transferts de données, R&D externalisée) même si le composite global est favorable : la coupure d'accès à un fournisseur IA/cloud étranger est un risque brutal et peu prévisible (cas d'ancrage : retrait du modèle Fable 5, 2026). Sécuriser la présence locale (hébergement souverain ou partenaire technologique de confiance) pour toute activité numérique sensible. Exemple : Singapour composite 2,2 mais IA=2,5 (sous le seuil de 5) → pas de flag IA, le hub compute est jugé suffisamment souverain (cf. `rescoring-ia-2026-07.md` §13) ; une zone à IA ≥ 5 (Cuba IA=5,9, Iran IA=5,1) verrait à l'inverse toute implantation numérique conditionnée à un hébergement local ou un partenaire de confiance.
 
 **K8 — Décote pour C (Cyber) élevé**
 Si C ≥ 5 et l'activité est sensible aux données (tech, finance, défense), pousser vers la concertée avec partenaire local de confiance pour l'hébergement/le routage.
@@ -97,7 +97,7 @@ def recommander_modalite(eval_semplice):
     E = eval_semplice.dimensions["E"].score_final
     LE_moy = (L + E) / 2
     K = eval_semplice.modulo_K.score_final if eval_semplice.modulo_K.actif else None
-    I = eval_semplice.dimensions["I"].score_final
+    IA = eval_semplice.dimensions["I"].score_final  # dimension I = Intelligence Artificielle (v3)
     C = eval_semplice.dimensions["C"].score_final
     velocite_critique = any(d.velocite > 0.5 for d in eval_semplice.dimensions.values())
 
@@ -125,8 +125,8 @@ def recommander_modalite(eval_semplice):
 
     # Couche 2 : modulations
     flags = []
-    if I >= 5:
-        flags.append("I-eleve : renforcer compliance et communication locale")
+    if IA >= 5:
+        flags.append("IA-elevee : heberger localement ou via partenaire tech de confiance")
     if C >= 5:
         flags.append("C-eleve : heberger donnees sensibles localement, partenaire cyber de confiance")
     if eval_semplice.dimensions["L"].indicateurs["L7"].palier <= 2:
@@ -150,13 +150,13 @@ def recommander_modalite(eval_semplice):
 ## Cas types validés
 
 ### Cas 1 — Singapour (composite 2.2)
-- **Inputs** : composite=2.2, L=2.0, E=2.4 (LE_moy=2.2), K=5.0, I=3.2, C=2.0
+- **Inputs** : composite=2.2, L=2.0, E=2.4 (LE_moy=2.2), K=5.0, IA=2.5, C=2.1
 - **Application matrice** : composite ≤ 2.5, LE_moy ≤ 2.5, K=5 → **Contrôlée — Agent commercial / Bureau de représentation**
-- **Modulations** : I=3.2 < 5 (pas de flag I), C=2.0 (pas de flag C), pas de vélocité
+- **Modulations** : IA=2.5 < 5 (pas de flag IA — hub compute jugé suffisamment souverain, cf. `rescoring-ia-2026-07.md` §13), C=2.1 (pas de flag C), pas de vélocité
 - **Recommandation finale** : Contrôlée — Agent + Bureau de représentation. Filiale viable dans un second temps si l'expérience locale est consolidée. Mode paiement : crédoc notifié ou Stand-by LC notifiée.
 
 ### Cas 2 — Inde (composite 3.9)
-- **Inputs** : composite=3.9, L=3.8, E=3.0 (LE_moy=3.4), K=4.4 (Inde Sud) à 5.5 (Inde Nord), I=3.5, C=3.2
+- **Inputs** : composite=3.9, L=3.8, E=3.0 (LE_moy=3.4), K=4.4 (Inde Sud) à 5.5 (Inde Nord), IA=3.5, C=3.2
 - **Application matrice** : composite 2.5-4, LE_moy ≤ 3.5
   - Inde Sud (Tamil Nadu, Kerala) : K=4 → **Contrôlée — Succursale ou agent salarié**
   - Inde Nord (UP, Bihar) : K=5 → **Concertée — JV ou Franchise**
@@ -172,9 +172,9 @@ def recommander_modalite(eval_semplice):
 - **Recommandation finale** : Sous-traitée stricte — Importateur basé hors zone (ex. Côte d'Ivoire pour le Sahel ouest). 100 % paiement d'avance ou crédoc confirmé via banque internationale + assurance Coface si éligible. Présence physique = abstention.
 
 ### Cas 4 — Chine côtière (cas type, hors backtest formel)
-- **Inputs estimés** : composite ~3.8, L=4.5, E=2.8 (LE_moy=3.65), K=6.0, I=6.5, C=5.5
+- **Inputs estimés** : composite ~3.8, L=4.5, E=2.8 (LE_moy=3.65), K=6.0, IA=6.5, C=5.5
 - **Application matrice** : composite 2.5-4, LE_moy > 3.5 → **Concertée — JV avec partenaire institutionnel**
-- **Modulations** : I=6.5 → flag I (compliance + communication locale renforcée), C=5.5 → flag C (héberger données sensibles en Chine)
+- **Modulations** : IA=6.5 → flag IA (héberger localement ou via partenaire tech de confiance), C=5.5 → flag C (héberger données sensibles en Chine)
 - **Recommandation finale** : JV majoritaire chinoise (souvent imposée), partenaire industriel ou ETI privée préférable à un SOE. Crédoc confirmé via banque hong-kongaise ou singapourienne.
 
 ### Cas 5 — Brésil (cas type)
@@ -183,9 +183,9 @@ def recommander_modalite(eval_semplice):
 - **Recommandation finale** : JV avec groupe brésilien établi (familial ou coté). Crédoc confirmé. À noter : la complexité fiscale brésilienne (Custo Brasil) rend le partenaire local particulièrement utile.
 
 ### Cas 6 — Émirats arabes unis (cas type)
-- **Inputs estimés** : composite ~3.0, L=3.0, E=2.5 (LE_moy=2.75), K=6.0, I=5.5, C=3.5
+- **Inputs estimés** : composite ~3.0, L=3.0, E=2.5 (LE_moy=2.75), K=6.0, IA=5.5, C=3.5
 - **Application matrice** : composite 2.5-4, LE_moy ≤ 3.5, K=6 → **Concertée — JV ou Franchise**
-- **Modulations** : I=5.5 → flag I
+- **Modulations** : IA=5.5 → flag IA
 - **Recommandation finale** : JV ou Free Zone (présence directe via DIFC, ADGM, JAFZA). Le statut Free Zone est une modalité hybride : Contrôlée juridiquement mais avec friction culturelle gérée par l'écosystème expat. Crédoc notifié suffit dans les Free Zones.
 
 ### Cas 7 — Allemagne (cas type)
@@ -209,3 +209,4 @@ def recommander_modalite(eval_semplice):
 | Version | Date | Modification |
 |---------|------|-------------|
 | v1.0 | 2026-04-30 | Création — matrice 7 lignes × 3 colonnes, 7 cas calibrants, algorithme pseudocode, mode de paiement associé. Synthèse de la littérature sur les modes d'entrée à l'international (Root 1994, Hill et al. 1990, Brouthers 2002) et sur la sécurisation des transactions internationales (CCI Incoterms 2020, ISP98). |
+| v1.1 | 2026-07-15 | Bascule v3 — modulation K7 « I ≥ 5 (Information) » remplacée par « IA ≥ 5 (Intelligence Artificielle) », pseudocode et cas Singapour/Inde/Chine côtière/Émirats mis à jour (relabellisation IA, valeur Singapour réalignée sur `rescoring-ia-2026-07.md`). Modulations C ≥ 5, L7 ≤ 2 et vélocité inchangées. |
