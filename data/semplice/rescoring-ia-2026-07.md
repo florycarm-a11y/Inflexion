@@ -1,6 +1,6 @@
 # SEMPLICE v3 — Rescoring dimension I (Intelligence Artificielle)
 
-> **Batch 1/3 — 6 zones, en attente de validation**
+> **Batch 2/3 terminé — 12 zones scorées, batch 3 restant**
 > Inflexion Intelligence — Juillet 2026
 
 ---
@@ -10,9 +10,10 @@
 La v3 du cadre SEMPLICE repurpose la dimension **I** : « Information » devient « **Intelligence
 Artificielle** » (construit : *puissance IA souveraine d'un État vs dépendance* — compute, puces,
 modèles, énergie, statecraft). L'ancien bloc informationnel est redistribué vers P (P16-P18) et
-C (C13-C14 + CM1). Ce document rescore IA1-IA9 pour les 6 premières zones (batch 1/3) :
-**ormuz, sahel, ukraine, cuba, chine, madagascar**. Les scores ne sont **pas** encore reportés
-dans `semplice-zones-config.js` — la bascule interviendra après validation des 3 batchs.
+C (C13-C14 + CM1). Ce document rescore IA1-IA9. **Batch 1/3** : ormuz, sahel, ukraine, cuba,
+chine, madagascar. **Batch 2/3** : **turquie, inde, bresil, tamil, arctique, ile-maurice**.
+Les scores ne sont **pas** encore reportés dans `semplice-zones-config.js` — la bascule
+interviendra après validation des 3 batchs.
 
 ## Avertissement — rupture de série
 
@@ -247,7 +248,242 @@ une dépendance IA structurelle (nouveau construit).*
 
 ---
 
-## Récapitulatif Batch 1
+## 7. Turquie (`turquie`)
+
+**Scope** : évaluation nationale. La Turquie illustre le cas de la « moyenne puissance » qui
+*gère* sa dépendance IA plutôt que de la subir : statecraft explicite et coordonné (plan
+présidentiel, TÜBİTAK), mais plafond structurel imposé par le statut Tier 2 de l'ancien cadre
+américain de contrôle export.
+
+| Ind. | Palier | Justification courte | Sources |
+|------|:------:|----------------------|---------|
+| IA1 | 3 | Marché data centers historiquement dominé par les opérateurs télécoms nationaux (Turkcell, Türk Telekom) mais dilution rapide par de nouveaux entrants étrangers (Khazna/G42 : jusqu'à 100 MW près d'Ankara ; Trendyol-Alibaba/Castle Investments : 48 MW à Ankara). Contrôle national estimé 50-65 % (estimation, transition en cours). | GlobalDataCenterHub 2026 ; Arizton 2026 ; Yahoo Finance (Turkey DC Colocation Databook) 2026 |
+| IA2 | 5 | Classée Tier 2 du cadre américain « AI Diffusion Rule » (janvier 2025) : plafond de 50 000 puces IA 2025-2027, aucun accès aux Nvidia H100 ; structure maintenue de fait après l'abrogation partielle de mai 2025 (BIS). Dépendance à un fournisseur unique + contrôles renforcés. | RAND « Understanding the AI Diffusion Framework » 2025 ; Introl 2025 |
+| IA3 | 6 | Capacité commerciale ~66-140 MW selon le périmètre retenu (sources divergentes) fin 2025, rapportée à ~85 M hab. : ~0,8-1,6 W/hab. Bande 0,5-2 (estimation, fourchette large assumée). | BosphorusBits (Medium) 2026-04 ; Mordor Intelligence 2026 |
+| IA4 | 5 | Aucun modèle de fondation turc de rang notable identifié ; dépendance à des modèles étrangers ouverts et propriétaires, malgré les briques souveraineté/défense développées par TÜBİTAK BİLGEM et ASELSAN sur des cas d'usage militaires connexes (hors IA généraliste). | TRT World Research Centre 2026 ; estimation |
+| IA5 | 3 | Aucun rival IA unique dominant projeté sur la Turquie de façon coercive ; posture de « moyenne puissance » navigant entre blocs US/Chine/UE sans alignement exclusif documenté. | SETAV / Daily Sabah « Türkiye's 2026 AI Strategy » ; TRT World Research Centre 2026 |
+| IA6 | 5 | Mobilisation annoncée de 10 Md$ (majoritairement privée) sur plusieurs années pour data centers/cloud/IA, soit ~0,15-0,2 % du PIB turc (~1 200 Md$) en rythme annualisé — bande basse (estimation sur l'annualisation, pas de donnée OECD.AI dédiée). | Türkiye Today 2026 ; Bazaar Times 2026 |
+| IA7 | 5 | 666 sociétés IA recensées, 934 M$ de capital-risque cumulé, mais flux trimestriel modeste (64 M$ sur 39 tours au T1 2026) ; exode de talents qualifiés turcs vers l'UE/US documenté de longue date. Densité et solde migratoire estimés en zone négative légère. | Tracxn 2026 ; KPMG Turquie « Q1 2026 Startup Investments » 2026-06 |
+| IA8 | 4 | Centrale nucléaire d'Akkuyu (4,8 GW, 4 réacteurs VVER-1200) proche de la mise en service (unité 1 attendue 2026) mais tension déjà documentée sur le réseau face à la demande data centers émergente. Tension modérée. | Nuclear Business Platform 2026 ; BosphorusBits (Medium) 2026-04 |
+| IA9 | 2 | Statecraft explicite et structuré : plan IA présidentiel 2026-2030 à quatre piliers (découverte, usage, production, gouvernance), discours d'Erdoğan cadrant le numérique comme « multiplicateur de force » du statecraft contemporain, TÜBİTAK BiGG transformé en fonds d'amorçage (231 investissements en 2024). L'une des postures étatiques les plus coordonnées du panel. | Türkiye Today « Erdogan launches $10 billion AI plan » 2026 ; TRT World Research Centre 2026 |
+
+**Quanti** : (2×3 + 3×5 + 2×6 + 2×5 + 2×3 + 1×5 + 2×5 + 2×4 + 3×2) / 19 = 78/19 = **4,11**
+
+**Quali : 4,0** — La Turquie présente la cohérence stratégique la plus nette du batch : un
+doctrine explicite d'« interdépendance gérée » (indigénisation défense appliquée au numérique,
+diversification des partenaires) plutôt qu'une dépendance passive. Le plafond Tier 2 sur les
+puces reste une contrainte structurelle dure, mais l'État module activement son exposition — d'où
+un quali légèrement inférieur au quanti brut.
+
+**S_I = 0,60 × 4,11 + 0,40 × 4,0 = 2,47 + 1,60 = 4,07 → 4,1**
+
+*Ancien score I (Information) : 5,7 — pour mémoire. La baisse reflète le changement de construit :
+l'ancien score capturait un contrôle informationnel domestique fort ; le nouveau intègre une
+ambition IA réelle mais bridée par la dépendance aux semi-conducteurs.*
+
+---
+
+## 8. Inde (`inde`)
+
+**Scope** : évaluation nationale (Tamil Nadu traité séparément en zone sub-nationale, section
+suivante). L'Inde est le cas le plus net de « rattrapage rapide » du panel : vivier de talent
+considérable, ambition de modèle souverain concrète (Sarvam), mais dépendance totale et sans
+alternative aux puces américaines.
+
+| Ind. | Palier | Justification courte | Sources |
+|------|:------:|----------------------|---------|
+| IA1 | 3 | Base installée mixte : conglomérats indiens (Reliance Jio, Adani, CtrlS, Yotta) et hyperscalers étrangers (AWS, Google, Microsoft) ; le consortium IndiaAI Mission (GPU subventionnés, 34 000 puces livrées, cible 100 000 fin 2026) est porté par des opérateurs majoritairement indiens. Contrôle national estimé 50-65 % (estimation). | NVIDIA Blog « India Fuels Its AI Mission » 2026 ; abhs.in 2026 ; Business Standard 2026-06-29 |
+| IA2 | 4 | « L'Inde n'a pas de puce domestique. Sa base de calcul dépend entièrement de matériel conçu et fabriqué aux États-Unis. » Dépendance à un fournisseur quasi unique (Nvidia), sans sanction ni plafond actif après l'abrogation de la règle AI Diffusion (mai 2025) — mais l'Inde avait été classée en Tier 2 lors de son introduction, frictions documentées. | explainx.ai « India Sovereign AI Status 2026 » ; RAND 2025 |
+| IA3 | 6 | Capacité installée ~1,7-2 GW fin 2026 selon les sources les plus citées (Cushman & Wakefield, Vestian) rapportée à ~1,44 Md hab. : ~1,2-1,4 W/hab, bande 0,5-2. D'autres sources (Mordor) avancent 5,45 GW (~3,8 W/hab, bande 2-5) — écart de périmètre non résolu, estimation prudente retenue. | Business Today « India data centre capacity to reach 1.7 GW » 2026 ; Angel One 2026 ; Mordor Intelligence 2026 |
+| IA4 | 3 | Sarvam AI, startup pilote de la mission IndiaAI, a lancé Sarvam-30B et Sarvam-105B (février 2026) — modèles ouverts nationaux réels, mais de niche/2e rang plutôt que frontière mondiale. | abhs.in 2026 ; explainx.ai 2026 |
+| IA5 | 3 | Aucun rival IA dominant projetant une coercition directe et documentée sur l'Inde ; la Chine constitue un rival régional en avance modérée sur le compute/les modèles sans posture agressive ciblée. | Estimation, cohérente avec l'absence de signal dans les sources consultées |
+| IA6 | 4 | Marché IA indien ~7,8 Md$ (2025) sur un PIB ~4 000 Md$ (~0,2 %), complété par le budget public IndiaAI Mission (1,25 Md$) et une dynamique de capex privé en forte hausse — bande 0,2-0,4 % (estimation, sources de flux hétérogènes). | Ellenox « India AI Infrastructure Statistics 2026 » ; PIB « AI@Work » 2026 |
+| IA7 | 4 | 2e rang mondial pour les chercheurs/inventeurs IA (50 460, derrière les seuls États-Unis), 16 % du vivier IA mondial, effectif IA/ML ~2,75 M (+55 % en un an) — volume considérable compensant en partie un exode qualifié documenté (Stanford AI Index) vers les États-Unis. | Zeki via vaidsics.com 2026 ; India Skills Report 2026 ; The Print (Stanford AI Index) 2026 |
+| IA8 | 4 | ~300 GWh d'électricité propre gaspillés au T1 2026 faute de capacité de transport (goulots de transmission, délais 36-60 mois vs 18-24 mois pour la production) ; tension documentée mais pas de rationnement généralisé. Tension modérée. | IEEFA « India's power-hungry data centre sector at a crossroads » 2026 ; The Week 2026-07-06 |
+| IA9 | 3 | IndiaAI Mission (compute subventionné, soutien à Sarvam), India Semiconductor Mission 2.0 (budget 2026-27) : coordination étatique réelle et volontariste, mais fragmentée entre de multiples entités et sans aucun levier sur le point d'étranglement (les puces). | PIB « Digital India » 2026 ; NVIDIA Blog 2026 |
+
+**Quanti** : (2×3 + 3×4 + 2×6 + 2×3 + 2×3 + 1×4 + 2×4 + 2×4 + 3×3) / 19 = 71/19 = **3,74**
+
+**Quali : 4,0** — L'Inde combine le vivier de talent le plus large du panel, une ambition de
+modèle souverain déjà concrétisée (Sarvam) et une coordination étatique réelle (IndiaAI Mission),
+mais reste chaînée à un fournisseur de puces unique sans alternative domestique et freinée par des
+goulots d'étranglement de transport électrique qui retardent la mise en cohérence de son
+compute avec ses ambitions.
+
+**S_I = 0,60 × 3,74 + 0,40 × 4,0 = 2,24 + 1,60 = 3,84 → 3,8**
+
+*Ancien score I (Information) : 4,5 — pour mémoire. La légère baisse reflète un profil IA plus
+favorable (talent, ambition de modèle souverain) que ne le suggérait l'ancien score informationnel,
+malgré une dépendance aux puces qui demeure totale.*
+
+---
+
+## 9. Brésil (`bresil`)
+
+**Scope** : évaluation nationale. Le Brésil combine l'avantage énergétique le plus favorable du
+batch sur le papier (mix ~88 % renouvelable) et un écosystème IA réel (premier hub de startups
+d'Amérique latine), mais une dépendance totale aux semi-conducteurs et une fiabilité réseau plus
+fragile que ne le suggère le chiffre de mix renouvelable.
+
+| Ind. | Palier | Justification courte | Sources |
+|------|:------:|----------------------|---------|
+| IA1 | 4 | Capacité installée ~1 030 MW (2026), dominée par la colocation (83 % des charges installées en 2025) largement portée par des opérateurs internationaux, mais avec un champion domestique réel (Scala Data Centers, fondé au Brésil). Contrôle national estimé 35-50 % (estimation). | Mordor Intelligence « Brazil Data Center Market » 2026 ; GlobeNewswire 2026-05-19 |
+| IA2 | 4 | ~50 Md$ de puces importées en 2025, quasi totalité du volume ; le projet PocketFab (microfab USP, 60 M puces/an visées, premières versions attendues avril 2026) cible des chiplets de bas/moyen de gamme, non substituables aux accélérateurs IA de pointe. Dépendance à un fournisseur unique (Nvidia via import), sans restriction active documentée. | ClickPetroleoEGas 2026 ; IndexBox « Data Center Semiconductor Market in Brazil » 2026 |
+| IA3 | 5 | Capacité ~1 030 MW / ~216 M hab. : ~4,8 W/hab, bande 2-5. | Mordor Intelligence 2026 |
+| IA4 | 4 | Pas de modèle de fondation brésilien de rang mondial, mais un effort national de niche réel (Sabiá, Maritaca AI) ; dépendance dominante à des modèles étrangers ouverts. | Estimation, absence de couverture dans les sources consultées pour Sabiá 2026 |
+| IA5 | 2 | Aucun rival IA dominant ne projette de coercition documentée sur le Brésil ; concurrence d'influence US/Chine sur les investissements plutôt qu'antagonisme direct. | Estimation |
+| IA6 | 4 | Marché IA ~3 Md$ (2023) en trajectoire vers 11,6 Md$ (2030) sur un PIB ~2 100 Md$ : ratio interpolé ~0,25-0,3 % pour 2025-26, bande 0,2-0,4 % (estimation, trajectoire interpolée). | ISI Markets « Brazil's Digital Agenda » 2026 |
+| IA7 | 5 | Premier hub de startups IA d'Amérique latine (~500 sociétés recensées en 2023, ~2 Md R$ levés), mais aucune couverture MacroPolo/Stanford HAI spécifique au Brésil identifiée ; densité et solde migratoire estimés modérés avec exode qualifié partiel vers l'UE/US. | Estimation, absence de couverture des trackers spécialisés |
+| IA8 | 3 | Mix ~88,2 % renouvelable (hydroélectricité historique) mais fiabilité réseau sous tension réelle : 22 coupures majeures (≥100 MW) au S1 2025, un black-out national (substation en feu, Paraná) et un paradoxe de curtailment (énergie propre gaspillée faute de transport, jusqu'à 40 000 MW projetés en 2029). Équilibre offre/demande nominal mais fragile en pratique. | Rio Times « Brazil's Blackout » 2026 ; GNPW Group 2026 |
+| IA9 | 3 | Plan Brésilien d'IA (PBIA, ~4 Md$ visés d'ici 2028), programme Brasil Semicon (loi 2024), Mission 4 de la Nova Indústria Brasil (186,6 Md BRL visés d'ici 2035) : coordination étatique réelle mais fragmentée entre plusieurs missions et de portée modeste rapportée à l'économie. | ABES 2026 ; gov.br/mcti PBIA 2025 ; ISI Markets 2026 |
+
+**Quanti** : (2×4 + 3×4 + 2×5 + 2×4 + 2×2 + 1×4 + 2×5 + 2×3 + 3×3) / 19 = 71/19 = **3,74**
+
+**Quali : 4,0** — Le Brésil affiche l'avantage énergétique le plus favorable du batch sur le
+papier et un écosystème de startups dynamique, mais le récit de l'« abondance renouvelable » est
+plus fragile en pratique que le chiffre de mix ne le suggère (black-out documenté, curtailment
+massif faute de transport) ; la dépendance aux semi-conducteurs reste par ailleurs totale et sans
+alternative de court terme malgré les premiers pas de PocketFab.
+
+**S_I = 0,60 × 3,74 + 0,40 × 4,0 = 2,24 + 1,60 = 3,84 → 3,8**
+
+*Ancien score I (Information) : 3,5 — pour mémoire. Légère hausse : les deux construits sont
+proches en valeur par coïncidence, l'ancien reflétant un paysage médiatique relativement
+pluraliste, le nouveau une dépendance IA structurelle malgré un écosystème réel.*
+
+---
+
+## 10. Tamil Nadu (`tamil`) — zone sub-national
+
+**Scope** : conformément à `semplice-scope-guidelines.md` (R1-R4), le point de départ est le
+score national indien (S_I = 3,8, quanti 3,74, quali 4,0) — pas une évaluation IA construite ex
+nihilo. Delta régional appliqué **uniquement** là où un fait documenté justifie un écart :
+Chennai concentre ~21 % de la base installée data centers indienne, accueille le premier
+« Sovereign AI Park » du pays (MoU Sarvam, 13 janvier 2026) et dispose d'une politique
+data centers dédiée (2021) avec incitations propres — un hub réel, pas une divergence générique.
+Les indicateurs sans base factuelle de divergence (IA2 : politique douanière fédérale ; IA5 :
+exposition géopolitique nationale) restent **hérités à l'identique** du national.
+
+| Ind. | Palier | Delta vs national | Justification du delta | Sources |
+|------|:------:|:------------------:|-------------------------|---------|
+| IA1 | 3 | = | Même mix d'opérateurs (indiens + hyperscalers étrangers) qu'au niveau national ; pas de divergence structurelle de contrôle identifiée à l'échelle de l'État. | — |
+| IA2 | 4 | = | Politique douanière/exportation fédérale, aucune divergence possible au niveau d'un État. | — |
+| IA3 | 4 | −2 paliers | Chennai = ~21 % de la base installée nationale (~357-420 MW estimés sur une base nationale de 1,7-2 GW) + 134 MW ajoutés en 2026 seuls, sur une population TN ~72-77 M : ~5-6 W/hab, bande 5-10 (vs bande 0,5-2 nationale). Delta le mieux documenté de la fiche. | theprint.in « Inside Chennai's data centres » 2026 ; CRN Asia (STT GDC 45 MW) 2026 |
+| IA4 | 2 | −1 palier | Le Sovereign AI Park de Chennai (MoU Sarvam, 13/01/2026) ancre physiquement dans l'État le cycle complet de la mission IA souveraine indienne (GPU dédiés, LLM indiques/tamouls) — un delta positif documenté, non générique. | Drishti IAS « Tamil Nadu to Establish India's First Sovereign AI Park » 2026 |
+| IA5 | 3 | = | Exposition géopolitique régionale (rival Chine) non différenciable à l'échelle d'un État indien. | — |
+| IA6 | 3 | −1 palier | Flux de capex concentrés documentés (ex. STT GDC : ₹4 200 crore soit ~500 M$ sur un seul projet) rapportés au PIB de l'État (~310 Md$, donnée `semplice-zones-config.js`) suggèrent un ratio supérieur à la moyenne nationale — estimation, base d'un seul projet extrapolée. | CRN Asia 2026 ; estimation |
+| IA7 | 3 | −1 palier | Chennai, avec Bengaluru et Hyderabad, est l'un des trois pôles IT/ingénierie majeurs de l'Inde du Sud — densité de talent supérieure à la moyenne nationale (estimation qualitative, cohérente avec la concentration data centers/tech observée). | Estimation |
+| IA8 | 4 | = | Politique data centers TN impose un minimum de 30 % renouvelable, mais l'État reste connecté au réseau national soumis aux mêmes goulots de transport que la moyenne indienne — pas de preuve de fiabilité matériellement différente. | Adani Connex 2026 (politique DC TN) |
+| IA9 | 2 | −1 palier | MoU direct État-Sarvam pour le Sovereign AI Park, politique data centers dédiée depuis 2021 avec subventions fiscales — un État indien pilotant directement un accord IA souverain est une posture distincte de la moyenne nationale. | Drishti IAS 2026 |
+
+**Quanti** : (2×3 + 3×4 + 2×4 + 2×2 + 2×3 + 1×3 + 2×3 + 2×4 + 3×2) / 19 = 59/19 = **3,11**
+
+**Quali : 3,5** — Tamil Nadu bénéficie d'un effet de concentration réel (le hub Chennai, le
+Sovereign AI Park, une politique d'État proactive depuis 2021) qui améliore son profil par
+rapport à la moyenne nationale indienne, mais hérite intégralement de la dépendance structurelle
+indienne aux semi-conducteurs (IA2, national) et des mêmes goulots de transport électrique
+(IA8, réseau partagé) — aucun État ne peut s'affranchir de ces deux contraintes.
+
+**S_I = 0,60 × 3,11 + 0,40 × 3,5 = 1,87 + 1,40 = 3,27 → 3,3**
+
+*Vérification R4 (`semplice-scope-guidelines.md`)* : écart composite Tamil Nadu (3,3) vs Inde
+nationale (3,8) = 0,5, sous le seuil de 1,5 déclenchant une justification obligatoire — l'écart
+est documenté ci-dessus par prudence méthodologique, pas par obligation du protocole.
+
+*Ancien score I (Information) : 4,0 — pour mémoire. Baisse cohérente avec la trajectoire
+nationale indienne (4,5 → 3,8), Tamil Nadu divergeant légèrement plus favorablement grâce à
+l'effet de hub.*
+
+---
+
+## 11. Arctique (`arctique`) — espace stratégique
+
+**Scope — cas non trivial, à signaler explicitement.** La zone SEMPLICE « Arctique » est
+définie dans `semplice-zones.geojson` comme Groenland + ZEE, et c'est sur cette entité que les
+7 autres dimensions (S, E, M, P, L, C, Ee) sont ancrées. Le cadrage IA fourni pour ce batch
+demande cependant de « scorer l'exposition de la zone » en intégrant les riverains nordiques
+(Islande, Norvège, Groenland/Danemark) comme terres d'accueil de compute occidental — un
+paradoxe réel (hébergement le plus favorable du monde sur le plan climatique/énergétique,
+concentré sur des populations minuscules) qui casserait la cohérence inter-dimensionnelle de la
+zone si les indicateurs quantitatifs étaient calculés sur la population cumulée des trois pays
+(~12 M hab., dont l'essentiel hors Arctique au sens strict pour la Norvège/le Danemark
+métropolitain). **Choix méthodologique retenu** : les indicateurs quantitatifs restent ancrés sur
+le Groenland/Royaume du Danemark (cohérence avec les 7 autres dimensions déjà publiées) ; le
+paradoxe nordique est documenté dans le qualitatif et dans IA1/IA8 (accueil régional), sans
+gonfler artificiellement le score par un dénominateur démographique disproportionné. Ce choix est
+documenté comme **hypothèse ouverte** dans les préoccupations de livraison — cf. rapport final.
+
+| Ind. | Palier | Justification courte | Sources |
+|------|:------:|----------------------|---------|
+| IA1 | 4 | Le Groenland lui-même n'a quasiment aucune capacité installée (un campus « échelle gigawatt » a été proposé pour Kangerlussuaq, janvier 2026 — projet annoncé, non construit) ; les capacités nordiques voisines réellement opérationnelles (AtNorth : > 200 MW Islande/Suède/Danemark ; Verne : 15 MW GPU en Islande) sont portées par des opérateurs islandais/nordiques mais capitalisés par des fonds internationaux (Apax Partners) et des hyperscalers américains (Microsoft, > 1,5 Md$ investis 2024-2025). Contrôle national/régional estimé 35-50 % (estimation, forte incertitude). | DCD « Iceland's AI data center moment » 2026 ; Environment+Energy Leader 2026 ; Greenland Energy 2026 |
+| IA2 | 3 | Islande, Norvège, Danemark : statut allié de premier rang (anciens Tier 1 du cadre AI Diffusion, OTAN/UE), accès aux puces sans restriction mais sans production domestique — fournisseurs alliés diversifiés. | RAND 2025 (référence Tier 1) ; estimation |
+| IA3 | 4 | Capacité data centers nordique documentée dépasse 200 MW (AtNorth) sur une population de la zone stricte (Groenland ~57k hab.) quasi nulle pour le compute réel ; la capacité groenlandaise propre est proche de zéro hors le projet pitché de Kangerlussuaq. Estimation prudente à cheval sur les bandes 5-10 et 10-25 selon le périmètre retenu — fourchette large assumée. | Greenland Energy 2026 ; DCD 2026 |
+| IA4 | 5 | Aucun modèle de fondation groenlandais, islandais ou norvégien de rang notable ; dépendance totale aux modèles étrangers propriétaires (accès commercial non restreint). | Estimation |
+| IA5 | 6 | La puissance dominante qui exerce une pression coercitive sur la zone est, de façon inhabituelle, un allié nominal (OTAN) : campagne de pression documentée des États-Unis sur la souveraineté même du Groenland (menaces tarifaires jusqu'à 25 % contre le Danemark et alliés nordiques, rhétorique d'annexion, « no going back » — janvier 2026), qualifiée par l'OTAN elle-même de facteur déstabilisant dans une région où « Chinois et Russes sont de plus en plus actifs » (Rutte). Illustration extrême, non technologique, de la révocabilité unilatérale documentée ailleurs via Fable 5. | ArcticToday 2026-01 ; Al Jazeera 2026-01-21 ; IISS « The Donroe Doctrine reaches the Arctic » 2026-01 |
+| IA6 | 5 | Aucune donnée OECD.AI/Dealroom dédiée au Groenland ; les flux massifs d'investissement (Microsoft 1,5 Md$, AtNorth 300 MW pipeline) financent de l'infrastructure d'accueil plutôt qu'un écosystème IA domestique au sens de l'indicateur — bande basse retenue par prudence (estimation). | Environment+Energy Leader 2026 |
+| IA7 | 5 | Aucune couverture MacroPolo/Stanford HAI spécifique au Groenland/Islande ; population minuscule limitant tout volume de recherche IA notable malgré des économies prospères — solde migratoire estimé légèrement négatif vers les hubs IA continentaux. | Estimation |
+| IA8 | 1 | Avantage structurel le plus net du batch : froid ambiant + hydroélectricité/géothermie abondante et bon marché, PUE nordique de 1,10-1,15 (vs ~1,5-2 en climat tempéré), explicitement cité comme moteur de la ruée vers l'Arctique des opérateurs IA. Excédent + prix bas. | DCD 2026 ; TechBuzz.ai « AI Labs Push Data Centers to Arctic Circle » 2026 ; Datacenter Knowledge 2026 |
+| IA9 | 5 | Le Groenland (gouvernement autonome, Naalakkersuisut) dispose de leviers marginaux sur sa propre trajectoire numérique dans le contexte actuel de pression américaine sur sa souveraineté même ; l'Islande et la Norvège sont structurellement des hôtes/loueurs d'infrastructure plutôt que des orchestrateurs de champions nationaux. | ArcticToday 2026-01 ; estimation |
+
+**Quanti** : (2×4 + 3×3 + 2×4 + 2×5 + 2×6 + 1×5 + 2×5 + 2×1 + 3×5) / 19 = 79/19 = **4,16**
+
+**Quali : 5,0** — La zone concentre le paradoxe IA le plus aigu du panel : l'avantage
+énergétique/climatique est réel et documenté (IA8 = 1, le meilleur score du batch), mais il
+profite d'abord à des opérateurs et hyperscalers étrangers, tandis que le Groenland — l'entité
+politique au cœur de la zone SEMPLICE — n'a quasiment aucune capacité propre et voit sa
+souveraineté même contestée par la puissance qui domine par ailleurs son écosystème compute
+régional. Le quali est relevé nettement au-dessus du quanti pour capturer ce risque de
+contingence géopolitique (campagne de pression américaine active) qu'aucun palier statique ne
+capture correctement.
+
+**S_I = 0,60 × 4,16 + 0,40 × 5,0 = 2,50 + 2,00 = 4,50 → 4,5**
+
+*Ancien score I (Information) : 3,1 — pour mémoire. Hausse marquée, illustrant la rupture de
+série dans un sens inhabituel : un environnement informationnel ouvert et peu contrôlé (ancien
+construit, score bas) coexiste avec une exposition IA structurelle inédite — dépendance
+d'infrastructure conjuguée à une menace active sur la souveraineté politique de la zone.*
+
+---
+
+## 12. Île Maurice (`ile-maurice`)
+
+**Scope** : évaluation nationale, micro-État insulaire. Cadrage explicite : « statecraft limité
+par la taille » — Maurice articule une ambition numérique réelle et concrète (SEZ de Côte d'Or,
+premier pilier budgétaire dédié à l'IA) mais ne dispose d'aucun levier sur les couches structurelles
+(puces, modèles, compute) et son réseau électrique reste sous tension documentée malgré une
+trajectoire renouvelable active.
+
+| Ind. | Palier | Justification courte | Sources |
+|------|:------:|----------------------|---------|
+| IA1 | 4 | Base de données centers naissante, portée principalement par Mauritius Telecom (opérateur historique à participation étatique, feuille de route de 434 M$ sur 3 ans incluant un « corridor IA/compute » avec clusters GPU et extension Tier IV). Contrôle national estimé 35-50 % via l'opérateur semi-public (estimation, base encore embryonnaire). | Techpoint Africa « Mauritius Telecom's Cloud Transformation » 2026 |
+| IA2 | 3 | Aucune production domestique, mais aucune restriction ni sanction visant Maurice — accès de marché ouvert et diversifié (petite économie insérée dans le commerce mondial sans contrainte export control documentée). | Estimation |
+| IA3 | 6 | Un rapport sectoriel titre explicitement « Why Mauritius Isn't Ready for Major Data Centre Infrastructure » — base installée actuelle très faible malgré une population minuscule (~1,26 M hab.) qui aurait pu, en théorie, gonfler un ratio W/hab ; l'absence de données MW publiées confirme un stade pré-échelle. Bande 0,5-2 (estimation). | Bramston & Associates 2026 |
+| IA4 | 5 | Aucun modèle de fondation mauricien ; dépendance commerciale non restreinte à des modèles étrangers propriétaires. | Estimation |
+| IA5 | 2 | Aucun rival IA dominant ne projette de coercition documentée sur Maurice ; concurrence d'influence Inde/Chine/France présente mais non antagoniste sur le plan IA. | Estimation |
+| IA6 | 6 | Budget national 2026-27 : 25 M MUR (~523 000 $) alloués à une plateforme nationale d'apprentissage IA et au soutien aux startups IA — ratio < 0,01 % du PIB (~14,8 Md$) pour cette ligne dédiée. La feuille de route Côte d'Or/Mauritius Telecom (~530-434 M$ cumulés sur 3 ans) relève davantage de l'infrastructure numérique générale que de l'« investissement IA » au sens strict de l'indicateur — écart documenté, bande 0,03-0,1 % retenue par prudence plutôt que la ligne budgétaire brute. | EDB Mauritius « Budget 2025-2026: AI » ; Africa AI News 2026 |
+| IA7 | 6 | Aucune couverture MacroPolo/Stanford HAI ; vivier bilingue (français/anglais) éduqué mais population minuscule, exode qualifié modéré vers l'UE/Afrique du Sud documenté de longue date pour les profils tech. | Estimation |
+| IA8 | 5 | Tension réseau documentée (« Grid Strain Prompts Call for Power Conservation », marge de sécurité qualifiée de « mince ») malgré une trajectoire active (pipeline renouvelable + stockage de 405 MW sur 3 ans, 40 MW de BESS déjà installés, 20 MW supplémentaires attendus juillet 2026). Tension forte actuelle, trajectoire d'amélioration. | African Security Analysis « Mauritius: Grid Strain » 2026 ; TaiyangNews 2026 |
+| IA9 | 4 | Architecture politique concrète pour un micro-État : SEZ de Côte d'Or (propriété étrangère à 100 %, tarif électrique dédié, récupération TVA, permis accélérés), IA nommée premier des sept piliers stratégiques du budget 2026-27 — leviers réels mais nécessairement partiels compte tenu de l'absence de toute capacité de production ou de financement à l'échelle des enjeux (puces, modèles). | Lawyard.org 2026 ; Ecofin Agency 2026 |
+
+**Quanti** : (2×4 + 3×3 + 2×6 + 2×5 + 2×2 + 1×6 + 2×6 + 2×5 + 3×4) / 19 = 83/19 = **4,37**
+
+**Quali : 4,5** — Maurice articule une ambition numérique authentique et bien conçue pour sa
+taille (SEZ dédiée, priorité budgétaire explicite), mais reste structurellement dépendante sur
+toute la chaîne IA sans aucune capacité de production propre, avec un réseau électrique en tension
+réelle malgré une trajectoire renouvelable active. Le plafond n'est pas un manque de volonté
+politique mais un plafond de taille : aucun micro-État de 1,3 M habitants ne peut construire de
+souveraineté IA au sens plein de la grille.
+
+**S_I = 0,60 × 4,37 + 0,40 × 4,5 = 2,62 + 1,80 = 4,42 → 4,4**
+
+*Ancien score I (Information) : 2,4 — pour mémoire. Forte hausse, rupture de série dans le sens
+attendu : un environnement médiatique pluraliste de petit État ouvert (ancien construit, score
+très bas) coexiste avec une dépendance IA structurelle profonde (nouveau construit) — l'inverse
+exact du cas chinois du batch 1.*
+
+---
+
+## Récapitulatif Batch 1 + 2
 
 | Zone (id) | S_I quanti | Quali | **S_I final** | Ancien I (Information) |
 |-----------|:----------:|:-----:|:-------------:|:----------------------:|
@@ -257,12 +493,28 @@ une dépendance IA structurelle (nouveau construit).*
 | cuba | 5,79 | 6,0 | **5,9** | 5,6 |
 | chine | 2,79 | 3,5 | **3,1** | 6,9 |
 | madagascar | 5,42 | 5,5 | **5,5** | 3,5 |
+| turquie | 4,11 | 4,0 | **4,1** | 5,7 |
+| inde | 3,74 | 4,0 | **3,8** | 4,5 |
+| bresil | 3,74 | 4,0 | **3,8** | 3,5 |
+| tamil (sub-national) | 3,11 | 3,5 | **3,3** | 4,0 |
+| arctique | 4,16 | 5,0 | **4,5** | 3,1 |
+| ile-maurice | 4,37 | 4,5 | **4,4** | 2,4 |
 
-**Lecture d'ensemble** : le nouveau construit discrimine correctement — la Chine (puissance IA
-quasi souveraine) décroche vers le bas, Madagascar (dépendance sans capacité) remonte, les zones
-sous embargo ou en guerre (Cuba, Sahel, Ukraine) restent hautes pour des raisons désormais
-*technologiques* et non plus informationnelles. La règle de cohérence v3 (« si IA ≤ 2 alors
-C ≤ 4 attendu ») n'est déclenchée par aucune zone du batch (minimum : chine à 3,1).
+**Lecture d'ensemble (batch 2)** : le batch 2 confirme la logique de rupture de série du nouveau
+construit et l'affine sur des cas moins tranchés que le batch 1. La Turquie et l'Inde illustrent
+le profil « rattrapage géré » — dépendance réelle aux puces, mais statecraft actif et ambition de
+modèle souverain qui tirent le quali au-dessus d'une lecture purement mécanique de la dépendance.
+Le Brésil confirme qu'un avantage énergétique de façade (mix renouvelable) ne suffit pas à
+garantir un score favorable si la fiabilité réseau et la production de puces restent absentes.
+Tamil Nadu démontre qu'un hub sub-national documenté (concentration data centers, Sovereign AI
+Park) peut justifier un delta favorable de 0,5 point vis-à-vis du national sans rompre la
+cohérence R1-R4 de `semplice-scope-guidelines.md`. L'Arctique et l'Île Maurice sont les deux cas
+de rupture de série les plus marqués du batch (respectivement +1,4 et +2,0 point vs l'ancien score
+Information) : deux profils où un environnement informationnel ouvert masquait une dépendance IA
+structurelle profonde — un micro-État sans capacité de production (Maurice) et une zone hôte
+climatique/énergétique favorable mais sous souveraineté contestée (Arctique). La règle de
+cohérence v3 (« si IA ≤ 2 alors C ≤ 4 attendu ») n'est déclenchée par aucune zone du batch 2
+(minimum : tamil à 3,3, bien au-dessus du seuil de déclenchement).
 
 ## Indicateurs scorés en estimation (donnée publiée introuvable)
 
@@ -274,6 +526,12 @@ C ≤ 4 attendu ») n'est déclenchée par aucune zone du batch (minimum : chine
 | cuba | IA1, IA4, IA6, IA7, IA9 | Écosystème non couvert par les trackers ; paradoxe IA1 documenté dans la fiche |
 | chine | IA7 (bande par habitant) | Volume documenté, densité/100k interpolée |
 | madagascar | IA4, IA6, IA7, IA9 | Écosystème non couvert par les trackers |
+| turquie | IA1 (répartition), IA3 (bande, sources divergentes), IA4, IA6 (annualisation), IA7 (solde) | Périmètre data centers non stabilisé entre sources ; aucune donnée OECD.AI dédiée |
+| inde | IA1 (répartition), IA3 (bande, écart Cushman & Wakefield vs Mordor), IA5, IA6 (flux hétérogènes) | Écart de méthodologie important entre sources sur la capacité DC totale |
+| bresil | IA1 (répartition), IA4 (Sabiá non couvert), IA5, IA6 (trajectoire interpolée), IA7 | Aucune couverture MacroPolo/Stanford HAI spécifique au Brésil |
+| tamil | IA3, IA4, IA6, IA7, IA9 (tous les deltas régionaux) | Chiffres régionaux dérivés par extrapolation de la part Chennai/Inde, non publiés en base autonome |
+| arctique | IA1, IA3 (fourchette large), IA4, IA6, IA7, IA9 | Aucun tracker ne couvre le Groenland/Islande spécifiquement ; choix de périmètre lui-même documenté comme hypothèse ouverte |
+| ile-maurice | IA1, IA3, IA4, IA6 (écart budget IA vs infra), IA7 | Économie trop petite pour une couverture par les trackers internationaux standards |
 
 ## Sources principales
 
@@ -288,10 +546,20 @@ Odessa Journal, digitalstate.gov.ua — écosystème IA ukrainien · CNN (2026-0
 (2026-07-07), TechTimes (2026-07-11), NPR (2026-05-14) — effondrement électrique cubain ·
 DCD/Ecofin (2026-02), Military Africa (2025-12), Georgetown Africa-China Initiative — numérique
 sahélien · D4D Hub (2025-07), IMF Selected Issues (2025), Banque mondiale (2025-02), Africa DCA
-(2026) — Madagascar · Références de la grille v3 : Epoch AI, Stanford HAI, MacroPolo, OECD.AI,
-IEA, SemiAnalysis, Georgetown CSET.
+(2026) — Madagascar · TRT World Research Centre, SETAV/Daily Sabah, Türkiye Today, RAND «AI
+Diffusion Framework», BosphorusBits/Medium, Nuclear Business Platform, Tracxn, KPMG Turquie
+(2026) — Turquie · NVIDIA Blog, explainx.ai, Business Standard, abhs.in, PIB India, Zeki via
+vaidsics.com, The Print/Stanford AI Index, IEEFA, The Week, Ellenox (2026) — Inde · ABES,
+gov.br/mcti (PBIA), ClickPetroleoEGas, IndexBox, ISI Markets, Rio Times, GNPW Group,
+Mordor Intelligence, GlobeNewswire (2026) — Brésil · The Print, CRN Asia, Drishti IAS, Adani
+Connex (2026) — Tamil Nadu/Chennai · DCD, Environment+Energy Leader, TechBuzz.ai, Datacenter
+Knowledge, Greenland Energy, ArcticToday, Al Jazeera, IISS (2026) — Arctique/Groenland ·
+Techpoint Africa, Bramston & Associates, EDB Mauritius, Africa AI News, African Security
+Analysis, TaiyangNews, Lawyard.org, Ecofin Agency (2026) — Île Maurice · Références de la grille
+v3 : Epoch AI, Stanford HAI, MacroPolo, OECD.AI, IEA, SemiAnalysis, Georgetown CSET.
 
 ---
 
-*Statut : Batch 1/3 — 6 zones scorées, en attente de validation. Batchs 2-3 (12 zones
+*Statut : Batch 2/3 terminé — 12 zones scorées (ormuz, sahel, ukraine, cuba, chine, madagascar,
+turquie, inde, bresil, tamil, arctique, ile-maurice), en attente de validation. Batch 3 (zones
 restantes) et bascule `semplice-zones-config.js` : hors périmètre de ce document.*
