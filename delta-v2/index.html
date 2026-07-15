@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#F4F1EA">
+    <title>Inflexion — Delta computationnel</title>
+    <meta
+      name="description"
+      content="Démonstration de l’arbre de scénarios SEMPLICE calculé à partir des données Inflexion."
+    >
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="assets/tree.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#scenario-grid">Aller aux scénarios</a>
+
+    <main id="instrument" class="instrument">
+      <svg id="delta-tree" class="delta-tree" aria-hidden="true"></svg>
+      <aside id="tree-tooltip" class="tree-tooltip" role="tooltip" aria-live="polite" aria-atomic="true" hidden>
+        <p id="tree-tooltip-code" class="tree-tooltip__code">SCÉNARIO</p>
+        <p id="tree-tooltip-title" class="tree-tooltip__title">—</p>
+        <dl id="tree-tooltip-data" class="tree-tooltip__data"></dl>
+        <div id="tree-tooltip-details" class="tree-tooltip__details"></div>
+      </aside>
+      <p id="tree-live-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+
+      <header class="topbar">
+        <a class="wordmark" href="#instrument" aria-label="Inflexion, retour en haut">INFLΞXION</a>
+        <p class="topbar__edition">DELTA / V2.1</p>
+        <p id="data-status" class="topbar__status" role="status">CHARGEMENT DES DONNÉES</p>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro__index" aria-hidden="true">Δ / 02</div>
+        <div class="intro__copy">
+          <p class="eyebrow">MODÈLE SEMPLICE · ARBRE DE SCÉNARIOS</p>
+          <h1 id="page-title">DELTA<br>COMPUTA<wbr>TIONNEL</h1>
+          <p class="intro__deck">
+            Le rendu visible du modèle&nbsp;: chaque trajectoire, sa probabilité et son horizon,
+            calculés depuis les évaluations présentes dans le dépôt.
+          </p>
+        </div>
+        <div class="intro__legend" aria-label="Légende de l’arbre">
+          <p class="legend-title">ENCODAGE</p>
+          <p><span class="legend-line legend-line--thin" aria-hidden="true"></span>ÉPAISSEUR = PROBABILITÉ</p>
+          <p><span class="legend-scale" aria-hidden="true"></span>OBSCURITÉ = HORIZON</p>
+          <p><span class="legend-tick" aria-hidden="true"></span>NŒUD = BIFURCATION</p>
+        </div>
+      </section>
+
+      <section class="model" aria-labelledby="model-title">
+        <article id="model-root" class="module module--root" data-tree-node="root">
+          <div class="module__head">
+            <p class="module__code">SIMPLE/ROOT</p>
+            <p id="model-version" class="module__meta">VERSION —</p>
+          </div>
+          <h2 id="model-title">ARBRE ACTIF</h2>
+          <div class="root-stats" aria-live="polite">
+            <p><strong id="zone-count">—</strong><span>ZONES</span></p>
+            <p><strong id="scenario-count">—</strong><span>SCÉNARIOS</span></p>
+            <p><strong id="probability-total">—</strong><span>DISTRIBUTIONS</span></p>
+          </div>
+          <p id="model-source" class="module__source">SOURCE —</p>
+        </article>
+
+        <div id="scenario-grid" class="scenario-grid" aria-label="Scénarios SEMPLICE"></div>
+      </section>
+
+      <section class="live-grid" aria-label="Flux de contexte en temps réel">
+        <article id="risk-radar" class="module module--stream module--radar">
+          <div class="module__head">
+            <p class="module__code">FLUX/01 · RADAR DE RISQUE</p>
+            <p id="risk-date" class="module__meta">DATE —</p>
+          </div>
+          <h2>CONDITIONS ACTUELLES</h2>
+          <div id="risk-list" class="stream-list"></div>
+          <p id="risk-source-count" class="module__source">SOURCES —</p>
+        </article>
+
+        <article id="signal-matrix" class="module module--stream module--signals">
+          <div class="module__head">
+            <p class="module__code">FLUX/02 · SIGNAUX / SENTIMENT</p>
+            <p id="signal-date" class="module__meta">DATE —</p>
+          </div>
+          <h2>MATRICE DE CONTEXTE</h2>
+          <div class="matrix">
+            <div>
+              <p class="matrix__title">SIGNAUX FAIBLES</p>
+              <div id="signal-list" class="stream-list"></div>
+            </div>
+            <div>
+              <p class="matrix__title">SENTIMENT AGRÉGÉ</p>
+              <div id="sentiment-list" class="sentiment-list"></div>
+            </div>
+          </div>
+          <p class="module__source">AUCUN LIEN SCÉNARIO–SIGNAL N’EST INFÉRÉ</p>
+        </article>
+      </section>
+
+      <section id="archives" class="archives" aria-labelledby="archive-title">
+        <div class="archives__header">
+          <p class="eyebrow">ARCHIVES SEMPLICE</p>
+          <h2 id="archive-title">TRAJECTOIRES OBSERVÉES</h2>
+          <p>Les branches vertes décrivent uniquement les instantanés historiques du dépôt.</p>
+        </div>
+        <div id="archive-grid" class="archive-grid"></div>
+      </section>
+
+      <footer class="footer">
+        <p>INFLΞXION · DELTA COMPUTATIONNEL</p>
+        <p id="footer-provenance">PROVENANCE —</p>
+      </footer>
+    </main>
+
+    <noscript>
+      <p class="noscript">JavaScript est requis pour calculer et afficher l’arbre de scénarios.</p>
+    </noscript>
+  </body>
+</html>
