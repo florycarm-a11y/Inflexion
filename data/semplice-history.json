@@ -15,14 +15,14 @@
   },
   "weights": {
     "risk": {
-      "S": 0.12,
-      "E": 0.15,
       "M": 0.16,
+      "E": 0.15,
       "P": 0.14,
-      "L": 0.1,
-      "I": 0.12,
+      "I": 0.13,
+      "S": 0.12,
       "C": 0.11,
-      "Ee": 0.1
+      "Ee": 0.1,
+      "L": 0.09
     },
     "opportunity": {
       "So": 0.12,
@@ -3268,5 +3268,5 @@
       ]
     }
   },
-  "seriesNote": "2026-07 : dimension I repurposée Information → Intelligence artificielle (v3). Les valeurs scores[5] antérieures au 2026-07-15 relèvent de l'ancien construit Information, archivées par zone sous I_legacy. Rupture de série assumée : pas de comparabilité avant/après."
+  "seriesNote": "2026-07 : dimension I repurposée Information → Intelligence artificielle (v3). Les valeurs scores[5] antérieures au 2026-07-15 relèvent de l'ancien construit Information, archivées par zone sous I_legacy. Rupture de série assumée : pas de comparabilité avant/après. Les composites des snapshots antérieurs au 2026-07-15 ont été calculés avec les poids v2.1 (I:0.12, L:0.10)."
 }
