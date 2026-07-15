@@ -23,7 +23,7 @@ test('aucun composite stocké en dur dans le source', () => {
 
 test('chaque zone : composite = amplifié arrondi, libellé cohérent, bornes [1,7]', () => {
   for (const z of ZONES) {
-    const r = CALC.computeComposite(z.scores, CALC.WEIGHTS_RISK_V21, CALC.DIM_KEYS);
+    const r = CALC.computeComposite(z.scores, CALC.WEIGHTS_RISK_V3, CALC.DIM_KEYS);
     assert.strictEqual(z.composite, CALC.round1(r.amplified), z.id + ' risque');
     assert.strictEqual(z.level, CALC.levelRisk(z.composite), z.id + ' libellé risque');
     const o = CALC.computeComposite(z.opp, CALC.WEIGHTS_OPP, CALC.OPP_KEYS);
