@@ -59,6 +59,8 @@ const WATCHLIST = [
     { id: 'ia-breakthrough', label: 'Percée IA', keywords: ['agi', 'artificial.*general', 'breakthrough.*ai', 'percée.*ia', 'frontier.*model', 'gpt-5', 'claude-4'], category: 'iatech', priority: 'high' },
     { id: 'semiconductor-war', label: 'Guerre des puces', keywords: ['chip.*war', 'semiconductor.*ban', 'asml.*china', 'tsmc.*restriction', 'puce.*embargo'], category: 'iatech', priority: 'critical' },
     { id: 'souverainete-cloud', label: 'Souveraineté cloud', keywords: ['cloud.*souverain', 'sovereign.*cloud', 'gaia-x', 'data.*localization', 'cloud.*act'], category: 'iatech', priority: 'medium' },
+    // Mots-clés courts (≤4 car.) protégés par \b pour éviter les faux positifs (cf. fetch-data.mjs)
+    { id: 'ia-souveraine', label: 'IA souveraine', keywords: ['export controls', 'data center', 'semi-conducteurs', '\\bgpu\\b', '\\bhbm\\b', 'sovereign ai', 'ia souveraine', 'compute', 'puces ia', 'modèle de fondation'], category: 'iatech', priority: 'high' },
 ];
 
 // ─── Catégorie map ──────────────────────────────────────────
