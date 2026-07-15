@@ -1,6 +1,6 @@
 # SEMPLICE v3 — Rescoring dimension I (Intelligence Artificielle)
 
-> **Batch 2/3 terminé — 12 zones scorées, batch 3 restant**
+> **Batchs 1-3 terminés — 18/18 zones scorées, bascule config en attente**
 > Inflexion Intelligence — Juillet 2026
 
 ---
@@ -11,7 +11,8 @@ La v3 du cadre SEMPLICE repurpose la dimension **I** : « Information » devient
 Artificielle** » (construit : *puissance IA souveraine d'un État vs dépendance* — compute, puces,
 modèles, énergie, statecraft). L'ancien bloc informationnel est redistribué vers P (P16-P18) et
 C (C13-C14 + CM1). Ce document rescore IA1-IA9. **Batch 1/3** : ormuz, sahel, ukraine, cuba,
-chine, madagascar. **Batch 2/3** : **turquie, inde, bresil, tamil, arctique, ile-maurice**.
+chine, madagascar. **Batch 2/3** : turquie, inde, bresil, tamil, arctique, ile-maurice.
+**Batch 3/3** : **singapour, republique-tcheque, iran, mexique, vietnam, ethiopie**.
 Les scores ne sont **pas** encore reportés dans `semplice-zones-config.js` — la bascule
 interviendra après validation des 3 batchs.
 
@@ -483,7 +484,244 @@ exact du cas chinois du batch 1.*
 
 ---
 
-## Récapitulatif Batch 1 + 2
+## 13. Singapour (`singapour`)
+
+**Scope** : évaluation nationale, cité-État. Singapour est le cas de gestion la plus aboutie du
+panel : un hub compute majeur d'Asie du Sud-Est, un accès aux puces avancées privilégié malgré les
+contrôles américains (au prix d'un scandale de contournement documenté), et un statecraft central
+piloté au niveau du Premier ministre — mais aucune souveraineté sur les couches structurelles
+(chips, modèles) et une contrainte foncière/énergétique réelle sur une île dense.
+
+| Ind. | Palier | Justification courte | Sources |
+|------|:------:|----------------------|---------|
+| IA1 | 4 | Capacité opérationnelle ~1,4 GW, extension via DC-CFA2 (+200 MW, appel décembre 2025) et projet Jurong Island (jusqu'à 700 MW). Base d'opérateurs mixte : hyperscalers étrangers (Google, Microsoft, AWS, Equinix, Digital Realty) dominants en volume, mais opérateurs nationaux réels et significatifs (ST Telemedia Global Data Centres — Temasek —, Keppel Data Centres) et allocation foncière strictement contrôlée par l'État (EDB/IMDA). Contrôle national estimé 35-50 % (estimation). | Structure Research 2026-06-16 ; Morgan Lewis (DC-CFA2) 2026-03 ; Introl 2026 |
+| IA2 | 3 | Accès de facto privilégié aux puces avancées malgré les contrôles américains (statut de hub régional pour Nvidia/hyperscalers) ; mais un scandale de contournement documenté (saisie d'un manoir de 42 M$, quatre personnes inculpées, serveurs Dell/Supermicro/Asus détournés vers la Chine via Singapour, 2025-2026) illustre la fragilité de ce statut et le risque de durcissement futur des contrôles américains. Fournisseurs alliés diversifiés, sans production nationale. | Tom's Hardware 2026 ; TechSpot 2026 ; Fortune 2026-05-13 |
+| IA3 | 1 | Capacité ~1,4 GW / ~6,04 M hab. : environ 230 W/hab, très au-dessus du seuil haut de la grille (> 40 W/hab), même avant les extensions DC-CFA2 et Jurong Island. | Structure Research 2026-06-16 |
+| IA4 | 3 | Aucun modèle de fondation frontière singapourien, mais un effort national réel de niche : SEA-LION (AI Singapore), famille de modèles ouverts multilingues dédiés à l'Asie du Sud-Est — modèle national compétitif de 2e rang régional plutôt que dépendance pure. | worldngayon.com « Singapore AI Infrastructure 2026 » ; estimation sur le positionnement SEA-LION |
+| IA5 | 2 | Aucun rival IA dominant ne projette de coercition documentée sur Singapour ; la cité-État navigue activement entre blocs US/Chine sans alignement exclusif, la présence chinoise (dont le scandale de contournement révèle la profondeur) constituant un rival présent mais non dominant. | Tom's Hardware 2026 ; estimation |
+| IA6 | 2 | S$1 Md+ sur 5 ans (NAIRD, 2025-2030) + S$500 M+ (NAIS 2.0) + investissements hyperscalers massifs sur le territoire (Microsoft 5,5 Md$ jusqu'en 2029, soit ~1,1 Md$/an) + RIE 37 Md$ (2025-2030, R&D large incluant l'IA) : flux cumulés plausibles > 1 % du PIB (~397-530 Md$ selon la base retenue). | MDDI (NAIRD) 2026 ; littlebigreddot.com (Microsoft) 2026 ; edb.gov.sg (RIE) 2026 |
+| IA7 | 1 | 2e rang mondial pour la densité de chercheurs/développeurs IA (109,5/100k hab., juste derrière la Suisse à 110,5), 1er rang mondial pour la part d'offres d'emploi mentionnant des compétences IA (4,7 %) — solde net positif (pôle d'attraction régional). | Stanford HAI AI Index 2026 ; startupticker.ch 2026 |
+| IA8 | 4 | Île dense et sans ressources énergétiques propres, historiquement contrainte (moratorium sur les nouveaux data centers 2019-2022) ; réouverture conditionnée à des exigences vertes strictes (DC-CFA2 : ≥ 50 % renouvelable, meilleure performance énergétique de classe), dépendance structurelle au gaz importé. Tension modérée gérée activement plutôt que crise. | Introl 2026 ; Morgan Lewis 2026-03 |
+| IA9 | 2 | Conseil national de l'IA présidé par le Premier ministre Lawrence Wong, coordination interministérielle explicite (recherche, régulation, talent, adoption), allocation foncière des data centers pilotée par appels d'offres étatiques (DC-CFA) — statecraft parmi les plus centralisés et cohérents du panel, seul le verrou structurel des puces/modèles échappant au contrôle de l'État. | dollarsandsense.sg (Budget 2026) ; smartnation.gov.sg |
+
+**Quanti** : (2×4 + 3×3 + 2×1 + 2×3 + 2×2 + 1×2 + 2×1 + 2×4 + 3×2) / 19 = 47/19 = **2,47**
+
+**Quali : 2,5** — Singapour est le cas de statecraft le plus abouti du panel : contrôle étatique
+serré de l'allocation foncière et énergétique, attraction nette de talent mondial, capacité
+installée par habitant hors norme, et un modèle régional réel (SEA-LION). L'unique fragilité
+structurelle — l'absence de toute production de puces ou de modèle frontière propre, et le
+scandale de contournement qui rappelle que le statut de hub privilégié reste à la merci d'un
+durcissement américain — maintient le score au-dessus de zéro sans l'alourdir.
+
+**S_I = 0,60 × 2,47 + 0,40 × 2,5 = 1,48 + 1,00 = 2,48 → 2,5**
+
+*Ancien score I (Information) : 3,2 — pour mémoire. Légère baisse : contrairement à la majorité
+des zones du panel, Singapour ne connaît pas de rupture de série marquée — un environnement
+informationnel déjà relativement ouvert (ancien construit) coexiste avec une gestion tout aussi
+maîtrisée de la dépendance IA (nouveau construit). C'est, avec la Chine (en sens inverse), l'un
+des deux seuls scores sous 3,5 du panel des 18 zones — mais par des voies opposées : gestion de
+hub ouvert ici, autonomie souveraine sous embargo côté chinois.*
+
+---
+
+## 14. République tchèque (`republique-tcheque`)
+
+**Scope** : évaluation nationale, membre UE/OTAN. La République tchèque illustre le cas de la
+« dépendance douce intra-alliance » : accès au compute européen (EuroHPC, Karolina/KarolAIna),
+écosystème IA réel mais modeste (Prague/Brno), socle énergétique nucléaire solide — sans les
+frictions Tier 2 subies par la Turquie ni l'isolement des zones sous sanctions.
+
+| Ind. | Palier | Justification courte | Sources |
+|------|:------:|----------------------|---------|
+| IA1 | 3 | Marché data centers commercial modeste (~153-158 MW en 2025-2026) porté majoritairement par des opérateurs domestiques et de colocation régionale, complété par le supercalculateur national IT4Innovations (Karolina, opéré par l'État/EuroHPC). Contrôle national estimé 50-65 % (estimation, marché de colocation internationale encore limité). | Mordor Intelligence « Czechia Data Center Market » 2026 ; IT4Innovations (Karolina) |
+| IA2 | 3 | Aucune production nationale de puces IA de pointe, mais accès de marché non restreint via le cadre européen (aucune sanction, aucun statut Tier 2 documenté) — fournisseurs alliés diversifiés, dépendance encadrée par l'appartenance UE/OTAN plutôt que par un régime bilatéral de licences. | RAND « AI Diffusion Framework » 2025 (référence de cadrage) ; estimation |
+| IA3 | 3 | Capacité commerciale ~153-158 MW (2026) complétée par KarolAIna (~340 puces IA dédiées, 850 PFlop/s) sur ~10,9 M hab. : ~14-15 W/hab, bande 10-25. | Mordor Intelligence 2026 ; IT4Innovations « KarolAIna » 2026-05 |
+| IA4 | 5 | Aucun modèle de fondation tchèque de rang notable identifié ; le Czech AI Factory (lancé mai 2026, campus Prague/Brno) développe des « services IA » et un écosystème d'application plutôt qu'un modèle propre — dépendance à des modèles étrangers ouverts. | it4i.cz (Czech AI Factory) 2026-05 ; estimation |
+| IA5 | 2 | Aucun rival IA dominant ne projette de coercition documentée sur la République tchèque ; membre UE/OTAN sans exposition directe à une pression technologique adverse. | Estimation |
+| IA6 | 5 | Czech AI Factory : budget total ~40 M€ (CZK 1 Md, moitié EuroHPC / moitié national) ; Stratégie nationale des semi-conducteurs (objectif triplement de la production d'ici 2029, 9 000 spécialistes) engage des montants plus larges mais orientés production plutôt qu'IA au sens strict. Rapporté au PIB (~330 Md$, donnée de configuration) : bande basse 0,1-0,2 % (estimation, écosystème réel mais « petit » selon le cadrage). | it4i.cz 2026-05 ; mpo.gov.cz (Stratégie nationale semi-conducteurs) |
+| IA7 | 4 | Pôle technologique réel (Prague CTU/CIIRC, région de Brno en forte croissance liée aux semi-conducteurs), mais aucune couverture MacroPolo/Stanford HAI spécifique ; densité de chercheurs IA modérée, solde migratoire proche de l'équilibre dans le cadre de la libre circulation UE (estimation). | brnotechregion.eu 2026 ; estimation |
+| IA8 | 2 | Parc nucléaire solide (6 réacteurs, 32 TWh/an), extension de Dukovany à 2048 MWe (février 2026), nouveaux réacteurs Dukovany 5&6 en développement, cible de 68 % nucléaire d'ici 2040 — excédent structurel et prix modérés pour l'Europe centrale. | World Nuclear News 2026 ; NucNet 2026-04-05 |
+| IA9 | 4 | Stratégie nationale des semi-conducteurs adoptée (octobre 2024), Czech AI Factory cofinancé EuroHPC/national, mais coordination explicitement intégrée au cadre européen plutôt que portée par une doctrine nationale autonome — leviers partiels, réels mais modestes à l'échelle du pays. | mpo.gov.cz 2026 ; it4i.cz 2026-05 |
+
+**Quanti** : (2×3 + 3×3 + 2×3 + 2×5 + 2×2 + 1×5 + 2×4 + 2×2 + 3×4) / 19 = 64/19 = **3,37**
+
+**Quali : 3,5** — La République tchèque combine un accès au compute et aux puces sans friction
+particulière (cadre UE, aucun statut restrictif à la turque), un socle énergétique nucléaire
+parmi les plus solides du panel, et un écosystème IA réel à Prague/Brno — mais reste, comme
+l'indique le cadrage, une « dépendance douce » : aucune capacité de production propre, aucun
+modèle national, une coordination étatique intégrée à l'échelon européen plutôt que souveraine.
+
+**S_I = 0,60 × 3,37 + 0,40 × 3,5 = 2,02 + 1,40 = 3,42 → 3,4**
+
+*Ancien score I (Information) : 1,6 — pour mémoire. Forte hausse (+1,8), l'une des plus marquées
+du panel : un environnement médiatique pluraliste de démocratie européenne (ancien construit,
+score très bas) coexiste avec une dépendance IA structurelle réelle bien que non conflictuelle
+(nouveau construit) — le même schéma que l'Île Maurice et l'Arctique au batch 2, ici sans aucune
+composante d'isolement ou de pression géopolitique.*
+
+---
+
+## 15. Iran (`iran`)
+
+**Scope** : évaluation nationale. Iran cumule l'embargo technologique le plus dur du panel après
+Cuba et une crise énergétique aiguë (aggravée par les dégâts de guerre sur le réseau), mais
+conserve — à la différence de Cuba — une capacité résiduelle réelle et un statecraft actif :
+plateforme IA nationale (Rakhsh AI), feuille de route « top 10 IA mondiale d'ici 2032 », projet de
+puces domestiques Sahand. Le cadrage impose de distinguer cette capacité résiduelle de la
+dépendance/isolement plutôt que de réduire la zone à un simple palier 7 générique.
+
+| Ind. | Palier | Justification courte | Sources |
+|------|:------:|----------------------|---------|
+| IA1 | 3 | Lecture littérale de l'indicateur, même paradoxe que Cuba : l'embargo total exclut de facto tout hyperscaler occidental, laissant la (faible) capacité existante quasi entièrement étatique/domestique. Contrôle national élevé par défaut — mesure le contrôle, pas la puissance (capturée par IA3/IA6). Estimation, paradoxe assumé. | OFAC (référence sanctions) ; estimation |
+| IA2 | 7 | « Les puces IA avancées sont officiellement interdites à l'Iran en raison des sanctions » ; dépendance à des puces de contrebande et solutions de second rang, écart documenté avec les monarchies du Golfe qui accèdent directement à des systèmes de classe Blackwell. Palier 7 de la grille (type retrait Fable 5, régime permanent). | ts2.tech 2025-06-30 ; recordedfuture.com 2026 |
+| IA3 | 7 | Aucun data center GPU domestique opérationnel à ce stade (le projet Sahand visait une ouverture « début 2025 », retardée) ; capacité négligeable rapportée à ~92 M hab., < 0,5 W/hab sans ambiguïté. | recordedfuture.com 2026 ; aibusiness.com 2026 |
+| IA4 | 3 | Rakhsh AI (chatbot en farsi, génération d'images, optimisé pour l'internet domestique iranien) et plateforme IA nationale annoncée pleinement opérationnelle en 2026 — capacité de niche réelle et documentée, distinguant l'Iran des zones sans aucun produit IA fonctionnel (Sahel, Madagascar). Modèle national de niche. | thenationalnews.com 2025-12-05 ; ts2.tech 2025-06-30 |
+| IA5 | 6 | Pression américaine maximale et documentée (sanctions renforcées, menaces de destruction d'infrastructures technologiques formulées par l'Iran lui-même contre 17 entreprises tech US) ; dégâts de guerre directs sur le réseau électrique (40 jours de conflit, 2 000+ points endommagés, -4 200 MW) — rival dominant + posture agressive, sans preuve d'« IA offensive » spécifiquement dirigée contre l'Iran (d'où 6 et non 7). | Tom's Hardware 2026 ; middleeastmonitor.com 2026-06-25 |
+| IA6 | 6 | 215 M$ de financement R&D alloué pour 2025, cible cumulée de 8 Md$ d'ici 2032 — sur un PIB ~388 Md$ (donnée de configuration), le flux actuel représente ~0,055 %, bande basse 0,03-0,1 %. | aibusiness.com 2026 ; recordedfuture.com 2026 |
+| IA7 | 6 | Base éducative scientifique/ingénierie historiquement solide, mais exode qualifié massif et documenté depuis la crise économique et les mouvements de 2022 — densité résiduelle faible avec exode modéré à sévère (estimation, cohérente avec l'absence de couverture MacroPolo dédiée). | Estimation, cohérente avec le contexte documenté de fuite des cerveaux |
+| IA8 | 6 | Rationnement électrique planifié (préavis 48h) depuis mai 2026, déficit de production estimé entre 10 000 et 18 000 MW pour l'été 2026, aggravé par les dégâts de guerre sur le réseau (-4 200 MW) — tension critique avec rationnement organisé, sans effondrement total généralisé comme à Cuba (d'où 6 et non 7). | voiceofemirates.com 2026-07-13 ; iranintl.com 2025-03 ; middleeastmonitor.com 2026-06-25 |
+| IA9 | 3 | Feuille de route nationale IA ratifiée (mai 2025, objectif top-10 mondial d'ici 2032, 12 % du PIB, 45 % d'intégration industrielle), Organisation nationale de l'IA sous la présidence, projet Sahand (puces domestiques 9N), 215 M$ de R&D dédiés — coordination étatique réelle et volontariste, plafonnée par l'absence de toute capacité de production effective. Leviers significatifs, non complets. | aibusiness.com 2026 ; recordedfuture.com « Iran's AI Ambitions » 2026 |
+
+**Quanti** : (2×3 + 3×7 + 2×7 + 2×3 + 2×6 + 1×6 + 2×6 + 2×6 + 3×3) / 19 = 98/19 = **5,16**
+
+**Quali : 5,0** — Iran combine l'embargo technologique le plus dur du panel (hors Cuba) avec une
+crise énergétique aiguë directement aggravée par la guerre, mais conserve — à la différence de
+Cuba ou du Sahel — une capacité résiduelle réelle (Rakhsh AI, Sahand) et un statecraft
+volontariste et documenté (feuille de route ratifiée, organisation dédiée). Le quali est
+légèrement inférieur au quanti pour refléter cette nuance explicitement demandée par le cadrage :
+la dépendance est structurelle, mais elle n'est pas synonyme d'absence de capacité.
+
+**S_I = 0,60 × 5,16 + 0,40 × 5,0 = 3,10 + 2,00 = 5,10 → 5,1**
+
+*Ancien score I (Information) : 5,9 — pour mémoire. Légère baisse : l'ancien construit capturait
+un contrôle informationnel domestique quasi total (score très élevé) ; le nouveau intègre une
+capacité IA réelle bien que bridée par l'embargo et l'effondrement énergétique — d'où un score
+élevé mais inférieur à Cuba/Sahel, qui n'ont ni programme national documenté ni statecraft
+comparable.*
+
+---
+
+## 16. Mexique (`mexique`)
+
+**Scope** : évaluation nationale. Le Mexique est le cas le plus net de dépendance « à double
+tranchant » du panel : le nearshoring fait de Querétaro l'un des marchés data centers les plus
+dynamiques d'Amérique latine, mais cette capacité est financée et possédée presque entièrement
+par des acteurs américains, sur un réseau électrique déjà identifié comme le goulot d'étranglement
+stratégique de l'ambition IA du pays — sans stratégie IA fédérale aboutie à ce stade.
+
+| Ind. | Palier | Justification courte | Sources |
+|------|:------:|----------------------|---------|
+| IA1 | 6 | ~73 % de la capacité installée mexicaine concentrée à Querétaro, portée quasi exclusivement par des investisseurs américains (CloudHQ 4,8 Md$, AWS/Microsoft/Google 6,3 Md$ combinés) ; participation domestique marginale (utilities locales, foncier). Contrôle national estimé 8-20 % (estimation). | mexicobusiness.news (MEXDC, 82,5 Md$) 2026 ; White & Case 2026 |
+| IA2 | 4 | Aucune production nationale de puces IA ; dépendance à un fournisseur quasi unique (chaîne d'approvisionnement américaine via l'USMCA), sans sanction ni contrôle export actif — accès facilité par le statut de partenaire nearshoring plutôt que contraint par un régime de licences. | moderndiplomacy.eu 2025-11-29 ; estimation |
+| IA3 | 5 | Le marché mexicain est explicitement décrit comme incapable de soutenir des opérations « à l'échelle IA » (seuil de référence > 250 MW dédiés) ; capacité nationale actuelle estimée dans la fourchette basse des standards régionaux latino-américains rapportée à ~130 M hab. : bande 2-5 W/hab (estimation, absence de chiffre MW national consolidé dans les sources). | mexicobusiness.news (Querétaro) 2026 ; riotimesonline.com 2026 |
+| IA4 | 5 | Aucun modèle de fondation mexicain identifié ; Coatlicue (supercalculateur public, 314 PFlop/s, 14 480 GPU) est une infrastructure de calcul mise à disposition des chercheurs, pas encore un modèle propre livré — dépendance à des modèles étrangers propriétaires. | latintimes.com (Coatlicue) 2026 ; sciencealert.com 2026 |
+| IA5 | 1 | Aucun rival IA dominant ne projette de coercition sur le Mexique ; les États-Unis sont un partenaire USMCA structurant (asymétrie de dépendance capturée par IA1/IA2/IA9), non un rival adverse au sens de cet indicateur. | Estimation |
+| IA6 | 3 | Coatlicue : 327 M$ (investissement ponctuel) ; pipeline data centers 82,5 Md$ sur 2026-2031 (~13,75 Md$/an, majoritairement capex privé étranger mêlant IA et cloud générique) ; part attribuable à l'IA au sens strict estimée bande 0,4-0,8 % du PIB (~1 790 Md$, donnée de configuration), estimation prudente cohérente avec le traitement du Brésil au batch 2. | mexicobusiness.news (MEXDC) 2026 ; latintimes.com 2026 |
+| IA7 | 5 | Accord de formation avec le C-DAC indien pour développer une main-d'œuvre spécialisée (signal de déficit domestique de compétences HPC/IA) ; Coatlicue explicitement positionné pour « prévenir la fuite des cerveaux » — base scientifique réelle mais exode structurel documenté vers les États-Unis. Solde négatif léger. | latintimes.com 2026 ; aztecreports.com 2026 |
+| IA8 | 5 | « Le réseau national comme frein silencieux » : la capacité, qualité et fiabilité du réseau de transmission de la CFE sont explicitement identifiées comme la contrainte stratégique majeure de l'ambition IA/semi-conducteurs mexicaine ; instabilité du réseau et pénuries d'eau documentées à Querétaro du fait du boom des data centers lui-même. Tension forte. | moderndiplomacy.eu 2025-11-29 ; mexicobusiness.news (Querétaro) 2026 |
+| IA9 | 4 | Plan México 2025-2030 positionne la technologie comme axe stratégique de souveraineté scientifique, Coatlicue et consolidation des projets semi-conducteurs sous l'agenda de souveraineté technologique — mais aucune stratégie IA fédérale aboutie à ce stade (cadrage), coordination réelle mais encore partielle. | mexicobusiness.news (Plan México) 2026 ; datagovhub.elliott.gwu.edu 2026 |
+
+**Quanti** : (2×6 + 3×4 + 2×5 + 2×5 + 2×1 + 1×3 + 2×5 + 2×5 + 3×4) / 19 = 81/19 = **4,26**
+
+**Quali : 4,5** — Le Mexique illustre le cas le plus pur de dépendance à double tranchant du
+panel : le nearshoring apporte un volume d'investissement considérable et un accès facilité au
+compute et aux puces via l'intégration USMCA, mais cette capacité est à plus de 70 % étrangère,
+sur un réseau électrique déjà identifié par les analystes comme le goulot d'étranglement
+stratégique — et sans stratégie IA fédérale aboutie capable d'orienter cette dynamique. Le quali
+est relevé au-dessus du quanti pour capturer le risque de levier américain latent (accès
+actuellement ouvert, mais structurellement révocable, écho du précédent Fable 5).
+
+**S_I = 0,60 × 4,26 + 0,40 × 4,5 = 2,56 + 1,80 = 4,36 → 4,4**
+
+*Ancien score I (Information) : 3,3 — pour mémoire. Hausse marquée (+1,1) : un paysage médiatique
+relativement pluraliste (ancien construit) coexiste avec une dépendance IA structurelle nouvelle,
+portée par un nearshoring dont le Mexique capte les retombées d'investissement sans en détenir la
+souveraineté.*
+
+---
+
+## 17. Vietnam (`vietnam`)
+
+**Scope** : évaluation nationale. Le Vietnam est le profil de « rattrapage actif » le plus
+documenté du batch : partenariat NVIDIA structurant (centre R&D + data center IA, MoU
+décembre 2024, croissance ~90 % de l'activité du centre entre 2025 et 2026), stratégie
+semi-conducteurs volontariste (formation, empaquetage, objectifs de fabs), mais un réseau
+électrique à dominante charbon déjà sous tension saisonnière — tension que l'expansion des data
+centers et de l'IA elle-même contribue à aggraver.
+
+| Ind. | Palier | Justification courte | Sources |
+|------|:------:|----------------------|---------|
+| IA1 | 4 | Le data center IA prévu dans le MoU NVIDIA-gouvernement (décembre 2024) est un partenariat, pas une propriété domestique pleine ; les opérateurs télécoms nationaux (Viettel, VNPT) détiennent une base réelle mais le marché commercial reste jeune. Contrôle national estimé 35-50 % (estimation, transition en cours comparable à la Turquie). | mpi.gov.vn 2024-12 ; technode.global 2026-06-30 |
+| IA2 | 4 | Aucune production nationale de puces IA de pointe ; dépendance à un fournisseur quasi unique (Nvidia) sans statut de restriction documenté après l'abrogation de la règle AI Diffusion (mai 2025), mais sans production domestique alternative. Dépendance à un fournisseur unique. | technode.global 2026-06-30 ; RAND 2025 (référence de cadrage) |
+| IA3 | 6 | Marché data centers commercial encore modeste par rapport à la population (~100 M hab.), en phase de démarrage malgré le partenariat NVIDIA ; bande basse 0,5-2 W/hab (estimation, absence de chiffre national consolidé publié). | technode.global 2026-06-30 ; b-company.jp (Q1 2026) 2026 |
+| IA4 | 4 | Modèle de langue vietnamien construit sur la plateforme NeMo de Nvidia, classé 1er du classement VMLU — capacité réelle mais construite sur une infrastructure et un cadre logiciel étrangers plutôt que souveraine ; dépendance à des modèles ouverts étrangers pour l'essentiel de la pile. | nvidianews.nvidia.com 2026 ; technode.global 2026-06-30 |
+| IA5 | 3 | La Chine constitue un rival régional en avance modérée sur le compute/les modèles (tensions plus larges en mer de Chine méridionale) sans coercition IA documentée dirigée spécifiquement contre le Vietnam. | Estimation, cohérente avec le traitement Turquie/Inde du batch 2 |
+| IA6 | 4 | Samsung 1,5 Md$ (installation de test dédiée, mai 2026), FPT (usine d'empaquetage/test), objectif de formation 50 000 ingénieurs semi-conducteurs d'ici 2030 — flux réels mais rapportés au PIB (~430 Md$, donnée de configuration) restent dans la bande 0,2-0,4 % (estimation, agrégation hétérogène des annonces). | fptsoftware.com 2026 ; masvn.com (FDI semiconducteurs) 2026 |
+| IA7 | 4 | Vivier d'ingénieurs STEM explicitement cité par Nvidia comme motivation de l'implantation du centre R&D ; centre VRDC en croissance ~90 % (2025-2026), contribution directe à des programmes stratégiques Nvidia globaux — dynamique positive mais densité et solde encore modérés à l'échelle nationale (estimation). | nvidianews.nvidia.com 2026 ; technode.global 2026-06-30 |
+| IA8 | 5 | Charbon = 59 % du mix électrique, demande en croissance 12-15 %/an, risques de pénurie en saison sèche 2026 explicitement anticipés par l'opérateur national EVN, data centers et expansion de l'IA cités comme facteurs de pression parmi les principaux moteurs de la demande. Tension forte, avec plans de contingence actifs. | vietnamplus.vn (EVN, contingence 2026) 2026 ; powergenadvancement.com 2026 |
+| IA9 | 3 | MoU direct gouvernement-Nvidia (ministère du Plan et de l'Investissement), loi IA contraignante (première d'Asie du Sud-Est selon les sources consultées), stratégie semi-conducteurs par phases (100 sociétés de conception, 1 fab, 10 usines d'empaquetage/test visées d'ici 2030) — coordination étatique réelle et volontariste. | mpi.gov.vn 2024-12 ; worldngayon.com (loi IA) 2026 |
+
+**Quanti** : (2×4 + 3×4 + 2×6 + 2×4 + 2×3 + 1×4 + 2×4 + 2×5 + 3×3) / 19 = 77/19 = **4,05**
+
+**Quali : 4,0** — Le Vietnam présente la trajectoire de rattrapage la plus crédible du batch : un
+partenariat NVIDIA structurant qui produit déjà un résultat concret (modèle en langue
+vietnamienne classé 1er du VMLU), une stratégie semi-conducteurs par étapes avec objectifs de
+formation chiffrés, et une loi IA contraignante — mais une dépendance totale aux infrastructures
+et puces étrangères, sur un réseau électrique à dominante charbon déjà sous tension saisonnière
+que la croissance de l'IA elle-même contribue à aggraver.
+
+**S_I = 0,60 × 4,05 + 0,40 × 4,0 = 2,43 + 1,60 = 4,03 → 4,0**
+
+*Ancien score I (Information) : 5,5 — pour mémoire. Forte baisse (-1,5) : l'ancien construit
+capturait un contrôle informationnel domestique élevé ; le nouveau intègre une dynamique de
+rattrapage IA réelle et documentée (partenariat NVIDIA, loi IA, stratégie semi-conducteurs) qui
+place le Vietnam dans la même fourchette que la Turquie — le profil de « rattrapage géré » de
+référence pour ce batch.*
+
+---
+
+## 18. Éthiopie (`ethiopie`)
+
+**Scope** : évaluation nationale. L'Éthiopie combine l'avantage énergétique le plus singulier du
+panel — le barrage GERD (5 GW, mis en service septembre 2025, doublant la capacité de génération
+nationale) — avec une dépendance IA structurelle sur toutes les autres couches. Conformément au
+cadrage, l'« usine IA à 1 Md$ » annoncée est scorée avec prudence : le financement repose
+largement sur des engagements externes non confirmés (dont un pledge panafricain émirati) plutôt
+que sur du capital domestique engagé.
+
+| Ind. | Palier | Justification courte | Sources |
+|------|:------:|----------------------|---------|
+| IA1 | 4 | Secteur data centers naissant, dominé par des acteurs semi-publics (Ethio Telecom) sur un marché encore très en retard des pairs continentaux (Kenya, Nigeria, Afrique du Sud captent l'essentiel des investissements data centers africains) ; l'« usine IA » annoncée intègre des partenaires internationaux qui diluent la souveraineté à mesure qu'elle se concrétise. Contrôle national estimé 35-50 % (estimation, base extrêmement réduite). | ecofinagency.com (data centers Afrique) 2026 ; aireports.africa 2026-02-09 |
+| IA2 | 4 | Aucune production ni levier sur les puces IA ; dépendance d'importation simple sans sanction ni contrôle export documenté visant l'Éthiopie — marché ouvert, dépendance non aggravée par des contraintes externes (à la différence du Sahel). | Estimation, cohérent avec le traitement Madagascar (batch 1) |
+| IA3 | 7 | L'Éthiopie figure parmi un groupe de 7 pays africains attendant un investissement data centers cumulé de seulement 1,36 Md$ d'ici 2031 — capacité actuelle négligeable rapportée à ~128 M hab., < 0,5 W/hab sans ambiguïté. | africadca.org « Data Centres in Africa 2026 » |
+| IA4 | 5 | Aucun modèle de fondation éthiopien identifié ; l'Institut éthiopien d'IA (EAII, créé en 2020) est orienté recherche/régulation/application (santé, agriculture, gouvernement) plutôt que développement de modèle compétitif — dépendance à des modèles étrangers ouverts. | undp.org (AI UniPod) 2026 ; unesco.org (Ethiopia AI governance) 2026 |
+| IA5 | 3 | Présence technologique chinoise (télécoms, infrastructure) et pledge d'investissement émirati structurants mais non coercitifs ; aucune puissance rivale ne projette de capacité IA hostile vers la zone. Rival présent, avance modérée. | aireports.africa 2026-02-09 |
+| IA6 | 6 | L'« usine IA à 1 Md$ » annoncée repose substantiellement sur des engagements externes non garantis (dont une part du pledge panafricain de 1 Md$ des Émirats arabes unis) plutôt que sur du capital domestique confirmé ; les analystes documentent l'absence de base de capital-risque locale et des doutes sur la fiabilité électrique/compétences pour justifier le déploiement annoncé. Flux réellement engagés estimés bande basse 0,03-0,1 % du PIB (~156 Md$, donnée de configuration) — écart annonce/réalité documenté par prudence méthodologique. | aireports.africa 2026-02-09 ; restofworld.org 2025 |
+| IA7 | 6 | Pénurie de compétences IA/data science documentée : 101e rang mondial au Coursera Global Skills Report ; l'université IA annoncée (1 000 diplômés/an visés) reste un projet non encore opérationnel. Densité très faible, exode modéré. | thereporterethiopia.com (World Bank AI readiness) 2026 ; nucamp.co 2026 |
+| IA8 | 4 | Avantage structurel réel et documenté : GERD (5 GW, mis en service septembre 2025) double la capacité de génération nationale ; accord de transmission de 400 M$ (GridWorks, janvier 2026) pour désenclaver l'éolien/solaire du nord-est ; modernisation du réseau assistée par IA (Ethiopian Electric Utility). Mais l'objectif officiel de 96 % de connexion au réseau d'ici 2030 confirme un accès de base encore incomplet — tension modérée pour toute charge industrielle de grande échelle malgré le potentiel. | africanexponent.com (GERD) 2026 ; tvbrics.com (IA réseau) 2026 |
+| IA9 | 4 | Politique nationale d'IA, Stratégie nationale d'IA, Digital Ethiopia 2030, Institut éthiopien d'IA (2020), AI UniPod (UNDP/Addis Ababa University) — architecture institutionnelle réelle et suivie dans la durée pour une économie à bas revenu, mais capacité de financement et d'exécution structurellement limitée face à l'ampleur des annonces. Leviers partiels. | undp.org 2026 ; ifa.gov.et « Silicon Diplomacy » 2026-03 |
+
+**Quanti** : (2×4 + 3×4 + 2×7 + 2×5 + 2×3 + 1×6 + 2×6 + 2×4 + 3×4) / 19 = 88/19 = **4,63**
+
+**Quali : 5,0** — L'Éthiopie présente l'écart annonce/réalité le plus net du batch : un
+méga-projet énergétique authentique (GERD) et une architecture de politique IA cohérente et
+suivie depuis 2020, mais un secteur data centers encore pré-échelle, une pénurie de compétences
+documentée, et un chiffre-phare (« usine IA à 1 Md$ ») qui repose largement sur des engagements
+externes non confirmés plutôt que sur du capital domestique engagé. Le quali est relevé au-dessus
+du quanti pour capturer ce risque d'écart entre annonce et réalisation, conformément à la demande
+explicite du cadrage de scorer honnêtement l'un et l'autre.
+
+**S_I = 0,60 × 4,63 + 0,40 × 5,0 = 2,78 + 2,00 = 4,78 → 4,8**
+
+*Ancien score I (Information) : 4,8 — pour mémoire. Stabilité de façade : les deux construits
+sont proches en valeur par coïncidence (l'ancien reflétait un environnement médiatique sous
+contrôle partiel, le nouveau une dépendance IA structurelle compensée par un avantage énergétique
+réel) — la proximité numérique ne traduit aucune continuité de fond, cohérent avec l'avertissement
+de rupture de série en tête de document.*
+
+---
+
+## Récapitulatif final — 18 zones
 
 | Zone (id) | S_I quanti | Quali | **S_I final** | Ancien I (Information) |
 |-----------|:----------:|:-----:|:-------------:|:----------------------:|
@@ -499,6 +737,12 @@ exact du cas chinois du batch 1.*
 | tamil (sub-national) | 3,11 | 3,5 | **3,3** | 4,0 |
 | arctique | 4,16 | 5,0 | **4,5** | 3,1 |
 | ile-maurice | 4,37 | 4,5 | **4,4** | 2,4 |
+| singapour | 2,47 | 2,5 | **2,5** | 3,2 |
+| republique-tcheque | 3,37 | 3,5 | **3,4** | 1,6 |
+| iran | 5,16 | 5,0 | **5,1** | 5,9 |
+| mexique | 4,26 | 4,5 | **4,4** | 3,3 |
+| vietnam | 4,05 | 4,0 | **4,0** | 5,5 |
+| ethiopie | 4,63 | 5,0 | **4,8** | 4,8 |
 
 **Lecture d'ensemble (batch 2)** : le batch 2 confirme la logique de rupture de série du nouveau
 construit et l'affine sur des cas moins tranchés que le batch 1. La Turquie et l'Inde illustrent
@@ -516,6 +760,24 @@ climatique/énergétique favorable mais sous souveraineté contestée (Arctique)
 cohérence v3 (« si IA ≤ 2 alors C ≤ 4 attendu ») n'est déclenchée par aucune zone du batch 2
 (minimum : tamil à 3,3, bien au-dessus du seuil de déclenchement).
 
+**Lecture d'ensemble (batch 3)** : le batch 3 apporte deux extrêmes inédits au panel. Singapour
+(2,5) devient le score le plus bas des 18 zones — un hub compute intégralement géré par un
+statecraft centralisé, sans jamais atteindre la souveraineté chinoise sur les puces ou les
+modèles. Le Vietnam (4,0) et le Mexique (4,4) confirment, aux côtés de la Turquie (4,1), le profil
+« rattrapage géré » déjà identifié au batch 2 : partenariats étrangers structurants (NVIDIA,
+nearshoring USMCA) qui contiennent la dépendance sans l'éliminer. L'Iran (5,1) est le cas le plus
+nuancé du batch : l'embargo le plus dur du panel après Cuba, aggravé par des dégâts de guerre sur
+le réseau électrique, mais une capacité résiduelle documentée (Rakhsh AI, Sahand) et un statecraft
+volontariste qui l'écartent nettement du palier Sahel/Cuba malgré un contexte de crise. La
+République tchèque confirme, comme l'Île Maurice et l'Arctique au batch 2, le schéma de rupture de
+série « démocratie ouverte à ancien score bas / dépendance IA réelle » (+1,8 point), mais sans
+aucune composante de pression ou d'isolement géopolitique — la dépendance y est purement
+structurelle et intra-alliance. L'Éthiopie referme le panel sur son cas le plus instructif d'écart
+annonce/réalité : un méga-projet énergétique authentique (GERD) et une architecture de politique
+IA suivie depuis 2020, contrebalancés par un chiffre-phare (« usine IA à 1 Md$ ») documenté comme
+largement non engagé. La règle de cohérence v3 n'est déclenchée par aucune zone du batch 3
+(minimum : singapour à 2,5, au-dessus du seuil de 2).
+
 ## Indicateurs scorés en estimation (donnée publiée introuvable)
 
 | Zone | Indicateurs | Nature de l'estimation |
@@ -532,6 +794,12 @@ cohérence v3 (« si IA ≤ 2 alors C ≤ 4 attendu ») n'est déclenchée par a
 | tamil | IA3, IA4, IA6, IA7, IA9 (tous les deltas régionaux) | Chiffres régionaux dérivés par extrapolation de la part Chennai/Inde, non publiés en base autonome |
 | arctique | IA1, IA3 (fourchette large), IA4, IA6, IA7, IA9 | Aucun tracker ne couvre le Groenland/Islande spécifiquement ; choix de périmètre lui-même documenté comme hypothèse ouverte |
 | ile-maurice | IA1, IA3, IA4, IA6 (écart budget IA vs infra), IA7 | Économie trop petite pour une couverture par les trackers internationaux standards |
+| singapour | IA1 (répartition), IA6 (agrégation flux hétérogènes) | Part exacte des opérateurs domestiques (STT GDC, Keppel) vs hyperscalers étrangers non consolidée en une seule source ; flux IA vs RIE générique non désagrégés |
+| republique-tcheque | IA1, IA4, IA6 (annualisation), IA7 | Marché de colocation internationale encore jeune, aucune donnée OECD.AI dédiée, écosystème Prague/Brno non couvert par MacroPolo |
+| iran | IA1 (paradoxe documenté), IA7 (densité/exode) | Écosystème non couvert par les trackers internationaux sous sanctions ; exode qualifié documenté qualitativement, non quantifié |
+| mexique | IA3 (bande, absence de chiffre MW national consolidé), IA4, IA6 (part IA du capex data centers générique) | Marché en forte croissance mais mal consolidé statistiquement à l'échelle nationale |
+| vietnam | IA1 (répartition), IA3 (bande), IA6 (agrégation annonces), IA7 (densité) | Marché data centers émergent, aucune donnée OECD.AI/MacroPolo dédiée au Vietnam |
+| ethiopie | IA1, IA4, IA6 (écart annonce/réalité documenté), IA7, IA9 | Écosystème pré-échelle, non couvert par les trackers ; écart explicite entre chiffres annoncés et capital engagé |
 
 ## Sources principales
 
@@ -555,11 +823,73 @@ Mordor Intelligence, GlobeNewswire (2026) — Brésil · The Print, CRN Asia, Dr
 Connex (2026) — Tamil Nadu/Chennai · DCD, Environment+Energy Leader, TechBuzz.ai, Datacenter
 Knowledge, Greenland Energy, ArcticToday, Al Jazeera, IISS (2026) — Arctique/Groenland ·
 Techpoint Africa, Bramston & Associates, EDB Mauritius, Africa AI News, African Security
-Analysis, TaiyangNews, Lawyard.org, Ecofin Agency (2026) — Île Maurice · Références de la grille
-v3 : Epoch AI, Stanford HAI, MacroPolo, OECD.AI, IEA, SemiAnalysis, Georgetown CSET.
+Analysis, TaiyangNews, Lawyard.org, Ecofin Agency (2026) — Île Maurice · Structure Research
+(2026-06-16), Morgan Lewis (DC-CFA2, 2026-03), Introl, MDDI Singapour (NAIRD), Stanford HAI AI
+Index 2026, Tom's Hardware/TechSpot/Fortune (contournement puces, 2026) — Singapour · Mordor
+Intelligence (Czechia DC Market), IT4Innovations (Karolina/KarolAIna, 2026-05), World Nuclear
+News, NucNet (2026-04), mpo.gov.cz (Stratégie nationale semi-conducteurs), brnotechregion.eu —
+République tchèque · ts2.tech, The National (2025-12-05), Recorded Future, AI Business,
+Tom's Hardware, middleeastmonitor.com, voiceofemirates.com, iranintl.com (2026) — Iran ·
+mexicobusiness.news (MEXDC, Plan México, Coatlicue), moderndiplomacy.eu (2025-11-29), White &
+Case, latintimes.com, aztecreports.com, riotimesonline.com (2026) — Mexique · NVIDIA
+Newsroom/Blog, mpi.gov.vn (2024-12), technode.global (2026-06-30), b-company.jp, worldngayon.com,
+vietnamplus.vn (EVN), fptsoftware.com, masvn.com (2026) — Vietnam · africanexponent.com (GERD),
+ecofinagency.com, africadca.org (Data Centres in Africa 2026), aireports.africa, undp.org (AI
+UniPod), ifa.gov.et, thereporterethiopia.com, tvbrics.com, restofworld.org (2025-2026) —
+Éthiopie · Références de la grille v3 : Epoch AI, Stanford HAI, MacroPolo, OECD.AI, IEA,
+SemiAnalysis, Georgetown CSET.
+
+## Lecture d'ensemble — 18 zones
+
+**Classement par S_I** (du mieux positionné au plus dépendant) :
+
+| Rang | Zone | S_I | Rang | Zone | S_I |
+|:----:|------|:---:|:----:|------|:---:|
+| 1 | Singapour | 2,5 | 10 | Mexique | 4,4 |
+| 2 | Chine | 3,1 | 10 | Île Maurice | 4,4 |
+| 3 | Tamil Nadu | 3,3 | 12 | Arctique | 4,5 |
+| 4 | République tchèque | 3,4 | 13 | Ukraine | 4,8 |
+| 5 | Inde | 3,8 | 13 | Éthiopie | 4,8 |
+| 5 | Brésil | 3,8 | 15 | Iran | 5,1 |
+| 7 | Vietnam | 4,0 | 16 | Madagascar | 5,5 |
+| 8 | Turquie | 4,1 | 17 | Sahel | 5,9 |
+| 9 | Ormuz | 4,2 | 17 | Cuba | 5,9 |
+
+**Observations structurantes** :
+
+1. **Qui possède, par deux voies opposées.** Seules deux zones passent sous 3,5 : la Chine (3,1),
+   qui a bâti une souveraineté compute/modèles/énergie réelle sous embargo, et Singapour (2,5),
+   qui ne produit rien mais gère sa dépendance avec le statecraft le plus centralisé et le plus
+   efficace du panel. Aucune autre zone n'approche ce niveau — même les économies développées du
+   panel (République tchèque, Brésil, Inde) restent dépendantes sur au moins deux couches
+   structurelles (puces et modèles).
+2. **Qui dépend, sans nuance.** Sahel et Cuba ferment le classement ex æquo à 5,9 : embargo ou
+   isolement total, effondrement énergétique documenté, aucune capacité de production sur aucune
+   couche. L'Iran (5,1), bien que sous un régime de sanctions presque aussi dur, s'en écarte
+   nettement grâce à une capacité résiduelle documentée (Rakhsh AI, Sahand) et un statecraft
+   volontariste — la différence entre isolement subi et isolement piloté.
+3. **Le « rattrapage géré » est le profil médian du panel.** Vietnam (4,0), Turquie (4,1), Ormuz
+   (4,2), Mexique (4,4) et Inde (3,8) partagent un même schéma : dépendance réelle aux puces et
+   aux modèles étrangers, mais un statecraft actif (MoU structurants, plans nationaux, missions
+   dédiées) qui contient — sans l'éliminer — cette dépendance. C'est le groupe le plus dense du
+   classement, signe que la « souveraineté IA » est rarement binaire.
+4. **Là où le construit diverge le plus de l'ancien score Information.** Dans le sens de la
+   hausse : Île Maurice (+2,0), République tchèque (+1,8), Arctique (+1,4) — trois démocraties ou
+   quasi-démocraties ouvertes dont l'ancien score bas masquait une dépendance IA structurelle
+   réelle, sans lien avec le contrôle informationnel. Dans le sens de la baisse : Chine (-3,8),
+   Vietnam (-1,5), Ormuz (-2,7), Turquie (-1,6) — des régimes à contrôle informationnel élevé dont
+   le nouveau score révèle, selon les cas, une souveraineté IA réelle (Chine) ou une dynamique de
+   rattrapage documentée (Vietnam, Turquie) que l'ancien indicateur ne captait pas.
+5. **L'énergie est le swing factor le plus sous-estimé.** Les paliers IA8 séparent nettement les
+   zones à dépendance comparable par ailleurs : le GERD éthiopien (IA8=4) et le socle nucléaire
+   tchèque (IA8=2) jouent un rôle d'amortisseur documenté, tandis que le réseau électrique
+   iranien (IA8=6, aggravé par des dégâts de guerre) et le mix charbon vietnamien sous tension
+   saisonnière (IA8=5) tirent le score vers le haut malgré des trajectoires de statecraft par
+   ailleurs comparables — l'énergie discrimine plus que le talent ou l'investissement affiché.
 
 ---
 
-*Statut : Batch 2/3 terminé — 12 zones scorées (ormuz, sahel, ukraine, cuba, chine, madagascar,
-turquie, inde, bresil, tamil, arctique, ile-maurice), en attente de validation. Batch 3 (zones
-restantes) et bascule `semplice-zones-config.js` : hors périmètre de ce document.*
+*Statut : Batchs 1-3 terminés — 18/18 zones scorées (ormuz, sahel, ukraine, cuba, chine,
+madagascar, turquie, inde, bresil, tamil, arctique, ile-maurice, singapour, republique-tcheque,
+iran, mexique, vietnam, ethiopie), en attente de validation. Bascule `semplice-zones-config.js` :
+hors périmètre de ce document.*
