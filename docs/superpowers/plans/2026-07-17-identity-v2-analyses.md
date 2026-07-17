@@ -813,7 +813,7 @@ Aucun `#E05A4E` ni aucun rouge n'entre dans le chrome (spec §2.1 et §7 : les �
   ```bash
   grep -noE 'text-gray-[0-9]+|bg-gray-[0-9]+|border-gray-[0-9]+|text-white/[0-9]+' analyses.html
   ```
-  Sortie attendue : uniquement les `text-white/40` de l'overlay mobile (l. 312) — achromatiques et sur chrome, conservés volontairement.
+  Sortie attendue : uniquement les `text-white/40` **et `text-white/90`** de l'overlay mobile — achromatiques et sur chrome, conservés volontairement (principe de la Task 5 : les blancs à opacité de l'overlay ne sont pas touchés). *Garde amendée le 2026-07-17 : la version initiale omettait `/90`, ce qui a correctement arrêté l'exécution B — l'arrêt sur garde a fonctionné comme prévu, c'est la garde qui était incomplète, pas le code.*
 - [ ] Commiter :
   ```bash
   git add analyses.html
