@@ -861,11 +861,12 @@ Aucun `#E05A4E` ni aucun rouge n'entre dans le chrome (spec §2.1 et §7 : les �
 - [ ] Clavier, sans souris : `Tab` depuis le haut de page atteint le lien d'évitement, le logo, les 4 déclencheurs de mega menu, le CTA, les 6 filtres (activables à `Espace`/`Entrée`), les 14 cartes, les liens du footer. Contour visible à chaque étape.
 - [ ] Console : aucune erreur. `data/article-du-jour.json` doit se comporter comme à la Task 1 — présent ou absent, mais pas différemment.
 - [ ] Diff propre : `git diff --check` → aucune sortie.
-- [ ] Vérifier qu'aucun fichier partagé n'a été touché :
+- [ ] Vérifier qu'aucun fichier partagé n'a été touché — **depuis la base commune, pas depuis `main`** :
   ```bash
-  git diff --name-only main...HEAD
+  git diff --name-only codex/identity-v2-analyses-base...HEAD
   ```
   Sortie attendue : `analyses.html` et `assets/design-tokens-v2.css`, et rien d'autre.
+  *Garde amendée le 2026-07-17 : la version initiale mesurait depuis `main`, ce qui embarquait les fichiers de la Phase 0 (delta-v2, docs, prototypes) — ils appartiennent à la base commune, pas à la migration. L'exécution B s'est arrêtée dessus à raison ; l'invariant réel était respecté des deux côtés.*
 
 **Rollback :** `git revert` du commit de la Task 6, puis de la Task 5. Retirer `data-design-regime="editorial"` ne suffit pas : les hex v2 sont écrits en dur dans les `className` (Tailwind CDN n'accepte pas `text-[var(--x)]` de façon fiable). Les Tasks 2, 3 et 4 sont conservables indépendamment.
 
