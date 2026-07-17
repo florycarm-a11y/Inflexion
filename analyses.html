@@ -19,17 +19,19 @@ h1,h2,h3{font-family:'Archivo',Arial,sans-serif;font-weight:800;line-height:1.1;
 .anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}
 
 .nav-link{position:relative}
-.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:var(--chrome-text);transform:scaleX(0);transition:transform .25s ease}
 .nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
 .mega-trigger{position:relative}
 .mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:520px;z-index:60}
 .mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
 .mega-item{transition:background .15s ease}
-.mega-item:hover{background:rgba(0,102,80,.06)}
-.mega-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
-.nav-scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid #E2E5EB;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+.mega-item:hover{background:rgba(16,18,20,.06)}
+.mega-icon{width:36px;height:36px;border-radius:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.nav-scrolled{background:rgba(14,16,18,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(232,228,216,.14)}
 
-.hamburger span{display:block;width:24px;height:2px;background:#1A1F2E;margin:5px 0;transition:all .3s ease}
+.hamburger span{display:block;width:24px;height:2px;background:var(--chrome-text);margin:5px 0;transition:all .3s ease}
+:focus-visible{outline:2px solid var(--text-primary);outline-offset:2px}
+header :focus-visible,.mobile-overlay :focus-visible,.v2-chrome :focus-visible{outline-color:var(--chrome-text)}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
@@ -55,7 +57,7 @@ a,button{min-height:44px;min-width:44px}
 </style>
 </head>
 <body data-design-regime="editorial">
-<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:#006650;color:#fff;font-family:'IBM Plex Sans',sans-serif;font-size:14px;text-decoration:none;border-radius:0 0 4px 0;" onfocus="this.style.position='fixed';this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Aller au contenu principal</a>
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:var(--chrome-ground);color:var(--chrome-text);font-family:'IBM Plex Sans',sans-serif;font-size:14px;text-decoration:none;border-radius:0 0 4px 0;" onfocus="this.style.position='fixed';this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Aller au contenu principal</a>
 <div id="app"></div>
 <script src="nav-config.js"></script>
 <script type="module">
@@ -252,25 +254,25 @@ if(open){document.body.classList.add('menu-open')}else{document.body.classList.r
 return()=>document.body.classList.remove('menu-open')
 },[open])
 return h('div',null,
- h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#C8955A]'}),
+ h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#0E1012]'}),
  h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(10) saturate(0) invert(0)',transition:'filter 0.3s ease'}})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:'brightness(10) saturate(0)'}})
     ),
     h('nav',{className:'hidden md:flex items-center gap-1'},
      ...MEGA_NAV.map((cat,ci)=>
       h('div',{key:ci,className:'mega-trigger'},
-       h('span',{className:`nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none ${scrolled?'text-gray-500 hover:text-[#006650]':'text-white/70 hover:text-white'}`},cat.label),
-       h('div',{className:'mega-menu bg-white rounded-2xl shadow-xl border border-gray-100 p-5'},
+       h('span',{className:'nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none text-[#9AA0A4] hover:text-[#E8E4D8]'},cat.label),
+       h('div',{className:'mega-menu bg-[#FFFFFF] border border-[#4C5052] p-5 shadow-[0_6px_18px_rgba(14,16,18,.18)]'},
         h('div',{className:'grid gap-1'},
          ...cat.children.map((item,ii)=>
           h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline'},
-           h('span',{className:'mega-icon bg-[#006650]/10 text-[#006650]'},item.icon),
+           h('span',{className:'mega-icon bg-[#EDEBE4] text-[#101214]'},item.icon),
            h('span',{className:'flex flex-col'},
-            h('span',{className:'text-sm font-semibold text-gray-900'},item.label),
-            h('span',{className:'text-xs text-gray-500 mt-0.5'},item.desc)
+            h('span',{className:'text-sm font-semibold text-[#101214]'},item.label),
+            h('span',{className:'text-xs text-[#4C5052] mt-0.5'},item.desc)
            )
           )
          )
@@ -278,15 +280,15 @@ return h('div',null,
        )
       )
      ),
-     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#006650] hover:bg-[#06402A] text-white font-semibold text-sm rounded-lg transition-colors'},'R\u00e9server un diagnostic')
+     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#E8E4D8] hover:bg-[#FFFFFF] text-[#0E1012] font-semibold text-sm transition-colors'},'R\u00e9server un diagnostic')
     ),
     h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,'aria-label':'Menu','aria-expanded':open,onClick:()=>setOpen(!open)},
-     h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}})
+     h('span'),h('span'),h('span')
     )
    )
   )
  ),
- h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#006650'}},
+ h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#0E1012'}},
   h('div',{className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0'},
    h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-8 w-auto',style:{filter:'brightness(10) saturate(0)'}}),
    h('button',{onClick:()=>setOpen(false),className:'w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
@@ -305,7 +307,7 @@ return h('div',null,
    ]).flat()
   ),
   h('div',{className:'px-6 pt-4 pb-20 flex-shrink-0'},
-   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-xl transition-colors text-base',style:{animationDelay:'0.85s'}},'R\u00e9server un diagnostic')
+   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold transition-colors text-base',style:{animationDelay:'0.85s'}},'R\u00e9server un diagnostic')
   )
  )
 )
@@ -314,12 +316,12 @@ return h('div',null,
 // ─── PAGE HERO ───────────────────────────────────────────────────────────────
 
 function PageHero(){
-return h('section',{className:'relative pt-28 pb-14 md:pt-36 md:pb-16',style:{backgroundColor:'#006650'}},
+return h('section',{className:'v2-chrome relative pt-28 pb-14 md:pt-36 md:pb-16',style:{backgroundColor:'#0E1012'}},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'max-w-2xl'},
-   h('p',{className:'anim-fade-up text-xs font-semibold uppercase tracking-wider text-[#33B894] mb-4'},'D\u00e9cryptages & signaux faibles'),
+   h('p',{className:'anim-fade-up text-[11px] uppercase tracking-[0.18em] text-[#9AA0A4] mb-4',style:{fontFamily:"'IBM Plex Mono',monospace"}},'D\u00e9cryptages & signaux faibles'),
    h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-5xl font-extrabold text-white leading-[1.1] tracking-tight'},'Nos analyses'),
-   h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/50 leading-relaxed max-w-lg'},
+   h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-[#9AA0A4] leading-relaxed max-w-lg'},
     'Analyses approfondies, d\u00e9cryptages th\u00e9matiques et intelligence strat\u00e9gique pour anticiper les inflexions de march\u00e9.'
    )
   )
@@ -448,39 +450,39 @@ plateforme:[
 }
 const sources=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC']
 
-return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-12 sm:pt-16 pb-24 sm:pb-20',role:'contentinfo'},
+return h('footer',{className:'v2-chrome bg-[#0E1012] pt-12 sm:pt-16 pb-24 sm:pb-20',role:'contentinfo'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-10 mb-12'},
    h('div',{className:'col-span-2 md:col-span-1'},
     h('div',{className:'flex items-center gap-2 mb-4'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto'})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto',style:{filter:'brightness(10) saturate(0)'}})
     ),
-    h('p',{className:'text-sm text-[#5A6178] leading-relaxed'},'Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.')
+    h('p',{className:'text-sm text-[#9AA0A4] leading-relaxed'},'Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.')
    ),
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Intelligence'),
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8E4D8] mb-4'},'Intelligence'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.intelligence.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#9AA0A4] hover:text-[#E8E4D8] transition-colors'},l.label))
      )
     )
    ),
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Plateforme'),
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8E4D8] mb-4'},'Plateforme'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.plateforme.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#9AA0A4] hover:text-[#E8E4D8] transition-colors'},l.label))
      )
     )
    ),
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Contact'),
-    h('a',{href:'premium.html#contact',className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},'Nous contacter')
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8E4D8] mb-4'},'Contact'),
+    h('a',{href:'premium.html#contact',className:'text-sm text-[#9AA0A4] hover:text-[#E8E4D8] transition-colors'},'Nous contacter')
    )
   ),
-  h('div',{className:'border-t border-[#E2E5EB] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
-   h('span',{className:'text-sm text-[#5A6178]'},'\u00a9 2026 Inflexion \u2014 Intelligence financi\u00e8re & g\u00e9opolitique'),
-   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#6B7280] font-medium'},
+  h('div',{className:'border-t border-[rgba(232,228,216,.14)] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
+   h('span',{className:'text-sm text-[#9AA0A4]'},'\u00a9 2026 Inflexion \u2014 Intelligence financi\u00e8re & g\u00e9opolitique'),
+   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#9AA0A4]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
     ...sources.map(s=>h('span',{key:s},s))
    )
   )
