@@ -6,13 +6,13 @@
 <title>Nos analyses — Inflexion</title>
 <meta name="description" content="Toutes les analyses Inflexion : décryptages thématiques, signaux faibles et intelligence stratégique."/>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <link href="assets/design-tokens-v2.css" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden}
+body{font-family:'IBM Plex Sans','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden}
 
-h1,h2,h3{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
+h1,h2,h3{font-family:'Archivo',Arial,sans-serif;font-weight:800;line-height:1.1;letter-spacing:-0.035em;color:#1A1F2E}
 
 @keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .anim-fade-up{animation:fade-up .6s ease-out both}
@@ -53,7 +53,7 @@ a,button{min-height:44px;min-width:44px}
 </style>
 </head>
 <body data-design-regime="editorial">
-<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:#006650;color:#fff;font-family:Inter,sans-serif;font-size:14px;text-decoration:none;border-radius:0 0 4px 0;" onfocus="this.style.position='fixed';this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Aller au contenu principal</a>
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:#006650;color:#fff;font-family:'IBM Plex Sans',sans-serif;font-size:14px;text-decoration:none;border-radius:0 0 4px 0;" onfocus="this.style.position='fixed';this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Aller au contenu principal</a>
 <div id="app"></div>
 <script src="nav-config.js"></script>
 <script type="module">
@@ -316,7 +316,7 @@ return h('section',{className:'relative pt-28 pb-14 md:pt-36 md:pb-16',style:{ba
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'max-w-2xl'},
    h('p',{className:'anim-fade-up text-xs font-semibold uppercase tracking-wider text-[#33B894] mb-4'},'D\u00e9cryptages & signaux faibles'),
-   h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-5xl font-bold text-white leading-[1.1] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Nos analyses'),
+   h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-5xl font-extrabold text-white leading-[1.1] tracking-tight'},'Nos analyses'),
    h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/50 leading-relaxed max-w-lg'},
     'Analyses approfondies, d\u00e9cryptages th\u00e9matiques et intelligence strat\u00e9gique pour anticiper les inflexions de march\u00e9.'
    )
@@ -351,7 +351,7 @@ return h('section',{className:'pt-16 md:pt-20 pb-0'},
      ),
      date&&h('span',{className:'text-xs text-[#5A6178]'},date)
     ),
-    h('h2',{className:'text-xl md:text-2xl font-bold text-[#1A1F2E] leading-snug mb-2',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},article.titre),
+    h('h2',{className:'text-xl md:text-2xl font-extrabold text-[#1A1F2E] leading-snug mb-2'},article.titre),
     article.sous_titre&&h('p',{className:'text-base text-[#5A6178] leading-relaxed mb-4'},article.sous_titre),
     points.length>0&&h('ul',{className:'space-y-2 mb-4'},
      ...points.map((p,i)=>
@@ -409,7 +409,7 @@ return h('section',{className:'py-16 md:py-20'},
          h('span',{className:'text-xs text-[#5A6178]'},a.date),
          h('span',{className:'text-xs text-[#5A6178]'},'\u00b7 '+a.readTime)
         ),
-        h('h3',{className:'text-lg font-bold text-[#1A1F2E] leading-snug mb-3',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},a.title),
+        h('h3',{className:'text-lg font-extrabold text-[#1A1F2E] leading-snug mb-3'},a.title),
         h('p',{className:'text-sm text-[#5A6178] leading-relaxed line-clamp-3 mb-4'},a.summary),
         h('div',{className:'flex items-center justify-between'},
          h('span',{className:'text-xs text-[#6B7280] font-medium'},a.source),
