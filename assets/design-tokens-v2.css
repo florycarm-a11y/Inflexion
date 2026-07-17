@@ -1,0 +1,46 @@
+/* Jetons de fondation — identite v2.
+   Source de verite : docs/superpowers/specs/2026-07-16-identity-v2-design.md
+   Les jetons de fondation sont volontairement HORS de :root : ils ne doivent pas
+   ecraser les variables historiques de styles.css sur les pages restees en v1. */
+
+[data-design-regime="instrument"] {
+  --chrome-ground: #0E1012;
+  --chrome-text: #E8E4D8;
+  --chrome-dim: #9AA0A4;
+  --surface-page: #EDEBE4;
+  --surface-raised: #FFFFFF;
+  --surface-incomplete: #DFDCD0;
+  --rule-incomplete: #9B957A;
+  --text-primary: #101214;
+  --text-secondary: #4C5052;
+  --border-hairline: #4C5052;
+}
+
+/* Regime editorial — spec section 2.2. Pages sans instrument.
+   Memes fondations que le regime instrument : le chrome est une seule couche
+   sur tout le site, il ne change pas de couleur selon la page.
+   Deux differences assumees :
+   - pas de --surface-incomplete / --rule-incomplete : spec section 6, un etat
+     n'est affiche que si sa valeur varie entre les objets. Les 14 entrees de
+     ANALYSES portent toutes les memes champs.
+   - un accent editorial unique, dont le role est nomme ci-dessous. */
+[data-design-regime="editorial"] {
+  --chrome-ground: #0E1012;
+  --chrome-text: #E8E4D8;
+  --chrome-dim: #9AA0A4;
+  --surface-page: #EDEBE4;
+  --surface-raised: #FFFFFF;
+  --text-primary: #101214;
+  --text-secondary: #4C5052;
+  --border-hairline: #4C5052;
+
+  /* Filet de structure attenue. Meme valeur que --v2-grid-line du prototype
+     (prototypes/identity-v2/expertise-v2.css:2). */
+  --grid-line: rgba(76, 80, 82, 0.18);
+
+  /* Role unique et exclusif : affordance de lecture d'un article
+     (lien « Lire → » et filet de survol de la carte). Aucun autre usage.
+     Autorise par la spec section 2.2 : cette page ne rend aucun arbre Delta.
+     8,65:1 sur #FFFFFF, 7,25:1 sur #EDEBE4. Interdit dans le chrome. */
+  --editorial-accent: #8E2424;
+}
