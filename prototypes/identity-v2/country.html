@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="theme-color" content="#0E1012">
+    <title>Prototype identité v2 — Radar Pays — Inflexion</title>
+    <meta name="description" content="Prototype isolé de la composition hybride Inflexion appliquée au Radar Pays SEMPLICE.">
+    <base href="../../">
+    <link rel="icon" href="favicon.ico" sizes="32x32">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="prototypes/identity-v2/country-v2.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body class="identity-v2-preview" data-design-regime="instrument">
+    <a class="v2-skip-link" href="prototypes/identity-v2/country.html#main-content">Aller au contenu principal</a>
+
+    <header class="v2-chrome" role="banner">
+        <div class="v2-chrome__utility">
+            <p>INFLEXION · INTELLIGENCE GÉOPOLITIQUE</p>
+            <p class="v2-preview-status"><span aria-hidden="true"></span> PROTOTYPE IDENTITAIRE · NON PUBLIÉ</p>
+        </div>
+        <div class="v2-nav">
+            <a class="v2-wordmark" href="index.html" aria-label="Inflexion, accueil">INFLΞXION</a>
+            <nav class="v2-nav__links" aria-label="Navigation principale">
+                <a href="geopolitics.html">Intelligence</a>
+                <a href="analyses.html">Analyses</a>
+                <a href="expertise.html">Expertise</a>
+                <a href="premium.html">Services</a>
+                <a class="v2-nav__cta" href="premium.html#contact">Réserver un diagnostic</a>
+            </nav>
+            <details class="v2-mobile-nav">
+                <summary aria-label="Ouvrir la navigation"><span></span><span></span><span></span></summary>
+                <nav aria-label="Navigation mobile">
+                    <a href="index.html">Accueil</a>
+                    <a href="geopolitics.html">Intelligence</a>
+                    <a href="analyses.html">Analyses</a>
+                    <a href="expertise.html">Expertise</a>
+                    <a href="premium.html">Services</a>
+                </nav>
+            </details>
+        </div>
+    </header>
+
+    <section class="v2-hero" aria-labelledby="page-title">
+        <div class="v2-hero__mark" aria-hidden="true">Δ</div>
+        <div class="v2-hero__grid">
+            <div class="v2-hero__title-block">
+                <p class="v2-kicker">SEMPLICE · INSTRUMENT 01</p>
+                <h1 id="page-title">RADAR<br>PAYS</h1>
+            </div>
+            <div class="v2-hero__context">
+                <p class="v2-hero__lead">Une lecture comparative du risque géopolitique et du potentiel d’opportunité, sans confondre identité de marque et signal analytique.</p>
+                <dl class="v2-hero__stats" aria-label="Périmètre du Radar Pays">
+                    <div><dt>Zones</dt><dd>18</dd></div>
+                    <div><dt>Lectures</dt><dd>02</dd></div>
+                    <div><dt>Dimensions</dt><dd>08</dd></div>
+                </dl>
+            </div>
+        </div>
+        <div class="v2-hero__status">
+            <p>RISQUE / OPPORTUNITÉ · ÉCHELLE 1—7</p>
+            <p>DONNÉES DU DÉPÔT · SOURCES PUBLIQUES</p>
+        </div>
+    </section>
+
+    <main class="v2-main" id="main-content">
+        <section class="v2-section" aria-labelledby="map-title">
+            <header class="v2-section__header">
+                <p class="v2-section__index">01 / CARTE</p>
+                <div>
+                    <h2 id="map-title">Géographie du signal</h2>
+                    <p>Basculer la lecture sans modifier l’échelle ni les couleurs de la donnée.</p>
+                </div>
+            </header>
+
+            <div class="v2-module v2-map-module">
+                <div class="v2-module__bar">
+                    <div class="v2-mode-toggle" role="group" aria-label="Lecture de la carte">
+                        <button class="toggle-btn active" id="toggle-risk" type="button">Risque</button>
+                        <button class="toggle-btn" id="toggle-opp" type="button">Opportunité</button>
+                    </div>
+                    <p>CLIQUER UNE ZONE POUR SYNCHRONISER LA PAGE</p>
+                </div>
+                <div id="leaflet-map" aria-label="Carte des zones évaluées par SEMPLICE"></div>
+                <div class="v2-map-legend" aria-label="Légende de la carte">
+                    <span id="legend-label">Risque :</span>
+                    <span class="v2-legend-min">1</span>
+                    <div id="legend-bar"></div>
+                    <span id="legend-max">7</span>
+                    <span class="v2-map-legend__hint">Faible → critique</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="v2-section" id="zone-cards" aria-labelledby="zones-title">
+            <header class="v2-section__header">
+                <p class="v2-section__index">02 / ZONES</p>
+                <div>
+                    <h2 id="zones-title">Fiches évaluées</h2>
+                    <p>Scores composites, dimensions dominantes et mini-radars huit axes.</p>
+                </div>
+            </header>
+            <div id="zone-cards-grid" class="v2-zone-grid"></div>
+        </section>
+
+        <section class="v2-section" id="screening" aria-labelledby="screening-title">
+            <header class="v2-section__header">
+                <p class="v2-section__index">03 / MATRICE</p>
+                <div>
+                    <h2 id="screening-title">Screening risque / opportunité</h2>
+                    <p>Positionnement relatif des zones ; taille des bulles proportionnelle au PIB.</p>
+                </div>
+            </header>
+            <div class="v2-module">
+                <div class="scatter-filters" id="scatter-filters">
+                    <label>Région
+                        <select id="filter-region">
+                            <option value="all">Toutes</option>
+                            <option value="Asie">Asie</option>
+                            <option value="Europe">Europe</option>
+                            <option value="Afrique">Afrique</option>
+                            <option value="Amériques">Amériques</option>
+                            <option value="Moyen-Orient">Moyen-Orient</option>
+                            <option value="Multi">Multi-régional</option>
+                        </select>
+                    </label>
+                    <label>Risque max
+                        <span class="v2-range-control">
+                            <input type="range" id="filter-risk" min="1" max="7" step="0.5" value="7">
+                            <span class="filter-val" id="filter-risk-val">7.0</span>
+                        </span>
+                    </label>
+                    <label>Dimension
+                        <select id="filter-dim">
+                            <option value="all">Toutes</option>
+                            <option value="0">Social &gt; 3</option>
+                            <option value="1">Économique &gt; 3</option>
+                            <option value="2">Militaire &gt; 3</option>
+                            <option value="3">Politique &gt; 3</option>
+                            <option value="4">Légal &gt; 3</option>
+                            <option value="5">Information &gt; 3</option>
+                            <option value="6">Cyber &gt; 3</option>
+                            <option value="7">Environnemental &gt; 3</option>
+                        </select>
+                    </label>
+                </div>
+                <div id="scatter-container" class="v2-canvas-frame">
+                    <canvas id="scatter-canvas" role="img" aria-label="Matrice risque opportunité"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="v2-section" id="timeline-section" aria-labelledby="timeline-title">
+            <header class="v2-section__header">
+                <p class="v2-section__index">04 / TEMPS</p>
+                <div>
+                    <h2 id="timeline-title">Évolution historique</h2>
+                    <p>Trajectoire des scores composites et des huit dimensions dans le temps.</p>
+                </div>
+            </header>
+            <div class="v2-module">
+                <div id="timeline-zone-pills" class="v2-timeline-pills" aria-label="Choisir une zone"></div>
+                <div class="v2-mode-toggle v2-mode-toggle--center" role="group" aria-label="Mode de la timeline">
+                    <button class="toggle-btn active" id="tl-mode-composite" type="button">Composite</button>
+                    <button class="toggle-btn" id="tl-mode-dims" type="button">8 dimensions</button>
+                </div>
+                <div id="timeline-container" class="v2-canvas-frame">
+                    <canvas id="timeline-canvas" role="img" aria-label="Historique des scores SEMPLICE"></canvas>
+                </div>
+                <div id="timeline-events" class="v2-timeline-events"></div>
+            </div>
+        </section>
+
+        <section class="v2-section" id="zone-table-section" aria-labelledby="table-title">
+            <header class="v2-section__header">
+                <p class="v2-section__index">05 / TABLE</p>
+                <div>
+                    <h2 id="table-title">Tableau comparatif</h2>
+                    <p>Trier les zones par risque, opportunité ou ratio.</p>
+                </div>
+            </header>
+            <div class="v2-table-frame">
+                <table id="zone-table">
+                    <thead>
+                        <tr>
+                            <th class="sort-header" data-col="name">Zone <span class="sort-arrow">▼</span></th>
+                            <th class="sort-header" data-col="risk">Risque <span class="sort-arrow">▼</span></th>
+                            <th class="sort-header" data-col="opp">Opportunité <span class="sort-arrow">▼</span></th>
+                            <th class="sort-header" data-col="ratio">Ratio O/R <span class="sort-arrow">▼</span></th>
+                            <th>Dim. risque dom.</th>
+                            <th>Dim. opp. dom.</th>
+                            <th>Analyse</th>
+                        </tr>
+                    </thead>
+                    <tbody id="zone-table-body"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="v2-section" aria-labelledby="macro-title">
+            <header class="v2-section__header">
+                <p class="v2-section__index">06 / MACRO</p>
+                <div>
+                    <h2 id="macro-title">Données macroéconomiques</h2>
+                    <p>Indicateurs Banque mondiale pour dix grandes économies.</p>
+                </div>
+            </header>
+            <section class="country-selector" id="country-selector" aria-label="Sélection d’un pays">
+                <div class="country-grid" role="list">
+                    <div class="loading" role="status"><div class="loading-spinner"></div><span class="sr-only">Chargement des pays...</span></div>
+                </div>
+            </section>
+            <section class="country-detail" id="country-detail" aria-live="polite" hidden>
+                <button class="country-back-btn" id="country-back" type="button" aria-label="Retour à la liste des pays">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    Tous les pays
+                </button>
+                <div class="country-detail-header" id="country-detail-header"></div>
+                <div class="country-indicators-grid" id="country-indicators"></div>
+                <div class="country-sources"><span class="sidebar-source">Sources : World Bank, FRED, ECB, IMF</span></div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="v2-footer" role="contentinfo">
+        <div class="v2-footer__top">
+            <p class="v2-wordmark">INFLΞXION</p>
+            <p>Décider quand l’incertitude est partout.</p>
+        </div>
+        <div class="v2-footer__grid">
+            <div>
+                <p class="v2-footer__label">Instrument</p>
+                <p>SEMPLICE · Radar Pays<br>Risque et opportunité · 18 zones</p>
+            </div>
+            <div>
+                <p class="v2-footer__label">Sources</p>
+                <p>World Bank · FRED · ECB · IMF<br>Données publiques vérifiées</p>
+            </div>
+            <div>
+                <p class="v2-footer__label">Prototype</p>
+                <p>Composition 02 hybride<br>16 juillet 2026</p>
+            </div>
+        </div>
+        <p class="v2-footer__disclaimer">Les informations présentées sont fournies à titre informatif uniquement et ne constituent en aucun cas des conseils en investissement.</p>
+    </footer>
+
+    <script src="semplice-zones-config.js"></script>
+    <script src="app.js"></script>
+    <script src="image-catalog.js"></script>
+    <script src="data-loader.js"></script>
+    <script src="prototypes/identity-v2/country-v2-runtime.js"></script>
+    <script src="semplice-country.js"></script>
+</body>
+</html>

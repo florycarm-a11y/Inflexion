@@ -6,33 +6,32 @@
 <title>Nos analyses — Inflexion</title>
 <meta name="description" content="Toutes les analyses Inflexion : décryptages thématiques, signaux faibles et intelligence stratégique."/>
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config={theme:{extend:{colors:{brand:{900:'#06402A',800:'#006650',700:'#007A60',600:'#008066',500:'#00997A',400:'#33B894',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
-</script>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="assets/design-tokens-v2.css" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden}
+body{font-family:'IBM Plex Sans','Helvetica Neue',sans-serif;background:var(--surface-page);color:var(--text-primary);overflow-x:hidden}
 
-h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
-.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#006650}
+h1,h2,h3{font-family:'Archivo',Arial,sans-serif;font-weight:800;line-height:1.1;letter-spacing:-0.035em;color:var(--text-primary)}
 
 @keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .anim-fade-up{animation:fade-up .6s ease-out both}
 .anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}
 
 .nav-link{position:relative}
-.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:var(--chrome-text);transform:scaleX(0);transition:transform .25s ease}
 .nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
 .mega-trigger{position:relative}
 .mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:520px;z-index:60}
 .mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
 .mega-item{transition:background .15s ease}
-.mega-item:hover{background:rgba(0,102,80,.06)}
-.mega-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
-.nav-scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid #E2E5EB;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+.mega-item:hover{background:rgba(16,18,20,.06)}
+.mega-icon{width:36px;height:36px;border-radius:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.nav-scrolled{background:rgba(14,16,18,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(232,228,216,.14)}
 
-.hamburger span{display:block;width:24px;height:2px;background:#1A1F2E;margin:5px 0;transition:all .3s ease}
+.hamburger span{display:block;width:24px;height:2px;background:var(--chrome-text);margin:5px 0;transition:all .3s ease}
+:focus-visible{outline:2px solid var(--text-primary);outline-offset:2px}
+header :focus-visible,.mobile-overlay :focus-visible,.v2-chrome :focus-visible{outline-color:var(--chrome-text)}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
@@ -43,23 +42,15 @@ body.menu-open{overflow:hidden}
 .menu-item{opacity:0}
 .mobile-overlay.open .menu-item{animation:menu-item-in .4s ease-out forwards}
 
-.article-card{transition:transform .2s ease,box-shadow .2s ease}
-.article-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(10,22,40,.08)}
+.article-card{position:relative;transition:box-shadow .18s ease,border-color .18s ease}
+.article-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--editorial-accent);transform:scaleY(0);transform-origin:top;transition:transform .22s ease;z-index:1}
+.article-card:hover{box-shadow:0 6px 18px rgba(14,16,18,.10);border-color:var(--border-hairline)}
+.article-card:hover::before{transform:scaleY(1)}
+@media(prefers-reduced-motion:reduce){.animate-pulse{animation:none}.article-card::before{transition:none}}
 
 .category-geo{background:#2563eb}.category-marches{background:#006650}.category-crypto{background:#f59e0b}.category-matieres{background:#C8955A}.category-iatech{background:#8b5cf6}
 
-.font-data{font-family:'JetBrains Mono','SF Mono',monospace}
 
-.glass{background:rgba(0,102,80,.06);backdrop-filter:blur(16px);border:1px solid rgba(0,102,80,.10)}
-.glass-light{background:rgba(0,102,80,.04);backdrop-filter:blur(12px);border:1px solid rgba(0,102,80,.06)}
-.hero-dark{background-color:#006650;color:#FFFFFF}
-.hero-dark h1,.hero-dark h2,.hero-dark .display-text{color:#FFFFFF}
-.section-alt{background-color:#F7F8FA}
-.section-divider{border-top:1px solid #ECEEF2}
-.featured-card{position:relative;overflow:hidden}
-.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:#006650;transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
-.featured-card:hover::before{transform:scaleY(1)}
-.hero-glow{position:absolute;top:-120px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,102,80,.06) 0%,transparent 70%);pointer-events:none}
 @media(max-width:768px){
 html,body{overflow-x:hidden}
 img{max-width:100%;height:auto}
@@ -68,8 +59,8 @@ a,button{min-height:44px;min-width:44px}
 }
 </style>
 </head>
-<body>
-<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:#006650;color:#fff;font-family:Inter,sans-serif;font-size:14px;text-decoration:none;border-radius:0 0 4px 0;" onfocus="this.style.position='fixed';this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Aller au contenu principal</a>
+<body data-design-regime="editorial">
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:var(--chrome-ground);color:var(--chrome-text);font-family:'IBM Plex Sans',sans-serif;font-size:14px;text-decoration:none;border-radius:0 0 4px 0;" onfocus="this.style.position='fixed';this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Aller au contenu principal</a>
 <div id="app"></div>
 <script src="nav-config.js"></script>
 <script type="module">
@@ -266,25 +257,25 @@ if(open){document.body.classList.add('menu-open')}else{document.body.classList.r
 return()=>document.body.classList.remove('menu-open')
 },[open])
 return h('div',null,
- h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#C8955A]'}),
+ h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#0E1012]'}),
  h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(10) saturate(0) invert(0)',transition:'filter 0.3s ease'}})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:'brightness(10) saturate(0)'}})
     ),
     h('nav',{className:'hidden md:flex items-center gap-1'},
      ...MEGA_NAV.map((cat,ci)=>
       h('div',{key:ci,className:'mega-trigger'},
-       h('span',{className:`nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none ${scrolled?'text-gray-500 hover:text-[#006650]':'text-white/70 hover:text-white'}`},cat.label),
-       h('div',{className:'mega-menu bg-white rounded-2xl shadow-xl border border-gray-100 p-5'},
+       h('span',{className:'nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none text-[#9AA0A4] hover:text-[#E8E4D8]'},cat.label),
+       h('div',{className:'mega-menu bg-[#FFFFFF] border border-[#4C5052] p-5 shadow-[0_6px_18px_rgba(14,16,18,.18)]'},
         h('div',{className:'grid gap-1'},
          ...cat.children.map((item,ii)=>
           h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline'},
-           h('span',{className:'mega-icon bg-[#006650]/10 text-[#006650]'},item.icon),
+           h('span',{className:'mega-icon bg-[#EDEBE4] text-[#101214]'},item.icon),
            h('span',{className:'flex flex-col'},
-            h('span',{className:'text-sm font-semibold text-gray-900'},item.label),
-            h('span',{className:'text-xs text-gray-500 mt-0.5'},item.desc)
+            h('span',{className:'text-sm font-semibold text-[#101214]'},item.label),
+            h('span',{className:'text-xs text-[#4C5052] mt-0.5'},item.desc)
            )
           )
          )
@@ -292,15 +283,15 @@ return h('div',null,
        )
       )
      ),
-     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#006650] hover:bg-[#06402A] text-white font-semibold text-sm rounded-lg transition-colors'},'R\u00e9server un diagnostic')
+     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#E8E4D8] hover:bg-[#FFFFFF] text-[#0E1012] font-semibold text-sm transition-colors'},'R\u00e9server un diagnostic')
     ),
     h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,'aria-label':'Menu','aria-expanded':open,onClick:()=>setOpen(!open)},
-     h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}})
+     h('span'),h('span'),h('span')
     )
    )
   )
  ),
- h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#006650'}},
+ h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#0E1012'}},
   h('div',{className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0'},
    h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-8 w-auto',style:{filter:'brightness(10) saturate(0)'}}),
    h('button',{onClick:()=>setOpen(false),className:'w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
@@ -319,7 +310,7 @@ return h('div',null,
    ]).flat()
   ),
   h('div',{className:'px-6 pt-4 pb-20 flex-shrink-0'},
-   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-xl transition-colors text-base',style:{animationDelay:'0.85s'}},'R\u00e9server un diagnostic')
+   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold transition-colors text-base',style:{animationDelay:'0.85s'}},'R\u00e9server un diagnostic')
   )
  )
 )
@@ -328,12 +319,12 @@ return h('div',null,
 // ─── PAGE HERO ───────────────────────────────────────────────────────────────
 
 function PageHero(){
-return h('section',{className:'relative pt-28 pb-14 md:pt-36 md:pb-16',style:{backgroundColor:'#006650'}},
+return h('section',{className:'v2-chrome relative pt-28 pb-14 md:pt-36 md:pb-16',style:{backgroundColor:'#0E1012'}},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'max-w-2xl'},
-   h('p',{className:'anim-fade-up text-xs font-semibold uppercase tracking-wider text-[#33B894] mb-4'},'D\u00e9cryptages & signaux faibles'),
-   h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-5xl font-bold text-white leading-[1.1] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Nos analyses'),
-   h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/50 leading-relaxed max-w-lg'},
+   h('p',{className:'anim-fade-up text-[11px] uppercase tracking-[0.18em] text-[#9AA0A4] mb-4',style:{fontFamily:"'IBM Plex Mono',monospace"}},'D\u00e9cryptages & signaux faibles'),
+   h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-5xl font-extrabold text-white leading-[1.1] tracking-tight'},'Nos analyses'),
+   h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-[#9AA0A4] leading-relaxed max-w-lg'},
     'Analyses approfondies, d\u00e9cryptages th\u00e9matiques et intelligence strat\u00e9gique pour anticiper les inflexions de march\u00e9.'
    )
   )
@@ -358,28 +349,28 @@ const date=article.date?new Date(article.date).toLocaleDateString('fr-FR',{day:'
 
 return h('section',{className:'pt-16 md:pt-20 pb-0'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
-  h('div',{className:'rounded-2xl border border-[#E2E5EB] bg-white overflow-hidden shadow-sm'},
+  h('div',{className:'border border-[#4C5052] bg-[#FFFFFF] overflow-hidden'},
    h('div',{className:'p-6 md:p-8'},
     h('div',{className:'flex items-center gap-3 mb-4'},
-     h('span',{className:'inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#006650]/10 text-[#006650] text-xs font-semibold uppercase tracking-wider'},
-      h('span',{className:'w-2 h-2 rounded-full bg-[#006650] animate-pulse'}),
+     h('span',{className:'inline-flex items-center gap-1.5 px-3 py-1 bg-[#0E1012] text-[#E8E4D8] text-[11px] font-semibold uppercase tracking-[0.14em]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
+      h('span',{className:'w-2 h-2 rounded-full bg-[#E8E4D8] animate-pulse'}),
       'Article du jour'
      ),
-     date&&h('span',{className:'text-xs text-[#5A6178]'},date)
+     date&&h('span',{className:'text-xs text-[#4C5052]'},date)
     ),
-    h('h2',{className:'text-xl md:text-2xl font-bold text-[#1A1F2E] leading-snug mb-2',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},article.titre),
-    article.sous_titre&&h('p',{className:'text-base text-[#5A6178] leading-relaxed mb-4'},article.sous_titre),
+    h('h2',{className:'text-xl md:text-2xl font-extrabold text-[#101214] leading-snug mb-2'},article.titre),
+    article.sous_titre&&h('p',{className:'text-base text-[#4C5052] leading-relaxed mb-4'},article.sous_titre),
     points.length>0&&h('ul',{className:'space-y-2 mb-4'},
      ...points.map((p,i)=>
-      h('li',{key:i,className:'flex items-start gap-2 text-sm text-[#1A1F2E]'},
-       h('span',{className:'mt-1.5 w-1.5 h-1.5 rounded-full bg-[#006650] flex-shrink-0'}),
+      h('li',{key:i,className:'flex items-start gap-2 text-sm text-[#101214]'},
+       h('span',{className:'mt-1.5 w-1.5 h-1.5 rounded-full bg-[#101214] flex-shrink-0'}),
        p
       )
      )
     ),
     tags.length>0&&h('div',{className:'flex flex-wrap gap-2'},
      ...tags.map((t,i)=>
-      h('span',{key:i,className:'px-2.5 py-0.5 rounded-full bg-[#F7F8FA] text-[11px] font-medium text-[#5A6178] border border-[#E2E5EB]'},t)
+      h('span',{key:i,className:'px-2.5 py-0.5 bg-[#EDEBE4] text-[11px] font-medium text-[#4C5052] border border-[rgba(76,80,82,.18)]'},t)
      )
     )
    )
@@ -401,12 +392,12 @@ return h('section',{className:'py-16 md:py-20'},
   // Filters
   h('div',{className:'flex flex-wrap gap-2 mb-8 overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0'},
    ...CATEGORIES.map(c=>
-    h('button',{key:c.id,onClick:()=>setFilter(c.id),className:`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${filter===c.id?'bg-[#006650] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'}`},c.label)
+    h('button',{key:c.id,onClick:()=>setFilter(c.id),'aria-pressed':filter===c.id,className:`px-4 py-2 text-sm font-medium transition-colors border ${filter===c.id?'bg-[#0E1012] text-[#EDEBE4] border-[#0E1012]':'bg-[#FFFFFF] text-[#4C5052] hover:text-[#101214] border-[rgba(76,80,82,.18)]'}`},c.label)
    )
   ),
 
   // Count
-  h('p',{className:'text-sm text-[#5A6178] mb-8'},
+  h('p',{className:'text-sm text-[#4C5052] mb-8',style:{fontFamily:"'IBM Plex Mono',monospace"}},
    filtered.length+' analyse'+(filtered.length>1?'s':'')
   ),
 
@@ -415,28 +406,28 @@ return h('section',{className:'py-16 md:py-20'},
   ? h('div',{className:'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'},
      ...filtered.map(a=>{
       const cat=catMap[a.cat]
-      return h('a',{key:a.id,href:a.href,className:'article-card block rounded-xl overflow-hidden bg-white border border-[#E2E5EB] no-underline group'},
+      return h('a',{key:a.id,href:a.href,className:'article-card block overflow-hidden bg-[#FFFFFF] border border-[rgba(76,80,82,.18)] no-underline group'},
        h('div',{className:'aspect-[16/9] overflow-hidden'},
         h('img',{src:a.img,alt:a.title,className:'w-full h-full object-cover group-hover:scale-105 transition-transform duration-300',loading:'lazy'})
        ),
        h('div',{className:'p-6'},
         h('div',{className:'flex items-center gap-3 mb-3'},
-         h('span',{className:`${cat.cls} text-[10px] font-semibold uppercase tracking-wider text-white px-2 py-0.5 rounded`},cat.label),
-         h('span',{className:'text-xs text-[#5A6178]'},a.date),
-         h('span',{className:'text-xs text-[#5A6178]'},'\u00b7 '+a.readTime)
+         h('span',{className:`${cat.cls} text-[10px] font-semibold uppercase tracking-[0.12em] text-white px-2 py-0.5`,style:{fontFamily:"'IBM Plex Mono',monospace"}},cat.label),
+         h('span',{className:'text-xs text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},a.date),
+         h('span',{className:'text-xs text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},'\u00b7 '+a.readTime)
         ),
-        h('h3',{className:'text-lg font-bold text-[#1A1F2E] leading-snug mb-3',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},a.title),
-        h('p',{className:'text-sm text-[#5A6178] leading-relaxed line-clamp-3 mb-4'},a.summary),
+        h('h3',{className:'text-lg font-extrabold text-[#101214] leading-snug mb-3'},a.title),
+        h('p',{className:'text-sm text-[#4C5052] leading-relaxed line-clamp-3 mb-4'},a.summary),
         h('div',{className:'flex items-center justify-between'},
-         h('span',{className:'text-xs text-[#6B7280] font-medium'},a.source),
-         h('span',{className:'text-sm font-semibold text-[#006650] group-hover:text-[#008066] transition-colors'},'Lire \u2192')
+         h('span',{className:'text-xs text-[#4C5052] font-medium',style:{fontFamily:"'IBM Plex Mono',monospace"}},a.source),
+         h('span',{className:'text-sm font-semibold text-[#8E2424] group-hover:underline'},'Lire \u2192')
         )
        )
       )
      })
     )
   : h('div',{className:'text-center py-20'},
-     h('p',{className:'text-[#5A6178] text-sm'},'Aucune analyse dans cette cat\u00e9gorie pour le moment.')
+     h('p',{className:'text-[#4C5052] text-sm'},'Aucune analyse dans cette cat\u00e9gorie pour le moment.')
     )
  )
 )
@@ -462,39 +453,39 @@ plateforme:[
 }
 const sources=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC']
 
-return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-12 sm:pt-16 pb-24 sm:pb-20',role:'contentinfo'},
+return h('footer',{className:'v2-chrome bg-[#0E1012] pt-12 sm:pt-16 pb-24 sm:pb-20',role:'contentinfo'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-10 mb-12'},
    h('div',{className:'col-span-2 md:col-span-1'},
     h('div',{className:'flex items-center gap-2 mb-4'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto'})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto',style:{filter:'brightness(10) saturate(0)'}})
     ),
-    h('p',{className:'text-sm text-[#5A6178] leading-relaxed'},'Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.')
+    h('p',{className:'text-sm text-[#9AA0A4] leading-relaxed'},'Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.')
    ),
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Intelligence'),
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8E4D8] mb-4'},'Intelligence'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.intelligence.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#9AA0A4] hover:text-[#E8E4D8] transition-colors'},l.label))
      )
     )
    ),
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Plateforme'),
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8E4D8] mb-4'},'Plateforme'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.plateforme.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#9AA0A4] hover:text-[#E8E4D8] transition-colors'},l.label))
      )
     )
    ),
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Contact'),
-    h('a',{href:'premium.html#contact',className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},'Nous contacter')
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8E4D8] mb-4'},'Contact'),
+    h('a',{href:'premium.html#contact',className:'text-sm text-[#9AA0A4] hover:text-[#E8E4D8] transition-colors'},'Nous contacter')
    )
   ),
-  h('div',{className:'border-t border-[#E2E5EB] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
-   h('span',{className:'text-sm text-[#5A6178]'},'\u00a9 2026 Inflexion \u2014 Intelligence financi\u00e8re & g\u00e9opolitique'),
-   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#6B7280] font-medium'},
+  h('div',{className:'border-t border-[rgba(232,228,216,.14)] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
+   h('span',{className:'text-sm text-[#9AA0A4]'},'\u00a9 2026 Inflexion \u2014 Intelligence financi\u00e8re & g\u00e9opolitique'),
+   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#9AA0A4] font-medium',style:{fontFamily:"'IBM Plex Mono',monospace"}},
     ...sources.map(s=>h('span',{key:s},s))
    )
   )
