@@ -20,7 +20,8 @@ var THEMES={
     heroBg:'#006650', heroLabel:'#33B894', heroTitle:'#fff', heroSub:'rgba(255,255,255,.5)',
     overlayBg:'#006650', overlayLink:'rgba(255,255,255,.9)', overlayLabel:'rgba(255,255,255,.4)',
     overlayIconBg:'rgba(255,255,255,.1)', overlayIconText:'rgba(255,255,255,.7)', overlayBorder:'rgba(255,255,255,.08)',
-    footerBg:'#F7F8FA', footerBorder:'#E2E5EB', footerText:'#5A6178', footerTitle:'#1A1F2E', footerTag:'rgba(90,97,120,.4)'
+    footerBg:'#F7F8FA', footerBorder:'#E2E5EB', footerText:'#5A6178', footerTitle:'#1A1F2E', footerTag:'rgba(90,97,120,.4)',
+    fontDisplay:'Libre Baskerville,Georgia,serif', fontBody:'Inter,sans-serif'
   },
   v2:{
     accent:'#8E2424', accentDark:'#6E1B1B', bronze:'#8E2424', bronzeGlow:'rgba(142,36,36,.06)',
@@ -33,7 +34,8 @@ var THEMES={
     heroBg:'#0E1012', heroLabel:'#9AA0A4', heroTitle:'#E8E4D8', heroSub:'rgba(232,228,216,.55)',
     overlayBg:'#0E1012', overlayLink:'rgba(232,228,216,.9)', overlayLabel:'rgba(232,228,216,.4)',
     overlayIconBg:'rgba(232,228,216,.1)', overlayIconText:'rgba(232,228,216,.7)', overlayBorder:'rgba(232,228,216,.08)',
-    footerBg:'#0E1012', footerBorder:'rgba(232,228,216,.12)', footerText:'#9AA0A4', footerTitle:'#E8E4D8', footerTag:'rgba(154,160,164,.6)'
+    footerBg:'#0E1012', footerBorder:'rgba(232,228,216,.12)', footerText:'#9AA0A4', footerTitle:'#E8E4D8', footerTag:'rgba(154,160,164,.6)',
+    fontDisplay:'Archivo,Georgia,serif', fontBody:'IBM Plex Sans,Inter,sans-serif'
   }
 };
 var T=THEMES[(document.body&&document.body.dataset&&document.body.dataset.chrome)]||THEMES.v1;
@@ -55,7 +57,7 @@ css.textContent=
 '.mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}\n'+
 '.mega-menu::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,'+T.bronze+' 20%,'+T.bronze+' 80%,transparent);z-index:2}\n'+
 '.mega-menu::after{content:"";position:absolute;top:2px;right:0;width:60px;height:60px;background:radial-gradient(circle at top right,'+T.bronzeGlow+' 0%,transparent 70%);pointer-events:none}\n'+
-'.mega-cat-header{font-family:"Libre Baskerville",Georgia,serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:'+T.bronze+';padding:20px 20px 10px;border-bottom:1px solid '+T.megaBorder+';margin-bottom:4px;display:flex;align-items:center;gap:8px}\n'+
+'.mega-cat-header{font-family:'+T.fontDisplay+';font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:'+T.bronze+';padding:20px 20px 10px;border-bottom:1px solid '+T.megaBorder+';margin-bottom:4px;display:flex;align-items:center;gap:8px}\n'+
 '.mega-cat-header::before{content:"";width:12px;height:1px;background:'+T.bronze+'}\n'+
 '.mega-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;padding:8px 10px 12px}\n'+
 '.mega-list{display:flex;flex-direction:column;gap:2px;padding:8px 10px 12px}\n'+
@@ -63,7 +65,7 @@ css.textContent=
 '.mega-item::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:0;height:60%;background:'+T.accent+';border-radius:0 2px 2px 0;transition:width .2s cubic-bezier(.4,0,.2,1)}\n'+
 '.mega-item:hover{background:'+T.megaHover+';border-color:'+T.megaHoverBorder+'}\n'+
 '.mega-item:hover::before{width:3px}\n'+
-'.mega-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:"Libre Baskerville",Georgia,serif;font-size:12px;font-weight:700;font-style:italic;color:#006650;background:linear-gradient(135deg,rgba(0,102,80,.05) 0%,rgba(0,102,80,.1) 100%);border:1px solid rgba(0,102,80,.1);transition:all .25s cubic-bezier(.4,0,.2,1);letter-spacing:-.02em}\n'+
+'.mega-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'+T.fontDisplay+';font-size:12px;font-weight:700;font-style:italic;color:#006650;background:linear-gradient(135deg,rgba(0,102,80,.05) 0%,rgba(0,102,80,.1) 100%);border:1px solid rgba(0,102,80,.1);transition:all .25s cubic-bezier(.4,0,.2,1);letter-spacing:-.02em}\n'+
 '.mega-item:hover .mega-icon{color:#fff;background:linear-gradient(135deg,#006650 0%,#06402A 100%);border-color:#006650;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,80,.18)}\n'+
 '.mega-label{font-size:13.5px;font-weight:600;color:'+T.megaLabel+';transition:color .2s}\n'+
 '.mega-item:hover .mega-label{color:'+T.accent+'}\n'+
@@ -170,7 +172,7 @@ overlay.style.cssText='position:fixed;inset:0;z-index:60;display:flex;flex-direc
 var mobileLinks=MEGA_NAV.map(function(cat,ci){
 var links=cat.children.map(function(item,ii){
 return '<a href="'+item.href+'" class="mobile-nav-link" style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 0;color:'+T.overlayLink+';transition:color .2s;text-decoration:none;border-bottom:1px solid '+T.overlayBorder+';opacity:0;animation-delay:'+(0.08+ci*0.18+ii*0.05)+'s;font-size:1rem;font-weight:500">'+
-'<span style="width:2rem;height:2rem;border-radius:0.5rem;display:inline-flex;align-items:center;justify-content:center;background:'+T.overlayIconBg+';font-family:Libre Baskerville,Georgia,serif;font-style:italic;font-weight:700;font-size:11px;color:'+T.overlayIconText+';flex-shrink:0">'+item.icon+'</span>'+
+'<span style="width:2rem;height:2rem;border-radius:0.5rem;display:inline-flex;align-items:center;justify-content:center;background:'+T.overlayIconBg+';font-family:'+T.fontDisplay+';font-style:italic;font-weight:700;font-size:11px;color:'+T.overlayIconText+';flex-shrink:0">'+item.icon+'</span>'+
 '<span>'+item.label+'</span></a>';
 }).join('');
 return '<p class="mobile-nav-link" style="font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:'+T.overlayLabel+';font-weight:600;margin-bottom:0.75rem;opacity:0;animation-delay:'+(0.05+ci*0.18)+'s'+(ci>0?';margin-top:2rem':'')+'">' +cat.label+'</p>'+links;
@@ -199,9 +201,9 @@ hero.style.cssText='position:relative;padding:7rem 0 3.5rem;background-color:'+T
 hero.innerHTML=
 '<div style="max-width:80rem;margin:0 auto;padding:0 1rem">'+
 '<div style="max-width:42rem">'+
-'<p class="ns-anim" style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:'+T.heroLabel+';margin-bottom:1rem;font-family:Inter,sans-serif">'+catLabel+'</p>'+
-'<h1 class="ns-anim ns-anim-d1" style="font-size:clamp(1.5rem,5vw,3rem);font-weight:700;color:'+T.heroTitle+';line-height:1.1;letter-spacing:-0.02em;font-family:Libre Baskerville,Georgia,serif">'+titleText+'</h1>'+
-(subtitleText?'<p class="ns-anim ns-anim-d2" style="margin-top:1.25rem;font-size:clamp(0.875rem,2vw,1.125rem);color:'+T.heroSub+';line-height:1.6;max-width:32rem;font-family:Inter,sans-serif">'+subtitleText+'</p>':'')+
+'<p class="ns-anim" style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:'+T.heroLabel+';margin-bottom:1rem;font-family:'+T.fontBody+'">'+catLabel+'</p>'+
+'<h1 class="ns-anim ns-anim-d1" style="font-size:clamp(1.5rem,5vw,3rem);font-weight:700;color:'+T.heroTitle+';line-height:1.1;letter-spacing:-0.02em;font-family:'+T.fontDisplay+'">'+titleText+'</h1>'+
+(subtitleText?'<p class="ns-anim ns-anim-d2" style="margin-top:1.25rem;font-size:clamp(0.875rem,2vw,1.125rem);color:'+T.heroSub+';line-height:1.6;max-width:32rem;font-family:'+T.fontBody+'">'+subtitleText+'</p>':'')+
 '</div></div>';
 return hero;
 }
@@ -248,9 +250,9 @@ newFooter.innerHTML=
 // Col 1
 '<div style="grid-column:span 2" class="footer-col1">'+
 '<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem"><img src="logo-header.png" alt="Inflexion" style="height:2.5rem;width:auto"/></div>'+
-'<p style="font-size:0.875rem;color:'+T.footerText+';line-height:1.6;font-family:Inter,sans-serif">Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.</p></div>'+
+'<p style="font-size:0.875rem;color:'+T.footerText+';line-height:1.6;font-family:'+T.fontBody+'">Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.</p></div>'+
 // Col 2
-'<div><p style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:'+T.footerTitle+';margin-bottom:1rem;font-family:Inter,sans-serif">Intelligence</p>'+
+'<div><p style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:'+T.footerTitle+';margin-bottom:1rem;font-family:'+T.fontBody+'">Intelligence</p>'+
 '<ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.625rem">'+
 '<li><a href="geopolitics.html" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">G\u00e9opolitique</a></li>'+
 '<li><a href="markets.html" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">March\u00e9s</a></li>'+
@@ -259,7 +261,7 @@ newFooter.innerHTML=
 '<li><a href="etf.html" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">ETF & Fonds</a></li>'+
 '</ul></div>'+
 // Col 3
-'<div><p style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:'+T.footerTitle+';margin-bottom:1rem;font-family:Inter,sans-serif">Plateforme</p>'+
+'<div><p style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:'+T.footerTitle+';margin-bottom:1rem;font-family:'+T.fontBody+'">Plateforme</p>'+
 '<ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.625rem">'+
 '<li><a href="analyses.html" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">Analyses</a></li>'+
 '<li><a href="expertise.html" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">Expertise</a></li>'+
@@ -269,7 +271,7 @@ newFooter.innerHTML=
 '</div>'+
 // Bottom bar
 '<div style="border-top:1px solid '+T.footerBorder+';padding-top:2rem;display:flex;flex-direction:column;align-items:center;gap:1rem;text-align:center">'+
-'<span style="font-size:0.875rem;color:'+T.footerText+';font-family:Inter,sans-serif">\u00a9 2026 Inflexion \u2014 Intelligence financi\u00e8re & g\u00e9opolitique</span>'+
+'<span style="font-size:0.875rem;color:'+T.footerText+';font-family:'+T.fontBody+'">\u00a9 2026 Inflexion \u2014 Intelligence financi\u00e8re & g\u00e9opolitique</span>'+
 '<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem">'+sourceTags+'</div>'+
 '</div></div>';
 
