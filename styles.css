@@ -8742,3 +8742,19 @@ body.page-markets .market-status {
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== Régime éditorial v2 — surcharge des variables de chrome du corps.
+   Opt-in par page via <body data-design-regime="editorial">. Ne s'applique
+   qu'aux pages migrées ; les autres gardent :root (v1). --accent/--navy
+   (emerald, double emploi marque/donnée) volontairement NON surchargés ici. ===== */
+[data-design-regime="editorial"] {
+    --bg-secondary: #EDEBE4;
+    --bg-tertiary: #E4E0D4;
+    --text-primary: #101214;
+    --text-secondary: #4C5052;
+    --text-muted: #6E7175;
+    --border-color: rgba(76,80,82,.18);
+    --border-light: rgba(76,80,82,.10);
+    --font-serif: 'Archivo', Georgia, serif;
+    --font-sans: 'IBM Plex Sans', 'Inter', sans-serif;
+}
