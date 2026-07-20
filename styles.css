@@ -8758,3 +8758,10 @@ body.page-markets .market-status {
     --font-serif: 'Archivo', Georgia, serif;
     --font-sans: 'IBM Plex Sans', 'Inter', sans-serif;
 }
+
+/* Régime éditorial — textes conçus pour fond sombre (.article-body & co),
+   réaffichés en foncé sur le papier v2. Corrige les pages où ces classes
+   sont rendues sur fond clair (a-propos, légales). */
+[data-design-regime="editorial"] .article-body { color: var(--text-secondary); }
+[data-design-regime="editorial"] .article-body h3 { color: var(--text-primary); }
+[data-design-regime="editorial"] .article-body blockquote { color: var(--text-secondary); }
