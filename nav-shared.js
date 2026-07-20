@@ -21,6 +21,19 @@ var THEMES={
     overlayBg:'#006650', overlayLink:'rgba(255,255,255,.9)', overlayLabel:'rgba(255,255,255,.4)',
     overlayIconBg:'rgba(255,255,255,.1)', overlayIconText:'rgba(255,255,255,.7)', overlayBorder:'rgba(255,255,255,.08)',
     footerBg:'#F7F8FA', footerBorder:'#E2E5EB', footerText:'#5A6178', footerTitle:'#1A1F2E', footerTag:'rgba(90,97,120,.4)'
+  },
+  v2:{
+    accent:'#8E2424', accentDark:'#6E1B1B', bronze:'#8E2424', bronzeGlow:'rgba(142,36,36,.06)',
+    megaPanelBg:'#101214', megaBorder:'rgba(232,228,216,.12)', megaHover:'#17191C', megaHoverBorder:'rgba(232,228,216,.16)',
+    megaLabel:'#E8E4D8', megaDesc:'#9AA0A4', megaFooterBg:'#0E1012', megaFooterText:'#9AA0A4',
+    ctaBg:'#8E2424', ctaHover:'#6E1B1B', navLinkTop:'rgba(232,228,216,.72)', navLinkScrolled:'#9AA0A4',
+    logoFilterTop:'brightness(10) saturate(0)', logoFilterScrolled:'brightness(10) saturate(0)',
+    hamburgerTop:'#E8E4D8', hamburgerScrolled:'#E8E4D8', bronzeBar:'#8E2424',
+    headerScrolledBg:'rgba(14,16,18,.92)', headerScrolledBorder:'rgba(232,228,216,.12)', headerScrolledShadow:'0 1px 8px rgba(0,0,0,.30)',
+    heroBg:'#0E1012', heroLabel:'#9AA0A4', heroTitle:'#E8E4D8', heroSub:'rgba(232,228,216,.55)',
+    overlayBg:'#0E1012', overlayLink:'rgba(232,228,216,.9)', overlayLabel:'rgba(232,228,216,.4)',
+    overlayIconBg:'rgba(232,228,216,.1)', overlayIconText:'rgba(232,228,216,.7)', overlayBorder:'rgba(232,228,216,.08)',
+    footerBg:'#0E1012', footerBorder:'rgba(232,228,216,.12)', footerText:'#9AA0A4', footerTitle:'#E8E4D8', footerTag:'rgba(154,160,164,.6)'
   }
 };
 var T=THEMES[(document.body&&document.body.dataset&&document.body.dataset.chrome)]||THEMES.v1;
