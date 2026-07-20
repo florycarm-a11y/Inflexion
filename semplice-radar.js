@@ -91,14 +91,14 @@
             var a=angleFor(i);var lr=R+18;
             var lx=cx+lr*Math.cos(a),ly=cy+lr*Math.sin(a);
             ctx.font=(hoverDim===i?'bold 13px':'600 11px')+' JetBrains Mono,monospace';
-            ctx.fillStyle=hoverDim===i?(viewMode==='opp'?'#33B894':'#006650'):'#1A1F2E';
+            ctx.fillStyle=hoverDim===i?(viewMode==='opp'?'#33B894':'#006650'):'#101214';
             ctx.textAlign='center';ctx.textBaseline='middle';
             ctx.fillText(DIM_SHORT[i],lx,ly);
         }
         // Ring labels
         for(var ring=1;ring<=7;ring++){
             var ry=cy-R*(ring/7);
-            ctx.font='9px JetBrains Mono,monospace';ctx.fillStyle='#5A6178';
+            ctx.font='9px JetBrains Mono,monospace';ctx.fillStyle='#4C5052';
             ctx.textAlign='left';ctx.textBaseline='middle';
             ctx.fillText(ring,cx+4,ry+1);
         }
@@ -143,7 +143,7 @@
             var btn=document.createElement('button');
             btn.textContent=m.icon+' '+m.label;
             var isActive=viewMode===m.key;
-            btn.style.cssText='padding:0.45rem 1rem;font-size:0.78rem;font-weight:600;cursor:pointer;border:none;transition:all 0.2s;'+(isActive?'background:#006650;color:white;':'background:white;color:#5A6178;');
+            btn.style.cssText='padding:0.45rem 1rem;font-size:0.78rem;font-weight:600;cursor:pointer;border:none;transition:all 0.2s;'+(isActive?'background:#006650;color:white;':'background:white;color:#4C5052;');
             btn.addEventListener('click',function(){
                 viewMode=m.key;
                 buildModeToggle();buildLegend();draw();
@@ -168,7 +168,7 @@
         var allActive=active.every(function(a){return a;});
         var allBtn=document.createElement('button');
         allBtn.textContent=allActive?'Aucun':'Tous';
-        allBtn.style.cssText='padding:0.35rem 0.75rem;border-radius:6px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid #E2E5EB;background:#F7F8FA;color:#5A6178;transition:all 0.2s;';
+        allBtn.style.cssText='padding:0.35rem 0.75rem;border-radius:6px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid #E2E5EB;background:#F7F8FA;color:#4C5052;transition:all 0.2s;';
         allBtn.addEventListener('click',function(){
             var newState=!allActive;
             for(var j=0;j<active.length;j++)active[j]=newState;
@@ -191,19 +191,19 @@
             dot.style.cssText='width:14px;height:14px;border-radius:50%;flex-shrink:0;background:'+z.color+';';
             var info=document.createElement('div');
             if(viewMode==='risk'){
-                info.innerHTML='<strong style="font-size:0.85rem;color:#1A1F2E;">'+z.name+'</strong><span style="display:block;font-family:JetBrains Mono,monospace;font-size:0.8rem;color:'+riskLevelColor(z.composite)+';font-weight:600;">'+z.composite.toFixed(1)+'/7 — '+z.level+'</span>';
+                info.innerHTML='<strong style="font-size:0.85rem;color:#101214;">'+z.name+'</strong><span style="display:block;font-family:JetBrains Mono,monospace;font-size:0.8rem;color:'+riskLevelColor(z.composite)+';font-weight:600;">'+z.composite.toFixed(1)+'/7 — '+z.level+'</span>';
             }else if(viewMode==='opp'){
-                var oppStr=z.oppComposite!=null?(oppLevelColor(z.oppComposite)+';font-weight:600;">'+z.oppComposite.toFixed(1)+'/7 — '+z.oppLevel):('#5A6178;font-style:italic;">Données indisponibles');
-                info.innerHTML='<strong style="font-size:0.85rem;color:#1A1F2E;">'+z.name+'</strong><span style="display:block;font-family:JetBrains Mono,monospace;font-size:0.8rem;color:'+oppStr+'</span>';
+                var oppStr=z.oppComposite!=null?(oppLevelColor(z.oppComposite)+';font-weight:600;">'+z.oppComposite.toFixed(1)+'/7 — '+z.oppLevel):('#4C5052;font-style:italic;">Données indisponibles');
+                info.innerHTML='<strong style="font-size:0.85rem;color:#101214;">'+z.name+'</strong><span style="display:block;font-family:JetBrains Mono,monospace;font-size:0.8rem;color:'+oppStr+'</span>';
             }else{
-                var oppPart=z.oppComposite!=null?('<span style="color:'+oppLevelColor(z.oppComposite)+';font-weight:600;">O '+z.oppComposite.toFixed(1)+'</span>'):('<span style="color:#5A6178;">O —</span>');
-                info.innerHTML='<strong style="font-size:0.85rem;color:#1A1F2E;">'+z.name+'</strong><span style="display:block;font-family:JetBrains Mono,monospace;font-size:0.75rem;"><span style="color:'+riskLevelColor(z.composite)+';font-weight:600;">R '+z.composite.toFixed(1)+'</span> <span style="color:#E2E5EB;">/</span> '+oppPart+'</span>';
+                var oppPart=z.oppComposite!=null?('<span style="color:'+oppLevelColor(z.oppComposite)+';font-weight:600;">O '+z.oppComposite.toFixed(1)+'</span>'):('<span style="color:#4C5052;">O —</span>');
+                info.innerHTML='<strong style="font-size:0.85rem;color:#101214;">'+z.name+'</strong><span style="display:block;font-family:JetBrains Mono,monospace;font-size:0.75rem;"><span style="color:'+riskLevelColor(z.composite)+';font-weight:600;">R '+z.composite.toFixed(1)+'</span> <span style="color:#E2E5EB;">/</span> '+oppPart+'</span>';
             }
             d.appendChild(dot);d.appendChild(info);leg.appendChild(d);
         });
         if(active.filter(function(a){return a;}).length===0){
             var empty=document.createElement('p');
-            empty.style.cssText='font-size:0.8rem;color:#5A6178;font-style:italic;';
+            empty.style.cssText='font-size:0.8rem;color:#4C5052;font-style:italic;';
             empty.textContent='Sélectionnez une zone ci-dessus.';
             leg.appendChild(empty);
         }
@@ -244,7 +244,7 @@
                 }
             });
             if(viewMode==='combined'){
-                lines[0]='<strong style="color:#33B894;">'+DIMS[best]+'</strong> <span style="color:#5A6178;">/</span> <strong style="color:#C8955A;">'+OPP_DIMS[best]+'</strong> <span style="color:#5A6178;">('+DIM_SHORT[best]+')</span>';
+                lines[0]='<strong style="color:#33B894;">'+DIMS[best]+'</strong> <span style="color:#4C5052;">/</span> <strong style="color:#C8955A;">'+OPP_DIMS[best]+'</strong> <span style="color:#4C5052;">('+DIM_SHORT[best]+')</span>';
             }
             tooltip.innerHTML=lines.join('<br>');
             tooltip.style.display='block';
