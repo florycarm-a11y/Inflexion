@@ -8765,3 +8765,36 @@ body.page-markets .market-status {
 [data-design-regime="editorial"] .article-body { color: var(--text-secondary); }
 [data-design-regime="editorial"] .article-body h3 { color: var(--text-primary); }
 [data-design-regime="editorial"] .article-body blockquote { color: var(--text-secondary); }
+
+/* ===== Régime éditorial v2 — accent chrome emerald → rouge #8E2424 =====
+   ~205 usages de var(--accent)/var(--navy) sont du chrome (boutons, liens,
+   badges, fonds de section) : migres en bloc. Les familles navy==accent et
+   navy-light==accent-dark, migrees ensemble. */
+[data-design-regime="editorial"] {
+    --accent: #8E2424;
+    --accent-dark: #6E1B1B;
+    --accent-light: #F4E7E7;
+    --navy: #8E2424;
+    --navy-light: #6E1B1B;
+}
+
+/* Re-neutralisation DONNEE : ces 14 selecteurs encodent une semantique
+   financiere/statut/palier (valeur marche, flux ETF, marche ouvert, impact
+   eleve). Redefinir --accent localement en emerald couvre color ET background,
+   quelle que soit la propriete qui consomme la variable. */
+[data-design-regime="editorial"] .data-table .positive,
+[data-design-regime="editorial"] .data-table .negative,
+[data-design-regime="editorial"] .market-change.positive,
+[data-design-regime="editorial"] .market-change.negative,
+[data-design-regime="editorial"] .commodity-change.positive,
+[data-design-regime="editorial"] .commodity-change.negative,
+[data-design-regime="editorial"] .etf-flow.positive,
+[data-design-regime="editorial"] .etf-flow.negative,
+[data-design-regime="editorial"] .legend-value.positive,
+[data-design-regime="editorial"] .legend-value.negative,
+[data-design-regime="editorial"] .impact-indicator.impact-high,
+[data-design-regime="editorial"] .market-status.open .market-status-dot,
+[data-design-regime="editorial"] .market-status.closed .market-status-dot,
+[data-design-regime="editorial"] .market-status.open .market-status-text {
+    --accent: #006650;
+}
