@@ -57,6 +57,7 @@ function initLeafletMap(){
 
         var group=L.featureGroup();
         features.forEach(function(geo){
+          try{
             var layer=L.geoJSON(geo,{
                 style:function(){
                     return {
@@ -90,6 +91,10 @@ function initLeafletMap(){
                 }
             });
             group.addLayer(layer);
+          }catch(err){
+            // Une géométrie malformée ne doit jamais interrompre le reste de la page
+            console.warn('Zone géométrie ignorée ('+zone.id+') :',err&&err.message);
+          }
         });
         group.addTo(leafletMap);
         geoLayers[zone.id]=group;
@@ -843,7 +848,7 @@ document.addEventListener('DOMContentLoaded',async function(){
     }
 
     initToggle();
-    initLeafletMap();
+    try{ initLeafletMap(); }catch(err){ console.warn('Carte non initialisée :',err&&err.message); }
     // Recalculate Leaflet size after nav-shared.js modifies DOM
     if(leafletMap){
         leafletMap.once('load',function(){leafletMap.invalidateSize();});
