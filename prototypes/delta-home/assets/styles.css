@@ -1,0 +1,616 @@
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("fonts/font-01.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("fonts/font-02.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("fonts/font-03.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/font-04.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/font-05.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/font-06.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/font-07.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/font-08.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("fonts/font-09.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("fonts/font-10.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("fonts/font-11.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("fonts/font-12.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("fonts/font-13.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("fonts/font-14.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+/* ==========================================================================
+   INFLEXION — LE DELTA
+   Fond #F4F1EA · encre #0A0A0A · métadonnées #6E6A62 · archives #3E5C3A
+   Le rouge n'existe QUE dans l'arborescence.
+   Aucun coin arrondi, aucune ombre, aucun dégradé.
+   ========================================================================== */
+
+:root {
+  --paper: #f4f1ea;
+  --ink: #0a0a0a;
+  --meta: #6e6a62;
+  --archive: #3e5c3a;
+  --gutter: clamp(24px, 5.55vw, 80px);
+  --river: 0px; /* marge du fleuve mobile, activée <= 800px */
+}
+
+/* Le contraste renforcé conserve la palette fermée et l'encre des métadonnées. */
+@media (prefers-contrast: more) {
+  :root { --meta: #6e6a62; }
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--paper); scroll-behavior: auto; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+a:hover { color: inherit; }
+
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+main { position: relative; overflow: clip; }
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(12px, 1.66vw, 24px);
+  padding-inline: var(--gutter);
+  padding-left: calc(var(--gutter) + var(--river));
+}
+
+.mono {
+  color: var(--meta);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+h1, h2, h3, .wordmark, .footer-brand {
+  margin: 0;
+  font-family: Archivo, Arial, sans-serif;
+  font-weight: 800;
+  line-height: 0.89;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+
+p { margin: 0; }
+
+/* --------------------------------------------------------------------------
+   ARBORESCENCE — paths générés par tree.js, échelle exacte par génération
+   -------------------------------------------------------------------------- */
+
+.delta-tree {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.delta-branch {
+  fill: none;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1px;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  vector-effect: non-scaling-stroke;
+}
+
+.generation-1 .delta-branch { stroke: #ff2d00; stroke-width: 4px; }
+.generation-2 .delta-branch { stroke: #c42300; stroke-width: 2.5px; }
+.generation-3 .delta-branch { stroke: #8a1800; stroke-width: 1.5px; }
+.generation-4 .delta-branch { stroke: #521000; stroke-width: 0.75px; }
+.generation-4.archive-branches .delta-branch { stroke: var(--archive); }
+
+/* Mouvement réduit : l'arbre est dessiné en entier, sans animation. */
+@media (prefers-reduced-motion: reduce) {
+  .delta-branch { stroke-dashoffset: 0 !important; }
+}
+
+/* --------------------------------------------------------------------------
+   EN-TÊTE
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  position: relative;
+  z-index: 3;
+  align-items: start;
+  min-height: 122px;
+  padding-top: 28px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.issue { grid-column: 1 / span 3; }
+
+.wordmark {
+  grid-column: 5 / span 4;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  letter-spacing: -0.03em;
+}
+
+.mark { font-size: 58px; line-height: 0.7; }
+
+nav {
+  grid-column: 9 / -1;
+  display: flex;
+  justify-content: flex-end;
+  gap: clamp(14px, 2vw, 32px);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+}
+
+nav a, .archive-index a { border-bottom: 1px solid var(--ink); }
+nav a:hover { background: var(--ink); color: var(--paper); }
+
+/* --------------------------------------------------------------------------
+   RACINE — la manchette occupe le premier écran
+   -------------------------------------------------------------------------- */
+
+.root-section {
+  position: relative;
+  z-index: 2;
+  min-height: calc(100svh - 122px);
+  padding-top: 110px;
+  padding-bottom: 24px;
+}
+
+.root-kicker { grid-column: 1 / span 3; align-self: start; }
+
+.lead-story {
+  grid-column: 2 / span 10;
+  align-self: start;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.section-number { grid-column: 1 / -1; margin-bottom: 22px; }
+
+.lead-story h1 {
+  position: relative;
+  grid-column: 1 / -1;
+  background: var(--paper);
+  text-align: center;
+  font-size: clamp(72px, 11.8vw, 170px);
+}
+
+.standfirst {
+  grid-column: 3 / span 6;
+  margin-top: 48px;
+  background: var(--paper);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.byline { grid-column: 3 / span 6; margin-top: 12px; background: var(--paper); }
+
+.root-note {
+  grid-column: 10 / span 3;
+  align-self: end;
+  margin-bottom: 72px;
+  padding-top: 12px;
+  border-top: 1px solid var(--ink);
+  background: var(--paper);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.root-note span { display: block; margin-bottom: 12px; }
+
+/* --------------------------------------------------------------------------
+   TÊTES DE SECTION
+   -------------------------------------------------------------------------- */
+
+.section-heading { align-items: end; }
+.section-heading > .mono { grid-column: 1 / span 3; align-self: start; }
+.section-heading h2 { grid-column: 4 / span 6; font-size: clamp(64px, 8.3vw, 120px); }
+.section-intro { grid-column: 10 / span 3; font-size: 15px; line-height: 1.55; }
+
+/* --------------------------------------------------------------------------
+   ANALYSES — première bifurcation (3 branches)
+   Les décalages descendent comme un bras de fleuve : 0 / 224 / 96.
+   -------------------------------------------------------------------------- */
+
+.analyses-section {
+  position: relative;
+  z-index: 2;
+  padding-top: 110px;
+  padding-bottom: 220px;
+}
+
+.analysis-grid { padding-top: 220px; }
+
+.analysis-card {
+  align-self: start;
+  padding-top: 14px;
+  border-top: 1px solid var(--ink);
+  background: var(--paper);
+}
+
+.analysis-01 { grid-column: 1 / span 4; }
+.analysis-02 { grid-column: 5 / span 4; margin-top: 224px; }
+.analysis-03 { grid-column: 9 / span 4; margin-top: 96px; }
+
+.card-meta { margin-bottom: 30px; }
+
+.analysis-card h3 { margin-bottom: 24px; font-size: clamp(30px, 3.2vw, 46px); line-height: 0.95; }
+.analysis-card p { font-size: 17px; }
+.read-meta { margin-top: 28px; }
+
+.analysis-card:hover h3 {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+.analysis-card:hover .read-meta { color: var(--ink); }
+
+/* --------------------------------------------------------------------------
+   DÉPÊCHES — deuxième bifurcation (6 branches, 2 par analyse)
+   Deux vagues : 0 / 288 / 128 / 432, puis 720 / 856.
+   -------------------------------------------------------------------------- */
+
+.dispatch-section {
+  position: relative;
+  z-index: 2;
+  padding-top: 110px;
+  padding-bottom: 260px;
+}
+
+.signal-filters {
+  grid-column: 4 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 7px;
+  margin-top: 42px;
+}
+
+.signal-filter {
+  padding: 7px 10px;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.signal-filter:hover,
+.signal-filter[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.signal-empty {
+  grid-column: 4 / span 6;
+  padding: 18px 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  text-align: center;
+}
+
+.dispatch-grid { align-items: start; padding-top: 180px; }
+
+.dispatch {
+  padding: 12px 0 20px;
+  border-top: 1px solid var(--ink);
+  background: var(--paper);
+}
+
+.dispatch-number { color: var(--ink); margin-bottom: 4px; }
+.dispatch-place { margin-bottom: 24px; }
+.dispatch p { font-size: 17px; line-height: 1.52; }
+
+.dispatch-1 { grid-column: 1 / span 3; }
+.dispatch-2 { grid-column: 4 / span 3; margin-top: 288px; }
+.dispatch-3 { grid-column: 7 / span 3; margin-top: 128px; }
+.dispatch-4 { grid-column: 10 / span 3; margin-top: 432px; }
+.dispatch-5 { grid-column: 2 / span 3; margin-top: 720px; }
+.dispatch-6 { grid-column: 8 / span 3; margin-top: 856px; }
+
+.dispatch:hover .dispatch-place { color: var(--ink); }
+
+@media (prefers-contrast: more) {
+  .signal-filter:not([aria-pressed="true"]) { color: var(--ink); }
+}
+
+@media (max-width: 1200px) {
+  .signal-filters {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    margin-top: 32px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   ARCHIVES — trajectoires refermées. Le vert n'existe qu'ici.
+   Décalages : 0 / 272 / 112 / 432.
+   -------------------------------------------------------------------------- */
+
+.archive-section {
+  position: relative;
+  z-index: 2;
+  padding-top: 110px;
+}
+
+.archive-heading,
+.archive-heading .mono,
+.archive-heading .section-intro { color: var(--archive); }
+
+.archive-grid { align-items: start; padding-top: 170px; padding-bottom: 220px; }
+
+.archive-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  padding: 18px;
+  border: 1px solid var(--archive);
+  background: var(--paper);
+  color: var(--archive);
+}
+
+.archive-card .mono { color: var(--archive); }
+.archive-card h3 { margin: auto 0 28px; font-size: clamp(25px, 2.6vw, 38px); line-height: 0.98; }
+
+.archive-1 { grid-column: 1 / span 3; }
+.archive-2 { grid-column: 4 / span 3; margin-top: 272px; }
+.archive-3 { grid-column: 7 / span 3; margin-top: 112px; }
+.archive-4 { grid-column: 10 / span 3; margin-top: 432px; }
+
+.archive-card:hover { background: var(--archive); color: var(--paper); }
+.archive-card:hover .mono { color: var(--paper); }
+
+.archive-index {
+  align-items: center;
+  padding-top: 28px;
+  padding-bottom: 28px;
+  border-top: 1px solid var(--archive);
+  border-bottom: 1px solid var(--archive);
+  color: var(--archive);
+}
+
+.archive-index .mono { color: var(--archive); grid-column: 1 / span 3; }
+.archive-index > p:nth-child(2) { grid-column: 4 / span 5; font-size: 15px; }
+
+.archive-index a {
+  grid-column: 10 / span 3;
+  justify-self: end;
+  border-color: var(--archive);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+}
+
+.archive-index a:hover { background: var(--archive); color: var(--paper); }
+.archive-index a:focus-visible { outline-color: var(--archive); }
+
+/* --------------------------------------------------------------------------
+   PIED DE PAGE
+   -------------------------------------------------------------------------- */
+
+footer {
+  position: relative;
+  z-index: 2;
+  min-height: 180px;
+  padding-top: 42px;
+  padding-bottom: 48px;
+  background: var(--paper);
+}
+
+.footer-brand { grid-column: 1 / span 4; font-size: 40px; }
+footer > p { grid-column: 6 / span 3; }
+.footer-end { grid-column: 11 / span 2; text-align: right; }
+
+/* ==========================================================================
+   MOBILE <= 800px — le fleuve devient une rivière verticale en marge gauche
+   (--river), chaque carte est desservie par une bifurcation locale.
+   Les cartes s'empilent en colonne unique : plus de décalages arbitraires.
+   ========================================================================== */
+
+@media (max-width: 800px) {
+  :root { --gutter: 20px; --river: 44px; }
+
+  body { font-size: 17px; }
+  .grid-12 { gap: 10px; }
+
+  /* L'en-tête et le pied de page restent hors du lit de la rivière. */
+  .site-header, footer { padding-left: var(--gutter); }
+
+  .site-header { min-height: 106px; padding-top: 20px; }
+  .issue { grid-column: 1 / span 4; }
+  .wordmark { grid-column: 5 / span 4; }
+  .mark { font-size: 48px; }
+  nav { grid-column: 10 / -1; }
+  nav a:not(:first-child) { display: none; }
+
+  .root-section { min-height: auto; padding-top: 90px; padding-bottom: 110px; }
+  .root-kicker { grid-column: 1 / span 5; }
+  .lead-story { grid-column: 1 / -1; display: block; margin-top: 48px; }
+  .lead-story h1 { text-align: left; font-size: clamp(58px, 18vw, 104px); }
+  .standfirst { width: 82%; margin: 52px 0 0 18%; }
+  .byline { margin: 18px 0 0 18%; }
+  .root-note { display: none; }
+
+  .section-heading > .mono { grid-column: 1 / span 5; }
+  .section-heading h2 { grid-column: 1 / -1; margin-top: 50px; font-size: clamp(54px, 16vw, 88px); }
+  .section-intro { grid-column: 6 / -1; margin-top: 22px; }
+
+  .analyses-section { padding-bottom: 140px; }
+  .analysis-grid { padding-top: 120px; }
+  .analysis-01, .analysis-02, .analysis-03 { grid-column: 1 / -1; margin-top: 0; }
+  .analysis-02, .analysis-03 { margin-top: 72px; }
+
+  .dispatch-section { padding-bottom: 150px; }
+  .signal-filters { grid-column: 1 / -1; margin-top: 32px; }
+  .dispatch-grid { padding-top: 110px; }
+  .dispatch-1, .dispatch-2, .dispatch-3,
+  .dispatch-4, .dispatch-5, .dispatch-6 { grid-column: 1 / -1; margin-top: 0; }
+  .dispatch:not(.dispatch-1) { margin-top: 48px; }
+  .signal-empty { grid-column: 1 / -1; }
+
+  .archive-grid { padding-top: 110px; padding-bottom: 140px; }
+  .archive-card { min-height: 220px; padding: 14px; }
+  .archive-1, .archive-2, .archive-3, .archive-4 { grid-column: 1 / -1; margin-top: 0; }
+  .archive-card:not(.archive-1) { margin-top: 56px; }
+
+  .archive-index .mono { grid-column: 1 / span 6; }
+  .archive-index > p:nth-child(2) { grid-column: 7 / -1; }
+  .archive-index a { grid-column: 1 / -1; justify-self: start; margin-top: 20px; }
+
+  footer { min-height: 210px; }
+  .footer-brand { grid-column: 1 / -1; }
+  footer > p { grid-column: 1 / span 6; margin-top: 28px; }
+  .footer-end { grid-column: 9 / -1; }
+}
+
+@media (max-width: 440px) {
+  .wordmark span:last-child { display: none; }
+  .issue { grid-column: 1 / span 5; }
+  nav { grid-column: 9 / -1; }
+  .analysis-card h3 { font-size: 29px; }
+  .dispatch p { font-size: 15px; }
+}
