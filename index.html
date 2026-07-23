@@ -512,7 +512,7 @@ else{setStatus('error')}
 }
 const msg={success:'Inscription confirmée — bienvenue parmi nos lecteurs.',duplicate:'Cette adresse est déjà inscrite.',error:'Une erreur est survenue. Réessayez.',invalid:'Veuillez entrer une adresse email valide.'}
 const msgColor={success:'text-[#7BE0B0]',duplicate:'text-[#E8C79A]',error:'text-[#F0A090]',invalid:'text-[#F0A090]'}
-return h(FadeUp,null,h('section',{className:'v2-chrome py-20',style:{backgroundColor:'#2A1210'}},
+return h(FadeUp,null,h('section',{className:'v2-chrome py-20',style:{backgroundColor:'#17100E'}},
  h('div',{className:'max-w-2xl mx-auto px-4 sm:px-6 text-center'},
   h('p',{className:'kicker mb-4',style:{color:'#E8A996'}},'§ Signaux faibles — Hebdomadaire'),
   h('h2',{className:'text-2xl md:text-3xl font-extrabold text-white mb-4'},'Recevez nos signaux faibles chaque semaine'),
@@ -524,7 +524,7 @@ return h(FadeUp,null,h('section',{className:'v2-chrome py-20',style:{backgroundC
    ):
    h('form',{onSubmit:submit,className:'flex flex-col sm:flex-row gap-3 max-w-md mx-auto'},
     h('input',{type:'email',value:email,onChange:e=>{setEmail(e.target.value);if(status==='invalid')setStatus(null)},placeholder:'votre@email.com','aria-label':'Adresse email',className:`flex-1 px-4 py-3 bg-white/10 border text-white text-sm placeholder-white/40 outline-none transition-colors ${status==='invalid'?'border-[#F0A090]':'border-white/20 focus:border-[#E05A4E]'}`}),
-    h('button',{type:'submit',disabled:status==='sending',className:'px-6 py-3 bg-[#E8E4D8] hover:bg-[#FFFFFF] text-[#2A1210] font-semibold text-sm transition-colors whitespace-nowrap disabled:opacity-50'},status==='sending'?'Envoi...':'S\'abonner')
+    h('button',{type:'submit',disabled:status==='sending',className:'px-6 py-3 bg-[#E8E4D8] hover:bg-[#FFFFFF] text-[#17100E] font-semibold text-sm transition-colors whitespace-nowrap disabled:opacity-50'},status==='sending'?'Envoi...':'S\'abonner')
    ),
   status&&status!=='success'&&status!=='sending'&&h('p',{className:`mt-4 text-sm ${msgColor[status]}`},msg[status])
  )
