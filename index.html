@@ -44,7 +44,7 @@ h1,h2,h3,.display-text{font-family:'Archivo',Arial,sans-serif;font-weight:800;li
 /* Mega menu — carte claire, filet rouge */
 .mega-trigger{position:relative}
 .mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:340px;z-index:60}
-.mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.mega-menu.mega-open,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
 .mega-menu::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:#8E2424;z-index:2}
 .mega-item{transition:background .15s ease}
 .mega-item:hover{background:rgba(142,36,36,.06)}
@@ -72,8 +72,8 @@ body.menu-open{overflow:hidden}
 /* Hero glow — lueur rouge chaude */
 .hero-glow{position:absolute;top:-120px;right:-80px;width:560px;height:560px;background:radial-gradient(circle,rgba(224,90,78,.12) 0%,transparent 70%);pointer-events:none}
 
-/* Category taxonomy — couleurs de DONNÉE, ne pas modifier */
-.category-geo{background:#2563eb}.category-marches{background:#006650}.category-crypto{background:#f59e0b}.category-matieres{background:#C8955A}.category-iatech{background:#8b5cf6}
+/* Badges catégorie : pastille sombre dense neutre (pas de couleur — décision 2026-07-23).
+   Le libellé texte porte la catégorie ; aucune couleur-taxonomie sur la home. */
 
 /* Article cards — filet de lecture rouge */
 .article-card{position:relative;transition:box-shadow .18s ease,border-color .18s ease}
@@ -177,6 +177,7 @@ return articles
 function Navigation(){
 const[open,setOpen]=useState(false)
 const[scrolled,setScrolled]=useState(false)
+const[megaOpen,setMegaOpen]=useState(-1)
 useEffect(()=>{
 const fn=()=>setScrolled(window.scrollY>60)
 window.addEventListener('scroll',fn,{passive:true})
@@ -197,9 +198,9 @@ return h('div',null,
     h('nav',{className:'hidden md:flex items-center gap-1','aria-label':'Navigation principale'},
      ...MEGA_NAV.map((cat,ci)=>{
       const isWide=cat.children.length>3
-      return h('div',{key:ci,className:'mega-trigger'},
-       h('span',{className:'nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none text-[#C6A996] hover:text-[#F5EDE6]'},cat.label),
-       h('div',{className:'mega-menu bg-[#FFFFFF] border border-[#42301E] p-5 shadow-[0_6px_18px_rgba(42,18,16,.20)]',style:{minWidth:isWide?'440px':'340px'}},
+      return h('div',{key:ci,className:'mega-trigger',onMouseEnter:()=>setMegaOpen(ci),onMouseLeave:(e)=>{if(!e.currentTarget.contains(document.activeElement))setMegaOpen(-1)},onFocus:()=>setMegaOpen(ci),onBlur:(e)=>{if(!e.currentTarget.contains(e.relatedTarget))setMegaOpen(-1)},onKeyDown:(e)=>{if(e.key==='Escape'){setMegaOpen(-1);const b=e.currentTarget.querySelector('button');if(b)b.blur()}}},
+       h('button',{type:'button','aria-haspopup':'true','aria-expanded':megaOpen===ci,className:'nav-link px-3 py-2 text-sm font-medium transition-colors select-none text-[#C6A996] hover:text-[#F5EDE6] focus-visible:text-[#F5EDE6] bg-transparent border-0 cursor-pointer'},cat.label),
+       h('div',{className:'mega-menu '+(megaOpen===ci?'mega-open ':'')+'bg-[#FFFFFF] border border-[#42301E] p-5 shadow-[0_6px_18px_rgba(42,18,16,.20)]',style:{minWidth:isWide?'440px':'340px'}},
         h('div',{className:isWide?'grid grid-cols-2 gap-1':'grid gap-1'},
          ...cat.children.map((item,ii)=>
           h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 no-underline'},
@@ -316,14 +317,13 @@ return h(FadeUp,null,h('section',{className:'py-16 md:py-20'},
   ),
   h('div',{className:'grid grid-cols-1 md:grid-cols-2 gap-6'},
    ...analyses.map((a,i)=>{
-    const catCls=a.cat==='Géopolitique'?'category-geo':a.cat==='IA & Tech'?'category-iatech':'category-marches'
     return h('a',{key:i,href:a.href,className:'article-card group block overflow-hidden bg-[#FFFFFF] border border-[rgba(76,80,82,.18)] no-underline'},
      h('div',{className:'aspect-[21/9] overflow-hidden'},
       h('img',{src:a.img,alt:a.title,className:'w-full h-full object-cover group-hover:scale-[1.03] transition-all duration-500',loading:'lazy'})
      ),
      h('div',{className:'p-6 md:p-8'},
       h('div',{className:'flex items-center gap-3 mb-4'},
-       h('span',{className:`${catCls} text-[10px] font-semibold uppercase tracking-[0.12em] text-white px-2 py-0.5`,style:{fontFamily:"'IBM Plex Mono',monospace"}},a.cat),
+       h('span',{className:'bg-[#17100E] text-[#F5EDE6] text-[10px] font-semibold uppercase tracking-[0.12em] px-2 py-0.5',style:{fontFamily:"'IBM Plex Mono',monospace"}},a.cat),
        h('span',{className:'text-[11px] text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},a.date)
       ),
       h('h3',{className:'text-lg md:text-xl font-extrabold leading-snug mb-3 text-[#101214]'},a.title),
@@ -420,7 +420,7 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
      ),
      h('div',{className:'p-5'},
       h('div',{className:'flex items-center gap-2 mb-3',style:{fontFamily:"'IBM Plex Mono',monospace"}},
-       cat&&h('span',{className:`${cat.cls} text-[10px] font-semibold uppercase tracking-[0.12em] text-white px-2 py-0.5`},cat.label),
+       cat&&h('span',{className:'bg-[#17100E] text-[#F5EDE6] text-[10px] font-semibold uppercase tracking-[0.12em] px-2 py-0.5'},cat.label),
        h('span',{className:'text-xs text-[#4C5052]'},a.time),
        h('span',{className:'text-xs text-[#4C5052]'},'·'),
        h('span',{className:'text-xs text-[#4C5052]'},a.readingTime+' min')
