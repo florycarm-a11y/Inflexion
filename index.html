@@ -19,13 +19,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <link href="assets/design-tokens-v2.css" rel="stylesheet"/>
 <style>
+/* Identité v2 « chaude » — rouge & brun prédominants (home).
+   Rouge clair-surface #8E2424 · rouge sombre-surface #E05A4E · brun espresso #42301E
+   · oxblood #2A1210 · chrome espresso #17100E. Catégories (taxonomie) inchangées. */
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'IBM Plex Sans','Helvetica Neue',sans-serif;background:var(--surface-page);color:var(--text-primary);overflow-x:hidden}
 
 h1,h2,h3,.display-text{font-family:'Archivo',Arial,sans-serif;font-weight:800;line-height:1.1;letter-spacing:-0.035em;color:var(--text-primary)}
 
-/* Kicker éditorial — vocabulaire « manchette » Delta, en mono */
-.kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.18em;color:var(--text-secondary)}
+/* Kicker éditorial « § … » — rouge sur surfaces claires (override inline sur sombre) */
+.kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;color:#8E2424}
 .font-data{font-family:'IBM Plex Mono','SF Mono',monospace}
 
 /* Animations */
@@ -35,21 +38,22 @@ h1,h2,h3,.display-text{font-family:'Archivo',Arial,sans-serif;font-weight:800;li
 
 /* Nav links */
 .nav-link{position:relative}
-.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:var(--chrome-text);transform:scaleX(0);transition:transform .25s ease}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#E05A4E;transform:scaleX(0);transition:transform .25s ease}
 .nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
 
-/* Mega menu — chrome sombre v2 */
+/* Mega menu — carte claire, filet rouge */
 .mega-trigger{position:relative}
 .mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:340px;z-index:60}
 .mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.mega-menu::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:#8E2424;z-index:2}
 .mega-item{transition:background .15s ease}
-.mega-item:hover{background:rgba(16,18,20,.06)}
+.mega-item:hover{background:rgba(142,36,36,.06)}
 .mega-icon{width:36px;height:36px;border-radius:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:600;font-family:'IBM Plex Mono',monospace}
-.nav-scrolled{background:rgba(14,16,18,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(232,228,216,.14)}
+.nav-scrolled{background:rgba(23,16,14,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,149,90,.22)}
 
 /* Focus */
 :focus-visible{outline:2px solid var(--text-primary);outline-offset:2px}
-header :focus-visible,.mobile-overlay :focus-visible,.v2-chrome :focus-visible{outline-color:var(--chrome-text)}
+header :focus-visible,.mobile-overlay :focus-visible,.v2-chrome :focus-visible{outline-color:#E05A4E}
 
 /* Hamburger */
 .hamburger span{display:block;width:24px;height:2px;background:var(--chrome-text);margin:5px 0;transition:all .3s ease}
@@ -65,16 +69,16 @@ header :focus-visible,.mobile-overlay :focus-visible,.v2-chrome :focus-visible{o
 .mobile-overlay.open .menu-item{animation:menu-item-in .4s ease-out forwards}
 body.menu-open{overflow:hidden}
 
-/* Hero glow — sur fond sombre */
-.hero-glow{position:absolute;top:-120px;right:-80px;width:520px;height:520px;background:radial-gradient(circle,rgba(232,228,216,.06) 0%,transparent 70%);pointer-events:none}
+/* Hero glow — lueur rouge chaude */
+.hero-glow{position:absolute;top:-120px;right:-80px;width:560px;height:560px;background:radial-gradient(circle,rgba(224,90,78,.12) 0%,transparent 70%);pointer-events:none}
 
 /* Category taxonomy — couleurs de DONNÉE, ne pas modifier */
 .category-geo{background:#2563eb}.category-marches{background:#006650}.category-crypto{background:#f59e0b}.category-matieres{background:#C8955A}.category-iatech{background:#8b5cf6}
 
-/* Article cards — filet de lecture éditorial */
+/* Article cards — filet de lecture rouge */
 .article-card{position:relative;transition:box-shadow .18s ease,border-color .18s ease}
 .article-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--editorial-accent);transform:scaleY(0);transform-origin:top;transition:transform .22s ease;z-index:1}
-.article-card:hover{box-shadow:0 6px 18px rgba(14,16,18,.10);border-color:var(--border-hairline)}
+.article-card:hover{box-shadow:0 6px 18px rgba(42,18,16,.12);border-color:#8E2424}
 .article-card:hover::before{transform:scaleY(1)}
 
 /* Featured (manchette) card */
@@ -91,7 +95,7 @@ a,button{min-height:44px;min-width:44px}
 </style>
 </head>
 <body data-design-regime="editorial">
-<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:var(--chrome-ground);color:var(--chrome-text);font-family:'IBM Plex Sans',sans-serif;font-size:14px;text-decoration:none;border-radius:0 0 4px 0;" onfocus="this.style.position='fixed';this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Aller au contenu principal</a>
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:#8E2424;color:#F5EDE6;font-family:'IBM Plex Sans',sans-serif;font-size:14px;text-decoration:none;border-radius:0 0 4px 0;" onfocus="this.style.position='fixed';this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Aller au contenu principal</a>
 <div id="app"></div>
 <script src="image-catalog.js"></script>
 <script src="nav-config.js"></script>
@@ -165,7 +169,7 @@ articles.sort((a,b)=>b.id-a.id)
 return articles
 }
 
-// ─── NAVIGATION (chrome v2 partagé) ──────────────────────────────────────────
+// ─── NAVIGATION (chrome v2 chaud) ────────────────────────────────────────────
 
 function Navigation(){
 const[open,setOpen]=useState(false)
@@ -180,7 +184,7 @@ if(open){document.body.classList.add('menu-open')}else{document.body.classList.r
 return()=>document.body.classList.remove('menu-open')
 },[open])
 return h('div',null,
- h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#0E1012]'}),
+ h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#8E2424]'}),
  h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
@@ -191,12 +195,12 @@ return h('div',null,
      ...MEGA_NAV.map((cat,ci)=>{
       const isWide=cat.children.length>3
       return h('div',{key:ci,className:'mega-trigger'},
-       h('span',{className:'nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none text-[#9AA0A4] hover:text-[#E8E4D8]'},cat.label),
-       h('div',{className:'mega-menu bg-[#FFFFFF] border border-[#4C5052] p-5 shadow-[0_6px_18px_rgba(14,16,18,.18)]',style:{minWidth:isWide?'440px':'340px'}},
+       h('span',{className:'nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none text-[#C6A996] hover:text-[#F5EDE6]'},cat.label),
+       h('div',{className:'mega-menu bg-[#FFFFFF] border border-[#42301E] p-5 shadow-[0_6px_18px_rgba(42,18,16,.20)]',style:{minWidth:isWide?'440px':'340px'}},
         h('div',{className:isWide?'grid grid-cols-2 gap-1':'grid gap-1'},
          ...cat.children.map((item,ii)=>
           h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 no-underline'},
-           h('span',{className:'mega-icon bg-[#EDEBE4] text-[#101214]'},item.icon),
+           h('span',{className:'mega-icon bg-[#F1E7DE] text-[#8E2424]'},item.icon),
            h('span',{className:'flex flex-col min-w-0'},
             h('span',{className:'text-sm font-semibold text-[#101214]'},item.label),
             h('span',{className:'text-xs text-[#4C5052] mt-0.5'},item.desc)
@@ -207,7 +211,7 @@ return h('div',null,
        )
       )}
      ),
-     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#E8E4D8] hover:bg-[#FFFFFF] text-[#0E1012] font-semibold text-sm transition-colors'},'Réserver un diagnostic')
+     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#8E2424] hover:bg-[#6E1B1B] text-[#F5EDE6] font-semibold text-sm transition-colors'},'Réserver un diagnostic')
     ),
     h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,onClick:()=>setOpen(!open),'aria-label':'Menu','aria-expanded':open},
      h('span'),h('span'),h('span')
@@ -215,7 +219,7 @@ return h('div',null,
    )
   )
  ),
- h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#0E1012'}},
+ h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#17100E'}},
   h('div',{className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0'},
    h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-8 w-auto',style:{filter:'brightness(10) saturate(0)'}}),
    h('button',{onClick:()=>setOpen(false),className:'w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
@@ -224,7 +228,7 @@ return h('div',null,
   ),
   h('div',{className:'flex-1 overflow-y-auto px-6 pt-2 pb-4'},
    ...MEGA_NAV.map((cat,ci)=>[
-    h('p',{key:'h'+ci,className:'menu-item text-[11px] uppercase tracking-[.2em] text-white/40 font-semibold mb-3'+(ci>0?' mt-8':''),style:{animationDelay:`${0.05+ci*0.18}s`}},cat.label),
+    h('p',{key:'h'+ci,className:'menu-item text-[11px] uppercase tracking-[.2em] text-[#E05A4E] font-semibold mb-3'+(ci>0?' mt-8':''),style:{animationDelay:`${0.05+ci*0.18}s`}},cat.label),
     ...cat.children.map((item,ii)=>
      h('a',{key:'m'+ci+'-'+ii,href:item.href,onClick:()=>setOpen(false),className:'menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8',style:{animationDelay:`${0.08+ci*0.18+ii*0.05}s`}},
       h('span',{className:'w-8 h-8 bg-white/10 flex items-center justify-center text-xs font-semibold text-white/70',style:{fontFamily:"'IBM Plex Mono',monospace"}},item.icon),
@@ -234,33 +238,34 @@ return h('div',null,
    ]).flat()
   ),
   h('div',{className:'px-6 pt-4 pb-20 flex flex-col gap-3 flex-shrink-0'},
-   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold transition-colors text-base',style:{animationDelay:'0.8s'}},'Réserver un diagnostic')
+   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-[#8E2424] hover:bg-[#6E1B1B] text-[#F5EDE6] font-semibold transition-colors text-base',style:{animationDelay:'0.8s'}},'Réserver un diagnostic')
   )
  )
 )
 }
 
-// ─── HERO — MANCHETTE (chrome sombre, câblage FEATURED_ANALYSES[0]) ───────────
+// ─── HERO — MANCHETTE (chrome chaud, câblage FEATURED_ANALYSES[0]) ────────────
 
 function Hero(){
 const featured=FEATURED_ANALYSES[0]
-return h('section',{className:'v2-chrome relative pt-28 pb-16 md:pt-40 md:pb-24 lg:pt-44 lg:pb-28 overflow-hidden',style:{backgroundColor:'#0E1012'}},
+return h('section',{className:'v2-chrome relative pt-28 pb-16 md:pt-40 md:pb-24 lg:pt-44 lg:pb-28 overflow-hidden',style:{backgroundColor:'#17100E'}},
  h('div',{className:'hero-glow'}),
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative'},
   h('div',{className:'flex flex-col lg:flex-row lg:items-start gap-12 lg:gap-16'},
    // Gauche : manchette
    h('div',{className:'lg:w-[44%] flex-shrink-0 lg:pt-2'},
-    h('p',{className:'anim-fade-up kicker mb-5',style:{color:'#9AA0A4'}},'§ Manchette — Intelligence du jour'),
+    h('p',{className:'anim-fade-up kicker mb-5',style:{color:'#E05A4E'}},'§ Manchette — Intelligence du jour'),
     h('h1',{className:'anim-fade-up anim-d1 text-4xl sm:text-5xl md:text-6xl lg:text-[3.75rem] font-extrabold text-white leading-[1.03] tracking-tight'},
      'Révéler les signaux',h('br'),
      'que le bruit dissimule.'
     ),
-    h('p',{className:'anim-fade-up anim-d2 mt-6 lg:mt-8 text-base lg:text-lg text-[#9AA0A4] max-w-lg leading-relaxed'},
+    h('div',{className:'anim-fade-up anim-d1 mt-5 h-[3px] w-16 bg-[#8E2424]'}),
+    h('p',{className:'anim-fade-up anim-d2 mt-6 lg:mt-8 text-base lg:text-lg text-[#C6A996] max-w-lg leading-relaxed'},
      'Intelligence géopolitique et financière pour les décideurs. 178 sources, 15 APIs, analyse IA.'
     ),
     h('div',{className:'anim-fade-up anim-d3 mt-8 lg:mt-10 flex flex-col sm:flex-row gap-3'},
-     h('a',{href:'analyses.html',className:'inline-block px-7 py-3.5 bg-[#E8E4D8] hover:bg-[#FFFFFF] text-[#0E1012] font-semibold transition-colors text-sm'},'Explorer les analyses'),
-     h('a',{href:'expertise.html',className:'inline-block px-7 py-3.5 border border-[rgba(232,228,216,.3)] hover:border-[#E8E4D8] text-[#E8E4D8] font-medium transition-colors text-sm'},'Notre méthodologie')
+     h('a',{href:'analyses.html',className:'inline-block px-7 py-3.5 bg-[#8E2424] hover:bg-[#6E1B1B] text-[#F5EDE6] font-semibold transition-colors text-sm'},'Explorer les analyses'),
+     h('a',{href:'expertise.html',className:'inline-block px-7 py-3.5 border border-[rgba(224,90,78,.5)] hover:border-[#E05A4E] text-[#E8D9C8] font-medium transition-colors text-sm'},'Notre méthodologie')
     )
    ),
    // Droite : article à la une
@@ -271,19 +276,19 @@ return h('section',{className:'v2-chrome relative pt-28 pb-16 md:pt-40 md:pb-24 
        h('img',{src:featured.img,alt:featured.title,className:'w-full h-full object-cover group-hover:scale-[1.02] transition-all duration-500',loading:'eager'})
       ),
       h('div',{className:'absolute top-4 left-4 flex items-center gap-2'},
-       h('span',{className:'inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#E8E4D8] text-[#0E1012] text-[10px] font-semibold uppercase tracking-[0.14em]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
-        h('span',{className:'w-1.5 h-1.5 rounded-full bg-[#8E2424] animate-pulse'}),'À la une'),
+       h('span',{className:'inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#8E2424] text-[#F5EDE6] text-[10px] font-semibold uppercase tracking-[0.14em]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
+        h('span',{className:'w-1.5 h-1.5 rounded-full bg-[#F5EDE6] animate-pulse'}),'À la une'),
        h('span',{className:'px-2.5 py-1 bg-black/55 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-[0.14em]',style:{fontFamily:"'IBM Plex Mono',monospace"}},featured.cat)
       )
      ),
      h('div',{className:'pt-5 lg:pt-6'},
-      h('h2',{className:'text-xl lg:text-2xl font-extrabold text-white leading-snug group-hover:text-[#E8E4D8] transition-colors'},featured.title),
-      h('p',{className:'mt-3 text-sm text-[#9AA0A4] leading-relaxed line-clamp-2'},featured.summary),
-      h('div',{className:'mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-[#9AA0A4]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
+      h('h2',{className:'text-xl lg:text-2xl font-extrabold text-white leading-snug group-hover:text-[#E8D9C8] transition-colors'},featured.title),
+      h('p',{className:'mt-3 text-sm text-[#C6A996] leading-relaxed line-clamp-2'},featured.summary),
+      h('div',{className:'mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-[#C6A996]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
        h('span',null,featured.readingTime+' min de lecture'),
        h('span',null,featured.date),
        h('span',null,featured.sources+' sources'),
-       h('span',{className:'px-2 py-0.5 border border-[rgba(232,228,216,.3)] text-[#E8E4D8] font-semibold'},'Score : '+featured.grade)
+       h('span',{className:'px-2 py-0.5 border border-[rgba(224,90,78,.5)] text-[#E05A4E] font-semibold'},'Score : '+featured.grade)
       )
      )
     )
@@ -333,7 +338,7 @@ return h(FadeUp,null,h('section',{className:'py-16 md:py-20'},
 ))
 }
 
-// ─── BANDEAU CRÉDIBILITÉ (ribbon sombre) ─────────────────────────────────────
+// ─── BANDEAU CRÉDIBILITÉ (bloc brun espresso) ────────────────────────────────
 
 const CREDIBILITY_STATS=[
 {value:'158',label:'Sources analysées en continu'},
@@ -343,13 +348,13 @@ const CREDIBILITY_STATS=[
 ]
 
 function CredibilityStrip(){
-return h(FadeUp,null,h('div',{className:'v2-chrome py-12',style:{backgroundColor:'#0E1012'}},
+return h(FadeUp,null,h('div',{className:'v2-chrome py-12',style:{backgroundColor:'#42301E'}},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center'},
    ...CREDIBILITY_STATS.map((s,i)=>
     h('div',{key:i},
-     h('div',{className:'text-3xl sm:text-4xl md:text-[2.75rem] font-extrabold text-[#E8E4D8]'},s.value),
-     h('div',{className:'mt-2 text-[11px] font-medium uppercase tracking-[0.14em] text-[#9AA0A4]',style:{fontFamily:"'IBM Plex Mono',monospace"}},s.label)
+     h('div',{className:'text-3xl sm:text-4xl md:text-[2.75rem] font-extrabold text-[#F3E9DD]'},s.value),
+     h('div',{className:'mt-2 text-[11px] font-medium uppercase tracking-[0.14em] text-[#D6B896]',style:{fontFamily:"'IBM Plex Mono',monospace"}},s.label)
     )
    )
   )
@@ -389,7 +394,7 @@ if(d){const mapped=mapNewsToArticles(d);if(mapped.length>0)setArticles(mapped)}
 const filtered=filter==='all'?articles:articles.filter(a=>a.cat===filter)
 const visible=filtered.slice(0,visibleCount)
 const hasMore=filtered.length>visibleCount
-const btnCls=(active)=>active?'bg-[#0E1012] text-[#EDEBE4] border-[#0E1012]':'bg-[#FFFFFF] text-[#4C5052] hover:text-[#101214] border-[rgba(76,80,82,.18)]'
+const btnCls=(active)=>active?'bg-[#8E2424] text-[#F5EDE6] border-[#8E2424]':'bg-[#FFFFFF] text-[#4C5052] hover:text-[#8E2424] border-[rgba(76,80,82,.18)]'
 return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10'},
@@ -425,7 +430,7 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
    })
   ),
   !loading&&hasMore&&h('div',{className:'text-center mt-10'},
-   h('button',{onClick:()=>setVisibleCount(v=>v+9),className:'px-6 py-3 text-sm font-semibold transition-colors bg-[#FFFFFF] text-[#4C5052] hover:text-[#101214] border border-[rgba(76,80,82,.18)]'},
+   h('button',{onClick:()=>setVisibleCount(v=>v+9),className:'px-6 py-3 text-sm font-semibold transition-colors bg-[#FFFFFF] text-[#8E2424] hover:bg-[#8E2424] hover:text-[#F5EDE6] border border-[#8E2424]'},
     'Charger plus d\'articles'
    )
   )
@@ -455,7 +460,7 @@ const[tab,setTab]=useState('iatech')
 const[selected,setSelected]=useState('ia')
 const items=EXPERTISE_DATA[tab]
 const current=items.find(i=>i.id===selected)||items[0]
-const tabCls=(active)=>active?'bg-[#0E1012] text-[#EDEBE4] border-[#0E1012]':'bg-[#FFFFFF] text-[#4C5052] hover:text-[#101214] border-[rgba(76,80,82,.18)]'
+const tabCls=(active)=>active?'bg-[#8E2424] text-[#F5EDE6] border-[#8E2424]':'bg-[#FFFFFF] text-[#4C5052] hover:text-[#8E2424] border-[rgba(76,80,82,.18)]'
 const switchTab=(t)=>{setTab(t);setSelected(EXPERTISE_DATA[t][0].id)}
 return h(FadeUp,null,h('section',{className:'py-20'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
@@ -470,7 +475,7 @@ return h(FadeUp,null,h('section',{className:'py-20'},
   h('div',{className:'flex flex-col md:flex-row gap-6 md:gap-0 border border-[rgba(76,80,82,.18)] overflow-hidden bg-[#FFFFFF]'},
    h('div',{className:'md:w-[38%] md:border-r border-[rgba(76,80,82,.18)] bg-[#EDEBE4]'},
     ...items.map(item=>
-     h('button',{key:item.id,onClick:()=>setSelected(item.id),className:`w-full text-left px-6 py-4 border-b last:border-b-0 transition-colors border-[rgba(76,80,82,.18)] ${selected===item.id?'bg-[#FFFFFF] font-semibold text-[#101214]':'text-[#4C5052] hover:bg-[#FFFFFF]/60'}`},
+     h('button',{key:item.id,onClick:()=>setSelected(item.id),className:`w-full text-left px-6 py-4 border-b last:border-b-0 transition-colors border-[rgba(76,80,82,.18)] ${selected===item.id?'bg-[#FFFFFF] font-semibold text-[#8E2424] border-l-2 border-l-[#8E2424]':'text-[#4C5052] hover:bg-[#FFFFFF]/60'}`},
       h('span',{className:'text-sm'},item.label)
      )
     )
@@ -485,7 +490,7 @@ return h(FadeUp,null,h('section',{className:'py-20'},
 ))
 }
 
-// ─── NEWSLETTER (chrome sombre, câblage Supabase) ────────────────────────────
+// ─── NEWSLETTER (bloc oxblood, câblage Supabase) ─────────────────────────────
 
 const SUPABASE_URL='https://pizemouhfrwgvgibitox.supabase.co'
 const SUPABASE_KEY='sb_publishable_5u8lldvoUdA_pKTZIL9jdA_gJb72SZH'
@@ -506,27 +511,27 @@ else{setStatus('error')}
 }catch(_){setStatus('error')}
 }
 const msg={success:'Inscription confirmée — bienvenue parmi nos lecteurs.',duplicate:'Cette adresse est déjà inscrite.',error:'Une erreur est survenue. Réessayez.',invalid:'Veuillez entrer une adresse email valide.'}
-const msgColor={success:'text-[#33B894]',duplicate:'text-yellow-400',error:'text-[#F87171]',invalid:'text-[#F87171]'}
-return h(FadeUp,null,h('section',{className:'v2-chrome py-20',style:{backgroundColor:'#0E1012'}},
+const msgColor={success:'text-[#7BE0B0]',duplicate:'text-[#E8C79A]',error:'text-[#F0A090]',invalid:'text-[#F0A090]'}
+return h(FadeUp,null,h('section',{className:'v2-chrome py-20',style:{backgroundColor:'#2A1210'}},
  h('div',{className:'max-w-2xl mx-auto px-4 sm:px-6 text-center'},
-  h('p',{className:'kicker mb-4',style:{color:'#9AA0A4'}},'§ Signaux faibles — Hebdomadaire'),
+  h('p',{className:'kicker mb-4',style:{color:'#E8A996'}},'§ Signaux faibles — Hebdomadaire'),
   h('h2',{className:'text-2xl md:text-3xl font-extrabold text-white mb-4'},'Recevez nos signaux faibles chaque semaine'),
-  h('p',{className:'text-sm md:text-base text-[#9AA0A4] leading-relaxed mb-8'},'Une sélection hebdomadaire d\'analyses et de données pour garder une longueur d\'avance.'),
+  h('p',{className:'text-sm md:text-base text-[#D8B9AE] leading-relaxed mb-8'},'Une sélection hebdomadaire d\'analyses et de données pour garder une longueur d\'avance.'),
   status==='success'?
-   h('div',{className:'flex items-center justify-center gap-2 text-[#33B894] text-sm font-medium'},
+   h('div',{className:'flex items-center justify-center gap-2 text-[#7BE0B0] text-sm font-medium'},
     h('svg',{width:20,height:20,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2,strokeLinecap:'round'},h('path',{d:'M20 6L9 17l-5-5'})),
     msg.success
    ):
    h('form',{onSubmit:submit,className:'flex flex-col sm:flex-row gap-3 max-w-md mx-auto'},
-    h('input',{type:'email',value:email,onChange:e=>{setEmail(e.target.value);if(status==='invalid')setStatus(null)},placeholder:'votre@email.com','aria-label':'Adresse email',className:`flex-1 px-4 py-3 bg-white/10 border text-white text-sm placeholder-white/30 outline-none transition-colors ${status==='invalid'?'border-[#F87171]':'border-white/15 focus:border-[#E8E4D8]'}`}),
-    h('button',{type:'submit',disabled:status==='sending',className:'px-6 py-3 bg-[#E8E4D8] hover:bg-[#FFFFFF] text-[#0E1012] font-semibold text-sm transition-colors whitespace-nowrap disabled:opacity-50'},status==='sending'?'Envoi...':'S\'abonner')
+    h('input',{type:'email',value:email,onChange:e=>{setEmail(e.target.value);if(status==='invalid')setStatus(null)},placeholder:'votre@email.com','aria-label':'Adresse email',className:`flex-1 px-4 py-3 bg-white/10 border text-white text-sm placeholder-white/40 outline-none transition-colors ${status==='invalid'?'border-[#F0A090]':'border-white/20 focus:border-[#E05A4E]'}`}),
+    h('button',{type:'submit',disabled:status==='sending',className:'px-6 py-3 bg-[#E8E4D8] hover:bg-[#FFFFFF] text-[#2A1210] font-semibold text-sm transition-colors whitespace-nowrap disabled:opacity-50'},status==='sending'?'Envoi...':'S\'abonner')
    ),
   status&&status!=='success'&&status!=='sending'&&h('p',{className:`mt-4 text-sm ${msgColor[status]}`},msg[status])
  )
 ))
 }
 
-// ─── FOOTER (chrome v2 partagé) ──────────────────────────────────────────────
+// ─── FOOTER (chrome v2 chaud) ────────────────────────────────────────────────
 
 function Footer(){
 const footerLinks={
@@ -545,39 +550,39 @@ plateforme:[
 ],
 }
 const sources=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC']
-return h('footer',{className:'v2-chrome pt-12 sm:pt-16 pb-24 sm:pb-20',style:{backgroundColor:'#0E1012'},role:'contentinfo'},
+return h('footer',{className:'v2-chrome pt-12 sm:pt-16 pb-24 sm:pb-20',style:{backgroundColor:'#17100E'},role:'contentinfo'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-10 mb-12'},
    h('div',{className:'col-span-2 md:col-span-1'},
     h('div',{className:'flex items-center gap-2 mb-4'},
      h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto',style:{filter:'brightness(10) saturate(0)'}})
     ),
-    h('p',{className:'text-sm text-[#9AA0A4] leading-relaxed'},'Intelligence financière et géopolitique. Données en temps réel, analyses IA, signaux faibles.')
+    h('p',{className:'text-sm text-[#C6A996] leading-relaxed'},'Intelligence financière et géopolitique. Données en temps réel, analyses IA, signaux faibles.')
    ),
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8E4D8] mb-4'},'Intelligence'),
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8D9C8] mb-4'},'Intelligence'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.intelligence.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#9AA0A4] hover:text-[#E8E4D8] transition-colors'},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#C6A996] hover:text-[#E05A4E] transition-colors'},l.label))
      )
     )
    ),
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8E4D8] mb-4'},'Plateforme'),
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8D9C8] mb-4'},'Plateforme'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.plateforme.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#9AA0A4] hover:text-[#E8E4D8] transition-colors'},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#C6A996] hover:text-[#E05A4E] transition-colors'},l.label))
      )
     )
    ),
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8E4D8] mb-4'},'Contact'),
-    h('a',{href:'premium.html#contact',className:'text-sm text-[#9AA0A4] hover:text-[#E8E4D8] transition-colors'},'Nous contacter')
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8D9C8] mb-4'},'Contact'),
+    h('a',{href:'premium.html#contact',className:'text-sm text-[#C6A996] hover:text-[#E05A4E] transition-colors'},'Nous contacter')
    )
   ),
-  h('div',{className:'border-t border-[rgba(232,228,216,.14)] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
-   h('span',{className:'text-sm text-[#9AA0A4]'},'© 2026 Inflexion — Intelligence financière & géopolitique'),
-   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#9AA0A4] font-medium',style:{fontFamily:"'IBM Plex Mono',monospace"}},
+  h('div',{className:'border-t border-[rgba(200,149,90,.20)] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
+   h('span',{className:'text-sm text-[#C6A996]'},'© 2026 Inflexion — Intelligence financière & géopolitique'),
+   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#A88A72] font-medium',style:{fontFamily:"'IBM Plex Mono',monospace"}},
     ...sources.map(s=>h('span',{key:s},s))
    )
   )
