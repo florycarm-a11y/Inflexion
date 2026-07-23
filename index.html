@@ -154,6 +154,8 @@ const FEATURED_ANALYSES=[
 {title:'Cloud et IA : la dépendance invisible des PME européennes',href:'analyse-cloud-ia-pme-europeennes.html',cat:'IA & Tech',date:'8 mars 2026',author:'Inflexion Research',readingTime:7,summary:'610 milliards de dollars d\'investissement en 2026, dont 75 % fléchés vers l\'IA. Le cloud n\'est plus un sujet technique — c\'est un risque de direction générale.',sources:32,grade:'B+',img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=450&fit=crop&q=80'},
 ]
 
+function decodeEntities(s){if(!s)return s;const t=document.createElement('textarea');t.innerHTML=s;return t.value}
+
 function mapNewsToArticles(newsData){
 const articles=[]
 let id=1
@@ -161,8 +163,9 @@ const catKeys={geopolitics:'geopolitique',markets:'marches',crypto:'crypto',comm
 for(const[apiCat,items] of Object.entries(newsData.categories||{})){
 const cat=catKeys[apiCat]||'marches'
 for(const item of items){
+const title=decodeEntities(item.title)
 const readingTime=Math.min(8,Math.max(2,Math.round((item.description||'').length/200)+2))
-articles.push({id:id++,cat,title:item.title,source:item.source||'',time:item.time||'',readingTime,img:item.image||window.matchImage(item.title,cat),summary:(item.description||'').slice(0,160),href:item.url||'#'})
+articles.push({id:id++,cat,title,source:item.source||'',time:item.time||'',readingTime,img:item.image||window.matchImage(title,cat),summary:decodeEntities(item.description||'').slice(0,160),href:item.url||'#'})
 }
 }
 articles.sort((a,b)=>b.id-a.id)
@@ -348,7 +351,7 @@ const CREDIBILITY_STATS=[
 ]
 
 function CredibilityStrip(){
-return h(FadeUp,null,h('div',{className:'v2-chrome py-12',style:{backgroundColor:'#42301E'}},
+return h('div',{className:'v2-chrome py-12',style:{backgroundColor:'#42301E'}},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center'},
    ...CREDIBILITY_STATS.map((s,i)=>
@@ -359,7 +362,7 @@ return h(FadeUp,null,h('div',{className:'v2-chrome py-12',style:{backgroundColor
    )
   )
  )
-))
+)
 }
 
 // ─── VEILLE / SIGNAUX (câblage news.json) ────────────────────────────────────
@@ -512,7 +515,7 @@ else{setStatus('error')}
 }
 const msg={success:'Inscription confirmée — bienvenue parmi nos lecteurs.',duplicate:'Cette adresse est déjà inscrite.',error:'Une erreur est survenue. Réessayez.',invalid:'Veuillez entrer une adresse email valide.'}
 const msgColor={success:'text-[#7BE0B0]',duplicate:'text-[#E8C79A]',error:'text-[#F0A090]',invalid:'text-[#F0A090]'}
-return h(FadeUp,null,h('section',{className:'v2-chrome py-20',style:{backgroundColor:'#17100E'}},
+return h('section',{className:'v2-chrome py-20',style:{backgroundColor:'#17100E'}},
  h('div',{className:'max-w-2xl mx-auto px-4 sm:px-6 text-center'},
   h('p',{className:'kicker mb-4',style:{color:'#E8A996'}},'§ Signaux faibles — Hebdomadaire'),
   h('h2',{className:'text-2xl md:text-3xl font-extrabold text-white mb-4'},'Recevez nos signaux faibles chaque semaine'),
@@ -528,7 +531,7 @@ return h(FadeUp,null,h('section',{className:'v2-chrome py-20',style:{backgroundC
    ),
   status&&status!=='success'&&status!=='sending'&&h('p',{className:`mt-4 text-sm ${msgColor[status]}`},msg[status])
  )
-))
+)
 }
 
 // ─── FOOTER (chrome v2 chaud) ────────────────────────────────────────────────
