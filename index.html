@@ -16,21 +16,20 @@
 <meta name="twitter:description" content="Révéler les signaux que le bruit dissimule. 178 sources, 15 APIs, analyse IA en temps réel."/>
 <meta name="twitter:image" content="https://inflexionhub.com/og-image.png"/>
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config={theme:{extend:{colors:{brand:{900:'#006650',800:'#006650',700:'#007A60',600:'#008066',500:'#00997A',400:'#33B894',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},navy:{900:'#006650',800:'#06402A',700:'#06402A'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
-</script>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="assets/design-tokens-v2.css" rel="stylesheet"/>
 <style>
+/* Identité v2 « chaude » — rouge & brun prédominants (home).
+   Rouge clair-surface #8E2424 · rouge sombre-surface #E05A4E · brun espresso #42301E
+   · oxblood #2A1210 · chrome espresso #17100E. Catégories (taxonomie) inchangées. */
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden;transition:background-color .3s ease}
+body{font-family:'IBM Plex Sans','Helvetica Neue',sans-serif;background:var(--surface-page);color:var(--text-primary);overflow-x:hidden}
 
-/* Typography */
-h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:inherit}
-.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#006650}
+h1,h2,h3,.display-text{font-family:'Archivo',Arial,sans-serif;font-weight:800;line-height:1.1;letter-spacing:-0.035em;color:var(--text-primary)}
 
-/* Glass effects — updated for white bg */
-.glass{background:rgba(0,102,80,.06);backdrop-filter:blur(16px);border:1px solid rgba(0,102,80,.10)}
-.glass-light{background:rgba(0,102,80,.04);backdrop-filter:blur(12px);border:1px solid rgba(0,102,80,.06)}
+/* Kicker éditorial « § … » — rouge sur surfaces claires (override inline sur sombre) */
+.kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;color:#8E2424}
+.font-data{font-family:'IBM Plex Mono','SF Mono',monospace}
 
 /* Animations */
 @keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
@@ -39,70 +38,25 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 
 /* Nav links */
 .nav-link{position:relative}
-.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#E05A4E;transform:scaleX(0);transition:transform .25s ease}
 .nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
 
-/* Mega menu — editorial intelligence */
+/* Mega menu — carte claire, filet rouge */
 .mega-trigger{position:relative}
-.mega-menu{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(10px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s cubic-bezier(.4,0,.2,1),transform .28s cubic-bezier(.4,0,.2,1),visibility .28s;z-index:60;min-width:340px;padding:0;overflow:hidden}
-.mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:340px;z-index:60}
+.mega-menu.mega-open,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.mega-menu::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:#8E2424;z-index:2}
+.mega-item{transition:background .15s ease}
+.mega-item:hover{background:rgba(142,36,36,.06)}
+.mega-icon{width:36px;height:36px;border-radius:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:600;font-family:'IBM Plex Mono',monospace}
+.nav-scrolled{background:rgba(23,16,14,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,149,90,.22)}
 
-/* Bronze accent line at top */
-.mega-menu::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#C8955A 20%,#C8955A 80%,transparent);z-index:2}
-
-/* Subtle corner accent */
-.mega-menu::after{content:'';position:absolute;top:2px;right:0;width:60px;height:60px;background:radial-gradient(circle at top right,rgba(200,149,90,.06) 0%,transparent 70%);pointer-events:none}
-
-/* Category header inside dropdown */
-.mega-cat-header{font-family:'Libre Baskerville',Georgia,serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:#C8955A;padding:20px 20px 10px;border-bottom:1px solid #F0F1F4;margin-bottom:4px;display:flex;align-items:center;gap:8px}
-.mega-cat-header::before{content:'';width:12px;height:1px;background:#C8955A}
-
-/* Grid for wide menus (Intelligence = 5 items) */
-.mega-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;padding:8px 10px 12px}
-.mega-list{display:flex;flex-direction:column;gap:2px;padding:8px 10px 12px}
-
-/* Item styling */
-.mega-item{position:relative;display:flex;align-items:flex-start;gap:14px;padding:12px 14px;border-radius:10px;text-decoration:none;transition:all .2s cubic-bezier(.4,0,.2,1);border:1px solid transparent;overflow:hidden}
-.mega-item::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:0;height:60%;background:#006650;border-radius:0 2px 2px 0;transition:width .2s cubic-bezier(.4,0,.2,1)}
-.mega-item:hover{background:#F8FAF9;border-color:#E8EDE9}
-.mega-item:hover::before{width:3px}
-
-/* Icon — monogram initials */
-.mega-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Libre Baskerville',Georgia,serif;font-size:12px;font-weight:700;font-style:italic;color:#006650;background:linear-gradient(135deg,rgba(0,102,80,.05) 0%,rgba(0,102,80,.1) 100%);border:1px solid rgba(0,102,80,.1);transition:all .25s cubic-bezier(.4,0,.2,1);letter-spacing:-.02em}
-.mega-item:hover .mega-icon{color:#fff;background:linear-gradient(135deg,#006650 0%,#06402A 100%);border-color:#006650;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,80,.18)}
-
-/* Label & description */
-.mega-label{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:600;color:#1A1F2E;letter-spacing:-.01em;transition:color .15s ease}
-.mega-item:hover .mega-label{color:#006650}
-.mega-desc{font-size:11.5px;color:#6B7280;line-height:1.4;margin-top:2px;transition:color .15s ease}
-.mega-item:hover .mega-desc{color:#6B7280}
-
-/* Arrow indicator */
-.mega-arrow{position:absolute;right:12px;top:50%;transform:translateY(-50%) translateX(-4px);opacity:0;color:#006650;font-size:13px;font-weight:700;transition:all .2s cubic-bezier(.4,0,.2,1)}
-.mega-item:hover .mega-arrow{opacity:1;transform:translateY(-50%) translateX(0)}
-
-/* Staggered reveal */
-@keyframes mega-item-reveal{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.mega-trigger:hover .mega-item{animation:mega-item-reveal .3s cubic-bezier(.4,0,.2,1) both}
-.mega-trigger:hover .mega-item:nth-child(1){animation-delay:.04s}
-.mega-trigger:hover .mega-item:nth-child(2){animation-delay:.08s}
-.mega-trigger:hover .mega-item:nth-child(3){animation-delay:.12s}
-.mega-trigger:hover .mega-item:nth-child(4){animation-delay:.16s}
-.mega-trigger:hover .mega-item:nth-child(5){animation-delay:.20s}
-
-/* Footer strip in dropdown */
-.mega-footer{padding:10px 20px;background:#F9FAFB;border-top:1px solid #F0F1F4;display:flex;align-items:center;gap:6px;font-size:10.5px;color:#A0A8B8;letter-spacing:.04em;font-weight:500}
-.mega-footer-dot{width:4px;height:4px;border-radius:50%;background:#C8955A;flex-shrink:0}
-
-/* Categories */
-.category-geo{background:#2563eb}.category-marches{background:#006650}.category-crypto{background:#f59e0b}.category-matieres{background:#C8955A}.category-iatech{background:#8b5cf6}
-
-/* Article cards */
-.article-card{transition:transform .2s ease,box-shadow .2s ease}
-.article-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(10,22,40,.08)}
+/* Focus */
+:focus-visible{outline:2px solid var(--text-primary);outline-offset:2px}
+header :focus-visible,.mobile-overlay :focus-visible,.v2-chrome :focus-visible{outline-color:#E05A4E}
 
 /* Hamburger */
-.hamburger span{display:block;width:24px;height:2px;background:#1A1F2E;margin:5px 0;transition:all .3s ease}
+.hamburger span{display:block;width:24px;height:2px;background:var(--chrome-text);margin:5px 0;transition:all .3s ease}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
@@ -115,27 +69,23 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 .mobile-overlay.open .menu-item{animation:menu-item-in .4s ease-out forwards}
 body.menu-open{overflow:hidden}
 
-/* Hero glow — navy tinted */
-.hero-glow{position:absolute;top:-120px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,102,80,.06) 0%,transparent 70%);pointer-events:none}
+/* Hero glow — lueur rouge chaude */
+.hero-glow{position:absolute;top:-120px;right:-80px;width:560px;height:560px;background:radial-gradient(circle,rgba(224,90,78,.12) 0%,transparent 70%);pointer-events:none}
 
-/* Nav scrolled */
-.nav-scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid #E2E5EB;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+/* Badges catégorie : pastille sombre dense neutre (pas de couleur — décision 2026-07-23).
+   Le libellé texte porte la catégorie ; aucune couleur-taxonomie sur la home. */
 
-/* Section alternation */
-.section-alt{background-color:#F7F8FA}
+/* Article cards — filet de lecture rouge */
+.article-card{position:relative;transition:box-shadow .18s ease,border-color .18s ease}
+.article-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--editorial-accent);transform:scaleY(0);transform-origin:top;transition:transform .22s ease;z-index:1}
+.article-card:hover{box-shadow:0 6px 18px rgba(42,18,16,.12);border-color:#8E2424}
+.article-card:hover::before{transform:scaleY(1)}
 
-/* Divider */
-.section-divider{border-top:1px solid #ECEEF2}
-
-/* Data font */
-.font-data{font-family:'JetBrains Mono','SF Mono',monospace}
-
-/* Featured analysis card hover */
+/* Featured (manchette) card */
 .featured-card{position:relative;overflow:hidden}
-.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:#006650;transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
-.featured-card:hover::before{transform:scaleY(1)}
 
-/* Mobile responsive */
+@media(prefers-reduced-motion:reduce){.animate-pulse{animation:none}.article-card::before{transition:none}.anim-fade-up{animation:none}}
+
 @media(max-width:768px){
 html,body{overflow-x:hidden}
 img{max-width:100%;height:auto}
@@ -144,8 +94,8 @@ a,button{min-height:44px;min-width:44px}
 }
 </style>
 </head>
-<body>
-<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:#006650;color:#fff;font-family:Inter,sans-serif;font-size:14px;text-decoration:none;border-radius:0 0 4px 0;" onfocus="this.style.position='fixed';this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Aller au contenu principal</a>
+<body data-design-regime="editorial">
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:#8E2424;color:#F5EDE6;font-family:'IBM Plex Sans',sans-serif;font-size:14px;text-decoration:none;border-radius:0 0 4px 0;" onfocus="this.style.position='fixed';this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Aller au contenu principal</a>
 <div id="app"></div>
 <script src="image-catalog.js"></script>
 <script src="nav-config.js"></script>
@@ -174,45 +124,7 @@ return h('div',{ref,className,style:{opacity:visible?1:0,transform:visible?'tran
 
 const MEGA_NAV=window.MEGA_NAV
 
-const TICKER_FALLBACK=[
-{symbol:'S&P 500',value:'5 248.32',change:'+0.87%',up:true},
-{symbol:'CAC 40',value:'7 892.15',change:'+0.42%',up:true},
-{symbol:'DAX',value:'18 456.78',change:'-0.15%',up:false},
-{symbol:'BTC',value:'$68 420',change:'+2.34%',up:true},
-{symbol:'ETH',value:'$3 812',change:'+1.56%',up:true},
-{symbol:'EUR/USD',value:'1.0847',change:'-0.12%',up:false},
-{symbol:'Or',value:'$2 178',change:'+0.65%',up:true},
-{symbol:'VIX',value:'14.32',change:'-3.21%',up:true},
-{symbol:'Pétrole WTI',value:'$78.45',change:'-0.89%',up:false},
-]
-
 const DATA_BASE='data/'
-
-function fmtPrice(p,prefix=''){
-if(p>=1000)return prefix+p.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2})
-return prefix+p.toFixed(2)
-}
-
-async function fetchTickerData(){
-const[marketsRes,cryptoRes]=await Promise.all([
-fetch(DATA_BASE+'markets.json').then(r=>r.ok?r.json():null).catch(()=>null),
-fetch(DATA_BASE+'crypto.json').then(r=>r.ok?r.json():null).catch(()=>null)
-])
-const items=[]
-if(marketsRes?.quotes){
-for(const q of marketsRes.quotes){
-const up=q.change>=0
-items.push({symbol:q.name,value:fmtPrice(q.price,q.symbol==='GLD'||q.symbol==='USO'?'$':''),change:(up?'+':'')+q.change.toFixed(2)+'%',up})
-}
-}
-if(cryptoRes?.prices){
-for(const c of cryptoRes.prices.slice(0,4)){
-const up=c.change_24h>=0
-items.push({symbol:c.symbol.toUpperCase(),value:fmtPrice(c.price,'$'),change:(up?'+':'')+c.change_24h.toFixed(2)+'%',up})
-}
-}
-return items.length>0?items:null
-}
 
 const CATEGORIES=[
 {id:'geopolitique',label:'Géopolitique',cls:'category-geo'},
@@ -236,14 +148,13 @@ const ARTICLES_FALLBACK=[
 {id:11,cat:'iatech',title:'L\'AI Act entre en vigueur : ce qui change pour les entreprises européennes',source:'Euractiv',time:'Il y a 8h',readingTime:8,img:'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=240&fit=crop',summary:'Les premières obligations de transparence s\'appliquent dès juin 2026 pour les systèmes à haut risque.'},
 ]
 
-const CAT_IMAGES={geopolitique:'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=400&h=240&fit=crop',marches:'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=240&fit=crop',crypto:'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=400&h=240&fit=crop',matieres:'https://images.unsplash.com/photo-1610375461246-83df859d849d?w=400&h=240&fit=crop',iatech:'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=240&fit=crop'}
-
 const FEATURED_ANALYSES=[
 {title:'Pétrole à 119 $ : Trump, Iran et le détroit d\'Ormuz',href:'analyse-petrole-trump-iran-ormuz.html',cat:'Matières premières',date:'10 mars 2026',author:'Inflexion Research',readingTime:12,summary:'Le Brent flambe à 119 $/b après les frappes Epic Fury et le blocage du détroit d\'Ormuz. Analyse complète des scénarios, impact sur l\'Europe et les marchés émergents.',sources:56,grade:'A',img:'https://images.unsplash.com/photo-1763667974765-f0547fc8d96e?w=1200&h=675&fit=crop&q=80'},
 {title:'Cuba — La crise de trop : effondrement énergétique et bras de fer Trump',href:'analyse-cuba-crise-perspectives.html',cat:'Géopolitique',date:'10 mars 2026',author:'Inflexion Research',readingTime:14,summary:'Blackouts sur 64 % du territoire, PIB en chute de 4 %, exode massif. Cuba au bord de l\'asphyxie sous la pression maximale de Washington.',sources:53,grade:'A-',img:'https://images.unsplash.com/photo-1568684053302-f1fd1b017297?w=800&h=450&fit=crop&q=80'},
 {title:'Cloud et IA : la dépendance invisible des PME européennes',href:'analyse-cloud-ia-pme-europeennes.html',cat:'IA & Tech',date:'8 mars 2026',author:'Inflexion Research',readingTime:7,summary:'610 milliards de dollars d\'investissement en 2026, dont 75 % fléchés vers l\'IA. Le cloud n\'est plus un sujet technique — c\'est un risque de direction générale.',sources:32,grade:'B+',img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=450&fit=crop&q=80'},
 ]
-const RUBRIQUE_MAP={geopolitique:'geopolitique',marches:'marches',crypto:'crypto',matieres_premieres:'matieres',ia_tech:'iatech'}
+
+function decodeEntities(s){if(!s)return s;const t=document.createElement('textarea');t.innerHTML=s;return t.value}
 
 function mapNewsToArticles(newsData){
 const articles=[]
@@ -252,17 +163,21 @@ const catKeys={geopolitics:'geopolitique',markets:'marches',crypto:'crypto',comm
 for(const[apiCat,items] of Object.entries(newsData.categories||{})){
 const cat=catKeys[apiCat]||'marches'
 for(const item of items){
+const title=decodeEntities(item.title)
 const readingTime=Math.min(8,Math.max(2,Math.round((item.description||'').length/200)+2))
-articles.push({id:id++,cat,title:item.title,source:item.source||'',time:item.time||'',readingTime,img:item.image||window.matchImage(item.title,cat),summary:(item.description||'').slice(0,160),href:item.url||'#'})
+articles.push({id:id++,cat,title,source:item.source||'',time:item.time||'',readingTime,img:item.image||window.matchImage(title,cat),summary:decodeEntities(item.description||'').slice(0,160),href:item.url||'#'})
 }
 }
 articles.sort((a,b)=>b.id-a.id)
 return articles
 }
 
+// ─── NAVIGATION (chrome v2 chaud) ────────────────────────────────────────────
+
 function Navigation(){
 const[open,setOpen]=useState(false)
 const[scrolled,setScrolled]=useState(false)
+const[megaOpen,setMegaOpen]=useState(-1)
 useEffect(()=>{
 const fn=()=>setScrolled(window.scrollY>60)
 window.addEventListener('scroll',fn,{passive:true})
@@ -273,43 +188,34 @@ if(open){document.body.classList.add('menu-open')}else{document.body.classList.r
 return()=>document.body.classList.remove('menu-open')
 },[open])
 return h('div',null,
- h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#C8955A]'}),
+ h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#8E2424]'}),
  h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-12 sm:h-[60px] md:h-[75px] w-auto'})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:'brightness(10) saturate(0)'}})
     ),
     h('nav',{className:'hidden md:flex items-center gap-1','aria-label':'Navigation principale'},
      ...MEGA_NAV.map((cat,ci)=>{
       const isWide=cat.children.length>3
-      return h('div',{key:ci,className:'mega-trigger'},
-       h('span',{className:'nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none text-gray-500 hover:text-[#006650]'},cat.label),
-       h('div',{className:'mega-menu rounded-2xl shadow-2xl bg-white border border-gray-100/80',style:{minWidth:isWide?'480px':'340px',boxShadow:'0 20px 60px rgba(0,20,15,.12), 0 8px 24px rgba(0,20,15,.06)'}},
-        h('div',{className:'mega-cat-header'},cat.label),
-        h('div',{className:isWide?'mega-grid':'mega-list'},
+      return h('div',{key:ci,className:'mega-trigger',onMouseEnter:()=>setMegaOpen(ci),onMouseLeave:(e)=>{if(!e.currentTarget.contains(document.activeElement))setMegaOpen(-1)},onFocus:()=>setMegaOpen(ci),onBlur:(e)=>{if(!e.currentTarget.contains(e.relatedTarget))setMegaOpen(-1)},onKeyDown:(e)=>{if(e.key==='Escape'){setMegaOpen(-1);const b=e.currentTarget.querySelector('button');if(b)b.blur()}}},
+       h('button',{type:'button','aria-haspopup':'true','aria-expanded':megaOpen===ci,className:'nav-link px-3 py-2 text-sm font-medium transition-colors select-none text-[#C6A996] hover:text-[#F5EDE6] focus-visible:text-[#F5EDE6] bg-transparent border-0 cursor-pointer'},cat.label),
+       h('div',{className:'mega-menu '+(megaOpen===ci?'mega-open ':'')+'bg-[#FFFFFF] border border-[#42301E] p-5 shadow-[0_6px_18px_rgba(42,18,16,.20)]',style:{minWidth:isWide?'440px':'340px'}},
+        h('div',{className:isWide?'grid grid-cols-2 gap-1':'grid gap-1'},
          ...cat.children.map((item,ii)=>
-          h('a',{key:ii,href:item.href,className:'mega-item'},
-           h('span',{className:'mega-icon'},item.icon),
-           h('span',{className:'flex flex-col min-w-0 flex-1'},
-            h('span',{className:'mega-label'},item.label),
-            h('span',{className:'mega-desc'},item.desc)
-           ),
-           h('span',{className:'mega-arrow'},'\u2192')
+          h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 no-underline'},
+           h('span',{className:'mega-icon bg-[#F1E7DE] text-[#8E2424]'},item.icon),
+           h('span',{className:'flex flex-col min-w-0'},
+            h('span',{className:'text-sm font-semibold text-[#101214]'},item.label),
+            h('span',{className:'text-xs text-[#4C5052] mt-0.5'},item.desc)
+           )
           )
          )
-        ),
-        h('div',{className:'mega-footer'},
-         h('span',{className:'mega-footer-dot'}),
-         isWide?'5 rubriques \u00b7 Donn\u00e9es temps r\u00e9el':
-         ci===1?'Analyses \u00b7 Mis \u00e0 jour quotidiennement':
-         ci===2?'M\u00e9thodologie \u00b7 Transparence totale':
-         'Services \u00b7 Sur mesure'
         )
        )
       )}
      ),
-     h('a',{href:'#diagnostic',className:'ml-3 px-4 py-2 bg-[#006650] hover:bg-[#06402A] text-white font-semibold text-sm rounded-lg transition-colors'},'Réserver un diagnostic')
+     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#8E2424] hover:bg-[#6E1B1B] text-[#F5EDE6] font-semibold text-sm transition-colors'},'Réserver un diagnostic')
     ),
     h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,onClick:()=>setOpen(!open),'aria-label':'Menu','aria-expanded':open},
      h('span'),h('span'),h('span')
@@ -317,7 +223,7 @@ return h('div',null,
    )
   )
  ),
- h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#006650'}},
+ h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#17100E'}},
   h('div',{className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0'},
    h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-8 w-auto',style:{filter:'brightness(10) saturate(0)'}}),
    h('button',{onClick:()=>setOpen(false),className:'w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
@@ -326,68 +232,67 @@ return h('div',null,
   ),
   h('div',{className:'flex-1 overflow-y-auto px-6 pt-2 pb-4'},
    ...MEGA_NAV.map((cat,ci)=>[
-    h('p',{key:'h'+ci,className:'menu-item text-[11px] uppercase tracking-[.2em] text-white/40 font-semibold mb-3'+(ci>0?' mt-8':''),style:{animationDelay:`${0.05+ci*0.18}s`}},cat.label),
+    h('p',{key:'h'+ci,className:'menu-item text-[11px] uppercase tracking-[.2em] text-[#E05A4E] font-semibold mb-3'+(ci>0?' mt-8':''),style:{animationDelay:`${0.05+ci*0.18}s`}},cat.label),
     ...cat.children.map((item,ii)=>
      h('a',{key:'m'+ci+'-'+ii,href:item.href,onClick:()=>setOpen(false),className:'menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8',style:{animationDelay:`${0.08+ci*0.18+ii*0.05}s`}},
-      h('span',{className:'w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-xs font-bold italic text-white/70',style:{fontFamily:'Libre Baskerville,Georgia,serif'}},item.icon),
+      h('span',{className:'w-8 h-8 bg-white/10 flex items-center justify-center text-xs font-semibold text-white/70',style:{fontFamily:"'IBM Plex Mono',monospace"}},item.icon),
       h('span',{className:'text-base sm:text-lg md:text-[20px] font-medium'},item.label)
      )
     )
    ]).flat()
   ),
   h('div',{className:'px-6 pt-4 pb-20 flex flex-col gap-3 flex-shrink-0'},
-   h('a',{href:'#diagnostic',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-xl transition-colors text-base',style:{animationDelay:'0.8s'}},'Réserver un diagnostic')
+   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-[#8E2424] hover:bg-[#6E1B1B] text-[#F5EDE6] font-semibold transition-colors text-base',style:{animationDelay:'0.8s'}},'Réserver un diagnostic')
   )
  )
 )
 }
+
+// ─── HERO — MANCHETTE (chrome chaud, câblage FEATURED_ANALYSES[0]) ────────────
 
 function Hero(){
 const featured=FEATURED_ANALYSES[0]
-return h('section',{className:'relative pt-28 pb-16 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-white'},
- h('div',{className:'hero-glow',style:{background:'radial-gradient(circle at 70% 30%, rgba(0,102,80,.08) 0%, transparent 60%)'}}),
- h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+return h('section',{className:'v2-chrome relative pt-28 pb-16 md:pt-40 md:pb-24 lg:pt-44 lg:pb-28 overflow-hidden',style:{backgroundColor:'#17100E'}},
+ h('div',{className:'hero-glow'}),
+ h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative'},
   h('div',{className:'flex flex-col lg:flex-row lg:items-start gap-12 lg:gap-16'},
-   // Left: Tagline
-   h('div',{className:'lg:w-[42%] text-center lg:text-left flex-shrink-0 lg:pt-4'},
-    h('h1',{className:'anim-fade-up anim-d1 text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-[#1A1F2E] leading-[1.08] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+   // Gauche : manchette
+   h('div',{className:'lg:w-[44%] flex-shrink-0 lg:pt-2'},
+    h('p',{className:'anim-fade-up kicker mb-5',style:{color:'#E05A4E'}},'§ Manchette — Intelligence du jour'),
+    h('h1',{className:'anim-fade-up anim-d1 text-4xl sm:text-5xl md:text-6xl lg:text-[3.75rem] font-extrabold text-white leading-[1.03] tracking-tight'},
      'Révéler les signaux',h('br'),
      'que le bruit dissimule.'
     ),
-    h('p',{className:'anim-fade-up anim-d2 mt-6 lg:mt-8 text-base lg:text-lg text-[#5A6178] max-w-lg leading-relaxed'},
+    h('div',{className:'anim-fade-up anim-d1 mt-5 h-[3px] w-16 bg-[#8E2424]'}),
+    h('p',{className:'anim-fade-up anim-d2 mt-6 lg:mt-8 text-base lg:text-lg text-[#C6A996] max-w-lg leading-relaxed'},
      'Intelligence géopolitique et financière pour les décideurs. 178 sources, 15 APIs, analyse IA.'
     ),
-    h('div',{className:'anim-fade-up anim-d3 mt-8 lg:mt-10 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start'},
-     h('a',{href:'analyses.html',className:'inline-block px-7 py-3.5 bg-[#006650] hover:bg-[#008066] text-white font-semibold rounded-lg transition-colors text-sm'},'Explorer les analyses'),
-     h('a',{href:'expertise.html',className:'inline-block px-7 py-3.5 border border-[#E2E5EB] hover:border-[#006650]/30 text-[#5A6178] hover:text-[#1A1F2E] font-medium rounded-lg transition-colors text-sm'},'Notre méthodologie')
+    h('div',{className:'anim-fade-up anim-d3 mt-8 lg:mt-10 flex flex-col sm:flex-row gap-3'},
+     h('a',{href:'analyses.html',className:'inline-block px-7 py-3.5 bg-[#8E2424] hover:bg-[#6E1B1B] text-[#F5EDE6] font-semibold transition-colors text-sm'},'Explorer les analyses'),
+     h('a',{href:'expertise.html',className:'inline-block px-7 py-3.5 border border-[rgba(224,90,78,.5)] hover:border-[#E05A4E] text-[#E8D9C8] font-medium transition-colors text-sm'},'Notre méthodologie')
     )
    ),
-   // Right: Featured article card
-   h('div',{className:'lg:w-[58%]'},
-    h('a',{href:featured.href,className:'anim-fade-up anim-d2 block group rounded-2xl overflow-hidden transition-all duration-300'},
+   // Droite : article à la une
+   h('div',{className:'lg:w-[56%]'},
+    h('a',{href:featured.href,className:'anim-fade-up anim-d2 featured-card block group'},
      h('div',{className:'relative'},
-      h('div',{className:'aspect-[16/9] overflow-hidden rounded-2xl'},
+      h('div',{className:'aspect-[16/9] overflow-hidden'},
        h('img',{src:featured.img,alt:featured.title,className:'w-full h-full object-cover group-hover:scale-[1.02] transition-all duration-500',loading:'eager'})
       ),
       h('div',{className:'absolute top-4 left-4 flex items-center gap-2'},
-       h('span',{className:'px-2.5 py-1 bg-[#C8955A] text-white text-[10px] font-bold uppercase tracking-wider rounded'},'Alerte'),
-       h('span',{className:'px-2.5 py-1 bg-black/50 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-wider rounded'},featured.cat)
+       h('span',{className:'inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#8E2424] text-[#F5EDE6] text-[10px] font-semibold uppercase tracking-[0.14em]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
+        h('span',{className:'w-1.5 h-1.5 rounded-full bg-[#F5EDE6] animate-pulse'}),'À la une'),
+       h('span',{className:'px-2.5 py-1 bg-black/55 backdrop-blur-sm text-white text-[10px] font-semibold uppercase tracking-[0.14em]',style:{fontFamily:"'IBM Plex Mono',monospace"}},featured.cat)
       )
      ),
-     h('div',{className:'pt-5 lg:pt-6 px-1'},
-      h('h2',{className:'text-xl lg:text-2xl font-bold text-[#1A1F2E] leading-snug group-hover:text-[#006650] transition-colors',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},featured.title),
-      h('p',{className:'mt-3 text-sm text-[#5A6178] leading-relaxed line-clamp-2'},featured.summary),
-      h('div',{className:'mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-[#6B7280]'},
-       h('span',{className:'flex items-center gap-1.5'},
-        h('svg',{width:12,height:12,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2},h('circle',{cx:12,cy:12,r:10}),h('path',{d:'M12 6v6l4 2'})),
-        featured.readingTime+' min de lecture'
-       ),
+     h('div',{className:'pt-5 lg:pt-6'},
+      h('h2',{className:'text-xl lg:text-2xl font-extrabold text-white leading-snug group-hover:text-[#E8D9C8] transition-colors'},featured.title),
+      h('p',{className:'mt-3 text-sm text-[#C6A996] leading-relaxed line-clamp-2'},featured.summary),
+      h('div',{className:'mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-[#C6A996]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
+       h('span',null,featured.readingTime+' min de lecture'),
        h('span',null,featured.date),
-       h('span',{className:'flex items-center gap-1.5'},
-        h('svg',{width:12,height:12,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2},h('path',{d:'M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z'}),h('path',{d:'M14 2v6h6'})),
-        featured.sources+' sources'
-       ),
-       h('span',{className:'px-2 py-0.5 border border-[#006650]/20 text-[#006650] rounded font-semibold'},'Score : '+featured.grade)
+       h('span',null,featured.sources+' sources'),
+       h('span',{className:'px-2 py-0.5 border border-[rgba(224,90,78,.5)] text-[#E05A4E] font-semibold'},'Score : '+featured.grade)
       )
      )
     )
@@ -397,58 +302,84 @@ return h('section',{className:'relative pt-28 pb-16 md:pt-40 md:pb-24 lg:pt-48 l
 )
 }
 
+// ─── ANALYSES À LA UNE ───────────────────────────────────────────────────────
+
 function FeaturedAnalyses(){
-const analyses=FEATURED_ANALYSES.slice(1) // 2 secondary analyses (first is in hero)
-return h(FadeUp,null,h('section',{className:'py-16 md:py-20 bg-white'},
+const analyses=FEATURED_ANALYSES.slice(1) // 2 analyses secondaires (la 1re est dans le hero)
+return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'flex items-end justify-between mb-10'},
    h('div',null,
-    h('p',{className:'category-label mb-2'},'Nos analyses'),
-    h('h2',{className:'text-2xl md:text-3xl',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Décryptages approfondis')
+    h('p',{className:'kicker mb-3'},'§ Analyses — Décryptages'),
+    h('h2',{className:'text-2xl md:text-3xl text-[#101214]'},'Décryptages approfondis')
    ),
-   h('a',{href:'analyses.html',className:'hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-[#006650] hover:text-[#008066] transition-colors'},'Voir toutes les analyses →')
+   h('a',{href:'analyses.html',className:'hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-[#8E2424] hover:underline'},'Voir toutes les analyses →')
   ),
   h('div',{className:'grid grid-cols-1 md:grid-cols-2 gap-6'},
-   ...analyses.map((a,i)=>
-    h('a',{key:i,href:a.href,className:'group block rounded-xl overflow-hidden transition-all duration-300 bg-[#F7F8FA] border border-[#E2E5EB] hover:border-[#006650]/30 hover:shadow-lg'},
+   ...analyses.map((a,i)=>{
+    return h('a',{key:i,href:a.href,className:'article-card group block overflow-hidden bg-[#FFFFFF] border border-[rgba(94,74,58,.22)] no-underline'},
      h('div',{className:'aspect-[21/9] overflow-hidden'},
-      h('img',{src:a.img,alt:a.title,className:'w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-500',loading:'lazy'})
+      h('img',{src:a.img,alt:a.title,className:'w-full h-full object-cover group-hover:scale-[1.03] transition-all duration-500',loading:'lazy'})
      ),
      h('div',{className:'p-6 md:p-8'},
       h('div',{className:'flex items-center gap-3 mb-4'},
-       h('span',{className:`px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded ${a.cat==='Géopolitique'?'bg-[#2563eb]/10 text-[#2563eb]':'bg-[#8b5cf6]/10 text-[#8b5cf6]'}`},a.cat),
-       h('span',{className:'text-[11px] text-[#6B7280]'},a.date)
+       h('span',{className:'bg-[#EAE1D4] text-[#4A3D30] text-[10px] font-semibold uppercase tracking-[0.12em] px-2 py-0.5',style:{fontFamily:"'IBM Plex Mono',monospace"}},a.cat),
+       h('span',{className:'text-[11px] text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},a.date)
       ),
-      h('h3',{className:'text-lg md:text-xl font-bold leading-snug mb-3 group-hover:text-[#006650] transition-colors text-[#1A1F2E]',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},a.title),
-      h('p',{className:'text-sm leading-relaxed mb-5 text-[#5A6178]'},a.summary),
-      h('div',{className:'flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-[#6B7280]'},
-       h('span',null,a.readingTime+' min de lecture'),
-       h('span',null,a.sources+' sources'),
-       h('span',{className:'px-2 py-0.5 border rounded font-semibold border-[#006650]/20 text-[#006650]/60'},'Score : '+a.grade),
-       h('span',{className:'text-[#6B7280]'},'Par '+a.author)
+      h('h3',{className:'text-lg md:text-xl font-extrabold leading-snug mb-3 text-[#101214]'},a.title),
+      h('p',{className:'text-sm leading-relaxed mb-5 text-[#4C5052]'},a.summary),
+      h('div',{className:'flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-[11px] text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
+       h('span',null,a.readingTime+' min · '+a.sources+' sources'),
+       h('span',{className:'text-sm font-semibold text-[#8E2424] group-hover:underline'},'Lire →')
       )
      )
     )
-   )
+   })
   ),
-  h('a',{href:'analyses.html',className:'sm:hidden flex items-center justify-center gap-1 mt-6 text-sm font-semibold text-[#006650] hover:text-[#008066] transition-colors'},'Voir toutes les analyses →')
+  h('a',{href:'analyses.html',className:'sm:hidden flex items-center justify-center gap-1 mt-6 text-sm font-semibold text-[#8E2424]'},'Voir toutes les analyses →')
  )
 ))
 }
 
+// ─── BANDEAU CRÉDIBILITÉ (bloc brun espresso) ────────────────────────────────
+
+const CREDIBILITY_STATS=[
+{value:'158',label:'Sources analysées en continu'},
+{value:'15',label:'APIs de données temps réel'},
+{value:'24/7',label:'Veille automatisée par IA'},
+{value:'3 min',label:'Pour un briefing complet'},
+]
+
+function CredibilityStrip(){
+return h('div',{className:'v2-chrome py-12',style:{backgroundColor:'#42301E'}},
+ h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+  h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center'},
+   ...CREDIBILITY_STATS.map((s,i)=>
+    h('div',{key:i},
+     h('div',{className:'text-3xl sm:text-4xl md:text-[2.75rem] font-extrabold text-[#F3E9DD]'},s.value),
+     h('div',{className:'mt-2 text-[11px] font-medium uppercase tracking-[0.14em] text-[#D6B896]',style:{fontFamily:"'IBM Plex Mono',monospace"}},s.label)
+    )
+   )
+  )
+ )
+)
+}
+
+// ─── VEILLE / SIGNAUX (câblage news.json) ────────────────────────────────────
+
 function SkeletonCard(){
-const bg='bg-[#E2E5EB]'
-return h('div',{className:'rounded-xl overflow-hidden bg-white border border-[#E2E5EB]'},
+const bg='bg-[#DFDCD0]'
+return h('div',{className:'overflow-hidden bg-[#FFFFFF] border border-[rgba(94,74,58,.22)]'},
  h('div',{className:`aspect-[5/3] animate-pulse ${bg}`}),
  h('div',{className:'p-5'},
   h('div',{className:'flex items-center gap-2 mb-3'},
-   h('div',{className:`w-16 h-4 rounded animate-pulse ${bg}`}),
-   h('div',{className:`w-12 h-4 rounded animate-pulse ${bg}`})
+   h('div',{className:`w-16 h-4 animate-pulse ${bg}`}),
+   h('div',{className:`w-12 h-4 animate-pulse ${bg}`})
   ),
-  h('div',{className:`w-full h-4 rounded mb-2 animate-pulse ${bg}`}),
-  h('div',{className:`w-3/4 h-4 rounded mb-3 animate-pulse ${bg}`}),
-  h('div',{className:`w-full h-3 rounded mb-1 animate-pulse ${bg}`}),
-  h('div',{className:`w-2/3 h-3 rounded animate-pulse ${bg}`})
+  h('div',{className:`w-full h-4 mb-2 animate-pulse ${bg}`}),
+  h('div',{className:`w-3/4 h-4 mb-3 animate-pulse ${bg}`}),
+  h('div',{className:`w-full h-3 mb-1 animate-pulse ${bg}`}),
+  h('div',{className:`w-2/3 h-3 animate-pulse ${bg}`})
  )
 )
 }
@@ -466,43 +397,43 @@ if(d){const mapped=mapNewsToArticles(d);if(mapped.length>0)setArticles(mapped)}
 const filtered=filter==='all'?articles:articles.filter(a=>a.cat===filter)
 const visible=filtered.slice(0,visibleCount)
 const hasMore=filtered.length>visibleCount
-const btnCls=(active)=>active?'bg-[#006650] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'
+const btnCls=(active)=>active?'bg-[#8E2424] text-[#F5EDE6] border-[#8E2424]':'bg-[#FFFFFF] text-[#4C5052] hover:text-[#8E2424] border-[rgba(94,74,58,.22)]'
 return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10'},
    h('div',null,
-    h('p',{className:'category-label mb-2'},'Veille continue'),
-    h('h2',{className:'text-2xl md:text-3xl',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Sources & signaux'),
-    h('p',{className:'text-sm mt-2 text-[#5A6178]'},'Flux automatisé — 178 sources, 15 APIs, filtrage IA')
+    h('p',{className:'kicker mb-3'},'§ Signaux — Veille continue'),
+    h('h2',{className:'text-2xl md:text-3xl text-[#101214]'},'Sources & signaux'),
+    h('p',{className:'text-sm mt-2 text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},'Flux automatisé — 178 sources, 15 APIs, filtrage IA')
    ),
    h('div',{className:'flex flex-wrap gap-2'},
-    h('button',{onClick:()=>{setFilter('all');setVisibleCount(9)},className:`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${btnCls(filter==='all')}`},'Tout'),
-    CATEGORIES.map(c=>h('button',{key:c.id,onClick:()=>{setFilter(c.id);setVisibleCount(9)},className:`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${btnCls(filter===c.id)}`},c.label))
+    h('button',{onClick:()=>{setFilter('all');setVisibleCount(9)},'aria-pressed':filter==='all',className:`px-3 py-1.5 text-xs font-medium transition-colors border ${btnCls(filter==='all')}`},'Tout'),
+    CATEGORIES.map(c=>h('button',{key:c.id,onClick:()=>{setFilter(c.id);setVisibleCount(9)},'aria-pressed':filter===c.id,className:`px-3 py-1.5 text-xs font-medium transition-colors border ${btnCls(filter===c.id)}`},c.label))
    )
   ),
   h('div',{className:'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'},
    loading?[1,2,3,4,5,6].map(i=>h(SkeletonCard,{key:'sk'+i})):visible.map(a=>{
     const cat=CATEGORIES.find(c=>c.id===a.cat)
-    return h('a',{key:a.id,href:a.href||'#',target:a.href&&a.href.startsWith('http')?'_blank':undefined,rel:a.href&&a.href.startsWith('http')?'noopener noreferrer':undefined,className:'article-card rounded-xl overflow-hidden block no-underline transition-colors duration-300 bg-white border border-[#E2E5EB]'},
+    return h('a',{key:a.id,href:a.href||'#',target:a.href&&a.href.startsWith('http')?'_blank':undefined,rel:a.href&&a.href.startsWith('http')?'noopener noreferrer':undefined,className:'article-card overflow-hidden block no-underline bg-[#FFFFFF] border border-[rgba(94,74,58,.22)]'},
      h('div',{className:'aspect-[5/3] overflow-hidden'},
       h('img',{src:a.img,alt:a.title,className:'w-full h-full object-cover',loading:'lazy',onError:e=>{e.target.style.display='none'}})
      ),
      h('div',{className:'p-5'},
-      h('div',{className:'flex items-center gap-2 mb-3'},
-       cat&&h('span',{className:`${cat.cls} text-[10px] font-semibold uppercase tracking-wider text-white px-2 py-0.5 rounded`},cat.label),
-       h('span',{className:'text-xs text-[#5A6178]'},a.time),
-       h('span',{className:'text-xs text-[#5A6178]'},'·'),
-       h('span',{className:'text-xs text-[#5A6178]'},a.readingTime+' min de lecture')
+      h('div',{className:'flex items-center gap-2 mb-3',style:{fontFamily:"'IBM Plex Mono',monospace"}},
+       cat&&h('span',{className:'bg-[#EAE1D4] text-[#4A3D30] text-[10px] font-semibold uppercase tracking-[0.12em] px-2 py-0.5'},cat.label),
+       h('span',{className:'text-xs text-[#4C5052]'},a.time),
+       h('span',{className:'text-xs text-[#4C5052]'},'·'),
+       h('span',{className:'text-xs text-[#4C5052]'},a.readingTime+' min')
       ),
-      h('h3',{className:'text-sm font-semibold leading-snug mb-2 line-clamp-2 text-[#1A1F2E]',style:{fontFamily:'Libre Baskerville, Georgia, serif',fontSize:'0.95rem'}},a.title),
-      h('p',{className:'text-xs leading-relaxed line-clamp-2 text-[#5A6178]'},a.summary),
-      h('div',{className:'mt-3 text-[11px] font-medium text-[#6B7280]'},a.source)
+      h('h3',{className:'text-[0.95rem] font-bold leading-snug mb-2 line-clamp-2 text-[#101214]'},a.title),
+      h('p',{className:'text-xs leading-relaxed line-clamp-2 text-[#4C5052]'},a.summary),
+      h('div',{className:'mt-3 text-[11px] font-medium text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},a.source)
      )
     )
    })
   ),
   !loading&&hasMore&&h('div',{className:'text-center mt-10'},
-   h('button',{onClick:()=>setVisibleCount(v=>v+9),className:'px-6 py-3 rounded-lg text-sm font-semibold transition-colors bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'},
+   h('button',{onClick:()=>setVisibleCount(v=>v+9),className:'px-6 py-3 text-sm font-semibold transition-colors bg-[#FFFFFF] text-[#8E2424] hover:bg-[#8E2424] hover:text-[#F5EDE6] border border-[#8E2424]'},
     'Charger plus d\'articles'
    )
   )
@@ -510,90 +441,7 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
 ))
 }
 
-function Footer(){
-const footerLinks={
-intelligence:[
-{label:'Géopolitique',href:'geopolitics.html'},
-{label:'Marchés',href:'markets.html'},
-{label:'Crypto',href:'crypto.html'},
-{label:'Matières premières',href:'commodities.html'},
-{label:'ETF & Fonds',href:'etf.html'},
-],
-plateforme:[
-{label:'Analyses',href:'analyses.html'},
-{label:'Expertise',href:'expertise.html'},
-{label:'Services',href:'premium.html'},
-{label:'Diagnostic',href:'premium.html#diagnostic'},
-],
-}
-const sources=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC']
-
-return h('footer',{className:'border-t pt-16 pb-20 bg-[#F7F8FA] border-[#E2E5EB]',role:'contentinfo'},
- h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
-  h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-10 mb-12'},
-   // Col 1 — Logo + description
-   h('div',{className:'col-span-2 md:col-span-1'},
-    h('div',{className:'flex items-center gap-2 mb-4'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-12 w-auto'})
-    ),
-    h('p',{className:'text-sm leading-relaxed text-[#5A6178]'},'Intelligence financière et géopolitique. Données en temps réel, analyses IA, signaux faibles.')
-   ),
-   // Col 2 — Intelligence
-   h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider mb-4 text-[#1A1F2E]'},'Intelligence'),
-    h('ul',{className:'space-y-2.5'},
-     ...footerLinks.intelligence.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm hover:text-[#006650] transition-colors text-[#5A6178]'},l.label))
-     )
-    )
-   ),
-   // Col 3 — Plateforme
-   h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider mb-4 text-[#1A1F2E]'},'Plateforme'),
-    h('ul',{className:'space-y-2.5'},
-     ...footerLinks.plateforme.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm hover:text-[#006650] transition-colors text-[#5A6178]'},l.label))
-     )
-    )
-   ),
-   // Col 4 — Suivez-nous
-   h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider mb-4 text-[#1A1F2E]'},'Contact'),
-    h('a',{href:'premium.html#contact',className:'text-sm hover:text-[#006650] transition-colors text-[#5A6178]'},'Nous contacter')
-   )
-  ),
-  // Bottom bar
-  h('div',{className:'border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4 border-[#E2E5EB]'},
-   h('span',{className:'text-sm text-[#5A6178]'},'© 2026 Inflexion — Intelligence financière & géopolitique'),
-   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider font-medium text-[#6B7280]'},
-    ...sources.map(s=>h('span',{key:s},s))
-   )
-  )
- )
-)
-}
-
-const CREDIBILITY_STATS=[
-{value:'158',label:'Sources analysées en continu'},
-{value:'15',label:'APIs de données temps réel'},
-{value:'24/7',label:'Veille automatisée par IA'},
-{value:'3 min',label:'Pour un briefing complet'},
-]
-
-function CredibilityStrip(){
-return h(FadeUp,null,h('div',{className:'border-t border-b py-10 bg-[#F7F8FA] border-[#E2E5EB]'},
- h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
-  h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center'},
-   ...CREDIBILITY_STATS.map((s,i)=>
-    h('div',{key:i},
-     h('div',{className:'text-2xl sm:text-3xl md:text-4xl font-bold text-[#006650]',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},s.value),
-     h('div',{className:'mt-2 text-xs font-medium uppercase tracking-wider text-[#5A6178]'},s.label)
-    )
-   )
-  )
- )
-))
-}
+// ─── EXPERTISES ──────────────────────────────────────────────────────────────
 
 const EXPERTISE_DATA={
 iatech:[
@@ -615,37 +463,37 @@ const[tab,setTab]=useState('iatech')
 const[selected,setSelected]=useState('ia')
 const items=EXPERTISE_DATA[tab]
 const current=items.find(i=>i.id===selected)||items[0]
-const tabCls=(active)=>active?'bg-[#006650] text-white':'bg-[#F7F8FA] text-[#5A6178] hover:text-[#1A1F2E] border border-[#E2E5EB]'
-
+const tabCls=(active)=>active?'bg-[#8E2424] text-[#F5EDE6] border-[#8E2424]':'bg-[#FFFFFF] text-[#4C5052] hover:text-[#8E2424] border-[rgba(94,74,58,.22)]'
 const switchTab=(t)=>{setTab(t);setSelected(EXPERTISE_DATA[t][0].id)}
-
-return h(FadeUp,null,h('section',{className:'py-20 bg-white'},
+return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'text-center mb-12'},
-   h('p',{className:'category-label mb-2'},'Nos expertises'),
-   h('h2',{className:'text-2xl md:text-3xl',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Explorez notre couverture')
+   h('p',{className:'kicker mb-3'},'§ Expertises — Couverture'),
+   h('h2',{className:'text-2xl md:text-3xl text-[#101214]'},'Explorez notre couverture')
   ),
   h('div',{className:'flex justify-center gap-2 mb-10'},
-   h('button',{onClick:()=>switchTab('iatech'),className:`px-3 py-2 sm:px-5 sm:py-2.5 rounded-lg text-sm font-semibold transition-colors ${tabCls(tab==='iatech')}`},'IA & Tech'),
-   h('button',{onClick:()=>switchTab('geopolitique'),className:`px-3 py-2 sm:px-5 sm:py-2.5 rounded-lg text-sm font-semibold transition-colors ${tabCls(tab==='geopolitique')}`},'Géopolitique')
+   h('button',{onClick:()=>switchTab('iatech'),className:`px-3 py-2 sm:px-5 sm:py-2.5 text-sm font-semibold transition-colors border ${tabCls(tab==='iatech')}`},'IA & Tech'),
+   h('button',{onClick:()=>switchTab('geopolitique'),className:`px-3 py-2 sm:px-5 sm:py-2.5 text-sm font-semibold transition-colors border ${tabCls(tab==='geopolitique')}`},'Géopolitique')
   ),
-  h('div',{className:'flex flex-col md:flex-row gap-6 md:gap-0 border rounded-2xl overflow-hidden border-[#E2E5EB]'},
-   h('div',{className:'md:w-[38%] md:border-r bg-[#F7F8FA] border-[#E2E5EB]'},
+  h('div',{className:'flex flex-col md:flex-row gap-6 md:gap-0 border border-[rgba(94,74,58,.22)] overflow-hidden bg-[#FFFFFF]'},
+   h('div',{className:'md:w-[38%] md:border-r border-[rgba(94,74,58,.22)] bg-[#EDEBE4]'},
     ...items.map(item=>
-     h('button',{key:item.id,onClick:()=>setSelected(item.id),className:`w-full text-left px-6 py-4 border-b last:border-b-0 transition-colors border-[#E2E5EB] ${selected===item.id?'bg-white font-semibold text-[#1A1F2E]':'text-[#5A6178] hover:bg-white/60'}`},
+     h('button',{key:item.id,onClick:()=>setSelected(item.id),className:`w-full text-left px-6 py-4 border-b last:border-b-0 transition-colors border-[rgba(94,74,58,.22)] ${selected===item.id?'bg-[#FFFFFF] font-semibold text-[#8E2424] border-l-2 border-l-[#8E2424]':'text-[#4C5052] hover:bg-[#FFFFFF]/60'}`},
       h('span',{className:'text-sm'},item.label)
      )
     )
    ),
    h('div',{className:'md:w-[62%] p-8 md:p-10 flex flex-col justify-center'},
-    h('h3',{className:'text-xl md:text-2xl font-bold mb-4',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},current.label),
-    h('p',{className:'text-sm leading-relaxed mb-6 text-[#5A6178]'},current.desc),
-    h('a',{href:current.href,className:'inline-flex items-center gap-1 text-sm font-semibold text-[#006650] hover:text-[#008066] transition-colors'},'Explorer →')
+    h('h3',{className:'text-xl md:text-2xl font-extrabold mb-4 text-[#101214]'},current.label),
+    h('p',{className:'text-sm leading-relaxed mb-6 text-[#4C5052]'},current.desc),
+    h('a',{href:current.href,className:'inline-flex items-center gap-1 text-sm font-semibold text-[#8E2424] hover:underline'},'Explorer →')
    )
   )
  )
 ))
 }
+
+// ─── NEWSLETTER (bloc oxblood, câblage Supabase) ─────────────────────────────
 
 const SUPABASE_URL='https://pizemouhfrwgvgibitox.supabase.co'
 const SUPABASE_KEY='sb_publishable_5u8lldvoUdA_pKTZIL9jdA_gJb72SZH'
@@ -666,27 +514,89 @@ else{setStatus('error')}
 }catch(_){setStatus('error')}
 }
 const msg={success:'Inscription confirmée — bienvenue parmi nos lecteurs.',duplicate:'Cette adresse est déjà inscrite.',error:'Une erreur est survenue. Réessayez.',invalid:'Veuillez entrer une adresse email valide.'}
-const msgColor={success:'text-[#33B894]',duplicate:'text-yellow-400',error:'text-[#F87171]',invalid:'text-[#F87171]'}
-return h(FadeUp,null,h('section',{className:'bg-[#006650] py-20'},
+const msgColor={success:'text-[#7BE0B0]',duplicate:'text-[#E8C79A]',error:'text-[#F0A090]',invalid:'text-[#F0A090]'}
+return h('section',{className:'v2-chrome py-20 md:py-24',style:{backgroundColor:'#17100E'}},
  h('div',{className:'max-w-2xl mx-auto px-4 sm:px-6 text-center'},
-  h('h2',{className:'text-2xl md:text-3xl font-bold text-white mb-4',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Recevez nos signaux faibles chaque semaine'),
-  h('p',{className:'text-sm md:text-base text-white/50 leading-relaxed mb-8'},'Une sélection hebdomadaire d\'analyses et de données pour garder une longueur d\'avance.'),
+  h('p',{className:'kicker mb-4',style:{color:'#E8A996'}},'§ Signaux faibles — Hebdomadaire'),
+  h('h2',{className:'text-2xl md:text-3xl font-extrabold text-white mb-4'},'Recevez nos signaux faibles chaque semaine'),
+  h('p',{className:'text-sm md:text-base text-[#D8B9AE] leading-relaxed mb-8'},'Une sélection hebdomadaire d\'analyses et de données pour garder une longueur d\'avance.'),
   status==='success'?
-   h('div',{className:'flex items-center justify-center gap-2 text-[#33B894] text-sm font-medium'},
+   h('div',{className:'flex items-center justify-center gap-2 text-[#7BE0B0] text-sm font-medium'},
     h('svg',{width:20,height:20,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2,strokeLinecap:'round'},h('path',{d:'M20 6L9 17l-5-5'})),
     msg.success
    ):
    h('form',{onSubmit:submit,className:'flex flex-col sm:flex-row gap-3 max-w-md mx-auto'},
-    h('input',{type:'email',value:email,onChange:e=>{setEmail(e.target.value);if(status==='invalid')setStatus(null)},placeholder:'votre@email.com',className:`flex-1 px-4 py-3 rounded-lg bg-white/10 border text-white text-sm placeholder-white/30 outline-none transition-colors ${status==='invalid'?'border-[#F87171]':'border-white/15 focus:border-[#006650]'}`}),
-    h('button',{type:'submit',disabled:status==='sending',className:'px-6 py-3 bg-[#006650] hover:bg-[#008066] text-white font-semibold text-sm rounded-lg transition-colors whitespace-nowrap disabled:opacity-50'},status==='sending'?'Envoi...':'S\'abonner')
+    h('input',{type:'email',value:email,onChange:e=>{setEmail(e.target.value);if(status==='invalid')setStatus(null)},placeholder:'votre@email.com','aria-label':'Adresse email',className:`flex-1 px-4 py-3 bg-white/10 border text-white text-sm placeholder-white/40 outline-none transition-colors ${status==='invalid'?'border-[#F0A090]':'border-white/20 focus:border-[#E05A4E]'}`}),
+    h('button',{type:'submit',disabled:status==='sending',className:'px-6 py-3 bg-[#E8E4D8] hover:bg-[#FFFFFF] text-[#17100E] font-semibold text-sm transition-colors whitespace-nowrap disabled:opacity-50'},status==='sending'?'Envoi...':'S\'abonner')
    ),
   status&&status!=='success'&&status!=='sending'&&h('p',{className:`mt-4 text-sm ${msgColor[status]}`},msg[status])
  )
-))
+)
 }
 
+// ─── FOOTER (chrome v2 chaud) ────────────────────────────────────────────────
+
+function Footer(){
+const footerLinks={
+intelligence:[
+{label:'Géopolitique',href:'geopolitics.html'},
+{label:'Marchés',href:'markets.html'},
+{label:'Crypto',href:'crypto.html'},
+{label:'Matières premières',href:'commodities.html'},
+{label:'ETF & Fonds',href:'etf.html'},
+],
+plateforme:[
+{label:'Analyses',href:'analyses.html'},
+{label:'Expertise',href:'expertise.html'},
+{label:'Services',href:'premium.html'},
+{label:'Diagnostic',href:'premium.html#diagnostic'},
+],
+}
+const sources=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC']
+return h('footer',{className:'v2-chrome pt-12 sm:pt-16 pb-24 sm:pb-20',style:{backgroundColor:'#17100E'},role:'contentinfo'},
+ h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+  h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-10 mb-12'},
+   h('div',{className:'col-span-2 md:col-span-1'},
+    h('div',{className:'flex items-center gap-2 mb-4'},
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto',style:{filter:'brightness(10) saturate(0)'}})
+    ),
+    h('p',{className:'text-sm text-[#C6A996] leading-relaxed'},'Intelligence financière et géopolitique. Données en temps réel, analyses IA, signaux faibles.')
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8D9C8] mb-4'},'Intelligence'),
+    h('ul',{className:'space-y-2.5'},
+     ...footerLinks.intelligence.map(l=>
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#C6A996] hover:text-[#E05A4E] transition-colors'},l.label))
+     )
+    )
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8D9C8] mb-4'},'Plateforme'),
+    h('ul',{className:'space-y-2.5'},
+     ...footerLinks.plateforme.map(l=>
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#C6A996] hover:text-[#E05A4E] transition-colors'},l.label))
+     )
+    )
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8D9C8] mb-4'},'Contact'),
+    h('a',{href:'premium.html#contact',className:'text-sm text-[#C6A996] hover:text-[#E05A4E] transition-colors'},'Nous contacter')
+   )
+  ),
+  h('div',{className:'border-t border-[rgba(200,149,90,.20)] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
+   h('span',{className:'text-sm text-[#C6A996]'},'© 2026 Inflexion — Intelligence financière & géopolitique'),
+   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#A88A72] font-medium',style:{fontFamily:"'IBM Plex Mono',monospace"}},
+    ...sources.map(s=>h('span',{key:s},s))
+   )
+  )
+ )
+)
+}
+
+// ─── APP ─────────────────────────────────────────────────────────────────────
+
 function App(){
-return h('div',{className:'bg-white text-[#1A1F2E]'},
+return h('div',null,
  h(Navigation),
  h('main',{id:'main-content'},
   h(Hero),
@@ -696,6 +606,7 @@ return h('div',{className:'bg-white text-[#1A1F2E]'},
   h(ExpertiseNav),
   h(NewsletterCTA)
  ),
+ h('div',{className:'h-[5px] bg-[#8E2424]','aria-hidden':'true'}),
  h(Footer)
 )
 }
