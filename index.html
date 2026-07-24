@@ -306,7 +306,7 @@ return h('section',{className:'v2-chrome relative pt-28 pb-16 md:pt-40 md:pb-24 
 
 function FeaturedAnalyses(){
 const analyses=FEATURED_ANALYSES.slice(1) // 2 analyses secondaires (la 1re est dans le hero)
-return h(FadeUp,null,h('section',{className:'py-16 md:py-20'},
+return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'flex items-end justify-between mb-10'},
    h('div',null,
@@ -323,7 +323,7 @@ return h(FadeUp,null,h('section',{className:'py-16 md:py-20'},
      ),
      h('div',{className:'p-6 md:p-8'},
       h('div',{className:'flex items-center gap-3 mb-4'},
-       h('span',{className:'bg-[#17100E] text-[#F5EDE6] text-[10px] font-semibold uppercase tracking-[0.12em] px-2 py-0.5',style:{fontFamily:"'IBM Plex Mono',monospace"}},a.cat),
+       h('span',{className:'bg-[#EAE1D4] text-[#4A3D30] text-[10px] font-semibold uppercase tracking-[0.12em] px-2 py-0.5',style:{fontFamily:"'IBM Plex Mono',monospace"}},a.cat),
        h('span',{className:'text-[11px] text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},a.date)
       ),
       h('h3',{className:'text-lg md:text-xl font-extrabold leading-snug mb-3 text-[#101214]'},a.title),
@@ -420,7 +420,7 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
      ),
      h('div',{className:'p-5'},
       h('div',{className:'flex items-center gap-2 mb-3',style:{fontFamily:"'IBM Plex Mono',monospace"}},
-       cat&&h('span',{className:'bg-[#17100E] text-[#F5EDE6] text-[10px] font-semibold uppercase tracking-[0.12em] px-2 py-0.5'},cat.label),
+       cat&&h('span',{className:'bg-[#EAE1D4] text-[#4A3D30] text-[10px] font-semibold uppercase tracking-[0.12em] px-2 py-0.5'},cat.label),
        h('span',{className:'text-xs text-[#4C5052]'},a.time),
        h('span',{className:'text-xs text-[#4C5052]'},'·'),
        h('span',{className:'text-xs text-[#4C5052]'},a.readingTime+' min')
@@ -465,7 +465,7 @@ const items=EXPERTISE_DATA[tab]
 const current=items.find(i=>i.id===selected)||items[0]
 const tabCls=(active)=>active?'bg-[#8E2424] text-[#F5EDE6] border-[#8E2424]':'bg-[#FFFFFF] text-[#4C5052] hover:text-[#8E2424] border-[rgba(94,74,58,.22)]'
 const switchTab=(t)=>{setTab(t);setSelected(EXPERTISE_DATA[t][0].id)}
-return h(FadeUp,null,h('section',{className:'py-20'},
+return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'text-center mb-12'},
    h('p',{className:'kicker mb-3'},'§ Expertises — Couverture'),
@@ -515,7 +515,7 @@ else{setStatus('error')}
 }
 const msg={success:'Inscription confirmée — bienvenue parmi nos lecteurs.',duplicate:'Cette adresse est déjà inscrite.',error:'Une erreur est survenue. Réessayez.',invalid:'Veuillez entrer une adresse email valide.'}
 const msgColor={success:'text-[#7BE0B0]',duplicate:'text-[#E8C79A]',error:'text-[#F0A090]',invalid:'text-[#F0A090]'}
-return h('section',{className:'v2-chrome py-20',style:{backgroundColor:'#17100E'}},
+return h('section',{className:'v2-chrome py-20 md:py-24',style:{backgroundColor:'#17100E'}},
  h('div',{className:'max-w-2xl mx-auto px-4 sm:px-6 text-center'},
   h('p',{className:'kicker mb-4',style:{color:'#E8A996'}},'§ Signaux faibles — Hebdomadaire'),
   h('h2',{className:'text-2xl md:text-3xl font-extrabold text-white mb-4'},'Recevez nos signaux faibles chaque semaine'),
