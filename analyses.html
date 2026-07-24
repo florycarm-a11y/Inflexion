@@ -27,7 +27,7 @@ h1,h2,h3{font-family:'Archivo',Arial,sans-serif;font-weight:800;line-height:1.1;
 .mega-item{transition:background .15s ease}
 .mega-item:hover{background:rgba(16,18,20,.06)}
 .mega-icon{width:36px;height:36px;border-radius:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
-.nav-scrolled{background:rgba(14,16,18,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(232,228,216,.14)}
+.nav-scrolled{background:var(--chrome-scrolled);backdrop-filter:blur(16px);border-bottom:1px solid var(--chrome-border)}
 
 .hamburger span{display:block;width:24px;height:2px;background:var(--chrome-text);margin:5px 0;transition:all .3s ease}
 :focus-visible{outline:2px solid var(--text-primary);outline-offset:2px}
@@ -48,7 +48,7 @@ body.menu-open{overflow:hidden}
 .article-card:hover::before{transform:scaleY(1)}
 @media(prefers-reduced-motion:reduce){.animate-pulse{animation:none}.article-card::before{transition:none}}
 
-.category-geo{background:#2563eb}.category-marches{background:#006650}.category-crypto{background:#f59e0b}.category-matieres{background:#C8955A}.category-iatech{background:#8b5cf6}
+.category-geo,.category-marches,.category-crypto,.category-matieres,.category-iatech{background:var(--badge-bg);color:var(--badge-text)}
 
 
 @media(max-width:768px){
@@ -257,7 +257,7 @@ if(open){document.body.classList.add('menu-open')}else{document.body.classList.r
 return()=>document.body.classList.remove('menu-open')
 },[open])
 return h('div',null,
- h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#0E1012]'}),
+ h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[var(--editorial-accent)]'}),
  h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
@@ -283,7 +283,7 @@ return h('div',null,
        )
       )
      ),
-     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#E8E4D8] hover:bg-[#FFFFFF] text-[#0E1012] font-semibold text-sm transition-colors'},'R\u00e9server un diagnostic')
+     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[var(--editorial-accent)] hover:bg-[#6E1B1B] text-[#F5EDE6] font-semibold text-sm transition-colors'},'R\u00e9server un diagnostic')
     ),
     h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,'aria-label':'Menu','aria-expanded':open,onClick:()=>setOpen(!open)},
      h('span'),h('span'),h('span')
@@ -291,7 +291,7 @@ return h('div',null,
    )
   )
  ),
- h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#0E1012'}},
+ h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'var(--chrome-ground)'}},
   h('div',{className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0'},
    h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-8 w-auto',style:{filter:'brightness(10) saturate(0)'}}),
    h('button',{onClick:()=>setOpen(false),className:'w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
@@ -319,10 +319,10 @@ return h('div',null,
 // ─── PAGE HERO ───────────────────────────────────────────────────────────────
 
 function PageHero(){
-return h('section',{className:'v2-chrome relative pt-28 pb-14 md:pt-36 md:pb-16',style:{backgroundColor:'#0E1012'}},
+return h('section',{className:'v2-chrome relative pt-28 pb-14 md:pt-36 md:pb-16',style:{backgroundColor:'var(--chrome-ground)'}},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'max-w-2xl'},
-   h('p',{className:'anim-fade-up text-[11px] uppercase tracking-[0.18em] text-[#9AA0A4] mb-4',style:{fontFamily:"'IBM Plex Mono',monospace"}},'D\u00e9cryptages & signaux faibles'),
+   h('p',{className:'anim-fade-up text-[11px] uppercase tracking-[0.18em] text-[var(--editorial-accent-text)] mb-4',style:{fontFamily:"'IBM Plex Mono',monospace"}},'D\u00e9cryptages & signaux faibles'),
    h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-5xl font-extrabold text-white leading-[1.1] tracking-tight'},'Nos analyses'),
    h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-[#9AA0A4] leading-relaxed max-w-lg'},
     'Analyses approfondies, d\u00e9cryptages th\u00e9matiques et intelligence strat\u00e9gique pour anticiper les inflexions de march\u00e9.'
@@ -352,7 +352,7 @@ return h('section',{className:'pt-16 md:pt-20 pb-0'},
   h('div',{className:'border border-[#4C5052] bg-[#FFFFFF] overflow-hidden'},
    h('div',{className:'p-6 md:p-8'},
     h('div',{className:'flex items-center gap-3 mb-4'},
-     h('span',{className:'inline-flex items-center gap-1.5 px-3 py-1 bg-[#0E1012] text-[#E8E4D8] text-[11px] font-semibold uppercase tracking-[0.14em]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
+     h('span',{className:'inline-flex items-center gap-1.5 px-3 py-1 bg-[var(--chrome-ground)] text-[#E8E4D8] text-[11px] font-semibold uppercase tracking-[0.14em]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
       h('span',{className:'w-2 h-2 rounded-full bg-[#E8E4D8] animate-pulse'}),
       'Article du jour'
      ),
@@ -392,7 +392,7 @@ return h('section',{className:'py-16 md:py-20'},
   // Filters
   h('div',{className:'flex flex-wrap gap-2 mb-8 overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0'},
    ...CATEGORIES.map(c=>
-    h('button',{key:c.id,onClick:()=>setFilter(c.id),'aria-pressed':filter===c.id,className:`px-4 py-2 text-sm font-medium transition-colors border ${filter===c.id?'bg-[#0E1012] text-[#EDEBE4] border-[#0E1012]':'bg-[#FFFFFF] text-[#4C5052] hover:text-[#101214] border-[rgba(76,80,82,.18)]'}`},c.label)
+    h('button',{key:c.id,onClick:()=>setFilter(c.id),'aria-pressed':filter===c.id,className:`px-4 py-2 text-sm font-medium transition-colors border ${filter===c.id?'bg-[var(--chrome-ground)] text-[#EDEBE4] border-[var(--chrome-ground)]':'bg-[#FFFFFF] text-[#4C5052] hover:text-[#101214] border-[var(--hairline-warm)]'}`},c.label)
    )
   ),
 
@@ -420,7 +420,7 @@ return h('section',{className:'py-16 md:py-20'},
         h('p',{className:'text-sm text-[#4C5052] leading-relaxed line-clamp-3 mb-4'},a.summary),
         h('div',{className:'flex items-center justify-between'},
          h('span',{className:'text-xs text-[#4C5052] font-medium',style:{fontFamily:"'IBM Plex Mono',monospace"}},a.source),
-         h('span',{className:'text-sm font-semibold text-[#8E2424] group-hover:underline'},'Lire \u2192')
+         h('span',{className:'text-sm font-semibold text-[var(--editorial-accent)] group-hover:underline'},'Lire \u2192')
         )
        )
       )
@@ -453,7 +453,7 @@ plateforme:[
 }
 const sources=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC']
 
-return h('footer',{className:'v2-chrome bg-[#0E1012] pt-12 sm:pt-16 pb-24 sm:pb-20',role:'contentinfo'},
+return h('footer',{className:'v2-chrome bg-[var(--chrome-ground)] pt-12 sm:pt-16 pb-24 sm:pb-20',role:'contentinfo'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-10 mb-12'},
    h('div',{className:'col-span-2 md:col-span-1'},
