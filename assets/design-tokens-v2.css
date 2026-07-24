@@ -63,8 +63,9 @@
   /* Bandeau credibilite brun (sous le hero / jonctions de sections). */
   --credibility-band: #42301E;
 
-  /* Badges categorie NEUTRES (decision 2026-07-23) : aucune couleur de
-     taxonomie. Le libelle texte porte la categorie. */
+  /* Badges categorie : fond neutre, LETTRES ROUGES (identite chaude).
+     Pas de couleur de taxonomie ; le rouge est l'accent de marque, pas une
+     donnee. #8E2424 sur #EAE1D4 : ~6,9:1, lisible. */
   --badge-bg: #EAE1D4;
-  --badge-text: #4A3D30;
+  --badge-text: #8E2424;
 }
