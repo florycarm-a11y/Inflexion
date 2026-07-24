@@ -1,0 +1,153 @@
+// Prisma Schema for EasyJob
+// Database: PostgreSQL (Supabase)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ═══════════════════════════════════════════════════
+// USER & AUTH
+// ═══════════════════════════════════════════════════
+
+enum UserRole {
+  STUDENT
+  RECRUITER
+  ADMIN
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  passwordHash  String    @map("password_hash")
+  role          UserRole
+  firstName     String?   @map("first_name")
+  lastName      String?   @map("last_name")
+  phone         String?
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+
+  // Relations
+  studentProfile  StudentProfile?
+  companies       Company[]
+  applications    Application[]
+
+  @@map("users")
+}
+
+// ═══════════════════════════════════════════════════
+// STUDENT PROFILE
+// ═══════════════════════════════════════════════════
+
+model StudentProfile {
+  userId          String   @id @map("user_id")
+  program         String?  // Master 1, Master 2, etc.
+  graduationYear  Int?     @map("graduation_year")
+  cvUrl           String?  @map("cv_url")
+  linkedinUrl     String?  @map("linkedin_url")
+  skills          String[] // Array of skills
+  bio             String?  @db.Text
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("student_profiles")
+}
+
+// ═══════════════════════════════════════════════════
+// COMPANIES
+// ═══════════════════════════════════════════════════
+
+model Company {
+  id          String   @id @default(uuid())
+  name        String
+  logoUrl     String?  @map("logo_url")
+  description String?  @db.Text
+  website     String?
+  createdById String   @map("created_by")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  // Relations
+  createdBy User @relation(fields: [createdById], references: [id])
+  jobs      Job[]
+
+  @@map("companies")
+}
+
+// ═══════════════════════════════════════════════════
+// JOBS
+// ═══════════════════════════════════════════════════
+
+enum JobType {
+  STAGE
+  CDD
+  CDI
+  PETIT_BOULOT
+}
+
+enum JobStatus {
+  DRAFT
+  PUBLISHED
+  CLOSED
+}
+
+model Job {
+  id               String     @id @default(uuid())
+  companyId        String     @map("company_id")
+  title            String
+  type             JobType
+  location         String
+  description      String     @db.Text
+  requirements     String?    @db.Text
+  salaryRange      String?    @map("salary_range")
+  status           JobStatus  @default(DRAFT)
+  publishedAt      DateTime?  @map("published_at")
+  expiresAt        DateTime?  @map("expires_at")
+  viewsCount       Int        @default(0) @map("views_count")
+  applicationsCount Int       @default(0) @map("applications_count")
+  createdAt        DateTime   @default(now()) @map("created_at")
+  updatedAt        DateTime   @updatedAt @map("updated_at")
+
+  // Relations
+  company      Company       @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  applications Application[]
+
+  @@index([status])
+  @@index([type])
+  @@index([companyId])
+  @@map("jobs")
+}
+
+// ═══════════════════════════════════════════════════
+// APPLICATIONS
+// ═══════════════════════════════════════════════════
+
+enum ApplicationStatus {
+  PENDING
+  REVIEWED
+  ACCEPTED
+  REJECTED
+}
+
+model Application {
+  id           String            @id @default(uuid())
+  jobId        String            @map("job_id")
+  userId       String            @map("user_id")
+  coverLetter  String?           @map("cover_letter") @db.Text
+  cvUrl        String?           @map("cv_url")
+  status       ApplicationStatus @default(PENDING)
+  createdAt    DateTime          @default(now()) @map("created_at")
+
+  // Relations
+  job  Job  @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([jobId, userId]) // Un étudiant ne peut postuler qu'une fois par offre
+  @@index([userId])
+  @@index([jobId])
+  @@map("applications")
+}
