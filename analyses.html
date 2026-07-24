@@ -412,7 +412,7 @@ return h('section',{className:'py-16 md:py-20'},
        ),
        h('div',{className:'p-6'},
         h('div',{className:'flex items-center gap-3 mb-3'},
-         h('span',{className:`${cat.cls} text-[10px] font-semibold uppercase tracking-[0.12em] text-white px-2 py-0.5`,style:{fontFamily:"'IBM Plex Mono',monospace"}},cat.label),
+         h('span',{className:`${cat.cls} text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--badge-text)] px-2 py-0.5`,style:{fontFamily:"'IBM Plex Mono',monospace"}},cat.label),
          h('span',{className:'text-xs text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},a.date),
          h('span',{className:'text-xs text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},'\u00b7 '+a.readTime)
         ),
