@@ -7,32 +7,35 @@
 <meta name="description" content="~660 milliards de dollars d'investissement en 2026, dont 75 % fléchés vers l'IA. Le cloud n'est plus un sujet technique — c'est un risque de direction générale. Analyse Inflexion."/>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-tailwind.config={theme:{extend:{colors:{brand:{900:'#06402A',800:'#006650',700:'#007A60',600:'#008066',500:'#00997A',400:'#33B894',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
+tailwind.config={theme:{extend:{colors:{brand:{900:'#06402A',800:'#006650',700:'#007A60',600:'#008066',500:'#00997A',400:'#33B894',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Archivo','Arial','sans-serif'],body:['IBM Plex Sans','Helvetica Neue','sans-serif'],data:['IBM Plex Mono','SF Mono','monospace']}}}}
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="assets/design-tokens-v2.css" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden}
+body{font-family:'IBM Plex Sans','Helvetica Neue',sans-serif;background:var(--surface-page);color:var(--text-primary);overflow-x:hidden}
 
-h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
-.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#006650}
+h1,h2,h3,.display-text{font-family:'Archivo',Arial,sans-serif;font-weight:800;line-height:1.15;letter-spacing:-0.035em;color:var(--text-primary)}
+.category-label{font-family:'IBM Plex Mono',monospace;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--editorial-accent)}
 
 @keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .anim-fade-up{animation:fade-up .6s ease-out both}
 .anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}
 
 .nav-link{position:relative}
-.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:var(--chrome-text);transform:scaleX(0);transition:transform .25s ease}
 .nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
 .mega-trigger{position:relative}
 .mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:520px;z-index:60}
 .mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
 .mega-item{transition:background .15s ease}
-.mega-item:hover{background:rgba(27,107,74,.06)}
-.mega-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
-.nav-scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid #E2E5EB;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+.mega-item:hover{background:rgba(16,18,20,.06)}
+.mega-icon{width:36px;height:36px;border-radius:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.nav-scrolled{background:var(--chrome-scrolled);backdrop-filter:blur(16px);border-bottom:1px solid var(--chrome-border)}
 
-.hamburger span{display:block;width:24px;height:2px;background:#1A1F2E;margin:5px 0;transition:all .3s ease}
+.hamburger span{display:block;width:24px;height:2px;background:var(--chrome-text);margin:5px 0;transition:all .3s ease}
+:focus-visible{outline:2px solid var(--text-primary);outline-offset:2px}
+header :focus-visible,.mobile-overlay :focus-visible,.v2-chrome :focus-visible{outline-color:var(--chrome-text)}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
@@ -43,45 +46,48 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 .mobile-overlay.open .menu-item{animation:menu-item-in .4s ease-out forwards}
 body.menu-open{overflow:hidden}
 
-.prose p{margin-bottom:1.25rem;font-size:1.0625rem;line-height:1.8;color:#3A3A3A}
-.prose strong{color:#1A1F2E}
-.prose h2{font-size:1.625rem;color:#006650;margin-top:3.25rem;margin-bottom:1.25rem;line-height:1.3}
-.prose h3{font-family:'Inter',sans-serif;font-size:1.0625rem;font-weight:600;color:#006650;margin-top:2rem;margin-bottom:0.75rem;letter-spacing:0.3px}
+.prose p{margin-bottom:1.25rem;font-size:1.0625rem;line-height:1.8;color:var(--text-secondary)}
+.prose strong{color:var(--text-primary)}
+.prose h2{font-size:1.625rem;color:var(--text-primary);margin-top:3.25rem;margin-bottom:1.25rem;line-height:1.3}
+.prose h3{font-family:'IBM Plex Sans',sans-serif;font-size:1.0625rem;font-weight:600;color:var(--editorial-accent);margin-top:2rem;margin-bottom:0.75rem;letter-spacing:0.3px}
 
-.key-figure{background:linear-gradient(135deg,#006650 0%,#06402A 100%);border-radius:0.5rem;padding:2.5rem 2rem;text-align:center;position:relative;overflow:hidden}
-.key-figure::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#006650,#33B894,rgba(255,255,255,0.3))}
+.key-figure{background:var(--chrome-ground);border-radius:0;padding:2.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+.key-figure::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--editorial-accent)}
 
-.insight-box{border-left:3px solid #006650;background:#F7F8FA;padding:1.25rem 1.5rem;margin:1.75rem 0;border-radius:0 0.5rem 0.5rem 0}
+.insight-box{border-left:3px solid var(--editorial-accent);background:var(--surface-raised);padding:1.25rem 1.5rem;margin:1.75rem 0;border-radius:0}
 .insight-box.alert{border-left-color:#DC2626}
 .insight-box.gold{border-left-color:#EAB308}
 
-.pillar-card{background:#FFFFFF;border:1px solid #E2E5EB;border-radius:0.5rem;padding:1.75rem 1.75rem 1.5rem;margin:1.5rem 0;position:relative;padding-left:2rem;border-left:4px solid #006650}
-.pillar-card.green-mid{border-left-color:#006650}
-.pillar-card.green-light{border-left-color:#33B894}
+.pillar-card{background:var(--surface-raised);border:1px solid var(--hairline-warm);border-radius:0;padding:1.75rem 1.75rem 1.5rem;margin:1.5rem 0;position:relative;padding-left:2rem;border-left:4px solid var(--editorial-accent)}
+.pillar-card.green-mid{border-left-color:var(--editorial-accent)}
+.pillar-card.green-light{border-left-color:var(--credibility-band)}
 
-.matrix-table{width:100%;border-collapse:collapse;font-family:'Inter',sans-serif;font-size:0.875rem}
-.matrix-table thead th{background:#006650;color:white;padding:0.75rem 1rem;text-align:left;font-weight:600;font-size:0.75rem;letter-spacing:0.5px;text-transform:uppercase}
-.matrix-table thead th:first-child{border-radius:0.5rem 0 0 0}
-.matrix-table thead th:last-child{border-radius:0 0.5rem 0 0}
-.matrix-table tbody td{padding:0.875rem 1rem;border-bottom:1px solid #ECEEF2;vertical-align:top;line-height:1.55;color:#3A3A3A}
-.matrix-table tbody tr:nth-child(odd) td{background:#F7F8FA}
-.matrix-table tbody tr:nth-child(even) td{background:#FFFFFF}
-.matrix-table tbody tr:last-child td:first-child{border-radius:0 0 0 0.5rem}
-.matrix-table tbody tr:last-child td:last-child{border-radius:0 0 0.5rem 0}
-.matrix-table td strong{color:#1A1F2E}
+.matrix-table{width:100%;border-collapse:collapse;font-family:'IBM Plex Sans',sans-serif;font-size:0.875rem}
+.matrix-table thead th{background:var(--chrome-ground);color:var(--chrome-text);padding:0.75rem 1rem;text-align:left;font-weight:600;font-size:0.75rem;letter-spacing:0.5px;text-transform:uppercase}
+.matrix-table thead th:first-child{border-radius:0}
+.matrix-table thead th:last-child{border-radius:0}
+.matrix-table tbody td{padding:0.875rem 1rem;border-bottom:1px solid var(--hairline-warm);vertical-align:top;line-height:1.55;color:var(--text-secondary)}
+.matrix-table tbody tr:nth-child(odd) td{background:rgba(94,74,58,.06)}
+.matrix-table tbody tr:nth-child(even) td{background:var(--surface-raised)}
+.matrix-table tbody tr:last-child td:first-child{border-radius:0}
+.matrix-table tbody tr:last-child td:last-child{border-radius:0}
+.matrix-table td strong{color:var(--text-primary)}
 
-.data-row{display:flex;justify-content:space-between;align-items:baseline;padding:0.625rem 0;border-bottom:1px solid #ECEEF2;font-size:0.875rem;color:#3A3A3A;gap:0.5rem}
+.data-row{display:flex;justify-content:space-between;align-items:baseline;padding:0.625rem 0;border-bottom:1px solid var(--hairline-warm);font-size:0.875rem;color:var(--text-secondary);gap:0.5rem}
 .data-row:last-child{border-bottom:none}
 @media(max-width:480px){.data-row{flex-direction:column;gap:0.25rem}.data-row span:last-child{margin-left:0}}
 
-.article-card{transition:transform .2s ease,box-shadow .2s ease}
-.article-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(10,22,40,.08)}
+.article-card{position:relative;transition:box-shadow .18s ease,border-color .18s ease}
+.article-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--editorial-accent);transform:scaleY(0);transform-origin:top;transition:transform .22s ease;z-index:1}
+.article-card:hover{box-shadow:0 6px 18px rgba(14,16,18,.10);border-color:var(--border-hairline)}
+.article-card:hover::before{transform:scaleY(1)}
+@media(prefers-reduced-motion:reduce){.article-card::before{transition:none}}
 
-.category-geo{background:#2563eb}.category-marches{background:#006650}.category-crypto{background:#f59e0b}.category-matieres{background:#ef4444}.category-iatech{background:#8b5cf6}
+.category-geo,.category-geopolitique,.category-marches,.category-crypto,.category-matieres,.category-iatech{background:var(--badge-bg);color:var(--badge-text)}
 
-.section-number{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#33B894;display:block;margin-bottom:0.5rem}
+.section-number{font-family:'IBM Plex Mono',monospace;font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--editorial-accent);display:block;margin-bottom:0.5rem}
 
-.font-data{font-family:'JetBrains Mono','SF Mono',monospace}
+.font-data{font-family:'IBM Plex Mono','SF Mono',monospace}
 
 /* Hero gradient dynamique 3D */
 @keyframes hero-gradient-shift{
@@ -97,7 +103,7 @@ body.menu-open{overflow:hidden}
 66%{transform:translate(-20px,15px) scale(0.95)}
 }
 .hero-dynamic{
-background:linear-gradient(135deg,#004D3D 0%,#006650 25%,#007A60 50%,#06402A 75%,#004D3D 100%);
+background:linear-gradient(135deg,#17100E 0%,#241813 25%,#42301E 50%,#1C1310 75%,#17100E 100%);
 background-size:400% 400%;
 animation:hero-gradient-shift 12s ease infinite;
 position:relative;
@@ -108,9 +114,9 @@ content:'';
 position:absolute;
 top:-50%;left:-50%;
 width:200%;height:200%;
-background:radial-gradient(ellipse at 30% 20%,rgba(51,184,148,.15) 0%,transparent 50%),
-            radial-gradient(ellipse at 70% 80%,rgba(0,122,96,.2) 0%,transparent 50%),
-            radial-gradient(ellipse at 50% 50%,rgba(200,149,90,.06) 0%,transparent 40%);
+background:radial-gradient(ellipse at 30% 20%,rgba(142,36,36,.14) 0%,transparent 50%),
+            radial-gradient(ellipse at 70% 80%,rgba(66,48,30,.20) 0%,transparent 50%),
+            radial-gradient(ellipse at 50% 50%,rgba(224,90,78,.06) 0%,transparent 40%);
 animation:hero-orb-float 8s ease-in-out infinite;
 pointer-events:none;
 }
@@ -138,16 +144,16 @@ display:block;
 .hero-wave svg{height:80px}
 }
 
-.glass{background:rgba(0,102,80,.06);backdrop-filter:blur(16px);border:1px solid rgba(0,102,80,.10)}
-.glass-light{background:rgba(0,102,80,.04);backdrop-filter:blur(12px);border:1px solid rgba(0,102,80,.06)}
-.hero-dark{background-color:#006650;color:#FFFFFF}
+.glass{background:rgba(23,16,14,.06);backdrop-filter:blur(16px);border:1px solid var(--hairline-warm)}
+.glass-light{background:rgba(23,16,14,.04);backdrop-filter:blur(12px);border:1px solid var(--hairline-warm)}
+.hero-dark{background-color:var(--chrome-ground);color:var(--chrome-text)}
 .hero-dark h1,.hero-dark h2,.hero-dark .display-text{color:#FFFFFF}
-.section-alt{background-color:#F7F8FA}
-.section-divider{border-top:1px solid #ECEEF2}
+.section-alt{background-color:var(--surface-raised)}
+.section-divider{border-top:1px solid var(--hairline-warm)}
 .featured-card{position:relative;overflow:hidden}
-.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:#006650;transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
+.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--editorial-accent);transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
 .featured-card:hover::before{transform:scaleY(1)}
-.hero-glow{position:absolute;top:-120px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,102,80,.06) 0%,transparent 70%);pointer-events:none}
+.hero-glow{position:absolute;top:-120px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(142,36,36,.06) 0%,transparent 70%);pointer-events:none}
 @media(max-width:768px){
 html,body{overflow-x:hidden}
 img{max-width:100%;height:auto}
@@ -156,8 +162,8 @@ button,a[href]:not(.prose a){min-height:44px;min-width:44px}
 }
 </style>
 </head>
-<body>
-<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:#006650;color:#fff;font-family:Inter,sans-serif;font-size:14px;text-decoration:none;border-radius:0 0 4px 0;" onfocus="this.style.position='fixed';this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Aller au contenu principal</a>
+<body data-design-regime="editorial">
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:var(--chrome-ground);color:var(--chrome-text);font-family:'IBM Plex Sans',sans-serif;font-size:14px;text-decoration:none;border-radius:0 0 4px 0;" onfocus="this.style.position='fixed';this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Aller au contenu principal</a>
 <div id="app"></div>
 <script src="nav-config.js"></script>
 <script type="module">
@@ -189,25 +195,25 @@ if(open){document.body.classList.add('menu-open')}else{document.body.classList.r
 return()=>document.body.classList.remove('menu-open')
 },[open])
 return h('div',null,
- h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#C8955A]'}),
+ h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[var(--editorial-accent)]'}),
  h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(5) saturate(0.3)',transition:'filter 0.3s ease'}})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:'brightness(10) saturate(0)'}})
     ),
     h('nav',{className:'hidden md:flex items-center gap-1'},
      ...MEGA_NAV.map((cat,ci)=>
       h('div',{key:ci,className:'mega-trigger'},
-       h('span',{className:'nav-link px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors cursor-default select-none'},cat.label),
-       h('div',{className:'mega-menu bg-white rounded-2xl shadow-xl border border-gray-100 p-5'},
+       h('span',{className:'nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none text-[#9AA0A4] hover:text-[#E8E4D8]'},cat.label),
+       h('div',{className:'mega-menu bg-[#FFFFFF] border border-[#4C5052] p-5 shadow-[0_6px_18px_rgba(14,16,18,.18)]'},
         h('div',{className:'grid gap-1'},
          ...cat.children.map((item,ii)=>
-          h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline'},
-           h('span',{className:'mega-icon bg-[#006650]/10 text-[#006650]'},item.icon),
+          h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 no-underline'},
+           h('span',{className:'mega-icon bg-[#EDEBE4] text-[#101214]'},item.icon),
            h('span',{className:'flex flex-col'},
-            h('span',{className:'text-sm font-semibold text-gray-900'},item.label),
-            h('span',{className:'text-xs text-gray-500 mt-0.5'},item.desc)
+            h('span',{className:'text-sm font-semibold text-[#101214]'},item.label),
+            h('span',{className:'text-xs text-[#4C5052] mt-0.5'},item.desc)
            )
           )
          )
@@ -215,15 +221,15 @@ return h('div',null,
        )
       )
      ),
-     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#006650] hover:bg-[#06402A] text-white font-semibold text-sm rounded-lg transition-colors'},'R\u00e9server un diagnostic')
+     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[var(--editorial-accent)] hover:bg-[#6E1B1B] text-[#F5EDE6] font-semibold text-sm transition-colors'},'R\u00e9server un diagnostic')
     ),
-    h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,onClick:()=>setOpen(!open)},
+    h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,'aria-label':'Menu','aria-expanded':open,onClick:()=>setOpen(!open)},
      h('span'),h('span'),h('span')
     )
    )
   )
  ),
- h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#006650'}},
+ h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'var(--chrome-ground)'}},
   h('div',{className:'flex items-center justify-between px-6 pt-6 pb-4'},
    h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-8 w-auto',style:{filter:'brightness(10) saturate(0)'}}),
    h('button',{onClick:()=>setOpen(false),className:'w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
@@ -242,7 +248,7 @@ return h('div',null,
    ]).flat()
   ),
   h('div',{className:'px-6 py-6'},
-   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-xl transition-colors text-base',style:{animationDelay:'0.85s'}},'R\u00e9server un diagnostic')
+   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold transition-colors text-base',style:{animationDelay:'0.85s'}},'R\u00e9server un diagnostic')
   )
  )
 )
@@ -268,17 +274,17 @@ return()=>window.removeEventListener('scroll',onScroll)
 return h('section',{ref:heroRef,className:'hero-dynamic relative pt-28 pb-24 md:pt-36 md:pb-28'},
  h('div',{className:'hero-content relative z-[3] max-w-3xl mx-auto px-4 sm:px-6',style:{willChange:'transform,opacity'}},
   h('div',{className:'anim-fade-up flex items-center gap-3 mb-6'},
-   h('span',{className:'px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white rounded bg-[#8b5cf6]'},'ANALYSE'),
+   h('span',{className:'category-geo px-3 py-1 text-[10px] font-semibold uppercase tracking-wider',style:{fontFamily:"'IBM Plex Mono',monospace"}},'ANALYSE'),
    h('span',{className:'text-xs uppercase tracking-wider text-white/50'},'Infrastructure & Souverainet\u00e9')
   ),
-  h('h1',{className:'anim-fade-up anim-d1 text-3xl md:text-[2.75rem] font-bold text-white leading-[1.15] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+  h('h1',{className:'anim-fade-up anim-d1 text-3xl md:text-[2.75rem] font-extrabold text-white leading-[1.15] tracking-tight',style:{fontFamily:"'Archivo',Arial,sans-serif"}},
    'Cloud et IA : la d\u00e9pendance invisible des PME europ\u00e9ennes'
   ),
   h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/60 leading-relaxed'},
    'Le cloud n\'est plus un sujet technique. C\'est un risque de direction g\u00e9n\u00e9rale. Quand la capacit\u00e9 sature, les clients sans contrat sont les premiers sacrifi\u00e9s.'
   ),
   h('div',{className:'anim-fade-up anim-d3 mt-8 flex flex-wrap items-center gap-5 text-sm text-white/40'},
-   h('div',{className:'w-12 h-[2px] bg-[#33B894]'}),
+   h('div',{className:'w-12 h-[2px] bg-[var(--editorial-accent-text)]'}),
    h('span',null,h('strong',{className:'text-white/60'},'Inflexion Research')),
    h('span',null,'F\u00e9vrier 2026'),
    h('span',null,'9 min de lecture')
@@ -286,9 +292,9 @@ return h('section',{ref:heroRef,className:'hero-dynamic relative pt-28 pb-24 md:
  ),
  h('div',{className:'hero-wave'},
   h('svg',{viewBox:'0 0 1440 80',preserveAspectRatio:'none',xmlns:'http://www.w3.org/2000/svg'},
-   h('path',{d:'M0,40 C180,80 360,0 540,40 C720,80 900,10 1080,40 C1200,60 1350,20 1440,40 L1440,80 L0,80 Z',fill:'#FFFFFF',fillOpacity:'0.07'}),
-   h('path',{d:'M0,50 C200,20 400,70 600,40 C800,10 1000,60 1200,35 C1320,20 1400,50 1440,45 L1440,80 L0,80 Z',fill:'#FFFFFF',fillOpacity:'0.05'}),
-   h('path',{d:'M0,60 C240,40 480,75 720,55 C960,35 1200,65 1440,50 L1440,80 L0,80 Z',fill:'#FFFFFF'})
+   h('path',{d:'M0,40 C180,80 360,0 540,40 C720,80 900,10 1080,40 C1200,60 1350,20 1440,40 L1440,80 L0,80 Z',fill:'#EDEBE4',fillOpacity:'0.07'}),
+   h('path',{d:'M0,50 C200,20 400,70 600,40 C800,10 1000,60 1200,35 C1320,20 1400,50 1440,45 L1440,80 L0,80 Z',fill:'#EDEBE4',fillOpacity:'0.05'}),
+   h('path',{d:'M0,60 C240,40 480,75 720,55 C960,35 1200,65 1440,50 L1440,80 L0,80 Z',fill:'#EDEBE4'})
   )
  )
 )
@@ -313,13 +319,13 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
    h('div',{className:'grid grid-cols-1 sm:grid-cols-2 gap-4 my-10 not-prose'},
     h('div',{className:'key-figure'},
      h('div',{className:'text-4xl md:text-5xl font-bold text-white font-data mb-2'},'~660 Mds $'),
-     h('div',{className:'text-sm text-white/70',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+     h('div',{className:'text-sm text-white/70',style:{fontFamily:"'Archivo',Arial,sans-serif"}},
       'D\u00e9penses d\u2019investissement annuelles \u2014 ',h('strong',{className:'text-white'},'\u00d76,5 \u00e0 7 en six ans')
      )
     ),
     h('div',{className:'key-figure'},
      h('div',{className:'text-4xl md:text-5xl font-bold text-white font-data mb-2'},'75 %'),
-     h('div',{className:'text-sm text-white/70',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+     h('div',{className:'text-sm text-white/70',style:{fontFamily:"'Archivo',Arial,sans-serif"}},
       'Fl\u00e9ch\u00e9s vers ',h('strong',{className:'text-white'},'l\u2019infrastructure IA'),' \u2014 soit 450 Mds $'
      )
     )
@@ -349,7 +355,7 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
    // Single key figure
    h('div',{className:'key-figure my-10 not-prose'},
     h('div',{className:'text-4xl md:text-5xl font-bold text-white font-data mb-2'},'> 1 M\u20ac'),
-    h('div',{className:'text-sm text-white/70',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+    h('div',{className:'text-sm text-white/70',style:{fontFamily:"'Archivo',Arial,sans-serif"}},
      '\u00c9conomie sur la dur\u00e9e du contrat pour une ETI \u00e0 ',h('strong',{className:'text-white'},'50 000 \u20ac/mois'),
      h('br'),
      'en passant du tarif catalogue \u00e0 l\u2019engagement pluriannuel'
@@ -363,9 +369,9 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
    ),
 
    h('div',{className:'insight-box not-prose'},
-    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#006650] mb-2'},'La \u00ab\u00a0taxe sur l\u2019agilit\u00e9\u00a0\u00bb'),
-    h('p',{className:'text-sm text-[#3A3A3A] italic leading-relaxed'},'Dit autrement, chaque mois pass\u00e9 en tarif catalogue est un transfert de marge vers les clients qui ont su verrouiller leurs conditions. En 2026, le cloud n\u2019est plus une d\u00e9pense variable, mais un actif strat\u00e9gique dont le co\u00fbt doit \u00eatre verrouill\u00e9.'),
-    h('p',{className:'text-sm text-[#3A3A3A] italic leading-relaxed mt-3'},'Le m\u00e9canisme est progressif\u00a0: l\u2019int\u00e9gration par d\u00e9faut d\u2019assistants IA dans les suites bureautiques (Copilot dans Microsoft 365, Gemini dans Google Workspace) cr\u00e9e une d\u00e9pendance fonctionnelle avant m\u00eame que l\u2019entreprise n\u2019ait arbitr\u00e9. Quand le tarif augmente, le co\u00fbt de migration est d\u00e9j\u00e0 prohibitif.')
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[var(--editorial-accent)] mb-2'},'La \u00ab\u00a0taxe sur l\u2019agilit\u00e9\u00a0\u00bb'),
+    h('p',{className:'text-sm text-[var(--text-secondary)] italic leading-relaxed'},'Dit autrement, chaque mois pass\u00e9 en tarif catalogue est un transfert de marge vers les clients qui ont su verrouiller leurs conditions. En 2026, le cloud n\u2019est plus une d\u00e9pense variable, mais un actif strat\u00e9gique dont le co\u00fbt doit \u00eatre verrouill\u00e9.'),
+    h('p',{className:'text-sm text-[var(--text-secondary)] italic leading-relaxed mt-3'},'Le m\u00e9canisme est progressif\u00a0: l\u2019int\u00e9gration par d\u00e9faut d\u2019assistants IA dans les suites bureautiques (Copilot dans Microsoft 365, Gemini dans Google Workspace) cr\u00e9e une d\u00e9pendance fonctionnelle avant m\u00eame que l\u2019entreprise n\u2019ait arbitr\u00e9. Quand le tarif augmente, le co\u00fbt de migration est d\u00e9j\u00e0 prohibitif.')
    ),
 
    // Section: Trois enjeux
@@ -373,25 +379,25 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
 
    h('span',{className:'section-number'},'Enjeu 01'),
    h('div',{className:'pillar-card not-prose'},
-    h('h4',{className:'text-base font-semibold text-[#1A1F2E] mb-3',style:{fontFamily:'Inter, sans-serif'}},'La stratification de l\u2019acc\u00e8s au calcul'),
-    h('p',{className:'text-[15px] text-[#3A3A3A] leading-relaxed mb-3'},
+    h('h4',{className:'text-base font-semibold text-[var(--text-primary)] mb-3',style:{fontFamily:'Inter, sans-serif'}},'La stratification de l\u2019acc\u00e8s au calcul'),
+    h('p',{className:'text-[15px] text-[var(--text-secondary)] leading-relaxed mb-3'},
      'Le march\u00e9 se scinde en deux. Les ',h('strong',null,'clients prioritaires'),' \u2014 contrats pluriannuels \u2014 b\u00e9n\u00e9ficient d\u2019une capacit\u00e9 garantie, de prix verrouill\u00e9s et d\u2019un acc\u00e8s pr\u00e9f\u00e9rentiel en cas de saturation. Les ',h('strong',null,'clients expos\u00e9s'),' \u2014 facturation \u00e0 la demande, sans engagement \u2014 sont les premiers rationn\u00e9s. Ce risque est av\u00e9r\u00e9 : Azure reconna\u00eet des contraintes de capacit\u00e9 prolong\u00e9es jusqu\u2019\u00e0 la mi-2026.'
     ),
-    h('p',{className:'text-[15px] text-[#3A3A3A] leading-relaxed'},
+    h('p',{className:'text-[15px] text-[var(--text-secondary)] leading-relaxed'},
      'La contrainte s\u2019\u00e9tend au mat\u00e9riel. NVIDIA confirme que son architecture Blackwell (B200/GB200) est ',h('strong',null,'int\u00e9gralement attribu\u00e9e jusqu\u2019\u00e0 la mi-2026'),', avec des ventes cumul\u00e9es d\u00e9passant 3,6 millions d\u2019unit\u00e9s pour les seuls grands fournisseurs de cloud (le carnet de commandes r\u00e9el est bien sup\u00e9rieur : 20 millions d\u2019unit\u00e9s suppl\u00e9mentaires annonc\u00e9es en octobre 2025). Pour une PME, rester client expos\u00e9 en 2026, c\u2019est accepter un double risque : interruption de service ',h('em',null,'et'),' impossibilit\u00e9 de monter en puissance.'
     )
    ),
 
-   h('div',{className:'not-prose my-8 rounded-xl overflow-hidden border-2 border-[#DC2626]/30',style:{background:'linear-gradient(135deg, #FEF2F2 0%, #FFF5F5 100%)'}},
+   h('div',{className:'not-prose my-8 overflow-hidden border-2 border-[#DC2626]/30',style:{background:'linear-gradient(135deg, #FEF2F2 0%, #FFF5F5 100%)'}},
     h('div',{className:'flex items-center gap-2 px-5 py-3',style:{background:'linear-gradient(90deg, #DC2626, #EF4444)'}},
      h('span',{className:'text-lg'},'\u26a0\ufe0f'),
      h('span',{className:'text-[11px] font-bold uppercase tracking-wider text-white'},'Signal critique \u2014 \u00c0 v\u00e9rifier imm\u00e9diatement')
     ),
     h('div',{className:'px-5 py-4'},
-     h('p',{className:'text-[15px] text-[#1A1F2E] leading-relaxed font-medium'},
+     h('p',{className:'text-[15px] text-[var(--text-primary)] leading-relaxed font-medium'},
       'Comparez vos temps de r\u00e9ponse cloud entre ',h('strong',null,'3\u00a0h et 10\u00a0h du matin'),'. Si l\u2019\u00e9cart d\u00e9passe ',h('strong',{className:'text-[#DC2626]'},'40 \u00e0 50\u00a0%'),', votre charge est d\u00e9j\u00e0 soumise \u00e0 un m\u00e9canisme de priorisation qui ne vous favorise pas.'
      ),
-     h('p',{className:'text-sm text-[#6A6A6A] mt-2 italic'},'C\u2019est le signal qu\u2019il faut s\u00e9curiser une capacit\u00e9 d\u00e9di\u00e9e \u2014 avant que la fen\u00eatre ne se referme.')
+     h('p',{className:'text-sm text-[var(--text-secondary)] mt-2 italic'},'C\u2019est le signal qu\u2019il faut s\u00e9curiser une capacit\u00e9 d\u00e9di\u00e9e \u2014 avant que la fen\u00eatre ne se referme.')
     )
    ),
 
@@ -401,22 +407,22 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
 
    h('span',{className:'section-number'},'Enjeu 02'),
    h('div',{className:'pillar-card green-mid not-prose'},
-    h('h4',{className:'text-base font-semibold text-[#1A1F2E] mb-3',style:{fontFamily:'Inter, sans-serif'}},'Le r\u00e9veil de la souverainet\u00e9 et le cadre CADA'),
-    h('p',{className:'text-[15px] text-[#3A3A3A] leading-relaxed mb-3'},
+    h('h4',{className:'text-base font-semibold text-[var(--text-primary)] mb-3',style:{fontFamily:'Inter, sans-serif'}},'Le r\u00e9veil de la souverainet\u00e9 et le cadre CADA'),
+    h('p',{className:'text-[15px] text-[var(--text-secondary)] leading-relaxed mb-3'},
      'L\u2019Europe entre dans son \u00ab\u00a0moment d\u2019ind\u00e9pendance\u00a0\u00bb. Le ',h('strong',null,'Cloud and AI Development Act'),' (CADA), dont la proposition l\u00e9gislative est attendue au premier trimestre 2026, vise \u00e0 harmoniser les architectures cloud et les processus de passation de march\u00e9s publics pour r\u00e9duire la d\u00e9pendance aux technologies non europ\u00e9ennes.'
     ),
-    h('p',{className:'text-[15px] text-[#3A3A3A] leading-relaxed'},
+    h('p',{className:'text-[15px] text-[var(--text-secondary)] leading-relaxed'},
      'En parall\u00e8le, le sommet de novembre 2025 a marqu\u00e9 une convergence vers la ',h('strong',null,'\u00ab\u00a0pr\u00e9f\u00e9rence europ\u00e9enne\u00a0\u00bb'),' dans la commande publique, port\u00e9e par la France et l\u2019Allemagne pour soutenir les acteurs locaux. L\u2019alternative existe et se structure : ',h('strong',null,'Scaleway'),' (infrastructure de pointe, \u00e9nergie 100\u00a0% renouvelable, localisation fran\u00e7aise), ',h('strong',null,'OVHcloud'),' (certifi\u00e9 HDS, SecNumCloud en cours), Genesis Cloud (natif RGPD). Ces acteurs ne rivalisent pas sur la taille \u2014 ils rivalisent sur la conformit\u00e9, la proximit\u00e9 et la pr\u00e9visibilit\u00e9 contractuelle.'
     )
    ),
 
    h('span',{className:'section-number'},'Enjeu 03'),
    h('div',{className:'pillar-card green-light not-prose'},
-    h('h4',{className:'text-base font-semibold text-[#1A1F2E] mb-3',style:{fontFamily:'Inter, sans-serif'}},'La contrainte physique : \u00e9nergie et d\u00e9lais industriels'),
-    h('p',{className:'text-[15px] text-[#3A3A3A] leading-relaxed mb-3'},
+    h('h4',{className:'text-base font-semibold text-[var(--text-primary)] mb-3',style:{fontFamily:'Inter, sans-serif'}},'La contrainte physique : \u00e9nergie et d\u00e9lais industriels'),
+    h('p',{className:'text-[15px] text-[var(--text-secondary)] leading-relaxed mb-3'},
      'L\u2019infrastructure IA se heurte \u00e0 des limites physiques majeures. En Irlande, le moratoire sur les centres de donn\u00e9es a \u00e9t\u00e9 lev\u00e9 fin 2025, mais les ',h('strong',null,'nouvelles conditions sont drastiques'),' : les centres de donn\u00e9es doivent installer une capacit\u00e9 d\u2019auto-g\u00e9n\u00e9ration ou de stockage sur site couvrant 100\u00a0% de leur demande, et 80\u00a0% de leur \u00e9lectricit\u00e9 doit provenir de nouveaux projets renouvelables sp\u00e9cifiquement contract\u00e9s \u2014 un objectif assorti d\u2019un ',h('em',null,'glide path'),' de six ans. La politique est structur\u00e9e en paliers : les sites de moins de 1\u00a0MVA sont exempt\u00e9s, ceux entre 1 et 10\u00a0MVA b\u00e9n\u00e9ficient d\u2019exigences all\u00e9g\u00e9es, et seuls les sites \u2265\u00a010\u00a0MVA sont soumis au r\u00e9gime complet.'
     ),
-    h('p',{className:'text-[15px] text-[#3A3A3A] leading-relaxed'},
+    h('p',{className:'text-[15px] text-[var(--text-secondary)] leading-relaxed'},
      'C\u00f4t\u00e9 mat\u00e9riel lourd, les d\u00e9lais de livraison des transformateurs haute tension atteignent d\u00e9sormais ',h('strong',null,'36 \u00e0 48 mois'),' \u2014 jusqu\u2019\u00e0 60 mois dans des cas extr\u00eames isol\u00e9s (source CISA/NIAC) \u2014 contre 6 \u00e0 8 mois avant 2020, figeant toute expansion rapide de capacit\u00e9 jusqu\u2019\u00e0 la fin de la d\u00e9cennie. La capacit\u00e9 de calcul cloud n\u2019est pas extensible \u00e0 volont\u00e9 : les cr\u00e9neaux se r\u00e9servent des trimestres \u00e0 l\u2019avance.'
     )
    ),
@@ -432,7 +438,7 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
    h('h3',null,'Passer \u00e0 la n\u00e9gociation structur\u00e9e'),
    h('p',null,'Les trois op\u00e9rateurs majeurs proposent des m\u00e9canismes de r\u00e9servation accessibles sans \u00eatre un grand compte :'),
 
-   h('div',{className:'bg-white border border-[#E2E5EB] rounded-lg p-5 my-6 not-prose'},
+   h('div',{className:'bg-white border border-[var(--hairline-warm)] p-5 my-6 not-prose'},
     h('div',{className:'data-row'},h('span',{className:'flex-1'},'AWS \u2014 \u00ab\u00a0Savings Plans\u00a0\u00bb (3 ans)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#006650]'},'\u221266 \u00e0 72\u00a0%')),
     h('div',{className:'data-row'},h('span',{className:'flex-1'},'Azure \u2014 \u00ab\u00a0Reserved\u00a0\u00bb + \u00ab\u00a0Hybrid Benefit\u00a0\u00bb (3 ans + licences existantes)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#006650]'},'\u221280\u00a0%')),
     h('div',{className:'data-row'},h('span',{className:'flex-1'},'GCP \u2014 \u00ab\u00a0Committed Use Discounts\u00a0\u00bb (3 ans)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#006650]'},'\u221270\u00a0%')),
@@ -442,15 +448,15 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
    h('p',null,'Le point de d\u00e9part : ',h('strong',null,'auditer trois mois d\u2019utilisation r\u00e9elle'),' avant tout engagement. Le pi\u00e8ge le plus fr\u00e9quent reste le sur-provisionnement \u2014 r\u00e9server plus que ce qu\u2019on consomme.'),
 
    h('div',{className:'insight-box not-prose'},
-    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#006650] mb-2'},'Levier sp\u00e9cifique PME'),
-    h('p',{className:'text-sm text-[#3A3A3A] italic leading-relaxed'},'Point diff\u00e9renciant \u00e0 conna\u00eetre : AWS a mis en place une place de march\u00e9 permettant de c\u00e9der ses capacit\u00e9s r\u00e9serv\u00e9es exc\u00e9dentaires \u00e0 d\u2019autres clients, moyennant un pr\u00e9l\u00e8vement de 12\u00a0%. Aucun autre fournisseur ne propose de m\u00e9canisme \u00e9quivalent \u2014 un filet de s\u00e9curit\u00e9 non n\u00e9gligeable pour limiter le risque de sur-dimensionnement.')
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[var(--editorial-accent)] mb-2'},'Levier sp\u00e9cifique PME'),
+    h('p',{className:'text-sm text-[var(--text-secondary)] italic leading-relaxed'},'Point diff\u00e9renciant \u00e0 conna\u00eetre : AWS a mis en place une place de march\u00e9 permettant de c\u00e9der ses capacit\u00e9s r\u00e9serv\u00e9es exc\u00e9dentaires \u00e0 d\u2019autres clients, moyennant un pr\u00e9l\u00e8vement de 12\u00a0%. Aucun autre fournisseur ne propose de m\u00e9canisme \u00e9quivalent \u2014 un filet de s\u00e9curit\u00e9 non n\u00e9gligeable pour limiter le risque de sur-dimensionnement.')
    ),
 
    h('span',{className:'section-number'},'Levier 02'),
    h('h3',null,'Rapatrier le calcul via le logiciel libre'),
    h('p',null,'Le rapport de force a bascul\u00e9. Sur le test de r\u00e9f\u00e9rence MMLU, un mod\u00e8le libre de 70 milliards de param\u00e8tres \u2014 ex\u00e9cutable sur deux processeurs graphiques \u2014 obtient d\u00e9sormais un score comparable aux meilleurs mod\u00e8les propri\u00e9taires (86\u00a0% contre 85,9\u00a0% pour GPT-4o, selon les benchmarks publi\u00e9s par Meta). La diff\u00e9rence n\u2019est plus qualitative. Elle est \u00e9conomique : un facteur 25 sur le co\u00fbt unitaire d\u2019inf\u00e9rence, sur le co\u00fbt d\u2019entr\u00e9e via les API les moins ch\u00e8res.'),
 
-   h('div',{className:'bg-white border border-[#E2E5EB] rounded-lg p-5 my-6 not-prose'},
+   h('div',{className:'bg-white border border-[var(--hairline-warm)] p-5 my-6 not-prose'},
     h('div',{className:'data-row'},h('span',{className:'flex-1'},'Co\u00fbt par million de jetons en entr\u00e9e \u2014 GPT-4o (API)'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#006650]'},'2,50 $')),
     h('div',{className:'data-row'},h('span',{className:'flex-1'},'Co\u00fbt par million de jetons en entr\u00e9e \u2014 Llama 3.3 70B'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#006650]'},'0,10 $')),
     h('div',{className:'data-row'},h('span',{className:'flex-1'},'Rapport de co\u00fbt'),h('span',{className:'font-bold ml-4 whitespace-nowrap text-[#006650]'},'\u00d725 moins cher'))
@@ -468,7 +474,7 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
 
    h('div',{className:'insight-box gold not-prose'},
     h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2'},'Fen\u00eatre d\u2019opportunit\u00e9'),
-    h('p',{className:'text-sm text-[#3A3A3A] italic leading-relaxed'},'Le report propos\u00e9 par le \u00ab\u00a0Digital Omnibus\u00a0\u00bb ne dispense pas de la conformit\u00e9 \u2014 il accorderait du temps pour les syst\u00e8mes Annexe III. Les PME qui utilisent cette fen\u00eatre pour structurer leur gouvernance IA (documentation des mod\u00e8les, \u00e9valuation des risques, tra\u00e7abilit\u00e9) seront en position de force si le report est adopt\u00e9.')
+    h('p',{className:'text-sm text-[var(--text-secondary)] italic leading-relaxed'},'Le report propos\u00e9 par le \u00ab\u00a0Digital Omnibus\u00a0\u00bb ne dispense pas de la conformit\u00e9 \u2014 il accorderait du temps pour les syst\u00e8mes Annexe III. Les PME qui utilisent cette fen\u00eatre pour structurer leur gouvernance IA (documentation des mod\u00e8les, \u00e9valuation des risques, tra\u00e7abilit\u00e9) seront en position de force si le report est adopt\u00e9.')
    ),
 
    // Section: Matrice
@@ -481,19 +487,19 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
      ),
      h('tbody',null,
       h('tr',null,
-       h('td',null,h('strong',null,'Jeune entreprise IA'),h('br'),h('span',{className:'text-xs text-[#6A6A6A]'},'10 pers., 5-15 k\u20ac/mois')),
+       h('td',null,h('strong',null,'Jeune entreprise IA'),h('br'),h('span',{className:'text-xs text-[var(--text-secondary)]'},'10 pers., 5-15 k\u20ac/mois')),
        h('td',null,'Flexibilit\u00e9 maximale'),
        h('td',null,'Utiliser les remises automatiques de GCP (\u221230\u00a0%) ou Scaleway \u00e0 la demande. Mod\u00e8le local (Llama/Mistral) comme filet de s\u00e9curit\u00e9.'),
        h('td',null,'Enfermement dans un \u00e9cosyst\u00e8me propri\u00e9taire avec perte de contr\u00f4le sur les co\u00fbts et les donn\u00e9es')
       ),
       h('tr',null,
-       h('td',null,h('strong',null,'PME \u00e9ditrice de logiciel'),h('br'),h('span',{className:'text-xs text-[#6A6A6A]'},'50 pers., 30-80 k\u20ac/mois')),
+       h('td',null,h('strong',null,'PME \u00e9ditrice de logiciel'),h('br'),h('span',{className:'text-xs text-[var(--text-secondary)]'},'50 pers., 30-80 k\u20ac/mois')),
        h('td',null,'Pr\u00e9visibilit\u00e9 des marges'),
        h('td',null,'Migrer vers AWS \u00ab\u00a0Savings Plans\u00a0\u00bb 1 an (\u221250\u00a0% minimum) et hybrider avec Llama 3.3 en local pour les charges r\u00e9currentes.'),
        h('td',null,'Surco\u00fbt de 40 \u00e0 80\u00a0% sur les ressources cloud \u00e0 horizon 12 mois')
       ),
       h('tr',null,
-       h('td',null,h('strong',null,'ETI europ\u00e9enne'),h('br'),h('span',{className:'text-xs text-[#6A6A6A]'},'200+ pers., 100 k+ \u20ac/mois')),
+       h('td',null,h('strong',null,'ETI europ\u00e9enne'),h('br'),h('span',{className:'text-xs text-[var(--text-secondary)]'},'200+ pers., 100 k+ \u20ac/mois')),
        h('td',null,'Souverainet\u00e9 et r\u00e9silience'),
        h('td',null,'Combiner Azure \u00ab\u00a0Reserved\u00a0\u00bb 3 ans (\u221280\u00a0%) avec un fournisseur certifi\u00e9 SecNumCloud/HDS pour les donn\u00e9es sensibles. Deuxi\u00e8me fournisseur europ\u00e9en pour la reprise apr\u00e8s sinistre.'),
        h('td',null,'Point de d\u00e9faillance unique en cas de panne, restriction d\u2019acc\u00e8s ou changement tarifaire unilat\u00e9ral')
@@ -503,19 +509,19 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
    ),
 
    // Closing
-   h('div',{className:'text-center py-10 mt-10 border-t border-[#E2E5EB] not-prose'},
-    h('blockquote',{className:'text-xl md:text-[1.35rem] font-bold text-[#006650] leading-[1.45] max-w-lg mx-auto mb-4',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+   h('div',{className:'text-center py-10 mt-10 border-t border-[var(--hairline-warm)] not-prose'},
+    h('blockquote',{className:'text-xl md:text-[1.35rem] font-bold text-[var(--editorial-accent)] leading-[1.45] max-w-lg mx-auto mb-4',style:{fontFamily:"'Archivo',Arial,sans-serif"}},
      'Dans une \u00e9conomie o\u00f9 les transformateurs haute tension se commandent trois \u00e0 quatre ans \u00e0 l\u2019avance et o\u00f9 les processeurs graphiques sont allou\u00e9s avant m\u00eame leur fabrication, le tempo de d\u00e9cision ne se compte plus en ann\u00e9es budg\u00e9taires mais en trimestres. Les contrats sign\u00e9s aujourd\u2019hui d\u00e9terminent la capacit\u00e9 de calcul disponible en 2027.'
     ),
-    h('p',{className:'text-sm text-[#6A6A6A]'},'Inflexion Research \u2014 F\u00e9vrier 2026')
+    h('p',{className:'text-sm text-[var(--text-secondary)]'},'Inflexion Research \u2014 F\u00e9vrier 2026')
    ),
 
    // Cadre SEMPLICE — non applicable
-   h('div',{className:'not-prose mt-10',style:{borderLeft:'3px solid #E2E5EB',background:'#F7F8FA',padding:'1rem 1.25rem',borderRadius:'0 0.5rem 0.5rem 0'}},
+   h('div',{className:'not-prose mt-10',style:{borderLeft:'3px solid var(--editorial-accent)',background:'var(--surface-raised)',padding:'1rem 1.25rem',borderRadius:0}},
     h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#5A6178] mb-2'},'Cadre SEMPLICE'),
     h('p',{className:'text-xs text-[#5A6178] leading-relaxed'},
      'Cette analyse porte sur une th\u00e9matique transversale (cloud et IA pour les PME europ\u00e9ennes) et non sur une zone g\u00e9ographique sp\u00e9cifique. Le cadre SEMPLICE, con\u00e7u pour l\u2019\u00e9valuation de risque g\u00e9opolitique par zone, n\u2019est pas applicable ici. Consulter nos ',
-     h('a',{href:'expertise.html#semplice',className:'text-[#006650] font-semibold'},'\u00e9valuations par zone'),
+     h('a',{href:'expertise.html#semplice',className:'text-[var(--editorial-accent)] font-semibold'},'\u00e9valuations par zone'),
      ' pour les analyses territorialisées.'
     )
    ),
@@ -523,36 +529,36 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20
    // Disclaimer AMF
    h('div',{className:'insight-box gold not-prose mt-10'},
     h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2'},'Avertissement AMF'),
-    h('p',{className:'text-xs text-[#6A6A6A] leading-relaxed'},
+    h('p',{className:'text-xs text-[var(--text-secondary)] leading-relaxed'},
      'Cette analyse est fournie \u00e0 titre informatif et ne constitue en aucun cas un conseil en investissement, une recommandation personnalis\u00e9e ou une incitation \u00e0 acheter ou vendre des instruments financiers. Les performances pass\u00e9es ne pr\u00e9jugent pas des performances futures. Tout investissement comporte des risques de perte en capital.'
     )
    ),
 
    // Sources
-   h('div',{className:'pt-8 mt-8 border-t border-[#ECEEF2] not-prose'},
-    h('h4',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] mb-3'},'Sources & m\u00e9thodologie'),
-    h('p',{className:'text-xs text-[#6A6A6A] leading-relaxed'},'Publications de r\u00e9sultats T4 2025 (Amazon, Alphabet, Microsoft, Meta). Plan d\u2019investissement Amazon 2026 (200 Mds $, dont la majorit\u00e9 vers AWS). Documentation tarifaire officielle AWS, Azure, GCP, OVHcloud, Scaleway. NVIDIA \u2014 ventes cumul\u00e9es et carnet de commandes Blackwell B200/GB200. Goldman Sachs et Barclays \u2014 analyses des d\u00e9penses d\u2019investissement des op\u00e9rateurs. Agence internationale de l\u2019\u00e9nergie \u2014 consommation des centres de donn\u00e9es. Commission europ\u00e9enne \u2014 proposition \u00ab\u00a0Digital Omnibus\u00a0\u00bb (novembre 2025). Projet de r\u00e8glement CADA \u2014 Cloud and AI Development Act (T1 2026). DatacenterDynamics \u2014 d\u00e9lais des transformateurs haute tension et conditions du moratoire irlandais. Sommet de novembre 2025 \u2014 convergence \u00ab\u00a0pr\u00e9f\u00e9rence europ\u00e9enne\u00a0\u00bb (France, Allemagne).')
+   h('div',{className:'pt-8 mt-8 border-t border-[var(--hairline-warm)] not-prose'},
+    h('h4',{className:'text-[11px] font-semibold uppercase tracking-wider text-[var(--text-secondary)] mb-3'},'Sources & m\u00e9thodologie'),
+    h('p',{className:'text-xs text-[var(--text-secondary)] leading-relaxed'},'Publications de r\u00e9sultats T4 2025 (Amazon, Alphabet, Microsoft, Meta). Plan d\u2019investissement Amazon 2026 (200 Mds $, dont la majorit\u00e9 vers AWS). Documentation tarifaire officielle AWS, Azure, GCP, OVHcloud, Scaleway. NVIDIA \u2014 ventes cumul\u00e9es et carnet de commandes Blackwell B200/GB200. Goldman Sachs et Barclays \u2014 analyses des d\u00e9penses d\u2019investissement des op\u00e9rateurs. Agence internationale de l\u2019\u00e9nergie \u2014 consommation des centres de donn\u00e9es. Commission europ\u00e9enne \u2014 proposition \u00ab\u00a0Digital Omnibus\u00a0\u00bb (novembre 2025). Projet de r\u00e8glement CADA \u2014 Cloud and AI Development Act (T1 2026). DatacenterDynamics \u2014 d\u00e9lais des transformateurs haute tension et conditions du moratoire irlandais. Sommet de novembre 2025 \u2014 convergence \u00ab\u00a0pr\u00e9f\u00e9rence europ\u00e9enne\u00a0\u00bb (France, Allemagne).')
    ),
 
    // Back nav
    h('div',{className:'mt-10 text-center not-prose'},
-    h('a',{href:'analyses.html',className:'inline-block px-6 py-2.5 text-sm font-semibold text-[#006650] border-2 border-[#006650] rounded-lg hover:bg-[#006650] hover:text-white transition-colors'},'\u2190 Toutes les analyses')
+    h('a',{href:'analyses.html',className:'inline-block px-6 py-2.5 text-sm font-semibold text-[var(--editorial-accent)] border-2 border-[var(--editorial-accent)] hover:bg-[var(--editorial-accent)] hover:text-[#F5EDE6] transition-colors'},'\u2190 Toutes les analyses')
    )
   ),
 
   // Sidebar
   h('aside',{className:'hidden lg:block lg:w-[220px] flex-shrink-0'},
    h('div',{className:'lg:sticky lg:top-24'},
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Articles li\u00e9s'),
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)] mb-4'},'Articles li\u00e9s'),
     h('div',{className:'flex flex-col gap-4'},
      ...RELATED_ARTICLES.map(a=>
-      h('a',{key:a.id,href:a.href,className:'article-card block rounded-xl overflow-hidden bg-white border border-[#E2E5EB] no-underline'},
+      h('a',{key:a.id,href:a.href,className:'article-card block overflow-hidden bg-[var(--surface-raised)] border border-[var(--hairline-warm)] no-underline'},
        h('div',{className:'aspect-[16/9] overflow-hidden'},
         h('img',{src:a.img,alt:'',className:'w-full h-full object-cover',loading:'lazy'})
        ),
        h('div',{className:'p-3'},
-        h('span',{className:`category-${a.cat} text-[9px] font-semibold uppercase tracking-wider text-white px-1.5 py-0.5 rounded`},a.catLabel),
-        h('h4',{className:'mt-2 text-xs font-semibold text-[#1A1F2E] leading-snug line-clamp-2',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},a.title)
+        h('span',{className:`category-${a.cat} text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5`,style:{fontFamily:"'IBM Plex Mono',monospace"}},a.catLabel),
+        h('h4',{className:'mt-2 text-xs font-semibold text-[var(--text-primary)] leading-snug line-clamp-2',style:{fontFamily:"'Archivo',Arial,sans-serif"}},a.title)
        )
       )
      )
@@ -583,47 +589,47 @@ plateforme:[
 }
 const sources=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC']
 
-return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-16 pb-20'},
+return h('footer',{className:'v2-chrome bg-[var(--chrome-ground)] pt-16 pb-20',role:'contentinfo'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-10 mb-12'},
    h('div',{className:'col-span-2 md:col-span-1'},
     h('div',{className:'flex items-center gap-2 mb-4'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto'})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto',style:{filter:'brightness(10) saturate(0)'}})
     ),
-    h('p',{className:'text-sm text-[#5A6178] leading-relaxed'},'Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.')
+    h('p',{className:'text-sm text-[#9AA0A4] leading-relaxed'},'Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.')
    ),
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Intelligence'),
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8E4D8] mb-4'},'Intelligence'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.intelligence.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#9AA0A4] hover:text-[#E8E4D8] transition-colors'},l.label))
      )
     )
    ),
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Plateforme'),
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8E4D8] mb-4'},'Plateforme'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.plateforme.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#9AA0A4] hover:text-[#E8E4D8] transition-colors'},l.label))
      )
     )
    ),
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Suivez-nous'),
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8E4D8] mb-4'},'Suivez-nous'),
     h('div',{className:'flex items-center gap-3 mb-4'},
-     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 bg-[rgba(232,228,216,.10)] hover:bg-[var(--editorial-accent)] hover:text-[#F5EDE6] flex items-center justify-center text-[#9AA0A4] transition-colors'},
       h('svg',{width:16,height:16,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'}))
      ),
-     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 bg-[rgba(232,228,216,.10)] hover:bg-[var(--editorial-accent)] hover:text-[#F5EDE6] flex items-center justify-center text-[#9AA0A4] transition-colors'},
       h('svg',{width:14,height:14,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'}))
      )
     ),
-    h('a',{href:'#',className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},'Contact')
+    h('a',{href:'#',className:'text-sm text-[#9AA0A4] hover:text-[#E8E4D8] transition-colors'},'Contact')
    )
   ),
-  h('div',{className:'border-t border-[#E2E5EB] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
-   h('span',{className:'text-sm text-[#5A6178]'},'\u00a9 2026 Inflexion \u2014 Intelligence financi\u00e8re & g\u00e9opolitique'),
-   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#5A6178]/40 font-medium'},
+  h('div',{className:'border-t border-[rgba(232,228,216,.14)] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
+   h('span',{className:'text-sm text-[#9AA0A4]'},'\u00a9 2026 Inflexion \u2014 Intelligence financi\u00e8re & g\u00e9opolitique'),
+   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#9AA0A4] font-medium',style:{fontFamily:"'IBM Plex Mono',monospace"}},
     ...sources.map(s=>h('span',{key:s},s))
    )
   )
