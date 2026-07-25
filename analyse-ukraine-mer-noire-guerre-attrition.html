@@ -7,32 +7,35 @@
 <meta name="description" content="Plus de 1000 jours de guerre : front stabilisé, économie de guerre, cyber/information et recomposition géopolitique. Analyse SEMPLICE 5.6/7 pour les décideurs. Inflexion."/>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-tailwind.config={theme:{extend:{colors:{brand:{900:'#06402A',800:'#006650',700:'#007A60',600:'#008066',500:'#00997A',400:'#33B894',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Libre Baskerville','Georgia','serif'],body:['Inter','Helvetica Neue','sans-serif'],data:['JetBrains Mono','SF Mono','monospace']}}}}
+tailwind.config={theme:{extend:{colors:{brand:{900:'#06402A',800:'#006650',700:'#007A60',600:'#008066',500:'#00997A',400:'#33B894',300:'#6ee7b7',200:'#a7f3d0',100:'#d1fae5',50:'#E8F5EE'},cool:{50:'#F7F8FA',100:'#ECEEF2',200:'#E2E5EB',300:'#D1D5DE'}},fontFamily:{display:['Archivo','Arial','sans-serif'],body:['IBM Plex Sans','Helvetica Neue','sans-serif'],data:['IBM Plex Mono','SF Mono','monospace']}}}}
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="assets/design-tokens-v2.css" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden}
+body{font-family:'IBM Plex Sans','Helvetica Neue',sans-serif;background:var(--surface-page);color:var(--text-primary);overflow-x:hidden}
 
-h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
-.category-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#006650}
+h1,h2,h3,.display-text{font-family:'Archivo',Arial,sans-serif;font-weight:800;line-height:1.15;letter-spacing:-0.035em;color:var(--text-primary)}
+.category-label{font-family:'IBM Plex Mono',monospace;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--editorial-accent)}
 
 @keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .anim-fade-up{animation:fade-up .6s ease-out both}
 .anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}
 
 .nav-link{position:relative}
-.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:var(--chrome-text);transform:scaleX(0);transition:transform .25s ease}
 .nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
 .mega-trigger{position:relative}
 .mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:520px;z-index:60}
 .mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
 .mega-item{transition:background .15s ease}
-.mega-item:hover{background:rgba(27,107,74,.06)}
-.mega-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
-.nav-scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid #E2E5EB;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+.mega-item:hover{background:rgba(16,18,20,.06)}
+.mega-icon{width:36px;height:36px;border-radius:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.nav-scrolled{background:var(--chrome-scrolled);backdrop-filter:blur(16px);border-bottom:1px solid var(--chrome-border)}
 
-.hamburger span{display:block;width:24px;height:2px;background:#1A1F2E;margin:5px 0;transition:all .3s ease}
+.hamburger span{display:block;width:24px;height:2px;background:var(--chrome-text);margin:5px 0;transition:all .3s ease}
+:focus-visible{outline:2px solid var(--text-primary);outline-offset:2px}
+header :focus-visible,.mobile-overlay :focus-visible,.v2-chrome :focus-visible{outline-color:var(--chrome-text)}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
@@ -43,29 +46,32 @@ h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight
 .mobile-overlay.open .menu-item{animation:menu-item-in .4s ease-out forwards}
 body.menu-open{overflow:hidden}
 
-.prose p{margin-bottom:1.25rem;font-size:1rem;line-height:1.75;color:#3A3A3A}
+.prose p{margin-bottom:1.25rem;font-size:1rem;line-height:1.75;color:var(--text-secondary)}
 @media(min-width:640px){.prose p{font-size:1.0625rem;line-height:1.8}}
-.prose strong{color:#1A1F2E}
-.prose h2{font-size:1.375rem;color:#006650;margin-top:2.5rem;margin-bottom:1rem;line-height:1.3}
+.prose strong{color:var(--text-primary)}
+.prose h2{font-size:1.375rem;color:var(--text-primary);margin-top:2.5rem;margin-bottom:1rem;line-height:1.3}
 @media(min-width:640px){.prose h2{font-size:1.625rem;margin-top:3.25rem;margin-bottom:1.25rem}}
-.prose h3{font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;color:#006650;margin-top:1.75rem;margin-bottom:0.75rem;letter-spacing:0.3px}
+.prose h3{font-family:'IBM Plex Sans',sans-serif;font-size:1rem;font-weight:600;color:var(--editorial-accent);margin-top:1.75rem;margin-bottom:0.75rem;letter-spacing:0.3px}
 @media(min-width:640px){.prose h3{font-size:1.0625rem;margin-top:2rem}}
 
-.key-figure{background:linear-gradient(135deg,#006650 0%,#06402A 100%);border-radius:0.5rem;padding:1.5rem 1rem;text-align:center;position:relative;overflow:hidden}
+.key-figure{background:var(--chrome-ground);border-radius:0;padding:1.5rem 1rem;text-align:center;position:relative;overflow:hidden}
 @media(min-width:640px){.key-figure{padding:2.5rem 2rem}}
-.key-figure::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#006650,#33B894,rgba(255,255,255,0.3))}
+.key-figure::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--editorial-accent)}
 
-.insight-box{border-left:3px solid #006650;background:#F7F8FA;padding:1rem 1rem;margin:1.5rem 0;border-radius:0 0.5rem 0.5rem 0}
+.insight-box{border-left:3px solid var(--editorial-accent);background:var(--surface-raised);padding:1rem 1rem;margin:1.5rem 0;border-radius:0}
 @media(min-width:640px){.insight-box{padding:1.25rem 1.5rem;margin:1.75rem 0}}
 .insight-box.alert{border-left-color:#DC2626}
 .insight-box.gold{border-left-color:#EAB308}
 
-.article-card{transition:transform .2s ease,box-shadow .2s ease}
-.article-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(10,22,40,.08)}
+.article-card{position:relative;transition:box-shadow .18s ease,border-color .18s ease}
+.article-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--editorial-accent);transform:scaleY(0);transform-origin:top;transition:transform .22s ease;z-index:1}
+.article-card:hover{box-shadow:0 6px 18px rgba(14,16,18,.10);border-color:var(--border-hairline)}
+.article-card:hover::before{transform:scaleY(1)}
+@media(prefers-reduced-motion:reduce){.article-card::before{transition:none}}
 
-.category-geo{background:#2563eb}.category-marches{background:#006650}.category-crypto{background:#f59e0b}.category-matieres{background:#ef4444}.category-iatech{background:#8b5cf6}
+.category-geo,.category-marches,.category-crypto,.category-matieres,.category-iatech{background:var(--badge-bg);color:var(--badge-text)}
 
-.font-data{font-family:'JetBrains Mono','SF Mono',monospace}
+.font-data{font-family:'IBM Plex Mono','SF Mono',monospace}
 
 /* Hero gradient dynamique 3D */
 @keyframes hero-gradient-shift{
@@ -81,7 +87,7 @@ body.menu-open{overflow:hidden}
 66%{transform:translate(-20px,15px) scale(0.95)}
 }
 .hero-dynamic{
-background:linear-gradient(135deg,#004D3D 0%,#006650 25%,#007A60 50%,#06402A 75%,#004D3D 100%);
+background:linear-gradient(135deg,#17100E 0%,#241813 25%,#42301E 50%,#1C1310 75%,#17100E 100%);
 background-size:400% 400%;
 animation:hero-gradient-shift 12s ease infinite;
 position:relative;
@@ -92,9 +98,9 @@ content:'';
 position:absolute;
 top:-50%;left:-50%;
 width:200%;height:200%;
-background:radial-gradient(ellipse at 30% 20%,rgba(51,184,148,.15) 0%,transparent 50%),
-            radial-gradient(ellipse at 70% 80%,rgba(0,122,96,.2) 0%,transparent 50%),
-            radial-gradient(ellipse at 50% 50%,rgba(200,149,90,.06) 0%,transparent 40%);
+background:radial-gradient(ellipse at 30% 20%,rgba(142,36,36,.14) 0%,transparent 50%),
+            radial-gradient(ellipse at 70% 80%,rgba(66,48,30,.20) 0%,transparent 50%),
+            radial-gradient(ellipse at 50% 50%,rgba(224,90,78,.06) 0%,transparent 40%);
 animation:hero-orb-float 8s ease-in-out infinite;
 pointer-events:none;
 }
@@ -121,16 +127,16 @@ display:block;
 @media(min-width:768px){
 .hero-wave svg{height:80px}
 }
-.glass{background:rgba(0,102,80,.06);backdrop-filter:blur(16px);border:1px solid rgba(0,102,80,.10)}
-.glass-light{background:rgba(0,102,80,.04);backdrop-filter:blur(12px);border:1px solid rgba(0,102,80,.06)}
-.hero-dark{background-color:#006650;color:#FFFFFF}
+.glass{background:rgba(23,16,14,.06);backdrop-filter:blur(16px);border:1px solid var(--hairline-warm)}
+.glass-light{background:rgba(23,16,14,.04);backdrop-filter:blur(12px);border:1px solid var(--hairline-warm)}
+.hero-dark{background-color:var(--chrome-ground);color:var(--chrome-text)}
 .hero-dark h1,.hero-dark h2,.hero-dark .display-text{color:#FFFFFF}
-.section-alt{background-color:#F7F8FA}
-.section-divider{border-top:1px solid #ECEEF2}
+.section-alt{background-color:var(--surface-raised)}
+.section-divider{border-top:1px solid var(--hairline-warm)}
 .featured-card{position:relative;overflow:hidden}
-.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:#006650;transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
+.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--editorial-accent);transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
 .featured-card:hover::before{transform:scaleY(1)}
-.hero-glow{position:absolute;top:-120px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,102,80,.06) 0%,transparent 70%);pointer-events:none}
+.hero-glow{position:absolute;top:-120px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(142,36,36,.06) 0%,transparent 70%);pointer-events:none}
 @media(max-width:768px){
 html,body{overflow-x:hidden}
 img{max-width:100%;height:auto}
@@ -139,8 +145,8 @@ button,a[href]:not(.prose a){min-height:44px;min-width:44px}
 }
 </style>
 </head>
-<body>
-<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:#006650;color:#fff;font-family:Inter,sans-serif;font-size:14px;text-decoration:none;border-radius:0 0 4px 0;" onfocus="this.style.position='fixed';this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Aller au contenu principal</a>
+<body data-design-regime="editorial">
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:var(--chrome-ground);color:var(--chrome-text);font-family:'IBM Plex Sans',sans-serif;font-size:14px;text-decoration:none;border-radius:0 0 4px 0;" onfocus="this.style.position='fixed';this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Aller au contenu principal</a>
 <div id="app"></div>
 <script src="nav-config.js"></script>
 <script type="module">
@@ -172,25 +178,25 @@ if(open){document.body.classList.add('menu-open')}else{document.body.classList.r
 return()=>document.body.classList.remove('menu-open')
 },[open])
 return h('div',null,
- h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#C8955A]'}),
+ h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[var(--editorial-accent)]'}),
  h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(10) saturate(0) invert(0)',transition:'filter 0.3s ease'}})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:'brightness(10) saturate(0)'}})
     ),
     h('nav',{className:'hidden md:flex items-center gap-1'},
      ...MEGA_NAV.map((cat,ci)=>
       h('div',{key:ci,className:'mega-trigger'},
-       h('span',{className:`nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none ${scrolled?'text-gray-500 hover:text-[#006650]':'text-white/70 hover:text-white'}`},cat.label),
-       h('div',{className:'mega-menu bg-white rounded-2xl shadow-xl border border-gray-100 p-5'},
+       h('span',{className:'nav-link px-3 py-2 text-sm font-medium transition-colors cursor-default select-none text-[#9AA0A4] hover:text-[#E8E4D8]'},cat.label),
+       h('div',{className:'mega-menu bg-[#FFFFFF] border border-[#4C5052] p-5 shadow-[0_6px_18px_rgba(14,16,18,.18)]'},
         h('div',{className:'grid gap-1'},
          ...cat.children.map((item,ii)=>
-          h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 rounded-xl no-underline'},
-           h('span',{className:'mega-icon bg-[#006650]/10 text-[#006650]'},item.icon),
+          h('a',{key:ii,href:item.href,className:'mega-item flex items-start gap-3 px-3 py-2.5 no-underline'},
+           h('span',{className:'mega-icon bg-[#EDEBE4] text-[#101214]'},item.icon),
            h('span',{className:'flex flex-col'},
-            h('span',{className:'text-sm font-semibold text-gray-900'},item.label),
-            h('span',{className:'text-xs text-gray-500 mt-0.5'},item.desc)
+            h('span',{className:'text-sm font-semibold text-[#101214]'},item.label),
+            h('span',{className:'text-xs text-[#4C5052] mt-0.5'},item.desc)
            )
           )
          )
@@ -198,15 +204,15 @@ return h('div',null,
        )
       )
      ),
-     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[#006650] hover:bg-[#06402A] text-white font-semibold text-sm rounded-lg transition-colors'},'R\u00e9server un diagnostic')
+     h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[var(--editorial-accent)] hover:bg-[#6E1B1B] text-[#F5EDE6] font-semibold text-sm transition-colors'},'R\u00e9server un diagnostic')
     ),
-    h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,'aria-label':'Menu',onClick:()=>setOpen(!open)},
-     h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}}),h('span',{style:scrolled?{}:{background:'#fff'}})
+    h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,'aria-label':'Menu','aria-expanded':open,onClick:()=>setOpen(!open)},
+     h('span'),h('span'),h('span')
     )
    )
   )
  ),
- h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'#006650'}},
+ h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'var(--chrome-ground)'}},
   h('div',{className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0'},
    h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-8 w-auto',style:{filter:'brightness(10) saturate(0)'}}),
    h('button',{onClick:()=>setOpen(false),className:'w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
@@ -225,7 +231,7 @@ return h('div',null,
    ]).flat()
   ),
   h('div',{className:'px-6 pt-4 pb-20 flex-shrink-0'},
-   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-xl transition-colors text-base',style:{animationDelay:'0.85s'}},'R\u00e9server un diagnostic')
+   h('a',{href:'premium.html',onClick:()=>setOpen(false),className:'menu-item block w-full text-center px-6 py-3.5 bg-white/10 hover:bg-white/15 text-white font-semibold transition-colors text-base',style:{animationDelay:'0.85s'}},'R\u00e9server un diagnostic')
   )
  )
 )
@@ -251,17 +257,17 @@ return()=>window.removeEventListener('scroll',onScroll)
 return h('section',{ref:heroRef,className:'hero-dynamic relative pt-28 pb-24 md:pt-36 md:pb-28'},
  h('div',{className:'hero-content relative z-[3] max-w-3xl mx-auto px-4 sm:px-6',style:{willChange:'transform,opacity'}},
   h('div',{className:'anim-fade-up flex items-center gap-3 mb-6'},
-   h('span',{className:'px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white rounded bg-[#2563eb]'},'G\u00c9OPOLITIQUE'),
+   h('span',{className:'category-geo px-3 py-1 text-[10px] font-semibold uppercase tracking-wider',style:{fontFamily:"'IBM Plex Mono',monospace"}},'G\u00c9OPOLITIQUE'),
    h('span',{className:'text-xs uppercase tracking-wider text-white/50'},'Europe de l\u2019Est & Mer Noire')
   ),
-  h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-[2.75rem] font-bold text-white leading-[1.15] tracking-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+  h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-[2.75rem] font-extrabold text-white leading-[1.15] tracking-tight',style:{fontFamily:"'Archivo',Arial,sans-serif"}},
    'Ukraine / Mer Noire \u2014 Guerre d\u2019attrition et recomposition strat\u00e9gique'
   ),
   h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/60 leading-relaxed'},
    'Plus de mille jours de guerre. Le front est stabilis\u00e9 mais la guerre d\u2019attrition se poursuit sur tous les axes \u2014 militaire, \u00e9conomique, cyber, informationnel. Analyse des dynamiques, des recompositions g\u00e9opolitiques et des implications pour les d\u00e9cideurs europ\u00e9ens.'
   ),
   h('div',{className:'anim-fade-up anim-d3 mt-8 flex flex-wrap items-center gap-5 text-sm text-white/40'},
-   h('div',{className:'w-12 h-[2px] bg-[#33B894]'}),
+   h('div',{className:'w-12 h-[2px] bg-[var(--editorial-accent-text)]'}),
    h('span',null,h('strong',{className:'text-white/60'},'Inflexion Research')),
    h('span',null,'15 mars 2026'),
    h('span',null,'22 min de lecture')
@@ -269,9 +275,9 @@ return h('section',{ref:heroRef,className:'hero-dynamic relative pt-28 pb-24 md:
  ),
  h('div',{className:'hero-wave'},
   h('svg',{viewBox:'0 0 1440 80',preserveAspectRatio:'none',xmlns:'http://www.w3.org/2000/svg'},
-   h('path',{d:'M0,40 C180,80 360,0 540,40 C720,80 900,10 1080,40 C1200,60 1350,20 1440,40 L1440,80 L0,80 Z',fill:'#FFFFFF',fillOpacity:'0.07'}),
-   h('path',{d:'M0,50 C200,20 400,70 600,40 C800,10 1000,60 1200,35 C1320,20 1400,50 1440,45 L1440,80 L0,80 Z',fill:'#FFFFFF',fillOpacity:'0.05'}),
-   h('path',{d:'M0,60 C240,40 480,75 720,55 C960,35 1200,65 1440,50 L1440,80 L0,80 Z',fill:'#FFFFFF'})
+   h('path',{d:'M0,40 C180,80 360,0 540,40 C720,80 900,10 1080,40 C1200,60 1350,20 1440,40 L1440,80 L0,80 Z',fill:'#EDEBE4',fillOpacity:'0.07'}),
+   h('path',{d:'M0,50 C200,20 400,70 600,40 C800,10 1000,60 1200,35 C1320,20 1400,50 1440,45 L1440,80 L0,80 Z',fill:'#EDEBE4',fillOpacity:'0.05'}),
+   h('path',{d:'M0,60 C240,40 480,75 720,55 C960,35 1200,65 1440,50 L1440,80 L0,80 Z',fill:'#EDEBE4'})
   )
  )
 )
@@ -289,30 +295,30 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
    h('div',{className:'grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 my-8 sm:my-10 not-prose'},
     h('div',{className:'key-figure'},
      h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'1 000+'),
-     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Jours de guerre')
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:"'Archivo',Arial,sans-serif"}},'Jours de guerre')
     ),
     h('div',{className:'key-figure'},
      h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'~180 Mrd$'),
-     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'PIB (vs 200 Mrd$ pr\u00e9-guerre)')
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:"'Archivo',Arial,sans-serif"}},'PIB (vs 200 Mrd$ pr\u00e9-guerre)')
     ),
     h('div',{className:'key-figure'},
      h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'6.3/7'),
-     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Cyber \u2014 Dimension la plus \u00e9lev\u00e9e apr\u00e8s M')
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:"'Archivo',Arial,sans-serif"}},'Cyber \u2014 Dimension la plus \u00e9lev\u00e9e apr\u00e8s M')
     ),
     h('div',{className:'key-figure'},
      h('div',{className:'text-xl sm:text-3xl md:text-4xl font-bold text-white font-data mb-1 sm:mb-2'},'5.6/7'),
-     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},'Score SEMPLICE \u2014 Tr\u00e8s \u00e9lev\u00e9')
+     h('div',{className:'text-[10px] sm:text-sm text-white/70 leading-tight',style:{fontFamily:"'Archivo',Arial,sans-serif"}},'Score SEMPLICE \u2014 Tr\u00e8s \u00e9lev\u00e9')
     )
    ),
 
    // Synth\u00e8se ex\u00e9cutive
-   h('div',{className:'not-prose my-8 rounded-xl overflow-hidden border-2 border-[#006650]/30',style:{background:'linear-gradient(135deg, #E8F5EE 0%, #F0FAF5 100%)'}},
-    h('div',{className:'flex items-center gap-2 px-5 py-3',style:{background:'linear-gradient(90deg, #006650, #006650)'}},
+   h('div',{className:'not-prose my-8 overflow-hidden border border-[var(--editorial-accent)] bg-[var(--surface-raised)]'},
+    h('div',{className:'flex items-center gap-2 px-5 py-3 bg-[var(--editorial-accent)]'},
      h('span',{className:'text-lg'},'\ud83d\udccc'),
-     h('span',{className:'text-[11px] font-bold uppercase tracking-wider text-white'},'Synth\u00e8se ex\u00e9cutive')
+     h('span',{className:'text-[11px] font-bold uppercase tracking-wider text-[#F5EDE6]',style:{fontFamily:"'IBM Plex Mono',monospace"}},'Synth\u00e8se ex\u00e9cutive')
     ),
     h('div',{className:'px-5 py-4'},
-     h('p',{className:'text-[15px] text-[#1A1F2E] leading-relaxed'},
+     h('p',{className:'text-[15px] text-[var(--text-primary)] leading-relaxed'},
       'L\u2019Ukraine entre dans sa troisi\u00e8me ann\u00e9e de guerre d\u2019attrition. Le front terrestre est largement stabilis\u00e9 sur l\u2019axe Zaporizhzhia-Donetsk, mais le conflit s\u2019est d\u00e9plac\u00e9 sur des axes asym\u00e9triques \u2014 ',h('strong',null,'cyber-offensives, guerre informationnelle, frappes sur les infrastructures \u00e9nerg\u00e9tiques'),'. Le PIB ukrainien reste contract\u00e9 \u00e0 ',h('strong',null,'~180 milliards de dollars'),' (contre 200 Mrd$ avant-guerre), avec une dette d\u00e9passant ',h('strong',null,'90\u00a0% du PIB'),'. Le score SEMPLICE de ',h('strong',{className:'text-[#006650]'},'5.6/7 (Tr\u00e8s \u00e9lev\u00e9)'),' refl\u00e8te un conflit syst\u00e9mique dont la dimension cyber (6.3/7) et militaire (6.6/7) dominent. Pour les d\u00e9cideurs fran\u00e7ais, les enjeux couvrent la d\u00e9fense, l\u2019\u00e9nergie, l\u2019agroalimentaire, la cyberd\u00e9fense et le positionnement dans la reconstruction future.'
      )
     )
@@ -344,8 +350,8 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
    ),
 
    h('div',{className:'insight-box not-prose'},
-    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#006650] mb-2'},'Le\u00e7on op\u00e9rationnelle'),
-    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[var(--editorial-accent)] mb-2'},'Le\u00e7on op\u00e9rationnelle'),
+    h('p',{className:'text-sm text-[var(--text-secondary)] leading-relaxed'},
      'Le conflit d\u00e9montre que la sup\u00e9riorit\u00e9 num\u00e9rique en drones low-cost peut compenser partiellement le d\u00e9savantage en artillerie et en blindage. Pour les arm\u00e9es europ\u00e9ennes, c\u2019est un changement de paradigme\u00a0: ',h('strong',null,'la masse redevient un facteur d\u00e9cisif'),', mais sous forme de syst\u00e8mes autonomes bon march\u00e9, pas de plateformes lourdes traditionnelles.'
     )
    ),
@@ -371,7 +377,7 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
 
    h('div',{className:'insight-box alert not-prose'},
     h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#DC2626] mb-2'},'Risque strat\u00e9gique'),
-    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+    h('p',{className:'text-sm text-[var(--text-secondary)] leading-relaxed'},
      'Si l\u2019aide am\u00e9ricaine militaire est significativement r\u00e9duite ou conditionn\u00e9e \u00e0 des concessions territoriales, l\u2019\u00e9quilibre du conflit bascule en faveur de Moscou. L\u2019Europe devrait alors combler un d\u00e9ficit capacitaire de ',h('strong',null,'40 \u00e0 60 milliards de dollars par an'),' en aide militaire \u2014 un effort incompatible avec les contraintes budg\u00e9taires actuelles de la plupart des \u00c9tats membres.'
     )
    ),
@@ -401,8 +407,8 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
    ),
 
    h('div',{className:'insight-box not-prose'},
-    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#006650] mb-2'},'Cas d\u2019\u00e9tude SEMPLICE'),
-    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+    h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[var(--editorial-accent)] mb-2'},'Cas d\u2019\u00e9tude SEMPLICE'),
+    h('p',{className:'text-sm text-[var(--text-secondary)] leading-relaxed'},
      'L\u2019Ukraine est le cas d\u2019\u00e9tude principal du cadre SEMPLICE pour la ',h('strong',null,'d\u00e9tection pr\u00e9coce des crises'),'. L\u2019attaque WhisperGate de janvier 2022 \u2014 d\u00e9tect\u00e9e par le delta Cyber de +1.0 \u2014 a signal\u00e9 l\u2019invasion ',h('strong',null,'six semaines avant le 24 f\u00e9vrier'),'. Cette anticipation valide la capacit\u00e9 du cadre \u00e0 int\u00e9grer les signaux faibles des dimensions Information et Cyber, absentes des frameworks traditionnels (PESTEL, SWOT).'
     )
    ),
@@ -433,7 +439,7 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
 
    h('div',{className:'insight-box gold not-prose'},
     h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2'},'Signal strat\u00e9gique'),
-    h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+    h('p',{className:'text-sm text-[var(--text-secondary)] leading-relaxed'},
      'Le conflit ukrainien acc\u00e9l\u00e8re la ',h('strong',null,'fragmentation de l\u2019ordre mondial en blocs'),'. L\u2019axe Russie-Chine-Iran-Cor\u00e9e du Nord se consolide, tandis que l\u2019Europe est contrainte d\u2019acc\u00e9l\u00e9rer sa r\u00e9industrialisation de d\u00e9fense. Le Global South reste largement non-align\u00e9, exploitant les rivalit\u00e9s. Ce r\u00e9alignement a des implications de long terme pour les cha\u00eenes d\u2019approvisionnement, les march\u00e9s \u00e9nerg\u00e9tiques et les flux de capitaux.'
     )
    ),
@@ -445,37 +451,37 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
    h('div',{className:'not-prose my-6 overflow-x-auto'},
     h('table',{className:'w-full text-sm border-collapse'},
      h('thead',null,
-      h('tr',{className:'bg-[#F7F8FA]'},
-       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Secteur'),
-       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Niveau'),
-       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Recommandation')
+      h('tr',{className:'bg-[rgba(94,74,58,.08)]'},
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-secondary)] border-b border-[var(--hairline-warm)]'},'Secteur'),
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-secondary)] border-b border-[var(--hairline-warm)]'},'Niveau'),
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-secondary)] border-b border-[var(--hairline-warm)]'},'Recommandation')
       )
      ),
      h('tbody',null,
-      h('tr',{className:'border-b border-[#E2E5EB]'},
-       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'D\u00e9fense'),
-       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#DC2626] px-2 py-0.5 rounded'},'CRITIQUE')),
-       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Acc\u00e9l\u00e9rer programmes drones/IA, adapter doctrine RETEX Ukraine')
+      h('tr',{className:'border-b border-[var(--hairline-warm)]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[var(--text-primary)]'},'D\u00e9fense'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#DC2626] px-2 py-0.5'},'CRITIQUE')),
+       h('td',{className:'px-3 py-2.5 text-[var(--text-secondary)]'},'Acc\u00e9l\u00e9rer programmes drones/IA, adapter doctrine RETEX Ukraine')
       ),
-      h('tr',{className:'border-b border-[#E2E5EB]'},
-       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'\u00c9nergie'),
-       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#f59e0b] px-2 py-0.5 rounded'},'\u00c9LEV\u00c9')),
-       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Diversification gaz poursuivie, stockage strat\u00e9gique, r\u00e9silience r\u00e9seau')
+      h('tr',{className:'border-b border-[var(--hairline-warm)]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[var(--text-primary)]'},'\u00c9nergie'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#f59e0b] px-2 py-0.5'},'\u00c9LEV\u00c9')),
+       h('td',{className:'px-3 py-2.5 text-[var(--text-secondary)]'},'Diversification gaz poursuivie, stockage strat\u00e9gique, r\u00e9silience r\u00e9seau')
       ),
-      h('tr',{className:'border-b border-[#E2E5EB]'},
-       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Agroalimentaire'),
-       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#f59e0b] px-2 py-0.5 rounded'},'MOD\u00c9R\u00c9')),
-       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Corridors c\u00e9r\u00e9aliers alternatifs, veille prix bl\u00e9/ma\u00efs')
+      h('tr',{className:'border-b border-[var(--hairline-warm)]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[var(--text-primary)]'},'Agroalimentaire'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#f59e0b] px-2 py-0.5'},'MOD\u00c9R\u00c9')),
+       h('td',{className:'px-3 py-2.5 text-[var(--text-secondary)]'},'Corridors c\u00e9r\u00e9aliers alternatifs, veille prix bl\u00e9/ma\u00efs')
       ),
-      h('tr',{className:'border-b border-[#E2E5EB]'},
-       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Cyber'),
-       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#DC2626] px-2 py-0.5 rounded'},'CRITIQUE')),
-       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Renforcer ANSSI, doctrine cyber offensive, partage renseignement')
+      h('tr',{className:'border-b border-[var(--hairline-warm)]'},
+       h('td',{className:'px-3 py-2.5 font-medium text-[var(--text-primary)]'},'Cyber'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-white bg-[#DC2626] px-2 py-0.5'},'CRITIQUE')),
+       h('td',{className:'px-3 py-2.5 text-[var(--text-secondary)]'},'Renforcer ANSSI, doctrine cyber offensive, partage renseignement')
       ),
       h('tr',null,
-       h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},'Reconstruction'),
-       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-[#006650] bg-[#006650]/10 px-2 py-0.5 rounded'},'OPPORTUNIT\u00c9')),
-       h('td',{className:'px-3 py-2.5 text-[#3A3A3A]'},'Positionnement BTP/infra fran\u00e7ais, Vinci/Bouygues/EDF')
+       h('td',{className:'px-3 py-2.5 font-medium text-[var(--text-primary)]'},'Reconstruction'),
+       h('td',{className:'px-3 py-2.5'},h('span',{className:'text-xs font-semibold text-[#006650] bg-[#006650]/10 px-2 py-0.5'},'OPPORTUNIT\u00c9')),
+       h('td',{className:'px-3 py-2.5 text-[var(--text-secondary)]'},'Positionnement BTP/infra fran\u00e7ais, Vinci/Bouygues/EDF')
       )
      )
     )
@@ -500,11 +506,11 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
    h('div',{className:'not-prose my-6 overflow-x-auto'},
     h('table',{className:'w-full text-sm border-collapse'},
      h('thead',null,
-      h('tr',{className:'bg-[#F7F8FA]'},
-       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Dimension'),
-       h('th',{className:'text-center px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Score risque'),
-       h('th',{className:'text-center px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Score opp.'),
-       h('th',{className:'text-center px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] border-b border-[#E2E5EB]'},'Tendance')
+      h('tr',{className:'bg-[rgba(94,74,58,.08)]'},
+       h('th',{className:'text-left px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-secondary)] border-b border-[var(--hairline-warm)]'},'Dimension'),
+       h('th',{className:'text-center px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-secondary)] border-b border-[var(--hairline-warm)]'},'Score risque'),
+       h('th',{className:'text-center px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-secondary)] border-b border-[var(--hairline-warm)]'},'Score opp.'),
+       h('th',{className:'text-center px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-secondary)] border-b border-[var(--hairline-warm)]'},'Tendance')
       )
      ),
      h('tbody',null,
@@ -512,8 +518,8 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
        ['Social','5.6/7','4/7','\u2191'],['Économique','5.7/7','3/7','\u2191'],['Militaire','6.6/7','1/7','\u2191'],['Politique','5.4/7','3/7','\u2191'],
        ['L\u00e9gal','4.7/7','3/7','\u2192'],['Information','5.8/7','5/7','\u2191'],['Cyber','6.3/7','4/7','\u2191'],['Environnemental','4.6/7','3/7','\u2192']
       ].map((r,i)=>
-       h('tr',{key:i,className:'border-b border-[#E2E5EB]'},
-        h('td',{className:'px-3 py-2.5 font-medium text-[#1A1F2E]'},r[0]),
+       h('tr',{key:i,className:'border-b border-[var(--hairline-warm)]'},
+        h('td',{className:'px-3 py-2.5 font-medium text-[var(--text-primary)]'},r[0]),
         h('td',{className:'px-3 py-2.5 text-center font-data font-semibold text-[#006650]'},r[1]),
         h('td',{className:'px-3 py-2.5 text-center font-data text-[#5A6178]'},r[2]),
         h('td',{className:'px-3 py-2.5 text-center text-lg'},r[3])
@@ -536,7 +542,7 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
    // Indicateurs d'alerte
    h('h3',null,'Indicateurs d\u2019alerte \u00e0 surveiller'),
    h('div',{className:'insight-box not-prose'},
-    h('ul',{className:'space-y-1.5 text-sm text-[#3A3A3A]'},
+    h('ul',{className:'space-y-1.5 text-sm text-[var(--text-secondary)]'},
      h('li',null,h('strong',null,'R\u00e9duction aide US > 50\u00a0%'),' \u2014 signal de basculement strat\u00e9gique'),
      h('li',null,h('strong',null,'Cessez-le-feu impos\u00e9 sans garanties'),' \u2014 risque de conflit gel\u00e9 d\u00e9favorable'),
      h('li',null,h('strong',null,'Attaque cyber majeure sur infrastructure UE'),' \u2014 escalade hors zone de conflit'),
@@ -550,45 +556,45 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
    h('h2',null,'Trois sc\u00e9narios \u00e0 12-24 mois'),
 
    // Sc\u00e9nario 1
-   h('div',{className:'not-prose my-6 rounded-xl overflow-hidden border border-[#006650]/20 bg-[#F0FAF5]'},
+   h('div',{className:'not-prose my-6 overflow-hidden border border-[#006650]/20 bg-[#F0FAF5]'},
     h('div',{className:'px-5 py-3 bg-[#006650]/10 border-b border-[#006650]/20'},
      h('div',{className:'flex items-center justify-between'},
       h('span',{className:'text-sm font-bold text-[#006650]'},'Sc\u00e9nario 1 \u2014 N\u00e9gociation sous pression'),
-      h('span',{className:'text-xs font-semibold text-[#006650] bg-[#006650]/10 px-2 py-1 rounded'},'Probabilit\u00e9 : 25-30\u00a0%')
+      h('span',{className:'text-xs font-semibold text-[#006650] bg-[#006650]/10 px-2 py-1'},'Probabilit\u00e9 : 25-30\u00a0%')
      )
     ),
     h('div',{className:'px-5 py-4'},
-     h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     h('p',{className:'text-sm text-[var(--text-secondary)] leading-relaxed'},
       'Sous pression am\u00e9ricaine, un cessez-le-feu est n\u00e9goci\u00e9 avec gel de la ligne de contact. L\u2019Ukraine conserve 82\u00a0% de son territoire mais sans garanties de s\u00e9curit\u00e9 fermes. Le processus d\u2019adh\u00e9sion \u00e0 l\u2019UE s\u2019acc\u00e9l\u00e8re. La Russie revendique une victoire strat\u00e9gique. ',h('strong',null,'Impact d\u00e9cideurs'),' : fen\u00eatre de reconstruction rapide mais risque de reprise du conflit \u00e0 moyen terme.'
      )
     )
    ),
 
    // Sc\u00e9nario 2
-   h('div',{className:'not-prose my-6 rounded-xl overflow-hidden border border-[#EAB308]/20 bg-[#FFFBEB]'},
+   h('div',{className:'not-prose my-6 overflow-hidden border border-[#EAB308]/20 bg-[#FFFBEB]'},
     h('div',{className:'px-5 py-3 bg-[#EAB308]/10 border-b border-[#EAB308]/20'},
      h('div',{className:'flex items-center justify-between'},
       h('span',{className:'text-sm font-bold text-[#92400E]'},'Sc\u00e9nario 2 \u2014 Attrition prolong\u00e9e'),
-      h('span',{className:'text-xs font-semibold text-[#92400E] bg-[#EAB308]/10 px-2 py-1 rounded'},'Probabilit\u00e9 : 45-50\u00a0%')
+      h('span',{className:'text-xs font-semibold text-[#92400E] bg-[#EAB308]/10 px-2 py-1'},'Probabilit\u00e9 : 45-50\u00a0%')
      )
     ),
     h('div',{className:'px-5 py-4'},
-     h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     h('p',{className:'text-sm text-[var(--text-secondary)] leading-relaxed'},
       'Le statu quo perdure. Le front reste fig\u00e9, les frappes mutuelles se poursuivent, l\u2019aide occidentale diminue progressivement. L\u2019Ukraine r\u00e9siste mais s\u2019\u00e9puise. La Russie maintient sa pression sans perc\u00e9e d\u00e9cisive. Le conflit \u00e9volue vers un mod\u00e8le Cor\u00e9e \u2014 armistice de facto sans trait\u00e9 de paix. ',h('strong',null,'Impact d\u00e9cideurs'),' : co\u00fbts de d\u00e9fense europ\u00e9ens durablement \u00e9lev\u00e9s, fragmentation du march\u00e9 \u00e9nerg\u00e9tique eurasiatique.'
      )
     )
    ),
 
    // Sc\u00e9nario 3
-   h('div',{className:'not-prose my-6 rounded-xl overflow-hidden border border-[#DC2626]/20 bg-[#FEF2F2]'},
+   h('div',{className:'not-prose my-6 overflow-hidden border border-[#DC2626]/20 bg-[#FEF2F2]'},
     h('div',{className:'px-5 py-3 bg-[#DC2626]/10 border-b border-[#DC2626]/20'},
      h('div',{className:'flex items-center justify-between'},
       h('span',{className:'text-sm font-bold text-[#991B1B]'},'Sc\u00e9nario 3 \u2014 Escalade et d\u00e9bordement'),
-      h('span',{className:'text-xs font-semibold text-[#991B1B] bg-[#DC2626]/10 px-2 py-1 rounded'},'Probabilit\u00e9 : 15-20\u00a0%')
+      h('span',{className:'text-xs font-semibold text-[#991B1B] bg-[#DC2626]/10 px-2 py-1'},'Probabilit\u00e9 : 15-20\u00a0%')
      )
     ),
     h('div',{className:'px-5 py-4'},
-     h('p',{className:'text-sm text-[#3A3A3A] leading-relaxed'},
+     h('p',{className:'text-sm text-[var(--text-secondary)] leading-relaxed'},
       'Escalade non contr\u00f4l\u00e9e\u00a0: frappe russe sur un convoi OTAN, cyberattaque massive sur infrastructure critique europ\u00e9enne, ou incident nucl\u00e9aire \u00e0 Zaporijjia. Activation de l\u2019article 5. Rupture compl\u00e8te des relations \u00e9conomiques Russie-Europe. ',h('strong',null,'Impact d\u00e9cideurs'),' : mobilisation de l\u2019\u00e9conomie europ\u00e9enne, choc \u00e9nerg\u00e9tique et financier majeur, repositionnement g\u00e9opolitique radical.'
      )
     )
@@ -597,52 +603,52 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
    // Disclaimer AMF
    h('div',{className:'insight-box gold not-prose mt-10'},
     h('div',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2'},'Avertissement AMF'),
-    h('p',{className:'text-xs text-[#6A6A6A] leading-relaxed'},
+    h('p',{className:'text-xs text-[var(--text-secondary)] leading-relaxed'},
      'Cette analyse est fournie \u00e0 titre informatif et ne constitue en aucun cas un conseil en investissement, une recommandation personnalis\u00e9e ou une incitation \u00e0 acheter ou vendre des instruments financiers. Les performances pass\u00e9es ne pr\u00e9jugent pas des performances futures. Tout investissement comporte des risques de perte en capital. Les \u00e9valuations de risque SEMPLICE refl\u00e8tent une appr\u00e9ciation \u00e0 date et ne constituent pas une garantie.'
     )
    ),
 
    // Sources
-   h('div',{className:'pt-8 mt-8 border-t border-[#ECEEF2] not-prose'},
-    h('h4',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#6A6A6A] mb-3'},'Sources principales (40+ sources — fiabilit\u00e9 A/B)'),
+   h('div',{className:'pt-8 mt-8 border-t border-[var(--hairline-warm)] not-prose'},
+    h('h4',{className:'text-[11px] font-semibold uppercase tracking-wider text-[var(--text-secondary)] mb-3'},'Sources principales (40+ sources — fiabilit\u00e9 A/B)'),
     h('ul',{className:'space-y-1.5'},
-     h('li',null,h('a',{href:'https://www.crisisgroup.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'International Crisis Group (ICG) \u2014 Ukraine : conflict tracker, analyses strat\u00e9giques')),
-     h('li',null,h('a',{href:'https://www.iiss.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'IISS \u2014 The Military Balance 2026, \u00e9valuations capacitaires Russie/Ukraine')),
-     h('li',null,h('a',{href:'https://www.sipri.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'SIPRI \u2014 Arms transfers to Ukraine, d\u00e9penses militaires mondiales 2025')),
-     h('li',null,h('a',{href:'https://www.chathamhouse.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Chatham House \u2014 Ukraine\u2019s European path, adh\u00e9sion UE et r\u00e9formes')),
-     h('li',null,h('a',{href:'https://kse.ua/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'KSE Institute \u2014 Ukraine\u2019s economic resilience, PIB et dette publique')),
-     h('li',null,h('a',{href:'https://rusi.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'RUSI \u2014 Drone warfare in Ukraine, le\u00e7ons tactiques et strat\u00e9giques')),
-     h('li',null,h('a',{href:'https://www.atlanticcouncil.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Atlantic Council \u2014 DFRLab, d\u00e9sinformation et guerre informationnelle')),
-     h('li',null,h('a',{href:'https://www.understandingwar.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'ISW (Institute for the Study of War) \u2014 Daily battlefield assessments')),
-     h('li',null,h('a',{href:'https://www.ifw-kiel.de/topics/war-against-ukraine/ukraine-support-tracker/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Kiel Institute \u2014 Ukraine Support Tracker, aide internationale cumul\u00e9e')),
-     h('li',null,h('a',{href:'https://www.worldbank.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Banque mondiale \u2014 RDNA3, \u00e9valuation des besoins de reconstruction (486 Mrd$)')),
-     h('li',null,h('a',{href:'https://www.microsoft.com/en-us/security/blog/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Microsoft DART \u2014 WhisperGate, HermeticWiper, analyse des cyberattaques russes')),
-     h('li',null,h('a',{href:'https://www.mandiant.com/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'Mandiant / Google TAG \u2014 Sandworm (GRU unit\u00e9 74455), Industroyer2')),
-     h('li',null,h('a',{href:'https://www.ssi.gouv.fr/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'ANSSI \u2014 Panorama de la menace 2025, retour d\u2019exp\u00e9rience cyber Ukraine')),
-     h('li',null,h('a',{href:'https://www.iea.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[#006650] hover:underline'},'AIE \u2014 Ukraine energy situation, impact des frappes sur le r\u00e9seau \u00e9lectrique'))
+     h('li',null,h('a',{href:'https://www.crisisgroup.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[var(--editorial-accent)] hover:underline'},'International Crisis Group (ICG) \u2014 Ukraine : conflict tracker, analyses strat\u00e9giques')),
+     h('li',null,h('a',{href:'https://www.iiss.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[var(--editorial-accent)] hover:underline'},'IISS \u2014 The Military Balance 2026, \u00e9valuations capacitaires Russie/Ukraine')),
+     h('li',null,h('a',{href:'https://www.sipri.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[var(--editorial-accent)] hover:underline'},'SIPRI \u2014 Arms transfers to Ukraine, d\u00e9penses militaires mondiales 2025')),
+     h('li',null,h('a',{href:'https://www.chathamhouse.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[var(--editorial-accent)] hover:underline'},'Chatham House \u2014 Ukraine\u2019s European path, adh\u00e9sion UE et r\u00e9formes')),
+     h('li',null,h('a',{href:'https://kse.ua/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[var(--editorial-accent)] hover:underline'},'KSE Institute \u2014 Ukraine\u2019s economic resilience, PIB et dette publique')),
+     h('li',null,h('a',{href:'https://rusi.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[var(--editorial-accent)] hover:underline'},'RUSI \u2014 Drone warfare in Ukraine, le\u00e7ons tactiques et strat\u00e9giques')),
+     h('li',null,h('a',{href:'https://www.atlanticcouncil.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[var(--editorial-accent)] hover:underline'},'Atlantic Council \u2014 DFRLab, d\u00e9sinformation et guerre informationnelle')),
+     h('li',null,h('a',{href:'https://www.understandingwar.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[var(--editorial-accent)] hover:underline'},'ISW (Institute for the Study of War) \u2014 Daily battlefield assessments')),
+     h('li',null,h('a',{href:'https://www.ifw-kiel.de/topics/war-against-ukraine/ukraine-support-tracker/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[var(--editorial-accent)] hover:underline'},'Kiel Institute \u2014 Ukraine Support Tracker, aide internationale cumul\u00e9e')),
+     h('li',null,h('a',{href:'https://www.worldbank.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[var(--editorial-accent)] hover:underline'},'Banque mondiale \u2014 RDNA3, \u00e9valuation des besoins de reconstruction (486 Mrd$)')),
+     h('li',null,h('a',{href:'https://www.microsoft.com/en-us/security/blog/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[var(--editorial-accent)] hover:underline'},'Microsoft DART \u2014 WhisperGate, HermeticWiper, analyse des cyberattaques russes')),
+     h('li',null,h('a',{href:'https://www.mandiant.com/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[var(--editorial-accent)] hover:underline'},'Mandiant / Google TAG \u2014 Sandworm (GRU unit\u00e9 74455), Industroyer2')),
+     h('li',null,h('a',{href:'https://www.ssi.gouv.fr/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[var(--editorial-accent)] hover:underline'},'ANSSI \u2014 Panorama de la menace 2025, retour d\u2019exp\u00e9rience cyber Ukraine')),
+     h('li',null,h('a',{href:'https://www.iea.org/',target:'_blank',rel:'noopener noreferrer',className:'text-xs text-[var(--editorial-accent)] hover:underline'},'AIE \u2014 Ukraine energy situation, impact des frappes sur le r\u00e9seau \u00e9lectrique'))
     ),
-    h('p',{className:'mt-3 text-[10px] text-[#6A6A6A] italic'},'Collecte OSINT multi-sources. Classification fiabilit\u00e9 A/B/C. Mis \u00e0 jour le 15 mars 2026.')
+    h('p',{className:'mt-3 text-[10px] text-[var(--text-secondary)] italic'},'Collecte OSINT multi-sources. Classification fiabilit\u00e9 A/B/C. Mis \u00e0 jour le 15 mars 2026.')
    ),
 
    // Back nav
    h('div',{className:'mt-10 text-center not-prose'},
-    h('a',{href:'analyses.html',className:'inline-block px-6 py-2.5 text-sm font-semibold text-[#006650] border-2 border-[#006650] rounded-lg hover:bg-[#006650] hover:text-white transition-colors'},'\u2190 Toutes les analyses')
+    h('a',{href:'analyses.html',className:'inline-block px-6 py-2.5 text-sm font-semibold text-[var(--editorial-accent)] border-2 border-[var(--editorial-accent)] hover:bg-[var(--editorial-accent)] hover:text-[#F5EDE6] transition-colors'},'\u2190 Toutes les analyses')
    )
   ),
 
   // Sidebar
   h('aside',{className:'hidden lg:block lg:w-[220px] flex-shrink-0'},
    h('div',{className:'lg:sticky lg:top-24'},
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Articles li\u00e9s'),
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)] mb-4'},'Articles li\u00e9s'),
     h('div',{className:'flex flex-col gap-4'},
      ...RELATED_ARTICLES.map(a=>
-      h('a',{key:a.id,href:a.href,className:'article-card block rounded-xl overflow-hidden bg-white border border-[#E2E5EB] no-underline'},
+      h('a',{key:a.id,href:a.href,className:'article-card block overflow-hidden bg-[var(--surface-raised)] border border-[var(--hairline-warm)] no-underline'},
        h('div',{className:'aspect-[16/9] overflow-hidden'},
         h('img',{src:a.img,alt:'',className:'w-full h-full object-cover',loading:'lazy'})
        ),
        h('div',{className:'p-3'},
-        h('span',{className:`category-${a.cat} text-[9px] font-semibold uppercase tracking-wider text-white px-1.5 py-0.5 rounded`},a.catLabel),
-        h('h4',{className:'mt-2 text-xs font-semibold text-[#1A1F2E] leading-snug line-clamp-2',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},a.title)
+        h('span',{className:`category-${a.cat} text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5`,style:{fontFamily:"'IBM Plex Mono',monospace"}},a.catLabel),
+        h('h4',{className:'mt-2 text-xs font-semibold text-[var(--text-primary)] leading-snug line-clamp-2',style:{fontFamily:"'Archivo',Arial,sans-serif"}},a.title)
        )
       )
      )
@@ -673,47 +679,47 @@ plateforme:[
 }
 const sources=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC']
 
-return h('footer',{className:'border-t border-[#E2E5EB] bg-[#F7F8FA] pt-12 sm:pt-16 pb-24 sm:pb-20'},
+return h('footer',{className:'v2-chrome bg-[var(--chrome-ground)] pt-12 sm:pt-16 pb-24 sm:pb-20',role:'contentinfo'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-10 mb-12'},
    h('div',{className:'col-span-2 md:col-span-1'},
     h('div',{className:'flex items-center gap-2 mb-4'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto'})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto',style:{filter:'brightness(10) saturate(0)'}})
     ),
-    h('p',{className:'text-sm text-[#5A6178] leading-relaxed'},'Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.')
+    h('p',{className:'text-sm text-[#9AA0A4] leading-relaxed'},'Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.')
    ),
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Intelligence'),
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8E4D8] mb-4'},'Intelligence'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.intelligence.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#9AA0A4] hover:text-[#E8E4D8] transition-colors'},l.label))
      )
     )
    ),
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Plateforme'),
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8E4D8] mb-4'},'Plateforme'),
     h('ul',{className:'space-y-2.5'},
      ...footerLinks.plateforme.map(l=>
-      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},l.label))
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#9AA0A4] hover:text-[#E8E4D8] transition-colors'},l.label))
      )
     )
    ),
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#1A1F2E] mb-4'},'Suivez-nous'),
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8E4D8] mb-4'},'Suivez-nous'),
     h('div',{className:'flex items-center gap-3 mb-4'},
-     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+     h('a',{href:'#','aria-label':'LinkedIn',className:'w-9 h-9 bg-[rgba(232,228,216,.10)] hover:bg-[var(--editorial-accent)] hover:text-[#F5EDE6] flex items-center justify-center text-[#9AA0A4] transition-colors'},
       h('svg',{width:16,height:16,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'}))
      ),
-     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 rounded-lg bg-[#E2E5EB] hover:bg-[#006650] hover:text-white flex items-center justify-center text-[#5A6178] transition-colors'},
+     h('a',{href:'#','aria-label':'X / Twitter',className:'w-9 h-9 bg-[rgba(232,228,216,.10)] hover:bg-[var(--editorial-accent)] hover:text-[#F5EDE6] flex items-center justify-center text-[#9AA0A4] transition-colors'},
       h('svg',{width:14,height:14,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'}))
      )
     ),
-    h('a',{href:'#',className:'text-sm text-[#5A6178] hover:text-[#006650] transition-colors'},'Contact')
+    h('a',{href:'#',className:'text-sm text-[#9AA0A4] hover:text-[#E8E4D8] transition-colors'},'Contact')
    )
   ),
-  h('div',{className:'border-t border-[#E2E5EB] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
-   h('span',{className:'text-sm text-[#5A6178]'},'\u00a9 2026 Inflexion \u2014 Intelligence financi\u00e8re & g\u00e9opolitique'),
-   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#5A6178]/40 font-medium'},
+  h('div',{className:'border-t border-[rgba(232,228,216,.14)] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
+   h('span',{className:'text-sm text-[#9AA0A4]'},'\u00a9 2026 Inflexion \u2014 Intelligence financi\u00e8re & g\u00e9opolitique'),
+   h('div',{className:'flex flex-wrap justify-center gap-3 text-[10px] uppercase tracking-wider text-[#9AA0A4] font-medium',style:{fontFamily:"'IBM Plex Mono',monospace"}},
     ...sources.map(s=>h('span',{key:s},s))
    )
   )
