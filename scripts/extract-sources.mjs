@@ -13,14 +13,25 @@ const MENTION = new RegExp(
   'gi'
 )
 
+// Une mention hyperscript React ('...',h('a',{href:...}) plutôt que du texte)
+// fait déborder [^)]+ hors de la mention réelle : on refuse de la traiter au
+// lieu de tronquer le code. Voir analyse-arctique-groenland-grand-jeu-polaire.html.
+const HYPERSCRIPT = /h\(['"]|\{href:|className:/
+
 /**
  * @param {string} texte
- * @returns {{text: string, sources: string[]}} texte nettoye + sources dedoublonnees
+ * @returns {{text: string, sources: string[], ignorees: string[]}}
+ *   texte nettoye, sources dedoublonnees, mentions non traitees (laissees intactes)
  */
 export function extractSources (texte) {
-  if (typeof texte !== 'string') return { text: '', sources: [] }
+  if (typeof texte !== 'string') return { text: '', sources: [], ignorees: [] }
   const trouvees = []
-  const nettoye = texte.replace(MENTION, (_, liste) => {
+  const ignorees = []
+  const nettoye = texte.replace(MENTION, (match, liste) => {
+    if (HYPERSCRIPT.test(liste)) {
+      ignorees.push(match)
+      return match
+    }
     liste
       .replace(/ /g, ' ')
       .split(',')
@@ -29,5 +40,5 @@ export function extractSources (texte) {
       .forEach(s => { if (!trouvees.includes(s)) trouvees.push(s) })
     return ''
   })
-  return { text: nettoye, sources: trouvees }
+  return { text: nettoye, sources: trouvees, ignorees }
 }
