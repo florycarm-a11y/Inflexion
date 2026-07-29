@@ -20,6 +20,18 @@ test('parseProbability renvoie null si aucun nombre', () => {
   assert.equal(parseProbability('à déterminer'), null)
 })
 
+test('parseProbability s\'ancre sur le signe % et ignore les autres nombres de la phrase', () => {
+  assert.equal(parseProbability('Scénario 2 — Probabilité : 25-30 %'), 28)
+})
+
+test('parseProbability renvoie null en l\'absence de signe %, même si un nombre est présent', () => {
+  assert.equal(parseProbability('Probabilité élevée en 2026'), null)
+})
+
+test('parseProbability renvoie null si la valeur dépasse la plage [0, 100]', () => {
+  assert.equal(parseProbability('Probabilité : 150 %'), null)
+})
+
 const DIMENSIONS = [
   { cle: 'S', nom: 'Social', risque: 5.6 },
   { cle: 'E', nom: 'Économique', risque: 5.7 },

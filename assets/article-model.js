@@ -1,26 +1,34 @@
 /* Logique pure des pages d'analyse. Aucun import React : ce module doit
    pouvoir tourner sous node --test comme dans le navigateur. */
 
-/** Lit une probabilité de scénario. Une fourchette renvoie son milieu arrondi. */
+// Ancre sur le signe % : sans lui, une virgule de phrase ("Scenario 2 -")
+// ou une annee ("en 2026") se melerait au calcul de la moyenne.
+const PROBABILITE = /(\d+(?:[.,]\d+)?)\s*(?:[-–]\s*(\d+(?:[.,]\d+)?)\s*)?%/
+
+/** Lit une probabilite de scenario. Une fourchette renvoie son milieu arrondi.
+ * Ancree sur le signe % et bornee a [0, 100] : sinon null. */
 export function parseProbability (str) {
   if (typeof str !== 'string') return null
-  const nombres = str.replace(/ /g, ' ').match(/\d+(?:[.,]\d+)?/g)
-  if (!nombres || nombres.length === 0) return null
-  const valeurs = nombres.map(n => parseFloat(n.replace(',', '.')))
+  const trouve = str.match(PROBABILITE)
+  if (!trouve) return null
+  const valeurs = [trouve[1], trouve[2]]
+    .filter(v => v !== undefined)
+    .map(n => parseFloat(n.replace(',', '.')))
   const somme = valeurs.reduce((a, b) => a + b, 0)
-  return Math.round(somme / valeurs.length)
+  const arrondi = Math.round(somme / valeurs.length)
+  return (arrondi >= 0 && arrondi <= 100) ? arrondi : null
 }
 
-/** Les n dimensions au risque le plus élevé, triées décroissant. Ne mute pas l'entrée. */
+/** Les n dimensions au risque le plus eleve, triees decroissant. Ne mute pas l'entree. */
 export function topDimensions (dimensions, n = 3) {
   if (!Array.isArray(dimensions)) return []
   return [...dimensions].sort((a, b) => b.risque - a.risque).slice(0, n)
 }
 
-/** Largeur minimale d'un bloc scénario, en % — en deçà le libellé devient illisible. */
+/** Largeur minimale d'un bloc scenario, en % - en deca le libelle devient illisible. */
 const LARGEUR_MIN = 12
 
-/** Convertit les probabilités en largeurs sommant à 100, sans bloc illisible. */
+/** Convertit les probabilites en largeurs sommant a 100, sans bloc illisible. */
 export function scenarioWidths (scenarios) {
   if (!Array.isArray(scenarios) || scenarios.length === 0) return []
   const total = scenarios.reduce((s, x) => s + (x.proba || 0), 0)
@@ -30,7 +38,7 @@ export function scenarioWidths (scenarios) {
   }
   const largeurs = scenarios.map(s => ((s.proba || 0) / total) * 100)
   // Verrouiller les blocs sous le seuil peut faire passer un donneur sous le
-  // seuil à son tour (cas à 3+ scénarios déséquilibrés) : on itère jusqu'à ce
+  // seuil a son tour (cas a 3+ scenarios desequilibres) : on itere jusqu'a ce
   // que plus aucun donneur ne bascule.
   const verrouilles = new Array(largeurs.length).fill(false)
   for (let garde = 0; garde < largeurs.length; garde++) {
@@ -52,11 +60,11 @@ export function scenarioWidths (scenarios) {
     for (const i of donneurs) largeurs[i] -= deficit * (largeurs[i] / masseDonneurs)
   }
 
-  // Le point fixe ci-dessus verrouille tout bloc sous le seuil à EXACTEMENT
-  // LARGEUR_MIN : deux scénarios de probabilité différente qui tombent tous
-  // deux sous le seuil se retrouvent à égalité, ce qui inverserait l'ordre
-  // visuel qu'ils sont censés représenter. On brise l'égalité au minimum,
-  // en préservant l'ordre des probabilités, et on prélève l'ajustement sur
+  // Le point fixe ci-dessus verrouille tout bloc sous le seuil a EXACTEMENT
+  // LARGEUR_MIN : deux scenarios de probabilite differente qui tombent tous
+  // deux sous le seuil se retrouvent a egalite, ce qui inverserait l'ordre
+  // visuel qu'ils sont censes representer. On brise l'egalite au minimum,
+  // en preservant l'ordre des probabilites, et on preleve l'ajustement sur
   // le plus grand bloc pour que la somme reste 100.
   const EPSILON = 1e-6
   const verrouillesTries = largeurs
