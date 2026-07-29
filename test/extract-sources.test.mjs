@@ -30,3 +30,10 @@ test('extractSources laisse intact un texte sans mention', () => {
   assert.deepEqual(r.sources, [])
   assert.equal(r.text, 'Aucune source ici.')
 })
+
+test('extractSources gère la forme échappée telle qu\'elle apparaît dans les fichiers source', () => {
+  // '\\u00a0' en source JS = les 6 caractères \ u 0 0 a 0, pas un NBSP
+  const r = extractSources('Les gains russes (source\\u00a0: ISW, RUSI).')
+  assert.deepEqual(r.sources, ['ISW', 'RUSI'])
+  assert.equal(r.text, 'Les gains russes.')
+})
