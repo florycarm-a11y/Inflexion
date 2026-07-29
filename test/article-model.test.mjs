@@ -110,9 +110,17 @@ test('scenarioWidths renvoie [] pour une entrée vide', () => {
   assert.deepEqual(scenarioWidths([]), [])
 })
 
-test('scenarioWidths préserve l\'ordre des probabilités et le minimum, à trois scénarios déséquilibrés', () => {
+test('scenarioWidths préserve le minimum et l\'ordre à trois scénarios déséquilibrés', () => {
   const out = scenarioWidths([{ proba: 85 }, { proba: 13 }, { proba: 2 }])
   assert.ok(out.every(x => x.width >= 12), 'largeur minimale violée')
-  assert.ok(out[0].width > out[1].width && out[1].width > out[2].width, 'ordre inversé')
+  // Ordre NON strict : deux scénarios sous le seuil de lisibilité sont
+  // légitimement égalisés à LARGEUR_MIN. La probabilité exacte reste lisible
+  // dans le libellé du bloc ; c'est la largeur qui sature, pas la donnée.
+  assert.ok(out[0].width >= out[1].width && out[1].width >= out[2].width, 'ordre inversé')
   assert.ok(Math.abs(out.reduce((s, x) => s + x.width, 0) - 100) < 0.01, 'somme ≠ 100')
+})
+
+test('scenarioWidths égalise les blocs sous le seuil plutôt que de les distinguer artificiellement', () => {
+  const out = scenarioWidths([{ proba: 85 }, { proba: 13 }, { proba: 2 }])
+  assert.equal(out[1].width, out[2].width, 'les blocs sous le seuil doivent être égaux')
 })

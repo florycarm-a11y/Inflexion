@@ -28,7 +28,13 @@ export function topDimensions (dimensions, n = 3) {
     .slice(0, Math.max(0, n))
 }
 
-/** Largeur minimale d'un bloc scenario, en % - en deca le libelle devient illisible. */
+// En deca de ce seuil le libelle du bloc devient illisible : la largeur
+// cesse alors d'etre proportionnelle a la probabilite et sature a
+// LARGEUR_MIN. Deux scenarios sous le seuil sont donc legitimement
+// egalises (voir le test qui verrouille ce comportement) : on ne peut pas
+// representer fidelement 13 % et 2 % quand le plus petit bloc lisible vaut
+// 12 %. La probabilite exacte reste lisible dans le libelle du bloc ; seule
+// la largeur sature.
 const LARGEUR_MIN = 12
 
 /** Convertit les probabilites en largeurs sommant a 100, sans bloc illisible. */
@@ -61,35 +67,6 @@ export function scenarioWidths (scenarios) {
     }
     if (deficit === 0) break
     for (const i of donneurs) largeurs[i] -= deficit * (largeurs[i] / masseDonneurs)
-  }
-
-  // Le point fixe ci-dessus verrouille tout bloc sous le seuil a EXACTEMENT
-  // LARGEUR_MIN : deux scenarios de probabilite differente qui tombent tous
-  // deux sous le seuil se retrouvent a egalite, ce qui inverserait l'ordre
-  // visuel qu'ils sont censes representer. On brise l'egalite au minimum,
-  // en preservant l'ordre des probabilites, et on preleve l'ajustement sur
-  // le plus grand bloc pour que la somme reste 100.
-  const EPSILON = 1e-6
-  const verrouillesTries = largeurs
-    .map((_, i) => i)
-    .filter(i => verrouilles[i])
-    .sort((a, b) => (scenarios[a].proba || 0) - (scenarios[b].proba || 0))
-  let ajustementTotal = 0
-  let rang = 0
-  let probaPrecedente = null
-  for (const i of verrouillesTries) {
-    const proba = scenarios[i].proba || 0
-    if (probaPrecedente === null || proba > probaPrecedente) {
-      rang++
-      probaPrecedente = proba
-    }
-    const cible = LARGEUR_MIN + (rang - 1) * EPSILON
-    ajustementTotal += cible - largeurs[i]
-    largeurs[i] = cible
-  }
-  if (ajustementTotal > 0) {
-    const plusGrand = largeurs.reduce((iMax, w, i) => (w > largeurs[iMax] ? i : iMax), 0)
-    largeurs[plusGrand] -= ajustementTotal
   }
 
   return scenarios.map((s, i) => ({ ...s, width: largeurs[i] }))
