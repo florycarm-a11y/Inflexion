@@ -464,7 +464,13 @@ export function Apparatus (a) {
                   h('img', { src: r.img, alt: '', className: 'w-full h-full object-cover', loading: 'lazy' })
                 ),
                 h('div', { className: 'p-3' },
-                  h('span', { className: `category-${r.cat} text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5`, style: { fontFamily: "'IBM Plex Mono',monospace" } }, r.catLabel),
+                  /* Jetons de badge appliqués directement, sans passer par une classe
+                     `category-<cat>` dérivée de la donnée : `cat:'geopolitique'` produisait
+                     `.category-geopolitique`, qui n'existe dans le CSS d'aucune page (seul
+                     `.category-geo` est défini) — le badge tombait sans style. Le squelette
+                     sert 11 articles aux catégories variées : il ne peut pas dépendre de
+                     l'existence d'une classe par catégorie. */
+                  h('span', { className: 'text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 bg-[var(--badge-bg)] text-[var(--badge-text)]', style: { fontFamily: "'IBM Plex Mono',monospace" } }, r.catLabel),
                   h('h4', { className: 'mt-2 text-xs font-semibold text-[var(--text-primary)] leading-snug line-clamp-2', style: { fontFamily: "'Archivo',Arial,sans-serif" } }, r.titre)
                 )
               )
