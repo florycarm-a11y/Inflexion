@@ -1,142 +1,68 @@
 {
-  "updated": "2026-04-16T07:30:54.647Z",
+  "updated": "2026-05-10T08:15:00Z",
   "alertes": [
     {
-      "id": "alert-2026-04-16-001",
-      "titre": "Tesla (TSLA) : +7,62% à $391,95, surperformance tech généralisée",
-      "texte": "Tesla gagne 7,62% dans contexte de rotation risk-on vers technologie. QQQ surperforme DIA (+1,4% vs -0,2%), tech outperforme commodities de 3,5pp. Consensus marché 81% risk-on, amplitude 2,34%.",
+      "id": "alert-2026-05-10-001",
+      "titre": "Tesla : +4,02 % sur la séance, rebond technique confirmé",
+      "texte": "Tesla gagne 4,02 % à 428,35 $ (Finnhub), portée par des attentes sur les livraisons. Le titre a touché un plus haut de 431,20 $. Cependant, le momentum reste à confirmer face aux incertitudes réglementaires.",
       "categorie": "marches",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-04-16T07:30:54.647Z",
-      "donnees": {
-        "symbole": "ADA",
-        "nom": "Cardano",
-        "prix": 0.250903,
-        "variation_24h": 5.01
-      }
-    },
-    {
-      "id": "alert-2026-04-16-002",
-      "titre": "Microsoft (MSFT) : +4,61% à $411,22, momentum tech soutenu",
-      "texte": "Microsoft gagne 4,61% dans rallye technologique. Secteur actions +3,53% vs ETF -0,01%, signalant sélectivité haussière. Divergence tech-commodities (+3,5pp) confirme appétit pour croissance.",
-      "categorie": "marches",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-04-16T07:30:54.647Z",
-      "donnees": {
-        "symbole": "AAPL",
-        "nom": "Apple",
-        "prix": 266.43,
-        "variation": 2.94
-      }
-    },
-    {
-      "id": "alert-2026-04-16-003",
-      "titre": "Bitcoin : test 75 000-80 000 $, activité whale accrue",
-      "texte": "Bitcoin teste niveau janvier (75 000 $) avec réveil des whales. Morgan Stanley Bitcoin fund dépasse WisdomTree après 6 jours. Tether renforce réserves, inflows institutionnels confirmés. Crypto +3,01% sur 24h.",
-      "categorie": "crypto",
       "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-04-16T07:30:54.647Z",
-      "donnees": {
-        "symbole": "MSFT",
-        "nom": "Microsoft",
-        "prix": 411.22,
-        "variation": 4.61
-      }
-    },
-    {
-      "id": "alert-2026-04-16-004",
-      "titre": "Cardano (ADA) : +5,01% à $0,251, altcoin momentum",
-      "texte": "Cardano gagne 5,01% en 24h, surperformant Bitcoin (+3,01% crypto global). Dogecoin +4,5% à $0,10 confirme rotation altcoins. Régime risk-on généraliste soutient classe crypto.",
-      "categorie": "crypto",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-04-16T07:30:54.647Z",
+      "horodatage": "2026-05-10T08:15:00Z",
       "donnees": {
         "symbole": "TSLA",
-        "nom": "Tesla",
-        "prix": 391.95,
-        "variation": 7.62
+        "prix": 428.35,
+        "variation": 4.02
       }
     },
     {
-      "id": "alert-2026-04-16-005",
-      "titre": "Ukraine : 17 morts, 115 blessés dans attaques russes du 16 avril",
-      "texte": "Nouvelle escalade militaire en Ukraine : 17 décès et 115 blessés confirmés dans frappes russes du 16 avril. Responsable ukrainien qualifie d'« acte de terreur délibéré ». Risque géopolitique élevé pour approvisionnements énergétiques européens.",
-      "categorie": "geopolitique",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-04-16T07:30:54.647Z",
-      "donnees": {
-        "tech_avg": 2.5,
-        "comm_avg": -1.03,
-        "spread": 3.53,
-        "regime": "risk-on / croissance"
-      }
-    },
-    {
-      "id": "alert-2026-04-16-006",
-      "titre": "Liban : démolitions israéliennes massives, 4 paramédicaux tués",
-      "texte": "Images satellites documentent démolitions israéliennes de villes du sud-Liban. Quatre paramédicaux tués dans frappes consécutives. Finul ciblée à nouveau. Escalade militaire continue malgré tentatives diplomatiques (Trump annonce discussions Liban-Israël).",
-      "categorie": "geopolitique",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-04-16T07:30:54.647Z",
-      "donnees": {
-        "qqq": 1.4,
-        "dia": -0.16,
-        "spread": 1.56
-      }
-    },
-    {
-      "id": "alert-2026-04-16-007",
-      "titre": "Pétrole : raffineries chinoises ralentissent malgré hausse 50% YTD",
-      "texte": "Activité de raffinage chinois décline alors que pétrole brut a progressé 50% depuis début année. Stocks élevés en Inde retardent importations, signalant demande faible malgré tensions d'approvisionnement Moyen-Orient. FMI alerte sur risque récession.",
-      "categorie": "matieres_premieres",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-04-16T07:30:54.647Z",
-      "donnees": {}
-    },
-    {
-      "id": "alert-2026-04-16-008",
-      "titre": "TSMC : profit Q1 +58%, dépassement consensus, demande IA record",
-      "texte": "Taiwan Semiconductor Manufacturing dépasse estimations Q1 2026 avec profit +58%. Guidance Q2 revenue au-dessus consensus. Demande IA soutient croissance record. Signal haussier pour secteur technologique et chaîne d'approvisionnement.",
+      "id": "alert-2026-05-10-002",
+      "titre": "Apple : +2,05 %, accord Intel sur la fabrication de puces",
+      "texte": "Apple progresse de 2,05 % à 293,32 $ (Finnhub) après l'annonce d'un accord préliminaire avec Intel pour la fabrication de puces, diversifiant la production au-delà de TSMC.",
       "categorie": "marches",
-      "severite": "info",
+      "severite": "attention",
       "impact": "haussier",
-      "horodatage": "2026-04-16T07:30:54.647Z",
-      "donnees": {}
+      "horodatage": "2026-05-10T08:15:00Z",
+      "donnees": {
+        "symbole": "AAPL",
+        "prix": 293.32,
+        "variation": 2.05
+      }
     },
     {
-      "id": "alert-2026-04-16-009",
-      "titre": "Chine : croissance Q1 2026 confirmée à 5% malgré crise Moyen-Orient",
-      "texte": "Économie chinoise affiche croissance 5% au Q1 2026, dépassant attentes. Industrie tire la croissance. Résilience confirmée malgré escalade géopolitique et perturbations commerciales. Signal positif pour demande globale.",
-      "categorie": "macro",
-      "severite": "info",
+      "id": "alert-2026-05-10-003",
+      "titre": "Toncoin (TON) : +119 % en une semaine, prise de contrôle Telegram",
+      "texte": "Toncoin est passé de 1,32 $ à 2,90 $ en une semaine (CoinGecko), porté par l'annonce de Pavel Durov que Telegram remplacerait la TON Foundation comme développeur principal du réseau.",
+      "categorie": "crypto",
+      "severite": "urgent",
       "impact": "haussier",
-      "horodatage": "2026-04-16T07:30:54.647Z",
-      "donnees": {}
+      "horodatage": "2026-05-10T08:15:00Z",
+      "donnees": {
+        "symbole": "TON",
+        "prix": 2.9,
+        "variation_7d": 119.0
+      }
     },
     {
-      "id": "alert-2026-04-16-010",
-      "titre": "Gaz naturel : dépenses +16% clients BofA, volatilité Iran-USA",
-      "texte": "Dépenses gaz naturel clients Bank of America augmentent 16% dans contexte conflit Iran-USA (jour 48). Volatilité accrue sur approvisionnements énergétiques. Risque de transmission aux prix électricité Europe.",
+      "id": "alert-2026-05-10-004",
+      "titre": "Émirats arabes unis : sortie de l'OPEP après 59 ans",
+      "texte": "Les Émirats arabes unis ont annoncé leur retrait de l'OPEP, creusant les tensions avec l'Arabie saoudite sur les quotas de production. Le pétrole recule de 1,02 % (USO) sur la séance.",
       "categorie": "matieres_premieres",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-04-16T07:30:54.647Z",
-      "donnees": {}
+      "horodatage": "2026-05-10T08:15:00Z",
+      "donnees": {
+        "evenement": "UAE quitte OPEP",
+        "impact_petrole": -1.02
+      }
     }
   ],
   "stats": {
-    "total": 10,
-    "urgent": 2,
+    "total": 4,
+    "urgent": 1,
     "attention": 3,
-    "info": 5
+    "info": 0
   },
-  "model": "claude-haiku-4-5-20251001",
+  "model": "kimi",
   "mode": "consolidated"
 }
