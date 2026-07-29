@@ -104,6 +104,8 @@ const ARTICLE = {
   matrice: [ {secteur:'Défense', niveau:'CRITIQUE', reco:'…'}, … ],
   alertes: [ {signal:'Réduction aide US > 50 %', lecture:'basculement stratégique'}, … ],
   bibliographie: [ {nom:'ISW', url:'…', note:'…'}, … ],
+  amf: '…',
+  articlesLies: [ {titre:'…', href:'…', img:'…', cat:'Géopolitique'}, … ],
 }
 ```
 
