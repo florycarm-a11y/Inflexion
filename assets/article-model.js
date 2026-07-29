@@ -10,3 +10,9 @@ export function parseProbability (str) {
   const somme = valeurs.reduce((a, b) => a + b, 0)
   return Math.round(somme / valeurs.length)
 }
+
+/** Les n dimensions au risque le plus élevé, triées décroissant. Ne mute pas l'entrée. */
+export function topDimensions (dimensions, n = 3) {
+  if (!Array.isArray(dimensions)) return []
+  return [...dimensions].sort((a, b) => b.risque - a.risque).slice(0, n)
+}
