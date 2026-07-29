@@ -60,6 +60,31 @@ test('extractSources ne laisse pas la forme échappée polluer un nom de source'
   assert.deepEqual(r.sources, ['ISW', 'RUSI'])
 })
 
+// Test de conservation : ce qui aurait attrapé le bloquant 1 (corruption du
+// fragment hyperscript). Contrat vérifié : « texte nettoyé + mentions
+// retirées reconstitue l'entrée », caractère pour caractère — aucun contenu
+// éditorial ne doit disparaître, qu'il vienne du texte courant ou d'un
+// fragment non traité (ignoree).
+test('extractSources : texte nettoyé + mention retirée reconstitue l\'entrée', () => {
+  const mentionNormale = ' (source : ISW, RUSI)'
+  // Fixture copiée telle quelle depuis analyse-arctique-groenland-grand-jeu-polaire.html.
+  const fragmentHyperscript = "la force militaire (source\\u00a0: ',h('a',{href:'https://www.cnbc.com/2026/01/07/why-trump-wants-greenland-and-what-makes-it-so-important-for-security.html',target:'_blank',className:'text-[var(--editorial-accent)] hover:underline'},'CNBC')"
+  const texte = 'Les gains territoriaux restent marginaux' + mentionNormale + '. ' +
+    fragmentHyperscript + ' Fin de paragraphe.'
+
+  const r = extractSources(texte)
+
+  // Recoller la mention traitée à l'endroit où elle a été retirée doit
+  // redonner l'entrée d'origine, y compris le fragment hyperscript intact.
+  const reconstitue = r.text.replace(
+    'Les gains territoriaux restent marginaux.',
+    'Les gains territoriaux restent marginaux' + mentionNormale + '.'
+  )
+  assert.equal(reconstitue, texte, 'la reconstitution doit être fidèle à l\'original')
+  assert.deepEqual(r.sources, ['ISW', 'RUSI'])
+  assert.equal(r.ignorees.length, 1)
+})
+
 // Fixture copiée telle quelle depuis analyse-arctique-groenland-grand-jeu-polaire.html :
 // dans cet article, les sources sont des liens React (hyperscript), pas du texte.
 test('extractSources laisse intacte une mention hyperscript au lieu de la corrompre', () => {
