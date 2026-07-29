@@ -976,6 +976,29 @@ Pour chaque article, dans cet ordre — `arctique-groenland-grand-jeu-polaire`, 
 
 `cloud-ia-pme-europeennes` diverge : il porte `.pillar-card`, `.matrix-table`, `.data-row` et `.section-number` que les autres n'ont pas. Conserver ces composants tels quels dans la page ; ils ne passent pas dans le squelette.
 
+### Deux articles demandent un traitement manuel
+
+Relevé exact des 149 mentions du corpus, mesuré :
+
+| Forme | Nombre | Articles concernés | Traitement |
+|---|---|---|---|
+| `(source : ISW, RUSI)` — texte simple | 129 | les 10 autres | automatique par `extractSources` |
+| `(source : ',h('a',{…},'CNBC'),…)` — hyperscript | 20 | **`arctique-groenland-grand-jeu-polaire` uniquement** | **manuel** |
+| `(source CISA/NIAC)` — sans deux-points | 1 | `cloud-ia-pme-europeennes` | **manuel** |
+
+**`arctique-groenland-grand-jeu-polaire`** : ses sources ne sont pas du texte mais des liens React (`h('a',{href:…},'CNBC')`). `extractSources` les détecte et les **refuse** — elle renvoie la mention dans son champ `ignorees` sans rien retirer du texte. C'est délibéré : écrire un parseur hyperscript pour vingt occurrences concentrées dans un seul fichier coûterait plus cher que le gain, et un parseur approximatif corromprait le contenu. Convertir ces 20 mentions à la main, en conservant les liens dans `sources` sous forme `{nom, url}`.
+
+**`cloud-ia-pme-europeennes`** : contient l'unique mention écrite sans deux-points, `(source CISA/NIAC)`. Non reconnue **volontairement** — élargir la regex aux mentions sans séparateur attraperait des faux positifs (« (source de revenus) », « (source de tension) »). Traiter à la main : `sources: ['CISA', 'NIAC']`.
+
+**Contrôle** : après conversion, `extractSources` doit renvoyer `ignorees: []` sur chaque article. Toute entrée restante signale une mention non traitée.
+
+Contrôle de non-régression sur ce point, à lancer après chaque conversion :
+
+```bash
+grep -c '(source' analyse-<nom>.html
+```
+Expected: `0` après conversion. Toute occurrence restante est une mention non traitée.
+
 - [ ] **Step 2 : Contrôler la conservation, article par article**
 
 Même contrôle qu'à la Task 8, Step 3. Le nombre de `sources: [` doit égaler le nombre de mentions d'origine.
