@@ -13,7 +13,7 @@
 #
 # Prérequis :
 #   - ANTHROPIC_API_KEY dans GitHub Secrets
-#   - PAT_TOKEN dans GitHub Secrets
+#   - Aucun PAT requis (utilise GITHUB_TOKEN)
 #   - data/news.json + data de marché (générés par fetch-data.yml)
 
 name: "🧠 Generate Unified Briefing"
@@ -49,8 +49,6 @@ jobs:
     steps:
       - name: "📥 Checkout du repo"
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.PAT_TOKEN }}
 
       - name: "🟢 Setup Node.js 22"
         uses: actions/setup-node@v4

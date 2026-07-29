@@ -4,7 +4,7 @@
 # Prérequis :
 #   - ANTHROPIC_API_KEY dans GitHub Secrets (console.anthropic.com)
 #   - TAVILY_API_KEY dans GitHub Secrets (app.tavily.com — optionnel, enrichit les articles)
-#   - PAT_TOKEN dans GitHub Secrets (pour committer)
+#   - Aucun PAT requis (utilise GITHUB_TOKEN, permissions contents: write)
 #   - data/news.json doit exister (généré par fetch-data.yml)
 
 name: "✍️ Generate Daily Article"
@@ -40,8 +40,6 @@ jobs:
     steps:
       - name: "📥 Checkout du repo"
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.PAT_TOKEN }}
 
       - name: "🟢 Setup Node.js 22"
         uses: actions/setup-node@v4

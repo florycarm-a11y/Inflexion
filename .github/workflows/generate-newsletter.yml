@@ -3,7 +3,7 @@
 #
 # Prérequis :
 #   - ANTHROPIC_API_KEY dans GitHub Secrets
-#   - PAT_TOKEN dans GitHub Secrets
+#   - Aucun PAT requis (utilise GITHUB_TOKEN)
 #   - data/articles/ doit contenir les articles quotidiens de la semaine
 
 name: "📰 Generate Weekly Newsletter"
@@ -37,8 +37,6 @@ jobs:
     steps:
       - name: "📥 Checkout du repo"
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.PAT_TOKEN }}
 
       - name: "🟢 Setup Node.js 22"
         uses: actions/setup-node@v4
@@ -85,7 +83,6 @@ jobs:
         if: steps.check-freshness.outputs.should_run == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.PAT_TOKEN }}
           commit-message: |
             📰 Newsletter hebdomadaire — ${{ github.run_id }}
 

@@ -30,8 +30,6 @@ jobs:
     steps:
       - name: "📥 Checkout"
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.PAT_TOKEN }}
 
       - name: "🔄 Fetch latest (workflow_run may be stale)"
         run: git fetch origin main && git reset --hard origin/main
