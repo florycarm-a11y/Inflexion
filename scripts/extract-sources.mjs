@@ -33,7 +33,7 @@ export function extractSources (texte) {
       return match
     }
     liste
-      .replace(/ /g, ' ')
+      .replace(/\\u00a0/gi, ' ')
       .split(',')
       .map(s => s.trim())
       .filter(Boolean)

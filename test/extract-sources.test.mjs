@@ -44,6 +44,12 @@ test('extractSources gère la forme échappée telle qu\'elle apparaît dans les
   assert.deepEqual(r.ignorees, [])
 })
 
+test('extractSources ne laisse pas la forme échappée polluer un nom de source', () => {
+  // '\\u00a0' en source JS = les 6 caractères \ u 0 0 a 0 (espace insécable échappé)
+  const r = extractSources('Texte (source\\u00a0: ISW,\\u00a0RUSI).')
+  assert.deepEqual(r.sources, ['ISW', 'RUSI'])
+})
+
 // Fixture copiée telle quelle depuis analyse-arctique-groenland-grand-jeu-polaire.html :
 // dans cet article, les sources sont des liens React (hyperscript), pas du texte.
 test('extractSources laisse intacte une mention hyperscript au lieu de la corrompre', () => {
