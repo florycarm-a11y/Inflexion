@@ -1,79 +1,340 @@
 {
-  "updated": "2026-05-10T08:15:00Z",
-  "date": "2026-05-10",
+  "updated": "2026-04-16T07:30:54.647Z",
+  "date": "2026-04-16",
   "global": {
-    "score": 0.15,
+    "score": 0.04,
     "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (+0.15), dominé par la rubrique ai_tech (haussier)."
+    "resume": "Le sentiment global est mixte (+0.04), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.25,
-      "confidence": 0.65,
+      "score": -0.72,
+      "confidence": 0.92,
       "tendance": "baissier",
-      "resume": "Cessez-le-feu temporaire Ukraine-Russie (3 jours) apaise légèrement, mais tensions US-Iran persistantes dans le Golfe et sortie des Émirats arabes unis de l'OPEP alimentent l'incertitude géopolitique.",
+      "resume": "Escalade militaire continue en Ukraine (17 morts, 115 blessés) et au Moyen-Orient avec intensification des frappes israéliennes au Liban. Tensions Iran-USA persistent (jour 48 du conflit) malgré tentatives diplomatiques pakistanaises et américaines.",
       "signaux_cles": [
-        "Cessez-le-feu de 3 jours annoncé entre Russie et Ukraine (Trump, 9 mai)",
-        "Tensions US-Iran : échanges de tirs dans le Golfe, blocus naval (CIA)",
-        "Les Émirats arabes unis quittent l'OPEP après 59 ans"
+        "Ukraine : 17 morts et 115 blessés dans attaques russes du 16 avril",
+        "Liban : démolitions israéliennes massives documentées par images satellites, 4 paramédicaux tués",
+        "Iran-USA : conflit à jour 48, débat sur tolls du Détroit d'Ormuz, risque de perturbation commerciale"
       ]
     },
     "marches": {
-      "score": 0.15,
-      "confidence": 0.6,
+      "score": 0.58,
+      "confidence": 0.85,
       "tendance": "haussier",
-      "resume": "Rally tech dominé par le Nasdaq 100 (+2,34 %) et Tesla (+4,02 %). Cependant, Trump Media rapporte une perte de 400 M$ et les craintes sur le crédit à la consommation persistent.",
+      "resume": "Résultats trimestriels solides (TSMC +58% profit, dépassement consensus), croissance économique positive (Chine 5%, UK 0,5%), mais restructurations sectorielles (Stellantis fermeture Poissy, Snapchat -1000 emplois). Résilience macroéconomique malgré contexte géopolitique.",
       "signaux_cles": [
-        "Nasdaq 100 en hausse de 2,34 % (Finnhub)",
-        "Tesla gagne 4,02 %, Apple +2,05 % (Finnhub)",
-        "Trump Media (TMTG) annonce une perte nette de 400 M$ au T1"
+        "TSMC Q1 2026 : profit +58%, dépassement estimations, demande IA record",
+        "Chine Q1 2026 : croissance 5%, résistance confirmée malgré crise Moyen-Orient",
+        "UK février 2026 : PIB +0,5%, dépassement consensus avant escalade géopolitique"
       ]
     },
     "crypto": {
-      "score": 0.35,
-      "confidence": 0.7,
+      "score": 0.64,
+      "confidence": 0.79,
       "tendance": "haussier",
-      "resume": "Dynamique positive portée par le doublement de Toncoin (TON) après la prise de contrôle par Telegram, et l'expansion de BlackRock dans la tokenisation. Le Fear & Greed Index passe à 47 (neutre), +31 pts sur 30 jours.",
+      "resume": "Bitcoin teste 75 000-80 000 $ avec activité whale accrue et inflows institutionnels (Morgan Stanley fund, Tether renforcement réserves). Dynamique positive tempérée par débats de gouvernance (World Liberty Financial) et volatilité court terme.",
       "signaux_cles": [
-        "Toncoin (TON) double en une semaine, passage à 2,90 $ (CoinGecko)",
-        "BlackRock lance de nouveaux fonds de réserve pour stablecoins",
-        "Fear & Greed Index à 47/100 (neutre), +31 pts sur 30 jours (Alternative.me)"
+        "Bitcoin : test 75 000-80 000 $ avec réveil des whales, niveau de janvier en test",
+        "Morgan Stanley Bitcoin fund : dépasse WisdomTree après 6 jours de trading",
+        "Dogecoin : +4,5% à 0,10 $, surperformance vs BTC/ETH"
       ]
     },
     "matieres_premieres": {
-      "score": 0.05,
-      "confidence": 0.55,
-      "tendance": "neutre",
-      "resume": "L'or progresse de 0,48 % tandis que le pétrole recule de 1,02 % à la suite de l'annonce de la sortie des Émirats arabes unis de l'OPEP, qui pourrait remodeler la dynamique offre-demande.",
+      "score": -0.51,
+      "confidence": 0.88,
+      "tendance": "baissier",
+      "resume": "Pétrole brut sous pression malgré hausse 50% YTD : raffineries chinoises ralentissent, stocks élevés en Inde retardent importations. Risque récession global (avertissement FMI) contrebalance tensions d'approvisionnement Moyen-Orient. Gaz naturel volatilité accrue (+16% dépenses BofA).",
       "signaux_cles": [
-        "Or +0,48 % (Finnhub, ETF GLD)",
-        "Pétrole -1,02 % (Finnhub, ETF USO)",
-        "Sortie des EAU de l'OPEP après 59 ans de membership"
+        "Pétrole : hausse 50% YTD mais raffineries chinoises réduisent activité, équilibre fragile",
+        "FMI : alerte récession potentielle liée aux prix pétroliers élevés",
+        "Gaz naturel : dépenses +16% pour clients BofA, volatilité Iran-USA"
       ]
     },
     "ai_tech": {
-      "score": 0.4,
-      "confidence": 0.75,
-      "tendance": "haussier",
-      "resume": "Apple et Intel concluent un accord préliminaire de fabrication de puces, OpenAI dévoile des modèles vocaux GPT-5-class, et la concurrence s'intensifie entre Claude Cowork et ChatGPT Codex.",
+      "score": 0.41,
+      "confidence": 0.72,
+      "tendance": "mixte",
+      "resume": "Initiatives réglementaires européennes (CEPD consultation AIPD) et suisses (6 banques stablecoin CHF) avancent. Failles sécurité Windows 11 et Chrome persistent. Pivots stratégiques (Allbirds → IA) et investissements spatiaux (X-Energy IPO $800M) signalent transformation secteur.",
       "signaux_cles": [
-        "Apple et Intel signent un accord préliminaire de fabrication de puces",
-        "OpenAI dévoile des modèles vocaux de classe GPT-5 pour orchestration temps réel",
-        "GameStop envisage une offre sur eBay, rappelant le deal AOL-Time Warner"
+        "CEPD : consultation publique modèle européen IA lancée avril 2026",
+        "Suisse : 6 banques avancent stablecoin CHF vs retard européen",
+        "X-Energy : IPO $800M soutenue Amazon, repositionnement nucléaire-spatial"
       ]
     }
   },
   "historique": [
     {
-      "date": "2026-05-10",
-      "global": 0.15,
-      "geopolitique": -0.25,
-      "marches": 0.15,
+      "date": "2026-02-27",
+      "global": 0.03,
+      "geopolitique": -0.65,
+      "marches": 0.42,
+      "crypto": -0.58,
+      "matieres_premieres": 0.35,
+      "ai_tech": 0.71
+    },
+    {
+      "date": "2026-03-01",
+      "global": -0.35,
+      "geopolitique": -0.85,
+      "marches": -0.72,
+      "crypto": 0.62,
+      "matieres_premieres": -0.68,
+      "ai_tech": 0.15
+    },
+    {
+      "date": "2026-03-02",
+      "global": -0.44,
+      "geopolitique": -0.85,
+      "marches": -0.42,
+      "crypto": 0.28,
+      "matieres_premieres": -0.72,
+      "ai_tech": -0.15
+    },
+    {
+      "date": "2026-03-04",
+      "global": -0.15,
+      "geopolitique": -0.85,
+      "marches": -0.72,
+      "crypto": -0.15,
+      "matieres_premieres": 0.78,
+      "ai_tech": 0.35
+    },
+    {
+      "date": "2026-03-06",
+      "global": -0.13,
+      "geopolitique": -0.85,
+      "marches": -0.42,
+      "crypto": 0.15,
+      "matieres_premieres": 0.78,
+      "ai_tech": -0.28
+    },
+    {
+      "date": "2026-03-09",
+      "global": -0.46,
+      "geopolitique": -0.75,
+      "marches": -0.45,
+      "crypto": 0.15,
+      "matieres_premieres": -0.68,
+      "ai_tech": -0.35
+    },
+    {
+      "date": "2026-03-12",
+      "global": -0.6,
+      "geopolitique": -0.85,
+      "marches": -0.72,
+      "crypto": -0.38,
+      "matieres_premieres": -0.88,
+      "ai_tech": 0.15
+    },
+    {
+      "date": "2026-03-16",
+      "global": -0.28,
+      "geopolitique": -0.75,
+      "marches": -0.42,
+      "crypto": 0.68,
+      "matieres_premieres": -0.58,
+      "ai_tech": -0.28
+    },
+    {
+      "date": "2026-03-19",
+      "global": -0.29,
+      "geopolitique": -0.75,
+      "marches": -0.35,
+      "crypto": 0.15,
+      "matieres_premieres": -0.65,
+      "ai_tech": 0.42
+    },
+    {
+      "date": "2026-03-20",
+      "global": -0.15,
+      "geopolitique": -0.65,
+      "marches": -0.58,
+      "crypto": -0.42,
+      "matieres_premieres": 0.72,
+      "ai_tech": 0.15
+    },
+    {
+      "date": "2026-03-21",
+      "global": -0.44,
+      "geopolitique": -0.65,
+      "marches": -0.45,
+      "crypto": -0.35,
+      "matieres_premieres": -0.72,
+      "ai_tech": 0.15
+    },
+    {
+      "date": "2026-03-22",
+      "global": -0.11,
+      "geopolitique": -0.82,
+      "marches": -0.45,
+      "crypto": -0.38,
+      "matieres_premieres": 0.68,
+      "ai_tech": 0.52
+    },
+    {
+      "date": "2026-03-23",
+      "global": -0.34,
+      "geopolitique": -0.85,
+      "marches": -0.72,
+      "crypto": -0.78,
+      "matieres_premieres": 0.68,
+      "ai_tech": 0.15
+    },
+    {
+      "date": "2026-03-26",
+      "global": -0.5,
+      "geopolitique": -0.85,
+      "marches": -0.62,
+      "crypto": -0.15,
+      "matieres_premieres": -0.72,
+      "ai_tech": 0.18
+    },
+    {
+      "date": "2026-03-27",
+      "global": -0.39,
+      "geopolitique": -0.85,
+      "marches": -0.62,
+      "crypto": -0.78,
+      "matieres_premieres": 0.72,
+      "ai_tech": -0.45
+    },
+    {
+      "date": "2026-03-28",
+      "global": -0.1,
+      "geopolitique": -0.75,
+      "marches": -0.58,
+      "crypto": 0.12,
+      "matieres_premieres": 0.68,
+      "ai_tech": 0.15
+    },
+    {
+      "date": "2026-03-29",
+      "global": -0.21,
+      "geopolitique": -0.85,
+      "marches": -0.62,
+      "crypto": -0.35,
+      "matieres_premieres": 0.72,
+      "ai_tech": 0.15
+    },
+    {
+      "date": "2026-03-31",
+      "global": -0.03,
+      "geopolitique": -0.72,
+      "marches": 0.18,
+      "crypto": -0.58,
+      "matieres_premieres": 0.64,
+      "ai_tech": 0.52
+    },
+    {
+      "date": "2026-04-01",
+      "global": -0.21,
+      "geopolitique": -0.75,
+      "marches": -0.15,
+      "crypto": -0.55,
+      "matieres_premieres": 0.25,
+      "ai_tech": 0.45
+    },
+    {
+      "date": "2026-04-02",
+      "global": -0.18,
+      "geopolitique": -0.82,
+      "marches": -0.35,
+      "crypto": -0.71,
+      "matieres_premieres": 0.68,
+      "ai_tech": 0.42
+    },
+    {
+      "date": "2026-04-03",
+      "global": -0.19,
+      "geopolitique": -0.85,
+      "marches": -0.42,
+      "crypto": -0.38,
+      "matieres_premieres": 0.78,
+      "ai_tech": -0.15
+    },
+    {
+      "date": "2026-04-04",
+      "global": -0.03,
+      "geopolitique": -0.85,
+      "marches": -0.15,
+      "crypto": 0.05,
+      "matieres_premieres": 0.78,
+      "ai_tech": 0.12
+    },
+    {
+      "date": "2026-04-06",
+      "global": 0.08,
+      "geopolitique": -0.72,
+      "marches": 0.18,
+      "crypto": 0.31,
+      "matieres_premieres": 0.68,
+      "ai_tech": 0.12
+    },
+    {
+      "date": "2026-04-07",
+      "global": -0.25,
+      "geopolitique": -0.85,
+      "marches": -0.62,
+      "crypto": -0.71,
+      "matieres_premieres": 0.68,
+      "ai_tech": 0.42
+    },
+    {
+      "date": "2026-04-08",
+      "global": 0.06,
+      "geopolitique": -0.65,
+      "marches": 0.58,
+      "crypto": 0.72,
+      "matieres_premieres": -0.78,
+      "ai_tech": 0.68
+    },
+    {
+      "date": "2026-04-09",
+      "global": -0.23,
+      "geopolitique": -0.65,
+      "marches": -0.45,
       "crypto": 0.35,
-      "matieres_premieres": 0.05,
-      "ai_tech": 0.4
+      "matieres_premieres": -0.72,
+      "ai_tech": 0.58
+    },
+    {
+      "date": "2026-04-10",
+      "global": 0.02,
+      "geopolitique": -0.65,
+      "marches": -0.25,
+      "crypto": 0.15,
+      "matieres_premieres": 0.55,
+      "ai_tech": 0.42
+    },
+    {
+      "date": "2026-04-11",
+      "global": 0.01,
+      "geopolitique": -0.45,
+      "marches": -0.15,
+      "crypto": 0.55,
+      "matieres_premieres": -0.35,
+      "ai_tech": 0.42
+    },
+    {
+      "date": "2026-04-12",
+      "global": -0.24,
+      "geopolitique": -0.85,
+      "marches": -0.42,
+      "crypto": -0.68,
+      "matieres_premieres": 0.72,
+      "ai_tech": 0.15
+    },
+    {
+      "date": "2026-04-16",
+      "global": 0.04,
+      "geopolitique": -0.72,
+      "marches": 0.58,
+      "crypto": 0.64,
+      "matieres_premieres": -0.51,
+      "ai_tech": 0.41
     }
   ],
-  "model": "kimi",
+  "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
 }
