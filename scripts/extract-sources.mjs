@@ -34,10 +34,12 @@ export function extractSources (texte) {
     }
     liste
       .replace(/\\u00a0/gi, ' ')
-      .split(',')
+      .split(/[,;]/)
       .map(s => s.trim())
       .filter(Boolean)
-      .forEach(s => { if (!trouvees.includes(s)) trouvees.push(s) })
+      .forEach(s => {
+        if (!trouvees.some(t => t.toLowerCase() === s.toLowerCase())) trouvees.push(s)
+      })
     return ''
   })
   return { text: nettoye, sources: trouvees, ignorees }

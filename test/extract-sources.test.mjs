@@ -29,6 +29,16 @@ test('extractSources dédoublonne en conservant l\'ordre', () => {
   assert.deepEqual(r.ignorees, [])
 })
 
+test('extractSources dédoublonne indépendamment de la casse, en gardant la première graphie', () => {
+  const r = extractSources('X (source : ISW). Y (source : isw, Isw).')
+  assert.deepEqual(r.sources, ['ISW'])
+})
+
+test('extractSources découpe une liste de sources sur la virgule ou le point-virgule', () => {
+  const r = extractSources('X (source : ISW; RUSI, Mandiant).')
+  assert.deepEqual(r.sources, ['ISW', 'RUSI', 'Mandiant'])
+})
+
 test('extractSources laisse intact un texte sans mention', () => {
   const r = extractSources('Aucune source ici.')
   assert.deepEqual(r.sources, [])
