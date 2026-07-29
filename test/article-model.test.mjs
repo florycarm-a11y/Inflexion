@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { parseProbability, topDimensions } from '../assets/article-model.js'
+import { parseProbability, topDimensions, scenarioWidths } from '../assets/article-model.js'
 
 test('parseProbability lit une fourchette et renvoie son milieu arrondi', () => {
   assert.equal(parseProbability('Probabilité : 25-30 %'), 28)
@@ -48,4 +48,35 @@ test('topDimensions ne modifie pas le tableau reçu', () => {
 
 test('topDimensions tolère moins de dimensions que demandé', () => {
   assert.equal(topDimensions(DIMENSIONS.slice(0, 2), 3).length, 2)
+})
+
+test('scenarioWidths normalise les probabilités en pourcentages de largeur', () => {
+  const out = scenarioWidths([
+    { titre: 'Négociation', proba: 28 },
+    { titre: 'Attrition', proba: 48 },
+    { titre: 'Escalade', proba: 18 },
+  ])
+  const total = out.reduce((s, x) => s + x.width, 0)
+  assert.ok(Math.abs(total - 100) < 0.01, `somme = ${total}`)
+  assert.ok(out[1].width > out[0].width)
+  assert.ok(out[0].width > out[2].width)
+})
+
+test('scenarioWidths préserve les champs d\'origine', () => {
+  const out = scenarioWidths([{ titre: 'A', proba: 50, texte: 'lorem' }])
+  assert.equal(out[0].titre, 'A')
+  assert.equal(out[0].texte, 'lorem')
+  assert.equal(out[0].width, 100)
+})
+
+test('scenarioWidths impose une largeur minimale lisible', () => {
+  const out = scenarioWidths([
+    { titre: 'A', proba: 98 },
+    { titre: 'B', proba: 2 },
+  ])
+  assert.ok(out[1].width >= 12, `largeur minimale non respectée : ${out[1].width}`)
+})
+
+test('scenarioWidths renvoie [] pour une entrée vide', () => {
+  assert.deepEqual(scenarioWidths([]), [])
 })
