@@ -19,10 +19,13 @@ export function parseProbability (str) {
   return (arrondi >= 0 && arrondi <= 100) ? arrondi : null
 }
 
-/** Les n dimensions au risque le plus eleve, triees decroissant. Ne mute pas l'entree. */
+/** Les n dimensions au risque le plus eleve, triees decroissant. Ne mute pas l'entree.
+ * n negatif renvoie [] ; une dimension sans risque se classe en dernier. */
 export function topDimensions (dimensions, n = 3) {
   if (!Array.isArray(dimensions)) return []
-  return [...dimensions].sort((a, b) => b.risque - a.risque).slice(0, n)
+  return [...dimensions]
+    .sort((a, b) => (b.risque ?? -Infinity) - (a.risque ?? -Infinity))
+    .slice(0, Math.max(0, n))
 }
 
 /** Largeur minimale d'un bloc scenario, en % - en deca le libelle devient illisible. */

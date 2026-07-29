@@ -63,6 +63,22 @@ test('topDimensions tolère moins de dimensions que demandé', () => {
   assert.equal(topDimensions(DIMENSIONS.slice(0, 2), 3).length, 2)
 })
 
+test('topDimensions renvoie [] pour un n négatif', () => {
+  assert.deepEqual(topDimensions(DIMENSIONS, -1), [])
+})
+
+test('topDimensions classe une dimension sans risque en dernier, pas en premier', () => {
+  // l'absence de risque est placée en tête dans le tableau d'entrée : un
+  // comparateur naïf (b.risque - a.risque === NaN) la laisse en tête au lieu
+  // de la reléguer en dernier.
+  const avecTrou = [
+    { cle: 'X', nom: 'Inconnue' }, // pas de champ risque
+    { cle: 'S', nom: 'Social', risque: 5.6 },
+  ]
+  const top = topDimensions(avecTrou, 2)
+  assert.deepEqual(top.map(d => d.nom), ['Social', 'Inconnue'])
+})
+
 test('scenarioWidths normalise les probabilités en pourcentages de largeur', () => {
   const out = scenarioWidths([
     { titre: 'Négociation', proba: 28 },
