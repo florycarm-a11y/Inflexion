@@ -150,7 +150,7 @@ button,a[href]:not(.prose a){min-height:44px;min-width:44px}
 <div id="app"></div>
 <script src="nav-config.js"></script>
 <script type="module">
-import { h, createRoot, Navigation, Footer, Cover } from './assets/article-shell.js'
+import { h, createRoot, Navigation, Footer, Cover, Section, SousTitre, P, Body } from './assets/article-shell.js'
 import { parseProbability } from './assets/article-model.js'
 
 const RELATED_ARTICLES=[
@@ -218,37 +218,32 @@ bibliographie:[
 ],
 }
 
-// ─── ARTICLE CONTENT ─────────────────────────────────────────────────────────
+// ─── CORPS DU DOSSIER ──────────────────────────────────
 
-function ArticleContent(){
-return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20'},
- h('div',{className:'flex flex-col lg:flex-row gap-10 lg:gap-12'},
+const SECTIONS=[
 
-  h('article',{className:'prose flex-1 min-w-0'},
-
-   // Th\u00e8se centrale
-   h('h2',null,'Th\u00e8se centrale'),
-   h('p',null,
+Section({num:1,titre:'Th\u00e8se centrale'},
+   P(null,
     'La guerre en Ukraine n\u2019est plus un conflit conventionnel classique. C\u2019est une ',h('strong',null,'guerre d\u2019attrition multidimensionnelle'),' o\u00f9 aucune des parties ne dispose de la sup\u00e9riorit\u00e9 n\u00e9cessaire pour une perc\u00e9e d\u00e9cisive. Le front terrestre est fig\u00e9, mais le conflit s\u2019intensifie sur les axes cyber, informationnel et \u00e9conomique. La question centrale n\u2019est plus celle d\u2019une victoire militaire totale, mais celle de la ',h('strong',null,'capacit\u00e9 de r\u00e9silience relative'),' \u2014 qui \u00e9puisera l\u2019autre en premier\u00a0? Et surtout\u00a0: ',h('strong',null,'quelles recompositions g\u00e9opolitiques'),' ce conflit acc\u00e9l\u00e8re-t-il en Europe, en Eurasie et sur les march\u00e9s mondiaux\u00a0?'
    ),
+),
 
-   // Partie I
-   h('h2',null,'I. Situation militaire\u00a0: front stabilis\u00e9, guerre d\u2019attrition'),
+Section({num:2,titre:'Situation militaire\u00a0: front stabilis\u00e9, guerre d\u2019attrition'},
 
-   h('h3',null,'Un front fig\u00e9 sur 1\u00a0200 kilom\u00e8tres'),
-   h('p',null,
-    'Depuis l\u2019\u00e9chec de la contre-offensive ukrainienne de l\u2019\u00e9t\u00e9 2023 et les avances russes limit\u00e9es dans le Donbass, la ligne de front s\u2019est largement stabilis\u00e9e. L\u2019axe principal reste ',h('strong',null,'Zaporizhzhia-Donetsk'),', o\u00f9 les combats d\u2019infanterie et d\u2019artillerie se poursuivent quotidiennement pour des gains territoriaux marginaux \u2014 quelques centaines de m\u00e8tres par semaine dans le meilleur des cas. L\u2019ISW (Institute for the Study of War) estime que les gains russes nets depuis janvier 2025 repr\u00e9sentent ',h('strong',null,'moins de 0,5\u00a0% du territoire ukrainien'),' (source\u00a0: ISW, RUSI).'
+   SousTitre(null,'Un front fig\u00e9 sur 1\u00a0200 kilom\u00e8tres'),
+   P({sources:['ISW','RUSI']},
+    'Depuis l\u2019\u00e9chec de la contre-offensive ukrainienne de l\u2019\u00e9t\u00e9 2023 et les avances russes limit\u00e9es dans le Donbass, la ligne de front s\u2019est largement stabilis\u00e9e. L\u2019axe principal reste ',h('strong',null,'Zaporizhzhia-Donetsk'),', o\u00f9 les combats d\u2019infanterie et d\u2019artillerie se poursuivent quotidiennement pour des gains territoriaux marginaux \u2014 quelques centaines de m\u00e8tres par semaine dans le meilleur des cas. L\u2019ISW (Institute for the Study of War) estime que les gains russes nets depuis janvier 2025 repr\u00e9sentent ',h('strong',null,'moins de 0,5\u00a0% du territoire ukrainien'),'.'
    ),
-   h('p',null,
+   P(null,
     'La Russie compense ses pertes humaines massives par un flux continu de mobilisation et le recrutement de combattants \u00e9trangers. L\u2019Ukraine, confront\u00e9e \u00e0 un d\u00e9ficit d\u00e9mographique structurel, a abaiss\u00e9 l\u2019\u00e2ge de mobilisation \u00e0 25 ans et intensifi\u00e9 le recrutement. Les deux arm\u00e9es sont confront\u00e9es \u00e0 un ',h('strong',null,'probl\u00e8me d\u2019attrition humaine'),' qui conditionne la suite du conflit.'
    ),
 
-   h('h3',null,'Drones et IA\u00a0: la r\u00e9volution du champ de bataille'),
-   h('p',null,
-    'Le conflit ukrainien est devenu le ',h('strong',null,'premier laboratoire mondial de la guerre par drones'),'. L\u2019Ukraine d\u00e9ploie plus de ',h('strong',null,'50\u00a0000 drones par mois'),' \u2014 FPV, reconnaissance, munitions r\u00f4deuses \u2014 cr\u00e9ant une couverture de surveillance quasi permanente du champ de bataille (source\u00a0: RUSI, Atlantic Council). L\u2019intelligence artificielle s\u2019int\u00e8gre progressivement\u00a0: ciblage automatis\u00e9, analyse de donn\u00e9es ISR en temps r\u00e9el, planification de missions. Les syst\u00e8mes ukrainiens comme ',h('strong',null,'Delta et Kropyva'),' agr\u00e8gent les donn\u00e9es de capteurs multiples pour cr\u00e9er une image op\u00e9rationnelle partag\u00e9e.'
+   SousTitre(null,'Drones et IA\u00a0: la r\u00e9volution du champ de bataille'),
+   P({sources:['RUSI','Atlantic Council']},
+    'Le conflit ukrainien est devenu le ',h('strong',null,'premier laboratoire mondial de la guerre par drones'),'. L\u2019Ukraine d\u00e9ploie plus de ',h('strong',null,'50\u00a0000 drones par mois'),' \u2014 FPV, reconnaissance, munitions r\u00f4deuses \u2014 cr\u00e9ant une couverture de surveillance quasi permanente du champ de bataille. L\u2019intelligence artificielle s\u2019int\u00e8gre progressivement\u00a0: ciblage automatis\u00e9, analyse de donn\u00e9es ISR en temps r\u00e9el, planification de missions. Les syst\u00e8mes ukrainiens comme ',h('strong',null,'Delta et Kropyva'),' agr\u00e8gent les donn\u00e9es de capteurs multiples pour cr\u00e9er une image op\u00e9rationnelle partag\u00e9e.'
    ),
-   h('p',null,
-    'La Russie a \u00e9galement massifi\u00e9 sa production de drones, notamment les Shahed iraniens fabriqu\u00e9s sous licence (Geran-2), utilis\u00e9s pour saturer les d\u00e9fenses a\u00e9riennes ukrainiennes. Cette ',h('strong',null,'course aux drones'),' transforme la doctrine militaire mondiale et a des implications directes pour les programmes de d\u00e9fense europ\u00e9ens (source\u00a0: IISS, SIPRI).'
+   P({sources:['IISS','SIPRI']},
+    'La Russie a \u00e9galement massifi\u00e9 sa production de drones, notamment les Shahed iraniens fabriqu\u00e9s sous licence (Geran-2), utilis\u00e9s pour saturer les d\u00e9fenses a\u00e9riennes ukrainiennes. Cette ',h('strong',null,'course aux drones'),' transforme la doctrine militaire mondiale et a des implications directes pour les programmes de d\u00e9fense europ\u00e9ens.'
    ),
 
    h('div',{className:'insight-box not-prose'},
@@ -257,24 +252,24 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
      'Le conflit d\u00e9montre que la sup\u00e9riorit\u00e9 num\u00e9rique en drones low-cost peut compenser partiellement le d\u00e9savantage en artillerie et en blindage. Pour les arm\u00e9es europ\u00e9ennes, c\u2019est un changement de paradigme\u00a0: ',h('strong',null,'la masse redevient un facteur d\u00e9cisif'),', mais sous forme de syst\u00e8mes autonomes bon march\u00e9, pas de plateformes lourdes traditionnelles.'
     )
    ),
+),
 
-   // Partie II
-   h('h2',null,'II. \u00c9conomie de guerre\u00a0: r\u00e9silience sous contrainte'),
+Section({num:3,titre:'\u00c9conomie de guerre\u00a0: r\u00e9silience sous contrainte'},
 
-   h('h3',null,'Un PIB contract\u00e9, une dette explosive'),
-   h('p',null,
-    'Le PIB ukrainien, qui avait plong\u00e9 de 29\u00a0% en 2022, s\u2019est partiellement redress\u00e9 mais reste significativement inf\u00e9rieur \u00e0 son niveau d\u2019avant-guerre. Les estimations pour 2025 situent le PIB \u00e0 ',h('strong',null,'environ 180 milliards de dollars'),' en termes nominaux (contre ~200 Mrd$ en 2021), soit une contraction cumul\u00e9e de pr\u00e8s de 10\u00a0% sur trois ans (source\u00a0: KSE Institute, Banque mondiale). La dette publique d\u00e9passe d\u00e9sormais ',h('strong',null,'90\u00a0% du PIB'),', contre 49\u00a0% avant l\u2019invasion.'
+   SousTitre(null,'Un PIB contract\u00e9, une dette explosive'),
+   P({sources:['KSE Institute','Banque mondiale']},
+    'Le PIB ukrainien, qui avait plong\u00e9 de 29\u00a0% en 2022, s\u2019est partiellement redress\u00e9 mais reste significativement inf\u00e9rieur \u00e0 son niveau d\u2019avant-guerre. Les estimations pour 2025 situent le PIB \u00e0 ',h('strong',null,'environ 180 milliards de dollars'),' en termes nominaux (contre ~200 Mrd$ en 2021), soit une contraction cumul\u00e9e de pr\u00e8s de 10\u00a0% sur trois ans. La dette publique d\u00e9passe d\u00e9sormais ',h('strong',null,'90\u00a0% du PIB'),', contre 49\u00a0% avant l\u2019invasion.'
    ),
-   h('p',null,
-    'La restructuration de la dette ext\u00e9rieure n\u00e9goci\u00e9e en 2024 a permis un ',h('strong',null,'moratoire partiel jusqu\u2019en 2027'),', avec une d\u00e9cote de 37\u00a0% sur les eurobonds. Mais cette bouff\u00e9e d\u2019oxyg\u00e8ne est temporaire\u00a0: les besoins de financement restent colossaux \u2014 entre 3 et 4 milliards de dollars par mois pour maintenir l\u2019effort de guerre et le fonctionnement de l\u2019\u00c9tat (source\u00a0: FMI, KSE Institute).'
+   P({sources:['FMI','KSE Institute']},
+    'La restructuration de la dette ext\u00e9rieure n\u00e9goci\u00e9e en 2024 a permis un ',h('strong',null,'moratoire partiel jusqu\u2019en 2027'),', avec une d\u00e9cote de 37\u00a0% sur les eurobonds. Mais cette bouff\u00e9e d\u2019oxyg\u00e8ne est temporaire\u00a0: les besoins de financement restent colossaux \u2014 entre 3 et 4 milliards de dollars par mois pour maintenir l\u2019effort de guerre et le fonctionnement de l\u2019\u00c9tat.'
    ),
 
-   h('h3',null,'Aide occidentale\u00a0: la question de la durabilit\u00e9'),
-   h('p',null,
-    'L\u2019aide occidentale cumul\u00e9e depuis f\u00e9vrier 2022 d\u00e9passe ',h('strong',null,'250 milliards de dollars'),' (militaire, financi\u00e8re, humanitaire), dont plus de 100 Mrd$ provenant des \u00c9tats-Unis et environ 90 Mrd\u20ac de l\u2019Union europ\u00e9enne (source\u00a0: Kiel Institute). Mais la ',h('strong',null,'fatigue des donateurs'),' s\u2019installe. Le retour de Donald Trump \u00e0 la Maison-Blanche en janvier 2025 a introduit une incertitude majeure\u00a0: les livraisons d\u2019aide militaire am\u00e9ricaine ont ralenti, et la pression pour des n\u00e9gociations s\u2019intensifie.'
+   SousTitre(null,'Aide occidentale\u00a0: la question de la durabilit\u00e9'),
+   P({sources:['Kiel Institute']},
+    'L\u2019aide occidentale cumul\u00e9e depuis f\u00e9vrier 2022 d\u00e9passe ',h('strong',null,'250 milliards de dollars'),' (militaire, financi\u00e8re, humanitaire), dont plus de 100 Mrd$ provenant des \u00c9tats-Unis et environ 90 Mrd\u20ac de l\u2019Union europ\u00e9enne. Mais la ',h('strong',null,'fatigue des donateurs'),' s\u2019installe. Le retour de Donald Trump \u00e0 la Maison-Blanche en janvier 2025 a introduit une incertitude majeure\u00a0: les livraisons d\u2019aide militaire am\u00e9ricaine ont ralenti, et la pression pour des n\u00e9gociations s\u2019intensifie.'
    ),
-   h('p',null,
-    'L\u2019Europe se retrouve en premi\u00e8re ligne. Le ',h('strong',null,'plan de 50 milliards d\u2019euros'),' de l\u2019UE (Ukraine Facility) couvre le financement jusqu\u2019en 2027, mais les besoins de reconstruction \u00e0 long terme sont estim\u00e9s \u00e0 ',h('strong',null,'486 milliards de dollars'),' par la Banque mondiale (source\u00a0: Banque mondiale, RDNA3). Le financement de cet effort titanesque reste la question centrale.'
+   P({sources:['Banque mondiale','RDNA3']},
+    'L\u2019Europe se retrouve en premi\u00e8re ligne. Le ',h('strong',null,'plan de 50 milliards d\u2019euros'),' de l\u2019UE (Ukraine Facility) couvre le financement jusqu\u2019en 2027, mais les besoins de reconstruction \u00e0 long terme sont estim\u00e9s \u00e0 ',h('strong',null,'486 milliards de dollars'),' par la Banque mondiale. Le financement de cet effort titanesque reste la question centrale.'
    ),
 
    h('div',{className:'insight-box alert not-prose'},
@@ -283,29 +278,29 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
      'Si l\u2019aide am\u00e9ricaine militaire est significativement r\u00e9duite ou conditionn\u00e9e \u00e0 des concessions territoriales, l\u2019\u00e9quilibre du conflit bascule en faveur de Moscou. L\u2019Europe devrait alors combler un d\u00e9ficit capacitaire de ',h('strong',null,'40 \u00e0 60 milliards de dollars par an'),' en aide militaire \u2014 un effort incompatible avec les contraintes budg\u00e9taires actuelles de la plupart des \u00c9tats membres.'
     )
    ),
+),
 
-   // Partie III
-   h('h2',null,'III. Dimension cyber et informationnelle\u00a0: le conflit invisible'),
+Section({num:4,titre:'Dimension cyber et informationnelle\u00a0: le conflit invisible'},
 
-   h('h3',null,'WhisperGate et au-del\u00e0\u00a0: le cyber comme arme strat\u00e9gique'),
-   h('p',null,
-    'La dimension cyber du conflit ukrainien constitue un cas d\u2019\u00e9tude sans pr\u00e9c\u00e9dent. D\u00e8s janvier 2022 \u2014 ',h('strong',null,'un mois avant l\u2019invasion terrestre'),' \u2014 le malware WhisperGate ciblait les minist\u00e8res ukrainiens, suivi par HermeticWiper le 23 f\u00e9vrier et l\u2019attaque contre le r\u00e9seau Viasat le 24. Cette s\u00e9quence a d\u00e9montr\u00e9 que ',h('strong',null,'le cyber constitue d\u00e9sormais la premi\u00e8re phase de toute op\u00e9ration militaire majeure'),' (source\u00a0: Microsoft DART, Mandiant, ANSSI).'
+   SousTitre(null,'WhisperGate et au-del\u00e0\u00a0: le cyber comme arme strat\u00e9gique'),
+   P({sources:['Microsoft DART','Mandiant','ANSSI']},
+    'La dimension cyber du conflit ukrainien constitue un cas d\u2019\u00e9tude sans pr\u00e9c\u00e9dent. D\u00e8s janvier 2022 \u2014 ',h('strong',null,'un mois avant l\u2019invasion terrestre'),' \u2014 le malware WhisperGate ciblait les minist\u00e8res ukrainiens, suivi par HermeticWiper le 23 f\u00e9vrier et l\u2019attaque contre le r\u00e9seau Viasat le 24. Cette s\u00e9quence a d\u00e9montr\u00e9 que ',h('strong',null,'le cyber constitue d\u00e9sormais la premi\u00e8re phase de toute op\u00e9ration militaire majeure'),'.'
    ),
-   h('p',null,
-    'Depuis 2022, la Russie a conduit plus de ',h('strong',null,'500 op\u00e9rations cyber attribu\u00e9es'),' contre l\u2019Ukraine \u2014 ciblant les infrastructures \u00e9nerg\u00e9tiques, les r\u00e9seaux de t\u00e9l\u00e9communication, les syst\u00e8mes financiers et les administrations. Le groupe Sandworm (GRU, unit\u00e9 74455) reste le principal acteur offensif, responsable des attaques Industroyer2 contre le r\u00e9seau \u00e9lectrique et des wiper d\u00e9ploy\u00e9s sur les syst\u00e8mes critiques (source\u00a0: ESET, Google TAG).'
-   ),
-
-   h('h3',null,'Huit vagues de frappes sur les infrastructures \u00e9nerg\u00e9tiques'),
-   h('p',null,
-    'La strat\u00e9gie russe de frappes massives sur les infrastructures \u00e9nerg\u00e9tiques ukrainiennes a connu ',h('strong',null,'huit vagues majeures'),' depuis octobre 2022. L\u2019objectif est double\u00a0: d\u00e9grader la capacit\u00e9 industrielle et saper le moral de la population. La campagne de l\u2019hiver 2025-2026 a d\u00e9truit ou endommag\u00e9 ',h('strong',null,'plus de 50\u00a0% de la capacit\u00e9 de production \u00e9lectrique'),' ukrainienne (source\u00a0: Ukrenergo, IEA). Les frappes combinent missiles balistiques (Iskander), missiles de croisi\u00e8re (Kalibr, Kh-101) et drones Shahed dans des attaques saturantes.'
-   ),
-   h('p',null,
-    'L\u2019Ukraine a d\u00e9velopp\u00e9 une r\u00e9silience remarquable\u00a0: d\u00e9centralisation de la production, micro-r\u00e9seaux, g\u00e9n\u00e9rateurs distribu\u00e9s et r\u00e9parations rapides. Mais chaque vague de frappes impose des co\u00fbts cumulatifs croissants. La reconstruction du r\u00e9seau \u00e9nerg\u00e9tique est estim\u00e9e \u00e0 ',h('strong',null,'plus de 12 milliards de dollars'),' (source\u00a0: Banque mondiale).'
+   P({sources:['ESET','Google TAG']},
+    'Depuis 2022, la Russie a conduit plus de ',h('strong',null,'500 op\u00e9rations cyber attribu\u00e9es'),' contre l\u2019Ukraine \u2014 ciblant les infrastructures \u00e9nerg\u00e9tiques, les r\u00e9seaux de t\u00e9l\u00e9communication, les syst\u00e8mes financiers et les administrations. Le groupe Sandworm (GRU, unit\u00e9 74455) reste le principal acteur offensif, responsable des attaques Industroyer2 contre le r\u00e9seau \u00e9lectrique et des wiper d\u00e9ploy\u00e9s sur les syst\u00e8mes critiques.'
    ),
 
-   h('h3',null,'Guerre cognitive et informationnelle'),
-   h('p',null,
-    'Le conflit se joue \u00e9galement sur le terrain de l\u2019information. La Russie d\u00e9ploie une ',h('strong',null,'strat\u00e9gie d\u2019influence multivectorielle'),'\u00a0: r\u00e9seaux de d\u00e9sinformation sur les r\u00e9seaux sociaux, manipulation de la classe politique europ\u00e9enne, amplification des narratifs anti-aide via des proxy m\u00e9diatiques. L\u2019Ukraine a r\u00e9pondu par une communication strat\u00e9gique efficace, mais la bataille de l\u2019attention se joue d\u00e9sormais dans les opinions publiques occidentales \u2014 et la ',h('strong',null,'lassitude informationnelle'),' constitue un risque strat\u00e9gique majeur (source\u00a0: Atlantic Council DFRLab, EU DisinfoLab).'
+   SousTitre(null,'Huit vagues de frappes sur les infrastructures \u00e9nerg\u00e9tiques'),
+   P({sources:['Ukrenergo','IEA']},
+    'La strat\u00e9gie russe de frappes massives sur les infrastructures \u00e9nerg\u00e9tiques ukrainiennes a connu ',h('strong',null,'huit vagues majeures'),' depuis octobre 2022. L\u2019objectif est double\u00a0: d\u00e9grader la capacit\u00e9 industrielle et saper le moral de la population. La campagne de l\u2019hiver 2025-2026 a d\u00e9truit ou endommag\u00e9 ',h('strong',null,'plus de 50\u00a0% de la capacit\u00e9 de production \u00e9lectrique'),' ukrainienne. Les frappes combinent missiles balistiques (Iskander), missiles de croisi\u00e8re (Kalibr, Kh-101) et drones Shahed dans des attaques saturantes.'
+   ),
+   P({sources:['Banque mondiale']},
+    'L\u2019Ukraine a d\u00e9velopp\u00e9 une r\u00e9silience remarquable\u00a0: d\u00e9centralisation de la production, micro-r\u00e9seaux, g\u00e9n\u00e9rateurs distribu\u00e9s et r\u00e9parations rapides. Mais chaque vague de frappes impose des co\u00fbts cumulatifs croissants. La reconstruction du r\u00e9seau \u00e9nerg\u00e9tique est estim\u00e9e \u00e0 ',h('strong',null,'plus de 12 milliards de dollars'),'.'
+   ),
+
+   SousTitre(null,'Guerre cognitive et informationnelle'),
+   P({sources:['Atlantic Council DFRLab','EU DisinfoLab']},
+    'Le conflit se joue \u00e9galement sur le terrain de l\u2019information. La Russie d\u00e9ploie une ',h('strong',null,'strat\u00e9gie d\u2019influence multivectorielle'),'\u00a0: r\u00e9seaux de d\u00e9sinformation sur les r\u00e9seaux sociaux, manipulation de la classe politique europ\u00e9enne, amplification des narratifs anti-aide via des proxy m\u00e9diatiques. L\u2019Ukraine a r\u00e9pondu par une communication strat\u00e9gique efficace, mais la bataille de l\u2019attention se joue d\u00e9sormais dans les opinions publiques occidentales \u2014 et la ',h('strong',null,'lassitude informationnelle'),' constitue un risque strat\u00e9gique majeur.'
    ),
 
    h('div',{className:'insight-box not-prose'},
@@ -314,29 +309,29 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
      'L\u2019Ukraine est le cas d\u2019\u00e9tude principal du cadre SEMPLICE pour la ',h('strong',null,'d\u00e9tection pr\u00e9coce des crises'),'. L\u2019attaque WhisperGate de janvier 2022 \u2014 d\u00e9tect\u00e9e par le delta Cyber de +1.0 \u2014 a signal\u00e9 l\u2019invasion ',h('strong',null,'six semaines avant le 24 f\u00e9vrier'),'. Cette anticipation valide la capacit\u00e9 du cadre \u00e0 int\u00e9grer les signaux faibles des dimensions Information et Cyber, absentes des frameworks traditionnels (PESTEL, SWOT).'
     )
    ),
+),
 
-   // Partie IV
-   h('h2',null,'IV. Recomposition g\u00e9opolitique\u00a0: l\u2019Europe et les acteurs tiers'),
+Section({num:5,titre:'Recomposition g\u00e9opolitique\u00a0: l\u2019Europe et les acteurs tiers'},
 
-   h('h3',null,'Adh\u00e9sion \u00e0 l\u2019UE\u00a0: un processus acc\u00e9l\u00e9r\u00e9 mais incertain'),
-   h('p',null,
-    'L\u2019Ukraine a obtenu le statut de candidat \u00e0 l\u2019UE en juin 2022 et l\u2019ouverture des n\u00e9gociations d\u2019adh\u00e9sion en d\u00e9cembre 2023. Ce calendrier sans pr\u00e9c\u00e9dent refl\u00e8te la solidarit\u00e9 europ\u00e9enne, mais le chemin reste long. Les r\u00e9formes n\u00e9cessaires \u2014 ',h('strong',null,'\u00c9tat de droit, lutte anticorruption, r\u00e9forme judiciaire'),' \u2014 sont consid\u00e9rables et difficilement compatibles avec un \u00e9tat de guerre. L\u2019adh\u00e9sion effective n\u2019est pas envisageable avant ',h('strong',null,'2030 au plus t\u00f4t'),' selon les estimations les plus optimistes (source\u00a0: Chatham House, ECFR).'
+   SousTitre(null,'Adh\u00e9sion \u00e0 l\u2019UE\u00a0: un processus acc\u00e9l\u00e9r\u00e9 mais incertain'),
+   P({sources:['Chatham House','ECFR']},
+    'L\u2019Ukraine a obtenu le statut de candidat \u00e0 l\u2019UE en juin 2022 et l\u2019ouverture des n\u00e9gociations d\u2019adh\u00e9sion en d\u00e9cembre 2023. Ce calendrier sans pr\u00e9c\u00e9dent refl\u00e8te la solidarit\u00e9 europ\u00e9enne, mais le chemin reste long. Les r\u00e9formes n\u00e9cessaires \u2014 ',h('strong',null,'\u00c9tat de droit, lutte anticorruption, r\u00e9forme judiciaire'),' \u2014 sont consid\u00e9rables et difficilement compatibles avec un \u00e9tat de guerre. L\u2019adh\u00e9sion effective n\u2019est pas envisageable avant ',h('strong',null,'2030 au plus t\u00f4t'),' selon les estimations les plus optimistes.'
    ),
 
-   h('h3',null,'Le facteur Trump et la fatigue alli\u00e9e'),
-   h('p',null,
-    'Le retour de Donald Trump \u00e0 la pr\u00e9sidence am\u00e9ricaine en janvier 2025 a profond\u00e9ment reconfigur\u00e9 l\u2019\u00e9quation. Sa rh\u00e9torique de ',h('strong',null,'\u00ab\u00a0r\u00e8glement en 24 heures\u00a0\u00bb'),' n\u2019a pas abouti, mais la pression pour des n\u00e9gociations s\u2019est intensifi\u00e9e. Les livraisons d\u2019armes am\u00e9ricaines ont ralenti, certains programmes ont \u00e9t\u00e9 gel\u00e9s, et le ton de Washington oscille entre soutien conditionn\u00e9 et d\u00e9sengagement implicite. Cette incertitude ',h('strong',null,'fragilise la planification strat\u00e9gique ukrainienne'),' et alimente l\u2019anxi\u00e9t\u00e9 en Europe (source\u00a0: IISS, CFR).'
+   SousTitre(null,'Le facteur Trump et la fatigue alli\u00e9e'),
+   P({sources:['IISS','CFR']},
+    'Le retour de Donald Trump \u00e0 la pr\u00e9sidence am\u00e9ricaine en janvier 2025 a profond\u00e9ment reconfigur\u00e9 l\u2019\u00e9quation. Sa rh\u00e9torique de ',h('strong',null,'\u00ab\u00a0r\u00e8glement en 24 heures\u00a0\u00bb'),' n\u2019a pas abouti, mais la pression pour des n\u00e9gociations s\u2019est intensifi\u00e9e. Les livraisons d\u2019armes am\u00e9ricaines ont ralenti, certains programmes ont \u00e9t\u00e9 gel\u00e9s, et le ton de Washington oscille entre soutien conditionn\u00e9 et d\u00e9sengagement implicite. Cette incertitude ',h('strong',null,'fragilise la planification strat\u00e9gique ukrainienne'),' et alimente l\u2019anxi\u00e9t\u00e9 en Europe.'
    ),
-   h('p',null,
+   P(null,
     'La fatigue alli\u00e9e se manifeste \u00e9galement en Europe. La Hongrie maintient son veto sur certains paquets d\u2019aide, la Slovaquie a infléchi sa position, et des voix critiques s\u2019\u00e9l\u00e8vent en Allemagne et en Italie. Le consensus europ\u00e9en, solide en 2022, s\u2019effrite progressivement sous l\u2019effet de la dur\u00e9e du conflit et des co\u00fbts \u00e9conomiques domestiques.'
    ),
 
-   h('h3',null,'Turquie et Chine\u00a0: jeux d\u2019\u00e9quilibre'),
-   h('p',null,
-    'La Turquie d\u2019Erdo\u011fan continue de jouer un r\u00f4le d\u2019\u00e9quilibriste\u00a0: livraison de drones Bayraktar \u00e0 l\u2019Ukraine, maintien de relations commerciales avec Moscou, m\u00e9diation ponctuelle. Ankara contr\u00f4le un levier strat\u00e9gique via la ',h('strong',null,'Convention de Montreux'),' r\u00e9gissant le passage des D\u00e9troits. La fermeture du Bosphore aux navires de guerre depuis f\u00e9vrier 2022 reste un facteur cl\u00e9 de l\u2019\u00e9quilibre naval en mer Noire (source\u00a0: IISS, ICG).'
+   SousTitre(null,'Turquie et Chine\u00a0: jeux d\u2019\u00e9quilibre'),
+   P({sources:['IISS','ICG']},
+    'La Turquie d\u2019Erdo\u011fan continue de jouer un r\u00f4le d\u2019\u00e9quilibriste\u00a0: livraison de drones Bayraktar \u00e0 l\u2019Ukraine, maintien de relations commerciales avec Moscou, m\u00e9diation ponctuelle. Ankara contr\u00f4le un levier strat\u00e9gique via la ',h('strong',null,'Convention de Montreux'),' r\u00e9gissant le passage des D\u00e9troits. La fermeture du Bosphore aux navires de guerre depuis f\u00e9vrier 2022 reste un facteur cl\u00e9 de l\u2019\u00e9quilibre naval en mer Noire.'
    ),
-   h('p',null,
-    'La Chine maintient une position d\u2019\u00e9quilibre ambigu\u00eb\u00a0: soutien diplomatique implicite \u00e0 Moscou, refus de condamner l\u2019invasion, mais aussi refus de fournir des armes l\u00e9tales. P\u00e9kin est le ',h('strong',null,'premier partenaire commercial de la Russie'),', absorbant les hydrocarbures redirig\u00e9s depuis l\u2019Europe, et fournissant des composants \u00e9lectroniques \u00e0 double usage. La posture chinoise conditionne la capacit\u00e9 de la Russie \u00e0 soutenir l\u2019effort de guerre dans la dur\u00e9e (source\u00a0: SIPRI, Carnegie).'
+   P({sources:['SIPRI','Carnegie']},
+    'La Chine maintient une position d\u2019\u00e9quilibre ambigu\u00eb\u00a0: soutien diplomatique implicite \u00e0 Moscou, refus de condamner l\u2019invasion, mais aussi refus de fournir des armes l\u00e9tales. P\u00e9kin est le ',h('strong',null,'premier partenaire commercial de la Russie'),', absorbant les hydrocarbures redirig\u00e9s depuis l\u2019Europe, et fournissant des composants \u00e9lectroniques \u00e0 double usage. La posture chinoise conditionne la capacit\u00e9 de la Russie \u00e0 soutenir l\u2019effort de guerre dans la dur\u00e9e.'
    ),
 
    h('div',{className:'insight-box gold not-prose'},
@@ -345,11 +340,11 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
      'Le conflit ukrainien acc\u00e9l\u00e8re la ',h('strong',null,'fragmentation de l\u2019ordre mondial en blocs'),'. L\u2019axe Russie-Chine-Iran-Cor\u00e9e du Nord se consolide, tandis que l\u2019Europe est contrainte d\u2019acc\u00e9l\u00e9rer sa r\u00e9industrialisation de d\u00e9fense. Le Global South reste largement non-align\u00e9, exploitant les rivalit\u00e9s. Ce r\u00e9alignement a des implications de long terme pour les cha\u00eenes d\u2019approvisionnement, les march\u00e9s \u00e9nerg\u00e9tiques et les flux de capitaux.'
     )
    ),
+),
 
-   // Partie V
-   h('h2',null,'V. Impact pour les d\u00e9cideurs fran\u00e7ais'),
+Section({num:6,titre:'Impact pour les d\u00e9cideurs fran\u00e7ais'},
 
-   h('h3',null,'Matrice d\u2019impact sectoriel'),
+   SousTitre(null,'Matrice d\u2019impact sectoriel'),
    h('div',{className:'not-prose my-6 overflow-x-auto'},
     h('table',{className:'w-full text-sm border-collapse'},
      h('thead',null,
@@ -389,22 +384,22 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
     )
    ),
 
-   h('h3',null,'Recommandations op\u00e9rationnelles'),
-   h('p',null,
+   SousTitre(null,'Recommandations op\u00e9rationnelles'),
+   P(null,
     h('strong',null,'D\u00e9fense et industrie'),' \u2014 La France doit acc\u00e9l\u00e9rer ses programmes de drones tactiques et de munitions r\u00f4deuses, en tirant les le\u00e7ons du RETEX ukrainien. Les industriels fran\u00e7ais (Thales, MBDA, Nexter/KNDS) sont positionn\u00e9s mais les cadences de production restent insuffisantes face aux besoins identifi\u00e9s. Le programme SCORPION doit int\u00e9grer les enseignements de la guerre d\u2019attrition\u00a0: pr\u00e9pond\u00e9rance de l\u2019artillerie, n\u00e9cessit\u00e9 de masse, r\u00f4le critique de la d\u00e9fense a\u00e9rienne basse couche.'
    ),
-   h('p',null,
+   P(null,
     h('strong',null,'\u00c9nergie'),' \u2014 La d\u00e9pendance \u00e9nerg\u00e9tique europ\u00e9enne au gaz russe a \u00e9t\u00e9 drastiquement r\u00e9duite (de 40\u00a0% \u00e0 moins de 15\u00a0% des importations), mais la diversification reste fragile. Les prix du GNL demeurent structurellement \u00e9lev\u00e9s. Le stockage strat\u00e9gique fran\u00e7ais (obligation de 90\u00a0% au 1er novembre) doit \u00eatre compl\u00e9t\u00e9 par des accords long terme avec les fournisseurs alternatifs (Norv\u00e8ge, Qatar, \u00c9tats-Unis).'
    ),
-   h('p',null,
+   P(null,
     h('strong',null,'Cyber et information'),' \u2014 Le conflit valide la n\u00e9cessit\u00e9 d\u2019une ',h('strong',null,'doctrine cyber offensive fran\u00e7aise'),' assum\u00e9e. L\u2019ANSSI doit renforcer la protection des OIV et des administrations, en s\u2019appuyant sur le partage de renseignement avec les partenaires (Five Eyes, UE). La lutte contre la d\u00e9sinformation n\u00e9cessite une approche interministerielle (SGDSN, Viginum, forces arm\u00e9es).'
    ),
-   h('p',null,
+   P(null,
     h('strong',null,'Reconstruction'),' \u2014 La reconstruction de l\u2019Ukraine repr\u00e9sente un march\u00e9 de ',h('strong',null,'486 milliards de dollars'),'. Les entreprises fran\u00e7aises du BTP et des infrastructures (Vinci, Bouygues, Eiffage), de l\u2019\u00e9nergie (EDF, Engie, TotalEnergies) et du transport (Alstom) doivent se positionner d\u00e8s maintenant via les instances multilat\u00e9rales (Ukraine Recovery Conference, BERD, BEI). Le financement passera largement par les institutions europ\u00e9ennes et les actifs russes gel\u00e9s.'
    ),
+),
 
-   // Score SEMPLICE
-   h('h2',null,'\u00c9valuation SEMPLICE'),
+Section({num:7,titre:'\u00c9valuation SEMPLICE'},
    h('div',{className:'not-prose my-6 overflow-x-auto'},
     h('table',{className:'w-full text-sm border-collapse'},
      h('thead',null,
@@ -437,12 +432,12 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
     )
    ),
 
-   h('p',null,
+   P(null,
     h('strong',null,'Lecture du score'),' \u2014 Le composite risque de ',h('strong',null,'5.6/7'),' classe l\u2019Ukraine dans la cat\u00e9gorie \u00ab\u00a0Tr\u00e8s \u00e9lev\u00e9\u00a0\u00bb. Les dimensions Militaire (6.6) et Cyber (6.3) dominent, refl\u00e9tant l\u2019intensit\u00e9 du conflit sur ces axes. Le score d\u2019opportunit\u00e9 mod\u00e9r\u00e9 (3.2/7) est tir\u00e9 vers le haut par la dimension Information (5/7), refl\u00e9tant la capacit\u00e9 ukrainienne de communication strat\u00e9gique et l\u2019\u00e9cosyst\u00e8me tech innovant n\u00e9 du conflit. La dimension Militaire en opportunit\u00e9 (1/7) confirme l\u2019absence de fen\u00eatre de s\u00e9curit\u00e9 \u00e0 court terme.'
    ),
 
    // Indicateurs d'alerte
-   h('h3',null,'Indicateurs d\u2019alerte \u00e0 surveiller'),
+   SousTitre(null,'Indicateurs d\u2019alerte \u00e0 surveiller'),
    h('div',{className:'insight-box not-prose'},
     h('ul',{className:'space-y-1.5 text-sm text-[var(--text-secondary)]'},
      h('li',null,h('strong',null,'R\u00e9duction aide US > 50\u00a0%'),' \u2014 signal de basculement strat\u00e9gique'),
@@ -453,9 +448,9 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
      h('li',null,h('strong',null,'D\u00e9faut souverain ukrainien post-2027'),' \u2014 crise de confiance cr\u00e9anciers')
     )
    ),
+),
 
-   // Trois sc\u00e9narios
-   h('h2',null,'Trois sc\u00e9narios \u00e0 12-24 mois'),
+Section({num:8,titre:'Trois sc\u00e9narios \u00e0 12-24 mois'},
 
    // Sc\u00e9nario 1
    h('div',{className:'not-prose my-6 overflow-hidden border border-[#006650]/20 bg-[#F0FAF5]'},
@@ -501,6 +496,17 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
      )
     )
    ),
+)
+
+]
+
+// ─── FIN DE DOSSIER — blocs conservés en l’état (déplacement : tâche 8) ───
+
+function ArticleTail(){
+return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 md:pb-20'},
+ h('div',{className:'flex flex-col lg:flex-row gap-10 lg:gap-12'},
+
+  h('article',{className:'prose flex-1 min-w-0'},
 
    // Disclaimer AMF
    h('div',{className:'insight-box gold not-prose mt-10'},
@@ -561,14 +567,15 @@ return h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20
 )
 }
 
-// ─── MONTAGE ─────────────────────────────────────────────────────
+// ─── MONTAGE ─────────────────────────────────────
 
 createRoot(document.getElementById('app')).render(
  h('div',null,
   h(Navigation),
   h('main',{id:'main-content'},
    Cover(ARTICLE),
-   h(ArticleContent)
+   Body(SECTIONS),
+   h(ArticleTail)
   ),
   h(Footer)
  )

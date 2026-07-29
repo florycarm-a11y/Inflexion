@@ -152,6 +152,59 @@ return h('footer',{className:'v2-chrome bg-[var(--chrome-ground)] pt-12 sm:pt-16
 )
 }
 
+// ─── CORPS ─────────────────────────────────────────────────
+
+const ROMAINS = ['I','II','III','IV','V','VI','VII','VIII','IX','X']
+
+/** Une section du corps. Le numéro alimente le rail de progression. */
+export function Section (props, ...children) {
+  const { num, titre } = props
+  return h('section', { key: num, id: 'section-' + num, className: 'mb-12 scroll-mt-24', 'data-section': num },
+    h('h2', { className: 'text-xl md:text-2xl font-extrabold text-[var(--text-primary)] leading-snug mb-4' },
+      h('span', { className: 'text-[var(--editorial-accent)] mr-3', style: { fontFamily: "'IBM Plex Mono',monospace" } }, ROMAINS[num - 1]),
+      titre),
+    ...children
+  )
+}
+
+/** Un paragraphe. Ses sources s'affichent dans la gouttière, en regard. */
+export function P (props, ...children) {
+  const sources = (props && props.sources) || []
+  return h('div', { className: 'md:grid md:grid-cols-[1fr_180px] md:gap-6 mb-5' },
+    h('p', { className: 'text-base leading-relaxed text-[var(--text-secondary)]' }, ...children),
+    h('aside', { className: 'mt-2 md:mt-0 text-[11px] leading-snug text-[var(--text-secondary)] md:border-l md:border-[var(--hairline-warm)] md:pl-4' },
+      sources.length
+        ? [
+            h('span', { key: 'l', className: 'block uppercase tracking-[0.12em] text-[var(--editorial-accent)] mb-1', style: { fontFamily: "'IBM Plex Mono',monospace" } }, 'Source'),
+            h('span', { key: 's' }, sources.join(' · ')),
+          ]
+        : null
+    )
+  )
+}
+
+/** Un sous-titre dans une section (remplace les anciens h3). */
+export function SousTitre (props, ...children) {
+  return h('h3', { className: 'text-base md:text-lg font-semibold text-[var(--editorial-accent)] mt-8 mb-3' }, ...children)
+}
+
+/** Corps du dossier : rail de progression + sections. */
+export function Body (sections) {
+  return h('div', { className: 'max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16' },
+    h('div', { className: 'md:grid md:grid-cols-[40px_1fr] md:gap-6' },
+      h('nav', { className: 'hidden md:block', 'aria-label': 'Sections' },
+        h('ol', { className: 'sticky top-24 space-y-3 text-[11px] text-right pr-3 border-r border-[var(--hairline-warm)]', style: { fontFamily: "'IBM Plex Mono',monospace" } },
+          ...sections.map((s, i) =>
+            h('li', { key: i },
+              h('a', { href: '#section-' + (i + 1), className: 'text-[var(--text-secondary)] hover:text-[var(--editorial-accent)] transition-colors' }, ROMAINS[i]))
+          )
+        )
+      ),
+      h('div', { className: 'min-w-0' }, ...sections)
+    )
+  )
+}
+
 // ─── PAGE DE GARDE ─────────────────────────────────────────
 
 /** Page de garde — temps 1 du dossier. Tient dans un écran. */
