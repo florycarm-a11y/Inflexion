@@ -13,7 +13,8 @@ test('parseProbability accepte une valeur simple', () => {
 })
 
 test('parseProbability tolère l\'espace insécable', () => {
-  assert.equal(parseProbability('Probabilité : 25-30 %'), 28)
+  // les espaces ci-dessous sont de vrais NBSP (U+00A0), pas des espaces ASCII
+  assert.equal(parseProbability('Probabilité : 25-30 %'), 28)
 })
 
 test('parseProbability renvoie null si aucun nombre', () => {

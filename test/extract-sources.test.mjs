@@ -10,7 +10,7 @@ test('extractSources sort une mention simple et nettoie le texte', () => {
 })
 
 test('extractSources tolère l\'espace insécable avant les deux-points', () => {
-  const r = extractSources('Texte (source : Mandiant, Google TAG).')
+  const r = extractSources('Texte (source : Mandiant, Google TAG).')
   assert.deepEqual(r.sources, ['Mandiant', 'Google TAG'])
   assert.equal(r.text, 'Texte.')
   assert.deepEqual(r.ignorees, [])
