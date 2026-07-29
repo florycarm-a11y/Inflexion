@@ -28,16 +28,58 @@ export function scenarioWidths (scenarios) {
     const part = 100 / scenarios.length
     return scenarios.map(s => ({ ...s, width: part }))
   }
-  const brutes = scenarios.map(s => ({ ...s, width: ((s.proba || 0) / total) * 100 }))
+  const largeurs = scenarios.map(s => ((s.proba || 0) / total) * 100)
+  // Verrouiller les blocs sous le seuil peut faire passer un donneur sous le
+  // seuil à son tour (cas à 3+ scénarios déséquilibrés) : on itère jusqu'à ce
+  // que plus aucun donneur ne bascule.
+  const verrouilles = new Array(largeurs.length).fill(false)
+  for (let garde = 0; garde < largeurs.length; garde++) {
+    const donneurs = []
+    let masseDonneurs = 0
+    let deficit = 0
+    for (let i = 0; i < largeurs.length; i++) {
+      if (verrouilles[i]) continue
+      if (largeurs[i] < LARGEUR_MIN) {
+        deficit += LARGEUR_MIN - largeurs[i]
+        largeurs[i] = LARGEUR_MIN
+        verrouilles[i] = true
+      } else {
+        donneurs.push(i)
+        masseDonneurs += largeurs[i]
+      }
+    }
+    if (deficit === 0) break
+    for (const i of donneurs) largeurs[i] -= deficit * (largeurs[i] / masseDonneurs)
+  }
 
-  const sous = brutes.filter(b => b.width < LARGEUR_MIN)
-  if (sous.length === 0) return brutes
-  const deficit = sous.reduce((s, b) => s + (LARGEUR_MIN - b.width), 0)
-  const donneurs = brutes.filter(b => b.width >= LARGEUR_MIN)
-  const masseDonneurs = donneurs.reduce((s, b) => s + b.width, 0)
-  return brutes.map(b =>
-    b.width < LARGEUR_MIN
-      ? { ...b, width: LARGEUR_MIN }
-      : { ...b, width: b.width - deficit * (b.width / masseDonneurs) }
-  )
+  // Le point fixe ci-dessus verrouille tout bloc sous le seuil à EXACTEMENT
+  // LARGEUR_MIN : deux scénarios de probabilité différente qui tombent tous
+  // deux sous le seuil se retrouvent à égalité, ce qui inverserait l'ordre
+  // visuel qu'ils sont censés représenter. On brise l'égalité au minimum,
+  // en préservant l'ordre des probabilités, et on prélève l'ajustement sur
+  // le plus grand bloc pour que la somme reste 100.
+  const EPSILON = 1e-6
+  const verrouillesTries = largeurs
+    .map((_, i) => i)
+    .filter(i => verrouilles[i])
+    .sort((a, b) => (scenarios[a].proba || 0) - (scenarios[b].proba || 0))
+  let ajustementTotal = 0
+  let rang = 0
+  let probaPrecedente = null
+  for (const i of verrouillesTries) {
+    const proba = scenarios[i].proba || 0
+    if (probaPrecedente === null || proba > probaPrecedente) {
+      rang++
+      probaPrecedente = proba
+    }
+    const cible = LARGEUR_MIN + (rang - 1) * EPSILON
+    ajustementTotal += cible - largeurs[i]
+    largeurs[i] = cible
+  }
+  if (ajustementTotal > 0) {
+    const plusGrand = largeurs.reduce((iMax, w, i) => (w > largeurs[iMax] ? i : iMax), 0)
+    largeurs[plusGrand] -= ajustementTotal
+  }
+
+  return scenarios.map((s, i) => ({ ...s, width: largeurs[i] }))
 }

@@ -80,3 +80,10 @@ test('scenarioWidths impose une largeur minimale lisible', () => {
 test('scenarioWidths renvoie [] pour une entrée vide', () => {
   assert.deepEqual(scenarioWidths([]), [])
 })
+
+test('scenarioWidths préserve l\'ordre des probabilités et le minimum, à trois scénarios déséquilibrés', () => {
+  const out = scenarioWidths([{ proba: 85 }, { proba: 13 }, { proba: 2 }])
+  assert.ok(out.every(x => x.width >= 12), 'largeur minimale violée')
+  assert.ok(out[0].width > out[1].width && out[1].width > out[2].width, 'ordre inversé')
+  assert.ok(Math.abs(out.reduce((s, x) => s + x.width, 0) - 100) < 0.01, 'somme ≠ 100')
+})
