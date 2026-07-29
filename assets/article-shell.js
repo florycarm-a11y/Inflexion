@@ -157,11 +157,18 @@ return h('footer',{className:'v2-chrome bg-[var(--chrome-ground)] pt-12 sm:pt-16
 const ROMAINS = ['I','II','III','IV','V','VI','VII','VIII','IX','X']
 
 /** Une section du corps. Le numéro alimente le rail de progression. */
+/* `romain` porte la numérotation D'ORIGINE de l'article (I à V), pas le rang
+   dans le tableau : « Thèse centrale », « Évaluation SEMPLICE » et « Trois
+   scénarios » n'ont jamais été numérotés. Renuméroter à la volée décalerait
+   les parties et casserait toute citation existante (« la partie III »).
+   `rang` sert uniquement d'ancre stable. */
 export function Section (props, ...children) {
-  const { num, titre } = props
-  return h('section', { key: num, id: 'section-' + num, className: 'mb-12 scroll-mt-24', 'data-section': num },
+  const { rang, romain, titre } = props
+  return h('section', { key: rang, id: 'section-' + rang, className: 'mb-12 scroll-mt-24', 'data-rang': rang, 'data-romain': romain || '' },
     h('h2', { className: 'text-xl md:text-2xl font-extrabold text-[var(--text-primary)] leading-snug mb-4' },
-      h('span', { className: 'text-[var(--editorial-accent)] mr-3', style: { fontFamily: "'IBM Plex Mono',monospace" } }, ROMAINS[num - 1]),
+      romain
+        ? h('span', { className: 'text-[var(--editorial-accent)] mr-3', style: { fontFamily: "'IBM Plex Mono',monospace" } }, romain + '.')
+        : null,
       titre),
     ...children
   )
@@ -194,9 +201,15 @@ export function Body (sections) {
     h('div', { className: 'md:grid md:grid-cols-[40px_1fr] md:gap-6' },
       h('nav', { className: 'hidden md:block', 'aria-label': 'Sections' },
         h('ol', { className: 'sticky top-24 space-y-3 text-[11px] text-right pr-3 border-r border-[var(--hairline-warm)]', style: { fontFamily: "'IBM Plex Mono',monospace" } },
+          // Le rail lit le romain porté par chaque section. Les sections non
+          // numérotées dans l'article d'origine sont marquées d'un point.
           ...sections.map((s, i) =>
             h('li', { key: i },
-              h('a', { href: '#section-' + (i + 1), className: 'text-[var(--text-secondary)] hover:text-[var(--editorial-accent)] transition-colors' }, ROMAINS[i]))
+              h('a', {
+                href: '#section-' + s.props['data-rang'],
+                title: s.props.titre,
+                className: 'text-[var(--text-secondary)] hover:text-[var(--editorial-accent)] transition-colors'
+              }, s.props['data-romain'] || '·'))
           )
         )
       ),

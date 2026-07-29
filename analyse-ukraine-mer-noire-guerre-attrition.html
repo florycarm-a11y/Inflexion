@@ -222,13 +222,13 @@ bibliographie:[
 
 const SECTIONS=[
 
-Section({num:1,titre:'Th\u00e8se centrale'},
+Section({rang:1,romain:null,titre:'Th\u00e8se centrale'},
    P(null,
     'La guerre en Ukraine n\u2019est plus un conflit conventionnel classique. C\u2019est une ',h('strong',null,'guerre d\u2019attrition multidimensionnelle'),' o\u00f9 aucune des parties ne dispose de la sup\u00e9riorit\u00e9 n\u00e9cessaire pour une perc\u00e9e d\u00e9cisive. Le front terrestre est fig\u00e9, mais le conflit s\u2019intensifie sur les axes cyber, informationnel et \u00e9conomique. La question centrale n\u2019est plus celle d\u2019une victoire militaire totale, mais celle de la ',h('strong',null,'capacit\u00e9 de r\u00e9silience relative'),' \u2014 qui \u00e9puisera l\u2019autre en premier\u00a0? Et surtout\u00a0: ',h('strong',null,'quelles recompositions g\u00e9opolitiques'),' ce conflit acc\u00e9l\u00e8re-t-il en Europe, en Eurasie et sur les march\u00e9s mondiaux\u00a0?'
    ),
 ),
 
-Section({num:2,titre:'Situation militaire\u00a0: front stabilis\u00e9, guerre d\u2019attrition'},
+Section({rang:2,romain:'I',titre:'Situation militaire\u00a0: front stabilis\u00e9, guerre d\u2019attrition'},
 
    SousTitre(null,'Un front fig\u00e9 sur 1\u00a0200 kilom\u00e8tres'),
    P({sources:['ISW','RUSI']},
@@ -254,7 +254,7 @@ Section({num:2,titre:'Situation militaire\u00a0: front stabilis\u00e9, guerre d\
    ),
 ),
 
-Section({num:3,titre:'\u00c9conomie de guerre\u00a0: r\u00e9silience sous contrainte'},
+Section({rang:3,romain:'II',titre:'\u00c9conomie de guerre\u00a0: r\u00e9silience sous contrainte'},
 
    SousTitre(null,'Un PIB contract\u00e9, une dette explosive'),
    P({sources:['KSE Institute','Banque mondiale']},
@@ -280,7 +280,7 @@ Section({num:3,titre:'\u00c9conomie de guerre\u00a0: r\u00e9silience sous contra
    ),
 ),
 
-Section({num:4,titre:'Dimension cyber et informationnelle\u00a0: le conflit invisible'},
+Section({rang:4,romain:'III',titre:'Dimension cyber et informationnelle\u00a0: le conflit invisible'},
 
    SousTitre(null,'WhisperGate et au-del\u00e0\u00a0: le cyber comme arme strat\u00e9gique'),
    P({sources:['Microsoft DART','Mandiant','ANSSI']},
@@ -311,7 +311,7 @@ Section({num:4,titre:'Dimension cyber et informationnelle\u00a0: le conflit invi
    ),
 ),
 
-Section({num:5,titre:'Recomposition g\u00e9opolitique\u00a0: l\u2019Europe et les acteurs tiers'},
+Section({rang:5,romain:'IV',titre:'Recomposition g\u00e9opolitique\u00a0: l\u2019Europe et les acteurs tiers'},
 
    SousTitre(null,'Adh\u00e9sion \u00e0 l\u2019UE\u00a0: un processus acc\u00e9l\u00e9r\u00e9 mais incertain'),
    P({sources:['Chatham House','ECFR']},
@@ -342,7 +342,7 @@ Section({num:5,titre:'Recomposition g\u00e9opolitique\u00a0: l\u2019Europe et le
    ),
 ),
 
-Section({num:6,titre:'Impact pour les d\u00e9cideurs fran\u00e7ais'},
+Section({rang:6,romain:'V',titre:'Impact pour les d\u00e9cideurs fran\u00e7ais'},
 
    SousTitre(null,'Matrice d\u2019impact sectoriel'),
    h('div',{className:'not-prose my-6 overflow-x-auto'},
@@ -399,7 +399,7 @@ Section({num:6,titre:'Impact pour les d\u00e9cideurs fran\u00e7ais'},
    ),
 ),
 
-Section({num:7,titre:'\u00c9valuation SEMPLICE'},
+Section({rang:7,romain:null,titre:'\u00c9valuation SEMPLICE'},
    h('div',{className:'not-prose my-6 overflow-x-auto'},
     h('table',{className:'w-full text-sm border-collapse'},
      h('thead',null,
@@ -450,7 +450,7 @@ Section({num:7,titre:'\u00c9valuation SEMPLICE'},
    ),
 ),
 
-Section({num:8,titre:'Trois sc\u00e9narios \u00e0 12-24 mois'},
+Section({rang:8,romain:null,titre:'Trois sc\u00e9narios \u00e0 12-24 mois'},
 
    // Sc\u00e9nario 1
    h('div',{className:'not-prose my-6 overflow-hidden border border-[#006650]/20 bg-[#F0FAF5]'},
