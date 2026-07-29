@@ -287,3 +287,203 @@ export function Cover (a) {
     )
   )
 }
+
+// ─── APPAREIL CRITIQUE ─────────────────────────────────────
+
+/* Paliers de la matrice d'impact. Ces couleurs encodent une DONNÉE (niveau de
+   risque / opportunité) : elles sont reprises telles quelles de la page
+   d'origine et ne suivent pas la palette d'identité. */
+const NIVEAUX = {
+  'CRITIQUE':    { backgroundColor: '#DC2626', color: '#FFFFFF' },
+  'ÉLEVÉ':       { backgroundColor: '#f59e0b', color: '#FFFFFF' },
+  'MODÉRÉ':      { backgroundColor: '#f59e0b', color: '#FFFFFF' },
+  'OPPORTUNITÉ': { backgroundColor: 'rgba(0,102,80,.1)', color: '#006650' },
+}
+
+/* Échelle de gravité des cartes de scénario, du plus favorable au plus grave.
+   Couleurs-DONNÉE elles aussi : les classes sont recopiées mot pour mot de la
+   page d'origine, opacités comprises, et indexées par le rang du scénario. */
+const GRAVITE = [
+  { carte: 'border border-[#006650]/20 bg-[#F0FAF5]', entete: 'bg-[#006650]/10 border-b border-[#006650]/20', titre: 'text-[#006650]', badge: 'text-[#006650] bg-[#006650]/10' },
+  { carte: 'border border-[#EAB308]/20 bg-[#FFFBEB]', entete: 'bg-[#EAB308]/10 border-b border-[#EAB308]/20', titre: 'text-[#92400E]', badge: 'text-[#92400E] bg-[#EAB308]/10' },
+  { carte: 'border border-[#DC2626]/20 bg-[#FEF2F2]', entete: 'bg-[#DC2626]/10 border-b border-[#DC2626]/20', titre: 'text-[#991B1B]', badge: 'text-[#991B1B] bg-[#DC2626]/10' },
+]
+
+const TH = 'px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[var(--text-secondary)] border-b border-[var(--hairline-warm)]'
+const TD = 'px-3 py-2.5'
+const LIGNE = 'border-b border-[var(--hairline-warm)]'
+
+function TitreAppareil (texte) {
+  return h('h2', { className: 'text-xl md:text-2xl font-extrabold text-[var(--text-primary)] leading-snug mb-4' }, texte)
+}
+
+/** Appareil critique — temps 3 du dossier : ce qui étaye l'analyse (SEMPLICE,
+ * scénarios, matrice, alertes, sources, AMF), puis seulement ensuite le CTA. */
+export function Apparatus (a) {
+  // Un article à quatre scénarios réutiliserait le dernier palier plutôt que
+  // de planter : l'échelle sature, elle ne se replie pas sur undefined.
+  const grav = i => GRAVITE[Math.min(i, GRAVITE.length - 1)]
+
+  return h('div', { className: 'max-w-3xl mx-auto px-4 sm:px-6 pb-16' },
+
+    h('section', { className: 'pt-2' },
+      TitreAppareil('Évaluation SEMPLICE'),
+      h('div', { className: 'my-6 overflow-x-auto' },
+        h('table', { className: 'w-full text-sm border-collapse' },
+          h('thead', null,
+            h('tr', { className: 'bg-[rgba(94,74,58,.08)]' },
+              h('th', { className: 'text-left ' + TH }, 'Dimension'),
+              h('th', { className: 'text-center ' + TH }, 'Score risque'),
+              h('th', { className: 'text-center ' + TH }, 'Score opp.'),
+              h('th', { className: 'text-center ' + TH }, 'Tendance')
+            )
+          ),
+          h('tbody', null,
+            ...a.semplice.dimensions.map(d =>
+              h('tr', { key: d.cle, className: LIGNE },
+                h('td', { className: TD + ' font-medium text-[var(--text-primary)]' }, d.nom),
+                h('td', { className: TD + ' text-center font-data font-semibold text-[#006650]' }, d.risque + '/7'),
+                h('td', { className: TD + ' text-center font-data text-[#5A6178]' }, d.opp + '/7'),
+                h('td', { className: TD + ' text-center text-lg' }, d.tendance)
+              )
+            ),
+            h('tr', { key: 'composite', className: 'bg-[#006650]/5' },
+              h('td', { className: TD + ' font-bold text-[#006650]' }, 'COMPOSITE RISQUE'),
+              h('td', { className: TD + ' text-center font-data font-bold text-[#DC2626] text-base' }, a.semplice.risque + '/7'),
+              h('td', { className: TD + ' text-center font-data font-bold text-[#5A6178]' }, a.semplice.opportunite + '/7'),
+              h('td', { className: TD + ' text-center text-lg' }, a.semplice.tendance)
+            )
+          )
+        )
+      ),
+      a.lectureScore
+        ? h('p', { className: 'text-base leading-relaxed text-[var(--text-secondary)]' },
+            h('strong', { className: 'text-[var(--text-primary)]' }, 'Lecture du score'), ' — ', a.lectureScore)
+        : null
+    ),
+
+    h('section', { className: 'mt-12' },
+      TitreAppareil('Trois scénarios à 12-24 mois'),
+      ...a.scenarios.map((s, i) =>
+        h('div', { key: i, className: 'my-6 overflow-hidden ' + grav(i).carte },
+          h('div', { className: 'px-5 py-3 ' + grav(i).entete },
+            h('div', { className: 'flex items-center justify-between gap-3' },
+              h('span', { className: 'text-sm font-bold ' + grav(i).titre }, 'Scénario ' + (i + 1) + ' — ' + s.titre),
+              h('span', { className: 'text-xs font-semibold px-2 py-1 whitespace-nowrap ' + grav(i).badge }, 'Probabilité : ' + s.fourchette)
+            )
+          ),
+          h('div', { className: 'px-5 py-4' },
+            h('p', { className: 'text-sm text-[var(--text-secondary)] leading-relaxed' },
+              s.texte, ' ',
+              h('strong', { className: 'text-[var(--text-primary)]' }, 'Impact décideurs'), ' : ', s.impact)
+          )
+        )
+      )
+    ),
+
+    a.matrice
+      ? h('section', { className: 'mt-12' },
+          TitreAppareil('Matrice d’impact sectoriel'),
+          h('div', { className: 'my-6 overflow-x-auto' },
+            h('table', { className: 'w-full text-sm border-collapse' },
+              h('thead', null,
+                h('tr', { className: 'bg-[rgba(94,74,58,.08)]' },
+                  h('th', { className: 'text-left ' + TH }, 'Secteur'),
+                  h('th', { className: 'text-left ' + TH }, 'Niveau'),
+                  h('th', { className: 'text-left ' + TH }, 'Recommandation')
+                )
+              ),
+              h('tbody', null,
+                ...a.matrice.map((r, i) =>
+                  h('tr', { key: i, className: i < a.matrice.length - 1 ? LIGNE : '' },
+                    h('td', { className: TD + ' font-medium text-[var(--text-primary)]' }, r.secteur),
+                    h('td', { className: TD },
+                      h('span', { className: 'text-xs font-semibold px-2 py-0.5', style: NIVEAUX[r.niveau] }, r.niveau)),
+                    h('td', { className: TD + ' text-[var(--text-secondary)]' }, r.reco)
+                  )
+                )
+              )
+            )
+          )
+        )
+      : null,
+
+    a.alertes
+      ? h('section', { className: 'mt-12' },
+          SousTitre(null, 'Indicateurs d’alerte à surveiller'),
+          h('div', { className: 'insight-box' },
+            h('ul', { className: 'space-y-1.5 text-sm text-[var(--text-secondary)]' },
+              ...a.alertes.map((al, i) =>
+                h('li', { key: i },
+                  h('strong', { className: 'text-[var(--text-primary)]' }, al.signal), ' — ', al.lecture)
+              )
+            )
+          )
+        )
+      : null,
+
+    h('section', { className: 'mt-12' },
+      TitreAppareil('Sources principales'),
+      a.sourcesMeta
+        ? h('p', { className: 'text-[11px] uppercase tracking-[0.12em] text-[var(--text-secondary)] mb-3', style: { fontFamily: "'IBM Plex Mono',monospace" } }, a.sourcesMeta)
+        : null,
+      h('ul', { className: 'space-y-1.5' },
+        ...a.bibliographie.map((b, i) =>
+          h('li', { key: i },
+            h('a', { href: b.url, target: '_blank', rel: 'noopener noreferrer', className: 'text-xs text-[var(--editorial-accent)] hover:underline' }, b.nom + ' — ' + b.note))
+        )
+      ),
+      a.sourcesNote
+        ? h('p', { className: 'mt-3 text-[10px] text-[var(--text-secondary)] italic' }, a.sourcesNote)
+        : null
+    ),
+
+    a.amf
+      ? h('section', { className: 'mt-12' },
+          h('div', { className: 'insight-box gold' },
+            h('div', { className: 'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2' }, 'Avertissement AMF'),
+            h('p', { className: 'text-xs text-[var(--text-secondary)] leading-relaxed' }, a.amf)
+          )
+        )
+      : null,
+
+    h('div', { className: 'mt-12 text-center' },
+      h('a', { href: 'analyses.html', className: 'inline-block px-6 py-2.5 text-sm font-semibold text-[var(--editorial-accent)] border-2 border-[var(--editorial-accent)] hover:bg-[var(--editorial-accent)] hover:text-[#F5EDE6] transition-colors' }, '← Toutes les analyses')
+    ),
+    h('div', { className: 'mt-6 text-center' },
+      h('a', { href: 'premium.html', className: 'inline-block px-7 py-3.5 bg-[var(--editorial-accent)] hover:bg-[#6E1B1B] text-[#F5EDE6] font-semibold text-sm transition-colors' }, 'Réserver un diagnostic')
+    ),
+
+    a.articlesLies
+      ? h('section', { className: 'mt-14 pt-10 border-t border-[var(--hairline-warm)]' },
+          h('p', { className: 'text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)] mb-4' }, 'Articles liés'),
+          h('div', { className: 'grid grid-cols-1 sm:grid-cols-3 gap-5' },
+            ...a.articlesLies.map((r, i) =>
+              h('a', { key: i, href: r.href, className: 'article-card block overflow-hidden bg-[var(--surface-raised)] border border-[var(--hairline-warm)] no-underline' },
+                h('div', { className: 'aspect-[16/9] overflow-hidden' },
+                  h('img', { src: r.img, alt: '', className: 'w-full h-full object-cover', loading: 'lazy' })
+                ),
+                h('div', { className: 'p-3' },
+                  h('span', { className: `category-${r.cat} text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5`, style: { fontFamily: "'IBM Plex Mono',monospace" } }, r.catLabel),
+                  h('h4', { className: 'mt-2 text-xs font-semibold text-[var(--text-primary)] leading-snug line-clamp-2', style: { fontFamily: "'Archivo',Arial,sans-serif" } }, r.titre)
+                )
+              )
+            )
+          )
+        )
+      : null
+  )
+}
+
+// ─── MONTAGE ───────────────────────────────────────────────
+
+/** Monte l'article complet dans #app. */
+export function renderArticle (article, sections) {
+  createRoot(document.getElementById('app')).render(
+    h('div', null,
+      h(Navigation),
+      h('main', { id: 'main-content' }, Cover(article), Body(sections), Apparatus(article)),
+      h(Footer)
+    )
+  )
+}
