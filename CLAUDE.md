@@ -95,7 +95,7 @@ Python, Signal Engine v2, intelligence SEMPLICE, Kelly/2. Gamma API : DNS bypass
 
 ## 7. APIs (15)
 
-**Avec clé** : Finnhub, GNews, FRED, Alpha Vantage, Messari, Twelve Data, NewsAPI. **Sans clé** : CoinGecko, Alternative.me, DefiLlama, metals.dev, Etherscan, Mempool.space, ECB Data, World Bank.
+Liste des 15 sources, usages et pièges : **`docs/apis.md`**.
 
 ## 8. Commandes & environnement
 
