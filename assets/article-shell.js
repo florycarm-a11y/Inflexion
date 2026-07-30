@@ -220,6 +220,14 @@ export function Body (sections) {
 
 // ─── PAGE DE GARDE ─────────────────────────────────────────
 
+/* L'horizon des scenarios est propre a chaque article : l'Ukraine annonce
+   « 12-24 mois », la Turquie et le Sahel « douze a trente-six prochains mois »,
+   Cuba « six a dix-huit ». L'ecrire en dur affichait un horizon FAUX sur toute
+   page dont l'horizon differait. */
+function titreScenarios (a) {
+  return a.horizonScenarios || 'Trois scénarios à 12-24 mois'
+}
+
 /** Page de garde — temps 1 du dossier. Tient dans un écran. */
 export function Cover (a) {
   const top = topDimensions(a.semplice.dimensions)
@@ -260,7 +268,7 @@ export function Cover (a) {
       ),
 
       h('div', { className: 'mt-8' },
-        h('p', { className: 'text-[11px] uppercase tracking-[0.14em] text-white/40 mb-3', style: { fontFamily: "'IBM Plex Mono',monospace" } }, 'Trois scénarios à 12-24 mois'),
+        h('p', { className: 'text-[11px] uppercase tracking-[0.14em] text-white/40 mb-3', style: { fontFamily: "'IBM Plex Mono',monospace" } }, titreScenarios(a)),
         h('div', { className: 'flex gap-1.5' },
           ...scenarios.map((s, i) =>
             h('div', { key: i, className: 'border border-[rgba(232,228,216,.22)] px-3 py-2.5 min-w-0', style: { width: s.width + '%' } },
@@ -293,11 +301,22 @@ export function Cover (a) {
 /* Paliers de la matrice d'impact. Ces couleurs encodent une DONNÉE (niveau de
    risque / opportunité) : elles sont reprises telles quelles de la page
    d'origine et ne suivent pas la palette d'identité. */
+/* Repli seulement. Chaque article définit sa PROPRE échelle de gravité : la
+   Turquie peint « ÉLEVÉ » en #DC2626 là où l'Ukraine y met #f59e0b et réserve
+   le rouge à « CRITIQUE ». Mapper globalement par libellé décale l'échelle et
+   fait passer un palier pour moins grave qu'il n'est — c'est une altération de
+   couleur-DONNÉE. Chaque ligne de matrice doit donc porter son `style` repris
+   du fichier d'origine ; ce tableau ne sert que si l'article n'en fournit pas. */
 const NIVEAUX = {
   'CRITIQUE':    { backgroundColor: '#DC2626', color: '#FFFFFF' },
   'ÉLEVÉ':       { backgroundColor: '#f59e0b', color: '#FFFFFF' },
   'MODÉRÉ':      { backgroundColor: '#f59e0b', color: '#FFFFFF' },
   'OPPORTUNITÉ': { backgroundColor: 'rgba(0,102,80,.1)', color: '#006650' },
+}
+
+/** Style du badge d'un palier : celui de l'article s'il est fourni, sinon le repli. */
+function styleNiveau (ligne) {
+  return ligne.style || NIVEAUX[ligne.niveau] || NIVEAUX['MODÉRÉ']
 }
 
 /* Échelle de gravité des cartes de scénario, du plus favorable au plus grave.
@@ -363,7 +382,7 @@ export function Apparatus (a) {
     ),
 
     h('section', { className: 'mt-12' },
-      TitreAppareil('Trois scénarios à 12-24 mois'),
+      TitreAppareil(titreScenarios(a)),
       ...a.scenarios.map((s, i) =>
         h('div', { key: i, className: 'my-6 overflow-hidden ' + grav(i).carte },
           h('div', { className: 'px-5 py-3 ' + grav(i).entete },
@@ -398,7 +417,7 @@ export function Apparatus (a) {
                   h('tr', { key: i, className: i < a.matrice.length - 1 ? LIGNE : '' },
                     h('td', { className: TD + ' font-medium text-[var(--text-primary)]' }, r.secteur),
                     h('td', { className: TD },
-                      h('span', { className: 'text-xs font-semibold px-2 py-0.5', style: NIVEAUX[r.niveau] }, r.niveau)),
+                      h('span', { className: 'text-xs font-semibold px-2 py-0.5', style: styleNiveau(r) }, r.niveau)),
                     h('td', { className: TD + ' text-[var(--text-secondary)]' }, r.reco)
                   )
                 )
