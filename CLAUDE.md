@@ -2,7 +2,7 @@
 
 ## 0. Gestion du contexte
 
-- **Ce fichier doit rester ≤ 2 000 tokens.** Ne jamais l'alourdir.
+- **Ce fichier doit rester ≤ 4 500 tokens** (~13 500 caractères ; mesure : `wc -c CLAUDE.md`). Plafond relevé le 2026-07-30 : l'ancien seuil de 2 000 était dépassé de 70 % et n'alertait donc plus. Avant d'ajouter, se demander si le contenu relève de la référence — auquel cas il va dans `docs/` avec un renvoi d'une ligne, comme `docs/apis.md`.
 - Plan mode pour tout refactoring ou audit multi-fichiers ; sub-agents pour lectures de gros fichiers et grep exploratoires ; `/compact` à chaque point d'arrêt logique (préserver : chemins modifiés, erreurs, décisions, bug en cours) ; 1 session = 1 domaine.
 
 ## 1. Vue d'ensemble
