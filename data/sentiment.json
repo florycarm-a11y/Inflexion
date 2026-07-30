@@ -1,78 +1,69 @@
 {
-  "updated": "2026-04-16T07:30:54.647Z",
-  "date": "2026-04-16",
+  "updated": "2026-07-30T11:33:10Z",
+  "date": "2026-07-30",
   "global": {
-    "score": 0.04,
-    "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (+0.04), dominé par la rubrique geopolitique (baissier)."
+    "score": -0.23,
+    "tendance": "baissier",
+    "resume": "Le sentiment global est baissier (-0.23), dominé par la rubrique geopolitique (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.72,
-      "confidence": 0.92,
+      "score": -0.65,
+      "confidence": 0.78,
       "tendance": "baissier",
-      "resume": "Escalade militaire continue en Ukraine (17 morts, 115 blessés) et au Moyen-Orient avec intensification des frappes israéliennes au Liban. Tensions Iran-USA persistent (jour 48 du conflit) malgré tentatives diplomatiques pakistanaises et américaines.",
+      "resume": "Escalade des tensions au Moyen-Orient : frappes iraniennes sur bases américaines, attaque de drones contre navires LNG en Égypte, incident en Pologne. Négociations Iran-Oman sur le détroit d'Ormuz en cours.",
       "signaux_cles": [
-        "Ukraine : 17 morts et 115 blessés dans attaques russes du 16 avril",
-        "Liban : démolitions israéliennes massives documentées par images satellites, 4 paramédicaux tués",
-        "Iran-USA : conflit à jour 48, débat sur tolls du Détroit d'Ormuz, risque de perturbation commerciale"
+        "Iran attaque des bases américaines, l'Arabie saoudite rejoint les frappes en Irak",
+        "Égypte : attaque de drones contre des navires LNG américains",
+        "Objet non identifié s'écrase en Pologne lors de frappes russes en Ukraine"
       ]
     },
     "marches": {
-      "score": 0.58,
-      "confidence": 0.85,
-      "tendance": "haussier",
-      "resume": "Résultats trimestriels solides (TSMC +58% profit, dépassement consensus), croissance économique positive (Chine 5%, UK 0,5%), mais restructurations sectorielles (Stellantis fermeture Poissy, Snapchat -1000 emplois). Résilience macroéconomique malgré contexte géopolitique.",
+      "score": -0.55,
+      "confidence": 0.82,
+      "tendance": "baissier",
+      "resume": "Correction généralisée des indices US : le Nasdaq 100 recule de 2,04 %, le Dow Jones de 2,18 %. Vente sectorielle ciblée sur l'IA et les semi-conducteurs.",
       "signaux_cles": [
-        "TSMC Q1 2026 : profit +58%, dépassement estimations, demande IA record",
-        "Chine Q1 2026 : croissance 5%, résistance confirmée malgré crise Moyen-Orient",
-        "UK février 2026 : PIB +0,5%, dépassement consensus avant escalade géopolitique"
+        "Nasdaq 100 (proxy QQQ) en repli de 2,04 % (Finnhub)",
+        "Dow Jones (proxy DIA) recule de 2,18 % (Finnhub)",
+        "Nvidia chute de 3,55 %, Tesla de 2,97 % (Finnhub)"
       ]
     },
     "crypto": {
-      "score": 0.64,
-      "confidence": 0.79,
-      "tendance": "haussier",
-      "resume": "Bitcoin teste 75 000-80 000 $ avec activité whale accrue et inflows institutionnels (Morgan Stanley fund, Tether renforcement réserves). Dynamique positive tempérée par débats de gouvernance (World Liberty Financial) et volatilité court terme.",
+      "score": -0.22,
+      "confidence": 0.65,
+      "tendance": "baissier",
+      "resume": "Crypto légèrement en repli : Bitcoin à 63 936 $ (-0,7 %), Ethereum à 1 903 $ (-0,9 %). Fear & Greed Index à 28/100 (Fear). Market cap global en recul de 0,47 %.",
       "signaux_cles": [
-        "Bitcoin : test 75 000-80 000 $ avec réveil des whales, niveau de janvier en test",
-        "Morgan Stanley Bitcoin fund : dépasse WisdomTree après 6 jours de trading",
-        "Dogecoin : +4,5% à 0,10 $, surperformance vs BTC/ETH"
+        "Bitcoin à 63 936 $, -0,7 % sur 24h (CoinGecko)",
+        "Fear & Greed Index à 28/100 (Fear, Alternative.me)",
+        "Market cap global crypto -0,47 % sur 24h (CoinGecko)"
       ]
     },
     "matieres_premieres": {
-      "score": -0.51,
-      "confidence": 0.88,
-      "tendance": "baissier",
-      "resume": "Pétrole brut sous pression malgré hausse 50% YTD : raffineries chinoises ralentissent, stocks élevés en Inde retardent importations. Risque récession global (avertissement FMI) contrebalance tensions d'approvisionnement Moyen-Orient. Gaz naturel volatilité accrue (+16% dépenses BofA).",
+      "score": 0.55,
+      "confidence": 0.75,
+      "tendance": "haussier",
+      "resume": "Pétrole en forte hausse : l'ETF USO bondit de 7,32 % sur fond d'escalade au Moyen-Orient. L'or (ETF GLD) progresse légèrement de 0,46 %.",
       "signaux_cles": [
-        "Pétrole : hausse 50% YTD mais raffineries chinoises réduisent activité, équilibre fragile",
-        "FMI : alerte récession potentielle liée aux prix pétroliers élevés",
-        "Gaz naturel : dépenses +16% pour clients BofA, volatilité Iran-USA"
+        "ETF pétrole USO +7,32 % (Finnhub)",
+        "Or (ETF GLD) +0,46 % (Finnhub)",
+        "Tensions sur le détroit d'Ormuz entre l'Iran et Oman"
       ]
     },
     "ai_tech": {
-      "score": 0.41,
-      "confidence": 0.72,
-      "tendance": "mixte",
-      "resume": "Initiatives réglementaires européennes (CEPD consultation AIPD) et suisses (6 banques stablecoin CHF) avancent. Failles sécurité Windows 11 et Chrome persistent. Pivots stratégiques (Allbirds → IA) et investissements spatiaux (X-Energy IPO $800M) signalent transformation secteur.",
+      "score": -0.25,
+      "confidence": 0.62,
+      "tendance": "baissier",
+      "resume": "Inquiétudes sur une bulle IA : le Nikkei chute de 1,49 % sur des ventes ciblées dans les valeurs tech et semi-conducteurs. Alphabet résiste (+0,90 %) malgré la pression sectorielle.",
       "signaux_cles": [
-        "CEPD : consultation publique modèle européen IA lancée avril 2026",
-        "Suisse : 6 banques avancent stablecoin CHF vs retard européen",
-        "X-Energy : IPO $800M soutenue Amazon, repositionnement nucléaire-spatial"
+        "Nikkei 225 en repli de 1,49 % sur des ventes ciblées IA (NewsAPI)",
+        "Experts alertent sur un risque de bulle spéculative dans le secteur IA",
+        "Alphabet (GOOGL) résiste avec +0,90 % (Finnhub)"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-02-27",
-      "global": 0.03,
-      "geopolitique": -0.65,
-      "marches": 0.42,
-      "crypto": -0.58,
-      "matieres_premieres": 0.35,
-      "ai_tech": 0.71
-    },
     {
       "date": "2026-03-01",
       "global": -0.35,
@@ -333,8 +324,17 @@
       "crypto": 0.64,
       "matieres_premieres": -0.51,
       "ai_tech": 0.41
+    },
+    {
+      "date": "2026-07-30",
+      "global": -0.23,
+      "geopolitique": -0.65,
+      "marches": -0.55,
+      "crypto": -0.22,
+      "matieres_premieres": 0.55,
+      "ai_tech": -0.25
     }
   ],
-  "model": "claude-haiku-4-5-20251001",
+  "model": "kimi",
   "mode": "consolidated"
 }
