@@ -2,7 +2,7 @@
 
 ## 0. Gestion du contexte
 
-- **Ce fichier doit rester ≤ 2 000 tokens.** Ne jamais l'alourdir.
+- **Ce fichier doit rester ≤ 4 500 tokens** (~13 500 caractères ; mesure : `wc -c CLAUDE.md`). Plafond relevé le 2026-07-30 : l'ancien seuil de 2 000 était dépassé de 70 % et n'alertait donc plus. Avant d'ajouter, se demander si le contenu relève de la référence — auquel cas il va dans `docs/` avec un renvoi d'une ligne, comme `docs/apis.md`.
 - Plan mode pour tout refactoring ou audit multi-fichiers ; sub-agents pour lectures de gros fichiers et grep exploratoires ; `/compact` à chaque point d'arrêt logique (préserver : chemins modifiés, erreurs, décisions, bug en cours) ; 1 session = 1 domaine.
 
 ## 1. Vue d'ensemble
@@ -47,6 +47,17 @@ Chrome espresso `#17100E` · rouge éditorial `#8E2424` (topbar, filets, hover, 
 
 **Piège de spécificité** : `.prose strong` (0,1,1) écrase les classes Tailwind `text-[#…]` (0,1,0). Un score coloré dans un `<strong>` ne s'affiche pas — comportement d'origine, pas une régression de la migration.
 
+### Articles d'analyse — coquille mutualisée (juillet 2026)
+
+**4 articles** (`ukraine`, `turquie`, `sahel`, `mer-chine`) sont refondus au format **« dossier à deux temps »** : page de garde (verdict SEMPLICE, scénarios dont la **largeur porte la probabilité**, chiffres clés) → corps avec **rail de progression** et **gouttière de sources** en marge → **appareil critique** puis CTA. Gabarit : `analysis-template.html`.
+
+- `assets/article-shell.js` — coquille React partagée (`Navigation`, `Cover`, `Section`, `SousTitre`, `P`, `Body`, `Apparatus`, `Footer`, `renderArticle`). **Elle sert plusieurs articles : ne jamais l'ajuster pour un cas particulier.**
+- `assets/article-model.js` — logique pure, testée. **`npm test`** (30 tests) : premier harness front du dépôt, `node --test 'test/**/*.test.mjs'` (le glob quoté est obligatoire sous Node 25).
+- Un article converti ne porte plus que son objet `ARTICLE` + son corps en `Section`/`P` + `renderArticle`. Les sources vivent dans la prop `sources` des paragraphes, **plus dans le texte**.
+- **Tout ce qui varie d'un article à l'autre doit venir de `ARTICLE`, jamais du squelette** : horizon des scénarios (`horizonScenarios`), séparateur décimal (`separateurDecimal`), couleur des paliers de matrice (`matrice[].style`). Trois régressions ont été causées par des valeurs écrites en dur — dont un horizon faux affiché en ligne et une échelle de gravité décalée.
+- **`Section` porte le romain RÉEL de l'article** (`romain:'III'`), pas son rang dans le tableau ; `null` pour les sections jamais numérotées. Renuméroter casserait les citations existantes.
+- Les 7 autres articles restent à l'ancienne structure (voir le tableau §SEMPLICE) : ils n'ont pas la matière du format.
+
 ### SEMPLICE — Cadre d'évaluation géopolitique
 
 - **Référence** : `expertise.html#semplice` (radar Canvas dual Risk/Opportunité/Combiné, scoreboard, comparaison de 8 cadres).
@@ -57,7 +68,18 @@ Chrome espresso `#17100E` · rouge éditorial `#8E2424` (topbar, filets, hover, 
 - **Grilles v3** : `data/semplice/grille-scoring-quantitative-v3.md` (102 risque + 6 résilience, 60 % quanti / 40 % quali) + `grille-scoring-opportunite-v3.md` (70). `grille-scoring-quantitative.md` (sans suffixe) est **périmée**.
 - **Radar Pays** (`country.html`) : Leaflet (CartoDB Positron) + scatter risque/opportunité + tableau triable + mini radars Canvas.
 - **GeoJSON** : `data/semplice-zones.geojson`, **17 features** (et non 18 : l'Inde n'a pas de polygone, évaluation infra-nationale Tamil Nadu). Zone IDs alignés entre `ZONES[].id` et `properties.zone`.
-- **Chaque analyse** publiée inclut une évaluation SEMPLICE (scores + scénarios), ajoutée au scoreboard (`expertise.html`) et au catalogue (`analyses.html`).
+- **Règle éditoriale** : toute **nouvelle** analyse inclut une évaluation SEMPLICE (8 dimensions **sur /7**, scores + scénarios), ajoutée au scoreboard (`expertise.html`) et au catalogue (`analyses.html`).
+- **⚠ Le corpus existant ne respecte PAS cette règle** (relevé 2026-07-30, mesuré sur les 11 articles React) :
+
+| Structure | Articles | Conséquence |
+|---|---|---|
+| SEMPLICE **/7** + 3 scénarios | `ukraine`, `turquie`, `sahel`, `mer-chine` | seuls convertibles au format « dossier » |
+| SEMPLICE /7, **aucun scénario** | `madagascar` | — |
+| SEMPLICE **/5** (pré-v3) | `cuba` (4,3/5), `arctique` (3,1/5) | scores dans une unité que le site n'emploie plus |
+| **Aucun tableau dimensionnel** | `fta-ue-inde`, `petrole-ormuz`, `corridor-defense`, `cloud-ia` | — |
+
+  Ne jamais présumer qu'un article porte une évaluation SEMPLICE : **le vérifier dans le fichier**. Ne jamais convertir un article en fabriquant les scores manquants. Les deux articles en /5 ne sont pas comparables aux autres tant qu'ils n'ont pas été réévalués.
+- Le séparateur décimal des scores diffère selon les articles (point pour `ukraine`/`turquie`/`sahel`, virgule pour `mer-chine`) : le respecter, ne pas uniformiser d'office.
 
 ## 4. Navigation
 
@@ -73,7 +95,7 @@ Python, Signal Engine v2, intelligence SEMPLICE, Kelly/2. Gamma API : DNS bypass
 
 ## 7. APIs (15)
 
-**Avec clé** : Finnhub, GNews, FRED, Alpha Vantage, Messari, Twelve Data, NewsAPI. **Sans clé** : CoinGecko, Alternative.me, DefiLlama, metals.dev, Etherscan, Mempool.space, ECB Data, World Bank.
+Liste des 15 sources, usages et pièges : **`docs/apis.md`**.
 
 ## 8. Commandes & environnement
 
