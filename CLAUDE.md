@@ -15,7 +15,7 @@
 - **32 pages HTML** à la racine : thématiques (geopolitics, markets, crypto, commodities, etf, ai-tech, premium…), `expertise.html` (#semplice), `country.html` (Radar Pays), `briefing.html`, `analyses.html`, articles `analyse-*.html`, pages légales.
 - **JS racine** : `styles.css`, `nav-shared.js` + `nav-config.js` (nav injectée), `app.js`, `data-loader.js`, `image-catalog.js` (~120 images Unsplash, `matchImage()`), `semplice-zones-config.js`, `semplice-radar.js`, `semplice-country.js`.
 - `data/` (JSON du pipeline + `semplice-zones.geojson` 17 zones), `scripts/` (pipeline Node), `bot/` (Polymarket, Python), `.github/workflows/`.
-- Spécifications design détaillées : `DESIGN-MIGRATION-PROMPT.md`.
+- Spécifications design : `docs/superpowers/specs/2026-07-16-identity-v2-design.md` (identité v2, en production). L'ancien `DESIGN-MIGRATION-PROMPT.md` est périmé — voir `docs/archives/`.
 
 ## 3. Design System (OBLIGATOIRE)
 
