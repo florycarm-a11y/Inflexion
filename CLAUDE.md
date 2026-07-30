@@ -19,19 +19,21 @@
 
 ## 3. Design System (OBLIGATOIRE)
 
-> **⚠ Identité v2 adoptée, migration en cours (juillet 2026).** La palette emerald ci-dessous est **l'état actuel, pas la cible**. Direction retenue : **composition 02 hybride** — chrome sombre achromatique + surfaces claires pour les instruments. Spec : `docs/superpowers/specs/2026-07-16-identity-v2-design.md`. Ne pas « remettre en cohérence » une page vers l'emerald sans vérifier si elle a été migrée.
+> **⚠ Identité v2 « chaude » — migration terminée sur les 31 pages (2026-07-25), mais PAS ENCORE DANS `main`.** Elle vit sur une chaîne de branches empilées : `feat/identity-v2-cohorte-b` (#136) → `feat/identity-v2-propagation` (#135) → `feat/identity-v2-home` (#134) → `main`. **Vérifier la branche avant de juger l'état d'une page.** Dans `main` : v2 « froide » (chrome achromatique `#0E1012`), polices déjà Archivo/IBM Plex. Spec : `docs/superpowers/specs/2026-07-16-identity-v2-design.md`.
 >
 > **Règle absolue : aucun chercher-remplacer global de couleur.** Six couleurs font double emploi — marque **et** donnée : `#006650`, `#33B894`, `#C8955A`, `#a7f3d0`, `#6b7280`, `#D1FAE5`. Remplacer `#006650` recolorerait le palier « risque faible », le palier « opportunité élevée » et l'indicateur O/R ≥ 1. Séparer le sens de l'identité **avant** de toucher à la palette.
+>
+> **Aucun correctif global n'est possible sur les 13 pages articles** (11 `analyse-*.html` React, `analysis-template.html`, `artifact-inflexion.html`) : chacune embarque son propre `<style>` et son propre arbre React. Traiter page par page. Auditer une couleur **par dominante de teinte sur tous les hex**, jamais par liste : les badges de catégorie des heros sont codés en dur (`bg-[#2563eb]`…), pas via `.category-*`.
 
-**Source de vérité visuelle : `index.html`.**
+**Source de vérité couleurs : `assets/design-tokens-v2.css`** (régime `editorial`), consommé via `<body data-design-regime="editorial">`. Source de vérité visuelle : `index.html` (home) et `analyses.html` (pages React).
 
-### Palette (état actuel — en cours de remplacement)
+### Palette v2 chaude — IDENTITÉ
 
-Emerald primary `#006650` · hover/sombre `#06402A` · light `#33B894` · bronze `#C8955A` · bg `#FFFFFF` / alt `#F7F8FA` · text `#1A1F2E` / secondary `#5A6178` · border `#E2E5EB`.
+Chrome espresso `#17100E` · rouge éditorial `#8E2424` (topbar, filets, hover, CTA) · rouge sur fond sombre `#E05A4E` · brun crédibilité `#42301E` · papier `#EDEBE4` / surface `#FFFFFF` · text `#101214` / secondary `#4C5052` · badges `#EAE1D4` fond + `#8E2424` lettres. **Angles : rayon 0.**
 
-**Typo** : Libre Baskerville 700 (titres), Inter (corps), JetBrains Mono (données).
-**Structure** : bronze top bar 3px `#C8955A` · nav mega menu transparent → glass au scroll · hero emerald, label `#33B894`, titre blanc · footer `#F7F8FA`.
-**Couleurs interdites (anciennes)** : `#0B3D1E`, `#072A14`, `#14713A`, `#EDE8DC`, `#C41E3A`, `#8CBF9E`, `#1B6B4A`, `#155A3D`, `#0A1628`, `#0F2035`, `#162A45`, `Plus Jakarta Sans`.
+**Typo** : Archivo 800 (titres), IBM Plex Sans (corps), IBM Plex Mono (données).
+**Emerald = DONNÉE uniquement** : scores SEMPLICE, badges de palier (`CRITIQUE`, `OPPORTUNITÉ`, `NEUTRE`…), échelles de scénario. Jamais du chrome.
+**Couleurs interdites (anciennes)** : `#0B3D1E`, `#072A14`, `#14713A`, `#EDE8DC`, `#C41E3A`, `#8CBF9E`, `#1B6B4A`, `#155A3D`, `#0A1628`, `#0F2035`, `#162A45`, `Plus Jakarta Sans`. **Périmées comme identité** (encore valides comme donnée) : `#006650`, `Libre Baskerville`, `Inter`, `JetBrains Mono`, `#F7F8FA`, `#1A1F2E`, `#E2E5EB`.
 
 ### Architecture réelle des pages
 
@@ -41,7 +43,9 @@ Emerald primary `#006650` · hover/sombre `#06402A` · light `#33B894` · bronze
 - **React — 12 pages** : `index`, `analyses`, `analysis-template`, `artifact-inflexion`, + 8 `analyse-*`.
 - **Hybride** : `briefing.html` (React + `styles.css`, sans nav-shared). **Ni l'un ni l'autre** : `og-image.html`.
 
-`styles.css` contient **226 hex en dur** qui contournent ses variables `:root`, et il existe **3 variantes divergentes** du `tailwind.config` inline : pas de source unique des couleurs aujourd'hui.
+`styles.css` contient **226 hex en dur** qui contournent ses variables `:root`, et il existe **3 variantes divergentes** du `tailwind.config` inline. Sur les articles React, le bloc `colors` de ce `tailwind.config` est **du code mort** (aucun utilitaire `brand-*`/`cool-*` n'est utilisé) : ne pas y toucher, seul `fontFamily` agit.
+
+**Piège de spécificité** : `.prose strong` (0,1,1) écrase les classes Tailwind `text-[#…]` (0,1,0). Un score coloré dans un `<strong>` ne s'affiche pas — comportement d'origine, pas une régression de la migration.
 
 ### SEMPLICE — Cadre d'évaluation géopolitique
 
