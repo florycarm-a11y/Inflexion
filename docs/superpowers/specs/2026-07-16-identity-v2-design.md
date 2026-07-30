@@ -158,7 +158,7 @@ Pendant le pilote :
 - `prototypes/identity-v2/country.html`, son CSS et son shim GeoJSON sont une prévisualisation isolée ;
 - le dossier `prototypes/` reste hors du périmètre copié par le workflow GitHub Pages ;
 - `index.html` reste la source de vérité de la production actuelle ;
-- `DESIGN-MIGRATION-PROMPT.md` reste applicable à la production actuelle, mais doit être marqué obsolète au moment de la bascule globale.
+- ~~`DESIGN-MIGRATION-PROMPT.md` reste applicable à la production actuelle, mais doit être marqué obsolète au moment de la bascule globale.~~ **Fait le 2026-07-30** : la bascule globale a eu lieu (identité v2 en production sur les 31 pages), le document est archivé dans `docs/archives/`.
 
 Après validation du pilote, les jetons partagés versionnés deviendront la source de vérité. Aucun fichier HTML ne devra embarquer sa propre variante de palette.
 
