@@ -220,6 +220,17 @@ export function Body (sections) {
 
 // ─── PAGE DE GARDE ─────────────────────────────────────────
 
+/* Un score se lit « 5.0/7 », jamais « 5/7 » : la decimale porte la precision
+   de l'evaluation. JS rend 5.0 comme "5", d'ou cette mise en forme explicite.
+   Le separateur est celui de l'article — le corpus est partage entre le point
+   (ukraine, turquie, sahel) et la virgule (mer-chine) ; l'uniformiser d'office
+   serait une modification editoriale non demandee. */
+function score (v, a) {
+  if (typeof v !== 'number') return v
+  const t = v.toFixed(1)
+  return (a && a.separateurDecimal === ',') ? t.replace('.', ',') : t
+}
+
 /* L'horizon des scenarios est propre a chaque article : l'Ukraine annonce
    « 12-24 mois », la Turquie et le Sahel « douze a trente-six prochains mois »,
    Cuba « six a dix-huit ». L'ecrire en dur affichait un horizon FAUX sur toute
@@ -249,9 +260,9 @@ export function Cover (a) {
         h('div', null,
           h('p', { className: 'text-[11px] uppercase tracking-[0.14em] text-white/40 mb-2', style: { fontFamily: "'IBM Plex Mono',monospace" } }, 'Verdict SEMPLICE'),
           h('p', { className: 'text-5xl font-extrabold text-[#006650] leading-none', style: { fontFamily: "'IBM Plex Mono',monospace" } },
-            a.semplice.risque, h('span', { className: 'text-xl text-white/40' }, '/7')),
+            score(a.semplice.risque, a), h('span', { className: 'text-xl text-white/40' }, '/7')),
           h('p', { className: 'mt-2 text-sm text-white/70' }, a.semplice.palier + ' · ' + a.semplice.tendance),
-          h('p', { className: 'text-sm text-white/50' }, 'Opportunité ' + a.semplice.opportunite + '/7')
+          h('p', { className: 'text-sm text-white/50' }, 'Opportunité ' + score(a.semplice.opportunite, a) + '/7')
         ),
         h('div', null,
           h('p', { className: 'text-[11px] uppercase tracking-[0.14em] text-white/40 mb-3', style: { fontFamily: "'IBM Plex Mono',monospace" } }, 'Dimensions dominantes'),
@@ -260,7 +271,7 @@ export function Cover (a) {
               h('span', { className: 'w-24 text-xs text-white/70' }, d.nom),
               h('span', { className: 'flex-1 h-1.5 bg-white/10' },
                 h('span', { className: 'block h-1.5 bg-[#006650]', style: { width: (d.risque / 7 * 100) + '%' } })),
-              h('span', { className: 'w-10 text-xs text-white/70 text-right', style: { fontFamily: "'IBM Plex Mono',monospace" } }, d.risque)
+              h('span', { className: 'w-10 text-xs text-white/70 text-right', style: { fontFamily: "'IBM Plex Mono',monospace" } }, score(d.risque, a))
             )
           ),
           h('p', { className: 'mt-2 text-[11px] text-white/35' }, 'Les 8 dimensions : tableau complet en fin de dossier.')
@@ -361,15 +372,15 @@ export function Apparatus (a) {
             ...a.semplice.dimensions.map(d =>
               h('tr', { key: d.cle, className: LIGNE },
                 h('td', { className: TD + ' font-medium text-[var(--text-primary)]' }, d.nom),
-                h('td', { className: TD + ' text-center font-data font-semibold text-[#006650]' }, d.risque + '/7'),
-                h('td', { className: TD + ' text-center font-data text-[#5A6178]' }, d.opp + '/7'),
+                h('td', { className: TD + ' text-center font-data font-semibold text-[#006650]' }, score(d.risque, a) + '/7'),
+                h('td', { className: TD + ' text-center font-data text-[#5A6178]' }, score(d.opp, a) + '/7'),
                 h('td', { className: TD + ' text-center text-lg' }, d.tendance)
               )
             ),
             h('tr', { key: 'composite', className: 'bg-[#006650]/5' },
               h('td', { className: TD + ' font-bold text-[#006650]' }, 'COMPOSITE RISQUE'),
-              h('td', { className: TD + ' text-center font-data font-bold text-[#DC2626] text-base' }, a.semplice.risque + '/7'),
-              h('td', { className: TD + ' text-center font-data font-bold text-[#5A6178]' }, a.semplice.opportunite + '/7'),
+              h('td', { className: TD + ' text-center font-data font-bold text-[#DC2626] text-base' }, score(a.semplice.risque, a) + '/7'),
+              h('td', { className: TD + ' text-center font-data font-bold text-[#5A6178]' }, score(a.semplice.opportunite, a) + '/7'),
               h('td', { className: TD + ' text-center text-lg' }, a.semplice.tendance)
             )
           )
