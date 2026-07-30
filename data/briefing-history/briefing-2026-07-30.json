@@ -1,0 +1,322 @@
+{
+  "date": "2026-07-30",
+  "generated_at": "2026-07-30T11:33:10Z",
+  "type": "full",
+  "model": "kimi",
+  "sources_count": 25,
+  "sources_market": 11,
+  "signal_du_jour": "La divergence pétrole/tech (USO +7,32 %, Nasdaq 100 -2,04 %) révèle un basculement de régime : les investisseurs sanctionnent les valorisations IA tout en récompensant l'énergie, dans un contexte où le choc géopolitique moyen-oriental redessine les frontières du risk-on. Cette rotation, inédite depuis le début de l'année, suggère que le narratif 'IA à tout prix' atteint ses limites face à une inflation collante et une Fed sans marge de manœuvre.",
+  "synthese": {
+    "titre": "Risk-off géopolitique et correction tech : la Fed piégée entre inflation et escalade",
+    "sous_titre": "Le choc pétrolier moyen-oriental redessine les allocations sectorielles et fragilise le momentum IA",
+    "contenu": "## Contexte\n\nLes marchés basculent en <strong>risk-off géopolitique</strong> ce 30 juillet 2026. Les indices US corrigent : le S&P 500 recule de 1,54 % (proxy SPY, Finnhub), le Nasdaq 100 de 2,04 % (proxy QQQ) et le Dow Jones de 2,18 % (proxy DIA). La tech est la plus durement touchée — <strong>Nvidia chute de 3,55 %</strong> et <strong>Tesla de 2,97 %</strong> — tandis que le pétrole bondit de <strong>7,32 %</strong> (ETF USO, Finnhub) sur fond d'escalade au Moyen-Orient. Le <strong>Fear & Greed Index à 28/100 (Fear)</strong> (Alternative.me) confirme un sentiment défensif.\n\nEn Europe, le <strong>DAX résiste avec +0,21 %</strong> (Twelve Data), signe d'une intégration progressive du risque géopolitique. Le Nikkei 225 chute de 1,49 % sur des ventes ciblées dans l'IA (NewsAPI), alimentant les inquiétudes sur une bulle spéculative sectorielle.\n\nSur le front macro, l'<strong>inflation persiste à 3,73 %</strong> YoY (CPI, FRED) et le taux directeur de la Fed reste à <strong>3,63 %</strong>. Le spread 10Y-2Y à 0,45 % (+0,1 point, FRED) écarte une récession immédiate mais signale une croissance fragile. L'<strong>EUR/USD à 1,1451</strong> (Alpha Vantage) reflète un dollar stable malgré le DXY en léger repli à 120,71 (FRED).\n\n## Risques & Opportunités\n\n<strong>Risques identifiés</strong> :\n- <strong>Choc énergétique persistant</strong> : l'escalade au Moyen-Orient (frappes iraniennes sur bases US, attaques de drones contre navires LNG, incident en Pologne) propulse le pétrole. Une rupture sur le détroit d'Ormuz pourrait faire grimper le brut au-dessus de 150 $/baril (estimation Inflexion), réactivant l'inflation mondiale.\n- <strong>Correction tech</strong> : les inquiétudes sur une bulle IA se matérialisent avec le Nikkei en repli de 1,49 %. Une déception sur les bénéfices de Meta ou Microsoft pourrait déclencher une liquidation en cascade.\n- <strong>Fed sans marge</strong> : avec une inflation à 3,73 % et un choc pétrolier en cours, la Fed ne peut ni baisser ni relever ses taux sans risquer de déstabiliser les marchés.\n\n<strong>Opportunités</strong> :\n- <strong>Or refuge</strong> : l'ETF GLD progresse de 0,46 % (Finnhub), confirmant son rôle d'ancrage.\n- <strong>Énergie</strong> : la surperformance du pétrole (+7,32 %) et la résilience du secteur européen (DAX +0,21 %) offrent des opportunités de rotation sectorielle.\n\n## Perspectives\n\nLe scénario central privilégie une <strong>stabilisation de l'inflation autour de 3,5-3,8 %</strong> YoY, contrainte par le choc énergétique. La Fed devrait maintenir ses taux à 3,63 % jusqu'au Q4 2026. Les risques baissiers incluent une escalade majeure sur Ormuz et une correction tech accélérée.\n\n<strong>Agenda</strong> :\n- <strong>30/07</strong> : Décision de la Fed (taux directeur) — impact fort sur USD, Treasury 10Y et actions. Consensus : maintien à 3,63 %.\n- <strong>30/07</strong> : Résultats Meta et Microsoft — impact fort sur Nasdaq 100 et secteur IA.\n- <strong>31/07</strong> : PCE core US (estimation) — impact modéré sur anticipations Fed.\n- <strong>01/08</strong> : NFP US (emploi juillet) — impact fort sur dollar et obligations."
+  },
+  "signaux": [
+    {
+      "titre": "Escalade moyen-orientale : frappes iraniennes et choc pétrolier",
+      "description": "L'Iran a attaqué des bases américaines au Moyen-Orient et l'Arabie saoudite a rejoint les frappes en Irak (Financial Post, Al Jazeera). En parallèle, l'Égypte signale une attaque de drones contre des navires LNG américains (Middle East Eye). Ces événements propulsent l'ETF pétrole USO de 7,32 % à 129,31 $ (Finnhub), dans un contexte où les négociations Iran-Oman sur le détroit d'Ormuz peinent à avancer. Le choc d'offre risque de réactiver l'inflation collante (3,73 % YoY, FRED), piégeant la Fed dans une posture restrictive. En Europe, le DAX résiste (+0,21 %, Twelve Data), suggérant que les investisseurs intègrent déjà le risque géopolitique sans anticipation de récession.",
+      "categorie": "geopolitique",
+      "interconnexions": [
+        {
+          "secteur": "Pétrole & Énergie",
+          "impact": "ETF USO +7,32 % à 129,31 $ (Finnhub)",
+          "explication": "L'escalade militaire au Moyen-Orient crée un risque de disruption sur les flux énergétiques, particulièrement le détroit d'Ormuz."
+        },
+        {
+          "secteur": "Actions US (Tech)",
+          "impact": "Nasdaq 100 -2,04 % (Finnhub)",
+          "explication": "Le choc pétrolier inflationniste réduit la marge de manœuvre de la Fed, pesant sur les valorisations tech à fort multiple."
+        },
+        {
+          "secteur": "Inflation & Politique monétaire",
+          "impact": "CPI 3,73 % YoY, Fed Funds 3,63 % (FRED)",
+          "explication": "Le choc d'offre pétrolier menace de réactiver l'inflation, empêchant tout assouplissement monétaire dans un contexte de croissance déjà fragile."
+        }
+      ],
+      "regions": [
+        "Moyen-Orient",
+        "États-Unis",
+        "Europe"
+      ],
+      "severite": "urgent"
+    },
+    {
+      "titre": "Correction tech et inquiétudes sur bulle IA : Nvidia -3,55 %, Nikkei -1,49 %",
+      "description": "Le secteur technologique subit une correction ciblée : <strong>Nvidia chute de 3,55 %</strong> à 190,01 $, <strong>Tesla de 2,97 %</strong> et <strong>Microsoft de 0,71 %</strong> (Finnhub). Seul Alphabet résiste (+0,90 %). Le Nikkei 225 recule de 1,49 % sur des ventes ciblées dans les valeurs IA et semi-conducteurs (NewsAPI), confirmant les alertes d'experts sur une bulle spéculative. Le Fear & Greed Index à 28/100 (Fear) traduit un sentiment défensif sans panique. Cette rotation suggère que le narratif 'IA à tout prix' atteint ses limites face à des valorisations élevées et une Fed restrictive.",
+      "categorie": "marches",
+      "interconnexions": [
+        {
+          "secteur": "Crypto",
+          "impact": "BTC -0,7 %, ETH -0,9 % (CoinGecko)",
+          "explication": "La corrélation crypto/tech se renforce : la vente sectorielle sur l'IA entraîne une consolidation simultanée sur Bitcoin et Ethereum."
+        },
+        {
+          "secteur": "Actions japonaises",
+          "impact": "Nikkei 225 -1,49 % (NewsAPI)",
+          "explication": "Les ventes ciblées sur les semi-conducteurs et l'IA au Japon signalent un repositionnement mondial hors du secteur tech à haute beta."
+        },
+        {
+          "secteur": "Obligations (Treasury 10Y)",
+          "impact": "Treasury 10Y à 4,61 %, -4 pb (FRED)",
+          "explication": "La baisse des taux longs malgré l'inflation collante reflète une prime de risque croissante sur la croissance, favorable aux obligations refuge."
+        }
+      ],
+      "regions": [
+        "États-Unis",
+        "Japon",
+        "Global"
+      ],
+      "severite": "attention"
+    },
+    {
+      "titre": "Bitcoin en consolidation à 63 936 $ — Fear & Greed à 28/100",
+      "description": "Bitcoin se maintient à <strong>63 936 $ (-0,7 %)</strong> et Ethereum à <strong>1 903 $ (-0,9 %)</strong> sur 24h (CoinGecko), dans un contexte de <strong>Fear & Greed Index à 28/100 (Fear)</strong> (Alternative.me). Le market cap global crypto recule de 0,47 %. La dominance BTC reste élevée à 56,5 %, signalant une préférence pour la qualité. Les frais BTC bas (1 sat/vB) et le hashrate robuste (889 EH/s, Mempool) confirment la santé technique du réseau. Cette consolidation, dans un régime risk-off, suggère que les détenteurs institutionnels ne liquident pas massivement, contrairement aux crises précédentes.",
+      "categorie": "crypto",
+      "interconnexions": [
+        {
+          "secteur": "Actions tech",
+          "impact": "Nasdaq 100 -2,04 % (Finnhub)",
+          "explication": "La corrélation BTC/Nasdaq se renforce : la vente tech entraîne une consolidation crypto, sans liquidation en cascade."
+        },
+        {
+          "secteur": "DeFi",
+          "impact": "TVL totale 484,8 Md$ (DefiLlama)",
+          "explication": "La stabilité de la TVL malgré le Fear & Greed à 28 confirme que les détenteurs ne retirent pas massivement leurs liquidités."
+        },
+        {
+          "secteur": "Macro (liquidité)",
+          "impact": "M2 +99,6 Mrd $, Bilan Fed +4 350 M$ (FRED)",
+          "explication": "L'expansion monétaire soutient indirectement les actifs numériques, limitant la profondeur de la correction crypto."
+        }
+      ],
+      "regions": [
+        "Global"
+      ],
+      "severite": "info"
+    },
+    {
+      "titre": "Dollar stable et divergence transatlantique : Fed 3,63 % vs BCE 2,4 %",
+      "description": "Le <strong>dollar broad index (DXY) se maintient à 120,71</strong> (-0,2, FRED), tandis que l'<strong>EUR/USD s'établit à 1,1451</strong> (Alpha Vantage) et le <strong>GBP/USD à 1,3352</strong>. L'<strong>USD/JPY à 163,64</strong> reste élevé, maintenant la pression sur le yen. La BCE maintient son taux directeur à 2,4 % (ECB Data), créant un écart de 123 pb avec la Fed (3,63 %). Cette divergence transatlantique soutient théoriquement les actifs américains, mais la correction des indices US suggère que les investisseurs privilégient actuellement la réduction du risque à la recherche de rendement. Le spread 10Y-2Y à 0,45 % (+0,1 point, FRED) confirme une croissance fragile sans signal récessionniste.",
+      "categorie": "macro",
+      "interconnexions": [
+        {
+          "secteur": "Actions européennes",
+          "impact": "DAX +0,21 % (Twelve Data)",
+          "explication": "La résilience européenne malgré l'escalade moyen-orientale suggère que les valorisations intègrent déjà le risque géopolitique."
+        },
+        {
+          "secteur": "Or",
+          "impact": "ETF GLD +0,46 % à 371,08 $ (Finnhub)",
+          "explication": "La stabilité du dollar combinée à la hausse de l'or reflète une demande refuge provenant des banques centraires étrangères."
+        },
+        {
+          "secteur": "Crypto",
+          "impact": "BTC -0,7 % à 63 936 $ (CoinGecko)",
+          "explication": "Le dollar stable limite la pression baissière sur le Bitcoin, qui se consolide plutôt qu'il ne s'effondre dans un contexte de stress géopolitique."
+        }
+      ],
+      "regions": [
+        "États-Unis",
+        "Zone euro",
+        "Japon"
+      ],
+      "severite": "attention"
+    }
+  ],
+  "risk_radar": [
+    {
+      "risque": "Rupture du détroit d'Ormuz — choc énergétique mondial",
+      "severite": "urgent",
+      "probabilite": "moyenne",
+      "horizon": "court_terme",
+      "impact_marche": "Pétrole +20 à +30 %, S&P 500 -3 à -5 %, EUR/USD -2 %, inflation >4 %",
+      "description": "Les négociations Iran-Oman sur la gestion du détroit d'Ormuz sont sous tension (Al Jazeera). Une rupture des flux énergétiques propulserait le pétrole au-dessus de 150 $/baril et réactiverait l'inflation mondiale. Seuil de déclenchement : annonce d'un blocus militaire ou de sanctions énergétiques ciblées."
+    },
+    {
+      "risque": "Éclatement de bulle IA — liquidation en cascade sur tech",
+      "severite": "attention",
+      "probabilite": "moyenne",
+      "horizon": "court_terme",
+      "impact_marche": "Nasdaq 100 -5 à -8 %, Nvidia -10 à -15 %, crypto -8 à -12 %",
+      "description": "Le Nikkei chute de 1,49 % sur des ventes ciblées IA (NewsAPI) et les experts alertent sur une bulle spéculative. Si les résultats de Meta ou Microsoft déçoivent, une liquidation en cascade pourrait toucher l'ensemble du complexe tech/IA. Seuil : cassure des 640 $ sur le QQQ."
+    },
+    {
+      "risque": "Fed hawkish surprise — piège de liquidité",
+      "severite": "attention",
+      "probabilite": "faible",
+      "horizon": "court_terme",
+      "impact_marche": "S&P 500 -2 à -3 %, Treasury 10Y +20 pb, USD/JPY >165",
+      "description": "Avec une inflation à 3,73 % et un choc pétrolier en cours, la Fed pourrait surprendre avec un ton plus hawkish que prévu. Cela déstabiliserait les marchés qui anticipent un maintien des taux. Seuil : mention explicite de l'inflation énergétique dans le communiqué Fed."
+    }
+  ],
+  "themes_a_surveiller": [
+    {
+      "actif": "Bitcoin (BTC)",
+      "dynamique": "neutre",
+      "details": "Support à 62 000 $ (seuil technique et psychologique). Résistance à 65 000 $. Catalyseur haussier : désescalade au Moyen-Orient. Catalyseur baissier : liquidation tech en cascade."
+    },
+    {
+      "actif": "Nasdaq 100 (QQQ)",
+      "dynamique": "baissiere",
+      "details": "Support à 650 $ (proxy QQQ). Résistance à 680 $. Surveiller les résultats de Meta et Microsoft (30/07). Un échec technique casserait les 640 $ et ouvrirait la voie à une correction plus profonde."
+    },
+    {
+      "actif": "Pétrole (ETF USO)",
+      "dynamique": "haussiere",
+      "details": "Momentum haussier fort (+7,32 %). Support à 120 $. Résistance psychologique à 140 $. Catalyseur : escalation sur Ormuz ou sanctions énergétiques."
+    },
+    {
+      "actif": "EUR/USD",
+      "dynamique": "neutre",
+      "details": "Range 1,14-1,16. Cassure baissière si la Fed surprend hawkish. Cassure haussière si désescalade au Moyen-Orient réduit la prime de risque dollar."
+    },
+    {
+      "actif": "Or (ETF GLD)",
+      "dynamique": "haussiere",
+      "details": "Support à 360 $ (proxy GLD). Résistance à 380 $. Catalyseur haussier : escalation géopolitique majeure. Catalyseur baissier : retournement risk-on et baisse des taux réelles."
+    }
+  ],
+  "themes_disclaimer": "Ces éléments sont des observations factuelles et ne constituent pas un conseil en investissement. Consultez un professionnel agréé (CIF-AMF) avant toute décision.",
+  "agenda": [
+    {
+      "date": "30/07",
+      "heure": "20h00 CET",
+      "evenement": "Décision Fed (taux directeur) + conférence Powell",
+      "impact_attendu": "Fort — S&P 500, Nasdaq 100, USD, Treasury 10Y. Consensus : maintien à 3,63 %. Risque hawkish si mention du choc pétrolier."
+    },
+    {
+      "date": "30/07",
+      "heure": "22h00 CET",
+      "evenement": "Résultats Meta Q2 2026",
+      "impact_attendu": "Fort — Nasdaq 100, secteur IA. Consensus : revenus 42 Md$. Catalyseur : guidance IA et dépenses capex."
+    },
+    {
+      "date": "30/07",
+      "heure": "22h30 CET",
+      "evenement": "Résultats Microsoft Q4 FY2026",
+      "impact_attendu": "Fort — Nasdaq 100, cloud, IA. Consensus : revenus 65 Md$. Surveiller la croissance Azure."
+    },
+    {
+      "date": "31/07",
+      "heure": "14h30 CET",
+      "evenement": "PCE core US (juin)",
+      "impact_attendu": "Modéré — anticipations Fed. Consensus : +2,6 % YoY. Seuil hawkish : >2,8 %."
+    },
+    {
+      "date": "01/08",
+      "heure": "14h30 CET",
+      "evenement": "NFP US (emploi juillet)",
+      "impact_attendu": "Fort — USD, obligations, actions. Consensus : +175k emplois. Seuil baissier : <150k."
+    }
+  ],
+  "sentiment_global": "baissier",
+  "tags": [
+    "risk-off",
+    "escalade-moyen-orient",
+    "correction-tech",
+    "petrole-surge",
+    "fed-decision",
+    "fear-greed-fear",
+    "inflation-collante",
+    "bulle-ia"
+  ],
+  "sources_citees": [
+    {
+      "nom": "Finnhub",
+      "type": "api",
+      "donnees_utilisees": "Variations ETF (SPY -1,54 %, QQQ -2,04 %, DIA -2,18 %, GLD +0,46 %, USO +7,32 %, NVDA -3,55 %, AAPL -0,56 %, MSFT -0,71 %, GOOGL +0,90 %, TSLA -2,97 %)"
+    },
+    {
+      "nom": "CoinGecko",
+      "type": "api",
+      "donnees_utilisees": "Prix crypto (BTC 63 936 $ -0,7 %, ETH 1 903 $ -0,9 %, market cap -0,47 %, dominance BTC 56,5 %)"
+    },
+    {
+      "nom": "Alternative.me",
+      "type": "api",
+      "donnees_utilisees": "Fear & Greed Index (28/100, Fear, -3 pts sur 7j)"
+    },
+    {
+      "nom": "FRED",
+      "type": "api",
+      "donnees_utilisees": "Macro US (CPI 332,57 +3,73 % YoY, Fed Funds 3,63 %, Treasury 10Y 4,61 %, DXY 120,71, Spread 10Y-2Y 0,45 %, M2 23 155,2 Mrd $, Bilan Fed 6 747,4 Mrd $, Chômage 4,2 %)"
+    },
+    {
+      "nom": "ECB Data",
+      "type": "api",
+      "donnees_utilisees": "Taux directeur BCE 2,4 %, EUR/USD 1,1557"
+    },
+    {
+      "nom": "Twelve Data",
+      "type": "api",
+      "donnees_utilisees": "DAX +0,21 %, EUR/GBP 0,8575, EUR/CHF 0,9344"
+    },
+    {
+      "nom": "Alpha Vantage",
+      "type": "api",
+      "donnees_utilisees": "Forex (EUR/USD 1,1451, GBP/USD 1,3352, USD/JPY 163,64)"
+    },
+    {
+      "nom": "DefiLlama",
+      "type": "api",
+      "donnees_utilisees": "TVL totale 484,8 Md$"
+    },
+    {
+      "nom": "Mempool.space",
+      "type": "api",
+      "donnees_utilisees": "BTC fees 1 sat/vB, hashrate 889,08 EH/s"
+    },
+    {
+      "nom": "Al Jazeera",
+      "type": "presse",
+      "donnees_utilisees": "Iran attaque bases US, Arabie saoudite rejoint frappes Irak, négociations Iran-Oman Ormuz"
+    },
+    {
+      "nom": "Middle East Eye",
+      "type": "presse",
+      "donnees_utilisees": "Attaque drones navires LNG américains en Égypte"
+    },
+    {
+      "nom": "Financial Post",
+      "type": "presse",
+      "donnees_utilisees": "Iran attaque bases US et Arabie saoudite rejoint frappes Irak"
+    },
+    {
+      "nom": "NewsAPI",
+      "type": "presse",
+      "donnees_utilisees": "Nikkei -1,49 % sur ventes IA, inquiétudes bulle IA"
+    },
+    {
+      "nom": "Politico EU",
+      "type": "presse",
+      "donnees_utilisees": "Objet non identifié s'écrase en Pologne"
+    }
+  ],
+  "_verification": {
+    "score": 0.95,
+    "totalClaims": 40,
+    "verified": 38,
+    "unverified": 2,
+    "pass": true
+  },
+  "_bibliography": {
+    "score": 0.85,
+    "totalRefs": 35,
+    "matched": 30,
+    "unmatched": 5,
+    "pass": true,
+    "bibliography": [],
+    "apiSources": [],
+    "methodology": {
+      "description": "Vérification bibliographique par recoupement multi-sources",
+      "steps": [
+        "Extraction des références de sources dans le texte",
+        "Recoupement avec articles RSS/API",
+        "Vérification croisée avec registre des 15 sources API"
+      ],
+      "totalArticlesUsed": 25,
+      "totalAPISources": 11,
+      "standardApplied": "Adaptation APA 7 pour veille financière/géopolitique"
+    }
+  }
+}
