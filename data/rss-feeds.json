@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-07T07:10:16.252Z",
+  "updated": "2026-08-07T18:51:27.622Z",
   "feeds": [
     {
       "source": "Le Figaro",
@@ -13,42 +13,42 @@
       "url": "https://www.france24.com/fr/rss",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 1
     },
     {
       "source": "RFI",
       "url": "https://www.rfi.fr/fr/rss",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 5
     },
     {
       "source": "Courrier International",
       "url": "https://www.courrierinternational.com/feed/all/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "Le Monde Diplomatique",
       "url": "https://www.monde-diplomatique.fr/export/rss",
       "count": 0,
       "ok": false,
-      "error": "fetch failed"
+      "error": "HTTP 404: https://www.monde-diplomatique.fr/export/rss"
     },
     {
       "source": "BBC World",
       "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "Al Jazeera",
       "url": "https://www.aljazeera.com/xml/rss/all.xml",
       "count": 5,
       "ok": true,
-      "relevant": 0
+      "relevant": 3
     },
     {
       "source": "The Guardian",
@@ -76,7 +76,7 @@
       "url": "https://www.politico.eu/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 5
     },
     {
       "source": "Foreign Policy",
@@ -139,7 +139,7 @@
       "url": "https://www.middleeasteye.net/rss",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "IFRI",
@@ -202,14 +202,14 @@
       "url": "https://www.sipri.org/rss.xml",
       "count": 0,
       "ok": false,
-      "error": "fetch failed"
+      "error": "HTTP 404: https://www.sipri.org/rss.xml"
     },
     {
       "source": "Crisis Group",
       "url": "https://www.crisisgroup.org/rss.xml",
-      "count": 0,
-      "ok": false,
-      "error": "HTTP 415: https://www.crisisgroup.org/rss.xml"
+      "count": 5,
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Le Figaro Éco",
@@ -223,7 +223,7 @@
       "url": "https://www.lefigaro.fr/rss/figaro_conjoncture.xml",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 4
     },
     {
       "source": "Le Figaro Sociétés",
@@ -251,7 +251,7 @@
       "url": "https://www.bfmtv.com/rss/economie/",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 2
     },
     {
       "source": "Zonebourse",
@@ -265,7 +265,7 @@
       "url": "https://www.latribune.fr/feed.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 2
     },
     {
       "source": "Capital",
@@ -300,14 +300,14 @@
       "url": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 3
     },
     {
       "source": "Investing.com",
       "url": "https://www.investing.com/rss/news.rss",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 1
     },
     {
       "source": "Wolf Street",
@@ -370,7 +370,7 @@
       "url": "https://www.banque-france.fr/feed",
       "count": 0,
       "ok": false,
-      "error": "The operation was aborted due to timeout"
+      "error": "HTTP 404: https://www.banque-france.fr/feed"
     },
     {
       "source": "CoinTelegraph FR",
@@ -389,9 +389,9 @@
     {
       "source": "Journal du Coin",
       "url": "https://journalducoin.com/feed/",
-      "count": 0,
-      "ok": false,
-      "error": "HTTP 521: https://journalducoin.com/feed/"
+      "count": 5,
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "CoinDesk",
@@ -601,14 +601,14 @@
       "url": "https://www.nextinpact.com/feed",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "TechCrunch",
       "url": "https://techcrunch.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 3
     },
     {
       "source": "The Verge",
@@ -629,14 +629,14 @@
       "url": "https://www.wired.com/feed/rss",
       "count": 5,
       "ok": true,
-      "relevant": 1
+      "relevant": 2
     },
     {
       "source": "Hacker News",
       "url": "https://hnrss.org/frontpage?count=15",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "VentureBeat AI",
@@ -662,9 +662,9 @@
     {
       "source": "MarkTechPost",
       "url": "https://www.marktechpost.com/feed/",
-      "count": 0,
+      "count": 5,
       "ok": true,
-      "relevant": 0
+      "relevant": 5
     },
     {
       "source": "The Decoder",
@@ -692,7 +692,7 @@
       "url": "https://www.theregister.com/headlines.atom",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 2
     },
     {
       "source": "TLDR Tech",
@@ -734,7 +734,7 @@
       "url": "https://www.lemonde.fr/economie/rss_full.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "Challenges",
@@ -755,7 +755,7 @@
       "url": "https://www.lemonde.fr/international/rss_full.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "Le Figaro Finances",
@@ -783,7 +783,7 @@
       "url": "https://blogs.imf.org/feed/",
       "count": 0,
       "ok": false,
-      "error": "HTTP 403: https://blogs.imf.org/feed/"
+      "error": "fetch failed"
     },
     {
       "source": "World Economic Forum",
@@ -879,9 +879,9 @@
     {
       "source": "ECFR",
       "url": "https://ecfr.eu/feed/",
-      "count": 0,
-      "ok": false,
-      "error": "HTTP 415: https://ecfr.eu/feed/"
+      "count": 5,
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "Euractiv",
@@ -949,9 +949,9 @@
     {
       "source": "EuropaBio",
       "url": "https://www.europabio.org/feed/",
-      "count": 0,
-      "ok": false,
-      "error": "HTTP 415: https://www.europabio.org/feed/"
+      "count": 5,
+      "ok": true,
+      "relevant": 5
     },
     {
       "source": "SynBioBeta",
@@ -1019,9 +1019,9 @@
     {
       "source": "European Leadership",
       "url": "https://www.europeanleadershipnetwork.org/feed/",
-      "count": 0,
-      "ok": false,
-      "error": "HTTP 415: https://www.europeanleadershipnetwork.org/feed/"
+      "count": 2,
+      "ok": true,
+      "relevant": 2
     },
     {
       "source": "Defense One",
@@ -1070,7 +1070,7 @@
       "url": "https://acleddata.com/feed/",
       "count": 0,
       "ok": false,
-      "error": "HTTP 415: https://acleddata.com/feed/"
+      "error": "HTTP 404: https://acleddata.com/feed/"
     },
     {
       "source": "ORF India",
@@ -1144,8 +1144,8 @@
     }
   ],
   "stats": {
-    "success": 105,
-    "failed": 58,
-    "articles": 454
+    "success": 110,
+    "failed": 53,
+    "articles": 479
   }
 }
