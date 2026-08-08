@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════
+   EASYJOB - Design System "Connexions" for Next.js
+   ═══════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap');
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-sans text-noir bg-white antialiased;
+  }
+
+  /* Headings */
+  h1 {
+    @apply text-4xl font-light leading-tight tracking-tight;
+  }
+
+  h2 {
+    @apply text-3xl font-light leading-tight tracking-tight;
+  }
+
+  h3 {
+    @apply text-2xl font-light leading-tight;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-12 py-4 bg-rose-tbs text-white
+           text-sm font-semibold uppercase tracking-wider rounded-xl
+           shadow-md transition-all duration-200 hover:bg-rose-hover
+           hover:-translate-y-0.5 hover:shadow-lg focus:outline-none
+           focus:ring-2 focus:ring-rose-tbs focus:ring-offset-4;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-12 py-4 bg-transparent
+           text-noir text-sm font-semibold uppercase tracking-wider
+           rounded-xl border border-gris-clair transition-all duration-200
+           hover:border-noir hover:-translate-y-0.5 focus:outline-none
+           focus:ring-2 focus:ring-noir focus:ring-offset-4;
+  }
+
+  .btn-secondary-small {
+    @apply px-6 py-2.5 text-xs border border-gris-clair rounded-xl
+           bg-transparent text-noir font-medium uppercase tracking-wider
+           transition-all hover:border-noir;
+  }
+
+  /* Job Card */
+  .job-card {
+    @apply bg-white border border-gris-clair rounded-xl p-8
+           shadow-sm transition-all duration-300 cursor-pointer
+           hover:border-noir hover:-translate-y-1 hover:shadow-md;
+  }
+
+  /* Badge */
+  .badge {
+    @apply px-3 py-1.5 text-xs font-semibold uppercase tracking-wider
+           rounded-full whitespace-nowrap;
+  }
+
+  .badge-stage {
+    @apply bg-violet-rare/5 text-violet-rare;
+  }
+
+  .badge-cdd {
+    @apply bg-rose-tbs/10 text-rose-tbs;
+  }
+
+  .badge-cdi {
+    @apply bg-gris-tres-clair text-gris-fonce;
+  }
+
+  .badge-petit-boulot {
+    @apply bg-blanc-casse text-gris-fonce;
+  }
+
+  /* Connection Point */
+  .connection-point {
+    @apply relative w-1 h-1 bg-rose-tbs rounded-full
+           before:absolute before:top-1/2 before:left-1/2
+           before:-translate-x-1/2 before:-translate-y-1/2
+           before:w-3 before:h-3 before:border before:border-rose-tbs/20
+           before:rounded-full;
+  }
+
+  /* Form Inputs */
+  .input {
+    @apply w-full px-5 py-4 border border-gris-clair rounded-xl
+           text-base transition-all focus:outline-none focus:border-noir
+           placeholder:text-gris-moyen;
+  }
+
+  .textarea {
+    @apply w-full px-5 py-4 border border-gris-clair rounded-xl
+           text-base resize-vertical transition-all focus:outline-none
+           focus:border-noir placeholder:text-gris-moyen;
+  }
+
+  .select {
+    @apply w-full px-5 py-4 border border-gris-clair rounded-xl
+           text-base transition-all focus:outline-none focus:border-noir;
+  }
+
+  /* Section */
+  .section {
+    @apply py-24;
+  }
+
+  .section:nth-child(even) {
+    @apply bg-blanc-casse;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-[10%];
+  }
+
+  .section-container-narrow {
+    @apply max-w-4xl mx-auto px-[10%];
+  }
+
+  .section-title {
+    @apply text-5xl font-light text-noir text-center tracking-tight mb-16;
+  }
+}
+
+@layer utilities {
+  /* Animations */
+  @keyframes draw-line {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .animate-draw-line {
+    animation: draw-line 600ms ease-out forwards;
+  }
+
+  /* Spacing utilities matching 8px grid */
+  .space-1 { @apply space-y-2; }
+  .space-2 { @apply space-y-4; }
+  .space-3 { @apply space-y-6; }
+  .space-4 { @apply space-y-8; }
+  .space-5 { @apply space-y-10; }
+  .space-6 { @apply space-y-12; }
+  .space-8 { @apply space-y-16; }
+  .space-10 { @apply space-y-20; }
+  .space-12 { @apply space-y-24; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-blanc-casse;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gris-clair rounded-full hover:bg-gris-moyen;
+}
