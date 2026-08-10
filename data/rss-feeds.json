@@ -1,12 +1,12 @@
 {
-  "updated": "2026-08-09T18:35:20.607Z",
+  "updated": "2026-08-10T07:25:21.033Z",
   "feeds": [
     {
       "source": "Le Figaro",
       "url": "https://www.lefigaro.fr/rss/figaro_international.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "France 24",
@@ -27,7 +27,7 @@
       "url": "https://www.courrierinternational.com/feed/all/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 1
     },
     {
       "source": "Le Monde Diplomatique",
@@ -62,7 +62,7 @@
       "url": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 3
     },
     {
       "source": "Reuters",
@@ -76,7 +76,7 @@
       "url": "https://www.politico.eu/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 4
     },
     {
       "source": "Foreign Policy",
@@ -139,7 +139,7 @@
       "url": "https://www.middleeasteye.net/rss",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 4
     },
     {
       "source": "IFRI",
@@ -237,7 +237,7 @@
       "url": "https://www.lefigaro.fr/rss/figaro_flash-eco.xml",
       "count": 5,
       "ok": true,
-      "relevant": 1
+      "relevant": 0
     },
     {
       "source": "Les Echos",
@@ -251,7 +251,7 @@
       "url": "https://www.bfmtv.com/rss/economie/",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 3
     },
     {
       "source": "Zonebourse",
@@ -286,7 +286,7 @@
       "url": "https://finance.yahoo.com/news/rssindex",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 2
     },
     {
       "source": "Seeking Alpha",
@@ -307,7 +307,7 @@
       "url": "https://www.investing.com/rss/news.rss",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "Wolf Street",
@@ -538,7 +538,7 @@
       "url": "https://www.dtnpf.com/agriculture/web/ag/news/rss",
       "count": 0,
       "ok": false,
-      "error": "HTTP 404: https://www.dtnpf.com/agriculture/web/ag/news/rss"
+      "error": "fetch failed"
     },
     {
       "source": "Hellenic Shipping",
@@ -601,7 +601,7 @@
       "url": "https://www.nextinpact.com/feed",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 3
     },
     {
       "source": "TechCrunch",
@@ -634,9 +634,9 @@
     {
       "source": "Hacker News",
       "url": "https://hnrss.org/frontpage?count=15",
-      "count": 5,
-      "ok": true,
-      "relevant": 1
+      "count": 0,
+      "ok": false,
+      "error": "fetch failed"
     },
     {
       "source": "VentureBeat AI",
@@ -662,9 +662,9 @@
     {
       "source": "MarkTechPost",
       "url": "https://www.marktechpost.com/feed/",
-      "count": 5,
+      "count": 0,
       "ok": true,
-      "relevant": 5
+      "relevant": 0
     },
     {
       "source": "The Decoder",
@@ -690,9 +690,9 @@
     {
       "source": "The Register",
       "url": "https://www.theregister.com/headlines.atom",
-      "count": 5,
+      "count": 0,
       "ok": true,
-      "relevant": 5
+      "relevant": 0
     },
     {
       "source": "TLDR Tech",
@@ -755,7 +755,7 @@
       "url": "https://www.lemonde.fr/international/rss_full.xml",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 5
     },
     {
       "source": "Le Figaro Finances",
@@ -839,7 +839,7 @@
       "url": "https://cleantechnica.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 3
     },
     {
       "source": "Reuters Sustainability",
@@ -1144,8 +1144,8 @@
     }
   ],
   "stats": {
-    "success": 110,
-    "failed": 53,
-    "articles": 466
+    "success": 109,
+    "failed": 54,
+    "articles": 452
   }
 }
