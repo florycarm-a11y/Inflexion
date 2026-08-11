@@ -1,101 +1,57 @@
 {
-  "updated": "2026-07-30T18:12:28Z",
+  "updated": "2026-08-11T18:12:38Z",
   "alertes": [
     {
-      "id": "alert-2026-07-30-001",
-      "titre": "Nasdaq 100 (QQQ) : -2,04 % à 661,73 $ (Finnhub)",
-      "texte": "Nasdaq 100 (QQQ) : -2,04 % à 661,73 $ (Finnhub)",
+      "id": "alert-2026-08-11-001",
+      "titre": "Pétrole (ETF) (USO) : +6.73% (prix: $125.92)",
+      "texte": "Pétrole (ETF) (USO) : +6.73% (prix: $125.92)",
       "categorie": "marches",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-07-30T18:12:28Z",
-      "donnees": {
-        "symbole": "QQQ",
-        "nom": "Nasdaq 100",
-        "prix": 661.73,
-        "variation": -2.04
-      }
-    },
-    {
-      "id": "alert-2026-07-30-002",
-      "titre": "Dow Jones (DIA) : -2,18 % à 515,41 $ (Finnhub)",
-      "texte": "Dow Jones (DIA) : -2,18 % à 515,41 $ (Finnhub)",
-      "categorie": "marches",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-07-30T18:12:28Z",
-      "donnees": {
-        "symbole": "DIA",
-        "nom": "Dow Jones",
-        "prix": 515.41,
-        "variation": -2.18
-      }
-    },
-    {
-      "id": "alert-2026-07-30-003",
-      "titre": "Nvidia (NVDA) : -3,55 % à 190,01 $ (Finnhub)",
-      "texte": "Nvidia (NVDA) : -3,55 % à 190,01 $ (Finnhub)",
-      "categorie": "marches",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-07-30T18:12:28Z",
-      "donnees": {
-        "symbole": "NVDA",
-        "nom": "Nvidia",
-        "prix": 190.01,
-        "variation": -3.55
-      }
-    },
-    {
-      "id": "alert-2026-07-30-004",
-      "titre": "Tesla (TSLA) : -2,97 % à 298,32 $ (Finnhub)",
-      "texte": "Tesla (TSLA) : -2,97 % à 298,32 $ (Finnhub)",
-      "categorie": "marches",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-07-30T18:12:28Z",
-      "donnees": {
-        "symbole": "TSLA",
-        "nom": "Tesla",
-        "prix": 298.32,
-        "variation": -2.97
-      }
-    },
-    {
-      "id": "alert-2026-07-30-005",
-      "titre": "Pétrole (ETF USO) : +7,32 % à 129,31 $ sur fond d'escalade au Moyen-Orient (Finnhub)",
-      "texte": "Pétrole (ETF USO) : +7,32 % à 129,31 $ sur fond d'escalade au Moyen-Orient (Finnhub)",
-      "categorie": "matieres_premieres",
       "severite": "urgent",
       "impact": "haussier",
-      "horodatage": "2026-07-30T18:12:28Z",
+      "horodatage": "2026-08-11T18:12:38Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
-        "prix": 129.31,
-        "variation": 7.32
+        "prix": 125.92,
+        "variation": 6.73
       }
     },
     {
-      "id": "alert-2026-07-30-006",
-      "titre": "Fear & Greed Index : variation de -3 pts sur 7 jours, actuellement 28/100 (Fear) (Alternative.me)",
-      "texte": "Fear & Greed Index : variation de -3 pts sur 7 jours, actuellement 28/100 (Fear) (Alternative.me)",
-      "categorie": "macro",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-07-30T18:12:28Z",
+      "id": "alert-2026-08-11-002",
+      "titre": "Nvidia (NVDA) : -2.86% (prix: $217.55)",
+      "texte": "Nvidia (NVDA) : -2.86% (prix: $217.55)",
+      "categorie": "marches",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-08-11T18:12:38Z",
       "donnees": {
-        "score": 28,
-        "label": "Fear",
-        "variation_7j": -3
+        "symbole": "NVDA",
+        "nom": "Nvidia",
+        "prix": 217.55,
+        "variation": -2.86
+      }
+    },
+    {
+      "id": "alert-2026-08-11-003",
+      "titre": "Divergence commodities surperforment tech (spread: -4.5pp) → signal risk-off ...",
+      "texte": "Divergence commodities surperforment tech (spread: -4.5pp) → signal risk-off / inflation",
+      "categorie": "marches",
+      "severite": "urgent",
+      "impact": "neutre",
+      "horodatage": "2026-08-11T18:12:38Z",
+      "donnees": {
+        "tech_avg": -0.59,
+        "comm_avg": 3.88,
+        "spread": -4.47,
+        "regime": "risk-off / inflation"
       }
     }
   ],
   "stats": {
-    "total": 6,
+    "total": 3,
     "urgent": 2,
-    "attention": 3,
-    "info": 1
+    "attention": 1,
+    "info": 0
   },
   "model": "kimi",
   "mode": "consolidated"

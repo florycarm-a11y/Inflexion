@@ -1,51 +1,69 @@
 {
-  "titre": "Inflation collante et géopolitique : la Fed face à un trilemme croissance-stabilité-risques",
-  "phase_cycle": "transition",
+  "titre": "Expansion modérée avec inflation collante et risque énergétique",
+  "phase_cycle": "expansion",
   "politique_monetaire": "restrictive",
-  "tendance_inflation": "stabilisation",
-  "score_risque": 7,
-  "analyse": "## Contexte macroéconomique\n\nL'économie américaine traverse une phase de <strong>transition incertaine</strong>. L'inflation persiste à <strong>3,73 %</strong> en glissement annuel (CPI 332,57, FRED), bien au-dessus de la cible de 2 % de la Fed. Le taux directeur se maintient à <strong>3,63 %</strong> (Fed Funds, FRED), traduisant une politique monétaire restrictive. Le PIB trimestriel s'affiche à <strong>31 865,7 Mrd $</strong> (+443,2 Mrd $, FRED), confirmant une expansion modérée. Le marché du travail reste résilient avec un chômage à <strong>4,2 %</strong> (-0,1 point, FRED).\n\n## Enjeux clés\n\n<strong>Politique monétaire</strong> — La Fed maintient ses taux à 3,63 % dans un contexte d'inflation collante. Le marché anticipe une décision cruciale : toute surprise hawkish pourrait accentuer la correction en cours sur les indices tech. Le spread 10Y-2Y à <strong>0,45 %</strong> (+0,1 point, FRED) reste positif mais peu pentu, signalant une croissance fragile sans risque récessionniste immédiat.\n\n<strong>Géopolitique et choc énergétique</strong> — L'escalade au Moyen-Orient (frappes iraniennes sur bases US, attaques de drones contre navires LNG) propulse le pétrole : l'ETF USO bondit de <strong>7,32 %</strong> (Finnhub). Ce choc d'offre risque de réveiller les pressions inflationnistes, compliquant la tâche de la Fed.\n\n<strong>Liquidité</strong> — La masse monétaire M2 progresse de <strong>99,6 Mrd $</strong> à 23 155,2 Mrd $ (FRED), tandis que le bilan de la Fed s'accroît de 4 350 M$ à <strong>6 747,4 Mrd $</strong> (FRED). Cette expansion monétaire contraste avec la posture restrictive affichée.\n\n## Risques & Opportunités\n\n<strong>Risques</strong> :\n- <strong>Choc énergétique persistant</strong> : le pétrole pourrait rester élevé si les tensions sur le détroit d'Ormuz s'intensifient, réactivant l'inflation.\n- <strong>Correction tech</strong> : le Nasdaq 100 recule de 2,04 % (Finnhub), porté par des ventes ciblées sur l'IA. Une bulle spéculative pourrait éclater.\n- <strong>Dollar fort</strong> : le DXY à 120,71 (FRED) et l'USD/JPY à 163,64 (Alpha Vantage) maintiennent une pression sur les émergents.\n\n<strong>Opportunités</strong> :\n- <strong>Or refuge</strong> : l'ETF GLD progresse de 0,46 % (Finnhub), confirmant son rôle d'ancrage en période de tension.\n- <strong>Résilience européenne</strong> : le DAX gagne 0,21 % (Twelve Data), signe que l'Europe intègre déjà le ris géopolitique.",
+  "tendance_inflation": "acceleration",
+  "score_risque": 6,
+  "analyse": "## Contexte macroéconomique\n\nL'économie américaine se trouve en phase d'<strong>expansion modérée</strong> avec une inflation persistante au-dessus de la cible Fed. Le CPI s'établit à <strong>3.73% en glissement annuel</strong> (FRED, juin 2026), tandis que le taux de chômage recule légèrement à <strong>4.1%</strong> (FRED, juillet 2026). Le spread 10Y-2Y à <strong>0.47%</strong> reste positif, écartant un scénario récessionniste immédiat. Le billet vert se déprécie face à l'euro (EUR/USD à <strong>1,1797</strong>, ECB Data), ce qui pourrait relancer l'inflation importée.\n\n## Enjeux clés\n\n- <strong>Politique monétaire :</strong> La Fed maintient sa posture restrictive avec un taux directeur à <strong>3,63%</strong> (implicite, FRED) face à une inflation collante. La BCE, à <strong>2,4%</strong>, dispose d'une marge de manœuvre plus confortable.\n- <strong>Inflation :</strong> La dynamique des prix reste préoccupante (+3,73% YoY) malgré la stabilité récente. Le choc énergétique potentiel (USO +6,73%) pourrait réactiver les pressions inflationnistes.\n- <strong>Liquidité :</strong> La masse monétaire M2 progresse de <strong>+99,6 Mrd $</strong> (FRED) et le bilan Fed s'est accru de <strong>+10,4 Mrd $</strong>, signalant une injection de liquidité malgré la rhétorique restrictive.\n\n## Risques & Opportunités\n\n- ⚠️ <strong>Risque inflationniste :</strong> Un choc pétrolier durable pousserait le CPI au-dessus de 4%, contraignant la Fed à un durcissement inattendu.\n- ⚠️ <strong>Risque géopolitique :</strong> Les tensions au Moyen-Orient et les menaces sur les routes commerciales énergétiques accentuent la prime de risque.\n- ⚠️ <strong>Risque sectoriel :</strong> La sous-performance des valeurs tech (NVDA -2,86%, AAPL -1,62%) pourrait signaler un début de rotation vers les secteurs value/énergie.\n- ✓ <strong>Opportunité or :</strong> L'or (GLD +1,02%) bénéficie d'un environnement de prime de risque et de faiblesse du dollar.\n- ✓ <strong>Opportunité obligations :</strong> Le Treasury 10Y à 4,65% (-4 pb) offre un rendement attractif si la Fed confirme son cycle de baisses à moyen terme.\n\n## Perspectives\n\nTrois scénarios se dessinent : (1) <strong>maintien du statu quo</strong> — inflation stable, Fed prudente, marchés en range ; (2) <strong>choc énergétique</strong — CPI >4%, rotation vers commodities, tech en correction ; (3) <strong>assouplissement anticipé</strong> — chômage >4,5%, baisse des taux, rebond risk-on. Le seuil de vigilance reste le CPI core et les décisions OPEP+.",
   "indicateurs_cles": [
     {
-      "nom": "CPI YoY",
-      "valeur": "3.73%",
-      "signal": "neutre",
-      "commentaire": "Stabilisé au-dessus de la cible 2%, risque de réactivation par le choc pétrolier"
+      "nom": "Inflation (CPI)",
+      "valeur": "332.568index (+3.73% a/a)",
+      "signal": "haussier",
+      "commentaire": "Dernière mise à jour : 2026-06-01"
     },
     {
-      "nom": "Fed Funds Rate",
-      "valeur": "3.63%",
+      "nom": "PIB (trimestriel)",
+      "valeur": "32475.21Mrd $ (+609.49)",
       "signal": "neutre",
-      "commentaire": "Inchangé ; politique restrictive maintenue face à l'inflation collante"
-    },
-    {
-      "nom": "Treasury 10Y",
-      "valeur": "4.61%",
-      "signal": "baissier",
-      "commentaire": "-4 pb ; courbe peu pentue (spread 0.45%), croissance modérée attendue"
+      "commentaire": "Dernière mise à jour : 2026-04-01"
     },
     {
       "nom": "Chômage",
-      "valeur": "4.2%",
-      "signal": "haussier",
-      "commentaire": "-0.1 pp ; marché du travail résilient malgré les taux élevés"
+      "valeur": "4.1% (-0.10)",
+      "signal": "baissier",
+      "commentaire": "Dernière mise à jour : 2026-07-01"
     },
     {
-      "nom": "Dollar Index (DXY)",
-      "valeur": "120.71",
-      "signal": "baissier",
-      "commentaire": "-0.2 ; dollar légèrement en repli mais reste élevé historiquement"
+      "nom": "Treasury 10 ans",
+      "valeur": "4.65% (-0.04)",
+      "signal": "haussier",
+      "commentaire": "Dernière mise à jour : 2026-08-07"
+    },
+    {
+      "nom": "Dollar Index (broad)",
+      "valeur": "119.0649index (-0.45)",
+      "signal": "neutre",
+      "commentaire": "Dernière mise à jour : 2026-08-07"
     },
     {
       "nom": "Spread 10Y-2Y",
-      "valeur": "0.45%",
-      "signal": "haussier",
-      "commentaire": "+0.1 pp ; courbe non inversée, récession non imminente"
+      "valeur": "0.47% (+0.01)",
+      "signal": "neutre",
+      "commentaire": "Dernière mise à jour : 2026-08-10"
+    },
+    {
+      "nom": "Masse monétaire M2",
+      "valeur": "23155.2Mrd $ (+99.60)",
+      "signal": "neutre",
+      "commentaire": "Dernière mise à jour : 2026-06-01"
+    },
+    {
+      "nom": "Bilan Fed (actifs)",
+      "valeur": "6748567M $ (+10377.00)",
+      "signal": "neutre",
+      "commentaire": "Dernière mise à jour : 2026-08-05"
+    },
+    {
+      "nom": "Taux hypothécaire 30 ans",
+      "valeur": "6.69% (+0.03)",
+      "signal": "neutre",
+      "commentaire": "Dernière mise à jour : 2026-08-06"
     }
   ],
-  "perspectives": "Sur 3-6 mois, le scénario central privilégie une stabilisation de l'inflation autour de 3,5-3,8 % YoY, contrainte par le choc énergétique moyen-oriental. La Fed devrait maintenir ses taux à 3,63 % jusqu'au Q4 2026 avant un éventuel assouplissement conditionnel. Les risques baissiers incluent une escalade militaire majeure sur Ormuz (pétrole >150 $/baril, estimation Inflexion) et une correction tech accélérée si les bénéfices déçoivent. Les opportunités résident dans les actifs refuge (or) et énergétiques si le choc persiste. La divergence transatlantique (Fed 3,63 % vs BCE 2,4 %) maintient une prime sur les actifs américains.",
-  "updated": "2026-07-30T18:12:28Z",
-  "source": "Kimi + FRED + BCE + Alpha Vantage",
-  "indicators_count": 10,
+  "perspectives": "Scénario central : maintien du statu quo avec Fed prudente. Risque principal : choc pétrolier poussant l'inflation au-dessus de 4%. Opportunité : obligations longues si assouplissement anticipé.",
+  "updated": "2026-08-11T18:12:38Z",
+  "source": "Kimi + FRED + BCE + commodités",
+  "indicators_count": 9,
   "mode": "consolidated"
 }

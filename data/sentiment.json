@@ -1,78 +1,66 @@
 {
-  "updated": "2026-07-30T18:12:28Z",
-  "date": "2026-07-30",
+  "updated": "2026-08-11T18:12:38Z",
+  "date": "2026-08-11",
   "global": {
-    "score": -0.23,
+    "score": -0.22,
     "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.23), dominé par la rubrique geopolitique (baissier)."
+    "resume": "Le sentiment global est baissier (-0.22), dominé par la rubrique marches (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.65,
-      "confidence": 0.78,
+      "score": -0.6,
+      "confidence": 0.62,
       "tendance": "baissier",
-      "resume": "Escalade des tensions au Moyen-Orient : frappes iraniennes sur bases américaines, attaque de drones contre navires LNG en Égypte, incident en Pologne. Négociations Iran-Oman sur le détroit d'Ormuz en cours.",
+      "resume": "Sentiment baissier (-0.60) sur 30 articles.",
       "signaux_cles": [
-        "Iran attaque des bases américaines, l'Arabie saoudite rejoint les frappes en Irak",
-        "Égypte : attaque de drones contre des navires LNG américains",
-        "Objet non identifié s'écrase en Pologne lors de frappes russes en Ukraine"
+        "Au Maroc, la fin du démarchage téléphonique vers la France menace plus de 40 000 emplois",
+        "Pour ne plus baisser la tête : à la recherche des disparus de la guerre d'Espagne (3/4)",
+        "US military marching into Puntland as Red Sea tensions escalate"
       ]
     },
     "marches": {
-      "score": -0.55,
-      "confidence": 0.82,
+      "score": -1.0,
+      "confidence": 0.55,
       "tendance": "baissier",
-      "resume": "Correction généralisée des indices US : le Nasdaq 100 recule de 2,04 %, le Dow Jones de 2,18 %. Vente sectorielle ciblée sur l'IA et les semi-conducteurs.",
+      "resume": "Sentiment baissier (-1.00) sur 30 articles.",
       "signaux_cles": [
-        "Nasdaq 100 (proxy QQQ) en repli de 2,04 % (Finnhub)",
-        "Dow Jones (proxy DIA) recule de 2,18 % (Finnhub)",
-        "Nvidia chute de 3,55 %, Tesla de 2,97 % (Finnhub)"
+        "La saga du scandale H2O, entre stars de la finance, jet privé et conflits d’intérêts"
       ]
     },
     "crypto": {
-      "score": -0.22,
-      "confidence": 0.65,
+      "score": -1.0,
+      "confidence": 0.55,
       "tendance": "baissier",
-      "resume": "Crypto légèrement en repli : Bitcoin à 63 936 $ (-0,7 %), Ethereum à 1 903 $ (-0,9 %). Fear & Greed Index à 28/100 (Fear). Market cap global en recul de 0,47 %.",
+      "resume": "Sentiment baissier (-1.00) sur 30 articles.",
       "signaux_cles": [
-        "Bitcoin à 63 936 $, -0,7 % sur 24h (CoinGecko)",
-        "Fear & Greed Index à 28/100 (Fear, Alternative.me)",
-        "Market cap global crypto -0,47 % sur 24h (CoinGecko)"
+        "XRP, ether lead crypto losses as traders eye $70,000 bitcoin next",
+        "Riot Platforms stock jumps 25% after-hours on $9.1 billion AI deal reportedly with Anthropic"
       ]
     },
     "matieres_premieres": {
-      "score": 0.55,
-      "confidence": 0.75,
+      "score": 0.33,
+      "confidence": 0.65,
       "tendance": "haussier",
-      "resume": "Pétrole en forte hausse : l'ETF USO bondit de 7,32 % sur fond d'escalade au Moyen-Orient. L'or (ETF GLD) progresse légèrement de 0,46 %.",
+      "resume": "Sentiment haussier (+0.33) sur 30 articles.",
       "signaux_cles": [
-        "ETF pétrole USO +7,32 % (Finnhub)",
-        "Or (ETF GLD) +0,46 % (Finnhub)",
-        "Tensions sur le détroit d'Ormuz entre l'Iran et Oman"
+        "Steady Progress Reshapes Australia’s Energy Market — July 2026 Update",
+        "Colorado District Court Latest to Dismiss Industry Lawsuit against Building Updates",
+        "Demand Is Still the Variable in 2026 Peak Season Shipping, Sogese Report Finds"
       ]
     },
     "ai_tech": {
-      "score": -0.25,
-      "confidence": 0.62,
-      "tendance": "baissier",
-      "resume": "Inquiétudes sur une bulle IA : le Nikkei chute de 1,49 % sur des ventes ciblées dans les valeurs tech et semi-conducteurs. Alphabet résiste (+0,90 %) malgré la pression sectorielle.",
+      "score": 1.0,
+      "confidence": 0.6,
+      "tendance": "haussier",
+      "resume": "Sentiment haussier (+1.00) sur 30 articles.",
       "signaux_cles": [
-        "Nikkei 225 en repli de 1,49 % sur des ventes ciblées IA (NewsAPI)",
-        "Experts alertent sur un risque de bulle spéculative dans le secteur IA",
-        "Alphabet (GOOGL) résiste avec +0,90 % (Finnhub)"
+        "Colorado District Court Latest to Dismiss Industry Lawsuit against Building Updates",
+        "BMS Chooses Houston for $2.3B Manufacturing Facility",
+        "OpenAI reportedly completed a $7 billion employee tender offer"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-03-01",
-      "global": -0.35,
-      "geopolitique": -0.85,
-      "marches": -0.72,
-      "crypto": 0.62,
-      "matieres_premieres": -0.68,
-      "ai_tech": 0.15
-    },
     {
       "date": "2026-03-02",
       "global": -0.44,
@@ -333,6 +321,15 @@
       "crypto": -0.22,
       "matieres_premieres": 0.55,
       "ai_tech": -0.25
+    },
+    {
+      "date": "2026-08-11",
+      "global": -0.22,
+      "geopolitique": -0.6,
+      "marches": -1.0,
+      "crypto": -1.0,
+      "matieres_premieres": 0.33,
+      "ai_tech": 1.0
     }
   ],
   "model": "kimi",
