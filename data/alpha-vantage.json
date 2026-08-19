@@ -1,11 +1,141 @@
 {
-  "updated": "2026-08-19T06:38:04.655Z",
+  "updated": "2026-08-19T18:29:55.140Z",
   "source": "Alpha Vantage",
-  "forex": [],
+  "forex": [
+    {
+      "pair": "EUR/USD",
+      "rate": 1.16657469,
+      "bid": 1.16655877,
+      "ask": 1.16659639,
+      "updated": "2026-08-19 18:29:48"
+    },
+    {
+      "pair": "GBP/USD",
+      "rate": 1.35919754,
+      "bid": 1.3591779,
+      "ask": 1.35926428,
+      "updated": "2026-08-19 18:29:50"
+    },
+    {
+      "pair": "USD/JPY",
+      "rate": 158.47529892,
+      "bid": 158.47246221,
+      "ask": 158.48205789,
+      "updated": "2026-08-19 18:29:51"
+    }
+  ],
   "sectors": [],
   "topMovers": {
-    "gainers": [],
-    "losers": [],
-    "mostActive": []
+    "gainers": [
+      {
+        "ticker": "XOSWW",
+        "price": 0.0083,
+        "change": 0.0074,
+        "changePct": 822.2222,
+        "volume": 4996476
+      },
+      {
+        "ticker": "PFSA",
+        "price": 27.48,
+        "change": 22.95,
+        "changePct": 506.6225,
+        "volume": 51948073
+      },
+      {
+        "ticker": "NTWOW",
+        "price": 1.65,
+        "change": 1.3701,
+        "changePct": 489.4962,
+        "volume": 3140464
+      },
+      {
+        "ticker": "CAST",
+        "price": 2.1,
+        "change": 1.2402,
+        "changePct": 144.2428,
+        "volume": 130678998
+      },
+      {
+        "ticker": "IPST",
+        "price": 15.76,
+        "change": 8.37,
+        "changePct": 113.2612,
+        "volume": 31583542
+      }
+    ],
+    "losers": [
+      {
+        "ticker": "LGCL",
+        "price": 0.2417,
+        "change": -1.1683,
+        "changePct": -82.8582,
+        "volume": 109492289
+      },
+      {
+        "ticker": "AACBR",
+        "price": 0.0033,
+        "change": -0.0087,
+        "changePct": -72.5,
+        "volume": 1392925
+      },
+      {
+        "ticker": "SWAGW",
+        "price": 0.01,
+        "change": -0.015,
+        "changePct": -60,
+        "volume": 12932
+      },
+      {
+        "ticker": "RNWWW",
+        "price": 0.0025,
+        "change": -0.003,
+        "changePct": -54.5455,
+        "volume": 744980
+      },
+      {
+        "ticker": "ASTLW",
+        "price": 0.004,
+        "change": -0.0037,
+        "changePct": -48.0519,
+        "volume": 13001
+      }
+    ],
+    "mostActive": [
+      {
+        "ticker": "BIAF",
+        "price": 0.4733,
+        "change": 0.0813,
+        "changePct": 20.7398,
+        "volume": 167984229
+      },
+      {
+        "ticker": "DVLT",
+        "price": 0.3867,
+        "change": 0.0664,
+        "changePct": 20.7306,
+        "volume": 144488537
+      },
+      {
+        "ticker": "OSRH",
+        "price": 0.43,
+        "change": -0.16,
+        "changePct": -27.1186,
+        "volume": 142145125
+      },
+      {
+        "ticker": "MSTU",
+        "price": 1.7,
+        "change": -0.18,
+        "changePct": -9.5745,
+        "volume": 133182047
+      },
+      {
+        "ticker": "CAST",
+        "price": 2.1,
+        "change": 1.2402,
+        "changePct": 144.2428,
+        "volume": 130678998
+      }
+    ]
   }
 }
