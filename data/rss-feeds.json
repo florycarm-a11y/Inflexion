@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-22T18:24:11.994Z",
+  "updated": "2026-08-23T06:35:12.441Z",
   "feeds": [
     {
       "source": "Le Figaro",
@@ -20,14 +20,14 @@
       "url": "https://www.rfi.fr/fr/rss",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "Courrier International",
       "url": "https://www.courrierinternational.com/feed/all/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 1
+      "relevant": 3
     },
     {
       "source": "Le Monde Diplomatique",
@@ -41,7 +41,7 @@
       "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "Al Jazeera",
@@ -139,7 +139,7 @@
       "url": "https://www.middleeasteye.net/rss",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "IFRI",
@@ -286,7 +286,7 @@
       "url": "https://finance.yahoo.com/news/rssindex",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "Seeking Alpha",
@@ -300,14 +300,14 @@
       "url": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "Investing.com",
       "url": "https://www.investing.com/rss/news.rss",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "Wolf Street",
@@ -580,7 +580,7 @@
       "url": "https://www.argusmedia.com/en/rss-feeds/home",
       "count": 0,
       "ok": false,
-      "error": "HTTP 404: https://www.argusmedia.com/en/rss-feeds/home"
+      "error": "The operation was aborted due to timeout"
     },
     {
       "source": "Le Figaro Tech",
@@ -594,7 +594,7 @@
       "url": "https://www.numerama.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 1
     },
     {
       "source": "Next INpact",
@@ -608,7 +608,7 @@
       "url": "https://techcrunch.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 4
     },
     {
       "source": "The Verge",
@@ -634,9 +634,9 @@
     {
       "source": "Hacker News",
       "url": "https://hnrss.org/frontpage?count=15",
-      "count": 0,
-      "ok": false,
-      "error": "The operation was aborted due to timeout"
+      "count": 5,
+      "ok": true,
+      "relevant": 2
     },
     {
       "source": "VentureBeat AI",
@@ -734,7 +734,7 @@
       "url": "https://www.lemonde.fr/economie/rss_full.xml",
       "count": 5,
       "ok": true,
-      "relevant": 0
+      "relevant": 1
     },
     {
       "source": "Challenges",
@@ -1055,8 +1055,8 @@
       "source": "Terra Bellum",
       "url": "https://terrabellum.com/feed/",
       "count": 0,
-      "ok": true,
-      "relevant": 0
+      "ok": false,
+      "error": "The operation was aborted due to timeout"
     },
     {
       "source": "Bellingcat",
@@ -1146,6 +1146,6 @@
   "stats": {
     "success": 110,
     "failed": 53,
-    "articles": 462
+    "articles": 465
   }
 }
