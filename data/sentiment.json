@@ -1,75 +1,69 @@
 {
-  "updated": "2026-08-11T18:12:38Z",
-  "date": "2026-08-11",
+  "updated": "2026-08-21T06:28:30Z",
+  "date": "2026-08-21",
   "global": {
-    "score": -0.22,
-    "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.22), dominé par la rubrique marches (baissier)."
+    "score": 0.49,
+    "tendance": "haussier",
+    "resume": "Le sentiment global est haussier (+0.49), dominé par la rubrique matieres_premieres (haussier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.6,
-      "confidence": 0.62,
-      "tendance": "baissier",
-      "resume": "Sentiment baissier (-0.60) sur 30 articles.",
+      "score": -0.14,
+      "confidence": 0.68,
+      "tendance": "neutre",
+      "resume": "Sentiment neutre (-0.14) sur 30 articles.",
       "signaux_cles": [
-        "Au Maroc, la fin du démarchage téléphonique vers la France menace plus de 40 000 emplois",
-        "Pour ne plus baisser la tête : à la recherche des disparus de la guerre d'Espagne (3/4)",
-        "US military marching into Puntland as Red Sea tensions escalate"
+        "US Treasury issues Hezbollah sanctions, labels group Iran-linked",
+        "U.S. targets Hezbollah with fresh sanctions, emphasizes ties to Iranian government",
+        "Idéologie du genre"
       ]
     },
     "marches": {
-      "score": -1.0,
-      "confidence": 0.55,
-      "tendance": "baissier",
-      "resume": "Sentiment baissier (-1.00) sur 30 articles.",
-      "signaux_cles": [
-        "La saga du scandale H2O, entre stars de la finance, jet privé et conflits d’intérêts"
-      ]
-    },
-    "crypto": {
-      "score": -1.0,
-      "confidence": 0.55,
-      "tendance": "baissier",
-      "resume": "Sentiment baissier (-1.00) sur 30 articles.",
-      "signaux_cles": [
-        "XRP, ether lead crypto losses as traders eye $70,000 bitcoin next",
-        "Riot Platforms stock jumps 25% after-hours on $9.1 billion AI deal reportedly with Anthropic"
-      ]
-    },
-    "matieres_premieres": {
       "score": 0.33,
       "confidence": 0.65,
       "tendance": "haussier",
       "resume": "Sentiment haussier (+0.33) sur 30 articles.",
       "signaux_cles": [
-        "Steady Progress Reshapes Australia’s Energy Market — July 2026 Update",
-        "Colorado District Court Latest to Dismiss Industry Lawsuit against Building Updates",
-        "Demand Is Still the Variable in 2026 Peak Season Shipping, Sogese Report Finds"
+        "Neocloud stocks like CoreWeave are having a moment &#x2014; and time&#x2019;s running out to cash in",
+        "&#x2018;There is considerable tension&#x2019;: My grandmother, 99, wants to cut my mother out of her will. Should I intervene?",
+        "Anthropic wants to match or beat SpaceX’s record IPO size - report"
       ]
     },
-    "ai_tech": {
+    "crypto": {
+      "score": 0.75,
+      "confidence": 0.9,
+      "tendance": "haussier",
+      "resume": "Sentiment fortement haussier (+0,75) : BTC +6,6%, ETH +12,7%, Fear & Greed passe à 62/100 (Greed).",
+      "signaux_cles": [
+        "Bitcoin dépasse 72 000 $ (+6,6%)",
+        "Ethereum +12,7% à 2 326 $",
+        "Fear & Greed Index passe de 29 à 62 en 7 jours"
+      ]
+    },
+    "matieres_premieres": {
       "score": 1.0,
       "confidence": 0.6,
       "tendance": "haussier",
       "resume": "Sentiment haussier (+1.00) sur 30 articles.",
       "signaux_cles": [
-        "Colorado District Court Latest to Dismiss Industry Lawsuit against Building Updates",
-        "BMS Chooses Houston for $2.3B Manufacturing Facility",
-        "OpenAI reportedly completed a $7 billion employee tender offer"
+        "China Is Squeezing India Out of Russia’s Oil Trade",
+        "Norway’s Oil Output Falls Nearly 200,000 Bpd as Gulf Supply Crisis Drags On",
+        "Pork production experiencing ‘pricing conundrum’"
+      ]
+    },
+    "ai_tech": {
+      "score": 0.5,
+      "confidence": 0.7,
+      "tendance": "haussier",
+      "resume": "Sentiment haussier (+0.50) sur 30 articles.",
+      "signaux_cles": [
+        "Skull Immune Structures May Provide First Response Against Brain Cancer",
+        "C&#8217;est fichu : la Nasa doit à regret à accepter la fin du télescope Swift après l&#8217;échec du remorqueur LINK",
+        "What&#8217;s next for ISR in space"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-03-02",
-      "global": -0.44,
-      "geopolitique": -0.85,
-      "marches": -0.42,
-      "crypto": 0.28,
-      "matieres_premieres": -0.72,
-      "ai_tech": -0.15
-    },
     {
       "date": "2026-03-04",
       "global": -0.15,
@@ -330,6 +324,15 @@
       "crypto": -1.0,
       "matieres_premieres": 0.33,
       "ai_tech": 1.0
+    },
+    {
+      "date": "2026-08-21",
+      "global": 0.49,
+      "geopolitique": -0.14,
+      "marches": 0.33,
+      "crypto": 0.75,
+      "matieres_premieres": 1.0,
+      "ai_tech": 0.5
     }
   ],
   "model": "kimi",

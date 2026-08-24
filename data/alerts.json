@@ -1,57 +1,251 @@
 {
-  "updated": "2026-08-11T18:12:38Z",
+  "updated": "2026-08-21T06:28:30Z",
   "alertes": [
     {
-      "id": "alert-2026-08-11-001",
-      "titre": "Pétrole (ETF) (USO) : +6.73% (prix: $125.92)",
-      "texte": "Pétrole (ETF) (USO) : +6.73% (prix: $125.92)",
+      "id": "alert-2026-08-21-001",
+      "titre": "Bitcoin (BTC) : +6.60% sur 24h (prix: $72,669)",
+      "texte": "Bitcoin (BTC) : +6.60% sur 24h (prix: $72,669)",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-08-21T06:28:30Z",
+      "donnees": {
+        "symbole": "BTC",
+        "nom": "Bitcoin",
+        "prix": 72669,
+        "variation_24h": 6.6
+      }
+    },
+    {
+      "id": "alert-2026-08-21-002",
+      "titre": "Bitcoin (BTC) : +15.50% sur 7 jours",
+      "texte": "Bitcoin (BTC) : +15.50% sur 7 jours",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-08-21T06:28:30Z",
+      "donnees": {
+        "symbole": "BTC",
+        "nom": "Bitcoin",
+        "prix": 72669,
+        "variation_7d": 15.5
+      }
+    },
+    {
+      "id": "alert-2026-08-21-003",
+      "titre": "Ethereum (ETH) : +12.70% sur 24h (prix: $2,326)",
+      "texte": "Ethereum (ETH) : +12.70% sur 24h (prix: $2,326)",
+      "categorie": "crypto",
+      "severite": "urgent",
+      "impact": "haussier",
+      "horodatage": "2026-08-21T06:28:30Z",
+      "donnees": {
+        "symbole": "ETH",
+        "nom": "Ethereum",
+        "prix": 2326,
+        "variation_24h": 12.7
+      }
+    },
+    {
+      "id": "alert-2026-08-21-004",
+      "titre": "Ethereum (ETH) : +25.30% sur 7 jours",
+      "texte": "Ethereum (ETH) : +25.30% sur 7 jours",
+      "categorie": "crypto",
+      "severite": "urgent",
+      "impact": "haussier",
+      "horodatage": "2026-08-21T06:28:30Z",
+      "donnees": {
+        "symbole": "ETH",
+        "nom": "Ethereum",
+        "prix": 2326,
+        "variation_7d": 25.3
+      }
+    },
+    {
+      "id": "alert-2026-08-21-005",
+      "titre": "XRP (XRP) : +24.00% sur 24h (prix: $1)",
+      "texte": "XRP (XRP) : +24.00% sur 24h (prix: $1)",
+      "categorie": "crypto",
+      "severite": "urgent",
+      "impact": "haussier",
+      "horodatage": "2026-08-21T06:28:30Z",
+      "donnees": {
+        "symbole": "XRP",
+        "nom": "XRP",
+        "prix": 1.27,
+        "variation_24h": 24
+      }
+    },
+    {
+      "id": "alert-2026-08-21-006",
+      "titre": "XRP (XRP) : +31.00% sur 7 jours",
+      "texte": "XRP (XRP) : +31.00% sur 7 jours",
+      "categorie": "crypto",
+      "severite": "urgent",
+      "impact": "haussier",
+      "horodatage": "2026-08-21T06:28:30Z",
+      "donnees": {
+        "symbole": "XRP",
+        "nom": "XRP",
+        "prix": 1.27,
+        "variation_7d": 31
+      }
+    },
+    {
+      "id": "alert-2026-08-21-007",
+      "titre": "Solana (SOL) : +7.70% sur 24h (prix: $87)",
+      "texte": "Solana (SOL) : +7.70% sur 24h (prix: $87)",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-08-21T06:28:30Z",
+      "donnees": {
+        "symbole": "SOL",
+        "nom": "Solana",
+        "prix": 87.19,
+        "variation_24h": 7.7
+      }
+    },
+    {
+      "id": "alert-2026-08-21-008",
+      "titre": "Solana (SOL) : +16.10% sur 7 jours",
+      "texte": "Solana (SOL) : +16.10% sur 7 jours",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-08-21T06:28:30Z",
+      "donnees": {
+        "symbole": "SOL",
+        "nom": "Solana",
+        "prix": 87.19,
+        "variation_7d": 16.1
+      }
+    },
+    {
+      "id": "alert-2026-08-21-009",
+      "titre": "Dogecoin (DOGE) : +14.20% sur 24h (prix: $0)",
+      "texte": "Dogecoin (DOGE) : +14.20% sur 24h (prix: $0)",
+      "categorie": "crypto",
+      "severite": "urgent",
+      "impact": "haussier",
+      "horodatage": "2026-08-21T06:28:30Z",
+      "donnees": {
+        "symbole": "DOGE",
+        "nom": "Dogecoin",
+        "prix": 0.080804,
+        "variation_24h": 14.2
+      }
+    },
+    {
+      "id": "alert-2026-08-21-010",
+      "titre": "Dogecoin (DOGE) : +18.80% sur 7 jours",
+      "texte": "Dogecoin (DOGE) : +18.80% sur 7 jours",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-08-21T06:28:30Z",
+      "donnees": {
+        "symbole": "DOGE",
+        "nom": "Dogecoin",
+        "prix": 0.080804,
+        "variation_7d": 18.8
+      }
+    },
+    {
+      "id": "alert-2026-08-21-011",
+      "titre": "Cardano (ADA) : +12.40% sur 24h (prix: $0)",
+      "texte": "Cardano (ADA) : +12.40% sur 24h (prix: $0)",
+      "categorie": "crypto",
+      "severite": "urgent",
+      "impact": "haussier",
+      "horodatage": "2026-08-21T06:28:30Z",
+      "donnees": {
+        "symbole": "ADA",
+        "nom": "Cardano",
+        "prix": 0.198135,
+        "variation_24h": 12.4
+      }
+    },
+    {
+      "id": "alert-2026-08-21-012",
+      "titre": "Cardano (ADA) : +11.00% sur 7 jours",
+      "texte": "Cardano (ADA) : +11.00% sur 7 jours",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "haussier",
+      "horodatage": "2026-08-21T06:28:30Z",
+      "donnees": {
+        "symbole": "ADA",
+        "nom": "Cardano",
+        "prix": 0.198135,
+        "variation_7d": 11
+      }
+    },
+    {
+      "id": "alert-2026-08-21-013",
+      "titre": "Pétrole (ETF) (USO) : +3.18% (prix: $135.07)",
+      "texte": "Pétrole (ETF) (USO) : +3.18% (prix: $135.07)",
       "categorie": "marches",
       "severite": "urgent",
       "impact": "haussier",
-      "horodatage": "2026-08-11T18:12:38Z",
+      "horodatage": "2026-08-21T06:28:30Z",
       "donnees": {
         "symbole": "USO",
         "nom": "Pétrole (ETF)",
-        "prix": 125.92,
-        "variation": 6.73
+        "prix": 135.07,
+        "variation": 3.18
       }
     },
     {
-      "id": "alert-2026-08-11-002",
-      "titre": "Nvidia (NVDA) : -2.86% (prix: $217.55)",
-      "texte": "Nvidia (NVDA) : -2.86% (prix: $217.55)",
+      "id": "alert-2026-08-21-014",
+      "titre": "Tesla (TSLA) : -2.20% (prix: $343.40)",
+      "texte": "Tesla (TSLA) : -2.20% (prix: $343.40)",
       "categorie": "marches",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-08-11T18:12:38Z",
+      "horodatage": "2026-08-21T06:28:30Z",
       "donnees": {
-        "symbole": "NVDA",
-        "nom": "Nvidia",
-        "prix": 217.55,
-        "variation": -2.86
+        "symbole": "TSLA",
+        "nom": "Tesla",
+        "prix": 343.4,
+        "variation": -2.2
       }
     },
     {
-      "id": "alert-2026-08-11-003",
-      "titre": "Divergence commodities surperforment tech (spread: -4.5pp) → signal risk-off ...",
-      "texte": "Divergence commodities surperforment tech (spread: -4.5pp) → signal risk-off / inflation",
-      "categorie": "marches",
-      "severite": "urgent",
-      "impact": "neutre",
-      "horodatage": "2026-08-11T18:12:38Z",
+      "id": "alert-2026-08-21-015",
+      "titre": "Fear & Greed : variation de +33 pts sur 7 jours (actuellement 62)",
+      "texte": "Fear & Greed : variation de +33 pts sur 7 jours (actuellement 62)",
+      "categorie": "macro",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-08-21T06:28:30Z",
       "donnees": {
-        "tech_avg": -0.59,
-        "comm_avg": 3.88,
-        "spread": -4.47,
+        "score": 62,
+        "label": "Greed",
+        "variation_7j": 33
+      }
+    },
+    {
+      "id": "alert-2026-08-21-016",
+      "titre": "Divergence commodities surperforment tech (spread: -2.4pp) → signal risk-off ...",
+      "texte": "Divergence commodities surperforment tech (spread: -2.4pp) → signal risk-off / inflation",
+      "categorie": "marches",
+      "severite": "attention",
+      "impact": "neutre",
+      "horodatage": "2026-08-21T06:28:30Z",
+      "donnees": {
+        "tech_avg": -0.72,
+        "comm_avg": 1.68,
+        "spread": -2.41,
         "regime": "risk-off / inflation"
       }
     }
   ],
   "stats": {
-    "total": 3,
-    "urgent": 2,
-    "attention": 1,
-    "info": 0
+    "total": 16,
+    "urgent": 7,
+    "attention": 8,
+    "info": 1
   },
   "model": "kimi",
   "mode": "consolidated"
