@@ -1,78 +1,68 @@
 {
-  "updated": "2026-08-21T06:28:30Z",
-  "date": "2026-08-21",
+  "updated": "2026-08-25T18:13:00Z",
+  "date": "2026-08-25",
   "global": {
-    "score": 0.49,
+    "score": 0.36,
     "tendance": "haussier",
-    "resume": "Le sentiment global est haussier (+0.49), dominé par la rubrique matieres_premieres (haussier)."
+    "resume": "Le sentiment global est haussier (+0.36), dominé par la rubrique ai_tech (haussier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.14,
-      "confidence": 0.68,
-      "tendance": "neutre",
-      "resume": "Sentiment neutre (-0.14) sur 30 articles.",
+      "score": -0.5,
+      "confidence": 0.7,
+      "tendance": "baissier",
+      "resume": "Sentiment baissier (-0.50) sur 30 articles.",
       "signaux_cles": [
-        "US Treasury issues Hezbollah sanctions, labels group Iran-linked",
-        "U.S. targets Hezbollah with fresh sanctions, emphasizes ties to Iranian government",
-        "Idéologie du genre"
+        "Iran says it is 'fully prepared' to counter widened US economic sanctions",
+        "Six months into Iran war, almost half of global oil flows from war zones",
+        "Guerre en Ukraine : les drones russes traquent les civils, les \"safaris humains\" se multiplient"
       ]
     },
     "marches": {
-      "score": 0.33,
-      "confidence": 0.65,
-      "tendance": "haussier",
-      "resume": "Sentiment haussier (+0.33) sur 30 articles.",
+      "score": -0.15,
+      "confidence": 0.6,
+      "tendance": "baissier",
+      "resume": "Sentiment légèrement baissier (-0,15) : tech sous-performe (NVDA -2,9%, TSLA -3,8%) malgré la résistance de MSFT et GOOGL.",
       "signaux_cles": [
-        "Neocloud stocks like CoreWeave are having a moment &#x2014; and time&#x2019;s running out to cash in",
-        "&#x2018;There is considerable tension&#x2019;: My grandmother, 99, wants to cut my mother out of her will. Should I intervene?",
-        "Anthropic wants to match or beat SpaceX’s record IPO size - report"
+        "Asian equities mixed amid tech pressure, geopolitical tensions, and Nvidia earnings watch",
+        "Bitcoin surges past $80,000 as crypto rally gathers pace",
+        "Oil steadies as investors weigh impact of latest US sanctions on Iran"
       ]
     },
     "crypto": {
-      "score": 0.75,
-      "confidence": 0.9,
+      "score": 0.78,
+      "confidence": 0.92,
       "tendance": "haussier",
-      "resume": "Sentiment fortement haussier (+0,75) : BTC +6,6%, ETH +12,7%, Fear & Greed passe à 62/100 (Greed).",
+      "resume": "Sentiment fortement haussier (+0,78) : BTC +4,3%, SOL +7,6%, Fear & Greed à 74/100 (Greed).",
       "signaux_cles": [
-        "Bitcoin dépasse 72 000 $ (+6,6%)",
-        "Ethereum +12,7% à 2 326 $",
-        "Fear & Greed Index passe de 29 à 62 en 7 jours"
+        "Bitcoin dépasse 80 000 $ (+4,3%)",
+        "Solana +7,6% à 101 $",
+        "Fear & Greed Index à 74/100 — zone Greed"
       ]
     },
     "matieres_premieres": {
-      "score": 1.0,
-      "confidence": 0.6,
+      "score": 0.6,
+      "confidence": 0.75,
       "tendance": "haussier",
-      "resume": "Sentiment haussier (+1.00) sur 30 articles.",
+      "resume": "Sentiment haussier (+0.60) sur 30 articles.",
       "signaux_cles": [
-        "China Is Squeezing India Out of Russia’s Oil Trade",
-        "Norway’s Oil Output Falls Nearly 200,000 Bpd as Gulf Supply Crisis Drags On",
-        "Pork production experiencing ‘pricing conundrum’"
+        "Iran Threatens Retaliation as U.S. Widens Sanctions",
+        "The Biggest Victims Of Trump’s Economic D-Day On Iran",
+        "Natural Gas Cash Prices Split as Record Heat Lifts West, Appalachia Slides"
       ]
     },
     "ai_tech": {
-      "score": 0.5,
-      "confidence": 0.7,
+      "score": 1.0,
+      "confidence": 0.55,
       "tendance": "haussier",
-      "resume": "Sentiment haussier (+0.50) sur 30 articles.",
+      "resume": "Sentiment haussier (+1.00) sur 30 articles.",
       "signaux_cles": [
-        "Skull Immune Structures May Provide First Response Against Brain Cancer",
-        "C&#8217;est fichu : la Nasa doit à regret à accepter la fin du télescope Swift après l&#8217;échec du remorqueur LINK",
-        "What&#8217;s next for ISR in space"
+        "Data Centers Are Driving an Alarming Gas Power Expansion in the US",
+        "PARP Inhibitor Combination Therapy Boosts Antitumor Activity in NSCLC Models"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-03-04",
-      "global": -0.15,
-      "geopolitique": -0.85,
-      "marches": -0.72,
-      "crypto": -0.15,
-      "matieres_premieres": 0.78,
-      "ai_tech": 0.35
-    },
     {
       "date": "2026-03-06",
       "global": -0.13,
@@ -333,6 +323,15 @@
       "crypto": 0.75,
       "matieres_premieres": 1.0,
       "ai_tech": 0.5
+    },
+    {
+      "date": "2026-08-25",
+      "global": 0.36,
+      "geopolitique": -0.5,
+      "marches": -0.15,
+      "crypto": 0.78,
+      "matieres_premieres": 0.6,
+      "ai_tech": 1.0
     }
   ],
   "model": "kimi",
