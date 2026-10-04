@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-03T20:34:09.411Z",
+  "updated": "2026-10-04T11:44:29.550Z",
   "feeds": [
     {
       "source": "Le Figaro",
@@ -13,7 +13,7 @@
       "url": "https://www.france24.com/fr/rss",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 5
     },
     {
       "source": "RFI",
@@ -27,7 +27,7 @@
       "url": "https://www.courrierinternational.com/feed/all/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 3
     },
     {
       "source": "Le Monde Diplomatique",
@@ -48,7 +48,7 @@
       "url": "https://www.aljazeera.com/xml/rss/all.xml",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 3
     },
     {
       "source": "The Guardian",
@@ -139,7 +139,7 @@
       "url": "https://www.middleeasteye.net/rss",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 3
     },
     {
       "source": "IFRI",
@@ -237,7 +237,7 @@
       "url": "https://www.lefigaro.fr/rss/figaro_flash-eco.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 1
     },
     {
       "source": "Les Echos",
@@ -251,7 +251,7 @@
       "url": "https://www.bfmtv.com/rss/economie/",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 3
     },
     {
       "source": "Zonebourse",
@@ -265,7 +265,7 @@
       "url": "https://www.latribune.fr/feed.xml",
       "count": 5,
       "ok": true,
-      "relevant": 0
+      "relevant": 2
     },
     {
       "source": "Capital",
@@ -300,14 +300,14 @@
       "url": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 0
     },
     {
       "source": "Investing.com",
       "url": "https://www.investing.com/rss/news.rss",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 3
     },
     {
       "source": "Wolf Street",
@@ -587,14 +587,14 @@
       "url": "https://www.lefigaro.fr/rss/figaro_secteur_high-tech.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 5
     },
     {
       "source": "Numerama",
       "url": "https://www.numerama.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 0
     },
     {
       "source": "Next INpact",
@@ -629,7 +629,7 @@
       "url": "https://www.wired.com/feed/rss",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 1
     },
     {
       "source": "Hacker News",
@@ -662,9 +662,9 @@
     {
       "source": "MarkTechPost",
       "url": "https://www.marktechpost.com/feed/",
-      "count": 0,
+      "count": 5,
       "ok": true,
-      "relevant": 0
+      "relevant": 5
     },
     {
       "source": "The Decoder",
@@ -692,7 +692,7 @@
       "url": "https://www.theregister.com/headlines.atom",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "TLDR Tech",
@@ -734,7 +734,7 @@
       "url": "https://www.lemonde.fr/economie/rss_full.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 2
     },
     {
       "source": "Challenges",
@@ -839,7 +839,7 @@
       "url": "https://cleantechnica.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 3
     },
     {
       "source": "Reuters Sustainability",
@@ -949,9 +949,9 @@
     {
       "source": "EuropaBio",
       "url": "https://www.europabio.org/feed/",
-      "count": 5,
-      "ok": true,
-      "relevant": 5
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 415: https://www.europabio.org/feed/"
     },
     {
       "source": "SynBioBeta",
@@ -1019,9 +1019,9 @@
     {
       "source": "European Leadership",
       "url": "https://www.europeanleadershipnetwork.org/feed/",
-      "count": 2,
-      "ok": true,
-      "relevant": 2
+      "count": 0,
+      "ok": false,
+      "error": "HTTP 415: https://www.europeanleadershipnetwork.org/feed/"
     },
     {
       "source": "Defense One",
@@ -1070,7 +1070,7 @@
       "url": "https://acleddata.com/feed/",
       "count": 0,
       "ok": false,
-      "error": "HTTP 404: https://acleddata.com/feed/"
+      "error": "HTTP 415: https://acleddata.com/feed/"
     },
     {
       "source": "ORF India",
@@ -1144,8 +1144,8 @@
     }
   ],
   "stats": {
-    "success": 109,
-    "failed": 54,
-    "articles": 476
+    "success": 107,
+    "failed": 56,
+    "articles": 464
   }
 }
