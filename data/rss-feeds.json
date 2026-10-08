@@ -1,19 +1,19 @@
 {
-  "updated": "2026-10-07T22:37:55.230Z",
+  "updated": "2026-10-08T12:44:41.080Z",
   "feeds": [
     {
       "source": "Le Figaro",
       "url": "https://www.lefigaro.fr/rss/figaro_international.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 5
     },
     {
       "source": "France 24",
       "url": "https://www.france24.com/fr/rss",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 3
     },
     {
       "source": "RFI",
@@ -27,7 +27,7 @@
       "url": "https://www.courrierinternational.com/feed/all/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 4
     },
     {
       "source": "Le Monde Diplomatique",
@@ -41,14 +41,14 @@
       "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 4
     },
     {
       "source": "Al Jazeera",
       "url": "https://www.aljazeera.com/xml/rss/all.xml",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 3
     },
     {
       "source": "The Guardian",
@@ -62,7 +62,7 @@
       "url": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 4
     },
     {
       "source": "Reuters",
@@ -139,7 +139,7 @@
       "url": "https://www.middleeasteye.net/rss",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 4
     },
     {
       "source": "IFRI",
@@ -230,14 +230,14 @@
       "url": "https://www.lefigaro.fr/rss/figaro_societes.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 2
     },
     {
       "source": "Le Figaro Flash Éco",
       "url": "https://www.lefigaro.fr/rss/figaro_flash-eco.xml",
       "count": 5,
       "ok": true,
-      "relevant": 5
+      "relevant": 1
     },
     {
       "source": "Les Echos",
@@ -251,7 +251,7 @@
       "url": "https://www.bfmtv.com/rss/economie/",
       "count": 5,
       "ok": true,
-      "relevant": 1
+      "relevant": 3
     },
     {
       "source": "Zonebourse",
@@ -265,7 +265,7 @@
       "url": "https://www.latribune.fr/feed.xml",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 2
     },
     {
       "source": "Capital",
@@ -307,7 +307,7 @@
       "url": "https://www.investing.com/rss/news.rss",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 5
     },
     {
       "source": "Wolf Street",
@@ -601,14 +601,14 @@
       "url": "https://www.nextinpact.com/feed",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 2
     },
     {
       "source": "TechCrunch",
       "url": "https://techcrunch.com/feed/",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "The Verge",
@@ -629,7 +629,7 @@
       "url": "https://www.wired.com/feed/rss",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 1
     },
     {
       "source": "Hacker News",
@@ -692,7 +692,7 @@
       "url": "https://www.theregister.com/headlines.atom",
       "count": 5,
       "ok": true,
-      "relevant": 4
+      "relevant": 3
     },
     {
       "source": "TLDR Tech",
@@ -734,14 +734,14 @@
       "url": "https://www.lemonde.fr/economie/rss_full.xml",
       "count": 5,
       "ok": true,
-      "relevant": 2
+      "relevant": 4
     },
     {
       "source": "Challenges",
       "url": "https://www.challenges.fr/rss.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 5
     },
     {
       "source": "MoneyVox",
@@ -755,7 +755,7 @@
       "url": "https://www.lemonde.fr/international/rss_full.xml",
       "count": 5,
       "ok": true,
-      "relevant": 3
+      "relevant": 2
     },
     {
       "source": "Le Figaro Finances",
@@ -1055,8 +1055,8 @@
       "source": "Terra Bellum",
       "url": "https://terrabellum.com/feed/",
       "count": 0,
-      "ok": true,
-      "relevant": 0
+      "ok": false,
+      "error": "fetch failed"
     },
     {
       "source": "Bellingcat",
@@ -1144,8 +1144,8 @@
     }
   ],
   "stats": {
-    "success": 108,
-    "failed": 55,
-    "articles": 455
+    "success": 107,
+    "failed": 56,
+    "articles": 457
   }
 }
