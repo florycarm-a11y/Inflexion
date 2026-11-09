@@ -1,78 +1,69 @@
 {
-  "updated": "2026-09-07T18:12:50Z",
-  "date": "2026-09-07",
+  "updated": "2026-11-09T21:17:26.268Z",
+  "date": "2026-11-09",
   "global": {
-    "score": -0.24,
-    "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.24), dominé par la rubrique geopolitique (baissier)."
+    "score": -0.05,
+    "tendance": "mixte",
+    "resume": "Le sentiment global est mixte (-0.05), dominé par la rubrique crypto (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.4,
-      "confidence": 0.7,
-      "tendance": "baissier",
-      "resume": "Tensions persistantes autour du détroit d'Ormuz et de la guerre Iran-US (6 mois) maintiennent le risque géopolitique élevé. Les sanctions européennes contre la Russie s'élargissent à 1 600 entités.",
+      "score": -0.35,
+      "confidence": 0.62,
+      "tendance": "mixte",
+      "resume": "Négociations Ukraine-Russie en cours à Abou Dhabi avec signaux de flexibilité territoriale, contrebalancés par tensions persistantes (attaques Houthis, incidents en Turquie, tensions sino-américaines). Contexte électoraliste américain et français fragmenté.",
       "signaux_cles": [
-        "Trafic Ormuz sous les 20 traversées quotidiennes",
-        "UE prépare des sanctions contre 1 600 entités russes",
-        "Guerre Iran-US : 6 mois de conflit, pression économique croissante"
+        "Négociations Ukraine-Russie à Abou Dhabi : délégations en place, flexibilité territoriale rapportée par officiels US",
+        "Attaque pipeline saoudien et destruction d'installations Houthis : tensions géopolitiques persistantes en Moyen-Orient",
+        "Incident espionnage présumé Nvidia-Huang : tensions sino-américaines dans secteur technologique critique"
       ]
     },
     "marches": {
-      "score": -0.25,
-      "confidence": 0.75,
-      "tendance": "baissier",
-      "resume": "Le secteur tech subit une correction sévère : Tesla s'effondre de 5.92%, Apple cède 2.51% et Microsoft 2.04%. Le SPY (proxy S&P 500) recule de 0.39% et le Dow Jones (DIA) de 0.53%, tandis que le Nasdaq 100 (QQQ) résiste légèrement (+0,18%).",
+      "score": 0.42,
+      "confidence": 0.71,
+      "tendance": "haussier",
+      "resume": "Indices américains en hausse (S&P 500 +2.36%, Nasdaq +3.26%), soutenu par révisions positives de guidance (Claritev, Monday.com) et stabilité macroéconomique française. Boeing freiné par réductions d'effectifs (-5% aviation commerciale).",
       "signaux_cles": [
-        "Tesla à 354.08 $ (-5.92%) — pire performance du panel (Finnhub)",
-        "SPY (proxy S&P 500) à 770.19 $ (-0.39%) (Finnhub)",
-        "Nasdaq 100 (QQQ) à 718.96 $ (+0.18%) — résistance relative (Finnhub)"
+        "S&P 500 +2.36%, Nasdaq 100 +3.26%, Dow Jones +2.18% : rebond généralisé des indices",
+        "Claritev relève guidance 2026 à $1.038B-$1.043B, anticipe $1.1B+ en 2027 : momentum NSA confirmé",
+        "Boeing réduit 5% des effectifs aviation commerciale : ralentissement production vs attentes"
       ]
     },
     "crypto": {
-      "score": -0.2,
-      "confidence": 0.7,
-      "tendance": "mixte",
-      "resume": "Le marché crypto corrige avec BTC à 79,434 $ (-0.6%) et une capitalisation totale en repli de 3,16%. Cependant, le Fear & Greed Index reste à 71/100 (Greed), en hausse de 9 points sur la semaine, signalant un sentiment encore positif malgré la pause technique.",
+      "score": -0.58,
+      "confidence": 0.75,
+      "tendance": "baissier",
+      "resume": "Secteur sous pression avec XRP -12.17% sur 7j, TVL DeFi -8.1%, contexte de régulation accrue (task force UE, enquêtes Binance/Tether). Activités illicites documentées (Corée du Nord, Iran). Quelques signaux positifs (AVAX, tokenisation).",
       "signaux_cles": [
-        "BTC à 79,434 $ (24h: -0.6%, 7j: +1.1%, 30j: +22%) (CoinGecko)",
-        "Fear & Greed Index à 71/100 (Greed), +9 pts sur 7j (Alternative.me)",
-        "Capitalisation totale crypto à 2.69 T$ (-3,16% sur 24h) (CoinGecko)"
+        "XRP -12.17% sur 7 jours, -5.34% sur 24h : correction significative",
+        "TVL DeFi -8.1% sur 7j ($496B) : signal de stress et retrait de liquidités",
+        "UE lance task force anti-contournement sanctions crypto ; enquêtes Binance/Tether intensifiées"
       ]
     },
     "matieres_premieres": {
-      "score": -0.2,
-      "confidence": 0.55,
-      "tendance": "baissier",
-      "resume": "L'or corrige légèrement avec GLD à 406.77 $ (-0.84%). Le pétrole (USO) est quasi-stable à 141.96 $ (-0.09%). Les données spot de métaux et d'énergie sont indisponibles.",
+      "score": -0.28,
+      "confidence": 0.68,
+      "tendance": "neutre",
+      "resume": "Pétrole sous pression (-3.14% USO) malgré tensions géopolitiques, soutenu par demande LNG asiatique affaiblie et accumulation stocks gaz naturel. Gaz naturel en baisse (<$3 Haynesville). Contrats de défense (VIKING €23.8M) stables.",
       "signaux_cles": [
-        "GLD (proxy or) à 406.77 $ (-0.84%) (Finnhub)",
-        "USO (proxy pétrole) à 141.96 $ (-0.09%) (Finnhub)",
-        "Tensions Ormuz : trafic effondré sous 20 navires/jour"
+        "Pétrole (USO) -3.14% : pression baissière malgré attaque pipeline saoudien",
+        "Gaz naturel sub-$3 Haynesville : puits au seuil de rentabilité, accumulation stocks",
+        "Demande LNG asiatique affaiblie, tensions géopolitiques réduisent prime de risque"
       ]
     },
     "ai_tech": {
-      "score": -0.15,
-      "confidence": 0.6,
-      "tendance": "baissier",
-      "resume": "La tech corrige avec AAPL, MSFT et GOOGL en baisse, malgré une résistance de Nvidia (+0,84%). Les incidents d'IA 'rogue' doublent selon The Guardian, tandis que la régulation européenne sur ChatGPT se précise.",
+      "score": 0.51,
+      "confidence": 0.73,
+      "tendance": "haussier",
+      "resume": "Lancement de nouveaux modèles (Anthropic Fable/Mythos 5.2, Baidu ERNIE, Google TPU 8i/8tx) soutient dynamique IA. Nvidia impactée par controverse Huang (-5.63%), mais écosystème tech large progresse. Investissements massifs en infrastructure énergétique ($3.4B Anthropic).",
       "signaux_cles": [
-        "Nvidia à 230.36 $ (+0.84%) — seule résistance du panel tech (Finnhub)",
-        "Incidents d'IA rogue en hausse de ~100% le mois dernier (The Guardian)",
-        "Commission européenne évalue le statut de ChatGPT comme 'très grande plateforme'"
+        "Anthropic acquiert $3.4B de turbines gaz naturel : engagement infrastructure énergétique pour IA",
+        "Lancement Fable/Mythos 5.2, TPU 8i Max, ERNIE Evolve : accélération cycles innovation modèles",
+        "Nvidia -5.63% sur controverse Huang-espionnage : risque réputationnel et géopolitique pour leader IA"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-03-12",
-      "global": -0.6,
-      "geopolitique": -0.85,
-      "marches": -0.72,
-      "crypto": -0.38,
-      "matieres_premieres": -0.88,
-      "ai_tech": 0.15
-    },
     {
       "date": "2026-03-16",
       "global": -0.28,
@@ -293,10 +284,10 @@
       "date": "2026-08-11",
       "global": -0.22,
       "geopolitique": -0.6,
-      "marches": -1.0,
-      "crypto": -1.0,
+      "marches": -1,
+      "crypto": -1,
       "matieres_premieres": 0.33,
-      "ai_tech": 1.0
+      "ai_tech": 1
     },
     {
       "date": "2026-08-21",
@@ -304,7 +295,7 @@
       "geopolitique": -0.14,
       "marches": 0.33,
       "crypto": 0.75,
-      "matieres_premieres": 1.0,
+      "matieres_premieres": 1,
       "ai_tech": 0.5
     },
     {
@@ -314,7 +305,7 @@
       "marches": -0.15,
       "crypto": 0.78,
       "matieres_premieres": 0.6,
-      "ai_tech": 1.0
+      "ai_tech": 1
     },
     {
       "date": "2026-09-05",
@@ -333,8 +324,17 @@
       "crypto": -0.2,
       "matieres_premieres": -0.2,
       "ai_tech": -0.15
+    },
+    {
+      "date": "2026-11-09",
+      "global": -0.05,
+      "geopolitique": -0.35,
+      "marches": 0.42,
+      "crypto": -0.58,
+      "matieres_premieres": -0.28,
+      "ai_tech": 0.51
     }
   ],
-  "model": "kimi",
+  "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
 }

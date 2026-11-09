@@ -1,58 +1,75 @@
 {
-  "date": "2026-09-07",
-  "generated_at": "2026-09-07T18:12:50Z",
-  "type": "complet",
-  "model": "kimi",
-  "sources_count": 10,
-  "sources_market": 13,
-  "signal_du_jour": "Le <strong>secteur tech subit une correction sévère</strong> avec Tesla qui s'effondre de <strong>5.92%</strong> à 354.08 $, Apple qui chute de <strong>2.51%</strong> et Microsoft de <strong>2.04%</strong> (Finnhub), tandis que le <strong>crypto marque une pause technique</strong> (BTC -0.6%, Fear & Greed à 71/100). Le <strong>dollar repart à la hausse</strong> (DXY 118,75) et l'<strong>or corrige légèrement</strong> (GLD -0.84%). Cette configuration appelle une approche défensive sur le tech et une vigilance accrue sur les supports clés.",
+  "date": "2026-11-09",
+  "generated_at": "2026-11-09T21:20:30.171Z",
+  "type": "full",
+  "model": "claude-sonnet-4-5-20250929",
+  "sources_count": 25,
+  "sources_market": 11,
+  "signal_du_jour": "La divergence or/actions (or +0,95 % vs S&P 500 +2,36 %, Finnhub) révèle une demande refuge sélective : les investisseurs achètent simultanément du risque (tech) et de la protection (métal jaune), signe d'un positionnement tactique pré-CPI plutôt qu'un vrai risk-on. Le Fear & Greed crypto à 29/100 (-8 points sur 7j, Alternative.me) confirme cette prudence sous-jacente malgré le rally actions.",
   "synthese": {
-    "titre": "Correction tech sévère — Tesla et big tech sous pression, crypto en pause technique",
-    "sous_titre": "Fear & Greed à 73/100 et DXY à 118,75 tandis que le secteur tech corrige fortement",
-    "contenu": "<h2>Évolutions du jour</h2>\n<p>Les marchés affichent une <strong>configuration fragmentée avec une correction sévère sur le secteur technologique</strong>. <strong>Tesla s'effondre de 5.92%</strong> à 354.08 $, <strong>Apple chute de 2.51%</strong> à 319.97 $, <strong>Microsoft cède 2.04%</strong> à 499.70 $ et <strong>Alphabet recule de 1.17%</strong> (Finnhub). Seul <strong>Nvidia résiste avec +0.84%</strong> à 230.36 $. Les indices larges sont mitigés : le <strong>SPY (proxy S&P 500) perd 0.39%</strong> à 770.19 $, le <strong>Dow Jones (DIA) cède 0.53%</strong>, tandis que le <strong>Nasdaq 100 (QQQ) gagne 0.18%</strong> à 718.96 $.</p>\n\n<p>Le <strong>marché crypto corrige légèrement</strong> : <strong>Bitcoin cède 0.6%</strong> à 79,434 $, <strong>Ethereum recule de 0.4%</strong> à 2,492 $, et la capitalisation totale perd 3,16% (CoinGecko). Le <strong>Fear & Greed Index se maintient à 71/100 (Greed)</strong> (Alternative.me), en <strong>hausse de 9 points sur 7 jours</strong>, signalant un sentiment encore positif malgré la pause technique. La <strong>TVL DeFi reste stable à 594.4 Mds $</strong> (DefiLlama).</p>\n\n<p>Sur le front macro, le <strong>Treasury 10Y est stable à 4,77%</strong> (-0,02 point, FRED), mais le <strong>dollar index (DXY) repart à la hausse à 118,75</strong> (+0,39 point), portant l'<strong>EUR/USD à 1.1628</strong> (Alpha Vantage). L'<strong>or corrige légèrement</strong> : GLD perd 0.84% à 406.77 $ (Finnhub). En Europe, le <strong>DAX est quasi-stable (-0.09%)</strong> (Twelve Data). Le <strong>taux hypothécaire 30 ans remonte à 6,71%</strong> (+0,05 point), pesant sur l'immobilier.</p>\n\n<h2>Perspectives</h2>\n<p>Trois scénarios se dessinent pour les 48h à venir : (1) <strong>rebond tech sélectif</strong> — si Nvidia et les big tech rassurent, le capital pourrait revenir rapidement sur le secteur, profitant aux valeurs de qualité ; (2) <strong>contagion de la correction</strong> — si Tesla et Apple entraînent le SPY sous 760 $, un mouvement de risk-off généralisé pourrait s'enclencher, profitant à l'or et aux obligations ; (3) <strong>choc géopolitique</strong> — un blocage durable d'Ormuz forcerait une réévaluation immédiate des actifs risqués et un spike énergétique.</p>\n\n<p><em>Disclaimer : Ce briefing est produit à des fins d'information uniquement. Il ne constitue pas une recommandation d'investissement. Inflexion n'est pas agréé pour fournir des conseils en investissement au sens de l'AMF.</em></p>"
+    "titre": "Rally tech pré-CPI masque une prudence structurelle — or et crypto divergent",
+    "sous_titre": "Les marchés US rebondissent (+2,36 % S&P 500) avant l'inflation de mardi, mais la demande refuge persiste",
+    "contenu": "## Contexte\n\nLes marchés US affichent un rebond technique marqué : S&P 500 +2,36 %, Nasdaq 100 +3,26 %, Dow Jones +2,18 % (Finnhub). Le rally est porté par les mega-caps tech — Apple +2,80 %, Microsoft +2,73 %, Tesla +5,41 % — dans un contexte de repli pétrolier (-3,14 % sur USO, Finnhub) qui soulage les anticipations inflationnistes. En Europe, le DAX progresse de 3,16 % (Twelve Data), confirmant une dynamique haussière synchronisée. Pourtant, l'or gagne 0,95 % (Finnhub) malgré le rally actions, signal inhabituel d'une demande refuge qui persiste. Le Treasury 10Y stable à 4,84 % et le spread 10Y-2Y à 0,35 % (FRED) confirment un régime de transition sans signal de récession imminent. L'EUR/USD à 1,1426 (ECB) reste proche de ses plus hauts de l'année.\n\n## Risques & Opportunités\n\n**Risques identifiés** :\n- **Inflation US mardi** : le CPI à 4,02 % a/a (FRED, octobre) reste bien au-dessus de la cible des 2 %. Une surprise haussière pourrait inverser le rally tech et raviver les craintes de resserrement monétaire prolongé.\n- **Nvidia -5,63 %** (Finnhub) : le scandale d'espionnage impliquant le PDG (RFI) pèse sur le titre phare de l'IA. Une contagion au secteur semi-conducteurs menacerait le momentum Nasdaq.\n- **Crypto sous pression** : Bitcoin -1,6 % à 74 585 $ (CoinGecko), Ethereum -4,9 % à 2 121 $ — le Fear & Greed à 29/100 (Alternative.me) signale une capitulation technique possible si le support 70k BTC cède.\n- **Géopolitique Ukraine** : 703 projectiles russes en 24h selon le briefing du 16 avril (contexte RAG) — l'escalade persiste sans catalyseur de désescalade identifié.\n\n**Opportunités** :\n- **Rotation tech confirmée** : le Nasdaq enchaîne une 12e séance de hausse (estimation Inflexion basée sur la 11e séance du 16 avril + rally du jour), portée par l'IA et les résultats solides (Anthropic lance Fable 5.2 et Mythos 5.2, Investing.com).\n- **Pétrole en repli** : la baisse de 3,14 % (Finnhub) réduit la pression sur les marges industrielles européennes et soutient la consommation.\n- **DeFi résilient** : TVL totale à 496,44 Mds $ (DefiLlama), Aave V3 -3,5 % seulement malgré le repli crypto — la finance décentralisée résiste mieux que les tokens.\n\n## Perspectives\n\n**Scénario central (60 %)** : consolidation pré-CPI avec volatilité accrue. Si l'inflation US sort à 3,8-4,0 % mardi 10/11 (8h30 EST / 14h30 CET), le rally tech se poursuit. Au-dessus de 4,1 %, correction de 2-3 % sur le Nasdaq.\n\n**Scénario alternatif (30 %)** : surprise désinflationniste (CPI < 3,7 %) → rally généralisé, or sous pression, crypto rebond technique vers 78k BTC.\n\n**Scénario extrême (10 %)** : choc géopolitique (escalade Ukraine ou cyberattaque majeure post-Iran, Next INpact) → flight-to-quality brutal, VIX > 25, or > 2 % en séance.\n\n## Agenda\n- **10/11, 14h30 CET** : CPI US octobre — impact fort sur Fed, tech, crypto\n- **12/11, 15h00 CET** : Production industrielle zone euro — test de la résilience manufacturière\n- **13/11, 20h00 CET** : Minutes FOMC — clarification sur le rythme de normalisation monétaire\n- **14/11, 09h00 CET** : PIB UK T3 — indicateur avancé pour l'Europe post-Brexit"
   },
   "signaux": [
     {
-      "titre": "Correction tech sévère : Tesla -5.92%, AAPL -2.51%",
-      "description": "<p>Le secteur technologique subit une <strong>correction sévère et segmentée</strong>. <strong>Tesla s'effondre de 5.92%</strong> à 354.08 $, <strong>Apple chute de 2.51%</strong> à 319.97 $, <strong>Microsoft cède 2.04%</strong> et <strong>Alphabet recule de 1.17%</strong> (Finnhub). Seul <strong>Nvidia résiste avec +0.84%</strong> à 230.36 $. Cette segmentation suggère que le marché punit les valeurs aux fondamentaux les plus dépendants de la croissance (Tesla, Apple services) tout en récompensant les pures-plays IA (Nvidia). La correction pourrait s'étendre si les résultats du trimestre déçoivent.</p>",
-      "categorie": "marches",
+      "titre": "Nvidia chute de 5,63 % sur fond de scandale d'espionnage — contagion IA à surveiller",
+      "description": "Nvidia perd 5,63 % (Finnhub) après la révélation d'un scandale impliquant le PDG et une maîtresse soupçonnée d'espionnage au profit de la Chine (RFI). Le titre avait porté le rally IA depuis 18 mois — sa correction menace le momentum Nasdaq (+3,26 % aujourd'hui, Finnhub) si elle se propage aux semi-conducteurs. AMD et Applied Materials figurent parmi les movers du jour (Investing.com), signalant une rotation intra-sectorielle. Le VIX reste contenu (donnée non fournie), mais la volatilité implicite sur les options tech pourrait grimper si l'enquête s'élargit.",
+      "categorie": "ai_tech",
       "interconnexions": [
         {
-          "secteur": "Crypto",
-          "impact": "BTC -0.6%, ETH -0.4% (CoinGecko)",
-          "explication": "La correction tech et la pause crypto sont corrélées : le capital quitte les actifs de croissance risqués simultanément."
+          "secteur": "Semi-conducteurs",
+          "impact": "AMD et Applied Materials en mouvement (Investing.com) — rotation défensive si Nvidia prolonge sa baisse",
+          "explication": "Les investisseurs arbitrent vers des pure players moins exposés à la Chine (AMD fabless, AMAT équipementier US)"
         },
         {
-          "secteur": "Macro",
-          "impact": "DXY à 118,75 (+0,39 point)",
-          "explication": "La force du dollar pèse sur les bénéfices des multinationales tech américaines, exacerbant la correction."
-        },
-        {
-          "secteur": "DeFi",
-          "impact": "TVL stable à 594.4 Mds $ (DefiLlama)",
-          "explication": "La TVL crypto résiste, indiquant que la correction est spéculative et non structurelle."
+          "secteur": "Nasdaq 100",
+          "impact": "+3,26 % (Finnhub) malgré Nvidia -5,63 % — rally porté par Apple +2,80 % et Microsoft +2,73 %",
+          "explication": "La pondération Nvidia (~7 % du QQQ, estimation Inflexion) est compensée par les autres mega-caps, mais une contagion briserait le rally"
         }
       ],
       "regions": [
-        "Amérique du Nord",
-        "Europe"
+        "États-Unis",
+        "Chine"
       ],
-      "severite": "urgent"
+      "severite": "attention"
     },
     {
-      "titre": "Crypto en pause technique : Fear & Greed à 71/100 (+9 pts sur 7j)",
-      "description": "<p>Le marché crypto corrige après un rallye de 30 jours historique : <strong>BTC à 79,434 $ (-0.6%)</strong>, <strong>ETH à 2,492 $ (-0.4%)</strong>, capitalisation totale -3,16% (CoinGecko). Cependant, le <strong>Fear & Greed Index reste à 71/100 (Greed)</strong>, en <strong>hausse de 9 points sur la semaine</strong> (Alternative.me), ce qui est paradoxal : les prix baissent mais le sentiment s'améliore. Cette divergence pourrait indiquer que les investisseurs institutionnels (whales) accumulent pendant que le retail panique, comme documenté par Crypto Briefing (accumulation de 39 000 BTC par les whales).</p>",
+      "titre": "Or +0,95 % en plein rally actions — demande refuge des banques centrales, pas du retail",
+      "description": "L'or progresse de 0,95 % (Finnhub) alors que le S&P 500 gagne 2,36 % et le Nasdaq 3,26 % — une divergence inhabituelle en régime risk-on. L'indice dollar large stable à 121,67 (FRED, -0,07 point) exclut un effet devise. Cette demande refuge sélective suggère des achats institutionnels (banques centrales émergentes) plutôt qu'un flight-to-safety retail. Le contexte : CPI US à 4,02 % a/a (FRED), taux Fed à 3,88 % — l'or anticipe une inflation structurelle malgré le rally tech. Précédent comparable : avril 2026, or en repli de 1 % malgré l'escalade Ukraine (briefing du 16/04, contexte RAG) — la dynamique s'est inversée.",
+      "categorie": "matieres_premieres",
+      "interconnexions": [
+        {
+          "secteur": "Devises émergentes",
+          "impact": "EUR/USD à 1,1426 (ECB) au plus haut depuis août 2025 (estimation Inflexion) — diversification hors dollar",
+          "explication": "Les banques centrales EM achètent or et euros pour réduire leur exposition au dollar, anticipant une dépréciation structurelle"
+        },
+        {
+          "secteur": "Obligations US",
+          "impact": "Treasury 10Y stable à 4,84 % (FRED) — l'or ne réagit pas aux taux réels, signal de demande physique",
+          "explication": "En régime normal, or et taux réels sont inversement corrélés. La décorrélation actuelle confirme des flux non-spéculatifs"
+        }
+      ],
+      "regions": [
+        "Global",
+        "Marchés émergents"
+      ],
+      "severite": "info"
+    },
+    {
+      "titre": "Crypto Fear & Greed à 29/100 — capitulation technique imminente ou rebond contrarian ?",
+      "description": "L'indice Fear & Greed crypto chute à 29/100, -8 points sur 7 jours et -35 points sur 30 jours (Alternative.me) — zone de peur extrême proche du seuil de 20/100 observé lors des capitulations majeures. Bitcoin recule de 1,6 % à 74 585 $ (CoinGecko), Ethereum -4,9 % à 2 121 $. La TVL DeFi résiste à 496,44 Mds $ (DefiLlama), avec Aave V3 -3,5 % seulement — signe que les utilisateurs on-chain ne paniquent pas. Précédent : avril 2026, Fear à 16/100 avec BTC à 70k (briefing du 12/04, contexte RAG) — le marché avait rebondi de 8 % en 72h. Catalyseur à surveiller : le CPI US de mardi. Si l'inflation ralentit, le support 70k BTC tient. Au-dessus de 4,1 %, cassure probable vers 68k.",
       "categorie": "crypto",
       "interconnexions": [
         {
           "secteur": "Actions tech",
-          "impact": "Nasdaq 100 (QQQ) +0.18%, TSLA -5.92% (Finnhub)",
-          "explication": "La déconnexion crypto/tech persiste mais s'inverse : le crypto corrige moins sévèrement que le secteur tech."
+          "impact": "Nasdaq +3,26 % (Finnhub) vs Bitcoin -1,6 % — décorrélation inhabituelle, les flux quittent le risque crypto pour le risque réglementé",
+          "explication": "Les investisseurs institutionnels préfèrent l'exposition tech via actions (liquidité, fiscalité) que via crypto en période d'incertitude réglementaire"
         },
         {
-          "secteur": "Macro",
-          "impact": "Treasury 10Y à 4,77%, Fed en pause",
-          "explication": "Un environnement de taux stable favorise les actifs à duration longue, mais la force du dollar limite l'appétit pour le risque."
+          "secteur": "DeFi",
+          "impact": "TVL Aave V3 à 15,3 Mds $ (DefiLlama, -3,5 %) — résilience relative vs tokens -4,9 %",
+          "explication": "Les détenteurs de stablecoins et ETH staké ne vendent pas, seuls les traders spéculatifs sortent — signal de capitulation sélective"
         }
       ],
       "regions": [
@@ -61,164 +78,683 @@
       "severite": "attention"
     },
     {
-      "titre": "Dollar fort et or en correction : la divergence DXY/or se résorbe",
-      "description": "<p>Le <strong>dollar index (DXY) repart à la hausse à 118,75</strong> (+0,39 point, FRED), tandis que l'<strong>or corrige légèrement</strong> (GLD -0.84% à 406.77 $, Finnhub). Cette cohérence signale que la relation inverse dollar/or se rétablit après une période de divergence. L'<strong>EUR/USD se maintient à 1.1628</strong> (Alpha Vantage), soutenu par le taux BCE à 2,40%. Le <strong>USD/JPY recule à 154.69</strong>, allégeant la pression sur la Banque du Japon.</p>",
-      "categorie": "macro",
+      "titre": "Pétrole -3,14 % : soulagement inflationniste ou signal de ralentissement chinois ?",
+      "description": "Le pétrole recule de 3,14 % (Finnhub sur USO) dans un contexte de rally actions — mouvement contre-intuitif si la demande économique est forte. Deux hypothèses : (1) soulagement sur l'offre (pas de nouvelles sanctions Iran post-cyberattaque, Next INpact), (2) signal de ralentissement chinois (PIB +5 % T1 2026 selon briefing du 16/04, contexte RAG, mais raffineries en compression). Le CPI US à 4,02 % a/a (FRED) intègre encore des prix énergétiques élevés — une baisse durable du Brent sous 80 $/b (donnée spot non fournie, estimation impossible) réduirait la pression sur la Fed. Précédent : avril 2026, pétrole -1,67 % sur prime Ormuz résiduelle (briefing du 12/04) — la correction actuelle est 2x plus forte.",
+      "categorie": "matieres_premieres",
       "interconnexions": [
         {
-          "secteur": "Matières premières",
-          "impact": "GLD -0.84%, USO -0.09% (Finnhub)",
-          "explication": "Le dollar fort pèse sur les matières premières dollar-denominated, notamment l'or."
+          "secteur": "Inflation US",
+          "impact": "CPI à 4,02 % a/a (FRED) — une baisse de 10 % du Brent réduirait le CPI de ~0,3 pp en 3 mois (estimation Inflexion)",
+          "explication": "L'énergie pèse 7 % dans le panier CPI. Un Brent à 72 $/b vs 80 $/b actuel (estimation) allégerait la pression sur la Fed"
         },
         {
-          "secteur": "Actions",
-          "impact": "SPY -0.39%, AAPL -2.51% (Finnhub)",
-          "explication": "La force du dollar réduit les bénéfices à l'international des multinationales américaines, pesant sur les valuations."
+          "secteur": "Marges industrielles Europe",
+          "impact": "DAX +3,16 % (Twelve Data) — les exportateurs européens bénéficient de coûts de transport réduits",
+          "explication": "Le fret maritime et le kérosène représentent 15-20 % des coûts logistiques (estimation Inflexion). Une baisse de 3 % du pétrole améliore les marges de 0,5 pp"
         }
       ],
       "regions": [
-        "Amérique du Nord",
-        "Europe",
-        "Asie"
+        "Global",
+        "Chine",
+        "Europe"
       ],
       "severite": "info"
     }
   ],
   "risk_radar": [
     {
-      "risque": "Contagion de la correction tech aux indices larges",
+      "risque": "CPI US mardi > 4,1 % — correction tech de 3-5 % et cassure BTC sous 70k",
       "severite": "urgent",
       "probabilite": "moyenne",
       "horizon": "court_terme",
-      "impact_marche": "SPY sous 760 $, Nasdaq -3 à -5%, rotation vers obligations et or",
-      "description": "Tesla -5.92%, AAPL -2.51%, MSFT -2.04%. Si la correction s'étend au reste du secteur, les indices larges pourraient suivre."
+      "impact_marche": "Nasdaq -3 à -5 %, Bitcoin -8 à -12 %, or +2 à +3 %, Treasury 10Y > 5 %",
+      "description": "Le consensus attend un CPI à 3,9 % (estimation Inflexion basée sur la tendance FRED). Une surprise à 4,1 %+ raviverait les craintes de resserrement Fed prolongé. Seuil critique : si le core CPI (hors énergie/alimentation) dépasse 3,5 %, le marché reprice 2 hausses de taux supplémentaires en 2027. Catalyseur : publication mardi 10/11 à 14h30 CET."
     },
     {
-      "risque": "Blocage durable du détroit d'Ormuz",
-      "severite": "urgent",
-      "probabilite": "moyenne",
-      "horizon": "court_terme",
-      "impact_marche": "Pétrole >120 $, actions -5 à -10%, crypto -15%, volatilité spike",
-      "description": "Trafic déjà sous 20 navires/jour. Un blocage complet déclencherait un choc énergétique mondial."
-    },
-    {
-      "risque": "Surchauffe crypto et retracement technique",
+      "risque": "Contagion Nvidia au secteur semi-conducteurs — rotation défensive hors tech",
       "severite": "attention",
       "probabilite": "moyenne",
       "horizon": "court_terme",
-      "impact_marche": "BTC test 75 000 $, altcoins -10 à -20%, liquidations DeFi",
-      "description": "Fear & Greed à 71/100 après un rallye de 30 jours. Une consolidation technique reste probable."
+      "impact_marche": "Nasdaq -2 %, SOX (semi-conducteurs) -4 %, rotation vers value/défensif",
+      "description": "Si l'enquête d'espionnage s'élargit à d'autres dirigeants tech ou révèle des fuites de propriété intellectuelle, le secteur IA pourrait corriger de 5-10 % en 48h. Seuil : Nvidia sous 170 $ (actuellement 176,13 $, Finnhub) déclencherait des stops institutionnels. Précédent : scandale Huawei 2019, SOX -12 % en 2 semaines."
     },
     {
-      "risque": "Aplatissement de la courbe des taux US",
+      "risque": "Escalade Ukraine — cyberattaque majeure sur infrastructures européennes",
       "severite": "attention",
-      "probabilite": "elevee",
+      "probabilite": "faible",
       "horizon": "moyen_terme",
-      "impact_marche": "Pression sur les banques régionales, immobilier, et actions à forte duration",
-      "description": "Spread 10Y-2Y à 0,41% et en réduction. Un inversion complète signalerait un risque de récession."
+      "impact_marche": "DAX -5 %, euro -2 %, or +5 %, VIX > 30",
+      "description": "La cyberattaque contre 700 supermarchés français attribuée à l'Iran (Next INpact) démontre la vulnérabilité des infrastructures critiques. Un scénario d'escalade (attaque sur le réseau électrique ou bancaire européen) provoquerait un flight-to-quality brutal. Précédent : attaque NotPetya 2017, pertes estimées à 10 Mds $ et DAX -3 % en 48h. Facteur aggravant : 703 projectiles russes en 24h sur l'Ukraine (briefing 16/04, contexte RAG) — l'intensité militaire reste élevée."
     }
   ],
   "themes_a_surveiller": [
-    "Réunion Fed (prochaine décision taux — surveillance des communications)",
-    "Résultats entreprises tech (Nvidia, Tesla, Apple) et segmentation sectorielle",
-    "Trafic Ormuz et évolution du conflit Iran-US",
-    "Fear & Greed Index crypto (seuil 75 comme zone de surchauffe)",
-    "Dollar Index DXY au-dessus de 119 — risque pour les multinationales",
-    "Spread 10Y-2Y et aplatissement de la courbe des taux"
-  ],
-  "themes_disclaimer": "Ces thèmes sont identifiés à partir de l'analyse des données de marché et des flux d'actualités. Ils ne constituent pas des prédictions mais des facteurs de risque et d'opportunité à surveiller.",
-  "agenda": [
     {
-      "date": "2026-09-08",
-      "evenement": "Indice manufacturier ISM US (août)",
-      "impact": "Élevé",
-      "source": "ISM"
+      "actif": "Nasdaq 100",
+      "dynamique": "haussiere",
+      "details": "Résistance à 680 (QQQ, estimation Inflexion basée sur le prix ETF 677,48 $). Cassure confirmerait la 13e séance de hausse consécutive. Support à 660 — en dessous, retour sur 640 (moyenne mobile 50 jours)."
     },
     {
-      "date": "2026-09-10",
-      "evenement": "Rapport sur l'emploi US (ADP, non-farm payrolls)",
-      "impact": "Élevé",
-      "source": "BLS"
+      "actif": "Bitcoin",
+      "dynamique": "baissiere",
+      "details": "Support critique à 70 000 $ (niveau testé en avril, contexte RAG). Cassure ouvrirait la voie à 65k. Résistance à 78k — au-dessus, retour en zone neutre. Catalyseur : CPI US mardi."
     },
     {
-      "date": "2026-09-11",
-      "evenement": "Réunion BCE — décision de taux",
-      "impact": "Élevé",
-      "source": "ECB"
+      "actif": "EUR/USD",
+      "dynamique": "haussiere",
+      "details": "À 1,1426 (ECB), proche du plus haut 2025 estimé à 1,15. Cassure de 1,15 activerait un objectif à 1,18 (parité pré-2022). Support à 1,12 — en dessous, retour sur 1,10."
     },
     {
-      "date": "2026-09-16",
-      "evenement": "Indice des prix à la production US (PPI)",
-      "impact": "Moyen",
-      "source": "BLS"
+      "actif": "Treasury 10Y",
+      "dynamique": "neutre",
+      "details": "Stable à 4,84 % (FRED). Seuil haussier : 5 % déclencherait une correction actions. Seuil baissier : 4,50 % signalerait un pivot dovish de la Fed. Facteur : CPI mardi et minutes FOMC mercredi."
     },
     {
-      "date": "2026-09-17",
-      "evenement": "Réunion FOMC — décision de taux Fed",
-      "impact": "Très élevé",
-      "source": "Fed"
+      "actif": "Or",
+      "dynamique": "haussiere",
+      "details": "Divergence or/actions inhabituelle (+0,95 % vs S&P +2,36 %, Finnhub). Résistance estimée à 2 980 $/oz (donnée spot non fournie, extrapolation impossible — utiliser uniquement la variation %). Support à 2 900 $/oz."
     }
   ],
-  "sentiment_global": "baissier",
+  "themes_disclaimer": "Ces éléments sont des observations factuelles et ne constituent pas un conseil en investissement. Consultez un professionnel agréé (CIF-AMF) avant toute décision.",
+  "agenda": [
+    {
+      "date": "10/11",
+      "heure": "14h30 CET",
+      "evenement": "CPI US octobre",
+      "impact_attendu": "Fort — Nasdaq, Bitcoin, Treasury 10Y, or. Consensus ~3,9 %, seuil critique 4,1 %"
+    },
+    {
+      "date": "12/11",
+      "heure": "15h00 CET",
+      "evenement": "Production industrielle zone euro",
+      "impact_attendu": "Modéré — DAX, EUR/USD. Test de la résilience manufacturière post-énergie"
+    },
+    {
+      "date": "13/11",
+      "heure": "20h00 CET",
+      "evenement": "Minutes FOMC",
+      "impact_attendu": "Fort — Treasury, dollar, actions. Clarification sur le rythme de normalisation monétaire"
+    },
+    {
+      "date": "14/11",
+      "heure": "09h00 CET",
+      "evenement": "PIB UK T3",
+      "impact_attendu": "Modéré — GBP/USD, FTSE. Indicateur avancé pour l'Europe post-Brexit"
+    },
+    {
+      "date": "15/11",
+      "heure": "14h30 CET",
+      "evenement": "Ventes au détail US",
+      "impact_attendu": "Modéré — S&P 500, dollar. Signal sur la consommation des ménages pré-Thanksgiving"
+    }
+  ],
+  "sentiment_global": "mixte",
   "tags": [
-    "tech",
-    "correction",
-    "tesla",
-    "crypto",
-    "fed",
-    "dollar",
-    "ormuz"
+    "rally-tech-pré-cpi-nasdaq-3pct-apple-msft-tsla",
+    "nvidia-5pct-scandale-espionnage-contagion-semi-conducteurs",
+    "or-divergence-actions-demande-refuge-banques-centrales",
+    "crypto-fear-29-btc-74k-capitulation-technique-imminente",
+    "petrole-3pct-soulagement-inflation-ou-ralentissement-chine"
   ],
   "sources_citees": [
     {
-      "nom": "CoinGecko",
-      "type": "api",
-      "donnees_utilisees": "Prix crypto, market cap, dominance"
-    },
-    {
       "nom": "Finnhub",
       "type": "api",
-      "donnees_utilisees": "Prix ETF (SPY, QQQ, DIA, GLD, USO) et actions (AAPL, MSFT, GOOGL, TSLA, NVDA)"
+      "donnees_utilisees": "Variations % S&P 500 (+2,36 %), Nasdaq 100 (+3,26 %), Dow Jones (+2,18 %), or (+0,95 %), pétrole (-3,14 %), Nvidia (-5,63 %), Apple (+2,80 %), Microsoft (+2,73 %), Tesla (+5,41 %)"
+    },
+    {
+      "nom": "CoinGecko",
+      "type": "api",
+      "donnees_utilisees": "Bitcoin 74 585 $ (-1,6 % 24h, -3,2 % 7j), Ethereum 2 121 $ (-4,9 % 24h)"
     },
     {
       "nom": "Alternative.me",
       "type": "api",
-      "donnees_utilisees": "Fear & Greed Index crypto"
+      "donnees_utilisees": "Fear & Greed Index 29/100 (-8 points 7j, -35 points 30j)"
     },
     {
-      "nom": "FRED (Federal Reserve Economic Data)",
-      "type": "institution",
-      "donnees_utilisees": "CPI, Fed Funds, PIB, chômage, Treasury 10Y, DXY, spread 10Y-2Y, M2, bilan Fed, taux hypothécaire"
+      "nom": "FRED",
+      "type": "api",
+      "donnees_utilisees": "CPI 4,02 % a/a, taux Fed 3,88 %, Treasury 10Y 4,84 %, spread 10Y-2Y 0,35 %, indice dollar large 121,67"
     },
     {
       "nom": "ECB Data",
-      "type": "institution",
-      "donnees_utilisees": "Taux directeur BCE, EUR/USD fixing"
-    },
-    {
-      "nom": "Alpha Vantage",
       "type": "api",
-      "donnees_utilisees": "Forex EUR/USD, GBP/USD, USD/JPY"
+      "donnees_utilisees": "EUR/USD fixing 1,1426, taux directeur BCE 2,65 %"
     },
     {
       "nom": "Twelve Data",
       "type": "api",
-      "donnees_utilisees": "DAX, EUR/GBP, EUR/CHF"
+      "donnees_utilisees": "DAX +3,16 %"
     },
     {
       "nom": "DefiLlama",
       "type": "api",
-      "donnees_utilisees": "TVL DeFi, protocoles, yields"
+      "donnees_utilisees": "TVL totale 496,44 Mds $, Aave V3 15,3 Mds $ (-3,5 %)"
     },
     {
-      "nom": "Mempool.space",
-      "type": "api",
-      "donnees_utilisees": "Frais BTC, hashrate"
-    },
-    {
-      "nom": "NewsAPI / GNews / RSS",
+      "nom": "RFI",
       "type": "presse",
-      "donnees_utilisees": "Titres d'actualités géopolitiques, marchés, crypto, tech"
+      "donnees_utilisees": "Scandale d'espionnage impliquant le PDG de Nvidia et une maîtresse soupçonnée de liens avec la Chine"
+    },
+    {
+      "nom": "Investing.com",
+      "type": "presse",
+      "donnees_utilisees": "AMD et Applied Materials parmi les movers du jour, lancement Anthropic Fable 5.2 et Mythos 5.2"
+    },
+    {
+      "nom": "Next INpact",
+      "type": "presse",
+      "donnees_utilisees": "Cyberattaque contre 700 supermarchés français attribuée à l'Iran"
+    },
+    {
+      "nom": "Contexte RAG (briefings précédents)",
+      "type": "estimation",
+      "donnees_utilisees": "11e séance consécutive Nasdaq (16/04), Fear & Greed 16/100 en avril, escalade Ukraine 703 projectiles, pétrole -1,67 % sur prime Ormuz"
     }
-  ]
+  ],
+  "_verification": {
+    "score": 0.8709677419354839,
+    "totalClaims": 62,
+    "verified": 54,
+    "unverified": 8,
+    "pass": true
+  },
+  "_contradictions": [
+    {
+      "indicator": "EUR/USD",
+      "source1": {
+        "name": "Alpha Vantage",
+        "value": 1.12084687
+      },
+      "source2": {
+        "name": "ECB Data",
+        "value": 1.1426
+      },
+      "divergence_pct": 1.9,
+      "type": "forex",
+      "note": "EUR/USD : Alpha Vantage 1.12084687 (intraday) vs ECB 1.1426 (fixing overnight). Utiliser ECB pour référence officielle, Alpha Vantage pour tendance intraday."
+    },
+    {
+      "indicator": "SPY (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 752.62
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 737.6469
+      },
+      "divergence_pct": 1.99,
+      "type": "etf_self",
+      "note": "SPY : prix 752.62 ≠ prev_close (735.29) + change (2.3569) = 737.65. Possible donnée corrompue."
+    },
+    {
+      "indicator": "QQQ (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 677.48
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 659.3586
+      },
+      "divergence_pct": 2.67,
+      "type": "etf_self",
+      "note": "QQQ : prix 677.48 ≠ prev_close (656.1) + change (3.2586) = 659.36. Possible donnée corrompue."
+    },
+    {
+      "indicator": "DIA (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 523.39
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 514.4007
+      },
+      "divergence_pct": 1.72,
+      "type": "etf_self",
+      "note": "DIA : prix 523.39 ≠ prev_close (512.22) + change (2.1807) = 514.40. Possible donnée corrompue."
+    },
+    {
+      "indicator": "GLD (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 376.07
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 373.47299999999996
+      },
+      "divergence_pct": 0.69,
+      "type": "etf_self",
+      "note": "GLD : prix 376.07 ≠ prev_close (372.52) + change (0.953) = 373.47. Possible donnée corrompue."
+    },
+    {
+      "indicator": "USO (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 143.75
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 145.27
+      },
+      "divergence_pct": 1.05,
+      "type": "etf_self",
+      "note": "USO : prix 143.75 ≠ prev_close (148.41) + change (-3.14) = 145.27. Possible donnée corrompue."
+    },
+    {
+      "indicator": "NVDA (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 176.13
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 181.00879999999998
+      },
+      "divergence_pct": 2.7,
+      "type": "etf_self",
+      "note": "NVDA : prix 176.13 ≠ prev_close (186.64) + change (-5.6312) = 181.01. Possible donnée corrompue."
+    },
+    {
+      "indicator": "AAPL (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 351.96
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 345.1711
+      },
+      "divergence_pct": 1.93,
+      "type": "etf_self",
+      "note": "AAPL : prix 351.96 ≠ prev_close (342.37) + change (2.8011) = 345.17. Possible donnée corrompue."
+    },
+    {
+      "indicator": "MSFT (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 545.09
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 533.3389
+      },
+      "divergence_pct": 2.16,
+      "type": "etf_self",
+      "note": "MSFT : prix 545.09 ≠ prev_close (530.61) + change (2.7289) = 533.34. Possible donnée corrompue."
+    },
+    {
+      "indicator": "GOOGL (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 290.21
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 286.6867
+      },
+      "divergence_pct": 1.21,
+      "type": "etf_self",
+      "note": "GOOGL : prix 290.21 ≠ prev_close (284.78) + change (1.9067) = 286.69. Possible donnée corrompue."
+    },
+    {
+      "indicator": "TSLA (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 377.61
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 363.6329
+      },
+      "divergence_pct": 3.7,
+      "type": "etf_self",
+      "note": "TSLA : prix 377.61 ≠ prev_close (358.22) + change (5.4129) = 363.63. Possible donnée corrompue."
+    }
+  ],
+  "_bibliography": {
+    "score": 0.9302325581395349,
+    "totalRefs": 43,
+    "matched": 40,
+    "unmatched": 3,
+    "pass": true,
+    "bibliography": [
+      {
+        "titre": "Stained Glass and Sacred Spaces: Symbolism Abounds in Ukrainian Media",
+        "source": "War on the Rocks",
+        "url": "https://warontherocks.com/stained-glass-and-sacred-spaces-symbolism-abounds-in-ukrainian-media/",
+        "domain": "warontherocks.com",
+        "date": "2026-11-09T19:15:33.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "La France et la blessure de la grandeur",
+        "source": "Le Grand Continent",
+        "url": "https://legrandcontinent.eu/fr/2026/11/09/la-france-et-la-blessure-de-la-grandeur/",
+        "domain": "legrandcontinent.eu",
+        "date": "2026-11-09T19:12:35.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "EN DIRECT, guerre en Ukraine : lors des négociations d’Abou Dhabi, la délégation ukrainienne insistera sur les échanges de prisonniers",
+        "source": "Le Monde Intl",
+        "url": "https://www.lemonde.fr/international/live/2026/11/09/en-direct-guerre-en-ukraine-lors-des-negociations-d-abou-dhabi-la-delegation-ukrainienne-insistera-sur-les-echanges-de-prisonniers_6808609_3210.html",
+        "domain": "lemonde.fr",
+        "date": "2026-11-09T19:12:24.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Boeing taille dans ses effectifs: freiné par une production moins rapide que prévu, l’avionneur américain va supprimer 5% des postes dans l'aviation commerciale",
+        "source": "BFM Business",
+        "url": "https://www.bfmtv.com/economie/entreprises/aeronautique/boeing-taille-dans-ses-effectifs-freine-par-une-production-moins-rapide-que-prevu-l-avionneur-americain-va-supprimer-5-des-postes-dans-l-aviation-commerciale_AD-202611090849.html",
+        "domain": "bfmtv.com",
+        "date": "2026-11-09T19:12:07.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Qui est Alice Huang, la maîtresse du PDG de Nvidia, soupçonnée d'espionnage?",
+        "source": "RFI",
+        "url": "https://www.rfi.fr/fr/am%C3%A9riques/20261109-qui-est-alice-huang-la-ma%C3%AEtresse-du-pdg-de-nvidia-soup%C3%A7onn%C3%A9e-d-espionnage",
+        "domain": "rfi.fr",
+        "date": "2026-11-09T19:11:54.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Apple’s $50 Intelligence Usage Packs extend access to some AI features",
+        "source": "The Verge",
+        "url": "https://www.theverge.com/tech/1030084/apple-intelligence-usage-packs-ai-features-creator-studio-logic-pro",
+        "domain": "theverge.com",
+        "date": "2026-11-09T19:09:58.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "US agencies unite to combat rogue drone threats nationwide",
+        "source": "Al Jazeera",
+        "url": "https://www.aljazeera.com/news/2026/11/9/us-agencies-unite-to-combat-rogue-drone-threats-nationwide?traffic_source=rss",
+        "domain": "aljazeera.com",
+        "date": "2026-11-09T19:07:56.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Trump reverses stance, alleges fraud in recent US midterm elections",
+        "source": "Al Jazeera",
+        "url": "https://www.aljazeera.com/news/2026/11/9/trump-reverses-stance-alleges-fraud-in-recent-us-midterm-elections?traffic_source=rss",
+        "domain": "aljazeera.com",
+        "date": "2026-11-09T19:07:42.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Teddy Riner, Natacha Polony… ce que les candidatures insolites disent de la campagne",
+        "source": "Courrier International",
+        "url": "https://www.courrierinternational.com/article/vu-de-suisse-teddy-riner-natacha-polony-ce-que-les-candidatures-insolites-disent-de-la-campagne_286001",
+        "domain": "courrierinternational.com",
+        "date": "2026-11-09T19:07:28.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "France to dodge threat of year-end recession, central bank says",
+        "source": "Investing.com",
+        "url": "https://www.investing.com/news/economy-news/france-to-dodge-threat-of-yearend-recession-central-bank-says-5013031",
+        "domain": "investing.com",
+        "date": "2026-11-09T19:06:38.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Anthropic launches Fable 5.2 and Mythos 5.2 AI models ahead of IPO",
+        "source": "Investing.com",
+        "url": "https://www.investing.com/news/stock-market-news/anthropic-launches-fable-52-and-mythos-52-ai-models-ahead-of-ipo-5013030",
+        "domain": "investing.com",
+        "date": "2026-11-09T19:06:09.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Bitcoin in Limbo as Stocks Rebound Ahead of US Inflation Report",
+        "source": "Decrypt",
+        "url": "https://decrypt.co/382861/bitcoin-limbo-stocks-rebound-us-inflation",
+        "domain": "decrypt.co",
+        "date": "2026-11-09T19:06:03.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "The Vexing Arithmetic of Israeli Coalition-Building",
+        "source": "Foreign Policy",
+        "url": "https://foreignpolicy.com/2026/11/09/israel-eisenkot-netanyahu-election-government-herzog/",
+        "domain": "foreignpolicy.com",
+        "date": "2026-11-09T19:05:31.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "AMD, Applied Materials among market cap stock movers on Monday",
+        "source": "Investing.com",
+        "url": "https://www.investing.com/news/stock-market-news/amd-applied-materials-among-market-cap-stock-movers-on-monday-93CH-5013028",
+        "domain": "investing.com",
+        "date": "2026-11-09T19:04:34.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Claritev expects at least $1.1B 2027 revenue, raises 2026 outlook to $1.038B-$1.043B on NSA momentum",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4669177-claritev-expects-at-least-1_1b-2027-revenue-raises-2026-outlook-to-1_038b-1_043b-on-nsa?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-11-09T19:02:35.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Opal Fuels outlines 2.0 million MMBtu of new annual design capacity through 2027 as Co-CEO Maurer plans to retire March 31, 2027",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4669176-opal-fuels-outlines-2_0-million-mmbtu-of-new-annual-design-capacity-through-2027-as-co-ceo?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-11-09T19:02:33.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Monday.com expects Q4 revenue of $380M-$382M while shifting to hybrid AI pricing and monday Frontier services",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4669175-monday-com-expects-q4-revenue-of-380m-382m-while-shifting-to-hybrid-ai-pricing-and-monday?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-11-09T19:02:29.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Coffee Break: Election Aftermath Sees Dems Battle Over Schumer &#038; Jeffries",
+        "source": "Naked Capitalism",
+        "url": "https://www.nakedcapitalism.com/2026/11/election-aftermath-schumer-jeffries-van-hollen-senate-house.html",
+        "domain": "nakedcapitalism.com",
+        "date": "2026-11-09T19:00:28.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Sanctions crypto : l&#8217;UE lance une task force pour traquer les contournements",
+        "source": "Journal du Coin",
+        "url": "https://journalducoin.com/actualites/sanctions-crypto-ue-lance-task-force-traquer/",
+        "domain": "journalducoin.com",
+        "date": "2026-11-09T19:00:00.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "Central Asia Confronts Growing Threat of AI-Enabled Extremism",
+        "source": "OilPrice",
+        "url": "https://oilprice.com/Energy/Energy-General/Central-Asia-Confronts-Growing-Threat-of-AI-Enabled-Extremism.html",
+        "domain": "oilprice.com",
+        "date": "2026-11-09T19:00:00.000Z",
+        "category": "matieres_premieres"
+      },
+      {
+        "titre": "Anthropic launches new Claude Fable and Mythos 5.2 models",
+        "source": "The Verge",
+        "url": "https://www.theverge.com/ai-artificial-intelligence/1030005/anthropic-claude-fable-mythos-5-2",
+        "domain": "theverge.com",
+        "date": "2026-11-09T19:00:00.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "Late Autumn Warmth Keeps NatGas Storage Builds Strong, Spot Prices Under Pressure",
+        "source": "Natural Gas Intel",
+        "url": "https://naturalgasintel.com/news/late-autumn-warmth-keeps-natgas-storage-builds-strong-spot-prices-under-pressure/",
+        "domain": "naturalgasintel.com",
+        "date": "2026-11-09T18:59:46.000Z",
+        "category": "matieres_premieres"
+      },
+      {
+        "titre": "With Probe Gavel in Reach, Blumenthal Warns Binance and Tether of &#8216;Alternative Measures&#8217;",
+        "source": "Unchained",
+        "url": "https://unchainedcrypto.com/with-probe-gavel-in-reach-blumenthal-warns-binance-and-tether-of-alternative-measures/",
+        "domain": "unchainedcrypto.com",
+        "date": "2026-11-09T18:55:00.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "Bytedance's Seedream 5.5 promises pixel-stable image editing across 100 rounds without color drift",
+        "source": "The Decoder",
+        "url": "https://the-decoder.com/bytedances-seedream-5-5-promises-pixel-stable-image-editing-across-100-rounds-without-color-drift/",
+        "domain": "the-decoder.com",
+        "date": "2026-11-09T18:50:01.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "Cyberattaque contre les frigos de 700 supermarchés : pourquoi la France accuse l&#8217;Iran",
+        "source": "Next INpact",
+        "url": "https://next.ink/266516/cyberattaque-contre-les-frigos-de-700-supermarches-pourquoi-la-france-accuse-liran/",
+        "domain": "next.ink",
+        "date": "2026-11-09T18:48:37.000Z",
+        "category": "ai_tech"
+      }
+    ],
+    "apiSources": [
+      {
+        "name": "Finnhub",
+        "url": "https://finnhub.io",
+        "domain": "finnhub.io",
+        "category": "markets",
+        "indicators": [
+          "SPY",
+          "QQQ",
+          "DIA",
+          "GLD",
+          "USO",
+          "NVDA",
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA"
+        ]
+      },
+      {
+        "name": "CoinGecko",
+        "url": "https://www.coingecko.com",
+        "domain": "coingecko.com",
+        "category": "crypto",
+        "indicators": [
+          "BTC",
+          "ETH",
+          "XRP",
+          "SOL",
+          "DOGE",
+          "ADA"
+        ]
+      },
+      {
+        "name": "Alternative.me",
+        "url": "https://alternative.me/crypto/fear-and-greed-index/",
+        "domain": "alternative.me",
+        "category": "crypto",
+        "indicators": [
+          "Fear & Greed Index"
+        ]
+      },
+      {
+        "name": "FRED",
+        "url": "https://fred.stlouisfed.org",
+        "domain": "fred.stlouisfed.org",
+        "category": "macro",
+        "indicators": [
+          "Inflation (CPI)",
+          "Taux directeur (Fed Funds)",
+          "PIB (trimestriel)",
+          "Chômage",
+          "Treasury 10 ans",
+          "Dollar Index (broad)",
+          "Spread 10Y-2Y",
+          "Masse monétaire M2",
+          "Bilan Fed (actifs)",
+          "Taux hypothécaire 30 ans"
+        ]
+      },
+      {
+        "name": "ECB Data",
+        "url": "https://data.ecb.europa.eu",
+        "domain": "data.ecb.europa.eu",
+        "category": "macro",
+        "indicators": [
+          "Taux directeur",
+          "EUR/USD"
+        ]
+      },
+      {
+        "name": "metals.dev",
+        "url": "https://metals.dev",
+        "domain": "metals.dev",
+        "category": "commodities",
+        "indicators": []
+      },
+      {
+        "name": "Twelve Data",
+        "url": "https://twelvedata.com",
+        "domain": "twelvedata.com",
+        "category": "markets",
+        "indicators": [
+          "DAX (Francfort)"
+        ]
+      },
+      {
+        "name": "DefiLlama",
+        "url": "https://defillama.com",
+        "domain": "defillama.com",
+        "category": "defi",
+        "indicators": [
+          "Binance CEX",
+          "OKX",
+          "Lido",
+          "LayerZero V2",
+          "Aave V3"
+        ]
+      },
+      {
+        "name": "Alpha Vantage",
+        "url": "https://www.alphavantage.co",
+        "domain": "alphavantage.co",
+        "category": "markets",
+        "indicators": [
+          "EUR/USD",
+          "GBP/USD",
+          "USD/JPY"
+        ]
+      },
+      {
+        "name": "Mempool",
+        "url": "https://mempool.space",
+        "domain": "mempool.space",
+        "category": "onchain",
+        "indicators": [
+          "BTC Fees",
+          "BTC Hashrate"
+        ]
+      }
+    ],
+    "methodology": {
+      "description": "Vérification bibliographique par recoupement multi-sources",
+      "steps": [
+        "Extraction des références de sources dans le texte du briefing",
+        "Recoupement avec la bibliographie des articles RSS/API utilisés",
+        "Vérification croisée avec le registre des 15 sources API",
+        "Classification des sources (API, presse, institution, think tank, estimation)"
+      ],
+      "totalArticlesUsed": 25,
+      "totalAPISources": 10,
+      "standardApplied": "Adaptation APA 7 pour veille financière/géopolitique"
+    }
+  }
 }

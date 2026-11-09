@@ -1,55 +1,88 @@
 {
-  "updated": "2026-09-07T18:12:50Z",
+  "updated": "2026-11-09T21:17:26.268Z",
   "alertes": [
     {
-      "id": "alert-2026-09-07-001",
-      "titre": "Tesla (TSLA) : -5.92%, perte de 22.29 $",
-      "texte": "Tesla s'effondre de 5.92% à 354.08 $, sous-performant largement le marché. Cette correction s'inscrit dans une tendance de prises de bénéfices sur les valeurs de croissance les plus chères.",
-      "categorie": "marches",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-09-07T18:12:50Z",
-      "donnees": {
-        "symbole": "TSLA",
-        "prix": 354.08,
-        "variation": -5.92
-      }
-    },
-    {
-      "id": "alert-2026-09-07-002",
-      "titre": "Apple (AAPL) : -2.51%, retour sous 320 $",
-      "texte": "Apple chute de 2.51% à 319.97 $, dans le sillage d'une correction sectorielle tech. Microsoft et Alphabet subissent des pertes similaires.",
-      "categorie": "marches",
+      "id": "alert-2026-11-09-001",
+      "titre": "XRP : -12,17% sur 7j, correction crypto généralisée",
+      "texte": "XRP recule de 12,17% sur 7 jours (prix $1,092) et -5,34% sur 24h. TVL DeFi en baisse de 8,1% sur 7j ($496B), signalant un retrait de liquidités. Contexte : intensification des enquêtes réglementaires (Binance, Tether) et task force UE anti-contournement sanctions.",
+      "categorie": "crypto",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-09-07T18:12:50Z",
+      "horodatage": "2026-11-09T21:17:26.268Z",
       "donnees": {
-        "symbole": "AAPL",
-        "prix": 319.97,
-        "variation": -2.51
+        "symbole": "XRP",
+        "nom": "XRP",
+        "prix": 1.092,
+        "variation_24h": -5.34
       }
     },
     {
-      "id": "alert-2026-09-07-004",
-      "titre": "Fear & Greed : +9 pts sur 7 jours (actuellement 71)",
-      "texte": "L'indice de sentiment crypto gagne 9 points en une semaine, passant à 71/100 (Greed). Malgré la correction des prix, le sentiment reste dans la zone Greed, ce qui pourrait indiquer une surconfiance des investisseurs.",
-      "categorie": "macro",
+      "id": "alert-2026-11-09-002",
+      "titre": "Nasdaq 100 : +3,26%, rebond tech porté par IA et indices larges",
+      "texte": "Nasdaq 100 gagne 3,26% (prix $677,48), S&P 500 +2,36% ($752,62), Dow Jones +2,18% ($523,39). Rebond généralisé soutenu par révisions positives de guidance (Claritev, Monday.com) et stabilité macroéconomique. Apple +2,80%, Microsoft +2,73%, Tesla +5,41%.",
+      "categorie": "marches",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-11-09T21:17:26.268Z",
+      "donnees": {
+        "symbole": "XRP",
+        "nom": "XRP",
+        "prix": 1.092,
+        "variation_7d": -12.17
+      }
+    },
+    {
+      "id": "alert-2026-11-09-003",
+      "titre": "Nvidia : -5,63%, controverse Huang pèse sur leader IA",
+      "texte": "Nvidia recule de 5,63% (prix $176,13) dans contexte de controverse impliquant le PDG Jensen Huang (affaire présumée d'espionnage et adultère). Impact réputationnel et risque géopolitique sino-américain dans secteur technologique critique.",
+      "categorie": "ai_tech",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-11-09T21:17:26.268Z",
+      "donnees": {
+        "symbole": "SPY",
+        "nom": "S&P 500",
+        "prix": 752.62,
+        "variation": 2.36
+      }
+    },
+    {
+      "id": "alert-2026-11-09-004",
+      "titre": "Pétrole (USO) : -3,14%, pression baissière malgré tensions",
+      "texte": "Pétrole baisse de 3,14% (prix $143,75) malgré attaque pipeline saoudien et destruction d'installations Houthis. Pression baissière liée à demande LNG asiatique affaiblie et accumulation stocks gaz naturel (sub-$3 Haynesville).",
+      "categorie": "matieres_premieres",
+      "severite": "info",
+      "impact": "baissier",
+      "horodatage": "2026-11-09T21:17:26.268Z",
+      "donnees": {
+        "symbole": "QQQ",
+        "nom": "Nasdaq 100",
+        "prix": 677.48,
+        "variation": 3.26
+      }
+    },
+    {
+      "id": "alert-2026-11-09-005",
+      "titre": "Marché fragmenté : consensus 56%, amplitude 3,15%",
+      "texte": "Régime de marché fragmenté détecté. Par classe d'actifs : indices EU +3,16%, actions +1,44%, ETF +1,12%, crypto -3,37%. Divergence significative entre secteurs tech/IA (haussier) et crypto (baissier) reflète tensions géopolitiques et réglementaires.",
+      "categorie": "marches",
       "severite": "info",
       "impact": "neutre",
-      "horodatage": "2026-09-07T18:12:50Z",
+      "horodatage": "2026-11-09T21:17:26.268Z",
       "donnees": {
-        "score": 71,
-        "label": "Greed",
-        "variation_7j": 9
+        "symbole": "DIA",
+        "nom": "Dow Jones",
+        "prix": 523.39,
+        "variation": 2.18
       }
     }
   ],
   "stats": {
-    "total": 3,
-    "urgent": 1,
-    "attention": 1,
-    "info": 1
+    "total": 5,
+    "urgent": 0,
+    "attention": 2,
+    "info": 3
   },
-  "model": "kimi",
+  "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
 }
