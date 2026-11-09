@@ -19,7 +19,7 @@
 
 ## 3. Design System (OBLIGATOIRE)
 
-> **⚠ Identité v2 « chaude » — migration terminée sur les 31 pages (2026-07-25), mais PAS ENCORE DANS `main`.** Elle vit sur une chaîne de branches empilées : `feat/identity-v2-cohorte-b` (#136) → `feat/identity-v2-propagation` (#135) → `feat/identity-v2-home` (#134) → `main`. **Vérifier la branche avant de juger l'état d'une page.** Dans `main` : v2 « froide » (chrome achromatique `#0E1012`), polices déjà Archivo/IBM Plex. Spec : `docs/superpowers/specs/2026-07-16-identity-v2-design.md`.
+> **Identité v2 « chaude » — en production sur toutes les pages** depuis le 2026-07-30 (#134 → #135 → #136, fusionnées en chaîne) ; `briefing.html`, oubliée par la migration, l'a rejointe le 2026-11-09. Les branches `feat/identity-v2-*` sont supprimées. Seule exception : `og-image.html` (gabarit d'image OG). Spec : `docs/superpowers/specs/2026-07-16-identity-v2-design.md`.
 >
 > **Règle absolue : aucun chercher-remplacer global de couleur.** Six couleurs font double emploi — marque **et** donnée : `#006650`, `#33B894`, `#C8955A`, `#a7f3d0`, `#6b7280`, `#D1FAE5`. Remplacer `#006650` recolorerait le palier « risque faible », le palier « opportunité élevée » et l'indicateur O/R ≥ 1. Séparer le sens de l'identité **avant** de toucher à la palette.
 >
@@ -40,8 +40,8 @@ Chrome espresso `#17100E` · rouge éditorial `#8E2424` (topbar, filets, hover, 
 **Tailwind CDN + `tailwind.config` inline sont sur les 32 pages** : ce n'est pas un discriminant. Le critère est `nav-shared.js` + `styles.css` (legacy) vs runtime React.
 
 - **Legacy — 16 pages** : thématiques, légales, `expertise`, `country`, `a-propos`, `ai-tech`, et **3 articles** (`analyse-droits-douane-trump-groenland`, `analyse-ia-rempart-marches`, `analyse-or-bitcoin-divergence`).
-- **React — 12 pages** : `index`, `analyses`, `analysis-template`, `artifact-inflexion`, + 8 `analyse-*`.
-- **Hybride** : `briefing.html` (React + `styles.css`, sans nav-shared). **Ni l'un ni l'autre** : `og-image.html`.
+- **React — 13 pages** : `index`, `analyses`, `briefing`, `analysis-template`, `artifact-inflexion`, + 8 `analyse-*`.
+- `briefing.html` est React v2 (nav et footer d'`analyses.html`, sans `styles.css`) ; ses couleurs de sévérité, de sentiment et de dynamique sont de la **donnée**. **Ni l'un ni l'autre** : `og-image.html`.
 
 `styles.css` contient **226 hex en dur** qui contournent ses variables `:root`, et il existe **3 variantes divergentes** du `tailwind.config` inline. Sur les articles React, le bloc `colors` de ce `tailwind.config` est **du code mort** (aucun utilitaire `brand-*`/`cool-*` n'est utilisé) : ne pas y toucher, seul `fontFamily` agit.
 
