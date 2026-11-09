@@ -294,7 +294,8 @@ return h('section',{ref:heroRef,className:'v2-chrome relative pt-28 pb-14 md:pt-
   ),
 
   // Titre
-  h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-[2.75rem] lg:text-[3.25rem] font-extrabold text-white leading-[1.08] tracking-tight max-w-3xl'},
+  // lineHeight en style : la classe text-2xl de Tailwind fixe line-height à 2rem et l'emporte sur leading-[…] aux grandes tailles
+  h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-[2.75rem] lg:text-[3.25rem] font-extrabold text-white tracking-tight max-w-3xl',style:{lineHeight:1.08}},
    briefing&&briefing.synthese&&briefing.synthese.titre?briefing.synthese.titre:'Briefing du jour'
   ),
 
