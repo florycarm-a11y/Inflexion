@@ -52,7 +52,7 @@ Chrome espresso `#17100E` · rouge éditorial `#8E2424` (topbar, filets, hover, 
 **4 articles** (`ukraine`, `turquie`, `sahel`, `mer-chine`) sont refondus au format **« dossier à deux temps »** : page de garde (verdict SEMPLICE, scénarios dont la **largeur porte la probabilité**, chiffres clés) → corps avec **rail de progression** et **gouttière de sources** en marge → **appareil critique** puis CTA. Gabarit : `analysis-template.html`.
 
 - `assets/article-shell.js` — coquille React partagée (`Navigation`, `Cover`, `Section`, `SousTitre`, `P`, `Body`, `Apparatus`, `Footer`, `renderArticle`). **Elle sert plusieurs articles : ne jamais l'ajuster pour un cas particulier.**
-- `assets/article-model.js` — logique pure, testée. **`npm test`** (30 tests) : premier harness front du dépôt, `node --test 'test/**/*.test.mjs'` (le glob quoté est obligatoire sous Node 25).
+- `assets/article-model.js` — logique pure, testée. **`npm test`** (40 tests, dont `check-briefing`) : premier harness front du dépôt, `node --test 'test/**/*.test.mjs'` (le glob quoté est obligatoire sous Node 25).
 - Un article converti ne porte plus que son objet `ARTICLE` + son corps en `Section`/`P` + `renderArticle`. Les sources vivent dans la prop `sources` des paragraphes, **plus dans le texte**.
 - **Tout ce qui varie d'un article à l'autre doit venir de `ARTICLE`, jamais du squelette** : horizon des scénarios (`horizonScenarios`), séparateur décimal (`separateurDecimal`), couleur des paliers de matrice (`matrice[].style`). Trois régressions ont été causées par des valeurs écrites en dur — dont un horizon faux affiché en ligne et une échelle de gravité décalée.
 - **`Section` porte le romain RÉEL de l'article** (`romain:'III'`), pas son rang dans le tableau ; `null` pour les sections jamais numérotées. Renuméroter casserait les citations existantes.
@@ -88,6 +88,7 @@ Mega menu desktop (monogrammes, CTA « Réserver un diagnostic ») ; mobile : ov
 ## 5. Pipeline de données
 
 GitHub Actions (cron 2×/jour 06h+18h UTC) : `fetch-data.mjs` → `insight-filter.mjs` (Haiku, scoring 1-10, seuil ≥6) → `veille-continue.mjs` (watchlist 22 thèmes + signaux faibles) → `generate-article.mjs` → `validate-article.mjs` → `data/*.json` → GitHub Pages. Briefing : Sonnet + RAG. Sorties : `insights.json`, `signals.json`, `signals-history.json`.
+**Contrôle qualité du briefing** : `node scripts/check-briefing.mjs` (fraîcheur, chiffres contradictoires, libellé DXY interdit — FRED `DTWEXBGS` = indice dollar *large*, pas le DXY —, traçabilité). Bloquant dans la Routine Master, en surveillance dans `fetch-data.yml`.
 
 ## 6. Bot Polymarket (`bot/`)
 

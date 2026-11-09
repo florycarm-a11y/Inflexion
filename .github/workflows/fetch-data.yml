@@ -125,6 +125,14 @@ jobs:
             --fail --retry 3 --retry-delay 10 \
             || echo "⚠️ Routine trigger failed, fallback schedule will handle"
 
+      # Surveillance, non bloquante : signale (annotation ::error::) un briefing publié
+      # périmé, contradictoire ou mal libellé. Sans ce contrôle, le briefing est resté
+      # figé du 7 septembre au 9 novembre 2026 sans que rien ne le signale.
+      - name: "🩺 Contrôle du briefing publié"
+        if: success()
+        continue-on-error: true
+        run: node scripts/check-briefing.mjs
+
       - name: "🚨 Alerte d'échec"
         if: failure()
         run: |

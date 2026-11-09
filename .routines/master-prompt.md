@@ -102,6 +102,9 @@ Retry 1x chacun si échec.
    - Pas de placeholder : `grep -E '\bTBD\b|\b\[NAME\]\b|\bundefined\b' data/daily-briefing.json` doit retourner 0 match
    - Disclaimer présent : `grep -i 'conseil en investissement' data/daily-briefing.json` doit retourner ≥1 match
    - Au moins 3 sources citées : `grep -c -iE 'source[[:space:]]*:|selon' data/daily-briefing.json` ≥ 3
+   - Contrôle qualité : `node scripts/check-briefing.mjs` doit sortir en code 0 (fraîcheur, chiffres
+     contradictoires, libellé « DXY » interdit — l'indice dollar disponible est FRED DTWEXBGS, à nommer
+     « indice dollar large » —, traçabilité des chiffres dans `data/`)
 4. Si UN SEUL check échoue :
    - `gh issue create --title "🛑 Master : validation pre-commit échouée" --label bug,routine --body "[détails de l'échec]"`
    - Incrémente `.routine-failure-count` avec timestamp

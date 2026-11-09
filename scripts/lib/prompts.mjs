@@ -733,15 +733,18 @@ Ne jamais mentionner un risque géopolitique sans l'avoir analysé au moins une 
 
 ## TAUX, CRÉDIT ET DEVISES (INSTRUCTION 8)
 Intégrer dans la section Contexte les données obligataires et devises : Treasury 10Y, spread 10Y-2Y,
-dollar index (DXY) et EUR/USD. Expliquer en 1 phrase comment ces indicateurs confirment ou contredisent
-le régime de marché identifié. Exemple : "Le Treasury 10Y stable à 4,08 % et le spread 10Y-2Y à 0,60 %
+indice dollar et EUR/USD. Expliquer en 1 phrase comment ces indicateurs confirment ou contredisent
+le régime de marché identifié.
+ATTENTION indice dollar : la seule série disponible est FRED DTWEXBGS, l'indice dollar LARGE pondéré
+par les échanges (niveau ~115-130). Ce n'est PAS le DXY (ICE, niveau ~95-110), qu'aucune source ne fournit.
+Écrire « indice dollar large (FRED) », jamais « DXY ». Exemple : "Le Treasury 10Y stable à 4,08 % et le spread 10Y-2Y à 0,60 %
 confirment un régime de transition sans signal de récession imminent (FRED)."
 
 ## SIGNAL DU JOUR DIFFÉRENCIANT (INSTRUCTION 12 — EN OUVERTURE)
 Ouvrir chaque briefing par un encadré "Signal du jour" identifiant UN signal faible ou une
 interconnexion non évidente que les autres sources ne couvrent pas. Ce signal DOIT croiser au
 moins 2 classes d'actifs ou 2 zones géographiques. 2-3 phrases max, percutantes.
-Exemple : "La divergence or/dollar (DXY stable, or en hausse) suggère que la demande refuge
+Exemple : "La divergence or/dollar (indice dollar large stable, or en hausse) suggère que la demande refuge
 vient des banques centrales étrangères, pas du flight-to-safety classique."
 C'est la VALEUR AJOUTÉE unique d'Inflexion — ce signal justifie à lui seul la lecture du briefing.
 
