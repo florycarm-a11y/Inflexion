@@ -48,17 +48,27 @@ export const INDICATORS = [
 
 const toNumber = (s) => Number(String(s).replace(',', '.'));
 
-/** Un chiffre précédé de ces mots est un seuil ou un point de départ, pas la valeur du jour. */
-const THRESHOLD_WORDS = /\b(?:seuil|au-dessus|au-dessous|en dessous|sous|franchi\w*|passe de|de)\b/i;
+/**
+ * Un chiffre précédé de ces marqueurs est un seuil, un scénario, une prévision ou un
+ * point de départ (« VIX > 30 », « consensus ~3,9 % », « passe de 65 »), pas la valeur du jour.
+ */
+const THRESHOLD_WORDS = /[<>≥≤~]|\b(?:seuil|au-dessus|au-dessous|en dessous|sous|franchi\w*|passe de|de|consensus|attendu\w*|pr[ée]vu\w*|pr[ée]vision|objectif|cible)\b/i;
 
-/** Concatène toutes les chaînes du briefing, hors liste des sources (métadonnées). */
+/** Un écart qui traverse une fin de phrase ou de proposition rattache le chiffre à autre chose. */
+const CLAUSE_BREAK = /[.;:]\s/;
+
+/**
+ * Concatène toutes les chaînes du briefing, hors métadonnées : liste des sources et
+ * clés internes préfixées « _ » (ex. `_contradictions`, où le pipeline consigne lui-même
+ * les écarts entre sources — ces notes ne sont pas affichées et citent deux valeurs exprès).
+ */
 export function collectText(node, skipKeys = new Set(['sources_citees', 'model', 'type'])) {
     if (node == null) return '';
     if (typeof node === 'string') return node;
     if (Array.isArray(node)) return node.map(n => collectText(n, skipKeys)).join('\n');
     if (typeof node === 'object') {
         return Object.entries(node)
-            .filter(([k]) => !skipKeys.has(k))
+            .filter(([k]) => !skipKeys.has(k) && !k.startsWith('_'))
             .map(([, v]) => collectText(v, skipKeys))
             .join('\n');
     }
@@ -96,7 +106,7 @@ export function checkConsistency(text) {
     const conflicts = [];
     for (const ind of INDICATORS) {
         const values = [...text.matchAll(ind.re)]
-            .filter(m => !THRESHOLD_WORDS.test(m[0]))
+            .filter(m => !THRESHOLD_WORDS.test(m[0]) && !CLAUSE_BREAK.test(m[0]))
             .map(m => toNumber(m[1]))
             .filter(Number.isFinite);
         if (values.length < 2) continue;

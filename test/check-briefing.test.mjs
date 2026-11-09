@@ -43,6 +43,25 @@ test('cohérence : un seuil cité n’est pas une contradiction', () => {
     assert.equal(checkConsistency(txt).status, 'ok');
 });
 
+test('cohérence : seuils de scénario et consensus ne sont pas des contradictions', () => {
+    const txt = 'Le VIX à 18. Scénario de risque : DAX -5 %, VIX > 30. '
+        + 'Le Treasury 10Y stable à 4,84 % (FRED). Choc : Treasury 10Y > 5 %. '
+        + 'Agenda : CPI — impact sur Treasury 10Y, or. Consensus ~3,9 %, seuil critique 4,1 %.';
+    assert.equal(checkConsistency(txt).status, 'ok');
+});
+
+test('cohérence : une vraie contradiction reste détectée malgré les seuils', () => {
+    const txt = 'Le Treasury 10Y à 4,84 %. Plus loin : le Treasury 10Y à 4,60 %. Choc : Treasury 10Y > 5 %.';
+    const r = checkConsistency(txt);
+    assert.equal(r.status, 'fail');
+    assert.match(r.message, /4,84 vs 4,6/);
+});
+
+test('collectText ignore les notes internes « _ »', () => {
+    const t = collectText({ synthese: 'EUR/USD à 1,1426', _contradictions: [{ note: 'EUR/USD : 1.1208 vs 1.1426' }] });
+    assert.ok(!t.includes('1.1208'));
+});
+
 test('cohérence : EUR/USD BCE vs Alpha Vantage dans la tolérance', () => {
     const txt = 'EUR/USD à 1,1628 (fixing BCE) … l’EUR/USD se maintient à 1,1655 (Alpha Vantage)';
     assert.equal(checkConsistency(txt).status, 'ok');
