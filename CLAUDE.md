@@ -88,7 +88,7 @@ Mega menu desktop (monogrammes, CTA « Réserver un diagnostic ») ; mobile : ov
 ## 5. Pipeline de données
 
 GitHub Actions (cron 2×/jour 06h+18h UTC) : `fetch-data.mjs` → `insight-filter.mjs` (Haiku, scoring 1-10, seuil ≥6) → `veille-continue.mjs` (watchlist 22 thèmes + signaux faibles) → `generate-article.mjs` → `validate-article.mjs` → `data/*.json` → GitHub Pages. Briefing : Sonnet + RAG. Sorties : `insights.json`, `signals.json`, `signals-history.json`.
-**Contrôle qualité du briefing** : `node scripts/check-briefing.mjs` (fraîcheur, chiffres contradictoires, libellé DXY interdit — FRED `DTWEXBGS` = indice dollar *large*, pas le DXY —, traçabilité). Bloquant dans la Routine Master, en surveillance dans `fetch-data.yml`.
+**Contrôle qualité du briefing** : `node scripts/check-briefing.mjs` (fraîcheur, chiffres contradictoires, libellé DXY interdit — FRED `DTWEXBGS` = indice dollar *large*, pas le DXY —, traçabilité). Bloquant dans la Routine Master, en surveillance dans `fetch-data.yml`. **Alertes** : `scripts/briefing-alert.sh` ouvre une issue GitHub (label `alerte-briefing` si le briefing publié échoue au contrôle, `alerte-pipeline` si la génération échoue — ex. crédit Anthropic épuisé) et la ferme au retour à la normale.
 
 ## 6. Bot Polymarket (`bot/`)
 
