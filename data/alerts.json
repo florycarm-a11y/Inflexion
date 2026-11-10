@@ -1,87 +1,159 @@
 {
-  "updated": "2026-11-09T21:17:26.268Z",
+  "updated": "2026-11-10T22:49:36.168Z",
   "alertes": [
     {
-      "id": "alert-2026-11-09-001",
-      "titre": "XRP : -12,17% sur 7j, correction crypto généralisée",
-      "texte": "XRP recule de 12,17% sur 7 jours (prix $1,092) et -5,34% sur 24h. TVL DeFi en baisse de 8,1% sur 7j ($496B), signalant un retrait de liquidités. Contexte : intensification des enquêtes réglementaires (Binance, Tether) et task force UE anti-contournement sanctions.",
+      "id": "alert-2026-11-10-001",
+      "titre": "XRP : -17,15% sur 7j, correction majeure en cours",
+      "texte": "XRP enregistre la plus forte baisse du portefeuille crypto (-17,15% sur 7 jours). Correction s'inscrit dans régime risk-off généralisé (crypto -3,49% classe d'actifs) amplifié par incidents sécurité DeFi et contraction TVL (-8,3%).",
       "categorie": "crypto",
-      "severite": "attention",
+      "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-11-09T21:17:26.268Z",
+      "horodatage": "2026-11-10T22:49:36.168Z",
       "donnees": {
-        "symbole": "XRP",
-        "nom": "XRP",
-        "prix": 1.092,
-        "variation_24h": -5.34
+        "symbole": "ETH",
+        "nom": "Ethereum",
+        "prix": 2047.94,
+        "variation_7d": -10.21
       }
     },
     {
-      "id": "alert-2026-11-09-002",
-      "titre": "Nasdaq 100 : +3,26%, rebond tech porté par IA et indices larges",
-      "texte": "Nasdaq 100 gagne 3,26% (prix $677,48), S&P 500 +2,36% ($752,62), Dow Jones +2,18% ($523,39). Rebond généralisé soutenu par révisions positives de guidance (Claritev, Monday.com) et stabilité macroéconomique. Apple +2,80%, Microsoft +2,73%, Tesla +5,41%.",
+      "id": "alert-2026-11-10-002",
+      "titre": "Ethereum (ETH) : -10,21% sur 7j, TVL staking Binance -10,1%",
+      "texte": "ETH recule de 10,21% sur 7 jours ; TVL staking Binance en baisse prolongée de 10,1% ($8,0B). Contraction reflète déstockage généralisé et stress liquidités dans écosystème.",
+      "categorie": "crypto",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-11-10T22:49:36.168Z",
+      "donnees": {
+        "symbole": "XRP",
+        "nom": "XRP",
+        "prix": 1.057,
+        "variation_7d": -17.15
+      }
+    },
+    {
+      "id": "alert-2026-11-10-003",
+      "titre": "Solana (SOL) : -10,81% sur 7j, TVL DeFi -8,3%",
+      "texte": "SOL recule de 10,81% sur 7 jours. Baisse s'accompagne de contraction TVL DeFi de 8,3% ($489B) et incidents sécurité critiques (LNbits, Across Protocol), signalant stress systémique.",
+      "categorie": "crypto",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-11-10T22:49:36.168Z",
+      "donnees": {
+        "symbole": "SOL",
+        "nom": "Solana",
+        "prix": 82.96,
+        "variation_7d": -10.81
+      }
+    },
+    {
+      "id": "alert-2026-11-10-004",
+      "titre": "Nvidia (NVDA) : -5,47% à $168,89, enquête indépendante CEO",
+      "texte": "NVDA recule de 5,47% à $168,89 suite annonce enquête indépendante Wachtell Lipton sur relation Jensen Huang. Contexte : menaces subpoena Républicains, turbulences réputationnelles pesant sur valorisation.",
       "categorie": "marches",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-11-09T21:17:26.268Z",
-      "donnees": {
-        "symbole": "XRP",
-        "nom": "XRP",
-        "prix": 1.092,
-        "variation_7d": -12.17
-      }
-    },
-    {
-      "id": "alert-2026-11-09-003",
-      "titre": "Nvidia : -5,63%, controverse Huang pèse sur leader IA",
-      "texte": "Nvidia recule de 5,63% (prix $176,13) dans contexte de controverse impliquant le PDG Jensen Huang (affaire présumée d'espionnage et adultère). Impact réputationnel et risque géopolitique sino-américain dans secteur technologique critique.",
-      "categorie": "ai_tech",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-11-09T21:17:26.268Z",
+      "horodatage": "2026-11-10T22:49:36.168Z",
       "donnees": {
-        "symbole": "SPY",
-        "nom": "S&P 500",
-        "prix": 752.62,
-        "variation": 2.36
+        "symbole": "GLD",
+        "nom": "Or (ETF)",
+        "prix": 369.36,
+        "variation": -2.68
       }
     },
     {
-      "id": "alert-2026-11-09-004",
-      "titre": "Pétrole (USO) : -3,14%, pression baissière malgré tensions",
-      "texte": "Pétrole baisse de 3,14% (prix $143,75) malgré attaque pipeline saoudien et destruction d'installations Houthis. Pression baissière liée à demande LNG asiatique affaiblie et accumulation stocks gaz naturel (sub-$3 Haynesville).",
+      "id": "alert-2026-11-10-005",
+      "titre": "Or (GLD) : -2,68% à $369,36, risk-off généralisé",
+      "texte": "Or (ETF GLD) recule de 2,68% à $369,36, reflétant régime risk-off généralisé (consensus 88%) malgré tensions géopolitiques Iran-USA. Rendement 10Y Treasury ~5% limite attrait actifs non-productifs.",
       "categorie": "matieres_premieres",
       "severite": "info",
       "impact": "baissier",
-      "horodatage": "2026-11-09T21:17:26.268Z",
+      "horodatage": "2026-11-10T22:49:36.168Z",
       "donnees": {
-        "symbole": "QQQ",
-        "nom": "Nasdaq 100",
-        "prix": 677.48,
-        "variation": 3.26
+        "symbole": "NVDA",
+        "nom": "Nvidia",
+        "prix": 168.89,
+        "variation": -5.47
       }
     },
     {
-      "id": "alert-2026-11-09-005",
-      "titre": "Marché fragmenté : consensus 56%, amplitude 3,15%",
-      "texte": "Régime de marché fragmenté détecté. Par classe d'actifs : indices EU +3,16%, actions +1,44%, ETF +1,12%, crypto -3,37%. Divergence significative entre secteurs tech/IA (haussier) et crypto (baissier) reflète tensions géopolitiques et réglementaires.",
+      "id": "alert-2026-11-10-006",
+      "titre": "Microsoft (MSFT) : -2,20% à $533,16, correction tech modérée",
+      "texte": "MSFT recule de 2,20% à $533,16 dans contexte correction sectorielle tech. Correction modérée comparée Nvidia ; Microsoft corrige 1 100 vulnérabilités sécurité, impact limité valorisation.",
       "categorie": "marches",
       "severite": "info",
-      "impact": "neutre",
-      "horodatage": "2026-11-09T21:17:26.268Z",
+      "impact": "baissier",
+      "horodatage": "2026-11-10T22:49:36.168Z",
       "donnees": {
-        "symbole": "DIA",
-        "nom": "Dow Jones",
-        "prix": 523.39,
-        "variation": 2.18
+        "symbole": "MSFT",
+        "nom": "Microsoft",
+        "prix": 533.16,
+        "variation": -2.2
+      }
+    },
+    {
+      "id": "alert-2026-11-10-007",
+      "titre": "TVL DeFi : -8,3% sur 7j ($489B), signal stress systémique",
+      "texte": "TVL DeFi en contraction de 8,3% sur 7 jours ($489B), accompagnée baisse SSV Network (-10,1%), Binance staked ETH (-10,1%), EigenCloud (-10,1%). Déstockage généralisé signale stress liquidités écosystème.",
+      "categorie": "crypto",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-11-10T22:49:36.168Z",
+      "donnees": {
+        "protocole": "SSV Network",
+        "tvl_b": 10.8,
+        "change_7d": -10.1
+      }
+    },
+    {
+      "id": "alert-2026-11-10-008",
+      "titre": "Incidents sécurité crypto : LNbits, Across Protocol, Near AI",
+      "texte": "LNbits publie update sécurité urgent post-8 novembre suite attaques ; Across Protocol alerte utilisateurs portefeuilles vidés ; Near AI breach expose données 18 agents IA. Accumulation incidents érode confiance utilisateurs.",
+      "categorie": "crypto",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-11-10T22:49:36.168Z",
+      "donnees": {
+        "protocole": "Binance staked ETH",
+        "tvl_b": 8,
+        "change_7d": -10.1
+      }
+    },
+    {
+      "id": "alert-2026-11-10-009",
+      "titre": "Régime risk-off généralisé : -0,98% ETF, -1,62% actions, -3,49% crypto",
+      "texte": "Consensus risk-off 88% (amplitude 1,96%) : ETF -0,98%, actions -1,62%, crypto -3,49%. Drivers : tensions géopolitiques Iran-USA, rendements obligataires 5%, incidents sécurité DeFi, turbulences Nvidia.",
+      "categorie": "marches",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-11-10T22:49:36.168Z",
+      "donnees": {
+        "protocole": "EigenCloud",
+        "tvl_b": 5.3,
+        "change_7d": -10.1
+      }
+    },
+    {
+      "id": "alert-2026-11-10-010",
+      "titre": "Escalade géopolitique Iran-USA : implications risque systémique",
+      "texte": "Trois opérateurs iraniens inculpés complot base aérienne UK ; incendie plateforme South Pars ; Secrétaire Défense US plaide guerre Iran. Contexte : négociations Ukraine-Russie au point mort. Risque escalade pèse sur marchés.",
+      "categorie": "geopolitique",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-11-10T22:49:36.168Z",
+      "donnees": {
+        "tvl_start_b": 533,
+        "tvl_end_b": 489,
+        "change_pct": -8.3,
+        "days": 7
       }
     }
   ],
   "stats": {
-    "total": 5,
-    "urgent": 0,
-    "attention": 2,
-    "info": 3
+    "total": 10,
+    "urgent": 5,
+    "attention": 3,
+    "info": 2
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"

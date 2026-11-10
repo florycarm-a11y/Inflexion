@@ -1,78 +1,69 @@
 {
-  "updated": "2026-11-09T21:17:26.268Z",
-  "date": "2026-11-09",
+  "updated": "2026-11-10T22:49:36.167Z",
+  "date": "2026-11-10",
   "global": {
-    "score": -0.05,
-    "tendance": "mixte",
-    "resume": "Le sentiment global est mixte (-0.05), dominé par la rubrique crypto (baissier)."
+    "score": -0.27,
+    "tendance": "baissier",
+    "resume": "Le sentiment global est baissier (-0.27), dominé par la rubrique crypto (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.35,
-      "confidence": 0.62,
-      "tendance": "mixte",
-      "resume": "Négociations Ukraine-Russie en cours à Abou Dhabi avec signaux de flexibilité territoriale, contrebalancés par tensions persistantes (attaques Houthis, incidents en Turquie, tensions sino-américaines). Contexte électoraliste américain et français fragmenté.",
+      "score": -0.65,
+      "confidence": 0.82,
+      "tendance": "baissier",
+      "resume": "Escalade géopolitique marquée : tensions Iran-USA (opérations d'espionnage, attaques sur infrastructures pétrolières), négociations Ukraine-Russie au point mort, instabilité au Moyen-Orient. Contexte de risque systémique élevé pesant sur les marchés.",
       "signaux_cles": [
-        "Négociations Ukraine-Russie à Abou Dhabi : délégations en place, flexibilité territoriale rapportée par officiels US",
-        "Attaque pipeline saoudien et destruction d'installations Houthis : tensions géopolitiques persistantes en Moyen-Orient",
-        "Incident espionnage présumé Nvidia-Huang : tensions sino-américaines dans secteur technologique critique"
+        "Trois opérateurs iraniens inculpés pour complot contre base aérienne britannique",
+        "Secrétaire à la Défense US plaide pour guerre en Iran ; incendie sur plateforme South Pars",
+        "Zelenskyy demande accélération négociations ; Washington propose nouveau cadre sécurité Europe"
       ]
     },
     "marches": {
-      "score": 0.42,
-      "confidence": 0.71,
-      "tendance": "haussier",
-      "resume": "Indices américains en hausse (S&P 500 +2.36%, Nasdaq +3.26%), soutenu par révisions positives de guidance (Claritev, Monday.com) et stabilité macroéconomique française. Boeing freiné par réductions d'effectifs (-5% aviation commerciale).",
+      "score": -0.28,
+      "confidence": 0.68,
+      "tendance": "mixte",
+      "resume": "Résultats trimestriels contrastés : surperformances isolées (CoreWeave, Freenome, Sonos) compensées par déceptions (Lightwave Logic, Braveheart Bio). Secteur technologique fragilisé par turbulences Nvidia ; rendements obligataires (10Y ~5%) pèsent sur valorisations.",
       "signaux_cles": [
-        "S&P 500 +2.36%, Nasdaq 100 +3.26%, Dow Jones +2.18% : rebond généralisé des indices",
-        "Claritev relève guidance 2026 à $1.038B-$1.043B, anticipe $1.1B+ en 2027 : momentum NSA confirmé",
-        "Boeing réduit 5% des effectifs aviation commerciale : ralentissement production vs attentes"
+        "CoreWeave dépasse prévisions et relève guidance ; Freenome EPS +$0.49 vs consensus",
+        "Rendement 10Y Treasury approche 5% ; Nvidia -5.47%, AMD en repli face aux turbulences",
+        "Débat politique français sur financement : Bardella critique hausse Smic, propose +10% salaires exonérés"
       ]
     },
     "crypto": {
-      "score": -0.58,
-      "confidence": 0.75,
+      "score": -0.72,
+      "confidence": 0.85,
       "tendance": "baissier",
-      "resume": "Secteur sous pression avec XRP -12.17% sur 7j, TVL DeFi -8.1%, contexte de régulation accrue (task force UE, enquêtes Binance/Tether). Activités illicites documentées (Corée du Nord, Iran). Quelques signaux positifs (AVAX, tokenisation).",
+      "resume": "Correction généralisée et incidents de sécurité critiques : ETH -10.21%, XRP -17.15%, SOL -10.81% sur 7j. Failles majeures (LNbits, Across Protocol, Near AI) entraînent drainage de fonds. TVL DeFi en contraction (-8.3%), signalant stress systémique.",
       "signaux_cles": [
-        "XRP -12.17% sur 7 jours, -5.34% sur 24h : correction significative",
-        "TVL DeFi -8.1% sur 7j ($496B) : signal de stress et retrait de liquidités",
-        "UE lance task force anti-contournement sanctions crypto ; enquêtes Binance/Tether intensifiées"
+        "XRP -17.15% sur 7j ; ETH -10.21% ; SOL -10.81% ; TVL DeFi -8.3% ($489B)",
+        "LNbits update sécurité urgent post-8 novembre ; Across Protocol alerte utilisateurs sur portefeuilles vidés",
+        "Goldman, Citi financent initiative stablecoin $270M ; Monad intégré programme Visa"
       ]
     },
     "matieres_premieres": {
-      "score": -0.28,
-      "confidence": 0.68,
+      "score": 0.12,
+      "confidence": 0.62,
       "tendance": "neutre",
-      "resume": "Pétrole sous pression (-3.14% USO) malgré tensions géopolitiques, soutenu par demande LNG asiatique affaiblie et accumulation stocks gaz naturel. Gaz naturel en baisse (<$3 Haynesville). Contrats de défense (VIKING €23.8M) stables.",
+      "resume": "Dynamiques contrastées : gaz naturel en hausse (short-covering), prix pétrole en repli (espoirs de paix), tensions géopolitiques (attaques Houthis) compensées par offre russe réduite. Or en baisse (-2.68%), reflétant risk-off global.",
       "signaux_cles": [
-        "Pétrole (USO) -3.14% : pression baissière malgré attaque pipeline saoudien",
-        "Gaz naturel sub-$3 Haynesville : puits au seuil de rentabilité, accumulation stocks",
-        "Demande LNG asiatique affaiblie, tensions géopolitiques réduisent prime de risque"
+        "Prix gaz naturel en hausse (short-covering) ; prévisions EIA hiver en baisse",
+        "Pétrole en repli sur espoirs paix ; attaques Houthis sur stations pompage Arabie Saoudite",
+        "Or (GLD) -2.68% à $369.36 ; indice Baltic Dry en hausse 5e jour consécutif"
       ]
     },
     "ai_tech": {
-      "score": 0.51,
-      "confidence": 0.73,
+      "score": 0.38,
+      "confidence": 0.71,
       "tendance": "haussier",
-      "resume": "Lancement de nouveaux modèles (Anthropic Fable/Mythos 5.2, Baidu ERNIE, Google TPU 8i/8tx) soutient dynamique IA. Nvidia impactée par controverse Huang (-5.63%), mais écosystème tech large progresse. Investissements massifs en infrastructure énergétique ($3.4B Anthropic).",
+      "resume": "Dynamique positive malgré turbulences réglementaires : OpenAI revenue $10B Q3, Anthropic IPO (7 fondateurs $250M chacun), acquisitions stratégiques (Odessia, Counsel Health). Sécurité critique : Microsoft 1 100 vulnérabilités, Nitori 37.6M dossiers compromis.",
       "signaux_cles": [
-        "Anthropic acquiert $3.4B de turbines gaz naturel : engagement infrastructure énergétique pour IA",
-        "Lancement Fable/Mythos 5.2, TPU 8i Max, ERNIE Evolve : accélération cycles innovation modèles",
-        "Nvidia -5.63% sur controverse Huang-espionnage : risque réputationnel et géopolitique pour leader IA"
+        "OpenAI revenue $10B Q3 ; Anthropic IPO avec 7 fondateurs liquidant ~$250M chacun",
+        "Microsoft corrige 1 100 vulnérabilités ; Nitori (Japon) 37.6M dossiers clients volés",
+        "Apple app local AI ; Anthropic Claude workspace (plugins, spreadsheets, whiteboards)"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-03-16",
-      "global": -0.28,
-      "geopolitique": -0.75,
-      "marches": -0.42,
-      "crypto": 0.68,
-      "matieres_premieres": -0.58,
-      "ai_tech": -0.28
-    },
     {
       "date": "2026-03-19",
       "global": -0.29,
@@ -333,6 +324,15 @@
       "crypto": -0.58,
       "matieres_premieres": -0.28,
       "ai_tech": 0.51
+    },
+    {
+      "date": "2026-11-10",
+      "global": -0.27,
+      "geopolitique": -0.65,
+      "marches": -0.28,
+      "crypto": -0.72,
+      "matieres_premieres": 0.12,
+      "ai_tech": 0.38
     }
   ],
   "model": "claude-haiku-4-5-20251001",
