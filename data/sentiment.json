@@ -1,78 +1,69 @@
 {
-  "updated": "2026-11-10T22:49:36.167Z",
-  "date": "2026-11-10",
+  "updated": "2026-11-11T13:32:37.822Z",
+  "date": "2026-11-11",
   "global": {
-    "score": -0.27,
+    "score": -0.25,
     "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.27), dominé par la rubrique crypto (baissier)."
+    "resume": "Le sentiment global est baissier (-0.25), dominé par la rubrique crypto (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.65,
-      "confidence": 0.82,
-      "tendance": "baissier",
-      "resume": "Escalade géopolitique marquée : tensions Iran-USA (opérations d'espionnage, attaques sur infrastructures pétrolières), négociations Ukraine-Russie au point mort, instabilité au Moyen-Orient. Contexte de risque systémique élevé pesant sur les marchés.",
+      "score": -0.35,
+      "confidence": 0.72,
+      "tendance": "mixte",
+      "resume": "Négociations Ukraine-Russie en cours avec échanges de prisonniers et progrès rapportés, contrebalancés par escalades militaires (drones, cyberattaques russes) et instabilité régionale (Haïti, Afrique). Contexte de tensions persistantes sans résolution claire.",
       "signaux_cles": [
-        "Trois opérateurs iraniens inculpés pour complot contre base aérienne britannique",
-        "Secrétaire à la Défense US plaide pour guerre en Iran ; incendie sur plateforme South Pars",
-        "Zelenskyy demande accélération négociations ; Washington propose nouveau cadre sécurité Europe"
+        "Accord de principe Russie-Ukraine pour échange de prisonniers de grande ampleur (11 nov 2026)",
+        "Cyberattaques russes ciblant serveurs roumains pour emails NATO/UE",
+        "Fausses alertes à la bombe dans centaines d'écoles italiennes et menaces au Royaume-Uni/Irlande"
       ]
     },
     "marches": {
-      "score": -0.28,
-      "confidence": 0.68,
-      "tendance": "mixte",
-      "resume": "Résultats trimestriels contrastés : surperformances isolées (CoreWeave, Freenome, Sonos) compensées par déceptions (Lightwave Logic, Braveheart Bio). Secteur technologique fragilisé par turbulences Nvidia ; rendements obligataires (10Y ~5%) pèsent sur valorisations.",
+      "score": -0.42,
+      "confidence": 0.78,
+      "tendance": "baissier",
+      "resume": "Dégradation des perspectives économiques avec Moody's réduisant prévisions France 2026 à 0,2% (vs 0,5% gouvernement). Secteur technologique en rebond mais valuations Nvidia comprimées. Faillite Children's Place signale stress retail.",
       "signaux_cles": [
-        "CoreWeave dépasse prévisions et relève guidance ; Freenome EPS +$0.49 vs consensus",
-        "Rendement 10Y Treasury approche 5% ; Nvidia -5.47%, AMD en repli face aux turbulences",
-        "Débat politique français sur financement : Bardella critique hausse Smic, propose +10% salaires exonérés"
+        "Moody's abaisse croissance France 2026 à 0,2% (vs 0,5% attendu)",
+        "Nvidia valuation à 15 ans de bas malgré rebond technique",
+        "Petrobras affiche bénéfices en hausse et ventes records T3 2026"
       ]
     },
     "crypto": {
-      "score": -0.72,
+      "score": -0.68,
       "confidence": 0.85,
       "tendance": "baissier",
-      "resume": "Correction généralisée et incidents de sécurité critiques : ETH -10.21%, XRP -17.15%, SOL -10.81% sur 7j. Failles majeures (LNbits, Across Protocol, Near AI) entraînent drainage de fonds. TVL DeFi en contraction (-8.3%), signalant stress systémique.",
+      "resume": "Marché crypto sous pression avec reculs significatifs (BTC, ETH, XRP, SOL). Lancement OKXICE de trading tokenisé (23 nov) et adoption bancaire (Deutsche Bank, Barclays) contrebalancés par fraudes et failles de sécurité Bitcoin Core.",
       "signaux_cles": [
-        "XRP -17.15% sur 7j ; ETH -10.21% ; SOL -10.81% ; TVL DeFi -8.3% ($489B)",
-        "LNbits update sécurité urgent post-8 novembre ; Across Protocol alerte utilisateurs sur portefeuilles vidés",
-        "Goldman, Citi financent initiative stablecoin $270M ; Monad intégré programme Visa"
+        "ETH -11,77%, XRP -17,84%, SOL -10,30% sur 7 jours",
+        "TVL DeFi en baisse -8,7% (491B$) signalant stress systémique",
+        "OKXICE lance venue trading tokenisé 23 nov avec 70+ actifs (Circle, Coinbase, Robinhood)"
       ]
     },
     "matieres_premieres": {
-      "score": 0.12,
-      "confidence": 0.62,
+      "score": 0.15,
+      "confidence": 0.68,
       "tendance": "neutre",
-      "resume": "Dynamiques contrastées : gaz naturel en hausse (short-covering), prix pétrole en repli (espoirs de paix), tensions géopolitiques (attaques Houthis) compensées par offre russe réduite. Or en baisse (-2.68%), reflétant risk-off global.",
+      "resume": "Secteur énergétique mixte : prix pétrole en recul sur espoirs de paix Ukraine, mais gaz naturel en hausse (short-covering). Investissements massifs en énergies renouvelables (RWE-KKR 16Md$, Arabie-Turquie 3GW éolien). Or en baisse -2,68%.",
       "signaux_cles": [
-        "Prix gaz naturel en hausse (short-covering) ; prévisions EIA hiver en baisse",
-        "Pétrole en repli sur espoirs paix ; attaques Houthis sur stations pompage Arabie Saoudite",
-        "Or (GLD) -2.68% à $369.36 ; indice Baltic Dry en hausse 5e jour consécutif"
+        "RWE et KKR scellent deal 16Md$ offshore wind UK",
+        "Arabie Saoudite-Turquie signent accord 3GW éolien majeur",
+        "Orlen (Pologne) annule contrat LNG long-terme Qatar (premier acheteur)"
       ]
     },
     "ai_tech": {
-      "score": 0.38,
-      "confidence": 0.71,
-      "tendance": "haussier",
-      "resume": "Dynamique positive malgré turbulences réglementaires : OpenAI revenue $10B Q3, Anthropic IPO (7 fondateurs $250M chacun), acquisitions stratégiques (Odessia, Counsel Health). Sécurité critique : Microsoft 1 100 vulnérabilités, Nitori 37.6M dossiers compromis.",
+      "score": 0.22,
+      "confidence": 0.65,
+      "tendance": "mixte",
+      "resume": "Secteur IA en dynamique positive avec OpenAI revenue 10Md$ trimestriel et Google découvrant pyramide Maya via agents IA. Contrebalancé par failles sécurité (Grok, N-able zero-day) et régulation (UK universités, EU règles consommateurs).",
       "signaux_cles": [
-        "OpenAI revenue $10B Q3 ; Anthropic IPO avec 7 fondateurs liquidant ~$250M chacun",
-        "Microsoft corrige 1 100 vulnérabilités ; Nitori (Japon) 37.6M dossiers clients volés",
-        "Apple app local AI ; Anthropic Claude workspace (plugins, spreadsheets, whiteboards)"
+        "OpenAI atteint 10Md$ revenue trimestriel (ventes enterprise)",
+        "Google agents IA découvrent pyramide Maya en 72h via NASA Lidar",
+        "Failles sécurité Grok exposent données patients et pipeline ventes SpaceX"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-03-19",
-      "global": -0.29,
-      "geopolitique": -0.75,
-      "marches": -0.35,
-      "crypto": 0.15,
-      "matieres_premieres": -0.65,
-      "ai_tech": 0.42
-    },
     {
       "date": "2026-03-20",
       "global": -0.15,
@@ -333,6 +324,15 @@
       "crypto": -0.72,
       "matieres_premieres": 0.12,
       "ai_tech": 0.38
+    },
+    {
+      "date": "2026-11-11",
+      "global": -0.25,
+      "geopolitique": -0.35,
+      "marches": -0.42,
+      "crypto": -0.68,
+      "matieres_premieres": 0.15,
+      "ai_tech": 0.22
     }
   ],
   "model": "claude-haiku-4-5-20251001",
