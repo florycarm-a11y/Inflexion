@@ -1,17 +1,18 @@
 {
-  "generated_at": "2026-11-10T22:51:22.172735+00:00Z",
+  "generated_at": "2026-11-11T13:34:21.859598+00:00Z",
   "scan_type": "short_term_sectoral",
   "max_horizon_days": 7,
   "summary": {
     "total_markets_scanned": 299,
-    "total_matched": 55,
-    "short_term_markets": 2,
-    "zones_active": 1,
-    "conflicts_active": 1,
+    "total_matched": 57,
+    "short_term_markets": 4,
+    "zones_active": 2,
+    "conflicts_active": 2,
     "conflict_zones": [
-      "iran"
+      "iran",
+      "ukraine"
     ],
-    "high_edge_signals": 1
+    "high_edge_signals": 2
   },
   "zones": [
     {
@@ -20,30 +21,63 @@
       "risk_score": 0,
       "opp_score": 0,
       "conflict_active": true,
-      "conflict_multiplier": 3.0,
+      "conflict_multiplier": 5.0,
       "intel_multiplier": 1.88,
       "markets": [
         {
           "question": "Israel x Iran ceasefire continues through November 15?",
           "end_date": "2026-11-16",
-          "horizon_days": 5.0,
+          "horizon_days": 4.4,
           "event_type": "ceasefire",
           "poly_price": 0.971,
-          "semplice_prob": 0.131,
-          "edge_pct": 84.0,
+          "semplice_prob": 0.246,
+          "edge_pct": 72.5,
           "direction": "BUY_NO",
-          "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×3 × Mult=0.42×Intel1.88 → Ann=43.0% → T=0.0a → P=13.1% | P=1.5(w=30%), M=2"
+          "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×5 × Mult=0.42×Intel1.88 → Ann=67.6% → T=0.0a → P=24.6% | P=1.5(w=30%), M=2"
         },
         {
           "question": "US announces end of Iranian blockade by November 15, 2026?",
           "end_date": "2026-11-16",
-          "horizon_days": 5.0,
+          "horizon_days": 4.4,
           "event_type": "blockade",
-          "poly_price": 0.035,
-          "semplice_prob": 0.048,
-          "edge_pct": 1.2,
+          "poly_price": 0.028,
+          "semplice_prob": 0.084,
+          "edge_pct": 5.6,
           "direction": "BUY_YES",
-          "reasoning": "Type=blockade(négatif) | Base=1.5% ⚠CONFLIT×3 × Mult=1.82×Intel2.16 → Ann=17.7% → T=0.0a → P=4.8% | M=5.5(w=35%), P=5.7("
+          "reasoning": "Type=blockade(négatif) | Base=1.5% ⚠CONFLIT×5 × Mult=1.82×Intel2.16 → Ann=29.5% → T=0.0a → P=8.4% | M=5.5(w=35%), P=5.7("
+        },
+        {
+          "question": "US x Iran Effective Ceasefire by November 15?",
+          "end_date": "2026-11-15",
+          "horizon_days": 3.4,
+          "event_type": "ceasefire",
+          "poly_price": 0.535,
+          "semplice_prob": 0.246,
+          "edge_pct": 28.9,
+          "direction": "BUY_NO",
+          "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×5 × Mult=0.42×Intel1.88 → Ann=67.6% → T=0.0a → P=24.6% | P=1.5(w=30%), M=2"
+        }
+      ]
+    },
+    {
+      "zone_id": "ukraine",
+      "zone_name": "Ukraine / Mer Noire",
+      "risk_score": 0,
+      "opp_score": 0,
+      "conflict_active": true,
+      "conflict_multiplier": 5.0,
+      "intel_multiplier": 1.2,
+      "markets": [
+        {
+          "question": "Russia x Ukraine energy ceasefire agreement by November 15, 2026?",
+          "end_date": "2026-11-15",
+          "horizon_days": 3.4,
+          "event_type": "ceasefire",
+          "poly_price": 0.045,
+          "semplice_prob": 0.14,
+          "edge_pct": 9.5,
+          "direction": "BUY_YES",
+          "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×5 × Mult=0.45×Intel1.20 → Ann=45.4% → T=0.0a → P=14.0% | P=2.3(w=30%), M=0"
         }
       ]
     }
