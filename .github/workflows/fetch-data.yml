@@ -47,6 +47,7 @@ on:
 # Permissions nécessaires pour committer les fichiers JSON
 permissions:
   contents: write
+  issues: write   # alerte briefing (scripts/briefing-alert.sh)
 
 # Une seule exécution à la fois
 concurrency:
@@ -129,9 +130,25 @@ jobs:
       # périmé, contradictoire ou mal libellé. Sans ce contrôle, le briefing est resté
       # figé du 7 septembre au 9 novembre 2026 sans que rien ne le signale.
       - name: "🩺 Contrôle du briefing publié"
+        id: check_briefing
         if: success()
         continue-on-error: true
-        run: node scripts/check-briefing.mjs
+        shell: bash   # pipefail : le code de sortie du contrôle survit au tee
+        run: node scripts/check-briefing.mjs | tee /tmp/check-briefing.txt
+
+      # Rend l'échec visible : issue GitHub (e-mail) ouverte si le briefing publié
+      # échoue au contrôle, fermée automatiquement quand il repasse.
+      - name: "📣 Alerte briefing (issue)"
+        if: always() && (steps.check_briefing.outcome == 'success' || steps.check_briefing.outcome == 'failure')
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "${{ steps.check_briefing.outcome }}" = "failure" ]; then
+            bash scripts/briefing-alert.sh fail controle /tmp/check-briefing.txt
+          else
+            bash scripts/briefing-alert.sh ok controle
+          fi
 
       - name: "🚨 Alerte d'échec"
         if: failure()
