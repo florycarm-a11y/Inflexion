@@ -1,78 +1,69 @@
 {
-  "updated": "2026-11-11T13:32:37.822Z",
-  "date": "2026-11-11",
+  "updated": "2026-11-12T23:12:06.302Z",
+  "date": "2026-11-12",
   "global": {
-    "score": -0.25,
+    "score": -0.39,
     "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.25), dominé par la rubrique crypto (baissier)."
+    "resume": "Le sentiment global est baissier (-0.39), dominé par la rubrique crypto (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.35,
+      "score": -0.45,
       "confidence": 0.72,
-      "tendance": "mixte",
-      "resume": "Négociations Ukraine-Russie en cours avec échanges de prisonniers et progrès rapportés, contrebalancés par escalades militaires (drones, cyberattaques russes) et instabilité régionale (Haïti, Afrique). Contexte de tensions persistantes sans résolution claire.",
+      "tendance": "baissier",
+      "resume": "Tensions géopolitiques multiples (Israël-Palestine, Ukraine, Chine-USA) et scandales corporatifs (Huang-Nvidia) créent un environnement d'incertitude. Les négociations de paix en Ukraine et les tensions commerciales USA-Chine pèsent sur le sentiment de risque.",
       "signaux_cles": [
-        "Accord de principe Russie-Ukraine pour échange de prisonniers de grande ampleur (11 nov 2026)",
-        "Cyberattaques russes ciblant serveurs roumains pour emails NATO/UE",
-        "Fausses alertes à la bombe dans centaines d'écoles italiennes et menaces au Royaume-Uni/Irlande"
+        "Zelensky annonce la présence des Européens dans les négociations de paix (Ukraine)",
+        "Affaire Huang : accusations d'espionnage pour la Chine contre la maîtresse du PDG Nvidia",
+        "France-Israël : interdiction d'entrée de Mélenchon et Panot, tensions diplomatiques"
       ]
     },
     "marches": {
-      "score": -0.42,
-      "confidence": 0.78,
-      "tendance": "baissier",
-      "resume": "Dégradation des perspectives économiques avec Moody's réduisant prévisions France 2026 à 0,2% (vs 0,5% gouvernement). Secteur technologique en rebond mais valuations Nvidia comprimées. Faillite Children's Place signale stress retail.",
+      "score": -0.28,
+      "confidence": 0.68,
+      "tendance": "mixte",
+      "resume": "Résultats trimestriels contrastés avec quelques outperformances (Cerebras +17%, Mannatech) compensées par des déceptions et une panne Microsoft majeure. Les rendements obligataires affichent leur plus forte hausse depuis 2022, signalant des attentes de hausse des taux.",
       "signaux_cles": [
-        "Moody's abaisse croissance France 2026 à 0,2% (vs 0,5% attendu)",
-        "Nvidia valuation à 15 ans de bas malgré rebond technique",
-        "Petrobras affiche bénéfices en hausse et ventes records T3 2026"
+        "Cerebras +17% après dépassement des revenus et accord Microsoft",
+        "Panne Microsoft Outlook/365 généralisée impactant les services critiques",
+        "Rendements obligataires : plus forte hausse depuis 2022, anticipations de hausse des taux Fed"
       ]
     },
     "crypto": {
       "score": -0.68,
       "confidence": 0.85,
       "tendance": "baissier",
-      "resume": "Marché crypto sous pression avec reculs significatifs (BTC, ETH, XRP, SOL). Lancement OKXICE de trading tokenisé (23 nov) et adoption bancaire (Deutsche Bank, Barclays) contrebalancés par fraudes et failles de sécurité Bitcoin Core.",
+      "resume": "Répression réglementaire intensifiée (DOJ saisit $1.2B Binance hack, 354 arrestations Operation TorNado) et dégradation des métriques clés (Gemini -73% volume, Strategy MSCI removal). Stress systémique confirmé par chute du Fear & Greed Index à 28.",
       "signaux_cles": [
-        "ETH -11,77%, XRP -17,84%, SOL -10,30% sur 7 jours",
-        "TVL DeFi en baisse -8,7% (491B$) signalant stress systémique",
-        "OKXICE lance venue trading tokenisé 23 nov avec 70+ actifs (Circle, Coinbase, Robinhood)"
+        "DOJ saisit $1.2 milliard de cryptos volés par North Korea via Binance",
+        "Operation TorNado : 354 arrestations et $234M en espèces/crypto saisis",
+        "Gemini volume Q3 : -73%, revenus chutent à $41M ; Strategy retiré des indices MSCI"
       ]
     },
     "matieres_premieres": {
       "score": 0.15,
-      "confidence": 0.68,
+      "confidence": 0.62,
       "tendance": "neutre",
-      "resume": "Secteur énergétique mixte : prix pétrole en recul sur espoirs de paix Ukraine, mais gaz naturel en hausse (short-covering). Investissements massifs en énergies renouvelables (RWE-KKR 16Md$, Arabie-Turquie 3GW éolien). Or en baisse -2,68%.",
+      "resume": "Pétrole soutenu par recul des perspectives d'accord Iran (+3.25% USO), gaz naturel en rallye (+$3/MMBtu). Or sous pression (-2.82% GLD). Inventaires gaz européens au plus bas de la décennie, créant une vulnérabilité hivernale.",
       "signaux_cles": [
-        "RWE et KKR scellent deal 16Md$ offshore wind UK",
-        "Arabie Saoudite-Turquie signent accord 3GW éolien majeur",
-        "Orlen (Pologne) annule contrat LNG long-terme Qatar (premier acheteur)"
+        "Pétrole +3.25% (USO $146.07) : Trump écarte les négociations Iran",
+        "Gaz naturel futures : rallye solidifié au-dessus de $3/MMBtu",
+        "Europe : inventaires gaz au plus bas de la décennie 2020s avant hiver"
       ]
     },
     "ai_tech": {
-      "score": 0.22,
-      "confidence": 0.65,
-      "tendance": "mixte",
-      "resume": "Secteur IA en dynamique positive avec OpenAI revenue 10Md$ trimestriel et Google découvrant pyramide Maya via agents IA. Contrebalancé par failles sécurité (Grok, N-able zero-day) et régulation (UK universités, EU règles consommateurs).",
+      "score": -0.52,
+      "confidence": 0.79,
+      "tendance": "baissier",
+      "resume": "Crise de gouvernance Nvidia (démission Huang, enquête démocrate, accusations espionnage chinois) domine le secteur. Contrebalancé par avancées produits (Gemini Google, LiquidCodec) et spéculation M&A (SpaceX-Tesla). Malware SCKit menace l'infrastructure MSP.",
       "signaux_cles": [
-        "OpenAI atteint 10Md$ revenue trimestriel (ventes enterprise)",
-        "Google agents IA découvrent pyramide Maya en 72h via NASA Lidar",
-        "Failles sécurité Grok exposent données patients et pipeline ventes SpaceX"
+        "Jensen Huang démissionne : enquête démocrate sur 'schéma' avec Trump, accusations espionnage",
+        "Nvidia investigation continue sur ancien PDG et allégations espion chinois",
+        "Rumeur SpaceX-Tesla merger annoncée potentiellement en décembre"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-03-20",
-      "global": -0.15,
-      "geopolitique": -0.65,
-      "marches": -0.58,
-      "crypto": -0.42,
-      "matieres_premieres": 0.72,
-      "ai_tech": 0.15
-    },
     {
       "date": "2026-03-21",
       "global": -0.44,
@@ -333,6 +324,15 @@
       "crypto": -0.68,
       "matieres_premieres": 0.15,
       "ai_tech": 0.22
+    },
+    {
+      "date": "2026-11-12",
+      "global": -0.39,
+      "geopolitique": -0.45,
+      "marches": -0.28,
+      "crypto": -0.68,
+      "matieres_premieres": 0.15,
+      "ai_tech": -0.52
     }
   ],
   "model": "claude-haiku-4-5-20251001",

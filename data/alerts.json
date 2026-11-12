@@ -1,129 +1,144 @@
 {
-  "updated": "2026-11-11T13:32:37.822Z",
+  "updated": "2026-11-12T23:12:06.303Z",
   "alertes": [
     {
-      "id": "alert-2026-11-11-001",
-      "titre": "XRP : -17,84% sur 7 jours, pression vendeuse généralisée",
-      "texte": "XRP enregistre la plus forte baisse du marché crypto sur 7 jours. Mouvement s'inscrit dans régime risk-off généralisé (consensus 94%) affectant ensemble classe d'actifs crypto (-1,14% indice).",
+      "id": "alert-2026-11-12-001",
+      "titre": "XRP : -15,23% sur 7 jours, pression vendeuse crypto généralisée",
+      "texte": "Ripple chute de 15,23% en une semaine dans un contexte de répression réglementaire (DOJ saisit $1,2B, 354 arrestations). Fear & Greed Index s'effondre à 28 (-22 pts/7j), confirmant un régime de stress systémique crypto.",
       "categorie": "crypto",
-      "severite": "urgent",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-11-11T13:32:37.822Z",
-      "donnees": {
-        "symbole": "ETH",
-        "nom": "Ethereum",
-        "prix": 2054.56,
-        "variation_7d": -11.77
-      }
-    },
-    {
-      "id": "alert-2026-11-11-002",
-      "titre": "ETH : -11,77% sur 7 jours, TVL DeFi en contraction -8,7%",
-      "texte": "Ethereum recule de 11,77% sur 7 jours. TVL DeFi chute de 8,7% (491B$) avec Lido -10,7%, SSV Network -10,4%, Binance staked ETH -11,6%, EigenCloud -11,8%, signalant stress systémique dans écosystème staking.",
-      "categorie": "crypto",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-11-11T13:32:37.822Z",
+      "horodatage": "2026-11-12T23:12:06.303Z",
       "donnees": {
         "symbole": "XRP",
         "nom": "XRP",
-        "prix": 1.06,
-        "variation_7d": -17.84
+        "prix": 1.037,
+        "variation_7d": -15.23
       }
     },
     {
-      "id": "alert-2026-11-11-003",
-      "titre": "SOL : -10,30% sur 7 jours, correction généralisée altcoins",
-      "texte": "Solana perd 10,30% sur 7 jours dans contexte de dégagement crypto généralisé. Régime risk-off affecte ensemble classe d'actifs avec actions -1,62% et ETF -0,98%.",
-      "categorie": "crypto",
+      "id": "alert-2026-11-12-002",
+      "titre": "NVDA : -4,34% ($166,19), crise de gouvernance post-Huang",
+      "texte": "Nvidia recule de 4,34% suite à la démission du PDG Jensen Huang. Enquête démocrate en cours sur un 'schéma' avec Trump et accusations d'espionnage chinois contre la maîtresse du PDG. Nvidia poursuit son investigation interne.",
+      "categorie": "ai_tech",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-11-11T13:32:37.822Z",
-      "donnees": {
-        "symbole": "SOL",
-        "nom": "Solana",
-        "prix": 84.29,
-        "variation_7d": -10.3
-      }
-    },
-    {
-      "id": "alert-2026-11-11-004",
-      "titre": "NVDA : -5,47%, valuation comprimée à 15 ans de bas",
-      "texte": "Nvidia recule à 168,89$ (-5,47%), valuations tombées à 15 ans de bas malgré rebond technique du secteur tech. Perte 430Md$ en 2 jours avec appels à remplacement Jensen Huang.",
-      "categorie": "marches",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-11-11T13:32:37.822Z",
+      "horodatage": "2026-11-12T23:12:06.303Z",
       "donnees": {
         "symbole": "GLD",
         "nom": "Or (ETF)",
-        "prix": 369.36,
-        "variation": -2.68
+        "prix": 354.89,
+        "variation": -2.82
       }
     },
     {
-      "id": "alert-2026-11-11-005",
-      "titre": "Or (GLD) : -2,68%, recul dans contexte risk-off",
-      "texte": "ETF Or perd 2,68% à 369,36$, reflétant dégagement généralisé malgré tensions géopolitiques (Ukraine, Moyen-Orient). Indice actions EU quasi-stable (-0,14%) tandis que actions globales reculent (-1,62%).",
+      "id": "alert-2026-11-12-003",
+      "titre": "USO (Pétrole) : +3,25% ($146,07), soutien Trump écarte négociations Iran",
+      "texte": "Pétrole brut avance de 3,25% après que Trump écarte les négociations avec l'Iran, réduisant les perspectives d'accord nucléaire. Contexte géopolitique tendu soutient les prix malgré le régime risk-off.",
+      "categorie": "matieres_premieres",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-11-12T23:12:06.303Z",
+      "donnees": {
+        "symbole": "USO",
+        "nom": "Pétrole (ETF)",
+        "prix": 146.07,
+        "variation": 3.25
+      }
+    },
+    {
+      "id": "alert-2026-11-12-004",
+      "titre": "GLD (Or) : -2,82% ($354,89), fuite vers liquidités en régime risk-off",
+      "texte": "Or recule de 2,82% à $354,89 malgré les tensions géopolitiques. Hausse des rendements obligataires (plus forte depuis 2022) et attentes de taux Fed plus élevés pèsent sur la demande de refuge.",
       "categorie": "matieres_premieres",
       "severite": "info",
       "impact": "baissier",
-      "horodatage": "2026-11-11T13:32:37.822Z",
+      "horodatage": "2026-11-12T23:12:06.303Z",
       "donnees": {
         "symbole": "NVDA",
         "nom": "Nvidia",
-        "prix": 168.89,
-        "variation": -5.47
+        "prix": 166.19,
+        "variation": -4.34
       }
     },
     {
-      "id": "alert-2026-11-11-006",
-      "titre": "France 2026 : Moody's abaisse croissance à 0,2% vs 0,5% gouvernement",
-      "texte": "Agence notation Moody's révise à la baisse prévisions croissance France 2026 à 0,2%, contre 0,5% visé par gouvernement. Dégradation perspective économique majeure impactant sentiment marché actions européennes.",
-      "categorie": "macro",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-11-11T13:32:37.822Z",
-      "donnees": {
-        "symbole": "MSFT",
-        "nom": "Microsoft",
-        "prix": 533.16,
-        "variation": -2.2
-      }
-    },
-    {
-      "id": "alert-2026-11-11-007",
-      "titre": "TVL DeFi : -8,7% sur 7 jours, signal stress écosystème",
-      "texte": "Total Value Locked DeFi chute de 8,7% en 7 jours (491B$), avec contractions simultanées Lido (-10,7%), SSV Network (-10,4%), Binance staked ETH (-11,6%), EigenCloud (-11,8%), indiquant stress systémique généralisé.",
+      "id": "alert-2026-11-12-005",
+      "titre": "Fear & Greed Index : 28 (-22 pts/7j), extrême peur crypto",
+      "texte": "Indice de sentiment crypto s'effondre à 28 sur 7 jours, signalant une peur extrême. Corrélé à la saisie DOJ de $1,2B (Binance hack), 354 arrestations et chute de 73% du volume Gemini.",
       "categorie": "crypto",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-11-11T13:32:37.822Z",
+      "horodatage": "2026-11-12T23:12:06.303Z",
       "donnees": {
-        "protocole": "Lido",
-        "tvl_b": 20,
-        "change_7d": -10.7
+        "score": 28,
+        "label": "Fear",
+        "variation_7j": -22
       }
     },
     {
-      "id": "alert-2026-11-11-008",
-      "titre": "MSFT : -2,20%, tech en retrait malgré rebond sectoriel",
-      "texte": "Microsoft recule à 533,16$ (-2,20%) dans contexte régime risk-off. Secteur tech affiche rebond partiel mais valuations restent comprimées face perspectives macro dégradées.",
-      "categorie": "marches",
-      "severite": "info",
+      "id": "alert-2026-11-12-006",
+      "titre": "DeFi TVL : -10,9% ($482B), stress systémique confirmé",
+      "texte": "Valeur totale verrouillée DeFi chute de 10,9% sur 7 jours à $482B. Binance staked ETH TVL baisse de 10,5% à $7,8B. Signaux convergents de déstressage et de fuite de liquidités du secteur.",
+      "categorie": "crypto",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-11-11T13:32:37.822Z",
+      "horodatage": "2026-11-12T23:12:06.303Z",
       "donnees": {
-        "protocole": "SSV Network",
-        "tvl_b": 10.9,
-        "change_7d": -10.4
+        "protocole": "Binance staked ETH",
+        "tvl_b": 7.8,
+        "change_7d": -10.5
       }
+    },
+    {
+      "id": "alert-2026-11-12-007",
+      "titre": "Régime risk-off généralisé : -1,69% crypto, -0,2% indices EU",
+      "texte": "Consensus 75% sur régime risk-off avec amplitude 1,51%. Crypto recule de 1,69%, indices EU de 0,2%, actions de 0,14%. Pression généralisée sur actifs risqués dans contexte géopolitique tendu et répression réglementaire.",
+      "categorie": "marches",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-11-12T23:12:06.303Z",
+      "donnees": {
+        "tvl_start_b": 542,
+        "tvl_end_b": 482,
+        "change_pct": -10.9,
+        "days": 7
+      }
+    },
+    {
+      "id": "alert-2026-11-12-008",
+      "titre": "Rendements obligataires : plus forte hausse depuis 2022",
+      "texte": "Rendements obligataires affichent leur plus forte progression depuis 2022, reflétant des attentes accrues de hausse des taux Fed. Pèse sur valorisations tech et crypto, soutient le dollar.",
+      "categorie": "macro",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-11-12T23:12:06.303Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-11-12-009",
+      "titre": "DOJ saisit $1,2B crypto Binance hack North Korea",
+      "texte": "Département de Justice américain saisit $1,2 milliard de cryptomonnaies volées via le hack Binance attribué à North Korea. Operation TorNado simultanée : 354 arrestations et $234M en espèces/crypto saisis.",
+      "categorie": "crypto",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-11-12T23:12:06.303Z",
+      "donnees": {}
+    },
+    {
+      "id": "alert-2026-11-12-010",
+      "titre": "Gemini volume Q3 : -73%, revenus $41M",
+      "texte": "Volume de trading Gemini s'effondre de 73% au Q3 2026, revenus chutent à $41M. Reflète la pression compétitive et la fuite de liquidités vers plateformes alternatives dans un marché crypto déprimé.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-11-12T23:12:06.303Z",
+      "donnees": {}
     }
   ],
   "stats": {
-    "total": 8,
-    "urgent": 3,
-    "attention": 3,
+    "total": 10,
+    "urgent": 2,
+    "attention": 6,
     "info": 2
   },
   "model": "claude-haiku-4-5-20251001",
