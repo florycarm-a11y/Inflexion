@@ -12,16 +12,27 @@ test('même URL, même variante', () => {
   assert.equal(instrumentPour(a), instrumentPour({ ...a }))
 })
 
-test('cinq URL se répartissent sur au moins trois variantes', () => {
-  const urls = ['https://a.test/1', 'https://b.test/2', 'https://c.test/3', 'https://d.test/4', 'https://e.test/5']
-  const variantes = new Set(urls.map((href) => instrumentPour({ cat: 'marches', href })))
-  assert.ok(variantes.size >= 3, `seulement ${variantes.size} variante(s)`)
+test('600 URL se répartissent sur les six variantes, chacune entre 10 % et 25 %', () => {
+  const comptes = new Map()
+  for (let i = 0; i < 600; i++) {
+    const chemin = instrumentPour({ cat: 'marches', href: 'https://x.test/article-' + i })
+    const n = Number(chemin.match(/marches-(\d)\.webp$/)[1])
+    assert.ok(n >= 1 && n <= 6, `variante hors de 1..6 : ${chemin}`)
+    comptes.set(n, (comptes.get(n) || 0) + 1)
+  }
+  assert.equal(comptes.size, 6, 'les six variantes doivent apparaître')
+  for (const [n, c] of comptes) assert.ok(c >= 60 && c <= 150, `variante ${n} : ${c} sur 600`)
 })
 
 test('URL vide ou « # » donne la variante 1 sans erreur', () => {
   assert.equal(instrumentPour({ cat: 'geopolitique', href: '' }), 'assets/img/instrument/geopolitique-1.webp')
   assert.equal(instrumentPour({ cat: 'geopolitique', href: '#' }), 'assets/img/instrument/geopolitique-1.webp')
   assert.equal(instrumentPour({ cat: 'geopolitique' }), 'assets/img/instrument/geopolitique-1.webp')
+})
+
+test("article nul ou href non chaîne : pas d'erreur, variante 1", () => {
+  assert.equal(instrumentPour(null), 'assets/img/instrument/marches-1.webp')
+  assert.equal(instrumentPour({ cat: 'crypto', href: 42 }), 'assets/img/instrument/crypto-1.webp')
 })
 
 test('rubrique inconnue retombe sur marches', () => {

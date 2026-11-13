@@ -1,6 +1,7 @@
 /**
  * instrument-pour.js — choisit l'image « instrument » d'une carte du flux.
- * Globales var pour être chargeable dans node:vm (voir test/instrument-pour.test.mjs).
+ * Chargé par une balise <script> classique : instrumentPour est exposée comme globale.
+ * Globales var pour rester chargeable dans node:vm (voir test/instrument-pour.test.mjs).
  * Même article → même image : hachage FNV-1a de son URL, modulo le nombre de variantes.
  */
 var INSTRUMENT_RUBRIQUES = ['geopolitique', 'marches', 'crypto', 'matieres', 'iatech'];
@@ -21,5 +22,3 @@ function instrumentPour(article) {
   var n = href ? (hachageFnv1a(href) % INSTRUMENT_VARIANTES) + 1 : 1;
   return 'assets/img/instrument/' + cat + '-' + n + '.webp';
 }
-
-if (typeof window !== 'undefined') { window.instrumentPour = instrumentPour; }
