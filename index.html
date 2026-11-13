@@ -4,7 +4,9 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Inflexion — Intelligence Géopolitique & Financière</title>
+<!-- Le « 178 » des balises meta est statique : le garder aligné sur SOURCES_COUNT (nav-config.js) -->
 <meta name="description" content="Révéler les signaux que le bruit dissimule. 178 sources, 15 APIs, analyse IA en temps réel."/>
+<link rel="canonical" href="https://inflexionhub.com/"/>
 <meta name="keywords" content="intelligence financière, géopolitique, analyse IA, marchés, crypto, matières premières, ETF, signaux faibles"/>
 <meta property="og:title" content="Inflexion — Intelligence Géopolitique & Financière"/>
 <meta property="og:description" content="Révéler les signaux que le bruit dissimule. 178 sources, 15 APIs, analyse IA en temps réel."/>
@@ -124,6 +126,7 @@ return h('div',{ref,className,style:{opacity:visible?1:0,transform:visible?'tran
 }
 
 const MEGA_NAV=window.MEGA_NAV
+const SOURCES_COUNT=window.SOURCES_COUNT
 
 const DATA_BASE='data/'
 
@@ -150,12 +153,14 @@ const ARTICLES_FALLBACK=[
 ]
 
 const FEATURED_ANALYSES=[
-{title:'Ukraine / Mer Noire — Guerre d\'attrition et recomposition stratégique',href:'analyse-ukraine-mer-noire-guerre-attrition.html',cat:'Géopolitique',date:'15 mars 2026',author:'Inflexion Research',readingTime:22,summary:'Plus de mille jours de guerre : front stabilisé, économie de guerre, cyber et recomposition géopolitique. Évaluation SEMPLICE 5.6/7.',sources:14,grade:'A',img:'https://images.unsplash.com/photo-1581362716668-90df9e44d6bb?w=1200&h=675&fit=crop&q=80'},
+{title:'Ukraine / Mer Noire — Guerre d\'attrition et recomposition stratégique',href:'analyse-ukraine-mer-noire-guerre-attrition.html',cat:'Géopolitique',date:'15 mars 2026',author:'Inflexion Research',readingTime:22,summary:'Plus de mille jours de guerre : front stabilisé, économie de guerre, cyber et recomposition géopolitique. Évaluation SEMPLICE 5.6/7.',sources:14,grade:'A',img:'assets/img/ukraine-mer-noire.webp'},
 {title:'Sahel — Fracture sahélienne et recomposition sécuritaire',href:'analyse-sahel-mali-niger-burkina-crise.html',cat:'Géopolitique',date:'15 mars 2026',author:'Inflexion Research',readingTime:20,summary:'Mali, Niger, Burkina Faso : trois coups d\'État, sortie de la CEDEAO, pivot vers Moscou. Évaluation SEMPLICE 5.8/7.',sources:14,grade:'A',img:'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?w=1200&h=675&fit=crop&q=80'},
 {title:'Mer de Chine — Taïwan, semi-conducteurs et bascule indo-pacifique',href:'analyse-mer-chine-taiwan-indopacifique.html',cat:'Géopolitique',date:'15 mars 2026',author:'Inflexion Research',readingTime:20,summary:'Tensions militaires, guerre informationnelle et enjeu TSMC. Évaluation SEMPLICE 4,8/7.',sources:14,grade:'A',img:'https://images.unsplash.com/photo-1535320903710-d993d3d77d29?w=1200&h=675&fit=crop&q=80'},
 ]
 
 function decodeEntities(s){if(!s)return s;const t=document.createElement('textarea');t.innerHTML=s;return t.value}
+// Le pipeline coupe certaines descriptions au milieu d'une balise : on retire aussi une balise ouverte en fin de texte
+function stripTags(s){return(s||'').replace(/<[^>]*>/g,' ').replace(/<[^>]*$/,' ').replace(/\s+/g,' ').trim()}
 
 function mapNewsToArticles(newsData){
 const articles=[]
@@ -165,12 +170,23 @@ for(const[apiCat,items] of Object.entries(newsData.categories||{})){
 const cat=catKeys[apiCat]||'marches'
 for(const item of items){
 const title=decodeEntities(item.title)
-const readingTime=Math.min(8,Math.max(2,Math.round((item.description||'').length/200)+2))
-articles.push({id:id++,cat,title,source:item.source||'',time:item.time||'',readingTime,img:item.image||window.matchImage(title,cat),summary:decodeEntities(item.description||'').slice(0,160),href:item.url||'#'})
+const description=stripTags(decodeEntities(item.description))
+const readingTime=Math.min(8,Math.max(2,Math.round(description.length/200)+2))
+articles.push({id:id++,cat,title,source:item.source||'',time:item.time||'',publishedAt:item.publishedAt||null,readingTime,img:item.image||window.matchImage(title,cat),summary:description.slice(0,160),href:item.url||'#'})
 }
 }
-articles.sort((a,b)=>b.id-a.id)
-return articles
+const ts=a=>a.publishedAt?(Date.parse(a.publishedAt)||0):0
+articles.sort((a,b)=>ts(b)-ts(a))
+return interleaveByCat(articles)
+}
+
+// « Tout » alterne les rubriques (une carte de chaque, puis on recommence) pour que les cinq
+// thèmes soient visibles dans les 9 premières cartes ; chaque rubrique reste triée par date.
+function interleaveByCat(articles){
+const buckets=CATEGORIES.map(c=>articles.filter(a=>a.cat===c.id))
+const out=[]
+for(let i=0;buckets.some(b=>i<b.length);i++)for(const b of buckets)if(i<b.length)out.push(b[i])
+return out
 }
 
 // ─── NAVIGATION (chrome v2 chaud) ────────────────────────────────────────────
@@ -266,7 +282,7 @@ return h('section',{className:'v2-chrome relative pt-28 pb-16 md:pt-40 md:pb-24 
     ),
     h('div',{className:'anim-fade-up anim-d1 mt-5 h-[3px] w-16 bg-[var(--editorial-accent)]'}),
     h('p',{className:'anim-fade-up anim-d2 mt-6 lg:mt-8 text-base lg:text-lg text-[#C6A996] max-w-lg leading-relaxed'},
-     'Intelligence géopolitique et financière pour les décideurs. 178 sources, 15 APIs, analyse IA.'
+     `Intelligence géopolitique et financière pour les décideurs. ${SOURCES_COUNT} sources, 15 APIs, analyse IA.`
     ),
     h('div',{className:'anim-fade-up anim-d3 mt-8 lg:mt-10 flex flex-col sm:flex-row gap-3'},
      h('a',{href:'analyses.html',className:'inline-block px-7 py-3.5 bg-[var(--editorial-accent)] hover:bg-[#6E1B1B] text-[#F5EDE6] font-semibold transition-colors text-sm'},'Explorer les analyses'),
@@ -277,8 +293,8 @@ return h('section',{className:'v2-chrome relative pt-28 pb-16 md:pt-40 md:pb-24 
    h('div',{className:'lg:w-[56%]'},
     h('a',{href:featured.href,className:'anim-fade-up anim-d2 featured-card block group'},
      h('div',{className:'relative'},
-      h('div',{className:'aspect-[16/9] overflow-hidden'},
-       h('img',{src:featured.img,alt:featured.title,className:'w-full h-full object-cover group-hover:scale-[1.02] transition-all duration-500',loading:'eager'})
+      h('div',{className:'aspect-[16/9] overflow-hidden',style:{backgroundColor:'var(--chrome-ground)'}},
+       h('img',{src:featured.img,alt:featured.title,className:'w-full h-full object-cover group-hover:scale-[1.02] transition-all duration-500',loading:'eager',onError:e=>{e.target.style.display='none'}})
       ),
       h('div',{className:'absolute top-4 left-4 flex items-center gap-2'},
        h('span',{className:'inline-flex items-center gap-1.5 px-2.5 py-1 bg-[var(--editorial-accent)] text-[#F5EDE6] text-[10px] font-semibold uppercase tracking-[0.14em]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
@@ -312,7 +328,7 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
   h('div',{className:'flex items-end justify-between mb-10'},
    h('div',null,
     h('p',{className:'kicker mb-3'},'§ Analyses — Décryptages'),
-    h('h2',{className:'text-2xl md:text-3xl text-[#101214]'},'Décryptages approfondis')
+    h('h2',{className:'text-2xl md:text-3xl font-extrabold text-[#101214]'},'Décryptages approfondis')
    ),
    h('a',{href:'analyses.html',className:'hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-[var(--editorial-accent)] hover:underline'},'Voir toutes les analyses →')
   ),
@@ -345,7 +361,7 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
 // ─── BANDEAU CRÉDIBILITÉ (bloc brun espresso) ────────────────────────────────
 
 const CREDIBILITY_STATS=[
-{value:'158',label:'Sources analysées en continu'},
+{value:String(SOURCES_COUNT),label:'Sources analysées en continu'},
 {value:'15',label:'APIs de données temps réel'},
 {value:'24/7',label:'Veille automatisée par IA'},
 {value:'3 min',label:'Pour un briefing complet'},
@@ -404,8 +420,8 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
   h('div',{className:'flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10'},
    h('div',null,
     h('p',{className:'kicker mb-3'},'§ Signaux — Veille continue'),
-    h('h2',{className:'text-2xl md:text-3xl text-[#101214]'},'Sources & signaux'),
-    h('p',{className:'text-sm mt-2 text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},'Flux automatisé — 178 sources, 15 APIs, filtrage IA')
+    h('h2',{className:'text-2xl md:text-3xl font-extrabold text-[#101214]'},'Sources & signaux'),
+    h('p',{className:'text-sm mt-2 text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},`Flux automatisé — ${SOURCES_COUNT} sources, 15 APIs, filtrage IA`)
    ),
    h('div',{className:'flex flex-wrap gap-2'},
     h('button',{onClick:()=>{setFilter('all');setVisibleCount(9)},'aria-pressed':filter==='all',className:`px-3 py-1.5 text-xs font-medium transition-colors border ${btnCls(filter==='all')}`},'Tout'),
@@ -470,7 +486,7 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'text-center mb-12'},
    h('p',{className:'kicker mb-3'},'§ Expertises — Couverture'),
-   h('h2',{className:'text-2xl md:text-3xl text-[#101214]'},'Explorez notre couverture')
+   h('h2',{className:'text-2xl md:text-3xl font-extrabold text-[#101214]'},'Explorez notre couverture')
   ),
   h('div',{className:'flex justify-center gap-2 mb-10'},
    h('button',{onClick:()=>switchTab('iatech'),className:`px-3 py-2 sm:px-5 sm:py-2.5 text-sm font-semibold transition-colors border ${tabCls(tab==='iatech')}`},'IA & Tech'),
@@ -527,9 +543,10 @@ return h('section',{className:'v2-chrome py-20 md:py-24',style:{backgroundColor:
     msg.success
    ):
    h('form',{onSubmit:submit,className:'flex flex-col sm:flex-row gap-3 max-w-md mx-auto'},
-    h('input',{type:'email',value:email,onChange:e=>{setEmail(e.target.value);if(status==='invalid')setStatus(null)},placeholder:'votre@email.com','aria-label':'Adresse email',className:`flex-1 px-4 py-3 bg-white/10 border text-white text-sm placeholder-white/40 outline-none transition-colors ${status==='invalid'?'border-[#F0A090]':'border-white/20 focus:border-[var(--editorial-accent-text)]'}`}),
+    h('input',{type:'email',value:email,onChange:e=>{setEmail(e.target.value);if(status==='invalid')setStatus(null)},placeholder:'votre@email.com','aria-label':'Adresse email',className:`flex-1 px-4 py-3 bg-white/10 border text-white text-sm placeholder-white/40 transition-colors ${status==='invalid'?'border-[#F0A090]':'border-white/20 focus:border-[var(--editorial-accent-text)]'}`}),
     h('button',{type:'submit',disabled:status==='sending',className:'px-6 py-3 bg-[#E8E4D8] hover:bg-[#FFFFFF] text-[var(--chrome-ground)] font-semibold text-sm transition-colors whitespace-nowrap disabled:opacity-50'},status==='sending'?'Envoi...':'S\'abonner')
    ),
+  status!=='success'&&h('p',{className:'mt-4 text-xs text-[#A88A72] leading-relaxed'},'En vous inscrivant, vous acceptez notre ',h('a',{href:'confidentialite.html',className:'underline hover:text-[#F5EDE6] transition-colors'},'politique de confidentialité'),'.'),
   status&&status!=='success'&&status!=='sending'&&h('p',{className:`mt-4 text-sm ${msgColor[status]}`},msg[status])
  )
 )
@@ -552,11 +569,16 @@ plateforme:[
 {label:'Services',href:'premium.html'},
 {label:'Diagnostic',href:'premium.html#diagnostic'},
 ],
+legal:[
+{label:'Mentions légales',href:'mentions-legales.html'},
+{label:'Politique de confidentialité',href:'confidentialite.html'},
+{label:'Conditions d\'utilisation',href:'cgu.html'},
+],
 }
 const sources=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC']
 return h('footer',{className:'v2-chrome pt-12 sm:pt-16 pb-24 sm:pb-20',style:{backgroundColor:'var(--chrome-ground)'},role:'contentinfo'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
-  h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-10 mb-12'},
+  h('div',{className:'grid grid-cols-2 md:grid-cols-5 gap-10 mb-12'},
    h('div',{className:'col-span-2 md:col-span-1'},
     h('div',{className:'flex items-center gap-2 mb-4'},
      h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto',style:{filter:'brightness(10) saturate(0)'}})
@@ -582,6 +604,14 @@ return h('footer',{className:'v2-chrome pt-12 sm:pt-16 pb-24 sm:pb-20',style:{ba
    h('div',null,
     h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8D9C8] mb-4'},'Contact'),
     h('a',{href:'premium.html#contact',className:'text-sm text-[#C6A996] hover:text-[var(--editorial-accent-text)] transition-colors'},'Nous contacter')
+   ),
+   h('div',null,
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[#E8D9C8] mb-4'},'Légal'),
+    h('ul',{className:'space-y-2.5'},
+     ...footerLinks.legal.map(l=>
+      h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[#C6A996] hover:text-[var(--editorial-accent-text)] transition-colors'},l.label))
+     )
+    )
    )
   ),
   h('div',{className:'border-t border-[var(--chrome-border)] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
@@ -614,6 +644,5 @@ return h('div',null,
 
 createRoot(document.getElementById('app')).render(h(App))
 </script>
-<script src="scroll-reveal.js"></script>
 </body>
 </html>

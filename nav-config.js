@@ -4,6 +4,9 @@
  */
 ;(function(){
 'use strict';
+// Nombre de sources affiché sur tout le site (hero, bandeau, menu). Une seule valeur à modifier.
+var SOURCES_COUNT=178;
+window.SOURCES_COUNT=SOURCES_COUNT;
 window.MEGA_NAV=[
 {label:'Analyses',children:[
  {icon:'Bj',label:'Briefing du jour',desc:'Synthèse IA quotidienne',href:'briefing.html'},
@@ -13,7 +16,7 @@ window.MEGA_NAV=[
 {label:'Expertise',children:[
  {icon:'Se',label:'SEMPLICE',desc:'Notre cadre d\'évaluation géopolitique en 8 dimensions',href:'expertise.html#semplice'},
  {icon:'Na',label:'Notre approche',desc:'Méthodologie & cadre d\'analyse',href:'expertise.html'},
- {icon:'Ia',label:'Pipeline IA',desc:'163 flux RSS, 15 APIs, Claude IA',href:'expertise.html#pipeline'},
+ {icon:'Ia',label:'Pipeline IA',desc:SOURCES_COUNT+' sources, 15 APIs, Claude IA',href:'expertise.html#pipeline'},
  {icon:'Sd',label:'Sources & données',desc:'Transparence sur nos flux',href:'expertise.html#sources'},
 ]},
 {label:'Intelligence',children:[
