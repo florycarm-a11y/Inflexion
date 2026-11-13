@@ -1,0 +1,611 @@
+{
+  "date": "2026-11-12",
+  "generated_at": "2026-11-12T23:13:37.188Z",
+  "type": "delta",
+  "model": "claude-haiku-4-5-20251001",
+  "sources_count": 25,
+  "sources_market": 11,
+  "reference_date": "2026-11-11",
+  "synthese": {
+    "titre": "Correction modérée — tech stabilise, crypto rebondit, géopolitique et régulation s'intensifient",
+    "sous_titre": "Les marchés actions limitent les dégâts après deux jours de baisse ; la crypto amorce une reprise technique tandis que les enquêtes démocrates sur Nvidia et les saisies DOJ de $1,2 Md en crypto volé redessinent le paysage réglementaire.",
+    "contenu": "## Évolutions du jour\n\nLes marchés actions US affichent une stabilité relative après deux séances de correction : S&P 500 -0,35 %, Nasdaq 100 -0,32 %, Dow Jones -0,38 % (Finnhub). Nvidia poursuit son repli à -4,34 % (vs -5,47 % hier), mais l'amplitude de la baisse ralentit, suggérant une consolidation technique. Microsoft (+0,36 %) et Alphabet (+1,79 %) rebondissent légèrement, tandis que Tesla (+1,69 %) bénéficie d'une rotation défensive vers les valeurs cycliques. L'or recule de -2,82 % (Finnhub), confirmant la perte de statut de refuge face à la hausse des taux réels (Treasury 10Y à 4,98 %, +0,10 vs hier).\n\nLa crypto amorce un rebond technique : Bitcoin remonte à 71 412 $ (CoinGecko), soit +0,8 % vs hier malgré -3,0 % en 24h et -5,8 % sur 7 jours. Ethereum stabilise à 2 016,65 $ (-1,5 % en 24h). Le Fear & Greed Index reste à 28/100 (peur extrême, -1 point vs hier), indiquant une capitulation toujours active mais sans accélération. Le pétrole rebondit de +3,25 % (Finnhub), dopé par les tensions géopolitiques persistantes et les réformes vénézuéliennes d'ouverture du secteur énergétique.\n\n## Perspectives actualisées\n\nLe contexte réglementaire se durcit significativement : les démocrates lancent une enquête formelle sur les exportations Nvidia vers la Chine et ses liens avec Trump (TechCrunch), tandis que le DOJ saisit $1,2 Md en crypto volée par la Corée du Nord (Binance hack) et démantèle le réseau FaceStealer. Ces actions signalent une accélération de la supervision crypto et tech. Les seuils critiques restent : Nvidia sous 165 $, Bitcoin sous 70 000 $, Treasury 10Y au-delà de 5,0 %. L'agenda macro US (inflation CPI à 4,08 %, chômage à 4,1 %) maintient la pression sur la Fed pour un resserrement prolongé."
+  },
+  "signaux": [
+    {
+      "titre": "Enquête démocrate sur Nvidia-Trump — régulation tech s'accélère, risque de sanctions commerciales",
+      "description": "Les démocrates lancent une enquête formelle sur les exportations Nvidia vers la Chine et les liens présumés entre Jensen Huang et l'administration Trump (TechCrunch, Decrypt). Parallèlement, le CFTC et la SEC reçoivent leurs premiers nominees en un an, signalant une reprise de la supervision réglementaire. Cette escalade réglementaire croise deux enjeux : (1) la géopolitique tech US-Chine (exportations de puces IA) et (2) la gouvernance corporative (« founder mode » remis en question après la démission de Huang). L'impact sur Nvidia (-4,34 % aujourd'hui) reste limité, mais le risque de sanctions commerciales ou de restrictions d'exportation pèse structurellement sur le secteur.",
+      "categorie": "ai_tech",
+      "interconnexions": [
+        {
+          "secteur": "Géopolitique US-Chine",
+          "impact": "Risque de restrictions d'exportation de puces IA, impact négatif sur revenus Nvidia",
+          "explication": "Les enquêtes démocrates ciblent les ventes Nvidia en Chine ; toute restriction commerciale réduirait les revenus du groupe et affecterait l'ensemble du secteur semiconducteur"
+        },
+        {
+          "secteur": "Marchés actions tech",
+          "impact": "Nvidia -4,34 %, contagion potentielle sur les fournisseurs (ASML, TSMC)",
+          "explication": "La pression réglementaire sur Nvidia se transmet aux chaînes d'approvisionnement ; les fournisseurs de puces et d'équipements pourraient subir une révision à la baisse des prévisions"
+        }
+      ],
+      "regions": [
+        "États-Unis",
+        "Chine"
+      ],
+      "severite": "urgent"
+    },
+    {
+      "titre": "DOJ saisit $1,2 Md en crypto volée (Binance hack NK) — supervision crypto s'intensifie, risque de contagion DeFi",
+      "description": "Le DOJ obtient l'approbation judiciaire pour saisir $1,2 Md en crypto volée par la Corée du Nord dans le hack Binance (The Block, CoinDesk). Parallèlement, l'opération TorNado du DOJ et d'Europol arrête 354 personnes et saisit $234 M en cash et crypto (Bitcoin Magazine). Ces actions signalent une accélération de la supervision réglementaire crypto, croisant deux enjeux : (1) la sécurité des échanges centralisés (Binance) et (2) le blanchiment de capitaux via memecoins (North Korean hackers lancent des memecoins pour recycler les fonds volés, CoinTelegraph). Le Fear & Greed Index reste à 28/100, reflétant une capitulation toujours active malgré le rebond technique de Bitcoin à 71 412 $.",
+      "categorie": "crypto",
+      "interconnexions": [
+        {
+          "secteur": "Sécurité des CEX",
+          "impact": "Binance sous pression réglementaire, risque de fuite de liquidités vers DeFi",
+          "explication": "Les saisies du DOJ et les enquêtes sur Binance pourraient accélérer la migration des utilisateurs vers des plateformes décentralisées, affectant la TVL des CEX (Binance CEX -2,5 % en 24h à $121,1 B)"
+        },
+        {
+          "secteur": "Memecoins et DeFi",
+          "impact": "Risque de contagion réglementaire sur les memecoins utilisés pour le blanchiment",
+          "explication": "Les autorités ciblent les memecoins comme vecteur de blanchiment ; toute restriction pourrait affecter les protocoles DeFi et les échanges décentralisés"
+        }
+      ],
+      "regions": [
+        "États-Unis",
+        "Corée du Nord"
+      ],
+      "severite": "urgent"
+    },
+    {
+      "titre": "Pétrole +3,25 % — Venezuela ouvre son secteur énergétique, tensions géopolitiques persistent",
+      "description": "Le pétrole rebondit de +3,25 % (Finnhub) suite à deux catalyseurs : (1) la réforme vénézuélienne d'ouverture du secteur électrique aux capitaux privés, avec les champs pétroliers en première ligne (OilPrice), et (2) la persistance des tensions géopolitiques Iran-US (comme signalé hier). Cette évolution croise deux enjeux : l'offre pétrolière mondiale (Venezuela, principal producteur en déclin, pourrait augmenter sa production via des investissements privés) et la géopolitique (tensions Iran-US maintiennent une prime de risque). Cependant, les réformes vénézuéliennes restent incertaines quant à leur calendrier de mise en œuvre et leur impact réel sur la production.",
+      "categorie": "matieres_premieres",
+      "interconnexions": [
+        {
+          "secteur": "Offre pétrolière mondiale",
+          "impact": "Potentiel d'augmentation de la production vénézuélienne, pression baissière à moyen terme",
+          "explication": "L'ouverture du secteur énergétique vénézuélien aux capitaux privés pourrait augmenter la production, contrebalançant les tensions géopolitiques"
+        },
+        {
+          "secteur": "Géopolitique Iran-US",
+          "impact": "Prime de risque géopolitique maintenue, soutien des prix pétroliers à court terme",
+          "explication": "Les tensions Iran-US persistent (comme signalé hier) ; tout incident militaire direct pourrait créer un pic pétrolier de +10-15 %"
+        }
+      ],
+      "regions": [
+        "Venezuela",
+        "Moyen-Orient"
+      ],
+      "severite": "attention"
+    }
+  ],
+  "risk_radar": [
+    {
+      "risque": "CPI > 4,1 % — cassure Nvidia sous 165 $, rotation défensive accélérée",
+      "severite": "urgent",
+      "probabilite": "elevee",
+      "horizon": "court_terme",
+      "impact_marche": "Nvidia -4,34 % (vs -5,47 % hier), tech globale sous pression ; rotation vers défensif (Microsoft +0,36 %, Tesla +1,69 %)",
+      "description": "Le CPI confirmé à 4,08 % a/a (FRED) valide le scénario de resserrement monétaire prolongé. Nvidia poursuit son repli mais l'amplitude ralentit, suggérant une consolidation technique plutôt qu'une capitulation. Probabilité maintenue à « élevée » — le seuil critique reste 165 $."
+    },
+    {
+      "risque": "BTC sous 70k $ — capitulation majeure, liquidation en cascade des positions de leverage",
+      "severite": "urgent",
+      "probabilite": "elevee",
+      "horizon": "court_terme",
+      "impact_marche": "Bitcoin 71 412 $ (+0,8 % vs hier), rebond technique ; Fear & Greed à 28/100 (peur extrême, stable vs hier)",
+      "description": "Le Fear & Greed Index reste à 28/100 (peur extrême) malgré le rebond technique de Bitcoin à 71 412 $. La capitulation sur 7 jours persiste (-5,8 % BTC, -11,8 % ETH, -17,8 % XRP). Probabilité maintenue à « élevée » — support critique à 70 000 $ ; cassure entraînerait liquidations en cascade."
+    },
+    {
+      "risque": "Escalade Iran-US — incident militaire direct, pic pétrolier +10-15 %, fuite vers les actifs refuge",
+      "severite": "attention",
+      "probabilite": "elevee",
+      "horizon": "court_terme",
+      "impact_marche": "Pétrole +3,25 % (Finnhub) ; or -2,82 % (perte de statut de refuge) ; Treasury 10Y à 4,98 % (+0,10)",
+      "description": "Les tensions Iran-US persistent (comme signalé hier). Le rebond pétrolier de +3,25 % reflète la prime de risque géopolitique, mais l'or recule (-2,82 %), inversant le signal de refuge. Probabilité maintenue à « élevée » — tout incident militaire direct pourrait créer un pic pétrolier de +10-15 % et une fuite vers les obligations (Treasury 10Y au-delà de 5,0 %)."
+    },
+    {
+      "risque": "Supervision réglementaire crypto s'accélère — saisies DOJ $1,2 Md, risque de contagion DeFi et CEX",
+      "severite": "urgent",
+      "probabilite": "elevee",
+      "horizon": "moyen_terme",
+      "impact_marche": "Binance CEX -2,5 % en 24h ($121,1 B TVL) ; memecoins sous pression réglementaire ; Fear & Greed à 28/100",
+      "description": "Le DOJ saisit $1,2 Md en crypto volée (Binance hack NK) et démantèle FaceStealer ; l'opération TorNado arrête 354 personnes et saisit $234 M. Probabilité relevée de « moyenne » à « élevée » — la supervision crypto s'intensifie structurellement. Risque de contagion sur les CEX (Binance) et les memecoins utilisés pour le blanchiment."
+    }
+  ],
+  "sentiment_global": "mixte",
+  "tags": [
+    "nvidia-enquete-democrate-regulation-tech",
+    "doj-saisit-1-2md-crypto-binance-hack",
+    "btc-71k-rebond-technique-fear-greed-28",
+    "petrole-3pct-venezuela-geopolitique-iran",
+    "fed-cpi-4pct-resserrement-prolonge"
+  ],
+  "sources_citees": [
+    {
+      "nom": "Finnhub",
+      "type": "api",
+      "donnees_utilisees": "S&P 500 -0,35 %, Nasdaq 100 -0,32 %, Dow Jones -0,38 %, Nvidia -4,34 %, Microsoft +0,36 %, Alphabet +1,79 %, Tesla +1,69 %, or -2,82 %, pétrole +3,25 %"
+    },
+    {
+      "nom": "CoinGecko",
+      "type": "api",
+      "donnees_utilisees": "Bitcoin 71 412 $ (24h: -3,0 %, 7j: -5,8 %), Ethereum 2 016,65 $ (24h: -1,5 %, 7j: -9,7 %), XRP 1,037 $ (24h: -1,2 %, 7j: -15,2 %), Fear & Greed Index 28/100"
+    },
+    {
+      "nom": "FRED",
+      "type": "api",
+      "donnees_utilisees": "CPI 4,08 % a/a, Treasury 10Y 4,98 % (+0,10), taux Fed Funds 3,88 %, chômage 4,1 %"
+    },
+    {
+      "nom": "TechCrunch",
+      "type": "presse",
+      "donnees_utilisees": "Enquête démocrate sur Nvidia-Trump, exportations Chine"
+    },
+    {
+      "nom": "The Block",
+      "type": "presse",
+      "donnees_utilisees": "DOJ saisit $1,2 Md Binance hack, démantèlement FaceStealer"
+    },
+    {
+      "nom": "CoinDesk",
+      "type": "presse",
+      "donnees_utilisees": "DOJ saisit $1,2 Md crypto volée, nominees CFTC/SEC"
+    },
+    {
+      "nom": "Bitcoin Magazine",
+      "type": "presse",
+      "donnees_utilisees": "Opération TorNado : 354 arrestations, $234 M saisis"
+    },
+    {
+      "nom": "OilPrice",
+      "type": "presse",
+      "donnees_utilisees": "Venezuela ouvre secteur énergétique aux capitaux privés"
+    },
+    {
+      "nom": "CoinTelegraph",
+      "type": "presse",
+      "donnees_utilisees": "North Korean hackers lancent memecoins pour blanchiment"
+    },
+    {
+      "nom": "Decrypt",
+      "type": "presse",
+      "donnees_utilisees": "Sénateur Hawley demande pause data centers IA"
+    }
+  ],
+  "_verification": {
+    "score": 0.7857142857142857,
+    "totalClaims": 42,
+    "verified": 33,
+    "unverified": 9,
+    "pass": true
+  },
+  "_contradictions": [
+    {
+      "indicator": "EUR/USD",
+      "source1": {
+        "name": "Alpha Vantage",
+        "value": 1.10584485
+      },
+      "source2": {
+        "name": "ECB Data",
+        "value": 1.1392
+      },
+      "divergence_pct": 2.93,
+      "type": "forex",
+      "note": "EUR/USD : Alpha Vantage 1.10584485 (intraday) vs ECB 1.1392 (fixing overnight). Utiliser ECB pour référence officielle, Alpha Vantage pour tendance intraday."
+    },
+    {
+      "indicator": "GLD (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 354.89
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 362.35490000000004
+      },
+      "divergence_pct": 2.06,
+      "type": "etf_self",
+      "note": "GLD : prix 354.89 ≠ prev_close (365.17) + change (-2.8151) = 362.35. Possible donnée corrompue."
+    },
+    {
+      "indicator": "USO (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 146.07
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 144.7216
+      },
+      "divergence_pct": 0.92,
+      "type": "etf_self",
+      "note": "USO : prix 146.07 ≠ prev_close (141.47) + change (3.2516) = 144.72. Possible donnée corrompue."
+    },
+    {
+      "indicator": "NVDA (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 166.19
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 169.38989999999998
+      },
+      "divergence_pct": 1.89,
+      "type": "etf_self",
+      "note": "NVDA : prix 166.19 ≠ prev_close (173.73) + change (-4.3401) = 169.39. Possible donnée corrompue."
+    },
+    {
+      "indicator": "GOOGL (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 298.7
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 295.2391
+      },
+      "divergence_pct": 1.16,
+      "type": "etf_self",
+      "note": "GOOGL : prix 298.7 ≠ prev_close (293.45) + change (1.7891) = 295.24. Possible donnée corrompue."
+    },
+    {
+      "indicator": "TSLA (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 397.45
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 392.53119999999996
+      },
+      "divergence_pct": 1.24,
+      "type": "etf_self",
+      "note": "TSLA : prix 397.45 ≠ prev_close (390.84) + change (1.6912) = 392.53. Possible donnée corrompue."
+    }
+  ],
+  "_bibliography": {
+    "score": 0.631578947368421,
+    "totalRefs": 19,
+    "matched": 12,
+    "unmatched": 7,
+    "pass": true,
+    "bibliography": [
+      {
+        "titre": "Eqolux : l’IA qui protège les marges et transforme l’économie de la gastronomie française",
+        "source": "Challenges",
+        "url": "https://www.challenges.fr/partenaires/eqolux-lia-qui-protege-les-marges-et-transforme-leconomie-de-la-gastronomie-francaise_646951",
+        "domain": "challenges.fr",
+        "date": "2026-11-16T09:00:00.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Compléter ses revenus à la retraite : pourquoil miser sur la SCPI ?",
+        "source": "Challenges",
+        "url": "https://www.challenges.fr/argent-et-placements/completer-ses-revenus-a-la-retraite-pourquoil-miser-sur-la-scpi_646937",
+        "domain": "challenges.fr",
+        "date": "2026-11-16T09:00:00.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "KissKiss : le bien-être intime suisse s'invite en France",
+        "source": "Challenges",
+        "url": "https://www.challenges.fr/partenaires/vision-dexperts/kisskiss-le-bien-etre-intime-suisse-sinvite-en-france_646931",
+        "domain": "challenges.fr",
+        "date": "2026-11-16T08:30:00.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Headwater Exploration reports Q3 results",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4671978-headwater-exploration-reports-q3-results?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-11-12T23:03:23.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "GAAP EPS of -$0.08 beats by $0.03, revenue of $2.81M misses by $0.19M",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4671977-gaap-eps-of-0_08-beats-by-0_03-revenue-of-2_81m-misses-by-0_19m?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-11-12T23:02:52.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Evommune, Inc. GAAP EPS of -$0.85 beats by $0.01",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4671976-evommune-inc-gaap-eps-of-0_85-beats-by-0_01?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-11-12T23:02:05.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Mannatech GAAP EPS of $4.61, revenue of $24.87M",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4671975-mannatech-gaap-eps-of-4_61-revenue-of-24_87m?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-11-12T23:01:29.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Badger prices C$200M senior unsecured notes due 2033",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4671968-badger-prices-c200m-senior-unsecured-notes-due-2033?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-11-12T23:01:18.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Venezuela Ends 19-Year Power Monopoly, With Oil Fields First in Line",
+        "source": "OilPrice",
+        "url": "https://oilprice.com/Energy/Crude-Oil/Venezuela-Ends-19-Year-Power-Monopoly-With-Oil-Fields-First-in-Line.html",
+        "domain": "oilprice.com",
+        "date": "2026-11-12T23:00:00.000Z",
+        "category": "matieres_premieres"
+      },
+      {
+        "titre": "Democrats Probe Trump’s Nvidia China Chip Export Deal",
+        "source": "The Defiant",
+        "url": "https://thedefiant.io/frontier/ai/democrats-probe-trump-s-nvidia-china-chip-export-deal",
+        "domain": "thedefiant.io",
+        "date": "2026-11-12T22:59:53.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "North Korea's Binance hack faces U.S. crackdown as DOJ targets $1.2 billion in stolen crypto",
+        "source": "CoinDesk",
+        "url": "https://www.coindesk.com/policy/2026/11/12/north-korea-s-binance-hack-faces-u-s-crackdown-as-doj-targets-usd1-2-billion-in-stolen-crypto",
+        "domain": "coindesk.com",
+        "date": "2026-11-12T22:55:52.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "New worm-like 'SCKit' malware targets MSPs in ScreenConnect attacks",
+        "source": "BleepingComputer",
+        "url": "https://www.bleepingcomputer.com/news/security/new-worm-like-sckit-malware-targets-msps-in-screenconnect-attacks/",
+        "domain": "bleepingcomputer.com",
+        "date": "2026-11-12T22:53:10.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "Huang’s fall is an indictment of founder mode at Big Tech",
+        "source": "Financial Times",
+        "url": "https://www.ft.com/content/83051c3a-cab4-4c66-89fc-ae7149047a25?syn-25a6b1a6=1",
+        "domain": "ft.com",
+        "date": "2026-11-12T22:50:43.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "France calls Israel’s entry ban on left-wing leader ‘demagogic’",
+        "source": "Middle East Eye",
+        "url": "https://www.middleeasteye.net/live-blog/live-blog-update/france-calls-israels-entry-ban-left-wing-leader-demagogic",
+        "domain": "middleeasteye.net",
+        "date": "2026-11-12T22:50:22.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "U.S. President names CFTC, SEC nominees for first time in a year",
+        "source": "CoinDesk",
+        "url": "https://www.coindesk.com/policy/2026/11/12/u-s-president-names-cftc-sec-nominees-for-first-time-in-a-year",
+        "domain": "coindesk.com",
+        "date": "2026-11-12T22:47:41.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "Publication of air crash probes falls short, safety advocates say",
+        "source": "Al-Monitor",
+        "url": "https://www.al-monitor.com/originals/2026/11/publication-air-crash-probes-falls-short-safety-advocates-say",
+        "domain": "al-monitor.com",
+        "date": "2026-11-12T22:46:25.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Liquid AI Releases LiquidCodec, a 74M-Parameter Streaming Audio Codec",
+        "source": "MarkTechPost",
+        "url": "https://www.marktechpost.com/2026/11/12/liquid-ai-liquidcodec-streaming-audio-codec/",
+        "domain": "marktechpost.com",
+        "date": "2026-11-12T22:43:26.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "Democrats launch Nvidia investigation, write scathing letter on Huang&#8217;s &#8216;scheme&#8217; with Trump",
+        "source": "TechCrunch",
+        "url": "https://techcrunch.com/2026/11/12/democrats-launch-nvidia-investigation-write-scathing-letter-on-huangs-scheme-with-trump/",
+        "domain": "techcrunch.com",
+        "date": "2026-11-12T22:42:51.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "DOJ moves to seize $1.2 billion from Binance hack, disrupts North Korean deepfake scheme",
+        "source": "The Block",
+        "url": "https://www.theblock.co/news/business/2026-11-12-doj-seize-1-2-billion-binance-hack-north-korea-facestealer-439065",
+        "domain": "theblock.co",
+        "date": "2026-11-12T22:40:22.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "Four of Seven Dutch Green Hydrogen Projects Have Been Cancelled. The Subsidies Keep Coming.",
+        "source": "CleanTechnica",
+        "url": "https://cleantechnica.com/2026/11/12/dutch-green-hydrogen-subsidies-four-projects-cancelled/",
+        "domain": "cleantechnica.com",
+        "date": "2026-11-12T22:40:02.000Z",
+        "category": "matieres_premieres"
+      },
+      {
+        "titre": "Republican Senator Wants to Freeze AI Data Center Boom as Congress Pushes to Expand It",
+        "source": "Decrypt",
+        "url": "https://decrypt.co/383206/republican-senator-freeze-ai-data-center-boom-congress-pushes-expand",
+        "domain": "decrypt.co",
+        "date": "2026-11-12T22:36:02.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "DOJ&#8217;s Operation TorNado Arrests 354 and Seizes $234 Million in Cash and Crypto",
+        "source": "Bitcoin Magazine",
+        "url": "https://bitcoinmagazine.com/news/doj-europol-operation-tornado-234-million",
+        "domain": "bitcoinmagazine.com",
+        "date": "2026-11-12T22:35:22.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "Death toll from Israeli strike on Nasser Medical Complex rises to seven",
+        "source": "Middle East Eye",
+        "url": "https://www.middleeasteye.net/live-blog/live-blog-update/death-toll-israeli-strike-nasser-medical-complex-rises-seven",
+        "domain": "middleeasteye.net",
+        "date": "2026-11-12T22:31:58.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "NK hackers join memecoin trenches, xStocks adds Hong Kong equities: Asia Express",
+        "source": "CoinTelegraph",
+        "url": "https://cointelegraph.com/magazine/nk-hackers-join-memecoin-trenches-xstocks-adds-hong-kong-equities-asia-express?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+        "domain": "cointelegraph.com",
+        "date": "2026-11-12T22:29:58.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "Silicon Valley Is Still Defending Jensen Huang",
+        "source": "Wired",
+        "url": "https://www.wired.com/story/silicon-valley-is-still-defending-jensen-huang/",
+        "domain": "wired.com",
+        "date": "2026-11-12T22:29:43.000Z",
+        "category": "ai_tech"
+      }
+    ],
+    "apiSources": [
+      {
+        "name": "Finnhub",
+        "url": "https://finnhub.io",
+        "domain": "finnhub.io",
+        "category": "markets",
+        "indicators": [
+          "SPY",
+          "QQQ",
+          "DIA",
+          "GLD",
+          "USO",
+          "NVDA",
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA"
+        ]
+      },
+      {
+        "name": "CoinGecko",
+        "url": "https://www.coingecko.com",
+        "domain": "coingecko.com",
+        "category": "crypto",
+        "indicators": [
+          "BTC",
+          "ETH",
+          "XRP",
+          "SOL",
+          "DOGE",
+          "ADA"
+        ]
+      },
+      {
+        "name": "Alternative.me",
+        "url": "https://alternative.me/crypto/fear-and-greed-index/",
+        "domain": "alternative.me",
+        "category": "crypto",
+        "indicators": [
+          "Fear & Greed Index"
+        ]
+      },
+      {
+        "name": "FRED",
+        "url": "https://fred.stlouisfed.org",
+        "domain": "fred.stlouisfed.org",
+        "category": "macro",
+        "indicators": [
+          "Inflation (CPI)",
+          "Taux directeur (Fed Funds)",
+          "PIB (trimestriel)",
+          "Chômage",
+          "Treasury 10 ans",
+          "Dollar Index (broad)",
+          "Spread 10Y-2Y",
+          "Masse monétaire M2",
+          "Bilan Fed (actifs)",
+          "Taux hypothécaire 30 ans"
+        ]
+      },
+      {
+        "name": "ECB Data",
+        "url": "https://data.ecb.europa.eu",
+        "domain": "data.ecb.europa.eu",
+        "category": "macro",
+        "indicators": [
+          "Taux directeur",
+          "EUR/USD"
+        ]
+      },
+      {
+        "name": "metals.dev",
+        "url": "https://metals.dev",
+        "domain": "metals.dev",
+        "category": "commodities",
+        "indicators": []
+      },
+      {
+        "name": "Twelve Data",
+        "url": "https://twelvedata.com",
+        "domain": "twelvedata.com",
+        "category": "markets",
+        "indicators": [
+          "DAX (Francfort)"
+        ]
+      },
+      {
+        "name": "DefiLlama",
+        "url": "https://defillama.com",
+        "domain": "defillama.com",
+        "category": "defi",
+        "indicators": [
+          "Binance CEX",
+          "OKX",
+          "Lido",
+          "LayerZero V2",
+          "Aave V3"
+        ]
+      },
+      {
+        "name": "Alpha Vantage",
+        "url": "https://www.alphavantage.co",
+        "domain": "alphavantage.co",
+        "category": "markets",
+        "indicators": [
+          "EUR/USD",
+          "GBP/USD",
+          "USD/JPY"
+        ]
+      },
+      {
+        "name": "Mempool",
+        "url": "https://mempool.space",
+        "domain": "mempool.space",
+        "category": "onchain",
+        "indicators": [
+          "BTC Fees",
+          "BTC Hashrate"
+        ]
+      }
+    ],
+    "methodology": {
+      "description": "Vérification bibliographique par recoupement multi-sources",
+      "steps": [
+        "Extraction des références de sources dans le texte du briefing",
+        "Recoupement avec la bibliographie des articles RSS/API utilisés",
+        "Vérification croisée avec le registre des 15 sources API",
+        "Classification des sources (API, presse, institution, think tank, estimation)"
+      ],
+      "totalArticlesUsed": 25,
+      "totalAPISources": 10,
+      "standardApplied": "Adaptation APA 7 pour veille financière/géopolitique"
+    }
+  }
+}

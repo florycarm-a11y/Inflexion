@@ -1,145 +1,183 @@
 {
-  "updated": "2026-11-12T23:12:06.303Z",
+  "updated": "2026-11-13T23:15:57.667Z",
   "alertes": [
     {
-      "id": "alert-2026-11-12-001",
-      "titre": "XRP : -15,23% sur 7 jours, pression vendeuse crypto généralisée",
-      "texte": "Ripple chute de 15,23% en une semaine dans un contexte de répression réglementaire (DOJ saisit $1,2B, 354 arrestations). Fear & Greed Index s'effondre à 28 (-22 pts/7j), confirmant un régime de stress systémique crypto.",
-      "categorie": "crypto",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-11-12T23:12:06.303Z",
-      "donnees": {
-        "symbole": "XRP",
-        "nom": "XRP",
-        "prix": 1.037,
-        "variation_7d": -15.23
-      }
-    },
-    {
-      "id": "alert-2026-11-12-002",
-      "titre": "NVDA : -4,34% ($166,19), crise de gouvernance post-Huang",
-      "texte": "Nvidia recule de 4,34% suite à la démission du PDG Jensen Huang. Enquête démocrate en cours sur un 'schéma' avec Trump et accusations d'espionnage chinois contre la maîtresse du PDG. Nvidia poursuit son investigation interne.",
-      "categorie": "ai_tech",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-11-12T23:12:06.303Z",
-      "donnees": {
-        "symbole": "GLD",
-        "nom": "Or (ETF)",
-        "prix": 354.89,
-        "variation": -2.82
-      }
-    },
-    {
-      "id": "alert-2026-11-12-003",
-      "titre": "USO (Pétrole) : +3,25% ($146,07), soutien Trump écarte négociations Iran",
-      "texte": "Pétrole brut avance de 3,25% après que Trump écarte les négociations avec l'Iran, réduisant les perspectives d'accord nucléaire. Contexte géopolitique tendu soutient les prix malgré le régime risk-off.",
-      "categorie": "matieres_premieres",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-11-12T23:12:06.303Z",
-      "donnees": {
-        "symbole": "USO",
-        "nom": "Pétrole (ETF)",
-        "prix": 146.07,
-        "variation": 3.25
-      }
-    },
-    {
-      "id": "alert-2026-11-12-004",
-      "titre": "GLD (Or) : -2,82% ($354,89), fuite vers liquidités en régime risk-off",
-      "texte": "Or recule de 2,82% à $354,89 malgré les tensions géopolitiques. Hausse des rendements obligataires (plus forte depuis 2022) et attentes de taux Fed plus élevés pèsent sur la demande de refuge.",
-      "categorie": "matieres_premieres",
-      "severite": "info",
-      "impact": "baissier",
-      "horodatage": "2026-11-12T23:12:06.303Z",
-      "donnees": {
-        "symbole": "NVDA",
-        "nom": "Nvidia",
-        "prix": 166.19,
-        "variation": -4.34
-      }
-    },
-    {
-      "id": "alert-2026-11-12-005",
-      "titre": "Fear & Greed Index : 28 (-22 pts/7j), extrême peur crypto",
-      "texte": "Indice de sentiment crypto s'effondre à 28 sur 7 jours, signalant une peur extrême. Corrélé à la saisie DOJ de $1,2B (Binance hack), 354 arrestations et chute de 73% du volume Gemini.",
+      "id": "alert-2026-11-13-001",
+      "titre": "Ethereum (ETH) : -13,82% sur 7 jours, correction DeFi systémique",
+      "texte": "ETH recule de 13,82% hebdomadaire. TVL DeFi global chute de 13,0% à 467 Mrd$, avec Lido -12,4%, SSV -12,6%, Binance staked ETH -13,6%. Signal de stress généralisé sur l'écosystème de staking et liquidité décentralisée.",
       "categorie": "crypto",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-11-12T23:12:06.303Z",
+      "horodatage": "2026-11-13T23:15:57.667Z",
       "donnees": {
-        "score": 28,
-        "label": "Fear",
-        "variation_7j": -22
+        "symbole": "ETH",
+        "nom": "Ethereum",
+        "prix": 1919.49,
+        "variation_7d": -13.82
       }
     },
     {
-      "id": "alert-2026-11-12-006",
-      "titre": "DeFi TVL : -10,9% ($482B), stress systémique confirmé",
-      "texte": "Valeur totale verrouillée DeFi chute de 10,9% sur 7 jours à $482B. Binance staked ETH TVL baisse de 10,5% à $7,8B. Signaux convergents de déstressage et de fuite de liquidités du secteur.",
+      "id": "alert-2026-11-13-002",
+      "titre": "XRP (XRP) : -14,37% sur 7 jours, pression vendeuse intense",
+      "texte": "XRP enregistre une baisse de 14,37% sur 7 jours, surpassant les pertes d'ETH. Contexte : tensions géopolitiques (Iran), régulation crypto en flux, volatilité macro.",
+      "categorie": "crypto",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-11-13T23:15:57.667Z",
+      "donnees": {
+        "symbole": "XRP",
+        "nom": "XRP",
+        "prix": 1.005,
+        "variation_7d": -14.37
+      }
+    },
+    {
+      "id": "alert-2026-11-13-003",
+      "titre": "Solana (SOL) : -13,58% sur 7j, -5,15% en 24h (77,38$)",
+      "texte": "SOL perd 13,58% hebdomadaire et 5,15% en 24h, cotant 77,38$. Correction alignée sur l'écosystème DeFi. Risque de test des supports techniques.",
+      "categorie": "crypto",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-11-13T23:15:57.667Z",
+      "donnees": {
+        "symbole": "SOL",
+        "nom": "Solana",
+        "prix": 77.38,
+        "variation_24h": -5.15
+      }
+    },
+    {
+      "id": "alert-2026-11-13-004",
+      "titre": "Nvidia (NVDA) : -2,01% (162,85$), pire semaine depuis 2012",
+      "texte": "NVDA perd 2,01% à 162,85$. Sur la semaine, destruction de 1,7 trillion$ de capitalisation, pire performance depuis 2012. Départ Jensen Huang amplifie les inquiétudes sur la gouvernance et la stratégie IA.",
+      "categorie": "ai_tech",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-11-13T23:15:57.667Z",
+      "donnees": {
+        "symbole": "SOL",
+        "nom": "Solana",
+        "prix": 77.38,
+        "variation_7d": -13.58
+      }
+    },
+    {
+      "id": "alert-2026-11-13-005",
+      "titre": "FAA : arrêt nationwide des vols, ~10 000 annulations (13/11)",
+      "texte": "Régulateur aérien US impose ground stop nationwide sur tous les vols en départ suite à problème de communication. Environ 10 000 vols annulés. Impact majeur sur logistique, transport de fret, chaînes d'approvisionnement.",
+      "categorie": "marches",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-11-13T23:15:57.667Z",
+      "donnees": {
+        "symbole": "DOGE",
+        "nom": "Dogecoin",
+        "prix": 0.063918,
+        "variation_7d": -11.55
+      }
+    },
+    {
+      "id": "alert-2026-11-13-006",
+      "titre": "Microsoft 365 : outage 24h, impact productivité entreprise",
+      "texte": "Microsoft 365 subit une panne de 24 heures, affectant la productivité des entreprises. Révèle fragilités infrastructure cloud critique.",
+      "categorie": "ai_tech",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-11-13T23:15:57.667Z",
+      "donnees": {
+        "symbole": "NVDA",
+        "nom": "Nvidia",
+        "prix": 162.85,
+        "variation": -2.01
+      }
+    },
+    {
+      "id": "alert-2026-11-13-007",
+      "titre": "Dogecoin (DOGE) : -11,55% sur 7 jours",
+      "texte": "DOGE recule de 11,55% hebdomadaire, aligné sur correction crypto généralisée. Contexte : régime baissier modéré, TVL DeFi sous pression.",
       "categorie": "crypto",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-11-12T23:12:06.303Z",
+      "horodatage": "2026-11-13T23:15:57.667Z",
       "donnees": {
-        "protocole": "Binance staked ETH",
-        "tvl_b": 7.8,
-        "change_7d": -10.5
+        "protocole": "Lido",
+        "tvl_b": 19,
+        "change_7d": -12.4
       }
     },
     {
-      "id": "alert-2026-11-12-007",
-      "titre": "Régime risk-off généralisé : -1,69% crypto, -0,2% indices EU",
-      "texte": "Consensus 75% sur régime risk-off avec amplitude 1,51%. Crypto recule de 1,69%, indices EU de 0,2%, actions de 0,14%. Pression généralisée sur actifs risqués dans contexte géopolitique tendu et répression réglementaire.",
-      "categorie": "marches",
+      "id": "alert-2026-11-13-008",
+      "titre": "Pétrole : volatilité Iran-approvisionnement, prix carburant en hausse",
+      "texte": "Tensions géopolitiques Iran (strikes US) contrebalancées par glut pétrolier global. Trump prolonge waiver Jones Act 90j. Carburant diesel reste cher malgré offre abondante (friction logistique).",
+      "categorie": "matieres_premieres",
       "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-11-12T23:12:06.303Z",
+      "impact": "neutre",
+      "horodatage": "2026-11-13T23:15:57.667Z",
       "donnees": {
-        "tvl_start_b": 542,
-        "tvl_end_b": 482,
-        "change_pct": -10.9,
+        "protocole": "SSV Network",
+        "tvl_b": 10.2,
+        "change_7d": -12.6
+      }
+    },
+    {
+      "id": "alert-2026-11-13-009",
+      "titre": "Gaz naturel : surplus stockage pèse sur futures",
+      "texte": "Surplus de gaz naturel en stockage pèse sur les contrats futures. Demande saisonnière en déclin après rallye octobre. Pression baissière sur prix.",
+      "categorie": "matieres_premieres",
+      "severite": "info",
+      "impact": "baissier",
+      "horodatage": "2026-11-13T23:15:57.667Z",
+      "donnees": {
+        "protocole": "Binance staked ETH",
+        "tvl_b": 7.5,
+        "change_7d": -13.6
+      }
+    },
+    {
+      "id": "alert-2026-11-13-010",
+      "titre": "Coinbase : clearance OCC pour trust company US, signal régulation positive",
+      "texte": "Coinbase obtient clearance final OCC pour opérer en tant que trust company US. Signal de progression régulation crypto institutionnelle, contrebalançant sentiment baissier court terme.",
+      "categorie": "crypto",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-11-13T23:15:57.667Z",
+      "donnees": {
+        "protocole": "EigenCloud",
+        "tvl_b": 5,
+        "change_7d": -12.8
+      }
+    },
+    {
+      "id": "alert-2026-11-13-011",
+      "titre": "JPMorgan : holdings Bitcoin/crypto approchent 1 Mrd$",
+      "texte": "JPMorgan accumule positions Bitcoin et crypto-liées approchant 1 Mrd$. Signal d'adoption institutionnelle malgré correction court terme.",
+      "categorie": "crypto",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-11-13T23:15:57.667Z",
+      "donnees": {
+        "tvl_start_b": 537,
+        "tvl_end_b": 467,
+        "change_pct": -13,
         "days": 7
       }
     },
     {
-      "id": "alert-2026-11-12-008",
-      "titre": "Rendements obligataires : plus forte hausse depuis 2022",
-      "texte": "Rendements obligataires affichent leur plus forte progression depuis 2022, reflétant des attentes accrues de hausse des taux Fed. Pèse sur valorisations tech et crypto, soutient le dollar.",
-      "categorie": "macro",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-11-12T23:12:06.303Z",
-      "donnees": {}
-    },
-    {
-      "id": "alert-2026-11-12-009",
-      "titre": "DOJ saisit $1,2B crypto Binance hack North Korea",
-      "texte": "Département de Justice américain saisit $1,2 milliard de cryptomonnaies volées via le hack Binance attribué à North Korea. Operation TorNado simultanée : 354 arrestations et $234M en espèces/crypto saisis.",
-      "categorie": "crypto",
-      "severite": "urgent",
-      "impact": "baissier",
-      "horodatage": "2026-11-12T23:12:06.303Z",
-      "donnees": {}
-    },
-    {
-      "id": "alert-2026-11-12-010",
-      "titre": "Gemini volume Q3 : -73%, revenus $41M",
-      "texte": "Volume de trading Gemini s'effondre de 73% au Q3 2026, revenus chutent à $41M. Reflète la pression compétitive et la fuite de liquidités vers plateformes alternatives dans un marché crypto déprimé.",
-      "categorie": "crypto",
-      "severite": "attention",
-      "impact": "baissier",
-      "horodatage": "2026-11-12T23:12:06.303Z",
+      "id": "alert-2026-11-13-012",
+      "titre": "LangChain : atteint 3 Mrd$ valuation, momentum IA agents",
+      "texte": "Startup IA LangChain atteint 3 Mrd$ valuation. Contraste avec départ Jensen Huang : marché IA reste dynamique sur agents/outils malgré turbulences Nvidia.",
+      "categorie": "ai_tech",
+      "severite": "info",
+      "impact": "haussier",
+      "horodatage": "2026-11-13T23:15:57.667Z",
       "donnees": {}
     }
   ],
   "stats": {
-    "total": 10,
-    "urgent": 2,
-    "attention": 6,
-    "info": 2
+    "total": 12,
+    "urgent": 5,
+    "attention": 3,
+    "info": 4
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
