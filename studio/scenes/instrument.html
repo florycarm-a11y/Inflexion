@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="fr"><meta charset="utf-8"><title>Instrument</title>
+<style>
+  @font-face { font-family: 'Archivo'; font-weight: 800; src: url("../../assets/fonts/font-03.woff2") format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC; }
+  @font-face { font-family: 'Archivo'; font-weight: 800; src: url("../../assets/fonts/font-02.woff2") format('woff2'); unicode-range: U+0100-02BA, U+1E00-1E9F; }
+  @font-face { font-family: 'IBM Plex Mono'; font-weight: 400; src: url("../../assets/fonts/font-08.woff2") format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC; }
+  @font-face { font-family: 'IBM Plex Mono'; font-weight: 400; src: url("../../assets/fonts/font-07.woff2") format('woff2'); unicode-range: U+0100-02BA, U+1E00-1E9F; }
+  html, body { margin: 0; background: #17100E; overflow: hidden; }
+  #scene { position: relative; width: 1000px; height: 600px; transform-origin: 0 0; }
+  svg { display: block; width: 1000px; height: 600px; }
+  .kicker { font-family: 'IBM Plex Mono', monospace; font-size: 18px; letter-spacing: 0.18em; fill: #E05A4E; }
+  .legende { font-family: 'IBM Plex Mono', monospace; font-size: 15px; letter-spacing: 0.1em; fill: rgba(245,237,230,.55); }
+  .structure { fill: none; stroke: rgba(237,235,228,.16); stroke-width: 1.2; }
+  .figure { fill: none; stroke: #EDEBE4; stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; }
+  #controles { position: fixed; left: 12px; bottom: 12px; font: 13px system-ui; color: #EDEBE4; background: rgba(0,0,0,.5); padding: 8px 10px; }
+  #controles select, #controles input { margin-left: 6px; }
+</style>
+<div id="scene"><svg id="svg" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg"></svg></div>
+<div id="controles" hidden>
+  Rubrique <select id="c-rubrique"></select>
+  Variante <input id="c-variante" type="number" min="1" max="6" value="1">
+</div>
+<script>
+  window.LARGEUR = 1000;
+  window.HAUTEUR = 600;
+  window.RUBRIQUES = ['geopolitique', 'marches', 'crypto', 'matieres', 'iatech'];
+  window.VARIANTES = 6;
+  const LIBELLES = { geopolitique: 'GÉOPOLITIQUE', marches: 'MARCHÉS', crypto: 'CRYPTO', matieres: 'MATIÈRES PREMIÈRES', iatech: 'IA & TECH' };
+  const W = 1000, H = 600, MARGE = 60; // 6 % de la largeur
+
+  /* graine:debut */
+  // mulberry32 : générateur déterministe, une suite par entier de graine
+  function graine(n) {
+    var a = (n * 2654435761) >>> 0;
+    return function () {
+      a = (a + 0x6D2B79F5) >>> 0;
+      var t = a;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  /* graine:fin */
+
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (nom, attrs, texte) => {
+    const e = document.createElementNS(NS, nom);
+    for (const [k, v] of Object.entries(attrs || {})) e.setAttribute(k, v);
+    if (texte != null) e.textContent = texte;
+    return e;
+  };
+  const entre = (r, a, b) => a + r() * (b - a);
+
+  // ---------- les cinq familles : chacune reçoit (r, g) et renvoie {x, y} du signal ----------
+  const FAMILLES = {
+    geopolitique(r, g) {
+      const cx = entre(r, 560, 700), cy = entre(r, 260, 340), R = entre(r, 300, 380);
+      const rot = entre(r, -25, 25);
+      const grp = el('g', { transform: `rotate(${rot.toFixed(1)} ${cx} ${cy})`, class: 'structure' });
+      for (let i = 1; i <= 4; i++) grp.appendChild(el('ellipse', { cx, cy, rx: (R * i / 4).toFixed(1), ry: R }));
+      for (let i = -3; i <= 3; i++) {
+        const y = cy + R * i / 4, k = Math.sqrt(1 - (i / 4) ** 2);
+        grp.appendChild(el('path', { d: `M${(cx - R * k).toFixed(1)} ${y.toFixed(1)}Q${cx} ${(y + (i < 0 ? -1 : 1) * 10).toFixed(1)} ${(cx + R * k).toFixed(1)} ${y.toFixed(1)}` }));
+      }
+      grp.appendChild(el('line', { x1: cx, y1: cy - R, x2: cx, y2: cy + R }));
+      g.appendChild(grp);
+      // silhouette d'une zone : polygone irrégulier
+      const px = entre(r, 480, 620), py = entre(r, 230, 330), n = 9 + Math.floor(r() * 4);
+      const pts = [];
+      for (let i = 0; i < n; i++) {
+        const a = (i / n) * Math.PI * 2, d = entre(r, 55, 95);
+        pts.push(`${(px + Math.cos(a) * d * 1.3).toFixed(1)} ${(py + Math.sin(a) * d).toFixed(1)}`);
+      }
+      g.appendChild(el('path', { class: 'figure', d: `M${pts.join('L')}Z` }));
+      return { x: px + entre(r, -30, 30), y: py + entre(r, -20, 20) };
+    },
+    marches(r, g) {
+      const x0 = MARGE, x1 = W - MARGE, y0 = 120, y1 = H - 110;
+      const grille = el('g', { class: 'structure' });
+      for (let i = 0; i <= 5; i++) grille.appendChild(el('line', { x1: x0, y1: y0 + (y1 - y0) * i / 5, x2: x1, y2: y0 + (y1 - y0) * i / 5 }));
+      for (let i = 0; i <= 8; i++) grille.appendChild(el('line', { x1: x0 + (x1 - x0) * i / 8, y1: y0, x2: x0 + (x1 - x0) * i / 8, y2: y1 }));
+      g.appendChild(grille);
+      const n = 14, tendance = entre(r, -0.5, 0.9), vol = entre(r, 20, 60), rupture = 5 + Math.floor(r() * 7);
+      const pts = []; let y = entre(r, 300, 420);
+      for (let i = 0; i < n; i++) {
+        const x = x0 + (x1 - x0) * i / (n - 1);
+        y += -tendance * 18 + entre(r, -vol, vol) + (i === rupture ? -entre(r, 40, 90) : 0);
+        y = Math.max(y0 + 20, Math.min(y1 - 10, y));
+        pts.push([x, y]);
+      }
+      const d = pts.map(([x, y], i) => `${i ? 'L' : 'M'}${x.toFixed(1)} ${y.toFixed(1)}`).join('');
+      const defs = el('defs'); const lg = el('linearGradient', { id: 'sous', x1: 0, y1: 0, x2: 0, y2: 1 });
+      lg.appendChild(el('stop', { offset: 0, 'stop-color': '#8E2424', 'stop-opacity': .55 }));
+      lg.appendChild(el('stop', { offset: 1, 'stop-color': '#8E2424', 'stop-opacity': 0 }));
+      defs.appendChild(lg); g.appendChild(defs);
+      g.appendChild(el('path', { d: `${d}L${x1} ${y1}L${x0} ${y1}Z`, fill: 'url(#sous)' }));
+      g.appendChild(el('path', { class: 'figure', d }));
+      const [sx, sy] = pts[rupture];
+      g.appendChild(el('line', { x1: sx, y1: sy, x2: sx, y2: y1, stroke: '#E05A4E', 'stroke-width': 1, 'stroke-dasharray': '3 5' }));
+      return { x: sx, y: sy };
+    },
+    crypto(r, g) {
+      const n = 8 + Math.floor(r() * 7), noeuds = [];
+      for (let i = 0; i < n; i++) noeuds.push([entre(r, MARGE + 60, W - MARGE - 60), entre(r, 140, H - 130)]);
+      const densite = entre(r, 0.25, 0.5), liens = el('g', { class: 'structure' });
+      for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) if (r() < densite)
+        liens.appendChild(el('line', { x1: noeuds[i][0], y1: noeuds[i][1], x2: noeuds[j][0], y2: noeuds[j][1] }));
+      g.appendChild(liens);
+      const actif = Math.floor(r() * n);
+      noeuds.forEach(([x, y], i) => g.appendChild(el('circle', { class: 'figure', cx: x.toFixed(1), cy: y.toFixed(1), r: i === actif ? 14 : entre(r, 5, 9).toFixed(1) })));
+      return { x: noeuds[actif][0], y: noeuds[actif][1] };
+    },
+    matieres(r, g) {
+      const couches = 5 + Math.floor(r() * 5), amp = entre(r, 10, 34), marquee = Math.floor(r() * couches);
+      let signal = { x: 0, y: 0 };
+      for (let c = 0; c < couches; c++) {
+        const yb = 150 + (H - 260) * c / (couches - 1), seg = 12, pts = [];
+        for (let i = 0; i <= seg; i++) {
+          const x = MARGE + (W - 2 * MARGE) * i / seg;
+          pts.push(`${x.toFixed(1)} ${(yb + Math.sin(i * 0.9 + c * 1.3) * amp + entre(r, -4, 4)).toFixed(1)}`);
+        }
+        g.appendChild(el('path', { class: c === marquee ? 'figure' : 'structure', d: `M${pts.join('L')}` }));
+        if (c === marquee) { const k = 3 + Math.floor(r() * 7); const [x, y] = pts[k].split(' ').map(Number); signal = { x, y }; }
+      }
+      return signal;
+    },
+    iatech(r, g) {
+      const pas = [40, 50, 60][Math.floor(r() * 3)], cols = Math.floor((W - 2 * MARGE) / pas), lignes = Math.floor((H - 240) / pas);
+      const ox = MARGE + ((W - 2 * MARGE) - cols * pas) / 2 + pas / 2, oy = 130 + pas / 2;
+      const diag = Math.floor(r() * (cols + lignes)), sens = r() < 0.5 ? 1 : -1;
+      let signal = { x: ox, y: oy }; const cellule = Math.floor(r() * Math.min(cols, lignes));
+      for (let i = 0; i < cols; i++) for (let j = 0; j < lignes; j++) {
+        const allume = (sens > 0 ? i + j : i - j + lignes) === diag;
+        const x = ox + i * pas, y = oy + j * pas;
+        g.appendChild(el('circle', { cx: x, cy: y, r: allume ? 5 : 2.2, fill: allume ? '#EDEBE4' : 'rgba(237,235,228,.22)' }));
+        if (allume && j === cellule) signal = { x, y };
+      }
+      return signal;
+    },
+  };
+
+  // ---------- cadre commun ----------
+  function dessiner(rubrique, variante) {
+    const svg = document.getElementById('svg');
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    const r = graine(variante * 100 + window.RUBRIQUES.indexOf(rubrique));
+    svg.appendChild(el('rect', { width: W, height: H, fill: '#17100E' }));
+    const g = el('g'); svg.appendChild(g);
+    const signal = FAMILLES[rubrique](r, g);
+    // le signal : un seul point rouge
+    svg.appendChild(el('circle', { cx: signal.x.toFixed(1), cy: signal.y.toFixed(1), r: 7, fill: '#E05A4E' }));
+    svg.appendChild(el('circle', { cx: signal.x.toFixed(1), cy: signal.y.toFixed(1), r: 18, fill: 'none', stroke: '#E05A4E', 'stroke-width': 1.2, opacity: .55 }));
+    // kicker, filet, légende
+    svg.appendChild(el('text', { class: 'kicker', x: MARGE, y: MARGE + 14 }, `§ ${LIBELLES[rubrique]}`));
+    svg.appendChild(el('rect', { x: MARGE, y: H - MARGE - 44, width: 40, height: 3, fill: '#8E2424' }));
+    const lat = entre(r, -60, 70), lon = entre(r, -180, 180);
+    const legendes = {
+      geopolitique: `${Math.abs(lat).toFixed(1)}°${lat < 0 ? 'S' : 'N'} ${Math.abs(lon).toFixed(1)}°${lon < 0 ? 'O' : 'E'}`,
+      marches: `SÉRIE ${String(variante).padStart(2, '0')} · ${(entre(r, -4, 6)).toFixed(2).replace('.', ',')} %`,
+      crypto: `BLOC ${Math.floor(entre(r, 800000, 999999))}`,
+      matieres: `STRATE ${variante} · ${Math.floor(entre(r, 120, 980))} M`,
+      iatech: `MATRICE ${variante} · ${Math.floor(entre(r, 1000, 9999))}`,
+    };
+    svg.appendChild(el('text', { class: 'legende', x: MARGE, y: H - MARGE }, legendes[rubrique]));
+  }
+
+  const q = new URLSearchParams(location.search);
+  window.afficher = async () => {
+    const rubrique = window.RUBRIQUES.includes(q.get('rubrique')) ? q.get('rubrique') : 'marches';
+    const variante = Math.min(window.VARIANTES, Math.max(1, parseInt(q.get('variante') || '1', 10)));
+    dessiner(rubrique, variante);
+    await document.fonts.ready;
+  };
+
+  if (!q.has('rendu')) {
+    // aperçu : à l'échelle de la fenêtre, avec les contrôles
+    const s = document.getElementById('scene');
+    const ajuster = () => { s.style.transform = `scale(${Math.min(innerWidth / W, innerHeight / H)})`; };
+    addEventListener('resize', ajuster); ajuster();
+    const c = document.getElementById('controles'); c.hidden = false;
+    const sel = document.getElementById('c-rubrique');
+    for (const rb of window.RUBRIQUES) { const o = document.createElement('option'); o.value = rb; o.textContent = rb; sel.appendChild(o); }
+    sel.value = q.get('rubrique') || 'geopolitique';
+    const inp = document.getElementById('c-variante'); inp.value = q.get('variante') || '1';
+    const maj = () => dessiner(sel.value, Math.min(window.VARIANTES, Math.max(1, parseInt(inp.value || '1', 10))));
+    sel.onchange = maj; inp.oninput = maj; maj();
+  }
+</script>
+</html>
