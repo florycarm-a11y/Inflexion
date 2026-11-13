@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fr"><meta charset="utf-8"><title>Gravure</title>
+<style>
+  @font-face { font-family: 'IBM Plex Mono'; font-weight: 400; src: url("../../assets/fonts/font-08.woff2") format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC; }
+  @font-face { font-family: 'IBM Plex Mono'; font-weight: 400; src: url("../../assets/fonts/font-07.woff2") format('woff2'); unicode-range: U+0100-02BA, U+1E00-1E9F; }
+  html, body { margin: 0; background: #17100E; overflow: hidden; }
+  #scene { position: relative; background: #17100E; transform-origin: 0 0; overflow: hidden; }
+  #cadre { position: absolute; left: 0; top: 0; overflow: hidden; }
+  #photo { width: 100%; height: 100%; object-fit: cover; display: block; filter: url(#bichrome); }
+  #grain { position: absolute; inset: 0; mix-blend-mode: multiply; opacity: .28;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='1' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.06 0 0 0 0 0.055 0 0 0 0.9 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>"); }
+  .kicker { position: absolute; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: .18em; color: #E05A4E; }
+  .filet { position: absolute; width: 40px; height: 3px; background: #8E2424; }
+  .legende { position: absolute; font-family: 'IBM Plex Mono', monospace; letter-spacing: .1em; color: rgba(245,237,230,.55); white-space: nowrap; }
+  #erreur { position: absolute; inset: 24px; border: 4px solid #E05A4E; color: #E05A4E; font: 700 40px system-ui; display: none; align-items: center; justify-content: center; }
+  #controles { position: fixed; left: 12px; bottom: 12px; font: 13px system-ui; color: #EDEBE4; background: rgba(0,0,0,.5); padding: 8px 10px; }
+</style>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="bichrome" color-interpolation-filters="sRGB">
+    <feColorMatrix type="saturate" values="0"/>
+    <feComponentTransfer>
+      <feFuncR type="table" tableValues="0.09 0.93"/>
+      <feFuncG type="table" tableValues="0.063 0.92"/>
+      <feFuncB type="table" tableValues="0.055 0.89"/>
+    </feComponentTransfer>
+  </filter>
+</svg>
+<div id="scene">
+  <div id="cadre"><img id="photo" alt=""><div id="grain"></div></div>
+  <div class="kicker" id="kicker"></div>
+  <div class="filet" id="filet"></div>
+  <div class="legende" id="legende"></div>
+  <div id="erreur">source manquante</div>
+</div>
+<div id="controles" hidden>Aperçu : modifiez les paramètres dans l'adresse (source, format, focal, kicker, legende).</div>
+<script>
+  const FORMATS = { '16x9': [1600, 900], '5x3': [1000, 600] };
+  const q = new URLSearchParams(location.search);
+  const format = FORMATS[q.get('format')] ? q.get('format') : '16x9';
+  const [W, H] = FORMATS[format];
+  window.LARGEUR = W; window.HAUTEUR = H;
+  const MARGE = Math.round(W * 0.06);
+
+  function hachage(texte) { let h = 0x811c9dc5; for (const c of texte) { h ^= c.charCodeAt(0); h = Math.imul(h, 0x01000193) >>> 0; } return h >>> 0; }
+  function graine(n) { let a = (n * 2654435761) >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+
+  // bord déchiré : polygone en dents irrégulières (amplitude 4 à 6 px), sur le bas en 16:9, à droite en 5:3
+  function bordDechire(r, longueur, cote) {
+    const pas = 14, pts = [];
+    for (let p = 0; p <= longueur; p += pas) pts.push([p, 4 + r() * 2 * (p % (2 * pas) ? 1 : -1)]);
+    if (cote === 'bas') return `polygon(0 0, 100% 0, ${pts.map(([x, d]) => `${x}px calc(100% - ${d.toFixed(1)}px)`).reverse().join(', ')}, 0 100%)`;
+    return `polygon(0 0, ${pts.map(([y, d]) => `calc(100% - ${d.toFixed(1)}px) ${y}px`).join(', ')}, 0 100%)`;
+  }
+
+  function composer() {
+    const scene = document.getElementById('scene'), cadre = document.getElementById('cadre');
+    scene.style.width = W + 'px'; scene.style.height = H + 'px';
+    const r = graine(hachage(q.get('source') || ''));
+    if (format === '16x9') {           // image en haut (78 %), bandeau en bas
+      cadre.style.width = W + 'px'; cadre.style.height = Math.round(H * 0.78) + 'px';
+      cadre.style.clipPath = bordDechire(r, W, 'bas');
+      place('kicker', MARGE, H - MARGE - 46, 22); place('filet', MARGE, H - MARGE - 14, 0); place('legende', W - MARGE, H - MARGE - 46, 17, 'droite');
+    } else {                           // image à gauche (70 %), bandeau à droite
+      cadre.style.width = Math.round(W * 0.70) + 'px'; cadre.style.height = H + 'px';
+      cadre.style.clipPath = bordDechire(r, H, 'droite');
+      const x = Math.round(W * 0.70) + 32;
+      place('kicker', x, MARGE, 15); place('filet', x, MARGE + 34, 0); place('legende', x, H - MARGE - 16, 13);
+    }
+    const [fx, fy] = (q.get('focal') || '50,50').split(',').map(Number);
+    const photo = document.getElementById('photo');
+    photo.style.objectPosition = `${fx}% ${fy}%`;
+    document.getElementById('kicker').textContent = `§ ${q.get('kicker') || 'Analyse'}`;
+    document.getElementById('legende').textContent = q.get('legende') || '';
+    return new Promise((ok, ko) => {
+      photo.onload = () => ok();
+      photo.onerror = () => { document.getElementById('erreur').style.display = 'flex'; ko(new Error(`source manquante : ${q.get('source')}`)); };
+      photo.src = q.get('source') || '';
+    });
+  }
+  function place(id, x, y, taille, ancre) {
+    const e = document.getElementById(id);
+    if (ancre === 'droite') { e.style.right = (W - x) + 'px'; } else { e.style.left = x + 'px'; }
+    e.style.top = y + 'px'; if (taille) e.style.fontSize = taille + 'px';
+  }
+
+  window.afficher = async () => {
+    await composer();
+    await document.fonts.load("22px 'IBM Plex Mono'");
+    await document.fonts.ready;
+  };
+
+  if (!q.has('rendu')) {
+    const s = document.getElementById('scene');
+    const ajuster = () => { s.style.transform = `scale(${Math.min(innerWidth / W, innerHeight / H)})`; };
+    addEventListener('resize', ajuster); ajuster();
+    document.getElementById('controles').hidden = false;
+    window.afficher().catch((e) => console.error(e.message));
+  }
+</script>
+</html>
