@@ -8,7 +8,7 @@
   #cadre { position: absolute; left: 0; top: 0; overflow: hidden; }
   #photo { width: 100%; height: 100%; object-fit: cover; display: block; filter: url(#bichrome); }
   #grain { position: absolute; inset: 0; mix-blend-mode: multiply; opacity: .28;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='1' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.06 0 0 0 0 0.055 0 0 0 0.9 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>"); }
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n' x='0' y='0' width='100%' height='100%'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='1' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.06 0 0 0 0 0.055 0 0 0 0.9 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>"); }
   .kicker { position: absolute; font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: .18em; color: #E05A4E; }
   .filet { position: absolute; width: 40px; height: 3px; background: #8E2424; }
   .legende { position: absolute; font-family: 'IBM Plex Mono', monospace; letter-spacing: .1em; color: rgba(245,237,230,.55); white-space: nowrap; }
@@ -41,21 +41,26 @@
   window.LARGEUR = W; window.HAUTEUR = H;
   const MARGE = Math.round(W * 0.06);
 
+  /* dechirure:debut */
   function hachage(texte) { let h = 0x811c9dc5; for (const c of texte) { h ^= c.charCodeAt(0); h = Math.imul(h, 0x01000193) >>> 0; } return h >>> 0; }
-  function graine(n) { let a = (n * 2654435761) >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+  function graine(n) { let a = Math.imul(n, 2654435761) >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
 
-  // bord déchiré : polygone en dents irrégulières (amplitude 4 à 6 px), sur le bas en 16:9, à droite en 5:3
+  // bord déchiré : dents irrégulières de 4 à 6 px, sur le bas en 16:9, à droite en 5:3
   function bordDechire(r, longueur, cote) {
     const pas = 14, pts = [];
-    for (let p = 0; p <= longueur; p += pas) pts.push([p, 4 + r() * 2 * (p % (2 * pas) ? 1 : -1)]);
+    const amp = () => 4 + r() * 2;                       // 4 à 6 px
+    for (let p = 0; p < longueur; p += pas) pts.push([p, amp()]);
+    pts.push([longueur, amp()]);
     if (cote === 'bas') return `polygon(0 0, 100% 0, ${pts.map(([x, d]) => `${x}px calc(100% - ${d.toFixed(1)}px)`).reverse().join(', ')}, 0 100%)`;
     return `polygon(0 0, ${pts.map(([y, d]) => `calc(100% - ${d.toFixed(1)}px) ${y}px`).join(', ')}, 0 100%)`;
   }
 
+  /* dechirure:fin */
+
   function composer() {
     const scene = document.getElementById('scene'), cadre = document.getElementById('cadre');
     scene.style.width = W + 'px'; scene.style.height = H + 'px';
-    const r = graine(hachage(q.get('source') || ''));
+    const r = graine(hachage((q.get('source') || '').split('/').pop()));
     if (format === '16x9') {           // image en haut (78 %), bandeau en bas
       cadre.style.width = W + 'px'; cadre.style.height = Math.round(H * 0.78) + 'px';
       cadre.style.clipPath = bordDechire(r, W, 'bas');
@@ -66,9 +71,10 @@
       const x = Math.round(W * 0.70) + 32;
       place('kicker', x, MARGE, 15); place('filet', x, MARGE + 34, 0); place('legende', x, H - MARGE - 16, 13);
     }
-    const [fx, fy] = (q.get('focal') || '50,50').split(',').map(Number);
+    const [fx, fy] = (q.get('focal') || '50,50').split(',').map((v) => parseFloat(v));
+    const pct = (v) => (Number.isFinite(v) ? Math.min(100, Math.max(0, v)) : 50);
     const photo = document.getElementById('photo');
-    photo.style.objectPosition = `${fx}% ${fy}%`;
+    photo.style.objectPosition = `${pct(fx)}% ${pct(fy)}%`;
     document.getElementById('kicker').textContent = `§ ${q.get('kicker') || 'Analyse'}`;
     document.getElementById('legende').textContent = q.get('legende') || '';
     return new Promise((ok, ko) => {
@@ -85,8 +91,21 @@
 
   window.afficher = async () => {
     await composer();
-    await document.fonts.load("22px 'IBM Plex Mono'");
+    const textes = ['kicker', 'legende'].map((id) => document.getElementById(id).textContent).join(' ');
+    await document.fonts.load("22px 'IBM Plex Mono'", textes);
+    try { await document.getElementById('photo').decode(); } catch (e) { /* déjà déchargée : ignorer */ }
     await document.fonts.ready;
+    // en aperçu la scène est mise à l'échelle : les mesures ne valent qu'en rendu
+    if (q.has('rendu')) {
+      for (const id of ['kicker', 'legende']) {
+        const b = document.getElementById(id).getBoundingClientRect();
+        if (b.right > W - MARGE + 1) throw new Error(`${id} dépasse la marge (${Math.round(b.right)} px)`);
+      }
+      if (format === '16x9') {
+        const k = document.getElementById('kicker').getBoundingClientRect(), l = document.getElementById('legende').getBoundingClientRect();
+        if (l.left < k.right + 24) throw new Error('la légende chevauche le kicker');
+      }
+    }
   };
 
   if (!q.has('rendu')) {
