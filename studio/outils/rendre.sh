@@ -16,16 +16,27 @@ MAJEURE=$(node -p 'process.versions.node.split(".")[0]' 2>/dev/null)
 [ "${MAJEURE:-0}" -ge 22 ] || { echo "Node.js $(node --version) est trop ancien : il faut la version 22 ou plus." >&2; exit 1; }
 PY="${PYTHON:-$(command -v python3)}" ; [ -n "$PY" ] || { echo "Il manque python3 (avec Pillow) pour la planche." >&2; exit 1; }
 "$PY" -c 'import PIL' 2>/dev/null || { echo "Pillow manque pour $PY. Installez-le ($PY -m pip install pillow) ou indiquez un autre Python via PYTHON=/opt/homebrew/bin/python3." >&2; exit 1; }
+if [ -n "${CHROME:-}" ]; then
+  CANDIDATS=("$CHROME")
+else
+  CANDIDATS=("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "$HOME/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "/Applications/Chromium.app/Contents/MacOS/Chromium")
+fi
 CHROME_OK=0
-for c in "${CHROME:-}" "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "$HOME/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "/Applications/Chromium.app/Contents/MacOS/Chromium"; do
-  [ -n "$c" ] && [ -x "$c" ] && { CHROME_OK=1; break; }
+for c in "${CANDIDATS[@]}"; do
+  [ -x "$c" ] && { CHROME_OK=1; break; }
 done
-[ "$CHROME_OK" -eq 1 ] || { echo "Il manque Google Chrome, ou indiquez son chemin dans la variable CHROME." >&2; exit 1; }
+if [ "$CHROME_OK" -ne 1 ]; then
+  if [ -n "${CHROME:-}" ]; then echo "CHROME=$CHROME n'est pas un exécutable." >&2
+  else echo "Il manque Google Chrome, ou indiquez son chemin dans la variable CHROME." >&2; fi
+  exit 1
+fi
 
 # ---------- la tâche ----------
 MODE="$1"
 ENTREE=""
-trap '[ -n "$ENTREE" ] && [ "$MODE" = gravure ] && rm -f "$ENTREE"' EXIT INT TERM
+trap '[ -n "$ENTREE" ] && [ "$MODE" = gravure ] && rm -f "$ENTREE"' EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
 case "$MODE" in
   instrument)
     BASE="instrument"; ENTREE="instrument" ;;
