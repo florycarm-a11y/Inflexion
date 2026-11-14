@@ -1,0 +1,574 @@
+{
+  "date": "2026-11-13",
+  "generated_at": "2026-11-13T23:17:16.882Z",
+  "type": "delta",
+  "model": "claude-haiku-4-5-20251001",
+  "sources_count": 25,
+  "sources_market": 11,
+  "reference_date": "2026-11-12",
+  "synthese": {
+    "titre": "Crypto en capitulation extrême, tech fragilisée par départ Huang — géopolitique et régulation s'accélèrent",
+    "sous_titre": "Bitcoin -4,9 % en 24h, Fear & Greed à 20/100 ; Nvidia perd -2,01 % sur départ du PDG ; tensions Iran-UK et drone activity",
+    "contenu": "## Évolutions du jour\n\nLa crypto entre en phase de capitulation majeure : Bitcoin recule à 68 012 $ (-4,9 % en 24h, -9,9 % sur 7j), Ethereum à 1 919,49 $ (-4,9 % en 24h, -13,8 % sur 7j), et le Fear & Greed Index s'effondre à 20/100 (Extreme Fear, -8 points vs hier). La capitalisation totale crypto chute de -6,29 % en 24h (CoinGecko). Cette accélération de la panique contraste avec le rebond technique de Bitcoin à 71 412 $ signalé hier — la cassure sous 70k $ s'est confirmée, validant le scénario de liquidation en cascade des positions de leverage.\n\nLe secteur tech se fragilise suite au départ annoncé de Jensen Huang de la direction d'Nvidia : le titre recule de -2,01 % (Finnhub), tandis que les VCs et fondateurs d'IA startups s'inquiètent d'une réduction drastique des financements (TechCrunch). Nvidia aurait approché Rene Haas (CEO d'Arm) comme candidat successeur. Le Nasdaq 100 cède -1,20 %, confirmant la rotation défensive amorcée hier. Le S&P 500 recule modérément de -0,36 %, le Dow Jones résiste (+0,13 %).\n\nLa géopolitique s'intensifie : l'armée américaine intervient pour une « suspicion d'activité de drone non autorisée » au-dessus d'une base militaire britannique utilisée pour les frappes contre l'Iran (Le Monde, Middle East Eye). Parallèlement, Trump prolonge de 90 jours la dérogation à la loi maritime face à la hausse des prix du carburant liée à la guerre Iran-US. L'or stagne (+0,16 %), confirmant la perte de statut de refuge face aux taux réels élevés (Treasury 10Y à 5,1 %, +0,12 vs hier).\n\n## Perspectives actualisées\n\nLe scénario de capitulation crypto s'accélère : le Fear & Greed Index à 20/100 suggère une panique généralisée sans rebond technique visible. Les seuils critiques (BTC 65k $, ETH 1 800 $) deviennent des points de surveillance urgents. Sur la géopolitique, l'incident de drone au-dessus de la base britannique élève le risque d'escalade Iran-US à court terme — le pétrole (-0,34 %) n'a pas encore réagi, signalant une sous-évaluation du risque. La succession chez Nvidia (annonce attendue 17 nov.) sera un catalyseur majeur pour le secteur IA et les valuations tech."
+  },
+  "signaux": [
+    {
+      "titre": "Capitulation crypto accélérée — Fear & Greed à 20/100, BTC sous 70k $, liquidations en cascade",
+      "description": "Bitcoin s'effondre à 68 012 $ (-4,9 % en 24h, -9,9 % sur 7j), Ethereum à 1 919,49 $ (-4,9 % en 24h, -13,8 % sur 7j), et le Fear & Greed Index plonge à 20/100 (Extreme Fear, -8 points vs hier). La capitalisation totale crypto chute de -6,29 % en 24h. Cette accélération valide le scénario de liquidation en cascade signalé hier : le rebond technique à 71 412 $ n'a pas tenu, confirmant la cassure sous 70k $ comme point de non-retour. Les altcoins s'effondrent plus vite (XRP -3,3 % en 24h, -14,4 % sur 7j ; SOL -5,2 % en 24h, -13,6 % sur 7j), indiquant une fuite vers le cash plutôt qu'une rotation. Le TVL DeFi recule : Binance CEX -3,8 %, Aave V3 -2,8 %, seul LayerZero V2 rebondit (+6,9 %), suggérant une concentration du risque sur les plateformes centralisées.",
+      "categorie": "crypto",
+      "interconnexions": [
+        {
+          "secteur": "Marchés actions tech",
+          "impact": "Nasdaq 100 -1,20 % ; Nvidia -2,01 %",
+          "explication": "La panique crypto accélère la rotation défensive vers les valeurs défensives, pénalisant les mega-cap tech exposées aux startups IA (Nvidia, Alphabet -0,98 %)"
+        },
+        {
+          "secteur": "Régulation",
+          "impact": "DOJ saisit $1,2 Md en crypto (Binance hack NK), opération TorNado arrête 354 personnes",
+          "explication": "L'intensification de la supervision crypto (signalée hier) accélère la capitulation : les investisseurs anticipent des restrictions réglementaires supplémentaires"
+        }
+      ],
+      "regions": [
+        "États-Unis",
+        "Asie-Pacifique"
+      ],
+      "severite": "urgent"
+    },
+    {
+      "titre": "Départ de Jensen Huang — succession Nvidia incertaine, financement IA startups en péril",
+      "description": "Le départ annoncé de Jensen Huang de la direction d'Nvidia fragilise le secteur IA : Nvidia recule de -2,01 % (Finnhub), tandis que TechCrunch rapporte que les VCs et fondateurs d'IA startups s'inquiètent d'une réduction drastique des financements (Nvidia a versé des dizaines de milliards aux startups sous Huang). Nvidia aurait approché Rene Haas (CEO d'Arm) comme candidat successeur, mais le board n'a pas formellement engagé de candidats. Certains employés Nvidia demandent le retour de Huang avant l'annonce des résultats du 17 novembre. Cette incertitude de succession élève le risque de dévaluation des startups IA et d'une contraction du capital-risque dans le secteur.",
+      "categorie": "ai_tech",
+      "interconnexions": [
+        {
+          "secteur": "Crypto & blockchain",
+          "impact": "Fear & Greed Index 20/100, capitulation accélérée",
+          "explication": "La perte de confiance dans la direction Nvidia (leader du financement IA) accélère la fuite des investisseurs vers le cash, amplifiant la panique crypto"
+        },
+        {
+          "secteur": "Marchés actions",
+          "impact": "Nasdaq 100 -1,20 %, rotation défensive",
+          "explication": "L'incertitude de succession chez Nvidia déclenche une réévaluation des valuations IA et une rotation vers les valeurs défensives (Dow Jones +0,13 %)"
+        }
+      ],
+      "regions": [
+        "États-Unis"
+      ],
+      "severite": "urgent"
+    },
+    {
+      "titre": "Incident de drone au-dessus de base militaire britannique — escalade Iran-US, risque pétrolier sous-évalué",
+      "description": "L'armée américaine intervient pour une « suspicion d'activité de drone non autorisée » au-dessus d'une base militaire britannique utilisée pour les frappes contre l'Iran (Le Monde, Middle East Eye). Aucun personnel, avion ou infrastructure n'a été touché selon l'US Air Force, mais l'incident élève le risque d'escalade directe Iran-US. Parallèlement, Trump prolonge de 90 jours la dérogation à la loi maritime face à la hausse des prix du carburant liée à la guerre Iran-US, signalant une anticipation d'une prolongation des tensions. Le pétrole recule de -0,34 % (Finnhub), suggérant une sous-évaluation du risque géopolitique — le rebond de +3,25 % signalé hier n'a pas tenu, indiquant une volatilité accrue mais pas de prime de risque durable.",
+      "categorie": "geopolitique",
+      "interconnexions": [
+        {
+          "secteur": "Matières premières",
+          "impact": "Pétrole -0,34 % ; or +0,16 % (stagnation)",
+          "explication": "L'incident de drone n'a pas déclenché de fuite vers les actifs refuge — l'or stagne malgré les tensions, confirmant la perte de statut de refuge face aux taux réels élevés (Treasury 10Y 5,1 %)"
+        },
+        {
+          "secteur": "Macro US",
+          "impact": "Treasury 10Y 5,1 % (+0,12 %) ; Dollar Index 121,88 (+0,37 %)",
+          "explication": "Les taux réels élevés et le dollar fort réduisent l'attrait des actifs refuge traditionnels, concentrant le risque géopolitique sur le pétrole plutôt que sur l'or"
+        }
+      ],
+      "regions": [
+        "Moyen-Orient",
+        "Europe",
+        "États-Unis"
+      ],
+      "severite": "attention"
+    }
+  ],
+  "risk_radar": [
+    {
+      "risque": "Capitulation crypto majeure — BTC sous 65k $, liquidation en cascade des positions de leverage",
+      "severite": "urgent",
+      "probabilite": "elevee",
+      "horizon": "court_terme",
+      "impact_marche": "Bitcoin -4,9 % en 24h (68 012 $), Ethereum -4,9 % en 24h (1 919,49 $), capitalisation totale crypto -6,29 % ; seuils critiques : BTC 65k $, ETH 1 800 $",
+      "description": "Le Fear & Greed Index s'effondre à 20/100 (Extreme Fear, -8 points vs hier), validant le scénario de liquidation en cascade. La cassure sous 70k $ s'est confirmée, éliminant le rebond technique de 71 412 $ signalé hier. Probabilité relevée de « élevée » à « critique » — les seuils 65k $ (BTC) et 1 800 $ (ETH) deviennent des points de non-retour pour une capitulation majeure."
+    },
+    {
+      "risque": "Succession Nvidia incertaine — dévaluation des startups IA, contraction du capital-risque",
+      "severite": "urgent",
+      "probabilite": "elevee",
+      "horizon": "court_terme",
+      "impact_marche": "Nvidia -2,01 % ; Nasdaq 100 -1,20 % ; valuations IA startups en révision baissière",
+      "description": "Le départ de Jensen Huang fragilise le financement des startups IA (Nvidia a versé des dizaines de milliards sous sa direction). L'approche de Rene Haas (CEO Arm) comme candidat successeur reste incertaine. Annonce attendue 17 novembre. Probabilité maintenue à « élevée » — l'incertitude de succession amplifie la rotation défensive et réduit les allocations VC vers le secteur IA."
+    },
+    {
+      "risque": "Escalade Iran-US — incident militaire direct, pic pétrolier +10-15 %, fuite vers actifs refuge",
+      "severite": "attention",
+      "probabilite": "elevee",
+      "horizon": "court_terme",
+      "impact_marche": "Pétrole -0,34 % (sous-évaluation du risque) ; or +0,16 % (stagnation, perte de refuge) ; Treasury 10Y 5,1 % (+0,12 %)",
+      "description": "L'incident de drone au-dessus de la base britannique élève le risque d'escalade directe Iran-US. Trump prolonge la dérogation maritime de 90 jours, signalant une anticipation de tensions prolongées. Le pétrole n'a pas réagi (+0,16 %), suggérant une sous-évaluation du risque géopolitique. Probabilité maintenue à « élevée » — les seuils pétroliers (WTI +10-15 %) et les actifs refuge (or, obligations) restent des points de surveillance critiques."
+    },
+    {
+      "risque": "Supervision réglementaire crypto s'accélère — saisies DOJ $1,2 Md, risque de contagion DeFi et CEX",
+      "severite": "urgent",
+      "probabilite": "elevee",
+      "horizon": "moyen_terme",
+      "impact_marche": "TVL DeFi recule (Binance CEX -3,8 %, Aave V3 -2,8 %) ; capitalisation crypto totale -6,29 % en 24h",
+      "description": "Le DOJ saisit $1,2 Md en crypto volée (Binance hack NK) et démantèle FaceStealer ; l'opération TorNado arrête 354 personnes. Cette intensification de la supervision (signalée hier) accélère la capitulation crypto. Probabilité maintenue à « élevée » — les investisseurs anticipent des restrictions réglementaires supplémentaires, amplifiant la fuite vers le cash."
+    }
+  ],
+  "sentiment_global": "baissier",
+  "tags": [
+    "crypto-capitulation-btc-68k-fear-greed-20",
+    "nvidia-huang-depart-succession-incertaine-vc-alarme",
+    "iran-us-drone-incident-base-britannique-escalade",
+    "fed-taux-reels-hauts-or-perte-refuge",
+    "regulation-doj-saisie-1-2md-crypto-supervision-acceleree"
+  ],
+  "sources_citees": [
+    {
+      "nom": "CoinGecko",
+      "type": "api",
+      "donnees_utilisees": "Bitcoin 68 012 $ (-4,9 % 24h, -9,9 % 7j), Ethereum 1 919,49 $ (-4,9 % 24h, -13,8 % 7j), capitalisation totale crypto -6,29 % 24h, Fear & Greed Index 20/100"
+    },
+    {
+      "nom": "Finnhub",
+      "type": "api",
+      "donnees_utilisees": "S&P 500 -0,36 %, Nasdaq 100 -1,20 %, Dow Jones +0,13 %, Nvidia -2,01 %, or +0,16 %, pétrole -0,34 %"
+    },
+    {
+      "nom": "TechCrunch",
+      "type": "presse",
+      "donnees_utilisees": "Départ de Jensen Huang, inquiétudes des VCs et fondateurs IA startups sur réduction des financements"
+    },
+    {
+      "nom": "Le Monde",
+      "type": "presse",
+      "donnees_utilisees": "Incident de drone au-dessus de base militaire britannique, intervention armée américaine"
+    },
+    {
+      "nom": "Middle East Eye",
+      "type": "presse",
+      "donnees_utilisees": "Incident de drone, base utilisée pour frappes contre l'Iran, prolongation dérogation maritime Trump"
+    },
+    {
+      "nom": "FRED",
+      "type": "api",
+      "donnees_utilisees": "Treasury 10Y 5,1 % (+0,12 %), inflation CPI 4,08 % a/a"
+    },
+    {
+      "nom": "DefiLlama",
+      "type": "api",
+      "donnees_utilisees": "TVL DeFi : Binance CEX -3,8 %, Aave V3 -2,8 %, LayerZero V2 +6,9 %"
+    }
+  ],
+  "_verification": {
+    "score": 0.8,
+    "totalClaims": 40,
+    "verified": 32,
+    "unverified": 8,
+    "pass": true
+  },
+  "_contradictions": [
+    {
+      "indicator": "EUR/USD",
+      "source1": {
+        "name": "Alpha Vantage",
+        "value": 1.10283761
+      },
+      "source2": {
+        "name": "ECB Data",
+        "value": 1.1377
+      },
+      "divergence_pct": 3.06,
+      "type": "forex",
+      "note": "EUR/USD : Alpha Vantage 1.10283761 (intraday) vs ECB 1.1377 (fixing overnight). Utiliser ECB pour référence officielle, Alpha Vantage pour tendance intraday."
+    },
+    {
+      "indicator": "QQQ (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 679.89
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 686.9667999999999
+      },
+      "divergence_pct": 1.03,
+      "type": "etf_self",
+      "note": "QQQ : prix 679.89 ≠ prev_close (688.17) + change (-1.2032) = 686.97. Possible donnée corrompue."
+    },
+    {
+      "indicator": "NVDA (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 162.85
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 164.1803
+      },
+      "divergence_pct": 0.81,
+      "type": "etf_self",
+      "note": "NVDA : prix 162.85 ≠ prev_close (166.19) + change (-2.0097) = 164.18. Possible donnée corrompue."
+    },
+    {
+      "indicator": "GOOGL (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 295.77
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 297.71909999999997
+      },
+      "divergence_pct": 0.65,
+      "type": "etf_self",
+      "note": "GOOGL : prix 295.77 ≠ prev_close (298.7) + change (-0.9809) = 297.72. Possible donnée corrompue."
+    },
+    {
+      "indicator": "TSLA (ETF self-check)",
+      "source1": {
+        "name": "prix actuel",
+        "value": 390.22
+      },
+      "source2": {
+        "name": "prev_close + change",
+        "value": 395.6309
+      },
+      "divergence_pct": 1.37,
+      "type": "etf_self",
+      "note": "TSLA : prix 390.22 ≠ prev_close (397.45) + change (-1.8191) = 395.63. Possible donnée corrompue."
+    }
+  ],
+  "_bibliography": {
+    "score": 0.3684210526315789,
+    "totalRefs": 19,
+    "matched": 7,
+    "unmatched": 12,
+    "pass": false,
+    "bibliography": [
+      {
+        "titre": "Eqolux : l’IA qui protège les marges et transforme l’économie de la gastronomie française",
+        "source": "Challenges",
+        "url": "https://www.challenges.fr/partenaires/eqolux-lia-qui-protege-les-marges-et-transforme-leconomie-de-la-gastronomie-francaise_646951",
+        "domain": "challenges.fr",
+        "date": "2026-11-16T09:00:00.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Compléter ses revenus à la retraite : pourquoil miser sur la SCPI ?",
+        "source": "Challenges",
+        "url": "https://www.challenges.fr/argent-et-placements/completer-ses-revenus-a-la-retraite-pourquoil-miser-sur-la-scpi_646937",
+        "domain": "challenges.fr",
+        "date": "2026-11-16T09:00:00.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "KissKiss : le bien-être intime suisse s'invite en France",
+        "source": "Challenges",
+        "url": "https://www.challenges.fr/partenaires/vision-dexperts/kisskiss-le-bien-etre-intime-suisse-sinvite-en-france_646931",
+        "domain": "challenges.fr",
+        "date": "2026-11-16T08:30:00.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "SunPower sinks to 52-week low after delaying 10-Q filing, sees Q3 revenue below guidance",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4672685-sunpower-sinks-to-52-week-low-after-delaying-10-q-filing-sees-q3-revenue-below-guidance?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-11-13T23:07:14.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "SpaceX Flight 15 booster diverts to splashdown, missing planned double catch",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4672724-spacex-flight-15-booster-diverts-to-splashdown-missing-planned-double-catch?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-11-13T23:06:03.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Iran Braces for a Budget Without Oil Revenue",
+        "source": "OilPrice",
+        "url": "https://oilprice.com/Energy/Energy-General/Iran-Braces-for-a-Budget-Without-Oil-Revenue.html",
+        "domain": "oilprice.com",
+        "date": "2026-11-13T23:00:00.000Z",
+        "category": "matieres_premieres"
+      },
+      {
+        "titre": "Trinity Place Holdings GAAP EPS of $0.00",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4672723-trinity-place-holdings-gaap-eps-of-0_00?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-11-13T22:57:50.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "More gold analysts turning bearish as $4,000 support breaks",
+        "source": "Seeking Alpha",
+        "url": "https://seekingalpha.com/news/4672708-more-gold-analysts-turning-bearish-as-4000-support-breaks?utm_source=feed_news_all&amp;utm_medium=referral&amp;feed_item_type=news",
+        "domain": "seekingalpha.com",
+        "date": "2026-11-13T22:55:33.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "L’armée américaine intervient pour une « suspicion d’activité de drone non autorisée » au-dessus d’une base militaire britannique",
+        "source": "Le Monde Intl",
+        "url": "https://www.lemonde.fr/international/article/2026/11/13/l-armee-americaine-intervient-pour-une-suspicion-d-activite-de-drone-non-autorisee-au-dessus-d-une-base-militaire-britannique_6809392_3210.html",
+        "domain": "lemonde.fr",
+        "date": "2026-11-13T22:51:25.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Your Holiday Gifts Don’t Have To Be Delivered By Diesel",
+        "source": "CleanTechnica",
+        "url": "https://cleantechnica.com/2026/11/13/your-holiday-gifts-dont-have-to-be-delivered-by-diesel/",
+        "domain": "cleantechnica.com",
+        "date": "2026-11-13T22:50:24.000Z",
+        "category": "matieres_premieres"
+      },
+      {
+        "titre": "Mistras Group issues supplemental merger disclosures amid shareholder lawsuits",
+        "source": "Investing.com",
+        "url": "https://www.investing.com/news/sec-filings/mistras-group-issues-supplemental-merger-disclosures-amid-shareholder-lawsuits-93CH-5026718",
+        "domain": "investing.com",
+        "date": "2026-11-13T22:49:28.000Z",
+        "category": "marches"
+      },
+      {
+        "titre": "Europe Agrees on a Team to Represent It in Talks With Russia",
+        "source": "New York Times",
+        "url": "https://www.nytimes.com/2026/11/13/world/europe/europe-ukraine-talks-russia.html",
+        "domain": "nytimes.com",
+        "date": "2026-11-13T22:47:13.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Mort de Vladimir Poutine en 2027, paix en Ukraine, guerre en Estonie : l’improbable scénario du futur brandi par le think tank américain RAND",
+        "source": "Le Figaro",
+        "url": "https://www.lefigaro.fr/international/mort-de-vladimir-poutine-en-2027-paix-en-ukraine-guerre-en-estonie-l-improbable-scenario-du-futur-brandi-par-le-think-tank-americain-rand-20261113",
+        "domain": "lefigaro.fr",
+        "date": "2026-11-13T22:44:44.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Jensen Huang’s departure blasts big hole in AI startup funding, VCs and founders say",
+        "source": "TechCrunch",
+        "url": "https://techcrunch.com/2026/11/13/jensen-huangs-departure-blasts-big-hole-in-ai-startup-funding-vcs-and-founders-say/",
+        "domain": "techcrunch.com",
+        "date": "2026-11-13T22:43:00.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "US responds to suspected drone activity over UK air base used in Iran strikes",
+        "source": "Middle East Eye",
+        "url": "https://www.middleeasteye.net/live-blog/live-blog-update/us-responds-suspected-drone-activity-over-uk-air-base-used-iran-strikes",
+        "domain": "middleeasteye.net",
+        "date": "2026-11-13T22:42:20.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "With Weather Demand Poised to Fade, Physical Natural Gas Prices Snap Win Streak",
+        "source": "Natural Gas Intel",
+        "url": "https://naturalgasintel.com/news/with-weather-demand-poised-to-fade-physical-natural-gas-prices-snap-win-streak/",
+        "domain": "naturalgasintel.com",
+        "date": "2026-11-13T22:40:37.000Z",
+        "category": "matieres_premieres"
+      },
+      {
+        "titre": "Claude Meetings",
+        "source": "Hacker News",
+        "url": "https://claude.com/resources/articles/claude-meetings",
+        "domain": "claude.com",
+        "date": "2026-11-13T22:39:15.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "Ask a Scientist: Who Has a Voice in Clean Air Protections?",
+        "source": "CleanTechnica",
+        "url": "https://cleantechnica.com/2026/11/13/ask-a-scientist-who-has-a-voice-in-clean-air-protections/",
+        "domain": "cleantechnica.com",
+        "date": "2026-11-13T22:38:11.000Z",
+        "category": "ai_tech"
+      },
+      {
+        "titre": "Nvidia Approached Arm CEO Haas in Search, FT Reports",
+        "source": "The Defiant",
+        "url": "https://thedefiant.io/frontier/ai/nvidia-approached-arm-ceo-haas-in-search-ft-reports",
+        "domain": "thedefiant.io",
+        "date": "2026-11-13T22:30:52.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "Securing the Asia-Pacific digital battlespace: TechNet Indo-Pacific 2026",
+        "source": "Breaking Defense",
+        "url": "https://breakingdefense.com/2026/11/securing-the-asia-pacific-digital-battlespace-technet-indo-pacific-2026/",
+        "domain": "breakingdefense.com",
+        "date": "2026-11-13T22:27:52.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Trump extends shipping law waiver for 90 days amid Iran war fuel price rise",
+        "source": "Middle East Eye",
+        "url": "https://www.middleeasteye.net/live-blog/live-blog-update/trump-extends-shipping-law-waiver-90-days-amid-iran-war-fuel-price-rise",
+        "domain": "middleeasteye.net",
+        "date": "2026-11-13T22:24:36.000Z",
+        "category": "geopolitique"
+      },
+      {
+        "titre": "Could a Former Nvidia Executive Replace Jensen Huang? Arm’s Rene Haas Emerges as Candidate",
+        "source": "Decrypt",
+        "url": "https://decrypt.co/383276/nvidia-arm-ceo-rene-haas-replace-jensen-huang",
+        "domain": "decrypt.co",
+        "date": "2026-11-13T22:16:03.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "Here’s what happened in crypto today",
+        "source": "CoinTelegraph",
+        "url": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+        "domain": "cointelegraph.com",
+        "date": "2026-11-13T22:08:37.000Z",
+        "category": "crypto"
+      },
+      {
+        "titre": "All departing US flights grounded due to communication problem",
+        "source": "Euractiv",
+        "url": "https://www.rapporteur.com/news/all-departing-us-flights-grounded-due-to-communication-problem/",
+        "domain": "rapporteur.com",
+        "date": "2026-11-13T22:05:43.000Z",
+        "category": "ai_tech"
+      }
+    ],
+    "apiSources": [
+      {
+        "name": "Finnhub",
+        "url": "https://finnhub.io",
+        "domain": "finnhub.io",
+        "category": "markets",
+        "indicators": [
+          "SPY",
+          "QQQ",
+          "DIA",
+          "GLD",
+          "USO",
+          "NVDA",
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA"
+        ]
+      },
+      {
+        "name": "CoinGecko",
+        "url": "https://www.coingecko.com",
+        "domain": "coingecko.com",
+        "category": "crypto",
+        "indicators": [
+          "BTC",
+          "ETH",
+          "XRP",
+          "SOL",
+          "DOGE",
+          "ADA"
+        ]
+      },
+      {
+        "name": "Alternative.me",
+        "url": "https://alternative.me/crypto/fear-and-greed-index/",
+        "domain": "alternative.me",
+        "category": "crypto",
+        "indicators": [
+          "Fear & Greed Index"
+        ]
+      },
+      {
+        "name": "FRED",
+        "url": "https://fred.stlouisfed.org",
+        "domain": "fred.stlouisfed.org",
+        "category": "macro",
+        "indicators": [
+          "Inflation (CPI)",
+          "Taux directeur (Fed Funds)",
+          "PIB (trimestriel)",
+          "Chômage",
+          "Treasury 10 ans",
+          "Dollar Index (broad)",
+          "Spread 10Y-2Y",
+          "Masse monétaire M2",
+          "Bilan Fed (actifs)",
+          "Taux hypothécaire 30 ans"
+        ]
+      },
+      {
+        "name": "ECB Data",
+        "url": "https://data.ecb.europa.eu",
+        "domain": "data.ecb.europa.eu",
+        "category": "macro",
+        "indicators": [
+          "Taux directeur",
+          "EUR/USD"
+        ]
+      },
+      {
+        "name": "metals.dev",
+        "url": "https://metals.dev",
+        "domain": "metals.dev",
+        "category": "commodities",
+        "indicators": []
+      },
+      {
+        "name": "Twelve Data",
+        "url": "https://twelvedata.com",
+        "domain": "twelvedata.com",
+        "category": "markets",
+        "indicators": [
+          "DAX (Francfort)"
+        ]
+      },
+      {
+        "name": "DefiLlama",
+        "url": "https://defillama.com",
+        "domain": "defillama.com",
+        "category": "defi",
+        "indicators": [
+          "Binance CEX",
+          "OKX",
+          "Lido",
+          "LayerZero V2",
+          "Aave V3"
+        ]
+      },
+      {
+        "name": "Alpha Vantage",
+        "url": "https://www.alphavantage.co",
+        "domain": "alphavantage.co",
+        "category": "markets",
+        "indicators": [
+          "EUR/USD",
+          "GBP/USD",
+          "USD/JPY"
+        ]
+      },
+      {
+        "name": "Mempool",
+        "url": "https://mempool.space",
+        "domain": "mempool.space",
+        "category": "onchain",
+        "indicators": [
+          "BTC Fees",
+          "BTC Hashrate"
+        ]
+      }
+    ],
+    "methodology": {
+      "description": "Vérification bibliographique par recoupement multi-sources",
+      "steps": [
+        "Extraction des références de sources dans le texte du briefing",
+        "Recoupement avec la bibliographie des articles RSS/API utilisés",
+        "Vérification croisée avec le registre des 15 sources API",
+        "Classification des sources (API, presse, institution, think tank, estimation)"
+      ],
+      "totalArticlesUsed": 25,
+      "totalAPISources": 10,
+      "standardApplied": "Adaptation APA 7 pour veille financière/géopolitique"
+    }
+  }
+}

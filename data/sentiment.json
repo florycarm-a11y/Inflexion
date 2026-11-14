@@ -1,78 +1,69 @@
 {
-  "updated": "2026-11-13T23:15:57.666Z",
-  "date": "2026-11-13",
+  "updated": "2026-11-14T12:57:07.427Z",
+  "date": "2026-11-14",
   "global": {
-    "score": -0.49,
+    "score": -0.6,
     "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.49), dominé par la rubrique crypto (baissier)."
+    "resume": "Le sentiment global est baissier (-0.6), dominé par la rubrique crypto (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.45,
-      "confidence": 0.72,
+      "score": -0.65,
+      "confidence": 0.85,
       "tendance": "baissier",
-      "resume": "Tensions géopolitiques multiples : interventions militaires US (drones UK, Iran), sommets diplomatiques (Trump-Xi-Putin), crises régionales (Ukraine, Estonie, Moyen-Orient). Risques d'escalade sur les approvisionnements énergétiques et les chaînes logistiques.",
+      "resume": "Négociations territoriales Ukraine-OTAN en cours, tensions Iran-US persistantes (drone intercepté, tanker en feu), risque d'escalade géopolitique. Réunion Trump-Xi-Putin envisagée mais incertaine.",
       "signaux_cles": [
-        "Trump convoque sommet Xi-Putin à Shenzhen (13/11/2026)",
-        "Tensions Iran : hausse des prix carburant, waiver Jones Act prolongé 90j",
-        "Groupe de 5 pays européens se positionne pour négociations Ukraine"
+        "US propose cession du Donbas à l'Ukraine contre adhésion OTAN (multiple sources)",
+        "Iran intercepte drone MQ-1 Predator et signale tanker en feu dans le détroit d'Ormuz",
+        "Trump envisage de suspendre attaques contre l'Iran sauf nouvelle provocation"
       ]
     },
     "marches": {
-      "score": -0.52,
-      "confidence": 0.75,
-      "tendance": "baissier",
-      "resume": "Perturbations opérationnelles majeures (arrêt FAA nationwide, ~10 000 vols annulés) et dégradation technologique : Nvidia perd 1,7 trillion $ (pire semaine depuis 2012), SunPower chute à 52-week low. Secteur aérien paralysé, indices actions en repli.",
+      "score": -0.28,
+      "confidence": 0.72,
+      "tendance": "mixte",
+      "resume": "Panne Microsoft 365 résolue après 24h (impact opérationnel résorbé). Tesla lance Cybercab en ventes limitées. Goldman Sachs révise à la baisse prévisions or 2027. Préoccupations sectorielles tech et aérien.",
       "signaux_cles": [
-        "FAA ground stop nationwide : ~10 000 vols annulés (13/11)",
-        "Nvidia : perte 1,7 trillion $, pire semaine depuis 2012",
-        "Or : analystes baissiers, support 4 000 $ rompu"
+        "Panne Microsoft 365 résolue, pas de cyberattaque confirmée",
+        "Tesla ouvre ventes Cybercab à clientèle sélectionnée",
+        "Goldman Sachs réduit prévisions or 2027 (chiffres non précisés)"
       ]
     },
     "crypto": {
-      "score": -0.68,
-      "confidence": 0.85,
+      "score": -0.88,
+      "confidence": 0.92,
       "tendance": "baissier",
-      "resume": "Marché crypto en correction significative : ETH -13,82%, XRP -14,37%, SOL -13,58%, DOGE -11,55% sur 7j. Cependant, signaux institutionnels positifs : JPMorgan approche 1 Mrd $, Coinbase obtient clearance OCC, régulation crypto progresse.",
+      "resume": "Décorrélation massive des cryptos : BTC -11,48% (7j), ETH -14,98%, XRP -15,07%. Fear & Greed à 13 (panique extrême). TVL DeFi effondré -17,2% sur 7j ($464B). Fuites de données massives (22M adresses La Poste).",
       "signaux_cles": [
-        "ETH -13,82%, XRP -14,37%, SOL -13,58% sur 7 jours",
-        "TVL DeFi -13,0% (467B$) : signal stress systémique",
-        "Coinbase obtient clearance OCC pour trust company US"
+        "Bitcoin sous 67 000 $ : 330M$ liquidés en 2h, ETFs perdent 2,35B$ en 2 semaines",
+        "Fear & Greed Index à 13 (Extreme Fear), baisse de -12 pts/7j",
+        "TVL DeFi -17,2% sur 7j ($464B), Lido -14,5%, EigenCloud -14,9%"
       ]
     },
     "matieres_premieres": {
       "score": -0.35,
       "confidence": 0.68,
-      "tendance": "mixte",
-      "resume": "Marché pétrolier volatil (tensions Iran vs. approvisionement) et gaz naturel affaibli (surplus stockage). Secteur maritime en correction après rallye record. LNG reprend via Qatar, mais demande saisonnière décline.",
+      "tendance": "neutre",
+      "resume": "Tensions géopolitiques (Iran) soutiennent pétrole brut. Gaz naturel affaibli par surplus stocks. Secteur maritime en consolidation après rallye record. Accord LNG Mozambique-Afrique du Sud attendu janvier 2027.",
       "signaux_cles": [
-        "Pétrole fluctue : tensions Iran vs. glut global",
-        "Gaz naturel : surplus stockage pèse sur futures",
-        "YPF Argentine LNG : FID novembre 2026 sur projet 29 Mrd $"
+        "Pétrole fluctue sur tensions Iran persistantes (drone, tanker)",
+        "Surplus gaz naturel pèse sur futures, fin de séquence haussière",
+        "Accord LNG Mozambique-Afrique du Sud prévu janvier 2027"
       ]
     },
     "ai_tech": {
-      "score": -0.38,
-      "confidence": 0.7,
-      "tendance": "mixte",
-      "resume": "Départ Jensen Huang (Nvidia) crée turbulence VC/startup. Cependant, innovations positives : OpenAI ChatGPT Wallet, Anthropic roadshow JPM, LangChain 3B$ valuation. Régulation EU progresse (Von der Leyen tech sovereignty). Outages Microsoft 365 (24h) et FAA révèlent fragilités infrastructure.",
+      "score": -0.72,
+      "confidence": 0.88,
+      "tendance": "baissier",
+      "resume": "Crise de confiance post-Jensen Huang (Nvidia) : démission, accusations de tromperie, risques juridiques. OpenAI réaffecte équipes robotique. Anthropic défend sécurité IA avant IPO. Secteur tech sous pression générale.",
       "signaux_cles": [
-        "Jensen Huang départ Nvidia : impact VC funding négatif",
-        "OpenAI ChatGPT Wallet lancé avec Visa/Mastercard/Amex",
-        "LangChain atteint 3 Mrd $ valuation"
+        "Jensen Huang aurait induit en erreur responsable juridique Nvidia sur liaison chinoise",
+        "OpenAI réassigne chercheurs robotique, modèles généraux rendent spécialisé obsolète",
+        "Anthropic affirme retrain Mythos possible avec fraction compute initiale"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-03-22",
-      "global": -0.11,
-      "geopolitique": -0.82,
-      "marches": -0.45,
-      "crypto": -0.38,
-      "matieres_premieres": 0.68,
-      "ai_tech": 0.52
-    },
     {
       "date": "2026-03-23",
       "global": -0.34,
@@ -333,6 +324,15 @@
       "crypto": -0.68,
       "matieres_premieres": -0.35,
       "ai_tech": -0.38
+    },
+    {
+      "date": "2026-11-14",
+      "global": -0.6,
+      "geopolitique": -0.65,
+      "marches": -0.28,
+      "crypto": -0.88,
+      "matieres_premieres": -0.35,
+      "ai_tech": -0.72
     }
   ],
   "model": "claude-haiku-4-5-20251001",

@@ -1,89 +1,134 @@
 {
-  "updated": "2026-11-13T23:15:57.667Z",
+  "updated": "2026-11-14T12:57:07.427Z",
   "alertes": [
     {
-      "id": "alert-2026-11-13-001",
-      "titre": "Ethereum (ETH) : -13,82% sur 7 jours, correction DeFi systémique",
-      "texte": "ETH recule de 13,82% hebdomadaire. TVL DeFi global chute de 13,0% à 467 Mrd$, avec Lido -12,4%, SSV -12,6%, Binance staked ETH -13,6%. Signal de stress généralisé sur l'écosystème de staking et liquidité décentralisée.",
+      "id": "alert-2026-11-14-001",
+      "titre": "BTC : -11,48% sur 7j, liquidations massives sous 67 000 $",
+      "texte": "Bitcoin perd 11,48% en 7 jours avec 330 millions de dollars liquidés en 2 heures. Les ETFs Bitcoin enregistrent 2,35 milliards de dollars de sorties en 2 semaines, dont 11 semaines consécutives de pertes pour BlackRock.",
       "categorie": "crypto",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-11-13T23:15:57.667Z",
+      "horodatage": "2026-11-14T12:57:07.427Z",
+      "donnees": {
+        "symbole": "BTC",
+        "nom": "Bitcoin",
+        "prix": 67091,
+        "variation_7d": -11.48
+      }
+    },
+    {
+      "id": "alert-2026-11-14-002",
+      "titre": "ETH : -14,98% sur 7j, TVL DeFi effondré de -17,2%",
+      "texte": "Ethereum recule de 14,98% en 7 jours. Le TVL DeFi global chute de 17,2% ($464B), avec Lido -14,5% ($18,6B), EigenCloud -14,9% ($4,9B) et Binance staked ETH -14,8% ($7,4B). Signal de stress systémique.",
+      "categorie": "crypto",
+      "severite": "urgent",
+      "impact": "baissier",
+      "horodatage": "2026-11-14T12:57:07.427Z",
       "donnees": {
         "symbole": "ETH",
         "nom": "Ethereum",
-        "prix": 1919.49,
-        "variation_7d": -13.82
+        "prix": 1900.75,
+        "variation_7d": -14.98
       }
     },
     {
-      "id": "alert-2026-11-13-002",
-      "titre": "XRP (XRP) : -14,37% sur 7 jours, pression vendeuse intense",
-      "texte": "XRP enregistre une baisse de 14,37% sur 7 jours, surpassant les pertes d'ETH. Contexte : tensions géopolitiques (Iran), régulation crypto en flux, volatilité macro.",
+      "id": "alert-2026-11-14-003",
+      "titre": "XRP : -15,07% sur 7j, sous 1 dollar",
+      "texte": "XRP perd 15,07% en 7 jours et franchit le seuil psychologique d'1 dollar. Mouvement coordonné avec ETH et BTC dans contexte de panique générale (Fear & Greed à 13).",
       "categorie": "crypto",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-11-13T23:15:57.667Z",
+      "horodatage": "2026-11-14T12:57:07.427Z",
       "donnees": {
         "symbole": "XRP",
         "nom": "XRP",
-        "prix": 1.005,
-        "variation_7d": -14.37
+        "prix": 0.992795,
+        "variation_7d": -15.07
       }
     },
     {
-      "id": "alert-2026-11-13-003",
-      "titre": "Solana (SOL) : -13,58% sur 7j, -5,15% en 24h (77,38$)",
-      "texte": "SOL perd 13,58% hebdomadaire et 5,15% en 24h, cotant 77,38$. Correction alignée sur l'écosystème DeFi. Risque de test des supports techniques.",
+      "id": "alert-2026-11-14-004",
+      "titre": "Fear & Greed Index : 13 (Extreme Fear), -12 pts sur 7j",
+      "texte": "L'indice Fear & Greed chute à 13 points (panique extrême) avec variation de -12 points sur 7 jours. Reflète capitulation massive des investisseurs crypto.",
       "categorie": "crypto",
       "severite": "urgent",
       "impact": "baissier",
-      "horodatage": "2026-11-13T23:15:57.667Z",
+      "horodatage": "2026-11-14T12:57:07.427Z",
       "donnees": {
         "symbole": "SOL",
         "nom": "Solana",
-        "prix": 77.38,
-        "variation_24h": -5.15
+        "prix": 75.61,
+        "variation_24h": -6.23
       }
     },
     {
-      "id": "alert-2026-11-13-004",
-      "titre": "Nvidia (NVDA) : -2,01% (162,85$), pire semaine depuis 2012",
-      "texte": "NVDA perd 2,01% à 162,85$. Sur la semaine, destruction de 1,7 trillion$ de capitalisation, pire performance depuis 2012. Départ Jensen Huang amplifie les inquiétudes sur la gouvernance et la stratégie IA.",
-      "categorie": "ai_tech",
-      "severite": "urgent",
+      "id": "alert-2026-11-14-005",
+      "titre": "SOL : -15,61% sur 7j, -6,23% en 24h à 75,61 $",
+      "texte": "Solana recule de 15,61% en 7 jours et de 6,23% en 24 heures à 75,61 dollars. Participation au mouvement baissier crypto généralisé.",
+      "categorie": "crypto",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-11-13T23:15:57.667Z",
+      "horodatage": "2026-11-14T12:57:07.427Z",
       "donnees": {
         "symbole": "SOL",
         "nom": "Solana",
-        "prix": 77.38,
-        "variation_7d": -13.58
+        "prix": 75.61,
+        "variation_7d": -15.61
       }
     },
     {
-      "id": "alert-2026-11-13-005",
-      "titre": "FAA : arrêt nationwide des vols, ~10 000 annulations (13/11)",
-      "texte": "Régulateur aérien US impose ground stop nationwide sur tous les vols en départ suite à problème de communication. Environ 10 000 vols annulés. Impact majeur sur logistique, transport de fret, chaînes d'approvisionnement.",
-      "categorie": "marches",
-      "severite": "urgent",
+      "id": "alert-2026-11-14-006",
+      "titre": "DOGE : -12,38% sur 7j, pression vendeuse généralisée",
+      "texte": "Dogecoin perd 12,38% en 7 jours, aligné sur la tendance baissière crypto malgré soutien politique (Musk). Contexte de dérisquage massif.",
+      "categorie": "crypto",
+      "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-11-13T23:15:57.667Z",
+      "horodatage": "2026-11-14T12:57:07.427Z",
       "donnees": {
         "symbole": "DOGE",
         "nom": "Dogecoin",
-        "prix": 0.063918,
-        "variation_7d": -11.55
+        "prix": 0.062758,
+        "variation_7d": -12.38
       }
     },
     {
-      "id": "alert-2026-11-13-006",
-      "titre": "Microsoft 365 : outage 24h, impact productivité entreprise",
-      "texte": "Microsoft 365 subit une panne de 24 heures, affectant la productivité des entreprises. Révèle fragilités infrastructure cloud critique.",
+      "id": "alert-2026-11-14-007",
+      "titre": "ADA : -10,72% sur 7j, -5,32% en 24h à 0,162 $",
+      "texte": "Cardano recule de 10,72% en 7 jours et de 5,32% en 24 heures à 0,162 dollar. Participation au mouvement de correction crypto.",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-11-14T12:57:07.427Z",
+      "donnees": {
+        "symbole": "ADA",
+        "nom": "Cardano",
+        "prix": 0.16211,
+        "variation_24h": -5.32
+      }
+    },
+    {
+      "id": "alert-2026-11-14-008",
+      "titre": "NVDA : -2,01% à 162,85 $, crise de gouvernance Jensen Huang",
+      "texte": "Nvidia recule de 2,01% à 162,85 dollars dans contexte de crise de confiance : Jensen Huang aurait induit en erreur responsable juridique sur liaison avec femme d'affaires chinoise. Risques juridiques et de succession.",
       "categorie": "ai_tech",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-11-13T23:15:57.667Z",
+      "horodatage": "2026-11-14T12:57:07.427Z",
+      "donnees": {
+        "symbole": "ADA",
+        "nom": "Cardano",
+        "prix": 0.16211,
+        "variation_7d": -10.72
+      }
+    },
+    {
+      "id": "alert-2026-11-14-009",
+      "titre": "Régime crypto : -3,75% sur 24h, tendance baissière modérée confirmée",
+      "texte": "La classe d'actifs crypto enregistre -3,75% en 24 heures. Régime baissier modéré détecté (consensus 69%, amplitude 1,66%). Actions -0,85%, ETFs -0,32%, indices EU +0,19% (divergence sectorielle).",
+      "categorie": "crypto",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-11-14T12:57:07.427Z",
       "donnees": {
         "symbole": "NVDA",
         "nom": "Nvidia",
@@ -92,92 +137,53 @@
       }
     },
     {
-      "id": "alert-2026-11-13-007",
-      "titre": "Dogecoin (DOGE) : -11,55% sur 7 jours",
-      "texte": "DOGE recule de 11,55% hebdomadaire, aligné sur correction crypto généralisée. Contexte : régime baissier modéré, TVL DeFi sous pression.",
+      "id": "alert-2026-11-14-010",
+      "titre": "Ukraine : US propose cession Donbas contre adhésion OTAN",
+      "texte": "Zelenskyy confirme que les États-Unis ont évoqué la cession du Donbas à la Russie en échange d'une adhésion rapide de l'Ukraine à l'OTAN. Négociations territoriales en cours, impact géopolitique sur risque premium.",
+      "categorie": "geopolitique",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-11-14T12:57:07.427Z",
+      "donnees": {
+        "score": 13,
+        "label": "Extreme Fear",
+        "variation_7j": -12
+      }
+    },
+    {
+      "id": "alert-2026-11-14-011",
+      "titre": "Iran : interception drone US, tanker en feu détroit d'Ormuz",
+      "texte": "Iran annonce l'interception d'un drone MQ-1 Predator au-dessus de l'île de Qeshm et signale un tanker pétrolier en feu dans le détroit d'Ormuz. Escalade géopolitique potentielle, soutien prix pétrole.",
+      "categorie": "geopolitique",
+      "severite": "attention",
+      "impact": "baissier",
+      "horodatage": "2026-11-14T12:57:07.427Z",
+      "donnees": {
+        "score": 13,
+        "label": "Extreme Fear",
+        "variation_7j": -12
+      }
+    },
+    {
+      "id": "alert-2026-11-14-012",
+      "titre": "Crypto : 22M adresses volées La Poste, fuites de données massives",
+      "texte": "22 millions d'adresses compromises chez La Poste en France. Projet d'enlèvement visant utilisateur Ethereum français. Semaine noire des fuites de données affectant confiance écosystème crypto.",
       "categorie": "crypto",
       "severite": "attention",
       "impact": "baissier",
-      "horodatage": "2026-11-13T23:15:57.667Z",
+      "horodatage": "2026-11-14T12:57:07.427Z",
       "donnees": {
         "protocole": "Lido",
-        "tvl_b": 19,
-        "change_7d": -12.4
+        "tvl_b": 18.6,
+        "change_7d": -14.5
       }
-    },
-    {
-      "id": "alert-2026-11-13-008",
-      "titre": "Pétrole : volatilité Iran-approvisionnement, prix carburant en hausse",
-      "texte": "Tensions géopolitiques Iran (strikes US) contrebalancées par glut pétrolier global. Trump prolonge waiver Jones Act 90j. Carburant diesel reste cher malgré offre abondante (friction logistique).",
-      "categorie": "matieres_premieres",
-      "severite": "attention",
-      "impact": "neutre",
-      "horodatage": "2026-11-13T23:15:57.667Z",
-      "donnees": {
-        "protocole": "SSV Network",
-        "tvl_b": 10.2,
-        "change_7d": -12.6
-      }
-    },
-    {
-      "id": "alert-2026-11-13-009",
-      "titre": "Gaz naturel : surplus stockage pèse sur futures",
-      "texte": "Surplus de gaz naturel en stockage pèse sur les contrats futures. Demande saisonnière en déclin après rallye octobre. Pression baissière sur prix.",
-      "categorie": "matieres_premieres",
-      "severite": "info",
-      "impact": "baissier",
-      "horodatage": "2026-11-13T23:15:57.667Z",
-      "donnees": {
-        "protocole": "Binance staked ETH",
-        "tvl_b": 7.5,
-        "change_7d": -13.6
-      }
-    },
-    {
-      "id": "alert-2026-11-13-010",
-      "titre": "Coinbase : clearance OCC pour trust company US, signal régulation positive",
-      "texte": "Coinbase obtient clearance final OCC pour opérer en tant que trust company US. Signal de progression régulation crypto institutionnelle, contrebalançant sentiment baissier court terme.",
-      "categorie": "crypto",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-11-13T23:15:57.667Z",
-      "donnees": {
-        "protocole": "EigenCloud",
-        "tvl_b": 5,
-        "change_7d": -12.8
-      }
-    },
-    {
-      "id": "alert-2026-11-13-011",
-      "titre": "JPMorgan : holdings Bitcoin/crypto approchent 1 Mrd$",
-      "texte": "JPMorgan accumule positions Bitcoin et crypto-liées approchant 1 Mrd$. Signal d'adoption institutionnelle malgré correction court terme.",
-      "categorie": "crypto",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-11-13T23:15:57.667Z",
-      "donnees": {
-        "tvl_start_b": 537,
-        "tvl_end_b": 467,
-        "change_pct": -13,
-        "days": 7
-      }
-    },
-    {
-      "id": "alert-2026-11-13-012",
-      "titre": "LangChain : atteint 3 Mrd$ valuation, momentum IA agents",
-      "texte": "Startup IA LangChain atteint 3 Mrd$ valuation. Contraste avec départ Jensen Huang : marché IA reste dynamique sur agents/outils malgré turbulences Nvidia.",
-      "categorie": "ai_tech",
-      "severite": "info",
-      "impact": "haussier",
-      "horodatage": "2026-11-13T23:15:57.667Z",
-      "donnees": {}
     }
   ],
   "stats": {
     "total": 12,
-    "urgent": 5,
-    "attention": 3,
-    "info": 4
+    "urgent": 4,
+    "attention": 8,
+    "info": 0
   },
   "model": "claude-haiku-4-5-20251001",
   "mode": "consolidated"
