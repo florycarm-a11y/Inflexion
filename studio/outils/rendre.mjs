@@ -34,16 +34,24 @@ const chrome = spawn(CHROME, [
   '--no-first-run', '--no-default-browser-check', '--hide-scrollbars', '--mute-audio',
   '--allow-file-access-from-files', '--window-size=1600,900', '--force-device-scale-factor=1', 'about:blank',
 ], { stdio: ['ignore', 'ignore', 'pipe', 'pipe', 'pipe'] });
-let journal = '';
+const GARDE_MS = Number(process.env.RENDRE_GARDE_MS) || 10000;
+const attendre = (ms) => new Promise((r) => setTimeout(r, ms));
+const vivant = () => chrome.exitCode === null && chrome.signalCode === null;
+let journal = '', derniereErreurScene = null;
 chrome.stderr.on('data', (d) => { journal = (journal + d).slice(-4000); });
 const vers = chrome.stdio[3], depuis = chrome.stdio[4];
+vers.on('error', () => {}); depuis.on('error', () => {});
+chrome.on('error', (e) => { journal = e.message; });
 let numero = 0, tampon = '';
 const enAttente = new Map();
 depuis.setEncoding('utf8');
 depuis.on('data', (d) => {
   tampon += d; let fin;
   while ((fin = tampon.indexOf('\0')) >= 0) {
-    const m = JSON.parse(tampon.slice(0, fin)); tampon = tampon.slice(fin + 1);
+    let m; try { m = JSON.parse(tampon.slice(0, fin)); } catch { m = null; }
+    tampon = tampon.slice(fin + 1);
+    if (!m) continue;
+    if (m.method === 'Runtime.exceptionThrown') derniereErreurScene = m.params.exceptionDetails.exception?.description || m.params.exceptionDetails.text;
     if (!enAttente.has(m.id)) continue;
     const { ok, ko } = enAttente.get(m.id); enAttente.delete(m.id);
     m.error ? ko(new Error(m.error.message)) : ok(m.result);
@@ -53,37 +61,49 @@ chrome.on('exit', (code) => {
   for (const { ko } of enAttente.values()) ko(new Error(`Chrome s'est arrêté (code ${code}). ${journal.trim().split('\n').pop() || ''}`));
   enAttente.clear();
 });
-const cdp = (method, params = {}, sessionId) => new Promise((ok, ko) => {
+const cdp = (method, params = {}, sessionId, garde = GARDE_MS) => new Promise((ok, ko) => {
+  if (!vivant()) return ko(new Error(`Chrome s'est arrêté. ${journal.trim().split('\n').pop() || ''}`));
   const id = ++numero;
-  const garde = setTimeout(() => { if (enAttente.delete(id)) ko(new Error(`Chrome ne répond pas (${method})`)); }, 10000);
-  enAttente.set(id, { ok: (r) => { clearTimeout(garde); ok(r); }, ko: (e) => { clearTimeout(garde); ko(e); } });
+  const minuterie = setTimeout(() => { if (enAttente.delete(id)) ko(new Error(`Chrome ne répond pas (${method})`)); }, garde);
+  enAttente.set(id, { ok: (r) => { clearTimeout(minuterie); ok(r); }, ko: (e) => { clearTimeout(minuterie); ko(e); } });
   vers.write(JSON.stringify(sessionId ? { id, method, params, sessionId } : { id, method, params }) + '\0');
 });
 async function ranger() {
+  setTimeout(() => process.exit(1), 15000).unref();
   try { vers.end(); } catch {}
-  if (chrome.exitCode === null) { chrome.kill(); await Promise.race([once(chrome, 'exit'), new Promise((r) => setTimeout(r, 5000))]); }
+  if (vivant()) {
+    const sorti = once(chrome, 'exit').catch(() => {});
+    chrome.kill();
+    await Promise.race([sorti, attendre(3000)]);
+    if (vivant()) { chrome.kill('SIGKILL'); await Promise.race([sorti, attendre(2000)]); }
+  }
+  try { chrome.stderr.destroy(); depuis.destroy(); } catch {}
   try { rmSync(profil, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 }); } catch {}
 }
+process.on('SIGINT', async () => { await ranger(); process.exit(130); });
 
+let faites = 0;
 try {
   // 2. Un onglet, une session
   const { targetId } = await cdp('Target.createTarget', { url: 'about:blank' });
   const { sessionId } = await cdp('Target.attachToTarget', { targetId, flatten: true });
-  const page = (method, params) => cdp(method, params, sessionId);
-  const evaluer = async (expression) => {
-    const r = await page('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true });
+  const page = (method, params, garde) => cdp(method, params, sessionId, garde);
+  await page('Runtime.enable');
+  const evaluer = async (expression, garde) => {
+    const r = await page('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true }, garde);
     if (r.exceptionDetails) throw new Error(`Erreur dans la scène : ${r.exceptionDetails.exception?.description || r.exceptionDetails.text}`);
     return r.result.value;
   };
   const ouvrir = async (scene, params) => {
     const url = `${pathToFileURL(join(SCENES, scene)).href}?rendu&${new URLSearchParams(params)}`;
+    derniereErreurScene = null;
     await page('Page.navigate', { url });
     let pret = false;
     for (let essai = 0; essai < 100 && !pret; essai++) {
       await new Promise((r) => setTimeout(r, 100));
-      pret = await evaluer(`document.readyState === 'complete' && typeof window.afficher === 'function' && window.LARGEUR > 0 && window.HAUTEUR > 0`).catch(() => false);
+      pret = await evaluer(`document.readyState === 'complete' && typeof window.afficher === 'function' && window.LARGEUR > 0 && window.HAUTEUR > 0`).catch((e) => { if (/context|navigat|Cannot find|destroyed/i.test(e.message)) return false; throw e; });
     }
-    if (!pret) throw new Error(`${scene} ne déclare pas window.LARGEUR, window.HAUTEUR et window.afficher().`);
+    if (!pret) throw new Error(`${scene} ne déclare pas window.LARGEUR, window.HAUTEUR et window.afficher().${derniereErreurScene ? ` Dernière erreur de la scène : ${derniereErreurScene}` : ''}`);
   };
 
   // 3. Énumération (mode instrument) : c'est la scène qui dit quoi rendre
@@ -101,15 +121,17 @@ try {
     await ouvrir(t.scene, t.params || {});
     const { l, h } = await evaluer(`({ l: window.LARGEUR, h: window.HAUTEUR })`);
     await page('Emulation.setDeviceMetricsOverride', { width: l, height: h, deviceScaleFactor: 1, mobile: false });
-    await evaluer(`window.afficher().then(() => new Promise((r) => requestAnimationFrame(() => r(true))))`);
-    const { data } = await page('Page.captureScreenshot', { format: 'webp', quality: 82, clip: { x: 0, y: 0, width: l, height: h, scale: 1 } });
+    await evaluer(`window.afficher().then(() => new Promise((r) => requestAnimationFrame(() => r(true))))`, 60000);
+    const { data } = await page('Page.captureScreenshot', { format: 'webp', quality: 82, clip: { x: 0, y: 0, width: l, height: h, scale: 1 } }, 60000);
     writeFileSync(join(sortieDir, t.sortie), Buffer.from(data, 'base64'));
+    faites++;
     process.stdout.write(`\rImage ${i + 1} / ${taches.length}  ${t.sortie}        `);
   }
   process.stdout.write('\n');
 } catch (e) {
-  console.error(e.message);
+  console.error(e.message + (faites ? `\n${faites} / ${taches?.length ?? '?'} images écrites dans ${sortieDir} (rendu incomplet)` : ''));
   await ranger();
   process.exit(1);
 }
 await ranger();
+process.exit(0);
