@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-11-13T23:17:48.142628+00:00Z",
+  "generated_at": "2026-11-14T12:58:42.070258+00:00Z",
   "scan_type": "short_term_sectoral",
   "max_horizon_days": 7,
   "summary": {
     "total_markets_scanned": 298,
     "total_matched": 54,
-    "short_term_markets": 3,
+    "short_term_markets": 2,
     "zones_active": 1,
     "conflicts_active": 1,
     "conflict_zones": [
       "iran"
     ],
-    "high_edge_signals": 2
+    "high_edge_signals": 1
   },
   "zones": [
     {
@@ -24,37 +24,26 @@
       "intel_multiplier": 1.88,
       "markets": [
         {
-          "question": "US announces end of Iranian blockade by November 15, 2026?",
-          "end_date": "2026-11-16",
-          "horizon_days": 2.0,
-          "event_type": "blockade",
-          "poly_price": 0.015,
-          "semplice_prob": 0.048,
-          "edge_pct": 3.2,
-          "direction": "BUY_YES",
-          "reasoning": "Type=blockade(négatif) | Base=1.5% ⚠CONFLIT×3 × Mult=1.82×Intel2.16 → Ann=17.7% → T=0.0a → P=4.8% | M=5.5(w=35%), P=5.7("
-        },
-        {
           "question": "Israel x Iran ceasefire continues through November 15?",
           "end_date": "2026-11-16",
-          "horizon_days": 2.0,
+          "horizon_days": 1.5,
           "event_type": "ceasefire",
-          "poly_price": 0.968,
+          "poly_price": 0.983,
           "semplice_prob": 0.131,
-          "edge_pct": 83.7,
+          "edge_pct": 85.2,
           "direction": "BUY_NO",
           "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×3 × Mult=0.42×Intel1.88 → Ann=43.0% → T=0.0a → P=13.1% | P=1.5(w=30%), M=2"
         },
         {
-          "question": "Israel x Iran ceasefire continues through November 13?",
-          "end_date": "2026-11-14",
-          "horizon_days": 1.0,
-          "event_type": "ceasefire",
-          "poly_price": 0.995,
-          "semplice_prob": 0.131,
-          "edge_pct": 86.4,
-          "direction": "BUY_NO",
-          "reasoning": "Type=ceasefire(positif) | Base=18.0% ⚠CONFLIT×3 × Mult=0.42×Intel1.88 → Ann=43.0% → T=0.0a → P=13.1% | P=1.5(w=30%), M=2"
+          "question": "US announces end of Iranian blockade by November 15, 2026?",
+          "end_date": "2026-11-16",
+          "horizon_days": 1.5,
+          "event_type": "blockade",
+          "poly_price": 0.011,
+          "semplice_prob": 0.048,
+          "edge_pct": 3.7,
+          "direction": "BUY_YES",
+          "reasoning": "Type=blockade(négatif) | Base=1.5% ⚠CONFLIT×3 × Mult=1.82×Intel2.16 → Ann=17.7% → T=0.0a → P=4.8% | M=5.5(w=35%), P=5.7("
         }
       ]
     }
