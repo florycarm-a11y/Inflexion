@@ -33,6 +33,9 @@ test('signale Chrome introuvable avant toute écriture', () => {
   assert.match(r.stderr, /Chrome introuvable/)
 })
 
+// Marque unique par exécution des tests : on ne tue jamais le sleep d'un autre
+const MARQUE = `sleep 300.${process.pid}`
+const MOTIF = `^${MARQUE.replace('.', '\\.')}$`
 // Faux Chrome : un script shell exécutable à la place du vrai
 const avecFauxChrome = (corps, verifier) => {
   const base = mkdtempSync(join(tmpdir(), 'rendu-faux-'))
@@ -46,16 +49,16 @@ const avecFauxChrome = (corps, verifier) => {
     const r = spawnSync('node', [script, taches, join(base, 'sortie')], { encoding: 'utf8', env: { ...process.env, CHROME: faux, RENDRE_GARDE_MS: '500' } })
     verifier(r, Date.now() - debut)
   } finally {
-    spawnSync('pkill', ['-f', '^sleep 300$'])
+    spawnSync('pkill', ['-f', MOTIF])
   }
 }
 
 test('Chrome muet : échoue vite avec « ne répond pas » et ne laisse aucun processus', () => {
-  avecFauxChrome('exec sleep 300', (r, duree) => {
+  avecFauxChrome(`exec ${MARQUE}`, (r, duree) => {
     assert.equal(r.status, 1)
     assert.match(r.stderr, /Chrome ne répond pas/)
     assert.ok(duree < 15000, `trop long : ${duree} ms`)
-    assert.notEqual(spawnSync('pgrep', ['-f', '^sleep 300$']).status, 0, 'processus orphelin')
+    assert.notEqual(spawnSync('pgrep', ['-f', MOTIF]).status, 0, 'processus orphelin')
   })
 })
 

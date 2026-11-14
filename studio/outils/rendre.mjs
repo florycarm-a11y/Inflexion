@@ -80,7 +80,7 @@ async function ranger() {
   try { chrome.stderr.destroy(); depuis.destroy(); } catch {}
   try { rmSync(profil, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 }); } catch {}
 }
-process.on('SIGINT', async () => { await ranger(); process.exit(130); });
+process.once('SIGINT', async () => { await ranger(); process.exit(130); });
 
 let faites = 0;
 try {
