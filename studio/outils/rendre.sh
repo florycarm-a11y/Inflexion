@@ -2,7 +2,7 @@
 # Rend les instruments ou une gravure dans studio/rendu/, au prochain numéro libre, puis fabrique la planche.
 # N'écrase jamais un rendu. N'installe rien. N'envoie rien sur Internet.
 #
-# Usage (depuis la racine du dépôt) :
+# Usage (depuis n'importe quel répertoire) :
 #   bash studio/outils/rendre.sh instrument
 #   bash studio/outils/rendre.sh gravure <nom> <16x9|5x3> [focal "50,50"] [kicker] [legende]
 set -u
@@ -14,8 +14,8 @@ STUDIO="$(dirname "$ICI")"
 command -v node >/dev/null 2>&1 || { echo "Il manque Node.js 22 ou plus (nodejs.org)." >&2; exit 1; }
 MAJEURE=$(node -p 'process.versions.node.split(".")[0]' 2>/dev/null)
 [ "${MAJEURE:-0}" -ge 22 ] || { echo "Node.js $(node --version) est trop ancien : il faut la version 22 ou plus." >&2; exit 1; }
-PY=$(command -v python3) ; [ -n "$PY" ] || { echo "Il manque python3 (avec Pillow) pour la planche." >&2; exit 1; }
-"$PY" -c 'import PIL' 2>/dev/null || { echo "Il manque Pillow : $PY -m pip install pillow" >&2; exit 1; }
+PY="${PYTHON:-$(command -v python3)}" ; [ -n "$PY" ] || { echo "Il manque python3 (avec Pillow) pour la planche." >&2; exit 1; }
+"$PY" -c 'import PIL' 2>/dev/null || { echo "Pillow manque pour $PY. Installez-le ($PY -m pip install pillow) ou indiquez un autre Python via PYTHON=/opt/homebrew/bin/python3." >&2; exit 1; }
 CHROME_OK=0
 for c in "${CHROME:-}" "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "$HOME/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "/Applications/Chromium.app/Contents/MacOS/Chromium"; do
   [ -n "$c" ] && [ -x "$c" ] && { CHROME_OK=1; break; }
@@ -24,6 +24,8 @@ done
 
 # ---------- la tâche ----------
 MODE="$1"
+ENTREE=""
+trap '[ -n "$ENTREE" ] && [ "$MODE" = gravure ] && rm -f "$ENTREE"' EXIT INT TERM
 case "$MODE" in
   instrument)
     BASE="instrument"; ENTREE="instrument" ;;
@@ -35,7 +37,7 @@ case "$MODE" in
     for ext in jpg jpeg png webp; do [ -f "$STUDIO/sources/$NOM.$ext" ] && { SOURCE="../sources/$NOM.$ext"; break; }; done
     [ -n "$SOURCE" ] || { echo "Source introuvable : studio/sources/$NOM.(jpg|jpeg|png|webp)" >&2; exit 1; }
     BASE="gravure-$NOM"
-    ENTREE=$(mktemp "${TMPDIR:-/tmp}/taches-XXXXXX.json")
+    ENTREE=$(mktemp "${TMPDIR:-/tmp}/taches-XXXXXX") || { echo "mktemp a échoué." >&2; exit 1; }
     node -e '
       const [source, format, focal, kicker, legende, nom] = process.argv.slice(1);
       console.log(JSON.stringify([{ scene: "gravure.html", params: { source, format, focal, kicker, legende }, sortie: `${nom}-${format}.webp` }]));
@@ -50,8 +52,8 @@ SORTIE="$STUDIO/rendu/$BASE-v$N"
 
 # ---------- le rendu et la planche ----------
 DEBUT=$(date +%s)
-node "$ICI/rendre.mjs" "$ENTREE" "$SORTIE" || { [ "$MODE" = "gravure" ] && rm -f "$ENTREE"; echo "Le rendu a échoué." >&2; exit 1; }
-[ "$MODE" = "gravure" ] && rm -f "$ENTREE"
+# en mode instrument, le mot "instrument" est passé tel quel : rendre.mjs énumère lui-même en interrogeant la scène
+node "$ICI/rendre.mjs" "$ENTREE" "$SORTIE" || { echo "Le rendu a échoué. Les images déjà produites, s'il y en a, sont dans $SORTIE." >&2; exit 1; }
 echo "Rendu en $(( $(date +%s) - DEBUT )) s : $SORTIE"
 "$PY" "$ICI/planche.py" "$SORTIE"
 exit 0
