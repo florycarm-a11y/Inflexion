@@ -79,7 +79,8 @@ function sansBlocs(css, requete) {
   }
 }
 // Une déclaration `animation:` en boucle (`infinite`) peut garder sa durée : hors de l'échelle à trois jetons (spec §3, boucles décoratives).
-const sansBoucles = (css) => css.replace(/animation:[^;{}]*\binfinite\b[^;{}]*/g, 'animation:BOUCLE');
+// Une déclaration de jeton (`--motion-*: …`) n'est pas une durée écrite en dur : c'est le jeton lui-même (briefing.html, sans régime v2, les pose localement).
+const sansBoucles = (css) => css.replace(/animation:[^;{}]*\binfinite\b[^;{}]*/g, 'animation:BOUCLE').replace(/--motion-(?:fast|base|slow):[^;}]*/g, '--motion-JETON');
 
 function partiesDe(page) {
   const html = lire(page);
@@ -200,6 +201,14 @@ test('analyses.html : pastille en motion-safe:animate-pulse, zoom des cartes dan
 
 test('briefing.html : boucles en classes (pulse-live, spin), sommaire en .toc-link, jauge et cartes en jetons', () => {
   const { style, script } = partiesDe('briefing.html');
+  // Sans régime v2, la page ne reçoit pas assets/design-tokens-v2.css : ses jetons locaux doivent rester identiques au fichier de jetons.
+  const jetons = lire('assets/design-tokens-v2.css').match(/\[data-design-regime="editorial"\]\s*\{([^}]*)\}/)[1];
+  for (const jeton of ['--motion-fast', '--motion-base', '--motion-slow']) {
+    const ref = jetons.match(new RegExp(`${jeton}:\\s*([^;]+);`))[1].trim();
+    const local = style.match(new RegExp(`${jeton}:\\s*([^;}]+)`));
+    assert.ok(local, `${jeton} non posé localement dans briefing.html (la page ne charge pas design-tokens-v2.css)`);
+    assert.equal(local[1].trim(), ref, `${jeton} local diverge du fichier de jetons`);
+  }
   assert.ok(script.includes("className:'pulse-live'"), 'pastille LIVE : classe .pulse-live attendue');
   assert.ok(script.includes("className:'spin w-5 h-5"), 'spinner : classe .spin attendue');
   assert.ok(style.includes('@keyframes spin{'), '@keyframes spin manque (le spinner ne tournait pas)');
@@ -448,6 +457,8 @@ const PAGES = {
   },
   briefing: {
     'briefing.html': [
+      // Trouvé au contrôle CDP : la page ne charge pas design-tokens-v2.css (jetons résolus à 0s). Jetons posés localement, mêmes valeurs.
+      remplacer("*{margin:0;padding:0;box-sizing:border-box}\nbody{font-family:'Inter'", "*{margin:0;padding:0;box-sizing:border-box}\n" + "/* Jetons de mouvement : briefing.html ne charge pas encore assets/design-tokens-v2.css (identité ancienne, aucun régime v2 : chantier à part ;\n   poser data-design-regime sur le body déclencherait les surcharges de styles.css et changerait la page). Mêmes valeurs que le fichier\n   de jetons, identité vérifiée par test/pages-motion.test.mjs ; à retirer quand la page passera en régime editorial. */\n:root{--motion-fast:.15s ease;--motion-base:.3s cubic-bezier(.4,0,.2,1);--motion-slow:.5s ease-out}\n" + "body{font-family:'Inter'"),
       remplacer(FADE_D4, ''),
       ...STYLE_COMMUN,
       remplacer(".mega-item{transition:background .15s ease}\n.mega-item:hover{background:rgba(27,107,74,.06)}\n", ".mega-item{transition:background var(--motion-fast)}\n"),
@@ -669,7 +680,8 @@ const noter = (page, nom, valeur, attendu) => { const ok = JSON.stringify(valeur
 // Un représentant par famille : A ormuz, B ukraine, C analyses, D artifact, E briefing.
 const PAGES = {
   'analyse-petrole-trump-iran-ormuz.html': { hero: '.hero-dynamic', delaisHero: ['0s', '0s', '0.15s', '0.3s'], heroDynamique: true },
-  'analyse-ukraine-mer-noire-guerre-attrition.html': { hero: null, heroDynamique: true, section1: true },
+  // La page de garde des dossiers n'emploie pas .hero-dynamic (la règle existe dans le <style>, pas dans le balisage).
+  'analyse-ukraine-mer-noire-guerre-attrition.html': { hero: null, heroDynamique: false, section1: true },
   'analyses.html': { hero: 'section:first-of-type', delaisHero: ['0s', '0s', '0.15s'], pastille: true, zoom: true, cartes: true },
   'artifact-inflexion.html': { hero: 'section:first-of-type', delaisHero: ['0s', '0s', '0.15s', '0.3s', '0.3s', '0.36s', '0.42s'] },
   'briefing.html': { hero: '.hero-dynamic', delaisHero: ['0s', '0s', '0.15s', '0.3s'], heroDynamique: true, pulseLive: true },
@@ -712,9 +724,11 @@ try {
     await attendre(1500);
     if (cfg.hero) noter(court, 'hero : Reveal retiré après apparition', await evaluer(`document.querySelectorAll('${cfg.hero} .reveal').length`), 0);
     if (cfg.cartes) {
-      await evaluer(`window.scrollTo(0,document.querySelector('.article-card').offsetTop-700)`);
-      await attendre(120);
-      noter(court, 'grille : trois premières cartes à 0,3 / 0,36 / 0,42 (décalage par lot)', await evaluer(`[...document.querySelectorAll('.article-card.reveal')].slice(0,3).map(e=>e.style.transitionDelay)`), ['0.3s', '0.36s', '0.42s']);
+      // La première rangée peut avoir été déclenchée au chargement (avant que l'article du jour, chargé en différé, ne la pousse sous la ligne
+      // de flottaison) : on vise la première rangée encore en attente, et on l'amène dans l'écran d'un coup (lot d'une seule image).
+      await evaluer(`window.scrollTo(0,document.querySelector('.article-card.reveal').offsetTop-700)`);
+      await attendre(150);
+      noter(court, 'grille : une rangée entrée d\'un coup, cartes à 0,3 / 0,36 / 0,42 (décalage par lot)', await evaluer(`[...document.querySelectorAll('.article-card.reveal')].slice(0,3).map(e=>e.style.transitionDelay)`), ['0.3s', '0.36s', '0.42s']);
     }
     await evaluer(`(async()=>{const h=document.documentElement.scrollHeight;for(let y=0;y<h;y+=700){window.scrollTo(0,y);await new Promise(r=>setTimeout(r,120));}return true})()`);
     await attendre(2500);
@@ -773,9 +787,22 @@ Attendu : toutes les vérifications `OK` (compte exact à noter). Un `KO` est un
 
 ---
 
-## Résultats mesurés
+## Résultats mesurés (exécution du 2026-11-15, après le « oui »)
 
-_(à compléter à l'exécution)_
+- **Task 1** : `node --test test/pages-motion.test.mjs` sur l'état de `main` : 59 tests, **58 échecs**, 1 succès (`scroll-reveal.js reste dans le dépôt`).
+- **Task 2** : essai à blanc, 16 fichiers, 0 écart (un ordre d'opérations corrigé au cadrage : la carte agenda de `briefing` avant les cartes à clé). Migration : `dossiers` 13 × 5 pages + coquille 19 opérations (17 `h(Reveal`), test filtré **17/17** (`67193560`) ; `articles` 19 × 7, 4 `Reveal` par hero, **28/28** (`695202ad`) ; `analyses` 29, **5/5** (`07a997aa`) ; `artifact` 20, **4/4** (`aac2d6a2`) ; `briefing` 37, **5/5** (`af8be1a8`). Chaque diff relu avant commit : enveloppements équilibrés, clés déplacées sur `Reveal`, les cinq blocs désenveloppés de `briefing` sont des expressions `( … )` (`return (` sur la même ligne), `node --check` du module au vert.
+- **Task 3** : `site.css` reconstruit (`e5f15923`) : `duration-200`, `transition-transform`, `group-hover:scale-105` disparus ; `duration-300` et `transition-all` restent, employés par `nav-shared.js` (pages legacy). `npm test` : **142 / 142**.
+- **Task 4, visuel** (36 captures, `capturer-reveal.mjs`, serveur du worktree sur 3407) : **29 identiques au pixel** d'emblée (les 18 à 390, 11 à 1440). Les 7 écarts, tous à 1440, expliqués un à un :
+  - `briefing` 499 px (logo d'en-tête et de pied de page, contours du lion) : capture faite **avant** le correctif des jetons (voir Task 5) ; le logo, privé de sa transition de filtre (`var()` non résolue), était rastérisé autrement. Recapturé après correctif : **0 px** aux deux largeurs.
+  - `ormuz`, `cloud-ia`, `cuba`, `arctique` 12 à 14 px, amplitude ≤ 38 : pixels épars dans la **photo Unsplash** de la colonne latérale (`lg:block`, donc 1440 seulement). Base et après **rendues au même moment** (état `main` servi depuis un second worktree sur 3408) : **0 px** sur les quatre pages ; la base de l'après-midi diffère d'elle-même de 12 px sur `ormuz` (variance de l'image servie, comme au prompt 2).
+  - `mer-chine` 51 px, `turquie` 28 px, amplitude 50 : contours de quelques glyphes (« souveraine **unique** », « signal de **nouvelle** »), **reproductibles** (après₁ = après₂, avant₁ = avant₂) et mise en page identique (mêmes `rect` de l'élément, même police). Cause, lue par sonde CDP : avant, `scroll-reveal.js` laissait sur chaque section fondue `transform: translateY(0)` (fin d'animation `forwards`, matrice identité) et le texte de la section était rastérisé sur une couche composée ; après, la section n'a plus de transform et le texte est rendu nativement. C'est l'état « sans résidu » que `Reveal` vise en se retirant ; aucune régression.
+- **Task 5, script** (`verifier-mouvement-pages.mjs`, 1440 × 900) : premier passage **55 / 62**, avec deux erreurs de sonde et **un vrai défaut** :
+  - sonde : la page de garde des dossiers n'emploie pas `.hero-dynamic` (la règle existe dans leur `<style>`, pas dans le balisage) ; la première rangée d'`analyses` était déjà déclenchée au chargement — `sonde-analyses.mjs` : à t = 500 ms les cartes sont à y = 583 (dans l'écran) ; à t = 566 ms l'article du jour (JSON différé) les pousse à y = 1032 avec leurs délais `0,3 / 0,36 / 0,42` déjà posés (un seul lot) ; la sonde vise désormais la première rangée encore en attente.
+  - **défaut** : sur `briefing.html`, `.reveal`, `.mega-menu` et l'en-tête lisaient `0s` : la page **ne charge pas `assets/design-tokens-v2.css`** et n'a pas de `data-design-regime` (identité ancienne). Poser l'attribut sur son `body` déclencherait les surcharges de `styles.css` (`--accent`, `--text-primary`, polices) et changerait la page : les trois jetons sont déclarés dans son `<style>`, mêmes valeurs, identité vérifiée par le test (`3855c7d6`). Opération ajoutée au script de migration (rejouable).
+  - passage final : **62 / 62** — délais inline du hero `0 / 0 / 0,15 / 0,3` (articles, `briefing`), `0 / 0 / 0,15` (`analyses`), `0 / 0 / 0,15 / 0,3 / 0,3 / 0,36 / 0,42` (`artifact`, cartes dans le lot) ; section 1 d'`ukraine` `h2` 0 puis enfant 0,15 ; jetons résolus (`.reveal` 0,5 s ×2, `.mega-menu` 0,3 s ×3, `header` 0,3 s, `.zoom-hover` 0,5 s) ; aucun `Reveal` visible restant après défilement ; console vide ; sous `reduce` : aucun `.reveal`, `h1` à 1, hero dynamique et pastille LIVE en pause, pastille d'`analyses` immobile, zoom à 0 s et `transform: none` sous `:hover` ; en normal : zoom `matrix(1.05…)`, pastilles animées.
+- **Task 5, volet navigateur** (`analyses`, `ukraine`) : aucune erreur console ; `scroll-reveal.js` absent ; en-tête 0,3 s ; cartes et sections apparues après défilement. Volet **masqué** pendant le contrôle (`requestAnimationFrame` à ~1 image/s) : le défilement à la molette n'a d'abord rien déclenché, le défilement par script puis 2 s d'attente oui — même piège que l'onglet d'arrière-plan (`CLAUDE.md` §8).
+- **Écarts avec le plan** : un commit de plus (`briefing`, jetons locaux) ; test de garde ajusté (une déclaration `--motion-*` n'est pas une durée écrite en dur ; les valeurs locales de `briefing` doivent égaler le fichier de jetons) ; script de contrôle corrigé deux fois. Les blocs de code ci-dessus sont les versions finales.
+- **Trouvé en vérifiant, hors périmètre** : la spec du prompt 4 (§2.5) écrivait que `design-tokens-v2.css` est « chargé par les 32 pages » : 30 en réalité (`og-image.html` et `briefing.html` ne le chargent pas). À 1440 × 900, `analyses` montre sa première rangée de cartes ~60 ms avant que l'article du jour ne la pousse sous la ligne de flottaison : chargement différé préexistant, à traiter en réservant la hauteur du bloc si on le souhaite.
 
 ---
 
