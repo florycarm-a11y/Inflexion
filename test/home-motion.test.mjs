@@ -7,8 +7,11 @@ import { readFileSync } from 'node:fs';
 const RACINE = new URL('../', import.meta.url);
 const lire = (chemin) => readFileSync(new URL(chemin, RACINE), 'utf8');
 const html = lire('index.html');
-const style = html.match(/<style>([\s\S]*?)<\/style>/)[1];
-const script = html.match(/<script type="module">([\s\S]*?)<\/script>/)[1];
+// Les commentaires (/* */ en CSS, // en JS) sont de la prose, pas du code : retirés avant toute analyse.
+const sansCommentaires = (s) => s.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+const style = sansCommentaires(html.match(/<style>([\s\S]*?)<\/style>/)[1]);
+const script = sansCommentaires(html.match(/<script type="module">([\s\S]*?)<\/script>/)[1]);
+const code = style + script;
 // Un littéral de temps CSS (.22s, 0.6s, 300ms), pas une longueur (16px, 0.18em) ni un nombre (1.1).
 const TEMPS = /(?<![\w.-])\d*\.?\d+m?s\b/g;
 
@@ -54,7 +57,7 @@ test('index.html : aucune durée écrite en dur, les trois jetons consommés', (
   for (const jeton of ['--motion-fast', '--motion-base', '--motion-slow']) {
     assert.ok(style.includes(`var(${jeton})`), `${jeton} n'est consommé nulle part dans le <style>`);
   }
-  const durations = html.match(/\bduration-\[?[\w.]+\]?/g) || [];
+  const durations = code.match(/\bduration-\[?[\w.]+\]?/g) || [];
   assert.deepEqual(durations, [], `classes Tailwind de durée : ${durations.join(', ')} (les jetons sont composés, Tailwind ne peut pas les consommer : passer par le <style>)`);
   // Style inline React avec une durée (ex-FadeUp). animationDelay / transitionDelay (des délais) restent permis.
   const inline = script.match(/\b(?:transition|animation)\s*:\s*[`'"][^`'"]*?\d+m?s\b/g) || [];
@@ -65,7 +68,7 @@ test('index.html : tous les :hover du <style> sont sous @media(hover:hover), zoo
   assert.ok(blocMedia(style, 'hover:hover') !== null, 'aucun bloc @media(hover:hover) dans le <style>');
   const horsBloc = (sansBlocs(style, 'hover:hover').match(/[^{}\n]*:hover[^{]*\{/g) || []).map((s) => s.trim());
   assert.deepEqual(horsBloc, [], `:hover hors de @media(hover:hover) : ${horsBloc.join(' ; ')}`);
-  assert.ok(!/group-hover:scale-/.test(html), 'zoom d\'image encore en group-hover:scale-* : utiliser .zoom-hover');
+  assert.ok(!/group-hover:scale-/.test(script), 'zoom d\'image encore en group-hover:scale-* : utiliser .zoom-hover');
   assert.equal((script.match(/\bzoom-hover\b/g) || []).length, 2, 'les deux img zoomables (manchette, cartes Décryptages) portent zoom-hover');
 });
 
@@ -74,7 +77,7 @@ test('index.html : Reveal (enfant unique, lit la préférence), FadeUp disparu, 
   assert.ok(script.includes("matchMedia('(prefers-reduced-motion: reduce)')"), 'Reveal ne lit pas prefers-reduced-motion');
   assert.ok(/React\.Children\.only\(/.test(script) && /React\.cloneElement\(/.test(script), 'Reveal doit cloner un enfant unique (un div enveloppant casserait les grilles)');
   for (const mort of ['FadeUp', 'useInView', 'anim-fade-up', 'fade-up', 'anim-d1']) {
-    assert.ok(!html.includes(mort), `${mort} encore présent : un seul mécanisme d'apparition (Reveal)`);
+    assert.ok(!code.includes(mort), `${mort} encore présent : un seul mécanisme d'apparition (Reveal)`);
   }
   const reduit = blocMedia(style, 'prefers-reduced-motion:reduce');
   assert.ok(reduit, 'bloc @media(prefers-reduced-motion:reduce) introuvable');

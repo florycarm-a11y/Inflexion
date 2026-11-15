@@ -35,42 +35,38 @@ h1,h2,h3,.display-text{font-family:'Archivo',Arial,sans-serif;font-weight:800;li
 .kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;color:var(--editorial-accent)}
 .font-data{font-family:'IBM Plex Mono','SF Mono',monospace}
 
-/* Animations */
-@keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.anim-fade-up{animation:fade-up .6s ease-out both}
-.anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}.anim-d4{animation-delay:.4s}
-
 /* Nav links */
 .nav-link{position:relative}
-.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:var(--editorial-accent-text);transform:scaleX(0);transition:transform .25s ease}
-.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:var(--editorial-accent-text);transform:scaleX(0);transition:transform var(--motion-fast)}
+.nav-link.active::after{transform:scaleX(1)}
 
 /* Mega menu — carte claire, filet rouge */
 .mega-trigger{position:relative}
-.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:340px;z-index:60}
-.mega-menu.mega-open,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity var(--motion-base),transform var(--motion-base),visibility var(--motion-base);min-width:340px;z-index:60}
+.mega-menu.mega-open{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
 .mega-menu::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--editorial-accent);z-index:2}
-.mega-item{transition:background .15s ease}
-.mega-item:hover{background:rgba(142,36,36,.06)}
+.mega-item{transition:background var(--motion-fast)}
 .mega-icon{width:36px;height:36px;border-radius:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:600;font-family:'IBM Plex Mono',monospace}
 .nav-scrolled{background:var(--chrome-scrolled);backdrop-filter:blur(16px);border-bottom:1px solid var(--chrome-border)}
+/* En-tête au défilement : même valeur que l'ancien utilitaire Tailwind (300 ms). Le prompt 5 restreindra « all » à background-color et border-color. */
+.site-header{transition:all var(--motion-base)}
 
 /* Focus */
 :focus-visible{outline:2px solid var(--text-primary);outline-offset:2px}
 header :focus-visible,.mobile-overlay :focus-visible,.v2-chrome :focus-visible{outline-color:var(--editorial-accent-text)}
 
 /* Hamburger */
-.hamburger span{display:block;width:24px;height:2px;background:var(--chrome-text);margin:5px 0;transition:all .3s ease}
+.hamburger span{display:block;width:24px;height:2px;background:var(--chrome-text);margin:5px 0;transition:all var(--motion-base)}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 
 /* Mobile overlay */
-.mobile-overlay{opacity:0;visibility:hidden;transition:opacity .35s cubic-bezier(.4,0,.2,1),visibility .35s;height:100vh;height:100dvh}
+.mobile-overlay{opacity:0;visibility:hidden;transition:opacity var(--motion-base),visibility var(--motion-base);height:100vh;height:100dvh}
 .mobile-overlay.open{opacity:1;visibility:visible}
 @keyframes menu-item-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 .menu-item{opacity:0}
-.mobile-overlay.open .menu-item{animation:menu-item-in .4s ease-out forwards}
+.mobile-overlay.open .menu-item{animation:menu-item-in var(--motion-slow) forwards}
 body.menu-open{overflow:hidden}
 
 /* Hero glow — lueur rouge chaude */
@@ -80,10 +76,8 @@ body.menu-open{overflow:hidden}
    Le libellé texte porte la catégorie ; aucune couleur-taxonomie sur la home. */
 
 /* Article cards — filet de lecture rouge */
-.article-card{position:relative;transition:box-shadow .18s ease,border-color .18s ease}
-.article-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--editorial-accent);transform:scaleY(0);transform-origin:top;transition:transform .22s ease;z-index:1}
-.article-card:hover{box-shadow:0 6px 18px rgba(42,18,16,.12);border-color:var(--editorial-accent)}
-.article-card:hover::before{transform:scaleY(1)}
+.article-card{position:relative;transition:box-shadow var(--motion-fast),border-color var(--motion-fast)}
+.article-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--editorial-accent);transform:scaleY(0);transform-origin:top;transition:transform var(--motion-fast);z-index:1}
 
 /* Miniatures de sources : traitement gravure commun (sans flou ni bruit, bon marché sur mobile) */
 .img-gravure{position:relative}
@@ -94,7 +88,37 @@ body.menu-open{overflow:hidden}
 /* Featured (manchette) card */
 .featured-card{position:relative;overflow:hidden}
 
-@media(prefers-reduced-motion:reduce){.animate-pulse{animation:none}.article-card::before{transition:none}.anim-fade-up{animation:none}}
+/* Apparitions — composant Reveal : un élément à la fois, opacité et 16 px, var(--motion-slow) (audit Starlink 7.2-7.4).
+   Déclaré après .article-card pour que sa transition gagne pendant l'apparition ; Reveal retire la classe ensuite. */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity var(--motion-slow),transform var(--motion-slow)}
+.reveal.is-visible{opacity:1;transform:none}
+
+/* Zoom des images au survol (ex utilitaires Tailwind, 500 ms) : durée en jeton, coupé sur tactile et en mouvement réduit */
+.zoom-hover{transition:transform var(--motion-slow)}
+
+/* Survols — seulement pour un pointeur capable de survoler (audit 7.6) : sur tactile un :hover resterait collé après le toucher */
+@media(hover:hover){
+.nav-link:hover::after{transform:scaleX(1)}
+.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.mega-item:hover{background:rgba(142,36,36,.06)}
+.article-card:hover{box-shadow:0 6px 18px rgba(42,18,16,.12);border-color:var(--editorial-accent)}
+.article-card:hover::before{transform:scaleY(1)}
+}
+
+/* Zoom des images : survol possible ET mouvement non réduit, le motif de Starlink (audit 7.5) ; aucun :hover hors des blocs hover:hover */
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+.article-card:hover .zoom-hover{transform:scale(1.03)}
+.featured-card:hover .zoom-hover{transform:scale(1.02)}
+}
+
+/* Mouvement réduit : contenu affiché sans apparition, pas de zoom, pastille immobile, entrées du menu visibles (audit 7.5) */
+@media(prefers-reduced-motion:reduce){
+.animate-pulse{animation:none}
+.article-card::before{transition:none}
+.reveal{opacity:1;transform:none;transition:none}
+.zoom-hover{transition:none}
+.mobile-overlay.open .menu-item{animation:none;opacity:1}
+}
 
 @media(max-width:768px){
 html,body{overflow-x:hidden}
@@ -116,21 +140,47 @@ import{createRoot}from 'https://esm.sh/react-dom@18.2.0/client'
 
 const h=React.createElement
 
-function useInView(opts={}){
-const ref=useRef(null)
-const[visible,setVisible]=useState(false)
-useEffect(()=>{
-if(!ref.current)return
-const io=new IntersectionObserver(([e])=>{if(e.isIntersecting){setVisible(true);io.disconnect()}},{threshold:opts.threshold||0.15})
-io.observe(ref.current)
-return()=>io.disconnect()
-},[])
-return[ref,visible]
+// Apparitions (audit Starlink 7.2-7.5). Un seul IntersectionObserver pour tous les Reveal :
+// les éléments qui franchissent le seuil dans la même image forment un lot, et le rang dans le lot
+// porte le décalage des grilles (stagger). Un décalage par index cumulerait un retard visible
+// sur les cartes hors du premier écran (9e carte de veille : 0,78 s après son entrée dans l'écran).
+const revealAttente=new Map() // élément → {stagger, declencher}
+let revealIO=null
+function observerReveal(el,entree){
+if(!revealIO)revealIO=new IntersectionObserver(entries=>{
+let rang=0
+for(const e of entries){
+if(!e.isIntersecting)continue
+const a=revealAttente.get(e.target)
+if(!a)continue
+revealAttente.delete(e.target);revealIO.unobserve(e.target)
+a.declencher(a.stagger?rang++:0)
 }
+},{threshold:0.15})
+revealAttente.set(el,entree);revealIO.observe(el)
+return()=>{revealAttente.delete(el);revealIO.unobserve(el)}
+}
+const reduireMouvement=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-function FadeUp({children,className='',delay=0}){
-const[ref,visible]=useInView()
-return h('div',{ref,className,style:{opacity:visible?1:0,transform:visible?'translateY(0)':'translateY(24px)',transition:`opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`}},children)
+// Anime UN élément (opacity 0→1, translateY 16px→0, var(--motion-slow)) à son entrée dans l'écran.
+// delay : secondes avant le départ ; stagger : secondes ajoutées par rang dans le lot (cartes d'une grille).
+// L'enfant est cloné, pas enveloppé : un div intermédiaire casserait l'égalisation des hauteurs dans les grilles.
+// Une fois la transition finie, l'enfant est rendu tel quel (plus de classe ni de délai) pour ne pas
+// interférer avec ses propres transitions (.article-card) et rester identique au pixel à l'original.
+function Reveal({delay=0,stagger=0,children}){
+const enfant=React.Children.only(children)
+const ref=useRef(null)
+const[rang,setRang]=useState(-1) // -1 : pas encore entré dans l'écran
+const[fini,setFini]=useState(false)
+useEffect(()=>{if(ref.current)return observerReveal(ref.current,{stagger,declencher:setRang})},[])
+if(fini||reduireMouvement())return enfant
+const retard=Math.round((delay+Math.max(rang,0)*stagger)*1000)/1000
+return React.cloneElement(enfant,{
+ref,
+className:`${enfant.props.className||''} reveal${rang>=0?' is-visible':''}`.trim(),
+style:{...enfant.props.style,transitionDelay:`${retard}s`},
+onTransitionEnd:e=>{if(e.target===e.currentTarget&&e.propertyName==='opacity')setFini(true)}
+})
 }
 
 const MEGA_NAV=window.MEGA_NAV
@@ -214,7 +264,7 @@ return()=>document.body.classList.remove('menu-open')
 },[open])
 return h('div',null,
  h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[var(--editorial-accent)]'}),
- h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
+ h('header',{className:`site-header fixed top-[3px] left-0 right-0 z-50 ${scrolled?'nav-scrolled':'bg-transparent'}`},
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
@@ -283,26 +333,26 @@ return h('section',{className:'v2-chrome relative pt-28 pb-16 md:pt-40 md:pb-24 
   h('div',{className:'flex flex-col lg:flex-row lg:items-start gap-12 lg:gap-16'},
    // Gauche : manchette
    h('div',{className:'lg:w-[44%] flex-shrink-0 lg:pt-2'},
-    h('p',{className:'anim-fade-up kicker mb-5',style:{color:'var(--editorial-accent-text)'}},'§ Manchette — Intelligence du jour'),
-    h('h1',{className:'anim-fade-up anim-d1 text-4xl sm:text-5xl md:text-6xl lg:text-[3.75rem] font-extrabold text-white leading-[1.03] tracking-tight'},
+    h(Reveal,{delay:0},h('p',{className:'kicker mb-5',style:{color:'var(--editorial-accent-text)'}},'§ Manchette — Intelligence du jour')),
+    h(Reveal,{delay:0},h('h1',{className:'text-4xl sm:text-5xl md:text-6xl lg:text-[3.75rem] font-extrabold text-white leading-[1.03] tracking-tight'},
      'Révéler les signaux',h('br'),
      'que le bruit dissimule.'
-    ),
-    h('div',{className:'anim-fade-up anim-d1 mt-5 h-[3px] w-16 bg-[var(--editorial-accent)]'}),
-    h('p',{className:'anim-fade-up anim-d2 mt-6 lg:mt-8 text-base lg:text-lg text-[var(--chrome-text-2)] max-w-lg leading-relaxed'},
+    )),
+    h(Reveal,{delay:0},h('div',{className:'mt-5 h-[3px] w-16 bg-[var(--editorial-accent)]'})),
+    h(Reveal,{delay:0.15},h('p',{className:'mt-6 lg:mt-8 text-base lg:text-lg text-[var(--chrome-text-2)] max-w-lg leading-relaxed'},
      `Intelligence géopolitique et financière pour les décideurs. ${SOURCES_COUNT} sources, 15 APIs, analyse IA.`
-    ),
-    h('div',{className:'anim-fade-up anim-d3 mt-8 lg:mt-10 flex flex-col sm:flex-row gap-3'},
+    )),
+    h(Reveal,{delay:0.3},h('div',{className:'mt-8 lg:mt-10 flex flex-col sm:flex-row gap-3'},
      h('a',{href:'analyses.html',className:'inline-block px-7 py-3.5 bg-[var(--editorial-accent)] hover:bg-[#6E1B1B] text-[var(--chrome-text-1)] font-semibold transition-colors text-sm'},'Explorer les analyses'),
      h('a',{href:'expertise.html',className:'inline-block px-7 py-3.5 border border-[rgba(224,90,78,.5)] hover:border-[var(--editorial-accent-text)] text-[var(--chrome-text-1)] font-semibold transition-colors text-sm'},'Notre méthodologie')
-    )
+    ))
    ),
    // Droite : article à la une
    h('div',{className:'lg:w-[56%]'},
-    h('a',{href:featured.href,className:'anim-fade-up anim-d2 featured-card block group'},
+    h(Reveal,{delay:0.3},h('a',{href:featured.href,className:'featured-card block group'},
      h('div',{className:'relative'},
       h('div',{className:'aspect-[16/9] overflow-hidden',style:{backgroundColor:'var(--chrome-ground)'}},
-       h('img',{src:featured.img,alt:featured.title,className:'w-full h-full object-cover group-hover:scale-[1.02] transition-all duration-500',loading:'eager',width:1600,height:900,onError:e=>{e.target.style.display='none'}})
+       h('img',{src:featured.img,alt:featured.title,className:'w-full h-full object-cover zoom-hover',loading:'eager',width:1600,height:900,onError:e=>{e.target.style.display='none'}})
       ),
       h('div',{className:'absolute top-4 left-4 flex items-center gap-2'},
        h('span',{className:'inline-flex items-center gap-1.5 px-2.5 py-1 bg-[var(--editorial-accent)] text-[var(--chrome-text-1)] text-xs font-semibold uppercase tracking-[0.14em]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
@@ -320,7 +370,7 @@ return h('section',{className:'v2-chrome relative pt-28 pb-16 md:pt-40 md:pb-24 
        h('span',{className:'px-2 py-0.5 border border-[rgba(224,90,78,.5)] text-[var(--editorial-accent-text)] font-semibold'},'Score : '+featured.grade)
       )
      )
-    )
+    ))
    )
   )
  )
@@ -331,20 +381,20 @@ return h('section',{className:'v2-chrome relative pt-28 pb-16 md:pt-40 md:pb-24 
 
 function FeaturedAnalyses(){
 const analyses=FEATURED_ANALYSES.slice(1) // 2 analyses secondaires (la 1re est dans le hero)
-return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
+return h('section',{className:'py-20 md:py-24'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'flex items-end justify-between mb-10'},
    h('div',null,
-    h('p',{className:'kicker mb-3'},'§ Analyses — Décryptages'),
-    h('h2',{className:'text-3xl md:text-[2.5rem] md:leading-[1.1] font-extrabold text-[#101214]'},'Décryptages approfondis')
+    h(Reveal,{delay:0},h('p',{className:'kicker mb-3'},'§ Analyses — Décryptages')),
+    h(Reveal,{delay:0},h('h2',{className:'text-3xl md:text-[2.5rem] md:leading-[1.1] font-extrabold text-[#101214]'},'Décryptages approfondis'))
    ),
-   h('a',{href:'analyses.html',className:'hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-[var(--editorial-accent)] hover:underline'},'Voir toutes les analyses →')
+   h(Reveal,{delay:0.3},h('a',{href:'analyses.html',className:'hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-[var(--editorial-accent)] hover:underline'},'Voir toutes les analyses →'))
   ),
   h('div',{className:'grid grid-cols-1 md:grid-cols-2 gap-6'},
    ...analyses.map((a,i)=>{
-    return h('a',{key:i,href:a.href,className:'article-card group block overflow-hidden bg-[#FFFFFF] border border-[var(--hairline-warm)] no-underline'},
+    return h(Reveal,{key:i,delay:0.3,stagger:0.06},h('a',{href:a.href,className:'article-card group block overflow-hidden bg-[#FFFFFF] border border-[var(--hairline-warm)] no-underline'},
      h('div',{className:'aspect-[21/9] overflow-hidden'},
-      h('img',{src:a.img,alt:a.title,className:'w-full h-full object-cover object-top group-hover:scale-[1.03] transition-all duration-500',loading:'lazy'})
+      h('img',{src:a.img,alt:a.title,className:'w-full h-full object-cover object-top zoom-hover',loading:'lazy'})
      ),
      h('div',{className:'p-6 md:p-8'},
       h('div',{className:'flex items-center gap-3 mb-4'},
@@ -358,12 +408,12 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
        h('span',{className:'text-sm font-semibold text-[var(--editorial-accent)] group-hover:underline'},'Lire →')
       )
      )
-    )
+    ))
    })
   ),
-  h('a',{href:'analyses.html',className:'sm:hidden flex items-center justify-center gap-1 mt-6 text-sm font-semibold text-[var(--editorial-accent)]'},'Voir toutes les analyses →')
+  h(Reveal,{delay:0.3},h('a',{href:'analyses.html',className:'sm:hidden flex items-center justify-center gap-1 mt-6 text-sm font-semibold text-[var(--editorial-accent)]'},'Voir toutes les analyses →'))
  )
-))
+)
 }
 
 // ─── BANDEAU CRÉDIBILITÉ (bloc brun espresso) ────────────────────────────────
@@ -427,23 +477,23 @@ const filtered=filter==='all'?articles:articles.filter(a=>a.cat===filter)
 const visible=filtered.slice(0,visibleCount)
 const hasMore=filtered.length>visibleCount
 const btnCls=(active)=>active?'bg-[var(--editorial-accent)] text-[var(--chrome-text-1)] border-[var(--editorial-accent)]':'bg-[#FFFFFF] text-[#4C5052] hover:text-[var(--editorial-accent)] border-[var(--hairline-warm)]'
-return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
+return h('section',{className:'py-20 md:py-24'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10'},
    h('div',null,
-    h('p',{className:'kicker mb-3'},'§ Signaux — Veille continue'),
-    h('h2',{className:'text-3xl md:text-[2.5rem] md:leading-[1.1] font-extrabold text-[#101214]'},'Sources & signaux'),
-    h('p',{className:'text-sm mt-2 text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},`Flux automatisé — ${SOURCES_COUNT} sources, 15 APIs, filtrage IA`)
+    h(Reveal,{delay:0},h('p',{className:'kicker mb-3'},'§ Signaux — Veille continue')),
+    h(Reveal,{delay:0},h('h2',{className:'text-3xl md:text-[2.5rem] md:leading-[1.1] font-extrabold text-[#101214]'},'Sources & signaux')),
+    h(Reveal,{delay:0.15},h('p',{className:'text-sm mt-2 text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},`Flux automatisé — ${SOURCES_COUNT} sources, 15 APIs, filtrage IA`))
    ),
-   h('div',{className:'flex flex-wrap gap-2'},
+   h(Reveal,{delay:0.3},h('div',{className:'flex flex-wrap gap-2'},
     h('button',{onClick:()=>{setFilter('all');setVisibleCount(9)},'aria-pressed':filter==='all',className:`px-3 py-1.5 text-xs font-semibold transition-colors border ${btnCls(filter==='all')}`},'Tout'),
     CATEGORIES.map(c=>h('button',{key:c.id,onClick:()=>{setFilter(c.id);setVisibleCount(9)},'aria-pressed':filter===c.id,className:`px-3 py-1.5 text-xs font-semibold transition-colors border ${btnCls(filter===c.id)}`},c.label))
-   )
+   ))
   ),
   h('div',{className:'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'},
    loading?[1,2,3,4,5,6].map(i=>h(SkeletonCard,{key:'sk'+i})):visible.map(a=>{
     const cat=CATEGORIES.find(c=>c.id===a.cat)
-    return h('a',{key:a.id,href:a.href||'#',target:a.href&&a.href.startsWith('http')?'_blank':undefined,rel:a.href&&a.href.startsWith('http')?'noopener noreferrer':undefined,className:'article-card overflow-hidden block no-underline bg-[#FFFFFF] border border-[var(--hairline-warm)]'},
+    return h(Reveal,{key:a.id,delay:0.3,stagger:0.06},h('a',{href:a.href||'#',target:a.href&&a.href.startsWith('http')?'_blank':undefined,rel:a.href&&a.href.startsWith('http')?'noopener noreferrer':undefined,className:'article-card overflow-hidden block no-underline bg-[#FFFFFF] border border-[var(--hairline-warm)]'},
      h('div',{className:'aspect-[5/3] overflow-hidden bg-[var(--chrome-ground)]'+(a.img?' img-gravure':'')},
       h('img',{src:a.img||instrumentPour(a),alt:'',className:'w-full h-full object-cover',loading:'lazy',width:1000,height:600,
        onError:surErreurImage(a)})
@@ -459,16 +509,16 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
       h('p',{className:'text-xs leading-relaxed line-clamp-2 text-[#4C5052]'},a.summary),
       h('div',{className:'mt-3 text-xs text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},a.source)
      )
-    )
+    ))
    })
   ),
-  !loading&&hasMore&&h('div',{className:'text-center mt-10'},
+  !loading&&hasMore&&h(Reveal,{delay:0.3},h('div',{className:'text-center mt-10'},
    h('button',{onClick:()=>setVisibleCount(v=>v+9),className:'px-6 py-3 text-sm font-semibold transition-colors bg-[#FFFFFF] text-[var(--editorial-accent)] hover:bg-[var(--editorial-accent)] hover:text-[var(--chrome-text-1)] border border-[var(--editorial-accent)]'},
     'Charger plus d\'articles'
    )
-  )
+  ))
  )
-))
+)
 }
 
 // ─── EXPERTISES ──────────────────────────────────────────────────────────────
@@ -495,17 +545,17 @@ const items=EXPERTISE_DATA[tab]
 const current=items.find(i=>i.id===selected)||items[0]
 const tabCls=(active)=>active?'bg-[var(--editorial-accent)] text-[var(--chrome-text-1)] border-[var(--editorial-accent)]':'bg-[#FFFFFF] text-[#4C5052] hover:text-[var(--editorial-accent)] border-[var(--hairline-warm)]'
 const switchTab=(t)=>{setTab(t);setSelected(EXPERTISE_DATA[t][0].id)}
-return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
+return h('section',{className:'py-20 md:py-24'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'text-center mb-12'},
-   h('p',{className:'kicker mb-3'},'§ Expertises — Couverture'),
-   h('h2',{className:'text-3xl md:text-[2.5rem] md:leading-[1.1] font-extrabold text-[#101214]'},'Explorez notre couverture')
+   h(Reveal,{delay:0},h('p',{className:'kicker mb-3'},'§ Expertises — Couverture')),
+   h(Reveal,{delay:0},h('h2',{className:'text-3xl md:text-[2.5rem] md:leading-[1.1] font-extrabold text-[#101214]'},'Explorez notre couverture'))
   ),
-  h('div',{className:'flex justify-center gap-2 mb-10'},
+  h(Reveal,{delay:0.3},h('div',{className:'flex justify-center gap-2 mb-10'},
    h('button',{onClick:()=>switchTab('iatech'),className:`px-3 py-2 sm:px-5 sm:py-2.5 text-sm font-semibold transition-colors border ${tabCls(tab==='iatech')}`},'IA & Tech'),
    h('button',{onClick:()=>switchTab('geopolitique'),className:`px-3 py-2 sm:px-5 sm:py-2.5 text-sm font-semibold transition-colors border ${tabCls(tab==='geopolitique')}`},'Géopolitique')
-  ),
-  h('div',{className:'flex flex-col md:flex-row gap-6 md:gap-0 border border-[var(--hairline-warm)] overflow-hidden bg-[#FFFFFF]'},
+  )),
+  h(Reveal,{delay:0.3},h('div',{className:'flex flex-col md:flex-row gap-6 md:gap-0 border border-[var(--hairline-warm)] overflow-hidden bg-[#FFFFFF]'},
    h('div',{className:'md:w-[38%] md:border-r border-[var(--hairline-warm)] bg-[#EDEBE4]'},
     ...items.map(item=>
      h('button',{key:item.id,onClick:()=>setSelected(item.id),className:`w-full text-left px-6 py-4 border-b last:border-b-0 transition-colors border-[var(--hairline-warm)] ${selected===item.id?'bg-[#FFFFFF] font-semibold text-[var(--editorial-accent)] border-l-2 border-l-[var(--editorial-accent)]':'text-[#4C5052] hover:bg-[#FFFFFF]/60'}`},
@@ -518,9 +568,9 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
     h('p',{className:'text-sm leading-relaxed mb-6 text-[#4C5052]'},current.desc),
     h('a',{href:current.href,className:'inline-flex items-center gap-1 text-sm font-semibold text-[var(--editorial-accent)] hover:underline'},'Explorer →')
    )
-  )
+  ))
  )
-))
+)
 }
 
 // ─── NEWSLETTER (bloc oxblood, câblage Supabase) ─────────────────────────────
