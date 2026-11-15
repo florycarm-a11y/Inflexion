@@ -211,8 +211,10 @@ test('assets/site.css existe et contient chaque classe à valeur arbitraire empl
   ];
   // Candidats : utilitaire-[valeur], avec variantes (hover:, md:…) et signe négatif éventuel.
   const CANDIDAT = /(?<![\w\-\[.#/\\])((?:[a-z][a-z0-9-]*:)*-?[a-z][a-z0-9]*(?:-[a-z0-9]+)*-\[[^\]\s"'`]+\])/g;
-  // Échappement CSS tel que Tailwind l'écrit : tout ce qui n'est pas [a-zA-Z0-9_-] est précédé d'un antislash.
-  const echapper = (c) => c.replace(/[^a-zA-Z0-9_-]/g, (ch) => `\\${ch}`);
+  // Échappement CSS tel que Tailwind l'écrit : tout ce qui n'est pas [a-zA-Z0-9_-] est précédé d'un antislash,
+  // sauf la virgule, écrite `\2c ` (escapeCommas de Tailwind 3, contournement d'un bug navigateur) :
+  // `bg-[rgba(94,74,58,.08)]` devient `.bg-\[rgba\(94\2c 74\2c 58\2c \.08\)\]`.
+  const echapper = (c) => c.replace(/[^a-zA-Z0-9_-]/g, (ch) => (ch === ',' ? '\\2c ' : `\\${ch}`));
   const manquants = new Map();
   let total = 0;
   for (const source of sources) {
@@ -234,7 +236,7 @@ test('assets/site.css existe et contient chaque classe à valeur arbitraire empl
 node --test test/site-css.test.mjs
 ```
 
-Attendu : test 1 ÉCHOUE (« charge encore cdn.tailwindcss.com »), test 2 ÉCHOUE (« doit apparaître exactement une fois »), test 3 PASSE si la Task 1 est faite. Si le test 3 échoue en listant des candidats qui ne sont pas des classes Tailwind (texte libre, expression régulière dans un script…), resserrer `CANDIDAT` ou ajouter une liste `EXCLUS` nommée et commentée dans le test ; ne pas élargir `site.css`.
+Attendu : test 1 ÉCHOUE (« charge encore cdn.tailwindcss.com »), test 2 ÉCHOUE (« doit apparaître exactement une fois »), test 3 PASSE si la Task 1 est faite. Résultat obtenu : 1 873 occurrences, 158 classes arbitraires uniques, toutes de vraies classes Tailwind ; les 9 classes contenant une virgule ont révélé l'échappement `\2c ` ci-dessus. Si le test 3 échoue en listant des candidats qui ne sont pas des classes Tailwind (texte libre, expression régulière dans un script…), resserrer `CANDIDAT` ou ajouter une liste `EXCLUS` nommée et commentée dans le test ; ne pas élargir `site.css`.
 
 - [ ] **Step 3 : commit (test rouge, attendu)**
 
