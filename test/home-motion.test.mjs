@@ -62,6 +62,8 @@ test('index.html : aucune durée écrite en dur, les trois jetons consommés', (
   // Style inline React avec une durée (ex-FadeUp). animationDelay / transitionDelay (des délais) restent permis.
   const inline = script.match(/\b(?:transition|animation)\s*:\s*[`'"][^`'"]*?\d+m?s\b/g) || [];
   assert.deepEqual(inline, [], `durée inline dans le script : ${inline.join(' | ')}`);
+  const inlineDuree = script.match(/\b(?:transition|animation)Duration\s*:/g) || [];
+  assert.deepEqual(inlineDuree, [], 'transitionDuration / animationDuration inline : les durées viennent des jetons, dans le <style>');
 });
 
 test('index.html : tous les :hover du <style> sont sous @media(hover:hover), zoom des images dans la feuille', () => {
@@ -82,13 +84,17 @@ test('index.html : Reveal (enfant unique, lit la préférence), FadeUp disparu, 
   const reduit = blocMedia(style, 'prefers-reduced-motion:reduce');
   assert.ok(reduit, 'bloc @media(prefers-reduced-motion:reduce) introuvable');
   for (const attendu of [
-    '.animate-pulse{animation:none}',
     '.reveal{opacity:1;transform:none;transition:none}',
     '.zoom-hover{transition:none}',
     '.mobile-overlay.open .menu-item{animation:none;opacity:1}',
   ]) {
     assert.ok(reduit.includes(attendu), `mouvement réduit : ${attendu} manque`);
   }
+  // La pastille et les squelettes : site.css (chargé en dernier) bat toute règle .animate-pulse{animation:none} du <style>,
+  // seule la variante motion-safe: de Tailwind coupe vraiment l'animation en mouvement réduit.
+  const nus = script.match(/(?<![\w:-])animate-pulse\b/g) || [];
+  assert.equal(nus.length, 0, `${nus.length} animate-pulse sans motion-safe: (site.css, chargé en dernier, bat le <style>)`);
+  assert.equal((script.match(/motion-safe:animate-pulse\b/g) || []).length, 8, 'pastille « À la une » + 7 blocs squelette en motion-safe:animate-pulse');
 });
 
 test('index.html : le schéma de délais du prompt 4 (0 / 0,15 / 0,3 ; +0,06 par carte)', () => {

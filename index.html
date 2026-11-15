@@ -113,7 +113,6 @@ body.menu-open{overflow:hidden}
 
 /* Mouvement réduit : contenu affiché sans apparition, pas de zoom, pastille immobile, entrées du menu visibles (audit 7.5) */
 @media(prefers-reduced-motion:reduce){
-.animate-pulse{animation:none}
 .article-card::before{transition:none}
 .reveal{opacity:1;transform:none;transition:none}
 .zoom-hover{transition:none}
@@ -172,8 +171,9 @@ const enfant=React.Children.only(children)
 const ref=useRef(null)
 const[rang,setRang]=useState(-1) // -1 : pas encore entré dans l'écran
 const[fini,setFini]=useState(false)
+const[reduit]=useState(reduireMouvement) // lu au montage : un élément rendu nu le reste (il n'a pas d'observateur), même si la préférence change ensuite
 useEffect(()=>{if(ref.current)return observerReveal(ref.current,{stagger,declencher:setRang})},[])
-if(fini||reduireMouvement())return enfant
+if(fini||reduit)return enfant
 const retard=Math.round((delay+Math.max(rang,0)*stagger)*1000)/1000
 return React.cloneElement(enfant,{
 ref,
@@ -356,7 +356,7 @@ return h('section',{className:'v2-chrome relative pt-28 pb-16 md:pt-40 md:pb-24 
       ),
       h('div',{className:'absolute top-4 left-4 flex items-center gap-2'},
        h('span',{className:'inline-flex items-center gap-1.5 px-2.5 py-1 bg-[var(--editorial-accent)] text-[var(--chrome-text-1)] text-xs font-semibold uppercase tracking-[0.14em]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
-        h('span',{className:'w-1.5 h-1.5 rounded-full bg-[var(--chrome-text-1)] animate-pulse'}),'À la une'),
+        h('span',{className:'w-1.5 h-1.5 rounded-full bg-[var(--chrome-text-1)] motion-safe:animate-pulse'}),'À la une'),
        h('span',{className:'px-2.5 py-1 bg-black/55 backdrop-blur-sm text-white text-xs font-semibold uppercase tracking-[0.14em]',style:{fontFamily:"'IBM Plex Mono',monospace"}},featured.cat)
       )
      ),
@@ -445,16 +445,16 @@ return h('div',{className:'v2-chrome py-12',style:{backgroundColor:'var(--credib
 function SkeletonCard(){
 const bg='bg-[#DFDCD0]'
 return h('div',{className:'overflow-hidden bg-[#FFFFFF] border border-[var(--hairline-warm)]'},
- h('div',{className:`aspect-[5/3] animate-pulse ${bg}`}),
+ h('div',{className:`aspect-[5/3] motion-safe:animate-pulse ${bg}`}),
  h('div',{className:'p-5'},
   h('div',{className:'flex items-center gap-2 mb-3'},
-   h('div',{className:`w-16 h-4 animate-pulse ${bg}`}),
-   h('div',{className:`w-12 h-4 animate-pulse ${bg}`})
+   h('div',{className:`w-16 h-4 motion-safe:animate-pulse ${bg}`}),
+   h('div',{className:`w-12 h-4 motion-safe:animate-pulse ${bg}`})
   ),
-  h('div',{className:`w-full h-4 mb-2 animate-pulse ${bg}`}),
-  h('div',{className:`w-3/4 h-4 mb-3 animate-pulse ${bg}`}),
-  h('div',{className:`w-full h-3 mb-1 animate-pulse ${bg}`}),
-  h('div',{className:`w-2/3 h-3 animate-pulse ${bg}`})
+  h('div',{className:`w-full h-4 mb-2 motion-safe:animate-pulse ${bg}`}),
+  h('div',{className:`w-3/4 h-4 mb-3 motion-safe:animate-pulse ${bg}`}),
+  h('div',{className:`w-full h-3 mb-1 motion-safe:animate-pulse ${bg}`}),
+  h('div',{className:`w-2/3 h-3 motion-safe:animate-pulse ${bg}`})
  )
 )
 }
