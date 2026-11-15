@@ -33,6 +33,10 @@
 <link rel="stylesheet" href="styles.css"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+/* Jetons de mouvement : briefing.html ne charge pas encore assets/design-tokens-v2.css (identité ancienne, aucun régime v2 : chantier à part ;
+   poser data-design-regime sur le body déclencherait les surcharges de styles.css et changerait la page). Mêmes valeurs que le fichier
+   de jetons, identité vérifiée par test/pages-motion.test.mjs ; à retirer quand la page passera en régime editorial. */
+:root{--motion-fast:.15s ease;--motion-base:.3s cubic-bezier(.4,0,.2,1);--motion-slow:.5s ease-out}
 body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden}
 h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
 

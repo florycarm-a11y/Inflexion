@@ -40,7 +40,8 @@ function sansBlocs(css, requete) {
   }
 }
 // Une déclaration `animation:` en boucle (`infinite`) peut garder sa durée : hors de l'échelle à trois jetons (spec §3, boucles décoratives).
-const sansBoucles = (css) => css.replace(/animation:[^;{}]*\binfinite\b[^;{}]*/g, 'animation:BOUCLE');
+// Une déclaration de jeton (`--motion-*: …`) n'est pas une durée écrite en dur : c'est le jeton lui-même (briefing.html, sans régime v2, les pose localement).
+const sansBoucles = (css) => css.replace(/animation:[^;{}]*\binfinite\b[^;{}]*/g, 'animation:BOUCLE').replace(/--motion-(?:fast|base|slow):[^;}]*/g, '--motion-JETON');
 
 function partiesDe(page) {
   const html = lire(page);
@@ -161,6 +162,14 @@ test('analyses.html : pastille en motion-safe:animate-pulse, zoom des cartes dan
 
 test('briefing.html : boucles en classes (pulse-live, spin), sommaire en .toc-link, jauge et cartes en jetons', () => {
   const { style, script } = partiesDe('briefing.html');
+  // Sans régime v2, la page ne reçoit pas assets/design-tokens-v2.css : ses jetons locaux doivent rester identiques au fichier de jetons.
+  const jetons = lire('assets/design-tokens-v2.css').match(/\[data-design-regime="editorial"\]\s*\{([^}]*)\}/)[1];
+  for (const jeton of ['--motion-fast', '--motion-base', '--motion-slow']) {
+    const ref = jetons.match(new RegExp(`${jeton}:\\s*([^;]+);`))[1].trim();
+    const local = style.match(new RegExp(`${jeton}:\\s*([^;}]+)`));
+    assert.ok(local, `${jeton} non posé localement dans briefing.html (la page ne charge pas design-tokens-v2.css)`);
+    assert.equal(local[1].trim(), ref, `${jeton} local diverge du fichier de jetons`);
+  }
   assert.ok(script.includes("className:'pulse-live'"), 'pastille LIVE : classe .pulse-live attendue');
   assert.ok(script.includes("className:'spin w-5 h-5"), 'spinner : classe .spin attendue');
   assert.ok(style.includes('@keyframes spin{'), '@keyframes spin manque (le spinner ne tournait pas)');
