@@ -14,32 +14,28 @@ body{font-family:'IBM Plex Sans','Helvetica Neue',sans-serif;background:var(--su
 h1,h2,h3,.display-text{font-family:'Archivo',Arial,sans-serif;font-weight:800;line-height:1.15;letter-spacing:-0.035em;color:var(--text-primary)}
 \.category-label{font-family:'IBM Plex Mono',monospace;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--editorial-accent)}
 
-@keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.anim-fade-up{animation:fade-up .6s ease-out both}
-.anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}
 
 .nav-link{position:relative}
-.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:var(--chrome-text);transform:scaleX(0);transition:transform .25s ease}
-.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:var(--chrome-text);transform:scaleX(0);transition:transform var(--motion-fast)}
+.nav-link.active::after{transform:scaleX(1)}
 .mega-trigger{position:relative}
-.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:520px;z-index:60}
+.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity var(--motion-base),transform var(--motion-base),visibility var(--motion-base);min-width:520px;z-index:60}
 .mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
-.mega-item{transition:background .15s ease}
-.mega-item:hover{background:rgba(16,18,20,.06)}
+.mega-item{transition:background var(--motion-fast)}
 .mega-icon{width:36px;height:36px;border-radius:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
 .nav-scrolled{background:var(--chrome-scrolled);backdrop-filter:blur(16px);border-bottom:1px solid var(--chrome-border)}
 
-.hamburger span{display:block;width:24px;height:2px;background:var(--chrome-text);margin:5px 0;transition:all .3s ease}
+.hamburger span{display:block;width:24px;height:2px;background:var(--chrome-text);margin:5px 0;transition:all var(--motion-base)}
 :focus-visible{outline:2px solid var(--text-primary);outline-offset:2px}
 header :focus-visible,.mobile-overlay :focus-visible,.v2-chrome :focus-visible{outline-color:var(--chrome-text)}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-.mobile-overlay{opacity:0;visibility:hidden;transition:opacity .35s cubic-bezier(.4,0,.2,1),visibility .35s;height:100dvh}
+.mobile-overlay{opacity:0;visibility:hidden;transition:opacity var(--motion-base),visibility var(--motion-base);height:100dvh}
 .mobile-overlay.open{opacity:1;visibility:visible}
 @keyframes menu-item-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 .menu-item{opacity:0}
-.mobile-overlay.open .menu-item{animation:menu-item-in .4s ease-out forwards}
+.mobile-overlay.open .menu-item{animation:menu-item-in var(--motion-slow) forwards}
 body.menu-open{overflow:hidden}
 
 .prose p{margin-bottom:1.25rem;font-size:1rem;line-height:1.75;color:var(--text-secondary)}
@@ -59,11 +55,8 @@ body.menu-open{overflow:hidden}
 .insight-box.alert{border-left-color:#DC2626}
 .insight-box.gold{border-left-color:#EAB308}
 
-.article-card{position:relative;transition:box-shadow .18s ease,border-color .18s ease}
-.article-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--editorial-accent);transform:scaleY(0);transform-origin:top;transition:transform .22s ease;z-index:1}
-.article-card:hover{box-shadow:0 6px 18px rgba(14,16,18,.10);border-color:var(--border-hairline)}
-.article-card:hover::before{transform:scaleY(1)}
-@media(prefers-reduced-motion:reduce){.article-card::before{transition:none}}
+.article-card{position:relative;transition:box-shadow var(--motion-fast),border-color var(--motion-fast)}
+.article-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--editorial-accent);transform:scaleY(0);transform-origin:top;transition:transform var(--motion-fast);z-index:1}
 
 .category-geo,.category-geopolitique,.category-marches,.category-crypto,.category-matieres,.category-iatech{background:var(--badge-bg);color:var(--badge-text)}
 
@@ -130,14 +123,38 @@ display:block;
 .section-alt{background-color:var(--surface-raised)}
 .section-divider{border-top:1px solid var(--hairline-warm)}
 .featured-card{position:relative;overflow:hidden}
-.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--editorial-accent);transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
-.featured-card:hover::before{transform:scaleY(1)}
+.featured-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--editorial-accent);transform:scaleY(0);transition:transform var(--motion-fast);transform-origin:top}
 .hero-glow{position:absolute;top:-120px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(142,36,36,.06) 0%,transparent 70%);pointer-events:none}
 @media(max-width:768px){
 html,body{overflow-x:hidden}
 img{max-width:100%;height:auto}
 button,a[href]:not(.prose a){min-height:44px;min-width:44px}
 .mobile-overlay .menu-item a{min-height:48px;display:flex;align-items:center}
+}
+
+/* Apparitions — composant Reveal (prompt 4 de l'audit Starlink) : un élément à la fois, opacité et 16 px, var(--motion-slow).
+   Déclaré après les cartes pour que sa transition gagne pendant l'apparition ; Reveal retire la classe ensuite. */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity var(--motion-slow),transform var(--motion-slow)}
+.reveal.is-visible{opacity:1;transform:none}
+/* En-tête au défilement : même valeur que l'ancien utilitaire Tailwind (300 ms). Le prompt 5 restreindra « all » à background-color et border-color. */
+.site-header{transition:all var(--motion-base)}
+
+/* Survols — pointeur capable de survoler seulement (audit 7.6) : sur tactile un :hover resterait collé après le toucher.
+   L'ouverture du méga-menu (.mega-trigger:hover .mega-menu) reste hors de ce bloc : sur tablette, ce :hover émulé au toucher est le seul moyen d'ouvrir le menu. */
+@media(hover:hover){
+.nav-link:hover::after{transform:scaleX(1)}
+.mega-item:hover{background:rgba(16,18,20,.06)}
+.article-card:hover{box-shadow:0 6px 18px rgba(14,16,18,.10);border-color:var(--border-hairline)}
+.article-card:hover::before{transform:scaleY(1)}
+.featured-card:hover::before{transform:scaleY(1)}
+}
+
+/* Mouvement réduit (audit 7.5) : contenu affiché sans apparition, entrées du menu visibles, boucles décoratives figées sur leur première image */
+@media(prefers-reduced-motion:reduce){
+.article-card::before,.featured-card::before{transition:none}
+.reveal{opacity:1;transform:none;transition:none}
+.mobile-overlay.open .menu-item{animation:none;opacity:1}
+.hero-dynamic,.hero-dynamic::before{animation-play-state:paused}
 }
 </style>
 <link rel="stylesheet" href="assets/site.css">
@@ -151,6 +168,55 @@ import React,{useState,useEffect,useRef} from 'https://esm.sh/react@18.2.0'
 import{createRoot}from 'https://esm.sh/react-dom@18.2.0/client'
 
 const h=React.createElement
+
+
+// Apparitions (audit Starlink 7.2-7.5). Un seul IntersectionObserver pour tous les Reveal :
+// les éléments qui franchissent le seuil dans la même image forment un lot, et le rang dans le lot
+// porte le décalage des grilles (stagger). Un décalage par index cumulerait un retard visible
+// sur les cartes hors du premier écran (9e carte de veille : 0,78 s après son entrée dans l'écran).
+const revealAttente=new Map() // élément → {stagger, declencher}
+let revealIO=null
+function observerReveal(el,entree){
+if(!revealIO)revealIO=new IntersectionObserver(entries=>{
+let rang=0
+for(const e of entries){
+if(!e.isIntersecting)continue
+const a=revealAttente.get(e.target)
+if(!a)continue
+revealAttente.delete(e.target);revealIO.unobserve(e.target)
+a.declencher(a.stagger?rang++:0)
+}
+},{threshold:0.15})
+revealAttente.set(el,entree);revealIO.observe(el)
+return()=>{revealAttente.delete(el);revealIO.unobserve(el)}
+}
+const reduireMouvement=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+// Anime UN élément (opacity 0→1, translateY 16px→0, var(--motion-slow)) à son entrée dans l'écran.
+// delay : secondes avant le départ ; stagger : secondes ajoutées par rang dans le lot (cartes d'une grille).
+// L'enfant est cloné, pas enveloppé : un div intermédiaire casserait l'égalisation des hauteurs dans les grilles.
+// Une fois la transition finie, l'enfant est rendu tel quel (plus de classe ni de délai) pour ne pas
+// interférer avec ses propres transitions (.article-card) et rester identique au pixel à l'original.
+// Enfant hôte (balise) uniquement : la ref doit viser un nœud DOM. Sa ref et son transitionDelay sont remplacés, son onTransitionEnd chaîné.
+// Limite : une transition interrompue (display:none en cours, transitioncancel) n'émet pas transitionend ; l'élément garde alors la classe :
+// visuel identique, seule la transition de survol d'une carte est perdue jusqu'au rechargement (React 18 n'expose pas onTransitionCancel).
+function Reveal({delay=0,stagger=0,children}){
+const enfant=React.Children.only(children)
+if(typeof enfant.type!=='string')throw new Error('Reveal : enfant hôte (balise) requis, la ref doit viser un nœud DOM')
+const ref=useRef(null)
+const[rang,setRang]=useState(-1) // -1 : pas encore entré dans l'écran
+const[fini,setFini]=useState(false)
+const[reduit]=useState(reduireMouvement) // lu au montage : un élément rendu nu le reste (il n'a pas d'observateur), même si la préférence change ensuite
+useEffect(()=>{if(ref.current)return observerReveal(ref.current,{stagger,declencher:setRang})},[])
+if(fini||reduit)return enfant
+const retard=Math.round((delay+Math.max(rang,0)*stagger)*1000)/1000 // évite 0.3+2*0.06 = 0.42000000000000004 dans le DOM
+return React.cloneElement(enfant,{
+ref,
+className:`${enfant.props.className||''} reveal${rang>=0?' is-visible':''}`.trim(),
+style:{...enfant.props.style,transitionDelay:`${retard}s`},
+onTransitionEnd:e=>{enfant.props.onTransitionEnd?.(e);if(e.target===e.currentTarget&&e.propertyName==='opacity')setFini(true)}
+})
+}
 
 const RELATED_ARTICLES=[
 {id:1,cat:'geopolitique',catLabel:'G\u00e9opolitique',title:'P\u00e9trole \u00e0 119\u00a0$ : Op\u00e9ration Epic Fury, Ormuz ferm\u00e9 et le jeu dangereux de Trump',img:'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=300&h=200&fit=crop',href:'analyse-petrole-trump-iran-ormuz.html'},
@@ -176,7 +242,7 @@ return()=>document.body.classList.remove('menu-open')
 },[open])
 return h('div',null,
  h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[var(--editorial-accent)]'}),
- h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
+ h('header',{className:`site-header fixed top-[3px] left-0 right-0 z-50 ${scrolled?'nav-scrolled':'bg-transparent'}`},
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
@@ -253,22 +319,22 @@ return()=>window.removeEventListener('scroll',onScroll)
 },[])
 return h('section',{ref:heroRef,className:'hero-dynamic relative pt-28 pb-24 md:pt-36 md:pb-28'},
  h('div',{className:'hero-content relative z-[3] max-w-3xl mx-auto px-4 sm:px-6',style:{willChange:'transform,opacity'}},
-  h('div',{className:'anim-fade-up flex items-center gap-3 mb-6'},
+  h(Reveal,{delay:0},h('div',{className:'flex items-center gap-3 mb-6'},
    h('span',{className:'category-geo px-3 py-1 text-[10px] font-semibold uppercase tracking-wider',style:{fontFamily:"'IBM Plex Mono',monospace"}},'G\u00c9OPOLITIQUE'),
    h('span',{className:'text-xs uppercase tracking-wider text-white/50'},'Arctique & Ressources strat\u00e9giques')
-  ),
-  h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-[2.75rem] font-extrabold text-white leading-[1.15] tracking-tight',style:{fontFamily:"'Archivo',Arial,sans-serif"}},
+  )),
+  h(Reveal,{delay:0},h('h1',{className:'text-2xl sm:text-3xl md:text-[2.75rem] font-extrabold text-white leading-[1.15] tracking-tight',style:{fontFamily:"'Archivo',Arial,sans-serif"}},
    'Arctique\u00a0: le grand jeu polaire \u2014 Groenland, terres rares et nouvelles routes du pouvoir'
-  ),
-  h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/60 leading-relaxed'},
+  )),
+  h(Reveal,{delay:0.15},h('p',{className:'mt-5 text-base md:text-lg text-white/60 leading-relaxed'},
    'De la convoitise de Trump sur le Groenland \u00e0 la Route de la Soie polaire chinoise, des 54\u00a0brise-glaces russes aux manoeuvres de l\u2019OTAN\u00a0: l\u2019Arctique est devenu le th\u00e9\u00e2tre d\u2019une comp\u00e9tition g\u00e9opolitique majeure autour des ressources, des routes maritimes et de la supr\u00e9matie militaire.'
-  ),
-  h('div',{className:'anim-fade-up anim-d3 mt-8 flex flex-wrap items-center gap-5 text-sm text-white/40'},
+  )),
+  h(Reveal,{delay:0.3},h('div',{className:'mt-8 flex flex-wrap items-center gap-5 text-sm text-white/40'},
    h('div',{className:'w-12 h-[2px] bg-[var(--editorial-accent-text)]'}),
    h('span',null,h('strong',{className:'text-white/60'},'Inflexion Research')),
    h('span',null,'11 mars 2026'),
    h('span',null,'14 min de lecture')
-  )
+  ))
  ),
  h('div',{className:'hero-wave'},
   h('svg',{viewBox:'0 0 1440 80',preserveAspectRatio:'none',xmlns:'http://www.w3.org/2000/svg'},
@@ -700,6 +766,5 @@ return h('div',null,
 
 createRoot(document.getElementById('app')).render(h(App))
 </script>
-<script src="scroll-reveal.js"></script>
 </body>
 </html>
