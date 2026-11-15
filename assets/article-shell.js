@@ -1,7 +1,7 @@
 /* Coquille partagee des pages d'analyse : navigation, page de garde, pied de page.
    Extraite telle quelle des articles, qui en embarquaient chacun une copie. */
 
-import React,{useState,useEffect} from 'https://esm.sh/react@18.2.0'
+import React,{useState,useEffect,useRef} from 'https://esm.sh/react@18.2.0'
 import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client'
 import { topDimensions, scenarioWidths } from './article-model.js'
 
@@ -9,6 +9,55 @@ const h = React.createElement
 export { h, createRoot }
 
 const MEGA_NAV=window.MEGA_NAV
+
+
+// Apparitions (audit Starlink 7.2-7.5). Un seul IntersectionObserver pour tous les Reveal :
+// les éléments qui franchissent le seuil dans la même image forment un lot, et le rang dans le lot
+// porte le décalage des grilles (stagger). Un décalage par index cumulerait un retard visible
+// sur les cartes hors du premier écran (9e carte de veille : 0,78 s après son entrée dans l'écran).
+const revealAttente=new Map() // élément → {stagger, declencher}
+let revealIO=null
+function observerReveal(el,entree){
+if(!revealIO)revealIO=new IntersectionObserver(entries=>{
+let rang=0
+for(const e of entries){
+if(!e.isIntersecting)continue
+const a=revealAttente.get(e.target)
+if(!a)continue
+revealAttente.delete(e.target);revealIO.unobserve(e.target)
+a.declencher(a.stagger?rang++:0)
+}
+},{threshold:0.15})
+revealAttente.set(el,entree);revealIO.observe(el)
+return()=>{revealAttente.delete(el);revealIO.unobserve(el)}
+}
+const reduireMouvement=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+// Anime UN élément (opacity 0→1, translateY 16px→0, var(--motion-slow)) à son entrée dans l'écran.
+// delay : secondes avant le départ ; stagger : secondes ajoutées par rang dans le lot (cartes d'une grille).
+// L'enfant est cloné, pas enveloppé : un div intermédiaire casserait l'égalisation des hauteurs dans les grilles.
+// Une fois la transition finie, l'enfant est rendu tel quel (plus de classe ni de délai) pour ne pas
+// interférer avec ses propres transitions (.article-card) et rester identique au pixel à l'original.
+// Enfant hôte (balise) uniquement : la ref doit viser un nœud DOM. Sa ref et son transitionDelay sont remplacés, son onTransitionEnd chaîné.
+// Limite : une transition interrompue (display:none en cours, transitioncancel) n'émet pas transitionend ; l'élément garde alors la classe :
+// visuel identique, seule la transition de survol d'une carte est perdue jusqu'au rechargement (React 18 n'expose pas onTransitionCancel).
+export function Reveal({delay=0,stagger=0,children}){
+const enfant=React.Children.only(children)
+if(typeof enfant.type!=='string')throw new Error('Reveal : enfant hôte (balise) requis, la ref doit viser un nœud DOM')
+const ref=useRef(null)
+const[rang,setRang]=useState(-1) // -1 : pas encore entré dans l'écran
+const[fini,setFini]=useState(false)
+const[reduit]=useState(reduireMouvement) // lu au montage : un élément rendu nu le reste (il n'a pas d'observateur), même si la préférence change ensuite
+useEffect(()=>{if(ref.current)return observerReveal(ref.current,{stagger,declencher:setRang})},[])
+if(fini||reduit)return enfant
+const retard=Math.round((delay+Math.max(rang,0)*stagger)*1000)/1000 // évite 0.3+2*0.06 = 0.42000000000000004 dans le DOM
+return React.cloneElement(enfant,{
+ref,
+className:`${enfant.props.className||''} reveal${rang>=0?' is-visible':''}`.trim(),
+style:{...enfant.props.style,transitionDelay:`${retard}s`},
+onTransitionEnd:e=>{enfant.props.onTransitionEnd?.(e);if(e.target===e.currentTarget&&e.propertyName==='opacity')setFini(true)}
+})
+}
 
 // ─── NAVIGATION ──────────────────────────────────────────────────────────────
 
@@ -26,7 +75,7 @@ return()=>document.body.classList.remove('menu-open')
 },[open])
 return h('div',null,
  h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[var(--editorial-accent)]'}),
- h('header',{className:`fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 ${scrolled?'nav-scrolled':'bg-transparent'}`},
+ h('header',{className:`site-header fixed top-[3px] left-0 right-0 z-50 ${scrolled?'nav-scrolled':'bg-transparent'}`},
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
@@ -165,12 +214,14 @@ const ROMAINS = ['I','II','III','IV','V','VI','VII','VIII','IX','X']
 export function Section (props, ...children) {
   const { rang, romain, titre } = props
   return h('section', { key: rang, id: 'section-' + rang, className: 'mb-12 scroll-mt-24', 'data-rang': rang, 'data-romain': romain || '' },
-    h('h2', { className: 'text-xl md:text-2xl font-extrabold text-[var(--text-primary)] leading-snug mb-4' },
+    h(Reveal, { delay: 0 }, h('h2', { className: 'text-xl md:text-2xl font-extrabold text-[var(--text-primary)] leading-snug mb-4' },
       romain
         ? h('span', { className: 'text-[var(--editorial-accent)] mr-3', style: { fontFamily: "'IBM Plex Mono',monospace" } }, romain + '.')
         : null,
-      titre),
-    ...children
+      titre)),
+    // Chaque enfant hôte (P, SousTitre, encadré) apparaît 0,15 s après le titre (prompt 4 : titre / texte) ;
+    // un enfant non hôte passe tel quel, Reveal exigeant une balise.
+    ...children.map((enfant, i) => React.isValidElement(enfant) && typeof enfant.type === 'string' ? h(Reveal, { key: i, delay: 0.15 }, enfant) : enfant)
   )
 }
 
@@ -344,7 +395,7 @@ const TD = 'px-3 py-2.5'
 const LIGNE = 'border-b border-[var(--hairline-warm)]'
 
 function TitreAppareil (texte) {
-  return h('h2', { className: 'text-xl md:text-2xl font-extrabold text-[var(--text-primary)] leading-snug mb-4' }, texte)
+  return h(Reveal, { delay: 0 }, h('h2', { className: 'text-xl md:text-2xl font-extrabold text-[var(--text-primary)] leading-snug mb-4' }, texte))
 }
 
 /** Appareil critique — temps 3 du dossier : ce qui étaye l'analyse (SEMPLICE,
@@ -358,7 +409,7 @@ export function Apparatus (a) {
 
     h('section', { className: 'pt-2' },
       TitreAppareil('Évaluation SEMPLICE'),
-      h('div', { className: 'my-6 overflow-x-auto' },
+      h(Reveal, { delay: 0.3 }, h('div', { className: 'my-6 overflow-x-auto' },
         h('table', { className: 'w-full text-sm border-collapse' },
           h('thead', null,
             h('tr', { className: 'bg-[rgba(94,74,58,.08)]' },
@@ -385,17 +436,17 @@ export function Apparatus (a) {
             )
           )
         )
-      ),
+      )),
       a.lectureScore
-        ? h('p', { className: 'text-base leading-relaxed text-[var(--text-secondary)]' },
-            h('strong', { className: 'text-[var(--text-primary)]' }, 'Lecture du score'), ' — ', a.lectureScore)
+        ? h(Reveal, { delay: 0.15 }, h('p', { className: 'text-base leading-relaxed text-[var(--text-secondary)]' },
+            h('strong', { className: 'text-[var(--text-primary)]' }, 'Lecture du score'), ' — ', a.lectureScore))
         : null
     ),
 
     h('section', { className: 'mt-12' },
       TitreAppareil(titreScenarios(a)),
       ...a.scenarios.map((s, i) =>
-        h('div', { key: i, className: 'my-6 overflow-hidden ' + grav(i).carte },
+        h(Reveal, { key: i, delay: 0.3, stagger: 0.06 }, h('div', { className: 'my-6 overflow-hidden ' + grav(i).carte },
           h('div', { className: 'px-5 py-3 ' + grav(i).entete },
             h('div', { className: 'flex items-center justify-between gap-3' },
               h('span', { className: 'text-sm font-bold ' + grav(i).titre }, 'Scénario ' + (i + 1) + ' — ' + s.titre),
@@ -407,14 +458,14 @@ export function Apparatus (a) {
               s.texte, ' ',
               h('strong', { className: 'text-[var(--text-primary)]' }, 'Impact décideurs'), ' : ', s.impact)
           )
-        )
+        ))
       )
     ),
 
     a.matrice
       ? h('section', { className: 'mt-12' },
           TitreAppareil('Matrice d’impact sectoriel'),
-          h('div', { className: 'my-6 overflow-x-auto' },
+          h(Reveal, { delay: 0.3 }, h('div', { className: 'my-6 overflow-x-auto' },
             h('table', { className: 'w-full text-sm border-collapse' },
               h('thead', null,
                 h('tr', { className: 'bg-[rgba(94,74,58,.08)]' },
@@ -434,62 +485,62 @@ export function Apparatus (a) {
                 )
               )
             )
-          )
+          ))
         )
       : null,
 
     a.alertes
       ? h('section', { className: 'mt-12' },
-          SousTitre(null, 'Indicateurs d’alerte à surveiller'),
-          h('div', { className: 'insight-box' },
+          h(Reveal, { delay: 0 }, SousTitre(null, 'Indicateurs d’alerte à surveiller')),
+          h(Reveal, { delay: 0.3 }, h('div', { className: 'insight-box' },
             h('ul', { className: 'space-y-1.5 text-sm text-[var(--text-secondary)]' },
               ...a.alertes.map((al, i) =>
                 h('li', { key: i },
                   h('strong', { className: 'text-[var(--text-primary)]' }, al.signal), ' — ', al.lecture)
               )
             )
-          )
+          ))
         )
       : null,
 
     h('section', { className: 'mt-12' },
       TitreAppareil('Sources principales'),
       a.sourcesMeta
-        ? h('p', { className: 'text-[11px] uppercase tracking-[0.12em] text-[var(--text-secondary)] mb-3', style: { fontFamily: "'IBM Plex Mono',monospace" } }, a.sourcesMeta)
+        ? h(Reveal, { delay: 0.15 }, h('p', { className: 'text-[11px] uppercase tracking-[0.12em] text-[var(--text-secondary)] mb-3', style: { fontFamily: "'IBM Plex Mono',monospace" } }, a.sourcesMeta))
         : null,
-      h('ul', { className: 'space-y-1.5' },
+      h(Reveal, { delay: 0.3 }, h('ul', { className: 'space-y-1.5' },
         ...a.bibliographie.map((b, i) =>
           h('li', { key: i },
             h('a', { href: b.url, target: '_blank', rel: 'noopener noreferrer', className: 'text-xs text-[var(--editorial-accent)] hover:underline' }, b.nom + ' — ' + b.note))
         )
-      ),
+      )),
       a.sourcesNote
-        ? h('p', { className: 'mt-3 text-[10px] text-[var(--text-secondary)] italic' }, a.sourcesNote)
+        ? h(Reveal, { delay: 0.15 }, h('p', { className: 'mt-3 text-[10px] text-[var(--text-secondary)] italic' }, a.sourcesNote))
         : null
     ),
 
     a.amf
       ? h('section', { className: 'mt-12' },
-          h('div', { className: 'insight-box gold' },
+          h(Reveal, { delay: 0.3 }, h('div', { className: 'insight-box gold' },
             h('div', { className: 'text-[11px] font-semibold uppercase tracking-wider text-[#9A7506] mb-2' }, 'Avertissement AMF'),
             h('p', { className: 'text-xs text-[var(--text-secondary)] leading-relaxed' }, a.amf)
-          )
+          ))
         )
       : null,
 
-    h('div', { className: 'mt-12 text-center' },
+    h(Reveal, { delay: 0.3 }, h('div', { className: 'mt-12 text-center' },
       h('a', { href: 'analyses.html', className: 'inline-block px-6 py-2.5 text-sm font-semibold text-[var(--editorial-accent)] border-2 border-[var(--editorial-accent)] hover:bg-[var(--editorial-accent)] hover:text-[#F5EDE6] transition-colors' }, '← Toutes les analyses')
-    ),
-    h('div', { className: 'mt-6 text-center' },
+    )),
+    h(Reveal, { delay: 0.3 }, h('div', { className: 'mt-6 text-center' },
       h('a', { href: 'premium.html', className: 'inline-block px-7 py-3.5 bg-[var(--editorial-accent)] hover:bg-[#6E1B1B] text-[#F5EDE6] font-semibold text-sm transition-colors' }, 'Réserver un diagnostic')
-    ),
+    )),
 
     a.articlesLies
       ? h('section', { className: 'mt-14 pt-10 border-t border-[var(--hairline-warm)]' },
-          h('p', { className: 'text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)] mb-4' }, 'Articles liés'),
+          h(Reveal, { delay: 0 }, h('p', { className: 'text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)] mb-4' }, 'Articles liés')),
           h('div', { className: 'grid grid-cols-1 sm:grid-cols-3 gap-5' },
             ...a.articlesLies.map((r, i) =>
-              h('a', { key: i, href: r.href, className: 'article-card block overflow-hidden bg-[var(--surface-raised)] border border-[var(--hairline-warm)] no-underline' },
+              h(Reveal, { key: i, delay: 0.3, stagger: 0.06 }, h('a', { href: r.href, className: 'article-card block overflow-hidden bg-[var(--surface-raised)] border border-[var(--hairline-warm)] no-underline' },
                 h('div', { className: 'aspect-[16/9] overflow-hidden' },
                   h('img', { src: r.img, alt: '', className: 'w-full h-full object-cover', loading: 'lazy' })
                 ),
@@ -503,7 +554,7 @@ export function Apparatus (a) {
                   h('span', { className: 'text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 bg-[var(--badge-bg)] text-[var(--badge-text)]', style: { fontFamily: "'IBM Plex Mono',monospace" } }, r.catLabel),
                   h('h4', { className: 'mt-2 text-xs font-semibold text-[var(--text-primary)] leading-snug line-clamp-2', style: { fontFamily: "'Archivo',Arial,sans-serif" } }, r.titre)
                 )
-              )
+              ))
             )
           )
         )
