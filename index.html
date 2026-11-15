@@ -407,6 +407,10 @@ return h('div',{className:'overflow-hidden bg-[#FFFFFF] border border-[var(--hai
 )
 }
 
+function surErreurImage(a){return e=>{const img=e.target
+ if(a.img&&img.dataset.repli!=='1'){img.dataset.repli='1';img.src=instrumentPour(a);img.parentElement.classList.remove('img-gravure')}
+ else{img.style.display='none'}}}
+
 function ArticlesGrid(){
 const[filter,setFilter]=useState('all')
 const[articles,setArticles]=useState(ARTICLES_FALLBACK)
@@ -440,11 +444,7 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
     return h('a',{key:a.id,href:a.href||'#',target:a.href&&a.href.startsWith('http')?'_blank':undefined,rel:a.href&&a.href.startsWith('http')?'noopener noreferrer':undefined,className:'article-card overflow-hidden block no-underline bg-[#FFFFFF] border border-[var(--hairline-warm)]'},
      h('div',{className:'aspect-[5/3] overflow-hidden bg-[var(--chrome-ground)]'+(a.img?' img-gravure':'')},
       h('img',{src:a.img||instrumentPour(a),alt:'',className:'w-full h-full object-cover',loading:'lazy',width:1000,height:600,
-       onError:e=>{
-        const img=e.target
-        if(img.dataset.repli!=='1'){img.dataset.repli='1';img.src=instrumentPour(a);img.parentElement.classList.remove('img-gravure')}
-        else{img.style.display='none'}
-       }})
+       onError:surErreurImage(a)})
      ),
      h('div',{className:'p-5'},
       h('div',{className:'flex items-center gap-2 mb-3',style:{fontFamily:"'IBM Plex Mono',monospace"}},
