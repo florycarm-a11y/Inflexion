@@ -25,6 +25,12 @@
   --text-secondary: #4C5052;
   --border-hairline: #4C5052;
   --hairline-warm: rgba(94, 74, 58, 0.22);
+
+  /* Texte sur le chrome sombre : une seule couleur, trois opacites (audit Starlink 2026-11-13, section 5.3).
+     1 titres et libelles, 2 paragraphes, 3 metadonnees. Contrastes sur #17100E : 16,2 / 8,3 / 5,5 :1. */
+  --chrome-text-1: #F5EDE6;
+  --chrome-text-2: rgba(245, 237, 230, .70);
+  --chrome-text-3: rgba(245, 237, 230, .55);
 }
 
 /* Regime editorial — spec section 2.2. Pages sans instrument.
@@ -68,4 +74,11 @@
      donnee. #8E2424 sur #EAE1D4 : ~6,9:1, lisible. */
   --badge-bg: #EAE1D4;
   --badge-text: #8E2424;
+
+  /* Texte sur le chrome sombre : une seule couleur, trois opacites (audit Starlink 2026-11-13, section 5.3).
+     1 titres et libelles, 2 paragraphes, 3 metadonnees. Contrastes sur #17100E : 16,2 / 8,3 / 5,5 :1 ;
+     niveau 3 reserve a #17100E (4,45:1 seulement sur --credibility-band). */
+  --chrome-text-1: #F5EDE6;
+  --chrome-text-2: rgba(245, 237, 230, .70);
+  --chrome-text-3: rgba(245, 237, 230, .55);
 }
