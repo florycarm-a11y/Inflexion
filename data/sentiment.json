@@ -1,78 +1,69 @@
 {
-  "updated": "2026-11-14T12:57:07.427Z",
-  "date": "2026-11-14",
+  "updated": "2026-11-15T22:30:33.030Z",
+  "date": "2026-11-15",
   "global": {
-    "score": -0.6,
+    "score": -0.34,
     "tendance": "baissier",
-    "resume": "Le sentiment global est baissier (-0.6), dominé par la rubrique crypto (baissier)."
+    "resume": "Le sentiment global est baissier (-0.34), dominé par la rubrique crypto (baissier)."
   },
   "categories": {
     "geopolitique": {
-      "score": -0.65,
-      "confidence": 0.85,
+      "score": -0.35,
+      "confidence": 0.72,
       "tendance": "baissier",
-      "resume": "Négociations territoriales Ukraine-OTAN en cours, tensions Iran-US persistantes (drone intercepté, tanker en feu), risque d'escalade géopolitique. Réunion Trump-Xi-Putin envisagée mais incertaine.",
+      "resume": "Tensions géopolitiques persistantes autour de la Chine (espionnage Nvidia, restrictions étudiants), du Moyen-Orient (Gaza, Yémen) et de l'Europe de l'Est (Tchéquie, Allemagne). Instabilité régionale croissante affectant les chaînes d'approvisionnement technologiques.",
       "signaux_cles": [
-        "US propose cession du Donbas à l'Ukraine contre adhésion OTAN (multiple sources)",
-        "Iran intercepte drone MQ-1 Predator et signale tanker en feu dans le détroit d'Ormuz",
-        "Trump envisage de suspendre attaques contre l'Iran sauf nouvelle provocation"
+        "Espion chinois lié à Nvidia : implications pour la sécurité des chaînes d'approvisionnement semi-conducteurs",
+        "Universités occidentales : réduction attendue des étudiants chinois impactant les revenus académiques",
+        "Yémen : forces soutenues par l'Arabie saoudite en retraite, détroit stratégique sous contrôle Houthi"
       ]
     },
     "marches": {
-      "score": -0.28,
-      "confidence": 0.72,
+      "score": 0.15,
+      "confidence": 0.58,
       "tendance": "mixte",
-      "resume": "Panne Microsoft 365 résolue après 24h (impact opérationnel résorbé). Tesla lance Cybercab en ventes limitées. Goldman Sachs révise à la baisse prévisions or 2027. Préoccupations sectorielles tech et aérien.",
+      "resume": "Signaux contradictoires : allocations stratégiques vers le Japon (au-delà des actions IA), commandes aérospatiales solides (Bombardier, NASA-BAE), mais contexte d'incertitude Nvidia pèse sur les perspectives technologiques. Secteurs défensifs et diversifiés en avant-plan.",
       "signaux_cles": [
-        "Panne Microsoft 365 résolue, pas de cyberattaque confirmée",
-        "Tesla ouvre ventes Cybercab à clientèle sélectionnée",
-        "Goldman Sachs réduit prévisions or 2027 (chiffres non précisés)"
+        "Pictet augmente allocation Japon : rotation hors concentration IA",
+        "Bombardier : commande 12 jets Arabie Saoudite, signal de demande d'équipements premium",
+        "Nvidia earnings call anticipée : moment clé pour clarifier les impacts géopolitiques et réglementaires"
       ]
     },
     "crypto": {
-      "score": -0.88,
-      "confidence": 0.92,
+      "score": -0.78,
+      "confidence": 0.91,
       "tendance": "baissier",
-      "resume": "Décorrélation massive des cryptos : BTC -11,48% (7j), ETH -14,98%, XRP -15,07%. Fear & Greed à 13 (panique extrême). TVL DeFi effondré -17,2% sur 7j ($464B). Fuites de données massives (22M adresses La Poste).",
+      "resume": "Liquidation massive et généralisée du secteur crypto. Bitcoin et Ethereum en baisse de 14-18% sur 7j, Fear & Greed Index à 10 (panique extrême). Sorties nettes Bitcoin ETF (-$2,1Mds en novembre), TVL DeFi en contraction (-9,9%). Contexte réglementaire restrictif (SEC, CFTC, Allemagne) amplifie la pression.",
       "signaux_cles": [
-        "Bitcoin sous 67 000 $ : 330M$ liquidés en 2h, ETFs perdent 2,35B$ en 2 semaines",
-        "Fear & Greed Index à 13 (Extreme Fear), baisse de -12 pts/7j",
-        "TVL DeFi -17,2% sur 7j ($464B), Lido -14,5%, EigenCloud -14,9%"
+        "Bitcoin : -14,05% sur 7j, retour sous $62k (4 mois de bas), Fear & Greed à 10 (-18 pts/7j)",
+        "Ethereum : -18,21% sur 7j, Solana -19,25%, Dogecoin -17,01% (liquidation systémique)",
+        "TVL DeFi : -9,9% sur 7j ($448B), Lido -17,9%, Aave -11%, signal de stress structurel"
       ]
     },
     "matieres_premieres": {
-      "score": -0.35,
-      "confidence": 0.68,
+      "score": 0.22,
+      "confidence": 0.65,
       "tendance": "neutre",
-      "resume": "Tensions géopolitiques (Iran) soutiennent pétrole brut. Gaz naturel affaibli par surplus stocks. Secteur maritime en consolidation après rallye record. Accord LNG Mozambique-Afrique du Sud attendu janvier 2027.",
+      "resume": "Secteur énergétique en transition : tensions géopolitiques (Iran, Yémen) soutiennent les prix pétroliers (+$130Mds boom), mais accélération de l'électrification et énergies renouvelables (Espagne, Brésil, nucléaire asiatique) réduit la demande long terme. Shipping reste soutenu mais volatilité présente.",
       "signaux_cles": [
-        "Pétrole fluctue sur tensions Iran persistantes (drone, tanker)",
-        "Surplus gaz naturel pèse sur futures, fin de séquence haussière",
-        "Accord LNG Mozambique-Afrique du Sud prévu janvier 2027"
+        "Boom pétrolier Iran : +$130Mds générés par tensions géopolitiques, mais durabilité incertaine",
+        "Asie : 73% des nouvelles capacités nucléaires mondiales en construction, accélération électrification",
+        "Cuivre : défaillances infrastructure US (câbles vétustes), vol organisé ($112k), signale vieillissement des réseaux"
       ]
     },
     "ai_tech": {
-      "score": -0.72,
+      "score": -0.62,
       "confidence": 0.88,
       "tendance": "baissier",
-      "resume": "Crise de confiance post-Jensen Huang (Nvidia) : démission, accusations de tromperie, risques juridiques. OpenAI réaffecte équipes robotique. Anthropic défend sécurité IA avant IPO. Secteur tech sous pression générale.",
+      "resume": "Crise majeure autour de Nvidia : scandale d'espionnage (puces détournées vers Chine, ~$12Mds), débat sur retour de Jensen Huang, restrictions export IA chips en débat au Congrès. Parallèlement, avancées technologiques (Claude 5.2, VPP, cyberguerre) mais éclipsées par risques réglementaires et géopolitiques.",
       "signaux_cles": [
-        "Jensen Huang aurait induit en erreur responsable juridique Nvidia sur liaison chinoise",
-        "OpenAI réassigne chercheurs robotique, modèles généraux rendent spécialisé obsolète",
-        "Anthropic affirme retrain Mythos possible avec fraction compute initiale"
+        "Nvidia : -2,01% ($162,85), scandale espionnage + débat succession CEO, impact chaîne d'approvisionnement IA",
+        "Congrès US : durcissement règles export puces IA post-scandale, impact Nvidia et TSMC attendu",
+        "Cyberattaques : ARTEX AI hacking tool, Maileva (22M données), TSMC breach, escalade menaces critiques"
       ]
     }
   },
   "historique": [
-    {
-      "date": "2026-03-23",
-      "global": -0.34,
-      "geopolitique": -0.85,
-      "marches": -0.72,
-      "crypto": -0.78,
-      "matieres_premieres": 0.68,
-      "ai_tech": 0.15
-    },
     {
       "date": "2026-03-26",
       "global": -0.5,
@@ -333,6 +324,15 @@
       "crypto": -0.88,
       "matieres_premieres": -0.35,
       "ai_tech": -0.72
+    },
+    {
+      "date": "2026-11-15",
+      "global": -0.34,
+      "geopolitique": -0.35,
+      "marches": 0.15,
+      "crypto": -0.78,
+      "matieres_premieres": 0.22,
+      "ai_tech": -0.62
     }
   ],
   "model": "claude-haiku-4-5-20251001",
