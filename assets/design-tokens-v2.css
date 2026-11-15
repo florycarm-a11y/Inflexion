@@ -31,6 +31,13 @@
   --chrome-text-1: #F5EDE6;
   --chrome-text-2: rgba(245, 237, 230, .70);
   --chrome-text-3: rgba(245, 237, 230, .55);
+
+  /* Mouvement : trois durees, pas une de plus (audit Starlink 2026-11-13, section 7.4).
+     fast survols et couleurs ; base menus, en-tete, onglets ; slow apparitions au defilement.
+     Raccourcis composes (duree + courbe) : a consommer dans transition/animation, jamais dans Tailwind duration-*. */
+  --motion-fast: .15s ease;
+  --motion-base: .3s cubic-bezier(.4,0,.2,1);
+  --motion-slow: .5s ease-out;
 }
 
 /* Regime editorial — spec section 2.2. Pages sans instrument.
@@ -81,4 +88,11 @@
   --chrome-text-1: #F5EDE6;
   --chrome-text-2: rgba(245, 237, 230, .70);
   --chrome-text-3: rgba(245, 237, 230, .55);
+
+  /* Mouvement : trois durees, pas une de plus (audit Starlink 2026-11-13, section 7.4).
+     fast survols et couleurs ; base menus, en-tete, onglets ; slow apparitions au defilement.
+     Raccourcis composes (duree + courbe) : a consommer dans transition/animation, jamais dans Tailwind duration-*. */
+  --motion-fast: .15s ease;
+  --motion-base: .3s cubic-bezier(.4,0,.2,1);
+  --motion-slow: .5s ease-out;
 }
