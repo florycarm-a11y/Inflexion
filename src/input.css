@@ -1,0 +1,6 @@
+/* Entrée du build Tailwind : npm run build:css → assets/site.css (minifié, commité).
+   Rien d'autre ici : le CSS propre à chaque page reste dans son <style>, styles.css et
+   assets/design-tokens-v2.css restent chargés par les pages. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
