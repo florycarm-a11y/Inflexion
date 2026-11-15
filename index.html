@@ -84,6 +84,12 @@ body.menu-open{overflow:hidden}
 .article-card:hover{box-shadow:0 6px 18px rgba(42,18,16,.12);border-color:var(--editorial-accent)}
 .article-card:hover::before{transform:scaleY(1)}
 
+/* Miniatures de sources : traitement gravure commun (sans flou ni bruit, bon marché sur mobile) */
+.img-gravure{position:relative}
+.img-gravure img{filter:grayscale(1) contrast(1.1) brightness(.95)}
+.img-gravure::before{content:'';position:absolute;inset:0;background:#17100E;mix-blend-mode:multiply;opacity:.55;pointer-events:none}
+.img-gravure::after{content:'';position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(180deg,rgba(23,16,14,0),rgba(23,16,14,.85));pointer-events:none}
+
 /* Featured (manchette) card */
 .featured-card{position:relative;overflow:hidden}
 
@@ -100,7 +106,7 @@ a,button{min-height:44px;min-width:44px}
 <body data-design-regime="editorial">
 <a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:var(--editorial-accent);color:#F5EDE6;font-family:'IBM Plex Sans',sans-serif;font-size:14px;text-decoration:none;border-radius:0 0 4px 0;" onfocus="this.style.position='fixed';this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Aller au contenu principal</a>
 <div id="app"></div>
-<script src="image-catalog.js"></script>
+<script src="instrument-pour.js"></script>
 <script src="nav-config.js"></script>
 <script type="module">
 import React,{useState,useEffect,useRef} from 'https://esm.sh/react@18.2.0'
@@ -153,9 +159,9 @@ const ARTICLES_FALLBACK=[
 ]
 
 const FEATURED_ANALYSES=[
-{title:'Ukraine / Mer Noire — Guerre d\'attrition et recomposition stratégique',href:'analyse-ukraine-mer-noire-guerre-attrition.html',cat:'Géopolitique',date:'15 mars 2026',author:'Inflexion Research',readingTime:22,summary:'Plus de mille jours de guerre : front stabilisé, économie de guerre, cyber et recomposition géopolitique. Évaluation SEMPLICE 5.6/7.',sources:14,grade:'A',img:'assets/img/ukraine-mer-noire.webp'},
-{title:'Sahel — Fracture sahélienne et recomposition sécuritaire',href:'analyse-sahel-mali-niger-burkina-crise.html',cat:'Géopolitique',date:'15 mars 2026',author:'Inflexion Research',readingTime:20,summary:'Mali, Niger, Burkina Faso : trois coups d\'État, sortie de la CEDEAO, pivot vers Moscou. Évaluation SEMPLICE 5.8/7.',sources:14,grade:'A',img:'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?w=1200&h=675&fit=crop&q=80'},
-{title:'Mer de Chine — Taïwan, semi-conducteurs et bascule indo-pacifique',href:'analyse-mer-chine-taiwan-indopacifique.html',cat:'Géopolitique',date:'15 mars 2026',author:'Inflexion Research',readingTime:20,summary:'Tensions militaires, guerre informationnelle et enjeu TSMC. Évaluation SEMPLICE 4,8/7.',sources:14,grade:'A',img:'https://images.unsplash.com/photo-1535320903710-d993d3d77d29?w=1200&h=675&fit=crop&q=80'},
+{title:'Ukraine / Mer Noire — Guerre d\'attrition et recomposition stratégique',href:'analyse-ukraine-mer-noire-guerre-attrition.html',cat:'Géopolitique',date:'15 mars 2026',author:'Inflexion Research',readingTime:22,summary:'Plus de mille jours de guerre : front stabilisé, économie de guerre, cyber et recomposition géopolitique. Évaluation SEMPLICE 5.6/7.',sources:14,grade:'A',img:'assets/img/une/ukraine-mer-noire.webp'},
+{title:'Sahel — Fracture sahélienne et recomposition sécuritaire',href:'analyse-sahel-mali-niger-burkina-crise.html',cat:'Géopolitique',date:'15 mars 2026',author:'Inflexion Research',readingTime:20,summary:'Mali, Niger, Burkina Faso : trois coups d\'État, sortie de la CEDEAO, pivot vers Moscou. Évaluation SEMPLICE 5.8/7.',sources:14,grade:'A',img:'assets/img/une/sahel.webp'},
+{title:'Mer de Chine — Taïwan, semi-conducteurs et bascule indo-pacifique',href:'analyse-mer-chine-taiwan-indopacifique.html',cat:'Géopolitique',date:'15 mars 2026',author:'Inflexion Research',readingTime:20,summary:'Tensions militaires, guerre informationnelle et enjeu TSMC. Évaluation SEMPLICE 4,8/7.',sources:14,grade:'A',img:'assets/img/une/mer-de-chine.webp'},
 ]
 
 function decodeEntities(s){if(!s)return s;const t=document.createElement('textarea');t.innerHTML=s;return t.value}
@@ -172,7 +178,7 @@ for(const item of items){
 const title=decodeEntities(item.title)
 const description=stripTags(decodeEntities(item.description))
 const readingTime=Math.min(8,Math.max(2,Math.round(description.length/200)+2))
-articles.push({id:id++,cat,title,source:item.source||'',time:item.time||'',publishedAt:item.publishedAt||null,readingTime,img:item.image||window.matchImage(title,cat),summary:description.slice(0,160),href:item.url||'#'})
+articles.push({id:id++,cat,title,source:item.source||'',time:item.time||'',publishedAt:item.publishedAt||null,readingTime,img:item.image?decodeEntities(item.image):null,summary:description.slice(0,160),href:item.url||'#'})
 }
 }
 const ts=a=>a.publishedAt?(Date.parse(a.publishedAt)||0):0
@@ -294,7 +300,7 @@ return h('section',{className:'v2-chrome relative pt-28 pb-16 md:pt-40 md:pb-24 
     h('a',{href:featured.href,className:'anim-fade-up anim-d2 featured-card block group'},
      h('div',{className:'relative'},
       h('div',{className:'aspect-[16/9] overflow-hidden',style:{backgroundColor:'var(--chrome-ground)'}},
-       h('img',{src:featured.img,alt:featured.title,className:'w-full h-full object-cover group-hover:scale-[1.02] transition-all duration-500',loading:'eager',onError:e=>{e.target.style.display='none'}})
+       h('img',{src:featured.img,alt:featured.title,className:'w-full h-full object-cover group-hover:scale-[1.02] transition-all duration-500',loading:'eager',width:1600,height:900,onError:e=>{e.target.style.display='none'}})
       ),
       h('div',{className:'absolute top-4 left-4 flex items-center gap-2'},
        h('span',{className:'inline-flex items-center gap-1.5 px-2.5 py-1 bg-[var(--editorial-accent)] text-[#F5EDE6] text-[10px] font-semibold uppercase tracking-[0.14em]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
@@ -336,7 +342,7 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
    ...analyses.map((a,i)=>{
     return h('a',{key:i,href:a.href,className:'article-card group block overflow-hidden bg-[#FFFFFF] border border-[var(--hairline-warm)] no-underline'},
      h('div',{className:'aspect-[21/9] overflow-hidden'},
-      h('img',{src:a.img,alt:a.title,className:'w-full h-full object-cover group-hover:scale-[1.03] transition-all duration-500',loading:'lazy'})
+      h('img',{src:a.img,alt:a.title,className:'w-full h-full object-cover object-top group-hover:scale-[1.03] transition-all duration-500',loading:'lazy'})
      ),
      h('div',{className:'p-6 md:p-8'},
       h('div',{className:'flex items-center gap-3 mb-4'},
@@ -401,6 +407,10 @@ return h('div',{className:'overflow-hidden bg-[#FFFFFF] border border-[var(--hai
 )
 }
 
+function surErreurImage(a){return e=>{const img=e.target
+ if(a.img&&img.dataset.repli!=='1'){img.dataset.repli='1';img.src=instrumentPour(a);img.parentElement.classList.remove('img-gravure')}
+ else{img.style.display='none'}}}
+
 function ArticlesGrid(){
 const[filter,setFilter]=useState('all')
 const[articles,setArticles]=useState(ARTICLES_FALLBACK)
@@ -432,8 +442,9 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
    loading?[1,2,3,4,5,6].map(i=>h(SkeletonCard,{key:'sk'+i})):visible.map(a=>{
     const cat=CATEGORIES.find(c=>c.id===a.cat)
     return h('a',{key:a.id,href:a.href||'#',target:a.href&&a.href.startsWith('http')?'_blank':undefined,rel:a.href&&a.href.startsWith('http')?'noopener noreferrer':undefined,className:'article-card overflow-hidden block no-underline bg-[#FFFFFF] border border-[var(--hairline-warm)]'},
-     h('div',{className:'aspect-[5/3] overflow-hidden'},
-      h('img',{src:a.img,alt:a.title,className:'w-full h-full object-cover',loading:'lazy',onError:e=>{e.target.style.display='none'}})
+     h('div',{className:'aspect-[5/3] overflow-hidden bg-[var(--chrome-ground)]'+(a.img?' img-gravure':'')},
+      h('img',{src:a.img||instrumentPour(a),alt:'',className:'w-full h-full object-cover',loading:'lazy',width:1000,height:600,
+       onError:surErreurImage(a)})
      ),
      h('div',{className:'p-5'},
       h('div',{className:'flex items-center gap-2 mb-3',style:{fontFamily:"'IBM Plex Mono',monospace"}},
