@@ -159,8 +159,7 @@ Ces pages ont leur propre `<style>` inline et n'utilisent pas styles.css. Elles 
 Pour **chaque page** à migrer, vérifier :
 
 - [ ] `<link>` Google Fonts (Libre Baskerville, Inter, JetBrains Mono) — présent
-- [ ] `<script src="https://cdn.tailwindcss.com">` — présent
-- [ ] `tailwind.config` — identique à index.html (sans clé `navy`)
+- [ ] `<link rel="stylesheet" href="assets/site.css">` — présent, en dernier élément du `<head>` (depuis le 2026-11-15 : Tailwind compilé, plus de CDN ni de `tailwind.config` inline)
 - [ ] Pas de lien `Plus Jakarta Sans` — supprimé
 - [ ] `nav-shared.js` chargé en dernier (pages legacy uniquement)
 - [ ] Body background = `#FFFFFF` (pas beige, pas gris)

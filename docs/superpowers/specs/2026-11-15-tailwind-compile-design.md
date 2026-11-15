@@ -1,6 +1,6 @@
 # Tailwind compilé — remplacer le Play CDN par `assets/site.css`
 
-Date : 2026-11-15. Statut : cadré, à planifier. Branche : `feat/tailwind-compile`.
+Date : 2026-11-15. Statut : réalisé le 2026-11-15 sur la branche `feat/tailwind-compile` (résultats mesurés dans le plan, Tasks 2 et 7).
 
 ## 1. Objet
 

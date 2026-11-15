@@ -148,6 +148,8 @@ node <notes>/visuel/couverture.mjs <notes>/visuel/cdn-css assets/site.css
 
 Attendu : « Couverture complète ». Si un sélecteur manque : identifier le fichier source qui porte la classe (`grep -rl` dans la racine et `assets/`), corriger `content` dans `tailwind.config.js` ou comprendre pourquoi le texte source ne contient pas la classe entière ; relancer `npm run build:css` ; **jamais de `safelist` ajoutée sans comprendre**. Le CDN peut émettre quelques sélecteurs pour des classes présentes seulement dans le DOM à l'exécution (sans source texte) : les documenter nommément dans le compte rendu.
 
+Résultat obtenu (2026-11-15) : 7 596 sélecteurs examinés sur les 66 feuilles ; **un seul absent, `.font-data`**, attendu — sur les 13 pages où le CDN le produisait, la classe `.font-data` du `<style>` de la page porte la même police (IBM Plex Mono ; JetBrains Mono sur `briefing.html`). Les `space-y-*` signalés au premier passage n'étaient qu'une différence d'espaces autour de `>` et `~` entre le CDN et la sortie minifiée ; le comparateur les normalise.
+
 - [ ] **Step 3 : si `tailwind.config.js` ou `site.css` a changé, amender le commit de la Task 1**
 
 ```bash
@@ -458,6 +460,8 @@ python3 -I <notes>/visuel/comparer.py <notes>/visuel/avant <notes>/visuel/apres 
 ```
 
 Attendu : 66 lignes ; différences nulles sauf contenus dynamiques. Pour chaque page non identique : ouvrir `diff/<largeur>/<page>.png` (pixels différents en rouge sur fond assombri) et qualifier l'écart — flux de sources (heure de publication, image distante), carte Leaflet, radar Canvas, horodatage — ou **régression**, auquel cas chercher la cause dans l'ordre de cascade (voir spec §3) avant toute autre hypothèse. Noter chaque écart et sa cause dans le compte rendu final.
+
+Résultat obtenu (2026-11-15) : **62 captures identiques sur 66**. Les 4 autres sont des contenus vivants, vérifiés une par une : `crypto` 1440 et 390 (cours du Bitcoin depuis une API externe ; graphique « Divergence or vs Bitcoin » tracé avec le repli **aléatoire** de `app.js`, `Math.random()`, donc différent à chaque chargement — sonde sans fenêtre sur `main` et sur la branche : même instance Chart.js, 91 points, même taille), `commodities` 1440 (même graphique de repli aléatoire), `artifact-inflexion` 1440 (124 pixels isolés sur des bords d'images Unsplash, antialiasing). Aucune différence sur les 28 autres pages, aux deux largeurs.
 
 - [ ] **Step 3 : relecture**
 

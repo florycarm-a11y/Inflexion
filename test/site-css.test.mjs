@@ -37,13 +37,17 @@ test('assets/site.css existe et contient chaque classe à valeur arbitraire empl
   assert.ok(existsSync(CHEMIN_SITE), 'assets/site.css manque : lancer npm run build:css');
   const site = readFileSync(CHEMIN_SITE, 'utf8');
   assert.ok(site.length > 5000, 'assets/site.css est anormalement petit');
-  // Mêmes sources que tailwind.config.js : HTML racine, JS racine, assets/*.js
+  // Mêmes sources que le content de tailwind.config.js (HTML racine, JS racine, assets/*.js),
+  // moins og-image.html, qui ne charge pas site.css : le test est au plus aussi strict que le scanner.
   const sources = [
     ...PAGES.filter((p) => !SANS_TAILWIND.has(p)),
     ...readdirSync(RACINE).filter((f) => f.endsWith('.js')),
     ...readdirSync(new URL('assets/', RACINE)).filter((f) => f.endsWith('.js')).map((f) => `assets/${f}`),
   ];
   // Candidats : utilitaire-[valeur], avec variantes (hover:, md:…) et signe négatif éventuel.
+  // Limites connues (aucune de ces formes n'existe dans les sources au 2026-11-15) : un modificateur
+  // d'opacité après le crochet (`border-[#DC2626]/30`) n'est vérifié que par son radical ; les variantes
+  // arbitraires (`[&>*]:`, `min-[…]:`), le préfixe `!` et les propriétés arbitraires `[prop:val]` sont ignorés.
   const CANDIDAT = /(?<![\w\-\[.#/\\])((?:[a-z][a-z0-9-]*:)*-?[a-z][a-z0-9]*(?:-[a-z0-9]+)*-\[[^\]\s"'`]+\])/g;
   // Échappement CSS tel que Tailwind l'écrit : tout ce qui n'est pas [a-zA-Z0-9_-] est précédé d'un antislash,
   // sauf la virgule, écrite `\2c ` (escapeCommas de Tailwind 3, contournement d'un bug navigateur) :
