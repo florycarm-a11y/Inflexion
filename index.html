@@ -48,7 +48,7 @@ h1,h2,h3,.display-text{font-family:'Archivo',Arial,sans-serif;font-weight:800;li
 .mega-item{transition:background var(--motion-fast)}
 .mega-icon{width:36px;height:36px;border-radius:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:600;font-family:'IBM Plex Mono',monospace}
 .nav-scrolled{background:var(--chrome-scrolled);backdrop-filter:blur(16px);border-bottom:1px solid var(--chrome-border)}
-/* En-tête au défilement : même valeur que l'ancien utilitaire Tailwind (300 ms). Le prompt 5 restreindra « all » à background-color et border-color. */
+/* En-tête au défilement : « all » hérité de l'ancien utilitaire Tailwind (300 ms) ; à restreindre à background-color et border-color (prompt 5, en-tête et méga-menu). */
 .site-header{transition:all var(--motion-base)}
 
 /* Focus */
@@ -111,13 +111,17 @@ body.menu-open{overflow:hidden}
 .featured-card:hover .zoom-hover{transform:scale(1.02)}
 }
 
-/* Mouvement réduit : contenu affiché sans apparition, pas de zoom, pastille immobile, entrées du menu visibles (audit 7.5) */
+/* Mouvement réduit : contenu affiché sans apparition, pas de zoom, entrées du menu visibles (audit 7.5).
+   La pastille et les squelettes sont coupés par la variante motion-safe: de Tailwind (site.css), pas ici : une règle de page serait battue. */
 @media(prefers-reduced-motion:reduce){
 .article-card::before{transition:none}
 .reveal{opacity:1;transform:none;transition:none}
 .zoom-hover{transition:none}
 .mobile-overlay.open .menu-item{animation:none;opacity:1}
 }
+
+/* Impression : rien ne doit rester invisible faute d'avoir défilé */
+@media print{.reveal{opacity:1;transform:none}}
 
 @media(max-width:768px){
 html,body{overflow-x:hidden}
@@ -166,20 +170,24 @@ const reduireMouvement=()=>window.matchMedia('(prefers-reduced-motion: reduce)')
 // L'enfant est cloné, pas enveloppé : un div intermédiaire casserait l'égalisation des hauteurs dans les grilles.
 // Une fois la transition finie, l'enfant est rendu tel quel (plus de classe ni de délai) pour ne pas
 // interférer avec ses propres transitions (.article-card) et rester identique au pixel à l'original.
+// Enfant hôte (balise) uniquement : la ref doit viser un nœud DOM. Sa ref et son transitionDelay sont remplacés, son onTransitionEnd chaîné.
+// Limite : une transition interrompue (display:none en cours, transitioncancel) n'émet pas transitionend ; l'élément garde alors la classe :
+// visuel identique, seule la transition de survol d'une carte est perdue jusqu'au rechargement (React 18 n'expose pas onTransitionCancel).
 function Reveal({delay=0,stagger=0,children}){
 const enfant=React.Children.only(children)
+if(typeof enfant.type!=='string')throw new Error('Reveal : enfant hôte (balise) requis, la ref doit viser un nœud DOM')
 const ref=useRef(null)
 const[rang,setRang]=useState(-1) // -1 : pas encore entré dans l'écran
 const[fini,setFini]=useState(false)
 const[reduit]=useState(reduireMouvement) // lu au montage : un élément rendu nu le reste (il n'a pas d'observateur), même si la préférence change ensuite
 useEffect(()=>{if(ref.current)return observerReveal(ref.current,{stagger,declencher:setRang})},[])
 if(fini||reduit)return enfant
-const retard=Math.round((delay+Math.max(rang,0)*stagger)*1000)/1000
+const retard=Math.round((delay+Math.max(rang,0)*stagger)*1000)/1000 // évite 0.3+2*0.06 = 0.42000000000000004 dans le DOM
 return React.cloneElement(enfant,{
 ref,
 className:`${enfant.props.className||''} reveal${rang>=0?' is-visible':''}`.trim(),
 style:{...enfant.props.style,transitionDelay:`${retard}s`},
-onTransitionEnd:e=>{if(e.target===e.currentTarget&&e.propertyName==='opacity')setFini(true)}
+onTransitionEnd:e=>{enfant.props.onTransitionEnd?.(e);if(e.target===e.currentTarget&&e.propertyName==='opacity')setFini(true)}
 })
 }
 

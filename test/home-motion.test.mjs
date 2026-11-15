@@ -7,10 +7,11 @@ import { readFileSync } from 'node:fs';
 const RACINE = new URL('../', import.meta.url);
 const lire = (chemin) => readFileSync(new URL(chemin, RACINE), 'utf8');
 const html = lire('index.html');
+const extraire = (regex, nom) => { const m = html.match(regex); if (!m) throw new Error(`${nom} introuvable dans index.html`); return m[1]; };
 // Les commentaires (/* */ en CSS, // en JS) sont de la prose, pas du code : retirés avant toute analyse.
 const sansCommentaires = (s) => s.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
-const style = sansCommentaires(html.match(/<style>([\s\S]*?)<\/style>/)[1]);
-const script = sansCommentaires(html.match(/<script type="module">([\s\S]*?)<\/script>/)[1]);
+const style = sansCommentaires(extraire(/<style>([\s\S]*?)<\/style>/, 'le <style>'));
+const script = sansCommentaires(extraire(/<script type="module">([\s\S]*?)<\/script>/, 'le <script type="module">'));
 const code = style + script;
 // Un littéral de temps CSS (.22s, 0.6s, 300ms), pas une longueur (16px, 0.18em) ni un nombre (1.1).
 const TEMPS = /(?<![\w.-])\d*\.?\d+m?s\b/g;
@@ -24,7 +25,8 @@ function finDeBloc(css, debut) {
   }
   throw new Error('bloc non fermé');
 }
-// Contenu du premier bloc `@media(<requete>){…}`, ou null.
+// Contenu du premier bloc `@media(<requete>){…}`, ou null. Correspondance de préfixe : `hover:hover` attrape aussi
+// `@media(hover:hover) and (…)`. Graphie sans espace obligatoire (sinon le bloc n'est pas vu et le test échoue, bruyamment).
 function blocMedia(css, requete) {
   const debut = css.indexOf(`@media(${requete})`);
   return debut === -1 ? null : css.slice(css.indexOf('{', debut) + 1, finDeBloc(css, debut));
@@ -95,9 +97,12 @@ test('index.html : Reveal (enfant unique, lit la préférence), FadeUp disparu, 
   const nus = script.match(/(?<![\w:-])animate-pulse\b/g) || [];
   assert.equal(nus.length, 0, `${nus.length} animate-pulse sans motion-safe: (site.css, chargé en dernier, bat le <style>)`);
   assert.equal((script.match(/motion-safe:animate-pulse\b/g) || []).length, 8, 'pastille « À la une » + 7 blocs squelette en motion-safe:animate-pulse');
+  // La classe n'existe en ligne que si site.css a été reconstruit (site-css.test.mjs ne vérifie que les valeurs arbitraires).
+  assert.ok(lire('assets/site.css').includes('.motion-safe\\:animate-pulse{'), 'site.css n\'a pas été reconstruit : motion-safe:animate-pulse absent');
 });
 
 test('index.html : le schéma de délais du prompt 4 (0 / 0,15 / 0,3 ; +0,06 par carte)', () => {
+  // Les props de Reveal sont plates (delay, stagger, key) : la capture s'arrête à la première accolade fermante.
   const usages = [...script.matchAll(/h\(Reveal,\{([^}]*)\}/g)].map((m) => m[1]);
   assert.ok(usages.length >= 20, `seulement ${usages.length} Reveal : le hero et les trois sections en comptent au moins 20`);
   for (const props of usages) {
