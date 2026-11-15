@@ -45,8 +45,8 @@ une page HTML dessine l'image, Chrome sans fenêtre la photographie en WebP. Vou
 
 - `bash studio/outils/rendre.sh instrument` rend toutes les variantes de toutes les rubriques dans
   `studio/rendu/instrument-vN/`.
-- `bash studio/outils/rendre.sh gravure <nom> <format> [focal] [kicker] [legende]` rend une gravure dans
-  `studio/rendu/gravure-<nom>-vN/`.
+- `bash studio/outils/rendre.sh gravure <nom> <format> [focal] [kicker] [legende] [contraste]` rend une gravure dans
+  `studio/rendu/gravure-<nom>-vN/`. `contraste` (0.5 à 3, défaut 1) étire les niveaux des sources plates.
 - Un rendu ne s'écrase jamais : chaque appel prend le prochain numéro libre.
 - Chaque rendu fabrique `planche.jpg` à côté des WebP. Avant de dire que c'est bon, ouvrez-la et regardez-la
   vraiment : kicker tronqué, point rouge sur le bord, deux variantes trop semblables, source mal recadrée,

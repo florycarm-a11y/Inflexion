@@ -18,10 +18,15 @@
 <svg width="0" height="0" style="position:absolute">
   <filter id="bichrome" color-interpolation-filters="sRGB">
     <feColorMatrix type="saturate" values="0"/>
+    <feComponentTransfer id="niveaux">
+      <feFuncR type="linear" slope="1" intercept="0"/>
+      <feFuncG type="linear" slope="1" intercept="0"/>
+      <feFuncB type="linear" slope="1" intercept="0"/>
+    </feComponentTransfer>
     <feComponentTransfer>
-      <feFuncR type="table" tableValues="0.09 0.93"/>
-      <feFuncG type="table" tableValues="0.063 0.92"/>
-      <feFuncB type="table" tableValues="0.055 0.89"/>
+      <feFuncR type="table" tableValues="0.09 0.48 0.93"/>
+      <feFuncG type="table" tableValues="0.063 0.40 0.92"/>
+      <feFuncB type="table" tableValues="0.055 0.31 0.89"/>
     </feComponentTransfer>
   </filter>
 </svg>
@@ -32,8 +37,10 @@
   <div class="legende" id="legende"></div>
   <div id="erreur">source manquante</div>
 </div>
-<div id="controles" hidden>Aperçu : modifiez les paramètres dans l'adresse (source, format, focal, kicker, legende).</div>
+<div id="controles" hidden>Aperçu : modifiez les paramètres dans l'adresse (source, format, focal, kicker, legende, contraste).</div>
 <script>
+  // Paramètres d'adresse : source, format (16x9 | 5x3), focal ("x,y" en %), kicker, legende,
+  // contraste (0.5 à 3, défaut 1 : étire les niveaux autour du gris moyen pour les sources plates), rendu.
   const FORMATS = { '16x9': [1600, 900], '5x3': [1000, 600] };
   const q = new URLSearchParams(location.search);
   const format = FORMATS[q.get('format')] ? q.get('format') : '16x9';
@@ -74,6 +81,11 @@
     const [fx, fy] = (q.get('focal') || '50,50').split(',').map((v) => parseFloat(v));
     const pct = (v) => (Number.isFinite(v) ? Math.min(100, Math.max(0, v)) : 50);
     const photo = document.getElementById('photo');
+    const c = parseFloat(q.get('contraste'));
+    const contraste = Number.isFinite(c) ? Math.min(3, Math.max(0.5, c)) : 1;
+    for (const f of document.querySelectorAll('#niveaux > *')) {
+      f.setAttribute('slope', contraste); f.setAttribute('intercept', 0.5 - 0.5 * contraste);
+    }
     photo.style.objectPosition = `${pct(fx)}% ${pct(fy)}%`;
     document.getElementById('kicker').textContent = `§ ${q.get('kicker') || 'Analyse'}`;
     document.getElementById('legende').textContent = q.get('legende') || '';

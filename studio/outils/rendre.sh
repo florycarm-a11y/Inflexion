@@ -4,11 +4,11 @@
 #
 # Usage (depuis n'importe quel répertoire) :
 #   bash studio/outils/rendre.sh instrument
-#   bash studio/outils/rendre.sh gravure <nom> <16x9|5x3> [focal "50,50"] [kicker] [legende]
+#   bash studio/outils/rendre.sh gravure <nom> <16x9|5x3> [focal "50,50"] [kicker] [legende] [contraste 0.5 à 3, défaut 1]
 set -u
 ICI="$(cd "$(dirname "$0")" && pwd)"
 STUDIO="$(dirname "$ICI")"
-[ $# -ge 1 ] || { echo "Usage : $0 instrument | gravure <nom> <16x9|5x3> [focal] [kicker] [legende]" >&2; exit 1; }
+[ $# -ge 1 ] || { echo "Usage : $0 instrument | gravure <nom> <16x9|5x3> [focal] [kicker] [legende] [contraste]" >&2; exit 1; }
 
 # ---------- les outils ----------
 command -v node >/dev/null 2>&1 || { echo "Il manque Node.js 22 ou plus (nodejs.org)." >&2; exit 1; }
@@ -41,8 +41,8 @@ case "$MODE" in
   instrument)
     BASE="instrument"; ENTREE="instrument" ;;
   gravure)
-    [ $# -ge 3 ] || { echo "Usage : $0 gravure <nom> <16x9|5x3> [focal] [kicker] [legende]" >&2; exit 1; }
-    NOM="$2"; FORMAT="$3"; FOCAL="${4:-50,50}"; KICKER="${5:-Analyse}"; LEGENDE="${6:-}"
+    [ $# -ge 3 ] || { echo "Usage : $0 gravure <nom> <16x9|5x3> [focal] [kicker] [legende] [contraste]" >&2; exit 1; }
+    NOM="$2"; FORMAT="$3"; FOCAL="${4:-50,50}"; KICKER="${5:-Analyse}"; LEGENDE="${6:-}"; CONTRASTE="${7:-1}"
     case "$FORMAT" in 16x9|5x3) ;; *) echo "Format inconnu : $FORMAT (16x9 ou 5x3)" >&2; exit 1 ;; esac
     SOURCE=""
     for ext in jpg jpeg png webp; do [ -f "$STUDIO/sources/$NOM.$ext" ] && { SOURCE="../sources/$NOM.$ext"; break; }; done
@@ -50,9 +50,9 @@ case "$MODE" in
     BASE="gravure-$NOM"
     ENTREE=$(mktemp "${TMPDIR:-/tmp}/taches-XXXXXX") || { echo "mktemp a échoué." >&2; exit 1; }
     node -e '
-      const [source, format, focal, kicker, legende, nom] = process.argv.slice(1);
-      console.log(JSON.stringify([{ scene: "gravure.html", params: { source, format, focal, kicker, legende }, sortie: `${nom}-${format}.webp` }]));
-    ' "$SOURCE" "$FORMAT" "$FOCAL" "$KICKER" "$LEGENDE" "$NOM" > "$ENTREE" ;;
+      const [source, format, focal, kicker, legende, contraste, nom] = process.argv.slice(1);
+      console.log(JSON.stringify([{ scene: "gravure.html", params: { source, format, focal, kicker, legende, contraste }, sortie: `${nom}-${format}.webp` }]));
+    ' "$SOURCE" "$FORMAT" "$FOCAL" "$KICKER" "$LEGENDE" "$CONTRASTE" "$NOM" > "$ENTREE" ;;
   *) echo "Mode inconnu : $MODE (instrument ou gravure)" >&2; exit 1 ;;
 esac
 
