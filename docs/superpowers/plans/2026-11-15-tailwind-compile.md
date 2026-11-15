@@ -86,7 +86,7 @@ Dans `package.json`, bloc `scripts` :
 npm run build:css && wc -c assets/site.css && grep -o 'text-\\\[\\#C6A996\\\]\|bg-\\\[var(--editorial-accent)\\\]\|aspect-\\\[5\\/3\\\]' assets/site.css | sort -u
 ```
 
-Attendu : build sans avertissement « No utility classes were detected » ; taille entre 20 et 60 Ko ; les trois sélecteurs trouvés (dans le CSS minifié ils s'écrivent `.text-\[\#C6A996\]`, `.bg-\[var\(--editorial-accent\)\]`, `.aspect-\[5\/3\]`).
+Attendu : build sans avertissement « No utility classes were detected » ; taille entre 20 et 60 Ko ; les trois sélecteurs trouvés (dans le CSS minifié ils s'écrivent `.text-\[\#C6A996\]`, `.bg-\[var\(--editorial-accent\)\]`, `.aspect-\[5\/3\]` : Tailwind échappe aussi les parenthèses, et la virgule devient `\2c ` — le grep ci-dessus, écrit sans ces échappements, ne trouve que deux sélecteurs sur trois ; préférer `grep -F -- '.bg-\[var\(--editorial-accent\)\]' assets/site.css`). Résultat obtenu : 34 766 octets.
 
 - [ ] **Step 6 : commit**
 
@@ -395,7 +395,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 **Files :**
 - Modify : `CLAUDE.md:40` et `CLAUDE.md:46`
 
-Le fichier est à 13 526 caractères pour un plafond de 13 500 : la modification doit **réduire** sa taille.
+Le fichier est à 13 526 caractères pour un plafond de 13 500 : la modification doit **réduire** sa taille (les formulations ci-dessous donnent 13 499 ; une première version plus longue donnait 13 630, d'où ces phrases serrées).
 
 - [ ] **Step 1 : remplacer la ligne 40**
 
@@ -408,7 +408,7 @@ Avant :
 Après :
 
 ```
-**Tailwind est compilé** : `npm run build:css` (source `src/input.css`, config `tailwind.config.js`) produit `assets/site.css`, commité et reconstruit au déploiement ; chaque page le charge en **dernier élément du `<head>`** (ordre de cascade). Plus aucun CDN ni `tailwind.config` inline (`test/site-css.test.mjs`). Le critère legacy/React est `nav-shared.js` + `styles.css` vs runtime React.
+**Tailwind est compilé** : `npm run build:css` → `assets/site.css` (commité, reconstruit au déploiement), chargé en **dernier élément du `<head>`** ; plus de CDN ni de config inline (test `site-css`). Critère legacy/React : `nav-shared.js` + `styles.css` vs runtime React.
 ```
 
 - [ ] **Step 2 : remplacer la ligne 46**
@@ -422,7 +422,7 @@ Avant :
 Après :
 
 ```
-`styles.css` contient **226 hex en dur** qui contournent ses variables `:root`. Les anciens `tailwind.config` inline ne définissaient aucun utilitaire employé ; `font-data` vient du `<style>` de chaque page.
+`styles.css` contient **226 hex en dur** qui contournent ses variables `:root`. Les anciens `tailwind.config` inline n'apportaient rien d'employé ; `font-data` vient du `<style>` de chaque page.
 ```
 
 - [ ] **Step 3 : mesurer et commiter**
