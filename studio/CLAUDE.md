@@ -14,8 +14,7 @@ une page HTML dessine l'image, Chrome sans fenêtre la photographie en WebP. Vou
 - Fond espresso `#17100E`. Crème `#EDEBE4`. Texte clair `#F5EDE6` à trois opacités : 100 % (kickers),
   70 % (texte), 55 % (légendes). Rouge aplat `#8E2424`. Rouge texte et signal `#E05A4E`. Brun `#42301E`.
   Rien d'autre.
-- Archivo 800 pour tout titre. IBM Plex Mono 400 pour kickers et légendes. Les deux sont chargées depuis
-  `../../assets/fonts/` par `@font-face` dans chaque scène, jamais depuis Internet.
+- IBM Plex Mono 400 pour kickers et légendes, chargée depuis `../../assets/fonts/` par `@font-face` dans chaque scène, jamais depuis Internet. Archivo 800 est réservée aux titres : aucune scène n'en porte aujourd'hui ; si une scène en a besoin, déclarer `font-02.woff2` et `font-03.woff2` de la même façon.
 
 ## Les règles de composition
 

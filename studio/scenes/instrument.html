@@ -179,7 +179,7 @@
   const q = new URLSearchParams(location.search);
   window.afficher = async () => {
     const rubrique = window.RUBRIQUES.includes(q.get('rubrique')) ? q.get('rubrique') : 'marches';
-    const variante = Math.min(window.VARIANTES, Math.max(1, parseInt(q.get('variante') || '1', 10)));
+    const variante = Math.min(window.VARIANTES, Math.max(1, (parseInt(q.get('variante') || '1', 10) || 1)));
     dessiner(rubrique, variante);
     await document.fonts.load("18px 'IBM Plex Mono'");
     await document.fonts.ready;
@@ -195,7 +195,7 @@
     for (const rb of window.RUBRIQUES) { const o = document.createElement('option'); o.value = rb; o.textContent = rb; sel.appendChild(o); }
     sel.value = q.get('rubrique') || 'geopolitique';
     const inp = document.getElementById('c-variante'); inp.value = q.get('variante') || '1';
-    const maj = () => dessiner(sel.value, Math.min(window.VARIANTES, Math.max(1, parseInt(inp.value || '1', 10))));
+    const maj = () => dessiner(sel.value, Math.min(window.VARIANTES, Math.max(1, (parseInt(inp.value || '1', 10) || 1))));
     sel.onchange = maj; inp.oninput = maj; maj();
   }
 </script>

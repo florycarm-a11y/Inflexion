@@ -1,6 +1,7 @@
 # Base d'images Inflexion — studio de rendu en code
 
 Date : 2026-11-13. Statut : validé en cadrage, à planifier.
+Mis à jour le 2026-11-15 après implémentation (branche `feat/base-images-studio`).
 
 ## 1. Objet
 
@@ -51,12 +52,12 @@ Même structure que la fiche de poste clip-motion : rôle (graphiste éditorial 
 
 - Fond `#17100E` (espresso). Crème `#EDEBE4`. Texte clair `#F5EDE6` à trois opacités : 100 % (titres et kickers), 70 % (texte), 55 % (légendes).
 - Rouge aplat `#8E2424`, rouge texte et signal `#E05A4E`, brun `#42301E`.
-- Archivo 800 pour tout titre ; IBM Plex Mono 400 et 600 pour kickers et légendes. Polices chargées depuis `assets/fonts/` en local (`@font-face` dans chaque scène), jamais depuis Internet.
+- Archivo 800 pour tout titre ; IBM Plex Mono 400 (seule graisse disponible en local) pour kickers et légendes. Polices chargées depuis `assets/fonts/` en local (`@font-face` dans chaque scène), jamais depuis Internet.
 - Rien d'autre : pas d'autre couleur, pas d'autre police.
 
 **Règles de composition de départ :**
 
-1. Un kicker « § RUBRIQUE » en Plex Mono 600, capitales, espacement 0,18 em, toujours à la même position pour un format donné.
+1. Un kicker « § RUBRIQUE » en Plex Mono 400, capitales, espacement 0,18 em, toujours à la même position pour un format donné.
 2. Un filet rouge `#8E2424` de 40 × 3 px, sous le kicker ou sous la légende, jamais les deux.
 3. Marge de sécurité de 6 % de la largeur : rien ne touche les bords sauf un aplat volontaire.
 4. Un seul point rouge `#E05A4E` par image : c'est le signal.
@@ -79,12 +80,12 @@ Une scène est un fichier HTML autonome dans `studio/scenes/` : CSS et JavaScrip
 
 ### 3.3 `gravure.html`
 
-Paramètres : `source` (chemin relatif vers `../sources/<nom>.jpg`), `format` (`16x9` → 1600 × 900, `5x3` → 1000 × 600), `focal` (point focal en pourcentages, `60,40` par défaut `50,50`), `kicker`, `legende`.
+Paramètres : `source` (chemin relatif vers `../sources/<nom>.jpg`), `format` (`16x9` → 1600 × 900, `5x3` → 1000 × 600), `focal` (point focal en pourcentages, `60,40` par défaut `50,50`), `kicker`, `legende`, `contraste` (0,5 à 3, défaut 1 ; pour les sources plates).
 
 Traitement, dans l'ordre :
 
 1. Recadrage `object-fit: cover` au format, centré sur le point focal.
-2. Filtre bichrome SVG : saturation à zéro, puis `feComponentTransfer` à table de transfert qui envoie les noirs vers `#17100E` et les blancs vers `#EDEBE4`.
+2. Filtre bichrome SVG : saturation à zéro, puis `feComponentTransfer` à table de transfert à trois entrées : noirs vers `#17100E`, ton moyen `#7A6650`, blancs vers `#EDEBE4`. Le paramètre `contraste` module la courbe avant la table.
 3. Grain de gravure : bruit fractal (`feTurbulence`, fréquence de base 1,4) en mode multiplication, opacité 25 à 30 %.
 4. Bord déchiré : `clip-path` polygonal sur le bas en 16:9, sur le côté droit en 5:3, amplitude 4 à 6 px, dessiné à partir d'une graine dérivée du nom de la source pour ne pas être identique d'une image à l'autre.
 5. Bandeau : kicker, filet rouge, légende en Plex Mono 400 à 55 %.
@@ -99,11 +100,11 @@ Constantes communes : fond espresso, kicker « § RUBRIQUE » en haut à gauche,
 
 | Rubrique | Figure | Ce que la graine fait varier |
 | --- | --- | --- |
-| Géopolitique | Graticule sphérique et silhouette polygonale d'une zone | Rotation du globe, forme du polygone, position du signal |
+| Géopolitique | Graticule sphérique et silhouette polygonale d'une zone | Rotation, position et rayon du globe, forme du polygone, position du signal |
 | Marchés | Courbe sur grille, zone sous la courbe en rouge dégradé vers transparent | Tendance, volatilité, point de rupture |
 | Crypto | Réseau de nœuds reliés | Nombre de nœuds (8 à 14), densité des liens, nœud actif |
 | Matières premières | Strates horizontales ondulées | Nombre de couches (5 à 9), amplitude, couche marquée |
-| IA & Tech | Matrice de points, une diagonale allumée | Pas de la grille, diagonale, cellule active |
+| IA & Tech | Matrice de points, une diagonale allumée | Pas de la grille, motif (diagonale, ligne, colonne ou bloc 3 × 3 tiré au sort), cellule active |
 
 Le dégradé rouge sous la courbe des marchés est la seule exception admise à la règle 5 : il va d'une couleur de la charte vers la transparence, il n'introduit pas de couleur.
 
@@ -114,17 +115,17 @@ Les familles et le nombre de variantes vivent dans la scène. Ajouter une rubriq
 Repris du `rendre.mjs` de clip-motion (Chrome sans fenêtre, profil jetable, `--remote-debugging-pipe`, protocole DevTools aplati, rangement du profil en fin de course), avec ces différences :
 
 - Entrée : soit un fichier de tâches JSON (liste d'objets `{ scene, params, sortie }`), soit le mot `instrument` : le script ouvre alors `instrument.html` une première fois, lit `RUBRIQUES` et `VARIANTES`, et construit la liste lui-même (`<rubrique>-<n>.webp`).
-- Par tâche : navigation vers `file://…/scenes/<scene>.html?rendu&<params>`, attente de `document.readyState === 'complete'`, lecture de `LARGEUR` et `HAUTEUR`, `Emulation.setDeviceMetricsOverride` à ces dimensions avec facteur d'échelle 1, attente de `document.fonts.ready` puis de la promesse de `afficher()`, un `requestAnimationFrame`, puis `Page.captureScreenshot` au format `webp`, qualité 82. Délai maximal de 10 s par tâche, puis échec explicite.
+- Par tâche : navigation vers `file://…/scenes/<scene>.html?rendu&<params>`, attente de `document.readyState === 'complete'`, lecture de `LARGEUR` et `HAUTEUR`, `Emulation.setDeviceMetricsOverride` à ces dimensions avec facteur d'échelle 1, attente de `document.fonts.ready` puis de la promesse de `afficher()`, un `requestAnimationFrame`, puis `Page.captureScreenshot` au format `webp`, qualité 82. Délai maximal de 10 s par appel au protocole, porté à 60 s pour l'exécution de `afficher()` et la capture ; configurable par la variable `RENDRE_GARDE_MS`. Échec explicite au-delà.
 - Sortie : les WebP écrits dans le dossier de rendu indiqué. Le script refuse un dossier qui existe déjà.
 - Chrome démarre une seule fois pour toute la liste.
 
 ### 3.6 `outils/rendre.sh`
 
-Usage : `bash studio/outils/rendre.sh instrument` ou `bash studio/outils/rendre.sh gravure <nom> <format> [focal] [kicker] [legende]`.
+Usage : `bash studio/outils/rendre.sh instrument` ou `bash studio/outils/rendre.sh gravure <nom> <format> [focal] [kicker] [legende] [contraste]` (`contraste` de 0,5 à 3, défaut 1).
 
 1. Vérifie Node 22 ou plus et Google Chrome (chemins standards ou variable `CHROME`), avec les messages en clair de clip-motion.
 2. Prend le prochain numéro libre : `rendu/instrument-v1/`, `rendu/gravure-<nom>-v1/`, etc.
-3. Appelle `rendre.mjs` (mot `instrument`, ou fichier de tâches d'une seule gravure écrit dans le dossier de rendu), puis `planche.py` sur le dossier produit.
+3. Appelle `rendre.mjs` (mot `instrument`, ou fichier de tâches d'une seule gravure, écrit dans un fichier temporaire (`mktemp`) supprimé à la sortie, puisque `rendre.mjs` refuse un dossier de rendu existant), puis `planche.py` sur le dossier produit.
 4. Affiche le chemin du dossier et celui de la planche.
 
 Il n'installe rien, n'écrit que dans `rendu/`, n'écrase jamais un rendu.
@@ -150,7 +151,7 @@ assets/img/
 
 Une fonction `instrumentPour(article)` dans `index.html` :
 
-- calcule un hachage FNV-1a 32 bits de `article.href` (chaîne vide ou `#` → hachage de la chaîne vide, sans erreur) ;
+- calcule un hachage FNV-1a 32 bits de `article.href` (chaîne vide ou `#` → variante 1, sans hachage) ;
 - renvoie `assets/img/instrument/<rubrique>-<(hachage mod 6) + 1>.webp`.
 
 Même article, même image à chaque visite ; deux voisins de même rubrique ont cinq chances sur six d'être différents. Elle est écrite en `var` globale dans un petit fichier `instrument-pour.js` chargé par `index.html`, pour être testable dans `node:vm` comme les autres scripts navigateur du projet.
@@ -184,8 +185,9 @@ Le pipeline de données, `news.json`, `data-loader.js`, les pages de rubrique et
 ### 5.1 Tests en code (`node --test 'test/**/*.test.mjs'`)
 
 - `instrument-pour.js` : même URL → même variante ; cinq URL de test réparties sur au moins trois variantes ; URL vide ou `#` → variante 1 sans erreur ; rubrique inconnue → chemin de la rubrique `marches` (même repli que `catKeys`).
+- Chemins : les 30 chemins renvoyés (5 rubriques × 6 variantes) existent sur disque ; rubriques et variantes identiques à celles de la scène `instrument.html`.
 - Générateur à graine de `instrument.html` (extrait dans un bloc chargeable par `node:vm`) : même graine → même suite ; graines 1 à 6 → six suites distinctes.
-- `rendre.mjs` : refuse un dossier de rendu existant ; échoue avec un message clair sur une scène sans `LARGEUR`, `HAUTEUR` ou `afficher` ; signale Chrome ou Node manquant en clair.
+- `rendre.mjs` : refuse un dossier de rendu existant ; échoue avec un message clair sur une scène sans `LARGEUR`, `HAUTEUR` ou `afficher` ; signale Chrome ou Node manquant en clair ; tests à faux Chrome : Chrome muet (délai dépassé) et Chrome qui s'arrête en cours de rendu.
 
 ### 5.2 Vérification à l'œil
 

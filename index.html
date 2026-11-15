@@ -342,7 +342,7 @@ return h(FadeUp,null,h('section',{className:'py-20 md:py-24'},
    ...analyses.map((a,i)=>{
     return h('a',{key:i,href:a.href,className:'article-card group block overflow-hidden bg-[#FFFFFF] border border-[var(--hairline-warm)] no-underline'},
      h('div',{className:'aspect-[21/9] overflow-hidden'},
-      h('img',{src:a.img,alt:a.title,className:'w-full h-full object-cover group-hover:scale-[1.03] transition-all duration-500',loading:'lazy'})
+      h('img',{src:a.img,alt:a.title,className:'w-full h-full object-cover object-top group-hover:scale-[1.03] transition-all duration-500',loading:'lazy'})
      ),
      h('div',{className:'p-6 md:p-8'},
       h('div',{className:'flex items-center gap-3 mb-4'},

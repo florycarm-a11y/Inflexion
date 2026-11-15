@@ -1,11 +1,12 @@
 // test/instrument-pour.test.mjs
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { readFileSync, existsSync } from 'node:fs'
 import vm from 'node:vm'
 
 const src = readFileSync(new URL('../instrument-pour.js', import.meta.url), 'utf8')
-const { instrumentPour, hachageFnv1a } = vm.runInNewContext(src + ';({ instrumentPour, hachageFnv1a })', {})
+const { instrumentPour, hachageFnv1a, INSTRUMENT_RUBRIQUES, INSTRUMENT_VARIANTES } = vm.runInNewContext(
+  src + ';({ instrumentPour, hachageFnv1a, INSTRUMENT_RUBRIQUES, INSTRUMENT_VARIANTES })', {})
 
 test('même URL, même variante', () => {
   const a = { cat: 'crypto', href: 'https://exemple.test/a' }
@@ -49,4 +50,23 @@ test('hachageFnv1a est stable et sur 32 bits', () => {
   assert.equal(hachageFnv1a(''), 0x811c9dc5)
   assert.equal(hachageFnv1a('a'), 0xe40c292c)
   assert.ok(hachageFnv1a('inflexion') <= 0xffffffff)
+})
+
+test('les 30 chemins renvoyés existent sur disque', () => {
+  for (const rubrique of INSTRUMENT_RUBRIQUES) {
+    for (let n = 1; n <= INSTRUMENT_VARIANTES; n++) {
+      const url = new URL('../assets/img/instrument/' + rubrique + '-' + n + '.webp', import.meta.url)
+      assert.ok(existsSync(url), `fichier manquant : ${rubrique}-${n}.webp`)
+    }
+  }
+})
+
+test('rubriques et variantes identiques à la scène instrument.html', () => {
+  const scene = readFileSync(new URL('../studio/scenes/instrument.html', import.meta.url), 'utf8')
+  const rub = scene.match(/window\.RUBRIQUES\s*=\s*(\[[^\]]*\])/)
+  const nb = scene.match(/window\.VARIANTES\s*=\s*(\d+)/)
+  assert.ok(rub && nb, 'déclarations introuvables dans la scène')
+  // copie dans le contexte courant : deepStrictEqual compare les prototypes, distincts d'un contexte vm à l'autre
+  assert.deepEqual([...vm.runInNewContext(rub[1])], [...INSTRUMENT_RUBRIQUES])
+  assert.equal(Number(nb[1]), INSTRUMENT_VARIANTES)
 })
