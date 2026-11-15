@@ -178,7 +178,7 @@ for(const item of items){
 const title=decodeEntities(item.title)
 const description=stripTags(decodeEntities(item.description))
 const readingTime=Math.min(8,Math.max(2,Math.round(description.length/200)+2))
-articles.push({id:id++,cat,title,source:item.source||'',time:item.time||'',publishedAt:item.publishedAt||null,readingTime,img:item.image||null,summary:description.slice(0,160),href:item.url||'#'})
+articles.push({id:id++,cat,title,source:item.source||'',time:item.time||'',publishedAt:item.publishedAt||null,readingTime,img:item.image?decodeEntities(item.image):null,summary:description.slice(0,160),href:item.url||'#'})
 }
 }
 const ts=a=>a.publishedAt?(Date.parse(a.publishedAt)||0):0
