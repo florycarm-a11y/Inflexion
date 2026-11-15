@@ -75,7 +75,7 @@ Produis `data/daily-briefing.json` avec la structure du dernier briefing archiv�
 
 1. Analyse `data/insights.json` : identifie le thème le plus saillant (plus haut score agrégé sur les 24 dernières heures)
 2. Détermine si le thème correspond à une zone SEMPLICE (lis `data/semplice-history.json` — 18 zones)
-3. Lis `analyse-petrole-trump-iran-ormuz.html` comme template de référence (React createElement, Tailwind CDN, PAS de JSX)
+3. Lis `analyse-petrole-trump-iran-ormuz.html` comme template de référence (React createElement, Tailwind compilé : `<link rel="stylesheet" href="assets/site.css">` en dernier élément du `<head>`, PAS de CDN, PAS de JSX)
 4. Lis `image-catalog.js` et utilise `matchImage()` pour l'image hero
 5. Écris `analyse-[thème-kebab-case]-[YYYY-MM-DD].html` au même format
 6. Si zone SEMPLICE concernée : inclure une section "Évaluation SEMPLICE" avec scores des 8 dimensions et brève justification

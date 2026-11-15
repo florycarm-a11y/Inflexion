@@ -37,13 +37,13 @@ Chrome espresso `#17100E` · rouge éditorial `#8E2424` (topbar, filets, hover, 
 
 ### Architecture réelle des pages
 
-**Tailwind CDN + `tailwind.config` inline sont sur les 32 pages** : ce n'est pas un discriminant. Le critère est `nav-shared.js` + `styles.css` (legacy) vs runtime React.
+**Tailwind est compilé** : `npm run build:css` → `assets/site.css` (commité, reconstruit au déploiement), chargé en **dernier élément du `<head>`** ; plus de CDN ni de config inline (test `site-css`). Critère legacy/React : `nav-shared.js` + `styles.css` vs runtime React.
 
 - **Legacy — 16 pages** : thématiques, légales, `expertise`, `country`, `a-propos`, `ai-tech`, et **3 articles** (`analyse-droits-douane-trump-groenland`, `analyse-ia-rempart-marches`, `analyse-or-bitcoin-divergence`).
 - **React — 12 pages** : `index`, `analyses`, `analysis-template`, `artifact-inflexion`, + 8 `analyse-*`.
 - **Hybride** : `briefing.html` (React + `styles.css`, sans nav-shared). **Ni l'un ni l'autre** : `og-image.html`.
 
-`styles.css` contient **226 hex en dur** qui contournent ses variables `:root`, et il existe **3 variantes divergentes** du `tailwind.config` inline. Sur les articles React, le bloc `colors` de ce `tailwind.config` est **du code mort** (aucun utilitaire `brand-*`/`cool-*` n'est utilisé) : ne pas y toucher, seul `fontFamily` agit.
+`styles.css` contient **226 hex en dur** qui contournent ses variables `:root`. Les anciens `tailwind.config` inline n'apportaient rien d'employé ; `font-data` vient du `<style>` de chaque page.
 
 **Piège de spécificité** : `.prose strong` (0,1,1) écrase les classes Tailwind `text-[#…]` (0,1,0). Un score coloré dans un `<strong>` ne s'affiche pas — comportement d'origine, pas une régression de la migration.
 
