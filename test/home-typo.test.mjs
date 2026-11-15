@@ -48,4 +48,9 @@ test('index.html : cinq graisses Google Fonts, deux preconnect avant le lien, au
   for (const [, poids] of html.matchAll(/font-weight:\s*(\d+)/g)) {
     assert.ok(['400', '600', '800'].includes(poids), `font-weight:${poids} dans le <style> : graisse non chargée`);
   }
+  // Archivo est la seule famille chargée en 800 : font-extrabold ne va que sur h1/h2/h3 ou avec .display-text
+  // (un div en IBM Plex Sans demandant 800 serait rendu en 600, la graisse la plus proche chargée).
+  for (const [, balise, classes] of html.matchAll(/h\('([a-z0-9]+)',\{[^}]*?className:'([^']*\bfont-extrabold\b[^']*)'/g)) {
+    assert.ok(/^h[123]$/.test(balise) || /\bdisplay-text\b/.test(classes), `font-extrabold sur <${balise}> hors Archivo : ajouter display-text`);
+  }
 });
