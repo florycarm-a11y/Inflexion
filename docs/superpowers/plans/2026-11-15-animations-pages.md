@@ -8,7 +8,7 @@
 
 **Tech Stack :** Node 26, `tailwindcss@3.4.19` (`npm run build:css`), `node --test` (`npm test`), Chrome sans fenêtre piloté par CDP + Pillow pour la comparaison visuelle (outils hors dépôt).
 
-**Règles du dépôt :** lire `CLAUDE.md`. Si un compte diffère, **ne pas corriger le compte** : lire la ligne, comprendre, corriger la chaîne. Ne toucher ni `index.html`, ni `scroll-reveal.js`, ni `nav-shared.js`, ni `styles.css`, ni les 16 pages legacy, ni `tailwind.config.js`, ni `CLAUDE.md`. Branche `feat/animations-pages` (worktree `.claude/worktrees/hopeful-lovelace-39a606`), au-dessus de `feat/animations` (`f9e295a2`, PR #145 ouverte). Commits en français, terminés par `Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>`. **Ne jamais pousser** : push et PR après le « oui » seulement.
+**Règles du dépôt :** lire `CLAUDE.md`. Si un compte diffère, **ne pas corriger le compte** : lire la ligne, comprendre, corriger la chaîne. Ne toucher ni `index.html`, ni `scroll-reveal.js`, ni `nav-shared.js`, ni `styles.css`, ni les 16 pages legacy, ni `tailwind.config.js`, ni `CLAUDE.md`. Branche `feat/animations-pages` (worktree `.claude/worktrees/hopeful-lovelace-39a606`), au-dessus de `main` (`5ed84a19`, fusion de la PR #145 ; arbre identique à `f9e295a2`). Commits en français, terminés par `Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>`. **Ne jamais pousser** : push et PR après le « oui » seulement.
 
 ---
 
@@ -26,7 +26,7 @@
 | `assets/site.css` | régénérer (commité) | `duration-200`, `transition-transform`, `group-hover:scale-105` disparaissent ; `duration-300`/`transition-all` selon les pages legacy |
 | `docs/superpowers/plans/…` | compléter | résultats mesurés (fin de ce plan) |
 
-**Outils hors dépôt** (scratchpad de la session, copiés en fin de chantier dans le dossier de notes partagé) : `plan/migrer-pages.mjs` (Task 2), `plan/pages-motion.test.mjs` (Task 1), `plan/verifier-mouvement-pages.mjs` (Task 5), `reveal-source.js` (`index.html` l. 145-192, extrait par `sed -n '145,192p'`), `outils/capturer-reveal.mjs` et `outils/comparer.py` (sessions précédentes), `outils/inventaire-sr.mjs` (cadrage). **Base « avant »** : `avant/1440` et `avant/390`, 18 pages (15 + `index`, `expertise`, `geopolitics`) sur `f9e295a2`, serveur `python3 -m http.server 3407` lancé **depuis le worktree** (le port 3000 sert le dépôt principal, pas cette branche).
+**Outils hors dépôt** (scratchpad de la session, copiés en fin de chantier dans le dossier de notes partagé) : `plan/migrer-pages.mjs` (Task 2), `plan/pages-motion.test.mjs` (Task 1), `plan/verifier-mouvement-pages.mjs` (Task 5), `reveal-source.js` (`index.html` l. 145-192, extrait par `sed -n '145,192p'`), `outils/capturer-reveal.mjs` et `outils/comparer.py` (sessions précédentes), `outils/inventaire-sr.mjs` (cadrage). **Base « avant »** : `avant/1440` et `avant/390`, 18 pages (15 + `index`, `expertise`, `geopolitics`) sur `f9e295a2` (= `main` `5ed84a19`), serveur `python3 -m http.server 3407` lancé **depuis le worktree** (le port 3000 sert le dépôt principal, pas cette branche).
 
 ---
 
@@ -769,7 +769,7 @@ Attendu : toutes les vérifications `OK` (compte exact à noter). Un `KO` est un
 - [ ] Écrire les **résultats mesurés** en fin de ce plan (comptes réels, captures, script, écarts rencontrés) ; mettre la spec en « réalisé ».
 - [ ] Copier `plan/*.mjs`, `outils/inventaire-sr.mjs` et une note de passation dans le dossier de notes partagé.
 - [ ] Commit docs : `Spec et plan de la propagation des apparitions aux pages React, résultats mesurés`.
-- [ ] **Attendre le « oui »**, puis `git push -u origin feat/animations-pages` et PR **vers `feat/animations`** tant que la PR #145 n'est pas fusionnée (vers `main` sinon), description reprenant la spec §1 et §3, terminée par `🤖 Generated with [Claude Code](https://claude.com/claude-code)`.
+- [ ] **Attendre le « oui »**, puis `git push -u origin feat/animations-pages` et PR **vers `main`** (la PR #145 est fusionnée), description reprenant la spec §1 et §3, terminée par `🤖 Generated with [Claude Code](https://claude.com/claude-code)`.
 
 ---
 

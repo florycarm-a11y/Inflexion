@@ -1,6 +1,6 @@
 # Apparitions des pages React : propagation du prompt 4 — audit Starlink
 
-Date : 2026-11-15. Statut : cadrage mesuré, en attente de validation. Suite directe du prompt 4 (`docs/superpowers/specs/2026-11-15-animations-design.md`, branche `feat/animations`, PR #145 ouverte, non fusionnée) : ce chantier s'empile dessus (branche `feat/animations-pages`, base `f9e295a2`).
+Date : 2026-11-15. Statut : cadrage mesuré, en attente de validation. Suite directe du prompt 4 (`docs/superpowers/specs/2026-11-15-animations-design.md`, PR #145 fusionnée dans `main` le 2026-11-15, merge `5ed84a19`) : branche `feat/animations-pages` au-dessus de `main`.
 
 ## 1. Objet
 
@@ -12,7 +12,7 @@ Critère de fin : plus aucune des 15 pages ne charge `scroll-reveal.js` ni ne d�
 
 ## 2. Ce que le cadrage a établi
 
-Mesures faites sur `feat/animations` (`f9e295a2`) avant toute modification : relevé statique (`grep`, extraction des `<style>`), et relevé dynamique dans Chrome sans fenêtre (script CDP `inventaire-sr.mjs`, dossier de notes partagé : pour chaque page, éléments `.sr-hidden` avant défilement, `.anim-fade-up`, `.reveal-section`, puis après défilement complet et 3 s de repos, `.sr-visible` et `.sr-hidden` restants, erreurs console), à 1440 et 390 px.
+Mesures faites sur `feat/animations` (`f9e295a2`, arbre identique à `main` `5ed84a19` après fusion de la PR #145) avant toute modification : relevé statique (`grep`, extraction des `<style>`), et relevé dynamique dans Chrome sans fenêtre (script CDP `inventaire-sr.mjs`, dossier de notes partagé : pour chaque page, éléments `.sr-hidden` avant défilement, `.anim-fade-up`, `.reveal-section`, puis après défilement complet et 3 s de repos, `.sr-visible` et `.sr-hidden` restants, erreurs console), à 1440 et 390 px.
 
 ### 2.1 Inventaire par page
 
@@ -82,7 +82,7 @@ Après migration : `duration-300` et `transition-all` ne restent employés que s
 
 ### 2.8 Outils
 
-Base « avant » faite sur `f9e295a2` avec `capturer-reveal.mjs` (repos de 3 s) : 15 pages + 3 témoins (`index`, `expertise`, `geopolitics`) × 1440 et 390 = 36 captures. Le GEL force `.anim-fade-up,.reveal,…{opacity:1}` : `.sr-visible` (animation `forwards`, durée gelée à 0) et `.reveal-section.visible` tombent sur leur état final sans règle supplémentaire.
+Base « avant » faite sur `f9e295a2` (= `main` `5ed84a19`, arbre identique) avec `capturer-reveal.mjs` (repos de 3 s) : 15 pages + 3 témoins (`index`, `expertise`, `geopolitics`) × 1440 et 390 = 36 captures. Le GEL force `.anim-fade-up,.reveal,…{opacity:1}` : `.sr-visible` (animation `forwards`, durée gelée à 0) et `.reveal-section.visible` tombent sur leur état final sans règle supplémentaire.
 
 ## 3. Décisions
 
