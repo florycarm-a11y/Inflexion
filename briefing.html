@@ -33,33 +33,33 @@
 <link rel="stylesheet" href="styles.css"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+/* Jetons de mouvement : briefing.html ne charge pas encore assets/design-tokens-v2.css (identité ancienne, aucun régime v2 : chantier à part ;
+   poser data-design-regime sur le body déclencherait les surcharges de styles.css et changerait la page). Mêmes valeurs que le fichier
+   de jetons, identité vérifiée par test/pages-motion.test.mjs ; à retirer quand la page passera en régime editorial. */
+:root{--motion-fast:.15s ease;--motion-base:.3s cubic-bezier(.4,0,.2,1);--motion-slow:.5s ease-out}
 body{font-family:'Inter','Helvetica Neue',sans-serif;background:#FFFFFF;color:#1A1F2E;overflow-x:hidden}
 h1,h2,h3,.display-text{font-family:'Libre Baskerville',Georgia,serif;font-weight:700;line-height:1.15;letter-spacing:-0.02em;color:#1A1F2E}
 
-@keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.anim-fade-up{animation:fade-up .6s ease-out both}
-.anim-d1{animation-delay:.1s}.anim-d2{animation-delay:.2s}.anim-d3{animation-delay:.3s}.anim-d4{animation-delay:.4s}
 
 .nav-link{position:relative}
-.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform .25s ease}
-.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#006650;transform:scaleX(0);transition:transform var(--motion-fast)}
+.nav-link.active::after{transform:scaleX(1)}
 .mega-trigger{position:relative}
-.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s;min-width:520px;z-index:60}
+.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity var(--motion-base),transform var(--motion-base),visibility var(--motion-base);min-width:520px;z-index:60}
 .mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
-.mega-item{transition:background .15s ease}
-.mega-item:hover{background:rgba(27,107,74,.06)}
+.mega-item{transition:background var(--motion-fast)}
 .mega-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
 .nav-scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid #E2E5EB;box-shadow:0 1px 8px rgba(0,0,0,.04)}
 
-.hamburger span{display:block;width:24px;height:2px;background:#1A1F2E;margin:5px 0;transition:all .3s ease}
+.hamburger span{display:block;width:24px;height:2px;background:#1A1F2E;margin:5px 0;transition:all var(--motion-base)}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-.mobile-overlay{opacity:0;visibility:hidden;transition:opacity .35s cubic-bezier(.4,0,.2,1),visibility .35s;height:100dvh}
+.mobile-overlay{opacity:0;visibility:hidden;transition:opacity var(--motion-base),visibility var(--motion-base);height:100dvh}
 .mobile-overlay.open{opacity:1;visibility:visible}
 @keyframes menu-item-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 .menu-item{opacity:0}
-.mobile-overlay.open .menu-item{animation:menu-item-in .4s ease-out forwards}
+.mobile-overlay.open .menu-item{animation:menu-item-in var(--motion-slow) forwards}
 body.menu-open{overflow:hidden}
 
 @keyframes hero-gradient-shift{
@@ -120,11 +120,11 @@ display:block;
 0%,100%{opacity:1;transform:scale(1)}
 50%{opacity:.4;transform:scale(1.8)}
 }
-@keyframes slide-in-left{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:translateX(0)}}
-@keyframes count-up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-
-.reveal-section{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
-.reveal-section.visible{opacity:1;transform:translateY(0)}
+/* Boucles décoratives : hors de l'échelle à trois jetons, figées en mouvement réduit. Le spinner (indicateur d'état) continue de tourner. */
+.pulse-live{animation:pulse-live 2s ease infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin{animation:spin 1s linear infinite}
+.logo-scroll{transition:filter var(--motion-base)}
 
 .font-data{font-family:'JetBrains Mono','SF Mono',monospace}
 
@@ -133,11 +133,7 @@ background:#fff;
 border:1px solid #E2E5EB;
 border-radius:14px;
 overflow:hidden;
-transition:box-shadow .3s cubic-bezier(.4,0,.2,1),border-color .3s ease;
-}
-.briefing-card:hover{
-box-shadow:0 8px 32px rgba(0,20,15,.06),0 2px 8px rgba(0,20,15,.04);
-border-color:#D1D5DE;
+transition:box-shadow var(--motion-fast),border-color var(--motion-fast);
 }
 
 .card-header{padding:16px 20px;display:flex;align-items:flex-start;gap:12px}
@@ -165,23 +161,46 @@ border-color:#D1D5DE;
 @media(min-width:640px){.inter-cell-label{padding:10px 14px}.inter-cell-value{padding:10px 14px}}
 
 .prob-meter{height:6px;border-radius:3px;background:#F0F2F5;overflow:hidden;position:relative}
-.prob-fill{height:100%;border-radius:3px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.prob-fill{height:100%;border-radius:3px;transition:width var(--motion-slow)}
 .prob-markers{display:flex;justify-content:space-between;margin-top:4px}
 .prob-marker{font-size:9px;color:#A0A8B8;font-weight:500;letter-spacing:.3px}
 
 .theme-arrow{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .theme-arrow svg{width:14px;height:14px}
 
-.toc-dot{width:8px;height:8px;border-radius:50%;border:2px solid #E2E5EB;background:#fff;transition:all .2s ease;flex-shrink:0}
+.toc-dot{width:8px;height:8px;border-radius:50%;border:2px solid #E2E5EB;background:#fff;transition:all var(--motion-fast);flex-shrink:0}
 .toc-dot.active{border-color:#006650;background:#006650;box-shadow:0 0 0 3px rgba(0,102,80,.15)}
-.toc-link{color:#5A6178;transition:color .2s ease}
-.toc-link.active{color:#006650;font-weight:600}
+.toc-link{transition:background-color var(--motion-fast),color var(--motion-fast)}
 
 @media(max-width:768px){
 html,body{overflow-x:hidden}
 img{max-width:100%;height:auto}
 button,a[href]:not(.prose a){min-height:44px;min-width:44px}
 .mobile-overlay .menu-item a{min-height:48px;display:flex;align-items:center}
+}
+
+/* Apparitions — composant Reveal (prompt 4 de l'audit Starlink) : un élément à la fois, opacité et 16 px, var(--motion-slow).
+   Déclaré après les cartes pour que sa transition gagne pendant l'apparition ; Reveal retire la classe ensuite. */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity var(--motion-slow),transform var(--motion-slow)}
+.reveal.is-visible{opacity:1;transform:none}
+/* En-tête au défilement : même valeur que l'ancien utilitaire Tailwind (300 ms). Le prompt 5 restreindra « all » à background-color et border-color. */
+.site-header{transition:all var(--motion-base)}
+
+/* Survols — pointeur capable de survoler seulement (audit 7.6) : sur tactile un :hover resterait collé après le toucher.
+   L'ouverture du méga-menu (.mega-trigger:hover .mega-menu) reste hors de ce bloc : sur tablette, ce :hover émulé au toucher est le seul moyen d'ouvrir le menu. */
+@media(hover:hover){
+.nav-link:hover::after{transform:scaleX(1)}
+.mega-item:hover{background:rgba(27,107,74,.06)}
+.briefing-card:hover{box-shadow:0 8px 32px rgba(0,20,15,.06),0 2px 8px rgba(0,20,15,.04);border-color:#D1D5DE}
+}
+
+/* Mouvement réduit (audit 7.5) : contenu affiché sans apparition, entrées du menu visibles, boucles décoratives figées sur leur première image */
+@media(prefers-reduced-motion:reduce){
+.reveal{opacity:1;transform:none;transition:none}
+.mobile-overlay.open .menu-item{animation:none;opacity:1}
+.hero-dynamic,.hero-dynamic::before{animation-play-state:paused}
+.pulse-live{animation-play-state:paused}
+.prob-fill{transition:none}
 }
 </style>
 <link rel="stylesheet" href="assets/site.css">
@@ -198,22 +217,6 @@ var h=React.createElement
 var MEGA_NAV=window.MEGA_NAV
 
 // ─── HOOKS ──────────────────────────────────────────────────────────────────
-
-function useInView(opts){
-var ref=useRef(null)
-var vis=useState(false)
-var visible=vis[0],setVisible=vis[1]
-useEffect(function(){
-if(!ref.current)return
-var io=new IntersectionObserver(function(entries){
-if(entries[0].isIntersecting){setVisible(true);if(!(opts&&opts.repeat))io.disconnect()}
-else if(opts&&opts.repeat)setVisible(false)
-},{threshold:(opts&&opts.threshold)||0.12,rootMargin:(opts&&opts.rootMargin)||'0px'})
-io.observe(ref.current)
-return function(){io.disconnect()}
-},[])
-return[ref,visible]
-}
 
 function useActiveSection(ids){
 var st=useState('')
@@ -250,11 +253,11 @@ return function(){document.body.classList.remove('menu-open')}
 },[open])
 return h('div',null,
  h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[#C8955A]'}),
- h('header',{className:'fixed top-[3px] left-0 right-0 z-50 transition-all duration-300 '+(scrolled?'nav-scrolled':'bg-transparent')},
+ h('header',{className:'site-header fixed top-[3px] left-0 right-0 z-50 '+(scrolled?'nav-scrolled':'bg-transparent')},
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(10) saturate(0) invert(0)',transition:'filter 0.3s ease'}})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto logo-scroll',style:{filter:scrolled?'none':'brightness(10) saturate(0) invert(0)'}})
     ),
     h('nav',{className:'hidden md:flex items-center gap-1'},
      MEGA_NAV.map(function(cat,ci){
@@ -311,10 +314,53 @@ return h('div',null,
 
 // ─── REVEAL WRAPPER ─────────────────────────────────────────────────────────
 
-function Reveal(props){
-var r=useInView({threshold:0.08})
-var ref=r[0],visible=r[1]
-return h('div',{ref:ref,className:'reveal-section'+(visible?' visible':'')+(props.className?' '+props.className:''),style:props.delay?{transitionDelay:props.delay+'s'}:undefined},props.children)
+
+// Apparitions (audit Starlink 7.2-7.5). Un seul IntersectionObserver pour tous les Reveal :
+// les éléments qui franchissent le seuil dans la même image forment un lot, et le rang dans le lot
+// porte le décalage des grilles (stagger). Un décalage par index cumulerait un retard visible
+// sur les cartes hors du premier écran (9e carte de veille : 0,78 s après son entrée dans l'écran).
+const revealAttente=new Map() // élément → {stagger, declencher}
+let revealIO=null
+function observerReveal(el,entree){
+if(!revealIO)revealIO=new IntersectionObserver(entries=>{
+let rang=0
+for(const e of entries){
+if(!e.isIntersecting)continue
+const a=revealAttente.get(e.target)
+if(!a)continue
+revealAttente.delete(e.target);revealIO.unobserve(e.target)
+a.declencher(a.stagger?rang++:0)
+}
+},{threshold:0.15})
+revealAttente.set(el,entree);revealIO.observe(el)
+return()=>{revealAttente.delete(el);revealIO.unobserve(el)}
+}
+const reduireMouvement=()=>window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+// Anime UN élément (opacity 0→1, translateY 16px→0, var(--motion-slow)) à son entrée dans l'écran.
+// delay : secondes avant le départ ; stagger : secondes ajoutées par rang dans le lot (cartes d'une grille).
+// L'enfant est cloné, pas enveloppé : un div intermédiaire casserait l'égalisation des hauteurs dans les grilles.
+// Une fois la transition finie, l'enfant est rendu tel quel (plus de classe ni de délai) pour ne pas
+// interférer avec ses propres transitions (.article-card) et rester identique au pixel à l'original.
+// Enfant hôte (balise) uniquement : la ref doit viser un nœud DOM. Sa ref et son transitionDelay sont remplacés, son onTransitionEnd chaîné.
+// Limite : une transition interrompue (display:none en cours, transitioncancel) n'émet pas transitionend ; l'élément garde alors la classe :
+// visuel identique, seule la transition de survol d'une carte est perdue jusqu'au rechargement (React 18 n'expose pas onTransitionCancel).
+function Reveal({delay=0,stagger=0,children}){
+const enfant=React.Children.only(children)
+if(typeof enfant.type!=='string')throw new Error('Reveal : enfant hôte (balise) requis, la ref doit viser un nœud DOM')
+const ref=useRef(null)
+const[rang,setRang]=useState(-1) // -1 : pas encore entré dans l'écran
+const[fini,setFini]=useState(false)
+const[reduit]=useState(reduireMouvement) // lu au montage : un élément rendu nu le reste (il n'a pas d'observateur), même si la préférence change ensuite
+useEffect(()=>{if(ref.current)return observerReveal(ref.current,{stagger,declencher:setRang})},[])
+if(fini||reduit)return enfant
+const retard=Math.round((delay+Math.max(rang,0)*stagger)*1000)/1000 // évite 0.3+2*0.06 = 0.42000000000000004 dans le DOM
+return React.cloneElement(enfant,{
+ref,
+className:`${enfant.props.className||''} reveal${rang>=0?' is-visible':''}`.trim(),
+style:{...enfant.props.style,transitionDelay:`${retard}s`},
+onTransitionEnd:e=>{enfant.props.onTransitionEnd?.(e);if(e.target===e.currentTarget&&e.propertyName==='opacity')setFini(true)}
+})
 }
 
 // ─── HERO ────────────────────────────────────────────────────────────────────
@@ -352,26 +398,26 @@ return h('section',{ref:heroRef,className:'hero-dynamic relative pt-28 pb-28 md:
  h('div',{className:'hero-content relative z-[3] max-w-5xl mx-auto px-4 sm:px-6',style:{willChange:'transform,opacity'}},
 
   // Top meta line
-  h('div',{className:'anim-fade-up flex items-center gap-3 mb-8'},
+  h(Reveal,{delay:0},h('div',{className:'flex items-center gap-3 mb-8'},
    h('span',{className:'flex items-center gap-2 px-3 py-1.5 rounded-full',style:{background:'rgba(51,184,148,.15)',border:'1px solid rgba(51,184,148,.3)'}},
-    h('span',{style:{width:6,height:6,borderRadius:'50%',background:'#33B894',animation:'pulse-live 2s ease infinite',display:'inline-block'}}),
+    h('span',{className:'pulse-live',style:{width:6,height:6,borderRadius:'50%',background:'#33B894',display:'inline-block'}}),
     h('span',{className:'text-[11px] font-semibold uppercase tracking-wider text-[#33B894]'},'LIVE')
    ),
    h('span',{className:'text-[11px] uppercase tracking-wider text-white/40 font-medium'},'Briefing strat\u00e9gique')
-  ),
+  )),
 
   // Title
-  h('h1',{className:'anim-fade-up anim-d1 text-2xl sm:text-3xl md:text-[2.75rem] lg:text-[3.25rem] font-bold text-white leading-[1.1] tracking-tight max-w-3xl',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
+  h(Reveal,{delay:0},h('h1',{className:'text-2xl sm:text-3xl md:text-[2.75rem] lg:text-[3.25rem] font-bold text-white leading-[1.1] tracking-tight max-w-3xl',style:{fontFamily:'Libre Baskerville, Georgia, serif'}},
    briefing&&briefing.synthese&&briefing.synthese.titre?briefing.synthese.titre:'Briefing du jour'
-  ),
+  )),
 
   // Subtitle
   briefing&&briefing.synthese&&briefing.synthese.sous_titre?
-   h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/55 leading-relaxed max-w-2xl'},briefing.synthese.sous_titre):
-   h('p',{className:'anim-fade-up anim-d2 mt-5 text-base md:text-lg text-white/55 leading-relaxed max-w-2xl'},'Synth\u00e8se IA quotidienne \u2014 signaux g\u00e9opolitiques, financiers et risk radar'),
+   h(Reveal,{delay:0.15},h('p',{className:'mt-5 text-base md:text-lg text-white/55 leading-relaxed max-w-2xl'},briefing.synthese.sous_titre)):
+   h(Reveal,{delay:0.15},h('p',{className:'mt-5 text-base md:text-lg text-white/55 leading-relaxed max-w-2xl'},'Synth\u00e8se IA quotidienne \u2014 signaux g\u00e9opolitiques, financiers et risk radar')),
 
   // Meta bar
-  h('div',{className:'anim-fade-up anim-d3 mt-10 flex flex-wrap items-center gap-4'},
+  h(Reveal,{delay:0.3},h('div',{className:'mt-10 flex flex-wrap items-center gap-4'},
    // Date
    h('div',{className:'flex items-center gap-2'},
     h('div',{className:'w-8 h-[2px] bg-[#C8955A]'}),
@@ -385,7 +431,7 @@ return h('section',{ref:heroRef,className:'hero-dynamic relative pt-28 pb-28 md:
     signalCount>0?h('span',{className:'font-data text-[11px] text-white/30'},signalCount+' signaux'):null,
     riskCount>0?h('span',{className:'font-data text-[11px] text-white/30'},riskCount+' risques'):null
    )
-  )
+  ))
  ),
  h('div',{className:'hero-wave'},
   h('svg',{viewBox:'0 0 1440 80',preserveAspectRatio:'none',xmlns:'http://www.w3.org/2000/svg'},
@@ -480,7 +526,7 @@ return h('aside',{className:'hidden xl:block sticky top-24 w-56 flex-shrink-0'},
   h('div',{className:'space-y-1'},
    TOC_SECTIONS.map(function(sec){
     var isActive=active===sec.id
-    return h('a',{key:sec.id,href:'#'+sec.id,className:'flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-xs transition-all duration-200 no-underline '+(isActive?'bg-[#006650]/8 text-[#006650] font-semibold':'text-[#5A6178] hover:text-[#1A1F2E] hover:bg-[#F7F8FA]')},
+    return h('a',{key:sec.id,href:'#'+sec.id,className:'flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-xs toc-link no-underline '+(isActive?'bg-[#006650]/8 text-[#006650] font-semibold':'text-[#5A6178] hover:text-[#1A1F2E] hover:bg-[#F7F8FA]')},
      h('span',{className:'toc-dot'+(isActive?' active':'')}),
      h('span',null,sec.label)
     )
@@ -496,7 +542,7 @@ function BriefingContent(props){
 var briefing=props.briefing
 if(!briefing)return h('div',{className:'max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center'},
  h('div',{className:'inline-flex items-center gap-3 px-5 py-3 rounded-full bg-[#F7F8FA] border border-[#E2E5EB]'},
-  h('div',{className:'w-5 h-5 border-2 border-[#006650] border-t-transparent rounded-full',style:{animation:'spin 1s linear infinite'}}),
+  h('div',{className:'spin w-5 h-5 border-2 border-[#006650] border-t-transparent rounded-full'}),
   h('span',{className:'text-sm text-[#5A6178]'},'Chargement du briefing\u2026')
  )
 )
@@ -510,7 +556,7 @@ return h('div',{className:'max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16
   h('div',{className:'flex-1 min-w-0'},
 
    // Pipeline intro bar
-   h(Reveal,null,
+   h(Reveal,{delay:0},
     h('div',{className:'flex items-center gap-4 mb-10 pb-5 border-b border-[#E2E5EB]'},
      h('div',{className:'flex items-center gap-2'},
       h('div',{className:'w-1.5 h-10 rounded-full bg-gradient-to-b from-[#C8955A] to-[#C8955A]/30'}),
@@ -531,7 +577,7 @@ return h('div',{className:'max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16
    ),
 
    // Signal du jour
-   briefing.signal_du_jour?h(Reveal,null,
+   briefing.signal_du_jour?h(Reveal,{delay:0},
     h('div',{id:'signal-du-jour',className:'mb-10 relative overflow-hidden rounded-2xl',style:{background:'linear-gradient(135deg, #006650 0%, #004D3D 100%)'}},
      h('div',{className:'absolute inset-0',style:{background:'radial-gradient(ellipse at 80% 20%, rgba(200,149,90,.12) 0%, transparent 60%)',pointerEvents:'none'}}),
      h('div',{className:'relative p-6 sm:p-8'},
@@ -545,25 +591,25 @@ return h('div',{className:'max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16
    ):null,
 
    // Synthese
-   s.contenu?h(Reveal,null,
+   s.contenu?h(Reveal,{delay:0.15},
     h('div',{id:'synthese',className:'mb-12'},
      h('div',{className:'prose-container',dangerouslySetInnerHTML:{__html:mdBlock(s.contenu)}})
     )
    ):null,
 
    // Signaux / Enjeux clés
-   briefing.signaux&&briefing.signaux.length>0?h(Reveal,null,
+   briefing.signaux&&briefing.signaux.length>0?(
     h('div',{id:'enjeux',className:'mb-14'},
-     h('div',{className:'flex items-center gap-3 mb-6'},
+     h(Reveal,{delay:0},h('div',{className:'flex items-center gap-3 mb-6'},
       h('h3',{className:'text-lg font-bold text-[#1A1F2E]',style:{fontFamily:'Libre Baskerville,Georgia,serif',margin:0}},'Enjeux cl\u00e9s du jour'),
       h('div',{className:'flex-1 h-px bg-[#E2E5EB]'}),
       h('span',{className:'font-data text-[11px] text-[#5A6178]'},briefing.signaux.length+' signaux')
-     ),
+     )),
      h('div',{className:'space-y-5'},
       briefing.signaux.map(function(sig,i){
        var sev=sig.severite||'info'
        var sevCls=sev==='urgent'?'urgent':sev==='attention'?'attention':'info'
-       return h('div',{key:i,className:'briefing-card'},
+       return h(Reveal,{key:i,delay:0.3,stagger:0.06},h('div',{className:'briefing-card'},
         // Color stripe
         h('div',{className:'sev-stripe sev-'+sevCls}),
         // Header zone
@@ -599,20 +645,20 @@ return h('div',{className:'max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16
           })
          )
         ):null
-       )
+       ))
       })
      )
     )
    ):null,
 
    // Risk Radar
-   briefing.risk_radar&&briefing.risk_radar.length>0?h(Reveal,null,
+   briefing.risk_radar&&briefing.risk_radar.length>0?(
     h('div',{id:'risques',className:'mb-14'},
-     h('div',{className:'flex items-center gap-3 mb-6'},
+     h(Reveal,{delay:0},h('div',{className:'flex items-center gap-3 mb-6'},
       h('h3',{className:'text-lg font-bold text-[#1A1F2E]',style:{fontFamily:'Libre Baskerville,Georgia,serif',margin:0}},'Radar des risques'),
       h('div',{className:'flex-1 h-px bg-[#E2E5EB]'}),
       h('span',{className:'font-data text-[11px] text-[#5A6178]'},briefing.risk_radar.length+' risques')
-     ),
+     )),
      h('div',{className:'space-y-5'},
       briefing.risk_radar.map(function(risk,i){
        var sev=risk.severite||'info'
@@ -620,7 +666,7 @@ return h('div',{className:'max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16
        var sevColor=sev==='urgent'?'#dc2626':sev==='attention'?'#d97706':'#3b82f6'
        var probaWidth=risk.probabilite==='elevee'?'85%':risk.probabilite==='moyenne'?'50%':'20%'
        var probaLabel=risk.probabilite==='elevee'?'\u00c9lev\u00e9e':risk.probabilite==='moyenne'?'Moyenne':'Faible'
-       return h('div',{key:i,className:'briefing-card'},
+       return h(Reveal,{key:i,delay:0.3,stagger:0.06},h('div',{className:'briefing-card'},
         h('div',{className:'sev-stripe sev-'+sevCls}),
         // Header
         h('div',{className:'card-header'},
@@ -656,7 +702,7 @@ return h('div',{className:'max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16
           ):null
          )
         )
-       )
+       ))
       })
      )
     )
@@ -667,12 +713,12 @@ return h('div',{className:'max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16
     var themes=briefing.themes_a_surveiller||briefing.positionnement
     if(!themes||themes.length===0)return null
     var disclaimer=briefing.themes_disclaimer||briefing.positionnement_disclaimer||'Ces \u00e9l\u00e9ments sont des observations factuelles et ne constituent pas un conseil en investissement. Consultez un professionnel agr\u00e9\u00e9 (CIF-AMF) avant toute d\u00e9cision.'
-    return h(Reveal,null,
+    return (
      h('div',{id:'themes',className:'mb-14'},
-      h('div',{className:'flex items-center gap-3 mb-6'},
+      h(Reveal,{delay:0},h('div',{className:'flex items-center gap-3 mb-6'},
        h('h3',{className:'text-lg font-bold text-[#1A1F2E]',style:{fontFamily:'Libre Baskerville,Georgia,serif',margin:0}},'Th\u00e8mes \u00e0 surveiller'),
        h('div',{className:'flex-1 h-px bg-[#E2E5EB]'})
-      ),
+      )),
       h('div',{className:'grid gap-4 sm:grid-cols-2'},
        themes.map(function(pos,i){
         var dyn=pos.dynamique||pos.direction||'neutre'
@@ -684,7 +730,7 @@ return h('div',{className:'max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16
         var label=isUp?'Haussi\u00e8re':isDown?'Baissi\u00e8re':isVolatile?'Volatile':'Neutre'
         // SVG arrows
         var arrowPath=isUp?'M7 17V3m0 0l-5 5m5-5l5 5':isDown?'M7 3v14m0 0l-5-5m5 5l5-5':isVolatile?'M7 3v14M2 7l5-4 5 4M2 13l5 4 5-4':'M3 7h14'
-        return h('div',{key:i,className:'briefing-card'},
+        return h(Reveal,{key:i,delay:0.3,stagger:0.06},h('div',{className:'briefing-card'},
          h('div',{className:'flex items-start gap-3 p-4 sm:p-5'},
           // Arrow icon
           h('div',{className:'theme-arrow',style:{background:bgTint,border:'1px solid '+color+'25'}},
@@ -701,22 +747,22 @@ return h('div',{className:'max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16
            h('p',{className:'text-[12.5px] text-[#5A6178] leading-[1.65] m-0'},pos.details||'')
           )
          )
-        )
+        ))
        })
       ),
-      h('p',{className:'text-[11px] text-[#5A6178]/50 italic mt-5 leading-relaxed pl-1'},disclaimer)
+      h(Reveal,{delay:0.15},h('p',{className:'text-[11px] text-[#5A6178]/50 italic mt-5 leading-relaxed pl-1'},disclaimer))
      )
     )
    })(),
 
    // Agenda
-   briefing.agenda&&briefing.agenda.length>0?h(Reveal,null,
+   briefing.agenda&&briefing.agenda.length>0?(
     h('div',{id:'agenda',className:'mb-12'},
-     h('div',{className:'flex items-center gap-3 mb-6'},
+     h(Reveal,{delay:0},h('div',{className:'flex items-center gap-3 mb-6'},
       h('h3',{className:'text-lg font-bold text-[#1A1F2E]',style:{fontFamily:'Libre Baskerville,Georgia,serif',margin:0}},'Agenda de la semaine'),
       h('div',{className:'flex-1 h-px bg-[#E2E5EB]'})
-     ),
-     h('div',{className:'briefing-card'},
+     )),
+     h(Reveal,{delay:0.3},h('div',{className:'briefing-card'},
       briefing.agenda.map(function(evt,i){
        var isLast=i===briefing.agenda.length-1
        return h('div',{key:i,className:'flex items-start gap-4 px-5 py-3.5 sm:px-6 sm:py-4'+(isLast?'':' border-b border-[#F0F2F5]')},
@@ -735,18 +781,18 @@ return h('div',{className:'max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16
         ):null
        )
       })
-     )
+     ))
     )
    ):null,
 
    // Tags
-   briefing.tags&&briefing.tags.length>0?h(Reveal,null,
+   briefing.tags&&briefing.tags.length>0?(
     h('div',{className:'pt-6 border-t border-[#E2E5EB]'},
-     h('div',{className:'flex flex-wrap gap-2'},
+     h(Reveal,{delay:0.3},h('div',{className:'flex flex-wrap gap-2'},
       briefing.tags.map(function(t,i){
        return h('span',{key:i,className:'px-3 py-1.5 text-xs font-medium bg-[#F7F8FA] text-[#5A6178] rounded-full border border-[#E2E5EB] hover:border-[#006650]/30 hover:text-[#006650] transition-colors cursor-default'},t)
       })
-     )
+     ))
     )
    ):null
 
