@@ -90,7 +90,7 @@ test('assets/header-shell.css : chaque règle identique à la règle homonyme du
   const attendus = [...SELECTEURS]; attendus.splice(attendus.indexOf('.hamburger span'), 0, FOCUS_FEUILLE);
   assert.deepEqual(selecteurs, attendus);
   assert.ok(SHELL_CSS.indexOf('.site-header{') < SHELL_CSS.indexOf('.nav-scrolled{'), '.nav-scrolled doit suivre .site-header');
-  assert.ok(!/\.mega-menu:hover|mega-icon|transition:all/.test(SHELL_CSS), 'règle proscrite dans la feuille');
+  assert.ok(!/\.mega-menu:hover|mega-icon/.test(SHELL_CSS), 'règle proscrite dans la feuille (panneau fantôme, pastilles)'); // .hamburger span garde son transition:all (home)
 });
 
 test('assets/article-shell.js : Navigation importée de header-shell.js et ré-exportée, plus de définition locale', () => {
