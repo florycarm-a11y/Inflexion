@@ -17,8 +17,8 @@
 | Fichier | Action | Responsabilité |
 | --- | --- | --- |
 | `test/home-header.test.mjs` | créer | garde-fous des six points + pièges de cascade (`transition-colors` jamais sur un `.nav-state`, `md:max-w-2xl` dans `site.css`) |
-| `index.html` | modifier | `<style>` : 5 remplacements ; script `Navigation` : 10 remplacements |
-| `assets/site.css` | régénérer (commité) | `bg-[#F1E7DE]` et `shadow-[0_6px_18px_rgba(42,18,16,.20)]` disparaissent ; `md:max-w-2xl`, `md:mx-auto` apparaissent |
+| `index.html` | modifier | `<style>` : 5 remplacements (+ 1 déplacement, Task 2 bis) ; script `Navigation` : 10 remplacements |
+| `assets/site.css` | régénérer (commité) | `bg-[#F1E7DE]` et `shadow-[0_6px_18px_rgba(42,18,16,.20)]` disparaissent ; `md:max-w-2xl`, `md:mx-auto`, `md:w-full` apparaissent |
 
 Outils hors dépôt, dans `<notes>/visuel/` (dossier de notes partagé de cette session) : `capturer-reveal.mjs` (page entière), `capturer-etats.mjs` (8 états de l'en-tête), `comparer.py`, `verifier-en-tete.mjs` (contrôle CDP), `contrastes.py` (échantillonnage des captures). Base « avant » sur `main` `409ab302` : `<scratchpad>/avant` (2 captures) et `<scratchpad>/avant-etats` (8 captures).
 
@@ -104,6 +104,8 @@ test('en-tête : transition limitée à background-color et border-color, bordur
   assert.ok(defile, '.nav-scrolled introuvable');
   assert.ok(defile.includes('border-bottom-color:var(--chrome-border)'), '.nav-scrolled doit ne changer que la couleur du filet (border-bottom-color)');
   assert.ok(!defile.includes('border-bottom:1px solid'), '.nav-scrolled ne doit plus créer la bordure : elle existe au repos, transparente');
+  // Même spécificité : le raccourci border-bottom de .site-header écraserait border-bottom-color s'il venait après (filet perdu au défilement, vu au pixel).
+  assert.ok(style.indexOf('.site-header{') < style.indexOf('.nav-scrolled{'), '.nav-scrolled doit être déclaré après .site-header');
 });
 
 test('en-tête : deux états superposés (rubriques, bouton Menu), opacité en --motion-base, jamais de transition Tailwind sur un état', () => {
@@ -173,12 +175,14 @@ test('logo à 40 px, overlay : Échap, retour du focus, colonne centrée sur ord
   assert.ok(!html.includes('h-[65px]') && !html.includes('h-[50px]'), 'anciennes hauteurs du logo encore présentes');
   assert.ok(navigation.includes("if(e.key==='Escape')setOpen(false)"), 'Échap ne ferme pas l\'overlay');
   assert.ok(navigation.includes('ouvreur.current?.focus()'), 'le focus doit revenir au bouton qui a ouvert l\'overlay');
-  assert.equal((navigation.match(/md:max-w-2xl md:mx-auto/g) || []).length, 3, 'les trois conteneurs de l\'overlay forment une colonne sur ordinateur');
+  // md:w-full obligatoire : en colonne flex, les marges automatiques annulent l'étirement et le conteneur se rétrécit au contenu (248 px vu en capture).
+  assert.equal((navigation.match(/md:max-w-2xl md:mx-auto md:w-full/g) || []).length, 3, 'les trois conteneurs de l\'overlay forment une colonne de 672 px sur ordinateur');
 });
 
 test('assets/site.css reconstruit : classes nouvelles présentes, classes de la carte blanche disparues', () => {
   assert.ok(site.includes('.md\\:max-w-2xl{'), 'md:max-w-2xl absent de site.css : lancer npm run build:css');
   assert.ok(site.includes('.md\\:mx-auto{'), 'md:mx-auto absent de site.css : lancer npm run build:css');
+  assert.ok(site.includes('.md\\:w-full{'), 'md:w-full absent de site.css : lancer npm run build:css');
   assert.ok(!site.includes('.bg-\\[\\#F1E7DE\\]'), 'bg-[#F1E7DE] (pastille) encore dans site.css : lancer npm run build:css');
   assert.ok(!site.includes('.shadow-\\[0_6px_18px_rgba\\(42\\2c 18\\2c 16\\2c \\.20\\)\\]'), 'ombre de la carte blanche encore dans site.css : lancer npm run build:css');
 });
@@ -231,9 +235,9 @@ const REGLES = [
  "       h('div',{className:'mega-menu '+(megaOpen===ci?'mega-open ':'')+'p-5',style:{minWidth:isWide?'440px':'340px'}},\n        h('p',{className:'kicker mb-3 px-3',style:{color:'var(--editorial-accent-text)'}},cat.label),\n        h('div',{className:isWide?'grid grid-cols-2 gap-1':'grid gap-1'},\n         ...cat.children.map((item,ii)=>\n          h('a',{key:ii,href:item.href,className:'mega-item flex flex-col px-3 py-2.5 no-underline'},\n           h('span',{className:'text-sm font-semibold text-[var(--chrome-text-1)]'},item.label),\n           h('span',{className:'text-xs text-[var(--chrome-text-2)] mt-0.5'},item.desc)\n          )\n         )\n        )\n       )\n      )}\n      )\n      ),\n      h('div',{className:'nav-state'+(scrolled?'':' is-hidden')},\n       h('button',{type:'button',onClick:(e)=>{ouvreur.current=e.currentTarget;setOpen(true)},'aria-expanded':open,'aria-controls':'menu-overlay',className:'nav-link px-3 py-2 text-sm transition-colors select-none text-[var(--chrome-text-2)] hover:text-[var(--chrome-text-1)] focus-visible:text-[var(--chrome-text-1)] bg-transparent border-0 cursor-pointer'},'Menu')\n      )\n     ),\n     h('a',{href:'premium.html',", 1],
 ["onClick:()=>setOpen(!open),'aria-label':'Menu','aria-expanded':open}", "onClick:(e)=>{ouvreur.current=e.currentTarget;setOpen(!open)},'aria-label':'Menu','aria-expanded':open}", 1],
 [" h('div',{className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'var(--chrome-ground)'}},", " h('div',{id:'menu-overlay',className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'var(--chrome-ground)'}},", 1],
-["className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0'}", "className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0 md:max-w-2xl md:mx-auto'}", 1],
-["className:'flex-1 overflow-y-auto px-6 pt-2 pb-4'}", "className:'flex-1 overflow-y-auto px-6 pt-2 pb-4 md:max-w-2xl md:mx-auto'}", 1],
-["className:'px-6 pt-4 pb-20 flex flex-col gap-3 flex-shrink-0'}", "className:'px-6 pt-4 pb-20 flex flex-col gap-3 flex-shrink-0 md:max-w-2xl md:mx-auto'}", 1],
+["className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0'}", "className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0 md:max-w-2xl md:mx-auto md:w-full'}", 1],
+["className:'flex-1 overflow-y-auto px-6 pt-2 pb-4'}", "className:'flex-1 overflow-y-auto px-6 pt-2 pb-4 md:max-w-2xl md:mx-auto md:w-full'}", 1],
+["className:'px-6 pt-4 pb-20 flex flex-col gap-3 flex-shrink-0'}", "className:'px-6 pt-4 pb-20 flex flex-col gap-3 flex-shrink-0 md:max-w-2xl md:mx-auto md:w-full'}", 1],
 ];
 let total = 0;
 for (const [ancien, nouveau, attendu] of REGLES) {
@@ -272,6 +276,26 @@ Expected : `pass 149`, `fail 0`.
 ```bash
 git add index.html assets/site.css
 git commit -m "Home : en-tête à deux états et méga-menu en verre sombre (prompt 5 de l'audit Starlink)"
+```
+
+---
+
+### Task 2 bis : deux écarts vus à la comparaison au pixel (Task 3, première passe)
+
+**Files :**
+- Modify : `index.html` (`<style>`, ordre de `.nav-scrolled` ; trois conteneurs de l'overlay), `test/home-header.test.mjs`, `assets/site.css`
+
+- [ ] **Step 1 : le filet bas de l'en-tête défilé avait disparu** (`en-tete-defile` à 390 : une ligne de 390 px à y = 67, pixel (63,45,31) → (24,16,14)). Cause : `.nav-scrolled` (l. 49) précédait `.site-header` (l. 51) ; à spécificité égale, le raccourci `border-bottom:1px solid transparent` de `.site-header` écrasait `border-bottom-color:var(--chrome-border)`. Correctif : déplacer la règle `.nav-scrolled` juste **après** `.site-header`, avec le commentaire `/* Déclaré après .site-header : à spécificité égale, son raccourci border-bottom écraserait border-bottom-color. */`.
+
+- [ ] **Step 2 : l'overlay à 1440 se rétrécissait à 248 px** au lieu de 672 : en colonne flex, `mx-auto` annule l'étirement (`align-self: stretch`) et le conteneur prend sa largeur de contenu. Correctif : `md:w-full` rétabli sur les trois conteneurs (règles 13 à 15 ci-dessus, déjà corrigées dans leur texte).
+
+- [ ] **Step 3 : test durci** : `.site-header{` doit précéder `.nav-scrolled{` ; les trois conteneurs portent `md:max-w-2xl md:mx-auto md:w-full` ; `site.css` contient `.md\:w-full{`. Puis `npm run build:css && npm test` → `pass 149`.
+
+- [ ] **Step 4 : commit, re-captures** : `en-tete-defile` à 390 doit redevenir identique (0 px) ; à 1440 sa boîte ne doit plus couvrir toute la largeur.
+
+```bash
+git add index.html assets/site.css test/home-header.test.mjs
+git commit -m "Prompt 5 : filet bas de l'en-tête défilé rétabli, overlay en vraie colonne de 672 px"
 ```
 
 ---
@@ -321,3 +345,16 @@ Attendu, page entière : une seule boîte englobante par largeur, celle du logo 
 - [ ] Note de passation dans le dossier de notes partagé ; outils copiés dans `<notes>/visuel/`.
 - [ ] Mémoire : `project_audit_starlink.md` (prompt 5 fait, branche, état de la PR).
 - [ ] Message à la personne : six points, écarts assumés (overlay en colonne, Échap et focus sur l'overlay, plus d'ouverture au focus, ombre du verre), `hoverOnlyWhenSupported` toujours à trancher, suites (autres pages, `nav-shared.js`, logo SVG, lien « Services »). **Attendre le « oui »** avant `git push` et `gh pr create`.
+
+---
+
+## Résultats mesurés (2026-11-16)
+
+- **Base « avant »** (sur `main` `409ab302`, worktree servi sur 4399) : `index` entière à 1440 et 390 (`capturer-reveal.mjs`), 8 états (`capturer-etats.mjs`). Deux pièges du script corrigés avant la base : le `clip` de `Page.captureScreenshot` est en coordonnées du document (états défilés photographiés depuis `scrollY`), et React 18 rend après l'événement (états relus après 80 ms).
+- **Task 1** : commit `6d981a01`. Test avant tout : 7 échecs.
+- **Task 2** : commit `537417b2`. Script : 15 règles, 15 remplacements, aucun compte inattendu (essai à blanc d'abord). **Le `node --check` du module extrait a attrapé une erreur de la règle 9** (parenthèse manquante après `MEGA_NAV.map(` : l'état compact tombait dans le `div` des rubriques) : corrigée dans `index.html`, le plan et le script avant tout rendu. Puis le test comptait `nav-states` comme un état (regex `nav-state[^']*` → `nav-state(?:\s[^']*)?`). `npm run build:css` : `site.css` +`md:max-w-2xl`, +`md:mx-auto`, −`bg-[#F1E7DE]`, −`shadow-[0_6px_18px_rgba(42,18,16,.20)]` (le `shadow-[0_6px_18px_rgba(14,16,18,.18)]` qui reste vient des articles). `npm test` : **149/149**.
+- **Task 3, première passe** : page entière 1440 : **2 891 px, boîte (114, 6, 288, 65) = le logo seul** (point 6) ; 390 : **0 px**. États : `mega-analyses` (114, 6, 987, 314) et `mega-intelligence` (114, 6, 1218, 361) = logo + panneau (points 3, 4, 6) ; `overlay` 1440 nouveau (point 1) ; `en-tete` 390 et `overlay` 390 : 0 px. **Deux régressions** : `en-tete-defile` à 390 différait d'une ligne de 390 px à y = 67 (filet bas (63,45,31) devenu (24,16,14)) ; et l'overlay à 1440 montrait trois conteneurs de 248 px au lieu de 672. Causes et correctifs : Task 2 bis (ordre `.site-header` / `.nav-scrolled` ; `md:w-full`), commit `87943b87`, `npm test` 149/149.
+- **Task 3, seconde passe** : page entière inchangée (logo seul à 1440, 0 px à 390). États : `en-tete-defile` 390 **0 px** (filet (63,45,31) retrouvé) ; `en-tete-defile` 1440 : 4 264 px, boîte (114, 6, 1116, 65) = logo + rubriques → « Menu » (points 1 et 6), plus aucune ligne pleine largeur ; `en-tete` 1440 : logo seul ; `mega-*` et `overlay` comme à la première passe. **Toute différence rangée dans un des six points.**
+- **Contrastes mesurés** (`contrastes.py`, fond = médiane des 40 % de pixels les plus sombres par bande de 8 px, pire bande retenue) : panneau Analyses : libellés **14,66:1**, descriptions **7,76:1**, intitulé rouge **4,64:1** ; panneau Intelligence : 14,35 / 7,64 / 4,54 ; sa moitié basse, qui recouvre l'image de la manchette : 14,50 / 7,70 / 4,59. Fond échantillonné `#251A15` à `#271C16`.
+- **Task 4, script CDP** (`verifier-en-tete.mjs`) : **34/34** après correction de deux sondes (`getComputedStyle` sans `::before` ; sélecteur du CTA qui attrapait « Diagnostic stratégique » du panneau Services). Vérifié : logo 40 px ; `transition-property: background-color, border-color` (0,3 s) ; `.nav-state` `opacity, visibility` 0,3 s ; repos : bordure et fond transparents, rubriques visibles, « Menu » `hidden` ; clic : `aria-expanded`, fond `rgba(23, 16, 14, 0.78)`, `blur(24px) saturate(1.4)`, `1px solid rgba(200, 149, 90, 0.22)`, filet `2px rgb(142, 36, 36)`, `p.kicker « Analyses »` Plex Mono 12 px uppercase `rgb(224, 90, 78)`, libellé `rgb(245, 237, 230)`, description `rgba(245, 237, 230, 0.7)` ; second clic ferme, troisième rouvre ; Échap ferme et `activeElement` = bouton ; `pointerdown` sur `body` ferme ; `pointerover` souris ouvre, toucher n'ouvre pas, `mouseout` ferme, `focus()` seul n'ouvre pas ; défilement 400 px : panneau ouvert refermé, rubriques `hidden`/0, « Menu » `visible`/1, fond `rgba(23, 16, 14, 0.94)`, filet chrome-border 1 px, flou 16 px, « Menu » à gauche du CTA ; « Menu » ouvre l'overlay (`open`, `body.menu-open`, aria), trois conteneurs de 672 px, Échap ferme et rend le focus ; `prefers-reduced-motion: reduce` : overlay ouvert, entrées opacité 1 sans animation, aucun `.reveal` ; 390 : nav `none`, hamburger `block`, logo 40 px, overlay à 390 px, Échap rend le focus au hamburger, filet au défilement ; console : aucune erreur nouvelle.
+- **Task 4, volet navigateur** (onglet actif, 1440 × 900 puis 375 × 812) : première ouverture servie **depuis le cache** (ancienne page : le serveur Python n'envoie pas d'en-tête de cache, fraîcheur heuristique) → `fetch(…, {cache:'reload'})` sur `index.html` et `site.css` puis rechargement. Ensuite : survol « Analyses » → verre ; clic « Expertise » → panneau 2 colonnes ; Échap → fermé, anneau de focus sur « Expertise » ; défilement → logo, « Menu », CTA ; clic « Menu » → overlay en colonne centrée ; Échap → fermé, anneau sur « Menu ». Mobile : hamburger → overlay plein écran, Échap → fermé, anneau sur le hamburger.
