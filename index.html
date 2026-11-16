@@ -44,7 +44,7 @@ h1,h2,h3,.display-text{font-family:'Archivo',Arial,sans-serif;font-weight:800;li
 .mega-trigger{position:relative}
 .mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity var(--motion-base),transform var(--motion-base),visibility var(--motion-base);min-width:340px;z-index:60;background:rgba(23,16,14,.78);backdrop-filter:blur(24px) saturate(1.4);border:1px solid var(--chrome-border);box-shadow:0 12px 32px rgba(0,0,0,.35)}
 .mega-menu.mega-open{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
-.mega-menu::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--editorial-accent);z-index:2}
+.mega-menu::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:var(--editorial-accent);z-index:2}
 .mega-item{transition:background var(--motion-fast)}
 /* En-tête : seules la couleur de fond et celle du filet bas sont animées (audit 7.9) ; la bordure transparente au repos donne à border-color un point de départ. backdrop-filter n'est pas animé. */
 .site-header{border-bottom:1px solid transparent;transition:background-color var(--motion-base),border-color var(--motion-base)}
@@ -69,7 +69,9 @@ header :focus-visible,.mobile-overlay :focus-visible,.v2-chrome :focus-visible{o
 
 /* Mobile overlay */
 .mobile-overlay{opacity:0;visibility:hidden;transition:opacity var(--motion-base),visibility var(--motion-base);height:100vh;height:100dvh}
-.mobile-overlay.open{opacity:1;visibility:visible}
+/* À l'ouverture, seule l'opacité est animée : visibility doit être visible à l'instant où l'effet React donne le focus à la croix
+   (en transition, visibility vaut encore hidden à p = 0 et le focus est refusé). À la fermeture, la transition de base retarde le masquage. */
+.mobile-overlay.open{opacity:1;visibility:visible;transition:opacity var(--motion-base)}
 @keyframes menu-item-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 .menu-item{opacity:0}
 .mobile-overlay.open .menu-item{animation:menu-item-in var(--motion-slow) forwards}
@@ -105,7 +107,6 @@ body.menu-open{overflow:hidden}
 /* Survols — seulement pour un pointeur capable de survoler (audit 7.6) : sur tactile un :hover resterait collé après le toucher */
 @media(hover:hover){
 .nav-link:hover::after{transform:scaleX(1)}
-.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
 .mega-item:hover{background:rgba(245,237,230,.07)}
 .article-card:hover{box-shadow:0 6px 18px rgba(42,18,16,.12);border-color:var(--editorial-accent)}
 .article-card:hover::before{transform:scaleY(1)}
@@ -265,7 +266,7 @@ return out
 
 function Navigation(){
 const[open,setOpen]=useState(false)
-const[scrolled,setScrolled]=useState(false)
+const[scrolled,setScrolled]=useState(()=>window.scrollY>60) // lu au montage : rechargement ou retour arrière avec défilement restauré
 const[megaOpen,setMegaOpen]=useState(-1)
 const ouvreur=useRef(null) // bouton qui a ouvert l'overlay : le focus lui revient à la fermeture
 useEffect(()=>{
@@ -279,16 +280,22 @@ if(scrolled)setMegaOpen(-1) // un panneau ouvert garderait visibility:visible so
 // Panneau ouvert : un toucher ou un clic hors de tout déclencheur le ferme (iOS ne donne pas le focus aux boutons : onBlur n'y suffit pas)
 useEffect(()=>{
 if(megaOpen<0)return
-const fn=e=>{if(!e.target.closest?.('.mega-trigger'))setMegaOpen(-1)}
-document.addEventListener('pointerdown',fn)
-return()=>document.removeEventListener('pointerdown',fn)
+const fermer=e=>{if(!e.target.closest?.('.mega-trigger'))setMegaOpen(-1)}
+const echap=e=>{if(e.key==='Escape')setMegaOpen(-1)} // panneau ouvert au survol : rien n'a le focus, le onKeyDown du déclencheur ne reçoit rien
+document.addEventListener('pointerdown',fermer);document.addEventListener('keydown',echap)
+return()=>{document.removeEventListener('pointerdown',fermer);document.removeEventListener('keydown',echap)}
 },[megaOpen])
 useEffect(()=>{
-document.body.classList.toggle('menu-open',open)
 if(!open)return
+document.body.classList.add('menu-open')
 const fn=e=>{if(e.key==='Escape')setOpen(false)}
 document.addEventListener('keydown',fn)
-return()=>{document.body.classList.remove('menu-open');document.removeEventListener('keydown',fn);ouvreur.current?.focus()}
+document.getElementById('menu-overlay').querySelector('button').focus() // le focus entre dans le dialogue (la croix) : sinon Tab parcourt l'en-tête invisible derrière
+return()=>{
+document.body.classList.remove('menu-open');document.removeEventListener('keydown',fn)
+const o=ouvreur.current;o?.focus()
+if(document.activeElement!==o)document.querySelector('header a')?.focus() // ouvreur masqué (redimensionnement, en-tête revenu au repos) : repli sur le logo
+}
 },[open])
 return h('div',null,
  h('div',{className:'fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[var(--editorial-accent)]'}),
@@ -306,8 +313,8 @@ return h('div',null,
       // Modèle « disclosure » : le clic bascule (souris, toucher, Entrée, Espace), Échap ferme et rend le focus ; le survol n'ouvre que pour une vraie souris
       // (le survol émulé d'un toucher, suivi du clic, ouvrirait puis refermerait). Pas d'ouverture au focus : tabuler le long de la barre n'ouvre rien.
       return h('div',{key:ci,className:'mega-trigger',onPointerEnter:(e)=>{if(e.pointerType==='mouse')setMegaOpen(ci)},onMouseLeave:(e)=>{if(!e.currentTarget.contains(document.activeElement))setMegaOpen(-1)},onBlur:(e)=>{if(!e.currentTarget.contains(e.relatedTarget))setMegaOpen(-1)},onKeyDown:(e)=>{if(e.key==='Escape'&&megaOpen===ci){setMegaOpen(-1);e.currentTarget.querySelector('button').focus()}}},
-       h('button',{type:'button','aria-haspopup':'true','aria-expanded':megaOpen===ci,onClick:()=>setMegaOpen(megaOpen===ci?-1:ci),className:'nav-link px-3 py-2 text-sm transition-colors select-none text-[var(--chrome-text-2)] hover:text-[var(--chrome-text-1)] focus-visible:text-[var(--chrome-text-1)] bg-transparent border-0 cursor-pointer'},cat.label),
-       h('div',{className:'mega-menu '+(megaOpen===ci?'mega-open ':'')+'p-5',style:{minWidth:isWide?'440px':'340px'}},
+       h('button',{type:'button','aria-expanded':megaOpen===ci,'aria-controls':'mega-panel-'+ci,onClick:()=>setMegaOpen(m=>m===ci?-1:ci),className:'nav-link px-3 py-2 text-sm transition-colors select-none text-[var(--chrome-text-2)] hover:text-[var(--chrome-text-1)] focus-visible:text-[var(--chrome-text-1)] bg-transparent border-0 cursor-pointer'},cat.label),
+       h('div',{id:'mega-panel-'+ci,className:'mega-menu '+(megaOpen===ci?'mega-open ':'')+'p-5',style:{minWidth:isWide?'440px':'340px'}},
         h('p',{className:'kicker mb-3 px-3',style:{color:'var(--editorial-accent-text)'}},cat.label),
         h('div',{className:isWide?'grid grid-cols-2 gap-1':'grid gap-1'},
          ...cat.children.map((item,ii)=>
@@ -327,13 +334,13 @@ return h('div',null,
      ),
      h('a',{href:'premium.html',className:'ml-4 px-4 py-2 bg-[var(--editorial-accent)] hover:bg-[#6E1B1B] text-[var(--chrome-text-1)] font-semibold text-sm transition-colors'},'Réserver un diagnostic')
     ),
-    h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,onClick:(e)=>{ouvreur.current=e.currentTarget;setOpen(!open)},'aria-label':'Menu','aria-expanded':open},
+    h('button',{className:`hamburger md:hidden p-2 ${open?'open':''}`,onClick:(e)=>{ouvreur.current=e.currentTarget;setOpen(!open)},'aria-label':'Menu','aria-expanded':open,'aria-controls':'menu-overlay'},
      h('span'),h('span'),h('span')
     )
    )
   )
  ),
- h('div',{id:'menu-overlay',className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'var(--chrome-ground)'}},
+ h('div',{id:'menu-overlay',role:'dialog','aria-modal':'true','aria-label':'Menu',className:`mobile-overlay fixed inset-0 z-[60] flex flex-col ${open?'open':''}`,style:{backgroundColor:'var(--chrome-ground)'}},
   h('div',{className:'flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0 md:max-w-2xl md:mx-auto md:w-full'},
    h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-8 w-auto',style:{filter:'brightness(10) saturate(0)'}}),
    h('button',{onClick:()=>setOpen(false),className:'w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors','aria-label':'Fermer'},
