@@ -94,7 +94,7 @@ overlay.style.backgroundColor='var(--chrome-ground)';
 var liensOverlay=MEGA_NAV.map(function(cat,ci){
 return '<p class="menu-item text-xs uppercase tracking-[.2em] text-[var(--editorial-accent-text)] font-semibold mb-3'+(ci>0?' mt-8':'')+'" style="animation-delay:'+(0.05+ci*0.18)+'s">'+cat.label+'</p>'+
 cat.children.map(function(item,ii){
-return '<a href="'+item.href+'" class="menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8" style="animation-delay:'+(0.08+ci*0.18+ii*0.05)+'s">'+
+return '<a href="'+item.href+'" class="menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/[.08]" style="animation-delay:'+(0.08+ci*0.18+ii*0.05)+'s">'+
 '<span class="w-8 h-8 bg-white/10 flex items-center justify-center text-xs font-semibold text-white/70" style="font-family:\'IBM Plex Mono\',monospace">'+item.icon+'</span>'+
 '<span class="text-base sm:text-lg md:text-[20px]">'+item.label+'</span></a>';
 }).join('');

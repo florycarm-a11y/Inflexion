@@ -204,3 +204,22 @@ test('assets/site.css reconstruit : classes de l\'ancienne carte disparues, clas
   }
   for (const c of ['.md\\:w-full{', '.md\\:max-w-2xl{', '.no-underline{']) assert.ok(site.includes(c), `${c} absent de site.css`);
 });
+
+test('en-tête : chaque classe à modificateur d\'opacité (home, header-shell.js, nav-shared.js) est compilée dans site.css', () => {
+  // border-white/8 n'existait pas dans l'échelle d'opacité de Tailwind 3 (multiples de 5) : la classe n'était pas générée et les filets
+  // de l'overlay prenaient la couleur par défaut #e5e7eb. Toute classe couleur/opacité de l'en-tête doit donc exister dans site.css.
+  const site = lire('assets/site.css');
+  const echapper = (c) => c.replace(/[^a-zA-Z0-9_-]/g, (ch) => `\\${ch}`);
+  const sources = { 'index.html (Navigation)': HOME_NAV, 'assets/header-shell.js': SHELL_JS, 'nav-shared.js': sansCommentaires(lire('nav-shared.js')) };
+  let total = 0;
+  for (const [nom, code] of Object.entries(sources)) {
+    const classes = [...new Set([...code.matchAll(/(?<![\w/:.-])((?:[a-z-]+:)*[a-z]+(?:-[a-z]+)*-(?:white|black|transparent)\/(?:\d+|\[[^\]\s'"]+\]))/g)].map((m) => m[1]))];
+    assert.ok(classes.length >= 4, `${nom} : ${classes.length} classes à opacité trouvées, l'extraction est cassée`);
+    for (const c of classes) {
+      total++;
+      assert.ok(new RegExp(`\\.${echapper(c).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?=[:{,])`).test(site), `${nom} : ${c} n'est pas compilée dans site.css (opacité hors de l'échelle de Tailwind ? lancer npm run build:css)`);
+    }
+  }
+  assert.ok(total >= 12, `${total} classes vérifiées`);
+  assert.ok(site.includes('.border-white\\/\\[\\.08\\]{border-color:hsla(0,0%,100%,.08)}'), 'filets de l\'overlay : border-white/[.08] attendue dans site.css');
+});
