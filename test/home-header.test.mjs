@@ -48,6 +48,8 @@ test('en-tête : transition limitée à background-color et border-color, bordur
   assert.ok(defile, '.nav-scrolled introuvable');
   assert.ok(defile.includes('border-bottom-color:var(--chrome-border)'), '.nav-scrolled doit ne changer que la couleur du filet (border-bottom-color)');
   assert.ok(!defile.includes('border-bottom:1px solid'), '.nav-scrolled ne doit plus créer la bordure : elle existe au repos, transparente');
+  // Même spécificité : le raccourci border-bottom de .site-header écraserait border-bottom-color s'il venait après (filet perdu au défilement, vu au pixel).
+  assert.ok(style.indexOf('.site-header{') < style.indexOf('.nav-scrolled{'), '.nav-scrolled doit être déclaré après .site-header');
 });
 
 test('en-tête : deux états superposés (rubriques, bouton Menu), opacité en --motion-base, jamais de transition Tailwind sur un état', () => {
@@ -117,12 +119,14 @@ test('logo à 40 px, overlay : Échap, retour du focus, colonne centrée sur ord
   assert.ok(!html.includes('h-[65px]') && !html.includes('h-[50px]'), 'anciennes hauteurs du logo encore présentes');
   assert.ok(navigation.includes("if(e.key==='Escape')setOpen(false)"), 'Échap ne ferme pas l\'overlay');
   assert.ok(navigation.includes('ouvreur.current?.focus()'), 'le focus doit revenir au bouton qui a ouvert l\'overlay');
-  assert.equal((navigation.match(/md:max-w-2xl md:mx-auto/g) || []).length, 3, 'les trois conteneurs de l\'overlay forment une colonne sur ordinateur');
+  // md:w-full obligatoire : en colonne flex, les marges automatiques annulent l'étirement et le conteneur se rétrécit au contenu (248 px vu en capture).
+  assert.equal((navigation.match(/md:max-w-2xl md:mx-auto md:w-full/g) || []).length, 3, 'les trois conteneurs de l\'overlay forment une colonne de 672 px sur ordinateur');
 });
 
 test('assets/site.css reconstruit : classes nouvelles présentes, classes de la carte blanche disparues', () => {
   assert.ok(site.includes('.md\\:max-w-2xl{'), 'md:max-w-2xl absent de site.css : lancer npm run build:css');
   assert.ok(site.includes('.md\\:mx-auto{'), 'md:mx-auto absent de site.css : lancer npm run build:css');
+  assert.ok(site.includes('.md\\:w-full{'), 'md:w-full absent de site.css : lancer npm run build:css');
   assert.ok(!site.includes('.bg-\\[\\#F1E7DE\\]'), 'bg-[#F1E7DE] (pastille) encore dans site.css : lancer npm run build:css');
   assert.ok(!site.includes('.shadow-\\[0_6px_18px_rgba\\(42\\2c 18\\2c 16\\2c \\.20\\)\\]'), 'ombre de la carte blanche encore dans site.css : lancer npm run build:css');
 });
