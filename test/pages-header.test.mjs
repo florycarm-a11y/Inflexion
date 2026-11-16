@@ -151,6 +151,11 @@ test('nav-shared.js : même DOM que la Navigation de la home (classes), logique 
   for (const c of ['site-header fixed top-[3px] left-0 right-0 z-50 bg-transparent', 'nav-state flex items-center gap-1', 'nav-state is-hidden', 'hamburger md:hidden p-2', 'mobile-overlay fixed inset-0 z-[60] flex flex-col', 'mega-menu p-5', 'aria-label="Navigation principale"', 'id="mega-panel-', "pointerType==='mouse'", "closest('.mega-trigger')", 'window.scrollY>60', "'Escape'", "setAttribute('role','dialog')", "setAttribute('aria-modal','true')", "setAttribute('aria-label','Menu')", "classList.add('menu-open')"]) {
     assert.ok(ns.includes(c), `${c} absent de nav-shared.js`);
   }
+  // Entrée et sortie du survol calculées comme React (onPointerEnter/onMouseLeave de la home) : pointerover/mouseout + relatedTarget.
+  // pointerenter/mouseleave natifs ne partent que d'un vrai déplacement et divergeraient de la home (contrôle CDP : 2 échecs sur 5 pages legacy).
+  assert.ok(ns.includes("addEventListener('pointerover',function(e){if(e.pointerType==='mouse'&&!t.contains(e.relatedTarget))setMegaOpen(ci);})"), 'entrée du survol : pointerover filtré sur la souris et sur relatedTarget');
+  assert.ok(ns.includes("addEventListener('mouseout',function(e){if(!t.contains(e.relatedTarget)&&!t.contains(document.activeElement))setMegaOpen(-1);})"), 'sortie du survol : mouseout d\'après relatedTarget, sauf si le focus est dedans');
+  assert.ok(!/'pointerenter'|'mouseleave'/.test(ns), 'pointerenter/mouseleave natifs : sémantique différente de la home');
   assert.equal(ns.split('aria-controls="menu-overlay"').length - 1, 2, '« Menu » et le hamburger pointent l\'overlay');
   assert.equal(ns.split('md:max-w-2xl md:mx-auto md:w-full').length - 1, 3, 'trois conteneurs de l\'overlay en colonne');
   for (const mort of ['.mega-menu{', 'mega-cat-header', 'mega-footer', 'mega-arrow', 'mega-icon', 'mega-item-reveal', '#nav-logo', 'md-show', 'md-hide', 'nav-link-new', 'nav-scrolled-mode', 'transition-all', 'duration-300', 'modern-header', 'mobile-nav-link', 'ns-menu-item-in', 'headerScrolledBg', 'megaPanelBg', 'hamburger-wrapper', 'MEGA_FOOTERS']) {

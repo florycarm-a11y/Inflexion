@@ -229,8 +229,9 @@ if(avant>=0&&i<0){document.removeEventListener('pointerdown',fermerDehors);docum
 triggers.forEach(function(t,ci){
 var b=t.querySelector('button');
 b.addEventListener('click',function(){setMegaOpen(megaOpen===ci?-1:ci);});
-t.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')setMegaOpen(ci);});
-t.addEventListener('mouseleave',function(){if(!t.contains(document.activeElement))setMegaOpen(-1);});
+// Entrée et sortie calculées comme React (onPointerEnter/onMouseLeave de la home) : sur pointerover/mouseout, d'après relatedTarget.
+t.addEventListener('pointerover',function(e){if(e.pointerType==='mouse'&&!t.contains(e.relatedTarget))setMegaOpen(ci);});
+t.addEventListener('mouseout',function(e){if(!t.contains(e.relatedTarget)&&!t.contains(document.activeElement))setMegaOpen(-1);});
 t.addEventListener('focusout',function(e){if(!t.contains(e.relatedTarget))setMegaOpen(-1);});
 t.addEventListener('keydown',function(e){if(e.key==='Escape'&&megaOpen===ci){setMegaOpen(-1);b.focus();}});
 });
