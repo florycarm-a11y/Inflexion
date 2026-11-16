@@ -8,6 +8,9 @@ const RACINE = new URL('../', import.meta.url);
 const lire = (chemin) => readFileSync(new URL(chemin, RACINE), 'utf8');
 // Les commentaires (/* */ en CSS, // en JS) sont de la prose, pas du code : retirés avant toute analyse.
 const sansCommentaires = (s) => s.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+// Les règles d'en-tête (méga-menu, overlay, .site-header) vivent dans assets/header-shell.css, que chaque page lie (test/pages-header.test.mjs).
+const LIEN_ENTETE = '<link rel="stylesheet" href="assets/header-shell.css">';
+const ENTETE = sansCommentaires(lire('assets/header-shell.css'));
 // Un littéral de temps CSS (.22s, 0.6s, 300ms), pas une longueur (16px, 0.18em) ni un nombre (1.1).
 const TEMPS = /(?<![\w.-])\d*\.?\d+m?s\b/g;
 
@@ -69,7 +72,6 @@ test('article-shell.js : Reveal exporté, identique à la home ; Section et appa
   assert.equal(blocReveal(SHELL), REVEAL_HOME, 'la copie de Reveal dans article-shell.js diverge de index.html');
   assert.ok(SHELL.includes('useRef'), 'useRef manque à l\'import React de la coquille');
   assert.ok(!/duration-\d/.test(SHELL), 'classe Tailwind de durée dans la coquille');
-  assert.ok(SHELL.includes('site-header fixed top-[3px]'), 'l\'en-tête de la coquille ne porte pas .site-header');
   // Section : h2 à 0, chaque enfant hôte à 0,15 ; les enfants non hôtes (null, texte) passent tels quels.
   assert.ok(/children\.map\(\(enfant, i\) => React\.isValidElement\(enfant\) && typeof enfant\.type === 'string' \? h\(Reveal, \{ key: i, delay: 0\.15 \}, enfant\) : enfant\)/.test(SHELL), 'Section ne pose pas Reveal (0,15) sur ses enfants hôtes');
   const usages = [...SHELL.matchAll(/h\(\s*Reveal\s*,\s*\{([^}]*)\}/g)].map((m) => m[1]);
@@ -88,11 +90,11 @@ for (const page of PAGES) {
   const autonome = AUTONOMES.includes(page);
 
   test(`${page} : aucune durée écrite en dur hors boucle, les trois jetons consommés, aucune durée Tailwind ni inline`, () => {
-    const { style, script } = partiesDe(page);
+    const { html, style, script } = partiesDe(page);
     const litteraux = sansBoucles(style).match(TEMPS) || [];
     assert.deepEqual(litteraux, [], `littéraux de temps dans le <style> : ${litteraux.join(', ')} (utiliser var(--motion-*))`);
     for (const jeton of ['--motion-fast', '--motion-base', '--motion-slow']) {
-      assert.ok(style.includes(`var(${jeton})`), `${jeton} n'est consommé nulle part dans le <style>`);
+      assert.ok((style + (html.includes(LIEN_ENTETE) ? ENTETE : '')).includes(`var(${jeton})`), `${jeton} n'est consommé ni par le <style> ni par header-shell.css (que la page doit lier)`);
     }
     const durations = (style + script).match(/\bduration-\[?[\w.]+\]?/g) || [];
     assert.deepEqual(durations, [], `classes Tailwind de durée : ${durations.join(', ')}`);
@@ -101,12 +103,11 @@ for (const page of PAGES) {
     assert.deepEqual(script.match(/\b(?:transition|animation)Duration\s*:/g) || [], [], 'transitionDuration / animationDuration inline');
   });
 
-  test(`${page} : les :hover du <style> sont sous @media(hover:hover), sauf l'ouverture du méga-menu`, () => {
+  test(`${page} : les :hover du <style> sont sous @media(hover:hover) (le méga-menu s'ouvre au clic : assets/header-shell.js)`, () => {
     const { style } = partiesDe(page);
     assert.ok(blocMedia(style, 'hover:hover') !== null, 'aucun bloc @media(hover:hover) dans le <style>');
     const horsBloc = (sansBlocs(style, 'hover:hover').match(/[^{}\n]*:hover[^{]*\{/g) || []).map((s) => s.trim());
-    // Exception assumée (spec §2.3) : le méga-menu de ces pages s'ouvre par CSS ; sous hover:hover il serait inaccessible sur tablette.
-    assert.deepEqual(horsBloc, ['.mega-trigger:hover .mega-menu,.mega-menu:hover{'], `:hover hors de @media(hover:hover) : ${horsBloc.join(' ; ')}`);
+    assert.deepEqual(horsBloc, [], `:hover hors de @media(hover:hover) : ${horsBloc.join(' ; ')}`);
   });
 
   test(`${page} : un seul mécanisme d'apparition (Reveal), mots morts absents, mouvement réduit complet`, () => {
@@ -118,15 +119,13 @@ for (const page of PAGES) {
     if (autonome) {
       assert.ok(/function Reveal\(/.test(script), 'copie de Reveal absente');
       assert.equal(blocReveal(script), REVEAL_HOME, 'la copie de Reveal diverge de index.html');
-      assert.ok(script.includes('site-header fixed top-[3px]'), 'l\'en-tête ne porte pas .site-header');
     } else {
       assert.ok(!/function Reveal\(/.test(script), 'un dossier ne doit pas redéfinir Reveal : il vient d\'article-shell.js');
     }
     assert.ok(style.includes('.reveal{opacity:0;transform:translateY(16px);transition:opacity var(--motion-slow),transform var(--motion-slow)}'), 'règle .reveal absente');
-    assert.ok(style.includes('.site-header{transition:all var(--motion-base)}'), 'règle .site-header absente');
     const reduit = blocMedia(style, 'prefers-reduced-motion:reduce');
     assert.ok(reduit, 'bloc @media(prefers-reduced-motion:reduce) introuvable');
-    for (const attendu of ['.reveal{opacity:1;transform:none;transition:none}', '.mobile-overlay.open .menu-item{animation:none;opacity:1}']) {
+    for (const attendu of ['.reveal{opacity:1;transform:none;transition:none}']) {
       assert.ok(reduit.includes(attendu), `mouvement réduit : ${attendu} manque`);
     }
     if (HERO_DYNAMIQUE.has(page)) assert.ok(reduit.includes('.hero-dynamic,.hero-dynamic::before{animation-play-state:paused}'), 'hero dynamique non mis en pause');
