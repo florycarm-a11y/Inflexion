@@ -92,7 +92,7 @@ return h('div',null,
    ...MEGA_NAV.map((cat,ci)=>[
     h('p',{key:'h'+ci,className:'menu-item text-xs uppercase tracking-[.2em] text-[var(--editorial-accent-text)] font-semibold mb-3'+(ci>0?' mt-8':''),style:{animationDelay:`${0.05+ci*0.18}s`}},cat.label),
     ...cat.children.map((item,ii)=>
-     h('a',{key:'m'+ci+'-'+ii,href:item.href,onClick:()=>setOpen(false),className:'menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8',style:{animationDelay:`${0.08+ci*0.18+ii*0.05}s`}},
+     h('a',{key:'m'+ci+'-'+ii,href:item.href,onClick:()=>setOpen(false),className:'menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/[.08]',style:{animationDelay:`${0.08+ci*0.18+ii*0.05}s`}},
       h('span',{className:'w-8 h-8 bg-white/10 flex items-center justify-center text-xs font-semibold text-white/70',style:{fontFamily:"'IBM Plex Mono',monospace"}},item.icon),
       h('span',{className:'text-base sm:text-lg md:text-[20px]'},item.label)
      )
