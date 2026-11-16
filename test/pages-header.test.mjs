@@ -173,7 +173,8 @@ test('styles.css : .hamburger et .hamburger-bar de l\'ancien en-tête scopés so
 
 test('assets/site.css reconstruit : classes de l\'ancienne carte disparues, classes de l\'overlay présentes', () => {
   const site = lire('assets/site.css');
-  for (const c of ['.h-\\[65px\\]', '.h-\\[50px\\]', '.border-\\[\\#4C5052\\]', '.shadow-\\[0_6px_18px_rgba\\(14\\2c 16\\2c 18\\2c \\.18\\)\\]', '.duration-300', '.transition-all']) {
+  // Mesuré à la reconstruction : ces classes ne vivaient que dans les anciennes copies de Navigation et dans nav-shared.js (border-[#4C5052] reste : corps d'analyses.html).
+  for (const c of ['.md\\:h-\\[65px\\]{', '.sm\\:h-\\[50px\\]{', '.shadow-\\[0_6px_18px_rgba\\(14\\2c 16\\2c 18\\2c \\.18\\)\\]', '.duration-300{', '.transition-all{', '.z-40{', '.shadow-xl{']) {
     assert.ok(!site.includes(c), `${c} encore dans site.css : lancer npm run build:css`);
   }
   for (const c of ['.md\\:w-full{', '.md\\:max-w-2xl{', '.no-underline{']) assert.ok(site.includes(c), `${c} absent de site.css`);
