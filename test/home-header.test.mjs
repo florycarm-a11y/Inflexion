@@ -64,7 +64,7 @@ test('en-tête : deux états superposés (rubriques, bouton Menu), opacité en -
   assert.ok(navigation.includes('window.scrollY>60'), 'le seuil de 60 px doit rester');
   assert.ok(navigation.includes('if(scrolled)setMegaOpen(-1)'), 'un panneau ouvert doit se fermer quand les rubriques s\'effacent (visibility:visible du panneau battrait l\'héritage)');
   // site.css (dernier <link>) : une classe transition-* sur un .nav-state écraserait la transition d'opacité du <style>.
-  const etats = navigation.match(/className:'nav-state[^']*'/g) || [];
+  const etats = navigation.match(/className:'nav-state(?:\s[^']*)?'/g) || []; // pas nav-states (le conteneur)
   assert.equal(etats.length, 2, `deux éléments .nav-state attendus, ${etats.length} trouvés`);
   for (const e of etats) assert.ok(!/\btransition-/.test(e), `classe Tailwind transition-* sur un état : ${e}`);
 });
