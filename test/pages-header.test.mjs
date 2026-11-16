@@ -90,6 +90,14 @@ test('assets/header-shell.css : chaque règle identique à la règle homonyme du
   const attendus = [...SELECTEURS]; attendus.splice(attendus.indexOf('.hamburger span'), 0, FOCUS_FEUILLE);
   assert.deepEqual(selecteurs, attendus);
   assert.ok(SHELL_CSS.indexOf('.site-header{') < SHELL_CSS.indexOf('.nav-scrolled{'), '.nav-scrolled doit suivre .site-header');
+  // Dans l'autre sens : une règle d'en-tête ajoutée au <style> de la home doit être reportée dans la feuille (sinon les 31 pages divergent en silence).
+  const enTeteHome = [...sansArobase(home.style).matchAll(/(?:^|})\s*([^{}]+?)\s*\{/g)].map((m) => m[1].trim()).filter((sel) => /^(\.nav-link|\.mega-|\.site-header|\.nav-scrolled|\.nav-state|\.hamburger|\.mobile-overlay|\.menu-item|body\.menu-open|header :focus-visible|\.kicker)/.test(sel));
+  assert.deepEqual(enTeteHome, [...SELECTEURS.slice(0, SELECTEURS.indexOf('.hamburger span')), FOCUS_HOME, ...SELECTEURS.slice(SELECTEURS.indexOf('.hamburger span'))], 'règles d\'en-tête de la home ≠ liste copiée dans header-shell.css');
+  // Blocs @ : exactement un @media(hover:hover) à deux règles, un @media(prefers-reduced-motion:reduce) à une règle, un @keyframes ; aucune durée en dur.
+  assert.deepEqual([...SHELL_CSS.matchAll(/@[\w-]+(?:\([^)]*\))?(?: [\w-]+)?/g)].map((m) => m[0]), ['@keyframes menu-item-in', '@media(hover:hover)', '@media(prefers-reduced-motion:reduce)']);
+  assert.deepEqual(survolFeuille.trim().split('\n'), ['.nav-link:hover::after{transform:scaleX(1)}', '.mega-item:hover{background:rgba(245,237,230,.07)}']);
+  assert.equal(blocMedia(SHELL_CSS, 'prefers-reduced-motion:reduce').trim(), '.mobile-overlay.open .menu-item{animation:none;opacity:1}');
+  assert.deepEqual(SHELL_CSS.match(/(?<![\w.-])\d*\.?\d+m?s\b/g) || [], [], 'durée en dur dans header-shell.css');
   assert.ok(!/\.mega-menu:hover|mega-icon/.test(SHELL_CSS), 'règle proscrite dans la feuille (panneau fantôme, pastilles)'); // .hamburger span garde son transition:all (home)
 });
 
@@ -98,6 +106,7 @@ test('assets/article-shell.js : Navigation importée de header-shell.js et ré-e
   assert.ok(COQUILLE.includes('export { h, createRoot, Navigation }'), 'ré-export absent (API publique de la coquille)');
   assert.ok(!/function Navigation\(/.test(COQUILLE), 'définition locale encore présente');
   assert.ok(COQUILLE.includes('h(Navigation)'), 'renderArticle ne rend plus Navigation');
+  for (const [, url] of COQUILLE.matchAll(/from\s*'(https:\/\/esm\.sh\/react[^']*)'/g)) assert.ok(/^https:\/\/esm\.sh\/react(?:-dom)?@18\.2\.0(?:\/client)?$/.test(url), `${url} : même version que header-shell.js attendue`);
 });
 
 for (const page of REACT) {
@@ -110,6 +119,8 @@ for (const page of REACT) {
     const locaux = [...style.matchAll(/(?:^|[}\n])((?:\.nav-link|\.mega-|\.nav-scrolled|\.site-header|\.hamburger|\.mobile-overlay|\.menu-item|body\.menu-open|\.nav-state|\.kicker|header :focus-visible|\.logo-scroll|@keyframes menu-item-in)[^{\n]*)\{/g)].map((m) => m[1]);
     assert.deepEqual(locaux, [], `règles d'en-tête encore dans le <style> : ${locaux.join(' ; ')}`);
     assert.ok(!/function Navigation\(/.test(script), 'copie locale de Navigation encore présente');
+    // header-shell.js importe react@18.2.0 : une autre version dans la page donnerait deux instances de React et des hooks invalides.
+    for (const [, url] of script.matchAll(/from\s*'(https:\/\/esm\.sh\/react[^']*)'/g)) assert.ok(/^https:\/\/esm\.sh\/react(?:-dom)?@18\.2\.0(?:\/client)?$/.test(url), `${url} : même version que header-shell.js attendue`);
     if (AUTONOMES.includes(page)) {
       assert.ok(script.includes("import { Navigation } from './assets/header-shell.js'"), 'import de Navigation absent');
       assert.ok(script.includes(' h(Navigation),'), 'Navigation n\'est plus rendue');
@@ -138,16 +149,24 @@ for (const page of LEGACY) {
     const html = lire(page);
     assert.equal(html.split(LIEN).length - 1, 1, `${LIEN} doit apparaître exactement une fois`);
     const i = html.indexOf(LIEN);
-    assert.ok(html.indexOf('href="assets/design-tokens-v2.css"') < i && i < html.indexOf('href="assets/site.css"'), 'ordre des feuilles');
+    const jetons = html.indexOf('href="assets/design-tokens-v2.css"'), site = html.indexOf('href="assets/site.css"');
+    assert.ok(jetons !== -1 && site !== -1, 'design-tokens-v2.css et site.css doivent être liées');
+    assert.ok(jetons < i && i < site, 'ordre des feuilles : jetons, header-shell.css, site.css');
   });
 }
 
 test('nav-shared.js : même DOM que la Navigation de la home (classes), logique disclosure, plus de CSS d\'en-tête injecté', () => {
   const ns = sansCommentaires(lire('nav-shared.js'));
   // Toute chaîne className statique de la Navigation de la home doit se retrouver dans le balisage émis par nav-shared.js.
-  const classes = [...HOME_NAV.matchAll(/className:'([^']+)'/g)].map((m) => m[1]);
+  // Chaîne délimitée des deux côtés : class="…" (balisage), className='…' (createElement) ou BOUTON='…' ; si la home concatène un suffixe dynamique
+  // (className:'…'+(…)), la suite est libre (elle dépend de l'état), sinon la chaîne doit se fermer aussitôt.
+  const classes = [...HOME_NAV.matchAll(/className:'([^']+)'(\+?)/g)].map((m) => ({ c: m[1], dynamique: m[2] === '+' }));
   assert.ok(classes.length >= 12, `${classes.length} classes extraites de la home`);
-  for (const c of classes) assert.ok(ns.includes(c), `classe de la home absente de nav-shared.js : ${c}`);
+  const echapper = (x) => x.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  for (const { c, dynamique } of classes) {
+    const fin = dynamique ? '' : `(?:"|')`;
+    assert.ok(new RegExp(`(?:class="|className='|BOUTON=')${echapper(c)}${fin}`).test(ns), `classe de la home absente de nav-shared.js ou complétée : ${c}`);
+  }
   for (const c of ['site-header fixed top-[3px] left-0 right-0 z-50 bg-transparent', 'nav-state flex items-center gap-1', 'nav-state is-hidden', 'hamburger md:hidden p-2', 'mobile-overlay fixed inset-0 z-[60] flex flex-col', 'mega-menu p-5', 'aria-label="Navigation principale"', 'id="mega-panel-', "pointerType==='mouse'", "closest('.mega-trigger')", 'window.scrollY>60', "'Escape'", "setAttribute('role','dialog')", "setAttribute('aria-modal','true')", "setAttribute('aria-label','Menu')", "classList.add('menu-open')"]) {
     assert.ok(ns.includes(c), `${c} absent de nav-shared.js`);
   }
@@ -158,7 +177,7 @@ test('nav-shared.js : même DOM que la Navigation de la home (classes), logique 
   assert.ok(!/'pointerenter'|'mouseleave'/.test(ns), 'pointerenter/mouseleave natifs : sémantique différente de la home');
   assert.equal(ns.split('aria-controls="menu-overlay"').length - 1, 2, '« Menu » et le hamburger pointent l\'overlay');
   assert.equal(ns.split('md:max-w-2xl md:mx-auto md:w-full').length - 1, 3, 'trois conteneurs de l\'overlay en colonne');
-  for (const mort of ['.mega-menu{', 'mega-cat-header', 'mega-footer', 'mega-arrow', 'mega-icon', 'mega-item-reveal', '#nav-logo', 'md-show', 'md-hide', 'nav-link-new', 'nav-scrolled-mode', 'transition-all', 'duration-300', 'modern-header', 'mobile-nav-link', 'ns-menu-item-in', 'headerScrolledBg', 'megaPanelBg', 'hamburger-wrapper', 'MEGA_FOOTERS']) {
+  for (const mort of [':hover .mega-menu', '.mega-menu:hover', 'transition:all', '.mega-menu{', 'mega-cat-header', 'mega-footer', 'mega-arrow', 'mega-icon', 'mega-item-reveal', '#nav-logo', 'md-show', 'md-hide', 'nav-link-new', 'nav-scrolled-mode', 'transition-all', 'duration-300', 'modern-header', 'mobile-nav-link', 'ns-menu-item-in', 'headerScrolledBg', 'megaPanelBg', 'hamburger-wrapper', 'MEGA_FOOTERS']) {
     assert.ok(!ns.includes(mort), `${mort} encore dans nav-shared.js`);
   }
   assert.ok(ns.includes("sr.src='scroll-reveal.js'"), 'nav-shared.js doit toujours injecter scroll-reveal.js (apparitions legacy, chantier à part)');
@@ -178,8 +197,9 @@ test('styles.css : .hamburger et .hamburger-bar de l\'ancien en-tête scopés so
 
 test('assets/site.css reconstruit : classes de l\'ancienne carte disparues, classes de l\'overlay présentes', () => {
   const site = lire('assets/site.css');
-  // Mesuré à la reconstruction : ces classes ne vivaient que dans les anciennes copies de Navigation et dans nav-shared.js (border-[#4C5052] reste : corps d'analyses.html).
-  for (const c of ['.md\\:h-\\[65px\\]{', '.sm\\:h-\\[50px\\]{', '.shadow-\\[0_6px_18px_rgba\\(14\\2c 16\\2c 18\\2c \\.18\\)\\]', '.duration-300{', '.transition-all{', '.z-40{', '.shadow-xl{']) {
+  // Mesuré à la reconstruction : classes propres aux anciennes copies de Navigation (logo et carte blanche). Les utilitaires génériques retirés
+  // (transition-all, duration-300, z-40, shadow-xl…) ne sont pas gardés : un autre contenu peut légitimement les réemployer.
+  for (const c of ['.md\\:h-\\[65px\\]{', '.sm\\:h-\\[50px\\]{', '.shadow-\\[0_6px_18px_rgba\\(14\\2c 16\\2c 18\\2c \\.18\\)\\]']) {
     assert.ok(!site.includes(c), `${c} encore dans site.css : lancer npm run build:css`);
   }
   for (const c of ['.md\\:w-full{', '.md\\:max-w-2xl{', '.no-underline{']) assert.ok(site.includes(c), `${c} absent de site.css`);
