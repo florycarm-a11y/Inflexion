@@ -673,4 +673,15 @@ Le script `migrer-nav-shared.mjs` lit `nav-shared.js`, vérifie que chacune des 
 
 ## Résultats mesurés (2026-11-16)
 
-(rempli au fil de l'exécution)
+- **Task 0, relevé dynamique « avant »** (`inventaire-en-tete.mjs`, `0b6cae1a`, `127.0.0.1:4401`, 32 pages × 1440/390, 5 min) : aucune erreur console sur aucune page (filtre `messari.json`). Par famille :
+
+| Famille | Logo 1440 / 390 | `transition-property` de l'en-tête | `.mega-icon` | Ouverture à la souris réelle | Panneau : fond, rayon, largeur | Premier enfant du panneau | `.nav-state` | Derrière l'en-tête (1440) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Home (témoin) | 40 / 40 px | `background-color, border-color` (0,3 s) | 0 | oui | `rgba(23, 16, 14, 0.78)`, `blur(24px) saturate(1.4)`, 0, 340 px | `P.kicker` | 2 | espresso (`section.v2-chrome`) |
+| 10 React autonomes | **65 / 40 px** | `all` (0,3 s) | 15 | oui (CSS) | **blanc `#FFFFFF`**, 0 (`briefing` : 16 px), 520 px ; libellés `#101214` (`briefing` : `#1A1F2E`) | `DIV.grid` | 0 | `analyses` espresso ; `artifact` `section.hero-dark` ; 7 articles : hero dynamique à dégradé sombre (fond de couleur transparent, le relevé remonte au papier `#EDEBE4` du `body`) ; **`briefing` : hero emerald `#006650`** à dégradé (ancienne identité) |
+| 5 React coquille | 65 / 40 px | `all` | 15 | oui (CSS) | blanc, 0, 520 px | `DIV.grid` | 0 | espresso (`section.v2-chrome`) |
+| 16 legacy | **65 / 48 px** | `all` (`transition-all duration-300`, 0,3 s) | 15 | oui (CSS) | **espresso opaque `#17100E`, rayon 16 px**, 480 px (rubrique large) ; libellés `#E8E4D8`, descriptions `#9AA0A4` (thème `T.v2`) | `DIV.mega-cat-header` | 0 | hero espresso construit par `nav-shared.js` (13 pages) ; **3 articles legacy** (`droits-douane`, `ia-rempart`, `or-bitcoin`) : bandeau emerald de `styles.css` puis blanc |
+
+  Jetons résolus sur le `body` : `--motion-base` = `.3s cubic-bezier(.4,0,.2,1)` partout (`briefing` : jetons locaux) ; `--chrome-text-1` = `#F5EDE6` partout **sauf `briefing` (vide)** : confirme la décision des 8 jetons locaux. À 390 : `nav` masquée et hamburger affiché sur les 32 pages (`artifact` : hamburger présent sans `aria-label`, non trouvé par la sonde) ; `briefing` : hamburger `display:flex`.
+- **Base « avant »** : `capturer-etats-pages.mjs` 256 captures (32 pages × 8 états, 7 min : à 1440 l'`overlay` est « aucun bouton » sur les 31 pages, attendu ; les `mega-*` sont « ouvert » partout à la souris réelle) ; `capturer-reveal.mjs` 66 pages entières (33 × 2, 9 min). 100 Mo dans le scratchpad (`captures/avant-etats`, `captures/avant-pages`), à supprimer après comparaison.
+- Vu sur les captures : le verre composera sur de l'**emerald** (et non de l'espresso) sur `briefing` et sur le bandeau des 3 articles legacy : contrastes à mesurer là (Task 6, Step 3).
