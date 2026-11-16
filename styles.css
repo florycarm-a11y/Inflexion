@@ -269,14 +269,14 @@ a {
 }
 
 /* Hamburger icon - always visible */
-.hamburger {
+.menu-trigger .hamburger {
     display: flex;
     flex-direction: column;
     gap: 4px;
     width: 22px;
 }
 
-.hamburger-bar {
+.menu-trigger .hamburger-bar {
     display: block;
     width: 100%;
     height: 2px;

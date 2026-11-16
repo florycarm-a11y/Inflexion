@@ -1,8 +1,9 @@
 /**
- * nav-shared.js — Modern Inflexion Navigation Shell
- * Replaces old header/nav/hero/footer with the new design system.
- * Matches index.html design: monograms, bronze accents, category headers, footer strips.
- * Include AFTER app.js and data-loader.js.
+ * nav-shared.js — Coquille de navigation des pages legacy (sans React).
+ * Émet le MÊME DOM que la Navigation de la home (assets/header-shell.js : mêmes classes, mêmes id, mêmes aria-*),
+ * stylé par assets/header-shell.css (liée par la page) et assets/site.css ; la logique d'état (défilement, méga-menu
+ * « disclosure », overlay dialogue) est réécrite ici en vanilla. Construit aussi le hero et le pied de page (thème T).
+ * Include AFTER app.js and data-loader.js, et après nav-config.js (window.MEGA_NAV).
  */
 (function(){
 'use strict';
@@ -10,94 +11,33 @@
 // ── Thème du chrome (v1 = identité actuelle ; v2 = identité sombre, opt-in via <body data-chrome="v2">) ──
 var THEMES={
   v1:{
-    accent:'#006650', accentDark:'#06402A', bronze:'#C8955A', bronzeGlow:'rgba(200,149,90,.06)',
-    megaPanelBg:'#fff', megaBorder:'#F0F1F4', megaHover:'#F8FAF9', megaHoverBorder:'#E8EDE9',
-    megaLabel:'#1A1F2E', megaDesc:'#6B7280', megaFooterBg:'#F9FAFB', megaFooterText:'#A0A8B8',
-    ctaBg:'#006650', ctaHover:'#06402A', navLinkTop:'rgba(255,255,255,.7)', navLinkScrolled:'#6b7280',
-    logoFilterTop:'brightness(10) saturate(0)', logoFilterScrolled:'none',
-    hamburgerTop:'#fff', hamburgerScrolled:'#1A1F2E', bronzeBar:'#C8955A',
-    headerScrolledBg:'rgba(255,255,255,.92)', headerScrolledBorder:'#E2E5EB', headerScrolledShadow:'0 1px 8px rgba(0,0,0,.04)',
+    accent:'#006650',
     heroBg:'#006650', heroLabel:'#33B894', heroTitle:'#fff', heroSub:'rgba(255,255,255,.5)',
-    overlayBg:'#006650', overlayLink:'rgba(255,255,255,.9)', overlayLabel:'rgba(255,255,255,.4)',
-    overlayIconBg:'rgba(255,255,255,.1)', overlayIconText:'rgba(255,255,255,.7)', overlayBorder:'rgba(255,255,255,.08)',
     footerBg:'#F7F8FA', footerBorder:'#E2E5EB', footerText:'#5A6178', footerTitle:'#1A1F2E', footerTag:'rgba(90,97,120,.4)',
     fontDisplay:'Libre Baskerville,Georgia,serif', fontBody:'Inter,sans-serif'
   },
   v2:{
-    accent:'#8E2424', accentDark:'#6E1B1B', bronze:'#8E2424', bronzeGlow:'rgba(142,36,36,.06)',
-    megaPanelBg:'#17100E', megaBorder:'rgba(232,228,216,.12)', megaHover:'#17191C', megaHoverBorder:'rgba(232,228,216,.16)',
-    megaLabel:'#E8E4D8', megaDesc:'#9AA0A4', megaFooterBg:'#17100E', megaFooterText:'#9AA0A4',
-    ctaBg:'#8E2424', ctaHover:'#6E1B1B', navLinkTop:'rgba(232,228,216,.72)', navLinkScrolled:'#9AA0A4',
-    logoFilterTop:'brightness(10) saturate(0)', logoFilterScrolled:'brightness(10) saturate(0)',
-    hamburgerTop:'#E8E4D8', hamburgerScrolled:'#E8E4D8', bronzeBar:'#8E2424',
-    headerScrolledBg:'rgba(23,16,14,.92)', headerScrolledBorder:'rgba(232,228,216,.12)', headerScrolledShadow:'0 1px 8px rgba(0,0,0,.30)',
+    accent:'#8E2424',
     heroBg:'#17100E', heroLabel:'#9AA0A4', heroTitle:'#E8E4D8', heroSub:'rgba(232,228,216,.55)',
-    overlayBg:'#17100E', overlayLink:'rgba(232,228,216,.9)', overlayLabel:'rgba(232,228,216,.4)',
-    overlayIconBg:'rgba(232,228,216,.1)', overlayIconText:'rgba(232,228,216,.7)', overlayBorder:'rgba(232,228,216,.08)',
     footerBg:'#17100E', footerBorder:'rgba(232,228,216,.12)', footerText:'#9AA0A4', footerTitle:'#E8E4D8', footerTag:'rgba(154,160,164,.6)',
     fontDisplay:'Archivo,Georgia,serif', fontBody:'IBM Plex Sans,Inter,sans-serif'
   }
 };
 var T=THEMES[(document.body&&document.body.dataset&&document.body.dataset.chrome)]||THEMES.v1;
 
-// ── Inject required CSS (matches index.html mega menu styles) ──
+// ── CSS du hero et du pied de page (l'en-tête et l'overlay sont stylés par assets/header-shell.css, liée par la page) ──
 var css=document.createElement('style');
 css.textContent=
-'/* Nav shared styles */\n'+
-'/* Hover states (replaces inline onmouseover/onmouseout) */\n'+
-'.ns-btn-cta:hover{background:'+T.accentDark+'!important}\n'+
-'.ns-close-btn:hover{background:rgba(255,255,255,.2)!important}\n'+
-'.ns-mobile-cta:hover{background:rgba(255,255,255,.15)!important}\n'+
 '.ns-footer-link:hover{color:'+T.accent+'!important}\n'+
-'.nav-link-new{position:relative}\n'+
-'.nav-link-new::after{content:"";position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:'+T.accent+';transform:scaleX(0);transition:transform .25s ease}\n'+
-'.nav-link-new:hover::after,.nav-link-new.active::after{transform:scaleX(1)}\n'+
-'.mega-trigger{position:relative}\n'+
-'.mega-menu{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(10px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s cubic-bezier(.4,0,.2,1),transform .28s cubic-bezier(.4,0,.2,1),visibility .28s;z-index:60;min-width:340px;padding:0;overflow:hidden}\n'+
-'.mega-trigger:hover .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}\n'+
-'.mega-menu::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,'+T.bronze+' 20%,'+T.bronze+' 80%,transparent);z-index:2}\n'+
-'.mega-menu::after{content:"";position:absolute;top:2px;right:0;width:60px;height:60px;background:radial-gradient(circle at top right,'+T.bronzeGlow+' 0%,transparent 70%);pointer-events:none}\n'+
-'.mega-cat-header{font-family:'+T.fontDisplay+';font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:'+T.bronze+';padding:20px 20px 10px;border-bottom:1px solid '+T.megaBorder+';margin-bottom:4px;display:flex;align-items:center;gap:8px}\n'+
-'.mega-cat-header::before{content:"";width:12px;height:1px;background:'+T.bronze+'}\n'+
-'.mega-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;padding:8px 10px 12px}\n'+
-'.mega-list{display:flex;flex-direction:column;gap:2px;padding:8px 10px 12px}\n'+
-'.mega-item{position:relative;display:flex;align-items:flex-start;gap:14px;padding:12px 14px;border-radius:10px;text-decoration:none;transition:all .2s cubic-bezier(.4,0,.2,1);border:1px solid transparent;overflow:hidden}\n'+
-'.mega-item::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:0;height:60%;background:'+T.accent+';border-radius:0 2px 2px 0;transition:width .2s cubic-bezier(.4,0,.2,1)}\n'+
-'.mega-item:hover{background:'+T.megaHover+';border-color:'+T.megaHoverBorder+'}\n'+
-'.mega-item:hover::before{width:3px}\n'+
-'.mega-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'+T.fontDisplay+';font-size:12px;font-weight:700;font-style:italic;color:#006650;background:linear-gradient(135deg,rgba(0,102,80,.05) 0%,rgba(0,102,80,.1) 100%);border:1px solid rgba(0,102,80,.1);transition:all .25s cubic-bezier(.4,0,.2,1);letter-spacing:-.02em}\n'+
-'.mega-item:hover .mega-icon{color:#fff;background:linear-gradient(135deg,#006650 0%,#06402A 100%);border-color:#006650;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,80,.18)}\n'+
-'.mega-label{font-size:13.5px;font-weight:600;color:'+T.megaLabel+';transition:color .2s}\n'+
-'.mega-item:hover .mega-label{color:'+T.accent+'}\n'+
-'.mega-desc{font-size:11.5px;color:'+T.megaDesc+';margin-top:2px;transition:color .2s}\n'+
-'.mega-item:hover .mega-desc{color:'+T.megaDesc+'}\n'+
-'.mega-arrow{position:absolute;right:12px;top:50%;transform:translateY(-50%) translateX(-4px);opacity:0;color:'+T.accent+';font-size:13px;font-weight:700;transition:all .2s cubic-bezier(.4,0,.2,1)}\n'+
-'.mega-item:hover .mega-arrow{opacity:1;transform:translateY(-50%) translateX(0)}\n'+
-'@keyframes mega-item-reveal{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}\n'+
-'.mega-trigger:hover .mega-item{animation:mega-item-reveal .3s cubic-bezier(.4,0,.2,1) both}\n'+
-'.mega-trigger:hover .mega-item:nth-child(1){animation-delay:.04s}\n'+
-'.mega-trigger:hover .mega-item:nth-child(2){animation-delay:.08s}\n'+
-'.mega-trigger:hover .mega-item:nth-child(3){animation-delay:.12s}\n'+
-'.mega-trigger:hover .mega-item:nth-child(4){animation-delay:.16s}\n'+
-'.mega-trigger:hover .mega-item:nth-child(5){animation-delay:.20s}\n'+
-'.mega-footer{padding:10px 20px;background:'+T.megaFooterBg+';border-top:1px solid '+T.megaBorder+';display:flex;align-items:center;gap:6px;font-size:10.5px;color:'+T.megaFooterText+';letter-spacing:.04em;font-weight:500}\n'+
-'.mega-footer-dot{width:4px;height:4px;border-radius:50%;background:'+T.bronze+';flex-shrink:0}\n'+
 '@keyframes ns-fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}\n'+
-'@keyframes ns-menu-item-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}\n'+
 '.ns-anim{animation:ns-fade-up .6s ease-out both}\n'+
 '.ns-anim-d1{animation-delay:.1s}.ns-anim-d2{animation-delay:.2s}\n'+
-'/* Hamburger open animation */\n'+
-'.hamburger-open .hamburger-bar:nth-child(1){transform:translateY(8px) rotate(45deg)}\n'+
-'.hamburger-open .hamburger-bar:nth-child(2){opacity:0}\n'+
-'.hamburger-open .hamburger-bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}\n'+
-'/* Nav link hover emerald when scrolled */\n'+
-'.nav-scrolled-mode .nav-link-new:hover{color:'+T.accent+'!important}\n'+
 '/* Hide old elements */\n'+
 'header.header,nav.nav-overlay,button.back-to-top{display:none!important}\n';
 document.head.appendChild(css);
 
 // ── Navigation Data : chargée depuis nav-config.js (source unique) ──
-// MEGA_NAV et MEGA_FOOTERS sont définis dans window par nav-config.js
+// MEGA_NAV est défini dans window par nav-config.js
 
 var CATEGORY_LABELS={
 geopolitics:'Risques & tensions internationales',
@@ -111,82 +51,62 @@ briefing:'Intelligence quotidienne — Signal & Risk Radar',
 
 var FOOTER_SOURCES=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC'];
 
-// ── Build Bronze Top Bar ──
+// ── Barre rouge, en-tête à deux états, méga-menu, overlay : même DOM que la Navigation de la home ──
 var bronzeBar=document.createElement('div');
-bronzeBar.style.cssText='position:fixed;top:0;left:0;right:0;z-index:51;height:3px;background:'+T.bronzeBar;
+bronzeBar.className='fixed top-0 left-0 right-0 z-[51] h-[3px] bg-[var(--editorial-accent)]';
 document.body.insertBefore(bronzeBar,document.body.firstChild);
 
-// ── Build Header ──
-var header=document.createElement('header');
-header.id='modern-header';
-header.className='fixed left-0 right-0 z-50 transition-all duration-300 bg-transparent';
-header.style.top='3px';
-
+var LOGO='<img src="logo-header.png" alt="Inflexion" class="h-10 w-auto" style="filter:brightness(10) saturate(0)"/>';
+var BOUTON='nav-link px-3 py-2 text-sm transition-colors select-none text-[var(--chrome-text-2)] hover:text-[var(--chrome-text-1)] focus-visible:text-[var(--chrome-text-1)] bg-transparent border-0 cursor-pointer';
 var megaHTML=MEGA_NAV.map(function(cat,ci){
-var isWide=ci===0;
-var ch=cat.children.map(function(item){
-return '<a href="'+item.href+'" class="mega-item">'+
-'<span class="mega-icon">'+item.icon+'</span>'+
-'<span style="display:flex;flex-direction:column">'+
-'<span class="mega-label">'+item.label+'</span>'+
-'<span class="mega-desc">'+item.desc+'</span>'+
-'</span>'+
-'<span class="mega-arrow">\u2192</span>'+
-'</a>';
+var isWide=cat.children.length>3;
+var entrees=cat.children.map(function(item){
+return '<a href="'+item.href+'" class="mega-item flex flex-col px-3 py-2.5 no-underline">'+
+'<span class="text-sm font-semibold text-[var(--chrome-text-1)]">'+item.label+'</span>'+
+'<span class="text-xs text-[var(--chrome-text-2)] mt-0.5">'+item.desc+'</span></a>';
 }).join('');
 return '<div class="mega-trigger">'+
-'<span class="nav-link-new" style="padding:0.5rem 0.75rem;font-size:0.875rem;font-weight:500;transition:color .2s;cursor:default;user-select:none;color:'+T.navLinkTop+'">'+cat.label+'</span>'+
-'<div class="mega-menu" style="background:'+T.megaPanelBg+';border-radius:1rem;box-shadow:0 20px 60px rgba(0,20,15,.12),0 8px 24px rgba(0,20,15,.06);border:1px solid rgba(243,244,246,.8)'+(isWide?';min-width:480px':'')+'">'+
-'<div class="mega-cat-header">'+cat.label+'</div>'+
-'<div class="'+(isWide?'mega-grid':'mega-list')+'">'+ch+'</div>'+
-'<div class="mega-footer"><span class="mega-footer-dot"></span>'+MEGA_FOOTERS[ci]+'</div>'+
-'</div></div>';
+'<button type="button" aria-expanded="false" aria-controls="mega-panel-'+ci+'" class="'+BOUTON+'">'+cat.label+'</button>'+
+'<div id="mega-panel-'+ci+'" class="mega-menu p-5" style="min-width:'+(isWide?'440px':'340px')+'">'+
+'<p class="kicker mb-3 px-3" style="color:var(--editorial-accent-text)">'+cat.label+'</p>'+
+'<div class="'+(isWide?'grid grid-cols-2 gap-1':'grid gap-1')+'">'+entrees+'</div></div></div>';
 }).join('');
 
+var header=document.createElement('header');
+header.className='site-header fixed top-[3px] left-0 right-0 z-50 bg-transparent';
 header.innerHTML=
-'<div style="max-width:80rem;margin:0 auto;padding:0 1rem">'+
-'<div style="display:flex;align-items:center;justify-content:space-between;height:4rem">'+
-'<a href="index.html" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none">'+
-'<img src="logo-header.png" alt="Inflexion" id="nav-logo" style="height:48px;width:auto;filter:'+T.logoFilterTop+';transition:filter .3s ease"/></a>'+
-'<nav style="display:none" class="md-show" id="desktop-nav-items">'+megaHTML+
-'<a href="premium.html" class="ns-btn-cta" style="margin-left:0.5rem;padding:0.5rem 1rem;background:'+T.ctaBg+';color:#fff;font-weight:600;font-size:0.875rem;border-radius:0.5rem;transition:background .2s;text-decoration:none">R\u00e9server un diagnostic</a>'+
+'<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex items-center justify-between h-16">'+
+'<a href="index.html" class="flex items-center gap-2">'+LOGO+'</a>'+
+'<nav class="hidden md:flex items-center gap-1" aria-label="Navigation principale">'+
+'<div class="nav-states"><div class="nav-state flex items-center gap-1">'+megaHTML+'</div>'+
+'<div class="nav-state is-hidden"><button type="button" aria-expanded="false" aria-controls="menu-overlay" class="'+BOUTON+'">Menu</button></div></div>'+
+'<a href="premium.html" class="ml-4 px-4 py-2 bg-[var(--editorial-accent)] hover:bg-[#6E1B1B] text-[var(--chrome-text-1)] font-semibold text-sm transition-colors">R\u00e9server un diagnostic</a>'+
 '</nav>'+
-'<button id="mobile-menu-btn" style="display:none;padding:0.5rem" class="md-hide" aria-label="Menu" aria-expanded="false">'+
-'<div id="hamburger-wrapper" style="display:flex;flex-direction:column;gap:6px"><span class="hamburger-bar" style="display:block;width:24px;height:2px;background:'+T.hamburgerTop+';transition:all .3s;transform-origin:center"></span>'+
-'<span class="hamburger-bar" style="display:block;width:24px;height:2px;background:'+T.hamburgerTop+';transition:all .3s"></span>'+
-'<span class="hamburger-bar" style="display:block;width:24px;height:2px;background:'+T.hamburgerTop+';transition:all .3s;transform-origin:center"></span></div></button>'+
+'<button class="hamburger md:hidden p-2" aria-label="Menu" aria-expanded="false" aria-controls="menu-overlay"><span></span><span></span><span></span></button>'+
 '</div></div>';
-
-// Add responsive CSS for md breakpoint + logo responsive sizing
-var mdCss=document.createElement('style');
-mdCss.textContent='@media(min-width:768px){#desktop-nav-items{display:flex!important;align-items:center;gap:4px}#mobile-menu-btn{display:none!important}#nav-logo{height:50px!important}}@media(min-width:1024px){#nav-logo{height:65px!important}}@media(max-width:767px){#desktop-nav-items{display:none!important}#mobile-menu-btn{display:block!important}}';
-document.head.appendChild(mdCss);
-
 document.body.insertBefore(header,bronzeBar.nextSibling);
 
-// ── Build Mobile Overlay ──
 var overlay=document.createElement('div');
-overlay.id='mobile-overlay';
-overlay.style.cssText='position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;background-color:'+T.overlayBg+';opacity:0;visibility:hidden;transition:opacity .35s cubic-bezier(.4,0,.2,1),visibility .35s;height:100dvh';
-
-var mobileLinks=MEGA_NAV.map(function(cat,ci){
-var links=cat.children.map(function(item,ii){
-return '<a href="'+item.href+'" class="mobile-nav-link" style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 0;color:'+T.overlayLink+';transition:color .2s;text-decoration:none;border-bottom:1px solid '+T.overlayBorder+';opacity:0;animation-delay:'+(0.08+ci*0.18+ii*0.05)+'s;font-size:1rem;font-weight:500">'+
-'<span style="width:2rem;height:2rem;border-radius:0.5rem;display:inline-flex;align-items:center;justify-content:center;background:'+T.overlayIconBg+';font-family:'+T.fontDisplay+';font-style:italic;font-weight:700;font-size:11px;color:'+T.overlayIconText+';flex-shrink:0">'+item.icon+'</span>'+
-'<span>'+item.label+'</span></a>';
+overlay.id='menu-overlay';
+overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-label','Menu');
+overlay.className='mobile-overlay fixed inset-0 z-[60] flex flex-col';
+overlay.style.backgroundColor='var(--chrome-ground)';
+var liensOverlay=MEGA_NAV.map(function(cat,ci){
+return '<p class="menu-item text-xs uppercase tracking-[.2em] text-[var(--editorial-accent-text)] font-semibold mb-3'+(ci>0?' mt-8':'')+'" style="animation-delay:'+(0.05+ci*0.18)+'s">'+cat.label+'</p>'+
+cat.children.map(function(item,ii){
+return '<a href="'+item.href+'" class="menu-item flex items-center gap-3 py-3 text-white/90 hover:text-white transition-colors border-b border-white/8" style="animation-delay:'+(0.08+ci*0.18+ii*0.05)+'s">'+
+'<span class="w-8 h-8 bg-white/10 flex items-center justify-center text-xs font-semibold text-white/70" style="font-family:\'IBM Plex Mono\',monospace">'+item.icon+'</span>'+
+'<span class="text-base sm:text-lg md:text-[20px]">'+item.label+'</span></a>';
 }).join('');
-return '<p class="mobile-nav-link" style="font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:'+T.overlayLabel+';font-weight:600;margin-bottom:0.75rem;opacity:0;animation-delay:'+(0.05+ci*0.18)+'s'+(ci>0?';margin-top:2rem':'')+'">' +cat.label+'</p>'+links;
 }).join('');
-
 overlay.innerHTML=
-'<div style="display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem 1rem;flex-shrink:0">'+
-'<img src="logo-header.png" alt="Inflexion" style="height:2rem;width:auto;filter:'+T.logoFilterTop+'"/>'+
-'<button id="mobile-close-btn" class="ns-close-btn" style="width:2.75rem;height:2.75rem;display:flex;align-items:center;justify-content:center;border-radius:9999px;background:rgba(255,255,255,.1);border:none;cursor:pointer;transition:background .2s" aria-label="Fermer">'+
-'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>'+
-'<div style="flex:1;overflow-y:auto;padding:0.5rem 1.5rem 1rem">'+mobileLinks+'</div>'+
-'<div style="padding:1rem 1.5rem 5rem;flex-shrink:0">'+
-'<a href="premium.html" class="mobile-nav-link ns-mobile-cta" style="display:block;width:100%;text-align:center;padding:0.875rem 1.5rem;background:rgba(255,255,255,.1);color:#fff;font-weight:600;border-radius:0.75rem;transition:background .2s;font-size:1rem;text-decoration:none;opacity:0;animation-delay:0.85s">R\u00e9server un diagnostic</a></div>';
-
+'<div class="flex items-center justify-between px-6 pt-5 pb-4 flex-shrink-0 md:max-w-2xl md:mx-auto md:w-full">'+
+'<img src="logo-header.png" alt="Inflexion" class="h-8 w-auto" style="filter:brightness(10) saturate(0)"/>'+
+'<button class="w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors" aria-label="Fermer">'+
+'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="text-white"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>'+
+'<div class="flex-1 overflow-y-auto px-6 pt-2 pb-4 md:max-w-2xl md:mx-auto md:w-full">'+liensOverlay+'</div>'+
+'<div class="px-6 pt-4 pb-20 flex flex-col gap-3 flex-shrink-0 md:max-w-2xl md:mx-auto md:w-full">'+
+'<a href="premium.html" class="menu-item block w-full text-center px-6 py-3.5 bg-[var(--editorial-accent)] hover:bg-[#6E1B1B] text-[var(--chrome-text-1)] font-semibold transition-colors text-base" style="animation-delay:0.8s">R\u00e9server un diagnostic</a></div>';
 header.after(overlay);
 
 // ── Build Page Hero ──
@@ -283,65 +203,71 @@ document.head.appendChild(footerCss);
 oldFooter.parentNode.replaceChild(newFooter,oldFooter);
 }
 
-// ── Scroll Handler ──
-var scrolled=false;
+// ── Logique d'état : la même que la Navigation de la home, en vanilla ──
+var etats=header.querySelectorAll('.nav-state');
+var triggers=[].slice.call(header.querySelectorAll('.mega-trigger'));
+var boutonMenu=etats[1].querySelector('button');
+var hamburger=header.querySelector('button.hamburger');
+var croix=overlay.querySelector('button');
+var megaOpen=-1, scrolled=false, overlayOuvert=false, ouvreur=null;
+
+// Méga-menu « disclosure » : le clic bascule (souris, toucher, Entrée, Espace), Échap ferme et rend le focus ; le survol n'ouvre que pour une vraie souris
+// (le survol émulé d'un toucher, suivi du clic, ouvrirait puis refermerait). Pas d'ouverture au focus. Panneau ouvert : un toucher hors de tout
+// déclencheur le ferme (iOS ne donne pas le focus aux boutons), Échap aussi (ouvert au survol, rien n'a le focus).
+function fermerDehors(e){if(!(e.target.closest&&e.target.closest('.mega-trigger')))setMegaOpen(-1);}
+function echapDocument(e){if(e.key==='Escape')setMegaOpen(-1);}
+function setMegaOpen(i){
+if(i===megaOpen)return;
+var avant=megaOpen;megaOpen=i;
+triggers.forEach(function(t,ci){
+t.querySelector('button').setAttribute('aria-expanded',ci===i?'true':'false');
+t.querySelector('.mega-menu').classList.toggle('mega-open',ci===i);
+});
+if(avant<0&&i>=0){document.addEventListener('pointerdown',fermerDehors);document.addEventListener('keydown',echapDocument);}
+if(avant>=0&&i<0){document.removeEventListener('pointerdown',fermerDehors);document.removeEventListener('keydown',echapDocument);}
+}
+triggers.forEach(function(t,ci){
+var b=t.querySelector('button');
+b.addEventListener('click',function(){setMegaOpen(megaOpen===ci?-1:ci);});
+t.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')setMegaOpen(ci);});
+t.addEventListener('mouseleave',function(){if(!t.contains(document.activeElement))setMegaOpen(-1);});
+t.addEventListener('focusout',function(e){if(!t.contains(e.relatedTarget))setMegaOpen(-1);});
+t.addEventListener('keydown',function(e){if(e.key==='Escape'&&megaOpen===ci){setMegaOpen(-1);b.focus();}});
+});
+
+// Deux états : au-delà de 60 px, les rubriques s'effacent et « Menu » prend leur place ; un panneau ouvert se ferme
+// (sa visibility:visible battrait l'héritage de l'état masqué). Lu au chargement : défilement restauré par le navigateur.
 function onScroll(){
 var s=window.scrollY>60;
 if(s===scrolled)return;
 scrolled=s;
-if(scrolled){
-header.style.background=T.headerScrolledBg;
-header.style.backdropFilter='blur(16px)';
-header.style.webkitBackdropFilter='blur(16px)';
-header.style.borderBottom='1px solid '+T.headerScrolledBorder;
-header.style.boxShadow=T.headerScrolledShadow;
-header.classList.add('nav-scrolled-mode');
-}else{
-header.style.background='transparent';
-header.style.backdropFilter='';
-header.style.webkitBackdropFilter='';
-header.style.borderBottom='';
-header.style.boxShadow='';
-header.classList.remove('nav-scrolled-mode');
-}
-// Update nav link colors
-var links=header.querySelectorAll('.nav-link-new');
-links.forEach(function(el){
-el.style.color=scrolled?T.navLinkScrolled:T.navLinkTop;
-});
-// Update logo
-var logo=document.getElementById('nav-logo');
-if(logo)logo.style.filter=scrolled?T.logoFilterScrolled:T.logoFilterTop;
-// Update hamburger bars
-header.querySelectorAll('.hamburger-bar').forEach(function(b){
-b.style.background=scrolled?T.hamburgerScrolled:T.hamburgerTop;
-});
+header.classList.toggle('nav-scrolled',s);header.classList.toggle('bg-transparent',!s);
+etats[0].classList.toggle('is-hidden',s);etats[1].classList.toggle('is-hidden',!s);
+if(s)setMegaOpen(-1);
 }
 window.addEventListener('scroll',onScroll,{passive:true});
 onScroll();
 
-// ── Mobile Menu ──
-var mobileOpen=false;
-var hamburgerWrapper=document.getElementById('hamburger-wrapper');
-function toggleMobile(open){
-mobileOpen=open;
-var menuBtn=document.getElementById('mobile-menu-btn');
-if(menuBtn)menuBtn.setAttribute('aria-expanded',open?'true':'false');
-if(open){
-overlay.style.opacity='1';overlay.style.visibility='visible';
-document.body.style.overflow='hidden';
-if(hamburgerWrapper)hamburgerWrapper.classList.add('hamburger-open');
-overlay.querySelectorAll('.mobile-nav-link').forEach(function(el){el.style.animation='ns-menu-item-in .4s ease-out forwards';});
+// Overlay : dialogue plein écran ; le focus entre sur la croix, Échap ferme, le focus revient à l'ouvreur (repli : le lien du logo, si l'ouvreur est masqué).
+function echapOverlay(e){if(e.key==='Escape')setOpen(false);}
+function setOpen(o){
+if(o===overlayOuvert)return;
+overlayOuvert=o;
+overlay.classList.toggle('open',o);hamburger.classList.toggle('open',o);
+hamburger.setAttribute('aria-expanded',o?'true':'false');boutonMenu.setAttribute('aria-expanded',o?'true':'false');
+if(o){
+document.body.classList.add('menu-open');document.addEventListener('keydown',echapOverlay);
+croix.focus();
 }else{
-overlay.style.opacity='0';overlay.style.visibility='hidden';
-document.body.style.overflow='';
-if(hamburgerWrapper)hamburgerWrapper.classList.remove('hamburger-open');
-overlay.querySelectorAll('.mobile-nav-link').forEach(function(el){el.style.animation='';el.style.opacity='0';});
+document.body.classList.remove('menu-open');document.removeEventListener('keydown',echapOverlay);
+if(ouvreur)ouvreur.focus();
+if(document.activeElement!==ouvreur)header.querySelector('a').focus();
 }
 }
-document.getElementById('mobile-menu-btn').addEventListener('click',function(){toggleMobile(!mobileOpen);});
-document.getElementById('mobile-close-btn').addEventListener('click',function(){toggleMobile(false);});
-overlay.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){toggleMobile(false);});});
+boutonMenu.addEventListener('click',function(){ouvreur=boutonMenu;setOpen(true);});
+hamburger.addEventListener('click',function(){ouvreur=hamburger;setOpen(!overlayOuvert);});
+croix.addEventListener('click',function(){setOpen(false);});
+[].forEach.call(overlay.querySelectorAll('a'),function(a){a.addEventListener('click',function(){setOpen(false);});});
 
 // ── Scroll reveal (fade-in au scroll) ──
 if(!document.querySelector('script[src*="scroll-reveal"]')){
