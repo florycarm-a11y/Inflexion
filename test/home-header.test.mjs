@@ -91,6 +91,17 @@ test('méga-menu : verre sombre, bordure 1 px, filet rouge conservé, libellés 
   assert.ok(!/\.mega-menu:hover/.test(style), '.mega-menu:hover doit disparaître (panneau fantôme cliquable après défilement)');
   const survol = blocMedia(style, 'hover:hover');
   assert.ok(survol && survol.includes('.mega-item:hover{background:rgba(245,237,230,.07)}'), 'survol d\'une entrée : voile clair (le rosé à 6 % était pensé pour un fond blanc)');
+  // Ouverture : visibility bascule tout de suite (sinon hidden à p = 0, panneau et pont non touchables pendant la première image) ; fermeture en fondu.
+  assert.equal(regle(style, '.mega-menu.mega-open'), 'opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);transition:opacity var(--motion-base),transform var(--motion-base)');
+  // Pont pendant le glissement : il doit couvrir exactement la bande entre le bouton et le panneau. Hauteur fermée = translation fermée + bordure,
+  // hauteur ouverte = bordure, même transition que la translation (couplage vérifié sur les valeurs, pas seulement la présence).
+  assert.equal(regle(style, '.mega-menu::after'), "content:'';position:absolute;left:0;right:0;bottom:100%;height:9px;transition:height var(--motion-base)");
+  assert.equal(regle(style, '.mega-menu.mega-open::after'), 'height:1px');
+  const base = regle(style, '.mega-menu');
+  const glissement = Number(base.match(/translateY\((\d+)px\)/)[1]), bordure = Number(base.match(/border:(\d+)px solid/)[1]);
+  assert.equal(Number(regle(style, '.mega-menu::after').match(/height:(\d+)px/)[1]), glissement + bordure, 'pont fermé = glissement + bordure');
+  assert.equal(Number(regle(style, '.mega-menu.mega-open::after').match(/height:(\d+)px/)[1]), bordure, 'pont ouvert = bordure (ne déborde pas sur les boutons)');
+  assert.ok(base.includes('transform var(--motion-base)') && regle(style, '.mega-menu::after').includes('transition:height var(--motion-base)'), 'pont et glissement : même transition');
 });
 
 test('méga-menu : plus de pastilles, un intitulé de groupe en Plex Mono 12 px majuscules en tête de chaque panneau', () => {
@@ -143,6 +154,22 @@ test('méga-menu : clic bascule, Échap ferme et rend le focus, survol souris se
   }
   assert.deepEqual(appels, ['ci', 'm=>m===ci?-1:m', 'm=>m===ci?-1:m', '-1', 'm=>m===ci?-1:ci'], 'appels à setMegaOpen sur une rubrique : survol, sortie, perte de focus, Échap (gardé par megaOpen===ci), clic');
   assert.ok(region.includes("if(e.key==='Escape'&&megaOpen===ci){setMegaOpen(-1)"), 'la seule fermeture directe est celle d\'Échap, gardée par megaOpen===ci');
+  // Gestionnaires en liste fermée : props on* du déclencheur et du bouton, aucune sur le panneau ni sur les liens (une fermeture ou une remise à zéro
+  // de la provenance posée ailleurs, ou appelée par un alias, échappe aux chaînes exactes ci-dessus). Deux écritures de la provenance seulement.
+  const props = (debutAppel) => { const i = region.indexOf(debutAppel); assert.ok(i !== -1, `${debutAppel} introuvable`); const fin = region.indexOf('\n', i); return [...region.slice(i, fin).matchAll(/[,{](on[A-Z]\w*):/g)].map((m) => m[1]); };
+  assert.deepEqual(props("h('div',{key:ci,className:'mega-trigger',"), ['onPointerEnter', 'onMouseLeave', 'onBlur', 'onKeyDown'], 'gestionnaires du déclencheur');
+  assert.deepEqual(props("h('button',{type:'button','aria-expanded':megaOpen===ci,"), ['onClick'], 'gestionnaires du bouton de rubrique');
+  for (const debut of ["h('div',{id:'mega-panel-'+ci,", "h('a',{key:ii,href:item.href,className:'mega-item"]) assert.deepEqual(props(debut), [], `aucun gestionnaire attendu sur ${debut}`);
+  assert.equal((navigation.match(/survol\.current=(?!=)/g) || []).length, 2, 'deux écritures de la provenance : l\'entrée qui ouvre, le clic');
+  // Écouteurs du document et de la fenêtre : posés et retirés ensemble par l'effet [megaOpen] (corps figé).
+  assert.ok(navigation.includes(`useEffect(()=>{
+if(megaOpen<0)return
+const fermer=e=>{if(!e.target.closest?.('.mega-trigger'))setMegaOpen(-1)}
+const echap=e=>{if(e.key==='Escape')setMegaOpen(-1)}
+const quitter=()=>setMegaOpen(-1)
+document.addEventListener('pointerdown',fermer);document.addEventListener('keydown',echap);window.addEventListener('blur',quitter)
+return()=>{document.removeEventListener('pointerdown',fermer);document.removeEventListener('keydown',echap);window.removeEventListener('blur',quitter)}
+},[megaOpen])`), 'effet [megaOpen] : écouteurs pointerdown, keydown et blur de fenêtre posés et retirés ensemble');
 });
 
 test('logo à 40 px, overlay : Échap, retour du focus, colonne centrée sur ordinateur', () => {

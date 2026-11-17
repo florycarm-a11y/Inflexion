@@ -185,7 +185,22 @@ test('nav-shared.js : même DOM que la Navigation de la home (classes), logique 
   for (const c of conditions) assert.ok(/megaOpen===ci/.test(c), `fermeture sans vérifier que le panneau ouvert est celui de la rubrique : if(${c})`);
   // Liste fermée, quelle que soit la forme d'écriture (retour anticipé, ternaire, appel nu) : tous les appels à setMegaOpen du bloc, et ses écouteurs.
   const bloc = ns.slice(debutRubriques, finRubriques);
-  assert.deepEqual([...bloc.matchAll(/setMegaOpen\(([^()]*)\)/g)].map((m) => m[1]), ['megaOpen===ci?-1:ci', 'ci', '-1', '-1', '-1'], 'appels à setMegaOpen sur une rubrique : clic, survol, sortie, perte de focus, Échap');
+  // Arguments lus avec un compteur de parenthèses (un argument à parenthèses n'échappe pas à la liste).
+  const appelsVanilla = [];
+  for (let i = bloc.indexOf('setMegaOpen('); i !== -1; i = bloc.indexOf('setMegaOpen(', i + 1)) {
+    let j = i + 'setMegaOpen('.length, profondeur = 1;
+    for (; profondeur > 0; j++) { if (bloc[j] === '(') profondeur++; else if (bloc[j] === ')') profondeur--; }
+    appelsVanilla.push(bloc.slice(i + 'setMegaOpen('.length, j - 1));
+  }
+  assert.deepEqual(appelsVanilla, ['megaOpen===ci?-1:ci', 'ci', '-1', '-1', '-1'], 'appels à setMegaOpen sur une rubrique : clic, survol, sortie, perte de focus, Échap');
+  // Provenance « survol » : déclarée une fois à la portée de l'IIFE (sous 'use strict', son absence lèverait une ReferenceError au premier survol
+  // ou clic), écrite deux fois dans les gestionnaires (l'entrée qui ouvre, le clic).
+  const declaration = ns.indexOf('var survol=-1;');
+  assert.ok(declaration !== -1 && declaration < debutRubriques && !ns.slice(debutRubriques, finRubriques).includes('var survol'), 'var survol=-1; doit être déclarée avant les gestionnaires, hors du rappel par rubrique');
+  assert.equal((bloc.match(/\bsurvol=(?!=)/g) || []).length, 2, 'deux écritures de la provenance dans les gestionnaires');
+  // Écouteurs du document et de la fenêtre : posés à l'ouverture, retirés à la fermeture (branches figées).
+  assert.ok(ns.includes("if(avant<0&&i>=0){document.addEventListener('pointerdown',fermerDehors);document.addEventListener('keydown',echapDocument);window.addEventListener('blur',quitterFenetre);}"), 'écouteurs posés à l\'ouverture');
+  assert.ok(ns.includes("if(avant>=0&&i<0){document.removeEventListener('pointerdown',fermerDehors);document.removeEventListener('keydown',echapDocument);window.removeEventListener('blur',quitterFenetre);}"), 'écouteurs retirés à la fermeture');
   assert.equal(bloc.split('addEventListener(').length - 1, 5, 'cinq écouteurs par rubrique : click, pointerover, mouseout, focusout, keydown');
   assert.ok(!/'pointerenter'|'mouseleave'/.test(ns), 'pointerenter/mouseleave natifs : sémantique différente de la home');
   assert.equal(ns.split('aria-controls="menu-overlay"').length - 1, 2, '« Menu » et le hamburger pointent l\'overlay');
