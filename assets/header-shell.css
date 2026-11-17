@@ -15,6 +15,11 @@
 .mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity var(--motion-base),transform var(--motion-base),visibility var(--motion-base);min-width:340px;z-index:60;background:rgba(23,16,14,.78);backdrop-filter:blur(24px) saturate(1.4);border:1px solid var(--chrome-border);box-shadow:0 12px 32px rgba(0,0,0,.35)}
 .mega-menu.mega-open{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
 .mega-menu::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:var(--editorial-accent);z-index:2}
+/* Pont sous la rubrique pendant le glissement d'ouverture : le panneau monte de 8 px en --motion-base ; tant qu'il n'a pas rejoint le bouton,
+   la bande entre les deux n'appartient à rien et y passer le refermait. Ce pseudo-élément invisible couvre exactement cette bande : sa hauteur
+   (bordure comprise, 9 px puis 1 px) suit la même transition que le glissement ; il a la largeur du panneau et ne déborde jamais sur les boutons. */
+.mega-menu::after{content:'';position:absolute;left:0;right:0;bottom:100%;height:9px;transition:height var(--motion-base)}
+.mega-menu.mega-open::after{height:1px}
 .mega-item{transition:background var(--motion-fast)}
 /* En-tête : seules la couleur de fond et celle du filet bas sont animées (audit 7.9) ; la bordure transparente au repos donne à border-color un point de départ. backdrop-filter n'est pas animé. */
 .site-header{border-bottom:1px solid transparent;transition:background-color var(--motion-base),border-color var(--motion-base)}

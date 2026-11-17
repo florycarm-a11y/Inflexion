@@ -210,12 +210,14 @@ var boutonMenu=etats[1].querySelector('button');
 var hamburger=header.querySelector('button.hamburger');
 var croix=overlay.querySelector('button');
 var megaOpen=-1, scrolled=false, overlayOuvert=false, ouvreur=null;
+var survol=-1; // rubrique ouverte au survol (pas au clic ni au clavier) : elle se referme à la sortie du pointeur, même si son bouton a gardé le focus d'un clic antérieur
 
 // Méga-menu « disclosure » : le clic bascule (souris, toucher, Entrée, Espace), Échap ferme et rend le focus ; le survol n'ouvre que pour une vraie souris
 // (le survol émulé d'un toucher, suivi du clic, ouvrirait puis refermerait). Pas d'ouverture au focus. Panneau ouvert : un toucher hors de tout
 // déclencheur le ferme (iOS ne donne pas le focus aux boutons), Échap aussi (ouvert au survol, rien n'a le focus).
 function fermerDehors(e){if(!(e.target.closest&&e.target.closest('.mega-trigger')))setMegaOpen(-1);}
 function echapDocument(e){if(e.key==='Escape')setMegaOpen(-1);}
+function quitterFenetre(){setMegaOpen(-1);} // la fenêtre perd le focus (autre onglet, autre application, barre d'adresse) : rien ne reste ouvert au retour
 function setMegaOpen(i){
 if(i===megaOpen)return;
 var avant=megaOpen;megaOpen=i;
@@ -223,18 +225,20 @@ triggers.forEach(function(t,ci){
 t.querySelector('button').setAttribute('aria-expanded',ci===i?'true':'false');
 t.querySelector('.mega-menu').classList.toggle('mega-open',ci===i);
 });
-if(avant<0&&i>=0){document.addEventListener('pointerdown',fermerDehors);document.addEventListener('keydown',echapDocument);}
-if(avant>=0&&i<0){document.removeEventListener('pointerdown',fermerDehors);document.removeEventListener('keydown',echapDocument);}
+if(avant<0&&i>=0){document.addEventListener('pointerdown',fermerDehors);document.addEventListener('keydown',echapDocument);window.addEventListener('blur',quitterFenetre);}
+if(avant>=0&&i<0){document.removeEventListener('pointerdown',fermerDehors);document.removeEventListener('keydown',echapDocument);window.removeEventListener('blur',quitterFenetre);}
 }
 triggers.forEach(function(t,ci){
 var b=t.querySelector('button');
-b.addEventListener('click',function(){setMegaOpen(megaOpen===ci?-1:ci);});
+b.addEventListener('click',function(){survol=-1;setMegaOpen(megaOpen===ci?-1:ci);});
 // Entrée et sortie calculées comme React (onPointerEnter/onMouseLeave de la home) : sur pointerover/mouseout, d'après relatedTarget.
 // Une rubrique ne ferme que son propre panneau (megaOpen===ci) : l'entrée dans la voisine part avant la sortie de la rubrique quittée, et un focusout
 // ne doit pas fermer le panneau d'une autre rubrique (le clic sur un de ses liens serait perdu). Même règle que la home.
-t.addEventListener('pointerover',function(e){if(e.pointerType==='mouse'&&!t.contains(e.relatedTarget))setMegaOpen(ci);});
-t.addEventListener('mouseout',function(e){if(megaOpen===ci&&!t.contains(e.relatedTarget)&&!t.contains(document.activeElement))setMegaOpen(-1);});
-t.addEventListener('focusout',function(e){if(megaOpen===ci&&!t.contains(e.relatedTarget))setMegaOpen(-1);});
+// Perte de focus « vers rien » (relatedTarget nul : clic sur une zone non focalisable, ou sur un lien sous Safari) : on ne ferme pas,
+// sinon le panneau disparaît sous le clic ; le clic hors des rubriques et la perte de focus de la fenêtre ferment par ailleurs.
+t.addEventListener('pointerover',function(e){if(e.pointerType==='mouse'&&!t.contains(e.relatedTarget)){survol=ci;setMegaOpen(ci);}});
+t.addEventListener('mouseout',function(e){if(megaOpen===ci&&!t.contains(e.relatedTarget)&&(survol===ci||!t.contains(document.activeElement)))setMegaOpen(-1);});
+t.addEventListener('focusout',function(e){if(megaOpen===ci&&e.relatedTarget&&!t.contains(e.relatedTarget))setMegaOpen(-1);});
 t.addEventListener('keydown',function(e){if(e.key==='Escape'&&megaOpen===ci){setMegaOpen(-1);b.focus();}});
 });
 

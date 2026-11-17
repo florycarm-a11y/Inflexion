@@ -108,10 +108,10 @@ test('méga-menu : plus de pastilles, un intitulé de groupe en Plex Mono 12 px 
 });
 
 test('méga-menu : clic bascule, Échap ferme et rend le focus, survol souris seule, pas d\'ouverture au focus, clic hors du panneau ferme', () => {
-  assert.ok(navigation.includes('onClick:()=>setMegaOpen(m=>m===ci?-1:ci)'), 'onClick de bascule absent sur les boutons de rubrique');
+  assert.ok(navigation.includes('onClick:()=>{survol.current=-1;setMegaOpen(m=>m===ci?-1:ci)}'), 'onClick de bascule absent sur les boutons de rubrique (et il efface la provenance « survol »)');
   assert.ok(navigation.includes("'aria-controls':'mega-panel-'+ci") && navigation.includes("id:'mega-panel-'+ci"), 'aria-controls du bouton vers l\'id du panneau');
   assert.ok(!navigation.includes('aria-haspopup'), 'aria-haspopup annonce un rôle menu : modèle disclosure, aria-expanded + aria-controls');
-  assert.ok(navigation.includes("onPointerEnter:(e)=>{if(e.pointerType==='mouse')setMegaOpen(ci)}"), 'survol : onPointerEnter filtré sur pointerType mouse');
+  assert.ok(navigation.includes("onPointerEnter:(e)=>{if(e.pointerType==='mouse'){survol.current=ci;setMegaOpen(ci)}}"), 'survol : onPointerEnter filtré sur pointerType mouse, qui note la rubrique ouverte au survol');
   assert.ok(!navigation.includes('onMouseEnter:'), 'onMouseEnter doit disparaître (survol émulé d\'un toucher)');
   assert.ok(!navigation.includes('onFocus:'), 'onFocus doit disparaître (focus posé par un toucher Android, puis clic : ouvre puis ferme)');
   assert.ok(navigation.includes("if(e.key==='Escape'&&megaOpen===ci){setMegaOpen(-1);e.currentTarget.querySelector('button').focus()}"), 'Échap : ferme ce panneau et rend le focus au bouton');
@@ -122,13 +122,27 @@ test('méga-menu : clic bascule, Échap ferme et rend le focus, survol souris se
   // quittée (onMouseLeave) : une fermeture sans condition refermait la voisine, et glisser d'une rubrique à l'autre fermait tout. La perte de
   // focus d'une rubrique fermait de même le panneau d'une autre, au moment où l'on appuyait sur un de ses liens : le clic était perdu.
   // Forme fonctionnelle obligatoire : l'ouverture de la voisine n'est pas encore rendue quand la sortie arrive (megaOpen de la fermeture serait périmé).
-  assert.ok(navigation.includes("onMouseLeave:(e)=>{if(!e.currentTarget.contains(document.activeElement))setMegaOpen(m=>m===ci?-1:m)}"), 'sortie de rubrique : ne ferme que son propre panneau (forme fonctionnelle)');
-  assert.ok(navigation.includes("onBlur:(e)=>{if(!e.currentTarget.contains(e.relatedTarget))setMegaOpen(m=>m===ci?-1:m)}"), 'perte de focus d\'une rubrique : ne ferme que son propre panneau (forme fonctionnelle)');
-  const declencheur = navigation.match(/h\('div',\{key:ci,className:'mega-trigger',([^\n]*)\},\n/);
-  assert.ok(declencheur, 'props du déclencheur introuvables');
-  const fermetures = declencheur[1].match(/setMegaOpen\(-1\)/g) || [];
-  assert.equal(fermetures.length, 1, `une seule fermeture directe attendue sur le déclencheur (Échap, gardée par megaOpen===ci), ${fermetures.length} trouvées`);
-  assert.ok(declencheur[1].includes("if(e.key==='Escape'&&megaOpen===ci){setMegaOpen(-1)"), 'la seule fermeture directe est celle d\'Échap, gardée par megaOpen===ci');
+  // Sortie du pointeur : un panneau ouvert AU SURVOL se referme même si le bouton a gardé le focus d'un clic antérieur (panneau « collant »,
+  // reproduit en prod) ; ouvert au clic ou au clavier, il reste ouvert tant que le focus est dans sa rubrique.
+  assert.ok(navigation.includes("const survol=useRef(-1)"), 'la rubrique ouverte au survol doit être mémorisée (ref)');
+  assert.ok(navigation.includes("onMouseLeave:(e)=>{if(survol.current===ci||!e.currentTarget.contains(document.activeElement))setMegaOpen(m=>m===ci?-1:m)}"), 'sortie de rubrique : ne ferme que son propre panneau (forme fonctionnelle), toujours s\'il a été ouvert au survol');
+  // Perte de focus : seulement vers un élément précis hors de la rubrique. Vers rien (relatedTarget nul : clic sur une zone non focalisable,
+  // ou sur un lien sous Safari) on ne ferme pas, sinon le panneau disparaît sous le clic. La perte de focus de la fenêtre ferme par ailleurs.
+  assert.ok(navigation.includes("onBlur:(e)=>{if(e.relatedTarget&&!e.currentTarget.contains(e.relatedTarget))setMegaOpen(m=>m===ci?-1:m)}"), 'perte de focus d\'une rubrique : vers un élément précis hors de la rubrique, et seulement son propre panneau');
+  assert.ok(navigation.includes("const quitter=()=>setMegaOpen(-1)") && navigation.includes("window.addEventListener('blur',quitter)") && navigation.includes("window.removeEventListener('blur',quitter)"), 'la perte de focus de la fenêtre doit fermer le panneau ouvert (écouteur posé et retiré avec le panneau)');
+  // Liste fermée : tous les appels à setMegaOpen dans la région des rubriques (déclencheur, bouton, panneau), dans l'ordre, quelle que soit leur forme.
+  // Une fermeture déplacée sur le bouton ou le panneau, ou une garde réécrite avec la valeur capturée megaOpen===ci, fait échouer ce test.
+  const debutRubriques = navigation.indexOf('...MEGA_NAV.map((cat,ci)=>{'), finRubriques = navigation.indexOf("h('div',{className:'nav-state'+(scrolled?'':' is-hidden')}");
+  assert.ok(debutRubriques !== -1 && finRubriques > debutRubriques, 'région des rubriques introuvable');
+  const region = navigation.slice(debutRubriques, finRubriques);
+  const appels = [];
+  for (let i = region.indexOf('setMegaOpen('); i !== -1; i = region.indexOf('setMegaOpen(', i + 1)) {
+    let j = i + 'setMegaOpen('.length, profondeur = 1;
+    for (; profondeur > 0; j++) { if (region[j] === '(') profondeur++; else if (region[j] === ')') profondeur--; }
+    appels.push(region.slice(i + 'setMegaOpen('.length, j - 1));
+  }
+  assert.deepEqual(appels, ['ci', 'm=>m===ci?-1:m', 'm=>m===ci?-1:m', '-1', 'm=>m===ci?-1:ci'], 'appels à setMegaOpen sur une rubrique : survol, sortie, perte de focus, Échap (gardé par megaOpen===ci), clic');
+  assert.ok(region.includes("if(e.key==='Escape'&&megaOpen===ci){setMegaOpen(-1)"), 'la seule fermeture directe est celle d\'Échap, gardée par megaOpen===ci');
 });
 
 test('logo à 40 px, overlay : Échap, retour du focus, colonne centrée sur ordinateur', () => {
