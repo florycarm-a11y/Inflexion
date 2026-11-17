@@ -136,7 +136,9 @@ test('méga-menu : clic bascule, Échap ferme et rend le focus, survol souris se
   // Sortie du pointeur : un panneau ouvert AU SURVOL se referme même si le bouton a gardé le focus d'un clic antérieur (panneau « collant »,
   // reproduit en prod) ; ouvert au clic ou au clavier, il reste ouvert tant que le focus est dans sa rubrique.
   assert.ok(navigation.includes("const survol=useRef(-1)"), 'la rubrique ouverte au survol doit être mémorisée (ref)');
-  assert.ok(navigation.includes("onMouseLeave:(e)=>{const f=document.activeElement;if(!e.currentTarget.contains(f)||(survol.current===ci&&!e.currentTarget.querySelector('.mega-menu').contains(f)))setMegaOpen(m=>m===ci?-1:m)}"), 'sortie de rubrique : ne ferme que son propre panneau (forme fonctionnelle) ; ouvert au survol, il se ferme même si le bouton a le focus, sauf si le focus est dans le panneau');
+  // Sortie décidée par la provenance, pas par le focus : Safari et Firefox macOS ne focalisent pas un bouton cliqué (un panneau ouvert au clic s'y
+  // fermait à la première sortie), et un lien focalisé à la souris (Ctrl+clic) rendait collant un panneau ouvert au survol. Seul le focus clavier retient.
+  assert.ok(navigation.includes("onMouseLeave:(e)=>{const f=document.activeElement;if(survol.current===ci&&!(e.currentTarget.querySelector('.mega-menu').contains(f)&&f.matches(':focus-visible')))setMegaOpen(m=>m===ci?-1:m)}"), 'sortie de rubrique : ne ferme que son propre panneau, ouvert au survol, sauf focus clavier (:focus-visible) dans le panneau');
   // Perte de focus : seulement vers un élément précis hors de la rubrique. Vers rien (relatedTarget nul : clic sur une zone non focalisable,
   // ou sur un lien sous Safari) on ne ferme pas, sinon le panneau disparaît sous le clic. La perte de focus de la fenêtre ferme par ailleurs.
   assert.ok(navigation.includes("onBlur:(e)=>{if(e.relatedTarget&&!e.currentTarget.contains(e.relatedTarget))setMegaOpen(m=>m===ci?-1:m)}"), 'perte de focus d\'une rubrique : vers un élément précis hors de la rubrique, et seulement son propre panneau');
