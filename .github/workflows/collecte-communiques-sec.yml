@@ -17,18 +17,18 @@ permissions:
 jobs:
   collecte:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
       - name: Télécharger les communiqués
-        run: node scripts/backtest/fetch-sec-communiques.mjs scripts/backtest/documents-echecs.json
+        run: node scripts/backtest/fetch-sec-communiques.mjs scripts/backtest/documents-dix-cas.json
         env:
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
       - uses: actions/upload-artifact@v4
         with:
-          name: documents-echecs
+          name: documents-dix-cas
           path: out/communiques
           retention-days: 7
