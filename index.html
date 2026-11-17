@@ -312,7 +312,9 @@ return h('div',null,
       const isWide=cat.children.length>3
       // Modèle « disclosure » : le clic bascule (souris, toucher, Entrée, Espace), Échap ferme et rend le focus ; le survol n'ouvre que pour une vraie souris
       // (le survol émulé d'un toucher, suivi du clic, ouvrirait puis refermerait). Pas d'ouverture au focus : tabuler le long de la barre n'ouvre rien.
-      return h('div',{key:ci,className:'mega-trigger',onPointerEnter:(e)=>{if(e.pointerType==='mouse')setMegaOpen(ci)},onMouseLeave:(e)=>{if(!e.currentTarget.contains(document.activeElement))setMegaOpen(-1)},onBlur:(e)=>{if(!e.currentTarget.contains(e.relatedTarget))setMegaOpen(-1)},onKeyDown:(e)=>{if(e.key==='Escape'&&megaOpen===ci){setMegaOpen(-1);e.currentTarget.querySelector('button').focus()}}},
+      // Une rubrique ne ferme que SON panneau, en forme fonctionnelle (état à jour) : en Chrome, l'entrée dans la rubrique voisine part avant la sortie
+      // de la rubrique quittée, et la perte de focus d'une rubrique ne doit pas fermer le panneau d'une autre (le clic sur un de ses liens serait perdu).
+      return h('div',{key:ci,className:'mega-trigger',onPointerEnter:(e)=>{if(e.pointerType==='mouse')setMegaOpen(ci)},onMouseLeave:(e)=>{if(!e.currentTarget.contains(document.activeElement))setMegaOpen(m=>m===ci?-1:m)},onBlur:(e)=>{if(!e.currentTarget.contains(e.relatedTarget))setMegaOpen(m=>m===ci?-1:m)},onKeyDown:(e)=>{if(e.key==='Escape'&&megaOpen===ci){setMegaOpen(-1);e.currentTarget.querySelector('button').focus()}}},
        h('button',{type:'button','aria-expanded':megaOpen===ci,'aria-controls':'mega-panel-'+ci,onClick:()=>setMegaOpen(m=>m===ci?-1:ci),className:'nav-link px-3 py-2 text-sm transition-colors select-none text-[var(--chrome-text-2)] hover:text-[var(--chrome-text-1)] focus-visible:text-[var(--chrome-text-1)] bg-transparent border-0 cursor-pointer'},cat.label),
        h('div',{id:'mega-panel-'+ci,className:'mega-menu '+(megaOpen===ci?'mega-open ':'')+'p-5',style:{minWidth:isWide?'440px':'340px'}},
         h('p',{className:'kicker mb-3 px-3',style:{color:'var(--editorial-accent-text)'}},cat.label),

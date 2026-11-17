@@ -230,9 +230,11 @@ triggers.forEach(function(t,ci){
 var b=t.querySelector('button');
 b.addEventListener('click',function(){setMegaOpen(megaOpen===ci?-1:ci);});
 // Entrée et sortie calculées comme React (onPointerEnter/onMouseLeave de la home) : sur pointerover/mouseout, d'après relatedTarget.
+// Une rubrique ne ferme que son propre panneau (megaOpen===ci) : l'entrée dans la voisine part avant la sortie de la rubrique quittée, et un focusout
+// ne doit pas fermer le panneau d'une autre rubrique (le clic sur un de ses liens serait perdu). Même règle que la home.
 t.addEventListener('pointerover',function(e){if(e.pointerType==='mouse'&&!t.contains(e.relatedTarget))setMegaOpen(ci);});
-t.addEventListener('mouseout',function(e){if(!t.contains(e.relatedTarget)&&!t.contains(document.activeElement))setMegaOpen(-1);});
-t.addEventListener('focusout',function(e){if(!t.contains(e.relatedTarget))setMegaOpen(-1);});
+t.addEventListener('mouseout',function(e){if(megaOpen===ci&&!t.contains(e.relatedTarget)&&!t.contains(document.activeElement))setMegaOpen(-1);});
+t.addEventListener('focusout',function(e){if(megaOpen===ci&&!t.contains(e.relatedTarget))setMegaOpen(-1);});
 t.addEventListener('keydown',function(e){if(e.key==='Escape'&&megaOpen===ci){setMegaOpen(-1);b.focus();}});
 });
 
