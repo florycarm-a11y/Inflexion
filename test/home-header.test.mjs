@@ -118,6 +118,17 @@ test('méga-menu : clic bascule, Échap ferme et rend le focus, survol souris se
   assert.ok(!navigation.includes('.blur()'), 'plus de blur() : le focus ne doit pas tomber sur body');
   assert.ok(navigation.includes("document.addEventListener('pointerdown',fermer)") && navigation.includes("closest?.('.mega-trigger')"), 'écouteur pointerdown hors du panneau absent');
   assert.ok(navigation.includes("const echap=e=>{if(e.key==='Escape')setMegaOpen(-1)}") && navigation.includes("document.addEventListener('keydown',echap)"), 'Échap doit fermer un panneau ouvert au survol (rien n\'a le focus)');
+  // Une rubrique ne ferme que SON panneau. En Chrome, l'entrée dans la rubrique voisine (onPointerEnter) part avant la sortie de la rubrique
+  // quittée (onMouseLeave) : une fermeture sans condition refermait la voisine, et glisser d'une rubrique à l'autre fermait tout. La perte de
+  // focus d'une rubrique fermait de même le panneau d'une autre, au moment où l'on appuyait sur un de ses liens : le clic était perdu.
+  // Forme fonctionnelle obligatoire : l'ouverture de la voisine n'est pas encore rendue quand la sortie arrive (megaOpen de la fermeture serait périmé).
+  assert.ok(navigation.includes("onMouseLeave:(e)=>{if(!e.currentTarget.contains(document.activeElement))setMegaOpen(m=>m===ci?-1:m)}"), 'sortie de rubrique : ne ferme que son propre panneau (forme fonctionnelle)');
+  assert.ok(navigation.includes("onBlur:(e)=>{if(!e.currentTarget.contains(e.relatedTarget))setMegaOpen(m=>m===ci?-1:m)}"), 'perte de focus d\'une rubrique : ne ferme que son propre panneau (forme fonctionnelle)');
+  const declencheur = navigation.match(/h\('div',\{key:ci,className:'mega-trigger',([^\n]*)\},\n/);
+  assert.ok(declencheur, 'props du déclencheur introuvables');
+  const fermetures = declencheur[1].match(/setMegaOpen\(-1\)/g) || [];
+  assert.equal(fermetures.length, 1, `une seule fermeture directe attendue sur le déclencheur (Échap, gardée par megaOpen===ci), ${fermetures.length} trouvées`);
+  assert.ok(declencheur[1].includes("if(e.key==='Escape'&&megaOpen===ci){setMegaOpen(-1)"), 'la seule fermeture directe est celle d\'Échap, gardée par megaOpen===ci');
 });
 
 test('logo à 40 px, overlay : Échap, retour du focus, colonne centrée sur ordinateur', () => {
