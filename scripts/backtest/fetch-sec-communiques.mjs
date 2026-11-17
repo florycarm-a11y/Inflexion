@@ -2,7 +2,8 @@
 // et les enregistre en texte brut dans out/communiques/.
 // La SEC demande aux outils automatiques de se déclarer : le User-Agent (nom + adresse de
 // contact) est lu dans la variable d'environnement SEC_USER_AGENT, jamais écrit dans le code
-// ni dans les journaux. Usage : node scripts/backtest/fetch-sec-communiques.mjs [--dry]
+// ni dans les journaux. Usage : node scripts/backtest/fetch-sec-communiques.mjs [liste.json] [--dry]
+// Trois types d'entrée : communiqué (url directe), 'exhibits' (annexes 99.x d'un 8-K), 'depot' (dépôt complet en texte).
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
@@ -29,10 +30,30 @@ export function htmlVersTexte(html) {
     .trim();
 }
 
+const BASE = 'https://www.sec.gov/Archives/edgar/data';
+const pause = () => new Promise((res) => setTimeout(res, PAUSE_MS));
+
+async function lire(url, agent) {
+  const r = await fetch(url, { headers: { 'User-Agent': agent, 'Accept-Encoding': 'gzip, deflate' } });
+  await pause();
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  return r.text();
+}
+
+// Annexes 99.x d'un 8-K : on lit l'index du dépôt, puis chaque annexe (communiqué, lettre aux actionnaires).
+async function annexes(d, agent) {
+  const dossier = `${BASE}/${d.cik}/${d.accession.replace(/-/g, '')}`;
+  const index = JSON.parse(await lire(`${dossier}/index.json`, agent));
+  const noms = index.directory.item.map((i) => i.name).filter((n) => /\.(htm|html|txt)$/i.test(n) && !/index|^R\d+\.htm/i.test(n) && n !== d.primaire && n !== `${d.accession}.txt`);
+  const retenus = noms.filter((n) => /99|press|earn|letter|release/i.test(n));
+  return (retenus.length ? retenus : noms).map((n) => `${dossier}/${n}`);
+}
+
 async function main() {
-  const docs = JSON.parse(await readFile(path.join(ICI, 'communiques.json'), 'utf8'));
+  const liste = process.argv.find((a) => a.endsWith('.json')) ?? path.join(ICI, 'communiques.json');
+  const docs = JSON.parse(await readFile(liste, 'utf8'));
   if (process.argv.includes('--dry')) {
-    for (const d of docs) console.log(d.ticker, d.fin, d.url);
+    for (const d of docs) console.log(d.ticker, d.fin ?? d.date, d.type ?? 'communique', d.url ?? d.accession);
     return;
   }
   const agent = process.env.SEC_USER_AGENT;
@@ -43,23 +64,27 @@ async function main() {
   await mkdir(SORTIE, { recursive: true });
   const bilan = [];
   for (const d of docs) {
-    const nom = `${d.ticker}_${d.fin}.txt`;
+    const cle = `${d.ticker}_${d.fin ?? d.date}`;
     try {
-      const r = await fetch(d.url, { headers: { 'User-Agent': agent, 'Accept-Encoding': 'gzip, deflate' } });
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      const texte = htmlVersTexte(await r.text());
-      await writeFile(path.join(SORTIE, nom), `${d.url}\n${d.ticker} · ${d.trimestre} · publié le ${d.publication}\n\n${texte}\n`);
-      bilan.push({ ...d, fichier: nom, caracteres: texte.length, ok: true });
-      console.log('ok   ', nom, texte.length);
+      const urls = d.type === 'exhibits' ? await annexes(d, agent) : [d.url];
+      let k = 0;
+      for (const url of urls) {
+        const brut = await lire(url, agent);
+        const texte = /<html|<font|<td|<div/i.test(brut) ? htmlVersTexte(brut) : brut;
+        const nom = d.type === 'exhibits' ? `${cle}_${++k}.txt` : d.type === 'depot' ? `${cle}_${d.forme}_${d.accession}.txt` : `${cle}.txt`;
+        await writeFile(path.join(SORTIE, nom), `${url}\n${d.ticker} · ${d.trimestre ?? d.forme ?? '8-K'} · ${d.publication ?? d.date}\n\n${texte}\n`);
+        bilan.push({ ...d, url, fichier: nom, caracteres: texte.length, ok: true });
+        console.log('ok   ', nom, texte.length);
+      }
+      if (!urls.length) throw new Error('aucune annexe trouvée');
     } catch (e) {
       bilan.push({ ...d, ok: false, erreur: String(e.message) });
-      console.log('échec', nom, e.message);
+      console.log('échec', cle, e.message);
     }
-    await new Promise((res) => setTimeout(res, PAUSE_MS));
   }
   await writeFile(path.join(SORTIE, 'index.json'), JSON.stringify(bilan, null, 2));
   const rates = bilan.filter((b) => !b.ok).length;
-  console.log(`${bilan.length - rates} communiqués enregistrés, ${rates} échecs`);
+  console.log(`${bilan.length - rates} documents enregistrés, ${rates} échecs`);
   if (rates === bilan.length) process.exit(1);
 }
 

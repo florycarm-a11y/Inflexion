@@ -1,7 +1,7 @@
 name: Collecte des communiqués SEC (backtest)
 
 # Outil ponctuel du backtest de la méthode Inflexion : télécharge les communiqués de
-# résultats listés dans scripts/backtest/communiques.json et les publie en artefact.
+# résultats et les dépôts listés dans scripts/backtest/*.json et les publie en artefact.
 # Ne modifie aucun fichier du dépôt.
 on:
   workflow_dispatch:
@@ -24,11 +24,11 @@ jobs:
         with:
           node-version: '22'
       - name: Télécharger les communiqués
-        run: node scripts/backtest/fetch-sec-communiques.mjs
+        run: node scripts/backtest/fetch-sec-communiques.mjs scripts/backtest/documents-echecs.json
         env:
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
       - uses: actions/upload-artifact@v4
         with:
-          name: communiques-sec
+          name: documents-echecs
           path: out/communiques
           retention-days: 7
