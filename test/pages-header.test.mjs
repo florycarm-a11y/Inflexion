@@ -61,7 +61,7 @@ const SHELL_JS = sansCommentaires(lire('assets/header-shell.js'));
 const SHELL_CSS = sansCommentaires(lire('assets/header-shell.css'));
 const COQUILLE = sansCommentaires(lire('assets/article-shell.js'));
 // Sélecteurs d'en-tête de la home, dans l'ordre de son <style> (la règle de focus perd .v2-chrome, classe de page : voir plus bas).
-const SELECTEURS = ['.kicker', '.nav-link', '.nav-link::after', '.nav-link.active::after', '.mega-trigger', '.mega-menu', '.mega-menu.mega-open', '.mega-menu::before', '.mega-item', '.site-header', '.nav-scrolled', '.nav-states', '.nav-state', '.nav-state.is-hidden', '.hamburger span', '.hamburger.open span:nth-child(1)', '.hamburger.open span:nth-child(2)', '.hamburger.open span:nth-child(3)', '.mobile-overlay', '.mobile-overlay.open', '.menu-item', '.mobile-overlay.open .menu-item', 'body.menu-open'];
+const SELECTEURS = ['.kicker', '.nav-link', '.nav-link::after', '.nav-link.active::after', '.mega-trigger', '.mega-menu', '.mega-menu.mega-open', '.mega-menu::before', '.mega-menu::after', '.mega-menu.mega-open::after', '.mega-item', '.site-header', '.nav-scrolled', '.nav-states', '.nav-state', '.nav-state.is-hidden', '.hamburger span', '.hamburger.open span:nth-child(1)', '.hamburger.open span:nth-child(2)', '.hamburger.open span:nth-child(3)', '.mobile-overlay', '.mobile-overlay.open', '.menu-item', '.mobile-overlay.open .menu-item', 'body.menu-open'];
 const FOCUS_FEUILLE = 'header :focus-visible,.mobile-overlay :focus-visible';
 const FOCUS_HOME = 'header :focus-visible,.mobile-overlay :focus-visible,.v2-chrome :focus-visible';
 
@@ -172,15 +172,36 @@ test('nav-shared.js : même DOM que la Navigation de la home (classes), logique 
   }
   // Entrée et sortie du survol calculées comme React (onPointerEnter/onMouseLeave de la home) : pointerover/mouseout + relatedTarget.
   // pointerenter/mouseleave natifs ne partent que d'un vrai déplacement et divergeraient de la home (contrôle CDP : 2 échecs sur 5 pages legacy).
-  assert.ok(ns.includes("addEventListener('pointerover',function(e){if(e.pointerType==='mouse'&&!t.contains(e.relatedTarget))setMegaOpen(ci);})"), 'entrée du survol : pointerover filtré sur la souris et sur relatedTarget');
-  assert.ok(ns.includes("addEventListener('mouseout',function(e){if(megaOpen===ci&&!t.contains(e.relatedTarget)&&!t.contains(document.activeElement))setMegaOpen(-1);})"), 'sortie du survol : mouseout d\'après relatedTarget, sauf si le focus est dedans, et seulement si ce panneau est l\'ouvert');
-  assert.ok(ns.includes("addEventListener('focusout',function(e){if(megaOpen===ci&&!t.contains(e.relatedTarget))setMegaOpen(-1);})"), 'perte de focus : ne ferme que le panneau de cette rubrique (sinon le clic sur un lien d\'une autre rubrique est perdu)');
+  assert.ok(ns.includes("addEventListener('pointerover',function(e){if(e.pointerType==='mouse'&&!t.contains(e.relatedTarget)){if(megaOpen!==ci)survol=ci;setMegaOpen(ci);}})"), 'entrée du survol : pointerover filtré sur la souris et sur relatedTarget ; ne marque « ouverte au survol » que s\'il ouvre réellement');
+  assert.ok(ns.includes("addEventListener('mouseout',function(e){var f=document.activeElement;if(megaOpen===ci&&!t.contains(e.relatedTarget)&&(!t.contains(f)||(survol===ci&&!p.contains(f))))setMegaOpen(-1);})"), 'sortie du survol : mouseout d\'après relatedTarget, seulement ce panneau ; ouvert au survol, il se ferme même si le bouton a le focus, sauf si le focus est dans le panneau');
+  assert.ok(ns.includes("addEventListener('focusout',function(e){if(megaOpen===ci&&e.relatedTarget&&!t.contains(e.relatedTarget))setMegaOpen(-1);})"), 'perte de focus : vers un élément précis hors de la rubrique, et seulement son propre panneau');
+  assert.ok(ns.includes("b.addEventListener('click',function(){survol=-1;setMegaOpen(megaOpen===ci?-1:ci);})"), 'clic : bascule et efface la provenance « survol »');
+  assert.ok(ns.includes("function quitterFenetre(){setMegaOpen(-1);}") && ns.includes("window.addEventListener('blur',quitterFenetre)") && ns.includes("window.removeEventListener('blur',quitterFenetre)"), 'la perte de focus de la fenêtre doit fermer le panneau ouvert');
   // Règle générale (même que la home) : dans les gestionnaires posés sur une rubrique, toute fermeture directe vérifie que le panneau ouvert est le sien.
-  const debutRubriques = ns.indexOf("triggers.forEach(function(t,ci){\nvar b=t.querySelector('button');"), finRubriques = ns.indexOf('\n});', debutRubriques); // le second forEach : celui qui pose les gestionnaires
+  const debutRubriques = ns.indexOf("triggers.forEach(function(t,ci){\nvar b=t.querySelector('button')"), finRubriques = ns.indexOf('\n});', debutRubriques); // le second forEach : celui qui pose les gestionnaires
   assert.ok(debutRubriques !== -1 && finRubriques > debutRubriques, 'gestionnaires des rubriques introuvables');
   const conditions = [...ns.slice(debutRubriques, finRubriques).matchAll(/if\(([^{}]*?)\)\{?setMegaOpen\(-1\)/g)].map((m) => m[1]);
   assert.equal(conditions.length, 3, `trois fermetures directes attendues sur une rubrique (sortie, perte de focus, Échap), ${conditions.length} trouvées`);
   for (const c of conditions) assert.ok(/megaOpen===ci/.test(c), `fermeture sans vérifier que le panneau ouvert est celui de la rubrique : if(${c})`);
+  // Liste fermée, quelle que soit la forme d'écriture (retour anticipé, ternaire, appel nu) : tous les appels à setMegaOpen du bloc, et ses écouteurs.
+  const bloc = ns.slice(debutRubriques, finRubriques);
+  // Arguments lus avec un compteur de parenthèses (un argument à parenthèses n'échappe pas à la liste).
+  const appelsVanilla = [];
+  for (let i = bloc.indexOf('setMegaOpen('); i !== -1; i = bloc.indexOf('setMegaOpen(', i + 1)) {
+    let j = i + 'setMegaOpen('.length, profondeur = 1;
+    for (; profondeur > 0; j++) { if (bloc[j] === '(') profondeur++; else if (bloc[j] === ')') profondeur--; }
+    appelsVanilla.push(bloc.slice(i + 'setMegaOpen('.length, j - 1));
+  }
+  assert.deepEqual(appelsVanilla, ['megaOpen===ci?-1:ci', 'ci', '-1', '-1', '-1'], 'appels à setMegaOpen sur une rubrique : clic, survol, sortie, perte de focus, Échap');
+  // Provenance « survol » : déclarée une fois à la portée de l'IIFE (sous 'use strict', son absence lèverait une ReferenceError au premier survol
+  // ou clic), écrite deux fois dans les gestionnaires (l'entrée qui ouvre, le clic).
+  const declaration = ns.indexOf('var survol=-1;');
+  assert.ok(declaration !== -1 && declaration < debutRubriques && !ns.slice(debutRubriques, finRubriques).includes('var survol'), 'var survol=-1; doit être déclarée avant les gestionnaires, hors du rappel par rubrique');
+  assert.equal((bloc.match(/\bsurvol=(?!=)/g) || []).length, 2, 'deux écritures de la provenance dans les gestionnaires');
+  // Écouteurs du document et de la fenêtre : posés à l'ouverture, retirés à la fermeture (branches figées).
+  assert.ok(ns.includes("if(avant<0&&i>=0){document.addEventListener('pointerdown',fermerDehors);document.addEventListener('keydown',echapDocument);window.addEventListener('blur',quitterFenetre);}"), 'écouteurs posés à l\'ouverture');
+  assert.ok(ns.includes("if(avant>=0&&i<0){document.removeEventListener('pointerdown',fermerDehors);document.removeEventListener('keydown',echapDocument);window.removeEventListener('blur',quitterFenetre);}"), 'écouteurs retirés à la fermeture');
+  assert.equal(bloc.split('addEventListener(').length - 1, 5, 'cinq écouteurs par rubrique : click, pointerover, mouseout, focusout, keydown');
   assert.ok(!/'pointerenter'|'mouseleave'/.test(ns), 'pointerenter/mouseleave natifs : sémantique différente de la home');
   assert.equal(ns.split('aria-controls="menu-overlay"').length - 1, 2, '« Menu » et le hamburger pointent l\'overlay');
   assert.equal(ns.split('md:max-w-2xl md:mx-auto md:w-full').length - 1, 3, 'trois conteneurs de l\'overlay en colonne');

@@ -10,6 +10,8 @@ const[open,setOpen]=useState(false)
 const[scrolled,setScrolled]=useState(()=>window.scrollY>60) // lu au montage : rechargement ou retour arrière avec défilement restauré
 const[megaOpen,setMegaOpen]=useState(-1)
 const ouvreur=useRef(null) // bouton qui a ouvert l'overlay : le focus lui revient à la fermeture
+const survol=useRef(-1) // rubrique ouverte au survol (l'entrée du pointeur qui l'ouvre la marque, le clic et l'Entrée effacent la marque) : à la sortie du pointeur elle se referme,
+                        // même si son bouton a gardé le focus d'un clic antérieur, sauf si le focus est dans son panneau (tabulation en cours)
 useEffect(()=>{
 const fn=()=>setScrolled(window.scrollY>60)
 window.addEventListener('scroll',fn,{passive:true})
@@ -23,8 +25,9 @@ useEffect(()=>{
 if(megaOpen<0)return
 const fermer=e=>{if(!e.target.closest?.('.mega-trigger'))setMegaOpen(-1)}
 const echap=e=>{if(e.key==='Escape')setMegaOpen(-1)} // panneau ouvert au survol : rien n'a le focus, le onKeyDown du déclencheur ne reçoit rien
-document.addEventListener('pointerdown',fermer);document.addEventListener('keydown',echap)
-return()=>{document.removeEventListener('pointerdown',fermer);document.removeEventListener('keydown',echap)}
+const quitter=()=>setMegaOpen(-1) // la fenêtre perd le focus (autre onglet, autre application, barre d'adresse) : rien ne reste ouvert au retour
+document.addEventListener('pointerdown',fermer);document.addEventListener('keydown',echap);window.addEventListener('blur',quitter)
+return()=>{document.removeEventListener('pointerdown',fermer);document.removeEventListener('keydown',echap);window.removeEventListener('blur',quitter)}
 },[megaOpen])
 useEffect(()=>{
 if(!open)return
@@ -55,8 +58,10 @@ return h('div',null,
       // (le survol émulé d'un toucher, suivi du clic, ouvrirait puis refermerait). Pas d'ouverture au focus : tabuler le long de la barre n'ouvre rien.
       // Une rubrique ne ferme que SON panneau, en forme fonctionnelle (état à jour) : en Chrome, l'entrée dans la rubrique voisine part avant la sortie
       // de la rubrique quittée, et la perte de focus d'une rubrique ne doit pas fermer le panneau d'une autre (le clic sur un de ses liens serait perdu).
-      return h('div',{key:ci,className:'mega-trigger',onPointerEnter:(e)=>{if(e.pointerType==='mouse')setMegaOpen(ci)},onMouseLeave:(e)=>{if(!e.currentTarget.contains(document.activeElement))setMegaOpen(m=>m===ci?-1:m)},onBlur:(e)=>{if(!e.currentTarget.contains(e.relatedTarget))setMegaOpen(m=>m===ci?-1:m)},onKeyDown:(e)=>{if(e.key==='Escape'&&megaOpen===ci){setMegaOpen(-1);e.currentTarget.querySelector('button').focus()}}},
-       h('button',{type:'button','aria-expanded':megaOpen===ci,'aria-controls':'mega-panel-'+ci,onClick:()=>setMegaOpen(m=>m===ci?-1:ci),className:'nav-link px-3 py-2 text-sm transition-colors select-none text-[var(--chrome-text-2)] hover:text-[var(--chrome-text-1)] focus-visible:text-[var(--chrome-text-1)] bg-transparent border-0 cursor-pointer'},cat.label),
+      // Perte de focus « vers rien » (relatedTarget nul : clic sur une zone non focalisable, ou sur un lien sous Safari, qui ne donne pas le focus aux liens) :
+      // on ne ferme pas, sinon le panneau disparaît sous le clic ; le clic hors des rubriques et la perte de focus de la fenêtre ferment par ailleurs.
+      return h('div',{key:ci,className:'mega-trigger',onPointerEnter:(e)=>{if(e.pointerType==='mouse'){if(megaOpen!==ci)survol.current=ci;setMegaOpen(ci)}},onMouseLeave:(e)=>{const f=document.activeElement;if(!e.currentTarget.contains(f)||(survol.current===ci&&!e.currentTarget.querySelector('.mega-menu').contains(f)))setMegaOpen(m=>m===ci?-1:m)},onBlur:(e)=>{if(e.relatedTarget&&!e.currentTarget.contains(e.relatedTarget))setMegaOpen(m=>m===ci?-1:m)},onKeyDown:(e)=>{if(e.key==='Escape'&&megaOpen===ci){setMegaOpen(-1);e.currentTarget.querySelector('button').focus()}}},
+       h('button',{type:'button','aria-expanded':megaOpen===ci,'aria-controls':'mega-panel-'+ci,onClick:()=>{survol.current=-1;setMegaOpen(m=>m===ci?-1:ci)},className:'nav-link px-3 py-2 text-sm transition-colors select-none text-[var(--chrome-text-2)] hover:text-[var(--chrome-text-1)] focus-visible:text-[var(--chrome-text-1)] bg-transparent border-0 cursor-pointer'},cat.label),
        h('div',{id:'mega-panel-'+ci,className:'mega-menu '+(megaOpen===ci?'mega-open ':'')+'p-5',style:{minWidth:isWide?'440px':'340px'}},
         h('p',{className:'kicker mb-3 px-3',style:{color:'var(--editorial-accent-text)'}},cat.label),
         h('div',{className:isWide?'grid grid-cols-2 gap-1':'grid gap-1'},
