@@ -210,8 +210,9 @@ var boutonMenu=etats[1].querySelector('button');
 var hamburger=header.querySelector('button.hamburger');
 var croix=overlay.querySelector('button');
 var megaOpen=-1, scrolled=false, overlayOuvert=false, ouvreur=null;
-var survol=-1; // rubrique ouverte au survol (l'entrée du pointeur qui l'ouvre la marque, le clic et l'Entrée effacent la marque) : à la sortie du pointeur elle se referme,
-               // même si son bouton a gardé le focus d'un clic antérieur, sauf si le focus est dans son panneau (tabulation en cours)
+var survol=-1; // rubrique ouverte au survol (l'entrée du pointeur qui l'ouvre la marque, le clic et l'Entrée effacent la marque). La sortie du pointeur ne ferme
+               // QUE ce panneau-là, sauf si le focus clavier (:focus-visible) est dans le panneau ; ouvert au clic ou au clavier, il reste ouvert à la sortie
+               // (épinglé), quel que soit le moteur. Même règle que la home.
 
 // Méga-menu « disclosure » : le clic bascule (souris, toucher, Entrée, Espace), Échap ferme et rend le focus ; le survol n'ouvre que pour une vraie souris
 // (le survol émulé d'un toucher, suivi du clic, ouvrirait puis refermerait). Pas d'ouverture au focus. Panneau ouvert : un toucher hors de tout
@@ -238,7 +239,7 @@ b.addEventListener('click',function(){survol=-1;setMegaOpen(megaOpen===ci?-1:ci)
 // Perte de focus « vers rien » (relatedTarget nul : clic sur une zone non focalisable, ou sur un lien sous Safari) : on ne ferme pas,
 // sinon le panneau disparaît sous le clic ; le clic hors des rubriques et la perte de focus de la fenêtre ferment par ailleurs.
 t.addEventListener('pointerover',function(e){if(e.pointerType==='mouse'&&!t.contains(e.relatedTarget)){if(megaOpen!==ci)survol=ci;setMegaOpen(ci);}});
-t.addEventListener('mouseout',function(e){var f=document.activeElement;if(megaOpen===ci&&!t.contains(e.relatedTarget)&&(!t.contains(f)||(survol===ci&&!p.contains(f))))setMegaOpen(-1);});
+t.addEventListener('mouseout',function(e){var f=document.activeElement;if(megaOpen===ci&&survol===ci&&!t.contains(e.relatedTarget)&&!(p.contains(f)&&f.matches(':focus-visible')))setMegaOpen(-1);});
 t.addEventListener('focusout',function(e){if(megaOpen===ci&&e.relatedTarget&&!t.contains(e.relatedTarget))setMegaOpen(-1);});
 t.addEventListener('keydown',function(e){if(e.key==='Escape'&&megaOpen===ci){setMegaOpen(-1);b.focus();}});
 });
