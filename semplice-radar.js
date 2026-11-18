@@ -158,7 +158,7 @@
         ZONES.forEach(function(z,i){
             var btn=document.createElement('button');
             btn.textContent=z.name;
-            btn.style.cssText='padding:0.35rem 0.75rem;border-radius:6px;font-size:0.78rem;font-weight:600;cursor:pointer;transition:all 0.2s;border:2px solid '+z.color+';'+(active[i]?'background:'+z.color+';color:white;':'background:white;color:'+z.color+';');
+            btn.style.cssText='padding:0.35rem 0.75rem;font-size:0.78rem;font-weight:600;cursor:pointer;transition:all 0.2s;border:2px solid '+z.color+';'+(active[i]?'background:'+z.color+';color:white;':'background:white;color:'+z.color+';');
             btn.addEventListener('click',function(){
                 active[i]=!active[i];
                 buildControls();buildLegend();draw();
@@ -168,7 +168,7 @@
         var allActive=active.every(function(a){return a;});
         var allBtn=document.createElement('button');
         allBtn.textContent=allActive?'Aucun':'Tous';
-        allBtn.style.cssText='padding:0.35rem 0.75rem;border-radius:6px;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid #E2E5EB;background:#F7F8FA;color:#4C5052;transition:all 0.2s;';
+        allBtn.style.cssText='padding:0.35rem 0.75rem;font-size:0.78rem;font-weight:500;cursor:pointer;border:1px solid #E2E5EB;background:#F7F8FA;color:#4C5052;transition:all 0.2s;';
         allBtn.addEventListener('click',function(){
             var newState=!allActive;
             for(var j=0;j<active.length;j++)active[j]=newState;
@@ -184,7 +184,7 @@
             if(!active[i])return;
             var d=document.createElement('a');
             d.href=z.href;
-            d.style.cssText='display:flex;align-items:center;gap:0.75rem;text-decoration:none;padding:0.5rem;border-radius:8px;transition:background 0.2s;';
+            d.style.cssText='display:flex;align-items:center;gap:0.75rem;text-decoration:none;padding:0.5rem;transition:background 0.2s;';
             d.addEventListener('mouseenter',function(){d.style.background='#F7F8FA';});
             d.addEventListener('mouseleave',function(){d.style.background='transparent';});
             var dot=document.createElement('span');
