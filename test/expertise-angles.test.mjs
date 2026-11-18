@@ -31,9 +31,10 @@ test('expertise.html : aucune classe Tailwind rounded hors rounded-full', () => 
   assert.ok(!/class="[^"]*\brounded(?!-full\b)/.test(lire('expertise.html')));
 });
 
-test('styles.css : les règles propres à expertise (.expertise-highlight, .expertise-cta) sont sans rayon', () => {
+// .premium-cta-btn* sert aussi à premium.html : la règle vaut pour les deux pages.
+test('styles.css : les règles affichées sur expertise (.expertise-highlight, .expertise-cta, .premium-cta-btn*) sont sans rayon', () => {
   const css = lire('styles.css').replace(/\/\*[\s\S]*?\*\//g, '');
-  const regles = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter((m) => /\.expertise-(?:highlight|cta)(?![\w-])/.test(m[1]));
-  assert.ok(regles.length >= 2, 'règles .expertise-highlight / .expertise-cta introuvables');
+  const regles = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter((m) => /\.(?:expertise-highlight|expertise-cta|premium-cta-btn(?:-secondary)?)(?![\w-])/.test(m[1]));
+  assert.ok(regles.length >= 4, 'règles .expertise-highlight / .expertise-cta / .premium-cta-btn* introuvables');
   for (const [, selecteur, corps] of regles) assert.ok(!/border-radius/.test(corps), `${selecteur.trim()} porte un rayon`);
 });
