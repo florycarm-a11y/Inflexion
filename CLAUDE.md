@@ -112,7 +112,7 @@ python bot/main.py --mock                          # Bot (simulation)
 
 ### Tests — ce qui existe vraiment
 
-- **Front-end : `npm test`** (192 tests verts au 2026-11-19). **Aucun workflow ne le lance** : `ci.yml` ne couvre que `backend/` et `scripts/tests/`. Le lancer à la main avant chaque PR. **Vérification visuelle manuelle obligatoire.**
+- **Front-end : `npm test`** (192 tests verts au 2026-11-19). **Aucun workflow ne le lance** : `ci.yml` teste `backend/` et `scripts/tests/` ; son job Frontend ne contrôle que DOCTYPE et liens internes. Le lancer à la main avant chaque PR. **Vérification visuelle manuelle obligatoire.**
 - Les scripts navigateur en globales `var` se chargent dans `node:vm` : testables sans dépendance.
 - Canvas non dessinés en onglet d'arrière-plan (`requestAnimationFrame` suspendu) : vérifier **onglet actif**.
 
