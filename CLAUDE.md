@@ -9,17 +9,18 @@
 
 **Inflexion** : plateforme d'intelligence financière automatisée (analyses géopolitiques + données de marché). Agrège **15 APIs**, **163 flux RSS** ; Claude Sonnet (briefing) + Claude Haiku (classification, alertes).
 **Production** : https://inflexionhub.com/
+**Projet de tracker d'inflexions** : règles de calcul dans `docs/tracker-methode.md` (v1.3 proposée, non figée). Ne pas coder le moteur avant sa validation par Flo.
 
 ## 2. Structure
 
-- **32 pages HTML** à la racine : thématiques (geopolitics, markets, crypto, commodities, etf, ai-tech, premium…), `expertise.html` (#semplice), `country.html` (Radar Pays), `briefing.html`, `analyses.html`, articles `analyse-*.html`, pages légales.
+- **33 pages HTML** à la racine : thématiques (geopolitics, markets, crypto, commodities, etf, ai-tech, premium…), `expertise.html` (#semplice), `country.html` (Radar Pays), `briefing.html`, `analyses.html`, articles `analyse-*.html`, pages légales.
 - **JS racine** : `styles.css`, `nav-shared.js` + `nav-config.js` (nav injectée), `app.js`, `data-loader.js`, `image-catalog.js` (~120 images Unsplash, `matchImage()`), `semplice-zones-config.js`, `semplice-radar.js`, `semplice-country.js`.
 - `data/` (JSON du pipeline + `semplice-zones.geojson` 17 zones), `scripts/` (pipeline Node), `bot/` (Polymarket, Python), `.github/workflows/`.
 - Spécifications design détaillées : `DESIGN-MIGRATION-PROMPT.md`.
 
 ## 3. Design System (OBLIGATOIRE)
 
-> **⚠ Identité v2 « chaude » — migration terminée sur les 31 pages (2026-07-25), mais PAS ENCORE DANS `main`.** Elle vit sur une chaîne de branches empilées : `feat/identity-v2-cohorte-b` (#136) → `feat/identity-v2-propagation` (#135) → `feat/identity-v2-home` (#134) → `main`. **Vérifier la branche avant de juger l'état d'une page.** Dans `main` : v2 « froide » (chrome achromatique `#0E1012`), polices déjà Archivo/IBM Plex. Spec : `docs/superpowers/specs/2026-07-16-identity-v2-design.md`.
+> **Identité v2 « chaude » : dans `main` depuis le 2026-07-30** (#134 à #136 fusionnées ; revérifié le 2026-11-19 : `index.html` en chrome espresso `#17100E`). #140 (`briefing.html`) est encore ouverte : vérifier avant d'y toucher. Spec : `docs/superpowers/specs/2026-07-16-identity-v2-design.md`.
 >
 > **Règle absolue : aucun chercher-remplacer global de couleur.** Six couleurs font double emploi — marque **et** donnée : `#006650`, `#33B894`, `#C8955A`, `#a7f3d0`, `#6b7280`, `#D1FAE5`. Remplacer `#006650` recolorerait le palier « risque faible », le palier « opportunité élevée » et l'indicateur O/R ≥ 1. Séparer le sens de l'identité **avant** de toucher à la palette.
 >
@@ -40,7 +41,7 @@ Chrome espresso `#17100E` · rouge éditorial `#8E2424` (topbar, filets, hover, 
 **Tailwind est compilé** : `npm run build:css` → `assets/site.css` (commité, reconstruit au déploiement), chargé en **dernier élément du `<head>`** ; plus de CDN ni de config inline (test `site-css`). Critère legacy/React : `nav-shared.js` + `styles.css` vs runtime React.
 
 - **Legacy — 16 pages** : thématiques, légales, `expertise`, `country`, `a-propos`, `ai-tech`, et **3 articles** (`analyse-droits-douane-trump-groenland`, `analyse-ia-rempart-marches`, `analyse-or-bitcoin-divergence`).
-- **React — 12 pages** : `index`, `analyses`, `analysis-template`, `artifact-inflexion`, + 8 `analyse-*`.
+- **React — 15 pages** : `index`, `analyses`, `analysis-template`, `artifact-inflexion`, + 11 `analyse-*`.
 - **Hybride** : `briefing.html` (React + `styles.css`, sans nav-shared). **Ni l'un ni l'autre** : `og-image.html`.
 
 `styles.css` contient **226 hex en dur** qui contournent ses variables `:root`. Les anciens `tailwind.config` inline n'apportaient rien d'employé ; `font-data` vient du `<style>` de chaque page.
@@ -52,7 +53,7 @@ Chrome espresso `#17100E` · rouge éditorial `#8E2424` (topbar, filets, hover, 
 **4 articles** (`ukraine`, `turquie`, `sahel`, `mer-chine`) sont refondus au format **« dossier à deux temps »** : page de garde (verdict SEMPLICE, scénarios dont la **largeur porte la probabilité**, chiffres clés) → corps avec **rail de progression** et **gouttière de sources** en marge → **appareil critique** puis CTA. Gabarit : `analysis-template.html`.
 
 - `assets/article-shell.js` — coquille React partagée (`Navigation`, `Cover`, `Section`, `SousTitre`, `P`, `Body`, `Apparatus`, `Footer`, `renderArticle`). **Elle sert plusieurs articles : ne jamais l'ajuster pour un cas particulier.**
-- `assets/article-model.js` — logique pure, testée. **`npm test`** (40 tests, dont `check-briefing`) : premier harness front du dépôt, `node --test 'test/**/*.test.mjs'` (le glob quoté est obligatoire sous Node 25).
+- `assets/article-model.js` — logique pure, testée. **`npm test`** (192 tests au 2026-11-19, dont `check-briefing`) : harness front du dépôt, `node --test 'test/**/*.test.mjs'` (le glob quoté est obligatoire sous Node 25).
 - Un article converti ne porte plus que son objet `ARTICLE` + son corps en `Section`/`P` + `renderArticle`. Les sources vivent dans la prop `sources` des paragraphes, **plus dans le texte**.
 - **Tout ce qui varie d'un article à l'autre doit venir de `ARTICLE`, jamais du squelette** : horizon des scénarios (`horizonScenarios`), séparateur décimal (`separateurDecimal`), couleur des paliers de matrice (`matrice[].style`). Trois régressions ont été causées par des valeurs écrites en dur — dont un horizon faux affiché en ligne et une échelle de gravité décalée.
 - **`Section` porte le romain RÉEL de l'article** (`romain:'III'`), pas son rang dans le tableau ; `null` pour les sections jamais numérotées. Renuméroter casserait les citations existantes.
@@ -83,7 +84,7 @@ Chrome espresso `#17100E` · rouge éditorial `#8E2424` (topbar, filets, hover, 
 
 ## 4. Navigation
 
-Mega menu desktop (monogrammes, CTA « Réserver un diagnostic ») ; mobile : overlay plein écran emerald. `nav-shared.js` remplace header/nav/footer sur les pages legacy ; source des entrées : `nav-config.js`.
+En-tête à deux états et méga-menu en verre sombre (novembre 2026 : home #147, 31 autres pages #149) ; specs : `docs/superpowers/specs/2026-11-16-en-tete-*.md`. `nav-shared.js` remplace header/nav/footer sur les pages legacy ; source des entrées : `nav-config.js`.
 
 ## 5. Pipeline de données
 
@@ -111,9 +112,8 @@ python bot/main.py --mock                          # Bot (simulation)
 
 ### Tests — ce qui existe vraiment
 
-- **Front-end : aucun test, aucune CI.** Pas de bloc `scripts` dans `package.json` racine (`npm test` échoue). `ci.yml` ne couvre que `backend/` et ne se déclenche pas sur les branches `codex/*`. **Vérification visuelle manuelle obligatoire.**
+- **Front-end : `npm test`** (192 tests verts au 2026-11-19). **Aucun workflow ne le lance** : `ci.yml` teste `backend/` et `scripts/tests/` ; son job Frontend ne contrôle que DOCTYPE et liens internes. Le lancer à la main avant chaque PR. **Vérification visuelle manuelle obligatoire.**
 - Les scripts navigateur en globales `var` se chargent dans `node:vm` : testables sans dépendance.
-- Node 25 : `node --test <dir>` échoue — utiliser `node --test 'test/**/*.test.mjs'`.
 - Canvas non dessinés en onglet d'arrière-plan (`requestAnimationFrame` suspendu) : vérifier **onglet actif**.
 
 ## 9. Règles importantes
