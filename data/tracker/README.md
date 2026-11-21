@@ -7,7 +7,7 @@ La validation exécutable est dans [`tracker-modele.js`](../../tracker-modele.js
 ## Trois règles qui gouvernent tout le schéma
 
 1. **Une valeur sans source ne s'affiche pas.** Tout champ porteur d'une valeur lue dans un document porte sa `source`. Un sens autre que `non-publie` sans source rend le fichier **invalide** — il n'est pas dégradé en silence vers « non publié ».
-2. **Le solde, les alertes, le score et la phase sont calculés, jamais saisis.** Les clés `solde`, `alertes`, `score` et `phase` sont **interdites** dans une publication. Le moteur n'est pas encore écrit (il s'implémente depuis la v1.3 figée, avec les suites de référence §13 comme tests ; les données d'entrée du backtest restent hors dépôt) : les pages affichent « non calculé » et « aucune alerte ».
+2. **Le solde, les alertes, le score et la phase sont calculés, jamais saisis.** Les clés `solde`, `alertes`, `score` et `phase` sont **interdites** dans une publication. Le moteur (`moteurAlertes`/`moteurDepuisFichier` dans `tracker-modele.js`, pseudo-code §6 faisant foi) les calcule à l'affichage, vérifié contre les trois suites de référence de §13 (`test/tracker-moteur.test.mjs`). Les données d'entrée du backtest restent hors dépôt.
 3. **`non-publie` est l'absence constatée.** Elle se passe de source, ne compte pas dans le solde, et s'affiche toujours avec un mot — jamais par une teinte seule (`--rule-incomplete` est « un filet de renfort, jamais preuve unique »).
 
 ## Fichiers
@@ -133,7 +133,7 @@ Par défaut, une annonce sans dépôt d'un 8-K rubrique 1.01 **ne dépasse pas l
 
 | Absent | Raison |
 |---|---|
-| `solde`, `alertes` | Dérivés des sens ; le moteur s'implémente depuis la v1.3 figée le 21 novembre 2026 et n'est pas encore écrit |
+| `solde`, `alertes` | Dérivés des sens par le moteur §6 à l'affichage — jamais stockés dans les fichiers |
 | `score`, `phase`, notes de niveau (§9) | §9 le dit : rejouées sur les sept premiers cas seulement, poids « un choix raisonné, pas un réglage mesuré ». Un score affiché se lirait comme une note de qualité |
 | Température du récit, liens de filière, badge de ventes à découvert | Prévus par la feuille de route, aucune règle validée. La température n'est pas définie dans la méthode et ne fait pas partie de la v1.3 |
 | Cours de Bourse, presse, notes d'analystes | La méthode ne lit que des documents publiés par la société |

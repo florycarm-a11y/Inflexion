@@ -24,12 +24,15 @@ var TRACKER_METHODE = {
   precisionsEnAttente: 0,
 };
 
-// Le moteur de calcul n'est pas encore écrit : la v1.3 est figée depuis le 21 novembre 2026, son
-// implémentation suit (pseudo-code §6 fait foi, suites de référence §13 comme tests). D'ici là,
-// rien ne doit inventer un solde.
+// Le moteur d'alertes est implémenté (moteurAlertes, plus bas) : transcription littérale du
+// pseudo-code de §6, qui fait foi, vérifiée contre les trois suites de référence de §13
+// (test/tracker-moteur.test.mjs : CrowdStrike, Plug Power, Fisker — 52 publications).
 var TRACKER_MOTEUR = {
-  present: false,
-  raison: 'Le moteur de calcul n’est pas encore écrit : la v1.3 a été figée le 21 novembre 2026, son implémentation suit.',
+  present: true,
+  version: '1.3',
+  implemente: '2026-11-21',
+  regle: 'docs/tracker-methode.md §6 (pseudo-code faisant foi)',
+  etat: 'Le moteur de la v1.3 (§6) est implémenté et vérifié contre les suites de référence de §13 : le solde et les alertes se calculent dès qu’une publication est saisie.',
 };
 
 // ── Les quatre sens (§4) ──────────────────────────────────────────────────────
@@ -183,24 +186,136 @@ function sensAffichable(dimension) {
   return sourceValide(dimension.source) ? dimension.sens : null;
 }
 
-// ── Solde et alertes : dérivés, jamais saisis ─────────────────────────────────
+// ── Moteur d'alertes (§6 — le pseudo-code fait foi) ──────────────────────────
+// Transcription littérale, dans l'ordre exact du pseudo-code : Bascule commerciale d'abord
+// (possible dès la première publication), puis — hors première publication — la chaîne
+// Bascule / Rechute / Signal faible, puis les deux fermetures de régime.
 
-/**
- * Solde d'une publication (§6 : somme des sens publiés, de −4 à +4).
- * Rend null tant que le moteur n'est pas écrit : la coquille affiche « non calculé », elle ne devine pas.
- */
+/** Somme des sens publiés (« non publié » ne compte pas). null si un sens manque ou sort de la méthode. */
+function soldeDesSens(sens) {
+  if (!sens || typeof sens !== 'object') return null;
+  var solde = 0;
+  for (var i = 0; i < TRACKER_DIMENSION_CLES.length; i++) {
+    var code = sens[TRACKER_DIMENSION_CLES[i]];
+    if (TRACKER_SENS_CODES.indexOf(code) === -1) return null;
+    var signe = TRACKER_SENS[code].signe;
+    if (signe !== null) solde += signe;
+  }
+  return solde;
+}
+
+/** Solde d'une publication du schéma data/tracker (§6 : de −4 à +4). null si la publication est malformée. */
 function soldeDe(publication) {
-  if (!TRACKER_MOTEUR.present) return null;
-  throw new Error('soldeDe : moteur annoncé présent mais non implémenté');
+  if (!publication || typeof publication !== 'object' || !publication.dimensions) return null;
+  var sens = {};
+  for (var i = 0; i < TRACKER_DIMENSION_CLES.length; i++) {
+    var d = publication.dimensions[TRACKER_DIMENSION_CLES[i]];
+    if (!d || typeof d !== 'object') return null;
+    sens[TRACKER_DIMENSION_CLES[i]] = d.sens;
+  }
+  return soldeDesSens(sens);
+}
+
+/** Signal faible, condition de transition : D2 ou D3 passe en hausse depuis un sens PUBLIÉ stable ou baisse.
+ *  Un « non publié » précédent ne vaut ni 0 ni −1 : il ne déclenche rien (§6). */
+function transitionHausse(sensPrecedents, sensCourants) {
+  for (var i = 0; i < 2; i++) {
+    var cle = ['d2', 'd3'][i];
+    if (sensCourants[cle] === 'hausse' && (sensPrecedents[cle] === 'stable' || sensPrecedents[cle] === 'baisse')) return true;
+  }
+  return false;
 }
 
 /**
- * Alertes d'une publication. Les alertes dépendent du solde, des régimes et de l'historique :
- * sans moteur, la liste est vide, et elle n'est jamais lue dans le fichier de la société.
+ * Le moteur (§6). entree = { archetype, lignes: [{date?, sens:{d1..d4}, margeBrute, barreau}] },
+ * lignes de la plus ancienne à la plus récente. Rend, par publication :
+ * { date, solde, alertes, retenues, drapeaux, regime } — `retenues` : alertes dont toutes les
+ * conditions sont réunies sauf la marge brute (le garde-fou les retient) ; `drapeaux` : « vend à
+ * perte », émis par la branche Bascule seulement, comme le pseudo-code l'écrit ; `regime` : l'état
+ * APRÈS la publication (aucun | bascule | rechute).
  */
-function alertesDe(publication) {
-  if (!TRACKER_MOTEUR.present) return [];
-  throw new Error('alertesDe : moteur annoncé présent mais non implémenté');
+function moteurAlertes(entree) {
+  if (!entree || TRACKER_ARCHETYPE_CODES.indexOf(entree.archetype) === -1) {
+    throw new Error('moteurAlertes : archetype attendu parmi ' + TRACKER_ARCHETYPE_CODES.join(', '));
+  }
+  if (!Array.isArray(entree.lignes)) throw new Error('moteurAlertes : lignes attendues en tableau');
+  var preRevenus = entree.archetype === 'pre-revenus';
+  var regime = 'aucun';
+  var basculeCommercialeEmise = false;
+  var soldePrecedent = null;
+  var sensPrecedents = null;
+  var resultats = [];
+
+  entree.lignes.forEach(function (ligne, i) {
+    var solde = soldeDesSens(ligne.sens);
+    if (solde === null) throw new Error('moteurAlertes : sens invalide à la publication ' + (i + 1));
+    if (TRACKER_ETATS_MARGE_BRUTE.indexOf(ligne.margeBrute) === -1) {
+      throw new Error('moteurAlertes : marge brute invalide à la publication ' + (i + 1));
+    }
+    // mb_ok = (marge brute calculable et > 0) ou (garde-fou sans objet)
+    var mbOk = ligne.margeBrute === 'positive' || ligne.margeBrute === 'sans-objet';
+    var alertes = [];
+    var retenues = [];
+    var drapeaux = [];
+
+    // si pré-revenus et barreau >= 4 et non bascule_commerciale_émise et mb_ok : alerte, émise = oui
+    if (preRevenus && typeof ligne.barreau === 'number' && ligne.barreau >= 4 && !basculeCommercialeEmise) {
+      if (mbOk) { alertes.push('bascule-commerciale'); basculeCommercialeEmise = true; }
+      else retenues.push('bascule-commerciale'); // non consommée : elle part à la première marge brute positive
+    }
+
+    // si ce n'est pas la première publication de la société :
+    if (i > 0) {
+      if (solde >= 2 && regime !== 'bascule') {
+        if (mbOk) { alertes.push('bascule'); regime = 'bascule'; }
+        else { retenues.push('bascule'); drapeaux.push('vend-a-perte'); } // aucune alerte, régime inchangé
+      } else if (solde <= -2 && regime !== 'rechute') {
+        alertes.push('rechute'); regime = 'rechute';
+      } else if (regime !== 'bascule' && solde < 2 && soldePrecedent <= 0 && transitionHausse(sensPrecedents, ligne.sens)) {
+        alertes.push('signal-faible');
+      }
+      if (regime === 'bascule' && solde <= 0 && soldePrecedent <= 0) regime = 'aucun';
+      if (regime === 'rechute' && solde >= 0 && soldePrecedent >= 0) regime = 'aucun';
+    }
+
+    resultats.push({
+      date: ligne.date === undefined ? null : ligne.date,
+      solde: solde,
+      alertes: alertes,
+      retenues: retenues,
+      drapeaux: drapeaux,
+      regime: regime,
+    });
+    soldePrecedent = solde;
+    sensPrecedents = ligne.sens;
+  });
+  return resultats;
+}
+
+/**
+ * Adaptateur depuis le schéma data/tracker : trie les publications par date, dérive le barreau
+ * de chaque ligne (le plus haut atteint par les événements commerciaux datés au plus tard du jour
+ * de la publication, §4 et §8), puis déroule le moteur. Le fichier doit avoir été validé
+ * (validerFichierSociete) ; l'entrée de catalogue fournit l'archétype.
+ */
+function moteurDepuisFichier(entreprise, fichier) {
+  if (!entreprise || TRACKER_ARCHETYPE_CODES.indexOf(entreprise.archetype) === -1) {
+    throw new Error('moteurDepuisFichier : entrée de catalogue avec archetype attendue');
+  }
+  if (!fichier || !Array.isArray(fichier.publications)) throw new Error('moteurDepuisFichier : fichier société attendu');
+  var tri = function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; };
+  var publications = fichier.publications.slice().sort(tri);
+  var evenements = (fichier.evenements_commerciaux || []).slice();
+  var lignes = publications.map(function (p) {
+    var sens = {};
+    TRACKER_DIMENSION_CLES.forEach(function (cle) { sens[cle] = p.dimensions[cle].sens; });
+    var barreau = null;
+    evenements.forEach(function (ev) {
+      if (ev.date <= p.date && (barreau === null || ev.barreau > barreau)) barreau = ev.barreau;
+    });
+    return { date: p.date, sens: sens, margeBrute: p.marge_brute.etat, barreau: barreau };
+  });
+  return moteurAlertes({ archetype: entreprise.archetype, lignes: lignes });
 }
 
 // ── États vides ───────────────────────────────────────────────────────────────
@@ -404,7 +519,8 @@ if (typeof module !== 'undefined' && module.exports) {
     valeurSourcee: valeurSourcee,
     sensAffichable: sensAffichable,
     soldeDe: soldeDe,
-    alertesDe: alertesDe,
+    moteurAlertes: moteurAlertes,
+    moteurDepuisFichier: moteurDepuisFichier,
     etatCatalogue: etatCatalogue,
     etatFiche: etatFiche,
     etatEvenements: etatEvenements,

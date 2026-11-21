@@ -398,8 +398,8 @@ return h('section',{id:'societes',className:'py-20 md:py-24'},
 }
 
 // ─── BULLETIN DES ALERTES — Rechutes d'abord ─────────────────────────────────
-// Le solde et les alertes se déduisent des sens ; le moteur de calcul n'est pas encore écrit
-// (TRACKER_MOTEUR : la v1.3 est figée, l'implémentation suit). Rien n'est deviné, rien n'est inventé.
+// Le solde et les alertes se calculent par le moteur de la v1.3 (TRACKER_MOTEUR, pseudo-code §6,
+// vérifié contre les suites §13). Sans société suivie, il n'a rien à calculer : les états vides le disent.
 
 function BulletinAlertes(){
 return h('section',{id:'alertes',className:'py-20 md:py-24',style:{backgroundColor:'var(--surface-raised)'}},
@@ -414,13 +414,13 @@ return h('section',{id:'alertes',className:'py-20 md:py-24',style:{backgroundCol
     h('h3',{className:'text-lg font-extrabold mb-3 text-[#101214]'},'Rechutes'),
     h('div',{className:'tk-vide'},
      h('p',{className:'tk-vide-titre'},'Aucune Rechute relevée'),
-     h('p',{className:'tk-vide-precision'},'Une Rechute part quand le solde tombe à −2 ou moins, hors régime de rechute. '+TK.TRACKER_MOTEUR.raison))
+     h('p',{className:'tk-vide-precision'},'Une Rechute part quand le solde tombe à −2 ou moins, hors régime de rechute. Aucune société n\'est suivie : le moteur n\'a encore rien à calculer.'))
    )),
    h(Reveal,{delay:0.3},h('div',{className:'tk',style:{maxWidth:'none',padding:0}},
     h('h3',{className:'text-lg font-extrabold mb-3 text-[#101214]'},'Bascules et Signaux faibles'),
     h('div',{className:'tk-vide'},
      h('p',{className:'tk-vide-titre'},'Aucune alerte relevée'),
-     h('p',{className:'tk-vide-precision'},'Le solde et les alertes se déduisent des sens relevés : le moteur n\'est pas encore écrit, rien n\'est calculé. Aucun chiffre n\'est inventé pour remplir cette page.'))
+     h('p',{className:'tk-vide-precision'},TK.TRACKER_MOTEUR.etat+' Aucun chiffre n\'est inventé pour remplir cette page.'))
    ))
   )
  )

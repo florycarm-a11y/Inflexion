@@ -109,7 +109,13 @@ function celluleFinancement(financement) {
     : el('span', { class: 'tk-np' }, 'Source manquante'));
 }
 
-function rendrePublications(fichier) {
+/** Libellé d'une alerte à partir de son code (§6). */
+function libelleAlerte(code) {
+  for (var i = 0; i < TRACKER_ALERTES.length; i++) if (TRACKER_ALERTES[i].code === code) return TRACKER_ALERTES[i].libelle;
+  return code;
+}
+
+function rendrePublications(fichier, entreprise) {
   if (etatFiche(fichier) === 'sans-publication') {
     return el('section', { class: 'tk-bloc' }, [
       el('h2', {}, 'Publications'),
@@ -119,7 +125,20 @@ function rendrePublications(fichier) {
     ]);
   }
 
-  var lignes = fichier.publications.map(function (p) {
+  // Le moteur (§6) déroule la série du plus ancien au plus récent : l'affichage suit le même ordre.
+  var publications = fichier.publications.slice().sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+  var serie;
+  try {
+    serie = moteurDepuisFichier(entreprise, fichier);
+  } catch (erreur) {
+    return el('section', { class: 'tk-bloc' }, [
+      el('h2', {}, 'Publications'),
+      etatVide('Moteur en échec sur ce fichier', String(erreur && erreur.message ? erreur.message : erreur)),
+    ]);
+  }
+
+  var lignes = publications.map(function (p, rang) {
+    var calcul = serie[rang];
     var cellulesSens = TRACKER_DIMENSION_CLES.map(function (cle) {
       var code = sensAffichable(p.dimensions[cle]);
       if (code === null) return el('td', { class: 'tk-donnee' }, el('span', { class: 'tk-np' }, 'Source manquante'));
@@ -127,31 +146,41 @@ function rendrePublications(fichier) {
       return el('td', { class: 'tk-donnee' }, [pastilleSens(code), ' ', lienSource(p.dimensions[cle].source)]);
     });
 
-    var solde = soldeDe(p);
-    var alertes = alertesDe(p);
-    var drapeaux = p.drapeaux.filter(function (d) { return sourceValide(d.source); });
+    // Drapeaux : les saisis (chacun avec sa source) plus ceux que le moteur émet (« vend à perte »,
+    // garde-fou §6) ; un code déjà saisi n'est pas doublé par le calcul.
+    var drapeauxSaisis = p.drapeaux.filter(function (d) { return sourceValide(d.source); });
+    var codesSaisis = drapeauxSaisis.map(function (d) { return d.code; });
+    var drapeauxCalcules = calcul.drapeaux.filter(function (code) { return codesSaisis.indexOf(code) === -1; });
+
+    var cellulesAlertes = calcul.alertes.map(function (code) { return el('li', {}, libelleAlerte(code)); })
+      .concat(calcul.retenues.map(function (code) { return el('li', {}, el('span', { class: 'tk-np' }, libelleAlerte(code) + ' retenue')); }));
+
+    // Solde : signe toujours écrit, moins typographique (comme les suites de §13).
+    var soldeTexte = calcul.solde > 0 ? '+' + calcul.solde : calcul.solde < 0 ? '−' + (-calcul.solde) : '0';
 
     return el('tr', {}, [
       el('th', { scope: 'row', class: 'tk-donnee' }, [p.date, el('br'), el('span', { class: 'tk-trimestre' }, p.trimestre), ' ', lienSource(p.source)]),
     ].concat(cellulesSens).concat([
-      el('td', { class: 'tk-donnee' }, solde === null ? el('span', { class: 'tk-np' }, 'Non calculé') : String(solde)),
+      el('td', { class: 'tk-donnee' }, soldeTexte),
       el('td', {}, celluleMargeBrute(p.marge_brute)),
       celluleFinancement(p.financement),
-      el('td', {}, drapeaux.length
-        ? el('ul', { class: 'tk-drapeaux' }, drapeaux.map(function (d) {
+      el('td', {}, (drapeauxSaisis.length || drapeauxCalcules.length)
+        ? el('ul', { class: 'tk-drapeaux' }, drapeauxSaisis.map(function (d) {
           return el('li', {}, [TRACKER_DRAPEAUX[d.code].libelle, ' ', lienSource(d.source)]);
-        }))
+        }).concat(drapeauxCalcules.map(function (code) {
+          return el('li', {}, TRACKER_DRAPEAUX[code].libelle + ' (garde-fou §6)');
+        })))
         : el('span', { class: 'tk-np' }, 'Aucun')),
-      el('td', {}, alertes.length
-        ? el('ul', { class: 'tk-alertes' }, alertes.map(function (a) { return el('li', {}, a.libelle); }))
+      el('td', {}, cellulesAlertes.length
+        ? el('ul', { class: 'tk-alertes' }, cellulesAlertes)
         : el('span', { class: 'tk-np' }, 'Aucune alerte')),
     ]));
   });
 
   return el('section', { class: 'tk-bloc' }, [
     el('h2', {}, 'Publications'),
-    el('p', { class: 'tk-note' }, TRACKER_MOTEUR.raison
-      + ' Le solde et les alertes se déduisent des sens : ils restent non calculés tant que la méthode n’est pas figée.'),
+    el('p', { class: 'tk-note' }, TRACKER_MOTEUR.etat
+      + ' Une alerte décrit des publications passées ; elle n’est pas une prévision.'),
     el('div', { class: 'tk-table-defile' }, [
       el('table', { class: 'tk-table' }, [
         el('caption', {}, 'Sens relevés à chaque publication de résultats'),
@@ -225,7 +254,7 @@ function rendreFiche(hote, catalogue, id) {
       hote.appendChild(etatVide('Fichier de la société non conforme au schéma', ctrl.erreurs.join(' · ')));
       return;
     }
-    hote.appendChild(rendrePublications(fichier));
+    hote.appendChild(rendrePublications(fichier, entreprise));
     hote.appendChild(rendreEvenements(fichier));
   }).catch(function (erreur) {
     hote.appendChild(etatVide('Fichier de la société illisible', String(erreur.message || erreur)));

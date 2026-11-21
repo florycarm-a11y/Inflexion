@@ -157,7 +157,7 @@ test('la home n’invente rien : pas de solde affiché, pas d’alerte fabriqué
   for (const etat of ['Aucune société suivie', 'Aucune Rechute relevée', 'Aucune alerte relevée']) {
     assert.ok(SCRIPT_INDEX.includes(etat), `index.html : état vide absent : ${etat}`);
   }
-  assert.ok(SCRIPT_INDEX.includes('TRACKER_MOTEUR.raison'), 'index.html : l’absence de moteur doit venir du modèle, pas d’une chaîne locale');
+  assert.ok(SCRIPT_INDEX.includes('TRACKER_MOTEUR.etat'), 'index.html : l’état du moteur doit venir du modèle, pas d’une chaîne locale');
   // La home consomme le modèle, elle ne réécrit aucune règle.
   for (const appel of ['validerCatalogue(', 'etatCatalogue(']) {
     assert.ok(SCRIPT_INDEX.includes(appel), `index.html : la home doit passer par ${appel})`);
@@ -299,10 +299,14 @@ test('« non publié » se passe de source ; tout autre sens exige la sienne', (
   assert.equal(M.sensAffichable({ sens: 'tiede', source: SOURCE }), null, 'sens hors méthode');
 });
 
-test('le solde et les alertes restent non calculés : aucun moteur dans le dépôt', () => {
-  assert.equal(M.TRACKER_MOTEUR.present, false);
-  assert.equal(M.soldeDe({}), null, 'un solde deviné serait un chiffre inventé');
-  assert.deepEqual(rapatrier(M.alertesDe({})), []);
+test('le moteur §6 est présent ; le solde se calcule, jamais ne se devine', () => {
+  // La logique du moteur elle-même est vérifiée contre les suites §13 dans test/tracker-moteur.test.mjs.
+  assert.equal(M.TRACKER_MOTEUR.present, true);
+  assert.equal(M.TRACKER_MOTEUR.implemente, '2026-11-21');
+  assert.equal(typeof M.moteurAlertes, 'function');
+  assert.equal(typeof M.moteurDepuisFichier, 'function');
+  assert.equal(M.soldeDe({}), null, 'une publication malformée ne donne pas un solde inventé');
+  assert.equal(M.soldeDe({ dimensions: { d1: { sens: 'hausse', source: SOURCE }, d2: { sens: 'non-publie' }, d3: { sens: 'stable', source: SOURCE }, d4: { sens: 'baisse', source: SOURCE } } }), 0, '+1 + 0 − 1, n.p. ne comptant pas');
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -472,7 +476,7 @@ test('la vue n’injecte aucune donnée par innerHTML', () => {
 
 test('la vue ne réécrit aucune règle de la méthode : elle passe par le modèle', () => {
   const vue = lire('tracker-vue.js');
-  for (const appel of ['valeurSourcee', 'sensAffichable', 'sourceValide', 'soldeDe', 'alertesDe', 'etatFiche', 'etatEvenements', 'validerCatalogue', 'validerFichierSociete']) {
+  for (const appel of ['valeurSourcee', 'sensAffichable', 'sourceValide', 'moteurDepuisFichier', 'etatFiche', 'etatEvenements', 'validerCatalogue', 'validerFichierSociete']) {
     assert.ok(vue.includes(appel + '('), `tracker-vue.js n’appelle pas ${appel}()`);
     assert.ok(!new RegExp(`function\\s+${appel}\\s*\\(`).test(vue), `tracker-vue.js redéfinit ${appel}`);
   }
@@ -502,7 +506,7 @@ test('methode.html annonce le statut figé de la v1.3 et l’absence de moteur',
   for (const mention of ['figée le 21 novembre 2026', 'huit précisions', 'docs/tracker-methode.md']) {
     assert.ok(METHODE.includes(mention), `mention absente : ${mention}`);
   }
-  assert.ok(/Le moteur de calcul n’est pas encore écrit/.test(METHODE), 'l’absence de moteur doit être dite');
+  assert.ok(/Le moteur de la v1.3 est implémenté/.test(METHODE), 'le statut du moteur doit être dit');
 });
 
 test('methode.html porte les quatre dimensions et les quatre alertes', () => {
