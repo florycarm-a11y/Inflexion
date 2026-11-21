@@ -1,5 +1,125 @@
 {
   "methode_version": "1.3",
   "methode_document": "docs/tracker-methode.md",
-  "entreprises": []
+  "entreprises": [
+    {
+      "id": "centrus-energy",
+      "nom": "Centrus Energy",
+      "recit": "Uranium et cycle du combustible — enrichissement américain, dont le HALEU",
+      "archetype": "industriel",
+      "ca_these": {
+        "valeur": "Chiffre d’affaires du segment LEU (uranium faiblement enrichi)",
+        "source": {
+          "type": "8-K",
+          "date": "2026-11-04",
+          "url": "https://www.sec.gov/Archives/edgar/data/1065059/000162828026070229/ex991-10q2026_11x04.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "carnet",
+        "valeur": "Carnet de commandes publié à chaque trimestre",
+        "source": {
+          "type": "8-K",
+          "date": "2026-11-04",
+          "url": "https://www.sec.gov/Archives/edgar/data/1065059/000162828026070229/ex991-10q2026_11x04.htm"
+        }
+      },
+      "entree_tracker": "2026-11-21",
+      "fichier": "data/tracker/centrus-energy.json"
+    },
+    {
+      "id": "rocket-lab",
+      "nom": "Rocket Lab",
+      "recit": "Spatial — lanceurs et systèmes spatiaux",
+      "archetype": "industriel",
+      "ca_these": {
+        "valeur": "Chiffre d’affaires total (lancement et systèmes spatiaux)",
+        "source": {
+          "type": "8-K",
+          "date": "2026-11-09",
+          "url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000073/rklb-11092026ex991.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "carnet",
+        "valeur": "Carnet de commandes publié à chaque trimestre",
+        "source": {
+          "type": "8-K",
+          "date": "2026-11-09",
+          "url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000073/rklb-11092026ex991.htm"
+        }
+      },
+      "entree_tracker": "2026-11-21",
+      "fichier": "data/tracker/rocket-lab.json"
+    },
+    {
+      "id": "ionq",
+      "nom": "IonQ",
+      "recit": "Informatique quantique — systèmes à ions piégés et accès infonuagique",
+      "archetype": "industriel",
+      "ca_these": {
+        "valeur": "Chiffre d’affaires total (informatique quantique)",
+        "source": {
+          "type": "8-K",
+          "date": "2026-11-05",
+          "url": "https://www.sec.gov/Archives/edgar/data/1824920/000119312526449779/ionq-ex99_1.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "carnet",
+        "valeur": "Obligations de prestation restantes (RPO), publiées de façon irrégulière",
+        "source": {
+          "type": "8-K",
+          "date": "2026-11-05",
+          "url": "https://www.sec.gov/Archives/edgar/data/1824920/000119312526449779/ionq-ex99_1.htm"
+        }
+      },
+      "entree_tracker": "2026-11-21",
+      "fichier": "data/tracker/ionq.json"
+    },
+    {
+      "id": "oklo",
+      "nom": "Oklo",
+      "recit": "Petits réacteurs nucléaires — centrale Aurora",
+      "archetype": "pre-revenus",
+      "ca_these": {
+        "valeur": "Unités livrées — aucun réacteur mis en service à ce jour",
+        "source": {
+          "type": "10-Q",
+          "date": "2026-11-06",
+          "url": "https://www.sec.gov/Archives/edgar/data/1849056/000162828026071319/oklo-20260930.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "barreau-reservations",
+        "valeur": "Barreau d’engagement et réservations",
+        "source": {
+          "type": "10-Q",
+          "date": "2026-11-06",
+          "url": "https://www.sec.gov/Archives/edgar/data/1849056/000162828026071319/oklo-20260930.htm"
+        }
+      },
+      "entree_tracker": "2026-11-21",
+      "fichier": "data/tracker/oklo.json"
+    },
+    {
+      "id": "agility-robotics",
+      "nom": "Agility Robotics",
+      "recit": "Robotique humanoïde — robot Digit pour la logistique",
+      "archetype": "pre-revenus",
+      "ca_these": {
+        "valeur": "Unités livrées — aucune publication de résultats propre à ce jour",
+        "source": {
+          "type": "10-Q",
+          "date": "2026-11-13",
+          "url": "https://www.sec.gov/Archives/edgar/data/2074973/000121390026119801/ea0311936-10q_agility.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "non-publie"
+      },
+      "entree_tracker": "2026-11-21",
+      "fichier": "data/tracker/agility-robotics.json"
+    }
+  ]
 }

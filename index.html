@@ -399,9 +399,63 @@ return h('section',{id:'societes',className:'py-20 md:py-24'},
 
 // ─── BULLETIN DES ALERTES — Rechutes d'abord ─────────────────────────────────
 // Le solde et les alertes se calculent par le moteur de la v1.3 (TRACKER_MOTEUR, pseudo-code §6,
-// vérifié contre les suites §13). Sans société suivie, il n'a rien à calculer : les états vides le disent.
+// vérifié contre les suites §13). Le bulletin déroule le moteur sur chaque société du catalogue :
+// il ne lit aucune alerte stockée — il n'y en a pas, elles sont dérivées des sens à l'affichage.
+
+const LIBELLE_ALERTE={'bascule':'Bascule','bascule-commerciale':'Bascule commerciale','signal-faible':'Signal faible','rechute':'Rechute'}
+
+/** Toutes les alertes du catalogue, la plus récente d'abord. */
+function alertesDuCatalogue(catalogue,fichiers){
+const sorties=[]
+for(const e of catalogue.entreprises){
+const f=fichiers[e.id]
+if(!f||!f.publications.length)continue
+const publications=f.publications.slice().sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:0)
+let serie
+try{serie=TK.moteurDepuisFichier(e,f)}catch(_){continue}
+serie.forEach((r,i)=>{
+for(const code of r.alertes)sorties.push({id:e.id,nom:e.nom,date:publications[i].date,trimestre:publications[i].trimestre,code,solde:r.solde})
+})
+}
+return sorties.sort((a,b)=>a.date<b.date?1:a.date>b.date?-1:0)
+}
+
+function ListeAlertes({titre,alertes,videTitre,videTexte}){
+return h('div',{className:'tk',style:{maxWidth:'none',padding:0}},
+ h('h3',{className:'text-lg font-extrabold mb-3 text-[#101214]'},titre),
+ alertes.length?
+  h('ul',{className:'tk-evenements'},...alertes.map((a,i)=>
+   h('li',{key:i},
+    h('span',{className:'tk-donnee tk-barreau'},LIBELLE_ALERTE[a.code]),
+    h('a',{className:'tk-lien tk-barreau-libelle',href:'entreprise.html?id='+encodeURIComponent(a.id)},a.nom),
+    h('span',null,a.trimestre),
+    h('span',{className:'tk-donnee'},a.date),
+    h('span',{className:'tk-donnee'},'solde '+(a.solde>0?'+'+a.solde:a.solde<0?'−'+(-a.solde):'0'))
+   )
+  )):
+  h('div',{className:'tk-vide'},
+   h('p',{className:'tk-vide-titre'},videTitre),
+   h('p',{className:'tk-vide-precision'},videTexte))
+)
+}
 
 function BulletinAlertes(){
+const[etat,setEtat]=useState({phase:'chargement',rechutes:[],autres:[]})
+useEffect(()=>{
+let vivant=true
+fetch('data/tracker/entreprises.json',{cache:'no-store'})
+.then(r=>{if(!r.ok)throw new Error('catalogue : HTTP '+r.status);return r.json()})
+.then(catalogue=>Promise.all(catalogue.entreprises.map(e=>
+ fetch(e.fichier,{cache:'no-store'}).then(r=>r.ok?r.json():null).then(f=>[e.id,f])
+)).then(paires=>{
+const fichiers={};for(const[id,f] of paires)if(f)fichiers[id]=f
+const toutes=alertesDuCatalogue(catalogue,fichiers)
+if(vivant)setEtat({phase:'ok',rechutes:toutes.filter(a=>a.code==='rechute'),autres:toutes.filter(a=>a.code!=='rechute')})
+}))
+.catch(()=>{if(vivant)setEtat({phase:'erreur',rechutes:[],autres:[]})})
+return()=>{vivant=false}
+},[])
+const chargement=etat.phase==='chargement'
 return h('section',{id:'alertes',className:'py-20 md:py-24',style:{backgroundColor:'var(--surface-raised)'}},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h(Reveal,{delay:0},h('p',{className:'kicker mb-3'},'§ Bulletin — Alertes')),
@@ -410,18 +464,12 @@ return h('section',{id:'alertes',className:'py-20 md:py-24',style:{backgroundCol
    'La Rechute passe en premier : c\'est le signal le plus fiable du backtest. Une alerte décrit des publications passées — elle n\'est pas une prévision.'
   )),
   h('div',{className:'grid grid-cols-1 md:grid-cols-2 gap-6'},
-   h(Reveal,{delay:0.3},h('div',{className:'tk',style:{maxWidth:'none',padding:0}},
-    h('h3',{className:'text-lg font-extrabold mb-3 text-[#101214]'},'Rechutes'),
-    h('div',{className:'tk-vide'},
-     h('p',{className:'tk-vide-titre'},'Aucune Rechute relevée'),
-     h('p',{className:'tk-vide-precision'},'Une Rechute part quand le solde tombe à −2 ou moins, hors régime de rechute. Aucune société n\'est suivie : le moteur n\'a encore rien à calculer.'))
-   )),
-   h(Reveal,{delay:0.3},h('div',{className:'tk',style:{maxWidth:'none',padding:0}},
-    h('h3',{className:'text-lg font-extrabold mb-3 text-[#101214]'},'Bascules et Signaux faibles'),
-    h('div',{className:'tk-vide'},
-     h('p',{className:'tk-vide-titre'},'Aucune alerte relevée'),
-     h('p',{className:'tk-vide-precision'},TK.TRACKER_MOTEUR.etat+' Aucun chiffre n\'est inventé pour remplir cette page.'))
-   ))
+   h(Reveal,{delay:0.3},h('div',null,h(ListeAlertes,{titre:'Rechutes',alertes:etat.rechutes,
+    videTitre:chargement?'Lecture du catalogue…':'Aucune Rechute relevée',
+    videTexte:chargement?'Le moteur déroule chaque société suivie.':'Une Rechute part quand le solde tombe à −2 ou moins, hors régime de rechute. Aucune société suivie n\'y est tombée sur les publications lues.'}))),
+   h(Reveal,{delay:0.3},h('div',null,h(ListeAlertes,{titre:'Bascules et Signaux faibles',alertes:etat.autres,
+    videTitre:chargement?'Lecture du catalogue…':'Aucune alerte relevée',
+    videTexte:chargement?'Le moteur déroule chaque société suivie.':TK.TRACKER_MOTEUR.etat})))
   )
  )
 )
