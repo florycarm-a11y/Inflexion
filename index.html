@@ -3,19 +3,18 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Inflexion — Intelligence Géopolitique & Financière</title>
-<!-- Le « 178 » des balises meta est statique : le garder aligné sur SOURCES_COUNT (nav-config.js) -->
-<meta name="description" content="Révéler les signaux que le bruit dissimule. 178 sources, 15 APIs, analyse IA en temps réel."/>
+<title>Inflexion — Tracker d'inflexions</title>
+<meta name="description" content="Une fiche par société portée par un récit. À chaque publication de résultats, quatre dimensions reçoivent un sens ; leur somme déclenche quatre alertes. Méthode publique, limites comprises."/>
 <link rel="canonical" href="https://inflexionhub.com/"/>
-<meta name="keywords" content="intelligence financière, géopolitique, analyse IA, marchés, crypto, matières premières, ETF, signaux faibles"/>
-<meta property="og:title" content="Inflexion — Intelligence Géopolitique & Financière"/>
-<meta property="og:description" content="Révéler les signaux que le bruit dissimule. 178 sources, 15 APIs, analyse IA en temps réel."/>
+<meta name="keywords" content="tracker d'inflexions, publications de résultats, 8-K, 10-Q, méthode, bascule, rechute, signal faible"/>
+<meta property="og:title" content="Inflexion — Tracker d'inflexions"/>
+<meta property="og:description" content="Une fiche par société portée par un récit. Quatre dimensions, un solde, quatre alertes. Méthode publique, limites comprises."/>
 <meta property="og:image" content="https://inflexionhub.com/og-image.png"/>
 <meta property="og:url" content="https://inflexionhub.com"/>
 <meta property="og:type" content="website"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Inflexion — Intelligence Géopolitique & Financière"/>
-<meta name="twitter:description" content="Révéler les signaux que le bruit dissimule. 178 sources, 15 APIs, analyse IA en temps réel."/>
+<meta name="twitter:title" content="Inflexion — Tracker d'inflexions"/>
+<meta name="twitter:description" content="Une fiche par société portée par un récit. Quatre dimensions, un solde, quatre alertes. Méthode publique, limites comprises."/>
 <meta name="twitter:image" content="https://inflexionhub.com/og-image.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,28 +87,17 @@ body.menu-open{overflow:hidden}
 /* Hero glow — lueur rouge chaude */
 .hero-glow{position:absolute;top:-120px;right:-80px;width:560px;height:560px;background:radial-gradient(circle,rgba(224,90,78,.12) 0%,transparent 70%);pointer-events:none}
 
-/* Badges catégorie : pastille sombre dense neutre (pas de couleur — décision 2026-07-23).
-   Le libellé texte porte la catégorie ; aucune couleur-taxonomie sur la home. */
-
-/* Article cards — filet de lecture rouge */
+/* Cartes de renvoi — filet de lecture rouge */
 .article-card{position:relative;transition:box-shadow var(--motion-fast),border-color var(--motion-fast)}
 .article-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--editorial-accent);transform:scaleY(0);transform-origin:top;transition:transform var(--motion-fast);z-index:1}
-
-/* Miniatures de sources : traitement gravure commun (sans flou ni bruit, bon marché sur mobile) */
-.img-gravure{position:relative}
-.img-gravure img{filter:grayscale(1) contrast(1.1) brightness(.95)}
-.img-gravure::before{content:'';position:absolute;inset:0;background:#17100E;mix-blend-mode:multiply;opacity:.55;pointer-events:none}
-.img-gravure::after{content:'';position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(180deg,rgba(23,16,14,0),rgba(23,16,14,.85));pointer-events:none}
-
-/* Featured (manchette) card */
-.featured-card{position:relative;overflow:hidden}
 
 /* Apparitions — composant Reveal : un élément à la fois, opacité et 16 px, var(--motion-slow) (audit Starlink 7.2-7.4).
    Déclaré après .article-card pour que sa transition gagne pendant l'apparition ; Reveal retire la classe ensuite. */
 .reveal{opacity:0;transform:translateY(16px);transition:opacity var(--motion-slow),transform var(--motion-slow)}
 .reveal.is-visible{opacity:1;transform:none}
 
-/* Zoom des images au survol (ex utilitaires Tailwind, 500 ms) : durée en jeton, coupé sur tactile et en mouvement réduit */
+/* Zoom des images au survol : durée en jeton, coupé sur tactile et en mouvement réduit. La home du tracker ne porte plus d'image,
+   la règle reste pour la cohérence du bloc mouvement réduit (home-motion) et pour tout retour d'une image. */
 .zoom-hover{transition:transform var(--motion-slow)}
 
 /* Survols — seulement pour un pointeur capable de survoler (audit 7.6) : sur tactile un :hover resterait collé après le toucher */
@@ -120,14 +108,7 @@ body.menu-open{overflow:hidden}
 .article-card:hover::before{transform:scaleY(1)}
 }
 
-/* Zoom des images : survol possible ET mouvement non réduit, le motif de Starlink (audit 7.5) ; aucun :hover hors des blocs hover:hover */
-@media(hover:hover) and (prefers-reduced-motion:no-preference){
-.article-card:hover .zoom-hover{transform:scale(1.03)}
-.featured-card:hover .zoom-hover{transform:scale(1.02)}
-}
-
-/* Mouvement réduit : contenu affiché sans apparition, pas de zoom, entrées du menu visibles (audit 7.5).
-   La pastille et les squelettes sont coupés par la variante motion-safe: de Tailwind (site.css), pas ici : une règle de page serait battue. */
+/* Mouvement réduit : contenu affiché sans apparition, pas de zoom, entrées du menu visibles (audit 7.5). */
 @media(prefers-reduced-motion:reduce){
 .article-card::before{transition:none}
 .reveal{opacity:1;transform:none;transition:none}
@@ -145,12 +126,13 @@ a,button{min-height:44px;min-width:44px}
 .mobile-overlay .menu-item a{min-height:48px;display:flex;align-items:center}
 }
 </style>
+<link rel="stylesheet" href="assets/tracker.css">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body data-design-regime="editorial">
 <a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:8px 16px;background:var(--editorial-accent);color:var(--chrome-text-1);font-family:'IBM Plex Sans',sans-serif;font-size:14px;text-decoration:none;border-radius:0 0 4px 0;" onfocus="this.style.position='fixed';this.style.left='0';this.style.top='0';this.style.width='auto';this.style.height='auto';this.style.overflow='visible';" onblur="this.style.position='absolute';this.style.left='-9999px';this.style.width='1px';this.style.height='1px';this.style.overflow='hidden';">Aller au contenu principal</a>
 <div id="app"></div>
-<script src="instrument-pour.js"></script>
+<script src="tracker-modele.js"></script>
 <script src="nav-config.js"></script>
 <script type="module">
 import React,{useState,useEffect,useRef} from 'https://esm.sh/react@18.2.0'
@@ -207,68 +189,20 @@ onTransitionEnd:e=>{enfant.props.onTransitionEnd?.(e);if(e.target===e.currentTar
 }
 
 const MEGA_NAV=window.MEGA_NAV
-const SOURCES_COUNT=window.SOURCES_COUNT
 
-const DATA_BASE='data/'
+// ─── TRACKER — modèle (tracker-modele.js, chargé avant ce module) ────────────
+// Source de vérité du calcul : docs/tracker-methode.md (v1.3 proposée, non figée).
+// La home ne réécrit aucune règle : elle consomme le vocabulaire et la validation du modèle.
 
-const CATEGORIES=[
-{id:'geopolitique',label:'Géopolitique',cls:'category-geo'},
-{id:'marches',label:'Marchés',cls:'category-marches'},
-{id:'crypto',label:'Crypto',cls:'category-crypto'},
-{id:'matieres',label:'Matières Premières',cls:'category-matieres'},
-{id:'iatech',label:'IA & Tech',cls:'category-iatech'},
+const TK=window
+
+// Chiffres de la section 12 de la méthode (docs/tracker-methode.md) — le backtest, échecs compris.
+const BACKTEST_STATS=[
+{value:'17',label:'Cas rejoués — 7 pour construire, 10 pour tester, règles figées'},
+{value:'146',label:'Publications de résultats lues, une ligne par publication'},
+{value:'5/5',label:'Succès boursiers signalés par une Bascule'},
+{value:'3/5',label:'Échecs boursiers aussi signalés — la Bascule ne trie pas'},
 ]
-
-const ARTICLES_FALLBACK=[
-{id:1,cat:'geopolitique',title:'Ukraine / Mer Noire — Guerre d\'attrition et recomposition stratégique',source:'Inflexion Research',time:'Analyse',readingTime:22,img:'https://images.unsplash.com/photo-1581362716668-90df9e44d6bb?w=400&h=240&fit=crop&q=75',summary:'Plus de mille jours de guerre : front stabilisé, économie de guerre, cyber. Évaluation SEMPLICE 5.6/7.',href:'analyse-ukraine-mer-noire-guerre-attrition.html'},
-{id:2,cat:'geopolitique',title:'Sahel — Fracture sahélienne et recomposition sécuritaire',source:'Inflexion Research',time:'Analyse',readingTime:20,img:'https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?w=400&h=240&fit=crop&q=75',summary:'Mali, Niger, Burkina Faso : trois coups d\'État, sortie de la CEDEAO, pivot vers Moscou. SEMPLICE 5.8/7.',href:'analyse-sahel-mali-niger-burkina-crise.html'},
-{id:3,cat:'geopolitique',title:'Mer de Chine — Taïwan, semi-conducteurs et bascule indo-pacifique',source:'Inflexion Research',time:'Analyse',readingTime:20,img:'https://images.unsplash.com/photo-1535320903710-d993d3d77d29?w=400&h=240&fit=crop&q=75',summary:'Tensions militaires, guerre informationnelle et enjeu TSMC. Évaluation SEMPLICE 4,8/7.',href:'analyse-mer-chine-taiwan-indopacifique.html'},
-{id:4,cat:'marches',title:'La Fed maintient ses taux : les marchés anticipent une baisse en juin',source:'Reuters',time:'Il y a 3h',readingTime:4,img:'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=240&fit=crop',summary:'Jerome Powell signale un ralentissement progressif de l\'inflation, ouvrant la voie à un assouplissement monétaire.'},
-{id:5,cat:'crypto',title:'Bitcoin franchit les 68 000 $ : l\'effet ETF se confirme',source:'CoinDesk',time:'Il y a 1h',readingTime:3,img:'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=400&h=240&fit=crop',summary:'Les flux entrants dans les ETF Bitcoin spot atteignent un record hebdomadaire de 2,4 milliards de dollars.'},
-{id:6,cat:'matieres',title:'L\'or atteint un nouveau sommet historique à 2 178 $/oz',source:'metals.dev',time:'Il y a 4h',readingTime:3,img:'https://images.unsplash.com/photo-1610375461246-83df859d849d?w=400&h=240&fit=crop',summary:'La demande des banques centrales asiatiques et les tensions géopolitiques propulsent le métal jaune.'},
-{id:7,cat:'iatech',title:'Claude 4 d\'Anthropic : un bond en raisonnement et en sécurité',source:'VentureBeat',time:'Il y a 5h',readingTime:5,img:'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=240&fit=crop',summary:'Le nouveau modèle surpasse GPT-4 sur les benchmarks de raisonnement tout en renforçant les garde-fous.'},
-{id:8,cat:'geopolitique',title:'Sommet UE-Afrique : vers un partenariat stratégique renforcé',source:'IFRI',time:'Il y a 6h',readingTime:6,img:'https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=400&h=240&fit=crop',summary:'L\'Europe cherche à contrer l\'influence chinoise en proposant des investissements dans les infrastructures critiques.'},
-{id:9,cat:'marches',title:'Le DAX sous pression : l\'industrie allemande face au choc énergétique',source:'Les Échos',time:'Il y a 7h',readingTime:4,img:'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=240&fit=crop',summary:'Les coûts de production restent élevés malgré la baisse des prix du gaz, pesant sur la compétitivité.'},
-{id:10,cat:'crypto',title:'DeFi : la TVL dépasse 100 Md$ pour la première fois depuis 2022',source:'DefiLlama',time:'Il y a 3h',readingTime:5,img:'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&h=240&fit=crop',summary:'Le retour de la confiance dans les protocoles décentralisés marque un tournant pour l\'écosystème.'},
-{id:11,cat:'iatech',title:'L\'AI Act entre en vigueur : ce qui change pour les entreprises européennes',source:'Euractiv',time:'Il y a 8h',readingTime:8,img:'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=240&fit=crop',summary:'Les premières obligations de transparence s\'appliquent dès juin 2026 pour les systèmes à haut risque.'},
-]
-
-const FEATURED_ANALYSES=[
-{title:'Ukraine / Mer Noire — Guerre d\'attrition et recomposition stratégique',href:'analyse-ukraine-mer-noire-guerre-attrition.html',cat:'Géopolitique',date:'15 mars 2026',author:'Inflexion Research',readingTime:22,summary:'Plus de mille jours de guerre : front stabilisé, économie de guerre, cyber et recomposition géopolitique. Évaluation SEMPLICE 5.6/7.',sources:14,grade:'A',img:'assets/img/une/ukraine-mer-noire.webp'},
-{title:'Sahel — Fracture sahélienne et recomposition sécuritaire',href:'analyse-sahel-mali-niger-burkina-crise.html',cat:'Géopolitique',date:'15 mars 2026',author:'Inflexion Research',readingTime:20,summary:'Mali, Niger, Burkina Faso : trois coups d\'État, sortie de la CEDEAO, pivot vers Moscou. Évaluation SEMPLICE 5.8/7.',sources:14,grade:'A',img:'assets/img/une/sahel.webp'},
-{title:'Mer de Chine — Taïwan, semi-conducteurs et bascule indo-pacifique',href:'analyse-mer-chine-taiwan-indopacifique.html',cat:'Géopolitique',date:'15 mars 2026',author:'Inflexion Research',readingTime:20,summary:'Tensions militaires, guerre informationnelle et enjeu TSMC. Évaluation SEMPLICE 4,8/7.',sources:14,grade:'A',img:'assets/img/une/mer-de-chine.webp'},
-]
-
-function decodeEntities(s){if(!s)return s;const t=document.createElement('textarea');t.innerHTML=s;return t.value}
-// Le pipeline coupe certaines descriptions au milieu d'une balise : on retire aussi une balise ouverte en fin de texte
-function stripTags(s){return(s||'').replace(/<[^>]*>/g,' ').replace(/<[^>]*$/,' ').replace(/\s+/g,' ').trim()}
-
-function mapNewsToArticles(newsData){
-const articles=[]
-let id=1
-const catKeys={geopolitics:'geopolitique',markets:'marches',crypto:'crypto',commodities:'matieres',ai_tech:'iatech'}
-for(const[apiCat,items] of Object.entries(newsData.categories||{})){
-const cat=catKeys[apiCat]||'marches'
-for(const item of items){
-const title=decodeEntities(item.title)
-const description=stripTags(decodeEntities(item.description))
-const readingTime=Math.min(8,Math.max(2,Math.round(description.length/200)+2))
-articles.push({id:id++,cat,title,source:item.source||'',time:item.time||'',publishedAt:item.publishedAt||null,readingTime,img:item.image?decodeEntities(item.image):null,summary:description.slice(0,160),href:item.url||'#'})
-}
-}
-const ts=a=>a.publishedAt?(Date.parse(a.publishedAt)||0):0
-articles.sort((a,b)=>ts(b)-ts(a))
-return interleaveByCat(articles)
-}
-
-// « Tout » alterne les rubriques (une carte de chaque, puis on recommence) pour que les cinq
-// thèmes soient visibles dans les 9 premières cartes ; chaque rubrique reste triée par date.
-function interleaveByCat(articles){
-const buckets=CATEGORIES.map(c=>articles.filter(a=>a.cat===c.id))
-const out=[]
-for(let i=0;buckets.some(b=>i<b.length);i++)for(const b of buckets)if(i<b.length)out.push(b[i])
-return out
-}
 
 // ─── NAVIGATION (chrome v2 chaud) ────────────────────────────────────────────
 
@@ -382,294 +316,190 @@ return h('div',null,
 )
 }
 
-// ─── HERO — MANCHETTE (chrome chaud, câblage FEATURED_ANALYSES[0]) ────────────
+// ─── HERO — MANIFESTE DU TRACKER (chrome chaud) ──────────────────────────────
 
 function Hero(){
-const featured=FEATURED_ANALYSES[0]
 return h('section',{className:'v2-chrome relative pt-28 pb-16 md:pt-40 md:pb-24 lg:pt-44 lg:pb-28 overflow-hidden',style:{backgroundColor:'var(--chrome-ground)'}},
  h('div',{className:'hero-glow'}),
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative'},
-  h('div',{className:'flex flex-col lg:flex-row lg:items-start gap-12 lg:gap-16'},
-   // Gauche : manchette
-   h('div',{className:'lg:w-[44%] flex-shrink-0 lg:pt-2'},
-    h(Reveal,{delay:0},h('p',{className:'kicker mb-5',style:{color:'var(--editorial-accent-text)'}},'§ Manchette — Intelligence du jour')),
-    h(Reveal,{delay:0},h('h1',{className:'text-4xl sm:text-5xl md:text-6xl lg:text-[3.75rem] font-extrabold text-white leading-[1.03] tracking-tight'},
-     'Révéler les signaux',h('br'),
-     'que le bruit dissimule.'
-    )),
-    h(Reveal,{delay:0},h('div',{className:'mt-5 h-[3px] w-16 bg-[var(--editorial-accent)]'})),
-    h(Reveal,{delay:0.15},h('p',{className:'mt-6 lg:mt-8 text-base lg:text-lg text-[var(--chrome-text-2)] max-w-lg leading-relaxed'},
-     `Intelligence géopolitique et financière pour les décideurs. ${SOURCES_COUNT} sources, 15 APIs, analyse IA.`
-    )),
-    h(Reveal,{delay:0.3},h('div',{className:'mt-8 lg:mt-10 flex flex-col sm:flex-row gap-3'},
-     h('a',{href:'analyses.html',className:'inline-block px-7 py-3.5 bg-[var(--editorial-accent)] hover:bg-[#6E1B1B] text-[var(--chrome-text-1)] font-semibold transition-colors text-sm'},'Explorer les analyses'),
-     h('a',{href:'expertise.html',className:'inline-block px-7 py-3.5 border border-[rgba(224,90,78,.5)] hover:border-[var(--editorial-accent-text)] text-[var(--chrome-text-1)] font-semibold transition-colors text-sm'},'Notre méthodologie')
-    ))
-   ),
-   // Droite : article à la une
-   h('div',{className:'lg:w-[56%]'},
-    h(Reveal,{delay:0.3},h('a',{href:featured.href,className:'featured-card block group'},
-     h('div',{className:'relative'},
-      h('div',{className:'aspect-[16/9] overflow-hidden',style:{backgroundColor:'var(--chrome-ground)'}},
-       h('img',{src:featured.img,alt:featured.title,className:'w-full h-full object-cover zoom-hover',loading:'eager',width:1600,height:900,onError:e=>{e.target.style.display='none'}})
-      ),
-      h('div',{className:'absolute top-4 left-4 flex items-center gap-2'},
-       h('span',{className:'inline-flex items-center gap-1.5 px-2.5 py-1 bg-[var(--editorial-accent)] text-[var(--chrome-text-1)] text-xs font-semibold uppercase tracking-[0.14em]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
-        h('span',{className:'w-1.5 h-1.5 rounded-full bg-[var(--chrome-text-1)] motion-safe:animate-pulse'}),'À la une'),
-       h('span',{className:'px-2.5 py-1 bg-black/55 backdrop-blur-sm text-white text-xs font-semibold uppercase tracking-[0.14em]',style:{fontFamily:"'IBM Plex Mono',monospace"}},featured.cat)
-      )
-     ),
-     h('div',{className:'pt-5 lg:pt-6'},
-      h('h2',{className:'text-xl lg:text-2xl font-extrabold text-white leading-snug group-hover:text-[var(--chrome-text-1)] transition-colors'},featured.title),
-      h('p',{className:'mt-3 text-sm text-[var(--chrome-text-2)] leading-relaxed line-clamp-2'},featured.summary),
-      h('div',{className:'mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-[var(--chrome-text-2)]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
-       h('span',null,featured.readingTime+' min de lecture'),
-       h('span',null,featured.date),
-       h('span',null,featured.sources+' sources'),
-       h('span',{className:'px-2 py-0.5 border border-[rgba(224,90,78,.5)] text-[var(--editorial-accent-text)] font-semibold'},'Score : '+featured.grade)
-      )
-     )
-    ))
-   )
+  h('div',{className:'max-w-3xl'},
+   h(Reveal,{delay:0},h('p',{className:'kicker mb-5',style:{color:'var(--editorial-accent-text)'}},'§ Tracker d\'inflexions — Méthode publique')),
+   h(Reveal,{delay:0},h('h1',{className:'text-4xl sm:text-5xl md:text-6xl lg:text-[3.75rem] font-extrabold text-white leading-[1.03] tracking-tight'},
+    'Lire les preuves,',h('br'),
+    'pas le récit.'
+   )),
+   h(Reveal,{delay:0},h('div',{className:'mt-5 h-[3px] w-16 bg-[var(--editorial-accent)]'})),
+   h(Reveal,{delay:0.15},h('p',{className:'mt-6 lg:mt-8 text-base lg:text-lg text-[var(--chrome-text-2)] max-w-2xl leading-relaxed'},
+    'Une fiche par société portée par un récit. À chaque publication de résultats trimestriels, quatre dimensions reçoivent un sens — hausse, stable, baisse, non publié. Leur somme est le solde ; le solde déclenche quatre alertes.'
+   )),
+   h(Reveal,{delay:0.15},h('p',{className:'mt-4 text-sm text-[var(--chrome-text-3)] max-w-2xl leading-relaxed'},
+    'La méthode ne lit que des documents publiés par les sociétés : ni cours de Bourse, ni presse, ni note d\'analyste. Une valeur sans source ne s\'affiche pas.'
+   )),
+   h(Reveal,{delay:0.3},h('div',{className:'mt-8 lg:mt-10 flex flex-col sm:flex-row gap-3'},
+    h('a',{href:'#societes',className:'inline-block px-7 py-3.5 bg-[var(--editorial-accent)] hover:bg-[#6E1B1B] text-[var(--chrome-text-1)] font-semibold transition-colors text-sm'},'Les sociétés suivies'),
+    h('a',{href:'methode.html',className:'inline-block px-7 py-3.5 border border-[rgba(224,90,78,.5)] hover:border-[var(--editorial-accent-text)] text-[var(--chrome-text-1)] font-semibold transition-colors text-sm'},'La méthode, en clair')
+   ))
   )
  )
 )
 }
 
-// ─── ANALYSES À LA UNE ───────────────────────────────────────────────────────
+// ─── SOCIÉTÉS SUIVIES — l'instrument ─────────────────────────────────────────
+// Catalogue : data/tracker/entreprises.json, validé par le modèle. Une coquille vide est un état normal.
 
-function FeaturedAnalyses(){
-const analyses=FEATURED_ANALYSES.slice(1) // 2 analyses secondaires (la 1re est dans le hero)
-return h('section',{className:'py-20 md:py-24'},
+function SocietesSuivies(){
+const[etat,setEtat]=useState({phase:'chargement'})
+useEffect(()=>{
+fetch('data/tracker/entreprises.json',{cache:'no-store'})
+.then(r=>{if(!r.ok)throw new Error('data/tracker/entreprises.json : HTTP '+r.status);return r.json()})
+.then(catalogue=>{
+const controle=TK.validerCatalogue(catalogue)
+if(!controle.valide){setEtat({phase:'invalide',erreurs:controle.erreurs});return}
+setEtat({phase:TK.etatCatalogue(catalogue)==='aucune-entreprise'?'vide':'ok',catalogue})
+})
+.catch(err=>setEtat({phase:'erreur',message:String(err&&err.message?err.message:err)}))
+},[])
+let corps
+if(etat.phase==='chargement')corps=h('p',{className:'tk-note',style:{margin:0}},'Chargement du catalogue…')
+else if(etat.phase==='invalide')corps=h('div',{className:'tk-vide'},
+ h('p',{className:'tk-vide-titre'},'Catalogue non conforme au schéma'),
+ h('p',{className:'tk-vide-precision'},etat.erreurs.join(' · ')))
+else if(etat.phase==='erreur')corps=h('div',{className:'tk-vide'},
+ h('p',{className:'tk-vide-titre'},'Données du tracker illisibles'),
+ h('p',{className:'tk-vide-precision'},etat.message))
+else if(etat.phase==='vide')corps=h('div',{className:'tk-vide'},
+ h('p',{className:'tk-vide-titre'},'Aucune société suivie'),
+ h('p',{className:'tk-vide-precision'},'Le tracker est en construction : aucune société n\'y est encore entrée. Les paramètres d\'une société — archétype, chiffre d\'affaires de la thèse, indicateur de demande — se fixent avant de lire ses chiffres, et ne changent plus ensuite.'))
+else corps=h('div',{className:'tk-table-defile'},
+ h('table',{className:'tk-table'},
+  h('caption',null,'Sociétés suivies par le tracker d\'inflexions'),
+  h('thead',null,h('tr',null,
+   h('th',{scope:'col'},'Société'),
+   h('th',{scope:'col'},'Archétype'),
+   h('th',{scope:'col'},'Récit'),
+   h('th',{scope:'col'},'Entrée'))),
+  h('tbody',null,...etat.catalogue.entreprises.map(e=>
+   h('tr',{key:e.id},
+    h('th',{scope:'row'},h('a',{className:'tk-lien',href:'entreprise.html?id='+encodeURIComponent(e.id)},e.nom)),
+    h('td',null,TK.TRACKER_ARCHETYPES[e.archetype].libelle),
+    h('td',null,e.recit),
+    h('td',{className:'tk-donnee'},e.entree_tracker))))
+ ))
+return h('section',{id:'societes',className:'py-20 md:py-24'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
-  h('div',{className:'flex items-end justify-between mb-10'},
-   h('div',null,
-    h(Reveal,{delay:0},h('p',{className:'kicker mb-3'},'§ Analyses — Décryptages')),
-    h(Reveal,{delay:0},h('h2',{className:'text-3xl md:text-[2.5rem] md:leading-[1.1] font-extrabold text-[#101214]'},'Décryptages approfondis'))
-   ),
-   h(Reveal,{delay:0.3},h('a',{href:'analyses.html',className:'hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-[var(--editorial-accent)] hover:underline'},'Voir toutes les analyses →'))
-  ),
-  h('div',{className:'grid grid-cols-1 md:grid-cols-2 gap-6'},
-   ...analyses.map((a,i)=>{
-    return h(Reveal,{key:i,delay:0.3,stagger:0.06},h('a',{href:a.href,className:'article-card group block overflow-hidden bg-[#FFFFFF] border border-[var(--hairline-warm)] no-underline'},
-     h('div',{className:'aspect-[21/9] overflow-hidden'},
-      h('img',{src:a.img,alt:a.title,className:'w-full h-full object-cover object-top zoom-hover',loading:'lazy'})
-     ),
-     h('div',{className:'p-6 md:p-8'},
-      h('div',{className:'flex items-center gap-3 mb-4'},
-       h('span',{className:'bg-[var(--badge-bg)] text-[var(--badge-text)] text-xs font-semibold uppercase tracking-[0.12em] px-2 py-0.5',style:{fontFamily:"'IBM Plex Mono',monospace"}},a.cat),
-       h('span',{className:'text-xs text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},a.date)
-      ),
-      h('h3',{className:'text-lg md:text-xl font-extrabold leading-snug mb-3 text-[#101214]'},a.title),
-      h('p',{className:'text-sm leading-relaxed mb-5 text-[#4C5052]'},a.summary),
-      h('div',{className:'flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-xs text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
-       h('span',null,a.readingTime+' min · '+a.sources+' sources'),
-       h('span',{className:'text-sm font-semibold text-[var(--editorial-accent)] group-hover:underline'},'Lire →')
-      )
-     )
-    ))
-   })
-  ),
-  h(Reveal,{delay:0.3},h('a',{href:'analyses.html',className:'sm:hidden flex items-center justify-center gap-1 mt-6 text-sm font-semibold text-[var(--editorial-accent)]'},'Voir toutes les analyses →'))
+  h(Reveal,{delay:0},h('p',{className:'kicker mb-3'},'§ L\'instrument — Sociétés suivies')),
+  h(Reveal,{delay:0},h('h2',{className:'text-3xl md:text-[2.5rem] md:leading-[1.1] font-extrabold text-[#101214] mb-4'},'Les sociétés suivies')),
+  h(Reveal,{delay:0.15},h('p',{className:'text-sm text-[#4C5052] max-w-2xl mb-8 leading-relaxed'},
+   'Chaque société entre dans le tracker avec des paramètres fixés d\'avance. Chaque sens relevé porte la source du document qui l\'établit — 8-K, 10-Q, 10-K, communiqué.'
+  )),
+  h(Reveal,{delay:0.3},h('div',{className:'tk',style:{maxWidth:'none',padding:0}},corps))
  )
 )
 }
 
-// ─── BANDEAU CRÉDIBILITÉ (bloc brun espresso) ────────────────────────────────
+// ─── BULLETIN DES ALERTES — Rechutes d'abord ─────────────────────────────────
+// Le solde et les alertes se déduisent des sens ; aucun moteur de calcul n'est dans le dépôt
+// tant que la méthode n'est pas figée (TRACKER_MOTEUR). Rien n'est deviné, rien n'est inventé.
 
-const CREDIBILITY_STATS=[
-{value:String(SOURCES_COUNT),label:'Sources analysées en continu'},
-{value:'15',label:'APIs de données temps réel'},
-{value:'24/7',label:'Veille automatisée par IA'},
-{value:'3 min',label:'Pour un briefing complet'},
-]
-
-function CredibilityStrip(){
-return h('div',{className:'v2-chrome py-12',style:{backgroundColor:'var(--credibility-band)'}},
+function BulletinAlertes(){
+return h('section',{id:'alertes',className:'py-20 md:py-24',style:{backgroundColor:'var(--surface-raised)'}},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
-  h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center'},
-   ...CREDIBILITY_STATS.map((s,i)=>
-    h('div',{key:i},
+  h(Reveal,{delay:0},h('p',{className:'kicker mb-3'},'§ Bulletin — Alertes')),
+  h(Reveal,{delay:0},h('h2',{className:'text-3xl md:text-[2.5rem] md:leading-[1.1] font-extrabold text-[#101214] mb-4'},'Rechutes, puis Bascules')),
+  h(Reveal,{delay:0.15},h('p',{className:'text-sm text-[#4C5052] max-w-2xl mb-8 leading-relaxed'},
+   'La Rechute passe en premier : c\'est le signal le plus fiable du backtest. Une alerte décrit des publications passées — elle n\'est pas une prévision.'
+  )),
+  h('div',{className:'grid grid-cols-1 md:grid-cols-2 gap-6'},
+   h(Reveal,{delay:0.3},h('div',{className:'tk',style:{maxWidth:'none',padding:0}},
+    h('h3',{className:'text-lg font-extrabold mb-3 text-[#101214]'},'Rechutes'),
+    h('div',{className:'tk-vide'},
+     h('p',{className:'tk-vide-titre'},'Aucune Rechute relevée'),
+     h('p',{className:'tk-vide-precision'},'Une Rechute part quand le solde tombe à −2 ou moins, hors régime de rechute. '+TK.TRACKER_MOTEUR.raison))
+   )),
+   h(Reveal,{delay:0.3},h('div',{className:'tk',style:{maxWidth:'none',padding:0}},
+    h('h3',{className:'text-lg font-extrabold mb-3 text-[#101214]'},'Bascules et Signaux faibles'),
+    h('div',{className:'tk-vide'},
+     h('p',{className:'tk-vide-titre'},'Aucune alerte relevée'),
+     h('p',{className:'tk-vide-precision'},'Le solde et les alertes se déduisent des sens relevés : ils restent non calculés tant que la méthode n\'est pas figée. Aucun chiffre n\'est inventé pour remplir cette page.'))
+   ))
+  )
+ )
+)
+}
+
+// ─── CE QUE LE BACKTEST A MONTRÉ — bande d'honnêteté (bloc brun espresso) ────
+// Chiffres de docs/tracker-methode.md §12, échecs compris. C'est la règle éditoriale de la méthode :
+// le site peut écrire « les preuves s'améliorent », jamais qu'une Bascule annonce une réussite.
+
+function Honnetete(){
+return h('div',{className:'v2-chrome py-16 md:py-20',style:{backgroundColor:'var(--credibility-band)'}},
+ h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+  h(Reveal,{delay:0},h('p',{className:'kicker mb-3',style:{color:'var(--editorial-accent-text)'}},'§ Backtest — Ce qu\'il a montré, échecs compris')),
+  h(Reveal,{delay:0},h('h2',{className:'text-3xl md:text-[2.5rem] md:leading-[1.1] font-extrabold text-[var(--chrome-text-1)] mb-10'},'La méthode publie ses limites')),
+  h('div',{className:'grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 mb-12'},
+   ...BACKTEST_STATS.map((s,i)=>
+    h(Reveal,{key:i,delay:0.3,stagger:0.06},h('div',null,
      h('div',{className:'display-text text-3xl sm:text-4xl md:text-[2.75rem] font-extrabold text-[var(--chrome-text-1)]'},s.value),
      h('div',{className:'mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--chrome-text-2)]',style:{fontFamily:"'IBM Plex Mono',monospace"}},s.label)
-    )
+    ))
+   )
+  ),
+  h('div',{className:'grid grid-cols-1 md:grid-cols-2 gap-6'},
+   h(Reveal,{delay:0.3},h('div',{className:'border border-[var(--chrome-border)] p-6'},
+    h('p',{className:'text-xs font-semibold uppercase tracking-[0.14em] text-[var(--chrome-text-2)] mb-3',style:{fontFamily:"'IBM Plex Mono',monospace"}},'Ce que le site peut écrire'),
+    h('p',{className:'text-sm text-[var(--chrome-text-2)] leading-relaxed'},'« Les preuves s\'améliorent » ou « se dégradent », avec la source de chaque chiffre, et le bilan complet du backtest, échecs compris.')
+   )),
+   h(Reveal,{delay:0.3},h('div',{className:'border border-[var(--chrome-border)] p-6'},
+    h('p',{className:'text-xs font-semibold uppercase tracking-[0.14em] text-[var(--chrome-text-2)] mb-3',style:{fontFamily:"'IBM Plex Mono',monospace"}},'Ce qu\'il ne peut pas écrire'),
+    h('p',{className:'text-sm text-[var(--chrome-text-2)] leading-relaxed'},'Qu\'une Bascule annonce une réussite, ni aucune promesse de performance. La Bascule est apparue chez tous les succès — et chez la majorité des échecs.')
+   ))
+  ),
+  h(Reveal,{delay:0.3},h('p',{className:'mt-8'},
+   h('a',{href:'methode.html#backtest',className:'text-sm font-semibold text-[var(--editorial-accent-text)] hover:underline'},'Le bilan complet du backtest →')
+  ))
+ )
+)
+}
+
+// ─── CRÉDIBILITÉ — SEMPLICE, Radar Pays, archives ────────────────────────────
+
+const RENVOIS=[
+{title:'SEMPLICE',desc:'Le cadre d\'évaluation géopolitique du site : huit dimensions notées de 1 à 7, dix-huit zones évaluées, backtests publiés.',href:'expertise.html#semplice',action:'Explorer le cadre →'},
+{title:'Radar Pays',desc:'La cartographie interactive des zones évaluées : risque et opportunité, carte, nuage de points, historiques.',href:'country.html',action:'Ouvrir le radar →'},
+{title:'Analyses — archives',desc:'Quatorze analyses approfondies publiées : Ukraine, Sahel, mer de Chine, Turquie, et les autres. Elles restent consultables.',href:'analyses.html',action:'Parcourir les archives →'},
+]
+
+function Credibilite(){
+return h('section',{className:'py-20 md:py-24'},
+ h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
+  h(Reveal,{delay:0},h('p',{className:'kicker mb-3'},'§ Expertise — Ce qui existe déjà')),
+  h(Reveal,{delay:0},h('h2',{className:'text-3xl md:text-[2.5rem] md:leading-[1.1] font-extrabold text-[#101214] mb-10'},'Le socle du site')),
+  h('div',{className:'grid grid-cols-1 md:grid-cols-3 gap-6'},
+   ...RENVOIS.map((r,i)=>
+    h(Reveal,{key:i,delay:0.3,stagger:0.06},h('a',{href:r.href,className:'article-card group block bg-[#FFFFFF] border border-[var(--hairline-warm)] no-underline p-6 md:p-8'},
+     h('h3',{className:'text-lg md:text-xl font-extrabold leading-snug mb-3 text-[#101214]'},r.title),
+     h('p',{className:'text-sm leading-relaxed mb-5 text-[#4C5052]'},r.desc),
+     h('span',{className:'text-sm font-semibold text-[var(--editorial-accent)] group-hover:underline'},r.action)
+    ))
    )
   )
  )
 )
 }
 
-// ─── VEILLE / SIGNAUX (câblage news.json) ────────────────────────────────────
+// ─── AVERTISSEMENT (dans <main>, règle des pages du tracker) ─────────────────
 
-function SkeletonCard(){
-const bg='bg-[#DFDCD0]'
-return h('div',{className:'overflow-hidden bg-[#FFFFFF] border border-[var(--hairline-warm)]'},
- h('div',{className:`aspect-[5/3] motion-safe:animate-pulse ${bg}`}),
- h('div',{className:'p-5'},
-  h('div',{className:'flex items-center gap-2 mb-3'},
-   h('div',{className:`w-16 h-4 motion-safe:animate-pulse ${bg}`}),
-   h('div',{className:`w-12 h-4 motion-safe:animate-pulse ${bg}`})
-  ),
-  h('div',{className:`w-full h-4 mb-2 motion-safe:animate-pulse ${bg}`}),
-  h('div',{className:`w-3/4 h-4 mb-3 motion-safe:animate-pulse ${bg}`}),
-  h('div',{className:`w-full h-3 mb-1 motion-safe:animate-pulse ${bg}`}),
-  h('div',{className:`w-2/3 h-3 motion-safe:animate-pulse ${bg}`})
- )
-)
-}
-
-function surErreurImage(a){return e=>{const img=e.target
- if(a.img&&img.dataset.repli!=='1'){img.dataset.repli='1';img.src=instrumentPour(a);img.parentElement.classList.remove('img-gravure')}
- else{img.style.display='none'}}}
-
-function ArticlesGrid(){
-const[filter,setFilter]=useState('all')
-const[articles,setArticles]=useState(ARTICLES_FALLBACK)
-const[loading,setLoading]=useState(true)
-const[visibleCount,setVisibleCount]=useState(9)
-useEffect(()=>{
-fetch(DATA_BASE+'news.json').then(r=>r.ok?r.json():null).then(d=>{
-if(d){const mapped=mapNewsToArticles(d);if(mapped.length>0)setArticles(mapped)}
-}).catch(()=>{}).finally(()=>setLoading(false))
-},[])
-const filtered=filter==='all'?articles:articles.filter(a=>a.cat===filter)
-const visible=filtered.slice(0,visibleCount)
-const hasMore=filtered.length>visibleCount
-const btnCls=(active)=>active?'bg-[var(--editorial-accent)] text-[var(--chrome-text-1)] border-[var(--editorial-accent)]':'bg-[#FFFFFF] text-[#4C5052] hover:text-[var(--editorial-accent)] border-[var(--hairline-warm)]'
-return h('section',{className:'py-20 md:py-24'},
+function Avertissement(){
+return h('section',{className:'pb-20'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
-  h('div',{className:'flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10'},
-   h('div',null,
-    h(Reveal,{delay:0},h('p',{className:'kicker mb-3'},'§ Signaux — Veille continue')),
-    h(Reveal,{delay:0},h('h2',{className:'text-3xl md:text-[2.5rem] md:leading-[1.1] font-extrabold text-[#101214]'},'Sources & signaux')),
-    h(Reveal,{delay:0.15},h('p',{className:'text-sm mt-2 text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},`Flux automatisé — ${SOURCES_COUNT} sources, 15 APIs, filtrage IA`))
-   ),
-   h(Reveal,{delay:0.3},h('div',{className:'flex flex-wrap gap-2'},
-    h('button',{onClick:()=>{setFilter('all');setVisibleCount(9)},'aria-pressed':filter==='all',className:`px-3 py-1.5 text-xs font-semibold transition-colors border ${btnCls(filter==='all')}`},'Tout'),
-    CATEGORIES.map(c=>h('button',{key:c.id,onClick:()=>{setFilter(c.id);setVisibleCount(9)},'aria-pressed':filter===c.id,className:`px-3 py-1.5 text-xs font-semibold transition-colors border ${btnCls(filter===c.id)}`},c.label))
-   ))
-  ),
-  h('div',{className:'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'},
-   loading?[1,2,3,4,5,6].map(i=>h(SkeletonCard,{key:'sk'+i})):visible.map(a=>{
-    const cat=CATEGORIES.find(c=>c.id===a.cat)
-    return h(Reveal,{key:a.id,delay:0.3,stagger:0.06},h('a',{href:a.href||'#',target:a.href&&a.href.startsWith('http')?'_blank':undefined,rel:a.href&&a.href.startsWith('http')?'noopener noreferrer':undefined,className:'article-card overflow-hidden block no-underline bg-[#FFFFFF] border border-[var(--hairline-warm)]'},
-     h('div',{className:'aspect-[5/3] overflow-hidden bg-[var(--chrome-ground)]'+(a.img?' img-gravure':'')},
-      h('img',{src:a.img||instrumentPour(a),alt:'',className:'w-full h-full object-cover',loading:'lazy',width:1000,height:600,
-       onError:surErreurImage(a)})
-     ),
-     h('div',{className:'p-5'},
-      h('div',{className:'flex items-center gap-2 mb-3',style:{fontFamily:"'IBM Plex Mono',monospace"}},
-       cat&&h('span',{className:'bg-[var(--badge-bg)] text-[var(--badge-text)] text-xs font-semibold uppercase tracking-[0.12em] px-2 py-0.5'},cat.label),
-       h('span',{className:'text-xs text-[#4C5052]'},a.time),
-       h('span',{className:'text-xs text-[#4C5052]'},'·'),
-       h('span',{className:'text-xs text-[#4C5052]'},a.readingTime+' min')
-      ),
-      h('h3',{className:'text-[0.95rem] font-extrabold leading-snug mb-2 line-clamp-2 text-[#101214]'},a.title),
-      h('p',{className:'text-xs leading-relaxed line-clamp-2 text-[#4C5052]'},a.summary),
-      h('div',{className:'mt-3 text-xs text-[#4C5052]',style:{fontFamily:"'IBM Plex Mono',monospace"}},a.source)
-     )
-    ))
-   })
-  ),
-  !loading&&hasMore&&h(Reveal,{delay:0.3},h('div',{className:'text-center mt-10'},
-   h('button',{onClick:()=>setVisibleCount(v=>v+9),className:'px-6 py-3 text-sm font-semibold transition-colors bg-[#FFFFFF] text-[var(--editorial-accent)] hover:bg-[var(--editorial-accent)] hover:text-[var(--chrome-text-1)] border border-[var(--editorial-accent)]'},
-    'Charger plus d\'articles'
-   )
-  ))
- )
-)
-}
-
-// ─── EXPERTISES ──────────────────────────────────────────────────────────────
-
-const EXPERTISE_DATA={
-iatech:[
-{id:'ia',label:'Intelligence artificielle',desc:'Décryptage des avancées en IA générative, modèles de fondation et agents autonomes. Analyse des investissements massifs ($610 Mds en 2026) et de leurs implications stratégiques pour les entreprises européennes.',href:'ai-tech.html'},
-{id:'cloud',label:'Cloud & Souveraineté',desc:'Cartographie de la dépendance européenne aux hyperscalers américains (AWS, Azure, GCP). Enjeux de souveraineté numérique, risques CLOUD Act et alternatives souveraines.',href:'ai-tech.html'},
-{id:'regulation',label:'Régulation Tech',desc:'Suivi de l\'AI Act européen, du Digital Markets Act et des régulations tech mondiales. Analyse d\'impact sur les modèles économiques et les obligations de conformité.',href:'geopolitics.html'},
-{id:'cyber',label:'Cybersécurité & Risques',desc:'Veille sur les menaces cyber étatiques, ransomware et espionnage industriel. Analyse des vulnérabilités critiques et des stratégies de résilience pour les PME/ETI.',href:'geopolitics.html'},
-],
-geopolitique:[
-{id:'tensions',label:'Tensions & Conflits',desc:'Veille sur les zones de friction géopolitique majeures : mer de Chine, Ukraine, Moyen-Orient, Sahel. Analyse d\'impact sur les marchés et les chaînes d\'approvisionnement critiques.',href:'geopolitics.html'},
-{id:'sanctions',label:'Sanctions & Commerce',desc:'Suivi des régimes de sanctions internationales et de leurs effets sur les flux commerciaux. Analyse des risques de fragmentation économique et de découplage technologique.',href:'geopolitics.html'},
-{id:'energie',label:'Géopolitique de l\'énergie',desc:'Décryptage des dynamiques OPEC+, transition énergétique et compétition pour les ressources critiques. Impact sur les prix des commodités et les stratégies d\'investissement.',href:'commodities.html'},
-{id:'institutions',label:'Institutions & Régulation',desc:'Veille sur les décisions du G7, G20, FMI et banques centrales. Analyse de l\'AI Act européen, des régulations crypto et des politiques industrielles stratégiques.',href:'geopolitics.html'},
-],
-}
-
-function ExpertiseNav(){
-const[tab,setTab]=useState('iatech')
-const[selected,setSelected]=useState('ia')
-const items=EXPERTISE_DATA[tab]
-const current=items.find(i=>i.id===selected)||items[0]
-const tabCls=(active)=>active?'bg-[var(--editorial-accent)] text-[var(--chrome-text-1)] border-[var(--editorial-accent)]':'bg-[#FFFFFF] text-[#4C5052] hover:text-[var(--editorial-accent)] border-[var(--hairline-warm)]'
-const switchTab=(t)=>{setTab(t);setSelected(EXPERTISE_DATA[t][0].id)}
-return h('section',{className:'py-20 md:py-24'},
- h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
-  h('div',{className:'text-center mb-12'},
-   h(Reveal,{delay:0},h('p',{className:'kicker mb-3'},'§ Expertises — Couverture')),
-   h(Reveal,{delay:0},h('h2',{className:'text-3xl md:text-[2.5rem] md:leading-[1.1] font-extrabold text-[#101214]'},'Explorez notre couverture'))
-  ),
-  h(Reveal,{delay:0.3},h('div',{className:'flex justify-center gap-2 mb-10'},
-   h('button',{onClick:()=>switchTab('iatech'),className:`px-3 py-2 sm:px-5 sm:py-2.5 text-sm font-semibold transition-colors border ${tabCls(tab==='iatech')}`},'IA & Tech'),
-   h('button',{onClick:()=>switchTab('geopolitique'),className:`px-3 py-2 sm:px-5 sm:py-2.5 text-sm font-semibold transition-colors border ${tabCls(tab==='geopolitique')}`},'Géopolitique')
-  )),
-  h(Reveal,{delay:0.3},h('div',{className:'flex flex-col md:flex-row gap-6 md:gap-0 border border-[var(--hairline-warm)] overflow-hidden bg-[#FFFFFF]'},
-   h('div',{className:'md:w-[38%] md:border-r border-[var(--hairline-warm)] bg-[#EDEBE4]'},
-    ...items.map(item=>
-     h('button',{key:item.id,onClick:()=>setSelected(item.id),className:`w-full text-left px-6 py-4 border-b last:border-b-0 transition-colors border-[var(--hairline-warm)] ${selected===item.id?'bg-[#FFFFFF] font-semibold text-[var(--editorial-accent)] border-l-2 border-l-[var(--editorial-accent)]':'text-[#4C5052] hover:bg-[#FFFFFF]/60'}`},
-      h('span',{className:'text-sm'},item.label)
-     )
+  h('div',{className:'tk',style:{maxWidth:'none',padding:0}},
+   h('aside',{className:'tk-amf',role:'note',style:{margin:0}},
+    h('p',{style:{margin:0}},
+     h('strong',null,'Avertissement. '),
+     'Les informations présentées sont fournies à titre informatif uniquement et ne constituent en aucun cas un conseil en investissement, une recommandation d\'achat ou de vente, ni un objectif de cours. Une alerte du tracker décrit des publications passées ; elle n\'est pas une prévision. Les performances passées ne préjugent pas des performances futures.'
     )
-   ),
-   h('div',{className:'md:w-[62%] p-8 md:p-10 flex flex-col justify-center'},
-    h('h3',{className:'text-xl md:text-2xl font-extrabold mb-4 text-[#101214]'},current.label),
-    h('p',{className:'text-sm leading-relaxed mb-6 text-[#4C5052]'},current.desc),
-    h('a',{href:current.href,className:'inline-flex items-center gap-1 text-sm font-semibold text-[var(--editorial-accent)] hover:underline'},'Explorer →')
    )
-  ))
- )
-)
-}
-
-// ─── NEWSLETTER (bloc oxblood, câblage Supabase) ─────────────────────────────
-
-const SUPABASE_URL='https://pizemouhfrwgvgibitox.supabase.co'
-const SUPABASE_KEY='sb_publishable_5u8lldvoUdA_pKTZIL9jdA_gJb72SZH'
-const EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
-
-function NewsletterCTA(){
-const[email,setEmail]=useState('')
-const[status,setStatus]=useState(null) // null|'sending'|'success'|'duplicate'|'error'|'invalid'
-const submit=async(e)=>{
-e.preventDefault()
-if(!EMAIL_RE.test(email)){setStatus('invalid');return}
-setStatus('sending')
-try{
-const res=await fetch(SUPABASE_URL+'/rest/v1/newsletter',{method:'POST',headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Prefer':'return=minimal'},body:JSON.stringify({email})})
-if(res.ok||res.status===201){setStatus('success');setEmail('')}
-else if(res.status===409||(await res.text()).includes('23505')){setStatus('duplicate')}
-else{setStatus('error')}
-}catch(_){setStatus('error')}
-}
-const msg={success:'Inscription confirmée — bienvenue parmi nos lecteurs.',duplicate:'Cette adresse est déjà inscrite.',error:'Une erreur est survenue. Réessayez.',invalid:'Veuillez entrer une adresse email valide.'}
-const msgColor={success:'text-[#7BE0B0]',duplicate:'text-[#E8C79A]',error:'text-[#F0A090]',invalid:'text-[#F0A090]'}
-return h('section',{className:'v2-chrome py-20 md:py-24',style:{backgroundColor:'var(--chrome-ground)'}},
- h('div',{className:'max-w-2xl mx-auto px-4 sm:px-6 text-center'},
-  h('p',{className:'kicker mb-4',style:{color:'#E8A996'}},'§ Signaux faibles — Hebdomadaire'),
-  h('h2',{className:'text-3xl md:text-[2.5rem] md:leading-[1.1] font-extrabold text-white mb-4'},'Recevez nos signaux faibles chaque semaine'),
-  h('p',{className:'text-sm md:text-base text-[var(--chrome-text-2)] leading-relaxed mb-8'},'Une sélection hebdomadaire d\'analyses et de données pour garder une longueur d\'avance.'),
-  status==='success'?
-   h('div',{className:'flex items-center justify-center gap-2 text-[#7BE0B0] text-sm'},
-    h('svg',{width:20,height:20,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2,strokeLinecap:'round'},h('path',{d:'M20 6L9 17l-5-5'})),
-    msg.success
-   ):
-   h('form',{onSubmit:submit,className:'flex flex-col sm:flex-row gap-3 max-w-md mx-auto'},
-    h('input',{type:'email',value:email,onChange:e=>{setEmail(e.target.value);if(status==='invalid')setStatus(null)},placeholder:'votre@email.com','aria-label':'Adresse email',className:`flex-1 px-4 py-3 bg-white/10 border text-white text-sm placeholder-white/40 transition-colors ${status==='invalid'?'border-[#F0A090]':'border-white/20 focus:border-[var(--editorial-accent-text)]'}`}),
-    h('button',{type:'submit',disabled:status==='sending',className:'px-6 py-3 bg-[#E8E4D8] hover:bg-[#FFFFFF] text-[var(--chrome-ground)] font-semibold text-sm transition-colors whitespace-nowrap disabled:opacity-50'},status==='sending'?'Envoi...':'S\'abonner')
-   ),
-  status!=='success'&&h('p',{className:'mt-4 text-xs text-[var(--chrome-text-3)] leading-relaxed'},'En vous inscrivant, vous acceptez notre ',h('a',{href:'confidentialite.html',className:'underline hover:text-[var(--chrome-text-1)] transition-colors'},'politique de confidentialité'),'.'),
-  status&&status!=='success'&&status!=='sending'&&h('p',{className:`mt-4 text-sm ${msgColor[status]}`},msg[status])
+  )
  )
 )
 }
@@ -678,18 +508,17 @@ return h('section',{className:'v2-chrome py-20 md:py-24',style:{backgroundColor:
 
 function Footer(){
 const footerLinks={
-intelligence:[
-{label:'Géopolitique',href:'geopolitics.html'},
-{label:'Marchés',href:'markets.html'},
-{label:'Crypto',href:'crypto.html'},
-{label:'Matières premières',href:'commodities.html'},
-{label:'ETF & Fonds',href:'etf.html'},
+tracker:[
+{label:'Sociétés suivies',href:'index.html#societes'},
+{label:'Alertes',href:'index.html#alertes'},
+{label:'La méthode, en clair',href:'methode.html'},
+{label:'Le backtest',href:'methode.html#backtest'},
 ],
 plateforme:[
-{label:'Analyses',href:'analyses.html'},
-{label:'Expertise',href:'expertise.html'},
+{label:'Expertise & SEMPLICE',href:'expertise.html'},
+{label:'Radar Pays',href:'country.html'},
+{label:'Analyses — archives',href:'analyses.html'},
 {label:'Services',href:'premium.html'},
-{label:'Diagnostic',href:'premium.html#diagnostic'},
 ],
 legal:[
 {label:'Mentions légales',href:'mentions-legales.html'},
@@ -697,7 +526,7 @@ legal:[
 {label:'Conditions d\'utilisation',href:'cgu.html'},
 ],
 }
-const sources=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC']
+const sources=['SEC EDGAR','8-K','10-Q','10-K','XBRL','GAAP']
 return h('footer',{className:'v2-chrome pt-12 sm:pt-16 pb-24 sm:pb-20',style:{backgroundColor:'var(--chrome-ground)'},role:'contentinfo'},
  h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
   h('div',{className:'grid grid-cols-2 md:grid-cols-5 gap-10 mb-12'},
@@ -705,12 +534,12 @@ return h('footer',{className:'v2-chrome pt-12 sm:pt-16 pb-24 sm:pb-20',style:{ba
     h('div',{className:'flex items-center gap-2 mb-4'},
      h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto',style:{filter:'brightness(10) saturate(0)'}})
     ),
-    h('p',{className:'text-sm text-[var(--chrome-text-2)] leading-relaxed'},'Intelligence financière et géopolitique. Données en temps réel, analyses IA, signaux faibles.')
+    h('p',{className:'text-sm text-[var(--chrome-text-2)] leading-relaxed'},'Tracker d\'inflexions. Lecture des publications de résultats des sociétés portées par un récit — méthode publique, limites comprises.')
    ),
    h('div',null,
-    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[var(--chrome-text-1)] mb-4'},'Intelligence'),
+    h('p',{className:'text-xs font-semibold uppercase tracking-wider text-[var(--chrome-text-1)] mb-4'},'Tracker'),
     h('ul',{className:'space-y-2.5'},
-     ...footerLinks.intelligence.map(l=>
+     ...footerLinks.tracker.map(l=>
       h('li',{key:l.label},h('a',{href:l.href,className:'text-sm text-[var(--chrome-text-2)] hover:text-[var(--editorial-accent-text)] transition-colors'},l.label))
      )
     )
@@ -737,7 +566,7 @@ return h('footer',{className:'v2-chrome pt-12 sm:pt-16 pb-24 sm:pb-20',style:{ba
    )
   ),
   h('div',{className:'border-t border-[var(--chrome-border)] pt-8 flex flex-col md:flex-row justify-between items-center gap-4'},
-   h('span',{className:'text-sm text-[var(--chrome-text-2)]'},'© 2026 Inflexion — Intelligence financière & géopolitique'),
+   h('span',{className:'text-sm text-[var(--chrome-text-2)]'},'© 2026 Inflexion — Tracker d\'inflexions'),
    h('div',{className:'flex flex-wrap justify-center gap-3 text-xs uppercase tracking-wider text-[var(--chrome-text-3)]',style:{fontFamily:"'IBM Plex Mono',monospace"}},
     ...sources.map(s=>h('span',{key:s},s))
    )
@@ -753,11 +582,11 @@ return h('div',null,
  h(Navigation),
  h('main',{id:'main-content'},
   h(Hero),
-  h(FeaturedAnalyses),
-  h(CredibilityStrip),
-  h(ArticlesGrid),
-  h(ExpertiseNav),
-  h(NewsletterCTA)
+  h(SocietesSuivies),
+  h(BulletinAlertes),
+  h(Honnetete),
+  h(Credibilite),
+  h(Avertissement)
  ),
  h('div',{className:'h-[5px] bg-[var(--editorial-accent)]','aria-hidden':'true'}),
  h(Footer)

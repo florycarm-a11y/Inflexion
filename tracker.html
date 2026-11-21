@@ -1,109 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tracker d’inflexions — Inflexion</title>
-    <meta name="description" content="Les sociétés suivies par le tracker d’inflexions : à chaque publication de résultats, quatre dimensions reçoivent un sens. Méthode v1.3 proposée, non figée.">
-    <meta name="robots" content="noindex">
-    <link rel="canonical" href="https://inflexionhub.com/tracker.html">
-    <link rel="icon" href="favicon.ico" sizes="32x32">
-    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="assets/design-tokens-v2.css">
-    <link rel="stylesheet" href="assets/header-shell.css">
-    <link rel="stylesheet" href="assets/tracker.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="assets/site.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Pivot du 21 novembre 2026 : le tracker est devenu la home. Cette page ne sert plus qu'à
+     rediriger les liens existants vers index.html#societes ; elle est hors navigation et noindex. -->
+<title>Tracker d’inflexions — Inflexion</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://inflexionhub.com/">
+<meta http-equiv="refresh" content="0;url=index.html#societes">
 </head>
-<body data-chrome="v2" data-design-regime="editorial">
-    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
-    <header class="header" role="banner">
-        <div class="container">
-            <div class="header-top">
-                <div class="header-left">
-                    <button class="menu-trigger" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu de navigation">
-                        <div class="hamburger" aria-hidden="true">
-                            <span class="hamburger-bar"></span>
-                            <span class="hamburger-bar"></span>
-                            <span class="hamburger-bar"></span>
-                        </div>
-                    </button>
-                    <a href="index.html" class="logo"><img src="logo-header.png" alt="Inflexion" class="logo-img"></a>
-                </div>
-                <div class="header-controls">
-                    <a href="premium.html#contact" class="header-cta-btn">Nous contacter</a>
-                </div>
-            </div>
-        </div>
-    </header>
-    <nav class="nav-overlay" id="main-nav" aria-label="Navigation principale">
-        <div class="nav-overlay-content">
-            <div class="nav-overlay-header">
-                <span class="nav-overlay-title">Navigation</span>
-                <button class="nav-close" aria-label="Fermer le menu">&times;</button>
-            </div>
-            <div class="nav-links">
-                <a href="index.html" class="nav-overlay-link">Accueil</a>
-            </div>
-        </div>
-    </nav>
-
-    <div class="page-header" data-category="tracker">
-        <h1 class="page-title">Tracker d’inflexions</h1>
-        <p class="page-subtitle">Une fiche par société portée par un récit. À chaque publication de résultats, quatre dimensions reçoivent un sens.</p>
-    </div>
-
-    <main class="main-content" id="main-content">
-        <div class="tk">
-
-            <div class="tk-statut">
-                <p><strong>Coquille en construction.</strong> La méthode est en <strong>v1.3 proposée le 19 novembre 2026, non figée</strong> : huit précisions de texte restent à valider, dont trois sont de vrais choix. Aucun moteur de calcul n’est dans le dépôt, et aucune société n’est encore suivie. Cette page n’est pas reliée à la navigation du site.</p>
-                <p style="margin:0"><a class="tk-lien" href="methode.html">Lire la méthode en clair</a></p>
-            </div>
-
-            <section class="tk-bloc tk-lecture">
-                <h2>Ce que lit le tracker</h2>
-                <p>Le tracker lit les publications de résultats trimestriels d’une société portée par un récit — petits réacteurs nucléaires, intelligence artificielle, robotique. À chaque publication, quatre dimensions reçoivent un <strong>sens</strong> : hausse, stable, baisse, ou « non publié ». Leur somme est le <strong>solde</strong>, et le solde déclenche quatre alertes.</p>
-                <p>Il ne lit que des documents publiés par la société : ni cours de Bourse, ni presse, ni note d’analyste. Chaque sens porte la source du document qui l’établit. <strong>Une valeur sans source ne s’affiche pas.</strong></p>
-                <p style="margin:0">Une alerte dit que, ce trimestre-là, les preuves s’améliorent ou se dégradent. Elle ne dit pas que le récit aboutira — et le backtest montre que la Bascule est apparue chez tous les succès boursiers <em>et</em> chez la majorité des échecs. <a class="tk-lien" href="methode.html">Les quatre dimensions, les alertes et les limites</a>.</p>
-            </section>
-
-            <section class="tk-bloc">
-                <h2>Sociétés suivies</h2>
-                <div id="tracker-liste">
-                    <p class="tk-note" style="margin:0">Chargement du catalogue…</p>
-                </div>
-            </section>
-
-            <aside class="tk-amf" role="note">
-                <p style="margin:0"><strong>Avertissement.</strong> Les informations présentées sont fournies à titre informatif uniquement et ne constituent en aucun cas un conseil en investissement, une recommandation d’achat ou de vente, ni un objectif de cours. Une alerte du tracker décrit des publications passées ; elle n’est pas une prévision. Les performances passées ne préjugent pas des performances futures.</p>
-            </aside>
-
-        </div>
-    </main>
-
-    <footer class="footer" role="contentinfo">
-        <div class="container">
-            <div class="footer-disclaimer">
-                Les informations présentées sont fournies à titre informatif uniquement et ne constituent en aucun cas des conseils en investissement. Les performances passées ne préjugent pas des performances futures.
-            </div>
-        </div>
-    </footer>
-
-    <button class="back-to-top" aria-label="Retour en haut">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
-    </button>
-
-    <script src="app.js"></script>
-    <script>if (typeof initCommon === 'function') initCommon();</script>
-    <script src="tracker-modele.js"></script>
-    <script src="tracker-vue.js"></script>
-    <script src="nav-config.js"></script>
-    <script src="nav-shared.js"></script>
+<body>
+<p>Le tracker d’inflexions est désormais la page d’accueil du site.
+<a href="index.html#societes">Continuer vers les sociétés suivies</a>.</p>
 </body>
 </html>

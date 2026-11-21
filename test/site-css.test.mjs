@@ -7,7 +7,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 const RACINE = new URL('../', import.meta.url);
 const lire = (chemin) => readFileSync(new URL(chemin, RACINE), 'utf8');
 const PAGES = readdirSync(RACINE).filter((f) => f.endsWith('.html')).sort();
-const SANS_TAILWIND = new Set(['og-image.html']); // n'a jamais chargé le CDN
+const SANS_TAILWIND = new Set(['og-image.html', 'tracker.html']); // og-image n'a jamais chargé le CDN ; tracker est une pure redirection depuis le pivot du 2026-11-21
 const LIEN = '<link rel="stylesheet" href="assets/site.css">';
 const CHEMIN_SITE = new URL('assets/site.css', RACINE);
 
