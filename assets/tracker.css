@@ -1,0 +1,332 @@
+/* assets/tracker.css — Coquilles du tracker d'inflexions : tracker.html, entreprise.html, methode.html.
+   Identité v2 chaude (CLAUDE.md §3) : angles rayon 0, Archivo pour les titres, IBM Plex Sans pour le corps,
+   IBM Plex Mono pour les données. Le chrome vient de nav-shared.js et de assets/header-shell.css.
+
+   Partage des rôles de couleur :
+   - identité : --editorial-accent (filets, liens, survols) et les jetons de surface ;
+   - donnée   : les quatre sens, les quatre couleurs de financement et les barreaux, et eux seuls.
+     Aucune de ces couleurs n'habille le chrome ou la mise en page.
+
+   Les deux jetons de donnée incomplète (--surface-incomplete, --rule-incomplete) ne sont déclarés dans
+   assets/design-tokens-v2.css que sous le régime « instrument ». Les pages du tracker sont en régime
+   « editorial » — sans quoi --editorial-accent manquerait à la barre et au méga-menu de nav-shared.js —
+   et les posent donc localement, comme briefing.html pose ses jetons de chrome. Un test vérifie
+   qu'elles n'ont pas dérivé du fichier de jetons. */
+
+.tk {
+  --tk-incomplete-fond: #DFDCD0;   /* = --surface-incomplete du régime instrument */
+  --tk-incomplete-filet: #9B957A;  /* = --rule-incomplete du régime instrument */
+
+  /* Couleurs de donnée. Les quatre sens de la méthode, puis les quatre couleurs de financement. */
+  --tk-hausse: #006650;
+  --tk-stable: #6b7280;
+  --tk-baisse: #DC2626;
+  --tk-fin-vert: #006650;
+  --tk-fin-orange: #C8955A;
+  --tk-fin-rouge: #DC2626;
+
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1rem 4rem;
+  font-family: 'IBM Plex Sans', Inter, sans-serif;
+  color: var(--text-primary);
+}
+
+.tk-lecture { max-width: 44rem; }
+
+/* ── Titres ─────────────────────────────────────────────────────────────── */
+
+.tk h2,
+.tk h3 {
+  font-family: Archivo, Georgia, serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.tk h2 {
+  font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--editorial-accent);
+}
+
+.tk h3 {
+  font-size: 1rem;
+  margin: 1.75rem 0 0.5rem;
+}
+
+.tk p { line-height: 1.65; margin: 0 0 1rem; }
+
+.tk-bloc {
+  margin: 2.5rem 0 0;
+  background: var(--surface-raised);
+  border: 1px solid var(--hairline-warm);
+  padding: 1.5rem;
+}
+
+.tk-note {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.tk-lien {
+  color: var(--editorial-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.tk-lien:hover { text-decoration-thickness: 2px; }
+
+/* ── Avertissement AMF : dans <main>, car nav-shared.js remplace le pied de page ──────── */
+
+.tk-amf {
+  margin: 2rem 0 0;
+  border-left: 3px solid var(--editorial-accent);
+  background: var(--surface-raised);
+  padding: 1rem 1.25rem;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.tk-amf strong { color: var(--text-primary); }
+
+/* ── Statut de la méthode ──────────────────────────────────────────────── */
+
+.tk-statut {
+  margin: 1.5rem 0 0;
+  border: 1px solid var(--tk-incomplete-filet);
+  border-left-width: 3px;
+  background: var(--tk-incomplete-fond);
+  padding: 1rem 1.25rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/* ── États vides ────────────────────────────────────────────────────────── */
+/* Le mot porte l'état ; la teinte ne fait que renforcer (--rule-incomplete est
+   « un filet de renfort, jamais preuve unique »). */
+
+/* Marge haute : sans elle, un état vide qui suit le bloc de statut se lit comme un seul aplat,
+   les deux partageant la teinte de donnée incomplète. */
+.tk-vide {
+  margin: 1.25rem 0 0;
+  border: 1px solid var(--tk-incomplete-filet);
+  border-left-width: 3px;
+  background: var(--tk-incomplete-fond);
+  padding: 1.5rem;
+}
+
+.tk-vide-titre {
+  font-family: Archivo, Georgia, serif;
+  font-weight: 800;
+  font-size: 1rem;
+  margin: 0 0 0.4rem;
+  color: var(--text-primary);
+}
+
+.tk-vide-precision {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* « Non publié », « Non calculé », « Source manquante », « Aucune alerte » : toujours un mot. */
+.tk-np {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  background: var(--tk-incomplete-fond);
+  border: 1px solid var(--tk-incomplete-filet);
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+
+/* ── Tableaux ───────────────────────────────────────────────────────────── */
+
+.tk-table-defile { overflow-x: auto; }
+
+.tk-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.tk-table caption {
+  caption-side: top;
+  text-align: left;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  padding-bottom: 0.6rem;
+}
+
+.tk-table th,
+.tk-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--hairline-warm);
+}
+
+.tk-table thead th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-hairline);
+  white-space: nowrap;
+}
+
+.tk-table tbody th { font-weight: 600; }
+
+.tk-donnee { font-family: 'IBM Plex Mono', monospace; font-variant-numeric: tabular-nums; }
+
+.tk-trimestre { font-size: 0.72rem; color: var(--text-secondary); }
+
+/* ── Les quatre sens (donnée) ───────────────────────────────────────────── */
+/* Seul l'état incomplet reçoit un aplat : les trous se voient d'un coup d'œil. */
+
+.tk-sens {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 1px 7px;
+  border: 1px solid currentColor;
+}
+
+.tk-sens--hausse { color: var(--tk-hausse); }
+.tk-sens--stable { color: var(--tk-stable); }
+.tk-sens--baisse { color: var(--tk-baisse); }
+
+/* ── Condition de financement (donnée, §7 : hors du solde) ─────────────── */
+
+/* En aplat, et non en texte coloré : sur blanc, le sable #C8955A plafonne à 2,4:1, très en dessous
+   du seuil WCAG AA de 4,5:1. En fond, la même couleur de donnée porte un texte noir à ~8:1.
+   Les trois couleurs gardent donc leur rôle de donnée, et le texte reste lisible. */
+.tk-fin {
+  display: inline-block;
+  font-size: 0.78rem;
+  padding: 1px 7px;
+  border: 1px solid transparent;
+}
+
+.tk-fin--vert { background: var(--tk-fin-vert); color: #FFFFFF; }
+.tk-fin--orange { background: var(--tk-fin-orange); color: var(--text-primary); }
+.tk-fin--rouge { background: var(--tk-fin-rouge); color: #FFFFFF; }
+
+.tk-fin--non-determinee {
+  color: var(--text-secondary);
+  background: var(--tk-incomplete-fond);
+  border-color: var(--tk-incomplete-filet);
+}
+
+/* ── Sources ────────────────────────────────────────────────────────────── */
+
+.tk-source {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--editorial-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+
+/* ── Listes de fiche ────────────────────────────────────────────────────── */
+
+.tk-params { margin: 0; display: grid; gap: 0.9rem; }
+
+.tk-param { border-top: 1px solid var(--hairline-warm); padding-top: 0.9rem; }
+
+.tk-param dt {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.tk-param dd { margin: 0; font-size: 0.92rem; }
+
+.tk-drapeaux,
+.tk-alertes { margin: 0; padding-left: 1rem; font-size: 0.8rem; }
+
+.tk-evenements { list-style: none; margin: 0; padding: 0; }
+
+.tk-evenements li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.9rem;
+  align-items: baseline;
+  border-top: 1px solid var(--hairline-warm);
+  padding: 0.7rem 0;
+  font-size: 0.85rem;
+}
+
+.tk-barreau {
+  font-size: 0.72rem;
+  border: 1px solid var(--border-hairline);
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+
+.tk-barreau-libelle { font-weight: 600; }
+
+/* ── Méthode : les dimensions, les alertes, le backtest ─────────────────── */
+
+.tk-constats { list-style: none; margin: 0 0 1.5rem; padding: 0; }
+
+.tk-constats li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--hairline-warm);
+  padding: 0.6rem 0;
+  font-size: 0.9rem;
+}
+
+.tk-constats .tk-chiffre {
+  font-family: 'IBM Plex Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--text-secondary);
+}
+
+.tk-retenir { margin: 0; padding-left: 1.1rem; }
+.tk-retenir li { margin-bottom: 0.7rem; line-height: 1.6; }
+
+/* Ce que le site peut écrire, et ce qu'il ne peut pas (méthode §12). */
+.tk-ecrire {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.tk-ecrire > div {
+  border: 1px solid var(--hairline-warm);
+  border-left: 3px solid var(--editorial-accent);
+  padding: 1rem 1.25rem;
+}
+
+.tk-ecrire dt {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+}
+
+.tk-ecrire dd { margin: 0; font-size: 0.92rem; line-height: 1.6; }
+
+@media (min-width: 768px) {
+  .tk-params { grid-template-columns: repeat(2, 1fr); }
+  .tk-ecrire { grid-template-columns: repeat(2, 1fr); }
+}
