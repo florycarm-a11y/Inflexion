@@ -143,7 +143,8 @@ test('briefing.html : les 8 jetons de chrome consommés par l\'en-tête, posés 
   }
 });
 
-test('16 pages legacy', () => assert.equal(LEGACY.length, 16, LEGACY.join(', ')));
+// 16 pages à la propagation du prompt 5, plus les trois coquilles du tracker (tracker, entreprise, methode).
+test('19 pages legacy', () => assert.equal(LEGACY.length, 19, LEGACY.join(', ')));
 for (const page of LEGACY) {
   test(`${page} : header-shell.css lié entre design-tokens-v2.css et site.css`, () => {
     const html = lire(page);

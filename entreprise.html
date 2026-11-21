@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche société — Tracker d’inflexions — Inflexion</title>
+    <meta name="description" content="Fiche d’une société suivie par le tracker d’inflexions : paramètres, sens relevés à chaque publication de résultats, événements commerciaux, sources.">
+    <meta name="robots" content="noindex">
+    <link rel="canonical" href="https://inflexionhub.com/entreprise.html">
+    <link rel="icon" href="favicon.ico" sizes="32x32">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/design-tokens-v2.css">
+    <link rel="stylesheet" href="assets/header-shell.css">
+    <link rel="stylesheet" href="assets/tracker.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-chrome="v2" data-design-regime="editorial">
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-top">
+                <div class="header-left">
+                    <button class="menu-trigger" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu de navigation">
+                        <div class="hamburger" aria-hidden="true">
+                            <span class="hamburger-bar"></span>
+                            <span class="hamburger-bar"></span>
+                            <span class="hamburger-bar"></span>
+                        </div>
+                    </button>
+                    <a href="index.html" class="logo"><img src="logo-header.png" alt="Inflexion" class="logo-img"></a>
+                </div>
+                <div class="header-controls">
+                    <a href="premium.html#contact" class="header-cta-btn">Nous contacter</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="nav-overlay" id="main-nav" aria-label="Navigation principale">
+        <div class="nav-overlay-content">
+            <div class="nav-overlay-header">
+                <span class="nav-overlay-title">Navigation</span>
+                <button class="nav-close" aria-label="Fermer le menu">&times;</button>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-overlay-link">Accueil</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header" data-category="tracker">
+        <h1 class="page-title">Fiche société</h1>
+        <p class="page-subtitle">Les sens relevés à chaque publication de résultats, avec la source de chacun.</p>
+    </div>
+
+    <main class="main-content" id="main-content">
+        <div class="tk">
+
+            <p style="margin:0 0 0.5rem"><a class="tk-lien" href="tracker.html">← Sociétés suivies</a></p>
+
+            <div class="tk-statut">
+                <p style="margin:0"><strong>Coquille en construction.</strong> Méthode en <strong>v1.3 proposée, non figée</strong>. Le <strong>solde</strong> et les <strong>alertes</strong> se déduisent des sens : aucun moteur de calcul n’est dans le dépôt, ils restent donc non calculés. <a class="tk-lien" href="methode.html">Lire la méthode</a>.</p>
+            </div>
+
+            <div id="tracker-fiche">
+                <p class="tk-note">Chargement de la fiche…</p>
+            </div>
+
+            <aside class="tk-amf" role="note">
+                <p style="margin:0"><strong>Avertissement.</strong> Les informations présentées sont fournies à titre informatif uniquement et ne constituent en aucun cas un conseil en investissement, une recommandation d’achat ou de vente, ni un objectif de cours. Une alerte du tracker décrit des publications passées ; elle n’est pas une prévision. Les performances passées ne préjugent pas des performances futures.</p>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-disclaimer">
+                Les informations présentées sont fournies à titre informatif uniquement et ne constituent en aucun cas des conseils en investissement. Les performances passées ne préjugent pas des performances futures.
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Retour en haut">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
+    <script src="app.js"></script>
+    <script>if (typeof initCommon === 'function') initCommon();</script>
+    <script src="tracker-modele.js"></script>
+    <script src="tracker-vue.js"></script>
+    <script src="nav-config.js"></script>
+    <script src="nav-shared.js"></script>
+</body>
+</html>

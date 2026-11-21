@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Méthode du tracker d’inflexions — Inflexion</title>
+    <meta name="description" content="Les quatre dimensions, les quatre alertes et les limites du tracker d’inflexions, y compris le bilan complet du backtest, échecs compris. Méthode v1.3 proposée, non figée.">
+    <meta name="robots" content="noindex">
+    <link rel="canonical" href="https://inflexionhub.com/methode.html">
+    <link rel="icon" href="favicon.ico" sizes="32x32">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/design-tokens-v2.css">
+    <link rel="stylesheet" href="assets/header-shell.css">
+    <link rel="stylesheet" href="assets/tracker.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-chrome="v2" data-design-regime="editorial">
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-top">
+                <div class="header-left">
+                    <button class="menu-trigger" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu de navigation">
+                        <div class="hamburger" aria-hidden="true">
+                            <span class="hamburger-bar"></span>
+                            <span class="hamburger-bar"></span>
+                            <span class="hamburger-bar"></span>
+                        </div>
+                    </button>
+                    <a href="index.html" class="logo"><img src="logo-header.png" alt="Inflexion" class="logo-img"></a>
+                </div>
+                <div class="header-controls">
+                    <a href="premium.html#contact" class="header-cta-btn">Nous contacter</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="nav-overlay" id="main-nav" aria-label="Navigation principale">
+        <div class="nav-overlay-content">
+            <div class="nav-overlay-header">
+                <span class="nav-overlay-title">Navigation</span>
+                <button class="nav-close" aria-label="Fermer le menu">&times;</button>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-overlay-link">Accueil</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header" data-category="tracker">
+        <h1 class="page-title">La méthode, en clair</h1>
+        <p class="page-subtitle">Quatre dimensions, un solde, quatre alertes — et ce que le backtest a réellement montré.</p>
+    </div>
+
+    <main class="main-content" id="main-content">
+        <div class="tk">
+
+            <p style="margin:0 0 0.5rem"><a class="tk-lien" href="tracker.html">← Tracker d’inflexions</a></p>
+
+            <div class="tk-statut">
+                <p><strong>Version 1.3, proposée le 19 novembre 2026 — non figée.</strong> C’est la v1.2, figée le 17 novembre 2026, plus huit précisions de texte. Aucun seuil, aucun poids et aucune alerte ne change. Les huit précisions restent à valider ; trois d’entre elles sont de vrais choix.</p>
+                <p style="margin:0">La seule source de vérité du calcul est le document <span class="tk-donnee">docs/tracker-methode.md</span>. Si cette page dit autre chose, le document fait foi. <strong>Aucun moteur de calcul n’est dans le dépôt</strong> tant que la méthode n’est pas figée.</p>
+            </div>
+
+            <!-- ═══ CE QUE LA MÉTHODE MESURE ═══ -->
+            <section class="tk-bloc tk-lecture">
+                <h2>Ce que la méthode mesure</h2>
+                <p>La méthode lit les publications de résultats trimestriels d’une société portée par un récit — petits réacteurs nucléaires, intelligence artificielle, robotique. À chaque publication, quatre dimensions reçoivent un <strong>sens</strong> : hausse, stable, baisse ou « non publié ». Leur somme est le <strong>solde</strong>. Le solde déclenche quatre alertes : Bascule, Bascule commerciale, Signal faible, Rechute.</p>
+                <p>Elle ne lit que des documents publiés par la société. Elle n’utilise <strong>ni cours de Bourse, ni presse, ni note d’analyste</strong>. Les comptes retenus sont aux normes américaines, sans les retraitements de la société : les résultats « ajustés » ne servent à aucune dimension.</p>
+                <h3>Ce qu’une alerte dit</h3>
+                <p>Une Bascule dit que, ce trimestre-là, les preuves s’améliorent sur au moins deux dimensions de plus qu’elles ne se dégradent. Une Rechute dit l’inverse.</p>
+                <h3>Ce qu’une alerte ne dit pas</h3>
+                <p style="margin:0">Elle ne dit pas que le récit aboutira. Sur dix sociétés hors échantillon, la Bascule est apparue chez les <strong>cinq succès boursiers</strong> et chez <strong>trois des cinq échecs</strong>. Aucune page ne doit présenter une alerte comme une prévision.</p>
+            </section>
+
+            <!-- ═══ LES QUATRE DIMENSIONS ═══ -->
+            <section class="tk-bloc">
+                <h2>Les quatre dimensions</h2>
+                <p class="tk-note">Chaque dimension reçoit un sens : hausse (+1), stable (0), baisse (−1), ou « non publié », qui <strong>ne compte pas</strong> dans le solde. Les variantes dépendent de l’archétype de la société : pré-revenus, plateforme ou industriel.</p>
+                <div class="tk-table-defile">
+                    <table class="tk-table">
+                        <caption>Les quatre dimensions et leurs variantes par archétype</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Dimension</th>
+                                <th scope="col">Ce qu’on mesure</th>
+                                <th scope="col">Hausse (+1)</th>
+                                <th scope="col">Baisse (−1)</th>
+                                <th scope="col">Non publié</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">D1 · Revenus de la thèse</th>
+                                <td>Croissance sur un an du chiffre d’affaires de la thèse, comparée à cette même croissance à la publication précédente. Si la société publie une croissance organique, c’est elle qu’on prend</td>
+                                <td>Plus d’un point au-dessus</td>
+                                <td>Plus d’un point en dessous</td>
+                                <td>Croissance non calculable, ou pas de valeur précédente</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">D1 · pré-revenus</th>
+                                <td>Unités livrées dans le trimestre, comparées au trimestre précédent</td>
+                                <td>Hausse de plus de 5 %, ou premières livraisons après zéro</td>
+                                <td>Baisse de plus de 5 %</td>
+                                <td>Pas de trimestre précédent publié</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">D2 · Demande engagée</th>
+                                <td>Ratio commandes / chiffre d’affaires du trimestre. Sans commandes publiées mais avec un carnet : commandes = variation du carnet sur le trimestre + chiffre d’affaires du trimestre</td>
+                                <td>Ratio au-dessus de 1,05</td>
+                                <td>Ratio sous 0,95</td>
+                                <td>Ni commandes ni carnet : ligne suivante</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">D2 · à défaut de commandes</th>
+                                <td>Croissance sur un an du nombre de clients ou d’abonnés, comparée à la publication précédente</td>
+                                <td>Plus d’un point au-dessus</td>
+                                <td>Plus d’un point en dessous</td>
+                                <td>Nombre non publié, ou pas de valeur précédente</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">D2 · pré-revenus</th>
+                                <td>Barreau d’engagement le plus haut atteint et nombre de réservations</td>
+                                <td>Barreau gagné, ou réservations en hausse</td>
+                                <td>Barreau perdu, ou réservations en baisse</td>
+                                <td>Pas de publication précédente</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">D3 · Prévision et jalons</th>
+                                <td>Statut de la prévision principale</td>
+                                <td>Relevée</td>
+                                <td>Abaissée ou manquée</td>
+                                <td>Aucune prévision chiffrée ni jalon daté</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">D4 · Rentabilité</th>
+                                <td>Marge opérationnelle GAAP du trimestre (résultat opérationnel / chiffre d’affaires), comparée au même trimestre un an plus tôt</td>
+                                <td>Hausse de plus de 2 points, ou de plus de 5 points si la marge du trimestre est négative</td>
+                                <td>Baisse de même ampleur</td>
+                                <td>Pas de trimestre comparable, ou marge non calculable</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3>Règles d’application</h3>
+                <ul class="tk-retenir">
+                    <li><strong>Croissance calculée sur les montants.</strong> Une croissance se calcule à partir des deux montants publiés, sans arrondi intermédiaire. Un pourcentage imprimé ne sert que s’il n’est pas recalculable. Les seuils sont stricts : « plus d’un point » veut dire un écart supérieur à 1,0.</li>
+                    <li><strong>Marge non calculable.</strong> Une marge est non calculable quand le chiffre d’affaires du trimestre est nul ou négatif, ou quand la perte opérationnelle dépasse cent fois ce chiffre d’affaires. Même critère pour D4 et pour le garde-fou de marge brute.</li>
+                    <li><strong>Première ligne d’une société.</strong> Elle se calcule comme les autres ; à défaut de communiqué précédent, on prend les comparatifs imprimés dans le premier communiqué. Elle ne porte <strong>aucune alerte</strong>, sauf une Bascule commerciale.</li>
+                    <li><strong>Garde-fou rémunération en actions.</strong> Si la marge GAAP baisse mais que la marge avant rémunération en actions monte sur un an, le sens est « stable » et la ligne porte le drapeau « rémunération en actions ».</li>
+                    <li><strong>Hésitation.</strong> Entre deux lectures, on retient la plus neutre (« maintenue », « stable ») et on l’inscrit dans un journal avec les deux lectures possibles.</li>
+                </ul>
+            </section>
+
+            <!-- ═══ STATUT DE PRÉVISION ═══ -->
+            <section class="tk-bloc">
+                <h2>Prévision : classer le statut (D3)</h2>
+                <p class="tk-note">La prévision principale est la prévision annuelle de chiffre d’affaires. À défaut, la prévision annuelle que la société place en premier. Pour un pré-revenus sans prévision chiffrée, le jalon daté qu’elle annonce. <strong>La révision prime</strong> : on ne teste « manquée » que si la prévision annuelle n’a pas bougé.</p>
+                <div class="tk-table-defile">
+                    <table class="tk-table">
+                        <caption>Les six statuts de prévision et le sens qu’ils donnent</caption>
+                        <thead>
+                            <tr><th scope="col">Statut</th><th scope="col">Quand</th><th scope="col">Sens</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><th scope="row">Relevée</th><td>Le milieu de la fourchette dépasse celui de la publication précédente, pour le même exercice. Un jalon avancé compte aussi</td><td class="tk-donnee">+1</td></tr>
+                            <tr><th scope="row">Abaissée</th><td>Le milieu passe sous celui de la publication précédente, y compris quand la coupe a été annoncée entre deux publications. Un jalon repoussé ou vidé de sa substance compte aussi</td><td class="tk-donnee">−1</td></tr>
+                            <tr><th scope="row">Manquée</th><td>La prévision annuelle n’a pas bougé, mais le trimestre publié ressort sous le bas de la fourchette donnée pour ce trimestre</td><td class="tk-donnee">−1</td></tr>
+                            <tr><th scope="row">Maintenue</th><td>Prévision reconduite, ou milieu inchangé. Un trimestre au-dessus de sa fourchette, sans relèvement de l’année, reste « maintenue »</td><td class="tk-donnee">0</td></tr>
+                            <tr><th scope="row">Nouvelle</th><td>Première prévision d’un exercice : elle ne se compare pas à celle de l’exercice précédent</td><td class="tk-donnee">0</td></tr>
+                            <tr><th scope="row">Non publié</th><td>Aucune prévision chiffrée ni jalon daté dans le communiqué</td><td><span class="tk-np">ne compte pas</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ═══ SOLDE ET ALERTES ═══ -->
+            <section class="tk-bloc">
+                <h2>Le solde et les quatre alertes</h2>
+                <p class="tk-note">Le solde d’une publication est la somme des sens publiés. Il va de −4 à +4. Une dimension « non publié » ne compte pas.</p>
+                <div class="tk-table-defile">
+                    <table class="tk-table">
+                        <caption>Les quatre alertes et leur condition de déclenchement</caption>
+                        <thead>
+                            <tr><th scope="col">Alerte</th><th scope="col">Condition</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><th scope="row">Bascule</th><td>Le solde atteint +2 ou plus, hors régime de bascule, et la marge brute du trimestre est positive</td></tr>
+                            <tr><th scope="row">Bascule commerciale</th><td>Pré-revenus seulement : première publication où le barreau vaut 4 ou 5 et où la marge brute est positive. Une seule par société</td></tr>
+                            <tr><th scope="row">Signal faible</th><td>La demande (D2) ou la prévision (D3) passe en hausse alors qu’elle était stable ou en baisse à la publication précédente, le solde précédent était nul ou négatif, et le solde reste sous +2</td></tr>
+                            <tr><th scope="row">Rechute</th><td>Le solde tombe à −2 ou moins, hors régime de rechute</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3>Garde-fou de marge brute</h3>
+                <p>Marge brute = (chiffre d’affaires − coût des ventes) / chiffre d’affaires du trimestre, avec le coût des ventes tel que la société le présente. Tant qu’elle est négative, nulle ou non calculable, il n’y a <strong>ni Bascule ni Bascule commerciale</strong>, quel que soit l’archétype : la ligne porte le drapeau « vend à perte ». L’alerte part à la première publication où ses conditions sont réunies avec une marge brute positive. Si la société ne présente aucune ligne de coût des ventes, le garde-fou est sans objet et on le note.</p>
+                <h3>Régimes</h3>
+                <p>Une Bascule ouvre un <strong>régime de bascule</strong> : pas de nouvelle Bascule tant qu’il dure. Il se ferme quand le solde est nul ou négatif deux publications de suite. Une Rechute ouvre un <strong>régime de rechute</strong>, fermé quand le solde est nul ou positif deux publications de suite. Un Signal faible n’ouvre aucun régime et peut se répéter.</p>
+                <p style="margin:0">Aucune alerte à la première publication d’une société, sauf la Bascule commerciale. Un sens précédent « non publié » ne vaut ni 0 ni −1 : il ne peut pas déclencher un Signal faible.</p>
+            </section>
+
+            <!-- ═══ CONDITION DE FINANCEMENT ═══ -->
+            <section class="tk-bloc">
+                <h2>La condition de financement</h2>
+                <p class="tk-note">Elle s’affiche à côté de chaque ligne et <strong>n’entre pas dans le solde</strong> : elle ne déclenche ni ne bloque aucune alerte. Quatre mesures, prises dans les derniers comptes publiés à la date de la ligne : flux de trésorerie libre sur 12 mois, autonomie en années, dilution sur 12 mois, engagements nets comparés au chiffre d’affaires des 12 derniers mois.</p>
+                <div class="tk-table-defile">
+                    <table class="tk-table">
+                        <caption>Les quatre couleurs de la condition de financement</caption>
+                        <thead>
+                            <tr><th scope="col">Flux libre 12 mois</th><th scope="col">Autres conditions</th><th scope="col">Couleur</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Positif</td><td>Dilution de 20 % au plus, engagements nets inférieurs ou égaux au chiffre d’affaires 12 mois</td><td><span class="tk-fin tk-fin--vert">Vert</span></td></tr>
+                            <tr><td>Positif</td><td>Engagements nets supérieurs au chiffre d’affaires 12 mois</td><td><span class="tk-fin tk-fin--orange">Orange</span></td></tr>
+                            <tr><td>Négatif ou nul</td><td>Autonomie d’au moins 2 ans, dilution de 20 % au plus, engagements nets inférieurs ou égaux au chiffre d’affaires 12 mois</td><td><span class="tk-fin tk-fin--orange">Orange</span></td></tr>
+                            <tr><td>Négatif ou nul</td><td>Autonomie de moins de 2 ans, ou engagements nets supérieurs au chiffre d’affaires 12 mois</td><td><span class="tk-fin tk-fin--rouge">Rouge</span></td></tr>
+                            <tr><td>Tous</td><td>Dilution de plus de 20 %</td><td><span class="tk-fin tk-fin--rouge">Rouge</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="margin:0">Le ou les motifs sont notés à côté de la couleur : autonomie, dilution, engagements. <strong>Si une mesure manque, la couleur est <span class="tk-fin tk-fin--non-determinee">Non déterminée</span>, pas verte.</strong></p>
+            </section>
+
+            <!-- ═══ ÉCHELLE D'ENGAGEMENT ═══ -->
+            <section class="tk-bloc">
+                <h2>L’échelle d’engagement (pré-revenus)</h2>
+                <p class="tk-note">Elle alimente D2 pour les sociétés pré-revenus. Par défaut, une annonce qui n’a pas donné lieu au dépôt d’un 8-K rubrique 1.01 <strong>ne dépasse pas le barreau 2</strong>. Le classement d’un événement est fait à la main, avec sa source.</p>
+                <div class="tk-table-defile">
+                    <table class="tk-table">
+                        <caption>Les six barreaux de l’échelle d’engagement</caption>
+                        <thead>
+                            <tr><th scope="col">Barreau</th><th scope="col">Définition</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><th scope="row" class="tk-donnee">0 · Annonce</th><td>Partenariat ou « collaboration », sans chiffre ni obligation</td></tr>
+                            <tr><th scope="row" class="tk-donnee">1 · Intention</th><td>Protocole d’accord ou lettre d’intention, non contraignants</td></tr>
+                            <tr><th scope="row" class="tk-donnee">2 · Accord-cadre</th><td>Volumes ou prix indicatifs, sélection comme fournisseur, commandes annoncées sans contrat déposé</td></tr>
+                            <tr><th scope="row" class="tk-donnee">3 · Accord définitif sous conditions</th><td>Signé mais suspendu à un financement, une licence ou une décision d’investissement ; prépaiement ; réservations de particuliers avec acompte</td></tr>
+                            <tr><th scope="row" class="tk-donnee">4 · Contrat ferme</th><td>Obligation d’achat ou paiement engagé</td></tr>
+                            <tr><th scope="row" class="tk-donnee">5 · Revenu récurrent</th><td>Chiffre d’affaires reconnu, lié à la thèse, chez plusieurs clients</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ═══ DRAPEAUX ET HORS CALCUL ═══ -->
+            <section class="tk-bloc tk-lecture">
+                <h2>Les drapeaux, et ce qui reste hors du calcul</h2>
+                <p>Trois drapeaux sortent du calcul : <strong>« vend à perte »</strong> (garde-fou de marge brute), <strong>« rémunération en actions »</strong> (garde-fou de D4) et <strong>« hésitation »</strong> (lecture neutre retenue).</p>
+                <p>Cinq autres drapeaux sont éditoriaux. Ils se saisissent à la main, chacun avec sa source, et s’affichent à côté de la fiche, <strong>jamais dans le solde</strong> : revenus hors thèse, trésorerie sans traction, concentration des clients, dépendance à une décision publique, banalisation de la technologie.</p>
+                <p>Des notes de niveau de 0 à 5 par dimension, un score pondéré et une phase existent dans la méthode, pour l’affichage seulement. <strong>Elles ne déclenchent aucune alerte</strong> et n’ont été rejouées que sur les sept premiers cas ; les poids sont un choix raisonné, pas un réglage mesuré. Elles ne sont pas affichées sur les fiches.</p>
+                <p style="margin:0">La matrice récit/réalité du document de refondation croise le solde avec une « température du récit » (valorisation, écart au plus haut). <strong>Cette température n’est pas définie et n’a pas été testée : elle ne fait pas partie de la v1.3.</strong></p>
+            </section>
+
+            <!-- ═══ LES TROIS VRAIS CHOIX DE LA v1.3 ═══ -->
+            <section class="tk-bloc tk-lecture">
+                <h2>Les trois vrais choix de la v1.3</h2>
+                <p class="tk-note">Les huit précisions de la v1.3 viennent de la comparaison de deux rejeux indépendants de la v1.2 sur dix cas, le 18 novembre 2026. Chacune tranche un point que la v1.2 laissait ouvert et que les deux lecteurs avaient lu différemment. Trois sont de vrais choix, et non de simples mises au net.</p>
+                <ul class="tk-retenir">
+                    <li><strong>Précision 1 — le critère de marge non calculable.</strong> Elle a été écrite <em>après</em> avoir vu le cas Fisker. Fisker ne compte donc plus comme preuve hors échantillon du garde-fou de marge brute.</li>
+                    <li><strong>Précision 2 — une pré-annonce ne crée pas de ligne.</strong> Le choix inverse se défend pour un outil en direct : une ligne à la pré-annonce aurait signalé la coupe de ChargePoint vingt jours plus tôt. Il n’a pas été testé, et il faudrait écrire comment la ligne définitive se compare.</li>
+                    <li><strong>Précision 6 — l’ordre entre plusieurs prévisions.</strong> Elle fixe une lecture parmi plusieurs possibles. Chez Plug Power, sept des dix lignes en désaccord entre les deux lecteurs venaient de la prévision.</li>
+                </ul>
+                <h3>État de test de la v1.3</h3>
+                <p style="margin:0">La v1.3 <strong>n’a pas de rejeu propre</strong>. Les précisions 3, 4, 5, 6 et 8 sont appliquées dans le rejeu corrigé du 18 novembre 2026, aux lignes où la comparaison a montré un écart ; elles n’ont pas été revérifiées sur les 146 lignes. Les précisions 1 et 2 décrivent ce que ce rejeu faisait déjà. La précision 7 n’a pas été rejouée. Aucune n’a été rejouée sur les sept premiers cas.</p>
+            </section>
+
+            <!-- ═══ CE QUE LE BACKTEST A MONTRÉ (méthode §12, en entier) ═══ -->
+            <section class="tk-bloc" id="backtest">
+                <h2>Ce que le backtest a montré</h2>
+                <p>Dix-sept cas. <strong>Sept ont servi à construire la méthode</strong> : Palantir, Nvidia, Vertiv, Tesla (réussites), Nikola, WeWork, Cisco (échecs). <strong>Dix ont servi à la tester, règles figées</strong> : AppLovin, ChargePoint, Constellation Energy, CrowdStrike, Fisker, GE Vernova, Peloton, Plug Power, Rocket Lab, SunPower.</p>
+                <p>Sur les dix cas hors échantillon (146 publications, rejeu corrigé) : <strong>34 alertes</strong>, soit 11 Bascules, 10 Rechutes et 13 Signaux faibles.</p>
+
+                <h3>Les six constats</h3>
+                <ul class="tk-constats">
+                    <li><span>Succès boursiers ayant reçu une Bascule</span><span class="tk-chiffre">5 sur 5</span></li>
+                    <li><span>Échecs boursiers ayant reçu une Bascule (ChargePoint, Peloton, SunPower) ; 4 sur 5 si le garde-fou est lu à la lettre de la v1.2 (Fisker)</span><span class="tk-chiffre">3 sur 5</span></li>
+                    <li><span>Bascules suivies d’un rendement supérieur au S&amp;P 500 à 12 mois</span><span class="tk-chiffre">6 sur 10 mesurables</span></li>
+                    <li><span>Bascules qui font mieux qu’une date de publication quelconque de la même société</span><span class="tk-chiffre">5 sur 10 mesurables</span></li>
+                    <li><span>Rechutes suivies d’un rendement inférieur au S&amp;P 500 à 12 mois</span><span class="tk-chiffre">6 sur 8 mesurables</span></li>
+                    <li><span>Accord entre deux lecteurs indépendants, à l’aveugle : 10 Bascules sur 11 à la même date ; 7 Rechutes et 7 Signaux faibles en commun</span><span class="tk-chiffre">90 % des sens</span></li>
+                </ul>
+
+                <h3>Ce qu’il faut en retenir</h3>
+                <ul class="tk-retenir">
+                    <li><strong>La Bascule ne trie pas les gagnants.</strong> Elle signale une amélioration des preuves. Elle apparaît chez tous les succès, et chez la majorité des échecs.</li>
+                    <li><strong>La Rechute est le signal le plus fiable.</strong> La Bascule se reproduit d’un lecteur à l’autre (10 dates sur 11). La Rechute moins bien (7 en commun, pour 9 et 11). Le Signal faible dépend du lecteur (7 en commun, pour 11 et 8).</li>
+                    <li><strong>Deux des trois règles ajoutées en v1.2 n’ont rien montré.</strong> Les engagements nets n’ont changé aucune couleur sur 146 publications. La première prévision de bénéfice net ne s’est jamais déclenchée. Le garde-fou de marge brute a retenu deux Bascules chez Plug Power, l’une suivie de 296 points de mieux que le S&amp;P 500 en douze mois (7 mai 2020), l’autre de 102 points de moins (1<sup>er</sup> mars 2023).</li>
+                    <li><strong>Les limites.</strong> La liste des dix a été dressée de mémoire, en connaissant le sort des sociétés. La prévision se lit à la main. Les cours de Fisker et de SunPower manquent. Les verdicts de GE Vernova et de Rocket Lab sont provisoires.</li>
+                </ul>
+
+                <dl class="tk-ecrire">
+                    <div>
+                        <dt>Ce que le site peut écrire</dt>
+                        <dd>« Les preuves s’améliorent » ou « se dégradent », avec la source de chaque chiffre, et le bilan complet du backtest, échecs compris.</dd>
+                    </div>
+                    <div>
+                        <dt>Ce qu’il ne peut pas écrire</dt>
+                        <dd>Qu’une Bascule annonce une réussite, ni aucune promesse de performance.</dd>
+                    </div>
+                </dl>
+            </section>
+
+            <aside class="tk-amf" role="note">
+                <p style="margin:0"><strong>Avertissement.</strong> Les informations présentées sont fournies à titre informatif uniquement et ne constituent en aucun cas un conseil en investissement, une recommandation d’achat ou de vente, ni un objectif de cours. La méthode décrit des publications passées ; une alerte n’est pas une prévision. Les performances passées ne préjugent pas des performances futures.</p>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-disclaimer">
+                Les informations présentées sont fournies à titre informatif uniquement et ne constituent en aucun cas des conseils en investissement. Les performances passées ne préjugent pas des performances futures.
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Retour en haut">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
+    <script src="app.js"></script>
+    <script>if (typeof initCommon === 'function') initCommon();</script>
+    <script src="nav-config.js"></script>
+    <script src="nav-shared.js"></script>
+</body>
+</html>
