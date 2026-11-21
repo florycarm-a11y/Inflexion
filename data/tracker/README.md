@@ -20,25 +20,33 @@ La validation exécutable est dans [`tracker-modele.js`](../../tracker-modele.js
 
 ## La collecte du 21 novembre 2026
 
-Cinq sociétés, une par thème, lues sur EDGAR ce jour-là. Les fichiers sont **engendrés** par [`scripts/tracker-collecte-2026-11-21.mjs`](../../scripts/tracker-collecte-2026-11-21.mjs), qui porte les montants bruts de chaque communiqué et calcule les sens devant vous : relancer le script reproduit les fichiers à l'identique (vérifié). Ne pas éditer les JSON à la main — corriger le script, puis le relancer.
+Sept sociétés, sept thèmes, **35 publications** lues sur EDGAR. Les fichiers sont **engendrés** par [`scripts/tracker-collecte-2026-11-21.mjs`](../../scripts/tracker-collecte-2026-11-21.mjs), qui porte les montants bruts de chaque communiqué et calcule les sens devant vous : relancer le script reproduit les fichiers à l'identique (vérifié). Ne pas éditer les JSON à la main — corriger le script, puis le relancer.
 
-| Société | Thème | Archétype | Publications lues | Ce que le moteur en tire |
+| Société | Thème | Archétype | Publications | Ce que le moteur en tire |
 |---|---|---|---|---|
-| Centrus Energy | Uranium et cycle du combustible | industriel | 4 (T4 2025 → T3 2026) | Signal faible au T1 2026 |
-| Rocket Lab | Spatial | industriel | 4 (T4 2025 → T3 2026) | Bascule au T1 2026, régime tenu depuis |
-| IonQ | Quantique | industriel | 3 (T1 → T3 2026) | Bascule au T3 2026 |
-| Oklo | Petits réacteurs | pré-revenus | 2 (T2, T3 2026) | Aucune alerte (soldes nuls) |
+| Centrus Energy | Uranium et cycle du combustible | industriel | 8 (T4 2024 → T3 2026) | Bascule T1 2025, **Rechute T4 2025**, Signal faible T1 2026 |
+| Rocket Lab | Spatial | industriel | 7 (T1 2025 → T3 2026) | Bascule T2 2025, régime tenu six trimestres |
+| IonQ | Quantique | industriel | 6 (T2 2025 → T3 2026) | Bascule T3 2025, régime tenu |
+| Vertiv | Refroidissement liquide | industriel | 5 (T3 2025 → T3 2026) | Bascule T1 2026 |
+| SentinelOne | Cybersécurité | **plateforme** | 5 (T2 FY2026 → T2 FY2027) | Bascule T3 FY2026 |
+| Oklo | Petits réacteurs | pré-revenus | 4 (T4 2025 → T3 2026) | Aucune alerte (soldes nuls) |
 | Agility Robotics | Robotique humanoïde | pré-revenus | 0 | Aucune publication relevée |
 
-Trois lectures méritent d'être connues avant de reprendre la série :
+Les trois archétypes et les trois chemins de D2 (commandes/carnet, nombre de clients, barreau) sont désormais exercés.
 
-- **Centrus ne ventile pas son segment LEU au quatrième trimestre** : D1 y est « non publié », et la ligne suivante perd sa valeur précédente. Ce n'est pas un trou de collecte, c'est ce que la société publie.
-- **Rocket Lab ne guide qu'un trimestre à la fois** : c'est la règle de §5 (milieu de la fourchette du trimestre suivant contre le chiffre d'affaires publié, seuil ±2 %) qui donne D3, pas la comparaison de fourchettes annuelles.
-- **Oklo ne dépose plus de 8-K rubrique 2.02** : sa publication de résultats est le 10-Q lui-même. Et ses seuls 8-K rubrique 1.01 sont des accords de distribution d'actions, pas des accords clients : §8 plafonne donc ses engagements au **barreau 2**, sous le seuil de la Bascule commerciale.
+### Ce que les documents imposent, société par société
 
-**Agility Robotics** entre au catalogue sans publication : le 10-Q du 13 novembre 2026 couvre la SPAC d'avant fusion (clôture le 4 novembre 2026), pas Agility. Sa première publication en propre reste à venir.
+- **Centrus ne ventile pas son segment LEU au quatrième trimestre** : D1 y est « non publié », et la ligne suivante perd sa valeur précédente. Deux `n.p.` d'affilée sur la dimension qui porte la thèse — ce que la société publie, pas un trou de collecte. Elle ne donne par ailleurs aucune prévision annuelle avant février 2026 : D3 reste muet sur quatre lignes.
+- **Rocket Lab ne guide qu'un trimestre à la fois** : c'est la règle de §5 (milieu de la fourchette du trimestre suivant contre le chiffre d'affaires publié, seuil ±2 %) qui donne D3. Et son carnet n'apparaît dans les communiqués qu'à partir du quatrième trimestre 2025 : D2 est muet avant.
+- **IonQ ne publie ses obligations de prestation restantes qu'épisodiquement** : D2 est « non publié » sur cinq lignes sur six.
+- **Vertiv publie ses commandes en pourcentage de croissance, jamais en montant**, et son carnet par intermittence — ni dans ses communiqués de 2026, ni dans les 10-Q déposés le même jour (vérifié). D2 ne peut rien en faire après le quatrième trimestre 2025. C'est l'argument le plus net en faveur de la piste 4 du document de refondation (qualité du carnet).
+- **SentinelOne ne publie ni commandes ni carnet** : l'indicateur de demande est donc le **nombre de clients à plus de 100 000 dollars d'ARR**, troisième chemin prévu par §2. Sa croissance passe de 23 % à 13 % en cinq trimestres — D2 y est trois fois en baisse pendant que le solde reste positif.
+- **Oklo ne dépose plus de 8-K rubrique 2.02** : sa publication de résultats est le 10-Q (ou le 10-K) lui-même. Et ses seuls 8-K rubrique 1.01 sont des accords de distribution d'actions, pas des accords clients : §8 plafonne donc ses engagements (Switch, prépaiement Meta) au **barreau 2**, sous le seuil de la Bascule commerciale.
+- **Agility Robotics** entre au catalogue sans publication : le 10-Q du 13 novembre 2026 couvre la SPAC d'avant fusion (clôture le 4 novembre 2026), pas Agility. Sa première publication en propre reste à venir.
 
-**Une lecture à trancher.** D1 dit « chiffre d'affaires de la thèse », D2 dit « chiffre d'affaires du trimestre » sans ce qualificatif : D2 est donc calculé ici sur le **chiffre d'affaires total et le carnet total**, D1 sur le segment de la thèse. C'est la lecture littérale, appliquée uniformément — mais elle gagnerait à devenir une précision de la méthode.
+### Une lecture à trancher
+
+D1 dit « chiffre d'affaires **de la thèse** », D2 dit « chiffre d'affaires **du trimestre** » sans ce qualificatif : D2 est donc calculé ici sur le **chiffre d'affaires et le carnet totaux**, D1 sur le segment de la thèse. C'est la lecture littérale, appliquée uniformément — mais elle gagnerait à devenir une précision de la méthode.
 
 ## Objet `source`
 
