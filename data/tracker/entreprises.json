@@ -42,7 +42,7 @@
       },
       "indicateur_demande": {
         "type": "carnet",
-        "valeur": "Carnet de commandes publié à chaque trimestre",
+        "valeur": "Carnet de commandes, publié depuis le quatrième trimestre 2025",
         "source": {
           "type": "8-K",
           "date": "2026-11-09",
@@ -76,6 +76,56 @@
       },
       "entree_tracker": "2026-11-21",
       "fichier": "data/tracker/ionq.json"
+    },
+    {
+      "id": "vertiv",
+      "nom": "Vertiv",
+      "recit": "Refroidissement liquide et infrastructure de centre de données",
+      "archetype": "industriel",
+      "ca_these": {
+        "valeur": "Chiffre d’affaires total (infrastructure de centre de données)",
+        "source": {
+          "type": "8-K",
+          "date": "2026-10-28",
+          "url": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026067707/q32026exhibit991vrt10282026.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "carnet",
+        "valeur": "Carnet de commandes, publié par intermittence ; les commandes ne le sont qu’en croissance",
+        "source": {
+          "type": "8-K",
+          "date": "2026-02-11",
+          "url": "https://www.sec.gov/Archives/edgar/data/1674101/000167410126000006/exhibit991vrt02112026.htm"
+        }
+      },
+      "entree_tracker": "2026-11-21",
+      "fichier": "data/tracker/vertiv.json"
+    },
+    {
+      "id": "sentinelone",
+      "nom": "SentinelOne",
+      "recit": "Cybersécurité — protection des terminaux pilotée par l’IA",
+      "archetype": "plateforme",
+      "ca_these": {
+        "valeur": "Chiffre d’affaires total (plateforme Singularity)",
+        "source": {
+          "type": "8-K",
+          "date": "2026-08-27",
+          "url": "https://www.sec.gov/Archives/edgar/data/1583708/000158370826000052/sentineloneq227exhibit991.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "clients",
+        "valeur": "Nombre de clients à plus de 100 000 dollars d’ARR",
+        "source": {
+          "type": "8-K",
+          "date": "2026-08-27",
+          "url": "https://www.sec.gov/Archives/edgar/data/1583708/000158370826000052/sentineloneq227exhibit991.htm"
+        }
+      },
+      "entree_tracker": "2026-11-21",
+      "fichier": "data/tracker/sentinelone.json"
     },
     {
       "id": "oklo",
