@@ -73,7 +73,9 @@ test('index.html : tous les :hover du <style> sont sous @media(hover:hover), zoo
   const horsBloc = (sansBlocs(style, 'hover:hover').match(/[^{}\n]*:hover[^{]*\{/g) || []).map((s) => s.trim());
   assert.deepEqual(horsBloc, [], `:hover hors de @media(hover:hover) : ${horsBloc.join(' ; ')}`);
   assert.ok(!/group-hover:scale-/.test(script), 'zoom d\'image encore en group-hover:scale-* : utiliser .zoom-hover');
-  assert.equal((script.match(/\bzoom-hover\b/g) || []).length, 2, 'les deux img zoomables (manchette, cartes Décryptages) portent zoom-hover');
+  // Depuis le pivot du 21 novembre 2026, la home du tracker ne porte plus d'image : aucun zoom-hover dans le script.
+  // La règle CSS reste (bloc de mouvement réduit) pour tout retour d'une image ; toute image nouvelle doit la porter.
+  assert.equal((script.match(/\bzoom-hover\b/g) || []).length, 0, 'la home du tracker ne porte pas d\'image : zoom-hover réservé à leur retour');
 });
 
 test('index.html : Reveal (enfant unique, lit la préférence), FadeUp disparu, bloc de mouvement réduit complet', () => {
@@ -96,7 +98,9 @@ test('index.html : Reveal (enfant unique, lit la préférence), FadeUp disparu, 
   // seule la variante motion-safe: de Tailwind coupe vraiment l'animation en mouvement réduit.
   const nus = script.match(/(?<![\w:-])animate-pulse\b/g) || [];
   assert.equal(nus.length, 0, `${nus.length} animate-pulse sans motion-safe: (site.css, chargé en dernier, bat le <style>)`);
-  assert.equal((script.match(/motion-safe:animate-pulse\b/g) || []).length, 8, 'pastille « À la une » + 7 blocs squelette en motion-safe:animate-pulse');
+  // Depuis le pivot : plus de squelette de chargement de news ni de pastille « en direct » — rien ne pulse sur
+  // une home qui ne promet aucune fraîcheur. Si une boucle revient, elle passe par motion-safe:, jamais nue.
+  assert.equal((script.match(/motion-safe:animate-pulse\b/g) || []).length, 0, 'rien ne pulse sur la home du tracker ; une boucle nouvelle passerait par motion-safe:');
   // La classe n'existe en ligne que si site.css a été reconstruit (site-css.test.mjs ne vérifie que les valeurs arbitraires).
   assert.ok(lire('assets/site.css').includes('.motion-safe\\:animate-pulse{'), 'site.css n\'a pas été reconstruit : motion-safe:animate-pulse absent');
 });
@@ -112,5 +116,5 @@ test('index.html : le schéma de délais du prompt 4 (0 / 0,15 / 0,3 ; +0,06 par
     const stagger = props.match(/\bstagger:([\d.]+)/);
     if (stagger) assert.equal(stagger[1], '0.06', `stagger ${stagger[1]} : les cartes ajoutent 0,06 s`);
   }
-  assert.equal(usages.filter((p) => /\bstagger:/.test(p)).length, 2, 'deux grilles de cartes portent stagger (Décryptages, Sources & signaux)');
+  assert.equal(usages.filter((p) => /\bstagger:/.test(p)).length, 2, 'deux grilles portent stagger (statistiques du backtest, renvois du socle)');
 });

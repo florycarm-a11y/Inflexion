@@ -47,9 +47,10 @@ commodities:'Or, p\u00e9trole, m\u00e9taux & \u00e9nergie',
 etf:'Fonds indiciels & allocations',
 macro:'Donn\u00e9es macro\u00e9conomiques',
 briefing:'Intelligence quotidienne — Signal & Risk Radar',
+tracker:'Tracker d’inflexions',
 };
 
-var FOOTER_SOURCES=['FRED','Finnhub','CoinGecko','DefiLlama','Messari','ECB','IFRI','SIPRI','Chatham House','OPEC'];
+var FOOTER_SOURCES=['SEC EDGAR','8-K','10-Q','10-K','XBRL','GAAP'];
 
 // ── Barre rouge, en-tête à deux états, méga-menu, overlay : même DOM que la Navigation de la home ──
 var bronzeBar=document.createElement('div');
@@ -170,21 +171,20 @@ newFooter.innerHTML=
 // Col 1
 '<div style="grid-column:span 2" class="footer-col1">'+
 '<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem"><img src="logo-header.png" alt="Inflexion" style="height:2.5rem;width:auto"/></div>'+
-'<p style="font-size:0.875rem;color:'+T.footerText+';line-height:1.6;font-family:'+T.fontBody+'">Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.</p></div>'+
-// Col 2
-'<div><p style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:'+T.footerTitle+';margin-bottom:1rem;font-family:'+T.fontBody+'">Intelligence</p>'+
+'<p style="font-size:0.875rem;color:'+T.footerText+';line-height:1.6;font-family:'+T.fontBody+'">Tracker d\u2019inflexions. Lecture des publications de r\u00e9sultats des soci\u00e9t\u00e9s port\u00e9es par un r\u00e9cit \u2014 m\u00e9thode publique, limites comprises.</p></div>'+
+// Col 2 \u2014 le tracker (pivot du 21 novembre 2026 : les liens de veille sortent du pied de page)
+'<div><p style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:'+T.footerTitle+';margin-bottom:1rem;font-family:'+T.fontBody+'">Tracker</p>'+
 '<ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.625rem">'+
-'<li><a href="geopolitics.html" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">G\u00e9opolitique</a></li>'+
-'<li><a href="markets.html" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">March\u00e9s</a></li>'+
-'<li><a href="crypto.html" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">Crypto</a></li>'+
-'<li><a href="commodities.html" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">Mati\u00e8res premi\u00e8res</a></li>'+
-'<li><a href="etf.html" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">ETF & Fonds</a></li>'+
+'<li><a href="index.html#societes" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">Soci\u00e9t\u00e9s suivies</a></li>'+
+'<li><a href="index.html#alertes" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">Alertes</a></li>'+
+'<li><a href="methode.html" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">La m\u00e9thode, en clair</a></li>'+
+'<li><a href="methode.html#backtest" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">Le backtest</a></li>'+
 '</ul></div>'+
 // Col 3
 '<div><p style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:'+T.footerTitle+';margin-bottom:1rem;font-family:'+T.fontBody+'">Plateforme</p>'+
 '<ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.625rem">'+
-'<li><a href="analyses.html" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">Analyses</a></li>'+
-'<li><a href="expertise.html" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">Expertise</a></li>'+
+'<li><a href="expertise.html" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">Expertise & SEMPLICE</a></li>'+
+'<li><a href="analyses.html" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">Analyses \u2014 archives</a></li>'+
 '<li><a href="premium.html" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">Services</a></li>'+
 '<li><a href="premium.html#contact" class="ns-footer-link" style="font-size:0.875rem;color:'+T.footerText+';text-decoration:none;transition:color .2s">Contact</a></li>'+
 '</ul></div>'+

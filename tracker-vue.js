@@ -1,8 +1,10 @@
 /**
- * tracker-vue.js — Rendu de tracker.html et entreprise.html.
+ * tracker-vue.js — Rendu de la fiche société (entreprise.html).
  *
- * Charge data/tracker/entreprises.json (et data/tracker/<id>.json sur une fiche), puis écrit le DOM.
- * Tout passe par tracker-modele.js, chargé AVANT ce fichier : aucune règle de la méthode n'est réécrite ici.
+ * La liste des sociétés suivies est rendue par la home (index.html, React) depuis le pivot
+ * du 21 novembre 2026 ; cette vue ne porte plus que la fiche. Charge data/tracker/entreprises.json
+ * puis data/tracker/<id>.json, et écrit le DOM. Tout passe par tracker-modele.js, chargé AVANT
+ * ce fichier : aucune règle de la méthode n'est réécrite ici.
  *
  * Deux règles tenues par le rendu :
  *  - une valeur sans source ne s'affiche pas (valeurSourcee / sensAffichable) ;
@@ -57,52 +59,6 @@ function charger(chemin) {
 function signalerErreur(hote, erreur) {
   hote.textContent = '';
   hote.appendChild(etatVide('Données du tracker illisibles', String(erreur && erreur.message ? erreur.message : erreur)));
-}
-
-// ── tracker.html : la liste des sociétés suivies ──────────────────────────────
-
-function rendreListe(hote, catalogue) {
-  hote.textContent = '';
-
-  var controle = validerCatalogue(catalogue);
-  if (!controle.valide) {
-    hote.appendChild(etatVide('Catalogue non conforme au schéma', controle.erreurs.join(' · ')));
-    return;
-  }
-
-  if (etatCatalogue(catalogue) === 'aucune-entreprise') {
-    hote.appendChild(etatVide(
-      'Aucune société suivie',
-      'Le tracker est une coquille : aucune société n’y est entrée. Les paramètres d’une société (archétype, '
-      + 'chiffre d’affaires de la thèse, indicateur de demande) se fixent avant de lire ses chiffres.'));
-    return;
-  }
-
-  var corps = catalogue.entreprises.map(function (e) {
-    var demande = e.indicateur_demande.type === 'non-publie'
-      ? el('span', { class: 'tk-np' }, TRACKER_SENS['non-publie'].libelle)
-      : (valeurSourcee(e.indicateur_demande)
-        ? el('span', {}, [e.indicateur_demande.valeur, ' ', lienSource(e.indicateur_demande.source)])
-        : el('span', { class: 'tk-np' }, 'Source manquante'));
-    var these = valeurSourcee(e.ca_these);
-    return el('tr', {}, [
-      el('th', { scope: 'row' }, [el('a', { href: 'entreprise.html?id=' + encodeURIComponent(e.id) }, e.nom)]),
-      el('td', {}, TRACKER_ARCHETYPES[e.archetype].libelle),
-      el('td', {}, e.recit),
-      el('td', {}, these ? el('span', {}, [these.valeur, ' ', lienSource(these.source)]) : el('span', { class: 'tk-np' }, 'Source manquante')),
-      el('td', {}, demande),
-      el('td', { class: 'tk-donnee' }, e.entree_tracker),
-    ]);
-  });
-
-  hote.appendChild(el('div', { class: 'tk-table-defile' }, [
-    el('table', { class: 'tk-table' }, [
-      el('caption', {}, 'Sociétés suivies par le tracker d’inflexions'),
-      el('thead', {}, el('tr', {}, ['Société', 'Archétype', 'Récit', 'Chiffre d’affaires de la thèse', 'Indicateur de demande', 'Entrée']
-        .map(function (t) { return el('th', { scope: 'col' }, t); }))),
-      el('tbody', {}, corps),
-    ]),
-  ]));
 }
 
 // ── entreprise.html : la fiche d'une société ──────────────────────────────────
@@ -239,7 +195,7 @@ function rendreFiche(hote, catalogue, id) {
   if (!id) {
     hote.appendChild(etatVide('Aucune société sélectionnée',
       'Cette page affiche la fiche d’une société du tracker. Choisissez-la dans la liste.'));
-    hote.appendChild(el('p', {}, el('a', { class: 'tk-lien', href: 'tracker.html' }, 'Voir les sociétés suivies')));
+    hote.appendChild(el('p', {}, el('a', { class: 'tk-lien', href: 'index.html#societes' }, 'Voir les sociétés suivies')));
     return;
   }
 
@@ -253,7 +209,7 @@ function rendreFiche(hote, catalogue, id) {
   if (!entreprise) {
     hote.appendChild(etatVide('Société inconnue',
       'Aucune société de ce nom n’est suivie par le tracker.'));
-    hote.appendChild(el('p', {}, el('a', { class: 'tk-lien', href: 'tracker.html' }, 'Voir les sociétés suivies')));
+    hote.appendChild(el('p', {}, el('a', { class: 'tk-lien', href: 'index.html#societes' }, 'Voir les sociétés suivies')));
     return;
   }
 
@@ -281,16 +237,13 @@ function rendreFiche(hote, catalogue, id) {
 var CATALOGUE = 'data/tracker/entreprises.json';
 
 document.addEventListener('DOMContentLoaded', function () {
-  var liste = document.getElementById('tracker-liste');
   var fiche = document.getElementById('tracker-fiche');
-  if (!liste && !fiche) return;
+  if (!fiche) return;
 
   charger(CATALOGUE).then(function (catalogue) {
-    if (liste) rendreListe(liste, catalogue);
-    if (fiche) rendreFiche(fiche, catalogue, new URLSearchParams(window.location.search).get('id'));
+    rendreFiche(fiche, catalogue, new URLSearchParams(window.location.search).get('id'));
   }).catch(function (erreur) {
-    if (liste) signalerErreur(liste, erreur);
-    if (fiche) signalerErreur(fiche, erreur);
+    signalerErreur(fiche, erreur);
   });
 });
 

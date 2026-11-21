@@ -1,8 +1,9 @@
-// Garde-fous des coquilles du tracker d'inflexions : tracker.html, entreprise.html, methode.html,
-// tracker-modele.js, tracker-vue.js, assets/tracker.css et data/tracker/.
+// Garde-fous du tracker d'inflexions : index.html (la home EST le tracker depuis le pivot du
+// 21 novembre 2026), entreprise.html, methode.html, tracker.html (pure redirection),
+// tracker-modele.js, tracker-vue.js, assets/tracker.css, nav-config.js et data/tracker/.
 //
 // Méthode de référence : docs/tracker-methode.md (v1.3 proposée, non figée). Ces tests ne vérifient
-// AUCUN calcul — il n'y a pas de moteur — mais trois promesses de la coquille :
+// AUCUN calcul — il n'y a pas de moteur — mais trois promesses :
 //   1. une valeur sans source ne s'affiche pas ;
 //   2. le solde, les alertes, le score et la phase ne sont jamais saisis ;
 //   3. aucune recommandation, aucun chiffre inventé, aucune société fictive.
@@ -16,8 +17,9 @@ const RACINE = new URL('../', import.meta.url);
 const lire = (chemin) => readFileSync(new URL(chemin, RACINE), 'utf8');
 const lireJson = (chemin) => JSON.parse(lire(chemin));
 
-const PAGES = ['tracker.html', 'entreprise.html', 'methode.html'];
-const PAGES_INSTRUMENT = ['tracker.html', 'entreprise.html']; // celles qui rendent des données
+const PAGES_LEGACY = ['entreprise.html', 'methode.html']; // coquilles legacy du tracker
+const INDEX = lire('index.html');
+const SCRIPT_INDEX = INDEX.match(/<script type="module">([\s\S]*?)<\/script>/)[1];
 
 // ── Le modèle, chargé hors navigateur (CLAUDE.md §8 : globales `var` dans node:vm) ──
 const M = vm.createContext({});
@@ -36,11 +38,56 @@ const conforme = (resultat, message) => {
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 1. Les trois pages : coquille legacy conforme
+// 1. La navigation porte le tracker (pivot confirmé le 21 novembre 2026)
 // ─────────────────────────────────────────────────────────────────────────────
 
-test('les trois pages sont des pages legacy complètes (DOCTYPE, langue, nav partagée)', () => {
-  for (const page of PAGES) {
+test('nav-config.js : les rubriques Tracker et Méthode existent, la veille est sortie', () => {
+  const nav = lire('nav-config.js');
+  for (const attendu of ["label:'Tracker'", "label:'Méthode'", "href:'index.html#societes'", "href:'index.html#alertes'", "href:'methode.html'", "href:'methode.html#backtest'"]) {
+    assert.ok(nav.includes(attendu), `nav-config.js : ${attendu} absent — la nav doit porter le tracker`);
+  }
+  // Les pages de veille sont conservées dans le dépôt mais hors navigation.
+  for (const veille of ['geopolitics.html', 'markets.html', 'crypto.html', 'commodities.html', 'etf.html', 'briefing.html', 'ai-tech.html']) {
+    assert.ok(!nav.includes(veille), `nav-config.js : ${veille} encore dans la navigation`);
+  }
+  assert.ok(!nav.includes('MEGA_FOOTERS'), 'MEGA_FOOTERS est mort (aucun consommateur) : supprimé de nav-config.js');
+  // L'archive reste accessible depuis la nav.
+  assert.ok(nav.includes("href:'analyses.html'"), 'analyses.html (archives) doit rester joignable depuis la nav');
+});
+
+test('nav-shared.js : le pied de page legacy ne porte plus les liens de veille', () => {
+  const ns = lire('nav-shared.js');
+  for (const veille of ['geopolitics.html', 'markets.html', 'crypto.html', 'commodities.html', 'etf.html']) {
+    assert.ok(!ns.includes(veille), `nav-shared.js : ${veille} encore dans le pied de page`);
+  }
+  for (const attendu of ['index.html#societes', 'methode.html']) {
+    assert.ok(ns.includes(attendu), `nav-shared.js : ${attendu} absent du pied de page`);
+  }
+  assert.ok(ns.includes("tracker:'Tracker d’inflexions'"), 'CATEGORY_LABELS doit nommer le hero des pages du tracker');
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 2. tracker.html : une pure redirection vers la home
+// ─────────────────────────────────────────────────────────────────────────────
+
+test('tracker.html : redirection minimale vers index.html#societes, noindex, hors des seaux de pages', () => {
+  const html = lire('tracker.html');
+  assert.ok(html.startsWith('<!DOCTYPE html>'), 'DOCTYPE absent');
+  assert.ok(html.includes('<html lang="fr">'), 'lang="fr" absent');
+  assert.ok(html.includes('<meta name="robots" content="noindex">'), 'noindex requis : la page ne doit plus être indexée');
+  assert.ok(/<meta http-equiv="refresh" content="0;url=index\.html#societes">/.test(html), 'meta refresh 0 vers index.html#societes attendu');
+  assert.ok(/<a href="index\.html#societes">/.test(html), 'lien de secours requis pour les navigateurs sans refresh');
+  // Hors des seaux : ni legacy (nav-shared), ni React, ni Tailwind (SANS_TAILWIND dans site-css.test.mjs).
+  assert.ok(!html.includes('nav-shared.js'), 'une redirection ne charge pas la coquille de navigation');
+  assert.ok(!html.includes('site.css'), 'une redirection ne charge pas site.css (exemptée via SANS_TAILWIND)');
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 3. Les pages legacy du tracker : coquille conforme
+// ─────────────────────────────────────────────────────────────────────────────
+
+test('entreprise.html et methode.html : pages legacy complètes (DOCTYPE, langue, nav partagée)', () => {
+  for (const page of PAGES_LEGACY) {
     const html = lire(page);
     assert.ok(html.startsWith('<!DOCTYPE html>'), `${page} : DOCTYPE absent`);
     assert.ok(html.includes('<html lang="fr">'), `${page} : lang="fr" absent`);
@@ -51,11 +98,13 @@ test('les trois pages sont des pages legacy complètes (DOCTYPE, langue, nav par
     assert.ok(html.includes('data-design-regime="editorial"'), `${page} : régime editorial absent`);
     // Le régime instrument ne déclare pas --editorial-accent, que la barre et le méga-menu de nav-shared.js consomment.
     assert.ok(!html.includes('data-design-regime="instrument"'), `${page} : le régime instrument priverait le chrome de --editorial-accent`);
+    // Pages officielles depuis le pivot : plus de noindex.
+    assert.ok(!html.includes('noindex'), `${page} : noindex à retirer, la page est officielle depuis le pivot`);
   }
 });
 
-test('les trois pages lient assets/tracker.css entre header-shell.css et site.css', () => {
-  for (const page of PAGES) {
+test('assets/tracker.css liée au bon rang sur les trois pages qui la consomment', () => {
+  for (const page of PAGES_LEGACY) {
     const html = lire(page);
     const tracker = html.indexOf('href="assets/tracker.css"');
     const shell = html.indexOf('href="assets/header-shell.css"');
@@ -64,24 +113,19 @@ test('les trois pages lient assets/tracker.css entre header-shell.css et site.cs
     assert.equal(html.split('href="assets/tracker.css"').length - 1, 1, `${page} : assets/tracker.css liée plus d'une fois`);
     assert.ok(shell < tracker && tracker < site, `${page} : ordre attendu header-shell.css, tracker.css, site.css`);
   }
-});
-
-test('les trois pages restent hors navigation : aucune n’est ajoutée à nav-config.js', () => {
-  const nav = lire('nav-config.js');
-  for (const page of PAGES) {
-    assert.ok(!nav.includes(page), `${page} est entrée dans nav-config.js : le pivot de la vitrine n’est pas confirmé`);
-  }
-  // Et aucune page existante ne pointe vers elles.
-  const index = lire('index.html');
-  for (const page of PAGES) assert.ok(!index.includes(page), `index.html pointe vers ${page}`);
+  // La home : tracker.css avant site.css (elle ne lie pas header-shell.css, elle en est la source).
+  const iTracker = INDEX.indexOf('href="assets/tracker.css"');
+  const iSite = INDEX.indexOf('href="assets/site.css"');
+  assert.ok(iTracker !== -1 && iTracker < iSite, 'index.html : tracker.css doit précéder site.css');
+  assert.equal(INDEX.split('href="assets/tracker.css"').length - 1, 1, 'index.html : tracker.css liée plus d\'une fois');
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2. Avertissement AMF : dans <main>, car nav-shared.js remplace le pied de page
+// 4. Avertissement AMF et interdits éditoriaux — home comprise
 // ─────────────────────────────────────────────────────────────────────────────
 
-test('l’avertissement AMF est dans <main> sur les trois pages, et refuse les trois choses', () => {
-  for (const page of PAGES) {
+test('l’avertissement AMF est dans <main> sur les pages legacy et dans la home, et refuse les trois choses', () => {
+  for (const page of PAGES_LEGACY) {
     const html = lire(page);
     const main = html.slice(html.indexOf('<main'), html.indexOf('</main>'));
     assert.ok(main.includes('class="tk-amf"'), `${page} : avertissement absent de <main> (nav-shared.js remplace footer.footer en entier, .footer-disclaimer disparaît à l’exécution)`);
@@ -90,44 +134,67 @@ test('l’avertissement AMF est dans <main> sur les trois pages, et refuse les t
     }
     assert.ok(main.includes('n’est pas une prévision'), `${page} : une alerte doit être dite non prévisionnelle`);
   }
+  // La home rend son <main> en React : l'avertissement vit dans le script, composant Avertissement.
+  assert.ok(SCRIPT_INDEX.includes("className:'tk-amf'"), 'index.html : avertissement tk-amf absent du script');
+  for (const refus of ['ne constituent en aucun cas un conseil en investissement', 'recommandation d\\\'achat ou de vente', 'objectif de cours', 'n\\\'est pas une prévision']) {
+    assert.ok(SCRIPT_INDEX.includes(refus), `index.html : l’avertissement ne porte pas « ${refus.replace(/\\\\/g, '')} »`);
+  }
 });
 
-test('aucune page ne formule de recommandation', () => {
-  // Mots-clés assertifs, pas des sous-chaînes : « coût des ventes » et « recommandation d’achat ou de vente »
-  // (dans l’avertissement, qui les refuse) ne doivent pas déclencher.
+test('aucune page du tracker ne formule de recommandation — home comprise', () => {
   const INTERDITS = [
     'nous recommandons', 'nous conseillons', 'à acheter', 'à vendre', 'conseil d’achat', 'conseil de vente',
     'cours cible', 'objectif de cours de', 'potentiel de hausse', 'sous-évalué', 'surévalué', 'valeur à suivre',
   ];
-  for (const page of [...PAGES, 'tracker-vue.js', 'tracker-modele.js', 'assets/tracker.css', 'data/tracker/README.md']) {
+  for (const page of ['index.html', ...PAGES_LEGACY, 'tracker.html', 'tracker-vue.js', 'tracker-modele.js', 'assets/tracker.css', 'data/tracker/README.md', 'nav-config.js']) {
     const texte = lire(page).toLowerCase();
     for (const mot of INTERDITS) assert.ok(!texte.includes(mot), `${page} : « ${mot} »`);
   }
 });
 
+test('la home n’invente rien : pas de solde affiché, pas d’alerte fabriquée, états vides nommés', () => {
+  // Le solde et les alertes sont calculés par un moteur qui n'existe pas : la home ne doit en afficher aucun.
+  for (const etat of ['Aucune société suivie', 'Aucune Rechute relevée', 'Aucune alerte relevée']) {
+    assert.ok(SCRIPT_INDEX.includes(etat), `index.html : état vide absent : ${etat}`);
+  }
+  assert.ok(SCRIPT_INDEX.includes('TRACKER_MOTEUR.raison'), 'index.html : l’absence de moteur doit venir du modèle, pas d’une chaîne locale');
+  // La home consomme le modèle, elle ne réécrit aucune règle.
+  for (const appel of ['validerCatalogue(', 'etatCatalogue(']) {
+    assert.ok(SCRIPT_INDEX.includes(appel), `index.html : la home doit passer par ${appel})`);
+  }
+  assert.ok(INDEX.includes('<script src="tracker-modele.js"></script>'), 'index.html : tracker-modele.js doit être chargé avant le module');
+  assert.ok(INDEX.indexOf('tracker-modele.js') < INDEX.indexOf('<script type="module">'), 'index.html : le modèle se charge avant le module React');
+  // Les deux ancres de navigation existent.
+  assert.ok(SCRIPT_INDEX.includes("id:'societes'"), 'index.html : ancre #societes absente');
+  assert.ok(SCRIPT_INDEX.includes("id:'alertes'"), 'index.html : ancre #alertes absente');
+  // Les chiffres du backtest affichés sont ceux de la méthode §12, échecs compris.
+  for (const chiffre of ["'17'", "'146'", "'5/5'", "'3/5'"]) {
+    assert.ok(SCRIPT_INDEX.includes(chiffre), `index.html : chiffre du backtest absent : ${chiffre}`);
+  }
+  assert.ok(SCRIPT_INDEX.includes('échecs compris'), 'index.html : la bande du backtest doit assumer les échecs');
+});
+
 // ─────────────────────────────────────────────────────────────────────────────
-// 3. Identité v2 : angles droits, palette, rôles de couleur
+// 5. Identité v2 : angles droits, palette, rôles de couleur
 // ─────────────────────────────────────────────────────────────────────────────
 
-test('angles droits : aucun rayon dans la feuille ni dans les pages du tracker', () => {
+test('angles droits : aucun rayon dans la feuille ni dans les pages legacy du tracker', () => {
   const css = lire('assets/tracker.css');
   assert.deepEqual(css.match(/border-radius/g) || [], [], 'assets/tracker.css porte un rayon');
-  for (const page of PAGES) {
+  for (const page of PAGES_LEGACY) {
     const html = lire(page);
     assert.deepEqual(html.match(/border-radius/g) || [], [], `${page} porte un rayon en ligne`);
     assert.ok(!/class="[^"]*\brounded(?!-full\b)/.test(html), `${page} : classe rounded`);
   }
 });
 
-test('aucune couleur périmée ou interdite (CLAUDE.md §3)', () => {
-  // Interdites comme identité ET comme donnée, puis périmées comme identité (encore valides comme donnée,
-  // mais aucune n’a de rôle ici) : le tracker n’emploie ni l’une ni l’autre.
+test('aucune couleur périmée ou interdite (CLAUDE.md §3) — home comprise', () => {
   const PROSCRITES = [
     '#0B3D1E', '#072A14', '#14713A', '#EDE8DC', '#C41E3A', '#8CBF9E', '#1B6B4A', '#155A3D', '#0A1628', '#0F2035', '#162A45',
     '#F7F8FA', '#1A1F2E', '#E2E5EB',
   ];
   const POLICES = ['Plus Jakarta Sans', 'Libre Baskerville', 'JetBrains Mono'];
-  for (const fichier of [...PAGES, 'assets/tracker.css', 'tracker-vue.js']) {
+  for (const fichier of ['index.html', ...PAGES_LEGACY, 'assets/tracker.css', 'tracker-vue.js', 'nav-config.js']) {
     const texte = lire(fichier);
     const hauts = texte.toUpperCase();
     for (const hex of PROSCRITES) assert.ok(!hauts.includes(hex), `${fichier} : couleur proscrite ${hex}`);
@@ -136,17 +203,14 @@ test('aucune couleur périmée ou interdite (CLAUDE.md §3)', () => {
 });
 
 test('les couleurs de donnée ne sont déclarées qu’une fois, dans un jeton nommé --tk-', () => {
-  // Règle de CLAUDE.md §3 : emerald et compagnie sont de la DONNÉE. Aucune ne doit habiller le chrome
-  // ou la mise en page du tracker : chaque occurrence appartient à une déclaration de rôle explicite.
   const css = lire('assets/tracker.css');
-  const corps = css.replace(/\/\*[\s\S]*?\*\//g, ''); // les commentaires sont de la prose
+  const corps = css.replace(/\/\*[\s\S]*?\*\//g, '');
   for (const hex of ['#006650', '#C8955A', '#DC2626', '#6b7280', '#DFDCD0', '#9B957A']) {
     const lignes = corps.split('\n').filter((l) => l.includes(hex));
     assert.ok(lignes.length > 0, `${hex} : plus employée, le relevé ne mesure plus rien`);
     for (const ligne of lignes) assert.match(ligne.trim(), /^--tk-[\w-]+:/, `assets/tracker.css : ${hex} hors d’un jeton --tk- → « ${ligne.trim()} »`);
   }
-  // Aucune couleur de donnée dans les pages elles-mêmes : elles passent par les classes de la feuille.
-  for (const page of PAGES) {
+  for (const page of ['index.html', ...PAGES_LEGACY]) {
     const html = lire(page);
     for (const hex of ['#006650', '#C8955A', '#DC2626', '#DFDCD0', '#9B957A']) {
       assert.ok(!html.toUpperCase().includes(hex.toUpperCase()), `${page} : couleur de donnée ${hex} écrite dans la page`);
@@ -155,9 +219,6 @@ test('les couleurs de donnée ne sont déclarées qu’une fois, dans un jeton n
 });
 
 test('les deux jetons de donnée incomplète, posés localement, n’ont pas dérivé du fichier de jetons', () => {
-  // --surface-incomplete et --rule-incomplete n’existent que sous le régime « instrument » de
-  // assets/design-tokens-v2.css ; les pages du tracker sont en « editorial » et les reposent localement,
-  // comme briefing.html pose ses jetons de chrome. Même garde-fou que test/pages-header.test.mjs.
   const instrument = lire('assets/design-tokens-v2.css').match(/\[data-design-regime="instrument"\]\s*\{([^}]*)\}/)[1];
   const css = lire('assets/tracker.css');
   for (const [jeton, local] of [['--surface-incomplete', '--tk-incomplete-fond'], ['--rule-incomplete', '--tk-incomplete-filet']]) {
@@ -170,8 +231,6 @@ test('les deux jetons de donnée incomplète, posés localement, n’ont pas dé
 });
 
 test('les trois couleurs de financement sont des aplats, pas du texte coloré', () => {
-  // Le sable #C8955A en texte sur blanc plafonne à 2,4:1 (seuil WCAG AA : 4,5:1). Les trois couleurs
-  // passent donc en fond, avec un texte noir ou blanc selon le contraste.
   const css = lire('assets/tracker.css');
   for (const couleur of ['vert', 'orange', 'rouge']) {
     const regle = css.match(new RegExp(`\\.tk-fin--${couleur}\\s*\\{([^}]*)\\}`));
@@ -182,7 +241,7 @@ test('les trois couleurs de financement sont des aplats, pas du texte coloré', 
 });
 
 test('pas de Markdown brut dans le HTML (CLAUDE.md §9)', () => {
-  for (const page of PAGES) {
+  for (const page of PAGES_LEGACY) {
     const html = lire(page);
     assert.ok(!/\*\*[^*\n]+\*\*/.test(html), `${page} : gras en Markdown`);
     assert.ok(!/^#{1,6} /m.test(html), `${page} : titre en Markdown`);
@@ -191,7 +250,7 @@ test('pas de Markdown brut dans le HTML (CLAUDE.md §9)', () => {
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 4. Le modèle : une valeur sans source ne s'affiche pas
+// 6. Le modèle : une valeur sans source ne s'affiche pas
 // ─────────────────────────────────────────────────────────────────────────────
 
 test('le modèle se charge dans node:vm et expose le vocabulaire de la méthode', () => {
@@ -245,7 +304,7 @@ test('le solde et les alertes restent non calculés : aucun moteur dans le dép�
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. Le schéma : les fichiers du dépôt sont vides et valides
+// 7. Le schéma : les fichiers du dépôt sont vides et valides
 // ─────────────────────────────────────────────────────────────────────────────
 
 test('data/tracker/entreprises.json est vide et valide', () => {
@@ -268,7 +327,6 @@ test('data/tracker/_modele.json est un gabarit vide et valide', () => {
 test('aucune société fictive ni donnée de démonstration dans data/tracker/', () => {
   const catalogue = lire('data/tracker/entreprises.json');
   const gabarit = lire('data/tracker/_modele.json');
-  // Un chiffre ne doit apparaître que dans le numéro de version de la méthode.
   for (const [nom, texte] of [['entreprises.json', catalogue], ['_modele.json', gabarit]]) {
     const chiffres = texte.replace(/"methode_version":\s*"1\.3"/, '').match(/\d/g) || [];
     assert.deepEqual(chiffres, [], `${nom} : chiffre hors du numéro de version`);
@@ -276,7 +334,7 @@ test('aucune société fictive ni donnée de démonstration dans data/tracker/',
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 6. Le validateur refuse ce que la méthode interdit
+// 8. Le validateur refuse ce que la méthode interdit
 // ─────────────────────────────────────────────────────────────────────────────
 
 const entreprise = (extra) => ({
@@ -318,16 +376,12 @@ test('le catalogue : paramètres de §2 exigés, identifiant et chemin de fichie
   assert.match(premiereErreur(M.validerCatalogue(entreprise({ archetype: 'licorne' }))), /archetype/);
   assert.match(premiereErreur(M.validerCatalogue(entreprise({ id: 'Societe A' }))), /id/);
   assert.match(premiereErreur(M.validerCatalogue(entreprise({ fichier: 'data/tracker/autre.json' }))), /fichier/);
-  // Un paramètre affirmé sans source : refusé.
   assert.match(premiereErreur(M.validerCatalogue(entreprise({ ca_these: { valeur: 'Segment' } }))), /ca_these\.source/);
   assert.match(premiereErreur(M.validerCatalogue(entreprise({ indicateur_demande: { type: 'carnet', valeur: 'Carnet' } }))), /indicateur_demande\.source/);
-  // Sauf « non publié », qui est l’absence constatée : ni libellé ni source.
   assert.equal(M.validerCatalogue(entreprise({ indicateur_demande: { type: 'non-publie' } })).valide, true);
-  // Deux fois le même identifiant : la fiche serait ambiguë.
   const double = entreprise();
   double.entreprises.push({ ...double.entreprises[0] });
   assert.match(premiereErreur(M.validerCatalogue(double)), /en double/);
-  // Une version de méthode autre que celle du modèle : refusée, pour que le schéma suive la méthode.
   assert.match(premiereErreur(M.validerCatalogue({ ...entreprise(), methode_version: '1.2' })), /methode_version/);
 });
 
@@ -346,20 +400,17 @@ test('une publication : solde, alertes, score et phase sont calculés, jamais sa
 });
 
 test('une publication : le statut de prévision doit s’accorder avec le sens de D3', () => {
-  // « Relevée » donne +1 : elle ne peut pas cohabiter avec un D3 stable.
   const desaccord = publication({ statut_prevision: 'relevee' });
   assert.match(premiereErreur(M.validerFichierSociete(desaccord)), /statut_prevision/);
   const accord = publication({ statut_prevision: 'relevee' });
   accord.publications[0].dimensions.d3 = { sens: 'hausse', source: SOURCE };
   assert.equal(M.validerFichierSociete(accord).valide, true);
-  // « Manquée » donne −1, comme « abaissée ».
   const manquee = publication({ statut_prevision: 'manquee' });
   manquee.publications[0].dimensions.d3 = { sens: 'baisse', source: SOURCE };
   assert.equal(M.validerFichierSociete(manquee).valide, true);
 });
 
 test('une publication : le financement n’est jamais vert par défaut, et une couleur affirmée porte sa source', () => {
-  // §7 : « si une mesure manque, la couleur est non déterminée, pas verte ».
   assert.equal(M.TRACKER_FINANCEMENT_DEFAUT, 'non-determinee');
   assert.equal(M.validerFichierSociete(publication()).valide, true, '« non déterminée » se passe de source');
   const vertSansSource = publication();
@@ -378,7 +429,6 @@ test('une publication : les trois drapeaux de calcul seulement, chacun avec sa s
   const sansSource = publication();
   sansSource.publications[0].drapeaux = [{ code: 'hesitation' }];
   assert.match(premiereErreur(M.validerFichierSociete(sansSource)), /drapeaux\[0\]\.source/);
-  // Les cinq drapeaux éditoriaux de §10 se saisissent à la main : ils ne sont pas de ce schéma.
   const editorial = publication();
   editorial.publications[0].drapeaux = [{ code: 'concentration-clients', source: SOURCE }];
   assert.match(premiereErreur(M.validerFichierSociete(editorial)), /drapeaux\[0\]\.code/);
@@ -398,58 +448,50 @@ test('une publication : seules les quatre dimensions de la méthode', () => {
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 7. La vue : états vides nommés, aucune donnée par innerHTML
+// 9. La vue (fiche société) : états vides nommés, aucune donnée par innerHTML
 // ─────────────────────────────────────────────────────────────────────────────
 
-test('la vue nomme les quatre états vides exigés', () => {
+test('la vue de la fiche nomme ses états vides ; la liste vit sur la home', () => {
   const vue = lire('tracker-vue.js');
-  for (const etat of ['Aucune société suivie', 'Aucune publication relevée', 'Aucune alerte', 'Aucun événement relevé', 'Aucune société sélectionnée', 'Société inconnue']) {
+  for (const etat of ['Aucune publication relevée', 'Aucune alerte', 'Aucun événement relevé', 'Aucune société sélectionnée', 'Société inconnue']) {
     assert.ok(vue.includes(etat), `état vide absent : ${etat}`);
   }
-  // « non publié » vient du modèle, jamais d’une chaîne écrite en double dans la vue.
+  // La liste est rendue par la home depuis le pivot : plus de rendreListe ici.
+  assert.ok(!vue.includes('rendreListe'), 'rendreListe est mort : la liste vit sur index.html');
+  assert.ok(!vue.includes('tracker-liste'), 'le conteneur de liste n’existe plus');
   assert.ok(vue.includes("TRACKER_SENS['non-publie'].libelle") || vue.includes("TRACKER_SENS['non-publie'].abrege"), 'le libellé « non publié » doit venir du modèle');
 });
 
 test('la vue n’injecte aucune donnée par innerHTML', () => {
-  // Les commentaires sont de la prose (la consigne « aucune donnée n'entre par innerHTML » en parle) :
-  // retirés avant analyse, comme dans test/pages-header.test.mjs.
   const vue = lire('tracker-vue.js').replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '').replace(/\s\/\/ .*$/gm, '');
   assert.deepEqual(vue.match(/innerHTML/g) || [], [], 'innerHTML dans tracker-vue.js');
-  // Les deux hôtes se vident par textContent, pas par innerHTML.
   assert.ok(vue.includes("hote.textContent = ''"), 'le conteneur doit se vider par textContent');
 });
 
 test('la vue ne réécrit aucune règle de la méthode : elle passe par le modèle', () => {
   const vue = lire('tracker-vue.js');
-  for (const appel of ['valeurSourcee', 'sensAffichable', 'sourceValide', 'soldeDe', 'alertesDe', 'etatCatalogue', 'etatFiche', 'etatEvenements', 'validerCatalogue', 'validerFichierSociete']) {
+  for (const appel of ['valeurSourcee', 'sensAffichable', 'sourceValide', 'soldeDe', 'alertesDe', 'etatFiche', 'etatEvenements', 'validerCatalogue', 'validerFichierSociete']) {
     assert.ok(vue.includes(appel + '('), `tracker-vue.js n’appelle pas ${appel}()`);
     assert.ok(!new RegExp(`function\\s+${appel}\\s*\\(`).test(vue), `tracker-vue.js redéfinit ${appel}`);
   }
-  // Aucun seuil de la méthode ne doit être écrit dans la vue (ni ailleurs que dans la méthode).
   for (const seuil of ['1.05', '0.95', '>= +2', '<= -2']) {
     assert.ok(!vue.includes(seuil), `tracker-vue.js porte le seuil ${seuil} : il appartient au moteur, qui n’existe pas`);
   }
 });
 
-test('les pages de données chargent le modèle avant la vue', () => {
-  for (const page of PAGES_INSTRUMENT) {
-    const html = lire(page);
-    const modele = html.indexOf('src="tracker-modele.js"');
-    const vue = html.indexOf('src="tracker-vue.js"');
-    assert.ok(modele !== -1 && vue !== -1, `${page} : scripts du tracker absents`);
-    assert.ok(modele < vue, `${page} : tracker-modele.js doit précéder tracker-vue.js`);
-  }
-  // methode.html est du texte : elle n’a pas besoin de la vue.
+test('entreprise.html charge le modèle avant la vue, et son conteneur existe', () => {
+  const html = lire('entreprise.html');
+  const modele = html.indexOf('src="tracker-modele.js"');
+  const vue = html.indexOf('src="tracker-vue.js"');
+  assert.ok(modele !== -1 && vue !== -1, 'entreprise.html : scripts du tracker absents');
+  assert.ok(modele < vue, 'entreprise.html : tracker-modele.js doit précéder tracker-vue.js');
+  assert.ok(html.includes('id="tracker-fiche"'), 'entreprise.html : conteneur de fiche absent');
+  // methode.html est du texte : elle n'a pas besoin de la vue.
   assert.ok(!lire('methode.html').includes('tracker-vue.js'), 'methode.html ne doit pas charger la vue');
 });
 
-test('les deux conteneurs attendus par la vue existent dans les pages', () => {
-  assert.ok(lire('tracker.html').includes('id="tracker-liste"'), 'tracker.html : conteneur de liste absent');
-  assert.ok(lire('entreprise.html').includes('id="tracker-fiche"'), 'entreprise.html : conteneur de fiche absent');
-});
-
 // ─────────────────────────────────────────────────────────────────────────────
-// 8. methode.html reprend docs/tracker-methode.md, §12 en entier
+// 10. methode.html reprend docs/tracker-methode.md, §12 en entier
 // ─────────────────────────────────────────────────────────────────────────────
 
 const METHODE = lire('methode.html');
@@ -468,34 +510,28 @@ test('methode.html porte les quatre dimensions et les quatre alertes', () => {
   for (const a of M.TRACKER_ALERTES) {
     assert.ok(METHODE.includes('>' + a.libelle + '<'), `alerte absente d’une cellule : ${a.libelle}`);
   }
-  // Les variantes par archétype font partie des dimensions.
   for (const v of ['D1 · pré-revenus', 'D2 · pré-revenus', 'D2 · à défaut de commandes']) {
     assert.ok(METHODE.includes(v), `variante absente : ${v}`);
   }
-  // Le garde-fou et les régimes commandent les alertes : ils doivent y être.
   for (const r of ['vend à perte', 'régime de bascule', 'régime de rechute']) {
     assert.ok(METHODE.includes(r), `règle d’alerte absente : ${r}`);
   }
 });
 
 test('methode.html reprend la section 12 en entier, échecs compris', () => {
-  // Les dix-sept cas, nommés.
   const CONSTRUCTION = ['Palantir', 'Nvidia', 'Vertiv', 'Tesla', 'Nikola', 'WeWork', 'Cisco'];
   const TEST = ['AppLovin', 'ChargePoint', 'Constellation Energy', 'CrowdStrike', 'Fisker', 'GE Vernova', 'Peloton', 'Plug Power', 'Rocket Lab', 'SunPower'];
   for (const cas of [...CONSTRUCTION, ...TEST]) assert.ok(METHODE.includes(cas), `cas du backtest absent : ${cas}`);
 
-  // Le décompte des alertes.
   for (const chiffre of ['146 publications', '34 alertes', '11 Bascules', '10 Rechutes', '13 Signaux faibles']) {
     assert.ok(METHODE.includes(chiffre), `décompte absent : ${chiffre}`);
   }
 
-  // Les six constats, avec leur chiffre — y compris les deux qui sont des échecs.
   for (const constat of ['5 sur 5', '3 sur 5', '6 sur 10 mesurables', '5 sur 10 mesurables', '6 sur 8 mesurables', '90 % des sens']) {
     assert.ok(METHODE.includes(constat), `constat absent : ${constat}`);
   }
   assert.ok(METHODE.includes('4 sur 5 si le garde-fou est lu à la lettre de la v1.2'), 'la lecture alternative du garde-fou (Fisker) doit figurer');
 
-  // Les quatre enseignements, dont les limites.
   for (const lecon of [
     'La Bascule ne trie pas les gagnants',
     'La Rechute est le signal le plus fiable',
@@ -503,7 +539,6 @@ test('methode.html reprend la section 12 en entier, échecs compris', () => {
     'Les limites',
   ]) assert.ok(METHODE.includes(lecon), `enseignement absent : ${lecon}`);
 
-  // Le détail des limites, sans adoucissement.
   for (const limite of [
     'dressée de mémoire, en connaissant le sort des sociétés',
     'La prévision se lit à la main',
@@ -511,21 +546,17 @@ test('methode.html reprend la section 12 en entier, échecs compris', () => {
     'Les verdicts de GE Vernova et de Rocket Lab sont provisoires',
   ]) assert.ok(METHODE.includes(limite), `limite absente : ${limite}`);
 
-  // Les deux Bascules retenues chez Plug Power, et leurs deux suites opposées.
   assert.ok(METHODE.includes('296 points de mieux') && METHODE.includes('102 points de moins'), 'les deux suites du garde-fou doivent figurer');
   assert.ok(METHODE.includes('Les engagements nets n’ont changé aucune couleur'), 'règle v1.2 sans effet absente');
   assert.ok(METHODE.includes('La première prévision de bénéfice net ne s’est jamais déclenchée'), 'règle v1.2 jamais déclenchée absente');
 
-  // Ce que le site peut écrire, et ce qu'il ne peut pas.
   assert.ok(METHODE.includes('Ce que le site peut écrire') && METHODE.includes('Ce qu’il ne peut pas écrire'), 'les deux encadrés de §12 sont exigés');
   assert.ok(METHODE.includes('Qu’une Bascule annonce une réussite, ni aucune promesse de performance'), 'l’interdit de §12 doit être écrit');
 });
 
 test('methode.html dit ce que la méthode ne fait pas', () => {
   assert.ok(METHODE.includes('ni cours de Bourse, ni presse, ni note d’analyste'), 'les sources exclues doivent être dites');
-  // La température du récit n'est pas de la v1.3 : la page doit le dire plutôt que l'afficher.
   assert.ok(METHODE.includes('température du récit') && METHODE.includes('ne fait pas partie de la v1.3'), 'le statut de la température du récit doit être dit');
-  // Le score et la phase de §9 ne sont pas affichés sur les fiches.
   assert.ok(METHODE.includes('Elles ne sont pas affichées sur les fiches'), 'le sort du score de §9 doit être dit');
   assert.ok(!lire('entreprise.html').includes('Phase') && !lire('entreprise.html').includes('Score'), 'la fiche ne doit porter ni score ni phase');
   assert.ok(!lire('tracker-vue.js').includes('phase') && !lire('tracker-vue.js').includes('score'), 'la vue ne doit calculer ni score ni phase');
