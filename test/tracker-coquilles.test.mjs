@@ -313,11 +313,16 @@ test('le moteur §6 est présent ; le solde se calcule, jamais ne se devine', ()
 // 7. Le schéma : les fichiers du dépôt sont vides et valides
 // ─────────────────────────────────────────────────────────────────────────────
 
-test('data/tracker/entreprises.json est vide et valide', () => {
+test('data/tracker/entreprises.json : catalogue valide, chaque société a son fichier', () => {
   const catalogue = lireJson('data/tracker/entreprises.json');
   conforme(M.validerCatalogue(catalogue));
-  assert.deepEqual(catalogue.entreprises, [], 'aucune société : une coquille vide est le résultat attendu');
-  assert.equal(M.etatCatalogue(catalogue), 'aucune-entreprise');
+  // Le catalogue n'est plus vide depuis la collecte du 21 novembre 2026 : chaque entrée doit
+  // pointer un fichier qui existe, et ce fichier doit se déclarer de la même société.
+  for (const e of catalogue.entreprises) {
+    const fichier = lireJson(e.fichier);
+    conforme(M.validerFichierSociete(fichier, e.id), `${e.id} : fichier non conforme`);
+    assert.equal(fichier.entreprise, e.id, `${e.fichier} : ne se déclare pas comme ${e.id}`);
+  }
 });
 
 test('data/tracker/_modele.json est un gabarit vide et valide', () => {
@@ -330,12 +335,59 @@ test('data/tracker/_modele.json est un gabarit vide et valide', () => {
   assert.equal(M.etatEvenements(gabarit), 'aucun');
 });
 
-test('aucune société fictive ni donnée de démonstration dans data/tracker/', () => {
-  const catalogue = lire('data/tracker/entreprises.json');
-  const gabarit = lire('data/tracker/_modele.json');
-  for (const [nom, texte] of [['entreprises.json', catalogue], ['_modele.json', gabarit]]) {
-    const chiffres = texte.replace(/"methode_version":\s*"1\.3"/, '').match(/\d/g) || [];
-    assert.deepEqual(chiffres, [], `${nom} : chiffre hors du numéro de version`);
+test('le gabarit data/tracker/_modele.json reste vide de toute donnée', () => {
+  const chiffres = lire('data/tracker/_modele.json').replace(/"methode_version":\s*"1\.3"/, '').match(/\d/g) || [];
+  assert.deepEqual(chiffres, [], '_modele.json : chiffre hors du numéro de version — c’est un gabarit, pas une société');
+});
+
+test('aucune société de démonstration : chaque source est un document déposé à la SEC', () => {
+  // Le garde-fou n'est plus « il n'y a aucune donnée » mais « toute donnée est sourcée sur EDGAR ».
+  const catalogue = lireJson('data/tracker/entreprises.json');
+  assert.ok(catalogue.entreprises.length > 0, 'le catalogue est vide : la collecte a disparu');
+  const sources = [];
+  const ramasser = (objet) => {
+    if (!objet || typeof objet !== 'object') return;
+    if (typeof objet.url === 'string' && typeof objet.type === 'string') sources.push(objet);
+    for (const v of Object.values(objet)) ramasser(v);
+  };
+  for (const e of catalogue.entreprises) { ramasser(e); ramasser(lireJson(e.fichier)); }
+  assert.ok(sources.length >= 40, `${sources.length} sources trouvées : la collecte ne porte plus ses preuves`);
+  for (const s of sources) {
+    assert.equal(M.sourceValide(s), true, `source incomplète : ${JSON.stringify(s)}`);
+    assert.match(s.url, /^https:\/\/www\.sec\.gov\/Archives\/edgar\/data\//, `source hors EDGAR : ${s.url}`);
+    assert.ok(!/exemple|example|test|demo|lorem/i.test(s.url), `source de démonstration : ${s.url}`);
+  }
+});
+
+test('la collecte est reproductible : le script de collecte est dans le dépôt', () => {
+  // Les sens de §4 se déduisent des montants ; le script qui les calcule est la trace du calcul.
+  const script = lire('scripts/tracker-collecte-2026-11-21.mjs');
+  assert.ok(script.includes('docs/tracker-methode.md'), 'le script doit citer la méthode qui fait foi');
+  for (const regle of ['précision 3', 'précision 1', '1,05', 'cent fois']) {
+    assert.ok(script.includes(regle), `le script ne cite pas la règle « ${regle} »`);
+  }
+});
+
+test('le moteur tourne sur chaque société collectée et n’invente aucune alerte', () => {
+  const catalogue = lireJson('data/tracker/entreprises.json');
+  for (const e of catalogue.entreprises) {
+    const fichier = lireJson(e.fichier);
+    const serie = rapatrier(M.moteurDepuisFichier(e, fichier));
+    assert.equal(serie.length, fichier.publications.length, `${e.id} : une ligne de calcul par publication`);
+    serie.forEach((r, i) => {
+      assert.ok(Number.isInteger(r.solde) && r.solde >= -4 && r.solde <= 4, `${e.id} ligne ${i + 1} : solde hors de −4..+4`);
+      // §6 : aucune alerte à la première publication, sauf une Bascule commerciale.
+      if (i === 0) {
+        for (const a of rapatrier(r.alertes)) {
+          assert.equal(a, 'bascule-commerciale', `${e.id} : alerte « ${a} » à la première publication`);
+        }
+      }
+      // Une Bascule ne part jamais sur une marge brute non positive (garde-fou §6).
+      const mb = fichier.publications.slice().sort((a, b) => (a.date < b.date ? -1 : 1))[i].marge_brute.etat;
+      if (rapatrier(r.alertes).includes('bascule')) {
+        assert.ok(mb === 'positive' || mb === 'sans-objet', `${e.id} ligne ${i + 1} : Bascule avec marge brute ${mb}`);
+      }
+    });
   }
 });
 
