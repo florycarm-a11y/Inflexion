@@ -191,7 +191,7 @@ onTransitionEnd:e=>{enfant.props.onTransitionEnd?.(e);if(e.target===e.currentTar
 const MEGA_NAV=window.MEGA_NAV
 
 // ─── TRACKER — modèle (tracker-modele.js, chargé avant ce module) ────────────
-// Source de vérité du calcul : docs/tracker-methode.md (v1.3 proposée, non figée).
+// Source de vérité du calcul : docs/tracker-methode.md (v1.3 figée le 21 novembre 2026).
 // La home ne réécrit aucune règle : elle consomme le vocabulaire et la validation du modèle.
 
 const TK=window
@@ -398,8 +398,8 @@ return h('section',{id:'societes',className:'py-20 md:py-24'},
 }
 
 // ─── BULLETIN DES ALERTES — Rechutes d'abord ─────────────────────────────────
-// Le solde et les alertes se déduisent des sens ; aucun moteur de calcul n'est dans le dépôt
-// tant que la méthode n'est pas figée (TRACKER_MOTEUR). Rien n'est deviné, rien n'est inventé.
+// Le solde et les alertes se déduisent des sens ; le moteur de calcul n'est pas encore écrit
+// (TRACKER_MOTEUR : la v1.3 est figée, l'implémentation suit). Rien n'est deviné, rien n'est inventé.
 
 function BulletinAlertes(){
 return h('section',{id:'alertes',className:'py-20 md:py-24',style:{backgroundColor:'var(--surface-raised)'}},
@@ -420,7 +420,7 @@ return h('section',{id:'alertes',className:'py-20 md:py-24',style:{backgroundCol
     h('h3',{className:'text-lg font-extrabold mb-3 text-[#101214]'},'Bascules et Signaux faibles'),
     h('div',{className:'tk-vide'},
      h('p',{className:'tk-vide-titre'},'Aucune alerte relevée'),
-     h('p',{className:'tk-vide-precision'},'Le solde et les alertes se déduisent des sens relevés : ils restent non calculés tant que la méthode n\'est pas figée. Aucun chiffre n\'est inventé pour remplir cette page.'))
+     h('p',{className:'tk-vide-precision'},'Le solde et les alertes se déduisent des sens relevés : le moteur n\'est pas encore écrit, rien n\'est calculé. Aucun chiffre n\'est inventé pour remplir cette page.'))
    ))
   )
  )

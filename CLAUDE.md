@@ -9,7 +9,7 @@
 
 **Inflexion** : plateforme d'intelligence financière automatisée (analyses géopolitiques + données de marché). Agrège **15 APIs**, **163 flux RSS** ; Claude Sonnet (briefing) + Claude Haiku (classification, alertes).
 **Production** : https://inflexionhub.com/
-**Projet de tracker d'inflexions** : règles de calcul dans `docs/tracker-methode.md` (v1.3 proposée, non figée). Ne pas coder le moteur avant sa validation par Flo.
+**Tracker d'inflexions** : règles de calcul dans `docs/tracker-methode.md` (**v1.3 figée le 2026-11-21**). Moteur à implémenter : pseudo-code §6 fait foi, suites de référence §13 comme tests.
 
 ## 2. Structure
 
@@ -125,4 +125,4 @@ python bot/main.py --mock                          # Bot (simulation)
 
 ## 10. Tracker d'inflexions (chantier en cours)
 
-**Pivot acté le 2026-11-21 : le tracker devient ce que le site est.** Coquilles livrées (PR #158) : `tracker.html`, `entreprise.html`, `methode.html` (pages legacy, hors navigation, `noindex`), schéma `data/tracker/`, logique `tracker-modele.js`/`tracker-vue.js`. **Pas de moteur de calcul tant que la v1.3 n'est pas validée** ; le validateur refuse `solde`/`alertes`/`score`/`phase` saisis. Règle : une valeur sans source ne s'affiche pas. À venir : chantier vitrine (refonte `index.html` + nav). Les anciennes Routines claude.ai doivent rester désactivées.
+**Le tracker est la vitrine depuis le 2026-11-21** (PR #160 : `index.html` refondu, nav Tracker · Méthode · Expertise · Services, `tracker.html` = pure redirection). Schéma `data/tracker/`, modèle `tracker-modele.js`, fiche `tracker-vue.js` (`entreprise.html`), liste en React sur la home. **v1.3 figée le 2026-11-21 ; le moteur reste à écrire** — le validateur refuse `solde`/`alertes`/`score`/`phase` saisis. Règle : une valeur sans source ne s'affiche pas. Les anciennes Routines claude.ai doivent rester désactivées.

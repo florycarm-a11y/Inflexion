@@ -1,13 +1,13 @@
 # Schéma des données du tracker d'inflexions
 
-Source de vérité du calcul : [`docs/tracker-methode.md`](../../docs/tracker-methode.md) — **v1.3 proposée le 19 novembre 2026, non figée**. Si ce fichier dit autre chose que la méthode, la méthode fait foi.
+Source de vérité du calcul : [`docs/tracker-methode.md`](../../docs/tracker-methode.md) — **v1.3 figée le 21 novembre 2026**. Si ce fichier dit autre chose que la méthode, la méthode fait foi.
 
 La validation exécutable est dans [`tracker-modele.js`](../../tracker-modele.js) (`validerCatalogue`, `validerFichierSociete`), couverte par `test/tracker-coquilles.test.mjs`. Ce document explique le schéma ; le validateur l'applique.
 
 ## Trois règles qui gouvernent tout le schéma
 
 1. **Une valeur sans source ne s'affiche pas.** Tout champ porteur d'une valeur lue dans un document porte sa `source`. Un sens autre que `non-publie` sans source rend le fichier **invalide** — il n'est pas dégradé en silence vers « non publié ».
-2. **Le solde, les alertes, le score et la phase sont calculés, jamais saisis.** Les clés `solde`, `alertes`, `score` et `phase` sont **interdites** dans une publication. Aucun moteur n'existe encore (v1.3 non validée, données d'entrée du backtest hors dépôt) : les pages affichent « non calculé » et « aucune alerte ».
+2. **Le solde, les alertes, le score et la phase sont calculés, jamais saisis.** Les clés `solde`, `alertes`, `score` et `phase` sont **interdites** dans une publication. Le moteur n'est pas encore écrit (il s'implémente depuis la v1.3 figée, avec les suites de référence §13 comme tests ; les données d'entrée du backtest restent hors dépôt) : les pages affichent « non calculé » et « aucune alerte ».
 3. **`non-publie` est l'absence constatée.** Elle se passe de source, ne compte pas dans le solde, et s'affiche toujours avec un mot — jamais par une teinte seule (`--rule-incomplete` est « un filet de renfort, jamais preuve unique »).
 
 ## Fichiers
@@ -133,7 +133,7 @@ Par défaut, une annonce sans dépôt d'un 8-K rubrique 1.01 **ne dépasse pas l
 
 | Absent | Raison |
 |---|---|
-| `solde`, `alertes` | Dérivés des sens ; aucun moteur dans le dépôt tant que la v1.3 n'est pas validée |
+| `solde`, `alertes` | Dérivés des sens ; le moteur s'implémente depuis la v1.3 figée le 21 novembre 2026 et n'est pas encore écrit |
 | `score`, `phase`, notes de niveau (§9) | §9 le dit : rejouées sur les sept premiers cas seulement, poids « un choix raisonné, pas un réglage mesuré ». Un score affiché se lirait comme une note de qualité |
 | Température du récit, liens de filière, badge de ventes à découvert | Prévus par la feuille de route, aucune règle validée. La température n'est pas définie dans la méthode et ne fait pas partie de la v1.3 |
 | Cours de Bourse, presse, notes d'analystes | La méthode ne lit que des documents publiés par la société |

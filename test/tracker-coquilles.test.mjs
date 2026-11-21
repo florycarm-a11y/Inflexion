@@ -2,7 +2,7 @@
 // 21 novembre 2026), entreprise.html, methode.html, tracker.html (pure redirection),
 // tracker-modele.js, tracker-vue.js, assets/tracker.css, nav-config.js et data/tracker/.
 //
-// Méthode de référence : docs/tracker-methode.md (v1.3 proposée, non figée). Ces tests ne vérifient
+// Méthode de référence : docs/tracker-methode.md (v1.3 figée le 21 novembre 2026). Ces tests ne vérifient
 // AUCUN calcul — il n'y a pas de moteur — mais trois promesses :
 //   1. une valeur sans source ne s'affiche pas ;
 //   2. le solde, les alertes, le score et la phase ne sont jamais saisis ;
@@ -255,7 +255,9 @@ test('pas de Markdown brut dans le HTML (CLAUDE.md §9)', () => {
 
 test('le modèle se charge dans node:vm et expose le vocabulaire de la méthode', () => {
   assert.equal(M.TRACKER_METHODE.version, '1.3');
-  assert.equal(M.TRACKER_METHODE.fige, false, 'la v1.3 n’est pas figée');
+  assert.equal(M.TRACKER_METHODE.fige, true, 'la v1.3 est figée depuis le 21 novembre 2026');
+  assert.equal(M.TRACKER_METHODE.dateFige, '2026-11-21');
+  assert.equal(M.TRACKER_METHODE.precisionsEnAttente, 0, 'les huit précisions de §11 sont validées');
   assert.equal(M.TRACKER_METHODE.document, 'docs/tracker-methode.md');
   assert.deepEqual(rapatrier(M.TRACKER_DIMENSIONS).map((d) => d.code), ['D1', 'D2', 'D3', 'D4']);
   assert.deepEqual(rapatrier(M.TRACKER_ALERTES).map((a) => a.libelle), ['Bascule', 'Bascule commerciale', 'Signal faible', 'Rechute']);
@@ -496,11 +498,11 @@ test('entreprise.html charge le modèle avant la vue, et son conteneur existe', 
 
 const METHODE = lire('methode.html');
 
-test('methode.html annonce le statut non figé de la v1.3', () => {
-  for (const mention of ['v1.3', 'non figée', 'huit précisions', 'docs/tracker-methode.md']) {
+test('methode.html annonce le statut figé de la v1.3 et l’absence de moteur', () => {
+  for (const mention of ['figée le 21 novembre 2026', 'huit précisions', 'docs/tracker-methode.md']) {
     assert.ok(METHODE.includes(mention), `mention absente : ${mention}`);
   }
-  assert.ok(/Aucun moteur de calcul n’est dans le dépôt/.test(METHODE), 'l’absence de moteur doit être dite');
+  assert.ok(/Le moteur de calcul n’est pas encore écrit/.test(METHODE), 'l’absence de moteur doit être dite');
 });
 
 test('methode.html porte les quatre dimensions et les quatre alertes', () => {
