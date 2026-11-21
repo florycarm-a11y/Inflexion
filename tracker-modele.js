@@ -1,7 +1,7 @@
 /**
  * tracker-modele.js — Vocabulaire et validation du tracker d'inflexions.
  *
- * Source de vérité du calcul : docs/tracker-methode.md (v1.3 proposée, non figée).
+ * Source de vérité du calcul : docs/tracker-methode.md (v1.3 figée le 21 novembre 2026).
  * Ce fichier ne calcule RIEN : il nomme ce que la méthode nomme, il valide la forme des fichiers
  * de data/tracker/ et il dit quel état vide afficher. Le solde et les alertes sont dérivés des sens
  * par un moteur qui n'existe pas encore (v1.3 non validée, données de référence du backtest hors dépôt) :
@@ -16,18 +16,20 @@
 
 var TRACKER_METHODE = {
   version: '1.3',
-  statut: 'proposée',
-  fige: false,
+  statut: 'figée',
+  fige: true,
+  // Validée par Flo le 21 novembre 2026, les huit précisions de §11 comprises (dont les trois vrais choix 1, 2 et 6).
+  dateFige: '2026-11-21',
   document: 'docs/tracker-methode.md',
-  // §11 : huit précisions de texte en attente de validation ; trois sont de vrais choix (1, 2 et 6).
-  precisionsEnAttente: 8,
+  precisionsEnAttente: 0,
 };
 
-// Le moteur de calcul n'est pas dans le dépôt : la v1.3 n'est pas figée et les données d'entrée des
-// dix-sept cas du backtest n'y sont pas (docs/tracker-methode.md §13). Rien ne doit inventer un solde.
+// Le moteur de calcul n'est pas encore écrit : la v1.3 est figée depuis le 21 novembre 2026, son
+// implémentation suit (pseudo-code §6 fait foi, suites de référence §13 comme tests). D'ici là,
+// rien ne doit inventer un solde.
 var TRACKER_MOTEUR = {
   present: false,
-  raison: 'La v1.3 n’est pas validée : aucun moteur de calcul dans le dépôt.',
+  raison: 'Le moteur de calcul n’est pas encore écrit : la v1.3 a été figée le 21 novembre 2026, son implémentation suit.',
 };
 
 // ── Les quatre sens (§4) ──────────────────────────────────────────────────────

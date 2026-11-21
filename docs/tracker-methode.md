@@ -1,6 +1,6 @@
-# Méthode Inflexion — v1.3 (proposée)
+# Méthode Inflexion — v1.3
 
-> **Statut : proposée le 19 novembre 2026, non figée.** C'est la v1.2, figée le 17 novembre 2026, plus huit précisions de texte (section 11). Aucun seuil, aucun poids et aucune alerte ne change. Les huit précisions restent à valider par Flo ; trois d'entre elles sont de vrais choix (1, 2 et 6).
+> **Statut : figée le 21 novembre 2026.** Proposée le 19 novembre 2026 — la v1.2, figée le 17 novembre 2026, plus huit précisions de texte (section 11) — et validée par Flo le 21 novembre 2026, les huit précisions comprises, dont les trois vrais choix (1, 2 et 6). Aucun seuil, aucun poids et aucune alerte ne change par rapport à la v1.2. L'état de test reste celui de la section 11 : la v1.3 n'a pas de rejeu propre.
 >
 > **Ce fichier est la seule source de vérité du calcul.** Si une page, un script ou un autre document dit autre chose, ce fichier fait foi. En cas de doute sur une phrase, le pseudo-code de la section 6 l'emporte.
 >
