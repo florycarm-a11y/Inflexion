@@ -11,7 +11,6 @@
 #   - Twelve Data (indices européens) → TWELVE_DATA_API_KEY
 #   - NewsAPI (news complémentaires) → NEWSAPI_API_KEY
 #   - World Bank (macro internationale) → sans clé
-#   + Traduction EN→FR (Claude Haiku) → ANTHROPIC_API_KEY (optionnel)
 #   - Alternative.me, DefiLlama, ECB, Mempool.space, metals.dev, Etherscan → sans clé
 #
 # Flux RSS (157 sources spécialisées, sans clé) :
@@ -85,8 +84,6 @@ jobs:
           NEWSAPI_API_KEY: ${{ secrets.NEWSAPI_API_KEY }}
         run: node scripts/fetch-data.mjs
 
-      # Traduction EN→FR déplacée dans generate-article.yml (évite les doublons)
-
       - name: "📝 Commit et push des données"
         run: |
           git config user.name "Inflexion Bot"
@@ -108,30 +105,9 @@ jobs:
 
           git push
 
-      - name: "🚀 Trigger Master Routine"
-        if: success()
-        env:
-          ROUTINE_WEBHOOK_TOKEN: ${{ secrets.ROUTINE_WEBHOOK_TOKEN }}
-          ROUTINE_MASTER_URL: ${{ secrets.ROUTINE_MASTER_URL }}
-        run: |
-          if [ -z "$ROUTINE_WEBHOOK_TOKEN" ] || [ -z "$ROUTINE_MASTER_URL" ]; then
-            echo "⚠️ ROUTINE_WEBHOOK_TOKEN ou ROUTINE_MASTER_URL non défini — skip trigger (fallback schedule gère)"
-            exit 0
-          fi
-          curl -X POST "$ROUTINE_MASTER_URL" \
-            -H "Authorization: Bearer $ROUTINE_WEBHOOK_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d "{\"trigger_source\":\"fetch-data-success\",\"timestamp\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" \
-            --fail --retry 3 --retry-delay 10 \
-            || echo "⚠️ Routine trigger failed, fallback schedule will handle"
-
-      # Surveillance, non bloquante : signale (annotation ::error::) un briefing publié
-      # périmé, contradictoire ou mal libellé. Sans ce contrôle, le briefing est resté
-      # figé du 7 septembre au 9 novembre 2026 sans que rien ne le signale.
-      - name: "🩺 Contrôle du briefing publié"
-        if: success()
-        continue-on-error: true
-        run: node scripts/check-briefing.mjs
+      # Production IA arrêtée le 2026-11-21 (pivot vers le tracker d'inflexions) :
+      # plus de déclenchement de la Routine Master, plus de contrôle du briefing
+      # (le briefing publié est figé et n'est plus un livrable).
 
       - name: "🚨 Alerte d'échec"
         if: failure()
