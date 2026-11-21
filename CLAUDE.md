@@ -88,8 +88,7 @@ En-tête à deux états et méga-menu en verre sombre (novembre 2026 : home #147
 
 ## 5. Pipeline de données
 
-GitHub Actions (cron 2×/jour 06h+18h UTC) : `fetch-data.mjs` → `insight-filter.mjs` (Haiku, scoring 1-10, seuil ≥6) → `veille-continue.mjs` (watchlist 22 thèmes + signaux faibles) → `generate-article.mjs` → `validate-article.mjs` → `data/*.json` → GitHub Pages. Briefing : Sonnet + RAG. Sorties : `insights.json`, `signals.json`, `signals-history.json`.
-**Contrôle qualité du briefing** : `node scripts/check-briefing.mjs` (fraîcheur, chiffres contradictoires, libellé DXY interdit — FRED `DTWEXBGS` = indice dollar *large*, pas le DXY —, traçabilité). Bloquant dans la Routine Master, en surveillance dans `fetch-data.yml`.
+**Production IA arrêtée le 2026-11-21** (pivot vers le tracker) : plus de briefing, d'article du jour, de newsletter ni de Routines — scripts `generate-*`, `insight-filter`, `veille-continue`, `rag-index`, `.routines/` supprimés. Les JSON de contenu (`insights.json`, `signals.json`, briefings) sont **figés** à leur dernier état : ne pas les présenter comme frais. Reste actif : `fetch-data.yml` (cron 2×/jour), données de marché brutes uniquement, **zéro token Anthropic**. `check-briefing.mjs` et `scripts/lib/` survivent sans déclencheur, à balayer avec `briefing.html` au chantier vitrine.
 
 ## 6. Bot Polymarket (`bot/`)
 
@@ -105,8 +104,7 @@ Liste des 15 sources, usages et pièges : **`docs/apis.md`**.
 
 ```bash
 python3 -m http.server 4399                        # Serveur local
-node scripts/fetch-data.mjs                        # Pipeline données
-node scripts/generate-daily-briefing.mjs --dry-run # Test briefing
+node scripts/fetch-data.mjs                        # Données de marché
 python bot/main.py --mock                          # Bot (simulation)
 ```
 
@@ -125,6 +123,6 @@ python bot/main.py --mock                          # Bot (simulation)
 - Mots-clés courts (≤4 car.) : `\b` dans les regex, pas `includes()`.
 - Design : vérifier la cohérence avec `index.html` **et** l'encart identité v2 (§3) avant de modifier une page.
 
-## 10. Claude Code Routines (pipeline IA)
+## 10. Tracker d'inflexions (chantier en cours)
 
-4 Routines (Master, Inspector, Newsletter, SEMPLICE Validator) orchestrent briefing/article/veille — quota 15/jour, prompts dans `.routines/*.md`, scripts `.mjs` conservés en fallback. Spec : `docs/superpowers/specs/2026-04-23-routines-migration-design.md` ; plan : `docs/superpowers/plans/2026-04-23-routines-migration.md` ; rollback : décommenter `on: schedule:` dans les workflows `generate-*.yml` puis désactiver les Routines sur claude.ai/code.
+**Pivot acté le 2026-11-21 : le tracker devient ce que le site est.** Coquilles livrées (PR #158) : `tracker.html`, `entreprise.html`, `methode.html` (pages legacy, hors navigation, `noindex`), schéma `data/tracker/`, logique `tracker-modele.js`/`tracker-vue.js`. **Pas de moteur de calcul tant que la v1.3 n'est pas validée** ; le validateur refuse `solde`/`alertes`/`score`/`phase` saisis. Règle : une valeur sans source ne s'affiche pas. À venir : chantier vitrine (refonte `index.html` + nav). Les anciennes Routines claude.ai doivent rester désactivées.
