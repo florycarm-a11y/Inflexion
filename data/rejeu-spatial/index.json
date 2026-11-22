@@ -1,0 +1,35 @@
+{
+  "rejeu": "univers spatial tiré par règle",
+  "protocole": "docs/tracker-univers-spatial.md",
+  "methode_version": "1.3",
+  "univers_total": 18,
+  "lues": 1,
+  "publie": false,
+  "societes": [
+    {
+      "id": "virgin-galactic",
+      "nom": "Virgin Galactic",
+      "archetype": "pre-revenus",
+      "recit": "Spatial — vols suborbitaux habités, vaisseaux Delta",
+      "ca_these": {
+        "valeur": "Unités livrées — vols spatiaux commerciaux effectués",
+        "source": {
+          "type": "8-K",
+          "date": "2026-11-12",
+          "url": "https://www.sec.gov/Archives/edgar/data/1706946/000119312526458580/d183696dex991.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "barreau-reservations",
+        "valeur": "Barreau d’engagement et réservations de futurs astronautes",
+        "source": {
+          "type": "8-K",
+          "date": "2026-11-12",
+          "url": "https://www.sec.gov/Archives/edgar/data/1706946/000119312526458580/d183696dex991.htm"
+        }
+      },
+      "publications": 12,
+      "fichier": "data/rejeu-spatial/virgin-galactic.json"
+    }
+  ]
+}
