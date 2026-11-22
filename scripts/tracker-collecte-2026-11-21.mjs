@@ -29,8 +29,8 @@
  */
 import { writeFileSync } from 'node:fs';
 import {
-  croissance, sensEcart, sensCarnet, sensMargeOperationnelle, sensUnites, sensBarreau,
-  etatMargeBrute, statutTrimestreSeul, statutAnnuel, src, g, publication,
+  croissance, sensEcart, sensDemandeEngagee, sensMargeOperationnelle, sensUnites, sensBarreau,
+  etatMargeBrute, statutPrevision, src, g, publication,
 } from './lib/tracker-sens.mjs';
 
 const RACINE = new URL('../', import.meta.url);
@@ -211,19 +211,18 @@ const OKLO = [
 
 // ── Construction des publications ────────────────────────────────────────────
 
-/** Série d'un industriel ou d'une plateforme. d2 : 'carnet' | 'clients'. */
-function serie(lignes, sources, { caThese = false, trimestreSeul = false, d2 = 'carnet' }) {
+/** Série d'un industriel ou d'une plateforme. D2 et le statut de prévision suivent la ligne. */
+function serie(lignes, sources, { caThese = false }) {
   const out = [];
   let croissancePrecedente = null, carnetPrecedent = null, guidancePrecedente = null, clientsPrecedent = null;
   for (const l of lignes) {
     const c = croissance(caThese ? l.caThese : l.ca, caThese ? l.caTheseAnPasse : l.caAnPasse);
     const sensD1 = sensEcart(c, croissancePrecedente);
-    const sensD2 = d2 === 'clients'
-      ? sensEcart(l.croissanceClients, clientsPrecedent)
-      : sensCarnet(l.carnet, carnetPrecedent, l.ca);
-    const statut = trimestreSeul
-      ? statutTrimestreSeul(l.guidanceT[0], l.guidanceT[1], l.ca)
-      : statutAnnuel(l.guidance, guidancePrecedente);
+    const sensD2 = sensDemandeEngagee({
+      carnet: l.carnet, carnetPrecedent, ca: l.ca,
+      croissanceClients: l.croissanceClients, croissanceClientsPrecedente: clientsPrecedent,
+    });
+    const statut = statutPrevision(l, guidancePrecedente);
     if (!l.horsSerie) {
       out.push(publication({
         date: l.date, trimestre: l.trimestre, source: sources[l.date],
@@ -234,7 +233,7 @@ function serie(lignes, sources, { caThese = false, trimestreSeul = false, d2 = '
     croissancePrecedente = c;
     carnetPrecedent = l.carnet;
     clientsPrecedent = l.croissanceClients;
-    if (!trimestreSeul && l.guidance !== null) guidancePrecedente = l.guidance;
+    if (l.guidance != null) guidancePrecedente = l.guidance;
   }
   return out;
 }
@@ -304,10 +303,10 @@ const ENTREPRISES = [
 
 const FICHIERS = {
   'centrus-energy': { publications: serie(CENTRUS, CENTRUS_SRC, { caThese: true }), evenements_commerciaux: [] },
-  'rocket-lab': { publications: serie(RKLB, RKLB_SRC, { trimestreSeul: true }), evenements_commerciaux: [] },
+  'rocket-lab': { publications: serie(RKLB, RKLB_SRC, {}), evenements_commerciaux: [] },
   ionq: { publications: serie(IONQ, IONQ_SRC, {}), evenements_commerciaux: [] },
   vertiv: { publications: serie(VRT, VRT_SRC, {}), evenements_commerciaux: [] },
-  sentinelone: { publications: serie(SENTINELONE, S_SRC, { d2: 'clients' }), evenements_commerciaux: [] },
+  sentinelone: { publications: serie(SENTINELONE, S_SRC, {}), evenements_commerciaux: [] },
   // Les engagements d'Oklo (Switch, Meta) sont décrits dans les 10-Q mais leurs dates de signature
   // exactes ne figurent pas dans les documents lus : aucun événement n'est daté ici plutôt que d'en
   // inventer la date. Le barreau 2 qu'ils établissent est sous le seuil de la Bascule commerciale (4).

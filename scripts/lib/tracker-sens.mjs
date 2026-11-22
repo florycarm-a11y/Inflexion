@@ -32,9 +32,22 @@ export function sensEcart(courante, precedente) {
 
 /** D2 carnet : commandes = variation du carnet + CA du trimestre ; ratio sur le CA du trimestre. */
 export function sensCarnet(carnet, carnetPrecedent, caTrimestre) {
-  if (carnet === null || carnetPrecedent === null || caTrimestre === null || caTrimestre <= 0) return 'non-publie';
+  if (carnet == null || carnetPrecedent == null || caTrimestre == null || caTrimestre <= 0) return 'non-publie';
   const ratio = ((carnet - carnetPrecedent) + caTrimestre) / caTrimestre;
   return ratio > 1.05 ? 'hausse' : ratio < 0.95 ? 'baisse' : 'stable';
+}
+
+/**
+ * §4, D2 « demande engagée » : les deux chemins ne sont pas au choix, ils sont hiérarchisés.
+ * Le carnet est le chemin principal — il mesure des montants engagés. Le nombre de clients ne
+ * sert qu'« à défaut de commandes » : carnet absent du communiqué, ou sans valeur précédente.
+ * Une société peut changer de chemin en cours de série sans que la règle change.
+ */
+export function sensDemandeEngagee({ carnet, carnetPrecedent, ca, croissanceClients, croissanceClientsPrecedente }) {
+  const parCarnet = sensCarnet(carnet, carnetPrecedent, ca);
+  return parCarnet === 'non-publie'
+    ? sensEcart(croissanceClients, croissanceClientsPrecedente)
+    : parCarnet;
 }
 
 /** D4 : marge opérationnelle du trimestre contre le même trimestre un an plus tôt. */
@@ -89,6 +102,17 @@ export function statutAnnuel(guidance, precedente) {
   const milieu = (guidance.basse + guidance.haute) / 2;
   const avant = (precedente.basse + precedente.haute) / 2;
   return milieu > avant ? 'relevee' : milieu < avant ? 'abaissee' : 'maintenue';
+}
+
+/**
+ * §5 : le statut d'une ligne. La règle du trimestre seul « ne s'applique qu'aux publications où
+ * la société ne donne aucune prévision annuelle » — c'est donc une décision par LIGNE, pas par
+ * société. Une société qui se met à guider l'année en cours de série change de règle ce jour-là.
+ */
+export function statutPrevision({ guidance = null, guidanceT = null, ca = null }, guidancePrecedente) {
+  if (guidance != null) return statutAnnuel(guidance, guidancePrecedente);
+  if (guidanceT != null) return statutTrimestreSeul(guidanceT[0], guidanceT[1], ca);
+  return 'non-publie';
 }
 
 /** §5 : le sens que donne chaque statut de prévision. */
