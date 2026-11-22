@@ -211,14 +211,14 @@ const OKLO = [
 
 // ── Construction des publications ────────────────────────────────────────────
 
-/** Série d'un industriel ou d'une plateforme. D2 et le statut de prévision suivent la ligne. */
-function serie(lignes, sources, { caThese = false }) {
+/** Série d'un industriel ou d'une plateforme. indicateurDemande : §2, fixé à l'entrée. */
+function serie(lignes, sources, { caThese = false, indicateurDemande = 'carnet' }) {
   const out = [];
   let croissancePrecedente = null, carnetPrecedent = null, guidancePrecedente = null, clientsPrecedent = null;
   for (const l of lignes) {
     const c = croissance(caThese ? l.caThese : l.ca, caThese ? l.caTheseAnPasse : l.caAnPasse);
     const sensD1 = sensEcart(c, croissancePrecedente);
-    const sensD2 = sensDemandeEngagee({
+    const sensD2 = sensDemandeEngagee(indicateurDemande, {
       carnet: l.carnet, carnetPrecedent, ca: l.ca,
       croissanceClients: l.croissanceClients, croissanceClientsPrecedente: clientsPrecedent,
     });
@@ -306,7 +306,7 @@ const FICHIERS = {
   'rocket-lab': { publications: serie(RKLB, RKLB_SRC, {}), evenements_commerciaux: [] },
   ionq: { publications: serie(IONQ, IONQ_SRC, {}), evenements_commerciaux: [] },
   vertiv: { publications: serie(VRT, VRT_SRC, {}), evenements_commerciaux: [] },
-  sentinelone: { publications: serie(SENTINELONE, S_SRC, {}), evenements_commerciaux: [] },
+  sentinelone: { publications: serie(SENTINELONE, S_SRC, { indicateurDemande: 'clients' }), evenements_commerciaux: [] },
   // Les engagements d'Oklo (Switch, Meta) sont décrits dans les 10-Q mais leurs dates de signature
   // exactes ne figurent pas dans les documents lus : aucun événement n'est daté ici plutôt que d'en
   // inventer la date. Le barreau 2 qu'ils établissent est sous le seuil de la Bascule commerciale (4).

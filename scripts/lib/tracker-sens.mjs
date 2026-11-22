@@ -38,16 +38,20 @@ export function sensCarnet(carnet, carnetPrecedent, caTrimestre) {
 }
 
 /**
- * §4, D2 « demande engagée » : les deux chemins ne sont pas au choix, ils sont hiérarchisés.
- * Le carnet est le chemin principal — il mesure des montants engagés. Le nombre de clients ne
- * sert qu'« à défaut de commandes » : carnet absent du communiqué, ou sans valeur précédente.
- * Une société peut changer de chemin en cours de série sans que la règle change.
+ * §4, D2 « demande engagée », avec l'indicateur que §2 a FIXÉ à l'entrée de la société.
+ *
+ * L'ordre de préférence de §2 — « commandes ou carnet de commandes ; à défaut, nombre de clients
+ * ou d'abonnés ; sinon non publié » — sert à CHOISIR l'indicateur une fois pour toutes, pas à
+ * changer de chemin d'une ligne à l'autre : « si la société cesse de publier son indicateur de
+ * demande, la dimension devient non publié à partir de là. On ne le remplace pas. »
+ *
+ * D'où cette signature : l'indicateur est un paramètre de la société, pas une déduction par ligne.
+ * Un trou dans la série de l'indicateur retenu donne « non publié », jamais un repli sur l'autre.
  */
-export function sensDemandeEngagee({ carnet, carnetPrecedent, ca, croissanceClients, croissanceClientsPrecedente }) {
-  const parCarnet = sensCarnet(carnet, carnetPrecedent, ca);
-  return parCarnet === 'non-publie'
-    ? sensEcart(croissanceClients, croissanceClientsPrecedente)
-    : parCarnet;
+export function sensDemandeEngagee(indicateur, { carnet, carnetPrecedent, ca, croissanceClients, croissanceClientsPrecedente }) {
+  if (indicateur === 'carnet') return sensCarnet(carnet, carnetPrecedent, ca);
+  if (indicateur === 'clients') return sensEcart(croissanceClients, croissanceClientsPrecedente);
+  return 'non-publie';
 }
 
 /** D4 : marge opérationnelle du trimestre contre le même trimestre un an plus tôt. */

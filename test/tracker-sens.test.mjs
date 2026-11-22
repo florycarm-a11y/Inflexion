@@ -106,35 +106,34 @@ test('D2 carnet : non publié si le carnet manque, est absent de la ligne, ou n�
   assert.equal(sensCarnet(1000, 1000, 0), 'non-publie', 'un CA nul ne donne pas un ratio');
 });
 
-test('§4 : le carnet est le chemin PRINCIPAL de D2, les clients ne sont qu’un repli', () => {
-  // Carnet calculable ET clients en hausse : c'est le carnet qui tranche, et il dit baisse.
-  const sens = sensDemandeEngagee({
+test('§2 : l’indicateur de demande est FIXÉ à l’entrée, il ne change pas d’une ligne à l’autre', () => {
+  // Un carnet qui se vide et des clients qui affluent, sur la même ligne. Le sens de D2 dépend
+  // uniquement de l'indicateur retenu à l'entrée — il n'y a pas d'arbitrage par ligne.
+  const ligne = {
     carnet: 900, carnetPrecedent: 1000, ca: 1000,
     croissanceClients: 30, croissanceClientsPrecedente: 10,
-  });
-  assert.equal(sens, 'baisse', 'un carnet qui se vide l’emporte sur des clients qui affluent');
+  };
+  assert.equal(sensDemandeEngagee('carnet', ligne), 'baisse');
+  assert.equal(sensDemandeEngagee('clients', ligne), 'hausse');
 });
 
-test('§4 : « à défaut de commandes », D2 passe par le nombre de clients', () => {
-  assert.equal(sensDemandeEngagee({
-    carnet: null, carnetPrecedent: null, ca: 1000,
-    croissanceClients: 15, croissanceClientsPrecedente: 13,
-  }), 'hausse');
-});
-
-test('§4 : un carnet sans valeur précédente retombe aussi sur les clients', () => {
-  // Cas de la première ligne de Planet Labs : le carnet existe, son précédent n'a jamais été publié.
-  assert.equal(sensDemandeEngagee({
+test('§2 : un trou dans l’indicateur retenu donne « non publié », jamais un repli sur l’autre', () => {
+  // Première ligne de Planet Labs : le carnet est publié ce jour-là (242 392) mais n'a pas de
+  // valeur au trimestre précédent. Les clients, eux, sont connus et en hausse. §2 l'interdit :
+  // « si la société cesse de publier son indicateur de demande, la dimension devient non publié
+  // à partir de là. On ne le remplace pas. »
+  const premiere = {
     carnet: 242392, carnetPrecedent: null, ca: 58900,
     croissanceClients: croissance(1018, 886), croissanceClientsPrecedente: 13,
-  }), 'hausse');
+  };
+  assert.equal(sensDemandeEngagee('carnet', premiere), 'non-publie');
+  assert.equal(sensDemandeEngagee('clients', premiere), 'hausse',
+    'la tentation existe bel et bien : c’est pourquoi la règle doit être tenue');
 });
 
-test('§4 : sans carnet ni clients, D2 est non publié', () => {
-  assert.equal(sensDemandeEngagee({
-    carnet: null, carnetPrecedent: null, ca: 1000,
-    croissanceClients: null, croissanceClientsPrecedente: null,
-  }), 'non-publie');
+test('§2 : « sinon non publié » — une société sans indicateur de demande', () => {
+  assert.equal(sensDemandeEngagee('non-publie', { carnet: 1000, carnetPrecedent: 900, ca: 1000 }),
+    'non-publie', 'un indicateur non retenu ne se réactive pas parce que le chiffre existe');
 });
 
 test('Planet Labs T2 FY2026 : carnet de 527 à 736 millions, ratio 3,85, hausse', () => {

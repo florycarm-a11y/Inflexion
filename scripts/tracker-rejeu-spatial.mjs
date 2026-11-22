@@ -92,19 +92,19 @@ const SPCE = [
 //    (20 mars 2025) elle guide l'exercice : on compare les milieux de fourchette. Le texte le
 //    prévoit — la règle du trimestre seul « ne s'applique qu'aux publications où la société ne
 //    donne aucune prévision annuelle ». C'est une décision par ligne, pas par société.
-//  · §4 D2 CHANGE DE CHEMIN EN COURS DE SÉRIE. Le carnet (« backlog ») n'apparaît qu'au
-//    communiqué du T4 FY2024 ; avant, Planet ne publie qu'un ACV. La première ligne n'a donc
-//    pas de carnet précédent et retombe sur le nombre de clients — « à défaut de commandes ».
-//    Ensuite le carnet porte D2 seul, ce qui est heureux : Planet ARRÊTE de publier son nombre
-//    de clients après le T4 FY2025, là où la série devient intéressante.
+//  · §4 D2 NE CHANGE PAS DE CHEMIN, LUI. L'indicateur de demande est fixé à l'entrée (§2) :
+//    Planet publie un carnet (« backlog ») dès sa première ligne, donc c'est le carnet, et
+//    « on ne le remplace pas ». La première ligne n'a pas de carnet précédent — le communiqué
+//    du T3 FY2024 ne publiait qu'un ACV — donc D2 y est NON PUBLIÉ, et non pas rabattu sur le
+//    nombre de clients. Tentation écartée : §2 interdit de substituer un indicateur à l'autre,
+//    et Planet cesse de publier son nombre de clients après le T4 FY2025 de toute façon.
 //  · LE CARNET AU 31 JANVIER 2026 N'EST PAS CHIFFRÉ : le communiqué du T4 FY2026 n'imprime que
 //    « over $900 Million ». Retenir 900 000 importerait un arrondi de ±50 000 dans une variation
 //    de carnet — ce que la précision 3 interdit. Règle d'hésitation de §3, « retenir la plus
 //    neutre » : carnet NON PUBLIÉ, et D2 muet sur deux lignes (T4 FY2026 et T1 FY2027).
-//  · Le comparatif du nombre de clients du T3 FY2024 n'est pas imprimé, seul « +13 % » l'est :
-//    précision 3, « un pourcentage imprimé ne sert que s'il n'est pas recalculable ». La borne
-//    suffit de toute façon — 13 % arrondi vient de [12,5 ; 13,5 %), donc l'écart avec les
-//    14,898 % du T4 FY2024 tombe dans (1,40 ; 2,40] : hausse quel que soit le chiffre exact.
+//  · Le nombre de clients est relevé dans les données ci-dessous mais N'ENTRE DANS AUCUN CALCUL,
+//    puisque l'indicateur retenu est le carnet. Il est consigné parce qu'il documente ce que le
+//    communiqué publiait, et parce qu'il faudrait le rouvrir si une v1.4 autorisait un repli.
 //
 // Montants en milliers de dollars, à la précision qu'imprime le communiqué du jour (précision 8).
 // La ligne du 7 décembre 2023 est HORS SÉRIE : hors de la fenêtre de lecture du protocole, elle
@@ -128,20 +128,20 @@ const PL_SRC = {
 
 const PL = [
   // Hors série (précision 7) : ne porte aucune ligne, fournit les valeurs précédentes.
-  // croissanceClients : 13 % imprimé, comparatif absolu absent du communiqué (précision 3).
-  { date: '2023-12-07', trimestre: 'T3 FY2024', ca: 55400, caAnPasse: 49700, cout: 29350, op: -47860, opAnPasse: -42630, carnet: null, croissanceClients: 13, guidanceT: [56000, 59000], horsSerie: true },
-  { date: '2024-03-28', trimestre: 'T4 FY2024', ca: 58900, caAnPasse: 53000, cout: 26400, op: -33900, opAnPasse: -42700, carnet: 242392, croissanceClients: croissance(1018, 886), guidanceT: [58000, 61000] },
-  { date: '2024-06-06', trimestre: 'T1 FY2025', ca: 60400, caAnPasse: 52703, cout: 28757, op: -34571, opAnPasse: -44692, carnet: 219773, croissanceClients: 14, guidanceT: [59000, 63000] },
-  { date: '2024-09-05', trimestre: 'T2 FY2025', ca: 61100, caAnPasse: 53761, cout: 28782, op: -39577, opAnPasse: -43280, carnet: 213500, croissanceClients: 7, guidanceT: [61000, 64000] },
-  { date: '2024-12-09', trimestre: 'T3 FY2025', ca: 61300, caAnPasse: 55400, cout: 23700, op: -22600, opAnPasse: -47900, carnet: 232100, croissanceClients: 4, guidanceT: [61000, 63000] },
-  { date: '2025-03-20', trimestre: 'T4 FY2025', ca: 61600, caAnPasse: 58900, cout: 23300, op: -19400, opAnPasse: -33900, carnet: 498500, croissanceClients: null, guidance: g(2026, 260000, 280000) },
-  { date: '2025-06-04', trimestre: 'T1 FY2026', ca: 66300, caAnPasse: 60400, cout: 29700, op: -22800, opAnPasse: -34600, carnet: 527000, croissanceClients: null, guidance: g(2026, 265000, 280000) },
-  { date: '2025-09-08', trimestre: 'T2 FY2026', ca: 73400, caAnPasse: 61100, cout: 31100, op: -18000, opAnPasse: -39600, carnet: 736100, croissanceClients: null, guidance: g(2026, 281000, 289000) },
-  { date: '2025-12-10', trimestre: 'T3 FY2026', ca: 81300, caAnPasse: 61300, cout: 34700, op: -18300, opAnPasse: -22600, carnet: 734500, croissanceClients: null, guidance: g(2026, 297000, 301000) },
+  { date: '2023-12-07', trimestre: 'T3 FY2024', ca: 55400, caAnPasse: 49700, cout: 29350, op: -47860, opAnPasse: -42630, carnet: null, clients: 976, guidanceT: [56000, 59000], horsSerie: true },
+  // Carnet publié ce jour-là (242 392) mais sans valeur au 31 octobre 2023 : D2 non publié (§2).
+  { date: '2024-03-28', trimestre: 'T4 FY2024', ca: 58900, caAnPasse: 53000, cout: 26400, op: -33900, opAnPasse: -42700, carnet: 242392, clients: 1018, guidanceT: [58000, 61000] },
+  { date: '2024-06-06', trimestre: 'T1 FY2025', ca: 60400, caAnPasse: 52703, cout: 28757, op: -34571, opAnPasse: -44692, carnet: 219773, clients: 1031, guidanceT: [59000, 63000] },
+  { date: '2024-09-05', trimestre: 'T2 FY2025', ca: 61100, caAnPasse: 53761, cout: 28782, op: -39577, opAnPasse: -43280, carnet: 213500, clients: 1012, guidanceT: [61000, 64000] },
+  { date: '2024-12-09', trimestre: 'T3 FY2025', ca: 61300, caAnPasse: 55400, cout: 23700, op: -22600, opAnPasse: -47900, carnet: 232100, clients: 1015, guidanceT: [61000, 63000] },
+  { date: '2025-03-20', trimestre: 'T4 FY2025', ca: 61600, caAnPasse: 58900, cout: 23300, op: -19400, opAnPasse: -33900, carnet: 498500, clients: null, guidance: g(2026, 260000, 280000) },
+  { date: '2025-06-04', trimestre: 'T1 FY2026', ca: 66300, caAnPasse: 60400, cout: 29700, op: -22800, opAnPasse: -34600, carnet: 527000, clients: null, guidance: g(2026, 265000, 280000) },
+  { date: '2025-09-08', trimestre: 'T2 FY2026', ca: 73400, caAnPasse: 61100, cout: 31100, op: -18000, opAnPasse: -39600, carnet: 736100, clients: null, guidance: g(2026, 281000, 289000) },
+  { date: '2025-12-10', trimestre: 'T3 FY2026', ca: 81300, caAnPasse: 61300, cout: 34700, op: -18300, opAnPasse: -22600, carnet: 734500, clients: null, guidance: g(2026, 297000, 301000) },
   // « over $900 Million » : aucun montant exact → carnet non publié, hésitation consignée.
-  { date: '2026-03-19', trimestre: 'T4 FY2026', ca: 86800, caAnPasse: 61600, cout: 39800, op: -36000, opAnPasse: -19400, carnet: null, croissanceClients: null, guidance: g(2027, 415000, 440000), hesitation: true },
-  { date: '2026-06-04', trimestre: 'T1 FY2027', ca: 94200, caAnPasse: 66300, cout: 43700, op: -34900, opAnPasse: -22800, carnet: 906100, croissanceClients: null, guidance: g(2027, 425000, 441000) },
-  { date: '2026-09-03', trimestre: 'T2 FY2027', ca: 116100, caAnPasse: 73386, cout: 50420, op: -13509, opAnPasse: -17960, carnet: 814900, croissanceClients: null, guidance: g(2027, 430000, 441000) },
+  { date: '2026-03-19', trimestre: 'T4 FY2026', ca: 86800, caAnPasse: 61600, cout: 39800, op: -36000, opAnPasse: -19400, carnet: null, clients: null, guidance: g(2027, 415000, 440000), hesitation: true },
+  { date: '2026-06-04', trimestre: 'T1 FY2027', ca: 94200, caAnPasse: 66300, cout: 43700, op: -34900, opAnPasse: -22800, carnet: 906100, clients: null, guidance: g(2027, 425000, 441000) },
+  { date: '2026-09-03', trimestre: 'T2 FY2027', ca: 116100, caAnPasse: 73386, cout: 50420, op: -13509, opAnPasse: -17960, carnet: 814900, clients: null, guidance: g(2027, 430000, 441000) },
 ];
 
 /** Série « pré-revenus » : D1 par unités livrées, D2 par barreau, D3 par jalon daté. */
@@ -165,8 +165,8 @@ function seriePreRevenus(lignes, sources) {
   return out;
 }
 
-/** Série d'un industriel ou d'une plateforme. D2 et le statut de prévision suivent la ligne. */
-function serie(lignes, sources, { caThese = false } = {}) {
+/** Série d'un industriel ou d'une plateforme. indicateurDemande : §2, fixé à l'entrée. */
+function serie(lignes, sources, { caThese = false, indicateurDemande = 'carnet' } = {}) {
   const out = [];
   let croissancePrecedente = null, carnetPrecedent = null, guidancePrecedente = null, clientsPrecedent = null;
   for (const l of lignes) {
@@ -175,7 +175,7 @@ function serie(lignes, sources, { caThese = false } = {}) {
       out.push(publication({
         date: l.date, trimestre: l.trimestre, source: sources[l.date],
         d1: sensEcart(c, croissancePrecedente),
-        d2: sensDemandeEngagee({
+        d2: sensDemandeEngagee(indicateurDemande, {
           carnet: l.carnet, carnetPrecedent, ca: l.ca,
           croissanceClients: l.croissanceClients, croissanceClientsPrecedente: clientsPrecedent,
         }),
@@ -210,8 +210,8 @@ const LUES = [
     id: 'planet-labs', nom: 'Planet Labs', archetype: 'plateforme',
     recit: 'Spatial — imagerie quotidienne de la Terre vendue par abonnement',
     ca_these: { valeur: 'Chiffre d’affaires total — Planet ne publie qu’un seul segment', source: PL_SRC['2026-09-03'] },
-    indicateur_demande: { type: 'carnet', valeur: 'Carnet de commandes (« backlog »), à défaut nombre de clients', source: PL_SRC['2026-09-03'] },
-    publications: serie(PL, PL_SRC),
+    indicateur_demande: { type: 'carnet', valeur: 'Carnet de commandes (« backlog »)', source: PL_SRC['2026-09-03'] },
+    publications: serie(PL, PL_SRC, { indicateurDemande: 'carnet' }),
     evenements_commerciaux: [],
   },
 ];
