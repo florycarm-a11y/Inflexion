@@ -177,6 +177,84 @@ const ASTS = [
   { date: '2026-11-09', trimestre: 'T3 2026', ca: 42321, caAnPasse: 14739, cout: 25314, op: -168705, opAnPasse: -79676, unites: null, barreau: 2, guidance: g(2026, 150000, 200000) },
 ];
 
+// ═════════════════════════════════════════════════════════════════════════════
+// GLOBALSTAR (GSAT) — plateforme
+//
+// ARCHÉTYPE FIXÉ AVANT LECTURE : au tirage, Globalstar vendait déjà un service récurrent
+// (224 millions de dollars en 2023). Plateforme, donc.
+//
+// CA DE LA THÈSE : le chiffre d'affaires de SERVICE, hors ventes de terminaux — « le segment qui
+// porte le récit, hors activités annexes ». La capacité en gros vendue à Apple serait plus pure
+// encore, mais elle n'est pas isolée dans chacun des douze communiqués : le retenir aurait
+// demandé de reconstituer une série par recoupements. Le chiffre de service, lui, est imprimé
+// partout, et c'est la ligne que la société met en avant. Choix de paramètre, consigné (§2).
+//
+// INDICATEUR DE DEMANDE : le nombre d'abonnés, et c'est le seul choix possible. Globalstar ne
+// publie AUCUN carnet de commandes dans ses communiqués — vérifié sur les douze. Il ne publie pas
+// non plus d'abonnés en fin de période : seulement des abonnés MOYENS du trimestre, par catégorie
+// (Commercial IoT, SPOT, Duplex). Le total des trois est la seule mesure de demande disponible.
+// Limite à connaître, qui ne se corrige pas : ces trois catégories sont les produits de détail
+// historiques — la capacité en gros qui porte le récit n'y figure pas. D2 mesure donc la base
+// d'abonnés héritée, pas la demande de la thèse.
+//
+// SUSPENSION DES PRÉVISIONS. Au T1 2026, « in connection with the pending Mergers with
+// Amazon.com, Inc., Globalstar does not intend to […] provide updates to forward-looking
+// guidance ». §3 traite ce cas nommément, par l'exemple ChargePoint : un RETRAIT de prévision
+// annuelle vaut « abaissée ». La méthode ne distingue pas les motifs — elle lit le document, pas
+// l'intention —, donc une suspension pour cause de fusion se classe comme une coupe. Le retrait
+// ne vaut qu'UNE fois : les deux trimestres suivants n'ont plus aucune prévision, D3 y est
+// « non publié ».
+//
+// CA TOTAL ET RÉSULTAT D'EXPLOITATION : balisés dans le 10-Q déposé le jour même (précisions 4
+// et 8). Les trois quatrièmes trimestres viennent du communiqué annuel ; contrôle fait, la
+// soustraction exercice moins neuf mois redonne exactement les chiffres imprimés (T4 2024 :
+// perte d'exploitation de 4 249, CA de 61 177 ; T4 2025 : CA de 71 961).
+//
+// GARDE-FOU DE MARGE BRUTE : `cout` est le coût des services, comparé au CA TOTAL. L'appariement
+// n'est pas exact — Globalstar présente aussi un coût des terminaux, non relevé ici — mais le
+// verdict ne dépend pas de l'écart : le chiffre d'affaires de service dépasse à lui seul le coût
+// des services d'un facteur trois sur les douze trimestres. La marge est robustement positive.
+//
+// Montants en milliers de dollars. Abonnés en unités. La ligne du 2 novembre 2023 est HORS SÉRIE
+// (précision 7) : elle ne fournit que les valeurs précédentes de la première ligne.
+// ═════════════════════════════════════════════════════════════════════════════
+
+const GSAT_SRC = {
+  '2023-11-02': src('8-K', '2023-11-02', `${ARCH}/1366868/000136686823000137/gsat20230930-ex991.htm`),
+  '2024-02-28': src('8-K', '2024-02-28', `${ARCH}/1366868/000136686824000024/gsat20231231-ex991.htm`),
+  '2024-05-08': src('8-K', '2024-05-08', `${ARCH}/1366868/000136686824000067/gsat20240331-ex991.htm`),
+  '2024-08-08': src('8-K', '2024-08-08', `${ARCH}/1366868/000136686824000094/gsat20240630-ex991.htm`),
+  '2024-11-07': src('8-K', '2024-11-07', `${ARCH}/1366868/000136686824000113/gsat20240930-ex991.htm`),
+  '2025-02-27': src('8-K', '2025-02-27', `${ARCH}/1366868/000136686825000030/gsat20241231-ex991.htm`),
+  '2025-05-08': src('8-K', '2025-05-08', `${ARCH}/1366868/000136686825000074/gsat20250331-ex991.htm`),
+  '2025-08-07': src('8-K', '2025-08-07', `${ARCH}/1366868/000136686825000101/gsat20250630-ex991.htm`),
+  '2025-11-06': src('8-K', '2025-11-06', `${ARCH}/1366868/000136686825000111/gsat20250930-ex991.htm`),
+  '2026-02-27': src('8-K', '2026-02-27', `${ARCH}/1366868/000136686826000009/gsat20251231-ex991.htm`),
+  '2026-05-07': src('8-K', '2026-05-07', `${ARCH}/1366868/000136686826000027/gsat20260331-ex991.htm`),
+  '2026-08-06': src('8-K', '2026-08-06', `${ARCH}/1366868/000136686826000037/gsat20260630-ex991.htm`),
+  '2026-11-05': src('8-K', '2026-11-05', `${ARCH}/1366868/000136686826000045/gsat20260930-ex991.htm`),
+};
+
+// croissanceClients : la croissance sur un an du total des abonnés moyens, calculée sur les
+// effectifs publiés (précision 3) — jamais sur un pourcentage imprimé.
+const GSAT = [
+  { date: '2023-11-02', trimestre: 'T3 2023', caThese: 53643, caTheseAnPasse: 33301, ca: 57683, caAnPasse: null, cout: 13872, op: 2017, opAnPasse: null, croissanceClients: croissance(769706, 762232), guidance: null, horsSerie: true },
+  { date: '2024-02-28', trimestre: 'T4 2023', caThese: 48951, caTheseAnPasse: 36375, ca: 52409, caAnPasse: 41306, cout: 15561, op: -11993, opAnPasse: -9320, croissanceClients: croissance(777945, 765285), guidance: g(2024, 225000, 250000) },
+  { date: '2024-05-08', trimestre: 'T1 2024', caThese: 53465, caTheseAnPasse: 52954, ca: 56480, caAnPasse: 58644, cout: 16759, op: -4712, opAnPasse: 7191, croissanceClients: croissance(781812, 764760), guidance: g(2024, 225000, 250000) },
+  { date: '2024-08-08', trimestre: 'T2 2024', caThese: 57635, caTheseAnPasse: 48648, ca: 60385, caAnPasse: 55072, cout: 18114, op: -1422, opAnPasse: 2620, croissanceClients: croissance(782593, 763317), guidance: g(2024, 235000, 250000) },
+  { date: '2024-11-07', trimestre: 'T3 2024', caThese: 68908, caTheseAnPasse: 53643, ca: 72307, caAnPasse: 57683, cout: 19185, op: 9434, opAnPasse: 2017, croissanceClients: croissance(781215, 769706), guidance: g(2024, 245000, 250000) },
+  { date: '2025-02-27', trimestre: 'T4 2024', caThese: 57681, caTheseAnPasse: 48951, ca: 61177, caAnPasse: 52409, cout: 19102, op: -4249, opAnPasse: -11993, croissanceClients: croissance(775556, 777945), guidance: g(2025, 260000, 285000) },
+  { date: '2025-05-08', trimestre: 'T1 2025', caThese: 57067, caTheseAnPasse: 53465, ca: 60032, caAnPasse: 56480, cout: 18625, op: -8501, opAnPasse: -4712, croissanceClients: croissance(776050, 781812), guidance: g(2025, 260000, 285000) },
+  { date: '2025-08-07', trimestre: 'T2 2025', caThese: 63216, caTheseAnPasse: 57635, ca: 67148, caAnPasse: 60385, cout: 19479, op: 6146, opAnPasse: -1422, croissanceClients: croissance(781231, 782593), guidance: g(2025, 260000, 285000) },
+  { date: '2025-11-06', trimestre: 'T3 2025', caThese: 69635, caTheseAnPasse: 68908, ca: 73845, caAnPasse: 72307, cout: 22206, op: 10156, opAnPasse: 9434, croissanceClients: croissance(783544, 780929), guidance: g(2025, 260000, 285000) },
+  { date: '2026-02-27', trimestre: 'T4 2025', caThese: 67391, caTheseAnPasse: 57681, ca: 71961, caAnPasse: 61177, cout: 22871, op: -371, opAnPasse: -4249, croissanceClients: croissance(786993, 775556), guidance: g(2026, 280000, 305000) },
+  // Prévision 2026 RETIRÉE en raison de la fusion Amazon : « abaissée » (§3, exemple ChargePoint).
+  { date: '2026-05-07', trimestre: 'T1 2026', caThese: 66701, caTheseAnPasse: 57067, ca: 70064, caAnPasse: 60032, cout: 23433, op: 8170, opAnPasse: -8501, croissanceClients: croissance(793745, 776050), guidance: null, statut: 'abaissee' },
+  // Le retrait ne vaut qu'une fois : plus aucune prévision, donc D3 non publié.
+  { date: '2026-08-06', trimestre: 'T2 2026', caThese: 59998, caTheseAnPasse: 63216, ca: 64772, caAnPasse: 67148, cout: 23602, op: -4775, opAnPasse: 6146, croissanceClients: croissance(803788, 781231), guidance: null },
+  { date: '2026-11-05', trimestre: 'T3 2026', caThese: 65386, caTheseAnPasse: 69635, ca: 70903, caAnPasse: 73845, cout: 24939, op: 7611, opAnPasse: 10156, croissanceClients: croissance(808739, 783544), guidance: null },
+];
+
 // ── Séries ───────────────────────────────────────────────────────────────────
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -286,7 +364,10 @@ function serie(lignes, sources, { caThese = false, indicateurDemande = 'carnet' 
           croissanceClients: l.croissanceClients, croissanceClientsPrecedente: clientsPrecedent,
         }),
         d4: sensMargeOperationnelle(l.op, l.ca, l.opAnPasse, l.caAnPasse),
-        statut: statutPrevision(l, guidancePrecedente),
+        // `statut` écrit à la main l'emporte : §5 classe des situations qu'aucun calcul de
+        // milieu de fourchette ne rend, comme le RETRAIT d'une prévision annoncée (§3, exemple
+        // ChargePoint). Chaque emploi doit porter son motif en commentaire, à côté de la ligne.
+        statut: l.statut ?? statutPrevision(l, guidancePrecedente),
         margeBrute: etatMargeBrute(l.ca, l.cout),
         drapeaux: l.hesitation ? [{ code: 'hesitation', source: sources[l.date] }] : [],
       }));
@@ -326,6 +407,14 @@ const LUES = [
     ca_these: { valeur: 'Unités livrées — satellites mis en orbite dans le trimestre', source: ASTS_SRC['2026-08-10'] },
     indicateur_demande: { type: 'barreau', valeur: 'Barreau d’engagement (§8), plafonné à 2 faute de 8-K rubrique 1.01 côté client', source: ASTS_SRC['2026-11-09'] },
     publications: seriePreRevenus(ASTS, ASTS_SRC),
+    evenements_commerciaux: [],
+  },
+  {
+    id: 'globalstar', nom: 'Globalstar', archetype: 'plateforme',
+    recit: 'Spatial — capacité satellitaire en gros et objets connectés',
+    ca_these: { valeur: 'Chiffre d’affaires de service, hors ventes de terminaux', source: GSAT_SRC['2026-11-05'] },
+    indicateur_demande: { type: 'clients', valeur: 'Abonnés moyens du trimestre, total des trois catégories de détail', source: GSAT_SRC['2026-11-05'] },
+    publications: serie(GSAT, GSAT_SRC, { caThese: true, indicateurDemande: 'clients' }),
     evenements_commerciaux: [],
   },
 ];
