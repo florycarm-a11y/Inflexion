@@ -81,6 +81,102 @@ const SPCE = [
   { date: '2026-11-12', trimestre: 'T3 2026', ca: 427, caAnPasse: 365, cout: undefined, op: -58994, opAnPasse: -66166, unites: null, barreau: 3, jalon: 'début T2 2027', statut: 'abaissee' },
 ];
 
+// ═════════════════════════════════════════════════════════════════════════════
+// AST SPACEMOBILE (ASTS) — pré-revenus
+//
+// ARCHÉTYPE FIXÉ AVANT LECTURE (§2, « ils ne changent plus ensuite ») : au tirage de l'univers,
+// le 31 janvier 2024, AST n'avait aucun revenu lié à sa thèse. C'est donc un pré-revenus, et il
+// le reste quand le chiffre d'affaires apparaît puis atteint 42 millions au T3 2026.
+//
+// DIX-SEPT 8-K RUBRIQUE 2.02, DOUZE LIGNES. Cinq de ces dépôts ne sont pas des résultats
+// trimestriels : quatre annonces de financement (22 janvier 2025, 24 juillet 2025, 21 octobre
+// 2025, 15 juillet 2026) et une liste de facteurs de risque (11 février 2026). Précision 2 :
+// « une pré-annonce ou un point d'activité publié entre deux publications de résultats ne crée
+// pas de ligne ». Vérifié un par un, aucun ne porte de prévision ni de jalon qui ne soit repris
+// à la publication de résultats suivante.
+//
+// LE BARREAU RESTE 2 SUR TOUTE LA SÉRIE, et c'est le résultat le plus instructif de cette
+// lecture. AST annonce dans ses communiqués un « 6-year definitive commercial agreement » avec
+// AT&T (mai 2024) puis un « definitive commercial agreement through 2034 » avec Vodafone (mars
+// 2025), et nomme Verizon, Rakuten et STC comme clients. Mais les huit 8-K rubrique 1.01 déposés
+// depuis février 2024 ont été ouverts un par un : ce sont des pactes d'actionnaires (7 juin 2024,
+// 7 février 2025), des émissions de titres (5 septembre 2024, 13 mai 2025, 26 juin 2025,
+// 7 octobre 2025) et l'acquisition du spectre Ligado, où AST est l'ACHETEUR (7 janvier et
+// 24 mars 2025, au moins 80 millions par an versés à Ligado). AUCUN accord côté client n'est
+// déposé. §8 : « par défaut, une annonce qui n'a pas donné lieu au dépôt d'un 8-K rubrique 1.01
+// ne dépasse pas le barreau 2 ». La méthode refuse donc de créditer un accord « définitif » que
+// la société n'a pas déposé comme accord important — et AST ne reçoit AUCUNE Bascule commerciale
+// malgré AT&T, Verizon, Vodafone et Rakuten. Hésitation consignée : on pourrait soutenir le
+// barreau 3 au T1 2024 (« signé mais suspendu à une licence » — le service attendait la FCC) ;
+// §3 impose la lecture la plus neutre, donc le barreau ne monte pas.
+//
+// D1 N'EST RELEVÉ QUE LORSQUE LE COMMUNIQUÉ ÉNONCE LE COMPTE DU TRIMESTRE. AST ne publie pas de
+// décompte régulier de lancements. Deux trimestres l'énoncent sans ambiguïté — cinq Block 1 en
+// septembre 2024, trois BlueBird en avril-juin 2026 — et deux autres énoncent explicitement
+// zéro. Partout ailleurs : non publié. Reconstituer les comptes manquants par différence de
+// constellation serait inventer une série ; `unites: null` dit ce que la société n'a pas dit.
+//
+// PERTE D'EXPLOITATION = CA − TOTAL DES CHARGES D'EXPLOITATION, les deux balisés dans le 10-Q
+// déposé le JOUR MÊME de la publication (précision 4 l'admet, précision 8 est satisfaite puisque
+// c'est le document du jour). Source unique pour toute la série, au lieu d'un assemblage : AST a
+// cessé de baliser `OperatingIncomeLoss` après 2021, et ses communiqués impriment par endroits
+// la perte AVANT IMPÔT, qu'il ne faut pas confondre avec la perte d'exploitation. Contrôle fait :
+// les charges comparatives sont identiques d'un dépôt à l'autre (aucun retraitement), et au T4
+// 2025 la soustraction donne 54 305 − 126 582 = −72 277, la perte que la société imprime.
+// Les trois quatrièmes trimestres viennent de la colonne trimestrielle du communiqué annuel.
+//
+// LA PRÉCISION 1 MUET D4 SUR SIX LIGNES. Tant que le trimestre comparatif est à zéro de chiffre
+// d'affaires, la marge passée n'existe pas ; et au T1 2025 c'est le comparatif lui-même qui est
+// non calculable (55 500 de perte pour 500 de chiffre d'affaires, soit cent onze fois).
+//
+// Montants en milliers de dollars. `cout: undefined` = aucune ligne de coût des ventes présentée
+// — c'est le cas jusqu'au T2 2025 inclus ; la ligne apparaît au T3 2025 et le garde-fou de marge
+// brute devient applicable en cours de série.
+// ═════════════════════════════════════════════════════════════════════════════
+
+const ASTS_SRC = {
+  '2024-04-01': src('8-K', '2024-04-01', `${ARCH}/1780312/000095017024039386/asts-ex99_1.htm`),
+  '2024-05-15': src('8-K', '2024-05-15', `${ARCH}/1780312/000095017024060494/asts-ex99_1.htm`),
+  '2024-08-14': src('8-K', '2024-08-14', `${ARCH}/1780312/000095017024097095/asts-ex99_1.htm`),
+  '2024-11-14': src('8-K', '2024-11-14', `${ARCH}/1780312/000095017024127096/asts-ex99_1.htm`),
+  '2025-03-04': src('8-K', '2025-03-04', `${ARCH}/1780312/000095017025031954/asts-ex99_1.htm`),
+  '2025-05-12': src('8-K', '2025-05-12', `${ARCH}/1780312/000095017025069317/asts-ex99_1.htm`),
+  '2025-08-11': src('8-K', '2025-08-11', `${ARCH}/1780312/000095017025106610/asts-ex99_1.htm`),
+  '2025-11-10': src('8-K', '2025-11-10', `${ARCH}/1780312/000119312525274360/asts-ex99_1.htm`),
+  '2026-03-02': src('8-K', '2026-03-02', `${ARCH}/1780312/000178031226000005/asts-ex99_1.htm`),
+  '2026-05-11': src('8-K', '2026-05-11', `${ARCH}/1780312/000119312526216946/asts-ex99_1.htm`),
+  '2026-08-10': src('8-K', '2026-08-10', `${ARCH}/1780312/000119312526342540/asts-ex99_1.htm`),
+  '2026-11-09': src('8-K', '2026-11-09', `${ARCH}/1780312/000119312526453758/asts-ex99_1.htm`),
+};
+
+// guidance : prévision chiffrée, avec la période qu'elle vise. AST chiffre pour la première fois
+// le 12 mai 2025 (second semestre 2025), puis l'exercice 2026 le 11 mai 2026. Un changement de
+// période donne « nouvelle » (§5). Avant cela, D3 s'appuierait sur un jalon daté — mais aucune
+// des cinq premières publications n'annonce de DATE de début de service commercial : D3 est
+// non publié, et `statut` le dit.
+const ASTS = [
+  { date: '2024-04-01', trimestre: 'T4 2023', ca: 0, caAnPasse: 0, cout: undefined, op: -60878, opAnPasse: -42607, unites: null, barreau: 2, statut: 'non-publie' },
+  { date: '2024-05-15', trimestre: 'T1 2024', ca: 500, caAnPasse: 0, cout: undefined, op: -55500, opAnPasse: -44500, unites: null, barreau: 2, statut: 'non-publie' },
+  // « Zero launches in Q2 2024 ; no operational satellites in orbit as of June 30 » : zéro énoncé.
+  { date: '2024-08-14', trimestre: 'T2 2024', ca: 900, caAnPasse: 0, cout: undefined, op: -62993, opAnPasse: -50380, unites: 0, barreau: 2, statut: 'non-publie' },
+  // Les cinq premiers Block 1 BlueBird lancés le 12 septembre 2024 : premières livraisons après zéro.
+  { date: '2024-11-14', trimestre: 'T3 2024', ca: 1100, caAnPasse: 0, cout: undefined, op: -65546, opAnPasse: null, unites: 5, barreau: 2, statut: 'non-publie' },
+  { date: '2025-03-04', trimestre: 'T4 2024', ca: 1918, caAnPasse: 0, cout: undefined, op: -58724, opAnPasse: -60878, unites: null, barreau: 2, statut: 'non-publie' },
+  // Première prévision chiffrée : « revenue of $50.0 million to $75.0 million in the second half 2025 ».
+  { date: '2025-05-12', trimestre: 'T1 2025', ca: 718, caAnPasse: 500, cout: undefined, op: -62963, opAnPasse: -55500, unites: null, barreau: 2, guidance: g('2025-S2', 50000, 75000) },
+  // « No launches occurred during Q2 2025 » : zéro énoncé, mais le trimestre précédent ne l'était pas.
+  { date: '2025-08-11', trimestre: 'T2 2025', ca: 1156, caAnPasse: 900, cout: undefined, op: -72797, opAnPasse: -62993, unites: 0, barreau: 2, guidance: g('2025-S2', 50000, 75000) },
+  // Une ligne de coût des ventes apparaît ici (5 511) : le garde-fou devient applicable.
+  { date: '2025-11-10', trimestre: 'T3 2025', ca: 14739, caAnPasse: 1100, cout: 5511, op: -79676, opAnPasse: -65546, unites: null, barreau: 2, guidance: g('2025-S2', 50000, 75000) },
+  // Coût des ventes du trimestre : 35 216 de l'exercice moins 5 511 des neuf mois publiés.
+  // Aucune prévision chiffrée pour 2026 (« revenue expected to grow »), aucune date de service : D3 muet.
+  { date: '2026-03-02', trimestre: 'T4 2025', ca: 54305, caAnPasse: 1918, cout: 29705, op: -72277, opAnPasse: -58724, unites: null, barreau: 2, statut: 'non-publie' },
+  { date: '2026-05-11', trimestre: 'T1 2026', ca: 14735, caAnPasse: 718, cout: 11649, op: -149412, opAnPasse: -62963, unites: 0, barreau: 2, guidance: g(2026, 150000, 200000) },
+  // BlueBirds 11, 12 et 13 lancés dans le trimestre, treize engins en orbite à la fin.
+  { date: '2026-08-10', trimestre: 'T2 2026', ca: 31500, caAnPasse: 1156, cout: 23567, op: -297597, opAnPasse: -72797, unites: 3, barreau: 2, guidance: g(2026, 150000, 200000) },
+  { date: '2026-11-09', trimestre: 'T3 2026', ca: 42321, caAnPasse: 14739, cout: 25314, op: -168705, opAnPasse: -79676, unites: null, barreau: 2, guidance: g(2026, 150000, 200000) },
+];
+
 // ── Séries ───────────────────────────────────────────────────────────────────
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -144,23 +240,33 @@ const PL = [
   { date: '2026-09-03', trimestre: 'T2 FY2027', ca: 116100, caAnPasse: 73386, cout: 50420, op: -13509, opAnPasse: -17960, carnet: 814900, clients: null, guidance: g(2027, 430000, 441000) },
 ];
 
-/** Série « pré-revenus » : D1 par unités livrées, D2 par barreau, D3 par jalon daté. */
+/**
+ * Série « pré-revenus » : D1 par unités livrées, D2 par barreau.
+ *
+ * D3 suit la hiérarchie de §5 : la prévision chiffrée d'abord, le jalon daté seulement « pour un
+ * pré-revenus SANS prévision chiffrée ». Une société qui se met à chiffrer en cours de série
+ * change donc de source de D3 ce jour-là — c'est le cas d'AST SpaceMobile.
+ */
 function seriePreRevenus(lignes, sources) {
   const out = [];
-  let unitesPrecedent = null, barreauPrecedent = null;
+  let unitesPrecedent = null, barreauPrecedent = null, guidancePrecedente = null;
   for (const l of lignes) {
+    const statut = (l.guidance != null || l.guidanceT != null)
+      ? statutPrevision(l, guidancePrecedente)
+      : l.statut;
     if (!l.horsSerie) {
       out.push(publication({
         date: l.date, trimestre: l.trimestre, source: sources[l.date],
         d1: sensUnites(l.unites, unitesPrecedent),
         d2: sensBarreau(l.barreau, barreauPrecedent),
         d4: sensMargeOperationnelle(l.op, l.ca, l.opAnPasse, l.caAnPasse),
-        statut: l.statut, margeBrute: etatMargeBrute(l.ca, l.cout),
+        statut, margeBrute: etatMargeBrute(l.ca, l.cout),
         drapeaux: l.hesitation ? [{ code: 'hesitation', source: sources[l.date] }] : [],
       }));
     }
     unitesPrecedent = l.unites;
     barreauPrecedent = l.barreau;
+    if (l.guidance != null) guidancePrecedente = l.guidance;
   }
   return out;
 }
@@ -212,6 +318,14 @@ const LUES = [
     ca_these: { valeur: 'Chiffre d’affaires total — Planet ne publie qu’un seul segment', source: PL_SRC['2026-09-03'] },
     indicateur_demande: { type: 'carnet', valeur: 'Carnet de commandes (« backlog »)', source: PL_SRC['2026-09-03'] },
     publications: serie(PL, PL_SRC, { indicateurDemande: 'carnet' }),
+    evenements_commerciaux: [],
+  },
+  {
+    id: 'ast-spacemobile', nom: 'AST SpaceMobile', archetype: 'pre-revenus',
+    recit: 'Spatial — réseau cellulaire à large bande depuis l’orbite, directement vers le téléphone',
+    ca_these: { valeur: 'Unités livrées — satellites mis en orbite dans le trimestre', source: ASTS_SRC['2026-08-10'] },
+    indicateur_demande: { type: 'barreau', valeur: 'Barreau d’engagement (§8), plafonné à 2 faute de 8-K rubrique 1.01 côté client', source: ASTS_SRC['2026-11-09'] },
+    publications: seriePreRevenus(ASTS, ASTS_SRC),
     evenements_commerciaux: [],
   },
 ];

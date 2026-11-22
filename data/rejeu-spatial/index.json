@@ -3,7 +3,7 @@
   "protocole": "docs/tracker-univers-spatial.md",
   "methode_version": "1.3",
   "univers_total": 18,
-  "lues": 2,
+  "lues": 3,
   "publie": false,
   "societes": [
     {
@@ -55,6 +55,31 @@
       },
       "publications": 11,
       "fichier": "data/rejeu-spatial/planet-labs.json"
+    },
+    {
+      "id": "ast-spacemobile",
+      "nom": "AST SpaceMobile",
+      "archetype": "pre-revenus",
+      "recit": "Spatial — réseau cellulaire à large bande depuis l’orbite, directement vers le téléphone",
+      "ca_these": {
+        "valeur": "Unités livrées — satellites mis en orbite dans le trimestre",
+        "source": {
+          "type": "8-K",
+          "date": "2026-08-10",
+          "url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526342540/asts-ex99_1.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "barreau",
+        "valeur": "Barreau d’engagement (§8), plafonné à 2 faute de 8-K rubrique 1.01 côté client",
+        "source": {
+          "type": "8-K",
+          "date": "2026-11-09",
+          "url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526453758/asts-ex99_1.htm"
+        }
+      },
+      "publications": 12,
+      "fichier": "data/rejeu-spatial/ast-spacemobile.json"
     }
   ]
 }
