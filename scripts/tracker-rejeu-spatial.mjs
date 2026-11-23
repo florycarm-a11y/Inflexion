@@ -408,6 +408,76 @@ const TRMB = [
   { date: '2026-11-04', trimestre: 'T3 2026', ca: 966.8, caAnPasse: 901.2, cout: 307.7, op: 142.0, opAnPasse: 150.5, carnet: null, guidance: g(2026, 3910, 3940) },
 ];
 
+// ═════════════════════════════════════════════════════════════════════════════
+// SIRIUS XM (SIRI) — plateforme
+//
+// DOUZE 8-K RUBRIQUE 2.02, UN PAR TRIMESTRE, chacun accompagné le MÊME JOUR du 10-Q ou du 10-K.
+// Aucun leurre à écarter, et les précisions 4 et 8 sont servies sans effort.
+//
+// CA DE LA THÈSE : le chiffre d'affaires TOTAL, par le repli de §2, et il faut dire ce qui a été
+// écarté. Le segment radio satellitaire porte le récit et pèse environ les trois quarts du
+// chiffre d'affaires — mais le COMMUNIQUÉ ne l'imprime qu'à partir de 2026 ; avant, seul le
+// consolidé y figure. Le 10-Q du jour le porte bien, dans une note organisée par TYPE de revenu
+// et non par segment, d'où une série de douze trimestres impossible à reconstituer sans
+// recoupements. Conséquence bénigne ici, contrairement à EchoStar : aucune cession ne vient
+// casser le périmètre, donc le consolidé suit de près le segment.
+//
+// INDICATEUR DE DEMANDE : les abonnés auto-payants de SiriusXM en fin de période, publiés dans
+// chaque communiqué avec leur comparatif. Aucun carnet dans une activité d'abonnement.
+//
+// LE TABLEAU « AJUSTÉ » EST UN PIÈGE. Chaque communiqué de Sirius XM présente DEUX comptes de
+// résultat : le GAAP, puis un second d'où « legal settlements and reserves and share-based
+// payment expense have been excluded ». Les deux portent les mêmes libellés. Le second donne une
+// marge brute de 1 042 là où le GAAP donne 1 136 : §3 est formel, « les résultats ajustés ne
+// servent à aucune dimension ». La marge brute retenue ici est donc la marge brute GAAP balisée
+// (`us-gaap:GrossProfit`), et `cout` vaut chiffre d'affaires moins marge brute — soustraction de
+// deux montants GAAP publiés, pas un chiffre repris d'un tableau ajusté.
+//
+// LES TROIS QUATRIÈMES TRIMESTRES N'ONT PAS DE MARGE BRUTE. Le 10-K ne balise pas le trimestre et
+// le communiqué annuel n'imprime pas de marge brute GAAP trimestrielle : garde-fou non calculable
+// sur ces lignes. Le chiffre d'affaires et le résultat d'exploitation du trimestre, eux, sont bien
+// imprimés dans le communiqué annuel.
+//
+// LES COMPARATIFS SONT RETRAITÉS D'UN DÉPÔT À L'AUTRE : le résultat d'exploitation du T1 2024 vaut
+// 437 dans le communiqué du jour et 409 dans celui d'un an plus tard ; celui du T4 2023 passe de
+// 490 à 455. Chaque ligne lit son propre document (précision 8).
+//
+// Montants en MILLIONS de dollars. Abonnés en MILLIERS.
+// ═════════════════════════════════════════════════════════════════════════════
+
+const SIRI_SRC = {
+  '2024-02-01': src('8-K', '2024-02-01', `${ARCH}/908937/000090893724000005/siriq42023earningsrelease.htm`),
+  '2024-04-30': src('8-K', '2024-04-30', `${ARCH}/908937/000090893724000013/siriq12024earningsrelease.htm`),
+  '2024-08-01': src('8-K', '2024-08-01', `${ARCH}/908937/000090893724000019/siriq22024earningsrelease.htm`),
+  '2024-10-31': src('8-K', '2024-10-31', `${ARCH}/908937/000090893724000026/siriq32024earningsreleases.htm`),
+  '2025-01-30': src('8-K', '2025-01-30', `${ARCH}/908937/000090893725000004/siriq42024earningsreleases.htm`),
+  '2025-05-01': src('8-K', '2025-05-01', `${ARCH}/908937/000090893725000008/siriq12025earningsrelease.htm`),
+  '2025-07-31': src('8-K', '2025-07-31', `${ARCH}/908937/000090893725000021/siriq22025earningsrelease.htm`),
+  '2025-10-30': src('8-K', '2025-10-30', `${ARCH}/908937/000090893725000028/siriq32025earningsrelease.htm`),
+  '2026-02-05': src('8-K', '2026-02-05', `${ARCH}/908937/000090893726000003/siriq42025earningsrelease.htm`),
+  '2026-04-30': src('8-K', '2026-04-30', `${ARCH}/908937/000090893726000010/siriq12026earningsrelease.htm`),
+  '2026-07-30': src('8-K', '2026-07-30', `${ARCH}/908937/000090893726000020/siriq22026earningsrelease.htm`),
+  '2026-10-29': src('8-K', '2026-10-29', `${ARCH}/908937/000090893726000027/siriq32026earningsrelease.htm`),
+};
+
+// cout = chiffre d'affaires − marge brute GAAP balisée du dépôt du jour. Les prévisions de Sirius
+// XM sont des points, pas des fourchettes : basse = haute.
+const SIRI = [
+  { date: '2024-02-01', trimestre: 'T4 2023', ca: 2287, caAnPasse: 2283, cout: null, op: 490, opAnPasse: 562, croissanceClients: croissance(31942, 32387), guidance: g(2024, 8750, 8750) },
+  { date: '2024-04-30', trimestre: 'T1 2024', ca: 2162, caAnPasse: 2144, cout: 2162 - 1136, op: 437, opAnPasse: 412, croissanceClients: croissance(31583, 32040), guidance: g(2024, 8750, 8750) },
+  { date: '2024-08-01', trimestre: 'T2 2024', ca: 2178, caAnPasse: 2250, cout: 2178 - 1166, op: 505, opAnPasse: 479, croissanceClients: croissance(31484, 31907), guidance: g(2024, 8750, 8750) },
+  // Dépréciation de Pandora : perte d'exploitation de 2 901 millions sur le trimestre.
+  { date: '2024-10-31', trimestre: 'T3 2024', ca: 2171, caAnPasse: 2271, cout: 2171 - 1156, op: -2901, opAnPasse: 528, croissanceClients: croissance(31497, 31811), guidance: g(2024, 8675, 8675) },
+  { date: '2025-01-30', trimestre: 'T4 2024', ca: 2188, caAnPasse: 2287, cout: null, op: 506, opAnPasse: 455, croissanceClients: croissance(31646, 31942), guidance: g(2025, 8500, 8500) },
+  { date: '2025-05-01', trimestre: 'T1 2025', ca: 2068, caAnPasse: 2162, cout: 2068 - 1076, op: 387, opAnPasse: 409, croissanceClients: croissance(31343, 31583), guidance: g(2025, 8500, 8500) },
+  { date: '2025-07-31', trimestre: 'T2 2025', ca: 2138, caAnPasse: 2178, cout: 2138 - 1120, op: 365, opAnPasse: 471, croissanceClients: croissance(31275, 31484), guidance: g(2025, 8500, 8500) },
+  { date: '2025-10-30', trimestre: 'T3 2025', ca: 2159, caAnPasse: 2171, cout: 2159 - 1128, op: 493, opAnPasse: -2901, croissanceClients: croissance(31235, 31497), guidance: g(2025, 8525, 8525) },
+  { date: '2026-02-05', trimestre: 'T4 2025', ca: 2193, caAnPasse: 2188, cout: null, op: 226, opAnPasse: 506, croissanceClients: croissance(31345, 31646), guidance: g(2026, 8500, 8500) },
+  { date: '2026-04-30', trimestre: 'T1 2026', ca: 2091, caAnPasse: 2068, cout: 2091 - 1105, op: 454, opAnPasse: 387, croissanceClients: croissance(31234, 31343), guidance: g(2026, 8500, 8500) },
+  { date: '2026-07-30', trimestre: 'T2 2026', ca: 2160, caAnPasse: 2138, cout: 2160 - 1144, op: 472, opAnPasse: 365, croissanceClients: croissance(31255, 31275), guidance: g(2026, 8525, 8525) },
+  { date: '2026-10-29', trimestre: 'T3 2026', ca: 2153, caAnPasse: 2159, cout: 2153 - 1136, op: 479, opAnPasse: 493, croissanceClients: croissance(31260, 31235), guidance: g(2026, 8550, 8550) },
+];
+
 // ── Séries ───────────────────────────────────────────────────────────────────
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -584,6 +654,14 @@ const LUES = [
     ca_these: { valeur: 'Chiffre d’affaires total — aucun segment ne couvre le positionnement', source: TRMB_SRC['2026-11-04'] },
     indicateur_demande: { type: 'non-publie', valeur: 'Ni commandes ni abonnés ; carnet GAAP publié arrondi au cent millions', source: TRMB_SRC['2026-11-04'] },
     publications: serie(TRMB, TRMB_SRC, { indicateurDemande: 'non-publie' }),
+    evenements_commerciaux: [],
+  },
+  {
+    id: 'sirius-xm', nom: 'Sirius XM', archetype: 'plateforme',
+    recit: 'Spatial — radio par satellite et audio numérique',
+    ca_these: { valeur: 'Chiffre d’affaires total — le segment satellitaire n’est imprimé qu’à partir de 2026', source: SIRI_SRC['2026-10-29'] },
+    indicateur_demande: { type: 'clients', valeur: 'Abonnés auto-payants SiriusXM, fin de période', source: SIRI_SRC['2026-10-29'] },
+    publications: serie(SIRI, SIRI_SRC, { indicateurDemande: 'clients' }),
     evenements_commerciaux: [],
   },
 ];

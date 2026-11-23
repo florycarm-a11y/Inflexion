@@ -3,7 +3,7 @@
   "protocole": "docs/tracker-univers-spatial.md",
   "methode_version": "1.3",
   "univers_total": 18,
-  "lues": 6,
+  "lues": 7,
   "publie": false,
   "societes": [
     {
@@ -155,6 +155,31 @@
       },
       "publications": 12,
       "fichier": "data/rejeu-spatial/trimble.json"
+    },
+    {
+      "id": "sirius-xm",
+      "nom": "Sirius XM",
+      "archetype": "plateforme",
+      "recit": "Spatial — radio par satellite et audio numérique",
+      "ca_these": {
+        "valeur": "Chiffre d’affaires total — le segment satellitaire n’est imprimé qu’à partir de 2026",
+        "source": {
+          "type": "8-K",
+          "date": "2026-10-29",
+          "url": "https://www.sec.gov/Archives/edgar/data/908937/000090893726000027/siriq32026earningsrelease.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "clients",
+        "valeur": "Abonnés auto-payants SiriusXM, fin de période",
+        "source": {
+          "type": "8-K",
+          "date": "2026-10-29",
+          "url": "https://www.sec.gov/Archives/edgar/data/908937/000090893726000027/siriq32026earningsrelease.htm"
+        }
+      },
+      "publications": 12,
+      "fichier": "data/rejeu-spatial/sirius-xm.json"
     }
   ]
 }
