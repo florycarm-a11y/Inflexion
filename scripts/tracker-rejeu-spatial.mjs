@@ -95,25 +95,45 @@ const SPCE = [
 // pas de ligne ». Vérifié un par un, aucun ne porte de prévision ni de jalon qui ne soit repris
 // à la publication de résultats suivante.
 //
-// LE BARREAU RESTE 2 SUR TOUTE LA SÉRIE, et c'est le résultat le plus instructif de cette
-// lecture. AST annonce dans ses communiqués un « 6-year definitive commercial agreement » avec
-// AT&T (mai 2024) puis un « definitive commercial agreement through 2034 » avec Vodafone (mars
-// 2025), et nomme Verizon, Rakuten et STC comme clients. Mais les huit 8-K rubrique 1.01 déposés
-// depuis février 2024 ont été ouverts un par un, et leur rubrique 1.01 lue : ce sont deux pactes
-// d'actionnaires (7 juin 2024, 7 février 2025), trois conventions de placement d'actions au fil
-// de l'eau (5 septembre 2024, 13 mai 2025, 7 octobre 2025 — « Equity Distribution Agreement »,
-// textuellement) et trois pièces de l'acquisition du spectre Ligado, où AST est l'ACHETEUR
-// (7 janvier, 24 mars et 26 juin 2025, au moins 80 millions par an versés à Ligado). Les quatre
-// derniers avaient d'abord été classés sur la seule foi de leurs noms de fichiers (annexes 1.1 et
-// 5.1 = placement) : vérification faite le 23 novembre 2026 en ouvrant chacun, le classement
-// tient, mais celui du 26 juin 2025 relevait de Ligado et non d'un placement.
-// AUCUN accord côté client n'est
-// déposé. §8 : « par défaut, une annonce qui n'a pas donné lieu au dépôt d'un 8-K rubrique 1.01
-// ne dépasse pas le barreau 2 ». La méthode refuse donc de créditer un accord « définitif » que
-// la société n'a pas déposé comme accord important — et AST ne reçoit AUCUNE Bascule commerciale
-// malgré AT&T, Verizon, Vodafone et Rakuten. Hésitation consignée : on pourrait soutenir le
-// barreau 3 au T1 2024 (« signé mais suspendu à une licence » — le service attendait la FCC) ;
-// §3 impose la lecture la plus neutre, donc le barreau ne monte pas.
+// LE BARREAU MONTE DEUX FOIS, 2 → 3 → 4, ET LE PLAFOND PAR DÉFAUT DE §8 NE VAUT QUE POUR LES
+// ANNONCES. C'est le point qu'une première lecture, le 22 novembre 2026, avait manqué.
+//
+// Ce que les huit 8-K rubrique 1.01 déposés depuis février 2024 contiennent, chacun ouvert et sa
+// rubrique 1.01 lue : deux pactes d'actionnaires (7 juin 2024, 7 février 2025), trois conventions
+// de placement d'actions au fil de l'eau (5 septembre 2024, 13 mai 2025, 7 octobre 2025 —
+// « Equity Distribution Agreement », textuellement) et trois pièces de l'acquisition du spectre
+// Ligado, où AST est l'ACHETEUR (7 janvier, 24 mars et 26 juin 2025). AUCUN accord côté client.
+// Donc les accords commerciaux annoncés — « 6-year definitive commercial agreement » avec AT&T en
+// mai 2024, « definitive commercial agreement through 2034 » avec Vodafone en mars 2025 — restent
+// plafonnés au barreau 2 : « par défaut, une ANNONCE qui n'a pas donné lieu au dépôt d'un 8-K
+// rubrique 1.01 ne dépasse pas le barreau 2 ».
+//
+// Mais le plafond porte sur des annonces, et les COMPTES ne sont pas des annonces. Le 10-K de
+// l'exercice 2024, déposé le 3 mars 2025 — la veille du communiqué du T4 2024, donc admissible
+// (précision 4) —, porte trois faits que le barreau 3 nomme mot pour mot :
+//  · « As of December 31, 2024, $42.0 million of contract liabilities were recorded for ADVANCE
+//    PAYMENTS RECEIVED but associated performance obligations not yet satisfied related to the
+//    Company's SpaceMobile Service and resale of gateway equipment. There were NO contract
+//    liabilities as of December 31, 2023. » → « prépaiement », et apparu dans l'exercice.
+//  · « Verizon will make (i) an initial $20.0 million commercial payment for prepaid service
+//    revenue […] and (ii) a second $45.0 million commercial payment ». → prépaiement encore.
+//  · « AST LLC and AT&T entered into the AT&T Commercial Agreement for AST LLC to provide, and
+//    AT&T TO PURCHASE access to and utilize our network ». → obligation d'achat, mais le service
+//    attendait encore l'autorisation de la FCC : « signé mais suspendu à […] une licence ».
+// Les deux membres du barreau 3 — prépaiement ET accord définitif sous conditions — sont donc
+// réunis au T4 2024. Le barreau 3, et non 4 : §8 réserve le 4 au « contrat ferme », et une
+// obligation d'achat suspendue à une licence n'est pas ferme.
+//
+// LA CONDITION TOMBE AU T1 2026. Le communiqué du 11 mai 2026 : « FCC authorizes commercial
+// SpaceMobile Service in the United States with grant of Supplemental Coverage from Space ».
+// L'obligation d'achat d'AT&T n'est plus suspendue à une licence → barreau 4, et la BASCULE
+// COMMERCIALE est émise ce jour-là. Première du rejeu.
+//
+// LE BARREAU 5 N'EST PAS ATTEINT, et c'est la société qui le dit. Il exige un chiffre d'affaires
+// « lié à la thèse » ; or AST répète dans chaque dépôt, jusqu'au T3 2026 inclus : « to date, the
+// Company has not generated any revenues from its SpaceMobile Service ». Ses 42 millions du
+// T3 2026 sont 20,6 de passerelles revendues aux opérateurs et 21,8 de prestations pour l'État
+// américain — de l'argent reçu de plusieurs clients, mais pas du service de la thèse.
 //
 // D1 N'EST RELEVÉ QUE LÀ OÙ UN ÉNONCÉ IMPRIMÉ FIXE LE COMPTE DU TRIMESTRE. AST ne publie ni
 // décompte trimestriel de lancements, ni total en orbite à la date de clôture. La règle tenue,
@@ -191,21 +211,21 @@ const ASTS = [
   { date: '2024-08-14', trimestre: 'T2 2024', ca: 900, caAnPasse: 0, cout: undefined, op: -62993, opAnPasse: -50380, unites: 0, barreau: 2, statut: 'non-publie' },
   // Les cinq premiers Block 1 BlueBird lancés le 12 septembre 2024 : premières livraisons après zéro.
   { date: '2024-11-14', trimestre: 'T3 2024', ca: 1100, caAnPasse: 0, cout: undefined, op: -65546, opAnPasse: null, unites: 5, barreau: 2, statut: 'non-publie' },
-  { date: '2025-03-04', trimestre: 'T4 2024', ca: 1918, caAnPasse: 0, cout: undefined, op: -58724, opAnPasse: -60878, unites: 0, barreau: 2, statut: 'non-publie' },
+  { date: '2025-03-04', trimestre: 'T4 2024', ca: 1918, caAnPasse: 0, cout: undefined, op: -58724, opAnPasse: -60878, unites: 0, barreau: 3, statut: 'non-publie' },
   // Première prévision chiffrée : « revenue of $50.0 million to $75.0 million in the second half 2025 ».
-  { date: '2025-05-12', trimestre: 'T1 2025', ca: 718, caAnPasse: 500, cout: undefined, op: -62963, opAnPasse: -55500, unites: 0, barreau: 2, guidance: g('2025-S2', 50000, 75000) },
+  { date: '2025-05-12', trimestre: 'T1 2025', ca: 718, caAnPasse: 500, cout: undefined, op: -62963, opAnPasse: -55500, unites: 0, barreau: 3, guidance: g('2025-S2', 50000, 75000) },
   // « No launches occurred during Q2 2025 » : zéro énoncé, mais le trimestre précédent ne l'était pas.
-  { date: '2025-08-11', trimestre: 'T2 2025', ca: 1156, caAnPasse: 900, cout: undefined, op: -72797, opAnPasse: -62993, unites: 0, barreau: 2, guidance: g('2025-S2', 50000, 75000) },
+  { date: '2025-08-11', trimestre: 'T2 2025', ca: 1156, caAnPasse: 900, cout: undefined, op: -72797, opAnPasse: -62993, unites: 0, barreau: 3, guidance: g('2025-S2', 50000, 75000) },
   // Une ligne de coût des ventes apparaît ici (5 511) : le garde-fou devient applicable.
-  { date: '2025-11-10', trimestre: 'T3 2025', ca: 14739, caAnPasse: 1100, cout: 5511, op: -79676, opAnPasse: -65546, unites: 0, barreau: 2, guidance: g('2025-S2', 50000, 75000) },
+  { date: '2025-11-10', trimestre: 'T3 2025', ca: 14739, caAnPasse: 1100, cout: 5511, op: -79676, opAnPasse: -65546, unites: 0, barreau: 3, guidance: g('2025-S2', 50000, 75000) },
   // Coût des ventes du trimestre : 35 216 de l'exercice moins 5 511 des neuf mois publiés.
   // Aucune prévision chiffrée pour 2026 (« revenue expected to grow »), aucune date de service : D3 muet.
-  { date: '2026-03-02', trimestre: 'T4 2025', ca: 54305, caAnPasse: 1918, cout: 29705, op: -72277, opAnPasse: -58724, unites: 1, barreau: 2, statut: 'non-publie' },
-  { date: '2026-05-11', trimestre: 'T1 2026', ca: 14735, caAnPasse: 718, cout: 11649, op: -149412, opAnPasse: -62963, unites: null, barreau: 2, guidance: g(2026, 150000, 200000) },
+  { date: '2026-03-02', trimestre: 'T4 2025', ca: 54305, caAnPasse: 1918, cout: 29705, op: -72277, opAnPasse: -58724, unites: 1, barreau: 3, statut: 'non-publie' },
+  { date: '2026-05-11', trimestre: 'T1 2026', ca: 14735, caAnPasse: 718, cout: 11649, op: -149412, opAnPasse: -62963, unites: null, barreau: 4, guidance: g(2026, 150000, 200000) },
   // « Orbital launch of BlueBird 8-13 marks six spacecraft launched within 50 days » : six
   // satellites à cheval sur la clôture du 30 juin, sans aucune répartition publiée. Non publié.
-  { date: '2026-08-10', trimestre: 'T2 2026', ca: 31500, caAnPasse: 1156, cout: 23567, op: -297597, opAnPasse: -72797, unites: null, barreau: 2, guidance: g(2026, 150000, 200000) },
-  { date: '2026-11-09', trimestre: 'T3 2026', ca: 42321, caAnPasse: 14739, cout: 25314, op: -168705, opAnPasse: -79676, unites: null, barreau: 2, guidance: g(2026, 150000, 200000) },
+  { date: '2026-08-10', trimestre: 'T2 2026', ca: 31500, caAnPasse: 1156, cout: 23567, op: -297597, opAnPasse: -72797, unites: null, barreau: 4, guidance: g(2026, 150000, 200000) },
+  { date: '2026-11-09', trimestre: 'T3 2026', ca: 42321, caAnPasse: 14739, cout: 25314, op: -168705, opAnPasse: -79676, unites: null, barreau: 4, guidance: g(2026, 150000, 200000) },
 ];
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -721,7 +741,24 @@ const LUES = [
     ca_these: { valeur: 'Unités livrées — satellites mis en orbite dans le trimestre', source: ASTS_SRC['2026-08-10'] },
     indicateur_demande: { type: 'barreau', valeur: 'Barreau d’engagement (§8), plafonné à 2 faute de 8-K rubrique 1.01 côté client', source: ASTS_SRC['2026-11-09'] },
     publications: seriePreRevenus(ASTS, ASTS_SRC),
-    evenements_commerciaux: [],
+    // §8 : « le classement d'un événement est fait à la main, avec sa source ».
+    evenements_commerciaux: [
+      {
+        date: '2024-04-01', barreau: 2,
+        intitule: 'Accords commerciaux annoncés avec AT&T, Google et Vodafone, sans dépôt de 8-K rubrique 1.01 — plafond par défaut de §8',
+        source: ASTS_SRC['2024-04-01'],
+      },
+      {
+        date: '2025-03-03', barreau: 3,
+        intitule: '42,0 millions de paiements reçus d’avance au 31 décembre 2024 pour le service SpaceMobile et la revente de passerelles (aucun au 31 décembre 2023), accords définitifs AT&T et Verizon suspendus à l’autorisation réglementaire — « prépaiement » et « signé mais suspendu à […] une licence », les deux termes du barreau 3',
+        source: src('10-K', '2025-03-03', `${ARCH}/1780312/000095017025030909/asts-20241231.htm`),
+      },
+      {
+        date: '2026-05-11', barreau: 4,
+        intitule: 'La FCC autorise le service commercial SpaceMobile aux États-Unis (Supplemental Coverage from Space) : l’obligation d’achat d’AT&T n’est plus suspendue à une licence — barreau 4, contrat ferme',
+        source: ASTS_SRC['2026-05-11'],
+      },
+    ],
   },
   {
     id: 'globalstar', nom: 'Globalstar', archetype: 'plateforme',

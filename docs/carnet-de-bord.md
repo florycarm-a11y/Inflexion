@@ -52,7 +52,7 @@ Ce qui invaliderait le rejeu, et donc ce qu'il ne faut pas faire : changer un fi
 | Garmin | 4,662 % | industriel | 12 | 2 Bascules (T1 2024, T2 2025) |
 | Virgin Galactic | 3,874 % | pré-revenus | 12 | aucune alerte |
 | Planet Labs | 2,642 % | plateforme | 11 | 1 Bascule (2025-06-04) |
-| AST SpaceMobile | 1,605 % | pré-revenus | 12 | 1 Bascule (T4 2025), aucune Bascule commerciale |
+| AST SpaceMobile | 1,605 % | pré-revenus | 12 | Bascule (T4 2025) + **Bascule commerciale** (T1 2026) |
 
 **Lecture dans l'ordre des poids du dépôt** — aucune règle ne l'impose, mais l'ordre publié met la lecture à l'abri de tout soupçon de tri. **Reste 9 sociétés** : Viasat, Iridium, RTX, Comcast, L3Harris, Honeywell, Lockheed Martin, Northrop Grumman, Boeing. Rocket Lab compte comme lue (sa fiche publique porte sa série). Ordre de grandeur annoncé au protocole : 150 à 200 communiqués en tout.
 
@@ -84,7 +84,7 @@ Le bilan du rejeu — précision et rappel de la Bascule et de la Rechute, soci�
 - **D2 peut être muette par RÉGULARITÉ, pas seulement par absence.** Les abonnés de Sirius XM s'érodent de −1,4 % à 0 % par an sans jamais accélérer ni ralentir de plus d'un point. Or D2 mesure une croissance DE croissance : sur une série qui décline régulièrement, elle ne bouge jamais. Onze lignes « stable » d'affilée.
 - **La méthode n'a aucune règle de périmètre.** La cession de DISH TV fait lire −69 % à D1 pour une raison qui n'est pas la thèse.
 - **Ambiguïté D1/D2 relevée le 2026-11-21** : D1 parle du « CA de la thèse », D2 du « CA du trimestre » sans qualificatif. D2 et le garde-fou sont calculés sur les totaux, D1 sur le segment.
-- **§8 refuse de créditer un accord « définitif » non déposé** (AST : AT&T, Vodafone, Verizon, Rakuten annoncés, aucun 8-K 1.01 côté client → barreau plafonné à 2). C'est un résultat, pas un défaut.
+- **Le plafond par défaut de §8 ne vaut que pour les ANNONCES, pas pour les comptes.** Relevé le 2026-11-23 après une mise en cause de Flo. Les accords commerciaux d'AST annoncés sans 8-K 1.01 restent au barreau 2 ; mais le 10-K porte « $42.0 million of contract liabilities […] for advance payments received » et une obligation d'achat d'AT&T suspendue à une licence — les deux membres du barreau 3, mot pour mot. Puis la FCC autorise le service commercial au T1 2026 : la condition tombe, barreau 4, **Bascule commerciale**. Un chiffre inscrit au bilan n'est pas une annonce, et le plafond ne le touche pas.
 
 ### Deux choix pris faute de réponse, faciles à défaire
 
