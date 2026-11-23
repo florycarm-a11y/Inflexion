@@ -255,6 +255,92 @@ const GSAT = [
   { date: '2026-11-05', trimestre: 'T3 2026', caThese: 65386, caTheseAnPasse: 69635, ca: 70903, caAnPasse: 73845, cout: 24939, op: 7611, opAnPasse: 10156, croissanceClients: croissance(808739, 783544), guidance: null },
 ];
 
+// ═════════════════════════════════════════════════════════════════════════════
+// ECHOSTAR (SATS) — plateforme — première ligne de l'univers (8,391 %)
+//
+// AUCUN 8-K RUBRIQUE 2.02. EchoStar ne dépose pas ses communiqués de résultats : elle publie et
+// dépose le 10-Q ou le 10-K le même jour. La précision 4 l'admet — « un 10-Q ou un 10-K sert s'il
+// est déposé au plus tard le jour de la publication » — et la parenthèse de §3 décrit l'usage
+// américain, elle ne l'exige pas. La date de chaque ligne est donc celle du dépôt périodique.
+// Douze dépôts entre le 1er février 2024 et aujourd'hui, donc douze lignes. Le 10-K/A du
+// 30 avril 2026 est un amendement : il ne crée pas de ligne.
+//
+// SOCIÉTÉ EN RESTRUCTURATION VIOLENTE, et le rejeu ne l'écarte pas pour autant :
+//  · Fusion inversée avec DISH au 31 décembre 2023 : DISH est le prédécesseur comptable, donc
+//    l'historique présenté passe de 0,4 à 4,1 milliards par trimestre. La publication qui précède
+//    la première ligne porte sur une AUTRE entité — comparer sa croissance à celle de la première
+//    ligne mesurerait la fusion, pas l'activité. D1 et D2 sont donc non publiés sur la première
+//    ligne, faute de valeur précédente comparable (§4, « pas de valeur précédente »).
+//  · Dépréciation de 16,6 milliards au T3 2025 (abandon du réseau 5G après la cession du spectre).
+//    D4 y lit une marge d'exploitation de −460 % : c'est ce que le document imprime.
+//  · Cession de DISH TV en 2026 : au T3 2026 le chiffre d'affaires passe de 3,61 à 1,13 milliard
+//    contre un comparatif NON retraité. D1 y lit −69 %. La méthode n'a aucune règle de périmètre
+//    et en inventer une au milieu d'un rejeu l'invaliderait : le chiffre est consigné tel quel, et
+//    le constat va au bilan du rejeu.
+//
+// CA DE LA THÈSE : le chiffre d'affaires TOTAL, par le repli de §2 (« à défaut, le chiffre
+// d'affaires total »). Le segment satellite ne survit pas à la série : le 10-K de février 2024
+// présente quatre segments dont « Broadband and Satellite Services », le 10-Q de novembre 2026
+// n'en présente plus qu'UN SEUL. Un segment qui cesse d'être publié ne peut pas porter D1 sur
+// douze trimestres, et §2 interdit de remplacer un paramètre en cours de route.
+//
+// INDICATEUR DE DEMANDE : le total des abonnés de fin de période des trois catégories publiées
+// (Pay-TV, sans-fil, haut débit). Aucun carnet n'existe dans une activité d'abonnement. Au
+// T3 2026, Pay-TV et haut débit TOMBENT À ZÉRO — cédés — et l'indicateur tel qu'il a été fixé
+// cesse d'exister : §2, « la dimension devient non publié à partir de là. On ne le remplace pas ».
+//
+// LES QUATRIÈMES TRIMESTRES DE 2024 ET 2025 NE SONT PAS PUBLIÉS COMME TRIMESTRES. Vérifié sur les
+// trois 10-K : celui de février 2024 porte des colonnes à trois mois (reliquat de la présentation
+// de fusion), les deux suivants n'en portent aucune, et le balisage XBRL le confirme — aucun fait
+// de 90 jours clos le 31 décembre 2024 ou 2025. Le chiffre serait calculable par soustraction
+// (exercice moins neuf mois), mais rien ne permet de le vérifier contre un montant imprimé, à la
+// différence de Globalstar et d'AST. Donc : CA, résultat d'exploitation et coût des ventes
+// « non publié » sur ces deux lignes, et D1 non publié sur les lignes SUIVANTES, qui n'ont plus
+// de croissance précédente. Les abonnés, eux, sont des soldes à une date : ils restent publiés.
+//
+// D3 EST MUET SUR LES DOUZE LIGNES. EchoStar ne donne aucune prévision chiffrée — contrôlé sur les
+// dépôts ; la seule occurrence de « revenue guidance » rencontrée est du jargon comptable
+// (ASC 606). La clause du jalon daté de §5 ne vaut que pour un pré-revenus, donc elle ne joue pas.
+//
+// Montants en milliers de dollars, balisés dans le dépôt du jour. Abonnés en MILLIERS, tels
+// qu'imprimés en millions à trois décimales dans la table de chaque dépôt.
+// ═════════════════════════════════════════════════════════════════════════════
+
+const SATS_SRC = {
+  '2024-02-29': src('10-K', '2024-02-29', `${ARCH}/1415404/000155837024002209/tmb-20231231x10k.htm`),
+  '2024-05-08': src('10-Q', '2024-05-08', `${ARCH}/1415404/000155837024007171/tmb-20240331x10q.htm`),
+  '2024-08-09': src('10-Q', '2024-08-09', `${ARCH}/1415404/000155837024011672/tmb-20240630x10q.htm`),
+  '2024-11-12': src('10-Q', '2024-11-12', `${ARCH}/1415404/000155837024015122/tmb-20240930x10q.htm`),
+  '2025-02-27': src('10-K', '2025-02-27', `${ARCH}/1415404/000155837025001663/tmb-20241231x10k.htm`),
+  '2025-05-09': src('10-Q', '2025-05-09', `${ARCH}/1415404/000155837025007050/tmb-20250331x10q.htm`),
+  '2025-08-01': src('10-Q', '2025-08-01', `${ARCH}/1415404/000155837025009923/tmb-20250630x10q.htm`),
+  '2025-11-06': src('10-Q', '2025-11-06', `${ARCH}/1415404/000110465925107277/tmb-20250930x10q.htm`),
+  '2026-03-02': src('10-K', '2026-03-02', `${ARCH}/1415404/000110465926021817/tmb-20251231x10k.htm`),
+  '2026-05-11': src('10-Q', '2026-05-11', `${ARCH}/1415404/000110465926058150/sats-20260331x10q.htm`),
+  '2026-08-03': src('10-Q', '2026-08-03', `${ARCH}/1415404/000110465926089370/sats-20260630x10q.htm`),
+  '2026-11-03': src('10-Q', '2026-11-03', `${ARCH}/1415404/000110465926121675/sats-20260930x10q.htm`),
+};
+
+// cout = coût des services + coût des ventes de matériel, les deux lignes du compte de résultat.
+const SATS = [
+  // Prédécesseur comptable changé : aucune valeur précédente comparable (D1 et D2 non publiés).
+  { date: '2024-02-29', trimestre: 'T4 2023', ca: 4162596, caAnPasse: 4533017, cout: null, op: -852126, opAnPasse: 427514, croissanceClients: croissance(16908, 18961), guidance: null },
+  { date: '2024-05-08', trimestre: 'T1 2024', ca: 4014843, caAnPasse: 4387666, cout: 2920265, op: -15244, opAnPasse: 353338, croissanceClients: croissance(16453, 18288), guidance: null },
+  { date: '2024-08-09', trimestre: 'T2 2024', ca: 3952751, caAnPasse: 4356462, cout: 2915571, op: -65369, opAnPasse: 252229, croissanceClients: croissance(16310, 17751), guidance: null },
+  { date: '2024-11-12', trimestre: 'T3 2024', ca: 3890984, caAnPasse: 4108874, cout: 2931173, op: -160767, opAnPasse: -31349, croissanceClients: croissance(15927, 17403), guidance: null },
+  // 10-K sans colonne trimestrielle : le trimestre n'est pas publié. Les abonnés, eux, le sont.
+  { date: '2025-02-27', trimestre: 'T4 2024', ca: null, caAnPasse: null, cout: null, op: null, opAnPasse: null, croissanceClients: croissance(15656, 16908), guidance: null },
+  { date: '2025-05-09', trimestre: 'T1 2025', ca: 3869758, caAnPasse: 4014843, cout: 2871706, op: -88132, opAnPasse: -15244, croissanceClients: croissance(15395, 16453), guidance: null },
+  { date: '2025-08-01', trimestre: 'T2 2025', ca: 3724959, caAnPasse: 3952751, cout: 2815818, op: -213408, opAnPasse: -65369, croissanceClients: croissance(15284, 16310), guidance: null },
+  // Dépréciation de 16,6 milliards : marge d'exploitation de −460 %, telle qu'imprimée.
+  { date: '2025-11-06', trimestre: 'T3 2025', ca: 3614258, caAnPasse: 3890984, cout: 2761887, op: -16641875, opAnPasse: -160767, croissanceClients: croissance(15469, 15927), guidance: null },
+  { date: '2026-03-02', trimestre: 'T4 2025', ca: null, caAnPasse: null, cout: null, op: null, opAnPasse: null, croissanceClients: croissance(15248, 15656), guidance: null },
+  { date: '2026-05-11', trimestre: 'T1 2026', ca: 3667489, caAnPasse: 3869758, cout: 2535175, op: 392847, opAnPasse: -88132, croissanceClients: croissance(14840, 15395), guidance: null },
+  { date: '2026-08-03', trimestre: 'T2 2026', ca: 3576164, caAnPasse: 3724959, cout: 2347121, op: 512938, opAnPasse: -213408, croissanceClients: croissance(14388, 15284), guidance: null },
+  // Pay-TV et haut débit cédés : l'indicateur de demande cesse d'exister (§2), D2 non publié.
+  { date: '2026-11-03', trimestre: 'T3 2026', ca: 1127611, caAnPasse: 3614258, cout: 650839, op: 147750, opAnPasse: -16641875, croissanceClients: null, guidance: null },
+];
+
 // ── Séries ───────────────────────────────────────────────────────────────────
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -415,6 +501,14 @@ const LUES = [
     ca_these: { valeur: 'Chiffre d’affaires de service, hors ventes de terminaux', source: GSAT_SRC['2026-11-05'] },
     indicateur_demande: { type: 'clients', valeur: 'Abonnés moyens du trimestre, total des trois catégories de détail', source: GSAT_SRC['2026-11-05'] },
     publications: serie(GSAT, GSAT_SRC, { caThese: true, indicateurDemande: 'clients' }),
+    evenements_commerciaux: [],
+  },
+  {
+    id: 'echostar', nom: 'EchoStar', archetype: 'plateforme',
+    recit: 'Spatial — satellites de télévision et de haut débit, spectre sans fil',
+    ca_these: { valeur: 'Chiffre d’affaires total — le segment satellite ne survit pas à la série', source: SATS_SRC['2026-11-03'] },
+    indicateur_demande: { type: 'clients', valeur: 'Abonnés de fin de période, total des catégories publiées', source: SATS_SRC['2026-11-03'] },
+    publications: serie(SATS, SATS_SRC, { indicateurDemande: 'clients' }),
     evenements_commerciaux: [],
   },
 ];
