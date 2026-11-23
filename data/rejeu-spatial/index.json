@@ -3,7 +3,7 @@
   "protocole": "docs/tracker-univers-spatial.md",
   "methode_version": "1.3",
   "univers_total": 18,
-  "lues": 7,
+  "lues": 8,
   "publie": false,
   "societes": [
     {
@@ -180,6 +180,31 @@
       },
       "publications": 12,
       "fichier": "data/rejeu-spatial/sirius-xm.json"
+    },
+    {
+      "id": "garmin",
+      "nom": "Garmin",
+      "archetype": "industriel",
+      "recit": "Spatial — appareils de positionnement par satellite",
+      "ca_these": {
+        "valeur": "Chiffre d’affaires total — le positionnement traverse les cinq segments",
+        "source": {
+          "type": "8-K",
+          "date": "2026-10-28",
+          "url": "https://www.sec.gov/Archives/edgar/data/1121788/000119312526435066/grmn-ex99_1.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "non-publie",
+        "valeur": "Ni commandes, ni carnet, ni nombre de clients publiés",
+        "source": {
+          "type": "8-K",
+          "date": "2026-10-28",
+          "url": "https://www.sec.gov/Archives/edgar/data/1121788/000119312526435066/grmn-ex99_1.htm"
+        }
+      },
+      "publications": 12,
+      "fichier": "data/rejeu-spatial/garmin.json"
     }
   ]
 }

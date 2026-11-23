@@ -478,6 +478,66 @@ const SIRI = [
   { date: '2026-10-29', trimestre: 'T3 2026', ca: 2153, caAnPasse: 2159, cout: 2153 - 1136, op: 479, opAnPasse: 493, croissanceClients: croissance(31260, 31235), guidance: g(2026, 8550, 8550) },
 ];
 
+// ═════════════════════════════════════════════════════════════════════════════
+// GARMIN (GRMN) — industriel — exercice 52/53 semaines, clos fin décembre
+//
+// UN 8-K MAL INDEXÉ, ET IL FALLAIT LE VOIR. Garmin n'a déposé que onze 8-K rubrique 2.02 pour
+// douze trimestres : le communiqué du T1 2025, déposé le 30 avril 2025, porte la rubrique 2.01
+// (« réalisation d'une acquisition ou d'une cession ») et non 2.02. Son annexe 99.1 est pourtant
+// bien le communiqué de résultats du trimestre. Filtrer sur la seule rubrique 2.02 aurait fait
+// manquer une publication et décalé toute la série : la liste des dépôts se contrôle, elle ne se
+// filtre pas. Douze publications, douze lignes.
+//
+// CA DE LA THÈSE : le chiffre d'affaires TOTAL, par le repli de §2. Garmin figure dans l'univers
+// pour le positionnement par satellite, qui traverse ses cinq segments (forme, plein air,
+// aviation, marine, première monte) sans en être aucun.
+//
+// D2 EST MUET SUR LES DOUZE LIGNES : Garmin ne publie ni commandes, ni carnet, ni nombre de
+// clients ou d'abonnés. Troisième branche de §2. Troisième société du rejeu dans ce cas, après
+// EchoStar et Trimble.
+//
+// LES PRÉVISIONS SONT DES POINTS, FORMULÉS DE QUATRE FAÇONS DIFFÉRENTES selon le trimestre :
+// « revenue of approximately $X billion », « guidance of approximately $X billion revenue »,
+// « expectations for revenue to approximately $X billion », ou une case de tableau. Toutes
+// relèvent de §5 à l'identique ; seule l'extraction a dû s'adapter. Un garde-fou de lecture a été
+// posé : un chiffre d'affaires annuel de Garmin vaut au moins 5,75 milliards quand un trimestre
+// n'a jamais dépassé 2,2 — tout montant sous 4 milliards n'est donc pas une prévision annuelle.
+//
+// Montants en MILLIERS de dollars, tels qu'imprimés. Les trois trimestres de clôture viennent de
+// la colonne trimestrielle du communiqué annuel ; les neuf autres recoupent le 10-Q du jour.
+// ═════════════════════════════════════════════════════════════════════════════
+
+const GRMN_SRC = {
+  '2024-02-21': src('8-K', '2024-02-21', `${ARCH}/1121788/000095017024017560/grmn-ex99_1.htm`),
+  '2024-05-01': src('8-K', '2024-05-01', `${ARCH}/1121788/000095017024050880/grmn-ex99_1.htm`),
+  '2024-07-31': src('8-K', '2024-07-31', `${ARCH}/1121788/000095017024088226/grmn-ex99_1.htm`),
+  '2024-10-30': src('8-K', '2024-10-30', `${ARCH}/1121788/000095017024118579/grmn-ex99_1.htm`),
+  '2025-02-19': src('8-K', '2025-02-19', `${ARCH}/1121788/000095017025022757/grmn-ex99_1.htm`),
+  // Rubrique 2.01 au lieu de 2.02 : l'annexe 99.1 est bien le communiqué de résultats du T1 2025.
+  '2025-04-30': src('8-K', '2025-04-30', `${ARCH}/1121788/000095017025060551/grmn-ex99_1.htm`),
+  '2025-07-30': src('8-K', '2025-07-30', `${ARCH}/1121788/000095017025099874/grmn-ex99_1.htm`),
+  '2025-10-29': src('8-K', '2025-10-29', `${ARCH}/1121788/000119312525254600/grmn-ex99_1.htm`),
+  '2026-02-18': src('8-K', '2026-02-18', `${ARCH}/1121788/000119312526056025/grmn-ex99_1.htm`),
+  '2026-04-29': src('8-K', '2026-04-29', `${ARCH}/1121788/000119312526188907/grmn-ex99_1.htm`),
+  '2026-07-29': src('8-K', '2026-07-29', `${ARCH}/1121788/000119312526322113/grmn-ex99_1.htm`),
+  '2026-10-28': src('8-K', '2026-10-28', `${ARCH}/1121788/000119312526435066/grmn-ex99_1.htm`),
+};
+
+const GRMN = [
+  { date: '2024-02-21', trimestre: 'T4 2023', ca: 1482501, caAnPasse: 1306356, cout: 618352, op: 340454, opAnPasse: 267175, guidance: g(2024, 5750, 5750) },
+  { date: '2024-05-01', trimestre: 'T1 2024', ca: 1381649, caAnPasse: 1147424, cout: 579510, op: 298410, opAnPasse: 196982, guidance: g(2024, 5750, 5750) },
+  { date: '2024-07-31', trimestre: 'T2 2024', ca: 1506671, caAnPasse: 1320795, cout: 643780, op: 342027, opAnPasse: 284355, guidance: g(2024, 5950, 5950) },
+  { date: '2024-10-30', trimestre: 'T3 2024', ca: 1586022, caAnPasse: 1277531, cout: 634423, op: 437475, opAnPasse: 270369, guidance: g(2024, 6120, 6120) },
+  { date: '2025-02-19', trimestre: 'T4 2024', ca: 1822560, caAnPasse: 1482501, cout: 742634, op: 516082, opAnPasse: 340454, guidance: g(2025, 6800, 6800) },
+  { date: '2025-04-30', trimestre: 'T1 2025', ca: 1535099, caAnPasse: 1381649, cout: 650554, op: 332824, opAnPasse: 298410, guidance: g(2025, 6850, 6850) },
+  { date: '2025-07-30', trimestre: 'T2 2025', ca: 1814564, caAnPasse: 1506671, cout: 747552, op: 472295, opAnPasse: 342027, guidance: g(2025, 7100, 7100) },
+  { date: '2025-10-29', trimestre: 'T3 2025', ca: 1770901, caAnPasse: 1586022, cout: 724414, op: 456803, opAnPasse: 437475, guidance: g(2025, 7100, 7100) },
+  { date: '2026-02-18', trimestre: 'T4 2025', ca: 2124955, caAnPasse: 1822560, cout: 866695, op: 614154, opAnPasse: 516082, guidance: g(2026, 7900, 7900) },
+  { date: '2026-04-29', trimestre: 'T1 2026', ca: 1753489, caAnPasse: 1535099, cout: 711200, op: 431665, opAnPasse: 332824, guidance: g(2026, 7900, 7900) },
+  { date: '2026-07-29', trimestre: 'T2 2026', ca: 2022092, caAnPasse: 1814564, cout: 760070, op: 615508, opAnPasse: 472295, guidance: g(2026, 8050, 8050) },
+  { date: '2026-10-28', trimestre: 'T3 2026', ca: 1986076, caAnPasse: 1770901, cout: 728308, op: 611648, opAnPasse: 456803, guidance: g(2026, 8150, 8150) },
+];
+
 // ── Séries ───────────────────────────────────────────────────────────────────
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -662,6 +722,14 @@ const LUES = [
     ca_these: { valeur: 'Chiffre d’affaires total — le segment satellitaire n’est imprimé qu’à partir de 2026', source: SIRI_SRC['2026-10-29'] },
     indicateur_demande: { type: 'clients', valeur: 'Abonnés auto-payants SiriusXM, fin de période', source: SIRI_SRC['2026-10-29'] },
     publications: serie(SIRI, SIRI_SRC, { indicateurDemande: 'clients' }),
+    evenements_commerciaux: [],
+  },
+  {
+    id: 'garmin', nom: 'Garmin', archetype: 'industriel',
+    recit: 'Spatial — appareils de positionnement par satellite',
+    ca_these: { valeur: 'Chiffre d’affaires total — le positionnement traverse les cinq segments', source: GRMN_SRC['2026-10-28'] },
+    indicateur_demande: { type: 'non-publie', valeur: 'Ni commandes, ni carnet, ni nombre de clients publiés', source: GRMN_SRC['2026-10-28'] },
+    publications: serie(GRMN, GRMN_SRC, { indicateurDemande: 'non-publie' }),
     evenements_commerciaux: [],
   },
 ];
