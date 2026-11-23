@@ -18,7 +18,7 @@ Entrées **les plus récentes en premier**. Titre = dates réelles de la session
 
 ---
 
-## 2026-11-21 → 2026-11-23 — Tracker d'inflexions : pivot, méthode figée, moteur, rejeu
+## 2026-11-21 → 2026-11-23 — Tracker d’inflexions : pivot, méthode figée, moteur, rejeu
 
 Branche de travail à la fin de la session : **`feat/rejeu-spatial-lot1`**, 6 commits, **non fusionnée**.
 
@@ -41,17 +41,22 @@ Ce qui invaliderait le rejeu, et donc ce qu'il ne faut pas faire : changer un fi
 
 ### Travail en cours, et son point de reprise
 
-**5 sociétés lues sur 18, 59 publications.** Engendrées par `scripts/tracker-rejeu-spatial.mjs`.
+**8 sociétés lues sur 18, 95 publications.** Engendrées par `scripts/tracker-rejeu-spatial.mjs`.
 
-| Société | Archétype | Lignes | Résultat |
-|---|---|---:|---|
-| Virgin Galactic | pré-revenus | 12 | aucune alerte |
-| Planet Labs | plateforme | 11 | 1 Bascule (2025-06-04) |
-| AST SpaceMobile | pré-revenus | 12 | 1 Bascule (2026-08-10), aucune Bascule commerciale |
-| Globalstar | plateforme | 12 | 6 alertes, 5 changements de régime |
-| EchoStar | plateforme | 12 | 2 Signaux faibles, aucune Bascule |
+| Société | Poids | Archétype | Lignes | Résultat |
+|---|---:|---|---:|---|
+| EchoStar | 8,391 % | plateforme | 12 | 2 Signaux faibles, aucune Bascule |
+| Trimble | 5,280 % | plateforme | 12 | Rechute, Signal faible, Bascule, Rechute |
+| Globalstar | 5,249 % | plateforme | 12 | 6 alertes, 5 changements de régime |
+| Sirius XM | 5,245 % | plateforme | 12 | Rechute (T3 2024), Bascule (T3 2025) |
+| Garmin | 4,662 % | industriel | 12 | 2 Bascules (T1 2024, T2 2025) |
+| Virgin Galactic | 3,874 % | pré-revenus | 12 | aucune alerte |
+| Planet Labs | 2,642 % | plateforme | 11 | 1 Bascule (2025-06-04) |
+| AST SpaceMobile | 1,605 % | pré-revenus | 12 | 1 Bascule, aucune Bascule commerciale |
 
-**Reste 12 sociétés**, à lire dans l'ordre des poids du dépôt : Trimble, Sirius XM, Garmin, Viasat, Iridium, RTX, Comcast, L3Harris, Honeywell, Lockheed Martin, Northrop Grumman, Boeing. Rocket Lab compte comme lue (sa fiche publique porte sa série). Ordre de grandeur annoncé au protocole : 150 à 200 communiqués en tout.
+**Lecture dans l'ordre des poids du dépôt** — aucune règle ne l'impose, mais l'ordre publié met la lecture à l'abri de tout soupçon de tri. **Reste 9 sociétés** : Viasat, Iridium, RTX, Comcast, L3Harris, Honeywell, Lockheed Martin, Northrop Grumman, Boeing. Rocket Lab compte comme lue (sa fiche publique porte sa série). Ordre de grandeur annoncé au protocole : 150 à 200 communiqués en tout.
+
+**Outillage rodé, dans le bac à sable de session** : `sonde.mjs <CIK>` (dépôts, faits XBRL groupés par dépôt, lignes de communiqué portant carnet/abonnés/prévision), `tab.py` et `txt.py` (les deux passes d'extraction), un extracteur par société, `moteur.mjs <id>` pour dérouler le moteur sur une fiche. Les huit premières sociétés ont été lues **sans aucun appel de lecture de modèle sur les communiqués**. S'il a disparu, le réécrire à partir de cette entrée : le gain est considérable.
 
 Le bilan du rejeu — précision et rappel de la Bascule et de la Rechute, sociétés sans aucune alerte — ne s'écrit **qu'à la fin**, et se publie même s'il est mauvais.
 
@@ -62,13 +67,19 @@ Le bilan du rejeu — précision et rappel de la Bascule et de la Rechute, soci�
 - **Travailler au millier exact, jamais au million arrondi.** Quatre lignes du rejeu franchissent le seuil d'un point à moins de 0,05 près.
 - **Un montant imprimé « over $900 Million » est non publié** (Planet Labs, carnet au 31/01/2026) : la précision 3 interdit l'arrondi intermédiaire dans une variation.
 - **§2 et §5 n'ont pas le même grain.** §5 écrit « aux publications **où** » → décision par ligne. §2 écrit « fixés **quand** la société entre […] on ne le remplace pas » → paramètre par société. Avoir codé D2 en hiérarchie par ligne fut une erreur, corrigée.
-- **Lire sans appels de lecture de modèle, quand c'est possible** : API XBRL pour les agrégats, `FilingSummary.xml` → fichiers `R*.htm` (petits et tabulaires) pour les notes de segment et les comptes de résultat, regex sur le texte du dépôt pour les tables d'abonnés. Méthode rodée sur EchoStar, applicable aux douze restantes.
+- **Lire sans appels de lecture de modèle, quand c'est possible** : API XBRL pour les agrégats, `FilingSummary.xml` → fichiers `R*.htm` (petits et tabulaires) pour les notes de segment et les comptes de résultat, regex sur le texte du dépôt pour les tables d'abonnés.
+- **La liste des dépôts se CONTRÔLE, elle ne se filtre pas.** Garmin a déposé le communiqué de résultats du T1 2025 sous la rubrique **2.01** et non 2.02. Filtrer sur la seule rubrique 2.02 aurait fait manquer une publication et décalé toute la série, croissances précédentes comprises. Compter les dépôts contre le nombre de trimestres attendus, et ouvrir tout écart.
+- **Deux comptes de résultat dans le même communiqué, aux mêmes libellés.** Sirius XM imprime le GAAP puis un tableau « ajusté » d'où sont exclus les règlements juridiques et la rémunération en actions. Prendre la première occurrence d'un libellé y ramène le chiffre ajusté — que §3 interdit (« les résultats ajustés ne servent à aucune dimension »). Vérifier contre le balisage XBRL, qui est toujours GAAP.
+- **Espaces insécables à l'intérieur des nombres** : les communiqués écrivent `$3,670\xa0million`, ce qui fait échouer toute regex sur `\d+ million`. Normaliser `[^\S\t]` avant de chercher.
+- **Les cellules de tableau contiennent des `<div>`** : couper aux balises de bloc casse les lignes de tableau. D'où deux passes — une pour la prose, une qui ne coupe qu'aux fins de ligne de tableau. Certains rendus (Garmin) vont plus loin et mettent **une valeur par ligne** : extraction positionnelle.
+- **Un quatrième trimestre n'est pas toujours publié comme trimestre.** Garmin, Globalstar, AST et Sirius XM impriment une colonne trimestrielle dans leur communiqué annuel ; EchoStar non, et son 10-K ne balise aucun fait de 90 jours clos le 31 décembre. Règle tenue : lire le trimestre imprimé, ne le dériver que si un montant imprimé permet de vérifier la dérivation.
 - **`npm test` n'est lancé par aucun workflow.** Le lancer à la main avant chaque PR, et vérifier visuellement, **onglet actif** (les Canvas ne se dessinent pas en arrière-plan).
 
 ### Constats à verser au bilan — candidats à une v1.4, pas des correctifs
 
 - **Globalstar bat la mesure** : une alerte tous les deux trimestres, cinq changements de régime en douze. CA en gros reconnu par à-coups, marge d'exploitation qui change de signe. Question d'hystérésis des régimes.
-- **EchoStar ne guide pas, donc D3 est muette sur douze lignes** : la société joue à trois dimensions sur quatre et une Bascule devient presque inatteignable. **La méthode est structurellement moins sensible chez les sociétés qui ne guident pas** — un biais que seul un univers non choisi pouvait révéler.
+- **TROIS SOCIÉTÉS SUR HUIT NE LAISSENT QUE TROIS DIMENSIONS À LA MÉTHODE**, pour trois raisons différentes, et c'est le constat le plus solide du rejeu à ce stade. EchoStar ne donne aucune prévision chiffrée (D3 muette). Trimble ne publie ni commandes ni clients, et son carnet GAAP n'est imprimé qu'arrondi au cent millions, ce que la précision 3 interdit d'exploiter (D2 muette). Garmin ne publie aucun indicateur de demande (D2 muette). Or une Bascule exige +2 : avec trois dimensions, il faut deux hausses nettes sans aucune baisse. **La méthode est donc systématiquement moins sensible chez les sociétés qui publient peu** — un biais que seul un univers non choisi pouvait révéler, et qui se mesurera au bilan.
+- **D2 peut être muette par RÉGULARITÉ, pas seulement par absence.** Les abonnés de Sirius XM s'érodent de −1,4 % à 0 % par an sans jamais accélérer ni ralentir de plus d'un point. Or D2 mesure une croissance DE croissance : sur une série qui décline régulièrement, elle ne bouge jamais. Onze lignes « stable » d'affilée.
 - **La méthode n'a aucune règle de périmètre.** La cession de DISH TV fait lire −69 % à D1 pour une raison qui n'est pas la thèse.
 - **Ambiguïté D1/D2 relevée le 2026-11-21** : D1 parle du « CA de la thèse », D2 du « CA du trimestre » sans qualificatif. D2 et le garde-fou sont calculés sur les totaux, D1 sur le segment.
 - **§8 refuse de créditer un accord « définitif » non déposé** (AST : AT&T, Vodafone, Verizon, Rakuten annoncés, aucun 8-K 1.01 côté client → barreau plafonné à 2). C'est un résultat, pas un défaut.
