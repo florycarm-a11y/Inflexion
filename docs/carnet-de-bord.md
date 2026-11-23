@@ -52,7 +52,7 @@ Ce qui invaliderait le rejeu, et donc ce qu'il ne faut pas faire : changer un fi
 | Garmin | 4,662 % | industriel | 12 | 2 Bascules (T1 2024, T2 2025) |
 | Virgin Galactic | 3,874 % | pré-revenus | 12 | aucune alerte |
 | Planet Labs | 2,642 % | plateforme | 11 | 1 Bascule (2025-06-04) |
-| AST SpaceMobile | 1,605 % | pré-revenus | 12 | 1 Bascule, aucune Bascule commerciale |
+| AST SpaceMobile | 1,605 % | pré-revenus | 12 | 1 Bascule (T4 2025), aucune Bascule commerciale |
 
 **Lecture dans l'ordre des poids du dépôt** — aucune règle ne l'impose, mais l'ordre publié met la lecture à l'abri de tout soupçon de tri. **Reste 9 sociétés** : Viasat, Iridium, RTX, Comcast, L3Harris, Honeywell, Lockheed Martin, Northrop Grumman, Boeing. Rocket Lab compte comme lue (sa fiche publique porte sa série). Ordre de grandeur annoncé au protocole : 150 à 200 communiqués en tout.
 
@@ -66,6 +66,8 @@ Le bilan du rejeu — précision et rappel de la Bascule et de la Rechute, soci�
 - **Les communiqués impriment par endroits la perte AVANT IMPÔT** là où D4 exige la perte d'exploitation (AST SpaceMobile, Globalstar). Reconstituer par `CA − total des charges d'exploitation` balisés dans le 10-Q du jour, et **contrôler la dérivation** contre un montant imprimé ailleurs.
 - **Travailler au millier exact, jamais au million arrondi.** Quatre lignes du rejeu franchissent le seuil d'un point à moins de 0,05 près.
 - **Un montant imprimé « over $900 Million » est non publié** (Planet Labs, carnet au 31/01/2026) : la précision 3 interdit l'arrondi intermédiaire dans une variation.
+- **UN RÉSUMÉ N'EST PAS UNE LECTURE, ET UN NOM DE FICHIER N'EST PAS UN CLASSEMENT.** Relire AST SpaceMobile au mécanique a déplacé sa Bascule de trois trimestres : un résumé avait attribué au T2 2026 trois lancements que le communiqué qualifie de « recent » au 10 août, soit après la clôture du 30 juin, sans répartir les six satellites concernés. Et quatre des huit 8-K rubrique 1.01 avaient été classés d'après leurs annexes (1.1 et 5.1 = placement d'actions) sans être ouverts — classement juste au fond, faux sur l'un des quatre. Là où une alerte se joue, ouvrir la pièce.
+- **Une date de lancement POSTÉRIEURE à la clôture fixe le compte du trimestre à zéro** aussi sûrement qu'un lancement accompli le fixe à un. Quatre lignes d'AST étaient muettes à tort pour avoir cherché un décompte là où une date suffisait.
 - **§2 et §5 n'ont pas le même grain.** §5 écrit « aux publications **où** » → décision par ligne. §2 écrit « fixés **quand** la société entre […] on ne le remplace pas » → paramètre par société. Avoir codé D2 en hiérarchie par ligne fut une erreur, corrigée.
 - **Lire sans appels de lecture de modèle, quand c'est possible** : API XBRL pour les agrégats, `FilingSummary.xml` → fichiers `R*.htm` (petits et tabulaires) pour les notes de segment et les comptes de résultat, regex sur le texte du dépôt pour les tables d'abonnés.
 - **La liste des dépôts se CONTRÔLE, elle ne se filtre pas.** Garmin a déposé le communiqué de résultats du T1 2025 sous la rubrique **2.01** et non 2.02. Filtrer sur la seule rubrique 2.02 aurait fait manquer une publication et décalé toute la série, croissances précédentes comprises. Compter les dépôts contre le nombre de trimestres attendus, et ouvrir tout écart.
