@@ -2,14 +2,15 @@
 
 ## 0. Gestion du contexte
 
-- **Ce fichier doit rester ≤ 4 500 tokens** (~13 500 caractères ; mesure : `wc -c CLAUDE.md`). Plafond relevé le 2026-07-30 : l'ancien seuil de 2 000 était dépassé de 70 % et n'alertait donc plus. Avant d'ajouter, se demander si le contenu relève de la référence — auquel cas il va dans `docs/` avec un renvoi d'une ligne, comme `docs/apis.md`.
+- **Lire `docs/carnet-de-bord.md` avant de travailler** : décisions qui engagent, règles d'hygiène, travail en cours, pièges déjà payés. Y ajouter une entrée en fin de session.
+- **Ce fichier doit rester ≤ 4 500 tokens** (~13 500 caractères ; mesure : `wc -c CLAUDE.md`). Avant d'ajouter, se demander si le contenu relève de la référence — auquel cas il va dans `docs/` avec un renvoi d'une ligne, comme `docs/apis.md`.
 - Plan mode pour tout refactoring ou audit multi-fichiers ; sub-agents pour lectures de gros fichiers et grep exploratoires ; `/compact` à chaque point d'arrêt logique (préserver : chemins modifiés, erreurs, décisions, bug en cours) ; 1 session = 1 domaine.
 
 ## 1. Vue d'ensemble
 
 **Inflexion** : plateforme d'intelligence financière automatisée (analyses géopolitiques + données de marché). Agrège **15 APIs**, **163 flux RSS** ; Claude Sonnet (briefing) + Claude Haiku (classification, alertes).
 **Production** : https://inflexionhub.com/
-**Tracker d'inflexions** : règles dans `docs/tracker-methode.md` (**v1.3 figée le 2026-11-21**). Moteur : `moteurAlertes` (`tracker-modele.js`, §6 fait foi), tests = suites §13.
+**Tracker d'inflexions** : règles dans `docs/tracker-methode.md` (**v1.3 figée le 2026-11-21**, §6 fait foi, tests = suites §13) ; détail §10.
 
 ## 2. Structure
 
@@ -125,4 +126,4 @@ python bot/main.py --mock                          # Bot (simulation)
 
 ## 10. Tracker d'inflexions (chantier en cours)
 
-**Le tracker est la vitrine depuis le 2026-11-21** (PR #160 : `index.html` refondu, nav Tracker · Méthode · Expertise · Services, `tracker.html` = pure redirection). Schéma `data/tracker/`, modèle `tracker-modele.js`, fiche `tracker-vue.js`, liste React sur la home. **v1.3 figée et moteur §6 implémenté le 2026-11-21** — solde/alertes calculés à l'affichage, le validateur refuse `solde`/`alertes`/`score`/`phase` saisis. Règle : une valeur sans source ne s'affiche pas. Les anciennes Routines claude.ai doivent rester désactivées.
+**Vitrine depuis le 2026-11-21** (PR #160 ; `tracker.html` = redirection). `data/tracker/` est **engendré par `scripts/tracker-collecte-2026-11-21.mjs` : corriger le script, jamais les JSON** ; §4/§5 dans `scripts/lib/tracker-sens.mjs`, modèle et moteur §6 dans `tracker-modele.js`, fiche `tracker-vue.js`, liste React sur la home. **v1.3 figée** : solde et alertes calculés à l'affichage, saisis = refusés par le validateur. Une valeur sans source ne s'affiche pas.
