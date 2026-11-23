@@ -341,6 +341,73 @@ const SATS = [
   { date: '2026-11-03', trimestre: 'T3 2026', ca: 1127611, caAnPasse: 3614258, cout: 650839, op: 147750, opAnPasse: -16641875, croissanceClients: null, guidance: null },
 ];
 
+// ═════════════════════════════════════════════════════════════════════════════
+// TRIMBLE (TRMB) — plateforme — exercice 52/53 semaines, clos début janvier
+//
+// ARCHÉTYPE : plateforme. Au tirage, l'essentiel du chiffre d'affaires de Trimble était déjà du
+// logiciel et de l'abonnement (chiffre d'affaires récurrent annualisé de près de 2 milliards sur
+// 3,6), et sa stratégie affichée s'appelle « Connect & Scale ». Un fabricant d'antennes GNSS
+// serait un industriel ; celui-ci vend surtout des licences.
+//
+// QUATORZE 8-K RUBRIQUE 2.02, DOUZE LIGNES. Deux dépôts ne sont pas des résultats trimestriels,
+// vérifiés : le 12 avril 2024 est un RETRAITEMENT DE SEGMENTS (périodes antérieures recalculées
+// sur le nouveau découpage), le 16 septembre 2024 annonce la cession de la télématique transport.
+// Précision 2 : ni l'un ni l'autre ne crée de ligne.
+//
+// LES CHIFFRES VIENNENT DU COMMUNIQUÉ, PAS DU 10-Q. Trimble dépose ses 10-Q APRÈS le communiqué —
+// et ceux des trois premiers trimestres de 2024 ont été déposés le 16 janvier 2025, soit des mois
+// plus tard, après une revue comptable. Précision 4 : « déposé après, sa donnée est non publié
+// pour cette ligne ». Le communiqué du jour fait donc foi partout. Contrôle fait : là où le 10-Q
+// existe, ses montants balisés recoupent exactement ceux du communiqué.
+//
+// CA DE LA THÈSE : le chiffre d'affaires TOTAL, par le repli de §2. Trimble figure dans l'univers
+// pour le positionnement par satellite, qui n'est le périmètre d'AUCUN de ses segments ; et ses
+// segments ont été redécoupés en 2024, ce qui interdirait de toute façon une série de douze
+// trimestres sur l'un d'eux.
+//
+// D2 EST MUET SUR LES DOUZE LIGNES, et il faut dire pourquoi. Trimble ne publie ni commandes ni
+// nombre de clients. Son indicateur phare est le chiffre d'affaires récurrent annualisé, qui
+// n'appartient pas à la liste fermée de §2 (« commandes ou carnet de commandes ; à défaut, nombre
+// de clients ou d'abonnés ; sinon non publié »). Reste son carnet au sens GAAP, les obligations de
+// prestation restantes — mais il n'est publié qu'arrondi : « approximately $1.7 billion ». Pour un
+// chiffre d'affaires trimestriel de 0,9 milliard, un arrondi au cent millions déplace le ratio de
+// 0,11 quand les seuils valent 0,05 : l'arrondi déciderait de l'alerte. Précision 3 l'interdit.
+// Donc troisième branche de §2 : indicateur « non publié ». Trimble ne laisse que trois dimensions
+// à la méthode — comme EchoStar, pour une raison toute différente.
+//
+// Montants en MILLIONS de dollars, à la décimale qu'imprime le communiqué.
+// ═════════════════════════════════════════════════════════════════════════════
+
+const TRMB_SRC = {
+  '2024-02-12': src('8-K', '2024-02-12', `${ARCH}/864749/000086474924000034/a2023q4-8kex991.htm`),
+  '2024-05-03': src('8-K', '2024-05-03', `${ARCH}/864749/000086474924000126/a2024q1-8kex991.htm`),
+  '2024-08-06': src('8-K', '2024-08-06', `${ARCH}/864749/000086474924000195/a2024q2-8kex991.htm`),
+  '2024-11-06': src('8-K', '2024-11-06', `${ARCH}/864749/000086474924000251/a2024q3-8kex991.htm`),
+  '2025-02-19': src('8-K', '2025-02-19', `${ARCH}/864749/000086474925000023/a2024q4-8kex991.htm`),
+  '2025-05-07': src('8-K', '2025-05-07', `${ARCH}/864749/000086474925000105/a2025q1-8kex991.htm`),
+  '2025-08-06': src('8-K', '2025-08-06', `${ARCH}/864749/000086474925000243/a2025q2-8kex991.htm`),
+  '2025-11-05': src('8-K', '2025-11-05', `${ARCH}/864749/000086474925000283/a2025q3-8kex991.htm`),
+  '2026-02-10': src('8-K', '2026-02-10', `${ARCH}/864749/000086474926000006/a2025q4-8kex991.htm`),
+  '2026-05-06': src('8-K', '2026-05-06', `${ARCH}/864749/000086474926000061/a2026q1-8kex991.htm`),
+  '2026-08-12': src('8-K', '2026-08-12', `${ARCH}/864749/000086474926000106/a2026q2-8kex991_00version.htm`),
+  '2026-11-04': src('8-K', '2026-11-04', `${ARCH}/864749/000086474926000119/a2026q3-8kex991.htm`),
+};
+
+const TRMB = [
+  { date: '2024-02-12', trimestre: 'T4 2023', ca: 932.4, caAnPasse: 856.5, cout: 355.1, op: 96.9, opAnPasse: 96.7, carnet: null, guidance: g(2024, 3570, 3670) },
+  { date: '2024-05-03', trimestre: 'T1 2024', ca: 953.3, caAnPasse: 915.4, cout: 359.7, op: 109.2, opAnPasse: 137.0, carnet: null, guidance: g(2024, 3570, 3670) },
+  { date: '2024-08-06', trimestre: 'T2 2024', ca: 870.8, caAnPasse: 993.6, cout: 324.9, op: 61.6, opAnPasse: 93.6, carnet: null, guidance: g(2024, 3590, 3670) },
+  { date: '2024-11-06', trimestre: 'T3 2024', ca: 875.8, caAnPasse: 957.3, cout: 300.2, op: 116.4, opAnPasse: 121.3, carnet: null, guidance: g(2024, 3625, 3665) },
+  { date: '2025-02-19', trimestre: 'T4 2024', ca: 983.4, caAnPasse: 932.4, cout: 302.2, op: 173.5, opAnPasse: 96.9, carnet: null, guidance: g(2025, 3370, 3470) },
+  { date: '2025-05-07', trimestre: 'T1 2025', ca: 840.6, caAnPasse: 953.3, cout: 279.8, op: 97.5, opAnPasse: 109.2, carnet: null, guidance: g(2025, 3370, 3470) },
+  { date: '2025-08-06', trimestre: 'T2 2025', ca: 875.7, caAnPasse: 870.8, cout: 277.8, op: 127.8, opAnPasse: 61.6, carnet: null, guidance: g(2025, 3480, 3560) },
+  { date: '2025-11-05', trimestre: 'T3 2025', ca: 901.2, caAnPasse: 875.8, cout: 280.1, op: 150.5, opAnPasse: 116.4, carnet: null, guidance: g(2025, 3545, 3585) },
+  { date: '2026-02-10', trimestre: 'T4 2025', ca: 969.8, caAnPasse: 983.4, cout: 271.7, op: 216.2, opAnPasse: 173.5, carnet: null, guidance: g(2026, 3810, 3910) },
+  { date: '2026-05-06', trimestre: 'T1 2026', ca: 939.9, caAnPasse: 840.6, cout: 293.6, op: 144.0, opAnPasse: 97.5, carnet: null, guidance: g(2026, 3835, 3915) },
+  { date: '2026-08-12', trimestre: 'T2 2026', ca: 972.0, caAnPasse: 875.7, cout: 297.1, op: 132.0, opAnPasse: 127.8, carnet: null, guidance: g(2026, 3900, 3950) },
+  { date: '2026-11-04', trimestre: 'T3 2026', ca: 966.8, caAnPasse: 901.2, cout: 307.7, op: 142.0, opAnPasse: 150.5, carnet: null, guidance: g(2026, 3910, 3940) },
+];
+
 // ── Séries ───────────────────────────────────────────────────────────────────
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -509,6 +576,14 @@ const LUES = [
     ca_these: { valeur: 'Chiffre d’affaires total — le segment satellite ne survit pas à la série', source: SATS_SRC['2026-11-03'] },
     indicateur_demande: { type: 'clients', valeur: 'Abonnés de fin de période, total des catégories publiées', source: SATS_SRC['2026-11-03'] },
     publications: serie(SATS, SATS_SRC, { indicateurDemande: 'clients' }),
+    evenements_commerciaux: [],
+  },
+  {
+    id: 'trimble', nom: 'Trimble', archetype: 'plateforme',
+    recit: 'Spatial — positionnement par satellite et logiciels de terrain',
+    ca_these: { valeur: 'Chiffre d’affaires total — aucun segment ne couvre le positionnement', source: TRMB_SRC['2026-11-04'] },
+    indicateur_demande: { type: 'non-publie', valeur: 'Ni commandes ni abonnés ; carnet GAAP publié arrondi au cent millions', source: TRMB_SRC['2026-11-04'] },
+    publications: serie(TRMB, TRMB_SRC, { indicateurDemande: 'non-publie' }),
     evenements_commerciaux: [],
   },
 ];
