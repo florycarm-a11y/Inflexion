@@ -99,10 +99,15 @@ const SPCE = [
 // lecture. AST annonce dans ses communiqués un « 6-year definitive commercial agreement » avec
 // AT&T (mai 2024) puis un « definitive commercial agreement through 2034 » avec Vodafone (mars
 // 2025), et nomme Verizon, Rakuten et STC comme clients. Mais les huit 8-K rubrique 1.01 déposés
-// depuis février 2024 ont été ouverts un par un : ce sont des pactes d'actionnaires (7 juin 2024,
-// 7 février 2025), des émissions de titres (5 septembre 2024, 13 mai 2025, 26 juin 2025,
-// 7 octobre 2025) et l'acquisition du spectre Ligado, où AST est l'ACHETEUR (7 janvier et
-// 24 mars 2025, au moins 80 millions par an versés à Ligado). AUCUN accord côté client n'est
+// depuis février 2024 ont été ouverts un par un, et leur rubrique 1.01 lue : ce sont deux pactes
+// d'actionnaires (7 juin 2024, 7 février 2025), trois conventions de placement d'actions au fil
+// de l'eau (5 septembre 2024, 13 mai 2025, 7 octobre 2025 — « Equity Distribution Agreement »,
+// textuellement) et trois pièces de l'acquisition du spectre Ligado, où AST est l'ACHETEUR
+// (7 janvier, 24 mars et 26 juin 2025, au moins 80 millions par an versés à Ligado). Les quatre
+// derniers avaient d'abord été classés sur la seule foi de leurs noms de fichiers (annexes 1.1 et
+// 5.1 = placement) : vérification faite le 23 novembre 2026 en ouvrant chacun, le classement
+// tient, mais celui du 26 juin 2025 relevait de Ligado et non d'un placement.
+// AUCUN accord côté client n'est
 // déposé. §8 : « par défaut, une annonce qui n'a pas donné lieu au dépôt d'un 8-K rubrique 1.01
 // ne dépasse pas le barreau 2 ». La méthode refuse donc de créditer un accord « définitif » que
 // la société n'a pas déposé comme accord important — et AST ne reçoit AUCUNE Bascule commerciale
@@ -110,11 +115,36 @@ const SPCE = [
 // barreau 3 au T1 2024 (« signé mais suspendu à une licence » — le service attendait la FCC) ;
 // §3 impose la lecture la plus neutre, donc le barreau ne monte pas.
 //
-// D1 N'EST RELEVÉ QUE LORSQUE LE COMMUNIQUÉ ÉNONCE LE COMPTE DU TRIMESTRE. AST ne publie pas de
-// décompte régulier de lancements. Deux trimestres l'énoncent sans ambiguïté — cinq Block 1 en
-// septembre 2024, trois BlueBird en avril-juin 2026 — et deux autres énoncent explicitement
-// zéro. Partout ailleurs : non publié. Reconstituer les comptes manquants par différence de
-// constellation serait inventer une série ; `unites: null` dit ce que la société n'a pas dit.
+// D1 N'EST RELEVÉ QUE LÀ OÙ UN ÉNONCÉ IMPRIMÉ FIXE LE COMPTE DU TRIMESTRE. AST ne publie ni
+// décompte trimestriel de lancements, ni total en orbite à la date de clôture. La règle tenue,
+// uniforme sur les douze lignes : le compte est relevé quand le communiqué du jour imprime soit
+// un lancement accompli DANS le trimestre, soit une date de lancement POSTÉRIEURE à la clôture —
+// ce dernier cas fixant le compte à zéro sans ambiguïté. Partout ailleurs, non publié.
+//
+//  · T2 2024 : « first 5 commercial satellites on target for […] launch in first half of
+//    September » — un lancement de septembre ne peut pas avoir eu lieu au 30 juin. Zéro.
+//  · T3 2024 : « first five commercial BlueBird satellites achieved successful initial
+//    operations », « all five satellites successfully unfolded as of late October ». Cinq.
+//  · T4 2024 : « the first five BlueBird satellites in orbit today » — les mêmes cinq. Zéro.
+//  · T1 2025 : « first Block 2 BlueBird […] orbital launch scheduled during July 2025 ». Zéro.
+//  · T2 2025 : « FM1 […] expected to be ready to ship in August 2025 […] becoming AST
+//    SpaceMobile's seventh satellite in orbit » — six en orbite, inchangé. Zéro.
+//  · T3 2025 : « shipment of BlueBird 6 to India with launch expected in first half of
+//    December ». Zéro.
+//  · T4 2025 : « successfully completed unfolding of BlueBird 6 », lancé le 23 décembre. Un.
+//  · T1 2026, T2 2026, T3 2026 : NON PUBLIÉ. Le communiqué du T2 2026 écrit « orbital launch of
+//    BlueBird 8-13 marks six spacecraft launched within 50 days, increasing network to 13
+//    in-orbit spacecraft » — six satellites à cheval sur la clôture du 30 juin, et les 13 sont
+//    comptés à la date du communiqué, pas à celle de la clôture. Aucune répartition par
+//    trimestre n'est imprimée, ni là ni dans les communiqués voisins. §3 : on retient la lecture
+//    la plus neutre, donc la dimension ne compte pas.
+//
+// CORRECTION DU 23 NOVEMBRE 2026, consignée. La première lecture attribuait trois lancements au
+// T2 2026 (BlueBirds 11, 12 et 13) sur la foi d'un résumé, là où le communiqué dit « recent » au
+// 10 août — soit après la clôture — et ne répartit rien. Elle laissait par ailleurs muets quatre
+// trimestres que des énoncés imprimés déterminent. Les deux corrections vont en sens contraire,
+// et la seconde l'emporte : la Bascule quitte le T2 2026 pour le T4 2025, trois trimestres plus
+// tôt. Relire au mécanique ce qu'un résumé avait rendu a déplacé l'alerte.
 //
 // PERTE D'EXPLOITATION = CA − TOTAL DES CHARGES D'EXPLOITATION, les deux balisés dans le 10-Q
 // déposé le JOUR MÊME de la publication (précision 4 l'admet, précision 8 est satisfaite puisque
@@ -161,19 +191,20 @@ const ASTS = [
   { date: '2024-08-14', trimestre: 'T2 2024', ca: 900, caAnPasse: 0, cout: undefined, op: -62993, opAnPasse: -50380, unites: 0, barreau: 2, statut: 'non-publie' },
   // Les cinq premiers Block 1 BlueBird lancés le 12 septembre 2024 : premières livraisons après zéro.
   { date: '2024-11-14', trimestre: 'T3 2024', ca: 1100, caAnPasse: 0, cout: undefined, op: -65546, opAnPasse: null, unites: 5, barreau: 2, statut: 'non-publie' },
-  { date: '2025-03-04', trimestre: 'T4 2024', ca: 1918, caAnPasse: 0, cout: undefined, op: -58724, opAnPasse: -60878, unites: null, barreau: 2, statut: 'non-publie' },
+  { date: '2025-03-04', trimestre: 'T4 2024', ca: 1918, caAnPasse: 0, cout: undefined, op: -58724, opAnPasse: -60878, unites: 0, barreau: 2, statut: 'non-publie' },
   // Première prévision chiffrée : « revenue of $50.0 million to $75.0 million in the second half 2025 ».
-  { date: '2025-05-12', trimestre: 'T1 2025', ca: 718, caAnPasse: 500, cout: undefined, op: -62963, opAnPasse: -55500, unites: null, barreau: 2, guidance: g('2025-S2', 50000, 75000) },
+  { date: '2025-05-12', trimestre: 'T1 2025', ca: 718, caAnPasse: 500, cout: undefined, op: -62963, opAnPasse: -55500, unites: 0, barreau: 2, guidance: g('2025-S2', 50000, 75000) },
   // « No launches occurred during Q2 2025 » : zéro énoncé, mais le trimestre précédent ne l'était pas.
   { date: '2025-08-11', trimestre: 'T2 2025', ca: 1156, caAnPasse: 900, cout: undefined, op: -72797, opAnPasse: -62993, unites: 0, barreau: 2, guidance: g('2025-S2', 50000, 75000) },
   // Une ligne de coût des ventes apparaît ici (5 511) : le garde-fou devient applicable.
-  { date: '2025-11-10', trimestre: 'T3 2025', ca: 14739, caAnPasse: 1100, cout: 5511, op: -79676, opAnPasse: -65546, unites: null, barreau: 2, guidance: g('2025-S2', 50000, 75000) },
+  { date: '2025-11-10', trimestre: 'T3 2025', ca: 14739, caAnPasse: 1100, cout: 5511, op: -79676, opAnPasse: -65546, unites: 0, barreau: 2, guidance: g('2025-S2', 50000, 75000) },
   // Coût des ventes du trimestre : 35 216 de l'exercice moins 5 511 des neuf mois publiés.
   // Aucune prévision chiffrée pour 2026 (« revenue expected to grow »), aucune date de service : D3 muet.
-  { date: '2026-03-02', trimestre: 'T4 2025', ca: 54305, caAnPasse: 1918, cout: 29705, op: -72277, opAnPasse: -58724, unites: null, barreau: 2, statut: 'non-publie' },
-  { date: '2026-05-11', trimestre: 'T1 2026', ca: 14735, caAnPasse: 718, cout: 11649, op: -149412, opAnPasse: -62963, unites: 0, barreau: 2, guidance: g(2026, 150000, 200000) },
-  // BlueBirds 11, 12 et 13 lancés dans le trimestre, treize engins en orbite à la fin.
-  { date: '2026-08-10', trimestre: 'T2 2026', ca: 31500, caAnPasse: 1156, cout: 23567, op: -297597, opAnPasse: -72797, unites: 3, barreau: 2, guidance: g(2026, 150000, 200000) },
+  { date: '2026-03-02', trimestre: 'T4 2025', ca: 54305, caAnPasse: 1918, cout: 29705, op: -72277, opAnPasse: -58724, unites: 1, barreau: 2, statut: 'non-publie' },
+  { date: '2026-05-11', trimestre: 'T1 2026', ca: 14735, caAnPasse: 718, cout: 11649, op: -149412, opAnPasse: -62963, unites: null, barreau: 2, guidance: g(2026, 150000, 200000) },
+  // « Orbital launch of BlueBird 8-13 marks six spacecraft launched within 50 days » : six
+  // satellites à cheval sur la clôture du 30 juin, sans aucune répartition publiée. Non publié.
+  { date: '2026-08-10', trimestre: 'T2 2026', ca: 31500, caAnPasse: 1156, cout: 23567, op: -297597, opAnPasse: -72797, unites: null, barreau: 2, guidance: g(2026, 150000, 200000) },
   { date: '2026-11-09', trimestre: 'T3 2026', ca: 42321, caAnPasse: 14739, cout: 25314, op: -168705, opAnPasse: -79676, unites: null, barreau: 2, guidance: g(2026, 150000, 200000) },
 ];
 
