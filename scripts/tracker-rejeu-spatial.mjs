@@ -349,9 +349,15 @@ const GSAT = [
 // « non publié » sur ces deux lignes, et D1 non publié sur les lignes SUIVANTES, qui n'ont plus
 // de croissance précédente. Les abonnés, eux, sont des soldes à une date : ils restent publiés.
 //
-// D3 EST MUET SUR LES DOUZE LIGNES. EchoStar ne donne aucune prévision chiffrée — contrôlé sur les
-// dépôts ; la seule occurrence de « revenue guidance » rencontrée est du jargon comptable
-// (ASC 606). La clause du jalon daté de §5 ne vaut que pour un pré-revenus, donc elle ne joue pas.
+// D3 EST MUET SUR LES DOUZE LIGNES, et c'est vérifié sur les douze. Contrôle du 24 novembre 2026,
+// après la correction d'AST SpaceMobile : la première lecture ne s'appuyait que sur deux dépôts.
+// Les douze ont été balayés à la recherche de tout énoncé prospectif chiffré — §5 n'exige pas une
+// prévision de chiffre d'affaires, il accepte « la prévision annuelle qu'elle place en premier
+// (livraisons, résultat, bénéfice par action) ». Récolte : deux occurrences, un calendrier de
+// remboursement de dette (« we expect to fund this obligation from our current restricted cash »)
+// et une note d'adoption de norme comptable. Aucune prévision, d'aucune grandeur. La clause du
+// jalon daté de §5 ne vaut que pour un pré-revenus, donc elle ne joue pas ici — et EchoStar reste
+// la seule société du rejeu à ne jamais donner le moindre chiffre prospectif.
 //
 // Montants en milliers de dollars, balisés dans le dépôt du jour. Abonnés en MILLIERS, tels
 // qu'imprimés en millions à trois décimales dans la table de chaque dépôt.
@@ -416,15 +422,25 @@ const SATS = [
 // segments ont été redécoupés en 2024, ce qui interdirait de toute façon une série de douze
 // trimestres sur l'un d'eux.
 //
-// D2 EST MUET SUR LES DOUZE LIGNES, et il faut dire pourquoi. Trimble ne publie ni commandes ni
-// nombre de clients. Son indicateur phare est le chiffre d'affaires récurrent annualisé, qui
-// n'appartient pas à la liste fermée de §2 (« commandes ou carnet de commandes ; à défaut, nombre
-// de clients ou d'abonnés ; sinon non publié »). Reste son carnet au sens GAAP, les obligations de
-// prestation restantes — mais il n'est publié qu'arrondi : « approximately $1.7 billion ». Pour un
-// chiffre d'affaires trimestriel de 0,9 milliard, un arrondi au cent millions déplace le ratio de
-// 0,11 quand les seuils valent 0,05 : l'arrondi déciderait de l'alerte. Précision 3 l'interdit.
-// Donc troisième branche de §2 : indicateur « non publié ». Trimble ne laisse que trois dimensions
-// à la méthode — comme EchoStar, pour une raison toute différente.
+// D2 PASSE PAR LE CARNET GAAP, et la précision 4 décide ligne par ligne. Révision du 24 novembre
+// 2026, après la correction d'AST SpaceMobile : la première lecture déclarait l'indicateur « non
+// publié » sur les douze lignes, au motif que le carnet n'est imprimé qu'arrondi — « approximately
+// $1.7 billion ». C'était confondre deux choses. La précision 3 m'interdit d'arrondir ; elle ne
+// m'autorise pas à écarter un montant que la société publie arrondi. Le carnet retenu est donc
+// celui que Trimble publie : les obligations de prestation restantes, au dixième de milliard.
+//
+// Ce carnet n'est balisé que dans le 10-Q ou le 10-K, et Trimble les dépose APRÈS son communiqué —
+// jusqu'à onze mois après, pour les trois premiers trimestres de 2024. Précision 4 : « déposé
+// après, sa donnée est non publié POUR CETTE LIGNE ; elle sert seulement de valeur précédente à la
+// ligne suivante ». D'où le drapeau `carnetTardif`, qui fait exactement cela. Résultat : D2 est
+// non publié sur sept lignes et parle sur cinq, à partir du T2 2025 où le 10-Q tombe le jour même.
+//
+// L'ARRONDI NE DÉCIDE D'AUCUNE ALERTE, vérifié : le carnet ne franchit qu'un palier sur la série,
+// de 1,7 à 2,0 milliards au trimestre clos le 2 janvier 2026 — et ce trimestre est précisément
+// l'un de ceux dont le dépôt est tardif, donc muet. Au T1 2026, la valeur précédente vaut déjà
+// 2,0. Les cinq lignes calculables donnent toutes « stable », et aucun solde ne bouge : la
+// révision est fidèle mais sans conséquence. Le chiffre d'affaires récurrent annualisé, lui, reste
+// écarté — il n'appartient pas à la liste fermée de §2.
 //
 // Montants en MILLIONS de dollars, à la décimale qu'imprime le communiqué.
 // ═════════════════════════════════════════════════════════════════════════════
@@ -445,18 +461,18 @@ const TRMB_SRC = {
 };
 
 const TRMB = [
-  { date: '2024-02-12', trimestre: 'T4 2023', ca: 932.4, caAnPasse: 856.5, cout: 355.1, op: 96.9, opAnPasse: 96.7, carnet: null, guidance: g(2024, 3570, 3670) },
-  { date: '2024-05-03', trimestre: 'T1 2024', ca: 953.3, caAnPasse: 915.4, cout: 359.7, op: 109.2, opAnPasse: 137.0, carnet: null, guidance: g(2024, 3570, 3670) },
-  { date: '2024-08-06', trimestre: 'T2 2024', ca: 870.8, caAnPasse: 993.6, cout: 324.9, op: 61.6, opAnPasse: 93.6, carnet: null, guidance: g(2024, 3590, 3670) },
-  { date: '2024-11-06', trimestre: 'T3 2024', ca: 875.8, caAnPasse: 957.3, cout: 300.2, op: 116.4, opAnPasse: 121.3, carnet: null, guidance: g(2024, 3625, 3665) },
-  { date: '2025-02-19', trimestre: 'T4 2024', ca: 983.4, caAnPasse: 932.4, cout: 302.2, op: 173.5, opAnPasse: 96.9, carnet: null, guidance: g(2025, 3370, 3470) },
-  { date: '2025-05-07', trimestre: 'T1 2025', ca: 840.6, caAnPasse: 953.3, cout: 279.8, op: 97.5, opAnPasse: 109.2, carnet: null, guidance: g(2025, 3370, 3470) },
-  { date: '2025-08-06', trimestre: 'T2 2025', ca: 875.7, caAnPasse: 870.8, cout: 277.8, op: 127.8, opAnPasse: 61.6, carnet: null, guidance: g(2025, 3480, 3560) },
-  { date: '2025-11-05', trimestre: 'T3 2025', ca: 901.2, caAnPasse: 875.8, cout: 280.1, op: 150.5, opAnPasse: 116.4, carnet: null, guidance: g(2025, 3545, 3585) },
-  { date: '2026-02-10', trimestre: 'T4 2025', ca: 969.8, caAnPasse: 983.4, cout: 271.7, op: 216.2, opAnPasse: 173.5, carnet: null, guidance: g(2026, 3810, 3910) },
-  { date: '2026-05-06', trimestre: 'T1 2026', ca: 939.9, caAnPasse: 840.6, cout: 293.6, op: 144.0, opAnPasse: 97.5, carnet: null, guidance: g(2026, 3835, 3915) },
-  { date: '2026-08-12', trimestre: 'T2 2026', ca: 972.0, caAnPasse: 875.7, cout: 297.1, op: 132.0, opAnPasse: 127.8, carnet: null, guidance: g(2026, 3900, 3950) },
-  { date: '2026-11-04', trimestre: 'T3 2026', ca: 966.8, caAnPasse: 901.2, cout: 307.7, op: 142.0, opAnPasse: 150.5, carnet: null, guidance: g(2026, 3910, 3940) },
+  { date: '2024-02-12', trimestre: 'T4 2023', ca: 932.4, caAnPasse: 856.5, cout: 355.1, op: 96.9, opAnPasse: 96.7, carnet: 1800, carnetTardif: true, guidance: g(2024, 3570, 3670) },
+  { date: '2024-05-03', trimestre: 'T1 2024', ca: 953.3, caAnPasse: 915.4, cout: 359.7, op: 109.2, opAnPasse: 137.0, carnet: 1700, carnetTardif: true, guidance: g(2024, 3570, 3670) },
+  { date: '2024-08-06', trimestre: 'T2 2024', ca: 870.8, caAnPasse: 993.6, cout: 324.9, op: 61.6, opAnPasse: 93.6, carnet: 1700, carnetTardif: true, guidance: g(2024, 3590, 3670) },
+  { date: '2024-11-06', trimestre: 'T3 2024', ca: 875.8, caAnPasse: 957.3, cout: 300.2, op: 116.4, opAnPasse: 121.3, carnet: 1500, carnetTardif: true, guidance: g(2024, 3625, 3665) },
+  { date: '2025-02-19', trimestre: 'T4 2024', ca: 983.4, caAnPasse: 932.4, cout: 302.2, op: 173.5, opAnPasse: 96.9, carnet: 1700, carnetTardif: true, guidance: g(2025, 3370, 3470) },
+  { date: '2025-05-07', trimestre: 'T1 2025', ca: 840.6, caAnPasse: 953.3, cout: 279.8, op: 97.5, opAnPasse: 109.2, carnet: 1700, carnetTardif: true, guidance: g(2025, 3370, 3470) },
+  { date: '2025-08-06', trimestre: 'T2 2025', ca: 875.7, caAnPasse: 870.8, cout: 277.8, op: 127.8, opAnPasse: 61.6, carnet: 1700, guidance: g(2025, 3480, 3560) },
+  { date: '2025-11-05', trimestre: 'T3 2025', ca: 901.2, caAnPasse: 875.8, cout: 280.1, op: 150.5, opAnPasse: 116.4, carnet: 1700, guidance: g(2025, 3545, 3585) },
+  { date: '2026-02-10', trimestre: 'T4 2025', ca: 969.8, caAnPasse: 983.4, cout: 271.7, op: 216.2, opAnPasse: 173.5, carnet: 2000, carnetTardif: true, guidance: g(2026, 3810, 3910) },
+  { date: '2026-05-06', trimestre: 'T1 2026', ca: 939.9, caAnPasse: 840.6, cout: 293.6, op: 144.0, opAnPasse: 97.5, carnet: 2000, guidance: g(2026, 3835, 3915) },
+  { date: '2026-08-12', trimestre: 'T2 2026', ca: 972.0, caAnPasse: 875.7, cout: 297.1, op: 132.0, opAnPasse: 127.8, carnet: 2000, guidance: g(2026, 3900, 3950) },
+  { date: '2026-11-04', trimestre: 'T3 2026', ca: 966.8, caAnPasse: 901.2, cout: 307.7, op: 142.0, opAnPasse: 150.5, carnet: 2000, guidance: g(2026, 3910, 3940) },
 ];
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -543,9 +559,17 @@ const SIRI = [
 // pour le positionnement par satellite, qui traverse ses cinq segments (forme, plein air,
 // aviation, marine, première monte) sans en être aucun.
 //
-// D2 EST MUET SUR LES DOUZE LIGNES : Garmin ne publie ni commandes, ni carnet, ni nombre de
-// clients ou d'abonnés. Troisième branche de §2. Troisième société du rejeu dans ce cas, après
-// EchoStar et Trimble.
+// D2 EST MUET SUR LES DOUZE LIGNES, et c'est vérifié au balisage, non supposé. Contrôle du
+// 24 novembre 2026, après la correction d'AST SpaceMobile : aucun fait XBRL de carnet
+// (RevenueRemainingPerformanceObligation), de commandes ou de nombre de clients n'existe chez
+// Garmin depuis février 2024. Le seul candidat est le passif de contrat — produits constatés
+// d'avance, 142 millions au 26 septembre 2026, précis et trimestriel. Il est écarté, et il faut
+// dire pourquoi : §2 demande « commandes ou carnet de commandes », pas un encours facturé
+// d'avance ; et chez un fabricant dont le trimestre pèse 2 milliards, ces 142 millions sont la
+// part d'abonnement et d'extension de garantie, soit 7 % du chiffre d'affaires — en faire le
+// carnet d'un vendeur de matériel grand public mesurerait autre chose que sa demande. Troisième
+// branche de §2. La demande de Garmin se lit en rayon, pas dans un carnet : la méthode ne sait
+// pas la voir, et c'est un résultat sur la méthode.
 //
 // LES PRÉVISIONS SONT DES POINTS, FORMULÉS DE QUATRE FAÇONS DIFFÉRENTES selon le trimestre :
 // « revenue of approximately $X billion », « guidance of approximately $X billion revenue »,
@@ -694,7 +718,10 @@ function serie(lignes, sources, { caThese = false, indicateurDemande = 'carnet' 
         date: l.date, trimestre: l.trimestre, source: sources[l.date],
         d1: sensEcart(c, croissancePrecedente),
         d2: sensDemandeEngagee(indicateurDemande, {
-          carnet: l.carnet, carnetPrecedent, ca: l.ca,
+          // Précision 4 : un dépôt postérieur au communiqué donne « non publié » POUR CETTE
+          // LIGNE, mais « sert […] de valeur précédente à la ligne suivante ». D'où `carnetTardif`
+          // — la valeur ne compte pas ici, et se propage quand même.
+          carnet: l.carnetTardif ? null : l.carnet, carnetPrecedent, ca: l.ca,
           croissanceClients: l.croissanceClients, croissanceClientsPrecedente: clientsPrecedent,
         }),
         d4: sensMargeOperationnelle(l.op, l.ca, l.opAnPasse, l.caAnPasse),
@@ -780,8 +807,8 @@ const LUES = [
     id: 'trimble', nom: 'Trimble', archetype: 'plateforme',
     recit: 'Spatial — positionnement par satellite et logiciels de terrain',
     ca_these: { valeur: 'Chiffre d’affaires total — aucun segment ne couvre le positionnement', source: TRMB_SRC['2026-11-04'] },
-    indicateur_demande: { type: 'non-publie', valeur: 'Ni commandes ni abonnés ; carnet GAAP publié arrondi au cent millions', source: TRMB_SRC['2026-11-04'] },
-    publications: serie(TRMB, TRMB_SRC, { indicateurDemande: 'non-publie' }),
+    indicateur_demande: { type: 'carnet', valeur: 'Carnet GAAP (obligations de prestation restantes), publié arrondi au cent millions', source: TRMB_SRC['2026-11-04'] },
+    publications: serie(TRMB, TRMB_SRC, { indicateurDemande: 'carnet' }),
     evenements_commerciaux: [],
   },
   {
