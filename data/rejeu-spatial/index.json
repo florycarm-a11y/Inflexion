@@ -1,0 +1,210 @@
+{
+  "rejeu": "univers spatial tiré par règle",
+  "protocole": "docs/tracker-univers-spatial.md",
+  "methode_version": "1.3",
+  "univers_total": 18,
+  "lues": 8,
+  "publie": false,
+  "societes": [
+    {
+      "id": "virgin-galactic",
+      "nom": "Virgin Galactic",
+      "archetype": "pre-revenus",
+      "recit": "Spatial — vols suborbitaux habités, vaisseaux Delta",
+      "ca_these": {
+        "valeur": "Unités livrées — vols spatiaux commerciaux effectués",
+        "source": {
+          "type": "8-K",
+          "date": "2026-11-12",
+          "url": "https://www.sec.gov/Archives/edgar/data/1706946/000119312526458580/d183696dex991.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "barreau-reservations",
+        "valeur": "Barreau d’engagement et réservations de futurs astronautes",
+        "source": {
+          "type": "8-K",
+          "date": "2026-11-12",
+          "url": "https://www.sec.gov/Archives/edgar/data/1706946/000119312526458580/d183696dex991.htm"
+        }
+      },
+      "publications": 12,
+      "fichier": "data/rejeu-spatial/virgin-galactic.json"
+    },
+    {
+      "id": "planet-labs",
+      "nom": "Planet Labs",
+      "archetype": "plateforme",
+      "recit": "Spatial — imagerie quotidienne de la Terre vendue par abonnement",
+      "ca_these": {
+        "valeur": "Chiffre d’affaires total — Planet ne publie qu’un seul segment",
+        "source": {
+          "type": "8-K",
+          "date": "2026-09-03",
+          "url": "https://www.sec.gov/Archives/edgar/data/1836833/000119312526381874/pl-ex99_1.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "carnet",
+        "valeur": "Carnet de commandes (« backlog »)",
+        "source": {
+          "type": "8-K",
+          "date": "2026-09-03",
+          "url": "https://www.sec.gov/Archives/edgar/data/1836833/000119312526381874/pl-ex99_1.htm"
+        }
+      },
+      "publications": 11,
+      "fichier": "data/rejeu-spatial/planet-labs.json"
+    },
+    {
+      "id": "ast-spacemobile",
+      "nom": "AST SpaceMobile",
+      "archetype": "pre-revenus",
+      "recit": "Spatial — réseau cellulaire à large bande depuis l’orbite, directement vers le téléphone",
+      "ca_these": {
+        "valeur": "Unités livrées — satellites mis en orbite dans le trimestre",
+        "source": {
+          "type": "8-K",
+          "date": "2026-08-10",
+          "url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526342540/asts-ex99_1.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "barreau",
+        "valeur": "Barreau d’engagement (§8), plafonné à 2 faute de 8-K rubrique 1.01 côté client",
+        "source": {
+          "type": "8-K",
+          "date": "2026-11-09",
+          "url": "https://www.sec.gov/Archives/edgar/data/1780312/000119312526453758/asts-ex99_1.htm"
+        }
+      },
+      "publications": 12,
+      "fichier": "data/rejeu-spatial/ast-spacemobile.json"
+    },
+    {
+      "id": "globalstar",
+      "nom": "Globalstar",
+      "archetype": "plateforme",
+      "recit": "Spatial — capacité satellitaire en gros et objets connectés",
+      "ca_these": {
+        "valeur": "Chiffre d’affaires de service, hors ventes de terminaux",
+        "source": {
+          "type": "8-K",
+          "date": "2026-11-05",
+          "url": "https://www.sec.gov/Archives/edgar/data/1366868/000136686826000045/gsat20260930-ex991.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "clients",
+        "valeur": "Abonnés moyens du trimestre, total des trois catégories de détail",
+        "source": {
+          "type": "8-K",
+          "date": "2026-11-05",
+          "url": "https://www.sec.gov/Archives/edgar/data/1366868/000136686826000045/gsat20260930-ex991.htm"
+        }
+      },
+      "publications": 12,
+      "fichier": "data/rejeu-spatial/globalstar.json"
+    },
+    {
+      "id": "echostar",
+      "nom": "EchoStar",
+      "archetype": "plateforme",
+      "recit": "Spatial — satellites de télévision et de haut débit, spectre sans fil",
+      "ca_these": {
+        "valeur": "Chiffre d’affaires total — le segment satellite ne survit pas à la série",
+        "source": {
+          "type": "10-Q",
+          "date": "2026-11-03",
+          "url": "https://www.sec.gov/Archives/edgar/data/1415404/000110465926121675/sats-20260930x10q.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "clients",
+        "valeur": "Abonnés de fin de période, total des catégories publiées",
+        "source": {
+          "type": "10-Q",
+          "date": "2026-11-03",
+          "url": "https://www.sec.gov/Archives/edgar/data/1415404/000110465926121675/sats-20260930x10q.htm"
+        }
+      },
+      "publications": 12,
+      "fichier": "data/rejeu-spatial/echostar.json"
+    },
+    {
+      "id": "trimble",
+      "nom": "Trimble",
+      "archetype": "plateforme",
+      "recit": "Spatial — positionnement par satellite et logiciels de terrain",
+      "ca_these": {
+        "valeur": "Chiffre d’affaires total — aucun segment ne couvre le positionnement",
+        "source": {
+          "type": "8-K",
+          "date": "2026-11-04",
+          "url": "https://www.sec.gov/Archives/edgar/data/864749/000086474926000119/a2026q3-8kex991.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "carnet",
+        "valeur": "Carnet GAAP (obligations de prestation restantes), publié arrondi au cent millions",
+        "source": {
+          "type": "8-K",
+          "date": "2026-11-04",
+          "url": "https://www.sec.gov/Archives/edgar/data/864749/000086474926000119/a2026q3-8kex991.htm"
+        }
+      },
+      "publications": 12,
+      "fichier": "data/rejeu-spatial/trimble.json"
+    },
+    {
+      "id": "sirius-xm",
+      "nom": "Sirius XM",
+      "archetype": "plateforme",
+      "recit": "Spatial — radio par satellite et audio numérique",
+      "ca_these": {
+        "valeur": "Chiffre d’affaires total — le segment satellitaire n’est imprimé qu’à partir de 2026",
+        "source": {
+          "type": "8-K",
+          "date": "2026-10-29",
+          "url": "https://www.sec.gov/Archives/edgar/data/908937/000090893726000027/siriq32026earningsrelease.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "clients",
+        "valeur": "Abonnés auto-payants SiriusXM, fin de période",
+        "source": {
+          "type": "8-K",
+          "date": "2026-10-29",
+          "url": "https://www.sec.gov/Archives/edgar/data/908937/000090893726000027/siriq32026earningsrelease.htm"
+        }
+      },
+      "publications": 12,
+      "fichier": "data/rejeu-spatial/sirius-xm.json"
+    },
+    {
+      "id": "garmin",
+      "nom": "Garmin",
+      "archetype": "industriel",
+      "recit": "Spatial — appareils de positionnement par satellite",
+      "ca_these": {
+        "valeur": "Chiffre d’affaires total — le positionnement traverse les cinq segments",
+        "source": {
+          "type": "8-K",
+          "date": "2026-10-28",
+          "url": "https://www.sec.gov/Archives/edgar/data/1121788/000119312526435066/grmn-ex99_1.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "non-publie",
+        "valeur": "Ni commandes, ni carnet, ni nombre de clients publiés",
+        "source": {
+          "type": "8-K",
+          "date": "2026-10-28",
+          "url": "https://www.sec.gov/Archives/edgar/data/1121788/000119312526435066/grmn-ex99_1.htm"
+        }
+      },
+      "publications": 12,
+      "fichier": "data/rejeu-spatial/garmin.json"
+    }
+  ]
+}

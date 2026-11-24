@@ -28,84 +28,21 @@
  * Lancer : node scripts/tracker-collecte-2026-11-21.mjs
  */
 import { writeFileSync } from 'node:fs';
+import {
+  croissance, sensEcart, sensDemandeEngagee, sensMargeOperationnelle, sensUnites, sensBarreau,
+  etatMargeBrute, statutPrevision, src, g, publication,
+} from './lib/tracker-sens.mjs';
 
 const RACINE = new URL('../', import.meta.url);
 const JOUR = '2026-11-21'; // jour de la collecte : entrée des sociétés dans le tracker
 
-// ── Outils de calcul (§4) ────────────────────────────────────────────────────
-
-/** Croissance sur un an, calculée sur les montants publiés (précision 3). null si incalculable. */
-const croissance = (courant, anPasse) =>
-  (courant === null || anPasse === null || anPasse === 0) ? null : (courant - anPasse) / anPasse * 100;
-
-/** Marge, en % — non calculable si CA nul/négatif ou si la perte dépasse cent fois le CA (précision 1). */
-function marge(resultat, ca) {
-  if (ca === null || resultat === null || ca <= 0) return null;
-  if (resultat < 0 && Math.abs(resultat) > 100 * ca) return null;
-  return resultat / ca * 100;
-}
-
-/** D1, et D2 par le nombre de clients : écart de croissance, seuil strict d'un point. */
-function sensEcart(courante, precedente) {
-  if (courante === null || precedente === null || courante === undefined || precedente === undefined) return 'non-publie';
-  const ecart = courante - precedente;
-  if (ecart > 1) return 'hausse';
-  if (ecart < -1) return 'baisse';
-  return 'stable';
-}
-
-/** D2 carnet : ratio commandes / chiffre d'affaires du trimestre. */
-function sensCarnet(carnet, carnetPrecedent, caTrimestre) {
-  if (carnet === null || carnetPrecedent === null || caTrimestre === null || caTrimestre <= 0) return 'non-publie';
-  const commandes = (carnet - carnetPrecedent) + caTrimestre;
-  const ratio = commandes / caTrimestre;
-  return ratio > 1.05 ? 'hausse' : ratio < 0.95 ? 'baisse' : 'stable';
-}
-
-/** D4 : marge opérationnelle du trimestre contre le même trimestre un an plus tôt. */
-function sensMargeOperationnelle(op, ca, opAnPasse, caAnPasse) {
-  const m = marge(op, ca), mPrecedente = marge(opAnPasse, caAnPasse);
-  if (m === null || mPrecedente === null) return 'non-publie';
-  const seuil = m < 0 ? 5 : 2; // « ou de plus de 5 points si la marge du trimestre est négative »
-  const ecart = m - mPrecedente;
-  if (ecart > seuil) return 'hausse';
-  if (ecart < -seuil) return 'baisse';
-  return 'stable';
-}
-
-/** §6 : marge brute, et son état tel que le schéma le nomme.
- *  coutDesVentes === undefined : la société ne présente AUCUNE ligne de coût des ventes → garde-fou sans objet. */
-function etatMargeBrute(ca, coutDesVentes) {
-  if (coutDesVentes === undefined) return 'sans-objet';
-  if (coutDesVentes === null || ca === null) return 'non-calculable';
-  const mb = marge(ca - coutDesVentes, ca);
-  if (mb === null) return 'non-calculable';
-  return mb > 0 ? 'positive' : mb < 0 ? 'negative' : 'nulle';
-}
-
-/** §5, règle du trimestre seul : milieu de la fourchette du trimestre suivant contre le CA publié. */
-function statutTrimestreSeul(basse, haute, caPublie) {
-  const milieu = (basse + haute) / 2;
-  const ecart = (milieu - caPublie) / caPublie * 100;
-  return ecart > 2 ? 'relevee' : ecart < -2 ? 'abaissee' : 'maintenue';
-}
-
-/** §5 : d'après le milieu de la fourchette annuelle. Un changement d'exercice donne « nouvelle ». */
-function statutAnnuel(guidance, precedente) {
-  if (guidance === null) return 'non-publie';
-  if (precedente === null || guidance.exercice !== precedente.exercice) return 'nouvelle';
-  const milieu = (guidance.basse + guidance.haute) / 2;
-  const avant = (precedente.basse + precedente.haute) / 2;
-  return milieu > avant ? 'relevee' : milieu < avant ? 'abaissee' : 'maintenue';
-}
-
-const SENS_DU_STATUT = { relevee: 'hausse', abaissee: 'baisse', manquee: 'baisse', maintenue: 'stable', nouvelle: 'stable', 'non-publie': 'non-publie' };
+// ── Outils de calcul : §4, §5 et §6 vivent dans un module partagé avec le rejeu de l'univers
+// spatial (scripts/tracker-rejeu-spatial.mjs). Une seconde copie dériverait, et le rejeu ne
+// mesurerait plus la méthode que le tracker applique.
 
 // ── Sources : un document par publication, cité tel qu'il est déposé ─────────
 
 const ARCH = 'https://www.sec.gov/Archives/edgar/data';
-const src = (type, date, url) => ({ type, date, url });
-const g = (exercice, basse, haute) => ({ exercice, basse, haute });
 
 // ─────────────────────────────────────────────────────────────────────────────
 // CENTRUS ENERGY (LEU) — uranium et cycle du combustible — industriel
@@ -274,37 +211,18 @@ const OKLO = [
 
 // ── Construction des publications ────────────────────────────────────────────
 
-const dim = (sens, source) => (sens === 'non-publie' ? { sens } : { sens, source });
-
-function publication({ date, trimestre, source, d1, d2, d4, statut, margeBrute, drapeaux = [] }) {
-  return {
-    date,
-    trimestre,
-    source,
-    // D3 n'est pas saisi : il découle du statut de prévision (§5), seule lecture consignée.
-    dimensions: { d1: dim(d1, source), d2: dim(d2, source), d3: dim(SENS_DU_STATUT[statut], source), d4: dim(d4, source) },
-    statut_prevision: statut,
-    marge_brute: (margeBrute === 'non-calculable' || margeBrute === 'sans-objet') ? { etat: margeBrute } : { etat: margeBrute, source },
-    // §7 : les quatre mesures de financement n'ont pas été relevées — « si une mesure manque,
-    // la couleur est non déterminée, pas verte ».
-    financement: { couleur: 'non-determinee', motifs: [] },
-    drapeaux,
-  };
-}
-
-/** Série d'un industriel ou d'une plateforme. d2 : 'carnet' | 'clients'. */
-function serie(lignes, sources, { caThese = false, trimestreSeul = false, d2 = 'carnet' }) {
+/** Série d'un industriel ou d'une plateforme. indicateurDemande : §2, fixé à l'entrée. */
+function serie(lignes, sources, { caThese = false, indicateurDemande = 'carnet' }) {
   const out = [];
   let croissancePrecedente = null, carnetPrecedent = null, guidancePrecedente = null, clientsPrecedent = null;
   for (const l of lignes) {
     const c = croissance(caThese ? l.caThese : l.ca, caThese ? l.caTheseAnPasse : l.caAnPasse);
     const sensD1 = sensEcart(c, croissancePrecedente);
-    const sensD2 = d2 === 'clients'
-      ? sensEcart(l.croissanceClients, clientsPrecedent)
-      : sensCarnet(l.carnet, carnetPrecedent, l.ca);
-    const statut = trimestreSeul
-      ? statutTrimestreSeul(l.guidanceT[0], l.guidanceT[1], l.ca)
-      : statutAnnuel(l.guidance, guidancePrecedente);
+    const sensD2 = sensDemandeEngagee(indicateurDemande, {
+      carnet: l.carnet, carnetPrecedent, ca: l.ca,
+      croissanceClients: l.croissanceClients, croissanceClientsPrecedente: clientsPrecedent,
+    });
+    const statut = statutPrevision(l, guidancePrecedente);
     if (!l.horsSerie) {
       out.push(publication({
         date: l.date, trimestre: l.trimestre, source: sources[l.date],
@@ -315,7 +233,7 @@ function serie(lignes, sources, { caThese = false, trimestreSeul = false, d2 = '
     croissancePrecedente = c;
     carnetPrecedent = l.carnet;
     clientsPrecedent = l.croissanceClients;
-    if (!trimestreSeul && l.guidance !== null) guidancePrecedente = l.guidance;
+    if (l.guidance != null) guidancePrecedente = l.guidance;
   }
   return out;
 }
@@ -326,12 +244,9 @@ function seriePreRevenus(lignes, sources) {
   let unitesPrecedent = null, barreauPrecedent = null;
   for (const l of lignes) {
     // §4 : « Zéro livraison puis zéro livraison vaut stable » ; sans trimestre précédent, non publié.
-    const d1 = unitesPrecedent === null ? 'non-publie'
-      : (l.unites === 0 && unitesPrecedent === 0) ? 'stable'
-        : l.unites > unitesPrecedent * 1.05 ? 'hausse' : l.unites < unitesPrecedent * 0.95 ? 'baisse' : 'stable';
+    const d1 = sensUnites(l.unites, unitesPrecedent);
     // §4 : barreau gagné → hausse, barreau perdu → baisse ; sans publication précédente, non publié.
-    const d2 = barreauPrecedent === null ? 'non-publie'
-      : l.barreau > barreauPrecedent ? 'hausse' : l.barreau < barreauPrecedent ? 'baisse' : 'stable';
+    const d2 = sensBarreau(l.barreau, barreauPrecedent);
     if (!l.horsSerie) {
       out.push(publication({
         date: l.date, trimestre: l.trimestre, source: sources[l.date],
@@ -388,10 +303,10 @@ const ENTREPRISES = [
 
 const FICHIERS = {
   'centrus-energy': { publications: serie(CENTRUS, CENTRUS_SRC, { caThese: true }), evenements_commerciaux: [] },
-  'rocket-lab': { publications: serie(RKLB, RKLB_SRC, { trimestreSeul: true }), evenements_commerciaux: [] },
+  'rocket-lab': { publications: serie(RKLB, RKLB_SRC, {}), evenements_commerciaux: [] },
   ionq: { publications: serie(IONQ, IONQ_SRC, {}), evenements_commerciaux: [] },
   vertiv: { publications: serie(VRT, VRT_SRC, {}), evenements_commerciaux: [] },
-  sentinelone: { publications: serie(SENTINELONE, S_SRC, { d2: 'clients' }), evenements_commerciaux: [] },
+  sentinelone: { publications: serie(SENTINELONE, S_SRC, { indicateurDemande: 'clients' }), evenements_commerciaux: [] },
   // Les engagements d'Oklo (Switch, Meta) sont décrits dans les 10-Q mais leurs dates de signature
   // exactes ne figurent pas dans les documents lus : aucun événement n'est daté ici plutôt que d'en
   // inventer la date. Le barreau 2 qu'ils établissent est sous le seuil de la Bascule commerciale (4).
