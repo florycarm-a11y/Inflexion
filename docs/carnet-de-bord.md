@@ -20,7 +20,7 @@ Entrées **les plus récentes en premier**. Titre = dates réelles de la session
 
 ## 2026-11-21 → 2026-11-23 — Tracker d’inflexions : pivot, méthode figée, moteur, rejeu
 
-Branche de travail à la fin de la session : **`feat/rejeu-spatial-lot1`**, 6 commits, **non fusionnée**.
+**`feat/rejeu-spatial-lot1` FUSIONNÉE dans `main` le 2026-11-24** — PR #166, merge `2a0f5c43`. Le lot de huit sociétés, l'outillage de méthode et ce carnet sont dans `main`. Branche en cours depuis : **`feat/rejeu-spatial-lot2`**, pour les neuf dernières sociétés.
 
 ### Décisions qui engagent
 
@@ -54,7 +54,9 @@ Ce qui invaliderait le rejeu, et donc ce qu'il ne faut pas faire : changer un fi
 | Planet Labs | 2,642 % | plateforme | 11 | 1 Bascule (2025-06-04) |
 | AST SpaceMobile | 1,605 % | pré-revenus | 12 | Bascule (T4 2025) + **Bascule commerciale** (T1 2026) |
 
-**Lecture dans l'ordre des poids du dépôt** — aucune règle ne l'impose, mais l'ordre publié met la lecture à l'abri de tout soupçon de tri. **Reste 9 sociétés** : Viasat, Iridium, RTX, Comcast, L3Harris, Honeywell, Lockheed Martin, Northrop Grumman, Boeing. Rocket Lab compte comme lue (sa fiche publique porte sa série). Ordre de grandeur annoncé au protocole : 150 à 200 communiqués en tout.
+**Lecture dans l'ordre des poids du dépôt** — aucune règle ne l'impose, mais l'ordre publié met la lecture à l'abri de tout soupçon de tri. **Reste 9 sociétés** : Viasat (en cours, voir `scripts/rejeu/README.md`), Iridium, RTX, Comcast, L3Harris, Honeywell, Lockheed Martin, Northrop Grumman, Boeing.
+
+**CADENCE RÉELLE, mesurée sur huit sociétés : une demi-session à une session par société.** Le travail n'est pas la lecture des chiffres — le balisage XBRL et deux passes de texte les donnent presque gratuitement — mais trois choses qui ne s'automatisent pas : fixer les paramètres de §2 (archétype, CA de la thèse, indicateur de demande) en justifiant ce qu'on écarte ; retrouver la formulation propre à chaque société, qui change d'un trimestre à l'autre chez la même ; et trancher les cas de précision 3 et 4. Annoncer les neuf restantes en une session serait reproduire l'erreur de lecture rapide que la relecture d'AST a mise au jour. Rocket Lab compte comme lue (sa fiche publique porte sa série). Ordre de grandeur annoncé au protocole : 150 à 200 communiqués en tout.
 
 **Outillage rodé, dans le bac à sable de session** : `sonde.mjs <CIK>` (dépôts, faits XBRL groupés par dépôt, lignes de communiqué portant carnet/abonnés/prévision), `tab.py` et `txt.py` (les deux passes d'extraction), un extracteur par société, `moteur.mjs <id>` pour dérouler le moteur sur une fiche. Les huit premières sociétés ont été lues **sans aucun appel de lecture de modèle sur les communiqués**. S'il a disparu, le réécrire à partir de cette entrée : le gain est considérable.
 
