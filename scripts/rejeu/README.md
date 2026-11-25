@@ -11,7 +11,7 @@ de lecture de modèle sur les communiqués.
 | `tab.py '<motif>'` | Sur l'entrée standard | Les lignes de **tableau** : ne coupe qu'aux fins de ligne de tableau |
 | `txt.py '<motif>'` | Sur l'entrée standard | Les lignes de **prose** : coupe aussi aux balises de bloc |
 | `moteur.mjs <id>` | Après génération | Déroule le moteur §6 sur une fiche de `data/rejeu-spatial/` et valide le fichier |
-| `vsat.py` | Viasat, en cours | Extracteur dédié (voir plus bas) |
+| `vsat.py` | Viasat | Extracteur dédié des comptes (voir plus bas) |
 
 ## Pourquoi deux passes de texte
 
@@ -33,37 +33,21 @@ et celles qui ne portent qu'une parenthèse de signe.
 - **Le nom du fichier ne dit pas ce qu'il contient** : `siriq12026earningsrelease.htm` ne contient
   pas « ex99 ». Chercher aussi `release|press|earnings`, et résoudre par `index.json`.
 
-## État de `vsat.py` — lecture interrompue
+## Viasat — lecture terminée, et ce qu'elle a appris à l'outillage
 
-Viasat, CIK 797721, exercice clos le 31 mars. Douze 8-K rubrique 2.02, un par trimestre, chacun
-suivi du 10-Q ou du 10-K **un à huit jours plus tard** — précision 4 : le communiqué du jour fait
-foi, le dépôt périodique ne sert que de valeur précédente.
+`vsat.py` relève chiffre d'affaires, coût des ventes et résultat d'exploitation des douze
+communiqués. Les commandes et les prévisions ont été lues à part, et trois choses valent pour les
+sociétés suivantes :
 
-**Acquis sur les douze lignes** : chiffre d'affaires total et son comparatif, coût des ventes
-(somme des coûts de service et de produits) et son comparatif, résultat d'exploitation GAAP
-(« Income (loss) from operations ») et son comparatif. Les comparatifs à 650 millions des deux
-premières lignes sont corrects : l'acquisition d'Inmarsat a clos en mai 2023.
-
-**Reste à relever** :
-1. **Les commandes de cinq trimestres** (T1 FY2025, T3 FY2025, T2 FY2026, T4 FY2026, T1 FY2027).
-   Viasat publie des « awards » par trimestre — la PREMIÈRE branche de §2, meilleure qu'un carnet —
-   mais sa formulation change à chaque communiqué : « new contract awards in Q2 FY2027 decreased
-   24% YoY to $1.1 billion », « $1.2 billion of awards during the quarter », « Awards for the
-   quarter were $1.2 billion », ou, au T1 FY2025, **seulement par segment** (« Communication
-   Services […] awards increased 60% YoY to $811 million » et 351 millions pour la défense, dont
-   la somme vaut le total). Quatre motifs sont déjà encodés ; il en manque.
-2. **La prévision annuelle.** Viasat ne guide pas son chiffre d'affaires en montant : elle annonce
-   une croissance qualitative (« DAT mid-teens or better revenue growth ») et une cible de
-   COMMANDES (« our current fiscal year 2027 plan anticipates about $2.0 billion of awards »).
-   §5 accepte « la prévision annuelle qu'elle place en premier » — reste à trancher si une cible
-   de commandes en relève, et à relever la série.
-
-**Difficulté de précision, à traiter explicitement.** Les commandes sont tantôt au million
-(par segment), tantôt arrondies au dixième de milliard. Un arrondi de ±50 millions sur un trimestre
-de 1 180 millions déplace le ratio commandes/chiffre d'affaires de ±0,042, pour des seuils à ±0,05 :
-**l'arrondi peut décider de l'alerte**. La règle retenue, déjà appliquée au « +13 % » de clients de
-Planet Labs : un montant arrondi donne un **intervalle**, et le sens n'est publié que si tout
-l'intervalle tombe dans une seule bande. Sinon, §3 — la lecture la plus neutre, « stable ».
+- **Chercher un graphique chiffré avant de se contenter de la prose.** Les lettres aux actionnaires
+  portent des graphiques dont les valeurs survivent dans le texte (« AWARDS $ in millions $1,275
+  $1,078 $1,170 $1,183 $1,498 Q2 FY25 … »). La prose arrondissait au dixième de milliard ; le
+  graphique donnait le million.
+- **Un graphique n'est exploitable que si l'ordre des valeurs est lisible.** Certains rendus
+  mélangent trois séries dans le désordre : ne pas deviner, retomber sur la prose et traiter
+  l'arrondi comme un intervalle (`sensCommandes` accepte `[basse, haute]`).
+- **Une regex qui s'arrête au point coupe « $1.3 billion » en « $1 ».** Autoriser le point
+  décimal dans le motif du montant.
 
 ## S'identifier auprès de la SEC — jamais dans le dépôt
 
