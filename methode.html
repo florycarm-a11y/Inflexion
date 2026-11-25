@@ -69,6 +69,32 @@
 
             <!-- ═══ CE QUE LA MÉTHODE MESURE ═══ -->
             <section class="tk-bloc tk-lecture">
+                <h2>Un cas, du premier chiffre à l’alerte</h2>
+                <p>Avant toute définition, voici une ligne entière. Le 9 mars 2022, CrowdStrike publie son quatrième trimestre. La méthode en tire une Rechute. Voici comment, étape par étape — et pourquoi un arrondi aurait suffi à l’effacer.</p>
+
+                <ol class="tk-fil">
+                    <li><strong>On lit le communiqué du jour, et lui seul.</strong> Pas le cours de l’action, pas la presse, pas une note d’analyste. Le chiffre d’affaires du trimestre y figure, avec celui du même trimestre un an plus tôt.</li>
+                    <li><strong>On calcule la croissance sur un an.</strong> Elle ressort à 65,7 %. C’est énorme. Et pourtant, c’est une dégradation.</li>
+                    <li><strong>On la compare à la croissance de la publication précédente</strong>, qui était de 67,2 %. L’écart vaut −1,5 point. Le seuil est d’un point : <span class="tk-sens tk-sens--baisse">baisse</span> pour D1.</li>
+                    <li><strong>On fait de même pour les trois autres dimensions.</strong> Ce trimestre-là : D2 <span class="tk-sens tk-sens--baisse">baisse</span>, D3 <span class="tk-sens tk-sens--stable">stable</span>, D4 <span class="tk-sens tk-sens--stable">stable</span>.</li>
+                    <li><strong>On additionne.</strong> Deux baisses à −1, deux stables à 0 : le solde vaut <span class="tk-donnee">−2</span>.</li>
+                    <li><strong>Un solde de −2 ou moins déclenche une Rechute</strong>, à condition que la ligne ne soit pas déjà en régime de rechute. Elle ne l’est pas. L’alerte part.</li>
+                </ol>
+
+                <div class="tk-question">
+                    <p>Pourquoi 65,7 % de croissance peut valoir « baisse » ?</p>
+                    <p>Parce que la méthode ne mesure pas la croissance, mais son <strong>changement de rythme</strong>. Une société qui croît de 67 % puis de 66 % ralentit, même si les deux chiffres sont excellents. C’est le point le plus contre-intuitif de toute la méthode, et il vaut pour D1 comme pour D2 : ce sont des <strong>dérivées secondes</strong>. On y revient plus bas, car cette seule idée explique la moitié de ce qu’on lit sur une fiche.</p>
+                </div>
+
+                <dl class="tk-calcul">
+                    <dt>Ce que le même calcul donne sur des pourcentages arrondis</dt>
+                    <dd>Le communiqué imprime « 67 % » puis « 66 % ». L’écart tombe alors à <span class="tk-donnee">−1,0 point</span> — qui n’est pas « plus d’un point ». D1 vaudrait <span class="tk-sens tk-sens--stable">stable</span>, le solde <span class="tk-donnee">−1</span>, et <strong>la Rechute du 9 mars 2022 n’existerait pas</strong>.</dd>
+                    <dt>D’où la règle</dt>
+                    <dd>La croissance se calcule sur les <strong>montants publiés</strong>, jamais sur un pourcentage arrondi. C’est la précision 3 de la v1.3, et c’est ce cas précis qui l’a fait écrire. Un arrondi de la société ne doit pas décider d’une alerte.</dd>
+                </dl>
+            </section>
+
+            <section class="tk-bloc tk-lecture">
                 <h2>Ce que la méthode mesure</h2>
                 <p>La méthode lit les publications de résultats trimestriels d’une société portée par un récit — petits réacteurs nucléaires, intelligence artificielle, robotique. À chaque publication, quatre dimensions reçoivent un <strong>sens</strong> : hausse, stable, baisse ou « non publié ». Leur somme est le <strong>solde</strong>. Le solde déclenche quatre alertes : Bascule, Bascule commerciale, Signal faible, Rechute.</p>
                 <p>Elle ne lit que des documents publiés par la société. Elle n’utilise <strong>ni cours de Bourse, ni presse, ni note d’analyste</strong>. Les comptes retenus sont aux normes américaines, sans les retraitements de la société : les résultats « ajustés » ne servent à aucune dimension.</p>
@@ -79,6 +105,63 @@
             </section>
 
             <!-- ═══ LES QUATRE DIMENSIONS ═══ -->
+            <section class="tk-bloc tk-lecture">
+                <h2>Ce qui est fixé avant de lire une seule ligne</h2>
+                <p>Trois paramètres sont arrêtés quand une société entre dans le tracker, <strong>avant d’avoir regardé ses chiffres</strong>. Ils ne changent plus ensuite, même si un autre choix donnerait un meilleur résultat. C’est la garantie la plus simple contre le réglage après coup : on ne choisit pas la règle qui arrange la conclusion.</p>
+
+                <dl class="tk-params">
+                    <div class="tk-param">
+                        <dt>L’archétype</dt>
+                        <dd><strong>Pré-revenus</strong> : aucun revenu lié au récit, ou presque. <strong>Plateforme</strong> : un logiciel ou un service déjà vendu, à revenus récurrents. <strong>Industriel</strong> : un fabricant qui vend déjà, et dont la thèse passe par les commandes. L’archétype décide de ce que mesurent D1 et D2 : un pré-revenus n’a pas de croissance à comparer, on compte donc ses unités livrées et le degré d’engagement de ses clients.</dd>
+                    </div>
+                    <div class="tk-param">
+                        <dt>Le chiffre d’affaires de la thèse</dt>
+                        <dd>Le segment qui porte le récit, hors activités annexes. À défaut, le chiffre d’affaires total. Ce « à défaut » est fréquent : beaucoup de sociétés n’isolent pas l’activité dont on parle. Le choix se dit, et ce qu’il écarte se dit aussi — sans quoi personne ne peut vérifier ce qui est mesuré.</dd>
+                    </div>
+                    <div class="tk-param">
+                        <dt>L’indicateur de demande</dt>
+                        <dd>Dans cet ordre, et pas dans un autre : les <strong>commandes</strong> ou le <strong>carnet de commandes</strong> ; à défaut, le <strong>nombre de clients</strong> ou d’abonnés ; sinon « non publié ». La liste est fermée : un indicateur maison, aussi parlant soit-il, n’y entre pas. Et si la société cesse de publier celui qu’on a retenu, la dimension devient « non publié » à partir de là — on ne la remplace pas par un autre.</dd>
+                    </div>
+                </dl>
+
+                <div class="tk-question">
+                    <p>Pourquoi interdire le remplacement d’un indicateur qui disparaît ?</p>
+                    <p>Parce que remplacer, c’est choisir en connaissant les chiffres. Une société dont le carnet de commandes s’évapore cesse souvent de le publier : lui substituer son nombre de clients, qui tient mieux, reviendrait à effacer la mauvaise nouvelle. La dimension se tait, et son silence est lui-même une information.</p>
+                </div>
+            </section>
+
+            <section class="tk-bloc tk-lecture">
+                <h2>Quel document, et quel jour</h2>
+                <p>Une ligne du tracker correspond à <strong>une publication de résultats trimestriels</strong>, datée du jour où elle paraît. Aux États-Unis, c’est en général le dépôt réglementaire dit « 8-K rubrique 2.02 ». Chaque ligne n’utilise que ce qui était public <em>ce jour-là</em> — ni plus tôt, ni plus tard.</p>
+
+                <dl class="tk-params">
+                    <div class="tk-param">
+                        <dt>Ce qui compte comme le communiqué</dt>
+                        <dd>Toutes les annexes en texte du dépôt : le communiqué lui-même, une lettre aux actionnaires, un second communiqué joint. Un jeu de diapositives peut fournir un chiffre absent du texte, mais ne change pas à lui seul un statut de prévision.</dd>
+                    </div>
+                    <div class="tk-param">
+                        <dt>Ce qui ne crée pas de ligne</dt>
+                        <dd>Une pré-annonce ou un point d’activité publié entre deux résultats. Ce qu’il annonce se lit à la publication de résultats suivante. Exemple réel : ChargePoint retire sa prévision annuelle le 16 novembre 2023 ; le statut « abaissée » est porté par la ligne du 6 décembre.</dd>
+                    </div>
+                    <div class="tk-param">
+                        <dt>Les rapports trimestriels et annuels</dt>
+                        <dd>Ils servent s’ils sont déposés <strong>au plus tard</strong> le jour de la publication. Déposés après, leur donnée est « non publié » pour cette ligne — mais elle sert de valeur précédente à la ligne suivante. Deux états, donc, et non un seul.</dd>
+                    </div>
+                    <div class="tk-param">
+                        <dt>Le comparatif d’il y a un an</dt>
+                        <dd>Il se lit dans le communiqué du jour, tel que la société l’imprime. Pas dans une base de données, pas dans un dépôt retraité plus tard. Les sociétés retraitent leur historique — fusions, cessions, reclassements — et prendre « la dernière valeur connue » reviendrait à lire une base de données au lieu de lire les comptes.</dd>
+                    </div>
+                    <div class="tk-param">
+                        <dt>Les comptes retenus</dt>
+                        <dd>Ceux aux normes américaines, sans les retraitements de la société. Les résultats « ajustés » ne servent à aucune dimension. Beaucoup de communiqués présentent <em>deux</em> comptes de résultat côte à côte, aux libellés identiques : seul le premier compte.</dd>
+                    </div>
+                    <div class="tk-param">
+                        <dt>Quand deux lectures se défendent</dt>
+                        <dd>On retient la plus neutre — « maintenue », « stable » — et l’on inscrit les deux au journal. Un jalon repoussé de quelques jours par un changement de formulation ne devient pas une dégradation parce que le lecteur le préfère ainsi.</dd>
+                    </div>
+                </dl>
+            </section>
+
             <section class="tk-bloc">
                 <h2>Les quatre dimensions</h2>
                 <p class="tk-note">Chaque dimension reçoit un sens : hausse (+1), stable (0), baisse (−1), ou « non publié », qui <strong>ne compte pas</strong> dans le solde. Les variantes dépendent de l’archétype de la société : pré-revenus, plateforme ou industriel.</p>
@@ -147,6 +230,30 @@
                         </tbody>
                     </table>
                 </div>
+
+                <h3>Les mêmes règles, en chiffres</h3>
+                <p>Le tableau ci-dessus énonce des seuils. Voici ce qu’ils donnent sur des montants, dimension par dimension. Les quatre exemples sont construits pour tomber de justesse d’un côté ou de l’autre : c’est là que la règle se comprend.</p>
+
+                <dl class="tk-calcul">
+                    <dt>D1 — pourquoi « un point » est un point d’écart, pas un point de croissance</dt>
+                    <dd>Une société passe de <span class="tk-donnee">100</span> à <span class="tk-donnee">130</span> de chiffre d’affaires sur un an : croissance de <span class="tk-donnee">+30,0 %</span>. Au trimestre suivant, de <span class="tk-donnee">120</span> à <span class="tk-donnee">157</span> : croissance de <span class="tk-donnee">+30,8 %</span>. L’écart entre les deux croissances vaut <span class="tk-donnee">+0,8 point</span> — moins d’un point, donc <span class="tk-sens tk-sens--stable">stable</span>. Il aurait fallu <span class="tk-donnee">+31,1 %</span> pour obtenir une hausse. <strong>D1 ne demande pas que la société croisse, mais qu’elle accélère.</strong></dd>
+
+                    <dt>D2 par le carnet — comment on reconstitue des commandes qu’on ne voit pas</dt>
+                    <dd>Peu de sociétés publient leurs commandes du trimestre. Beaucoup publient leur carnet. Or le carnet se remplit des commandes et se vide du chiffre d’affaires livré : <strong>commandes = variation du carnet + chiffre d’affaires du trimestre</strong>. Un carnet qui passe de <span class="tk-donnee">1 000</span> à <span class="tk-donnee">1 050</span> avec <span class="tk-donnee">200</span> de chiffre d’affaires signifie <span class="tk-donnee">250</span> de commandes, soit un ratio de <span class="tk-donnee">1,25</span> : au-dessus de 1,05, <span class="tk-sens tk-sens--hausse">hausse</span>. Un carnet stable à <span class="tk-donnee">1 000</span> signifie exactement <span class="tk-donnee">200</span> de commandes, ratio <span class="tk-donnee">1,00</span> : <span class="tk-sens tk-sens--stable">stable</span>. Un carnet qui tombe à <span class="tk-donnee">950</span> ne signifie que <span class="tk-donnee">150</span> de commandes, ratio <span class="tk-donnee">0,75</span> : <span class="tk-sens tk-sens--baisse">baisse</span>. La société a livré plus qu’elle n’a vendu.</dd>
+
+                    <dt>D4 — pourquoi deux seuils, et non un</dt>
+                    <dd>Le seuil est de <strong>2 points</strong> quand la marge du trimestre est positive, et de <strong>5 points</strong> quand elle est négative. Une marge qui passe de <span class="tk-donnee">+3 %</span> à <span class="tk-donnee">+5 %</span> gagne 2,0 points pile : <span class="tk-sens tk-sens--stable">stable</span>, le seuil étant strict. Une marge qui passe de <span class="tk-donnee">−80 %</span> à <span class="tk-donnee">−74 %</span> gagne 6 points : <span class="tk-sens tk-sens--hausse">hausse</span>. Le seuil est plus exigeant dans le négatif parce qu’une marge très négative bouge beaucoup pour peu de chose : chez une société qui perd quatre-vingts centimes par euro vendu, deux points ne veulent rien dire.</dd>
+
+                    <dt>La marge non calculable — la règle des cent fois</dt>
+                    <dd>Une marge n’est pas calculable si le chiffre d’affaires est nul ou négatif, <em>ou</em> si la perte d’exploitation dépasse cent fois ce chiffre d’affaires. Une perte de <span class="tk-donnee">100</span> pour <span class="tk-donnee">1</span> de ventes reste calculable, à exactement cent fois ; une perte de <span class="tk-donnee">101</span> ne l’est plus. Sans ce plafond, une société qui encaisse mille euros au milieu d’un trimestre à cinquante millions de pertes afficherait une marge de −5 000 000 %, et la moindre variation de ses mille euros ferait bouger D4 de milliers de points.</dd>
+                </dl>
+
+                <div class="tk-question">
+                    <p>Pourquoi mesurer des changements de rythme, et non des niveaux ?</p>
+                    <p>Parce qu’un niveau ne dit rien d’une inflexion. Une société peut croître de 40 % par an pendant cinq ans sans qu’il ne se passe jamais rien de nouveau. Ce que la méthode cherche, c’est le moment où la trajectoire change — et un changement de trajectoire est, par construction, une dérivée seconde.</p>
+                    <p>Cela a une conséquence qu’il faut accepter : <strong>une série parfaitement régulière rend la méthode muette</strong>, même quand elle décline. Une base d’abonnés qui recule de 1 % par an, tous les trimestres, sans jamais accélérer ni ralentir, donne douze fois « stable » — alors qu’elle a perdu un dixième de ses clients. La méthode voit les ruptures, pas les pentes.</p>
+                </div>
+
                 <h3>Règles d’application</h3>
                 <ul class="tk-retenir">
                     <li><strong>Croissance calculée sur les montants.</strong> Une croissance se calcule à partir des deux montants publiés, sans arrondi intermédiaire. Un pourcentage imprimé ne sert que s’il n’est pas recalculable. Les seuils sont stricts : « plus d’un point » veut dire un écart supérieur à 1,0.</li>
@@ -250,6 +357,25 @@
 
             <!-- ═══ DRAPEAUX ET HORS CALCUL ═══ -->
             <section class="tk-bloc tk-lecture">
+                <h2>Pourquoi tant de « non publié »</h2>
+                <p>Sur une fiche, la mention <span class="tk-np">non publié</span> revient souvent — parfois sur une dimension entière, d’un bout à l’autre d’une série. Ce n’est pas une défaillance de lecture : c’est le refus de combler un trou. Une dimension non publiée <strong>ne compte pas dans le solde</strong>, ni en bien ni en mal. Voici les six raisons, toutes rencontrées sur des sociétés réelles.</p>
+
+                <ul class="tk-retenir">
+                    <li><strong>La société ne publie pas la donnée.</strong> Un fabricant d’appareils grand public n’a ni carnet de commandes, ni nombre d’abonnés : sa demande se lit en rayon. D2 se taira sur toute sa série, et aucune règle n’y remédiera.</li>
+                    <li><strong>Elle ne donne aucune prévision.</strong> Certaines sociétés n’annoncent jamais le moindre chiffre pour l’avenir — ni chiffre d’affaires, ni livraisons, ni résultat. D3 se tait alors en permanence.</li>
+                    <li><strong>Il manque la valeur précédente.</strong> Une dérivée seconde a besoin de deux points. À la première ligne d’une société, ou après un trou, la comparaison n’existe pas.</li>
+                    <li><strong>Le calcul est impossible.</strong> Marge non calculable, chiffre d’affaires nul, perte dépassant cent fois les ventes : la règle refuse de produire un nombre dénué de sens.</li>
+                    <li><strong>Le document arrive trop tard.</strong> Un rapport déposé après le communiqué ne sert pas à sa propre ligne. Il servira à la suivante.</li>
+                    <li><strong>Le montant publié est trop grossier.</strong> Un carnet annoncé « environ 1,7 milliard » ne permet pas de calculer une variation trimestrielle face à un chiffre d’affaires de 0,9 milliard : l’arrondi déciderait de l’alerte. La règle est alors de vérifier si l’imprécision change le verdict — et de se taire seulement si elle le change.</li>
+                </ul>
+
+                <div class="tk-question">
+                    <p>Est-ce que des dimensions muettes affaiblissent les alertes ?</p>
+                    <p>Oui, et il faut le dire franchement. Une Bascule exige un solde de +2. Avec quatre dimensions, deux hausses suffisent ; avec trois, il faut deux hausses <em>et</em> aucune baisse ; avec deux, l’alerte devient presque inatteignable. <strong>La méthode est donc structurellement moins sensible chez les sociétés qui publient peu.</strong> Ce n’est pas corrigé : corriger demanderait de deviner, et deviner est précisément ce que la méthode refuse. Mais une fiche très trouée doit être lue en sachant cela.</p>
+                </div>
+            </section>
+
+            <section class="tk-bloc tk-lecture">
                 <h2>Les drapeaux, et ce qui reste hors du calcul</h2>
                 <p>Trois drapeaux sortent du calcul : <strong>« vend à perte »</strong> (garde-fou de marge brute), <strong>« rémunération en actions »</strong> (garde-fou de D4) et <strong>« hésitation »</strong> (lecture neutre retenue).</p>
                 <p>Cinq autres drapeaux sont éditoriaux. Ils se saisissent à la main, chacun avec sa source, et s’affichent à côté de la fiche, <strong>jamais dans le solde</strong> : revenus hors thèse, trésorerie sans traction, concentration des clients, dépendance à une décision publique, banalisation de la technologie.</p>
@@ -258,16 +384,123 @@
             </section>
 
             <!-- ═══ LES TROIS VRAIS CHOIX DE LA v1.3 ═══ -->
-            <section class="tk-bloc tk-lecture">
-                <h2>Les trois vrais choix de la v1.3</h2>
-                <p class="tk-note">Les huit précisions de la v1.3 viennent de la comparaison de deux rejeux indépendants de la v1.2 sur dix cas, le 18 novembre 2026. Chacune tranche un point que la v1.2 laissait ouvert et que les deux lecteurs avaient lu différemment. Trois sont de vrais choix, et non de simples mises au net.</p>
+            <section class="tk-bloc">
+                <h2>Les huit précisions, et le cas qui a fait écrire chacune</h2>
+                <p>Chaque précision vient d’un désaccord réel. Deux lecteurs ont rejoué la v1.2 séparément sur dix sociétés ; là où ils sont tombés sur des verdicts différents, le texte était ambigu. Les huit précisions ferment ces ambiguïtés, une par une. Le tableau donne, pour chacune, le cas qui l’a révélée et ce qu’elle a changé — y compris quand elle n’a rien changé, ce qui est aussi un résultat.</p>
+
+                <div class="tk-table-defile">
+                    <table class="tk-table">
+                        <caption class="tk-note">Les huit précisions de la v1.3, leur cas d’origine et leur effet</caption>
+                        <thead>
+                            <tr><th scope="col">N°</th><th scope="col">Ce que la précision tranche</th><th scope="col">Le cas qui l’a montrée</th><th scope="col">Effet sur les alertes</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="tk-donnee">1</td>
+                                <td>Une marge est non calculable si le chiffre d’affaires est nul ou négatif, ou si la perte d’exploitation dépasse cent fois ce chiffre d’affaires. Même critère pour D4 et pour la marge brute</td>
+                                <td>Fisker, deuxième trimestre 2023 : 825 000 dollars de ventes, marge brute de +7,5 %, perte d’exploitation de 87,9 millions</td>
+                                <td>La Bascule commerciale est retenue. À la lettre de la v1.2, elle partait le 4 août 2023, <strong>dix mois avant la faillite</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="tk-donnee">2</td>
+                                <td>Une pré-annonce ne crée pas de ligne</td>
+                                <td>Huit pré-annonces (ChargePoint, Peloton, Plug Power, Rocket Lab, SunPower) comptées comme des lignes par le second rejeu</td>
+                                <td>Cinq lignes définitives y perdaient leur comparaison ; une Rechute de SunPower glissait d’un trimestre</td>
+                            </tr>
+                            <tr>
+                                <td class="tk-donnee">3</td>
+                                <td>La croissance se calcule sur les montants publiés</td>
+                                <td>CrowdStrike, mars 2022 : 67 % puis 66 % en arrondi, 67,2 % puis 65,7 % sur les montants</td>
+                                <td>Une Rechute de plus, le 9 mars 2022</td>
+                            </tr>
+                            <tr>
+                                <td class="tk-donnee">4</td>
+                                <td>Un rapport ne sert que s’il est déposé au plus tard le jour de la publication</td>
+                                <td>Rocket Lab : carnet de fin d’année lu dans le rapport annuel, déposé sept jours puis un jour après</td>
+                                <td>La seconde Bascule passe du 27 février au 6 mai 2024</td>
+                            </tr>
+                            <tr>
+                                <td class="tk-donnee">5</td>
+                                <td>Toutes les annexes en texte du dépôt comptent ; une diapositive ne change pas seule un statut de prévision</td>
+                                <td>Constellation Energy (prévision 2024 dans un second communiqué), AppLovin (lettre aux actionnaires), Plug Power en mai 2023 (cas bas dans les diapositives)</td>
+                                <td>Aucune alerte changée</td>
+                            </tr>
+                            <tr>
+                                <td class="tk-donnee">6</td>
+                                <td>Ordre entre plusieurs prévisions : exercice en cours, puis exercice suivant ; jamais les objectifs lointains ; série continuée si la société parle elle-même de relèvement</td>
+                                <td>Plug Power, de 2020 à 2023</td>
+                                <td>Décide d’une Rechute : 6 août 2020 dans un rejeu, 9 novembre 2021 dans l’autre</td>
+                            </tr>
+                            <tr>
+                                <td class="tk-donnee">7</td>
+                                <td>Sans communiqué précédent, la première ligne prend les comparatifs imprimés dans le premier communiqué</td>
+                                <td>ChargePoint et Rocket Lab, tout juste cotées</td>
+                                <td>Un Signal faible de Rocket Lab (15 novembre 2021) en dépend</td>
+                            </tr>
+                            <tr>
+                                <td class="tk-donnee">8</td>
+                                <td>Les comparatifs sont ceux du communiqué du jour</td>
+                                <td>Plug Power, 9 novembre 2020 : −17,0 % imprimé pour le troisième trimestre 2019, −23,3 % dans la base de données</td>
+                                <td>Une Bascule « retenue » en moins</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Les trois vrais choix de la v1.3</h3>
+                <p class="tk-note">Cinq des huit précisions ne font que mettre au net ce que la v1.2 voulait déjà dire. Trois sont de <strong>vrais choix</strong> : un autre choix se défendait, et il aurait donné d’autres alertes. Les voici, avec ce qu’ils coûtent.</p>
                 <ul class="tk-retenir">
                     <li><strong>Précision 1 — le critère de marge non calculable.</strong> Elle a été écrite <em>après</em> avoir vu le cas Fisker. Fisker ne compte donc plus comme preuve hors échantillon du garde-fou de marge brute.</li>
                     <li><strong>Précision 2 — une pré-annonce ne crée pas de ligne.</strong> Le choix inverse se défend pour un outil en direct : une ligne à la pré-annonce aurait signalé la coupe de ChargePoint vingt jours plus tôt. Il n’a pas été testé, et il faudrait écrire comment la ligne définitive se compare.</li>
                     <li><strong>Précision 6 — l’ordre entre plusieurs prévisions.</strong> Elle fixe une lecture parmi plusieurs possibles. Chez Plug Power, sept des dix lignes en désaccord entre les deux lecteurs venaient de la prévision.</li>
                 </ul>
                 <h3>État de test de la v1.3</h3>
-                <p style="margin:0">La v1.3 <strong>n’a pas de rejeu propre</strong>. Les précisions 3, 4, 5, 6 et 8 sont appliquées dans le rejeu corrigé du 18 novembre 2026, aux lignes où la comparaison a montré un écart ; elles n’ont pas été revérifiées sur les 146 lignes. Les précisions 1 et 2 décrivent ce que ce rejeu faisait déjà. La précision 7 n’a pas été rejouée. Aucune n’a été rejouée sur les sept premiers cas.</p>
+                <p>La v1.3 <strong>n’a pas de rejeu propre</strong>. Les précisions 3, 4, 5, 6 et 8 sont appliquées dans le rejeu corrigé du 18 novembre 2026, aux lignes où la comparaison a montré un écart ; elles n’ont pas été revérifiées sur les 146 lignes. Les précisions 1 et 2 décrivent ce que ce rejeu faisait déjà. La précision 7 n’a pas été rejouée. Aucune n’a été rejouée sur les sept premiers cas.</p>
+                <p style="margin:0">Un rejeu propre est <strong>en cours</strong>, sur un univers que personne n’a choisi : les sociétés d’un fonds indiciel du spatial, prises à une date passée, filtres et règles publiés <em>avant</em> la première lecture. Il mesurera ce que le backtest ne sait pas dire — la part des Bascules suivies d’un succès. Il sera publié même s’il est mauvais.</p>
+            </section>
+
+            <section class="tk-bloc">
+                <h2>Lire une série entière</h2>
+                <p class="tk-note">Dix-neuf publications de CrowdStrike, telles que la méthode les lit. Cette suite sert aussi de test au moteur : elle vérifie que le calcul des alertes à partir des sens est bien celui du texte. Elle ne teste pas la lecture des communiqués, qui se fait à la main. <span class="tk-np">n.p.</span> = non publié.</p>
+
+                <div class="tk-table-defile">
+                    <table class="tk-table">
+                        <caption class="tk-note">CrowdStrike, archétype plateforme — suite de référence</caption>
+                        <thead>
+                            <tr><th scope="col">Publication</th><th scope="col">D1</th><th scope="col">D2</th><th scope="col">D3</th><th scope="col">D4</th><th scope="col">Solde</th><th scope="col">Marge brute</th><th scope="col">Alerte</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="tk-donnee">2019-07-18</td><td><span class="tk-np">n.p.</span></td><td><span class="tk-np">n.p.</span></td><td class="tk-donnee">0</td><td class="tk-donnee">+1</td><td class="tk-donnee">+1</td><td class="tk-donnee">+69,5 %</td><td>aucune (première ligne)</td></tr>
+                            <tr><td class="tk-donnee">2019-09-05</td><td class="tk-donnee">−1</td><td><span class="tk-np">n.p.</span></td><td class="tk-donnee">+1</td><td class="tk-donnee">+1</td><td class="tk-donnee">+1</td><td class="tk-donnee">+70,8 %</td><td>aucune</td></tr>
+                            <tr><td class="tk-donnee">2019-12-05</td><td class="tk-donnee">0</td><td><span class="tk-np">n.p.</span></td><td class="tk-donnee">+1</td><td class="tk-donnee">+1</td><td class="tk-donnee">+2</td><td class="tk-donnee">+70,1 %</td><td><strong>Bascule</strong></td></tr>
+                            <tr><td class="tk-donnee">2020-03-19</td><td class="tk-donnee">−1</td><td class="tk-donnee">+1</td><td class="tk-donnee">0</td><td class="tk-donnee">+1</td><td class="tk-donnee">+1</td><td class="tk-donnee">+71,5 %</td><td>aucune</td></tr>
+                            <tr><td class="tk-donnee">2020-06-02</td><td class="tk-donnee">−1</td><td class="tk-donnee">−1</td><td class="tk-donnee">+1</td><td class="tk-donnee">+1</td><td class="tk-donnee">0</td><td class="tk-donnee">+73,7 %</td><td>aucune</td></tr>
+                            <tr><td class="tk-donnee">2020-09-02</td><td class="tk-donnee">0</td><td class="tk-donnee">−1</td><td class="tk-donnee">+1</td><td class="tk-donnee">+1</td><td class="tk-donnee">+1</td><td class="tk-donnee">+72,7 %</td><td>aucune</td></tr>
+                            <tr><td class="tk-donnee">2020-12-02</td><td class="tk-donnee">−1</td><td class="tk-donnee">−1</td><td class="tk-donnee">+1</td><td class="tk-donnee">+1</td><td class="tk-donnee">0</td><td class="tk-donnee">+73,5 %</td><td>aucune</td></tr>
+                            <tr><td class="tk-donnee">2021-03-16</td><td class="tk-donnee">−1</td><td class="tk-donnee">−1</td><td class="tk-donnee">0</td><td class="tk-donnee">+1</td><td class="tk-donnee">−1</td><td class="tk-donnee">+74,8 %</td><td>aucune (le régime de bascule se ferme)</td></tr>
+                            <tr><td class="tk-donnee">2021-06-03</td><td class="tk-donnee">−1</td><td class="tk-donnee">0</td><td class="tk-donnee">+1</td><td class="tk-donnee">0</td><td class="tk-donnee">0</td><td class="tk-donnee">+74,1 %</td><td>Signal faible</td></tr>
+                            <tr><td class="tk-donnee">2021-08-31</td><td class="tk-donnee">−1</td><td class="tk-donnee">0</td><td class="tk-donnee">+1</td><td class="tk-donnee">0</td><td class="tk-donnee">0</td><td class="tk-donnee">+73,2 %</td><td>aucune</td></tr>
+                            <tr><td class="tk-donnee">2021-12-01</td><td class="tk-donnee">−1</td><td class="tk-donnee">−1</td><td class="tk-donnee">+1</td><td class="tk-donnee">0</td><td class="tk-donnee">−1</td><td class="tk-donnee">+73,2 %</td><td>aucune</td></tr>
+                            <tr><td class="tk-donnee">2022-03-09</td><td class="tk-donnee">−1</td><td class="tk-donnee">−1</td><td class="tk-donnee">0</td><td class="tk-donnee">0</td><td class="tk-donnee">−2</td><td class="tk-donnee">+73,9 %</td><td><strong>Rechute</strong></td></tr>
+                            <tr><td class="tk-donnee">2022-06-02</td><td class="tk-donnee">−1</td><td class="tk-donnee">−1</td><td class="tk-donnee">+1</td><td class="tk-donnee">+1</td><td class="tk-donnee">0</td><td class="tk-donnee">+74,0 %</td><td>Signal faible</td></tr>
+                            <tr><td class="tk-donnee">2022-08-30</td><td class="tk-donnee">−1</td><td class="tk-donnee">−1</td><td class="tk-donnee">+1</td><td class="tk-donnee">+1</td><td class="tk-donnee">0</td><td class="tk-donnee">+73,7 %</td><td>aucune (le régime de rechute se ferme)</td></tr>
+                            <tr><td class="tk-donnee">2022-11-29</td><td class="tk-donnee">−1</td><td class="tk-donnee">−1</td><td class="tk-donnee">0</td><td class="tk-donnee">0</td><td class="tk-donnee">−2</td><td class="tk-donnee">+72,8 %</td><td><strong>Rechute</strong></td></tr>
+                            <tr><td class="tk-donnee">2023-03-07</td><td class="tk-donnee">−1</td><td class="tk-donnee">−1</td><td class="tk-donnee">0</td><td class="tk-donnee">0</td><td class="tk-donnee">−2</td><td class="tk-donnee">+72,4 %</td><td>aucune (régime de rechute)</td></tr>
+                            <tr><td class="tk-donnee">2023-05-31</td><td class="tk-donnee">−1</td><td><span class="tk-np">n.p.</span></td><td class="tk-donnee">+1</td><td class="tk-donnee">0</td><td class="tk-donnee">0</td><td class="tk-donnee">+75,6 %</td><td>Signal faible</td></tr>
+                            <tr><td class="tk-donnee">2023-08-30</td><td class="tk-donnee">−1</td><td><span class="tk-np">n.p.</span></td><td class="tk-donnee">+1</td><td class="tk-donnee">+1</td><td class="tk-donnee">+1</td><td class="tk-donnee">+75,0 %</td><td>aucune (le régime de rechute se ferme)</td></tr>
+                            <tr><td class="tk-donnee">2023-11-28</td><td class="tk-donnee">−1</td><td><span class="tk-np">n.p.</span></td><td class="tk-donnee">+1</td><td class="tk-donnee">+1</td><td class="tk-donnee">+1</td><td class="tk-donnee">+75,2 %</td><td>aucune</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Ce que cette série apprend</h3>
+                <ul class="tk-retenir">
+                    <li><strong>D1 est négative presque partout, et CrowdStrike n’a jamais décliné.</strong> Seize lignes sur dix-neuf portent une baisse de D1, chez une société qui a plus que triplé son chiffre d’affaires sur la période. C’est la dérivée seconde à l’œuvre : la croissance restait très forte, mais elle ralentissait presque chaque trimestre.</li>
+                    <li><strong>La première ligne ne porte jamais d’alerte</strong>, même avec un solde de +1 : il n’y a rien avant elle à quoi comparer.</li>
+                    <li><strong>Le 7 mars 2023 a un solde de −2 sans alerte.</strong> La ligne est déjà en régime de rechute depuis novembre : la méthode ne réémet pas une alerte qu’elle a déjà donnée. C’est à cela que servent les régimes.</li>
+                    <li><strong>Les trois Signaux faibles arrivent tous après une dégradation</strong>, sur un solde nul. Ils ne disent pas que les preuves s’améliorent — ils disent qu’une dimension vient de se retourner alors que le reste stagne.</li>
+                    <li><strong>D2 se tait neuf fois</strong>, dont les trois dernières lignes d’affilée : la donnée a cessé d’être publiée, et la méthode ne lui a pas cherché de remplaçante.</li>
+                </ul>
             </section>
 
             <!-- ═══ CE QUE LE BACKTEST A MONTRÉ (méthode §12, en entier) ═══ -->
