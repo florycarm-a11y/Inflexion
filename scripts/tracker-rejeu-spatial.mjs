@@ -613,6 +613,89 @@ const GRMN = [
   { date: '2026-10-28', trimestre: 'T3 2026', ca: 1986076, caAnPasse: 1770901, cout: 728308, op: 611648, opAnPasse: 456803, guidance: g(2026, 8150, 8150) },
 ];
 
+// ═════════════════════════════════════════════════════════════════════════════
+// VIASAT (VSAT) — plateforme — exercice clos le 31 mars
+//
+// DOUZE 8-K RUBRIQUE 2.02, UN PAR TRIMESTRE, chacun suivi du 10-Q ou du 10-K un à huit jours plus
+// tard. Précision 4 : le communiqué du jour fait foi. Le communiqué est l'annexe 99.2, une lettre
+// aux actionnaires de 350 ko ; l'annexe 99.1 n'en fait que 6. La précision 5 admet les deux.
+//
+// INDICATEUR DE DEMANDE : LES COMMANDES, publiées chaque trimestre (« awards »). C'est la première
+// branche de §2, et la première société du rejeu à l'emprunter : le ratio commandes / chiffre
+// d'affaires se lit sans reconstitution par le carnet.
+// La précision du chiffre varie d'un communiqué à l'autre, et chaque ligne prend celui de SON
+// communiqué (précision 8), jamais celui qu'un communiqué ultérieur précisera :
+//  · au million, quand le communiqué donne les deux segments (811 + 351 au T1 FY2025, 751 + 327
+//    au T3 FY2025) ou un graphique ordonné par trimestre (T2, T3, T4 FY2026, T2 FY2027) ;
+//  · au T4 FY2024, le graphique du jour porte cinq valeurs dans le désordre, dont une seule,
+//    1 114, s'accorde avec le « $1.1 billion » de la prose : elle est retenue ;
+//  · ailleurs, seul l'arrondi de la prose existe (« $1.2 billion ») : le montant est un
+//    INTERVALLE, et le sens n'est publié que si ses deux bornes s'accordent. Aux T3 FY2024,
+//    T4 FY2025 et T1 FY2026, elles ne s'accordent pas : lecture neutre « stable », hésitation
+//    consignée (§3). Vérifié après coup sur les montants exacts parus plus tard : seule la
+//    première ligne aurait différé (1 218, soit « hausse »), et une première ligne ne porte
+//    aucune alerte.
+//
+// D3 SE LIT DANS LES MOTS DE LA SOCIÉTÉ. Viasat ne chiffre sa prévision en dollars que pour
+// l'exercice 2024 (4,10 à 4,25 milliards, identique en novembre 2023 et en février 2024 :
+// « maintenue »). Ensuite elle guide en croissance — « roughly flat », « flat to slightly up »,
+// « mid-single-digit » — et dit elle-même ce qu'elle fait de sa prévision. Un seul mouvement en
+// douze trimestres : le 7 août 2024, « we are raising the low end of our FY2025 revenue […]
+// outlook ». Une borne basse relevée fait monter le milieu de la fourchette : « relevée », au
+// critère même de §5. Tout le reste est « we continue to expect » (maintenue) ou la première
+// prévision d'un exercice (nouvelle). Au T2 FY2027, c'est l'EBITDA ajusté qui est abaissé, pas
+// le chiffre d'affaires : la prévision principale ne bouge pas, et §3 écarte les agrégats ajustés.
+//
+// CA DE LA THÈSE : le chiffre d'affaires total — Viasat est tout entière une société de
+// communications par satellite. Les comparatifs des trois premières lignes (651, 666, 780
+// millions) précèdent l'intégration d'Inmarsat, acquise le 30 mai 2023 : la croissance imprimée
+// dépasse 70 %, puis retombe. La méthode n'a pas de règle de périmètre ; comme chez EchoStar,
+// le chiffre est consigné tel quel et le constat va au bilan.
+//
+// Montants en milliers de dollars. Coût des ventes = coût des services + coût des produits.
+// La ligne du 8 novembre 2023 est HORS SÉRIE (précision 7).
+// ═════════════════════════════════════════════════════════════════════════════
+
+const VSAT_SRC = {
+  '2023-11-08': src('8-K', '2023-11-08', `${ARCH}/797721/000119312523273512/d930392dex992.htm`),
+  '2024-02-06': src('8-K', '2024-02-06', `${ARCH}/797721/000119312524025304/d707975dex992.htm`),
+  '2024-05-21': src('8-K', '2024-05-21', `${ARCH}/797721/000119312524143911/d825996dex992.htm`),
+  '2024-08-07': src('8-K', '2024-08-07', `${ARCH}/797721/000119312524195897/d859154dex992.htm`),
+  '2024-11-06': src('8-K', '2024-11-06', `${ARCH}/797721/000119312524252046/d903060dex992.htm`),
+  '2025-02-06': src('8-K', '2025-02-06', `${ARCH}/797721/000119312525021810/d919416dex992.htm`),
+  '2025-05-20': src('8-K', '2025-05-20', `${ARCH}/797721/000119312525123143/d944611dex992.htm`),
+  '2025-08-05': src('8-K', '2025-08-05', `${ARCH}/797721/000119312525173528/d908372dex992.htm`),
+  '2025-11-07': src('8-K', '2025-11-07', `${ARCH}/797721/000119312525272331/d38034dex992.htm`),
+  '2026-02-05': src('8-K', '2026-02-05', `${ARCH}/797721/000119312526039528/d39970dex992.htm`),
+  '2026-05-28': src('8-K', '2026-05-28', `${ARCH}/797721/000119312526245304/d133220dex992.htm`),
+  '2026-08-04': src('8-K', '2026-08-04', `${ARCH}/797721/000119312526332896/d131434dex992.htm`),
+  '2026-11-05': src('8-K', '2026-11-05', `${ARCH}/797721/000119312526449775/d179648dex992.htm`),
+};
+
+// commandes : un nombre quand le communiqué du jour le donne au million, un intervalle
+// [basse, haute] quand il ne donne qu'un arrondi au dixième de milliard.
+const VSAT = [
+  { date: '2023-11-08', trimestre: 'T2 FY2024', ca: 1225415, caAnPasse: 663559, cout: null, op: null, opAnPasse: null, commandes: null, guidance: g(2024, 4100000, 4250000), horsSerie: true },
+  // « $1.2 billion » : bornes en désaccord (stable / hausse) → lecture neutre, hésitation.
+  { date: '2024-02-06', trimestre: 'T3 FY2024', ca: 1128539, caAnPasse: 651444, cout: 767276, op: -43918, opAnPasse: -31311, commandes: [1150000, 1250000], guidance: g(2024, 4100000, 4250000), hesitation: true },
+  // Première prévision de l'exercice 2025 : « roughly flat YoY revenue growth ».
+  { date: '2024-05-21', trimestre: 'T4 FY2024', ca: 1150013, caAnPasse: 666099, cout: 823619, op: 295, opAnPasse: -72692, commandes: 1114000, statut: 'nouvelle' },
+  // « We are raising the low end of our FY2025 revenue […] outlook » → « flat to slightly up ».
+  { date: '2024-08-07', trimestre: 'T1 FY2025', ca: 1126460, caAnPasse: 779791, cout: 710825, op: 59735, opAnPasse: -41516, commandes: 811000 + 351000, statut: 'relevee' },
+  { date: '2024-11-06', trimestre: 'T2 FY2025', ca: 1122262, caAnPasse: 1225415, cout: 775078, op: -24678, opAnPasse: -804667, commandes: [1250000, 1350000], statut: 'maintenue' },
+  // « We are maintaining our FY25 revenue and Adjusted EBITDA outlook ».
+  { date: '2025-02-06', trimestre: 'T3 FY2025', ca: 1123767, caAnPasse: 1128539, cout: 761947, op: 21248, opAnPasse: -43918, commandes: 751000 + 327000, statut: 'maintenue' },
+  // Première prévision de l'exercice 2026. Commandes « $1.2 billion » : bornes en désaccord.
+  { date: '2025-05-20', trimestre: 'T4 FY2025', ca: 1147082, caAnPasse: 1150013, cout: 781783, op: -153785, opAnPasse: 295, commandes: [1150000, 1250000], statut: 'nouvelle', hesitation: true },
+  { date: '2025-08-05', trimestre: 'T1 FY2026', ca: 1171054, caAnPasse: 1126460, cout: 761616, op: 46672, opAnPasse: 59735, commandes: [1150000, 1250000], statut: 'maintenue', hesitation: true },
+  { date: '2025-11-07', trimestre: 'T2 FY2026', ca: 1140893, caAnPasse: 1122262, cout: 756001, op: 35775, opAnPasse: -24678, commandes: 1498000, statut: 'maintenue' },
+  { date: '2026-02-05', trimestre: 'T3 FY2026', ca: 1157045, caAnPasse: 1123767, cout: 778268, op: 26302, opAnPasse: 21248, commandes: 971000, statut: 'maintenue' },
+  // Première prévision de l'exercice 2027 : « mid-single-digit YoY revenue growth ».
+  { date: '2026-05-28', trimestre: 'T4 FY2026', ca: 1171288, caAnPasse: 1147082, cout: 811174, op: -624, opAnPasse: -153785, commandes: 1280000, statut: 'nouvelle' },
+  { date: '2026-08-04', trimestre: 'T1 FY2027', ca: 1156543, caAnPasse: 1171054, cout: 743702, op: 47308, opAnPasse: 46672, commandes: [1250000, 1350000], statut: 'maintenue' },
+  { date: '2026-11-05', trimestre: 'T2 FY2027', ca: 1179996, caAnPasse: 1140893, cout: 801050, op: 7149, opAnPasse: 35775, commandes: 1138000, statut: 'maintenue' },
+];
+
 // ── Séries ───────────────────────────────────────────────────────────────────
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -721,6 +804,7 @@ function serie(lignes, sources, { caThese = false, indicateurDemande = 'carnet' 
           // Précision 4 : un dépôt postérieur au communiqué donne « non publié » POUR CETTE
           // LIGNE, mais « sert […] de valeur précédente à la ligne suivante ». D'où `carnetTardif`
           // — la valeur ne compte pas ici, et se propage quand même.
+          commandes: l.commandes,
           carnet: l.carnetTardif ? null : l.carnet, carnetPrecedent, ca: l.ca,
           croissanceClients: l.croissanceClients, croissanceClientsPrecedente: clientsPrecedent,
         }),
@@ -825,6 +909,13 @@ const LUES = [
     ca_these: { valeur: 'Chiffre d’affaires total — le positionnement traverse les cinq segments', source: GRMN_SRC['2026-10-28'] },
     indicateur_demande: { type: 'non-publie', valeur: 'Ni commandes, ni carnet, ni nombre de clients publiés', source: GRMN_SRC['2026-10-28'] },
     publications: serie(GRMN, GRMN_SRC, { indicateurDemande: 'non-publie' }),
+    evenements_commerciaux: [],
+  },  {
+    id: 'viasat', nom: 'Viasat', archetype: 'plateforme',
+    recit: 'Spatial — communications par satellite, civiles et de défense',
+    ca_these: { valeur: 'Chiffre d’affaires total', source: VSAT_SRC['2026-11-05'] },
+    indicateur_demande: { type: 'commandes', valeur: 'Commandes du trimestre (« awards »)', source: VSAT_SRC['2026-11-05'] },
+    publications: serie(VSAT, VSAT_SRC, { indicateurDemande: 'commandes' }),
     evenements_commerciaux: [],
   },
 ];

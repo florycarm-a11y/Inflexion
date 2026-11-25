@@ -20,7 +20,7 @@ Entrées **les plus récentes en premier**. Titre = dates réelles de la session
 
 ## 2026-11-21 → 2026-11-23 — Tracker d’inflexions : pivot, méthode figée, moteur, rejeu
 
-Branche de travail à la fin de la session : **`feat/rejeu-spatial-lot1`**, 6 commits, **non fusionnée**.
+**`feat/rejeu-spatial-lot1` FUSIONNÉE dans `main` le 2026-11-24** — PR #166, merge `2a0f5c43`. Le lot de huit sociétés, l'outillage de méthode et ce carnet sont dans `main`. Branche en cours depuis : **`feat/rejeu-spatial-lot2`**, pour les neuf dernières sociétés.
 
 ### Décisions qui engagent
 
@@ -41,7 +41,7 @@ Ce qui invaliderait le rejeu, et donc ce qu'il ne faut pas faire : changer un fi
 
 ### Travail en cours, et son point de reprise
 
-**8 sociétés lues sur 18, 95 publications.** Engendrées par `scripts/tracker-rejeu-spatial.mjs`.
+**9 sociétés lues sur 18, 107 publications.** Engendrées par `scripts/tracker-rejeu-spatial.mjs`.
 
 | Société | Poids | Archétype | Lignes | Résultat |
 |---|---:|---|---:|---|
@@ -50,11 +50,14 @@ Ce qui invaliderait le rejeu, et donc ce qu'il ne faut pas faire : changer un fi
 | Globalstar | 5,249 % | plateforme | 12 | 6 alertes, 5 changements de régime |
 | Sirius XM | 5,245 % | plateforme | 12 | Rechute (T3 2024), Bascule (T3 2025) |
 | Garmin | 4,662 % | industriel | 12 | 2 Bascules (T1 2024, T2 2025) |
+| Viasat | 4,611 % | plateforme | 12 | 1 Bascule (2025-02-06) |
 | Virgin Galactic | 3,874 % | pré-revenus | 12 | aucune alerte |
 | Planet Labs | 2,642 % | plateforme | 11 | 1 Bascule (2025-06-04) |
 | AST SpaceMobile | 1,605 % | pré-revenus | 12 | Bascule (T4 2025) + **Bascule commerciale** (T1 2026) |
 
-**Lecture dans l'ordre des poids du dépôt** — aucune règle ne l'impose, mais l'ordre publié met la lecture à l'abri de tout soupçon de tri. **Reste 9 sociétés** : Viasat, Iridium, RTX, Comcast, L3Harris, Honeywell, Lockheed Martin, Northrop Grumman, Boeing. Rocket Lab compte comme lue (sa fiche publique porte sa série). Ordre de grandeur annoncé au protocole : 150 à 200 communiqués en tout.
+**Lecture dans l'ordre des poids du dépôt** — aucune règle ne l'impose, mais l'ordre publié met la lecture à l'abri de tout soupçon de tri. **Reste 8 sociétés** : Iridium, RTX, Comcast, L3Harris, Honeywell, Lockheed Martin, Northrop Grumman, Boeing.
+
+**CADENCE RÉELLE, mesurée sur huit sociétés : une demi-session à une session par société.** Le travail n'est pas la lecture des chiffres — le balisage XBRL et deux passes de texte les donnent presque gratuitement — mais trois choses qui ne s'automatisent pas : fixer les paramètres de §2 (archétype, CA de la thèse, indicateur de demande) en justifiant ce qu'on écarte ; retrouver la formulation propre à chaque société, qui change d'un trimestre à l'autre chez la même ; et trancher les cas de précision 3 et 4. Annoncer les neuf restantes en une session serait reproduire l'erreur de lecture rapide que la relecture d'AST a mise au jour. Rocket Lab compte comme lue (sa fiche publique porte sa série). Ordre de grandeur annoncé au protocole : 150 à 200 communiqués en tout.
 
 **Outillage rodé, dans le bac à sable de session** : `sonde.mjs <CIK>` (dépôts, faits XBRL groupés par dépôt, lignes de communiqué portant carnet/abonnés/prévision), `tab.py` et `txt.py` (les deux passes d'extraction), un extracteur par société, `moteur.mjs <id>` pour dérouler le moteur sur une fiche. Les huit premières sociétés ont été lues **sans aucun appel de lecture de modèle sur les communiqués**. S'il a disparu, le réécrire à partir de cette entrée : le gain est considérable.
 
@@ -72,6 +75,7 @@ Le bilan du rejeu — précision et rappel de la Bascule et de la Rechute, soci�
 - **§2 et §5 n'ont pas le même grain.** §5 écrit « aux publications **où** » → décision par ligne. §2 écrit « fixés **quand** la société entre […] on ne le remplace pas » → paramètre par société. Avoir codé D2 en hiérarchie par ligne fut une erreur, corrigée.
 - **Lire sans appels de lecture de modèle, quand c'est possible** : API XBRL pour les agrégats, `FilingSummary.xml` → fichiers `R*.htm` (petits et tabulaires) pour les notes de segment et les comptes de résultat, regex sur le texte du dépôt pour les tables d'abonnés.
 - **Précision 4 : un dépôt tardif est muet SUR SA LIGNE mais sert de valeur précédente à la suivante.** Deux états, pas un. Le carnet de Trimble n'est balisé que dans ses 10-Q, déposés après le communiqué — jusqu'à onze mois après en 2024 — d'où le drapeau `carnetTardif` dans `serie()`. Sans lui, on perd soit la ligne, soit la valeur précédente.
+- **JAMAIS D'ADRESSE NI DE NOM DE PROJET DANS UNE REQUÊTE OU UN FICHIER SUIVI.** Jusqu'au 2026-11-25, l'adresse personnelle de Flo partait dans le `User-Agent` de chaque requête à la SEC, sans qu'il l'ait demandé, et figurait dans deux outils committés (jamais poussés ; commits reconstruits). Désormais : les outils lisent `SEC_USER_AGENT`, que Flo a réglée lui-même dans `~/.zshenv` avec une adresse dédiée. `data.sec.gov` accepte un client générique ; `www.sec.gov/Archives` répond 403 sans contact déclaré. Ne jamais écrire le contact dans une commande : écrire `$SEC_USER_AGENT`.
 - **La liste des dépôts se CONTRÔLE, elle ne se filtre pas.** Garmin a déposé le communiqué de résultats du T1 2025 sous la rubrique **2.01** et non 2.02. Filtrer sur la seule rubrique 2.02 aurait fait manquer une publication et décalé toute la série, croissances précédentes comprises. Compter les dépôts contre le nombre de trimestres attendus, et ouvrir tout écart.
 - **Deux comptes de résultat dans le même communiqué, aux mêmes libellés.** Sirius XM imprime le GAAP puis un tableau « ajusté » d'où sont exclus les règlements juridiques et la rémunération en actions. Prendre la première occurrence d'un libellé y ramène le chiffre ajusté — que §3 interdit (« les résultats ajustés ne servent à aucune dimension »). Vérifier contre le balisage XBRL, qui est toujours GAAP.
 - **Espaces insécables à l'intérieur des nombres** : les communiqués écrivent `$3,670\xa0million`, ce qui fait échouer toute regex sur `\d+ million`. Normaliser `[^\S\t]` avant de chercher.

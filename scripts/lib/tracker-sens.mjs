@@ -38,6 +38,24 @@ export function sensCarnet(carnet, carnetPrecedent, caTrimestre) {
 }
 
 /**
+ * D2 par les COMMANDES publiées — la première branche de §2, sans reconstitution par le carnet :
+ * ratio commandes / chiffre d'affaires du trimestre, mêmes seuils que le carnet.
+ *
+ * Une société arrondit parfois ses commandes (« $1.2 billion »). Le montant publié est alors un
+ * INTERVALLE [basse, haute]. Le sens n'est publié que si les deux bornes donnent le même ; sinon
+ * l'arrondi déciderait de l'alerte, et §3 impose la lecture la plus neutre : « stable ».
+ */
+export function sensCommandes(commandes, caTrimestre) {
+  if (commandes == null || caTrimestre == null || caTrimestre <= 0) return 'non-publie';
+  const sensDuRatio = (r) => (r > 1.05 ? 'hausse' : r < 0.95 ? 'baisse' : 'stable');
+  if (Array.isArray(commandes)) {
+    const bas = sensDuRatio(commandes[0] / caTrimestre), haut = sensDuRatio(commandes[1] / caTrimestre);
+    return bas === haut ? bas : 'stable';
+  }
+  return sensDuRatio(commandes / caTrimestre);
+}
+
+/**
  * §4, D2 « demande engagée », avec l'indicateur que §2 a FIXÉ à l'entrée de la société.
  *
  * L'ordre de préférence de §2 — « commandes ou carnet de commandes ; à défaut, nombre de clients
@@ -48,7 +66,8 @@ export function sensCarnet(carnet, carnetPrecedent, caTrimestre) {
  * D'où cette signature : l'indicateur est un paramètre de la société, pas une déduction par ligne.
  * Un trou dans la série de l'indicateur retenu donne « non publié », jamais un repli sur l'autre.
  */
-export function sensDemandeEngagee(indicateur, { carnet, carnetPrecedent, ca, croissanceClients, croissanceClientsPrecedente }) {
+export function sensDemandeEngagee(indicateur, { commandes, carnet, carnetPrecedent, ca, croissanceClients, croissanceClientsPrecedente }) {
+  if (indicateur === 'commandes') return sensCommandes(commandes, ca);
   if (indicateur === 'carnet') return sensCarnet(carnet, carnetPrecedent, ca);
   if (indicateur === 'clients') return sensEcart(croissanceClients, croissanceClientsPrecedente);
   return 'non-publie';

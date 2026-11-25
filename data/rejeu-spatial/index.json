@@ -3,7 +3,7 @@
   "protocole": "docs/tracker-univers-spatial.md",
   "methode_version": "1.3",
   "univers_total": 18,
-  "lues": 8,
+  "lues": 9,
   "publie": false,
   "societes": [
     {
@@ -205,6 +205,31 @@
       },
       "publications": 12,
       "fichier": "data/rejeu-spatial/garmin.json"
+    },
+    {
+      "id": "viasat",
+      "nom": "Viasat",
+      "archetype": "plateforme",
+      "recit": "Spatial — communications par satellite, civiles et de défense",
+      "ca_these": {
+        "valeur": "Chiffre d’affaires total",
+        "source": {
+          "type": "8-K",
+          "date": "2026-11-05",
+          "url": "https://www.sec.gov/Archives/edgar/data/797721/000119312526449775/d179648dex992.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "commandes",
+        "valeur": "Commandes du trimestre (« awards »)",
+        "source": {
+          "type": "8-K",
+          "date": "2026-11-05",
+          "url": "https://www.sec.gov/Archives/edgar/data/797721/000119312526449775/d179648dex992.htm"
+        }
+      },
+      "publications": 12,
+      "fichier": "data/rejeu-spatial/viasat.json"
     }
   ]
 }

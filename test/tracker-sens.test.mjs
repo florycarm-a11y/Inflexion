@@ -13,7 +13,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  croissance, marge, sensEcart, sensCarnet, sensDemandeEngagee, sensMargeOperationnelle,
+  croissance, marge, sensEcart, sensCarnet, sensCommandes, sensDemandeEngagee, sensMargeOperationnelle,
   sensUnites, sensBarreau, etatMargeBrute, statutTrimestreSeul, statutAnnuel, statutPrevision,
   SENS_DU_STATUT, g,
 } from '../scripts/lib/tracker-sens.mjs';
@@ -138,6 +138,22 @@ test('§2 : « sinon non publié » — une société sans indicateur de demande
 
 test('Planet Labs T2 FY2026 : carnet de 527 à 736 millions, ratio 3,85, hausse', () => {
   assert.equal(sensCarnet(736100, 527000, 73400), 'hausse');
+});
+
+test('D2 par les commandes publiées : ratio direct, mêmes seuils que le carnet', () => {
+  assert.equal(sensCommandes(1051, 1000), 'hausse');
+  assert.equal(sensCommandes(1050, 1000), 'stable', 'ratio de 1,05 pile');
+  assert.equal(sensCommandes(949, 1000), 'baisse');
+  assert.equal(sensCommandes(null, 1000), 'non-publie');
+  assert.equal(sensDemandeEngagee('commandes', { commandes: 1498000, ca: 1140893 }), 'hausse');
+});
+
+test('commandes arrondies : le sens n’est publié que si tout l’intervalle tombe dans une bande', () => {
+  // Viasat, T2 FY2025 : « $1.3 billion » pour 1 122 de chiffre d'affaires — hausse aux deux bornes.
+  assert.equal(sensCommandes([1250000, 1350000], 1122262), 'hausse');
+  // Viasat, T3 FY2024 : « $1.2 billion » pour 1 129 — la borne basse donne stable, la haute hausse.
+  // L'arrondi déciderait de l'alerte : lecture neutre.
+  assert.equal(sensCommandes([1150000, 1250000], 1128539), 'stable');
 });
 
 // ── §4, pré-revenus ─────────────────────────────────────────────────────────
