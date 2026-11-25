@@ -696,6 +696,150 @@ const VSAT = [
   { date: '2026-11-05', trimestre: 'T2 FY2027', ca: 1179996, caAnPasse: 1140893, cout: 801050, op: 7149, opAnPasse: 35775, commandes: 1138000, statut: 'maintenue' },
 ];
 
+// ═════════════════════════════════════════════════════════════════════════════
+// IRIDIUM (IRDM) — plateforme
+//
+// DOUZE 8-K RUBRIQUE 2.02, UN PAR TRIMESTRE, chacun avec son 10-Q ou son 10-K le même jour.
+// Aucun leurre. Les montants du communiqué recoupent le balisage du dépôt du jour.
+//
+// CA DE LA THÈSE : le chiffre d'affaires de SERVICE, hors ventes de terminaux et prestations
+// d'ingénierie — même choix que pour Globalstar, société de même nature : l'abonnement porte le
+// récit, les terminaux et l'ingénierie sont des activités annexes, irrégulières. D4 et le
+// garde-fou de marge brute restent calculés sur le chiffre d'affaires total.
+//
+// INDICATEUR DE DEMANDE : le total des abonnés facturables de fin de période, imprimé dans chaque
+// communiqué avec son comparatif. Aucun carnet dans une activité d'abonnement.
+//
+// D3 : LA PRÉVISION PORTE SUR LA CROISSANCE DU CHIFFRE D'AFFAIRES DE SERVICE, en fourchette de
+// pourcentages (« between 4% and 6% for full-year 2024 »). C'est une prévision annuelle chiffrée
+// de la grandeur même que mesure D1 ; les milieux se comparent en points. Iridium imprime
+// d'ailleurs elle-même la fourchette précédente quand elle la change :
+//  · T3 2024 : « approximately 5% » après « between 4% and 6% » — fourchette resserrée, milieu
+//    inchangé : maintenue ;
+//  · T2 2025 : « between 3% and 5% » après « between 5% and 7% » : abaissée ;
+//  · T3 2025 : « approximately 3% » après « between 3% and 5% » : abaissée.
+//
+// RACHAT PAR ROCKET LAB ET SUSPENSION DES PRÉVISIONS. Accord signé le 28 juin 2026. Communiqué du
+// 22 juillet 2026 : « in light of the pending transaction, the Company does not intend […] to
+// update or provide financial guidance ». Même cas que Globalstar face à Amazon, même lecture :
+// §3 classe le retrait d'une prévision annuelle « abaissée » (exemple ChargePoint), la méthode
+// lisant le document et non le motif. Le retrait ne vaut qu'une fois ; le T3 2026 est « non
+// publié ». Deux sociétés de l'univers sur dix ont ainsi une « abaissée » due à leur rachat :
+// constat à verser au bilan, pas une règle à changer en cours de rejeu.
+// Coïncidence à connaître : l'acquéreur, Rocket Lab, est la seule société de l'univers déjà
+// présente au tracker public.
+//
+// Montants en milliers de dollars, abonnés en milliers. Coût des ventes = coût des services +
+// coût des terminaux vendus, les deux lignes du compte de résultat (hors amortissements, tels que
+// la société les présente). La ligne du 19 octobre 2023 est HORS SÉRIE (précision 7).
+// ═════════════════════════════════════════════════════════════════════════════
+
+const IRDM_SRC = {
+  '2023-10-19': src('8-K', '2023-10-19', `${ARCH}/1418819/000141881923000032/pressreleaseq32023.htm`),
+  '2024-02-15': src('8-K', '2024-02-15', `${ARCH}/1418819/000141881924000006/pressreleaseq42023.htm`),
+  '2024-04-18': src('8-K', '2024-04-18', `${ARCH}/1418819/000141881924000022/pressreleaseq12024.htm`),
+  '2024-07-23': src('8-K', '2024-07-23', `${ARCH}/1418819/000141881924000035/pressreleaseq22024.htm`),
+  '2024-10-17': src('8-K', '2024-10-17', `${ARCH}/1418819/000162828024042982/pressreleaseq32024.htm`),
+  '2025-02-13': src('8-K', '2025-02-13', `${ARCH}/1418819/000162828025005300/pressreleaseq42024.htm`),
+  '2025-04-22': src('8-K', '2025-04-22', `${ARCH}/1418819/000162828025018711/pressreleaseq12025.htm`),
+  '2025-07-24': src('8-K', '2025-07-24', `${ARCH}/1418819/000162828025035834/pressreleaseq22025.htm`),
+  '2025-10-23': src('8-K', '2025-10-23', `${ARCH}/1418819/000141881925000008/pressreleaseq32025.htm`),
+  '2026-02-12': src('8-K', '2026-02-12', `${ARCH}/1418819/000141881926000008/pressreleaseq42025.htm`),
+  '2026-04-23': src('8-K', '2026-04-23', `${ARCH}/1418819/000141881926000027/pressreleaseq12026.htm`),
+  '2026-07-22': src('8-K', '2026-07-22', `${ARCH}/1418819/000141881926000046/pressreleaseq22026.htm`),
+  '2026-10-20': src('8-K', '2026-10-20', `${ARCH}/1418819/000141881926000053/pressreleaseq32026.htm`),
+};
+
+// guidance : fourchette de croissance du chiffre d'affaires de service, en points de pourcentage.
+const IRDM = [
+  { date: '2023-10-19', trimestre: 'T3 2023', caThese: 151950, caTheseAnPasse: 138977, ca: 197602, caAnPasse: 184060, cout: null, op: null, opAnPasse: null, croissanceClients: croissance(2236, 1973), guidance: null, horsSerie: true },
+  { date: '2024-02-15', trimestre: 'T4 2023', caThese: 148013, caTheseAnPasse: 136774, ca: 194740, caAnPasse: 193836, cout: 45279 + 10335, op: 46296, opAnPasse: 18773, croissanceClients: croissance(2279, 1999), guidance: g(2024, 4, 6) },
+  { date: '2024-04-18', trimestre: 'T1 2024', caThese: 148577, caTheseAnPasse: 139349, ca: 203853, caAnPasse: 205273, cout: 46449 + 13880, op: 49771, opAnPasse: 23148, croissanceClients: croissance(2333, 2051), guidance: g(2024, 4, 6) },
+  { date: '2024-07-23', trimestre: 'T2 2024', caThese: 152467, caTheseAnPasse: 145142, ca: 201067, caAnPasse: 193108, cout: 39464 + 13946, op: 43646, opAnPasse: -15971, croissanceClients: croissance(2413, 2140), guidance: g(2024, 4, 6) },
+  // « approximately 5% » : fourchette resserrée autour du même milieu.
+  { date: '2024-10-17', trimestre: 'T3 2024', caThese: 159855, caTheseAnPasse: 151950, ca: 212771, caAnPasse: 197602, cout: 43848 + 12769, op: 54852, opAnPasse: 28155, croissanceClients: croissance(2482, 2236), guidance: g(2024, 5, 5) },
+  { date: '2025-02-13', trimestre: 'T4 2024', caThese: 154015, caTheseAnPasse: 148013, ca: 212991, caAnPasse: 194740, cout: 48379 + 11832, op: 52115, opAnPasse: 46296, croissanceClients: croissance(2460, 2279), guidance: g(2025, 5, 7) },
+  { date: '2025-04-22', trimestre: 'T1 2025', caThese: 154292, caTheseAnPasse: 148577, ca: 214878, caAnPasse: 203853, cout: 48787 + 12867, op: 60388, opAnPasse: 49771, croissanceClients: croissance(2443, 2333), guidance: g(2025, 5, 7) },
+  { date: '2025-07-24', trimestre: 'T2 2025', caThese: 155570, caTheseAnPasse: 152467, ca: 216906, caAnPasse: 201067, cout: 53603 + 11302, op: 50258, opAnPasse: 43646, croissanceClients: croissance(2483, 2413), guidance: g(2025, 3, 5) },
+  { date: '2025-10-23', trimestre: 'T3 2025', caThese: 165243, caTheseAnPasse: 159855, ca: 226935, caAnPasse: 212771, cout: 50762 + 12661, op: 70085, opAnPasse: 54852, croissanceClients: croissance(2542, 2482), guidance: g(2025, 3, 3) },
+  // « flat to 2% for full-year 2026 ».
+  { date: '2026-02-12', trimestre: 'T4 2025', caThese: 158853, caTheseAnPasse: 154015, ca: 212940, caAnPasse: 212991, cout: 44425 + 13596, op: 55249, opAnPasse: 52115, croissanceClients: croissance(2537, 2460), guidance: g(2026, 0, 2) },
+  { date: '2026-04-23', trimestre: 'T1 2026', caThese: 158029, caTheseAnPasse: 154292, ca: 219057, caAnPasse: 214878, cout: 49636 + 13014, op: 50713, opAnPasse: 60388, croissanceClients: croissance(2555, 2443), guidance: g(2026, 0, 2) },
+  // Prévisions retirées en raison du rachat par Rocket Lab : « abaissée » (§3, exemple ChargePoint).
+  { date: '2026-07-22', trimestre: 'T2 2026', caThese: 161328, caTheseAnPasse: 155570, ca: 225237, caAnPasse: 216906, cout: 51314 + 13478, op: 34008, opAnPasse: 50258, croissanceClients: croissance(2627, 2483), guidance: null, statut: 'abaissee' },
+  // Le retrait ne vaut qu'une fois : plus aucune prévision, D3 non publié.
+  { date: '2026-10-20', trimestre: 'T3 2026', caThese: 187498, caTheseAnPasse: 165243, ca: 245733, caAnPasse: 226935, cout: 60666 + 11609, op: 31618, opAnPasse: 70085, croissanceClients: croissance(2696, 2542), guidance: null },
+];
+
+// ═════════════════════════════════════════════════════════════════════════════
+// RTX (RTX) — industriel
+//
+// ONZE LIGNES, ET NON DOUZE. Le communiqué du quatrième trimestre 2023 date du 23 janvier 2024,
+// avant l'ouverture de la fenêtre de lecture au 1er février : il est HORS SÉRIE et ne fournit que
+// les valeurs précédentes de la première ligne (précision 7). Le 10-K du 5 février 2024 n'est pas
+// une publication de résultats — ils étaient publics depuis treize jours — et ne crée pas de ligne.
+//
+// CA DE LA THÈSE : le chiffre d'affaires TOTAL, par le repli de §2. RTX figure dans un indice
+// spatial, mais aucun de ses trois segments (Collins Aerospace, Pratt & Whitney, Raytheon) n'est
+// spatial. Le protocole l'a voulu ainsi : « si la méthode produit des Bascules sur [un
+// conglomérat], c'est un résultat sur la méthode ».
+//
+// INDICATEUR DE DEMANDE : le carnet, imprimé dans chaque communiqué — « backlog of $217 billion ».
+// Il est arrondi au MILLIARD pour un chiffre d'affaires trimestriel de 20 milliards : chaque
+// valeur vaut ± 0,5, la variation ± 1, le ratio ± 0,05 — exactement la largeur des seuils. Le sens
+// n'est donc publié que s'il tient aux deux bornes (`demiArrondiCarnet`). Une seule ligne sur onze
+// ne tient pas : le T1 2025 (de 218 à 217 milliards, baisse ou stable selon l'arrondi), lue
+// « stable » avec le drapeau d'hésitation. Les dix autres sont nettes.
+//
+// D3 : RTX ne guide que ses ventes AJUSTÉES (« adjusted sales of $83.0 - $84.0 billion »). C'est
+// la prévision annuelle qu'elle place en premier, donc celle que §5 retient ; l'exclusion des
+// agrégats ajustés par §3 vise les résultats mesurés (D1, D4, marge brute restent GAAP), pas le
+// sens dans lequel une société déplace sa propre prévision. RTX imprime d'ailleurs l'ancienne
+// fourchette à chaque révision (« up from $78.0 - $79.0 billion »). Sept relèvements en onze
+// lignes, aucun abaissement.
+//
+// D4 AU T3 2024 : le comparatif imprimé est une perte d'exploitation de 1 396 millions sur 13 464
+// de ventes (charge de l'affaire des poudres métalliques de Pratt & Whitney, T3 2023). La marge
+// passe de −10 % à +10 % : hausse, telle que le document la donne.
+//
+// Montants en MILLIONS de dollars. Les neuf trimestres hors clôture recoupent le balisage du
+// 10-Q déposé le même jour ; les trimestres de clôture viennent de la colonne trimestrielle du
+// communiqué annuel.
+// ═════════════════════════════════════════════════════════════════════════════
+
+const RTX_SRC = {
+  '2024-01-23': src('8-K', '2024-01-23', `${ARCH}/101829/000010182924000005/a2024-01x238xkerexhibit99.htm`),
+  '2024-04-23': src('8-K', '2024-04-23', `${ARCH}/101829/000010182924000011/a2024-04x238xkerexhibit99.htm`),
+  '2024-07-25': src('8-K', '2024-07-25', `${ARCH}/101829/000010182924000026/a2024-07x258xkerexhibit99.htm`),
+  '2024-10-22': src('8-K', '2024-10-22', `${ARCH}/101829/000010182924000036/a2024-10x228xkerexhibit99.htm`),
+  '2025-01-28': src('8-K', '2025-01-28', `${ARCH}/101829/000010182925000002/a2025-01x288xkerexhibit99.htm`),
+  '2025-04-22': src('8-K', '2025-04-22', `${ARCH}/101829/000010182925000014/a2025-04x228xkerexhibit99.htm`),
+  '2025-07-22': src('8-K', '2025-07-22', `${ARCH}/101829/000010182925000030/a2025-07x228xkerexhibit99.htm`),
+  '2025-10-21': src('8-K', '2025-10-21', `${ARCH}/101829/000010182925000040/a2025-10x218xkerexhibit99.htm`),
+  '2026-01-27': src('8-K', '2026-01-27', `${ARCH}/101829/000010182926000003/a2026-01x278xkerexhibit99.htm`),
+  '2026-04-21': src('8-K', '2026-04-21', `${ARCH}/101829/000010182926000009/a2026-04x218xkerexhibit99.htm`),
+  '2026-07-23': src('8-K', '2026-07-23', `${ARCH}/101829/000010182926000025/a2026-07x238xkerexhibit99.htm`),
+  '2026-10-20': src('8-K', '2026-10-20', `${ARCH}/101829/000010182926000030/a2026-10x208xkerexhibit99.htm`),
+};
+
+const RTX = [
+  // Prévision 2024 initiale de 78,0 à 79,0 milliards : imprimée comme fourchette précédente dans
+  // le communiqué du 25 juillet 2024, et « réaffirmée » dans celui du 23 avril.
+  { date: '2024-01-23', trimestre: 'T4 2023', ca: 19927, caAnPasse: 18093, cout: 15918, op: 1777, opAnPasse: 1491, carnet: 196000, guidance: g(2024, 78000, 79000), horsSerie: true },
+  { date: '2024-04-23', trimestre: 'T1 2024', ca: 19305, caAnPasse: 17214, cout: 15744, op: 1870, opAnPasse: 1687, carnet: 202000, guidance: g(2024, 78000, 79000) },
+  { date: '2024-07-25', trimestre: 'T2 2024', ca: 19721, caAnPasse: 18315, cout: 16141, op: 529, opAnPasse: 1493, carnet: 206000, guidance: g(2024, 78750, 79500) },
+  { date: '2024-10-22', trimestre: 'T3 2024', ca: 20089, caAnPasse: 13464, cout: 16055, op: 2028, opAnPasse: -1396, carnet: 221000, guidance: g(2024, 79250, 79750) },
+  { date: '2025-01-28', trimestre: 'T4 2024', ca: 21623, caAnPasse: 19927, cout: 17388, op: 2111, opAnPasse: 1777, carnet: 218000, guidance: g(2025, 83000, 84000) },
+  // Carnet de 218 à 217 milliards : baisse ou stable selon l'arrondi → lecture neutre.
+  { date: '2025-04-22', trimestre: 'T1 2025', ca: 20306, caAnPasse: 19305, cout: 16190, op: 2035, opAnPasse: 1870, carnet: 217000, guidance: g(2025, 83000, 84000), hesitation: true },
+  { date: '2025-07-22', trimestre: 'T2 2025', ca: 21581, caAnPasse: 19721, cout: 17205, op: 2146, opAnPasse: 529, carnet: 236000, guidance: g(2025, 84750, 85500) },
+  { date: '2025-10-21', trimestre: 'T3 2025', ca: 22478, caAnPasse: 20089, cout: 17898, op: 2523, opAnPasse: 2028, carnet: 251000, guidance: g(2025, 86500, 87000) },
+  { date: '2026-01-27', trimestre: 'T4 2025', ca: 24238, caAnPasse: 21623, cout: 19521, op: 2596, opAnPasse: 2111, carnet: 268000, guidance: g(2026, 92000, 93000) },
+  { date: '2026-04-21', trimestre: 'T1 2026', ca: 22076, caAnPasse: 20306, cout: 17482, op: 2555, opAnPasse: 2035, carnet: 271000, guidance: g(2026, 92500, 93500) },
+  { date: '2026-07-23', trimestre: 'T2 2026', ca: 24708, caAnPasse: 21581, cout: 19575, op: 2811, opAnPasse: 2146, carnet: 289000, guidance: g(2026, 95000, 96000) },
+  { date: '2026-10-20', trimestre: 'T3 2026', ca: 24965, caAnPasse: 22478, cout: 19160, op: 3337, opAnPasse: 2523, carnet: 340000, guidance: g(2026, 97000, 97500) },
+];
+
 // ── Séries ───────────────────────────────────────────────────────────────────
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -791,7 +935,7 @@ function seriePreRevenus(lignes, sources) {
 }
 
 /** Série d'un industriel ou d'une plateforme. indicateurDemande : §2, fixé à l'entrée. */
-function serie(lignes, sources, { caThese = false, indicateurDemande = 'carnet' } = {}) {
+function serie(lignes, sources, { caThese = false, indicateurDemande = 'carnet', demiArrondiCarnet = 0 } = {}) {
   const out = [];
   let croissancePrecedente = null, carnetPrecedent = null, guidancePrecedente = null, clientsPrecedent = null;
   for (const l of lignes) {
@@ -805,7 +949,7 @@ function serie(lignes, sources, { caThese = false, indicateurDemande = 'carnet' 
           // LIGNE, mais « sert […] de valeur précédente à la ligne suivante ». D'où `carnetTardif`
           // — la valeur ne compte pas ici, et se propage quand même.
           commandes: l.commandes,
-          carnet: l.carnetTardif ? null : l.carnet, carnetPrecedent, ca: l.ca,
+          carnet: l.carnetTardif ? null : l.carnet, carnetPrecedent, demiArrondiCarnet, ca: l.ca,
           croissanceClients: l.croissanceClients, croissanceClientsPrecedente: clientsPrecedent,
         }),
         d4: sensMargeOperationnelle(l.op, l.ca, l.opAnPasse, l.caAnPasse),
@@ -892,7 +1036,8 @@ const LUES = [
     recit: 'Spatial — positionnement par satellite et logiciels de terrain',
     ca_these: { valeur: 'Chiffre d’affaires total — aucun segment ne couvre le positionnement', source: TRMB_SRC['2026-11-04'] },
     indicateur_demande: { type: 'carnet', valeur: 'Carnet GAAP (obligations de prestation restantes), publié arrondi au cent millions', source: TRMB_SRC['2026-11-04'] },
-    publications: serie(TRMB, TRMB_SRC, { indicateurDemande: 'carnet' }),
+    // Carnet imprimé au dixième de milliard : demi-arrondi de 50 millions.
+    publications: serie(TRMB, TRMB_SRC, { indicateurDemande: 'carnet', demiArrondiCarnet: 50 }),
     evenements_commerciaux: [],
   },
   {
@@ -916,6 +1061,20 @@ const LUES = [
     ca_these: { valeur: 'Chiffre d’affaires total', source: VSAT_SRC['2026-11-05'] },
     indicateur_demande: { type: 'commandes', valeur: 'Commandes du trimestre (« awards »)', source: VSAT_SRC['2026-11-05'] },
     publications: serie(VSAT, VSAT_SRC, { indicateurDemande: 'commandes' }),
+    evenements_commerciaux: [],
+  },  {
+    id: 'iridium', nom: 'Iridium', archetype: 'plateforme',
+    recit: 'Spatial — téléphonie et données par satellite en orbite basse',
+    ca_these: { valeur: 'Chiffre d’affaires de service, hors terminaux et ingénierie', source: IRDM_SRC['2026-10-20'] },
+    indicateur_demande: { type: 'clients', valeur: 'Abonnés facturables, fin de période', source: IRDM_SRC['2026-10-20'] },
+    publications: serie(IRDM, IRDM_SRC, { caThese: true, indicateurDemande: 'clients' }),
+    evenements_commerciaux: [],
+  },  {
+    id: 'rtx', nom: 'RTX', archetype: 'industriel',
+    recit: 'Spatial — aéronautique et défense, composants et systèmes spatiaux',
+    ca_these: { valeur: 'Chiffre d’affaires total — aucun des trois segments n’est spatial', source: RTX_SRC['2026-10-20'] },
+    indicateur_demande: { type: 'carnet', valeur: 'Carnet de commandes, imprimé au milliard', source: RTX_SRC['2026-10-20'] },
+    publications: serie(RTX, RTX_SRC, { indicateurDemande: 'carnet', demiArrondiCarnet: 500 }),
     evenements_commerciaux: [],
   },
 ];

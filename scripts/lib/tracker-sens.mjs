@@ -31,10 +31,19 @@ export function sensEcart(courante, precedente) {
 }
 
 /** D2 carnet : commandes = variation du carnet + CA du trimestre ; ratio sur le CA du trimestre. */
-export function sensCarnet(carnet, carnetPrecedent, caTrimestre) {
+export function sensCarnet(carnet, carnetPrecedent, caTrimestre, demiArrondi = 0) {
   if (carnet == null || carnetPrecedent == null || caTrimestre == null || caTrimestre <= 0) return 'non-publie';
-  const ratio = ((carnet - carnetPrecedent) + caTrimestre) / caTrimestre;
-  return ratio > 1.05 ? 'hausse' : ratio < 0.95 ? 'baisse' : 'stable';
+  const sensDuRatio = (r) => (r > 1.05 ? 'hausse' : r < 0.95 ? 'baisse' : 'stable');
+  const variation = carnet - carnetPrecedent;
+  // Carnet publié arrondi (« $217 billion ») : chaque valeur vaut ± demiArrondi, donc la
+  // variation vaut ± 2 × demiArrondi. Le sens n'est publié que si les deux bornes s'accordent ;
+  // sinon l'arrondi déciderait, et §3 impose la lecture neutre.
+  if (demiArrondi > 0) {
+    const bas = sensDuRatio((variation - 2 * demiArrondi + caTrimestre) / caTrimestre);
+    const haut = sensDuRatio((variation + 2 * demiArrondi + caTrimestre) / caTrimestre);
+    return bas === haut ? bas : 'stable';
+  }
+  return sensDuRatio((variation + caTrimestre) / caTrimestre);
 }
 
 /**
@@ -66,9 +75,9 @@ export function sensCommandes(commandes, caTrimestre) {
  * D'où cette signature : l'indicateur est un paramètre de la société, pas une déduction par ligne.
  * Un trou dans la série de l'indicateur retenu donne « non publié », jamais un repli sur l'autre.
  */
-export function sensDemandeEngagee(indicateur, { commandes, carnet, carnetPrecedent, ca, croissanceClients, croissanceClientsPrecedente }) {
+export function sensDemandeEngagee(indicateur, { commandes, carnet, carnetPrecedent, demiArrondiCarnet = 0, ca, croissanceClients, croissanceClientsPrecedente }) {
   if (indicateur === 'commandes') return sensCommandes(commandes, ca);
-  if (indicateur === 'carnet') return sensCarnet(carnet, carnetPrecedent, ca);
+  if (indicateur === 'carnet') return sensCarnet(carnet, carnetPrecedent, ca, demiArrondiCarnet);
   if (indicateur === 'clients') return sensEcart(croissanceClients, croissanceClientsPrecedente);
   return 'non-publie';
 }

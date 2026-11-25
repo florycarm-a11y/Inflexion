@@ -156,6 +156,18 @@ test('commandes arrondies : le sens n’est publié que si tout l’intervalle t
   assert.equal(sensCommandes([1150000, 1250000], 1128539), 'stable');
 });
 
+test('carnet arrondi : la variation vaut ± deux demi-arrondis, et le sens doit tenir aux deux bornes', () => {
+  // RTX, T1 2025 : carnet de 218 à 217 milliards, imprimé au milliard, pour 20,3 de chiffre
+  // d'affaires. Ratio de 0,90 à 1,00 selon l'arrondi : baisse ou stable → lecture neutre.
+  assert.equal(sensCarnet(217000, 218000, 20306, 500), 'stable');
+  // RTX, T4 2024 : de 221 à 218 pour 21,6 — baisse aux deux bornes.
+  assert.equal(sensCarnet(218000, 221000, 21623, 500), 'baisse');
+  // RTX, T1 2026 : de 268 à 271 pour 22,1 — hausse aux deux bornes.
+  assert.equal(sensCarnet(271000, 268000, 22076, 500), 'hausse');
+  // Sans arrondi déclaré, le calcul reste celui d'avant.
+  assert.equal(sensCarnet(217000, 218000, 20306), 'stable');
+});
+
 // ── §4, pré-revenus ─────────────────────────────────────────────────────────
 
 test('D1 pré-revenus : zéro livraison puis zéro livraison vaut « stable »', () => {

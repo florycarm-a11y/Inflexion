@@ -12,6 +12,7 @@ de lecture de modèle sur les communiqués.
 | `txt.py '<motif>'` | Sur l'entrée standard | Les lignes de **prose** : coupe aussi aux balises de bloc |
 | `moteur.mjs <id>` | Après génération | Déroule le moteur §6 sur une fiche de `data/rejeu-spatial/` et valide le fichier |
 | `vsat.py` | Viasat | Extracteur dédié des comptes (voir plus bas) |
+| `irdm.py`, `rtx.py` | Iridium, RTX | Extracteurs dédiés : comptes, abonnés ou carnet, phrases de prévision |
 
 ## Pourquoi deux passes de texte
 
