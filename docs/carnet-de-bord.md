@@ -20,7 +20,7 @@ Entrées **les plus récentes en premier**. Titre = dates réelles de la session
 
 ## 2026-11-21 → 2026-11-23 — Tracker d’inflexions : pivot, méthode figée, moteur, rejeu
 
-**`feat/rejeu-spatial-lot1` FUSIONNÉE dans `main` le 2026-11-24** — PR #166, merge `2a0f5c43`. Le lot de huit sociétés, l'outillage de méthode et ce carnet sont dans `main`. Branche en cours depuis : **`feat/rejeu-spatial-lot2`**, pour les neuf dernières sociétés.
+**`feat/rejeu-spatial-lot1` FUSIONNÉE dans `main` le 2026-11-24** — PR #166, merge `2a0f5c43`. Le lot de huit sociétés, l'outillage de méthode et ce carnet sont dans `main`. Branche en cours depuis : **`feat/rejeu-spatial-lot2`** (fusionnée le 2026-11-25, PR #167 : `methode.html` refaite, Viasat, outillage `scripts/rejeu/`), puis **`feat/rejeu-spatial-lot3`** depuis Iridium.
 
 ### Décisions qui engagent
 
@@ -41,7 +41,7 @@ Ce qui invaliderait le rejeu, et donc ce qu'il ne faut pas faire : changer un fi
 
 ### Travail en cours, et son point de reprise
 
-**9 sociétés lues sur 18, 107 publications.** Engendrées par `scripts/tracker-rejeu-spatial.mjs`.
+**10 sociétés lues sur 18, 119 publications.** Engendrées par `scripts/tracker-rejeu-spatial.mjs`.
 
 | Société | Poids | Archétype | Lignes | Résultat |
 |---|---:|---|---:|---|
@@ -51,11 +51,12 @@ Ce qui invaliderait le rejeu, et donc ce qu'il ne faut pas faire : changer un fi
 | Sirius XM | 5,245 % | plateforme | 12 | Rechute (T3 2024), Bascule (T3 2025) |
 | Garmin | 4,662 % | industriel | 12 | 2 Bascules (T1 2024, T2 2025) |
 | Viasat | 4,611 % | plateforme | 12 | 1 Bascule (2025-02-06) |
+| Iridium | 4,426 % | plateforme | 12 | Rechute (2025-02-13), Signal faible (2026-04-23) |
 | Virgin Galactic | 3,874 % | pré-revenus | 12 | aucune alerte |
 | Planet Labs | 2,642 % | plateforme | 11 | 1 Bascule (2025-06-04) |
 | AST SpaceMobile | 1,605 % | pré-revenus | 12 | Bascule (T4 2025) + **Bascule commerciale** (T1 2026) |
 
-**Lecture dans l'ordre des poids du dépôt** — aucune règle ne l'impose, mais l'ordre publié met la lecture à l'abri de tout soupçon de tri. **Reste 8 sociétés** : Iridium, RTX, Comcast, L3Harris, Honeywell, Lockheed Martin, Northrop Grumman, Boeing.
+**Lecture dans l'ordre des poids du dépôt** — aucune règle ne l'impose, mais l'ordre publié met la lecture à l'abri de tout soupçon de tri. **Reste 7 sociétés** : RTX, Comcast, L3Harris, Honeywell, Lockheed Martin, Northrop Grumman, Boeing.
 
 **CADENCE RÉELLE, mesurée sur huit sociétés : une demi-session à une session par société.** Le travail n'est pas la lecture des chiffres — le balisage XBRL et deux passes de texte les donnent presque gratuitement — mais trois choses qui ne s'automatisent pas : fixer les paramètres de §2 (archétype, CA de la thèse, indicateur de demande) en justifiant ce qu'on écarte ; retrouver la formulation propre à chaque société, qui change d'un trimestre à l'autre chez la même ; et trancher les cas de précision 3 et 4. Annoncer les neuf restantes en une session serait reproduire l'erreur de lecture rapide que la relecture d'AST a mise au jour. Rocket Lab compte comme lue (sa fiche publique porte sa série). Ordre de grandeur annoncé au protocole : 150 à 200 communiqués en tout.
 
@@ -85,6 +86,7 @@ Le bilan du rejeu — précision et rappel de la Bascule et de la Rechute, soci�
 
 ### Constats à verser au bilan — candidats à une v1.4, pas des correctifs
 
+- **Deux sociétés sur dix portent une « abaissée » due à leur RACHAT** : Globalstar (Amazon, T1 2026) et Iridium (Rocket Lab, T2 2026) suspendent leurs prévisions pendant la transaction. §3 classe le retrait d'une prévision « abaissée » sans distinguer les motifs. Appliqué tel quel, une fois par société ; à discuter pour une v1.4.
 - **Globalstar bat la mesure** : une alerte tous les deux trimestres, cinq changements de régime en douze. CA en gros reconnu par à-coups, marge d'exploitation qui change de signe. Question d'hystérésis des régimes.
 - **DEUX SOCIÉTÉS SUR HUIT NE LAISSENT QUE TROIS DIMENSIONS À LA MÉTHODE**, pour des raisons opposées — révisé le 2026-11-24, après vérification des trois cas (c'était « trois sur huit »). **EchoStar** ne donne aucun chiffre prospectif, d'aucune grandeur : vérifié sur les douze dépôts, la récolte est un calendrier de dette et une note comptable (D3 muette). **Garmin** ne contractualise pas sa demande : aucun carnet, aucune commande, aucun compte de clients au balisage ; sa demande se lit en rayon (D2 muette). **Trimble sort de la liste** : son carnet GAAP, écarté à tort parce qu'imprimé arrondi, parle sur cinq lignes. Or une Bascule exige +2 : avec trois dimensions, il faut deux hausses nettes sans aucune baisse. **La méthode reste moins sensible chez les sociétés qui publient peu** — à mesurer au bilan.
 - **D2 peut être muette par RÉGULARITÉ, pas seulement par absence.** Les abonnés de Sirius XM s'érodent de −1,4 % à 0 % par an sans jamais accélérer ni ralentir de plus d'un point. Or D2 mesure une croissance DE croissance : sur une série qui décline régulièrement, elle ne bouge jamais. Onze lignes « stable » d'affilée.

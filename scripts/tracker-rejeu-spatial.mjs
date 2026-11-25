@@ -696,6 +696,81 @@ const VSAT = [
   { date: '2026-11-05', trimestre: 'T2 FY2027', ca: 1179996, caAnPasse: 1140893, cout: 801050, op: 7149, opAnPasse: 35775, commandes: 1138000, statut: 'maintenue' },
 ];
 
+// ═════════════════════════════════════════════════════════════════════════════
+// IRIDIUM (IRDM) — plateforme
+//
+// DOUZE 8-K RUBRIQUE 2.02, UN PAR TRIMESTRE, chacun avec son 10-Q ou son 10-K le même jour.
+// Aucun leurre. Les montants du communiqué recoupent le balisage du dépôt du jour.
+//
+// CA DE LA THÈSE : le chiffre d'affaires de SERVICE, hors ventes de terminaux et prestations
+// d'ingénierie — même choix que pour Globalstar, société de même nature : l'abonnement porte le
+// récit, les terminaux et l'ingénierie sont des activités annexes, irrégulières. D4 et le
+// garde-fou de marge brute restent calculés sur le chiffre d'affaires total.
+//
+// INDICATEUR DE DEMANDE : le total des abonnés facturables de fin de période, imprimé dans chaque
+// communiqué avec son comparatif. Aucun carnet dans une activité d'abonnement.
+//
+// D3 : LA PRÉVISION PORTE SUR LA CROISSANCE DU CHIFFRE D'AFFAIRES DE SERVICE, en fourchette de
+// pourcentages (« between 4% and 6% for full-year 2024 »). C'est une prévision annuelle chiffrée
+// de la grandeur même que mesure D1 ; les milieux se comparent en points. Iridium imprime
+// d'ailleurs elle-même la fourchette précédente quand elle la change :
+//  · T3 2024 : « approximately 5% » après « between 4% and 6% » — fourchette resserrée, milieu
+//    inchangé : maintenue ;
+//  · T2 2025 : « between 3% and 5% » après « between 5% and 7% » : abaissée ;
+//  · T3 2025 : « approximately 3% » après « between 3% and 5% » : abaissée.
+//
+// RACHAT PAR ROCKET LAB ET SUSPENSION DES PRÉVISIONS. Accord signé le 28 juin 2026. Communiqué du
+// 22 juillet 2026 : « in light of the pending transaction, the Company does not intend […] to
+// update or provide financial guidance ». Même cas que Globalstar face à Amazon, même lecture :
+// §3 classe le retrait d'une prévision annuelle « abaissée » (exemple ChargePoint), la méthode
+// lisant le document et non le motif. Le retrait ne vaut qu'une fois ; le T3 2026 est « non
+// publié ». Deux sociétés de l'univers sur dix ont ainsi une « abaissée » due à leur rachat :
+// constat à verser au bilan, pas une règle à changer en cours de rejeu.
+// Coïncidence à connaître : l'acquéreur, Rocket Lab, est la seule société de l'univers déjà
+// présente au tracker public.
+//
+// Montants en milliers de dollars, abonnés en milliers. Coût des ventes = coût des services +
+// coût des terminaux vendus, les deux lignes du compte de résultat (hors amortissements, tels que
+// la société les présente). La ligne du 19 octobre 2023 est HORS SÉRIE (précision 7).
+// ═════════════════════════════════════════════════════════════════════════════
+
+const IRDM_SRC = {
+  '2023-10-19': src('8-K', '2023-10-19', `${ARCH}/1418819/000141881923000032/pressreleaseq32023.htm`),
+  '2024-02-15': src('8-K', '2024-02-15', `${ARCH}/1418819/000141881924000006/pressreleaseq42023.htm`),
+  '2024-04-18': src('8-K', '2024-04-18', `${ARCH}/1418819/000141881924000022/pressreleaseq12024.htm`),
+  '2024-07-23': src('8-K', '2024-07-23', `${ARCH}/1418819/000141881924000035/pressreleaseq22024.htm`),
+  '2024-10-17': src('8-K', '2024-10-17', `${ARCH}/1418819/000162828024042982/pressreleaseq32024.htm`),
+  '2025-02-13': src('8-K', '2025-02-13', `${ARCH}/1418819/000162828025005300/pressreleaseq42024.htm`),
+  '2025-04-22': src('8-K', '2025-04-22', `${ARCH}/1418819/000162828025018711/pressreleaseq12025.htm`),
+  '2025-07-24': src('8-K', '2025-07-24', `${ARCH}/1418819/000162828025035834/pressreleaseq22025.htm`),
+  '2025-10-23': src('8-K', '2025-10-23', `${ARCH}/1418819/000141881925000008/pressreleaseq32025.htm`),
+  '2026-02-12': src('8-K', '2026-02-12', `${ARCH}/1418819/000141881926000008/pressreleaseq42025.htm`),
+  '2026-04-23': src('8-K', '2026-04-23', `${ARCH}/1418819/000141881926000027/pressreleaseq12026.htm`),
+  '2026-07-22': src('8-K', '2026-07-22', `${ARCH}/1418819/000141881926000046/pressreleaseq22026.htm`),
+  '2026-10-20': src('8-K', '2026-10-20', `${ARCH}/1418819/000141881926000053/pressreleaseq32026.htm`),
+};
+
+// guidance : fourchette de croissance du chiffre d'affaires de service, en points de pourcentage.
+const IRDM = [
+  { date: '2023-10-19', trimestre: 'T3 2023', caThese: 151950, caTheseAnPasse: 138977, ca: 197602, caAnPasse: 184060, cout: null, op: null, opAnPasse: null, croissanceClients: croissance(2236, 1973), guidance: null, horsSerie: true },
+  { date: '2024-02-15', trimestre: 'T4 2023', caThese: 148013, caTheseAnPasse: 136774, ca: 194740, caAnPasse: 193836, cout: 45279 + 10335, op: 46296, opAnPasse: 18773, croissanceClients: croissance(2279, 1999), guidance: g(2024, 4, 6) },
+  { date: '2024-04-18', trimestre: 'T1 2024', caThese: 148577, caTheseAnPasse: 139349, ca: 203853, caAnPasse: 205273, cout: 46449 + 13880, op: 49771, opAnPasse: 23148, croissanceClients: croissance(2333, 2051), guidance: g(2024, 4, 6) },
+  { date: '2024-07-23', trimestre: 'T2 2024', caThese: 152467, caTheseAnPasse: 145142, ca: 201067, caAnPasse: 193108, cout: 39464 + 13946, op: 43646, opAnPasse: -15971, croissanceClients: croissance(2413, 2140), guidance: g(2024, 4, 6) },
+  // « approximately 5% » : fourchette resserrée autour du même milieu.
+  { date: '2024-10-17', trimestre: 'T3 2024', caThese: 159855, caTheseAnPasse: 151950, ca: 212771, caAnPasse: 197602, cout: 43848 + 12769, op: 54852, opAnPasse: 28155, croissanceClients: croissance(2482, 2236), guidance: g(2024, 5, 5) },
+  { date: '2025-02-13', trimestre: 'T4 2024', caThese: 154015, caTheseAnPasse: 148013, ca: 212991, caAnPasse: 194740, cout: 48379 + 11832, op: 52115, opAnPasse: 46296, croissanceClients: croissance(2460, 2279), guidance: g(2025, 5, 7) },
+  { date: '2025-04-22', trimestre: 'T1 2025', caThese: 154292, caTheseAnPasse: 148577, ca: 214878, caAnPasse: 203853, cout: 48787 + 12867, op: 60388, opAnPasse: 49771, croissanceClients: croissance(2443, 2333), guidance: g(2025, 5, 7) },
+  { date: '2025-07-24', trimestre: 'T2 2025', caThese: 155570, caTheseAnPasse: 152467, ca: 216906, caAnPasse: 201067, cout: 53603 + 11302, op: 50258, opAnPasse: 43646, croissanceClients: croissance(2483, 2413), guidance: g(2025, 3, 5) },
+  { date: '2025-10-23', trimestre: 'T3 2025', caThese: 165243, caTheseAnPasse: 159855, ca: 226935, caAnPasse: 212771, cout: 50762 + 12661, op: 70085, opAnPasse: 54852, croissanceClients: croissance(2542, 2482), guidance: g(2025, 3, 3) },
+  // « flat to 2% for full-year 2026 ».
+  { date: '2026-02-12', trimestre: 'T4 2025', caThese: 158853, caTheseAnPasse: 154015, ca: 212940, caAnPasse: 212991, cout: 44425 + 13596, op: 55249, opAnPasse: 52115, croissanceClients: croissance(2537, 2460), guidance: g(2026, 0, 2) },
+  { date: '2026-04-23', trimestre: 'T1 2026', caThese: 158029, caTheseAnPasse: 154292, ca: 219057, caAnPasse: 214878, cout: 49636 + 13014, op: 50713, opAnPasse: 60388, croissanceClients: croissance(2555, 2443), guidance: g(2026, 0, 2) },
+  // Prévisions retirées en raison du rachat par Rocket Lab : « abaissée » (§3, exemple ChargePoint).
+  { date: '2026-07-22', trimestre: 'T2 2026', caThese: 161328, caTheseAnPasse: 155570, ca: 225237, caAnPasse: 216906, cout: 51314 + 13478, op: 34008, opAnPasse: 50258, croissanceClients: croissance(2627, 2483), guidance: null, statut: 'abaissee' },
+  // Le retrait ne vaut qu'une fois : plus aucune prévision, D3 non publié.
+  { date: '2026-10-20', trimestre: 'T3 2026', caThese: 187498, caTheseAnPasse: 165243, ca: 245733, caAnPasse: 226935, cout: 60666 + 11609, op: 31618, opAnPasse: 70085, croissanceClients: croissance(2696, 2542), guidance: null },
+];
+
 // ── Séries ───────────────────────────────────────────────────────────────────
 
 // ═════════════════════════════════════════════════════════════════════════════
@@ -916,6 +991,13 @@ const LUES = [
     ca_these: { valeur: 'Chiffre d’affaires total', source: VSAT_SRC['2026-11-05'] },
     indicateur_demande: { type: 'commandes', valeur: 'Commandes du trimestre (« awards »)', source: VSAT_SRC['2026-11-05'] },
     publications: serie(VSAT, VSAT_SRC, { indicateurDemande: 'commandes' }),
+    evenements_commerciaux: [],
+  },  {
+    id: 'iridium', nom: 'Iridium', archetype: 'plateforme',
+    recit: 'Spatial — téléphonie et données par satellite en orbite basse',
+    ca_these: { valeur: 'Chiffre d’affaires de service, hors terminaux et ingénierie', source: IRDM_SRC['2026-10-20'] },
+    indicateur_demande: { type: 'clients', valeur: 'Abonnés facturables, fin de période', source: IRDM_SRC['2026-10-20'] },
+    publications: serie(IRDM, IRDM_SRC, { caThese: true, indicateurDemande: 'clients' }),
     evenements_commerciaux: [],
   },
 ];

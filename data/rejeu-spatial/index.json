@@ -3,7 +3,7 @@
   "protocole": "docs/tracker-univers-spatial.md",
   "methode_version": "1.3",
   "univers_total": 18,
-  "lues": 9,
+  "lues": 10,
   "publie": false,
   "societes": [
     {
@@ -230,6 +230,31 @@
       },
       "publications": 12,
       "fichier": "data/rejeu-spatial/viasat.json"
+    },
+    {
+      "id": "iridium",
+      "nom": "Iridium",
+      "archetype": "plateforme",
+      "recit": "Spatial — téléphonie et données par satellite en orbite basse",
+      "ca_these": {
+        "valeur": "Chiffre d’affaires de service, hors terminaux et ingénierie",
+        "source": {
+          "type": "8-K",
+          "date": "2026-10-20",
+          "url": "https://www.sec.gov/Archives/edgar/data/1418819/000141881926000053/pressreleaseq32026.htm"
+        }
+      },
+      "indicateur_demande": {
+        "type": "clients",
+        "valeur": "Abonnés facturables, fin de période",
+        "source": {
+          "type": "8-K",
+          "date": "2026-10-20",
+          "url": "https://www.sec.gov/Archives/edgar/data/1418819/000141881926000053/pressreleaseq32026.htm"
+        }
+      },
+      "publications": 12,
+      "fichier": "data/rejeu-spatial/iridium.json"
     }
   ]
 }
