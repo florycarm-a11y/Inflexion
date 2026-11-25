@@ -539,6 +539,42 @@
                 </dl>
             </section>
 
+            <!-- ═══ À CÔTÉ DE LA MÉTHODE : LA LECTURE DE MARCHÉ ═══ -->
+            <section class="tk-bloc tk-lecture" id="lecture-marche">
+                <h2>À côté de la méthode : la lecture de marché</h2>
+                <p>Tout ce qui précède ne lit que des documents publiés par la société. Une alerte ne dit donc rien du cours : une Bascule peut survenir sur un titre qui a déjà triplé, ou sur un titre que personne ne regarde. La page <a class="tk-lien" href="marche.html">Lecture de marché</a> pose cette seconde question — <strong>le signal est-il déjà dans le cours ?</strong> — sans toucher à la première.</p>
+
+                <h3>Une séparation tenue par la construction</h3>
+                <p>Le flux de données est <strong>à sens unique</strong>. La couche marché lit la dernière alerte émise par le moteur ; elle ne modifie ni un sens, ni un solde, ni une alerte, ni un fichier du tracker. Ses données vivent dans un dossier à part, ses seuils dans un fichier à part, et un test de non-régression vérifie que les soldes et les alertes sont identiques avec et sans elle. À l’écran, un double filet sépare ce que dit le tracker de ce que dit la couche marché.</p>
+                <p>Elle est aussi <strong>hors du protocole de test</strong> : ni le backtest ni le rejeu en cours ne la mesurent, et la v1.3 reste figée telle quelle.</p>
+
+                <h3>Trois modules, une étiquette</h3>
+                <ul class="tk-retenir">
+                    <li><strong>Flux.</strong> La position vendeuse à découvert (short interest), rapportée aux actions en circulation, le nombre de jours de volume qu’il faudrait pour la racheter, et sa variation depuis le relevé précédent. Source : FINRA.</li>
+                    <li><strong>Attentes.</strong> La répartition des avis d’analystes (achat, conserver, vente), son évolution sur trois mois, le nombre d’analystes et l’écart entre leurs objectifs de cours. Source : Nasdaq.</li>
+                    <li><strong>Valorisation.</strong> La capitalisation rapportée au chiffre d’affaires des douze derniers mois, et le chemin du cours sur six et douze mois. Sources : Nasdaq pour le cours, comptes déposés à la SEC pour le chiffre d’affaires.</li>
+                </ul>
+                <p>Ces trois lectures se croisent avec l’alerte pour donner <strong>une étiquette descriptive</strong> — « Asymétrie favorable », « Contesté », « Déjà dans le cours ? », « Pression renforcée »… — toujours accompagnée de ses raisons chiffrées. La grille est faite de règles lisibles, pas d’un score composé ; elle est publiée en entier sur la page, avec les seuils en vigueur.</p>
+
+                <h3>Ce qu’elle ne fait pas</h3>
+                <ul class="tk-retenir">
+                    <li><strong>Elle n’est pas backtestée.</strong> Les croisements et les seuils sont des hypothèses de départ. Aucun n’a été mesuré sur un historique.</li>
+                    <li><strong>Elle ne promeut jamais un Signal faible.</strong> Quelle que soit la lecture de marché, un Signal faible reste « À surveiller ».</li>
+                    <li><strong>Elle n’invente aucun chiffre.</strong> Une donnée absente s’écrit « n/d », jamais zéro. Une donnée trop ancienne est marquée « périmée » et suspend la lecture : l’étiquette devient « Lecture incomplète ».</li>
+                    <li><strong>Elle ne tranche pas.</strong> Un short interest élevé et en hausse après une Bascule peut annoncer un rachat forcé des vendeurs comme un scepticisme fondé : l’étiquette dit « Contesté », et s’arrête là.</li>
+                    <li><strong>Elle ne dit ni d’acheter ni de vendre.</strong> C’est un outil de lecture, pas un conseil en investissement.</li>
+                </ul>
+
+                <h3>Ses limites, telles que les sources les imposent</h3>
+                <ul class="tk-retenir">
+                    <li>Le short interest n’est publié que deux fois par mois, avec une dizaine de jours de retard, et presque rien n’existe hors des États-Unis.</li>
+                    <li>Le flottant n’est publié par aucune source gratuite vérifiée : le pourcentage est calculé sur les actions en circulation, et il est donc plus bas que le « % du flottant » des sites financiers. Pour les sociétés à plusieurs classes d’actions, il est « n/d ».</li>
+                    <li>Les analystes penchent structurellement vers l’achat, et les petites capitalisations sont peu ou pas suivies.</li>
+                    <li>Aucune source gratuite ne conserve l’historique du consensus : « publié contre consensus » reste « n/d » tant que les instantanés conservés à chaque collecte ne couvrent pas une publication.</li>
+                    <li>Une alerte ancienne est croisée avec le marché d’aujourd’hui, pas avec celui du jour de l’alerte : la page le signale ligne par ligne.</li>
+                </ul>
+            </section>
+
             <aside class="tk-amf" role="note">
                 <p style="margin:0"><strong>Avertissement.</strong> Les informations présentées sont fournies à titre informatif uniquement et ne constituent en aucun cas un conseil en investissement, une recommandation d’achat ou de vente, ni un objectif de cours. La méthode décrit des publications passées ; une alerte n’est pas une prévision. Les performances passées ne préjugent pas des performances futures.</p>
             </aside>

@@ -1,0 +1,12 @@
+{
+  "note": "Identité boursière des sociétés du tracker, pour la couche « lecture de marché » uniquement. Le catalogue du tracker (data/tracker/entreprises.json) n'est pas modifié : il ne connaît ni ticker ni cours. Une société sans entrée ici, ou cotée hors des États-Unis, sort en n/d.",
+  "societes": {
+    "centrus-energy": { "ticker": "LEU", "cik": 1065059, "place": "NYSE American" },
+    "rocket-lab": { "ticker": "RKLB", "cik": 1819994, "place": "Nasdaq" },
+    "ionq": { "ticker": "IONQ", "cik": 1824920, "place": "NYSE" },
+    "vertiv": { "ticker": "VRT", "cik": 1674101, "place": "NYSE" },
+    "sentinelone": { "ticker": "S", "cik": 1583708, "place": "NYSE" },
+    "oklo": { "ticker": "OKLO", "cik": 1849056, "place": "NYSE" },
+    "agility-robotics": { "ticker": "AGLT", "cik": 2074973, "place": "Nasdaq" }
+  }
+}

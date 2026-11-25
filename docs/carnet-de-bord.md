@@ -18,6 +18,40 @@ Entrées **les plus récentes en premier**. Titre = dates réelles de la session
 
 ---
 
+## 2026-11-25 — Couche « lecture de marché », à côté du tracker
+
+**Branche `feat/lecture-marche`, depuis `main` (`3cc90137`), NON POUSSÉE, non fusionnée.** Worktree : `.claude/worktrees/lecture-marche`. Le rejeu spatial reste à 11 sociétés sur 18 : cette session ne l'a pas touché.
+
+### Décisions qui engagent
+
+- **Le flux est à sens unique, et c'est la structure qui le tient.** La couche marché appelle `moteurDepuisFichier` et lit sa sortie ; aucun de ses fichiers n'écrit dans `data/tracker/`, et aucun fichier du tracker ne la mentionne. `test/marche-etancheite.test.mjs` le vérifie, dont une référence des soldes et alertes figée **avant** le premier changement (`test/fixtures/marche/tracker-reference.json`). Cette référence ne se régénère que si le tracker lui-même est corrigé.
+- **Rien de calculé n'est stocké, là non plus.** `data/marche/instantane.json` ne porte que des valeurs brutes sourcées et datées ; P/S, tendances, fraîcheur et étiquette se dérivent à l'affichage. Le test refuse les clés `etiquette`, `solde`, `alertes` dans l'instantané.
+- **La couche marché est hors du protocole de test et hors du rejeu.** Elle ne lit que le catalogue public : aucune société de l'univers spatial n'y entre avant la fin du rejeu, par construction. Ne jamais citer une étiquette de lecture dans le bilan du rejeu.
+- **Tous les seuils dans `lecture-marche-config.js`**, hypothèses de départ non backtestées. La logique n'en répète aucun (testé).
+- **« Publié vs consensus » reste n/d tant que nos propres instantanés ne couvrent pas une publication.** La table de surprises de Nasdaq existe mais n'est pas lue : BPA seulement, consensus non daté.
+
+### Sources — ce qui a été vérifié, pour ne pas le refaire
+
+- **Yahoo Finance / yfinance : HTTP 429 partout**, avec ou sans cookie. Écartée.
+- **FINRA** (`api.finra.org/data/group/otcMarket/name/consolidatedShortInterest`) : publique, sans clé, POST. **Le tri est refusé** sans filtre d'égalité sur `settlementDate` : filtrer par plage de dates et trier soi-même.
+- **API de nasdaq.com** : non documentée, exige un en-tête de navigateur, **4 appels sur 25 sans réponse**. Ses deux comptages d'analystes se contredisent (`ratings` : 3 sur Centrus, 0 sur Oklo ; `targetprice` : 17 et 15) — ne lire que la série mensuelle de `targetprice`.
+- **SEC XBRL** : `dei/EntityCommonStockSharesOutstanding` est **absent (404) ou vieux de quatre ans** pour les sociétés à plusieurs classes d'actions (SentinelOne, Centrus). Le pourcentage de short interest y est donc n/d ; les jours de couverture portent le niveau.
+- **Finnhub non vérifiée** : la clé n'existe que dans les secrets GitHub.
+
+### Pièges déjà payés
+
+- **Une règle « 2 constats sur 3 » a étiqueté « Déjà dans le cours ? » un titre à −66 % en six mois** (Rocket Lab). La grille de départ écrit les trois constats ensemble : réglage ramené à 3, et le cas est un test.
+- **Une alerte ancienne se croise avec le marché d'aujourd'hui.** La Bascule de Rocket Lab a cinq publications. La page le signale ligne par ligne ; aucune règle ne périme l'alerte — question ouverte pour la V2.
+- **`test/pages-header.test.mjs` compte les pages legacy** : toute nouvelle page à `nav-shared.js` oblige à relever le compte (19 depuis `marche.html`).
+
+### Reste à faire
+
+- Flo doit **relire la grille et les seuils** : ce sont ses hypothèses, transcrites.
+- Le workflow `marche-collecte.yml` n'agit qu'une fois dans `main`. À vérifier alors : FINRA et Nasdaq répondent-ils depuis les adresses de GitHub Actions ?
+- V2 : publié vs consensus à partir de l'historique ; flottant ; ancienneté de l'alerte ; Finnhub en second fournisseur.
+
+---
+
 ## 2026-11-21 → 2026-11-23 — Tracker d’inflexions : pivot, méthode figée, moteur, rejeu
 
 **`feat/rejeu-spatial-lot1` FUSIONNÉE dans `main` le 2026-11-24** — PR #166, merge `2a0f5c43`. Le lot de huit sociétés, l'outillage de méthode et ce carnet sont dans `main`. Branche en cours depuis : **`feat/rejeu-spatial-lot2`** (fusionnée le 2026-11-25, PR #167 : `methode.html` refaite, Viasat, outillage `scripts/rejeu/`), puis **`feat/rejeu-spatial-lot3`** depuis Iridium.

@@ -1,0 +1,106 @@
+/* assets/lecture-marche.css — Page marche.html : la couche « lecture de marché », à côté du tracker.
+   S'appuie sur assets/tracker.css (classes .tk-*) et n'y change rien.
+
+   Deux partis pris :
+   - la colonne du TRACKER et les colonnes de la COUCHE MARCHÉ ne partagent ni fond ni filet :
+     on doit voir d'un coup d'œil ce qui vient de la méthode figée et ce qui vient des hypothèses ;
+   - une étiquette de lecture n'est jamais verte ni rouge. Ces couleurs sont réservées aux sens
+     du tracker (donnée) ; ici elles se liraient comme « acheter » et « vendre ». */
+
+.lm { max-width: 1280px; }
+
+/* ── Bandeau de contexte ───────────────────────────────────────────────── */
+
+.lm-contexte {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.6rem;
+  margin: 1.25rem 0 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--hairline-warm);
+  background: var(--surface-raised);
+  font-size: 0.8rem;
+}
+
+.lm-contexte dt { display: inline; color: var(--text-secondary); }
+.lm-contexte dd { display: inline; margin: 0 0 0 0.35rem; }
+.lm-contexte-titre { flex-basis: 100%; margin: 0; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-secondary); }
+
+/* ── Tableau ───────────────────────────────────────────────────────────── */
+
+.lm-table { min-width: 1080px; }
+.lm-table td, .lm-table tbody th { vertical-align: top; }
+
+/* Ligne de groupes : qui dit quoi. */
+.lm-table thead .lm-groupe {
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-align: left;
+  border-bottom: 0;
+}
+
+/* Le tracker : fond papier, filet rouge éditorial — c'est la méthode du site. */
+.lm-table .lm-col-tracker {
+  background: var(--surface-raised);
+  border-left: 3px solid var(--editorial-accent);
+  border-right: 3px double var(--text-primary);
+}
+
+/* La couche marché : fond de donnée incomplète sur son en-tête, pour rappeler son statut d'hypothèse. */
+.lm-table thead .lm-groupe--marche {
+  background: var(--tk-incomplete-fond);
+  border-top: 1px solid var(--tk-incomplete-filet);
+}
+
+.lm-societe-nom { font-weight: 600; }
+.lm-ticker { display: block; font-size: 0.72rem; color: var(--text-secondary); }
+
+.lm-alerte { display: block; font-weight: 600; font-size: 0.9rem; }
+.lm-alerte-detail { display: block; font-size: 0.72rem; color: var(--text-secondary); margin-top: 0.15rem; }
+
+/* ── Étiquette de lecture ──────────────────────────────────────────────── */
+
+.lm-etiquette {
+  display: inline-block;
+  font-family: Archivo, Georgia, serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 2px 8px;
+  border: 1.5px solid var(--text-primary);
+  color: var(--text-primary);
+  background: #FFFFFF;
+  white-space: nowrap;
+}
+
+/* Les trois étiquettes qui disent « pas de lecture » : même teinte que tout état incomplet du site. */
+.lm-etiquette--lecture-incomplete,
+.lm-etiquette--sans-alerte,
+.lm-etiquette--sans-lecture-tranchee {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  background: var(--tk-incomplete-fond);
+  border: 1px solid var(--tk-incomplete-filet);
+}
+
+.lm-pourquoi { margin: 0.4rem 0 0; font-size: 0.78rem; line-height: 1.45; max-width: 19rem; }
+.lm-pourquoi strong { font-weight: 600; }
+.lm-note { margin: 0.3rem 0 0; font-size: 0.72rem; line-height: 1.4; color: var(--text-secondary); max-width: 19rem; }
+
+/* ── Mesures d'un module ───────────────────────────────────────────────── */
+
+.lm-mesures { list-style: none; margin: 0; padding: 0; min-width: 12.5rem; }
+.lm-mesures li { margin: 0 0 0.45rem; font-size: 0.78rem; line-height: 1.35; }
+.lm-mesures li:last-child { margin-bottom: 0; }
+.lm-mesure-libelle { display: block; font-size: 0.68rem; color: var(--text-secondary); }
+.lm-perimee { margin-left: 0.3rem; }
+.lm-motif { display: block; font-size: 0.68rem; color: var(--text-secondary); font-style: italic; }
+
+.lm-fraicheur { font-size: 0.75rem; line-height: 1.45; min-width: 8.5rem; }
+.lm-fraicheur span { display: block; }
+
+/* ── Grille et seuils ──────────────────────────────────────────────────── */
+
+.lm-seuils { margin: 0; padding-left: 1.1rem; font-size: 0.85rem; }
+.lm-seuils li { margin-bottom: 0.35rem; line-height: 1.5; }
