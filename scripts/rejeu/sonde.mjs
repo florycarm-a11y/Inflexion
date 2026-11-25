@@ -12,7 +12,7 @@ const CIK = String(process.argv[2]).padStart(10, '0');
 const DEPUIS = process.argv[3] || '2024-02-01';
 // La SEC demande aux clients automatisés de s'identifier. Le contact ne s'écrit PAS dans le dépôt :
 // il se donne par la variable d'environnement SEC_USER_AGENT, que chacun règle pour soi.
-const UA = process.env.SEC_USER_AGENT || 'inflexion-rejeu/1.0';
+const UA = process.env.SEC_USER_AGENT || 'lecteur-depots/1.0';
 
 const get = (url, brut = false) => new Promise((res, rej) => {
   https.get(url, { headers: { 'User-Agent': UA } }, (r) => {

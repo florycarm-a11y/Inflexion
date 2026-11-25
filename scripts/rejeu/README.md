@@ -69,6 +69,6 @@ l'intervalle tombe dans une seule bande. Sinon, §3 — la lecture la plus neutr
 
 La SEC demande aux clients automatisés un en-tête `User-Agent` qui les identifie. Les outils le
 lisent dans la variable d'environnement `SEC_USER_AGENT` et retombent sur un nom générique
-(`inflexion-rejeu/1.0`) si elle est absente. **Aucune adresse de contact ne s'écrit dans un
+(`lecteur-depots/1.0`) si elle est absente. **Aucune adresse de contact ne s'écrit dans un
 fichier suivi** : qui veut donner la sienne la règle dans son propre environnement, par exemple
 `export SEC_USER_AGENT="Nom contact@exemple.org"` dans son terminal, avant de lancer la sonde.

@@ -3,7 +3,7 @@
 import os, re, html, json, subprocess
 
 # Identification auprès de la SEC : jamais d'adresse dans le dépôt, voir sonde.mjs.
-UA = os.environ.get("SEC_USER_AGENT", "inflexion-rejeu/1.0")
+UA = os.environ.get("SEC_USER_AGENT", "lecteur-depots/1.0")
 CIK = "797721"
 PUBS = [
     ("2024-02-06", "T3 FY2024", "000119312524025304"),
