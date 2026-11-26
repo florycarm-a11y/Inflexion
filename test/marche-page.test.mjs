@@ -38,6 +38,13 @@ test('marche.html dit son statut : hypothèses non backtestées, hors protocole,
   }
 });
 
+test('la page nomme la mesure « % des actions en circulation » et dit que « Confirmation » ne peut pas encore s’afficher', () => {
+  const visibles = ['marche.html', 'methode.html', 'lecture-marche-vue.js'].map(lire).join('\n');
+  assert.ok(!/flottant/i.test(visibles), 'la mesure ne se nomme jamais « % du flottant »');
+  assert.match(lire('marche.html'), /% des actions en circulation/);
+  assert.match(lire('marche.html'), /« Confirmation » ne peut pas encore s’afficher/);
+});
+
 test('la grille publiée sur la page nomme chaque étiquette du modèle', () => {
   for (const [code, e] of Object.entries(JSON.parse(JSON.stringify(M.MARCHE_ETIQUETTES)))) {
     assert.ok(MAIN.includes(e.libelle), `étiquette absente de la grille publiée : ${code} (${e.libelle})`);

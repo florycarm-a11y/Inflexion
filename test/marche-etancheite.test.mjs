@@ -163,9 +163,9 @@ test('la couche marché n’écrit que dans data/marche/, et un seul fichier éc
   const chemins = [...code.matchAll(/'(data\/[^']*)'/g)].map((m) => m[1]);
   const horsTracker = chemins.filter((c) => !c.startsWith('data/tracker/'));
   assert.ok(horsTracker.length > 0 && horsTracker.every((c) => c.startsWith('data/marche/')), 'chemins hors data/marche : ' + horsTracker.join(', '));
-  assert.deepEqual(chemins.filter((c) => c.startsWith('data/tracker/')), ['data/tracker/entreprises.json'], 'le tracker n’est lu que par son catalogue');
-  // Le catalogue est LU (lireJSON), jamais passé à une écriture.
-  assert.ok(!/writeFileSync\([^)]*tracker/.test(code) && /lireJSON\('data\/tracker\/entreprises\.json'/.test(code));
+  // Le tracker est LU deux fois : son catalogue, et la fiche d'une société (date de sa dernière publication).
+  assert.deepEqual(chemins.filter((c) => c.startsWith('data/tracker/')), ['data/tracker/', 'data/tracker/entreprises.json']);
+  assert.ok(!/writeFileSync\([^)]*tracker/.test(code) && /lireJSON\('data\/tracker\/entreprises\.json'/.test(code) && /lireJSON\('data\/tracker\/' \+ id/.test(code));
   for (const m of code.matchAll(/writeFileSync\(new URL\('([^']*)'/g)) assert.ok(m[1].startsWith('data/marche/'), 'écriture hors data/marche : ' + m[1]);
 });
 

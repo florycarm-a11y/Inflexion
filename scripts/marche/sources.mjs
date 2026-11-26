@@ -111,6 +111,20 @@ export function lireSecChiffreAffaires(json, url) {
   };
 }
 
+/**
+ * Dernier trimestre publié, tel que balisé : le fait d'environ trois mois qui se termine à la période
+ * la plus récente. Un quatrième trimestre n'est balisé qu'avec l'exercice entier : il vaut null,
+ * plutôt que d'être reconstitué ici.
+ */
+export function lireSecTrimestre(json, url, unite) {
+  const faits = (json?.units?.[unite] || []).filter((f) => f.start && f.end && Number.isFinite(f.val));
+  if (!faits.length) return null;
+  const fin = faits.reduce((max, f) => (f.end > max ? f.end : max), '');
+  const trimestre = faits.filter((f) => f.end === fin && Math.abs(joursEntre(f.start, f.end) + 1 - 91) <= 10)
+    .sort((a, b) => (a.filed < b.filed ? 1 : -1))[0];
+  return trimestre ? { valeur: trimestre.val, fin, url } : null;
+}
+
 /** Actions en circulation : fait de page de garde du dernier 10-Q ou 10-K. */
 export function lireSecActions(json, url) {
   const faits = (json?.units?.shares || []).filter((f) => f.end && Number.isFinite(f.val) && f.val > 0);
@@ -121,7 +135,8 @@ export function lireSecActions(json, url) {
 
 export async function collecterSec(cik, { requete, agentSec }) {
   const entetes = { headers: { 'User-Agent': agentSec, Accept: 'application/json' } };
-  const sortie = {};
+  // `publie` n'est pas un champ de l'instantané : il sert à « publié vs consensus » (plus bas).
+  const sortie = { publie: { CA: null, BPA: null } };
 
   // Sociétés à plusieurs classes d'actions : le fait de page de garde est ventilé par classe et
   // l'API ne le rend pas (404). On le dit, on ne l'additionne pas à la main.
@@ -135,12 +150,19 @@ export async function collecterSec(cik, { requete, agentSec }) {
   let meilleur = ND('chiffre d’affaires non balisé');
   for (const concept of SEC_CONCEPTS_CA) {
     const url = secUrl(cik, 'us-gaap', concept);
-    let lu;
-    try { lu = lireSecChiffreAffaires(await requete(url, entetes), url); }
+    let lu, json;
+    try { json = await requete(url, entetes); lu = lireSecChiffreAffaires(json, url); }
     catch (e) { if (e.statut !== 404 && meilleur.valeur === null) meilleur = ND('source injoignable : ' + e.message); continue; }
-    if (lu.valeur !== null ? (meilleur.valeur === null || lu.date > meilleur.date) : meilleur.valeur === null) meilleur = lu;
+    if (lu.valeur !== null ? (meilleur.valeur === null || lu.date > meilleur.date) : meilleur.valeur === null) {
+      meilleur = lu;
+      sortie.publie.CA = lireSecTrimestre(json, url, 'USD');
+    }
   }
   sortie.ca_12_mois = meilleur;
+
+  // BPA dilué comptable du dernier trimestre. Facultatif : une panne ici ne touche à rien d'autre.
+  const urlBpa = secUrl(cik, 'us-gaap', 'EarningsPerShareDiluted');
+  try { sortie.publie.BPA = lireSecTrimestre(await requete(urlBpa, entetes), urlBpa, 'USD/shares'); } catch { /* reste null */ }
   return sortie;
 }
 
@@ -237,6 +259,41 @@ export async function collecterNasdaqCours(ticker, { requete, aujourdhui, config
   return sortie;
 }
 
+// ═══ Publié contre consensus — dérivé de NOS instantanés ══════════════════════
+// Aucune source gratuite ne date son consensus. On compare donc le chiffre publié (SEC) au consensus
+// que nous avons nous-mêmes relevé et conservé AVANT la publication (data/marche/historique/).
+
+const MOIS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+/** « 2026-09-30 » → « Sep 2026 », la forme sous laquelle un consensus désigne son trimestre. */
+const exerciceDe = (fin) => `${MOIS[Number(fin.slice(5, 7)) - 1]} ${fin.slice(0, 4)}`;
+const CHAMP_CONSENSUS = { CA: 'ca_trimestre', BPA: 'bpa_trimestre' };
+
+/**
+ * publication = dernière publication connue du tracker {date} ; publie = {CA, BPA} lus à la SEC ;
+ * historique = instantanés conservés ; grandeurs = ordre de préférence (configuration).
+ * Rend le consensus du dernier instantané daté STRICTEMENT avant la publication qui porte sur le même
+ * trimestre. Le jugement sur son ancienneté (consensusAgeMax) appartient au moteur de règles.
+ */
+export function lirePublieVsConsensus({ id, publication, publie, historique, grandeurs }) {
+  if (!publication || !/^\d{4}-\d{2}-\d{2}$/.test(publication.date || '')) return ND('aucune publication datée dans le tracker');
+  const avant = (historique || []).filter((i) => i && i.collecte < publication.date).sort((a, b) => (a.collecte < b.collecte ? 1 : -1));
+  if (!avant.length) return ND(`aucun instantané antérieur à la publication du ${publication.date}`);
+  for (const grandeur of grandeurs) {
+    const p = publie?.[grandeur];
+    // Le fait balisé doit être celui du trimestre publié ce jour-là, pas le précédent.
+    if (!p || p.fin >= publication.date || joursEntre(p.fin, publication.date) > 100) continue;
+    for (const instantane of avant) {
+      const c = instantane.societes?.[id]?.attentes?.[CHAMP_CONSENSUS[grandeur]];
+      if (!c || !c.valeur || !Number.isFinite(c.valeur.consensus) || !c.source?.nom || !(c.date < publication.date)) continue;
+      if (c.valeur.exercice !== exerciceDe(p.fin)) continue;
+      return donnee({ grandeur, trimestre: c.valeur.exercice, publie: p.valeur, consensus: c.valeur.consensus,
+        date_consensus: c.date, date_publication: publication.date },
+        `SEC (XBRL) pour le publié ; ${c.source.nom}, instantané du ${instantane.collecte}, pour le consensus`, p.url, publication.date);
+    }
+  }
+  return ND(`publié ou consensus du trimestre non disponible avant la publication du ${publication.date}`);
+}
+
 // ═══ Registre des modules ═════════════════════════════════════════════════════
 // Un module = sa clé, les champs qu'il doit rendre, et la liste de ses collecteurs.
 // Chaque collecteur est isolé : s'il échoue, SES champs passent à n/d avec le motif, et les
@@ -251,11 +308,16 @@ export const MODULES = [
       { nom: 'SEC', champs: ['actions_en_circulation'], lancer: async (s, ctx) => ({ actions_en_circulation: (await ctx.sec(s)).actions_en_circulation }) },
     ] },
   { cle: 'attentes',
-    // publie_vs_consensus : aucun collecteur en V1. Il faudra un consensus daté d'AVANT la
-    // publication, que seuls nos propres instantanés (data/marche/historique/) pourront fournir.
-    champs: ['avis', 'avis_reference', 'objectifs', 'bpa_trimestre', 'publie_vs_consensus'],
+    // ca_trimestre (consensus de chiffre d'affaires) : aucun collecteur, faute de source gratuite
+    // vérifiée. Il ne se remplit que par saisie manuelle sourcée et datée.
+    champs: ['avis', 'avis_reference', 'objectifs', 'ca_trimestre', 'bpa_trimestre', 'publie_vs_consensus'],
     collecteurs: [
       { nom: 'Nasdaq', champs: ['avis', 'avis_reference', 'objectifs', 'bpa_trimestre'], lancer: (s, ctx) => collecterNasdaqAnalystes(s.ticker, ctx) },
+      { nom: 'Instantanés', champs: ['publie_vs_consensus'], lancer: async (s, ctx) => {
+        if (!s.publication) return { publie_vs_consensus: lirePublieVsConsensus({ publication: null }) };
+        return { publie_vs_consensus: lirePublieVsConsensus({ id: s.id, publication: s.publication, publie: (await ctx.sec(s)).publie,
+          historique: ctx.historique, grandeurs: ctx.config.attentes.grandeursPublie }) };
+      } },
     ] },
   { cle: 'valorisation',
     champs: ['capitalisation', 'ca_12_mois', 'cours', 'cours_6_mois', 'cours_12_mois'],
@@ -265,4 +327,4 @@ export const MODULES = [
     ] },
 ];
 
-export const MOTIF_SANS_COLLECTEUR = 'aucune source en V1';
+export const MOTIF_SANS_COLLECTEUR = 'aucune source gratuite vérifiée';

@@ -5,8 +5,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
-  lireFinra, lireSecChiffreAffaires, lireSecActions, lireNasdaqObjectifs, lireNasdaqPrevisions,
-  lireNasdaqCapitalisation, lireNasdaqCours, MODULES,
+  lireFinra, lireSecChiffreAffaires, lireSecActions, lireSecTrimestre, lirePublieVsConsensus, lireNasdaqObjectifs,
+  lireNasdaqPrevisions, lireNasdaqCapitalisation, lireNasdaqCours, MODULES,
 } from '../scripts/marche/sources.mjs';
 import { collecterSociete, appliquerSaisieManuelle } from '../scripts/marche/collecte.mjs';
 
@@ -148,11 +148,12 @@ test('chaque module rend exactement ses champs, y compris ceux sans source en V1
   ctx.modulesSec = async () => { throw new Error('coupé'); };
   const r = await collecterSociete({ ticker: 'X', cik: 1 }, ctx);
   for (const m of MODULES) assert.deepEqual(Object.keys(r[m.cle]).sort(), [...m.champs].sort());
-  assert.match(r.attentes.publie_vs_consensus.motif, /aucune source en V1/);
+  assert.match(r.attentes.ca_trimestre.motif, /aucune source gratuite vérifiée/);
+  assert.match(r.attentes.publie_vs_consensus.motif, /aucune publication datée/);
   assert.ok(Object.values(r).every((bloc) => Object.values(bloc).every((d) => d.valeur === null && d.motif)), 'panne générale : tout n/d, rien à zéro');
 });
 
-test('saisie manuelle : comble un champ n/d si elle est sourcée et datée, n’écrase jamais une collecte', () => {
+test('saisie manuelle : comble un champ n/d si elle est sourcée et datée, n’écrase jamais une collecte plus récente', () => {
   const blocs = { flux: { position_courte: { valeur: null, motif: 'x' }, jours_couverture: { valeur: 3, source: { nom: 'FINRA', url: 'https://f' }, date: AUJ } } };
   const bonne = { valeur: 1000, source: { nom: 'AMF', url: 'https://amf.test' }, date: '2026-11-20' };
   appliquerSaisieManuelle(blocs, { flux: { position_courte: bonne, jours_couverture: { ...bonne, valeur: 99 }, inconnu: bonne } });
@@ -163,4 +164,54 @@ test('saisie manuelle : comble un champ n/d si elle est sourcée et datée, n’
   const sansSource = { flux: { position_courte: { valeur: null, motif: 'x' } } };
   appliquerSaisieManuelle(sansSource, { flux: { position_courte: { valeur: 1000, date: '2026-11-20' } } });
   assert.equal(sansSource.flux.position_courte.valeur, null, 'une saisie sans source est ignorée');
+});
+
+test('saisie manuelle : remplace une donnée collectée plus ancienne qu’elle (source qui ne rend qu’un vieux chiffre)', () => {
+  const vieille = { valeur: 13673933, source: { nom: 'SEC (XBRL)', url: 'https://s' }, date: '2022-03-01' };
+  const releve = { valeur: 19899250, source: { nom: 'SEC, 10-Q, page de garde', url: 'https://sec.test' }, date: '2026-11-01' };
+  const blocs = appliquerSaisieManuelle({ flux: { actions_en_circulation: vieille } }, { flux: { actions_en_circulation: releve } });
+  assert.deepEqual(blocs.flux.actions_en_circulation, { ...releve, saisie: 'manuelle' });
+});
+
+// ── Publié contre consensus ───────────────────────────────────────────────────
+
+test('SEC : dernier trimestre publié, lu tel que balisé ; un exercice entier seul ne rend rien', () => {
+  const t = lireSecTrimestre(fixture('sec-rklb-chiffre-affaires.json'), 'https://data.sec.gov/x', 'USD');
+  assert.equal(t.fin, '2026-09-30');
+  assert.ok(t.valeur > 0 && t.valeur < 702248000, 'le trimestre, pas le cumul de neuf mois');
+  assert.equal(lireSecTrimestre({ units: { USD: [{ start: '2025-01-01', end: '2025-12-31', val: 1, filed: '2026-02-26' }] } }, 'u', 'USD'), null);
+  assert.equal(lireSecTrimestre({}, 'u', 'USD'), null);
+});
+
+const consensus = (exercice, valeur, date) => ({ valeur: { exercice, consensus: valeur }, source: { nom: 'Nasdaq', url: 'https://n' }, date });
+const instantaneDu = (jour, attentes) => ({ collecte: jour, societes: { x: { attentes } } });
+const PUBLIE = { CA: { valeur: 110e6, fin: '2026-09-30', url: 'https://sec.test/ca' }, BPA: { valeur: 0.12, fin: '2026-09-30', url: 'https://sec.test/bpa' } };
+const pvc = (historique, publie = PUBLIE, date = '2026-11-09') =>
+  lirePublieVsConsensus({ id: 'x', publication: { date }, publie, historique, grandeurs: ['CA', 'BPA'] });
+
+test('publié vs consensus : le dernier instantané daté STRICTEMENT avant la publication, jamais celui du jour', () => {
+  const r = pvc([
+    instantaneDu('2026-11-05', { bpa_trimestre: consensus('Sep 2026', 0.08, '2026-11-05') }),
+    instantaneDu('2026-11-06', { bpa_trimestre: consensus('Sep 2026', 0.10, '2026-11-06') }),
+    instantaneDu('2026-11-09', { bpa_trimestre: consensus('Sep 2026', 0.11, '2026-11-09') }), // jour de la publication : exclu
+  ]);
+  assert.deepEqual(r.valeur, { grandeur: 'BPA', trimestre: 'Sep 2026', publie: 0.12, consensus: 0.10, date_consensus: '2026-11-06', date_publication: '2026-11-09' });
+  assert.equal(r.date, '2026-11-09');
+  assert.ok(sourcee(r));
+});
+
+test('publié vs consensus : le chiffre d’affaires passe avant le BPA quand son consensus existe', () => {
+  const r = pvc([instantaneDu('2026-11-06', { ca_trimestre: consensus('Sep 2026', 100e6, '2026-11-04'), bpa_trimestre: consensus('Sep 2026', 0.10, '2026-11-06') })]);
+  assert.deepEqual([r.valeur.grandeur, r.valeur.publie, r.valeur.consensus, r.valeur.date_consensus], ['CA', 110e6, 100e6, '2026-11-04']);
+});
+
+test('publié vs consensus : n/d sans instantané antérieur, ou si le consensus vise un autre trimestre', () => {
+  assert.match(pvc([]).motif, /aucun instantané antérieur/);
+  assert.match(pvc([instantaneDu('2026-11-09', { bpa_trimestre: consensus('Sep 2026', 0.1, '2026-11-09') })]).motif, /aucun instantané antérieur/);
+  const autreTrimestre = pvc([instantaneDu('2026-11-06', { bpa_trimestre: consensus('Dec 2026', 0.1, '2026-11-06') })]);
+  assert.equal(autreTrimestre.valeur, null);
+  // Le fait balisé est encore celui du trimestre d'avant (rapport non déposé) : rien n'est comparé.
+  const ancien = { CA: null, BPA: { valeur: 0.05, fin: '2026-06-30', url: 'u' } };
+  assert.equal(pvc([instantaneDu('2026-11-06', { bpa_trimestre: consensus('Sep 2026', 0.1, '2026-11-06') })], ancien).valeur, null);
+  assert.match(lirePublieVsConsensus({ id: 'x', publication: null }).motif, /aucune publication/);
 });

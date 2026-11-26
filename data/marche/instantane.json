@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "collecte": "2026-11-25",
+  "collecte": "2026-11-26",
   "config_version": 1,
   "societes": {
     "centrus-energy": {
@@ -31,12 +31,13 @@
           "date": "2026-11-13"
         },
         "actions_en_circulation": {
-          "valeur": 13673933,
+          "valeur": 19899250,
           "source": {
-            "nom": "SEC (XBRL)",
-            "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0001065059/dei/EntityCommonStockSharesOutstanding.json"
+            "nom": "SEC, rapport 10-Q du T3 2026, page de garde (actions de classe A)",
+            "url": "https://www.sec.gov/Archives/edgar/data/1065059/000162828026070557/leu-20260930.htm"
           },
-          "date": "2022-03-01"
+          "date": "2026-11-01",
+          "saisie": "manuelle"
         }
       },
       "attentes": {
@@ -76,6 +77,10 @@
           },
           "date": "2026-11-01"
         },
+        "ca_trimestre": {
+          "valeur": null,
+          "motif": "aucune source gratuite vérifiée"
+        },
         "bpa_trimestre": {
           "valeur": {
             "exercice": "Dec 2026",
@@ -88,21 +93,21 @@
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/leu/earnings"
           },
-          "date": "2026-11-25"
+          "date": "2026-11-26"
         },
         "publie_vs_consensus": {
           "valeur": null,
-          "motif": "aucune source en V1"
+          "motif": "aucun instantané antérieur à la publication du 2026-11-04"
         }
       },
       "valorisation": {
         "capitalisation": {
-          "valeur": 1668032605,
+          "valeur": 1714217933,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/leu/"
           },
-          "date": "2026-11-25"
+          "date": "2026-11-26"
         },
         "ca_12_mois": {
           "valeur": 454500000,
@@ -118,28 +123,28 @@
           }
         },
         "cours": {
-          "valeur": 84.04,
+          "valeur": 83.19,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/leu/historical"
           },
-          "date": "2026-11-24"
+          "date": "2026-11-25"
         },
         "cours_6_mois": {
-          "valeur": 179.36,
+          "valeur": 183.36,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/leu/historical"
           },
-          "date": "2026-05-22"
+          "date": "2026-05-26"
         },
         "cours_12_mois": {
-          "valeur": 248.98,
+          "valeur": 254.22,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/leu/historical"
           },
-          "date": "2025-11-25"
+          "date": "2025-11-26"
         }
       }
     },
@@ -216,6 +221,10 @@
           },
           "date": "2026-11-01"
         },
+        "ca_trimestre": {
+          "valeur": null,
+          "motif": "aucune source gratuite vérifiée"
+        },
         "bpa_trimestre": {
           "valeur": {
             "exercice": "Dec 2026",
@@ -228,21 +237,21 @@
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/rklb/earnings"
           },
-          "date": "2026-11-25"
+          "date": "2026-11-26"
         },
         "publie_vs_consensus": {
           "valeur": null,
-          "motif": "aucune source en V1"
+          "motif": "aucun instantané antérieur à la publication du 2026-11-09"
         }
       },
       "valorisation": {
         "capitalisation": {
-          "valeur": 28036005375,
+          "valeur": 29717623423,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/rklb/"
           },
-          "date": "2026-11-25"
+          "date": "2026-11-26"
         },
         "ca_12_mois": {
           "valeur": 881900000,
@@ -258,28 +267,28 @@
           }
         },
         "cours": {
-          "valeur": 45.98,
+          "valeur": 47.02,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/rklb/historical"
           },
-          "date": "2026-11-24"
+          "date": "2026-11-25"
         },
         "cours_6_mois": {
-          "valeur": 135.76,
+          "valeur": 143.2,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/rklb/historical"
           },
-          "date": "2026-05-22"
+          "date": "2026-05-26"
         },
         "cours_12_mois": {
-          "valeur": 42.6,
+          "valeur": 41.93,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/rklb/historical"
           },
-          "date": "2025-11-25"
+          "date": "2025-11-26"
         }
       }
     },
@@ -356,6 +365,10 @@
           },
           "date": "2026-11-01"
         },
+        "ca_trimestre": {
+          "valeur": null,
+          "motif": "aucune source gratuite vérifiée"
+        },
         "bpa_trimestre": {
           "valeur": {
             "exercice": "Dec 2026",
@@ -368,21 +381,21 @@
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/ionq/earnings"
           },
-          "date": "2026-11-25"
+          "date": "2026-11-26"
         },
         "publie_vs_consensus": {
           "valeur": null,
-          "motif": "aucune source en V1"
+          "motif": "aucun instantané antérieur à la publication du 2026-11-05"
         }
       },
       "valorisation": {
         "capitalisation": {
-          "valeur": 9959783468,
+          "valeur": 10893925422,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/ionq/"
           },
-          "date": "2026-11-25"
+          "date": "2026-11-26"
         },
         "ca_12_mois": {
           "valeur": 380439000,
@@ -398,28 +411,28 @@
           }
         },
         "cours": {
-          "valeur": 22.4,
+          "valeur": 23.54,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/ionq/historical"
           },
-          "date": "2026-11-24"
+          "date": "2026-11-25"
         },
         "cours_6_mois": {
-          "valeur": 63.64,
+          "valeur": 63.62,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/ionq/historical"
           },
-          "date": "2026-05-22"
+          "date": "2026-05-26"
         },
         "cours_12_mois": {
-          "valeur": 47.06,
+          "valeur": 46.9,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/ionq/historical"
           },
-          "date": "2025-11-25"
+          "date": "2025-11-26"
         }
       }
     },
@@ -496,6 +509,10 @@
           },
           "date": "2026-11-01"
         },
+        "ca_trimestre": {
+          "valeur": null,
+          "motif": "aucune source gratuite vérifiée"
+        },
         "bpa_trimestre": {
           "valeur": {
             "exercice": "Dec 2026",
@@ -508,21 +525,21 @@
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/vrt/earnings"
           },
-          "date": "2026-11-25"
+          "date": "2026-11-26"
         },
         "publie_vs_consensus": {
           "valeur": null,
-          "motif": "aucune source en V1"
+          "motif": "aucun instantané antérieur à la publication du 2026-10-28"
         }
       },
       "valorisation": {
         "capitalisation": {
-          "valeur": 62984333063,
+          "valeur": 66744448074,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/vrt/"
           },
-          "date": "2026-11-25"
+          "date": "2026-11-26"
         },
         "ca_12_mois": {
           "valeur": 13116600000,
@@ -538,28 +555,28 @@
           }
         },
         "cours": {
-          "valeur": 173.82,
+          "valeur": 173.37,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/vrt/historical"
           },
-          "date": "2026-11-24"
+          "date": "2026-11-25"
         },
         "cours_6_mois": {
-          "valeur": 327.46,
+          "valeur": 323.91,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/vrt/historical"
           },
-          "date": "2026-05-22"
+          "date": "2026-05-26"
         },
         "cours_12_mois": {
-          "valeur": 169.57,
+          "valeur": 172.02,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/vrt/historical"
           },
-          "date": "2025-11-25"
+          "date": "2025-11-26"
         }
       }
     },
@@ -591,8 +608,13 @@
           "date": "2026-11-13"
         },
         "actions_en_circulation": {
-          "valeur": null,
-          "motif": "non balisé en un seul fait (plusieurs classes d’actions)"
+          "valeur": 342184493,
+          "source": {
+            "nom": "SEC, rapport 10-Q du T2 FY2027, page de garde (actions de classe A)",
+            "url": "https://www.sec.gov/Archives/edgar/data/1583708/000158370826000055/s-20260731.htm"
+          },
+          "date": "2026-08-21",
+          "saisie": "manuelle"
         }
       },
       "attentes": {
@@ -623,7 +645,7 @@
         "objectifs": {
           "valeur": {
             "bas": 17.5,
-            "moyen": 25.6,
+            "moyen": 25.61,
             "haut": 32
           },
           "source": {
@@ -631,6 +653,10 @@
             "url": "https://www.nasdaq.com/market-activity/stocks/s/analyst-research"
           },
           "date": "2026-11-01"
+        },
+        "ca_trimestre": {
+          "valeur": null,
+          "motif": "aucune source gratuite vérifiée"
         },
         "bpa_trimestre": {
           "valeur": {
@@ -644,21 +670,21 @@
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/s/earnings"
           },
-          "date": "2026-11-25"
+          "date": "2026-11-26"
         },
         "publie_vs_consensus": {
           "valeur": null,
-          "motif": "aucune source en V1"
+          "motif": "aucun instantané antérieur à la publication du 2026-08-27"
         }
       },
       "valorisation": {
         "capitalisation": {
-          "valeur": 8088661479,
+          "valeur": 8384503229,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/s/"
           },
-          "date": "2026-11-25"
+          "date": "2026-11-26"
         },
         "ca_12_mois": {
           "valeur": 1098704000,
@@ -674,28 +700,28 @@
           }
         },
         "cours": {
-          "valeur": 24,
+          "valeur": 24.09,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/s/historical"
           },
-          "date": "2026-11-24"
+          "date": "2026-11-25"
         },
         "cours_6_mois": {
-          "valeur": 18.71,
+          "valeur": 18.56,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/s/historical"
           },
-          "date": "2026-05-22"
+          "date": "2026-05-26"
         },
         "cours_12_mois": {
-          "valeur": 16.23,
+          "valeur": 15.94,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/s/historical"
           },
-          "date": "2025-11-25"
+          "date": "2025-11-26"
         }
       }
     },
@@ -772,6 +798,10 @@
           },
           "date": "2026-11-01"
         },
+        "ca_trimestre": {
+          "valeur": null,
+          "motif": "aucune source gratuite vérifiée"
+        },
         "bpa_trimestre": {
           "valeur": {
             "exercice": "Dec 2026",
@@ -784,49 +814,49 @@
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/oklo/earnings"
           },
-          "date": "2026-11-25"
+          "date": "2026-11-26"
         },
         "publie_vs_consensus": {
           "valeur": null,
-          "motif": "aucune source en V1"
+          "motif": "aucun instantané antérieur à la publication du 2026-11-06"
         }
       },
       "valorisation": {
         "capitalisation": {
-          "valeur": 3622621950,
+          "valeur": 3805217720,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/oklo/"
           },
-          "date": "2026-11-25"
+          "date": "2026-11-26"
         },
         "ca_12_mois": {
           "valeur": null,
-          "motif": "chiffre d’affaires non balisé"
+          "motif": "douze mois non reconstituables à partir des faits balisés"
         },
         "cours": {
-          "valeur": 19.2,
+          "valeur": 19.47,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/oklo/historical"
           },
-          "date": "2026-11-24"
+          "date": "2026-11-25"
         },
         "cours_6_mois": {
-          "valeur": 65.88,
+          "valeur": 68.7,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/oklo/historical"
           },
-          "date": "2026-05-22"
+          "date": "2026-05-26"
         },
         "cours_12_mois": {
-          "valeur": 85.77,
+          "valeur": 88.72,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/oklo/historical"
           },
-          "date": "2025-11-25"
+          "date": "2025-11-26"
         }
       }
     },
@@ -881,9 +911,9 @@
         },
         "objectifs": {
           "valeur": {
-            "bas": 11,
-            "moyen": 11,
-            "haut": 11
+            "bas": 8,
+            "moyen": 11.33,
+            "haut": 15
           },
           "source": {
             "nom": "Nasdaq",
@@ -891,35 +921,39 @@
           },
           "date": "2026-11-01"
         },
+        "ca_trimestre": {
+          "valeur": null,
+          "motif": "aucune source gratuite vérifiée"
+        },
         "bpa_trimestre": {
           "valeur": null,
           "motif": "BPA attendu non disponible"
         },
         "publie_vs_consensus": {
           "valeur": null,
-          "motif": "aucune source en V1"
+          "motif": "aucune publication datée dans le tracker"
         }
       },
       "valorisation": {
         "capitalisation": {
-          "valeur": 1434277521,
+          "valeur": 1743157511,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/aglt/"
           },
-          "date": "2026-11-25"
+          "date": "2026-11-26"
         },
         "ca_12_mois": {
           "valeur": null,
           "motif": "chiffre d’affaires non balisé"
         },
         "cours": {
-          "valeur": 5.39,
+          "valeur": 6.49,
           "source": {
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/aglt/historical"
           },
-          "date": "2026-11-24"
+          "date": "2026-11-25"
         },
         "cours_6_mois": {
           "valeur": 10.25,
@@ -927,11 +961,11 @@
             "nom": "Nasdaq",
             "url": "https://www.nasdaq.com/market-activity/stocks/aglt/historical"
           },
-          "date": "2026-05-22"
+          "date": "2026-05-26"
         },
         "cours_12_mois": {
           "valeur": null,
-          "motif": "aucune séance autour du 2025-11-25"
+          "motif": "aucune séance autour du 2025-11-26"
         }
       }
     }

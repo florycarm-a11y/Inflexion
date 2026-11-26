@@ -79,6 +79,46 @@ test('Bascule + beat net sur un consensus daté d’avant la publication → Con
   assert.equal(r.modules.attentes.signaux.surprise, 'beat');
 });
 
+test('un consensus relevé trop longtemps avant la publication vaut n/d : pas de Confirmation', () => {
+  const x = neutre();
+  const limite = config().attentes.consensusAgeMax; // 7 jours
+  x.attentes.publie_vs_consensus = d({ grandeur: 'CA', publie: 120, consensus: 100, date_consensus: '2026-11-02', date_publication: '2026-11-09' }, '2026-11-09');
+  assert.equal(limite, 7);
+  assert.equal(lecture('bascule', x).etiquette.code, 'confirmation', 'à 7 jours exactement, le consensus compte');
+  x.attentes.publie_vs_consensus = d({ grandeur: 'CA', publie: 120, consensus: 100, date_consensus: '2026-11-01', date_publication: '2026-11-09' }, '2026-11-09');
+  const r = lecture('bascule', x);
+  assert.notEqual(r.etiquette.code, 'confirmation');
+  const mesure = r.modules.attentes.mesures.find((m) => m.cle === 'surprise');
+  assert.deepEqual([mesure.etat, mesure.texte], ['nd', 'n/d']);
+  assert.match(mesure.motif, /plus de 7 jours avant la publication/);
+});
+
+test('short interest « bas » : les jours de couverture sont exigés, un pourcentage bas ne suffit pas seul', () => {
+  const x = neutre();
+  x.flux.position_courte = d(2e6); x.flux.position_precedente = d(2e6, '2026-11-05'); // 2 % des actions
+  x.flux.jours_couverture = nd();
+  assert.equal(lecture('bascule', x).modules.flux.signaux.niveau, 'intermediaire', '2 % sans jours de couverture : pas « bas »');
+  x.flux.jours_couverture = d(5);
+  assert.equal(lecture('bascule', x).modules.flux.signaux.niveau, 'intermediaire', '2 % mais 5 jours : pas « bas »');
+  x.flux.jours_couverture = d(2);
+  assert.equal(lecture('bascule', x).modules.flux.signaux.niveau, 'bas');
+  x.flux.actions_en_circulation = nd(); // pourcentage n/d : les jours de couverture décident seuls
+  assert.equal(lecture('bascule', x).modules.flux.signaux.niveau, 'bas');
+  x.flux.jours_couverture = d(8);
+  assert.equal(lecture('bascule', x).modules.flux.signaux.niveau, 'eleve');
+});
+
+test('le dénominateur du short interest est affiché avec SA source et SA date, périmé comme les autres', () => {
+  const x = neutre();
+  x.flux.actions_en_circulation = { valeur: 100e6, source: { nom: 'SEC, 10-Q, page de garde', url: 'https://sec.test/' }, date: '2026-11-01', saisie: 'manuelle' };
+  const mesure = lecture('bascule', x).modules.flux.mesures.find((m) => m.cle === 'actions');
+  assert.deepEqual([mesure.texte, mesure.source.nom, mesure.date, mesure.saisie], ['100,0 M', 'SEC, 10-Q, page de garde', '2026-11-01', 'manuelle']);
+  x.flux.actions_en_circulation.date = '2026-03-01'; // plus de 200 jours : périmé, le pourcentage n'est plus calculé
+  const flux = lecture('bascule', x).modules.flux;
+  assert.equal(flux.mesures.find((m) => m.cle === 'actions').etat, 'perimee');
+  assert.equal(flux.mesures.find((m) => m.cle === 'pct').texte, 'n/d');
+});
+
 test('un consensus daté du jour de la publication ou après ne compte pas : pas de Confirmation', () => {
   for (const date_consensus of ['2026-11-09', '2026-11-12']) {
     const x = neutre();
@@ -252,7 +292,7 @@ test('les seuils viennent de la configuration : la logique n’en répète aucun
   assert.equal(lecture('bascule', x, { config: strict }).etiquette.code, 'conteste');
   // Le modèle lit les seuils de lecture ; le collecteur lit ceux qui règlent la collecte (toleranceSeance).
   const code = (lire('lecture-marche-modele.js') + lire('scripts/marche/sources.mjs')).replace(/\/\*[\s\S]*?\*\/|\/\/.*$/gm, '');
-  for (const seuil of Object.keys(config().flux).concat(Object.keys(config().valorisation))) {
+  for (const seuil of Object.keys(config().flux).concat(Object.keys(config().valorisation), Object.keys(config().attentes))) {
     assert.ok(code.includes('.' + seuil), `seuil de configuration jamais lu par la logique : ${seuil}`);
   }
 });

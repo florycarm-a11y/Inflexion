@@ -18,6 +18,39 @@ Entrées **les plus récentes en premier**. Titre = dates réelles de la session
 
 ---
 
+## 2026-11-26 — Lecture de marché : essai depuis GitHub, dénominateur, publié vs consensus
+
+**Branche `feat/lecture-marche` POUSSÉE sur `origin` (pas `main`), non fusionnée, sans PR.** Décisions de Flo du 26 novembre, appliquées dans l'ordre 3A, 2A, 1A.
+
+### Décisions qui engagent
+
+- **La mesure s'appelle « % des actions en circulation », jamais « % du flottant »**, sur la page comme dans la méthode (testé). Dénominateur : la seule classe cotée, page de garde du dernier rapport trimestriel, sourcée, datée, périmée à 200 jours comme le reste.
+- **Seuils du short interest recalibrés : 8 % et 4 %** (les repères 10 % et 5 % du flottant, abaissés d'un cinquième). C'est une convention écrite en commentaire, pas une mesure. **« Bas » exige des jours de couverture bas** ; un pourcentage bas ne suffit jamais seul, puisqu'il minore la réalité.
+- **Publié vs consensus : uniquement à partir de nos instantanés** (pas de table de surprises d'un fournisseur). Consensus = dernier instantané daté strictement avant la publication, relevé au plus `consensusAgeMax` jours (7) avant elle, sinon n/d. Chiffre d'affaires d'abord, BPA ensuite (`grandeursPublie`). La date de publication est LUE dans la fiche du tracker.
+- **La saisie manuelle remplace aussi une donnée collectée plus ancienne qu'elle**, jamais une plus récente. Flo fournit lui-même tout consensus saisi à la main.
+
+### Sources — ce qui a été vérifié, pour ne pas le refaire
+
+- **FINRA, SEC et Nasdaq répondent depuis GitHub Actions** (essai à blanc du 26 novembre, mêmes résultats qu'en local : 20, 11 et 53 valeurs).
+- **Finnhub, offre gratuite, testée depuis GitHub Actions** : `/stock/recommendation` et `/stock/earnings` répondent ; `/stock/price-target`, `/stock/revenue-estimate` et `/stock/eps-estimate` répondent **403**. Rien pour Agility Robotics.
+- **Aucune source gratuite de consensus de chiffre d'affaires** : ni Nasdaq (aucun point d'accès), ni Finnhub (403). Le champ `ca_trimestre` existe, il est n/d sauf saisie.
+- **Nasdaq contre Finnhub, avis d'analystes** : le NIVEAU concorde (part d'avis acheteurs à 3 points près sur cinq sociétés, 10 points sur IonQ), le NOMBRE d'analystes non (Finnhub en compte 1,4 à 2,3 fois plus), et **l'ÉVOLUTION sur trois mois diverge sur quatre sociétés sur six** (Oklo : +13 points chez Nasdaq, −2 chez Finnhub ; Vertiv : −7 contre 0). Le signal « évolution du consensus » est donc fragile.
+- **Le BPA publié de Centrus au T3 2026 est bien 1,41 $ dilué** (SEC), comme chez Nasdaq. Finnhub affiche −0,66 : faux. Les deux consensus concordent en revanche (−0,36 et −0,39) : l'écart de 491 % est réel en comptable, et vient d'une base différente entre consensus et publié. SentinelOne : Nasdaq compare en comptable (−0,18), Finnhub en ajusté (+0,08).
+
+### Pièges déjà payés
+
+- **`dei/EntityCommonStockSharesOutstanding` rend pour Centrus un chiffre de 2022**, pas un 404 : une saisie qui ne comblerait que les n/d ne le corrigeait pas.
+- **Un workflow poussé sur une branche ne se lance à la main que s'il existe sur la branche par défaut.** Pour un essai, un fichier séparé déclenché par `push` sur la branche, en `contents: read`, puis supprimé.
+- **Le fait trimestriel de la SEC n'existe pas pour un quatrième trimestre** (seul l'exercice est balisé), et le rapport peut être déposé après le communiqué : dans les deux cas « publié vs consensus » est n/d, rien n'est reconstitué.
+
+### Reste à faire
+
+- **Fusionner pour que la collecte quotidienne tourne** : sans elle, aucun instantané ne précédera les prochaines publications, et « Confirmation » ne pourra jamais s'afficher.
+- Relever les actions de classe A de Centrus et SentinelOne à chaque rapport trimestriel (`data/marche/saisie-manuelle.json`), sinon la donnée se périme et la ligne passe en « Lecture incomplète ».
+- À trancher par Flo : garder ou non le BPA dans `grandeursPublie` (base comptable contre base ajustée) ; garder ou non le signal « évolution du consensus » dans la règle « Pression renforcée ».
+
+---
+
 ## 2026-11-25 — Couche « lecture de marché », à côté du tracker
 
 **Branche `feat/lecture-marche`, depuis `main` (`3cc90137`), NON POUSSÉE, non fusionnée.** Worktree : `.claude/worktrees/lecture-marche`. Le rejeu spatial reste à 11 sociétés sur 18 : cette session ne l'a pas touché.

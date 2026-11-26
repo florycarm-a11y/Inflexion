@@ -28,7 +28,7 @@ Comme dans le tracker, **rien de calculé n'est stocké** : l'instantané ne por
 | `data/marche/societes.json` | Ticker et CIK de chaque société — le catalogue du tracker n'en porte pas |
 | `data/marche/instantane.json` | Le dernier relevé, lu par la page |
 | `data/marche/historique/AAAA-MM-JJ.json` | Un instantané daté par jour de collecte, plus `index.json` |
-| `data/marche/saisie-manuelle.json` | Solution de repli : comble un champ resté n/d, avec source et date obligatoires |
+| `data/marche/saisie-manuelle.json` | Donnée saisie à la main, source et date obligatoires : comble un champ n/d ou remplace une donnée collectée plus ancienne. Porte les actions de classe A de Centrus et SentinelOne, à relever à chaque rapport trimestriel |
 | `.github/workflows/marche-collecte.yml` | Collecte du lundi au vendredi, 22h30 UTC |
 
 ## Forme d'une donnée
@@ -40,7 +40,7 @@ Comme dans le tracker, **rien de calculé n'est stocké** : l'instantané ne por
 
 `date` est le jour **de la donnée** (date de règlement du relevé, séance du cours, clôture de la période comptable), pas celui de la collecte. Une valeur sans source ou sans date s'affiche « n/d ». Une donnée plus vieille que son âge maximal (`MARCHE_CONFIG.fraicheur`) est « périmée » : affichée, marquée, muette pour les règles — et l'étiquette devient « Lecture incomplète ».
 
-## Ce que chaque source donne vraiment (vérifié le 25 novembre 2026)
+## Ce que chaque source donne vraiment (vérifié les 25 et 26 novembre 2026)
 
 Sondé sur les sept sociétés du tracker, et sur Eutelsat pour le cas non américain — le tracker n'en compte aucun.
 
@@ -50,15 +50,16 @@ Sondé sur les sept sociétés du tracker, et sur Eutelsat pour le cas non amér
 | **SEC**, API XBRL | Publique, sans clé | Chiffre d'affaires par période ; actions en circulation (page de garde) | Les actions en circulation des sociétés à plusieurs classes (Centrus, SentinelOne : fait ventilé, absent de l'API) |
 | **Nasdaq**, API du site | **Non documentée** | Avis achat/conserver/vente sur 13 mois, objectifs de cours, BPA attendu, capitalisation, cours quotidiens | Tout titre hors États-Unis (« Symbol not exists »). Aucun consensus de chiffre d'affaires. Aucune liste d'upgrades/downgrades (champ toujours vide) |
 | ~~Yahoo Finance / yfinance~~ | — | **Écartée** : HTTP 429 sur tous les points d'accès, avec ou sans cookie | — |
-| Finnhub | Clé dans les secrets GitHub | **Non vérifiée** : la clé n'existe pas en local | Candidat pour la V2 |
+| Finnhub, offre gratuite | Clé dans les secrets GitHub, testée le 26 novembre 2026 depuis GitHub Actions | Avis mensuels (`/stock/recommendation`), surprises de BPA (`/stock/earnings`). **Non branchée** : sert de point de comparaison | Objectifs de cours, consensus de chiffre d'affaires et de BPA (403). BPA publié parfois faux (Centrus T3 2026 : −0,66 contre 1,41 à la SEC) |
 
 ### Limites à connaître avant de lire une ligne
 
-- **« % des actions en circulation », pas « % du flottant ».** Aucune source gratuite vérifiée ne publie le flottant. Le dénominateur étant plus grand, le pourcentage affiché **minore** celui des sites financiers. Les seuils de `lecture-marche-config.js` sont écrits pour cette mesure-là.
+- **La mesure est un « % des actions en circulation » de la classe cotée**, relevées en page de garde du dernier rapport trimestriel (SEC ; saisie manuelle pour Centrus et SentinelOne, dont le fait est ventilé par classe). Ce n'est pas un « % du flottant » : aucune source gratuite vérifiée ne publie le flottant, et la mesure retenue est donc plus basse que celle des sites financiers. Les seuils (8 % et 4 %) sont les repères d'usage abaissés d'un cinquième : une convention, pas une mesure. Les jours de couverture, qui ne dépendent d'aucun dénominateur, servent de second critère : « bas » les exige.
 - **Le short interest a toujours du retard** : deux relevés par mois, publiés une dizaine de jours après la date de règlement.
 - **Les deux comptages d'analystes de Nasdaq se contredisent.** Le point d'accès `ratings` annonce 3 analystes sur Centrus et 0 sur Oklo ; `targetprice` en compte 17 et 15. Seule la série mensuelle de `targetprice` est lue, pour ne pas fabriquer une tendance entre deux comptages.
 - **Biais haussier structurel.** Six des sept sociétés ont entre 58 % et 91 % d'avis acheteurs (la septième, Agility Robotics, n'a qu'un analyste) ; aucune n'a plus d'un avis vendeur.
-- **« Publié vs consensus » est n/d partout.** Nasdaq publie une table de surprises, mais sur le BPA seulement et sans date du consensus : elle n'est pas lue. Le consensus du trimestre en cours est conservé dans chaque instantané (`attentes.bpa_trimestre`) ; il permettra la comparaison dès la prochaine publication (V2).
+- **« Publié vs consensus » est n/d partout, et « Confirmation » ne peut pas encore s'afficher.** Le collecteur compare le chiffre publié (SEC, fait trimestriel balisé) au consensus du dernier instantané daté strictement avant la publication (date lue dans la fiche du tracker), s'il porte sur le même trimestre ; le moteur le refuse s'il a été relevé plus de `consensusAgeMax` jours avant. Chiffre d'affaires d'abord, BPA ensuite. Aucun instantané ne précède encore une publication. **Aucune source gratuite ne donne le consensus de chiffre d'affaires** (`ca_trimestre` : n/d sauf saisie). Pour le BPA, le publié est le BPA dilué comptable alors que le consensus peut être ajusté : les deux ne sont pas toujours comparables. Un quatrième trimestre n'est pas balisé seul : n/d.
+- **Nasdaq et Finnhub ne comptent pas les mêmes analystes** (comparaison du 26 novembre 2026). La part d'avis acheteurs concorde à 3 points près sur cinq sociétés (10 sur IonQ) ; le nombre d'analystes va du simple au double ; l'évolution sur trois mois diverge sur quatre sociétés sur six. Le niveau du consensus est robuste, son évolution ne l'est pas.
 - **L'API Nasdaq flanche** : 4 appels sur 25 sans réponse le jour du sondage. Le collecteur réessaie trois fois, puis écrit n/d avec le motif.
 - **Cours non ajustés des dividendes**, et aucun contrôle de division du nominal : après un split, les performances à 6 et 12 mois seraient fausses jusqu'à ce que la source ajuste son historique.
 - **Chiffre d'affaires des douze derniers mois : dérivé, pas estimé.** Dernier exercice + cumul en cours − même cumul un an plus tôt ; les trois montants balisés sont conservés dans `detail`. S'il en manque un, n/d.

@@ -4,8 +4,8 @@
 //   node scripts/marche/collecte.mjs            collecte et écrit data/marche/
 //   node scripts/marche/collecte.mjs --dry-run  collecte et affiche, sans rien écrire
 //
-// FLUX À SENS UNIQUE. Ce script LIT data/tracker/entreprises.json (la liste des sociétés) et
-// n'écrit QUE dans data/marche/ : instantane.json (le dernier relevé, lu par la page) et
+// FLUX À SENS UNIQUE. Ce script LIT data/tracker/ (la liste des sociétés et la date de leur
+// dernière publication) et n'écrit QUE dans data/marche/ : instantane.json (le dernier relevé, lu par la page) et
 // historique/AAAA-MM-JJ.json (un instantané daté par jour de collecte, jamais réécrit par un
 // autre jour). Il ne touche à aucun fichier du tracker — test/marche-etancheite.test.mjs le vérifie.
 //
@@ -69,15 +69,37 @@ export async function collecterSociete(societe, ctx) {
   return sortie;
 }
 
-/** Saisie manuelle : ne comble QUE les champs n/d, et seulement avec une donnée sourcée et datée. */
+/**
+ * Saisie manuelle, sourcée et datée. Elle comble un champ resté n/d, ou remplace une donnée collectée
+ * PLUS ANCIENNE qu'elle (cas d'une source qui ne rend plus qu'un vieux chiffre). Jamais une plus récente.
+ */
 export function appliquerSaisieManuelle(blocs, saisie) {
   for (const [module, champs] of Object.entries(saisie || {})) {
     if (!blocs[module]) continue;
     for (const [champ, d] of Object.entries(champs)) {
-      if (champ in blocs[module] && blocs[module][champ].valeur === null && donneeValide(d)) blocs[module][champ] = { ...d, saisie: 'manuelle' };
+      if (!(champ in blocs[module]) || !donneeValide(d)) continue;
+      const collectee = blocs[module][champ];
+      if (collectee.valeur === null || collectee.date < d.date) blocs[module][champ] = { ...d, saisie: 'manuelle' };
     }
   }
   return blocs;
+}
+
+/** Les instantanés déjà conservés (les 150 derniers suffisent : une publication se compare à sa veille). */
+function lireHistorique(racine) {
+  const dossier = new URL('data/marche/historique/', racine);
+  const index = new URL('index.json', dossier);
+  if (!existsSync(index)) return [];
+  return JSON.parse(readFileSync(index, 'utf8')).instantanes.sort().slice(-150)
+    .map((j) => new URL(j + '.json', dossier)).filter(existsSync).map((f) => JSON.parse(readFileSync(f, 'utf8')));
+}
+
+/** Dernière publication d'une société, LUE dans sa fiche du tracker (jamais écrite). */
+function dernierePublication(id, racine) {
+  try {
+    const dates = lireJSON('data/tracker/' + id + '.json', racine).publications.map((p) => p.date).filter(Boolean).sort();
+    return dates.length ? { date: dates[dates.length - 1] } : null;
+  } catch { return null; }
 }
 
 export async function collecter({ aujourdhui, requete = requeteJSON, racine = RACINE, journal = console.log, rythme = 400 } = {}) {
@@ -89,7 +111,7 @@ export async function collecter({ aujourdhui, requete = requeteJSON, racine = RA
   const agentSec = process.env.SEC_USER_AGENT || 'collecte-donnees/1.0';
   const ctx = {
     requete: async (...args) => { await pause(rythme); return requete(...args); },
-    aujourdhui, config: MARCHE_CONFIG, agentSec,
+    aujourdhui, config: MARCHE_CONFIG, agentSec, historique: lireHistorique(racine),
   };
   ctx.modulesSec = (s) => collecterSec(s.cik, ctx);
 
@@ -101,7 +123,7 @@ export async function collecter({ aujourdhui, requete = requeteJSON, racine = RA
       const motif = 'société absente de data/marche/societes.json';
       societes[e.id] = { ticker: null, ...Object.fromEntries(MODULES.map((m) => [m.cle, Object.fromEntries(m.champs.map((c) => [c, { valeur: null, motif }]))])) };
     } else {
-      const blocs = await collecterSociete(identite, ctx);
+      const blocs = await collecterSociete({ ...identite, id: e.id, publication: dernierePublication(e.id, racine) }, ctx);
       societes[e.id] = { ticker: identite.ticker, ...blocs };
     }
     appliquerSaisieManuelle(societes[e.id], saisie[e.id]);

@@ -32,6 +32,7 @@ var MARCHE_CONFIG = {
     avis_reference: 150,
     objectifs: 45,
     bpa_trimestre: 45,
+    ca_trimestre: 45,
     // Dérivé des instantanés : valable jusqu'à la publication suivante (un trimestre).
     publie_vs_consensus: 120,
     capitalisation: 7,
@@ -47,12 +48,23 @@ var MARCHE_CONFIG = {
 
   // ── Module A — Flux / short interest ────────────────────────────────────────
   flux: {
-    // Position courte en % des ACTIONS EN CIRCULATION (et non du flottant : aucune source gratuite
-    // vérifiée ne publie le flottant). Le flottant étant plus petit, ce pourcentage MINORE le
-    // « % du flottant » que citent les sites financiers.
-    pctEleve: 10,   // « élevé » à partir de 10 %
-    pctBas: 5,      // « bas » jusqu'à 5 %
+    // Mesure : position courte en % des ACTIONS EN CIRCULATION de la classe cotée (page de garde
+    // du dernier rapport trimestriel). Ce n'est pas un « % du flottant » : aucune source gratuite
+    // vérifiée ne publie le flottant. Le flottant étant plus petit que les actions en circulation,
+    // la mesure retenue est PLUS BASSE que celle des sites financiers.
+    //
+    // Recalibrage (26 novembre 2026). Les repères d'usage, 10 % « élevé » et 5 % « bas », sont
+    // pensés pour un % du flottant. Ils sont abaissés d'un cinquième, ce qui revient à supposer un
+    // flottant de 80 % des actions en circulation. Cette décote est une CONVENTION, pas une mesure :
+    // l'écart réel varie d'une société à l'autre (il est plus fort quand les fondateurs détiennent
+    // beaucoup) et aucune source ne permet de le chiffrer ici. D'où le second critère ci-dessous.
+    pctEleve: 8,    // « élevé » à partir de 8 % (10 % du flottant × 0,8)
+    pctBas: 4,      // « bas » jusqu'à 4 %     (5 % du flottant × 0,8)
     // Jours de couverture = position courte / volume quotidien moyen (calculé par FINRA).
+    // Ils ne dépendent d'aucun dénominateur : c'est le critère solide. La logique en tire deux règles :
+    //   « élevé » : le pourcentage OU les jours de couverture atteignent leur seuil ;
+    //   « bas »   : les jours de couverture sont bas, ET le pourcentage aussi quand il est connu.
+    // Un pourcentage bas ne suffit donc jamais seul à conclure « bas », puisqu'il minore la réalité.
     joursEleves: 7, // « élevé » à partir de 7 jours
     joursBas: 3,    // « bas » jusqu'à 3 jours
     // Variation de la position entre deux relevés, en % : en deçà, la tendance est « stable ».
@@ -69,6 +81,15 @@ var MARCHE_CONFIG = {
     moisReference: 3,
     // Publié contre consensus, en % d'écart : « beat net » / « miss net » au-delà, « in-line » en deçà.
     ecartNet: 5,
+    // Le consensus comparé au chiffre publié est celui du dernier instantané daté STRICTEMENT avant
+    // la publication. S'il a été relevé plus de `consensusAgeMax` jours avant elle, il ne reflète
+    // plus les attentes de la veille : le résultat est « n/d ».
+    consensusAgeMax: 7,
+    // Grandeurs comparées, dans l'ordre de préférence : le chiffre d'affaires d'abord (c'est lui que
+    // suit le tracker), le BPA à défaut. Retirer 'BPA' de la liste suffit à ne plus le comparer.
+    // Attention au BPA : le publié lu à la SEC est le BPA dilué comptable, alors que le consensus peut
+    // être établi sur une base ajustée. Les deux ne sont pas toujours comparables.
+    grandeursPublie: ['CA', 'BPA'],
   },
 
   // ── Module C — Valorisation ─────────────────────────────────────────────────

@@ -92,7 +92,7 @@
                             <tr><th scope="row">Bascule, Bascule commerciale, Rechute</th><td>Une donnée indispensable manquante ou trop ancienne</td><td>Lecture incomplète</td></tr>
                             <tr><th scope="row">Bascule</th><td>Short interest élevé <strong>et</strong> en hausse</td><td>Contesté — squeeze possible ou scepticisme fondé : la couche ne tranche pas</td></tr>
                             <tr><th scope="row">Bascule</th><td>Consensus très haussier, multiple élevé <strong>et</strong> forte hausse récente</td><td>Déjà dans le cours ?</td></tr>
-                            <tr><th scope="row">Bascule</th><td>Publié nettement au-dessus d’un consensus daté d’avant la publication</td><td>Confirmation</td></tr>
+                            <tr><th scope="row">Bascule</th><td>Publié nettement au-dessus d’un consensus daté d’avant la publication</td><td>Confirmation — ne peut pas encore s’afficher, voir plus bas</td></tr>
                             <tr><th scope="row">Bascule</th><td>Multiple raisonnable, <strong>et</strong> consensus prudent ou faible couverture, <strong>et</strong> short interest bas ou en baisse</td><td>Asymétrie favorable</td></tr>
                             <tr><th scope="row">Rechute</th><td>Short interest en hausse, ou part d’avis acheteurs en recul</td><td>Pression renforcée</td></tr>
                             <tr><th scope="row">Rechute</th><td>Consensus encore très haussier</td><td>Risque de révisions</td></tr>
@@ -109,9 +109,9 @@
             <section class="tk-bloc tk-lecture">
                 <h2>Ce que ces données ne disent pas</h2>
                 <ul class="tk-retenir">
-                    <li><strong>Le short interest arrive tard.</strong> FINRA le publie deux fois par mois, une dizaine de jours après la date de relevé. Il est rapporté ici aux actions en circulation, et non au flottant : le pourcentage affiché est donc plus bas que celui des sites financiers.</li>
+                    <li><strong>Le short interest arrive tard.</strong> FINRA le publie deux fois par mois, une dizaine de jours après la date de relevé. La mesure affichée est un « % des actions en circulation » de la classe cotée : elle est plus basse que les pourcentages des sites financiers, calculés sur une base plus étroite. C’est pourquoi un pourcentage bas ne suffit jamais seul : il faut aussi peu de jours de couverture.</li>
                     <li><strong>Les analystes sont structurellement acheteurs.</strong> Une part élevée d’avis acheteurs est la norme, pas un signal en soi ; et peu d’analystes suivent les petites capitalisations.</li>
-                    <li><strong>« Publié vs consensus » est vide pour l’instant.</strong> Aucune source gratuite ne donne un consensus daté d’avant la publication. Il se construira à partir des instantanés conservés à chaque collecte.</li>
+                    <li><strong>L’étiquette « Confirmation » ne peut pas encore s’afficher.</strong> Elle exige un consensus relevé avant la publication, et aucune source gratuite n’en fournit de daté. Cette couche conserve donc elle-même le consensus à chaque collecte : « publié vs consensus » restera « n/d » jusqu’à la première publication précédée d’un de ces relevés. Seul le consensus de BPA est disponible aujourd’hui ; celui de chiffre d’affaires n’a pas de source gratuite.</li>
                     <li><strong>Hors des États-Unis, presque tout manque.</strong> Les sources retenues ne couvrent que les titres cotés aux États-Unis.</li>
                     <li><strong>Les données d’analystes et de cours viennent d’un accès non documenté</strong> au site du Nasdaq, qui peut se fermer sans préavis. Le jour où il se ferme, les cases passent à « n/d ».</li>
                 </ul>

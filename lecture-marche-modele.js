@@ -106,11 +106,13 @@ function marcheLireFlux(bloc, societe, config, aujourdhui) {
   var variation = position !== null && precedente ? (position - precedente) / precedente * 100 : null;
   var tendance = variation === null ? null : variation > c.variationStable ? 'hausse' : variation < -c.variationStable ? 'baisse' : 'stable';
 
-  // Niveau : « élevé » dès qu'une des deux mesures l'est ; « bas » si toutes celles qu'on connaît le sont.
+  // Niveau. Le pourcentage, rapporté aux actions en circulation, minore le « % du flottant » : il peut
+  // établir un niveau « élevé », jamais un niveau « bas » à lui seul. Les jours de couverture ne
+  // dépendent d'aucun dénominateur : « bas » les exige.
   var niveau = null;
   if (pct !== null || jours !== null) {
     var eleve = (pct !== null && pct >= c.pctEleve) || (jours !== null && jours >= c.joursEleves);
-    var bas = (pct === null || pct <= c.pctBas) && (jours === null || jours <= c.joursBas);
+    var bas = jours !== null && jours <= c.joursBas && (pct === null || pct <= c.pctBas);
     niveau = eleve ? 'eleve' : bas ? 'bas' : 'intermediaire';
   }
 
@@ -127,6 +129,9 @@ function marcheLireFlux(bloc, societe, config, aujourdhui) {
     mesures: [
       marcheMesure('pct', '% des actions en circulation', pct === null && d.position_courte.etat === 'ok' ? d.actions_en_circulation : d.position_courte,
         pct === null ? 'n/d' : marcheNombre(pct) + ' %'),
+      // Le dénominateur a sa propre ligne : sa source et sa date ne sont pas celles de FINRA.
+      marcheMesure('actions', 'Actions en circulation (classe cotée)', d.actions_en_circulation,
+        marcheNombre((d.actions_en_circulation.valeur || 0) / 1e6) + ' M'),
       marcheMesure('jours', 'Jours de couverture', d.jours_couverture, marcheNombre(d.jours_couverture.valeur || 0) + ' j'),
       marcheMesure('tendance', 'Tendance', d.position_precedente.etat === 'ok' ? d.position_courte : d.position_precedente,
         tendance === null ? 'n/d' : { hausse: 'Hausse', baisse: 'Baisse', stable: 'Stable' }[tendance] + ' (' + marcheVariation(variation) + ' depuis le ' + d.position_precedente.date + ')'),
@@ -144,7 +149,7 @@ function marchePartAchat(avis) {
 
 function marcheLireAttentes(bloc, societe, config, aujourdhui) {
   var c = config.attentes;
-  var d = marcheLireDonnees(bloc, ['avis', 'avis_reference', 'objectifs', 'bpa_trimestre', 'publie_vs_consensus'], config, aujourdhui);
+  var d = marcheLireDonnees(bloc, ['avis', 'avis_reference', 'objectifs', 'ca_trimestre', 'bpa_trimestre', 'publie_vs_consensus'], config, aujourdhui);
   var courant = marchePartAchat(marcheUtile(d.avis)), reference = marchePartAchat(marcheUtile(d.avis_reference));
 
   var couverture = courant ? courant.total : null;
@@ -161,20 +166,30 @@ function marcheLireAttentes(bloc, societe, config, aujourdhui) {
   var dispersion = obj && obj.moyen > 0 ? (obj.haut - obj.bas) / obj.moyen * 100 : null;
 
   // Publié contre consensus : seulement si le consensus est DATÉ D'AVANT la publication.
-  var pvc = marcheUtile(d.publie_vs_consensus), surprise = null, ecartPublie = null;
+  // Et relevé au plus `consensusAgeMax` jours avant elle : au-delà, ce n'est plus le consensus de la veille.
+  var pvc = marcheUtile(d.publie_vs_consensus), surprise = null, ecartPublie = null, motifSurprise = null;
   if (pvc && MARCHE_JOUR.test(pvc.date_consensus) && MARCHE_JOUR.test(pvc.date_publication)
       && pvc.date_consensus < pvc.date_publication && typeof pvc.publie === 'number' && typeof pvc.consensus === 'number' && pvc.consensus !== 0) {
-    ecartPublie = (pvc.publie - pvc.consensus) / Math.abs(pvc.consensus) * 100;
-    surprise = ecartPublie >= c.ecartNet ? 'beat' : ecartPublie <= -c.ecartNet ? 'miss' : 'in-line';
+    if (marcheJoursEntre(pvc.date_consensus, pvc.date_publication) > c.consensusAgeMax) {
+      motifSurprise = 'consensus relevé plus de ' + c.consensusAgeMax + ' jours avant la publication';
+    } else {
+      ecartPublie = (pvc.publie - pvc.consensus) / Math.abs(pvc.consensus) * 100;
+      surprise = ecartPublie >= c.ecartNet ? 'beat' : ecartPublie <= -c.ecartNet ? 'miss' : 'in-line';
+    }
   }
+  var grandeur = pvc && pvc.grandeur ? pvc.grandeur : null;
 
   var morceaux = [];
   if (couverture !== null) morceaux.push(couverture + ' analyste' + (couverture > 1 ? 's' : ''));
   if (part !== null) morceaux.push(marcheNombre(part, 0) + ' % d’avis acheteurs');
   if (tendance && tendance !== 'stable') morceaux.push('en ' + tendance + ' (' + (ecartPoints > 0 ? '+' : '') + marcheNombre(ecartPoints, 0) + ' pts en ' + c.moisReference + ' mois)');
-  if (surprise) morceaux.push({ beat: 'beat', miss: 'miss', 'in-line': 'in-line' }[surprise] + ' ' + marcheVariation(ecartPublie));
+  if (surprise) morceaux.push(surprise + ' ' + marcheVariation(ecartPublie) + (grandeur ? ' sur le ' + grandeur : ''));
 
-  var bpa = d.bpa_trimestre.valeur;
+  var bpa = d.bpa_trimestre.valeur, ca = d.ca_trimestre.valeur;
+  var mesureSurprise = marcheMesure('surprise', 'Publié vs consensus', d.publie_vs_consensus,
+    surprise === null ? 'n/d' : { beat: 'Beat', miss: 'Miss', 'in-line': 'In-line' }[surprise]
+      + ' (' + (grandeur ? grandeur + ', ' : '') + marcheVariation(ecartPublie) + ', consensus du ' + pvc.date_consensus + ')');
+  if (motifSurprise) { mesureSurprise.etat = 'nd'; mesureSurprise.texte = 'n/d'; mesureSurprise.motif = motifSurprise; }
   return {
     cle: 'attentes', titre: 'Attentes / analystes',
     defauts: marcheDefauts(d, ['avis'], { avis: 'consensus des analystes' }),
@@ -190,10 +205,11 @@ function marcheLireAttentes(bloc, societe, config, aujourdhui) {
       marcheMesure('dispersion', 'Objectifs de cours', d.objectifs, d.objectifs.valeur
         ? marcheNombre(d.objectifs.valeur.bas, 0) + ' à ' + marcheNombre(d.objectifs.valeur.haut, 0) + ' $'
           + (dispersion === null ? '' : ' (dispersion ' + marcheNombre(dispersion, 0) + ' %)') : 'n/d'),
+      marcheMesure('ca', 'CA attendu', d.ca_trimestre, ca && typeof ca.consensus === 'number'
+        ? marcheNombre(ca.consensus / 1e6, 0) + ' M$ · ' + ca.exercice : 'n/d'),
       marcheMesure('bpa', 'BPA attendu', d.bpa_trimestre, bpa
         ? marcheNombre(bpa.consensus, 2) + ' $ · ' + bpa.exercice + ' · ' + bpa.estimations + ' estimation' + (bpa.estimations > 1 ? 's' : '') : 'n/d'),
-      marcheMesure('surprise', 'Publié vs consensus', d.publie_vs_consensus,
-        surprise === null ? 'n/d' : { beat: 'Beat', miss: 'Miss', 'in-line': 'In-line' }[surprise] + ' (' + marcheVariation(ecartPublie) + ')'),
+      mesureSurprise,
     ],
   };
 }

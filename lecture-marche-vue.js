@@ -176,7 +176,8 @@ function rendreSeuils() {
   var c = MARCHE_CONFIG;
   var n = function (v) { return marcheNombre(v, 0); };
   return el('ul', { class: 'lm-seuils' }, [
-    'Short interest « élevé » : au moins ' + n(c.flux.pctEleve) + ' % des actions en circulation ou ' + n(c.flux.joursEleves) + ' jours de couverture ; « bas » : au plus ' + n(c.flux.pctBas) + ' % et ' + n(c.flux.joursBas) + ' jours.',
+    'Short interest « élevé » : au moins ' + n(c.flux.pctEleve) + ' % des actions en circulation ou ' + n(c.flux.joursEleves) + ' jours de couverture ; « bas » : au plus ' + n(c.flux.joursBas) + ' jours de couverture, et au plus ' + n(c.flux.pctBas) + ' % quand le pourcentage est connu. Un pourcentage bas ne suffit jamais seul.',
+    'Publié contre consensus : « beat » ou « miss » au-delà de ' + n(c.attentes.ecartNet) + ' % d’écart, sur le consensus du dernier instantané daté strictement avant la publication et relevé au plus ' + c.attentes.consensusAgeMax + ' jours avant elle. Grandeurs comparées, dans l’ordre : ' + c.attentes.grandeursPublie.join(', ') + '.',
     'Tendance du short interest : hausse ou baisse au-delà de ' + n(c.flux.variationStable) + ' % entre deux relevés ; « stable » en deçà.',
     'Consensus « très haussier » : au moins ' + n(c.attentes.partAchatTresHaussiere) + ' % d’avis acheteurs ; « prudent » : au plus ' + n(c.attentes.partAchatPrudente) + ' %. Évolution jugée sur ' + c.attentes.moisReference + ' mois, au-delà de ' + n(c.attentes.variationStable) + ' points.',
     '« Faible couverture » : au plus ' + c.attentes.couvertureFaible + ' analystes.',
