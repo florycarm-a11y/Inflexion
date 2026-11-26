@@ -1,0 +1,46 @@
+# TEMPORAIRE — essai à blanc de la collecte « lecture de marché » depuis GitHub Actions.
+# Ne vise que la branche feat/lecture-marche, en lecture seule : n'écrit rien, ne déploie rien.
+# À supprimer dès le résultat lu.
+
+name: "🧪 Lecture de marché — essai à blanc"
+
+on:
+  push:
+    branches: [feat/lecture-marche]
+
+permissions:
+  contents: read
+
+jobs:
+  essai:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: "Collecte à blanc"
+        env:
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+        run: node scripts/marche/collecte.mjs --dry-run | tee collecte.log
+
+      - name: "Bilan par source"
+        run: |
+          node -e '
+            const t = require("fs").readFileSync("collecte.log", "utf8");
+            const inst = JSON.parse(t.slice(t.indexOf("{\n")));
+            const ok = {}, ko = {};
+            for (const [id, s] of Object.entries(inst.societes))
+              for (const [mod, bloc] of Object.entries(s)) {
+                if (!bloc || typeof bloc !== "object") continue;
+                for (const [champ, d] of Object.entries(bloc)) {
+                  if (d.valeur !== null) ok[d.source.nom] = (ok[d.source.nom] || 0) + 1;
+                  else (ko[d.motif] ||= []).push(id + "." + mod + "." + champ);
+                }
+              }
+            console.log("VALEURS REÇUES PAR SOURCE"); console.log(ok);
+            console.log("CHAMPS n/d PAR MOTIF");
+            for (const [m, l] of Object.entries(ko)) console.log("- " + m + " (" + l.length + ") : " + l.join(", "));
+          '
