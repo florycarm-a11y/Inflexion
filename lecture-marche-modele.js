@@ -159,7 +159,7 @@ function marcheLireAttentes(bloc, societe, config, aujourdhui) {
 
   // Évolution du consensus : part d'avis acheteurs aujourd'hui contre il y a `moisReference` mois, en points.
   var ecartPoints = part !== null && reference && reference.part !== null ? part - reference.part : null;
-  var tendance = ecartPoints === null ? null : ecartPoints > c.variationStable ? 'hausse' : ecartPoints < -c.variationStable ? 'baisse' : 'stable';
+  // Indicatif seulement : cet écart n'est rendu dans aucun signal, donc aucune règle ne peut le lire.
 
   // Dispersion des objectifs de cours : (haut − bas) / moyen. Affichée, sans règle attachée.
   var obj = marcheUtile(d.objectifs);
@@ -182,7 +182,6 @@ function marcheLireAttentes(bloc, societe, config, aujourdhui) {
   var morceaux = [];
   if (couverture !== null) morceaux.push(couverture + ' analyste' + (couverture > 1 ? 's' : ''));
   if (part !== null) morceaux.push(marcheNombre(part, 0) + ' % d’avis acheteurs');
-  if (tendance && tendance !== 'stable') morceaux.push('en ' + tendance + ' (' + (ecartPoints > 0 ? '+' : '') + marcheNombre(ecartPoints, 0) + ' pts en ' + c.moisReference + ' mois)');
   if (surprise) morceaux.push(surprise + ' ' + marcheVariation(ecartPublie) + (grandeur ? ' sur le ' + grandeur : ''));
 
   var bpa = d.bpa_trimestre.valeur, ca = d.ca_trimestre.valeur;
@@ -193,15 +192,14 @@ function marcheLireAttentes(bloc, societe, config, aujourdhui) {
   return {
     cle: 'attentes', titre: 'Attentes / analystes',
     defauts: marcheDefauts(d, ['avis'], { avis: 'consensus des analystes' }),
-    signaux: { consensus: consensus, couvertureFaible: couvertureFaible, tendance: tendance, surprise: surprise },
+    signaux: { consensus: consensus, couvertureFaible: couvertureFaible, surprise: surprise },
     resume: morceaux.join(', '),
     mesures: [
       marcheMesure('avis', 'Avis', d.avis, d.avis.valeur
         ? d.avis.valeur.achat + ' achat · ' + d.avis.valeur.conserver + ' conserver · ' + d.avis.valeur.vente + ' vente'
           + (part === null ? '' : ' (' + marcheNombre(part, 0) + ' % acheteurs)') : 'n/d'),
-      marcheMesure('tendance', 'Évolution', d.avis_reference.etat === 'ok' ? d.avis : d.avis_reference,
-        tendance === null ? 'n/d' : { hausse: 'Hausse', baisse: 'Baisse', stable: 'Stable' }[tendance]
-          + ' (' + (ecartPoints > 0 ? '+' : '') + marcheNombre(ecartPoints, 0) + ' pts depuis le ' + d.avis_reference.date + ')'),
+      marcheMesure('tendance', 'Évolution (indicatif, non utilisé dans l’étiquette)', d.avis_reference.etat === 'ok' ? d.avis : d.avis_reference,
+        ecartPoints === null ? 'n/d' : (ecartPoints > 0 ? '+' : '') + marcheNombre(ecartPoints, 0) + ' pts d’avis acheteurs depuis le ' + d.avis_reference.date),
       marcheMesure('dispersion', 'Objectifs de cours', d.objectifs, d.objectifs.valeur
         ? marcheNombre(d.objectifs.valeur.bas, 0) + ' à ' + marcheNombre(d.objectifs.valeur.haut, 0) + ' $'
           + (dispersion === null ? '' : ' (dispersion ' + marcheNombre(dispersion, 0) + ' %)') : 'n/d'),
@@ -299,8 +297,8 @@ var MARCHE_REGLES = [
         && (s.flux.niveau === 'bas' || s.flux.tendance === 'baisse');
     } },
   // ── Rechute ──
-  { etiquette: 'pression-renforcee', famille: 'rechute', modules: ['flux', 'attentes'],
-    si: function (s) { return s.flux.tendance === 'hausse' || s.attentes.tendance === 'baisse'; } },
+  { etiquette: 'pression-renforcee', famille: 'rechute', modules: ['flux'],
+    si: function (s) { return s.flux.tendance === 'hausse'; } },
   { etiquette: 'risque-de-revisions', famille: 'rechute', modules: ['attentes'],
     si: function (s) { return s.attentes.consensus === 'tres-haussier'; } },
 ];

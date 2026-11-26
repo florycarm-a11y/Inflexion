@@ -73,11 +73,18 @@ var MARCHE_CONFIG = {
 
   // ── Module B — Attentes / analystes ─────────────────────────────────────────
   attentes: {
-    couvertureFaible: 5,        // « faible couverture » jusqu'à 5 analystes
+    // « Faible couverture ». Le repère d'usage est de 5 analystes, mais il vaut pour des décomptes
+    // larges. Ceux du Nasdaq, seuls lus ici, sont 1,4 à 2,3 fois plus bas que ceux de Finnhub
+    // (comparaison du 26 novembre 2026, six sociétés). Le seuil est donc ramené à 3 : 5 divisé par
+    // cet écart donne entre 2,2 et 3,6. C'est une CONVENTION tirée de six points, pas une mesure.
+    couvertureFaible: 3,        // « faible couverture » jusqu'à 3 analystes (décompte du Nasdaq)
     partAchatTresHaussiere: 80, // consensus « très haussier » à partir de 80 % d'avis acheteurs
     partAchatPrudente: 60,      // consensus « prudent » jusqu'à 60 %
-    // Évolution de la part d'avis acheteurs sur `moisReference` mois, en points : en deçà, « stable ».
-    variationStable: 5,
+    // Évolution de la part d'avis acheteurs sur `moisReference` mois : AFFICHÉE À TITRE INDICATIF,
+    // elle n'entre dans aucune étiquette. Nasdaq et Finnhub divergent sur quatre sociétés sur six.
+    // Si ce signal revient un jour dans une règle, son seuil devra s'exprimer en NOMBRE D'ANALYSTES
+    // ayant changé d'avis, pas en points, et se calculer sur nos propres relevés quotidiens
+    // (champ avis_du_jour des instantanés), à source constante.
     moisReference: 3,
     // Publié contre consensus, en % d'écart : « beat net » / « miss net » au-delà, « in-line » en deçà.
     ecartNet: 5,
@@ -85,11 +92,12 @@ var MARCHE_CONFIG = {
     // la publication. S'il a été relevé plus de `consensusAgeMax` jours avant elle, il ne reflète
     // plus les attentes de la veille : le résultat est « n/d ».
     consensusAgeMax: 7,
-    // Grandeurs comparées, dans l'ordre de préférence : le chiffre d'affaires d'abord (c'est lui que
-    // suit le tracker), le BPA à défaut. Retirer 'BPA' de la liste suffit à ne plus le comparer.
-    // Attention au BPA : le publié lu à la SEC est le BPA dilué comptable, alors que le consensus peut
-    // être établi sur une base ajustée. Les deux ne sont pas toujours comparables.
-    grandeursPublie: ['CA', 'BPA'],
+    // Grandeurs comparées au publié, dans l'ordre de préférence. Seul le chiffre d'affaires l'est :
+    // c'est lui que suit le tracker. Le BPA a été retiré le 26 novembre 2026 : le publié lu à la SEC
+    // est le BPA dilué comptable, le consensus peut être ajusté, et l'écart n'a alors pas de sens
+    // (Centrus, T3 2026 : +491 %). Le consensus de BPA reste archivé chaque jour ; remettre 'BPA'
+    // dans la liste suffirait à le comparer de nouveau.
+    grandeursPublie: ['CA'],
   },
 
   // ── Module C — Valorisation ─────────────────────────────────────────────────

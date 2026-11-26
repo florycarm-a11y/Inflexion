@@ -63,6 +63,11 @@ jobs:
             echo "Aucun changement."
           else
             git commit -m "📈 Lecture de marché — collecte du $(date -u +%F)"
-            git pull --rebase --autostash
-            git push
+            # Un autre pipeline peut pousser sur main au même moment : trois essais, sinon l'instantané
+            # du jour serait perdu, et avec lui le consensus de la veille d'une publication.
+            for essai in 1 2 3; do
+              git pull --rebase --autostash && git push && break
+              [ "$essai" = 3 ] && exit 1
+              sleep 15
+            done
           fi

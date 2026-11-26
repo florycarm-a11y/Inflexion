@@ -65,8 +65,8 @@ test('Bascule + valorisation raisonnable, consensus prudent, short interest bas 
 test('Asymétrie favorable : la faible couverture vaut le consensus prudent, le short en baisse vaut le short bas', () => {
   const x = neutre();
   x.valorisation.capitalisation = d(6e9);
-  x.attentes.avis = d({ achat: 4, conserver: 0, vente: 0 }, '2026-11-01'); // 4 analystes, 100 % acheteurs
-  x.attentes.avis_reference = d({ achat: 4, conserver: 0, vente: 0 }, '2026-08-01');
+  x.attentes.avis = d({ achat: 3, conserver: 0, vente: 0 }, '2026-11-01'); // 3 analystes, 100 % acheteurs
+  x.attentes.avis_reference = d({ achat: 3, conserver: 0, vente: 0 }, '2026-08-01');
   x.flux.position_precedente = d(8e6, '2026-11-05');                      // −12,5 % : en baisse
   assert.equal(lecture('bascule', x).etiquette.code, 'asymetrie-favorable');
 });
@@ -194,10 +194,25 @@ test('Rechute + short interest en hausse → Pression renforcée', () => {
   assert.equal(lecture('rechute', x).etiquette.code, 'pression-renforcee');
 });
 
-test('Rechute + part d’avis acheteurs en recul → Pression renforcée', () => {
+test('l’évolution des avis est indicative : affichée, jamais dans une étiquette ni dans ses raisons', () => {
   const x = neutre();
-  x.attentes.avis_reference = d({ achat: 9, conserver: 1, vente: 0 }, '2026-08-01'); // 90 % → 70 %
-  assert.equal(lecture('rechute', x).etiquette.code, 'pression-renforcee');
+  x.attentes.avis_reference = d({ achat: 9, conserver: 1, vente: 0 }, '2026-08-01'); // 90 % → 70 % d'avis acheteurs
+  const r = lecture('rechute', x);
+  assert.notEqual(r.etiquette.code, 'pression-renforcee', 'un recul des avis ne déclenche plus « Pression renforcée »');
+  assert.ok(!('tendance' in r.modules.attentes.signaux), 'aucun signal d’évolution n’est exposé aux règles');
+  assert.ok(!/pts/.test(r.raisons.join(' ')), 'l’évolution ne figure pas dans les raisons');
+  const mesure = r.modules.attentes.mesures.find((m) => m.cle === 'tendance');
+  assert.match(mesure.libelle, /indicatif, non utilisé dans l’étiquette/);
+  assert.match(mesure.texte, /^−20 pts d’avis acheteurs depuis le 2026-08-01$/);
+  assert.deepEqual(brut(M.MARCHE_REGLES).find((g) => g.etiquette === 'pression-renforcee').modules, ['flux']);
+});
+
+test('« faible couverture » : 3 analystes au plus dans le décompte du Nasdaq, 4 ne suffisent plus', () => {
+  const x = neutre();
+  x.attentes.avis = d({ achat: 2, conserver: 1, vente: 0 }, '2026-11-01');
+  assert.equal(lecture('bascule', x).modules.attentes.signaux.couvertureFaible, true);
+  x.attentes.avis = d({ achat: 3, conserver: 1, vente: 0 }, '2026-11-01');
+  assert.equal(lecture('bascule', x).modules.attentes.signaux.couvertureFaible, false);
 });
 
 test('Rechute + consensus encore très haussier → Risque de révisions', () => {

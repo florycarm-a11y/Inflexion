@@ -133,7 +133,7 @@ export function lireSecActions(json, url) {
   return donnee(dernier.val, 'SEC (XBRL)', url, dernier.end);
 }
 
-export async function collecterSec(cik, { requete, agentSec }) {
+export async function collecterSec(cik, { requete, agentSec, config }) {
   const entetes = { headers: { 'User-Agent': agentSec, Accept: 'application/json' } };
   // `publie` n'est pas un champ de l'instantané : il sert à « publié vs consensus » (plus bas).
   const sortie = { publie: { CA: null, BPA: null } };
@@ -160,9 +160,11 @@ export async function collecterSec(cik, { requete, agentSec }) {
   }
   sortie.ca_12_mois = meilleur;
 
-  // BPA dilué comptable du dernier trimestre. Facultatif : une panne ici ne touche à rien d'autre.
-  const urlBpa = secUrl(cik, 'us-gaap', 'EarningsPerShareDiluted');
-  try { sortie.publie.BPA = lireSecTrimestre(await requete(urlBpa, entetes), urlBpa, 'USD/shares'); } catch { /* reste null */ }
+  // BPA dilué comptable du dernier trimestre : lu seulement si la configuration demande de le comparer.
+  if (config?.attentes?.grandeursPublie?.includes('BPA')) {
+    const urlBpa = secUrl(cik, 'us-gaap', 'EarningsPerShareDiluted');
+    try { sortie.publie.BPA = lireSecTrimestre(await requete(urlBpa, entetes), urlBpa, 'USD/shares'); } catch { /* reste null */ }
+  }
   return sortie;
 }
 
@@ -179,9 +181,10 @@ const NASDAQ_ENTETES = { headers: { Accept: 'application/json', 'User-Agent': 'M
  * « ratings » compte autrement (3 analystes sur Centrus là où celui-ci en compte 17, 0 sur Oklo
  * contre 15). Une seule série, pour ne pas fabriquer une tendance entre deux comptages.
  */
-export function lireNasdaqObjectifs(json, ticker, moisReference) {
+export function lireNasdaqObjectifs(json, ticker, moisReference, aujourdhui) {
   const url = nasdaqPage(ticker, 'analyst-research');
-  const sortie = { avis: ND('avis d’analystes non disponibles'), avis_reference: ND('historique des avis non disponible'), objectifs: ND('objectifs de cours non disponibles') };
+  const sortie = { avis: ND('avis d’analystes non disponibles'), avis_reference: ND('historique des avis non disponible'),
+    avis_du_jour: ND('décompte du jour non disponible'), objectifs: ND('objectifs de cours non disponibles') };
   const data = json?.data;
   if (!data) return sortie;
 
@@ -197,6 +200,11 @@ export function lireNasdaqObjectifs(json, ticker, moisReference) {
   }
 
   const o = data.consensusOverview;
+  // Décompte courant de l'aperçu, daté du jour de collecte. ARCHIVÉ SEULEMENT : aucune règle ne le lit.
+  // Relevé chaque jour, il permettra de calculer notre propre évolution, à source constante.
+  if (o && [o.buy, o.hold, o.sell].every(Number.isInteger) && aujourdhui) {
+    sortie.avis_du_jour = donnee({ achat: o.buy, conserver: o.hold, vente: o.sell }, 'Nasdaq', url, aujourdhui);
+  }
   if (o && [o.lowPriceTarget, o.priceTarget, o.highPriceTarget].every((v) => Number.isFinite(v) && v > 0) && serie.length) {
     // L'aperçu n'est pas daté : il porte la date du dernier point mensuel de la même réponse.
     sortie.objectifs = donnee({ bas: o.lowPriceTarget, moyen: o.priceTarget, haut: o.highPriceTarget }, 'Nasdaq', url, serie[serie.length - 1].date);
@@ -243,7 +251,7 @@ export function lireNasdaqCours(json, ticker, aujourdhui, tolerance) {
 const nasdaq = (requete, chemin) => requete(`${NASDAQ_API}/${chemin}`, NASDAQ_ENTETES);
 
 export async function collecterNasdaqAnalystes(ticker, { requete, aujourdhui, config }) {
-  const sortie = lireNasdaqObjectifs(await nasdaq(requete, `analyst/${ticker}/targetprice`), ticker, config.attentes.moisReference);
+  const sortie = lireNasdaqObjectifs(await nasdaq(requete, `analyst/${ticker}/targetprice`), ticker, config.attentes.moisReference, aujourdhui);
   try { sortie.bpa_trimestre = lireNasdaqPrevisions(await nasdaq(requete, `analyst/${ticker}/earnings-forecast`), ticker, aujourdhui); }
   catch (e) { sortie.bpa_trimestre = ND('source injoignable : ' + e.message); }
   return sortie;
@@ -310,9 +318,10 @@ export const MODULES = [
   { cle: 'attentes',
     // ca_trimestre (consensus de chiffre d'affaires) : aucun collecteur, faute de source gratuite
     // vérifiée. Il ne se remplit que par saisie manuelle sourcée et datée.
-    champs: ['avis', 'avis_reference', 'objectifs', 'ca_trimestre', 'bpa_trimestre', 'publie_vs_consensus'],
+    // avis_du_jour et bpa_trimestre sont ARCHIVÉS chaque jour sans nourrir aucune règle.
+    champs: ['avis', 'avis_reference', 'avis_du_jour', 'objectifs', 'ca_trimestre', 'bpa_trimestre', 'publie_vs_consensus'],
     collecteurs: [
-      { nom: 'Nasdaq', champs: ['avis', 'avis_reference', 'objectifs', 'bpa_trimestre'], lancer: (s, ctx) => collecterNasdaqAnalystes(s.ticker, ctx) },
+      { nom: 'Nasdaq', champs: ['avis', 'avis_reference', 'avis_du_jour', 'objectifs', 'bpa_trimestre'], lancer: (s, ctx) => collecterNasdaqAnalystes(s.ticker, ctx) },
       { nom: 'Instantanés', champs: ['publie_vs_consensus'], lancer: async (s, ctx) => {
         if (!s.publication) return { publie_vs_consensus: lirePublieVsConsensus({ publication: null }) };
         return { publie_vs_consensus: lirePublieVsConsensus({ id: s.id, publication: s.publication, publie: (await ctx.sec(s)).publie,

@@ -4,6 +4,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import {
   lireFinra, lireSecChiffreAffaires, lireSecActions, lireSecTrimestre, lirePublieVsConsensus, lireNasdaqObjectifs,
   lireNasdaqPrevisions, lireNasdaqCapitalisation, lireNasdaqCours, MODULES,
@@ -67,8 +68,11 @@ test('SEC : actions en circulation, dernier fait de page de garde', () => {
 // ── Nasdaq ────────────────────────────────────────────────────────────────────
 
 test('Nasdaq : avis du mois, avis de référence trois mois plus tôt, objectifs de cours', () => {
-  const r = lireNasdaqObjectifs(fixture('nasdaq-rklb-targetprice.json'), 'RKLB', 3);
+  const r = lireNasdaqObjectifs(fixture('nasdaq-rklb-targetprice.json'), 'RKLB', 3, AUJ);
   assert.equal(r.avis.date, '2026-11-01');
+  // Décompte du jour : archivé à la date de collecte, pour une évolution future à source constante.
+  assert.deepEqual([r.avis_du_jour.valeur, r.avis_du_jour.date], [{ achat: 15, conserver: 3, vente: 0 }, AUJ]);
+  assert.ok(sourcee(r.avis_du_jour));
   assert.equal(r.avis_reference.date, '2026-08-01');
   assert.deepEqual(r.avis_reference.valeur, { achat: 13, conserver: 4, vente: 0 });
   assert.deepEqual(r.objectifs.valeur, { bas: 40, moyen: 92.33, haut: 132 });
@@ -186,8 +190,19 @@ test('SEC : dernier trimestre publié, lu tel que balisé ; un exercice entier s
 const consensus = (exercice, valeur, date) => ({ valeur: { exercice, consensus: valeur }, source: { nom: 'Nasdaq', url: 'https://n' }, date });
 const instantaneDu = (jour, attentes) => ({ collecte: jour, societes: { x: { attentes } } });
 const PUBLIE = { CA: { valeur: 110e6, fin: '2026-09-30', url: 'https://sec.test/ca' }, BPA: { valeur: 0.12, fin: '2026-09-30', url: 'https://sec.test/bpa' } };
+// La configuration ne compare que le chiffre d'affaires ; le mécanisme, lui, reste testé sur les deux grandeurs.
 const pvc = (historique, publie = PUBLIE, date = '2026-11-09') =>
   lirePublieVsConsensus({ id: 'x', publication: { date }, publie, historique, grandeurs: ['CA', 'BPA'] });
+
+test('configuration : seul le chiffre d’affaires est comparé au publié ; le BPA reste collecté pour l’archive', () => {
+  const { MARCHE_CONFIG } = createRequire(import.meta.url)('../lecture-marche-config.js');
+  assert.deepEqual(MARCHE_CONFIG.attentes.grandeursPublie, ['CA']);
+  const nasdaq = MODULES.find((m) => m.cle === 'attentes').collecteurs.find((k) => k.nom === 'Nasdaq');
+  assert.ok(nasdaq.champs.includes('bpa_trimestre') && nasdaq.champs.includes('avis_du_jour'));
+  const sansBpa = lirePublieVsConsensus({ id: 'x', publication: { date: '2026-11-09' }, publie: PUBLIE, grandeurs: MARCHE_CONFIG.attentes.grandeursPublie,
+    historique: [instantaneDu('2026-11-06', { bpa_trimestre: consensus('Sep 2026', 0.10, '2026-11-06') })] });
+  assert.equal(sansBpa.valeur, null, 'un consensus de BPA seul ne produit plus de comparaison');
+});
 
 test('publié vs consensus : le dernier instantané daté STRICTEMENT avant la publication, jamais celui du jour', () => {
   const r = pvc([

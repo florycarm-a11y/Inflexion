@@ -27,7 +27,12 @@ Entrées **les plus récentes en premier**. Titre = dates réelles de la session
 - **La mesure s'appelle « % des actions en circulation », jamais « % du flottant »**, sur la page comme dans la méthode (testé). Dénominateur : la seule classe cotée, page de garde du dernier rapport trimestriel, sourcée, datée, périmée à 200 jours comme le reste.
 - **Seuils du short interest recalibrés : 8 % et 4 %** (les repères 10 % et 5 % du flottant, abaissés d'un cinquième). C'est une convention écrite en commentaire, pas une mesure. **« Bas » exige des jours de couverture bas** ; un pourcentage bas ne suffit jamais seul, puisqu'il minore la réalité.
 - **Publié vs consensus : uniquement à partir de nos instantanés** (pas de table de surprises d'un fournisseur). Consensus = dernier instantané daté strictement avant la publication, relevé au plus `consensusAgeMax` jours (7) avant elle, sinon n/d. Chiffre d'affaires d'abord, BPA ensuite (`grandeursPublie`). La date de publication est LUE dans la fiche du tracker.
-- **La saisie manuelle remplace aussi une donnée collectée plus ancienne qu'elle**, jamais une plus récente. Flo fournit lui-même tout consensus saisi à la main.
+- **La saisie manuelle remplace aussi une donnée collectée plus ancienne qu'elle**, jamais une plus récente. Un consensus de chiffre d'affaires n'entre que par saisie sourcée et datée, au cas par cas.
+- **Le BPA est retiré de la comparaison** (`grandeursPublie: ['CA']`) ; son consensus reste archivé chaque jour.
+- **L'évolution du consensus n'entre plus dans aucune règle.** « Pression renforcée » repose sur la seule hausse du short interest. L'évolution reste affichée avec la mention « indicatif, non utilisé dans l'étiquette », et n'est plus exposée dans les signaux du module. Si elle revient un jour : seuil en **nombre d'analystes ayant changé d'avis**, pas en points, calculé sur `attentes.avis_du_jour`, archivé chaque jour depuis le 26 novembre.
+- **« Faible couverture » : 3 analystes au plus**, sur le décompte du Nasdaq (le repère de 5 valait pour des décomptes larges). Seule Agility Robotics l'est aujourd'hui.
+- **Finnhub n'a aucun rôle dans la V1** : il n'a jamais été branché sur la collecte, seulement interrogé pour la comparaison.
+- **Flo fusionne lui-même**, après avoir vu la page. PR ouverte, non fusionnée.
 
 ### Sources — ce qui a été vérifié, pour ne pas le refaire
 
@@ -47,7 +52,8 @@ Entrées **les plus récentes en premier**. Titre = dates réelles de la session
 
 - **Fusionner pour que la collecte quotidienne tourne** : sans elle, aucun instantané ne précédera les prochaines publications, et « Confirmation » ne pourra jamais s'afficher.
 - Relever les actions de classe A de Centrus et SentinelOne à chaque rapport trimestriel (`data/marche/saisie-manuelle.json`), sinon la donnée se périme et la ligne passe en « Lecture incomplète ».
-- À trancher par Flo : garder ou non le BPA dans `grandeursPublie` (base comptable contre base ajustée) ; garder ou non le signal « évolution du consensus » dans la règle « Pression renforcée ».
+- **Le décompte du jour du Nasdaq diffère parfois de sa série mensuelle** (26 novembre : Vertiv 14/3/1 contre 14/1/1, Agility 2/1/0 contre 0/1/0). Les règles lisent la série mensuelle ; à trancher quand l'archive quotidienne aura quelques semaines.
+- Après fusion : les commits de données du workflow n'entraînent PAS de déploiement à eux seuls (jeton `GITHUB_TOKEN`) ; la page publie les données au déploiement suivant, déclenché par le pipeline de 06h et 18h UTC.
 
 ---
 
