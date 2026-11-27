@@ -15,6 +15,7 @@ window.MEGA_NAV=[
 {label:'Tracker',children:[
  {icon:'So',label:'Sociétés suivies',desc:'Une fiche par société portée par un récit',href:'index.html#societes'},
  {icon:'Al',label:'Alertes',desc:'Rechutes d\'abord, puis Bascules',href:'index.html#alertes'},
+ {icon:'Lm',label:'Lecture de marché',desc:'À côté du tracker : le signal est-il déjà dans le cours ?',href:'marche.html'},
  {icon:'Ar',label:'Analyses — archives',desc:'Les quatorze analyses publiées',href:'analyses.html'},
 ]},
 {label:'Méthode',children:[

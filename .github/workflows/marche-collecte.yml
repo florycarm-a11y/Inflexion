@@ -1,0 +1,73 @@
+# Inflexion — Collecte de la couche « lecture de marché »
+#
+# Sources : FINRA (short interest), SEC XBRL (comptes), Nasdaq (analystes, cours). Aucune clé d'API.
+# Écrit UNIQUEMENT dans data/marche/ : instantane.json (lu par marche.html) et un instantané daté
+# par jour dans data/marche/historique/. Ne touche à aucun fichier du tracker.
+#
+# Seul secret, facultatif : SEC_USER_AGENT (contact déclaré à la SEC). Sans lui, un client
+# générique est utilisé.
+#
+# Ce fichier n'a d'effet qu'une fois présent sur la branche par défaut.
+
+name: "📈 Lecture de marché — collecte"
+
+on:
+  schedule:
+    # Du lundi au vendredi à 22h30 UTC, après la clôture américaine.
+    - cron: '30 22 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "marche-collecte"
+  cancel-in-progress: false
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: "📥 Checkout du repo"
+        uses: actions/checkout@v4
+
+      - name: "🟢 Setup Node.js 22"
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: "📈 Collecte des trois modules"
+        env:
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+        run: node scripts/marche/collecte.mjs
+
+      - name: "🧪 Étanchéité : le tracker n'a pas bougé"
+        run: |
+          node --test test/marche-etancheite.test.mjs
+          if [ -n "$(git status --porcelain -- . ':!data/marche')" ]; then
+            echo "Un fichier hors de data/marche/ a été modifié par la collecte :"
+            git status --porcelain -- . ':!data/marche'
+            exit 1
+          fi
+
+      - name: "📝 Commit des données de marché"
+        run: |
+          git config user.name "Inflexion Bot"
+          git config user.email "bot@inflexionhub.com"
+          git add data/marche
+          if git diff --cached --quiet; then
+            echo "Aucun changement."
+          else
+            git commit -m "📈 Lecture de marché — collecte du $(date -u +%F)"
+            # Un autre pipeline peut pousser sur main au même moment : trois essais, sinon l'instantané
+            # du jour serait perdu, et avec lui le consensus de la veille d'une publication.
+            for essai in 1 2 3; do
+              git pull --rebase --autostash && git push && break
+              [ "$essai" = 3 ] && exit 1
+              sleep 15
+            done
+          fi

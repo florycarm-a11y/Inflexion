@@ -145,7 +145,8 @@ test('briefing.html : les 8 jetons de chrome consommés par l\'en-tête, posés 
 
 // 16 pages à la propagation du prompt 5, plus entreprise.html et methode.html (coquilles du tracker).
 // tracker.html est sorti du seau le 21 novembre 2026 : devenue une pure redirection vers la home.
-test('18 pages legacy', () => assert.equal(LEGACY.length, 18, LEGACY.join(', ')));
+// marche.html y entre le 25 novembre 2026 (couche « lecture de marché », à côté du tracker).
+test('19 pages legacy', () => assert.equal(LEGACY.length, 19, LEGACY.join(', ')));
 for (const page of LEGACY) {
   test(`${page} : header-shell.css lié entre design-tokens-v2.css et site.css`, () => {
     const html = lire(page);

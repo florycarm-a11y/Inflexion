@@ -1,0 +1,29 @@
+{
+  "note": "Une donnée saisie à la main, avec sa source et sa date. Elle comble un champ resté n/d à la collecte, ou remplace une donnée collectée plus ancienne qu'elle ; jamais une plus récente. Forme : { \"<id>\": { \"<module>\": { \"<champ>\": { \"valeur\": …, \"source\": { \"nom\": \"…\", \"url\": \"…\" }, \"date\": \"AAAA-MM-JJ\" } } } }. Sans source ou sans date, la saisie est ignorée. actions_en_circulation : actions de la SEULE classe cotée, lues en page de garde du dernier rapport trimestriel ; à relever à chaque rapport, la donnée se périme comme les autres. ca_trimestre (consensus de chiffre d'affaires du trimestre en cours) : valeur de la forme { \"exercice\": \"Dec 2026\", \"consensus\": <dollars> }.",
+  "societes": {
+    "centrus-energy": {
+      "flux": {
+        "actions_en_circulation": {
+          "valeur": 19899250,
+          "source": {
+            "nom": "SEC, rapport 10-Q du T3 2026, page de garde (actions de classe A)",
+            "url": "https://www.sec.gov/Archives/edgar/data/1065059/000162828026070557/leu-20260930.htm"
+          },
+          "date": "2026-11-01"
+        }
+      }
+    },
+    "sentinelone": {
+      "flux": {
+        "actions_en_circulation": {
+          "valeur": 342184493,
+          "source": {
+            "nom": "SEC, rapport 10-Q du T2 FY2027, page de garde (actions de classe A)",
+            "url": "https://www.sec.gov/Archives/edgar/data/1583708/000158370826000055/s-20260731.htm"
+          },
+          "date": "2026-08-21"
+        }
+      }
+    }
+  }
+}

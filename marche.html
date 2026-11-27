@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture de marché — Inflexion</title>
+    <meta name="description" content="À côté du tracker d’inflexions : short interest, attentes des analystes et valorisation, pour juger si un signal est déjà dans le cours. Outil de lecture, hypothèses non backtestées.">
+    <link rel="canonical" href="https://inflexionhub.com/marche.html">
+    <link rel="icon" href="favicon.ico" sizes="32x32">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/design-tokens-v2.css">
+    <link rel="stylesheet" href="assets/header-shell.css">
+    <link rel="stylesheet" href="assets/tracker.css">
+    <link rel="stylesheet" href="assets/lecture-marche.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-chrome="v2" data-design-regime="editorial">
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-top">
+                <div class="header-left">
+                    <button class="menu-trigger" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu de navigation">
+                        <div class="hamburger" aria-hidden="true">
+                            <span class="hamburger-bar"></span>
+                            <span class="hamburger-bar"></span>
+                            <span class="hamburger-bar"></span>
+                        </div>
+                    </button>
+                    <a href="index.html" class="logo"><img src="logo-header.png" alt="Inflexion" class="logo-img"></a>
+                </div>
+                <div class="header-controls">
+                    <a href="premium.html#contact" class="header-cta-btn">Nous contacter</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="nav-overlay" id="main-nav" aria-label="Navigation principale">
+        <div class="nav-overlay-content">
+            <div class="nav-overlay-header">
+                <span class="nav-overlay-title">Navigation</span>
+                <button class="nav-close" aria-label="Fermer le menu">&times;</button>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-overlay-link">Accueil</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header" data-category="tracker">
+        <h1 class="page-title">Lecture de marché</h1>
+        <p class="page-subtitle">Le signal est-il déjà dans le cours ? Une couche à côté du tracker, qui ne le modifie pas.</p>
+    </div>
+
+    <main class="main-content" id="main-content">
+        <div class="tk lm">
+
+            <p style="margin:0 0 0.5rem"><a class="tk-lien" href="index.html#societes">← Sociétés suivies</a></p>
+
+            <div class="tk-statut">
+                <p><strong>Hypothèses non backtestées.</strong> Les croisements ci-dessous n’ont été mesurés sur aucun historique. Cette couche est <strong>hors du protocole de test</strong> de la méthode du tracker (v1.3, figée le 21 novembre 2026) et n’y change rien : ni un solde, ni une alerte, ni un fichier.</p>
+                <p style="margin:0"><strong>Outil de lecture, pas un conseil en investissement.</strong> Une étiquette décrit une situation ; elle ne dit ni d’acheter ni de vendre. <a class="tk-lien" href="methode.html#lecture-marche">Ce que cette couche fait, et ses limites</a>.</p>
+            </div>
+
+            <div id="lecture-marche-contexte"></div>
+
+            <section class="tk-bloc">
+                <h2>Société par société</h2>
+                <p class="tk-note">À gauche du double filet, ce que dit le <strong>tracker</strong> : la dernière alerte émise par son moteur, à partir des seules publications officielles de résultats. À droite, la <strong>couche marché</strong> : une étiquette et ses raisons, puis les trois modules qui la nourrissent. Chaque chiffre porte sa source et sa date ; une donnée absente s’écrit « n/d », jamais zéro.</p>
+                <div id="lecture-marche">
+                    <p class="tk-note">Chargement de la lecture de marché…</p>
+                </div>
+            </section>
+
+            <section class="tk-bloc">
+                <h2>La grille de lecture</h2>
+                <p class="tk-note">Une société reçoit une seule étiquette. Pour une alerte donnée, les lignes sont essayées de haut en bas : la première qui s’applique l’emporte. Si aucune ne s’applique, l’étiquette est « Sans lecture tranchée ».</p>
+                <div class="tk-table-defile">
+                    <table class="tk-table">
+                        <caption>Croisement de l’alerte du tracker et de la lecture de marché</caption>
+                        <thead>
+                            <tr><th scope="col">Alerte du tracker</th><th scope="col">Lecture de marché</th><th scope="col">Étiquette</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><th scope="row">Signal faible</th><td>Quelle que soit la lecture, données incomplètes comprises</td><td>À surveiller</td></tr>
+                            <tr><th scope="row">Bascule, Bascule commerciale, Rechute</th><td>Une donnée indispensable manquante ou trop ancienne</td><td>Lecture incomplète</td></tr>
+                            <tr><th scope="row">Bascule</th><td>Short interest élevé <strong>et</strong> en hausse</td><td>Contesté — squeeze possible ou scepticisme fondé : la couche ne tranche pas</td></tr>
+                            <tr><th scope="row">Bascule</th><td>Consensus très haussier, multiple élevé <strong>et</strong> forte hausse récente</td><td>Déjà dans le cours ?</td></tr>
+                            <tr><th scope="row">Bascule</th><td>Publié nettement au-dessus d’un consensus daté d’avant la publication</td><td>Confirmation — ne peut pas encore s’afficher, voir plus bas</td></tr>
+                            <tr><th scope="row">Bascule</th><td>Multiple raisonnable, <strong>et</strong> consensus prudent ou faible couverture, <strong>et</strong> short interest bas ou en baisse</td><td>Asymétrie favorable</td></tr>
+                            <tr><th scope="row">Rechute</th><td>Short interest en hausse</td><td>Pression renforcée</td></tr>
+                            <tr><th scope="row">Rechute</th><td>Consensus encore très haussier</td><td>Risque de révisions</td></tr>
+                            <tr><th scope="row">Aucune alerte</th><td>—</td><td>Sans alerte — les données sont affichées pour information</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="tk-note" style="margin-top:1rem">Une Bascule commerciale (pré-revenus) est lue sur les lignes « Bascule » : c’est un choix de cette couche, pas de la méthode.</p>
+                <h3>Les seuils en vigueur</h3>
+                <p class="tk-note">Lus dans le fichier de configuration <span class="tk-donnee">lecture-marche-config.js</span> au chargement de la page. Ce sont des hypothèses de départ.</p>
+                <div id="lecture-marche-seuils"></div>
+            </section>
+
+            <section class="tk-bloc tk-lecture">
+                <h2>Ce que ces données ne disent pas</h2>
+                <ul class="tk-retenir">
+                    <li><strong>Le short interest arrive tard.</strong> FINRA le publie deux fois par mois, une dizaine de jours après la date de relevé. La mesure affichée est un « % des actions en circulation » de la classe cotée : elle est plus basse que les pourcentages des sites financiers, calculés sur une base plus étroite. C’est pourquoi un pourcentage bas ne suffit jamais seul : il faut aussi peu de jours de couverture.</li>
+                    <li><strong>Les analystes sont structurellement acheteurs.</strong> Une part élevée d’avis acheteurs est la norme, pas un signal en soi ; et peu d’analystes suivent les petites capitalisations.</li>
+                    <li><strong>L’étiquette « Confirmation » ne peut pas encore s’afficher.</strong> Elle exige un consensus relevé avant la publication, et aucune source gratuite n’en fournit de daté. Cette couche conserve donc elle-même le consensus à chaque collecte : « publié vs consensus » restera « n/d » jusqu’à la première publication précédée d’un de ces relevés. La comparaison porte sur le chiffre d’affaires, dont le consensus n’a pas de source gratuite : il n’entre que par saisie sourcée et datée. Le consensus de BPA est conservé chaque jour, mais il n’est pas comparé.</li>
+                    <li><strong>L’évolution des avis d’analystes est indicative.</strong> Elle est affichée, mais n’entre dans aucune étiquette : deux fournisseurs comparés le 26 novembre 2026 ne s’accordent pas sur son sens pour quatre sociétés sur six.</li>
+                    <li><strong>Hors des États-Unis, presque tout manque.</strong> Les sources retenues ne couvrent que les titres cotés aux États-Unis.</li>
+                    <li><strong>Les données d’analystes et de cours viennent d’un accès non documenté</strong> au site du Nasdaq, qui peut se fermer sans préavis. Le jour où il se ferme, les cases passent à « n/d ».</li>
+                </ul>
+            </section>
+
+            <aside class="tk-amf" role="note">
+                <p style="margin:0"><strong>Avertissement.</strong> Outil de lecture, pas un conseil en investissement. Les informations présentées sont fournies à titre informatif uniquement et ne constituent en aucun cas un conseil en investissement, une recommandation d’achat ou de vente, ni un objectif de cours. Une étiquette de lecture décrit des données de marché passées, selon des hypothèses non backtestées ; elle n’est pas une prévision. Les performances passées ne préjugent pas des performances futures.</p>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-disclaimer">
+                Les informations présentées sont fournies à titre informatif uniquement et ne constituent en aucun cas des conseils en investissement. Les performances passées ne préjugent pas des performances futures.
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Retour en haut">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+
+    <script src="app.js"></script>
+    <script>if (typeof initCommon === 'function') initCommon();</script>
+    <script src="tracker-modele.js"></script>
+    <script src="lecture-marche-config.js"></script>
+    <script src="lecture-marche-modele.js"></script>
+    <script src="lecture-marche-vue.js"></script>
+    <script src="nav-config.js"></script>
+    <script src="nav-shared.js"></script>
+</body>
+</html>

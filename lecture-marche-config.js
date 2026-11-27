@@ -1,0 +1,137 @@
+/**
+ * lecture-marche-config.js — Tous les seuils de la couche « lecture de marché ».
+ *
+ * C'est LE fichier à modifier pour régler la grille : aucune valeur ci-dessous n'est répétée dans
+ * la logique (lecture-marche-modele.js), qui ne fait que les lire.
+ *
+ * Statut des valeurs : HYPOTHÈSES DE DÉPART, NON BACKTESTÉES. Aucun de ces seuils n'a été mesuré
+ * sur un historique. La couche marché est hors du protocole de test de la méthode du tracker
+ * (docs/tracker-methode.md, v1.3 figée) et ne la modifie en rien.
+ *
+ * Globale `var` : le fichier se charge dans le navigateur et dans node:vm pour les tests.
+ */
+'use strict';
+
+var MARCHE_CONFIG = {
+  version: 1,
+
+  // ── Fraîcheur ───────────────────────────────────────────────────────────────
+  // Âge maximal d'une donnée, en jours, compté depuis LA DATE DE LA DONNÉE (et non depuis la
+  // collecte). Au-delà, la donnée est « périmée » : elle reste affichée, marquée comme telle,
+  // mais ne nourrit plus aucune règle, et l'étiquette bascule en « Lecture incomplète ».
+  fraicheur: {
+    // FINRA publie deux relevés par mois, une dizaine de jours après la date de règlement :
+    // un relevé « frais » a donc couramment 10 à 25 jours.
+    position_courte: 35,
+    position_precedente: 55,
+    jours_couverture: 35,
+    // Fait de page de garde du dernier 10-Q ou 10-K : un trimestre, plus le délai de dépôt.
+    actions_en_circulation: 200,
+    // Série mensuelle, datée du premier du mois.
+    avis: 45,
+    avis_reference: 150,
+    objectifs: 45,
+    bpa_trimestre: 45,
+    ca_trimestre: 45,
+    // Dérivé des instantanés : valable jusqu'à la publication suivante (un trimestre).
+    publie_vs_consensus: 120,
+    capitalisation: 7,
+    cours: 7,
+    // Cours d'il y a 6 et 12 mois : leur date EST ancienne par construction. La fraîcheur se juge
+    // sur le cours du jour ; ces deux-là ne se périment pas.
+    cours_6_mois: null,
+    cours_12_mois: null,
+    // Date de clôture de la dernière période publiée : un trimestre, plus le délai de dépôt,
+    // plus le trimestre en cours.
+    ca_12_mois: 200,
+  },
+
+  // ── Module A — Flux / short interest ────────────────────────────────────────
+  flux: {
+    // Mesure : position courte en % des ACTIONS EN CIRCULATION de la classe cotée (page de garde
+    // du dernier rapport trimestriel). Ce n'est pas un « % du flottant » : aucune source gratuite
+    // vérifiée ne publie le flottant. Le flottant étant plus petit que les actions en circulation,
+    // la mesure retenue est PLUS BASSE que celle des sites financiers.
+    //
+    // Recalibrage (26 novembre 2026). Les repères d'usage, 10 % « élevé » et 5 % « bas », sont
+    // pensés pour un % du flottant. Ils sont abaissés d'un cinquième, ce qui revient à supposer un
+    // flottant de 80 % des actions en circulation. Cette décote est une CONVENTION, pas une mesure :
+    // l'écart réel varie d'une société à l'autre (il est plus fort quand les fondateurs détiennent
+    // beaucoup) et aucune source ne permet de le chiffrer ici. D'où le second critère ci-dessous.
+    pctEleve: 8,    // « élevé » à partir de 8 % (10 % du flottant × 0,8)
+    pctBas: 4,      // « bas » jusqu'à 4 %     (5 % du flottant × 0,8)
+    // Jours de couverture = position courte / volume quotidien moyen (calculé par FINRA).
+    // Ils ne dépendent d'aucun dénominateur : c'est le critère solide. La logique en tire deux règles :
+    //   « élevé » : le pourcentage OU les jours de couverture atteignent leur seuil ;
+    //   « bas »   : les jours de couverture sont bas, ET le pourcentage aussi quand il est connu.
+    // Un pourcentage bas ne suffit donc jamais seul à conclure « bas », puisqu'il minore la réalité.
+    joursEleves: 7, // « élevé » à partir de 7 jours
+    joursBas: 3,    // « bas » jusqu'à 3 jours
+    // Variation de la position entre deux relevés, en % : en deçà, la tendance est « stable ».
+    variationStable: 5,
+  },
+
+  // ── Module B — Attentes / analystes ─────────────────────────────────────────
+  attentes: {
+    // « Faible couverture ». Le repère d'usage est de 5 analystes, mais il vaut pour des décomptes
+    // larges. Ceux du Nasdaq, seuls lus ici, sont 1,4 à 2,3 fois plus bas que ceux de Finnhub
+    // (comparaison du 26 novembre 2026, six sociétés). Le seuil est donc ramené à 3 : 5 divisé par
+    // cet écart donne entre 2,2 et 3,6. C'est une CONVENTION tirée de six points, pas une mesure.
+    couvertureFaible: 3,        // « faible couverture » jusqu'à 3 analystes (décompte du Nasdaq)
+    partAchatTresHaussiere: 80, // consensus « très haussier » à partir de 80 % d'avis acheteurs
+    partAchatPrudente: 60,      // consensus « prudent » jusqu'à 60 %
+    // Évolution de la part d'avis acheteurs sur `moisReference` mois : AFFICHÉE À TITRE INDICATIF,
+    // elle n'entre dans aucune étiquette. Nasdaq et Finnhub divergent sur quatre sociétés sur six.
+    // Si ce signal revient un jour dans une règle, son seuil devra s'exprimer en NOMBRE D'ANALYSTES
+    // ayant changé d'avis, pas en points, et se calculer sur nos propres relevés quotidiens
+    // (champ avis_du_jour des instantanés), à source constante.
+    moisReference: 3,
+    // Publié contre consensus, en % d'écart : « beat net » / « miss net » au-delà, « in-line » en deçà.
+    ecartNet: 5,
+    // Le consensus comparé au chiffre publié est celui du dernier instantané daté STRICTEMENT avant
+    // la publication. S'il a été relevé plus de `consensusAgeMax` jours avant elle, il ne reflète
+    // plus les attentes de la veille : le résultat est « n/d ».
+    consensusAgeMax: 7,
+    // Grandeurs comparées au publié, dans l'ordre de préférence. Seul le chiffre d'affaires l'est :
+    // c'est lui que suit le tracker. Le BPA a été retiré le 26 novembre 2026 : le publié lu à la SEC
+    // est le BPA dilué comptable, le consensus peut être ajusté, et l'écart n'a alors pas de sens
+    // (Centrus, T3 2026 : +491 %). Le consensus de BPA reste archivé chaque jour ; remettre 'BPA'
+    // dans la liste suffirait à le comparer de nouveau.
+    grandeursPublie: ['CA'],
+  },
+
+  // ── Module C — Valorisation ─────────────────────────────────────────────────
+  valorisation: {
+    // Multiple retenu : P/S = capitalisation / chiffre d'affaires des douze derniers mois.
+    // Sans objet pour l'archétype « pré-revenus » (chiffre d'affaires nul ou symbolique).
+    psEleve: 15,      // « élevé » à partir de 15 fois
+    psRaisonnable: 8, // « raisonnable » jusqu'à 8 fois
+    // « Le titre a déjà beaucoup monté » : l'un OU l'autre des deux seuils suffit.
+    hausseForte6Mois: 50,   // + 50 % en six mois
+    hausseForte12Mois: 100, // + 100 % en douze mois
+    // Tolérance, en jours, pour retrouver une séance autour de la date visée (jours fériés).
+    toleranceSeance: 7,
+  },
+
+  // ── Grille ──────────────────────────────────────────────────────────────────
+  grille: {
+    // « Déjà dans le cours ? » : nombre de constats à réunir parmi les trois (consensus très
+    // haussier, multiple élevé, forte hausse récente). 3 = les trois ensemble, comme l'écrit la
+    // grille de départ. À 2, un titre qui a perdu les deux tiers de sa valeur en six mois recevait
+    // l'étiquette (Rocket Lab, collecte du 25 novembre 2026) : d'où le réglage strict.
+    // En pré-revenus, le multiple est sans objet : les deux autres constats suffisent.
+    dejaDansLeCoursMinSignaux: 3,
+    // À quelle ligne de la grille se rattache chaque alerte du tracker. La Bascule commerciale
+    // (pré-revenus) est lue comme une Bascule : c'est un choix de cette couche, pas de la méthode.
+    familles: {
+      bascule: 'bascule',
+      'bascule-commerciale': 'bascule',
+      rechute: 'rechute',
+      'signal-faible': 'signal-faible',
+    },
+    // Si une même publication porte plusieurs alertes, laquelle sert de référence.
+    priorite: ['rechute', 'bascule', 'bascule-commerciale', 'signal-faible'],
+  },
+};
+
+if (typeof module !== 'undefined' && module.exports) module.exports = { MARCHE_CONFIG: MARCHE_CONFIG };

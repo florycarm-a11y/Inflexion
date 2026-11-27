@@ -18,6 +18,79 @@ Entrées **les plus récentes en premier**. Titre = dates réelles de la session
 
 ---
 
+## 2026-11-26 — Lecture de marché : essai depuis GitHub, dénominateur, publié vs consensus
+
+**Branche `feat/lecture-marche` POUSSÉE sur `origin` (pas `main`), non fusionnée, sans PR.** Décisions de Flo du 26 novembre, appliquées dans l'ordre 3A, 2A, 1A.
+
+### Décisions qui engagent
+
+- **La mesure s'appelle « % des actions en circulation », jamais « % du flottant »**, sur la page comme dans la méthode (testé). Dénominateur : la seule classe cotée, page de garde du dernier rapport trimestriel, sourcée, datée, périmée à 200 jours comme le reste.
+- **Seuils du short interest recalibrés : 8 % et 4 %** (les repères 10 % et 5 % du flottant, abaissés d'un cinquième). C'est une convention écrite en commentaire, pas une mesure. **« Bas » exige des jours de couverture bas** ; un pourcentage bas ne suffit jamais seul, puisqu'il minore la réalité.
+- **Publié vs consensus : uniquement à partir de nos instantanés** (pas de table de surprises d'un fournisseur). Consensus = dernier instantané daté strictement avant la publication, relevé au plus `consensusAgeMax` jours (7) avant elle, sinon n/d. Chiffre d'affaires d'abord, BPA ensuite (`grandeursPublie`). La date de publication est LUE dans la fiche du tracker.
+- **La saisie manuelle remplace aussi une donnée collectée plus ancienne qu'elle**, jamais une plus récente. Un consensus de chiffre d'affaires n'entre que par saisie sourcée et datée, au cas par cas.
+- **Le BPA est retiré de la comparaison** (`grandeursPublie: ['CA']`) ; son consensus reste archivé chaque jour.
+- **L'évolution du consensus n'entre plus dans aucune règle.** « Pression renforcée » repose sur la seule hausse du short interest. L'évolution reste affichée avec la mention « indicatif, non utilisé dans l'étiquette », et n'est plus exposée dans les signaux du module. Si elle revient un jour : seuil en **nombre d'analystes ayant changé d'avis**, pas en points, calculé sur `attentes.avis_du_jour`, archivé chaque jour depuis le 26 novembre.
+- **« Faible couverture » : 3 analystes au plus**, sur le décompte du Nasdaq (le repère de 5 valait pour des décomptes larges). Seule Agility Robotics l'est aujourd'hui.
+- **Finnhub n'a aucun rôle dans la V1** : il n'a jamais été branché sur la collecte, seulement interrogé pour la comparaison.
+- **Flo fusionne lui-même**, après avoir vu la page. PR ouverte, non fusionnée.
+
+### Sources — ce qui a été vérifié, pour ne pas le refaire
+
+- **FINRA, SEC et Nasdaq répondent depuis GitHub Actions** (essai à blanc du 26 novembre, mêmes résultats qu'en local : 20, 11 et 53 valeurs).
+- **Finnhub, offre gratuite, testée depuis GitHub Actions** : `/stock/recommendation` et `/stock/earnings` répondent ; `/stock/price-target`, `/stock/revenue-estimate` et `/stock/eps-estimate` répondent **403**. Rien pour Agility Robotics.
+- **Aucune source gratuite de consensus de chiffre d'affaires** : ni Nasdaq (aucun point d'accès), ni Finnhub (403). Le champ `ca_trimestre` existe, il est n/d sauf saisie.
+- **Nasdaq contre Finnhub, avis d'analystes** : le NIVEAU concorde (part d'avis acheteurs à 3 points près sur cinq sociétés, 10 points sur IonQ), le NOMBRE d'analystes non (Finnhub en compte 1,4 à 2,3 fois plus), et **l'ÉVOLUTION sur trois mois diverge sur quatre sociétés sur six** (Oklo : +13 points chez Nasdaq, −2 chez Finnhub ; Vertiv : −7 contre 0). Le signal « évolution du consensus » est donc fragile.
+- **Le BPA publié de Centrus au T3 2026 est bien 1,41 $ dilué** (SEC), comme chez Nasdaq. Finnhub affiche −0,66 : faux. Les deux consensus concordent en revanche (−0,36 et −0,39) : l'écart de 491 % est réel en comptable, et vient d'une base différente entre consensus et publié. SentinelOne : Nasdaq compare en comptable (−0,18), Finnhub en ajusté (+0,08).
+
+### Pièges déjà payés
+
+- **`dei/EntityCommonStockSharesOutstanding` rend pour Centrus un chiffre de 2022**, pas un 404 : une saisie qui ne comblerait que les n/d ne le corrigeait pas.
+- **Un workflow poussé sur une branche ne se lance à la main que s'il existe sur la branche par défaut.** Pour un essai, un fichier séparé déclenché par `push` sur la branche, en `contents: read`, puis supprimé.
+- **Le fait trimestriel de la SEC n'existe pas pour un quatrième trimestre** (seul l'exercice est balisé), et le rapport peut être déposé après le communiqué : dans les deux cas « publié vs consensus » est n/d, rien n'est reconstitué.
+
+### Reste à faire
+
+- **Fusionner pour que la collecte quotidienne tourne** : sans elle, aucun instantané ne précédera les prochaines publications, et « Confirmation » ne pourra jamais s'afficher.
+- Relever les actions de classe A de Centrus et SentinelOne à chaque rapport trimestriel (`data/marche/saisie-manuelle.json`), sinon la donnée se périme et la ligne passe en « Lecture incomplète ».
+- **Le décompte du jour du Nasdaq diffère parfois de sa série mensuelle** (26 novembre : Vertiv 14/3/1 contre 14/1/1, Agility 2/1/0 contre 0/1/0). Les règles lisent la série mensuelle ; à trancher quand l'archive quotidienne aura quelques semaines.
+- Après fusion : les commits de données du workflow n'entraînent PAS de déploiement à eux seuls (jeton `GITHUB_TOKEN`) ; la page publie les données au déploiement suivant, déclenché par le pipeline de 06h et 18h UTC.
+
+---
+
+## 2026-11-25 — Couche « lecture de marché », à côté du tracker
+
+**Branche `feat/lecture-marche`, depuis `main` (`3cc90137`), NON POUSSÉE, non fusionnée.** Worktree : `.claude/worktrees/lecture-marche`. Le rejeu spatial reste à 11 sociétés sur 18 : cette session ne l'a pas touché.
+
+### Décisions qui engagent
+
+- **Le flux est à sens unique, et c'est la structure qui le tient.** La couche marché appelle `moteurDepuisFichier` et lit sa sortie ; aucun de ses fichiers n'écrit dans `data/tracker/`, et aucun fichier du tracker ne la mentionne. `test/marche-etancheite.test.mjs` le vérifie, dont une référence des soldes et alertes figée **avant** le premier changement (`test/fixtures/marche/tracker-reference.json`). Cette référence ne se régénère que si le tracker lui-même est corrigé.
+- **Rien de calculé n'est stocké, là non plus.** `data/marche/instantane.json` ne porte que des valeurs brutes sourcées et datées ; P/S, tendances, fraîcheur et étiquette se dérivent à l'affichage. Le test refuse les clés `etiquette`, `solde`, `alertes` dans l'instantané.
+- **La couche marché est hors du protocole de test et hors du rejeu.** Elle ne lit que le catalogue public : aucune société de l'univers spatial n'y entre avant la fin du rejeu, par construction. Ne jamais citer une étiquette de lecture dans le bilan du rejeu.
+- **Tous les seuils dans `lecture-marche-config.js`**, hypothèses de départ non backtestées. La logique n'en répète aucun (testé).
+- **« Publié vs consensus » reste n/d tant que nos propres instantanés ne couvrent pas une publication.** La table de surprises de Nasdaq existe mais n'est pas lue : BPA seulement, consensus non daté.
+
+### Sources — ce qui a été vérifié, pour ne pas le refaire
+
+- **Yahoo Finance / yfinance : HTTP 429 partout**, avec ou sans cookie. Écartée.
+- **FINRA** (`api.finra.org/data/group/otcMarket/name/consolidatedShortInterest`) : publique, sans clé, POST. **Le tri est refusé** sans filtre d'égalité sur `settlementDate` : filtrer par plage de dates et trier soi-même.
+- **API de nasdaq.com** : non documentée, exige un en-tête de navigateur, **4 appels sur 25 sans réponse**. Ses deux comptages d'analystes se contredisent (`ratings` : 3 sur Centrus, 0 sur Oklo ; `targetprice` : 17 et 15) — ne lire que la série mensuelle de `targetprice`.
+- **SEC XBRL** : `dei/EntityCommonStockSharesOutstanding` est **absent (404) ou vieux de quatre ans** pour les sociétés à plusieurs classes d'actions (SentinelOne, Centrus). Le pourcentage de short interest y est donc n/d ; les jours de couverture portent le niveau.
+- **Finnhub non vérifiée** : la clé n'existe que dans les secrets GitHub.
+
+### Pièges déjà payés
+
+- **Une règle « 2 constats sur 3 » a étiqueté « Déjà dans le cours ? » un titre à −66 % en six mois** (Rocket Lab). La grille de départ écrit les trois constats ensemble : réglage ramené à 3, et le cas est un test.
+- **Une alerte ancienne se croise avec le marché d'aujourd'hui.** La Bascule de Rocket Lab a cinq publications. La page le signale ligne par ligne ; aucune règle ne périme l'alerte — question ouverte pour la V2.
+- **`test/pages-header.test.mjs` compte les pages legacy** : toute nouvelle page à `nav-shared.js` oblige à relever le compte (19 depuis `marche.html`).
+
+### Reste à faire
+
+- Flo doit **relire la grille et les seuils** : ce sont ses hypothèses, transcrites.
+- Le workflow `marche-collecte.yml` n'agit qu'une fois dans `main`. À vérifier alors : FINRA et Nasdaq répondent-ils depuis les adresses de GitHub Actions ?
+- V2 : publié vs consensus à partir de l'historique ; flottant ; ancienneté de l'alerte ; Finnhub en second fournisseur.
+
+---
+
 ## 2026-11-21 → 2026-11-23 — Tracker d’inflexions : pivot, méthode figée, moteur, rejeu
 
 **`feat/rejeu-spatial-lot1` FUSIONNÉE dans `main` le 2026-11-24** — PR #166, merge `2a0f5c43`. Le lot de huit sociétés, l'outillage de méthode et ce carnet sont dans `main`. Branche en cours depuis : **`feat/rejeu-spatial-lot2`** (fusionnée le 2026-11-25, PR #167 : `methode.html` refaite, Viasat, outillage `scripts/rejeu/`), puis **`feat/rejeu-spatial-lot3`** depuis Iridium.
