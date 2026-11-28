@@ -14,7 +14,7 @@ var THEMES={
     megaPanelBg:'#fff', megaBorder:'#F0F1F4', megaHover:'#F8FAF9', megaHoverBorder:'#E8EDE9',
     megaLabel:'#1A1F2E', megaDesc:'#6B7280', megaFooterBg:'#F9FAFB', megaFooterText:'#A0A8B8',
     ctaBg:'#006650', ctaHover:'#06402A', navLinkTop:'rgba(255,255,255,.7)', navLinkScrolled:'#6b7280',
-    logoFilterTop:'brightness(10) saturate(0)', logoFilterScrolled:'none',
+    logoSrcTop:'logo-header.png', logoSrcScrolled:'logo-header-clair.png', logoSrcFooter:'logo-header-clair.png',
     hamburgerTop:'#fff', hamburgerScrolled:'#1A1F2E', bronzeBar:'#C8955A',
     headerScrolledBg:'rgba(255,255,255,.92)', headerScrolledBorder:'#E2E5EB', headerScrolledShadow:'0 1px 8px rgba(0,0,0,.04)',
     heroBg:'#006650', heroLabel:'#33B894', heroTitle:'#fff', heroSub:'rgba(255,255,255,.5)',
@@ -28,7 +28,7 @@ var THEMES={
     megaPanelBg:'#17100E', megaBorder:'rgba(232,228,216,.12)', megaHover:'#17191C', megaHoverBorder:'rgba(232,228,216,.16)',
     megaLabel:'#E8E4D8', megaDesc:'#9AA0A4', megaFooterBg:'#17100E', megaFooterText:'#9AA0A4',
     ctaBg:'#8E2424', ctaHover:'#6E1B1B', navLinkTop:'rgba(232,228,216,.72)', navLinkScrolled:'#9AA0A4',
-    logoFilterTop:'brightness(10) saturate(0)', logoFilterScrolled:'brightness(10) saturate(0)',
+    logoSrcTop:'logo-header.png', logoSrcScrolled:'logo-header.png', logoSrcFooter:'logo-header.png',
     hamburgerTop:'#E8E4D8', hamburgerScrolled:'#E8E4D8', bronzeBar:'#8E2424',
     headerScrolledBg:'rgba(23,16,14,.92)', headerScrolledBorder:'rgba(232,228,216,.12)', headerScrolledShadow:'0 1px 8px rgba(0,0,0,.30)',
     heroBg:'#17100E', heroLabel:'#9AA0A4', heroTitle:'#E8E4D8', heroSub:'rgba(232,228,216,.55)',
@@ -147,7 +147,7 @@ header.innerHTML=
 '<div style="max-width:80rem;margin:0 auto;padding:0 1rem">'+
 '<div style="display:flex;align-items:center;justify-content:space-between;height:4rem">'+
 '<a href="index.html" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none">'+
-'<img src="logo-header.png" alt="Inflexion" id="nav-logo" style="height:48px;width:auto;filter:'+T.logoFilterTop+';transition:filter .3s ease"/></a>'+
+'<img src="'+T.logoSrcTop+'" alt="Inflexion" id="nav-logo" style="height:40px;width:auto;flex-shrink:0"/></a>'+
 '<nav style="display:none" class="md-show" id="desktop-nav-items">'+megaHTML+
 '<a href="premium.html" class="ns-btn-cta" style="margin-left:0.5rem;padding:0.5rem 1rem;background:'+T.ctaBg+';color:#fff;font-weight:600;font-size:0.875rem;border-radius:0.5rem;transition:background .2s;text-decoration:none">R\u00e9server un diagnostic</a>'+
 '</nav>'+
@@ -159,7 +159,7 @@ header.innerHTML=
 
 // Add responsive CSS for md breakpoint + logo responsive sizing
 var mdCss=document.createElement('style');
-mdCss.textContent='@media(min-width:768px){#desktop-nav-items{display:flex!important;align-items:center;gap:4px}#mobile-menu-btn{display:none!important}#nav-logo{height:50px!important}}@media(min-width:1024px){#nav-logo{height:65px!important}}@media(max-width:767px){#desktop-nav-items{display:none!important}#mobile-menu-btn{display:block!important}}';
+mdCss.textContent='@media(min-width:768px){#desktop-nav-items{display:flex!important;align-items:center;gap:4px}#mobile-menu-btn{display:none!important}}@media(min-width:1024px){#nav-logo{height:52px!important}}@media(max-width:767px){#desktop-nav-items{display:none!important}#mobile-menu-btn{display:block!important}}';
 document.head.appendChild(mdCss);
 
 document.body.insertBefore(header,bronzeBar.nextSibling);
@@ -180,7 +180,7 @@ return '<p class="mobile-nav-link" style="font-size:11px;text-transform:uppercas
 
 overlay.innerHTML=
 '<div style="display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem 1rem;flex-shrink:0">'+
-'<img src="logo-header.png" alt="Inflexion" style="height:2rem;width:auto;filter:'+T.logoFilterTop+'"/>'+
+'<img src="logo-header.png" alt="Inflexion" style="height:40px;width:auto;flex-shrink:0"/>'+
 '<button id="mobile-close-btn" class="ns-close-btn" style="width:2.75rem;height:2.75rem;display:flex;align-items:center;justify-content:center;border-radius:9999px;background:rgba(255,255,255,.1);border:none;cursor:pointer;transition:background .2s" aria-label="Fermer">'+
 '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>'+
 '<div style="flex:1;overflow-y:auto;padding:0.5rem 1.5rem 1rem">'+mobileLinks+'</div>'+
@@ -249,7 +249,7 @@ newFooter.innerHTML=
 '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2.5rem;margin-bottom:3rem" class="footer-grid">'+
 // Col 1
 '<div style="grid-column:span 2" class="footer-col1">'+
-'<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem"><img src="logo-header.png" alt="Inflexion" style="height:2.5rem;width:auto"/></div>'+
+'<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem"><img src="'+T.logoSrcFooter+'" alt="Inflexion" style="height:40px;width:auto"/></div>'+
 '<p style="font-size:0.875rem;color:'+T.footerText+';line-height:1.6;font-family:'+T.fontBody+'">Intelligence financi\u00e8re et g\u00e9opolitique. Donn\u00e9es en temps r\u00e9el, analyses IA, signaux faibles.</p></div>'+
 // Col 2
 '<div><p style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:'+T.footerTitle+';margin-bottom:1rem;font-family:'+T.fontBody+'">Intelligence</p>'+
@@ -311,7 +311,7 @@ el.style.color=scrolled?T.navLinkScrolled:T.navLinkTop;
 });
 // Update logo
 var logo=document.getElementById('nav-logo');
-if(logo)logo.style.filter=scrolled?T.logoFilterScrolled:T.logoFilterTop;
+if(logo)logo.src=scrolled?T.logoSrcScrolled:T.logoSrcTop;
 // Update hamburger bars
 header.querySelectorAll('.hamburger-bar').forEach(function(b){
 b.style.background=scrolled?T.hamburgerScrolled:T.hamburgerTop;

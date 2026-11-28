@@ -138,7 +138,7 @@ return h('div',null,
   h('div',{className:'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'},
    h('div',{className:'flex items-center justify-between h-16'},
     h('a',{href:'index.html',className:'flex items-center gap-2'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 sm:h-[50px] md:h-[65px] w-auto',style:{filter:scrolled?'none':'brightness(5) saturate(0.3)',transition:'filter 0.3s ease'}})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 lg:h-[52px] w-auto shrink-0'})
     ),
     h('nav',{className:'hidden md:flex items-center gap-1'},
      ...MEGA_NAV.map((cat,ci)=>
@@ -296,7 +296,7 @@ return h('footer',{className:'v2-chrome bg-[var(--chrome-ground)] pt-16 pb-20',r
    // Col 1 — Logo + description
    h('div',{className:'col-span-2 md:col-span-1'},
     h('div',{className:'flex items-center gap-2 mb-4'},
-     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto',style:{filter:'brightness(10) saturate(0)'}})
+     h('img',{src:'logo-header.png',alt:'Inflexion',className:'h-10 w-auto shrink-0'})
     ),
     h('p',{className:'text-sm text-[#9AA0A4] leading-relaxed'},'Intelligence financière et géopolitique. Données en temps réel, analyses IA, signaux faibles.')
    ),

@@ -2,145 +2,134 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="viewport" content="width=1200"/>
 <title>OG Image — Inflexion</title>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@600&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#888;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',sans-serif}
+html,body{width:1200px;height:630px;overflow:hidden;background:#17100E}
+body{font-family:'IBM Plex Sans','Helvetica Neue',sans-serif}
 
 .og{
   width:1200px;
   height:630px;
-  background:#06402A;
+  background:#17100E;
   position:relative;
   overflow:hidden;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  padding:80px 90px;
+  padding:72px 88px 96px;
 }
 
-/* Glow */
 .glow{
   position:absolute;
-  top:-150px;right:-100px;
-  width:600px;height:600px;
-  background:radial-gradient(circle,rgba(27,107,74,.20) 0%,transparent 70%);
+  top:-180px;right:-120px;
+  width:640px;height:640px;
+  background:radial-gradient(circle,rgba(142,36,36,.22) 0%,transparent 68%);
   pointer-events:none;
 }
 .glow-2{
   position:absolute;
-  bottom:-200px;left:-80px;
-  width:500px;height:500px;
-  background:radial-gradient(circle,rgba(27,107,74,.10) 0%,transparent 70%);
+  bottom:-220px;left:-100px;
+  width:520px;height:520px;
+  background:radial-gradient(circle,rgba(66,48,30,.45) 0%,transparent 70%);
   pointer-events:none;
 }
 
-/* Grid pattern */
 .grid-pattern{
   position:absolute;
   inset:0;
   background-image:
-    linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);
+    linear-gradient(rgba(245,237,230,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(245,237,230,.035) 1px,transparent 1px);
   background-size:60px 60px;
   pointer-events:none;
 }
 
-/* Top bar */
 .top-bar{
   position:absolute;
   top:0;left:0;right:0;
   height:4px;
-  background:linear-gradient(90deg,#006650,#2A9D6E,#34d399,#2A9D6E,#006650);
+  background:#8E2424;
 }
 
-/* Logo */
 .logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:40px;
+  position:relative;
+  margin-bottom:36px;
 }
 .logo img{
-  height:50px;
-  filter:brightness(5) saturate(0.3);
+  height:64px;
+  width:auto;
+  display:block;
 }
 
-/* Eyebrow */
 .eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:6px 16px;
-  border-radius:100px;
-  border:1px solid rgba(255,255,255,.12);
+  position:relative;
+  font-family:'IBM Plex Mono',monospace;
   font-size:13px;
-  font-weight:500;
-  color:rgba(255,255,255,.45);
-  letter-spacing:0.5px;
-  margin-bottom:32px;
-}
-.eyebrow .dot{
-  width:6px;height:6px;
-  border-radius:50%;
-  background:#34d399;
+  font-weight:600;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:#E05A4E;
+  margin-bottom:22px;
 }
 
-/* Title */
 .title{
-  font-family:'Libre Baskerville',Georgia,serif;
-  font-size:52px;
-  font-weight:700;
-  color:#FFFFFF;
-  line-height:1.15;
-  letter-spacing:-0.02em;
-  max-width:800px;
+  position:relative;
+  font-family:'Archivo',Arial,sans-serif;
+  font-size:64px;
+  font-weight:800;
+  color:#F5EDE6;
+  line-height:1.02;
+  letter-spacing:-0.035em;
+  max-width:920px;
 }
 
-/* Subtitle */
 .subtitle{
-  margin-top:20px;
-  font-size:18px;
-  color:rgba(255,255,255,.40);
-  font-style:italic;
-  font-family:'Libre Baskerville',Georgia,serif;
-  max-width:600px;
+  position:relative;
+  margin-top:22px;
+  font-size:22px;
+  line-height:1.4;
+  color:rgba(245,237,230,.70);
+  max-width:720px;
 }
 
-/* Bottom stats */
 .stats{
   position:absolute;
-  bottom:50px;left:90px;right:90px;
+  bottom:44px;left:88px;right:88px;
   display:flex;
-  gap:40px;
-  padding-top:24px;
-  border-top:1px solid rgba(255,255,255,.08);
+  gap:48px;
+  padding-top:22px;
+  border-top:1px solid rgba(245,237,230,.14);
 }
 .stat-value{
-  font-family:'Inter',sans-serif;
-  font-size:22px;
-  font-weight:700;
-  color:#34d399;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:26px;
+  font-weight:600;
+  color:#F5EDE6;
+  letter-spacing:-0.02em;
 }
 .stat-label{
+  font-family:'IBM Plex Mono',monospace;
   font-size:11px;
-  font-weight:500;
+  font-weight:600;
   text-transform:uppercase;
-  letter-spacing:1.5px;
-  color:rgba(255,255,255,.30);
-  margin-top:4px;
+  letter-spacing:0.14em;
+  color:rgba(245,237,230,.55);
+  margin-top:6px;
 }
 
-/* URL */
 .url{
   position:absolute;
-  bottom:54px;right:90px;
+  bottom:48px;right:88px;
+  font-family:'IBM Plex Mono',monospace;
   font-size:14px;
   font-weight:600;
-  color:rgba(255,255,255,.25);
-  letter-spacing:0.5px;
+  letter-spacing:0.04em;
+  color:rgba(245,237,230,.55);
 }
 </style>
 </head>
@@ -155,22 +144,15 @@ body{background:#888;display:flex;align-items:center;justify-content:center;min-
     <img src="logo-header.png" alt="Inflexion"/>
   </div>
 
-  <div class="eyebrow">
-    <span class="dot"></span>
-    178 sources &middot; 15 APIs &middot; IA Claude
-  </div>
+  <p class="eyebrow">178 sources · 15 APIs · analyse IA</p>
 
-  <div class="title">
-    R&eacute;v&eacute;ler les signaux<br>que le bruit dissimule.
-  </div>
+  <h1 class="title">Révéler les signaux<br>que le bruit dissimule.</h1>
 
-  <div class="subtitle">
-    Intelligence g&eacute;opolitique &amp; financi&egrave;re en temps r&eacute;el
-  </div>
+  <p class="subtitle">Intelligence géopolitique et financière pour les décideurs.</p>
 
   <div class="stats">
     <div>
-      <div class="stat-value">158</div>
+      <div class="stat-value">178</div>
       <div class="stat-label">Sources</div>
     </div>
     <div>
