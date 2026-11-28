@@ -1,0 +1,1057 @@
+{
+  "schema": 1,
+  "collecte": "2026-11-28",
+  "config_version": 1,
+  "societes": {
+    "centrus-energy": {
+      "ticker": "LEU",
+      "flux": {
+        "position_courte": {
+          "valeur": 5584743,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-11-13"
+        },
+        "position_precedente": {
+          "valeur": 5796198,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-10-30"
+        },
+        "jours_couverture": {
+          "valeur": 6.13,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-11-13"
+        },
+        "actions_en_circulation": {
+          "valeur": 19899250,
+          "source": {
+            "nom": "SEC, rapport 10-Q du T3 2026, page de garde (actions de classe A)",
+            "url": "https://www.sec.gov/Archives/edgar/data/1065059/000162828026070557/leu-20260930.htm"
+          },
+          "date": "2026-11-01",
+          "saisie": "manuelle"
+        }
+      },
+      "attentes": {
+        "avis": {
+          "valeur": {
+            "achat": 11,
+            "conserver": 6,
+            "vente": 0
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/leu/analyst-research"
+          },
+          "date": "2026-11-01"
+        },
+        "avis_reference": {
+          "valeur": {
+            "achat": 9,
+            "conserver": 5,
+            "vente": 0
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/leu/analyst-research"
+          },
+          "date": "2026-08-01"
+        },
+        "avis_du_jour": {
+          "valeur": {
+            "achat": 11,
+            "conserver": 6,
+            "vente": 0
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/leu/analyst-research"
+          },
+          "date": "2026-11-28"
+        },
+        "objectifs": {
+          "valeur": {
+            "bas": 100,
+            "moyen": 175.5,
+            "haut": 337
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/leu/analyst-research"
+          },
+          "date": "2026-11-01"
+        },
+        "ca_trimestre": {
+          "valeur": null,
+          "motif": "aucune source gratuite vérifiée"
+        },
+        "bpa_trimestre": {
+          "valeur": {
+            "exercice": "Dec 2026",
+            "consensus": 1.28,
+            "bas": 0.91,
+            "haut": 1.75,
+            "estimations": 5
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/leu/earnings"
+          },
+          "date": "2026-11-28"
+        },
+        "publie_vs_consensus": {
+          "valeur": null,
+          "motif": "aucun instantané antérieur à la publication du 2026-11-04"
+        }
+      },
+      "valorisation": {
+        "capitalisation": {
+          "valeur": 1768444457,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/leu/"
+          },
+          "date": "2026-11-28"
+        },
+        "ca_12_mois": {
+          "valeur": 454500000,
+          "source": {
+            "nom": "SEC (XBRL)",
+            "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0001065059/us-gaap/RevenueFromContractWithCustomerExcludingAssessedTax.json"
+          },
+          "date": "2026-09-30",
+          "detail": {
+            "exercice": 448700000,
+            "cumul": 308300000,
+            "cumul_precedent": 302500000
+          }
+        },
+        "cours": {
+          "valeur": 83.19,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/leu/historical"
+          },
+          "date": "2026-11-25"
+        },
+        "cours_6_mois": {
+          "valeur": 185.46,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/leu/historical"
+          },
+          "date": "2026-05-28"
+        },
+        "cours_12_mois": {
+          "valeur": 259.3,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/leu/historical"
+          },
+          "date": "2025-11-28"
+        }
+      }
+    },
+    "rocket-lab": {
+      "ticker": "RKLB",
+      "flux": {
+        "position_courte": {
+          "valeur": 45460649,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-11-13"
+        },
+        "position_precedente": {
+          "valeur": 46410138,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-10-30"
+        },
+        "jours_couverture": {
+          "valeur": 2.09,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-11-13"
+        },
+        "actions_en_circulation": {
+          "valeur": 632020915,
+          "source": {
+            "nom": "SEC (XBRL)",
+            "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0001819994/dei/EntityCommonStockSharesOutstanding.json"
+          },
+          "date": "2026-11-04"
+        }
+      },
+      "attentes": {
+        "avis": {
+          "valeur": {
+            "achat": 15,
+            "conserver": 3,
+            "vente": 0
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/rklb/analyst-research"
+          },
+          "date": "2026-11-01"
+        },
+        "avis_reference": {
+          "valeur": {
+            "achat": 13,
+            "conserver": 4,
+            "vente": 0
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/rklb/analyst-research"
+          },
+          "date": "2026-08-01"
+        },
+        "avis_du_jour": {
+          "valeur": {
+            "achat": 15,
+            "conserver": 3,
+            "vente": 1
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/rklb/analyst-research"
+          },
+          "date": "2026-11-28"
+        },
+        "objectifs": {
+          "valeur": {
+            "bas": 40,
+            "moyen": 92.33,
+            "haut": 132
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/rklb/analyst-research"
+          },
+          "date": "2026-11-01"
+        },
+        "ca_trimestre": {
+          "valeur": null,
+          "motif": "aucune source gratuite vérifiée"
+        },
+        "bpa_trimestre": {
+          "valeur": {
+            "exercice": "Dec 2026",
+            "consensus": -0.04,
+            "bas": -0.06,
+            "haut": -0.02,
+            "estimations": 2
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/rklb/earnings"
+          },
+          "date": "2026-11-28"
+        },
+        "publie_vs_consensus": {
+          "valeur": null,
+          "motif": "aucun instantané antérieur à la publication du 2026-11-09"
+        }
+      },
+      "valorisation": {
+        "capitalisation": {
+          "valeur": 32157224155,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/rklb/"
+          },
+          "date": "2026-11-28"
+        },
+        "ca_12_mois": {
+          "valeur": 881900000,
+          "source": {
+            "nom": "SEC (XBRL)",
+            "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0001819994/us-gaap/RevenueFromContractWithCustomerExcludingAssessedTax.json"
+          },
+          "date": "2026-09-30",
+          "detail": {
+            "exercice": 601799000,
+            "cumul": 702248000,
+            "cumul_precedent": 422147000
+          }
+        },
+        "cours": {
+          "valeur": 47.02,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/rklb/historical"
+          },
+          "date": "2026-11-25"
+        },
+        "cours_6_mois": {
+          "valeur": 148.03,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/rklb/historical"
+          },
+          "date": "2026-05-28"
+        },
+        "cours_12_mois": {
+          "valeur": 42.14,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/rklb/historical"
+          },
+          "date": "2025-11-28"
+        }
+      }
+    },
+    "ionq": {
+      "ticker": "IONQ",
+      "flux": {
+        "position_courte": {
+          "valeur": 52797765,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-11-13"
+        },
+        "position_precedente": {
+          "valeur": 50626899,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-10-30"
+        },
+        "jours_couverture": {
+          "valeur": 2.15,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-11-13"
+        },
+        "actions_en_circulation": {
+          "valeur": 432462651,
+          "source": {
+            "nom": "SEC (XBRL)",
+            "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0001824920/dei/EntityCommonStockSharesOutstanding.json"
+          },
+          "date": "2026-10-28"
+        }
+      },
+      "attentes": {
+        "avis": {
+          "valeur": {
+            "achat": 10,
+            "conserver": 1,
+            "vente": 0
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/ionq/analyst-research"
+          },
+          "date": "2026-11-01"
+        },
+        "avis_reference": {
+          "valeur": {
+            "achat": 9,
+            "conserver": 1,
+            "vente": 0
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/ionq/analyst-research"
+          },
+          "date": "2026-08-01"
+        },
+        "avis_du_jour": {
+          "valeur": {
+            "achat": 10,
+            "conserver": 1,
+            "vente": 0
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/ionq/analyst-research"
+          },
+          "date": "2026-11-28"
+        },
+        "objectifs": {
+          "valeur": {
+            "bas": 40,
+            "moyen": 57.08,
+            "haut": 70
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/ionq/analyst-research"
+          },
+          "date": "2026-11-01"
+        },
+        "ca_trimestre": {
+          "valeur": null,
+          "motif": "aucune source gratuite vérifiée"
+        },
+        "bpa_trimestre": {
+          "valeur": {
+            "exercice": "Dec 2026",
+            "consensus": -0.88,
+            "bas": -0.95,
+            "haut": -0.7,
+            "estimations": 4
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/ionq/earnings"
+          },
+          "date": "2026-11-28"
+        },
+        "publie_vs_consensus": {
+          "valeur": null,
+          "motif": "aucun instantané antérieur à la publication du 2026-11-05"
+        }
+      },
+      "valorisation": {
+        "capitalisation": {
+          "valeur": 11564039543,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/ionq/"
+          },
+          "date": "2026-11-28"
+        },
+        "ca_12_mois": {
+          "valeur": 380439000,
+          "source": {
+            "nom": "SEC (XBRL)",
+            "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0001824920/us-gaap/RevenueFromContractWithCustomerExcludingAssessedTax.json"
+          },
+          "date": "2026-09-30",
+          "detail": {
+            "exercice": 130016000,
+            "cumul": 318549000,
+            "cumul_precedent": 68126000
+          }
+        },
+        "cours": {
+          "valeur": 23.54,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/ionq/historical"
+          },
+          "date": "2026-11-25"
+        },
+        "cours_6_mois": {
+          "valeur": 70.14,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/ionq/historical"
+          },
+          "date": "2026-05-28"
+        },
+        "cours_12_mois": {
+          "valeur": 49.3,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/ionq/historical"
+          },
+          "date": "2025-11-28"
+        }
+      }
+    },
+    "vertiv": {
+      "ticker": "VRT",
+      "flux": {
+        "position_courte": {
+          "valeur": 12303803,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-11-13"
+        },
+        "position_precedente": {
+          "valeur": 11071450,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-10-30"
+        },
+        "jours_couverture": {
+          "valeur": 1.44,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-11-13"
+        },
+        "actions_en_circulation": {
+          "valeur": 385060421,
+          "source": {
+            "nom": "SEC (XBRL)",
+            "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0001674101/dei/EntityCommonStockSharesOutstanding.json"
+          },
+          "date": "2026-10-26"
+        }
+      },
+      "attentes": {
+        "avis": {
+          "valeur": {
+            "achat": 14,
+            "conserver": 1,
+            "vente": 1
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/vrt/analyst-research"
+          },
+          "date": "2026-11-01"
+        },
+        "avis_reference": {
+          "valeur": {
+            "achat": 17,
+            "conserver": 1,
+            "vente": 0
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/vrt/analyst-research"
+          },
+          "date": "2026-08-01"
+        },
+        "avis_du_jour": {
+          "valeur": {
+            "achat": 14,
+            "conserver": 3,
+            "vente": 1
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/vrt/analyst-research"
+          },
+          "date": "2026-11-28"
+        },
+        "objectifs": {
+          "valeur": {
+            "bas": 187,
+            "moyen": 306.24,
+            "haut": 376
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/vrt/analyst-research"
+          },
+          "date": "2026-11-01"
+        },
+        "ca_trimestre": {
+          "valeur": null,
+          "motif": "aucune source gratuite vérifiée"
+        },
+        "bpa_trimestre": {
+          "valeur": {
+            "exercice": "Dec 2026",
+            "consensus": 2.28,
+            "bas": 2.23,
+            "haut": 2.33,
+            "estimations": 7
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/vrt/earnings"
+          },
+          "date": "2026-11-28"
+        },
+        "publie_vs_consensus": {
+          "valeur": null,
+          "motif": "aucun instantané antérieur à la publication du 2026-10-28"
+        }
+      },
+      "valorisation": {
+        "capitalisation": {
+          "valeur": 68898861130,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/vrt/"
+          },
+          "date": "2026-11-28"
+        },
+        "ca_12_mois": {
+          "valeur": 13116600000,
+          "source": {
+            "nom": "SEC (XBRL)",
+            "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0001674101/us-gaap/RevenueFromContractWithCustomerExcludingAssessedTax.json"
+          },
+          "date": "2026-09-30",
+          "detail": {
+            "exercice": 10229900000,
+            "cumul": 10236600000,
+            "cumul_precedent": 7349900000
+          }
+        },
+        "cours": {
+          "valeur": 173.37,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/vrt/historical"
+          },
+          "date": "2026-11-25"
+        },
+        "cours_6_mois": {
+          "valeur": 314.18,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/vrt/historical"
+          },
+          "date": "2026-05-28"
+        },
+        "cours_12_mois": {
+          "valeur": 179.73,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/vrt/historical"
+          },
+          "date": "2025-11-28"
+        }
+      }
+    },
+    "sentinelone": {
+      "ticker": "S",
+      "flux": {
+        "position_courte": {
+          "valeur": 28454078,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-11-13"
+        },
+        "position_precedente": {
+          "valeur": 33854911,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-10-30"
+        },
+        "jours_couverture": {
+          "valeur": 2.78,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-11-13"
+        },
+        "actions_en_circulation": {
+          "valeur": 342184493,
+          "source": {
+            "nom": "SEC, rapport 10-Q du T2 FY2027, page de garde (actions de classe A)",
+            "url": "https://www.sec.gov/Archives/edgar/data/1583708/000158370826000055/s-20260731.htm"
+          },
+          "date": "2026-08-21",
+          "saisie": "manuelle"
+        }
+      },
+      "attentes": {
+        "avis": {
+          "valeur": {
+            "achat": 18,
+            "conserver": 13,
+            "vente": 0
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/s/analyst-research"
+          },
+          "date": "2026-11-01"
+        },
+        "avis_reference": {
+          "valeur": {
+            "achat": 15,
+            "conserver": 9,
+            "vente": 0
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/s/analyst-research"
+          },
+          "date": "2026-08-01"
+        },
+        "avis_du_jour": {
+          "valeur": {
+            "achat": 11,
+            "conserver": 10,
+            "vente": 0
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/s/analyst-research"
+          },
+          "date": "2026-11-28"
+        },
+        "objectifs": {
+          "valeur": {
+            "bas": 17.5,
+            "moyen": 25.55,
+            "haut": 32
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/s/analyst-research"
+          },
+          "date": "2026-11-01"
+        },
+        "ca_trimestre": {
+          "valeur": null,
+          "motif": "aucune source gratuite vérifiée"
+        },
+        "bpa_trimestre": {
+          "valeur": {
+            "exercice": "Oct 2026",
+            "consensus": -0.11,
+            "bas": -0.13,
+            "haut": -0.1,
+            "estimations": 10
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/s/earnings"
+          },
+          "date": "2026-11-28"
+        },
+        "publie_vs_consensus": {
+          "valeur": null,
+          "motif": "aucun instantané antérieur à la publication du 2026-08-27"
+        }
+      },
+      "valorisation": {
+        "capitalisation": {
+          "valeur": 8817824379,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/s/"
+          },
+          "date": "2026-11-28"
+        },
+        "ca_12_mois": {
+          "valeur": 1098704000,
+          "source": {
+            "nom": "SEC (XBRL)",
+            "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0001583708/us-gaap/RevenueFromContractWithCustomerExcludingAssessedTax.json"
+          },
+          "date": "2026-07-31",
+          "detail": {
+            "exercice": 1001278000,
+            "cumul": 568638000,
+            "cumul_precedent": 471212000
+          }
+        },
+        "cours": {
+          "valeur": 24.09,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/s/historical"
+          },
+          "date": "2026-11-25"
+        },
+        "cours_6_mois": {
+          "valeur": 18.02,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/s/historical"
+          },
+          "date": "2026-05-28"
+        },
+        "cours_12_mois": {
+          "valeur": 16.21,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/s/historical"
+          },
+          "date": "2025-11-28"
+        }
+      }
+    },
+    "oklo": {
+      "ticker": "OKLO",
+      "flux": {
+        "position_courte": {
+          "valeur": 40467978,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-11-13"
+        },
+        "position_precedente": {
+          "valeur": 37873964,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-10-30"
+        },
+        "jours_couverture": {
+          "valeur": 3.05,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-11-13"
+        },
+        "actions_en_circulation": {
+          "valeur": 195289593,
+          "source": {
+            "nom": "SEC (XBRL)",
+            "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0001849056/dei/EntityCommonStockSharesOutstanding.json"
+          },
+          "date": "2026-11-04"
+        }
+      },
+      "attentes": {
+        "avis": {
+          "valeur": {
+            "achat": 9,
+            "conserver": 6,
+            "vente": 0
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/oklo/analyst-research"
+          },
+          "date": "2026-11-01"
+        },
+        "avis_reference": {
+          "valeur": {
+            "achat": 7,
+            "conserver": 8,
+            "vente": 0
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/oklo/analyst-research"
+          },
+          "date": "2026-08-01"
+        },
+        "avis_du_jour": {
+          "valeur": {
+            "achat": 9,
+            "conserver": 6,
+            "vente": 0
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/oklo/analyst-research"
+          },
+          "date": "2026-11-28"
+        },
+        "objectifs": {
+          "valeur": {
+            "bas": 26,
+            "moyen": 48.64,
+            "haut": 90
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/oklo/analyst-research"
+          },
+          "date": "2026-11-01"
+        },
+        "ca_trimestre": {
+          "valeur": null,
+          "motif": "aucune source gratuite vérifiée"
+        },
+        "bpa_trimestre": {
+          "valeur": {
+            "exercice": "Dec 2026",
+            "consensus": -0.28,
+            "bas": -0.38,
+            "haut": -0.23,
+            "estimations": 6
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/oklo/earnings"
+          },
+          "date": "2026-11-28"
+        },
+        "publie_vs_consensus": {
+          "valeur": null,
+          "motif": "aucun instantané antérieur à la publication du 2026-11-06"
+        }
+      },
+      "valorisation": {
+        "capitalisation": {
+          "valeur": 4071788014,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/oklo/"
+          },
+          "date": "2026-11-28"
+        },
+        "ca_12_mois": {
+          "valeur": null,
+          "motif": "douze mois non reconstituables à partir des faits balisés"
+        },
+        "cours": {
+          "valeur": 19.47,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/oklo/historical"
+          },
+          "date": "2026-11-25"
+        },
+        "cours_6_mois": {
+          "valeur": 68.09,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/oklo/historical"
+          },
+          "date": "2026-05-28"
+        },
+        "cours_12_mois": {
+          "valeur": 91.38,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/oklo/historical"
+          },
+          "date": "2025-11-28"
+        }
+      }
+    },
+    "agility-robotics": {
+      "ticker": "AGLT",
+      "flux": {
+        "position_courte": {
+          "valeur": 3882799,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-11-13"
+        },
+        "position_precedente": {
+          "valeur": null,
+          "motif": "un seul relevé FINRA disponible"
+        },
+        "jours_couverture": {
+          "valeur": 1,
+          "source": {
+            "nom": "FINRA",
+            "url": "https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data"
+          },
+          "date": "2026-11-13"
+        },
+        "actions_en_circulation": {
+          "valeur": 242089880,
+          "source": {
+            "nom": "SEC (XBRL)",
+            "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0002074973/dei/EntityCommonStockSharesOutstanding.json"
+          },
+          "date": "2026-11-12"
+        }
+      },
+      "attentes": {
+        "avis": {
+          "valeur": {
+            "achat": 0,
+            "conserver": 1,
+            "vente": 0
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/aglt/analyst-research"
+          },
+          "date": "2026-11-01"
+        },
+        "avis_reference": {
+          "valeur": null,
+          "motif": "historique des avis non disponible"
+        },
+        "avis_du_jour": {
+          "valeur": {
+            "achat": 2,
+            "conserver": 1,
+            "vente": 0
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/aglt/analyst-research"
+          },
+          "date": "2026-11-28"
+        },
+        "objectifs": {
+          "valeur": {
+            "bas": 8,
+            "moyen": 11.33,
+            "haut": 15
+          },
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/aglt/analyst-research"
+          },
+          "date": "2026-11-01"
+        },
+        "ca_trimestre": {
+          "valeur": null,
+          "motif": "aucune source gratuite vérifiée"
+        },
+        "bpa_trimestre": {
+          "valeur": null,
+          "motif": "BPA attendu non disponible"
+        },
+        "publie_vs_consensus": {
+          "valeur": null,
+          "motif": "aucune publication datée dans le tracker"
+        }
+      },
+      "valorisation": {
+        "capitalisation": {
+          "valeur": 1786132118,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/aglt/"
+          },
+          "date": "2026-11-28"
+        },
+        "ca_12_mois": {
+          "valeur": null,
+          "motif": "chiffre d’affaires non balisé"
+        },
+        "cours": {
+          "valeur": 6.49,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/aglt/historical"
+          },
+          "date": "2026-11-25"
+        },
+        "cours_6_mois": {
+          "valeur": 10.22,
+          "source": {
+            "nom": "Nasdaq",
+            "url": "https://www.nasdaq.com/market-activity/stocks/aglt/historical"
+          },
+          "date": "2026-05-28"
+        },
+        "cours_12_mois": {
+          "valeur": null,
+          "motif": "aucune séance autour du 2025-11-28"
+        }
+      }
+    }
+  }
+}
