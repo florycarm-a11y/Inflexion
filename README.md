@@ -1,137 +1,92 @@
-# Inflexion — Géopolitique & Marchés Financiers
+# Inflexion
 
-Plateforme d'intelligence financière automatisée combinant analyses géopolitiques et données de marché en temps réel. Agrège 15 APIs, 122 flux RSS et génère des synthèses IA quotidiennes via Claude pour les investisseurs francophones.
+Lire les preuves, pas le récit.
 
-**Production** : [inflexionhub.com](https://inflexionhub.com/)
+Inflexion est un tracker d'inflexions. Il suit des sociétés portées par un récit — petits réacteurs, quantique, spatial, robotique — et lit uniquement leurs publications de résultats. À chaque trimestre, quatre dimensions reçoivent un sens. Leur somme est le solde. Le solde déclenche quatre alertes.
 
-## Architecture & Stack
+**En ligne** : [inflexionhub.com](https://inflexionhub.com/)
 
-- **Frontend** : HTML5, CSS3, JavaScript Vanilla — déployé via GitHub Pages
-- **Backend** : Supabase (auth, PostgreSQL, RLS) + Express.js API (rate limiting, compression, Helmet)
-- **Automatisation** : 8 workflows GitHub Actions — fetch données (4x/jour), briefing IA quotidien, article quotidien, analyse de sentiment (4x/jour), newsletter hebdomadaire, traduction, RAG indexation, CI/CD
-- **IA** : API Claude (Haiku pour le quotidien, Sonnet pour les briefings complets du lundi) via module centralisé avec retry exponentiel, rate limiting et suivi des coûts
+Le pivot date du 21 novembre 2026 ([#160](https://github.com/florycarm-a11y/Inflexion/pull/160)) : la page d'accueil est le tracker. La navigation est Tracker, Méthode, Expertise, Services.
 
-## Sources de données
+## Ce que le tracker mesure
 
-**15 APIs temps réel :**
-- CoinGecko (crypto, trending, stablecoins, historique 90j)
-- Finnhub (indices US, VIX, calendrier économique)
-- FRED (10 séries macroéconomiques US)
-- Alpha Vantage (forex, secteurs, top gainers/losers)
-- DefiLlama (TVL DeFi, protocoles, yields stablecoins)
-- Alternative.me (Fear & Greed Index crypto, historique 31j)
-- GNews (actualités multi-catégories FR/EN)
-- metals.dev (métaux précieux & industriels)
-- Etherscan (ETH gas tracker)
-- Mempool.space (BTC fees, hashrate, difficulté)
-- ECB Data API (taux directeur BCE, EUR/USD fixing 90j)
-- Messari (crypto avancé : dominance BTC, volumes, métriques globales)
-- Twelve Data (indices européens : CAC 40, DAX, FTSE 100, Euro Stoxx 50, IBEX 35, FTSE MIB)
-- World Bank (PIB, inflation, chômage, dette — 10 économies majeures)
-- NewsAPI (actualités EN complémentaires, 5 catégories)
+Quatre dimensions, lues dans les documents de la société (8-K, 10-Q, 10-K). Ni cours de Bourse, ni presse, ni note d'analyste.
 
-**122 flux RSS spécialisés :**
-- Géopolitique (21) : Le Figaro, France 24, BBC World, Al Jazeera, Reuters, CFR, Brookings, Carnegie, CSIS, IFRI, Chatham House, SIPRI, Crisis Group...
-- Marchés & Finance (25) : Les Echos, BFM Business, MarketWatch, CNBC, Wolf Street, BIS, IMF Blog, OECD, L'AGEFI, BCE, Banque de France...
-- Crypto & Blockchain (14) : CoinDesk, CoinTelegraph, The Block, Decrypt, Blockworks, Chainalysis, The Defiant...
-- Matières Premières & Énergie (19) : OilPrice, Mining.com, OPEC, IEA, IRENA, Carbon Brief, S&P Global...
-- IA, Tech & Cybersécurité (18) : TechCrunch, MIT Tech Review, Krebs on Security, Hacker News, VentureBeat AI...
+| Dimension | Ce qu'elle lit |
+|---|---|
+| D1 Revenus de la thèse | La croissance du segment qui porte le récit |
+| D2 Demande engagée | Commandes, carnet, clients, ou barreau d'engagement |
+| D3 Prévision | Relevée, maintenue, abaissée, manquée |
+| D4 Rentabilité | La marge opérationnelle GAAP, sur un an |
 
-## Automatisations IA
+Chaque sens vaut hausse, stable, baisse, ou « non publié ». Le « non publié » ne compte pas dans le solde, et il s'affiche avec un mot. Une valeur sans source ne s'affiche pas. Le solde, les alertes, le score et la phase sont calculés, jamais saisis dans les fichiers.
 
-- **Briefing stratégique quotidien** : croisement signaux géopolitiques × données marché via Claude. Cycle hebdomadaire : Sonnet le lundi (briefing complet), Haiku du mardi au dimanche (briefing delta). Enrichi par contexte RAG historique.
-- **Article d'analyse quotidien** : rédaction automatisée avec contextualisation chiffrée, classification par rubrique et traduction EN→FR.
-- **Analyse de sentiment** : scoring par rubrique toutes les 6h, génération d'alertes marché et analyse macro. Historique 30 jours.
-- **Newsletter hebdomadaire** : synthèse automatique chaque dimanche (10h UTC), couvrant les faits marquants de la semaine.
-- **Traduction automatique** EN→FR de tous les articles via Claude Haiku.
-- **Classification d'articles** par rubrique (géopolitique, marchés, crypto, matières premières, IA/tech) via Claude.
+| Alerte | Ce qu'elle dit |
+|---|---|
+| Bascule | Les preuves s'améliorent : solde à +2 ou plus, hors régime déjà ouvert, marge brute positive |
+| Bascule commerciale | Pré-revenus seulement : premier barreau d'engagement haut, marge brute positive. Une seule par société |
+| Signal faible | La demande ou la prévision passe en hausse, alors que le solde reste sous +2 |
+| Rechute | Les preuves se dégradent : solde à −2 ou moins |
 
-## RAG (Retrieval-Augmented Generation)
+Une alerte décrit des publications passées. Elle ne dit pas que le récit aboutira. Sur les dix cas hors échantillon, la Bascule est apparue chez les cinq succès boursiers et chez trois des cinq échecs. La Rechute est le signal le plus fiable du backtest : elle passe en premier sur la page d'accueil.
 
-- Embeddings locaux avec `all-MiniLM-L6-v2` (transformers.js, 384 dimensions, zéro API externe)
-- Vector store JSON (articles + briefings) avec limite configurable (500 articles, 60 briefings)
-- Recherche par similarité cosinus pour enrichir le contexte des briefings quotidiens
-- Indexation automatique post-fetch et post-briefing via GitHub Actions (workflow `generate-daily-briefing.yml`)
+La source de vérité du calcul est [`docs/tracker-methode.md`](docs/tracker-methode.md), **v1.3 figée le 21 novembre 2026**. Le pseudo-code de la section 6 l'emporte sur toute autre phrase. La page publique est [`methode.html`](methode.html).
 
-## Base de données Supabase
+## Ce que le site montre
 
-- **Profils utilisateurs** : auth Supabase + trigger automatique `handle_new_user`
-- **Watchlists personnalisées** : suivi d'actifs avec enrichissement live (prix, variation 24h), alertes croisées (watchlist × 122 sources RSS × alertes Claude), partage via lien public (code 12 caractères)
-- **Annotations collaboratives** sur actifs (auteur, date, texte)
-- **Archive** des articles IA et newsletters
-- **Row Level Security (RLS)** sur toutes les tables : chaque utilisateur ne voit/modifie que ses propres données
+- **Accueil** (`index.html`) — le manifeste, la liste des sociétés, les alertes (Rechutes puis Bascules), la bande du backtest.
+- **Fiche** (`entreprise.html?id=`) — une société, ses publications, ses sens sourcés.
+- **Méthode** (`methode.html`) — les règles en clair, et le bilan du backtest, échecs compris.
+- **Lecture de marché** (`marche.html`) — une couche à côté du tracker : short interest, attentes, valorisation, croisés avec la dernière alerte. Elle lit le tracker et n'écrit jamais dans `data/tracker/`. Les objectifs d'analystes viennent d'un accès Nasdaq non documenté ; les conditions du site en limitent la capture automatisée. FINRA et la SEC, elles, sont publiques.
+- **Archives** — les analyses déjà publiées, sous Tracker dans le menu. Elles ne portent plus le site.
 
-Tables : `profiles`, `watchlist`, `articles`, `newsletter`, `shared_watchlists`, `watchlist_annotations`
+Le catalogue public est `data/tracker/entreprises.json` : Centrus Energy, Rocket Lab, IonQ, Vertiv, SentinelOne, Oklo, Agility Robotics. Sept sociétés, lues sur EDGAR. Agility entre sans publication : sa première en propre n'est pas encore déposée.
 
-## Frontend
+SEMPLICE reste le cadre géopolitique du site, sous Expertise (`expertise.html`, radar pays sur `country.html`). Les pages de veille (géopolitique, marchés, crypto, matières premières, ETF, briefing) sont sorties du menu. Elles restent accessibles par leur adresse. La production automatique de briefings, d'articles et de newsletters est arrêtée ([#159](https://github.com/florycarm-a11y/Inflexion/pull/159)).
 
-- **Dashboard temps réel** avec 16+ widgets (indices, macro, crypto, DeFi, sentiment IA, alertes, briefing, Fear & Greed, forex, calendrier économique)
-- **Pages dédiées** : marchés, crypto, commodités, ETF, géopolitique, macro par pays (10 économies)
-- **Pages d'analyse** : droits de douane Trump/Groenland, IA et marchés, divergence or/bitcoin
-- **Curation qualitative** : algorithme de scoring multi-critères (autorité source, qualité titre/description, fraîcheur, langue) — sélection de 12 articles/jour équilibrés entre rubriques
-- **Watchlist avancée** : données live, alertes croisées, partage, annotations, génération de rapports HTML
-- **TradingView widgets** intégrés pour graphiques temps réel
-- **Responsive mobile-first** (breakpoints 480/768/1024px)
-- **Accessibilité** : ARIA labels, navigation clavier, contrastes WCAG
-- **SEO** : sitemap.xml, robots.txt, manifest.json
-- **Pages légales** : CGU, politique de confidentialité, mentions légales
+## Où c'est dans le dépôt
 
-## Tests & CI/CD
+| Rôle | Fichier |
+|---|---|
+| Règles du calcul | `docs/tracker-methode.md` |
+| Schéma des fichiers | `data/tracker/README.md` |
+| Vocabulaire et validation | `tracker-modele.js` |
+| Rendu de la fiche | `tracker-vue.js` |
+| Catalogue et fiches | `data/tracker/` |
+| Moteur d'alertes | `tracker-modele.js`, vérifié sur les suites de la section 13 |
+| Lecture de marché | `marche.html`, `data/marche/`, `scripts/marche/` |
+| Univers du rejeu spatial | `docs/tracker-univers-spatial.md` |
+| Décisions qui engagent | `docs/carnet-de-bord.md` |
+| Carte technique | `CLAUDE.md` |
 
-**Pipeline CI** (`ci.yml`) : lint ESLint + tests unitaires + tests d'intégration + coverage (Codecov, seuil 70%)
+Le rejeu spatial fixe dix-huit sociétés avant toute lecture (composition du fonds UFO au 31 janvier 2024). Il sert à mesurer la précision de la Bascule sur un univers que personne n'a choisi. Il ne se mélange pas au catalogue public.
 
-**Tests backend** (Jest + Supertest) :
-- Modèle Article, agrégateur, base de données, API REST
-
-**Tests scripts** (Node.js native test runner) :
-- fetch-data, data-loader, api-client, supabase-client, generate-daily-briefing, app
-
-## Installation
+## Lancer en local
 
 ```bash
-# Cloner le repo
 git clone https://github.com/florycarm-a11y/Inflexion.git
 cd Inflexion
-
-# Installer les dépendances
-npm install
-cd backend && npm install && cd ..
-
-# Serveur local
-npx serve .
-
-# Lancer les tests
-npm test
-cd backend && npm test
+python3 -m http.server 4399
 ```
 
-### Variables d'environnement
+Ouvrir `http://localhost:4399`. Les JSON déjà dans `data/tracker/` suffisent.
 
-Les clés API sont configurées dans GitHub Secrets pour les workflows CI/CD :
+```bash
+npm test            # tests du tracker, de la home et des pages
+npm run build:css   # src/input.css → assets/site.css
+```
 
-```
-FINNHUB_API_KEY          # Finnhub (indices, VIX)
-GNEWS_API_KEY            # GNews (actualités)
-FRED_API_KEY             # FRED (macro US)
-ALPHA_VANTAGE_API_KEY    # Alpha Vantage (forex, secteurs)
-MESSARI_API_KEY          # Messari (crypto avancé)
-TWELVE_DATA_API_KEY      # Twelve Data (indices européens)
-NEWSAPI_API_KEY          # NewsAPI (news complémentaires)
-ANTHROPIC_API_KEY        # Claude (synthèses IA)
-PAT_TOKEN                # GitHub PAT (commit auto)
-```
+## Par où entrer
+
+1. [`docs/tracker-methode.md`](docs/tracker-methode.md) — la méthode, section 1 puis section 6.
+2. [`index.html`](index.html) — la vitrine.
+3. [`data/tracker/README.md`](data/tracker/README.md) — ce qu'un fichier de société a le droit de contenir.
+4. [`docs/carnet-de-bord.md`](docs/carnet-de-bord.md) — les décisions à ne pas rejouer.
 
 ## Avertissement
 
-Les informations présentées sur ce site sont fournies à titre informatif uniquement et ne constituent en aucun cas des conseils en investissement. Les performances passées ne garantissent pas les performances futures. Tout investissement comporte des risques de perte en capital.
+Les informations du site sont fournies à titre informatif. Une alerte n'est pas un conseil en investissement, ni une prévision. Tout investissement comporte un risque de perte en capital.
 
 ## Licence
 
-MIT License
-
-## Contributions
-
-Les contributions sont les bienvenues :
-- Signaler des bugs
-- Proposer de nouvelles sources
-- Améliorer les traductions
+MIT
